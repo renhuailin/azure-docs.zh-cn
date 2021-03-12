@@ -2,17 +2,17 @@
 title: Azure 资源管理器模板中的虚拟机 | Microsoft Azure
 description: 详细了解如何在 Azure Resource Manager 模板中定义虚拟机资源。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 2726ba3b337dc785de58b06fb5e8372058f71879
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 32b73be3faf6eedb92220725b292a3e69cf7f965
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202090"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555986"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -275,7 +275,7 @@ ms.locfileid: "98202090"
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
 - [大小](../sizes.md)
-- [名称](/azure/architecture/best-practices/resource-naming) 和凭据
+- [名称](/azure/architecture/best-practices/resource-naming)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - 启动诊断

@@ -2,15 +2,15 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: a27fba6e426b72d72160a9a238f68cf8cef5c73b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947767"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180034"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -18,40 +18,23 @@ ms.locfileid: "98947767"
 
 如果要直接跳到示例代码，请参阅 GitHub 上的 [JavaScript 快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node)。
 
+或者，请参阅[响应示例](https://github.com/Azure-Samples/AzureSpeechReactSample)，以了解如何在基于浏览器的环境中使用语音 SDK。
+
 ## <a name="prerequisites"></a>先决条件
 
 本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>，然后才能执行操作。 根据你的平台，使用以下说明：
+你需要先安装适用于 Node.js 的语音 SDK，然后才能执行其他操作。 如果只是需要用于安装的包名称，请运行 `npm install microsoft-cognitiveservices-speech-sdk`。 有关引导式安装说明，请参阅[入门](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript)一文。
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-
-另外，请根据目标环境使用以下项之一：
-
-# <a name="script"></a>[script](#tab/script)
-
-下载并提取 <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript 语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> microsoft.cognitiveservices.speech.sdk.bundle.js 文件，将其置于可供 HTML 文件访问的文件夹中。
-
-```html
-<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
-```
-
-> [!TIP]
-> 如果以 Web 浏览器为目标并使用 `<script>` 标记，则引用类时不需 `sdk` 前缀。 `sdk` 前缀是一个别名，用于为 `require` 模块命名。
-
-# <a name="require"></a>[require](#tab/require)
+使用以下 `require` 语句导入 SDK。
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
 ```
 
-有关 `require` 的详细信息，请参阅<a href="https://nodejs.org/en/knowledge/getting-started/what-is-require/" target="_blank">什么是 require？<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-
----
+有关 `require` 的详细信息，请参阅 [require 文档](https://nodejs.org/en/knowledge/getting-started/what-is-require/)。
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
@@ -72,52 +55,14 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-microphone-browser-only"></a>从麦克风识别（仅限浏览器）
 
-若要使用设备麦克风识别语音，需使用 `fromDefaultMicrophoneInput()` 创建 `AudioConfig`。 然后初始化 [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer)，传递 `speechConfig` 和 `audioConfig`。
+识别来自麦克风的语音 **在 Node.js 中不受支持**，仅在基于浏览器的 JavaScript 环境中受支持。 请参阅 GitHub 上的 [响应示例](https://github.com/Azure-Samples/AzureSpeechReactSample)，以了解如何[实现将来自麦克风的语音转换为文本](https://github.com/Azure-Samples/AzureSpeechReactSample/blob/main/src/App.js#L29)。
 
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromMic() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    console.log('Speak into your microphone.');
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromMic();
-```
-
-如果你想使用特定的音频输入设备，则需要在 `AudioConfig` 中指定设备 ID。 了解[如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
+> [!NOTE]
+> 如果你想使用特定的音频输入设备，则需要在 `AudioConfig` 中指定设备 ID。 [了解如何获取音频输入设备的设备 ID](../../../how-to-select-audio-input-devices.md)。
 
 ## <a name="recognize-from-file"></a>从文件识别 
 
-# <a name="browser"></a>[浏览器](#tab/browser)
-
-若要在基于浏览器的 JavaScript 环境中识别音频文件中的语音，可以使用 `fromWavFileInput()` 函数创建一个 [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig)。 函数 `fromWavFileInput()` 需要一个 JavaScript[`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) 对象作为参数。
-
-```javascript
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
-
-function fromFile() {
-    // wavByteContent should be a byte array of the raw wav content
-    let file = new File([wavByteContent]);
-    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
-    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
-    
-    recognizer.recognizeOnceAsync(result => {
-        console.log(`RECOGNIZED: Text=${result.text}`);
-    });
-}
-fromFile();
-```
-
-# <a name="nodejs"></a>[Node.js](#tab/node)
-
-若要在 Node.js 中从音频文件中识别语音，必须使用使用推送流的替代设计模式，因为 JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) 对象不能在 Node.js 运行时中使用。 下面的代码：
+若要在 Node.js 中从音频文件中识别语音，必须使用使用推送流的替代设计模式，因为 JavaScript `File` 对象不能在 Node.js 运行时中使用。 下面的代码：
 
 * 使用 `createPushStream()` 创建推送流
 * 通过创建读取流打开 `.wav` 文件，并将其写入推送流
@@ -149,8 +94,6 @@ fromFile();
 
 使用推送流作为输入假定音频数据是原始 PCM，例如，跳过任何标头。
 如果未跳过标头，API 在某些情况下仍可正常运行，但为获得最佳结果，请考虑实现读取标头的逻辑，确保 `fs` 以 <start of the audio data> 开头。
-
----
 
 ## <a name="error-handling"></a>错误处理。
 
@@ -190,7 +133,7 @@ switch (result.reason) {
 首先定义输入并初始化 [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer)：
 
 ```javascript
-const recognizer = new sdk.SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 接下来，我们将订阅从 [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) 发送的事件。

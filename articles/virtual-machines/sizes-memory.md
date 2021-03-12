@@ -10,17 +10,18 @@ tags: azure-resource-manager,azure-service-management
 keywords: VM 隔离,隔离的 VM,隔离,隔离的
 ms.assetid: ''
 ms.service: virtual-machines
+ms.subservice: vm-sizes-memory
 ms.devlang: na
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1e27ee2c045404d13b10945ac65484281b0cd967
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.openlocfilehash: 08a14a1c97a1eae9c07c50334929fb16304e635a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019709"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556513"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 
@@ -34,9 +35,9 @@ ms.locfileid: "92019709"
 
 - [Ev3 和 Esv3 系列](ev3-esv3-series.md)在超线程配置中使用英特尔&reg; Xeon&reg; 8171M 2.1 GHz (Skylake) 或英特尔&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) 处理器，为最常规用途的工作负载提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。 内存已扩展（从 7 GiB/vCPU 扩展到 8 GiB/vCPU），而磁盘和网络限制已基于每个核心进行了调整，以适应向超线程的转变。 Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-- [Ev4 和 Esv4 系列](ev4-esv4-series.md)在超线程配置中第2代的 Intel &reg; 强 &reg; 白金白金 8272CL (级联 Lake) 处理器上运行，适用于各种内存密集型企业应用程序和功能，最高可达 504 GiB 的 RAM。 它采用 intel AVX-512) 的 [intel &reg; Turbo 提升技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [intel &reg; 高级矢量扩展 512 (](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 Ev4 和 Esv4 不包含本地临时磁盘。 有关详细信息，请参阅  [没有本地临时磁盘的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
+- [Ev4 和 Esv4 系列](ev4-esv4-series.md)在采用超线程配置的第 2 代 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合各种内存密集型企业应用程序，并且配备高达 504 GiB 的 RAM。 它采用 [Intel&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 Ev4 和 Esv4 系列不包含本地临时磁盘。 有关详细信息，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
 
-- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第2代 Intel &reg; 强 &reg; 白金白金 8272CL (级联 Lake) 处理器上运行，非常适合极大型数据库或其他应用程序，这些应用程序受益于高 vCPU 计数和大量内存。 此外，这些 VM 大小包括快速、更大的本地 SSD 存储，适用于应用程序，这些应用程序受益于低延迟、高速本地存储。 它具有 3.4 GHz、 [intel &reg; 迅迅技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [Intel &reg; Hyper-Threading 技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) 和 [INTEL &reg; 高级矢量扩展 512 (Intel AVX-512) ](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)的所有核心 Turbo 时钟速度。
+- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第 2 代 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合特别大的数据库或者其他受益于 vCPU 数多和内存丰富的应用程序。 此外，这些 VM 大小包括快速、更大的本地 SSD 存储，可以用于从低延迟、高速本地存储中获益的应用程序。 它的全核睿频时钟速度为 3.4 GHz，采用 [Intel&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
 
 - [M 系列](m-series.md)提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于 vCPU 数量多和内存大的其他应用程序。
 
