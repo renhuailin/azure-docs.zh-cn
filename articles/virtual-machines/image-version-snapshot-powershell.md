@@ -4,25 +4,25 @@ description: 了解如何使用 PowerShell 从共享映像库中的快照或托�
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 70ef194ab7f7403f31ad431eba25db5f71dfb580
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679528"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556897"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 从共享映像库中的托管磁盘或快照创建映像
 
 如果想要将现有快照或托管磁盘迁移到共享映像库，可直接从该托管磁盘或快照创建共享映像库映像。 测试新映像后，可删除源托管磁盘或快照。 还可使用 [Azure CLI](image-version-snapshot-cli.md) 从共享映像库中的托管磁盘或快照创建映像。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
 
 
 ## <a name="before-you-begin"></a>准备阶段

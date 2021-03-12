@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 01/23/2020
-  ms.openlocfilehash: c19e6c7e05a3478007505ee4f02f12a7eade5eb6
-  ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+  ms.openlocfilehash: 4cc05d3b99530e5ba923bfcbf7f749fbcd1c0f20
+  ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93130232"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102616632"
 landingContent:
 - title: 关于沉浸式阅读器
   linkLists:
@@ -43,28 +43,20 @@ landingContent:
       url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
     - text: 使用 Swift (iOS)
       url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
-  - linkListType: tutorial
-    links:
-    - text: Android
-      url: tutorial-android.md
-    - text: iOS
-      url: tutorial-ios.md
-    - text: Python
-      url: tutorial-python.md
-    - text: 使用多个沉浸式阅读器资源
-      url: tutorial-multiple-resources.md
 - title: 探索沉浸式阅读器
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 创建沉浸式阅读器资源
       url: how-to-create-immersive-reader.md
+    - text: 使用多个沉浸式阅读器资源
+      url: how-to-multiple-resources.md
+    - text: 启动沉浸式阅读器
+      url: how-to-launch-immersive-reader.md
     - text: 设置 Cookie 策略
       url: how-to/set-cookie-policy.md
     - text: 显示数学内容
       url: how-to/display-math.md
-    - text: 启动沉浸式阅读器以显示 HTML 内容
-      url: how-to-launch-with-html.md
     - text: 自定义沉浸式阅读器按钮
       url: how-to-customize-launch-button.md
     - text: 缓存身份验证令牌

@@ -308,6 +308,48 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: 评分和评价仪表板
       href: partner-center-portal/ratings-reviews.md
+    - name: 以编程方式访问分析
+      items:
+        - name: 入门
+          href: analytics-get-started.md
+        - name: 以编程方式访问的先决条件
+          href: analytics-prerequisites.md
+        - name: 以编程方式访问的范例
+          href: analytics-programmatic-access.md
+        - name: 进行你的第一次 API 调用
+          href: analytics-make-your-first-api-call.md
+        - name: 系统查询列表
+          href: analytics-system-queries.md
+        - name: 示例查询
+          href: analytics-sample-queries.md
+        - name: 示例应用程序
+          href: analytics-sample-application.md
+        - name: 自定义查询规范
+          href: analytics-custom-query-specification.md
+        - name: 编程分析常见问题解答
+          href: analytics-programmatic-faq.md
+        - name: 分析 API 参考
+          items:
+            - name: API 列表
+              href: analytics-available-apis.md
+            - name: 获取所有数据集
+              href: analytics-api-get-all-datasets.md
+            - name: 获取报表查询 API
+              href: analytics-api-get-report-queries.md
+            - name: 删除报表查询 API
+              href: analytics-api-delete-report-queries.md
+            - name: 试用报表查询 API
+              href: analytics-api-try-report-queries.md
+            - name: 获取报表 API
+              href: analytics-api-get-report.md
+            - name: 更新报表 API
+              href: analytics-api-update-report.md
+            - name: 删除报表 API
+              href: analytics-api-delete-report.md
+            - name: 暂停报表执行 API
+              href: analytics-api-pause-report-executions.md
+            - name: 继续报表执行 API
+              href: analytics-api-resume-report-executions.md
     - name: 管理按流量计费异常
       href: anomaly-detection.md
     - name: 分析常见问题
