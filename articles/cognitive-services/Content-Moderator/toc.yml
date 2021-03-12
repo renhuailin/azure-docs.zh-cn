@@ -5,33 +5,31 @@
   items:
     - name: 什么是内容审查器？
       href: overview.md
+    - name: 语言支持
+      href: language-support.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
       expanded: true
     - name: 新增功能
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 尝试在 Web 上使用内容审查器
-      href: quick-start.md
     - name: 使用客户端库或 REST API
       href: client-libraries.md
-- name: 教程
+    - name: 使用基于 web 的 UI
+      href: quick-start.md
+- name: 示例
   items:
-    - name: 审查电子商务映像
-      href: ecommerce-retail-catalog-moderation.md
-    - name: 审查 Facebook 内容
-      href: facebook-post-moderation.md
-- name: 概念
-  items:
-    - name: 图像审查
-      href: image-moderation-api.md
-    - name: 文本审查
-      href: text-moderation-api.md
-    - name: 视频审查
-      href: video-moderation-human-review.md
-    - name: 审阅工具
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: 审阅、工作流和作业
-      href: review-api.md
+    - name: 示例浏览器
+      href: 'https://docs.microsoft.com/samples/browse/?terms=content%20moderator'
+    - name: .NET SDK 示例
+      href: samples-dotnet.md
+    - name: Python SDK 示例
+      href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+    - name: Node.js SDK 示例
+      href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+    - name: 以 C# 编写的 REST API 示例
+      href: samples-rest.md
 - name: 操作指南
   items:
     - name: 审查内容
@@ -80,47 +78,53 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: 导出或删除帐户数据
       href: ./export-delete-data.md
+    - name: 自定义内容审查器
+      items:
+        - name: 审阅、工作流和作业
+          href: review-api.md
+- name: 概念
+  items:
+    - name: 图像审查
+      href: image-moderation-api.md
+    - name: 文本审查
+      href: text-moderation-api.md
+    - name: 视频审查
+      href: video-moderation-human-review.md
+    - name: 审阅工具
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+- name: 教程
+  items:
+    - name: 审查电子商务映像
+      href: ecommerce-retail-catalog-moderation.md
+    - name: 审查 Facebook 内容
+      href: facebook-post-moderation.md
 - name: 参考
   items:
-    - name: 内容审查器 API
+    - name: 内容审查器 REST API
       href: api-reference.md
-    - name: SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-contentmoderator/
-        - name: Python
-          href: /python/api/overview/azure/cognitiveservices/contentmoderator
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/contentmoderator
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-contentmoderator/
+    - name: Python
+      href: /python/api/overview/azure/cognitiveservices/contentmoderator
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: 资源
   items:
-    - name: 支持和帮助选项
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
-    - name: 示例
-      items:
-        - name: .NET SDK 示例
-          href: samples-dotnet.md
-        - name: Python SDK 示例
-          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
-        - name: Node.js SDK 示例
-          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
-        - name: 以 C# 编写的 REST API 示例
-          href: samples-rest.md
-        - name: 其他 Azure 示例
-          href: /samples/browse/?products=azure&term=content-moderator
     - name: Azure 网络研讨会系列
       href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: 定价和限制
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: 语言支持
-      href: language-support.md
-    - name: 区域可用性
+    - name: 区域支持
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure 路线图
+    - name: Microsoft 学习模式
+      href: 'https://docs.microsoft.com/learn/browse/?terms=content%20moderator'
+    - name: 支持和帮助选项
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure 政府和全球 Azure
+      href: 'https://docs.microsoft.com/en-us/azure/azure-government/compare-azure-government-global-azure'
+    - name: Azure 更新
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

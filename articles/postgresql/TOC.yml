@@ -336,7 +336,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -424,6 +424,8 @@
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: 连接和查询
           items:
+            - name: Azure CLI
+              href: flexible-server/connect-azure-cli.md
             - name: Python
               href: flexible-server/connect-python.md
             - name: Java

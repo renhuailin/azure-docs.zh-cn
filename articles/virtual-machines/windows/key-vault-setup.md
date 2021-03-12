@@ -1,20 +1,19 @@
 ---
 title: 使用 PowerShell 设置 Key Vault
-description: 如何使用 PowerShell 设置与虚拟机一起使用的 Key Vault。
+description: 如何使用 PowerShell 设置用于虚拟机的 Key Vault。
 author: mimckitt
-manager: vashan
 ms.service: virtual-machines
 ms.subservice: security
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: dd4a6ed5f57c536a9e40b2fd81b96d055702b425
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.openlocfilehash: 124ab121186ff7c9047515f2ee1ff51cee1114b8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678315"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557482"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为虚拟机设置 Key Vault
 
