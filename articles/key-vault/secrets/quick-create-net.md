@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d6f1746eee101a1dcf030e980c8a6469147a0166
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362193"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453693"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 机密客户端库 (SDK v4)
 
@@ -21,7 +21,7 @@ ms.locfileid: "100362193"
 
 Key Vault 客户端库资源：
 
-[API 参考文档](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API 参考文档](/dotnet/api/azure.security.keyvault.secrets) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 有关 Key Vault 和机密的详细信息，请参阅：
 - [Key Vault 概述](../general/overview.md)

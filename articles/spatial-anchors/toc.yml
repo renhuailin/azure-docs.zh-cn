@@ -107,6 +107,8 @@
       href: concepts/logging-diagnostics.md
     - name: 粗略重新局部化
       href: concepts/coarse-reloc.md
+    - name: 定位点定位策略
+      href: concepts/anchor-locate-strategy.md
 - name: 参考
   items:
     - name: 适用于 Unity 的 SDK

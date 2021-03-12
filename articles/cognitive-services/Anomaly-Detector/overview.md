@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901362"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572084"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -38,7 +38,7 @@ ms.locfileid: "97901362"
 |实时检测异常。 | 检测流式传输数据中的异常，方法是：使用以前见过的数据点来确定最近的数据点是否异常。 此操作使用发送的数据点生成一个模型，然后确定目标点是否异常。 每生成一个新数据点就调用该 API，这样就可以在创建数据时监视数据。 |
 |以批的形式检测整个数据集中的异常。 | 使用时序来检测数据中可能存在的任何异常。 此操作使用整个时序数据生成一个模型，每个点使用同一模型进行分析。         |
 |以批的形式检测整个数据集中的更改点。 | 使用时序来检测数据中存在的趋势更改点。 此操作使用整个时序数据生成一个模型，每个点使用同一模型进行分析。    |
-| 获取数据的其他信息。 | 获取数据的有用详细信息以及任何观察到的异常，包括预期的值、异常边界和位置。 |
+| 获取数据的其他信息。 | 获取有关数据的有用详细信息以及任何观察到的异常，包括预期的值、异常边界和位置。 |
 | 调整异常检测边界。 | 异常检测器 API 自动创建异常检测的边界。 调整这些边界，以便提高或降低 API 对数据异常的敏感度，并更好地拟合数据。 |
 
 ## <a name="demo"></a>演示
@@ -53,13 +53,13 @@ ms.locfileid: "97901362"
 若要运行此 Notebook，请完成以下步骤：
 
 1. 获取一个有效的异常检测器 API 订阅密钥和一个 API 终结点。 以下部分提供注册说明。
-1. 登录，然后单击右上角的“克隆”。
+1. 登录，然后选择右上角的“克隆”。
 1. 在完成克隆操作之前，请取消选中对话框中的“公共”选项，否则你的笔记本（包括任何订阅密钥）将是公共的。
-1. 单击“在免费计算上运行”
+1. 选择“在免费计算上运行”
 1. 选择其中一个笔记本。
 1. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。
 1. 将 `endpoint` 变量更改为你的终结点。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 单击顶部菜单栏中的“单元格”，然后单击“全部运行”。
+1. 在顶部菜单栏中，依次选择“单元格”、“全部运行”。
 
 ## <a name="workflow"></a>工作流
 
@@ -97,7 +97,7 @@ ms.locfileid: "97901362"
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
-[使用异常检测器容器](anomaly-detector-container-howto.md)在本地部署 API 功能。 借助 Docker 容器，你可使服务更靠近数据，以满足合规性、安全性或其他操作目的。
+[使用异常检测器容器](anomaly-detector-container-howto.md)在本地部署 API 功能。 借助 Docker 容器，你可使服务更靠近数据，以满足符合性、安全性或其他操作目的。
 
 ## <a name="join-the-anomaly-detector-community"></a>加入“异常检测器”社区
 

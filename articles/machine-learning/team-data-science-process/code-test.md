@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: 66853b580ba1b619bf4cc995e05bd3cfaff07cfb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656829"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565863"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
@@ -124,7 +124,7 @@ ms.locfileid: "97656829"
 
     ![模板列表和“空进程”按钮](./media/code-test/start_empty_process_template.PNG)
 
-    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以在这里选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
+    d. 为生成命名并选择代理。 如果需要使用 DSVM 来完成生成过程，可以在这里选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](/azure/devops/pipelines/agents/agents)（生成并发布代理）。
     
     ![生成和代理选择](./media/code-test/select_agent.PNG)
 

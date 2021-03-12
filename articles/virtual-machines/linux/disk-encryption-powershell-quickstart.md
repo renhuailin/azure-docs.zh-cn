@@ -3,17 +3,18 @@ title: 使用 Azure Powershell 创建和加密 Linux VM
 description: 本快速入门介绍如何使用 Azure Powershell 创建和加密 Linux 虚拟机
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32387ed6c124798155b912bc88cd717a30cb264c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1833b25554df53a480af9a8fc643755dbc2bbdb8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89074315"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564673"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>快速入门：在 Azure 中使用 Azure PowerShell 创建和加密 Linux VM
 

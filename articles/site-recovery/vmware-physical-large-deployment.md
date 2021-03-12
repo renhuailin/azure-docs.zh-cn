@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047067"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454341"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 
@@ -214,7 +214,7 @@ ms.locfileid: "89047067"
     - [详细了解](recovery-plan-overview.md)恢复计划。
 2. 将 Azure 自动化 Runbook 脚本添加到恢复计划，以将 Azure 上的任何手动任务自动化。 典型的任务包括配置负载均衡器、更新 DNS，等等。 [了解详细信息](site-recovery-runbook-automation.md)
 2. 在故障转移之前，请准备好 Windows 计算机，使之符合 Azure 环境的条件。 符合条件的计算机的[故障转移限制](#plan-azure-subscriptions-and-quotas)更高。 [详细了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) Runbook。
-4.  结合恢复计划使用 [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) PowerShell cmdlet 触发故障转移。
+4.  结合恢复计划使用 [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob) PowerShell cmdlet 触发故障转移。
 
 
 

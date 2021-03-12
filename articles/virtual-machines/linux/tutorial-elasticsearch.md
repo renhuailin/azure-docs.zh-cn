@@ -1,24 +1,25 @@
 ---
 title: 在 Azure 中的开发虚拟机上部署 Elasticsearch
 description: 教程 - 在 Azure 中的开发 Linux VM 上安装 Elastic Stack
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
 tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 54ef051b7d8778e2eecd85bef2e57b62239ba114
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435294"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557805"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -41,7 +42,7 @@ ms.locfileid: "96435294"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
