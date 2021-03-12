@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: ea7524b32b7637aa7c36308f8b869aa5207c08a2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: b73e7f8c13f621bc359a2ae79a725829420a3ecc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334406"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455548"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -68,9 +68,9 @@ ms.locfileid: "93334406"
 
 使用以下 PowerShell cmdlet：
 
-* [启用高级威胁防护](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [获取高级威胁防护](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
-* [禁用高级威胁防护](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [启用高级威胁防护](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+* [获取高级威胁防护](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+* [禁用高级威胁防护](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ### <a name="arm-template"></a>[ARM 模板](#tab/arm-template)
 

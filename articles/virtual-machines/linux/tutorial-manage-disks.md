@@ -2,19 +2,19 @@
 title: 教程 - 使用 Azure CLI 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure CLI 为虚拟机创建和管理 Azure 磁盘
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 948a4ae8c329d69e404ef8d0f609748b955b0ecc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 202125dfa1cd2760695672fb948fb47bfc3ca0c9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078843"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564639"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -33,9 +33,9 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 
 创建 Azure 虚拟机后，将自动向此虚拟机附加两个磁盘。
 
-**操作系统磁盘** - 操作系统磁盘大小可达 2 TB，并可托管 VM 操作系统。 默认情况下，OS 磁盘标记为“/dev/sda”。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应该用于应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本教程后面会对其进行详细介绍。
+**操作系统磁盘** - 操作系统磁盘大小可达 2 TB，并可托管 VM 操作系统。 默认情况下，OS 磁盘标记为“/dev/sda”  。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 由于此配置，OS 磁盘不应该用于应用程序或数据。 对于应用程序和数据，请使用数据磁盘，本教程后面会对其进行详细介绍。
 
-临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘标记为“/dev/sdb”，且装载点为 /mnt。
+临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 VM 大小决定。 临时磁盘标记为“/dev/sdb”  ，且装载点为 /mnt  。
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 
