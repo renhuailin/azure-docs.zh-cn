@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: 将表单识别器与 AI Builder 搭配使用
       href: tutorial-ai-builder.md
+    - name: 集合使用表单识别器和 Azure Functions
+      href: tutorial-azure-function.md
     - name: 批量提取窗体数据
       href: tutorial-bulk-processing.md
 - name: 概念

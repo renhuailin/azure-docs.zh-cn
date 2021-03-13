@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3c908fffe93d657662310d4e91ed25ae28ca6908
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429086"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501118"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 设置 Azure 证明
 
-请按照以下步骤使用 Azure PowerShell 设置和配置证明提供程序。 要了解如何安装和运行 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/?view=azps-2.8.0&viewFallbackFrom=azps-2.4.0)。
+请按照以下步骤使用 Azure PowerShell 设置和配置证明提供程序。 要了解如何安装和运行 Azure PowerShell，请参阅 [Azure PowerShell 概述](/powershell/azure/)。
 
 请注意，PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。 建议使用 TLS 1.2 或更高版本。 因此可能会收到以下错误：
 
@@ -226,7 +226,7 @@ Remove-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $
 
 有关策略签名者证书示例，请参阅[策略签名者证书的示例](policy-signer-examples.md)。
 
-有关 cmdlet 及其参数的详细信息，请参阅 [Azure 证明 PowerShell cmdlet](/powershell/module/az.attestation/?view=azps-4.3.0#attestation) 
+有关 cmdlet 及其参数的详细信息，请参阅 [Azure 证明 PowerShell cmdlet](/powershell/module/az.attestation/#attestation) 
 
 ## <a name="next-steps"></a>后续步骤
 
