@@ -2,25 +2,41 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: 439a75907ccdc6d2f1af4f2a3d9fc951bdd6307d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 02/25/2021
+ms.openlocfilehash: f8c15b1236d15c193638842ce4dab7e81cd70ace
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947140"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184200"
 ---
 本指南提供说明和示例代码，以帮助你开始使用适用于 Go 的自定义视觉客户端库来构建对象检测模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
 > [!NOTE]
 > 若要在不编写代码的情况下构建和训练对象检测模型，请改为参阅[基于浏览器的指南](../../get-started-build-detector.md)。
 
+使用适用于 Go 的自定义视觉客户端库可以：
+
+* 创建新的自定义视觉项目
+* 将标记添加到项目中
+* 上传和标记图像
+* 定型项目
+* 发布当前迭代
+* 测试预测终结点
+
+参考文档 [（训练）](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training) [（预测）](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)| 库源代码 [（训练）](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/customvision/training) [（预测）](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.1/customvision/prediction) 
+
 ## <a name="prerequisites"></a>先决条件
 
-- [Go 1.8+](https://golang.org/doc/install)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* [Go 1.8+](https://golang.org/doc/install)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="创建自定义视觉资源"  target="_blank">创建自定义视觉资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以创建训练和预测资源并获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到自定义视觉。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
-## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
+## <a name="setting-up"></a>设置
+
+### <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
 若要使用适用于 Go 的自定义视觉来编写图像分析应用，需要自定义视觉服务客户端库。 在 PowerShell 中运行以下命令：
 
@@ -33,15 +49,12 @@ go get -u github.com/Azure/azure-sdk-for-go/...
 dep ensure -add github.com/Azure/azure-sdk-for-go
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
 
 [!INCLUDE [python-get-images](../../includes/python-get-images.md)]
 
-## <a name="add-the-code"></a>添加代码
-
-在首选项目目录中创建名为 sample.go 的新文件。
-
 ## <a name="create-the-custom-vision-project"></a>创建自定义视觉项目
+
+在首选的项目目录中创建名为 sample.go 的新文件，并在首选的代码编辑器中将其打开。
 
 将以下代码添加到脚本中以创建新的自定义视觉服务项目。 在适当的定义中插入订阅密钥。 另外，从自定义视觉网站的“设置”页面获取终结点 URL。
 
