@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: ef2d0eb409cbef2fdd3579ae5e8b409e24bdda2f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592035"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101735958"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -55,43 +55,9 @@ ms.locfileid: "99592035"
 
 ## <a name="include-the-azure-remote-rendering-package"></a>包括 Azure 远程渲染包
 
-需要修改位于 Unity 项目文件夹中的 `Packages/manifest.json` 文件。 在文本编辑器中打开此文件，然后将以下行添加到清单顶部：
+[按照说明](../../../how-tos/unity/install-remote-rendering-unity-package.md)将 Azure 远程渲染包添加到 Unity 项目。
 
-```json
-{
-    "scopedRegistries": [
-    {
-        "name": "Azure Mixed Reality Services",
-        "url": "https://api.bintray.com/npm/microsoft/AzureMixedReality-NPM/",
-        "scopes": ["com.microsoft.azure"]
-    }
-    ],
-    "dependencies": {
-        "com.unity.render-pipelines.universal": "7.3.1",
-        "com.microsoft.azure.remote-rendering": "0.1.31",
-        ...existing dependencies...
-    }
-}
-```
 
-修改并保存清单后，Unity 将自动刷新。 在“项目”窗口中确认包已加载：
-
-:::image type="content" source="./media/confirm-packages.png" alt-text="确认包导入":::
-
-如果包未加载，检查 Unity 控制台中是否存在错误。 如果没有任何错误，但在 Packages 文件夹下仍然看不到任何包，请检查包可见性切换按钮。\
-![屏幕截图，其中箭头指向“包可见性”切换按钮。](./media/unity-package-visibility.png)
-
-## <a name="ensure-you-have-the-latest-version-of-the-package"></a>确保已安装最新版本的包
-
-以下步骤确保项目使用的是最新版本的远程渲染包。
-
-1. 在 Unity 编辑器的顶部菜单中，打开“窗口”->“包管理器”。
-1. 选择包“Microsoft Azure 远程渲染”。
-1. 在 Microsoft Azure 远程渲染包的包管理器页上，查看更新按钮是否可用 。 如果可用，请单击此按钮以将包更新到最新可用版本：\
-![包管理器中的 ARR 包](./media/package-manager.png)
-1. 更新包有时可能会导致控制台错误。 如果出错，请尝试关闭再重新打开项目。
-1. 当包为最新版本时，包管理器将显示“最新”而不是“更新”按钮。\
-![最新包](./media/package-up-to-date.png)
 ## <a name="configure-the-camera"></a>配置相机
 
 1. 选择“主相机”节点。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545932"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424540"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -48,7 +48,7 @@ ms.locfileid: "100545932"
 
 下面是建筑方案 AdtSampleApp 示例应用实现的组件：
 * 设备身份验证 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用法示例（参见 CommandLoop.cs）
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 用法示例（参见 CommandLoop.cs）
 * 调用 Azure 数字孪生 API 的控制台接口
 * SampleClientApp - Azure 数字孪生解决方案示例
 * SampleFunctionsApp - Azure Functions 应用，可将 Azure 数字孪生图更新为来自 IoT 中心和 Azure 数字孪生事件的遥测结果
@@ -107,7 +107,7 @@ Query
 
 在发布应用之前，最好确保依赖项是最新版本，以确保具有所有包含的包的最新版本。
 
-在“解决方案资源管理器”窗格中，展开“SampleFunctionsApp”>“依赖项” 。 右键选择“包”，并选择“管理 NuGet 包...” 。
+在“解决方案资源管理器”窗格中，展开“SampleFunctionsApp”>“依赖项”。 右键选择“包”，并选择“管理 NuGet 包...” 。
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio：管理 SampleFunctionsApp 项目的 NuGet 包" border="false":::
 
@@ -133,13 +133,15 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 输出是 Azure 函数的设置列表，其中现在应包含一个名为 ADT_SERVICE_URL 的条目。
 
-使用以下命令创建系统管理的标识。 记下输出中的 principalId 字段。
+使用以下命令创建系统管理的标识。 查找输出中的 principalId 字段。
 
 ```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在以下命令的输出中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色 ：
+在以下命令的输出中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -269,7 +271,10 @@ deviceConnectionString = <your-device-connection-string>
 ObserveProperties thermostat67 Temperature
 ```
 
-你应该会看到来自 Azure 数字孪生实例的实时更新温度正在每隔 10 秒就记录到控制台中。
+你应该会看到来自 Azure 数字孪生实例的实时更新温度每 2 秒被记录到控制台中一次。
+
+>[!NOTE]
+> 可能需要几秒钟才能将设备中的数据传播到孪生体。 在数据开始到达之前，前几个温度读数可能显示为 0。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="控制台输出，其中显示来自数字孪生 thermostat67 的温度消息日志":::
 
@@ -327,7 +332,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="终结点的查询结果，其中显示 provisioningState 为 Succeeded":::
 
-保存提供给事件网格主题和 Azure 数字孪生中事件网格终结点的名称。 稍后你将用到它们。
+保存提供给事件网格主题和 Azure 数字孪生中事件网格终结点的名称。  稍后你将用到它们。
 
 ### <a name="set-up-route"></a>设置路由
 
@@ -346,7 +351,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 接下来，请将 ProcessDTRoutedData Azure 函数订阅到前面创建的事件网格主题，让遥测数据可以通过事件网格主题从 thermostat67 孪生流向该函数，该函数会返回到 Azure 数字孪生并相应地更新 room21  。
 
-为此，你需要从事件网格主题中创建对 ProcessDTRoutedData Azure 函数的订阅作为终结点。
+为此，你将创建一个事件网格订阅，使其将来自你之前创建的事件网格主题的数据发送到 ProcessDTRoutedData Azure 函数。 
 
 在 [Azure 门户](https://portal.azure.com/)中，导航到事件网格主题，方法是在顶部搜索栏中搜索其名称。 选择“+ 事件订阅”。
 
@@ -381,7 +386,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-你应该会看到来自 Azure 数字孪生实例的实时更新温度正在每隔 10 秒就记录到控制台中。 注意，room21 的温度正在更新，以匹配 thermostat67 的更新 。
+你应该会看到来自 Azure 数字孪生实例的实时更新温度每 2 秒被记录到控制台中一次。 注意，room21 的温度正在更新，以匹配 thermostat67 的更新 。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="控制台输出，其中显示来自温控设备和房间的温度消息日志":::
 
@@ -403,9 +408,9 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) 来删除要移除的元素。
+* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/ext/azure-iot/dt) 来删除要移除的元素。
 
-    此选项不会删除在本教程中创建的任何其他 Azure 资源（IoT 中心、Azure Functions 应用等）。 可以使用适用于每种资源类型的 [dt 命令](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)分别删除这些资源。
+    此选项不会删除在本教程中创建的任何其他 Azure 资源（IoT 中心、Azure Functions 应用等）。 可以使用适用于每种资源类型的 [dt 命令](/cli/azure/reference-index)分别删除这些资源。
 
 你可能还需要从本地计算机中删除项目文件夹。
 

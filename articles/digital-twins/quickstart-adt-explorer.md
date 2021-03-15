@@ -1,24 +1,24 @@
 ---
 title: 快速入门 - 探索示例方案
 titleSuffix: Azure Digital Twins
-description: 快速入门 - 使用 ADT Explorer 示例直观显示和探索预生成方案。
+description: 快速入门 - 使用 Azure Digital Twins Explorer 示例直观显示和探索预生成方案。
 author: baanders
 ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575666"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434193"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入门 - 使用 ADT Explorer 探索示例 Azure 数字孪生方案
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>快速入门 - 使用 Azure Digital Twins Explorer 探索示例 Azure 数字孪生方案
 
 通过 Azure 数字孪生，可创建真实环境的实时模型并与之交互。 首先，将单个元素建模为“数字孪生”。 然后将它们连接到一个知识图，该图可以响应实时事件并查询信息。
 
-在本快速入门中，你将通过名为 [Azure 数字孪生 (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 的示例应用程序来探索预生成的 Azure 数字孪生图形。 使用 ADT Explorer 可以执行以下操作：
+在本快速入门中，你将通过名为 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) 的示例应用程序来探索预生成的 Azure 数字孪生图形。 可使用 Azure Digital Twins Explorer 完成以下操作：
 
 - 上传环境的数字表示形式。
 - 查看为表示 Azure 数字孪生中的环境而创建的孪生和图的可视图像。
@@ -26,7 +26,7 @@ ms.locfileid: "99575666"
 
 本快速入门包含以下主要步骤：
 
-1. 设置 Azure 数字孪生实例和 ADT Explorer。
+1. 设置 Azure 数字孪生实例和 Azure Digital Twins Explorer。
 1. 上传预生成的模型和图形数据来构造示例方案。
 1. 探索已创建的方案图形。
 1. 对图形进行更改。
@@ -41,11 +41,11 @@ ms.locfileid: "99575666"
 
 还需要在计算机上有 Node.js。 若要获取最新版本，请参阅 [Node.js](https://nodejs.org/)。
 
-最后，还需要下载要在快速入门期间使用的示例. 示例应用程序是 ADT Explorer。 此示例包含快速入门中用于加载和探索 Azure 数字孪生方案的应用。 它还包含示例方案文件。 若要获取示例，请转到 [Azure 数字孪生 (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 选择“下载 ZIP”按钮，将此示例代码的 .zip 文件下载到计算机。 解压缩 Azure_Digital_Twins__ADT__explorer.zip 文件夹，并提取文件。
+最后，还需要下载要在快速入门期间使用的示例. 示例应用程序是 Azure Digital Twins Explorer。 此示例包含快速入门中用于加载和探索 Azure 数字孪生方案的应用。 它还包含示例方案文件。 若要获取示例，请转到 [Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)。 选择“下载 ZIP”按钮，将此示例代码的 .zip 文件下载到计算机。 解压缩 Azure_Digital_Twins__ADT__explorer.zip 文件夹，并提取文件。
 
-## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>设置 Azure 数字孪生和 ADT 资源管理器
+## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>设置 Azure 数字孪生和 Azure Digital Twins Explorer
 
-要使用 Azure 数字孪生，第一步是设置 Azure 数字孪生实例。 创建服务的实例并设置凭据以向 ADT Explorer 进行身份验证后，可以在 ADT Explorer 中连接到该实例，并且稍后可在快速入门中使用示例数据填充该实例。
+要使用 Azure 数字孪生，第一步是设置 Azure 数字孪生实例。 创建服务的实例并设置凭据以向 Azure Digital Twins Explorer 进行身份验证后，可以在 Azure Digital Twins Explorer 中连接到该实例，并且稍后可在快速入门中使用示例数据填充该实例。
 
 本部分的其余部分将指导你完成这些步骤。
 
@@ -55,26 +55,26 @@ ms.locfileid: "99575666"
 
 ### <a name="set-up-local-azure-credentials"></a>设置本地 Azure 凭据
 
-当你在本地计算机上运行示例时，ADT Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet)（属于 `Azure.Identity` 库的一部分）对用户进行 Azure 数字孪生实例验证。 若要详细了解客户端应用可向 Azure 数字孪生进行身份验证的不同方法，请参阅[编写应用身份验证代码](how-to-authenticate-client.md)。
+当你在本地计算机上运行示例时，Azure Digital Twins Explorer 应用程序使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)（属于 `Azure.Identity` 库的一部分）对用户进行 Azure 数字孪生实例验证。 若要详细了解客户端应用可向 Azure 数字孪生进行身份验证的不同方法，请参阅[编写应用身份验证代码](how-to-authenticate-client.md)。
 
-借助此身份验证类型，ADT Explorer 将在本地环境中搜索凭据，如本地 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 或 Visual Studio 或 Visual Studio Code 中的 Azure 登录名。 因此，你应该通过这些机制之一在本地登录 Azure，以便设置 ADT Explorer 应用的凭据。
+借助此身份验证类型，Azure Digital Twins Explorer 将在本地环境中搜索凭据，如本地 [Azure CLI](/cli/azure/install-azure-cli) 或 Visual Studio 或 Visual Studio Code 中的 Azure 登录名。 因此，你应该通过这些机制之一在本地登录 Azure，以便设置 Azure Digital Twins Explorer 应用的凭据。
 
-如果已通过其中一种方式登录到 Azure，则可以跳到[下一部分](#run-and-configure-adt-explorer)。
+如果已通过其中一种方式登录到 Azure，则可以跳到[下一部分](#run-and-configure-azure-digital-twins-explorer)。
 
 否则，可以使用以下步骤安装本地 Azure CLI：
 
-1. 按照[此安装链接](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)上的过程进行操作，完成与你的操作系统相匹配的安装。
+1. 按照[此安装链接](/cli/azure/install-azure-cli)上的过程进行操作，完成与你的操作系统相匹配的安装。
 1. 在计算机上打开控制台窗口。
 1. 运行 `az login` 并按照身份验证提示操作以登录到 Azure 帐户。
 1. 可能执行的最后一步：如果在此帐户下使用多个 Azure 订阅，请运行 `az account set --subscription "<your-subscription-name-or-ID>"` 来将身份验证上下文设置为包含 Azure 数字孪生实例的 Azure 订阅（订阅的名称或 ID 值也有效）。
 
-登录后，在下一部分中运行 ADT Explorer 时，它会自动获取 Azure 凭据。
+登录后，在下一部分中运行 Azure Digital Twins Explorer 时，它会自动获取 Azure 凭据。
 
 如果需要，可以关闭身份验证控制台窗口。 或者，可以使其保持打开状态以供下一步使用。
 
-### <a name="run-and-configure-adt-explorer"></a>运行并配置 ADT 资源管理器
+### <a name="run-and-configure-azure-digital-twins-explorer"></a>运行和配置 Azure Digital Twins Explorer
 
-接下来，运行 ADT 资源管理器应用程序，并为 Azure 数字孪生实例配置该应用程序。
+接下来，运行 Azure Digital Twins Explorer 应用程序，并为 Azure 数字孪生实例配置该应用程序。
 
 1. 转到已下载并解压缩的 Azure_Digital_Twins__ADT__explorer 文件夹。
 在文件夹位置 Azure_Digital_Twins__ADT__explorer/client/src 打开控制台窗口。
@@ -85,11 +85,11 @@ ms.locfileid: "99575666"
 
    几秒钟后，将打开一个浏览器窗口，应用将显示在浏览器中。
 
-   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 ADT Explorer，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="显示在 localhost:3000 运行的应用的浏览器窗口。此应用名为 Azure Digital Twins Explorer，其中包含查询资源管理器、模型视图、图形视图和属性资源管理器所对应的框。屏幕上尚无数据。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-1. 选择窗口右上角的“登录”按钮（如下图所示），以将 ADT Explorer 配置为使用已设置的实例。
+1. 选择窗口右上角的“登录”按钮（如下图所示），以将 Azure Digital Twins Explorer 配置为使用已设置的实例。
 
-   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="在窗口顶部附近突出显示“登录”图标的 ADT 资源管理器。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="在窗口顶部附近突出显示“登录”图标的 Azure Digital Twins Explorer。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 1. 输入之前在[设置 Azure 数字孪生实例](#set-up-an-azure-digital-twins-instance)部分中收集的 Azure 数字孪生实例 URL，格式为 https://{instance host name}。
 
@@ -103,7 +103,7 @@ ms.locfileid: "99575666"
 
 ## <a name="add-the-sample-data"></a>添加示例数据
 
-接下来，需要将把示例方案和图形导入到 ADT Explorer 中。 还可在你先前下载的 Azure_Digital_Twins__ADT__explorer 文件夹中找到该示例方案。
+接下来，需要将把示例方案和图形导入到 Azure Digital Twins Explorer 中。 还可在你先前下载的 Azure_Digital_Twins__ADT__explorer 文件夹中找到该示例方案。
 
 ### <a name="models"></a>模型
 
@@ -138,7 +138,7 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 >如果出现下面的错误消息：:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="弹出框显示“错误”：提取模型时出错:ClientAuthError:打开弹出窗口时出错。如果你使用的是 IE 或浏览器中阻止了弹出窗口，则可能会发生这种情况。”，底部带有“关闭”按钮。" border="false"::: 
 > 请尝试禁用弹出窗口阻止程序或使用其他浏览器。
 
-现在，ADT Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型视图”框中显示，并显示其友好名称和完整模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
+现在，Azure Digital Twins Explorer 会将这些模型文件上传到 Azure 数字孪生实例。 它们应在“模型视图”框中显示，并显示其友好名称和完整模型 ID。 可选择“查看模型”信息图标，查看其后面的 DTDL 代码。
 
 :::row:::
     :::column:::
@@ -173,7 +173,7 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
 
 2. 在“文件选择器”框中，转到 Azure_Digital_Twins__ADT__explorer/client/examples 文件夹，然后选择 buildingScenario.xlsx 电子表格文件 。 此文件包含示例图的说明。 选择“确定”。
 
-   几秒钟后，ADT Explorer 将打开“导入”视图，其中显示了要加载的图形的预览。
+   几秒钟后，Azure Digital Twins Explorer 将打开“导入”视图，其中显示了要加载的图形的预览。
 
 3. 若要确认图形上传，请选择“图形视图”框右上角的“保存”图标 。
 
@@ -185,7 +185,7 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
     :::column-end:::
    :::row-end:::
 
-4. 现在，ADT Explorer 将使用上传的文件来创建所请求的孪生及其相互之间的关系。 完成后，将出现一个对话框。 选择“关闭”。
+4. 现在，Azure Digital Twins Explorer 将使用上传的文件来创建所请求的孪生及其相互之间的关系。 完成后，将出现一个对话框。 选择“关闭”。
 
    :::row:::
     :::column:::
@@ -197,11 +197,11 @@ Azure 数字孪生解决方案的第一步是为你的环境定义词汇。 你�
     :::column-end:::
    :::row-end:::
 
-5. 该图现在已上传到 ADT 资源管理器。 若要查看该图，请在 ADT Explorer 窗口顶部附近的“Graph 浏览器”框中选择“运行查询”按钮 。
+5. 该图现在已上传到 Azure Digital Twins Explorer。 若要查看该图，请在 Azure Digital Twins Explorer 窗口顶部附近的“Graph 浏览器”框中选择“运行查询”按钮 。
 
    :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="突出显示了窗口右上角的“运行查询”按钮。" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
-该操作将运行默认查询以选择并显示所有数字孪生。 ADT Explorer 将从服务中检索所有孪生和关系。 它将在“图形视图”框中绘制它们定义的图形。
+该操作将运行默认查询以选择并显示所有数字孪生。 Azure Digital Twins Explorer 将从服务中检索所有孪生和关系。 它将在“图形视图”框中绘制它们定义的图形。
 
 ## <a name="explore-the-graph"></a>浏览图
 
@@ -262,7 +262,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="edit-data-in-the-graph"></a>编辑图中的数据
 
-可使用 ADT 资源管理器来编辑图中表示的孪生的属性。 在本部分中，我们将 Room0 的温度调高到 76。
+可使用 Azure Digital Twins Explorer 来编辑图中表示的孪生的属性。 在本部分中，我们将 Room0 的温度调高到 76。
 
 首先，请选择“Room0”，然后在“属性资源管理器”框中调出其属性列表 。
 
@@ -290,7 +290,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="review-and-contextualize-learnings"></a>回顾所学内容并将其置于上下文中进行理解
 
-在本快速入门中，你创建了一个 Azure 数字孪生实例、将它连接到了 ADT 资源管理器，并使用示例方案对其进行了填充。
+在本快速入门中，你创建了一个 Azure 数字孪生实例、将它连接到了 Azure Digital Twins Explorer，并使用示例方案对其进行了填充。
 
 然后，你探索了图，方法是：
 
@@ -304,7 +304,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要结束本快速入门的工作，请先结束正在运行的控制台应用。 此操作将关闭与浏览器中 ADT Explorer 应用的连接。 你将无法在浏览器中查看实时数据。 你可关闭浏览器标签页。
+若要结束本快速入门的工作，请先结束正在运行的控制台应用。 此操作将关闭与浏览器中 Azure Digital Twins Explorer 应用的连接。 你将无法在浏览器中查看实时数据。 你可关闭浏览器标签页。
 
 然后，可选择想要删除的资源，这具体取决于你接下来要执行哪些操作。
 
