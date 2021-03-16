@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: a4536f0dd40e1d0ee3a5ca75db9b111dcfa0ad6f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 197dfa6a33e3a91a4d5717746629a667c5518b05
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214892"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506916"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -26,7 +26,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 如果计划使用 Azure 虚拟网络来保护 Azure ML 工作区与 AKS 群集之间的通信，请阅读[训练和推理期间的网络隔离](./how-to-network-security-overview.md)一文。
 
@@ -70,7 +70,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
     - [手动缩放 AKS 群集中的节点计数](../aks/scale-cluster.md)
     - [在 AKS 中设置群集自动缩放程序](../aks/cluster-autoscaler.md)
 
-- __不要使用 YAML 配置直接更新群集__。 虽然 Azure Kubernetes 服务通过 YAML 配置支持更新，但 Azure 机器学习部署将覆盖你的更改。 唯一不会覆盖的两个 YAML 字段为 __请求限制__ 和 __cpu 和内存__。
+- __不要使用 YAML 配置直接更新群集__。 虽然 Azure Kubernetes 服务支持通过 YAML 配置进行更新，但 Azure 机器学习部署将覆盖更改。 唯一不会覆盖的两个 YAML 字段为 request limits 和 cpu and memory 。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes 服务版本
 
@@ -93,7 +93,7 @@ Azure Kubernetes 服务允许使用各种 Kubernetes 版本创建群集。 有�
 
 ### <a name="available-and-default-versions"></a>可用版本和默认版本
 
-若要查找可用的和默认的 AKS 版本，请使用 [Azure CLI](/cli/azure/install-azure-cli) 命令 [az aks get-versions](/cli/azure/aks#az_aks_get_versions)。 例如，以下命令返回美国西部区域中提供的版本：
+若要查找可用的和默认的 AKS 版本，请使用 [Azure CLI](/cli/azure/install-azure-cli) 命令 [az aks get-versions](/cli/azure/aks#az_aks_get_versions)。 例如，以下命令返回美国西部区域中可用的版本：
 
 ```azurecli-interactive
 az aks get-versions -l westus -o table
@@ -187,10 +187,10 @@ aks_target.wait_for_completion(show_output = True)
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
-* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
-* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose)
+* [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -210,7 +210,7 @@ az ml computetarget create aks -n myaks
 
 时间估计：大约 5 分钟。
 
-如果 Azure 订阅中已有 AKS 群集，则可将其用于工作区。
+如果 Azure 订阅中已有 AKS 群集，则可以将其与工作区配合使用。
 
 > [!TIP]
 > 现有的 AKS 群集除了位于 Azure 机器学习工作区，还可位于 Azure 区域中。
@@ -219,7 +219,7 @@ az ml computetarget create aks -n myaks
 > [!WARNING]
 > 请勿在工作区中为同一 AKS 群集创建多个同步附件。 例如，使用两个不同的名称将一个 AKS 群集附加到工作区。 每个新附件都会破坏先前存在的附件。
 >
-> 如果要重新附加 AKS 群集（例如，更改 TLS 或其他群集配置设置），则必须先使用 [AksCompute.detach()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--) 删除现有附件。
+> 如果要重新附加 AKS 群集（例如，更改 TLS 或其他群集配置设置），则必须先使用 [AksCompute.detach()](/python/api/azureml-core/azureml.core.compute.akscompute#detach--) 删除现有附件。
 
 有关如何使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
@@ -251,9 +251,9 @@ aks_target.wait_for_completion(show_output = True)
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
-* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
-* [AksCompute.attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
+* [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose)
+* [AksCompute.attach](/python/api/azureml-core/azureml.core.compute.computetarget#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -283,10 +283,10 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
-## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>使用 TLS 终止创建或附加 AKS 群集
-[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 配置对象来启用 TLS 终止。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>使用“TLS 终止”创建或附加 AKS 群集
+[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
 
-以下示例演示了如何通过在后台使用 Microsoft 证书，使用自动 TLS 证书生成和配置来启用 TLS 终止。
+以下示例演示了如何在后台使用 Microsoft 证书通过自动 TLS 证书生成和配置来启用 TLS 终止。
 ```python
    from azureml.core.compute import AksCompute, ComputeTarget
    
@@ -306,7 +306,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 
 ```
-以下示例演示如何使用自定义证书和自定义域名启用 TLS 终止。 对于自定义域和证书，你必须更新你的 DNS 记录，使其指向计分终结点的 IP 地址，请参阅 [更新你的 dns](how-to-secure-web-service.md#update-your-dns)
+以下示例演示如何使用自定义证书和自定义域名来启用 TLS 终止。 使用自定义域和证书时，需要更新 DNS 记录，使其指向评分终结点的 IP 地址，请参阅[更新 DNS](how-to-secure-web-service.md#update-your-dns)
 
 ```python
    from azureml.core.compute import AksCompute, ComputeTarget
@@ -324,10 +324,10 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ```
 >[!NOTE]
-> 有关如何在 AKS 群集上保护模型部署的详细信息，请参阅 [使用 TLS 通过 Azure 机器学习保护 web 服务](how-to-secure-web-service.md)
+> 有关如何在 AKS 群集上确保模型部署安全的详细信息，请参阅[使用 TLS 通过 Azure 机器学习确保 Web 服务安全](how-to-secure-web-service.md)
 
-## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>创建或附加 AKS 群集以使用带有专用 IP 的内部负载均衡器
-创建或附加 AKS 群集时，可以将群集配置为使用内部负载均衡器。 使用内部负载均衡器时，将部署到 AKS 的评分终结点将在虚拟网络中使用专用 IP。 以下代码片段演示了如何为 AKS 群集配置内部负载均衡器。
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>创建或附加 AKS 群集以使用具有专用 IP 的内部负载均衡器
+创建或附加 AKS 群集时，可以将群集配置为使用内部负载均衡器。 使用内部负载均衡器时，部署到 AKS 的评分终结点会在虚拟网络中使用专用 IP。 以下代码片段演示了如何为 AKS 群集配置内部负载均衡器。
 ```python
    
    from azureml.core.compute.aks import AksUpdateConfiguration
@@ -350,10 +350,10 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
    
 ```
 >[!IMPORTANT]
-> Azure 机器学习不支持对内部负载均衡器进行 TLS 终止。 内部负载均衡器有一个专用 IP，并且该专用 IP 可以在另一个网络上，并且可以 recused 证书。 
+> Azure 机器学习不支持使用内部负载均衡器的 TLS 终止。 内部负载均衡器有一个专用 IP，该专用 IP 可以在另一个网络上，并且可以要求撤换证书。 
 
 >[!NOTE]
-> 有关如何保护推断环境的详细信息，请参阅 [secure a Azure 机器学习推断环境](how-to-secure-inferencing-vnet.md)
+> 有关如确保推理环境安全的详细信息，请参阅[确保 Azure 机器学习推理环境安全](how-to-secure-inferencing-vnet.md)
 
 ## <a name="detach-an-aks-cluster"></a>拆离 AKS 群集
 

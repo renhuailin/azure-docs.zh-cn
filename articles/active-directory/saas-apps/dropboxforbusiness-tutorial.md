@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c5bdab2038f2f41c7240addaff99bd831d29f489
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d4c9d2e290f6a8f07878a019b755c8add2ab69ea
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643807"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488359"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教程：将 Dropbox Business 与 Azure Active Directory 集成
 
@@ -38,9 +38,9 @@ ms.locfileid: "101643807"
 
 ## <a name="scenario-description"></a>方案描述
 
-* 本教程在测试环境中配置并测试 Azure AD SSO。 Dropbox Business 支持 SP 发起的 SSO
+* 本教程在测试环境中配置并测试 Azure AD SSO。 Dropbox Business 支持 SP 发起的 SSO。
 
-* Dropbox Business 支持[自动用户预配和取消预配](dropboxforbusiness-tutorial.md)
+* Dropbox Business 支持[自动用户预配和取消预配](dropboxforbusiness-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -82,13 +82,13 @@ ms.locfileid: "101643807"
 1. 在“基本 SAML 配置”页上，输入以下字段的值  ：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.dropbox.com/sso/<id>` 
-
-    b. 在“标识符(实体 ID)”文本框中，键入值：`Dropbox`
-
+    
+     b. 在“标识符(实体 ID)”文本框中，键入值：`Dropbox`
+    
     > [!NOTE]
-    > 上面的登录 URL 值不是实际值。 需使用实际登录 URL 更新该值（本教程稍后将会介绍）。
+    > Dropbox Sign SSO ID 可在 Dropbox 站点找到：“Dropbox”>“管理控制台”>“设置”>“单一登录”>“SSO 登录 URL”。
 
-1. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -137,23 +137,23 @@ ms.locfileid: "101643807"
 
 4. 单击“用户”图标并选择“设置”选项卡。
 
-    ![显示已选择“用户图标”操作和“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure1.png "配置单一登录")
+    ![显示已选择“用户图标”操作和“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure-1.png "配置单一登录")
 
 5. 在左侧导航窗格中，单击“管理控制台”。
 
-    ![显示已选择“管理控制台”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure2.png "配置单一登录")
+    ![显示已选择“管理控制台”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure-2.png "配置单一登录")
 
 6. 在“管理控制台”上，单击左侧导航窗格中的“设置”。
 
-    ![显示已选择“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure3.png "配置单一登录")
+    ![显示已选择“设置”的屏幕截图。](./media/dropboxforbusiness-tutorial/configure-3.png "配置单一登录")
 
 7. 选择“身份验证”部分下的“单一登录”选项 。
 
-    ![显示“身份验证”部分的屏幕截图，其中选择了“单一登录”。](./media/dropboxforbusiness-tutorial/configure4.png "配置单一登录")
+    ![显示“身份验证”部分的屏幕截图，其中选择了“单一登录”。](./media/dropboxforbusiness-tutorial/configure-4.png "配置单一登录")
 
 8. 在“单一登录”部分中，执行以下步骤：  
 
-    ![显示“单一登录”配置设置的屏幕截图。](./media/dropboxforbusiness-tutorial/configure5.png "配置单一登录")
+    ![显示“单一登录”配置设置的屏幕截图。](./media/dropboxforbusiness-tutorial/configure-5.png "配置单一登录")
 
     a. 在“单一登录”的下拉列表中选择“必选”选项 。
 
@@ -174,7 +174,7 @@ ms.locfileid: "101643807"
 >[!Note]
 >如需手动创建用户，请联系 [Dropbox Business 客户端支持团队](https://www.dropbox.com/business/contact)
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -186,4 +186,4 @@ ms.locfileid: "101643807"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Dropbox Business 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Dropbox Business 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

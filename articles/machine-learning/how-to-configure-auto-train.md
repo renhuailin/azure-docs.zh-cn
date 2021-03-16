@@ -11,17 +11,17 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526460"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498857"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
 
-本指南介绍如何通过 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
+本指南介绍如何通过 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
 
 若要查看自动化机器学习试验的示例，请参阅[教程：使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)或[使用云中的自动化机器学习训练模型](how-to-auto-train-remote.md)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "99526460"
     若要安装该 SDK，你可以： 
     * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。 
 
-    * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK [默认安装](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py#default-install)。
+    * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK [默认安装](/python/api/overview/azure/ml/install#default-install)。
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -65,11 +65,11 @@ automl_config = AutoMLConfig(task = "classification")
 
 自动化机器学习支持驻留在本地桌面上或云中（例如 Azure Blob 存储）的数据。 数据可以读入 Pandas 数据帧或 Azure 机器学习 TabularDataset 中 。 [了解有关数据集的详细信息](how-to-create-register-datasets.md)。
 
-机器学习中对数据定型的要求：
+机器学习中对训练数据的要求：
 - 数据必须为表格格式。
 - 要预测的值（目标列）必须位于数据中。
 
-**对于远程试验**，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)。 
+**对于远程试验**，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset)。 
 
 Azure 机器学习数据集公开的功能可以：
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>训练、验证和测试数据
 
-您可以直接在构造函数中指定单独的 **定型数据和验证数据集** `AutoMLConfig` 。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
+可以直接在 `AutoMLConfig` 构造函数中指定单独的训练数据和验证数据集。 详细了解[如何配置数据拆分和交叉验证](how-to-configure-cross-validation-data-splits.md)（针对 AutoML 试验）。 
 
-如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则自动 ML 会应用默认技术来确定验证的执行方式。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
+如果未显式指定 `validation_data` 或 `n_cross_validation` 参数，则自动化 ML 将应用默认技术来决定如何执行验证。 此决定依赖于分配给 `training_data` 参数的数据集中的行数。 
 
 |训练数据大小| 验证技术 |
 |---|-----|
@@ -203,7 +203,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要指标
 `primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
-选择要优化的自动机器学习的主要指标取决于许多因素。 我们建议你在选择最能满足你的业务需求的指标时选择一个指标。 然后考虑指标是否适用于数据集配置文件 (的数据大小、范围、类分布等 ) 。
+选择自动化机器学习要优化的主要指标取决于许多因素。 建议主要考虑选择最能体现业务需求的指标。 然后考虑指标是否适用于数据集配置文件（数据大小、范围、类分布等）。
 
 如需了解上述指标的具体定义，请参阅[了解自动化机器学习结果集](how-to-understand-automated-ml.md)。
 
@@ -217,38 +217,38 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>分类方案的主要指标 
 
-Post thresholded 指标（如 `accuracy` 、 `average_precision_score_weighted` 、 `norm_macro_recall` 和） `precision_score_weighted` 可能不会对非常小的数据集进行优化 (，因此) 的类不平衡，或预期的指标值非常接近0.0 或1.0。 在这些情况下， `AUC_weighted` 可能是主要指标的更好选择。 自动机器学习完成后，可以根据最适合您的业务需求的指标选择入选的模型。
+对于类别偏斜严重（类别不均衡）的小型数据集或预期的指标值非常接近 0.0 或 1.0 时，发布的阈值指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不会进行优化。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
 
-| 指标 | 示例用例 (s)  |
+| 指标 | 示例用例 |
 | ------ | ------- |
-| `accuracy` | 图像分类，情绪分析，流失预测 |
+| `accuracy` | 图像分类、情绪分析、流失预测 |
 | `AUC_weighted` | 欺诈检测、图像分类、异常检测/垃圾邮件检测 |
 | `average_precision_score_weighted` | 情绪分析 |
-| `norm_macro_recall` | 改动预测 |
+| `norm_macro_recall` | 流失预测 |
 | `precision_score_weighted` |  |
 
 ### <a name="primary-metrics-for-regression-scenarios"></a>回归方案的主要指标
 
-`r2_score` `spearman_correlation` 当值预测的规模涵盖许多数量级时，和和等指标可以更好地表示模型的质量。 例如，对于薪金估算，其中许多人的薪水为 $ 20k 到 $ 100k，但在 $ 100M 范围内的某些薪金中，规模会变得非常高。 
+当要预测的值的范围涵盖多个数量级时，`r2_score` 和 `spearman_correlation` 等指标可以更好地体现模型的质量。 例如，在薪水估算中，许多人的薪水在 2 万至 10 万美元之间，但某些人的薪水在 1 亿美元的范围中，这极大地拉大了总量级范围。 
 
-`normalized_mean_absolute_error``normalized_root_mean_squared_error`在这种情况下，这种情况下，将使用 $ 30000 薪金作为工作人员的 $ 20k 预测错误视为具有 $ 20M 的工作人员。 在现实情况下，只预测 $ 20M 薪金中的 $ 20k 是非常接近 (小0.1% 相对差异) ，而从 $ 30000 关闭 $ 20k 不会接近 (67% 相对差异) 。 `normalized_mean_absolute_error``normalized_root_mean_squared_error`当要预测的值采用类似的刻度时，和非常有用。
+在这种情况下，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 会认为 2 万美元的预测误差对于薪水为 3 万美元的工人和薪水为 2000 万美元的工人是没有区别的。 但实际上，在 2000 万美元薪水的基础上增减 2 万美元和增减前的预测应该非常接近（相对差值很小，增减占比 0.1%），而在 3 万美元薪水的基础上增减 2 万美元和增减前的预测应该非常大（相对差值很大，增减占比 67%）。 当要预测的值在相似的量级范围内时，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 会比较有用。
 
-| 指标 | 示例用例 (s)  |
+| 指标 | 示例用例 |
 | ------ | ------- |
 | `spearman_correlation` | |
-| `normalized_root_mean_squared_error` | 价格预测 (房子/产品/tip) ，查看分数预测 |
-| `r2_score` | 航空延迟，薪金估算，Bug 解决时间 |
+| `normalized_root_mean_squared_error` | 价格预测（房屋/产品/小费），查看分数预测 |
+| `r2_score` | 航空延迟、薪金估算、Bug 解决时间 |
 | `normalized_mean_absolute_error` |  |
 
 ### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的主要指标
 
 请参阅上面的回归注释。
 
-| 指标 | 示例用例 (s)  |
+| 指标 | 示例用例 |
 | ------ | ------- |
 | `spearman_correlation` | |
-| `normalized_root_mean_squared_error` | 价格预测 (预测) ，库存优化，需求预测 |
-| `r2_score` | 价格预测 (预测) ，库存优化，需求预测 |
+| `normalized_root_mean_squared_error` | 价格预测（预测）、库存优化、需求预测 |
+| `r2_score` | 价格预测（预测）、库存优化、需求预测 |
 | `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>数据特征化
@@ -272,7 +272,7 @@ Post thresholded 指标（如 `accuracy` 、 `average_precision_score_weighted` 
 
 集成模型默认启用，在 AutoML 运行中显示为最终的运行迭代次数。 目前支持 **VotingEnsemble** 和 **StackEnsemble**。 
 
-投票实现软投票，这种投票使用加权平均值。 堆栈实现使用一个两层实现，其中的第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 
+投票采用使用加权平均值的软投票。 堆栈实现使用一个两层实现，其中的第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 
 
 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，仅使用投票。
 
@@ -412,111 +412,6 @@ run = experiment.submit(automl_config, show_output=True)
 > [!NOTE]
 > 解释客户端目前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回解释仪表板，并且不支持按需解释运行。
 
-## <a name="troubleshooting"></a>疑难解答
-
-* **`AutoML` 依赖项到新版本的最新升级将破坏兼容性**：从 SDK 1.13.0 版开始，模型将不加载到较旧的 SDK 中，这是因为在之前的包中固定的旧版本与现在固定的更新的版本不兼容。 你将看到错误，例如：
-  * 找不到模块：例如 `No module named 'sklearn.decomposition._truncated_svd`
-  * 导入错误：例如 `ImportError: cannot import name 'RollingOriginValidator'`
-  * 属性错误：例如： `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
-  
-  若要解决此问题，请执行下面两个步骤之一，具体取决于你的 `AutoML` SDK 训练版本：
-    * 如果 `AutoML` SDK 训练版本高于 1.13.0，则需要 `pandas == 0.25.1` 和 `scikit-learn==0.22.1`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 升级为正确的版本，如下所示：
-      
-      ```bash
-         pip install --upgrade pandas==0.25.1
-         pip install --upgrade scikit-learn==0.22.1
-      ```
-      
-    * 如果 `AutoML` SDK 训练版本低于或等于 1.12.0，则需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3`。 如果版本不匹配，请将 scikit-learn 和/或 pandas 降级为正确的版本，如下所示：
-  
-      ```bash
-        pip install --upgrade pandas==0.23.4
-        pip install --upgrade scikit-learn==0.20.3
-      ```
-
-* **部署失败**：对于版本低于或等于 1.18.0 的 SDK，为部署创建的基本映像可能会失败，并出现以下错误：“导入错误: 无法从 `werkzeug` 中导入名称 `cached_property`”。 
-
-  以下步骤可解决此问题：
-  1. 下载模型包
-  2. 将包解压缩
-  3. 使用解压缩资产进行部署
-
-* **预测 R2 评分始终为零**：如果提供的训练数据的时间序列包含的值与上一个 `n_cv_splits` + `forecasting_horizon` 数据点相同，则会出现此问题。 如果该模式在你的时间序列中是预期的，可将主要指标切换为标准均方根误差。
- 
-* **TensorFlow**：从 SDK 1.5.0 版开始，自动化机器学习默认不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其用于自动化 ML 试验，请通过 CondaDependecies 安装 tensorflow==1.12.0。 
- 
-   ```python
-   from azureml.core.runconfig import RunConfiguration
-   from azureml.core.conda_dependencies import CondaDependencies
-   run_config = RunConfiguration()
-   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
-  ```
-
-* **试验图表**：自 4 月 12 日以来，自动化 ML 试验迭代中显示的二元分类图表（精准率-召回率、ROC、增益曲线等）在用户界面中无法正常呈现。 绘制的图表目前显示相反的结果：表现更好的模型反而显示更低的结果。 我们研究解决方法。
-
-* **Databricks 取消自动化机器学习运行**：在 Azure Databricks 上使用自动化机器学习功能时，若要取消某个运行并启动新的试验运行，请重启 Azure Databricks 群集。
-
-* **Databricks 自动化机器学习的迭代数超过 10 个**：在自动化机器学习设置中，如果迭代数超过 10 个，请在提交运行时将 `show_output` 设置为 `False`。
-
-* **Databricks Azure 机器学习 SDK 和自动化机器学习的小组件**：Databricks 笔记本不支持 Azure 机器学习 SDK 小组件，因为笔记本无法分析 HTML 小组件。 可以通过在 Azure Databricks 笔记本单元中使用以下 Python 代码，在门户中查看该小组件：
-
-    ```
-    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
-    ```
-* **automl_setup 失败**： 
-    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 点击此链接[安装 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。
-    * 通过运行 `conda info` 命令，确保已安装 conda 64 位而不是 32 位。 对于 Windows，`platform` 应为 `win-64`，对于 Mac，应为 `osx-64`。
-    * 确保已安装 conda 4.4.10 或更高版本。 可以使用命令 `conda -V` 检查该版本。 如果安装了以前的版本，可以使用以下命令对其进行更新：`conda update conda`。
-    * Linux - `gcc: error trying to exec 'cc1plus'`
-      *  如果遇到 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 错误，请使用命令 `sudo apt-get install build-essential` 安装版本要素。
-      * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用 `conda env list` 查看现有的 conda 环境，并使用 `conda env remove -n <environmentname>` 删除它们。
-      
-* **automl_setup_linux.sh 失败**：如果 automl_setup_linus.sh 在 Ubuntu Linux 上失败，并出现错误：`unable to execute 'gcc': No such file or directory`-
-  1. 确保已启用出站端口 53 和 80。 在 Azure VM 上，可选择 VM 并单击“网络”，从 Azure 门户执行此操作。
-  2. 运行命令 `sudo apt-get update`
-  3. 运行命令 `sudo apt-get install build-essential --fix-missing`
-  4. 再次运行 `automl_setup_linux.sh`
-
-* **configuration.ipynb 失败**：
-  * 对于本地 conda，请首先确保 automl_setup 已成功运行。
-  * 确保 subscription_id 是正确的。 依次选择“所有服务”和“订阅”，在 Azure 门户中查找 subscription_id。 字符“<”和“>”不应包含在 subscription_id 值中。 例如，`subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 的格式有效。
-  * 确保参与者或所有者有权访问“订阅”。
-  * 检查该区域是否为受支持的区域之一：`eastus2`、`eastus`、`westcentralus`、`southeastasia`、`westeurope`、`australiaeast`、`westus2`、`southcentralus`。
-  * 确保使用 Azure 门户访问该区域。
-  
-* **`import AutoMLConfig` 失败**：自动化机器学习版本 1.0.76 中存在包更改，这要求先卸载以前的版本，再更新到新版本。 如果从 v1.0.76 之前的 SDK 版本升级到 v1.0.76 或更高版本后遇到 `ImportError: cannot import name AutoMLConfig`，请先运行 `pip uninstall azureml-train automl` 再运行 `pip install azureml-train-auotml` 来解决该错误。 automl_setup.cmd 脚本会自动执行此操作。 
-
-* **workspace.from_config 失败**：如果调用 ws = Workspace.from_config()' 失败 -
-  1. 确保 configuration.ipynb 笔记本已成功运行。
-  2. 如果正在从不在运行 `configuration.ipynb` 的文件夹下的文件夹中运行笔记本，则将文件夹 aml_config 及其包含的文件 config.json 复制到新文件夹中。 Workspace.from_config 读取笔记本文件夹或其父文件夹的 config.json。
-  3. 如果正在使用新的订阅、资源组、工作区或区域，请确保再次运行 `configuration.ipynb` 笔记本。 仅当指定订阅下的指定资源组中已存在工作区时，直接更改 config.json 才会生效。
-  4. 如果要更改区域，请更改工作区、资源组或订阅。 即使指定的区域不同，`Workspace.create` 也不会创建或更新工作区（如果已存在）。
-  
-* **示例笔记本失败**：如果示例笔记本失败，并出现属性、方法或库不存在的错误：
-  * 确保在 Jupyter Notebook 中选择了正确的内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 内核作为笔记本的一部分进行保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。
-      * 对于 Azure Notebooks，它应为 Python 3.6。 
-      * 对于本地 conda 环境，它应为在 automl_setup 中指定的 conda 环境名称。
-  * 确保笔记本适用于正在使用的 SDK 版本。 可在 Jupyter Notebook 单元中执行 `azureml.core.VERSION` 来检查 SDK 版本。 通过单击 `Branch` 按钮，选择 `Tags` 选项卡，然后选择版本，可以从 GitHub 下载以前版本的示例笔记本。
-
-* **`import numpy` 在 Windows 中失败**：在某些 Windows 环境中，最新的 Python 3.6.8 版本加载 numpy 时会出现错误。 如果出现此问题，请尝试使用 Python 3.6.7 版本。
-
-* **`import numpy` 失败**：在自动化 ML conda 环境中检查 TensorFlow 版本。 支持的版本为 <1.13 的版本。 如果版本不低于 1.13，请从环境中卸载 TensorFlow。 可以按下面的方式检查 TensorFlow 的版本并卸载：
-  1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
-  2. 输入 `pip freeze` 并查找 `tensorflow`，如果找到，则列出的版本应 <1.13
-  3. 如果列出的版本不受支持，请在命令行界面中使用 `pip uninstall tensorflow`，并输入 y 进行确认。
-  
- * 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
-
-    对于版本不高于 1.17.0 的 SDK，安装可能会导致 PyJWT 的版本不受支持。 在自动化 ML conda 环境中检查 PyJWT 版本。 支持的版本为低于 2.0.0 的版本。 可以按下面的方式检查 PyJWT 的版本：
-    1. 启动命令 shell，激活安装了自动化 ML 包的 conda 环境。
-    2. 输入 `pip freeze` 并查找 `PyJWT`，如果找到，则列出的版本应低于 2.0.0
-
-    如果列出的版本不是受支持的版本：
-    1. 请考虑升级到 AutoML SDK 的最新版本：`pip install -U azureml-sdk[automl]`。
-    2. 如果这不可行，请从环境中卸载 PyJWT，并安装正确的版本，如下所示：
-        - 在命令行界面中输入 `pip uninstall PyJWT`，然后输入 `y` 进行确认。
-        - 使用 `pip install 'PyJWT<2.0.0'` 进行安装。
-
 ## <a name="next-steps"></a>后续步骤
 
 + 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
@@ -524,3 +419,5 @@ run = experiment.submit(automl_config, show_output=True)
 + 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)或[如何使用自动化机器学习对远程资源进行训练](how-to-auto-train-remote.md)。
 
 + 了解如何在[多模型解决方案加速器](https://aka.ms/many-models)中使用 AutoML 训练多个模型。
+
++ [对自动化 ML 试验进行故障排除](how-to-troubleshoot-auto-ml.md)。 

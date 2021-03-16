@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: fd40ad41bda50d93943a514cd9cc3aeeab4ac948
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198874"
+ms.locfileid: "102216490"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
@@ -107,7 +107,7 @@ ms.locfileid: "102198874"
 
 ## <a name="create-your-own-secretproviderclass-object"></a>创建自己的 SecretProviderClass 对象
 
-若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/examples/pod-identity/v1alpha1_secretproviderclass_pod_identity.yaml)。 此对象将提供对密钥保管库的标识访问。
+若要自行创建自定义 SecretProviderClass 对象，并为机密存储 CSI 驱动程序指定提供程序特定的参数，请[使用此模板](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/service-principal/v1alpha1_secretproviderclass_service_principal.yaml)。 此对象将提供对密钥保管库的标识访问。
 
 在示例 SecretProviderClass YAML 文件中，填写缺少的参数。 下列参数必填：
 

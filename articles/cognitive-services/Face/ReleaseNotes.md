@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 03/05/2021
 ms.author: pafarley
-ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 9293d47d8aade11f4cc3ee55bb32574f125dfafc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183311"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428280"
 ---
 # <a name="whats-new-in-face-service"></a>人脸服务中有哪些新功能？
 
@@ -23,25 +23,25 @@ Azure 人脸服务会不断更新。 使用本文可了解最新的功能增强�
 
 ## <a name="february-2021"></a>2021 年 2 月
 
-* 新人脸 API 检测模型：新的检测03模型是当前可用的最准确检测模型。 如果你是新客户，建议使用此模型。 检测2003提高了)  (64x64 像素的图像中找到的较小面部的召回度和精度。 其他改进包括误报的整体缩减和对旋转面方向的改进检测。 将检测03与新的识别04相结合，还可以提供改进的识别准确性。 有关更多详细信息，请参阅 [指定面部检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) 。
-* 人脸掩码属性： "人脸掩码" 属性可用于最新的检测03模型，同时还提供了其他属性，该属性 `"noseAndMouthCovered"` 检测到鼻子和嘴是否磨损了人脸掩码。 若要使用最新的掩码检测功能，用户需要在 API 请求中指定检测模型：将具有 _detectionModel_ 参数的模型版本分配给 `detection_03` 。 有关更多详细信息，请参阅 [指定面部检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model) 。
-* 新人脸 API 识别模式：新的识别04模型是当前可用的最准确的识别模式。 如果你是新客户，我们建议使用此模型进行验证和确定。 此功能改进了识别2003的准确性，包括已注册用户的认可，其中涉及的已注册用户的认知面涉及 (外科) 的外科。 现在，客户可以构建安全且无缝的用户体验，以检测已注册用户是否正在使用最新的检测03模型，并识别他们使用最新的识别04模型。 有关更多详细信息，请参阅 [指定面部识别模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model) 。
+* 新的人脸 API 检测模型：新的“检测 03”模型是当前可用的最准确的检测模型。 如果你是新客户，建议使用此模型。 “检测 03”提高了图像（64x64 像素）中找到的较小人脸的召回率和精准率。 其他改进包括：全面降低了误报、改善了对转动的人脸方向的检测。 将“检测 03”与新的“识别 04”相结合，还可以提高识别准确度。 有关更多详细信息，请参阅[指定人脸检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)。
+* 面罩属性：随最新的检测 03 模型提供了面罩属性以及另一个属性 `"noseAndMouthCovered"`，该属性检测是否按预期佩戴了面罩（覆盖了鼻子和嘴）。 若要使用最新的面罩检测功能，用户需要在 API 请求中指定检测模型：通过 _detectionModel_ 参数将模型版本指定为 `detection_03`。 有关更多详细信息，请参阅[指定人脸检测模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-detection-model)。
+* 新的人脸 API 识别模型：新的“识别 04”模型是当前可用的最准确的识别模型。 如果你是新客户，建议使用此模型进行验证和识别。 它针对“识别 03”的准确度进行了改进，包括改进对佩戴面部遮盖物（外科口罩、N95 口罩、布口罩）的已注册用户的识别。 现在，客户可以构建安全且无缝的用户体验，以便使用最新的“检测 03”模型来检测已注册的用户是否佩戴了面部遮盖物，然后使用最新的“识别 04”模型来识别他们的身份。 有关更多详细信息，请参阅[指定人脸识别模型](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)。
 
 
 ## <a name="january-2021"></a>2021 年 1 月
-* 使用人脸 API 时减少延迟：人脸团队发布了一篇新文章，其中详细介绍了使用该服务时的可能的延迟原因和可能的缓解策略。 请参阅 [在使用人脸服务时减少延迟](./face-api-how-to-topics/how-to-mitigate-latency.md)。
+* 使用人脸 API 时减少延迟：人脸团队发布了一篇新文章，其中详细介绍了使用该服务时的可能的延迟原因和可能的缓解策略。 请参阅[使用人脸服务时减少延迟](./face-api-how-to-topics/how-to-mitigate-latency.md)。
 
 ## <a name="december-2020"></a>2020 年 12 月
-* 人脸 ID 存储的客户配置：尽管人脸服务不存储客户图像，) 的提取人脸功能 (将存储在服务器上。 人脸 ID 是面部功能的标识符，将用于人 [脸识别](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、 [面部验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)和人 [脸查找相似之处](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)。 存储的人脸功能将过期，并将在原始检测调用后的24小时内被删除。 客户现在可以确定这些面部 Id 的缓存时间长度。 最大值仍为24小时，但现在可以设置最小值60秒。 要缓存的面部 Id 的新时间范围是介于60秒到24小时之间的任何值。 有关详细信息，请参阅人 [脸-检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 参考 (*faceIdTimeToLive* 参数) 。
+* 人脸 ID 存储的客户配置：尽管人脸服务不存储客户图像，但已提取的人脸特征将存储在服务器上。 人脸 ID 是人脸特征的标识符，并且将在[人脸 - 识别](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[人脸 - 验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)和[人脸 - 查找相似人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)中使用。 在进行原始检测调用之后的 24 小时，存储的人脸特征将过期并将会被删除。 客户现在可以决定这些人脸 ID 的缓存时间长度。 最大值仍为 24 小时，但现在可以设置最小值 60 秒。 缓存人脸 ID 的新时间范围是介于 60 秒和 24 小时之间的任何值。 有关详细信息，请参阅 [人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 参考（*faceIdTimeToLive* 参数）。
 
 ## <a name="november-2020"></a>2020 年 11 月
-* 发布了一个示例人脸注册应用，演示了有关建立有意义的许可的最佳实践，以及如何通过高质量的注册创建高准确性面部识别系统。 可以在 [创建注册应用](build-enrollment-app.md) 指南和 [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample)上找到开源示例，以便开发人员可以进行部署或自定义。 
+* 发布了一个示例人脸注册应用，用于演示通过高质量注册确立有意义的同意和创建高准确度人脸识别系统的最佳做法。 可在[生成注册应用](build-enrollment-app.md)指南中和 [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample) 上找到开放源代码的示例，供开发人员部署或自定义。 
 
 ## <a name="august-2020"></a>2020 年 8 月
-* 静态数据的客户托管加密：在将数据保存到云时，人脸服务会自动加密数据。 人脸服务加密可保护你的数据，以帮助你满足组织的安全性和符合性承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 此外，还提供了一个新选项，用于使用名为客户管理的密钥 (CMK) 管理订阅。 在 [客户托管的密钥](./encrypt-data-at-rest.md)中可以找到更多详细信息。
+* 客户管理的静态数据加密：在将数据保存到云时，人脸服务会自动加密你的数据。 人脸服务加密可以保护数据，以便帮助组织履行在安全性与合规性方面做出的承诺。 默认情况下，订阅使用 Microsoft 托管的加密密钥。 还有一个新选项可供你通过你自己的密钥（称为客户管理的密钥 (CMK)）管理订阅。 有关更多详细信息，请参阅[客户管理的密钥](./encrypt-data-at-rest.md)。
 
 ## <a name="april-2020"></a>2020 年 4 月
-* 新人脸 API 识别模型：新的识别03模型是当前可用的最准确的模型。 如果你是新客户，建议使用此模型。 对于相似性比较和人员匹配比较，识别03将提供更高的准确性。 可在 [指定人脸识别模型](./face-api-how-to-topics/specify-recognition-model.md)中找到更多详细信息。
+* 新的人脸 API 识别模型：新的“识别 03”模型是当前可用的最准确的模型。 如果你是新客户，建议使用此模型。 “识别 03”将在相似性比较和人员匹配比较方面提供更高的准确性。 有关更多详细信息，请参阅[指定人脸识别模型](./face-api-how-to-topics/specify-recognition-model.md)。
 
 ## <a name="june-2019"></a>2019 年 6 月
 

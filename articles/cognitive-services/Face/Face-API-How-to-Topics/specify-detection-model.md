@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 03/05/2021
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 04699890af2cfe835ecca6ee983808d7d8d002c8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 72fd005ce44d116f86d9a0b4c0d1932e2e4facfb
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174183"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425764"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
@@ -98,14 +98,14 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 不同的人脸检测模型已针对不同的任务进行优化。 有关差异概述，请参阅下表。
 
-|**detection_01**  |**detection_02**  |**detection_03** 
+|**detection_01**  |**detection_02**  |detection_03 
 |---------|---------|---|
-|所有人脸检测操作的默认选项。 | 已于 2019 年 5 月发布，可以选择性地在所有人脸检测操作中使用。 |  于2021年2月发布，并可根据需要在所有人脸检测操作中使用。
-|未针对小尺寸人脸、侧视人脸或模糊人脸进行优化。  | 已针对小尺寸人脸、侧视人脸或模糊人脸提高了准确度。 | 进一步提高了准确性，包括在较小的面部 (64x64 像素) 和旋转面方向。
-|返回在 "检测调用" 中指定的 (头姿势、年龄、表情等) 的主要人脸属性。 |  不返回人脸属性。     | 返回 "faceMask" 和 "noseAndMouthCovered" 特性（如果它们在检测调用中指定）。
+|所有人脸检测操作的默认选项。 | 已于 2019 年 5 月发布，可以选择性地在所有人脸检测操作中使用。 |  已于 2021 年 2 月发布，可以选择性地在所有人脸检测操作中使用。
+|未针对小尺寸人脸、侧视人脸或模糊人脸进行优化。  | 已针对小尺寸人脸、侧视人脸或模糊人脸提高了准确度。 | 进一步提升了准确度，包括针对人脸较小（64x64 像素）和人脸方向发生了转动等情况。
+|如果在检测调用中指定了主要的人脸属性（头部姿势、年龄、表情，等等），则返回这些属性。 |  不返回人脸属性。     | 如果在检测调用中指定了“faceMask”和“noseAndMouthCovered”属性，则返回这些属性。
 |如果在检测调用中指定了人脸特征点，则返回这些特征点。   | 不返回人脸特征点。  | 不返回人脸特征点。
 
-比较检测模型性能的最佳方式是在示例数据集上使用它们。 我们建议使用每个检测模型针对各种图像（尤其是许多人脸的图像，或者难以辨认的人脸的图像）调用 [Face - Detect] API。 请注意每个模型返回的人脸数。
+比较检测模型性能的最佳方式是针对示例数据集使用这些模型。 我们建议使用每个检测模型针对各种图像（尤其是许多人脸的图像，或者难以辨认的人脸的图像）调用 [Face - Detect] API。 请注意每个模型返回的人脸数。
 
 ## <a name="next-steps"></a>后续步骤
 

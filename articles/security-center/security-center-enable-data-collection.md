@@ -1,36 +1,25 @@
 ---
 title: Azure 安全中心的自动部署代理 |Microsoft Docs
-description: 本文介绍如何设置 Azure 安全中心使用的 Log Analytics 代理和其他代理的自动预配。
-services: security-center
+description: 本文介绍如何设置 Azure 安全中心使用的 Log Analytics 代理和其他代理及扩展的自动预配
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 8fa2a06b1310e7cd825c918e92ea7af9b9b488de
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 17f3440df4fa88995f2148680aba926207a0e46b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596164"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561256"
 ---
-# <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心自动预配代理和扩展
+# <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>从 Azure 安全中心为代理和扩展配置自动预配
 
-安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 
+Azure 安全中心使用资源的相关代理或扩展以及已启用的数据收集类型从资源中收集数据。 使用以下过程来确保资源具有安全中心所需的代理和扩展。
 
-必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护状态，以及运行状况和威胁防护结果。 只需对计算资源（VM、虚拟机规模集、IaaS 容器和非 Azure 计算机）启用数据收集。 即使未预配代理，也能从 Azure 安全中心受益；但是，安全性会受到限制，并且上面列出的功能不受支持。  
-
-使用以下工具收集数据：
-
-- Log Analytics 代理，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
-- 安全扩展插件，如[用于 Kubernetes 的 Azure Policy 的加载项](../governance/policy/concepts/policy-for-kubernetes.md)，它还可以向安全中心提供有关专用资源类型的数据。
-
-> [!TIP]
-> 随着安全中心的发展，可以监视的资源类型也在增加。 扩展的数量也有所增加。 自动预配工具已扩展，可通过利用 Azure Policy 的功能来支持更多资源类型。
-
-:::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="安全中心的自动预配设置页":::
-
+## <a name="prerequisites"></a>先决条件
+若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果没有订阅，可以注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="availability"></a>可用性
 
@@ -42,6 +31,21 @@ ms.locfileid: "100596164"
 | 云：                 | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov、China Gov、其他 Gov                                                                                                      |
 |                         |                                                                                                                                                                                                                              |
 
+## <a name="how-does-security-center-collect-data"></a>安全中心如何收集数据？
+
+安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 
+
+必须收集数据才能深入了解缺少的更新、配置不当的 OS 安全设置、终结点保护状态，以及运行状况和威胁防护结果。 只需对计算资源（例如 VM、虚拟机规模集、IaaS 容器和非 Azure 计算机）启用数据收集。 
+
+即使未预配代理，也可以从 Azure 安全中心受益。 但是，你的安全性有限，并且不支持上面列出的功能。  
+
+使用以下工具收集数据：
+
+- Log Analytics 代理，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
+- 安全扩展插件，如[用于 Kubernetes 的 Azure Policy 的加载项](../governance/policy/concepts/policy-for-kubernetes.md)，它还可以向安全中心提供有关专用资源类型的数据。
+
+> [!TIP]
+> 随着安全中心的发展，可以监视的资源类型也在增加。 扩展的数量也有所增加。 自动预配工具已扩展，可通过利用 Azure Policy 的功能来支持更多资源类型。
 
 ## <a name="why-use-auto-provisioning"></a>为什么要使用自动预配？
 此页所述的任何代理和扩展都可以手动安装（请参阅[手动安装 Log Analytics 代理](#manual-agent)）。 但是，自动预配通过在现有和新计算机上安装所有必需的代理和扩展来确保所有受支持的资源能够更快地获得安全保障，从而减少管理开销。 
@@ -49,19 +53,24 @@ ms.locfileid: "100596164"
 建议启用自动预配，但默认情况下它是禁用的。
 
 ## <a name="how-does-auto-provisioning-work"></a>自动预配的工作原理
-对于每种支持的扩展类型，安全中心的自动预配设置都有相应的切换开关。 启用扩展的自动预配时，可以分配适当的“如果不存在则部署”策略，以确保在该类型的所有现有和未来资源上预配扩展。
+对于每种支持的扩展类型，安全中心的自动预配设置都有相应的切换开关。 启用扩展的自动配置后，可以分配适当的“如果不存在则部署”策略。 此策略类型可确保在该类型的所有现有和将来的资源上预配扩展。
 
 > [!TIP]
 > 可参阅[了解 Azure Policy 效果](../governance/policy/concepts/effects.md)，了解有关 Azure Policy 效果的详细信息，包括“如果不存在则部署”。
 
-## <a name="enable-auto-provisioning-of-the-log-analytics-agent"></a>启用 Log Analytics 代理的自动预配 <a name="auto-provision-mma"></a>
+
+## <a name="enable-auto-provisioning-of-the-log-analytics-agent-and-extensions"></a>启用 Log Analytics 代理和扩展 <a name="auto-provision-mma"></a> 的自动预配
+
 为 Log Analytics 代理启用自动预配后，安全中心可在所有受支持的 Azure VM 以及创建的所有新 Azure VM 上部署代理。 有关支持的平台列表，请参阅 [Azure 安全中心支持的平台](security-center-os-coverage.md)。
 
 若要启用 Log Analytics 代理的自动预配：
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 在“自动预配”页中，将代理的状态设置为“打开” 。
+1. 在“自动预配”页中，将 Log Analytics 代理的状态设置为“打开” 。
+
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="启用 Log Analytics 代理的自动预配":::
+
 1. 在配置选项窗格中，定义要使用的工作区。
 
     :::image type="content" source="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png" alt-text="用于将 Log Analytics 代理自动预配到 VM 的配置选项" lightbox="./media/security-center-enable-data-collection/log-analytics-agent-deploy-options.png":::
@@ -85,7 +94,7 @@ ms.locfileid: "100596164"
 
         如果已有一个 Log Analytics 工作区，可以使用该工作区（需要工作区上的读取和写入权限）。 如果在组织中使用集中式工作区，并想要使用该工作区来收集安全数据，则此选项非常有用。 从[在 Azure Monitor 中管理对日志数据和工作区的访问](../azure-monitor/logs/manage-access.md)中了解详细信息。
 
-        如果所选的工作区中已启用 Security 或 SecurityCenterFree 解决方案，则会自动设置定价层。 如果没有，请在工作区中安装安全中心解决方案：
+        如果所选的工作区中已启用“Security”或“SecurityCenterFree”解决方案，则会自动设置定价。 如果没有，请在工作区中安装安全中心解决方案：
 
         1. 从安全中心的菜单中，打开“定价和设置”。
         1. 选择要将代理连接到的工作区。
@@ -104,6 +113,22 @@ ms.locfileid: "100596164"
 
 1. 选择“配置”窗格中的“应用”。
 
+1. 若要启用除 Log Analytics 代理之外的扩展的自动预配，请执行以下操作： 
+
+    1. 如果要为 Microsoft Dependency Agent 启用自动预配，请确保将 Log Analytics 代理设置为自动部署。
+    1. 将相关扩展的状态切换为“打开”。
+
+        :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="切换以启用 K8 策略加载项的自动预配":::
+
+    1. 选择“保存”。 分配 Azure Policy 并创建修正任务。
+
+        |分机  |策略  |
+        |---------|---------|
+        |适用于 Kubernetes 的策略加载项|[将 Azure Policy 加载项部署到 Azure Kubernetes 服务群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Microsoft Dependency Agent（预览）(Windows VM)|[为 Windows 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
+        |Microsoft Dependency Agent（预览）(Linux VM)|[为 Linux 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |||
+
 1. 选择“保存”。 如果需要设置工作区，那么代理安装过程可能需要最多 25 分钟的时间。
 
 1. 系统会询问你是否要重新配置之前已连接到默认工作区的受监视 VM：
@@ -115,28 +140,6 @@ ms.locfileid: "100596164"
 
    > [!NOTE]
    > 如果选择“是”，请不要删除安全中心创建的工作区，除非所有 VM 都已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。
-
-
-## <a name="enable-auto-provisioning-of-extensions"></a>启用扩展的自动预配
-
-若要启用除 Log Analytics 代理之外的扩展的自动预配，请执行以下操作： 
-
-1. 在 Azure 门户的“安全中心”菜单中，选择“定价和设置”。
-1. 选择相关订阅。
-1. 选择“自动预配”。
-1. 如果要为 Microsoft Dependency Agent 启用自动预配，请确保将 Log Analytics 代理也设置为自动部署。 
-1. 将相关扩展的状态切换为“打开”。
-
-    :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="切换以启用 K8 策略加载项的自动预配":::
-
-1. 选择“保存”。 分配 Azure Policy 并创建修正任务。
-
-    |分机  |策略  |
-    |---------|---------|
-    |适用于 Kubernetes 的策略加载项|[将 Azure Policy 加载项部署到 Azure Kubernetes 服务群集](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
-    |Microsoft Dependency Agent（预览）(Windows VM)|[为 Windows 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-    |Microsoft Dependency Agent（预览）(Linux VM)|[为 Linux 虚拟机部署 Dependency Agent](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
-
 
 
 ## <a name="windows-security-event-options-for-the-log-analytics-agent"></a>Log Analytics 代理的 Windows 安全事件选项 <a name="data-collection-tier"></a> 
@@ -235,7 +238,7 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 
 - **Log Analytics 代理已安装在计算机上，但不是作为扩展（直接代理）安装的** - 如果 Log Analytics 代理直接安装在 VM 上（而不是作为 Azure 扩展安装），安全中心将安装 Log Analytics 代理扩展，可能还会将 Log Analytics 代理升级到最新版本。
 安装的代理将继续向其已配置的工作区报告，此外，它还会向安全中心上配置的工作区报告（Windows 计算机支持多主页）。
-如果配置的工作区是一个用户的工作区（而不是安全中心的默认工作区），则需要在该工作区上安装“security”/“securityFree”解决方案，以便安全中心开始处理向该工作区报告的 VM 和计算机中的事件。
+如果配置的工作区是用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装“Security”或“SecurityCenterFree”解决方案，以便安全中心开始处理向该工作区报告的 VM 和计算机中的事件。
 
     对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
 
@@ -244,8 +247,8 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 - **已在计算机上安装 System Center Operations Manager 代理** - 安全中心会将 Log Analytics 代理扩展并行安装到现有 Operations Manager。 现有 Operations Manager 代理将继续正常向 Operations Manager 服务器报告。 Operations Manager 代理和 Log Analytics 代理共享公共运行时库，在此过程中这些库将更新为最新版本。 如果已安装 Operations Manager 代理版本 2012，则 **请勿** 启用自动预配。
 
 - **存在预先存在的 VM 扩展**：
-    - 当将监视代理作为扩展安装时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 如果已连接的工作区中安装了“security”或“securityFree”解决方案，安全中心会将来自 VM 的安全性数据存储在该工作区中。 在此过程中，安全中心可以将扩展版本升级到最新版本。  
-    - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)。 或者，可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。 
+    - 当将监视代理作为扩展安装时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 如果已连接的工作区中安装了“Security”或“SecurityCenterFree”解决方案，安全中心会将来自 VM 的安全性数据存储在该工作区中。 在此过程中，安全中心可以将扩展版本升级到最新版本。
+    - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](/archive/blogs/yuridiogenes/validating-connectivity-with-azure-security-center)。 或者，可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。
     - 如果环境中的 Log Analytics 代理安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持。 有关详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。
  
 
@@ -275,24 +278,10 @@ Azure Sentinel 的用户：请注意，可以从 Azure 安全中心或 Azure Sen
 ## <a name="troubleshooting"></a>疑难解答
 
 -   若要识别自动预配安装问题，请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)。
-
 -  若要确定监视代理网络要求，请参阅[监视代理网络要求故障排除](security-center-troubleshooting-guide.md#mon-network-req)。
 -   若要识别手动加入问题，请参阅[如何排查 Operations Management Suite 加入问题](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)。
-
-- 若要识别未受监视的 VM 和计算机上的问题：
-
-    如果某个 VM 或计算机未运行 Log Analytics 代理扩展，则它不受安全中心的监视。 计算机上可能已安装了本地代理，例如 OMS 直接代理或 System Center Operations Manager 代理。 装有这些代理的计算机被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Log Analytics 代理扩展。
-
-    若要详细了解安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因，请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#mon-agent)。
-
 
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下页面：
-
-- [Azure 安全中心常见问题解答](faq-general.md)-- 查找有关使用服务的常见问题。
-- [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
-
-本文介绍如何安装 Log Analytics 代理和设置用于存储所收集的数据的 Log Analytics 工作区。 这两项操作都需要启用数据收集。 如果将数据存储在 Log Analytics 中，无论是使用新工作区还是现有工作区，都可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
-
+此页说明了如何为 Log Analytics 代理和其他安全中心扩展启用自动预配。 还介绍了如何定义用于存储所收集数据的 Log Analytics 工作区。 这两项操作都需要启用数据收集。 如果将数据存储在 Log Analytics 中，无论是使用新工作区还是现有工作区，都可能会产生更多的数据存储费用。 有关所选货币以及你所在区域的定价详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。

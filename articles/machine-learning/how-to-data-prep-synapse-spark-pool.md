@@ -1,7 +1,7 @@
 ---
-title: 'Apache Spark 池 (预览的数据准备) '
+title: 使用 Apache Spark 池进行数据整理（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何附加 Apache Spark 池以便通过 Azure Synapse Analytics 进行数据准备和 Azure 机器学习
+description: 了解如何通过 Azure Synapse Analytics 和 Azure 机器学习附加和启动 Apache Spark 池以进行数据整理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,24 +10,26 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 22945cdaff2696a15d5b119bd0f32fd0a179ebf7
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202087"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503821"
 ---
-# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-preparation-preview"></a>将 Apache Spark 池附加 (Azure Synapse Analytics) 提供支持的数据准备 (预览) 
+# <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>附加由 Azure Synapse Analytics 提供支持的 Apache Spark 池以进行数据处理（预览版）
 
-本文介绍如何附加和启动由 [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) 提供支持的用于数据准备的 Apache Spark 池。 
+本文介绍如何附加和启动由 [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) 提供支持的 Apache Spark 池，以大规模进行数据处理。 
+
+本文包含有关在 Jupyter Notebook 中的专用 Synapse 会话内以交互方式执行数据整理任务的指南。 如果你更喜欢使用 Azure 机器学习管道，请参阅[如何在机器学习管道中使用 Apache Spark（由 Azure Synapse Analytics 提供支持）（预览版）](how-to-use-synapsesparkstep.md)。
 
 >[!IMPORTANT]
-> Azure 机器学习和 Azure Synapse Analytics 集成处于预览阶段。 本文中介绍的功能采用包， `azureml-synapse` 其中包含 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 预览功能，这些功能随时可能会更改。
+> Azure 机器学习与 Azure Synapse Analytics 的集成以预览版提供。 本文中介绍的功能采用 `azureml-synapse` 包，其中包含[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，这些功能可能会随时更改。
 
-## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure 机器学习和 Azure Synapse Analytics integration (预览版) 
+## <a name="azure-machine-learning-and-azure-synapse-analytics-integration-preview"></a>Azure 机器学习与 Azure Synapse Analytics 的集成（预览版）
 
-使用 Azure Synapse Analytics 与 Azure 机器学习 (预览版) ，可以附加由 Azure Synapse 支持的 Apache Spark 池，以实现交互式数据浏览和准备。 通过这种集成，你可以针对大规模的数据准备进行专用计算，这一切都在用于训练机器学习模型的同一 Python 笔记本中进行。
+通过 Azure Synapse Analytics 与 Azure 机器学习的集成（预览版），你可以附加由 Azure Synapse 提供支持的 Apache Spark 池，以进行交互式数据探索和准备。 借助这种集成，你可在用于训练机器学习模型的同一 Python 笔记本中，使用专用计算大规模进行数据整理。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,137 +37,72 @@ ms.locfileid: "102202087"
 
 * [在 Azure 门户中创建 Azure Synapse Analytics 工作区](../synapse-analytics/quickstart-create-workspace.md)。
 
-* [使用 Azure 门户、web 工具或 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
-* [安装](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 包括 `azureml-synapse` 包 (预览版) Azure 机器学习 Python SDK。 
-    * 您也可以自行安装，但它仅与 SDK 版本1.20 或更高版本兼容。 
-        ```python
-        pip install azureml-synapse
-        ```
+* [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已经安装了 SDK 的 [Azure 机器学习计算实例](concept-compute-instance.md#create)。 
 
-## <a name="link-machine-learning-workspace-and-synapse-analytics-assets"></a>链接机器学习工作区和 Synapse 分析资产
+* 使用以下代码安装 `azureml-synapse` 包（预览版）：
 
-在附加用于数据准备的 Apache Synapse Spark 池之前，Azure 机器学习工作区必须与 Azure Synapse Analytics 工作区链接。 
+  ```python
+  pip install azureml-synapse
+  ```
 
-可以通过 [PYTHON SDK](#link-sdk) 或 [Azure 机器学习 studio](#link-studio)链接机器学习工作区和 Synapse 分析工作区。 
-
-> [!IMPORTANT]
-> 若要成功链接到 Azure Synapse Analytics 工作区，你必须被授予 Azure Synapse Analytics 工作区的 **所有者** 角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
->
-> 如果你不是 Azure Synapse Analytics 工作区的 **所有者** ，但想要使用现有的链接服务，请参阅 [获取现有链接服务](#get-an-existing-linked-service)。
-
-
-<a name="link-sdk"></a>
-### <a name="link-workspaces-with-the-python-sdk"></a>通过 Python SDK 链接工作区
-
-下面的代码将 [`LinkedService`](/python/api/azureml-core/azureml.core.linked_service.linkedservice?preserve-view=true&view=azure-ml-py) 和 [`SynapseWorkspaceLinkedServiceConfiguration`](/python/api/azureml-core/azureml.core.linked_service.synapseworkspacelinkedserviceconfiguration?preserve-view=true&view=azure-ml-py) 类用于， 
-
-* 将 Azure 机器学习工作区链接 `ws` 到 Azure Synapse Analytics 工作区。 
-* 将 Azure 机器学习的 Azure Synapse Analytics 工作区注册为链接服务。
-
-``` python
-import datetime  
-from azureml.core import Workspace, LinkedService, SynapseWorkspaceLinkedServiceConfiguration
-
-# Azure Machine Learning workspace
-ws = Workspace.from_config()
-
-#link configuration 
-synapse_link_config = SynapseWorkspaceLinkedServiceConfiguration(
-    subscription_id=ws.subscription_id,
-    resource_group= 'your resource group',
-    name='mySynapseWorkspaceName')
-
-# Link workspaces and register Synapse workspace in Azure Machine Learning
-linked_service = LinkedService.register(workspace = ws,              
-                                            name = 'synapselink1',    
-                                            linked_service_config = synapse_link_config)
-```
-> [!IMPORTANT] 
-> 为 `system_assigned_identity_principal_id` 每个链接服务创建一个托管标识。 在开始 Apache Spark 会话之前，必须向此托管标识授予 Azure Synapse Analytics 工作区的 **Synapse Apache Spark 管理员** 角色。 [将 Synapse Apache Spark 管理员角色分配给 Synapse Studio 中的托管标识](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)。
->
-> 若要查找 `system_assigned_identity_principal_id` 特定链接服务的，请使用 `LinkedService.get('<your-mlworkspace-name>', '<linked-service-name>')` 。
-
-<a name="link-studio"></a>
-### <a name="link-workspaces-via-studio"></a>通过 studio 链接工作区
-
-通过以下步骤将 Azure 机器学习工作区和 Azure Synapse 分析工作区链接到 Azure 机器学习 studio： 
-
-1. 登录到 [Azure 机器学习 studio](https://ml.azure.com/)。
-1. 在左侧窗格的 "**管理**" 部分中选择 "**链接服务**"。
-1. 选择 " **添加集成**"。
-1. 在 " **链接工作区** " 窗体中填充字段
-
-   |字段| 说明    
-   |---|---
-   |名称| 提供链接服务的名称。 此名称将用于引用此特定链接服务。
-   |订阅名称 | 选择与你的机器学习工作区关联的订阅的名称。 
-   |Synapse 工作区 | 选择要链接到的 "Synapse" 工作区。 
-   
-1. 选择 " **下一步** " 以打开 " **选择 Spark 池 (可选)** 窗体。 在此窗体中，选择要附加到工作区 Apache Spark 池的 Synapse
-
-1. 选择 " **下一步** " 以打开 **审阅** 窗体并检查你的选择。 
-1. 选择 " **创建** " 以完成链接服务的创建过程。
+* [链接 Azure 机器学习工作区和 Azure Synapse Analytics 工作区](how-to-link-synapse-ml-workspaces.md)。
 
 ## <a name="get-an-existing-linked-service"></a>获取现有链接服务
+你必须有一个链接到 Azure Synapse Analytics 工作区的 ML 工作区（称为链接服务），然后才能附加专用计算以进行数据整理。 
 
-若要检索和使用现有链接服务，需要具有 Azure Synapse Analytics 工作区的 " **用户" 或 "参与者** " 权限。
-
-此示例 `synapselink1` 使用方法从工作区检索现有链接服务 `ws` [`get()`](/python/api/azureml-core/azureml.core.linkedservice?preserve-view=true&view=azure-ml-py#get-workspace--name-) 。
-```python
-linked_service = LinkedService.get(ws, 'synapselink1')
-```
-
-### <a name="manage-linked-services"></a>管理链接服务
-
-若要取消链接工作区，请使用 `unregister()` 方法
-
-``` python
-linked_service.unregister()
-```
+若要检索和使用现有链接服务，需要具有 Azure Synapse Analytics 工作区的“用户”或“参与者”权限。
 
 查看与机器学习工作区关联的所有链接服务。 
 
 ```python
 LinkedService.list(ws)
 ```
+
+此示例使用 [`get()`](/python/api/azureml-core/azureml.core.linkedservice#get-workspace--name-) 方法从工作区 `ws` 检索现有链接服务 `synapselink1`。
+```python
+linked_service = LinkedService.get(ws, 'synapselink1')
+```
  
 ## <a name="attach-synapse-spark-pool-as-a-compute"></a>将 Synapse Spark 池附加为计算
 
-链接工作区后，将 Synapse Apache Spark 池附加为你的数据准备任务的专用计算资源。 
+检索链接服务后，请将 Synapse Apache Spark 池附加为用于数据整理任务的专用计算资源。 
 
-可以通过附加 Apache Spark 池。
+可以通过以下方式附加 Apache Spark 池：
 * Azure 机器学习工作室
 * [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
 * Python SDK 
 
-按照以下步骤使用工作室附加 Apache Spark 池。 
+### <a name="attach-a-pool-via-the-studio"></a>通过工作室附加池
+按照以下步骤操作： 
 
-1. 登录到 [Azure 机器学习 studio](https://ml.azure.com/)。
-1. 在左侧窗格的 "**管理**" 部分中选择 "**链接服务**"。
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
+1. 在左窗格的“管理”部分中选择“链接服务” 。
 1. 选择 Synapse 工作区。
-1. 在左上角选择 " **附加的 Spark 池** "。 
+1. 选择左上方的“附加的 Spark 池”。 
 1. 选择“附加”。 
-1. 从列表中选择 Apache Spark 池，并提供名称。  
+1. 从列表中选择 Apache Spark 池，并为其命名。  
     1. 此列表标识可附加到计算的可用 Synapse Spark 池。 
-    1. 若要创建新的 Synapse Spark 池，请参阅 [使用 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
-1. 选择 " **附加选定** 的"。 
+    1. 若要创建新的 Synapse Spark 池，请参阅[使用 Synapse Studio 创建 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+1. 选择“附加所选内容”。 
 
+### <a name="attach-a-pool-with-the-python-sdk"></a>使用 Python SDK 附加池
 
-你还可以使用 **PYTHON SDK** 附加 Apache Spark 池。 
+你还可以使用 Python SDK 附加 Apache Spark 池。 
 
-以下代码 
-1. 将 SynapseCompute 配置为，
+以下代码的用途： 
+1. 可将 SynapseCompute 配置为：
 
-   1. 在 `linked_service` 上一步中创建或检索到的 LinkedService。 
-   1. 要附加的计算目标的类型， `SynapseSpark`
-   1. Apache Spark 池的名称。 这必须与 Azure Synapse Analytics 工作区中的现有 Apache Spark 池匹配。
+   1. 在上一步中创建或检索的 LinkedService `linked_service`。 
+   1. 要附加的计算目标的类型 `SynapseSpark`
+   1. Apache Spark 池的名称。 该名称必须与 Azure Synapse Analytics 工作区中的现有 Apache Spark 池相同。
    
-1. 通过传入来创建机器学习 ComputeTarget， 
-   1. 要使用的机器学习工作区， `ws`
-   1. 要在 Azure 机器学习工作区中引用计算的名称。 
+1. 通过传入以下项来创建机器学习 ComputeTarget： 
+   1. 要使用的机器学习工作区 `ws`
+   1. 要在 Azure 机器学习工作区中表示计算的名称。 
    1. 配置 Synapse 计算时指定的 attach_configuration。
-       1. 对 ComputeTarget () 的调用是异步的，因此在调用完成之前，示例将会阻塞。
+       1. 对 ComputeTarget () 的调用是异步的，因此在调用完成之前，示例将无法使用。
 
 ```python
 from azureml.core.compute import SynapseCompute, ComputeTarget
@@ -175,7 +112,7 @@ attach_config = SynapseCompute.attach_configuration(linked_service, #Linked syna
                                                     pool_name="<Synapse Spark pool name>") #Name of Synapse spark pool 
 
 synapse_compute = ComputeTarget.attach(workspace= ws,                
-                                       name='<Synapse Spark pool alias in Azure ML>', 
+                                       name="<Synapse Spark pool alias in Azure ML>", 
                                        attach_configuration=attach_config
                                       )
 
@@ -188,14 +125,14 @@ synapse_compute.wait_for_completion()
 ws.compute_targets['Synapse Spark pool alias']
 ```
 
-## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>为数据准备任务启动 Synapse Spark 池
+## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>启动 Synapse Spark 池以准备数据
 
-你可以指定要在 Apache Spark 会话期间使用的 [Azure 机器学习环境](concept-environments.md) 。 只有在环境中指定的 Conda 依赖关系才会生效。 不支持 Docker 映像。
+你可以指定要在 Apache Spark 会话期间使用的 [Azure 机器学习环境](concept-environments.md)。 只有在环境中指定的 Conda 依赖项才会生效。 不支持 Docker 映像。
 
 >[!WARNING]
->  Apache Spark 池中不支持在环境 Conda 依赖项中指定的 Python 依赖项。 目前仅支持固定 Python 版本。 通过在脚本中加入来检查 Python 版本  `sys.version_info` 。
+>  Apache Spark 池不支持在环境 Conda 依赖项中指定的 Python 依赖项。 目前仅支持固定 Python 版本。 通过在脚本中包含 `sys.version_info` 来检查 Python 版本。
 
-下面的代码创建环境，该环境在 `myenv` `azureml-core` 会话开始之前安装版本1.20.0 和 `numpy` 版本1.17.0。 然后，你可以将此环境包含在 Apache Spark session `start` 语句中。
+下面的代码用于创建环境 `myenv`，该环境在会话开始之前安装 `azureml-core` 版本 1.20.0 和 `numpy` 版本1.17.0。 然后，你可以将此环境包含在 Apache Spark 会话 `start` 语句中。
 
 ```python
 
@@ -209,10 +146,10 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-若要开始使用 Apache Spark Spark 池进行数据准备，请指定 Apache Spark 池名称，并提供订阅 ID、机器学习工作区资源组、机器学习工作区的名称，以及 Apache Spark 会话期间要使用的环境。 
+若要开始使用 Apache Spark 池进行数据准备，请指定 Apache Spark 池名称，并提供订阅 ID、机器学习工作区资源组、机器学习工作区的名称，以及 Apache Spark 会话期间要使用的环境。 
 
 > [!IMPORTANT]
-> 若要继续使用 Apache Spark 池，你必须指定要将哪些计算资源用于 `%synapse` 单个代码行和多行的数据准备任务 `%%synapse` 。 
+> 若要继续使用 Apache Spark 池，必须指示要在整个数据整理任务中使用的计算资源，并将 `%synapse` 用于单行代码以及将 `%%synapse` 用于多行代码。 
 
 ```python
 %synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
@@ -226,34 +163,34 @@ env.register(workspace=ws)
 
 ## <a name="load-data-from-storage"></a>从存储加载数据
 
-Apache Spark 会话启动后，请阅读要准备的数据。 Azure Blob 存储支持数据加载，Azure Data Lake Storage 第1代和第2代。
+Apache Spark 会话启动后，请读取要准备的数据。 Azure Blob 存储和 Azure Data Lake Storage Gen 1 和 Gen 2 支持数据加载。
 
 可以通过两种方法从这些存储服务加载数据： 
 
 * 使用 Hadoop 分布式文件系统 (HDFS) 路径直接从存储中加载数据。
 
-* 读入现有 [Azure 机器学习数据集中](how-to-create-register-datasets.md)的数据。
+* 从现有 [Azure 机器学习数据集](how-to-create-register-datasets.md)中读取数据。
 
-若要访问这些存储服务，需要 **存储 Blob 数据读取器** 权限。 如果打算将数据写回这些存储服务，则需要 **存储 Blob 数据参与者** 权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
+若要访问这些存储服务，需要具有“存储 Blob 数据读取者”权限。 如果打算将数据写回这些存储服务，则需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
 
-### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>用 Hadoop 分布式文件系统加载数据 (HDFS) 路径
+### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>使用 Hadoop 分布式文件系统 (HDFS) 路径加载数据
 
-若要从具有相应 HDFS 路径的存储中加载和读取数据，需要使数据访问身份验证凭据随时可用。 根据您的存储类型，这些凭据会有所不同。  
+要使用相应的 HDFS 路径从存储中加载和读取数据，你需要具有现成的数据访问身份验证凭据。 这些凭据因存储类型而异。  
 
-以下代码演示了如何使用共享访问签名 (SAS) 令牌或访问密钥，将数据从 **Azure Blob 存储** 读入 Spark 数据帧。 
+以下代码演示如何使用共享访问签名 (SAS) 令牌或访问密钥将数据从 Azure Blob 存储读取到 Spark 数据帧中。 
 
 ```python
 %%synapse
 
 # setup access key or SAS token
 sc._jsc.hadoopConfiguration().set("fs.azure.account.key.<storage account name>.blob.core.windows.net", "<access key>")
-sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "sas token")
+sc._jsc.hadoopConfiguration().set("fs.azure.sas.<container name>.<storage account name>.blob.core.windows.net", "<sas token>")
 
 # read from blob 
 df = spark.read.option("header", "true").csv("wasbs://demo@dprepdata.blob.core.windows.net/Titanic.csv")
 ```
 
-下面的代码演示如何从 **Azure Data Lake Storage 第1代 (ADLS 第1代)** 将数据读入服务主体凭据。 
+以下代码演示如何使用服务主体凭据从 Azure Data Lake Storage Generation 1 (ADLS Gen 1) 中读取数据。 
 
 ```python
 
@@ -271,7 +208,7 @@ df = spark.read.csv("adl://<storage account name>.azuredatalakestore.net/<path>"
 
 ```
 
-下面的代码演示了如何从 **Azure Data Lake Storage 第2代 (ADLS 第2代)** 将数据读入服务主体凭据。 
+以下代码演示如何使用服务主体凭据从 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 中读取数据。 
 
 ```python
 # setup service principal which has access of the data
@@ -287,11 +224,11 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ```
 
-### <a name="read-in-data-from-registered-datasets"></a>读取已注册数据集中的数据
+### <a name="read-in-data-from-registered-datasets"></a>从已注册的数据集中读取数据
 
-你还可以获取工作区中的现有已注册数据集，并通过将其转换为 spark 数据帧来对其执行数据准备。  
+还可以在工作区中获取现有的已注册数据集，并通过将其转换为 Spark 数据帧执行数据准备任务。  
 
-下面的示例获取一个已注册的 TabularDataset， `blob_dset` 它引用 blob 存储中的文件，并将其转换为 spark 数据帧。 将数据集转换为 spark 数据帧时，可以利用 `pyspark` 数据浏览和准备库。  
+以下示例获取一个已注册的 TabularDataset `blob_dset`，该数据集引用 blob 存储中的文件，并将其转换为 Spark 数据帧。 将数据集转换为 Spark 数据帧时，你可以利用 `pyspark` 数据探索和准备库。  
 
 ``` python
 
@@ -302,11 +239,11 @@ dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
 ```
 
-## <a name="perform-data-preparation-tasks"></a>执行数据准备任务
+## <a name="perform-data-wrangling-tasks"></a>执行数据整理任务
 
-检索并浏览数据后，可以执行数据准备任务。
+检索并探索数据之后，即可以执行数据整理任务。
 
-下面的代码扩展了上一节中的 HDFS 示例，并 `df` 根据 **存活** 列和按 **Age** 列出的组对 spark 数据帧中的数据进行筛选
+以下代码扩展了上一节中的 HDFS 示例，并根据“Survivor”列和按“Age”列出的组筛选了 Spark 数据帧 `df` 中的数据 
 
 ```python
 %%synapse
@@ -318,11 +255,11 @@ df.show()
 
 ```
 
-## <a name="save-data-to-storage-and-stop-spark-session"></a>将数据保存到存储和停止 spark 会话
+## <a name="save-data-to-storage-and-stop-spark-session"></a>将数据保存到存储并停止 Spark 会话
 
-数据浏览和准备完成后，请将已准备的数据存储在 Azure 上的存储帐户中供以后使用。
+数据探索和准备工作完成后，将准备好的数据存储在 Azure 上的存储帐户中，以供以后使用。
 
-在下面的示例中，准备好的数据写回 Azure Blob 存储，并覆盖 `Titanic.csv` 目录中的原始文件 `training_data` 。 若要写回到存储，需要 **存储 Blob 数据参与者** 权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
+在以下示例中，会将准备好的数据写回到 Azure Blob 存储，并覆盖 `training_data` 目录中的原始 `Titanic.csv` 文件。 若要写回到存储，需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
 
 ```python
 %% synapse
@@ -330,22 +267,22 @@ df.show()
 df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.windows.net/training_data/Titanic.csv")
 ```
 
-完成数据准备并将准备好的数据保存到存储后，请使用以下命令停止使用 Apache Spark 池。
+完成数据准备并将准备好的数据保存到存储后，请通过以下命令停止使用 Apache Spark 池。
 
 ```python
 %synapse stop
 ```
 
-## <a name="create-dataset-to-represent-prepared-data"></a>创建数据集以表示已准备的数据
+## <a name="create-dataset-to-represent-prepared-data"></a>创建用于表示准备好的数据的数据集
 
-准备好使用准备好的数据进行模型定型时，请使用 [Azure 机器学习数据](how-to-access-data.md)存储连接到存储，并指定要用于 [Azure 机器学习数据集](how-to-create-register-datasets.md) (s) 。
+可以使用准备好的数据进行模型训练后，请使用 [Azure 机器学习数据存储](how-to-access-data.md)连接到存储，并指定要与 [Azure 机器学习数据集](how-to-create-register-datasets.md)一起使用的文件。
 
-下面的代码示例
+下面是代码示例：
 
-* 假设你已创建了一个用于连接到存储服务的数据存储，该存储空间保存已准备的数据。  
-* 从工作区获取现有的数据存储， `mydatastore` `ws` 并获取 () 方法。
-* 创建一个 [FileDataset](how-to-create-register-datasets.md#filedataset)， `train_ds` 它引用位于中的目录中的准备好的数据文件 `training_data` `mydatastore` 。  
-* 创建变量，该变量 `input1` 可在以后用于使数据集的数据文件 `train_ds` 可供计算目标使用。
+* 假设你已经创建了一个数据存储，该数据存储可连接到保存了准备好的数据的存储服务。  
+* 使用 get() 方法从工作区 `ws` 获取该现有数据存储 `mydatastore`。
+* 创建一个 [FileDataset](how-to-create-register-datasets.md#filedataset) `train_ds`，该数据集引用位于 `mydatastore` 中 `training_data` 目录中的准备好的数据文件。  
+* 创建变量 `input1`，该变量可在以后用于使 `train_ds` 数据集的数据文件可供计算目标使用。
 
 ```python
 from azureml.core import Datastore, Dataset
@@ -360,6 +297,5 @@ input1 = train_ds.as_mount()
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为模型定型](how-to-set-up-training-targets.md)。
-* [Azure 机器学习数据集定型](how-to-train-with-datasets.md)
-* [创建 Azure 机器学习数据集](how-to-create-register-datasets.md)。
+* [训练模型](how-to-set-up-training-targets.md)。
+* [使用 Azure 机器学习数据集进行训练](how-to-train-with-datasets.md)

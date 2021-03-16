@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710492"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424489"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -50,26 +50,26 @@ ms.locfileid: "101710492"
 | [音频和人为标记的听录内容](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
 | [相关文本](#related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
 
-训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 利用文本定型比) 的音频 (的培训速度快得多。
+训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 使用文本进行训练比使用音频进行训练的速度快得多（分钟与天的对比）。
 
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
 > [!TIP]
-> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定义语音识别数据示例<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定义语音识别数据示例</a>
 
 > [!NOTE]
-> 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。 即使基础模型支持音频数据定型，该服务也可能只使用部分音频。 仍将使用所有脚本。
+> 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。 即使基础模型支持使用音频数据进行训练，该服务也可能只使用部分音频。 它仍将使用所有脚本。
 
 > [!NOTE]
-> 如果更改了用于定型的基本模型，并在定型数据集中具有音频，请 *始终* 检查新选择的基本模型是否 [支持音频数据定型](language-support.md#speech-to-text)。 如果以前使用的基本模型不支持对音频数据进行定型，而定型数据集包含音频，则新基础模型的定型时间将会 **大幅** 增加，并且可能会轻松地从几个小时到几天及更长时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则更是如此。
+> 如果要更改用于训练的基础模型，并且你的训练数据集内有音频，请务必检查新选择的基础模型是否[支持使用音频数据进行训练](language-support.md#speech-to-text)。 如果以前使用的基础模型不支持使用音频数据进行训练，而训练数据集包含音频，则新的基础模型的训练时间将会 **大幅** 增加，并且可能会轻易地从几个小时增加到几天及更长时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，则更是如此。
 >
-> 如果你面对上述段落中所述的问题，则可以通过减少数据集中的音频量或完全删除该数据并仅留下文本，来快速缩短定型时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则强烈建议使用后一种方法。
+> 如果你面临以上段落中所述的问题，则可以通过减少数据集内的音频量或完全删除音频并仅留下文本，来快速缩短训练时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，我们强烈建议你完全删除音频并仅留下文本。
 >
-> 对于培训专用硬件的区域，语音服务将使用最多20小时的音频进行培训。 在其他区域中，最多只能使用8小时的音频。
+> 在带有专用于训练的硬件的区域中，语音服务将使用最多 20 小时的音频进行训练。 在其他区域中，最多只会使用 8 小时的音频。
 
 ## <a name="upload-data"></a>上传数据
 
-若要上传数据，请导航到<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech <span class="docon docon-navigate-external x-hidden-focus"></span> Studio </a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
+若要上传数据，请导航到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
 
 ![屏幕截图，突出显示了语音门户中的“音频上传”选项。](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "101710492"
 
 参考下表来确保正确设置用于自定义语音识别的音频文件的格式：
 
-| 属性                 | Value                 |
+| 属性                 | 值                 |
 |--------------------------|-----------------------|
 | 文件格式              | RIFF (WAV)            |
 | 采样速率              | 8,000 Hz 或 16,000 Hz |
@@ -101,7 +101,7 @@ ms.locfileid: "101710492"
 > [!TIP]
 > 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 如果需要更多数据来进行训练，请将其划分为多个 .zip 文件并分别上传。 稍后，可选择从多个数据集进行训练。 但是，只能从单个数据集进行测试。
 
-使用 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX<span class="docon docon-navigate-external x-hidden-focus"></span></a> 来验证音频属性，或将现有音频转换为适当的格式。 下面这些示例演示如何通过 SoX 命令行完成其中的每个活动：
+使用 <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX</a> 来验证音频属性，或将现有音频转换为适当的格式。 下面这些示例演示如何通过 SoX 命令行完成其中的每个活动：
 
 | 活动 | 说明 | SoX 命令 |
 |----------|-------------|-------------|
@@ -114,7 +114,7 @@ ms.locfileid: "101710492"
 
 音频文件在录音开始和结束时可以保持静音。 如果可能，请在每个示例文件中的语音前后包含至少半秒的静音。 录音音量小或具有干扰性背景噪音的音频没什么用，但不应损害你的自定义模型。 收集音频示例之前，请务必考虑升级麦克风和信号处理硬件。
 
-| 属性                 | Value                               |
+| 属性                 | 值                               |
 |--------------------------|-------------------------------------|
 | 文件格式              | RIFF (WAV)                          |
 | 采样速率              | 8,000 Hz 或 16,000 Hz               |
@@ -129,7 +129,7 @@ ms.locfileid: "101710492"
 > [!NOTE]
 > 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个数据集进行测试，请确保将其保持在适当的文件大小内。 另外，每个训练文件不能超过 60 秒，否则将出错。
 
-若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，建议为1到20小时的音频提供单词转录。 不过，甚至在30分钟内也可以帮助改善识别结果。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
+若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，我们建议为大约 1 到 20 小时的音频提供逐字对照的听录。 不过，即使是短至 30 分钟的音频，也可以帮助改善识别结果。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
 例如：
 
@@ -146,14 +146,14 @@ speech03.wav    the lazy dog was not amused
 
 听录内容应经过文本规范化，以便可由系统处理。 但是，将数据上传到 Speech Studio 之前，必须完成一些重要的规范化操作。 有关在准备听录内容时可用的适当语言，请参阅[如何创建人为标记的听录内容](how-to-custom-speech-human-labeled-transcriptions.md)
 
-收集音频文件和相应的转录后，请在上传到<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>之前将它们打包为单个 .zip 文件。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
+收集音频文件和相应的听录内容后，请先将其打包成单个 .zip 文件，然后再上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
 
 > [!div class="mx-imgBorder"]
 > ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-有关语音服务订阅的建议区域列表，请参阅[设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account)。 在这些区域之一中设置语音订阅将减少训练模型所需的时间。 在这些区域中，培训每日可以处理大约10小时的音频，而不是在其他地区每天一小时处理一次。 如果无法在一周内完成模型训练，则该模型将标记为 "失败"。
+有关语音服务订阅的建议区域列表，请参阅[设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account)。 在这些区域之一中设置语音订阅将减少训练模型所需的时间。 在这些区域中，训练每日可以处理大约 10 小时的音频，而在其他区域中，每日只能处理 1 小时。 如果无法在一周内完成模型训练，则该模型将标记为“失败”。
 
-并非所有基本模型都支持音频数据培训。 如果基本模型不支持该模型，则该服务将忽略音频，并只训练转录的文本。 在这种情况下，训练将与相关文本定型相同。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。
+并非所有基础模型都支持使用音频数据进行训练。 如果基础模型不支持它，则服务将忽略音频，并仅使用听录内容的文本进行训练。 在这种情况下，训练将与使用相关文本进行的训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
 ## <a name="related-text-data-for-training"></a>用于训练的相关文本数据
 
@@ -164,9 +164,9 @@ speech03.wav    the lazy dog was not amused
 | 句子（言语） | 在识别句子上下文中的产品名称或行业特定的词汇时，可以提高准确度。 |
 | 发音 | 改善不常见字词、缩写词或其他未定义发音的单词的发音。 |
 
-可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 可以将所有内容打包为一个 zip 文件并将其上传到<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 所有内容均可打包成单个 zip 文件并上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。
 
-相关文本的定型通常在几分钟内完成。
+使用相关文本进行的训练通常在几分钟内完成。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>有关创建句子文件的指导原则
 
@@ -176,7 +176,7 @@ speech03.wav    the lazy dog was not amused
 
 参考下表来确保正确设置言语相关数据文件的格式：
 
-| 属性 | Value |
+| 属性 | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM |
 | 每行的话语数 | 1 |
@@ -184,7 +184,7 @@ speech03.wav    the lazy dog was not amused
 
 此外，还需要考虑以下限制：
 
-* 避免重复字符、单词或单词组三次以上。 例如： "aaaa"、"是"、"是" 或 "这就是它"。 语音服务可能会删除太多重复的行。
+* 请避免将字符、单词或词组重复三次以上。 例如：“aaaa”、“yeah yeah yeah yeah”或“that's it that's it that's it that's it”。 语音服务可能会删除包含太多重复项的行。
 * 请勿使用特殊字符或编码在 `U+00A1` 以后的 UTF-8 字符。
 * 将会拒绝 URI。
 
@@ -214,7 +214,7 @@ speech03.wav    the lazy dog was not amused
 
 参考下表来确保相关发音数据文件的格式正确。 发音文件较小，应只占几千字节。
 
-| 属性 | Value |
+| 属性 | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM（英语还支持 ANSI） |
 | 每行的发音数目 | 1 |

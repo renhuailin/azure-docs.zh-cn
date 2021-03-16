@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: da3e5bd9efcdd7d82dd3d3937918c4a64f69edbd
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215640"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519123"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "102215640"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
@@ -158,7 +158,7 @@ Pip 子进程错误：
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>你从工作区容器注册表收到 401 错误
 
-使用 [ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) 重新同步存储密钥。
+使用 [ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace#sync-keys--) 重新同步存储密钥。
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>环境持续引发“正在等待其他 conda 操作完成...”错误
 
@@ -166,7 +166,7 @@ Pip 子进程错误：
 
 ### <a name="your-custom-docker-image-isnt-in-the-registry"></a>自定义 Docker 映像不在注册表中
 
-请检查是否使用了[正确的标记](./how-to-use-environments.md#create-an-environment)且 `user_managed_dependencies = True`。 `Environment.python.user_managed_dependencies = True` 禁用 conda 并使用用户的已安装包。
+请检查是否使用了[正确的标记](./how-to-use-environments.md#create-an-environment)且 `user_managed_dependencies = True`。 `Environment.python.user_managed_dependencies = True` 禁用 Conda 并使用用户的已安装包。
 
 ### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>你遇到以下常见虚拟网络问题之一
 

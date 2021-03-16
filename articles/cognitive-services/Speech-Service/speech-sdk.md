@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601813"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434430"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -58,35 +58,36 @@ ms.locfileid: "98601813"
 
 ### <a name="voice-assistants"></a>语音助手
 
-使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成的自定义命令服务完成任务。 此外，语音助手可以使用在 [自定义语音门户](https://aka.ms/customvoice) 中创建的自定义语音来添加独特的语音输出体验。
+[语音助理](voice-assistants.md)使用语音 SDK，让你可为你的应用程序和体验创建自然的、类似于人类的对话界面。 语音 SDK 提供快速、可靠的交互，其中包括单一连接上的语音转文本、文本转语音和对话数据。 你的实现可以使用 Bot Framework 的 Direct Line Speech 通道或集成的“自定义命令”服务来完成任务。 此外，语音助理可以使用在[“自定义语音”门户](https://aka.ms/customvoice)中创建的自定义语音来添加独特的语音输出体验。
 
-**语音助手** 适用于以下平台：
+以下平台上提供了“语音助理”支持：
 
   - C++/Windows 和 Linux 和 macOS
   - C#/Windows
-  - Java/Windows & Linux & macOS & Android (语音设备 SDK) 
+  - Java/Windows 和 Linux 和 macOS 和 Android（语音设备 SDK）
+  - Go
 
-#### <a name="keyword-spotting"></a>关键字发现
+#### <a name="keyword-spotting"></a>关键字辨识
 
-语音 SDK 支持 [关键字发现](./custom-keyword-basics.md) 的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
+语音 SDK 支持[关键字辨识](./custom-keyword-basics.md)的概念。 “关键字辨识”是在语音中识别关键字的操作，后跟一个在听到该关键字时执行的操作。 例如，“你好，Cortana”会激活 Cortana 助理。
 
-**关键字发现 (KWS)** 可在以下平台上使用：
+**关键字辨识 (KWS)** 在以下平台上可用：
 
   - C++/Windows 和 Linux
   - C#/Windows 和 Linux
   - Python/Windows 和 Linux
   - Java/Windows 和 Linux 和 Android（语音设备 SDK）
-  - 关键字发现 (KWS) 功能可能适用于任何麦克风类型，但官方 KWS 支持目前仅限于在 Azure Kinect 深色硬件或语音设备 SDK 中找到的麦克风阵列
+  - 关键字辨识 (KWS) 功能可能适用于任何麦克风类型，不过，官方的 KWS 支持目前仅限于 Azure Kinect DK 硬件或语音设备 SDK 中的麦克风阵列
 
-### <a name="meeting-scenarios"></a>会议方案
+### <a name="meeting-scenarios"></a>会议场景
 
-无论是通过单个设备还是多设备会话，语音 SDK 都适用于转录 meeting 方案。
+无论是在单设备对话中还是在多设备对话中，语音 SDK 都非常适用于“会议听录”场景。
 
 #### <a name="conversation-transcription"></a>对话听录
 
-[对话](conversation-transcription.md) 脚本为每个扬声器 (实时 (和异步) 语音识别、发言人识别和句子归属，也称为 *diarization*) 。 它非常适合用于听录能够区分说话人的面对面会谈场景。
+[对话听录](conversation-transcription.md)实现了实时（和异步）语音识别、说话人识别，并可以将句子归属到每个扬声器（也称为 *分割聚类*）。 它非常适合用于听录能够区分说话人的面对面会谈场景。
 
-**会话** 脚本在以下平台上提供：
+**对话听录** 在以下平台上可用：
 
   - C++/Windows 和 Linux
   - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Linux
@@ -94,26 +95,26 @@ ms.locfileid: "98601813"
 
 #### <a name="multi-device-conversation"></a>多设备对话
 
-通过 [多设备会话](multi-device-conversation.md)，连接会话中的多个设备或客户端，以发送基于语音的消息或基于文本的消息，并对脚本和翻译提供简单支持。
+借助[多设备对话](multi-device-conversation.md)，可在一个对话中连接多个设备或客户端以发送基于语音或文本的消息，并轻松支持听录和翻译。
 
-**多设备对话** 在以下平台上提供：
+**多设备对话** 在以下平台上可用：
 
-  - C + +/Windows
-  - C # (Framework & .NET Core) /Windows
+  - C++/Windows
+  - C#（Framework 和 .NET Core）/Windows
 
-### <a name="custom--agent-scenarios"></a>自定义/代理方案
+### <a name="custom--agent-scenarios"></a>自定义/代理场景
 
-语音 SDK 可用于转录呼叫中心方案，其中生成了电话服务数据。
+语音 SDK 可用于“呼叫中心听录”场景，其中会生成电话服务数据。
 
 #### <a name="call-center-transcription"></a>呼叫中心听录
 
-[呼叫中心](call-center-transcription.md) 脚本是一种常见的语音到文本转录，适用于来自各种系统（如交互式语音响应 (IVR) 的大量电话服务数据。 语音服务的最新语音识别模型非常擅长听录这些电话数据，即使是人类也难以识别的数据。
+[呼叫中心听录](call-center-transcription.md)是语音转文本的一个常见应用场景，用于听录可能来自各种系统（例如交互式语音应答 (IVR)）的大量电话服务数据。 语音服务的最新语音识别模型非常擅长听录这些电话数据，即使是人类也难以识别的数据。
 
-**Call Center** 脚本通过 Batch Speech Service 通过其 REST API 提供，可以在任何情况下使用。
+**呼叫中心听录** 通过批量语音服务（经由其 REST API）提供，可以在任何情况下使用。
 
 ### <a name="codec-compressed-audio-input"></a>编解码器压缩的音频输入
 
-一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 </a>。
 
 可在以下平台上使用编解码器压缩的音频输入：
 
@@ -137,9 +138,9 @@ ms.locfileid: "98601813"
 
 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇的问题。 可通过[自定义语音识别门户](https://aka.ms/customspeech)来创建和管理无代码自定义语音识别模型。 自定义语音识别模型在发布后可以由语音 SDK 使用。
 
-### <a name="custom-text-to-speech"></a>自定义文本到语音转换
+### <a name="custom-text-to-speech"></a>自定义文本转语音
 
-自定义文本到语音功能（也称为自定义语音）是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 可以通过 [自定义语音门户](https://aka.ms/customvoice)来创建和管理无代码自定义语音模型。 自定义语音模型发布后，它可以由语音 SDK 使用。
+自定义文本转语音（也称为“自定义语音”）是一组在线工具，用于为你的品牌创建可识别的独一无二的语音。 可通过[“自定义语音”门户](https://aka.ms/customvoice)来创建和管理无代码“自定义语音”模型。 “自定义语音”模型在发布后可以由语音 SDK 使用。
 
 ## <a name="get-the-speech-sdk"></a>获取语音 SDK
 

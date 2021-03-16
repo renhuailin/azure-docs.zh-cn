@@ -1,7 +1,7 @@
 ---
 title: 在生产模型上收集数据
 titleSuffix: Azure Machine Learning
-description: 了解如何从部署在 Azure Kubernetes Service (AKS) 群集上的 Azure 机器学习模型收集数据。
+description: 了解如何从 Azure Kubernetes 服务 (AKS) 群集上部署的 Azure 机器学习模型中收集数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: MT
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680964"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521894"
 ---
 # <a name="collect-data-from-models-in-production"></a>收集生产中模型的数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "97680964"
 
 * 针对收集的生产数据[监视数据偏移](how-to-monitor-datasets.md)。
 
-* 使用[Power BI](#powerbi)或[Azure Databricks](#databricks)分析收集的数据
+* 使用 [Power BI](#powerbi) 或 [Azure Databricks](#databricks) 分析收集的数据
 
 * 更好地决定何时重新训练或优化模型。
 
@@ -65,11 +65,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 - 需要一个 AKS 群集。 有关如何创建此类群集并部署到其中的信息，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
 
-- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+- [设置环境](how-to-configure-environment.md)并安装 [Azure 机器学习监视 SDK](/python/api/overview/azure/ml/install)。
 
 ## <a name="enable-data-collection"></a>启用数据收集
 
-无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py)。
+无论通过 Azure 机器学习或其他工具部署的模型是什么，都可以启用[数据收集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector)。
 
 若要启用数据收集，需要：
 
@@ -116,7 +116,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 若要创建新映像并部署机器学习模型，请参阅[部署方式和部署位置](how-to-deploy-and-where.md)。
 
-1. 将 "Azure 监视" pip 包添加到 web 服务环境的 conda 依赖项：
+1. 将“Azure-Monitoring”pip 包添加到 Web 服务环境的 conda 依赖项：
   ```Python
     env = Environment('webserviceenv')
     env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])

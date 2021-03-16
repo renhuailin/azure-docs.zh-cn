@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/24/2021
 ms.author: alexeyo
-ms.openlocfilehash: f5566276f4555e2480434e385bf2129f5b8cdd24
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699974"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449843"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -30,7 +30,9 @@ ms.locfileid: "101699974"
 
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
 |--|--|--|
-| 并发请求限制（基础模型和自定义模型） | 1 | 20（默认值） |
+| 并发请求限制 - 基础模型 | 1 | 100（默认值） |
+| 可调 | 否<sup>2</sup> | Yes<sup>2</sup> |
+| 并发请求限制 - 自定义模型 | 1 | 20（默认值） |
 | 可调 | 否<sup>2</sup> | Yes<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>批量听录
@@ -52,7 +54,7 @@ ms.locfileid: "101699974"
 | 数据导入的最大声学数据集文件大小 | 2 GB | 2 GB |
 | 数据导入的最大语言数据集文件大小 | 200 MB | 1.5 GB |
 | 数据导入的最大发音数据集文件大小 | 1 KB | 1 MB |
-| `text`在[创建模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/)API 请求中使用参数时的最大文本大小 | 200 KB | 500 KB |
+| 在[创建模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) API 请求中使用 `text` 参数时的最大文本大小 | 200 KB | 500 KB |
 
 <sup>1</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>
 <sup>2</sup> 请参阅[其他说明](#detailed-description-quota-adjustment-and-best-practices)、[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和[调整说明](#speech-to-text-increasing-online-transcription-concurrent-request-limit)。<br/> 
@@ -77,7 +79,7 @@ ms.locfileid: "101699974"
 
 <sup>3</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>
 <sup>4</sup> 请参阅[其他说明](#detailed-description-quota-adjustment-and-best-practices)和[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。<br/>
-<sup>5</sup> 查看 [其他说明](#detailed-description-quota-adjustment-and-best-practices)、 [最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和 [调整说明](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)。<br/> 
+<sup>5</sup> 请参阅[其他说明](#detailed-description-quota-adjustment-and-best-practices)、[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)和[调整说明](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)。<br/> 
 
 ## <a name="detailed-description-quota-adjustment-and-best-practices"></a>详细说明、配额调整和最佳做法
 请求增加配额之前（如果适用），请确保其必要性。 语音服务正在使用自动缩放技术将所需的计算资源带入“按需”模式，同时通过不保留过多的硬件容量来降低客户成本。 每当应用程序收到响应代码 429（“请求过多”）时，但工作负载又在定义的限制内（请参阅[配额和限制快速参考](#quotas-and-limits-quick-reference)），最可能的解释是，该服务正在按需进行扩展，并且尚未达到所需的扩展，因此不会立即有足够的资源来提供请求服务。 此状态通常是暂时的，不应持续太久。
@@ -91,8 +93,8 @@ ms.locfileid: "101699974"
   - 查看[语音转文本示例](#speech-to-text-example-of-a-workload-pattern-best-practice)
 - 在相同或不同的区域中创建其他语音资源，并使用“轮循机制”方法在区域间分配工作负载。 这对于文本转语音 TPS（每秒事务数）参数特别重要，该参数设置为每个语音资源 200 个，并且无法调整  
 
-下一部分介绍调整配额的特定情况。<br/>
-跳转到 [文本到语音转换。增大自定义语音的脚本并发请求限制](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
+下一部分介绍调整配额的特定案例。<br/>
+跳转到[文本转语音。为自定义语音增加听录并发请求限制](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>语音转文本：增加联机听录并发请求限制
 默认情况下，每个语音资源（基础模型）或每个自定义终结点（自定义模型）的并发请求数限制为 20。 此数量在标准定价层中可能有所增加。 提交请求之前，请确保熟悉[此部分](#detailed-description-quota-adjustment-and-best-practices)中的材料，并了解这些[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。
@@ -104,7 +106,7 @@ ms.locfileid: "101699974"
 并发请求限制参数的现有值不通过 Azure 门户、命令行工具或 API 请求显示。 若要验证现有值，请创建 Azure 支持请求。
 
 >[!NOTE]
->[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。 但是，语音容器具有其自己的容量限制，应考虑这些限制。 请参阅 "是否可以 *帮助进行容量规划和本地的语音到文本容器的成本估算？"* 从 [语音容器常见问题解答](./speech-container-howto.md)。
+>[语音容器](speech-container-howto.md)不会需要增加并发请求限制，因为容器只受其托管到的硬件的 CPU 约束。 但是，语音容器有其自己的容量限制，这一点应予以考虑。 请参阅问题“是否可以帮助为本地语音转文本容器进行容量规划和成本估算？” （来自[语音容器常见问题解答](./speech-container-howto.md)）。
 
 #### <a name="have-the-required-information-ready"></a>准备好必需的信息：
 - 对于基础模型：
@@ -162,22 +164,22 @@ ms.locfileid: "101699974"
 
 通常，强烈建议在投入生产之前测试工作负载和工作负载模式。
 
-### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>文本到语音转换：增加对自定义语音的脚本并发请求限制
-默认情况下，自定义语音终结点的并发请求数限制为10。 此数量在标准定价层中可能有所增加。 提交请求之前，请确保熟悉[此部分](#detailed-description-quota-adjustment-and-best-practices)中的材料，并了解这些[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。
+### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>文本转语音：为自定义语音增加听录并发请求限制
+默认情况下，自定义语音终结点的并发请求数已限制为 10。 此数量在标准定价层中可能有所增加。 提交请求之前，请确保熟悉[此部分](#detailed-description-quota-adjustment-and-best-practices)中的材料，并了解这些[最佳做法](#general-best-practices-to-mitigate-throttling-during-autoscaling)。
 
 增加并发请求限制不会直接影响成本。 语音服务使用“只需为使用的资源付费”模型。 此限制定义了服务在开始限制请求之前可缩放的程度。
 
 并发请求限制参数的现有值不通过 Azure 门户、命令行工具或 API 请求显示。 若要验证现有值，请创建 Azure 支持请求。
 
 >[!NOTE]
->[语音容器](speech-container-howto.md) 不需要增加并发请求限制，因为容器只受托管它们的硬件的 cpu 的约束。
+>[语音容器](speech-container-howto.md)不会需要增加并发请求限制，因为容器只受其托管到的硬件的 CPU 约束。
 
-#### <a name="prepare-the-required-information"></a>准备所需的信息：
-若要创建增加请求，需要提供部署区域和自定义终结点 ID。 若要获取它，请执行以下操作： 
+#### <a name="prepare-the-required-information"></a>准备所需信息：
+若要创建一个增加请求，需要提供部署区域和自定义终结点 ID。 若要获取这些信息，请执行以下操作： 
 
 - 转到 [Speech Studio](https://speech.microsoft.com/) 门户
 - 视需要登录
-- 中转到 *自定义语音*
+- 转到“自定义语音”
 - 选择项目
 - 转到“部署”
 - 选择所需终结点
@@ -193,7 +195,7 @@ ms.locfileid: "101699974"
 - 选择要增加（或要检查）并发请求限制的语音资源
 - 选择“新建支持请求”（支持 + 疑难解答组）  
 - 将出现一个新窗口，其中包含有关 Azure 订阅和 Azure 资源的自动填充信息
-- 输入 *摘要* (如 "增大 TTS 自定义终结点并发请求限制" ) 
+- 在“摘要”中输入内容（如“增大 TTS 自定义终结点并发请求限制”）
 - 在“问题类型”中选择“配额或订阅问题”
 - 在出现的“问题子类型”中，选择以下内容：
   - “配额或并发请求增加” - 用于增加请求
@@ -201,7 +203,7 @@ ms.locfileid: "101699974"
 - 单击“下一步:解决方案
 - 进一步创建请求
 - 在“详细信息”选项卡的“说明”字段中输入以下内容 ：
-  - 请注意，请求是关于 **文本到语音的** 配额
+  - 注释，即该请求是有关“语音转文本”配额的请求
   - [先前收集的](#prepare-the-required-information) Azure 资源信息 
   - 输入必填信息之后，单击“审阅 + 创建”选项卡中的“创建”按钮 
   - 注意 Azure 门户通知中的支持请求编号。 我们会尽快联系你以进行进一步处理

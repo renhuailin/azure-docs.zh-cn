@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: bf2419799ad6c229c6ffb891bc588479e134d427
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683434"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500387"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -32,7 +32,7 @@ ms.locfileid: "98683434"
 
 + 工作区可以包含 [Azure 机器学习计算实例](concept-compute-instance.md)和配置了运行 Azure 机器学习所需的 Python 环境的云资源。
 
-+ [用户角色](how-to-assign-roles.md) 使你可以与其他用户、团队或项目共享你的工作区。
++ 借助[用户角色](how-to-assign-roles.md)可以与其他用户、团队或项目共享你的工作区。
 + [计算目标](concept-azure-machine-learning-architecture.md#compute-targets)用于运行试验。
 + 创建工作区的同时还会创建[关联的资源](#resources)。
 + [试验](concept-azure-machine-learning-architecture.md#experiments)是用于构建模型的训练用运行。  
@@ -52,7 +52,7 @@ ms.locfileid: "98683434"
 + 在 Web 上：
     + [Azure 机器学习工作室](https://ml.azure.com) 
     + [Azure 机器学习设计器](concept-designer.md) 
-+ 在任何 Python 环境中使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
++ 在任何 Python 环境中使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)。
 + 在任何 R 环境中使用[适用于 R 的 Azure 机器学习 SDK（预览版）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
 + 在命令行上使用 Azure 机器学习 [CLI 扩展](./reference-azure-machine-learning-cli.md)
 + [Azure 机器学习 VS Code 扩展](how-to-manage-resources-vscode.md#workspaces)
@@ -89,7 +89,7 @@ ms.locfileid: "98683434"
 可通过多种方式创建工作区：  
 
 * 使用 [Azure 门户](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace)作为点击界面来逐步完成每个步骤。
-* 使用用于 [python 的 AZURE 机器学习 SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) 从 Python 脚本或 Jupyter 笔记本动态创建工作区
+* 使用[适用于 Python 的 Azure 机器学习 SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) 从 Python 脚本或 Jupyter Notebook 动态创建工作区
 * 需要按企业安全标准自动创建或自定义创建时，请使用 [Azure 资源管理器模板](how-to-create-workspace-template.md)或 [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md)。
 * 如果使用 Visual Studio Code，请使用 [VS Code 扩展](how-to-manage-resources-vscode.md#create-a-workspace)。
 

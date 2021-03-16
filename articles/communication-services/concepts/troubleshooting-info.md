@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ef1c4d87be39b6af90ed07cba9249cca4cf8bd6a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e35fcd94ef2fbdde0ac3bb7c71f85a3afd15add4
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036021"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487281"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -25,7 +25,7 @@ ms.locfileid: "102036021"
 
 为了帮助你对某些类型的问题进行故障排除，系统可能会要求你提供以下信息：
 
-* **MS-CV ID**：此 ID 用于对通话和消息进行故障排除。 
+* **MS-CV ID**：此 ID 用于对通话和消息进行故障排除。
 * **呼叫 ID**：此 ID 用于标识通信服务呼叫。
 * **短信 ID**：此 ID 用于标识短信。
 * **调用日志**：这些日志包含可用于排查调用和网络问题的详细信息。
@@ -33,14 +33,14 @@ ms.locfileid: "102036021"
 
 ## <a name="access-your-ms-cv-id"></a>获取 MS-CV ID
 
-在初始化客户端库时，可以通过在 `clientOptions` 对象实例中配置诊断来获取 MS-CV ID。 可以为任何 Azure 客户端库配置诊断，包括聊天、管理和 VoIP 呼叫。
+在初始化客户端库时，可以通过在 `clientOptions` 对象实例中配置诊断来获取 MS-CV ID。 可以为任何 Azure 客户端库配置诊断，包括聊天、标识和 VoIP 呼叫。
 
 ### <a name="client-options-example"></a>客户端选项示例
 
 以下代码片段演示的是诊断配置。 当客户端库与启用的诊断一起使用时，诊断详细信息会发送到配置的事件侦听器：
 
 # <a name="c"></a>[C#](#tab/csharp)
-``` 
+```
 // 1. Import Azure.Core.Diagnostics
 using Azure.Core.Diagnostics;
 
@@ -61,13 +61,13 @@ var clientOptions = new ChatClientOptions()
     }
 };
 
-// 4. Initialize the ChatClient instance with the clientOptions 
+// 4. Initialize the ChatClient instance with the clientOptions
 ChatClient chatClient = new ChatClient(endpoint, communicationUserCredential, clientOptions);
 ChatThreadClient chatThreadClient = await chatClient.CreateChatThreadAsync("Thread Topic", new[] { new ChatThreadMember(communicationUser) });
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-``` 
+```
 from azure.communication.chat import ChatClient, CommunicationUserCredential
 endpoint = "https://communication-services-sdk-live-tests-for-python.communication.azure.com"
 chat_client = ChatClient(
@@ -83,22 +83,22 @@ chat_client = ChatClient(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods 
+// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
 console.log(call.id)
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 ```objc
-// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends 
+// The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
 // todo: the code snippet suggests it's a property while the comment suggests it's a method call
-print(call.callId) 
+print(call.callId)
 ```
 
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods 
-Log.d(call.getCallId()) 
+// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+Log.d(call.getCallId())
 ```
 ---
 
@@ -130,21 +130,21 @@ console.log(result); // your message ID will be in the result
 以下代码可用于将 `AzureLogger` 配置为使用 JavaScript 客户端库将日志输出到控制台：
 
 ```javascript
-import { AzureLogger } from '@azure/logger'; 
+import { AzureLogger } from '@azure/logger';
 
-AzureLogger.verbose = (...args) => { console.info(...args); } 
-AzureLogger.info = (...args) => { console.info(...args); } 
-AzureLogger.warning = (...args) => { console.info(...args); } 
-AzureLogger.error = (...args) => { console.info(...args); } 
+AzureLogger.verbose = (...args) => { console.info(...args); }
+AzureLogger.info = (...args) => { console.info(...args); }
+AzureLogger.warning = (...args) => { console.info(...args); }
+AzureLogger.error = (...args) => { console.info(...args); }
 
-callClient = new CallClient({logger: AzureLogger}); 
+callClient = new CallClient({logger: AzureLogger});
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
 
 在针对 iOS 系统进行开发时，日志存储在 `.blog` 文件中。 请注意，不能直接查看日志，因为它们已加密。
 
-可以通过打开 Xcode 访问它们。 转到“窗口”>“设备和模拟器”>“设备”。 选择你的设备。 在“已安装的应用”下，选择应用程序，并单击“下载容器”。 
+可以通过打开 Xcode 访问它们。 转到“窗口”>“设备和模拟器”>“设备”。 选择你的设备。 在“已安装的应用”下，选择应用程序，并单击“下载容器”。
 
 此操作将为你提供 `xcappdata` 文件。 右键单击该文件，然后选择“显示包内容”。 然后你将看到 `.blog` 文件，可以将其附加到 Azure 支持请求。
 
@@ -152,8 +152,8 @@ callClient = new CallClient({logger: AzureLogger});
 
 在针对 Android 系统进行开发时，日志存储在 `.blog` 文件中。 请注意，不能直接查看日志，因为它们已加密。
 
-在 Android Studio 上，从模拟器和设备中选择“查看”>“工具窗口”>“设备文件资源管理器”，导航到设备文件资源管理器。 `.blog` 文件将位于应用程序的目录中，例如 `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog`。 可以将此文件附加到支持请求。 
-   
+在 Android Studio 上，从模拟器和设备中选择“查看”>“工具窗口”>“设备文件资源管理器”，导航到设备文件资源管理器。 `.blog` 文件将位于应用程序的目录中，例如 `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog`。 可以将此文件附加到支持请求。
+
 
 ---
 

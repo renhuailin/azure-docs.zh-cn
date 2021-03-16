@@ -1,7 +1,7 @@
 ---
 title: 使用 TLS 保护 Web 服务
 titleSuffix: Azure Machine Learning
-description: 了解如何启用 TLS 版本1.2 的 HTTPS 来保护通过 Azure 机器学习部署的 web 服务。
+description: 了解如何使用 TLS 版本 1.2 启用 HTTPS，以保护通过 Azure 机器学习部署的 Web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: aashishb
 ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 68163f7ca8cc1b37bda4e1224330f966265554c2
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980466"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518545"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "99980466"
 >
 > 具体来说，通过 Azure 机器学习部署的 Web 服务支持 AKS 和 ACI 的 TLS 版本 1.2。 对于 ACI 部署，如果在用较旧的 TLS 版本，建议重新部署以使用最新 TLS 版本。
 >
-> 不支持 Azure 机器学习 AKS 推理的 TLS 版本1.3。
+> 不支持将 TLS 版本 1.3 用于 Azure 机器学习 - AKS 推理。
 
 TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关数字证书工作原理的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 
@@ -82,9 +82,9 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
 ### <a name="deploy-on-azure-kubernetes-service"></a>在 Azure Kubernetes 服务上部署
 
   > [!NOTE]
-  > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
+  > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](/python/api/overview/azure/ml/intro)。
 
-在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
+在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
 
 可以使用 Microsoft 证书或从 CA 购买的自定义证书来启用 TLS。 
 
@@ -134,7 +134,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-有关 enable_ssl 的详细信息，请参阅 [AksProvisioningConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?preserve-view=true&view=azure-ml-py#&preserve-view=trueenable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
+有关 enable_ssl 的详细信息，请参阅 [AksProvisioningConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) 和 [AksAttachConfiguration.enable_ssl()](/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)。
 
 ### <a name="deploy-on-azure-container-instances"></a>在 Azure 容器实例上进行部署
 
@@ -199,8 +199,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 有关详细信息，请参阅以下参考文档：
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ### <a name="update-custom-certificate"></a>更新自定义证书
 
@@ -239,8 +239,8 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 有关详细信息，请参阅以下参考文档：
 
-* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?preserve-view=true&view=azure-ml-py)
-* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?preserve-view=true&view=azure-ml-py)
+* [SslConfiguration](/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration)
+* [AksUpdateConfiguration](/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration)
 
 ## <a name="disable-tls"></a>禁用 TLS
 

@@ -61,6 +61,8 @@
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: 创建用户标记的听录内容
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: 模型和终结点生命周期
+          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: 参考
       items:
         - name: C++
@@ -529,6 +531,8 @@
           displayName: 'ACI,azure container instances,container instances,containers'
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
+        - name: 容器常见问题解答
+          href: speech-container-faq.md
         - name: 认知服务容器文档
           href: ../containers/index.yml
 - name: 设备

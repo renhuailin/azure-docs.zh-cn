@@ -10,29 +10,29 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739580"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518919"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>创建和管理 Azure 机器学习工作区 
 
-本文介绍如何通过 Azure 门户或 [SDK for Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 创建、查看和删除用于 [Azure 机器学习](overview-what-is-azure-ml.md)的 [Azure 机器学习工作区](concept-workspace.md)
+本文介绍如何通过 Azure 门户或 [SDK for Python](/python/api/overview/azure/ml/) 创建、查看和删除用于 [Azure 机器学习](overview-what-is-azure-ml.md)的 [Azure 机器学习工作区](concept-workspace.md)
 
 随着需求的变化或自动化要求的增加，还可以[使用 CLI](reference-azure-machine-learning-cli.md) 或[通过 VS Code 扩展](tutorial-setup-vscode-extension.md)创建和删除工作区。
 
 ## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* 如果使用 Python SDK，请[安装 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+* 如果使用 Python SDK，请[安装 SDK](/python/api/overview/azure/ml/install)。
 
 ## <a name="limitations"></a>限制
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
-默认情况下，创建工作区还会 (ACR) 创建 Azure 容器注册表。  由于 ACR 当前不支持资源组名称中的 unicode 字符，请使用不包含这些字符的资源组。
+默认情况下，创建工作区时还会创建 Azure 容器注册表 (ACR)。  由于 ACR 当前不支持在资源组名称中使用 unicode 字符，因此请使用不包含这些字符的资源组。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
@@ -111,7 +111,7 @@ ms.locfileid: "97739580"
                              exist_ok=False)
    ```
 
-有关详细信息，请查看[工作区 SDK 参考](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)。
+有关详细信息，请查看[工作区 SDK 参考](/python/api/azureml-core/azureml.core.workspace.workspace)。
 
 如果在访问订阅时遇到问题，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)以及 [Azure 机器学习中的身份验证](https://aka.ms/aml-notebook-auth)笔记本。
 
@@ -162,12 +162,12 @@ ms.locfileid: "97739580"
 ### <a name="networking"></a>网络  
 
 > [!IMPORTANT]  
-> 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [网络隔离和隐私](how-to-network-security-overview.md)。
+> 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅[网络隔离和隐私](how-to-network-security-overview.md)。
 
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure 机器学习 Python SDK 提供 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) 类，此类可与 [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) 配合使用来创建具有专用终结点的工作区。 此类需要现有虚拟网络。
+Azure 机器学习 Python SDK 提供 [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) 类，此类可与 [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) 配合使用来创建具有专用终结点的工作区。 此类需要现有虚拟网络。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -199,7 +199,7 @@ Azure 机器学习 Python SDK 提供 [PrivateEndpointConfig](/python/api/azureml
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描
 
-Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 你应该允许 Azure 安全中心扫描你的资源并遵循其建议。 有关详细信息，请参阅安全中心和[Azure Kubernetes Services 与安全中心集成](../security-center/defender-for-kubernetes-introduction.md)的[azure 容器注册表映像扫描](../security-center/defender-for-container-registries-introduction.md)。
+Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级威胁防护。 你应该允许 Azure 安全中心扫描你的资源并遵循其建议。 有关详细信息，请参阅[通过安全中心扫描 Azure 容器注册表映像](../security-center/defender-for-container-registries-introduction.md)和 [Azure Kubernetes 服务与安全中心的集成](../security-center/defender-for-kubernetes-introduction.md)。
 
 ### <a name="advanced"></a>高级
 
@@ -373,7 +373,7 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 
 ## <a name="troubleshooting"></a>故障排除
 
-* **Azure 机器学习 studio 中支持的浏览** 器：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
+* Azure 机器学习工作室支持的浏览器：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
   * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
   * Safari（最新版本，仅限 Mac）
   * Chrome（最新版本）
