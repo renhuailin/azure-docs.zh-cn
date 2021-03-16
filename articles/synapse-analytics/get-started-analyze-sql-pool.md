@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219524"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426155"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
@@ -77,11 +77,12 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
+1. 应看到名为 SQLPOOL1 的数据库。 如果没有看到，请单击“刷新”。
 1. 转到“SQLPOOL1” > “表” 。 
-1. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
-1. 等待新的 SQL 脚本创建并运行。
-1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLPOOL1”的 SQL 池 。
-1. 将 SQL 脚本的文本替换为此代码并运行。
+3. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
+4. 等待新的 SQL 脚本创建并运行。
+5. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLPOOL1”的 SQL 池 。
+6. 将 SQL 脚本的文本替换为此代码并运行。
 
     ```sql
     SELECT PassengerCount,

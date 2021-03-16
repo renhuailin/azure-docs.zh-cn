@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7e02bfb295460797edf46eac57afa628cd1544be
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579498"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212920"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>教程：使用托管标识将密钥保管库连接到 Azure Spring Cloud 应用
 
@@ -25,18 +25,18 @@ Azure Key Vault 可以用来安全地存储令牌、密码、证书、API 密钥
 ## <a name="prerequisites"></a>先决条件
 
 * [注册 Azure 订阅](https://azure.microsoft.com/free/)
-* [安装 Azure CLI 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* [安装 Azure CLI 2.0.67 或更高版本](/cli/azure/install-azure-cli)
 * [安装 Maven 3.0 或更高版本](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>创建资源组
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用命令 [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) 创建一个资源组，以同时包含 Key Vault 和 Spring Cloud：
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用命令 [az group create](/cli/azure/group#az-group-create) 创建一个资源组，以同时包含 Key Vault 和 Spring Cloud：
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>设置密钥保管库
-要创建密钥保管库，请使用命令 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create)：
+要创建密钥保管库，请使用命令 [az keyvault create](/cli/azure/keyvault#az-keyvault-create)：
 
 > [!Important]
 > 每个密钥保管库必须具有唯一的名称。 将以下示例中的 <your-keyvault-name> 替换为你的密钥保管库名称。
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 记下返回的 `vaultUri`（其格式将为“https://<your-keyvault-name>.vault.azure.net”）。 在后续步骤中将使用它。
 
-现在可以使用命令 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set) 将机密放入密钥保管库中：
+现在可以使用命令 [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) 将机密放入密钥保管库中：
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -65,11 +65,11 @@ az spring-cloud create -n "myspringcloud" -g "myResourceGroup"
 以下示例按 `--assign-identity` 参数的请求，创建名为 `springapp` 且已启用系统分配托管标识的应用。
 
 ```azurecli
-az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup" --is-public true --assign-identity
+az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup" --assign-endpoint true --assign-identity
 export SERVICE_IDENTITY=$(az spring-cloud app show --name "springapp" -s "myspringcloud" -g "myResourceGroup" | jq -r '.identity.principalId')
 ```
 
-记下返回的 `url`（其格式将为“https://<your-app-name>.azuremicroservices.io”）。 在后续步骤中将使用它。
+记下返回的 `url`（其格式将为 `https://<your-app-name>.azuremicroservices.io`）。 在后续步骤中将使用它。
 
 
 ## <a name="grant-your-app-access-to-key-vault"></a>请授予应用对密钥保管库的访问权限
@@ -169,7 +169,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENT
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>使用 Java SDK 生成示例 Spring Boot 应用
 
-此示例可从 Azure 密钥保管库设置和获取机密。 [适用于 Java 的 Azure Key Vault 机密客户端库](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary)提供跨 Azure SDK 的 Azure Active Directory 令牌身份验证支持。 它提供一组可用于构建 Azure SDK 客户端以支持 AAD 令牌身份验证的 TokenCredential 实现。
+此示例可从 Azure 密钥保管库设置和获取机密。 [适用于 Java 的 Azure Key Vault 机密客户端库](/java/api/overview/azure/security-keyvault-secrets-readme)提供跨 Azure SDK 的 Azure Active Directory 令牌身份验证支持。 它提供一组可用于构建 Azure SDK 客户端以支持 AAD 令牌身份验证的 TokenCredential 实现。
 
 使用 Azure Key Vault 机密客户端库，可以安全地存储令牌、密码、API 密钥和其他机密并控制对它们的访问权限。 此库提供了创建、检索、更新、删除、清除、备份、还原和列出机密及其版本的操作。
 
@@ -193,7 +193,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENT
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. 通过添加 [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable)，从 Azure Active Directory 和 [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) 获取令牌，以便在代码中从密钥保管库设置或获取机密。
+3. 通过添加 [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder)，从 Azure Active Directory 和 [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) 获取令牌，以便在代码中从密钥保管库设置或获取机密。
 
     从克隆示例项目的 [MainController.java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) 获取示例。
 

@@ -10,19 +10,19 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209621"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548455"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
 
 Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池和无服务器 SQL 池之间共享数据库和 Parquet 支持的表。
 
-Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
+Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 表名称将转换为小写，并且需要使用小写名进行查询。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
 
 Spark 创建的表、托管表和外部表还可以使用相同名称在无服务器 SQL 池的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#expose-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
 
@@ -101,17 +101,17 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 运行以下命令，使用 SparkSQL 创建托管的 Spark 表：
 
 ```sql
-    CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
+    CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet
 ```
 
-此命令在数据库 `mytestdb` 中创建表 `myParquetTable`。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
+此命令在数据库 `mytestdb` 中创建表 `myparquettable`。 表名称将转换为小写。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
 
 ```sql
     USE mytestdb;
     SELECT * FROM sys.tables;
 ```
 
-请验证结果中是否包含 `myParquetTable`。
+请验证结果中是否包含 `myparquettable`。
 
 >[!NOTE]
 >不使用 Parquet 作为存储格式的表不会同步。
@@ -136,13 +136,13 @@ var schema = new StructType
     );
 
 var df = spark.CreateDataFrame(data, schema);
-df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
+df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myparquettable");
 ```
 
 现在，可以从无服务器 SQL 池中读取数据，如下所示：
 
 ```sql
-SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myparquettable WHERE name = 'Alice';
 ```
 
 在结果中应会看到以下行：
@@ -160,26 +160,26 @@ id | name | birthdate
 例如，使用 SparkSQL 运行：
 
 ```sql
-CREATE TABLE mytestdb.myExternalParquetTable
+CREATE TABLE mytestdb.myexternalparquettable
     USING Parquet
     LOCATION "abfss://<fs>@arcadialake.dfs.core.windows.net/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/"
 ```
 
 请将占位符 `<fs>` 替换为表示工作区默认文件系统的文件系统名称，并将占位符 `<synapse_ws>` 替换为运行此示例所用的 synapse 工作区的名称。
 
-以上示例在数据库 `mytestdb` 中创建表 `myExtneralParquetTable`。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
+以上示例在数据库 `mytestdb` 中创建表 `myextneralparquettable`。 在短暂的延迟后，可以在无服务器 SQL 池中看到该表。 例如，在无服务器 SQL 池中运行以下语句。
 
 ```sql
 USE mytestdb;
 SELECT * FROM sys.tables;
 ```
 
-请验证结果中是否包含 `myExternalParquetTable`。
+请验证结果中是否包含 `myexternalparquettable`。
 
 现在，可以从无服务器 SQL 池中读取数据，如下所示：
 
 ```sql
-SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';
+SELECT * FROM mytestdb.dbo.myexternalparquettable WHERE name = 'Alice';
 ```
 
 在结果中应会看到以下行：

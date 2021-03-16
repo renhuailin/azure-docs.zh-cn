@@ -1,23 +1,18 @@
 ---
 title: Azure 安全中心的发行说明
 description: 介绍 Azure 安全中心的新增功能和已更改的功能
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 837ba5a0fd5ff94cc4f55cd4b01b8cb8a27425fd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634254"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439623"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -31,15 +26,106 @@ ms.locfileid: "100634254"
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
 
+
+## <a name="march-2021"></a>2021 年 3 月
+
+3 月的更新包括：
+
+- [集成到安全中心的 Azure 防火墙管理](#azure-firewall-management-integrated-into-security-center)
+- [SQL 漏洞评估现在包含“禁用规则”体验（预览）](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
+- [集成到安全中心的 Azure Monitor 工作簿以及提供的三个模板](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
+- [法规合规性仪表板现在包含 Azure 审核报告（预览）](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [更新部署工作流自动化的的策略](#updates-to-the-policies-for-deploying-workflow-automation)
+
+
+### <a name="azure-firewall-management-integrated-into-security-center"></a>集成到安全中心的 Azure 防火墙管理
+
+打开 Azure 安全中心时，首先显示的是概述页面。 
+
+此交互式仪表板提供查看混合云工作负载的安全状况的统一视图。 此外，它还显示安全警报、覆盖范围信息等等。
+
+在帮助你通过中心体验查看安全状态的过程中，我们已将 Azure 防火墙管理器集成到此仪表板中。 你现在可以检查所有网络的防火墙覆盖状态，并从安全中心开始集中管理 Azure 防火墙策略。
+
+有关此仪表板的详细信息，请参阅 [Azure 安全中心的概述页面](overview-page.md)。
+
+:::image type="content" source="media/release-notes/overview-dashboard-firewall-manager.png" alt-text="安全中心的概述仪表板，其中包含 Azure 防火墙的磁贴":::
+
+
+### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>SQL 漏洞评估现在包含“禁用规则”体验（预览）
+
+安全中心包含内置漏洞扫描仪，有助于发现、跟踪和修正潜在的数据库漏洞。 评估扫描结果概述了 SQL 计算机的安全状态以及任何安全发现结果的详细信息。
+
+如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
+
+有关详细信息，请参阅[禁用特定发现结果](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview)。
+
+
+
+### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>集成到安全中心的 Azure Monitor 工作簿以及提供的三个模板
+
+在 Ignite Spring 2021 召开过程中，我们宣布在安全中心中推出集成式 Azure Monitor 工作簿。
+
+可以利用新集成开始使用安全中心的库中的现成模板。 通过使用工作簿模板，可以访问并生成动态、可视化报告，以跟踪组织的安全状况。 此外，还可以根据安全中心数据或任何其他受支持的数据类型创建新的工作簿，并且快速部署来自安全中心 GitHub 社区的社区工作簿。
+
+提供了三个模板报告：
+
+- 一段时间内的安全功能分数 - 跟踪订阅的分数以及对资源建议的更改
+- 系统更新 - 按资源、OS 和严重性等查看缺失的系统更新
+- 漏洞评估发现结果 - 查看对 Azure 资源进行漏洞扫描的发现结果
+
+如需了解如何使用这些报告或生成自己的报告，请参阅[创建安全中心数据的丰富的交互式报告](custom-dashboards-azure-workbooks.md)。
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数报告":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>法规合规性仪表板现在包含 Azure 审核报告（预览）
+
+现在可以从法规合规性仪表板的工具栏下载 Azure 和 Dynamics 认证报告。 
+
+:::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="法规合规性仪表板的工具栏":::
+
+可以选择用于相关报告类型（PCI、SOC 和 ISO 等）的选项卡，然后使用筛选器来查找所需的特定报告。
+
+有关详细信息，请参阅[管理法规合规性仪表板中的标准](update-regulatory-compliance-packages.md)。
+
+:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="筛选可用 Azure 审核报告的列表":::
+
+
+
+### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>对部署工作流自动化的的策略的更新
+
+自动执行组织的监视和事件响应流程可以显著缩短调查和缓解安全事件所需的时间。
+
+我们提供三个 Azure Policy“DeployIfNotExist”策略，这些策略可以创建并配置工作流自动化过程，以便你可以在组织内部署自动化：
+
+|目标  |策略  |策略 ID  |
+|---------|---------|---------|
+|安全警报的工作流自动化|[为 Azure 安全中心警报部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|安全建议的工作流自动化|[为 Azure 安全中心建议部署工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+|用于法规合规性的工作流自动化发生更改|[部署 Azure 安全中心合规工作流自动化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+||||
+
+以下是对这些策略的功能进行的两项更新：
+
+- 分配后，它们将通过强制执行保持启用状态。
+- 现在可以自定义这些策略，并更新任意参数，即使它们已部署，也是如此。 例如，如果用户想添加另一个评估密钥或编辑现有的评估密钥，则可以执行此操作。
+
+开始使用[工作流自动化模板](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
+
+了解如何[自动响应安全中心触发器](workflow-automation.md)。
+
+
+
 ## <a name="february-2021"></a>2021 年 2 月
 
 2 月的更新包括：
 
 - [Azure 门户中的新安全警报页发布了正式版 (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Kubernetes 工作负载保护建议发布了正式版 (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
+- [Microsoft Defender for Endpoint 与 Azure Defender 的集成现在支持 Windows Server 2019 和 Windows 10 虚拟桌面 (WVD)（预览）](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [直接链接到建议详细信息页中的策略](#direct-link-to-policy-from-recommendation-details-page)
 - [SQL 数据分类建议不再影响安全功能分数](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
-- [工作流自动化可由对监管合规性评估（预览版）的更改触发](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview)
+- [工作流自动化可以由对法规合规性评估的更改触发（预览）](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
 - [资产清单页增强功能](#asset-inventory-page-enhancements)
 
 
@@ -75,6 +161,17 @@ Azure 安全中心的安全警报页经过重新设计，可提供以下内容�
 > 虽然建议之前为预览版，但它们当时未显示 AKS 群集资源运行不正常，而且在计算安全功能分数时没有纳入这些建议。 发布此 GA 后，计算分数时将纳入这些建议。 如果尚未对其进行修正，则可能会对安全功能分数造成轻微影响。 请尽量进行修正，具体请参阅[修正 Azure 安全中心内的建议](security-center-remediate-recommendations.md)。
 
 
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Microsoft Defender for Endpoint 与 Azure Defender 的集成现在支持 Windows Server 2019 和 Windows 10 虚拟桌面 (WVD) （预览）
+
+Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全解决方案。 它提供基于风险的漏洞管理和评估以及终结点检测和响应 (EDR)。 有关将 Defender for Endpoint 与 Azure 安全中心一起使用的好处的完整列表，请参阅[使用安全中心的集成式 EDR 解决方案 (Microsoft Defender for Endpoint) 保护终结点](security-center-wdatp.md)。
+
+为 Windows Server 上的服务器启用 Azure Defender 时，Defender for Endpoint 的许可证会包含在计划在中。 如果已为服务器启用 Azure Defender 并且订阅中有 Windows 2019 服务器，则它们会自动接收包含此更新的 Defender for Endpoint。 无需手动操作。 
+
+支持现在已扩展为包括 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)。
+
+> [!NOTE]
+> 如果要在 Windows Server 2019 计算机上启用 Defender for Endpoint，请确保它满足[启用 Microsoft Defender for Endpoint 集成](security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)中所述的先决条件。
+
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>直接链接到建议详细信息页中的策略
 
 查看建议的详细信息时，能够查看基础策略通常会很有帮助。 对于策略支持的每条建议，建议详细信息页面上都有一个新链接：
@@ -91,9 +188,12 @@ Azure 安全中心的安全警报页经过重新设计，可提供以下内容�
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
 “应对 SQL 数据库中的敏感数据进行分类”建议不再影响安全功能分数。 这是“应用数据分类”安全控件中唯一的建议，因此该控件目前的安全功能分数值为 0。
 
+有关安全中心中所有安全控件的完整列表及其分数和每个安全控件中的建议列表，请参阅[安全控件及其建议](secure-score-security-controls.md#security-controls-and-their-recommendations)。
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-preview"></a>工作流自动化可由对监管合规性评估（预览版）的更改触发
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>工作流自动化可以由对法规合规性评估的更改触发（预览）
 我们向工作流自动化的触发器选项添加了第三种数据类型：对监管合规性评估的更改。
+
+了解如何使用[自动响应安全中心触发器](workflow-automation.md)中的工作流自动化工具。
 
 :::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
@@ -262,7 +362,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="横幅通知用户他们可以请求租户范围内的权限。":::
 
-了解详细信息，请参阅[当你的权限不足时请求租户范围内的权限](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient)。
+了解详细信息，请参阅[当你的权限不足时请求租户范围内的权限](tenant-wide-permissions-management.md#request-tenant-wide-permissions-when-yours-are-insufficient)。
 
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>添加了 35 条预览建议，以扩大 Azure 安全基准的覆盖范围
@@ -324,7 +424,7 @@ Azure 安全基准是 Azure 安全中心的默认策略计划。
 - **流式处理** - 更新资源的运行状况时，将实时发送评估（如果没有更新，则不发送任何数据）。
 - **快照** - 每周将发送所有法规合规性评估的当前状态的快照（这是面向安全分数和法规合规性数据每周快照的一项预览功能）。
 
-请在[持续导出安全中心数据](continuous-export.md)中详细了解此功能的所有性能
+请在[持续导出安全中心数据](continuous-export.md)中详细了解此功能的所有性能。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -378,7 +478,7 @@ Azure Synapse Analytics（以前称为 SQL DW）是一种分析服务，它将�
 
 具有 Azure Active Directory“全局管理员”角色的用户可能要承担租户范围内的责任，但缺乏 Azure 权限，无法在 Azure 安全中心查看组织范围内的信息。 
 
-若要向你自己分配租户级别的权限，请按照[授予自己租户范围的权限](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)中的说明操作。
+若要向你自己分配租户级别的权限，请按照[授予自己租户范围的权限](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)中的说明操作。
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>两项新的 Azure Defender 计划：适用于 DNS 的 Azure Defender 和适用于资源管理器的 Azure Defender（预览版）
@@ -762,221 +862,3 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 若要了解详细信息，请参阅下列链接：
 - [如何使用 Azure Resource Graph 浏览器创建查询](../governance/resource-graph/first-query-portal.md)
 - [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/)
-
-
-## <a name="september-2020"></a>2020 年 9 月
-
-9 月的更新包括：
-- [安全中心获得新的外观！](#security-center-gets-a-new-look)
-- [Azure Defender 已发布](#azure-defender-released)
-- [适用于 Key Vault 的 Azure Defender 已正式发布](#azure-defender-for-key-vault-is-generally-available)
-- [适用于存储的 Azure Defender 针对文件存储和 ADLS Gen2 的保护已正式发布](#azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available)
-- [资产清单工具现已正式发布](#asset-inventory-tools-are-now-generally-available)
-- [对容器注册表和虚拟机的扫描禁用特定漏洞发现结果](#disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines)
-- [从建议中免除资源](#exempt-a-resource-from-a-recommendation)
-- [安全中心的 AWS 和 GCP 连接器引入了多云体验](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
-- [Kubernetes 工作负载保护建议捆绑](#kubernetes-workload-protection-recommendation-bundle)
-- [漏洞评估发现结果现已可以连续导出](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
-- [在创建新资源时通过强制执行建议来防止安全性配置错误](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
-- [改进了网络安全组建议](#network-security-group-recommendations-improved)
-- [弃用了预览 AKS 建议“应在 Kubernetes 服务上定义 Pod 安全策略”](#deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services)
-- [优化了 Azure 安全中心内的电子邮件通知](#email-notifications-from-azure-security-center-improved)
-- [安全功能分数不包括预览建议](#secure-score-doesnt-include-preview-recommendations)
-- [建议现在包含严重性指标和新鲜度间隔](#recommendations-now-include-a-severity-indicator-and-the-freshness-interval)
-
-
-### <a name="security-center-gets-a-new-look"></a>安全中心获得新的外观！
-
-我们已发布安全中心门户页面的更新 UI。 新页面中有一个新的概述页面，还有安全功能分数、资产清单和 Azure Defender 的面板。
-
-重新设计的概述页面现在包含一个磁贴，用于访问安全分数、资产清单和 Azure Defender 的面板。 它还包含一个可以链接到合规性面板的磁贴。
-
-详细了解[概述页面](overview-page.md)。
-
-
-### <a name="azure-defender-released"></a>Azure Defender 已发布
-
-Azure Defender 是集成到安全中心内部的云工作负载保护平台 (CWPP)，用于为 Azure 和混合工作负载提供高级智能的保护。 它取代了安全中心的标准定价层选项。 
-
-从 Azure 安全中心的“定价和设置”区域启用 Azure Defender 时，将同时启用以下 Defender 计划，并为环境的计算、数据和服务层提供全面防护：
-
-- [适用于服务器的 Azure Defender](defender-for-servers-introduction.md)
-- [适用于应用服务的 Azure Defender](defender-for-app-service-introduction.md)
-- [适用于存储的 Azure Defender](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
-- [适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
-- [适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
-- [适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)
-
-安全中心的文档对其中每个计划单独进行了介绍。
-
-借助其专用面板，Azure Defender 为虚拟机、SQL 数据库、容器、Web 应用程序、网络等提供安全警报和高级威胁防护。
-
-[详细了解 Azure Defender](azure-defender.md)
-
-### <a name="azure-defender-for-key-vault-is-generally-available"></a>适用于 Key Vault 的 Azure Defender 已正式发布
-
-Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（例如证书、连接字符串和密码）。 
-
-适用于 Key Vault 的 Azure Defender 提供针对 Azure Key Vault 的 Azure 原生高级威胁防护，从而提供额外的安全情报层。 因此，适用于 Key Vault 的 Azure Defender 可保护依赖于 Key Vault 帐户的多个资源。
-
-可选计划现已正式发布。 此功能在预览版中为“Azure Key Vault 的高级威胁防护”。
-
-此外，Azure 门户中的 Key Vault 页面现在添加了一个专门的“安全性”页面，用于提供安全中心的建议和警报 。
-
-有关详细信息，请参阅[适用于 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)。
-
-
-### <a name="azure-defender-for-storage-protection-for-files-and-adls-gen2-is-generally-available"></a>适用于存储的 Azure Defender 针对文件存储和 ADLS Gen2 的保护已正式发布 
-
-适用于存储的 Azure Defender 会检测 Azure 存储帐户上可能存在的有害活动。 无论数据是存储为 blob 容器、文件共享还是数据湖，都可以为其提供保护。
-
-[Azure 文件存储](../storage/files/storage-files-introduction.md)和[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 的支持现已正式发布。
-
-从 2020 年 10 月 1 日起，我们将开始有偿保护这些服务上的资源。
-
-有关详细信息，请参阅[适用于存储的 Azure Defender](defender-for-storage-introduction.md)。
-
-
-### <a name="asset-inventory-tools-are-now-generally-available"></a>资产清单工具现已正式发布
-
-Azure 安全中心的资产清单页提供了一个页面，用于查看已连接到安全中心的资源的安全状况。
-
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后会提供有关如何消除这些安全漏洞的建议。
-
-当任何资源具有未完成的建议时，它们将显示在清单中。
-
-有关详细信息，请参阅[利用资产清单浏览和管理资源](asset-inventory.md)。
-
-
-
-### <a name="disable-a-specific-vulnerability-finding-for-scans-of-container-registries-and-virtual-machines"></a>对容器注册表和虚拟机的扫描禁用特定漏洞发现结果
-
-Azure Defender 包含漏洞扫描程序，用于扫描 Azure 容器注册表和虚拟机中的映像。
-
-如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。
-
-当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。
-
-此选项在建议详细信息页中提供，用于：
-
-- **应修正 Azure 容器注册表映像中的漏洞**
-- **应修正虚拟机中的漏洞**
-
-有关详细信息，请参阅[禁用容器映像的特定发现结果](defender-for-container-registries-usage.md#disable-specific-findings-preview)和[禁用虚拟机的特定发现结果](remediate-vulnerability-findings-vm.md#disable-specific-findings-preview)。
-
-
-### <a name="exempt-a-resource-from-a-recommendation"></a>从建议中免除资源
-
-有时，某个资源就某个特定建议而言会被列为不正常（因而会降低安全分数），尽管你认为不应是这样。 它可能已被安全中心未跟踪的进程修正。 或者，你的组织可能已决定接受该特定资源的风险。 
-
-在这种情况下，可以创建免除规则，确保将来不会将该资源列为不正常资源。 这些规则可以包括下文所述的书面理由。
-
-有关详细信息，请参阅[从建议和安全分数中免除资源](exempt-resource.md)。
-
-
-### <a name="aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience"></a>安全中心的 AWS 和 GCP 连接器引入了多云体验
-
-由于云工作负载通常跨多个云平台分布，因此云安全服务也需要如此。
-
-Azure 安全中心现在可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作负载。
-
-将 AWS 和 GCP 帐户加入安全中心，并将 AWS 安全中心、GCP 安全命令和 Azure 安全中心相集成。 
-
-有关详细信息，请参阅[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)和[将 GCP 帐户连接到 Azure 安全中心](quickstart-onboard-gcp.md)。
-
-
-### <a name="kubernetes-workload-protection-recommendation-bundle"></a>Kubernetes 工作负载保护建议捆绑
-
-为了确保 Kubernetes 工作负载在默认情况下是安全的，安全中心将添加 Kubernetes 级别强化建议，其中包括具有 Kubernetes 准入控制的执行选项。
-
-在 AKS 群集上安装了适用于 Kubernetes 的 Azure Policy 加载项后，将按照预先定义的一组最佳做法监视对 Kubernetes API 服务器的每个请求，然后再将其保存到群集。 然后，可以配置为强制实施最佳做法，并规定将其用于未来的工作负载。
-
-例如，可以规定不应创建特权容器，并且阻止以后的任何请求。
-
-有关详细信息，请参阅[使用 Kubernetes 准入控制实现工作负载保护最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)。
-
-
-### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>漏洞评估发现结果现已可以连续导出
-
-使用连续导出将警报和建议实时流式传输到 Azure 事件中心、Log Analytics 工作区或 Azure Monitor。 在此处可以将此数据与 SIEM（如 Azure Sentinel、Power BI、Azure 数据资源管理器等）集成。
-
-安全中心的集成漏洞评估工具在“父”建议中将有关资源的发现结果作为可操作性建议返回，例如“应修正虚拟机中的漏洞”。 
-
-现在选择建议并启用“包括安全性结果”选项时，可以通过连续导出来导出安全性结果。
-
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在连续导出配置中包括安全结果开关" :::
-
-相关页面：
-
-- [Azure 虚拟机安全中心的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)
-- [用于 Azure 容器注册表映像的安全中心集成漏洞评估解决方案](defender-for-container-registries-usage.md)
-- [连续导出](continuous-export.md)
-
-### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>在创建新资源时通过强制执行建议来防止安全性配置错误
-
-安全性配置错误是造成安全事件的主要原因。 安全中心现在能够帮助阻止新资源在特定建议方面的错误配置。 
-
-此功能可帮助保护工作负载的安全和稳定安全分数。
-
-根据特定建议，有两种方式可以强制实施安全配置：
-
-- 利用 Azure Policy 的“拒绝”效果，可以阻止创建不正常的资源
-
-- 通过“强制执行”选项，可以利用 Azure Policy 的“不存在时部署”效果，在创建时自动修正不合规的资源 
- 
-这适用于所选的安全建议，位于资源详细信息页的顶部。
-
-有关详细信息，请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)。
-
-###  <a name="network-security-group-recommendations-improved"></a>改进了网络安全组建议
-
-以下与网络安全组相关的安全建议已得到优化，可减少误报。
-
-- 应在与 VM 关联的 NSG 上限制所有网络端口
-- 应关闭虚拟机上的管理端口
-- 面向 Internet 的虚拟机应使用网络安全组进行保护
-- 子网应与网络安全组关联
-
-
-### <a name="deprecated-preview-aks-recommendation-pod-security-policies-should-be-defined-on-kubernetes-services"></a>弃用了预览 AKS 建议“应在 Kubernetes 服务上定义 Pod 安全策略”
-
-如 [Azure Kubernetes 服务](../aks/use-pod-security-policies.md)文档中所述，弃用了预览建议“应在 Kubernetes Services 上定义 Pod 安全策略”。
-
-Pod 安全策略（预览版）功能已设置为弃用，并且在 2020 年 10 月 15 日之后将不再提供，以支持 AKS 的 Azure Policy。
-
-弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
-
-
-### <a name="email-notifications-from-azure-security-center-improved"></a>优化了 Azure 安全中心内的电子邮件通知
-
-电子邮件中与安全警报相关的以下部分已得到优化： 
-
-- 添加了发送针对所有严重性级别的电子邮件警报通知的功能
-- 添加了在订阅上通知具有不同 Azure 角色的用户的功能
-- 默认情况下，我们会主动向订阅所有者通知高严重性警报（这些警报很可能表示真正的漏洞）
-- 我们已从电子邮件通知配置页面中删除了电话号码字段
-
-有关详细信息，请参阅[设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
-
-
-### <a name="secure-score-doesnt-include-preview-recommendations"></a>安全功能分数不包括预览建议 
-
-安全中心会持续评估资源、订阅和组织的安全问题。 然后，它将所有调查结果汇总成一个分数，让你可以一目了然地了解当前的安全状况：分数越高，识别出的风险级别就越低。
-
-发现新的威胁后，安全中心会通过提出新的建议来提供新的安全建议。 为避免安全功能分数出现意外变化，以及为了提供一个宽限期（可以在新建议影响分数之前在此宽限期内了解新建议），安全功能分数的计算中将不再包括标记为“预览”的建议。 但仍应尽可能按这些建议进行修正，这样在预览期结束时，它们会有助于提升分数。
-
-此外，“预览”建议不会使资源“运行不正常”。
-
-预览建议示例如下：
-
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
-
-[详细了解安全功能分数](secure-score-security-controls.md)。
-
-
-### <a name="recommendations-now-include-a-severity-indicator-and-the-freshness-interval"></a>建议现包含严重性指示器和刷新时间间隔
-
-现在，建议的详细信息页面包括一个刷新时间间隔指示器（如相关），并且清楚显示了建议的严重性。
-
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="显示刷新频率和严重性的建议页面":::

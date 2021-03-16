@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure CLI
+title: 教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure CLI
 description: 使用本教程了解如何使用 Azure CLI 创建具有专用终结点的 Azure SQL 服务器
 services: private-link
 author: asudbring
@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
-ms.openlocfilehash: 8cfe44b9433ee1daac028253aa45c97804c88ae5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 998b52a23894dcb7fa08b2c0fd42e4ef8e3678ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544099"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554983"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure CLI
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure CLI
 
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。
 
@@ -327,6 +328,6 @@ az group delete \
 
 你使用虚拟机通过专用终结点安全测试了到 SQL 服务器的连接。
 
-了解如何创建专用链接服务：
+对于下一步，你可能还会对“与 Azure SQL 数据库建立专用连接的 Web 应用”体系结构场景感兴趣，该场景将虚拟网络以外的 Web 应用程序连接到数据库的专用终结点。
 > [!div class="nextstepaction"]
-> [创建专用链接服务](create-private-link-service-portal.md)
+> [与 Azure SQL 数据库建立专用连接的 Web 应用](/azure/architecture/example-scenario/private-web-app/private-web-app)

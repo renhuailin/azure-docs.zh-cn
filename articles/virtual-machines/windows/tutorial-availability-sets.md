@@ -1,26 +1,26 @@
 ---
-title: 教程 - Azure 中 Windows VM 的高可用性
-description: 本教程介绍如何使用 Azure PowerShell 在可用性集中部署高度可用的虚拟机
-services: virtual-machines-windows
-author: cynthn
-ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.topic: tutorial
-ms.date: 11/30/2018
-ms.author: cynthn
+title: 使用 Azure PowerShell 在可用性集中部署 VM
+description: 了解如何使用 Azure PowerShell 在可用性集中部署高可用性虚拟机
+services: virtual-machines
+author: mimckitt
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736646"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555901"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>使用 Azure PowerShell 在可用性集中创建和部署虚拟机
 
 本教程介绍如何使用可用性集提高虚拟机 (VM) 的可用性和可靠性。 可用性集确保在 Azure 上部署的 VM 能够跨群集中多个隔离的硬件节点分布。 
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建可用性集
@@ -28,14 +28,6 @@ ms.locfileid: "98736646"
 > * 检查可用的 VM 大小
 > * 检查 Azure 顾问
 
-
-## <a name="availability-set-overview"></a>可用性集概述
-
-可用性集是一种逻辑分组功能，可将部署的 VM 资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果发生硬件或软件故障，只有一部分 VM 会受到影响，整体解决方案仍会保持正常运行。 可用性集对于构建可靠的云解决方案至关重要。
-
-假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，以及两个后端 VM。 在 Azure 中，若想在部署 VM 之前先定义两个可用性集：一个用于 Web 层，另一个用于后端层。 创建新 VM 时，请将可用性集指定为参数。 Azure 确保 VM 在多个物理硬件资源之间保持隔离。 如果运行服务器的物理硬件有问题，可以确信服务器的其他实例保持运行，因为它们位于不同的硬件上。
-
-在 Azure 中部署基于 VM 的可靠解决方案时，使用可用性集。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -124,7 +116,7 @@ Get-AzVMSize `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建可用性集

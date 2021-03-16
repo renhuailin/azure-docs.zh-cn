@@ -1,30 +1,25 @@
 ---
-title: Azure 安全中心定价
-description: Azure 安全中心提供两种模式，分别随附和不随附 Azure Defender。
-services: security-center
-documentationcenter: na
+title: Azure 安全中心免费版与已启用 Azure Defender
+description: 了解在 Azure 安全中心为云工作负载保护启用 Azure Defender 的好处
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 03/08/2021
+ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522863"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454358"
 ---
-# <a name="pricing-of-azure-security-center"></a>Azure 安全中心定价
-Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络风险的智能检测功能。
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
+Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
 
+可以从“定价与设置”页升级，如[快速入门：启用 Azure Defender](enable-azure-defender.md) 中所述。 有关所选货币以及你所在区域的定价详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
-## <a name="free-option-vs-azure-defender-enabled"></a>“免费选项”和“启用 Azure Defender”
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>启用 Azure Defender 有哪些优点？
 
 安全中心提供两种模式：
 
@@ -41,34 +36,9 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
     - 适用于连接到 Azure 环境的资源的广度威胁防护 - Azure Defender 包括对所有资源通用的 Azure 服务的 Azure 本机广度威胁防护：Azure 资源管理器、Azure DNS、Azure 网络层和 Azure Key Vault。 Azure Defender 对 Azure 管理层和 Azure DNS 层具有独特的可见性，因此可以保护连接到这些层的云资源。
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>免费试用 Azure Defender 30 天
-Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
-
-## <a name="enable-azure-defender"></a>启用 Azure Defender
-可以使用 Azure Defender 保护整个 Azure 订阅，且该保护将由订阅中的所有资源继承。
-
-启用 Azure Defender：
-
-1. 从安全中心的主菜单中，选择“定价和设置”。
-1. 选择要升级的订阅。
-1. 选择要升级的“Azure Defender 打开”。
-1. 选择“保存”。
-
-下面是一个示例订阅的定价页。 可以看到，Azure Defender 中的每个计划是单独定价的，并可以单独设置为“打开”或“关闭”。
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="门户中安全中心的定价页":::
-
-> [!NOTE]
-> 若要启用包括威胁防护功能在内的全部安全中心功能，必须在包含适用工作负载的订阅上启用 Azure Defender。 如果在工作区级别启用它，则不会为 Azure 资源启用实时 VM 访问、自适应应用程序控制和网络检测功能。 此外，只在工作区级别提供两种 Azure Defender 计划：适用于服务器的 Azure Defender，以及适用于计算机上的 SQL Server 的 Azure Defender。
->
-> 可以在订阅级别或资源级别启用 **用于存储的 Azure Defender 帐户**。
-> 可以在订阅级别或资源级别启用 **用于 SQL 的 Azure Defender**。
-> 只能在资源级别为 **Azure Database for MariaDB/MySQL/PostgreSQL** 启用威胁防护。
-
-
 ## <a name="faq---pricing-and-billing"></a>常见问题解答 - 定价和计费 
 
-- [如何跟踪我的组织中谁已在 Azure 安全中心启用 Azure Defender 更改？](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [如何跟踪我的组织中谁已在安全中心启用 Azure Defender 更改？](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
 - [安全中心提供了哪些计划？](#what-are-the-plans-offered-by-security-center)
 - 如何为订阅启用 Azure Defender？
 - 能否在我的订阅中为服务器子集上的服务器启用 Azure Defender？
@@ -98,14 +68,14 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>如何为订阅启用 Azure Defender？ 
 可以使用以下任一方法启用订阅的 Azure Defender： 
 
-|方法  |说明  |
-|---------|---------|
-|Azure 门户的 Azure 安全中心页面|[启用 Azure Defender](#enable-azure-defender)|
-|REST API|[定价 API](/rest/api/securitycenter/pricings)|
-|Azure CLI|[az security 定价](/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure Policy|[捆绑定价](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| 方法                                          | 说明                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure 门户的 Azure 安全中心页面 | [启用 Azure Defender](enable-azure-defender.md)                                                                                                  |
+| REST API                                        | [定价 API](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [az security 定价](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy                                    | [捆绑定价](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>能否在我的订阅中为服务器子集上的服务器启用 Azure Defender？
 不是。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，Azure Defender 会保护订阅中的所有服务器。 

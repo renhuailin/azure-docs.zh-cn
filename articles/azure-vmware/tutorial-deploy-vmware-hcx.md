@@ -3,21 +3,21 @@ title: 教程 - 部署和配置 VMware HCX
 description: 了解如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 解决方案。
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357885"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488286"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署和配置 VMware HCX
 
 本文将演示如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 本地连接器。 使用 VMware HCX，可以通过各种迁移类型将 VMware 工作负载迁移到 Azure VMware 解决方案和其他已连接站点。 由于 Azure VMware 解决方案部署并配置 HCX 云管理器，因此必须在本地 VMware 数据中心下载、激活和配置 HCX 连接器。
 
-Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最多支持三个站点连接（本地到云或云到云）。 如果需要三个以上的站点连接，请提交[支持请求](https://portal.azure.com/#create/Microsoft.Support)以启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 外接程序。 此加载项目前以预览版提供。 
+Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最多支持三个站点连接（本地到云或云到云）。 如果需要三个以上的站点连接，请提交[支持请求](https://portal.azure.com/#create/Microsoft.Support)以启用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 外接程序。  
 
 >[!TIP]
->尽管 VMware 配置最大值工具将本地连接器和云管理器之间的站点对最大值限制为 25，但对于 Advanced Edition 和 Enterprise Edition，许可将该值分别限制为 3 和 10。
+>尽管 VMware 配置最大值工具将本地连接器和云管理器之间的站点对最大值限制为 25，但对于 HCX Advanced Edition 和 HCX Enterprise Edition，许可将该值分别限制为 3 和 10。
 
 >[!NOTE]
 >VMware HCX Enterprise 随 Azure VMware 解决方案以预览版服务的形式提供。 它是免费的，并受预览版服务的条款和条件的约束。 在 VMware HCX Enterprise 服务正式发布后，你将提前 30 天收到一则通知，指出计费将进行切换。 你也可选择关闭或退出服务。 无法简单地从 VMware HCX Enterprise 降级地 VMware HCX Advanced。 如果决定降级，必须重新部署，这会导致停机。
@@ -58,9 +58,9 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 
 ### <a name="network-and-ports"></a>网络和端口
 
-* 在本地与 Azure VMware 解决方案 SDDC ExpressRoute 线路之间配置 [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md)。
+* 在本地与 Azure VMware 解决方案私有云 ExpressRoute 线路之间配置 [Azure ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md)。
 
-* 若要在本地组件与 Azure VMware 解决方案 SDDC 之间进行通信，请打开[所有必需的端口](https://ports.vmware.com/home/VMware-HCX)。
+* 若要在本地组件与 Azure VMware 解决方案私有云之间进行通信，请打开[所有必需的端口](https://ports.vmware.com/home/VMware-HCX)。
 
 ### <a name="ip-addresses"></a>IP 地址
 
@@ -76,12 +76,15 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="VMware HCX IP 地址的屏幕截图。" lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. 选择“管理” > “标识”，然后选择“vCenter 管理员密码”来确定密码  。
+1. 选择“管理” > 标识” 。 
+
+   此时会显示私有云 vCenter 和 NSX-T Manager 的 URL 和用户凭据。
 
    > [!TIP]
-   > vCenter 密码是在设置私有云时定义的。 它与用于登录 Azure VMware 解决方案 HCX 管理器的密码相同。
+   > vCenter 密码是在设置私有云时定义的。 它与用于登录 Azure VMware 解决方案 HCX 管理器的密码相同。 可选择“生成新密码”来生成新的 vCenter 和 NSX-T 密码。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="查找 HCX 密码。" lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+
 
 1. 打开浏览器窗口，使用 cloudadmin\@vsphere.local 用户凭据通过 `https://x.x.x.9` 端口 443 登录到 Azure VMware 解决方案 HCX 管理器
 
@@ -166,7 +169,7 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 有关此过程的端到端概述，请观看 [Azure VMware 解决方案：激活 HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) 视频。
 
    > [!IMPORTANT]
-   > 无论你使用的是 VMware HCX Advanced 还是 VMware HCX Enterprise，你都需要安装 VMware [知识库文章 81558](https://kb.vmware.com/s/article/81558) 中的补丁。 
+   > 无论你使用的是 HCX Advanced 还是 HCX Enterprise，你都需要安装 VMware [知识库文章 81558](https://kb.vmware.com/s/article/81558) 中的补丁。 
 
 ## <a name="configure-the-vmware-hcx-connector"></a>配置 VMware HCX 连接器
 
@@ -279,7 +282,7 @@ VMware HCX 连接器会（自动）部署虚拟设备的子集，这需要多个
 
 ### <a name="create-a-service-mesh"></a>创建服务网格
 
-现在，可以在本地与 Azure VMware 解决方案 SDDC 之间配置服务网格了。
+现在，可以在本地与 Azure VMware 解决方案私有云之间配置服务网格了。
 
 
 
@@ -366,7 +369,7 @@ VMware HCX 连接器会（自动）部署虚拟设备的子集，这需要多个
 
 ## <a name="next-steps"></a>后续步骤
 
-如果设备互连隧道状态为“正常”且其颜色为绿色，可使用 VMware HCX 来迁移和保护 Azure VMware 解决方案 VM。 Azure VMware 解决方案支持工作负载迁移（带有或不带网络扩展）。 你仍然可以在 vSphere 环境中迁移工作负载，以及在本地创建网络并将 VM 部署到这些网络上。  
+如果 HCX 互连隧道状态为“正常”且其颜色为绿色，可使用 VMware HCX 来迁移和保护 Azure VMware 解决方案 VM。 Azure VMware 解决方案支持工作负载迁移（带有或不带网络扩展）。 你仍然可以在 vSphere 环境中迁移工作负载，以及在本地创建网络并将 VM 部署到这些网络上。  
 
 有关如何使用 HCX 的详细信息，请参阅 VMware 技术文档：
 

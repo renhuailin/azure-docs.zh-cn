@@ -52,78 +52,76 @@
     - name: 从 Read 2.x 升级到 Read 3.x
       href: upgrade-api-versions.md
     - name: 如何配置 AAD 身份验证
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: 如何使用客户管理的密钥
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: 部署计算机视觉
-  items:
-    - name: 容器
+    - name: 部署计算机视觉
       items:
-        - name: 认知服务容器文档
-          href: ../containers/index.yml
-        - name: 读取 API 容器
+        - name: 容器
           items:
-            - name: 安装和运行容器
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: 配置容器
-              href: computer-vision-resource-container-config.md
-            - name: 迁移到读取容器的 v3
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: 与 Kubernetes 和 Jenkins 配合使用
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: 使用容器实例
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: 空间分析容器
-          items:
-            - name: 空间分析概述
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: 设置主机并运行容器
-              href: spatial-analysis-container.md
-            - name: 配置操作
-              href: spatial-analysis-operations.md
-            - name: 部署人员计数 Web 应用
-              href: Spatial-analysis-web-app.md
-            - name: 日志记录和故障排除
-              href: spatial-analysis-logging.md
-            - name: 区域和线条放置
-              href: spatial-analysis-zone-line-placement.md
-            - name: 相机放置
-              href: spatial-analysis-camera-placement.md
+            - name: 认知服务容器文档
+              href: ../containers/index.yml
+            - name: 读取 API 容器
+              items:
+                - name: 安装和运行容器
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: 配置容器
+                  href: computer-vision-resource-container-config.md
+                - name: 迁移到读取容器的 v3
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: 与 Kubernetes 和 Jenkins 配合使用
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: 使用容器实例
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: 空间分析容器
+              items:
+                - name: 空间分析概述
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: 设置主机并运行容器
+                  href: spatial-analysis-container.md
+                - name: 配置操作
+                  href: spatial-analysis-operations.md
+                - name: 部署人员计数 Web 应用
+                  href: Spatial-analysis-web-app.md
+                - name: 日志记录和故障排除
+                  href: spatial-analysis-logging.md
+                - name: 区域和线条放置
+                  href: spatial-analysis-zone-line-placement.md
+                - name: 相机放置
+                  href: spatial-analysis-camera-placement.md
 - name: 概念
   items:
-    - name: 模式
-      items:
-        - name: 光学字符识别 (OCR)
-          href: concept-recognizing-text.md
-        - name: 对象检测
-          href: concept-object-detection.md
-        - name: 品牌检测
-          href: concept-brand-detection.md
-        - name: 内容标记
-          href: concept-tagging-images.md
-        - name: 图像分类
-          href: concept-categorizing-images.md
-        - name: 类别分类
-          href: Category-Taxonomy.md
-        - name: 图像说明
-          href: concept-describing-images.md
-        - name: 人脸检测
-          href: concept-detecting-faces.md
-        - name: 图像类型检测
-          href: concept-detecting-image-types.md
-        - name: 特定于域的内容
-          href: concept-detecting-domain-content.md
-        - name: 配色方案检测
-          href: concept-detecting-color-schemes.md
-        - name: 智能裁剪的缩略图
-          href: concept-generating-thumbnails.md
-        - name: 成人内容检测
-          href: concept-detecting-adult-content.md
+    - name: 光学字符识别 (OCR)
+      href: concept-recognizing-text.md
+    - name: 对象检测
+      href: concept-object-detection.md
+    - name: 品牌检测
+      href: concept-brand-detection.md
+    - name: 内容标记
+      href: concept-tagging-images.md
+    - name: 图像分类
+      href: concept-categorizing-images.md
+    - name: 类别分类
+      href: Category-Taxonomy.md
+    - name: 图像说明
+      href: concept-describing-images.md
+    - name: 人脸检测
+      href: concept-detecting-faces.md
+    - name: 图像类型检测
+      href: concept-detecting-image-types.md
+    - name: 特定于域的内容
+      href: concept-detecting-domain-content.md
+    - name: 配色方案检测
+      href: concept-detecting-color-schemes.md
+    - name: 智能裁剪的缩略图
+      href: concept-generating-thumbnails.md
+    - name: 成人内容检测
+      href: concept-detecting-adult-content.md
 - name: 教程
   items:
     - name: 生成图像的元数据

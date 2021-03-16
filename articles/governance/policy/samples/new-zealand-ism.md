@@ -1,22 +1,22 @@
 ---
-title: 新西兰 ISM 法规合规性详细信息
-description: 新西兰 ISM 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 02/09/2021
+title: 限制性的新西兰 ISM 法规合规性详细信息
+description: 限制性的新西兰 ISM 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
+ms.date: 03/05/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b2f4cec4f2c9abf6fb896ba9d515db1780115716
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 5f346f7755cf252ed15513d8dc0a60a9bc5cce3f
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100896"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437240"
 ---
-# <a name="details-of-the-new-zealand-ism-regulatory-compliance-built-in-initiative"></a>新西兰 ISM 法规合规性内置计划的详细信息
+# <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>限制性的新西兰 ISM 法规合规性内置计划的详细信息
 
-下文详细说明了 Azure Policy 法规合规性内置计划定义如何映射到新西兰 ISM 的合规性域和控制措施。
-有关此合规性标准的详细信息，请参阅 [新西兰 ISM](https://www.nzism.gcsb.govt.nz/)。 如需了解所有权，请参阅 [Azure Policy 策略定义](../concepts/definition-structure.md#type)和[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
+下文详细说明 Azure Policy 法规合规性内置计划定义与限制性的新西兰 ISM 的合规性领域和控制措施的对应关系 。
+有关此合规性标准的详细信息，请参阅[限制性的新西兰 ISM](https://www.nzism.gcsb.govt.nz/)。 如需了解所有权，请参阅 [Azure Policy 策略定义](../concepts/definition-structure.md#type)和[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
 
-以下映射适用于新西兰 ISM 控制措施。 使用右侧的导航栏可直接跳转到特定的符合性域。 许多控制措施都是使用 [Azure Policy](../overview.md) 计划定义实现的。 若要查看完整计划定义，请在 Azure 门户中打开“策略”，并选择“定义”页 。
+以下对应关系适用于限制性的新西兰 ISM 控制措施。 使用右侧的导航栏可直接跳转到特定的符合性域。 许多控制措施都是使用 [Azure Policy](../overview.md) 计划定义实现的。 若要查看完整计划定义，请在 Azure 门户中打开“策略”，并选择“定义”页 。
 然后，找到并选择“新西兰信息安全手册”法规合规性内置计划定义。
 
 > [!IMPORTANT]
@@ -91,7 +91,7 @@ ms.locfileid: "100100896"
 
 ## <a name="access-control-and-passwords"></a>访问控制和密码
 
-### <a name="16132-system-user-identitfication"></a>16.1.32 系统用户标识
+### <a name="16132-system-user-identification"></a>16.1.32 系统用户标识
 
 **ID**：NZISM 安全基准 AC-2 所有权：客户
 

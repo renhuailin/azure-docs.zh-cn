@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936169"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549458"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 创建你的第一个持久函数
 
@@ -22,7 +22,7 @@ ms.locfileid: "97936169"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -60,21 +60,6 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 此外，还会在根文件夹中创建 requirements.txt 文件。 它指定运行函数应用所需的 Python 包。
 
-## <a name="update-azure-functions-extension-bundles-version"></a>更新 Azure Functions 扩展捆绑包版本
-
-Python Azure Functions 需要版本 2.x 的 [Azure Functions 扩展捆绑包](../functions-bindings-register.md#access-extensions-in-non-net-languages)。 扩展捆绑包是在 host.json 中配置的。
-
-1. 在项目中打开 host.json。 将扩展捆绑包 `version` 扩展为 `[2.*, 3.0.0)`。 这将指定一个大于等于 2.0 且小于 3.0 的版本范围。
-
-    ```json
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[2.*, 3.0.0)"
-    }
-    ```
-
-1. 必须重新加载 VS Code，然后更新的扩展捆绑包版本才会反映出来。 在命令面板中，搜索“开发人员: 重载窗口”命令并运行它。
-
 ## <a name="install-azure-functions-durable-from-pypi"></a>从 PyPI 安装 azure-functions-durable
 
 创建项目时，Azure Functions VS Code 扩展会自动使用所选的 Python 版本创建虚拟环境。 你将在终端中激活该虚拟环境，并安装 Azure Functions 和 Durable Functions 所需的某些依赖项。
@@ -83,7 +68,7 @@ Python Azure Functions 需要版本 2.x 的 [Azure Functions 扩展捆绑包](..
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b12
+    azure-functions-durable
     ```
 
 1. 打开当前文件夹中编辑器的集成终端 (<kbd>Ctrl+Shift+`</kbd>)。

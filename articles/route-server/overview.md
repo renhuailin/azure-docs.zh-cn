@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 099f9b3769179076491c7c2098ec56faff9847dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039829"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437155"
 ---
 # <a name="what-is-azure-route-server-preview"></a>什么是 Azure 路由服务器（预览版）？ 
 
@@ -37,7 +37,7 @@ Azure 路由服务器简化了虚拟网络中 NVA 的配置、管理和部署。
 
 * 每当 NVA 公布新路由或撤消旧路由时，你不再需要手动更新[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md)。 
 
-* 不再需要出于复原能力或性能方面的原因在 NVA 的前面配置负载均衡器。 在将 NVA 的多个实例与 Azure 路由服务器对等互连时，可以在 NVA 中配置 BGP 属性。 通过这些 BGP 属性，Azure 路由服务器可以知道哪个 NVA 实例应是主动的，哪个 NVA 实例应是被动的。 
+* 可以将 NVA 的多个实例与 Azure 路由服务器对等互连。 可以在 NVA 中配置 BGP 属性，并根据设计（例如通过主动-主动提高性能，或通过主动-被动实现弹性），让 Azure Route Server 知道哪个 NVA 实例是主动的，哪个是被动的。 
 
 * NVA 与 Azure 路由服务器之间的接口基于通用标准协议。 只要 NVA 支持 BGP，你就可以将其与 Azure 路由服务器对等互连。 有关详细信息，请参阅[路由服务器支持的路由协议](route-server-faq.md#protocol)。
 

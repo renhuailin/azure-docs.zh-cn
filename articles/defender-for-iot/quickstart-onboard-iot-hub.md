@@ -1,6 +1,6 @@
 ---
-title: 载入 Defender for IoT 基于代理的解决方案
-description: 了解如何在 Azure IoT 中心加入和启用 Defender for IoT 安全服务。
+title: 快速入门：将 Defender for IoT 加入到基于代理的解决方案
+description: 在本快速入门中，了解如何在 Azure IoT 中心加入和启用 Defender for IoT 安全服务。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/20/2021
 ms.author: shhazam
-ms.openlocfilehash: 127e439a7740cb97cbe126071aaaa5245cd85782
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: d30a03aa7b7715a8792e7b70a0571270c6ad7b37
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809113"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449673"
 ---
-# <a name="onboard-to-defender-for-iot-agent-based-solution"></a>载入 Defender for IoT 基于代理的解决方案
+# <a name="quickstart-onboard-defender-for-iot-to-an-agent-based-solution"></a>快速入门：将 Defender for IoT 加入到基于代理的解决方案
 
 本文介绍如何在现有 IoT 中心启用 Defender for IoT 服务。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
 
@@ -35,7 +35,11 @@ ms.locfileid: "99809113"
 > [!NOTE]
 > Defender for IoT 目前仅支持标准层 IoT 中心。
 
-## <a name="onboard-to-defender-for-iot-in-iot-hub"></a>在 IoT 中心加入 Defender for IoT
+## <a name="prerequisites"></a>先决条件
+
+无
+
+## <a name="onboard-defender-for-iot-to-an-iot-hub"></a>将 Defender for IoT 加入 IoT 中心
 
 对于所有新的 IoT 中心，Defender for IoT 都默认设置为“开”。 可在 IoT 中心创建过程中验证 Defender for IoT 是否已切换为“开”。
 
@@ -55,14 +59,23 @@ ms.locfileid: "99809113"
 
 ## <a name="onboard-defender-for-iot-to-an-existing-iot-hub"></a>将 Defender for IoT 加入现有 IoT 中心
 
-可监视设备标识管理、设备到云的模式、云到设备的模式，还可执行以下步骤来启动服务： 
+可以通过将 Defender for IoT 加入现有的 IoT 中心，监视设备标识管理、设备到云和云到设备的通信模式。
+
+若要将 Defender for IoT 加入现有的 IoT 中心：
 
 1. 导航到 IoT 中心。 
 
-1. 选择“安全概述”菜单。 ****   
+1. 选择要加入的 IoT 中心。
 
-1. 单击“保护 IoT 解决方案”，然后填写加入窗体。 
+1. 在“安全性”部分下选择任何选项。
 
+1. 单击“保护 IoT 解决方案”，然后填写加入窗体 ****  。 
+
+    :::image type="content" source="media/quickstart-onboard-iot-hub/secure-your-iot-solution.png" alt-text="选择“保护 IoT 解决方案”按钮以保护解决方案。":::
+
+仅在 IoT 中心尚未加入，或者在加入时将 Defender for IoT 切换为了“关闭”，才会显示“保护 IoT 解决方案”按钮 。
+
+:::image type="content" source="media/quickstart-onboard-iot-hub/toggle-is-off.png" alt-text="如果在加入过程中切换设置为关闭。":::
 
 ## <a name="next-steps"></a>后续步骤
 

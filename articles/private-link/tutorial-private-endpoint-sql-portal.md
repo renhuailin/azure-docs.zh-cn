@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - 门户
+title: 教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - 门户
 description: 借助本教程了解如何使用 Azure 门户创建具有专用终结点的 Azure SQL 服务器。
 services: private-link
 author: asudbring
@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8bb227bdc4bbcdf986c2ed64e1f89e1dfa289b83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522152"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554966"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure 门户
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure 门户
 
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。
 
@@ -239,7 +240,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     | Password | 输入在服务器创建过程中所输入的密码 |
     | 记住密码 | 请选择“是”。 |
 
-1. 选择“连接”。
+1. 选择“连接”  。
 2. 浏览左侧菜单中的数据库。
 3. （可选）创建或查询 mydatabase 中的信息。
 4. 关闭与 **myVM** 的远程桌面连接。 
@@ -260,6 +261,6 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 你使用虚拟机通过专用终结点安全测试了到 SQL 服务器的连接。
 
-了解如何创建专用链接服务：
+对于下一步，你可能还会对“与 Azure SQL 数据库建立专用连接的 Web 应用”体系结构场景感兴趣，该场景将虚拟网络以外的 Web 应用程序连接到数据库的专用终结点。
 > [!div class="nextstepaction"]
-> [创建专用链接服务](create-private-link-service-portal.md)
+> [与 Azure SQL 数据库建立专用连接的 Web 应用](/azure/architecture/example-scenario/private-web-app/private-web-app)

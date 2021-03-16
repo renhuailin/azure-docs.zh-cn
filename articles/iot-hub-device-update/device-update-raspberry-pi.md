@@ -1,17 +1,17 @@
 ---
 title: 使用 Raspberry Pi 3 B + Reference Yocto Image 的 Device Update for Azure IoT Hub 教程 | Microsoft Docs
 description: 通过 Raspberry Pi 3 B+ Reference Yocto Image 开始使用 Device Update for Azure IoT Hub。
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: bb992e4f33cc833411e7cce560f71adf1dc72076
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658714"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443448"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>使用 Raspberry Pi 3 B + Reference Image 的 Device Update for Azure IoT Hub 教程
 
@@ -143,13 +143,11 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 ## <a name="import-update"></a>导入更新
 
-1. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
-
-2. 选择“更新”选项卡。
-
-3. 选择“+ 导入新更新”。
-
-4. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的 apt 清单更新文件。
+1. 按照这些[说明](import-update.md)操作，创建导入清单。
+2. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
+3. 选择“更新”选项卡。
+4. 选择“+ 导入新更新”。
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择上面创建的导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择要部署到 IoT 设备的更新文件。
    
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="显示更新文件选择的屏幕截图。" lightbox="media/import-update/select-update-files.png":::
 

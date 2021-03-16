@@ -1,26 +1,19 @@
 ---
-title: 快速入门 - 将 Azure 存储帐户与 Azure CDN 集成
-description: 了解如何使用 Azure 内容分发网络 (CDN) 通过缓存 Azure 存储中的 blob 来分发高带宽内容。
+title: 快速入门：将 Azure 存储帐户与 Azure CDN 集成
+description: 在本快速入门中，了解如何使用 Azure 内容分发网络 (CDN) 通过缓存 Azure 存储中的 blob 来分发高带宽内容。
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018607"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561919"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 
@@ -123,9 +116,6 @@ http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 3. 若要删除存储帐户，请从仪表板中选择它，然后从顶部的菜单中选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)
 
 > [!div class="nextstepaction"]
 > [教程：从 Web 应用使用 CDN 提供静态内容](cdn-add-to-web-app.md)

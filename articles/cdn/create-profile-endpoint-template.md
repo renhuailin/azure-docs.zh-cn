@@ -1,7 +1,7 @@
 ---
 title: 快速入门：创建配置文件和终结点 - 资源管理器模板
 titleSuffix: Azure Content Delivery Network
-description: 了解如何使用资源管理器模板创建 Azure 内容分发网络配置文件和终结点资源管理器模板
+description: 在本快速入门中，了解如何使用资源管理器模板创建 Azure 内容分发网络配置文件和终结点
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695727"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102560457"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>快速入门：创建 Azure CDN 配置文件和终结点 - ARM 模板
 
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ### <a name="powershell"></a>PowerShell
 
-如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) 命令将其删除。
+如果不再需要上述资源组及其包含的所有资源，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
@@ -126,5 +126,5 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 若要详细了解 Azure CDN 和 Azure 资源管理器，请继续阅读以下文章。
 
-* 阅读 [Azure CDN 概述](cdn-overview.md)
-* 了解有关 [Azure 资源管理器](../azure-resource-manager/management/overview.md)的详细信息
+> [!div class="nextstepaction"]
+> [教程：从 Web 应用使用 CDN 提供静态内容](cdn-add-to-web-app.md)

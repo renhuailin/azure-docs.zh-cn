@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 7410fcbc890780281763a91f33525562e9de1853
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182479"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102423707"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -38,7 +38,7 @@ ms.locfileid: "102182479"
     display(df.limit(10))
     ```
 1. 在笔记本的“附加到”菜单中，选择之前创建的 Spark1 无服务器 Spark 池 。
-1. 选择单元上的“运行”
+1. 选择单元上的“运行”。 如果需要，Synapse 将启动新的 Spark 会话来运行此单元格。 如果需要新的 Spark 会话，最初将需要大约两秒钟的时间来创建。 
 1. 如果只想查看数据帧的架构，请通过以下代码运行单元：
     ```
 

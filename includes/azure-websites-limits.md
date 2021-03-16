@@ -3,13 +3,13 @@ author: rothja
 ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
-ms.author: jroth
-ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.author: msangapu
+ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024223"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102532514"
 ---
 | 资源 | 免费 | 共享 | 基本 | Standard | 高级 (v1-v3) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "98024223"
 | 带宽 |165 MB |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |
 | 应用程序体系结构 |32 位 |32 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |
 | 每个实例的 Web 套接字数<sup>7</sup> |5 |35 |350 |无限制 |无限制 |无限制 |
-| IP 连接数 | 600 | 600 | 取决于实例大小<sup>8</sup> | 取决于实例大小<sup>8</sup> | 取决于实例大小<sup>8</sup> | 16,000 |
+| 每个实例的出站 IP 连接 | 600 | 600 | 取决于实例大小<sup>8</sup> | 取决于实例大小<sup>8</sup> | 取决于实例大小<sup>8</sup> | 16,000 |
 | 每个应用程序的并发[调试器连接数](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | 每个订阅的应用服务证书数<sup>9</sup>| 不支持 | 不支持 |10 |10 |10 |10 |
 | 每个应用的自定义域数</a> |0（仅 azurewebsites.net 子域）|500 |500 |500 |500 |500 |

@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4e2e34d73bc3048c587d7c0505f4978dd638370a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180269"
+ms.locfileid: "102214229"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -31,10 +31,12 @@ ms.locfileid: "102180269"
 
 <details>
 <summary>已安装 Visual Studio 2019？</summary>
-  如果已安装 Visual Studio 2019：
+如果已安装 Visual Studio 2019：
 
-  - 选择“帮助” > “检查更新”，在 Visual Studio 中安装最新更新  。 最新的更新包含 .NET 5.0 SDK。
-  - 选择“工具” > “获取工具和功能”，添加工作负载  。
+<ul>
+<li>选择“帮助”&gt;“检查更新”，在 Visual Studio 中安装最新更新。 最新的更新包含 .NET 5.0 SDK。</li>
+<li>选择“工具”&gt;“获取工具和功能”，添加工作负载。</li>
+</ul>
 </details>
 
 <hr/> 
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. 运行 `az webapp up` 以重新部署：
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary><code>az webapp up</code> 此时有何作用？</summary>
-首次运行该命令时，它会将应用名称、资源组和应用服务计划从项目根目录保存到 <i>.azure/config</i> 文件。 再次从项目根目录运行它时，它将使用 <i>.azure/config</i> 中保存的值，检测是否已存在应用服务资源，并再次执行 Zip 部署。
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary><code>az webapp up</code> 此时有何作用？</summary>
+    首次运行该命令时，它会将应用名称、资源组和应用服务计划从项目根目录保存到 <i>.azure/config</i> 文件。 再次从项目根目录运行它时，它将使用 <i>.azure/config</i> 中保存的值，检测是否已存在应用服务资源，并再次执行 Zip 部署。
+    </details>
+    
 1. 部署完成后，在之前打开的浏览器窗口中点击“刷新”。
 
-![已更新的在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![已更新的在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [存在问题？请告诉我们。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ az webapp up --os-type linux
 
 1. 在概述页面中，可执行浏览、停止、启动、重启和删除等基本管理任务。 左侧菜单提供了用于配置应用的不同页面。 
 
-![Azure 门户中的“应用服务”页](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![Azure 门户中的“应用服务”页](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9.清理资源

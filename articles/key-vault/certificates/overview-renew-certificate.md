@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287687"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487179"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
@@ -73,7 +73,10 @@ Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 
 Azure Key Vault 还处理自签名证书的自动续订。 若要详细了解如何更改颁发策略和更新证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)。
 
 ## <a name="troubleshoot"></a>疑难解答
-如果颁发的证书在 Azure 门户中处于“已禁用”状态，转到“证书操作”查看该证书的错误消息。
+* 如果颁发的证书在 Azure 门户中处于“已禁用”状态，转到“证书操作”查看该证书的错误消息。
+* 错误类型“用于获取证书的 CSR 已被使用。 请尝试使用新的 CSR 生成新的证书。”
+  转到证书的“高级策略”部分，检查是否关闭了“续订时重用密钥”选项。
+
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

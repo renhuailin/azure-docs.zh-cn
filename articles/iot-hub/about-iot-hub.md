@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86a373844b370cc9f9ce31dc65b2039a81279803
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501135"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454764"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -30,7 +30,7 @@ IoT 中心的功能有助于生成可缩放且功能完整的 IoT 解决方案�
 
 ## <a name="scale-your-solution"></a>缩放解决方案
 
-IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 有关缩放 IoT 中心的详细信息，请参阅 [IoT 中心缩放](iot-hub-scaling.md?branch=release-iotbasic)。 若要详细了解 IoT 中心提供的多层服务以及如何最好地满足可伸缩性需求，请查看[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
+IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件以支持 IoT 工作负载。 有关缩放 IoT 中心的详细信息，请参阅 [IoT 中心缩放](iot-hub-scaling.md)。 若要详细了解 IoT 中心提供的多层服务以及如何最好地满足可伸缩性需求，请查看[定价页](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="secure-your-communications"></a>保护通信
 
@@ -104,6 +104,8 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 * 基于 WebSockets 的 AMQP
 * MQTT
 * 基于 WebSocket 的 MQTT
+
+IoT 中心和设备 SDK 支持用于连接设备的 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)约定。 IoT 即插即用设备使用设备模型向支持 IoT 即插即用的应用程序播发其功能。 通过设备模型，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。
 
 如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，以本地化的方式连接到中心。
 

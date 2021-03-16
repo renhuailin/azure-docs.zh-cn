@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 02/09/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 432a9dab851bda65ecf8736d725b08c5e726ac16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a94aa0a0deea14cca2b558c602ff7e35ca0ba81f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659250"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487368"
 ---
 # <a name="sip-interface-infrastructure-requirements"></a>SIP 接口基础结构要求 
 
@@ -158,12 +158,12 @@ SBC 发出 DNS 查询来解析 sip.pstnhub.microsoft.com。 系统将根据 SBC 
 
 ## <a name="media-traffic-media-processors-geography"></a>媒体流量：媒体处理器地域
 
-媒体流量通过称为媒体处理器的组件实现流动。 媒体处理器与 SIP 代理位于相同的数据中心。 还有其他用于优化媒体流的媒体处理器。 例如，我们现在在澳大利亚没有 SIP 代理组件（SIP 流量通过新加坡或香港流动），但是我们在澳大利亚本地有媒体处理器。 本地对媒体处理器的需求由我们远程发送流量（例如从澳大利亚到新加坡或香港）所经历的延迟来决定。 在流量从澳大利亚流向香港或新加坡的示例中，虽然延迟对于 SIP 流量来说是可接受的（可保持良好呼叫质量），但对于实时媒体流量来说并非如此。
+媒体流量通过称为媒体处理器的组件实现流动。 媒体处理器与 SIP 代理位于相同的数据中心。 还有其他用于优化媒体流的媒体处理器。 例如，我们现在在澳大利亚没有 SIP 代理组件（SIP 流量通过新加坡或香港 SAR 流动），但是我们在澳大利亚本地有媒体处理器。 本地对媒体处理器的需求由我们远程发送流量（例如从澳大利亚到新加坡或香港 SAR）所经历的延迟来决定。 在流量从澳大利亚流向香港 SAR 或新加坡的示例中，虽然延迟对于 SIP 流量来说是可接受的（可保持良好呼叫质量），但对于实时媒体流量来说并非如此。
 
 部署 SIP 代理和媒体处理器组件的位置：
 - 美国（两个在美国西部和美国东部数据中心）
 - 欧洲（阿姆斯特丹和都柏林数据中心）
-- 亚洲（新加坡和香港数据中心）
+- 亚洲（新加坡和香港 SAR 数据中心）
 - 澳大利亚（澳大利亚东部和东南部数据中心）
 
 仅部署媒体处理器的位置（SIP 通过上面列出的最近数据中心流动）：

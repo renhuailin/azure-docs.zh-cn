@@ -1,19 +1,19 @@
 ---
-title: Azure 上 Intel SGX 引用帮助程序 DaemonSet 的进程外证明支持
-description: 用于在 SGX 应用程序进程之外生成引用的 DaemonSet。 本文介绍如何为容器内运行的机密工作负载提供进程外证明设备。
+title: Azure 上 Intel SGX 引用帮助程序 Daemonset 的进程外证明支持（预览版）
+description: 用于在 SGX 应用程序进程之外生成引用的 DaemonSet。 本文介绍如何为容器内运行的机密工作负载提供进程外证明辅助。
 ms.service: container-service
 author: agowdamsft
 ms.topic: overview
-ms.date: 9/22/2020
+ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: b79b3b40f3fbfe7d70550db3aaf7b365aa455e89
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564151"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553249"
 ---
-# <a name="platform-software-management-with-sgx-quote-helper-daemon-set"></a>具有 SGX 引用帮助程序守护程序集的平台软件管理
+# <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>具有 SGX 引用帮助程序守护程序集的平台软件管理（预览版）
 
 执行远程证明的 [enclave 应用程序](confidential-computing-enclaves.md)需要生成的 QUOTE。 此 QUOTE 提供应用程序的标识和状态的加密证明，以及 enclave 正在运行的环境。 生成 QUOTE 需要使用英特尔的平台软件组件 (PSW) 中的可信软件组件。
 
@@ -27,6 +27,13 @@ ms.locfileid: "94564151"
 使用开放式 Enclave SDK 构建的 SGX 应用程序默认使用进程内证明模式。 基于 SGX 的应用程序使用进程外模式，并且需要额外托管和公开所需的组件，如应用程序外部的 Architectural Enclave Service Manager (AESM)。
 
 强烈建议使用此功能，因为它在英特尔平台更新或 DCAP 驱动程序更新期间可增加 enclave 应用的正常运行时间。
+
+若要在 AKS 群集上启用此功能，请在启用机密计算外接程序时向 CLI 修改 add --enable-sgxquotehelper 命令。 详细的 CLI 说明位于[此处](confidential-nodes-aks-get-started.md)： 
+
+```azurecli-interactive
+# Create a new AKS cluster with system node pool with Confidential Computing addon enabled and SGX Quote Helper
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom --enable-sgxquotehelper
+```
 
 ## <a name="why-and-what-are-the-benefits-of-out-of-proc"></a>为什么选择进程外模式，进程外模式有何优势？
 
