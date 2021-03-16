@@ -8,16 +8,18 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8e08c531cd46d5112138a3feedf97b27307e3dca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656187"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561341"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
-Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人数据需求。 若使用通信服务的开发人员与使用该应用程序的人有直接关系，便可成为其数据的控制者。 由于 Azure 通信服务代表你存储了这些数据，因此我们很可能成为这些数据的处理者。 本页概述该服务如何保留数据以及你如何识别、导出和删除此数据。
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
+Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人数据需求。 若使用通信服务的开发人员与使用该应用程序的人有直接关系，便可成为其数据的控制者。 由于 Azure 通信服务代表你存储并加密了这些静态数据，因此我们很可能成为这些数据的处理者。 本页概述该服务如何保留数据以及你如何识别、导出和删除此数据。
 
 ## <a name="data-residency"></a>数据驻留
 
@@ -79,6 +81,6 @@ Azure 通信服务将向 Azure Monitor 提供日志记录数据，目的是了�
 
 ## <a name="additional-resources"></a>其他资源
 
-- [针对 GDPR 和 CCPA 的 Azure 数据主体请求](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
+- [针对 GDPR 和 CCPA 的 Azure 数据主体请求](/microsoft-365/compliance/gdpr-dsr-azure)
 - [Microsoft 信任中心](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Azure 交互式地图 - 客户数据位于何处？](https://azuredatacentermap.azurewebsites.net/)

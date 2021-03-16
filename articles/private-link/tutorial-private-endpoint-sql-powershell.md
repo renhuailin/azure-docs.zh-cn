@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - PowerShell
+title: 教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - PowerShell
 description: 使用本教程了解如何使用 Azure PowerShell 创建具有专用终结点的 Azure SQL 服务器
 services: private-link
 author: asudbring
@@ -7,14 +7,15 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8668bdb9dc391582234bf5741c0dd287d026defd
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544082"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554932"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>教程 - 使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure PowerShell
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure PowerShell
 
 Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。
 
@@ -29,7 +30,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 ## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+* 如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -337,6 +338,6 @@ New-AzPrivateDnsZoneGroup @parameters4
 
 你使用虚拟机通过专用终结点安全测试了到 SQL 服务器的连接。
 
-了解如何创建专用链接服务：
+对于下一步，你可能还会对“与 Azure SQL 数据库建立专用连接的 Web 应用”体系结构场景感兴趣，该场景将虚拟网络以外的 Web 应用程序连接到数据库的专用终结点。
 > [!div class="nextstepaction"]
-> [创建专用链接服务](create-private-link-service-portal.md)
+> [与 Azure SQL 数据库建立专用连接的 Web 应用](/azure/architecture/example-scenario/private-web-app/private-web-app)

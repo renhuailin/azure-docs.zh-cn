@@ -1,7 +1,7 @@
 ---
-title: 在工作区中运行 Jupyter 笔记本
+title: 在工作区中运行 Jupyter Notebook
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习 studio 中不离开工作区的情况下运行 Jupyter 笔记本。
+description: 了解如何在不离开 Azure 机器学习工作室中工作区的情况下运行 Jupyter Notebook。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: fe6fa5c9b05afd5479818fe9bb25e471665cb867
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171460"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518715"
 ---
-# <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter 笔记本
+# <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
-了解如何直接在 Azure 机器学习 studio 中的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
+了解如何直接在 Azure 机器学习工作室的工作区中运行 Jupyter Notebook。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
 
-有关如何创建和管理文件（包括笔记本）的信息，请参阅 [在工作区中创建和管理文件](how-to-manage-files.md)。
+有关如何创建和管理文件（包括笔记本）的信息，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,13 +31,13 @@ ms.locfileid: "102171460"
 
 ## <a name="edit-a-notebook"></a>编辑笔记本
 
-若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。  如果此部分中没有任何笔记本，请参阅在 [工作区中创建和管理文件](how-to-manage-files.md)。
+若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。  如果此部分中没有任何笔记本，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
 
 你可以在不连接到计算实例的情况下编辑笔记本。  要运行笔记本中的单元格时，请选择或创建一个计算实例。  如果选择一个已停止的计算实例，则在你运行第一个单元时，该计算实例会自动启动。
 
-计算实例运行时，还可以在任何 Python 笔记本中使用 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支持的代码完成功能。
+如果计算实例正在运行，还可以在任何 Python Notebook 中使用由 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) 提供支持的代码完成功能。
 
-还可以从笔记本工具栏启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
+另外，还可以从笔记本工具栏中启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
 
 ## <a name="focus-mode"></a>焦点模式
 
@@ -84,7 +84,7 @@ ms.locfileid: "102171460"
 
 ## <a name="export-a-notebook"></a>导出笔记本
 
-在笔记本工具栏中，选择菜单，然后将其 **导出** 为，以将笔记本导出为支持的任何类型：
+在笔记本工具栏中，选择菜单，然后单击“导出为”，将笔记本导出为支持的任何类型：
 
 * 笔记本
 * Python
@@ -93,7 +93,7 @@ ms.locfileid: "102171460"
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/export-notebook.png" alt-text="将笔记本导出到计算机":::
 
-导出的文件保存在您的计算机上。
+导出的文件保存在计算机上。
 
 ## <a name="run-a-notebook-or-python-script"></a>运行笔记本或 Python 脚本
 
@@ -101,13 +101,13 @@ ms.locfileid: "102171460"
 
 * 如果没有计算实例，请使用以下步骤创建一个计算实例：
 
-    1. 在 "笔记本" 或 "脚本" 工具栏中，选择 "计算" 下拉列表右侧的 " **+ 新建计算**"。 根据屏幕大小，此位置可能位于 " **...** " 菜单下。
+    1. 在笔记本或脚本工具栏中，在“计算”下拉列表右侧选择“+ 新建计算”。 根据屏幕大小，此选项可能位于“…”菜单下方。
         :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="创建新计算":::
     1. 为计算命名，并在“虚拟机大小”中选择一个大小。 
     1. 选择“创建”。
-    1. 计算实例自动连接到文件。  你现在可以使用计算实例左侧的工具运行笔记本单元或 Python 脚本。
+    1. 计算实例自动连接到文件。  现在可以使用计算实例左侧的工具来运行笔记本单元或 Python 脚本。
 
-* 如果有已停止的计算实例，请选择 "计算" 下拉列表右侧的 "  **开始计算** "。 根据屏幕大小，此位置可能位于 " **...** " 菜单下。
+* 如果有已停止的计算实例，请在“计算”下拉列表右侧选择“开始计算”。 根据屏幕大小，此选项可能位于“…”菜单下方。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="启动计算实例":::
 
@@ -115,7 +115,7 @@ ms.locfileid: "102171460"
 
 ### <a name="view-logs-and-output"></a>查看日志和输出
 
-使用 [笔记本小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) 来查看运行和日志的进度。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
+使用[笔记本小组件](/python/api/azureml-widgets/azureml.widgets)查看运行进度和日志。 小组件具有异步性，在训练结束之前，它会一直提供更新。 Jupyter 和 JupterLab 也支持 Azure 机器学习小组件。
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="屏幕截图：Jupyter 笔记本小组件":::
 
@@ -137,7 +137,7 @@ ms.locfileid: "102171460"
 
 ## <a name="change-the-notebook-environment"></a>更改笔记本环境
 
-笔记本工具栏使你可以更改笔记本的运行环境。  
+使用笔记本工具栏可以更改笔记本的运行环境。  
 
 以下操作不会更改笔记本状态或笔记本中任何变量的值：
 
@@ -158,9 +158,9 @@ ms.locfileid: "102171460"
 
 ## <a name="add-new-kernels"></a>添加新内核
 
-[使用终端 ](how-to-access-terminal.md#add-new-kernels) 创建新内核，并将其添加到计算实例。 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。
+[使用终端](how-to-access-terminal.md#add-new-kernels)创建新内核，并将其添加到计算实例。 笔记本会自动查找所连接计算实例上安装的所有 Jupyter 内核。
 
-使用右侧的 "内核" 下拉列表更改为任何已安装的内核。  
+使用右侧的内核下拉列表，更改为任何已安装的内核。  
 
 
 ### <a name="status-indicators"></a>状态指示器
@@ -267,13 +267,13 @@ ms.locfileid: "102171460"
 | Control/Command + 向右箭头键       | 右移一个字 |                              
 | Control/Command + Backspace   | 删除插入提示之前的字 |                             
 | Control/Command + Delete      | 删除插入提示之后的字 |                              
-| Control/Command + /           | 切换单元格上的注释
+| Control/Command + /           | 打开/关闭单元注释
 
 ## <a name="troubleshooting"></a>疑难解答
 
 * 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
 
-* 在专用链接工作区中部署计算实例时，只能 [从虚拟网络内部访问](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 <instance-name>.<region>.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
+* 在专用链接工作区中部署计算实例时，只能[从虚拟网络内部访问](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
     
 ## <a name="next-steps"></a>后续步骤
 

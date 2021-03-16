@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4b2777bfd9905a1caa8b69b78ff892b661e4dc4b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097534"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656816"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -107,12 +107,9 @@ Azure 机器学习数据标记是创建、管理和监视标记项目的一个�
 
 若要将更多图像添加到项目中，请使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)上载到 blob 存储中的相应文件夹。 
 
-如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。 启用后，此数据将每天一次提取到你的项目中。
+如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。 启用后此数据会每天拉取到项目中，因此在向数据存储添加新数据后，需要等待数据在项目中显示。  可在项目的“详细信息”选项卡的“增量刷新”部分中看到上次刷新数据的时间戳 。
 
 如果不希望数据存储中的新图像添加到项目，请取消选中此框。
-
-可以在项目的“详细信息”选项卡的“增量刷新”部分中找到最新刷新的时间戳。
-
 
 ## <a name="specify-label-classes"></a>添加标签类
 

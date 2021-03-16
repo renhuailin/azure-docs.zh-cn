@@ -1,7 +1,7 @@
 ---
 title: 什么是计算目标
 titleSuffix: Azure Machine Learning
-description: 了解如何指定计算资源或环境，以使用 Azure 机器学习培训或部署模型。
+description: 了解如何指定使用 Azure 机器学习训练或部署模型的计算资源或环境。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: bd83ccc4f834d6b52e1c2db15000eb695be85f30
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177192"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503601"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -129,7 +129,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 > [!NOTE]
 > Azure 机器学习不支持 Azure 计算支持的所有 VM 大小。 若要列出可用的 VM 大小，请使用以下某种方法：
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>计算隔离

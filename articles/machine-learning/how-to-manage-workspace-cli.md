@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 09/30/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 8ea3f36d4e63b3439691772c25e7b3af77dcdb02
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210030"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489542"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 
@@ -148,28 +148,28 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 ### <a name="virtual-network-and-private-endpoint"></a>虚拟网络和专用终结点
 
 > [!IMPORTANT]
-> Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
+> Azure 政府区域不支持使用具有专用链接的 Azure 机器学习工作区。
 
-如果要将工作区的访问权限限制为虚拟网络，可以使用以下参数：
+如果希望仅允许虚拟网络访问工作区，可以使用以下参数：
 
 * `--pe-name`：创建的专用终结点的名称。
-* `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
-* `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
-* `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
+* `--pe-auto-approval`：是否应自动批准专用终结点与工作区的连接。
+* `--pe-resource-group`：用于创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
+* `--pe-vnet-name`：用于创建专用终结点的现有虚拟网络。
+* `--pe-subnet-name`：用于创建专用终结点的子网的名称。 默认值为 `default`。
 
-有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
+有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
-### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客户管理的密钥和高业务影响工作区
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客户管理的密钥和极大影响业务的工作区
 
 默认情况下，工作区的元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 该数据是使用 Microsoft 管理的密钥加密的。
 
 > [!NOTE]
-> Azure Cosmos DB __不__ 用于存储模型性能、试验记录的信息或模型部署中记录的信息等信息。 有关监视这些项的详细信息，请参阅体系结构和概念一文的 " [监视和日志记录](concept-azure-machine-learning-architecture.md) " 一节。
+> Azure Cosmos DB 不用于存储信息，例如模型性能、试验记录的信息或模型部署中记录的信息。 有关监视这些项的详细信息，请参阅体系结构和概念一文的[监视和日志记录](concept-azure-machine-learning-architecture.md)部分。
 
-你可以使用 "提供你自己的密钥"，而不是使用 Microsoft 托管密钥。 这样做会创建在 Azure 订阅中存储元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并 `--resource-cmk-uri` 指定保管库中密钥的 URL。
+可以使用自己的密钥，而不使用 Microsoft 管理的密钥。 这样做会创建在 Azure 订阅中存储元数据的 Azure Cosmos DB 实例。 使用 `--cmk-keyvault` 参数指定包含密钥的 Azure Key Vault，并使用 `--resource-cmk-uri` 指定保管库中密钥的 URL。
 
-使用 `--cmk-keyvault` 和参数之前 `--resource-cmk-uri` ，必须先执行以下操作：
+必须先执行以下操作才能使用 `--cmk-keyvault` 和 `--resource-cmk-uri` 参数：
 
 1. 授予机器学习应用（在“标识和访问管理”中）对订阅的参与者权限。
 1. 按照[配置客户管理的密钥](../cosmos-db/how-to-setup-cmk.md)中的步骤完成以下操作：
@@ -186,7 +186,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 只能在创建工作区时选择高业务影响。 在创建工作区后，不能更改此设置。
 
-有关客户管理的密钥和高业务影响工作区的详细信息，请参阅 [企业安全 Azure 机器学习](concept-data-encryption.md#encryption-at-rest)。
+有关客户管理的密钥和极大影响业务的工作区的详细信息，请参阅 [Azure 机器学习的企业安全性](concept-data-encryption.md#encryption-at-rest)。
 
 ### <a name="use-existing-resources"></a>使用现有资源
 

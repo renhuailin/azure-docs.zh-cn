@@ -7,14 +7,14 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd1f21f150094094a6bf856b04a64a02963f35a8
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225146"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521707"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure 内容分发网络上的 Azure Web 应用程序防火墙
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network-from-microsoft"></a>Microsoft Azure 内容分发网络上的 Azure Web 应用程序防火墙
 
 Microsoft 推出的 Azure 内容分发网络 (CDN) 上的 Azure Web 应用程序防火墙 (WAF) 为 Web 内容提供集中保护。 WAF 可以防范 Web 服务遭到常见的恶意利用和出现漏洞。 它使服务对用户高度可用，并帮助满足合规性要求。
 

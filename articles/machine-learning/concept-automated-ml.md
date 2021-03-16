@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 6ed9b316fceeb30a775e2e0d90e7bbb0a07278cd
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180491"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502529"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -116,7 +116,7 @@ ms.locfileid: "102180491"
 
 在每个自动化机器学习试验中，数据将自动缩放或规范化，以帮助确保算法的良好性能。 在模型训练过程中，将对每个模型应用以下缩放或规范化技术之一。 了解 AutoML 如何帮助[防止模型中出现过度拟合与数据不平衡](concept-manage-ml-pitfalls.md)。
 
-|缩放 &nbsp; & &nbsp; 处理| 说明 |
+|缩放&nbsp;&&nbsp;处理| 说明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来标准化特征  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过按该列的最小值和最大值缩放每个特征来转换特征  |
@@ -204,7 +204,7 @@ ms.locfileid: "102180491"
 
 Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 
-* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 
+* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 
 
 * 编程经验有限/无经验的客户可以使用 [https://ml.azure.com](https://ml.azure.com/) 上的 Azure 机器学习工作室  
 
@@ -285,11 +285,11 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 笔记本示例 
 
-查看 GitHub 笔记本存储库中的详细代码示例和用例 [以获取自动机器学习示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)。
+查看[用于自动化机器学习的 GitHub 笔记本存储库示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)中的详细代码示例和用例。
 
 ### <a name="python-sdk-reference"></a>Python SDK 参考
 
-阅读 [AutoML 类参考文档](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
+阅读 [AutoML 类参考文档](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)，加深你对 SDK 设计模式和类规范的专业知识的理解。 
 
 > [!Note]
 > 自动化机器学习功能也可以在其他 Microsoft 解决方案（例如 [ML.NET](/dotnet/machine-learning/automl-overview)、[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、[Power BI](/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)）中使用

@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: da973cf377ceace4a92d1cdd1e956321a5592e6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692209"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520500"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 
@@ -37,7 +37,7 @@ Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而�
 
 `PipelineStep` 有多个子类。 除了 `AutoMLStep`，本文还将显示一个 `PythonScriptStep` 用于数据准备，另一个用于注册模型。
 
-最初将数据移动到 ML 管道时，首选方法是使用 `Dataset` 对象。 要在步骤之间移动数据并能够保存来自运行的数据输出，首选方法是使用 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 和 [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) 对象。 若要与 `AutoMLStep` 结合使用，必须将 `PipelineData` 对象转换为 `PipelineOutputTabularDataset` 对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
+最初将数据移动到 ML 管道时，首选方法是使用 `Dataset` 对象。 要在步骤之间移动数据并能够保存来自运行的数据输出，首选方法是使用 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) 和 [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig) 对象。 若要与 `AutoMLStep` 结合使用，必须将 `PipelineData` 对象转换为 `PipelineOutputTabularDataset` 对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
 
 通过 `AutoMLConfig` 对象配置 `AutoMLStep`。 `AutoMLConfig` 是一个灵活的类，如[使用 Python 配置自动化 ML 试验](./how-to-configure-auto-train.md#configure-your-experiment-settings)中所述。 
 
@@ -108,7 +108,7 @@ compute_target = ws.compute_targets[compute_name]
 
 ### <a name="configure-the-training-run"></a>配置训练运行
 
-AutoMLStep 在作业提交期间自动配置其依赖项。 通过创建和配置对象来设置运行时上下文 `RunConfiguration` 。 此处设置计算目标。
+AutoMLStep 在作业提交期间自动配置其依赖项。 通过创建和配置 `RunConfiguration` 对象来设置运行时上下文。 在此处设置计算目标。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -197,11 +197,11 @@ print(f"Wrote prepped data to {args.output_path}/prepped_data.csv")
 
 代码定义了数据准备函数之后，会解析输入参数，这是我们要写入数据的路径。  （这些值将由 `OutputFileDatasetConfig` 对象确定，并将在下一步中进行讨论。）代码会检索已注册的 `'titanic_cs'` `Dataset`，将其转换为 Pandas `DataFrame`，并调用各种数据准备函数。 
 
-由于 `output_path` 是一个目录，因此调用将 `to_csv()` 指定文件名 `prepped_data.csv` 。
+由于 `output_path` 是一个目录，因此对 `to_csv()` 的调用会指定文件名 `prepped_data.csv`。
 
 ### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>编写数据准备管道步骤 (`PythonScriptStep`)
 
-上述数据准备代码必须与 `PythonScripStep` 对象相关联才能用于管道。 CSV 输出写入到的路径由 `OutputFileDatasetConfig` 对象生成。 前面准备的资源（如 `ComputeTarget`、`RunConfig` 和 `'titanic_ds' Dataset`）用于补全规范。
+上述数据准备代码必须与 `PythonScripStep` 对象相关联才能用于管道。 CSV 输出写入的路径由 `OutputFileDatasetConfig` 对象生成。 前面准备的资源（如 `ComputeTarget`、`RunConfig` 和 `'titanic_ds' Dataset`）用于补全规范。
 
 ```python
 from azureml.data import OutputFileDatasetConfig
@@ -220,7 +220,7 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果查看上一步，你会看到在数据准备代码中，参数的值 `'--output_path'` 为写入 CSV 文件的目录路径。 
+`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值是写入 CSV 文件的文件路径。 
 
 ## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 

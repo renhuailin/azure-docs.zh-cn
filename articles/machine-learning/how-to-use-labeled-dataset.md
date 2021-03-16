@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: a4f15a1a0911e5a33da8b5f9445709cb42e7e10e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981504"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521044"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -27,8 +27,8 @@ ms.locfileid: "99981504"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLFree)。
-* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
-    * 安装 [azure-contrib-dataset](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py) 包
+* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
+    * 安装 [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) 包
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 * 对 Azure 机器学习数据标记项目的访问权限。 如果没有标记项目，请使用[这些步骤](how-to-create-labeling-projects.md)创建一个。
 
@@ -41,7 +41,7 @@ ms.locfileid: "99981504"
  COCO 文件是在 Azure 机器学习工作区的默认 Blob 存储中创建的，该存储位于 *export/coco* 内的某个文件夹中。 
  
 >[!NOTE]
->在对象检测项目中，COCO 文件中导出的 "bbox"： [x，y，width，height] "值已规范化。 它们将扩展为1。 示例：一个边界框位于 (10，10) 位置，0.015625 像素的宽度为30像素，60像素高，将批注为 (。 0.02083、0.046875、0.125) 。 由于 coordintes 是规范化的，因此，所有图像的 "width" 和 "height" 将显示为 "0.0"。 可以使用 Python 库（如 OpenCV 或 Pillow (PIL) ）获取实际的宽度和高度。
+>在物体检测项目中，COCO 文件中导出的“bbox": [x,y,width,height]”值已规范化。 其度量单位设定为 1。 示例：在像素为 640x480 的图像中，位置位于 (10, 10)、宽度为 30 像素、高度为 60 像素的边框将被标注为 (0.015625. 0.02083, 0.046875, 0.125)。 由于坐标已规范化，因此所有图像的“宽度”和“高度”将显示为“0.0”。 可以使用 Python 库（如 OpenCV 或 Pillow(PIL)）获取实际的宽度和高度。
 
 ### <a name="azure-machine-learning-dataset"></a>Azure 机器学习数据集
 
@@ -55,7 +55,7 @@ ms.locfileid: "99981504"
 
 ### <a name="pandas-dataframe"></a>Pandas 数据帧
 
-可以使用 `azureml-contrib-dataset` 类的 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法将带标签的数据集加载到 pandas 数据帧。 可以使用以下 shell 命令安装此类： 
+可以使用 `azureml-contrib-dataset` 类的 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法将带标签的数据集加载到 pandas 数据帧。 可以使用以下 shell 命令安装此类： 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -90,7 +90,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision 数据集
 
-还可以使用 `azureml-contrib-dataset` 类中的 [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) 方法将带标签的数据集加载到 Torchvision 数据集中。 若要使用此方法，需要安装 [PyTorch](https://pytorch.org/)。 
+还可以使用 `azureml-contrib-dataset` 类中的 [to_torchvision()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset#to-torchvision--) 方法将带标签的数据集加载到 Torchvision 数据集中。 若要使用此方法，需要安装 [PyTorch](https://pytorch.org/)。 
 
 在以下代码中，`animal_labels` 数据集是之前保存到工作区的标签项目的输出。
 

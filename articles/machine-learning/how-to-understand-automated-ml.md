@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 2a07b2fc70a21dd192f74eb5260f3444e09cdca0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092904"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520772"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -36,7 +36,7 @@ ms.locfileid: "101092904"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。  (如果你没有 Azure 订阅，请在开始前 [创建一个免费帐户](https://aka.ms/AMLFree)) 
+- Azure 订阅。 （如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://aka.ms/AMLFree)）
 - 使用以下之一创建 Azure 机器学习试验：
   - [Azure 机器学习工作室](how-to-use-automated-ml-for-ml-models.md)（无需代码）
   - [Azure 机器学习 Python SDK](how-to-configure-auto-train.md)
@@ -45,7 +45,7 @@ ms.locfileid: "101092904"
 
 自动 ML 试验完成后，可以通过以下方式找到运行历史记录：
   - 包含 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)的浏览器
-  - 使用 [RunDetails Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true)的 Jupyter 笔记本
+  - 使用 [RunDetails Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets.rundetails)的 Jupyter 笔记本
 
 以下步骤和视频演示了如何在工作室中查看运行历史记录和模型评估指标及图表：
 
@@ -192,7 +192,7 @@ explained_variance|解释的方差衡量模型对目标变量变化的解释程�
 mean_absolute_error|平均绝对误差是目标与预测之间的差的预期绝对值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br><br> 类型： <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`，mean_absolute_error 除以数据范围。 | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均绝对百分比误差 (MAPE) 是预测值和实际值之间平均差值的度量值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf) ||
 median_absolute_error|平均绝对误差是目标与预测之间的所有绝对差的中间值。 此损失值可靠地反映离群值。<br><br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型： <br> `median_absolute_error`<br> `normalized_median_absolute_error`median_absolute_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R<sup>2</sup> (确定系数) 度量平均方形错误 (MSE) 相对于观察到的数据的总方差。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]<br><br>注意： R<sup>2</sup> 的范围通常为 (-inf，1]。 MSE 可以大于观察方差，因此，根据数据和模型预测，R<sup>2</sup> 可以有任意大的负值。 自动 ML 剪辑报告 R<sup>2</sup> 评分为-1，因此 r<sup>2</sup> 的值-1 可能表示 true r<sup>2</sup> 评分小于-1。 在解释负 R<sup>2</sup> 评分时，请考虑其他指标值和数据的属性。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
+r2_score|R<sup>2</sup>（决定系数）衡量均方误差 (MSE) 相对于观察到的数据的总方差的按比例的降低程度。 <br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]<br><br>注意：R<sup>2</sup> 的范围通常为 (-inf, 1]。 MSE 可以大于观察到的方差，因此 R<sup>2</sup> 可以有任意大的负值，具体取决于数据和模型预测。 自动化 ML 剪辑报告的 R<sup>2</sup> 分数为 -1，因此 R<sup>2</sup> 的值为 -1 可能表示实际的 R<sup>2</sup> 分数小于 -1。 在解释负 R<sup>2</sup> 分数时，请考虑其他指标值和数据的属性。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |均方根误差 (RMSE) 是目标与预测之间的预期平方差的平方根。 对于无偏差估算器，RMSE 等于标准偏差。<br> <br> **目的：** 越接近 0 越好 <br> **范围：** [0, inf)<br><br>类型：<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`：root_mean_squared_error 除以数据范围。 |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根。<br><br>**目的：** 越接近 0 越好 <br> **范围：** [0, inf) <br> <br>类型： <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`，root_mean_squared_log_error 除以数据范围。  |[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
 spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一性的非参数测量法。 与皮尔逊相关不同，斯皮尔曼相关不假设两个数据集呈正态分布。 与其他相关系数一样，斯皮尔曼在 -1 和 +1 之间变化，0 表示不相关。 -1 或 1 相关表示确切的单一关系。 <br><br> 斯皮尔曼是一个秩相关指标，这意味着，如果预测值或实际值的变化不改变预测值或实际值的秩序，则不会改变斯皮尔曼结果。<br> <br> **目的：** 越接近 1 越好 <br> **范围：** [-1, 1]|[计算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
@@ -243,7 +243,7 @@ spearman_correlation| 斯皮尔曼相关是两个数据集之间的关系单一�
 6. 在“说明”选项卡中，如果模型是最佳的，你可能会看到已创建的说明
 7. 若要创建新的说明，请选择“说明模型”，然后选择要用来计算说明的远程计算
 
-[详细了解自动 ML 中的模型说明](how-to-machine-learning-interpretability-automl.md)。
+[详细了解自动化 ML 中的模型说明](how-to-machine-learning-interpretability-automl.md)。
 
 > [!NOTE]
 > ForecastCN 模型目前不受自动化 ML 说明的支持，其他预测模型对可解释性工具的访问可能有限。

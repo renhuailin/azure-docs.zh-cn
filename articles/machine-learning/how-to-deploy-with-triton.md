@@ -1,7 +1,7 @@
 ---
 title: 借助 Triton 实现的高性能服务（预览）
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习中通过 NVIDIA Triton 推理服务器部署模型。
+description: 了解如何在 Azure 机器学习中使用 NVIDIA Triton 推理服务器部署模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 47d2c8865109e8ef43317b3c4a19c36e692aff91
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218836"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519191"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -36,7 +36,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 * 熟悉[如何使用 Azure 机器学习部署模型以及部署到的位置](how-to-deploy-and-where.md)。
-* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/?view=azure-ml-py) 或 [Azure CLI](/cli/azure/) 和[机器学习扩展](reference-azure-machine-learning-cli.md)。
+* [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/) 或 [Azure CLI](/cli/azure/) 和[机器学习扩展](reference-azure-machine-learning-cli.md)。
 * 用于本地测试的 Docker 的工作安装。 有关安装和验证 Docker 的信息，请参阅 docker 文档中的[方向和设置](https://docs.docker.com/get-started/)。
 
 ## <a name="architectural-overview"></a>体系结构概述
@@ -47,34 +47,34 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 已启用多个 [Gunicorn](https://gunicorn.org/) 辅助角色来并发处理传入请求。
 * 这些辅助角色执行预处理、调用模型并执行后期处理。 
-* 客户端使用 __AZURE ML 计分 URI__。 例如，`https://myservice.azureml.net/score`。
+* 客户端使用 Azure ML 评分 URI。 例如，`https://myservice.azureml.net/score`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="正常的非 triton 部署体系结构图":::
 
-**直接部署 with Triton**
+**直接使用 Triton 进行部署**
 
-* 请求直接发送到 Triton 服务器。
+* 系统将请求直接发送到 Triton 服务器。
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 __TRITON URI__ 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
+* 客户端使用 Triton URI 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
 
-:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅限 Triton 的 Inferenceconfig 部署，无 Python 中间件":::
+:::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅使用 Triton 进行 Inferenceconfig 部署，无 Python 中间件":::
 
 **使用 Triton 的推理配置部署**
 
 * 已启用多个 [Gunicorn](https://gunicorn.org/) 辅助角色来并发处理传入请求。
 * 请求会转发到“Triton 服务器”。 
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 __AZURE ML 计分 URI__ 发出请求。 例如，`https://myservice.azureml.net/score`。
+* 客户端使用 Azure ML 评分 URI 发出请求。 例如，`https://myservice.azureml.net/score`。
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="用 Triton 和 Python 中间件进行部署":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inference-config-deploy.png" alt-text="使用 Triton 和 Python 中间件进行部署":::
 
 将 Triton 用于模型部署的工作流为：
 
-1. 直接通过 Triton 服务模型。
+1. 直接使用 Triton 为模型服务。
 1. 验证是否可以将请求发送到部署了 Triton 的模型。
-1.  (可选) 为服务器端预处理和后期处理创建一个 Python 中间件层
+1. （可选）为服务器端预处理和后期处理创建一个 Python 中间件层
 
-## <a name="deploying-triton-without-python-pre--and-post-processing"></a>部署不带 Python 预处理和后处理的 Triton
+## <a name="deploying-triton-without-python-pre--and-post-processing"></a>在不进行 Python 预处理和后期处理的情况下部署 Triton
 
 首先，请按照以下步骤验证 Triton 推理服务器是否可以为模型提供服务。
 
@@ -105,7 +105,7 @@ models
 > [!IMPORTANT]
 > 此目录结构是一个 Triton 模型存储库，你的模型使用 Triton 时需要这个结构。 有关详细信息，请参阅 NVIDIA 文档中的 [Triton 模型存储库](https://aka.ms/nvidia-triton-docs)。
 
-### <a name="register-your-triton-model"></a>注册你的 Triton 模型
+### <a name="register-your-triton-model"></a>注册 Triton 模型
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -134,7 +134,7 @@ model = Model.register(
 )
 
 ```
-有关详细信息，请参阅关于[模型类](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的文档。
+有关详细信息，请参阅关于[模型类](/python/api/azureml-core/azureml.core.model.model)的文档。
 
 ---
 
@@ -142,7 +142,7 @@ model = Model.register(
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-如果已启用 GPU 的 Azure Kubernetes 服务群集（通过 Azure 机器学习创建），则可以使用以下命令来部署模型。
+如果已有启用了 GPU 的 Azure Kubernetes 服务群集名为“aks-gpu”（通过 Azure 机器学习创建），则可以使用以下命令来部署模型。
 
 ```azurecli
 az ml model deploy -n triton-webservice -m triton_model:1 --dc deploymentconfig.json --compute-target aks-gpu
@@ -175,11 +175,11 @@ service = Model.deploy(
 ```
 ---
 
-[有关部署模型的详细信息，请参阅此文档](how-to-deploy-and-where.md)。
+请参阅[此文档以了解有关部署模型的详细信息](how-to-deploy-and-where.md)。
 
 ### <a name="call-into-your-deployed-model"></a>调入已部署的模型
 
-首先，获取计分 URI 和持有者令牌。
+首先，获取评分 URI 和持有者令牌。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -199,7 +199,7 @@ print(service.get_keys())
 
 ---
 
-然后，通过执行以下操作确保服务正在运行： 
+然后，执行以下操作确保服务正在运行： 
 
 ```{bash}
 !curl -v $scoring_uri/v2/health/ready -H 'Authorization: Bearer '"$service_key"''
@@ -220,11 +220,11 @@ print(service.get_keys())
 HTTP/1.1 200 OK
 ```
 
-执行运行状况检查后，可创建客户端将数据发送到 Triton 进行推理。 有关创建客户端的详细信息，请参阅 NVIDIA 文档中的[客户端示例](https://aka.ms/nvidia-client-examples)。 还可以参阅 [Triton GitHub 中的 Python 示例](https://aka.ms/nvidia-triton-docs)。
+执行运行状况检查后，可以创建一个客户端，将数据发送到 Triton 以进行推理。 有关创建客户端的详细信息，请参阅 NVIDIA 文档中的[客户端示例](https://aka.ms/nvidia-client-examples)。 还可以参阅 [Triton GitHub 中的 Python 示例](https://aka.ms/nvidia-triton-docs)。
 
-此时，如果不想将 Python 预处理和后期处理添加到已部署的 webservice，则可以执行此操作。 如果要添加此预处理逻辑和后处理逻辑，请继续阅读。
+此时，如果不想将 Python 预处理和后期处理添加到已部署的 Webservice，则操作可能已经完成了。 如果要添加此预处理逻辑和后期处理逻辑，请继续阅读。
 
-## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a> (可选) 使用 Python 条目脚本重新部署，以便进行预处理和后处理
+## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>（可选）使用 Python 入口脚本重新部署，以便进行预处理和后期处理
 
 验证 Triton 能够为模型提供服务之后，可以通过定义入口脚本来添加预处理和后处理代码。 此文件的名称为 `score.py`。 有关入口脚本的详细信息，请参阅[定义入口脚本](how-to-deploy-and-where.md#define-an-entry-script)。
 
@@ -276,7 +276,7 @@ res = triton_client.infer(model_name,
 > [!IMPORTANT]
 > 必须指定 `AzureML-Triton` [特选环境](./resource-curated-environments.md)。
 >
-> Python 代码示例将 `AzureML-Triton` 克隆到另一个名为 `My-Triton` 的环境中。 Azure CLI 代码也使用此环境。 有关克隆环境的详细信息，请参阅 [Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) 引用。
+> Python 代码示例将 `AzureML-Triton` 克隆到另一个名为 `My-Triton` 的环境中。 Azure CLI 代码也使用此环境。 有关克隆环境的详细信息，请参阅 [Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment#clone-new-name-) 引用。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -337,7 +337,7 @@ print(local_service.scoring_uri)
 
 ### <a name="setting-the-number-of-workers"></a>设置辅助角色数
 
-若要在部署中设置辅助角色数，请设置环境变量 `WORKER_COUNT`。 假设有一个名为 `env` 的 [Environment](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 对象，可以执行以下操作：
+若要在部署中设置辅助角色数，请设置环境变量 `WORKER_COUNT`。 假设有一个名为 `env` 的 [Environment](/python/api/azureml-core/azureml.core.environment.environment) 对象，可以执行以下操作：
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

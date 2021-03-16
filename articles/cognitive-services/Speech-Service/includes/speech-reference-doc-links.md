@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
-ms.openlocfilehash: 9074b10b9bf7f8147f70d77bcfbe02749e39154b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 8bc959bc0960a2de3d84f8d75f285138eacdbe34
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91643962"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434299"
 ---
 ## <a name="reference-docs"></a>参考文档
 
@@ -24,12 +24,12 @@ ms.locfileid: "91643962"
 
 请使用以下列表来查找相应的语音 SDK 参考文档：
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK </a>
+- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK </a>
+- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK </a>
+- <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK</a>
+- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK</a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objective-C SDK </a>
 
 > [!TIP]
 > 我们会积极维护和更新语音服务 SDK。 若要跟踪更改、更新和添加的功能，请参阅[语音 SDK 发行说明](../releasenotes.md)。
@@ -45,4 +45,4 @@ ms.locfileid: "91643962"
 - [REST API：语音转文本](../rest-speech-to-text.md)
 - [REST API：发音评估](../rest-speech-to-text.md#pronunciation-assessment-parameters)
 - [REST API：文本转语音](../rest-text-to-speech.md)
-- <a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0" target="_blank" rel="noopener">REST API：批量听录和自定义 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0" target="_blank" rel="noopener">REST API：批量听录和自定义 </a>

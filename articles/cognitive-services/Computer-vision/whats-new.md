@@ -10,16 +10,25 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 4f5ea68102e98a9abc3e5a0a31d3153bc1bd1663
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738219"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487094"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="computer-vision-32-public-preview-update"></a>计算机视觉 3.2 公共预览版更新
+
+计算机视觉 API 3.2 公共预览版已经更新。 该预览版包含所有计算机视觉功能以及已更新的读取 API 和分析 API。
+
+> [!div class="nextstepaction"]
+> 请参阅[计算机视觉 v3.2 公共预览版 3](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -34,7 +43,7 @@ ms.locfileid: "101738219"
 [详细了解](concept-recognizing-text.md)读取 API。
 
 > [!div class="nextstepaction"]
-> [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+> [使用读取 API v3.2 公共预览版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
 
 
 ## <a name="january-2021"></a>2021 年 1 月

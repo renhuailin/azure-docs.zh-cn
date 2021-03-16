@@ -1,7 +1,7 @@
 ---
 title: Workbench 发生了什么情况？
 titleSuffix: Azure Machine Learning
-description: Azure 机器学习是一种集成的数据科学解决方案，用于以云规模对 ML 应用程序进行建模和部署。 工作台功能已停用。
+description: Azure 机器学习是一种集成数据科学解决方案，可以对 ML 应用程序进行云级建模和部署。 工作台功能已停用。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683368"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521367"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
 为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，“2018 年 9 月”版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能  。
 
-为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a>、R SDK 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a>、R SDK 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
 
 在旧版 Azure 机器学习中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
 
@@ -36,7 +36,7 @@ ms.locfileid: "98683368"
 最新版 Azure 机器学习包括以下功能：
 + [简化的 Azure 资源模型](concept-azure-machine-learning-architecture.md)。
 + [全新门户 UI](how-to-track-experiments.md)，用于管理试验和计算目标。
-+ 更全面的全新 Python <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
++ 更全面的全新 Python <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>。
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
 重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习工作区](concept-workspace.md)即可。 可以在 [Azure 门户](how-to-manage-workspace.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
@@ -49,7 +49,7 @@ ms.locfileid: "98683368"
 
 在 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已结束。
 
-通过此 <a href="/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](how-to-manage-workspace.md)即可使用所有最新功能。
+通过此 <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](how-to-manage-workspace.md)即可使用所有最新功能。
 
 ## <a name="what-about-run-histories"></a>运行历史记录又如何？
 
@@ -67,7 +67,7 @@ ms.locfileid: "98683368"
 
 不会丢失任何代码或工作。 在旧版本中，项目是包含本地目录的云实体。 在最新版本中，可使用本地配置文件将本地目录附加到 Azure 机器学习工作区。 请参阅[最新体系结构的关系图](concept-azure-machine-learning-architecture.md)。
 
-大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)Python 命令中指定该目录的名称或使用 `az ml project attach` CLI 命令。  例如：
+大部分项目内容已存在于本地计算机上。 因此，只需在相应目录中创建配置文件，并在代码中引用它，即可连接到工作区。 要继续使用包含文件和脚本的本地目录，请在[“experiment.submit”](/python/api/azureml-core/azureml.core.experiment.experiment)Python 命令中指定该目录的名称或使用 `az ml project attach` CLI 命令。  例如：
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)

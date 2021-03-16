@@ -3,17 +3,17 @@ title: Windows 虚拟桌面中有哪些新增功能？ - Azure
 description: Windows 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 01/29/2021
+ms.date: 02/23/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: 1deec49cfeca65628485ed105e0919f2c2b18b17
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575307"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499877"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -39,6 +39,26 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 ## <a name="fslogix-updates"></a>FSLogix 更新
 
 想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+以下是 2021 年 2 月的更改内容。
+
+### <a name="portal-experience"></a>门户体验
+
+我们通过以下方式改进了 Azure 门户体验：
+
+- “会话主机网格”选项卡中主机上的批量排出模式。 
+- MSIX 应用附加现已提供公共预览版。
+- 已修复深色模式的主机池概述信息。
+
+### <a name="eu-metadata-storage-now-in-public-preview"></a>EU 元数据存储现已提供公共预览版
+
+我们现在正在托管作为 Windows 虚拟桌面中服务元数据的存储选项的欧洲 (EU) 地理的公共预览版。 客户在创建服务对象时可以在欧洲西部或欧洲北部之间进行选择。 主机池的服务对象和元数据将存储在与每个区域关联的 Azure 地理中。 若要了解详细信息，请参阅[我们宣布推出公共预览版的博客文章](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939)。
+
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Windows 虚拟桌面上的 Teams 插件更新
+
+我们通过解决最常见的报告问题（例如屏幕突然变暗或视频和声音不同步），提高了 Windows 虚拟桌面插件上的视频通话质量。 这些改进应能提高带有处于活动状态的发言人切换的单视频视图的性能。 我们还解决了以下问题：Teams 中无法使用具有特殊字符的硬件设备。
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -228,7 +248,7 @@ Azure 政府云现已正式发布。 有关详细信息，请参阅[我们的博
 
 - Windows 虚拟桌面现包含 Azure 顾问。 通过 Azure 门户访问 Windows 虚拟桌面时，你可以查看关于优化 Windows 虚拟桌面环境的建议。 有关详细信息，请参阅 [Azure 顾问](azure-advisor.md)。
 
-- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/?view=azure-cli-latest&preserve-view=true)。
+- Azure CLI 现支持 Windows 虚拟桌面 (`az desktopvirtualization`)，可帮助你自动执行 Windows 虚拟桌面部署。 如需查看扩展命令的列表，请查看 [desktopvirtualization](/cli/azure/ext/desktopvirtualization/)。
 
 - 我们更新了部署模板，更新后的模板与 Windows 虚拟桌面 Azure 资源管理器接口完全兼容。 你可在 [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) 上找到这些模板。
 
@@ -299,7 +319,7 @@ Windows 虚拟桌面现已集成到 Azure 资源管理器中。 在最新更新�
 
 要安装该模块，请按照[为 Windows 虚拟桌面设置 PowerShell 模块](powershell-module.md)中的说明操作。
 
-还可以在 [AzWvd PowerShell 参考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization&preserve-view=true)处查看可用命令的列表。
+还可以在 [AzWvd PowerShell 参考](/powershell/module/az.desktopvirtualization/#desktopvirtualization)处查看可用命令的列表。
 
 有关新增功能的详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。
 

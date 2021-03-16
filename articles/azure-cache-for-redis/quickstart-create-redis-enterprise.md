@@ -7,14 +7,14 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 50535ab9ac2a3541ade7b9abd8f355bbeaf6d4b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364998"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563891"
 ---
-# <a name="quickstart-create-a-redis-enterprise-cache-preview"></a>快速入门：创建 Redis Enterprise 缓存（预览版）
+# <a name="quickstart-create-a-redis-enterprise-cache"></a>快速入门：创建 Redis Enterprise 缓存
 
 Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [Redis Enterprise](https://redislabs.com/redis-enterprise/)。 此功能目前以预览版的形式提供。 此预览版中有两个新层：
 * 企业层，它在虚拟机上使用易失存储器 (DRAM) 存储数据
@@ -22,7 +22,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层要求](cache-overview.md#enterprise-and-enterprise-flash-tier-requirements)。
+在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层的特殊注意事项](cache-overview.md#special-considerations-for-enterprise-tiers)。
 
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请使用预览版邀请中的链接登录到 Azure 门户，然后选择“创建资源”。
@@ -41,7 +41,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
    | **位置** | 单击下拉箭头并选择一个位置。 | 在预览期间，企业层在有限的 Azure 区域可用。 |
    | **缓存类型** | 下拉并选择 Enterprise 或 Enterprise Flash 层和大小 。 |  此层决定可用于缓存的大小、性能和功能。 |
    
-   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="企业层基本设置":::
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="企业层“基本”选项卡":::
 
    > [!NOTE] 
    > 继续操作之前，请务必选中“条款”下的复选框。
@@ -49,25 +49,15 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 
 1. 在完成时选择“下一步:网络”并跳过。
 
-   > [!NOTE] 
-   > 专用链接选项即将推出，可能无法在你的区域立即使用。
-   >
+1. 在完成时选择“下一步:高级”，并将“群集策略”设置为 Enterprise 。 如果打算在不使用 TLS 的情况下连接到新的缓存，请启用“仅限非 TLS 访问”。 但是不建议这样做。
 
-1. 在完成时选择“下一步:高级”，并将“群集策略”设置为 Enterprise 。
-   
-   可以保留默认设置或根据需要更改这些设置。 启用“仅允许通过 TLS 访问”时，必须使用 TLS 从应用程序访问新缓存。
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="企业层“高级”选项卡":::
 
-   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="企业层高级设置":::
-
-   > [!NOTE] 
-   > Enterprise Flash 层尚不支持 Redis 模块。 如果计划使用 Redis 模块，请确保选择企业层缓存。
-   >
-   
 1. 在完成时选择“下一步:标记”并跳过。
 
 1. 在完成时选择“下一步:查看 + 创建”。
 
-   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="企业层摘要":::
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="企业层“查看 + 创建”选项卡":::
 
 1. 检查设置并单击“创建”。
    

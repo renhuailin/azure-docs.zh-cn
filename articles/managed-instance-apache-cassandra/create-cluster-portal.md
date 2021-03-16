@@ -7,19 +7,19 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: a05769c66c4b13de5c7197ef5612d64781574987
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d94bedad1ba7a2c6d814021b733404ccc58148ed
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747468"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424676"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>快速入门：从 Azure 门户中创建适用于 Apache Cassandra 群集的 Azure 托管实例（预览版）
  
 适用于 Apache Cassandra 的 Azure 托管实例为托管的开源 Apache Cassandra 数据中心提供自动部署和缩放操作，可以加速混合方案的部署并减少日常维护。
 
 > [!IMPORTANT]
-> 适用于 Apache Cassandra 的 Azure 托管实例当前为公共预览版。
+> Azure Managed Instance for Apache Cassandra 目前以公共预览版形式提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -63,16 +63,10 @@ ms.locfileid: "101747468"
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="配置网络详细信息。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-1. 如果你在上一步中创建了新的 VNet，请跳到步骤 9。 如果你选择了现有 VNet，则在创建群集之前，你需要对虚拟网络和子网应用某些特殊权限。 为此，你必须获取现有虚拟网络的资源 ID。 在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 中运行以下命令：
+1. 如果你在上一步中创建了新的 VNet，请跳到步骤 8。 如果你选择了现有 VNet，则在创建群集之前，你需要对虚拟网络和子网应用某些特殊权限。 为此，请使用 `az role assignment create` 命令，将 `<subscription ID>`、`<resource group name>`、`<VNet name>` 和 `<subnet name>` 替换为适当的值：
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Replace `<Resource ID>` with the output of previous command:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]
@@ -122,11 +116,11 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你不打算继续使用此托管实例群集，请使用以下步骤删除它：
+如果不打算继续使用此托管实例群集，请按照以下步骤删除它：
 
 1. 从 Azure 门户的左侧菜单中选择“资源组”。
 1. 从列表中选择为本快速入门创建的资源组。
-1. 在资源组“概述”窗格上，选择“删除资源组” 。
+1. 在资源组的“概述”窗格上，选择“删除资源组” 。
 1. 在下一窗口中输入要删除的资源组的名称，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
@@ -134,4 +128,4 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 在本快速入门中，你已学习了如何使用 Azure 门户创建适用于 Apache Cassandra 群集的 Azure 托管实例。 你现在可以开始使用群集了：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Databricks 部署托管 Apache Spark 群集](deploy-cluster-databricks.md)
+> [使用 Azure Databricks 部署托管的 Apache Spark 群集](deploy-cluster-databricks.md)

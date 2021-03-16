@@ -1,7 +1,7 @@
 ---
 title: 设置 Python 开发环境
 titleSuffix: Azure Machine Learning
-description: 设置 Jupyter 笔记本、Visual Studio Code、Azure Databricks 和数据科学虚拟机中的 Azure 机器学习 Python 开发环境。
+description: 在 Jupyter Notebook、Visual Studio Code、Azure Databricks 和 Data Science Virtual Machine 中设置 Azure 机器学习 Python 开发环境。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031753"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501611"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>为 Azure 机器学习设置 Python 开发环境
 
@@ -39,9 +39,9 @@ ms.locfileid: "97031753"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习工作区。 如果没有，可以通过 [Azure 门户](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure 资源管理器模板](how-to-create-workspace-template.md)创建 Azure 机器学习工作区。
+* Azure 机器学习工作区。 如果没有 Azure 机器学习工作区，则可以通过 [Azure 门户](how-to-manage-workspace.md)、[Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace) 和 [Azure 资源管理器模板](how-to-create-workspace-template.md)来创建一个。
 
-### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> 仅限 Local and DSVM：创建工作区配置文件
+### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a>仅限本地和 DSVM：创建一个工作区配置文件
 
 工作区配置文件是一个 JSON 文件，用于告知 SDK 如何与 Azure 机器学习工作区进行通信。 该文件命名为 *config.json*，其格式如下：
 
@@ -55,7 +55,7 @@ ms.locfileid: "97031753"
 
 此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一目录（名为 *.azureml* 的子目录）中，也可以位于父目录中。
 
-若要从代码使用此文件，请使用 [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) 方法。 此代码从文件中加载信息，并连接到工作区。
+若要从代码使用此文件，请使用 [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace#from-config-path-none--auth-none---logger-none---file-name-none-) 方法。 此代码从文件中加载信息，并连接到工作区。
 
 使用下列方法之一创建工作区配置文件：
 
@@ -67,7 +67,7 @@ ms.locfileid: "97031753"
 
 * Azure 机器学习 Python SDK
 
-    创建一个脚本，用于连接到你的 Azure 机器学习工作区，使用 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法生成文件并将其另存为 .azureml/config.json。 确保将 `subscription_id`、`resource_group` 和 `workspace_name` 替换为你自己的值。
+    创建一个脚本，用于连接到你的 Azure 机器学习工作区，使用 [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace#write-config-path-none--file-name-none-) 方法生成文件并将其另存为 .azureml/config.json。 确保将 `subscription_id`、`resource_group` 和 `workspace_name` 替换为你自己的值。
 
     ```python
     from azureml.core import Workspace
@@ -99,7 +99,7 @@ ms.locfileid: "97031753"
     > 如果在 Linux 或 macOS 上操作，并使用除 bash 以外的 shell（例如 zsh），则在运行某些命令时可能会收到错误消息。 若要解决此问题，请使用 `bash` 命令启动新的 bash shell，然后运行命令。
 
 1. 激活新创建的 Python 虚拟环境。
-1. 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+1. 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install)。
 1. 若要将本地环境配置为使用你的 Azure 机器学习工作区，请[创建一个工作区配置文件](#workspace)或使用现有文件。
 
 设置本地环境后，便可以开始使用 Azure 机器学习。 若要开始，请参阅 [Azure 机器学习 Python 入门指南](tutorial-1st-experiment-sdk-setup-local.md)。
@@ -217,4 +217,4 @@ Data Science VM 是一种可用作开发环境的自定义虚拟机 (VM) 映像�
 ## <a name="next-steps"></a>后续步骤
 
 - 在 Azure 机器学习中使用 MNIST 数据集来[训练模型](tutorial-train-models-with-aml.md)。
-- 请参阅[适用于 Python 的 Azure 机器学习 SDK 参考](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。 
+- 请参阅[适用于 Python 的 Azure 机器学习 SDK 参考](/python/api/overview/azure/ml/intro)。 

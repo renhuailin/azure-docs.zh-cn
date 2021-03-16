@@ -10,18 +10,31 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d780ce6362e34c801b4da25332bff90f0b7515
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 380792db21932ed2c6cffb4227df09b27f0cdf5e
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659267"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487470"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
 
-[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
+> [!IMPORTANT]
+> 当前，电话号码的可用性仅限于在美国具有帐单邮寄地址的付费 Azure 订阅，和具有美国数据位置的通信服务资源。 无法在试用帐户上或使用 Azure 免费额度获取电话号码。 有关详细信息，请访问本文档的[订阅资格](#azure-subscriptions-eligibility)部分。
+
 
 借助 Azure 通信服务，可以使用电话号码通过公用电话交换网 (PSTN) 进行语音呼叫和发送短信。 在本文档中，我们将使用通信服务查看电话号码类型、配置选项和区域可用性，以规划电话服务和短信解决方案。
+
+## <a name="azure-subscriptions-eligibility"></a>Azure 订阅资格
+
+若要获取电话号码，需要使用 Azure 付费订阅。 无法在试用帐户上或通过 Azure 免费额度获取电话号码。 
+
+当前，电话号码的可用性仅限于在美国具有帐单邮寄地址的 Azure 订阅，和具有美国数据位置的通信服务资源。
+
 
 ## <a name="number-types-and-features"></a>号码类型和功能
 通信服务提供两种电话号码：本地和免费。
@@ -69,11 +82,6 @@ ms.locfileid: "101659267"
 
 \* 有关呼叫目的地和定价的更多详细信息，请参阅[定价页](../pricing.md)。
 
-## <a name="azure-subscriptions-eligibility"></a>Azure 订阅资格
-
-若要获取电话号码，需要使用 Azure 付费订阅。 无法在试用帐户上或通过 Azure 免费额度获取电话号码。
-
-目前，电话号码的可用性仅限于有美国帐单邮寄地址的 Azure 订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

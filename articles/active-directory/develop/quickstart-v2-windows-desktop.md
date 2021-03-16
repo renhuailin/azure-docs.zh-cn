@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103390"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498755"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -54,12 +54,12 @@ ms.locfileid: "100103390"
 > 1. 选择“注册”以创建应用程序。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 选择“添加平台” > “移动和桌面应用程序” 。
-> 1. 在“重定向 URI”部分中，选择 `https://login.microsoftonline.com/common/oauth2/nativeclient`。
+> 1. 在“重定向 URI”部分中，选择 `https://login.microsoftonline.com/common/oauth2/nativeclient`，然后在“自定义重定向 URI”中添加 `ms-appx-web://microsoft.aad.brokerplugin/{client_id}`，其中 `{client_id}` 是应用程序的应用程序（客户端）ID（与 `msal{client_id}://auth` 复选框中显示的 GUID 相同） 。
 > 1. 选择“配置” 。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
-> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `https://login.microsoftonline.com/common/oauth2/nativeclient`。
+> 为使此快速入门中的代码示例正常运行，请添加重定向 URI `https://login.microsoftonline.com/common/oauth2/nativeclient` 和 `ms-appx-web://microsoft.aad.brokerplugin/{client_id}`。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [执行此更改]()
 >

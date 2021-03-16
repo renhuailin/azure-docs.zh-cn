@@ -6,13 +6,13 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 09/22/2020
-ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 03/03/2021
+ms.openlocfilehash: a080a3b536cb6e11a254f15d745334fbf17531e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532656"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439555"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器
 
@@ -56,7 +56,7 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 
 如果已配置区域冗余高可用性，则该服务将在同一 Azure 区域内的可用性区域中预配并维护热备用服务器。 源服务器上的数据更改将同步复制到备用服务器，以确保没有数据丢失。 借助区域冗余高可用性，一旦触发了计划内或计划外的故障转移事件，备用服务器将立即联机，并可用于处理传入的事务。 这使服务可在支持多个可用性区域的 Azure 区域内从可用性区域故障中复原，如下图所示。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="灵活服务器 - VM 和存储故障":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="区域冗余高可用性":::
 
  有关详细信息，请参阅[高可用性文档](./concepts-high-availability.md)。
 
@@ -86,12 +86,40 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 
 灵活服务器服务配备了内置的性能监视和警报功能。 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 该服务公开主机服务器指标来监视资源利用率，并允许配置慢查询日志。 使用这些工具，可快速优化工作负载并配置服务器以获得最佳性能。
 
+## <a name="azure-regions"></a>Azure 区域
+
+在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 灵活服务器现已在以下 Azure 区域发布：
+
+| Region | 可用性 | 区域冗余 HA | 
+| --- | --- | --- |
+| 西欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 北欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 美国中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 美国东部 | :heavy_check_mark: | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
+
+我们会继续为灵活服务器添加更多区域。
+
 ## <a name="migration"></a>迁移
 
 该服务运行 PostgreSQL 的社区版本。 这样可以实现完全的应用程序兼容性，并且只需最小的重构成本就能将在 PostgreSQL 引擎上开发的现有应用程序迁移到灵活服务器。 
 
 - 转储和还原 - 对于脱机迁移（在此情况下，用户可承受一定的故障时间），使用社区工具（如 Pg_dump 和 Pg_restore）的转储和还原可以提供最快的迁移方式。 有关详细信息，请参阅[使用转储和还原进行迁移](../howto-migrate-using-dump-and-restore.md)。
 - Azure 数据库迁移服务 - 为了在最短的故障时间内实现向灵活服务器的无缝简化迁移，可以利用 Azure 数据库迁移服务。 请参阅[通过门户的 DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) 和[通过 CLI 的 DMS](../../dms/tutorial-postgresql-azure-postgresql-online.md)。 可以从 Azure Database for PostgreSQL 单一服务器迁移到灵活服务器。 有关详细信息，请参阅此 [DMS 文章](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)。
+
+## <a name="contacts"></a>联系人
+如果你有任何关于 Azure Database for PostgreSQL 灵活服务器的问题或建议，请向 Azure Database for PostgreSQL 团队 ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) 发送电子邮件。 请注意，此电子邮件地址不是技术支持别名。
+
+另外，请酌情考虑以下联系点：
+
+- 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+- 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+- 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) 创建条目。
+  
 
 ## <a name="next-steps"></a>后续步骤
 

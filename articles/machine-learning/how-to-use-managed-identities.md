@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388067"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521010"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "100388067"
 
  * 为 Azure 机器学习工作区配置和使用 ACR，无需让管理员用户访问 ACR。
  * 访问工作区外部的专有 ACR，以拉取用于训练或推理的基础映像。
- * 使用用户分配的托管标识创建工作区以访问关联的资源。
+ * 创建具有用户分配的托管标识的工作区以访问关联的资源。
 
 > [!IMPORTANT]
 > 通过 Azure 机器学习使用托管标识控制对资源的访问这一功能当前处于预览阶段。 预览功能按原样提供，不保证支持或服务级别协议。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -38,7 +38,7 @@ ms.locfileid: "100388067"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - [用于机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)
-- [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)。
 - 若要分配角色，Azure 订阅登录名必须具有[托管标识操作员](../role-based-access-control/built-in-roles.md#managed-identity-operator)角色或授予所需操作的其他角色（如所有者）。
 - 必须熟悉如何创建和使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -103,11 +103,11 @@ az ml workspace create -w <workspace name> \
 
 ### <a name="create-compute-with-managed-identity-to-access-docker-images-for-training"></a>使用托管标识创建计算以访问用于训练的 Docker 映像
 
-若要访问工作区 ACR，请创建启用了系统分配的托管标识的机器学习计算群集。 创建计算时，可以从 Azure 门户或工作室启用标识，也可以使用下面的 Azure CLI 启用标识。 有关详细信息，请参阅将 [托管标识用于计算群集](how-to-create-attach-compute-cluster.md#managed-identity)。
+若要访问工作区 ACR，请创建启用了系统分配的托管标识的机器学习计算群集。 可以在创建计算力时从 Azure 门户或工作室启用该标识，也可以通过以下方法从 Azure CLI 启用。 有关详细信息，请参阅[将托管标识用于计算群集](how-to-create-attach-compute-cluster.md#managed-identity)。
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用 [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py) 创建计算群集时，请使用 `identity_type` 参数设置托管标识类型。
+使用 [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration) 创建计算群集时，请使用 `identity_type` 参数设置托管标识类型。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -172,7 +172,7 @@ env.python.user_managed_dependencies = True
 
 ### <a name="build-azure-machine-learning-managed-environment-into-base-image-from-private-acr-for-training-or-inference"></a>从专用 ACR 生成 Azure 机器学习托管环境到基础映像以进行训练或推理
 
-在此场景中，Azure 机器学习服务在从专用 ACR 提供的基础映像之上生成训练或推理环境。 由于使用 ACR 任务在工作区 ACR 上发生映像生成任务，因此必须执行更多步骤以允许访问。
+在此场景中，Azure 机器学习服务在从专用 ACR 提供的基础映像之上生成训练或推理环境。 由于映像生成任务是在工作区 ACR 上使用 ACR 任务来执行的，因此需要执行更多步骤来允许访问。
 
 1. 创建用户分配的托管标识并向该标识授予对专用 ACR 的 ACRPull 访问权限 。  
 1. 向工作区系统分配的托管标识授予上一步中用户分配的托管标识上的托管标识操作员角色 。 此角色允许工作区将用户分配的托管标识分配给 ACR 任务用于生成托管环境。 
@@ -191,7 +191,7 @@ env.python.user_managed_dependencies = True
 
         UAI 资源 ID 是用户分配的标识的 Azure 资源 ID，格式为 `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>`。
 
-1. 使用 [ 方法](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)在工作区连接中指定用户分配的托管标识的外部 ACR 和客户端 ID：
+1. 使用 [ 方法](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)在工作区连接中指定用户分配的托管标识的外部 ACR 和客户端 ID：
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-或者，可以使用 [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py) 在环境定义本身中指定托管标识资源 URL 和客户端 ID。 如果显式使用注册表标识，则它会替代前面指定的任何工作区连接：
+或者，可以使用 [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity) 在环境定义本身中指定托管标识资源 URL 和客户端 ID。 如果显式使用注册表标识，则它会替代前面指定的任何工作区连接：
 
 ```python
 from azureml.core.container_registry import RegistryIdentity
@@ -232,11 +232,11 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 ## <a name="create-workspace-with-user-assigned-managed-identity"></a>创建具有用户分配的托管标识的工作区
 
-创建工作区时，你可以指定将用于访问关联资源的用户分配的托管标识： ACR、KeyVault、存储和 App Insights。
+创建工作区时，可以指定用户分配的托管标识，该标识将用于访问关联的资源：ACR、KeyVault、存储和 App Insights。
 
-首先 [创建用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])，并记下托管标识的 ARM 资源 ID。
+首先[创建用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])，并记下托管标识的 ARM 资源 ID。
 
-然后，使用 Azure CLI 或 Python SDK 来创建工作区。 使用 CLI 时，使用参数指定 ID `--primary-user-assigned-identity` 。 使用 SDK 时，请使用 `primary_user_assigned_identity` 。 下面的示例演示如何使用 Azure CLI 和 Python 通过以下参数创建新的工作区：
+然后，使用 Azure CLI 或 Python SDK 创建工作区。 使用 CLI 时，使用 `--primary-user-assigned-identity` 参数指定 ID。 使用 SDK 时，请使用 `primary_user_assigned_identity`。 以下是使用 Azure CLI 和 Python 通过以下参数创建新工作区的示例：
 
 __Azure CLI__
 
@@ -255,14 +255,14 @@ ws = Workspace.create(name="workspace name",
     primary_user_assigned_identity="managed identity ARM ID")
 ```
 
-你还可以使用 [ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) 创建具有用户分配的托管标识的工作区。
+还可以使用 [ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)创建具有用户分配的托管标识的工作区。
 
 > [!IMPORTANT]
-> 如果你引入了自己的关联资源，而不是让 Azure 机器学习服务创建这些资源，则必须在这些资源上授予托管标识角色。 使用 [角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) 进行分配。
+> 若要引入自己的关联资源，需要为这些资源授予托管标识角色，而不是让 Azure 机器学习服务创建它们。 使用[角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)进行分配。
 
-对于 (用于加密) [] 的客户托管密钥的工作区 https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ，你可以传入用户分配的托管标识，以在 Key Vault 进行身份验证。 使用参数 __用户分配的 cmk 加密__ (CLI) 或 __user_assigned_identity_for_cmk_encryption__ (SDK) 传入托管标识。 此托管标识与工作区主要用户分配的托管标识可以相同，也可以不同。
+对于具有（用于加密的客户管理的密钥）[https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] 的工作区，可以传入用户分配的托管标识以从存储向密钥保管库进行身份验证。 使用参数 user-assigned-identity-for-cmk-encryption (CLI) 或 user_assigned_identity_for_cmk_encryption (SDK) 来传递托管标识 。 此托管标识可与工作区主要用户分配的托管标识相同，也可不同。
 
-如果你有一个现有工作区，则可以使用 ```az ml workspace update``` CLI 命令或 ```Workspace.update``` Python SDK 方法，将其从系统分配给用户分配的托管标识。
+如果已有工作区，则可以使用 ```az ml workspace update``` CLI 命令或 ```Workspace.update``` Python SDK 方法将其从系统分配的托管标识更新为用户分配的托管标识。
 
 
 ## <a name="next-steps"></a>后续步骤

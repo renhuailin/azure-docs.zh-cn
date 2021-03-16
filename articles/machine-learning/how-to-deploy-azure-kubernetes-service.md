@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: 342ae2f590f4bf4ce88f64d6d545defff358ad72
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: ef9c03b687bbc9b8fe736c872bbde14b8daba899
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215215"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519378"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -33,7 +33,7 @@ ms.locfileid: "102215215"
 部署到 Azure Kubernetes 服务时，将部署到连接到工作区的 AKS 群集。 有关将 AKS 群集连接到工作区的信息，请参阅[创建并附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
 
 > [!IMPORTANT]
-> 建议你在部署到 web 服务之前本地进行调试。 有关详细信息，请参阅 [本地调试](./how-to-troubleshoot-deployment-local.md)
+> 建议在部署到 Web 服务之前先进行本地调试。 有关详细信息，请参阅[本地调试](./how-to-troubleshoot-deployment-local.md)
 >
 > 还可参阅 Azure 机器学习 - [部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -43,7 +43,7 @@ ms.locfileid: "102215215"
 
 - 工作区中注册的机器学习模型。 如果尚未注册模型，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
+- [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
 - 本文中的 Python 代码片段假设设置了以下变量：
 
@@ -108,10 +108,10 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 现有 VNET 中的 DNS 解析由客户控制。 以下 DNS 条目应该是可解析的：
 * AKS API 服务器，格式为 \<cluster\>.hcp.\<region\>.azmk8s.io
 * Microsoft Container Registry (MCR)：mcr.microsoft.com
-* 客户的 Azure 容器注册表 (ARC) ，格式为 \<ACR name\> . azurecr.io
-* Azure 存储帐户，格式为 \<account\> . table.core.windows.net 和 \<account\> . blob.core.windows.net
+* 客户的 Azure 容器注册表 (ARC)，格式为 \<ACR name\>.azurecr.io
+* Azure 存储帐户，格式为 \<account\>.table.core.windows.net 和 \<account\>.blob.core.windows.net
 * （可选）对于 AAD 身份验证：api.azureml.ms
-* 评分终结点域名，由 Azure ML 自动生成或自定义域名。 自动生成的域名如下所 \<leaf-domain-label \+ auto-generated suffix\> 示： .. \<region\>cloudapp.azure.com
+* 评分终结点域名，由 Azure ML 自动生成或自定义域名。 自动生成的域名如下所示：\<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com
 
 ### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>按时间顺序排列的连接性要求：从群集创建到模型部署
 
@@ -169,10 +169,10 @@ print(service.get_logs())
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
 
-* [AksCompute](/python/api/azureml-core/azureml.core.compute.aks.akscompute?preserve-view=true&view=azure-ml-py)
-* [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?preserve-view=true&view=azure-ml-py)
-* [Model.deploy](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truewait-for-deployment-show-output-false-)
+* [AksCompute](/python/api/azureml-core/azureml.core.compute.aks.akscompute)
+* [AksWebservice.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration)
+* [Model.deploy](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [Webservice.wait_for_deployment](/python/api/azureml-core/azureml.core.webservice%28class%29#wait-for-deployment-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -236,7 +236,7 @@ concurrentRequests = targetRps * reqTime / targetUtilization
 replicas = ceil(concurrentRequests / maxReqPerContainer)
 ```
 
-有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) 模块参考。
+有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) 模块参考。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
 
@@ -350,7 +350,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如需重新生成密钥，请使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py)
+> 如需重新生成密钥，请使用 [`service.regen_key`](/python/api/azureml-core/azureml.core.webservice%28class%29)
 
 ### <a name="authentication-with-tokens"></a>使用令牌进行身份验证
 

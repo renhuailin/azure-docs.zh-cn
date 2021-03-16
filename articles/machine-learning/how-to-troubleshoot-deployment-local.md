@@ -1,7 +1,7 @@
 ---
-title: 本地模型部署故障排除
+title: 使用本地模型部署进行故障排除
 titleSuffix: Azure Machine Learning
-description: 尝试本地模型部署，作为排查模型部署错误的第一步。
+description: 尝试将本地模型部署作为排查模型部署错误的第一步。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ebd984ad6fd91aa29af9766042a03bc56efe17eb
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215742"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519616"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 
@@ -25,13 +25,13 @@ ms.locfileid: "102215742"
 ## <a name="prerequisites"></a>先决条件
 
 * 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* 选项 A (**建议** 在 Azure 机器学习计算实例上本地) 调试
-   * [计算实例](how-to-deploy-local-container-notebook-vm.md)正在运行的 Azure 机器学习工作区
-* 选项 B-在计算中本地调试
-   * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+* 选项 A（建议）- 在 Azure 机器学习计算实例上进行本地调试
+   * 正在运行[计算实例](how-to-deploy-local-container-notebook-vm.md)的 Azure 机器学习工作区
+* 选项 B - 在计算中进行本地调试
+   * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。
    * [Azure CLI](/cli/azure/install-azure-cli)。
    * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
-   * 在您的本地系统上安装了一个工作的 Docker。 
+   * 在本地系统上安装有效的 Docker。 
    * 若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 
 ## <a name="debug-locally"></a>本地调试
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > 可从服务所使用的 `InferenceConfig` 对象指定的位置重新加载该脚本。
 
-若要更改模型、Conda 依赖项或部署配置，请使用 [update()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-)。 以下示例更新服务使用的模型：
+若要更改模型、Conda 依赖项或部署配置，请使用 [update()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-)。 以下示例更新服务使用的模型：
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>删除服务
 
-要删除服务，请使用 [delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)。
+要删除服务，请使用 [delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--)。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 检查 Docker 日志
 

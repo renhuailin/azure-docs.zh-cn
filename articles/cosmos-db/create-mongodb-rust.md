@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: b5dbb8498157096c8e3178175f827eb47591c9de
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659913"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555646"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Rust 应用程序连接到 Azure Cosmos DB MongoDB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -279,7 +279,7 @@ fn list_todos(self, status_filter: &str) {
 }
 ```
 
-`todo` 状态可以进行更新（从 `pending` 到 `completed`，反之亦然）。 `todo` 转换为 [bson::oid::ObjectId](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html)，然后 [Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) 用其查找需要更新的文档。
+`todo` 状态可以进行更新（从 `pending` 更新到 `completed` 或相反）。 `todo` 转换为 [bson::oid::ObjectId](https://docs.rs/bson/1.1.0/bson/oid/struct.ObjectId.html)，然后 [Collection.update_one](https://docs.rs/mongodb/1.1.1/mongodb/struct.Collection.html#method.update_one) 用其查找需要更新的文档。
 
 ```rust
 fn update_todo_status(self, todo_id: &str, status: &str) {

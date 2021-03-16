@@ -1,25 +1,25 @@
 ---
 title: 教程：使用锁保护新资源
 description: 在本教程中，你将使用 Azure 蓝图资源锁选项“只读”和“不要删除”来保护新部署的资源。
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.topic: tutorial
-ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 87da0f5a1fff2feb103b32533c8d314fb7690f80
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915401"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485735"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>教程：使用 Azure 蓝图资源锁保护新资源
 
-使用 Azure 蓝图[资源锁](../concepts/resource-locking.md)可以保护新部署的资源，防止其遭到篡改（即使使用拥有“所有者”角色的帐户，也无法篡改）。 可在蓝图定义中将这种保护添加到 Azure 资源管理器模板（ARM 模板）项目创建的资源。
+使用 Azure 蓝图[资源锁](../concepts/resource-locking.md)可以保护新部署的资源，防止其遭到篡改（即使使用拥有“所有者”角色的帐户，也无法篡改）。 可在蓝图定义中将这种保护添加到 Azure 资源管理器模板（ARM 模板）项目创建的资源。 蓝图资源锁是在蓝图分配期间设置的。
 
 在本教程中，你将完成以下步骤：
 
 > [!div class="checklist"]
 > - 创建蓝图定义
 > - 将蓝图定义标记为“已发布”
-> - 将蓝图定义分配到现有的订阅
+> - 将蓝图定义分配到现有的订阅（设置资源锁）
 > - 检查新资源组
 > - 取消分配蓝图以删除锁
 
@@ -56,6 +56,9 @@ ms.locfileid: "98915401"
    1. 在“RGtoLock”条目下选择“添加项目”行 。
    1. 在“项目类型”下选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空    。
    1. 在“模板”选项卡上，将以下 ARM 模板粘贴到编辑器框中。 粘贴模板后，选择“添加”将此项目添加到蓝图。
+
+      > [!NOTE]
+      > 此步骤定义要部署的被蓝图资源锁锁定的资源，但不包括蓝图资源锁。 蓝图资源锁设置为蓝图分配的参数。
 
    ```json
    {
@@ -142,6 +145,9 @@ ms.locfileid: "98915401"
    - **锁分配**
 
      选择“只读”蓝图锁定模式。 有关更多信息，请参阅[蓝图资源锁定](../concepts/resource-locking.md)。
+
+     > [!NOTE]
+     > 此步骤在新部署的资源上配置蓝图资源锁。
 
    - **托管标识**
 

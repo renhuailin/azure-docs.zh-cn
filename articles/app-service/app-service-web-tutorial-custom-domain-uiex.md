@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 476a88e41382842d91859d319a571784bd6e9b49
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742850"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102216524"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -27,6 +27,8 @@ ms.locfileid: "101742850"
 > * 使用 CNAME 记录映射通配符域。
 > * 将默认 URL 重定向到自定义目录。
 
+<hr/> 
+
 ## <a name="1-prepare-your-environment"></a>1.准备环境
 
 * [创建应用服务应用](./index.yml)，或使用为另一教程创建的应用。
@@ -34,18 +36,20 @@ ms.locfileid: "101742850"
 
     <details>
         <summary>要满足哪些条件才能编辑 DNS 记录？</summary>
-        需要有权访问域提供商（例如 GoDaddy）的 DNS 注册表。 例如，若要添加 contoso.com 和 www.contoso.com 的 DNS 条目，必须能够配置 contoso.com 根域的 DNS 设置。
+        需要有权访问域提供商（例如 GoDaddy）的 DNS 注册表。 例如，若要添加 <code>contoso.com</code> 和 <code>www.contoso.com</code> 的 DNS 条目，必须能够配置 <code>contoso.com</code> 根域的 DNS 设置。
     </details>
+
+<hr/> 
 
 ## <a name="2-prepare-the-app"></a>2.准备应用
 
 若要将自定义 DNS 名称映射到应用，应用的 <abbr title="指定托管应用的 Web 服务器场的位置、大小和功能。">应用服务计划</abbr> 必须是付费层（不 <abbr title="Azure 应用服务层，你的应用在该层与其他应用（包括其他客户的应用）在相同的 VM 上运行。 此层级用于开发和测试。">免费 (F1)</abbr>). 有关详细信息，请参阅 [Azure 应用服务计划概述](overview-hosting-plans.md)。
 
-### <a name="sign-in-to-azure"></a>登录 Azure
+#### <a name="sign-in-to-azure"></a>登录 Azure
 
 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
-### <a name="select-the-app-in-the-azure-portal"></a>在 Azure 门户中选择应用
+#### <a name="select-the-app-in-the-azure-portal"></a>在 Azure 门户中选择应用
 
 1. 搜索并选择“应用服务”。
 
@@ -59,7 +63,7 @@ ms.locfileid: "101742850"
 
 <a name="checkpricing" aria-hidden="true"></a>
 
-### <a name="check-the-pricing-tier"></a>检查定价层
+#### <a name="check-the-pricing-tier"></a>检查定价层
 
 1. 在应用页的左侧窗格中，向下滚动到“设置”部分，然后选择“纵向扩展(应用服务计划)” 。
 
@@ -73,7 +77,7 @@ ms.locfileid: "101742850"
 
 <a name="scaleup" aria-hidden="true"></a>
 
-### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
+#### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
 
 1. 选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请选择“查看其他选项”。
 
@@ -84,6 +88,8 @@ ms.locfileid: "101742850"
    看到以下通知时，说明缩放操作已完成。
 
    ![显示缩放操作确认的屏幕截图。](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
+
+<hr/> 
 
 <a name="cname" aria-hidden="true"></a>
 
@@ -98,14 +104,16 @@ ms.locfileid: "101742850"
 
     <details>
         <summary>为何需要执行此操作？</summary>
-        向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。 对于先前配置的没有此验证 ID 的自定义域，应将验证 ID 添加到 DNS 记录中，以防止这些域面临相同的风险。 有关此常见高严重性威胁的详细信息，请参阅[子域接管](../security/fundamentals/subdomain-takeover.md)。
+        向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。 对于先前配置的没有此验证 ID 的自定义域，应将验证 ID 添加到 DNS 记录中，以防止这些域面临相同的风险。 有关此常见高严重性威胁的详细信息，请参阅<a href="/azure/security/fundamentals/subdomain-takeover">子域接管</a>。
     </details>
     
 <a name="info"></a>
 
-3. （仅限 A 记录）****若要映射 <abbr title="DNS 中的地址记录会将主机名映射到 IP 地址。">A 记录</abbr>，需要应用的外部 IP 地址。 在“自定义域”页面中，复制 IP 地址的值 。
+3. （仅限 A 记录）若要映射 <abbr title="DNS 中的地址记录会将主机名映射到 IP 地址。">A 记录</abbr>，需要应用的外部 IP 地址。 在“自定义域”页面中，复制 IP 地址的值 。
 
    ![显示到 Azure 应用的门户导航的屏幕截图。](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+
+<hr/> 
 
 ## <a name="4-create-the-dns-records"></a>4.创建 DNS 记录
 
@@ -148,52 +156,71 @@ ms.locfileid: "101742850"
 
 对于子域（如 `www.contoso.com` 中的 `www`），请根据下表创建两条记录：
 
-    | 记录类型 | 主机 | Value | 注释 |
-    | - | - | - |
-    | CNAME | `<subdomain>`（例如 `www`） | `<app-name>.azurewebsites.net` | 域映射本身。 |
-    | TXT | `asuid.<subdomain>`（例如 `asuid.www`） | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
-    
-    ![Screenshot that shows the portal navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record.png)
+| 记录类型 | 主机 | 值 | 注释 |
+| - | - | - |
+| CNAME | `<subdomain>`（例如 `www`） | `<app-name>.azurewebsites.net` | 域映射本身。 |
+| TXT | `asuid.<subdomain>`（例如 `asuid.www`） | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
+
+![显示到 Azure 应用的门户导航的屏幕截图。](./media/app-service-web-tutorial-custom-domain/cname-record.png)
     
 # <a name="a"></a>[A](#tab/a)
 
 对于根域（如 `contoso.com`），请根据下表创建两条记录：
 
-    | 记录类型 | 主机 | Value | 注释 |
-    | - | - | - |
-    | A | `@` | 通过[复制应用的 IP 地址](#3-get-a-domain-verification-id)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
-    | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
-    
-    ![Screenshot that shows a DNS records page.](./media/app-service-web-tutorial-custom-domain/a-record.png)
+| 记录类型 | 主机 | 值 | 注释 |
+| - | - | - |
+| A | `@` | 通过[复制应用的 IP 地址](#3-get-a-domain-verification-id)获得的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
+| TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
 
-    <details>
-    <summary>What if I want to map a subdomain with an A record?</summary>
-    To map a subdomain like `www.contoso.com` with an A record instead of a recommended CNAME record, your A record and TXT record should look like the following table instead:
+![显示 DNS 记录页的屏幕截图。](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-    | 记录类型 | 主机 | Value |
-    | - | - | - |
-    | A | `<subdomain>`（例如 `www`） | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
-    | TXT | `asuid.<subdomain>`（例如 `asuid.www`） | [之前获得的验证 ID](#3-get-a-domain-verification-id) |
-    </details>
-    
+<details>
+<summary>如果我想用 A 记录映射子域，该怎么办？</summary>
+若要使用 A 记录（而不是建议的 CNAME 记录）映射子域（如 `www.contoso.com`），A 记录和 TXT 记录应改为类似于下表：
+
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">表 3</caption>
+<thead>
+<tr>
+<th>记录类型</th>
+<th>主机</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td><code>&lt;subdomain&gt;</code>（例如 <code>www</code>）</td>
+<td>通过<a href="#info" data-linktype="self-bookmark">复制应用的 IP 地址</a>获得的 IP 地址</td>
+</tr>
+<tr>
+<td>TXT</td>
+<td><code>asuid.&lt;subdomain&gt;</code>（例如 <code>asuid.www</code>）</td>
+<td><a href="#3-get-a-domain-verification-id" data-linktype="self-bookmark">之前获得的验证 ID</a></td>
+</tr>
+</tbody>
+</table></div>
+</details>
+
 # <a name="wildcard-cname"></a>[通配符 (CNAME)](#tab/wildcard)
 
 对于通配符名称（如 `*.contoso.com` 中的 `*`），请按照下表创建两条记录：
 
-    | 记录类型 | 主机 | Value | 注释 |
-    | - | - | - |
-    | CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
-    | TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
-    
-    ![Screenshot that shows the navigation to an Azure app.](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
-    
----
+| 记录类型 | 主机 | 值 | 注释 |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
+| TXT | `asuid` | [之前获得的验证 ID](#3-get-a-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
 
-    <details>
-        <summary>My changes are erased after I leave the page.</summary>
-        For certain providers, such as GoDaddy, changes to DNS records don't become effective until you select a separate **Save Changes** link.
-    </details>
+![显示到 Azure 应用的导航的屏幕截图。](./media/app-service-web-tutorial-custom-domain/cname-record-wildcard.png)
     
+-----
+
+<details>
+<summary>离开页面后，所做的更改将被清除。</summary>
+<p>对于某些提供商（例如 GoDaddy），在你选择单独的“保存更改”链接之前，这些 DNS 记录不会生效  。</p>
+</details>
+
+<hr/>
+
 ## <a name="5-enable-the-mapping-in-your-app"></a>5.在应用中启用映射
 
 1. 在 Azure 门户中的应用页左侧窗格中，选择“自定义域”。
@@ -273,8 +300,10 @@ ms.locfileid: "101742850"
         自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
     </details>
 
----
-    
+-----
+
+<hr/> 
+
 ## <a name="6-test-in-a-browser"></a>6.在浏览器中测试
 
 浏览至你之前配置的 DNS 名称。
@@ -290,9 +319,13 @@ ms.locfileid: "101742850"
 </ul>
 </details>
 
+<hr/> 
+
 ## <a name="migrate-an-active-domain"></a>迁移活动域
 
 若要将实时站点及其 DNS 域名迁移到应用服务而不停机，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](manage-custom-dns-migrate-domain.md)。
+
+<hr/> 
 
 <a name="virtualdir" aria-hidden="true"></a>
 
@@ -313,11 +346,13 @@ ms.locfileid: "101742850"
 
 1. 操作完成后，请导航到浏览器（例如 `http://contoso.com` 或 `http://<app-name>.azurewebsites.net`）中应用的根路径进行验证。
 
+<hr/> 
+
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
 可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/) 通过脚本自动管理自定义域。
 
-### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 以下命令将配置的自定义 DNS 名称添加到应用服务应用。
 
@@ -330,7 +365,7 @@ az webapp config hostname add \
 
 有关详细信息，请参阅[将自定义域映射到 Web 应用](scripts/cli-configure-custom-domain.md)。
 
-### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -344,6 +379,8 @@ Set-AzWebApp `
 ```
 
 有关详细信息，请参阅[将自定义域分配到 Web 应用](scripts/powershell-configure-custom-domain.md)。
+
+<hr/> 
 
 ## <a name="next-steps"></a>后续步骤
 

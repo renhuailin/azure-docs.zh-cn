@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 03/05/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122783"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102440711"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>开始使用 Azure Data Box 将数据导入 Azure
 
@@ -39,7 +39,7 @@ ms.locfileid: "92122783"
 开始之前：
 
 - 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+    - 用于新订阅的 Microsoft 客户协议 (MCA) 或用于现有订阅的 Microsoft 企业协议 (EA)。 阅读有关[用于新订阅的 MCA](https://www.microsoft.com/licensing/how-to-buy/microsoft-customer-agreement) 和 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)的详细信息。
     - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](/azure/cloud-solution-provider/overview/azure-csp-overview)。
     - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "92122783"
 此步骤大约需要 5 分钟。
 
 1. 在 Azure 门户中创建新的 Azure Data Box 资源。
-2. 选择为此服务启用的现有订阅，然后选择“导入”作为传输类型。 提供数据所在的**来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
+2. 选择为此服务启用的现有订阅，然后选择“导入”作为传输类型。 提供数据所在的 **来源国家/地区**，以及数据要传输到的 **Azure 目标区域**。
 3. 选择“Data Box”。 最大可用容量为 80 TB；如果数据大小更大，则可创建多个订单。
 4. 输入订单详细信息和发货信息。 如果该服务在你所在的区域中可用，请提供通知电子邮件地址、查看摘要，然后创建订单。
 
@@ -158,9 +158,9 @@ ms.locfileid: "92122783"
 
 此步骤需要 2-3 分钟才能完成。
 
-- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。
+- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。 
 
-- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。 若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。
+- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。  若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

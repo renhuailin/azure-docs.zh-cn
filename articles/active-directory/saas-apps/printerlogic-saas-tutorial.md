@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: b471e113a7e5ae2277e275d53ff8ac8ca9187d1d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23b534f1ccbd51b028beeee173e5c3e0accd47a3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731213"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486125"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PrinterLogic SaaS 集成
 
@@ -37,10 +37,10 @@ ms.locfileid: "98731213"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* PrinterLogic SaaS 支持 SP 和 IDP 发起的 SSO
-* PrinterLogic SaaS 支持实时用户预配
+* PrinterLogic SaaS 支持 SP 和 IDP 发起的 SSO。
+* PrinterLogic SaaS 支持实时用户预配。
 
-## <a name="adding-printerlogic-saas-from-the-gallery"></a>从库中添加 PrinterLogic SaaS
+## <a name="add-printerlogic-saas-from-the-gallery"></a>从库中添加 PrinterLogic SaaS
 
 要配置 PrinterLogic SaaS 与 Azure AD 的集成，需要从库中将 PrinterLogic SaaS 添加到托管 SaaS 应用列表。
 
@@ -74,7 +74,7 @@ ms.locfileid: "98731213"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/metadata`
 
@@ -116,7 +116,7 @@ ms.locfileid: "98731213"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -146,17 +146,16 @@ ms.locfileid: "98731213"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AskYourTeam 登录 URL，可在其中启动登录流。  
+* 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 PrinterLogic SaaS 登录 URL，你可在其中启动登录流。  
 
-* 直接转到 AskYourTeam 登录 URL，并从那里启动登录流。
+* 直接转到 PrinterLogic SaaS 登录 URL，并从此处启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 AskYourTeam 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 PrinterLogic SaaS。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 AskYourTeam 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 AskYourTeam。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 PrinterLogic SaaS 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 PrinterLogic SaaS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 PrinterLogic SaaS 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 PrinterLogic SaaS 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

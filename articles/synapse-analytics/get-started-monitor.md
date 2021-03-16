@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 7e8525dbebb42e1f387ee8f0c192efd5e64c9453
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209808"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426034"
 ---
 # <a name="monitor-your-synapse-workspace"></a>监视 Synapse 工作区
 
@@ -30,7 +30,7 @@ ms.locfileid: "98209808"
 
 ## <a name="integration"></a>集成
 
-1. 导航到“集成”>“管道”。 在此视图中，你可以查看每次管道在工作区中运行时的状况。 
+1. 导航到“集成”>“管道运行”。 在此视图中，你可以查看每次管道在工作区中运行时的状况。 
 1. 找到在先前步骤中运行的管道，然后单击其管道名称以查看详细信息。
 1. 单击 Synapse Studio 顶部附近的“痕迹导航栏”，再单击“所有管道运行”以返回到先前视图 。
 
@@ -45,8 +45,7 @@ ms.locfileid: "98209808"
 1. 导航到“活动”>“SQL 请求”。
 1. 在此视图中，你可以查看 SQL 请求。
 1. 从“池”筛选器中选择要监视的池 。 现在，你可以查看正在池的工作区中运行或已经在池的工作区中运行的所有 SQL 请求。
-1. 查找特定的 SQL 请求，并将鼠标悬停在该项上。 悬停后，将看到“SQL 脚本”图标出现。
-1. 单击“SQL 脚本”图标以查看 SQL 请求全文。
+1. 查找特定的 SQL 请求，并单击“更多”链接查看 SQL 请求的全文。
 
     > [!NOTE] 
     > 可以在监视器中心中查看通过 Synapse Studio 在启用工作区的专用 SQL 池（以前的 SQL DW）中提交的 SQL 请求。 对于所有其他监视活动，你可以转到 Azure 门户专用 SQL 池（以前的 SQL DW）监视。

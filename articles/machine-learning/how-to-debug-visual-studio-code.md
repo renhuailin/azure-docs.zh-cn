@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739988"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508633"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
 
@@ -95,7 +95,7 @@ ms.locfileid: "97739988"
   * 虚拟网络中笔记本 VM 的计算实例
   * 通过 VPN 或 ExpressRoute 与虚拟网络建立了专用网络连接的客户端计算机。
 
-有关将 Azure 虚拟网络与 Azure 机器学习配合使用的详细信息，请参阅 [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
+有关将 Azure 虚拟网络与 Azure 机器学习配合使用的详细信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
 
 > [!TIP]
 > 虽然可以使用不在虚拟网络后面的 Azure 机器学习资源，但仍建议使用虚拟网络。
@@ -339,7 +339,7 @@ ip_address: 10.3.0.5
 某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 VS Code 和 debugpy，可以附加到在 Docker 容器中运行的代码。
 
 > [!IMPORTANT]
-> 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
+> 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
 
 若要在本地部署 Web 服务，需要在本地系统上安装能够正常工作的 Docker。 有关使用 Docker 的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。 请注意，在使用计算实例时，已安装 Docker。
 
@@ -355,9 +355,9 @@ ip_address: 10.3.0.5
 
 1. 若要配置 VS Code，使其与 Docker 映像进行通信，请创建新的调试配置：
 
-    1. 在 VS Code 中，选择 "__运行__ 扩展中的"__调试__"菜单，然后选择"__打开配置__"。 打开一个名为 launch.json 的文件。
+    1. 在 VS Code 的“运行”扩展中，选择“调试”菜单，然后选择“打开配置”  。 打开一个名为 launch.json 的文件。
 
-    1. 在 __launch.js__ 文件中，查找 (包含) 的行的 __"配置"__ 项 `"configurations": [` ，并在其后面插入以下文本。 
+    1. 在 launch.json 文件中，找到“configurations”项（包含 `"configurations": [` 的行），并且在其后插入以下文本。 
 
         ```json
         {
@@ -376,7 +376,7 @@ ip_address: 10.3.0.5
             ]
         }
         ```
-        插入后，文件 __上的launch.js__ 应如下所示：
+        插入后，launch.json 文件应如下所示：
         ```json
         {
         // Use IntelliSense to learn about possible attributes.
@@ -411,9 +411,9 @@ ip_address: 10.3.0.5
         ```
 
         > [!IMPORTANT]
-        > 如果 "配置" 部分中已有其他条目，请在插入的代码后面添加一个 __逗号 ( )__ 。
+        > 如果 configurations 部分已存在其他条目，请在插入的代码后添加一个逗号 (,)。
 
-        本部分使用端口 __5678__ 附加到 Docker 容器。
+        本部分使用端口 5678 附加到 Docker 容器。
 
     1. 保存 launch.json 文件。
 
@@ -466,13 +466,13 @@ ip_address: 10.3.0.5
     package.pull()
     ```
 
-    创建和下载映像之后 (此过程可能需要超过10分钟的时间，因此请等待耐心) ，图像路径 (包括存储库、名称和标记，在这种情况下，这种情况下，也会在类似于以下内容的消息中显示摘要) ：
+    创建并下载映像（此过程花费的时间可能超过 10 分钟，因此请耐心等待）后，映像路径（包括存储库、名称和标记，在此示例中也是摘要）会显示在类似于以下内容的消息中：
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. 若要更轻松地在本地处理图像，可以使用以下命令为此映像添加标记。 `myimagepath`将以下命令中的替换为上一步中的 location 值。
+1. 若要使得在本地使用映像更加容易，可使用以下命令为此映像添加标记。 将以下命令中的 `myimagepath` 替换为前面步骤中的位置值。
 
     ```bash
     docker tag myimagepath debug:1
@@ -493,34 +493,34 @@ ip_address: 10.3.0.5
     docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
-    这会将 `score.py` 本地附加到容器中的对应项。 因此，在编辑器中所做的任何更改都会自动反映到容器中
+    这会将 `score.py` 本地附加到容器中的对应项。 因此，在编辑器中所做的任何更改都将自动反映到容器中
 
-2. 为了获得更好的体验，你可以使用新的 VS code 接口进入容器。 `Docker`从 VS Code 侧栏中选择 "扩展"，查找在本文档中创建的本地容器 `debug:1` 。 右键单击此容器并选择 `"Attach Visual Studio Code"` ，然后将自动打开新的 VS Code 接口，此接口将显示已创建容器的内部。
+2. 为了获得更好的体验，可以使用新的 VS Code 界面进入容器。 从 VS Code 侧栏中选择 `Docker` 扩展，找到已创建的本地容器（在本文档中为 `debug:1`）。 右键单击此容器并选择 `"Attach Visual Studio Code"`，这时将自动打开一个新的 VS Code 界面，该界面将显示已创建的容器内部。
 
-    ![容器 VS Code 接口](./media/how-to-troubleshoot-deployment/container-interface.png)
+    ![容器 VS Code 界面](./media/how-to-troubleshoot-deployment/container-interface.png)
 
 3. 在容器内，在 shell 中运行以下命令
 
     ```bash
     runsvdir /var/runit
     ```
-    然后，你可以在容器中的 shell 内查看以下输出：
+    然后，可以在容器内的 shell 查看以下输出：
 
     ![容器运行控制台输出](./media/how-to-troubleshoot-deployment/container-run.png)
 
-4. 若要将 VS Code 附加到容器中的 debugpy，请打开 VS Code 并按 F5 或选择“调试”。 出现提示时，请选择“Azure 机器学习部署: Docker 调试”配置。 还可以从侧栏中选择 " __运行__ 扩展" 图标，从 "调试" 下拉菜单中选择 " __Azure 机器学习部署： Docker 调试__ " 项，然后使用绿色箭头附加调试器。
+4. 若要将 VS Code 附加到容器中的 debugpy，请打开 VS Code 并按 F5 或选择“调试”。 出现提示时，请选择“Azure 机器学习部署: Docker 调试”配置。 还可以从侧栏中选择“运行”扩展图标，即“Azure 机器学习部署:  Docker 调试”项（位于“调试”下拉菜单），然后使用绿色箭头附加调试器。
 
     ![“调试”图标、“启动调试”按钮和“配置”选择器](./media/how-to-troubleshoot-deployment/start-debugging.png)
     
     单击绿色箭头并附加调试器后，可以在容器 VS Code 界面中查看一些新信息：
     
-    ![容器调试器附加信息](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    ![“容器调试器已附加”信息](./media/how-to-troubleshoot-deployment/debugger-attached.png)
     
     此外，在主 VS Code 界面中，可以看到以下内容：
 
     ![Score.py 中的 VS Code 断点](./media/how-to-troubleshoot-deployment/local-debugger.png)
 
-现在， `score.py` 附加到容器的本地已在您设置的断点处停止。 此时，VS Code 连接到 Docker 容器内部的 debugpy，并在之前设置的断点处停止 Docker 容器。 现在可以在代码运行时逐句调试代码、查看变量等。
+现在，附加到容器的本地 `score.py` 已在你设置的断点处停止。 此时，VS Code 会连接到 Docker 容器内的 debugpy，并在之前设置的断点处停止 Docker 容器。 现在可以在代码运行时逐句调试代码、查看变量等。
 
 有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://code.visualstudio.com/docs/python/debugging)。
 
@@ -536,7 +536,7 @@ docker stop debug
 
 现在，你已设置 VS Code Remote，可以将计算实例用作 VS Code 中的远程计算，从而对代码进行交互式调试。 
 
-了解有关故障排除的详细信息：
+详细了解故障排除：
 
 * [本地模型部署](how-to-troubleshoot-deployment-local.md)
 * [远程模型部署](how-to-troubleshoot-deployment.md)
