@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 5712448c8c5248d3c84ce43f8a41c669355f1d43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979736"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102565727"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>教程：跨区域移动 Azure VM
 
@@ -40,8 +40,9 @@ ms.locfileid: "99979736"
 ## <a name="prerequisites"></a>先决条件
 **要求** | **说明**
 --- | ---
+**资源移动器支持** | [查看](common-questions.md)支持的区域和其他常见问题。
 **订阅权限** | 请检查你对包含待移动资源的订阅是否具有“所有者”访问权限<br/><br/> 为什么需要“所有者”访问权限？ 首次为 Azure 订阅中的特定源和目标对添加资源时，资源转移器将创建受订阅信任的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)（以前称为托管服务标识 (MSI)）。 若要创建标识，并为其分配所需的角色（来源订阅中的参与者或用户访问管理员），用于添加资源的帐户需要对订阅的“所有者”权限。 [详细了解](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) Azure 角色。
-**VM 支持** |  检查要移动的 VM 是否受支持。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#windows-vm-support)支持的 Windows VM。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#linux-vm-support)支持的 Linux VM 和内核版本。<br/><br/> - 查看支持的[计算](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[存储](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)和[网络](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)设置。
+**VM 支持** |  检查要移动的 VM 是否受支持。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#windows-vm-support)受支持的 Windows VM。<br/><br/> - [验证](support-matrix-move-region-azure-vm.md#linux-vm-support)受支持的 Linux VM 和内核版本。<br/><br/> - 查看支持的[计算](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[存储](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)和[网络](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)设置。
 目标订阅 | 目标区域中的订阅需要足够的配额来创建要在目标区域中移动的资源。 如果没有配额，请[请求其他限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 目标区域费用 | 验证与要将 VM 移动到的目标区域关联的定价和费用。 请使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来帮助你。
     

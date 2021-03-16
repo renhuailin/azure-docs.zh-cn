@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 资源添加到 IoT 解决方案
+title: 快速入门：将 Azure 资源添加到 IoT 解决方案
 description: 在本快速入门中，了解如何使用 Azure Defender for IoT 配置端到端 IoT 解决方案。
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 8912e8d66ae0cc1b5dba80ee9aabb0fbd288e3c6
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809010"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449707"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>快速入门：配置你的 Azure Defender for IoT 解决方案
 
 本文介绍如何使用 Defender for IoT 执行 IoT 安全解决方案的初始配置。
+
+## <a name="prerequisites"></a>先决条件
+
+无
 
 ## <a name="what-is-defender-for-iot"></a>什么是 Defender for IoT？
 
