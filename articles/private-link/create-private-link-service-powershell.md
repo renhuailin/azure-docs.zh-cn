@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 Azure PowerShell 创建 Azure 专用链接服务
-description: 了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
+description: 在本快速入门教程中，了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 4780bc573796581438b8d331b1d1d9421a65414f
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 366be37135808a6d3d5cc1a277e2de3e3d6da8ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653238"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566390"
 ---
-# <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
+# <a name="quickstart-create-a-private-link-service-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用链接服务
 
 开始创建引用你的服务的专用链接服务。  向专用链接授予对 Azure 标准负载均衡器后面部署的服务或资源的访问权限。  服务的用户具有从其虚拟网络进行专用访问的权限。
 

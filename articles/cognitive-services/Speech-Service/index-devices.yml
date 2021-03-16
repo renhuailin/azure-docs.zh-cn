@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-  ms.translationtype: MT
+  ms.openlocfilehash: 66b4ec0186864e443babae0c26094bc4f613e67b
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401389"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "102234382"
 landingContent:
 - title: 关于语音设备 SDK
   linkLists:
@@ -48,5 +48,11 @@ landingContent:
       url: devices-sdk-release-notes.md
   - linkListType: reference
     links:
-    - text: 故障排除
+    - text: 疑难解答
       url: speech-devices-sdk-troubleshooting.md
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

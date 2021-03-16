@@ -11,22 +11,22 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 8c47478f1fccfac0c59b4a58a2767013490f869d
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 5d029f4328f955d64c5ce479e553769f8a107e45
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209489"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518562"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
 本文介绍如何在 Azure 机器学习中使用虚拟网络保护推理环境。
 
-本文是5部分系列中的第四部分，指导你完成保护 Azure 机器学习工作流的工作。 强烈建议您通读第 [一部分： VNet 概述](how-to-network-security-overview.md) 以首先了解总体体系结构。 
+本文是由五部分组成的系列文章的第四部分，指导你如何保护 Azure 机器学习工作流。 强烈建议先通读[第 1 部分：VNet 概述](how-to-network-security-overview.md)，了解总体体系结构。 
 
 请参阅本系列中的其他文章：
 
-[1. VNet 概述](how-to-network-security-overview.md)  >  [保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  **4。保护推断环境**  >  [5。启用 studio 功能](how-to-enable-studio-virtual-network.md)
+[1.VNet 概述](how-to-network-security-overview.md) > [保护工作区](how-to-secure-workspace-vnet.md) > [3.保护训练环境](how-to-secure-training-vnet.md) > 4.保护推理环境 > [5.启用工作室功能](how-to-enable-studio-virtual-network.md)
 
 本文介绍如何在虚拟网络中保护以下推理资源：
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ ms.locfileid: "102209489"
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 阅读 [网络安全概述](how-to-network-security-overview.md) 一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
++ 阅读[网络安全概述](how-to-network-security-overview.md)一文，了解常见的虚拟网络方案和总体虚拟网络体系结构。
 
 + 用于计算资源的现有虚拟网络和子网。
 
@@ -113,7 +113,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 创建过程完成后，可在虚拟网络后面的 AKS 群集上运行推理或模型评分。 有关详细信息，请参阅[如何部署 AKS](how-to-deploy-and-where.md)。
 
-若要详细了解如何在 Kubernetes 中使用 Role-Based 访问控制，请参阅 [使用 AZURE RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)。
+若要详细了解如何结合使用 Kubernetes 和基于角色的访问控制，请参阅[使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)。
 
 ## <a name="network-contributor-role"></a>网络参与者角色
 
@@ -255,7 +255,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > * 与 Azure 机器学习工作区在同一资源组中。
 > * 如果工作区具有专用终结点，则用于 Azure 容器实例的虚拟网络必须与工作区专用终结点使用的虚拟网络相同。
 >
-> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 不能在虚拟网络中。
+> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 不能在该虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 
@@ -264,7 +264,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
     > [!IMPORTANT]
     > 启用委派时，使用 `Microsoft.ContainerInstance/containerGroups` 作为“将子网委派给服务”值。
 
-2. 使用 [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true) 部署模型（使用 `vnet_name` 和 `subnet_name` 参数）。 将这些参数设置为启用了委派的虚拟网络名称和子网。
+2. 使用 [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-) 部署模型（使用 `vnet_name` 和 `subnet_name` 参数）。 将这些参数设置为启用了委派的虚拟网络名称和子网。
 
 ## <a name="limit-outbound-connectivity-from-the-virtual-network"></a> 限制来自虚拟网络的出站连接
 
@@ -272,9 +272,9 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是由五部分组成的虚拟网络系列中的第四部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+虚拟网络系列文章由五部分构成，本文是第四部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
-* [第1部分：虚拟网络概述](how-to-network-security-overview.md)
+* [第 1 部分：虚拟网络概述](how-to-network-security-overview.md)
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
-* [第5部分：启用 studio 功能](how-to-enable-studio-virtual-network.md)
+* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)

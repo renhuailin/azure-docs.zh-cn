@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9e5f64d9ef61a272da488ad70e690db4c07ddccc
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.openlocfilehash: 3d970193bd8d73baeac89fb45da4c8a3d81cbde4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99625071"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518393"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>在 ML 训练运行中启用日志记录
 
@@ -37,17 +37,48 @@ Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特
 
 ## <a name="data-types"></a>数据类型
 
-可以记录多个数据类型，包括标量值、列表、表、图像、目录等。 有关不同数据类型的详细信息和 Python 代码示例，请查看 [Run 类参考页](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)。
+可以记录多个数据类型，包括标量值、列表、表、图像、目录等。 有关不同数据类型的详细信息和 Python 代码示例，请查看 [Run 类参考页](/python/api/azureml-core/azureml.core.run%28class%29)。
+
+### <a name="logging-run-metrics"></a>运行指标日志记录 
+
+使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的[服务限制](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics)。 
+
+|记录的值|示例代码| 门户中的格式|
+|----|----|----|
+|记录一组数值| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|单变量折线图|
+|使用重复使用的相同指标名称记录单个数值（例如在 for 循环中）| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 单变量折线图|
+|重复记录包含 2 个数字列的行|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|双变量折线图|
+|记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
+|日志图像|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|使用此方法在运行中记录图像文件或 matplotlib 图。 运行记录中可显示和比较这些图像|
+
+### <a name="logging-with-mlflow"></a>用 MLflow 进行日志记录
+使用 MLFlowLogger 记录指标。
+
+```python
+from azureml.core import Run
+# connect to the workspace from within your running code
+run = Run.get_context()
+ws = run.experiment.workspace
+
+# workspace has associated ml-flow-tracking-uri
+mlflow_url = ws.get_mlflow_tracking_uri()
+
+#Example: PyTorch Lightning
+from pytorch_lightning.loggers import MLFlowLogger
+
+mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
+mlf_logger._run_id = run.id
+```
 
 ## <a name="interactive-logging-session"></a>交互式日志记录会话
 
-交互式日志记录会话通常用在笔记本环境中。 方法 [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) 启动交互式日志记录会话。 试验中会话期间记录的任何指标都会添加到运行记录中。 方法 [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) 结束会话并将运行标记为已完成。
+交互式日志记录会话通常用在笔记本环境中。 方法 [Experiment.start_logging()](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) 启动交互式日志记录会话。 试验中会话期间记录的任何指标都会添加到运行记录中。 方法 [run.complete()](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) 结束会话并将运行标记为已完成。
 
 ## <a name="scriptrun-logs"></a>ScriptRun 日志
 
-本部分介绍使用了 ScriptRunConfig 进行配置时，如何在创建的各次运行之内添加记录代码。 可以使用 [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 类来封装用于可重复运行的脚本和环境。 还可以使用此选项来显示一个用于监视的 Jupyter Notebooks 视觉小组件。
+本部分介绍使用了 ScriptRunConfig 进行配置时，如何在创建的各次运行之内添加记录代码。 可以使用 [**ScriptRunConfig**](/python/api/azureml-core/azureml.core.scriptrunconfig) 类来封装用于可重复运行的脚本和环境。 还可以使用此选项来显示一个用于监视的 Jupyter Notebooks 视觉小组件。
 
-此示例使用 [run.log()](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truelog-name--value--description----) 方法对 alpha 值执行参数扫描并捕获结果。
+此示例使用 [run.log()](/python/api/azureml-core/azureml.core.run%28class%29#log-name--value--description----) 方法对 alpha 值执行参数扫描并捕获结果。
 
 1. 创建包含日志记录逻辑的训练脚本 `train.py`。
 
@@ -56,10 +87,10 @@ Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特
 
 1. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交，以便进行训练。
 
-   [！笔记本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = src) ]
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=src)]
 
 
-   [！笔记本-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？名称 = 运行) ]
+   [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb?name=run)]
 
     `show_output` 参数会启用详细日志记录，让你可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 请使用以下代码在提交试验时启用详细日志记录。
 

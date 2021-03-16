@@ -1,7 +1,7 @@
 ---
 title: Azure 机器学习（预览版）中的模型可解释性
 titleSuffix: Azure Machine Learning
-description: 了解如何了解 & 说明你的机器学习模型如何在使用 Azure 机器学习 Python SDK 培训 & 推断时进行预测。
+description: 了解如何理解和说明机器学习模型使用 Azure 机器学习 Python SDK 在训练和推理期间进行预测的方式。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,19 +11,19 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690203"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522030"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure 机器学习（预览版）中的模型可解释性
 
 
-## <a name="model-interpretability-overview"></a>模型 interpretability 概述
+## <a name="model-interpretability-overview"></a>模型可解释性概述
 
-模型 interpretability 对于数据科学家、审计员和业务决策者非常重要，可确保符合公司政策、行业标准和政府法规：
+模型可解释性对于数据科学家、审核人员和业务决策者确保符合公司政策、行业标准和政府法规而言，都同样至关重要：
 
 + 数据科学家需要能够向主管和利益干系人解释其模型，使他们可以了解所发现的结果的价值和准确度。 它们还需要利用可解释性来调试其模型，并做出有关如何改进模型的明智决策。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "101690203"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure 机器学习的可解释性
 
-可以通过以下 SDK 包获取 model interpretability 类： (了解如何 [为 Azure 机器学习安装 SDK 包](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)) 
+可通过以下 SDK 包使用模型可解释性类：（了解如何[安装适用于 Azure 机器学习的 SDK 包](/python/api/overview/azure/ml/install)）
 
 * `azureml.interpret` 包含 Microsoft 支持的功能。
 

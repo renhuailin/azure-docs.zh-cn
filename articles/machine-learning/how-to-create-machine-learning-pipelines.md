@@ -11,16 +11,16 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 75d241840ecfc8520989342d9def8186de922c0d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 0d4f014db85a40819b178b23caa89b90d08026af
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691852"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522268"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
-本文介绍如何使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 来创建并运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批处理评分方案，使用各种计算，重复使用步骤，而不是重新运行，以及与他人共享 ML 工作流。
+本文介绍如何使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 来创建并运行[机器学习管道](concept-ml-pipelines.md)。 使用 **ML 管道** 来创建将各种不同 ML 阶段拼结在一起的工作流。 然后发布该管道，以便以后访问或与他人共享。 跟踪 ML 管道，以了解模型在实际应用场合的表现并检测数据偏移。 ML 管道非常适合用于批量评分方案、使用多种计算的情况、重复使用步骤而不是重新运行的情况，以及与他人共享 ML 工作流的情况。
 
 本文不是教程。 有关创建首个管道的指南，请参阅[教程：生成用于批量评分的 Azure 机器学习管道](tutorial-pipeline-batch-scoring-classification.md)或[在 Python 的 Azure 机器学习管道中使用自动化 ML](how-to-use-automlstep-in-pipelines.md)。 
 
@@ -53,13 +53,13 @@ ws = Workspace.from_config()
 
 * 设置一个数据存储，用于访问管道步骤中所需的数据。
 
-* 配置 `Dataset` 对象，使之指向驻留在数据存储中的或可在数据存储中访问的持久性数据。 `OutputFileDatasetConfig`为在管道步骤之间传递的临时数据配置对象。 
+* 配置 `Dataset` 对象，使之指向驻留在数据存储中的或可在数据存储中访问的持久性数据。 为在管道步骤间传递的临时数据配置 `OutputFileDatasetConfig` 对象。 
 
 * 设置[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)，管道步骤将在其上运行。
 
 ### <a name="set-up-a-datastore"></a>设置数据存储
 
-数据存储用于存储可供管道访问的数据。 每个工作区有一个默认的数据存储。 可以注册更多数据存储。 
+数据存储用于存储可供管道访问的数据。 每个工作区有一个默认的数据存储。 你可以注册更多数据存储。 
 
 创建工作区时，会将 [Azure 文件存储](../storage/files/storage-files-introduction.md)和 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)附加到该工作区。 已注册一个用于连接 Azure Blob 存储的默认数据存储。 要了解详细信息，请参阅[确定何时使用 Azure 文件存储、Azure Blob 或 Azure 磁盘](../storage/common/storage-introduction.md)。 
 
@@ -81,7 +81,7 @@ def_file_store = Datastore(ws, "workspacefilestore")
 
 向管道提供数据的首选方法是使用 [Dataset](/python/api/azureml-core/azureml.core.dataset.Dataset) 对象。 `Dataset` 对象指向驻留在数据存储中的或者可从数据存储或 Web URL 访问的数据。 `Dataset` 类是抽象类，因此，你将创建一个 `FileDataset` 的实例（引用一个或多个文件）或一个 `TabularDataset` 的实例（基于一个或多个包含分隔数据列的文件创建）。
 
-使用 [from_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-files-path--validate-true-) 或 [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?preserve-view=true&view=azure-ml-py#&preserve-view=truefrom-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 之类的方法来创建 `Dataset`。
+使用 [from_files](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) 或 [from_delimited_files](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 之类的方法来创建 `Dataset`。
 
 ```python
 from azureml.core import Dataset
@@ -89,9 +89,9 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-中间数据 (或步骤) 的输出由 [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 对象表示。 `output_data1` 作为步骤的输出生成。 还可以通过调用将此数据注册为数据集 `register_on_complete` 。 如果创建一个 `OutputFileDatasetConfig` 步骤并将其作为另一个步骤的输入，则各步骤之间的数据依赖关系将在管道中创建隐式执行顺序。
+中间数据（或步骤的输出）由 [PipelineData](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) 对象表示。 `output_data1` 生成为步骤的输出。 还可以调用 `register_on_complete` 将此数据注册为数据集。 如果在一个步骤中创建一个 `OutputFileDatasetConfig` 并将其作为另一个步骤的输入，这种步骤之间的数据依赖关系将在管道中创建一个隐式的执行顺序。
 
-`OutputFileDatasetConfig` 对象返回目录，并且默认情况下将输出写入工作区的默认数据存储。
+`OutputFileDatasetConfig` 对象返回目录，并且默认将输出写入工作区的默认数据存储。
 
 ```python
 from azureml.data import OutputFileDatasetConfig
@@ -102,8 +102,8 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 ```
 
 > [!IMPORTANT]
-> `OutputFileDatasetConfig`Azure 不会自动删除使用存储的中间数据。
-> 你应以编程方式在管道运行结束时删除中间数据，使用带有短数据保留策略的数据存储，或定期执行手动清理。
+> Azure 不会自动删除使用 `OutputFileDatasetConfig` 存储的中间数据。
+> 你应以编程方式在管道运行结束时删除中间数据，使用具有短数据保留策略的数据存储，或定期执行手动清理。
 
 > [!TIP]
 > 只上传与当前工作相关的文件。 数据目录内任何文件的更改都将被视为下次运行管道时重新运行该步骤的理由，即使指定了重复使用。 
@@ -118,7 +118,7 @@ output_data_dataset = output_data1.register_on_complete(name = 'prepared_output_
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
 
-可以创建 Azure 机器学习计算用于运行步骤。 其他计算目标的代码与此类似，参数略有不同，具体取决于类型。 
+可以创建 Azure 机器学习计算用于运行步骤。 其他计算目标的代码与此类似，只是参数会因类型的不同而略有差异。 
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -174,13 +174,13 @@ else:
         pin_sdk_version=False)
 ```
 
-以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境是 "prebaked"，具有公用的依赖项库，并且可以更快地使其联机。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 有关详细信息，请参阅 [Azure 机器学习特选环境](resource-curated-environments.md)。
+以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境中“预先准备”有常见的互依赖库，可以加快联机速度。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 有关详细信息，请参阅 [Azure 机器学习特选环境](resource-curated-environments.md)。
 
 将 `USE_CURATED_ENV` 更改为 `False` 所采用的路径显示了显式设置依赖项的模式。 在这种情况下，将在资源组内的 Azure 容器注册表中创建和注册新的自定义 Docker 映像（请参阅 [Azure 中的专用 Docker 容器注册表简介](../container-registry/container-registry-intro.md)）。 创建和注册此映像可能需要几分钟的时间。
 
 ## <a name="construct-your-pipeline-steps"></a><a id="steps"></a>构造管道步骤
 
-创建计算资源和环境后，即可定义管道的步骤。 Azure 机器学习 SDK 提供了许多内置步骤，如 [`azureml.pipeline.steps` 包的参考文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)中所示。 最灵活的类是运行 Python 脚本的 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)。
+创建计算资源和环境后，即可定义管道的步骤。 Azure 机器学习 SDK 提供了许多内置步骤，如 [`azureml.pipeline.steps` 包的参考文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)中所示。 最灵活的类是运行 Python 脚本的 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)。
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -202,7 +202,7 @@ data_prep_step = PythonScriptStep(
 
 上述代码展示了典型的初始管道步骤。 数据准备代码位于子目录中（在此示例中，`"prepare.py"` 位于目录 `"./dataprep.src"` 中）。 在管道创建的过程中，此目录将被压缩并上传到 `compute_target`，该步骤会运行指定为 `script_name` 的值的脚本。
 
-`arguments`值指定步骤的输入和输出。 在上面的示例中，基线数据是 `my_dataset` 数据集。 相应数据会下载到计算资源，因为代码将其指定为 `as_download()`。 脚本 `prepare.py` 执行与手头任务相应的任何数据转换任务，并将数据输出到 `OutputFileDatasetConfig` 类型的 `output_data1`。 有关详细信息，请参阅[将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)](how-to-move-data-in-out-of-pipelines.md)。 该步骤将使用配置 `aml_run_config` 在由 `compute_target` 定义的计算机上运行。 
+`arguments` 值指定该步骤的输入和输出。 在上面的示例中，基线数据是 `my_dataset` 数据集。 相应数据会下载到计算资源，因为代码将其指定为 `as_download()`。 脚本 `prepare.py` 执行与手头任务相应的任何数据转换任务，并将数据输出到 `OutputFileDatasetConfig` 类型的 `output_data1`。 有关详细信息，请参阅[将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)](how-to-move-data-in-out-of-pipelines.md)。 该步骤将使用配置 `aml_run_config` 在由 `compute_target` 定义的计算机上运行。 
 
 在协作环境中使用管道时，重复使用以前的结果 (`allow_reuse`) 非常关键，因为消除不必要的重新运行可以提高敏捷性。 当步骤的 script_name、输入和参数保持不变时，“重复使用”是默认行为。 允许重复使用时，上一次运行的结果将立即发送到下一步骤。 如果 `allow_reuse` 设置为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。
 
@@ -226,14 +226,14 @@ train_step = PythonScriptStep(
 )
 ```
 
-上述代码类似于数据准备步骤中的代码。 训练代码位于与数据准备代码不同的目录中。 数据准备步骤的 `OutputFileDatasetConfig` 输出 `output_data1` 用作训练步骤的输入。 将创建一个新的 `OutputFileDatasetConfig` 对象 `training_results`用于保存结果，以便进行后续比较或部署步骤。 
+上述代码与数据准备步骤中的代码非常相似。 训练代码位于与数据准备代码不同的目录中。 数据准备步骤的 `OutputFileDatasetConfig` 输出 `output_data1` 用作训练步骤的输入。 将创建一个新的 `OutputFileDatasetConfig` 对象 `training_results`用于保存结果，以便进行后续比较或部署步骤。 
 
-有关其他代码示例，请参阅如何 [构建两个步骤 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb) ，以及 [如何在运行完成时将数据写回数据存储](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)。
+有关其他代码示例，请参阅[如何生成两步 ML 管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)和[如何在运行完成时将数据写回数据存储](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)。
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
 > [!NOTE]
-> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习。 文件会在你调用 [Experiment.submit()](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-) 时上传。
+> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习。 文件会在你调用 [Experiment.submit()](/python/api/azureml-core/azureml.core.experiment.experiment#submit-config--tags-none----kwargs-) 时上传。
 
 ```python
 # list of steps to run (`compare_step` definition not shown)
@@ -247,10 +247,10 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>使用数据集 
 
-从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 你可以将输出写入到 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py)、 [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?preserve-view=true&view=azure-ml-py)，如果要将数据写入特定数据存储，请使用 [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)。 
+从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 可以将输出写入 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)、[DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)，如果要将数据写入特定数据存储，请使用 [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig)。 
 
 > [!IMPORTANT]
-> `OutputFileDatasetConfig`仅 Azure Blob、Azure 文件共享、ADLS 第1代和第2代数据存储支持将输出数据写入到使用的数据存储。 
+> 仅 Azure Blob、Azure 文件共享、ADLS Gen 1 和 Gen 2数据存储支持使用 `OutputFileDatasetConfig` 将输出数据写回到数据存储。 
 
 ```python
 dataset_consuming_step = PythonScriptStep(
@@ -261,7 +261,7 @@ dataset_consuming_step = PythonScriptStep(
 )
 ```
 
-然后，使用 [Run.input_datasets](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueinput-datasets) 字典检索管道中的数据集。
+然后，使用 [Run.input_datasets](/python/api/azureml-core/azureml.core.run.run#input-datasets) 字典检索管道中的数据集。
 
 ```python
 # iris_train.py
@@ -285,7 +285,7 @@ ws = Run.get_context().experiment.workspace
 ## <a name="caching--reuse"></a>缓存和重复使用  
 
 若要优化和自定义管道的行为，可以围绕缓存和重复使用采取某些措施。 例如，可以选择：
-+ 在 [步骤定义](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)期间通过设置 `allow_reuse=False` 来 **禁用默认的重复使用步骤运行输出的行为**。 在协作环境中使用管道时，“重复使用”非常关键，因为消除不必要的运行可以提高敏捷性。 但是，可以选择禁用重复使用。
++ 在 [步骤定义](/python/api/azureml-pipeline-steps/)期间通过设置 `allow_reuse=False` 来 **禁用默认的重复使用步骤运行输出的行为**。 在协作环境中使用管道时，“重复使用”非常关键，因为消除不必要的运行可以提高敏捷性。 但是，可以选择禁用重复使用。
 + 使用 `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` **强制对运行中的所有步骤重新生成输出**
 
 默认情况下，已启用步骤的 `allow_reuse`，步骤定义中指定的 `source_directory` 将进行哈希处理。 因此，如果给定步骤的脚本保持不变（`script_name`、输入和参数），并且 ` source_directory` 中未发生任何其他更改，则会重复使用前一个步骤运行的输出，不会将作业提交到计算，并且前一运行的结果立即可供下一步骤使用。
@@ -321,18 +321,18 @@ pipeline_run1.wait_for_completion()
 * 将项目快照从与工作区关联的 Blob 存储下载到计算目标。
 * 生成对应于管道中每个步骤的 Docker 映像。
 * 将每个步骤的 Docker 映像从容器注册表下载到计算目标。
-* 配置对 `Dataset` 和 `OutputFileDatasetConfig` 对象的访问权限。 对于 `as_mount()` 访问模式，熔断器用于提供虚拟访问。 如果不支持装载，或者用户将访问权限指定为 `as_upload()`，则改为将数据复制到计算目标。
+* 配置对 `Dataset` 和 `OutputFileDatasetConfig` 对象的访问权限。 在 `as_mount()` 访问模式下，FUSE 用于提供虚拟访问。 如果不支持装载，或者用户将访问权限指定为 `as_upload()`，则改为将数据复制到计算目标。
 
 * 运行在步骤定义中指定的计算目标中的步骤。 
 * 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上传这些项目并将其保存在用户的默认数据存储中。
 
 ![以管道方式运行实验的图](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-有关详细信息，请参阅 [Experiment 类](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py)参考。
+有关详细信息，请参阅 [Experiment 类](/python/api/azureml-core/azureml.core.experiment.experiment)参考。
 
 ## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>对推理时更改的参数使用管道参数
 
-有时，管道内单个步骤的参数与开发和培训期间相关，例如培训率和势头，或者数据或配置文件的路径。 但是，在部署模型时，您需要动态传递您在其上进行 (推断的参数，即生成要应答的模型的查询！ ) 。 应将这些类型的参数设置为管道参数。 若要在 Python 中执行此操作，请使用 `azureml.pipeline.core.PipelineParameter` 类，如下面的代码段所示：
+有时，管道内单个步骤的自变量与开发和训练时段相关：例如训练率和动量或数据或配置文件的路径等。 但是，在部署模型时，需要动态传递用于推理的自变量（即生成的模型要响应的查询！）。 应将这些类型的自变量设置为管道参数。 若要在 Python 中执行此操作，请使用 `azureml.pipeline.core.PipelineParameter` 类，如下面的代码片段所示：
 
 ```python
 from azureml.pipeline.core import PipelineParameter
@@ -346,7 +346,7 @@ train_step = PythonScriptStep(script_name="train.py",
 
 ### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python 环境如何处理管道参数
 
-如前面在 [配置训练运行的环境](#configure-the-training-runs-environment)、环境状态和 Python 库依赖项中所述，使用 `Environment` 对象指定。 通常，可以通过引用现有 `Environment` 的名称和版本（可选）来指定它：
+如先前在[配置训练运行的环境](#configure-the-training-runs-environment)中所讨论的一样，环境状态和 Python 库依赖项是使用 `Environment` 对象所指定。 通常，可以通过引用现有 `Environment` 的名称和版本（可选）来指定它：
 
 ```python
 aml_run_config = RunConfiguration()
@@ -378,6 +378,6 @@ aml_run_config.environment.version = '1.0'
 
 - 若要与同事或客户共享管道，请参阅[发布机器学习管道](how-to-deploy-pipelines.md)
 - 使用 [GitHub 上的这些 Jupyter 笔记本](https://aka.ms/aml-pipeline-readme)来进一步探索机器学习管道
-- 参阅有关 [azureml-pipelines-core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) 包和 [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) 包的 SDK 参考帮助信息
+- 参阅有关 [azureml-pipelines-core](/python/api/azureml-pipeline-core/) 包和 [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/) 包的 SDK 参考帮助信息
 - 参阅[操作指南](how-to-debug-pipelines.md)，以获取有关调试管道和排查管道问题的提示。
 - 阅读[使用 Jupyter 笔记本探索此服务](samples-notebooks.md)一文，了解如何运行笔记本。

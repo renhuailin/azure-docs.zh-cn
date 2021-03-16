@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 1c2a917712cbde95fda9321e56fe1c033ad444aa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659709"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503583"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure 机器学习中的安全数据访问
 
@@ -53,7 +53,7 @@ Azure 机器学习使你可以轻松连接到云中的数据。 它在基础存�
 <a name="datastores"></a>
 ## <a name="connect-to-storage-with-datastores"></a>通过数据存储连接到存储
 
-Azure 机器学习数据存储安全地将连接信息保存到 Azure 上的数据存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据](how-to-access-data.md) 存储，以便轻松连接到存储帐户，并访问基础存储服务中的数据。 
+Azure 机器学习数据存储将连接信息安全地存储在 Azure 上的数据存储中，因此无需在脚本中对其进行编码。 [注册并创建一个数据存储](how-to-access-data.md)即可轻松连接到存储帐户，并访问底层存储服务中的数据。 
 
 Azure 中支持的基于云的存储服务，可注册为数据存储：
 
@@ -67,10 +67,10 @@ Azure 中支持的基于云的存储服务，可注册为数据存储：
 + Azure Database for MySQL
 
 >[!TIP]
-> 用于创建数据存储的公开功能需要基于凭据的身份验证来访问存储服务，如服务主体或共享访问签名 (SAS) 令牌。 对工作区具有 *读取* 者访问权限的用户可以访问这些凭据。 <br><br>如果这是一个问题，请  [创建一个使用基于标识的数据访问存储服务的数据存储 (预览) ](how-to-identity-based-data-access.md)。 此功能是 [实验](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) 性预览功能，随时可能会更改。
+> 如果要使用已推出的用于创建数据存储的功能，需要进行基于凭据的身份验证才能访问存储服务，如服务主体或共享访问签名 (SAS) 令牌。 对工作区具有“读者”访问权限的用户可以使用这些凭据。 <br><br>如果在这一点上存在问题，可[创建一个使用基于标识的数据访问方式来访问存储服务的数据存储（预览版）](how-to-identity-based-data-access.md)。 此功能是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。
 
 <a name="datasets"></a>
-## <a name="reference-data-in-storage-with-datasets"></a>引用包含数据集的存储中的数据
+## <a name="reference-data-in-storage-with-datasets"></a>通过数据集引用存储中的数据
 
 Azure 机器学习数据集不是你的数据的副本。 创建数据集时，将会创建对其存储服务中的数据的引用及其元数据的副本。 
 
@@ -86,9 +86,9 @@ Azure 机器学习数据集不是你的数据的副本。 创建数据集时，�
 
 有两种类型的数据集： 
 
-+ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
++ [FileDataset](/python/api/azureml-core/azureml.data.file_dataset.filedataset) 引用数据存储或公共 URL 中的单个或多个文件。 如果数据已被清理并且可用于训练试验，则可以[下载或装载 FileDataset 引用的文件](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)到计算目标。
 
-+ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。
++ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) 通过分析提供的文件或文件列表来以表格格式表示数据。 可以将 TabularDataset 加载到 Pandas 或 Spark DataFrame 中，以便进一步处理和清理。 有关可从中创建 TabularDataset 的数据格式的完整列表，请参阅 [TabularDatasetFactory 类](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。
 
 可在以下文档中找到更多数据集功能：
 

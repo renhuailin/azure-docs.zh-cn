@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.openlocfilehash: e4f6db9e462f937d44bc0e1dbc2d3c4d3e915ba3
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099789"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503634"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -30,7 +30,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 
 ## <a name="why-use-a-compute-instance"></a>为何使用计算实例？
 
-计算实例是一种完全托管的基于云的工作站，适用于机器学习开发环境。 它提供以下优势：
+计算实例是一个完全托管的基于云的工作站，已针对机器学习开发环境进行优化。 它提供以下优势：
 
 |主要优点|描述|
 |----|----|
@@ -77,7 +77,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |Anaconda Python||
 |Jupyter 和扩展||
 |Jupyterlab 和扩展||
-[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>（来自 PyPI）|包括大多数 azureml 额外包。  若要查看完整列表，请[打开计算实例上的终端窗口](how-to-access-terminal.md)并运行 <br/> `conda list -n azureml_py36 azureml*` |
+[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)</br>（来自 PyPI）|包括大多数 azureml 额外包。  若要查看完整列表，请[打开计算实例上的终端窗口](how-to-access-terminal.md)并运行 <br/> `conda list -n azureml_py36 azureml*` |
 |其他 PyPI 包|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda 包|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度学习包|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -98,7 +98,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 与写入到计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能速度更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，无法从其他计算实例访问这些文件。 
 
-你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，不要在计算实例的 OS 磁盘上写入大型数据文件。  请改用[数据存储](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 如果已安装 JupyterLab git 扩展，还会导致计算实例性能下降。
+你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，不要在计算实例的 OS 磁盘上写入大型数据文件。  请改用[数据存储](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 如果安装了 JupyterLab git 扩展，也可能导致计算实例性能下降。
 
 ## <a name="managing-a-compute-instance"></a>管理计算实例
 

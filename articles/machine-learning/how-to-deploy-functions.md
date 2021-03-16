@@ -1,7 +1,7 @@
 ---
 title: 将 ml 模型部署到 Azure Functions 应用（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习将模型打包并部署为 Azure Functions 应用中的 Web 服务。
+description: 了解如何使用 Azure 机器学习在 Azure Functions 应用中打包模型并将其部署为 Web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: 88408c4d1c1936d364029f73d9e7b2be0bcf9d84
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: abb38ebbdacdf4f153148fbe121e54ede88f066a
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213107"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519259"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 
@@ -63,7 +63,7 @@ ms.locfileid: "102213107"
 这些实体被封装到推理配置中。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](/python/api/azureml-core/azureml.core.environment%28class%29) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -96,7 +96,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>创建映像
 
-若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 或特定包函数。 下面的代码段演示如何通过模型和推理配置生成带有 blob 触发器的新包：
+若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions) 或特定包函数。 下面的代码段演示如何通过模型和推理配置生成带有 blob 触发器的新包：
 
 > [!NOTE]
 > 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
@@ -301,4 +301,4 @@ print(blob.location)
 * 请参阅 [Azure Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)，详细了解 Blob 存储触发器。
 * [将模型部署到 Azure 应用服务](how-to-deploy-app-service.md)。
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py)
+* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions)

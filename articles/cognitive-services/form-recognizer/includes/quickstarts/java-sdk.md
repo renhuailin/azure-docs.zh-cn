@@ -2,21 +2,25 @@
 title: 快速入门：适用于 Java 的表单识别器客户端库
 description: 使用适用于 Java 的表单识别器客户端库创建一个表单处理应用，该应用从自定义文档中提取键值对和表数据。
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 09/21/2020
+ms.date: 02/12/2021
 ms.custom: devx-track-java
-ms.author: pafarley
-ms.openlocfilehash: 4f48416153f5a378f9e4eff84802519250488301
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.author: lajanuar
+ms.openlocfilehash: 2e52bc8e6e41165da2f274d3613337fe603ccc39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584587"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102444705"
 ---
+<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 > 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。
 
@@ -27,11 +31,10 @@ ms.locfileid: "99584587"
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版的 [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK)
 * [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
-    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
+  * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+  * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 * 包含一组训练数据的 Azure 存储 Blob。 有关整理训练数据集的提示和选项，请参阅[为自定义模型生成训练数据集](../../build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)（下载并提取 sample_data.zip）的“训练”文件夹下的文件。
-
 
 ## <a name="setting-up"></a>设置
 
@@ -51,34 +54,14 @@ gradle init --type basic
 
 当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
-
 ### <a name="install-the-client-library"></a>安装客户端库
 
 本快速入门使用 Gradle 依赖项管理器。 可以在 [Maven 中央存储库](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)中找到客户端库以及其他依赖项管理器的信息。
 
 在项目的 build.gradle.kts 文件中，以 `implementation` 语句的形式包含客户端库及所需的插件和设置。
 
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-```kotlin
-plugins {
-    java
-    application
-}
-application {
-    mainClass.set("FormRecognizer")
-}
-repositories {
-    mavenCentral()
-}
-dependencies {
-    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
-}
-```
+#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
 
-> [!NOTE]
-> 表单识别器 3.0.0 SDK 反映了 API 版本 2.0
-
-#### <a name="version-31-preview"></a>[版本 3.1 预览](#tab/preview)
 ```kotlin
 plugins {
     java
@@ -97,6 +80,27 @@ dependencies {
 
 > [!NOTE]
 > 表单识别器 3.1.0 SDK 反映了 API 版本 2.1 preview
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+```kotlin
+plugins {
+    java
+    application
+}
+application {
+    mainClass.set("FormRecognizer")
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
+}
+```
+
+> [!NOTE]
+> 表单识别器 3.0.0 SDK 反映了 API v2.0
 
 ---
 
@@ -133,40 +137,41 @@ mkdir -p src/main/java
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL 检索":::
 * 若要获取要测试的表单的 URL，可以使用上述步骤获取 blob 存储中单个文档的 SAS URL。 或者获取位于其他位置的文档的 URL。
 * 使用上述方法还可获取回执图像的 URL。
+<!-- markdownlint-disable MD024 -->
+#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
 
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
-
-[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
 
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
+
+[!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
+
 ---
 
+## <a name="object-model"></a>对象模型
 
-
-## <a name="object-model"></a>对象模型 
-
-使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用于改进识别的自定义模型。 
+使用表单识别器，可以创建两种不同的客户端类型。 第一种是 `FormRecognizerClient`，用于查询服务以识别表单域和内容。 第二种是 `FormTrainingClient`，用于创建和管理可用于改进识别的自定义模型。
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
 `FormRecognizerClient` 提供操作以实现以下目的：
 
-- 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
-- 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
-- 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。  这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析回执](#analyze-receipts)。
+* 使用为了分析自定义表单而训练的自定义模型，来识别表单字段和内容。  这些值在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析自定义表单](#analyze-forms-with-a-custom-model)。
+* 无需训练模型即可识别表单内容，包括表格、行和单词。  表单内容在 `FormPage` 对象的集合中返回。 请参阅示例[分析布局](#analyze-layout)。
+* 使用表单识别器服务上预先训练的回执模型，识别美国回执中的常见字段。  这些字段和元数据在 `RecognizedForm` 对象的集合中返回。 请参阅示例[分析回执](#analyze-receipts)。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
 `FormTrainingClient` 提供操作以实现以下目的：
 
-- 训练自定义模型，以分析在自定义表单中找到的所有字段和值。  将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。
-- 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
-- 管理在帐户中创建的模型。
-- 将自定义模型从一个表单识别器资源复制到另一个资源。
+* 训练自定义模型，以分析在自定义表单中找到的所有字段和值。  将会返回一个 `CustomFormModel`，它指示模型将分析的表单类型，以及将为每种表单类型提取的字段。
+* 训练自定义模型，以分析通过标记自定义表单指定的特定字段和值。  返回一个 `CustomFormModel`，它指示模型将提取的字段以，及每个字段的估计准确度。
+* 管理在帐户中创建的模型。
+* 将自定义模型从一个表单识别器资源复制到另一个资源。
 
 > [!NOTE]
 > 还可以使用图形用户界面（例如[表单识别器标记工具](../../quickstarts/label-tool.md)）来训练模型。
@@ -174,15 +179,9 @@ mkdir -p src/main/java
 ## <a name="code-examples"></a>代码示例
 
 这些代码片段演示如何使用适用于 Java 的表单识别器客户端库执行以下任务：
+<!-- markdownlint-disable MD001 -->
+#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
 
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-* [对客户端进行身份验证](#authenticate-the-client)
-* [分析布局](#analyze-layout)
-* [分析回执](#analyze-receipts)
-* [训练自定义模型](#train-a-custom-model)
-* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
-* [管理自定义模型](#manage-your-custom-models)
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
 * [对客户端进行身份验证](#authenticate-the-client)
 * [分析布局](#analyze-layout)
 * [分析回执](#analyze-receipts)
@@ -191,6 +190,16 @@ mkdir -p src/main/java
 * [训练自定义模型](#train-a-custom-model)
 * [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
 * [管理自定义模型](#manage-your-custom-models)
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [分析布局](#analyze-layout)
+* [分析回执](#analyze-receipts)
+* [训练自定义模型](#train-a-custom-model)
+* [使用自定义模型分析表单](#analyze-forms-with-a-custom-model)
+* [管理自定义模型](#manage-your-custom-models)
+
 
 ---
 
@@ -233,15 +242,9 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-
 ## <a name="analyze-invoices"></a>分析发票
 
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
 
 本部分演示如何使用预先训练的模型分析和提取销售发票中的常见字段。 有关发票分析的详细信息，请参阅[发票概念指南](../../concept-invoices.md)。
 
@@ -250,11 +253,16 @@ Cell has text ET.
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> 你还可以分析本地发票。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地发票。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeInvoices。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedForm 对象的集合：文档中的每一张发票都对应一个对象。 以下代码处理给定 URI 的发票，并将主字段和值输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
 
 ---
 
@@ -270,7 +278,6 @@ Cell has text ET.
 训练自定义模型可分析在自定义表单中找到的所有字段和值，无需手动标记训练文档。
 
 下面的方法使用给定文档集训练模型，并将该模型的状态输出到控制台。 
-
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_call)]
 
@@ -378,7 +385,7 @@ Field 'field-6' has label 'VAT ID' with a confidence score of 1.00.
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地收据图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeReceipts。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedReceipt 对象的集合：提交的文档中的每一页对应一个对象。 接下来的代码块会循环访问回执，并将其详细信息输出到控制台。
 
@@ -407,12 +414,7 @@ Total Price: null, confidence: 0.93
 
 ## <a name="analyze-business-cards"></a>分析名片
 
-#### <a name="version-20"></a>[版本 2.0](#tab/ga)
-
-> [!IMPORTANT]
-> 此功能在所选的 API 版本中不可用。
-
-#### <a name="version-21-preview"></a>[版本 2.1 预览](#tab/preview)
+#### <a name="v21-preview"></a>[v2.1 预览版](#tab/preview)
 
 本部分演示如何使用预先训练的模型分析和提取英文名片中的常见字段。 有关名片分析的详细信息，请参阅[名片概念指南](../../concept-business-cards.md)。
 
@@ -421,11 +423,16 @@ Total Price: null, confidence: 0.93
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
+> 你还可以分析本地名片图像。 请参阅 [FormRecognizerClient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient) 方法，例如 beginRecognizeBusinessCards。 或者，请参阅 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 上的示例代码，了解涉及本地图像的方案。
 
 返回的值是 RecognizedForm 对象的集合：文档中的每一张卡片都对应一个对象。 以下代码处理给定 URI 的名片，并将主字段和值输出到控制台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> 此功能在所选的 API 版本中不可用。
 
 ---
 
@@ -482,8 +489,6 @@ Field Accuracy: 1.00
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_delete)]
 
-
-
 ## <a name="run-the-application"></a>运行应用程序
 
 导航回主项目目录。 然后，使用以下命令生成应用：
@@ -502,7 +507,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>疑难解答

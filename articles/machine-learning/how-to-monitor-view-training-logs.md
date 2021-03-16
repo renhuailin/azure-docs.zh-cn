@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8b2a61a92a25e1c0da9f85439438e75969fcfbf0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661012"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518732"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>监视和查看 ML 运行日志与指标
 
@@ -39,7 +39,7 @@ ms.locfileid: "101661012"
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>使用 Jupyter Notebook 小组件监视运行
 
-使用 ScriptRunConfig 方法提交运行时，可使用 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
+使用 ScriptRunConfig 方法提交运行时，可使用 [Jupyter 小组件](/python/api/azureml-widgets/azureml.widgets)监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
 
 在等待运行完成的期间查看 Jupyter 小组件。
     
@@ -78,20 +78,23 @@ RunDetails(run).show()
 
 <a id="queryrunmetrics"></a>
 
-### <a name="logging-run-metrics"></a>日志记录运行指标 
+## <a name="view-run-metrics"></a>查看运行指标
 
-使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的 [服务限制](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics) 。 
+## <a name="via-the-sdk"></a>通过 SDK
+可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 请参阅以下示例。 
 
-|记录的值|示例代码| 门户中的格式|
-|----|----|----|
-|记录一组数值| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|单变量折线图|
-|使用重复使用的相同指标名称记录单个数值（例如在 for 循环中）| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| 单变量折线图|
-|重复记录包含 2 个数字列的行|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|双变量折线图|
-|记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
+```python
+from azureml.core import Run
+run = Run.get_context()
+run.log('metric-name', metric_value)
 
-## <a name="query-run-metrics"></a>查询运行指标
+metrics = run.get_metrics()
+# metrics is of type Dict[str, List[float]] mapping mertic names
+# to a list of the values for that metric in the given run.
 
-可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 例如，可以将此方法示例与上面的示例配合使用，通过查找具有最低均方误差 (mse) 值的模型来确定最佳模型。
+metrics.get('metric-name')
+# list of metrics in the order they were recorded
+```
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 
