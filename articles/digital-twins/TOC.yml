@@ -13,8 +13,12 @@
   items:
     - name: 为客户端应用编写代码
       href: tutorial-code.md
-    - name: 使用示例客户端应用了解基础知识
-      href: tutorial-command-line-app.md
+    - name: 创建图形
+      items:
+        - name: 使用示例客户端应用
+          href: tutorial-command-line-app.md
+        - name: 使用 Azure CLI 命令
+          href: tutorial-command-line-cli.md
     - name: 连接端到端解决方案
       href: tutorial-end-to-end.md
 - name: 概念

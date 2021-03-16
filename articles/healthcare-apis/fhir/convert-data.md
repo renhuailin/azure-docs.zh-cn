@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017919"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490919"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>如何将数据转换为 FHIR（预览版）
 
@@ -125,6 +125,12 @@ $convert-data 采用请求正文中的[参数](http://hl7.org/fhir/parameters.ht
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中注册 ACR 服务器
 
+您可以使用 Azure 门户或使用 CLI 注册 ACR 服务器。
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>使用 Azure 门户注册 ACR 服务器
+在 Azure API for FHIR 实例中，导航到 "_数据转换_" 下的 "_项目_" 边栏选项卡。 你将看到当前注册的 ACR 服务器的列表。 单击 " _添加_ "，然后从下拉列表中选择你的注册表服务器。 要使注册生效，需要单击 " _保存_ "。 应用更改并重新启动实例可能需要几分钟时间。
+
+#### <a name="registering-the-acr-server-using-cli"></a>使用 CLI 注册 ACR 服务器
 最多可在 Azure API for FHIR 中注册 20 个 ACR 服务器。
 
 如果需要，请从 Azure PowerShell 安装 healthcareapis CLI：
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 按照以下示例，将 ACR 服务器注册到 Azure API for FHIR：
 
-#### <a name="register-a-single-acr-server"></a>注册一个 ACR 服务器
+##### <a name="register-a-single-acr-server"></a>注册一个 ACR 服务器
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>注册多个 ACR 服务器
+##### <a name="register-multiple-acr-servers"></a>注册多个 ACR 服务器
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 调用 $convert-data API，在 templateCollectionReference 参数中指定模板引用。
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>已知问题和解决方法
-
-- 某些默认模板文件包含 UTF-8 BOM。 因此，生成的 ID 值将包含 BOM 字符。 这可能会导致 FHIR 服务器出现问题。 解决方法是使用 VS Code 扩展请求 Microsoft 模板，并在从 ID/Procedure.liquid、ID/Provenance.liquid 和 ID/Immunization.liquid 中删除 BOM 字符后，将这些模板推送到你自己的 ACR  。
-
