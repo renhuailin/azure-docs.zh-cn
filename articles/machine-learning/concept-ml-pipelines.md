@@ -1,7 +1,7 @@
 ---
 title: 什么是机器学习管道？
 titleSuffix: Azure Machine Learning
-description: 了解机器学习管道如何帮助您构建、优化和管理机器学习工作流。
+description: 了解如何借助机器学习管道生成、优化和管理机器学习工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 8b5e74d12af92b5d300e638bee27020a5af5383c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690373"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503515"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
@@ -79,7 +79,7 @@ Azure 机器学习可自动协调管道步骤之间的所有依赖项。 此业�
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>使用 Python SDK 生成管道
 
-在 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 中，管道是 `azureml.pipeline.core` 模块中定义的 Python 对象。 [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?preserve-view=true&view=azure-ml-py) 对象包含一个或多个 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) 对象的有序序列。 `PipelineStep` 类是抽象类，而实际步骤属于子类，如 [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?preserve-view=true&view=azure-ml-py)、[PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?preserve-view=true&view=azure-ml-py) 或 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py)。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?preserve-view=true&view=azure-ml-py) 类包含一系列可重用的步骤，这些步骤可在管道之间共享。 `Pipeline` 作为 `Experiment` 的一部分运行。
+在 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install) 中，管道是 `azureml.pipeline.core` 模块中定义的 Python 对象。 [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29) 对象包含一个或多个 [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep) 对象的有序序列。 `PipelineStep` 类是抽象类，而实际步骤属于子类，如 [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep)、[PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep) 或 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep) 类包含一系列可重用的步骤，这些步骤可在管道之间共享。 `Pipeline` 作为 `Experiment` 的一部分运行。
 
 Azure 机器学习管道与 Azure 机器学习工作区相关联，而管道步骤与该工作区中提供的计算目标相关联。 有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure 机器学习工作区](./how-to-manage-workspace.md)或[什么是 Azure 机器学习中的计算目标？](./concept-compute-target.md)。
 
@@ -123,11 +123,11 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `prepped_data_path` 的对象。 `input_data` 是 [FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) 的实例，`prepped_data_path` 是 [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 的实例。 对于 `OutputFileDatasetConfig`，默认行为是将输出复制到路径 `/dataset/{run-id}/{output-name}` 下的 `workspaceblobstore` 数据存储，其中 `run-id` 是运行的 ID，`output-name` 是自动生成的值（如果未由开发人员指定）。
+代码片段以常用 Azure 机器学习对象（`Workspace`、`Datastore`、[ComputeTarget](/python/api/azureml-core/azureml.core.computetarget) 和 `Experiment`）开头。 然后，该代码将创建用于保存 `input_data` 和 `prepped_data_path` 的对象。 `input_data` 是 [FileDataset](/python/api/azureml-core/azureml.data.filedataset) 的实例，`prepped_data_path` 是 [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) 的实例。 对于 `OutputFileDatasetConfig`，默认行为是将输出复制到路径 `/dataset/{run-id}/{output-name}` 下的 `workspaceblobstore` 数据存储，其中 `run-id` 是运行的 ID，`output-name` 是自动生成的值（如果未由开发人员指定）。
 
-数据准备代码 (未显示) ，将带分隔符的文件写入 `prepped_data_path` 。 数据准备步骤中的这些输出作为 `prepped_data` 定型步骤传递。 
+数据准备代码（不显示）将带分隔符文件写入 `prepped_data_path`。 数据准备步骤的这些输出作为 `prepped_data` 传递到训练步骤。 
 
-数组 `steps` 包含两个 `PythonScriptStep` `dataprep_step` 和 `train_step` 。 Azure 机器学习将分析和之前运行的的数据依赖项 `prepped_data` `dataprep_step` `train_step` 。 
+数组 `steps` 包含两个 `PythonScriptStep`：`dataprep_step` 和 `train_step`。 Azure 机器学习将分析 `prepped_data` 的数据依赖项，并在 `train_step` 之前运行 `dataprep_step`。 
 
 然后，代码将实例化 `Pipeline` 对象本身，并将其传入工作区和步骤数组。 对 `experiment.submit(pipeline)` 的调用开始 Azure ML 管道运行。 在管道完成之前，对 `wait_for_completion()` 的调用会被阻止。 
 
@@ -162,6 +162,6 @@ Azure 机器学习管道是一个功能强大的工具，在早期开发阶段�
 
 + 了解如何[对大数据运行批量预测](tutorial-pipeline-batch-scoring-classification.md )。
 
-+ 若要了解[管道核心](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py)和[管道步骤](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)，请参阅 SDK 参考文档。
++ 若要了解[管道核心](/python/api/azureml-pipeline-core/)和[管道步骤](/python/api/azureml-pipeline-steps/)，请参阅 SDK 参考文档。
 
 + 试用展示了 [Azure 机器学习管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines)的示例 Jupyter 笔记本。 了解如何[运行笔记本以了解此服务](samples-notebooks.md)。

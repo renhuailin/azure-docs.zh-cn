@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 9c0178ab1361d6a683aef606ccf1e3cac85620e4
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
-ms.translationtype: MT
+ms.openlocfilehash: 891276f7a37bfb2397101388f430a297bdca0a21
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99244964"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445672"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -28,7 +28,7 @@ ms.locfileid: "99244964"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，按照“关于语音 SDK”一文的<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> 部分中的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -73,7 +73,7 @@ public class App {
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
 * 使用授权令牌：传入授权令牌和关联的区域。
 
-让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。
+让我们看看如何使用密钥和区域创建 [`SpeechTranslationConfig`][config]。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的步骤获取这些凭据。
 
 ```java
 public class App {

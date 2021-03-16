@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 专用链接中创建专用终结点
+title: 快速入门 - 使用 ARM 模板创建专用终结点
 description: 在本快速入门中，将使用 Azure 资源管理器模板（ARM 模板）创建专用终结点。
 services: private-link
-author: mblanco77
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e80adc16e08e676ac2daabec01a11c10d537c547
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705803"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562939"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建专用终结点
 
@@ -137,4 +137,6 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure 专用链接](private-link-overview.md)。
+有关支持专用终结点的服务的详细信息，请参阅：
+> [!div class="nextstepaction"]
+> [专用链接可用性](private-link-overview.md#availability)

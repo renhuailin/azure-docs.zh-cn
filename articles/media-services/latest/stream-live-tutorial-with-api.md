@@ -28,18 +28,18 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 以下项目是完成本教程所需具备的条件：
 
 - 安装 Visual Studio Code 或 Visual Studio。
-- [创建媒体服务帐户](./create-account-howto.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你将需要使用这些凭据来访问 API。
+- [创建媒体服务帐户](./create-account-howto.md)。<br/>请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。 
 - 一个用于广播事件的相机或设备（例如便携式计算机）。
-- 一个本地实时编码器，用于将来自相机的信号转换为发送到媒体服务实时传送视频流服务的流，请参阅[建议的本地实时编码器](recommended-on-premises-live-encoders.md)。 流必须为 **RTMP** 或“平滑流式处理”  格式。  
-- 对于此示例，建议从软件编码器（如 OBS Studio 实时流式处理软件）开始。 
+- 使用 RTMP 协议对照相机流进行编码并将其发送到媒体服务实时流服务的本地软件编码器，请参阅[推荐的本地实时编码器](recommended-on-premises-live-encoders.md)。 流必须为 **RTMP** 或“平滑流式处理”  格式。  
+- 对于本示例，建议从软件编码器（如免费的 [Open Broadcast Software OBS Studio](https://obsproject.com/download)）开始，以便于上手。 
 
 > [!TIP]
 > 确保在继续操作之前查看[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。 
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
-使用以下命令将包含流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
+使用以下命令将以下包含实时流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
@@ -48,6 +48,9 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 实时传送视频流示例位于 [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live) 文件夹中。
 
 打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json)。 将值替换为从[访问 API](./access-api-howto.md) 获得的凭据。
+
+请注意，还可以在项目根处使用 .env 文件格式，仅为 .NET 示例存储库中的所有项目设置一次环境变量。 只需复制示例 .env 文件，填写你从 Azure 门户媒体服务 API 访问页面或 Azure CLI 获得的信息。  将 sample.env 文件重命名为“.env”以在所有项目中使用它。
+已配置 .gitignore 文件以避免将此文件的内容发布到分叉存储库。 
 
 > [!IMPORTANT]
 > 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个直播活动。 <br/>请务必停止正在运行的直播活动， 否则，将会对你“收费”  ！
@@ -58,27 +61,24 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 
 此示例为每个资源创建唯一的后缀，因此即使在没有清理的情况下运行示例多次，也不会有名称冲突。
 
-> [!IMPORTANT]
-> 此示例为每个资源使用唯一的后缀。 如果取消调试操作或者中途终止应用，则帐户中会有多个直播活动。 <br/>
-> 请务必停止正在运行的直播活动， 否则，将会对你“收费”  ！
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。 
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在文章开头克隆的代码中，GetCredentialsAsync 函数根据本地配置文件 (appsettings.json) 中提供的凭据或通过位于存储库根处的 .env 环境变量文件创建 ServiceClientCredentials 对象。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-a-live-event"></a>创建直播活动
 
-本部分介绍如何创建 **直通** 类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的可用类型的详细信息，请参阅[实时事件类型](live-events-outputs-concept.md#live-event-types)。 
+本部分介绍如何创建 **直通** 类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的其他可用类型的详细信息，请参阅[实时事件类型](live-events-outputs-concept.md#live-event-types)。 除了直通，还可以使用实时转码直播活动进行 720P 或 1080P 自适应比特率云编码。 
  
 可能需要在创建直播活动时指定的一些事项包括：
 
-* 媒体服务位置。
-* 直播活动的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行直播活动或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，请为每个流式处理协议创建单独的直播活动。  
+* 直播活动的引入协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行直播活动或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，请为每个流式处理协议创建单独的直播活动。  
 * 对引入和预览的 IP 限制。 可定义允许向该直播活动引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有四个数字或 CIDR 地址范围的 IpV4 地址。
 * 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则直播活动会在创建后启动。 这意味着，只要直播活动开始运行，就会开始计费。 必须显式对直播活动资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
-* 要使引入 URL 具有预测性，请设置“vanity”模式。 有关详细信息，请参阅[实时事件引入 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
+此外还有备用模式，可用于以较低成本“已分配”状态启动直播活动，使其更快地移动到“正在运行”状态。 对于需要快速向流式处理器分发通道的热池等情况，这非常有用。
+* 要使引入 URL 具有预测性且易于在基于硬件的实时编码器中维护，请将“useStaticHostname”属性设置为 true。 有关详细信息，请参阅[实时事件引入 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -101,15 +101,27 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 
 将流传输到实时事件后，可以通过创建资产、实时输出和流定位符来启动流式传输事件。 这会存档流，并使观看者可通过流式处理终结点使用该流。
 
+在了解这些概念时，最好将“资产”对象视为过去你插入录像机的磁带。 “实时输出”是录像机。 “实时输出”只是进入机器后部的视频信号。
+
+首先通过创建“直播活动”创建信号。  在你启动直播活动并将编码器连接到输入前，信号不会流动。
+
+可以随时创建磁带。 这只是一个空“资产”，你会将其交给“实时输出”对象，即此类比中的录像机。
+
+可以随时创建录像机。 这意味着你可以在启动信号流之前或之后创建实时输出。 如果你需要加快速度，在启动信号流之前创建它有时很有帮助。
+
+若要停止录像机，可以针对 LiveOutput 调用删除。 这不会删除磁带“资产”上的内容。  资产始终保留存档的视频内容，直到你针对资产本身明确调用删除。
+
+下一部分将介绍资产（“磁带”）和实时输出（“录像机”）的创建。
+
 #### <a name="create-an-asset"></a>创建资产
 
-创建供实时输出使用的资产。
+创建供实时输出使用的资产。 在上面的类比中，这将是我们录制实时视频信号的磁带。 观看者将能够从此虚拟磁带以实时或点播方式查看内容。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>创建实时输出
 
-实时输出在创建时启动，在删除后停止。 删除实时输出不会删除基础资产和该资产中的内容。
+实时输出在创建时启动，在删除后停止。 这将是事件的“录像机”。 删除实时输出不会删除基础资产或该资产中的内容。 将其视为弹出磁带。 只要你愿意，录制的资产将一直保留，当它被弹出时（这意味着当实时输出被删除时），它将立即可供点播观看。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveOutput)]
 
@@ -118,7 +130,7 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 > [!NOTE]
 > 创建媒体服务帐户后，一个处于“已停止”  状态的“默认”  流式处理终结点会添加到帐户。 若要开始流式传输内容并利用[动态打包](dynamic-packaging-overview.md)和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态  。
 
-如果已使用流定位符发布了实时输出资产，则直播活动（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。
+如果已使用流定位符发布了资产，则直播活动（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。 通过这种方式，可以使虚拟“磁带”录制可供观众进行实时和点播观看。 录制完成后（当实时输出被删除时），同一 URL 可用于观看直播活动、DVR 窗口或点播资产。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateStreamingLocator)]
 

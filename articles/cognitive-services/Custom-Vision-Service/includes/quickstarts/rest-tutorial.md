@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 43a903f47cf001cbb220b8d7c18dd8fda161a61f
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 76441e6c5627f4e48d77d67409ef05891c7cc1ac
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100105911"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511018"
 ---
 自定义视觉 REST API 入门。 请按照以下步骤调用 API 和创建图像分类模型。 你将创建一个项目，添加标记，训练该项目，并使用该项目的预测终结点 URL 以编程方式对其进行测试。 使用此示例作为模板来构建你自己的图像识别应用。
 
@@ -28,9 +28,10 @@ ms.locfileid: "100105911"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="创建自定义视觉资源"  target="_blank">创建自定义视觉资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以创建训练和预测资源并获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title="创建自定义视觉资源"  target="_blank">创建自定义视觉资源</a>，以创建训练和预测资源并获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到自定义视觉。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* [PowerShell 6.0 及以上版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)，或类似的命令行应用程序。
 
 
 ## <a name="create-a-new-custom-vision-project"></a>创建新的自定义视觉项目

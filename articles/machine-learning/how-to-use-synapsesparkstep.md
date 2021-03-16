@@ -1,7 +1,7 @@
 ---
-title: '在机器学习管道中使用 Apache Spark (预览版) '
+title: 在机器学习管道中使用 Apache Spark（预览版）
 titleSuffix: Azure Machine Learning
-description: 将 Azure Synapse Analytics 工作区链接到 Azure 机器学习管道，使用 Apache Spark 进行数据操作。
+description: 将 Azure Synapse Analytics 工作区链接到 Azure 机器学习管道以使用 Apache Spark 进行数据操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ea7dc30d0aed1350a8c9275d786ea22fa52c77bf
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.custom: how-to, synapse-azureml
+ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203685"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455053"
 ---
-# <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用 Azure Synapse Analytics) Apache Spark ( (预览) 
+# <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 
-本文介绍如何 Apache Spark 使用 Azure Synapse Analytics 提供支持的池作为 Azure 机器学习管道中的数据准备步骤的计算目标。 你将了解单个管道如何使用适用于特定步骤的计算资源，例如数据准备或定型。 你将了解 Spark 步骤的数据准备情况，以及如何将数据传递到下一步。 
+本文介绍如何使用 Azure Synapse Analytics 提供支持的 Apache Spark 池作为 Azure 机器学习管道中数据准备步骤的计算目标。 你将了解单个管道如何使用适用于特定步骤的计算资源，例如数据准备或训练。 你将了解 Spark 步骤的数据准备情况，以及如何将数据传递到下一步。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,29 +27,29 @@ ms.locfileid: "102203685"
 
 * [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已经安装了 SDK 的 [Azure 机器学习计算实例](concept-compute-instance.md)。
 
-* 创建 Azure Synapse Analytics 工作区并 Apache Spark 池 (参阅 [快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)) 。 
+* 创建 Azure Synapse Analytics 工作区和 Apache Spark 池（请参阅[快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)）。 
 
 ## <a name="link-your-azure-machine-learning-workspace-and-azure-synapse-analytics-workspace"></a>链接 Azure 机器学习工作区和 Azure Synapse Analytics 工作区 
 
-在 Azure Synapse Analytics 工作区中创建和管理 Apache Spark 池。 若要将 Apache Spark 池与 Azure 机器学习工作区集成，你必须链接到 Azure Synapse Analytics 工作区。 
+在 Azure Synapse Analytics 工作区中创建和管理 Apache Spark 池。 若要将 Apache Spark 池与 Azure 机器学习工作区集成，必须[链接到 Azure Synapse Analytics 工作区](how-to-link-synapse-ml-workspaces.md)。 
 
-可以使用 " **链接服务** " 页通过 AZURE 机器学习 studio UI 附加 Apache Spark 池。 还可以通过 " **计算** " 页通过 " **附加计算** " 选项来执行此操作。
+可以使用“链接服务”页通过 Azure 机器学习工作室 UI 附加 Apache Spark 池。 还可以通过“计算”页使用“附加计算”选项来执行此操作 。
 
-你还可以通过 SDK 附加 Apache Spark 池 () 或通过 ARM 模板详细介绍 (参阅此 [示例 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)) 。 
+还可通过 SDK（如下详述）或通过 ARM 模板（请参阅此 [ARM 模板示例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)）附加 Apache Spark 池。 
 
-你可以使用命令行来跟随 ARM 模板，添加链接服务，并将 Apache Spark 池附加到以下代码：
+可使用以下代码，通过命令行来遵循 ARM 模板，添加链接服务，并附加 Apache Spark 池：
 
 ```bash
 az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
 ```
 
 > [!Important]
-> 若要成功链接到 Azure Synapse Analytics 工作区，必须在 Azure Synapse Analytics 工作区资源中拥有所有者角色。 查看 Azure 门户中的访问权限。
-> 创建 SAI) 时，链接服务将获取系统分配的标识 (。 必须将此链接服务分配给 Synapse Studio 中的 "Synapse Apache Spark administrator" 角色，使其可以提交 Spark 作业 (请参阅 [如何在 Synapse Studio) 中管理 SYNAPSE RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md) 。 还必须向 "Azure 机器学习" 工作区的用户授予资源管理 Azure 门户的角色 "参与者"。
+> 若要成功链接到 Azure Synapse Analytics 工作区，必须在 Azure Synapse Analytics 工作区资源中拥有“所有者”角色。 查看 Azure 门户中的访问权限。
+> 创建获取系统分配的标识 (SAI) 时，链接服务将获取此标识。 必须给此链接服务 SAI 分配 Synapse Studio 中的“Synapse Apache Spark 管理员”角色，使其可以提交 Spark 作业（请参阅[如何在 Synapse Studio 中管理 Synapse RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)）。 还必须向 Azure 机器学习工作区的用户授予资源管理 Azure 门户的“参与者”角色。
 
 ## <a name="create-or-retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>创建或检索 Azure Synapse Analytics 工作区与 Azure 机器学习工作区之间的链接
 
-可以通过以下代码检索工作区中的链接服务：
+可以使用以下代码检索工作区中的链接服务：
 
 ```python
 from azureml.core import Workspace, LinkedService, SynapseWorkspaceLinkedServiceConfiguration
@@ -63,11 +63,11 @@ for service in LinkedService.list(ws) :
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
 
-首先， `Workspace.from_config()` 使用中的配置访问 Azure 机器学习工作区 `config.json` (参阅 [教程：开发环境中的 Azure 机器学习入门](tutorial-1st-experiment-sdk-setup-local.md)) 。 然后，该代码将打印工作区中所有可用的链接服务。 最后， `LinkedService.get()` 检索名为的链接服务 `'synapselink1'` 。 
+首先，`Workspace.from_config()` 使用 `config.json` 中的配置访问 Azure 机器学习工作区（请参阅[教程：开发环境中 Azure 机器学习入门](tutorial-1st-experiment-sdk-setup-local.md)）。 然后，该代码将输出工作区中所有可用的链接服务。 最后，`LinkedService.get()` 检索名为 `'synapselink1'` 的链接服务。 
 
-## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>将 Apache spark 池附加为 Azure 机器学习的计算目标
+## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>附加 Apache spark 池为 Azure 机器学习的计算目标
 
-若要使用你的 Apache spark 池为你的机器学习管道中的步骤供电，你必须将它附加为 `ComputeTarget` 管道步骤的，如下面的代码所示。
+若要使用 Apache Spark 池为机器学习管道中的步骤提供支持，则必须将它附加为管道步骤的 `ComputeTarget`，如下面的代码所示。
 
 ```python
 from azureml.core.compute import SynapseCompute, ComputeTarget
@@ -85,13 +85,13 @@ synapse_compute=ComputeTarget.attach(
 synapse_compute.wait_for_completion()
 ```
 
-第一步是配置 `SynapseCompute` 。 `linked_service`参数是 `LinkedService` 在上一步中创建或检索的对象。 `type`参数必须是 `SynapseSpark` 。 `pool_name`中的参数 `SynapseCompute.attach_configuration()` 必须与 Azure Synapse Analytics 工作区中的现有池的参数匹配。 有关在 Azure Synapse Analytics 工作区中创建 Apache spark 池的详细信息，请参阅 [快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)。 类型 `attach_config` 不是 `ComputeTargetAttachConfiguration`。
+第一步是配置 `SynapseCompute`。 `linked_service` 参数是在上一步中创建或检索的 `LinkedService` 对象。 `type` 参数必须为 `SynapseSpark`。 `SynapseCompute.attach_configuration()` 中的参数 `pool_name` 必须与 Azure Synapse Analytics 工作区中现有池的参数匹配。 有关在 Azure Synapse Analytics 工作区中创建 Apache Spark 池的详细信息，请参阅[快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)。 类型 `attach_config` 不是 `ComputeTargetAttachConfiguration`。
 
-创建配置后，可以 `ComputeTarget` 通过传入 `Workspace` 、 `ComputeTargetAttachConfiguration` 和名称，并在机器学习工作区内引用计算来创建机器学习。 对的调用 `ComputeTarget.attach()` 是异步的，因此在调用完成之前，示例会被阻止。
+创建配置后，需要创建一个机器学习 `ComputeTarget`，此操作可通过传入 `Workspace`、`ComputeTargetAttachConfiguration` 和在机器学习工作区内引用计算的名称来完成。 对 `ComputeTarget.attach()` 的调用是异步的，因此在调用完成之前，示例将无法使用。
 
-## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>创建一个 `SynapseSparkStep` 使用链接 Apache Spark 池的。
+## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>创建一个使用链接 Apache Spark 池的 `SynapseSparkStep`
 
-数据通过对象传递到机器学习管道 `DatasetConsumptionConfig` ，这些对象可以容纳表格数据或文件集。 数据通常来自工作区的数据存储中的 blob 存储中的文件。 下面的代码演示了一些用于创建机器学习管道输入的典型代码：
+数据流通过 `DatasetConsumptionConfig` 对象传递到机器学习管道，这些对象可以容纳表格数据或文件集。 数据通常来自工作区数据存储中 blob 存储中的文件。 下面的代码演示了一些用于创建机器学习管道输入的典型代码：
 
 ```python
 from azureml.core import Dataset
@@ -107,10 +107,10 @@ titanic_file_dataset = Dataset.File.from_files(path=[(datastore, file_name)])
 step1_input2 = titanic_file_dataset.as_named_input("file_input").as_hdfs()
 ```
 
-上面的代码假定该文件 `Titanic.csv` 在 blob 存储中。 此代码演示如何以和的形式读取文件 `TabularDataset` `FileDataset` 。 此代码仅用于演示目的，因为重复输入或将单个数据源解释为表包含的资源，就像文件一样。
+上述代码假设文件 `Titanic.csv` 位于 blob 存储中。 此代码演示如何以 `TabularDataset` 和 `FileDataset` 的形式读取文件。 此代码仅用于演示目的，因为重复进行输入或将单个数据源解释为表包含的资源和单个文件都会让人感到困惑。
 
 > [!Important]
-> 若要使用 `FileDataset` 作为输入， `azureml-core` 版本必须至少为 `1.20.0` 。 下面讨论如何使用类指定此 `Environment` 类。
+> 若要使用 `FileDataset` 作为输入，`azureml-core` 版本必须至少为 `1.20.0`。 下面讨论了如何使用 `Environment` 类确定此文件。
 
 步骤完成后，可以选择使用类似于以下内容的代码来存储输出数据：
 
@@ -119,9 +119,9 @@ from azureml.data import HDFSOutputDatasetConfig
 step1_output = HDFSOutputDatasetConfig(destination=(datastore,"test")).register_on_complete(name="registered_dataset")
 ```
 
-在这种情况下，数据将存储在名为的 `datastore` 文件中， `test` 并在机器学习工作区中以名称的形式提供 `Dataset` `registered_dataset` 。
+在这种情况下，数据将存储在名为 `test` 文件的 `datastore` 中，并在机器学习工作区中以 `registered_dataset` 名称的 `Dataset` 形式提供。
 
-除数据外，管道步骤还可能具有每个步骤的 Python 依赖关系。 单个 `SynapseSparkStep` 对象还可以指定其精确的 Azure Synapse Apache Spark 配置。 下面的代码演示了这一点，它指定 `azureml-core` 包版本必须至少为 `1.20.0` 。 如前文所述 (， `azureml-core` 需要使用 `FileDataset` 作为输入。 ) 
+除数据外，管道步骤还可能具有每个步骤的 Python 依赖项。 单个 `SynapseSparkStep` 对象还可以指定其精确的 Azure Synapse Apache Spark 配置。 下面的代码演示了这一点，它指定 `azureml-core` 包版本必须至少为 `1.20.0`。 （如前文所述，`azureml-core` 的这一要求需要使用 `FileDataset` 作为输入。）
 
 ```python
 from azureml.core.environment import Environment
@@ -147,13 +147,13 @@ step_1 = SynapseSparkStep(name = 'synapse-spark',
                           environment = env)
 ```
 
-上面的代码指定了 Azure 机器学习管道中的一个步骤。 此步骤 `environment` 指定特定 `azureml-core` 版本，并根据需要添加其他 conda 或 pip 依赖项。
+上面的代码指定了 Azure 机器学习管道中的单个步骤。 此步骤的 `environment` 指定了特定 `azureml-core` 版本，并根据需要添加其他 conda 或 pip 依赖项。
 
-`SynapseSparkStep`将从本地计算机的子目录中进行压缩和上传 `./code` 。 该目录将在计算服务器上重新创建，该步骤将 `dataprep.py` 从该目录运行该文件。 `inputs` `outputs` 该步骤的和是 `step1_input1` 前面讨论过的、 `step1_input2` 和 `step1_output` 对象。 若要在脚本中访问这些值，最简单的方法 `dataprep.py` 是将它们与命名的关联起来 `arguments` 。
+`SynapseSparkStep` 将从本地计算机的子目录 `./code` 中进行压缩和上传。 该目录将在计算服务器上重新进行创建，该步骤将从该目录运行 `dataprep.py` 文件。 该步骤的 `inputs` 和 `outputs` 是前面讨论过的 `step1_input1`、`step1_input2` 和 `step1_output` 对象。 若要在 `dataprep.py` 脚本中访问这些值，最简单的方法是将它们与命名的 `arguments` 关联起来。
 
-构造函数控件的下一组参数 `SynapseSparkStep` Apache Spark。 `compute_target`是 `'link1-spark01'` 之前附加为计算目标的。 其他参数指定要使用的内存和核心。
+`SynapseSparkStep` 构造函数的下一组参数控制 Apache Spark。 `compute_target` 是之前附加为计算目标的 `'link1-spark01'`。 其他参数用于指定要使用的内存和核心。
 
-示例笔记本对使用以下代码 `dataprep.py` ：
+示例笔记本将以下代码用于 `dataprep.py`：
 
 ```python
 import os
@@ -189,13 +189,13 @@ sdf.coalesce(1).write\
 .csv(args.output_dir)
 ```
 
-此 "数据准备" 脚本不执行任何实际数据转换，但阐释了如何检索数据、将数据转换为 spark 数据帧，以及如何执行一些基本 Apache Spark 操作。 您可以通过打开子运行，选择 " **输出 + 日志** " 选项卡，然后打开该文件，在 Azure 机器学习 Studio 中查找输出 `logs/azureml/driver/stdout` ，如下图所示。
+此“数据准备”脚本不执行任何实际数据转换，但阐释了如何检索数据、将数据转换为 spark 数据帧，以及如何执行一些基本 Apache Spark 操作。 可在 Azure 机器学习工作室中查找输出，方法是打开子运行，选择“输出 + 日志”选项卡，然后打开 `logs/azureml/driver/stdout` 文件，如下图所示。
 
-:::image type="content" source="media/how-to-use-synapsesparkstep/synapsesparkstep-stdout.png" alt-text="显示子运行的 &quot;stdout&quot; 选项卡的 Studio 屏幕截图":::
+:::image type="content" source="media/how-to-use-synapsesparkstep/synapsesparkstep-stdout.png" alt-text="显示子运行 stdout 选项卡的工作室屏幕截图":::
 
-## <a name="use-the-synapsesparkstep-in-a-pipeline"></a>`SynapseSparkStep`在管道中使用
+## <a name="use-the-synapsesparkstep-in-a-pipeline"></a>在管道中使用 `SynapseSparkStep`
 
-管道中的其他步骤可能具有自己独特的环境，并在适合手头任务的不同计算资源上运行。 示例笔记本在小型 CPU 群集上运行 "定型步骤"：
+管道中的其他步骤可能具有自己独特的环境，并在适合当前任务的不同计算资源上运行。 示例笔记本在小型 CPU 群集上运行“训练步骤”：
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -222,7 +222,7 @@ step_2 = PythonScriptStep(script_name="train.py",
                           allow_reuse=False)
 ```
 
-如果需要，上面的代码会创建新的计算资源。 然后，将 `step1_output` 结果转换为定型步骤的输入。 `as_download()`选项表示数据将移动到计算资源上，从而加快访问速度。 如果数据太大以至于无法放入本地计算硬盘驱动器，则可以使用 `as_mount()` 选项通过保险丝文件系统流式传输数据。 `compute_target`此第二步的是 `'cpucluster'` ，而不是在 `'link1-spark01'` 数据准备步骤中使用的资源。 此步骤使用简单的程序， `train.py` 而不是在 `dataprep.py` 上一步中使用的程序。 可以 `train.py` 在示例笔记本中查看详细信息。
+如果需要，上面的代码会创建新的计算资源。 然后，`step1_output` 结果会转换为训练步骤的输入。 `as_download()` 选项表示数据将移动到计算资源上，从而加快访问速度。 如果数据太大以至于无法放入本地计算硬盘驱动器，则可以使用 `as_mount()` 选项通过 FUSE 文件系统流式传输数据。 第二步的 `compute_target` 是 `'cpucluster'`，而不是在数据准备步骤中使用的 `'link1-spark01'` 资源。 此步骤使用简单的程序 `train.py` 而不是在上一步中使用的 `dataprep.py`。 可以在示例笔记本中查看 `train.py` 的详细信息。
 
 定义完所有步骤后，可以创建并运行管道。 
 
@@ -233,9 +233,9 @@ pipeline = Pipeline(workspace=ws, steps=[step_1, step_2])
 pipeline_run = pipeline.submit('synapse-pipeline', regenerate_outputs=True)
 ```
 
-上面的代码将创建一个管道，该管道由 Azure Synapse Analytics 提供支持的 Apache Spark 池上的数据准备步骤 (`step_1`) ，培训步骤 (`step_2`) 。 Azure 通过检查步骤之间的数据依赖关系来计算执行图。 在这种情况下，只有一个非常简单的依赖项 `step2_input` 需要 `step1_output` 。
+上面的代码将创建一个管道，其中包含由 Azure Synapse Analytics 提供支持的 Apache Spark 池上的数据准备步骤 (`step_1`) 和训练步骤 (`step_2`)。 Azure 通过检查步骤之间的数据依赖项来计算执行图。 在这种情况下，只有一个简单的依赖项，即 `step2_input` 需要 `step1_output`。
 
-`pipeline.submit`如果需要，调用会创建一个名为的实验， `synapse-pipeline` 并在其中异步开始运行。 管道内的各个步骤将作为此主运行的子运行运行，并可在 Studio 的试验页中进行监视和查看。
+如果需要，对 `pipeline.submit` 的调用会创建一个名为 `synapse-pipeline` 的实验，并在其中异步开始运行。 管道内的各个步骤将作为此主运行的子运行而运行，并可在工作室的“试验”页中进行监视和查看。
 
 ## <a name="next-steps"></a>后续步骤
 

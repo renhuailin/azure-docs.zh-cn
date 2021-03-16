@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 71ba3d99ceee89464dafdf5bf4c16e70df146bef
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209366"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426070"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析存储帐户中的数据
 
@@ -45,7 +45,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 可以在工作区默认 ADLS Gen2 帐户中分析数据，也可以通过“管理”>“链接服务”>“新建”  （以下步骤将引用主 ADLS Gen2 帐户）将 ADLS Gen2 或 Blob 存储帐户链接到工作区。
 
 1. 在 Synapse Studio 中，转到“数据”中心，然后选择“已关联” 。
-1. 转到“存储帐户” > “myworkspace (主 - contosolake)” 。
+1. 转到“Azure Data Lake Storage Gen2” > “myworkspace（主 - contosolake）” 。
 1. 选择“用户(主)”。 应会看到 NYCTaxi 文件夹。 在内部应会看到名为 PassengerCountStats_csvformat 和 PassengerCountStats_parquetformat 的两个文件夹 。
 1. 打开 PassengerCountStats_parquetformat 文件夹。 在文件夹内，你将看到名称类似于 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 Parquet 文件。
 1. 右键单击“.parquet”，选择“新建笔记本”，然后选择“加载到数据帧”  。 将使用如下所示的单元创建新笔记本：

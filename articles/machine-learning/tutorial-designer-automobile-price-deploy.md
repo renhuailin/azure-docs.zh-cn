@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: e93f912915303ce903a32ceba4f079593657a4ac
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576052"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659491"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "99576052"
 
 1. 在管道画布上方，选择“创建推理管道” > “实时推理管道” 。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="显示“创建管道”按钮位置的屏幕截图":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png" alt-text="显示“创建管道”按钮位置的屏幕截图":::
 
     管道现在应如下所示： 
 
@@ -97,13 +97,13 @@ ms.locfileid: "99576052"
 
 1. 选择已创建的 AKS 群集。
 
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="显示如何设置新的实时终结点的屏幕截图":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png" alt-text="显示如何设置新的实时终结点的屏幕截图":::
 
     还可以更改实时终结点的“高级”设置。
     
     |高级设置|说明|
     |---|---|
-    |启用 Application Insights 诊断和数据收集| 是否启用 Azure Application Ingishts 以从部署的终结点收集数据。 </br> 默认值：false |
+    |启用 Application Insights 诊断和数据收集| 是否启用 Azure Application Insights 从部署的终结点收集数据。 </br> 默认值：false |
     |评分超时| 对 Web 服务的评分调用强制执行的超时值（以毫秒为单位）。</br>默认情况下：60000|
     |已启用自动缩放|   是否为 Web 服务启用自动缩放。</br>默认值：true|
     |副本数下限| 自动缩放此 Web 服务时可使用的容器的最小数目。</br>默认情况下：1|
@@ -137,6 +137,22 @@ ms.locfileid: "99576052"
 1. 若要测试终结点，请转到“测试”选项卡。可在此输入测试数据并选择“测试”以验证终结点的输出。
 
 有关使用 Web 服务的详细信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md)
+
+## <a name="limitations"></a>限制
+
+如果在训练管道中进行了一些修改，则应重新提交训练管道，更新推理管道并再次运行推理管道。
+
+请注意，在推理管道中将只更新经过训练的模型，而不会更新数据转换。
+
+若要在推理管道中使用更新的转换，需要将转换模块的转换输出注册为数据集。
+
+![显示如何注册转换数据集的屏幕截图](./media/tutorial-designer-automobile-price-deploy/register-transformation-dataset.png)
+
+然后，手动将推理管道中的 TD 模块替换为已注册的数据集。
+
+![显示如何替换转换模块的屏幕截图](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
+
+然后，可以提交具有已更新的模型和转换的推理管道，并部署。
 
 ## <a name="clean-up-resources"></a>清理资源
 

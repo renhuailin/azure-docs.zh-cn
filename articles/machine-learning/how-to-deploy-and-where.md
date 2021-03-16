@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: f8865c9e6726a19e5e215886f92507734ebf0662
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657309"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522047"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
@@ -46,7 +46,7 @@ ms.locfileid: "101657309"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK)](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
+- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK)](/python/api/overview/azure/ml/intro)。
 
 ---
 
@@ -71,7 +71,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-若要详细了解如何使用 SDK 连接到工作区，请参阅[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#workspace) 文档。
+若要详细了解如何使用 SDK 连接到工作区，请参阅[用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro#workspace) 文档。
 
 
 ---
@@ -82,7 +82,7 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果有一个存储在多个文件中的模型，则可以在工作区中将这些文件注册为单个模型。 注册这些文件后，可以下载或部署已注册的模型，并接收注册的所有文件。
 
 > [!TIP] 
-> 建议注册模型以进行版本跟踪，但这不是必需的。 如果要在不注册模型的情况下继续操作，则需要在 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 或 [inferenceconfig.json](./reference-azure-machine-learning-cli.md#inference-configuration-schema) 中指定源目录，并确保模型位于该源目录中。
+> 建议注册模型以进行版本跟踪，但这不是必需的。 如果要在不注册模型的情况下继续操作，则需要在 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) 或 [inferenceconfig.json](./reference-azure-machine-learning-cli.md#inference-configuration-schema) 中指定源目录，并确保模型位于该源目录中。
 
 > [!TIP]
 > 注册模型时，请提供云位置（来自训练运行）或本地目录的路径。 此路径仅用于在注册过程中查找要上传的文件。 它不需要与入口脚本中使用的路径匹配。 有关详细信息，请参阅[在入口脚本中查找模型文件](./how-to-deploy-advanced-entry-script.md#load-registered-models)。
@@ -118,7 +118,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>通过 Azure ML 训练运行注册一个模型
 
-  使用 SDK 训练模型时，可以接收 [Run](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py) 对象或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
+  使用 SDK 训练模型时，可以接收 [Run](/python/api/azureml-core/azureml.core.run.run) 对象或 [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) 对象，具体取决于模型的训练方式。 每个对象都可用于注册通过实验运行创建的模型。
 
   + 通过 `azureml.core.Run` 对象注册模型：
  
@@ -129,7 +129,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 文档。
+    `model_path` 参数表示模型的云位置。 本示例使用的是单个文件的路径。 若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。 有关详细信息，请参阅 [Run.register_model](/python/api/azureml-core/azureml.core.run.run#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) 文档。
 
   + 通过 `azureml.train.automl.run.AutoMLRun` 对象注册模型：
 
@@ -171,7 +171,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
   若要在模型注册中包含多个文件，请将 `model_path` 设置为包含文件的文件夹的路径。
 
-有关详细信息，请参阅关于[模型类](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的文档。
+有关详细信息，请参阅关于[模型类](/python/api/azureml-core/azureml.core.model.model)的文档。
 
 若要详细了解如何使用在 Azure 机器学习之外训练的模型，请参阅[如何部署现有模型](how-to-deploy-existing-model.md)。
 
@@ -227,7 +227,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 有关环境的详细信息，请参阅[创建和管理用于训练和部署的环境](how-to-use-environments.md)。
 
-有关推理配置的详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 类文档。
+有关推理配置的详细信息，请参阅 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) 类文档。
 
 ---
 
@@ -305,7 +305,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-有关详细信息，请参阅关于 [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py)[Model.deploy()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice?preserve-view=true&view=azure-ml-py) 的文档。
+有关详细信息，请参阅关于 [LocalWebservice](/python/api/azureml-core/azureml.core.webservice.local.localwebservice)[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](/python/api/azureml-core/azureml.core.webservice.webservice) 的文档。
 
 ---
 
@@ -327,12 +327,12 @@ print(service.state)
 > 在部署时，会从 Azure 容器注册表 (ACR) 生成并加载用于计算目标的 Docker 映像。 在默认情况下，Azure 机器学习会创建一个使用“基本”服务层级的 ACR。 将工作区的 ACR 更改为“标准”或“高级”层级可能会减少生成映像并将其部署到计算目标所花费的时间。 有关详细信息，请参阅 [Azure 容器注册表服务层级](../container-registry/container-registry-skus.md)。
 
 > [!NOTE]
-> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
+> 如果要将模型部署到 Azure Kubernetes 服务 (AKS)，建议为该群集启用 [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md)。 这将帮助你了解总体群集运行状况和资源使用情况。 以下资源也可能有用：
 >
 > * [检查影响 AKS 群集的资源运行状况事件](../aks/aks-resource-health.md)
-> * [Azure Kubernetes Service 诊断](../aks/concepts-diagnostics.md)
+> * [Azure Kubernetes 服务诊断](../aks/concepts-diagnostics.md)
 >
-> 如果尝试将模型部署到不正常或过载的群集，则应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
+> 如果尝试将模型部署到运行不正常或重载的群集，应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批量推理
 Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可用于 Azure 机器学习管道中的批量预测。
@@ -357,7 +357,7 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 若要删除已部署的 Web 服务，请使用 `service.delete()`。
 若要删除已注册的模型，请使用 `model.delete()`。
 
-有关详细信息，请参阅关于 [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) 和 [Model.delete()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) 的文档。
+有关详细信息，请参阅关于 [WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) 和 [Model.delete()](/python/api/azureml-core/azureml.core.model.model#delete--) 的文档。
 
 ---
 

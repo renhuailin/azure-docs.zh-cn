@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174931"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518698"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -28,7 +28,7 @@ ms.locfileid: "102174931"
 - 将 `Dataset` 数据拆分为子集，例如训练子集和验证子集
 - 创建 `OutputFileDatasetConfig` 对象来将数据传输到下一管道步骤
 - 使用 `OutputFileDatasetConfig` 对象作为管道步骤的输入
-- `Dataset`从你的 wisƒh 创建新的对象 `OutputFileDatasetConfig` 以保留
+- 基于 `OutputFileDatasetConfig` 创建要持久保存的新 `Dataset` 对象
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,7 +36,7 @@ ms.locfileid: "102174931"
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-- [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
+- [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
 
 - Azure 机器学习工作区。
   
@@ -55,7 +55,7 @@ ms.locfileid: "102174931"
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>将 `Dataset` 对象用于预先存在的数据 
 
-将数据引入到管道的首选方法是使用 [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 对象。 `Dataset` 对象表示在整个工作区中可用的持久性数据。
+将数据引入到管道的首选方法是使用 [Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29) 对象。 `Dataset` 对象表示在整个工作区中可用的持久性数据。
 
 可以通过许多方法来创建和注册 `Dataset` 对象。 表格数据集用于一个或多个文件中可用的分隔数据。 文件数据集用于二进制数据（例如图像）或你要分析的数据。 创建 `Dataset` 对象的最简单编程方式是使用工作区存储或公共 URL 中的现有 blob：
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>将 `OutputFileDatasetConfig` 用于中间数据
 
-虽然 `Dataset` 对象仅代表持久性数据，但 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 对象可用于从管道步骤输出的临时数据以及持久性输出数据。 `OutputFileDatasetConfig` 支持将数据写入到 Blob 存储、文件共享、adlsgen1 或 adlsgen2。 它同时支持装载模式和上传模式。 在装载模式下，当文件关闭时，写入到装载的目录中的文件将永久存储。 在上传模式下，在作业结束时，将上传写入到输出目录中的文件。 如果作业失败或被取消，将不会上传输出目录。
+虽然 `Dataset` 对象仅代表持久性数据，但 [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) 对象可用于从管道步骤输出的临时数据以及持久性输出数据。 `OutputFileDatasetConfig` 支持将数据写入到 Blob 存储、文件共享、adlsgen1 或 adlsgen2。 它同时支持装载模式和上传模式。 在装载模式下，当文件关闭时，写入到装载的目录中的文件将永久存储。 在上传模式下，在作业结束时，将上传写入到输出目录中的文件。 如果作业失败或被取消，将不会上传输出目录。
 
  `OutputFileDatasetConfig` 对象的默认行为是写入到工作区的默认数据存储。 可使用 `arguments` 参数将 `OutputFileDatasetConfig` 对象传递给 `PythonScriptStep`。
 
@@ -240,15 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
-## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>`OutputFileDatasetConfig`不再需要时删除内容
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>不再需要 `OutputFileDatasetConfig` 内容时将其删除
 
-Azure 不会自动删除用编写的中间数据 `OutputFileDatasetConfig` 。 若要避免大量不需要的数据的存储费用，应执行以下操作之一：
+Azure 不会自动删除用 `OutputFileDatasetConfig` 编写的中间数据。 若要避免大量不需要的数据的存储费用，应执行以下操作之一：
 
-* 当不再需要时，在管道运行结束时以编程方式删除中间数据
-* 将 blob 存储用于中间数据的短期存储策略 (参阅 [通过自动化 Azure Blob 存储访问层优化成本](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal))  
+* 当不再需要时，可在管道运行结束时以编程方式删除中间数据
+* 将 blob 存储与中间数据的短期存储策略仪器结合使用（请参阅[通过 Azure Blob 存储访问层自动化来优化成本](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)） 
 * 定期检查并删除不再需要的数据
 
-有关详细信息，请参阅 [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
+有关详细信息，请参阅[计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: e5872b6ab97a47c09081cf9c26fb7f140b110c3f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: f33b72a25fc748f8320be8903903f817914733aa
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733442"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455673"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -35,7 +35,7 @@ ms.locfileid: "101733442"
 * 文本转语音 REST API 需要授权标头。 这意味着，需要完成令牌交换才能访问该服务。 有关详细信息，请参阅[身份验证](#authentication)。
 
 > [!TIP]
-> 请 [参阅本文，](sovereign-clouds.md) 了解 azure 政府和 azure 中国端点。
+> 请参阅[此文](sovereign-clouds.md)，以了解 Azure 政府和 Azure 中国终结点。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "101733442"
 | 美国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 > [!TIP]
-> [预览版](language-support.md#neural-voices-in-preview) 中的语音仅在以下3个区域提供：美国东部、西欧和东南亚。
+> [预览版语音](language-support.md#neural-voices-in-preview)只在以下 3 个区域提供：美国东部、西欧和东南亚。
 
 ### <a name="request-headers"></a>请求标头
 
@@ -213,10 +213,10 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 
 | 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必须 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必须 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必须 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必须 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必需 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必需 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必需 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必需 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -230,6 +230,8 @@ audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
 raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
 audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
 audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+raw-48khz-16bit-mono-pcm            riff-48khz-16bit-mono-pcm
+audio-48khz-96kbitrate-mono-mp3     audio-48khz-192kbitrate-mono-mp3
 ```
 
 > [!NOTE]

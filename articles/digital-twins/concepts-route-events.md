@@ -1,69 +1,69 @@
 ---
 title: 事件路由
 titleSuffix: Azure Digital Twins
-description: 了解如何将 Azure 数字孪生中的事件路由到其他 Azure 服务。
+description: 了解如何将事件路由到 Azure 数字孪生中或路由到其他 Azure 服务。
 author: baanders
 ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050509"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430915"
 ---
-# <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
+# <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
-Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用者。 
+Azure 数字孪生使用事件路由向服务外的使用者发送数据。 
 
 发送 Azure 数字孪生数据的主要情况有两种：
-* 将 Azure 数字孪生图中的一个单元中的数据发送到另一个。 例如，当一个数字上的属性发生变化时，你可能需要相应地通知和更新其他数字输出。
-* 向下游数据服务发送数据以进行额外的存储或处理 (也称为 *数据传出*) 。 例如，
-  - 医院可能想要将 Azure 数字孪生事件数据发送到 [时序见解 (TSI) ](../time-series-insights/overview-what-is-tsi.md)，为大容量分析记录 handwashing 相关事件的时序数据。
-  - 已使用 [Azure Maps](../azure-maps/about-azure-maps.md) 的企业可能想要使用 Azure 数字孪生来增强其解决方案。 在设置 Azure 数字孪生后，它们可以快速启用 Azure 映射，将 Azure 地图实体作为单元中的 [数字孪生](concepts-twins-graph.md) 引入 Azure 数字孪生，或运行功能强大的查询，利用它们 Azure Maps 和 Azure 数字孪生数据。
+* 将 Azure 数字孪生图中的一个孪生体的数据发送给另一个孪生体。 例如，当一个数字孪生体上的属性发生变化时，可能需要相应地通知并更新另一个数字孪生体。
+* 向下游数据服务发送数据以进行额外的存储或处理（也称为数据传出）。 例如，
+  - 一家医院可能希望将 Azure 数字孪生事件数据发送到[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)，记录洗手相关事件的时序数据以进行批量分析。
+  - 正在使用 [Azure Maps](../azure-maps/about-azure-maps.md) 的企业可能希望使用 Azure 数字孪生来强化其解决方案。 在设置 Azure 数字孪生后，他们可以快速启用 Azure Maps，将 Azure Maps 实体作为孪生图中的[数字孪生体](concepts-twins-graph.md)引入 Azure 数字孪生，或同时利用 Azure Maps 和 Azure 数字孪生数据来运行功能强大的查询。
 
-事件路由用于这两种情况。
+这两种情况都使用事件路由。
 
 ## <a name="about-event-routes"></a>关于事件路由
 
-使用事件路由可以将 Azure 数字孪生中的数字孪生的事件数据发送到订阅中的自定义终结点。 目前有三个终结点支持的 Azure 服务： [事件中心](../event-hubs/event-hubs-about.md)、 [事件网格](../event-grid/overview.md)和 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)。 每个 Azure 服务都可以连接到其他服务，并作为中转站，将数据发送到最终目标（Azure Maps 如
+使用事件路由可将 Azure 数字孪生中的数字孪生体的事件数据发送到订阅中的自定义终结点。 终结点目前支持三项 Azure 服务：[事件中心](../event-hubs/event-hubs-about.md)、[事件网格](../event-grid/overview.md)和[服务总线](../service-bus-messaging/service-bus-messaging-overview.md)。 每项 Azure 服务都可以连接到其他服务，并充当中转站，将数据发送到最终目标（如 TSI 或 Azure Maps）以进行所需的任何处理。
 
-下图说明了通过 Azure 数字孪生方面的更大 IoT 解决方案的事件数据流：
+下图说明了通过具有 Azure 数字孪生特性的大型 IoT 解决方案的事件数据流：
 
 :::image type="content" source="media/concepts-route-events/routing-workflow.png" alt-text="Azure 数字孪生通过终结点将数据路由到多个下游服务" border="false":::
 
-事件路由的典型下游目标是诸如 TSI、Azure Maps、存储和分析解决方案等资源。
+事件路由的典型下游目标是 TSI、Azure Maps、存储和分析解决方案等资源。
 
-### <a name="event-routes-for-internal-digital-twin-events"></a>内部数字克隆事件的事件路由
+### <a name="event-routes-for-internal-digital-twin-events"></a>内部数字孪生事件的事件路由
 
-事件路由还用于处理克隆图形中的事件，并将数据从数字双子发送到数字源。 这是通过将事件路由通过事件网格连接来计算资源（如 [Azure Functions](../azure-functions/functions-overview.md)）完成的。 然后，这些函数定义孪生应如何接收和响应事件。 
+事件路由还用于处理孪生图中的事件，并将一个数字孪生体中的数据发送到另一个数字孪生体。 此操作是通过事件网格将事件路由连接到计算资源（如 [Azure Functions](../azure-functions/functions-overview.md)）来完成的。 然后，这些函数会定义孪生体应如何接收和响应事件。 
 
-当计算资源基于通过事件路由收到的事件来修改非整数图形时，它可以知道它要提前修改的是哪一个。 
+当计算资源希望根据通过事件路由收到的事件修改孪生图时，它可以提前知道要修改哪一个孪生体。 
 
-另外，事件消息还包含发送消息的源克隆的 ID，因此计算资源可以使用查询或遍历关系来查找所需操作的目标克隆。 
+另外，事件消息还包含发送消息的源孪生体的 ID，因此计算资源可使用查询或遍历关系来查找所需操作的目标孪生体。 
 
 计算资源还需要单独建立安全和访问权限。
 
-若要演练设置 Azure 函数以处理数字非整数事件的过程，请参阅 [*如何：设置用于处理数据的 azure 函数*](how-to-create-azure-function.md)。
+若要演练如何设置用于处理数字孪生事件的 Azure 函数，请参阅[操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)。
 
 ## <a name="create-an-endpoint"></a>创建终结点
 
-若要定义事件路由，开发人员必须首先定义终结点。 **终结点** 是支持路由连接的 Azure 数字孪生外部的目标。 支持的目标包括：
+若要定义事件路由，开发人员必须首先定义终结点。 终结点是支持路由连接的 Azure 数字孪生外部的目标。 支持的目标包括：
 * 事件网格自定义主题
 * 事件中心
 * 服务总线
 
-若要创建终结点，可以使用 Azure 数字孪生 [REST api、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。
+若要创建终结点，可使用 Azure 数字孪生 [REST API、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。
 
 定义终结点时，需要提供：
-* 终结点的名称
-* 终结点类型 (事件网格、事件中心或服务总线) 
-* 要进行身份验证的主连接字符串和辅助连接字符串 
-* 终结点的主题路径，例如 *your-topic.westus2.eventgrid.azure.net*
+* 终结点名称
+* 终结点类型（事件网格、事件中心或服务总线）
+* 要进行身份验证的主要连接字符串和辅助连接字符串 
+* 终结点的主题路径，例如 your-topic.westus2.eventgrid.azure.net
 
-控制平面中提供的终结点 Api 包括：
+控制平面中可用的终结点 API 包括：
 * 创建终结点
 * 获取终结点列表
 * 按名称获取终结点
@@ -71,35 +71,35 @@ Azure 数字孪生使用 **事件路由** 将数据发送到服务外的使用�
 
 ## <a name="create-an-event-route"></a>创建事件路由
  
-若要创建事件路由，可以使用 Azure 数字孪生 [REST api、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-event-route)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-event-route)。
+若要创建事件路由，可使用 Azure 数字孪生 [REST API、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-event-route)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-event-route)。
 
-下面是使用 `CreateOrReplaceEventRouteAsync` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 调用在客户端应用程序中创建事件路由的示例： 
+下面是使用 `CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 调用在客户端应用程序中创建事件路由的示例： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 
-1. 首先，将 `DigitalTwinsEventRoute` 创建一个对象，并且构造函数将使用终结点的名称。 此 `endpointName` 字段标识一个终结点，如事件中心、事件网格或服务总线。 在进行此注册调用之前，必须在订阅中创建这些终结点，并使用控制平面 Api 将这些终结点附加到 Azure 数字孪生。
+1. 首先创建一个 `DigitalTwinsEventRoute` 对象，构造函数将使用终结点的名称。 此 `endpointName` 字段标识一个终结点，如事件中心、事件网格或服务总线。 在进行此注册调用之前，必须在订阅中创建这些终结点，并使用控制平面 API 将这些终结点附加到 Azure 数字孪生。
 
-2. 事件路由对象还具有一个 [**筛选器**](how-to-manage-routes-apis-cli.md#filter-events) 字段，该字段可用于限制跟随此路由的事件类型。 的筛选器将 `true` 启用无额外筛选的路由 (筛选器 `false` 禁用路由) 。 
+2. 事件路由对象还有一个 [Filter](how-to-manage-routes-apis-cli.md#filter-events) 字段，该字段可用于限制流经此路由的事件类型。 筛选器 `true` 启用无额外筛选的路由（筛选器 `false` 禁用路由）。 
 
-3. 然后，将此事件路由对象传递到 `CreateOrReplaceEventRouteAsync` ，同时传递给路由的名称。
+3. 然后，此事件路由对象将与路由名称一起传递到 `CreateOrReplaceEventRouteAsync`。
 
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
 
 ## <a name="dead-letter-events"></a>死信事件
 
-当终结点无法在某个时间段内传递事件时，或者尝试将事件传递到一定次数后，它可以将未送达的事件发送到存储帐户。 此过程称为“死信处理”。 当满足 **以下条件之一** 时，Azure 数字孪生会将事件死信。 
+当终结点无法在特定时间段内传递事件，或在尝试传递事件一定次数后仍无法传递，它可将未传递的事件发送到存储帐户。 此过程称为“死信处理”。 如果满足以下任一条件，Azure 数字孪生会将事件列入死信队列。 
 
 * 事件未在生存期内传递
 * 尝试传递事件的次数已超出限制
 
-如果满足上述任一条件，则会将该事件删除或视为死信。 默认情况下，每个终结点 **不会** 启用死信。 若要启用它，您必须指定一个存储帐户，以便在创建终结点时保存未传递的事件。 然后，你可以从此存储帐户拉取事件以解析传递。
+如果满足上述任一条件，则会将该事件删除或视为死信。 默认情况下，每个终结点不会启用死信功能。 若要启用该功能，在创建终结点时必须指定一个存储帐户来存放未传递的事件。 然后，你可从此存储帐户中拉取事件来解决传递问题。
 
-在设置死信位置之前，必须有一个包含容器的存储帐户。 创建终结点时，提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要 `write` 对存储帐户中目标容器的权限。 完整的格式 URL 将采用以下格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+在设置死信位置之前，必须有一个包含容器的存储帐户。 在创建终结点时，需要提供此容器的 URL。 死信作为带有 SAS 令牌的容器 URL 提供。 该令牌只需要存储帐户中目标容器的 `write` 权限。 完整格式的 URL 将为 `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要了解有关 SAS 令牌的详细信息，请参阅： [*使用共享访问签名授予对 Azure 存储资源的有限访问权限 (SAS)*](../storage/common/storage-sas-overview.md)
+若要详细了解 SAS 令牌，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
 
-若要了解如何使用死信设置终结点，请参阅 [*如何：在 Azure 数字孪生中管理终结点和路由 (api 和 CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
+若要了解如何设置具有死信功能的终结点，请参阅[操作指南：管理 Azure 数字孪生中的终结点和路由（API 和 CLI）](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 
 ### <a name="types-of-event-messages"></a>事件消息的类型
 
@@ -110,7 +110,7 @@ IoT 中心和 Azure 数字孪生中的不同类型的事件会生成不同类型
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何设置和管理事件路由：
-* [*操作说明：管理终结点和路由*](how-to-manage-routes-apis-cli.md)
+* [操作指南：管理终结点和路由](how-to-manage-routes-apis-cli.md)
 
 或者，请参阅如何使用 Azure Functions 在 Azure 数字孪生中路由事件：
-* [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)
+* [操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)

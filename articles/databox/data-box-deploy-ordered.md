@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: f2bad214045710fe861040514beb3c536664d684
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201883"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522387"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -164,7 +164,7 @@ You have logged in. Now let us find all the subscriptions to which you have acce
     WSManStackVersion              3.0
 ```
 
-如果你的版本低于 6.2.4，则需要升级 Windows PowerShell 版本。 要安装最新版本的 Windows PowerShell，请参阅[安装 Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true)。
+如果你的版本低于 6.2.4，则需要升级 Windows PowerShell 版本。 要安装最新版本的 Windows PowerShell，请参阅[安装 Azure PowerShell](/powershell/scripting/install/installing-powershell)。
 
 **安装 Azure PowerShell 和 Data Box 模块**
 
@@ -239,7 +239,7 @@ PS C:\Windows\System32>
 
 6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
 
-    |设置  |值  |
+    |设置  |“值”  |
     |---------|---------|
     |订阅      | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组    | 之前选择的资源组。 |
@@ -355,22 +355,34 @@ PS C:\Windows\System32>
     ![展开 Data Box 导入订单的“创建自己的密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - 要对新设备使用自己的密码，请在“设置设备密码的首选项”中选择“使用自己的密码”，然后键入符合安全要求的密码 。
+     
+     密码必须是字母和数字，且包含 12 到 15 个字符，至少有一个大写字母、一个小写字母、一个特殊字符和一个数字。 
+
+     - 允许使用的特殊字符：@ # - $ % ^ ! + = ; : _ ( )
+     - 不允许使用的字符：I i L o O 0
    
      ![Data Box 导入订单“安全性”屏幕上的“使用自己的设备密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - 使用自己的共享密码：
 
-   - 在“设置共享密码的首选项”中，依次选择“使用自己的密码”和“选择共享密码”  。
+   1. 在“设置共享密码的首选项”中，依次选择“使用自己的密码”和“选择共享密码”  。
      
-        ![Data Box 导入订单“安全性”屏幕上的“使用自己的共享密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Data Box 导入订单“安全性”屏幕上的“使用自己的共享密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - 为订单中的每个存储帐户键入一个密码。 该密码将用于存储帐户的所有共享。
-     
-        要对所有存储帐户使用同一密码，请选择“复制到全部”。 完成后，选择“保存”。
-     
-        ![为 Data Box 导入订单输入共享密码的屏幕](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. 为订单中的每个存储帐户键入一个密码。 该密码将用于存储帐户的所有共享。
+    
+       密码必须是字母和数字，且包含 12 到 64 个字符，至少有一个大写字母、一个小写字母、一个特殊字符和一个数字。
 
-       在“安全性”屏幕上，可以使用“查看或更改密码”来更改密码 。
+       - 允许使用的特殊字符：@ # - $ % ^ ! + = ; : _ ( )
+       - 不允许使用的字符：I i L o O 0
+     
+    1. 要对所有存储帐户使用同一密码，请选择“复制到全部”。 
+
+    1. 完成后，选择“保存”。
+     
+       ![为 Data Box 导入订单输入共享密码的屏幕](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    在“安全性”屏幕上，可以使用“查看或更改密码”来更改密码 。
 
 16. 在“安全性”中，如果要启用基于软件的双重加密，请展开“双重加密(适用于高度安全的环境)”，然后选择“为订单启用双重加密”  。
 

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: f8ceacf88968d884de666b764c1037db9e63450f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214909"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522200"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -30,14 +30,9 @@ ms.locfileid: "102214909"
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
-* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](/powershell/azure/) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 
-* 某些方案需要你开具支持票证。 这些方案为：
-
-    * __使用客户管理的密钥启用专用链接的工作区__
-    * __虚拟网络后的工作区的 Azure 容器注册表__
-
-    有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+* 某些方案需要你开具支持票证。 例如，使用具有客户管理的密钥的启用了专用链接的工作区。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="limitations"></a>限制
 
@@ -63,7 +58,7 @@ ms.locfileid: "102214909"
 
     模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
 
-* **WorkspaceName**，它是 Azure 机器学习工作区的友好名称。
+* workspaceName 是 Azure 机器学习工作区的易记名称。
 
     > [!NOTE]
     > 工作区名称不区分大小写。
@@ -73,7 +68,7 @@ ms.locfileid: "102214909"
 > [!TIP]
 > 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
-> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 执行此操作时，必须 [使用托管身份](how-to-use-managed-identities.md) (预览) ，或启用容器注册表 [的管理员帐户](../container-registry/container-registry-authentication.md#admin-account) 。
+> 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。 执行此操作时，必须[使用托管标识](how-to-use-managed-identities.md)（预览），或启用容器注册表的[管理员帐户](../container-registry/container-registry-authentication.md#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -285,7 +280,7 @@ New-AzResourceGroupDeployment `
 如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或 `ManualApproval`，以将工作区部署到专用终结点后面。 对于新的和现有的工作区，都可以这样做。 更新现有工作区时，请使用现有工作区中的信息填写模板参数。
 
 > [!IMPORTANT]
-> Azure 政府区域或 Azure 中国世纪互联区域不支持使用具有专用链接的 Azure 机器学习工作区。
+> Azure 政府区域不支持使用具有专用链接的 Azure 机器学习工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

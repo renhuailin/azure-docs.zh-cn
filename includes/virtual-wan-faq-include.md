@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d275f2f4cad83c8f378c471e5a3fa1313d6c0e7d
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99624857"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431524"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虚拟 WAN 是否已正式发布 (GA)？
 
@@ -93,7 +93,7 @@ ms.locfileid: "99624857"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>就用户 VPN（点到站点）来说，支持多少个客户端？
 
-每个用户 VPN P2S 网关都有两个实例，每个实例支持的用户数会随缩放单元的变化而变化，并有一个上限。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-18 支持最多 10,000 个连接。
+每个用户 VPN P2S 网关都有两个实例。 每个实例在缩放单位变化时最多支持特定数量的连接。 缩放单元 1-3 支持 500 个连接，缩放单元 4-6 支持 1000 个连接，缩放单元 7-12 支持 5000 个连接，缩放单元 13-18 支持最多 10,000 个连接。
 
 例如，假设用户选择 1 个缩放单元。 每个缩放单元的存在都意味着已部署主动-主动网关，并且每个实例（在本例中为 2 个）都支持最多 500 个连接。 每个网关可以获得 500 * 2 个连接，但这并不意味着你要为此缩放单元的 1000 个（而不是 500 个）连接做规划。 系统可能需要为实例提供服务，而在服务期间，当你超过建议的连接数时，系统可能会中断这额外的 500 个连接。 此外，如果决定在缩放单元上纵向扩展或缩减，或者在 VPN 网关上更改点到站点配置，请确保计划停机时间。
 
@@ -125,7 +125,7 @@ ms.locfileid: "99624857"
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>虚拟 WAN 合作伙伴如何自动与 Azure 虚拟 WAN 建立连接？
 
-软件定义的连接解决方案通常使用控制器或设备预配中心来管理其分支设备。 控制器可以使用 Azure API 自动与 Azure 虚拟 WAN 建立连接。 自动化包括上传分支信息、下载 Azure 配置、将 IPSec 隧道设置到 Azure 虚拟中心，以及自动设置从分支设备到 Azure 虚拟 WAN 的连接。 当有数百个分支时，可以轻松使用虚拟 WAN CPE 合作伙伴进行连接，因为载入体验无需设置、配置和管理大规模的 IPsec 连接。 有关详细信息，请参阅[虚拟 WAN 合作伙伴自动化](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)。
+软件定义的连接解决方案通常使用控制器或设备预配中心来管理其分支设备。 控制器可以使用 Azure API 自动与 Azure 虚拟 WAN 建立连接。 自动化包括上传分支信息、下载 Azure 配置、将 IPsec 隧道设置到 Azure 虚拟中心，以及自动设置从分支设备到 Azure 虚拟 WAN 的连接。 当有数百个分支时，可以轻松使用虚拟 WAN CPE 合作伙伴进行连接，因为载入体验无需设置、配置和管理大规模的 IPsec 连接。 有关详细信息，请参阅[虚拟 WAN 合作伙伴自动化](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)。
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>如果使用的设备不在虚拟 WAN 合作伙伴列表中，该怎么办？ 还可以用它来连接到 Azure 虚拟 WAN VPN 吗？
 
@@ -169,7 +169,7 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 
 ### <a name="can-a-spoke-vnet-have-a-virtual-network-gateway"></a>辐射 VNet 是否可以包含虚拟网络网关？
 
-否。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
+不是。 如果辐射 VNet 已连接到虚拟中心，则不能包含虚拟网络网关。
 
 ### <a name="is-there-support-for-bgp-in-vpn-connectivity"></a>VPN 连接是否支持 BGP？
 
@@ -213,7 +213,7 @@ Azure 虚拟 WAN 连接包含 2 个隧道。 虚拟 WAN VPN 网关以主动-主�
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>可在 VPN 连接上使用 NAT-T 吗？
 
-可以，支持 NAT 遍历 (NAT-T)。 虚拟 WAN VPN 网关将不在指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。 在此配置中，请确保本地设备启动 IPSec 隧道。
+可以，支持 NAT 遍历 (NAT-T)。 虚拟 WAN VPN 网关将不在指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。 在此配置中，请确保本地设备启动 IPsec 隧道。
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>我在门户中看不到虚拟中心的 20 Gbps 设置。 我该如何配置它？
 
@@ -302,3 +302,7 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 ### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>是否有托管服务提供程序可为用户管理虚拟 WAN 并作为一项服务进行管理？
 
 是。 有关通过 Azure 市场启用的托管服务提供程序 (MSP) 解决方案的列表，请参阅 [Azure 网络 MSP 合作伙伴提供的 Azure 市场产品/服务](../articles/networking/networking-partners-msp.md#msp)。
+
+### <a name="how-does-virtual-wan-hub-routing-differ-from-azure-route-server-in-a-vnet"></a>虚拟 WAN 中心路由与 VNet 中的 Azure 路由服务器有何不同？
+
+Azure 路由服务器提供边界网关协议 (BGP) 对等互连服务，该服务可由 NVA (网络虚拟设备) 用于了解 DIY 中心 VNet 中路由服务器的路由。 虚拟 WAN 路由提供多种功能，其中包括 VNet 到 VNet 传输路由、自定义路由、自定义路由关联和传播、零接触全网状中心服务，以及与 ExpressRoute、Site VPN、远程用户/大型 P2S VPN 的连接服务，和安全中心（Azure 防火墙）功能。 当你在 NVA 与 Azure 路由服务器之间建立 BGP 对等互连时，可以将 NVA 中的 IP 地址播发到虚拟网络。 对于所有高级路由功能（例如传输路由、自定义路由等），可以使用虚拟 WAN 路由。

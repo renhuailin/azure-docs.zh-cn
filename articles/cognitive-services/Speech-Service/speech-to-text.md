@@ -12,24 +12,24 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499639"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434300"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
 本概述介绍语音转文本服务的优势和功能。
-使用语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
+使用语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译</a>和<a href="./text-to-speech.md" target="_blank">文本转语音</a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
 通过使用其他参考文本作为输入，语音转文本服务还支持[发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)功能（用于评估语音发音），并向说话人提供有关语音准确性和流畅度的反馈。 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。 教师可以使用此功能来实时评估多个说话人的发音。 此功能目前支持美国英语，并与专家进行的语音评估高度相关。
 
 > [!NOTE]
-> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api，我们已创建了可帮助你迁移到语音服务的指南。
+> 必应语音已于 2019 年 10 月 15 日停止使用。 如果你的应用程序、工具或产品使用了必应语音 API，请参阅我们创建的指南来帮助你迁移到语音服务。
 > - [从必应语音迁移到语音服务](how-to-migrate-from-bing-speech.md)
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]

@@ -1,7 +1,7 @@
 ---
 title: 关于 Azure 机器学习环境
 titleSuffix: Azure Machine Learning
-description: 了解机器学习环境，该环境启用各种计算目标的可重复、可审核的 & 便携机器学习依赖项定义。
+description: 了解机器学习环境，该环境可为各种计算目标使用可重复、可审核的便携机器学习依赖项定义。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695378"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508463"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习环境？
 
@@ -26,7 +26,7 @@ Azure 机器学习环境封装了一个供你在其中进行机器学习训练�
 * 使用该相同环境部署你的模型。
 * 重新访问在其中训练了现有模型的环境。
 
-下图说明了如何 `Environment` 在运行配置 (中使用单个对象进行培训) 以及) 的 web 服务部署的推理和部署配置 (。
+下图说明了如何将单个 `Environment` 对象同时用于你的运行配置（用于训练）与你的推理和部署配置（用于 Web 服务部署）。
 
 ![图示：机器学习工作流中的环境](./media/concept-environments/ml-environment.png)
 
@@ -78,13 +78,13 @@ Azure 机器学习服务在 Docker 映像和 conda 环境中生成环境定义�
  1. 下载基础映像，并执行任何 Docker 步骤
  2. 根据环境定义中指定的 conda 依赖项生成 conda 环境。
 
-如果指定[用户管理的依赖项](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)，则会省略第二个步骤。 在这种情况下，你需要负责安装任何 Python 包，方法是在基础映像中包含这些包，或者在第一个步骤中指定自定义 Docker 步骤。 你还要负责为 Python 可执行文件指定正确的位置。 还可以使用[自定义 Docker 基础映像](how-to-deploy-custom-docker-image.md)。
+如果指定[用户管理的依赖项](/python/api/azureml-core/azureml.core.environment.pythonsection)，则会省略第二个步骤。 在这种情况下，你需要负责安装任何 Python 包，方法是在基础映像中包含这些包，或者在第一个步骤中指定自定义 Docker 步骤。 你还要负责为 Python 可执行文件指定正确的位置。 还可以使用[自定义 Docker 基础映像](how-to-deploy-custom-docker-image.md)。
 
 ### <a name="image-caching-and-reuse"></a>缓存和重复使用映像
 
 如果你对另一个运行使用相同的环境定义，Azure 机器学习服务将重复使用工作区 ACR 中缓存的映像。 
 
-若要查看缓存的映像的详细信息，请使用 [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) 方法。
+若要查看缓存的映像的详细信息，请使用 [Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-) 方法。
 
 为了确定是要重复使用缓存的映像还是生成新映像，服务将从环境定义计算一个[哈希值](https://en.wikipedia.org/wiki/Hash_table)，并将其与现有环境的哈希进行比较。 计算的哈希基于：
  
@@ -107,10 +107,10 @@ Azure 机器学习服务在 Docker 映像和 conda 环境中生成环境定义�
 若要更新包，请指定版本号以强制重新生成映像，例如 ```numpy==1.18.1```。 将会安装新的依赖项（包括嵌套的依赖项），这可能会破坏以前正常工作的方案。 
 
 > [!WARNING]
->  [Environment.build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) 方法将重新生成缓存的映像，这可能会造成更新取消固定包的负面影响，并破坏对应于该缓存映像的所有环境定义的可再现性。
+>  [Environment.build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) 方法将重新生成缓存的映像，这可能会造成更新取消固定包的负面影响，并破坏对应于该缓存映像的所有环境定义的可再现性。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解如何在 Azure 机器学习中[创建和使用环境](how-to-use-environments.md)。
-* 查看 Python SDK 参考文档来了解[环境类](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)。
+* 查看 Python SDK 参考文档来了解[环境类](/python/api/azureml-core/azureml.core.environment%28class%29)。
 * 查看 R SDK 参考文档来了解[环境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)。

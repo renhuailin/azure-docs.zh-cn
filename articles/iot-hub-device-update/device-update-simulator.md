@@ -1,17 +1,17 @@
 ---
 title: 使用 Ubuntu (18.04 x64) 模拟器引用代理的 Device Update for Azure IoT Hub 教程 | Microsoft Docs
 description: 通过 Ubuntu (18.04 x64) 模拟器引用代理开始使用 Device Update for Azure IoT Hub。
-author: vimeht
-ms.author: vimeht
+author: valls
+ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 8ca9d03fbeadfaaca06dac49acc7a08f0dd0566d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678118"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443805"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>使用 Ubuntu (18.04 x64) 模拟器引用代理的 Device Update for Azure IoT Hub 教程
 
@@ -103,7 +103,7 @@ PS> wsl --list
   sudo chmod u+x AducIotAgentSim-microsoft-apt
   ```
 Device Update for Azure IoT Hub 软件受以下许可条款的约束：
-   * [Device Update for IoT Hub 许可证](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
+   * [Device update for IoT Hub 许可证](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
    * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
    
 使用代理之前，请阅读许可条款。 安装和使用即表示你接受这些条款。 如果不同意许可条款，请不要使用 Device Update for IoT Hub 代理。
@@ -163,29 +163,30 @@ Agent running. [main]
 
 ## <a name="import-update"></a>导入更新
 
-1. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
+1. 按照这些[说明](import-update.md)操作，创建导入清单。
+2. 从左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
 
-2. 选择“更新”选项卡。
+3. 选择“更新”选项卡。
 
-3. 选择“+ 导入新更新”。
+4. 选择“+ 导入新更新”。
 
-4. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的 apt 清单更新文件。
-   
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择上面创建的导入清单。  接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的 Ubuntu 更新映像。 
+
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="显示更新文件选择的屏幕截图。" lightbox="media/import-update/select-update-files.png":::
 
-5. 在“选择存储容器”下选择文件夹图标或文本框。 然后选择适当的存储帐户。
+6. 在“选择存储容器”下选择文件夹图标或文本框。 然后选择适当的存储帐户。
 
-6. 如果已创建容器，可以重复使用它。 （否则，请选择“+ 容器”，为更新创建新的存储容器。）  选择要使用的容器，然后单击“选择”。
+7. 如果已创建容器，可以重复使用它。 （否则，请选择“+ 容器”，为更新创建新的存储容器。）  选择要使用的容器，然后单击“选择”。
   
   :::image type="content" source="media/import-update/container.png" alt-text="显示容器选择的屏幕截图。" lightbox="media/import-update/container.png":::
 
-7. 选择“提交”以开始导入过程。
+8. 选择“提交”以开始导入过程。
 
-8. 导入过程开始，屏幕更改为“导入历史记录”部分。 选择“刷新”以查看进度，直到完成导入过程。 这可能会在几分钟内完成，但可能需要更长时间，具体取决于更新的大小。
+9. 导入过程开始，屏幕更改为“导入历史记录”部分。 选择“刷新”以查看进度，直到完成导入过程。 这可能会在几分钟内完成，但可能需要更长时间，具体取决于更新的大小。
    
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="显示更新导入序列的屏幕截图。" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-9. 当“状态”列指示导入已成功时，请选择“部署准备就绪”标头。 现在应会在列表中看到导入的更新。
+10. 当“状态”列指示导入已成功时，请选择“部署准备就绪”标头。 现在应会在列表中看到导入的更新。
 
 [详细了解](import-update.md)如何导入更新。
 

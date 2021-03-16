@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/27/2020
+ms.date: 03/05/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 36ba593a1d8cd2e50293eaf77dc9ec864245df4c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: aa247d868e19831b3e6f1c3f68e605fb209a0664
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566582"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102218309"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 
@@ -236,7 +236,9 @@ az network application-gateway rule create \
 
 在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1*、*myvmss2* 和 *myvmss3*。 每个规模集包含两个在其上安装了 NGINX 的虚拟机实例。
 
-```azurecli-interactive
+将 \<azure-user> 和 \<password> 替换为所选的用户名和密码。
+
+```azurecli
 for i in `seq 1 3`; do
   if [ $i -eq 1 ]
   then
@@ -255,8 +257,8 @@ for i in `seq 1 3`; do
     --name myvmss$i \
     --resource-group myResourceGroupAG \
     --image UbuntuLTS \
-    --admin-username azureuser \
-    --admin-password Azure123456! \
+    --admin-username <azure-user> \
+    --admin-password <password> \
     --instance-count 2 \
     --vnet-name myVNet \
     --subnet myBackendSubnet \

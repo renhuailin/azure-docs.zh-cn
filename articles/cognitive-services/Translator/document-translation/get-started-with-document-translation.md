@@ -1,47 +1,47 @@
 ---
 title: 文档翻译入门
-description: '如何使用 c #、中转、Java、Node.js 或 Python 编程语言和平台创建文档转换服务'
+description: 如何使用 C#、Go、Java、Node.js 或 Python 编程语言和平台创建文档翻译服务
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 02/11/2021
-ms.openlocfilehash: 886889ef9a42e358fca22a9d86955a23c5419dfa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/05/2021
+ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738151"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486652"
 ---
-# <a name="get-started-with-document-translation-preview"></a>文档翻译 (预览入门) 
+# <a name="get-started-with-document-translation-preview"></a>文档翻译（预览版）入门
 
- 本文介绍如何通过 HTTP REST API 方法使用文档翻译。 文档翻译是一项基于云的 [Azure 转换器](../translator-info-overview.md) 服务功能。  文档翻译 API 可以在保留源文档结构和文本格式的同时，转换整个文档。
+ 本文介绍如何通过 HTTP REST API 方法使用文档翻译。 文档翻译是 [Azure 翻译器](../translator-info-overview.md)服务的一个基于云的功能。  使用文档翻译 API 可以翻译整个文档，同时保留源文档结构和文本格式。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始，你将需要：
-
-* 有效的 [**Azure 帐户**](https://azure.microsoft.com/free/cognitive-services/)。  如果没有帐户，可以 [**创建一个免费帐户**](https://azure.microsoft.com/free/)。
-
-* [**转换器**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)服务资源 (**不** 是认知服务资源) 。 
-
-* 一个 [**Azure blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 对 Azure 存储进行的所有访问都要通过存储帐户完成。
-
-* 已完成 [**文档翻译 (预览) 窗体**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) ，以使你的 Azure 订阅能够使用新的文档转换功能。
-
 > [!NOTE]
-> 目前仅支持 (单服务) 资源的翻译人员支持文档翻译， **而不** 支持认知服务 (多服务) 资源。
+> 一般情况下，当你在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥或单服务订阅密钥。 但是，文档翻译目前仅在翻译器（单服务）资源中受支持，而 **未** 包含在认知服务（多服务）资源中。
+
+若要开始，需要：
+
+* 一个有效的 [**Azure 帐户**](https://azure.microsoft.com/free/cognitive-services/)。  如果没有帐户，可以 [**创建一个免费帐户**](https://azure.microsoft.com/free/)。
+
+* 一个 [**翻译器**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)服务资源（**并非** 认知服务资源）。
+
+* 一个 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。
+
+* 一个已填写的 [**文档翻译（预览版）表单**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u)，使 Azure 订阅能够使用新的文档翻译功能。
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>获取自定义域名和订阅密钥
 
 > [!IMPORTANT]
 >
-> * 你不能使用在 Azure 门户资源 _键和终结点_ 页上找到的终结点，也不能使用全局转换器终结点） `api.cognitive.microsofttranslator.com` 向文档翻译发出 HTTP 请求。
-> * **对文档翻译服务的所有 API 请求都需要自定义域终结点**。
+> * 我们将不使用 Azure 门户资源的“密钥和终结点”页上的终结点或者全局翻译器终结点 (`api.cognitive.microsofttranslator.com`) 来向文档翻译发出 HTTP 请求。
+> * **向文档翻译服务发出的所有 API 请求都需要一个自定义域终结点**。
 
-### <a name="what-is-the-custom-domain-endpoint"></a>什么是自定义域终结点？ 
+### <a name="what-is-the-custom-domain-endpoint"></a>什么是自定义域终结点？
 
-自定义域终结点是使用资源名称、主机名和转换器子目录进行格式设置的 URL：
+自定义域终结点是格式中包含资源名称、主机名和翻译器子目录的 URL：
 
 ```http
 https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1
@@ -49,65 +49,65 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 ### <a name="find-your-custom-domain-name"></a>查找自定义域名
 
-**资源名称** (也称为 *自定义域名*) 参数是在创建转换器资源时在 "**名称**" 字段中输入的值。
+**NAME-OF-YOUR-RESOURCE**（也称为自定义域名）参数是创建翻译器资源时在“名称”字段中输入的值。
 
-:::image type="content" source="../media/instance-details.png" alt-text="Azure 门户的图像，创建资源，即时详细信息，名称字段。":::
+:::image type="content" source="../media/instance-details.png" alt-text="Azure 门户插图 - 创建资源、即时详细信息、名称字段。":::
 
 ### <a name="get-your-subscription-key"></a>获取订阅密钥
 
-对转换器服务的请求需要只读密钥才能对访问进行身份验证。
+向翻译器服务发出的请求需要一个在对访问进行身份验证时使用的只读密钥。
 
-1. 如果已创建新资源，则在部署后，选择 " **前往资源**"。 如果有现成的文档翻译资源，请直接导航到资源页。
-1. 在左侧导轨的 " *资源管理*" 下，选择 " **密钥和终结点**"。
-1. 将你的订阅密钥复制并粘贴到一个方便的位置，例如 *Microsoft Notepad*。
-1. 将其粘贴到下面的代码中，以便对文档翻译服务的请求进行身份验证。
+1. 如果已创建新资源，请在部署该资源后选择“转到资源”。 如果有现有的文档翻译资源，请直接导航到资源页。
+1. 在左侧导航栏中的“资源管理”下，选择“密钥和终结点”。
+1. 将订阅密钥复制并粘贴到方便的位置（例如 Microsoft 记事本）。
+1. 稍后需将此密钥粘贴到以下代码中，以便对发往文档翻译服务的请求进行身份验证。
 
-:::image type="content" source="../media/translator-keys.png" alt-text="Azure 门户中的 &quot;获取订阅密钥&quot; 字段的图像。":::
+:::image type="content" source="../media/translator-keys.png" alt-text="Azure 门户中获取订阅密钥字段的插图。":::
 
-## <a name="create-your-azure-blob-storage-containers"></a>创建 Azure blob 存储容器
+## <a name="create-your-azure-blob-storage-containers"></a>创建 Azure Blob 存储容器
 
-需要为源、目标和可选的术语表文件在 [**Azure blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中 [**创建容器**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
+需要在 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中为源、目标和可选词汇表文件 [**创建容器**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
 
-* **源容器**。 在此容器中，你可以将文件上传 (所需的) 。
-* **目标容器**。 在此容器中，你的已翻译文件将存储 (所需) 。  
-* **词汇表容器**。 在此容器中，你可以将词汇表文件 (可选) 上传到此容器。  
+* **源容器**。 将在此容器中上传要翻译的文件（必需）。
+* **目标容器**。 将在此容器中存储已翻译的文件（必需）。  
+* **词汇表容器**。 将词汇表文件上传到此容器（可选）。  
 
-*请参阅***创建用于文档翻译的 SAS 访问令牌**
+### <a name="create-sas-access-tokens-for-document-translation"></a>**为文档翻译创建 SAS 访问令牌**
 
-`sourceUrl`、 `targetUrl` 和可选 `glossaryUrl` 必须包含共享访问签名 (SAS) 令牌，并附加为查询字符串。 可以将令牌分配到容器或特定的 blob。
+`sourceUrl`、`targetUrl` 和可选的 `glossaryUrl` 必须包含作为查询字符串追加的共享访问签名 (SAS) 令牌。 可将该令牌分配到容器或特定的 Blob。 参阅 [**为文档翻译处理创建 SAS 令牌**](create-sas-tokens.md)。
 
-* **源** 容器或 blob 必须具有指定的 **读取** 和 **列表** 访问权限。
-* **目标** 容器或 blob 必须具有指定的 **写入** 和 **列表** 访问权限。
-* **词汇表** 容器或 blob 必须具有指定的 **读取** 和 **列表** 访问权限。
+* **源** 容器或 Blob 必须已指定 **读取** 和 **列出** 访问权限。
+* **目标** 容器或 Blob 必须已指定 **写入** 和 **列出** 访问权限。
+* **词汇表** 容器或 Blob 必须已指定 **读取** 和 **列出** 访问权限。
 
 > [!TIP]
 >
-> * 如果要在操作中转换 **多个** 文件 (blob) ，请 **在容器级别委托 SAS 访问**。  
-> * 如果要在操作中转换 **单个** 文件 (blob) ，请 **在 BLOB 级别委托 SAS 访问权限**。  
+> * 如果在某个操作中翻译 **多个** 文件 (Blob)，请 **在容器级别委托 SAS 访问权限**。  
+> * 如果在某个操作中翻译 **单个** 文件 (Blob)，请 **在 Blob 级别委托 SAS 访问权限**。  
 >
 
-## <a name="set-up-your-coding-platform"></a>设置编码平台
+## <a name="set-up-your-coding-platform"></a>设置编程平台
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
 * 创建新项目。
 * 将 Program.cs 替换为下面所示的 C# 代码。
 * 设置终结点。 Program.cs 中的订阅密钥和容器 URL 值。
-* 若要处理 JSON 数据，请 [ 使用 .NET CLI 将Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/)添加到包。
-* 从项目目录中运行程序。
+* 若要处理 JSON 数据，请[使用 .NET CLI 添加 Newtonsoft.Json 包](https://www.nuget.org/packages/Newtonsoft.Json/)。
+* 从项目目录运行程序。
 
 ### <a name="nodejs"></a>[Node.js](#tab/javascript)
 
-* 创建新 Node.js 项目。
-* 将 Axios 库与一起安装 `npm i axios` 。
-* 将下面的代码粘贴到你的项目中。
+* 创建新的 Node.js 项目。
+* 使用 `npm i axios` 安装 Axios 库。
+* 将以下代码复制并粘贴到项目中。
 * 设置终结点、订阅密钥和容器 URL 值。
 * 运行程序。
 
 ### <a name="python"></a>[Python](#tab/python)  
 
 * 创建新项目。
-* 将其中一个示例中的代码复制并粘贴到你的项目中。
+* 将一个示例中的代码复制并粘贴到项目中。
 * 设置终结点、订阅密钥和容器 URL 值。
 * 运行该程序。 例如：`python translate.py`。
 
@@ -119,7 +119,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 mkdir sample-project
 ```
 
-* 在项目目录中，创建以下子目录结构：  
+* 在项目目录中创建以下子目录结构：  
 
   src</br>
 &emsp; └ main</br>
@@ -129,9 +129,9 @@ mkdir sample-project
 mkdir -p src/main/java/
 ```
 
-**注意**： java 源文件 (_例如，.java_) 在 src/main/**Java** 中运行。
+**注意**：Java 源文件（例如 _sample.java_）存放在 src/main/**Java** 中。
 
-* 在根目录 (例如， *示例-项目*) ，用 Gradle 初始化项目：
+* 在根目录（例如 *sample-project*）中使用 Gradle 初始化项目：
 
 ```powershell
 gradle init --type basic
@@ -139,7 +139,7 @@ gradle init --type basic
 
 * 当提示你选择一个 **DSL** 时，选择 **Kotlin**。
 
-* 更新 `build.gradle.kts`  文件。 请记住，您需要根据 `mainClassName` 该示例更新：
+* 更新 `build.gradle.kts` 文件。 请记住，需要根据示例更新 `mainClassName`：
 
   ```java
   plugins {
@@ -157,9 +157,9 @@ gradle init --type basic
   }
   ```
 
-* 在 **java** 目录中创建一个 java 文件，并复制/粘贴提供的示例中的代码。 别忘了添加订阅密钥和终结点。
+* 在 **java** 目录中创建一个 Java 文件，然后复制并粘贴所提供示例中的代码。 别忘了添加订阅密钥和终结点。
 
-* **生成并运行根目录的示例**：
+* **从根目录生成并运行示例**：
 
 ```powershell
 gradle build
@@ -168,7 +168,7 @@ gradle run
 
 ### <a name="go"></a>[Go](#tab/go)  
 
-* 创建新的 "开始" 项目。
+* 创建新的 Go 项目。
 * 添加以下提供的代码。
 * 设置终结点、订阅密钥和容器 URL 值。
 * 使用“.go”扩展名保存文件。
@@ -180,33 +180,33 @@ gradle run
 
 ## <a name="make-document-translation-requests"></a>发出文档翻译请求
 
-批处理文档翻译请求通过 POST 请求提交到转换器服务终结点。 如果成功，POST 方法将返回一个 `202 Accepted`  响应代码，批处理请求由服务创建。
+批处理文档翻译请求将通过 POST 请求提交到翻译器服务终结点。 如果成功，POST 方法将返回 `202 Accepted` 响应代码，服务将创建批处理请求。
 
 ### <a name="http-headers"></a>HTTP 头
 
-每个文档转换器 API 请求中都包含以下标头：
+每个文档翻译器 API 请求包含以下请求头：
 
 |HTTP 标头|说明|
 |---|--|
-|Ocp-Apim-Subscription-Key|**必需**：该值是你的翻译人员或认知服务资源的 Azure 订阅密钥。|
-|Content-Type|**必需**：指定有效负载的内容类型。 接受的值为 application/json 或字符集 = UTF-8。|
+|Ocp-Apim-Subscription-Key|**必需**：该值是翻译器或认知服务资源的 Azure 订阅密钥。|
+|Content-Type|**必需**：指定有效负载的内容类型。 接受的值为 application/json 或 charset=UTF-8。|
 |Content-Length|**必需**：请求正文的长度。|
 
 ### <a name="post-request-body-properties"></a>POST 请求正文属性
 
-* POST 请求正文是一个名为的 JSON 对象 `inputs` 。
-* `inputs`对象同时包含 `sourceURL` `targetURL` 源和目标语言对的和容器地址，还可以选择包含 `glossaryURL` 容器地址。
-* `prefix`和 `suffix` 字段 (可选) 用于筛选容器中的文档，包括文件夹。
-* 此字段的值  `glossaries`  (可选) 在翻译文档时应用。
-* `targetUrl`每个目标语言的都必须是唯一的。
+* POST 请求正文是名为 `inputs` 的 JSON 对象。
+* `inputs` 对象包含源和目标语言对的 `sourceURL` 与 `targetURL` 容器地址，可以选择性地包含 `glossaryURL` 容器地址。
+* `prefix` 和 `suffix` 字段（可选）用于筛选容器中的文档（包括文件夹）。
+* 翻译文档时将应用 `glossaries` 字段（可选）的值。
+* 每个目标语言的 `targetUrl` 必须唯一。
 
 >[!NOTE]
-> 如果目标中已存在具有相同名称的文件，则将覆盖该文件。
+> 如果目标中已存在同名的文件，将覆盖该文件。
 
-## <a name="post-a-translation-request"></a>发布翻译请求
+## <a name="post-a-translation-request"></a>通过 POST 方法发出翻译请求
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>不带可选 glossaryURL 的 POST 请求正文
+### <a name="post-request-body-without-optional-glossaryurl"></a>不包含可选 glossaryURL 的 POST 请求正文
 
 ```json
 {
@@ -234,7 +234,7 @@ gradle run
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>带有可选 glossaryURL 的 POST 请求正文
+### <a name="post-request-body-with-optional-glossaryurl"></a>包含可选 glossaryURL 的 POST 请求正文
 
 ```json
 {
@@ -271,26 +271,33 @@ gradle run
 
 > [!IMPORTANT]
 >
-> 对于下面的代码示例，可能需要根据操作更新以下字段：
+> 对于下面的代码示例，你将根据指示对密钥和终结点进行硬编码；请记得在完成操作后从代码中删除密钥，切勿将其公开发布。  有关安全地存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)。
+>
+> 可能需要根据操作更新以下字段：
 >>>
 >> * `endpoint`
 >> * `subscriptionKey`
 >> * `sourceURL`
 >> * `targetURL`
 >> * `glossaryURL`
->> * `id`  (作业 ID) 
+>> * `id`（作业 ID）
 >>
-> 查找值的位置 `id` ：
-> * 您可以 `id`  在 "POST 方法的响应标头 URL" 值中找到该作业 `Operation-Location`  。 该 URL 的最后一个参数是操作的作业 **`id`** 。  
-> * 你还可以使用获取作业请求来检索 `id`  文档转换操作的作业。
->
-> 对于下面的代码示例，你将在指示的位置对密钥和终结点进行硬编码;请记住，在完成操作后从代码中删除该密钥，不要公开发布。  
->
-> 有关安全存储和访问凭据的方式，请参阅 [Azure 认知服务安全性](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp) 。
 
-## <a name="_post-document-translation_-request"></a>_发布文档翻译_ 请求
+#### <a name="locating--the-id-value"></a>查找 `id` 值
 
-向翻译服务提交批处理文档翻译请求。
+* 在 POST 方法响应头 `Operation-Location` URL 值中找到作业 `id`。 该 URL 的最后一个参数是操作的作业 **`id`** ：
+
+|**响应头**|**结果 URL**|
+|-----------------------|----------------|
+Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches/9dce0aa9-78dc-41ba-8cae-2e2f3c2ff8ec</span>
+
+* 还可以使用 **GET 作业** 请求来检索文档翻译作业 `id`。
+
+>
+
+## <a name="_post-document-translation_-request"></a>通过 POST 方法发出文档翻译请求
+
+将批处理文档翻译请求提交到翻译服务。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -521,9 +528,9 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_"></a>_获取文件格式_ 
+## <a name="_get-file-formats_"></a>通过 GET 方法获取文件格式 
 
-检索受支持的文件格式的列表。 如果成功，则此方法将返回一个 `200 OK` 响应代码。
+检索受支持文件格式的列表。 如果成功，此方法将返回 `200 OK` 响应代码。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -698,9 +705,9 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_"></a>_获取作业状态_ 
+## <a name="_get-job-status_"></a>通过 GET 方法获取作业状态 
 
-获取单个作业的当前状态以及文档翻译请求中所有作业的摘要。 如果成功，则此方法将返回一个 `200 OK` 响应代码。
+在文档翻译请求中获取单个作业的当前状态以及所有作业的摘要。 如果成功，此方法将返回 `200 OK` 响应代码。
 <!-- markdownlint-disable MD024 -->
 
 ### <a name="c"></a>[C#](#tab/csharp)
@@ -877,11 +884,11 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_"></a>_获取文档状态_
+## <a name="_get-document-status_"></a>通过 GET 方法获取文档状态
 
 ### <a name="brief-overview"></a>简要概述
 
-检索文档翻译请求中的特定文档的状态。 如果成功，则此方法将返回一个 `200 OK` 响应代码。
+在文档翻译请求中检索特定文档的状态。 如果成功，此方法将返回 `200 OK` 响应代码。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -1057,11 +1064,11 @@ func main() {
 
 ---
 
-## <a name="_delete-job_"></a>_删除作业_ 
+## <a name="_delete-job_"></a>通过 DELETE 方法删除作业 
 
 ### <a name="brief-overview"></a>简要概述
 
-取消当前正在处理或已排队的作业。 只有未启动翻译的文档将被取消。
+取消当前正在处理或已排队的作业。 只会取消尚未开始翻译的文档。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -1239,28 +1246,28 @@ func main() {
 
 ## <a name="content-limits"></a>内容限制
 
-下表列出了发送到文档转换的数据的限制。
+下表列出了发送到文档翻译的数据的限制。
 
 |属性 | 限制|
 |---|---|
 |文档大小| ≤ 40 MB |
-|文件总数。|≤1000 |
-|批中的内容总大小 | ≤ 250 MB|
-|批中的目标语言数量| ≤10 |
+|文件总数。|≤ 1000 |
+|一个批中的内容总大小 | ≤ 250 MB|
+|一个批中的目标语言数| ≤ 10 |
 |翻译内存文件的大小| ≤ 10 MB|
 
 > [!NOTE]
-> 上述内容限制在公开发布之前可能会发生更改。
+> 在公共版发布之前，上述内容限制随时可能变化。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 
 * [Translator v3 API 参考](../reference/v3-0-reference.md)
 * [语言支持](../language-support.md)
-* [AZURE API 管理中的订阅](../../../api-management/api-management-subscriptions.md)。
+* [Azure API 管理中的订阅](../../../api-management/api-management-subscriptions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用自定义转换器创建自定义语言系统](../custom-translator/overview.md)
+> [使用自定义翻译器创建自定义的语言系统](../custom-translator/overview.md)
 >
 >

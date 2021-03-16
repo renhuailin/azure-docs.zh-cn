@@ -1,7 +1,7 @@
 ---
 title: 使用自定义 Docker 映像部署模型
 titleSuffix: Azure Machine Learning
-description: 了解如何使用自定义 Docker 基本映像部署 Azure 机器学习模型。 虽然 Azure 机器学习提供了默认的基础映像，但你也可以使用自己的基础映像。
+description: 了解如何使用自定义 Docker 基础映像部署 Azure 机器学习模型。 虽然 Azure 机器学习提供了默认的基础映像，但你也可以使用自己的基础映像。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 4a9e374923f6317f7a325979dca1810fad91aeb6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 749ef16139bbab2742c43a81e985fb0a49e9393b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209457"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519327"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "102209457"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
-* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。 
+* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。 
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 Internet 上访问的 [Azure 容器注册表](../container-registry/index.yml)或其他 Docker 注册表。
@@ -234,7 +234,7 @@ Microsoft 在可公开访问的存储库中提供了多个 docker 映像，可�
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>将映像与 Azure 机器学习 SDK 结合使用
 
-若要使用存储在工作区的 Azure 容器注册表中的映像，或使用存储在可公开访问的容器注册表中的映像，请设置以下[环境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)属性 ：
+若要使用存储在工作区的 Azure 容器注册表中的映像，或使用存储在可公开访问的容器注册表中的映像，请设置以下[环境](/python/api/azureml-core/azureml.core.environment.environment)属性 ：
 
 + `docker.enabled=True`
 + `docker.base_image`：设置为注册表和映像的路径。
@@ -268,7 +268,7 @@ myenv.python.conda_dependencies=conda_dep
 
 必须添加版本 >= 1.0.45 的 azureml-defaults 作为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 还必须将环境的 inferencing_stack_version 属性设置为“latest”，这将安装 Web 服务所需的特定 apt 包。 
 
-定义环境后，将其与 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) 对象一起使用，以定义模型和 Web 服务将在其中运行的推理环境。
+定义环境后，将其与 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) 对象一起使用，以定义模型和 Web 服务将在其中运行的推理环境。
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -297,7 +297,7 @@ print(service.state)
 > [!IMPORTANT]
 > 目前，机器学习 CLI 可以使用来自工作区的 Azure 容器注册表或可公开访问的存储库的映像。 而不能使用来自独立的专用注册表的映像。
 
-使用机器学习 CLI 部署模型之前，请创建一个使用自定义映像的[环境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)。 然后创建引用该环境的推理配置文件。 也可以在推理配置文件中直接定义环境。 下面的 JSON 文档演示了如何在公共容器注册表中引用映像。 在本示例中，以内联方式定义环境：
+使用机器学习 CLI 部署模型之前，请创建一个使用自定义映像的[环境](/python/api/azureml-core/azureml.core.environment.environment)。 然后创建引用该环境的推理配置文件。 也可以在推理配置文件中直接定义环境。 下面的 JSON 文档演示了如何在公共容器注册表中引用映像。 在本示例中，以内联方式定义环境：
 
 ```json
 {

@@ -10,14 +10,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071215"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102508004"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作 (MLOps) 方法。 MLOps 改善了机器学习解决方案的质量和一致性。 
 
@@ -160,7 +160,7 @@ Azure ML 提供使用元数据跟踪所有 ML 资产的端到端审核线索的�
 > [!TIP]
 > 系统会自动捕获有关模型和数据集的某些信息，同时你可以使用“标记”添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。
 >
-> 可以选择将数据集与已注册的模型相关联。 若要了解如何在注册模型时引用数据集，请参阅 [Model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) 类参考信息。
+> 可以选择将数据集与已注册的模型相关联。 若要了解如何在注册模型时引用数据集，请参阅 [Model](/python/api/azureml-core/azureml.core.model%28class%29) 类参考信息。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知和警报以及进行自动化处理

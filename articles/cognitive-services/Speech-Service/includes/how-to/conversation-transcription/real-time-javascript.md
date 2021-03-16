@@ -4,26 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: trbye
-ms.openlocfilehash: 7ab4d7708dd75ff2e07e77f3be4f996068704797
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.openlocfilehash: 502729e4c90a6d6ffa424ea7f379e2b426b3e3e0
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486765"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445267"
 ---
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>，然后才能执行操作。 根据你的平台，使用以下说明：
+需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK</a>，然后才能执行操作。 根据你的平台，使用以下说明：
 
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
 
 ## <a name="create-voice-signatures"></a>创建语音签名
 
-第一步是为会话参与者创建语音签名，以便将其识别为唯一的发言人。 `.wav`用于创建语音签名的输入音频文件应为16位、16 kHz 采样率和单通道 (单色) 格式。 每个音频采样的建议长度介于30秒到2分钟之间。 `.wav`文件应为**一个人的**语音示例，以便创建唯一的语音配置文件。
+第一步是为对话参与者创建语音签名，以便可以将这些参与者识别为非重复的说话人。 用于创建语音签名的输入 `.wav` 音频文件应为 16 位、16 kHz 采样率和单通道（单声道）格式。 每个音频样本的建议时长为 30 秒至 2 分钟。 `.wav` 文件应该是一个人的语音样本，以便创建独一无二的语音配置文件。
 
-下面的示例演示如何使用 JavaScript 中 [的 REST API](https://aka.ms/cts/signaturegenservice) 创建语音签名。 请注意，你需要将你的、和的实际信息替换为 `subscriptionKey` `region` 示例文件的路径 `.wav` 。
+以下示例展示了如何通过[使用 JavaScript 的 REST API](https://aka.ms/cts/signaturegenservice) 来创建语音签名。 请注意，对于 `subscriptionKey`、`region` 和 `.wav` 样本文件的路径，需要替换为实际信息。
 
 ```javascript
 const fs = require('fs');
@@ -54,22 +54,22 @@ async function main() {
 main();
 ```
 
-运行此脚本将返回变量中的语音签名字符串 `voiceSignatureString` 。 运行函数两次，以便将两个字符串用作变量和下面的输入 `voiceSignatureStringUser1` `voiceSignatureStringUser2` 。
+运行此脚本会返回变量 `voiceSignatureString` 中的语音签名字符串。 运行该函数两次，便会得到两个字符串，它们将会用作下面 `voiceSignatureStringUser1` 和 `voiceSignatureStringUser2` 变量的输入。
 
 > [!NOTE]
-> 语音签名 **只能** 使用 REST API 创建。
+> 只能使用 REST API 来创建语音签名。
 
-## <a name="transcribe-conversations"></a>转录对话
+## <a name="transcribe-conversations"></a>听录对话
 
-下面的示例代码演示了如何为两个扬声器实时转录会话。 假设已为每个扬声器创建了语音签名字符串，如上所示。 用真实信息替换 `subscriptionKey` 、 `region` 和 `filepath` 要转录的音频的路径。
+下面的示例代码演示了如何实时听录两名说话人的对话。 假定已经按上面所述为每名说话人创建了语音签名字符串。 请用真实信息替换 `subscriptionKey`、`region` 和要听录的音频的路径 `filepath`。
 
 此示例代码执行以下操作：
 
-* 创建用于脚本的推送流，并将示例 `.wav` 文件写入其中。
-* 使用创建 `Conversation` 一个 `createConversationAsync()` 。
-* `ConversationTranscriber`使用构造函数创建一个。
-* 向对话添加参与者。 字符串 `voiceSignatureStringUser1` 和 `voiceSignatureStringUser2` 应作为上述步骤的输出。
-* 注册事件并开始脚本。
+* 创建要用于听录的推送流，并将 `.wav` 样本文件写入到该推送流。
+* 使用 `createConversationAsync()` 创建 `Conversation`。
+* 使用该构造函数创建 `ConversationTranscriber`。
+* 为对话添加参与者。 字符串 `voiceSignatureStringUser1` 和 `voiceSignatureStringUser2` 应来自上述步骤的输出。
+* 注册到事件并开始听录。
 
 ```javascript
 (function() {

@@ -10,29 +10,29 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 1a7116f0edbed8270a3345bc924bf50872615b04
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 8bec083e62bec6a0311487c1e64e780ad14f451b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217153"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518257"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
 了解如何使用 Azure 机器学习排查、解决或规避在将模型部署到 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 时可能遇到的常见错误。
 
 > [!NOTE]
-> 如果要将模型部署到 Azure Kubernetes Service (AKS) ，建议为该群集启用 [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md) 。 这将帮助你了解总体群集运行状况和资源使用情况。 你还可能会发现以下资源非常有用：
+> 如果要将模型部署到 Azure Kubernetes 服务 (AKS)，建议为该群集启用 [Azure Monitor](../azure-monitor/containers/container-insights-enable-existing-clusters.md)。 这将帮助你了解总体群集运行状况和资源使用情况。 以下资源也可能有用：
 >
 > * [检查影响 AKS 群集的资源运行状况事件](../aks/aks-resource-health.md)
-> * [Azure Kubernetes Service 诊断](../aks/concepts-diagnostics.md)
+> * [Azure Kubernetes 服务诊断](../aks/concepts-diagnostics.md)
 >
-> 如果尝试将模型部署到不正常或过载的群集，则应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
+> 如果尝试将模型部署到运行不正常或重载的群集，应该会遇到问题。 如果需要帮助排查 AKS 群集问题，请联系 AKS 支持。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
-* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+* [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
@@ -41,9 +41,9 @@ ms.locfileid: "102217153"
 在 Azure 机器学习中将模型部署到非本地计算时，会发生以下情况：
 
 1. 你在 InferenceConfig 的 Environments 对象中指定的 Dockerfile 将与源目录的内容一起发送到云
-1. 如果容器注册表中不存在以前生成的映像，则会在云中生成新的 Docker 映像，并将其存储在工作区的默认容器注册表中。
+1. 如果以前生成的映像在容器注册表中不可用，则云中会生成新的 Docker 映像，该映像会存储在工作区的默认容器注册表中。
 1. 容器注册表中的 Docker 映像将下载到计算目标。
-1. 你的工作区的默认 Blob 存储区将装载到你的计算目标，从而使你可以访问已注册的模型
+1. 工作区的默认 Blob 存储会装载到计算目标，使你可以访问已注册的模型
 1. Web 服务器通过运行入口脚本的 `init()` 函数进行初始化
 1. 已部署的模型收到请求时，`run()` 函数会处理该请求
 
@@ -99,7 +99,7 @@ print(service.get_logs())
 
 ## <a name="function-fails-get_model_path"></a>函数故障：get_model_path()
 
-通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) 来查找容器中的模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
+通常情况下，在评分脚本的 `init()` 函数中，会调用 [Model.get_model_path()](/python/api/azureml-core/azureml.core.model.model#get-model-path-model-name--version-none---workspace-none-) 来查找容器中的模型文件或模型文件的文件夹。 如果找不到模型文件或文件夹，函数将失败。 调试此错误的最简单方法是在容器 shell 中运行以下 Python 代码：
 
 ```python
 from azureml.core.model import Model
@@ -177,7 +177,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     > [!NOTE]
     > 如果收到请求高峰大于新的最小副本可以处理的数量，则可能会再次收到 503 代码。 例如，服务流量增加时，可能需要增加最小副本数据。
 
-有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice?preserve-view=true&view=azure-ml-py) 模块参考。
+有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](/python/api/azureml-core/azureml.core.webservice.akswebservice) 模块参考。
 
 ## <a name="http-status-code-504"></a>HTTP 状态代码 504
 

@@ -1,7 +1,7 @@
 ---
 title: 训练和部署 TensorFlow 模型
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何使你能够使用弹性云计算资源横向扩展 TensorFlow 的培训作业。
+description: 了解 Azure 机器学习如何让你能够使用弹性云计算资源横向扩展 TensorFlow 训练作业。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796459"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518324"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 TensorFlow 模型
 
@@ -36,7 +36,7 @@ ms.locfileid: "97796459"
  
  - 你自己的 Jupyter 笔记本服务器
 
-    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0)。
+    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.15.0)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` 和 `utils.py`
      
@@ -66,7 +66,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) 对象来访问工作区项目。
 
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
@@ -192,7 +192,7 @@ tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudn
 
 ### <a name="create-a-scriptrunconfig"></a>创建 ScriptRunConfig
 
-创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 如果在 `arguments` 参数中指定，训练脚本的任何参数都将通过命令行传递。
+创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 如果在 `arguments` 参数中指定，训练脚本的任何参数都将通过命令行传递。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -216,11 +216,11 @@ src = ScriptRunConfig(source_directory=script_folder,
 有关通过 ScriptRunConfig 配置作业的详细信息，请参阅[配置并提交训练运行](how-to-set-up-training-targets.md)。
 
 > [!WARNING]
-> 如果你以前使用 TensorFlow 估计器来配置 TensorFlow 培训作业，请注意，在 1.19.0 SDK 版本中，估算已弃用。 使用 Azure ML SDK >= 1.15.0，建议使用 ScriptRunConfig 方法配置训练作业，包括使用深度学习框架的培训。 有关常见的迁移问题，请参阅 [估计器 To ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
+> 如果你以前使用 TensorFlow 估算器来配置 TensorFlow 训练作业，请注意，自 1.19.0 SDK 发行版起，该估算器已弃用。 对于不低于 1.15.0 版本的 Azure ML SDK，建议使用 ScriptRunConfig 作为配置训练作业（包括使用深度学习框架的作业）的方法。 有关常见的迁移问题，请参阅[估算器到 ScriptRunConfig 迁移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
 
 ### <a name="submit-a-run"></a>提交运行
 
-[运行对象](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
+[运行对象](/python/api/azureml-core/azureml.core.run%28class%29)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
@@ -289,7 +289,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-若要在 Azure ML 上使用 MPI/Horovod 执行分布式作业，必须指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)。 以下代码将配置每个节点运行一个进程的 2 节点分布式作业。 如果你还希望每个节点运行多个进程，（即，如果群集 SKU 有多个 GPU），请在 MpiConfiguration 中另外指定 `process_count_per_node` 参数（默认值为 `1`）。
+若要在 Azure ML 上使用 MPI/Horovod 执行分布式作业，必须指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)。 以下代码将配置每个节点运行一个进程的 2 节点分布式作业。 如果你还希望每个节点运行多个进程，（即，如果群集 SKU 有多个 GPU），请在 MpiConfiguration 中另外指定 `process_count_per_node` 参数（默认值为 `1`）。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -309,7 +309,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 如果你正在使用训练代码中的[本机分布式 TensorFlow](https://www.tensorflow.org/guide/distributed_training)（例如 TensorFlow 2.x 的 `tf.distribute.Strategy` API），则可以通过 Azure ML 启动分布式作业。 
 
-为此，请指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)。 如果正在使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy`，请在 TensorflowConfiguration 中指定与训练作业的节点数对应的 `worker_count`。
+为此，请指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)。 如果正在使用 `tf.distribute.experimental.MultiWorkerMirroredStrategy`，请在 TensorflowConfiguration 中指定与训练作业的节点数对应的 `worker_count`。
 
 ```python
 import os
@@ -349,7 +349,7 @@ TF_CONFIG='{
 
 ### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-你还可以使用无代码部署功能 (预览) 用于 TensorFlow，而不是使用传统的部署路由。 通过如上所示使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型，可以简单地使用 `deploy()` 静态函数来部署模型。
+除了传统的部署路线之外，还可以为 TensorFlow 使用无代码部署功能（预览版）。 通过如上所示使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型，可以简单地使用 `deploy()` 静态函数来部署模型。
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])

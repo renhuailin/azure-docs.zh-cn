@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: e22738f1fff813e5a928b76f8049e810847fe548
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: df4031a590eb4547d4327cebe96ccbe63d21785a
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358144"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437802"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教程：为 Box 配置自动用户预配
 
@@ -36,6 +36,9 @@ ms.locfileid: "94358144"
 
 > [!NOTE]
 > 需要先在 Box 应用程序中启用应用。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 若要测试本教程中的步骤，请遵循以下建议：
 
@@ -85,25 +88,25 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 本部分的目的是概述如何对 Box 启用 Active Directory 用户帐户的预配。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
 2. 如果已为 Box 配置单一登录，请使用搜索字段搜索 Box 实例。 否则，请选择“添加”并在应用程序库中搜索“Box”。 从搜索结果中选择 Box，并将其添加到应用程序列表。
 
 3. 选择 Box 实例，然后选择“预配”选项卡。
 
-4. 将“预配模式”  设置为“自动”  。 
+4. 将“预配模式”设置为“自动”。 
 
-    ![Azure 门户中 Box 的 "设置" 选项卡的屏幕截图。 预配模式设置为 "自动"，并且 "管理员凭据" 中突出显示了 "授权"。](./media/box-userprovisioning-tutorial/provisioning.png)
+    ![Azure 门户中 Box的“预配”选项卡的屏幕截图。 “预配模式”设置为“自动”，且“管理员凭据”中突出显示“授权”。](./media/box-userprovisioning-tutorial/provisioning.png)
 
 5. 在“管理员凭据”部分单击“授权”，在新的浏览器窗口中打开 Box 登录对话框。
 
 6. 在“登录以授予对 Box 的访问权限”页上，提供所需的凭据，然后单击“授权”。 
    
-    ![登录以向 box 屏幕授予访问权限的屏幕截图，其中显示了电子邮件和密码的条目，以及 "授权" 按钮。](./media/box-userprovisioning-tutorial/IC769546.png "启用自动预配")
+    ![“登录授予对 box 的访问权限”屏幕的屏幕截图，其中显示了电子邮件和密码的条目及“授权”按钮。](./media/box-userprovisioning-tutorial/IC769546.png "启用自动预配")
 
 7. 单击“授予对 Box 的访问权限”对此操作授权，然后返回到 Azure 门户。 
    
-    !["授权访问" 屏幕的屏幕截图，显示说明性消息和 "授予访问权限" 框按钮。](./media/box-userprovisioning-tutorial/IC769549.png "启用自动预配")
+    ![Box 中的“授权访问”屏幕的屏幕截图，其中显示了一条说明性信息以及“授予对 Box 的访问权限”按钮。](./media/box-userprovisioning-tutorial/IC769549.png "启用自动预配")
 
 8. 在 Azure 门户中单击“测试连接”，确保 Azure AD 可以连接到 Box 应用。 如果连接失败，请确保 Box 帐户具有团队管理员权限，并重试“授权”步骤。
 

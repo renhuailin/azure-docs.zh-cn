@@ -11,16 +11,16 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: ee41ae2a705ceaa0e9742c91552d6bdae26820ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690271"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522149"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
-本文介绍在 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 中使用 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) 出现错误时如何进行故障排除。
+本文介绍在 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 中使用 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) 出现错误时如何进行故障排除。
 
 有关对管道进行故障排除的一般提示，请参阅[对机器学习管道进行故障排除](how-to-debug-pipelines.md)。
 
@@ -119,7 +119,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `parallel_run_config`：`ParallelRunConfig` 对象，如前文所述。
 - `inputs`：要分区以进行并行处理的一个或多个单类型 Azure 机器学习数据集。
 - `side_inputs`：无需分区就可以用作辅助输入的一个或多个参考数据或数据集。
-- `output`：一个 `OutputFileDatasetConfig` 对象，该对象表示将在其中存储输出数据的目录路径。
+- `output`：一个 `OutputFileDatasetConfig` 对象，代表用于存储输出数据的目录路径。
 - `arguments`：传递给用户脚本的参数列表。 使用 unknown_args 在入口脚本中检索它们（可选）。
 - `allow_reuse`：当使用相同的设置/输入运行时，该步骤是否应重用以前的结果。 如果此参数为 `False`，则在管道执行过程中将始终为此步骤生成新的运行。 （可选；默认值为 `True`。）
 
@@ -171,14 +171,14 @@ parallelrun_step = ParallelRunStep(
     - 总项数、成功处理的项计数和失败的项计数。
     - 开始时间、持续时间、处理时间和运行方法时间。
 
-你还可以查看每个节点的资源使用情况的期刊检查结果。 日志文件和安装程序文件位于以下文件夹中：
+还可以查看每个节点的资源使用情况的定期检查结果。 日志文件和安装程序文件位于此文件夹中：
 
-- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认间隔为 `600` ，约为10分钟。 若要停止监视，请将值设置为 `0` 。 每个 `<ip_address>` 文件夹包括：
+- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认间隔为 `600`，约为 10 分钟。 若要停止监视，请将值设置为 `0`。 每个 `<ip_address>` 文件夹都包括：
 
-    - `os/`：有关节点中所有正在运行的进程的信息。 一项检查运行操作系统命令，并将结果保存到文件。 在 Linux 上，命令为 `ps` 。 在 Windows 上，使用 `tasklist` 。
-        - `%Y%m%d%H`：子文件夹名称是到小时的时间。
-            - `processes_%M`：文件以检查时间的分钟结束。
-    - `node_disk_usage.csv`：节点的详细磁盘使用情况。
+    - `os/`：有关节点中所有正在运行的进程的信息。 一项检查将运行操作系统命令，并将结果保存到文件中。 在 Linux 上，命令为 `ps`。 在 Windows 上，使用 `tasklist`。
+        - `%Y%m%d%H`：子文件夹名称表示小时时间。
+            - `processes_%M`：文件以检查时间的分钟值结尾。
+    - `node_disk_usage.csv`：节点的磁盘使用情况详细信息。
     - `node_resource_usage.csv`：节点的资源使用情况概述。
     - `processes_resource_usage.csv`：每个进程的资源使用情况概述。
 
@@ -212,7 +212,7 @@ def run(mini_batch):
 
 用户可以使用 ParalleRunStep 的 side_inputs 参数将引用数据传递给脚本。 作为 side_inputs 提供的所有数据集将装载到每个工作器节点上。 用户可以通过传递参数获取装载的位置。
 
-构造包含引用数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
+构造包含引用数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -260,8 +260,8 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅以下 [演示 Azure 机器学习管道的 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* 请参阅这些[展示 Azure 机器学习管道的 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
-* 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) 包的帮助。 查看 ParallelRunStep 类的参考[文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py)。
+* 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) 包的帮助。 查看 ParallelRunStep 类的参考[文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep)。
 
 * 按照[高级教程](tutorial-pipeline-batch-scoring-classification.md)操作，将管道与 ParallelRunStep 配合使用。 本教程演示如何将另一个文件作为旁路输入。

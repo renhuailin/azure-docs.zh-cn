@@ -1,7 +1,7 @@
 ---
-title: 执行 Python 脚本：模块引用
+title: 执行 Python 脚本：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "执行 Python 脚本" 模块来运行 Python 代码。
+description: 了解如何使用 Azure 机器学习设计器中的“执行 Python 脚本”模块来运行 Python 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 01/02/2021
-ms.openlocfilehash: 7b5bc77375d684340116a21b7f95cf576d99dad2
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.openlocfilehash: 6003ca9156d8553604d7ebbf94c5c3373d077f0f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065348"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500693"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -62,7 +62,7 @@ if spec is None:
 
 ## <a name="access-to-current-workspace-and-registered-datasets"></a>访问当前工作区和已注册的数据集
 
-可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
+可以参阅以下示例代码，在工作区中[访问已注册的数据集](../how-to-create-register-datasets.md)：
 
 ```Python
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -93,7 +93,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 ```
 
 ## <a name="upload-files"></a>上传文件
-“执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-) 上传文件。
+“执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](/python/api/azureml-core/azureml.core.run%28class%29#upload-file-name--path-or-stream-) 上传文件。
 
 以下示例演示如何在“执行 Python 脚本”模块中上传映像文件：
 
@@ -158,7 +158,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     1. 将脚本和其他自定义资源捆绑到一个 zip 文件中。
     1. 将 zip 文件作为“文件数据集”上传到工作室。 
     1. 从设计器创作页面左侧模块窗格的“数据集”列表中拖取数据集模块。 
-    1. 将数据集模块连接到 **执行 Python 脚本** 模块的 **脚本捆绑** 端口。
+    1. 将数据集模块连接到“执行 Python 脚本”模块的“脚本包”端口 。
     
     在管道执行期间，可以使用已上传的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留结构。
  
@@ -221,9 +221,9 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 6. 提交管道。
 
-    如果模块已完成，请检查输出（如果需要）。
+    如果该模块已完成，请检查输出是否符合预期。
 
-    如果该模块失败，则需要进行一些故障排除。 选择该模块，然后在右侧窗格中打开 " **输出 + 日志** "。 打开 **70_driver_log.txt** 并 **在 azureml_main 中** 搜索，然后可以找到导致错误的行。 例如，在 azureml_main "中第17行" File "/tmp/tmp01_ID/user_script. py" 表示错误发生在 python 脚本的17行中。
+    如果该模块发生故障，则需要进行一些故障排除。 选择该模块，然后在右侧窗格中打开“输出+日志”。 打开 70_driver_log.txt，并搜索“in azureml_main”，然后可以找到导致错误的行。 例如，“File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main”表示错误发生在 python 脚本的第 17 行。
 
 ## <a name="results"></a>结果
 

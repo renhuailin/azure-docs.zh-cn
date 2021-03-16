@@ -1,7 +1,7 @@
 ---
 title: Azure 机器学习的 Git 集成
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何与本地 Git 存储库集成，以在定型运行过程中跟踪存储库、分支和当前提交信息。
+description: 了解 Azure 机器学习如何与本地 Git 存储库集成，以在训练运行过程中跟踪存储库、分支和当前的提交信息。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
-ms.openlocfilehash: 53459ad766ffcf156d2906a38666a14c4883b5e8
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215929"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547843"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -28,7 +28,7 @@ Azure 机器学习完全支持用于跟踪工作的 Git 存储库 - 你可以将
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到你的工作区文件系统
 Azure 机器学习为工作区中的所有用户提供了一个共享文件系统。
-若要将 Git 存储库克隆到此文件共享，我们建议你创建一个计算实例，& [打开终端](how-to-access-terminal.md)。
+要将 Git 存储库克隆到此文件共享中，建议创建一个计算实例并[打开一个终端](how-to-access-terminal.md)。
 打开终端后，你可以访问完整的 Git 客户端，并可以通过 Git CLI 体验来克隆和使用 Git。
 
 我们建议你将存储库克隆到你的用户目录中，避免与其他人直接在你的工作分支上发生冲突。
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs&preserve-view=true) 从 **步骤 2** 开始。
++ [Azure DevOps](/azure/devops/repos/git/use-ssh-keys-to-authenticate#step-2--add-the-public-key-to-azure-devops-servicestfs) 从 **步骤 2** 开始。
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 从“步骤 4”开始。
 
@@ -152,7 +152,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 从 [studio 门户](https://ml.azure.com)中，选择你的工作区。
+1. 在[工作室门户](https://ml.azure.com)中，选择你的工作区。
 1. 选择“试验”，然后选择一个试验。
 1. 从“运行号”列中选择一个运行。
 1. 选择“输出 + 日志”，然后展开“日志”和“azureml”条目  。 选择以“###\_azure”开头的链接。
@@ -178,7 +178,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 
 ### <a name="python-sdk"></a>Python SDK
 
-提交训练运行后，将返回 [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 对象。 此对象的 `properties` 属性包含记录的 git 信息。 例如，以下代码可检索提交哈希：
+提交训练运行后，将返回 [Run](/python/api/azureml-core/azureml.core.run%28class%29) 对象。 此对象的 `properties` 属性包含记录的 git 信息。 例如，以下代码可检索提交哈希：
 
 ```python
 run.properties['azureml.git.commit']

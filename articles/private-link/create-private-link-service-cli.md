@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure CLI 创建 Azure 专用链接服务
-description: 了解如何使用 Azure CLI 创建 Azure 专用链接服务
+title: 快速入门：使用 Azure CLI 创建 Azure 专用链接服务
+description: 在本快速入门教程中，了解如何使用 Azure CLI 创建 Azure 专用链接服务
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 27ce0b2646b6c380e86b377d3dba287f7791794e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653663"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563024"
 ---
-# <a name="create-a-private-link-service-using-azure-cli"></a>使用 Azure CLI 创建专用链接服务
+# <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>快速入门：使用 Azure CLI 创建专用链接服务
 
 开始创建引用你的服务的专用链接服务。  向专用链接授予对 Azure 标准负载均衡器后面部署的服务或资源的访问权限。  服务的用户具有从其虚拟网络进行专用访问的权限。
 

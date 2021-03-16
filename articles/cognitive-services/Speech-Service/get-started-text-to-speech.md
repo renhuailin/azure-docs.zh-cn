@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: 文本转语音
-ms.openlocfilehash: c3f1db836ce028b6881efe0b2fa90e9ac19caac8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7a41c4d9c1074b376da3de556caf63ced0bc84ec
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058227"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428167"
 ---
 # <a name="get-started-with-text-to-speech"></a>开始使用文本转语音
 
@@ -53,6 +53,20 @@ ms.locfileid: "92058227"
 ::: zone pivot="programmer-tool-spx"
 [!INCLUDE [CLI Basics include](includes/how-to/text-to-speech-basics/text-to-speech-basics-cli.md)]
 ::: zone-end
+
+## <a name="get-position-information"></a>获取位置信息
+
+你的项目可能需要知道某个字词何时通过语音转文本说出，以便能够根据该时间执行特定操作。 例如，如果需要字词在被说出时突出显示，就会需要知道要突出显示什么内容、何时突出显示这些内容，以及突出显示多长时间。
+
+可以使用 `SpeechSynthesizer` 中提供的 `WordBoundary` 事件来实现此目的。 此事件在每个新说出的字词的开头引发，并且将会在说出的流中提供时间偏移，另外还会在输入提示中提供文本偏移。
+
+* `AudioOffset` 会报告输出音频在合成的开始处和下一个字词的开头之间经历的时间。 此时间以百纳秒单位 (HNS) 进行测量，10,000 HNS 相当于 1 毫秒。
+* `WordOffset` 报告输入字符串（原始文本或 [SSML](speech-synthesis-markup.md)）中紧靠在要说出的字词之前的字符位置。
+
+> [!NOTE]
+> `WordBoundary` 事件在输出音频数据变为可用时引发，这样将会比播放到输出设备更快。 将流计时相应地同步到“实时”必须由调用方来完成。
+
+在 GitHub 上的[文本转语音示例](https://aka.ms/csspeech/samples)中可以找到使用 `WordBoundary` 的示例。
 
 ## <a name="next-steps"></a>后续步骤
 
