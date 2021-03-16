@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb556466a5a76cbb9447538e98a5a2385f7b5614
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660995"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518375"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
@@ -36,7 +36,7 @@ ms.locfileid: "101660995"
     - 在笔记本服务器上的示例深度学习文件夹中，通过导航到以下目录，找到已完成且已展开的笔记本：**how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** 文件夹。 
  
  - 你自己的 Jupyter 笔记本服务器
-    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0)。
+    - [安装 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.15.0)。
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - [下载示例脚本文件](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch/train-hyperparameter-tune-deploy-with-pytorch) `pytorch_train.py`
      
@@ -64,7 +64,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) 对象来访问工作区项目。
 
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
@@ -181,7 +181,7 @@ pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1
 
 ### <a name="create-a-scriptrunconfig"></a>创建 ScriptRunConfig
 
-创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 如果在 `arguments` 参数中指定，训练脚本的任何参数都将通过命令行传递。 
+创建一个 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 对象，以指定训练作业的配置详细信息，包括训练脚本、要使用的环境，以及要在其上运行的计算目标。 如果在 `arguments` 参数中指定，训练脚本的任何参数都将通过命令行传递。 
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -203,7 +203,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 ## <a name="submit-your-run"></a>提交运行
 
-[运行对象](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)在作业运行时和运行后提供运行历史记录的接口。
+[运行对象](/python/api/azureml-core/azureml.core.run%28class%29)在作业运行时和运行后提供运行历史记录的接口。
 
 ```Python
 run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
@@ -267,7 +267,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-若要在 Azure ML 上使用 MPI/Horovod 执行分布式作业，必须指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)。 以下代码将配置每个节点运行一个进程的 2 节点分布式作业。 如果你还希望每个节点运行多个进程，（即，如果群集 SKU 有多个 GPU），请在 MpiConfiguration 中另外指定 `process_count_per_node` 参数（默认值为 `1`）。
+若要在 Azure ML 上使用 MPI/Horovod 执行分布式作业，必须指定到 ScriptRunConfig 构造函数的 `distributed_job_config` 参数的 [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)。 以下代码将配置每个节点运行一个进程的 2 节点分布式作业。 如果你还希望每个节点运行多个进程，（即，如果群集 SKU 有多个 GPU），请在 MpiConfiguration 中另外指定 `process_count_per_node` 参数（默认值为 `1`）。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -285,28 +285,28 @@ src = ScriptRunConfig(source_directory=project_folder,
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 如果你使用的是 PyTorch 的内置 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) 模块（在训练代码中使用 **torch.distributed** 包生成），也可以通过 Azure ML 来启动分布式作业。
 
-若要在 Azure ML 上启动分布式 PyTorch 作业，可以使用以下两个选项：
+若要在 Azure ML 上启动分布式 PyTorch 作业，有两个选项：
 1. 每进程启动：指定要运行的工作进程总数，Azure ML 将处理每个进程的启动。
-2. 每节点启动方式 `torch.distributed.launch` ：提供 `torch.distributed.launch` 要在每个节点上运行的命令。 Torch 启动实用工具将处理在每个节点上启动工作进程。
+2. 使用 `torch.distributed.launch` 每节点启动：提供要在每个节点上运行的 `torch.distributed.launch` 命令。 Torch 启动实用工具将处理在每个节点上启动的工作进程。
 
-这些启动选项之间没有任何基本差异;这主要取决于用户的首选项或在 vanilla PyTorch 上构建的框架/库的约定 (如闪电或 Hugging 面) 。
+这些启动选项之间没有根本的区别；这主要取决于用户的偏好或基于 vanilla PyTorch 构建的框架/库的约定（如 Lightning 或 Hugging Face）。
 
-#### <a name="per-process-launch"></a>每个进程的启动
+#### <a name="per-process-launch"></a>每进程启动
 若要使用此选项运行分布式 PyTorch 作业，请执行以下操作：
 1. 指定训练脚本和参数
-2. 创建 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) ，并指定和 `process_count` `node_count` 。 `process_count`对应于要为作业运行的进程总数。 通常，此值应等于每个节点的 Gpu 数乘以节点数。 如果 `process_count` 未指定，AZURE ML 会默认为每个节点启动一个进程。
+2. 创建 [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)，并指定 `process_count` 和 `node_count`。 `process_count` 对应于要为作业运行的进程总数。 此值通常应等于每个节点的 GPU 数乘以节点数。 如果未指定 `process_count`，Azure ML 将默认为每个节点启动一个进程。
 
 Azure ML 将设置以下环境变量：
-* `MASTER_ADDR` -将承载排名为0的进程的计算机的 IP 地址。
-* `MASTER_PORT` -将承载排名为0的进程的计算机上的可用端口。
-* `NODE_RANK` -用于多节点定型的节点排名。 可能的值为0到 (总节点数-1) 。
-* `WORLD_SIZE` -进程总数。 这应该等于用于分布式培训 (GPU) 的设备总数。
-* `RANK` -当前进程的 (全局) 排名。 可能的值为0到 (世界大小-1) 。
-* `LOCAL_RANK` -本地 (节点内进程的相对) 排名。 可能的值为0，这是节点 1) 上 ( 的进程数。
+* `MASTER_ADDR`：将承载排名为 0 的进程的计算机的 IP 地址。
+* `MASTER_PORT`：将承载排名为 0 的进程的计算机的空闲端口。
+* `NODE_RANK`：用于多节点训练的节点的排名。 可能的值为 0 到（节点总数 - 1）。
+* `WORLD_SIZE`：进程总数。 这应该等于用于分布式训练的设备 (GPU) 总数。
+* `RANK`：当前进程的（全局）排名。 可能的值为 0 到（世界大小 - 1）。
+* `LOCAL_RANK`：节点内进程的本地（相对）排名。 可能的值为 0 到（节点上的进程数 - 1）。
 
-由于将由 Azure ML 为你设置所需的环境变量，因此你可以使用 [默认环境变量初始化方法](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization) 来初始化定型代码中的进程组。
+由于 Azure ML 将为你设置所需的环境变量，因此你可以使用[默认环境变量初始化方法](https://pytorch.org/docs/stable/distributed.html#environment-variable-initialization)来初始化训练代码中的进程组。
 
-以下代码片段配置2节点的双节点 PyTorch 作业：
+以下代码段配置了一个 2 节点、每节点 2 进程的 PyTorch 作业：
 ```python
 from azureml.core import ScriptRunConfig
 from azureml.core.runconfig import PyTorchConfiguration
@@ -328,15 +328,15 @@ run = Experiment(ws, 'experiment_name').submit(src)
 ```
 
 > [!WARNING]
-> 若要将此选项用于每节点多进程培训，需使用 Azure ML Python SDK >= 1.22.0，如 `process_count` 1.22.0 中所述。
+> 若要将此选项用于每个节点的多进程训练，你需要使用 Azure ML Python SDK >= 1.22.0，如 1.22.0 的 `process_count` 中所述。
 
 > [!TIP]
-> 如果训练脚本将本地秩或排名等信息作为脚本参数传递，则可以在参数中引用 (s) 环境变量： `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` 。
+> 如果训练脚本将本地排名或排名等信息作为脚本参数传递，则可以引用参数 `arguments=['--epochs', 50, '--local_rank', $LOCAL_RANK]` 中的环境变量。
 
-#### <a name="per-node-launch-with-torchdistributedlaunch"></a>每节点启动方式 `torch.distributed.launch`
-PyTorch 在 [torch](https://pytorch.org/docs/stable/distributed.html#launch-utility) 中提供一个启动实用工具，用户可以使用该工具启动每个节点的多个进程。 此 `torch.distributed.launch` 模块将在每个节点上生成多个训练过程。
+#### <a name="per-node-launch-with-torchdistributedlaunch"></a>使用 `torch.distributed.launch` 每节点启动
+PyTorch 在 [torch.distributed.launch](https://pytorch.org/docs/stable/distributed.html#launch-utility) 中提供了一个启动实用工具，用户可以使用它在每节点上启动多个进程。 `torch.distributed.launch` 模块将在每个节点上生成多个训练过程。
 
-以下步骤将演示如何使用 Azure ML 上的每个节点启动器来配置 PyTorch 作业，该作业将实现等效的运行以下命令：
+以下步骤将演示如何在 Azure ML 上使用每个节点启动器配置 PyTorch 作业，该启动器将实现运行以下命令的等效功能：
 
 ```shell
 python -m torch.distributed.launch --nproc_per_node <num processes per node> \
@@ -345,8 +345,8 @@ python -m torch.distributed.launch --nproc_per_node <num processes per node> \
   <your training script> <your script arguments>
 ```
 
-1. 为 `torch.distributed.launch` `command` 构造函数的参数提供命令 `ScriptRunConfig` 。 Azure ML 会在定型群集的每个节点上运行此命令。 `--nproc_per_node` 应小于或等于每个节点上可用的 Gpu 数。 `MASTER_ADDR`、 `MASTER_PORT` 和 `NODE_RANK` 都是由 Azure ML 设置的，因此，只需在命令中引用环境变量即可。 Azure ML 会将设置 `MASTER_PORT` 为6105，但如果需要，可以将不同的值传递给 `--master_port` 命令的参数 `torch.distributed.launch` 。  (启动实用工具将重置环境变量。 ) 
-2. 创建 `PyTorchConfiguration` 并指定 `node_count` 。 不需要设置， `process_count` 因为 AZURE ML 会默认为每个节点启动一个进程，这将运行你指定的启动命令。
+1. 向 `ScriptRunConfig` 构造函数的 `command` 参数提供 `torch.distributed.launch` 命令。 Azure ML 将在训练群集的每个节点上运行此命令。 `--nproc_per_node` 应小于或等于每个节点上可用的 GPU 数。 `MASTER_ADDR`、`MASTER_PORT` 和 `NODE_RANK` 都是由 Azure ML 设置的，因此你可以在命令中引用环境变量。 Azure ML 将 `MASTER_PORT` 设置为 6105，但如果愿意，可以将不同的值传递给 `torch.distributed.launch` 命令的 `--master_port` 参数。 （启动实用工具将重置环境变量。）
+2. 创建 `PyTorchConfiguration` 并指定 `node_count`。 无需设置 `process_count`，因为 Azure ML 将默认为每个节点启动一个进程，该进程将运行你指定的启动命令。
 
 ```python
 from azureml.core import ScriptRunConfig

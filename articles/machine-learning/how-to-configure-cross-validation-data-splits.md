@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: add84c2cb53a362fc78fc50a6df13b4976e3868d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661029"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501569"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "101661029"
 
 在 Azure 机器学习中，当使用自动化 ML 来生成多个 ML 模型时，每个子运行都需要通过计算该模型的质量指标（例如准确度或加权 AUC）来验证相关的模型。 这些指标的计算方法是将每个模型所做的预测与验证数据中过去观察到的实际标签进行比较。 [详细了解如何根据验证类型来计算指标](#metric-calculation-for-cross-validation-in-machine-learning)。 
 
-自动化 ML 试验会自动执行模型验证。 下面的各个部分介绍了如何使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) 进一步自定义验证设置。 
+自动化 ML 试验会自动执行模型验证。 下面的各个部分介绍了如何使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/) 进一步自定义验证设置。 
 
 对于低代码或无代码体验，请参阅[在 Azure 机器学习工作室中创建自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "101661029"
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>机器学习中的默认数据拆分和交叉验证
 
-使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未** 包括 `n_cross_validation` 或 `validation_ data` 的参数。
+使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象定义试验和训练设置。 请注意，在下面的代码片段中，只定义了必需的参数，也就是说，**未** 包括 `n_cross_validation` 或 `validation_ data` 的参数。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -74,7 +74,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 在这种情况下，你可以从单个数据文件开始，将其拆分为训练数据集和验证数据集，也可以为验证集提供单独的数据文件。 无论采用哪种方式，`AutoMLConfig` 对象中的 `validation_data` 参数都将分配要用作验证集的数据。 此参数仅接受 [Azure 机器学习数据集](how-to-create-register-datasets.md) 或 pandas 数据帧格式的数据集。   
 
 > [!NOTE]
-> `validation_size`预测方案中不支持该参数。
+> 预测方案不支持 `validation_size` 参数。
 
 下面的代码示例显式定义了要将 `dataset` 中所提供数据的哪部分用于训练和验证。
 
@@ -98,10 +98,10 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 在这种情况下，只为试验提供单个数据集。 也就是说，**未** 指定 `validation_data` 参数，提供的数据集将分配给 `training_data` 参数。  
 
-在 `AutoMLConfig` 对象中，你可以设置 `validation_size` 参数来保存一部分用于验证的训练数据。 这意味着从提供的初始开始，将由自动 ML 拆分验证集 `training_data` 。 此值的范围应为 0.0 到 1.0（不含，例如，0.2 表示保留 20% 的数据用作验证数据）。
+在 `AutoMLConfig` 对象中，你可以设置 `validation_size` 参数来保存一部分用于验证的训练数据。 这意味着，验证集将由 AutoML 从提供的初始 `training_data` 中拆分出来。 此值的范围应为 0.0 到 1.0（不含，例如，0.2 表示保留 20% 的数据用作验证数据）。
 
 > [!NOTE]
-> `validation_size`预测方案中不支持该参数。 
+> 预测方案不支持 `validation_size` 参数。 
 
 请参阅以下代码示例：
 
@@ -121,10 +121,10 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="k-fold-cross-validation"></a>K 折交叉验证
 
-若要执行 k 折叠交叉验证，请包括 `n_cross_validations` 参数并将其设置为值。 此参数基于相同的折数设置要执行的交叉验证次数。
+若要执行 k-折交叉验证，请包括 `n_cross_validations` 参数并将其设置为某个值。 此参数基于相同的折数设置要执行的交叉验证次数。
 
 > [!NOTE]
-> `n_cross_validations`使用深层神经网络的分类方案不支持该参数。
+> 使用深度神经网络的分类方案不支持 `n_cross_validations` 参数。
  
 在下面的代码中，定义了要将 5 折用于交叉验证。 因此有五个不同的训练，每个训练使用 4/5 的数据，每个验证使用 1/5 的数据，且每次都使用不同的维持数据折。
 
@@ -143,16 +143,16 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                              label_column_name = 'Class'
                             )
 ```
-## <a name="monte-carlo-cross-validation"></a>Monte Carlo 交叉验证
+## <a name="monte-carlo-cross-validation"></a>蒙特卡洛交叉验证
 
-若要执行 Monte Carlo 交叉验证，请 `validation_size` `n_cross_validations` 在对象中同时包含和参数 `AutoMLConfig` 。 
+若要执行蒙特卡洛交叉验证，请在 `AutoMLConfig` 对象中同时包含 `validation_size` 和 `n_cross_validations` 参数。 
 
-对于 Monte Carlo 交叉验证，自动 ML 会将参数指定的定型数据部分搁置在一起 `validation_size` 以进行验证，然后将其余数据分配给定型。 然后，根据参数中指定的值重复此过程， `n_cross_validations` 每次都随机生成新的定型和验证拆分。
+对于蒙特卡洛交叉验证，AutoML 会将 `validation_size` 参数指定的训练数据部分留出进行验证，然后将其余数据分配给训练。 然后，根据 `n_cross_validations` 参数中指定的值重复此过程，每次都随机生成新的训练和验证分支。
 
 > [!NOTE]
-> 预测方案不支持 Monte Carlo 交叉验证。
+> 预测方案不支持蒙特卡洛交叉验证。
 
-下面的代码定义了7个用于交叉验证的折叠，还应使用20% 的定型数据进行验证。 因此，7个不同的培训，每次定型都使用80% 的数据，每次验证使用20% 的数据，每次都使用不同的维持折叠。
+下面的代码定义了 7 个用于交叉验证的折，应使用 20% 的训练数据进行验证。 因此有七个不同的训练，每个训练使用 80% 的数据，每个验证使用 20% 的数据，且每次都使用不同的维持数据折。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -171,7 +171,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="specify-custom-cross-validation-data-folds"></a>指定自定义交叉验证数据折数
 
-你还可以提供自己的交叉验证 (CV) 数据折数。 这被视为更高级的方案，因为你需要指定要将哪些列拆分出来用于验证。  请在训练数据中包括自定义 CV 拆分列，并通过在 `cv_split_column_names` 参数中填充列名来指定列。 每个列表示一个交叉验证拆分，并用整数值1或 0-表示，其中1表示行应用于定型，0表示行应用于验证。
+你还可以提供自己的交叉验证 (CV) 数据折数。 这被视为更高级的方案，因为你需要指定要将哪些列拆分出来用于验证。  请在训练数据中包括自定义 CV 拆分列，并通过在 `cv_split_column_names` 参数中填充列名来指定列。 每个列表示一个交叉验证拆分，并用整数值 1 或 0 填充，其中 1 表示该行应当用于训练，0 表示该行应当用于验证。
 
 下面的代码片段包含具有两个 CV 拆分列（“cv1”和“cv2”）的银行营销数据。
 

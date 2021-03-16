@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912948"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520959"
 ---
-# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>通过 MLflow 和 Azure 机器学习 (预览版训练和跟踪 ML 模型) 
+# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习训练和跟踪 ML 模型（预览版）
 
 本文介绍如何启用 MLflow 的跟踪 URI 和记录 API（统称为 [MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以将 Azure 机器学习作为 MLflow 试验的后端进行连接。 
 
@@ -26,11 +26,11 @@ ms.locfileid: "97912948"
 
 + 在 [Azure 机器学习工作区](./concept-azure-machine-learning-architecture.md#workspace)中跟踪和记录试验指标及项目。 如果已为试验使用 MLflow 跟踪，工作区可提供集中、安全和可缩放的位置，用于存储训练指标和模型。
 
-+ Azure 机器学习后端支持 (预览版) ，通过 [MLflow 项目](https://www.mlflow.org/docs/latest/projects.html) 提交培训作业。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](./how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
++ 使用具有 Azure 机器学习后端支持（预览版）的 [MLflow 项目](https://www.mlflow.org/docs/latest/projects.html)提交训练作业。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](./how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
 
 + 在 MLflow 和 Azure 机器学习模型注册表中跟踪和管理模型。
 
-[MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它记录和跟踪你的培训运行指标和模型项目，无论你的实验环境如何-在本地计算机上、远程计算目标、虚拟机或 [Azure Databricks 群集](how-to-use-mlflow-azure-databricks.md)上。 
+[MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它可以记录和跟踪训练运行指标及模型项目，无论试验环境是在本地计算机上、远程计算目标上、虚拟机上，还是在 [Azure Databricks 群集](how-to-use-mlflow-azure-databricks.md)上。 
 
 >[!NOTE]
 > 作为开放源代码库，MLflow 会经常更改。 因此，通过 Azure 机器学习和 MLflow 集成提供的功能应视为预览版，Microsoft 并不完全支持它。
@@ -46,7 +46,7 @@ ms.locfileid: "97912948"
 
  下表汇总了可以使用 Azure 机器学习的不同客户端，以及它们各自的功能。
 
- MLflow 跟踪提供指标记录和项目存储功能，这些功能仅通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 提供。
+ MLflow 跟踪提供指标记录和项目存储功能，这些功能仅通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 提供。
 
 | 功能 | MLflow 跟踪和部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 机器学习工作室|
 |---|---|---|---|---|
@@ -63,15 +63,15 @@ ms.locfileid: "97912948"
 ## <a name="prerequisites"></a>先决条件
 
 * 安装 `azureml-mlflow` 包。 
-    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
+    * 此包会自动引入 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/install) 的 `azureml-core`，它为 MLflow 访问工作区提供了连接。
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
-    * 查看 [在工作区中执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。
+    * 查看[使用工作区执行 MLflow 操作所需的访问权限](how-to-assign-roles.md#mlflow-operations)。
 
 ## <a name="track-local-runs"></a>跟踪本地运行
 
 使用 Azure 机器学习进行 MLflow 跟踪，你可以将本地运行中记录的指标和项目存储到 Azure 机器学习工作区中。
 
-导入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) 类以访问 MLflow 的跟踪 URI 并配置工作区。
+导入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) 类以访问 MLflow 的跟踪 URI 并配置工作区。
 
 在下面的代码中，`get_mlflow_tracking_uri()` 方法会向工作区 `ws` 分配唯一的跟踪 URI 地址，并且 `set_tracking_uri()` 会将 MLflow 跟踪 URI 指向该地址。
 
@@ -118,7 +118,7 @@ dependencies:
     - numpy
 ```
 
-在脚本中，使用 [`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) 类配置计算和训练运行环境。 然后，将远程计算作为计算目标构造 [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py)。
+在脚本中，使用 [`Environment`](/python/api/azureml-core/azureml.core.environment.environment) 类配置计算和训练运行环境。 然后，将远程计算作为计算目标构造 [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig)。
 
 ```Python
 import mlflow
@@ -145,7 +145,7 @@ run = exp.submit(src)
 pip install azureml-mlflow
 ```
 
-导入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) 类以访问 MLflow 的跟踪 URI 并配置工作区。
+导入 `mlflow` 和 [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) 类以访问 MLflow 的跟踪 URI 并配置工作区。
 
 ```Python
 import mlflow
@@ -209,7 +209,7 @@ run.get_metrics()
 
 ## <a name="manage-models"></a>管理模型 
 
-使用支持 MLflow 模型注册表的 [Azure 机器学习模型注册表](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere)注册和跟踪模型。 Azure 机器学习模型与 MLflow 模型架构一致，从而可以轻松地在不同的工作流之间导出和导入这些模型。 与 MLflow 相关的元数据（例如），运行 ID 还用已注册的跟踪模型进行标记。 用户可以提交训练运行、注册和部署 MLflow 运行生成的模型。 
+使用支持 MLflow 模型注册表的 [Azure 机器学习模型注册表](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere)注册和跟踪模型。 Azure 机器学习模型与 MLflow 模型架构一致，从而可以轻松地在不同的工作流之间导出和导入这些模型。 与 MLflow 相关的元数据（如运行 ID）还使用注册的模型进行标记，以进行跟踪。 用户可以提交训练运行、注册和部署 MLflow 运行生成的模型。 
 
 如果要一步部署和注册生产就绪模型，请参阅[部署和注册 MLflow 模型](how-to-deploy-mlflow-models.md)。
 
@@ -260,7 +260,7 @@ run.get_metrics()
 
 ## <a name="next-steps"></a>后续步骤
 
-* [部署具有 MLflow 的模型](how-to-deploy-mlflow-models.md)。
+* [使用 MLflow 部署模型](how-to-deploy-mlflow-models.md)。
 * 监视生产模型中的[数据偏移](./how-to-enable-data-collection.md)。
 * [使用 MLflow 跟踪 Azure Databricks 运行](how-to-use-mlflow-azure-databricks.md)。
 * [管理模型](concept-model-management-and-deployment.md)。
