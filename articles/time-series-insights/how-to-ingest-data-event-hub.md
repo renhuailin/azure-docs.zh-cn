@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: ee66e68216933c410092865a1cdb781476a944c6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696323"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461127"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>将事件中心事件源添加到 Azure 时序见解环境
 
@@ -27,7 +27,7 @@ ms.locfileid: "98696323"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 按照[创建 Azure 时序见解环境](./tutorials-set-up-tsi-environment.md)中所述创建一个 Azure 时序见解环境。
+- 按照[创建 Azure 时序见解环境](./tutorial-set-up-environment.md)中所述创建一个 Azure 时序见解环境。
 - 创建事件中心。 请阅读[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。
 - 事件中心必须有发送进来的活动消息事件。 了解如何[使用 .NET Framework 将事件发送到 Azure 事件中心](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)。
 - 在事件中心创建专用使用者组，以供 Azure 时序见解环境使用。 每个 Azure 时序见解事件源都必须具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用同一使用者组中的事件，则所有读取器都可能出现故障。 有一项限制，即每个事件中心只能有 20 个使用者组。 有关详细信息，请阅读[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)。

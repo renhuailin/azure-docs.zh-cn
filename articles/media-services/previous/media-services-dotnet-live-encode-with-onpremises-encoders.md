@@ -3,7 +3,7 @@ title: 如何使用 .NET 通过本地编码器执行实时传送视频流 | Micr
 description: 本主题演示如何使用 .NET 通过本地编码器执行实时编码。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,22 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 438e13abc04c959895cd371dfc29ce93d9b63f41
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: a763bed0ed31d80ec094fde3c68c5c84537fec46
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695616"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013833"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>如何使用 .NET 通过本地编码器执行实时传送视频流
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [门户](media-services-portal-live-passthrough-get-started.md)
+> * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 > * [REST](/rest/api/media/operations/channel)
 > 
@@ -37,30 +37,30 @@ ms.locfileid: "98695616"
 
 本教程会逐步演示如何使用 Azure 媒体服务 .NET SDK 创建为实现直通传送而配置的 **频道**。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。
-* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
-* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。  
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态  。 
 * 设置开发环境。 有关详细信息，请参阅[设置环境](media-services-set-up-computer.md)。
 * 网络摄像机。 例如， [Telestream Wirecast 编码器](media-services-configure-wirecast-live-encoder.md)。
 
 建议阅读以下文章：
 
 * [Azure 媒体服务 RTMP 支持和实时编码器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
-* [使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)
+* [使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="example"></a>示例
 
 下面的代码示例演示如何完成以下任务：
 
 * 连接到媒体服务
-* 创建通道
+* 创建频道
 * 更新通道
 * 检索通道的输入终结点。 应将输入终结点提供给本地实时编码器。 实时编码器将相机的信号转换为流，以便发送到通道的输入（插入）终结点。
 * 检索通道的预览终结点

@@ -6,16 +6,16 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 2/11/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 5c79ea68e648cd3d78f94eb2272b6f32e3c4806f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dedea2a622cb0eece92bb8b57871c76daa05fb68
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750596"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495373"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -47,8 +47,8 @@ ms.locfileid: "101750596"
 
 打开 Podfile，并向 `ChatQuickstart` 目标添加以下依赖项：
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.8'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.8'
+pod 'AzureCommunication', '~> 1.0.0-beta.9'
+pod 'AzureCommunicationChat', '~> 1.0.0-beta.9'
 ```
 
 安装依赖项，这还将创建 Xcode 工作区：`pod install`
@@ -146,7 +146,7 @@ let request = CreateThreadRequest(
     topic: "Quickstart",
     participants: [
         Participant(
-            id: "<USER_ID>",
+            id: CommunicationUserIdentifier("<USER_ID>"),
             displayName: "Jack"
         )
     ]
@@ -166,7 +166,7 @@ chatClient.create(thread: request) { result, _ in
 semaphore.wait()
 ```
 
-将 `<<USER_ID>>` 替换为有效的通信服务用户 ID。
+将 `<USER_ID>` 替换为有效的通信服务用户 ID。
 
 我们将在此处使用信号灯等待完成事件处理器，然后再继续。 在后续步骤中，我们将使用返回到完成事件处理器的响应中的 `threadId`。
 
@@ -210,7 +210,7 @@ semaphore.wait()
 
 ```
 let user = Participant(
-    id: "<USER_ID>",
+    id: CommunicationUserIdentifier("<USER_ID>"),
     displayName: "Jane"
 )
 
@@ -240,7 +240,8 @@ chatThreadClient.listParticipants { result, _ in
     case let .success(participants):
         var iterator = participants.syncIterator
         while let participant = iterator.next() {
-            print(participant.user.identifier)
+            let user = participant.id as! CommunicationUserIdentifier
+            print(user.identifier)
         }
     case .failure:
         print("Failed to list participants")
@@ -258,7 +259,7 @@ semaphore.wait()
 ```
 chatThreadClient
     .remove(
-        participant: "<USER_ID>"
+        participant: CommunicationUserIdentifier("<USER_ID>")
     ) { result, _ in
         switch result {
         case .success:

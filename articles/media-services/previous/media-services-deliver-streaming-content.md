@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 发布 Azure 媒体服务内容 | Microsoft Docs
 description: 了解如何创建用于生成流式处理 URL 的定位符。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0343c607a342c3438d68627b97c71cdf05199b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a1a06c9a5fdac1082a57bee71cccad271a6aae81
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267779"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015788"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 发布媒体服务内容
 

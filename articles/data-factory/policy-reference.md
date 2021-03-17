@@ -1,6 +1,6 @@
 ---
 title: 内置策略定义
-description: 列出数据工厂的 Azure 策略内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+description: 列出数据工厂的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
-ms.date: 12/3/2020
-ms.openlocfilehash: 9c0de85c4d8c5345db68ffbaf3f97793a3cb56dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.openlocfilehash: ecc31825f2e73197f3c27e558e8dd9809d4e1ca7
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372835"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612622"
 ---
-# <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>用于数据工厂 (预览的 Azure 策略内置定义) 
+# <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>数据工厂的 Azure Policy 内置定义（预览）
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-此页是用于数据工厂的 [Azure 策略](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
+此页是数据工厂的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 

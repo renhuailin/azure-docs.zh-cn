@@ -3,7 +3,7 @@ title: 使用 REST 按需传送内容入门 | Microsoft Docs
 description: 本教程介绍了使用 Azure 媒体服务和 REST API 实现点播内容传送应用程序的步骤。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: fe35cd39af9b2fe7d547b463b6432b0b54344794
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: ccf4bc18270dcdbcae02f7b45bea2a05ed663227
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696238"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008869"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容
 
@@ -34,7 +34,7 @@ ms.locfileid: "98696238"
 
 下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。
 
-单击图像可查看其完整大小。  
+单击图像查看其完整大小。  
 
 [![显示用于开发点播视频应用程序的 Azure 媒体服务对象数据模型中一些最常用对象的关系图。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
@@ -869,7 +869,7 @@ Date: Mon, 14 May 2012 21:41:32 GMT
 设置 AccessPolicy 和定位符后，可以使用 Azure 存储 REST API 下载文件。  
 
 > [!NOTE]
-> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 .
+> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? . . .
 
 有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)。
 

@@ -4,15 +4,15 @@ description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bbb0ca345dc76f566dd55956911703e2c9bf0183
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519330"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471818"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
@@ -55,15 +55,6 @@ Azure HPC 缓存部署可帮助加快定量分析计算、风险分析工作负�
 ## <a name="region-availability"></a>上市区域
 
 请访问 [Azure 全球基础结构产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache)页面，以了解提供 Azure HPC 缓存的位置。
-
-[客户管理的密钥功能](customer-keys.md)仅在以下 Azure 区域中受支持：
-
-* 美国东部
-* 美国中南部
-* 美国西部 2
-* 西欧
-* US Gov 亚利桑那州
-* US Gov 弗吉尼亚州
 
 Azure HPC 缓存位于单个区域中。 如果将该缓存连接到位于其他区域的 Blob 容器，则它可以访问存储在该区域中的数据。 缓存不会永久存储客户数据。
 

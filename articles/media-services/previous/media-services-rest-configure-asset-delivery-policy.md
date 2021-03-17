@@ -3,7 +3,7 @@ title: 使用媒体服务 REST API 配置资产传送策略 | Microsoft Docs
 description: 本主题说明如何使用媒体服务 REST API 配置不同的资产传送策略。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: cfowler
 editor: ''
 ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49fc67bcd45d0c364f47276a9b47676a65f6d837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 65a7b9479dae1826f478ca5e038ef5feb1caefb6
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268666"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017318"
 ---
 # <a name="configuring-asset-delivery-policies"></a>配置资产传送策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "89268666"
 本主题介绍为何以及如何创建和配置资产传送策略。
 
 > [!NOTE]
-> 创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
+> 创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 >
 > 此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
@@ -257,7 +257,7 @@ Date: Mon, 09 Feb 2015 05:24:38 GMT
 获取上一步创建的内容密钥的 PlayReady 传送方法的传送 URL。 客户端使用返回的 URL 来请求 PlayReady 许可证，以播放受保护内容。 有关详细信息，请参阅[获取传送 URL](#get_delivery_url)。
 
 ### <a name="create-asset-delivery-policy"></a>创建资产传送策略
-以下 HTTP 请求将创建 **AssetDeliveryPolicy**，该策略配置为将动态通用加密 (**DynamicCommonEncryption**) 应用到**平滑流式处理**协议（在本示例中，已阻止流式处理其他协议）。 
+以下 HTTP 请求将创建 **AssetDeliveryPolicy**，该策略配置为将动态通用加密 (**DynamicCommonEncryption**) 应用到 **平滑流式处理** 协议（在本示例中，已阻止流式处理其他协议）。 
 
 有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)部分。   
 

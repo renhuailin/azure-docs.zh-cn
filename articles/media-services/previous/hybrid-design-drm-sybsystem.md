@@ -3,7 +3,7 @@ title: 使用 Azure 媒体服务进行 DRM 子系统的混合设计 | Microsoft 
 description: 本主题介绍如何使用 Azure 媒体服务进行 DRM 子系统的混合设计。
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 1bf01e98e418edfe8f15043d16a199b276b71020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a48e761c4fb74802c6b1db63884ee192446720a4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266895"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016264"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计
 
@@ -82,8 +82,8 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 * 用于 DRM 动态加密的内容密钥。
 * 许可证传送服务要传送的 DRM 许可证内容：版权、内容密钥和限制。
-* **内容密钥授权策略限制**的类型：开放、IP 或令牌限制。
-* 如果使用**令牌**类型的**内容密钥授权策略限制**，则在颁发许可证之前，必须符合**内容密钥授权策略限制**。
+* **内容密钥授权策略限制** 的类型：开放、IP 或令牌限制。
+* 如果使用 **令牌** 类型的 **内容密钥授权策略限制**，则在颁发许可证之前，必须符合 **内容密钥授权策略限制**。
 
 ### <a name="asset-delivery-policy"></a>资产传送策略
 
@@ -95,7 +95,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ## <a name="scenarios-and-samples"></a>方案和示例
 
-以下五个混合方案根据前一部分中的说明，使用相应的**内容密钥**-**资产传送策略**配置组合（表格后面提供了最后一列中所述的示例）：
+以下五个混合方案根据前一部分中的说明，使用相应的 **内容密钥**-**资产传送策略** 配置组合（表格后面提供了最后一列中所述的示例）：
 
 |**内容托管和来源**|**DRM 加密**|**DRM 许可证传送**|**配置内容密钥**|**配置资产传送策略**|**示例**|
 |---|---|---|---|---|---|

@@ -3,7 +3,7 @@ title: 使用 .NET 通过 Media Encoder Standard 对资产进行编码 | Microso
 description: 本文介绍如何使用 .NET 通过 Media Encoder Standard 对资产进行编码。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: anilmur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f49b951473db4b331bc42de3fb72829270822d5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.openlocfilehash: b94ec0b50182381d2a4e1bca09f4c8bc482d13ee
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014369"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014088"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 通过 Media Encoder Standard 对资产进行编码
 
@@ -73,7 +73,7 @@ Media Encoder Standard 使用[此处](./media-services-mes-presets-overview.md)�
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例 
 
@@ -213,5 +213,5 @@ namespace MediaEncoderStandardSample
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>后续步骤
-[如何在 .net](media-services-dotnet-generate-thumbnail-with-mes.md) 
- 中使用 Media Encoder Standard 生成缩略图[媒体服务编码概述](media-services-encode-asset.md)
+[如何使用 Media Encoder Standard 通过 .NET 来生成缩略图](media-services-dotnet-generate-thumbnail-with-mes.md)
+[媒体服务编码概述](media-services-encode-asset.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424489"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232488"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -39,6 +39,8 @@ ms.locfileid: "102424489"
 > 请从与模型会遇到的语言和声效相匹配的较小的示例数据集着手。
 > 例如，可以采用与模型的生产方案相同的硬件和声效环境录制一小段有代表性的示例音频。
 > 具有代表性的数据的小型数据集可能会在你投入精力收集大得多的数据集进行训练之前暴露一些问题。
+>
+> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定义语音识别数据示例</a>
 
 ## <a name="data-types"></a>数据类型
 
@@ -50,17 +52,14 @@ ms.locfileid: "102424489"
 | [音频和人为标记的听录内容](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
 | [相关文本](#related-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
 
-训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 使用文本进行训练比使用音频进行训练的速度快得多（分钟与天的对比）。
-
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
 > [!TIP]
-> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定义语音识别数据示例</a>
+> 训练新模型时，请从[相关文本](#related-text-data-for-training)开始。 这些数据将改善对特殊术语和短语的识别。 使用文本进行训练比使用音频进行训练的速度快得多（分钟与天的对比）。
 
 > [!NOTE]
 > 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。 即使基础模型支持使用音频数据进行训练，该服务也可能只使用部分音频。 它仍将使用所有脚本。
-
-> [!NOTE]
+>
 > 如果要更改用于训练的基础模型，并且你的训练数据集内有音频，请务必检查新选择的基础模型是否[支持使用音频数据进行训练](language-support.md#speech-to-text)。 如果以前使用的基础模型不支持使用音频数据进行训练，而训练数据集包含音频，则新的基础模型的训练时间将会 **大幅** 增加，并且可能会轻易地从几个小时增加到几天及更长时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，则更是如此。
 >
 > 如果你面临以上段落中所述的问题，则可以通过减少数据集内的音频量或完全删除音频并仅留下文本，来快速缩短训练时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，我们强烈建议你完全删除音频并仅留下文本。

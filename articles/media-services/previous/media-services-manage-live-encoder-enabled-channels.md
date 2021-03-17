@@ -3,7 +3,7 @@ title: 使用 Azure 媒体服务执行实时传送视频流以创建多比特率
 description: 本主题介绍如何设置通道，以从本地编码器接收单比特率实时流，并使用媒体服务执行实时编码以将其转换为自适应比特率流。
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/10/2021
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 09d0e53840c2bf7a0d67c7c7fb0b224f9f77c587
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: b9b4cd54375a13da95259e27da680255f785df45
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268299"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013204"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 
@@ -113,7 +113,7 @@ ms.locfileid: "89268299"
 6. 发布与节目关联的资源。   
 
     >[!NOTE]
-    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+    >创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 
 7. 准备好开始流式传输和存档后，启动节目。
 8. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
@@ -325,7 +325,7 @@ Default720p 会将视频编码为以下 6 层。
 > 
 
 ## <a name="considerations"></a><a id="Considerations"></a>注意事项
-* 当某个编码类型为**标准**的通道出现输入源/贡献源丢失的情况时，该通道会采取相应的补偿措施，将源视频/音频替换为表示错误的静态图像和静音。 该通道会持续发出静态图像，直到输入/贡献源恢复。 我们建议不要让实时通道处于此类状态的时间超过 2 小时。 如果超出该限制，该通道无法保证输入重新连接时的行为，也无法保证其响应重置命令时的行为。 这种情况下必须停止通道并将其删除，并创建一个新的。
+* 当某个编码类型为 **标准** 的通道出现输入源/贡献源丢失的情况时，该通道会采取相应的补偿措施，将源视频/音频替换为表示错误的静态图像和静音。 该通道会持续发出静态图像，直到输入/贡献源恢复。 我们建议不要让实时通道处于此类状态的时间超过 2 小时。 如果超出该限制，该通道无法保证输入重新连接时的行为，也无法保证其响应重置命令时的行为。 这种情况下必须停止通道并将其删除，并创建一个新的。
 * 通道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 每次重新配置实时编码器后，请对通道调用 **重置** 方法。 重置通道之前，必须停止节目。 在重置频道后，重新启动节目。
 * 只有当通道处于“正在运行”状态且通道中的所有节目都已停止时才能停止通道。

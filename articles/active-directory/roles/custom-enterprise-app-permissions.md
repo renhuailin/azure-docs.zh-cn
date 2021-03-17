@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 110da0a12336415d9d9c781e24684d7e2af8bc9d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d2159540c688a63082efb792fd4d261062ef65d9
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741649"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466787"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的企业应用程序权限
 
@@ -169,4 +169,4 @@ microsoft.directory/provisioningLogs/allProperties/read | 读取预配日志的�
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure 门户、Azure AD PowerShell 或图形 API 创建自定义角色](custom-create.md)
-- [查看自定义角色的分配](custom-view-assignments.md)
+- [列出角色分配](view-assignments.md)

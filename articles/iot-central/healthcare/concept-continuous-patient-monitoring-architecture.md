@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 093e069fa7a3eab06c61f796421a3253d9b92cb1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6f7359b2b2fb0a1ea6ce92ec52bba15fc74fc75a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727492"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017148"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持续患者监视体系结构
 
@@ -37,7 +37,7 @@ ms.locfileid: "101727492"
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>导出到 Azure API for FHIR&reg;
 
-Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](../../healthcare-apis/iot-fhir-portal-quickstart.md)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
+Azure IoT Central 符合 HIPAA 并经过 HITRUST&reg; 认证。 还可以使用 [Azure API for FHIR](../../healthcare-apis/fhir/overview.md) 向其他服务发送患者健康状况数据。 Azure API for FHIR 是基于标准的临床健康状况数据 API。 通过[适用于 FHIR 的 Azure IoT 连接器](../../healthcare-apis/fhir/iot-fhir-portal-quickstart.md)，可以将 Azure API for FHIR 用作 IoT Central 的连续数据导出目标。
 
 ### <a name="machine-learning"></a>机器学习
 

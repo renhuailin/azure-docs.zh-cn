@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932313"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461090"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 本文将再次使用开发 VM 作为模拟设备， 但不会直接将数据发送到 IoT 中心，而是通过该设备将数据发送到配置为透明网关的 IoT Edge 设备。
 

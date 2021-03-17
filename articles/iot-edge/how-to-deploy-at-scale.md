@@ -9,16 +9,18 @@ ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9d03b6f4a512c22564480405ec0f0e0c0e62a958
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
-ms.translationtype: MT
+ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048417"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200321"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署 IoT Edge 模块
 
-在 Azure 门户中创建“IoT Edge 自动部署”，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](../iot-hub/iot-hub-automatic-device-management.md)功能。 部署是动态的过程，允许将多个模块部署到多台设备，跟踪这些模块的状态和运行状况，以及在必要时进行更改。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+在 Azure 门户中创建“IoT Edge 自动部署”，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](../iot-hub/iot-hub-automatic-device-management.md)功能。 部署是允许将多个模块部署到多个设备、跟踪模块的状态和运行状况以及在必要时做出更改的动态过程。
 
 有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
 
@@ -54,9 +56,9 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 创建部署需要五个步骤。 下列各节将引导完成每个步骤。
 
 >[!NOTE]
->本文中的步骤反映了 IoT Edge 代理和中心的最新架构版本。 架构版本1.1 与 IoT Edge 版本1.0.10 一起发布，并启用模块启动顺序和路由优先级功能。
+>本文中的步骤反映了 IoT Edge 代理和中心的最新架构版本。 架构版本 1.1 随 IoT Edge 版本 1.0.10 一起发布，支持模块启动顺序和路由优先级功能。
 >
->如果要部署到运行1.0.9 或更早版本的设备，请在向导的 "**模块**" 步骤中编辑**运行时设置**，以使用架构版本1.0。
+>如果要部署到运行 1.0.9 或更早版本的设备，请在向导的“模块”步骤中编辑“运行时设置”，以使用架构版本 1.0 。
 
 ### <a name="step-1-name-and-label"></a>步骤 1：名称和标签
 
@@ -74,15 +76,15 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 1. 在此页的“容器注册表设置”部分，提供用于访问包含模块映像的任何专用容器注册表的凭据。
 1. 在此页的“IoT Edge 模块”部分，选择“添加” 。
-1. 从下拉菜单中选择三种类型的模块之一：
+1. 从下拉菜单中选择以下三种模块中的一种：
 
    * **IoT Edge 模块** - 提供模块名称和容器映像 URI。 例如，示例 SimulatedTemperatureSensor 模块的映像 URI 为 `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`。 如果模块映像存储在专用容器注册表中，则在此页面上添加凭据来访问该映像。
    * **市场模块** - Azure 市场中托管的模块。 某些市场模块需要其他配置，因此请查看 [Azure 市场 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)列表中的模块详细信息。
    * **Azure 流分析模块** - 通过 Azure 流分析工作负载生成的模块。
 
-1. 如果需要，请重复步骤2和3，将其他模块添加到部署。
+1. 如果需要，请重复步骤 2 和 3，向部署中添加其他模块。
 
-将模块添加到部署后，选择模块名称，打开“更新 IoT Edge 模块”页面。 在此页上，您可以编辑 "模块设置"、"环境变量"、"创建选项"、"启动顺序" 和 "模块克隆"。 如果你从市场添加了模块，则该模块可能已经填充了其中的一些参数。 有关可用模块设置的详细信息，请参阅 [模块配置和管理](module-composition.md#module-configuration-and-management)。
+将模块添加到部署后，选择模块名称，打开“更新 IoT Edge 模块”页面。 可在此页面编辑模块设置、环境变量、创建选项、启动顺序和模块孪生。 如果你从市场添加了模块，则该模块可能已经填充了其中的一些参数。 有关可用模块设置的详细信息，请参阅[模块配置和管理](module-composition.md#module-configuration-and-management)。
 
 如果要创建分层部署，则可能需要配置针对相同设备的其他部署中的模块。 若要更新模块孪生但不覆盖其他版本，请打开“模块孪生设置”选项卡。创建新的“模块孪生属性”，使其具有模块孪生所需属性中某个子节的唯一名称，例如 `properties.desired.settings`。 如果只在 `properties.desired` 字段中定义属性，它将覆盖在任何较低优先级部署中定义的模块的所需属性。
 
@@ -96,11 +98,11 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 使用名称/值对构造消息。
 
-例如，具有名称 **路由** 的路由和 **从/messages/ \* 到 $upstream** 的值将使用任何模块输出的所有消息并将其发送到 IoT 中心。  
+例如，名为 route 且值为“FROM /messages/\* INTO $upstream”的路由将接受任何模块输出的任何消息并将其发送到 IoT 中心 。  
 
-**优先级**和**生存时间**参数是可在路由定义中包含的可选参数。 Priority 参数允许你选择应该首先处理其消息的路由，或最后处理哪些路由。 优先级是通过设置数字0-9 来确定的，其中0是最高优先级。 通过生存时间参数，您可以声明该路由中的消息在被处理或从队列中删除之前应保留多长时间。
+“优先级”和“生存时间”是可选参数，你可在路由定义中包含这些参数 。 通过优先级参数，你可选择哪些路由的消息应该首先处理，或哪些路由应该最后处理。 优先级通过设置数字 0-9 来确定，其中 0 为最高优先级。 通过生存时间参数，你可声明该路由中的消息在被处理或从队列中删除之前应保留多长时间。
 
-有关如何创建路由的详细信息，请参阅 [声明路由](module-composition.md#declare-routes)。
+有关如何创建路由的详细信息，请参阅[声明路由](module-composition.md#declare-routes)。
 
 在完成时选择“下一步: 指标”。
 
@@ -132,7 +134,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 任何将设备定为目标的分层部署都必须具有比基本部署更高的优先级才能被应用。
 
 1. 为部署优先级输入一个正整数。
-1. 输入“目标条件”确定将作为此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。
+1. 输入“目标条件”确定将作为此部署的目标的设备。  该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。  例如 `tags.environment='test'` 或 `properties.reported.devicemodel='4000x'`。
 
 在完成时选择“下一步: 查看 + 创建”，转到最后一步。
 
@@ -182,7 +184,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 1. 使用复选框选择想要删除的部署。
 1. 选择“删除” 。
-1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。 将应用优先级较低的部署。 如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。 选择“是”继续。
+1. 提示将发出以下通知：此操作将删除此部署并还原为所有设备之前的状态。  将应用优先级较低的部署。  如果没有将其他任何部署定为目标，则不会删除任何模块。 若要从设备中删除所有模块，请创建零模块部署，并将它部署到相同设备。  选择“是”继续。
 
 ## <a name="next-steps"></a>后续步骤
 

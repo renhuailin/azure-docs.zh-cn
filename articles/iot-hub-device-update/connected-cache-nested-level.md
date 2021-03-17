@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 1501153b73683081dfac0684d6714eb537c03380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658665"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615374"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft 联网缓存预览部署方案示例：具有未经过身份验证的出站代理的两级嵌套的 Azure IoT Edge 网关
 
@@ -70,7 +70,7 @@ ms.locfileid: "101658665"
 ## <a name="child-gateway-configuration"></a>子级网关配置
 
 >[!Note]
->如果已在自己的专用注册表中的配置中使用了复制的容器，则需要在模块部署中修改 config.toml 设置和运行时设置。 有关详细信息，请参阅[教程 - 创建 IoT Edge 设备的层次结构 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal#deploy-modules-to-the-lower-layer-device&preserve-view=true)。
+>如果已在自己的专用注册表中的配置中使用了复制的容器，则需要在模块部署中修改 config.toml 设置和运行时设置。 有关详细信息，请参阅[教程 - 创建 IoT Edge 设备的层次结构 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device)。
 
 1. 修改 Edge 代理的映像路径，如以下示例中所示：
 

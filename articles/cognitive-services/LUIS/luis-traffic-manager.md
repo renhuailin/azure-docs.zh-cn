@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95993816"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609645"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序   。
@@ -364,14 +364,14 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 ## <a name="resolving-a-degraded-state"></a>解决降级状态
 
-为流量管理器启用 [诊断日志](../../traffic-manager/traffic-manager-diagnostic-logs.md) ，以查看终结点状态为何会降级。
+为流量管理器启用[诊断日志](../../traffic-manager/traffic-manager-diagnostic-logs.md)，了解终结点状态降级的原因。
 
 ## <a name="clean-up"></a>清理
 删除两个 LUIS 终结点密钥、三个流量管理器配置文件以及包含这五个资源的资源组。 此操作在 Azure 门户中完成。 从资源列表中删除五个资源。 然后删除资源组。
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 BotFramework v4 中的“[中间件](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0)”选项，了解如何将此流量管理代码添加到 BotFramework 机器人。
+查看 BotFramework v4 中的“[中间件](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler)”选项，了解如何将此流量管理代码添加到 BotFramework 机器人。
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: ../../traffic-manager/index.yml

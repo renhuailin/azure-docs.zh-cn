@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: b922c25561843d140f1e2b8221f62fad89ea00c8
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 5cc1025528959f8c81aa80703e3fc26d59c5266f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520891"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618094"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>将专用 Python 包与 Azure 机器学习一起使用
 
@@ -52,11 +52,11 @@ Azure 机器学习服务在内部将 URL 替换为安全的 SAS URL，使 wheel 
 
 ## <a name="use-a-repository-of-packages-from-azure-devops-feed"></a>从 Azure DevOps 源使用包的存储库
 
-如果正积极开发机器学习应用程序的 Python 包，可以将它们作为项目托管在 Azure DevOps 存储库，并将其作为源发布。 此方法可让你集成 DevOps 工作流，以便通过 Azure 机器学习工作区生成包。 若要了解如何使用 Azure DevOps 设置 Python 源，请阅读 [Azure Artifacts 中的 Python 包入门](/azure/devops/artifacts/quickstarts/python-packages?preserve-view=true&view=azure-devops)
+如果正积极开发机器学习应用程序的 Python 包，可以将它们作为项目托管在 Azure DevOps 存储库，并将其作为源发布。 此方法可让你集成 DevOps 工作流，以便通过 Azure 机器学习工作区生成包。 若要了解如何使用 Azure DevOps 设置 Python 源，请阅读 [Azure Artifacts 中的 Python 包入门](/azure/devops/artifacts/quickstarts/python-packages)
 
 此方法使用个人访问令牌对存储库进行身份验证。 同样的方法适用于采用基于令牌的身份验证的其他存储库，如专用 GitHub 存储库。 
 
- 1. 为 Azure DevOps 实例[创建个人访问令牌 (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?preserve-view=true&tabs=preview-page&view=azure-devops#create-a-pat)。 将令牌的范围设为 Packaging > Read。 
+ 1. 为 Azure DevOps 实例[创建个人访问令牌 (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?tabs=preview-page#create-a-pat)。 将令牌的范围设为 Packaging > Read。 
 
  2. 使用 [Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-) 方法添加 Azure DevOps URL 和 PAT 作为工作区属性。
 
