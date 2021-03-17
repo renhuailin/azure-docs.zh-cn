@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a7e1cc2303438a904b95a378a14bd02ac88c179
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736622"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601995"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -43,7 +43,6 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 |[自定义视觉服务](./custom-vision-service/overview.md "自定义影像服务")|通过自定义视觉服务可以生成自定义图像分类器。|
 |[人脸](./face/index.yml "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。|
 |[表单识别器](./form-recognizer/index.yml "表单识别器")|表单识别器从表单文档中识别并提取键值对和表数据；然后输出结构化数据，包括原始文件中的关系。|
-|[墨迹识别器](/previous-versions/azure/cognitive-services/Ink-Recognizer/ "墨迹识别器")（将停用）|使用墨迹识别器可以识别和分析数字墨迹笔划数据、形状和手写内容，并输出包含所有已识别实体的文档结构。|
 |[视频索引器](../media-services/video-indexer/video-indexer-overview.md "视频索引器")|使用视频索引器从视频中提取见解。|
 
 ## <a name="speech-apis"></a>语音 API

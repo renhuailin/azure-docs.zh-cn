@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f10978107f80e7dea4e6d5ad40c078c55f225c2d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491203"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614337"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>快速入门：通过 Azure CLI 与 Azure Database for PostgreSQL - 灵活服务器进行连接和查询
 
@@ -34,7 +34,7 @@ ms.locfileid: "102491203"
 ```azurecli
 az postgres flexible-server create --public-access <your-ip-address>
 ```
-可以为此命令提供其他参数以对其进行自定义。 查看 [az postgres flexible-server create](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az_postgres_flexible_server_create) 的所有参数。
+可以为此命令提供其他参数以对其进行自定义。 查看 [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) 的所有参数。
 
 ## <a name="view-all-the-arguments"></a>查看所有参数
 可以通过 ```--help``` 参数查看此命令的所有参数。 

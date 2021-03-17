@@ -3,7 +3,7 @@ title: 使用 Azure 门户配置内容密钥授权策略 | Microsoft Docs
 description: 本文介绍如何配置内容密钥的授权策略。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ee82a3fa-c34b-48f2-a108-8ba321f1691e
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0218c24637b9b49972e93b8dd53e5970c9ab89d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 68bd4bd2472e80a663294745368fb505767a230a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260894"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008308"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 

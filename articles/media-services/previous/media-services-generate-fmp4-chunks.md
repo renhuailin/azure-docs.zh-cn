@@ -3,7 +3,7 @@ title: 创建生成 fMP4 区块的 Azure 媒体服务编码任务 | Microsoft �
 description: 本主题介绍如何创建生成 fMP4 区块的编码任务。 将此任务用于 Media Encoder Standard 或 Media Encoder Premium Workflow 编码器时，输出资产会包含 fMP4 区块而非 ISO MP4 文件。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a247ef24104d9ecb9c827896d2bbfda8c50b9958
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6311aa6d0bfca133925f27b5ea4849769d9e0ec4
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269397"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013357"
 ---
 # <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>创建生成 fMP4 区块的编码任务
 
@@ -41,14 +41,14 @@ ms.locfileid: "89269397"
 
 - 创建编码作业。
 - 获取对 **Media Encoder Standard** 编码器的引用。
-- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。  
+- 向作业添加一个编码任务，指定使用“自适应流式处理”预设。 
 - 创建一个输出资产，其中将包含 fMP4 区块和 .ism 文件。
 - 添加事件处理程序以检查作业进度。
 - 提交作业。
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

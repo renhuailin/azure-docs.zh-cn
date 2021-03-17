@@ -1,7 +1,7 @@
 ---
 title: Azure 媒体服务动态打包概述 | Microsoft 文档
 description: 本文概述了 Microsoft Azure 媒体服务动态打包。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
-ms.author: juliako
-ms.openlocfilehash: 7c4f099df071bccb8a74f29a98953fe1e0323b12
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d2394cba157a7049e3b63b09fda9e018f0a0b32f
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695571"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013612"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 85773ec66dbe567afcfd1afca1d14aa0119fb8f6
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695554"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464014"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>将 IoT 中心事件源添加到 Azure 时序见解环境
 
@@ -27,7 +27,7 @@ ms.locfileid: "98695554"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 创建 [Azure 时序见解环境](./tutorials-set-up-tsi-environment.md)。
+* 创建 [Azure 时序见解环境](./tutorial-set-up-environment.md)。
 * [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * IoT 中心必须有正在发送进来的活动消息事件。
 * 在 IoT 中心创建专用使用者组，以供 Azure 时序见解环境使用。 每个 Azure 时序见解事件源都必须具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用同一使用者组中的事件，则所有读取器都可能出现故障。 有关详细信息，请阅读 [Azure IoT 中心开发人员指南](../iot-hub/iot-hub-devguide.md)。

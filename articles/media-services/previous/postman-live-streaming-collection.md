@@ -3,7 +3,7 @@ title: 导入 Postman 集合以实现 Azure 实时传送视频流 REST 调用
 description: 本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: c01883c75ad5d6633abeffcd29a7d3cf2485d6fc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 542db385ac0c59bc20da8616444bb2e40e79ec5a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511716"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103007838"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>使用实时传送视频流操作导入一个 Postman 集合
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文包含 Postman  集合的定义，该集合包含调用实时传送视频流  Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman  以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
+本文包含 Postman 集合的定义，该集合包含调用实时传送视频流 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman  以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 
 ```json
 {

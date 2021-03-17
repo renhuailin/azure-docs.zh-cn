@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c79526288fb7e05959ac60cddc6f468656ffd4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972537"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103201114"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用内置直接方法来与 edgeAgent 通信
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 使用 IoT Edge 代理模块中包含的直接方法监视和管理 IoT Edge 部署。 直接方法在设备上实现，然后可从云中调用。 IoT Edge 代理包含一些可以帮助你远程监视和管理 IoT Edge 设备的直接方法。
 
@@ -71,12 +73,12 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 
 ## <a name="diagnostic-direct-methods"></a>诊断直接方法
 
-* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs)：在直接方法的响应中检索内联模块日志。
+* [GetModuleLogs](how-to-retrieve-iot-edge-logs.md#retrieve-module-logs)：检索直接方法的响应中内联的模块日志。
 * [UploadModuleLogs](how-to-retrieve-iot-edge-logs.md#upload-module-logs)：检索模块日志，并将其上传到 Azure Blob 存储。
 * [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)：使用支持捆绑检索模块日志，并将 zip 文件上传到 Azure Blob 存储。
-* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status)：检查上传日志或支持捆绑请求的状态。
+* [GetTaskStatus](how-to-retrieve-iot-edge-logs.md#get-upload-request-status)：检查上传日志请求或支持捆绑请求的状态。
 
-1.0.10 版本提供这些诊断直接方法。
+从 1.0.10 版本起提供这些诊断直接方法。
 
 ## <a name="next-steps"></a>后续步骤
 

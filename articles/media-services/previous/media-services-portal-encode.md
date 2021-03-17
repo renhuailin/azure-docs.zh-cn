@@ -3,7 +3,7 @@ title: 在 Azure 门户中使用 Media Encoder Standard 对资产进行编码 | 
 description: 本教程逐步演示如何在 Azure 门户中使用 Media Encoder Standard 对资产进行编码。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 606a4d753675475cf0138b688523e9029e6d3b0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 5f4bb3c9b23ffd68939f1088b1252c6e31c1dad7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260775"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103010501"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>在 Azure 门户中使用 Media Encoder Standard 对资产进行编码
 
@@ -43,14 +43,14 @@ ms.locfileid: "89260775"
 要使用 Media Encoder Standard 对内容进行编码，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置”   > “资产”  。 选择要编码的资产。
-3. 选择“编码”按钮  。
-4. 在“对资产进行编码”窗格中，选择“Media Encoder Standard”处理器和预设   。 有关预设的信息，请参阅[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)和 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。 请务必选择最适合输入视频的预设。 例如，如果知道输入视频的分辨率为 1920 &#215; 1080 像素，则可选择“H264 多比特率 1080p”预设  。 如果视频的分辨率低 (640 &#215; 360)，则不应使用“H264 多比特率 1080p”预设  。
+2. 选择“设置” > “资产”。 选择要编码的资产。
+3. 选择“编码”按钮。
+4. 在“对资产进行编码”窗格中，选择“Media Encoder Standard”处理器和预设。 有关预设的信息，请参阅[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)和 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。 请务必选择最适合输入视频的预设。 例如，如果知道输入视频的分辨率为 1920 &#215; 1080 像素，则可选择“H264 多比特率 1080p”预设。 如果视频的分辨率低 (640 &#215; 360)，则不应使用“H264 多比特率 1080p”预设。
    
    可以编辑输出资产名称和作业名称，以便管理资源。
    
    ![对资产进行编码](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. 选择“创建”  。
+5. 选择“创建”。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

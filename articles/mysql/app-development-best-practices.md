@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.openlocfilehash: 7f98e14c2eae133941f3fc87247a427198ebcdc2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547242"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611957"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>使用 Azure Database for MySQL 构建应用程序的最佳做法 
 
@@ -69,14 +69,14 @@ ms.locfileid: "92547242"
 良好的做法是在第一次重试前等待 5 秒。 然后，每次重试都逐步延长等待时间，最多 60 秒。 限制最大重试次数。达到该次数时，应用程序会认为操作失败，随后你就可以进一步进行调查。 有关详细信息，请参阅[如何排查连接错误](./howto-troubleshoot-common-connection-issues.md)。 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>启用读取复制以缓解故障转移问题
-对于故障转移场景，可以使用[数据传入复制](./howto-data-in-replication.md)。 使用读取副本时，不会发生源服务器和副本服务器之间的自动故障转移。 
+对于故障转移场景，可以使用[数据传入复制](./howto-data-in-replication.md)。 使用只读副本时，在源服务器与副本服务器之间无法自动进行故障转移。 
 
-你会注意到源和副本之间的滞后，因为复制是异步的。 网络延迟可能会受到许多因素的影响，如在源服务器上运行的工作负荷的大小以及数据中心之间的延迟。 大多数情况下，副本延迟在几秒钟到几分钟之间。
+由于复制是异步的，因此你会注意到在源服务器与副本之间存在延迟。 网络延迟可能受许多因素影响，例如，在源服务器上运行的工作负荷的大小，以及数据中心之间的延迟。 大多数情况下，副本延迟在几秒钟到几分钟之间。
 
 ## <a name="database-deployment"></a>数据库部署 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>在 CI/CD 部署管道中配置 Azure Database for MySQL 任务
-有时，你需要将更改部署到数据库。 在这种情况下，可以通过 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 使用持续集成 (CI) 和持续交付 (CD)，并使用针对 [MySQL 服务器](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true)的任务通过对数据库运行自定义脚本来更新数据库。
+有时，你需要将更改部署到数据库。 在这种情况下，可以通过 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 使用持续集成 (CI) 和持续交付 (CD)，并使用针对 [MySQL 服务器](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment)的任务通过对数据库运行自定义脚本来更新数据库。
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>使用有效的过程手动部署数据库 
 在手动部署数据库的过程中，请执行以下步骤以最大程度地减少停机时间或降低部署失败的风险： 

@@ -3,7 +3,7 @@ title: 使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务 | Micr
 description: 本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: Juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan
-ms.openlocfilehash: 17b54b2adb21419de61d2309752987f6e4a48e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264481"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017046"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务
 
@@ -47,7 +47,7 @@ ms.locfileid: "89264481"
 * 媒体内容存储在 AMS 中。
 * 内容密钥的密钥 ID 存储在 castLabs 和 AMS 中。
 * castLabs 和 AMS 均内置了令牌身份验证。 以下部分讨论身份验证令牌。 
-* 客户端请求流式传输视频时，内容将使用**通用加密** (CENC) 进行动态加密，并由 AMS 动态打包成平滑流和 DASH。 我们还针对 HLS 流式处理协议提供 PlayReady M2TS 基本流加密。
+* 客户端请求流式传输视频时，内容将使用 **通用加密** (CENC) 进行动态加密，并由 AMS 动态打包成平滑流和 DASH。 我们还针对 HLS 流式处理协议提供 PlayReady M2TS 基本流加密。
 * PlayReady 许可证从 AMS 许可证服务器检索，而 Widevine 许可证则从 castLabs 许可证服务器检索。 
 * Media Player 会自动根据客户端平台功能决定要提取哪个许可证。 
 
@@ -110,8 +110,8 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 1. 打开新的选项卡并启动 STS：http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]。
 2. 转到 [Azure 媒体播放器](https://aka.ms/azuremediaplayer)。
 3. 粘贴到流 URL 中。
-4. 单击“高级选项”**** 复选框。
-5. 在“保护”**** 下拉列表中选择 PlayReady 和/或 Widevine。
+4. 单击“高级选项”复选框。
+5. 在“保护”下拉列表中选择 PlayReady 和/或 Widevine。
 6. 将从 STS 获取的令牌粘贴到“令牌”文本框中。 
    
    castLab 许可证服务器不需要在令牌前面加“Bearer=”前缀。 因此，请在提交令牌之前删除该前缀。

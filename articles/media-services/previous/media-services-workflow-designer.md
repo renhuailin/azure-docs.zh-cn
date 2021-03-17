@@ -3,7 +3,7 @@ title: 使用工作流设计器创建高级编码工作流 | Microsoft Docs
 description: 了解如何使用工作流设计器创建高级编码工作流。
 services: media-services
 documentationcenter: ''
-author: anilmur
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 004815f2-0761-4706-87a1-675ba36e0322
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262662"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011147"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概述
-**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
-借助工作流设计器工具的强大功能，可以设计和创建会在**媒体编码器高级**中运行的复杂工作流。  
+**工作流设计器** 是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用 **媒体编码器高级工作流** 进行编码。
+借助工作流设计器工具的强大功能，可以设计和创建会在 **媒体编码器高级** 中运行的复杂工作流。  
 
 根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。 可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
 
@@ -42,7 +42,7 @@ ms.locfileid: "89262662"
 > [!NOTE]
 > 若要获取工作流设计器工具的副本，请联系 mepd@microsoft.com。
 
-创建工作流文件后，可将其作为资产上传，然后用于对媒体文件编码。 有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
+创建工作流文件后，可将其作为资产上传，然后用于对媒体文件编码。 有关如何使用 **.NET** 通过 **媒体编码器高级工作流** 编码的信息，请参阅 [使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改现有工作流
 可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。

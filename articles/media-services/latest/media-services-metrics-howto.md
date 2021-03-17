@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: ab5871749630b047f6498a2439f77693a999c798
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590762"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493911"
 ---
 # <a name="monitor-media-services-metrics"></a>监视媒体服务指标
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及应使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
+可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及应使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](monitoring/monitor-media-services-data-reference.md)。
 
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 Azure CLI 查询指标。 本文介绍如何使用 Azure 门户图表和 Azure CLI 监视指标。
 
 ## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](./create-account-howto.md)
-- 参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)
+- 参阅[监视媒体服务指标和诊断日志](monitoring/monitor-media-services-data-reference.md)
 
 ## <a name="view-metrics-in-azure-portal"></a>在 Azure 门户中查看指标
 
@@ -46,7 +46,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
     * &lt;媒体服务帐户名称&gt;/&lt;流式处理终结点名称&gt;
     * &lt;存储帐户名称&gt;
 
-    筛选，然后选择资源并按“应用”。 有关支持的资源和指标的详细信息，请参阅[监视媒体服务指标](media-services-metrics-diagnostic-logs.md)。
+    筛选，然后选择资源并按“应用”。 有关支持的资源和指标的详细信息，请参阅[监视媒体服务指标](monitoring/monitor-media-services-data-reference.md)。
 
     > [!NOTE]
     > 若要在你要监视的资源之间切换，请再次单击“源”框，然后重复上述步骤。

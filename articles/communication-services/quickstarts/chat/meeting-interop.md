@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: 在本快速入门中，你将了解如何通过 Azure 通信聊天客户端库加入 Teams 会议
 author: askaur
 ms.author: askaur
-ms.date: 12/08/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8c4753b2041c2ab15fd586a8b1add6c4dd1a167b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124017"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496162"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入门：将你的聊天应用连接到 Teams 会议
 
