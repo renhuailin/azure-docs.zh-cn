@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/16/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132437"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573449"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -88,7 +88,6 @@ Azure 防火墙管理器存在以下已知问题：
 |批量 IP 地址添加失败|如果添加多个公共 IP 地址，安全中心防火墙将进入失败状态。|添加较小的公共 IP 地址增量。 例如，一次添加 10 个。|
 |安全虚拟中心不支持 DDoS 防护标准|DDoS 防护标准未与 vWAN 集成。|正在调查|
 |不完全支持活动日志|防火墙策略当前不支持活动日志。|正在调查|
-|配置 SNAT 专用 IP 地址范围|如果已配置 Azure 防火墙策略，则会忽略[专用 IP 范围设置](../firewall/snat-private-range.md)。 会使用默认 Azure 防火墙行为；根据 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)，当目标 IP 地址位于专用 IP 地址范围内时，该行为不使用 SNAT 网络规则。|正在调查|
 |迁移防火墙以使用防火墙策略时，某些防火墙设置不会迁移|迁移到 Azure 防火墙策略时，不会迁移可用性区域和 SNAT 专用地址。|正在调查| 
 
 ## <a name="next-steps"></a>后续步骤

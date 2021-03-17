@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519021"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612892"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -306,7 +306,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-接下来，使用[连接字符串](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)将主计算机注册为 IoT 中心实例中的 IoT Edge 设备。
+接下来，使用[连接字符串](../../iot-edge/how-to-register-device.md)将主计算机注册为 IoT 中心实例中的 IoT Edge 设备。
 
 需将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制该连接字符串。 或者，可以在 Azure CLI 中运行以下命令。
 
@@ -468,7 +468,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-接下来，使用[连接字符串](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)将 VM 注册为 IoT 中心实例中的 IoT Edge 设备。
+接下来，使用[连接字符串](../../iot-edge/how-to-register-device.md)将 VM 注册为 IoT 中心实例中的 IoT Edge 设备。
 
 需将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制该连接字符串。 或者，可以在 Azure CLI 中运行以下命令。
 

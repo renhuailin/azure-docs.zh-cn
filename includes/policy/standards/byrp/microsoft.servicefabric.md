@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3d79c7454dedbc5aad38d15360d68aa152fd2d2a
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 336cda22727065d7461f13dd2fc8cc79425a58b4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099382"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635326"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -54,10 +54,10 @@ ms.locfileid: "100099382"
 |访问控制 |9.2.3 |管理特权访问权限 |[Service Fabric 群集应仅使用 Azure Active Directory 进行客户端身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb54ed75b-3e1a-44ac-a333-05ba39b99ff0) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditADAuth_Audit.json) |
 |加密 |10.1.1 |有关使用加密控制措施的策略 |[Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
 
-## <a name="new-zealand-ism"></a>新西兰 ISM
+## <a name="new-zealand-ism-restricted"></a>限制性的新西兰 ISM
 
-若要查看所有 Azure 服务的可用 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 法规合规性 - 新西兰信息安全手册](../../../../articles/governance/policy/samples/new-zealand-ism.md)。
-有关此合规性标准的详细信息，请参阅[新西兰信息安全手册](https://www.nzism.gcsb.govt.nz/)。
+若要查看所有 Azure 服务的可用 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 法规合规性 - 限制性的新西兰 ISM](../../../../articles/governance/policy/samples/new-zealand-ism.md)。
+有关此合规性标准的详细信息，请参阅[限制性的新西兰 ISM](https://www.nzism.gcsb.govt.nz/)。
 
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

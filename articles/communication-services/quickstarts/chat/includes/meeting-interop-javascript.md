@@ -2,15 +2,15 @@
 title: 快速入门 - 加入 Teams 会议
 author: askaur
 ms.author: askaur
-ms.date: 02/17/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0c5ff52e5d3769124cd101b2483f18aea6963d25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750302"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103496163"
 ---
 ## <a name="joining-the-meeting-chat"></a>加入会议聊天 
 
@@ -23,7 +23,7 @@ ms.locfileid: "101750302"
 ```console
 npm install @azure/communication-common --save
 
-npm install @azure/communication-administration --save
+npm install @azure/communication-identity --save
 
 npm install @azure/communication-signaling --save
 
@@ -153,7 +153,7 @@ npm install @azure/communication-calling --save
 // npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
 import { CallClient, CallAgent } from "@azure/communication-calling";
 import { AzureCommunicationUserCredential } from "@azure/communication-common";
-import { CommunicationIdentityClient } from "@azure/communication-administration";
+import { CommunicationIdentityClient } from "@azure/communication-identity";
 import { ChatClient } from "@azure/communication-chat";
 
 let call;

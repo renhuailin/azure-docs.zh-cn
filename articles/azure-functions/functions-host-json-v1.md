@@ -3,12 +3,12 @@ title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 588ab6723015f34d15e4a46ec4f7324302b13b81
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832817"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608948"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -149,7 +149,7 @@ ms.locfileid: "94832817"
 
 ## <a name="eventhub"></a>eventHub
 
-[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#functions-1x)的配置设置。
+[事件中心触发器和绑定](functions-bindings-event-hubs.md#functions-1x)的配置设置。
 
 ## <a name="functions"></a>functions
 
@@ -314,7 +314,7 @@ ms.locfileid: "94832817"
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
 |autoRenewTimeout|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|如果为 true，则触发器将在成功执行操作后自动完成消息处理。 为 false 时，函数负责在返回前完成消息。|
+|autoComplete|是|如果为 true，则触发器会在成功执行操作后自动完成消息处理。 如果为 false，则函数负责在返回之前完成消息。|
 
 ## <a name="singleton"></a>singleton
 

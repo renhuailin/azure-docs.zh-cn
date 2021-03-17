@@ -6,12 +6,12 @@ ms.author: elhorton
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: fa10ddad8d2fbbc414f0ccaf16b9b99fae0b0786
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c9624e9a23d005185429c82199324ac570cbd63e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505029"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607724"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT 设备 SDK 概述
 
@@ -107,7 +107,7 @@ Azure IoT 设备 SDK 可以由多种语言实现，因此你可以选择你喜�
 * [GitHub 存储库](https://github.com/Azure/azure-iot-sdk-node)
 * [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 * [包](https://www.npmjs.com/package/azure-iot-device)
-* [参考文档](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
+* [参考文档](/javascript/api/azure-iot-device/)
 * [Edge 模块参考文档](/javascript/api/azure-iot-device/moduleclient)
 
 #### <a name="python-device-sdk"></a>Python 设备 SDK
@@ -131,7 +131,7 @@ C# IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-
 
 Java IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-java/tree/master/service) | [包](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) | [示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples) | [参考文档](/java/api/com.microsoft.azure.sdk.iot.service)
 
-JavaScript IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/service) | [包](https://www.npmjs.com/package/azure-iothub) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | [参考文档](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest&preserve-view=true)
+JavaScript IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-node/tree/master/service) | [包](https://www.npmjs.com/package/azure-iothub) | [示例](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | [参考文档](/javascript/api/azure-iothub/)
 
 Python IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub) | [包](https://pypi.python.org/pypi/azure-iot-hub/) | [示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [参考文档](/python/api/azure-iot-hub)
 

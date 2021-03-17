@@ -3,7 +3,7 @@ title: 使用 Azure 门户缩放媒体处理 | Microsoft Docs
 description: 本教程逐步介绍了如何使用 Azure 门户缩放媒体处理。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: c637817e88e9258a0f80cf72f737b0deae753002
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 49c3899b912a88605e9269cdb1c34c7e18ed5247
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96012248"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009719"
 ---
 # <a name="change-the-reserved-unit-type"></a>更改预留单位类型
 
@@ -27,7 +27,7 @@ ms.locfileid: "96012248"
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [门户](media-services-portal-scale-media-processing.md)
+> * [Portal](media-services-portal-scale-media-processing.md)
 > * [REST](/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
@@ -52,11 +52,11 @@ ms.locfileid: "96012248"
 若要更改预留单位类型和预留单位数目，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”  窗口中，选择“媒体预留单位”  。
+2. 在“设置”窗口中，选择“媒体预留单位”。
    
-    若要更改所选预留单位类型的预留单位数，请使用屏幕顶部的“媒体预留单位”  滑块。
+    若要更改所选预留单位类型的预留单位数，请使用屏幕顶部的“媒体预留单位”滑块。
    
-    若要更改“预留单位类型”  ，请单击“预留处理单位的速度”  栏。 然后，选择所需的定价层：S1、S2 或 S3。
+    若要更改“预留单位类型”，请单击“预留处理单位的速度”栏。 然后，选择所需的定价层：S1、S2 或 S3。
    
 3. 按“保存”按钮保存更改。
    

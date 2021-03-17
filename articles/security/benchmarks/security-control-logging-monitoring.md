@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d30d8cdfe6ee93f54dfd560987ac8b6a78517fd8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ccfbb585ccf50366721925b0b31b17088fd36371
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718686"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612416"
 ---
 # <a name="security-control-logging-and-monitoring"></a>安全控制：日志记录和监视
 
@@ -124,9 +124,9 @@ Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理计算
 
 为 Azure 虚拟机和云服务启用反恶意软件事件集合。
 
-- [如何为虚拟机配置 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [如何为虚拟机配置 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension)
 
-- [如何为云服务配置 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [如何为云服务配置 Microsoft Antimalware](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension)
 
 - [了解 Microsoft Antimalware](../fundamentals/antimalware.md)
 

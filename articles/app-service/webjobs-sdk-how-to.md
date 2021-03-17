@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737263"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617125"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -32,7 +32,7 @@ ms.locfileid: "98737263"
 > [Azure Functions](../azure-functions/functions-overview.md) 是基于 WebJobs SDK 构建的，本文提供了适用于某些主题的 Azure Functions 文档的链接。 注意 Functions 与 WebJobs SDK 之间的以下差异：
 > * Azure Functions 版本 2.*x* 对应于 WebJobs SDK 版本 3.*x*，Azure Functions 1.*x* 对应于 WebJobs SDK 2.*x*。 源代码存储库使用 WebJobs SDK 编号。
 > * Azure Functions C# 类库的示例代码类似于 WebJobs SDK 代码，不过，在 WebJobs SDK 项目中，无需指定 `FunctionName` 特性。
-> * 某些绑定类型，例如 HTTP (Webhook) 以及基于 HTTP 的事件网格，只在 Functions 中受支持。
+> * 某些绑定类型仅在 Functions 中受支持，例如 HTTP (Webhooks) 和 Event Grid（基于 HTTP）。
 >
 > 有关详细信息，请参阅 [WebJobs SDK 和 Azure Functions 的比较](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs)。
 
@@ -73,7 +73,7 @@ static void Main(string[] args)
 
 可在开发模式下运行主机，提高本地开发效率。 下面介绍部分设置，这些设置在开发模式下运行时会发生更改：
 
-| properties | 开发设置 |
+| 属性 | 开发设置 |
 | ------------- | ------------- |
 | `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
@@ -425,7 +425,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json)一文。
+有关更多详细信息，请参阅[事件中心绑定](../azure-functions/functions-bindings-event-hubs.md#host-json)一文。
 
 ### <a name="queue-storage-trigger-configuration"></a>队列存储触发器配置
 

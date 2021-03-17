@@ -2,17 +2,23 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fc2bdd31f0dd2649c4f8a7a38e161f04f0e80260
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.openlocfilehash: 57520ad14cbc8fe142d473263c6009fc7e86834a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100097887"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618673"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure 事件网格域应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9830b652-8523-49cc-b1b3-e17dce1127ca) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。通过将专用终结点映射到事件网格域（而不是整个服务），还可以防范数据泄露风险。有关更多信息，请参阅：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/EventGridDomains_EnablePrivateEndpoint_Audit.json) |
-|[Azure 事件网格主题应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4b90e17e-8448-49db-875e-bd83fb6f804f) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到主题（而不是整个服务），还可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/EventGridTopics_EnablePrivateEndpoint_Audit.json) |
+|[Azure 事件网格域应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8f774be-6aee-492a-9e29-486ef81f3a68) |禁用公用网络访问可确保资源不会在公共 Internet 上公开，从而提高了安全性。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PublicNetworkAccess_AuditDeny.json) |
+|[Azure 事件网格域应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9830b652-8523-49cc-b1b3-e17dce1127ca) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到事件网格域（而不是整个服务），还可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PrivateEndpoint_Audit.json) |
+|[Azure 事件网格主题应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1adadefe-5f21-44f7-b931-a59b54ccdb45) |禁用公用网络访问可确保资源不会在公共 Internet 上公开，从而提高了安全性。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_PublicNetworkAccess_AuditDeny.json) |
+|[Azure 事件网格主题应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4b90e17e-8448-49db-875e-bd83fb6f804f) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到事件网格主题（而不是整个服务），还可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_PrivateEndpoint_Audit.json) |
+|[部署 - 使用专用终结点配置 Azure 事件网格域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36f4658a-848a-467b-881c-e6fa20cf75fc) |通过专用终结点，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到资源，可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PrivateEndpoint_DeployIfNotExists.json) |
+|[部署 - 使用专用终结点配置 Azure 事件网格主题](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fcec95c-fbdf-45e8-91e1-e3175d9c9eca) |通过专用终结点，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到资源，可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_PrivateEndpoint_DeployIfNotExists.json) |
+|[修改 - 配置 Azure 事件网格域以禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F898e9824-104c-4965-8e0e-5197588fa5d4) |禁用对 Azure 事件网格资源的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这将有助于防范数据泄露风险。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PublicNetworkAccess_Modify.json) |
+|[修改 - 配置 Azure 事件网格主题以禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F36ea4b4b-0f7f-4a54-89fa-ab18f555a172) |禁用对 Azure 事件网格资源的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这将有助于防范数据泄露风险。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/privateendpoints](https://aka.ms/privateendpoints)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_PublicNetworkAccess_Modify.json) |

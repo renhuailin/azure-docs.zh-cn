@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.openlocfilehash: 1fcf560ba1fef137a28ab1872635cc2182cd07e1
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735936"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009192"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
 
@@ -75,5 +75,3 @@ Azure IoT 中心提供：
 * [参考 - 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了用于开发与 IoT 中心交互的设备和服务应用的 Azure IoT SDK。 此文章包括指向联机 API 文档的链接。
 
 * [参考 - IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)详细介绍了 IoT 中心如何支持 MQTT 协议。 此文章介绍了到 Azure IoT SDK 的 MQTT 协议内置支持，并阐述了如何直接使用 MQTT 协议。
-
-* [词汇表](iot-hub-devguide-glossary.md)与 IoT 中心相关的常见术语的列表。

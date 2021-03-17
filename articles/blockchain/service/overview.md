@@ -1,15 +1,15 @@
 ---
 title: Azure 区块链服务概述
 description: Azure 区块链服务概述
-ms.date: 01/04/2021
+ms.date: 03/15/2021
 ms.topic: overview
-ms.reviewer: ravastra
-ms.openlocfilehash: 15d1126a98a4d3194a256ed07de3918cb066a4e2
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.reviewer: patricka
+ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963872"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573619"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -19,7 +19,7 @@ Azure 区块链服务是一项完全托管的账本服务，使用户能够在 A
 * 内置联盟管理
 * 使用常用的开发工具开发智能合同
 
-Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[伊斯坦布尔拜占庭容错 (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) 共识机制为 Ethereum [Quorum](https://www.goquorum.com/) 账本提供支持。
+Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[伊斯坦布尔拜占庭容错 (IBFT)](https://docs.goquorum.consensys.net/en/stable/Concepts/Consensus/IBFT/) 共识机制为 Ethereum [Quorum](https://www.goquorum.com/) 账本提供支持。
 
 这些功能几乎都不需要进行任何管理，并且都是在不另外收费的情况下提供的。 可以专注于应用开发和业务逻辑，而不是分配时间和资源来管理虚拟机和基础结构。 此外，可以继续开发应用程序，使用自己选择的开放源代码工具和平台即可交付解决方案，而无需学习新技能。
 

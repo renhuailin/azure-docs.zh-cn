@@ -3,7 +3,7 @@ title: 通过媒体编码器高级工作流进行高级编码 | Microsoft Docs
 description: 了解如何使用媒体编码器高级工作流进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017227"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013493"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 
@@ -31,16 +31,16 @@ ms.locfileid: "92017227"
 >
 
 ## <a name="overview"></a>概述
-Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器。 此处理器针对高级按需工作流提供高级编码功能。
+Microsoft Azure 媒体服务即将推出 **媒体编码器高级工作流** 媒体处理器。 此处理器针对高级按需工作流提供高级编码功能。
 
-以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
+以下主题概述了与 **媒体编码器高级工作流** 相关的详细信息：
 
-* [媒体编码器高级工作流支持的格式](./media-services-encode-asset.md) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
-* [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能********。
+* [媒体编码器高级工作流支持的格式](./media-services-encode-asset.md) - 介绍 **媒体编码器高级工作流** 支持的文件格式和编解码器。
+* [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能。
 
-本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码****。
+本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码。
 
-**媒体编码器高级工作流**的编码任务需要一个名为“Workflow”文件的单独配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
+**媒体编码器高级工作流** 的编码任务需要一个名为“Workflow”文件的单独配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
 
 也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件。 该文件夹还包含这些文件的相关说明。
 
@@ -48,11 +48,11 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="encoding-example"></a>编码示例
 
-以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
+以下示例演示了如何使用 **媒体编码器高级工作流** 进行编码。
 
 将执行以下步骤：
 

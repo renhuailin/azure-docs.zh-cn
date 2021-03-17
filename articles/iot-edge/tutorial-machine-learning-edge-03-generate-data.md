@@ -8,14 +8,16 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d5fdd762834d351119116c5e4854dd4233671c29
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932398"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463123"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教程：生成模拟设备数据
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 在本文中，我们将使用机器学习训练数据来模拟设备向 Azure IoT 中心发送遥测数据。 如简介中所述，本教程使用[涡扇发动机降级模拟数据集](https://c3.nasa.gov/dashlink/resources/139/)来模拟来自一组飞机发动机数据，以进行训练和测试。
 
