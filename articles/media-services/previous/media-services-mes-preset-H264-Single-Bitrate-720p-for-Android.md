@@ -1,7 +1,7 @@
 ---
 title: H264 单比特率 720p (Android) | Microsoft Docs
-description: 本主题概述“H264 单比特率 720p (Android)”任务预设  。
-author: Juliako
+description: 本主题概述“H264 单比特率 720p (Android)”任务预设。
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: fb51599a7d4e242ddc92f546ae3bb62b77aeed2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a05203925c0e731c1c05e0c97d0f67f997419970
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261591"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016434"
 ---
-# <a name="h264-single-bitrate-720p-for-android"></a>H264 单比特率 720p (Android)
+# <a name="h264-single-bitrate-720p-for-android"></a>适用于 Android 的 H264 单比特率 720p
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 

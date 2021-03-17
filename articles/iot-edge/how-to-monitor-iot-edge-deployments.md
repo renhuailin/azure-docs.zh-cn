@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: f4f2f8522f6d3d1039673803d946323deb485db9
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684197"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200253"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge 提供报告，让你可以实时监视部署到 IoT Edge 设备上的模块的信息。 IoT 中心服务从设备检索状态，然后将这些状态提供给操作员。 监视对于[大规模部署](module-deployment-monitoring.md)（包括自动部署和分层部署）也很重要。
 
@@ -48,7 +50,7 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
     | ID | 部署的名称。 |
     | 类型 | 部署的类型（“部署”或“分层部署”） 。 |
     | 目标条件 | 用于定义目标设备的标记。 |
-    | 优先级 | 分配给部署的优先级编号。 |
+    | 优先度 | 分配给部署的优先级编号。 |
     | 系统指标 | IoT 中心内与目标条件匹配的设备孪生数。 “已应用”指定 IoT 中心内已将部署内容应用到其模块孪生的设备数。 |
     | 设备指标 | 从 IoT Edge 客户端运行时报告成功或错误的 IoT Edge 设备数。 |
     | 自定义指标 | IoT Edge 设备数，此类设备针对你为部署定义的任何指标报告数据。 |

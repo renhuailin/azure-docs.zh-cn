@@ -3,7 +3,7 @@ title: 使用 Azure 媒体服务设计带访问控制的内容保护系统 | Mic
 description: 了解如何为 Microsoft 平滑流式处理客户端移植工具包授权。
 services: media-services
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 1a4f151b597b57b77fa6517c6ea0d586c1106986
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010905"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103017131"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统
 
@@ -61,11 +61,11 @@ Microsoft 已成为 DASH 和 CENC 与其他一些主要行业播放器的积极�
 
 下表汇总了每个 DRM 支持的原生平台/原生应用和浏览器。
 
-| **客户端平台** | **本机 DRM 支持** | **浏览器/应用** | **流式处理格式** |
+| **客户端平台** | **原生 DRM 支持** | **浏览器/应用** | **流格式** |
 | --- | --- | --- | --- |
 | **智能电视、操作员 STB、OTT STB** |主要为 PlayReady，和/或 Widevine，和/或其他 DRM |Linux、Opera、WebKit 及其他 |各种格式 |
-| **Windows 10 设备 (Windows 电脑、Windows 平板电脑、Windows Phone、Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
-| **Android 设备 (手机、平板电脑、TV)** |Widevine |Chrome/EME |DASH、HLS |
+| **Windows 10 设备（Windows 电脑、Windows 平板电脑、Windows Phone、Xbox）** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
+| **Android 设备（手机、平板电脑、电视）** |Widevine |Chrome/EME |DASH、HLS |
 | **iOS（iPhone、iPad）、OS X 客户端和 Apple 电视** |FairPlay |Safari 8+/EME |HLS |
 
 就目前每种 DRM 的部署状态而言，服务通常需要实现两到三个 DRM，以确保能以最佳方式处理所有类型的终结点。
@@ -121,7 +121,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **ContentKey-to-asset** | **应用场景** |
+| **ContentKey-to-asset** | **方案** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -151,7 +151,7 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **球员** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
@@ -192,7 +192,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产不受 DRM 保护。  DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -246,7 +246,7 @@ DRM 子系统可能包含以下组件：
 
     ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
-* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。 对于本地版本和已部署的版本，需要提供每个应用程序的权限。
+* 在应用程序的“配置”选项卡上，将权限添加到 Azure AD 中的应用程序。  对于本地版本和已部署的版本，需要提供每个应用程序的权限。
 
     ![权限](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 
@@ -262,7 +262,7 @@ DRM 子系统可能包含以下组件：
     <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
     ```
 
-    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。
+    GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。 
 
 * 授予组成员资格声明权限。 确保 Azure AD 应用程序清单文件中包含以下内容： 
 
@@ -349,7 +349,7 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 3. 更新应用程序清单文件，使 groupMembershipClaims 属性具有值 "groupMembershipClaims": "All"。
 
-4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。 在“委派权限”下面选择“访问 [资源名称]”。 此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
+4. 在指向播放器 Web 应用的 Azure AD 应用中，在“对其他应用程序的权限”部分添加步骤 1 中添加的资源应用。  在“委派权限”下面选择“访问 [资源名称]”。   此选项可授予 Web 应用创建访问令牌的权限以访问资源应用。 如果使用 Visual Studio 和 Azure Web 应用进行开发，请对本地版本和已部署版本的 Web 应用执行此操作。
 
 Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
@@ -409,7 +409,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **Domain** |
+| **域名** | **域** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |
@@ -421,11 +421,11 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 **自定义 Azure AD 租户域帐户**：自定义 Azure AD 租户域的自定义登录页。
 
-![显示自定义 Azure A D 租户域的自定义登录页的屏幕截图。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![屏幕截图，显示自定义 Azure AD 租户域的自定义登录页。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **采用智能卡的 Microsoft 域帐户**：由 Microsoft 公司 IT 部门自定义的、采用双重身份验证的登录页。
 
-![屏幕截图，显示由 Microsoft 企业 I T 对双因素身份验证进行自定义的登录页面。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![此屏幕截图显示了由 Microsoft 公司 IT 部门自定义的、采用双重身份验证的登录页。](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft 帐户**：使用者的 Microsoft 帐户登录页。
 

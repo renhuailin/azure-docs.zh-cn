@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: aashishb
 author: aashishb
-ms.date: 01/04/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e0e25a804ac66ca33715906ce4d397b80887037d
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 71cb2e9e112c49d77a2a0b47c24c49cabfa86589
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518545"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149012"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -97,7 +97,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
     provisioning_config = AksCompute.provisioning_configuration()
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
@@ -107,7 +107,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
                                           cluster_name = cluster_name)
 
     # Leaf domain label generates a name using the formula
-    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.com"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
@@ -173,7 +173,7 @@ TLS/SSL 证书已过期，必须续订。 通常每年都会发生这种情况�
 
 > [!IMPORTANT]
 > * 如果现有证书仍然有效，请使用 `renew=True` (SDK) 或 `--ssl-renew` (CLI) 强制执行配置以续订该证书。 例如，如果现有证书在 10 天内仍然有效，并且你不使用 `renew=True`，则可能不会续订该证书。
-> * 最初部署服务时，使用了 `leaf_domain_label`，目的是使用模式 `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` 来创建 DNS 名称。 若要保留现有名称（包括最初生成的 6 位数字），请使用原始 `leaf_domain_label` 值。 不包括生成的 6 位数字。
+> * 最初部署服务时，使用了 `leaf_domain_label`，目的是使用模式 `<leaf-domain-label>######.<azure-region>.cloudapp.azure.com` 来创建 DNS 名称。 若要保留现有名称（包括最初生成的 6 位数字），请使用原始 `leaf_domain_label` 值。 不包括生成的 6 位数字。
 
 **使用 SDK**
 

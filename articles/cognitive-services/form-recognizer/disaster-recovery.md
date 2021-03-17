@@ -2,19 +2,19 @@
 title: Azure 表单识别器灾难恢复指南
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用复制模型 API 来备份表单识别器资源。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 05/27/2020
-ms.author: pafarley
-ms.openlocfilehash: 0343402d92498bff56250027086cbf2ceb258f0f
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.author: lajanuar
+ms.openlocfilehash: b5eb776a7807f48ae6c1a0e3c5879da1f6823830
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427158"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466909"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复表单识别器模型
 
@@ -39,9 +39,6 @@ ms.locfileid: "102427158"
 1. 首先，向目标资源（即接收所复制的模型的资源）发出复制授权请求。 你将获得新建目标模型（将接收复制的数据）的 URL。
 1. 接下来，将复制请求发送到源资源（即包含要复制的模型的资源）。 你将获得一个 URL，查询该 URL 可跟踪操作的进度。
 1. 你将使用源资源凭据来查询进度 URL，直到操作成功。 还可以在目标资源中查询新模型 ID 以获取新模型的状态。
-
-> [!CAUTION]
-> 复制 API 目前不支持[组合式自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)的模型 ID。 模型组合是 v2.1-preview.2 预览版中的一项预览功能。 
 
 ## <a name="generate-copy-authorization-request"></a>生成复制授权请求
 
@@ -165,4 +162,4 @@ curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v
 ## <a name="next-steps"></a>后续步骤
 
 在本指南中，你已学习如何使用复制 API 将自定义模型备份到次要表单识别器资源。 接下来请浏览 API 参考文档，以了解表单识别器的其他作用。
-* [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)
+* [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)

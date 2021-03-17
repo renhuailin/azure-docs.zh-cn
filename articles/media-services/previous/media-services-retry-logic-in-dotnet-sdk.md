@@ -1,7 +1,7 @@
 ---
 title: 适用于 .NET 的媒体服务 SDK 中的重试逻辑 | Microsoft Docs
 description: 本主题概述了适用于 .NET 的媒体服务 SDK 中的重试逻辑。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: feda0ccfa1dc6d02153b98ad084bd775a055e9e3
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264107"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012898"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>适用于 .NET 的媒体服务 SDK 中的重试逻辑
 
@@ -39,7 +39,7 @@ ms.locfileid: "89264107"
 ## <a name="exception-types"></a>异常类型
 下表说明了适用于 .NET 的媒体服务 SDK 为可能导致暂时性故障的某些操作处理或不处理的异常。  
 
-| 异常 | Web 请求 | 存储 | 查询 | SaveChanges |
+| 例外 | Web 请求 | 存储 | 查询 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>有关详细信息，请参阅 [WebException 状态代码](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)部分。 |是 |是 |是 |是 |
 | DataServiceClientException<br/> 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |否 |是 |是 |是 |

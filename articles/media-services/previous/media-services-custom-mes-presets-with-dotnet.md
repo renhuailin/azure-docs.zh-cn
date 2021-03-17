@@ -3,7 +3,7 @@ title: 自定义 Media Encoder Standard 预设 | Microsoft Docs
 description: 本主题说明如何通过自定义 Media Encoder Standard 任务预设执行高级编码。 本主题说明如何使用媒体服务 .NET SDK 创建编码任务和作业。 此外，还说明如何向编码作业提供自定义预设。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6c1c74f86a9cf0e4bcd73844222f256a715cbfe5
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695884"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016706"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设
 
@@ -137,7 +137,7 @@ ms.locfileid: "98695884"
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例   
 
@@ -269,7 +269,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [如何使用 CLI 对自定义转换进行编码](../latest/custom-preset-cli-howto.md)
 - [使用媒体服务 v3 进行编码](../latest/encoding-concept.md)

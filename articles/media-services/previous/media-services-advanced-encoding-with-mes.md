@@ -3,7 +3,7 @@ title: 通过自定义 MES 预设执行高级编码 | Microsoft Docs
 description: 本主题说明如何通过自定义 Media Encoder Standard 任务预设执行高级编码。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 2a4ade25-e600-4bce-a66e-e29cf4a38369
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9713a2ad10d1edc9a79d475ed58a99b3b24b6483
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 345fd56e5ff069ea222661a4820e75d96a9e2395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696034"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014496"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码
 
@@ -33,7 +33,7 @@ ms.locfileid: "98696034"
 如果使用的是 XML 预设，请务必保留元素顺序，如下面的 XML 示例所示（例如，KeyFrameInterval 应在 SceneChangeDetection 前面）。
 
 > [!NOTE] 
-> Media Encoder Standard 的许多高级媒体服务 v2 功能目前在 v3 中不可用。 有关详细信息，请参阅 [迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)。
+> Media Encoder Standard 的许多高级媒体服务 v2 功能目前在 v3 中不可用。 有关详细信息，请参阅[迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="support-for-relative-sizes"></a>支持相对大小
 
@@ -262,7 +262,7 @@ ms.locfileid: "98696034"
 * 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
 ## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
-本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 编码器还可用于剪辑或剪裁从实时流捕获或存档的资产–此 [博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了有关此功能的详细信息。
+本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 也可以使用编码器来剪辑或剪裁从实时流捕获或存档的资产 – [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
 
 若要裁剪视频，可以使用 [此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 

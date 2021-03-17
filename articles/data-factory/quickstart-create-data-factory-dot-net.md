@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/18/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372682"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563498"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -32,10 +32,6 @@ ms.locfileid: "100372682"
 ### <a name="visual-studio"></a>Visual Studio
 
 本文中的演练使用 Visual Studio 2019。 Visual Studio 2013、2015 或 2017 的过程略有不同。
-
-### <a name="azure-net-sdk"></a>Azure .NET SDK
-
-在计算机上下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 

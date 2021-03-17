@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 2280d6243f468708269569cd24cb8c7a3e2a8191
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 85aaf40237b6b6687c54d4b036f280805c98e7b2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202291"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618961"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -202,7 +202,7 @@ Azure 资源管理器支持另一种类型的安全控制：资源锁定功能�
 
 ![使用 Azure 门户的区域级别资源锁](./media/dns-protect-zones-recordsets/locks1.png)
 
-也可通过 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) 创建区域级别的资源锁：
+也可通过 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) 创建区域级别的资源锁：
 
 ```azurepowershell
 # Lock a DNS zone

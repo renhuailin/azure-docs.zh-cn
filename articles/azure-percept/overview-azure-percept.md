@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: fd332ffbbca4987b52ce380c6fd893571e65fb1c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435454"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490103"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 简介
 
@@ -35,6 +35,9 @@ Azure Percept 的主要组件包括：
 2. Azure Percept DK (devkit)。
 
     - 一种足够灵活的开发工具包，可支持面向设备构建者、解决方案构建者和客户的多种原型制作方案。
+
+        > [!div class="nextstepaction"]
+        > [立即购买](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 3. 用于加速边缘 AI 模型和解决方案开发的服务和工作流。
 

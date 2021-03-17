@@ -1,9 +1,9 @@
 ---
 title: 使用 REST 将文件上传到 Azure 媒体服务帐户 | Microsoft Docs
-description: 了解如何通过使用 REST 创建和上传资产将媒体内容加入媒体服务。
+description: 了解如何使用 REST 通过创建和上传资产来将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 49863bec4cbd367b6b309ef5a79e7287cb53ee5b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 9f27a427df07302840ce719d35c7876f9dc17dbf
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042974"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012932"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户
 
@@ -49,14 +49,14 @@ ms.locfileid: "93042974"
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
 - 查看[通过 ADD 身份验证访问 Azure 媒体服务 API 概述](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 另外，有关详细信息，请参阅[通过 Azure AD 身份验证使用 REST 访问媒体服务 API](./media-services-rest-connect-with-aad.md) 一文。
-- 根据 [为媒体服务 REST API 调用配置 Postman](media-rest-apis-with-postman.md) 中所述配置 **Postman** 。
+- 根据 [为媒体服务 REST API 调用配置 Postman](media-rest-apis-with-postman.md) 中所述配置 **Postman**。
 
 ## <a name="considerations"></a>注意事项
 
 使用媒体服务 REST API 时，需注意以下事项：
  
 * 访问媒体服务 REST API 访问实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。 <br/>本教程中使用的 Postman 集合负责设置所有必要的标头。
-* 为流式处理 (内容生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值，例如 http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 **Name** 属性的值不能含有任何以下 [百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
+* 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下 [百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 * 名称长度不应超过 260 个字符。
 * 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "93042974"
 
     若要获取前五个变量的值，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-    ![屏幕截图，显示从右上方选择的 "齿轮" 图标和从 "管理环境" 选项卡中选择的前五个变量。](./media/media-services-rest-upload-files/postman-import-env.png)
+    ![屏幕截图显示选择了右上角的“配置”图标，并从“管理环境”选项卡选择了前五个变量。](./media/media-services-rest-upload-files/postman-import-env.png)
 2. 指定 **MediaFileName** 环境变量的值。
 
     指定要上传的媒体的文件名。 在此示例中，我们要上传 BigBuckBunny.mp4。 
@@ -94,7 +94,7 @@ ms.locfileid: "93042974"
 
     URL 部分填入 AzureADSTSEndpoint  环境变量（在本教程的前面部分，设置了支持集合的环境变量的值）。
 
-    ![显示 "1" 的屏幕截图。 获取 D 身份验证令牌-从 "Postman" 窗口中选择 "获取服务主体的 Azure A D 令牌"，并选择 "发送" 按钮。](./media/media-services-rest-upload-files/postment-get-token.png)
+    ![屏幕截图显示从“Postman”窗口选择了“1. 获取 AAD 身份验证令牌 - 获取服务主体的 Azure AD 令牌”，并选择了“发送”按钮。](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. 按“发送”。
 
@@ -113,10 +113,10 @@ ms.locfileid: "93042974"
 
 ### <a name="create-an-access-policy"></a>创建访问策略
 
-1. 选择 " **AccessPolicy**  ->  **Create AccessPolicy for 上传** "。
+1. 选择“AccessPolicy” -> “创建要上传的 AccessPolicy”。 
 2. 按“发送”。
 
-    ![屏幕截图，显示从左侧菜单中选择 "AccessPolicy-Create AccessPolicy for 上传"，并选择 "发送" 按钮。](./media/media-services-rest-upload-files/postman-access-policy.png)
+    ![屏幕截图显示从左侧菜单中选择了“AccessPolicy - 创建要上传的 AccessPolicy”，并选择了“发送”按钮。](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     “test”脚本将获取 AccessPolicy ID，并设置相应的环境变量。
 
@@ -124,20 +124,20 @@ ms.locfileid: "93042974"
 
 ### <a name="overview"></a>概述
 
-[资产](/rest/api/media/operations/asset)是媒体服务中多种类型或对象集的容器，包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
+[资产](/rest/api/media/operations/asset)是媒体服务中多种类型的对象或多组对象（包括视频、音频、图像、缩略图集合、文本轨道和隐藏的解释性字幕文件）的容器。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
 
-在创建资产时可以添加的属性之一是 **Options** 。 可以指定以下加密选项之一： **None** （默认值，不使用加密）、 **StorageEncrypted** （适用于已使用客户端存储加密预先加密的内容）、 **CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected** 。 如果资产已加密，则需要配置传送策略。 有关详细信息，请参阅 [配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
+在创建资产时可以添加的属性之一是 **Options**。 可以指定以下加密选项之一：**None**（默认值，不使用加密）、**StorageEncrypted**（适用于已使用客户端存储加密预先加密的内容）、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 如果资产已加密，则需要配置传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
 
-如果资产要使用加密，必须按以下文章中所述创建 **ContentKey** 并将其链接到资产： [如何创建 ContentKey](media-services-rest-create-contentkey.md)。 将文件上传到资产后，需要使用加密 **资产** 期间获取的值更新 **AssetFile** 实体上的加密属性。 使用 **MERGE** HTTP 请求完成此操作。 
+如果资产要使用加密，必须按以下文章中所述创建 **ContentKey** 并将其链接到资产：[如何创建 ContentKey](media-services-rest-create-contentkey.md)。 将文件上传到资产后，需要使用加密 **资产** 期间获取的值更新 **AssetFile** 实体上的加密属性。 使用 **MERGE** HTTP 请求完成此操作。 
 
 本示例将创建一个不加密的资产。 
 
 ### <a name="create-an-asset"></a>创建资产
 
-1. 选择 **资产** "  ->  **创建资产** "。
+1. 选择“资产” -> “创建资产”。 
 2. 按“发送”。
 
-    ![屏幕截图，显示 "集合" 菜单中选择的 "资产-创建资产"，并选择 "发送" 按钮。](./media/media-services-rest-upload-files/postman-create-asset.png)
+    ![屏幕截图显示从“集合”菜单选择了“资产 - 创建资产”，并选择了“发送”按钮。](./media/media-services-rest-upload-files/postman-create-asset.png)
 
     “test”脚本将获取 Asset ID，并设置相应的环境变量。
 
@@ -165,21 +165,21 @@ SAS URL 采用以下格式：
 
 ### <a name="create-a-sas-locator"></a>创建 SAS 定位符
 
-1. 选择 " **定位符**  ->  **创建 SAS 定位符** "。
+1. 选择“定位符” -> “创建 SAS 定位符”。 
 2. 按“发送”。
 
     “test”脚本将会根据指定的媒体文件名和 SAS 定位符信息创建“上传 URL”，并设置相应的环境变量。
 
-    ![屏幕截图，显示 "集合" 菜单中选择的 "定位符-创建 s 定位符"，并选择 "发送" 按钮。](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
+    ![屏幕截图显示从“集合”菜单选择了“定位符 - 创建 SAS 定位符”，并选择了“发送”按钮。](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>使用上传 URL 将文件上传到 Blob 存储
 
 ### <a name="overview"></a>概述
 
-创建上传 URL 后，需要直接使用 Azure Blob API 编写一些代码，用于将文件上传到 SAS 容器。 有关详细信息，请参阅下列文章：
+创建上传 URL 后，需要直接使用 Azure Blob API 编写一些代码，用于将文件上传到 SAS 容器。 有关详细信息，请参阅以下文章：
 
 - [使用 Azure 存储 REST API](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [放置 Blob](/rest/api/storageservices/put-blob)
+- [PUT Blob](/rest/api/storageservices/put-blob)
 - [将 Blob 上传到 Blob 存储](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>使用 Postman 上传文件
@@ -189,21 +189,21 @@ SAS URL 采用以下格式：
 上传请求不是 **AzureMedia** 集合的一部分。 
 
 创建并设置新请求：
-1. 按 **+** ，以创建新的请求选项卡。
-2. 选择“PUT”操作并在 URL 中粘贴 
-2. 将“授权”选项卡保留原样（不要将其设置为“持有者令牌”）。 
-3. 在“标头”选项卡中，为“密钥”指定“x-ms-blob-type”，为“值”指定“BlockBlob”。 
-2. 在“正文”选项卡中，单击“二进制”。 
+1. 按 **+** 创建新的请求选项卡。
+2. 选择“PUT”操作并在 URL 中粘贴 **{{UploadURL}}**。
+2. 将“授权”选项卡保留原样（不要将其设置为“持有者令牌”）。
+3. 在“标头”选项卡中，为“密钥”指定“x-ms-blob-type”，为“值”指定“BlockBlob”。
+2. 在“正文”选项卡中，单击“二进制”。
 4. 选择具有 **MediaFileName** 环境变量中指定的名称的文件。
 5. 按“发送”。
 
-    ![显示选定 " (UploadU R L) " 选项卡的屏幕截图。](./media/media-services-rest-upload-files/postman-upload-file.png)
+    ![屏幕截图显示选择了“(UploadURL)”选项卡。](./media/media-services-rest-upload-files/postman-upload-file.png)
 
 ##  <a name="create-a-metadata-in-the-asset"></a>在资产中创建元数据
 
 上传文件后，需要在已上传到与资产关联的 Blob 存储的媒体文件的资产中创建元数据。
 
-1. 选择 **AssetFiles**  ->  **CreateFileInfos** 。
+1. 选择“AssetFiles” -> “CreateFileInfos”。 
 2. 按“发送”。
 
     ![上传文件](./media/media-services-rest-upload-files/postman-create-file-info.png)
@@ -212,7 +212,7 @@ SAS URL 采用以下格式：
 
 ## <a name="validate"></a>验证
 
-若要验证是否已成功上传文件，可以查询 [AssetFile](/rest/api/media/operations/assetfile)，并将 **ContentFileSize** （或其他详细信息）与希望在新资产中显示的信息进行比较。 
+若要验证是否已成功上传文件，可以查询 [AssetFile](/rest/api/media/operations/assetfile)，并将 **ContentFileSize**（或其他详细信息）与希望在新资产中显示的信息进行比较。 
 
 例如，以下 **GET** 操作将获取资产文件（在本例中为 BigBuckBunny.mp4 文件）的文件数据。 该查询使用前面设置的[环境变量](postman-environment.md)。
 

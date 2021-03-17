@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 5aaaf2000fb8310a5208447f8eaf8546feda90fb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509313"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009957"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -108,7 +108,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ### <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
 
 作为管理员，你可代表数据科学家创建计算实例，并通过以下方式将实例分配给他们：
-* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
+* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
 * REST API
 
 你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限： 

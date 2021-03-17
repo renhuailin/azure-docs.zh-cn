@@ -3,7 +3,7 @@ title: 在 Azure 门户中发布内容 | Microsoft Docs
 description: 本教程逐步演示如何在 Azure 门户中发布内容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c22570153200b9daeae44701c814faa1a28916c8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018946"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009787"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [门户](media-services-portal-publish.md)
+> * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > 
@@ -40,10 +40,10 @@ ms.locfileid: "92018946"
 
 若要为用户提供一个可用来流式传输内容或下载内容的 URL，首先必须通过创建定位符来发布资产。 通过定位符，可访问资产文件。 Azure 媒体服务支持两种类型的定位符： 
 
-* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理的示例包括 Apple HTTP Live Streaming (HLS)、Microsoft 平滑流式处理，以及经 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 例如， `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest` 。
+* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理的示例包括 Apple HTTP Live Streaming (HLS)、Microsoft 平滑流式处理，以及经 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 例如 `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest`。
 * **渐进式（共享访问签名）定位符**。 渐进式定位符用于通过渐进式下载来传输视频。
 
-要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL： 
+要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL：
 
 `{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
@@ -51,7 +51,7 @@ ms.locfileid: "92018946"
 
 `{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
-要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL： 
+要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL：
 
 `{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
@@ -73,19 +73,19 @@ ms.locfileid: "92018946"
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>使用门户发布资产
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 选择“设置”   > “资产”  。 选择想要发布的资产。
-3. 选择“发布”按钮  。
+2. 选择“设置” > “资产”。 选择想要发布的资产。
+3. 选择“发布”按钮。
 4. 选择定位符类型。
 5. 选择 **添加** 。
    
     ![发布视频](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL 将添加到“已发布 URL”  列表。
+URL 将添加到“已发布 URL”列表。
 
 ## <a name="play-content-in-the-portal"></a>在门户中播放内容
 可以在 Azure 门户中的内容播放器上测试视频。
 
-选择视频，然后选择“播放”按钮  。
+选择视频，然后选择“播放”按钮。
 
 ![在 Azure 门户中播放视频](./media/media-services-portal-vod-get-started/media-services-play.png)
 

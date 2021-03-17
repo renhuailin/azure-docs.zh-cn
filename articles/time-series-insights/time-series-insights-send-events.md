@@ -11,26 +11,26 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 8ee2cc5473d83eafc2443f3aea7cab6a2e77727c
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023252"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463555"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中心向 Azure 时序见解 Gen1 环境发送事件
 
 > [!CAUTION]
 > 这是一篇 Gen1 文章。
 
-本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./tutorials-set-up-tsi-environment.md)中查看你的环境。
+本文介绍如何在 Azure 事件中心中创建和配置事件中心。 其中还介绍了如何运行示例应用程序将事件从事件中心推送到 Azure 时序见解。 如果你已经有了一个事件中心，其中的事件采用 JSON 格式，则可跳过本教程，在 [Azure 时序见解](./tutorial-set-up-environment.md)中查看你的环境。
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
 1. 若要了解如何创建事件中心，请阅读[事件中心文档](../event-hubs/index.yml)。
 1. 在搜索框中，搜索“事件中心”。 在返回的列表中选择“事件中心”。
 1. 选择事件中心。
-1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。  
+1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心。
 
     [![事件中心列表](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
@@ -78,7 +78,7 @@ ms.locfileid: "95023252"
 
 1. 转到  <https://tsiclientsample.azurewebsites.net/windFarmGen.html> 。 该 URL 创建并运行风车模拟设备。
 1. 在网页上的“事件中心连接字符串”框中，粘贴在 [windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串。
-  
+
     [![将主密钥连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
 1. 选择“单击可启动”。

@@ -3,7 +3,7 @@ title: 使用 Azure 队列存储通过 .NET 监视媒体服务作业通知 | Mic
 description: 了解如何使用 Azure 队列存储监视媒体服务作业通知。 代码示例用 C# 编写，并使用用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 634b508ca15349152540aca90125575b17943929
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: dc6ab94b3685e55125032b0afa52076eae72ba5b
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696424"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016210"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知
 
@@ -67,15 +67,15 @@ ms.locfileid: "98696424"
 > [!NOTE]
 > 建议通过侦听通知消息来监视作业的状态，如下例所示：
 >
-> 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”  之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
+> 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
-3. 将引用添加到“System.Runtime.Serialization”库中  。
+3. 将引用添加到“System.Runtime.Serialization”库中。
 
 ### <a name="code"></a>代码
 

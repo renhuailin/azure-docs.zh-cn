@@ -2,13 +2,13 @@
 title: 可伸缩性 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用分区和吞吐量单位来缩放 Azure 事件中心。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521949"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601266"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放
 
@@ -39,11 +39,7 @@ ms.locfileid: "86521949"
 ## <a name="partitions"></a>分区
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>分区键
 
-可以使用[分区键](event-hubs-programming-guide.md#partition-key)将传入事件数据映射到特定分区，以便进行数据组织。 分区键是发送者提供的、要传递给事件中心的值。 该键通过静态哈希函数进行处理，以便分配分区。 如果在发布事件时未指定分区键，则会使用循环分配。
-
-事件发布者只知道其分区密钥，而不知道事件要发布到的分区。 键与分区的这种分离使发送者无需了解有关下游处理的过多信息。 每个设备或用户的唯一标识就可以充当一个适当的分区键，但是，也可以使用其他属性（例如地理位置），以便将相关的事件分组到单个分区中。
 
 
 ## <a name="next-steps"></a>后续步骤

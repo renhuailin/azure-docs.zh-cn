@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: 在本快速入门中，你将学习如何开始使用 UI 框架基本组件
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 01fa817bd5173abc3b51e708b69b787c8b655e90
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 6f4a8e8f26e88a73fc73c309ef336813282589f3
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539681"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488170"
 ---
 # <a name="quickstart-get-started-with-ui-framework-base-components"></a>快速入门：开始使用 UI 框架基本组件
 
@@ -38,7 +38,7 @@ UI 框架要求设置 React 环境。 我们接下来将进行设置。 如果�
 
 ### <a name="set-up-react-app"></a>设置 React 应用
 
-我们将对本快速入门使用“创建 React 应用”模板。 有关详细信息，请参阅：[React 入门](https://reactjs.org/docs/create-a-new-react-app.html)
+我们将对本快速入门使用“create-react-app”模板。 有关详细信息，请参阅：[React 入门](https://reactjs.org/docs/create-a-new-react-app.html)
 
 ```console
 

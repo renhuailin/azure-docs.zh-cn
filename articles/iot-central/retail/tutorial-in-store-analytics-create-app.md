@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 112039b9227d5ff34e68b6dc6643597f335fbdb5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: caa61170504c3ee4b7162cc06db4df16d1232395
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832226"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014360"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 
@@ -228,8 +228,8 @@ ms.locfileid: "99832226"
 
 完成以下两篇文章中的步骤以连接实际 Rigado 网关和 RuuviTag 传感器。 完成后，请返回到本教程。 由于你已在本教程中创建了设备模板，因此不需要按照以下一组说明再次创建设备模板。
 
-- 若要连接 Rigado 网关，请参阅[将 Rigado Cascade 500 连接到 Azure IoT Central 应用程序](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。
-- 若要连接 RuuviTag 传感器，请参阅[将 RuuviTag 传感器连接到 Azure IoT Central 应用程序](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 还可以使用这些说明创建两个模拟传感器（如果需要）。
+- 若要连接 Rigado 网关，请参阅[将 Rigado Cascade 500 连接到 Azure IoT Central 应用程序](../core/howto-connect-rigado-cascade-500.md)。
+- 若要连接 RuuviTag 传感器，请参阅[将 RuuviTag 传感器连接到 Azure IoT Central 应用程序](../core/howto-connect-ruuvi.md)。 还可以使用这些说明创建两个模拟传感器（如果需要）。
 
 ## <a name="add-rules-and-actions"></a>添加规则和操作
 使用 Azure IoT Central 应用程序中的传感器监视条件时，可以创建规则以在满足某些条件时运行操作。 规则与设备模板和一个或多个设备关联，并且包含必须根据设备遥测或事件满足的条件。 规则也有一个或多个关联的操作。 这些操作可能包括发送电子邮件通知，或触发 Webhook 操作以向其他服务发送数据。  “店内分析 - 结帐”应用程序模板包括应用程序中设备的一些预定义规则。

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 0462dac12d41fff667212902152b420d1460186d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: f3184602bad8aabf654c8fa94d33372d08c11a66
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383630"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573194"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "100383630"
 
 HTTP 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 HttpServer   。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
@@ -171,7 +171,7 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| 属性    | 说明                                                  | 必须 |
+| 属性    | 说明                                                  | 必需 |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | 数据集中 `location` 下的 type 属性必须设置为 **HttpServerLocation**。 | 是      |
 | relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service][relative URL specified in dataset]`。   | 否       |
@@ -217,11 +217,11 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
 
-| 属性                 | 说明                                                  | 必须 |
+| 属性                 | 说明                                                  | 必需 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 **HttpReadSettings**。 | 是      |
 | requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post   。 | 否       |
-| addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
+| additionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | 否       |
 | httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。 | 否       |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
@@ -278,7 +278,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 HttpFile   。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
@@ -332,7 +332,7 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：HttpSource   。 | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。  | 否 |

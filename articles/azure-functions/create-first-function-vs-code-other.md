@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 创建 Go 或 Rust 函数 - Azure Functions
 description: 了解如何创建 Go 函数作为 Azure Functions 自定义处理程序，然后使用 Visual Studio Code 中的 Azure Functions 扩展将本地项目发布到 Azure Functions 中的无服务器托管。
 ms.topic: quickstart
 ms.date: 12/4/2020
-ms.openlocfilehash: 1142ff76425e2e4bff0d3881be1378d9da07806e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8b53031315cce3651a2de581d71da6ef6fe909c1
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704729"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470364"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Go 或 Rust 函数
 
@@ -141,8 +141,8 @@ HttpExample 文件夹中的 function.json 文件声明 HTTP 触发器函数 。 
 
     ```toml
     [dependencies]
-    warp = "0.2"
-    tokio = { version = "0.2", features = ["full"] }
+    warp = "0.3"
+    tokio = { version = "1", features = ["rt", "macros", "rt-multi-thread"] }
     ```
 
 1. 在 src/main.rs 中，添加以下代码并保存文件。 这就是 Rust 自定义处理程序。

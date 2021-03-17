@@ -1,7 +1,7 @@
 ---
 title: Azure 媒体服务错误代码 | Microsoft Docs
 description: 你可能会从服务收到因问题而异的 HTTP 错误代码，例如身份验证令牌到期或媒体服务不支持操作。 本文概述了 Azure 媒体服务 v2 API 错误代码。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: c30808a46b5cecfaf2e761b3f7a611020cd2cdfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 10ade5c8f34d806ca5706ccaaf4b7ff2e05ba657
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263665"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013408"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
+使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码** 及可能的错误原因的列表。  
 
 ## <a name="400-bad-request"></a>400 错误的请求
 请求包含无效信息，并因以下可能的原因之一被拒绝：

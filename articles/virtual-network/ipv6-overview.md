@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 86e4bb52f2a97bf36dc4be86289bd513a9f05091
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99538249"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419093"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -77,8 +77,7 @@ Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆
 - 使用所有部署方法，适用于 Azure 虚拟网络的 IPv6 已在全球所有 Azure 商业版和美国政府版区域中提供。  
 - 在启用了 IPv6 的 VNET 中，ExpressRoute 网关可以用于仅 IPv4 通信。  我们的路线图展示了对 IPv6 通信的支持。   
 - VPN 网关不能在启用了 IPv6 的 VNET 中使用，其可以直接进行使用，或通过“UseRemoteGateway”对等互连使用。
-- Azure 平台（AKS 等）不支持容器的 IPv6 通信。  
-- IPv6 只能对 Azure VM 上的主要网络接口 (NIC) 进行负载均衡。 不支持到辅助 NIC 的负载均衡 IPv6 通信。    
+- Azure 平台（AKS 等）不支持容器的 IPv6 通信。 
 - 不支持仅 IPv6 虚拟机或虚拟机规模集，每个 NIC 必须至少包含一个 IPv4 IP 配置。 
 - 将 IPv6 添加到现有 IPv4 部署时，无法将 IPv6 范围添加到具有现有资源导航链接的 VNET。  
 - 目前，Azure 公共 DNS 支持 IPv6 的正向 DNS，但尚不支持反向 DNS。   

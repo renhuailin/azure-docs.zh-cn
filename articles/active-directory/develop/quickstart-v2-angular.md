@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95747bb68a904212e7e075fc29b2497932d66e5f
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 5ac6a19fc569d60f75f9da788629331a70b0a4c9
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103849"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225041"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
@@ -102,8 +102,8 @@ ms.locfileid: "100103849"
 >|Enter_the_Redirect_Uri_Here|替换为 http://localhost:4200 。|
 >|cacheLocation  | （可选）针对身份验证状态设置浏览器存储。 默认值为 sessionStorage。   |
 >|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Microsoft Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
-> > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
+>
+> 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
 
 有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。
 

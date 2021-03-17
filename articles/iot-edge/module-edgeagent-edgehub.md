@@ -8,14 +8,16 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978690"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489936"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge 代理和 IoT Edge 中心是构成 IoT Edge 运行时的两个模块。 有关每个运行时模块的职责的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
@@ -33,13 +35,13 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 
 | 属性 | 说明 | 必须 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引入的，建议使用。 | 是 |
+| schemaVersion | “1.0”或“1.1”。 版本 1.1 随 IoT Edge 版本 1.0.10 引入，推荐使用。 | 是 |
 | runtime.type | 必须为“docker” | 是 |
 | runtime.settings.minDockerVersion | 设置为此部署清单所需的最小 Docker 版本 | 是 |
 | runtime.settings.loggingOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.username | 容器注册表的用户名。 对于 Azure 容器注册表，用户名通常是注册表名称。<br><br> 注册表凭据对于任何专用模块映像都是必需的。 | 否 |
 | runtime.settings.registryCredentials<br>.{registryId}.password | 容器注册表的密码。 | 否 |
-| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io**。 | 否 |  
+| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io。 | 否 |  
 | systemModules.edgeAgent.type | 必须为“docker” | 是 |
 | systemModules.edgeAgent.settings.image | IoT Edge 代理的映像 URI。 目前，IoT Edge 代理不能自行更新。 | 是 |
 | systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
@@ -47,7 +49,7 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 | systemModules.edgeHub.type | 必须为“docker” | 是 |
 | systemModules.edgeHub.status | 必须为“running” | 是 |
 | systemModules.edgeHub.restartPolicy | 必须为“always” | 是 |
-| systemModules. edgeHub. startupOrder | 一个整数值，模块在该位置上具有启动顺序。 0为第一个，最大整数 (4294967295) 为最后一个。 如果未提供值，则默认值为 max 整数。  | 否 |
+| systemModules.edgeHub.startupOrder | 一个整数值，指示某个模块在启动顺序中所处的位置。 0 表示第一个，最大整数 (4294967295) 表示最后一个。 如果未提供值，则默认值为最大整数。  | 否 |
 | systemModules.edgeHub.settings.image | IoT Edge 中心的映像 URI。 | 是 |
 | systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含 IoT Edge 中心容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
 | systemModules.edgeHub.configuration.id | 部署此模块的部署 ID。 | 此属性是在使用部署来应用清单时由 IoT 中心设置。 不是部署清单的一部分。 |
@@ -55,7 +57,7 @@ IoT Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备上�
 | modules.{moduleId}.type | 必须为“docker” | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | 是 |
-| 模块.{moduleId}. startupOrder | 一个整数值，模块在该位置上具有启动顺序。 0为第一个，最大整数 (4294967295) 为最后一个。 如果未提供值，则默认值为 max 整数。  | 否 |
+| modules.{moduleId}.startupOrder | 一个整数值，指示某个模块在启动顺序中所处的位置。 0 表示第一个，最大整数 (4294967295) 表示最后一个。 如果未提供值，则默认值为最大整数。  | 否 |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | 否 |
 | modules.{moduleId}.env | 要传递给模块的环境变量的列表。 采用格式 `"<name>": {"value": "<value>"}` | 否 |
 | modules.{moduleId}.settings.image | 模块映像的 URI。 | 是 |
@@ -109,7 +111,7 @@ IoT Edge 中心的模块孪生被称为 `$edgeHub`，用于协调在设备上运
 
 | 属性 | 说明 | 部署清单中的必备项 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" 或 "1.1"。 版本1.1 是 IoT Edge 版本1.0.10 引入的，建议使用。 | 是 |
+| schemaVersion | “1.0”或“1.1”。 版本 1.1 随 IoT Edge 版本 1.0.10 引入，推荐使用。 | 是 |
 | routes.{routeName} | 表示 IoT Edge 中心路由的字符串。 有关详细信息，请参阅[声明路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但为空。 |
 | storeAndForwardConfiguration.timeToLiveSecs | 在断开连接路由终结点（无论是 IoT 中心还是本地模块）的情况下，IoT Edge 中心保留消息的时长（以秒为单位）。 该值可以是任何正整数。 | 是 |
 

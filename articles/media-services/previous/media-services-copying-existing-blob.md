@@ -3,7 +3,7 @@ title: 将 blob 从存储帐户复制到 Azure 媒体服务资产中 | Microsoft
 description: 本主题说明如何将现有 blob 复制到媒体服务资产中。 本示例使用 Azure 媒体服务 .NET SDK 扩展。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eee17e5ed819365f30cf1b1e0eb2e9ab1557e9d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 6ee6af8726dbd0a7b564b442242572afec670f4d
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695901"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016740"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>将现有 Blob 复制到媒体服务资产中
 
@@ -30,7 +30,7 @@ ms.locfileid: "98695901"
 
 本文介绍如何使用 [Azure 媒体服务 .NET SDK 扩展](https://github.com/Azure/azure-sdk-for-media-services-extensions/)将 Blob 从存储帐户复制到新的 Azure 媒体服务 (AMS) 资产中。
 
-在不使用媒体服务 API 的情况下，不应该尝试更改媒体服务生成的 BLOB 容器内容。
+在不使用媒体服务 API 的情况下，不应该尝试更改媒体服务生成的 blob 容器内容。
 
 扩展方法可以处理：
 
@@ -45,7 +45,7 @@ ms.locfileid: "98695901"
 
 ## <a name="copy-blobs-between-two-ams-accounts"></a>在两个 AMS 帐户之间复制 Blob  
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 两个媒体服务帐户。 请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)一文。
 
@@ -163,7 +163,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="copy-blobs-from-a-storage-account-into-an-ams-account"></a>将存储帐户中的 Blob 复制到 AMS 帐户中 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 一个要从中复制 Blob 的存储帐户。
 - 一个要将 Blob 复制到的 AMS 帐户。
@@ -380,7 +380,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以对上传的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。
+现即可编码已上传的资产。 有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
 
 也可使用 Azure Functions 根据到达已配置容器的文件触发编码作业。 有关详细信息，请参阅[此示例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 

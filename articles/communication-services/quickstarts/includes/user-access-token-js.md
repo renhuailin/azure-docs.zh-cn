@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 08/20/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 4298c10d6344a1b0173a2ea79aeba9b8bbfffe4c
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: eee020e5d96b301e8278d31c26360639553be0ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102511023"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495282"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -136,11 +136,11 @@ console.log(token);
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>在同一请求中创建标识并颁发访问令牌
 
-使用 `createUserWithToken` 方法创建通信服务标识并为其颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。
+使用 `createUserAndToken` 方法创建通信服务标识并为其颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。
 
 ```javascript
 // Issue an identity and an access token with the "voip" scope for the new identity
-let identityTokenResponse = await this.client.createUserWithToken(["voip"]);
+let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
 const { token, expiresOn, user } = identityTokenResponse;
 console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);

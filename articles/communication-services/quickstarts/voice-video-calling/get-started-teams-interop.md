@@ -4,16 +4,16 @@ titleSuffix: An Azure Communication Services quickstart
 description: 在本快速入门中，你将了解如何通过 Azure 通信通话 SDK 加入 Teams 会议。
 author: matthewrobertson
 ms.author: chpalm
-ms.date: 10/10/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: f8daed736f1d7f5ecf77a5b44f95d191eb5930f8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: c2cda93534a2010ced5c98f8e1a3563f8446ea84
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120447"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487972"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入门：在 Teams 会议中加入通话应用
 

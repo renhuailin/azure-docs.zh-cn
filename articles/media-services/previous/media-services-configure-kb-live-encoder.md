@@ -3,7 +3,7 @@ title: 配置 Haivision KB 编码器以将单比特率实时流发送到 Azure |
 description: 本主题说明如何配置 Haivision KB 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。
 services: media-services
 documentationcenter: ''
-author: dbgeorge
+author: IngridAtMicrosoft
 manager: vsood
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: ab73b22e927ad1bbcc8a07173e1548157de03cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 20c75672bc7198fb028278dc5432cc6a77e3766e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258089"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016859"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Haivision KB 实时编码器发送单比特率实时流
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 3d28946aad263af635a0139e68d424a77a1eab25
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84803636"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417818"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
@@ -26,7 +26,6 @@ ms.locfileid: "84803636"
 > * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
-
 
 本文介绍如何对辅助网络接口控制器 (NIC) 上的多个 IP 地址使用 Azure 负载均衡器。 下图演示了本文所述的方案：
 

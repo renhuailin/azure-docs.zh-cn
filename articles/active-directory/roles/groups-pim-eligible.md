@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10f179ab1bf328a2132c9206580dfa58efb80f1b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 02cd3f54823b80ae201316fee29c02616b9d8502
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741915"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103012031"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 将角色分配给组
 
@@ -48,14 +48,14 @@ ms.locfileid: "98741915"
 若要安装 Azure AD #PowerShell 模块，请使用以下 cmdlets：
 
 ```powershell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module -Name AzureADPreview
+Import-Module -Name AzureADPreview
 ```
 
 若要验证模块是否可供使用，请运行以下 cmdlets：
 
 ```powershell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
 ```
 
 ### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>将组分配为角色的符合条件的成员
@@ -70,34 +70,21 @@ Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId aadRoles -Schedule $sc
 
 ## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
 
-```powershell
+```http
 POST
-https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests  
-
+https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequests
 {
-
  "roleDefinitionId": {roleDefinitionId},
-
  "resourceId": {tenantId},
-
  "subjectId": {GroupId},
-
  "assignmentState": "Eligible",
-
  "type": "AdminAdd",
-
  "reason": "reason string",
-
  "schedule": {
-
    "startDateTime": {DateTime},
-
    "endDateTime": {DateTime},
-
    "type": "Once"
-
  }
-
 }
 ```
 

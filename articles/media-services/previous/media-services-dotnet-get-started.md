@@ -3,7 +3,7 @@ title: 使用 .NET 按需传送内容入门 | Microsoft Docs
 description: 本教程会引导完成使用 Azure 媒体服务和 .NET 实施点播内容传送应用程序的步骤。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbbf924ea950c5ba281be430190370ae77734b7a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.openlocfilehash: f0e7f9fa33af43fb846255815d862d4cd3a07e99
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184333"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013969"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 
@@ -249,11 +249,11 @@ ms.locfileid: "96184333"
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **(format = mpd-csf)**
+{流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest **(format=mpd-time-csf)**
 
 #### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS 的流 URL 采用以下格式：
 
-{流式处理终结点名称-媒体服务帐户名称}. windowsazure.mediaservices/{定位器 ID} manifest **(format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3)**
+{流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest **(format=m3u8-aapl)**
 
 #### <a name="a-streaming-url-for-smooth-streaming-has-the-following-format"></a>平滑流式处理的流式处理 URL 采用以下格式：
 

@@ -7,14 +7,16 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf8b8554aa2ea1d6d06f58f726ca65f77499ec5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: c748034145781f639da244b16e3df7053da3d5d2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440053"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489959"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge 支持 IoT Edge 设备上的扩展脱机操作，同时在非 IoT Edge 子设备上启用脱机操作。 只要 IoT Edge 设备有机会连接到 IoT 中心，该设备和任何子设备就可以在间歇性或无 Internet 连接的情况下继续运作。
 
@@ -84,11 +86,11 @@ device_list=$(az iot hub query \
 
 # Add all IoT devices to IoT Edge (as child)
 az iot hub device-identity add-children \
-  --device-id $egde_device \
-  --child-list $device_list \
-  --hub-name replace-with-hub-name \
-  --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name
 ```
 
 可以修改“[查询](../iot-hub/iot-hub-devguide-query-language.md)”以选择其他部分设备。 如果指定大的设备集，此命令可能需要数秒钟才能完成。

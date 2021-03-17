@@ -3,7 +3,7 @@ title: 使用 Azure 媒体服务管理编码的速度和并发 | Microsoft 文�
 description: 本文简要概述了如何使用 Azure 媒体服务管理编码作业/任务的速度和并发。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 676313f8-a158-4e3a-a99b-2c29a341ecc9
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 4b6f843678d64bddd276f6123a432699efc89ad9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: f01235e5b02bf2a61a359fa5571c6e6d575c1232
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269278"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014802"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>管理编码的速度和并发
 
@@ -29,9 +29,9 @@ ms.locfileid: "89269278"
 
 ## <a name="overview"></a>概述
 
-在媒体服务中，**预留单位类型**决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。 [缩放编码单位](media-services-scale-media-processing-overview.md)主题显示了一个表，该表可帮助你在不同的编码速度之间进行选择时做出决定。
+在媒体服务中，**预留单位类型** 决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。 [缩放编码单位](media-services-scale-media-processing-overview.md)主题显示了一个表，该表可帮助你在不同的编码速度之间进行选择时做出决定。
 
-除了指定预留单位类型之外，还可以为帐户预配**预留单位**。 设置的预留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个预留单位，则只要有任务要处理，就可以同时运行 5 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何预留单位，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间将取决于系统中资源的可用性。
+除了指定预留单位类型之外，还可以为帐户预配 **预留单位**。 设置的预留单位数决定了给定帐户中可并发处理的媒体任务数。 例如，如果帐户具有 5 个预留单位，则只要有任务要处理，就可以同时运行 5 个媒体任务。 其余任务将排队等待，运行的任务完成后才选择它们以按顺序进行处理。 如果帐户未设置任何预留单位，则按顺序选择任务进行处理。 在这种情况下，完成一个任务和开始下一个任务之间的等待时间取决于系统中资源的可用性。
 
 有关介绍如何缩放编码单位的详细信息和示例，请参阅[此](media-services-scale-media-processing-overview.md)主题。
 

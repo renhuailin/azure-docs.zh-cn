@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard (MES) 的任务预设 | Microsoft Docs
 description: 本主题概述了 Media Encoder Standard (MES) 的服务定义示例预设。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: johndeu
 services: media-services
@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 74e557aa02f5ab83828262209653bf8a78fdd2d0
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261469"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011640"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 的示例预设
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Media Encoder Standard  定义了一组可在创建编码作业时使用的预定义系统编码预设。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 指定此预设时，Media Encoder Standard 将[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
+Media Encoder Standard 定义了一组可在创建编码作业时使用的预定义系统编码预设。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 指定此预设时，Media Encoder Standard 将[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
 
 ### <a name="creating-custom-presets-from-samples"></a>从示例创建自定义预设
 媒体服务完全支持自定义预设中的所有值，可满足特定的编码需求和要求。 如果需要自定义编码预设，应先采用此部分中提供的以下系统预设之一作为模板，以用于自定义配置。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  

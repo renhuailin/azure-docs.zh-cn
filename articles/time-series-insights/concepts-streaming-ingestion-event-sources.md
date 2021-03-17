@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 7b7e29b6e2ebb3b229045df439848264540b59b1
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881799"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103461617"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -27,7 +27,7 @@ ms.locfileid: "98881799"
 
 ## <a name="create-or-edit-event-sources"></a>创建或编辑事件源
 
-你的事件源资源可以与你的 Azure 时序见解 Gen2 环境位于同一 Azure 订阅中，也可以位于其他订阅。你可以使用 [Azure门户](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 来创建、编辑或删除环境的事件源。
+你的事件源资源可以与你的 Azure 时序见解 Gen2 环境位于同一 Azure 订阅中，也可以位于其他订阅。你可以使用 [Azure门户](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、[ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 来创建、编辑或删除环境的事件源。
 
 连接事件源时，Azure 时序见解第 2 代环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。
 
@@ -45,7 +45,7 @@ ms.locfileid: "98881799"
 
 - 请勿超出环境的[吞吐量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每个分区的限制。
 
-- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。 请参阅下面的 [生产工作负荷](./concepts-streaming-ingestion-event-sources.md#production-workloads) ，了解建议的警报条件。
+- 配置一个当你的环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。 请参阅下面的[生产工作负荷](./concepts-streaming-ingestion-event-sources.md#production-workloads)，了解建议的警报条件。
 
 - 流式传输引入仅限用于近实时数据和最新数据，不支持流式传输历史数据。
 
@@ -57,13 +57,13 @@ ms.locfileid: "98881799"
 
 除了上述最佳做法，我们建议你为业务关键型工作负荷实现以下各项。
 
-- 将 IoT 中心或事件中心的数据保持时间增加到最多7天。
+- 将 IoT 中心或事件中心的数据保留时间增加到最大值 7 天。
 
-- 在 Azure 门户中创建环境警报。 基于平台 [指标](./how-to-monitor-tsi-reference.md#metrics) 的警报允许验证端到端管道行为。 [此处介绍](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)了如何创建和管理警报。 建议的警报条件：
+- 在 Azure 门户中创建环境警报。 基于平台[指标](./how-to-monitor-tsi-reference.md#metrics)的警报使你可以验证端到端管道行为。 [此处](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)是有关创建和管理警报的说明。 建议的警报条件：
 
-  - IngressReceivedMessagesTimeLag 大于5分钟
-  - IngressReceivedBytes 为0
-- 请在 IoT 中心或事件中心分区之间保持引入负载平衡。
+  - IngressReceivedMessagesTimeLag 大于 5 分钟
+  - IngressReceivedBytes 为 0
+- 请在 IoT 中心分区或事件中心分区之间保持引入负载均衡。
 
 ### <a name="historical-data-ingestion"></a>历史数据引入
 

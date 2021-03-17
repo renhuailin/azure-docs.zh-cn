@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services conceptual document
 description: 了解 UI 框架功能
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 51caf1e73cdeda5862e033a05878f35ddb6ff8dc
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539679"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492211"
 ---
 # <a name="ui-framework-capabilities"></a>UI 框架功能
 
@@ -71,7 +71,7 @@ ms.locfileid: "99539679"
 
 | 组件类型            | 主题     | 布局                                                              | 数据模型 |
 |---------------------------|------------|---------------------------------------------------------------------|-------------|
-| 复合组件       |     不适用    | 不适用                                                                 |     不适用     |
+| 复合组件       |     不适用    | 空值                                                                 |     不适用     |
 | 基本组件            |     不适用    | 可使用外部样式修改组件的布局         |     不适用     |
 
 
