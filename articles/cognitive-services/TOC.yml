@@ -7,16 +7,10 @@
       href: what-are-cognitive-services.md
     - name: 认知服务文档中的新增内容
       href: whats-new-docs.md
-    - name: 认知服务和机器学习
-      href: cognitive-services-and-machine-learning.md
-    - name: 认知服务开发选项
-      href: cognitive-services-development-options.md
-    - name: 认知服务的自定义子域
-      href: cognitive-services-custom-subdomains.md
     - name: 语言支持
       href: language-support.md
-    - name: 计划和管理成本
-      href: plan-manage-costs.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
 - name: 快速入门
   items:
     - name: 使用 Azure 门户创建新资源
@@ -28,68 +22,82 @@
     - name: 使用 ARM 模板创建新资源
       displayName: Resource Manager
       href: create-account-resource-manager-template.md
+- name: 操作说明
+  items:
+    - name: 计划和管理成本
+      href: plan-manage-costs.md
     - name: 诊断日志记录
       href: diagnostic-logging.md
-- name: 安全性
+    - name: 部署
+      items:
+        - name: 容器
+          items:
+            - name: 容器支持
+              href: cognitive-services-container-support.md
+            - name: 容器映像标记和发行说明
+              href: ./containers/container-image-tags.md
+            - name: 容器常见问题解答
+              href: ./containers/container-faq.yml
+            - name: 容器方案
+              items:
+                - name: 容器重复使用
+                  href: ./containers/container-reuse-recipe.md
+                - name: 部署到 Azure 容器实例
+                  href: ./containers/azure-container-instance-recipe.md
+                - name: 部署到 Azure Kubernetes
+                  href: ./containers/azure-kubernetes-recipe.md
+                - name: 使用 Docker Compose 进行部署
+                  href: ./containers/docker-compose-recipe.md
+            - name: 其他容器服务
+              items:
+                - name: Azure 容器实例
+                  href: ../container-instances/container-instances-tutorial-prepare-app.md
+                - name: Azure 容器注册表
+                  href: ../container-registry/container-registry-get-started-azure-cli.md
+                - name: Azure Kubernetes 服务 (AKS)
+                  href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: 认知服务容器文档
+              href: containers/index.yml
+    - name: 安全性
+      items:
+        - name: 认知服务的安全性
+          href: cognitive-services-security.md
+        - name: 用于认知服务的虚拟网络
+          href: cognitive-services-virtual-networks.md
+        - name: 配置客户管理的密钥
+          href: ./encryption/cognitive-services-encryption-keys-portal.md
+        - name: 对认知服务的请求进行身份验证
+          href: authentication.md
+        - name: 安全基线
+          href: security-baseline.md
+        - name: Azure Policy 的安全控件
+          href: ./security-controls-policy.md
+    - name: 用于大数据
+      items:
+        - name: 适用于大数据的认知服务
+          href: ./big-data/cognitive-services-for-big-data.md
+        - name: 入门
+          href: ./big-data/getting-started.md
+        - name: 示例
+          items:
+            - name: Python
+              href: ./big-data/samples-python.md
+            - name: Scala
+              href: ./big-data/samples-scala.md
+        - name: 配方
+          items:
+            - name: 配方：异常检测器
+              href: ./big-data/recipes/anomaly-detection.md
+            - name: 配方：Art Explorer
+              href: ./big-data/recipes/art-explorer.md
+- name: 概念
   items:
-    - name: 认知服务的安全性
-      href: cognitive-services-security.md
-    - name: 用于认知服务的虚拟网络
-      href: cognitive-services-virtual-networks.md
-    - name: 配置客户管理的密钥
-      href: ./encryption/cognitive-services-encryption-keys-portal.md
-    - name: 对认知服务的请求进行身份验证
-      href: authentication.md
-    - name: 安全基线
-      href: security-baseline.md
-    - name: Azure Policy 的安全控件
-      href: ./security-controls-policy.md
-- name: 容器支持
-  items:
-    - name: 容器支持
-      href: cognitive-services-container-support.md
-    - name: 容器映像标记和发行说明
-      href: ./containers/container-image-tags.md
-    - name: 容器常见问题解答
-      href: ./containers/container-faq.yml
-    - name: 容器方案
-      items:
-        - name: 容器重复使用
-          href: ./containers/container-reuse-recipe.md
-        - name: 部署到 Azure 容器实例
-          href: ./containers/azure-container-instance-recipe.md
-        - name: 部署到 Azure Kubernetes
-          href: ./containers/azure-kubernetes-recipe.md
-        - name: 使用 Docker Compose 进行部署
-          href: ./containers/docker-compose-recipe.md
-    - name: 其他容器服务
-      items:
-        - name: Azure 容器实例
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure 容器注册表
-          href: ../container-registry/container-registry-get-started-azure-cli.md
-        - name: Azure Kubernetes 服务 (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: 认知服务容器文档
-      href: containers/index.yml
-- name: 大数据
-  items:
-    - name: 适用于大数据的认知服务
-      href: ./big-data/cognitive-services-for-big-data.md
-    - name: 入门
-      href: ./big-data/getting-started.md
-    - name: 示例
-      items:
-        - name: Python
-          href: ./big-data/samples-python.md
-        - name: Scala
-          href: ./big-data/samples-scala.md
-    - name: 配方
-      items:
-        - name: 配方：异常检测器
-          href: ./big-data/recipes/anomaly-detection.md
-        - name: 配方：Art Explorer
-          href: ./big-data/recipes/art-explorer.md
+    - name: 认知服务开发选项
+      href: cognitive-services-development-options.md
+    - name: 认知服务和机器学习
+      href: cognitive-services-and-machine-learning.md
+    - name: 认知服务的自定义子域
+      href: cognitive-services-custom-subdomains.md
 - name: 参考
   items:
     - name: Azure Policy 内置策略定义
@@ -99,23 +107,19 @@
   items:
     - name: 支持和帮助选项
       href: cognitive-services-support-options.md
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: 区域支持
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?query=cognitive%20services'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 服务级别协议 (SLA)
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
+    - name: Azure Government
+      href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 提供产品反馈
-      href: 'https://cognitive.uservoice.com/'
-    - name: 行为准则
-      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'

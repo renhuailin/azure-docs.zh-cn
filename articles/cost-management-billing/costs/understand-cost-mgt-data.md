@@ -3,18 +3,18 @@ title: 了解 Azure 成本管理数据
 description: 本文帮助你更好地了解 Azure 成本管理中包含的数据、这些数据的处理频率以及收集、显示和关闭方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/06/2021
+ms.date: 01/17/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 568f3d811876073dc899204cb8ca4d1753d9cfd0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964144"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499289"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -31,6 +31,7 @@ ms.locfileid: "97964144"
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **数据可用** |
 | --- | --- | --- | --- | --- |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | 2014 年 5 月<sup>1</sup> |
+| **Azure Government** | Azure 政府即用即付 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P | 2018 年 10 月 2 日<sup>2</sup> |
 | **企业协议 (EA)** | Enterprise 开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | 2014 年 5 月<sup>1</sup> |
 | **企业协议 (EA)** | Microsoft Azure Enterprise | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | 2014 年 5 月<sup>1</sup> |
 | **Microsoft 客户协议** | Microsoft Azure 计划 | EnterpriseAgreement_2014-09-01 | 空值 | 2019 年 3 月<sup>3</sup> |
@@ -51,7 +52,7 @@ ms.locfileid: "97964144"
 
 <sup>**1**</sup> 对于 2014 年 5 月之前的数据，请访问 [Azure 企业门户](https://ea.azure.com)。
 
-<sup>**2**</sup> 对于 2018 年 10 月 2 日之前的数据，请访问 [Azure 帐户中心](https://account.azure.com/subscriptions)。
+_<sup>**2**</sup>_ 如需 2018年 10 月 2 日之前的数据，请访问 [Azure 帐户中心](https://account.azure.com/subscriptions)（适用于全局帐户）和 [Azure 帐户中心政府版](https://account.windowsazure.us/subscriptions)（适用于 Azure 政府帐户）。
 
 <sup>**3**</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。
 
@@ -62,7 +63,6 @@ ms.locfileid: "97964144"
 | 类别  | **产品/服务名称** | **配额 ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **Azure 德国** | Azure 德国即用即付 | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government** | Azure 政府即用即付 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **云解决方案提供商 (CSP)** | Microsoft 德国云 CSP 中的 Azure 德国版   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -130,6 +130,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
     - 数据工厂
     - Databricks
     - 负载均衡器
+    - 机器学习工作区计算实例
     - 网络观察程序
     - 通知中心
     - 服务总线
@@ -161,7 +162,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 
 ### <a name="rerated-data"></a>重新计费数据
 
-无论是使用成本管理 API、Power BI 还是 Azure 门户检索数据，当前计费周期的费用预期都会重新计算，因此，在结算发票之前，此费用将会更改。
+无论是使用成本管理 API、Power BI 还是 Azure 门户检索数据，当前计费周期的费用都应会重新计算。 在结算发票之前，费用可能会更改。
 
 ## <a name="cost-rounding"></a>成本舍入
 
@@ -175,7 +176,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 
 ## <a name="historical-data-might-not-match-invoice"></a>历史数据可能与发票不匹配
 
-基于额度的套餐和提前支付套餐的历史数据可能与发票不匹配。 某些 Azure 即用即付、MSDN 和 Visual Studio 套餐可将 Azure 额度和提前付款应用于发票。 但是，成本管理中显示的历史数据仅基于估计的消耗费用。 成本管理历史记录数据不包括付款和额度。 因此，针对以下套餐显示的历史数据可能不与发票完全匹配。
+基于额度的套餐和提前支付套餐的历史数据可能与发票不匹配。 某些 Azure 即用即付、MSDN 和 Visual Studio 套餐可将 Azure 额度和提前付款应用于发票。 成本管理中显示的历史数据仅基于估计的消耗费用。 成本管理历史记录数据不包括付款和额度。 针对以下产品/服务显示的历史数据可能不与发票完全匹配。
 
 - 面向学生的 Azure (MS-AZR-0170P)
 - Azure 开放许可 (MS-AZR-0111P)

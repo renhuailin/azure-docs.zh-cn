@@ -140,6 +140,20 @@
         - name: 库数据
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+    - name: 迁移到 Azure 机器学习
+      items:
+        - name: 迁移概述
+          href: migrate-overview.md
+        - name: 迁移数据集
+          href: migrate-register-dataset.md
+        - name: 重新生成试验
+          href: migrate-rebuild-experiment.md
+        - name: 重新生成 Web 服务
+          href: migrate-rebuild-web-service.md
+        - name: 迁移客户端应用程序
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: 重新生成“执行 R 脚本”模块
+          href: migrate-execute-r-script.md
 - name: 参考
   items:
     - name: 算法和模块参考
