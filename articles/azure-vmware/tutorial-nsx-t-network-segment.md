@@ -2,13 +2,13 @@
 title: 教程 - 在 Azure VMware 解决方案中添加 NSX-T 网段
 description: 了解如何创建用于 vCenter 中虚拟机 (VM) 的 NSX-T 网段。
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 8ecb37a42e2986bd1c6261b8fe6c23382323b31d
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.date: 03/13/2021
+ms.openlocfilehash: 9125e552f9641a2d26b9584b66a4447f9c152161
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335038"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462111"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>教程：在 Azure VMware 解决方案中添加一个网段 
 

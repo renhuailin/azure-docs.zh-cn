@@ -3,7 +3,7 @@ title: 在客户端上插入广告 | Microsoft Docs
 description: 本文演示如何在客户端将广告插入媒体。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263563"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014947"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 
@@ -172,7 +172,7 @@ Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 
 Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
-**IFrameResource** 描述可以在 IFrame 中显示的 HTML 资源。 **HTMLResource** 描述可以插入网页的一段 HTML 代码。 **TrackingEvents** 指定跟踪事件以及事件发生时请求的 URI。 在此示例中，跟踪了 acceptInvitation 事件和折叠事件。 有关 **NonLinearAds** 元素及其子元素的详细信息，请参阅 IAB.NET/VAST。 请注意，**TrackingEvents** 元素位于**NonLinearAds** 元素而非 **NonLinear** 元素内。
+**IFrameResource** 描述可以在 IFrame 中显示的 HTML 资源。 **HTMLResource** 描述可以插入网页的一段 HTML 代码。 **TrackingEvents** 指定跟踪事件以及事件发生时请求的 URI。 在此示例中，跟踪了 acceptInvitation 事件和折叠事件。 有关 **NonLinearAds** 元素及其子元素的详细信息，请参阅 IAB.NET/VAST。 请注意，**TrackingEvents** 元素位于 **NonLinearAds** 元素而非 **NonLinear** 元素内。
 
 在 `<CompanionAds>` 元素内定义伴随广告。 `<CompanionAds>` 元素可以包含一个或多个 `<Companion>` 元素。 每个 `<Companion>` 元素均描述一个伴随广告，并且可以包含以与非线性广告相同的方式定义的 `<StaticResource>`、`<IFrameResource>` 或 `<HTMLResource>`。 VAST 文件可以包含多个伴随广告，播放器应用程序可以选择最适合显示的广告。 有关 VAST 的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。
 

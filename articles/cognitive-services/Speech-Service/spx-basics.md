@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.author: trbye
-ms.openlocfilehash: 4a6c7b36665c7a38534ce8e470bc8b327c274d95
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 53138a22c58e89ade4af234630e9429a19738a6a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "99095168"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556462"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>开始使用 Azure 语音 CLI
 
@@ -86,7 +86,7 @@ spx synthesize --text "Testing synthesis using the Speech CLI" --speakers
 你还可将合成的输出保存到文件中。 在此示例中，我们在运行该命令的目录中创建一个名为 `my-sample.wav` 的文件。
 
 ```console
-spx synthesize --text "We hope that you enjoy using the Speech CLI." --audio output my-sample.wav
+spx synthesize --text "Enjoy using the Speech CLI." --audio output my-sample.wav
 ```
 
 这些示例假定你是以英语进行测试的。 但我们支持多种语言的语音合成。 你可使用此命令或通过访问[语言支持页面](./language-support.md)来拉取完整的语音列表。

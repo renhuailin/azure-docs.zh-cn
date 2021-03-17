@@ -1,9 +1,9 @@
 ---
 title: 使用 .NET 配置 Azure 媒体服务遥测 | Microsoft 文档
-description: 本文说明如何通过 .NET SDK 使用 Azure 媒体服务遥测。
+description: 本文说明了如何通过 .NET SDK 使用 Azure 媒体服务遥测。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 263bf1cd2a7e2a37a1c4fae172ce4f66b1e59b5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6bd7b472d8f42bd7872aeacf8b78aac8b249f4bd
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265972"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013721"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>使用 .NET 配置 Azure 媒体服务遥测
 
@@ -37,14 +37,14 @@ ms.locfileid: "89265972"
 
 或
 
-- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本文说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询度量值。  
+- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据。 本文说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>为媒体服务帐户配置遥测
 
 启用遥测需要执行以下步骤：
 
 - 获取已附加到媒体服务帐户的存储帐户的凭据。 
-- 创建一个通知终结点，将其 EndPointType 设置为 AzureTable，并使 endPontAddress 指向存储表   。
+- 创建一个通知终结点，将其 **EndPointType** 设置为 **AzureTable**，并使 endPontAddress 指向存储表。
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -66,7 +66,7 @@ ms.locfileid: "89265972"
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-有关使用遥测信息的信息，请参阅[此](media-services-telemetry-overview.md)文章。
+有关使用遥测信息的信息，请参阅[这篇文章](media-services-telemetry-overview.md)。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
@@ -80,7 +80,7 @@ ms.locfileid: "89265972"
  
 ## <a name="example"></a>示例  
     
-以下示例说明如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询度量值。  
+以下示例说明了如何为指定的 AMS 帐户启用遥测，以及如何使用 Azure 媒体服务 .NET SDK 查询指标。  
 
 ```csharp
 using System;

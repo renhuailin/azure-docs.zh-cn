@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb854c8b9ac3b4ee527c9a117edde13479bfeb4
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 1af2c1b912afbcf44cefbfb021c592836dbde5b8
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740187"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466280"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用程序注册权限
 
@@ -170,4 +170,4 @@ create 权限授予对“新建注册”命令的访问权限。
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 [Azure 门户、Azure AD PowerShell 和图形 API](custom-create.md) 创建自定义角色
-- [查看自定义角色的分配](custom-view-assignments.md)
+- [列出角色分配](view-assignments.md)

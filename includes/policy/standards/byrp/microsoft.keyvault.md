@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d8dea2f33949e0a2a5ab3393a680ec5346bac3c6
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b61033220181f2d0dcb910e0902bfd005bcc146a
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436867"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634426"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -103,7 +103,7 @@ ms.locfileid: "102436867"
 |网络隔离 |0805.01m1Organizational.12 - 01.m |组织的安全网关（例如防火墙）强制执行安全策略，并配置为筛选域之间的流量、阻止未经授权的访问。它用于维护内部有线、内部无线和外部网络段（如 Internet，包括 DMZ）之间的隔离，并对每个域强制执行访问控制策略。 |[Key Vault 应使用虚拟网络服务终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |网络隔离 |0806.01m2Organizational.12356 - 01.m |组织网络根据组织要求使用定义的安全外围和一组分级的控制以逻辑方式和物理方式进行分段，包括在逻辑上与内部网络分离的可公开访问的系统组件子网；流量控制基于所需的功能，而数据/系统的分类控制则基于风险评估及其各自的安全要求。 |[Key Vault 应使用虚拟网络服务终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |网络隔离 |0894.01m2Organizational.7 - 01.m |将物理服务器、应用程序或数据迁移到虚拟化服务器时，网络会与生产级网络分离。 |[Key Vault 应使用虚拟网络服务终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
-|审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Azure Key Vault 托管 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
+|审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Azure Key Vault 管理的 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
 |审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Key Vault 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |网络控制 |0865.09m2Organizational.13 - 09.m |组织 (i) 通过使用互连安全协议或其他正式协议授权信息系统与组织外部其他信息系统进行连接；(ii) 记录每个连接、接口特征、安全要求以及所传输信息的性质；(iii) 采取“全部拒绝，出现例外情况时允许”策略，允许信息系统与组织外部的其他信息系统进行连接；(iv) 应用“默认拒绝”规则，丢弃经过基于主机的防火墙或其终结点（工作站、服务器等）上的端口筛选工具的所有流量，但明确允许的服务和端口除外。 |[Key Vault 应使用虚拟网络服务终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |业务连续性和风险评估 |1635.12b1Organizational.2 - 12.b |业务连续性的信息安全特性 (i) 基于识别可导致组织关键业务进程中断的事件（或一系列事件），例如设备故障、人为失误、盗窃、火灾、自然灾害和恐怖主义行为；(ii) 后跟风险评估，以根据时间、损害规模和恢复期确定发生此类中断的可能性及其影响；(iii) 基于风险评估的结果，制定业务连续性策略以确定实现业务连续性的总体方法；(iv) 在制定此策略后，由管理层进行批准，然后制定计划并获得批准来实施该策略。 |[Azure Key Vault 托管的 HSM 应启用清除保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc39ba22d-4428-4149-b981-70acb31fc383) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Recoverable_Audit.json) |

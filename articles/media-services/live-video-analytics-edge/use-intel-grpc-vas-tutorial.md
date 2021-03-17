@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 282ab76c34405f19e7f81b2a8069c178b17ee0c1
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124408"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103465753"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™DL Streamer Edge AI 扩展来分析实时视频 
 
@@ -128,7 +128,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
     deployment.openvino.grpc.cpu.amd64.json 清单文件是在 src/edge/config 文件夹中创建的 。
 
 > [!NOTE]
-我们还包含了一个 deployment.openvino.grpc.gpu.template.json 模板，它为 Intel OpenVINO DL Streamer Edge AI 扩展模块提供 GPU 支持。 这些模板指向 Intel 的 Docker 中心映像。
+> 我们还包含了一个 deployment.openvino.grpc.gpu.template.json 模板，它为 Intel OpenVINO DL Streamer Edge AI 扩展模块提供 GPU 支持。 这些模板指向 Intel 的 Docker 中心映像。
 
 上述模板指向 Intel Docker 中心映像。 如果你更希望在自己的 Azure 容器注册表上托管副本，可按照下面的步骤 1 和 2 进行操作：
 1. 使用 SSH 连接到已安装 Docker CLI 工具的设备（即边缘设备），并按照以下步骤拉取/标记/推送容器：

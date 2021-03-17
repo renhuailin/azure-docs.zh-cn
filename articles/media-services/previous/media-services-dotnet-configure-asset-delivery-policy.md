@@ -3,7 +3,7 @@ title: 使用 .NET SDK 配置资产传送策略 | Microsoft Docs
 description: 本主题说明如何通过 Azure 媒体服务 .NET SDK 配置不同的资产传送策略。
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24fd4dcb9b24b6d025ff0327d98fee15a05fb7de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 82e152f257e867dfdbf97c92b041ce57c5a1bdbc
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267711"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014258"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
 
@@ -34,7 +34,7 @@ ms.locfileid: "89267711"
 本文介绍为何以及如何创建和配置资产传送策略。
 
 >[!NOTE]
->创建 AMS 帐户后，系统会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
+>创建 AMS 帐户后，系统会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。  若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 >
 >此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 

@@ -3,7 +3,7 @@ title: 轮询长时运行的操作 | Microsoft Docs
 description: Azure 媒体服务提供了相应的 API 来向媒体服务发送启动操作请求（例如创建、启动、停止或删除频道），这些均为长时间运行的操作。 本主题说明如何轮询长时间运行的操作。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 44cecbd8d2cdc95e342d7aaf2b33f6cc0192e182
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7926f7aaa427d49d13cab5e13f5153bcd22e5898
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262017"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103013816"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>使用 Azure 媒体服务传送实时流
 
@@ -33,7 +33,7 @@ Microsoft Azure 媒体服务提供了相应的 API 来向媒体服务发送启�
 媒体服务 .NET SDK 提供了用来发送请求并等待操作完成的 API（在内部，这些 API 以特定的时间间隔轮询操作进度）。 例如，当调用 channel.Start() 时，该方法会在频道启动后返回。 还可以使用异步版本：await channel.StartAsync()（有关基于任务的异步模式的信息，请参阅 [TAP](./media-services-mes-schema.md)。 发送操作请求并且在操作完成之前一直轮询操作状态的 API 称作“轮询方法”。 建议为富客户端应用程序和/或有状态服务使用这些方法（特别是异步版本）。
 
 某些情况下，应用程序不能等待长时运行的 http 请求并且希望手动轮询操作进度。 一个典型的示例是与无状态 web 服务进行交互的浏览器：当浏览器请求创建频道时，web 服务会启动一个长时运行的操作并将操作 ID 返回到浏览器。 然后，浏览器可以根据该 ID 询问 web 服务来获取操作状态。 媒体服务 .NET SDK 提供了非常适用于此情况的 API。 这些 API 称为“非轮询方法”。
-“非轮询方法”具有以下命名模式：Send*OperationName*Operation（例如，SendCreateOperation）。 Send*OperationName*Operation 方法返回 **IOperation** 对象；返回的对象包含可以用来跟踪操作的信息。 Send*OperationName*OperationAsync 方法将返回 **Task\<IOperation>**。
+“非轮询方法”具有以下命名模式：Send *OperationName* Operation（例如，SendCreateOperation）。 Send *OperationName* Operation 方法返回 **IOperation** 对象；返回的对象包含可以用来跟踪操作的信息。 Send *OperationName* OperationAsync 方法将返回 **Task\<IOperation>**。
 
 当前，以下类支持非轮询方法：**Channel**、**StreamingEndpoint** 和 **Program**。
 

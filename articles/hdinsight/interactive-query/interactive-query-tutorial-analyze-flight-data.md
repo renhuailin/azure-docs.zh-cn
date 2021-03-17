@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1aab6b4fe4ffafb3cbba60b2b3774d2577d3d53c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935901"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562461"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "98935901"
 
 ## <a name="download-the-flight-data"></a>下载航班数据
 
-1. 浏览到[美国研究与技术创新管理部门、运输统计局](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)。
+1. 浏览到[美国研究与技术创新管理部门、运输统计局](https://www.transtats.bts.gov/DL_SelectFields.asp?gnoyr_VQ=FGJ)。
 
 2. 在页面上，清除所有字段，然后选择以下值：
 
@@ -43,7 +43,7 @@ ms.locfileid: "98935901"
    | --- | --- |
    | 筛选年份 |2019 |
    | 筛选期间 |1 月 |
-   | 字段 |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay` 列中的一个值匹配。 |
+   | 字段 |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
@@ -190,11 +190,11 @@ ms.locfileid: "98935901"
 
     此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
-7. 若要退出 Beeline，请在提示符处输入 `!quit`。
+7. 若要退出 Beeline，请在提示符处输入 `!quit` 。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
-有多种方法可连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集中使用 [FreeTDS](http://www.freetds.org/)。
+可通过多种方式连接到 SQL 数据库并创建表。 以下步骤从 HDInsight 群集使用 [FreeTDS](http://www.freetds.org/) 。
 
 1. 若要安装 FreeTDS，请使用以下命令从打开的 SSH 连接到群集：
 
@@ -229,7 +229,7 @@ ms.locfileid: "98935901"
     GO
     ```
 
-    输入 `GO` 语句后，将评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表。
+    输入 `GO` 语句后，会评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表。
 
     使用以下查询验证是否已创建该表：
 

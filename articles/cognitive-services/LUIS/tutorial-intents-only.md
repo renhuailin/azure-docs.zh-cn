@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 04ba7dc79deef2dbad12c3f65a324201d3e9f598
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025287"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612756"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
@@ -193,7 +193,7 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 * [如何训练](luis-how-to-train.md)
 * [如何发布](luis-how-to-publish-app.md)
 * [如何在 LUIS 门户中测试](luis-interactive-test.md)
-* [Azure 机器人](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure 机器人](/azure/bot-service/)
 
 
 ## <a name="next-steps"></a>后续步骤

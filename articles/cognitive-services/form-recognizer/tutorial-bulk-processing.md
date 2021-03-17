@@ -2,19 +2,19 @@
 title: 教程：使用 Azure 数据工厂从数据中批量提取信息 - 表单识别器
 titleSuffix: Azure Cognitive Services
 description: 设置 Azure 数据工厂活动来触发表单识别器模型的训练和运行，并将大量文档数字化。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/04/2021
-ms.author: pafarley
-ms.openlocfilehash: 5b220652009f54482c757f01232517569596c562
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.author: lajanuar
+ms.openlocfilehash: 0c009a87a5834997cdc489efc75ebb16f9459754
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423890"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467096"
 ---
 # <a name="tutorial-extract-form-data-in-bulk-by-using-azure-data-factory"></a>教程：使用 Azure 数据工厂批量提取表单数据
 
@@ -511,4 +511,4 @@ END
 
 在本教程中，你已设置 Azure 数据工厂管道来触发表单识别器模型的训练和运行，并将大量文件数字化。 接下来，探索表单识别器 API，了解你可用它执行的其他操作。
 
-* [表单识别器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)
+* [表单识别器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeBusinessCardAsync)
