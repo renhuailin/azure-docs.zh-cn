@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574444"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100400"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -49,7 +49,7 @@ ms.locfileid: "100574444"
 |建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
 |----|----|----|----|----|
 |应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|N|应用服务|
-|应强化 IaaS NSG 上 Web 应用的规则|如果运行 web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 web 应用程序端口而言过于宽松，应强化这些安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|
+|应强化 IaaS NSG 上 Web 应用的规则|如果运行 Web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 Web 应用程序端口而言过于宽松，应强化该安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|
 |应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中型|N|计算资源（容器）|
 |安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备|安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备。|低|N|IoT 设备|
 
@@ -57,5 +57,5 @@ ms.locfileid: "100574444"
 
 若要详细了解建议，请参阅以下内容：
 
-- [Azure 安全中心的安全建议](security-center-recommendations.md)
-- [保护 Azure 安全中心中的网络](security-center-network-recommendations.md)
+- [什么是安全策略、计划和建议？](security-policy-concept.md)
+- [查看安全建议](security-center-recommendations.md)

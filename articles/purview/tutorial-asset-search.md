@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 02/22/2020
+ms.openlocfilehash: 5285d5b2c7cbe6845fb6043fa1096f94254602e7
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693347"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677840"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>教程：导航 Azure Purview（预览版）主页并搜索资产
 
@@ -45,7 +45,7 @@ ms.locfileid: "97693347"
 
 1. 导航到 Azure 门户中的 Azure Purview 资源，然后选择“打开 Purview Studio”。 你将自动转到 Purview Studio 的主页。
 
-   主页顶部显示目录名称和一组目录分析。 包括用户数、数据资产和术语。 在摘要中，可以看到总计有 200 多项资产和 113 条术语。 当组织扫描并将更多条款添加到 Azure Purview 时，此数字会更新。
+   主页顶部显示目录名称和一组目录分析。 包括源、数据资产和词汇表术语的数量。 在摘要中，可以看到总计有 200 多项资产和 113 条术语。 当组织扫描并将更多条款添加到 Azure Purview 时，此数字会更新。
 
    :::image type="content" source="./media/tutorial-asset-search/purview-home-page.png" alt-text="屏幕截图中显示了 Azure Purview 主页。":::
 

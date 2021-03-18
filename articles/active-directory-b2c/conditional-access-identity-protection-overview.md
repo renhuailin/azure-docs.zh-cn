@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 03/03/2021
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e2ec8af824d573493d1da743923956e587ded62e
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928386"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102033820"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C 的标识保护和条件访问
 
@@ -49,21 +49,21 @@ Azure AD B2C 中的标识保护和条件访问通常与 Azure AD 中的工作方
 
 - 在 Azure AD B2C 租户中，标识保护风险检测仅适用于本地 B2C 帐户，不适用于 Google 或 Facebook 等社交标识。
 
-- 在 Azure AD B2C 租户中，可以使用一部分标识保护风险检测功能。 请参阅[设置标识保护](conditional-access-identity-protection-setup.md#set-up-identity-protection)。
+- 在 Azure AD B2C 租户中，可以使用一部分标识保护风险检测功能。 请参阅[通过标识保护调查风险](identity-protection-investigate-risk.md)和[向用户流添加条件访问](conditional-access-user-flow.md)。
 
 - Azure AD B2C 租户中的条件访问设备合规性功能不可用。
 
 
 ## <a name="integrate-conditional-access-with-user-flows-and-custom-policies"></a>将条件访问与用户流和自定义策略集成
 
-在 Azure AD B2C 中，你可以触发内置用户流中的条件访问条件。 还可以将条件访问纳入自定义策略中。 与 B2C 用户流的其他方面一样，你可以根据组织的理念、品牌和其他缓解方法自定义最终用户体验消息。 请参阅[定义条件访问技术配置文件](conditional-access-technical-profile.md)。
+在 Azure AD B2C 中，你可以触发内置用户流中的条件访问条件。 还可以将条件访问纳入自定义策略中。 与 B2C 用户流的其他方面一样，你可以根据组织的理念、品牌和其他缓解方法自定义最终用户体验消息。 请参阅[向用户流添加条件访问](conditional-access-user-flow.md)。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-还可以使用 Microsoft Graph API 来管理 Azure AD B2C 中的条件访问策略。 如需了解详情，请参阅[条件访问文档](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 参考](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)。
+还可以使用 Microsoft Graph API 来管理 Azure AD B2C 中的条件访问策略。 如需了解详情，请参阅[条件访问文档](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 操作](microsoft-graph-operations.md#conditional-access)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Azure AD B2C 设置标识保护和条件访问](conditional-access-identity-protection-setup.md)
+- [向用户流添加条件访问](conditional-access-user-flow.md)
 - [了解 Azure AD 中的标识保护](../active-directory/identity-protection/overview-identity-protection.md)
 - [了解条件访问](../active-directory/conditional-access/overview.md)

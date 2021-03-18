@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: b55a706aa25b21620226690c172c996fe10a84fa
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 17f38d79b75179d7a54ca5ed1d20dff18d0a0363
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203485"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121093"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>快速入门：将 Azure Cache for Redis 与 Rust 配合使用
 
 本文将介绍如何使用 [Rust 编程语言](https://www.rust-lang.org/)来与 [Azure Cache for Redis](./cache-overview.md) 交互。 本文还会演示常用的 Redis 数据结构示例，如[字符串](https://redis.io/topics/data-types-intro#redis-strings)、[哈希](https://redis.io/topics/data-types-intro#redis-hashes)、[列表](https://redis.io/topics/data-types-intro#redis-lists)等。 使用 Redis 的 [redis-rs](https://github.com/mitsuhiko/redis-rs) 库。 此客户端公开高级别和低级别 API，可利用本文提供的示例代码了解这两种样式的实际应用。
+
+## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
+
+如果要直接跳到代码，请参阅 GitHub 上的 [Rust 快速入门](https://github.com/Azure-Samples/azure-redis-cache-rust-quickstart/)。
 
 ## <a name="prerequisites"></a>先决条件
 

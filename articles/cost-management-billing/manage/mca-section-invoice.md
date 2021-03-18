@@ -8,18 +8,22 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: c3ee643d525cb5394369aba3b0e803bd1a94c852
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362759"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036227"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
 
 Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目或开发环境）灵活组织成本。
 
 本文介绍如何使用 Azure 门户来组织成本。 本文的内容适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
+
+观看[通过自定义 Microsoft 客户协议计费帐户来组织成本](https://www.youtube.com/watch?v=7RxTfShGHwU)视频，了解如何组织计费帐户的成本。
+
+>[!VIDEO https://www.youtube.com/embed/7RxTfShGHwU]
 
 ## <a name="structure-your-account-with-billing-profiles-and-invoice-sections"></a>使用计费配置文件和发票科目构建帐户
 
@@ -69,7 +73,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 ## <a name="create-a-new-invoice-section"></a>创建新的发票科目
 
-若要创建发票科目，需要是**计费对象信息所有者**或**计费对象信息参与者**。 有关详细信息，请参阅[管理计费配置文件的发票科目](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)。
+若要创建发票科目，需要是 **计费对象信息所有者** 或 **计费对象信息参与者**。 有关详细信息，请参阅[管理计费配置文件的发票科目](understand-mca-roles.md#manage-invoice-sections-for-billing-profile)。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -93,7 +97,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 ## <a name="create-a-new-billing-profile"></a>创建新的计费配置文件
 
-只有**计费帐户所有者**或**计费帐户参与者**才能创建计费配置文件。 有关详细信息，请参阅[管理计费帐户的计费配置文件](understand-mca-roles.md#manage-billing-profiles-for-billing-account)。
+只有 **计费帐户所有者** 或 **计费帐户参与者** 才能创建计费配置文件。 有关详细信息，请参阅[管理计费帐户的计费配置文件](understand-mca-roles.md#manage-billing-profiles-for-billing-account)。
 
 > [!IMPORTANT]
 >

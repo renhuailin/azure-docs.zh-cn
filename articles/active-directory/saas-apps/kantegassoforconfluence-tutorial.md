@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ff2d7f45626055cdbc98ca944eecaa01f9bd052b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: be86e04359c29696d208994d85d36b7740b60cc3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459197"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>教程：Azure Active Directory 与 Kantega SSO for Confluence 的集成
 
@@ -103,7 +103,7 @@ ms.locfileid: "92459197"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -176,23 +176,23 @@ ms.locfileid: "92459197"
 
     ![屏幕截图显示突出显示了“App ID URL”字段和“复制”按钮，以及选择了“下一步”按钮的“应用属性”部分。](./media/kantegassoforconfluence-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”  值并将其用作 Azure 门户中“基本 SAML 配置”  部分中的“标识符、回复 URL 和登录 URL”  。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。 
 
-1. 在“元数据导入”部分，执行以下步骤  ： 
+1. 在“元数据导入”部分，执行以下步骤： 
 
     ![屏幕截图显示选择了“电脑上的元数据文件”的“元数据导入”部分。](./media/kantegassoforconfluence-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。 
 
-1. 在“名称和 SSO 位置”部分，执行以下步骤  ：
+1. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![屏幕截图显示突出显示了“标识提供者名称”文本框并选择了“下一步”按钮的“名称和 SSO 位置”。](./media/kantegassoforconfluence-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。 
 
@@ -202,11 +202,11 @@ ms.locfileid: "92459197"
 
 1. 在“Confluence 用户帐户”  部分中，执行以下步骤：
 
-    ![屏幕截图显示选择了“根据需要在 Confluence 的内部目录中创建用户”选项和“下一步”按钮的“Confluence 用户帐户”部分。](./media/kantegassoforconfluence-tutorial/addon10.png)
+    ![该屏幕截图显示了“Confluence 用户帐户”部分，其中“根据需要在 Confluence 的内部目录中创建用户”选项和“下一步”按钮处于选中状态。](./media/kantegassoforconfluence-tutorial/addon10.png)
 
     a. 选择“根据需要在 Confluence 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“下一步”。 
+    b. 单击“下一步”。
 
 1. 单击“完成”  。
 
@@ -216,11 +216,11 @@ ms.locfileid: "92459197"
 
     ![屏幕截图显示突出显示了“已知域”文本框并选择了“保存”按钮的“Azure AD 已知域”页。](./media/kantegassoforconfluence-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”  。
+    a. 从页的左侧面板中选择“已知域”。
 
-    b. 在“已知域”文本框中输入域名  。
+    b. 在“已知域”文本框中输入域名。
 
-    c. 单击“ **保存** ”。
+    c. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -230,7 +230,7 @@ ms.locfileid: "92459197"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -240,12 +240,12 @@ ms.locfileid: "92459197"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -263,7 +263,7 @@ ms.locfileid: "92459197"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -289,15 +289,15 @@ ms.locfileid: "92459197"
 
     ![添加员工](./media/kantegassoforconfluence-tutorial/user2.png)
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
-    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”  文本框中，键入用户的密码。
 
-    e.  单击“确认密码”，重新输入该密码。
+    e. 单击“确认密码”，重新输入该密码。
 
     f. 单击“添加”按钮。 
 

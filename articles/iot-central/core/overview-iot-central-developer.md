@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377799"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043093"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
@@ -68,7 +68,7 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dp
 - 可让你使用自己的设备 ID 在 IoT Central 中注册设备。 使用自己的设备 ID 可以简化与现有后端办公系统的集成。
 - 可以通过一致的单一方式将设备连接到 IoT Central。
 
-有关详细信息，请参阅[连接到 Azure IoT Central](./concepts-get-connected.md)。
+若要了解详细信息，请参阅[连接到 Azure IoT Central](./concepts-get-connected.md) 和[最佳做法](concepts-best-practices.md)。
 
 ### <a name="security"></a>安全性
 

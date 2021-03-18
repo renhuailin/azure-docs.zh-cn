@@ -2,13 +2,13 @@
 title: 教程 - 访问私有云
 description: 了解如何访问 Azure VMware 解决方案私有云
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b7f21dbba5256712607241bb1258962fc22418fb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 02/22/2021
+ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578406"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044997"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>教程：访问 Azure VMware 解决方案私有云
 
@@ -30,11 +30,14 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 需要
 
 1. 从跳转盒使用云管理员用户名通过 VMware vCenter SSO 登录 vSphere 客户端，并验证用户界面是否成功显示。
 
-1. 在 Azure 门户中选择你的私有云，然后在“概览”视图中选择“标识”>“默认” 。 
+1. 在 Azure 门户中，选择你的私有云，然后选择“管理” > “标识”。 
 
    此时会显示私有云 vCenter 和 NSX-T Manager 的 URL 和用户凭据。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+   >[!TIP]
+   >选择“生成新密码”来生成新的 vCenter 和 NSX-T 密码。
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. 导航到在上一步创建的 VM，并连接到该虚拟机。 
 
@@ -44,13 +47,13 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 需要
 
 1. 在“vCenter”选项卡中，输入在上一步获取的 `cloudadmin@vmcp.local` 用户凭据。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="登录到私有云 vCenter。" border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter 门户。" border="true":::
 
 1. 在浏览器的第二个选项卡中，登录到 NSX-T 管理器。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="在浏览器的第二个选项卡中，登录到 NSX-T 管理器。" border="true":::
 
 
 

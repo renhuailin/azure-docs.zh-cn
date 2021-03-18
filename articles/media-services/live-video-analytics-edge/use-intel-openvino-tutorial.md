@@ -4,12 +4,12 @@ description: 在本教程中，将使用由 Intel 提供的 AI 模型服务器�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: db018c5c8d8f3990fd465f4d586ef4dc70980542
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 68b5b7561cc31e156a745bcfb07e3203de10d425
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955710"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702209"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）来分析实时视频 
 
@@ -24,7 +24,7 @@ ms.locfileid: "98955710"
 
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
   > [!NOTE]
-  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果你没有正确的权限，请联系帐户管理员，让其授予你适当的权限。 
+  > 你将需要一个具有服务主体创建权限（所有者角色提供此权限）的 Azure 订阅。 如果没有正确的权限，请联系帐户管理员，让其授予适当的权限。 
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
@@ -47,7 +47,7 @@ ms.locfileid: "98955710"
 ## <a name="overview"></a>概述
 
 > [!div class="mx-imgBorder"]
-> 概述
+> :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="概述":::
 
 此图显示本快速入门中信号的流动方式。 [Edge 模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)模拟托管实时流式处理协议 (RTSP) 服务器的 IP 相机。 [RTSP 源](media-graph-concept.md#rtsp-source)节点从该服务器拉取视频源，并将视频帧发送到 [HTTP 扩展处理器](media-graph-concept.md#http-extension-processor)节点。 
 
@@ -88,11 +88,11 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
 
 1. 转到 src/cloud-to-device-console-app 文件夹。 你可在此处看到 appsettings.json 文件和一些其他文件：
 
-    * ***c2d-console-app.csproj** _ - Visual Studio Code 的项目文件。
-    _ ***operations.json** _ - 希望程序运行的操作的列表。
-    _ ***Program.cs** _ - 示例程序代码。 此代码：
+    * c2d-console-app.csproj - Visual Studio Code 的项目文件。
+    * operations.json - 希望程序运行的操作的列表。
+    * Program.cs - 示例程序代码。 此代码：
 
-        _ 加载应用设置。
+        * 加载应用设置。
         * 调用 IoT Edge 模块上的实时视频分析公开的直接方法。 可以通过调用模块的[直接方法](direct-methods.md)来使用该模块分析实时视频流。
         * 暂停以检查“终端”窗口中程序的输出，并检查“输出”窗口中模块生成的事件 。
         * 调用直接方法以清理资源。
@@ -117,7 +117,7 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
 
     ![生成 IoT Edge 部署清单](./media/use-intel-openvino-tutorial/generate-deployment-manifest.png)  
 
-    随即将在 src/edge/config 文件夹中创建一个清单文件 deployment.yolov3.amd64.json 。
+    deployment.openvino.amd64.json 清单文件是在 src/edge/config 文件夹中创建的 。
 
 1. 如果已完成[检测运动并发出事件](detect-motion-emit-events-quickstart.md)快速入门，则跳过此步骤。 
 
@@ -126,7 +126,7 @@ Intel® 分发版 [OpenVINO™ 工具套件](https://software.intel.com/content/
     ![设置 IoT 中心连接字符串](./media/quickstarts/set-iotconnection-string.png)
 
 > [!NOTE]
-> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取该信息，请在 Azure 门户中导航到 IoT 中心，并在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
+> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
     ```
     Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
     ```

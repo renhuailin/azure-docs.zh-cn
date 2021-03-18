@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: 3f1e3fd360197310a89a67d43053649d904aeb18
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677617"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176614"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -34,7 +34,7 @@ ms.locfileid: "101677617"
 
 * 一个 Azure Synapse Analytics 工作区。 有关说明，请参阅[创建 Azure Synapse Analytics 工作区](../../machine-learning/how-to-manage-workspace.md)。
 * 无服务器 Apache Spark 池。
-* ADLS Gen2 存储帐户。 你需要是要使用的 ADLS Gen2 文件系统的存储 Blob 数据所有者。 如果还不是该所有者，则需要手动添加权限。
+* ADLS Gen2 存储帐户。 你需要是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据参与者。 如果还不是该所有者，则需要手动添加权限。
 * 如果不想使用工作区默认存储，请在 Synapse Studio 中链接所需的 ADLS Gen2 存储帐户。 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>为 PySpark (Python) 创建 Apache Spark 作业定义
@@ -101,7 +101,7 @@ ms.locfileid: "101677617"
 
  6. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
 
-     |  属性   | 说明   |  
+     |  properties   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `scala`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.jar`|
@@ -141,7 +141,7 @@ ms.locfileid: "101677617"
 
  6. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
     
-     |  属性   | 说明   |  
+     |  properties   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `dotnet`|
      |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.zip`|
@@ -162,7 +162,7 @@ ms.locfileid: "101677617"
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>以批处理作业形式提交 Apache Spark 作业定义
 
-创建 Apache Spark 作业定义后，可将其提交到 Apache Spark 池。 请确保你是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据所有者。 如果还不是该所有者，则需要手动添加权限。
+创建 Apache Spark 作业定义后，可将其提交到 Apache Spark 池。 请确保你是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据参与者。 如果还不是该所有者，则需要手动添加权限。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>应用场景 1：提交 Apache Spark 作业定义
  1. 通过选择 Apache Spark 作业定义来打开其窗口。

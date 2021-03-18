@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 957e39f7629337182c3e19a1a514c42883666301
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: dffb505719e6778adfdd8e99f62790df9ebd615a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796996"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100689"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ ms.locfileid: "98796996"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|定价：|适用于 DNS 的 Azure Defender 按[定价页面](security-center-pricing.md)中所示的定价计费|
+|定价：|用于 DNS 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
@@ -47,7 +47,7 @@ ms.locfileid: "98796996"
 
 适用于 DNS 的 Azure Defender 不使用任何代理。 
 
-若要保护 DNS 层，请按照[启用 Azure Defender](security-center-pricing.md#enable-azure-defender) 中的说明为每个订阅启用适用于 DNS 的 Azure Defender。
+若要保护 DNS 层，请按照[启用 Azure Defender](enable-azure-defender.md) 中的说明为每个订阅启用适用于 DNS 的 Azure Defender。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -57,4 +57,4 @@ ms.locfileid: "98796996"
 - 安全警报可能是由安全中心生成的，也可能是由安全中心从其他安全产品接收的。 若要将所有这些警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [启用 Azure Defender](enable-azure-defender.md)

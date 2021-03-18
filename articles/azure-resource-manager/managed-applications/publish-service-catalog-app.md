@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 342fa722d704933f22cec00a46d11ccc38fc6e4d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b255cafb9040f87c902fe6c094c3e0db3d461e4b
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650640"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101093650"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 
@@ -312,9 +312,9 @@ az managedapp definition create \
 在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置。 选择“角色分配”选项卡以查看角色分配列表。
+1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
 1. 在“添加角色分配”窗口中，选择“参与者”角色 。
-1. 在“分配访问权限至”字段中，选择“Azure AD 用户、组或服务主体”。
+1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
 1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。 
 1. 保存角色分配。
 
@@ -401,7 +401,7 @@ az managedapp definition create \
 
 ## <a name="make-sure-users-can-see-your-definition"></a>请确保用户可以看到你的定义
 
-你可以访问托管应用程序定义，但你希望确保组织中的其他用户可以访问它。 至少授予他们对定义的读者角色。 他们可能已从订阅或资源组继承了此级别的访问权限。 若要检查谁有权访问定义并添加用户或组，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+你可以访问托管应用程序定义，但你希望确保组织中的其他用户可以访问它。 至少授予他们对定义的读者角色。 他们可能已从订阅或资源组继承了此级别的访问权限。 若要检查谁有权访问定义并添加用户或组，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

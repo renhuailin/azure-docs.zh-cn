@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 11/23/2020
-ms.openlocfilehash: b785a6b73f595072f5d723bad8c119ddc4dc0f11
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5d69aacb6e3f25e3414aa446c4c5ae7852cabdfc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636316"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720896"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) 的网络概念
 
@@ -60,7 +60,7 @@ ms.locfileid: "100636316"
 
 * **流入量**：流入量网络策略作为 [OpenShift SDN](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) 的一部分受到支持。 默认启用此网络策略，由用户执行。 尽管流入量网络策略符合 V1 NetworkPolicy，但不支持 Egress 和 IPBlock 类型。
 
-* **流出量**：通过使用 OpenShift 中的 [出口防火墙](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能来支持流出量网络策略。 每个命名空间/项目只有一个流出量策略。 “默认”命名空间不支持流出量策略，并按顺序（从第一个到最后一个）对其进行评估。
+* **流出量**：通过使用 OpenShift 中的 [出口防火墙](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能来支持流出量网络策略。 每个命名空间/项目只有一个流出量策略。 流出量策略不受“默认”命名空间支持，并且是按顺序（从第一个到最后一个）进行评估的。
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift 中的网络基础知识
 

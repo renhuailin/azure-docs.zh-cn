@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282276"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183159"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 
@@ -32,7 +32,7 @@ Front Door 在第 7 层（HTTP/HTTPS 层）工作，将任意广播协议与拆�
 >[!NOTE]
 > Azure 为方案提供了一套完全托管的负载均衡解决方案。 
 > * 若要进行基于 DNS 的全局路由，并且在传输层安全性 (TLS) 协议终止（“SSL 卸载”）、每 HTTP/HTTPS 请求或应用程序层处理方面没有要求，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。 
-> * 若要在应用程序层对某个区域内的多个服务器实现负载均衡，请查看[应用程序网关](../application-gateway/overview.md)
+> * 若要在应用程序层对某个区域内的多个服务器实现负载均衡，请查看[应用程序网关](../application-gateway/overview.md)。
 > * 若要执行网络层负载均衡，请查看[负载均衡器](../load-balancer/load-balancer-overview.md)。 
 > 
 > 端到端场景可从结合所需的解决方案中受益。

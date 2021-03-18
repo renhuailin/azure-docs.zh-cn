@@ -1,15 +1,15 @@
 ---
 title: 快速入门：通过 Python 进行新策略分配
 description: 本快速入门介绍如何使用 Python 创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 10/14/2020
+ms.date: 03/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e600f97dafdd1040c22b6e4d9e333f638334b663
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832188"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742324"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>快速入门：使用 Python 创建策略分配以识别不合规的资源
 
@@ -40,7 +40,7 @@ Python 库用于从命令行或脚本管理 Azure 资源。 本指南介绍如�
    az login
    ```
 
-1. 在所选的 Python 环境中，安装 Azure Resource Graph 所需的库：
+1. 在所选的 Python 环境中，安装 Azure Policy 所需的库：
 
    ```bash
    # Add the Python library for Python

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: b1dd559db2d736fa27de2884d2fe82edaaeaaf3c
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: f127a24bec5567a3868ae77cb8a52f0af2a19603
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916636"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100672"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>用于 Key Vault 的 Azure Defender 简介
 
@@ -26,7 +26,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
-|定价：|用于 Key Vault 的 Azure Defender 按[定价页中](security-center-pricing.md)的定价计费|
+|定价：|用于 Key Vault 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 

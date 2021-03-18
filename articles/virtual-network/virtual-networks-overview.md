@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: e1efd02d60ba874178f24da2b441fc122e4a1912
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 849127ed0846928a77795ac0a1ea3f7a091468b5
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218526"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635942"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
 Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 VNet 允许许多类型的 Azure 资源（例如 Azure 虚拟机 (VM)）以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。 VNet 类似于在你在自己的数据中心运营的传统网络，但附带了 Azure 基础设施的其他优势，例如可伸缩性、可用性和隔离性。
 
 ## <a name="why-use-an-azure-virtual-network"></a>为何要使用 Azure 虚拟网络？
-通过 Azure 虚拟网络，Azure 资源能够以安全方式彼此通信、与 Internet 通信以及与本地网络通信。 可以实现虚拟网络的关键方案包括：Azure 资源与 Internet 进行通信、Azure 资源彼此通信、与本地资源进行通信、筛选网络流量、路由网络流量以及与 Azure 服务集成。
+通过 Azure 虚拟网络，Azure 资源能够以安全方式彼此通信、与 Internet 通信以及与本地网络通信。 可以使用虚拟网络实现的关键方案包括：Azure 资源与 Internet 进行通信、Azure 资源彼此通信、与本地资源进行通信、筛选网络流量、路由网络流量以及与 Azure 服务集成。
 
 ### <a name="communicate-with-the-internet"></a>与 Internet 通信
 

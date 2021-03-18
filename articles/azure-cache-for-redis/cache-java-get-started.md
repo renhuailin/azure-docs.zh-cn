@@ -8,16 +8,20 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012912"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121263"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入门：在 Java 中使用 Azure Cache for Redis
 
 在本快速入门中，会使用 [Jedis](https://github.com/xetorthio/jedis) Redis 客户端将 Azure Redis 缓存合并到 Java 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
+
+## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
+
+如果要直接跳到代码，请参阅 GitHub 上的 [Java 快速入门](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/java)。
 
 ## <a name="prerequisites"></a>先决条件
 

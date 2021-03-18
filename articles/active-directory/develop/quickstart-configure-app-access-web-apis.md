@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: bd6acc5d3b7cd6e88b56e4a922e777adca031538
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102557"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651368"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -110,7 +110,7 @@ ms.locfileid: "100102557"
 
 ### <a name="configure-client-credentials"></a>配置客户端凭据
 
-使用应用程序权限的应用通过使用自己的凭据自行进行身份验证，无需任何用户交互。 你必须先配置该客户端应用的凭据，然后应用程序（或 API）才能使用应用程序权限访问 Microsoft Graph、你自己的 Web API 或其他任何 API。
+使用应用程序权限的应用通过使用自己的凭据自行进行身份验证，无需任何用户交互。 你必须先配置该客户端应用的凭据，然后应用程序（或 API）才能使用应用程序权限访问 Microsoft Graph、你自己的 Web API 或其他 API。
 
 若要详细了解如何配置应用的凭据，请参阅[添加凭据](quickstart-register-app.md#add-credentials)部分 - [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 

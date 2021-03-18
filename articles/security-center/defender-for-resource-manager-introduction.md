@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 922189909da21aac65d1e2e898df58598868b929
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590462"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100655"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "100590462"
 |方面|详细信息|
 |----|:----|
 |发布状态：|预览<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|定价：|适用于资源管理器的 Azure Defender 按[定价页面](security-center-pricing.md)中所示的定价计费|
+|定价：|适用于资源管理器的 Azure Defender 按 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
 
@@ -75,4 +75,4 @@ ms.locfileid: "100590462"
 - 安全警报可能是由安全中心生成的，也可能是由安全中心从其他安全产品接收的。 若要将所有这些警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [启用 Azure Defender](enable-azure-defender.md)

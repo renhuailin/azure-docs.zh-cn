@@ -1,27 +1,27 @@
 ---
-title: 安装 Defender for IoT 微代理（预览）
+title: 安装 Defender for IoT 微代理
 titleSuffix: Azure Defender for IoT
 description: 了解如何安装和验证 Defender 微代理。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/18/2021
+ms.date: 3/3/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703042"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120430"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>安装 Defender for IoT 微代理（预览）
+# <a name="install-defender-for-iot-micro-agent"></a>安装 Defender for IoT 微代理 
 
 本文介绍了如何安装和验证 Defender 微代理。
 
 ## <a name="prerequisites"></a>先决条件
 
-安装 Defender for IoT 模块之前，必须在 IoT 中心创建一个模块标识。 若要详细了解如何创建模块标识，请查看[创建 azureiotsecurity 模块孪生](quickstart-create-security-twin.md)
+安装 Defender for IoT 模块之前，必须在 IoT 中心创建一个模块标识。 若要详细了解如何创建模块标识，请查看[创建 Defender IoT 微代理模块孪生](quickstart-create-micro-agent-module-twin.md)。
 
 ## <a name="install-the-package"></a>安装包
 

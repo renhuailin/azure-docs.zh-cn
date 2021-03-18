@@ -2,18 +2,18 @@
 title: 在 Azure VM 上创建 Oracle 数据库 | Microsoft Docs
 description: 在 Azure 环境中快速创建并运行 Oracle Database 12c 数据库。
 author: dbakevlar
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: oracle
+ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.reviewer: cynthn
-ms.openlocfilehash: a202c8d176d6b9a8893a7bc5aaad6771942dda04
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 8964248bb23b2b615c7e73e26d730fbd79b4e9e7
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063056"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184451"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
@@ -221,12 +221,12 @@ az vm disk attach --name oradata01 --new --resource-group rg-oracle --size-gb 12
 1.  切换到 oracle 用户：
 
     ```bash
-    $ sudo su - oracle
+    sudo su - oracle
     ```
 2. 启动数据库侦听器
 
    ```bash
-   $ lsnrctl start
+   lsnrctl start
    ```
    输出与下面类似：
   

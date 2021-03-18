@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0c5ecb61b5b34864aa89c1f0e760e96c383a269f
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203256"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091487"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -38,7 +38,7 @@ ms.locfileid: "92203256"
     ![显示在 Azure 门户中搜索“成本管理 + 计费”来请求计费所有权的屏幕截图。](./media/mpa-request-ownership/search-cmb.png)
 1. 在左侧选择“客户”，然后从列表中选择一位客户。  
     [![屏幕截图，显示正在选择客户](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
-1. 选择左下角的“转移请求”，然后选择“添加新请求”。  
+1. 选择左下角的“转移请求”，然后选择“添加新请求”。   
     [![显示正在选择转移请求的屏幕截图](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
 1. 输入客户组织中将要接受转移请求的用户的电子邮件地址。 此用户必须是企业协议中的帐户所有者。 选择“发送转移请求”。  
     [![显示正在发送转移请求的屏幕截图](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
@@ -174,4 +174,4 @@ SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 订阅的计费所有权现已转移给你。 可在 [Azure 门户](https://portal.azure.com)中跟踪这些订阅的费用。
-* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+* 协助客户获取对已转移的 Azure 订阅的访问权限。 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。

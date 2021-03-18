@@ -7,16 +7,20 @@ ms.service: cache
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: de7bdc22b4bfdf9ef5865b1b601b32672eb868d1
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 04b582b5ef31e61039c5513ea2a4aa60f1c638e7
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165121"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121331"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-go"></a>快速入门：将 Azure Cache for Redis 与 Go 配合使用
 
 在本文中，你将了解如何在 Go 应用中构建 REST API，该应用将存储和检索由 [Azure Cache for Redis](./cache-overview.md) 中的 [HASH](https://redis.io/topics/data-types-intro#redis-hashes) 数据结构支持的用户信息。 
+
+## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
+
+如果要直接跳到代码，请参阅 GitHub 上的 [Go 快速入门](https://github.com/Azure-Samples/azure-redis-cache-go-quickstart/)。
 
 ## <a name="prerequisites"></a>先决条件
 

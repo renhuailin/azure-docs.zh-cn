@@ -1,22 +1,22 @@
 ---
-title: 以增量方式复制数据
+title: 以增量方式将数据从源数据存储复制到目标数据存储
 description: 这些教程介绍如何以增量方式将数据从源数据存储复制到目标数存储。 第一个从一个表复制数据。
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: a27f91f8fe8b6016444ad2d1830f0cc2e702f0a6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 7161fb30c8b445681b4cd577d8f8ac9fff5106df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384752"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101739239"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 在数据集成解决方案中，一种广泛使用的方案是在完成初始的完整数据加载后以增量方式加载数据。 此部分的教程介绍如何使用不同的方法，通过 Azure 数据工厂以增量方式加载数据。
 

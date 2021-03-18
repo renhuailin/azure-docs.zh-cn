@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/15/2021
-ms.openlocfilehash: 8a61ad1599a2d4d1aeaf8b36d2f92d95ec1896a0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e183d81355d4db81e677f34b02330ddb9b631957
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573051"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100651980"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
 [Azure 认知搜索](search-what-is-azure-search.md)是用于将全文搜索体验添加到自定义应用的 Azure 资源。 可轻松地将其与其他提供数据或额外处理的 Azure 服务集成，与网络服务器上的应用集成，或与其他云平台上运行的软件集成。
 
-可使用本文中介绍的 [Azure 门户](https://portal.azure.com/)创建搜索服务。 还可使用 [Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search) 或 [Azure 资源管理器服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
+可使用本文中介绍的 [Azure 门户](https://portal.azure.com/)创建搜索服务。 还可使用 [Azure PowerShell](search-manage-powershell.md)、[Azure CLI](/cli/azure/search)、[管理 REST API](/rest/api/searchmanagement/) 或 [Azure 资源管理器服务模板](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。
 
 [![动画 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -85,7 +85,7 @@ ms.locfileid: "100573051"
 
 Azure 认知搜索在大多数区域都可用，如[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)中所述。 通常，如果使用多个 Azure 服务，请选择同时托管数据或应用程序服务的区域。 这样做可以最大程度地减少或避免出站数据的带宽费用（当服务位于同一区域时，出站数据没有任何费用）。
 
-+ [AI 扩充](cognitive-search-concept-intro.md)要求认知服务处于与 Azure 认知搜索相同的物理区域。 对于这一方面，有几个区域不提供这两种功能。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)页用两个复选标记表示两者皆可用。 不可用组合缺少一个复选标记：
++ [AI 扩充](cognitive-search-concept-intro.md)要求认知服务处于与 Azure 认知搜索相同的物理区域。 只有几个区域不能同时提供这两种服务。 [可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=search)页用两个复选标记表示两者皆可用。 不可用组合缺少一个复选标记：
 
   :::image type="content" source="media/search-create-service-portal/region-availability.png" alt-text="区域可用性" border="true":::
 

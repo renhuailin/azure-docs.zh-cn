@@ -5,15 +5,15 @@ description: 了解 Azure 通信服务中的呼叫流拓扑。
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 12/11/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d2df7255980ca00d405cf80a9fff69ff0511bd17
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 526e3a1e4eeb6ef6a31a33498241d9a7443cca35
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659301"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490630"
 ---
 # <a name="call-flow-topologies"></a>调用流拓扑
 本文介绍 Azure 通信服务呼叫流拓扑。 如果你是一名企业客户，且你将通信服务集成到你管理的某个网络中，那么请查看本文。 若要简要了解通信服务呼叫流，请访问[呼叫流概念文档](./call-flows.md)。
@@ -152,7 +152,7 @@ VPN 与客户网络之间的信令使用流 2*。 客户网络与 Azure 之间�
 
 ### <a name="vpn-user-to-internal-user-direct-media"></a>VPN 用户到内部用户（直接媒体）
 
-:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="使用 VPN 与直接媒体的一对一呼叫流":::
+:::image type="content" source="./media/call-flows/vpn-to-internal-direct-media.png" alt-text="使用 VPN 与直接媒体的一对一呼叫流（内部用户）":::
 
 *图 6 - VPN 用户到内部用户（直接媒体）*
 
@@ -162,7 +162,7 @@ VPN 与客户网络之间的信令使用流 2'。 客户网络与 Azure 之间�
 
 ### <a name="vpn-user-to-external-user-direct-media"></a>VPN 用户到外部用户（直接媒体）
 
-:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="使用 VPN 与直接媒体的一对一呼叫流":::
+:::image type="content" source="./media/call-flows/vpn-user-to-external-user.png" alt-text="使用 VPN 与直接媒体的一对一呼叫流（外部用户）":::
 
 *图 7 - VPN 用户到外部用户（直接媒体）*
 

@@ -4,17 +4,17 @@ description: 可以使用 Azure 成本管理和计费功能执行计费管理任
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2021
+ms.date: 03/03/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051087"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050523"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什么是 Azure 成本管理和计费？
 
@@ -33,6 +33,8 @@ ms.locfileid: "99051087"
 
 若要详细了解如何作为组织来处理成本管理，请参阅 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
 
+![“成本管理 + 计费”优化过程的示意图。](./media/cost-management-optimization-process.png)
+
 ## <a name="understand-azure-billing"></a>了解 Azure 计费
 
 Azure 计费功能用于查看已开票成本并管理对计费信息的访问。 在较大的组织中，采购和财务团队通常执行计费任务。
@@ -48,32 +50,6 @@ Azure 门户当前支持以下类型的计费帐户：
 - **企业协议**：当组织签署使用 Azure 的企业协议 (EA) 时，将为企业协议创建一个计费帐户。
 
 - **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册采用即用即付费率的帐户或者升级其 [Azure 免费帐户](./manage/create-free-services.md)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。
-
-### <a name="scopes-for-billing-accounts"></a>计费帐户的范围
-范围是计费帐户中的一个节点，可使用该节点查看和管理计费。 可以在其中管理计费数据、付款、发票，以及执行常规的帐户管理。
-
-#### <a name="microsoft-online-services-program"></a>Microsoft Online Services 计划
-
-|范围  |定义  |
-|---------|---------|
-|计费帐户     | 表示一个或多个 Azure 订阅的单个所有者（帐户管理员）。 帐户管理员有权执行各种计费任务，例如创建订阅、查看发票或更改订阅的账单。  |
-|订阅     |  表示 Azure 资源的分组。 发票是在订阅范围内生成的。 它自带付款方式，用于发票付款。|
-
-#### <a name="enterprise-agreement"></a>企业协议
-
-|范围  |定义  |
-|---------|---------|
-|计费帐户    | 表示企业协议注册。 发票是在计费帐户范围内生成的。 它是使用部门和注册帐户构建的。  |
-|部门     |  对注册帐户进行的可选分组。      |
-|注册帐户     |  表示单个帐户所有者。 Azure 订阅是在注册帐户范围内创建的。  |
-
-#### <a name="microsoft-customer-agreement"></a>Microsoft 客户协议
-
-|范围  |任务  |
-|---------|---------|
-|计费帐户     |   表示针对多个 Microsoft 产品和服务的客户协议。 计费帐户使用计费对象信息和发票科目构建。   |
-|计费配置文件     |  表示发票及其付款方式。 发票在此范围生成。 计费对象信息可以有多个发票科目。      |
-|发票科目     |   表示发票中的一组成本。 订阅和其他购买项将关联到此发票科目范围。    |
 
 ## <a name="understand-azure-cost-management"></a>了解 Azure 成本管理
 

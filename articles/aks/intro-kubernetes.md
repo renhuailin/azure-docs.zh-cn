@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: mvc
-ms.openlocfilehash: 1505366d9a91eac596b21804f93abb8245a84605
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 009244322b7c6625523bf46382a170577593f4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590001"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718363"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
@@ -104,9 +104,7 @@ AKS 群集可以部署到现有的虚拟网络中。 在此配置中，群集中
 
 Kubernetes 提供丰富的开发和管理工具生态系统，可与 AKS 无缝配合使用。 这些工具包括用于 Visual Studio Code 的 Helm 和 Kubernetes 扩展。 这些工具可以与 AKS 无缝地配合使用。  
 
-此外，Azure 还提供多种工具来帮助简化 Kubernetes，例如 Azure Dev Spaces 和 DevOps Starter。  
-
-Azure Dev Spaces 为团队提供快速、迭代的 Kubernetes 开发体验。 只需最少的配置，即可直接在 AKS 中运行和调试容器。 若要开始使用，请参阅 [Azure Dev Spaces][azure-dev-spaces]。
+此外，Azure 还提供多种工具来帮助简化 Kubernetes，例如 DevOps Starter。  
 
 DevOps Starter 提供简单的解决方案，用于将现有代码和 Git 存储库带到 Azure 中。 DevOps Starter 自动执行以下操作：
 * 创建 Azure 资源（如 AKS）; 
@@ -157,7 +155,7 @@ AKS 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有关详细信息，请参�
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../azure-monitor/containers/container-insights-overview.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac

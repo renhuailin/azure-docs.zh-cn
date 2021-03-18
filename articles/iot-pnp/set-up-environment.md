@@ -7,14 +7,14 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b2b17cffb8abd748315c437f46000995c4cb598a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831886"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101742647"
 ---
-# <a name="quickstart---set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>快速入门 - 针对 IoT 即插即用快速入门和教程设置环境
+# <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>快速入门：针对 IoT 即插即用快速入门和教程设置环境
 
 需要在 Azure 订阅中配置 IoT 中心和设备预配服务 (DPS)，然后才能完成任何 IoT 即插即用快速入门和教程。 你还需要具备示例应用程序和 Azure IoT 资源管理器工具所使用的模型文件的本地副本。
 

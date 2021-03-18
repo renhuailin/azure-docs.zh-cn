@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f70116847a8743cf8b3cb56ff35f9d913f13f359
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715426"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -68,7 +68,7 @@ ms.locfileid: "98562346"
     | 资源组   | 选择“CreateIntLBQS-rg” |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
-    | 区域           | 选择“西欧” |
+    | 区域           | 选择“(欧洲)西欧” |
 
 3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
@@ -106,16 +106,17 @@ ms.locfileid: "98562346"
 
 ## <a name="create-load-balancer"></a>创建负载均衡器
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”  。
-
-2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
+1. 选择“创建资源”。  
+2. 在搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+3. 在“负载均衡器”页上，选择“创建” 。
+4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
     | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 CreateIntLBQS-rg。|
     | 名称                   | 输入“myLoadBalancer”                                   |
-    | 区域         | 选择“西欧”。                                        |
+    | 区域         | 选择“(欧洲)西欧”。                                        |
     | 类型          | 选择“内部”。                                        |
     | SKU           | 选择“标准” |
     | 虚拟网络 | 选择在上一步中创建的 myVNet。 |
@@ -143,7 +144,7 @@ ms.locfileid: "98562346"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -157,11 +158,11 @@ ms.locfileid: "98562346"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -189,7 +190,7 @@ ms.locfileid: "98562346"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -228,7 +229,7 @@ ms.locfileid: "98562346"
     | 资源组 | 选择“CreateIntLBQS-rg” |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入“myVM1” |
-    | 区域 | 选择“西欧” |
+    | 区域 | 选择“(欧洲)西欧” |
     | 可用性选项 | 选择“可用性区域” |
     | 可用性区域 | 选择“1” |
     | 映像 | 选择“Windows Server 2019 Datacenter” |
@@ -303,7 +304,7 @@ ms.locfileid: "98562346"
     | 资源组   | 选择“CreateIntLBQS-rg” |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
-    | 区域           | 选择“西欧” |
+    | 区域           | 选择“(欧洲)西欧” |
 
 3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
@@ -350,7 +351,7 @@ ms.locfileid: "98562346"
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 CreateIntLBQS-rg。|
     | 名称                   | 输入“myLoadBalancer”                                   |
-    | 区域         | 选择“西欧”。                                        |
+    | 区域         | 选择“(欧洲)西欧”。                                        |
     | 类型          | 选择“内部”。                                        |
     | SKU           | 选择“基本” |
     | 虚拟网络 | 选择在上一步中创建的 myVNet。 |
@@ -377,13 +378,13 @@ ms.locfileid: "98562346"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -399,11 +400,11 @@ ms.locfileid: "98562346"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -431,7 +432,7 @@ ms.locfileid: "98562346"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |

@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 02/16/2021
+ms.date: 02/17/2021
 ms.author: victorh
-ms.openlocfilehash: 26d7336d60449db11122c9921a3a59807bd82911
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 9cc263d311bd550a92a0c8f14ab5ce86d72e9ee3
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/17/2021
-ms.locfileid: "100561996"
+ms.locfileid: "100633625"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>快速入门：创建 Azure 防火墙和防火墙策略 - ARM 模板
 
@@ -39,7 +39,7 @@ ms.locfileid: "100561996"
 
 ## <a name="review-the-template"></a>查看模板
 
-此模板使用 Azure 防火墙管理器以及支持该场景所需的资源创建了一个安全虚拟中心。
+此模板创建一个中心虚拟网络，以及支持该方案所需的资源。
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/)。
 

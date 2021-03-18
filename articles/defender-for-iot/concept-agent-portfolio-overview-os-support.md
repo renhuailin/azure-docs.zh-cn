@@ -1,5 +1,5 @@
 ---
-title: 代理组合概述和操作系统支持（预览）
+title: 代理项目组合概述和操作系统支持
 description: Azure Defender for IoT 基于设备类型提供一系列的代理。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810038"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120141"
 ---
-# <a name="agent-portfolio-overview-and-os-support-preview"></a>代理组合概述和操作系统支持（预览）
+# <a name="agent-portfolio-overview-and-os-support"></a>代理项目组合概述和操作系统支持 
 
 Azure Defender for IoT 基于设备类型提供一系列的代理。 
 
@@ -38,4 +38,4 @@ Azure Defender for IoT 微代理作为 Azure RTOS NetX Duo 组件的一部分内
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[独立微代理概述（预览）](concept-standalone-micro-agent-overview.md)。
+详细了解[独立微代理概述](concept-standalone-micro-agent-overview.md)。

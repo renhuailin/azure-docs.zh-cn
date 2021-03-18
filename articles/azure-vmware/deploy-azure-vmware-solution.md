@@ -4,12 +4,12 @@ description: 了解如何使用规划阶段中收集的信息部署和配置 Azu
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652728"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462450"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署和配置 Azure VMware 解决方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "100652728"
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="创建 Azure VMware 解决方案跳转盒" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-若要在你[在部署过程中标识或创建的](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)虚拟网络中创建虚拟机 (VM)，请按以下说明操作： 
+若要在你[在部署过程中标识或创建的](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution)虚拟网络中创建虚拟机 (VM)，请按以下说明操作： 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "100652728"
 
 跳转盒位于 Azure VMware 解决方案通过其 ExpressRoute 线路进行连接的虚拟网络中。  在 Azure 中，转到跳转盒的网络接口，[查看有效路由](../virtual-network/manage-route-table.md#view-effective-routes)。
 
-在有效路由列表中，你应当会看到在 Azure VMware 解决方案部署过程中创建的网络。 你将看到从你在[创建私有云](#create-an-azure-vmware-solution-private-cloud)时[定义的 `/22` 网络](production-ready-deployment-steps.md#ip-address-segment)中派生的多个网络。  
+在有效路由列表中，你应当会看到在 Azure VMware 解决方案部署过程中创建的网络。 你将看到从你在[创建私有云](#create-an-azure-vmware-solution-private-cloud)时[定义的 `/22` 网络](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management)中派生的多个网络。  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="验证从 Azure VMware 解决方案播发到 Azure 虚拟网络的网络路由" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
@@ -62,7 +62,14 @@ ms.locfileid: "100652728"
 
 登录到你在前面的步骤中创建的跳转盒。 登录后，打开 Web 浏览器，导航到 vCenter 和 NSX-T Manager 并登录到其中。  
 
-你可以在 Azure 门户中标识 vCenter 以及 NSX-T Manager 控制台的 IP 地址和凭据。  选择你的私有云，然后在“概览”视图中选择“标识”>“默认” 。 
+你可以在 Azure 门户中标识 vCenter 以及 NSX-T Manager 控制台的 IP 地址和凭据。  选择私有云，然后选择“管理” > “标识”。
+
+>[!TIP]
+>选择“生成新密码”来生成新的 vCenter 和 NSX-T 密码。
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>在 Azure VMware 解决方案中创建一个网段
 

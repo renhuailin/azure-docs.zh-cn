@@ -12,16 +12,16 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968054"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177294"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 Java IoT Edge 模块
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -56,7 +56,7 @@ ms.locfileid: "94968054"
 若要开发以 Java 编写的 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件： 
 
 * 适用于 Visual Studio Code 的 [Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE 开发工具包 10](/azure/developer/java/fundamentals/java-jdk-long-term-support)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
+* [Java SE 开发工具包 11](/azure/developer/java/fundamentals/java-jdk-long-term-support)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]

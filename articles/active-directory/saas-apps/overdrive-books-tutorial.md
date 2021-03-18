@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 745a82300cbbc87070a117cd8dd094236821aee7
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 390ccfa828ebaa0d3dec15990ffeb60cbb24360e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625392"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>教程：Azure Active Directory 与 Overdrive 的集成
 
@@ -37,9 +37,9 @@ ms.locfileid: "98625392"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Overdrive 支持 **SP** 发起的 SSO
+* Overdrive 支持 SP 发起的 SSO。
 
-* Overdrive 支持“恰时”用户预配
+* Overdrive 支持“实时”用户预配。
 
 ## <a name="add-overdrive-from-the-gallery"></a>从库中添加 Overdrive
 
@@ -65,7 +65,7 @@ ms.locfileid: "98625392"
     1. **[创建 Overdrive 测试用户](#create-overdrive-test-user)** - 在 Overdrive 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
@@ -121,7 +121,7 @@ ms.locfileid: "98625392"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="configure-overdrive-sso"></a>配置 Overdrive SSO
+## <a name="configure-overdrive-sso"></a>配置 Overdrive SSO
 
 若要在 **Overdrive** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Overdrive 支持团队](https://help.overdrive.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
@@ -133,7 +133,7 @@ ms.locfileid: "98625392"
 >可以使用任何其他 OverDrive 用户帐户创建工具或 OverDrive 提供的 API 来预配 Azure AD 用户帐户。
 >
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
@@ -141,8 +141,8 @@ ms.locfileid: "98625392"
 
 * 直接转到 Overdrive 登录 URL，并从此处启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Overdrive 磁贴时，会重定向到 Overdrive 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Overdrive 磁贴时，会重定向到 Overdrive 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Overdrive 后，就可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Overdrive 后，就可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

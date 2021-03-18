@@ -8,16 +8,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ffc5c8ea647d4cadd2d151eb880c794ac5f4ebd4
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002440"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121433"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入门：在 .NET Framework 中使用 Azure Cache for Redis
 
 在本快速入门中，会将 Azure Redis 缓存合并到 .NET Framework 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。 你专门在 .NET 控制台应用中将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端与 C# 代码配合使用。
+
+## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
+
+如果要直接跳到代码，请参阅 GitHub 上的 [.NET Framework 快速入门](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -90,7 +94,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应当在整个客户端应用程序中共享和重用此类。 不要为每个操作创建新连接。 
+与 Azure Redis 缓存的连接由 `ConnectionMultiplexer` 类管理。 应在整个客户端应用程序中共享和重复使用此类。 不要为每个操作创建新连接。 
 
 切勿将凭据存储在源代码中。 为了使此示例简单明了，我将只使用外部机密配置文件。 更好的方法是[将 Azure Key Vault 与证书配合使用](/rest/api/keyvault/certificate-scenarios)。
 
@@ -247,13 +251,13 @@ class Employee
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
 
-在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
 
 ![删除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

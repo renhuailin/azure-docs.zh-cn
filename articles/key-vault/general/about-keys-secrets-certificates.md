@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e0a45bde32fed651c4b38d203b3c75a6d928e7c5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f2a33b4011b0bb89ca17010fc787aebe8c17fc92
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327077"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183924"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
@@ -44,7 +44,7 @@ HSM 保护的密钥|/keys|支持|支持
 **其他对象类型**||
 机密|/secrets|支持|不支持
 证书|/certificates|支持|不支持
-存储帐户密钥|/storageaccount|支持|不支持
+存储帐户密钥|/storage|支持|不支持
 |||
 - **加密密钥**：支持多种密钥类型和算法，并支持使用受软件保护的密钥和受 HSM 保护的密钥。 有关详细信息，请参阅[关于密钥](../keys/about-keys.md)。
 - **机密**：提供机密（例如密码和数据库连接字符串）的安全存储。 有关详细信息，请参阅[关于机密](../secrets/about-secrets.md)。
@@ -91,7 +91,7 @@ Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系�
 
 其中：  
 
-| 元素 | 描述 |  
+| 元素 | 说明 |  
 |-|-|  
 |`vault-name` 或 `hsm-name`|Microsoft Azure Key Vault 服务中的保管库或托管 HSM 池的名称。<br /><br />保管库名称和托管 HSM 池名称由用户选择，并且是全局唯一的。<br /><br />保管库名称和托管 HSM 池名称必须是 3-24 个字符的字符串，且仅包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|对象的类型（“密钥”、“机密”或“证书”）。|  

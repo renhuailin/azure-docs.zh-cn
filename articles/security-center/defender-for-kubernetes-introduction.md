@@ -7,12 +7,12 @@ ms.date: 02/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0878686e203960a0b7f33c19cc64e82319997684
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590453"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100621"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -29,7 +29,7 @@ Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服�
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
-|定价：|适用于 Kubernetes 的 Azure Defender 按[定价页](security-center-pricing.md)中的定价计费|
+|定价：|用于 Kubernetes 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |所需角色和权限：|**安全管理员** 可以消除警报。<br>**安全读取者** 可以查看结果。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
 |||
@@ -79,7 +79,7 @@ AKS 是一项托管服务，由于 Log Analytics 代理是 Microsoft 托管的�
 本文介绍了安全中心的 Kubernetes 保护，包括适用于 Kubernetes 的 Azure Defender。 
 
 > [!div class="nextstepaction"]
-> [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+> [启用 Azure Defender](enable-azure-defender.md)
 
 如需相关材料，请参阅以下文章： 
 

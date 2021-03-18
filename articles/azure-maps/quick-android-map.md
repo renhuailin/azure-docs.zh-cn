@@ -9,12 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
-ms.openlocfilehash: 740563935e12d5a7418bada2a18b48fb573f6e7d
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679001"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039642"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>快速入门：使用 Azure Maps 创建 Android 应用
 
@@ -90,7 +91,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
 
 1. 打开顶级 **build.gradle** 文件，将以下代码添加到 **所有项目** 的 **repositories** 块节中：
 
-    ```java
+    ```gradle
     maven {
         url "https://atlas.microsoft.com/sdk/android"
     }
@@ -102,7 +103,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
 
     2. 将以下代码添加到 Android 节：
 
-        ```java
+        ```gradle
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -111,8 +112,8 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
 
     3. 更新 dependencies 块，并为最新 Azure Maps Android SDK 添加新的实现依赖项行：
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
+        ```gradle
+        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
         ```
 
         > [!Note]
@@ -121,22 +122,15 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。 
 3. 将一个地图片段添加到 main 活动 (res \> layout \> activity\_main.xml)：
 
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    ```xml
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/mapcontrol"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </FrameLayout>
+        />
     ```
+
+::: zone pivot="programming-language-java-android"
 
 4. 在 **MainActivity.java** 文件中，需要：
 
@@ -149,20 +143,19 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     地图控件包含自身的生命周期方法用于管理 Android 的 OpenGL 生命周期。 必须直接从包含活动调用这些生命周期方法。 要使应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 并且，必须调用相应的地图控件方法。
 
     * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
     * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
+    * `onPause()`
+    * `onResume()`
+    * `onSaveInstanceState(Bundle)`
+    * `onStart()`
+    * `onStop()`
 
     按如下所示编辑 **MainActivity.java** 文件：
 
-    ```Java
+    ```java
     package com.example.myapplication;
     
-    //For older versions use: import android.support.v7.app.AppCompatActivity; 
     import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
@@ -243,6 +236,109 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     > [!NOTE]
     > 完成上述步骤后，你可能会收到 Android Studio 针对某些代码发出的警告。 若要解决这些警告，请导入 `MainActivity.java` 中引用的类。
     > 可选择 `Alt` + `Enter`（在 Mac 上选择 `Option` + `Return`）来自动导入这些类。
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+4. 在 MainActivity.kt 文件中，需要：
+
+    * 添加 Azure Maps SDK 的 import 语句
+    * 设置 Azure Maps 身份验证信息
+    * 在 **onCreate** 方法中获取地图控件实例
+
+    使用 `setSubscriptionKey` 或 `setAadProperties` 方法在 `AzureMaps` 类中全局设置身份验证信息后，无需在每个视图中添加身份验证信息。
+
+    地图控件包含自身的生命周期方法用于管理 Android 的 OpenGL 生命周期。 必须直接从包含活动调用这些生命周期方法。 要使应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 并且，必须调用相应的地图控件方法。
+
+    * `onCreate(Bundle)`
+    * `onDestroy()`
+    * `onLowMemory()`
+    * `onPause()`
+    * `onResume()`
+    * `onSaveInstanceState(Bundle)`
+    * `onStart()`
+    * `onStop()`
+
+    按如下所示编辑 MainActivity.kt 文件：
+
+    ```kotlin
+    package com.example.myapplication;
+
+    import androidx.appcompat.app.AppCompatActivity
+    import android.os.Bundle
+    import com.microsoft.azure.maps.mapcontrol.AzureMap
+    import com.microsoft.azure.maps.mapcontrol.AzureMaps
+    import com.microsoft.azure.maps.mapcontrol.MapControl
+    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    
+    class MainActivity : AppCompatActivity() {
+    
+        companion object {
+            init {
+                AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
+    
+                //Alternatively use Azure Active Directory authenticate.
+                //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+            }
+        }
+    
+        var mapControl: MapControl? = null
+    
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+    
+            mapControl = findViewById(R.id.mapcontrol)
+    
+            mapControl?.onCreate(savedInstanceState)
+    
+            //Wait until the map resources are ready.
+            mapControl?.onReady(OnReady { map: AzureMap -> })
+        }
+    
+        public override fun onStart() {
+            super.onStart()
+            mapControl?.onStart()
+        }
+    
+        public override fun onResume() {
+            super.onResume()
+            mapControl?.onResume()
+        }
+    
+        public override fun onPause() {
+            mapControl?.onPause()
+            super.onPause()
+        }
+    
+        public override fun onStop() {
+            mapControl?.onStop()
+            super.onStop()
+        }
+    
+        override fun onLowMemory() {
+            mapControl?.onLowMemory()
+            super.onLowMemory()
+        }
+    
+        override fun onDestroy() {
+            mapControl?.onDestroy()
+            super.onDestroy()
+        }
+    
+        override fun onSaveInstanceState(outState: Bundle) {
+            super.onSaveInstanceState(outState)
+            mapControl?.onSaveInstanceState(outState)
+        }
+    }
+    ```
+
+    > [!NOTE]
+    > 完成上述步骤后，你可能会收到 Android Studio 针对某些代码发出的警告。 若要解决这些警告，请导入 `MainActivity.kt` 中引用的类。
+    > 可选择 `Alt` + `Enter`（在 Mac 上选择 `Option` + `Return`）来自动导入这些类。
+
+::: zone-end
 
 5. 如下图所示，选择“运行”按钮（或者在 Mac 上按 `Control` + `R`）来生成应用程序。
 

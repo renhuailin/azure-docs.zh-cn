@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673658"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101650808"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>教程：为 Clarizen One 配置自动用户预配
 
@@ -43,7 +43,7 @@ ms.locfileid: "97673658"
 * Azure AD 中拥有配置预配的[权限](../roles/permissions-reference.md)的用户帐户。 示例有应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员。
 * Clarizen One 中拥有集成用户和精简管理员 [权限](https://success.clarizen.com/hc/articles/360011833079-API-Keys-Support)的用户帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
@@ -137,8 +137,8 @@ ms.locfileid: "97673658"
    |externalId|字符串|
    |nickName|字符串|
    |区域设置|字符串|
-   |roles[primary eq"True".type]|字符串|
-   |roles[primary eq"True".value]|字符串|
+   |roles[primary eq "True".type]|字符串|
+   |roles[primary eq "True".value]|字符串|
    |timezone|字符串|
    |userType|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|

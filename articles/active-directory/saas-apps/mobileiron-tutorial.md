@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c47092b1488a79805db69308bcb9a8efde1c0d58
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625442"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101652997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 集成
 
@@ -26,18 +26,18 @@ ms.locfileid: "98625442"
 * 让用户使用其 Azure AD 帐户自动登录到 MobileIron。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 MobileIron 的集成，需要以下项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 MobileIron 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用了 MobileIron 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* MobileIron 支持 SP 和 IDP 发起的 SSO 
+* MobileIron 支持 SP 和 IDP 发起的 SSO。
 
 ## <a name="add-mobileiron-from-the-gallery"></a>从库添加 MobileIron
 
@@ -131,7 +131,7 @@ ms.locfileid: "98625442"
     ![配置单一登录管理元数据按钮](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
 
-##  <a name="create-mobileiron-test-user"></a>创建 MobileIron 测试用户
+### <a name="create-mobileiron-test-user"></a>创建 MobileIron 测试用户
 
 为了使 Azure AD 用户能够登录到 MobileIron，必须将其预配到 MobileIron 中。  
 就 MobileIron 来说，预配任务需要手动完成。
@@ -157,15 +157,16 @@ ms.locfileid: "98625442"
     d. 单击“完成”  。
 
 ## <a name="test-sso"></a>测试 SSO
+
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-## <a name="sp-initiated"></a>SP 启动的：
+### <a name="sp-initiated"></a>SP 启动的：
 
 * 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 MobileIron 登录 URL，可在其中启动登录流。  
 
 * 直接转到 MobileIron 登录 URL，并从那里启动登录流。
 
-##  <a name="idp-initiated"></a>IDP 启动的：
+### <a name="idp-initiated"></a>IDP 启动的：
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 MobileIron。
 

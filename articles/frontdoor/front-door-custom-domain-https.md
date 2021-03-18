@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368309"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740777"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -84,7 +84,7 @@ ms.locfileid: "92368309"
 > [!WARNING]
 > Azure Front Door 目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
 
-2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为 **证书** 对象，而不是 **机密** 。
+2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为 **证书** 对象，而不是 **机密**。
 
 > [!NOTE]
 > 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
@@ -94,7 +94,7 @@ ms.locfileid: "92368309"
 通过 PowerShell 将 Azure Front Door 的服务主体注册为 Azure Active Directory 中的应用。
 
 > [!NOTE]
-> 此操作需要全局管理员权限，并且每个租户只需要执行 **一次** 。
+> 此操作需要全局管理员权限，并且每个租户只需要执行 **一次**。
 
 1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -108,7 +108,7 @@ ms.locfileid: "92368309"
 
 1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
 
-2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** ，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
+2. 在“选择主体”中搜索 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然后选择“Microsoft.Azure.Frontdoor”。   单击“选择”  。
 
 3. 在“机密权限”  中，选择 **Get** 以允许 Front Door 检索证书。
 
@@ -133,12 +133,7 @@ ms.locfileid: "92368309"
     Azure Front Door 列出以下信息： 
     - 订阅 ID 的 Key Vault 帐户。 
     - 所选 Key Vault 下的证书（机密）。 
-    - 可用证书版本。 
-
-> [!NOTE]
-> 将证书版本留空将导致：
-> - 选择最新版本的证书。
-> - 在 Key Vault 中提供较新版本的证书时，会自动轮换到最新版本的证书。
+    - 可用证书版本。
  
 5. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
@@ -153,7 +148,7 @@ ms.locfileid: "92368309"
 
 如果使用的是自己的证书，则不需要对域进行验证。
 
-CNAME 记录应采用以下格式，其中 *Name* 是自定义域名， *Value* 是 Front Door 的默认 .azurefd.net 主机名：
+CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
 | 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
@@ -280,7 +275,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 * 验证域。
 * 为自定义域启用 HTTPS。
 
-若要了解如何设置 Front Door 的地理筛选策略，请继续学习下一教程。
+若要了解如何为 Front Door 设置地区筛选策略，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [设置地区筛选策略](front-door-geo-filtering.md)

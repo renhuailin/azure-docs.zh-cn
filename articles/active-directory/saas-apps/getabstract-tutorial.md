@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 05138011822b15363b12f2c860f4f459972201a7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 04712429732bd710ea3a00071a53f035086a7054
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449738"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教程：Azure Active Directory 与 Getabstract 集成
 
@@ -99,13 +99,13 @@ ms.locfileid: "92449738"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，单击“编辑”图标，打开“基本 SAML 配置”对话框  。
+3. 在“设置 SAML 单一登录”页上，单击“编辑”图标，打开“基本 SAML 配置”对话框    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”和“回复 URL”字段，并选择了“保存”按钮。](common/idp-intiated.png)
+    ![该屏幕截图显示了“基本 SAML 配置”部分，其中突出显示了“标识符”和“回复 URL”字段，并且“保存”按钮处于选中状态。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：
 
@@ -132,7 +132,7 @@ ms.locfileid: "92449738"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Getabstract 客户端支持团队](https://www.getabstract.com/en/contact)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "92449738"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
@@ -166,12 +166,12 @@ ms.locfileid: "92449738"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension   
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
     d. 单击“创建”。
 
@@ -195,9 +195,9 @@ ms.locfileid: "92449738"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。  
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中，从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中，从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 
 7. 在“添加分配”对话框中，单击“分配”按钮。
 

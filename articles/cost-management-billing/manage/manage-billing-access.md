@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 1574149e0587701323cb9ae5ae0c5cfeaccf47c7
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897419"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101096422"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
@@ -40,7 +40,7 @@ ms.locfileid: "98897419"
 
 这些角色可以在 [Azure 门户](https://portal.azure.com/)中访问账单信息。 分配了这些角色的人员也可以使用[计费 API](consumption-api-overview.md#usage-details-api) 以编程方式获取发票和使用详细信息。
 
-若要分配角色，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+若要分配角色，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ** 如果你是 EA 客户，帐户所有者可以将上述角色分配给其团队的其他用户。 但是，要让这些用户查看账单信息，企业管理员必须在 Enterprise Portal 中启用 AO 查看费用。
 
@@ -105,7 +105,7 @@ ms.locfileid: "98897419"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+- 其他角色的用户（如所有者或参与者）不仅可访问计费信息，还可访问 Azure 服务。 若要管理这些角色，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 - 有关角色的详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。

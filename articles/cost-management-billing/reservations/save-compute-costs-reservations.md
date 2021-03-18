@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 0e45e9741e92bb9e1fe23af79695cae06e64e871
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 7c2cf88eed3d8b727147f57ef9e2b52afd07de59
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602055"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039132"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -91,7 +91,8 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - **虚拟机预留实例** - 预留项仅涵盖虚拟机和云服务的计算成本。 它不涵盖其他软件、Windows、网络或存储费用。
 - **Azure 存储预留容量** - 该预留项涵盖用于 Blob 存储或 Azure Data Lake Gen2 存储的标准存储帐户的存储容量。 不涵盖带宽或事务费率。
 - **Azure Cosmos DB 预留容量** - 预留项涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。
-- **SQL 数据库预留 vCore** - 涵盖 SQL 托管实例和 SQL 数据库弹性池/单一数据库。 预留仅包含计算成本。 SQL 许可证单独计费。 
+- **Azure Data Factory 数据流** - 预留涵盖了你购买的计算类型和核心数所对应的集成运行时成本。
+- **SQL 数据库预留 vCore** - 涵盖 SQL 托管实例和 SQL 数据库弹性池/单一数据库。 预留仅包含计算成本。 SQL 许可证单独计费。
 - **Azure Synapse Analytics** - 预留项涵盖 cDWU 使用量。 它不涵盖与 Azure Synapse Analytics 使用量相关的存储或网络费用。
 - **Azure Databricks** - 预留项仅涵盖 DBU 使用费。 计算、存储和网络等其他费用单独计收。
 - **应用服务印花费** - 预留项涵盖印花使用费。 它不适用于辅助角色，因此与印花相关的任何其他资源将单独收费。

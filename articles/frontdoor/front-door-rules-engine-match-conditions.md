@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569763"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035868"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door 规则引擎匹配条件
 
@@ -142,7 +142,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="key-information"></a>重要信息
 
-- 使用此规则条件时，请确保包含协议信息。 例如： https://www.\<yourdomain\>.com。
+- 使用此规则条件时，请确保包含协议信息。 例如：`https://www.<yourdomain\>.com`。
 
 ## <a name="request-file-extension"></a>请求文件扩展名
 
@@ -181,6 +181,10 @@ IP 匹配 | IP 地址（以空格分隔）
 操作员 | 值 | 大小写转换
 ---------|-------|---------------
 [标准运算符列表](#standard-operator-list) | 字符串、整数 | 小写、大写、剪裁、删除空格、URL 编码、URL 解码
+
+#### <a name="key-information"></a>重要信息
+
+- 使用此规则条件时，请注意匹配从路径的第一个 `/` 之后开始。 例如：`https://www.<yourdomain>.com/folder/page` 将在 `folder/page` 上开始匹配。
 
 ## <a name="standard-operator-list"></a>标准运算符列表
 

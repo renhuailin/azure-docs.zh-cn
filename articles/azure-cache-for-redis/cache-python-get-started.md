@@ -11,16 +11,20 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 048c31bedb56bdb66dc3b80d12c3014652e34625
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008865"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102121144"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>快速入门：在 Python 中使用 Azure Cache for Redis
 
 在本文中，会将 Azure Redis 缓存合并到 Python 应用中，以便能够访问 Azure 中的任何应用程序都可以访问的安全专用缓存。
+
+## <a name="skip-to-the-code-on-github"></a>跳到 GitHub 上的代码
+
+如果要直接跳到代码，请参阅 GitHub 上的 [Python 快速入门](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/python)。
 
 ## <a name="prerequisites"></a>先决条件
 

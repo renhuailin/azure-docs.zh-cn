@@ -7,18 +7,25 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: e56142dfc68767945cd0d08c87f14e19551a156e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831257"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101741457"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>教程 - 使用 MQTT 开发 IoT 即插即用设备客户端
 
 如果可能，应该使用一种 Azure IoT 设备 SDK 来构建 IoT 即插即用设备客户端。 但是，在某些情形下（如使用内存有限的设备），可能需要使用 MQTT 库与 IoT 中心进行通信。
 
 本教程中的示例使用 [Eclipse Mosquitto](http://mosquitto.org/) MQTT 库和 Visual Studio。 本教程中的步骤假设在开发计算机上使用 Windows。
+
+在本教程中，你将了解如何执行以下操作：
+
+> [!div class="checklist"]
+> * 下载并生成 Eclipse Mosquitto 库。
+> * 修改基于 C 的 MQTT 示例代码，以便将设备设为 IoT 即插即用设备。
+> * 确定 IoT 即插即用设备使用的 MQTT 主题。
 
 ## <a name="prerequisites"></a>先决条件
 

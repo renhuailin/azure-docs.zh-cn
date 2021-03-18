@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680770"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102109249"
 ---
 Azure 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 若要将限制提高到订阅的最高限制，请联系支持部门。
 
@@ -58,7 +58,7 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 | -------- | ------ |
 | 区域组 1 | 美国中部、美国东部、美国东部 2、北欧、西欧、美国西部、美国西部 2 |
 | 区域组 2 | 澳大利亚东部、澳大利亚东南部、巴西南部、印度中部、日本东部、美国中北部、美国中南部、东南亚、美国中西部 |
-| 区域组 3 | 加拿大中部、东亚、法国中部、韩国中部、英国南部 |
+| 区域组 3 | 其他区域 |
 
 <sup>3</sup> 管道、数据集和链接服务对象代表工作负荷的逻辑组。 对这些对象的限制与可以使用 Azure 数据工厂移动或处理的数据量无关。 可以缩放数据工厂以处理 PB 量级的数据。
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511835"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034381"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
@@ -49,26 +49,29 @@ ms.locfileid: "97511835"
 
 创建公共负载均衡器时，还会为该负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”）的新公共 IP 地址。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”  。
+1. 选择“创建资源”。  
+2. 在搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+3. 在“负载均衡器”页上，选择“创建” 。
+4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
-2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
-
-    | 设置                 | 值                                              |
+    | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中输入“CreatePubLBQS-rg” 。|
     | 名称                   | 输入“myLoadBalancer”                                   |
-    | 区域         | 选择“西欧”。                                        |
+    | 区域         | 选择“(欧洲)西欧”。                                        |
     | 类型          | 选择“公共”。                                        |
-    | SKU           | 选择“标准” |
+    | SKU           | 保留默认值“标准”。 |
+    | 层          | 保留默认值“区域”。 |
     | 公共 IP 地址 | 选择“新建”。 若要使用现有的公共 IP，请选择“使用现有项”。 |
     | 公共 IP 地址名称 | 在文本框中键入 myPublicIP。|
     | 可用性区域 | 选择“区域冗余”以创建弹性负载均衡器。 若要创建区域负载均衡器，请选择特定的区域：1、2 或 3 |
     | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](../virtual-network/ipv6-overview.md)  |
+    | 路由首选项 | 保留默认值“Microsoft 网络”。 </br> 有关路由首选项的详细信息，请参阅[什么是路由首选项（预览）？](../virtual-network/routing-preference-overview.md)。 |
 
-3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
+5. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
-4. 在“查看 + 创建”选项卡中，选择“创建”。   
+6. 在“查看 + 创建”选项卡中，选择“创建”。   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="创建标准负载均衡器" border="true":::
  
@@ -104,7 +107,7 @@ ms.locfileid: "97511835"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -132,7 +135,7 @@ ms.locfileid: "97511835"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -217,7 +220,7 @@ ms.locfileid: "97511835"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | 值                                          |
+    | 设置 | “值”                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -241,7 +244,7 @@ ms.locfileid: "97511835"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -260,7 +263,7 @@ ms.locfileid: "97511835"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **Monitoring** |  |
     | 启动诊断 | 选择“关闭” |
@@ -290,7 +293,7 @@ ms.locfileid: "97511835"
 
 3. 使用以下值配置出站规则：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 myOutboundRule。 |
     | 前端 IP 地址 | 选择“新建”。 </br> 在“名称”中输入“LoadBalancerFrontEndOutbound”。 </br> 选择“IP 地址”或“IP 前缀”。 </br> 在“公共 IP 地址”或“公共 IP 前缀”下选择“新建”。 </br> 对于“名称”，请输入“myPublicIPOutbound”或“myPublicIPPrefixOutbound”。 </br> 选择“添加”  。|
@@ -334,11 +337,12 @@ ms.locfileid: "97511835"
 
 创建公共负载均衡器时，还会为该负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”）的新公共 IP 地址。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”  。
+1. 选择“创建资源”。  
+2. 在搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+3. 在“负载均衡器”页上，选择“创建” 。
+4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
-2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
-
-    | 设置                 | 值                                              |
+    | 设置                 | “值”                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入“CreatePubLBQS-rg” 。|
@@ -351,9 +355,9 @@ ms.locfileid: "97511835"
     | 分配 | 选择“动态” |
     | 添加一个公共 IPv6 地址 | 请选择“否”。 </br> 有关 IPv6 地址和负载均衡器的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 IPv6？](../virtual-network/ipv6-overview.md)  |
 
-3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
+5. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
-4. 在“查看 + 创建”选项卡中，选择“创建”。   
+6. 在“查看 + 创建”选项卡中，选择“创建”。   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="创建基本负载均衡器" border="true":::
 
@@ -428,7 +432,7 @@ ms.locfileid: "97511835"
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -446,7 +450,7 @@ ms.locfileid: "97511835"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -474,7 +478,7 @@ ms.locfileid: "97511835"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -508,7 +512,7 @@ ms.locfileid: "97511835"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | 值                                          |
+    | 设置 | “值”                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -530,7 +534,7 @@ ms.locfileid: "97511835"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | 选择 myVNet |
@@ -545,7 +549,7 @@ ms.locfileid: "97511835"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | 值 |
+    | 设置 | “值” |
     |---|---|
     | **Monitoring** | |
     | 启动诊断 | 选择“关闭” |

@@ -3,14 +3,14 @@ title: 使用启用了 Azure Arc 的服务器连接混合计算机
 description: 了解如何使用启用了 Azure Arc 的服务器连接和注册混合计算机。
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c52b8d1f7098a7a2a88a9770a3b768b7fea31775
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516784"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101646820"
 ---
-# <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>快速入门：使用启用了 Azure Arc 的服务器连接混合计算机
+# <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>快速入门：使用启用了 Azure Arc 的服务器连接混合计算机
 
 通过[启用了 Azure Arc 的服务器](../overview.md)，可管理和控制跨本地、边缘和多云环境托管的 Windows 和 Linux 计算机。 在本快速入门中，你将在 Azure 外托管的 Windows 或 Linux 计算机上部署和配置 Connected Machine 代理，以便通过启用了 Arc 的服务器进行管理。
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 5bf9b79621ae1cd2c73f2e3ce18b0780bcdd2a71
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 4241e476b2f778ff63057d0491b5dc8666c7520c
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559332"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650858"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -86,7 +86,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="multiple-role-assignments"></a>多角色分配
 
-如果有多个重叠的角色分配，将会发生什么情况？ Azure RBAC 是一个加法模型，因此有效权限是角色分配的总和。 请考虑以下示例，其中在订阅范围内向用户授予了“参与者”角色，并且授予了对资源组的“读者”角色。 “参与者”权限与“读者”权限的和实际上是资源组的“参与者”角色。 因此，在这种情况下，“读者”角色分配没有任何影响。
+如果有多个重叠的角色分配，将会发生什么情况？ Azure RBAC 是一个加法模型，因此有效权限是角色分配的总和。 请考虑以下示例，其中在订阅范围内向用户授予了“参与者”角色，并且授予了对资源组的“读者”角色。 “参与者”权限与“读者”权限的总和实际上是订阅的“参与者”角色。 因此，在这种情况下，“读者”角色分配没有任何影响。
 
 ![多角色分配](./media/overview/rbac-multiple-roles.png)
 

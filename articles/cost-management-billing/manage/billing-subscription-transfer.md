@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 2fb1a8c3e583a4bdc88f2b61844e9bcb16dc7cdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367191"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094138"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -66,7 +66,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 
 如果你已接受 Azure 订阅的计费所有权，我们建议查看以下后续步骤：
 
-1. 查看和更新服务管理员、共同管理员和 Azure 角色分配。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)和[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+1. 查看和更新服务管理员、共同管理员和 Azure 角色分配。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)和[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 1. 更新与此订阅的服务关联的凭据，包括：
    1. 用于向用户授予订阅资源管理权限的管理证书。 有关详细信息，请参阅[创建并上传 Azure 的管理证书](../../cloud-services/cloud-services-certs-create.md)
    1. 存储空间等服务的访问密钥。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)
@@ -126,4 +126,4 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看和更新服务管理员、共同管理员和 Azure 角色分配。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)和[使用 Azure 门户添加或删除 Azure 角色分配](../../role-based-access-control/role-assignments-portal.md)。
+- 查看和更新服务管理员、共同管理员和 Azure 角色分配。 有关详细信息，请参阅[添加或更改 Azure 订阅管理员](add-change-subscription-administrator.md)和[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
