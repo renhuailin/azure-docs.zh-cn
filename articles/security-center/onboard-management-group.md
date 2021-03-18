@@ -1,23 +1,18 @@
 ---
 title: 将管理组加入 Azure 安全中心
 description: 了解如何使用提供的 Azure Policy 定义来为管理组中的所有订阅启用 Azure 安全中心。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/10/2020
+ms.topic: how-to
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: 9db276425d510316c41126f8e942a1e2a362ea35
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 01036343e2585adf7c09ad3f0d236948a537fc29
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101284"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103016553"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>对管理组中的所有订阅启用安全中心
 

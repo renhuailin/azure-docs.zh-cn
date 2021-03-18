@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: eb70a31d0fa5f231bd0db8ca27517ce43fe1db28
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007801"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102101335"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -42,7 +42,7 @@ Azure 安全中心是用于保护容器安全的 Azure 原生解决方案。
 
 以下屏幕截图显示了“资产清单”页以及受安全中心保护的各种类型的容器资源。
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="安全中心“资产清单”页中与容器相关的资源" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/inventory-container-resources.png" alt-text="安全中心“资产清单”页中与容器相关的资源" lightbox="./media/container-security/inventory-container-resources.png":::
 
 ## <a name="vulnerability-management---scanning-container-images"></a>漏洞管理 - 扫描容器映像
 
@@ -92,7 +92,7 @@ AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 准入控制实现工作负载保护最佳做法
 
-安装适用于 Kubernetes 的 Azure Policy 加载项，获取一系列有助于保护 Kubernetes 容器工作负载的建议。 还可以根据[启用扩展的自动预配](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)中的说明，自动部署此加载项。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
+安装适用于 Kubernetes 的 Azure Policy 加载项，获取一系列有助于保护 Kubernetes 容器工作负载的建议。 还可以根据[启用 Log Analytics 代理和扩展的自动预配](security-center-enable-data-collection.md#auto-provision-mma)中的说明，自动部署此加载项。 将加载项的自动预配设置为“启用”时，默认情况下会在所有现有和未来的群集（满足加载项安装要求）中启用该扩展。
 
 如[此用于 Kubernetes 的 Azure Policy 页](../governance/policy/concepts/policy-for-kubernetes.md)中所述，加载项扩展了 [开放策略代理](https://www.openpolicyagent.org/)的开源 [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper) 准入控制器 webhook。 Kubernetes 准入控制器是强制实施群集使用方式的插件。 此加载项注册为 Kubernetes 准入控制的 web 挂钩，并使你能够以集中一致的方式在群集上应用大规模强制性操作和安全措施。 
 
