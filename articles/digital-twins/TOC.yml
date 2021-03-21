@@ -173,6 +173,8 @@
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: 数字孪生 CLI
       href: /cli/azure/ext/azure-iot/dt
+    - name: DTDL v2 规范
+      href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
 - name: 资源
   items:
     - name: 数字孪生服务限制
@@ -212,9 +214,9 @@
             - name: Python SDK - 源代码
               href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK - GoDoc
-              href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt'
             - name: Go - 源代码
-              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt'
         - name: 数据平面
           items:
             - name: 数据平面 Swagger
@@ -275,8 +277,6 @@
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: DTDL
       items:
-        - name: DTDL v2 规范
-          href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
         - name: 适用于 VS Code 的 DTDL 扩展
           href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
         - name: DTDL 分析器库 - NuGet
