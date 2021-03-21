@@ -6,15 +6,15 @@ metadata:
   description: Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。 Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和 SDK。
   ms.prod: kinect-dk
   ms.topic: landing-page
-  author: tesych
-  ms.author: tesych
-  ms.date: 03/11/2020
-  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  author: qm13
+  ms.author: quentinm
+  ms.date: 03/18/2021
+  ms.openlocfilehash: bf23c59fb200135f6ac962fbb463295823225641
+  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "80421932"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104654741"
 landingContent:
 - title: 关于 Azure Kinect DK
   linkLists:
@@ -75,7 +75,7 @@ landingContent:
     - text: 传感器 SDK API
       url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
     - text: 人体跟踪 SDK API
-      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.1.0/index.html
     - text: 视觉服务
       url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
     - text: 语音服务
