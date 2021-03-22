@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9c13a914a002f63f3c0d5bd988b0d76b951586dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124680"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485752"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -34,8 +34,8 @@ ms.locfileid: "102124680"
 
 |                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 有关 **GiB 中的缓存大小**，请 [参阅 DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和 [GS](sizes-previous-gen.md#gs-series)              |
-| **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
+| **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 对于“缓存大小(GiB)”,，请参阅 [DS](sizes-general.md)、[ES](sizes-memory.md)、[M](sizes-memory.md)、[FS](sizes-compute.md) 和 [GS](sizes-previous-gen.md#gs-series)              |
+| **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，例如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | **磁盘类型支持**           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | **区域支持**              | 所有区域                                                                                  | 所有区域                              |
 | **数据持久性**            | 写入 OS 磁盘的 OS 磁盘数据存储在 Azure 存储中                                  | 写入 OS 磁盘的数据存储到本地 VM 存储，不保存到 Azure 存储。 |
@@ -52,7 +52,7 @@ ms.locfileid: "102124680"
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](sizes.md)，其中详述了哪些大小支持高级存储。
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>预览版 - 临时 OS 磁盘现在可以存储在临时磁盘上
-除了可以存储在 VM 缓存上之外，临时 OS 磁盘现在还可以存储在 VM 临时/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 有足够的缓存和临时空间，那么现在还可以通过使用名为 [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) 的新属性来指定要存储临时 OS 磁盘的位置。 利用此特性，我们在预配 Windows VM 时将页面文件配置为位于OS 磁盘上。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 首先，[请求访问权限](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
+除了可以存储在 VM 缓存上之外，临时 OS 磁盘现在还可以存储在 VM 临时/资源磁盘上。 因此，现在可以在没有缓存或缓存不足但有临时/资源磁盘的 VM 中使用临时 OS 磁盘存储临时 OS 磁盘（例如 Dav3、Dav4、Eav4 和 Eav3）。 如果 VM 有足够的缓存和临时空间，那么现在还可以通过使用名为 [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) 的新属性来指定要存储临时 OS 磁盘的位置。 利用此特性，我们在预配 Windows VM 时将页面文件配置为位于OS 磁盘上。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 首先，[请求访问权限](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -204,7 +204,7 @@ A:是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。
 
 **问：临时 OS 磁盘是否支持所有 VM 大小？**
 
-答：不可以，大多数高级存储 VM 大小都支持 (DS、ES、FS、GS、M 等 ) 。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以执行以下操作：
+答：否，支持大多数高级存储 VM 大小（DS、ES、FS、GS、M 等）。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以执行以下操作：
 
 调用 `Get-AzComputeResourceSku` PowerShell cmdlet
 ```azurepowershell-interactive
@@ -247,7 +247,7 @@ foreach($vmSize in $vmSizes)
 
 > [!NOTE]
 > 
-> 临时磁盘将无法通过门户访问。 访问临时磁盘时，可能会收到 "找不到资源" 或 "404" 错误。
+> 临时磁盘将无法通过门户访问。 访问所需的临时磁盘时，你将收到“找不到资源”或“404”错误。
 > 
  
 ## <a name="next-steps"></a>后续步骤

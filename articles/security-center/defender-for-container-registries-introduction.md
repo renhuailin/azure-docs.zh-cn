@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f358bebc1cc4eb17b8c50b1e3a13366717ae98c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100706"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102176631"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -68,7 +68,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 ## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure 容器注册表映像扫描常见问题解答
 
 ### <a name="how-does-security-center-scan-an-image"></a>安全中心如何扫描图像？
-先从注册表中拉取映像。 然后在独立沙盒中运行该映像，沙盒中包含的 Qualys 扫描程序会提取已知漏洞的列表。
+安全中心会从注册表中拉取映像，并使用 Qualys 扫描程序在一个隔离的沙盒中运行它。 扫描程序会提取已知漏洞的列表。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
@@ -78,7 +78,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>会扫描哪些类型的注册表？ 会对哪些类型计费？
 有关适用于容器注册表的 Azure Defender 支持的容器注册表类型的列表，请参阅[可用性](#availability)。
 
-如果将不支持的注册表连接到 Azure 订阅，不会对其进行扫描，也不会收取扫描费。
+如果将不支持的注册表连接到 Azure 订阅，Azure Defender 不会对其进行扫描，也不会为此向你收取费用。
 
 ### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>是否可以自定义漏洞扫描程序中的发现结果？
 是的。 如果组织需要忽略发现结果，而不是修正漏洞，则可以选择禁用发现结果。 禁用发现结果不会影响安全分数，也不会产生有害的噪音。

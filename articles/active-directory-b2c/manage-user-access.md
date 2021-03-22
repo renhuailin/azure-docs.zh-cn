@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fadc739f16ce9690a735be22758f58857ff8b9ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951615"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518042"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -83,7 +83,53 @@ ms.locfileid: "94951615"
 - 如果已知某个用户是成年人，则使用 **Adult** 值更新目录属性 **ageGroup**。
 - 如果已知某个用户是未成年人，则使用 **Minor** 值更新目录属性 **ageGroup**，并相应地设置 **consentProvidedForMinor**。
 
-有关收集 DOB 数据的详细信息，请参阅[在 Azure AD B2C 中使用年龄门控](basic-age-gating.md)。
+## <a name="minor-calculation-rules"></a>未成年人计算规则
+
+年龄限制涉及两个年龄值：不再视其为未成年人的年龄，以及未成年人必须征得父母同意的年龄。 下表列出的年龄规则用于定义未成年人和须征得父母同意的未成年人。
+
+| 国家/地区 | 国家/地区名称 | 须征得同意的未成年人年龄 | 未成年人年龄 |
+| -------------- | ------------------- | ----------------- | --------- |
+| 默认 | 无 | None | 18 |
+| AE | 阿拉伯联合酋长国 | None | 21 |
+| AT | 奥地利 | 14 | 18 |
+| BE | 比利时 | 14 | 18 |
+| BG | 保加利亚 | 16 | 18 |
+| BH | 巴林 | None | 21 |
+| CM | 喀麦隆 | None | 21 |
+| CY | 塞浦路斯 | 16 | 18 |
+| CZ | 捷克共和国 | 16 | 18 |
+| DE | 德国 | 16 | 18 |
+| DK | 丹麦 | 16 | 18 |
+| EE | 爱沙尼亚 | 16 | 18 |
+| EG | 埃及 | None | 21 |
+| ES | 西班牙 | 13 | 18 |
+| FR | 法国 | 16 | 18 |
+| GB | 英国 | 13 | 18 |
+| GR | 希腊 | 16 | 18 |
+| HR | 克罗地亚 | 16 | 18 |
+| HU | 匈牙利 | 16 | 18 |
+| IE | 爱尔兰 | 13 | 18 |
+| IT | 意大利 | 16 | 18 |
+| KR | 韩国 | 14 | 18 |
+| LT | 立陶宛 | 16 | 18 |
+| LU | 卢森堡 | 16 | 18 |
+| LV | 拉脱维亚 | 16 | 18 |
+| MT | 马耳他 | 16 | 18 |
+| NA | 纳米比亚 | None | 21 |
+| NL | 荷兰 | 16 | 18 |
+| PL | 波兰 | 13 | 18 |
+| PT | 葡萄牙 | 16 | 18 |
+| RO | 罗马尼亚 | 16 | 18 |
+| SE | 瑞典 | 13 | 18 |
+| SG | 新加坡 | None | 21 |
+| SI | 斯洛文尼亚 | 16 | 18 |
+| SK | 斯洛伐克 | 16 | 18 |
+| TD | 乍得 | None | 21 |
+| TH | 泰国 | None | 20 |
+| TW | 中国台湾 | None | 20 |
+| 美国 | United States | 13 | 18 |
+
+
 
 ## <a name="capture-terms-of-use-agreement"></a>捕获用户条款的同意状态
 
@@ -175,5 +221,6 @@ ms.locfileid: "94951615"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [在 Azure AD B2C 中启用年龄限制](age-gating.md)。
 - 若要了解如何删除和导出用户数据，请参阅[管理用户数据](manage-user-data.md)。
 - 如需实现使用条款提示的自定义策略示例，请参阅 [B2C IEF 自定义策略 - 使用“使用条款”提示注册并登录](https://github.com/azure-ad-b2c/samples/tree/master/policies/sign-in-sign-up-versioned-tou)。

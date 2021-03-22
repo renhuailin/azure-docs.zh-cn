@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 373d144b4df818a075f0088e9cbf31cb5027e747
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987017"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724874"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>教程：将 Azure IoT Edge 设备添加到 Azure IoT Central 应用程序
 
@@ -61,6 +61,9 @@ ms.locfileid: "90987017"
 
 :::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="从 IoT Edge 清单创建的设备模板":::
 
+> [!TIP]
+> 此部署清单从无需任何凭据即可连接的 Azure 容器注册表存储库中拉取模块映像。 如果要使用专用存储库中的模块映像，请在清单中设置容器注册表凭据。
+
 ### <a name="add-telemetry-to-manifest"></a>将遥测功能添加到清单
 
 IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加到 IoT Central 中的设备模板。 **SimulatedTemperatureSensor** 模块发送类似于以下 JSON 的遥测消息：
@@ -83,15 +86,15 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 在“环境传感器边缘设备”模板中选择“管理”界面。 
 
-1. 选择“+ 添加功能”。 输入 *machine* 作为**显示名称**，并确保“功能类型”为“遥测”。 
+1. 选择“+ 添加功能”。 输入 *machine* 作为 **显示名称**，并确保“功能类型”为“遥测”。 
 
 1. 选择“对象”作为架构类型，然后选择“定义”。  在对象定义页上，添加 *temperature* 和 *pressure* 作为 **Double** 类型的特征，然后选择“应用”。
 
-1. 选择“+ 添加功能”。 输入 *ambient* 作为**显示名称**，并确保“功能类型”为“遥测”。 
+1. 选择“+ 添加功能”。 输入 *ambient* 作为 **显示名称**，并确保“功能类型”为“遥测”。 
 
 1. 选择“对象”作为架构类型，然后选择“定义”。  在对象定义页上，添加 *temperature* 和 *humidity* 作为 **Double** 类型的特征，然后选择“应用”。
 
-1. 选择“+ 添加功能”。 输入 *timeCreated* 作为**显示名称**，并确保“功能类型”为“遥测”。 
+1. 选择“+ 添加功能”。 输入 *timeCreated* 作为 **显示名称**，并确保“功能类型”为“遥测”。 
 
 1. 选择“日期时间”作为架构类型。
 
@@ -99,7 +102,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 “管理”界面现在包含 **machine**、**ambient** 和 **timeCreated** 遥测类型：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="包含 machine 和 ambient 遥测类型的界面":::
 
 ### <a name="add-views-to-template"></a>将视图添加到模板
 
@@ -115,7 +118,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 选择“保存”以保存“查看 IoT Edge 设备遥测数据”视图。 
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="具有遥测视图的设备模板":::
 
 ### <a name="publish-the-template"></a>发布模板
 
@@ -123,7 +126,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 导航到“环境传感器边缘设备”模板并选择“发布”。  在“将此设备模板发布到应用程序”面板中，选择“发布”以发布模板 ：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="发布设备模板":::
 
 ## <a name="add-iot-edge-device"></a>添加 IoT Edge 设备
 
@@ -135,7 +138,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 现在，已有一个状态为“已注册”的新设备：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="新的注册设备":::
 
 ### <a name="get-the-device-credentials"></a>获取设备凭据
 
@@ -143,7 +146,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 在“设备”页上，选择创建的设备。
 
-1. 选择“连接”。
+1. 选择“连接”  。
 
 1. 在“设备连接”页上，记下“ID 范围”、“设备 ID”和“主密钥”。    稍后要使用这些值。
 
@@ -181,7 +184,7 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 1. 查看你的选择，然后选择“创建”：
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="创建 IoT Edge VM":::
 
 部署需要几分钟时间完成。 部署完成后，导航到 Azure 门户中的 central-edge-rg 资源组。
 
@@ -269,15 +272,15 @@ IoT Edge 清单不会定义模块发送的遥测数据。 将遥测定义添加�
 
 模拟的 IoT Edge 设备现在正在 VM 中运行。 在 IoT Central 应用程序中，“设备”页上的设备状态现在为“已预配”： 
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="已预配 IoT Edge 设备":::
 
 可以在“查看 IoT Edge 设备遥测”页上查看该设备的遥测：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="设备遥测":::
 
 “模块”页显示设备上的 IoT Edge 模块的状态：
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="从 IoT Edge 清单创建的设备模板":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="设备模块状态":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

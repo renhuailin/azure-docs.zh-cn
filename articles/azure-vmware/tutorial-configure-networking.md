@@ -2,17 +2,17 @@
 title: 教程 - 在 Azure 中为 VMware 私有云配置网络
 description: 了解如何在 Azure 中创建和配置在部署私有云时所需的网络
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 6aff39284f3ea786080055552ac001ac5dd7b394
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 03/13/2021
+ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578338"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494340"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
 
-Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azure VMware 解决方案不支持本地 vCenter，因此需要执行额外的步骤来与本地环境集成。 此外，需要设置 ExpressRoute 线路和虚拟网络网关。
+Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azure VMware 解决方案不支持本地 vCenter，因此需要执行额外的步骤来与本地环境集成。 此外，还需要设置 ExpressRoute 线路和虚拟网络网关。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -76,7 +76,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
    | **网关子网地址范围** | 选择虚拟网络时会填充此值。 不要更改默认值。 |
    | **公共 IP 地址** | 选择“新建”。 |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="选择“查看 + 创建”。" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="为字段提供值，然后选择“查看 + 创建”。" border="true":::
 
 1. 验证详细信息是否正确，然后选择“创建”以开始部署虚拟网络网关。 
 1. 部署完成后，转到下一部分，将 ExpressRoute 连接连接到包含 Azure VMware 解决方案私有云的虚拟网络网关。
@@ -90,15 +90,15 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>查找 vCenter 和 NSX 管理器的 URL
 
-若要登录到 vCenter 和 NSX 管理器，需要提供 vCenter Web 客户端和 NSX-T 管理器站点的 URL。 
+若要登录到 vCenter 和 NSX 管理器，需要使用 vCenter Web 客户端和 NSX-T 管理器站点的 URL。 
 
 导航到 Azure VMware 解决方案私有云，在“管理”下选择“标识”，然后便可以找到所需的信息 。
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="选择“查看 + 创建”。" border="true":::
+:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="vCenter 和 NSX-T 凭据以及 Web 客户端 URL 的屏幕截图。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 创建虚拟网络

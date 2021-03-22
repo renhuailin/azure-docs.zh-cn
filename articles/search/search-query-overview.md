@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 234a0137f0a9487a56b3e0343eaea375d2f9a1af
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043008"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487111"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure 认知搜索中的查询
 
@@ -24,10 +24,11 @@ Azure 认知搜索提供了丰富的查询语言，支持从自定义文本搜�
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "queryType": "simple"
-    "search": "`New York` +restaurant",
-    "searchFields": "Description, Address/City, Tags",
-    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "queryType": "simple",
+    "searchMode": "all",
+    "search": "restaurant +view",
+    "searchFields": "HotelName, Description, Address/City, Address/StateProvince, Tags",
+    "select": "HotelName, Description, Address/City, Address/StateProvince, Tags",
     "top": "10",
     "count": "true",
     "orderby": "Rating desc"
@@ -38,9 +39,11 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 + **`queryType`** 设置分析器，该分析器可以是 [默认的简单查询分析器](search-query-simple-examples.md)（最适合用于全文搜索），也可以是 [完整的 Lucene 查询分析器](search-query-lucene-examples.md)（用于正则表达式、邻近搜索、模糊和通配符搜索等高级查询构造）。
 
++ `searchMode` 指定匹配是基于表达式中的“all”条件还是“any”条件。 默认值为“any”。
+
 + `search` 提供匹配条件（通常是整个搜索词或短语，带或不带运算符）。 在索引架构中设置了 *searchable* 属性的任何字段都适合指定此参数。
 
-+ `searchFields` 将查询执行约束为特定的可搜索字段。
++ `searchFields` 将查询执行约束为特定的可搜索字段。 在开发过程中，为选择和搜索使用同一字段列表会很有帮助。 否则，匹配可能是基于你无法在结果中看到的字段值，从而导致不确定返回文档的原因。
 
 用于形成响应的参数：
 
@@ -114,4 +117,4 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 + [简单查询示例](search-query-simple-examples.md)
 + [生成高级查询的 Lucene 语法查询示例](search-query-lucene-examples.md)
-+ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)git

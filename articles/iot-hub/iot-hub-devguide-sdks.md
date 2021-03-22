@@ -12,18 +12,18 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 13598925702aeca4a06135a910e3be540083a2b6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211747"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611583"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
 有两种类别的软件开发工具包 (SDK) 适用于 IoT 中心：
 
-* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。 可以使用这些 Sdk 构建使用 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md) 约定和模型的设备应用，以便将其功能播发到 IoT 即插即用启用的应用程序。 还可以使用模块客户端为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
+* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。 可以使用这些 SDK 构建使用 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)约定和型号的设备应用，以便将其功能播发到启用了 IoT 即插即用的应用程序。 还可以使用模块客户端为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
 
 * **IoT 中心服务 SDK**：可用于构建后端应用程序来管理 IoT 中心，并视需要发送消息、计划作业、调用直接方法或向 IoT 设备或模块发送相应属性更新。
 
@@ -49,10 +49,10 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 .NET 的 Azure IoT 中心设备 SDK： 
 
-* 从 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)下载。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
+* 通过 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) 下载。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
-* [API 参考](/dotnet/api/microsoft.azure.devices?view=azure-dotnet&preserve-view=true)
-* [模块参考](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet&preserve-view=true)
+* [API 参考](/dotnet/api/microsoft.azure.devices)
+* [模块参考](/dotnet/api/microsoft.azure.devices.client.moduleclient)
 
 
 适用于 Embedded C 的 Azure IoT 中心设备 SDK (ANSI C - C99)：
@@ -84,7 +84,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 * 通过 [npm](https://www.npmjs.com/package/azure-iot-device) 安装
 * [源代码](https://github.com/Azure/azure-iot-sdk-node)
-* [API 参考](/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API 参考](/javascript/api/azure-iot-device/)
 * [模块参考](/javascript/api/azure-iot-device/moduleclient)
 
 适用于 Python 的 Azure IoT 中心设备 SDK：
@@ -105,7 +105,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 .NET 的 Azure IoT 中心服务 SDK：
 
-* 从 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices/)下载。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
+* 通过 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices/) 下载。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](/dotnet/api/microsoft.azure.devices)
 
@@ -119,7 +119,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 * 通过 [npm](https://www.npmjs.com/package/azure-iothub) 下载
 * [源代码](https://github.com/Azure/azure-iot-sdk-node)
-* [API 参考](/javascript/api/azure-iothub/?view=azure-iot-typescript-latest&preserve-view=true)
+* [API 参考](/javascript/api/azure-iothub/)
 
 适用于 Python 的 Azure IoT 中心服务 SDK：
 
@@ -134,7 +134,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 在更高级别的语言（[C#](https://github.com/Azure/azure-iot-sdk-csharp)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[Node](https://github.com/Azure/azure-iot-sdk-node)、[Python](https://github.com/Azure/azure-iot-sdk-python)）中可使用 Azure IoT 服务 SDK 支持。
 
-* 从 [apt 下载-get、MBED、ARDUINO IDE 或 NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
+* 通过 [apt-get、MBED、Arduino IDE 或 NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) 下载
 * [源代码](https://github.com/Azure/azure-iot-sdk-c)
 
 适用于 iOS 的 Azure IoT 中心服务 SDK：
@@ -153,7 +153,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 * 通过 NuGet 下载[设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) 和[服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp/)
-* [API 参考](/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet&preserve-view=true)
+* [API 参考](/dotnet/api/microsoft.azure.devices.provisioning.client)
 
 适用于 C 的 Azure 预配设备和服务 SDK：
 

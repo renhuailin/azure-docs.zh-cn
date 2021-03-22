@@ -1,78 +1,62 @@
 ---
-title: 可用性选项
-description: 了解在 Azure 中运行虚拟机的可用性功能
-author: cynthn
-ms.author: cynthn
+title: Azure 虚拟机可用性选项
+description: 了解在 Azure 中运行虚拟机的可用性选项
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 0af9d27561649a559913912165e63e913a32ff2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.reviewer: cynthn
+ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178280"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507868"
 ---
-# <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
+# <a name="availability-options-for-azure-virtual-machines"></a>Azure 虚拟机可用性选项
+本文概述了 Azure 虚拟机 (VM) 的可用性选项。
 
-本文概述了 Azure 虚拟机 (VM) 的可用性功能。
+## <a name="availability-zones"></a>可用性区域
 
-## <a name="high-availability"></a>高可用性
+[可用性区域](../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context)扩展了在保持 VM 上的应用程序和数据的可用性时的控制级别。 可用性区域是 Azure 区域中在物理上独立的区域。 每个受支持的 Azure 区域有三个可用性区域。 
 
-工作负荷通常分布在不同的虚拟机上，以获得高吞吐量、高性能并实现冗余，防止 VM 因更新或其他事件而受影响。 
+每个可用性区域有独立的电源、网络和散热设备。 通过将解决方案设计为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
 
-Azure 提供了几个选项来实现高可用性。 首先，让我们谈一谈基本构造。 
-
-### <a name="availability-zones"></a>可用性区域
-
-[可用性区域](../availability-zones/az-overview.md)扩展了在保持 VM 上应用程序和数据的可用性时的控制级别。 可用性区域是 Azure 区域中在物理上独立的区域。 每个受支持的 Azure 区域有三个可用性区域。 
-
-每个可用性区域有独立的电源、网络和散热设备。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
-
-![可用性区域](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-详细了解如何在可用性区域中部署 [Windows](./windows/create-powershell-availability-zone.md) 或 [Linux](./linux/create-cli-availability-zone.md) VM。
-
-
-### <a name="fault-domains"></a>容错域
-
-容错域是共享公用电源和网络交换机的基础硬件逻辑组，类似于本地数据中心内的机架。 
-
-### <a name="update-domains"></a>更新域
-
-更新域是可以同时维护或重新启动的基础硬件逻辑组。 
-
-Azure 平台进行定期维护时，此方法可确保至少有一个应用程序实例始终保持运行状态。 在维护期间，更新域的重启顺序可能不会按序进行，但一次只重启一个更新域。
+## <a name="availability-sets"></a>可用性集
+[可用性集](availability-set-overview.md)是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。
 
 
 ## <a name="virtual-machines-scale-sets"></a>虚拟机规模集 
 
-使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集内的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高因数据中心中断、计划内或计划外维护事件而导致停机时的可用性和复原能力。 规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因业务流程模式而异。
+使用 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context)可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。
 
-**容错域和更新域**
+规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因[业务流程模式](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context)而异。
 
-虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](./manage-availability.md)。
-
-**规模集的业务流程模式**
-
-利用虚拟机规模集业务流程模式，可以更好地控制规模集对虚拟机实例的管理方式。 可以在规模集上启用统一或灵活的业务流程模式。 统一业务流程针对具有相同实例的大规模无状态工作负荷进行了优化。 灵活的业务流程 (预览) 旨在实现规模相同或多种虚拟机的高可用性。 了解有关这些 [业务流程模式](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) 及其启用方法的详细信息。
+## <a name="load-balancer"></a>负载均衡器
+将 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)与可用性区域或可用性集组合在一起，以获取最高的应用程序复原能力。 Azure 负载均衡器将流量分布到多个虚拟机中。 对于标准层虚拟机来说，Azure 负载均衡器已包括在内。 并非所有虚拟机层都包括 Azure 负载均衡器。 有关对虚拟机进行负载均衡的更多信息，请阅读对 [Linux](linux/tutorial-load-balancer.md) 或 [Windows](windows/tutorial-load-balancer.md) 虚拟机进行负载均衡。
 
 
-## <a name="availability-sets"></a>可用性集
-可用性集是 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。
+## <a name="azure-storage-redundancy"></a>Azure 存储冗余
+Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 冗余可确保即使遇到故障，存储帐户也能达到其可用性和持久性目标。
 
-在可用性集中，VM 自动分布到这些容错域中。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。
+在确定最适合自己方案的冗余选项时，请考虑如何在较低成本与较高可用性之间做出取舍。 可帮助你确定应选择哪种冗余选项的因素包括：
+- 如何在主要区域中复制数据
+- 是否要将你的数据复制到地理上距主要区域较远的另一个区域，以防范区域性灾难
+- 应用程序是否要求在主要区域出于任何原因而不可用时，能够对次要区域中复制的数据进行读取访问
 
-对于使用 [Azure 托管磁盘](./faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 
+有关详细信息，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)
 
-在托管可用性集中，只能创建带托管磁盘的 VM。 托管磁盘容错域的数目因区域而异 - 每个区域两个或三个托管磁盘容错域。 可以阅读有关这些适用于 [Linux VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 或 [Windows VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的托管磁盘容错域的详细信息。
+## <a name="azure-site-recovery"></a>Azure Site Recovery
+组织需采用业务连续性和灾难恢复 (BCDR) 策略，在发生计划内和计划外停机时确保数据的安全以及应用和工作负载的联机。
 
-![托管可用性集](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) 有助于保持业务应用和工作负载在停机期间的正常运行，从而确保业务连续性。 Site Recovery 将在物理机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置。 主站点发生停机时，可以故障转移到辅助位置，从该位置访问应用。 在主位置再次运行后，可以故障回复到该位置。
 
-
-可用性集中的 VM 也会自动分布到更新域中。 
-
-![可用性集](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+Site Recovery 可以为以下计算机管理复制：
+- 在 Azure 区域之间进行复制的 Azure VM。
+- 本地 VM、 Azure Stack VM 和物理服务器。
 
 ## <a name="next-steps"></a>后续步骤
-现在即可开始使用这些可用性和冗余功能构建 Azure 环境。 有关最佳实践的信息，请参阅 [Azure 可用性的最佳实践](/azure/architecture/checklist/resiliency-per-service)。
+- [在可用性区域中创建虚拟机](/linux/create-cli-availability-zone.md)
+- [在可用性集中创建虚拟机](/linux/tutorial-availability.md)
+- [创建虚拟机规模集](../virtual-machine-scale-sets/quick-create-portal.md)

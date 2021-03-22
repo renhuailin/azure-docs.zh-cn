@@ -3,16 +3,16 @@ title: M 系列 - Azure 虚拟机
 description: M 系列 VM 的规范。
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: b893d2d381ccea286066d6141142c2ab190242bc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 91c29864367380a303a006d4aac823a22a966a2b
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667037"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563086"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -28,7 +28,7 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [写入加速器](./how-to-enable-write-accelerator.md)：支持<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -48,7 +48,7 @@ M 系列 VM 采用 Intel&reg; 超线程技术。
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 超过64的 vCPU 需要以下受支持的来宾版本之一： Windows Server 2016、UBUNTU 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或 Oracle Linux 7.3 和 .lis 4.2.1。
+<sup>1</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾版本之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或带 LIS 4.2.1 的 Oracle Linux 7.3。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 

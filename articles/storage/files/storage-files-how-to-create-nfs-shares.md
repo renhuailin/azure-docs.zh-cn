@@ -1,5 +1,5 @@
 ---
-title: '创建 NFS 共享-Azure 文件 (预览) '
+title: 创建 NFS 共享 - Azure 文件存储（预览）
 description: 了解如何创建可使用网络文件系统协议装载的 Azure 文件共享。
 author: roygara
 ms.service: storage
@@ -8,15 +8,15 @@ ms.date: 01/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2ff669d0ff3bde791de9bc7773e13d880762f898
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214416"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521231"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
-Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
+Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建可使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
 
 ## <a name="limitations"></a>限制
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
@@ -26,18 +26,18 @@ Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如�
 
 ## <a name="prerequisites"></a>先决条件
 - 只能从受信任的网络访问 NFS 共享。 与 NFS 共享的连接必须来自以下源之一：
-    - [创建专用终结点](storage-files-networking-endpoints.md#create-a-private-endpoint) (建议) 或[限制对公共终结点的访问](storage-files-networking-endpoints.md#restrict-public-endpoint-access)。
-    - [在 Linux 上配置点到站点 (P2S) 用于 Azure 文件的 VPN](storage-files-configure-p2s-vpn-linux.md)。
-    - [配置站点到站点 VPN 以用于 Azure 文件](storage-files-configure-s2s-vpn.md)。
+    - [创建专用终结点](storage-files-networking-endpoints.md#create-a-private-endpoint)（建议）或[限制对公共终结点的访问](storage-files-networking-endpoints.md#restrict-public-endpoint-access)。
+    - [在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-linux.md)。
+    - [配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
     - 配置 [ExpressRoute](../../expressroute/expressroute-introduction.md)。
 
 - 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="register-the-nfs-41-protocol"></a>注册 NFS 4.1 协议
-如果使用的是 Azure PowerShell 模块或 Azure CLI，请使用以下命令注册功能：
+如果你使用的是 Azure PowerShell 模块或 Azure CLI，请使用以下命令注册功能：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-使用 Azure PowerShell 或 Azure CLI 为 Azure 文件注册 NFS 4.1 功能。
+使用 Azure PowerShell 或 Azure CLI 为 Azure 文件存储注册 NFS 4.1 功能。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
@@ -77,10 +77,10 @@ az provider register \
 
 ---
 
-注册批准最多可能需要一小时。 若要验证注册是否完成，请使用以下命令：
+注册审批可能需要一个小时。 若要验证注册是否完成，请使用以下命令：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-使用 Azure PowerShell 或 Azure CLI 来检查 Azure 文件的 NFS 4.1 功能的注册。 
+使用 Azure PowerShell 或 Azure CLI 检查 Azure 文件存储的 NFS 4.1 功能注册情况。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
@@ -100,10 +100,10 @@ az feature show \
 ---
 
 ## <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
-目前，NFS 4.1 共享仅可用作高级文件共享。 若要部署具有 NFS 4.1 协议支持的高级文件共享，必须先创建 FileStorage 存储帐户。 存储帐户是 Azure 中的顶级对象，表示可用于部署多个 Azure 文件共享的共享存储池。
+目前，NFS 4.1 共享仅可用作高级文件共享。 若要部署支持 NFS 4.1 协议的高级文件共享，必须先创建一个 FileStorage 存储帐户。 存储帐户是 Azure 中的顶级对象，表示可用于部署多个 Azure 文件共享的共享存储池。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-若要创建 FileStorage 存储帐户，请导航到 Azure 门户。
+要创建 FileStorage 存储帐户，请导航到 Azure 门户。
 
 1. 在 Azure 门户中，选择左侧菜单中的“存储帐户”。
 
@@ -130,7 +130,7 @@ az feature show \
 创建存储帐户资源后，请导航到该资源。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-若要创建 FileStorage 存储帐户，请打开 PowerShell 提示符并执行以下命令，记住将和替换为 `<resource-group>` `<storage-account>` 环境的相应值。
+若要创建 FileStorage 存储帐户，请打开 PowerShell 提示符并执行以下命令，记住将 `<resource-group>` 和 `<storage-account>` 替换为你的环境的相应值。
 
 ```powershell
 $resourceGroupName = "<resource-group>"
@@ -146,7 +146,7 @@ $storageAccount = New-AzStorageAccount `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要创建 FileStorage 存储帐户，请打开终端并执行以下命令，记住将和替换为 `<resource-group>` `<storage-account>` 环境的相应值。
+若要创建 FileStorage 存储帐户，请打开终端并执行以下命令，记住将 `<resource-group>` 和 `<storage-account>` 替换为你的环境的相应值。
 
 ```azurecli-interactive
 resourceGroup="<resource-group>"
@@ -166,17 +166,17 @@ az storage account create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-现在，你已创建 FileStorage 帐户并配置了网络，接下来可以创建一个 NFS 文件共享。 此过程类似于创建 SMB 共享，在创建共享时选择 **NFS** 而不是 **smb** 。
+现在，你已创建了一个 FileStorage 帐户并配置了网络，接下来可以创建一个 NFS 文件共享。 此过程类似于创建 SMB 共享，在创建共享时选择 NFS 而不是 SMB。
 
 1. 导航到存储帐户，然后选择“文件共享”。
 1. 选择“+ 文件共享”创建新的文件共享。
-1. 命名文件共享，选择预配的容量。
-1. 对于 **协议** ，请选择 " **NFS (预览")**。
-1. 对于 **Root Squash** 进行选择。
+1. 为文件共享命名，选择预配的容量。
+1. 对于“协议”，请选择“NFS (预览)”。
+1. 对于“根 Squash”，在以下选项中进行选择。
 
-    - 根 squash (默认) -远程超级用户 (根) 的访问权限映射到 UID (65534) 和 GID (65534) 。
-    - 根 squash-远程超级用户 (根) 以 root 身份接收访问权限。
-    - 所有 squash-所有用户访问映射到 UID (65534) 和 GID (65534) 。
+    - 根 Squash (默认) - 远程超级用户（根）的访问映射到 UID (65534) 和 GID (65534)。
+    - 无根 Squash - 远程超级用户（根）以 root 身份接收访问。
+    - 所有 Squash - 所有用户访问映射到 UID (65534) 和 GID (65534)。
     
 1. 选择“创建”。
 
@@ -192,7 +192,7 @@ az storage account create \
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)
+   若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
     
 1. 安装最新版本的 PowershellGet 模块。
 
@@ -202,18 +202,18 @@ az storage account create \
 
 1. 关闭 PowerShell 控制台，然后重新将其打开。
 
-1. 安装 **Az** 预览 module **2.5.2**。
+1. 安装 Az.Storage 预览模块版本 2.5.2-preview。
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-3.0.0&preserve-view=true)
+   有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)
    
-1. 若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) cmdlet。
+1. 若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) cmdlet。
 
     > [!NOTE]
-    > 高级文件共享使用预配的模型进行计费。 共享的预配大小由 `QuotaGiB` 下面指定。 有关详细信息，请参阅 [了解预配模型](understanding-billing.md#provisioned-model) 和 [Azure 文件定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+    > 高级文件共享采用预配模型计费。 共享的预配大小由下方的 `QuotaGiB` 指定。 有关详细信息，请参阅[了解预配模型](understanding-billing.md#provisioned-model)和 [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
     ```powershell
     New-AzRmStorageShare `
@@ -228,7 +228,7 @@ az storage account create \
 若要使用 Azure CLI 创建高级文件共享，请使用 [az storage share create](/cli/azure/storage/share-rm) 命令。
 
 > [!NOTE]
-> 高级文件共享使用预配的模型进行计费。 共享的预配大小由 `quota` 下面指定。 有关详细信息，请参阅 [了解预配模型](understanding-billing.md#provisioned-model) 和 [Azure 文件定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 高级文件共享采用预配模型计费。 共享的预配大小由下方的 `quota` 指定。 有关详细信息，请参阅[了解预配模型](understanding-billing.md#provisioned-model)和 [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```azurecli-interactive
 az storage share-rm create \
@@ -242,6 +242,6 @@ az storage share-rm create \
 ---
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已创建了一个 NFS 共享，若要使用它，则必须将其装载到 Linux 客户端。 有关详细信息，请参阅 [如何装载 NFS 共享](storage-files-how-to-mount-nfs-shares.md)。
+现在，你已创建了一个 NFS 共享，要使用它，必须将它装载到 Linux 客户端上。 有关详细信息，请参阅[如何装载 NFS 共享](storage-files-how-to-mount-nfs-shares.md)。
 
-如果遇到任何问题，请参阅 [排查 AZURE NFS 文件共享](storage-troubleshooting-files-nfs.md)问题。
+如果遇到任何问题，请参阅[解决 Azure NFS 文件共享问题](storage-troubleshooting-files-nfs.md)。

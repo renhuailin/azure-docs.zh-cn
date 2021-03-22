@@ -5,12 +5,12 @@ description: 了解如何创建静态 IP 地址并将其用于 Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 11/14/2020
-ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.openlocfilehash: 102df48ca22fb996e0f4d9c402b8ce8f0fa80f2c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651883"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509466"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态公共 IP 地址和 DNS 标签用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 
@@ -63,19 +63,17 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用静态 IP 地址创建服务
 
-在创建服务之前，请确保 AKS 群集使用的服务主体已将权限委托给其他资源组。 例如：
+在创建服务之前，请确保 AKS 群集使用的群集标识已将权限委托给其他资源组。 例如：
 
 ```azurecli-interactive
 az role assignment create \
-    --assignee <SP Client ID> \
+    --assignee <Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-或者，可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
-
 > [!IMPORTANT]
-> 如果自定义出站 IP，请确保群集标识有权访问出站公共 IP 和此入站公共 IP。
+> 如果自定义了出站 IP，请确保群集标识对出站公共 IP 和此入站公共 IP 均具有相应权限。
 
 若要使用静态公共 IP 地址创建 *LoadBalancer* 服务，请将 `loadBalancerIP` 属性和静态公共 IP 地址的值添加到 YAML 清单。 创建名为 `load-balancer-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公共 IP 地址。 以下示例还将注释设置为名为 *myResourceGroup* 的资源组。 提供自己的资源组名称。
 

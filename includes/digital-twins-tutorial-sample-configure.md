@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f5b332415f1abf7d4c1002bdd4f3bfcef12f1267
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff9d1f0ff75a6df6c115ecfe2b8c5f71b12049e4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023240"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036108"
 ---
 ## <a name="configure-the-sample-project"></a>配置示例项目
 
@@ -22,7 +22,7 @@ ms.locfileid: "96023240"
 
 在 Visual Studio 中，选择“SampleClientApp”>“appsettings.json”文件，在编辑窗口中将其打开。 该副本将充当预设置的 JSON 文件，其中包含运行项目所需的配置变量。
 
-在文件正文中，将 `instanceUrl` 更改为 Azure 数字孪生实例 hostName URL（以 https:// 开头，如下所示） 。
+在文件正文中，将 `instanceUrl` 更改为 Azure 数字孪生实例主机名 URL（通过在主机名前面添加“https://”，如下所示）。
 
 ```json
 {
@@ -32,7 +32,7 @@ ms.locfileid: "96023240"
 
 保存并关闭该文件。 
 
-接下来，配置 appsettings.json 文件，在生成 SampleClientApp 时将其复制到输出目录 。 为此，请右键单击 appsettings.json 文件，然后选择“属性” 。 在“属性”检查器中，将“复制到输出目录”属性的值更改为“如果较新则复制”  。
+接下来，配置 appsettings.json 文件，在生成 SampleClientApp 时将其复制到输出目录 。 为此，请右键单击 appsettings.json 文件，然后选择“属性”。 在“属性”检查器中，查找“复制到输出目录”属性。 将其值更改为“如果较新则复制”（如果尚未设置为该值）。
 
 :::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio 窗口的摘录，其中显示了“解决方案资源管理器”窗格（该窗格中突出显示了 appsettings.json）和“属性”窗格（该窗格中的“复制到输出目录”属性设置为“如果较新则复制”）" border="false" lightbox="../articles/digital-twins/media/includes/copy-config.png":::
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895933"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553232"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -34,7 +34,7 @@ ms.locfileid: "97895933"
 
 | 属性 | 说明 | 示例 |
 | --- | --- | --- |
-| key | 受错误或警告影响的文档的文档 ID。 | https： \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| key | 受错误或警告影响的文档的文档 ID。 | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | 操作名称，描述发生错误或警告的位置。 此属性由以下结构生成的：[category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
 | message | 错误或警告的概要说明。 | 由于 Web API 请求失败，无法执行技能。 |
 | 详细信息 | 可能有助于诊断问题的任何其他详细信息，例如，执行自定义技能失败时的 Web API 响应。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...rest of stack trace... |
@@ -236,6 +236,8 @@ ms.locfileid: "97895933"
 
 ## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>警告：技能输入“languageCode”具有以下语言代码“X,Y,Z”，其中至少有一个语言代码无效。
 传入到下游技能的可选 `languageCode` 输入的一个或多个值不受支持。 如果将 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) 的输出传递给后续技能，而该输出包含的语言数目超过了这些下游技能所能支持的数目，则会出现此警告。
+
+请注意，如果传递到 LanguageDetectionSkill 的 `countryHint` 输入无效，也可能会收到与此类似的警告。 如果出现这种情况，请验证你在数据源中为该输入使用的字段是否包含有效的 ISO 3166-1 alpha-2 两个字母组成的国家/地区代码。 如果一部分有效，另一部分无效，请继续阅读以下指南，但将 `languageCode` 替换为 `countryHint`，将 `defaultLanguageCode` 替换为 `defaultCountryHint` 以与你的用例一致。
 
 如果你知道数据集全都采用一种语言，则应删除 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) 和 `languageCode` 技能输入，并对该技能改用 `defaultLanguageCode` 技能参数，前提是该技能支持该语言。
 

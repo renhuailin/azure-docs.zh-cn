@@ -3,17 +3,17 @@ title: 使用 Power BI 应用分析 Azure 成本
 description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
 author: bandersmsft
 ms.author: banders
-ms.date: 1/29/2021
+ms.date: 02/19/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: d3439f5a86c445898d95191a32496b5f0c86be0b
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070151"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102045025"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 
@@ -36,24 +36,23 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 若要安装应用：
 
 1. 打开 [Azure 成本管理 Power BI 应用](https://aka.ms/costmgmt/ACMApp)。
-2. 在 Power BI 的“AppSource”页上，选择“立即获取”。
-3. 选择“继续”以同意使用条款和隐私策略。
-4. 在“安装此 Power BI 应用”框中，选择“安装”。
-5. 如果需要，请创建一个工作区并选择“继续”。
-6. 安装完成后会显示通知，指出新应用已准备就绪。
-7. 选择“转到应用”。
-8. 在“开始使用新应用”中的“连接数据”下，选择“连接”。  
-  ![开始使用新应用 - 连接](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。  
-  ![输入 EA 注册信息](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 在下一个对话框中连接到 Azure，并获取所需的数据来显示预留实例建议。 保留配置的默认值，并选择“登录”。  
-  ![屏幕截图显示了带有默认值的“连接到 Azure 成本管理应用”对话框。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
-11. 最后一个安装步骤连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 选择“登录”以便对 EA 注册进行身份验证。 此步骤还会在 Power BI 中启动数据刷新操作。  
-  ![连接到 EA 注册](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+1. 在 Power BI 的“AppSource”页上，选择“立即获取”。
+1. 选择“继续”以同意使用条款和隐私策略。
+1. 在“安装此 Power BI 应用”框中，选择“安装”。
+1. 如果需要，请创建一个工作区并选择“继续”。
+1. 安装完成后会显示通知，指出新应用已准备就绪。
+1. 选择安装的应用。
+1. 在“开始”页上，选择“连接数据”。
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="突出显示“连接数据”链接的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
+1. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="显示 EA 注册信息输入位置的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
+1. 下一个对话框将连接到 Azure 并获取数据。 保留配置的默认值，然后选择“登录并继续”。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="显示“连接到 Azure 成本管理应用”对话框及其默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
+1. 最后一个安装步骤连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 保留所有默认值。 选择“登录并继续”。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="显示“连接到 Azure 成本管理应用”对话框以及用于连接的默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. 系统会提示你使用EA 注册进行身份验证。 请使用 Power BI 进行身份验证。 完成身份验证后，将开始刷新 Power BI 数据。
     > [!NOTE]
     > 数据刷新过程可能需要相当长的时间才能完成。 具体的时长取决于指定的月数以及需要同步的数据量。
-12. 若要检查数据刷新状态，请在工作区中选择“数据集”选项卡。 查看“刷新时间”时间戳旁边的信息。 如果数据仍在更新，将会看到一个指示器，指出刷新正在进行。  
-  ![刷新数据](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 完成数据刷新后，选择 Azure 成本管理应用来查看预先创建的报表。
 
@@ -78,11 +77,11 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
 **Windows Server AHB 用量** - 该报表显示已启用 Azure 混合权益的虚拟机数目。 它还显示虚拟机使用的核心/vCPU 计数。
 
-![Azure 混合权益完整报表](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" alt-text="显示完整 Azure 混合权益报表的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png" :::
 
 该报表还会列出 **已启用** 混合权益，但使用的 vCPU 数少于 8 个的 Windows VM。 它还显示哪些 VM **未启用** 混合权益，且使用的 vCPU 数至少有 8 个。 此信息可帮助你充分利用混合权益。 将权益应用到开销最高的虚拟机能够最大程度地实现潜在成本节省。
 
-![Azure 混合权益 – 少于 8 个 vCPU 和未启用 vCPU](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" alt-text="显示 Azure 混合权益报表中“少于 8 个 vCPU 和未启用 vCPU”区域的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png" :::
 
 **RI 费用分摊** - 该报表帮助你了解在每个区域、订阅、资源组或资源的哪个位置应用预留实例 (RI) 权益以及应用的权益数量。 该报表使用分摊用量数据来显示视图。
 
@@ -105,7 +104,7 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
 若要使用该报表，请选择向下钻取筛选器。
 
-![VM RI 覆盖范围报表 – 选择向下钻取筛选器](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" alt-text="显示“VM RI 覆盖范围”报表中选择向下钻取选项的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png" :::
 
 选择要分析的区域。 然后选择实例大小灵活性组，等等。
 
@@ -118,7 +117,7 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
 
 “规范化大小”和“建议的规范化数量”值可帮助你根据实例大小灵活性组的最小大小规范化购买。 如果你打算只为实例大小灵活性组中的所有大小购买一个预留项，此信息将很有帮助。
 
-![RI 建议](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" alt-text="显示 RI 建议报表的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recommendations.png" :::
 
 **VM RI 覆盖范围(单个建议)** - 该报表在所选时间段内的按需 VM 用量与 RI VM 用量之间拆分。 它提供有关在订阅范围购买的 VM RI 的建议。
 
@@ -151,7 +150,7 @@ Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError",
 
 重新连接到成本管理，并将“范围”值设置为 `Enrollment Number`。 请勿输入组织的注册编号，而应键入与下图所示完全相同的 `Enrollment Number`。
 
-![输入 EA 注册信息](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+:::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" alt-text="显示“注册编号不可更改”默认文本的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number-troubleshoot.png" :::
 
 ### <a name="budgetamount-error"></a>BudgetAmount 错误
 
@@ -166,12 +165,11 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>原因
 
-发生此错误的原因是基础元数据出现 bug。 发生此问题的原因是，在 Azure 门户中的“成本管理”>“预算”下没有提供预算。 Bug 修复正在部署到 Power BI Desktop 和 Power BI 服务。 
+发生此错误的原因是基础元数据出现 bug。 发生此问题的原因是，在 Azure 门户中的“成本管理”>“预算”下没有提供预算。 Bug 修复正在部署到 Power BI Desktop 和 Power BI 服务。
 
 #### <a name="solution"></a>解决方案
 
 - 在修复 bug 之前，可以在计费帐户/EA 注册级别的 Azure 门户中添加测试性预算来解决问题。 测试性预算会取消阻止通过 Power BI 进行的连接。 若要详细了解如何创建预算，请参阅[教程：创建并管理 Azure 预算](tutorial-acm-create-budgets.md)。
-
 
 ### <a name="invalid-credentials-for-azureblob-error"></a>“AzureBlob 凭据无效”错误
 
@@ -183,15 +181,14 @@ Failed to update data source credentials: The credentials provided for the Azure
 
 #### <a name="cause"></a>原因
 
-如果更改 AutoFitComboMeter blob 连接的身份验证方法，则会发生此错误。
+如果更改数据源连接的身份验证方法，则会发生此错误。
 
 #### <a name="solution"></a>解决方案
 
 1. 连接到数据。
 1. 输入 EA 注册和月数后，请务必保留“匿名”作为“身份验证方法”的默认值，并保留“无”作为隐私级别设置。  
-  ![屏幕截图显示了已输入“匿名”和“无”这两个值的“连接到 Azure 成本管理应用”对话框。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" alt-text="屏幕截图显示了已输入“匿名”和“无”这两个值的“连接到 Azure 成本管理应用”对话框。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png" :::
 1. 在下一页上，设置 **OAuth2** 作为“身份验证方法”，设置“无”作为“隐私级别”。 然后登录，以便对注册进行身份验证。 此步骤还启动 Power BI 数据刷新。
-
 
 ## <a name="data-reference"></a>数据参考
 

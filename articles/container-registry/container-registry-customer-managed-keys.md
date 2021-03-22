@@ -2,18 +2,18 @@
 title: 使用客户管理的密钥加密注册表
 description: 了解 Azure 容器注册表的静态加密，以及如何使用 Azure Key Vault 中存储的客户管理的密钥来加密高级注册表
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 03/03/2021
 ms.custom: ''
-ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
-ms.translationtype: MT
+ms.openlocfilehash: aad9419fdb139ff615bfe07075be78a2ca4ee4ac
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526436"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489066"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
-当你在 Azure 容器注册表中存储映像和其他项目时，Azure 会自动使用[服务托管的密钥](../security/fundamentals/encryption-models.md)对注册表内容进行静态加密。 可以使用你在 Azure Key Vault 中创建和管理的密钥（客户管理的密钥），通过一个附加的加密层来补充默认加密。 本文将引导你使用 Azure CLI 和 Azure 门户完成这些步骤。
+当你在 Azure 容器注册表中存储映像和其他项目时，Azure 会自动使用[服务托管的密钥](../security/fundamentals/encryption-models.md)对注册表内容进行静态加密。 可以使用你在 Azure Key Vault 中创建和管理的密钥（客户管理的密钥），通过一个附加的加密层来补充默认加密。 本文将引导你使用 Azure CLI、Azure 门户或资源管理器模板完成这些步骤。
 
 使用客户管理的密钥进行服务器端加密是通过与 [Azure Key Vault](../key-vault/general/overview.md) 集成来实现的： 
 
@@ -33,8 +33,8 @@ ms.locfileid: "100526436"
 * 在使用客户管理的密钥加密的注册表中，[ACR 任务](container-registry-tasks-overview.md)的运行日志目前只会保留 24 小时。 如果需要将日志保留更长时间，请参阅有关[导出和存储任务运行日志](container-registry-tasks-logs.md#alternative-log-storage)的指南。
 
 
-> [!NOTE]
-> 如果使用具有 [Key Vault 防火墙](../key-vault/general/network-security.md)的虚拟网络限制对 Azure 密钥保管库的访问，则需要执行额外的配置步骤。 在创建注册表并启用客户管理的密钥后，使用注册表的系统分配托管标识设置对密钥的访问权限，并将注册表配置为绕过 Key Vault 防火墙。 请首先按照本文中的步骤启用使用客户管理的密钥进行的加密，然后参阅本文后面部分中有关[高级方案：Key Vault 防火墙](#advanced-scenario-key-vault-firewall)的指导。
+> [!IMPORTANT]
+> 如果你计划在拒绝公共访问且仅允许专用终结点或所选虚拟网络的现有 Azure Key Vault 中存储注册表加密密钥，则需要执行额外的配置步骤。 请参阅本文中的[高级方案：Key Vault 防火墙](#advanced-scenario-key-vault-firewall)。
 
 ## <a name="automatic-or-manual-update-of-key-versions"></a>密钥版本的自动或手动更新
 
@@ -50,7 +50,7 @@ ms.locfileid: "100526436"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用本文中 Azure CLI 的步骤，需要 Azure CLI 版本2.2.0 或更高版本，或者 Azure Cloud Shell。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+若要使用本文中所述的 Azure CLI 步骤，需要安装 Azure CLI 版本 2.2.0 或更高版本，或 Azure Cloud Shell。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="enable-customer-managed-key---cli"></a>启用客户管理的密钥 - CLI
 
@@ -97,11 +97,11 @@ identityID=$(az identity show --resource-group <resource-group-name> --name <man
 identityPrincipalID=$(az identity show --resource-group <resource-group-name> --name <managed-identity-name> --query 'principalId' --output tsv)
 ```
 
-### <a name="create-a-key-vault"></a>创建 key vault
+### <a name="create-a-key-vault"></a>创建密钥保管库
 
-使用 [az keyvault create][az-keyvault-create] 创建一个密钥保管库来存储用于加密注册表的客户管理的密钥。
+使用 [az keyvault create][az-keyvault-create] 创建一个密钥保管库来存储用于加密注册表的客户管理的密钥。 
 
-默认情况下，在新的密钥保管库中会自动启用“软删除”设置。 为了防止意外删除密钥或密钥保管库而导致数据丢失，还请启用“清除保护”设置：
+默认情况下，在新的密钥保管库中会自动启用“软删除”设置。 为了防止意外删除密钥或密钥保管库而导致数据丢失，还请启用“清除保护”设置。
 
 ```azurecli
 az keyvault create --name <key-vault-name> \
@@ -127,7 +127,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) 向标识授予访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令将密钥保管库加密服务加密角色分配给标识：
+或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令将密钥保管库加密服务加密角色分配给标识：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
@@ -229,9 +229,9 @@ az acr encryption show --name <registry-name>
   "keyVaultProperties": {
     "identity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "keyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
-    "versionedKeyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
     "keyRotationEnabled": true,
     "lastKeyRotationTimestamp": xxxxxxxx
+    "versionedKeyIdentifier": "https://myvault.vault.azure.net/keys/myresourcegroup/abcdefg123456789...",
   },
   "status": "enabled"
 }
@@ -267,12 +267,12 @@ az acr encryption show --name <registry-name>
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="创建密钥保管库访问策略":::
 
-或者，使用 [AZURE RBAC Key Vault](../key-vault/general/rbac-guide.md) 向标识授予访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
+或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
 
 1. 导航到你的密钥保管库。
 1. 选择“访问控制(IAM)” > “+添加” > “添加角色分配”。
 1. 在“添加角色分配”窗口中：
-    1. 选择 " **Key Vault 加密服务加密用户** 角色"。 
+    1. 选择“密钥保管库加密服务加密用户”角色。 
     1. 将访问权限分配给“用户分配的托管标识”。
     1. 选择用户分配的托管标识的资源名称，然后选择“保存”。
 
@@ -520,56 +520,62 @@ az keyvault delete-policy \
 
 ## <a name="advanced-scenario-key-vault-firewall"></a>高级方案：Key Vault 防火墙
 
-如果 Azure 密钥保管库部署在具有 Key Vault 防火墙的虚拟网络中，请在注册表中启用客户管理的密钥加密后执行以下附加步骤。
+你可能想要使用通过 [Key Vault 防火墙](../key-vault/general/network-security.md)配置的现有 Azure Key Vault 来存储加密密钥，该密钥保管库拒绝公共访问且仅允许专用终结点或所选虚拟网络。 
 
-1. 将注册表加密配置为使用注册表的系统分配的标识
-1. 使注册表可以绕过 Key Vault 防火墙
-1. 轮换客户管理的密钥
+对于此方案，首先使用 [Azure CLI](#enable-customer-managed-key---cli)、[门户](#enable-customer-managed-key---portal)或[模板](#enable-customer-managed-key---template)创建新的用户分配的标识、密钥保管库以及使用客户管理的密钥加密的容器注册表。 本文前面的部分介绍了详细步骤。
+   > [!NOTE]
+   > 新的密钥保管库部署在防火墙外部。 它仅临时用于存储客户管理的密钥。
 
-### <a name="configure-system-assigned-identity"></a>配置系统分配的标识
+创建注册表后，继续执行以下步骤。 下面的部分介绍了详细信息。
 
-可以配置注册表的系统分配的托管标识，以访问密钥保管库中的加密密钥。 如果你不熟悉 Azure 资源的各种托管标识，请参阅[概述](../active-directory/managed-identities-azure-resources/overview.md)。
+1. 启用注册表的系统分配的标识。
+1. 授予系统分配的标识权限来访问使用 Key Vault 防火墙限制的密钥保管库中的密钥。
+1. 确保允许受信任的服务绕过 Key Vault 防火墙。 目前，Azure 容器注册表只能在使用其系统管理的标识时绕过防火墙。 
+1. 通过在使用 Key Vault 防火墙限制的密钥保管库中选择一个客户管理的密钥来轮换该密钥。
+1. 如果不再需要在防火墙外创建的密钥保管库，则可将其删除。
 
-若要在门户中启用注册表的系统分配的标识，请执行以下操作：
+
+### <a name="step-1---enable-registrys-system-assigned-identity"></a>步骤 1 - 启用注册表的系统分配的标识
 
 1. 在门户中导航到你的注册表。
 1. 选择“设置” >  “标识”。
-1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存” 。
+1. 在“系统分配”下，将“状态”设置为“开”。 选择“保存”。
 1. 复制标识的“对象 ID”。
 
-若要授予标识对密钥保管库的访问权限，请执行以下操作：
+### <a name="step-2---grant-system-assigned-identity-access-to-your-key-vault"></a>步骤 2 - 授予系统分配的标识对密钥保管库的访问权限
 
-1. 导航到你的密钥保管库。
+1. 在门户中导航到你的密钥保管库。
 1. 选择“设置” > “访问策略”>“+添加访问策略”。
 1. 选择“密钥权限”，然后选择“获取”、“解包密钥”和“包装密钥”。
 1. 选择“选择主体”，并搜索系统分配的托管标识的对象 ID，或搜索注册表的名称。  
 1. 依次选择“添加”、“保存”。
 
-若要将注册表的加密设置更新为使用该标识，请执行以下操作：
-
-1. 在门户中导航到你的注册表。
-1. 在“设置”下，选择“加密” > “更改密钥”。
-1. 在“标识”中选择“系统分配”，然后选择“保存”。
-
-### <a name="enable-key-vault-bypass"></a>启用密钥保管库绕过
+### <a name="step-3---enable-key-vault-bypass"></a>步骤 3 - 启用密钥保管库绕过
 
 若要访问使用 Key Vault 防火墙配置的密钥保管库，注册表必须绕过防火墙。 确保将密钥保管库配置为允许任何[受信任的服务](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)进行访问。 Azure 容器注册表是受信任的服务之一。
 
 1. 在门户中导航到你的密钥保管库。
 1. 选择“设置” > “网络”。 
 1. 确认、更新或添加虚拟网络设置。 有关详细步骤，请参阅[配置 Azure Key Vault 防火墙和虚拟网络](../key-vault/general/network-security.md)。
-1. 在 " **允许 Microsoft 可信服务跳过此防火墙**" 中，选择 **"是"**。 
+1. 在“允许受信任的 Microsoft 服务绕过此防火墙”中选择“是”。 
 
-### <a name="rotate-the-customer-managed-key"></a>轮换客户管理的密钥
+### <a name="step-4---rotate-the-customer-managed-key"></a>步骤 4 - 旋转客户管理的密钥
 
-完成以上步骤后，将密钥轮换到防火墙后面的密钥保管库中的新密钥。 有关步骤，请参阅本文中的[轮换密钥](#rotate-key)。
+完成上述步骤后，轮旋到防火墙后面的密钥保管库中存储的密钥。
 
-## <a name="troubleshoot"></a>故障排除
+1. 在门户中导航到你的注册表。
+1. 在“设置”下，选择“加密” > “更改密钥”。
+1. 在“标识”中，选择“系统分配”。
+1. 选择“从密钥保管库中选择”，然后选择防火墙后面的密钥保管库的名称。
+1. 选择现有用户或“新建”。 你选择的密钥不受版本控制，可启用自动密钥轮换。
+1. 完成密钥选择，然后选择“保存”。
 
-### <a name="removing-managed-identity"></a>正在删除托管标识
+## <a name="troubleshoot"></a>疑难解答
+
+### <a name="removing-managed-identity"></a>删除托管标识
 
 
-如果你尝试从用于配置加密的注册表删除用户分配的托管标识或系统分配的托管标识，你可能会看到类似于以下内容的错误消息：
+如果你尝试从用于配置加密的注册表删除用户分配或系统分配的标识，你可能会看到类似于以下内容的错误消息：
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
@@ -579,7 +585,7 @@ Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.C
 
 **用户分配的标识**
 
-如果在用户分配的标识中发生此问题，请首先使用错误消息中显示的 GUID 重新分配该标识。 例如：
+如果用户分配的标识出现此问题，请先使用错误消息中显示的 GUID 重新分配标识。 例如：
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
@@ -589,7 +595,7 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 
 **系统分配的标识**
 
-如果在系统分配的标识中出现此问题，请 [创建 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/) ，以帮助还原标识。
+如果系统分配的标识出现此问题，请[创建 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)以帮助还原标识。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,90 +1,92 @@
 ---
-title: 在 Azure Stack Edge Pro 设备上，使用 kubectl 通过静态预配的共享部署 Kubernetes 有状态应用 |Microsoft Docs
-description: 介绍如何使用 Azure Stack Edge Pro GPU 设备上的 kubectl 通过静态预配的共享来创建和管理 Kubernetes 有状态应用程序部署。
+title: 使用 kubectl 在 Azure Stack Edge Pro 设备上通过静态预配的共享部署 Kubernetes 有状态应用 | Microsoft Docs
+description: 介绍如何使用 kubectl 在 Azure Stack Edge Pro GPU 设备上通过静态预配的共享创建和管理 Kubernetes 有状态应用程序部署。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804900"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520704"
 ---
-# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 在 Azure Stack Edge Pro 设备上使用 PersistentVolume 运行 Kubernetes 有状态应用程序
+# <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 在 Azure Stack Edge Pro 设备上运行具有 PersistentVolume 的 Kubernetes 有状态应用程序
 
-本文介绍如何使用 PersistentVolume (PV) 和部署在 Kubernetes 中部署单实例有状态应用程序。 部署使用 `kubectl` 现有 Kubernetes 群集上的命令并部署 MySQL 应用程序。 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-此过程适用于已 [在 Azure Stack Edge Pro 设备上查看 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md) 并且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)的概念的用户。
+本文介绍如何使用 PersistentVolume (PV) 和部署在 Kubernetes 中部署单实例有状态应用程序。 部署使用现有 Kubernetes 群集上的 `kubectl` 命令并部署 MySQL 应用程序。 
 
-Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MySQL 的此处详述的方式部署这些容器。 有关详细信息，请参阅 [AZURE SQL Edge](../azure-sql-edge/overview.md)。
+此过程适用于已查看 [Azure Stack Edge Pro 设备上的 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md)一文且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)概念的用户。
+
+Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并能够以此处详述的适用于 MySQL 的类似方式部署这些容器。 有关详细信息，请参阅 [Azure SQL Edge](../azure-sql-edge/overview.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-在部署有状态应用程序之前，请在你的设备和将用于访问该设备的客户端上完成以下先决条件：
+在部署有状态应用程序之前，请在设备和将用于访问该设备的客户端上满足以下先决条件：
 
 ### <a name="for-device"></a>对于设备
 
-- 你有 Azure Stack Edge Pro 设备的1个节点的登录凭据。
-    - 设备已激活。 请参阅 [激活设备](azure-stack-edge-gpu-deploy-activate.md)。
-    - 设备通过 Azure 门户配置了计算角色，并具有 Kubernetes 群集。 请参阅 [配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
+- 你有单节点 Azure Stack Edge Pro 设备的登录凭据。
+    - 设备已激活。 请参阅[激活设备](azure-stack-edge-gpu-deploy-activate.md)。
+    - 已通过 Azure 门户配置了设备的计算角色，并且设备具有 Kubernetes 群集。 请参阅[配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
-- 你具有将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
-    - 客户端正在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请参阅 [安装 Windows powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)。
+- 你有一个将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
+    - 客户端运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请转到[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
     
-    - 您也可以将任何其他客户端与 [支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) 结合使用。 本文介绍使用 Windows 客户端的过程。 
+    - 也可以使用任何其他安装了[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)的客户端。 本文介绍使用 Windows 客户端时的过程。 
     
-    - 你已完成在 [Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
-      - `userns1`通过命令创建命名空间 `New-HcsKubernetesNamespace` 。 
-      - 通过命令创建了一个用户 `user1` `New-HcsKubernetesUser` 。 
-      - 已通过命令授予对的 `user1` 访问权限 `userns1` `Grant-HcsKubernetesNamespaceAccess` 。       
-      - 已 `kubectl` 在客户端上安装，并将 `kubeconfig` 具有用户配置的文件保存到 C： \\ Users \\ &lt; &gt; \\ kube。 
+    - 你已完成[在 Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
+      - 通过 `New-HcsKubernetesNamespace` 命令创建 `userns1` 命名空间。 
+      - 通过 `New-HcsKubernetesUser` 命令创建用户 `user1`。 
+      - 通过 `Grant-HcsKubernetesNamespaceAccess` 命令授予对 `userns1` 的 `user1` 访问权限。       
+      - 在客户端上安装了 `kubectl`，并且已将具有用户配置的 `kubeconfig` 文件保存到 C:\\Users\\&lt;username&gt;\\.kube。 
     
-    - 请确保 `kubectl` 客户端版本不会从 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本中倾斜多个版本。 
+    - 确保 `kubectl` 客户端版本与 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本相差不超过一个版本。 
         - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
-        - 在 Azure Stack Edge Pro 设备的本地 UI 中，切换到 " **概述** "，并记下 "Kubernetes" 软件号码。 
-        - 请验证这两个版本是否与支持的 Kubernetes 版本中提供的映射兼容。<!-- insert link--> 
+        - 在 Azure Stack Edge Pro 设备的本地 UI 中，转到“概述”，并记下 Kubernetes 软件编号。 
+        - 从支持的 Kubernetes 版本中提供的映射中验证这两个版本的兼容性。<!-- insert link--> 
 
 
 你已准备好在 Azure Stack Edge Pro 设备上部署有状态应用程序。 
 
 ## <a name="provision-a-static-pv"></a>预配静态 PV
 
-若要以静态方式预配 PV，需要在设备上创建共享。 按照以下步骤为 SMB 共享预配 PV。 
+若要静态预配 PV，需要在设备上创建共享。 按照以下步骤针对 SMB 共享预配 PV。 
 
 > [!NOTE]
-> 本操作指南文章中使用的特定示例不适用于 NFS 共享。 通常情况下，可以在包含非数据库应用程序的 Azure Stack 边缘设备上预配 NFS 共享。
+> 本操作指南文章中使用的特定示例不适用于 NFS 共享。 通常情况下，可以在包含非数据库应用程序的 Azure Stack Edge 设备上预配 NFS 共享。
 
-1. 选择是要创建边缘共享还是边缘本地共享。 按照 [添加共享](azure-stack-edge-manage-shares.md#add-a-share) 中的说明创建共享。 请确保选中 " **使用与边缘计算的共享**" 复选框。
+1. 选择是要创建 Edge 共享还是 Edge 本地共享。 按照[添加共享](azure-stack-edge-manage-shares.md#add-a-share)中的说明创建共享。 请确保选中“将该共享用于 Edge 计算”复选框。
 
-    ![适用于 PV 的边缘本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/edge-local-share-static-provision-1.png)
+    ![PV 的 Edge 本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/edge-local-share-static-provision-1.png)
 
-    1. 如果决定使用现有共享，则需要安装共享，而不是创建新的共享。
+    1. 如果决定使用现有共享，则需要装载该共享，而不是创建新的共享。
     
-        在 Azure Stack Edge 资源的 "Azure 门户中，请参阅" **共享**"。 在现有共享列表中，选择并单击要使用的共享。
+        在 Azure Stack Edge 资源的 Azure 门户中，转到“共享”。 在现有共享列表中，选择并单击要使用的共享。
 
         ![为 PV 选择现有本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-1.png)
 
-    1. 在出现提示时选择 " **装入** 并确认装载"。  
+    1. 出现提示时，选择“装载”并确认装载。  
 
-        ![装载适用于 PV 的现有本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
+        ![为 PV 装载现有本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/mount-edge-share-2.png)
 
-1. 记下共享名。 创建此共享时，会在 Kubernetes 群集中自动创建一个永久性卷对象，该对象对应于创建的 SMB 共享。 
+1. 记下共享名。 创建此共享时，会在对应于你创建的 SMB 共享的 Kubernetes 群集中自动创建一个永久性卷对象。 
 
 ## <a name="deploy-mysql"></a>部署 MySQL
 
 现在，你将通过创建 Kubernetes 部署并将其连接到你在前面步骤中使用 PersistentVolumeClaim (PVC) 创建的 PV 来运行有状态应用程序。 
 
-`kubectl`用于创建和管理有状态应用程序部署的所有命令都需要指定与该配置关联的命名空间。 若要在 kubectl 命令中指定命名空间，请使用 `kubectl <command> -n <your-namespace>` 。
+用于创建和管理有状态应用程序部署的所有 `kubectl` 命令都需要指定与配置关联的命名空间。 若要在 kubectl 命令中指定命名空间，请使用 `kubectl <command> -n <your-namespace>`。
 
-1. 获取命名空间中 Kubernetes 群集上运行的 pod 的列表。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。
+1. 获取运行于 Kubernetes 群集上的命名空间中的 Pod 的列表。 Pod 是在 Kubernetes 群集上运行的应用程序容器或进程。
 
    ```powershell
    kubectl get pods -n <your-namespace>
@@ -98,13 +100,13 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
     C:\Users\user>
    ```
     
-   输出应说明找不到)  (的资源，因为群集上没有运行任何应用程序。
+   输出会指出，因为群集上没有运行任何应用程序，所以找不到任何资源 (Pod)。
 
-1. 你将使用以下 YAML 文件。 该 `mysql-deployment.yml` 文件描述了运行 MySQL 并引用 PVC 的部署。 文件定义了的卷装载 `/var/lib/mysql` ，然后创建了一个 PVC 来寻找 20 GB 的卷。 
+1. 你将使用以下 YAML 文件。 `mysql-deployment.yml` 文件说明运行 MySQL 并引用 PVC 的部署。 该文件定义 `/var/lib/mysql` 的卷装载，然后创建用于查找卷大小为 20 GB 的 PVC。 
 
-    在前面的步骤中创建共享时，静态预配的任何现有 PV 都满足此声明。 在设备上，将为每个共享创建一个较大的 PV 32 TB。 PV 满足 PVC 规定的要求，并且 PVC 应绑定到此 PV。
+    在前面的步骤中创建共享时，静态预配的任何现有 PV 都满足此声明。 在设备上，将为每个共享创建一个较大的 32 TB 的 PV。 PV 满足 PVC 规定的要求，并且 PVC 应绑定到此 PV。
 
-    将以下文件复制并保存 `mysql-deployment.yml` 到 Windows 客户端上用于访问 Azure Stack Edge Pro 设备的文件夹中。
+    将以下 `mysql-deployment.yml` 文件复制并保存到用于访问 Azure Stack Edge Pro 设备的 Windows 客户端上的文件夹中。
     
     ```yml
     apiVersion: v1
@@ -152,10 +154,10 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
               claimName: mysql-pv-claim
     ```
     
-2. 将保存为文件，并将其另存为 `mysql-pv.yml` 保存的同一文件夹 `mysql-deployment.yml` 。 若要使用前面使用创建的 SMB 共享 `kubectl` ，请将 `volumeName` PVC 对象中的字段设置为该共享的名称。 
+2. 将 `mysql-pv.yml` 文件复制并保存到保存 `mysql-deployment.yml` 的同一文件夹中。 若要使用前面通过 `kubectl` 创建的 SMB 共享，请将 PVC 对象中的 `volumeName` 字段设置为该共享的名称。 
 
     > [!NOTE] 
-    > 请确保 YAML 文件具有正确的缩进。 可以检查 YAML 不 [起毛](http://www.yamllint.com/) 的以验证并保存。
+    > 请确保 YAML 文件具有正确的缩进。 可以使用 [YAML lint](http://www.yamllint.com/) 进行检查以便验证并保存。
    
     ```yml
     apiVersion: v1
@@ -185,9 +187,9 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
     
     C:\Users\user>
     ```
-   记下创建的 PVC 的名称。 稍后将使用它。 
+   记下创建的 PVC 的名称。 将在后面的步骤中使用它。 
 
-4. 部署文件的内容 `mysql-deployment.yml` 。
+4. 部署 `mysql-deployment.yml` 文件的内容。
 
     `kubectl apply -f <URI path to mysql-deployment.yml file> -n <your-user-namespace>`
 
@@ -248,11 +250,11 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
     ```
     
 
-6. 列出由部署创建的 pod。
+6. 列出由部署创建的 Pod。
 
     `kubectl get pods -l <app=label> -n <your-user-namespace>`
 
-    下面是一个示例输出。
+    下面是示例输出。
 
     
     ```powershell
@@ -267,7 +269,7 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
 
     `kubectl describe pvc <your-pvc-name>`
 
-    下面是一个示例输出。
+    下面是示例输出。
 
     
     ```powershell
@@ -295,11 +297,11 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并以类似于 MyS
 ## <a name="verify-mysql-is-running"></a>验证 MySQL 是否正在运行
 
 
-若要针对运行 MySQL 的 pod 中的容器运行命令，请键入：
+若要针对运行 MySQL 的 Pod 中的容器运行命令，请键入：
 
 `kubectl exec <your-pod-with-the-app> -i -t -n <your-namespace> -- mysql`
 
-下面是一个示例输出。
+下面是示例输出。
 
 ```powershell
 C:\Users\user>kubectl exec mysql-c85f7f79c-vzz7j -i -t -n userns1 -- mysql
@@ -343,17 +345,17 @@ persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
 ```
 
-在删除 PVC 后，PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 执行以下步骤：
+由于删除了 PVC，因此 PV 不再绑定到 PVC。 由于在创建共享时预配了 PV，你将需要删除该共享。 按照以下步骤操作：
 
-1. 卸载共享。 在 Azure 门户中，请 > "共享" 中转到 **Azure Stack Edge 资源** ，并选择并单击要卸载的共享。 选择 " **卸载** "，然后确认操作。 等待共享卸载。 卸载 (会释放共享，因此 Kubernetes 群集中的关联 PersistentVolume) 。 
+1. 卸载共享。 在 Azure 门户中，转到“Azure Stack Edge 资源”>“共享”，然后选择并单击要卸载的共享。 选择“卸载”，然后确认操作。 等待卸载共享。 卸载会从 Kubernetes 群集释放共享（并因此释放关联的 PersistentVolume）。 
 
-    ![卸载本地共享以实现 PV](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/unmount-edge-local-share-1.png)
+    ![卸载 PV 的本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/unmount-edge-local-share-1.png)
 
-1. 你现在可以选择 " **删除** 并确认删除" 来删除共享。 这也会删除共享和相应的 PV。
+1. 现在可以选择“删除”，并确认删除以删除共享。 这也会删除共享以及相应的 PV。
 
-    ![删除用于 PV 的本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
+    ![删除 PV 的本地共享](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/delete-edge-local-share-1.png)
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何动态设置存储，请参阅 [在 Azure Stack Edge Pro 设备上通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)
+若要了解如何动态预配存储，请参阅[在 Azure Stack Edge Pro 设备上通过动态预配部署有状态应用程序](azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md)

@@ -1,25 +1,26 @@
 ---
 title: 为 Windows VM 启用 Azure 磁盘加密
-description: 本文提供了有关为 Windows Vm 启用 Microsoft Azure 磁盘加密的说明。
+description: 本文提供有关如何为 Windows VM 启用 Microsoft Azure 磁盘加密的说明。
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9436a9ec7db660fa2d7012df98188b96ea8ee16
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8e95f770a3335d66eae0a690e148c4d6ddc22d5c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694302"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555323"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Windows 的 [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 功能为 (vm) 的 Azure 虚拟机的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，以帮助你控制和管理磁盘加密密钥和机密。
+Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Windows 的 [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 功能为 Azure 虚拟机 (VM) 的操作系统和数据磁盘提供卷加密，并与 [Azure 密钥保管库](../../key-vault/index.yml)集成，以帮助你控制和管理磁盘加密密钥和机密。
 
-Azure 磁盘加密与虚拟机采用相同的区域弹性。 有关详细信息，请参阅 [支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
+Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关详细信息，请参阅[支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
 
 如果使用 [Azure 安全中心](../../security-center/index.yml)，当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
@@ -29,15 +30,15 @@ Azure 磁盘加密与虚拟机采用相同的区域弹性。 有关详细信息�
 > - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅[使用 Azure AD 进行的 Azure 磁盘加密（以前的版本）](disk-encryption-overview-aad.md)。 
 > - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
 
-只需几分钟即可了解适用于 Windows 的 Azure 磁盘加密的基本知识，只需使用 " [创建和加密 WINDOWS vm" Azure CLI 快速入门](disk-encryption-cli-quickstart.md) 或 [使用 Azure PowerShell 快速入门创建和加密 windows vm](disk-encryption-powershell-quickstart.md)即可。
+通过[使用 Azure CLI 创建和加密 Windows VM 快速入门](disk-encryption-cli-quickstart.md)或[使用 Azure PowerShell 创建和加密 Windows VM 快速入门](disk-encryption-powershell-quickstart.md)，只需几分钟即可了解适用于 Windows 的 Azure 磁盘加密的基本知识。
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
 ### <a name="supported-vms"></a>支持的 VM
 
-Windows VM 的大小有[多种](../sizes-general.md)。 第1代和第2代 Vm 支持 Azure 磁盘加密。 Azure 磁盘加密还可用于使用高级存储的 VM。
+Windows VM 的大小有[多种](../sizes-general.md)。 Azure 磁盘加密在第 1 代和第 2 代 VM 上受支持。 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  Azure 磁盘加密在没有 temp 磁盘 (Dv4、Dsv4、Ev4 和 Esv4) 的 VM 映像上也不可用。  请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.md)。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
+Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  Azure 磁盘加密对于没有临时磁盘（Dv4、Dsv4、Ev4 和 Esv4）的 VM 映像也不可用。  请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.md)。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -52,7 +53,7 @@ Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/de
 
 ## <a name="networking-requirements"></a>网络要求
 若要启用 Azure 磁盘加密，VM 必须符合以下网络终结点配置要求：
-  - 若要获取令牌以连接到密钥保管库，Windows VM 必须能够连接到 Azure Active Directory 终结点 \[ login.microsoftonline.com \] 。
+  - 要获取用于连接密钥保管库的令牌，Windows VM 必须能够连接到 Azure Active Directory 终结点 \[login.microsoftonline.com\]。
   - 若要将加密密钥写入密钥保管库，Windows VM 必须能够连接到密钥保管库终结点。
   - Windows VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
   -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则以允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。    
@@ -86,7 +87,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门 - 使用 Azure CLI 创建和加密 Windows VM](disk-encryption-cli-quickstart.md)
-- [快速入门-使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-powershell-quickstart.md)
+- [快速入门 - 使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-powershell-quickstart.md)
 - [Windows VM 上的 Azure 磁盘加密方案](disk-encryption-windows.md)
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started) 
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

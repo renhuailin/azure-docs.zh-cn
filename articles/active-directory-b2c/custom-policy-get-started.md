@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9612a26d7ac2e7a059655636fc1a2a7a43e3b8d7
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
-ms.translationtype: MT
+ms.openlocfilehash: 2d6c76a15ee62c26e0d0261c6b0d2d1e27443a40
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526232"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518035"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -31,10 +31,14 @@ ms.locfileid: "100526232"
 - 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，使其能够与 Azure AD B2C 通信。
 - 完成[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)中的步骤来配置 Facebook 应用程序。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
 
+> [!TIP]
+> 本文介绍了如何手动设置租户。 可以自动执行本文中的整个过程。 自动执行将部署 Azure AD B2C [SocialAndLocalAccountsWithMFA 初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，它将提供“注册”和“登录”、“密码重置”和“配置文件编辑”过程。 若要自动完成以下演练，请访问 [IEF 安装应用](https://aka.ms/iefsetup)，并按照说明操作。
+
+
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在概述页面上的“策略”下，选择“Identity Experience Framework” 。
 
@@ -111,7 +115,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 接下来，指定应将应用程序视为公共客户端：
 
 1. 在左侧菜单中的“管理”下，选择“身份验证” 。
-1. 在 " **高级设置**" 下的 " **允许公用客户端流** " 部分，将 " **启用以下移动和桌面流** " 设置为 **"是"**。 请确保已在应用程序清单中设置 "allowPublicClient": true。 
+1. 在“高级设置”下的“允许公共客户端流”部分，将“启用以下移动和桌面流”设置为“是”。 请确保已在应用程序清单中设置 "allowPublicClient": true。 
 1. 选择“保存”。
 
 现在，向你先前在 IdentityExperienceFramework 注册中公开的 API 范围授予权限：
@@ -215,4 +219,4 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。 要了解如何将 Azure AD 设置为标识提供者，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant.md)。 
 
-请访问我们的 [合作伙伴库](partner-gallery.md) ，了解有关如何使用自定义策略实现 ISV 集成的详细信息。 
+请访问我们的[合作伙伴库](partner-gallery.md)，详细了解如何使用自定义策略实现 ISV 集成。 

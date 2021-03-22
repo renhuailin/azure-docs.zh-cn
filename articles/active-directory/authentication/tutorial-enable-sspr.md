@@ -10,16 +10,16 @@ ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198483"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
-Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够更改或重置其密码，而不需要管理员或支持人员的干预。 如果用户的帐户被锁定或用户忘记了自己的密码，他们可以按照提示取消对自己的阻止，回到工作状态。 当用户无法登录到其设备或应用程序时，此功能可减少呼叫支持人员的次数，降低生产力损失。
+Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够更改或重置其密码，而不需要管理员或支持人员的干预。 如果用户的帐户被锁定或用户忘记了自己的密码，他们可以按照提示取消对自己的阻止，回到工作状态。 当用户无法登录到其设备或应用程序时，此功能可减少呼叫支持人员的次数，降低生产力损失。 下面是介绍[如何在租户中配置和启用自助式密码重置](https://www.youtube.com/watch?v=rA8TvhNcCvQ)的视频（推荐）。 我们还为 IT 管理员提供了有关如何[使用 SSPR 解决六个最常见的最终用户错误消息](https://www.youtube.com/watch?v=9RPrNVLzT8I)的视频。
 
 > [!IMPORTANT]
 > 本教程向管理员展示如何启用自助式密码重置。 如果你是已注册自助式密码重置的最终用户并且需要返回到你的帐户，请转到 https://aka.ms/sspr 。
@@ -141,7 +141,7 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何：
+在本教程中，你为选定的用户组启用了 Azure AD 自助式密码重置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为一组 Azure AD 用户启用自助式密码重置

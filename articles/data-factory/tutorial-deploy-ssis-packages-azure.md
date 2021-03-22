@@ -4,15 +4,15 @@ description: 了解如何在 Azure 数据工厂中预配 Azure-SSIS 集成运行
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
+ms.date: 02/22/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: e0b84bb65e71b023121a5deae8295ddaf8879311
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7c439d71806d2deba508ce35131f21ebfbd7a3ec
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391348"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740403"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -78,7 +78,7 @@ ms.locfileid: "100391348"
 
 ### <a name="from-the-authoring-ui"></a>使用创作 UI
 
-1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”。 然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
+1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，选择“连接”。  然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
 
    ![用于查看现有 IR 的选择](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "100391348"
 
    1. 对于“节省资金”，请选择适用于集成运行时的“Azure 混合权益”选项：“是”或“否”。 如果需要自带具有软件保障的 SQL Server 许可证，以便充分利用使用混合权益带来的成本节省，请选择“是”。 
 
-   1. 选择“**下一步**”。 
+   1. 选择“**下一页**”。 
 
 ### <a name="deployment-settings-page"></a>“部署设置”页
 
@@ -149,6 +149,12 @@ ms.locfileid: "100391348"
    1. 对于“管理员用户名”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
 
    1. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
+
+   1. 选中“结合使用双备用 Azure-SSIS Integration Runtime 对与 SSISDB 故障转移”复选框可配置双备用 Azure-SSIS IR 对，该对与 Azure SQL 数据库/托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR)。
+   
+      如果选中该复选框，请在“双备用对名称”文本框中输入名称以标识主要和辅助 Azure-SSIS IR 对。 创建主要和辅助 Azure-SSIS IR 时，需要输入相同的对名称。
+
+      有关详细信息，请参阅[配置 Azure-SSIS IR 以实现 BCDR](./configure-bcdr-azure-ssis-integration-runtime.md)。
 
    1. 对于“目录数据库服务层级”，请选择用于承载 SSISDB 的数据库服务器的服务层级。 选择“基本”、“标准”或“高级”层级，或选择弹性池名称。
 

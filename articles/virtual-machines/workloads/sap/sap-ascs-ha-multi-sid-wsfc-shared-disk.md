@@ -1,5 +1,5 @@
 ---
-title: Azure 上的 SAP ASCS/SCS 多 SID HA 与 WSFC&共享磁盘 |Microsoft Docs
+title: 使用 Azure 上的 WSFC 和共享磁盘实现 SAP ASCS/SCS 多 SID HA | Microsoft Docs
 description: 使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 206ac53088897a95983215b10e8e9affac7c6a56
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 92d881a85f5719e15db6fe24b80deed3b3d3fe35
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669807"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504433"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 
@@ -30,7 +30,7 @@ ms.locfileid: "101669807"
 
 在 SAP 部署中，必须使用内部负载均衡器为 SAP 中心服务 (ASCS/SCS) 实例创建 Windows 群集配置。
 
-本文重点介绍如何通过将附加的 SAP ASCS/SCS 群集实例安装到现有 Windows Server 故障转移)  (群集中，使用 ASCS 将其他 SAP/SCS 群集实例迁移到 SAP 多 SID 配置，并使用 SIOS 模拟共享磁盘。 完成此过程后，即已配置 SAP 多 SID 群集。
+本文重点介绍如何通过使用 SIOS 来模拟共享磁盘，在具有共享磁盘的现有 Windows Server 故障转移群集 (WSFC) 群集中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置 SAP 多 SID 群集。
 
 > [!NOTE]
 > 此功能仅在 Azure 资源管理器部署模型中可用。
@@ -43,7 +43,7 @@ ms.locfileid: "101669807"
 若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。
 
 > [!IMPORTANT]
-> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。  
+> 负载均衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果你需要为 VM 提供其他 IP 地址，请部署第二个 NIC。  
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "101669807"
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。  
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。  
 > * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。  
-> * 不支持在同一个群集中混合使用排队复制服务器1和排队复制服务器2。  
+> * 不支持在同一个群集中混合使用排队复制服务器 1 和排队复制服务器 2。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>包含共享磁盘的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -437,4 +437,4 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../availability.md

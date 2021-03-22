@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 01/22/2021
+ms.date: 03/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8c25e54143f0a0815a523bb923b7a7442de2a3d2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587857"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102485667"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -22,7 +22,7 @@ ms.locfileid: "100587857"
 > [!NOTE]
 > 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 请参阅[从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md)，以了解要求以及如何为服务器启用更新管理。
 
-若要在 Azure VM 上自动下载并安装可用的 *关键* 修补程序和 *安全* 修补程序，请查看 WINDOWS vm 的 [自动 VM 来宾修补](../../virtual-machines/windows/automatic-vm-guest-patching.md) 。
+若要在 Azure VM 上自动下载并安装可用的关键修补程序和安全修补程序 ，请查看适用于 Windows VM 的[自动 VM 来宾修补](../../virtual-machines/windows/automatic-vm-guest-patching.md)。
 
 在部署更新管理并启用计算机进行管理之前，请确保你了解以下部分中的信息。  
 
@@ -72,25 +72,25 @@ ms.locfileid: "100587857"
 > [!NOTE]
 > 仅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Standard，包括 Server Core) <br><br>Windows Server 2016 (不包括 Server Core) 的数据中心/标准<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
+|Windows Server 2019（包括 Server 核心的数据中心/标准）<br><br>Windows Server 2016（不包括 Server 核心的数据中心/标准）<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
 |CentOS 6 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
-|SUSE Linux Enterprise Server 12 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
+|SUSE Linux Enterprise Server 12、15 和 15.1 (x64)     | Linux 代理需要具有访问更新存储库的权限。 对于 SUSE 15.x，需要在计算机上安装 Python 3。      |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)      |Linux 代理需要具有访问更新存储库的权限。         |
 
 > [!NOTE]
-> 更新管理不支持对 Azure 虚拟机规模集中的所有实例安全地自动执行更新管理。 建议使用[自动 os 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)来管理规模集的 os 映像升级。
+> 更新管理不支持对 Azure 虚拟机规模集中的所有实例安全地自动执行更新管理。 建议使用[自动 OS 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)来管理规模集的 OS 映像升级。
 
 ### <a name="unsupported-operating-systems"></a>不支持的操作系统
 
 下表列出了更新管理不支持的操作系统：
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
-|Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 若要管理更新，请 [Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 适用于 Windows 10 客户端计算机的修补程序管理。 |
+|Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 的推荐方法是使用 [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 实现 Windows 10 客户端计算机修补程序管理。 |
 |Windows Server 2016 Nano Server     | 不支持。       |
 |Azure Kubernetes 服务节点 | 不支持。 使用[对 Azure Kubernetes 服务 (AKS) 中的 Linux 节点应用安全和内核更新](../../aks/node-updates-kured.md)中所述的修补过程|
 
@@ -105,7 +105,7 @@ ms.locfileid: "100587857"
 - 需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。
 - 需要 Windows PowerShell 5.1（[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）
 
-Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 windows 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 Windows Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
 可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/agents/agent-windows.md)。
 
@@ -125,9 +125,9 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 > [!NOTE]
 > 仅特定区域支持 Linux 计算机的更新评估。 请参阅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)。
 
-对于混合计算机，我们建议通过首先将计算机连接到 [启用了 Azure arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 linux 的 Log Analytics 代理，然后使用 Azure 策略将 [部署 Log Analytics 代理分配到 Linux Azure arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring) 内置策略。 或者，如果你计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用 [启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
+对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Linux 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
 
-通过 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的 Vm 将被注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI) ](../../virtual-machines/workloads/redhat/redhat-rhui.md) 。 对于任何其他 Linux 发行版，必须使用发行版支持的方法从发行版联机文件存储库对其进行更新。
+基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的 VM 注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md)。 对于任何其他 Linux 发行版，必须使用发行版支持的方法从发行版联机文件存储库对其进行更新。
 
 ## <a name="permissions"></a>权限
 
@@ -185,7 +185,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ## <a name="network-planning"></a><a name="ports"></a>网络规划
 
-查看 [Azure 自动化网络配置](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration) ，详细了解更新管理所需的端口、url 和其他网络详细信息。
+查看 [Azure 自动化网络配置](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration)，以了解有关更新管理所需的端口、URL 和其他网络的详细信息。
 
 对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果拥有本地 [Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量发送到 [WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
 
@@ -218,14 +218,14 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
 
 >[!NOTE]
->仅当在支持的 Azure 公有云区域中使用时，才可以使用适用于 Linux 计算机的更新分类。 使用以下国家/地区云区域中的更新管理时，不会分类 Linux 更新：
+>适用于 Linux 计算机的更新分类只适合在支持的 Azure 公有云区域中使用。 在以下国家/地区云区域中使用更新管理时，没有适用于 Linux 的更新分类：
 >
 >* Azure 美国政府
 >* 中国世纪互联
 >
-> 更新会在 " **其他更新** " 类别下报告，而不是进行分类。
+> 更新没有被分类，而是在“其他更新”类别下报告。
 >
-> 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 internet 访问受限于这些国家云，因此更新管理无法访问这些文件。
+> 更新管理使用受支持的分发版发布的数据，尤其是其发布的 [OVAL](https://oval.mitre.org/)（开放式漏洞与评估语言）文件。 由于 Internet 访问受到这些国家/地区云的限制，更新管理无法访问以上文件。
 
 对于 Linux，更新管理可以区分云中类别“安全性”和“其他”下的关键更新和安全更新，同时显示因云中数据扩充而产生的评估数据 。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
 
@@ -257,7 +257,7 @@ sudo yum -q --security check-update
 
 - 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
 
-- 使用 **AutomationSolution** [runbook](enable-from-runbook.md) 方法。
+- 使用 Enable-AutomationSolution [runbook](enable-from-runbook.md) 方法。
 
 - 从 Azure 门户中的“虚拟机”页为[所选 Azure VM](enable-from-vm.md) 启用。 此方案适用于 Linux 和 Windows VM。
 

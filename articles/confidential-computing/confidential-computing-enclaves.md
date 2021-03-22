@@ -1,22 +1,22 @@
 ---
 title: Azure 上的机密计算虚拟机
-description: 了解 Intel SGX 硬件，以启用机密计算工作负荷。
+description: 了解 Intel SGX 硬件，以启用机密计算工作负载。
 services: virtual-machines
 author: JenCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 9/3/2020
 ms.author: JenCook
-ms.openlocfilehash: 565f4971fffde1cbeb2234b43aaad5cce73b5404
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.openlocfilehash: 554260b2a2760380d3bb2d91ee25b4a03bf2f1ae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564372"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551362"
 ---
-# <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure 机密计算虚拟机 (Vm) 概述
+# <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Azure 机密计算虚拟机 (VM) 概述
 
 
 Azure 是在虚拟化环境中提供机密计算的第一家云提供商。 我们开发了充当硬件与应用程序之间的抽象层的虚拟机。 你可以使用冗余和可用性选项大规模运行工作负荷。  
@@ -31,22 +31,22 @@ Azure 机密计算基础结构目前由虚拟机 (VM) 的专用 SKU 组成。 �
 
 当前，Azure 提供了基于 Intel SGX 技术的 [DCsv2 系列](../virtual-machines/dcv2-series.md)来用于创建基于硬件的领地。 你可以构建安全的基于领地的应用程序以在 DCsv2 系列 VM 中运行，从而保护使用中的应用程序数据和代码。 
 
-[阅读](virtual-machine-solutions.md) 有关部署 Azure 机密计算虚拟机的详细信息，并提供基于硬件的信任 enclaves。
+[详细了解](virtual-machine-solutions.md)如何使用基于硬件的受信任的 enclave 部署 Azure 机密计算虚拟机。
 
 ## <a name="enclaves"></a>指定位址空间
 
-Enclaves 是硬件处理器和内存中的安全部分。 即使是使用调试器，也无法查看领地内部的数据或代码。 如果不受信任的代码尝试修改领地内存中的内容，则会禁用该环境并拒绝操作。
+enclave 是硬件处理器和内存的受保护部分。 即使是使用调试器，也无法查看领地内部的数据或代码。 如果不受信任的代码尝试修改领地内存中的内容，则会禁用该环境并拒绝操作。
 
 从根本上讲，可将领地视为一个安全盒。 加密的代码和数据将放入该盒子中。 在盒子的外部看不到任何内容。 你为领地指定一个用于解密数据的密钥，然后，在从领地发出数据之前，会再次对数据进行处理和加密。
 
-每个 enclave 都有一组的加密页面缓存 (EPC) ，确定每个 enclave 可以容纳的内存量。 较大的 DCsv2 虚拟机具有更多的 EPC 内存。 对于每个 VM 大小的最大 EPC，请阅读 [DCsv2 规范](../virtual-machines/dcv2-series.md) 页。
+每个 enclave 都有设定大小的加密页面缓存 (EPC)，用于确定每个 enclave 可以容纳的内存量。 较大的 DCsv2 虚拟机具有更多 EPC 内存。 有关每个 VM 大小的最大 EPC，请阅读 [DCsv2 规范](../virtual-machines/dcv2-series.md)页。
 
 
 
-### <a name="developing-applications-to-run-inside-enclaves"></a>开发要在 enclaves 内运行的应用程序
+### <a name="developing-applications-to-run-inside-enclaves"></a>开发要在 enclave 内运行的应用程序
 开发应用程序时，可以使用[软件工具](application-development.md)来屏蔽领地内部的代码和数据部分。 这些工具确保受信任环境外部的任何人都不能查看或修改你的代码和数据。 
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关在 Azure 机密计算虚拟机上部署解决方案的[最佳实践](virtual-machine-solutions.md)。
-- [部署 DCsv2-Series 虚拟机](quick-create-portal.md)
-- 使用 OE SDK[开发 enclave 感知应用程序](application-development.md)
+- 阅读有关在 Azure 机密计算虚拟机上部署解决方案的[最佳做法](virtual-machine-solutions.md)。
+- [部署 DCsv2 系列虚拟机](quick-create-portal.md)
+- 使用 OE SDK [开发 enclave 感知应用程序](application-development.md)

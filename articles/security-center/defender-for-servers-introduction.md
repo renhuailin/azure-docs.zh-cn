@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 36c32c4eefdaa1c7604f2b0f19e98cf6a6d4310d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797727"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096524"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>适用于服务器的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "98797727"
 
 适用于服务器的 Azure Defender 提供的威胁检测和保护功能包括：
 
-- **用于终结点的 Microsoft Defender 的集成许可证（仅限 Windows）** - 适用于服务器的 Azure Defender 包括 [用于终结点的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 两者共同提供全面的终结点检测和响应 (EDR) 功能。 [了解详细信息](security-center-wdatp.md)。
+- **用于终结点的 Microsoft Defender 的集成许可证（仅限 Windows）** - 适用于服务器的 Azure Defender 包括 [用于终结点的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 两者共同提供全面的终结点检测和响应 (EDR) 功能。 有关详细信息，请参阅[保护终结点](security-center-wdatp.md)。
 
     用于终结点的 Defender 在检测到威胁时会触发警报。 警报在安全中心显示。 在安全中心，还可以透视用于终结点的 Defender 控制台，并执行详细调查来发现攻击范围。 了解有关用于终结点的 Microsoft Defender 的详细信息。
 
@@ -36,25 +36,25 @@ ms.locfileid: "98797727"
 
 - **VM 漏洞评估扫描** - Azure 安全中心随附的漏洞扫描程序由 Qualys 提供支持。 
 
-    Qualys 的扫描程序是一种用于实时识别 Azure 虚拟机中的漏洞的领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 [了解详细信息](deploy-vulnerability-assessment-vm.md)。
+    Qualys 的扫描程序是一种用于实时识别 Azure 虚拟机和混合虚拟机中漏洞的领先工具。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关详细信息，请参阅[适用于 Azure 虚拟机和混合虚拟机的 Azure Defender 集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
 
 - **实时 (JIT) 虚拟机 (VM) 访问** - 威胁制造者会主动搜寻设有开放管理端口（如 RDP 或 SSH）的可访问计算机。 你的所有虚拟机都是潜在的攻击目标。 VM 在被成功入侵后将会用作进一步攻击环境中资源的入口点。
 
-    启用适用于服务器的 Azure Defender 时，可以使用实时 VM 访问功能来锁定发往 VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 [了解详细信息](just-in-time-explained.md)。
+    启用适用于服务器的 Azure Defender 时，可以使用实时 VM 访问功能来锁定发往 VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 有关详细信息，请参阅[了解实时 VM 访问](just-in-time-explained.md)。
 
 - **文件完整性监视 (FIM)** - 文件完整性监视 (FIM) 也称为更改监视，它可以检查操作系统、应用程序软件和其他组件的文件和注册表，确定它们是否发生了可能表示遭受攻击的更改。 将使用比较方法来确定当前文件状态是否不同于上次扫描该文件时的状态。 可以利用这种比较来确定文件是否发生了有效或可疑的修改。
 
-    启用适用于服务器的 Azure Defender 时，可以使用 FIM 来验证 Windows 文件、Windows 注册表和 Linux 文件的完整性。 [了解详细信息](security-center-file-integrity-monitoring.md)。
+    启用适用于服务器的 Azure Defender 时，可以使用 FIM 来验证 Windows 文件、Windows 注册表和 Linux 文件的完整性。 有关详细信息，请参阅 [Azure 安全中心内的文件完整性监视](security-center-file-integrity-monitoring.md)。
 
 - **自适应应用程序控制 (AAC)** - 自适应应用程序控制是一种智能和自动化的解决方案，用于为计算机定义已知安全的应用程序的允许列表。
 
-    当启用并配置了自适应应用程序控件后，如果有任何程序运行，而该程序不是你定义的安全应用程序，你会收到安全警报。 [了解详细信息](security-center-adaptive-application.md)。
+    当启用并配置了自适应应用程序控件后，如果有任何程序运行，而该程序不是你定义的安全应用程序，你会收到安全警报。 有关详细信息，请参阅[使用自适应应用程序控制来减少计算机的攻击面](security-center-adaptive-application.md)。
 
 - **自适应网络强化 (ANH)** - 应用网络安全组 (NSG) 来筛选往返资源的流量，改善网络安全状况。 但是，仍然可能存在一些这样的情况：通过 NSG 流动的实际流量是所定义 NSG 规则的子集。 在这些情况下，可以根据实际流量模式强化 NSG 规则，从而进一步改善安全状况。
 
-    自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。 [了解详细信息](security-center-adaptive-network-hardening.md)。
+    自适应网络强化为进一步强化 NSG 规则提供了建议。 它使用机器学习算法，这种算法会将实际流量、已知受信任的配置、威胁情报和其他泄露标志都考虑在内，然后提供仅允许来自特定 IP/端口元组的流量的建议。 有关详细信息，请参阅[通过自适应网络强化改善网络安全状况](security-center-adaptive-network-hardening.md)。
 
-- **Docker 主机强化** - Azure 安全中心会标识 IaaS Linux VM 上或运行 Docker 容器的其他 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 Internet 安全中心 (CIS) 的 Docker 基准进行比较。 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 [了解详细信息](harden-docker-hosts.md)。
+- **Docker 主机强化** - Azure 安全中心会标识 IaaS Linux VM 上或运行 Docker 容器的其他 Linux 计算机上承载的非托管容器。 安全中心会持续评估这些容器的配置。 然后，它会将其与 Internet 安全中心 (CIS) 的 Docker 基准进行比较。 安全中心包含 CIS 的 Docker 基准的完整规则集，并会在容器不符合控件标准的情况下发出警报。 有关详细信息，请参阅[强化 Docker 主机](harden-docker-hosts.md)。
 
 - **无文件攻击检测（仅限 Windows）** - 无文件攻击会试图通过将恶意有效负载注入内存中来避免被基于磁盘的扫描技术检测到。 之后，攻击者的有效负载会持久保存在遭到入侵的进程的内存中，执行各种恶意活动。
 
@@ -97,4 +97,4 @@ ms.locfileid: "98797727"
 - 无论警报是由安全中心生成，还是由安全中心从其他安全产品接收，你都可以导出该警报。 若要将警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
 
 - > [!div class="nextstepaction"]
-    > [启用 Azure Defender](security-center-pricing.md#enable-azure-defender)
+    > [启用 Azure Defender](enable-azure-defender.md)

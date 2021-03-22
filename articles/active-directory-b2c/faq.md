@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660278"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517984"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题 (FAQ)
 
@@ -29,9 +29,9 @@ ms.locfileid: "98660278"
 
 Azure AD 和 Azure AD B2C 是独立的产品/服务，不能在同一租户中共存。 Azure AD 租户表示组织。 Azure AD B2C 租户表示信赖方应用使用的标识集合。 通过在“Azure AD B2C”>“标识提供者”下添加“新的 OpenID Connect 提供程序”，或者通过使用自定义策略，Azure AD B2C 可以联合 Azure AD，以便对组织中的员工进行身份验证。 
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>能否使用 Azure AD B2C 向 Microsoft 365 提供社交登录 (Facebook 和 Google +) ？
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>我可以使用 Azure AD B2C 提供 Microsoft 365 的社交登录（Facebook 和 Google+）吗？
 
-Azure AD B2C 不能用于对 Microsoft 365 的用户进行身份验证。 Azure AD 是 Microsoft 的解决方案，用于管理员工对 SaaS 应用的访问权限，并且它具有旨在实现此目的的功能，如许可和条件访问。 Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。 当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
+Azure AD B2C 不用于 Microsoft 365 用户的身份验证。 Azure AD 是 Microsoft 针对管理员工对 SaaS 应用程序的访问权限的解决方案，它具有为此目的而设计的许可和条件访问等功能。 Azure AD B2C 提供用于生成 Web 和移动应用程序的标识和访问管理平台。 当 Azure AD B2C 配置为联合 Azure AD 租户时，Azure AD 租户将管理员工对依赖 Azure AD B2C 的应用程序的访问权限。
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>什么是 Azure AD B2C 中的本地帐户？ 它们与 Azure AD 中的工作或学校帐户有何不同？
 
@@ -43,7 +43,7 @@ Azure AD B2C 不能用于对 Microsoft 365 的用户进行身份验证。 Azure 
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>现在支持哪些社交标识提供者？ 计划在未来支持哪些？
 
-目前，我们支持多个社交标识提供者，包括 Amazon、Facebook、GitHub (预览版) 、Google、LinkedIn、Microsoft 帐户 (MSA) 、QQ (预览版) 、Twitter、WeChat (预览版) 和 Weibo (预览版) 。 我们会根据客户需求来评估是否增加对其他常见社交标识提供者的支持。
+目前，我们支持多个社交标识提供者，包括 Amazon、Facebook、GitHub（预览版）、Google、LinkedIn、Microsoft 帐户 (MSA)、QQ（预览版）、Twitter、微信（预览版）和微博（预览版）。 我们会根据客户需求来评估是否增加对其他常见社交标识提供者的支持。
 
 Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义策略允许你为支持 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 或 SAML 的任何标识提供者创建自己的策略。 查看我们的[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)，开始使用自定义策略。
 
@@ -77,12 +77,15 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 电子邮件签名包含首次创建 Azure AD B2C 租户时提供的 Azure AD B2C 租户名称。 可以使用以下说明更改名称：
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
-1. 打开 " **Azure Active Directory** " 边栏选项卡。
+1. 打开“Azure Active Directory”边栏选项卡。
 1. 单击“属性”选项卡。
 1. 更改“名称”字段。
 1. 单击页顶部的“保存”。 
 
-目前没有办法更改电子邮件中的“发件人:”字段。
+目前不能更改电子邮件的“发件人:”字段。
+
+> [!TIP]
+> 通过 Azure AD B2C [自定义策略](custom-policy-overview.md)，你可以自定义 Azure AD B2C 发送给用户的电子邮件，包括电子邮件的“发件人:”字段。 自定义电子邮件验证要求使用第三方电子邮件提供程序，如 [Mailjet](custom-email-mailjet.md)、[SendGrid](custom-email-sendgrid.md) 或 [SparkPost](https://sparkpost.com)。
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>如何将我现有的用户名、密码和配置文件从数据库迁移到 Azure AD B2C？
 
@@ -126,9 +129,9 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 可以，请参阅[语言自定义](language-customization.md)。 我们提供 36 种语言的翻译版本，并且你可以根据需要替代任何字符串。
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，是否可以将 URL 从 contoso.b2clogin.com 更改为 login.contoso.com？
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>我可以在 Azure AD B2C 提供的注册和登录页面上使用自己的 URL 吗？ 例如，可以将 URL 从 contoso.b2clogin.com 更改为 login.contoso.com 吗？
 
-目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。 但对于 b2clogin.com，我们提供了 [中性顶级域](b2clogin.md)，因此可以在不提及 Microsoft 的情况下实现外部外观。
+目前不可以。 该功能在我们的计划之中。 在 Azure 门户上的“域”选项卡中验证域并不能实现此目标。 但是，通过 b2clogin.com，我们提供了[中立顶级域](b2clogin.md)，因此可以在不提及 Microsoft 的情况下实现外部外观。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>如何删除 Azure AD B2C 租户？
 
@@ -138,17 +141,17 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
+1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 使用在注册 Azure 时使用的同一个工作或学校帐户，或同一个 Microsoft 帐户。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 删除 Azure AD B2C 租户中的所有 **用户流(策略)** 。
+1. 删除 Azure AD B2C 租户中的所有“标识提供者”。
 1. 选择“应用注册”，然后选择“所有应用程序”选项卡。 
 1. 删除已注册的所有应用程序。
 1. 删除 **b2c-extensions-app**。
 1. 在“管理”下，选择“用户” 。
 1. 依次选择每个用户（不包括你当前作为用户登录的订阅管理员用户）。 选择页面底部的“删除”，并在出现提示时选择“是”。
 1. 在左侧菜单中，选择“Azure Active Directory”。
-1. 在“管理”下，选择“用户设置” 。
 1. 在“管理”下，选择“属性” 
 1. 在“Azure 资源的访问管理”下，选择“是”，然后选择“保存”。
 1. 从 Azure 门户注销，然后重新登录以刷新你的访问权限。
@@ -157,7 +160,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
-1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
+1. 以订阅管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 使用在注册 Azure 时使用的同一个工作或学校帐户，或同一个 Microsoft 帐户。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 删除 Azure AD B2C 租户中的所有 **用户流(策略)** 。

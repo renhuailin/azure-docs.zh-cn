@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 027d1bf005ac052bf48e2c0aa3a4a71fc29f36f2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647432"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175424"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -40,7 +40,8 @@ Microsoft 标识平台仅对已注册的应用程序执行标识和访问管理 
 1. 如果你有权访问多个租户，请在顶部菜单中，使用“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 选择要在其中注册应用程序的租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
-1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称。 稍后可对其进行更改。
+1. 输入应用程序的显示名称。 应用程序的用户在使用应用时（例如，在登录过程中）可能会看到显示名称。
+    你可以随时更改显示名称，多个应用注册可共享同一名称。 应用注册自动生成的应用程序（客户端）ID（而不是其显示名称）在标识平台中唯一地标识应用。
 1. 指定可使用该应用程序的人员，这有时称为“登录访问者”。
 
     | 支持的帐户类型 | 说明 |

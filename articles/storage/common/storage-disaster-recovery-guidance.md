@@ -10,20 +10,20 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737641"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506695"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>灾难恢复和存储帐户故障转移
 
-Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果你的应用程序需要复原，Microsoft 建议使用异地冗余存储，以便将你的数据复制到第二个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。
+Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果应用程序需要复原能力，Microsoft 建议使用异地冗余存储，以便将数据复制到另一个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。
 
 Azure 存储支持异地冗余存储帐户的故障转移。 通过帐户故障转移，可以在主终结点不可用时为存储帐户启动故障转移过程。 故障转移将辅助终结点更新为，存储帐户的主终结点。 在故障转移完成后，客户端便可以开始对新的主终结点执行写入操作。
 
-帐户故障转移适用于常规用途 v1、常规用途 v2 以及使用 Azure 资源管理器部署的 Blob 存储帐户类型。 所有公共区域都支持帐户故障转移，但目前在主权或国内云中不可用。
+帐户故障转移适用于常规用途 v1、常规用途 v2 以及使用 Azure 资源管理器部署的 Blob 存储帐户类型。 帐户故障转移在所有公共区域都受支持，但目前不可用于主权云或国家/地区云。
 
 本文介绍了帐户故障转移所涉及的概念和过程，以及如何让存储帐户做好恢复准备，且造成的客户影响最小。 若要了解如何在 Azure 门户或 PowerShell 中启动帐户故障转移，请参阅[启动帐户故障转移](storage-initiate-account-failover.md)。
 
@@ -33,9 +33,9 @@ Azure 存储支持异地冗余存储帐户的故障转移。 通过帐户故障�
 
 Azure 存储将维护存储帐户的多个副本，以确保持续性和高可用性。 为帐户选择哪个冗余选项取决于所需的复原能力水平。 为了防止区域中断，请为你的帐户配置异地冗余存储，无论是否选择从次要区域进行读取访问：  
 
-**异地冗余存储 (GRS) 或地域冗余存储 (GZRS)** 以两个地理区域（至少介于数百英里之间）异步复制数据。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
+异地冗余存储 (GRS) 或异地区域冗余存储 (GZRS)：在至少相距数百英里的两个地理区域中异步复制数据。 如果主要区域遭遇服务中断，次要区域便会成为数据的冗余源。 可以通过启动故障转移，将辅助终结点转换为主终结点。
 
-**读取访问地域冗余存储 (ra-GRS) 或读取访问地域冗余存储 (GZRS)** 提供异地冗余存储，具有对辅助终结点的读取访问权限。 如果主终结点发生中断，配置为对辅助终结点进行读取访问并设计为高度可用的应用程序可以继续从辅助终结点读取数据。 Microsoft 建议 GZRS 以实现应用程序的最高可用性和持久性。
+读取访问异地冗余存储 (RA-GRS) 或读取访问异地区域冗余存储 (RA-GZRS)：为异地冗余存储提供附加优势，即对辅助终结点的读取访问权限。 如果主终结点发生中断，配置为对辅助终结点进行读取访问并设计为高度可用的应用程序可以继续从辅助终结点读取数据。 Microsoft 建议使用 RA-GZRS 来实现应用程序的最大可用性和持续性。
 
 有关 Azure 存储中冗余的详细信息，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 
@@ -55,7 +55,7 @@ Azure 存储将维护存储帐户的多个副本，以确保持续性和高可�
 
 - **磁盘：** 利用 [Azure 备份](https://azure.microsoft.com/services/backup/)备份 Azure 虚拟机使用的 VM 磁盘。 还建议在发生区域灾难时使用 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 保护 VM。
 - **块 blob：** 启用 [软删除](../blobs/soft-delete-blob-overview.md)以防发生对象级删除和覆盖，或使用 [AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure 数据移动库](storage-use-data-movement-library.md)将块 blob 复制到其他区域中的另一个存储帐户内。
-- **文件：** 使用 [Azure 备份](../../backup/azure-file-share-backup-overview.md) 来备份文件共享。 同时启用 [软删除](../files/storage-files-prevent-file-share-deletion.md) ，以防止意外删除文件共享。 如果 GRS 不可用，请使用 [AzCopy](./storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到不同区域中的其他存储帐户。
+- 文件：使用 [Azure 备份](../../backup/azure-file-share-backup-overview.md)来备份文件共享。 同时启用[软删除](../files/storage-files-prevent-file-share-deletion.md)，以防止意外删除文件共享。 对于 GRS 不可用时的异地冗余，请使用 [AzCopy](./storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/) 将文件复制到不同区域中的其他存储帐户。
 - **表：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 将表数据导出到其他区域中的另一个存储帐户内。
 
 ## <a name="track-outages"></a>跟踪服务中断
@@ -132,7 +132,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ### <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议特定于 Azure 中的虚拟机的以下 [高可用性](../../virtual-machines/manage-availability.md) 和 [灾难恢复](../../virtual-machines/backup-recovery.md) 指南。
+Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 如果主要区域不可用且你故障转移到次要区域，那么就需要在故障转移完成后重新创建所有 VM。 此外，还可能会丢失与帐户故障转移相关联的数据。 Microsoft 建议使用以下特定于 Azure 中虚拟机的[高可用性](../../virtual-machines/availability.md)和[灾难恢复](../../virtual-machines/backup-recovery.md)指南。
 
 ### <a name="azure-unmanaged-disks"></a>Azure 非托管磁盘
 
@@ -169,7 +169,7 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 
 ## <a name="microsoft-managed-failover"></a>Microsoft 托管的故障转移
 
-在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。 在 Microsoft 托管的故障转移完成之前，你对存储帐户不拥有写入访问权限。 如果你的存储帐户已配置为 GRS 或 GZRS，则你的应用程序可以从次要区域读取。
+在由于重大灾难而导致区域丢失的极端情况下，Microsoft 可能会启动区域故障转移。 在此情况下，不需要采取任何操作。 在 Microsoft 托管的故障转移完成之前，你对存储帐户不拥有写入访问权限。 如果存储帐户已配置 RA-GRS 或 RA-GZRS，应用程序可以从次要区域读取数据。
 
 ## <a name="see-also"></a>另请参阅
 

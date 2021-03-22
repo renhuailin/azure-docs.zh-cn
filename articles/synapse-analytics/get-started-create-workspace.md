@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 94d069a283249f2880743ba911c32bf3821d28c8
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209179"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102171477"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -27,15 +27,21 @@ ms.locfileid: "98209179"
 
 ## <a name="create-a-synapse-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Synapse 工作区
 
-1. 打开 [Azure 门户](https://portal.azure.com)，然后在顶部搜索“Synapse”。
+1. 打开 [Azure 门户](https://portal.azure.com)，在搜索栏中输入“Synapse”（不要点击 Enter）。
 1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics” 。
 1. 选择“添加”以创建工作区。
-1. 在“项目详细信息”下的“基本信息”选项卡中，输入首选的“订阅”、“资源组”和“区域”，然后选择工作区名称   。 在本教程中，我们将使用 myworkspace。
-1. 对于“选择 Data Lake Storage Gen 2”，单击“从订阅”按钮 。
-1. 对于“帐户名称”，单击“新建”，然后将新存储帐户命名为 contosolake 或类似名称，因为此名称必须是唯一的  。
-1. 对于“文件系统名称”，单击“新建”，然后将其命名为 users  。 这将创建一个名为 users 的存储容器
-1. 工作区将使用此存储帐户作为 Spark 表和 Spark 应用程序日志的“主要”存储帐户。
-1. 选中“在 Data Lake Storage Gen2 帐户上自行分配存储 Blob 数据参与者角色”框。 
+1. 在“基本信息”选项卡的“项目详细信息”下，填写以下字段：
+      1. **订阅** - 选取任何订阅。
+      2. **资源组** - 使用任何资源组。
+      3. **资源组** - 将此项留空。
+1. 在“基本信息”选项卡的“工作区详细信息”下，填写以下字段：
+      1. **工作区名称** - 选取任何全局唯一名称。 在本教程中，我们将使用 myworkspace。
+      1. **区域** - 选取任何区域。
+      1. **选择 Data Lake Storage Gen2**
+        1. 单击“来自订阅”对应的按钮。
+        1. 对于“帐户名称”，单击“新建”，然后将新存储帐户命名为 contosolake 或类似名称，因为此名称必须是唯一的  。
+        1. 对于“文件系统名称”，单击“新建”，然后将其命名为 users  。 这将创建一个名为“users”的存储容器。 工作区将使用此存储帐户作为 Spark 表和 Spark 应用程序日志的“主要”存储帐户。
+        1. 选中“在 Data Lake Storage Gen2 帐户上自行分配存储 Blob 数据参与者角色”框。 
 1. 选择“查看 + 创建” > “创建”。 你的工作区将在几分钟内准备就绪。
 
 > [!NOTE]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: dc277d71f8f39b342095d0ac14b592eb866984d5
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 4ef01045d1ca16d0101cdd9ccfcd118231cd28de
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100519"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456107"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -27,13 +27,13 @@ ms.locfileid: "102100519"
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
 
-否。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+不是。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
-- **Azure Defender off** –安全中心在默认工作区中启用 "SecurityCenterFree" 解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
+- 关闭 Azure Defender - 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
 
-- **Azure Defender on** –安全中心在默认工作区中启用 "安全" 解决方案。
+- 开启 Azure Defender - 安全中心在默认工作区中启用“Security”解决方案。
 
-若要根据你的选择货币和区域定价详细信息，请参阅 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
+有关所选货币以及你所在区域的定价详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 > [!NOTE]
 > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。
@@ -111,7 +111,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 1. 从安全中心的菜单中，选择“定价和设置”。
 1. 选择相关订阅。
-1. 打开“自动预配”页
+1. 打开“自动预配”页。
 1. 对于 Log Analytics 代理，选择“编辑配置”。 
 
     :::image type="content" source="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png" alt-text="使用自动部署时要使用的 Log Analytics 代理配置" lightbox="./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png":::
@@ -146,7 +146,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 安装的代理将继续向其已配置的工作区报告，此外，它还会向安全中心上配置的工作区报告（Windows 计算机支持多主页）。
 
-如果配置的工作区是 (不是安全中心的默认工作区) 的用户工作区，则你需要在其上安装 "安全" 或 "SecurityCenterFree" 解决方案，以便安全中心开始处理从 Vm 和向该工作区报告的计算机的事件。
+如果配置的工作区是一个用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装“Security”或“SecurityCenterFree”解决方案，以便安全中心开始处理向该工作区报告的 VM 和计算机中的事件。
 
 对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
 
@@ -174,7 +174,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
     :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 
-1. 从 " **自动设置** " 页中，选择 "笔" 并在 "  **安全策略-数据收集** " 页中关闭自动设置。
+1. 从“自动预配”页上，选择笔，然后在“安全策略 - 数据收集”页中关闭自动预配。
 
     :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="为 Log Analytics 代理启用自动部署":::
 
@@ -207,7 +207,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 手动安装 Log Analytics 代理扩展，使安全中心能够从 VM 收集安全数据并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
 
-可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用 "安全" 或 "SecurityCenterFree" 解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
+可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
 
 :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
 

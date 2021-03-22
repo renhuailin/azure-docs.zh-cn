@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0a2ff0f24e3fe4711e0d2f1c306ae2eaa0fda5e0
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217238"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521214"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB 附件是特殊项，它们包含对与外部 blob 或媒体文件关联的元数据的引用。
 
@@ -31,15 +31,20 @@ Azure Cosmos DB 支持两种类型的附件：
 > 
 > 建议使用 Azure Blob 存储作为专门的 blob 存储服务来存储 blob 数据，而不是使用附件。 你可以继续将与 blob 相关的元数据连同引用 URI 链接一起作为项属性存储在 Azure Cosmos DB 中。 将此数据存储在 Azure Cosmos DB 中可以查询元数据并链接到存储在 Azure Blob 存储中的 blob。
 > 
-> Microsoft 承诺在完全弃用的附件之前提供最少36个月的通知，这会在其他日期公布。
+> Microsoft 承诺在完全弃用附件之前提供最少 36 个月的通知，这将在以后公布。
 
 ## <a name="known-limitations"></a>已知的限制
 
-Azure Cosmos DB 的托管附件不同于其对标准项目的支持-它提供无限制的可伸缩性、全球分布以及与其他 Azure 服务的集成。
+Azure Cosmos DB 的托管附件不同于其对标准项的支持 - 对于标准项，它提供无限制的可伸缩性、全局分发以及与其他 Azure 服务的集成。
 
-- 所有版本的 Azure Cosmos DB Sdk 都不支持附件。
+- 并非所有版本的 Azure Cosmos DB SDK 都支持附件。
 - 每个数据库帐户的托管附件限制为 2 GB 存储。
 - 托管附件与 Azure Cosmos DB 的全局分发不兼容，它们不会跨区域复制。
+
+> [!NOTE]
+> 适用于 MongoDB 版本 3.2 的 Azure Cosmos DB API 使用 GridFS 的托管附件，并受到相同的限制。
+>
+> 我们建议使用 MongoDB GridFS 功能集的开发人员升级到适用于 MongoDB 版本 3.6 或更高版本的 Azure Cosmos DB API，它与附件分离并提供更好的体验。 此外，使用 MongoDB GridFS 功能集的开发人员还应考虑使用 Azure Blob 存储，它用于存储 Blob 内容，并提供其成本比 GridFS 更低的扩展功能。
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>将附件迁移到 Azure Blob 存储
 
@@ -162,6 +167,6 @@ namespace attachments
 ## <a name="next-steps"></a>后续步骤
 
 - 开始使用 [Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- 通过[Azure Cosmos DB 的 .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)获取有关使用附件的参考
-- 通过[Azure Cosmos DB 的 JAVA SDK v2](/java/api/com.microsoft.azure.documentdb.attachment)获取有关使用附件的参考
-- 获取有关通过[Azure Cosmos DB 的 REST API](/rest/api/cosmos-db/attachments)使用附件的参考
+- 获取通过 [Azure Cosmos DB 的 .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment) 使用附件的参考信息
+- 获取通过 [Azure Cosmos DB 的 Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment) 使用附件的参考信息
+- 获取通过 [Azure Cosmos DB 的 REST API](/rest/api/cosmos-db/attachments) 使用附件的参考信息

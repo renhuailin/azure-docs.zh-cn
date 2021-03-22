@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: c12a171faaf069cc81aa5f467642dba6616a866f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033718"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453115"
 ---
 # <a name="localization-element"></a>本地化元素
 
@@ -40,7 +40,7 @@ ms.locfileid: "102033718"
 
 **Localization** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | Enabled | 否 | 可能的值：`true` 或 `false`。 |
 
@@ -55,7 +55,7 @@ ms.locfileid: "102033718"
 
 **SupportedLanguages** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用作本地化资源默认值的语言。 |
 | MergeBehavior | 否 | 与父策略中具有相同标识符的任何 ClaimType 合并在一起的值的枚举值。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定应将现有数据集合追加到父策略中指定的集合的末尾。 `Prepend` 值指定应将现有数据集合添加到父策略中指定的集合的前面。 `ReplaceAll` 值指定应忽略父策略中定义的数据集合，改用当前策略中定义的数据。 |
@@ -72,7 +72,7 @@ ms.locfileid: "102033718"
 
 **LocalizedResources** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于唯一标识本地化资源的标识符。 |
 
@@ -95,7 +95,7 @@ ms.locfileid: "102033718"
 
 **LocalizedCollection** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 引用策略文件中的 ClaimType 元素或用户界面元素。 |
 | ElementId | 是 | 一个字符串，包含当 **ElementType** 设置为 ClaimType 时使用的 ClaimsSchema 节中已定义的声明类型的引用。 |
@@ -109,7 +109,7 @@ ms.locfileid: "102033718"
 
 **Item** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 文本 | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
 | Value | 是 | 与此选项关联的字符串声明值。 |
@@ -145,9 +145,9 @@ ms.locfileid: "102033718"
 
 **LocalizedString** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 可能的值：[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation) 或 [UxElement](#uxelement)。   | 
+| ElementType | 是 | 可能的值：[ClaimsProvider](#claimsprovider)、[ClaimType](#claimtype)、[ErrorMessage](#errormessage)、[GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)、[FormatLocalizedStringTransformationClaimType](#formatlocalizedstringtransformationclaimtype)、[Predicate](#predicate)、[InputValidation](#inputvalidation) 或 [UxElement](#uxelement)。   | 
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 |
 | StringId | 是 | 如果 **ElementType** 设置为 `ClaimType`，此元素包含对声明类型的属性的引用。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用于设置声明显示名称。 `AdminHelpText` 值用于设置声明用户的帮助文本名称。 `PatternHelpText` 值用于设置声明模式帮助文本。 如果 **ElementType** 设置为 `UxElement`，此元素包含对用户界面元素的属性的引用。 如果 **ElementType** 设置为 `ErrorMessage`，此元素指定错误消息的标识符。 有关 `UxElement` 标识符的完整列表，请参阅[本地化字符串 ID](localization-string-ids.md)。|
 
@@ -184,7 +184,7 @@ ClaimsProvider 值用于本地化某个声明提供程序的显示名称。
 
 ```
 
-下面的示例演示如何本地化声明提供程序的显示名称。
+以下示例演示如何本地化声明提供程序的显示名称。
 
 ```xml
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
@@ -232,6 +232,31 @@ ErrorMessage 值用于本地化某个系统错误消息。
 
 ```xml
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="formatlocalizedstringtransformationclaimtype"></a>FormatLocalizedStringTransformationClaimType
+
+FormatLocalizedStringTransformationClaimType 值用于将声明格式化为本地化字符串。 有关详细信息，请参阅 [FormatLocalizedString 声明转换](string-transformations.md#formatlocalizedstring)
+
+
+```xml
+<ClaimsTransformation Id="SetResponseMessageForEmailAlreadyExists" TransformationMethod="FormatLocalizedString">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="stringFormatId" DataType="string" Value="ResponseMessge_EmailExists" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+以下示例演示如何本地化 FormatLocalizedStringTransformationClaimType 声明转换的字符串格式。
+
+```xml
+<LocalizedString ElementType="FormatLocalizedStringTransformationClaimType" StringId="ResponseMessge_EmailExists">The email '{0}' is already an account in this organization. Click Next to sign in with that account.</LocalizedString>
 ```
 
 ### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
@@ -336,7 +361,7 @@ UxElement 值用于本地化某个用户界面元素。 以下示例演示如何
 
 ### <a name="displaycontrol"></a>DisplayControl
 
-DisplayControl 值用于本地化某个[显示控件](display-controls.md)用户界面元素。 启用后，显示控件 localizedStrings 在某些 _ *UxElement** StringIDs 上使用 ***优先级** _，如 **ver_but_send**、 **ver_but_edit**、 **ver_but_resend** 和 **ver_but_verify**。 以下示例演示如何本地化发送和验证按钮。 
+DisplayControl 值用于本地化某个[显示控件](display-controls.md)用户界面元素。 启用后，显示控件 localizedStrings 优先于*_一些 UxElement_* StringID，如 ver_but_send、ver_but_edit、ver_but_resend 和 ver_but_verify。 以下示例演示如何本地化发送和验证按钮。 
 
 ```xml
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_send_code">Send verification code</LocalizedString>

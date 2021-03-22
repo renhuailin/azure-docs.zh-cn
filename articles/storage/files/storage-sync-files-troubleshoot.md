@@ -1,18 +1,18 @@
 ---
 title: 对 Azure 文件同步进行故障排除 | Microsoft Docs
-description: 排查 Azure 文件同步上部署中的常见问题，你可以使用该问题将 Windows Server 转换为 Azure 文件共享的快速缓存。
+description: 排查 Azure 文件同步部署中的常见问题，此服务可用于将 Windows Server 转换为 Azure 文件共享的快速缓存。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
-ms.translationtype: MT
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820698"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453268"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -47,16 +47,16 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 driveletter:\ 不可访问。  
 参数不正确。
 
-若要解决此问题，请安装 [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) 并重新启动服务器。 如果此更新将不会安装，因为已安装了更高版本的更新，请跳到 Windows 更新，安装 Windows Server 2012 R2 的最新更新，然后重新启动服务器。
+要解决此问题，请安装 [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014)，然后重启服务器。 如果由于已安装更高版本的更新而无法安装此更新，请转到 Windows 更新，安装Windows Server 2012 R2 的最新更新，然后重启服务器。
 
 <a id="server-registration-missing-subscriptions"></a>**服务器注册未列出所有 Azure 订阅**  
 使用 ServerRegistration.exe 注册服务器时，如果单击 Azure 订阅下拉列表，订阅将丢失。
 
-之所以出现此问题，是因为 ServerRegistration.exe 将仅检索前 5 Azure AD 租户的订阅。 
+之所以出现此问题，是因为 ServerRegistration.exe 将仅检索前 5 个 Azure AD 租户的订阅。 
 
-若要增加服务器上的服务器注册租户限制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 中创建一个名为 ServerRegistrationTenantLimit 的 DWORD 值，其值大于5。
+要增加服务器上的服务器注册租户限制值，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 下创建一个名为 ServerRegistrationTenantLimit 的 DWORD 值，它的值大于 5。
 
-还可以通过使用以下 PowerShell 命令注册服务器来解决此问题：
+解决此问题的另一个方法是，使用以下 PowerShell 命令注册服务器：
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -74,8 +74,8 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<
 
 1. 在提升的命令提示符处键入“powershell”，然后按 Enter。
 2. 按照文档说明安装最新的 Az 或 AzureRM 模块：
-    - [Az 模块（需要 .NET 4.7.2）](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [AzureRM 模块]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [Az 模块（需要 .NET 4.7.2）](/powershell/azure/install-az-ps)
+    - [AzureRM 模块](https://go.microsoft.com/fwlink/?linkid=856959)
 3. 运行 ServerRegistration.exe 并完成向导中的操作，将服务器注册到存储同步服务。
 
 <a id="server-already-registered"></a>**服务器注册显示以下消息：“此服务器已注册”** 
@@ -201,15 +201,15 @@ Set-AzStorageSyncServerEndpoint `
 - 如果记录“GetNextJob 已完成，状态为：0”，则服务器可以与 Azure 文件同步服务通信。 
     - 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重启服务器无法解决此问题，请升级到最新的 Azure 文件同步[代理版本](./storage-files-release-notes.md)。 
 
-- 如果 **GetNextJob 已完成，状态为：-2134347756** ，则服务器无法与 Azure 文件同步服务通信，因为防火墙、代理或 TLS 密码套件顺序配置。 
+- 如果记录“GetNextJob 已完成，状态为：-2134347756”，则服务器由于防火墙、代理或 TLS 密码套件顺序配置的限制而无法与 Azure 文件同步服务通信。 
     - 如果服务器位于防火墙后面，请验证端口 443 是否允许出站。 如果防火墙限制到特定域的流量，请确认可以访问防火墙[文档](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的域。
     - 如果服务器位于代理后面，请按照代理[文档](./storage-sync-files-firewall-and-proxy.md#proxy)中的步骤配置适用于整个计算机或特定于应用的代理设置。
     - 使用 Test-StorageSyncNetworkConnectivity cmdlet 检查服务终结点的网络连接情况。 若要了解详细信息，请参阅[测试服务终结点的网络连接情况](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints)。
     - 如果在服务器上配置了 TLS 密码套件顺序，则可以使用组策略或 TLS cmdlet 来添加密码套件：
-        - 若要使用组策略，请参阅 [使用组策略配置 TLS 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
-        - 若要使用 TLS cmdlet，请参阅 [使用 Tls PowerShell Cmdlet 配置 Tls 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
+        - 若要使用组策略，请参阅[使用组策略配置 TLS 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
+        - 若要使用 TLS cmdlet，请参阅[使用 TLS PowerShell Cmdlet 配置 TLS 密码套件顺序](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
     
-        Azure 文件同步当前支持用于 TLS 1.2 协议的以下密码套件：  
+        Azure 文件同步目前支持用于 TLS 1.2 协议的以下密码套件：  
         - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
         - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
@@ -356,9 +356,9 @@ PerItemErrorCount: 1006.
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 由于已达到冲突文件最大数量，文件无法同步。 Azure 文件同步支持每文件 100 个冲突文件。 若要了解有关文件冲突的详细信息，请参阅 Azure 文件同步[常见问题解答](./storage-files-faq.md#afs-conflict-resolution)。 | 若要解决此问题，请减少冲突文件数。 冲突文件数小于 100 后，文件将同步。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果 **FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符而导致的每项同步错误 (错误代码0x8007007b 或 0x80c80255) ，则应该从相应的文件名中删除或重命名出现错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 
+如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致按项列出的同步错误（错误代码 0x8007007b 或 0x80c80255），请从相关的文件名中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 
 > [!Note]  
-> [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。 如果数据集包含多个包含无效字符的文件，请使用 [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) 脚本重命名包含不支持的字符的文件。
+> [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。 如果数据集包含若干个具有无效字符的文件，请使用 [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) 脚本重命名包含不受支持的字符的文件。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 
@@ -754,7 +754,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **所需的补救措施** | 是 |
 
-当有许多文件无法与每个项的错误同步时，同步会话会失败，并出现以下错误之一。 执行如何实现中所述的步骤 [，查看是否存在未同步的特定文件或文件夹？](?tabs=portal1%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) 部分以解决每个项的错误。 ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED "同步错误"，请打开支持案例。
+当有许多文件由于存在按项列出的错误而无法同步时，同步会话就会因这些错误而失败。 执行[如何确定是否有特定的文件或文件夹未同步？](?tabs=portal1%252cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)部分所述的步骤，以修复按项列出的错误。 对于同步错误 ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED，请提交一个支持案例。
 
 > [!NOTE]
 > Azure 文件同步每天在服务器上创建临时 VSS 快照一次，以同步包含开放句柄的文件。
@@ -918,12 +918,12 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
 | **所需的补救措施** | 是 |
 
-如果已重命名或删除用作服务器终结点路径的目录，则会发生此错误。 如果目录已重命名，请将目录重命名回原始名称，并重新启动存储同步代理服务 (FileSyncSvc) 。
+如果已重命名或已删除用作服务器终结点路径的目录，则会发生此错误。 如果已重命名该目录，请将目录重命名回原始名称，并重启存储同步代理服务 (FileSyncSvc)。
 
-如果已删除该目录，请执行以下步骤以删除现有的服务器终结点，并使用新路径创建新的服务器终结点：
+如果已删除该目录，请执行以下步骤，删除现有服务器终结点，并使用新路径创建一个新的服务器终结点：
 
-1. 按照 [删除服务器终结点](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中所述的步骤，在同步组中删除服务器终结点。
-2. 按照 [添加服务器终结点](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)中所述的步骤，在同步组中创建一个新的服务器终结点。
+1. 按照[删除服务器终结点](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中所述的步骤，在同步组中删除服务器终结点。
+2. 按照[添加服务器终结点](./storage-sync-files-server-endpoint.md#add-a-server-endpoint)中所述的步骤，在同步组中创建一个新的服务器终结点。
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
@@ -1130,7 +1130,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 文件无法进行层级，因为正在进行初始上传。 | 无需采取措施。 初始上传完成后，将对该文件进行分层。 |
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 文件分层失败，因为正在进行初始上传。 | 无需采取措施。 完成初始上传后，将对文件进行分层。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 由于文件在使用中，文件分层失败。 | 无需采取措施。 不再使用该文件时，文件同步会对其进行分层。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 由于文件已被同步排除，文件分层失败。 | 无需采取措施。 无法对同步排除列表中的文件进行分层。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 由于在服务器上找不到文件，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查服务器上是否存在该文件。 |
@@ -1152,8 +1152,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 由于网络问题，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 由于已对文件进行了修改，文件分层失败。 | 无需采取措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行分层。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件分层失败。 | 如果错误仍然存在，请调查耗尽了系统资源的应用程序或内核模式驱动程序。 |
-| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 由于写入云分层数据库时出现 i/o 错误，导致文件无法分层。 | 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
-| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 由于云分层数据库未运行，文件未能分层。 | 若要解决此问题，请重新启动 FileSyncSvc 服务或服务器。 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 由于写入云分层数据库时出现 I/O 错误，文件分层失败。 | 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 由于云分层数据库未运行，文件分层失败。 | 要解决此问题，请重启 FileSyncSvc 服务或服务器。 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
 
 
 
@@ -1293,7 +1293,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 如果问题未得到解决，请运行 AFSDiag 工具，并将其 .zip 文件输出发送到分配给你的用例的支持工程师做进一步诊断。
 
-若要运行 AFSDiag，请执行以下步骤。
+要运行 AFSDiag，请执行以下步骤。
 
 对于代理版本 v11 和更高版本：
 1. 打开权限提升的 PowerShell 窗口并运行以下命令（在每条命令后面按 Enter）：
@@ -1310,7 +1310,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 2. 重现问题。 完成后，输入 **D**。
 3. 随即会将一个包含日志和跟踪文件的 .zip 文件保存到指定的输出目录。 
 
-对于 v10 和更早版本的代理：
+对于代理版本 v10 和更早版本：
 1. 创建用于保存 AFSDiag 输出的目录（例如，C:\Output）。
     > [!NOTE]
     >AFSDiag 会在收集日志之前删除输出目录中的所有内容。 指定不包含数据的输出位置。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9ac53dab29feddd36a95b8b2b041caaf5c3598d5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625009"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720131"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>教程：使用 Creator（预览版）创建室内地图
 
@@ -116,6 +116,7 @@ ms.locfileid: "98625009"
 
     >[!IMPORTANT]
     > 本文档中的 API URL 可能会根据你的 Creator 资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务（预览版）](how-to-manage-creator.md#access-to-creator-services)。
+    > 如果收到代码为 `"RequiresCreatorResource"` 的错误，请确保已在 Azure Maps 帐户中[预配了 Azure Maps Creator 资源](how-to-manage-creator.md)。
 
 3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。 你将下一步骤中使用此内容。
 
@@ -314,7 +315,7 @@ ms.locfileid: "98625009"
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. 在 POST 请求的“头”中，将“`Content-Type`”设置为“`application/json`”。 在“正文”中，提供下面的样式，用于反映对 `occupied` 和 `temperature` 状态的更改。 完成后，单击“发送”。
+3. 在 POST 请求的“头”中，将“`Content-Type`”设置为“`application/json`”。 在“正文”中，提供下面的原始 JSON 样式，用于反映对 `occupied` 和 `temperature` 状态的更改。 完成后，单击“发送”。
 
     ```json
     {

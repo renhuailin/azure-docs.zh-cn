@@ -3,17 +3,17 @@ title: 使用 Azure 门户创建事件中心专用群集
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure 事件中心群集。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 2759d1e25519b69311c369f3f58239cc0889a9a7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ff4ee1f098407ba8b3cd2727410bdfc842db89a
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927759"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102040084"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心专用群集 
 事件中心群集提供单租户部署来满足客户的苛刻流式处理要求。 此套餐提供有保障的 99.99% SLA，只能在专用定价层上使用。 [事件中心群集](event-hubs-dedicated-overview.md)每秒能够引入数百万个事件，且提供有保障的容量和亚秒级的延迟。 在群集中创建的命名空间和事件中心不仅包括标准套餐的所有功能，而且不存在任何引入限制。 专用套餐还免费随附了热门的[事件中心捕获](event-hubs-capture-overview.md)功能，可让你自动批处理数据流并将其记录到 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)。
 
-专用群集是按**容量单位 (CU)** 预配和计费的，并预先分配了 CPU 数量和内存资源量。 可为每个群集购买 1、2、4、8、12、16 或 20 个 CU。 本快速入门将详细介绍如何通过 Azure 门户创建一个 1 CU 事件中心群集。
+专用群集是按 **容量单位 (CU)** 预配和计费的，并预先分配了 CPU 数量和内存资源量。 可为每个群集购买 1、2、4、8、12、16 或 20 个 CU。 本快速入门将详细介绍如何通过 Azure 门户创建一个 1 CU 事件中心群集。
 
 > [!NOTE]
 > [Azure 门户](https://aka.ms/eventhubsclusterquickstart)目前提取此自助体验的预览版。 如果对专用套餐存有疑问，请联系[事件中心团队](mailto:askeventhubs@microsoft.com)。
@@ -30,19 +30,22 @@ ms.locfileid: "88927759"
 ## <a name="create-an-event-hubs-dedicated-cluster"></a>创建事件中心专用群集
 事件中心群集提供唯一的范围容器，可以在该容器中创建一个或多个命名空间。 在门户的自助体验的这个预览阶段，可以在所选区域中创建 1 CU 群集。 如果需要大于 1 CU 的群集，可以提交 Azure 支持请求，以便在创建群集后将其纵向扩展。
 
+> [!IMPORTANT]
+> 在创建群集后至少 4 小时内，你将无法删除它。 因此，你将被收取至少 4 小时的群集使用费。 有关定价的详细信息，请参阅[事件中心 - 定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 
+
 若要使用 Azure 门户在资源组中创建群集，请完成以下步骤：
 
 1. 单击[此链接](https://aka.ms/eventhubsclusterquickstart)，在 Azure 门户中创建群集。 与之相反，也可在左侧导航窗格中选择“所有服务”，接着在搜索栏中键入“事件中心群集”，然后从结果列表中选择“事件中心群集”。 
-2. 在“创建群集”页上配置以下内容： 
-    1. 输入**群集的名称**。 系统会立即检查该名称是否可用。
-    2. 选择要在其中创建群集的**订阅**。
-    3. 选择要在其中创建群集的**资源组**。
-    4. 选择群集的**位置**。 如果首选区域灰显，则表明该区域容量出现暂时性不足的情况，请向事件中心团队提交[支持请求](#submit-a-support-request)。
+2. 在“创建群集”页上配置以下设置：
+    1. 输入 **群集的名称**。 系统会立即检查该名称是否可用。
+    2. 选择要在其中创建群集的 **订阅**。
+    3. 选择要在其中创建群集的 **资源组**。
+    4. 选择群集的 **位置**。 如果首选区域灰显，则表明该区域容量出现暂时性不足的情况，请向事件中心团队提交[支持请求](#submit-a-support-request)。
     5. 选择页面底部的“下一步:  标记”按钮。 可能需要等待几分钟让系统完全预配资源。
 
         ![创建事件中心群集 -“基本信息”页](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
 3. 在“标记”页上配置以下内容： 
-    1. 输入要添加的标记的**名称**和**值**。 此步骤是**可选的**。  
+    1. 输入要添加的标记的 **名称** 和 **值**。 此步骤是 **可选的**。  
     2. 选择“查看 + 创建”按钮。 
 
         ![“创建事件中心群集”页 -“标记”页](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
@@ -56,7 +59,7 @@ ms.locfileid: "88927759"
 
     ![“群集管理”页 -“添加命名空间”按钮](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
 2. 在“创建命名空间”页上执行以下步骤：
-    1. 输入**命名空间的名称**。  系统会检查该名称是否可用。
+    1. 输入 **命名空间的名称**。  系统会检查该名称是否可用。
     2. 命名空间继承以下属性：
         1. 订阅 ID
         2. 资源组
@@ -89,9 +92,12 @@ ms.locfileid: "88927759"
 
  ## <a name="delete-a-dedicated-cluster"></a>删除专用群集
  
-1. 若要删除群集，请在顶部菜单中选择“删除”。  请注意，群集在创建以后，需支付至少 4 小时的使用费用。 
-2. 随后会显示一条消息，要求你确认是否要删除该群集。
-3. 键入**群集名称**并选择“删除”即可删除该群集。 
+1. 若要删除群集，请在顶部菜单中选择“删除”。  
+
+    > [!IMPORTANT]
+    > 在创建群集后至少 4 小时内，你将无法删除它。 因此，你将被收取至少 4 小时的群集使用费。 有关定价的详细信息，请参阅[事件中心 - 定价](https://azure.microsoft.com/pricing/details/event-hubs/)。     
+1. 随后会显示一条消息，要求你确认是否要删除该群集。
+1. 键入 **群集名称** 并选择“删除”即可删除该群集。 
 
     ![“删除群集”页](./media/event-hubs-dedicated-cluster-create-portal/delete-cluster-page.png)
 

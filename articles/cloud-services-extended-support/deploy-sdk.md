@@ -8,25 +8,25 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf8d2696732c2947ce86b9509720898fd63c1e16
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98886965"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102123031"
 ---
-# <a name="deploy-a-cloud-services-extended-support-using-sdk"></a>使用 SDK 部署云服务（外延支持）
+# <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>使用 Azure SDK 部署云服务（外延支持）
 
-本文介绍如何使用 [Azure SDK](https://azure.microsoft.com/downloads/) 部署具有多个角色（WebRole 和 WorkerRole）和远程桌面扩展的云服务（外延支持）。 
+本文介绍如何使用 [Azure SDK](https://azure.microsoft.com/downloads/) 部署具有多个角色（Web 角色与辅助角色）和远程桌面扩展的云服务（外延支持）实例。 云服务（外延支持）是基于 Azure 资源管理器的 Azure 云服务部署模型。
 
 > [!IMPORTANT]
-> 云服务（外延支持）目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 云服务（外延支持）目前为公共预览版。 此预览版在提供时没有附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)，并创建关联的资源。
 
-## <a name="deploy-a-cloud-services-extended-support"></a>部署云服务（外延支持）
+## <a name="deploy-cloud-services-extended-support"></a>部署云服务（外延支持）
 1. 安装 [Azure 计算 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview)，并使用标准身份验证机制初始化客户端。
 
     ```csharp
@@ -73,7 +73,7 @@ ms.locfileid: "98886965"
     resourceGroup = await resourceGroups.CreateOrUpdateAsync(resourceGroupName, resourceGroup);
     ```
 
-3. 创建一个存储帐户和容器，这将用于存储云服务包文件 (.cspkg) 和服务配置文件 (.cscfg)。 安装 [Azure 存储 NuGet 包](https://www.nuget.org/packages/Azure.Storage.Common/)。 如果使用现有存储帐户，则可选择性地执行此步骤。 存储帐户名称必须是唯一的。
+3. 创建用于存储服务包文件 (.cspkg) 和服务配置文件 (.cscfg) 的存储帐户与容器。 安装 [Azure 存储 NuGet 包](https://www.nuget.org/packages/Azure.Storage.Common/)。 如果使用的是现有存储帐户，则此步骤是可选的。 存储帐户名称必须是唯一的。
 
     ```csharp
     string storageAccountName = “ContosoSAS”
@@ -109,7 +109,7 @@ ms.locfileid: "98886965"
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Write;
     ```
 
-4. 将云服务包文件 (.cspkg) 上传到存储帐户。 包 URL 可以是任何存储帐户的共享访问签名 (SAS) URI。
+4. 将服务包文件 (.cspkg) 上传到存储帐户。 包 URL 可以是任何存储帐户的共享访问签名 (SAS) URI。
 
     ```csharp
     CloudBlockBlob cspkgblockBlob = container.GetBlockBlobReference(“ContosoApp.cspkg”);
@@ -122,7 +122,7 @@ ms.locfileid: "98886965"
     string cspkgSASUrl = cspkgblockBlob.Uri + cspkgsasContainerToken;
     ```
 
-5. 将云服务配置 (.cscfg) 上传到存储帐户。 可将服务配置指定为字符串 XML 或 URL 格式。
+5. 将服务配置文件 (.cscfg) 上传到存储帐户。 将服务配置指定为字符串 XML 或 URL 格式。
 
     ```csharp
     CloudBlockBlob cscfgblockBlob = container.GetBlockBlobReference(“ContosoApp.cscfg”);
@@ -135,7 +135,7 @@ ms.locfileid: "98886965"
     string cscfgSASUrl = cscfgblockBlob.Uri + sasCscfgContainerToken;
     ```
 
-6. 创建虚拟网络和子网。 安装 [Azure 网络 NuGet 包](https://www.nuget.org/packages/Azure.ResourceManager.Network/)。 如果使用现有网络和子网，则可选择性地执行此步骤。
+6. 创建虚拟网络和子网。 安装 [Azure 网络 NuGet 包](https://www.nuget.org/packages/Azure.ResourceManager.Network/)。 如果使用的是现有网络和子网，则此步骤是可选的。
 
     ```csharp
     VirtualNetwork vnet = new VirtualNetwork(name: vnetName) 
@@ -156,7 +156,7 @@ ms.locfileid: "98886965"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. 创建公共 IP 地址，并选择性地设置公共 IP 地址的 DNS 标签属性。 如果使用的是静态 IP，则需要将其看作服务配置文件中的保留 IP。
+7. 创建公共 IP 地址，并选择性地设置公共 IP 地址的 DNS 标签属性。 如果使用的是静态 IP，则需要在服务配置文件中将其引用为保留的 IP。
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -206,32 +206,32 @@ ms.locfileid: "98886965"
     
     ```
 
-9. 创建 Key Vault。 此 Key Vault 将用于存储与云服务（外延支持）角色关联的证书。 Key Vault 必须与云服务位于同一区域和订阅中，并且具有唯一的名称。 有关详细信息，请参阅[在 Azure 云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
+9. 创建密钥保管库。 此密钥保管库将用于存储与云服务（外延支持）角色关联的证书。 该密钥保管库必须位于云服务（外延支持）实例所在的同一区域和订阅中，并且名称必须唯一。 有关详细信息，请参阅[在 Azure 云服务（外延支持）中使用证书](certificates-and-key-vault.md)。
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US”
     ```
 
-10. 更新 Key Vault 访问策略，并向用户帐户授予证书权限。
+10. 更新密钥保管库的访问策略，并向你的用户帐户授予证书权限。
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosoOrg'      -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete
     ```
 
-    或者，通过 ObjectId 设置访问策略（可通过运行 Get-AzADUser 获得）
+    或者，通过对象 ID（可通过运行 `Get-AzADUser` 来获取）设置访问策略。
 
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -     ObjectId 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' -PermissionsToCertificates          create,get,list,delete
     ```
 
-11. 在此示例中，我们会将自签名证书添加到 Key Vault。 需要在云服务配置文件 (.cscfg) 中添加证书指纹才能在云服务角色上进行部署。
+11. 本示例将一个自签名证书添加到密钥保管库。 需要在服务配置文件 (.cscfg) 中添加证书指纹才能在云服务（外延支持）角色上进行部署。
 
     ```powershell
     $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -       SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal 
     Add-AzKeyVaultCertificate -VaultName "ContosKeyVault" -Name "ContosCert" -      CertificatePolicy $Policy
     ```
 
-12. 创建 OS 配置文件对象。 OS 配置文件指定与云服务角色关联的证书。 该证书与上一步中创建的证书相同。
+12. 创建 OS 配置文件对象。 OS 配置文件指定与云服务（外延支持）角色关联的证书。 在此处，该证书与我们在上一步骤中创建的证书相同。
 
     ```csharp
     CloudServiceOsProfile cloudServiceOsProfile = 
@@ -247,7 +247,9 @@ ms.locfileid: "98886965"
            };
     ```
 
-13. 创建角色配置文件对象。 角色配置文件定义角色 SKU 特定的属性，例如名称、容量和层级。 在此示例中，我们定义了两个角色：frontendRole 和 backendRole。 角色配置文件信息应与配置文件 (cscfg) 和服务定义文件 (csdef) 中定义的角色配置相匹配。
+13. 创建角色配置文件对象。 角色配置文件定义 SKU 的角色特定的属性，例如名称、容量和层级。 
+
+    本示例定义两个角色：ContosoFrontend 和 ContosoBackend。 角色配置文件信息应与服务配置文件 (cscfg) 和服务定义文件 (csdef) 中定义的角色配置相匹配。
 
     ```csharp
     CloudServiceRoleProfile cloudServiceRoleProfile = new CloudServiceRoleProfile()
@@ -281,7 +283,7 @@ ms.locfileid: "98886965"
                     }
     ```
 
-14. （可选）创建要添加到云服务的扩展配置文件对象。 在此示例中，我们将添加 RDP 扩展。
+14. （可选）创建要添加到云服务（外延支持）实例的扩展配置文件对象。 本示例添加 RDP 扩展。
 
     ```csharp
     string rdpExtensionPublicConfig = "<PublicConfig>" +
@@ -313,7 +315,7 @@ ms.locfileid: "98886965"
         };
     ```
 
-15. 创建云服务部署。
+15. 创建云服务（外延支持）实例的部署。
 
     ```csharp
     CloudService cloudService = new CloudService
@@ -322,7 +324,7 @@ ms.locfileid: "98886965"
                 {
                     RoleProfile = cloudServiceRoleProfile
                     Configuration = < Add Cscfg xml content here>,
-                    // ConfigurationUrl = <Add you configuration URL here>,
+                    // ConfigurationUrl = <Add your configuration URL here>,
                     PackageUrl = <Add cspkg SAS url here>,
                     ExtensionProfile = cloudServiceExtensionProfile,
                     OsProfile= cloudServiceOsProfile,
@@ -338,4 +340,4 @@ ms.locfileid: "98886965"
 ## <a name="next-steps"></a>后续步骤
 - 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
-- 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)
+- 访问[云服务（外延支持）的示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

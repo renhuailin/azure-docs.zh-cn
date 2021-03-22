@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 02/16/2021
+ms.date: 03/10/2021
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 56d04abe73020cef09383d4f79a58f037c266a93
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547990"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615561"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -55,7 +55,8 @@ Azure 防火墙存在以下已知问题：
 
 |问题  |说明  |缓解措施  |
 |---------|---------|---------|
-针对非 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](../load-balancer/load-balancer-overview.md) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。|
+|如果使用门户将规则从 IP 地址更新为 IP 组（或者反过来），这两种类型都会保存，但门户中只显示一种。|使用经典规则时会出现这个问题。<br><br>在使用门户将 NAT 规则源类型从 IP 地址更新为 IP 组（或者反过来）时，门户会在后端保存这两种类型，但只显示更新过的类型。<br><br>在将网络或应用程序规则目标类型从 IP 地址更新为 IP 组类型（或者反过来）时，也存在同样的问题。|我们计划在 2021 年 3 月发布门户修补程序。<br><br>同时，请使用 Azure PowerShell、Azure CLI 或 API 将规则从 IP 地址修改为 IP 组（或者反过来）。|
+|针对非 TCP/UDP 协议（例如 ICMP）的网络筛选规则不适用于 Internet 绑定的流量|针对非 TCP/UDP 协议的网络筛选规则不支持公共 IP 地址的 SNAT。 在分支子网与 VNet 之间支持非 TCP/UDP 协议。|Azure 防火墙使用[目前不支持 IP 协议 SNAT](../load-balancer/load-balancer-overview.md) 的标准负载均衡器。 我们正在探索如何在将来的版本中推出支持此方案的选项。|
 |缺少对 ICMP 的 PowerShell 和 CLI 支持|Azure PowerShell 和 CLI 不支持使用 ICMP 作为网络规则中的有效协议。|仍然可以通过门户和 REST API 使用 ICMP 作为协议。 我们正在致力于在不久之后在 PowerShell 和 CLI 中添加 ICMP。|
 |FQDN 标记要求设置 protocol: port|带有 FQDN 标记的应用程序规则需要 port:protocol 定义。|可以将 **https** 用作 port: protocol 值。 我们正在致力于使此字段在使用了 FQDN 标记时可选。|
 |不支持将防火墙移动到不同的资源组或订阅|不支持将防火墙移动到不同的资源组或订阅。|我们已计划提供此功能的支持。 若要将防火墙移动到不同的资源组或订阅，必须删除当前实例并在新的资源组或订阅中重新创建它。|
@@ -82,6 +83,6 @@ Azure 防火墙存在以下已知问题：
 
 ## <a name="next-steps"></a>后续步骤
 
+- [快速入门：创建 Azure 防火墙和防火墙策略 - ARM 模板](../firewall-manager/quick-firewall-policy.md)
+- [快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板](deploy-template.md)
 - [教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)
-- [使用模板部署 Azure 防火墙](deploy-template.md)
-- [创建 Azure 防火墙测试环境](scripts/sample-create-firewall-test.md)

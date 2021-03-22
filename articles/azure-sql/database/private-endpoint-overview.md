@@ -6,15 +6,15 @@ ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094159"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097272"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的 Azure 专用链接
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -61,6 +61,8 @@ ms.locfileid: "97094159"
 客户端可以从同一虚拟网络、同一区域中的对等互联虚拟网络或通过跨区域的虚拟网络到虚拟网络连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
 
  ![连接选项示意图][1]
+
+此外，不直接在虚拟网络中运行但与之集成的服务（例如，应用服务 Web 应用或 Functions）也可以实现与数据库的专用连接。 有关此特定用例的详细信息，请参阅[与 Azure SQL 数据库建立专用连接的 Web 应用](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app)体系结构方案。
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>测试从同一虚拟网络中的 Azure VM 到 SQL 数据库的连接
 
@@ -183,6 +185,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
 
 - 有关 Azure SQL 数据库安全概述，请参阅[保护数据库](security-overview.md)
 - 有关 Azure SQL 数据库连接的概述，请参阅 [Azure SQL 连接体系结构](connectivity-architecture.md)
+- 你可能还会对[与 Azure SQL 数据库建立专用连接的 Web 应用](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app)体系结构方案感兴趣，该方案将虚拟网络以外的 Web 应用程序连接到数据库的专用终结点。
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

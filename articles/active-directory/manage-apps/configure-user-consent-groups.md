@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 配置组所有者同意访问组数据的应用
-description: 了解如何管理组和团队所有者是否可以同意将有权访问组或团队数据的应用程序。
+title: 使用 Azure AD 配置组所有者对应用访问组数据的同意
+description: 了解如何管理组和团队所有者是否同意应用程序访问组或团队的数据。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,24 +12,24 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24b2b8ee6398ef1306aee59b5d7ca7525284f96b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8d8604a1dd54ed819bb9e27c46d61a46466bf3da
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644541"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102548795"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
-组和团队所有者可以授权应用程序（如第三方供应商发布的应用程序）访问组织的与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft 团队中的资源特定同意](/microsoftteams/resource-specific-consent) 。
+组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。
 
-## <a name="manage-group-owner-consent-to-apps"></a>管理组所有者同意应用
+## <a name="manage-group-owner-consent-to-apps"></a>管理组所有者对应用的同意
 
-你可以配置允许哪些用户同意访问其组或团队数据的应用，也可以为所有用户禁用此设置。
+可配置允许哪些用户同意应用访问其组或团队的数据，也可以对所有用户禁用此功能。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-请按照以下步骤管理对访问组数据的应用的组所有者同意：
+请按照以下步骤操作，管理组所有者对访问组数据的应用的同意：
 
 1. 以[全局管理员](../roles/permissions-reference.md#global-administrator)的身份登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” > “企业应用程序” > “同意和权限” > “用户同意设置”   。
@@ -44,7 +44,7 @@ ms.locfileid: "101644541"
 
 可使用 Azure AD PowerShell 预览版模块 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 允许或禁止组所有者同意应用程序访问你组织的数据来查找他们拥有的组。
 
-1. 请确保使用 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模块和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块，则此步骤非常重要。
+1. 请确保使用 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](/powershell/module/azuread/) 模块和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块，则此步骤非常重要。
 
     ```powershell
     Remove-Module AzureAD
@@ -124,4 +124,4 @@ ms.locfileid: "101644541"
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [Microsoft Azure AD 上的&](/answers/topics/azure-active-directory.html)
+* [Microsoft Q&A 上的 Azure AD](/answers/topics/azure-active-directory.html)

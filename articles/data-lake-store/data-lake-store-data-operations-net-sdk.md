@@ -1,20 +1,20 @@
 ---
-title: .NET SDK-Data Lake Storage Gen1 上的文件系统操作-Azure
-description: 使用 Azure Data Lake Storage Gen1 .NET SDK 执行 Data Lake Storage Gen1 上的文件系统操作，例如创建文件夹等。
+title: .NET SDK - Data Lake Storage Gen1 上的文件系统操作 - Azure
+description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹等。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109232"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102431731"
 ---
-# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK Data Lake Storage Gen1 的文件系统操作
+# <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>使用 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作
 
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
@@ -26,11 +26,11 @@ ms.locfileid: "92109232"
 
 本文介绍如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作。 文件系统操作包括在 Data Lake Storage Gen1 帐户中创建文件夹、上传文件、下载文件，等等。
 
-有关如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行帐户管理操作的说明，请参阅 [使用 .NET sdk 在 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)。
+若要了解如何使用 .NET SDK 对 Data Lake Storage Gen1 执行帐户管理操作，请参阅[使用 .NET SDK 对 Data Lake Storage Gen1 执行帐户管理操作](data-lake-store-get-started-net-sdk.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* **Visual Studio 2013 或更高**版本。 本文中的说明使用的是 Visual Studio 2019。
+* Visual Studio 2013 或更高版本。 本文中的操作说明使用 Visual Studio 2019。
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -40,21 +40,21 @@ ms.locfileid: "92109232"
 
 [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted) 上的代码示例逐步讲解了在存储中创建文件、连接文件、下载文件以及在存储中删除某些文件的过程。 本文的此部分演练代码的主要组成部分。
 
-1. 在 Visual Studio 中，选择 " **文件** " 菜单，选择 " **新建**"，然后选择 " **项目**"。
-1. 选择 " **控制台应用 (" .NET Framework ") **，然后选择" **下一步**"。
-1. 在“项目名称”**** 中，输入 `CreateADLApplication`，然后选择“创建”****。
+1. 在 Visual Studio 中，依次选择“文件”菜单、“新建”，然后选择“项目”。
+1. 选择“控制台应用(.NET Framework)”，然后选择“下一步” 。
+1. 在“项目名称”中，输入 `CreateADLApplication`，然后选择“创建”。
 1. 将 NuGet 包添加到项目。
 
-   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” ****。
-   1. 在 " **NuGet 包管理器** " 选项卡中，确保 " **包源** " 设置为 " **nuget.org**"。此外，请确保选中 " **包括预发行** 版" 复选框。
+   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” 。
+   1. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”  。此外，确保“包括预发行版”复选框已选中。
    1. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.DataLake.Store` -本文使用的是1.0.0。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -本文使用的是 v1.0。
+      * `Microsoft.Azure.DataLake.Store` - 本文使用的是 v1.0.0。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本文使用的是 v2.3.1。
 
-      关闭 **NuGet 包管理器**。
+      关闭“NuGet 包管理器”。
 
-1. 打开“Program.cs” ****，删除现有代码，并包含以下语句，添加对命名空间的引用。
+1. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
     ```
     using System;
@@ -82,7 +82,7 @@ ms.locfileid: "92109232"
     }
     ```
 
-本文的其余部分介绍如何使用可用的 .NET 方法执行身份验证、文件上传等操作。
+本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
 ## <a name="authentication"></a>身份验证
 
@@ -100,7 +100,7 @@ AdlsClient client = AdlsClient.CreateClient(_adlsg1AccountName, adlCreds);
 
 ## <a name="create-a-file-and-directory"></a>创建文件和目录
 
-将以下代码片段添加到应用程序。 此代码段将添加一个文件和任何不存在的父目录。
+将以下代码片段添加到应用程序。 此代码片段添加一个文件，以及不存在的任何父目录。
 
 ```
 // Create a file - automatically creates any parent directories that don't exist
@@ -194,7 +194,7 @@ client.DeleteRecursive("/Test");
 
 ## <a name="samples"></a>示例
 
-下面是一些演示如何使用 Data Lake Storage Gen1 Filesystem SDK 的示例。
+下面是一些示例，介绍了如何使用 Data Lake Storage Gen1 文件系统 SDK。
 
 * [Github 上的基本示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
 * [Github 上的高级示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
@@ -202,7 +202,7 @@ client.DeleteRecursive("/Test");
 ## <a name="see-also"></a>另请参阅
 
 * [使用 .NET SDK 对 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK 参考](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK 参考](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: f61d45b6c46830064c3b58608e2eca0787d559c2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675121"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502427"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共 IP 地址
 
@@ -36,7 +36,7 @@ ms.locfileid: "101675121"
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-在 **eastus2** 位置，使用名为 **myResourceGroup** 的 [AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)创建资源组。
+在 eastus2 位置，使用名为 myResourceGroup 的 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -48,12 +48,12 @@ New-AzResourceGroup -Name $rg -Location $loc
 ## <a name="create-public-ip"></a>创建公共 IP
 
 ---
-# <a name="standard-sku---using-zones"></a>[**标准 SKU-使用区域**](#tab/option-create-public-ip-standard-zones)
+# <a name="standard-sku---using-zones"></a>[**标准 SKU - 使用区域**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/?view=powershell-7.1)。
+>以下命令适用于 Az.Network 模块版本 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/)。
 
-使用 [AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)在 **myResourceGroup** 中创建名为 **myStandardZRPublicIP** 的标准区域冗余公共 IP 地址。
+在 myResourceGroup 中使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myStandardZRPublicIP 的标准区域冗余公共 IP 地址。
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -67,10 +67,10 @@ $zone = 1,2,3
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 > [!IMPORTANT]
-> 对于4.5.0 之前的 Az 网络模块，请在上面运行命令，而无需指定区域参数来创建区域冗余的 IP 地址。 
+> 对于版本低于 4.5.0 的 Az.Network 模块，请运行上述命令，而无需指定区域参数来创建区域冗余 IP 地址。 
 >
 
-若要在 **myResourceGroup** 中区域2名为 **myStandardZonalPublicIP** 的中创建标准区域性公共 IP 地址，请使用以下命令：
+若要在 myResourceGroup 中在名为myStandardZonalPublicIP 的区域 2 中创建标准区域公共 IP 地址，请使用以下命令：
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -84,12 +84,12 @@ $zone = 2
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 
-请注意，上述区域选项仅适用于具有 [可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)的区域中的有效选择。
+请注意，上述区域选项仅适用于具有[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)的区域中的有效选择。
 
 # <a name="standard-sku---no-zones"></a>[标准 SKU - 无区域](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->以下命令适用于 Az. Network module 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/?view=powershell-7.1)。
+>以下命令适用于 Az.Network 模块版本 4.5.0 或更高版本。  有关当前正在使用的 Powershell 模块的详细信息，请参阅 [PowerShellGet 文档](/powershell/module/powershellget/)。
 
 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 在 myResourceGroup 中创建一个标准公共 IP 地址作为名为 myStandardPublicIP 的非区域性资源 。
 

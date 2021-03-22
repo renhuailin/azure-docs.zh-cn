@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure NetApp 文件的解决方案体系结构 |Microsoft Docs
-description: 提供有关使用 Azure NetApp 文件的解决方案体系结构的最佳实践的参考。
+title: 使用 Azure NetApp 文件的解决方案体系结构 | Microsoft Docs
+description: 提供有关使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.author: b-juche
-ms.openlocfilehash: 6041e863f6c887af35aa070f13e1406462ffc5b3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041563"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489015"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
-本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
+本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
 
 下图总结了 Azure NetApp 文件提供的解决方案体系结构的类别：
 
-![解决方案体系结构类别](../media/azure-netapp-files/solution-architecture-categories.png)
+![解决方案体系结构的类别](../media/azure-netapp-files/solution-architecture-categories.png)
 
 ## <a name="linux-oss-apps-and-database-solutions"></a>Linux OSS 应用和数据库解决方案
 
@@ -34,9 +34,9 @@ ms.locfileid: "102041563"
 
 ### <a name="oracle"></a>Oracle
 
+* [使用 Azure NetApp 文件的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)
+* [Microsoft Azure 上的 Oracle VM 映像及其部署：共享存储配置选项](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Azure NetApp 文件单卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)
-* [Oracle on Azure 部署最佳实践指南使用 Azure NetApp 文件](https://www.netapp.com/us/media/tr-4780.pdf)
-* [Oracle VM 映像及其在 Microsoft Azure 上的部署：共享存储配置选项](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [将 Azure NetApp 文件与 Oracle Database 配合使用的好处](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ### <a name="machine-learning"></a>机器学习
@@ -44,116 +44,118 @@ ms.locfileid: "102041563"
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows 应用和 SQL Server 解决方案
 
-本部分提供对 Windows 应用程序和 SQL Server 解决方案的参考。
+本部分提供有关 Windows 应用程序和 SQL Server 解决方案的参考。
 
 ### <a name="file-sharing-and-global-file-caching"></a>文件共享和全局文件缓存
 
-* [构建你自己的 Azure NFS？将 Linux 文件共享 Wrestling 到云中](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
-* [全局文件缓存/Azure NetApp 文件部署](https://youtu.be/91LKb1qsLIM)
-* [Azure NetApp 文件的云遵从性](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
+* [生成自己的 Azure NFS？将 Linux 文件共享迁移到云](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
+* [全局文件缓存 / Azure NetApp 文件部署](https://youtu.be/91LKb1qsLIM)
+* [Azure NetApp 文件的云合规性](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
 
 ### <a name="sql-server"></a>SQL Server
 
-* [与 Azure NetApp 文件一起部署 SMB SQL Server](https://www.youtube.com/watch?v=x7udfcYbibs)
+* [使用 Azure NetApp 文件通过 SMB 部署 SQL Server](https://www.youtube.com/watch?v=x7udfcYbibs)
 <!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
 <!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
 
 ## <a name="sap-on-azure-solutions"></a>Azure 上的 SAP 解决方案
 
-本部分提供对 Azure 解决方案上的 SAP 的参考。 
+本部分提供有关 Azure 上的 SAP 解决方案的参考。 
 
 ### <a name="generic-sap-and-sap-netweaver"></a>通用 SAP 和 SAP Netweaver 
 
-* [使用 Azure NetApp 文件 Microsoft Azure 上的 SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
+* [使用 Azure NetApp 文件的 Microsoft Azure 上的 SAP 应用程序](https://www.netapp.com/us/media/tr-4746.pdf)
 * [带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
-* [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
-* [适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm](../virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb.md)
-* [适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南](../virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid.md)
+* [使用适用于 SAP 应用程序的 Azure NetApp 文件实现 Red Hat Enterprise Linux 的 Azure VM 上的 SAP NetWeaver 高可用性](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
+* [使用适用于 SAP 应用程序的 Azure NetApp 文件 (SMB) 实现 Windows 的 Azure VM 上的 SAP NetWeaver 高可用性](../virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb.md)
+* [适用于 SAP 应用程序多 SID 的 Red Hat Enterprise Linux 的 Azure VM 上的 SAP NetWeaver 高可用性指南](../virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="sap-hana"></a>SAP HANA 
 
 * [SAP HANA Azure 虚拟机存储配置](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 * [适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
-* [Red Hat Enterprise Linux 上的 Azure NetApp 文件 SAP HANA 扩展的高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
-* [在 Azure Vm 上用备用节点 SAP HANA 扩展 SUSE Linux Enterprise Server 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
-* [在 Azure Vm 上用备用节点 SAP HANA 扩展 Red Hat Enterprise Linux 上的 Azure NetApp 文件](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
-* [Azure 应用程序一致性快照工具 (AzAcSnap) ](azacsnap-introduction.md)
+* [在 Red Hat Enterprise Linux 上使用 Azure NetApp 文件实现 SAP HANA 纵向扩展的高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
+* [在 SUSE Linux Enterprise Server 上使用 Azure NetApp 文件在 Azure VM 上利用备用节点实现 SAP HANA 的横向扩展](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
+* [在 Red Hat Enterprise Linux 上使用 Azure NetApp 文件在 Azure VM 上利用备用节点实现 SAP HANA 的横向扩展](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [RHEL 上使用 HSR 和 Pacemaker 的 SAP HANA 横向扩展 - Azure 虚拟机](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
+* [Azure 应用程序一致性快照工具 (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
-* [将 SAP AnyDB 与 Azure NetApp 文件一起部署 (Oracle 19c) ](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
+* [适用于 SAP 工作负载的 Oracle Azure 虚拟机 DBMS 部署 - Azure 虚拟机](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
+* [使用 Azure NetApp 文件部署 SAP AnyDB (Oracle 19c)](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
 
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
 
-*   [使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件部署 SAP IQ-NLS HA 解决方案](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+*   [在 SUSE Linux Enterprise Server 上使用 Azure NetApp 文件部署 SAP IQ-NLS HA 解决方案](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
 * [如何在 HA 方案中管理 SAP IQ 许可证](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/how-to-manage-sap-iq-license-in-ha-scenario/ba-p/2052583)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP 技术社区和博客文章 
 
-* [Azure NetApp 文件-SAP HANA 备份，以秒为单位](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
-* [Azure NetApp 文件–从快照备份还原 HANA 数据库](https://blog.netapp.com/azure-netapp-files-backup-sap-hana)
-* [Azure NetApp 文件-SAP HANA 通过云同步卸载备份](https://blog.netapp.com/azure-netapp-files-sap-hana)
-* [使用 Azure NetApp 文件加快 SAP HANA 系统副本的速度](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
+* [Azure NetApp 文件 - 实现 SAP HANA 快速备份](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
+* [Azure NetApp 文件 - 从快照备份还原 HANA 数据库](https://blog.netapp.com/azure-netapp-files-backup-sap-hana)
+* [Azure NetApp 文件 - 通过云同步进行 SAP HANA 卸载备份](https://blog.netapp.com/azure-netapp-files-sap-hana)
+* [使用 Azure NetApp 文件加速 SAP HANA 系统复制](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [云卷 ONTAP 和 Azure NetApp 文件：简化 SAP HANA 系统迁移](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
-* [在 HANA N + M 中最大化和投资的体系结构决策 Scale-Out 体系结构-第1部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
-* [在 HANA N + M 中最大程度地提高和投资的体系结构决策 Scale-Out 体系结构-第2部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [在 HANA N+M 横向扩展体系结构中使 ANF 投资收益最大化的体系结构决策 - 第一部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [在 HANA N+M 横向扩展体系结构中使 ANF 投资收益最大化的体系结构决策 - 第二部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware 解决方案
 
-* [Azure NetApp 文件与 Azure VMware 解决方案-来宾操作系统装载](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
+* [将 Azure NetApp 文件与 Azure VMware 解决方案配合使用 - 来宾操作系统装载](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>虚拟桌面基础结构解决方案
 
-本部分提供了虚拟桌面基础结构解决方案的参考。
+本部分提供有关虚拟桌面基础结构解决方案的参考。
 
 ### <a name="windows-virtual-desktop"></a>Windows 虚拟桌面
 
 * [将 Azure NetApp 文件与 Windows 虚拟桌面配合使用的好处](solutions-windows-virtual-desktop.md)
-* [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [Windows 虚拟桌面中 FSLogix 配置文件容器的存储选项](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](../virtual-desktop/create-fslogix-profile-container.md)
 * [企业级 Windows 虚拟桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
-* [适用于企业的 Microsoft FSLogix-Azure NetApp 文件最佳实践](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
-* [设置用于 .MSIX 应用附加的 Azure NetApp 文件](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
+* [适用于企业的 Microsoft FSLogix - Azure NetApp 文件最佳做法](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
+* [设置用于 MSIX 应用附加的 Azure NetApp 文件](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
 
 ## <a name="hpc-solutions"></a>HPC 解决方案
 
-本部分提供高性能计算的参考 (HPC) 解决方案。 
+本部分提供有关高性能计算 (HPC) 解决方案的参考。 
 
-### <a name="generic-hpc"></a>通用 HPC
+### <a name="generic-hpc"></a>泛型 HPC
 
 * [Azure NetApp 文件：充分利用云存储](https://cloud.netapp.com/hubfs/Resources/ANF%20PERFORMANCE%20TESTING%20IN%20TEMPLATE.pdf)
-* [Azure Batch 和 Azure NetApp 文件一起运行 MPI 工作负荷](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
-* [Azure 循环云： Azure NetApp 文件上的 CycleCloud HPC 环境](/azure/cyclecloud/overview)
+* [使用 Azure Batch 和 Azure NetApp 文件运行 MPI 工作负载](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
+* [Azure CycleCloud：Azure NetApp 文件上的 CycleCloud HPC 环境](/azure/cyclecloud/overview)
 
 ### <a name="oil-and-gas"></a>石油和天然气
 
-* [高性能计算 (HPC) ： Azure 中的燃油和天然气](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
-* [在 Azure 上运行容器模拟软件](/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [高性能计算 (HPC)：Azure 中的石油和天然气](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
+* [在 Azure 上运行储层模拟软件](/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
 
-### <a name="electronic-design-automation-eda"></a>电子设计自动化 (EDA) 
+### <a name="electronic-design-automation-eda"></a>电子设计自动化 (EDA)
 
 * [使用 Azure NetApp 文件实现电子设计自动化的好处](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
-* [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
-* [适用于半导体行业的 Azure](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
+* [Azure CycleCloud：将 EDA HPC 实验室与 Azure NetApp 文件配合使用](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
+* [将 Azure 用于半导体行业](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>分析
 
-* [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的共享文件系统](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
-* [Azure NetApp 文件：用于 MS Azure 上的 SAS 网格的共享文件系统-RHEL 8.3/nconnect 更新](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
-* [将 Microsoft Azure 与 SAS®配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
+* [Azure NetApp 文件：在 Microsoft Azure 上将共享文件系统与 SAS 网格配合使用](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
+* [Azure NetApp 文件：在 MS Azure 上将共享文件系统与 SAS 网格配合使用 - RHEL8.3/nconnect 更新](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
+* [将 Microsoft Azure 与 SAS® 配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Azure 平台服务解决方案
 
 本部分提供 Azure 平台服务的解决方案。 
 
-### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes 服务和 Kubernetes
+### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes 服务与 Kubernetes
 
 * [将 Azure NetApp 文件与 Azure Kubernetes 服务集成](../aks/azure-netapp-files.md)
-* [Azure 上的 Kubernetes 在 Azure 中的性能和 Azure NetApp 文件](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
-* [Azure NetApp 文件 + Trident = Kubernetes 的动态和持久存储](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
-* [Trident-容器的存储 Orchestrator](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
-* [Azure Kubernetes 服务中的 Magento 电子商务平台 (AKS) ](/azure/architecture/example-scenario/magento/magento-azure)
+* [使用 Azure NetApp 文件在 Azure 上实现卓越的 Kubernetes 性能](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
+* [Azure NetApp 文件 + Trident = 用于 Kubernetes 的动态和持久存储](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
+* [Trident - 容器的存储业务流程协调程序](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
+* [Azure Kubernetes 服务 (AKS) 中的 Magento 电子商务平台](/azure/architecture/example-scenario/magento/magento-azure)
 
 ### <a name="azure-batch"></a>Azure Batch
 
-* [Azure Batch 和 Azure NetApp 文件一起运行 MPI 工作负荷](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
+* [使用 Azure Batch 和 Azure NetApp 文件运行 MPI 工作负载](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)

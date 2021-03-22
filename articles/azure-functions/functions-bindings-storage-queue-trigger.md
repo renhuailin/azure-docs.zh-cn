@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 8c2ea69d38f354455b7957ddc7b6ff41da30100b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210761"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453200"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -215,7 +215,7 @@ Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
 }
 ```
 
-代码 *_\__ \_ py* 将参数声明为 `func.QueueMessage` ，这允许您在函数中读取队列消息。
+\_init\_.py 中的代码将参数声明为 `func.QueueMessage`，以允许你在函数中读取队列消息。
 
 ```python
 import logging
@@ -357,7 +357,7 @@ Python 不支持特性。
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
+|连接  | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -378,7 +378,7 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueueMessage` 类型的支持：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
  
@@ -399,7 +399,7 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本支持旧 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueueMessage` 类型的支持：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
 
@@ -419,7 +419,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true)的参数访问队列消息。
+通过类型为 [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage) 的参数访问队列消息。
 
 ---
 

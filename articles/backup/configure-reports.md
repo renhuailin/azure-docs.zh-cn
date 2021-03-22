@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 62bb59a8a77d11e30e54298317a35e1f883a9622
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710611"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509349"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -22,8 +22,8 @@ ms.locfileid: "101710611"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-- Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Microsoft Azure 恢复服务 (MARS) 代理、Microsoft Azure 备份服务器 (MABS) 和 System Center Data Protection Manager (DPM) 均支持备份报表。 对于 Azure 文件共享备份，将显示在2020年6月1日或之后创建的所有记录的数据。
-- 对于 Azure 文件共享备份，受保护实例上的数据当前不会显示在报表中 (默认值为零，所有备份项) 。
+- Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Microsoft Azure 恢复服务 (MARS) 代理、Microsoft Azure 备份服务器 (MABS) 和 System Center Data Protection Manager (DPM) 均支持备份报表。 对于 Azure 文件共享备份，将显示在 2020 年 6 月 1 日或之后创建的记录的数据。
+- 对于 Azure 文件共享备份，将针对 2021 年 2 月 1 日之后创建的记录显示受保护的实例的数据（较早的记录默认为零）。
 - 对于 DPM 工作负载，DPM 版本 5.1.363.0 及更高版本和代理版本 2.0.9127.0 及更高版本支持备份报表。
 - 对于 MABS 工作负载，MABS 版本 13.0.415.0 及更高版本和代理版本 2.0.9170.0 及更高版本支持备份报表。
 - 只要将备份报告的数据发送到用户有权访问的 Log Analytics 工作区，就可以在所有备份项目、保管库、订阅和区域中查看备份报表。 若要查看一组保管库的报表，只需具有对 Log Analytics 工作区（保管库将数据发送到该工作区）的读取访问权限。 无需具有对单个保管库的访问权限。
@@ -140,19 +140,33 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ![“优化”选项卡 - 备份计划优化](./media/backup-azure-configure-backup-reports/optimize-backup-schedule.png)
 
-###### <a name="policy-adherence"></a>策略遵从
+###### <a name="policy-adherence"></a>策略遵守情况
 
-使用此选项卡，可以确定所有备份实例是否每天都有至少一个成功的备份。 可以按时间段或备份实例查看策略符合情况。
+使用此选项卡，可以确定所有备份实例是否每天都至少有一次成功备份。 对于使用每周备份策略的项，可以使用此选项卡来确定所有备份实例是否每周至少有一次成功备份。
 
-###### <a name="email-azure-backup-reports"></a>电子邮件 Azure 备份报告
+提供两种类型的策略遵守情况视图：
 
-使用备份报表中可用的 **电子邮件报告** 功能，可以创建自动化任务，通过电子邮件接收定期报告。 此功能的工作方式是在 Azure 环境中部署一个逻辑应用，以便根据你提供的输入从所选 Log Analytics (LA) 工作区查询数据。
+* 按时间段呈现的策略遵守情况：使用此视图，可以确定有多少个项在某一天中至少有一次成功备份，有多少个项在当天没有成功备份。 可以单击某一行，查看在所选日期内触发的所有备份作业的详细信息。 请注意，如果将时间范围增加到一个较大的值（例如，过去 60 天），网格将以周视图呈现，并显示在某一周内每天至少有一次成功备份的所有项的计数。 同样，对于更大的时间范围，还可以选择每月视图。
 
-创建逻辑应用后，你将需要授权与 Azure Monitor 日志和 Office 365 的连接。 为此，请导航到 Azure 门户中的 " **逻辑应用** "，然后搜索已创建的任务的名称。 选择 " **api 连接** " 菜单项将打开需要授权的 api 连接的列表。
+对于每周备份的项，此网格有助于确定在某一周内至少有一次成功备份的所有项。 对于更大的时间范围（例如，过去 120 天），网格将以每月视图呈现，并显示某个月内每周至少有一次成功备份的所有项的计数。 有关每日、每周和每月视图的详细信息，请参阅[备份报告中使用的约定](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)。
 
-###### <a name="customize-azure-backup-reports"></a>自定义 Azure 备份报表
+![按时间段呈现的策略遵守情况](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
-备份报表对 Azure Monitor 日志使用函数。 这些函数对中的原始 Azure 备份表中的数据进行操作，并返回带格式的数据，这些数据可帮助你使用简单查询轻松检索所有与备份相关的实体的信息。
+* 按备份实例呈现的策略遵守情况：使用此视图，可以在备份实例级别呈现策略遵守情况的详细信息。 绿色单元格表示备份实例在某一天内至少有一次成功备份。 红色单元格表示备份实例在某一天内没有任何成功备份。 每日、每周和每月的汇总遵循“按时间段呈现的策略符合情况”视图的行为。 可以单击任意行来查看所选时间范围内给定备份实例上的所有备份作业。
+
+![按备份实例呈现的策略遵守情况](./media/backup-azure-configure-backup-reports/policy-adherence-by-backup-instance.png)
+
+###### <a name="email-azure-backup-reports"></a>通过电子邮件发送 Azure 备份报告
+
+使用备份报告中提供的“通过电子邮件发送报告”功能，可以创建自动化任务，以通过电子邮件接收定期报告。 此功能的工作方式是在 Azure 环境中部署一个逻辑应用，该逻辑应用根据你提供的输入从所选 Log Analytics (LA) 工作区查询数据。
+
+创建逻辑应用后，你将需要授权连接到 Azure Monitor 日志和 Office 365。 为此，请导航到 Azure 门户中的“逻辑应用”，然后搜索已创建的任务的名称。 选择“API 连接”菜单项，将打开需要你授权的 API 连接的列表。 [详细了解如何配置电子邮件和排查问题](backup-reports-email.md)。
+
+###### <a name="customize-azure-backup-reports"></a>自定义 Azure 备份报告
+
+备份报告使用 [Azure Monitor 日志上的系统函数](backup-reports-system-functions.md)。 这些函数可以对 LA 中原始 Azure 备份表中的数据进行操作，并返回格式化数据，帮助你利用简单的查询轻松检索所有与备份相关的实体的信息。 
+
+要使用备份报告作为基础来创建你自己的报告工作簿，可以导航到“备份报告”，单击报告顶部的“编辑”，然后查看/编辑报告中使用的查询。 请参阅 [Azure 工作簿文档](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview)，详细了解如何创建自定义报告。 
 
 ## <a name="export-to-excel"></a>导出到 Excel
 
@@ -175,6 +189,8 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 - 报表显示在选定的时间范围内触发的作业（日志作业除外）的详细信息。
 - 显示的“云存储空间”和“受保护的实例”的值为选定时间范围结束时的值 。
 - 报表中显示的备份项为选定时间范围结束时的项。 不会显示在选定时间范围中间删除的备份项。 同样的约定也适用于备份策略。
+- 如果所选的时间范围跨度为 30 天或更短时间，图表将以每日视图的形式呈现，其中每天对应一个数据点。 如果时间范围跨度超过 30 天但不到（或等于）90 天，图表将以每周视图的形式呈现。 对于更大的时间范围，图表将以每月视图的形式呈现。 每周或每月汇总数据有助于提升查询性能，并使图表中的数据更方便阅读。
+- 策略遵守情况网格还遵循上述类似的汇总逻辑。 不过，有几个细微的差别。 第一个不同之处在于，对于使用每周备份策略的项，不提供每日视图（仅提供每周和每月视图）。 此外，在使用每周备份策略的项的网格中，“月”被视为 4 周（28 天），而不是 30 天，以便消除未满一周的天数。
 
 ## <a name="query-load-times"></a>查询加载时间
 

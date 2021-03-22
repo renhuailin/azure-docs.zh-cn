@@ -1,35 +1,35 @@
 ---
-title: 使用命令行工具启动和停止 Vm Azure 开发测试实验室
-description: 了解如何使用命令行工具在 Azure 开发测试实验室中启动和停止虚拟机。
+title: 使用命令行工具启动和停止 Azure 开发测试实验室 VM
+description: 了解如何使用命令行工具启动和停止 Azure 开发测试实验室中的虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 2b9be3d09c488fdae211d81daf88e8807bc7b4dc
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 2ddc1620cf86fa203b2f0e31359f9fd262df8916
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201186"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499537"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>使用命令行工具启动和停止 Azure 开发测试实验室虚拟机
-本文介绍如何使用 Azure PowerShell 或 Azure CLI 在 Azure 开发测试实验室中的实验室中启动或停止虚拟机。 你可以创建 PowerShell/CLI 脚本来自动执行这些操作。 
+本文介绍如何使用 Azure PowerShell 或 Azure CLI 在 Azure 开发测试实验室的实验室中启动或停止虚拟机。 你可以创建 PowerShell/CLI 脚本来自动执行这些操作。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
-Azure 开发测试实验室是一种创建快速、简单和精益的开发/测试环境的方式。 它允许您管理成本、快速设置 Vm，并最大程度地减少浪费。  Azure 门户中提供了一些内置功能，可让你将实验室中的 Vm 配置为在特定时间自动启动和停止。 
+Azure 开发测试实验室是一种创建快速、简单和精益的开发/测试环境的方法。 使用它可以管理成本、快速设置 VM，并最大程度地减少浪费。  Azure 门户中提供了一些内置功能，可让你将实验室中的 VM 配置为在特定时间自动启动和停止。 
 
-但是，在某些情况下，你可能希望自动启动和停止 PowerShell/CLI 脚本中的 Vm。 它为您提供了一些灵活性，使您可以随时启动和停止单个计算机，而不是在特定时间启动和停止。 下面是使用脚本运行这些任务的一些情况非常有用。
+但是，在某些情况下，你可能需要通过 PowerShell/CLI 脚本自动启动和停止 VM。 它为你提供了一定的灵活性，使你可以随时（而不是在特定时间）启动和停止单个计算机。 在以下情况下，使用脚本运行这些任务会很有帮助。
 
-- 在测试环境中使用第三层应用程序时，需要按顺序启动层。 
-- 满足自定义条件时关闭 VM 以节省资金。 
-- 将其作为 CI/CD 工作流中的任务，以从流的开头开始，使用 Vm 作为生成计算机、测试计算机或基础结构，然后在进程完成时停止 Vm。 例如，使用 Azure 开发测试实验室自定义映像工厂。  
+- 在测试环境中使用三层应用程序时，需要按顺序启动各层。 
+- 当满足自定义条件时，关闭 VM 以节省费用。 
+- 将它作为 CI/CD 工作流中的一项任务，在流开始时启动，将 VM 用作生成计算机、测试计算机或基础结构，然后在进程完成时停止 VM。 例如，使用 Azure 开发测试实验室自定义映像工厂。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 > [!NOTE]
-> 下面的脚本使用 Azure PowerShell Az 模块。 
+> 以下脚本使用 Azure PowerShell Az 模块。 
 
-下面的 PowerShell 脚本在实验室中启动 VM。 [AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) 是此脚本的主要焦点。 **ResourceId** 参数是实验室中 VM 的完全限定的资源 ID。 **操作** 参数是根据所需的设置 **开始** 或 **停止** 选项的位置。
+下面的 PowerShell 脚本在实验室中启动一个 VM。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) 是此脚本的重点。 ResourceId 参数是实验室中 VM 的完全限定的资源 ID。 在 Action 参数中，会根据需要设置“启动”或“停止”选项。
 
 ```powershell
 # The id of the subscription
@@ -66,7 +66,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/get-started-with-azure-cli)是自动执行开发测试实验室 vm 的另一种方法。 Azure CLI 可以 [安装](/cli/azure/install-azure-cli) 在不同的操作系统上。 以下脚本提供了用于在实验室中启动和停止 VM 的命令。 
+[Azure CLI](/cli/azure/get-started-with-azure-cli) 是自动启动和停止开发测试实验室 VM 的另一种方法。 Azure CLI 可以[安装](/cli/azure/install-azure-cli)在不同操作系统上。 以下脚本提供了在实验室中启动和停止 VM 的命令。 
 
 ```azurecli
 # Sign in to Azure
@@ -84,4 +84,4 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解如何使用 Azure 门户执行以下操作： [重新启动 VM](devtest-lab-restart-vm.md)。
+请参阅以下文章，了解如何使用 Azure 门户执行这些操作：[重启 VM](devtest-lab-restart-vm.md)。

@@ -15,7 +15,7 @@
             ],
             "defaultValue": 1000,
             "metadata": {
-                "description": "Cosmos DB 吞吐量。 在最初的公共预览版中固定为 1000 RU"
+                "description": "Cosmos DB 吞吐量。 在初始公共预览版中的 1000 RU 处修复"
             }
         }
     },

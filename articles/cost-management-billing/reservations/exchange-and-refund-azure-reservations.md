@@ -5,18 +5,28 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 02/24/2021
 ms.author: banders
-ms.openlocfilehash: 045ab35a35aa4caefb1e1bcbbf7bf78b726c09f7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601460"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102035987"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
-Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预留来交换同一类型的另一个预留。 例如，你可以通过交换虚拟机预留来购买其他任何 VM 大小或区域的另一个预留。 同样，可以交换 SQL PaaS 数据库预留以购买任何 SQL PaaS 数据库类型或区域的其他预留。 还可以对预留申请退款，但在 12 个月的滚动范围内，计费范围内（如 EA、Microsoft 客户协议和 Microsoft 合作伙伴协议）所有取消的预留承诺总额不得超过 50,000 美元。 Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Azure Red Hat Open Shift 预留、Red Hat 计划和 SUSE Linux 计划不能申请退款。
+Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预留来交换同一类型的另一个预留。 例如，可以一次性互换多个计算预留（包括 Azure 专用主机、Azure VMware 解决方案和 Azure 虚拟机）。 换言之，只要预留产品属于同一类型，它们就可以互换。 另举一例，可以互换多个 SQL 数据库预留类型（包括托管实例和弹性池）。
+
+但是，不能交换不同的预留。 例如，不能将 Cosmos DB 预留交换为 SQL 数据库。
+
+还可以交换预留以购买不同区域中类似类型的另一个预留。 例如，可以交换“美国西部 2”区域中的预留，以购买“西欧”区域中的预留。
+
+交换预留时，可将期限从一年更改为三年。
+
+还可以对预留申请退款，但在 12 个月的滚动范围内，计费范围内（如 EA、Microsoft 客户协议和 Microsoft 合作伙伴协议）所有取消的预留承诺总额不得超过 50,000 美元。
+
+Azure Databricks 预留容量、Azure VMware Solution by CloudSimple 预留、Azure Red Hat Open Shift 预留、Red Hat 计划和 SUSE Linux 计划不能申请退款。
 
 美国政府企业协议客户不能使用自助交换和取消功能。 可以使用其他美国政府订阅类型，包括即用即付和云解决方案提供商 (CSP)。
 
@@ -37,9 +47,26 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 
 若要为某个预留退款，请转到“预留详细信息”，然后选择“退款”。
 
+## <a name="exchange-multiple-reservations"></a>交换多个预留
+
+可通过一个操作退回类似类型的预留。
+
+交换预留时，新的购买货币金额必须大于退款金额。 如果新的购买金额小于退款金额，将收到错误。 如果看到此错误，请减少要退回的数量，或增加购买量。
+
+1. 登录 **Azure 门户** 并导航到“预留”。
+1. 在预留列表中，选中要交换的每个预留对应的框。
+1. 在页面顶部选择“交换”。
+1. 如果需要，请修改每个预留的退回数量。
+1. 如果选择了自动填充退回数量，可以选择“全部退款”以在列表中填充你对每个预留拥有的整个数量，或者选择“针对使用量进行优化(7 天)”，以在列表中根据过去 7 天的使用情况填充针对使用量进行优化的数量。  **选择“应用”** 。
+1. 在页面底部选择“下一步: 购买”。
+1. 在“购买”选项卡上，选择要交换的可用产品。 可以选择不同类型的多个产品。
+1. 在“选择要购买的产品”窗格中选择所需的产品，然后依次选择“添加到购物车”、“关闭”。 
+1. 完成后，选择“下一步: 检查”。
+1. 检查要退回的预留以及要购买的新预留，然后选择“确认交换”。
+
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>以非高级存储交换高级存储
 
-可以将购买时其 VM 大小不支持高级存储的预留交换成其 VM 大小支持高级存储的预留。 例如，以 _F1_ 交换 _F1s_。 若要进行交换，请转到“预留详细信息”，然后选择“交换”。 交换不会重置预留实例的期限，也不创建新的交易。 
+可以将购买时其 VM 大小不支持高级存储的预留交换成其 VM 大小支持高级存储的预留。 例如，以 _F1_ 交换 _F1s_。 若要进行交换，请转到“预留详细信息”，然后选择“交换”。 交换不会重置预留实例的期限，也不创建新的交易。
 
 ## <a name="how-transactions-are-processed"></a>处理交易的方式
 

@@ -1,19 +1,19 @@
 ---
-title: '使用 Azure AD (上一版本创建和配置 Azure 磁盘加密的 key vault) '
+title: 使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 description: 本文介绍如何使用 Azure AD 为 Azure 磁盘加密创建和配置密钥保管库。
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fd239b52e647d7a0dfa3b60ee1dc31ea7005311b
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: 878828a40f7a14fe8bb5728ac06585e6aca2eec8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805949"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555476"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
@@ -138,7 +138,7 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 > Azure 磁盘加密要求为 Azure AD 客户端应用程序配置以下访问策略：_WrapKey_ 和 _Set_ 权限。
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a>使用 Azure PowerShell 为 Azure AD 应用设置密钥保管库访问策略
-Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 来向应用程序授予权限，使用客户端 ID (该 ID 是在注册应用程序时生成的，) 为 _– ServicePrincipalName_ 参数值。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step)（Azure Key Vault - 分步指南）。 
+Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet，并将客户端 ID（注册应用程序时所生成）用作 –ServicePrincipalName 参数值，以向应用程序授予权限。 若要了解详细信息，请参阅博客文章 [Azure Key Vault - Step by Step](/archive/blogs/kv/azure-key-vault-step-by-step)（Azure Key Vault - 分步指南）。 
 
 1. 使用 PowerShell 为 AD 应用程序设置 Key Vault 访问策略。
 

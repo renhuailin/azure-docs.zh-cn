@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/03/2021
+ms.date: 03/09/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 1c587705041b8fb3d37e02142fa10ae5a1d73f9f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173841"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551560"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "102173841"
 - 目前不支持高级存储 。
 - **Azure Data Lake Storage Gen2 存储帐户** 的 **分层命名空间** 目前 **不受支持**。
 - 不支持在已暂停的 Azure Synapse 上启用审核。 若要启用审核，请恢复运行 Azure Synapse。
-- **Azure SYNAPSE SQL 池** 的审核 **仅** 支持默认的审核操作组。
+- Azure Synapse SQL 池审核仅支持默认审核操作组。
 
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>定义服务器级和数据库级审核策略
@@ -58,10 +58,10 @@ ms.locfileid: "102173841"
 
 - 如果启用服务器审核，它将一直应用于数据库。  将不考虑数据库审核设置审核数据库。
 
-- 在数据库级定义审核策略到 Log Analytics 工作区或事件中心目标时，以下操作不会保留源数据库级审核策略：
+- 当在数据库级将审核策略定义到 Log Analytics 工作区或事件中心目标时，以下操作将不会保留源数据库级的审核策略：
     - [数据库复制](database-copy.md)
     - [时间点还原](recovery-using-backups.md)
-    - [异地复制](active-geo-replication-overview.md) (辅助数据库将没有数据库级审核) 
+    - [异地复制](active-geo-replication-overview.md)（辅助数据库不会有数据库级审核）
 
 - 在数据库上启用审核以及在服务器上启用审核都不会替代或更改服务器审核的任何设置。 这两种审核会并存。 换言之，会并行对数据库执行两次审核；一次按服务器策略审核，一次按数据库策略审核。
 
@@ -99,8 +99,8 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 以下部分介绍如何使用 Azure 门户配置审核。
 
   > [!NOTE]
-  > - 不能对已暂停的专用 SQL 池启用审核。 要启用审核，请取消暂停专用 SQL 池。 了解有关 [专用 SQL 池](../..//synapse-analytics/sql/best-practices-sql-pool.md)的详细信息。
-  > - 如果通过 Azure 门户或 PowerShell cmdlet 将审核配置为 Log Analytics 工作区或甚至中心目标，则会创建一个启用了 "SQLSecurityAuditEvents" 类别的 [诊断设置](../../azure-monitor/essentials/diagnostic-settings.md) 。
+  > - 不能对已暂停的专用 SQL 池启用审核。 要启用审核，请取消暂停专用 SQL 池。 详细了解[专用 SQL 池](../..//synapse-analytics/sql/best-practices-sql-pool.md)。
+  > - 如果通过 Azure 门户或 PowerShell cmdlet 将审核配置为 Log Analytics 工作区或事件中心目标，则会创建一个启用了“SQLSecurityAuditEvents”类别的[诊断设置](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 导航到“SQL 数据库”或“SQL Server”窗格中“安全性”标题下的“审核”  。
@@ -114,14 +114,14 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
   
    ![存储选项](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft 支持部门操作的审核
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>审核 Microsoft 支持操作
 
-使用 Azure SQL Server 的 Microsoft 支持部门操作的审核，您可以在支持请求期间审核 Microsoft 支持工程师的操作。 将此功能与审核结合使用，可以提高工作人员的透明度，并可以进行异常情况检测、趋势可视化和数据丢失防护。
+通过 Azure SQL Server 的 Microsoft 支持操作审核，你可以在 Microsoft 支持工程师需要在支持请求期间访问你的服务器时审核他们的操作。 将此功能与审核结合使用，可以提高工作人员的透明度，并可以进行异常情况检测、趋势可视化和数据丢失防护。
 
-若要启用 Microsoft 支持部门操作的审核，请导航到 **AZURE SQL server** 窗格中 "安全" 标题下的 "**审核**"，并将 **Microsoft 支持操作的审核** 切换到 **"打开**"。
+若要启用 Microsoft 支持操作审核，请导航到“Azure SQL 服务器”窗格中“安全”标题下的“审核”，并将“Microsoft 支持操作审核”切换到“启用”。
 
   > [!IMPORTANT]
-  > Microsoft 支持操作的审核不支持存储帐户目标。 若要启用此功能，必须配置 Log Analytics 工作区或事件中心目标。
+  > Microsoft 支持操作审核不支持存储帐户目标。 若要启用此功能，必须配置 Log Analytics 工作区或事件中心目标。
 
 ![Microsoft 支持操作的屏幕截图](./media/auditing-overview/support-operations.png)
 
@@ -143,7 +143,7 @@ AzureDiagnostics
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>对 Log Analytics 目标的审核
   
-若要配置将审核日志写入 Log Analytics 工作区，请选择 **Log Analytics** 并打开 **Log Analytics 详细信息**。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
+若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics”，并打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ AzureDiagnostics
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 
-若要配置向事件中心写入审核日志，请选择 " **事件中心** "，并打开 " **事件中心详细信息**"。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
+若要配置将审核日志写入事件中心的操作，请选择“事件中心”，打开“事件中心详细信息”。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -296,4 +296,4 @@ AzureDiagnostics
 - [部署启用了审核的 Azure SQL 数据库，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 > [!NOTE]
-> 链接的示例位于外部公共存储库中，按 "原样" 提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
+> 链接的示例位于外部公共存储库中，按“原样”提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。

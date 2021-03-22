@@ -1,24 +1,18 @@
 ---
-title: Azure 安全中心中的补救建议 |Microsoft Docs
+title: Azure 安全中心的修正建议 | Microsoft Docs
 description: 本文介绍如何在 Azure 安全中心响应建议，以保护资源并符合安全策略。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/08/2020
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 6222491d35317e549a3d21f29395b9c25813ea9f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: f382646c889d004738064cae2d09fd66d897b110
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100349"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438261"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -81,5 +75,5 @@ ms.locfileid: "102100349"
 
 在本文档中，已向你介绍了如何在安全中心修正建议。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
-* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) -了解如何配置 azure 订阅和资源组的安全策略
+* [在 Azure 安全中心内设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略
 * [什么是安全策略、计划和建议？](security-policy-concept.md)

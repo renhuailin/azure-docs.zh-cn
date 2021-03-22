@@ -10,17 +10,17 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571334"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499350"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>针对 Azure 中虚拟机的安全建议
 
 
-本文包含适用于 Azure 虚拟机的安全建议。 请遵循这些建议来履行我们责任分担模型中所述的安全义务。 这些建议还有助于改善 Web 应用解决方案的整体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请参阅 [云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
+本文包含适用于 Azure 虚拟机的安全建议。 请遵循这些建议来履行我们责任分担模型中所述的安全义务。 这些建议还有助于改善 Web 应用解决方案的整体安全性。 若要详细了解 Microsoft 采取哪些措施来履行服务提供商责任，请参阅[云计算的分担责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 
 在 Azure 安全中心可以自动实施本文所述的某些建议。 在保护 Azure 中的资源方面，Azure 安全中心是第一道防线。 它定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，它会建议如何解决漏洞。 有关详细信息，请参阅 [Azure 安全中心的安全建议](../security-center/security-center-recommendations.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "100571334"
 | 生成自定义 VM 映像时，请应用最新的更新。 | 在创建映像之前，为操作系统以及要包含在映像中的所有应用程序安装最新更新。  | - |
 | 使 VM 保持最新。 | 可以使用 Azure 自动化中的[更新管理](../automation/update-management/overview.md)解决方案来管理 Azure 中 Windows 和 Linux 计算机的操作系统更新。 | [是](../security-center/asset-inventory.md) |
 | 备份 VM。 | [Azure 备份](../backup/backup-overview.md)可帮助保护应用程序数据，其运行开销极低。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 Azure 备份可以保护运行 Windows 和 Linux 的 VM。 | - |
-| 使用多个 VM 来提高复原能力和可用性。 | 如果 VM 运行的应用程序必须高度可用，请使用多个 VM 或[可用性集](./manage-availability.md)。 | - |
+| 使用多个 VM 来提高复原能力和可用性。 | 如果 VM 运行的应用程序必须高度可用，请使用多个 VM 或[可用性集](./availability.md)。 | - |
 | 采用业务连续性和灾难恢复 (BCDR) 策略。 | 使用 Azure Site Recovery 可以从支持业务连续性的不同选项中进行选择。 它支持不同的复制和故障转移方案。 有关详细信息，请参阅[关于 Site Recovery](../site-recovery/site-recovery-overview.md)。 | - |
 
 ## <a name="data-security"></a>数据安全性
@@ -44,7 +44,7 @@ ms.locfileid: "100571334"
 | 加密数据磁盘。 | [Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)可帮助你加密 Windows 和 Linux IaaS VM 磁盘。 在没有所需密钥的情况下，无法读取已加密磁盘的内容。 磁盘加密可以防范有人未经授权访问存储的数据，否则他们可能会复制磁盘。| -  |
 | 限制安装的软件。 | 将安装的软件限制为成功应用解决方案所需的软件。 此准则原则有助于减小解决方案的受攻击面。 | - |
 | 使用防病毒软件或反恶意软件。 | 在 Azure 中，可以使用安全供应商（例如 Microsoft、Symantec、Trend Micro 和 Kaspersky）提供的反恶意软件。 这些软件可帮助保护 VM 免受恶意文件、广告程序和其他威胁的侵害。 可以根据应用程序工作负荷部署 Microsoft Antimalware。 Microsoft 反恶意软件仅适用于 Windows 计算机。 使用默认的基本安全性或高级自定义配置。 有关详细信息，请参阅[适用于 Azure 云服务和虚拟机的 Microsoft Antimalware](../security/fundamentals/antimalware.md)。 | - |
-| 安全存储密钥和机密。 | 为应用程序所有者提供安全的集中管理选项来简化机密和密钥的管理。 这种管理可以减少意外泄密或透露的风险。 Azure Key Vault 可以安全地将密钥存储在硬件安全模块 (Hsm) ，这些模块已通过 FIPS 140-2 级别2认证。 如果需要使用 FIPs 140.2 级别3来存储密钥和机密，可以使用 [Azure 专用 HSM](../dedicated-hsm/overview.md)。 | - |
+| 安全存储密钥和机密。 | 为应用程序所有者提供安全的集中管理选项来简化机密和密钥的管理。 这种管理可以减少意外泄密或透露的风险。 Azure Key Vault 可以安全地将密钥存储在经过 FIPS 140-2 级别 2 认证的硬件安全模块 (HSM) 中。 如果你需要使用 FIPs 140.2 级别 3 来存储密钥和机密，可以使用 [Azure 专用 HSM](../dedicated-hsm/overview.md)。 | - |
 
 ## <a name="identity-and-access-management"></a>标识和访问管理 
 
@@ -56,7 +56,7 @@ ms.locfileid: "100571334"
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
-| 监视 VM。 | 你可以使用 [用于 VM 的 Azure Monitor](../azure-monitor/vm/vminsights-overview.md) 来监视 Azure vm 和虚拟机规模集的状态。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 | - |
+| 监视 VM。 | 可以使用[用于 VM 的 Azure Monitor](../azure-monitor/vm/vminsights-overview.md) 来监视 Azure VM 和虚拟机规模集的状态。 VM 性能问题可能会导致服务中断，从而违反可用性安全原则。 | - |
 
 ## <a name="networking"></a>网络
 

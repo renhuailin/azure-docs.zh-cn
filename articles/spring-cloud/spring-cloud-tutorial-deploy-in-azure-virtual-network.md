@@ -4,15 +4,15 @@ description: 在虚拟网络中部署 Azure Spring Cloud（VNet 注入）。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880587"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031797"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
@@ -50,7 +50,7 @@ az provider register --namespace Microsoft.ContainerService
     * 一个用于 Spring Boot 微服务应用程序。
     * 这些子网和 Azure Spring Cloud 实例之间存在一对一关系。 请为部署的每个服务实例使用一个新子网。 每个子网只能包含一个服务实例。
 * **地址空间**：对于服务运行时子网和 Spring Boot 微服务应用程序子网，CIDR 块均为最多 /28。
-* **路由表**：子网不得有关联的现有路由表。
+* **路由表**：默认情况下，子网不需要关联现有的路由表。 你可以[使用自己的路由表](#bring-your-own-route-table)。
 
 以下过程描述了虚拟网络的设置，以包含 Azure Spring Cloud 的实例。
 
@@ -62,7 +62,7 @@ az provider register --namespace Microsoft.ContainerService
 
 1. 在“创建虚拟网络”对话框中，输入或选择以下信息：
 
-    |设置          |值                                             |
+    |设置          |“值”                                             |
     |-----------------|--------------------------------------------------|
     |订阅     |选择订阅。                         |
     |资源组   |选择你的资源组，或新建一个资源组。  |
@@ -179,6 +179,26 @@ az role assignment create \
 Azure 为子网预留 5 个 IP 地址，而 Azure Spring Cloud 至少需要四个地址。 至少需要 9 个 IP 地址，因此 /29 和/30 不适用。
 
 对于服务运行时子网，最小大小为 /28。 此大小与应用程序实例的数量无关。
+
+## <a name="bring-your-own-route-table"></a>使用自己的路由表
+
+Azure Spring Cloud 支持使用现有的子网和路由表。
+
+如果自定义子网不包含路由表，Azure Spring Cloud 将为每个子网创建路由表，并在整个实例生命周期中将规则添加到路由表。 如果自定义子网包含路由表，Azure Spring Cloud 将在实例操作期间确认现有路由表，并相应地添加/更新和/或删除操作规则。
+
+> [!Warning] 
+> 可将自定义规则添加到自定义路由表中并对其进行更新。 但是，规则由 Azure Spring Cloud 添加，且不可更新或删除。 诸如 0.0.0.0/0 的规则必须始终存在于给定的路由表中，并映射到 internet 网关的目标，例如 NVA 或其他出口网关。 更新规则时请谨慎，在此情况下只会修改自定义规则。
+
+
+### <a name="route-table-requirements"></a>路由表要求
+
+与自定义 VNet 关联的路由表必须符合以下要求：
+
+* 仅当创建新的 Azure Spring Cloud 服务实例时，才能将 Azure 路由表与 VNet 相关联。 创建 Azure Spring Cloud 后，无法改用其他路由表。
+* 微服务应用程序子网和服务运行时子网必须与不同的路由表相关联，或者不与任何路由表相关联。
+* 在创建实例之前必须分配权限。 确保授予对路由表的 Azure Spring Cloud“所有者”权限。
+* 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
+* 不能重复使用具有多个实例的路由表，因为这可能导致路由规则冲突。
 
 ## <a name="next-steps"></a>后续步骤
 

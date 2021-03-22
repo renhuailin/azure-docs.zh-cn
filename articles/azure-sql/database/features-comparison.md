@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, sstein, danil
-ms.date: 02/21/2021
-ms.openlocfilehash: 75fc4166614862c5ac48a72bacb6b7b19019d003
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691903"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489763"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -30,7 +30,11 @@ Azure SQL 数据库服务和 SQL 托管实例均与最新稳定版本的 SQL Ser
 - 安全功能 - [应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)、[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)（[参阅入门指南](dynamic-data-masking-overview.md)）、[行级别安全性](/sql/relational-databases/security/row-level-security)和威胁检测 - 请参阅适用于 [SQL 数据库](threat-detection-configure.md)和 [SQL 托管实例](../managed-instance/threat-detection-configure.md)的入门指南。
 - 多模型功能 - [图形处理](/sql/relational-databases/graphs/sql-graph-overview)、[JSON 数据](/sql/relational-databases/json/json-data-sql-server)（[参阅入门指南](json-features.md)）、[OPENXML](/sql/t-sql/functions/openxml-transact-sql)、[空间](/sql/relational-databases/spatial/spatial-data-sql-server)、[OPENJSON](/sql/t-sql/functions/openjson-transact-sql) 和 [XML 索引](/sql/t-sql/statements/create-xml-index-transact-sql)。
 
-Azure 管理数据库并保证其高可用性。 可能影响高可用性或无法在 PaaS 领域中使用的某些功能在 SQL 数据库和 SQL托管实例中会受到限制。 下表描述了这些功能。 如需有关差异的更多详细信息，请查看 [Azure SQL 数据库](../managed-instance/transact-sql-tsql-differences-sql-server.md)或 [Azure SQL 托管实例](../managed-instance/transact-sql-tsql-differences-sql-server.md)中的相关页面。
+Azure 管理数据库并保证其高可用性。 可能影响高可用性或无法在 PaaS 领域中使用的某些功能在 SQL 数据库和 SQL托管实例中会受到限制。 下表描述了这些功能。
+
+如需有关差异的更多详细信息，请查看相关页面：
+- [Azure SQL 数据库与SQL Server 之间的差异](transact-sql-tsql-differences-sql-server.md)
+- [Azure SQL 托管实例与SQL Server 之间的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL 数据库和 SQL 托管实例的功能
 
@@ -76,8 +80,8 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [内存中优化](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | 在[“高级”和“业务关键”服务层级](../in-memory-oltp-overview.md)中为是。</br> 在[超大规模服务层级](service-tier-hyperscale.md)中为非持久性内存中 OLTP 对象（如内存优化表变量）提供有限支持。| 在[“业务关键”服务层级](../managed-instance/sql-managed-instance-paas-overview.md)中为是 |
 | [语言元素](/sql/t-sql/language-elements/language-elements-transact-sql) | 大多数 - 请参阅单个元素 |  是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [链接服务器](/sql/relational-databases/linked-servers/linked-servers-database-engine) | 否 - 请参阅[弹性查询](elastic-query-horizontal-partitioning.md) | 是的。 仅适用于没有分布式事务的 [SQL Server 和 SQL 数据库](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)。 |
-| 从文件（CSV、Excel）中读取数据的[链接服务器](/sql/relational-databases/linked-servers/linked-servers-database-engine)| 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 来替代 CSV 格式。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 来替代 CSV 格式。 在[SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上跟踪这些请求|
-| [日志传送](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | 每个数据库均包含[高可用性](high-availability-sla.md)。 [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)中对灾难恢复进行了探讨。 | 作为 [Azure 数据迁移服务 ](../../dms/tutorial-sql-server-to-managed-instance.md) 的一部分内置内置 (dm) 迁移过程。 作为外部日志重播服务，以本地方式构建自定义数据迁移项目 [ (LRS) ](../managed-instance/log-replay-service-migrate.md)。<br /> 不可用作高可用性解决方案，因为每个数据库都附带其他[高可用性](high-availability-sla.md)方法，并且我们不建议使用日志传送作为高可用性替代方案。 [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)中对灾难恢复进行了探讨。 不可用作数据库之间的复制机制 - 请使用[业务关键层](service-tier-business-critical.md)、[自动故障转移组](auto-failover-group-overview.md)或[事务复制](../managed-instance/replication-transactional-overview.md)中的辅助副本作为替代方案。 |
+| 从文件（CSV、Excel）中读取数据的[链接服务器](/sql/relational-databases/linked-servers/linked-servers-database-engine)| 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 来替代 CSV 格式。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) 来替代 CSV 格式。 在 [SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)中跟踪这些请求|
+| [日志传送](/sql/database-engine/log-shipping/about-log-shipping-sql-server) | 每个数据库均包含[高可用性](high-availability-sla.md)。 [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)中对灾难恢复进行了探讨。 | 以本机内置方式成为 [Azure 数据迁移服务 (DMS)](../../dms/tutorial-sql-server-to-managed-instance.md) 迁移过程的一部分。 以本机方式专为自定义数据迁移项目而构建成外部[日志重播服务 (LRS)](../managed-instance/log-replay-service-migrate.md)。<br /> 不可用作高可用性解决方案，因为每个数据库都附带其他[高可用性](high-availability-sla.md)方法，并且我们不建议使用日志传送作为高可用性替代方案。 [业务连续性概述](business-continuity-high-availability-disaster-recover-hadr-overview.md)中对灾难恢复进行了探讨。 不可用作数据库之间的复制机制 - 请使用[业务关键层](service-tier-business-critical.md)、[自动故障转移组](auto-failover-group-overview.md)或[事务复制](../managed-instance/replication-transactional-overview.md)中的辅助副本作为替代方案。 |
 | [登录名和用户](/sql/relational-databases/security/authentication-access/principals-database-engine) | 是，但是 `CREATE` 和 `ALTER` 登录语句不提供所有选项（没有 Windows 和服务器级别 Azure Active Directory 登录名）。 不支持 `EXECUTE AS LOGIN` - 请改用 `EXECUTE AS USER`。  | 是，但有一些[差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#logins-and-users)。 不支持 Windows 登录名，应将其替换为 Azure Active Directory 登录名。 |
 | [批量导入中的最小日志记录](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | 否，仅支持完整恢复模式。 | 否，仅支持完整恢复模式。 |
 | [修改系统数据](/sql/relational-databases/databases/system-databases) | 否 | 是 |
@@ -86,9 +90,9 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [OPENQUERY](/sql/t-sql/functions/openquery-transact-sql)|否|是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)|是，只是为了从 Azure Blob 存储导入。 |是，仅适用于 SQL 数据库、SQL 托管实例和 SQL Server，以及从 Azure Blob 存储进行导入的操作。 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)|
 | [运算符](/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 你可以使用函数查询放置在 Azure Blob 存储上的文件中的数据， `OPENROWSET` 或使用 [引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)。 | 否。 您可以使用 `OPENROWSET` 函数、 [引用 Synapse analytics 中的无服务器 sql 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或在 Synapse analytics 或 SQL Server 中引用 [无服务器 sql 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 的外部表 (在公共) 预览版中放置在 Azure Blob 存储中的文件中的数据。 |
+| [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 可以使用 `OPENROWSET` 函数或使用[引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)查询放置在 Azure Blob 存储上的文件中的数据。 | 不是。 可以使用 `OPENROWSET` 函数、[引用 Synapse Analytics 中的无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或引用 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)或 SQL Server 的外部表查询放置在 Azure Blob 存储上的文件中的数据。 |
 | [查询通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
-| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning) (_以前的 R Services_) | 是，在[公共预览版](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | 否 |
+| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning)（_以前称为 R Services_）| 是，[处于公开预览状态](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | 否 |
 | [恢复模型](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 |
 | [资源调控器](/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是，对 Azure Blob 存储上的备份文件使用必需的 `FROM URL` 选项。 请参阅[还原差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
@@ -128,7 +132,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [Azure 资源运行状况](../../service-health/resource-health-overview.md) | 是 | 否 |
 | 备份保留 | 是的。 默认为 7 天，最长 35 天。 | 是的。 默认为 7 天，最长 35 天。 |
 | [数据迁移服务 (DMS)](/sql/dma/dma-overview) | 是 | 是 |
-| [弹性作业](elastic-jobs-overview.md) | 是-请参阅 [弹性作业 (预览) ](elastic-jobs-overview.md) | 不能) 使用 ([SQL 代理](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) 。 |
+| [弹性作业](elastic-jobs-overview.md) | 是 - 请参阅[弹性作业（预览版）](elastic-jobs-overview.md) | 否（可以改用 [SQL 代理](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent)）。 |
 | 文件系统访问 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 |
 | [异地还原](recovery-using-backups.md#geo-restore) | 是 | 是 |
 | [超大规模体系结构](service-tier-hyperscale.md) | 是 | 否 |
@@ -137,7 +141,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [基于策略的管理](/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | 公共 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](../managed-instance/public-endpoint-overview.md)。 |
 | [数据库时间点还原](/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是 - 除超大规模之外的所有服务层级 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) |
-| 资源池 | 是，用作[弹性池](elastic-pool-overview.md) | 是的。 SQL 托管实例的单个实例可以包含多个共享同一资源池的数据库。 此外，还可以在可共享资源 [ (预览) 的实例池中 ](../managed-instance/instance-pools-overview.md) 部署 SQL 托管实例的多个实例。 |
+| 资源池 | 是，用作[弹性池](elastic-pool-overview.md) | 是的。 SQL 托管实例的单个实例可以包含多个共享同一资源池的数据库。 此外，还可以在可共享资源的[实例池（预览版）](../managed-instance/instance-pools-overview.md)中部署 SQL 托管实例的多个实例。 |
 | 纵向扩展或缩减（联机） | 是，可以更改 DTU、预留的 vCore 数或最大存储，这只会造成极短时间的停机。 | 是，可以更改预留的 vCore 数或最大存储，这只会造成极短时间的停机。 |
 | [SQL 别名](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | 否，使用 [DNS 别名](dns-alias-overview.md) | 否，请使用 [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) 在客户端计算机上设置别名。 |
 | [SQL Analytics](../../azure-monitor/insights/azure-sql.md) | 是 | 是 |
@@ -185,8 +189,8 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 
 Microsoft 会继续向 Azure SQL 数据库添加功能。 访问针对 Azure 的服务更新网页，并使用以下筛选器获取最新更新：
 
-- 筛选到 [AZURE SQL Database](https://azure.microsoft.com/updates/?service=sql-database)。
-- 已筛选为正式发布的 SQL 数据库功能 [ \( 公开 \) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) 。
+- 筛选为 [Azure SQL 数据库](https://azure.microsoft.com/updates/?service=sql-database)。
+- 筛选为针对 SQL 数据库功能的[正式发布版本 \(GA\) 公告](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)。
 
 若要详细了解 Azure SQL 数据库和 Azure SQL 托管实例，请参阅：
 

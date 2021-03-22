@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256443"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734013"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
 以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -28,7 +28,7 @@ ms.locfileid: "98256443"
 | 每个虚拟网络的虚拟网络对等互连数 |500 |
 | [每个虚拟网络的虚拟网关（VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
 | [每个虚拟网络的虚拟网关（ExpressRoute 网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
-| 每个虚拟网络的 DNS 服务器数 |20 个 |
+| 每个虚拟网络的 DNS 服务器数 |20 |
 | 每个虚拟网络的专用 IP 地址数 |65,536 |
 | 每个网络接口的专用 IP 地址数 |256 |
 | 每个虚拟机的专用 IP 地址数 |256 |
@@ -40,12 +40,12 @@ ms.locfileid: "98256443"
 | 每个 NSG 的 NSG 规则数 |1,000 |
 | 为安全组中的源或目标指定的 IP 地址和范围数 |4,000 |
 | 应用程序安全组 |3,000 |
-| 每个 IP 配置和每个 NIC 的应用程序安全组数 |20 个 |
+| 每个 IP 配置和每个 NIC 的应用程序安全组数 |20 |
 | 每个应用程序安全组的 IP 配置数 |4,000 |
 | 可在网络安全组的所有安全规则中指定的应用程序安全组数 |100 |
 | 用户定义路由表数 |200 |
 | 每个路由表的用户定义的路由数 |400 |
-| 每个 Azure VPN 网关的点到站点根证书数 |20 个 |
+| 每个 Azure VPN 网关的点到站点根证书数 |20 |
 | 虚拟网络 TAP |100 |
 | 每个虚拟网络 TAP 的网络接口 TAP 配置 |100 |
 
@@ -69,7 +69,7 @@ ms.locfileid: "98256443"
 | 资源                                | 限制         |
 |-----------------------------------------|-------------------------------|
 | 负载均衡器                          | 1,000                         |
-| 每个资源的规则数                      | 1,500                         |
+| 每个资源的规则数（负载均衡器 + 入站 NAT）                      | 1,500                         |
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                           |
 | 前端 IP 配置数              | 600                           |
 | 后端池大小                       | 单个虚拟网络 1000 个 IP 配置 |
@@ -78,7 +78,7 @@ ms.locfileid: "98256443"
 | 每个负载均衡器的出站规则        | 600                           |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）   |
 
-<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合。
+<sup>1</sup> 限制是最多 150 个资源（独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合）。
 
 **基本负载均衡器**
 
@@ -87,10 +87,12 @@ ms.locfileid: "98256443"
 | 负载均衡器                          | 1,000                        |
 | 每个资源的规则数                      | 250                          |
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                          |
-| 前端 IP 配置数              | 200                          |
+| 前端 IP 配置 <sup>2<sup>  | 200                          |
 | 后端池大小                       | 单个可用性集 300 个 IP 配置 |
 | 每个负载均衡器的可用性集数     | 1                            |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）  |
+
+<sup>2</sup> 后端池（独立虚拟机、可用性集或虚拟机规模集放置组）中单个离散资源的限制是，在单个基本公共负载均衡器和基本内部负载均衡器上最多有 250 个前端 IP 配置。
 
 <a name="virtual-networking-limits-classic"></a>以下限制仅适用于每个订阅通过经典部署模型托管的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 文档提取认知技能（预览版）
+title: 文档提取认知技能
 titleSuffix: Azure Cognitive Search
 description: 从扩充管道内的文件中提取内容。 此技能目前为公共预览版。
 manager: nitinme
@@ -8,17 +8,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: d6dd2b891cb3bf9ebb5442f541021c20a34ce1a1
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
-ms.translationtype: MT
+ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474840"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547860"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
-
-> [!IMPORTANT] 
-> 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
 
 **文档提取** 技能从扩充管道内的文件中提取内容。 这使你可以利用文档提取步骤，该步骤通常在技能组执行之前对可能由其他技能生成的文件执行。
 
@@ -37,7 +34,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 | 输入 | 允许的值 | 说明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | 对于从非纯文本或 json 文件进行的文档提取，请设置为 `default`。 若要提高针对纯文本文件的性能，请设置为 `text`。 若要从 json 文件中提取结构化内容，请设置为 `json`。 如果未显式定义 `parsingMode`，则它将设置为 `default`。 |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 设置为 `allMetadata` 以仅提取 [内容类型的元数据属性](search-blob-metadata-properties.md) (例如，仅) 的 png 文件的唯一元数据。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 若要仅提取[内容类型的元数据属性](search-blob-metadata-properties.md)（例如，仅 .png 文件独有的元数据），请设置为 `allMetadata`。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
 | `configuration` | 请参阅下文。 | 可选参数的字典，这些参数用于调整文档提取执行方式。 有关支持的配置属性的说明，请参阅下表。 |
 
 | 配置参数   | 允许的值 | 说明 |

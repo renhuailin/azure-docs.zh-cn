@@ -2,18 +2,19 @@
 title: Azure 中 Linux VM 的 cloud-init 支持概述
 description: 在 Azure 中预配时用于配置 VM 的 cloud-init 功能概述。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/14/2021
 ms.author: danis
-ms.openlocfilehash: a4fc51c8bb8a07f768da16224b9258bbdbf6d9b4
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: ac907c2ea2ae53bd192c01232c66e0467025daae
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100632928"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102563225"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持
 本文介绍在 Azure 中预配时用于配置虚拟机 (VM) 或虚拟机规模集的 [cloud-init](https://cloudinit.readthedocs.io) 的现有支持。 Azure 预配资源后，这些 cloud-init 配置即会在首次启动时运行。  
@@ -23,7 +24,7 @@ VM 预配是指 Azure 向下传递“VM 创建”参数值（例如主机名、�
 Azure 支持两个预配代理：[cloud-init](https://cloudinit.readthedocs.io) 和 [Azure Linux 代理 (WALA)](../extensions/agent-linux.md)。
 
 ## <a name="cloud-init-overview"></a>cloud-init 概述
-[cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件或其他输入的格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件或其他输入的格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
 cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 cloud-init 将对你选择的发行版自动使用本机包管理工具。
 
@@ -52,10 +53,10 @@ cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装�
 |RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
 |RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
 |RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | 是  | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是 (注意：这是一个预览图像，一旦所有 RHEL 8.1 映像都支持云初始化，此操作将在 8 2020 月1日之前删除)  | 否，完整支持的 ETA 为 2020 年 6 月|
-|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是 (注意：这是一个预览图像，一旦所有 RHEL 8.1 映像都支持云初始化，此操作将在 8 2020 月1日之前删除)  | 否，完整支持的 ETA 为 2020 年 6 月 |
+|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是（请注意：这是一个预览版映像，一旦所有 RHEL 8.1 映像都支持 cloud-init，就会在 2020 年 8 月 1 日删除此映像） | 否，完整支持的 ETA 为 2020 年 6 月|
+|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是（请注意：这是一个预览版映像，一旦所有 RHEL 8.1 映像都支持 cloud-init，就会在 2020 年 8 月 1 日删除此映像） | 否，完整支持的 ETA 为 2020 年 6 月 |
 
-* 所有 RedHat： RHEL 7.8 和 8.2 (Gen1 和 Gen2) 映像都是使用云初始化进行预配的。
+* 所有 RedHat:RHEL 7.8 和 8.2（Gen1 和 Gen2）映像都是用 cloud-init 预配的。
 
 ### <a name="centos"></a>CentOS
 
@@ -77,7 +78,7 @@ cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装�
 
 | 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 预览图像 (注意：这是一个预览图像，在所有 Oracle 7.7 映像都支持云初始化之后，将从年2020中删除此内容，通知将被提供)  | 否，在预览版中，包为：*18.5-3.0.1.el7*
+|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 预览版映像（请注意：这是一个预览版映像，一旦所有 Oracle 7.7 映像都支持 cloud-init，就会在 2020 年中期删除此映像，届时会发出通知） | 否，在预览版中，包为：*18.5-3.0.1.el7*
 
 ### <a name="suse-sles"></a>SUSE SLES
 这些 SLES 映像已更新为使用 cloud-init 预配，Gen2 映像变体也已经更新。
@@ -136,7 +137,7 @@ packages:
   - httpd
 ```
 > [!NOTE]
-> cloud init 具有多个 [输入类型](https://cloudinit.readthedocs.io/en/latest/topics/format.html)，cloud init 将使用 CustomData/userData 的第一行来指示它应如何处理输入，例如， `#cloud-config` 指示应将内容作为云初始化配置进行处理。
+> cloud init 具有多个[输入类型](https://cloudinit.readthedocs.io/en/latest/topics/format.html)，cloud init 将使用 customData/userData 的第一行来指明它应如何处理输入，例如，`#cloud-config` 指示应将内容作为 cloud-init 配置进行处理。
 
 
 按 `ctrl-X` 退出该文件，键入 `y` 以保存文件，并按 `enter` 确认退出时的文件名。

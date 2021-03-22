@@ -13,18 +13,16 @@ ms.tgt_pltfrm: na
 ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165733"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750157"
 ---
 ### <a name="general-requirements"></a>一般要求
 
 * VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
-
-* 使用 VNet 的池最多可以有 4096 个节点。
 
 * 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
 
@@ -67,6 +65,9 @@ ms.locfileid: "98165733"
 
 在端口 3389 (Windows) 或 22 (Linux) 上配置入站流量的前提是，你需要允许对外部源中的计算节点进行远程访问。 如果需要支持使用某些 MPI 运行时的多实例任务，则可能需要在 Linux 上启用端口 22 规则。 使池计算节点可用不一定需要允许这些端口上的流量。
 
+> [!WARNING]
+> Batch 服务 IP 地址随时可能会更改。 因此，我们强烈建议你对下表中所示的 NSG 规则使用 `BatchNodeManagement` 服务标记（或区域变体）。 避免用特定 Batch 服务 IP 地址填充 NSG 规则。
+
 **入站安全规则**
 
 | 源 IP 地址 | 源服务标记 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
@@ -74,16 +75,19 @@ ms.locfileid: "98165733"
 | 空值 | `BatchNodeManagement` [服务标记](../articles/virtual-network/network-security-groups-overview.md#service-tags)（如果使用区域变体，则在与 Batch 帐户相同的区域中） | * | Any | 29876-29877 | TCP | 允许 |
 | 用户源 IP，用于远程访问 Linux 多实例任务的计算节点和/或计算节点子网（如果需要）。 | 空值 | * | Any | 3389 (Windows)、22 (Linux) | TCP | 允许 |
 
-> [!WARNING]
-> Batch 服务 IP 地址随时可能会更改。 因此，强烈建议对 NSG 规则使用 `BatchNodeManagement` 服务标记（或区域变体）。 避免用特定 Batch 服务 IP 地址填充 NSG 规则。
-
 **出站安全规则**
 
 | 源 | 源端口 | 目标 | 目标服务标记 | 目标端口 | 协议 | 操作 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [服务标记](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage`（如果使用区域变体，则在与 Batch 帐户相同的区域中） | 443 | TCP | 允许 |
+| Any | * | [服务标记](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement`（如果使用区域变体，则在与 Batch 帐户相同的区域中） | 443 | TCP | 允许 |
+
+若要从计算节点联系 Batch 服务（例如，对于作业管理器任务），必须出站到 `BatchNodeManagement`。
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>“云服务”配置中的池
+
+> [!WARNING]
+> 云服务配置池已弃用。 请改用虚拟机配置池。
 
 **支持的 VNet** - 仅限经典 VNet
 
@@ -112,4 +116,4 @@ Any <br /><br />虽然这需要有效地“全部允许”，但 Batch 服务会
 
 | 源 | 源端口 | 目标 | 目标端口 | 协议 | 操作 |
 | --- | --- | --- | --- | --- | --- |
-| 任意 | * | Any | 443  | 任意 | Allow |
+| 任意 | * | 任意 | 443  | 任意 | Allow |

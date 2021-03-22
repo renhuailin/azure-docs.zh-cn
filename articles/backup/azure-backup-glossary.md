@@ -3,12 +3,12 @@ title: Azure 备份术语表
 description: 本文定义了有助于 Azure 备份使用的术语。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723908"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502019"
 ---
 # <a name="azure-backup-glossary"></a>Azure 备份术语表
 
@@ -19,13 +19,13 @@ ms.locfileid: "98723908"
 > - 标有“（特定于工作负载的术语）”的术语是指仅在 Azure 备份支持的特定工作负载子集中相关的术语。
 > - 对于 Azure 备份文档中常用但指其他 Azure 服务的术语，将提供一个指向相关 Azure 服务文档的直接链接。
 
-## <a name="afs-azure-file-shares"></a> (Azure 文件共享的 AFS) 
+## <a name="afs-azure-file-shares"></a>Azure 文件共享 (AFS)
 
-请参阅 [Azure 文件文档](../storage/files/storage-files-introduction.md)。
+请参阅 [Azure 文件存储文档](../storage/files/storage-files-introduction.md)。
 
 ## <a name="alternate-location-recovery"></a>备用位置恢复
 
-执行从恢复点到位置（不是在其中创建了备份的源位置）的恢复。 使用 Azure VM 备份时，这意味着会将 VM 还原到执行备份的原始服务器以外的服务器。 使用 Azure 文件共享备份时，这意味着将数据还原到不同于已备份文件共享的文件共享。
+执行从恢复点到位置（不是在其中创建了备份的源位置）的恢复。 使用 Azure VM 备份时，这意味着会将 VM 还原到执行备份的原始服务器以外的服务器。 使用 Azure 文件共享进行备份时，这意味着会将数据还原到与已备份文件共享不同的文件共享。
 
 ## <a name="application-consistent-backup"></a>应用程序一致性备份
 
@@ -56,11 +56,11 @@ Azure 备份提供了三种类型的复制来保持存储和数据的高可用�
 [异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是默认的和推荐的复制选项。 GRS 将备份数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的备份数据持久度，即使出现区域性服务中断也是如此。
 
 >[!NOTE]
->对于启用了跨区域还原功能的 GRS 保管库，备份存储将从 GRS 升级到 GRS (读访问 Geo-Redundant 存储) 。
+>对于启用了跨区域还原功能的 GRS 保管库，备份存储从 GRS 升级到 RA-GRS（读取访问异地冗余存储）。
 
 ### <a name="zrs"></a>ZRS
 
-[区域冗余存储 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 复制 [可用性区域](../availability-zones/az-overview.md#availability-zones)中的备份数据，从而在同一区域中确保备份数据的驻留和复原能力。 因此，可以在 ZRS 中备份需要 [数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) 的关键工作负荷。
+[区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 在[可用性区域](../availability-zones/az-overview.md#availability-zones)复制备份数据，从而确保同一区域中的备份数据驻留和复原能力。 因此，可在 ZRS 中备份需要[数据驻留](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)的关键工作负载。
 
 ## <a name="azure-command-line-interface-cli"></a>Azure 命令行界面 (CLI)
 
@@ -122,9 +122,9 @@ BCDR 涉及组织必须采用的一组流程，以确保应用和工作负载在
 
 如果在备份时 Azure VM 关闭，则往往会发生崩溃一致性快照。 仅会捕获和备份备份时磁盘上已存在的数据。 [了解详细信息](backup-azure-vms-introduction.md#snapshot-consistency)。
 
-## <a name="cross-region-restore-crr"></a>跨区域还原 (CRR) 
+## <a name="cross-region-restore-crr"></a>跨区域还原 (CRR)
 
-作为 [还原选项](backup-azure-arm-restore-vms.md#restore-options)之一，跨区域还原 (CRR) 使你能够还原次要区域（即 [Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的备份项。
+作为[还原选项](backup-azure-arm-restore-vms.md#restore-options)之一，跨区域还原 (CRR) 可让你还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的备份项。
 
 ## <a name="data-box"></a>Data box
 
@@ -172,7 +172,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="instant-restore"></a>即时还原
 
- (工作负荷特定术语) 即时还原涉及直接从备份快照还原计算机，而不是从保管库中的快照副本还原。 即时还原比从保管库还原快。 可用的即时还原点数取决于为快照配置的保留持续时间。 目前仅适用于 Azure VM 备份。
+（特定于工作负载的术语）即时还原涉及直接从计算机的备份快照还原计算机（而不是从保管库中的快照副本还原计算机）。 即时还原比从保管库还原快。 可用的即时还原点数取决于为快照配置的保留持续时间。 目前仅适用于 Azure VM 备份。
 
 ## <a name="iops"></a>IOPS
 
@@ -218,7 +218,7 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="original-location-recovery-olr"></a>原始位置恢复 (OLR)
 
-执行从还原点到源位置（已在其中创建了备份）的恢复，将其替换为存储在恢复点中的状态。 使用 Azure VM 备份时，这意味着将 VM 还原到进行备份的原始服务器。 使用 Azure 文件共享备份时，这意味着将数据还原到备份的文件共享。
+执行从还原点到源位置（已在其中创建了备份）的恢复，将其替换为存储在恢复点中的状态。 使用 Azure VM 备份时，这意味着将 VM 还原到进行备份的原始服务器。 使用 Azure 文件共享备份时，这意味着将数据还原到已备份的文件共享。
 
 ## <a name="passphrase"></a>通行短语
 
@@ -228,23 +228,23 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="private-endpoint"></a>专用终结点
 
-请参阅 [私有终结点文档](../private-link/private-endpoint-overview.md)。
+请参阅[专用终结点文档](../private-link/private-endpoint-overview.md)。
 
 ## <a name="protected-instance"></a>受保护的实例
 
-受保护的实例是指用于配置 Azure 备份的计算机、物理或虚拟服务器。  从计费角度来看，计算机的受保护的实例计数是计算机前端大小的函数。 因此，一个备份实例 (例如备份到 Azure) 的 VM 可以与多个受保护的实例相对应，具体取决于其前端大小。 [了解详细信息](https://azure.microsoft.com/pricing/details/backup/)。
+受保护的实例是指用于配置 Azure 备份的计算机、物理或虚拟服务器。  从计费角度来看，计算机的受保护的实例计数是计算机前端大小的函数。 因此，一个备份实例（例如，一个备份到 Azure 的 VM）可以与多个受保护的实例相对应，具体取决于其前端大小。 [了解详细信息](https://azure.microsoft.com/pricing/details/backup/)。
 
 ## <a name="rbac-role-based-access-control"></a>RBAC（基于角色的访问控制）
 
 请参阅 [RBAC 文档](../role-based-access-control/overview.md)。
 
-## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>恢复点/还原点/保留点/时间点 (PIT) 
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>恢复点/还原点/保留点/时间点 (PIT)
 
 要备份的原始数据的副本。 保留点与时间戳关联，因此你可以使用该点将项目还原到特定时间点。
 
 ## <a name="recovery-services-vault"></a>恢复服务保管库
 
-类型为 Microsoft.RecoveryServices/vaults 的 Azure 资源管理器资源。 目前，恢复服务保管库用于备份以下工作负荷： azure vm、Azure Vm 中的 SQL、Azure Vm SAP HANA 和 Azure 文件共享。 它还用于使用 MARS、Azure 备份服务器 (MABS) 和 System Center DPM 备份本地工作负载。 [详细了解恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。
+类型为 Microsoft.RecoveryServices/vaults 的 Azure 资源管理器资源。 目前，恢复服务保管库用于备份以下工作负载：Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA 以及 Azure 文件共享。 它还用于使用 MARS、Azure 备份服务器 (MABS) 和 System Center DPM 备份本地工作负载。 [详细了解恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。
 
 ## <a name="resource-group"></a>资源组
 
@@ -260,11 +260,11 @@ GFS（祖父-父-子）备份策略使你能够定义每周、每月和每年的
 
 ## <a name="rpo-recovery-point-objective"></a>RPO（恢复点目标）
 
-RPO 表示数据丢失方案中可能的最大数据丢失量。 这取决于备份频率。
+RPO 表示在数据丢失情况下可能的最大数据丢失量。 这取决于备份频率。
 
 ## <a name="rto-recovery-time-objective"></a>RTO（恢复时间目标）
 
-RTO 表示数据丢失方案后，可以将数据还原到上一个可用时间点的最大可能时间。
+RTO 表示数据在数据丢失后可恢复到上一个可用时间点的最大可能时间。
 
 ## <a name="scheduled-backup"></a>计划内备份
 
@@ -280,7 +280,7 @@ RTO 表示数据丢失方案后，可以将数据还原到上一个可用时间�
 
 ## <a name="snapshot"></a>快照
 
-快照是虚拟硬盘驱动器 (VHD) 或 Azure 文件共享的完整只读副本。 了解有关 [磁盘快照](../virtual-machines/windows/snapshot-copy-managed-disk.md) 和 [文件快照](../storage/files/storage-snapshots-files.md)的详细信息。
+快照是虚拟硬盘 (VHD) 或 Azure 文件共享的完整只读副本。 详细了解[磁盘快照](../virtual-machines/windows/snapshot-copy-managed-disk.md)和[文件快照](../storage/files/storage-snapshots-files.md)。
 
 ## <a name="storage-account"></a>存储帐户
 
@@ -300,6 +300,18 @@ Azure 订阅是用于在 Azure 中预置资源的逻辑容器。 它保存所有
 
 租户是组织的表示形式。 它是 Azure AD 专用实例，组织或应用开发人员与 Microsoft 建立关系时（例如注册 Azure、Microsoft Intune 或 Microsoft 365）会收到该实例。
 
+## <a name="tier"></a>层
+
+目前，Azure 备份支持以下备份存储层：
+
+### <a name="snapshot-tier"></a>快照层
+
+（特定于工作负载的术语）在 VM 备份的第一阶段，拍摄的快照与磁盘一起存储。 这种存储形式称为快照层。 （与从保管库还原相比）快照层还原的速度更快，因为它们在触发还原操作之前无需等待从保管库复制快照。
+
+### <a name="vault-standard-tier"></a>保管库-标准层
+
+Azure 备份支持的所有工作负载的备份数据存储在保存备份存储的保管库中，这是由 Azure 备份管理的一组自动缩放存储帐户。 保管库-标准层是一种联机存储层，可用于将备份数据的隔离副本存储在 Microsoft 托管的租户中，从而建立另一层保护。 对于支持快照层的工作负载，快照层和保管库-标准层中都有备份数据的副本。 保管库-标准层可确保备份数据可用，即使要备份的数据源被删除或泄露也是如此。
+
 ## <a name="unmanaged-disk"></a>非托管磁盘
 
 请参阅[非托管磁盘文档](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)。
@@ -310,7 +322,7 @@ Azure 中包含备份数据的存储实体。 也是 RBAC 和计费的单位。 
 
 ## <a name="vault-credentials"></a>保管库凭据
 
-保管库凭据文件是门户为每个保管库生成的证书。 在将本地服务器注册到保管库时使用此项。 [了解详细信息](backup-azure-dpm-introduction.md)。
+保管库凭据文件是门户为每个保管库生成的证书。 将本地服务器注册到保管库时使用此文件。 [了解详细信息](backup-azure-dpm-introduction.md)。
 
 ## <a name="vnet-virtual-network"></a>VNET（虚拟网络）
 

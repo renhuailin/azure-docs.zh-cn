@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 625058b131ef5cb6180873806185a3202a766118
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0f800d2d42d0d8815021f1582b04750d87aa5abc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675560"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651384"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Salesforce 集成
 
@@ -37,11 +37,11 @@ ms.locfileid: "92675560"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Salesforce 支持 SP 发起的 SSO
+* Salesforce 支持 SP 发起的 SSO。
 
-* Salesforce 支持 [**自动** 用户预配和取消预配](salesforce-provisioning-tutorial.md)（推荐）
+* Salesforce 支持[自动用户预配和取消预配](salesforce-provisioning-tutorial.md)（推荐）。
 
-* Salesforce 支持实时用户预配
+* Salesforce 支持实时用户预配。
 
 * 现在可以为 Salesforce 移动应用程序配置 Azure AD 以启用 SSO。 本教程在测试环境中配置并测试 Azure AD SSO。
 
@@ -80,27 +80,27 @@ ms.locfileid: "92675560"
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
-
-    a. 在“登录 URL”文本框中，使用以下模式键入值：
+    
+    a. 在“标识符”文本框中，使用以下模式键入值：
 
     企业帐户：`https://<subdomain>.my.salesforce.com`
 
     开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
-    
+
     b. 在“回复 URL”文本框中，键入使用以下模式的值：
 
     企业帐户：`https://<subdomain>.my.salesforce.com`
 
     开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
 
-    c. 在“标识符”文本框中，使用以下模式键入值：
+    c. 在“登录 URL”文本框中，使用以下模式键入值：
 
     企业帐户：`https://<subdomain>.my.salesforce.com`
 
     开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
@@ -118,7 +118,7 @@ ms.locfileid: "92675560"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -173,7 +173,7 @@ ms.locfileid: "92675560"
 
     ![配置单一登录选择文件](./media/salesforce-tutorial/xmlchoose.png)
 
-1. 在“SAML 单一登录设置”页上，自动填充字段，选择“启用用户预配”，然后单击“保存”。
+1. 在“SAML 单一登录设置”页上，字段会自动填充，如果要使用 SAML JIT，请选择“启用用户预配”，并将“SAML 标识类型”选为“断言包含来自用户对象的联合 ID”；否则，请取消选择“启用用户预配”，并将“SAML 标识类型”选为“断言包含用户的 Salesforce 用户名”。 单击“ **保存**”。
 
     ![配置单一登录启用用户预配](./media/salesforce-tutorial/salesforcexml.png)
 
@@ -185,9 +185,9 @@ ms.locfileid: "92675560"
 
     ![配置单一登录身份验证配置](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-1. 在“身份验证配置”部分中，选中“AzureSSO”作为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
+1. 在“身份验证配置”部分中，选中“登录页”和“AzureSSO” 作为 SAML SSO 配置的“身份验证服务”，然后单击“保存”。
 
-    ![配置单一登录身份验证服务](./media/salesforce-tutorial/sf-auth-config.png)
+    ![配置单一登录身份验证服务](./media/salesforce-tutorial/authentication.png)
 
     > [!NOTE]
     > 如果选择了多个身份验证服务，则当用户向 Salesforce 环境发起单一登录时，系统将提示他们选择登录时要使用的身份验证服务。 如果不希望发生这种情况，应将其他所有身份验证服务保持未选中状态。
@@ -200,11 +200,11 @@ ms.locfileid: "92675560"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Salesforce 登录 URL，可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Salesforce 登录 URL，可以在其中启动登录流。 
 
-2. 直接转到 Salesforce 登录 URL，并在其中启动登录流。
+* 直接转到 Salesforce 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 单击“访问面板”中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Salesforce 磁贴时，应当会自动登录到为其设置了 SSO 的 Salesforce。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>测试 Salesforce（移动）的 SSO
 

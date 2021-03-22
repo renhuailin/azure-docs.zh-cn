@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7882fc6a6823a93d09c04a8ae2c19005df4843d8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 37768b994d4b61ee728e04352f027a6f5a478341
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98917087"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102031610"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>什么是 Azure Synapse Analytics？
 
@@ -64,12 +64,12 @@ Azure Synapse 为企业提供单一方式来管理分析资源、监视使用情
 * 对数据和代码进行精细的访问控制
 * 可在单个仪表板中监视 SQL 与 Spark 中的资源、使用情况和用户
 
-### <a name="synapse-studio"></a>Synapse Studio
+### <a name="unified-experience"></a>统一体验
 
-Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全部信息整合在一起，使他们能够在一个位置执行生成完整解决方案所需完成的每项任务。
+对于数据工程师来说，Synapse Studio 是一种将一切联系在一起的用户体验。 它使他们能够完成构建完整的分析解决方案所需的每项任务。
 
-* 在一个位置生成端到端的分析解决方案：引入、浏览、准备、协调、可视化
-* 让编写 SQL 或 Spark 代码的数据工程师保持行业领先的工作效率：创作、调试和性能优化
+* 关键数据工程师任务集中在一个位置：引入、浏览、准备、协调、可视化
+* 行业领先的编写 SQL 或 Spark 代码的工作效率：创作、调试和性能优化
 * 与企业 CI/CD 过程集成
 
 ## <a name="engage-with-the-synapse-engineering-team"></a>与 Synapse 工程团队合作

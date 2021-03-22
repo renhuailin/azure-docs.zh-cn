@@ -1,5 +1,5 @@
 ---
-title: 监视 Azure Blob 存储 |Microsoft Docs
+title: 监视 Azure Blob 存储 | Microsoft Docs
 description: 了解如何监视 Azure Blob 存储的性能和可用性。 监视 Azure Blob 存储数据、了解配置以及分析指标和日志数据。
 author: normesta
 services: storage
@@ -9,26 +9,26 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 3f96549c73c231db63360891dd0705b649097c80
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3b497a8507fb82bfb69fbe7396e5a0d34006a7f1
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218092"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502070"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
-如果你有依赖 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍了 Azure Blob 存储生成的监视数据，以及如何使用 Azure Monitor 的功能来分析此数据的警报。
+如果你有依赖 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure Blob 存储生成的监视数据，以及如何使用 Azure Monitor 的各种功能分析这些数据的相关警报。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅 [存储帐户概述](../common/storage-account-overview.md)。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
-每个 Blob 存储资源的 Azure 门户中的 " **概述** " 页包括资源使用情况的简要视图，例如请求和每小时计费。 这些信息非常有用，但只提供少量监视数据。 创建资源后，其中的某些数据会自动收集，并可供分析。 你可以使用某些配置启用其他数据收集类型。
+每种 Blob 存储资源的 Azure 门户“概述”页都包含资源使用情况（例如请求和每小时计费）的简要视图。 这些信息非常有用，但只提供少量监视数据。 创建资源后，其中的某些数据会自动收集，并可供分析。 你可以使用某些配置启用其他数据收集类型。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
-Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md)，这是 Azure 中的一种完整的堆栈监视服务来创建监视数据。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
+Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md) 来创建监视数据，Azure Monitor 是 Azure 中的一项完整堆栈监视服务。 Azure Monitor 提供了一整套用于监视 Azure 资源以及其他云和本地资源的功能。 
 
 可先阅读文章[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)，其中介绍了以下内容：
 
@@ -42,9 +42,9 @@ Azure Blob 存储使用 [Azure Monitor](../../azure-monitor/overview.md)，这�
 
 ## <a name="monitoring-data"></a>监视数据
 
-Azure Blob 存储会收集与其他 Azure 资源相同的监视数据，如 [监视 Azure 资源的数据](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述。 
+Azure Blob 存储会收集与其他 Azure 资源类型相同的监视数据，如[监视 Azure 资源中的数据](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述。 
 
-有关 Azure Blob 存储创建的指标和日志指标的详细信息，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md) 。
+有关 Azure Blob 存储创建的指标和日志指标的详细信息，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 
 Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户。 Azure Monitor 不支持经典存储帐户。 如果要使用经典存储帐户上的指标或日志，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
@@ -52,9 +52,9 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="collection-and-routing"></a>收集和路由
 
-平台指标和活动日志是自动收集的，但可以使用诊断设置将其路由到其他位置。 
+平台指标和活动日志会自动收集，但你可以使用诊断设置将其路由到其他位置。 
 
-若要收集资源日志，必须创建一个诊断设置。 创建设置时，请选择 " **blob** " 作为要为其启用日志的存储类型。 然后，指定要为其收集日志的下列操作之一。 
+若要收集资源日志，必须创建诊断设置。 创建设置时，选择“blob”作为要为其启用日志的存储类型。 然后，指定需要收集日志的以下操作类别之一。 
 
 | 类别 | 说明 |
 |:---|:---|
@@ -69,10 +69,10 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。 
 
-有关一般指南，请参阅 [创建诊断设置以在 Azure 中收集平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
+有关通用指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 > [!NOTE]
-> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅 [存储帐户概述](../common/storage-account-overview.md)。
+> Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
@@ -80,62 +80,64 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 2. 导航到自己的存储帐户。
 
-3. 在 " **监视** " 部分中，单击 " **诊断设置" (预览 ")**。
+3. 在“监视”部分，单击“诊断设置(预览)”。
 
    > [!div class="mx-imgBorder"]
    > ![门户 - 诊断日志](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)   
 
-4. 选择 " **blob** " 作为要为其启用日志的存储类型。
+4. 选择“blob”作为要为其启用日志的存储类型。
 
 5. 单击“添加诊断设置”。
 
    > [!div class="mx-imgBorder"]
-   > ![门户-资源日志-添加诊断设置](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
+   > ![门户 - 资源日志 - 添加诊断设置](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
 
-   此时将显示 " **诊断设置** " 页。
+   此时将显示“诊断设置”页。
 
    > [!div class="mx-imgBorder"]
    > ![资源日志页](media/monitor-blob-storage/diagnostic-logs-page.png)
 
-6. 在该页的 " **名称** " 字段中，输入此资源日志设置的名称。 然后，选择要记录的操作 ("读取"、"写入" 和 "删除" 操作) ，以及要将日志发送到的位置。
+6. 在该页的“名称”字段中，输入此资源日志设置的名称。 然后，选择要记录的操作（读取、写入和删除操作），以及要将日志发送到的位置。
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
-如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志存档到存储帐户，则需要为发送到存储帐户的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-1. 选中 " **存档到存储帐户** " 复选框，然后单击 " **配置** " 按钮。
+1. 选中“存档到存储帐户”复选框，然后单击“配置”按钮。
 
    > [!div class="mx-imgBorder"]   
-   > ![诊断设置页面存档存储](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
+   > ![诊断设置页存档存储](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. 在 " **存储帐户** " 下拉列表中，选择要将日志存档到的存储帐户，单击 " **确定"** 按钮，然后单击 " **保存** " 按钮。
+2. 在“存储帐户”下拉列表中，选择要将日志存档到的存储帐户，单击“确定”按钮，然后单击“保存”按钮。
+
+   [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
-   > 选择存储帐户作为导出目标之前，请参阅将 [Azure 资源日志存档](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) 以了解存储帐户的先决条件。
+   > 选择存储帐户作为导出目标之前，请参阅 [Azure 资源日志存档](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)以了解存储帐户的先决条件。
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>将日志流式传输到 Azure 事件中心
 
-如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-1. 选中 " **到事件中心的流** " 复选框，然后单击 " **配置** " 按钮。
+1. 选中“流式传输到事件中心”复选框，然后单击“配置”按钮。
 
-2. 在 " **选择事件中心** " 窗格中，选择要将日志流式传输到的事件中心的命名空间、名称和策略名称。 
+2. 在“选择事件中心”窗格中，选择要将日志流式传输到的事件中心的命名空间、名称和策略名称。 
 
    > [!div class="mx-imgBorder"]
    > ![诊断设置页事件中心](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
 
-3. 单击 " **确定"** 按钮，然后单击 " **保存** " 按钮。
+3. 单击“确定”按钮，然后单击“保存”按钮。
 
-#### <a name="send-logs-to-azure-log-analytics"></a>向 Azure Log Analytics 发送日志
+#### <a name="send-logs-to-azure-log-analytics"></a>将日志发送到 Azure Log Analytics
 
-1. 选择 " **发送到 Log Analytics** " 复选框，选择 Log Analytics 工作区，然后单击 " **保存** " 按钮。
+1. 选中“发送到 Log Analytics”复选框，选择 Log Analytics 工作区，然后单击“保存”按钮。
 
    > [!div class="mx-imgBorder"]   
    > ![诊断设置页日志分析](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. 打开 Windows PowerShell 命令窗口，并使用命令登录到 Azure 订阅 `Connect-AzAccount` 。 然后，按照屏幕上的说明进行操作。
+1. 打开 Windows PowerShell 命令窗口，使用 `Connect-AzAccount` 命令登录到 Azure 订阅。 然后，遵照屏幕指令进行操作。
 
    ```powershell
    Connect-AzAccount
@@ -149,59 +151,61 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
-如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志存档到存储帐户，则需要为发送到存储帐户的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-使用 [AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和参数来启用日志 `StorageAccountId` 。
+使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和 `StorageAccountId` 参数来启用日志。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
-将 `<storage-service-resource--id>` 此代码段中的占位符替换为 blob 服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
+将此代码段中的 `<storage-service-resource--id>` 占位符替换为 blob 服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
 
-`StorageRead` `StorageWrite` `StorageDelete` 对于 **Category** 参数的值，可以使用、和。
+Category 参数的值可以为 `StorageRead`、`StorageWrite` 和 `StorageDelete`。
 
-下面是一个示例：
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
+
+以下是一个示例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-有关每个参数的说明，请参阅 [通过 Azure PowerShell 存档 Azure 资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
+有关每个参数的说明，请参阅[通过 Azure PowerShell 存档 Azure 资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
-如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `EventHubAuthorizationRuleId` 。
+使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和 `EventHubAuthorizationRuleId` 参数来启用日志。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-下面是一个示例：
+以下是一个示例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-有关每个参数的说明，请参阅 [通过 PowerShell cmdlet 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
+有关每个参数的说明，请参阅[通过 PowerShell cmdlet 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
 
 #### <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
 
-通过 [将 AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 与参数一起使用来启用日志 `WorkspaceId` 。
+使用 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 和 `WorkspaceId` 参数来启用日志。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-下面是一个示例：
+以下是一个示例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
+有关详细信息，请参阅[在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 首先，打开 [Azure Cloud Shell](../../cloud-shell/overview.md)，或者，如果已在本地[安装](/cli/azure/install-azure-cli) Azure CLI，请打开命令控制台应用程序，如 Windows PowerShell。
 
-2. 如果你的标识与多个订阅相关联，请将你的活动订阅设置为要为其启用日志的存储帐户的订阅。
+2. 如果你的标识已关联到多个订阅，请将活动订阅设置为要启用日志的存储帐户的订阅。
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -211,53 +215,55 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 #### <a name="archive-logs-to-a-storage-account"></a>将日志存档到存储帐户
 
-如果选择将日志存档到存储帐户，则需支付发送到存储帐户的日志的数量。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志存档到存储帐户，则需要为发送到存储帐户的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-使用 [az monitor 诊断设置 create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
 
 ```azurecli-interactive
-az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
-`<storage-service-resource--id>`将此代码段中的占位符替换为资源 ID Blob 存储服务。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
+将此代码段中的 `<storage-service-resource--id>` 占位符替换为 Blob 存储服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
 
-`StorageRead` `StorageWrite` `StorageDelete` 对于 **category** 参数的值，可以使用、和。
+category 参数的值可以为 `StorageRead`、`StorageWrite` 和 `StorageDelete`。
 
-下面是一个示例：
+[!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
-`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+以下是一个示例：
 
-有关每个参数的说明，请参阅 [通过 Azure CLI 存档资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite}]'`
+
+有关每个参数的说明，请参阅[通过 Azure CLI 存档资源日志](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。
 
 #### <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
-如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体的定价，请参阅 " [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)" 页的 "**平台日志**" 部分。
+如果选择将日志流式传输到事件中心，则需要为发送到事件中心的日志量付费。 有关具体定价，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)页的“平台日志”部分。
 
-使用 [az monitor 诊断设置 create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-下面是一个示例：
+以下是一个示例：
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-有关每个参数的说明，请参阅 [通过 Azure CLI 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
+有关每个参数的说明，请参阅[通过 Azure CLI 将数据流式传输到事件中心](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)。
 
 #### <a name="send-logs-to-log-analytics"></a>将日志发送到 Log Analytics
 
-使用 [az monitor 诊断设置 create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
+使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令启用日志。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
 ```
 
-下面是一个示例：
+以下是一个示例：
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- 有关详细信息，请参阅 [在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
+ 有关详细信息，请参阅[在 Azure Monitor 中将 Azure 资源日志流式传输到 Log Analytics 工作区](../../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。
 
 ### <a name="template"></a>[模板](#tab/template)
 
@@ -279,12 +285,12 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 有关 Azure 存储支持的维度的完整列表，请参阅[指标维度](monitor-blob-storage-reference.md#metrics-dimensions)。
 
-Azure Blob 存储的指标位于以下命名空间中： 
+Azure Blob 存储的指标位于以下命名空间： 
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/blobServices
 
-有关包含 Azure Blob 存储的所有 Azure Monitor 支持指标的列表，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/essentials/metrics-supported.md)。
+有关所有 Azure Monitor 支持指标（包括 Azure Blob 存储）的列表，请参阅 [Azure Monitor 支持的指标](../../azure-monitor/essentials/metrics-supported.md)。
 
 
 ### <a name="accessing-metrics"></a>访问指标
@@ -296,7 +302,7 @@ Azure Blob 存储的指标位于以下命名空间中：
 
 Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。
  
-在这些示例中，将 `<resource-ID>` 占位符替换为整个存储帐户或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在这些示例中，将 `<resource-ID>` 占位符替换为整个存储帐户或 Blob 存储的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
 将 `<subscription-ID>` 占位符值替换为你的订阅 ID。 要查看有关如何获取 `<tenant-ID>`、`<application-ID>` 和 `<AccessKey>` 值的指南，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 
 
@@ -436,9 +442,9 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 #### <a name="list-the-metric-definition"></a>列出指标定义
 
-可以列出存储帐户或 Blob 存储服务的指标定义。 请使用 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) cmdlet。
+你可以列出存储帐户或 Blob 存储服务的指标定义。 请使用 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) cmdlet。
 
-在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 id 或 Blob 存储服务的资源 id。  你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。  你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -447,7 +453,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 #### <a name="reading-metric-values"></a>读取指标值
 
-你可以读取存储帐户或 Blob 存储服务的帐户级别指标值。 使用 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) cmdlet。
+可以读取存储帐户或 Blob 存储服务的帐户级别指标值。 使用 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) cmdlet。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -458,9 +464,9 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帐户级指标定义
 
-可以列出存储帐户或 Blob 存储服务的指标定义。 使用 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
+你可以列出存储帐户或 Blob 存储服务的指标定义。 使用 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
  
-在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 id 或 Blob 存储服务的资源 id。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -468,7 +474,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 #### <a name="read-account-level-metric-values"></a>读取帐户级指标值
 
-你可以读取存储帐户或 Blob 存储服务的指标值。 请使用 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
+可以读取存储帐户或 Blob 存储服务的帐户级指标值。 请使用 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -483,7 +489,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 你可以将资源日志作为存储帐户中的 blob 以及事件数据进行访问，也可以通过 Log Analytics 查询访问资源日志。
 
-有关这些日志中显示的字段的详细参考信息，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
+要详细了解这些日志中显示的字段的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 
 > [!NOTE]
 > Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版为常规用途 v1 和常规用途 v2 存储帐户中的 Blob（包括 Azure Data Lake Storage Gen2）、文件、队列、表和高级存储帐户启用日志。 经典存储帐户不受支持。
@@ -499,7 +505,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 - 使用共享访问签名 (SAS) 或 OAuth 的请求，包括失败和成功的请求
 - 对分析数据（$logs 容器中的经典日志数据和 $metric 表中的类指标数据）的请求 
 
-Blob 存储服务本身发出的请求，如日志创建或删除，则不记录。 若要查看所记录数据的完整列表，请参阅[存储记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)和[存储日志格式](monitor-blob-storage-reference.md)。
+不会记录 Blob 存储服务本身发出的请求，如创建或删除日志。 若要查看所记录数据的完整列表，请参阅[存储记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)和[存储日志格式](monitor-blob-storage-reference.md)。
 
 ### <a name="log-anonymous-requests"></a>记录匿名请求
 
@@ -536,14 +542,14 @@ Blob 存储服务本身发出的请求，如日志创建或删除，则不记录
 
 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
-数据存储在 **StorageBlobLog** 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLogs 表中。 
+数据存储在 StorageBlobLog 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLogs 表中。 
 
 #### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
-你可以在 **日志搜索** 栏中输入一些查询，以帮助你监视 Blob 存储。 这些查询使用[新语言](../../azure-monitor/logs/log-query-overview.md)。
+你可在“日志搜索”栏中输入下面这些查询，以帮助监视 Blob 存储。 这些查询使用[新语言](../../azure-monitor/logs/log-query-overview.md)。
 
 > [!IMPORTANT]
-> 从存储帐户资源组菜单中选择 **日志** 时，会打开 Log Analytics 并将查询范围设置为当前资源组。 这意味着日志查询只包含来自该资源组的数据。 如果要运行的查询包含来自其他资源或来自其他 Azure 服务的数据，请从 " **Azure Monitor** " 菜单中选择 "**日志**"。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../../azure-monitor/logs/scope.md)。
+> 从存储帐户资源组菜单中选择“日志”时，会打开 Log Analytics 并将查询范围设置为当前资源组。 这意味着日志查询只包含来自该资源组的数据。 如果要运行的查询包含其来自他资源或其他 Azure 服务的数据，请从“Azure Monitor”菜单中选择“日志”。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../../azure-monitor/logs/scope.md)。
 
 使用以下查询可帮助你监视 Azure 存储帐户：
 
@@ -597,10 +603,10 @@ Blob 存储服务本身发出的请求，如日志创建或删除，则不记录
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure Blob 存储创建的日志和指标的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
+- 如需查看 Azure Blob 存储创建的日志和指标的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 - 要了解如何监视 Azure 资源，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
 - 要详细了解指标迁移，请参阅 [Azure 存储指标迁移](../common/storage-metrics-migration.md)。

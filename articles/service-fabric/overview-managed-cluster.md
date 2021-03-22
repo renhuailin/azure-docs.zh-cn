@@ -2,13 +2,13 @@
 title: Service Fabric 托管群集（预览版）
 description: Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而来，该模型可以简化部署和群集管理。
 ms.topic: overview
-ms.date: 09/28/2020
-ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 02/15/2021
+ms.openlocfilehash: 271852214097ee96ba6b10de7a94904981cd8ef8
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91410373"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102041223"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Service Fabric 托管群集（预览版）
 
@@ -62,17 +62,22 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 | 添加/删除节点类型 | 否 | 是 |
 | 区域冗余 | 否 | 是 |
 
-## <a name="service-fabric-managed-cluster-feature-roadmap"></a>Service Fabric 托管群集功能路线图
-由于这是 Service Fabric 托管群集的早期预览版本，因此有一些缺口需要注意。 这些功能会在将来的版本中提供。 
+## <a name="whats-new-for-service-fabric-managed-clusters"></a>Service Fabric 托管群集的新增功能
 
-* 直接将应用程序从 Visual Studio 发布到群集
-* 托管标识 
-* ARM 应用程序部署 
-* 可用性区域 
-* 反向代理 
-* 自动缩放 
-* 更新 NSG 规则 
-* 自动 OS 升级
+Service Fabric 托管群集预览版的最新功能包括对以下内容的支持：
+
+* [使用 ARM 模板部署应用程序](how-to-managed-cluster-app-deployment-template.md)
+* [自动 OS 升级](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
+* [磁盘加密](how-to-enable-managed-cluster-disk-encryption.md)
+* [应用 NSG 规则](how-to-managed-cluster-networking.md)
+
+即将推出的版本中要添加的功能包括：
+
+* 使用 Visual Studio 部署应用程序
+* 托管标识支持
+* 可用性区域
+* 反向代理
+* 自动缩放
 
 ## <a name="next-steps"></a>后续步骤
 

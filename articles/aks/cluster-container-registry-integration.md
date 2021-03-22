@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: fd599c69b3072831461acc94827d97c4520292e9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 19ece696dabc81e643e8a904d506d22e40eaa099
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182445"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499146"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 此操作通过向 ACR 授予所需权限的方式实现，是 CLI 和门户体验的一部分。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
+可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的托管标识。
 
 > [!NOTE]
 > 本文介绍了 AKS 和 ACR 之间的自动身份验证。 如果需要从专用外部注册表拉取映像，请使用[映像拉取机密][Image Pull Secret]。
@@ -28,11 +28,11 @@ ms.locfileid: "102182445"
 * **Azure 订阅** 上的 **所有者** 或 **Azure 帐户管理员** 角色
 * Azure CLI 2.7.0 版或更高版本
 
-为了避免需要“所有者”或“Azure 帐户管理员”角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+为了避免需要“所有者”或“Azure 帐户管理员”角色，你可以手动配置托管标识或使用现有托管标识从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用 Azure 托管标识向 Azure 容器注册表验证身份](../container-registry/container-registry-authentication-managed-identity.md)。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
-可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 以下 CLI 命令允许你在订阅中授权现有 ACR，并为服务主体配置适当的 **ACRPull** 角色。 为下面的参数提供有效值。
+可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory 托管标识。 使用以下 CLI 命令可以在订阅中授权现有 ACR，并为托管标识配置适当的 ACRPull 角色。 为下面的参数提供有效值。
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
@@ -150,7 +150,7 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
 
 ### <a name="troubleshooting"></a>故障排除
-* 运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，以验证是否可以从 aks 群集访问注册表。
+* 运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，验证是否可以从 AKS 群集访问注册表。
 * 详细了解 [ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)
 * 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 

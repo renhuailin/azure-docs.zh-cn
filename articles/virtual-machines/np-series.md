@@ -1,23 +1,23 @@
 ---
-title: NP-IN 系列-Azure 虚拟机
-description: NP-IN 系列 Vm 的规格。
+title: NP 系列 - Azure 虚拟机
+description: NP 系列 VM 的规格。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 4fe6df5a9eabc6e5088618039fdea450ee8314ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 09adb19623ea866091e1b949e78263661eddbb52
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693843"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551141"
 ---
-# <a name="np-series-preview"></a>NP-IN 系列 (预览)  
-NP-IN 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) fpga 提供支持，以加速工作负载，包括机器学习推理、视频转码和数据库搜索 & 分析。 NP-IN 系列 Vm 还由具有 3.2 GHz 的所有核心 turbo 时钟速度的 Intel 8171M (Skylake) Cpu 提供支持。
+# <a name="np-series-preview"></a>NP 系列（预览） 
+NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA 提供支持，以加速工作负载，包括机器学习推理、视频转码以及数据库搜索和分析。 NP 系列 VM 还由全核 Turbo 时钟频率为 3.2GHz 的 Intel Xeon 8171M (Skylake) CPU 提供支持。
 
-使用 " [预览" 窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu) 提交请求成为 np-in 系列预览计划的一部分。
+使用[预览窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu)提交请求，这是 NP 系列预览计划的一部分。
 
 
 [高级存储](premium-storage-performance.md)：支持<br>
@@ -29,7 +29,7 @@ VM 代系支持：第 1 代<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | FPGA | FPGA 内存： GiB | 最大数据磁盘数 | 最大 Nic 数/预期网络带宽 (MBps)  | 
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | FPGA | FPGA 内存：GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (MBps) | 
 |---|---|---|---|---|---|---|---|
 | Standard_NP10s | 10 | 168 | 736  | 1 | 64  | 8 | 1 / 7500 | 
 | Standard_NP20s | 20 | 336 | 1474 | 2 | 128 | 16 | 2 / 15000 | 
@@ -40,9 +40,9 @@ VM 代系支持：第 1 代<br>
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
-请访问 [Xilinx Runtime (XRT) 发行说明](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf) ，获取受支持的操作系统的完整列表。
+请访问 [Xilinx 运行时 (XRT) 发行说明](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)，获取受支持的操作系统的完整列表。
 
-在预览计划期间 Microsoft Azure 工程团队将为驱动程序安装共享特定说明。
+在预览计划期间，Microsoft Azure 工程团队将分享具体的驱动程序安装说明。
 
 ## <a name="other-sizes"></a>其他大小
 

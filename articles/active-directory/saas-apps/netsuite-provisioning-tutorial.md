@@ -10,19 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b1c03bafd6d97dd6a60defee00d4efe854315631
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696483"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648078"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 NetSuite 配置自动用户预配
 
 本教程旨在介绍为从 Azure AD 自动将用户帐户预配到 NetSuite 以及取消其预配而需要在 NetSuite OneWorld 和 Azure AD 中执行的步骤。
 
 > [!WARNING]
-> 由于 Microsoft 用来将用户预配到 NetSuite 的 NetSuite API 出现更改，此预配集成将在 2020 年 2 月停止工作。 结果是，Azure Active Directory 企业应用库中 NetSuite 应用程序的预配功能很快就会被删除。 应用程序的 SSO 功能将保持不变。 Microsoft 正在与 NetSuite 合作来构建一种新的现代化预配集成，但在这完成之前，目前没有启用 ETA。
+> 由于 Microsoft 用来将用户预配到 NetSuite 的 NetSuite API 发生更改，此预配集成将停止与 NetSuite 的 Spring 2021 更新版本一起工作。  此更新将于 2021 年 2 月至 4 月期间到达 NetSuite 客户处。 结果是，Azure Active Directory 企业应用库中 NetSuite 应用程序的预配功能很快就会被删除。 应用程序的 SSO 功能将保持不变。 Microsoft 正在与 NetSuite 合作来构建一种新的现代化预配集成，但在这完成之前，目前没有启用 ETA。
 
 ## <a name="prerequisites"></a>先决条件
 

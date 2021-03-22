@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 9a7e02955d7784feb57d7e9ccc7e337b6a939380
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8409a4d897ea9b20528a5b30273819e6962774cb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651546"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102184485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kendis---azure-ad-integration"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Kendis - Azure AD Integration 的集成
 
@@ -123,13 +123,21 @@ ms.locfileid: "101651546"
 
 ## <a name="configure-kendis-azure-ad-integration-sso"></a>配置 Kendis - Azure AD Integration SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Kendis - Azure AD Integration 公司站点。
+1. 若要在 Kendis - Azure AD Integration 中自动完成配置，需要单击“安装扩展”来安装“我的应用安全登录”浏览器扩展 。
 
-1. 转到“设置”>“SAML 配置”。
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击“设置 Kendis - Azure AD Integration”会将你定向到 Kendis - Azure AD Integration 应用程序。 在此处，请提供管理员凭据以登录到 Kendis - Azure AD Integration。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 Kendis - Azure AD Integration，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Kendis - Azure AD Integration 公司站点。
+
+4. 转到“设置”>“SAML 配置”。
 
     ![SAML 配置的设置](./media/kendis-scaling-agile-platform-tutorial/settings.png)
 
-1. 单击页面底部的“编辑”按钮，然后执行以下步骤。
+5. 单击页面底部的“编辑”按钮，然后执行以下步骤。
 
     ![SAML 配置](./media/kendis-scaling-agile-platform-tutorial/saml-configuration-settings.png)
 

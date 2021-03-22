@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521639"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449163"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法
 
@@ -26,13 +26,12 @@ ms.locfileid: "100521639"
 
 加入 IoT 中心内 Defender for IoT 的每个设备都需要一个安全模块。 要对设备进行身份验证，Defender for IoT 可以使用以下两种方法之一。 请选择最适合于现有 IoT 解决方案的方法。
 
-> [!div class="checklist"]
-> * SecurityModule 选项
-> * Device 选项
+- SecurityModule 选项
+- Device 选项
 
 ## <a name="authentication-methods"></a>身份验证方法
 
-用于 IoT AzureIoTSecurity agent 的两种方法执行身份验证：
+Defender for IoT AzureIoTSecurity 代理用来执行身份验证的两种方法如下：
 
 - SecurityModule 身份验证模式<br>
 将使用独立于设备标识的安全模块标识对代理进行身份验证。
@@ -101,7 +100,8 @@ ms.locfileid: "100521639"
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>后续步骤
+
+## <a name="see-also"></a>请参阅
 
 - [安全代理概述](security-agent-architecture.md)
 - [部署安全代理](how-to-deploy-agent.md)

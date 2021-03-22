@@ -1,14 +1,14 @@
 ---
 title: 部署 Azure 安全基准基础蓝图示例
 description: Azure 安全基准基础蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.topic: sample
-ms.openlocfilehash: 84c157d696dc8ababe1f252136672ea600e604af
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e48f3da383bdb6d5c9960595f3c0fdcabc27dc75
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633948"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740675"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>部署 Azure 安全基准基础蓝图示例
 
@@ -92,6 +92,9 @@ ms.locfileid: "100633948"
      - 网络观察程序名称：网络观察程序资源的名称
      - 网络观察程序资源组名称：网络观察程序资源组的名称
      - 启用 DDoS 防护：输入“true”或“false”以指定是否在虚拟网络中启用 DDoS 防护
+     
+    > [!NOTE] 
+    > 如果已启用网络观察程序，则建议使用现有的网络观察程序资源组。 还必须为项目参数“网络观察程序资源组位置”提供现有网络观察程序资源组的位置。
 
    - 项目参数
 
@@ -132,8 +135,14 @@ ms.locfileid: "100633948"
 |Azure 虚拟网络分支模板|资源管理器模板|子网地址名称（可选）|要部署到分支虚拟网络的子网名称数组，例如，“subnet1”、“subnet2”|
 |Azure 虚拟网络分支模板|资源管理器模板|子网地址前缀（可选）|用于分支虚拟网络的可选子网的 IP 地址前缀数组，例如，“10.0.7.0/24”、“10.0.8.0/24”|
 |Azure 虚拟网络分支模板|资源管理器模板|部署分支|输入“true”或“false”以指定分配是否部署体系结构的分支组件|
-|Azure 网络观察程序模板|资源管理器模板|网络观察程序位置|如果已启用网络观察程序，则此参数值必须与现有网络观察程序资源组的位置相匹配。|
-|Azure 网络观察程序模板|资源管理器模板|网络观察程序资源组位置|如果已启用网络观察程序，则此参数值必须与现有网络观察程序资源组的名称相匹配。|
+|Azure 网络观察程序模板|资源管理器模板|网络观察程序位置|网络观察程序资源的位置|
+|Azure 网络观察程序模板|资源管理器模板|网络观察程序资源组位置|如果已启用网络观察程序，则此参数值必须与现有网络观察程序资源组的位置相匹配。|
+
+## <a name="troubleshooting"></a>疑难解答
+
+如果遇到错误 `The resource group 'NetworkWatcherRG' failed to deploy due to the
+following error: Invalid resource group location '{location}'. The Resource group already exists in
+location '{location}'.`，请检查蓝图参数“网络观察程序资源组名称”是否指定了现有的网络观察程序资源组名称，以及项目参数“网络观察程序资源组位置”是否指定了现有的网络观察程序资源组位置。
 
 ## <a name="next-steps"></a>后续步骤
 

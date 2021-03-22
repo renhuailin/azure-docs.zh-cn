@@ -1,7 +1,7 @@
 ---
-title: Azure Active Directory 外部标识中的新增功能
-description: Azure Active Directory 外部标识的新文档和更新文档。
-ms.date: 02/01/2021
+title: Azure Active Directory 外部标识的新增功能
+description: 面向 Azure Active Directory 外部标识的新文档和更新的文档。
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: e0daa5b1c8d3fcc749f10e48e453ca8f92607643
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591695"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453659"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
-欢迎使用 Azure Active Directory 外部标识文档中的新增功能。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+欢迎了解 Azure Active Directory 外部标识文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新文章
+
+- [重置来宾用户的邀请兑换状态](reset-redemption-status.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Azure Active Directory B2B 最佳做法](b2b-fundamentals.md)
+- [启用 B2B 外部协作并管理可以邀请来宾的人员](delegate-invitations.md)
+- [Azure Active Directory B2B 协作常见问题解答](faq.md)
+- [电子邮件一次性密码身份验证](one-time-passcode.md)
+- [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)
+- [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)
+- [Azure Active Directory B2B 协作用户的属性](user-properties.md)
+- [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](what-is-b2b.md)
+- [Azure Active Directory 外部标识：新增功能](whats-new-docs.md)
+- [允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)
+- [Azure Active Directory B2B 协作 API 和自定义](customize-invitation-api.md)
+- [邀请内部用户参与 B2B 协作](invite-internal-users.md)
+- [Microsoft 365 外部共享与 Azure Active Directory (Azure AD) B2B 协作](o365-external-user.md)
+- [与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）](direct-federation.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -38,7 +61,7 @@ ms.locfileid: "99591695"
 - [将自定义审批工作流添加到自助注册](self-service-sign-up-add-approvals.md)
 - [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)
 - [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](what-is-b2b.md)
-- [Azure Active Directory B2B 最佳实践](b2b-fundamentals.md)
+- [Azure Active Directory B2B 最佳做法](b2b-fundamentals.md)
 - [启用 B2B 外部协作并管理可以邀请来宾的人员](delegate-invitations.md)
 - [电子邮件一次性密码身份验证](one-time-passcode.md)
 

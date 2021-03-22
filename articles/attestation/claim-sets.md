@@ -7,26 +7,27 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 23bcfcb92a7fa642e111a67bf92c1306a606bb2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762537"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101704797"
 ---
 # <a name="claim-sets"></a>声明集
 
 在证明 enclave 的过程中使用 Microsoft Azure 证明生成的声明可以分为以下几类：
 
-- **传入声明**：分析证明证据后由 Microsoft Azure 证明生成的声明，策略作者可使用这些声明定义自定义策略中的授权规则
+- 传入声明：由 Microsoft Azure 证明在分析证明证据后生成的声明，策略作者可以使用这些声明来定义自定义策略中的授权规则
 
-- **传出声明**：Azure 证明生成的声明，包含最终出现在证明令牌中的所有声明
+- 传出声明：由 Azure 证明生成的声明，包含最终会出现在证明令牌中的所有声明
 
-- **属性声明**：作为 Azure 证明的输出创建的声明。 它包含表示证明令牌的属性的所有声明，如报表的编码、报表的有效持续时间等。
+- 属性声明：作为 Azure 证明的输出创建的声明。 它包含表示证明令牌的属性的所有声明，如报表的编码、报表的有效持续时间等。
 
 ### <a name="common-incoming-claims-across-all-attestation-types"></a>所有证明类型的共同传入声明
 
-以下声明由 Azure 证明生成，可用于定义自定义策略中的授权规则：
+以下声明由 Azure 证明生成，策略作者可以使用这些声明，在一个自定义策略中为所有证明类型定义授权规则。
+
 - **x-ms-ver**：JWT 架构版本（应为“1.0”）
 - **x-ms-attestation-type**：表示证明类型的字符串值 
 - **x-ms-policy-hash**：Azure 证明计算策略的哈希，计算结果为 BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text)))))
@@ -44,7 +45,9 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="common-outgoing-claims-across-all-attestation-types"></a>所有证明类型的共同传出声明
 
-以下声明由 [IETF JWT](https://tools.ietf.org/html/rfc7519) 定义，并在响应对象中由 Azure 证明使用：
+服务会在所有证明类型的证明令牌中包含以下声明。
+
+源：按照 [IETF JWT](https://tools.ietf.org/html/rfc7519) 定义
 
 - **“jti”(JWT ID) 声明**
 - **“iss”（证书颁发者）声明**
@@ -52,10 +55,12 @@ policy_signer | x-ms-policy-signer
 - **“exp”（到期时间）声明**
 - **“nbf”（不早于）声明**
 
-以下声明由 [IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) 定义，并在响应对象中由 Azure 证明使用：
+源：按照 [IETF EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) 定义
+
 - **“Nonce 声明”(nonce)**
 
-以下声明是根据传入的声明默认生成的
+根据传入的声明，证明令牌中默认包含以下声明：
+
 - **x-ms-ver**：JWT 架构版本（应为“1.0”）
 - **x-ms-attestation-type**：表示证明类型的字符串值 
 - **x-ms-policy-hash**：字符串值，其中包含由 BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text))))) 计算的策略文本的 SHA256 哈希值。
@@ -65,7 +70,8 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>特定于 SGX 证明的传入声明
 
-以下声明由 SGX 证明的服务生成，可用于定义自定义策略中的授权规则：
+以下声明由 Azure 证明生成，策略作者可以使用这些声明，在一个自定义策略中为 SGX 证明定义授权规则。
+
 - **x-ms-sgx-is-debuggable**：布尔值，指示 enclave 是否已启用调试
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**：Quote 的“mrsigner”字段的十六进制编码值
@@ -74,7 +80,8 @@ policy_signer | x-ms-policy-signer
 
 ### <a name="outgoing-claims-specific-to-sgx-attestation"></a>特定于 SGX 证明的传出声明
 
-以下声明由服务生成并包含在 SGX 证明的响应对象中：
+服务会生成以下声明并将它们包含在证明令牌中，以用于 SGX 证明。
+
 - **x-ms-sgx-is-debuggable**：布尔值，指示 enclave 是否已启用调试
 - **x-ms-sgx-product-id**
 - **x-ms-sgx-mrsigner**：Quote 的“mrsigner”字段的十六进制编码值

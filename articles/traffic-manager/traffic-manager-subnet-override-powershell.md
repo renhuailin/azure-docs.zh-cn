@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 的 Azure 流量管理器子网覆盖 |Microsoft Docs
+title: 使用 Azure PowerShell 的 Azure 流量管理器子网替代 | Microsoft Docs
 description: 本文帮助你了解如何使用流量管理器子网替代来替代流量管理器配置文件的路由方法，以便使用 Azure PowerShell 通过预定义的 IP 范围到终结点的映射，基于最终用户 IP 地址将流量定向到某个终结点。
 services: traffic-manager
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183756"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504771"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 
@@ -21,7 +21,7 @@ ms.locfileid: "98183756"
 
 ## <a name="how-subnet-override-works"></a>子网替代的工作原理
 
-将子网替代添加到流量管理器配置文件时，流量管理器将首先检查是否存在用于最终用户的 IP 地址的子网替代。 如果找到一个，则将用户的 DNS 查询定向到相应的终结点。  如果找不到映射，流量管理器将回退到配置文件的原始路由方法。 
+将子网替代添加到流量管理器配置文件后，流量管理器会先检查最终用户的 IP 地址是否存在子网替代。 如果找到了一个替代，用户的 DNS 查询将被定向到相应的终结点。  如果找不到映射，流量管理器将回退到配置文件的原始路由方法。 
 
 可将 IP 地址范围指定为 CIDR 范围（例如 1.2.3.0/24）或地址范围（例如 1.2.3.4-5.6.7.8）。 与每个终结点关联的 IP 范围对于该终结点必须是唯一的。 不同终结点之间的 IP 范围出现任何重叠会导致流量管理器拒绝配置文件。
 
@@ -43,7 +43,7 @@ ms.locfileid: "98183756"
 
 1. **检索流量管理器终结点：**
 
-    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) 检索要将替代添加到的终结点，并将其存储在变量中。
+    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) 检索要将替代添加到的终结点，并将其存储在变量中。
 
     请将 Name、ProfileName 和 ResourceGroupName 替换为要更改的终结点的值。
 
@@ -54,7 +54,7 @@ ms.locfileid: "98183756"
     ```
 2. **将 IP 地址范围添加到终结点：**
     
-    若要将 IP 地址范围添加到终结点，请使用 [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) 添加范围。
+    若要将 IP 地址范围添加到终结点，请使用 [Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange) 添加范围。
 
     ```powershell
 
@@ -68,18 +68,18 @@ ms.locfileid: "98183756"
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    添加范围后，使用 [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 更新终结点。
+    添加范围后，使用 [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) 更新终结点。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-可以使用 [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) 删除 IP 地址范围。
+可以使用 [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange) 删除 IP 地址范围。
 
 1.  **检索流量管理器终结点：**
 
-    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) 检索要将替代添加到的终结点，并将其存储在变量中。
+    若要启用子网替代，请使用 [Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) 检索要将替代添加到的终结点，并将其存储在变量中。
 
     请将 Name、ProfileName 和 ResourceGroupName 替换为要更改的终结点的值。
 
@@ -102,7 +102,7 @@ ms.locfileid: "98183756"
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     删除范围后，使用 [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 更新终结点。
+     删除范围后，使用 [Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) 更新终结点。
 
     ```powershell
 

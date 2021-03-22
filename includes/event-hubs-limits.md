@@ -1,20 +1,8 @@
 ---
-title: include 文件
-description: include 文件
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.topic: include
-ms.date: 02/01/2021
-ms.author: spelluru
-ms.custom: include file
-ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427394"
+title: include 文件 description: include 文件 services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 02/01/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+
 ---
+
 下表提供了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 ### <a name="common-limits-for-all-tiers"></a>所有层的通用限制
@@ -24,7 +12,6 @@ ms.locfileid: "99427394"
 | --- |  --- | --- |
 | 每个订阅的事件中心命名空间数 |- |100 |
 | 每个命名空间的事件中心数 | 系统会拒绝创建新事件中心的后续请求。 |10 |
-| 每个事件中心的分区数 |- |32 |
 | 事件中心名称的大小 |- | 256 个字符 |
 | 使用者组名称的大小 |- | 256 个字符 |
 | 每个使用者组的非 epoch 接收者数 |- |5 |
@@ -39,11 +26,17 @@ ms.locfileid: "99427394"
 
 | 限制 | 说明 | 基本 | Standard |
 |---|---|--|---|
-| 事件中心事件的最大大小| &nbsp; | 256 KB | 1 MB |
+| 事件中心发布的最大大小| &nbsp; | 256 KB | 1 MB |
 | 每个事件中心的使用者组数 | &nbsp; |1 |20 |
 | 每个命名空间的 AMQP 连接数 | 系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |100 |5,000|
 | 事件数据的最长保留期限 | &nbsp; |1 天 |1-7 天 |
 | 最大吞吐量单位 |超出此限制会导致数据受到限制，并生成[服务器繁忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)。 要为标准层请求大量的吞吐量单位，可填写[支持请求](../articles/azure-portal/supportability/how-to-create-azure-support-request.md)。 [额外的吞吐量单位](../articles/event-hubs/event-hubs-auto-inflate.md)将基于承诺的购买以大小为 20 个单位的块的形式提供。 |20 | 20 | 
+| 每个事件中心的分区数 | |32 | 32 | 
+
+> [!NOTE]
+>
+> 可以逐个或者成批发送事件。 
+> 无论是单个事件还是一批事件，发布限制（根据 SKU）均适用。 发布大于最大阈值的事件将被拒绝。
 
 ### <a name="dedicated-tier-vs-standard-tier"></a>专用层和标准层
 事件中心专用层产品/服务按固定的每月价格计费，最少用量为 4 小时。 专用层提供标准计划的所有功能，但具有企业规模容量和限制，以满足客户的工作负荷需求。 

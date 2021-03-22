@@ -1,19 +1,18 @@
 ---
 title: Azure 安全中心故障排除指南 | Microsoft Docs
 description: 本指南适用于需要排查 Azure 安全中心相关问题的 IT 专业人员、安全分析人员和云管理员。
-services: security-center
-author: v-miegge
-manager: dcscontentpm
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e49d8bcc55036b21f53720aab17be02edb114d4b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100247"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438210"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -132,7 +131,7 @@ ms.locfileid: "102100247"
 
 ## <a name="contacting-microsoft-support"></a>请联系 Microsoft 支持人员
 
-某些问题可以使用本文中提供的指导原则来确定，其他人也可以在安全中心公共 [Microsoft Q&页面](/answers/topics/azure-security-center.html)上找到。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示：
+可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [Microsoft Q&A 页](/answers/topics/azure-security-center.html)中查找所记录的其他问题。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示：
 
 ![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 

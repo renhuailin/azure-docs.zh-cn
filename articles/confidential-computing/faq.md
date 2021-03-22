@@ -5,19 +5,19 @@ author: JBCook
 ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: a5ecd3827bbdc12b098684f1feda2df652f11940
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98872326"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551906"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 机密计算常见问题解答
 
-本文提供了有关 [在 Azure 虚拟机上运行机密计算工作负荷](overview.md)的一些最常见问题的解答。
+本文提供了有关运行 [Azure 虚拟机上的机密计算工作负载](overview.md)时出现的一些最常见问题的解答。
 
 如果本文未解决 Azure 问题，请访问 [MSDN 和 Stack Overflow](https://azure.microsoft.com/support/forums/) 上的 Azure 论坛。 可将问题发布到这些论坛上，或发布到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 还可提交 Azure 支持请求。 若要提交支持请求，请在 [Azure 支持](https://azure.microsoft.com/support/options/)页上，选择“获取支持”。
 
@@ -47,11 +47,11 @@ ms.locfileid: "98872326"
 
 **能否使用 Azure 机密计算启用加速网络？**
 
- 否。 DC-Series 或 DCsv2-Series 的虚拟机上不支持加速网络。 无法为在机密计算上运行的任何机密计算虚拟机部署或 Azure Kubernetes Service 群集部署启用加速网络。
+ 不是。 DC 系列或 DCsv2 系列虚拟机不支持加速网络。 不能为在机密计算上运行的任何机密计算虚拟机部署或 Azure Kubernetes 服务群集部署启用加速网络。
 
-**是否可以将 Azure 专用主机用于这些计算机？**
+**能否将 Azure 专用主机用于这些虚拟机？**
 
-是的。 Azure 专用主机支持 DCsv2 系列虚拟机。 Azure 专用主机提供了单租户物理服务器来运行虚拟机。 用户通常使用 Azure 专用主机来满足有关物理安全性、数据完整性和监视的符合性要求。 
+是。 Azure 专用主机支持 DCsv2 系列虚拟机。 Azure 专用主机提供了一个单租户物理服务器来运行虚拟机。 用户通常使用 Azure 专用主机来满足有关物理安全性、数据完整性和监视的符合性要求。 
 
 **我收到 Azure 资源管理器模板部署失败错误：“操作无法完成，因为此操作导致超出批准的标准 DcsV2 系列核心配额”**
 
@@ -65,7 +65,7 @@ DC 系列 VM 在较旧的 6 核 Intel 处理器上运行，使用 Intel SGX 并�
 
 不是。 目前，这些虚拟机只能在特定的区域中使用。 有关最新的可用区域，请查看[产品上市区域页](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。 
 
-**这些计算机上的超线程是否处于关闭状态？**
+**这些计算机上的超线程是否处于禁用状态？**
 
 所有 Azure 机密计算群集均禁用超线程。
 

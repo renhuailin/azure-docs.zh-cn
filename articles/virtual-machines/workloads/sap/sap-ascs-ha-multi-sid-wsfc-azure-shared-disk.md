@@ -1,6 +1,6 @@
 ---
-title: SAP ASCS/SCS 多 SID HA 与 WSFC 和 Azure shared disk |Microsoft Docs
-description: 使用 WSFC 和 Azure 共享磁盘的 SAP ASCS/SCS 实例的多 SID 高可用性
+title: 使用 WSFC 和 Azure 共享磁盘实现 SAP ASCS/SCS 多 SID HA | Microsoft Docs
+description: 使用 WSFC 和 Azure 共享磁盘实现 SAP ASCS/SCS 实例的多 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -16,154 +16,154 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b216fafad5cd2f7406320dce3ec28b8830015d7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: cef0630cfc7ec7d080073085e577153ae7a47ecf
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673763"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504450"
 ---
-# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS 实例多 SID 高可用性与 Windows server 故障转移群集和 Azure 共享磁盘
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>使用 Windows Server 故障转移群集和 Azure 共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 
 > ![Windows OS][Logo_Windows] Windows
 >
 
-本文重点介绍如何使用 Azure 共享磁盘将附加 SAP ASCS/SCS 群集实例安装到现有 Windows Server 故障转移群集 (WSFC) 群集，从而从单个 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置 SAP 多 SID 群集。
+本文重点介绍如何通过使用 Azure 共享磁盘在现有 Windows Server 故障转移群集 (WSFC) 群集中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置 SAP 多 SID 群集。
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
-目前，可以使用 Azure 高级 SSD 磁盘作为 SAP ASCS/SCS 实例的 Azure 共享磁盘。 这里有以下限制：
+目前，可以使用 Azure 高级 SSD 盘作为 SAP ASCS/SCS 实例的 Azure 共享磁盘。 存在以下限制：
 
--  SAP 工作负荷的 azure[超级磁盘](../../disks-types.md#ultra-disk)不支持作为 Azure 共享磁盘。 目前不能使用可用性集中的 Azure 超磁盘放置 Azure Vm
--  只有可用性集中的虚拟机支持带有高级 SSD 磁盘的[Azure 共享磁盘](../../disks-shared.md)。 它在可用性区域部署中不受支持。 
--  Azure 共享磁盘值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 确定可以使用共享磁盘的群集节点数。 通常，对于 SAP ASCS/SCS 实例，你将在 Windows 故障转移群集中配置两个节点，因此的值 `maxShares` 必须设置为 "2"。
--  所有 SAP ASCS/SCS 群集 Vm 都必须部署在同一 [Azure 邻近位置组](../../windows/proximity-placement-groups.md)中。   
-   尽管可以在没有 PPG 的情况下通过 Azure 共享磁盘在可用性集中部署 Windows 群集 Vm，但 PPG 将确保 Azure 共享磁盘与群集 Vm 的物理上接近，从而实现 Vm 与存储层之间的延迟较低。    
+-  对于 SAP 工作负载，不支持将 [Azure 超级磁盘](../../disks-types.md#ultra-disk)作为 Azure 共享磁盘。 目前，不能在可用性集中使用 Azure 超级磁盘来放置 Azure VM
+-  只有可用性集中的 VM 支持带有高级 SSD 盘的 [Azure 共享磁盘](../../disks-shared.md)。 它在可用性区域部署中不受支持。 
+-  Azure 共享磁盘值 [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) 确定可以使用共享磁盘的群集节点数。 通常，对于 SAP ASCS/SCS 实例，你将在 Windows 故障转移群集中配置两个节点，因此 `maxShares` 的值必须设置为“2”。
+-  所有 SAP ASCS/SCS 群集 VM 都必须部署在同一 [Azure 邻近位置组](../../windows/proximity-placement-groups.md)中。   
+   尽管可以在没有 PPG 的情况下通过 Azure 共享磁盘在可用性集中部署 Windows 群集 VM，但 PPG 可以确保 Azure 共享磁盘与群集 VM 在物理上接近，从而降低 VM 与存储层之间的延迟。    
 
-有关 Azure 共享磁盘限制的更多详细信息，请仔细查看 Azure 共享磁盘文档的 [限制](../../disks-shared.md#limitations) 部分。  
+有关 Azure 共享磁盘限制的更多详细信息，请仔细阅读 Azure 共享磁盘文档的[限制](../../disks-shared.md#limitations)部分。  
 
 > [!IMPORTANT]
-> 使用 Azure 共享磁盘部署 SAP ASCS/SCS Windows 故障转移群集时，请注意，你的部署将在一个存储群集中使用单个共享磁盘运行。 SAP ASCS/SCS 实例在部署 Azure 共享磁盘的情况下将会受到影响。  
+> 使用 Azure 共享磁盘部署 SAP ASCS/SCS Windows 故障转移群集时，请注意，部署将在一个存储群集中使用单个共享磁盘运行。 如果部署 Azure 共享磁盘的存储群集出现问题，SAP ASCS/SCS 实例将受到影响。  
 
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。  
 > * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。  
-> * 不支持在同一个群集中混合使用排队复制服务器1和排队复制服务器2。  
+> * 不支持在同一个群集中混合使用排队复制服务器 1 和排队复制服务器 2。  
 
 
 ## <a name="supported-os-versions"></a>支持的操作系统版本
 
-支持 Windows Server 2016 和 Windows Server 2019 (使用最新的数据中心映像) 。
+支持 Windows Server 2016 和 Windows Server 2019（使用最新的数据中心映像）。
 
-强烈建议使用 **Windows Server 2019 Datacenter**，如下所示：
-- Windows 2019 故障转移群集服务可识别 Azure
-- 通过监视 Azure 计划事件，增加了 Azure 主机维护和改进体验的集成和认知。
-- 可以使用分布式网络名称 (它是默认选项) 。 因此，群集网络名称无需专用 IP 地址。 此外，无需在 Azure 内部负载均衡器上配置此 IP 地址。 
+强烈建议使用 Windows Server 2019 Datacenter，原因如下：
+- Windows 2019 故障转移群集服务可以感知 Azure
+- 增加了 Azure 主机维护的集成和感知，并通过监视 Azure 计划事件改进了体验。
+- 可以使用分布式网络名称（它是默认选项）。 因此，群集网络名称无需使用专用 IP 地址。 此外，无需在 Azure 内部负载均衡器上配置此 IP 地址。 
 
 ## <a name="architecture"></a>体系结构
 
-排队复制服务器 1 (ERS1) 和排队复制服务器 2 (ERS2) 在多 SID 配置中受支持。  同一群集不支持混合的 ERS1 和 ERS2。 
+排队复制服务器 1 (ERS1) 和排队复制服务器 2 (ERS2) 在多 SID 配置中受支持。  不支持在同一群集中混合使用 ERS1 和 ERS2。 
 
-1. 第一个示例显示两个 SAP Sid，两者都具有 ERS1 体系结构，其中：
+1. 第一个示例展示两个 SAP SID，两者都采用 ERS1 体系结构，其中：
 
-   - SAP SID1 部署在共享磁盘上，带有 ERS1。 ERS 实例安装在本地主机和本地驱动器上。
-     SAP SID1 具有其自己的 (虚拟) IP 地址 (SID1 () SCS IP1) ，这是在 Azure 内部负载均衡器上配置的。
+   - SAP SID1 使用 ERS1 部署在共享磁盘上。 ERS 实例安装在本地主机和本地驱动器上。
+     SAP SID1 有自己的（虚拟）IP 地址 (SID1 (A)SCS IP1)，这是在 Azure 内部负载均衡器上配置的。
 
-   - SAP SID2 部署在共享磁盘上，带有 ERS1。 ERS 实例安装在本地主机和本地驱动器上。
-     SAP SID2 拥有 (虚拟) IP 地址 (SID2 () SCS IP2) ，这也是在 Azure 内部负载均衡器上配置的。
+   - SAP SID2 使用 ERS1 部署在共享磁盘上。 ERS 实例安装在本地主机和本地驱动器上。
+     SAP SID2 有自己的（虚拟）IP 地址 (SID2 (A)SCS IP2)，这也是在 Azure 内部负载均衡器上配置的。
 
-![高可用性 SAP ASCS/SCS 实例-具有 ERS1 配置的两个实例][sap-ha-guide-figure-6007]
+![高可用性 SAP ASCS/SCS 实例 - 具有 ERS1 配置的两个实例][sap-ha-guide-figure-6007]
 
-2. 第二个示例显示两个 SAP Sid，两者都具有 ERS2 体系结构，其中： 
+2. 第二个示例展示两个 SAP SID，两者都采用 ERS2 体系结构，其中： 
 
-   - SAP SID1 with ERS2，也是群集的，部署在本地驱动器上。  
-     SAP SID1 拥有 (虚拟) IP 地址 (SID1 () SCS IP1) ，这是在 Azure 内部负载均衡器上配置的。
-     SAP SID1 system 使用的 SAP ERS2 具有其自己 (虚拟) IP 地址 (SID1 ERS2 IP2) ，该地址是在 Azure 内部负载均衡器上配置的。
+   - 采用 ERS2 的 SAP SID1 也是群集实例，部署在本地驱动器上。  
+     SAP SID1 有自己的（虚拟）IP 地址 (SID1 (A)SCS IP1)，这是在 Azure 内部负载均衡器上配置的。
+     SAP SID1 系统使用的 SAP ERS2 有自己的（虚拟）IP 地址 (SID1 ERS2 IP2)，这是在 Azure 内部负载均衡器上配置的。
 
-   - SAP SID2 with ERS2，也是群集的，部署在本地驱动器上。  
-     SAP SID2 拥有 (虚拟) IP 地址 (SID2 () SCS IP3) ，这是在 Azure 内部负载均衡器上配置的。
-     SAP SID2 system 使用的 SAP ERS2 具有其自己 (虚拟) IP 地址 (SID2 ERS2 IP4) ，该地址是在 Azure 内部负载均衡器上配置的。
+   - 采用 ERS2 的 SAP SID2 也是群集实例，部署在本地驱动器上。  
+     SAP SID2 有自己的（虚拟）IP 地址 (SID2 (A)SCS IP3)，这是在 Azure 内部负载均衡器上配置的。
+     SAP SID2 系统使用的 SAP ERS2 有自己的（虚拟）IP 地址 (SID2 ERS2 IP4)，这是在 Azure 内部负载均衡器上配置的。
 
-   这里有四个虚拟 IP 地址：  
-   - SID1 () SCS IP1
-   - SID2 ERS2 IP2
-   - SID2 () SCS IP3
-   - SID2 ERS2 IP4
+   这里总共有四个虚拟 IP 地址：  
+   - SID1 (A)SCS IP1
+   - SID2 ERS2   IP2
+   - SID2 (A)SCS IP3
+   - SID2 ERS2   IP4
 
-![高可用性 SAP ASCS/SCS 实例-具有 ERS1 和 ERS2 配置的两个实例][sap-ha-guide-figure-6008]
+![高可用性 SAP ASCS/SCS 实例 - 具有 ERS1 和 ERS2 配置的两个实例][sap-ha-guide-figure-6008]
 
 ## <a name="infrastructure-preparation"></a>基础结构准备
 
-除了 **现有的群集** sap **PR1** ASCS/SCS 实例外，我们还将安装新的 sap SID **pr2)**。  
+除了现有群集 SAP PR1 ASCS/SCS 实例外，我们还将安装新的 SAP SID PR2。  
 
 ### <a name="host-names-and-ip-addresses"></a>主机名和 IP 地址
 
-| 主机名角色 | 主机名 | 静态 IP 地址 | 可用性集 | 邻近位置组 |
+| 主机名角色 | 主机名 | 静态 IP 地址 | 可用性集 | 邻近放置组 |
 | --- | --- | --- |---| ---|
-| 第一个群集节点 ASCS/SCS 群集 |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| 第二个群集节点 ASCS/SCS 群集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| 群集网络名称 | pr1clust |本例为 10.0.0.42 (**仅** 适用于 Win 2016 群集)  | 不适用 | 不适用 |
-| **SID1** ASCS 群集网络名称 | pr1-ascscl |10.0.0.43 | 不适用 | 不适用 |
-| **SID1** ERS 群集网络名称 (**仅** 适用于 ERS2)  | pr1-erscl |10.0.0.44 | 不适用 | 不适用 |
-| **SID2** ASCS 群集网络名称 | pr2) -ascscl |10.0.0.45 | 不适用 | 不适用 |
-| **SID2** ERS 群集网络名称 (**仅** 适用于 ERS2)  | pr1-erscl |10.0.0.46 | 不适用 | 不适用 |
+| 第 1 个群集节点 ASCS/SCS 群集 |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
+| 第 2 个群集节点 ASCS/SCS 群集 |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
+| 群集网络名称 | pr1clust |10.0.0.42（仅适用于 Win 2016 群集） | 不适用 | 不适用 |
+| SID1 ASCS 群集网络名称 | pr1-ascscl |10.0.0.43 | 不适用 | 不适用 |
+| SID1 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl |10.0.0.44 | 不适用 | 不适用 |
+| SID2 ASCS 群集网络名称 | pr2-ascscl |10.0.0.45 | 不适用 | 不适用 |
+| SID2 ERS 群集网络名称（仅 适用于 ERS2） | pr1-erscl |10.0.0.46 | 不适用 | 不适用 |
 
 ### <a name="create-azure-internal-load-balancer"></a>创建 Azure 内部负载均衡器
 
-SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要使用虚拟 IP 地址的 [负载均衡器](../../../load-balancer/load-balancer-overview.md) 。 强烈建议使用 [标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
+SAP ASCS、SAP SCS 和新的 SAP ERS2 均使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要[负载均衡器](../../../load-balancer/load-balancer-overview.md)才能使用虚拟 IP 地址。 强烈建议使用[标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 
 
-对于第二个 SAP SID ASCS/SCS/ERS 实例 **pr2)**，需要将配置添加到现有负载均衡器。 第一个 SAP SID **PR1** 的配置应已准备就绪。  
+对于第二个 SAP SID ASCS/SCS/ERS 实例 PR2，需要将配置添加到现有负载均衡器。 第一个 SAP SID PR1 的配置应已准备就绪。  
 
-**() SCS PR2) [实例编号 02]**
+**(A)SCS PR2 [实例编号 02]**
 - 前端配置
-    - 静态 ASCS/SCS IP 地址 **10.0.0.45**
+    - 静态 ASCS/SCS IP 地址 10.0.0.45
 - 后端配置  
-    已就绪-已将 Vm 添加到后端池，同时配置 SAP SID **PR1**
+    已就绪 - 在配置 SAP SID PR1 时，已将 VM 添加到后端池
 - 探测端口
-    - 端口 620 **nr** [**62002**] 保留协议 (默认选项 "TCP) ，Interval (5) ，不正常阈值 (2) 
+    - 端口 620nr [62002] 保留协议 (TCP)、间隔 (5)、不正常阈值 (2) 的默认选项
 - 负载均衡算法
     - 如果使用“标准负载均衡器”，请选择“HA 端口”
     - 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
-        - 32 **nr** TCP [**3202**]
-        - 36 **nr** TCP [**3602**]
-        - 39 **nr** TCP [**3902**]
-        - 81 **nr** TCP [**8102**]
-        - 5 **nr** 13 TCP [**50213**]
-        - 5 **nr** 14 TCP [**50214**]
-        - 5 **nr** 16 TCP [**50216**]
-        - 与 **pr2)** ASCS 前端 IP、运行状况探测和现有后端池关联。  
+        - 32nr TCP [3202]
+        - 36nr TCP [3602]
+        - 39nr TCP [3902]
+        - 81nr TCP [8102]
+        - 5nr13 TCP [50213]
+        - 5nr14 TCP [50214]
+        - 5nr16 TCP [50216]
+        - 与 PR2 ASCS 前端 IP、运行状况探测和现有后端池关联。  
 
-    - 请确保空闲超时 (分钟) 设置为最大值30，并且启用了浮动 IP (直接服务器返回) 。
+    - 请确保将空闲超时时间（分钟）设置为最大值 30，并启用浮动 IP（直接服务器返回）。
 
-**ERS2 PR2) [实例编号 12]** 
+**ERS2 PR2 [实例编号 12]** 
 
-作为排队复制服务器 2 (ERS2) 也是群集的，除以上 SAP ASCS/SCS IP 外，还必须在 Azure ILB 上配置 ERS2 虚拟 IP 地址。 本部分仅适用于使用排队复制 server 2 **pr2)** 的体系结构。  
+由于排队复制服务器 2 (ERS2) 也是群集实例，因此，除以上 SAP ASCS/SCS IP 外，还必须在 Azure ILB 上配置 ERS2 虚拟 IP 地址。 本部分仅适用于对 PR2 使用排队复制服务器 2 体系结构的情况。  
 - 新前端配置
-    - 静态 SAP ERS2 IP 地址 **10.0.0.46**
+    - 静态 SAP ERS2 IP 地址 10.0.0.46
 
 - 后端配置  
-  Vm 已添加到 ILB 后端池。  
+  已将 VM 添加到 ILB 后端池。  
 
 - 新探测端口
-    - 端口 621 **nr**  [**62112**] 保留协议 (默认选项 "TCP) ，Interval (5) ，不正常阈值 (2) 
+    - 端口 621nr  [62112] 保留协议 (TCP)、间隔 (5)、不正常阈值 (2) 的默认选项
 
-- 新的负载均衡规则
+- 新负载均衡规则
     - 如果使用“标准负载均衡器”，请选择“HA 端口”
     - 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
-        - 32 **nr** TCP [**3212**]
-        - 33 **nr** TCP [**3312**]
-        - 5 **nr** 13 TCP [**51212**]
-        - 5 **nr** 14 TCP [**51212**]
-        - 5 **nr** 16 TCP [**51212**]
-        - 与 **pr2)** ERS2 前端 IP、运行状况探测和现有后端池关联。  
+        - 32nr TCP [3212]
+        - 33nr TCP [3312]
+        - 5nr13 TCP [51212]
+        - 5nr14 TCP [51212]
+        - 5nr16 TCP [51212]
+        - 与 PR2 ERS2 前端 IP、运行状况探测和现有后端池关联。  
 
-    - 请确保 "空闲超时" (分钟) 设置为 "最大值" （如30），并启用 "浮动 IP (直接服务器返回) "。
+    - 请确保将空闲超时时间（分钟）设置为最大值（例如 30），并启用浮动 IP（直接服务器返回）。
 
 
-### <a name="create-and-attach-second-azure-shared-disk"></a>创建并附加其他 Azure 共享磁盘
+### <a name="create-and-attach-second-azure-shared-disk"></a>创建并附加第二个 Azure 共享磁盘
 
-在其中一个群集节点上运行此命令。 需要调整资源组、Azure 区域、SAPSID 等的值。  
+在其中一个群集节点上运行以下命令。 需要调整资源组、Azure 区域、SAPSID 等的值。  
 
 ```powershell
     $ResourceGroupName = "MyResourceGroup"
@@ -194,7 +194,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
     Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
    ```
 ### <a name="format-the-shared-disk-with-powershell"></a>用 PowerShell 格式化共享磁盘
-1. 获取磁盘号。 在其中一个群集节点上运行 PowerShell 命令：
+1. 获取磁盘编号。 在其中一个群集节点上运行 PowerShell 命令：
 
    ```powershell
     Get-Disk | Where-Object PartitionStyle -Eq "RAW"  | Format-Table -AutoSize 
@@ -204,7 +204,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
     # 3      Msft Virtual Disk               Healthy      Online                512 GB RAW            
 
    ```
-2. 格式化该磁盘。 在此示例中，它是磁盘编号3。 
+2. 格式化磁盘。 本例中的磁盘编号为 3。 
 
    ```powershell
     # Format SAP ASCS Disk number '3', with drive letter 'S'
@@ -245,70 +245,70 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 
 ## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
-1. 为 Windows DNS 管理器中的新 SAP ASCS/SCS 实例的虚拟主机名创建 DNS 条目。  
-   在 DNS 中分配给虚拟主机名的 IP 地址必须与在 Azure 负载均衡器中分配的 IP 地址相同。  
+1. 在 Windows DNS 管理器中，为新 SAP ASCS/SCS 实例的虚拟主机名创建 DNS 条目。  
+   分配给 DNS 中虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器的 IP 地址相同。  
 
-   ![_Define SAP ASCS/SCS 群集虚拟名称和 IP 地址的 DNS 条目][sap-ha-guide-figure-6009]
+   ![_定义 SAP ASCS/SCS 群集虚拟名称和 IP 地址的 DNS 条目][sap-ha-guide-figure-6009]
  
-   _定义 SAP ASCS/SCS 群集虚拟名称和 IP 地址的 DNS 条目_
+   定义 SAP ASCS/SCS 群集虚拟名称和 IP 地址的 DNS 条目
 
-2. 如果使用 SAP 排队复制服务器2（也是群集实例），则还需要在 DNS 中保留 ERS2 的虚拟主机名。 
-   在 DNS 中为 ERS2 分配的虚拟主机名的 IP 地址必须与在 Azure 负载均衡器中分配的 IP 地址相同。  
+2. 如果使用的是 SAP 排队复制服务器 2（也是群集实例），则还需要在 DNS 中为 ERS2 保留虚拟主机名。 
+   分配给 DNS 中 ERS2 虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器的 IP 地址相同。  
 
-   ![_Define SAP ERS2 群集虚拟名称和 IP 地址的 DNS 条目][sap-ha-guide-figure-6010]
+   ![_定义 SAP ERS2 群集虚拟名称和 IP 地址的 DNS 条目][sap-ha-guide-figure-6010]
  
-   _定义 SAP ERS2 群集虚拟名称和 IP 地址的 DNS 条目_
+   定义 SAP ERS2 群集虚拟名称和 IP 地址的 DNS 条目
 
-3. 若要定义分配给虚拟主机名的 IP 地址，请选择 " **DNS 管理器**  >  **域**"。
+3. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域” 。
 
    ![SAP ASCS/SCS 和 ERS2 群集配置的新虚拟名称和 IP 地址][sap-ha-guide-figure-6011]
 
-   _SAP ASCS/SCS 和 ERS2 群集配置的新虚拟名称和 TCP/IP 地址_
+   SAP ASCS/SCS 和 ERS2 群集配置的新虚拟名称和 TCP/IP 地址
 
 ## <a name="sap-installation"></a>SAP 安装 
 
 ### <a name="install-the-sap-first-cluster-node"></a>安装 SAP 的第一个群集节点
 
-按照 SAP 说明的安装过程操作。 请确保在开始安装选项 "第一个群集节点" 中，并选择 "群集共享磁盘" 作为配置选项。  
-选择 "新建共享磁盘"。  
+按照 SAP 说明的安装过程操作。 请确保在开始安装选项“第一个群集节点”中，选择“群集共享磁盘”作为配置选项。  
+选择新创建的共享磁盘。  
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a>修改 ASCS/SCS 实例的 SAP 配置文件
 
-如果运行的是排入队列复制服务器1，请 `enque/encni/set_so_keepalive` 按如下所述添加 SAP 配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 ERS2 不需要 SAP 参数。 
+如果你运行的是排队复制服务器 1，请添加 SAP 配置文件参数 `enque/encni/set_so_keepalive`，如下所述。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 ERS2 不需要 SAP 参数。 
 
-1. 如果使用 ERS1，请将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件。
+1. 如果使用的是 ERS1，则将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件中。
 
    ```
    enque/encni/set_so_keepalive = true
    ```
    
-   对于 ERS1 和 ERS2，请确保 `keepalive` 按 SAP 说明 [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。   
+   对于 ERS1 和 ERS2，请确保按 SAP 说明 [1410736](https://launchpad.support.sap.com/#/notes/1410736) 中所述设置 `keepalive` OS 参数。   
 
-2. 若要应用 SAP 配置文件参数更改，请重新启动 SAP ASCS/SCS 实例。
+2. 若要应用 SAP 配置文件参数更改，请重启 SAP ASCS/SCS 实例。
 
 ### <a name="configure-probe-port-on-the-cluster-resource"></a>在群集资源上配置探测端口
 
 使用内部负载均衡器探测功能，让整个群集配置使用 Azure Load Balancer。 Azure 内部负载均衡器通常在参与的虚拟机之间平均分配传入的工作负荷。
 
-但是，这在某些群集配置中由于只有一个实例处于活动状态而不起作用。 其他实例处于被动状态，并且无法接受任何工作负荷。 当 Azure 内部负载均衡器检测到哪个实例处于活动状态，并且仅面向活动实例时，探测功能会很有帮助。  
+但是，这在某些群集配置中由于只有一个实例处于活动状态而不起作用。 其他实例处于被动状态，并且无法接受任何工作负荷。 当 Azure 内部负载均衡器检测处于活动状态的实例，并且仅将活动实例作为目标时，探测功能会很有帮助。  
 
 > [!IMPORTANT]
-> 在此示例配置中， **ProbePort** 设置为 620 **Nr**。 对于数字为 **02** 的 SAP ASCS 实例，为 **620。**
-> 需要调整配置，使其与 SAP 实例编号和 SAP SID 匹配。
+> 在此示例配置中，“ProbePort” 设置为“620Nr”。 对于编号为 02 的 SAP ASCS 实例，则为“62002”。
+> 你将需要调整配置，使其与 SAP 实例编号和 SAP SID 一致。
 
-若要添加探测端口，请在其中一个群集 Vm 上运行此 PowerShell 模块：
+若要添加探测端口，请在其中一个群集 VM 上运行以下 PowerShell 模块：
 
-- 如果 SAP ASC/SCS 实例的实例编号为 **02** 
+- 如果 SAP ASC/SCS 实例的实例编号为 02 
    ```powershell
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62002
    ```
 
-- 如果使用 ERS2，则实例号为 **12**，它是聚集的。 不需要为 ERS1 配置探测端口，因为它未群集。  
+- 如果使用实例编号为 12 的 ERS2（群集实例）。 不需要为 ERS1 配置探测端口，因为它不是群集实例。  
    ```powershell
    Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID PR2 -ProbePort 62012 -IsSAPERSClusteredInstance $True
    ```
 
- 函数的代码如下 `Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource` 所示：
+ 函数 `Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource` 的代码如下：
    ```powershell
     function Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource {
     <#
@@ -449,21 +449,21 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
     }
    ```
 
-### <a name="continue-with-the-sap-installation"></a>继续进行 SAP 安装
+### <a name="continue-with-the-sap-installation"></a>继续安装 SAP
 
-1. 按照 SAP 安装指南中所述的过程安装数据库实例。  
-2. 按照 SAP 安装指南中所述的步骤，在第二个群集节点上安装 SAP。  
-3. 在已指定为托管 PAS 的虚拟机上 (PAS) 实例安装 SAP 主应用程序服务器。   
-   按照 SAP 安装指南中所述的过程进行操作。 Azure 上没有依赖项。
-4. 在虚拟机上安装附加的 SAP 应用程序服务器，指定用于托管 SAP 应用程序服务器实例。  
-   按照 SAP 安装指南中所述的过程进行操作。 Azure 上没有依赖项。 
+1. 按照 SAP 安装指南中描述的流程安装数据库实例。  
+2. 按照 SAP 安装指南中描述的下列步骤，在第二个群集节点上安装 SAP。  
+3. 在已指定为托管 PAS 的虚拟机上安装 SAP 主应用程序服务器 (PAS) 实例。   
+   按照 SAP 安装指南中所述的流程操作。 Azure 上没有依赖项。
+4. 在虚拟机上安装额外的 SAP 应用程序服务器，它们被指定为托管 SAP 应用程序服务器实例。  
+   按照 SAP 安装指南中所述的流程操作。 Azure 上没有依赖项。 
 
 ## <a name="test-the-sap-ascsscs-instance-failover"></a>测试 SAP ASCS/SCS 实例故障转移
-对于概括的故障转移测试，假设 SAP ASCS 在节点 A 上处于活动状态。  
+对于概述的故障转移测试，假设 SAP ASCS 在节点 A 上处于活动状态。  
 
-1. 验证 SAP 系统是否可以成功地从节点 A 故障转移到节点 B。在此示例中，针对 SAPSID **pr2)** 执行了测试。  
+1. 验证 SAP 系统是否可以成功从节点 A 故障转移到节点 B。在本例中，针对 SAPSID PR2 执行此测试。  
    请确保每个 SAPSID 都可以成功转移到另一个群集节点。   
-   选择以下选项之一，启动 SAP \<SID\> 群集组从群集节点 a 到群集节点 B 的故障转移：
+   选择以下选项之一，启动 SAP \<SID\> 群集组从群集节点 A 到群集节点 B 的故障转移：
     - 故障转移群集管理器  
     - 故障转移群集 PowerShell
 
@@ -474,9 +474,9 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
     Move-ClusterGroup -Name $SAPClusterGroup
 
     ```
-2. 重启 Windows 来宾操作系统中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
-3. 重启 Azure 门户中的群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。  
-4. 使用 Azure PowerShell 重启群集节点 A。 这会启动将 SAP \<SID\> 群集组从节点 A 故障转移到节点 B 的自动故障转移。
+2. 重启 Windows 来宾操作系统中的群集节点 A。 这会启动 SAP \<SID\> 群集组从节点 A 到节点 B 的自动故障转移。  
+3. 重启 Azure 门户中的群集节点 A。 这会启动 SAP \<SID\> 群集组从节点 A 到节点 B 的自动故障转移。  
+4. 使用 Azure PowerShell 重启群集节点 A。 这会启动 SAP \<SID\> 群集组从节点 A 到节点 B 的自动故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -666,4 +666,4 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../availability.md

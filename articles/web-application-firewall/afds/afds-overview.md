@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66ca039a449e355e47563b689f5f44cced164fea
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231429"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724143"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 应用程序防火墙
 
@@ -23,6 +23,8 @@ Front Door 上的 WAF 是一个全球性的集中式解决方案。 它部署在
 在恶意攻击进入虚拟网络之前，WAF 会阻止这些攻击靠近攻击源。 你可以获得大规模的全局保护，且不会降低性能。 WAF 策略可轻松链接到订阅中的任何 Front Door 配置文件。 在几分钟内就能部署新的规则，因此可以快速响应不断变化的威胁模式。
 
 ![Azure Web 应用程序防火墙](../media/overview/wafoverview.png)
+
+Azure Front Door 引入了[两个以预览版提供的新 SKU](https://docs.microsoft.com/azure/frontdoor/standard-premium/overview)：Front Door Standard 和 Front Door Premium SKU。 WAF 本身已与具有完整功能的 Front Door Premium SKU 集成。 对于 Front Door Standard SKU，只支持[自定义规则](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview#custom-authored-rules)。
 
 ## <a name="waf-policy-and-rules"></a>WAF 策略和规则
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: c83a1050035fc40912d0242a9c5fe2498b299ebd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 56aa7c41934506c7de0c8d5cebe84eb5a6bc2164
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>教程：Azure Active Directory 单一登录 (SSO) 与 My IBISWorld 的集成
 
@@ -83,28 +83,28 @@ ms.locfileid: "92517950"
 
 1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+   * 若要在 SP 发起的模式下配置应用程序，请从 IBISWorld 请求 URL，然后在“登录 URL”文本框中输入 URL。
+   
+   * 若要在 IDP 发起的模式下配置应用程序，请在“中继状态”文本框中输入 URL `RPID=http://fedlogin.ibisworld.com`。 将“登录 URL”文本框留空。
 
-    在“登录 URL”文本框中，键入 URL：`https://my.ibisworld.com/account/login`
-
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 1. My IBISWorld 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+   ![image](common/default-attributes.png)
 
 1. 除上述属性以外，My IBISWorld 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 | 源属性|
-    | --------------- | --------- |
-    | department | user.department |
-    | 语言 | user.preferredlanguage |
-    | phone | user.telephonenumber |
-    | title | user.jobtitle |
-    | userid | user.employeeid |
-    | country | user.country |
+   | 名称 | 源属性|
+   | --------------- | --------- |
+   | department | user.department |
+   | 语言 | user.preferredlanguage |
+   | phone | user.telephonenumber |
+   | title | user.jobtitle |
+   | userid | user.employeeid |
+   | country | user.country |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -115,7 +115,7 @@ ms.locfileid: "92517950"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

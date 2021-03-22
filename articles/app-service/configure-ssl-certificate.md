@@ -3,15 +3,15 @@ title: 添加和管理 TLS/SSL 证书
 description: 在 Azure 应用服务中创建免费的证书、导入应用服务证书、导入 Key Vault 证书或购买应用服务证书。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e563981d3a68375105256aa6015aa94ada91326b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711699"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051338"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -26,7 +26,7 @@ ms.locfileid: "101711699"
 
 |选项|说明|
 |-|-|
-| 创建免费应用服务托管证书（预览版） | 如果只需保护 `www` [自定义域](app-service-web-tutorial-custom-domain.md)或应用服务中的任何非裸域，则可以轻松使用私有证书。 |
+| 创建免费应用服务托管证书（预览版） | 免费且易于使用的专用证书，用于只需保护应用服务中的[自定义域](app-service-web-tutorial-custom-domain.md)的情形。 |
 | 购买应用服务证书 | 由 Azure 管理的私有证书。 它结合了自动化证书管理的简单性以及续订和导出选项的灵活性。 |
 | 导入来自 Key Vault 的证书 | 这在使用 [Azure Key Vault](../key-vault/index.yml) 管理 [PKCS12 证书](https://wikipedia.org/wiki/PKCS_12)时很有用。 请参阅[私有证书要求](#private-certificate-requirements)。 |
 | 上传私有证书 | 如果你已有第三方提供商提供的私有证书，则可以上传它。 请参阅[私有证书要求](#private-certificate-requirements)。 |
@@ -34,19 +34,17 @@ ms.locfileid: "101711699"
 
 ## <a name="prerequisites"></a>先决条件
 
-按照本操作方法指南操作：
-
 - [创建应用服务应用](./index.yml)。
-- 仅限免费证书：使用 [CNAME 记录](app-service-web-tutorial-custom-domain.md#map-a-cname-record)将子域（例如 `www.contoso.com`）映射到应用服务。
+- 对于专用证书，请确保它满足所有的[应用服务要求](#private-certificate-requirements)。
+- 仅适用于免费证书：
+    - 请将需要证书的域映射到应用服务。 如需相关信息，请参阅[教程：将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
+    - 对于根域（如 contoso.com），请确保应用未配置任何 [IP 限制](app-service-ip-restrictions.md)。 为根域创建证书以及定期续订该证书都依赖于可从 Internet 访问的应用。
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
 
-> [!NOTE]
-> Azure Web 应用 **不** 支持 AES256，并且所有 pfx 文件都应使用 TripleDES 进行加密。
+[免费应用服务托管证书](#create-a-free-managed-certificate-preview)和[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
 
-[免费应用服务托管证书](#create-a-free-certificate-preview)或[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
-
-* 已导出为[受密码保护的 PFX 文件](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)
+* 导出为[受密码保护的 PFX 文件](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)（使用三重 DES 进行加密）。
 * 包含长度至少为 2048 位的私钥
 * 包含证书链中的所有中间证书
 
@@ -60,21 +58,21 @@ ms.locfileid: "101711699"
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="create-a-free-certificate-preview"></a>创建免费证书（预览版）
+## <a name="create-a-free-managed-certificate-preview"></a>创建免费托管证书（预览版）
+
+> [!NOTE]
+> 在创建免费托管证书之前，请先确保已[满足应用的先决条件](#prerequisites)。
 
 免费应用服务托管证书是用于保护应用服务中的自定义 DNS 名称的统包解决方案。 它是一个功能完备的 TLS/SSL 证书，由应用服务管理并自动续订。 免费证书具有以下限制：
 
 - 不支持通配符证书。
-- 不支持裸域。
 - 不可导出。
-- 应用服务环境 (ASE) 不支持
-- 不支持 A 记录。 例如，自动续订不适用于 A 记录。
+- 应用服务环境 (ASE) 不支持。
+- 与流量管理器集成的根域不支持。
 
 > [!NOTE]
 > 免费证书是由 DigiCert 颁发的。 对于某些顶级域，必须通过创建值为 `0 issue digicert.com` 的 [CAA 域记录](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)显式允许 DigiCert 作为证书颁发者。
 > 
-
-若要创建免费应用服务托管证书，请执行以下操作：
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>” 。
 
@@ -82,7 +80,7 @@ ms.locfileid: "101711699"
 
 ![在应用服务中创建免费证书](./media/configure-ssl-certificate/create-free-cert.png)
 
-对话框中列出了使用 CNAME 记录正确映射到应用的任何非裸域。 选择要为其创建免费证书的自定义域，然后选择“创建”。 只能为每个受支持的自定义域创建一个证书。
+选择要为其创建免费证书的自定义域，然后选择“创建”。 只能为每个受支持的自定义域创建一个证书。
 
 操作完成后，会在“私钥证书”列表中看到该证书。
 

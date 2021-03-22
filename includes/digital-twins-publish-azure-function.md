@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 63b393f519ad29baa05fef046ee1e8ba9e5330d8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98701147"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750503"
 ---
 若要在 Azure 中将项目发布到函数应用，请在解决方案资源管理器中右键选择该项目，然后选择“发布”。
 
@@ -19,15 +19,13 @@ ms.locfileid: "98701147"
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="显示右键选择解决方案菜单的 Visual Studio 屏幕截图。菜单中突出显示了“发布”。":::
 
-在接下来的“发布”页中，保留选择的默认 Azure 目标，然后点击“下一步”。 
+在接下来的“发布”页中，保留选择的默认 Azure 目标，然后选择“下一步”。 
 
-对于特定目标，请选择“Azure 函数应用(Windows)”，然后点击“下一步”。
+对于特定目标，请选择“Azure 函数应用(Windows)”，然后选择“下一步”。
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。“特定目标”页面上选中了“Azure 函数应用(Windows)”。":::
 
-在“Functions 实例”页上，选择你的订阅。 这应该会使订阅中资源组填入方框。
-
-选择实例的资源组，然后点击 + 来创建新的 Azure 函数。
+在“Functions 实例”页上，选择你的订阅。 然后，选择 *+* 图标以创建新的 Azure 函数。
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。“函数实例”页上突出显示了用于创建新函数的“+”按钮。":::
 
@@ -37,13 +35,13 @@ ms.locfileid: "98701147"
 * 确保“资源组”是你想要使用的资源组
 * 将“计划类型”保留为“消耗”
 * 在“位置”中，选择符合资源组位置的位置
-* 使用“新建…”链接创建新的 Azure 存储资源。 设置与资源组相匹配的位置，使用其他默认值，然后点击“确定”。
+* 使用“新建…”链接创建新的 Azure 存储资源。 设置与资源组相匹配的位置，使用其他默认值，然后选择“确定”。
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="“发布 Azure 函数”对话中的 Visual Studio 屏幕截图。正在填写新函数应用的详细信息，包括名称、订阅、资源组、计划类型、位置和 Azure 存储。":::
 
 然后选择“创建”。
 
-这会使你返回到“Functions 实例”页，此时新函数应用会显示在资源组下。 点击“完成”。
+在创建应用服务时，请稍等片刻，然后对话框应返回到“Functions 实例”页，新的函数应用将出现在资源组下方嵌套的“函数应用”区域中。 选择“完成”。
 
 :::image type="content" source="../articles/digital-twins/media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="在 Visual Studio 中发布 Azure 函数：Functions 实例（在函数应用之后）":::
 
@@ -59,4 +57,6 @@ ms.locfileid: "98701147"
 >
 > 请按照提示升级到最新的 Azure Functions 运行时版本。 如果你在使用较旧版本的 Visual Studio，则可能会发生此问题。
 
-函数应用需要具有系统管理的标识，并且有权访问 Azure 数字孪生实例，这样才能访问 Azure 数字孪生。 你接下来要设置此内容。
+函数应用现在将发布到 Azure。 
+
+要使函数应用能够访问 Azure 数字孪生，它需要具有系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
