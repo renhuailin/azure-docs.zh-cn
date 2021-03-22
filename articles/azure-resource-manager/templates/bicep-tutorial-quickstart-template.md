@@ -2,16 +2,16 @@
 title: 教程 - 使用快速入门模板进行 Azure 资源管理器 Bicep 开发
 description: 了解如何使用 Azure 快速入门模板完成 Bicep 开发。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 12dcf4bfc00c299d94d45a5bd02bf9eea576cc73
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742775"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632420"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>教程：使用 Azure 快速入门模板进行 Azure 资源管理器 Bicep 开发
 
@@ -70,7 +70,7 @@ Web 应用名称必须在 Azure 中独一无二。 为了防止出现重复名�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

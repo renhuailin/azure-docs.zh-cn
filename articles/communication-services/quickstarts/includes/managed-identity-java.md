@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: bb3925c5c642f2a6d00f8f5b7fe6471676c23c30
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f2e4bf603fa4cfb93c7ca51f64029ccaedcff727
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486574"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103021619"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-java"></a>将托管标识添加到通信服务解决方案 (Java)
 
@@ -15,12 +15,12 @@ ms.locfileid: "102486574"
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.6</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-beta.4</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
@@ -34,10 +34,17 @@ ms.locfileid: "102486574"
 向代码添加以下 `import` 指令，以使用 Azure 标识和 Azure 通信客户端库。
 
 ```java
-import com.azure.identity.*;
-import com.azure.communication.sms.*;
-import com.azure.communication.identity.*;
 import com.azure.communication.common.*;
+import com.azure.communication.identity.*;
+import com.azure.communication.identity.models.*;
+import com.azure.communication.sms.*;
+import com.azure.core.credential.*;
+import com.azure.core.http.*;
+import com.azure.core.http.netty.*;
+import com.azure.identity.*;
+
+import java.io.IOException;
+import java.util.*;
 ```
 
 下面的示例使用的是 [DefaultAzureCredential](/java/api/azure.identity.defaultazurecredential)。 此凭据适用于生产环境和开发环境。
@@ -88,12 +95,12 @@ import com.azure.communication.common.*;
                .buildClient();
 
           // Send the message and check the response for a message id
-          SendSmsResponse response = smsClient.sendMessage(
-               new PhoneNumberIdentifier("<leased-phone-number>"),
-               to,
-               "your message",
-               options /* Optional */
+          SmsSendResult response = smsClient.send(
+               "<from-phone-number>",
+               "<to-phone-number>",
+               "your message"
           );
+
           return response;
     }
 ```

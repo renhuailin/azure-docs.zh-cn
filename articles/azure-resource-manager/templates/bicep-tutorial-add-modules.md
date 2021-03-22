@@ -2,15 +2,15 @@
 title: 教程 - 将模块添加到 Azure 资源管理器 Bicep 文件
 description: 使用模块来封装原始资源声明的复杂细节。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dfbf96f608a0cdf086f8b9eb5b8f1fc72932a772
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742858"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633132"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>教程：将模块添加到 Azure 资源管理器 Bicep 文件
 
@@ -73,11 +73,11 @@ output storageEndpoint object = stg.outputs.storageEndpoint
 
 使用 Azure CLI 或 Azure PowerShell 来部署模板。
 
-如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 本示例假设你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)中所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 此示例假定你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

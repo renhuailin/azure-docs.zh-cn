@@ -6,16 +6,16 @@ services: azure-communication-services
 author: peiliu
 ms.service: azure-communication-services
 ms.topic: how-to
-ms.date: 2/24/2021
+ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 2aea4daddb9cccbf7f268c596fd121357cc17b6d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486575"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492347"
 ---
 # <a name="use-managed-identities"></a>使用托管标识
 通过使用托管标识开始使用 Azure 通信服务。 通信服务标识和 SMS 客户端库支持通过 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。

@@ -4,19 +4,23 @@ titleSuffix: An Azure Communication Services quickstart
 description: 本快速入门介绍如何使用 Azure 通信服务在应用中添加视频呼叫功能。
 author: xumo-95
 ms.author: mikben
-ms.date: 07/24/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 00721a5c7763663a17b1e67cf0ac3ae59fd9448a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204518"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487864"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>快速入门：在应用中添加 1:1 视频呼叫 (JavaScript)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="download-code"></a>下载代码
+
+在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 上查找此快速入门的最终代码
+
+## <a name="prerequisites"></a>必备条件
 - 获取具有有效订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/en/) Active LTS 和 Maintenance LTS 版本（8.11.1 和 10.14.1）
 - 创建活动的通信服务资源。 [创建通信服务资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp)。
@@ -323,7 +327,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 可以通过在文本字段中提供用户 ID 并单击“开始呼叫”按钮，发起 1:1 传出视频呼叫。 
 
 ## <a name="sample-code"></a>代码示例
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/Add%201%20on%201%20video%20calling) 下载示例应用。
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 下载示例应用。
 
 ## <a name="clean-up-resources"></a>清理资源
 如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources)的详细信息。

@@ -1,23 +1,18 @@
 ---
 title: 即将推出的对 Azure 安全中心的重要更改
 description: 即将推出的对 Azure 安全中心的更改，你可能需要了解这些更改并针对这些更改做好计划
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051610"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633710"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -32,7 +27,6 @@ ms.locfileid: "102051610"
 ## <a name="planned-changes"></a>计划的更改
 
 - [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [两条旧版建议不再将数据直接写入 Azure 活动日志](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)
 - [弃用 11 种 Azure Defender 警报](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 当这些功能为正式版并对 AWS 资源运行评估时，结果将影响所有多云资源与混合云资源的合计安全分数。 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>两条旧版建议不再将数据直接写入 Azure 活动日志 
-
-**预计更改日期：** 2021 年 3 月
-
-安全中心将几乎所有安全建议的数据传递到 Azure 顾问，后者又将数据写入 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
-
-对于其中两条建议，数据将同时直接写入 Azure 活动日志。 由于此项更改，安全中心会停止将这些旧版安全建议的数据直接写入活动日志， 而我们会将数据导出到 Azure 顾问，如同对所有其他建议所做的那样。 
-
-这两条旧版建议为：
-- 应在计算机上解决 Endpoint Protection 运行状况问题
-- 应该修复计算机上安全配置中的漏洞
-
-如果你一直在活动日志的“TaskDiscovery 类型的建议”类别中访问这两条建议的信息，现在不再可以这样做。
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用 
 

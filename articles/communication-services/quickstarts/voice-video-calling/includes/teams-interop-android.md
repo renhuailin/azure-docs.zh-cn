@@ -3,15 +3,15 @@ title: 快速入门 - 从 Android 应用加入 Teams 会议
 description: 本教程介绍如何使用适用于 Android 的 Azure 通信服务通话客户端库加入 Teams 会议
 author: chpalm
 ms.author: mikben
-ms.date: 02/18/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: be68b8336861891c6704702379892460fd3b7400
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 82e64af5cec8641abacf5afa323fc38382a124c4
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660020"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487971"
 ---
 本快速入门介绍如何使用适用于 Android 的 Azure 通信服务通话客户端库加入 Teams 会议。
 

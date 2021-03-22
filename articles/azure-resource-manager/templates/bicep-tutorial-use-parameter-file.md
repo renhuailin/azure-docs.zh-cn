@@ -2,15 +2,15 @@
 title: 教程 - 使用参数文件部署 Azure 资源管理器 Bicep 文件
 description: 使用参数文件，其中包含用于部署 Bicep 文件的值。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 233bab26d659fef2da9a9f5a7080d4b3ecbce7d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742797"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632350"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>教程：使用参数文件部署 Azure 资源管理器 Bicep 文件
 
@@ -66,7 +66,7 @@ Bicep 文件包含许多可以在部署期间提供的参数。 在上一篇教�
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 $bicepFile = "{path-to-the-bicep-file}"

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750503"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630246"
 ---
 若要在 Azure 中将项目发布到函数应用，请在解决方案资源管理器中右键选择该项目，然后选择“发布”。
 
@@ -57,6 +57,4 @@ ms.locfileid: "101750503"
 >
 > 请按照提示升级到最新的 Azure Functions 运行时版本。 如果你在使用较旧版本的 Visual Studio，则可能会发生此问题。
 
-函数应用现在将发布到 Azure。 
-
-要使函数应用能够访问 Azure 数字孪生，它需要具有系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
+函数应用现在将发布到 Azure。

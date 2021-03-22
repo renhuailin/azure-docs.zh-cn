@@ -1,14 +1,14 @@
 ---
 title: 部署 Azure 安全基准基础蓝图示例
 description: Azure 安全基准基础蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 02/18/2020
+ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: e48f3da383bdb6d5c9960595f3c0fdcabc27dc75
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: af41dd50c976ac6c0570b8a089211fa310ef4ef1
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740675"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103232607"
 ---
 # <a name="deploy-the-azure-security-benchmark-foundation-blueprint-sample"></a>部署 Azure 安全基准基础蓝图示例
 
@@ -138,7 +138,7 @@ ms.locfileid: "101740675"
 |Azure 网络观察程序模板|资源管理器模板|网络观察程序位置|网络观察程序资源的位置|
 |Azure 网络观察程序模板|资源管理器模板|网络观察程序资源组位置|如果已启用网络观察程序，则此参数值必须与现有网络观察程序资源组的位置相匹配。|
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果遇到错误 `The resource group 'NetworkWatcherRG' failed to deploy due to the
 following error: Invalid resource group location '{location}'. The Resource group already exists in
