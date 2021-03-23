@@ -65,7 +65,7 @@ SAP BI 平台包含一台或多台主机上运行的服务器的集合。 必须
   Tomcat 是 SAP BI 平台的默认 Web 应用程序。 若要实现 tomcat 的高可用性，请在 Azure 中启用使用[静态成员身份侦听器](https://tomcat.apache.org/tomcat-9.0-doc/config/cluster-membership.html#Static_Membership_Attributes)的会话复制。 它可确保即使 tomcat 服务中断，用户也可以访问 SAP BI Web 应用程序。
 
   > [!Important]
-  > 默认情况下，Tomcat 使用多播 IP 和端口进行聚合，而这在 Azure 上不受支持 (SAP Note [2764907](https://launchpad.support.sap.com/#/notes/2764907))。
+  > 默认情况下，Tomcat 使用多播 IP 和端口进行群集，而这在 Azure 上不受支持 (SAP Note [2764907](https://launchpad.support.sap.com/#/notes/2764907))。
 
 - BI 平台服务器
 

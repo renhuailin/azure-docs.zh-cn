@@ -2,16 +2,16 @@
 title: 教程 - 将函数添加到 Azure 资源管理器 Bicep 文件
 description: 将函数添加到 Bicep 文件以构造值。
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: 9c66ab132d3343115b1a9bd852d3eb3d83ae4ca7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742866"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633149"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>教程：将函数添加到 Azure 资源管理器 Bicep 文件
 
@@ -37,7 +37,7 @@ ms.locfileid: "101742866"
 
 函数可以在部署过程中动态获取值，为 Bicep 文件增加了灵活性。 在本教程中，我们使用函数来获取用于部署的资源组的位置。
 
-以下示例重点介绍添加名为 `location` 的参数需要做的更改。 参数默认值调用 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 此函数返回的对象描述用于部署的资源组。 对象上的一个属性是位置属性。 使用默认值时，存储帐户位置与资源组位置相同。 资源组中的资源不需共享同一位置。 也可根据需要提供不同的位置。
+以下示例演示了添加名为 `location` 的参数而需要做出的更改。 参数默认值调用 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 此函数返回的对象描述用于部署的资源组。 对象上的一个属性是位置属性。 使用默认值时，存储帐户位置与资源组位置相同。 资源组中的资源不需共享同一位置。 也可根据需要提供不同的位置。
 
 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
 
@@ -82,7 +82,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 可以看到一项存储帐户资源已部署，且其位置与资源组一样。

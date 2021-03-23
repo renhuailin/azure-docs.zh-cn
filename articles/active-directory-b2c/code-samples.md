@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654487"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008478"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -47,9 +47,10 @@ ms.locfileid: "101654487"
 
 | 示例 | 说明 |
 |--------| ----------- |
+| [ms-identity-javascript-react-tutorial](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | 调用 Web API 的单页应用程序 (SPA)。 使用 MSAL React 完成向 Azure AD B2C 的身份验证。 此示例通过 PKCE 使用授权代码流。 |
 | [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | 调用 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例通过 PKCE 使用授权代码流。 |
-| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | 一个单页应用程序 (SPA)，它调用 Microsoft Graph 来管理 B2C 目录中的用户。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例通过 PKCE 使用授权代码流。|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例使用隐式流。|
+| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | 一个单页应用程序 (SPA)，它调用 Microsoft Graph 来管理 B2C 目录中的用户。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 此示例通过 PKCE 使用授权代码流。|
 
 ## <a name="consoledaemon-apps"></a>控制台/守护程序应用
 

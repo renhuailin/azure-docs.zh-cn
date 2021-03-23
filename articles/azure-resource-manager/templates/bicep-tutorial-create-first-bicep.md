@@ -2,16 +2,16 @@
 title: 教程 - 创建和部署 Azure 资源管理器 Bicep 文件
 description: 创建用于部署 Azure 资源的第一个 Bicep 文件。 本教程介绍 Bicep 文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 03/03/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036284"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632571"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>教程：创建和部署第一个 Azure 资源管理器 Bicep 文件
 
@@ -76,11 +76,11 @@ ms.locfileid: "102036284"
     资源声明具有四个组件：
 
     - **资源**：关键字。
-    - **符号名称** (stg)：符号名称是用于在整个 bicep 文件中引用资源的标识符。 它不是在部署资源时的资源名称。 资源名称由 **name** 属性定义。  请参阅此列表中的第四个组件。 为使教程易于理解，在本教程系列中，我们将 **stg** 用作存储帐户资源的符号名称。
+    - **符号名称** (stg)：符号名称是用于在整个 bicep 文件中引用资源的标识符。 它不是在部署资源时的资源名称。 资源名称由 **name** 属性定义。  请参阅此列表中的第四个组件。 为使教程易于理解，在本教程系列中，我们将 **stg** 用作存储帐户资源的符号名称。 若要查看如何使用符号名称获取对象属性的完整列表，请参阅[添加输出](./bicep-tutorial-add-outputs.md)。
     - **资源类型** (Microsoft.Storage/storageAccounts@2019-06-01)：它包括资源提供程序 (Microsoft.Storage)、资源类型 (storageAccounts) 和 apiVersion (2019-06-01)。 每个资源提供程序都发布了其自身的 API 版本，因此此值与特定的类型相关。 可以从 [ARM 模板参考](/azure/templates/)中查找各种 Azure 资源的更多类型和 apiVersion。
-    - **属性**（{...} 内部的任何内容）：要为给定的资源类型指定的特定属性。 这些属性与 ARM 模板中提供的属性完全相同。 每个资源都有一个 `name` 属性。 大多数资源还有一个 `location` 属性，该属性用于设置资源部署到的区域。 其他属性因资源类型和 API 版本而异。 了解 API 版本与可用属性之间的关联非常重要，因此，让我们直接了解详情。
+    - **属性**（= {...} 内部的任何内容）：要为给定的资源类型指定的特定属性。 这些属性与 ARM 模板中提供的属性完全相同。 每个资源都有一个 `name` 属性。 大多数资源还有一个 `location` 属性，该属性用于设置资源部署到的区域。 其他属性因资源类型和 API 版本而异。 了解 API 版本与可用属性之间的关联非常重要，因此，让我们直接了解详情。
 
-        对于此存储帐户，可以看到 API 版本为 [storageAccounts 2019-06-01](/azure/templates/microsoft.storage/2019-06-01/storageaccounts)。 请注意，你并未将所有属性添加到 Bicep 文件。 许多属性是可选的。 `Microsoft.Storage` 资源提供程序可能发布了新的 API 版本，但要部署的版本不需要更改。 可以继续使用该版本，部署的结果是一致的。
+        对于此存储帐户，可以在 [storageAccounts 2019-06-01](/azure/templates/microsoft.storage/2019-06-01/storageaccounts) 中看到 API 版本。 请注意，你并未将所有属性添加到 Bicep 文件。 许多属性是可选的。 `Microsoft.Storage` 资源提供程序可能发布了新的 API 版本，但要部署的版本不需要更改。 可以继续使用该版本，部署的结果是一致的。
 
         如果查看较旧的 API 版本（例如 [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)），你会发现提供了一个较小的属性集。
 
@@ -161,7 +161,7 @@ Bicep 是基于 Azure 资源管理器模板（ARM 模板）的透明抽象。 �
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 $bicepFile = "{provide-the-path-to-the-bicep-file}"
@@ -194,7 +194,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中选择“资源组”。 
 

@@ -2,15 +2,15 @@
 title: 教程 - 将参数添加到 Azure 资源管理器 Bicep 文件
 description: 将参数添加到 Bicep 文件，使其可供重复使用。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742855"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632775"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>教程：将参数添加到 Azure 资源管理器 Bicep 文件
 
@@ -34,7 +34,7 @@ ms.locfileid: "101742855"
 
 ## <a name="make-bicep-file-reusable"></a>使 Bicep 文件可供重复使用
 
-为使 Bicep 文件可供重复使用，让我们添加一个可用于传入存储帐户名称的参数。 以下示例中突出显示的 Bicep 演示了文件中发生的更改。 `storageName` 参数已标识为字符串。 最大长度设置为 24 个字符，以防止名称过长。
+为使 Bicep 文件可供重复使用，让我们添加一个可用于传入存储帐户名称的参数。 下面的 Bicep 文件演示了文件中更改的内容。 `storageName` 参数已标识为字符串。 最大长度设置为 24 个字符，以防止名称过长。
 
 复制整个文件并将其替换为以下内容。
 
@@ -46,11 +46,11 @@ ms.locfileid: "101742855"
 
 让我们部署该 Bicep 文件。 以下示例使用 Azure CLI 或 PowerShell 来部署 Bicep 文件。 请注意，需要为部署命令中的某个值提供存储帐户名称。 对于存储帐户名称，请提供前一篇教程中所用的相同名称。
 
-如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 本示例假设你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)中所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 此示例假定你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

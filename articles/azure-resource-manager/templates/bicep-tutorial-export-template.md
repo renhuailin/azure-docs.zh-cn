@@ -2,15 +2,15 @@
 title: 教程 - 从 Azure 门户导出 JSON 模板以进行 Bicep 开发
 description: 了解如何使用导出的 JSON 模板完成 Bicep 开发。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742789"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632494"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>教程：从 Azure 门户使用导出的 JSON 模板
 
@@ -34,7 +34,7 @@ ms.locfileid: "101742789"
 
 ## <a name="create-app-service-plan"></a>创建应用服务计划
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择“创建资源”。 
 1. 在“搜索市场”中输入“应用服务计划”，然后选择“应用服务计划”。     请不要选择“应用服务计划(经典)” 
 1. 选择“创建”  。
@@ -72,16 +72,16 @@ Azure 门户目前仅支持导出 JSON 模板。 可使用一些工具将 JSON �
     > [!IMPORTANT]
     > 通常，导出的模板比创建模板时所需的信息更详细。 例如，导出的模板中的 SKU 对象包含五个属性。 此模板是可行的，但你只需使用 `name` 属性。 可以从导出的模板着手，然后根据要求对其进行修改。
 
-1. 选择“下载”  。  下载的 zip 文件包含 **template.json** 和 **parameters.json**。 解压缩文件。
+1. 选择“下载”。  下载的 zip 文件包含 **template.json** 和 **parameters.json**。 解压缩文件。
 1. 浏览到 **https://bicepdemo.z22.web.core.windows.net/** ，选择“反向编译”，然后打开“template.json”。  可在 Bicep 中获取模板。
 
 ## <a name="revise-existing-bicep-file"></a>修改现有的 Bicep 文件
 
 反向编译的模板提供所需的大部分 Bicep，但你需要根据 Bicep 文件对其进行自定义。 请特别注意你的 Bicep 文件与导出的 Bicep 文件之间的参数和变量差异。 很明显，导出过程并不知道你在自己的 Bicep 文件中定义的参数和变量。
 
-以下示例突出显示了在 Bicep 文件中添加的内容。 其中包含导出的代码以及一些更改。 第一，它会更改参数的名称以符合命名约定。 第二，它对应用服务计划的位置使用 location 参数。 第三，它删除默认值正常的所有属性。
+以下示例显示了在 Bicep 文件中添加的内容。 其中包含导出的代码以及一些更改。 第一，它会更改参数的名称以符合命名约定。 第二，它对应用服务计划的位置使用 location 参数。 第三，它删除默认值正常的所有属性。
 
-请复制整个文件，并替换你的 Bicep 文件及其内容。
+请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.bicep" range="1-53" highlight="18,34-51":::
 
@@ -89,11 +89,11 @@ Azure 门户目前仅支持导出 JSON 模板。 可使用一些工具将 JSON �
 
 使用 Azure CLI 或 Azure PowerShell 来部署 Bicep 文件。
 
-如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 本示例假设你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)中所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
+如果尚未创建资源组，请参阅[创建资源组](bicep-tutorial-create-first-bicep.md#create-resource-group)。 此示例假定你已按[第一篇教程](bicep-tutorial-create-first-bicep.md#deploy-bicep-file)所述将 `bicepFile` 变量设置为 Bicep 文件的路径。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要运行此部署 cmdlet，必须已安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+若要运行此部署 cmdlet，你必须具有 Azure PowerShell 的[最新版本](/powershell/azure/install-az-ps)。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -125,7 +125,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 该资源组包含一个存储帐户和一个应用服务计划。

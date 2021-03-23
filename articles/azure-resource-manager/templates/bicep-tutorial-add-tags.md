@@ -2,16 +2,16 @@
 title: 教程 - 将标记添加到 Azure 资源管理器 Bicep 文件中的资源
 description: 将标记添加到在 Bicep 文件中部署的资源。 可以通过标记对资源进行逻辑组织。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742791"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632590"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>教程 - 在 Azure 资源管理器 Bicep 文件中添加标记
 
@@ -37,7 +37,7 @@ ms.locfileid: "101742791"
 
 可以通过对资源进行标记来添加有助于标识其用途的值。 例如，可以通过添加标记来列出环境和项目。 可以通过添加标记来确定某个成本中心或拥有该资源的团队。 添加对组织来说有意义的任何值。
 
-以下示例重点介绍对该 Bicep 文件的更改。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
+以下示例演示了对该 Bicep 文件的更改。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 
@@ -82,7 +82,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 选择一项资源，例如存储帐户资源。 可以看到，它现在有标记。

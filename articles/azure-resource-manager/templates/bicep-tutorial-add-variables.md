@@ -2,16 +2,16 @@
 title: 教程 - 将变量添加到 Azure 资源管理器 Bicep 文件
 description: 将变量添加到 Bicep 文件以简化语法。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742792"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632469"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>教程：将变量添加到 Azure 资源管理器 Bicep 文件
 
@@ -35,7 +35,7 @@ ms.locfileid: "101742792"
 
 ## <a name="use-variable"></a>使用变量
 
-以下示例重点介绍为 Bicep 文件添加变量而做的更改，该变量用于创建一个独一无二的存储帐户名称。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
+以下示例演示了为 Bicep 文件添加变量而做的更改，该变量用于创建一个独一无二的存储帐户名称。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.bicep" range="1-31" highlight="1-3,19,22":::
 
@@ -91,7 +91,7 @@ az deployment group create \
 
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中选择“资源组”。 
 1. 选择已部署到的资源组。
 1. 可以看到，我们已部署一项存储帐户资源。 该存储帐户的名称为 **store** 加上一个由随机字符组成的字符串。

@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043042"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614626"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新增功能
 
@@ -21,6 +21,8 @@ ms.locfileid: "102043042"
 ## <a name="update-march-2021"></a>更新（2021 年 3 月）
 - 支持在 Azure Migrate 设备上提供多个服务器凭据，以在 VMware 环境中发现已安装的应用程序（软件清单）、执行无代理依赖项分析以及发现 SQL Server 实例和数据库。 [了解详细信息](tutorial-discover-vmware.md#provide-server-credentials)
 - 目前，对 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估功能以预览版提供。 [了解详细信息](concepts-azure-sql-assessment-calculation.md)<br/>若要试用此功能，请使用[此链接](https://aka.ms/AzureMigrate/SQL)在澳大利亚东部区域创建一个项目。 若要开始，请参阅[发现](tutorial-discover-vmware.md)和[评估](tutorial-assess-sql.md)教程。
+- 无代理 VMware 迁移现支持按每个 vCenter 并发复制 500 个 VM。
+- Azure Migrate 现在会自动将 Azure VM 代理安装在 VMware VM 上，同时使用 VMware 迁移的无代理方法将其迁移到 Azure。
 
 ## <a name="update-january-2021"></a>更新（2021 年 1 月）
 -  借助 Azure Migrate 的服务器迁移工具，你现可将 VMware 虚拟机、物理服务器和其他云中的虚拟机迁移到 Azure 虚拟机，其中后者带有用客户管理的密钥 (CMK) 进行服务器端加密的磁盘。

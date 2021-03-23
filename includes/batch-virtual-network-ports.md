@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 01/13/2021
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750157"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561902"
 ---
 ### <a name="general-requirements"></a>一般要求
 
@@ -42,10 +42,10 @@ ms.locfileid: "101750157"
 
 **权限** - 检查在 VNet 的订阅或资源组上实施的安全策略或锁定是否限制用户管理 VNet 所需的权限。
 
-**其他网络资源** - Batch 自动在包含 VNet 的资源组中分配其他网络资源。
+**其他网络资源** - Batch 自动在包含 VNet 的资源组中创建其他网络资源。
 
 > [!IMPORTANT]
-> 对于每 100 个专用或低优先级节点，Batch 会分配：1 个网络安全组 (NSG)、1 个公共 IP 地址、1 个负载均衡器。 这些资源受订阅的[资源配额](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于大型池，可能需要为一个或多个此类资源请求增加配额。
+> 对于每 100 个专用或低优先级节点，Batch 会创建：1 个网络安全组 (NSG)、1 个公共 IP 地址、1 个负载均衡器。 这些资源受订阅的[资源配额](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于大型池，可能需要为一个或多个此类资源请求增加配额。
 
 #### <a name="network-security-groups-batch-default"></a>网络安全组：Batch 默认值
 

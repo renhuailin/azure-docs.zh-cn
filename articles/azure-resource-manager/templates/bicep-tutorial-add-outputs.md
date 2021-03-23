@@ -2,16 +2,16 @@
 title: 教程 - 将输出添加到 Azure 资源管理器 Bicep 文件
 description: 将输出添加到 Bicep 文件以简化语法。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742854"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636169"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>教程：将输出添加到 Azure 资源管理器 Bicep 文件
 
@@ -37,7 +37,7 @@ ms.locfileid: "101742854"
 
 可以使用输出，以便从部署返回值。 例如，可以获取新存储帐户的终结点。
 
-以下示例重点介绍为了添加输出值而对 Bicep 文件做出的更改。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
+以下示例演示为了添加输出值而对 Bicep 文件做出的更改。 请复制整个文件，并将你的 Bicep 文件替换为该文件的内容。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ ms.locfileid: "101742854"
 
 返回的值的类型设置为 `object`，这意味着它会返回模板对象。
 
-若要从存储帐户获取 `primaryEndpoints` 属性，请使用存储帐户符号名称。
+若要从存储帐户获取 `primaryEndpoints` 属性，请使用存储帐户符号名称。 Visual Studio Code 的自动完成功能提供了属性的完整列表：
+
+   ![Visual Studio Code Bicep 符号名称对象属性](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>部署 Bicep 文件
 

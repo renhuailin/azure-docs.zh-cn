@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721423"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463079"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>教程：配置 Azure IoT Edge 设备
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 在本文中，我们会将一个运行 Linux 的 Azure 虚拟机配置为充当透明网关的 Azure IoT Edge 设备。 借助透明网关配置，设备在不知道网关存在的情况下就能通过网关连接到 Azure IoT 中心。 同时，与 IoT 中心内的设备交互的用户也察觉不到中间网关设备。 最后，我们将通过向透明网关添加 IoT Edge 模块，向我们的系统添加边缘分析功能。
+
+>[!NOTE]
+>本教程中的概念适用于所有版本的 IoT Edge，而你创建的用于试用该方案的示例设备运行的是 IoT Edge 版本 1.1。
 
 本文的步骤通常由云开发人员执行。
 
@@ -162,7 +167,7 @@ ms.locfileid: "101721423"
     .\Create-EdgeVm.ps1
     ```
 
-1. 根据提示提供每个参数的值。 建议在整篇教程中，对所有资源使用一致的订阅、资源组和位置值。
+1. 根据提示提供每个参数的值。 建议在这整个教程中，所有资源的订阅、资源组和位置均保持一致。
 
     * **Azure 订阅 ID**：可在 Azure 门户中找到。
     * **资源组名称**：在本教程中，请使用易记名称将资源分组
@@ -178,7 +183,7 @@ ms.locfileid: "101721423"
 
     * 创建资源组（如果尚不存在）
     * 创建虚拟机
-    * 为 VM 添加端口 22 (SSH)、5671 (AMQP)、5672 (AMPQ) 和 443 (TLS) 的 NSG 例外
+    * 为端口 22 (SSH)、5671 (AMQP)、5672 (AMPQ) 和 443 (TLS) 添加 VM 的 NSG 例外
     * 安装 [Azure CLI](/cli/azure/install-azure-cli-apt)
 
 1. 该脚本会输出 SSH 连接字符串用于连接到 VM。 复制连接字符串供下一步使用。
