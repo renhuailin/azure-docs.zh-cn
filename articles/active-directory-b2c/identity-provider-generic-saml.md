@@ -1,28 +1,28 @@
 ---
-title: 设置与 SAML 标识提供者的注册和登录
+title: 使用 SAML 标识提供者设置注册和登录
 titleSuffix: Azure Active Directory B2C
-description: Azure Active Directory B2C 中 (IdP) ，设置与任何 SAML 标识提供者的注册和登录。
+description: 在 Azure Active Directory B2C 中使用任何 SAML 标识提供者 (IdP) 设置注册和登录。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71d51c4303dbc4c0c2668dbfcf388b0d6c6bcffe
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107333"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448398"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置 SAML 标识提供者的注册和登录
+# <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 SAML 标识提供者设置注册和登录
 
-Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联合。 本文介绍如何启用 SAML 标识提供者用户帐户登录，使用户能够使用他们现有的社交或企业标识（如 [ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce-saml.md)）登录。
+Azure Active Directory B2C (Azure AD B2C) 支持使用 SAML 2.0 标识提供者进行联合身份验证。 本文介绍如何使用 SAML 标识提供者用户帐户登录，从而允许用户使用其现有的社交或企业标识（例如 [ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce-saml.md)）登录。
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -36,14 +36,14 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
 
 ## <a name="scenario-overview"></a>方案概述
 
-你可以将 Azure AD B2C 配置为允许用户通过 (IdP) 外部社交或企业 SAML 标识提供者提供的凭据登录到你的应用程序。 当 Azure AD B2C 与 SAML 标识提供程序每家时，它充当向 SAML **标识提供者** 发出 saml 请求并等待 saml 响应的 **服务提供商**。 在下图中：
+可以配置 Azure AD B2C，以允许用户使用外部社交或企业 SAML 标识提供者 (IdP) 提供的凭据登录到你的应用程序。 当 Azure AD B2C 使用 SAML 标识提供者进行联合身份验证时，它将充当向 SAML 标识提供者发起 SAML 请求并等待 SAML 响应的服务提供商。 在下图中：
 
-1. 应用程序启动 Azure AD B2C 的授权请求。 该应用程序可以是 [OAuth 2.0](protocols-overview.md) 或 [OpenId connect](openid-connect.md) 应用程序，也可以是 [SAML 服务提供](saml-service-provider.md)程序。 
-1. 在 Azure AD B2C 登录页上，用户选择使用 SAML 标识提供者帐户登录 (例如 *Contoso*) 。 Azure AD B2C 启动 SAML 授权请求，并将用户转到 SAML 标识提供者以完成登录。
-1. SAML 标识提供程序返回 SAML 响应。
-1. Azure AD B2C 验证 SAML 令牌，提取声明，颁发其自己的令牌，并使用户返回到应用程序。  
+1. 应用程序向 Azure AD B2C 发起授权请求。 应用程序可以是 [OAuth 2.0](protocols-overview.md) 或 [OpenId Connect](openid-connect.md) 应用程序，也可以是 [SAML 服务提供者](saml-service-provider.md)。 
+1. 在 Azure AD B2C 登录页上，用户选择使用 SAML 标识提供者帐户（例如 Contoso）登录。 Azure AD B2C 发起 SAML 授权请求，并将用户转到 SAML 标识提供者以完成登录。
+1. SAML 标识提供者返回 SAML 响应。
+1. Azure AD B2C 验证 SAML 令牌、提取声明，颁发其自己的令牌，并使用户返回到应用程序。  
 
-![用 SAML 标识提供者流登录](./media/identity-provider-generic-saml/sign-in-with-saml-identity-provider-flow.png)
+![使用 SAML 标识提供者流登录](./media/identity-provider-generic-saml/sign-in-with-saml-identity-provider-flow.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,14 +53,14 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
 
 此方案需要以下组件：
 
-* 一种 SAML **标识提供者** ，能够接收、解码和响应 AZURE AD B2C 的 saml 请求。
-* 标识提供者的公开可用的 SAML **元数据终结点** 。
+* SAML 标识提供者能够接收、解码和响应来自 Azure AD B2C 的 SAML 请求。
+* 标识提供者公开可用的 SAML 元数据终结点。
 * [Azure AD B2C 租户](tutorial-create-tenant.md)。
  
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
-若要在 Azure AD B2C 与 SAML 标识提供者之间建立信任，需要提供具有私钥的有效 X509 证书。 Azure AD B2C 使用证书的私钥对 SAML 请求进行签名。 标识提供程序使用证书的公钥来验证请求。 可以通过技术配置文件元数据访问公钥。 或者，可以将 .cer 文件手动上传到 SAML 身份提供程序。
+若要在 Azure AD B2C 与 SAML 标识提供者之间建立信任，你需要提供带有私钥的有效 X509 证书。 Azure AD B2C 使用证书的私钥对 SAML 请求进行签名。 标识提供者使用证书的公钥验证请求。 通过技术配置文件元数据可访问公钥。 或者，可以将 .cer 文件手动上传到 SAML 身份提供程序。
 
 在大多数情况下，自签名证书都是可接受的。 对于生产环境，建议使用由证书颁发机构颁发的 X509 证书。 此外，如本文档后面所述，对于非生产环境，你可以禁用两端的 SAML 签名。
 
@@ -84,7 +84,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
 
 ## <a name="configure-the-saml-technical-profile"></a>配置 SAML 技术配置文件
 
-通过将 SAML 标识提供程序添加到策略扩展文件中的 **ClaimsProviders** 元素来定义该提供程序。 声明提供程序包含 SAML 技术配置文件，用于确定与 SAML 标识提供者通信所需的终结点和协议。 添加具有 SAML 技术配置文件的声明提供程序：
+通过在策略的扩展文件中将 SAML 标识提供者添加到 ClaimsProviders 元素来定义该标识提供者。 声明提供程序包含用于确定与 SAML 标识提供者通信所需的终结点和协议的 SAML 技术配置文件。 若要添加包含 SAML 技术配置文件的声明提供程序，请执行以下操作：
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -126,24 +126,24 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
     </ClaimsProvider>
     ```
 
-更新以下具有相关值的 XML 元素：
+使用以下相关值更新以下 XML 元素：
 
 |XML 元素  |“值”  |
 |---------|---------|
-|ClaimsProvider\Domain  | 用于 [直接登录](direct-signin.md?pivots=b2c-custom-policy#redirect-sign-in-to-a-social-provider)的域名。 输入要在直接登录中使用的域名。 例如， *Contoso.com*。 |
-|TechnicalProfile\DisplayName|此值会显示在登录屏幕中的登录按钮上。 例如 *Contoso*。 |
-|Metadata\PartnerEntity|SAML 身份提供程序的元数据的 URL。 或者，你可以复制标识提供程序元数据并将其添加到 CDATA 元素中 `<![CDATA[Your IDP metadata]]>` 。|
+|ClaimsProvider\Domain  | 用于[直接登录](direct-signin.md?pivots=b2c-custom-policy#redirect-sign-in-to-a-social-provider)的域名。 输入要在直接登录中使用的域名。 例如，Contoso.com。 |
+|TechnicalProfile\DisplayName|此值会显示在登录屏幕中的登录按钮上。 例如，Contoso。 |
+|Metadata\PartnerEntity|SAML 身份提供程序的元数据的 URL。 或者可以复制标识提供者元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>`。|
 
 ## <a name="map-the-claims"></a>映射声明
 
-**OutputClaims** 元素包含 SAML 标识提供程序返回的声明列表。 将策略中定义的声明的名称映射到标识提供程序中定义的断言名称。 请检查标识提供者，以获取声明 (声明的列表) 。 有关详细信息，请参阅 [声明映射](identity-provider-generic-saml-options.md#claims-mapping)。
+OutputClaims 元素包含 SAML 标识提供者返回的声明列表。 将策略中定义的声明名称映射到标识提供者中定义的断言名称。 检查标识提供者以获取声明（断言）的列表。 有关详细信息，请参阅[声明映射](identity-provider-generic-saml-options.md#claims-mapping)。
 
-在上面的示例中， *Contoso-SAML2* 包括 SAML 标识提供者返回的声明：
+在上面的示例中，Contoso-SAML2 包括 SAML 标识提供者返回的声明：
 
 * issuerUserId 声明映射到 assertionSubjectName 声明。
 * **first_name** 声明已映射到 **givenName** 声明。
 * **last_name** 声明已映射到 **surname** 声明。
-* **DisplayName** 声明映射到 `http://schemas.microsoft.com/identity/claims/displayname` 声明。
+* displayName 声明已映射到 `http://schemas.microsoft.com/identity/claims/displayname` 声明。
 * 没有名称映射的 **email** 声明。
 
 技术配置文件还会返回标识提供者不返回的声明：
@@ -195,11 +195,11 @@ Azure Active Directory B2C (Azure AD B2C) 支持与 SAML 2.0 标识提供者联�
 
 ## <a name="configure-your-saml-identity-provider"></a>配置 SAML 标识提供者
 
-配置策略后，需要为 SAML 标识提供者配置 Azure AD B2C SAML 元数据。 SAML 元数据是 SAML 协议中用于公开策略（ **服务提供程序**）的配置的信息。 它定义服务的位置，例如登录和注销、证书、登录方法，等等。
+配置策略后，需要使用 Azure AD B2C SAML 元数据配置 SAML 标识提供者。 SAML 元数据是 SAML 协议中用于公开策略（例如服务提供商）的配置的信息。 它定义服务的位置，例如登录和注销、证书、登录方法和其他信息。
 
-每个 SAML 标识提供程序都有不同的步骤来设置服务提供程序。 一些 SAML 标识提供者要求提供 Azure AD B2C 元数据，而另一些则要求您手动浏览元数据文件并提供信息。 有关指导，请参阅标识提供者的文档。
+每个 SAML 标识提供者都有不同的步骤来设置服务提供商。 一些 SAML 标识提供者请求 Azure AD B2C 元数据，而另一些则要求你手动浏览元数据文件并提供信息。 有关指导，请参阅标识提供者的文档。
 
-下面的示例演示了 Azure AD B2C 技术配置文件的 SAML 元数据的 URL 地址：
+以下示例显示 Azure AD B2C 技术配置文件的 SAML 元数据的 URL 地址：
 
 ```
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
@@ -209,7 +209,7 @@ https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your
 
 - 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
 - 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
-- **你的技术配置文件** ，其中包含 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
+- 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
 
 打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。
 
@@ -217,16 +217,17 @@ https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-1. 在 "**策略**" 下，选择 "**标识体验框架**"
-1. 选择信赖方策略，例如 `B2C_1A_signup_signin` 。
-1. 对于 " **应用程序**"，请选择 [之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 选择 " **立即运行** " 按钮。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
+1. 在“策略”下，选择“Identity Experience Framework”
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，选择你[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
 
-如果登录过程成功，浏览器将重定向到 `https://jwt.ms` ，后者显示 Azure AD B2C 返回的令牌的内容。
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置 SAML 标识提供程序选项与 Azure Active Directory B2C](identity-provider-generic-saml-options.md)
+- [使用 Azure Active Directory B2C 配置 SAML 标识提供者选项](identity-provider-generic-saml-options.md)
 
 ::: zone-end
