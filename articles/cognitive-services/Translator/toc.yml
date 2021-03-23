@@ -64,7 +64,7 @@
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: 适用区域
+        - name: 区域可用性
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 请求限制
           href: request-limits.md
@@ -147,7 +147,7 @@
     - name: 参考
       items:
         - name: 文档翻译 REST API
-          href: /rest/api/cognitiveservices/translator/translation
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: 翻译器资源
   items:
     - name: 支持和帮助选项
