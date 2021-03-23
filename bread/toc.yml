@@ -174,9 +174,6 @@
     - name: Azure 远程渲染
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
-    - name: 了解 Azure 对象
-      tocHref: /azure/object-understanding/
-      topicHref: /azure/object-understanding/
     - name: 容器注册表
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
