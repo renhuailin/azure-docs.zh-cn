@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2ead9bd72691dc120afb60c025ce563684716038
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193261"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199324"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Onshape 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102193261"
 * 让用户使用其 Azure AD 帐户自动登录到 Onshape。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -73,27 +73,13 @@ ms.locfileid: "102193261"
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户中的“Onshape”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
-
-   ![编辑基本 SAML 配置](common/edit-urls.png)
-
-1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
-
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
-
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.onshape.com`
-
-    > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Onshape 客户端支持团队](mailto:support@onshape.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
-1. 单击“ **保存**”。
-
-1. Onshape 应用程序需要特定格式的 SAML 断言，这需要将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 如果系统提示保存单一登录设置，请选择“是”。 
+1. Onshape 应用程序需要特定格式的 SAML 断言，这需要将自定义属性映射添加到 SAML 令牌特性配置。 以下屏幕截图显示了默认属性的列表。
 
     ![image](common/default-attributes.png)
 
-1. 除上述属性以外，Onshape 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. 除上述特性以外，Onshape 应用程序还要求在 SAML 响应中向其传递如下所示的其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
     
     | 名称 |  源属性|
     | --------------- | --------- |
@@ -102,9 +88,9 @@ ms.locfileid: "102193261"
     | companyName | <COMPANY_NAME> |
 
     > [!NOTE]
-    > 编辑包含“域前缀”的“companyName”声明的值。 例如，如果客户使用类似于 https://acme.onshape.com 的 URL 访问 Onshape 应用程序，则其域前缀为“acme”。 该属性值只能是前缀，而不能是整个 DNS 名称。
+    > 必须将 companyName 特性的值更改为 Onshape 企业的域前缀。 例如，如果使用 `https://acme.onshape.com` 之类的 URL 访问 Onshape 应用程序，则域前缀为 acme。 该属性值只能是前缀，而不能是整个 DNS 名称。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -127,17 +113,17 @@ ms.locfileid: "102193261"
 
 在本部分，你将通过授予 B.Simon 访问 Onshape 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在“应用程序”列表中，选择“Onshape”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-onshape-sso"></a>配置 Onshape SSO
 
-若要在 **Onshape** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Onshape 支持团队](mailto:support@onshape.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+有关如何在 Onshape 端配置单一登录的信息，请参阅[与 Microsoft Azure AD 集成](https://cad.onshape.com/help/Content/MS_AzureAD.htm)。
 
 ### <a name="create-onshape-test-user"></a>创建 Onshape 测试用户
 
