@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: c87eb3b52843f4de39d0c037bdf452160be1ca2b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ColorTokens ZTNA 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98735952"
 * 让用户使用其 Azure AD 帐户自动登录到 ColorTokens ZTNA。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -75,7 +75,7 @@ ms.locfileid: "98735952"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.spectrum.colortokens.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.spectrum.colortokens.com` 
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [ColorTokens ZTNA 客户端支持团队](mailto:support@colortokens.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "98735952"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

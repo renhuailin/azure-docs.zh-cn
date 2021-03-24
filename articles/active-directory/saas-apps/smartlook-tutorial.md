@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: jeedes
-ms.openlocfilehash: f8d488118dc5e69f5c48aef0d408f5fd0e5d4b2b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 056585355242de20e543265b3d8b06863e434f22
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491162"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartlook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Smartlooko 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102491162"
 * 让用户使用其 Azure AD 帐户自动登录到 Smartlook。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -147,10 +147,8 @@ ms.locfileid: "102491162"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 Smartlook 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Smartlook 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Smartlook。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Smartlook 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Smartlook。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Smartlook 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Smartlook 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

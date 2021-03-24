@@ -12,10 +12,10 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
 ms.openlocfilehash: 56e92a698446bd417c74820d6da662ad9ee55c77
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555677"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>教程：使用 Azure AD B2C 在 Python Web 应用程序中启用身份验证
@@ -53,7 +53,7 @@ ms.locfileid: "100555677"
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 依次选择“应用注册(预览版)”、“拥有的应用程序”选项卡，然后选择“webapp1”应用程序 。
@@ -63,7 +63,7 @@ ms.locfileid: "100555677"
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“应用程序(旧版)”，然后选择“webapp1”应用程序。

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504604"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
@@ -34,7 +34,7 @@ ms.locfileid: "97504604"
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio 2019。 
-1. 选择“创建新项目”。  
+1. 选择“创建新项目”。 
 1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
     1. 选择“C#”作为编程语言。
     1. 选择“控制台”作为应用程序类型。 

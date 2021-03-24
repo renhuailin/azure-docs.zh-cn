@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451640"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric 应用程序和服务清单示例
@@ -17,11 +17,11 @@ ms.locfileid: "75451640"
 
 下面是所显示的功能以及它们所属的示例清单的索引。
 
-|Feature|清单|
+|功能|file:///|
 |---|---|
 |[资源调控](service-fabric-resource-governance.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[容器应用程序清单](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[以本地管理帐户身份运行服务](service-fabric-application-runas-security.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
-|[将默认策略应用于所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
+|[将默认策略应用到所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |[创建用户和组主体](service-fabric-application-runas-security.md)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |在服务实例之间共享数据包|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
 |[替代服务终结点](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)|[Reliable Services 应用程序清单](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

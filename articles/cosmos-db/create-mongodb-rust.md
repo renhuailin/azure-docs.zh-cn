@@ -9,10 +9,10 @@ ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
 ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555646"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Rust 应用程序连接到 Azure Cosmos DB MongoDB API
@@ -60,7 +60,7 @@ Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水�
     cd "C:\git-samples"
     ```
 
-1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/cosmosdb-rust-mongodb-quickstart

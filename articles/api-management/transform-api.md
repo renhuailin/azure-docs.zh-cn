@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010225"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>教程：转换和保护 API
@@ -35,7 +35,7 @@ ms.locfileid: "96010225"
 
 -   了解 [Azure API 管理术语](api-management-terminology.md)。
 -   了解 [Azure API 管理中策略的概念](api-management-howto-policies.md)。
--   请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
+-   完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 -   此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]

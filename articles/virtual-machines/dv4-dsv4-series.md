@@ -6,15 +6,15 @@ ms.author: brbell
 ms.reviewer: cynthn
 ms.custom: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: eefd0ba447340f79100772f549002f6fd8c2c01c
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: cc6ce30855d17f45636e0df04978fed88dcecff7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100554866"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549135"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 和 Dsv4 系列
 
@@ -34,7 +34,7 @@ Dv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
@@ -58,7 +58,7 @@ Dsv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上运�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 

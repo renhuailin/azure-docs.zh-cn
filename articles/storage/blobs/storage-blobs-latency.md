@@ -9,17 +9,17 @@ ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 78440b8150a0992bed2e2a3e597fdac8e7a1c7b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75749723"
 ---
 # <a name="latency-in-blob-storage"></a>Blob 存储中的延迟
 
 延迟（有时被称为响应时间）是指应用程序必须等待请求完成的时间。 延迟可能会直接影响应用程序的性能。 对于在循环中有人工操作的情况（如处理信用卡交易或加载网页），低延迟通常很重要。 需要以较高速率处理传入事件（如遥测日志记录或 IoT 事件）的系统，也需要低延迟。 本文介绍如何了解和测量块 blob 上操作的延迟，以及如何针对低延迟设计应用程序。
 
-Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)中的**高级性能块 blob存储**。
+Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)中的 **高级性能块 blob存储**。
 
 ## <a name="about-azure-storage-latency"></a>关于 Azure 存储延迟
 
@@ -35,11 +35,11 @@ Azure 存储带宽（也称为吞吐量）与请求速率相关，可通过将�
 
 Azure 存储为块 blob 提供两个延迟指标。 可以在 Azure 门户中查看这些指标：
 
-- **端对端 (E2E) 延迟**测量 Azure 存储接收到请求的第一个数据包直到 Azure 存储接收到响应的最后一个数据包的客户端确认之间的时间间隔。
+- **端对端 (E2E) 延迟** 测量 Azure 存储接收到请求的第一个数据包直到 Azure 存储接收到响应的最后一个数据包的客户端确认之间的时间间隔。
 
-- **服务器延迟**测量从 Azure 存储接收到请求的最后一个数据包直到从 Azure 存储返回响应的第一个数据包之间的时间间隔。
+- **服务器延迟** 测量从 Azure 存储接收到请求的最后一个数据包直到从 Azure 存储返回响应的第一个数据包之间的时间间隔。
 
-下图显示了调用 `Get Blob` 操作的示例工作负荷的**平均成功 E2E 延迟**和**平均成功服务器延迟**：
+下图显示了调用 `Get Blob` 操作的示例工作负荷的 **平均成功 E2E 延迟** 和 **平均成功服务器延迟**：
 
 ![屏幕截图显示了 Get Blob 操作的延迟指标](media/storage-blobs-latency/latency-metrics-get-blob.png)
 

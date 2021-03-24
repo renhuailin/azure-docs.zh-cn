@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 01/11/2021
 ms.author: rolyon
 ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556837"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>将用户分配为 Azure 订阅的管理员
@@ -55,7 +55,7 @@ ms.locfileid: "100556837"
 
    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/shared/add-role-assignment.png)
 

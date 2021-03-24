@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 145b7300272243099cfccad0c99d8f69e83e6762
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555816"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
@@ -91,7 +91,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 

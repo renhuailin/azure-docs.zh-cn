@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
 ms.openlocfilehash: 3b5585b32771d5515b283fb4aa124aa8ef3184f2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736534"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syndio"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 Syndio 集成
@@ -26,7 +26,7 @@ ms.locfileid: "98736534"
 * 让用户使用其 Azure AD 帐户自动登录到 Syndio。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 

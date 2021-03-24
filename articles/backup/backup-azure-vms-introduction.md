@@ -4,10 +4,10 @@ description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733564"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
@@ -121,7 +121,7 @@ Azure 备份根据备份计划创建快照。
 - 如果从单个保管库还原 VM，强烈建议你使用不同的[常规用途 v2 存储帐户](../storage/common/storage-account-upgrade.md)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
 - 若要通过“即时还原”对使用高级存储的 VM 进行备份，建议从总的已分配存储空间中分配 50% 的可用空间，这只在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求
 - 每个存储帐户的磁盘数量限制与在基础结构即服务 (IaaS) VM 上运行的应用程序访问磁盘的频率有关。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
-- 若要使用 PowerShell 通过托管磁盘还原 Vm，请提供附加参数 **_TargetResourceGroupName_* _ 来指定要将托管磁盘还原到的资源组，请 [在此处了解详细信息](./backup-azure-vms-automation.md#restore-managed-disks)。
+- 若要使用 PowerShell 还原具有托管磁盘的 VM，请提供附加参数 TargetResourceGroupName 指定要将托管磁盘还原到的资源组，[请在此处了解更多信息](./backup-azure-vms-automation.md#restore-managed-disks)。
 
 ## <a name="backup-costs"></a>备份成本
 
@@ -131,7 +131,7 @@ Azure 备份根据备份计划创建快照。
 
 针对特定 VM 的计费仅在停止保护并且删除全部备份数据后才会停止。 当停止保护并且没有活动的备份作业时，最后一个成功的 VM 备份的大小将成为用于每月帐单的受保护实例大小。
 
-受保护实例的大小计算基于 VM 的 _actual * 大小。 VM 的大小是 VM 中除临时存储以外的所有数据之和。 定价基于数据磁盘中存储的实际数据，而不是附加到 VM 的每个数据磁盘的最大支持大小。
+受保护实例大小计算基于 VM 的实际大小。 VM 的大小是 VM 中除临时存储以外的所有数据之和。 定价基于数据磁盘中存储的实际数据，而不是附加到 VM 的每个数据磁盘的最大支持大小。
 
 与此类似，备份存储的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
 

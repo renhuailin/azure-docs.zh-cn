@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505250"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863286"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -36,7 +36,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-create-resource.png" alt-text="Azure 门户创建资源 HDInsight" border="true":::
 
 1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
 
@@ -54,7 +54,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-   ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-basics.png" alt-text="Azure 门户创建群集基本信息" border="true":::
 
     每个 Azure 区域（位置）均提供 _容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
@@ -71,7 +71,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-storage.png " alt-text="HDInsight Linux 入门 - 提供群集存储值" border="true":::
 
     选择“安全性 + 网络”选项卡。 
 
@@ -79,7 +79,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
    若要将群集连接到虚拟网络，请从“虚拟网络”下拉列表中选择一个虚拟网络。 
 
-   ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png" alt-text="将群集添加到虚拟网络" border="true":::
 
     选择“配置 + 定价”选项卡。
 
@@ -87,13 +87,13 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     “每个工作器节点的标准磁盘数”条目配置 Apache Kafka on HDInsight 的可伸缩性。 Apache Kafka on HDInsight 在群集中使用虚拟机的本地磁盘来存储数据。 由于 Apache Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/managed-disks-overview.md)为每个节点提供高吞吐量和更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 磁盘类型取决于辅助角色节点（Apache Kafka 代理）所使用的 VM 大小。 高级磁盘可自动与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-   ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png" alt-text="设置 Apache Kafka 群集大小" border="true":::
 
     选择“查看 + 创建”  选项卡。
 
 1. 查看群集的配置。 更改所有不正确的设置。 最后，选择“创建”以创建群集。
 
-    ![kafka 群集配置摘要](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png" alt-text="kafka 群集配置摘要" border="true":::
 
     创建群集可能需要 20 分钟。
 

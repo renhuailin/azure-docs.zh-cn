@@ -11,10 +11,10 @@ ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
 ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557755"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
@@ -88,7 +88,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 
 
-映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 
+映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 
 
 若要详细了解可为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 

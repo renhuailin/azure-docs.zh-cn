@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151428"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
@@ -69,7 +69,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
-1. 新建名为 **simDevice**的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 新建名为 **simDevice** 的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
    ```console
    npm init
@@ -92,7 +92,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。 将 `{yourDeviceConnectionString}` 占位符值替换为之前复制的设备连接字符串。
+5. 添加 **connectionString** 变量，并使用它创建一个 **客户端** 实例。 将 `{yourDeviceConnectionString}` 占位符值替换为之前复制的设备连接字符串。
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -146,7 +146,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 在此部分中，会创建一个 Node.js 控制台应用，它使用直接方法对设备启动远程 **lockDoor** 并更新设备孪生的属性。
 
-1. 新建名为 **scheduleJobService**的空文件夹。  在 **scheduleJobService** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 新建名为 **scheduleJobService** 的空文件夹。  在 **scheduleJobService** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```console
     npm init

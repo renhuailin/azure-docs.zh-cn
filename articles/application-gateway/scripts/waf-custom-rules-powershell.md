@@ -8,15 +8,15 @@ ms.date: 6/7/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 312f052671036d8153dd19fcf4e559e825fd8464
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396985"
 ---
 # <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>使用 Azure PowerShell 创建 Web 应用程序防火墙 (WAF) 自定义规则
 
-此脚本将创建使用自定义规则的应用程序网关 Web 应用程序防火墙。 如果请求标头包含用户代理 *evilbot* ，该自定义规则会阻止流量。
+此脚本将创建使用自定义规则的应用程序网关 Web 应用程序防火墙。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "93396985"
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -45,7 +45,7 @@ Remove-AzResourceGroup -Name CustomRulesTest
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 |

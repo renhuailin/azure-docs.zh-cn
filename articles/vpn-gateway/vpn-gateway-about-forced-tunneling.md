@@ -1,6 +1,6 @@
 ---
 title: Azure VPN 网关：配置强制隧道 - 站点到站点连接：经典
-description: 了解如何配置使用经典部署模型创建的虚拟网络的强制隧道。
+description: 了解如何为使用经典部署模型创建的虚拟网络配置强制隧道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: af4359efb48898c12bb8ee7ffb882448b5012d19
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151350"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
@@ -39,7 +39,7 @@ ms.locfileid: "92151350"
 * 随着用户定义路由的发布，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
 * 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 * 强制隧道必须关联到具有动态路由 VPN 网关（而非静态网关）的 VNet。
-* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅 [什么是 ExpressRoute？](../expressroute/expressroute-introduction.md)。
+* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅[什么是 ExpressRoute？](../expressroute/expressroute-introduction.md)。
 
 ## <a name="configuration-overview"></a>配置概述
 
@@ -49,7 +49,7 @@ ms.locfileid: "92151350"
 
 ![强制隧道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始配置之前，请确认具有以下各项：
 
@@ -100,9 +100,9 @@ ms.locfileid: "92151350"
     </VirtualNetworkSite>
 ```
 
-以下步骤将 "DefaultSiteHQ" 设置为强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
+以下步骤会将“DefaultSiteHQ”设置为强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 
-1. 通过提升的权限打开 PowerShell 控制台。 使用以下示例连接到你的帐户：
+1. 使用提升的权限打开 PowerShell 控制台。 使用以下示例连接到你的帐户：
 
    ```powershell
    Add-AzureAccount

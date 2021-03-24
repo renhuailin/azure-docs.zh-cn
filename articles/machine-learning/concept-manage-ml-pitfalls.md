@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96922627"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>通过自动化机器学习防止过度拟合和不均衡数据

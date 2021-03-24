@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359895"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>使用文本分析和 Power Automate 在 Excel 中提取信息 
@@ -37,7 +37,7 @@ ms.locfileid: "93359895"
 - 文本分析资源。 如果没有，可以[在 Azure 门户中创建一个](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)，并使用免费层完成本教程。
 - 注册期间为你生成的[密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 包含租户问题的电子表格。 示例数据在 GitHub 上提供
-- Microsoft 365，包含 OneDrive for business。
+- Microsoft 365（包含 OneDrive for Business）。
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>将 Excel 文件复制到 OneDrive for Business
 
@@ -96,7 +96,7 @@ ms.locfileid: "93359895"
 通过填写此操作中的字段，将 Excel 文件添加到流。 本教程要求文件已上传到 OneDrive for Business。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="填充 excel 行":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="填充 Excel 行":::
 
  单击“新建步骤”，添加“应用到每一个”操作。
 
@@ -148,49 +148,49 @@ ms.locfileid: "93359895"
 接下来，我们将在文本分析输出中查找人员实体类型。   在“应用到每一个”中单击“添加操作”，并创建另一个“应用到每一个”操作。 在文本框内单击，然后在出现的“动态内容”窗口中选择“实体”。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="将文本分析凭据添加到流中。pps-2":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="将文本分析凭据添加到流。2":::
 
   在新创建的“应用到每一个 2”操作中，单击“添加操作”并添加“条件”控件。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="将文本分析凭据添加到流中。三维空间":::
+> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="将文本分析凭据添加到流。3":::
 
 在“条件”窗口中，单击第一个文本框。 在“动态内容”窗口中搜索“实体类型”并选择它。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="将文本分析凭据添加到流中。4":::
+> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="将文本分析凭据添加到流。4":::
 
 确保第二个框设为“等于”。 然后选择第三个框，并在“动态内容”窗口中搜索 `var_person`。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="将文本分析凭据添加到流中。5":::
+> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="将文本分析凭据添加到流。5":::
 
  在“如果是”条件中，在 Excel 中键入并选择“更新行”。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="将文本分析凭据添加到流中。共":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="将文本分析凭据添加到流。6":::
 
   输入 Excel 信息，并更新“键列”、“键值”和“人名”字段。 这将 API 检测到的名字附加到 Excel 工作表。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="将文本分析凭据添加到流中。全天候":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="将文本分析凭据添加到流。7":::
 
 ## <a name="get-the-phone-number"></a>获取电话号码
 
 通过单击名称，最小化“应用到每一个 2”操作。 然后像之前那样，添加另一个“应用到每一个”操作。 它将命名为“应用到每一个 3”。 选择文本框，并添加“实体”作为此操作的输出。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="将文本分析凭据添加到流中。8":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="将文本分析凭据添加到流。8":::
 
  在“应用到每一个 3”中添加“条件”控件。 它将命名为“条件 2”。 在第一个文本框中，从“动态内容”窗口中搜索并添加“实体类型”。 确保第中间框设为“等于”。 然后在右侧文本框中输入 `var_phone`。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="将文本分析凭据添加到流中。900":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="将文本分析凭据添加到流。9":::
 
  在“如果是”条件中添加“更新行”操作。 然后像之前那样输入 Excel 工作表电话号码列的信息。 这将 API 检测到的电话号码附加到 Excel 工作表。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="将文本分析凭据添加到流中。万":::
+> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="将文本分析凭据添加到流。10":::
 
 
 ## <a name="get-the-plumbing-issues"></a>获取管道问题
@@ -198,7 +198,7 @@ ms.locfileid: "93359895"
 通过单击名称，最小化“应用到每一个 3”操作。 然后在父操作中创建另一个“应用到每一个”操作。 选择文本框，从“动态内容”窗口添加“实体”作为此操作的输出。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="将文本分析凭据添加到流中。11x17":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="将文本分析凭据添加到流。11":::
 
 
 接下来，流将检查 Excel 表行中的问题说明是否包含“管道”一词。 如果是，它将在“问题类型”列中添加“管道”。 如果不是，我们将输入“其他”。
@@ -206,7 +206,7 @@ ms.locfileid: "93359895"
 在“应用到每一个 4”操作中添加“条件”控件 。 它将命名为“条件 3”。 在第一个文本框中，使用“动态内容”窗口搜索并添加 Excel 文件中的“说明”。 确保中间框显示“包含”。 然后在右侧文本框中查找并选择 `var_plumbing`。 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="将文本分析凭据添加到流中。10":::
+> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="将文本分析凭据添加到流。12":::
 
 
   在“如果是”条件中单击“添加操作”，然后选择“更新行”。 然后像之前那样输入信息。 在“问题类型”列中选择 `var_plumbing`。 这将向行应用“管道”标签。
@@ -214,7 +214,7 @@ ms.locfileid: "93359895"
   在“如果不是”条件中单击“添加操作”，并选择“更新行”。 然后像之前那样输入信息。 在“问题类型”列中选择 `var_other`。 这将向行应用“其他”标签。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="将文本分析凭据添加到流中。9":::
+> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="将文本分析凭据添加到流。13":::
 
 ## <a name="test-the-workflow"></a>测试工作流
 

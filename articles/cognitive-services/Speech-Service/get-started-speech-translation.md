@@ -14,10 +14,10 @@ ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-two-with-js-spx
 keywords: 语音翻译
 ms.openlocfilehash: d5da242a72a3b152924363190a2161ebc101da4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91819461"
 ---
 # <a name="get-started-with-speech-translation"></a>语音翻译入门
@@ -49,4 +49,4 @@ ms.locfileid: "91819461"
 ## <a name="next-steps"></a>后续步骤
 
 * [使用编解码器压缩音频格式](how-to-use-codec-compressed-audio-input-streams.md)
-* 请参阅 GitHub 上的 [快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) 。
+* 请参阅 GitHub 上的[快速入门示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart)。

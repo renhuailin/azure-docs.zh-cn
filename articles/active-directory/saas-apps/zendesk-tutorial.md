@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 58e9cc2fda7779cf0d62db8e0b6f78e5bb4d95f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zendesk 的集成
@@ -76,7 +76,7 @@ ms.locfileid: "98731779"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com` 
 

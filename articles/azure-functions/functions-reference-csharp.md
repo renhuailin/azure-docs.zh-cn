@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92164833"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
@@ -249,11 +249,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 有关可用于而不是的更高日志记录框架的信息 `TraceWriter` ，请参阅 .net 类库开发人员指南中的 [ILogger](functions-dotnet-class-library.md#ilogger) 文档。
+> 有关可以代替 `TraceWriter` 使用的更新日志框架的信息，请参阅 .NET 类库开发人员指南中的 [ILogger](functions-dotnet-class-library.md#ilogger) 文档。
 
 ### <a name="custom-metrics-logging"></a>自定义指标日志记录
 
-您可以使用 `LogMetric` 中的扩展方法 `ILogger` 在 Application Insights 中创建自定义指标。 下面是示例方法调用：
+可以使用 `ILogger` 上的 `LogMetric` 扩展方法来在 Application Insights 中创建自定义指标。 下面是示例方法调用：
 
 ```csharp
 logger.LogMetric("TestMetric", 1234);
@@ -455,11 +455,11 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是 *function.json* 中的[*声明式*](https://en.wikipedia.org/wiki/Declarative_programming)绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
+在 C# 和其他 .NET 语言中，可以使用 [命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是 *function.json* 中的 [*声明式*](https://en.wikipedia.org/wiki/Declarative_programming)绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
 
 如下所示定义命令性绑定：
 
-- 对于所需的命令性绑定，**不要**包含 function.json 中的条目。
+- 对于所需的命令性绑定，**不要** 包含 function.json 中的条目。
 - 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下面的 C# 模式执行数据绑定。
 
@@ -517,7 +517,7 @@ public static async Task Run(string input, Binder binder)
 下表列出了每种绑定类型的 .NET 属性及其定义所在的包。
 
 > [!div class="mx-codeBreakAll"]
-> | 绑定 | Attribute | 添加引用 |
+> | 绑定 | 属性 | 添加引用 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |

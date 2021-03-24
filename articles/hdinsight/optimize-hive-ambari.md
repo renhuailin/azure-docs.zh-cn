@@ -4,12 +4,12 @@ description: 使用 Apache Ambari Web UI 来配置和优化 Apache Hive。
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939243"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864811"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Hive
 
@@ -26,11 +26,11 @@ Hive 提供两个执行引擎：Apache Hadoop MapReduce 和 Apache TEZ。 Tez �
 
 1. 在 Hive 的“配置”选项卡上的筛选框中，键入“执行引擎”。 
 
-    ![Apache Ambari 搜索执行引擎](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Apache Ambari 搜索执行引擎" border="true":::
 
 1. “优化”属性的默认值为 **Tez**。
 
-    ![优化 - Apache Tez 引擎](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="优化 - Apache Tez 引擎" border="true":::
 
 ## <a name="tune-mappers"></a>优化映射器
 
@@ -47,7 +47,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 1. 将这两个参数设置为 **33,554,432** 字节 (32 MB)。
 
-    ![Apache Ambari Tez 分组大小](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Apache Ambari Tez 分组大小" border="true":::
 
 这些更改会影响整个服务器中的所有 Tez 作业。 若要获取最佳结果，请选择适当的参数值。
 
@@ -63,11 +63,11 @@ Apache ORC 和 Snappy 都可提供高性能。 但是，Hive 默认提供的化�
 
 1. 若要修改该参数，请导航到 Hive 的“配置”选项卡，然后在“设置”页上找到“每个化简器的数据”参数。 
 
-    ![每个化简器的 Apache Ambari 数据](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="每个化简器的 Apache Ambari 数据" border="true":::
 
 1. 选择“编辑”并将该值修改为 128 MB（134,217,728 字节），然后按 **Enter** 保存。
 
-    ![每个化简器的 Ambari 数据 - 已编辑](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="每个化简器的 Ambari 数据 - 已编辑" border="true":::
   
     假设输入大小为 1024 MB，每个化简器的数据为 128 MB，则有 8 个化简器 (1024/128)。
 
@@ -81,7 +81,7 @@ Apache ORC 和 Snappy 都可提供高性能。 但是，Hive 默认提供的化�
 
 1. 若要限制并行运行的作业数，请修改 `hive.exec.parallel.thread.number` 属性。 默认值为 8。
 
-    ![Apache Hive 并行执行显示](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Apache Hive 并行执行显示" border="true":::
 
 ## <a name="enable-vectorization"></a>启用矢量化
 
@@ -91,7 +91,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 1. 若要为查询的化简端启用矢量化执行，请将 `hive.vectorized.execution.reduce.enabled` 参数设置为 true。 默认值为 false。
 
-    ![Apache Hive 矢量化执行](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Apache Hive 矢量化执行" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>启用基于成本的优化 (CBO)
 
@@ -99,7 +99,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 若要启用 CBO，请导航到“Hive” > “配置” > “设置”，找到“启用基于成本的优化器”，然后将切换按钮切换到“打开”    。
 
-![HDInsight 基于成本的优化器](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="HDInsight 基于成本的优化器" border="true":::
 
 启用 CBO 后，可使用以下附加配置参数提高 Hive 查询性能：
 
@@ -107,19 +107,19 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
     如果设置为 true，则 Hive 会使用其元存储中存储的统计信息来应答类似于 `count(*)` 的简单查询。
 
-    ![使用统计信息的 Apache Hive 计算查询](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="使用统计信息的 Apache Hive 计算查询" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     启用 CBO 时，会创建列统计信息。 Hive 使用元存储中存储的列统计信息来优化查询。 如果列数较多，则提取每个列的列统计信息需要花费很长时间。 如果设置为 false，则会禁用从元存储中提取列统计信息。
 
-    ![Apache Hive 统计信息 - 设置列统计信息](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Apache Hive 统计信息 - 设置列统计信息" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     行数、数据大小和文件大小等基本分区统计信息存储在元存储中。 如果设置为 true，则从元存储中提取分区统计信息。 如果设置为 false，则从文件系统中提取文件大小。 行数从行架构中提取。
 
-    ![Hive 统计信息 - 设置分区统计信息](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Hive 统计信息 - 设置分区统计信息" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>启用中间压缩
 
@@ -140,7 +140,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将 `hive.exec.compress.intermediate` 参数设置为 true。 默认值为 false。
 
-    ![“Hive 执行 - 中间压缩”](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="“Hive 执行 - 中间压缩”" border="true":::
 
     > [!NOTE]  
     > 若要压缩中间文件，请选择一个 CPU 开销较低的压缩编解码器，即使该编解码器不能提供较高的压缩输出。
@@ -157,7 +157,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     d. 选择“添加”  。
 
-    ![“Apache Hive 自定义属性添加”](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="“Apache Hive 自定义属性添加”" border="true":::
 
     此设置将使用 Snappy 压缩来压缩中间文件。 添加该属性后，它会显示在“自定义 hive-site”窗格中。
 
@@ -172,7 +172,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 若要选择输出压缩编解码器，请根据上一部分的步骤 3 所述，将 `mapred.output.compression.codec` 自定义属性添加到“自定义 hive-site”窗格。
 
-    ![Apache Hive 自定义属性添加 2](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Apache Hive 自定义属性添加 2" border="true":::
 
 ## <a name="enable-speculative-execution"></a>启用推理执行
 
@@ -182,7 +182,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 * 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将 `hive.mapred.reduce.tasks.speculative.execution` 参数设置为 true。 默认值为 false。
 
-    ![“Hive mapred 化简任务推理执行”](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="“Hive mapred 化简任务推理执行”" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>优化动态分区
 
@@ -202,7 +202,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 若要启用本地模式，请根据[启用中间压缩](#enable-intermediate-compression)部分的步骤 3 所述，将 `hive.exec.mode.local.auto` 参数添加到“自定义 hive-site”面板。
 
-![Apache Hive 执行模式 - 本地自动](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Apache Hive 执行模式 - 本地自动" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>设置单个 MapReduce MultiGROUP BY
 
@@ -210,7 +210,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 若要启用此行为，请根据[启用中间压缩](#enable-intermediate-compression)部分的步骤 3 所述，将 `hive.multigroupby.singlereducer` 参数添加到“自定义 hive-site”窗格。
 
-![在 Hive 中设置单个 MapReduce MultiGROUP BY](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="在 Hive 中设置单个 MapReduce MultiGROUP BY" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>其他 Hive 优化
 

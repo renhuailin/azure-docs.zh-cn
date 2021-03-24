@@ -1,22 +1,19 @@
 ---
 title: 适用于 Windows 的 Azure 自定义脚本扩展
 description: 使用自定义脚本扩展自动执行 Windows VM 配置任务
-services: virtual-machines-windows
-manager: gwallace
-author: amjads1
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 08/31/2020
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.author: amjads
-ms.openlocfilehash: d06be4efae895cfe6903be4451f892660ce689f3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+author: amjads1
+ms.collection: windows
+ms.date: 08/31/2020
+ms.openlocfilehash: 13b4c4ef50ea37cabe30474d339acb19176cef97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390124"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553895"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -68,7 +65,7 @@ ms.locfileid: "100390124"
 * 扩展将只运行脚本一次，如果想要在每次启动时运行脚本，则需要使用扩展创建 Windows 计划任务。
 * 如果想要计划脚本何时运行，应使用扩展创建 Windows 计划任务。
 * 脚本运行时，Azure 门户或 CLI 中只会显示“正在转换”扩展状态。 如果希望更频繁地更新正在运行的脚本的状态，需要创建自己的解决方案。
-* 自定义脚本扩展不能以本机方式支持代理服务器，但你可以使用支持脚本中的代理服务器的文件传输工具，如 *WebRequest*
+* 自定义脚本扩展原生不支持代理服务器，但可以在脚本中使用支持代理服务器的文件传输工具，如 Invoke-WebRequest
 * 请注意脚本或命令可能依赖的非默认目录位置，按逻辑对这种情况进行处理。
 * 自定义脚本扩展将在 LocalSystem 帐户下运行
 * 如果你计划使用 storageAccountName 和 storageAccountKey 属性，这些属性必须并置在 protectedSettings 中  。
@@ -183,7 +180,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 
 若要在目标 VM/VMSS 上使用用户分配的标识，请将“managedidentity”字段配置为托管标识的客户端 ID 或对象 ID。
 
-> 示例:
+> 示例：
 >
 > ```json
 > {
@@ -205,7 +202,7 @@ CustomScript（版本 1.10 及更高版本）支持用于通过“fileUris”设
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在部署过程中运行自定义脚本扩展。 以下示例显示如何使用自定义脚本扩展：
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在部署过程中运行自定义脚本扩展。 以下示例显示如何使用自定义脚本扩展：
 
 * [教程：使用 Azure 资源管理器模板部署虚拟机扩展](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [在 Windows 和 Azure SQL DB 上部署双层应用程序](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -324,7 +321,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令：
 

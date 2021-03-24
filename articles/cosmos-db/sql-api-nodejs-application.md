@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359534"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
@@ -52,7 +52,7 @@ ms.locfileid: "97359534"
 * 在本地工作站上安装 [Git][Git]。
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a name="_Toc395637761"></a>创建 Azure Cosmos DB 帐户
-首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
+让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#_Toc395783178)。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -94,7 +94,7 @@ ms.locfileid: "97359534"
 
 **package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 在将此应用程序部署到 Azure 时，请使用此文件以确定应该在 Azure 上安装哪些模块来支持应用程序。 为本教程再安装两个包。
 
-1. 通过 npm 安装 **\@azure/cosmos** 模块。 
+1. 通过 npm 安装 **\@azure/cosmos** 模板。 
 
    ```bash
    npm install @azure/cosmos

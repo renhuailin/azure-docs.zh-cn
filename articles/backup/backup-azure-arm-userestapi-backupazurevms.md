@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171461"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
@@ -489,7 +489,7 @@ DELETE 操作是一种[异步操作](../azure-resource-manager/management/async-
 
 撤消意外删除类似于创建备份项。 撤消删除后，会保留该项，但不会触发任何将来的备份。
 
-撤消删除是 *PUT* 操作，它与[更改策略](#changing-the-policy-of-protection)和/或[启用保护](#enabling-protection-for-the-azure-vm)非常类似。 只需通过[请求正文](#example-request-body)中的变量 *isRehydrate* 提供撤消删除意向并提交请求即可。 例如：若要撤消对 testVM 的删除，应使用以下请求正文。
+撤消删除是 *PUT* 操作，它与 [更改策略](#changing-the-policy-of-protection)和/或 [启用保护](#enabling-protection-for-the-azure-vm)非常类似。 只需通过 [请求正文](#example-request-body)中的变量 *isRehydrate* 提供撤消删除意向并提交请求即可。 例如：若要撤消对 testVM 的删除，应使用以下请求正文。
 
 ```http
 {

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Smart Global Governance 的集成
@@ -114,7 +114,7 @@ Smart Global Governance 支持 SP 和 IDP 发起的 SSO。
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
-   1. 选择“创建”。
+   1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
 

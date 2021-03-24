@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031083"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
@@ -47,7 +47,7 @@ Heartbeat | where Computer contains "srv" | distinct Computer
 
 下表介绍了用于定义计算机组的属性。
 
-| properties | 说明 |
+| properties | 描述 |
 |:---|:---|
 | 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |

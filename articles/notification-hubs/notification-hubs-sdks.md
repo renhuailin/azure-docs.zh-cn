@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 8a4b05c0ee76aca07fd740a16a76a634727504e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "71213027"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure 通知中心 SDK
@@ -27,7 +27,7 @@ Microsoft 和第三方发布 Azure 通知中心的 SDK。 适用于 Android、iO
 
 | SDK 中 IsInRole 中的声明            | 发布者      |
 | -------------- | -------------- |
-| [.NET Server](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
+| [.NET 服务器](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs-android)  |Microsoft |
 | [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | 第三方 |
 | [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |

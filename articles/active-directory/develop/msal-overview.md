@@ -14,14 +14,14 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100559527"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
-利用 Microsoft 身份验证库 (MSAL) ，开发人员可从 Microsoft 标识平台获取 [令牌](developer-glossary.md#security-token) ，以便对用户进行身份验证并访问受保护的 web api。 它可用于提供对 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API 的安全访问。 MSAL 支持许多不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。
+借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台获取[令牌](developer-glossary.md#security-token)，以便对用户进行身份验证并访问受保护的 Web API。 它可用于提供对 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API 的安全访问。 MSAL 支持许多不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。
 
 MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多平台。 使用 MSAL 具有以下好处：
 
@@ -51,17 +51,17 @@ MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多�
 | 库 | 支持的平台和框架|
 | --- | --- |
 | [适用于 Android 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
-| [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| 具有角度和 Angular.js 框架的单页面应用|
+| [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| 采用 Angular 和 Angular.js 框架的单页应用|
 | [适用于 iOS 和 macOS 的 MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS 和 macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows、macOS、Linux|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| JavaScript/TypeScript 框架，如 Vue.js、Ember.js 或 Durandal.js|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| JavaScript/TypeScript 框架，例如 Vue.js、Ember.js 或 Durandal.js|
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、通用 Windows 平台|
-| [MSAL Node](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|带 Electron 的桌面应用程序的 Web 应用，跨平台控制台应用|
+| [MSAL Node](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|Express 的 Web 应用、Electron 的桌面应用、跨平台控制台应用|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows、macOS、Linux|
-| [MSAL 响应](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| 单页面应用，其中包含响应和基于响应的库 (Next.js，Gatsby.js) |
+| [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| 采用 React 和基于 React 的库（Next.js、Gatsby.js）的单页应用|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL 和 MSAL 之间的差异
 
-Active Directory 身份验证库 (ADAL) 与开发人员 (1.0 版) 终结点的 Azure AD 集成，其中 MSAL 与 Microsoft 标识平台集成。 V1.0 终结点支持工作帐户，但不支持个人帐户。 V2.0 终结点将 Microsoft 个人帐户和工作帐户统一到单个身份验证系统。 此外，借助 MSAL，还可以获取 Azure AD B2C 的身份验证。
+Active Directory 身份验证库 (ADAL) 与适用于开发人员的 Azure AD (v1.0) 终结点集成，其中 MSAL 与 Microsoft 标识平台集成。 V1.0 终结点支持工作帐户，但不支持个人帐户。 V2.0 终结点将 Microsoft 个人帐户和工作帐户统一到单个身份验证系统。 此外，借助 MSAL，还可以获取 Azure AD B2C 的身份验证。
 
 有关更多具体信息，请参阅[从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration.md) 和[从 ADAL.js 迁移到 MSAL.js](msal-compare-msal-js-and-adal-js.md)。

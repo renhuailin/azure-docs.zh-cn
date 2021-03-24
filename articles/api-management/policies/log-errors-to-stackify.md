@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-将错误发送到 Stackify 进行日志记录
+title: 示例 API 管理策略 - 将错误发送到 Stackify 进行日志记录
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何添加错误日志记录策略，以便将错误发送到 Stackify 进行日志记录。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 89428e9a64c6d4ae78d333c0cf597531588b1638
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072061"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>将错误发送到 Stackify 进行日志记录

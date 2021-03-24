@@ -1,7 +1,7 @@
 ---
 title: 泊松回归：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中使用泊松回归模块来创建泊松回归模型。
+description: 了解如何使用 Azure 机器学习设计器中的泊松回归模块创建泊松回归模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420693"
 ---
 # <a name="poisson-regression"></a>泊松回归
@@ -57,9 +57,9 @@ ms.locfileid: "93420693"
 
 3. 在“泊松回归”模块的右侧窗格中，设置“创建训练程序模式”选项，以指定模型的训练方式 。  
   
-    - **单个参数** ：如果知道自己想要如何配置模型，请提供一组特定的值作为参数。
+    - **单个参数**：如果知道自己想要如何配置模型，请提供一组特定的值作为参数。
   
-    - **参数范围** ：如果不确定最佳参数，请使用 [优化模型超参数](tune-model-hyperparameters.md)模块进行参数扫描。 训练程序遍历指定的多个值，以找到最佳配置。
+    - **参数范围**：如果不确定最佳参数，请使用 [优化模型超参数](tune-model-hyperparameters.md)模块进行参数扫描。 训练程序遍历指定的多个值，以找到最佳配置。
   
 4. 优化容错：键入一个值，用于定义优化期间的容许区间。 值越小，拟合就会越慢，但准确性越高。
 

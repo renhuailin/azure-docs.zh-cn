@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.openlocfilehash: fcb53dc22cfb4bf7308b92ee76e5aaaf3bb0dead
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735077"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教程：为 ThousandEyes 配置自动用户预配
@@ -108,7 +108,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![预配范围](common/provisioning-scope.png)
 
-14. 已准备好预配时，单击“保存”。
+14. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

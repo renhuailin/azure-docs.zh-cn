@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
 ms.openlocfilehash: 622aa6ea143eb9c279cc7451ccc2c91a7b9e602f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WhosOffice 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98734409"
 * 让用户使用其 Azure AD 帐户自动登录到 WhosOffice。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -77,7 +77,7 @@ ms.locfileid: "98734409"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.my.whosoffice.com/int/azure/consume.aspx`
 

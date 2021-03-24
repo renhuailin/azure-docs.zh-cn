@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172997"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
@@ -138,16 +138,16 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="load"></a>加载
 定义指标的整个要点就是表示某种负载。 “负载”指给定节点上某个服务实例或副本对给定指标的消耗量。  可在几乎任意时间配置负载。 例如：
 
-  - 创建服务后，可以定义负载。 这种类型的负载配置称为 " _默认负载_"。
-  - 在创建服务后，可更新服务的指标信息（包括默认负载）。 此指标更新是通过 _更新服务_来完成的。
-  - 可将给定分区的负载重置为该服务的默认值。 此指标更新称为 " _重置分区负载_"。
-  - 可以在运行时动态报告每个服务对象的负载。 此指标更新称为 " _报告负载_"。
-  - 还可以通过构造 API 调用来报告负载值来更新分区副本或实例的负载。 此指标更新称为 " _报告负载_"。
+  - 创建服务后，可以定义负载。 此类负载配置称为默认负载。
+  - 创建服务后，可更新服务的指标信息（包括默认负载）。 此指标更新是通过更新服务来完成的。
+  - 可将给定分区的负载重置为该服务的默认值。 此指标更新称为“重置分区负载”。
+  - 在运行时，可动态报告每个服务对象的负载。 此指标更新称为“报告负载”。
+  - 也可以通过 Fabric API 调用来报告负载值，从而更新分区副本或实例的负载。 此指标更新称为“报告分区负载”。
 
 可在同一服务的生存期内使用所有这些策略。
 
 ## <a name="default-load"></a>默认负载
-默认负载是此服务的每个服务对象（无状态实例或有状态副本）对该指标的消耗量**。 群集资源管理器将此数值用于服务对象的负载，直至收到动态负载报告等其他信息。 对于较简单的服务，默认负载是一种静态定义。 默认负载从不更新，并用于服务的整个生存期。 默认负载对于简单容量规划方案而言非常有用，其中一定量的资源专用于不同的工作负载且不发生更改。
+默认负载是此服务的每个服务对象（无状态实例或有状态副本）对该指标的消耗量。 群集资源管理器将此数值用于服务对象的负载，直至收到动态负载报告等其他信息。 对于较简单的服务，默认负载是一种静态定义。 默认负载从不更新，并用于服务的整个生存期。 默认负载对于简单容量规划方案而言非常有用，其中一定量的资源专用于不同的工作负载且不发生更改。
 
 > [!NOTE]
 > 若要深入了解容量管理以及如何在群集中定义节点的容量，请参阅[此文](service-fabric-cluster-resource-manager-cluster-description.md#capacity)。
@@ -177,28 +177,28 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 
 服务可在创建时报告为其定义的任何指标。 如果服务针对未配置为要使用的指标报告负载，则 Service Fabric 会忽略该报告。 如果同时报告了其他有效指标，则接受这些报告。 服务代码可以测量和报告其了解并知道如何操作的所有指标，并且操作者可以指定要使用的指标配置，而不必更改服务代码。 
 
-## <a name="reporting-load-for-a-partition"></a>报告分区的负载
-上一部分介绍了服务副本或实例如何报告自身负载。 还有一个额外的选项，可以使用 FabricClient 动态报告负载。 报告分区的负载时，可以一次报告多个分区。
+## <a name="reporting-load-for-a-partition"></a>报告分区负载
+上一部分介绍了服务副本或实例如何报告负载。 还可以使用 FabricClient 动态报告负载。 报告分区负载时，可以同时报告多个分区。
 
-这些报表将用与来自副本或实例本身的负载报告相同的方式使用。 报告的值将有效，直到通过副本或实例报告新的加载值或报告分区的新加载值。
+将采用来自副本或实例本身的负载报表的使用方式来使用这些报表。 在通过副本或实例或通过报告分区的新负载值来报告新的负载值之前，已报告的值将一直有效。
 
-借助此 API，可以通过多种方式来更新群集中的负载：
+使用此 API 可以以多种方式更新群集中的负载：
 
-  - 有状态服务分区可以更新其主要副本负载。
-  - 无状态服务和有状态服务可以更新其所有辅助副本或实例的负载。
-  - 无状态服务和有状态服务可以更新节点上特定副本或实例的负载。
+  - 有状态服务分区可以更新其主副本负载。
+  - 无状态服务和有状态服务均可更新其所有辅助副本或实例的负载。
+  - 无状态服务和有状态服务均可更新节点上特定副本或实例的负载。
 
-还可以将每个分区中的任何更新组合在一起。
+此外，还可以同时合并每个分区的任意个更新。
 
-可以通过单个 API 调用更新多个分区的负载，在这种情况下，输出将包含每个分区的响应。 如果出于任何原因未成功应用分区更新，将跳过对该分区的更新，并提供相应的目标分区的错误代码：
+可以使用单个 API 更新多个分区的负载，在这种情况下，输出将包含每个分区的响应。 如果由于某种原因未能成功应用分区更新，则将跳过该分区的更新，并提供相应的目标分区的错误代码：
 
-  - PartitionNotFound-指定的分区 ID 不存在。
-  - ReconfigurationPending-当前正在重新配置分区。
-  - InvalidForStatelessServices-尝试更改属于无状态服务的分区的主副本负载。
-  - ReplicaDoesNotExist-辅助副本或实例在指定节点上不存在。
-  - InvalidOperation-可以在以下两种情况下发生：更新属于系统应用程序的分区的负载或更新预测的负载。
+  - PartitionNotFound - 指定的分区 ID 不存在。
+  - ReconfigurationPending - 分区目前正在重新配置。
+  - InvalidForStatelessServices - 试图更改属于无状态服务的分区的主副本的负载。
+  - ReplicaDoesNotExist - 指定的节点上不存在辅助副本或实例。
+  - InvalidOperation - 在以下两种情况下可能会出现：更新属于系统应用程序的分区的负载，或未启用更新预测负载。
 
-如果返回其中一些错误，则可以更新特定分区的输入，然后重试特定分区的更新。
+如果返回了其中一些错误，则可以更新特定分区的输入，然后重试特定分区的更新。
 
 代码：
 
@@ -236,7 +236,7 @@ OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
         cancellationToken);
 ```
 
-在此示例中，你将对分区 _53df3d7f-5471-403b-b736-bde6ad584f42_的最后报告的负载执行更新。 将使用值100更新指标 _CustomMetricName0_ 的主副本负载。 同时，为位于节点 _NodeName0_上的特定辅助副本的同一指标加载将使用值200进行更新。
+在此示例中，你将更新分区 53df3d7f-5471-403b-b736-bde6ad584f42 的最新报告负载。 指标 CustomMetricName0 的主副本加载将更新为值 100。 同时，位于节点 NodeName0 的特定辅助副本的同一指标的负载将更新为值 200。
 
 ### <a name="updating-a-services-metric-configuration"></a>更新服务的指标配置
 可在服务处于活动状态时，动态更新与该服务关联的指标列表以及这些指标的属性。 这样就可以进行试验并增加灵活性。 下面是一些适用的情况示例：
@@ -323,7 +323,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>后续步骤
 - 有关服务配置的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定义碎片整理指标是合并节点上的负载而不是将其分散的一种方法。若要了解如何配置碎片整理，请参阅 [此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 定义碎片整理指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置碎片整理，请参阅[此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[均衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 移动成本是向群集 Resource Manager 发出信号，表示移动某些服务比移动其他服务会产生更高成本的方式之一。 若要了解有关移动成本的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-movement-cost.md)

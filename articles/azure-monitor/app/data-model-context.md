@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 76f3be510494a1f005b0080ee8f2390a3fbc3622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91767835"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
@@ -85,7 +85,7 @@ ms.locfileid: "91767835"
 
 ## <a name="authenticated-user-id"></a>已经过身份验证的用户 ID
 
-已经过身份验证的用户 ID。与匿名用户 ID 相反，此字段表示具有友好名称的用户。 仅在默认情况下使用 ASP.NET Framework SDK 收集此值 [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) 。  
+已经过身份验证的用户 ID。与匿名用户 ID 相反，此字段表示具有友好名称的用户。 默认情况下，仅使用 ASP.NET Framework SDK 的 [`AuthenticatedUserIdTelemetryInitializer`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/WEB/Src/Web/Web/AuthenticatedUserIdTelemetryInitializer.cs) 收集此信息。  
 
 最大长度：1024
 
