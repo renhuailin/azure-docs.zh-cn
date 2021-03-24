@@ -1,7 +1,7 @@
 ---
 title: 排列特征重要性：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用设计器中的排列功能重要性模块计算功能变量的排列特征重要性分数。
+description: 了解如何使用设计器中的“排列特征重要性”模块，计算特征变量的排列特征重要性分数。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
 ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421237"
 ---
 # <a name="permutation-feature-importance"></a>排列特征重要性

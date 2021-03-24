@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558481"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
@@ -31,7 +31,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure 如何处理重大漏洞？
 
-当严重漏洞需要立即修补（如 [零天漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）时，将根据具体情况来处理高优先级更新。
+严重的漏洞（例如[零日漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）需要立即修补，将会根据案例以高优先级处理更新。
 
 访问 [Azure 安全博客](https://azure.microsoft.com/blog/topics/security/)，及时了解 Azure 中的关键安全公告。 
 
@@ -51,7 +51,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-patch-updates"></a>新的修补更新
 
-通过使用最新版本覆盖现有安装，自动应用对 .NET、PHP、Java SDK 或 Tomcat 版本的修补程序更新。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
+对 .NET、PHP、Java SDK 或 Tomcat 版本所做的修补更新会通过将现有安装覆盖为最新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 
@@ -81,7 +81,7 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `dotnet --version` |
 | PHP 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
-| 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md)中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md) 中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |  
 | Java 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `java -version` |  
 

@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898453"
 ---
 # <a name="pca-based-anomaly-detection-module"></a>“基于 PCA 的异常情况检测”模块
 
-本文介绍如何使用 Azure 机器学习设计器中的 PCA-Based 异常情况检测模块，根据主体组件分析 (PCA) 创建异常情况检测模型。
+本文介绍了如何使用 Azure 机器学习设计器中的“基于 PCA 的异常情况检测”模块根据主体组件分析 (PCA) 创建异常情况检测模型。
 
 此模块在以下场景中帮助你构建模型：很容易从一个类（例如有效交易）中获得训练数据，但很难获得目标异常情况的足够样本。 
 
@@ -58,7 +58,7 @@ PCA 会分析包含多个变量的数据。 它将查找变量间的相关性，
 
     有两个选项可用，具体取决于你是否使用参数扫描：
 
-    - **随机 PCA 的过度抽样参数**：键入一个整数，用以表示少数类与正常类相比的过度抽样比率。 （当你使用**单一参数**训练方法时，此选项可用。）
+    - **随机 PCA 的过度抽样参数**：键入一个整数，用以表示少数类与正常类相比的过度抽样比率。 （当你使用 **单一参数** 训练方法时，此选项可用。）
 
     > [!NOTE]
     > 你无法查看过度采样的数据集。 若要详细了解如何将过度抽样与 PCA 一起使用，请参阅[技术说明](#technical-notes)。
@@ -89,7 +89,7 @@ PCA 会分析包含多个变量的数据。 它将查找变量间的相关性，
 
     可以通过在[评估模型](evaluate-model.md)模块之前添加[编辑元数据](edit-metadata.md)模块来避免这些错误。 请使用列选择器来选择类列，然后在“字段”列表中选择“标签”。
 
-3. 使用[执行 Python 脚本](execute-python-script.md)模块将标签列类别调整为 **1(positive, normal)** 和 **0(negative, abnormal)** 。
+3. 使用 [执行 Python 脚本](execute-python-script.md)模块将标签列类别调整为 **1(positive, normal)** 和 **0(negative, abnormal)** 。
 
     ````
     label_column_name = 'XXX'
@@ -109,4 +109,4 @@ PCA 会分析包含多个变量的数据。 它将查找变量间的相关性，
 
 请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
 
-有关特定于设计器模块的错误列表，请参阅 [设计器的异常和错误代码](designer-error-codes.md) 。
+如需特定于设计器模块的错误的列表，请参阅[设计器的异常和错误代码](designer-error-codes.md)。

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: c5a9386540f418c8f490ca146e250e780737e478
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101668068"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
@@ -44,7 +44,7 @@ ms.locfileid: "101668068"
 Windows Server 的 Azure 混合权益支持所有基于 Windows Server OS 的映像。 可以使用 Azure 平台支持映像或上传自己的自定义 Windows Server 映像。 
 
 ### <a name="portal"></a>门户
-若要使用 Windows Server Azure 混合权益创建 VM，请在创建过程中滚动到 " **基本** 信息" 选项卡的底部，在 " **授权** " 下，选中此复选框以使用现有的 windows server 许可证。 
+若要使用适 Windows Server 的 Azure 混合权益创建 VM，请在创建过程中滚动到“基本信息”选项卡的底部，在“许可”下选中此复选框以使用现有的 Windows Server 许可证 。 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -191,7 +191,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - 详细了解 [Azure 混合权益的常见问题解答](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
-- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](/windows-server/get-started/azure-hybrid-benefit)。
+- 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](/windows-server/get-started/azure-hybrid-benefit)
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - 详细了解[如何使用多租户托管权限在 Azure 上部署 Windows 10](./windows-desktop-multitenant-hosting-deployment.md)
 - 详细了解如何[使用资源管理器模板](../../azure-resource-manager/management/overview.md)

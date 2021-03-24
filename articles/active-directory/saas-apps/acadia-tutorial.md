@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教程：Azure Active Directory 与 Acadia 集成
@@ -104,7 +104,7 @@ ms.locfileid: "97673800"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -141,7 +141,7 @@ ms.locfileid: "97673800"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -151,12 +151,12 @@ ms.locfileid: "97673800"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -174,7 +174,7 @@ ms.locfileid: "97673800"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

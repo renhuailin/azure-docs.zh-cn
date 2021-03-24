@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Skillport 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Skillport 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Skillport 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97608352"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 的集成
+# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 集成
 
 在本教程中，了解如何将 Skillport 与 Azure Active Directory (Azure AD) 集成。
 将 Skillport 与 Azure AD 集成具有以下优势：
@@ -41,7 +41,7 @@ ms.locfileid: "97608352"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Skillport 支持启用了 SP 的 SSO 
+* Skillport 支持启用了 SP 的 SSO
 
 ## <a name="adding-skillport-from-the-gallery"></a>从库添加 Skillport
 
@@ -61,13 +61,13 @@ ms.locfileid: "97608352"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Skillport”，在结果面板中选择“Skillport”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Skillport”，在结果面板中选择“Skillport”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Skillport](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Skillport 的 Azure AD 单一登录  。
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Skillport 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Skillport 相关用户之间建立链接关系。
 
 若要配置和测试 Skillport 的 Azure AD 单一登录，需完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "97608352"
 
 若要配置 Skillport 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Skillport”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Skillport”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "97608352"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Skillport 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "97608352"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 

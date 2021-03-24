@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Nexonia 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Nexonia 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Nexonia 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 51546cce48f1ac079bb580da4276ec9b79896674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>教程：Azure Active Directory 与 Nexonia 集成
@@ -61,13 +61,13 @@ ms.locfileid: "92522439"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Nexonia”  ，在结果面板中选择“Nexonia”  ，然后单击“添加”  按钮添加应用程序。
+4. 在搜索框中，键入“Nexonia”，在结果面板中选择“Nexonia”，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 Nexonia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Nexonia 的 Azure AD 单一登录。 
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Nexonia 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Nexonia 中的相关用户之间建立链接关系。
 
 若要配置和测试 Nexonia 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92522439"
 
 若要配置 Nexonia 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Nexonia”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Nexonia”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92522439"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![Nexonia 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：`Nexonia`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://system.nexonia.com/assistant/saml.do?orgCode=<organizationcode>`
 
     > [!NOTE]
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [Nexonia 客户端支持团队](https://nexonia.zendesk.com/hc/requests/new)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -112,7 +112,7 @@ ms.locfileid: "92522439"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Nexonia”部分中，根据要求复制相应的 URL  。
+6. 在“设置 Nexonia”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92522439"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92522439"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Nexonia 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Nexonia”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Nexonia”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Nexonia”  。
+2. 在应用程序列表中，选择“Nexonia”。
 
     ![应用程序列表中的 Nexonia 链接](common/all-applications.png)
 

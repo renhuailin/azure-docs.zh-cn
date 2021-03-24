@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97588703"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
@@ -51,7 +51,7 @@ git checkout <working branch name>
 
 一个好的做法是分别为每个用户情景工作项创建一个 Git 分支。 然后，根据用户情景分支分别为每个“任务”工作项创建一个分支。 如果安排了多个人员在处理同一项目的不同用户情景，或处理同一用户情景的不同任务，应按与“用户情景-任务”关系相应的层次结构来组织分支。 可以通过使每个团队成员处理不同的分支，或在处理同一分支时处理不同的代码或其他项目，从而最大程度地减少冲突。 
 
-下图展示了建议的 TDSP 分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个用户情景的所有任务的情况下。 但从主要分支分离开发分支始终是一种很好的做法，可帮助防止发布分支被开发活动中断。 可在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中查看 Git 分支模型的完整说明。
+下图展示了建议的 TDSP 分支策略。 你可能并不需要此处所示的许多分支，尤其是在只有一个或两个人参与同一个项目或者只有一个人参与某个用户情景的所有任务的情况下。 但是，将开发分支从主分支分离出来始终是一个很好的做法，有助于防止发布分支因开发活动而中断。 可在[成功的 Git 分支模型](https://nvie.com/posts/a-successful-git-branching-model/)中查看 Git 分支模型的完整说明。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

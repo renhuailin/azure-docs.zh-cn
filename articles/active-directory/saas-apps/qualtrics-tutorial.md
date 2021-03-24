@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 2031864ea57a2f061c69219a2382429ee035804b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652534"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Qualtrics 的集成
@@ -69,7 +69,7 @@ ms.locfileid: "101652534"
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户中的“SAP Qualtrics”应用程序集成页上，找到“管理”部分 。 选择“单一登录”  。
-1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)

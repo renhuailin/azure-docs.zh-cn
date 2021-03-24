@@ -1,7 +1,7 @@
 ---
 title: 无代码部署（预览）
 titleSuffix: Azure Machine Learning
-description: 无需代码部署即可将模型部署为 web 服务，无需手动创建入口脚本。
+description: 无需代码部署使你可以将模型部署为 Web 服务，而无需手动创建入口脚本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
 ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324911"
 ---
 # <a name="preview-no-code-model-deployment"></a>（预览）无代码模型部署

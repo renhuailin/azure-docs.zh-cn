@@ -12,16 +12,16 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250634"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
-**Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。
+**Microsoft Azure 机器学习自动化数据管道速查表** 帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。
 
-根据你的数据是在本地、在云中还是在实时流式处理中，可以通过不同的机制将数据移动到你的 web 服务终结点以进行评分。
+可以使用不同的机制将数据移到 Web 服务终结点进行评分，具体取决于数据是在本地、云中还是在进行实时流式处理。
 此速查表介绍需要制定的决策，并提供能帮助开发解决方案的文章链接。
 
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>下载机器学习自动化数据管道的速查表

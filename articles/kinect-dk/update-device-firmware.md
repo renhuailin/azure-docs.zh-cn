@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新, 恢复
 ms.openlocfilehash: 71557798a584635356cc47fd7c4a0309df4d018a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94356214"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件
@@ -27,7 +27,7 @@ Azure Kinect DK 不会自动更新固件。 可以使用 [Azure Kinect 固件工
 3. 在 SDK 安装位置的 tools 文件夹中，应该可以看到：
 
     - AzureKinectFirmwareTool.exe
-    - firmware 文件夹中的固件 .bin 文件，例如 *AzureKinectDK_Fw_1.5.926614.bin* 。
+    - firmware 文件夹中的固件 .bin 文件，例如 *AzureKinectDK_Fw_1.5.926614.bin*。
 
 4. 将设备连接到主机电脑并将其打开。
 

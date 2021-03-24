@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 1fdcef7e3b4a4246c3e093874fbb775f4811e59f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>教程：Azure Active Directory 与 Stormboard 的集成
@@ -64,7 +64,7 @@ ms.locfileid: "92522013"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Stormboard** ，在结果面板中选择“Stormboard”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Stormboard**，在结果面板中选择“Stormboard”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Stormboard”](common/search-new-app.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "92522013"
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/both-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Stormboard 客户端支持团队](mailto:support@stormboard.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -141,7 +141,7 @@ ms.locfileid: "92522013"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -151,12 +151,12 @@ ms.locfileid: "92522013"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -174,7 +174,7 @@ ms.locfileid: "92522013"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "92522013"
 
 ### <a name="create-stormboard-test-user"></a>创建 Stormboard 测试用户
 
-在本部分，我们将在 Stormboard 中创建名为 Britta Simon 的用户。 Stormboard 支持默认已启用的 **实时用户预配** 。 此部分不存在任何操作项。 如果 Stormboard 中尚不存在用户，身份验证后会创建一个新用户。
+在本部分，我们将在 Stormboard 中创建名为 Britta Simon 的用户。 Stormboard 支持默认已启用的 **实时用户预配**。 此部分不存在任何操作项。 如果 Stormboard 中尚不存在用户，身份验证后会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

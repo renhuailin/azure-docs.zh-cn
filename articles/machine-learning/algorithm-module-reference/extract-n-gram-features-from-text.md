@@ -1,7 +1,7 @@
 ---
 title: “从文本中提取 N 元语法特征”模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "提取 N 元语法" 模块来对文本数据进行特征。
+description: 了解如何使用 Azure 机器学习设计器中的“提取 N 元语法”模块抽取文本数据的特征。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/08/2019
 ms.openlocfilehash: 37a10d90fa0e277fbe45d9f1377e365cb3d42996
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861439"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>“从文本中提取 N 元语法特征”模块参考
@@ -28,7 +28,7 @@ ms.locfileid: "96861439"
 
 * [使用一组现有文本特征](#use-an-existing-n-gram-dictionary)抽取自由文本列的特征。
 
-* [评分或部署](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint) 使用 n 元语法的模型。
+* [对使用 N 元语法的模型进行评分或部署](#build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint)。
 
 ### <a name="create-a-new-n-gram-dictionary"></a>创建新的 N 元语法字典
 
@@ -94,19 +94,19 @@ ms.locfileid: "96861439"
 
 1.  提交管道。
 
-### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>使用 n 元语法部署实时终结点的生成推理管道
+### <a name="build-inference-pipeline-that-uses-n-grams-to-deploy-a-real-time-endpoint"></a>构建使用 N 元语法的推理管道来部署实时终结点
 
-一个训练管道，其中包含从文本和 **评分模型** 中 **提取 N 元语法功能** 以对测试数据集进行预测，采用以下结构：
+一个训练管道包含“从文本提取 N 元语法特征”和用于对测试数据集进行预测的“评分模型”，该管道采用以下结构 ：
 
-:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="提取 N 语法定型管道示例" border="true":::
+:::image type="content" source="./media/module/extract-n-gram-training-pipeline-score-model.png" alt-text="提取 N 元语法训练管道示例" border="true":::
 
-带圆圈的 "**从文本中提取 N 元语法" 功能** 的 **词汇模式** 是 "**创建**"，连接到 **评分模型** 模块的模块的 **词汇模式** 为 **ReadOnly**。
+带圆圈的“从文本提取 N 元语法特征”模块的“词汇模式”为“创建”，而连接到“评分模型”模块的模块的“词汇模式”为“只读”     。
 
-成功提交上述定型管道后，可以将带圆圈的模块的输出注册为数据集。
+成功提交上述训练管道后，可以将带圆圈模块的输出注册为数据集。
 
 :::image type="content" source="./media/module/extract-n-gram-output-voc-register-dataset.png" alt-text="注册数据集" border="true":::
 
-然后，你可以创建实时推理管道。 创建推理管道后，需要手动调整推理管道，如下所示：
+然后便可创建实时推理管道。 创建推理管道后，需要进行手动调整，如下所示：
 
 :::image type="content" source="./media/module/extract-n-gram-inference-pipeline.png" alt-text="推理管道" border="true":::
 

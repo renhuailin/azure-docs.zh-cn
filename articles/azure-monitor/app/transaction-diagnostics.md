@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96746091"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
@@ -80,7 +80,7 @@ ms.locfileid: "96746091"
 
 * 是否使用 Application Insights 检测了其他组件？
 * 是否使用了最新的稳定 Application Insights SDK？
-* 如果这些组件单独 Application Insights 资源，则如果有访问权限，并且使用最新的 Application Insights Sdk 来检测组件，则需要 [访问权限](resources-roles-access-control.md) ，请通过右上方的反馈渠道告知我们。
+* 如果这些组件是单独的 Application Insights 资源，你是否具有所需的[访问权限](resources-roles-access-control.md)？如果你确实具有权限，并使用最新的 Application Insights SDK 来检测组件，请通过右上方的反馈通道告知我们。
 
 依赖项具有重复的行。这是正常情况吗？
 

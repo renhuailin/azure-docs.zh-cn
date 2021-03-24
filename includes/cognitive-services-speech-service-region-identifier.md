@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 12/10/2020
 ms.author: wolfma
 ms.openlocfilehash: 329241c2660ff7828f57fb21daeb6de20caedc43
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504451"
 ---
 | 地理位置 | 区域 | 区域标识符 |
 | ----- | ----- | ----- |
-| 美洲 | 美国中部 | `centralus` |
+| 美洲 | Central US | `centralus` |
 | 美洲 | 美国东部 | `eastus` |
 | 美洲 | 美国东部 2 | `eastus2` |
 | 美洲 | 美国中北部 | `northcentralus` |

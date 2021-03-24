@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
 ms.openlocfilehash: 9d059c899e4a64d4d2c1b880b2a1d0f89258f33b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079625"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API
@@ -21,7 +21,7 @@ ms.locfileid: "93079625"
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-本文介绍如何创建表、存储数据以及对数据执行 CRUD 操作。 选择 Azure 表服务或 Azure Cosmos DB 表 API。 示例是采用 PHP 编写的，并使用了 [Azure 存储表 PHP 客户端库][download]。 涉及的方案包括 **创建和删除表** 以及 **在表中插入、删除和查询实体** 。 有关 Azure 表服务的详细信息，请参阅[后续步骤](#next-steps)部分。
+本文介绍如何创建表、存储数据以及对数据执行 CRUD 操作。 选择 Azure 表服务或 Azure Cosmos DB 表 API。 示例是采用 PHP 编写的，并使用了 [Azure 存储表 PHP 客户端库][download]。 涉及的方案包括 **创建和删除表** 以及 **在表中插入、删除和查询实体**。 有关 Azure 表服务的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 
@@ -149,7 +149,7 @@ catch(ServiceException $e){
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-若要将实体添加到表，请创建新的 **Entity** 对象并将其传递到 **TableRestProxy->insertEntity** 。 请注意，在创建实体时，必须指定 `PartitionKey` 和 `RowKey`。 这些值是实体的唯一标识符，并且其查询速度比其他实体属性的查询速度快得多。 系统使用 `PartitionKey` 自动将表的实体分发到许多存储节点上。 具有相同 `PartitionKey` 的实体存储在同一个节点上。 （对存储在同一节点上的多个实体执行操作要将比对存储在不同节点上的实体执行的操作的效果更佳。）`RowKey` 是实体在分区中的唯一 ID。
+若要将实体添加到表，请创建新的 **Entity** 对象并将其传递到 **TableRestProxy->insertEntity**。 请注意，在创建实体时，必须指定 `PartitionKey` 和 `RowKey`。 这些值是实体的唯一标识符，并且其查询速度比其他实体属性的查询速度快得多。 系统使用 `PartitionKey` 自动将表的实体分发到许多存储节点上。 具有相同 `PartitionKey` 的实体存储在同一个节点上。 （对存储在同一节点上的多个实体执行操作要将比对存储在不同节点上的实体执行的操作的效果更佳。）`RowKey` 是实体在分区中的唯一 ID。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -185,7 +185,7 @@ catch(ServiceException $e){
 
 有关表属性和类型的信息，请参阅[了解表服务数据模型][table-data-model]。
 
-**TableRestProxy** 类提供了用于插入实体的两个替代方法： **insertOrMergeEntity** 和 **insertOrReplaceEntity** 。 要使用这些方法，请创建新的 **Entity** ，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity** 。 如果 `PartitionKey` 为“tasksSeattle”且 `RowKey` 为“1”的实体不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
+**TableRestProxy** 类提供了用于插入实体的两个替代方法：**insertOrMergeEntity** 和 **insertOrReplaceEntity**。 要使用这些方法，请创建新的 **Entity**，并将其作为参数传递到上述任一方法。 如果实体不存在，则每种方法都将插入实体。 在实体已存在的情况下，如果属性已存在，则 **insertOrMergeEntity** 更新属性值；如果属性不存在，则该方法添加新属性，而 **insertOrReplaceEntity** 会完全替换现有实体。 下面的示例演示如何使用 **insertOrMergeEntity**。 如果 `PartitionKey` 为“tasksSeattle”且 `RowKey` 为“1”的实体不存在，则将插入该实体。 但是，如果之前已插入该实体（如上面的示例所示），则将更新 `DueDate` 属性并添加 `Status` 属性。 系统还将更新 `Description` 和 `Location` 属性，但使用的值实际上会使其保持不变。 如果后面两个属性不是如示例中所示添加的，但已存在于目标实体上，则其现有值将保持不变。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -259,7 +259,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有实体
 
-使用筛选器构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name* ”。 下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
+使用筛选器构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。 若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition_name*”。 下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -427,18 +427,18 @@ catch(ServiceException $e){
 }
 ```
 
-为了进行并发检查，可以使用 **DeleteEntityOptions->setEtag** 方法并将 **DeleteEntityOptions** 对象作为第四个参数传递到 **deleteEntity** ，来为要删除的实体设置 Etag。
+为了进行并发检查，可以使用 **DeleteEntityOptions->setEtag** 方法并将 **DeleteEntityOptions** 对象作为第四个参数传递到 **deleteEntity**，来为要删除的实体设置 Etag。
 
 ## <a name="batch-table-operations"></a>对表操作进行批处理
 
 利用 **TableRestProxy->batch** 方法，可以通过一个请求执行多个操作。 此处的模式涉及将操作添加到 **BatchRequest** 对象，并将 **BatchRequest** 对象传递到 **TableRestProxy->batch** 方法。 要将操作添加到 **BatchRequest** 对象，可以多次调用以下任一方法：
 
-* **addInsertEntity** （添加 insertEntity 操作）
-* **addUpdateEntity** （添加 updateEntity 操作）
-* **addMergeEntity** （添加 mergeEntity 操作）
-* **addInsertOrReplaceEntity** （添加 insertOrReplaceEntity 操作）
-* **addInsertOrMergeEntity** （添加 insertOrMergeEntity 操作）
-* **addDeleteEntity** （添加 deleteEntity 操作）
+* **addInsertEntity**（添加 insertEntity 操作）
+* **addUpdateEntity**（添加 updateEntity 操作）
+* **addMergeEntity**（添加 mergeEntity 操作）
+* **addInsertOrReplaceEntity**（添加 insertOrReplaceEntity 操作）
+* **addInsertOrMergeEntity**（添加 insertOrMergeEntity 操作）
+* **addDeleteEntity**（添加 deleteEntity 操作）
 
 下面的示例演示了如何通过单个请求执行 **insertEntity** 和 **deleteEntity** 操作。 
 

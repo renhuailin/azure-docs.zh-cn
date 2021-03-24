@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e99a199fcc5f43f3710fe2e2fcfe55b7e624987b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317457"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
@@ -40,12 +40,12 @@ ms.locfileid: "91317457"
 
 如果还没有存储帐户，现在将创建存储帐户。  也可以跳过此步骤，并向 VM 的系统分配的托管标识授予对现有存储帐户密钥的访问权限。 
 
-1. 单击 Azure 门户左上角的“+/创建新服务”按钮。 
-2. 依次单击“存储”  、“存储帐户”  ，并将显示新的“创建存储帐户”面板。
-3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
+1. 单击 Azure 门户左上角的“+/创建新服务”按钮。
+2. 依次单击“存储”、“存储帐户”，并将显示新的“创建存储帐户”面板。
+3. 输入存储帐户的 **名称**，稍后将使用该名称。  
+4. **部署模型** 和 **帐户类型** 应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
-6. 单击“创建”。 
+6. 单击“创建”。
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "91317457"
 3. 单击页面顶部的“+ 添加角色分配”  ，为 VM 添加新的角色分配
 4. 在页面右侧，将“角色”  设置为“存储帐户密钥操作员服务角色”。 
 5. 在下一个下拉列表中，把“将访问权限分配给”  设置为资源“虚拟机”。  
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。    
+6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。   
 7. 最后，在“选择”下，从下拉列表中选择你的 Linux 虚拟机，然后单击“保存”。   
 
     ![Alt 图像文本](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324682"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>迁移到 V3 创作实体
@@ -35,7 +35,7 @@ V2 创作提供分层实体和复合实体以及角色和功能来完成相同�
 
 * 在示例言语中直观地了解 LUIS 如何预测这些关系
 * 通过[交互式测试窗格](luis-interactive-test.md)或在终结点处测试这些关系
-* 在客户端应用程序中通过结构化的、命名的、嵌套的[json 对象](reference-entity-machine-learned-entity.md)来使用这些关系
+* 通过结构良好的、已命名的嵌套 [.json 对象](reference-entity-machine-learned-entity.md)在客户端应用程序中使用这些关系
 
 ## <a name="planning"></a>规划
 

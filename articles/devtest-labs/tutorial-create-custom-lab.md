@@ -4,10 +4,10 @@ description: 在此教程中，我们使用 Azure 门户在 Azure 开发测试�
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324274"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室
@@ -89,11 +89,11 @@ ms.locfileid: "91324274"
 ## <a name="clean-up-resources"></a>清理资源
 下一教程演示实验室用户如何认领和连接实验室中的 VM。 如果不想完成该教程，并想清理作为本教程一部分而创建的资源，请执行下列步骤： 
 
-1. 在 Azure 门户中，选择菜单中的**资源组**。 
+1. 在 Azure 门户中，选择菜单中的 **资源组**。 
 
     ![资源组](./media/tutorial-create-custom-lab/resource-groups.png)
 1. 选择创建了实验室的资源组。 
-1. 从工具栏选择**删除资源组**。 删除资源组将删除组中的所有资源（包括实验室）。 
+1. 从工具栏选择 **删除资源组**。 删除资源组将删除组中的所有资源（包括实验室）。 
 
     ![实验室资源组](./media/tutorial-create-custom-lab/lab-resource-group.png)
 1. 重复这些步骤，以删除所创建的名为 `<your resource group name><random numbers>` 的其他资源组。 例如：`splab3988722144001`。 是在此资源组中创建虚拟机，而不是在具有实验室的所有资源组中创建。 

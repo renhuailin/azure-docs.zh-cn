@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 4f55b6eafe230f722979d535111ce45aa35981f0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93125031"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知
@@ -66,7 +66,7 @@ ms.locfileid: "93125031"
 3. 展开“产品管理”，然后依次选择“WNS/MPNS”、“Live 服务站点”。 登录 Microsoft 帐户。 应用程序注册页会在新选项卡中打开。也可直接导航到[我的应用程序](https://apps.dev.microsoft.com)页，然后选择应用程序名称以访问该页。
 
     ![WNS MPNS 页](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. 请注意“应用程序机密”密码以及“Windows 应用商店”部分下的“包安全标识符(SID)”和“应用程序标识”  。
+4. 记下“应用程序机密”密码，还请记下 Windows 应用商店部分下的包安全标识符 (SID) 和应用程序标识  。
 
     >[!WARNING]
     >应用程序机密和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。
@@ -149,7 +149,7 @@ ms.locfileid: "93125031"
 
     此操作保证每次启动应用程序时都在通知中心注册通道 URI。
 
-12. 右键单击 `Package.appxmanifest`，然后选择“查看代码”(F7)。 找到 `<Identity .../>`，并将值替换为[之前](#create-an-app-in-windows-store)创建的 WNS 中的“应用程序标识”。
+12. 右键单击 `Package.appxmanifest`，然后选择“查看代码”(F7)。 找到 `<Identity .../>`，并将值替换为[之前](#create-an-app-in-windows-store)创建的 WNS 中的应用程序标识。
 
 13. 若要运行应用，请按键盘的 **F5** 键。 此时会显示包含注册密钥的对话框。 若要关闭对话框，请单击“确定”。
 

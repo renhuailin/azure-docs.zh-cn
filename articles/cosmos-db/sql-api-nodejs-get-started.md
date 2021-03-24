@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098648"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
@@ -74,7 +74,7 @@ ms.locfileid: "93098648"
      * `mkdir data`
      * `touch data/databaseContext.js`
 
-4. 创建并初始化 `package.json` 文件。 使用以下命令：
+4. 创建并初始化 `package.json` 文件。 请使用以下命令：
    * ```npm init -y```
 
 5. 通过 npm 安装 @azure/cosmos 模块。 使用以下命令：
@@ -124,7 +124,7 @@ JavaScript SDK 使用通用术语“容器”和“项”。  容器可以是集
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> 如果连接到 **Cosmos DB 模拟器** ，请为节点进程禁用 TLS 验证：
+> 如果连接到 **Cosmos DB 模拟器**，请为节点进程禁用 TLS 验证：
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -203,7 +203,7 @@ Deleted item with id: 3
 * 一个 [Azure Cosmos DB 帐户][create-account]。
 * GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。
 
-通过 npm 安装项目的依赖项。 使用以下命令：
+通过 npm 安装项目的依赖项。 请使用以下命令：
 
 * ```npm install``` 
 

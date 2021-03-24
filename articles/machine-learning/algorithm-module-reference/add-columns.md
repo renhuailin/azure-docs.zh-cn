@@ -1,7 +1,7 @@
 ---
 title: 添加列：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用拖放 Azure 机器学习设计器中的 "添加列" 模块连接两个数据集。
+description: 了解如何使用拖放式 Azure 机器学习设计器中的“添加列”模块连接两个数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421951"
 ---
 # <a name="add-columns-module"></a>“添加列”模块

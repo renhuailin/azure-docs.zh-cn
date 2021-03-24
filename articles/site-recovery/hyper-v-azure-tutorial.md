@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87504222"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
@@ -34,7 +34,7 @@ ms.locfileid: "87504222"
 
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 此教程为系列教程中的第三个教程。 本教程假设你已完成前面教程中的任务：
 
@@ -119,7 +119,7 @@ Azure Site Recovery 将检索 Hyper-V 服务器中的元数据，该服务器显
 2. 选择在故障转移后要在其中创建 Azure VM 的订阅和资源组“ContosoRG”。
 3. 选择“资源管理器”部署模型。
 
-Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
+Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
@@ -128,7 +128,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 3. 本教程将保留默认设置：
     - “复制频率”指示（完成初始复制后）复制增量数据的频率。 默认频率为五分钟一次。
     - “恢复点保留期”指示恢复点将保留两小时。 保护 Hyper-V 主机上托管的虚拟机时，允许的最大保留期值为 24 小时。
-    - **应用一致性快照频率**指示每小时创建一次包含应用一致性快照的恢复点。
+    - **应用一致性快照频率** 指示每小时创建一次包含应用一致性快照的恢复点。
     - “初始复制开始时间”指示初始复制会立即开始。
 4. 创建策略后，选择“确定”。 当创建新策略时，该策略自动与指定的 Hyper-V 站点关联。 在本教程中为 ContosoHyperVSite。
 
