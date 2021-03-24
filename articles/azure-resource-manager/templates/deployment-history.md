@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91284612"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
@@ -21,13 +21,13 @@ ms.locfileid: "91284612"
 
 ## <a name="get-deployments-and-correlation-id"></a>获取部署和相关 ID
 
-可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 如果 [创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)，则支持人员可能会要求你提供相关 ID。 支持人员使用相关 ID 识别失败部署的操作。
+可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 如果你[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)，则客户支持可能会要求你提供相关 ID。 客户支持使用相关 ID 来识别失败部署的操作。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 选择要检查的资源组。
 
-1. 选择“部署”**** 下的链接。
+1. 选择“部署”下的链接。
 
    ![选择部署历史记录](./media/deployment-history/select-deployment-history.png)
 
@@ -115,9 +115,9 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 在部署的摘要上，选择“操作详细信息”。****
+1. 在部署的摘要上，选择“操作详细信息”。
 
     ![选择操作详细信息](./media/deployment-history/get-operation-details.png)
 
@@ -133,7 +133,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-若要查看失败的操作，请使用“失败”状态筛选操作。****
+若要查看失败的操作，请使用“失败”状态筛选操作。
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
@@ -153,7 +153,7 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-若要查看失败操作，请筛选具有“失败”**** 状态的操作。
+若要查看失败操作，请筛选具有“失败”状态的操作。
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure AD 权利管理中更改访问包的生命周期设置 - Azure Active Directory
-description: 了解如何在 Azure Active Directory 授权管理中更改访问包 & 生命周期设置的请求方信息。
+description: 了解如何在 Azure Active Directory 权利管理中更改访问包的请求者信息和生命周期设置。
 services: active-directory
 documentationCenter: ''
 author: ajburnle
@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fd119238476b842a4dba1efeec86544ca263920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980091"
 ---
 # <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的生命周期设置
@@ -29,8 +29,8 @@ ms.locfileid: "90980091"
 
 本文介绍如何更改现有访问包的生命周期设置。
 
-## <a name="open-requestor-information"></a>打开请求程序信息
-为了确保用户能够访问访问包，可以将自定义问题配置为请求用户请求访问某些访问包。 配置选项包括：本地化、必需/可选和文本/多选答案格式。 请求者在请求包时将会出现问题，并且审批者会看到问题的答案以帮助他们做出决定。 使用以下步骤来配置访问包中的问题：
+## <a name="open-requestor-information"></a>打开请求者信息
+为了确保用户有权访问访问包，可以配置自定义问题来询问请求访问某些访问包的用户。 配置选项包括：本地化、必需/可选和文本/多选答案格式。 请求者在请求包时会看到问题，而审批者则会看到有助于他们做出决定的问题答案。 使用以下步骤来配置访问包中的问题：
 
 ## <a name="open-lifecycle-settings"></a>打开生命周期设置
 
@@ -40,7 +40,7 @@ ms.locfileid: "90980091"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
 1. 单击“策略”，然后单击具有要编辑的生命周期设置的策略。
 
@@ -48,7 +48,7 @@ ms.locfileid: "90980091"
 
     ![访问包 -“策略详细信息”窗格](./media/entitlement-management-shared/policy-details.png)
 
-1. 单击“编辑”以编辑策略。****
+1. 单击“编辑”以编辑策略。
 
     ![访问包 - 编辑策略](./media/entitlement-management-shared/policy-edit.png)
 

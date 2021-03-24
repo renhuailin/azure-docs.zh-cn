@@ -1,5 +1,5 @@
 ---
-title: '用于 Azure Cosmos DB Core (SQL API 的 Azure 资源管理器模板) '
+title: Azure Cosmos DB Core (SQL API) 的 Azure 资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB。
 author: markjbrown
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.openlocfilehash: 52fa5957cdbc3ae73ebc4b36e04582741199414a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340594"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure 资源管理器模板

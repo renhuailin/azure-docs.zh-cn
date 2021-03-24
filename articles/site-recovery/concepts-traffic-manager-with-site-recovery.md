@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134960"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>将 Azure 流量管理器与 Azure Site Recovery 配合使用
@@ -25,26 +25,26 @@ ms.locfileid: "86134960"
 
 ## <a name="on-premises-to-azure-failover"></a>本地到 Azure 的故障转移
 
-对于第一种方案，我们假设**公司 A** 的所有应用程序基础结构在其本地环境中运行。 出于业务连续性和法规遵从的原因，**公司 A** 决定使用 Azure Site Recovery 来保护其应用程序。
+对于第一种方案，我们假设 **公司 A** 的所有应用程序基础结构在其本地环境中运行。 出于业务连续性和法规遵从的原因，**公司 A** 决定使用 Azure Site Recovery 来保护其应用程序。
 
 **公司 A** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到 Azure。 公司 A 可以使用 Azure 流量管理器中的[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
-- **公司 A** 创建[流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
-- **公司 A** 利用**优先级**路由方法创建两个终结点 – 针对本地的**主要**终结点，针对 Azure 的**故障转移**终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
-- 由于**主要**终结点托管在 Azure 外部，因此该终结点创建为[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。
-- 使用 Azure Site Recovery 时，Azure 站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移**终结点也创建为**外部**终结点。
-- 用户流量默认定向到本地应用程序，因为该终结点的关联优先级最高。 如果**主要**终结点处于正常状态，则不会将任何流量路由到 Azure。
+- **公司 A** 创建 [流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
+- **公司 A** 利用 **优先级** 路由方法创建两个终结点 – 针对本地的 **主要** 终结点，针对 Azure 的 **故障转移** 终结点。 为 **主要** 终结点分配优先级 1，为 **故障转移** 终结点分配优先级 2。
+- 由于 **主要** 终结点托管在 Azure 外部，因此该终结点创建为 [外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。
+- 使用 Azure Site Recovery 时，Azure 站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移** 终结点也创建为 **外部** 终结点。
+- 用户流量默认定向到本地应用程序，因为该终结点的关联优先级最高。 如果 **主要** 终结点处于正常状态，则不会将任何流量路由到 Azure。
 
 ![本地到 Azure 故障转移之前](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
 
-在发生灾难时，公司 A 可以触发到 Azure 的[故障转移](site-recovery-failover.md)，并在 Azure 上恢复其应用程序。 当 Azure 流量管理器检测到**主要**终结点不再正常时，会自动在 DNS 响应中使用**故障转移**终结点，用户将连接到 Azure 上恢复的应用程序。
+在发生灾难时，公司 A 可以触发到 Azure 的[故障转移](site-recovery-failover.md)，并在 Azure 上恢复其应用程序。 当 Azure 流量管理器检测到 **主要** 终结点不再正常时，会自动在 DNS 响应中使用 **故障转移** 终结点，用户将连接到 Azure 上恢复的应用程序。
 
 ![本地到 Azure 故障转移之后](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
 
-根据业务要求，在发生灾难时，**公司 A** 可以选择以更高或更低的[探测频率](../traffic-manager/traffic-manager-monitoring.md)在本地与 Azure 之间切换，并确保将用户停机时间减到最小。
+根据业务要求，在发生灾难时，**公司 A** 可以选择以更高或更低的 [探测频率](../traffic-manager/traffic-manager-monitoring.md)在本地与 Azure 之间切换，并确保将用户停机时间减到最小。
 
-遏制灾难后，**公司 A** 可以使用 Azure Site Recovery 从 Azure 故障回复到其本地环境（[VMware](vmware-azure-failback.md) 或 [Hyper-V](hyper-v-azure-failback.md)）。 当流量管理器检测到**主要**终结点再次正常后，可在其 DNS 响应中自动利用**主要**终结点。
+遏制灾难后，**公司 A** 可以使用 Azure Site Recovery 从 Azure 故障回复到其本地环境（[VMware](vmware-azure-failback.md) 或 [Hyper-V](hyper-v-azure-failback.md)）。 当流量管理器检测到 **主要** 终结点再次正常后，可在其 DNS 响应中自动利用 **主要** 终结点。
 
 ## <a name="on-premises-to-azure-migration"></a>本地到 Azure 的迁移
 
@@ -60,40 +60,40 @@ Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-we
 
 ## <a name="azure-to-azure-failover"></a>Azure 到 Azure 的故障转移
 
-对于此示例，我们假设**公司 C** 的所有应用程序基础结构在 Azure 中运行。 出于业务连续性和法规遵从的原因，**公司 C** 决定使用 Azure Site Recovery 来保护其应用程序。
+对于此示例，我们假设 **公司 C** 的所有应用程序基础结构在 Azure 中运行。 出于业务连续性和法规遵从的原因，**公司 C** 决定使用 Azure Site Recovery 来保护其应用程序。
 
-**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
+**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过 [优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
-- **公司 C** 创建[流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
-- **公司 C** 利用**优先级**路由方法创建两个终结点 – 针对源区域（Azure 东亚）的**主要**终结点，以及针对恢复区域（Azure 东南亚）的**故障转移**终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
-- 由于**主要**终结点托管于 Azure 中，因此它可以用作 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 终结点。
-- 使用 Azure Site Recovery 时，Azure 恢复站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移**终结点可创建为[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。
-- 用户流量默认定向到源区域（东亚）应用程序，因为该终结点的关联优先级最高。 如果**主要**终结点处于正常状态，则不会将任何流量路由到恢复区域。
+- **公司 C** 创建 [流量管理器配置文件](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
+- **公司 C** 利用 **优先级** 路由方法创建两个终结点 – 针对源区域（Azure 东亚）的 **主要** 终结点，以及针对恢复区域（Azure 东南亚）的 **故障转移** 终结点。 为 **主要** 终结点分配优先级 1，为 **故障转移** 终结点分配优先级 2。
+- 由于 **主要** 终结点托管于 Azure 中，因此它可以用作 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 终结点。
+- 使用 Azure Site Recovery 时，Azure 恢复站点在故障转移之前不会运行任何虚拟机或应用程序。 因此，**故障转移** 终结点可创建为 [外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点。
+- 用户流量默认定向到源区域（东亚）应用程序，因为该终结点的关联优先级最高。 如果 **主要** 终结点处于正常状态，则不会将任何流量路由到恢复区域。
 
 ![Azure 到 Azure 故障转移之前](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
 
-在发生灾难时，**公司 C** 可以触发[故障转移](azure-to-azure-tutorial-failover-failback.md)，并在恢复 Azure 区域中恢复其应用程序。 当 Azure 流量管理器检测到主要终结点不再正常时，会自动在 DNS 响应中使用**故障转移**终结点，用户将连接到恢复 Azure 区域（东南亚）中已恢复的应用程序。
+在发生灾难时，**公司 C** 可以触发 [故障转移](azure-to-azure-tutorial-failover-failback.md)，并在恢复 Azure 区域中恢复其应用程序。 当 Azure 流量管理器检测到主要终结点不再正常时，会自动在 DNS 响应中使用 **故障转移** 终结点，用户将连接到恢复 Azure 区域（东南亚）中已恢复的应用程序。
 
 ![Azure 到 Azure 故障转移之后](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
 
-根据业务要求，**公司 C** 可以选择以更高或更低的[探测频率](../traffic-manager/traffic-manager-monitoring.md)在源区域与恢复区域之间切换，并确保将用户停机时间减到最小。
+根据业务要求，**公司 C** 可以选择以更高或更低的 [探测频率](../traffic-manager/traffic-manager-monitoring.md)在源区域与恢复区域之间切换，并确保将用户停机时间减到最小。
 
-遏制灾难后，**公司 C** 可以使用 Azure Site Recovery 从恢复 Azure 区域故障回复到源 Azure 区域。 当流量管理器检测到**主要**终结点再次正常后，可在其 DNS 响应中自动利用**主要**终结点。
+遏制灾难后，**公司 C** 可以使用 Azure Site Recovery 从恢复 Azure 区域故障回复到源 Azure 区域。 当流量管理器检测到 **主要** 终结点再次正常后，可在其 DNS 响应中自动利用 **主要** 终结点。
 
 ## <a name="protecting-multi-region-enterprise-applications"></a>保护多区域企业应用程序
 
 全球的企业往往通过定制其应用程序来满足区域需求，从而提高客户体验。 借助本地化和更低的延迟，可以在不同的区域之间拆分应用程序基础结构。 此外，企业需要遵守某些区域的数据法规，因此，需要选择将一部分应用程序基础结构隔离在区域边界内。  
 
-假设**公司 D** 拆分了其应用程序终结点，以便为德国和其他区域的客户提供服务。 **公司 D** 利用 Azure 流量管理器的[地理](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)路由方法完成了此设置。 源自德国的所有流量将定向到**终结点 1**，源自德国境外的所有流量将定向到**终结点 2**。
+假设 **公司 D** 拆分了其应用程序终结点，以便为德国和其他区域的客户提供服务。 **公司 D** 利用 Azure 流量管理器的 [地理](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)路由方法完成了此设置。 源自德国的所有流量将定向到 **终结点 1**，源自德国境外的所有流量将定向到 **终结点 2**。
 
-此设置的问题在于，如果**终结点 1** 出于任何原因停止工作，则不会将任何流量重定向到**终结点 2**。 来自德国的流量持续定向到**终结点 1**，而不管该终结点的运行状况如何，因此，德国用户无法访问**公司 D** 的应用程序。 同样，如果**终结点 2** 脱机，则不会将任何流量重定向到**终结点 1**。
+此设置的问题在于，如果 **终结点 1** 出于任何原因停止工作，则不会将任何流量重定向到 **终结点 2**。 来自德国的流量持续定向到 **终结点 1**，而不管该终结点的运行状况如何，因此，德国用户无法访问 **公司 D** 的应用程序。 同样，如果 **终结点 2** 脱机，则不会将任何流量重定向到 **终结点 1**。
 
 ![设置前的多区域应用程序](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 
-为了避免发生此问题并确保应用程序的复原能力，**公司 D** 通过 Azure Site Recovery 使用了[嵌套式流量管理器配置文件](../traffic-manager/traffic-manager-nested-profiles.md)。 在嵌套式配置文件设置中，流量不会定向到单个终结点，而是定向到其他流量管理器配置文件。 下面是此设置的工作原理：
+为了避免发生此问题并确保应用程序的复原能力，**公司 D** 通过 Azure Site Recovery 使用了 [嵌套式流量管理器配置文件](../traffic-manager/traffic-manager-nested-profiles.md)。 在嵌套式配置文件设置中，流量不会定向到单个终结点，而是定向到其他流量管理器配置文件。 下面是此设置的工作原理：
 - **公司 D** 对流量管理器配置文件使用地理路由，而不是对单个终结点使用地理路由。
-- 每个子流量管理器配置文件对主要和恢复终结点使用**优先级**路由，因此在**地理**路由中嵌套了**优先级**路由。
+- 每个子流量管理器配置文件对主要和恢复终结点使用 **优先级** 路由，因此在 **地理** 路由中嵌套了 **优先级** 路由。
 - 为了实现应用程序复原能力，在发生灾难时，每个工作负荷分布区利用 Azure Site Recovery 到故障转移到恢复区域。
 - 当父流量管理器收到 DNS 查询时，会使用可用的终结点将该查询定向到与它对应的相关子流量管理器。
 

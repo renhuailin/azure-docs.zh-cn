@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: 1425b89e42450123c1696ddcee4458e1f69b8a6c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348562"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
@@ -27,7 +27,7 @@ ms.locfileid: "96348562"
 本教程分为多个部分，涵盖以下任务：
 
 > [!div class="checklist"]
-> * 介绍
+> * 简介
 > * 设置项目
 > * 通过 React 生成 UI
 > * 使用 Azure 门户创建 Azure Cosmos DB 帐户
@@ -36,13 +36,13 @@ ms.locfileid: "96348562"
 
 想要通过 Angular 生成这个相同的应用？ 请参阅 [Angular 教程视频系列](tutorial-develop-mongodb-nodejs.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * [Node.js](https://www.nodejs.org)
 
 ### <a name="finished-project"></a>完成的项目
 从 [GitHub](https://github.com/Azure-Samples/react-cosmosdb) 获取完成的应用程序。
 
-## <a name="introduction"></a>介绍 
+## <a name="introduction"></a>简介 
 
 在此视频中，Burke Holland 简单介绍了 Azure Cosmos DB，并详细讲解了在此视频系列中创建的应用。 
 
@@ -92,7 +92,7 @@ ms.locfileid: "96348562"
 如果不打算继续使用此应用，请使用以下步骤删除本教程在 Azure 门户中创建的所有资源。 
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
+2. 在资源组页上单击“删除”  ，在文本框中键入要删除的资源的名称，并单击“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

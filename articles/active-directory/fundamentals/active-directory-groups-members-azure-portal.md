@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af5a85bad1e7b2a6bf645084d6b78f77e6c0d8b2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371828"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除组成员
@@ -29,7 +29,7 @@ ms.locfileid: "92371828"
 
 2. 选择“Azure Active Directory”，然后选择“组”   。
 
-3. 在“组 - 所有组”页中，搜索并选择要添加成员的组  。 在这种情况下，请使用之前创建的组“MDM 策略 - 西部”  。
+3. 在“组 - 所有组”页中，搜索并选择要添加成员的组。 在这种情况下，请使用之前创建的组“MDM 策略 - 西部”。
 
     ![“组 - 所有组”页，其中突出显示了组名称](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "92371828"
 
     ![“MDM 策略 – 西部概述”页，其中突出显示了“成员”选项](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-5. 选择“添加成员”，搜索并选择想要添加到组的每个成员，然后选择“选择”   。
+5. 选择“添加成员”，搜索并选择想要添加到组的每个成员，然后选择“选择”。
 
     你将收到一条消息，说明已成功添加成员。
 
@@ -47,9 +47,9 @@ ms.locfileid: "92371828"
 
 ## <a name="to-remove-group-members"></a>删除组成员
 
-1. 在“组 - 所有组”页中，搜索并选择要删除成员的组  。 我们将再次使用“MDM 策略-西部”  。
+1. 在“组 - 所有组”页中，搜索并选择要删除成员的组。 我们将再次使用“MDM 策略-西部”。
 
-2. 从“管理”区域中选择“成员”，搜索并选择要删除的成员的名称，然后选择“删除”。
+2. 在“管理”区域中选择“成员”，搜索并选择要删除的成员姓名，然后选择“删除”。
 
     ![成员信息页，带有“删除”选项](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
 

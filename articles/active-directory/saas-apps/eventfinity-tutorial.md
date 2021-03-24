@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: jeedes
 ms.openlocfilehash: d24cac8f992d781eb59f91717c0b1a80b6be82a8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453869"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eventfinity"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Eventfinity 的集成
@@ -84,14 +84,14 @@ ms.locfileid: "92453869"
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://auth.eventfinity.co/saml/<ID>/acs`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.eventfinity.co/saml/<ID>/sso`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 请联系 [Eventfinity 客户端支持团队](mailto:help@eventfinity.co)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户

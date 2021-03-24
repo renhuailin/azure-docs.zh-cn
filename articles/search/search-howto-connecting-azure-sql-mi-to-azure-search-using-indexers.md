@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89294248"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
 
-如[使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 认知搜索通过公共终结点支持针对 **SQL 托管实例**创建索引器。
+如 [使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 认知搜索通过公共终结点支持针对 **SQL 托管实例** 创建索引器。
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>通过公共终结点创建 Azure SQL 托管实例
 在选中“启用公共终结点”  选项的情况下创建 SQL 托管实例。
@@ -30,7 +30,7 @@ ms.locfileid: "89294248"
    ![使用托管实例 VNET 启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "启用公共终结点")
 
 ## <a name="verify-nsg-rules"></a>验证 NSG 规则
-检查网络安全组是否具有允许来自 Azure 服务的连接的正确的**入站安全规则**。
+检查网络安全组是否具有允许来自 Azure 服务的连接的正确的 **入站安全规则**。
 
    ![NSG 入站安全规则](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG 入站安全规则")
 
@@ -45,7 +45,7 @@ ms.locfileid: "89294248"
 > 对于这两个规则中的每一个，请设置 "PORT" = `3342`, "PROTOCOL" = `TCP`, "DESTINATION" = `Any`, "ACTION" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>获取公共终结点连接字符串
-请确保使用**公共终结点**（端口 3342，而不是端口 1433）的连接字符串。
+请确保使用 **公共终结点**（端口 3342，而不是端口 1433）的连接字符串。
 
    ![公共终结点连接字符串](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "公共终结点连接字符串")
 

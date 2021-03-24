@@ -1,7 +1,7 @@
 ---
 title: 处理 MSAL for iOS/macOS 中的错误和异常
 titleSuffix: Microsoft identity platform
-description: 了解如何在 MSAL for iOS/macOS 应用程序中处理错误和异常、条件性访问声明质询和重试。
+description: 了解如何处理 MSAL for iOS/macOS 应用程序中的错误和异常、条件访问声明质询以及重试。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, oldalton
 ms.custom: aaddev
 ms.openlocfilehash: f7f2abadb7586e1b19168eb46a54bad53caa05cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761103"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-iosmacos"></a>处理 MSAL for iOS/macOS 中的错误和异常
@@ -43,7 +43,7 @@ ms.locfileid: "98761103"
 
 例如，`MSALInternalErrorBrokerResponseNotReceived` 表示用户未完成身份验证并已手动返回到应用。 在这种情况下，应用应显示一条通用错误消息，说明身份验证未完成，并建议他们尝试再次进行身份验证。
 
-以下目标为 C 的示例代码演示了处理某些常见错误情况的最佳实践。
+以下 Objective-C 示例代码演示了处理某些常见错误状况的最佳做法。
 
 ```objc
     MSALInteractiveTokenParameters *interactiveParameters = ...;
@@ -242,4 +242,4 @@ ms.locfileid: "98761103"
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑 [在 MSAL For iOS/macOS 中启用日志记录](msal-logging-ios.md) ，以帮助你诊断和调试问题。
+请考虑启用 [ MSAL for iOS/macOS 中的日志记录](msal-logging-ios.md)，以帮助你诊断和调试问题。

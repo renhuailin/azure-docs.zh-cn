@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079126"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入门：创建 Azure 防火墙和 IP 组 - ARM 模板
@@ -68,7 +68,7 @@ ms.locfileid: "89079126"
    - 身份验证：选择“sshPublicKey”或“密码” 
    - 管理员密码：键入管理员密码或密钥
 
-3. 选择“我同意上述条款和条件”，然后选择“购买” 。 部署可能需要 10 分钟或更长时间才能完成。
+3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 10 分钟或更长时间才能完成。
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
@@ -76,7 +76,7 @@ ms.locfileid: "89079126"
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP 组。":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP 组。":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="网络规则。":::
 
 若要了解模板中防火墙的 JSON 语法和属性，请参阅 [Microsoft.Network azureFirewalls template reference](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)（Microsoft.Network azureFirewalls 模板参考）。
 

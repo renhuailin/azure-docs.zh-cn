@@ -1,6 +1,6 @@
 ---
 title: 什么是已加入 Azure AD 的设备？
-description: 了解 Azure AD 联接的设备，以及设备标识管理如何帮助您管理在您的环境中访问资源的设备。
+description: 了解 Azure AD 联接设备，学习设备标识管理如何帮助你管理正在访问环境中的资源的设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601446"
 ---
 # <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
@@ -28,7 +28,7 @@ ms.locfileid: "90601446"
 | **主要受众** | 适合仅使用云和使用混合环境的组织。 |
 |   | 适用于组织中的所有用户 |
 | **设备所有权** | 组织 |
-| **操作系统** | Windows 10 家庭版以外的所有 Windows 10 设备 |
+| **操作系统** | 所有 Windows 10 设备，Windows 10 家庭版除外 |
 |   | [在 Azure 中运行的 Windows Server 2019 虚拟机](howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心） |
 | **预配** | 自助服务：Windows OOBE 或设置 |
 |   | 批量注册 |
@@ -58,11 +58,11 @@ ms.locfileid: "90601446"
 
 - 要使用 Azure AD 和 MDM（如 Intune）转换到基于云的基础结构。
 - 例如，在需要控制平板电脑和手机等设备时，无法使用本地域加入。
-- 用户主要需要访问 Microsoft 365 或其他与 Azure AD 集成的 SaaS 应用。
+- 你的用户主要需要访问 Microsoft 365 或其他与 Azure AD 集成的 SaaS 应用。
 - 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 该方案适用于季节工、承包商或学生等群体。
 - 想要向本地基础设施有限的远程分支机构中的员工提供加入功能。
 
-你可以为所有 Windows 10 设备配置 Azure AD 联接设备，Windows 10 家庭版除外。
+你可为所有 Windows 10 设备配置 Azure AD 联接设备，Windows 10 家庭版除外。
 
 Azure AD 加入设备旨在简化：
 

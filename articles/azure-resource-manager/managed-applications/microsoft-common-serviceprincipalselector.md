@@ -1,42 +1,42 @@
 ---
 title: ServicePrincipalSelector UI 元素
-description: 介绍 Azure 门户的 Microsoft.Common.ServicePrincipalSelector UI 元素。 提供一个控件，用于选择应用程序和文本框，以输入密码或证书指纹。
+description: 介绍 Azure 门户的 Microsoft.Common.ServicePrincipalSelector UI 元素。 提供一个用于选择应用程序的控件，并提供一个用于输入密码或证书指纹的文本框。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: tomfitz
 ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184444"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft.Common.ServicePrincipalSelector UI 元素
 
-允许用户选择现有 [服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 或注册新应用程序的控件。 选择 " **新建**" 时，请按照步骤注册新的应用程序。 选择现有应用程序时，此控件将提供一个文本框，用于输入密码或证书指纹。
+一个可让用户选择现有[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)或注册新应用程序的控件。 选择“新建”时，需执行注册新应用程序的步骤。 选择现有应用程序时，此控件将提供一个文本框，用于输入密码或证书指纹。
 
 ## <a name="ui-samples"></a>UI 示例
 
-可以使用默认应用程序、创建新的应用程序或使用现有的应用程序。
+可以使用默认应用程序、可以新建应用程序，还可以使用现有应用程序。
 
-### <a name="use-default-application-or-create-new"></a>使用默认应用程序或创建新的应用程序
+### <a name="use-default-application-or-create-new"></a>使用默认应用程序或新建应用程序
 
-默认视图取决于属性中的值 `defaultValue` ， **服务主体类型** 设置为 " **新建**"。 如果 `principalId` 属性包含有效的全局唯一标识符 (GUID) ，则控件会搜索应用程序的 `objectId` 。 如果用户不从控件中进行选择，则会应用默认值。
+默认视图由 `defaultValue` 属性中的值确定，“服务主体类型”设置为“新建”。 如果 `principalId` 属性包含有效的全局唯一标识符 (GUID)，则此控件会搜索应用程序的 `objectId`。 如果用户没有从控件中进行选择，则会应用默认值。
 
-如果要注册新应用程序，请选择 " **更改选择** " 并显示 " **注册应用程序** " 对话框。 输入 " **名称**"、" **支持的帐户类型**"，然后选择 " **注册** " 按钮。
+若要注册新的应用程序，请选择“更改选择”，此时会显示“注册应用程序”对话框。 输入 **名称**、**支持的帐户类型**，然后选择“注册”按钮。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="ServicePrincipalSelector 初始视图。":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-default.png" alt-text="Microsoft.Common.ServicePrincipalSelector 初始视图。":::
 
-注册新应用程序后，请使用 **身份验证类型** 输入密码或证书指纹。
+注册新应用程序后，请使用“身份验证类型”输入密码或证书指纹。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="ServicePrincipalSelector authentication。":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-authenticate.png" alt-text="Microsoft.Common.ServicePrincipalSelector 身份验证。":::
 
 ### <a name="use-existing-application"></a>使用现有应用程序
 
-若要使用现有应用程序，请选择 "**选择现有**"，然后选择 **"选择"。** 使用 " **选择应用程序** " 对话框可以搜索应用程序的名称。 在结果中，选择应用程序，然后选择 " **选择** " 按钮。 选择应用程序后，该控件将显示 " **身份验证类型** " 以输入密码或证书指纹。
+若要使用现有应用程序，请选择“选择现有”，然后选择“进行选择”。 使用“选择应用程序”对话框搜索应用程序的名称。 从结果中选择应用程序，然后单击“选择”按钮。 选择应用程序后，控件会显示“身份验证类型”，此时可以输入密码或证书指纹。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="ServicePrincipalSelector 选择现有应用程序。":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-serviceprincipal-existing.png" alt-text="Microsoft.Common.ServicePrincipalSelector 选择现有应用程序。":::
 
 ## <a name="schema"></a>架构
 
@@ -146,9 +146,9 @@ ms.locfileid: "96184444"
 
 ## <a name="example-output"></a>示例输出
 
-`appId` 是所选的或所创建的应用程序注册的 ID。 `objectId`是为所选应用程序注册配置的服务主体的对象 id 的数组。
+`appId` 是所选的或所创建的应用程序注册的 ID。 `objectId` 是为所选应用程序注册配置的服务主体的 objectId 数组。
 
-如果没有从控件中进行选择，则 `newOrExisting` 属性值为 **new**：
+未从控件中进行选择时，`newOrExisting` 属性值为“new”：
 
 ```json
 {
@@ -173,7 +173,7 @@ ms.locfileid: "96184444"
 }
 ```
 
-当从控件中选择 " **新建** " 或 "现有应用程序" 时， `newOrExisting` 属性值为 " **现有**"：
+从控件中选择了“新建”或现有应用程序时，`newOrExisting` 属性值为“existing”：
 
 ```json
 {

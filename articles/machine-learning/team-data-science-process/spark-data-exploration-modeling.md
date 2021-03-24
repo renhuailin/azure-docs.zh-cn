@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028081"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775334"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
@@ -495,7 +495,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 ### <a name="feature-scaling"></a>特征缩放
 
-特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放为单位差异。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。
+特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) 将特征缩放为单位差异。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。
 
 > [!NOTE]
 > 我们发现，LinearRegressionWithSGD 算法对特征缩放很敏感。

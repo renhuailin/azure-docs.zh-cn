@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83124157"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>同时处理许多工作区中的事件 
 
- 为了充分利用 Azure Sentinel 的功能，Microsoft 建议使用单工作区环境。 但是，在某些情况下，有些用例需要有多个跨多个租户的工作区，例如[托管安全服务提供商 (MSSP)](./multiple-tenants-service-providers.md) 及其客户就是如此。 利用**多工作区视图**，你可以同时跨多个工作区（甚至跨租户）查看和处理安全事件，因此能够完全洞察和控制组织的安全响应能力。
+ 为了充分利用 Azure Sentinel 的功能，Microsoft 建议使用单工作区环境。 但是，在某些情况下，有些用例需要有多个跨多个租户的工作区，例如[托管安全服务提供商 (MSSP)](./multiple-tenants-service-providers.md) 及其客户就是如此。 利用 **多工作区视图**，你可以同时跨多个工作区（甚至跨租户）查看和处理安全事件，因此能够完全洞察和控制组织的安全响应能力。
 
 ## <a name="entering-multiple-workspace-view"></a>进入多工作区视图
 

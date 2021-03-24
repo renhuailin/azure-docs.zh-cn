@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: a14503bc56777563b6360143efaa86a136b22278
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340509"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>诊断 Azure Cosmos DB“请求标头太大”消息并对其进行故障排除
@@ -49,5 +49,5 @@ ms.locfileid: "93340509"
 1. 如果采用 TCP 协议的直接连接模式不是适用于你的工作负载的选项，请设置 `ResponseContinuationTokenLimitInKb` 选项。 可以在 v2 的 `FeedOptions` 或 v3 的 `QueryRequestOptions` 中找到此选项。
 
 ## <a name="next-steps"></a>后续步骤
-* [诊断和排查](troubleshoot-dot-net-sdk.md)使用 Azure Cosmos DB .NET SDK 时遇到的问题。
+* [诊断和排查](troubleshoot-dot-net-sdk.md)在使用 Azure Cosmos DB .NET SDK 时遇到的问题。
 * 了解 [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.NET v2](performance-tips.md) 的性能准则。

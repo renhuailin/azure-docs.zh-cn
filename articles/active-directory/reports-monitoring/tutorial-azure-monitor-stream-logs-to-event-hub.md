@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0443dcb2bf3bd58f2474c507c9f9594fb6d8a7f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89469178"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
@@ -77,13 +77,13 @@ ms.locfileid: "89469178"
 
 * **配置支持的 SIEM 工具**。 若要从事件中心读取数据，大多数工具需要事件中心连接字符串和对 Azure 订阅的某些权限。 带有 Azure Monitor 集成的第三方工具包括但不限于：
     
-    * **ArcSight**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)。
+    * **ArcSight**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅 [使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)。
     
-    * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅[使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
+    * **Splunk**：若要详细了解如何将 Azure AD 日志与 Splunk 集成，请参阅 [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)。
     
     * **IBM QRadar**：DSM 和 Azure 事件中心协议可以从 [IBM 支持](https://www.ibm.com/support)站点下载。 若要详细了解如何与 Azure 集成，请访问 [IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) 站点。
     
-    * **Sumo Logic**：若要设置 Sumo Logic 以使用事件中心的数据，请参阅[安装 Azure AD 应用并查看仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。 
+    * **Sumo Logic**：若要设置 Sumo Logic 以使用事件中心的数据，请参阅 [安装 Azure AD 应用并查看仪表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。 
 
 * **设置自定义工具**。 如果当前的 SIEM 在 Azure Monitor 诊断中不受支持，则可使用事件中心 API 设置自定义工具。 有关详细信息，请参阅[从事件中心接收消息入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 

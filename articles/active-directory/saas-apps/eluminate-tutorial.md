@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 5ff094e6fd605c392c8fb8446200275fce548f78
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eluminate"></a>教程：Azure Active Directory 与 eLuminate 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92454090"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 eLuminate 的集成，需要具有以下项：
 
@@ -61,13 +61,13 @@ ms.locfileid: "92454090"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“eLuminate”，在结果面板中选择“eLuminate”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“eLuminate”，在结果面板中选择“eLuminate”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 eLuminate](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分，我们基于一个名为“Britta Simon”的测试用户使用 eLuminate 配置和测试 Azure AD 单一登录。 
+在本部分，我们基于一个名为“Britta Simon”的测试用户使用 eLuminate 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 eLuminate 相关用户之间建立链接关系。
 
 若要配置和测试 eLuminate 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92454090"
 
 若要配置 eLuminate 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“eLuminate”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“eLuminate”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92454090"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![eLuminate 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ClientShortName.eluminate.ca/azuresso/account/SignIn`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ClientShortName.eluminate.ca/azuresso/account/SignIn` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`Eluminate/ClientShortName`
 
@@ -124,7 +124,7 @@ ms.locfileid: "92454090"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -139,17 +139,17 @@ ms.locfileid: "92454090"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过向 Britta Simon 授予 eLuminate 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“eLuminate”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“eLuminate”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“eLuminate”。 
+2. 在应用程序列表中，选择“eLuminate”。
 
     ![应用程序列表中的 eLuminate 链接](common/all-applications.png)
 

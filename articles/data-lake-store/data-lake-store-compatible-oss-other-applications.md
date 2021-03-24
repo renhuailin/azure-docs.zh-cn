@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 37bf26db5f7ae08734410d36a892aaeb2380bd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "60878879"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的开源大数据应用程序
@@ -35,7 +35,7 @@ ms.locfileid: "60878879"
 | [Apache Oozie](https://oozie.apache.org/) |HDInsight 3.2、3.4、3.5 和 3.6 |
 | [Apache Zookeeper](https://zookeeper.apache.org/) |HDInsight 3.2、3.4、3.5 和 3.6 |
 | [Apache Tez](https://tez.apache.org/) |HDInsight 3.2、3.4、3.5 和 3.6 |
-| Apache Spark[](https://spark.apache.org/) |HDInsight 3.4、3.5 和 3.6 |
+| Apache Spark |HDInsight 3.4、3.5 和 3.6 |
 
 
 ## <a name="see-also"></a>另请参阅

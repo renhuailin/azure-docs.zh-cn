@@ -1,6 +1,6 @@
 ---
 title: 快速林分位数回归： 模块参考
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure Machine Learning
 description: 了解如何使用“快速林分位数回归”模块创建一个回归模型，以便为指定数目的分位数预测值。
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
 ms.openlocfilehash: 6d59d2fabb0b74ef12e33f55467b0ba68e0b7386
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907952"
 ---
 # <a name="fast-forest-quantile-regression"></a>快速林分位回归
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块可以在管道中创建快速林分位数回归模型。 如果要了解有关预测值分布的详细信息，而不是获得单个平均值预测值，则快速林分位数回归非常有用。 此方法有很多应用，包括：  
   
@@ -32,7 +32,7 @@ ms.locfileid: "90907952"
 
 ## <a name="more-about-quantile-regression"></a>有关分位数回归的详细信息
 
-有许多不同类型的回归。 简而言之，回归意味着将模型与用数字向量表示的目标拟合。 然而，统计学家一直在研究更加高级的回归方法。
+有许多不同类型的回归。 简而言之，回归意味着将模型拟合为以数值向量表示的目标。 然而，统计学家一直在研究更加高级的回归方法。
 
 分位数的最简单定义是一个用于将一组数据分割成大小相等的组的值；因此，分位数值标记了组之间的边界。 从统计学意义上来说，分位数是按固定间隔从随机变量的累积分布函数 (CDF) 的逆函数提取的值。
 
@@ -49,7 +49,7 @@ ms.locfileid: "90907952"
   
     - **单个参数**：如果知道自己想要如何配置模型，请提供一组特定的值作为参数。 在训练模型时，请使用[训练模型](train-model.md)。
   
-    - **参数范围**：如果不确定最佳参数，请使用[优化模型超参数](tune-model-hyperparameters.md)模块进行参数扫描。 训练程序将循环访问指定的多个值，以找到最佳配置。
+    - **参数范围**：如果不确定最佳参数，请使用 [优化模型超参数](tune-model-hyperparameters.md)模块进行参数扫描。 训练程序将循环访问指定的多个值，以找到最佳配置。
 
 3. 对于“树数”，键入可在系综中创建的树的最大数目。 创建更多的树通常可以提高准确度，但同时会增加训练时间。  
 
@@ -73,7 +73,7 @@ ms.locfileid: "90907952"
 
 10. 将训练数据集和未训练的模型连接到训练模块之一： 
 
-    - 如果将“创建训练程序模式”设置为“单个参数”，请使用[训练模型](train-model.md)模块。********
+    - 如果将“创建训练程序模式”设置为“单个参数”，请使用[训练模型](train-model.md)模块。
 
     - 如果将“创建训练程序模式”设置为“参数范围”，请使用[优化模型超参数](tune-model-hyperparameters.md)模块 。
 
@@ -91,7 +91,7 @@ ms.locfileid: "90907952"
 
 在训练完成后：
 
-+ 若要保存已训练模型的快照，请选择训练模块，然后切换到右侧面板中的“输出+日志”选项卡。 单击“注册数据集”图标。  可以在模块树中找到已作为模块保存的模型。
++ 若要保存已训练模型的快照，请选择训练模块，然后切换到右侧面板中的“输出 + 日志”选项卡。 单击“注册数据集”图标。  可以在模块树中找到已作为模块保存的模型。
 
 ## <a name="next-steps"></a>后续步骤
 

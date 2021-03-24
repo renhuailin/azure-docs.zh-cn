@@ -4,10 +4,10 @@ description: 此 Azure Policy 模式提供了有关如何使用 deployIfNotExist
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 0a9eec54954b8963f38b3f19a0d0cabffe1092e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649978"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy 模式：部署资源
@@ -38,7 +38,7 @@ ms.locfileid: "89649978"
 
 策略定义的 **deployment** 部分有一个 **properties** 块，其中定义了三个核心组件：
 
-- **mode** - 此属性设置模板的[部署模式](../../../azure-resource-manager/templates/deployment-modes.md)。
+- **mode** - 此属性设置模板的 [部署模式](../../../azure-resource-manager/templates/deployment-modes.md)。
 
 - **template** - 此属性包括了模板本身。 在此示例中，**location** 模板参数设置新的网络观察程序资源的位置。
 

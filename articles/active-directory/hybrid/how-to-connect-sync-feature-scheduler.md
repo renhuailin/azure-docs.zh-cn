@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad7b0039602add7f4cd3cdd300bd829c4f148a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084730"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
@@ -160,14 +160,14 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 ## <a name="stop-the-scheduler"></a>停止计划程序
 如果计划程序当前正在运行同步周期，可能需要将其停止。 例如，如果启动安装向导并收到以下错误：
 
-![屏幕截图显示无法更改配置错误消息。](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
+![屏幕截图显示了“无法更改配置”错误消息。](./media/how-to-connect-sync-feature-scheduler/synccyclerunningerror.png)
 
 正在运行同步周期时，不能进行配置更改。 可以等到计划程序已完成该过程，但也可以将其停止，以便可以立即进行更改。 停止当前周期没有任何害处，挂起的更改会在下次运行时处理。
 
 1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle`指示计划程序停止其当前周期。
 2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：
 
-   ![屏幕截图显示选定连接器 Synchronization Service Manager，并选中 "停止" 操作，突出显示正在运行的连接器。](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+   ![屏幕截图显示了 Synchronization Service Manager，其中选择了“连接器”，突出显示了一个正在运行的连接器，并选中了“停止”操作。](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
 
    * 从“开始”菜单启动“同步服务”。  转到“连接器”，突出显示状态为“正在运行”的连接器，然后从“操作”中选择“停止”。   
 
@@ -218,4 +218,4 @@ Get-ADSyncConnectorRunStatus
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

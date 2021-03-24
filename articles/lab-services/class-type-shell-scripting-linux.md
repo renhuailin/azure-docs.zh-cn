@@ -4,10 +4,10 @@ description: 了解如何设置一个实验室来讲解 Linux 上的 shell 脚�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444958"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>设置一个实验室来讲解 Linux 上的 shell 脚本编写
@@ -16,7 +16,7 @@ ms.locfileid: "85444958"
 使用这些脚本类的学生可以通过 Linux 虚拟机了解 Linux 的基础知识，并熟悉 bash shell 脚本。 该 Linux 虚拟机已启用远程桌面访问，并装有 [gedit](https://help.gnome.org/users/gedit/stable/) 和 [Visual Studio Code](https://code.visualstudio.com/) 文本编辑器。
 
 ## <a name="lab-configuration"></a>实验室配置
-若要设置此实验室，你需要有一个 Azure 订阅才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 拥有 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户，也可以使用现有的实验室帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[有关设置实验室帐户的教程](tutorial-setup-lab-account.md)。
+若要设置此实验室，你需要具有一个 Azure 订阅才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 拥有 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户，也可以使用现有的实验室帐户。 请参阅以下教程，了解如何创建新的实验室帐户：[有关设置实验室帐户的教程](tutorial-setup-lab-account.md)。
 
 创建实验室帐户后，在实验室帐户中启用以下设置： 
 
@@ -82,7 +82,7 @@ Ruby 是一种开源动态语言，可与 bash 脚本结合使用。 本部分�
 本文指导你完成了为脚本编写课程创建实验室的步骤。 尽管本文重点介绍了如何在 Linux 计算机上设置 Ruby 脚本编写工具，但相同的设置可用于其他脚本编写课程，例如“Linux 上的 Python”。
 
 ## <a name="next-steps"></a>后续步骤
-后续步骤是设置任何实验室时通用的：
+接下来的步骤是设置任何实验室时通用的：
 
 - [添加用户](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [设置配额](how-to-configure-student-usage.md#set-quotas-for-users)

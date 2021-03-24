@@ -1,7 +1,7 @@
 ---
 title: 特选环境
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习特选环境，一组预配置的环境，有助于减少实验和部署准备时间。
+description: 了解 Azure 机器学习的特选环境，这是一组预先配置的环境，有助于减少试验和部署准备时间。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: reference
 ms.date: 12/22/2020
 ms.openlocfilehash: f414c4a80750faac590a0c4c734f3634a85b79f0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97740923"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure 机器学习的特选环境
 
-本文列出了 Azure 机器学习中的特选环境。 特选环境由 Azure 机器学习提供，且默认可用于你的工作区。 它们是使用最新版本的 Azure 机器学习 SDK 的缓存 Docker 映像提供支持的，它可减少运行准备成本，并允许更快的部署时间。 使用这些环境可以快速完成各种机器学习框架的入门。
+本文列出了 Azure 机器学习中的特选环境。 特选环境由 Azure 机器学习提供，且默认可用于你的工作区。 它们由使用最新版本的 Azure 机器学习 SDK 的缓存 Docker 映像提供支持，降低了运行准备成本，缩短了部署时间。 使用这些环境可以快速完成各种机器学习框架的入门。
 
 > [!NOTE]
-> 此列表将于2020年12月更新。 使用 Python SDK 获取最新的环境及其依赖项列表。 有关详细信息，请参阅[环境](./how-to-use-environments.md#use-a-curated-environment)一文。
+> 此列表于 2020 年 12 月进行了更新。 使用 Python SDK 获取环境及其依赖项的最新更新列表。 有关详细信息，请参阅[环境](./how-to-use-environments.md#use-a-curated-environment)一文。
 
 ## <a name="automl"></a>自动化 ML
 
@@ -75,7 +75,7 @@ ms.locfileid: "97740923"
 - AzureML-PyTorch-1.6-CPU
 - AzureML-PyTorch-1.6-GPU
 
-## <a name="scikit"></a>Scikit-learn
+## <a name="scikit"></a>Scikit
 
 - AzureML-Scikit-learn-0.20.3
 

@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 122cc6a2be17cb35e77b638a60fc5fa4f035c0d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91266133"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>如何：使用条件访问要求使用经批准的客户端应用进行云应用访问
 
 人们会经常将其移动设备用于个人任务和工作任务。 在确保员工工作效率的同时，组织还需防止可能不安全的应用程序中出现数据丢失的情况。 使用条件访问，组织可以让员工只访问批准的（支持新式身份验证的）客户端应用。
 
-本文介绍了两种方案，用于配置 Microsoft 365、Exchange Online 和 SharePoint Online 等资源的条件性访问策略。
+本文介绍了两种方案，用于为 Microsoft 365、Exchange Online 和 SharePoint Online 等资源配置条件访问策略。
 
-- [方案1： Microsoft 365 应用需要批准的客户端应用](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
+- [方案 1：Microsoft 365 应用需要批准的客户端应用](#scenario-1-microsoft-365-apps-require-an-approved-client-app)
 - [方案 2：Exchange Online 和 SharePoint Online 需要批准的客户端应用](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 在条件访问中，此功能称为“需要批准的客户端应用”。 有关核准客户端应用程序的列表，请参阅[核准客户端应用程序要求](concept-conditional-access-grant.md#require-approved-client-app)。
@@ -32,9 +32,9 @@ ms.locfileid: "91266133"
 > [!NOTE]
 > 为了要求 iOS 和 Android 设备使用经批准的客户端应用程序，必须首先在 Azure AD 中注册这些设备。
 
-## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>方案1： Microsoft 365 应用需要批准的客户端应用
+## <a name="scenario-1-microsoft-365-apps-require-an-approved-client-app"></a>应用场景 1：Microsoft 365 应用需要批准的客户端应用
 
-在此方案中，Contoso 已决定使用移动设备的用户只要使用批准的客户端应用（例如 Outlook mobile、OneDrive 和 Microsoft 团队），就能访问所有 Microsoft 365 的服务。 其所有用户已使用 Azure AD 凭据登录，并获得了分配的许可证，其中包括 Azure AD Premium P1 或 P2 以及 Microsoft Intune。
+在此方案中，Contoso 规定：使用移动设备的用户只要使用批准的客户端应用（如 Outlook 移动版、OneDrive 和 Microsoft Teams），就可以访问所有 Microsoft 365 服务。 其所有用户已使用 Azure AD 凭据登录，并获得了分配的许可证，其中包括 Azure AD Premium P1 或 P2 以及 Microsoft Intune。
 
 组织必须完成以下三个步骤才能要求在移动设备上使用批准的客户端应用。
 
@@ -47,7 +47,7 @@ ms.locfileid: "91266133"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
    1. 选择“完成”  。
-1. 在 "**云应用或操作**  >  **包括**" 下，选择 " **Office 365**"。
+1. 在“云应用或操作” > “包括”下，选择“Office 365”。
 1. 在“条件”下，选择“设备平台”。  
    1. 将“配置”设置为“是”。  
    1. 包括 Android 和 iOS。  

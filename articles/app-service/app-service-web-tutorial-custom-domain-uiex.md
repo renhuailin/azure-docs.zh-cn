@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216524"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954847"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -121,7 +121,7 @@ ms.locfileid: "102216524"
 
     <details>
         <summary>能否使用 Azure 从我的域提供程序管理 DNS？</summary>
-        如果需要，可使用 Azure DNS 来管理域的 DNS 记录，并为 Azure 应用服务配置自定义 DNS 名称。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">教程：在 Azure DNS 中托管域</a>。
+        如果需要，可使用 Azure DNS 来管理域的 DNS 记录，并为 Azure 应用服务配置自定义 DNS 名称。 有关详细信息，请参阅<a href="/azure/dns/dns-delegate-domain-azure-dns">教程：在 Azure DNS 中托管域</a>。
     </details>
 
 1. 查找管理 DNS 记录的页面。 
@@ -146,7 +146,7 @@ ms.locfileid: "102216524"
             <ul>
             <li>若要映射根域（例如 <code>contoso.com</code>），请使用 A 记录。 请勿使用根记录的 CNAME 记录（有关信息，请参阅<a href="https://en.wikipedia.org/wiki/CNAME_record">维基百科条目</a>）。</li>
             <li>若要映射子域（例如 <code>www.contoso.com</code>），请使用 CNAME 记录。</li>
-            <li>可使用 A 记录直接将子域映射到应用的 IP 地址，但 <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP 地址</a>可能会更改。 CNAME 改为映射到应用的主机名，该主机名不易更改。</li>
+            <li>可使用 A 记录直接将子域映射到应用的 IP 地址，但 <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP 地址</a>可能会更改。 CNAME 改为映射到应用的主机名，该主机名不易更改。</li>
             <li>若要映射<a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">通配符域</a>（例如 <code>*.contoso.com</code>），请使用 CNAME 记录。</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ ms.locfileid: "102216524"
 
     <details>
         <summary>“不安全”警告标签有何含义？</summary>
-        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
+        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
     </details>
 
     如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部显示验证错误。
@@ -274,7 +274,7 @@ ms.locfileid: "102216524"
 
     <details>
         <summary>“不安全”警告标签有何含义？</summary>
-        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
+        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
     </details>
     
     如果之前错过了某个步骤或者在某个位置的输入不正确，则会在页面的底部显示验证错误。
@@ -297,7 +297,7 @@ ms.locfileid: "102216524"
 
     <details>
         <summary>“不安全”警告标签有何含义？</summary>
-        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
+        自定义域带有警告标签意味着该域尚未绑定到 TLS/SSL 证书。 从浏览器向自定义域发出任何 HTTPS 请求都会收到错误或警告，具体取决于浏览器。 若要添加 TLS 绑定，请参阅<a href="/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称</a>。
     </details>
 
 -----

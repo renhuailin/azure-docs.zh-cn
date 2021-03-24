@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 3d102b492326971ef186ba50a557ad8d1df5b6ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Egnyte 的集成
@@ -86,7 +86,7 @@ ms.locfileid: "92454186"
 
     ![Egnyte 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.egnyte.com`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.egnyte.com`。
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.egnyte.com/samlconsumer/AzureAD`
     
@@ -112,10 +112,10 @@ ms.locfileid: "92454186"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -157,9 +157,9 @@ ms.locfileid: "92454186"
 
     ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "单一登录身份验证")   
     
-    a. 对于“单一登录身份验证”下，选择 **“SAML 2.0”** 。
+    a. 对于“单一登录身份验证”下，选择 **“SAML 2.0”**。
    
-    b. 对于 **“标识提供程序”** ，选择 **“AzureAD”** 。
+    b. 对于 **“标识提供程序”**，选择 **“AzureAD”**。
    
     c. 将从 Azure 门户复制的“登录 URL”粘贴到“标识提供者登录 URL”文本框。
    
@@ -167,11 +167,11 @@ ms.locfileid: "92454186"
       
     e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框。
    
-    f. 对于 **“默认用户映射”** ，选择 **“电子邮件地址”** 。
+    f. 对于 **“默认用户映射”**，选择 **“电子邮件地址”**。
    
-    g. 对于 **“使用特定于域的颁发者值”** ，选择 **“已禁用”** 。
+    g. 对于 **“使用特定于域的颁发者值”**，选择 **“已禁用”**。
    
-    h. 单击“ **保存** ”。
+    h. 单击“ **保存**”。
 
 ### <a name="create-egnyte-test-user"></a>创建 Egnyte 测试用户
 
@@ -183,7 +183,7 @@ ms.locfileid: "92454186"
 
 2. 转到“设置”\>“用户和组”。
 
-3. 单击 **“添加新用户”** ，然后选择你要添加的用户的类型。
+3. 单击 **“添加新用户”**，然后选择你要添加的用户的类型。
    
     ![用户](./media/egnyte-tutorial/ic787824.png "用户")
 
@@ -197,7 +197,7 @@ ms.locfileid: "92454186"
 
     c. 选择“单一登录”作为“身份验证类型”。
    
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
     
     >[!NOTE]
     >Azure Active Directory 帐户持有者将收到一封通知电子邮件。

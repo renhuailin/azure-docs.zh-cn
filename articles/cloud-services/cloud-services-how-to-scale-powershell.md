@@ -1,5 +1,5 @@
 ---
-title: " (经典) 在 Windows PowerShell 中缩放 Azure 云服务 |Microsoft Docs"
+title: 在 Windows PowerShell 中缩放 Azure 云服务（经典）| Microsoft Docs
 description: （经典）了解如何使用 PowerShell 在 Azure 中缩放 web 角色或辅助角色。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743298"
 ---
-# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>如何在 PowerShell 中缩放 Azure 云服务 (经典) 
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>如何在 PowerShell 中缩放 Azure 云服务（经典）
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 可以使用 Windows PowerShell 通过添加或删除实例来缩放 web 角色或辅助角色。  
 
@@ -70,9 +70,9 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ![角色实例增加成功](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例缩小角色
+## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例横向缩减角色
 
-同样，可通过删除实例缩小角色。 将 **Set-AzureRole** 中的 **Count** 参数设置为缩小操作完成后所需的实例数。
+同样，可通过删除实例横向缩减角色。 将 **Set-AzureRole** 中的 **Count** 参数设置为横向缩减操作完成后所需的实例数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: c2caab4e449f4299d00fff14b697887ec00f35e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83697488"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services 资源和对象限制
@@ -26,7 +26,7 @@ ms.locfileid: "83697488"
 
 以下限制是理论限制。 数值减小，性能会下降。
 
-|Object|最大大小/数量|  
+|对象|最大大小/数量|  
 |------------|----------------------------|  
 |一个实例中的数据库数|16,000|  
 |数据库中表和列的组合数|16,000|  

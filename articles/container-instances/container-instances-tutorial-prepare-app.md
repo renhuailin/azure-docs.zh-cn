@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: 1eca34fb5da50b15f15322a3b534556bcd3bda09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91303108"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>教程：创建要部署到 Azure 容器实例的容器映像
@@ -24,7 +24,7 @@ ms.locfileid: "91303108"
 
 在本教程的第二和第三部分，需要将该映像上传到 Azure 容器注册表，然后将其部署到 Azure 容器实例。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -55,7 +55,7 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-使用 [docker build][docker-build] 命令创建容器映像，并将其标记为 aci-tutorial-app  ：
+使用 [docker build][docker-build] 命令创建容器映像，将其标记为 *aci-tutorial-app*：
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
@@ -83,7 +83,7 @@ Successfully built 6edad76d09e9
 Successfully tagged aci-tutorial-app:latest
 ```
 
-使用 [docker images][docker-images] 命令查看生成的映像：
+使用 [docker images][docker-images] 命令查看已生成映像：
 
 ```bash
 docker images

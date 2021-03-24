@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 39db52223feea63a4e3afbd4775f884acbbca548
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341682"
 ---
 # <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB)
@@ -29,14 +29,14 @@ POWER (<numeric_expr1>, <numeric_expr2>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr1*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 *numeric_expr2*  
    是要将 *numeric_expr1* 提升到的幂次。  
   
 ## <a name="return-types"></a>返回类型
   
-  返回数值表达式。  
+  返回一个数值表达式。  
   
 ## <a name="examples"></a>示例
   
@@ -46,7 +46,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
 SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{pow1: 8, pow2: 15.625}]  

@@ -1,5 +1,5 @@
 ---
-title: " (经典) 构建 Node.js Express 应用并将其部署到 Azure 云服务"
+title: 构建 Node.js Express 应用并将其部署到 Azure 云服务（经典）
 description: 使用本教程通过 Express 模块新建一个应用程序，该模块提供了用于创建 Node.js Web 应用程序的 MVC 框架。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743332"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>使用 Express 在 Azure 云服务上构建和部署 Node.js web 应用程序 (经典) 
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>使用 Express 在 Azure 云服务（经典）中构建并部署 Node.js Web 应用程序
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 Node.js 包含核心运行时中最小的一个功能集。
 开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 本教程使用 [Express](https://github.com/expressjs/express) 模块新建一个应用程序，该模块提供了用于创建 Node.js Web 应用程序的 MVC 框架。

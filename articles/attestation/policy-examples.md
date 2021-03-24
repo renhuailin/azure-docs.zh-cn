@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720148"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950563"
 ---
 # <a name="examples-of-an-attestation-policy"></a>证明策略的示例
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-有关 Azure 证明生成的传入声明的详细信息，请参阅[声明集](/azure/attestation/claim-sets)。 传入声明可由策略作者用于在自定义策略中定义授权规则。 
+有关 Azure 证明生成的传入声明的详细信息，请参阅[声明集](./claim-sets.md)。 传入声明可由策略作者用于在自定义策略中定义授权规则。 
 
-发布规则部分不是强制性的。 用户可以使用此部分在证明令牌中生成具有自定义名称的其他传出声明。 有关证明令牌中的服务生成的传出声明的详细信息，请参阅[声明集](/azure/attestation/claim-sets)。
+发布规则部分不是强制性的。 用户可以使用此部分在证明令牌中生成具有自定义名称的其他传出声明。 有关证明令牌中的服务生成的传出声明的详细信息，请参阅[声明集](./claim-sets.md)。
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>SGX enclave 的默认策略
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-在默认策略中使用的声明被视为已弃用，但完全受支持，并且将来将继续被包含在内。 建议使用未弃用的声明名称。 有关建议的声明名称的详细信息，请参阅[声明集](/azure/attestation/claim-sets)。 
+在默认策略中使用的声明被视为已弃用，但完全受支持，并且将来将继续被包含在内。 建议使用未弃用的声明名称。 有关建议的声明名称的详细信息，请参阅[声明集](./claim-sets.md)。 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>支持多个 SGX Enclave 的示例自定义策略
 

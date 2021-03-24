@@ -3,16 +3,16 @@ title: Azure 数据工厂 - 客户案例研究
 description: 了解一些客户是怎样使用 Azure 数据工厂的。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 43148cdd0790ad03a1521e46fcf6d2684cbdc24a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 98814ce9fbf1171ff57b9e82e5cb1af33f9756ce
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376541"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779692"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
 数据工厂是一项基于云的信息管理服务，可以自动移动和转换数据。 各个行业的用户通过数据工厂和其他 Azure 服务生成其分析管道以及解决业务问题。  直接通过客户了解其如何以及为什么使用数据工厂。

@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85850969"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
@@ -1080,19 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>说明
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
-1. 禁用指定对象上的继承
+1. 在指定对象上禁用继承
 2. 删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
 我们希望在处理 SELF 时默认权限保持不变。
 3. 分配以下特定权限：
 
-   | 类型 | 名称 | 访问 | 应用到 |
+   | 类型 | 名称 | 访问 | 应用于 |
    |------|------|--------|------------|
-   | 允许 | SYSTEM | 完全控制 | 此对象 |
-   | 允许 | 企业管理员 | 完全控制 | 此对象 |
-   | 允许 | 域管理员 | 完全控制 | 此对象 | 
-   | 允许 | 管理员 | 完全控制 | 此对象 |
-   | 允许 | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
-   | 允许 | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | Allow | SYSTEM | 完全控制 | 此对象 |
+   | Allow | 企业管理员 | 完全控制 | 此对象 |
+   | Allow | 域管理员 | 完全控制 | 此对象 | 
+   | Allow | 管理员 | 完全控制 | 此对象 |
+   | Allow | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | Allow | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
 
 ### <a name="examples"></a>示例
 

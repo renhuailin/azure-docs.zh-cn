@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85846859"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -35,7 +35,7 @@ ms.locfileid: "85846859"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="issue-list"></a><a name="IssueList"></a>问题列表  
- **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
+ **问题列表** 模板可用于自定义开发人员门户中问题列表页的正文。  
   
  ![问题列表（开发人员门户）](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表（开发人员门户）")  
   
@@ -98,7 +98,7 @@ ms.locfileid: "85846859"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |`Issues`|[问题](api-management-template-data-model-reference.md#Issue)实体的集合。|对当前用户可见的问题。|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  

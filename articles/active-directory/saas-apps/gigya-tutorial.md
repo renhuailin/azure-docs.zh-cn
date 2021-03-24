@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 849b54e6d96b8f6f33f2a0925b9a1b9c3eebd56b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92449942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>教程：Azure Active Directory 与 Gigya 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92449942"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Gigya 的集成，需要以下项目：
 
@@ -41,7 +41,7 @@ ms.locfileid: "92449942"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Gigya 支持 SP 发起的 SSO 
+* Gigya 支持 SP 发起的 SSO
 
 ## <a name="adding-gigya-from-the-gallery"></a>从库中添加 Gigya
 
@@ -61,13 +61,13 @@ ms.locfileid: "92449942"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Gigya”，在结果面板中选择“Gigya”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Gigya”，在结果面板中选择“Gigya”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Gigya](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”  的测试用户使用 Gigya 配置和测试 Azure AD 单一登录。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Gigya 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Gigya 中的相关用户之间建立链接关系。
 
 若要使用 Gigya 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92449942"
 
 若要配置 Gigya 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Gigya”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Gigya”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92449942"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Gigya 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.gigya.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.gigya.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://fidm.gigya.com/saml/v2.0/<companyname>`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92449942"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Gigya”部分，根据要求复制相应的 URL  。
+6. 在“设置 Gigya”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,19 +130,19 @@ ms.locfileid: "92449942"
    
     ![SAML 登录](./media/gigya-tutorial/ic789532.png "SAML 登录")
 
-3. 在“SAML 登录”  部分执行以下步骤：
+3. 在“SAML 登录名”部分中，执行以下步骤：
    
     ![SAML 配置](./media/gigya-tutorial/ic789533.png "SAML 配置")
    
-    a. 在“名称”  文本框中，键入配置名称。
+    a. 在“名称”文本框中，键入配置名称。
    
-    b. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。 
+    b. 在“颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。 
    
-    c. 在“单一登录服务 URL”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
+    c. 在“单一登录服务 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
    
-    d. 将从 Azure 门户复制的“名称标识符格式”的值粘贴到“名称 ID 格式”文本框中   。
+    d. 将从 Azure 门户复制的“名称标识符格式”的值粘贴到“名称 ID 格式”文本框中。
    
-    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”文本框  。
+    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”文本框。
    
     f. 单击“保存设置”。 
 
@@ -154,7 +154,7 @@ ms.locfileid: "92449942"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -169,17 +169,17 @@ ms.locfileid: "92449942"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Gigya 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Gigya”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Gigya”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Gigya”  。
+2. 在应用程序列表中，选择“Gigya”。
 
     ![应用程序列表中的 Gigya 链接](common/all-applications.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "92449942"
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 
-1. 以管理员身份登录到 **Gigya** 公司站点。
+1. 以管理员身份登录到你的 **Gigya** 公司站点。
 
 2. 转到“管理员”\>“管理用户”，并单击“邀请用户”。
    
@@ -213,9 +213,9 @@ ms.locfileid: "92449942"
    
     ![邀请用户](./media/gigya-tutorial/ic789536.png "邀请用户")
    
-    a. 在“电子邮件”  文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件别名。
+    a. 在 **“电子邮件”** 文本框中，键入要设置的有效 Azure Active Directory 帐户的电子邮件别名。
     
-    b. 单击“邀请用户”  。
+    b. 单击 **“邀请用户”**。
       
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，该邮件包含在激活帐户前要确认帐户的链接。

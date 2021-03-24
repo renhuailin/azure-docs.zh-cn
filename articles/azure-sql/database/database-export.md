@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.openlocfilehash: 866500e9cd9e3fe6aac6a5bfded0dbb21ab137fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107372"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102614235"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -30,7 +30,7 @@ ms.locfileid: "98107372"
 - 如果是导出到 Blob 存储，则 BACPAC 文件的最大大小为 200 GB。 若要存档更大的 BACPAC 文件，请导出到本地存储。
 - 不支持使用本文所述方法将 BACPAC 文件导出到 Azure 高级存储。
 - 目前不支持有防火墙的存储。
-- 存储文件名或 StorageURI 的输入值的长度不能超过128个字符，并且不能以 "." 结尾，且不能包含空格字符或 "<、>、*、%、&、：、 \, /、？" 等特殊字符。 
+- 存储文件名或 StorageURI 的输入值的长度应少于 128 个字符，并且不能以“.”结尾，也不能包含特殊字符，如空格字符或“<、>、*、%、&、:、\,/、?”。 
 - 如果导出操作超过 20 个小时，可能会取消操作。 为提高导出过程中的性能，可以进行如下操作：
 
   - 暂时提高计算大小。
@@ -103,6 +103,13 @@ while ($exportStatus.Status -eq "InProgress")
 }
 [Console]::WriteLine("")
 $exportStatus
+```
+## <a name="cancel-the-export-request"></a>取消导出请求
+
+使用[数据库操作 - 取消 API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
+
+```cmd
+Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId
 ```
 
 ## <a name="next-steps"></a>后续步骤

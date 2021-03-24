@@ -3,12 +3,12 @@ title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 958deba6152ffa3bcb1d2d79cd026c0cb2eebcbe
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521655"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889002"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
@@ -25,7 +25,7 @@ copy 元素采用以下常规格式：
 ```json
 "copy": [
   {
-    "name": "<name-of-loop>",
+    "name": "<name-of-property>",
     "count": <number-of-iterations>,
     "input": <values-for-the-property>
   }

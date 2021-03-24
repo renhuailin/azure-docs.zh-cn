@@ -4,10 +4,10 @@ description: 在本教程中，你将访问教师在课堂实验室中设置的�
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: dacfa34c0d3ab637ef513342bc5ce5fe81038e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85443462"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
@@ -22,7 +22,7 @@ ms.locfileid: "85443462"
 
 ## <a name="register-to-the-lab"></a>注册到实验室
 
-1. 导航到从教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
+1. 转到从教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
 
     ![注册到实验室](./media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. 使用学校帐户登录服务以完成注册。 
@@ -33,8 +33,8 @@ ms.locfileid: "85443462"
 
     ![可访问 VM](./media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
-    1. 在磁贴的顶部，可以看到**实验室的名称**。
-    1. 在其右侧，可以看到代表 VM 的**操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
+    1. 在磁贴的顶部，可以看到 **实验室的名称**。
+    1. 在其右侧，可以看到代表 VM 的 **操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
     1. 磁贴上的进度栏会显示对分配给你的[配额小时](how-to-configure-student-usage.md#set-quotas-for-users)数已使用的小时数。 此时间是在实验室的计划时间之外，额外分配给你的时间。 
     1. 可以在磁贴底部看到用于启动/停止 VM 以及连接到 VM 的图标/按钮。 
     1. 在按钮的右侧，可以看到 VM 的状态。 确认你看到 VM 的状态为“已停止”。 
@@ -42,22 +42,22 @@ ms.locfileid: "85443462"
         ![VM 处于停止状态](./media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
 ## <a name="start-the-vm"></a>启动 VM
-1. 通过选择第一个按钮**启动** VM，如下图所示。 此过程需要一些时间。  
+1. 通过选择第一个按钮 **启动** VM，如下图所示。 此过程需要一些时间。  
 
     ![启动 VM](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 4. 确认 VM 的状态设置为“正在运行”。 
 
     ![VM 处于正在运行状态](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-    请注意，第一个按钮的图标已更改为表示**停止**操作。 可以选择此按钮以停止 VM。 
+    请注意，第一个按钮的图标已更改为表示 **停止** 操作。 可以选择此按钮以停止 VM。 
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
 
-1. 选择下图中所示的第二个按钮以**连接**到实验室的 VM。 
+1. 选择下图中所示的第二个按钮以 **连接** 到实验室的 VM。 
 
     ![连接到 VM](./media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. 执行以下步骤中的一个： 
-    1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上 。 打开要连接到虚拟机的 RDP 文件。 使用从教师处获得的用户名和密码登录到计算机 。 
+    1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上 。 打开要连接到虚拟机的 RDP 文件。 使用从教师处获得的用户名和密码来登录计算机。 
     3. 对于 **Linux** 虚拟机，可以使用 **SSH** 或 **RDP**（如果已启用）连接到它们。 有关详细信息，请参阅[为 Linux 计算机启用远程桌面连接](how-to-enable-remote-desktop-linux.md)。 
 
 ## <a name="next-steps"></a>后续步骤

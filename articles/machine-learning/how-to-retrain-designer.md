@@ -1,7 +1,7 @@
 ---
-title: 使用管道参数在设计器中重新定型模型
+title: 在设计器中使用管道参数重新训练模型
 titleSuffix: Azure Machine Learning
-description: 在 Azure 机器学习设计器中具有已发布管道和管道参数的重新定型模型。
+description: 使用 Azure 机器学习设计器中发布的管道和管道参数重新训练模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708460"
 ---
-# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>使用管道参数在设计器中重新定型模型
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>在设计器中使用管道参数重新训练模型
 
 
-本操作指南文章介绍了如何使用 Azure 机器学习设计器通过管道参数重新训练机器学习模型。 你将使用已发布的管道自动执行工作流，并设置参数以使用新数据训练模型。 管道参数使你可以为不同的作业重复使用现有管道。  
+本操作方法文章介绍如何使用 Azure 机器学习设计器通过管道参数重新训练机器学习模型。 你将使用已发布的管道自动执行工作流，并设置参数以使用新数据训练模型。 通过管道参数可以为不同作业重复使用现有管道。  
 
 在本文中，学习如何：
 
@@ -47,7 +47,7 @@ ms.locfileid: "97708460"
 
 ## <a name="create-a-pipeline-parameter"></a>创建管道参数
 
-管道参数用于生成可在以后使用不同参数值重新提交的各种管道。 一些常见的情况是更新数据集或某些超参数以进行重新训练。 创建管道参数，以在运行时动态设置变量。 
+管道参数用于生成可在以后使用不同参数值重新提交的通用管道。 一些常见应用场景包括更新数据集或某些超参数以供重新训练。 创建管道参数，以在运行时动态设置变量。 
 
 管道参数可以添加到管道中的数据源或模块参数中。 重新提交管道时，可以指定这些参数的值。
 
@@ -70,14 +70,14 @@ ms.locfileid: "97708460"
 
    ![屏幕截图显示了如何创建管道参数](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
    > [!NOTE]
-   > 您还可以在 "模块详细信息" 窗格中从管道参数分离模块参数，这与添加管道参数类似。
+   > 还可以在模块详细信息窗格中从管道参数分离模块参数，类似于添加管道参数。
    >
    > 你可以选择管道草稿标题旁边的“设置”齿轮图标来检查和编辑管道参数。 
-   >    - 分离后，可以在 " **设置** " 窗格中删除管道参数。
-   >    - 您还可以在 " **设置** " 窗格中添加管道参数，然后将其应用于某些模块参数。
+   >    - 分离后，可在“设置”窗格中删除管道参数。
+   >    - 还可以在“设置”窗格中添加管道参数，然后将其应用于一些模块参数。
 
 1. 提交管道运行。
 

@@ -1,5 +1,5 @@
 ---
-title: 委派权限与应用权限之间的差异 |Microsoft
+title: 委派权限与应用权限之间的差异 | Azure
 description: 了解委派权限和应用程序权限、客户端使用它们的方式以及使用 Azure AD 开发的应用程序的资源公开它们的方式
 services: active-directory
 author: rwike77
@@ -13,10 +13,10 @@ ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 51d7c1e433e72a393178cf429759b5e9a6479e88
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648673"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>如何区分委派权限和应用程序权限之间的差异
@@ -28,4 +28,4 @@ ms.locfileid: "101648673"
 - 有关详细信息，请了解资源应用程序如何将[作用域](developer-glossary.md#scopes)和[应用程序角色](developer-glossary.md#roles)（在 Azure 门户中分别显示为委派权限和应用程序权限）公开给客户端应用程序。 
 
 ## <a name="next-steps"></a>后续步骤
-[AzureAD Microsoft Q&](/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)
