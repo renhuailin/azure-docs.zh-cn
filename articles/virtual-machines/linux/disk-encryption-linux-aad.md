@@ -2,18 +2,19 @@
 title: 使用 Azure AD 应用 Linux IaaS VM 的 Azure 磁盘加密（以前的版本）
 description: 本文提供有关如何为 Linux IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741791"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601784"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
 
@@ -31,7 +32,7 @@ ms.locfileid: "92741791"
  > - 如果之前是使用 [Azure 磁盘加密与 Azure AD 应用](disk-encryption-overview-aad.md)来加密此 VM，则必须继续使用此选项来加密 VM。 无法在此加密的 VM 上使用 [Azure 磁盘加密](disk-encryption-overview.md)，因为不支持此方案，这意味着尚不支持为此加密的 VM 实施 Azure AD 应用程序切换操作。
  > - 为确保加密机密不会跨过区域边界，Azure 磁盘加密需要将密钥保管库和 VM 共置于同一区域。 在要加密的 VM 所在的同一区域中创建并使用密钥保管库。
  > - 加密 Linux OS 卷的过程可能需要几个小时。 加密 Linux OS 卷所需的时间比加密数据卷要长，这是正常的。
-> - 加密 Linux OS 卷时，VM 应当会被视为不可用的。 我们强烈建议在加密过程中避免 SSH 登录，以避免阻止在加密过程中需要访问的任何已打开文件。 若要查看进度，请使用 [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 或 [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令。 对于 30-GB OS 卷，此过程可能需要几小时才能完成，还需要额外的时间来加密数据卷。 除非使用 encrypt format all  选项，否则数据卷加密时间将与数据卷的大小和数量成比例。 
+> - 加密 Linux OS 卷时，VM 应当会被视为不可用的。 我们强烈建议在加密过程中避免 SSH 登录，以避免阻止在加密过程中需要访问的任何已打开文件。 若要查看进度，请使用 [Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 或 [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令。 对于 30-GB OS 卷，此过程可能需要几小时才能完成，还需要额外的时间来加密数据卷。 除非使用 encrypt format all 选项，否则数据卷加密时间将与数据卷的大小和数量成比例。 
  > - 在 Linux VM 上，仅支持对数据卷禁用加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。 
 
  
@@ -47,7 +48,7 @@ ms.locfileid: "92741791"
 >
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>使用 Azure CLI 在现有或正在运行的 Linux VM 上启用加密 
-可以通过安装和使用 [Azure CLI 2.0](/cli/azure) 命令行工具，在加密的 VHD 上启用磁盘加密。 可以在浏览器中结合 [Azure Cloud Shell](../../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。 若要在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密，请使用以下 CLI 命令：
+可通过安装并使用 [Azure CLI 2.0](/cli/azure) 命令行工具在加密的 VHD 上启用磁盘加密。 可以在浏览器中结合 [Azure Cloud Shell](../../cloud-shell/overview.md) 使用这些 cmdlet，或者将它们安装在本地计算机上并在任何 PowerShell 会话中使用。 若要在 Azure 中现有或正在运行的 IaaS Linux VM 上启用加密，请使用以下 CLI 命令：
 
 使用 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) 命令在 Azure 中运行的 IaaS 虚拟机上启用加密。
 
@@ -64,7 +65,7 @@ ms.locfileid: "92741791"
      ```
 
    >[!NOTE]
-   > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]。</br> </br> 密钥加密-密钥参数值的语法是 KEK 的完整 URI，如下所示： https：//[keyvault]./key/[kekname]/[KEK 唯一 id]。
+   > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]。</br> </br> key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]。
 
 - **验证磁盘是否已加密：** 若要检查 IaaS VM 的加密状态，请使用 [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) 命令。 
 
@@ -117,7 +118,7 @@ ms.locfileid: "92741791"
 
   >[!NOTE]
   > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[KVresource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]。</br> </br>
-  密钥加密-密钥参数值的语法是 KEK 的完整 URI，如下所示： https：//[keyvault]./key/[kekname]/[KEK 唯一 id]。 
+  key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]。 
     
 - **验证磁盘是否已加密：** 若要检查 IaaS VM 的加密状态，请使用 [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) cmdlet。 
     
@@ -132,13 +133,13 @@ ms.locfileid: "92741791"
      ```
 
 
-### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a>使用模板在现有或正在运行的 IAAS Linux VM 上启用加密
+### <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm-with-a-template"></a><a name="bkmk_RunningLinux"> </a>使用模板在现有或正在运行的 IaaS Linux VM 上启用加密
 
 可通过 [Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) 在 Azure 中为现有或正在运行的 IaaS Linux VM 启用磁盘加密。
 
-1. 在 Azure 快速入门模板中，选择“部署到 Azure”。 
+1. 在 Azure 快速入门模板中，选择“部署到 Azure”。
 
-2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 选择“创建”，在现有或正在运行的 IaaS VM 上启用加密。 
+2. 选择订阅、资源组、资源组位置、参数、法律条款和协议。 选择“创建”，在现有或正在运行的 IaaS VM 上启用加密。
 
 下表列出了使用 Azure AD 客户端 ID 的现有或正在运行的 VM 的 Resource Manager 模板参数：
 
@@ -147,7 +148,7 @@ ms.locfileid: "92741791"
 | AADClientID | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端 ID。 |
 | AADClientSecret | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端机密。 |
 | KeyVaultName | 密钥应上传到的 Key Vault 的名称。 可以使用 Azure CLI 命令 `az keyvault show --name "MySecureVault" --query KVresourceGroup` 获取该名称。 |
-|  keyEncryptionKeyURL | 用于加密所生成密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择了“nokek”   ，则此参数为可选的。 如果在 UseExistingKek 下拉列表中选择了“kek”  ，则必须输入 keyEncryptionKeyURL  值。 |
+|  keyEncryptionKeyURL | 用于加密所生成密钥的密钥加密密钥的 URL。 如果在 UseExistingKek 下拉列表中选择了“nokek” ，则此参数为可选的。 如果在 UseExistingKek 下拉列表中选择了“kek”，则必须输入 keyEncryptionKeyURL 值。 |
 | volumeType | 要对其执行加密操作的卷的类型。 支持的有效值为“OS”或“All” 。 （请参阅前面“先决条件”部分中的受支持 Linux 分发版及其 OS 和数据磁盘版本。） |
 | sequenceVersion | BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增。 |
 | vmName | 要对其执行加密操作的 VM 的名称。 |
@@ -165,7 +166,7 @@ EncryptFormatAll 参数可以减少加密 Linux 数据磁盘所需的时间。 �
  >如果在更新加密设置时设置此参数，可能会导致在实际加密之前重启。 在这种情况下，还需要从 fstab 文件中删除不想要格式化的磁盘。 同样，在启动加密操作之前，应将想要加密并格式化的分区添加到 fstab 文件。 
 
 ### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a>EncryptFormatAll 的条件
-该参数会传播到满足以下所有条件的所有分区并将其加密  ： 
+该参数会传播到满足以下所有条件的所有分区并将其加密： 
 - 不是根/OS/启动分区
 - 尚未加密
 - 不是 BEK 卷
@@ -176,15 +177,15 @@ EncryptFormatAll 参数可以减少加密 Linux 数据磁盘所需的时间。 �
 加密组成 RAID 或 LVM 卷而不是 RAID 或 LVM 卷的磁盘。
 
 ### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a>结合模板使用 EncryptFormatAll 参数
-若要使用 EncryptFormatAll 选项，请使用可加密 Linux VM 的任何现有 Azure 资源管理器模板，并更改 AzureDiskEncryption 资源的 EncryptionOperation 字段  。
+若要使用 EncryptFormatAll 选项，请使用可加密 Linux VM 的任何现有 Azure 资源管理器模板，并更改 AzureDiskEncryption 资源的 EncryptionOperation 字段。
 
 1. 例如，使用[资源管理器模板加密正在运行的 Linux IaaS VM](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)。 
-2. 在 Azure 快速入门模板中，选择“部署到 Azure”。 
-3. 将 EncryptionOperation 字段从 EnableEncryption 更改为 EnableEncryptionFormatAl    。
-4. 选择订阅、资源组、资源组位置、其他参数、法律条款和协议。 选择“创建”，在现有或正在运行的 IaaS VM 上启用加密。 
+2. 在 Azure 快速入门模板中，选择“部署到 Azure”。
+3. 将 EncryptionOperation 字段从 EnableEncryption 更改为 EnableEncryptionFormatAl  。
+4. 选择订阅、资源组、资源组位置、其他参数、法律条款和协议。 选择“创建”，在现有或正在运行的 IaaS VM 上启用加密。
 
 
-### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a>将 EncryptFormatAll 参数与 PowerShell cmdlet 一起使用
+### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a>结合使用 EncryptFormatAll 参数和 PowerShell cmdlet
 结合 EncryptFormatAll 参数使用 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet。
 
 **使用客户端机密和 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本会初始化你的变量，并在使用 EncryptFormatAll 参数的情况下运行 Set-AzVMDiskEncryptionExtension cmdlet。 作为先决条件，你应当已事先创建了资源组、VM、密钥保管库、Azure AD 应用和客户端机密。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。
@@ -209,7 +210,7 @@ EncryptFormatAll 参数可以减少加密 Linux 数据磁盘所需的时间。 �
 - 添加构成 VM 的数据磁盘。
 - 格式化、装载这些磁盘并将其添加到 fstab 文件。
 
-    1. 格式化新添加的磁盘。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名称问题](../troubleshooting/troubleshoot-device-names-problems.md)。
+    1. 格式化新添加的磁盘。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名称问题](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)。
     
         ```console
         mkfs -t ext4 /dev/disk/azure/scsi1/lun0
@@ -265,7 +266,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 可以使用 [az vm disk attach](add-disk.md) 或[通过 Azure 门户](attach-disk-portal.md)添加新数据磁盘。 在加密之前，需要先装载新附加的数据磁盘。 必须请求加密数据驱动器，因为在进行加密时，该驱动器不可用。 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-the-azure-cli"></a>使用 Azure CLI 在新添加的磁盘上启用加密
- 如果 VM 之前已通过 "所有" 进行了加密，则--volume 类型参数应始终为 "所有"。 All 包括 OS 和数据磁盘。 如果以前使用 "OS" 卷类型对 VM 进行了加密，则--volume 类型参数应更改为 "全部"，以便包括 OS 和新的数据磁盘。 如果 VM 只是以 "数据" 的类型进行加密，则它可以保留数据，如此处所示。 向 VM 添加新的数据磁盘并将其附加到没有足够的加密准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，必须使用 [永久性块设备名称](../troubleshooting/troubleshoot-device-names-problems.md)在/etc/fstab 中装载磁盘。 
+ 如果 VM 之前是使用“All”进行加密，应将 --volume-type 参数的值保留为“All”。 All 包括 OS 和数据磁盘。 如果 VM 先前使用卷类型“OS”进行加密，则应将 --volume-type 参数更改为“All”，以便包含 OS 和新数据磁盘。 如果 VM 仅使用卷类型“Data”进行加密，则它可以保留为“Data”，如下所示。 添加新数据磁盘并将其附加到 VM 并不足以为加密做准备。 在启用加密之前，还必须格式化新附加的磁盘并将其正确装载在 VM 中。 在 Linux 上，磁盘必须使用[永久性块设备名称](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)装载在 /etc/fstab 中。 
 
 与 PowerShell 语法相反，在启用加密时，CLI 不要求你提供唯一的序列版本。 CLI 自动生成并使用自己唯一的序列版本值。
 
@@ -323,7 +324,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 >[!NOTE]
 > disk-encryption-keyvault 参数值的语法是完整的标识符字符串：/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]。 </br> </br>
-密钥加密-密钥参数值的语法是 KEK 的完整 URI，如下所示： https：//[keyvault]./key/[kekname]/[KEK 唯一 id]。
+key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]。
 
 ## <a name="disable-encryption-for-linux-vms"></a>为 Linux VM 禁用加密
 可以使用 Azure PowerShell、Azure CLI 或资源管理器模板禁用加密。 
@@ -341,9 +342,9 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **使用资源管理器模板禁用加密：** 若要禁用加密，请使用 [在正在运行的 Linux VM 上禁用加密](https://aka.ms/decrypt-linuxvm)模板。
-     1. 选择“部署到 Azure”  。
+     1. 选择“部署到 Azure”。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。
-     3. 选择“购买”，在正在运行的 Windows VM 上禁用磁盘加密  。 
+     3. 选择“购买”，在正在运行的 Windows VM 上禁用磁盘加密。 
 
 
 ## <a name="next-steps"></a>后续步骤

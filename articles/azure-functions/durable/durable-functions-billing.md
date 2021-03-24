@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97932276"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions 计费
@@ -27,7 +27,7 @@ ms.locfileid: "97932276"
 当业务流程协调程序函数使用 **await** (C#) 或 **yield** (JavaScript) 等待某个异步操作完成时，运行时会将该特定执行视为已完成。 业务流程协调程序函数的计费此时会停止。 在下一次业务流程协调程序函数重播之前，计费不会恢复。 你不需要对业务流程协调程序函数中的等待或生成所花费的任何时间付费。
 
 > [!NOTE]
-> 某些运行时将调用其他函数的函数视为反模式。 原因是存在一个所谓“双重计费”的问题。  当某个函数直接调用另一个函数时，两者会同时运行。 被调用函数正在实际运行代码，而调用函数正在等待响应。 在这种情况下，必须为调用函数等待被调用函数运行所花费的时间付费。
+> 某些运行时将调用其他函数的函数视为反模式。 原因是存在一个所谓“双重计费”的问题。 当某个函数直接调用另一个函数时，两者会同时运行。 被调用函数正在实际运行代码，而调用函数正在等待响应。 在这种情况下，必须为调用函数等待被调用函数运行所花费的时间付费。
 >
 > 业务流程协调程序函数不会双重计费。 业务流程协调程序函数在等待活动函数或子业务流程的结果时计费将会停止。
 

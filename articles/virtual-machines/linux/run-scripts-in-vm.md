@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 9531b5b3d5f178e204d408c677e8908be86e3367
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 633f4fa6254b2db7a802bb29bffc83b271216d49
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552858"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601748"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux VM 中运行脚本
 
@@ -57,7 +57,7 @@ ms.locfileid: "102552858"
 
 ## <a name="serial-console"></a>串行控制台
 
-[串行控制台](../troubleshooting/serial-console-linux.md)提供对 VM 的直接访问，类似于将键盘连接到 VM。
+[串行控制台](/troubleshoot/azure/virtual-machines/serial-console-linux)提供对 VM 的直接访问，类似于将键盘连接到 VM。
 
 * 在 Azure 虚拟机中运行命令。
 * 可以在 Azure 门户中使用基于文本的控制台运行到计算机。
@@ -71,4 +71,4 @@ ms.locfileid: "102552858"
 * [自定义脚本扩展](../extensions/custom-script-linux.md)
 * [运行命令](run-command.md)
 * [混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
-* [串行控制台](../troubleshooting/serial-console-linux.md)
+* [串行控制台](/troubleshoot/azure/virtual-machines/serial-console-linux)

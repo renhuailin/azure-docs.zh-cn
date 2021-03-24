@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器和 Azure 服务总线 NamespaceManager
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d0e1a7a5c6eb0b281b4e6ac08135f41f28ecbec8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85341281"
 ---
 # <a name="message-counters"></a>消息计数器

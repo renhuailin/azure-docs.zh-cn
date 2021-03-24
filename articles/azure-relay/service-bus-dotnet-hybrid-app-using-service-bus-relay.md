@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983895"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
@@ -269,7 +269,7 @@ ms.locfileid: "90983895"
     ```
 
 1. 在“解决方案资源管理器”中展开“控制器”，然后双击“HomeController.cs”在 Visual Studio 中打开该文件。
-1. 在 *HomeController.cs*中，将现有命名空间定义替换为以下代码：
+1. 在 *HomeController.cs* 中，将现有命名空间定义替换为以下代码：
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -344,13 +344,13 @@ ms.locfileid: "90983895"
 
 应用程序应在浏览器中显示为正在运行。
 
-![屏幕截图显示了在浏览器中运行的应用程序的示例，其中突出显示了 URL。][21]
+![屏幕截图显示了在浏览器中运行的应用程序示例，其中突出显示了 URL。][21]
 
 ## <a name="put-the-pieces-together"></a>将各个部分组合在一起
 
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
-1. 如果尚未打开在[创建 ASP.NET 应用程序](#create-an-aspnet-application)部分中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
+1. 如果尚未打开在 [创建 ASP.NET 应用程序](#create-an-aspnet-application)部分中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
 1. 采用与[创建本地服务器](#create-an-on-premises-server)部分类似的步骤，将 NuGet 包添加到项目引用中。 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“管理 NuGet 包”。
 1. 搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 然后完成安装过程并关闭此对话框。
 1. 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“添加” > “现有项”。
@@ -447,7 +447,7 @@ ms.locfileid: "90983895"
 
     ![启动 URL][27]
 
-1. 选择“文件” > “全部保存”。
+1. 选择“文件” > “全部保存”。 
 1. 选择“生成” > “重新生成解决方案”。
 
 ## <a name="run-the-application"></a>运行应用程序

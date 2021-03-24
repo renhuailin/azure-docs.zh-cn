@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.openlocfilehash: 9fdef187e9bdf77b29c548f767a4b4edfeb62f44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422172"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
@@ -27,13 +27,13 @@ ms.locfileid: "93422172"
 
 若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
 
-* 关闭 - 提供的 WAL 中的信息最少。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
-* 副本 - 比“关闭”详细 。 这是运行[读取副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
-* 逻辑 - 比“副本”详细 。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
+* **关闭** - 在 WAL 中包含最少的信息。 大多数 Azure Database for PostgreSQL 服务器上都不提供此设置。  
+* **副本** - 比“关闭”详细。 这是运行[只读副本](concepts-read-replicas.md)所需的最低日志记录级别。 此设置是大多数服务器上的默认设置。
+* **逻辑** - 比“副本”详细。 这是运行逻辑解码所需的最低日志记录级别。 使用此设置时，只读副本也可以运行。
 
 
 > [!NOTE]
-> 在为持久的大量写入密集型主工作负载部署读取副本时，复制滞后时间可能会持续增长，并可能永远无法与主工作负载进行追赶。 这也可能会在主副本上增加存储使用量，因为在副本收到 WAL 文件之前，不会删除这些文件。
+> 为持久的大量写入密集型主工作负荷部署只读副本时，复制滞后时间可能会持续增长，并且可能永远无法赶上主工作负荷。 这还可能会增加主服务器上的存储使用量，因为 WAL 文件在副本收到它们之前不会被删除。
 
 ## <a name="prepare-the-primary-server"></a>准备主服务器
 
@@ -88,7 +88,7 @@ ms.locfileid: "93422172"
 > [!IMPORTANT]
 > 查看[“只读副本”概述的注意事项部分](concepts-read-replicas.md#considerations)。
 >
-> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
+> 将主服务器设置更新为新值之前，请将副本设置更新为一个相等的或更大的值。 此操作可帮助副本与主服务器发生的任何更改保持同步。
 
 ## <a name="stop-replication"></a>停止复制
 可以停止主服务器与只读副本之间的复制。

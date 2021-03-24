@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931111"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869661"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight Interactive Query 群集 (Hive LLAP) 大小调整指南
 
@@ -26,9 +26,9 @@ ms.locfileid: "98931111"
 | 辅助角色   | **D14 v2**        | **16 个 VCPU，112 GB RAM，800 GB SSD**       |
 | ZooKeeper   | A4 v2        | 4 个 VCPU，8-GB RAM，40 GB SSD       |
 
-**_注意：所有建议的配置值都基于 D14 v2 类型的工作器节点_* _  
+***注意：所有建议的配置值都基于 D14 v2 类型的工作器节点***  
 
-### <a name="_configuration"></a>_ *配置：* *    
+### <a name="configuration"></a>**配置：**    
 | 配置密钥      | 建议的值  | 说明 |
 | :---        |    :----:   | :---     |
 | yarn.nodemanager.resource.memory-mb | 102400 (MB) | 给定节点上所有 YARN 容器的总内存 (MB) | 
@@ -47,53 +47,53 @@ ms.locfileid: "98931111"
 
 ### <a name="llap-architecturecomponents"></a>**LLAP 体系结构/组件：**  
 
-![`LLAP Architecture/Components`](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "LLAP 体系结构/组件")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="`LLAP Architecture/Components`" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**LLAP 守护程序大小估计：** 
 
 #### <a name="1-determining-total-yarn-memory-allocation-for-all-containers-on-a-node"></a>**1.确定节点上所有容器的总 YARN 内存分配**    
-配置：**_yarn.nodemanager.resource.memory-mb_* _  
+配置：yarn.nodemanager.resource.memory-mb  
 
 此值表示每个节点上的 YARN 容器可以使用的最大内存总和 (MB)。 指定的值应小于该节点上的物理内存总量。   
 节点上所有 YARN 容器的总内存 = （总物理内存 - OS 内存 + 其他服务）  
 建议将此值设置为可用 RAM 大小的约 90%。  
-对于 D14 v2，建议的值为“102400 MB”。 
+对于 D14 v2，建议的值为 **102400 MB**。 
 
 #### <a name="2-determining-maximum-amount-of-memory-per-yarn-container-request"></a>**2.确定每个 YARN 容器请求的最大内存量**  
-配置：**_yarn.scheduler.maximum-allocation-mb_* _
+配置：yarn.scheduler.maximum-allocation-mb
 
-此值指示资源管理器上每个容器请求的最大分配 (MB)。 高于此指定值的内存请求将不会生效。 资源管理器可以按“yarn.scheduler.minimum-allocation-mb”增量为容器提供内存，单不能超过“yarn.scheduler.maximum-allocation-mb”指定的大小。 指定的值不应超过由“yarn.nodemanager.resource.memory-mb”指定的节点上所有容器的给定总内存。    
+此值指示资源管理器上每个容器请求的最大分配 (MB)。 高于此指定值的内存请求将不会生效。 资源管理器可以按“yarn.scheduler.minimum-allocation-mb”的增量为容器提供内存，并且不能超过“yarn.scheduler.maximum-allocation-mb”指定的大小 。 指定的值不应超过由“yarn.nodemanager.resource.memory-mb”指定的节点上所有容器的给定总内存。    
 对于 D14 v2 工作器节点，建议的值为 102400 MB
 
 #### <a name="3-determining-maximum-amount-of-vcores-per-yarn-container-request"></a>**3.确定每个 YARN 容器请求的最大 vCore 量**  
-配置：**_yarn.scheduler.maximum-allocation-vcores_* _  
+配置：yarn.scheduler.maximum-allocation-vcores  
 
 此值指示资源管理器中每个容器请求的最大虚拟 CPU 内核数。 请求的 vCore 数大于此值将不会生效。 这是 YARN 计划程序的全局属性。 对于 LLAP 守护程序容器，此值可以设置为总可用 vCore 的 75%。 剩余的 25% 应保留给在工作器节点上运行的 NodeManager、DataNode 和其他服务。  
 D14 v2 VM 上总共有 16 个 vCore，在这 16 个 vCore 中，LLAP 守护程序容器可使用 75% 的 vCore。  
 对于 D14 v2，建议的值为“12”。  
 
 #### <a name="4-number-of-concurrent-queries"></a>**4.并发查询数**  
-配置：**_hive.server2.tez.sessions.per.default.queue_* _
+配置：hive.server2.tez.sessions.per.default.queue
 
 此配置值确定可以并行启动的 Tez 会话数。 将为“hive.server2.tez.default.queues”指定的每个队列启动这些 Tez 会话。 它对应于 Tez-AM（查询协调器）的数量。 建议使用与工作器节点数相同的值。 Tez AM 的数量可以大于 LLAP 守护程序节点的数量。 Tez AM 的主要职责是协调查询执行，并将查询计划片段分配给相应的 LLAP 守护程序执行。 将此值保持为多个 LLAP 守护程序节点的倍数，以实现更高的吞吐量。  
 
-默认 HDInsight 群集中有四个 LLAP 守护程序在四个工作器节点上运行，因此建议的值为 4。  
+默认 HDInsight 群集有四个 LLAP 守护程序在四个工作器节点上运行，因此建议的值为“4”。  
 
 **Hive 配置变量的 Ambari UI 滑块`hive.server2.tez.sessions.per.default.queue`：**
 
-![`LLAP maximum concurrent queries`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP 并发查询的最大数目")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="`LLAP maximum concurrent queries`" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5.Tez 容器和 Tez 应用程序主机大小**    
-配置：**_tez.am.resource.memory.mb、hive.tez.container.size_* _  
+配置：tez.am.resource.memory.mb, hive.tez.container.size  
 
-_tez.am.resource.memory.mb* - 定义 Tez 应用程序主机大小。  
+tez.am.resource.memory.mb - 定义 Tez 应用程序主机大小。  
 建议的值为 4096 MB。
    
 hive.tez.container.size - 定义分配给 Tez 容器的内存量。 必须将此值设置为介于 YARN 最小容器大小 (yarn.scheduler.minimum-allocation-mb) 和 YARN 最大容器大小 (yarn.scheduler.maximum-allocation-mb) 之间的值 。 LLAP 守护程序执行程序使用此值来限制每个执行器的内存使用量。  
 建议的值为 4096 MB。  
 
 #### <a name="6-llap-queue-capacity-allocation"></a>**6.LLAP 队列容量分配**   
-配置：**_yarn.scheduler.capacity.root.llap.capacity_* _  
+配置：yarn.scheduler.capacity.root.llap.capacity  
 
 此值表示分配给 LLAP 队列的容量百分比。 根据 YARN 队列的配置方式，对于不同的工作负载，容量分配的值可能会有所不同。 如果工作负载是只读操作，那么将其设置为高达 90% 的容量应该是可以的。 但是，如果工作负载是使用托管表的更新/删除/合并操作的混合，建议为 llap 队列提供 85% 的容量。 剩余 15% 的容量可用于其他任务（如压缩等），以此从默认队列分配容器。 这样，默认队列中的任务就不会剥夺 YARN 资源。    
 
@@ -101,10 +101,10 @@ hive.tez.container.size - 定义分配给 Tez 容器的内存量。 必须将此
 （对于只读工作负载，可以适当地将其增加到 90。）  
 
 #### <a name="7-llap-daemon-container-size"></a>**7.LLAP 守护程序容器大小**    
-配置：**_hive.llap.daemon.yarn.container.mb_* _  
+配置：hive.llap.daemon.yarn.container.mb  
    
 LLAP 守护程序作为 YARN 容器在每个工作器节点上运行。 LLAP 守护程序容器的总内存大小取决于以下因素，    
-_  YARN 容器大小的配置（yarn.scheduler.minimum-allocation-mb、yarn.scheduler.maximum-allocation-mb、yarn.nodemanager.resource.memory-mb）
+*  YARN 容器大小的配置（yarn.scheduler.minimum-allocation-mb、yarn.scheduler.maximum-allocation-mb、yarn.nodemanager.resource.memory-mb）
 *  节点上的 Tez AM 数量
 *  为节点上的所有容器配置的总内存和 LLAP 队列容量  
 
@@ -113,15 +113,15 @@ Tez AM 充当查询协调器，应根据要提供的并发查询数来配置 Tez
 建议为每个 Tez AM 配置 4 GB 内存。  
 
 Tez Am 数 = 由 Hive 配置“hive.server2.tez.sessions.per.default.queue”指定的值。  
-LLAP守护程序的节点数 = Ambari UI 中环境节点“num_llap_nodes_for_llap_daemons”指定的值。  
-Tez AM 容器大小 = Tez 配置“tez.am.resource.memory.mb”指定的值。  
+LLAP守护程序的节点数 = Ambari UI 中环境节点 ***num_llap_nodes_for_llap_daemons*** 指定的值。  
+Tez AM 容器大小 = Tez 配置 ***tez.am.resource.memory.mb*** 指定的值。  
 
-每个节点的 Tez AM 内存 =（ceil（Tez AM 数/LLAP 守护程序节点数）x Tez AM 容器大小）      
+每个节点的 Tez AM 内存 =（ceil (Tez AM 数/LLAP 守护程序节点数) x Tez AM 容器大小）       
 对于 D14 v2，默认配置有四个 Tez AM 和四个 LLAP 守护程序节点。  
 每个节点的 Tez AM 内存 = (ceil(4/4) x 4 GB) = 4 GB
 
-可按如下所示计算每个工作节点的 LLAP 队列可用的总内存：  
-此值取决于节点 (*YARN*) 上的所有 YARN 容器可用的总内存量，以及为 llap 队列配置的容量的百分比 (*YARN*) 的容量的百分比的值。  
+每个工作器节点的 LLAP 队列可用的总内存可按如下进行计算：  
+此值取决于节点上所有 YARN 容器的可用内存总量 (yarn.nodemanager.resource.memory-mb) 以及为 LLAP 队列配置的容量百分比 (yarn.scheduler.capacity.root.llap.capacity) 。  
 工作器节点上的 LLAP 队列的总内存 = 节点上所有 YARN 容器可用的总内存 x LLAP 队列容量百分比。  
 对于 D14 v2，该值为 (100 GB x 0.85) = 85 GB。
 
@@ -133,22 +133,25 @@ LLAP 守护程序容器大小可按如下进行计算；
 （对于 HDI 3.6，建议的值为 79 GB，因为你应为滑块 AM 保留额外约 2 GB。）  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8.确定每个 LLAP 守护程序的执行程序数**  
-配置：**_hive.llap.daemon.num.executors_* _、_*_hive.llap.io.threadpool.size_*_
+配置：hive.llap.daemon.num.executors、hive.llap.io.threadpool.size*
 
-_*_hive.llap.daemon.num.executors_*_：   
+***hive.llap.daemon.num.executors***：   
 此配置控制每个 LLAP 守护程序可以并行执行任务的执行程序数。 此值取决于 vCore 的数量、每个执行程序使用的内存量以及 LLAP 守护程序容器可用的总内存量。    每工作器节点的执行程序数可以超额订阅可用 vcore 的 120%。 但是，如果它不满足每个执行程序所需的内存和 LLAP 守护程序容器大小的内存要求，则应进行调整。
 
 每个执行程序都等效于一个 Tez 容器，可以使用 4 GB（Tez 容器大小）的内存。 LLAP 守护程序中的所有执行程序共用相同的堆内存。 假设并非所有执行程序都同时运行内存密集型操作，你可以考虑使每个执行程序使用 Tez 容器大小 (4 GB) 的 75%。 这样，你可以通过为每个执行程序分配较少的内存（例如 3 GB）来增加并行度，从而增加执行程序数。 但是，建议针对你的目标工作负载优化此设置。
 
 D14 v2 VM 上有 16 个 vCore。
-对于 D14 v2，每个工作器节点上的执行器数的建议值为（16 个 vcore x 120%）~= 19，每个执行程序 3 GB。
+对于 D14 v2，每个工作器节点上的执行程序数的建议值为（16 个 vcore x 120%）~= 19，每个执行程序 3 GB。
 
-**_hive.llap.io.threadpool.size_ *_：此值指定执行程序的线程池大小。由于根据指定，执行程序数量是固定的，因此此值与每个 LLAP 守护程序的执行程序数量相同。对于 D14 v2，建议的值为“19”***。
+hive.llap.io.threadpool.size：   
+此值指定执行程序的线程池大小。 由于根据指定，执行程序数量是固定的，此值与每个 LLAP 守护程序的执行程序数量相同。    
+对于 D14 v2，建议的值为“19”。
 
 #### <a name="9-determining-llap-daemon-cache-size"></a>**9.确定 LLAP 守护程序缓存大小**  
-配置：**_hive.llap.io.memory.size_* _
+配置：hive.llap.io.memory.size
 
-LLAP 守护程序容器内存包含以下组件：_  余量
+LLAP 守护程序容器内存包含以下部分；
+*  余量
 *  执行程序使用的堆内存 (Xmx)
 *  每个守护程序的内存中缓存（其堆外内存大小，启用 SSD 缓存时不适用）
 *  内存中缓存元数据大小（仅当启用 SSD 缓存时适用）
@@ -162,7 +165,7 @@ LLAP 守护程序容器内存包含以下组件：_  余量
 
 `Ambari environment variable for LLAP heap size:`
 
-![`LLAP heap size`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "LLAP 堆大小")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="`LLAP heap size`" border="true":::
 
 禁用 SSD 缓存后，内存中的缓存是从 LLAP 守护程序容器大小中取出余量大小和堆大小后剩余的内存量。
 
@@ -181,7 +184,7 @@ SSD 缓存大小 = SSD 缓存的内存中元数据大小 (19 GB)/0.08 (8%)
 对于 D14 v2 和 HDI 3.6，建议的 SSD 缓存大小为 18 GB/0.08 ~= 225 GB
 
 #### <a name="10-adjusting-map-join-memory"></a>**10.调整映射联接内存**   
-配置：**_hive.auto.convert.join.noconditionaltask.size_* _
+配置：hive.auto.convert.join.noconditionaltask.size
 
 确保已启用 hive.auto.convert.join.noconditionaltask，以便此参数生效。
 此配置确定 Hive 优化器为 MapJoin 选择的阈值，该优化器会考虑其他执行程序的内存超额订阅，从而为内存中的哈希表留出更多空间，以允许更多的映射联接转换。 假定每个执行器 3 GB，此大小可超额订阅 3 GB，但其他操作还可将某些堆内存用于对缓冲区、无序缓冲区排序等。   
@@ -190,15 +193,15 @@ SSD 缓存大小 = SSD 缓存的内存中元数据大小 (19 GB)/0.08 (8%)
 （注意：此值可能需要根据你的工作负载进行调整。 将此值设置得太低可能无法使用自动转换功能。 设置得过高可能会导致内存不足异常或 GC 暂停，从而导致性能下降。）  
 
 #### <a name="11-number-of-llap-daemons"></a>**11.LLAP 守护程序数**
-Ambari 环境变量：num_llap_nodes, num_llap_nodes_for_llap_daemons  
+Ambari 环境变量：num_llap_nodes、num_llap_nodes_for_llap_daemons  
 
 num_llap_nodes - 指定 Hive LLAP 服务使用的节点数，这包括运行 LLAP 守护程序、LLAP 服务主机和 Tez 应用程序主机 (Tez AM) 的节点。  
 
-![`Number of Nodes for LLAP service`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "LLAP 服务的节点数")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="`Number of Nodes for LLAP service`" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** - 仅用于 LLAP 守护程序的指定节点数。 LLAP 守护程序容器大小设置为“最大适用”节点，因此在每个节点上都有一个 LLAP 守护程序。
 
-![`Number of Nodes for LLAP daemons`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "LLAP 守护程序的节点数")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="`Number of Nodes for LLAP daemons`" border="true":::
 
 建议使两个值都与 Interactive Query 群集中的工作器节点数相同。
 
@@ -216,7 +219,7 @@ num_llap_nodes - 指定 Hive LLAP 服务使用的节点数，这包括运行 LLA
  - 工作负载管理队列容量 = 20 GB
  - 默认队列容量 = 10 GB
 
-使用工作负载管理队列容量中的 20 GB，资源计划可将 `QUERY_PARALLELISM` 值指定为 5，这意味着工作负载管理可以启动五个 Tez AM，每个容器大小分别为 4 GB。 如果 `QUERY_PARALLELISM` 高于容量，可能会看到某些 Tez AMs 停止响应 `ACCEPTED` 状态。 Hiveserver2 Interactive 无法将查询片段提交到不处于 `RUNNING` 状态的 Tez AM。
+使用工作负载管理队列容量中的 20 GB，资源计划可将 `QUERY_PARALLELISM` 值指定为 5，这意味着工作负载管理可以启动五个 Tez AM，每个容器大小分别为 4 GB。 如果 `QUERY_PARALLELISM` 高于该容量，某些 Tez AM 可能会在 `ACCEPTED` 状态下停止响应。 Hiveserver2 Interactive 无法将查询片段提交到不处于 `RUNNING` 状态的 Tez AM。
 
 
 #### <a name="next-steps"></a>**后续步骤**

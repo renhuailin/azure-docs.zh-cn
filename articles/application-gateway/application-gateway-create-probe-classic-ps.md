@@ -1,5 +1,5 @@
 ---
-title: 使用经典部署模型创建自定义探测-Azure 应用程序网关
+title: 使用经典部署模型创建自定义探测 - Azure 应用程序网关
 description: 了解如何使用经典部署模型中的 PowerShell 创建应用程序网关的自定义探测
 services: application-gateway
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 13441899eeb5ca2b7c60977ab2858fe40a398d1a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397852"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 创建 Azure 应用程序网关（经典）的自定义探测

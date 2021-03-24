@@ -12,10 +12,10 @@ ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 64e4c05e9439c164329dede5d714bec160bc5ae2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050369"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
@@ -28,7 +28,7 @@ ms.locfileid: "102050369"
 
 在开始之前，必须满足以下条件：
 
-+ 一个 <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">Azure 帐户</abbr> （具有有效订阅） <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 一个 <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">Azure 帐户</abbr> （具有有效订阅） <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -225,16 +225,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 如果需要，可以直接在 `pom.xml` 中修改应用服务的配置。 下面列出了一些常见配置：
 
-属性 | 必选 | 说明 | 版本
+属性 | 必须 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+
 `<resourceGroup>` | true | Azure <abbr title="相关 Azure 资源的逻辑容器，可将其作为一个单元进行管理。">资源组</abbr> Web 应用的 Azure 资源组。 | 0.1.0+
-`<appName>` | true | Web 应用的名称。 | 0.1.0+
-`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
+`<appName>` | 是 | Web 应用的名称。 | 0.1.0+
+`<region>` | 是 | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
 `<pricingTier>` | false | Web 应用的定价层。 生产工作负载的默认值为 P1V2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
-`<runtime>` | true | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
-`<deployment>` | true | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<runtime>` | 是 | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<deployment>` | 是 | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 
 请注意 `<appName>` 和 `<resourceGroup>` 的值（在示例输出中分别为 `helloworld-1590394316693` 和 `helloworld-1590394316693-rg`），后面会使用它们。
 

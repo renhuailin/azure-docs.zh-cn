@@ -12,15 +12,15 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94579532"
 ---
 # <a name="user-defined-restore-points"></a>用户定义的还原点
 
-在本文中，你将学习如何使用 Azure 门户在 Azure Synapse Analytics 中为专用 SQL 池创建一个新的用户定义的还原点。
+本文介绍了如何使用 Azure 门户在 Azure Synapse Analytics 中为专用 SQL 池新建用户定义的还原点。
 
 ## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>通过 Azure 门户创建用户定义的还原点
 
@@ -30,7 +30,7 @@ ms.locfileid: "94579532"
 
 2. 导航到要为其创建还原点的专用 SQL 池。
 
-3. 从左窗格中选择 " **概述** "，选择 " **+ 新建还原点** "。 如果 "新还原点" 按钮未启用，请确保专用 SQL 池未暂停。
+3. 从左窗格中选择“概述”，选择“+ 新建还原点”。 如果“新建还原点”按钮未启用，请确保专用 SQL 池未暂停。
 
     ![新建还原点](../media/sql-pools/create-sqlpool-restore-point-01.png)
 

@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491069"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>使用 Marketo 管理商业市场潜在顾客
@@ -71,7 +71,7 @@ ms.locfileid: "94491069"
 
 1. 选择你的产品/服务，然后转到“产品/服务设置”选项卡。
 
-1. 在“潜在顾客”部分下，选择“连接”。
+1. 在“潜在顾客”部分下，选择“连接” 。
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-marketo/customer-leads.png" alt-text="潜在顾客":::
 

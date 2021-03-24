@@ -4,10 +4,10 @@ description: 升级运行 Service Fabric 群集的 Service Fabric 代码和/或�
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90564281"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升级群集的 Service Fabric 版本
@@ -28,7 +28,7 @@ ms.locfileid: "90564281"
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>在 Azure 门户中设置升级模式
 创建群集时可以将群集设置为自动或手动模式。
 
-![屏幕截图显示 "创建 Service Fabric 群集" 窗格，其中选择了 "选项 2" 群集配置并打开 "群集配置" 窗格。][Create_Manualmode]
+![显示“创建 Service Fabric 群集”窗格的屏幕截图，其中已选中“选项 2 - 群集配置”并打开了“群集配置”窗格。][Create_Manualmode]
 
 在实时群集上可以利用管理经验将群集设置为自动或手动模式。 
 
@@ -39,12 +39,12 @@ ms.locfileid: "90564281"
 
 修复造成回滚的问题后，需要按照与之前完全相同的步骤重新启动升级。
 
-![屏幕截图显示了 "结构升级" 窗格的 "Service Fabric 群集" 窗口，其中突出显示了 "升级" 选项，包括自动和手动。][Manage_Automaticmode]
+![屏幕截图显示“Service Fabric 群集”窗口，其中“Fabric 升级”窗格已打开，并且突出显示了升级选项，包括“自动”和“手动”。][Manage_Automaticmode]
 
 ## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>使用 Resource Manager 模板设置升级模式
 将“upgradeMode”配置添加到 Microsoft.ServiceFabric/群集资源定义，并将“clusterCodeVersion”设置为下方列出的支持的结构版本之一，然后部署模板。 “upgradeMode”的有效值为“Manual”或“Automatic”
 
-![屏幕截图显示了一个模板，该模板以纯文本方式缩进到反射结构，并且突出显示了 clusterCodeVersion 和 upgradeMode。][ARMUpgradeMode]
+![屏幕截图显示一个模板，该模板以纯文本方式缩进来反映结构，并且突出显示了 clusterCodeVersion 和 upgradeMode。][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在已通过 Resource Manager 模板设置为手动模式的群集上升级至新版本。
 当群集处于手动模式时，要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。

@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5f987ab15201e4c4dabf147ac468184881e9ed17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551634"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
@@ -47,9 +47,9 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
    
 1. 根据提示创建新的应用程序。 对于本教程来说，它是 Web 应用程序还是公共客户端（移动和桌面）应用程序并不重要，但是如果你想要 Web 应用程序或公共客户端应用程序的特定示例，请查看我们的[快速入门](v1-overview.md)。
    
-   - **名称**是应用程序名称，它向最终用户描述该应用程序。
+   - **名称** 是应用程序名称，它向最终用户描述该应用程序。
    - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
-   - 提供**重定向 URI**。 对于 Web 应用程序，这是用户可以登录的应用的基 URL。  例如，`http://localhost:12345`。 对于公共客户端（移动和桌面），Azure AD 使用它来返回令牌响应。 输入特定于应用程序的值。  例如，`http://MyFirstAADApp`。
+   - 提供 **重定向 URI**。 对于 Web 应用程序，这是用户可以登录的应用的基 URL。  例如，`http://localhost:12345`。 对于公共客户端（移动和桌面），Azure AD 使用它来返回令牌响应。 输入特定于应用程序的值。  例如，`http://MyFirstAADApp`。
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符（即应用程序 ID）。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。
@@ -167,7 +167,7 @@ grant_type=authorization_code
 | --- | --- | --- |
 | tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许值为租户标识符，例如独立于租户令牌的 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
 | client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 应用程序 ID 显示在应用注册的设置中。 |
-| grant_type |必填 |必须是授权代码流的 `authorization_code` 。 |
+| grant_type |必需 |必须是授权代码流的 `authorization_code` 。 |
 | code |必填 |在上一部分中获取的 `authorization_code` |
 | redirect_uri |必填 | 一个在客户端应用程序上注册的 `redirect_uri`。 |
 | client_secret |对于 Web 应用是必需的，不允许用于公共客户端 |在 Azure 门户的“密钥”下为应用程序创建的应用程序密码。 它不能在本机应用（公共客户端）中使用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API（所有机密客户端）都需要它，能够将 `client_secret` 安全地存储在服务器端。 在发送 client_secret 之前必须先对其进行 URL 编码。 |

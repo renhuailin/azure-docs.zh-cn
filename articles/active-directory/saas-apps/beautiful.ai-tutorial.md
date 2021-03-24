@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
 ms.openlocfilehash: a3adce53e391ad85e2b38376759778f53a860161
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180313"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beautifulai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Beautiful.ai 集成
@@ -46,7 +46,7 @@ ms.locfileid: "96180313"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Beautiful.ai” 。
 1. 在结果面板中选择“Beautiful.ai”，然后添加该应用。 在该应用添加到租户时等待几秒钟。

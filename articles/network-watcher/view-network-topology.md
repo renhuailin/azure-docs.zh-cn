@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737523"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
@@ -41,7 +41,7 @@ ms.locfileid: "84737523"
     - 位于 *myVnet* 虚拟网络所在资源组和区域内的资源。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
     - 位于 *myVnet* 虚拟网络中或与其中的资源相关联的资源。 例如，不会显示与 *myVnet* 虚拟网络中的子网或网络接口不相关联的网络安全组，即使该网络安全组位于 *MyResourceGroup* 资源组中。
 
-   图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例**后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
+   图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例** 后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
 
 6. 选择“下载拓扑”  ，以 svg 格式将映像下载为可编辑文件。
 
@@ -50,18 +50,18 @@ ms.locfileid: "84737523"
 ## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>查看拓扑 - Azure CLI
 
 可以运行后续步骤中的命令：
-- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。**** Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
+- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。 Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
 - 通过在计算机中运行 CLI。 如果在计算机中运行 CLI，则本文中的步骤要求使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：**
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
     ```
 
-2. 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 创建网络观察程序。 以下示例在“eastus”区域创建网络观察程序：**
+2. 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 创建网络观察程序。 以下示例在“eastus”区域创建网络观察程序：
 
     ```azurecli-interactive
     az network watcher configure \
@@ -83,12 +83,12 @@ ms.locfileid: "84737523"
 ## <a name="view-topology---powershell"></a><a name = "powershell"></a>查看拓扑 - PowerShell
 
 可以运行后续步骤中的命令：
-- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。**** Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
+- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。 Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
 - 通过在计算机中运行 PowerShell。 如果在计算机上运行 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：**
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS

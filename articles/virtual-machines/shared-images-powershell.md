@@ -3,18 +3,18 @@ title: 使用 Azure PowerShell 创建共享映像库
 description: 了解如何使用 Azure PowerShell 在 Azure 中创建共享映像库
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f36b1d75dc167faf555d9af4e3aabd5d83db264a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 877439ddba6ffaf2fd060c29f28c25c18694605d
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882308"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102555561"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>使用 Azure PowerShell 创建共享映像库 
 
@@ -36,7 +36,7 @@ ms.locfileid: "98882308"
 
 从 [VM](image-version-vm-powershell.md)、[托管映像](image-version-managed-image-powershell.md)或[另一个库中的映像](image-version-another-gallery-powershell.md)创建映像。
 
-[Azure 映像生成器 (预览版) ](./image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./windows/image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器（预览版）](./image-builder-overview.md)可以帮助自动创建映像版本，你甚至可以使用它进行更新以及[从现有的映像版本创建新映像版本](./windows/image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

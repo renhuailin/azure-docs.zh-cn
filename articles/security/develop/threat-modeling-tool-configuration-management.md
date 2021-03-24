@@ -18,10 +18,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517478"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
@@ -289,7 +289,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **属性**              | 不适用，SQL 版本 - V12 |
-| **参考**              | [如何配置 AZURE SQL 数据库防火墙](../../azure-sql/database/firewall-configure.md)、 [为数据库引擎访问配置 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) |
+| **参考**              | [如何配置 Azure SQL 数据库防火墙](../../azure-sql/database/firewall-configure.md)、[为数据库引擎访问配置 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) |
 | **步骤** | 防火墙系统有助于阻止对计算机资源进行未经授权的访问。 要通过防火墙访问 SQL Server 数据库引擎的实例，必须将运行 SQL Server 的计算机上的防火墙配置为允许这种访问 |
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>确保已在 ASP.NET Web API 中启用 CORS 的情况下只允许受信任的来源

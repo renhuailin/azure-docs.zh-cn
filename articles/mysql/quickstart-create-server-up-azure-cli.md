@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d89cc41ed26124ae4ad2e6689be6d59278c3d9da
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542161"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代�
 backup-retention | 7 | 备份保留时间。 单位为天。
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。
 location | westus2 | 服务器的 Azure 位置。
-ssl-enforcement | 已启用 | 是否应该为此服务器启用 SSL。
+ssl-enforcement | Enabled | 是否应该为此服务器启用 SSL。
 storage-size | 5120 | 服务器的存储容量（以 MB 为单位）。
 版本 | 5.7 | MySQL 主版本。
 admin-user | 系统生成的 | 管理员的登录用户名。

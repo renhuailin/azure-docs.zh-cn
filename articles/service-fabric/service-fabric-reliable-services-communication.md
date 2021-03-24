@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97912608"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-客户端工厂主要负责创建通信客户端。 对于不会维持持续连接的客户端（例如 HTTP 客户端），工厂只需创建并返回客户端。 其他维护持久性连接的协议（例如某些二进制协议）也应该 `ValidateClient(string endpoint, MyCommunicationClient client)` 由工厂)  (验证，以确定是否需要重新创建连接。  
+客户端工厂主要负责创建通信客户端。 对于不会维持持续连接的客户端（例如 HTTP 客户端），工厂只需创建并返回客户端。 其他会维持持续连接的协议（例如某些二进制协议）也应该由工厂验证 (`ValidateClient(string endpoint, MyCommunicationClient client)`)，以确定是否需要重新创建连接。  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

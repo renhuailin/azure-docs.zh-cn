@@ -1,6 +1,6 @@
 ---
-title: 排查 Java v4 SDK Azure Cosmos DB HTTP 408 或请求超时问题
-description: 了解如何通过 Java v4 SDK 诊断和修复 Java SDK 请求超时异常。
+title: 排查 Java v4 SDK 的 Azure Cosmos DB HTTP 408 或请求超时问题
+description: 了解如何诊断和修复 Java v4 SDK 的 Java SDK 请求超时异常。
 author: kushagrathapar
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,13 +9,13 @@ ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94411280"
 ---
-# <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>诊断和解决 Azure Cosmos DB Java v4 SDK 请求超时异常
+# <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>诊断和排查 Azure Cosmos DB Java v4 SDK 请求超时异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 如果 SDK 在超时限制发生之前未能完成请求，则会出现 HTTP 408 错误。
@@ -24,7 +24,7 @@ ms.locfileid: "94411280"
 下面的列表包含请求超时异常的已知原因和解决方案。
 
 ### <a name="existing-issues"></a>现有问题
-如果看到请求停滞更长的持续时间或更频繁地超时，请将 Java v4 SDK 升级到最新版本。 注意：强烈建议使用版本4.7.0 和更高版本。 有关更多详细信息，请查看 [Java V4 SDK 发行说明](sql-api-sdk-java-v4.md) 。
+如果看到请求被卡住的时间更长或超时更频繁，请将 Java v4 SDK 升级到最新版本。 注意：强烈建议使用 4.7.0 及更高版本。 请查看 [Java v4 SDK 发行说明](sql-api-sdk-java-v4.md)，了解更多详细信息。
 
 ### <a name="high-cpu-utilization"></a>CPU 利用率较高
 最常见的情况是 CPU 利用率较高。 为实现最佳延迟，CPU 利用率应大约为 40%。 将时间间隔设为 10 秒来监视最大 CPU 利用率（而不是平均利用率）。 对于可能会为单个查询执行多个连接的跨分区查询，更常见的情况是出现 CPU 峰值。
@@ -43,10 +43,10 @@ ulimit -a
 ```
 
 #### <a name="solution"></a>解决方案：
-允许的最大打开文件数（标识为 "nofile"）至少需要10000或更高。 有关详细信息，请参阅 Azure Cosmos DB Java SDK v4 [性能提示](performance-tips-java-sdk-v4-sql.md)。
+允许打开文件的最大数（标识为“nofile”）至少需要是 10,000 或以上。 有关详细信息，请参阅 Azure Cosmos DB Java SDK v4 [性能提示](performance-tips-java-sdk-v4-sql.md)。
 
 ### <a name="socket-or-port-availability-might-be-low"></a>套接字或端口可用性可能较低
-在 Azure 中运行时，使用 Java SDK 的客户端可以访问 Azure SNAT (PAT) 端口耗尽。
+在 Azure 中运行时，使用 Java SDK 的客户端可能会遇到 Azure SNAT (PAT) 端口耗尽的情况。
 
 #### <a name="solution-1"></a>解决方案 1：
 如果正在 Azure VM 上运行，请按照 [SNAT 端口耗尽指南](troubleshoot-java-sdk-v4-sql.md#snat)操作。
@@ -64,13 +64,13 @@ ulimit -a
 创建多个客户端实例可能会导致连接争用和超时问题。
 
 #### <a name="solution-1"></a>解决方案 1：
-按照 [性能提示](performance-tips-java-sdk-v4-sql.md#sdk-usage)操作，并在整个应用程序中使用单个 CosmosClient 实例。
+按照[性能提示](performance-tips-java-sdk-v4-sql.md#sdk-usage)操作，并在整个应用程序中使用单个 CosmosClient 实例。
 
 #### <a name="solution-2"></a>解决方案 2：
-如果单一实例 CosmosClient 在应用程序中不能具有，我们建议在 CosmosClient 中通过此 API 跨多个 Cosmos 客户端使用连接共享 `connectionSharingAcrossClientsEnabled(true)` 。 如果在与多个 Cosmos 帐户交互的同一 JVM 中具有多个 Cosmos 客户端实例，启用此项将允许在直接模式下进行连接共享（如果在 Cosmos 客户端的实例之间可能）。 请注意，设置此选项时，将对所有其他客户端实例使用第一个实例化客户端的连接配置 (例如，套接字超时配置、空闲超时配置) 。
+如果单一实例 CosmosClient 没法包含在应用程序中，建议在 CosmosClient 中通过此 API `connectionSharingAcrossClientsEnabled(true)` 跨多个 Cosmos 客户端使用连接共享。 如果同一个 JVM 中有多个 Cosmos 客户端实例与多个 Cosmos 帐户交互，则启用此选项后可在 Cosmos 客户端的实例之间以直接模式进行连接共享（若可行）。 请注意，设置此选项时，将对其他所有客户端实例使用第一个实例化客户端的连接配置（例如套接字超时配置、空闲超时配置）。
 
 ### <a name="hot-partition-key"></a>热分区键
-Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 存在热分区时，物理分区上的一个或多个逻辑分区键会消耗物理分区的所有请求单位/秒 (RU/s)。 同时，将无法使用其他物理分区上的 RU/s。 故障表现是，所消耗的 RU/s 总数将小于数据库或容器上整体预配的 RU/s，但针对热逻辑分区键仍将显示请求限制 (429s)。 使用 [规范化的 RU 消耗指标](monitor-normalized-request-units.md) 来查看工作负荷是否遇到热分区。 
+Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 存在热分区时，物理分区上的一个或多个逻辑分区键会消耗物理分区的所有请求单位/秒 (RU/s)。 同时，将无法使用其他物理分区上的 RU/s。 故障表现是，所消耗的 RU/s 总数将小于数据库或容器上整体预配的 RU/s，但针对热逻辑分区键仍将显示请求限制 (429s)。 使用[规范化 RU 使用量指标](monitor-normalized-request-units.md)来查看工作负载是否遇到热分区。 
 
 #### <a name="solution"></a>解决方案：
 选择均匀分配请求量和存储的适当分区键。 了解如何[更改分区键](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/)。
@@ -94,5 +94,5 @@ Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 存在
 请联系 [Azure 支持部门](https://aka.ms/azure-support)。
 
 ## <a name="next-steps"></a>后续步骤
-* [诊断并解决](troubleshoot-java-sdk-v4-sql.md) 使用 Azure Cosmos DB JAVA v4 SDK 时遇到的问题。
-* 了解 [Java v4](performance-tips-java-sdk-v4-sql.md)的性能准则。
+* [诊断和排查](troubleshoot-java-sdk-v4-sql.md)使用 Azure Cosmos DB Java v4 SDK 时遇到的问题。
+* 了解 [Java v4](performance-tips-java-sdk-v4-sql.md) 的性能准则。

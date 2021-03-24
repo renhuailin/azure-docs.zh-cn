@@ -1,6 +1,6 @@
 ---
 title: 在 Synapse SQL 中使用动态 SQL
-description: 使用 Synapse SQL 中的动态 SQL 的技巧。
+description: 在 Synapse SQL 中使用动态 SQL 的技巧。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 86d5028a09a805142f7632f93530f8a54965d82f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675030"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>Synapse SQL 中的动态 SQL
 
-在本文中，你将了解有关使用 Synapse SQL 和开发解决方案的技巧。
+本文将介绍使用动态 SQL 的技巧，以及使用 Synapse SQL 开发解决方案的技巧。
 
 ## <a name="dynamic-sql-example"></a>动态 SQL 示例
 
-开发应用程序代码时，可能需要使用动态 SQL 来帮助提供灵活、通用和模块化的解决方案。
+开发应用程序代码时，可能需要借助动态 SQL 来提供灵活、通用且模块化的解决方案。
 
 > [!NOTE]
-> 目前，专用 SQL 池不支持 blob 数据类型。 不支持 blob 数据类型可能会限制字符串的大小，因为 blob 数据类型包括 varchar(max) 和 nvarchar(max) 类型。 如果已在应用程序代码中使用这些类型构建大型字符串，则需要将代码分解成块，并改用 EXEC 语句。
+> 专用 SQL 池目前不支持 blob 数据类型。 不支持 blob 数据类型可能会限制字符串的大小，因为 blob 数据类型包括 varchar(max) 和 nvarchar(max) 类型。 如果已在应用程序代码中使用这些类型构建大型字符串，则需要将代码分解成块，并改用 EXEC 语句。
 
 一个简单的示例：
 

@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8bc8846d546faec194617ccb753cdbd105e16bf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85513619"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>通过 StorSimple Device Manager 更改 StorSimple 虚拟阵列设备管理员密码
@@ -38,17 +38,17 @@ ms.locfileid: "85513619"
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>通过 Azure 门户更改设备管理员密码
 
-1. 在服务登陆页上，选择服务、双击服务名称，然后在“管理”部分中单击“设备”********。 这会打开“设备”**** 边栏选项卡，其中列出了所有 StorSimple 虚拟阵列设备。
+1. 在服务登陆页上，选择服务、双击服务名称，然后在“管理”部分中单击“设备”。 这会打开“设备”边栏选项卡，其中列出了所有 StorSimple 虚拟阵列设备。
 
-2. 在“设备”**** 边栏选项卡中，双击需要更改密码的设备。
+2. 在“设备”边栏选项卡中，双击需要更改密码的设备。
 
-3. 在设备的“设置”**** 边栏选项卡中，单击“安全性”****。
+3. 在设备的“设置”边栏选项卡中，单击“安全性”。
 
-4. 在“安全设置”**** 边栏选项卡中，执行以下操作：
+4. 在“安全设置”边栏选项卡中，执行以下操作：
    
-   1. 向下滚动到“设备管理员密码”部分。**** 提供包含 8 至 15 个字符的管理员密码。
+   1. 向下滚动到“设备管理员密码”部分。 提供包含 8 至 15 个字符的管理员密码。
    2. 确认该密码。
-   3. 单击边栏选项卡顶部的 " **保存** "。
+   3. 单击边栏选项卡顶部的“保存”。
 
 现在将更新设备管理员密码。 可以使用此修改后的密码在本地访问设备。
 
@@ -60,17 +60,17 @@ ms.locfileid: "85513619"
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>通过本地 Web UI 更改设备管理员密码
 
-1. 在本地 web UI 中，单击设备的 "**维护**  >  **密码更改**"。
+1. 在本地 Web UI 中，针对设备单击“维护” > “密码更改”。 
    
     ![更改 password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
-2. 输入**当前密码**。
-3. 提供**新密码**。 此密码的长度必须至少为 8 个字符。 它必须包含以下 4 项中的 3 项：小写字母、大写字母、数字和特殊字符。
+2. 输入 **当前密码**。
+3. 提供 **新密码**。 此密码的长度必须至少为 8 个字符。 它必须包含以下 4 项中的 3 项：小写字母、大写字母、数字和特殊字符。
    
     请注意，密码不能与最近用过的 24 个密码相同。
 4. 再次输入密码进行确认。
    
     ![更改 password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. 在页面的底部，单击“应用”。**** 现在将应用新密码。 如果密码更改不成功，会看到以下错误：
+5. 在页面的底部，单击“应用”。 现在将应用新密码。 如果密码更改不成功，会看到以下错误：
    
     ![密码错误](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    

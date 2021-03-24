@@ -1,7 +1,7 @@
 ---
-title: 如何在工作区中访问计算实例终端
+title: 如何访问工作区中的计算实例终端
 titleSuffix: Azure Machine Learning
-description: 对 Git 操作使用计算实例上的终端，安装包并添加内核。
+description: 使用计算实例上的终端执行 Git 操作，以安装程序包并添加内核。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 02/05/2021
 ms.openlocfilehash: e42d6d53e4d06e5ec7a33ea4b8ca18233dcf1dd7
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100101212"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>访问工作区中的计算实例终端
 
-访问工作区中计算实例的终端，以执行以下操作：
+访问工作区中的计算实例的终端，以执行以下操作：
 
-* 使用 Git 和版本文件中的文件。 这些文件存储在工作区文件系统中，而不局限于单个计算实例。
-* 在计算实例上安装包。
+* 使用 Git 中的文件以及对文件进行版本控制。 这些文件存储在你的工作区文件系统中，而非限定于单个计算实例。
+* 在计算实例上安装程序包。
 * 在计算实例上创建额外的内核。
 
 ## <a name="prerequisites"></a>先决条件
@@ -37,30 +37,30 @@ ms.locfileid: "100101212"
 
 1. 在 [Azure 机器学习工作室](https://ml.azure.com)中打开工作区。
 1. 在左侧选择“笔记本”。
-1. 选择 " **打开终端** 映像"。
+1. 选择“打开终端”图像。
 
     :::image type="content" source="media/how-to-use-terminal/open-terminal-window.png" alt-text="打开终端窗口":::
 
-1. 计算实例运行时，将显示该计算实例的终端窗口。
-1. 如果没有运行任何计算实例，请使用右侧的 " **计算** " 部分启动或创建计算实例。
+1. 如果有某个计算实例正在运行时，则将显示该计算实例的终端窗口。
+1. 如果没有任何计算实例正在运行，请使用右侧的“计算”部分启动或创建一个计算实例。
     :::image type="content" source="media/how-to-use-terminal/start-or-create-compute.png" alt-text="启动或创建计算实例":::
 
-除了以上步骤，还可以从以下项访问终端：
+除了以上步骤之外，还可以通过以下项来访问终端：
 
 * RStudio：选择左上的“终端”选项卡。
 * Jupyter 实验室：选择“启动器”选项卡中“其他”标题下的“终端”磁贴。
 * Jupyter：在“文件”选项卡的右上方选择“新建>“终端”。
 * 如果在创建计算实例时启用了 SSH 访问，则使用 SSH 连接到计算机。
 
-## <a name="copy-and-paste-in-the-terminal"></a>复制并粘贴到终端
+## <a name="copy-and-paste-in-the-terminal"></a>在终端中复制和粘贴
 
 > * Windows：使用 `Ctrl-Insert` 复制，使用 `Ctrl-Shift-v` 或 `Shift-Insert` 粘贴。
 > * Mac OS：使用 `Cmd-c` 复制，使用 `Cmd-v` 粘贴。
 > * FireFox/IE 可能不会正确支持剪贴板权限。
 
-## <a name="use-files-from-git-and-version-files"></a><a name=git></a> 使用 Git 和版本文件中的文件
+## <a name="use-files-from-git-and-version-files"></a><a name=git></a> 使用 Git 中的文件以及对文件进行版本控制
 
-从终端访问所有 Git 操作。 所有 Git 文件和文件夹都将存储在你的工作区文件系统中。 此存储允许从工作区中的任何计算实例使用这些文件。
+从终端访问所有 Git 操作。 所有 Git 文件和文件夹都将存储在你的工作区文件系统中。 此存储允许你从工作区中的任何计算实例使用这些文件。
 
 > [!NOTE]
 > 将文件和文件夹添加到 ~/cloudfiles/code/Users 文件夹下的任意位置，使其在所有 Jupyter 环境中都可见。
@@ -69,9 +69,9 @@ ms.locfileid: "100101212"
 
 ## <a name="install-packages"></a>安装包
 
- 从终端窗口安装包。 将 Python 包安装到“Python 3.6 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
+ 从终端窗口安装程序包。 将 Python 包安装到“Python 3.6 - AzureML”环境中。  将 R 包安装到 **R** 环境中。
 
-或者，可以直接在 Jupyter Notebook 或 RStudio 中安装包：
+还可以直接在 Jupyter Notebook 或 RStudio 中安装程序包：
 
 * RStudio 使用右下的“包”选项卡或左上的“控制台”选项卡。  
 * Python:添加安装代码并在 Jupyter Notebook 单元中执行该代码。
@@ -110,6 +110,6 @@ ms.locfileid: "100101212"
 
 ## <a name="manage-terminal-sessions"></a>管理终端会话
 
- 选择终端工具栏中的 " **查看活动会话** " 以查看所有活动终端会话的列表。 如果没有活动会话，则将禁用此选项卡。
+ 选择终端工具栏中的“查看活动会话”以查看所有活动终端会话的列表。 如果没有处于活动状态的会话，则此选项卡将被禁用。
 
-关闭所有未使用的会话以保留计算实例的资源。
+关闭所有未使用的会话以保留你的计算实例的资源。

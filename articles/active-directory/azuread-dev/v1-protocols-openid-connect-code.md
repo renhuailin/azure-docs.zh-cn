@@ -15,17 +15,17 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551557"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 是基于 OAuth 2.0 协议构建的简单标识层。 OAuth 2.0 定义了一些机制用于获取和使用[**访问令牌**](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)来访问受保护资源，但未定义用于提供标识信息的标准方法。 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 它以 [`id_token`](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 的形式提供有关最终用户的信息，可验证用户的标识，并提供有关用户的基本配置文件信息。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 是基于 OAuth 2.0 协议构建的简单标识层。 OAuth 2.0 定义了一些机制用于获取和使用 [**访问令牌**](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)来访问受保护资源，但未定义用于提供标识信息的标准方法。 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 它以 [`id_token`](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) 的形式提供有关最终用户的信息，可验证用户的标识，并提供有关用户的基本配置文件信息。
 
 如果要构建的 Web 应用程序托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。
 
@@ -43,9 +43,9 @@ ms.locfileid: "85551557"
    
 1. 根据提示创建新的应用程序。 对于本教程来说，它是 Web 应用程序还是公共客户端（移动和桌面）应用程序并不重要，但是如果你想要 Web 应用程序或公共客户端应用程序的特定示例，请查看我们的[快速入门](v1-overview.md)。
    
-   - **名称**是应用程序名称，它向最终用户描述该应用程序。
+   - **名称** 是应用程序名称，它向最终用户描述该应用程序。
    - 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
-   - 提供**重定向 URI**。 对于 Web 应用程序，这是用户可以登录的应用的基 URL。  例如，`http://localhost:12345`。 对于公共客户端（移动和桌面），Azure AD 使用它来返回令牌响应。 输入特定于应用程序的值。  例如，`http://MyFirstAADApp`。
+   - 提供 **重定向 URI**。 对于 Web 应用程序，这是用户可以登录的应用的基 URL。  例如，`http://localhost:12345`。 对于公共客户端（移动和桌面），Azure AD 使用它来返回令牌响应。 输入特定于应用程序的值。  例如，`http://MyFirstAADApp`。
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
 1. 完成注册后，Azure AD 将为应用程序分配一个唯一的客户端标识符（即应用程序 ID）。 在后面的部分中会用到此值，因此，请从应用程序页复制此值。

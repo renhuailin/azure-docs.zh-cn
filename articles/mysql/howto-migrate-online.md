@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.openlocfilehash: 75b548b53de4c0f4ea39959c3d70e9ddb361d64c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540325"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>在最短的停机时间内迁移到 Azure Database for MySQL
@@ -18,7 +18,7 @@ ms.locfileid: "94540325"
 
 可以使用为 [Azure 数据库迁移服务](https://aka.ms/get-dms) (DMS) 新引入的 **连续同步功能** 以最短停机时间执行 MySQL 到 Azure Database for MySQL 的迁移。 此功能可限制应用程序引起的停机时间量。
 
-有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例，请参阅 [数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) 。 本指南提供的指导旨在将 MySQL 迁移成功规划和执行到 Azure。
+还可参阅[数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)，获取有关将数据库迁移到 Azure Database for MySQL 的详细信息和用例。 本指南提供的指导将引导成功规划和执行到 Azure 的 MySQL 迁移。
 
 ## <a name="overview"></a>概述
 DMS 将本地内容初始加载到 Database for MySQL，然后在应用程序仍在运行时不断地将任何新事务同步到 Azure。 在目标 Azure 端的数据已与本地端数据保持同步后，可暂停应用程序一段时间（最短停机时间），等待最后一批数据（从停止应用程序时起，直到应用程序实际不可用于接收任何新流量）同步到目标，然后更新连接字符串使其指向 Azure。 完成后，应用程序将在 Azure 上运行！

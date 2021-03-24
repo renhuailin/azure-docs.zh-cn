@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487111"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600796"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure 认知搜索中的查询
 
@@ -71,7 +71,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 找到匹配搜索词时，查询引擎将重新构建包含匹配项的搜索文档（使用文档键或 ID 组合字段值），并按相关性顺序排列文档，并在响应中返回前 50 项（默认设置），如果指定 `top`，则返回其他数字。
 
-如果要实现全文搜索，了解内容的标记化方式将有助于你调试任何查询异常。 对用连字符连接的字符串或特殊字符的查询可能需要使用默认标准 Lucene 以外的分析器，以确保索引包含正确的令牌。 可将默认设置替代为可以修改词法分析的[语言分析器](index-add-language-analyzers.md#language-analyzer-list)或[专用分析器](index-add-custom-analyzers.md#AnalyzerTable)。 例如，将整个字段内容视为单个令牌的[关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 有关详细信息，请参阅[部分字词搜索和包含特殊字符的模式](search-query-partial-matching.md)。
+如果要实现全文搜索，了解内容的标记化方式将有助于你调试任何查询异常。 对用连字符连接的字符串或特殊字符的查询可能需要使用默认标准 Lucene 以外的分析器，以确保索引包含正确的令牌。 可将默认设置替代为可以修改词法分析的[语言分析器](index-add-language-analyzers.md#language-analyzer-list)或[专用分析器](index-add-custom-analyzers.md#built-in-analyzers)。 例如，将整个字段内容视为单个令牌的[关键字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)。 此分析器可用于邮政编码、ID 和某些产品名称等数据。 有关详细信息，请参阅[部分字词搜索和包含特殊字符的模式](search-query-partial-matching.md)。
 
 如果你预计会大量使用布尔运算符（在包含大文本块（内容字段或长描述）的索引中较可能发生这种情况），请确保使用 `searchMode=Any|All` 参数测试查询，以评估该设置对布尔搜索的影响。
 

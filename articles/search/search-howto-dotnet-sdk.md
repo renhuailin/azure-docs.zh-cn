@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881627"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>如何在 C# .NET 应用程序中使用 Azure.Search.Documents
@@ -31,7 +31,7 @@ ms.locfileid: "97881627"
 + 在索引中加载和管理搜索文档
 + 执行查询，这些查询全都无需处理 HTTP 和 JSON 的详细信息
 
-库以单个 [Azure.Search.DocUments NuGet 包](https://www.nuget.org/packages/Azure.Search.Documents/)的形式分发，其中包括用于以编程方式访问搜索服务的所有 api。
+此库作为单个 [Azure.Search.Documents NuGet 包](https://www.nuget.org/packages/Azure.Search.Documents/)进行分发，其中包括用于以编程方式访问搜索服务的所有 API。
 
 客户端库会定义 `SearchIndex`、`SearchField` 和 `SearchDocument` 之类的类，还会定义 `SearchIndexClient` 和 `SearchClient` 类中的 `SearchIndexClient.CreateIndex` 和 `SearchClient.Search` 之类的操作。 这些类已组织成以下命名空间：
 

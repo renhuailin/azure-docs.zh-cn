@@ -1,21 +1,21 @@
 ---
 title: Service Fabric 服务分区
-description: 了解如何在无状态和有状态服务 Service Fabric 分区
+description: 了解如何对 Service Fabric 无状态和有状态服务进行分区
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97915889"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
-本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 分区可实现本地计算机上的数据存储，因此可以将数据和计算一起扩展。
+本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
 
 > [!TIP]
-> GitHub 上提供了本文中代码的 [完整示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 。
+> GitHub 上提供了本文中代码的[完整示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
 
 ## <a name="partitioning"></a>分区
 分区并不是 Service Fabric 所独有的。 事实上，它是生成可缩放服务的核心模式。 从更广泛的意义来说，可将分区视为将状态（数据）和计算划分为更小的可访问单元，以提高可伸缩性和性能的一种概念。 [数据分区][wikipartition]是一种众所周知的分区形式，也称为分片。
@@ -351,10 +351,10 @@ Service Fabric 提供了三个分区方案可供选择：
     
     ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-本文中使用的代码的完整解决方案如下所示： https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions 。
+本文中使用的代码的完整解决方案可在此获取： https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions 。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 Service Fabric 服务的详细信息：
+了解 Service Fabric 服务的详细信息：
 
 * [在 Service Fabric 中与服务建立连接和通信](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric 服务的可用性](service-fabric-availability-services.md)

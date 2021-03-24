@@ -7,10 +7,10 @@ ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 077ebdb4dd33249923064a4f5ed20c5641a82e26
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695899"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源
@@ -43,7 +43,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>部署模板
 
-以下脚本通过部署快速入门模板来创建存储帐户。 有关详细信息，请参阅 [快速入门：创建带 Visual Studio Code 的 ARM 模板](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
+以下脚本通过部署快速入门模板来创建存储帐户。 有关详细信息，请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
