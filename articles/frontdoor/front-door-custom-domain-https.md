@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740777"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
@@ -133,7 +133,12 @@ ms.locfileid: "101740777"
     Azure Front Door 列出以下信息： 
     - 订阅 ID 的 Key Vault 帐户。 
     - 所选 Key Vault 下的证书（机密）。 
-    - 可用证书版本。
+    - 可用证书版本。 
+
+> [!NOTE]
+> 将证书版本留空将导致：
+> - 选择最新版本的证书。
+> - 在 Key Vault 中提供较新版本的证书时，会自动轮换到最新版本的证书。
  
 5. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
@@ -275,7 +280,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 * 验证域。
 * 为自定义域启用 HTTPS。
 
-若要了解如何为 Front Door 设置地区筛选策略，请继续学习下一教程。
+若要了解如何设置 Front Door 的地理筛选策略，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [设置地区筛选策略](front-door-geo-filtering.md)

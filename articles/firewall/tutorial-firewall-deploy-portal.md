@@ -9,10 +9,10 @@ ms.date: 02/19/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 54900b7b9089d4a4c6cbc742ecf09aa19ff2a550
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741950"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
@@ -66,7 +66,7 @@ ms.locfileid: "101741950"
 1. 对于“资源组名称”，请输入“Test-FW-RG”。
 1. 对于“资源组位置”，请选择一个位置。  你创建的所有其他资源必须位于同一位置。
 1. 选择“查看 + 创建”。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 ### <a name="create-a-vnet"></a>创建 VNet
 
@@ -106,7 +106,7 @@ ms.locfileid: "101741950"
 2. 选择“Windows Server 2016 Datacenter”。
 4. 输入虚拟机的以下值：
 
-   |设置  |Value  |
+   |设置  |值  |
    |---------|---------|
    |资源组     |**Test-FW-RG**|
    |虚拟机名称     |**Srv-Work**|
@@ -133,7 +133,7 @@ ms.locfileid: "101741950"
 3. 选择“防火墙”，然后选择“创建” 。
 4. 在“创建防火墙”页上，使用下表配置防火墙：
 
-   |设置  |“值”  |
+   |设置  |值  |
    |---------|---------|
    |订阅     |\<your subscription\>|
    |资源组     |**Test-FW-RG** |
@@ -189,7 +189,7 @@ ms.locfileid: "101741950"
 3. 选择“应用程序规则集合”选项卡。
 4. 选择“添加应用程序规则集合”。
 5. 对于“名称”，请键入 **App-Coll01**。
-6. 对于“优先级”，请键入 **200**。 
+6. 对于“优先级”，请键入 **200**。
 7. 对于“操作”，请选择“允许”。
 8. 在“规则”>“目标 FQDN”下，键入 **Allow-Google** 作为 **名称**。
 9. 对于 **源类型**，请选择“IP 地址”。
@@ -207,7 +207,7 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 1. 选择“网络规则集合”选项卡。
 2. 选择“添加网络规则集合”。
 3. 对于“名称”，请键入 **Net-Coll01**。
-4. 对于“优先级”，请键入 **200**。 
+4. 对于“优先级”，请键入 **200**。
 5. 对于“操作”，请选择“允许”。  
 6. 在“规则”下，对于“名称”键入 **Allow-DNS**。
 7. 对于“协议”，请选择“UDP”。

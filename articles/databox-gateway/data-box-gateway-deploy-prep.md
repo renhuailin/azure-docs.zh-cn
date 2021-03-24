@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101706089"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
@@ -112,14 +112,14 @@ ms.locfileid: "101706089"
 
     输入或选择以下项目详细信息。
     
-    |设置  |“值”  |
+    |设置  |值  |
     |---------|---------|
     |订阅    |选择用于 Data Box Gateway 设备的订阅。 该订阅将链接到计费帐户。|
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。|
 
    输入或选择以下“实例详细信息”。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |名称   |用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
     |区域  |选择要在其中部署资源的区域。 选择离要部署设备的地理区域较近的位置。 <br> 有关可使用 Data Base Gateway/Azure Stack Edge 资源的所有区域的列表，请参阅[可用 Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 <br> 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。|

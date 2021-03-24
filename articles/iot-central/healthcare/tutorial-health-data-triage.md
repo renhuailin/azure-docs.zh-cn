@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: d227d934eedd31342ce419576fffe7cea17efb1d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101742787"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
@@ -145,7 +145,7 @@ ms.locfileid: "101742787"
 
 1. 检查 JSON 有效负载后，请返回到逻辑应用设计器并选择“+ 新建步骤”。 搜索并添加“初始化变量”作为下一步骤，然后输入以下参数：
 
-   |参数|Value|
+   |参数|值|
    |---|---|
    |名称|接口名称|
    |类型|字符串|

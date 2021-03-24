@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8e3b9636dfb900fa0e22bfea8bcd2d0c7edf0241
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571870"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596699"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>教程：将 Azure 媒体服务事件存储在 Azure Log Analytics 中
 
 ## <a name="azure-media-services-events"></a>Azure 媒体服务事件
 
-Azure 媒体服务 v3 在 [Azure 事件网格](media-services-event-schemas.md)上发出事件。 你可以通过多种方式订阅事件并将其存储在数据存储中。 在本教程中，你将使用[逻辑应用流](https://azure.microsoft.com/services/logic-apps/)订阅媒体服务事件。 系统将为每个事件触发逻辑应用，并将事件的主体存储在 Azure Log Analytics 中。 一旦将事件存储到 Azure Log Analytics 中，就可以使用其他 Azure 服务来创建仪表板、监视这些事件并针对其发出警报，但本教程不会对此进行介绍。
+Azure 媒体服务 v3 在 [Azure 事件网格](monitoring/media-services-event-schemas.md)上发出事件。 你可以通过多种方式订阅事件并将其存储在数据存储中。 在本教程中，你将使用[逻辑应用流](https://azure.microsoft.com/services/logic-apps/)订阅媒体服务事件。 系统将为每个事件触发逻辑应用，并将事件的主体存储在 Azure Log Analytics 中。 一旦将事件存储到 Azure Log Analytics 中，就可以使用其他 Azure 服务来创建仪表板、监视这些事件并针对其发出警报，但本教程不会对此进行介绍。
 
 > [!NOTE]
 > 如果你已经熟悉如何使用 FFmpeg 作为本地编码器，这将很有帮助。  如果不熟悉，也没关系。 下面包含了用于流式传输视频的命令行和说明。

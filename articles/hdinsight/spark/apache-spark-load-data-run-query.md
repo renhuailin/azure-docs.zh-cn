@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: de17bf02392f0bb05820fabba3f9057e067391cf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930083"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865904"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
@@ -33,7 +33,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 2. 从 Jupyter 网页中选择“新建” > “PySpark”，以创建笔记本   。
 
-   ![创建 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 以运行交互式 Spark SQL 查询")
+   :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="创建 Jupyter Notebook 以运行交互式 Spark SQL 查询" border="true":::
 
    新笔记本随即创建，并以名称 Untitled(`Untitled.ipynb`) 打开。
 
@@ -44,7 +44,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 应用程序可以直接从远程存储（例如 Azure 存储或 Azure Data Lake Storage）上的文件或文件夹创建数据帧；从 Hive 表或从 Spark 支持的其他数据源（例如 Cosmos DB、Azure SQL DB、DW 等）创建数据帧。 以下屏幕截图显示本教程中所用 HVAC.csv 文件的快照。 所有 HDInsight Spark 群集都随附了该 csv 文件。 该数据捕获了一些建筑物的温度变化。
 
-![交互式 Spark SQL 查询的数据快照](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "交互式 Spark SQL 查询的数据快照")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png " alt-text="交互式 Spark SQL 查询的数据快照" border="true":::
 
 1. 在 Jupyter Notebook 的空单元格中粘贴以下代码，然后按 Shift+Enter 运行这些代码。 这些代码会导入此方案所需的类型：
 
@@ -55,7 +55,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
     在 Jupyter 中运行交互式查询时，Web 浏览器窗口或选项卡标题中会显示“(繁忙)”  状态和 Notebook 标题。 右上角“PySpark”  文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
-    ![交互式 Spark SQL 查询的状态](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "交互式 Spark SQL 查询的状态")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png " alt-text="交互式 Spark SQL 查询的状态" border="true":::
 
 1. 记下返回的会话 ID。 在上图中，会话 ID 为 0。 若要检索会话详细信息，可以根据需要导航到 `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements`，其中的 CLUSTERNAME 是 Spark 群集的名称，ID 是会话 ID 号。
 
@@ -80,11 +80,11 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
    以下表格输出随即显示。
 
-     ![交互式 Spark 查询结果的表输出](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "交互式 Spark 查询结果的表输出")
+     :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png " alt-text="交互式 Spark 查询结果的表输出" border="true":::
 
 2. 也可以在其他视觉效果中查看结果。 若要查看相同输出的面积图，请选择“面积”  ，然后设置其他值，如下所示。
 
-    ![交互式 Spark 查询结果的面积图](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "交互式 Spark 查询结果的面积图")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png " alt-text="交互式 Spark 查询结果的面积图" border="true":::
 
 3. 从笔记本菜单栏中，导航到“文件”   > “保存和检查点”  。
 
@@ -96,7 +96,7 @@ Jupyter Notebook 是支持各种编程语言的交互式笔记本环境。 通�
 
 在 Azure 门户中打开群集，然后选择“删除”  。
 
-![删除 HDInsight 群集](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png " alt-text="删除 HDInsight 群集" border="true":::
 
 还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight Spark 群集和默认存储帐户。
 

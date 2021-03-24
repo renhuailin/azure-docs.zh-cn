@@ -8,17 +8,17 @@ ms.author: laobri
 ms.date: 02/24/2020
 ms.topic: reference
 ms.openlocfilehash: 7a5675ce0358092610766d1441e433ff5d96bae4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101655694"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine 发行说明
 
 本文介绍 Azure Data Science Virtual Machine 的发布。 如需获取随附工具的完整列表以及版本号，请查看[此页面](./tools-included.md)。
 
-请参阅 [已知问题列表](reference-known-issues.md) 以了解已知的错误和解决方法。
+如需了解已知 bug 和解决方法，请参阅[已知问题列表](reference-known-issues.md)。
 
 ## <a name="2020-02-24"></a>2020-02-24
 

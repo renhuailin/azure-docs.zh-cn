@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, 传感器, 查看器, 外部同步, 相位延迟, 深度, RGB, 相机, 音频线, 录制器
 ms.openlocfilehash: 052f6f1ac9f90e764de25d1d4d1b25b3d50a848d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73931699"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-devices"></a>将 Azure Kinect 录制器与外部同步设备配合使用
@@ -31,7 +31,7 @@ ms.locfileid: "73931699"
 - 所有单元必须运行相同的设备固件（[更新固件](update-device-firmware.md)说明）。
 - 必须先启动所有从属设备，然后启动主设备。
 - 应在所有设备上设置相同的曝光值。
-- 每个从属设备的“主控延迟关闭”设置相对于主设备。 
+- 每个从属设备的“主控延迟关闭”设置相对于主设备。
 
 ## <a name="record-when-each-unit-has-a-host-pc"></a>当每个单元都有一台主机电脑时进行录制
 
@@ -68,7 +68,7 @@ ms.locfileid: "73931699"
     [subordinate mode] Waiting for signal from master
     ```
 
-### <a name="master"></a>主设备
+### <a name="master"></a>Master
 
 1. 在主设备上开始录制
 
@@ -94,7 +94,7 @@ ms.locfileid: "73931699"
 
 2. 设备进入等待状态
 
-## <a name="master"></a>主设备
+## <a name="master"></a>Master
 
 1. 启动主设备
 

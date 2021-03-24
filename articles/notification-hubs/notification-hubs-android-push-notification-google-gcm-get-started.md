@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87832648"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将推送通知发送到 Android 设备
@@ -92,7 +92,7 @@ ms.locfileid: "87832648"
 
 ### <a name="adding-azure-notification-hubs-libraries"></a>添加 Azure 通知中心库
 
-1. 在**应用**的 `Build.Gradle` 文件中，在 **dependencies** 部分添加以下行。
+1. 在 **应用** 的 `Build.Gradle` 文件中，在 **dependencies** 部分添加以下行。
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'

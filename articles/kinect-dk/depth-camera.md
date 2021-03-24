@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度相机, tof, 原理, 性能, 失效
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73932219"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK 深度相机
@@ -42,9 +42,9 @@ Azure Kinect DK 深度相机实现调幅连续波 (AMCW) 时差测距 (ToF) 原�
 
 ![深度模块](./media/concepts/depth-camera-depth-module.jpg)
 
-深度相机将原始的调制 IR 图像传输到电脑主机。 在电脑上，GPU 加速的深度引擎软件会将原始信号转换为深度图。 深度相机支持多种模式。 **窄视场 (FoV)** 模式非常适合 X、Y 维度范围较小，但 Z 维度范围较大的场景。 如果场景中的 X、Y 范围较大，但 Z 范围较小，则**宽 FoV 模式**更合适。
+深度相机将原始的调制 IR 图像传输到电脑主机。 在电脑上，GPU 加速的深度引擎软件会将原始信号转换为深度图。深度相机支持多种模式。 **窄视场 (FoV)** 模式非常适合 X、Y 维度范围较小，但 Z 维度范围较大的场景。 如果场景中的 X、Y 范围较大，但 Z 范围较小，则 **宽 FoV 模式** 更合适。
 
-深度相机支持 **2x2 装箱模式**，这种模式与**非装箱模式**相比，可以扩展 Z 范围。 装箱的代价是降低图像分辨率。 所有模式都能够以高达 30 帧/秒 (fps) 的速率运行，但 1 兆象素 (MP) 模式除外，它的最大运行帧速率为 15 fps。 深度相机还提供**被动 IR 模式**。 在此模式下，照像机上的照明器不会激活，只能观测到环境光。
+深度相机支持 **2x2 装箱模式**，这种模式与 **非装箱模式** 相比，可以扩展 Z 范围。 装箱的代价是降低图像分辨率。 所有模式都能够以高达 30 帧/秒 (fps) 的速率运行，但 1 兆象素 (MP) 模式除外，它的最大运行帧速率为 15 fps。 深度相机还提供 **被动 IR 模式**。 在此模式下，照像机上的照明器不会激活，只能观测到环境光。
 
 ## <a name="camera-performance"></a>相机性能
 
@@ -56,7 +56,7 @@ Azure Kinect DK 深度相机实现调幅连续波 (AMCW) 时差测距 (ToF) 原�
 
 ![深度系统误差](./media/concepts/depth-camera-systematic-error.png)
 
-其中，*d<sub>t</sub>* 表示时间 *t* 处的测量深度，*N* 是求平均过程使用的帧数，*d<sub>gt</sub>* 是真实深度。
+其中，*d <sub>t</sub>* 表示时间 *t* 处的测量深度，*N* 是求平均过程使用的帧数，*d <sub>gt</sub>* 是真实深度。
 
 深度相机的系统误差规范不包括多路径干扰 (MPI)。 当某个传感器像素集成了多个对象反射的光时，就会发生 MPI。 使用较高的调制频率以及稍后将会介绍的深度失效可以在深度相机中部分缓解 MPI。
 
@@ -66,7 +66,7 @@ Azure Kinect DK 深度相机实现调幅连续波 (AMCW) 时差测距 (ToF) 原�
 
 ![深度随机误差](./media/concepts/depth-camera-random-error.png)
 
-其中，*N* 表示深度测量值数，*d<sub>t</sub>* 表示时间 *t* 处的深度测量值，*d* 表示基于所有深度测量值 *d<sub>t</sub>* 计算出的平均值。
+其中，*N* 表示深度测量值数，*d <sub>t</sub>* 表示时间 *t* 处的深度测量值，*d* 表示基于所有深度测量值 *d <sub>t</sub>* 计算出的平均值。
 
 ## <a name="invalidation"></a>失效
 
@@ -108,4 +108,4 @@ Azure Kinect DK 深度相机实现调幅连续波 (AMCW) 时差测距 (ToF) 原�
 
 ## <a name="next-steps"></a>后续步骤
 
-[坐标系](coordinate-systems.md)
+[坐标系统](coordinate-systems.md)

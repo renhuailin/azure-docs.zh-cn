@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 实验室服务设置实验室帐户、添
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445060"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户
@@ -50,7 +50,7 @@ ms.locfileid: "85445060"
     ![“实验室帐户”页面](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>将用户添加为“实验室创建者”角色
-若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 为教师提供为课程创建实验室的权限，并将他们添加为**实验室创建者**角色：
+若要在实验室帐户中设置课堂实验室，用户必须是实验室帐户中“实验室创建者”角色的成员。 为教师提供为课程创建实验室的权限，并将他们添加为 **实验室创建者** 角色：
 
 > [!NOTE]
 > 用来创建实验室帐户的帐户会自动添加到此角色。 如果在本教程中打算使用同一用户帐户创建课堂实验室，可以跳过此步骤。 

@@ -5,15 +5,15 @@ ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: a6f399e19cadf3d6ce9edfaecb3d904e62c498aa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006861"
 ---
 此容器具有以下配置设置：
 
-|必选|设置|目的|
+|必须|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](/azure/application-insights) 遥测支持。|
