@@ -4,10 +4,10 @@ description: 了解如何将 Windows Server 2019 安全基线中的组策略转�
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348638"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何从 Windows 组策略基线创建来宾配置策略定义
@@ -21,7 +21,7 @@ ms.locfileid: "93348638"
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Windows 计算机上大规模部署此扩展，请分配以下策略定义：
 > - [部署必备组件以在 Windows VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 > 
-> 不要在自定义内容包中使用机密或机密信息。
+> 不要在自定义内容包中使用机密或保密信息。
 
 DSC 社区已发布 [BaselineManagement 模块](https://github.com/microsoft/BaselineManagement)，以将导出的组策略模板转换为 DSC 格式。 BaselineManagement 模块与 GuestConfiguration cmdlet 一起为 Windows 组策略内容创建 Azure Policy 来宾配置包。 有关使用 BaselineManagement 模块的详细信息，请参阅文章[快速入门：将组策略转换为 DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart)。
 

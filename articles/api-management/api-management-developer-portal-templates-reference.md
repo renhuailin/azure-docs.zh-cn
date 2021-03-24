@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73176790"
 ---
 # <a name="developer-portal-templates"></a>开发人员门户模板
@@ -35,7 +35,7 @@ ms.locfileid: "73176790"
 -   [API](api-management-api-templates.md)  
     -   [API 列表](api-management-api-templates.md#APIList)  
     -   [操作](api-management-api-templates.md#Product)  
-    -   [示例代码](api-management-api-templates.md#CodeSamples)  
+    -   [代码示例](api-management-api-templates.md#CodeSamples)  
         -   [Curl](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  

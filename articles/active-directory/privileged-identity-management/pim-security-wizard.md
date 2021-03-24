@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372423"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD 角色的发现和见解（以前称为安全向导）（预览版）
 
-如果你在 Azure Active Directory (Azure AD) 组织中开始使用 Privileged Identity Management (PIM)，可以使用**发现和见解（预览版）** 页来入门。 此功能显示已分配到组织中的特权角色的用户，以及如何使用 PIM 快速将永久角色分配更改为实时分配。 可以在**发现和见解（预览版）** 中查看或更改永久特权角色分配。 它是一个分析工具，也是一个操作工具。
+如果你在 Azure Active Directory (Azure AD) 组织中开始使用 Privileged Identity Management (PIM)，可以使用 **发现和见解（预览版）** 页来入门。 此功能显示已分配到组织中的特权角色的用户，以及如何使用 PIM 快速将永久角色分配更改为实时分配。 可以在 **发现和见解（预览版）** 中查看或更改永久特权角色分配。 它是一个分析工具，也是一个操作工具。
 
 ## <a name="discovery-and-insights-preview"></a>发现和见解（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "92372423"
 
 1. 选择“减少全局管理员”。
 
-    ![屏幕截图，显示 "发现和见解 (预览") "已选择" 降低全局管理员 "操作。](./media/pim-security-wizard/new-preview-page.png)
+    ![此屏幕截图显示了“发现和见解(预览)”，其中已选择“减少全局管理员”操作。](./media/pim-security-wizard/new-preview-page.png)
 
 1. 查看全局管理员角色分配的列表。
 

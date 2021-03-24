@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3e36de62b79788e2efdc3e9abf711924c4fba0c4
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341801"
 ---
 # <a name="how-to-author-an-attestation-policy"></a>如何创作证明策略
@@ -36,7 +36,7 @@ issuancerules
  
 策略文件有三个段，如上所示：
 
-- **版本** ：版本是所遵循语法的版本号。 
+- **版本**：版本是所遵循语法的版本号。 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ issuancerules
 
     目前唯一支持的版本是版本 1.0。
 
-- **authorizationrules** ：将首先检查的声明规则集合，用于确定 Azure 证明是否应继续执行 issuancerules。 声明规则按其定义的顺序应用。
+- **authorizationrules**：将首先检查的声明规则集合，用于确定 Azure 证明是否应继续执行 issuancerules。 声明规则按其定义的顺序应用。
 
-- **issuancerules** ：将计算的声明规则的集合，用于将其他信息添加到策略中定义的证明结果。 声明规则按其定义的顺序应用（也是可选的）。
+- **issuancerules**：将计算的声明规则的集合，用于将其他信息添加到策略中定义的证明结果。 声明规则按其定义的顺序应用（也是可选的）。
 
 有关详细信息，请参阅[声明和声明规则](claim-rule-grammar.md)。
    
@@ -128,8 +128,8 @@ issuancerules
      ```
 
 2. （可选）对策略进行签名。 Azure 证明支持以下算法：
-     - **无** ：不要对策略有效负载进行签名。
-     - **RS256** ：支持对策略负载进行签名的算法
+     - **无**：不要对策略有效负载进行签名。
+     - **RS256**：支持对策略负载进行签名的算法
 
 3. 上传 JWS 并验证策略。
      - 如果策略文件没有语法错误，则服务将接受该策略文件。

@@ -10,10 +10,10 @@ ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 9ad761f289805d15d316fc6f528a0049adb36b30
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97722311"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
@@ -169,7 +169,7 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 1. 展开订阅。
 1. 展开资源组。
 1. 展开提供程序。
-1. 展开 " *Microsoft. 计算*"。
+1. 展开 *Microsoft.Compute*。
 1. 展开 *virtualMachineScaleSets*。
 1. 展开规模集。
 1. 单击“publicipaddresses”。
@@ -382,25 +382,25 @@ az vmss show \
 ]
 ```
 
-## <a name="make-networking-updates-to-specific-instances"></a>向特定实例进行网络更新
+## <a name="make-networking-updates-to-specific-instances"></a>对特定实例进行网络更新
 
 你可以对特定虚拟机规模集实例进行网络更新。 
 
-可 `PUT` 对实例进行更新，以更新网络配置。 这可用于执行以下操作：添加或删除网络接口卡 (Nic) ，或从后端池中删除实例。
+你可以针对该实例执行 `PUT`，以更新网络配置。 此方法可用于执行添加或删除网络接口卡 (NIC) 或从后端池删除实例等操作。
 
 ```
 PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
 ```
 
-以下示例演示如何将第二个 IP 配置添加到 NIC。
+以下示例演示如何为 NIC 添加第二个 IP 配置。
 
-1. `GET` 特定虚拟机规模集实例的详细信息。
+1. 利用 `GET` 获取特定虚拟机规模集实例的详细信息。
     
     ``` 
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *下面已简化为仅显示此示例的网络参数。*
+    以下内容已简化为只显示此示例的网络参数。
 
     ```json
     {
@@ -450,14 +450,14 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
     }
     ```
  
-2. `PUT` 对于实例，更新以添加其他 IP 配置。 这类似于添加其他 `networkInterfaceConfiguration` 。
+2. 针对该实例执行 `PUT`，进行更新以添加其他 IP 配置。 这类似于添加其他 `networkInterfaceConfiguration`。
 
     
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
-    *下面已简化为仅显示此示例的网络参数。*
+    以下内容已简化为只显示此示例的网络参数。
 
     ```json
       {

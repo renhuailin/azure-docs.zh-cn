@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370825"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的审核历史记录
@@ -32,7 +32,7 @@ ms.locfileid: "92370825"
 1. 以具有[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)角色的用户身份登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
-    [![显示 "Azure AD 角色-目录角色审核历史记录" 页的屏幕截图。](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "选择你的版本对应的选项卡")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [ ![显示“Azure AD 角色 - 目录角色审核历史记录”页面的屏幕截图。](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "选择你的版本对应的选项卡")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
@@ -108,7 +108,7 @@ ms.locfileid: "92370825"
 
 1. 在“时间范围”中，  选择时间范围。
 
-1. 在**角色**中，选中指示要查看的角色的复选框。
+1. 在 **角色** 中，选中指示要查看的角色的复选框。
 
     ![“更新图表参数”窗格](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "92370825"
     - 请在“状态原因”  列中查看审核事件的原因。
     - 在“将成员添加到角色请求已批准”事件的“发起人(参与者)”  列中查看审批者。
 
-    [![屏幕截图显示 "审核日志" 页，其中显示了 "已通过 (执行组件启动") 菜单，并选择了 "PIM"。](media/pim-how-to-use-audit-log/filter-audit-logs.png "筛选 PIM 服务的审核日志")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![显示“审核日志”页面的屏幕截图，其中“发起人（操作者）”菜单处于打开状态且已选中“PIM”。](media/pim-how-to-use-audit-log/filter-audit-logs.png "筛选 PIM 服务的审核日志")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. 选择一个审核日志事件，以在“详细信息”窗格的“活动”选项卡上查看票证编号。
   
-    [![屏幕截图显示 "审核日志" 页，其中的票证号在 "详细信息" 窗格中突出显示。](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "检查审核事件的票证编号")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![显示在“详细信息”窗格中突出显示票据编号的“审核日志”页面的屏幕截图。](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "检查审核事件的票证编号")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. 可以在审核事件的“详细信息”窗格的“目标”选项卡上查看请求者（激活角色的人员）。 Azure AD 角色有两种目标类型：
 

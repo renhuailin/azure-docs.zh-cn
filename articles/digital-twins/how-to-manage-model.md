@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433244"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953691"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -179,7 +179,7 @@ Azure 数字孪生的模型用 DTDL 编写，并保存为 .json 文件。 还有
 * 读取属性
 * 读取传出关系
 * 添加和删除传入关系（例如，其他孪生体仍可与此孪生体建立关系）
-  - 关系定义中的 `target` 仍可反映已删除模型的 DTMI。 未定义目标的关系在此处也适用。
+  - 关系定义中的 `target` 仍可反映已删除模型的 DTMI。 未定义目标的关系在此处也适用。      
 * 删除关系
 * 删除孪生体
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68728033"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
@@ -50,7 +50,7 @@ ms.locfileid: "68728033"
 * 最常见的错误发生在哪个位置
 * 可在哪个位置实施可行性最大的改进
 
-因此，可以使用这些类别来重点完成并优化安全工作，以便在输入验证、身份验证和授权类别中出现最流行的安全问题时，可以从这些位置着手。 有关详情，请访问[此专利链接](https://www.google.com/patents/US7818788)****
+因此，可以使用这些类别来重点完成并优化安全工作，以便在输入验证、身份验证和授权类别中出现最流行的安全问题时，可以从这些位置着手。 有关详情，请访问[此专利链接](https://www.google.com/patents/US7818788)
 
 ## <a name="next-steps"></a>后续步骤
 

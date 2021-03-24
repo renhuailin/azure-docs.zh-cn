@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 1fd718f206220edeef4cba164d787a8de44e82f7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prolorus"></a>教程：Azure Active Directory 与 Prolorus 的单一登录 (SSO) 集成
@@ -26,7 +26,7 @@ ms.locfileid: "96181686"
 * 让用户可使用其 Azure AD 帐户自动登录到 Prolorus。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,7 +45,7 @@ ms.locfileid: "96181686"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Prolorus” 。
 1. 从结果面板中选择“Prolorus”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -74,13 +74,13 @@ ms.locfileid: "96181686"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.prolorus.app/Login`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.prolorus.app`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.prolorus.app/SAML/AssertionConsumerService`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.prolorus.app/SAML/AssertionConsumerService`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Prolorus 客户端支持团队](mailto:infrastructure@prolorus.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

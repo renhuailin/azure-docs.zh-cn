@@ -4,10 +4,10 @@ description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和�
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: cae95c10c510969cc0553a54a506789d6be427d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180977"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
@@ -55,7 +55,7 @@ ms.locfileid: "89180977"
 5. 在“指定短期目标”屏幕中，选择要在磁盘中保存恢复点的时间长短，以及何时保存增量备份。  选择“下一步”  。
 
     > [!IMPORTANT]
-    > **不**应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。
+    > **不** 应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。
     >
 
     ![指定短期目标](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)

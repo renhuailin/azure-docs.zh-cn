@@ -1,37 +1,37 @@
 ---
-title: 通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 Vm
-description: 介绍如何使用 Azure PowerShell 脚本在 Azure Stack Edge Pro 设备上创建和管理 (Vm) 的虚拟机。
+title: 通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 VM
+description: 介绍如何使用 Azure PowerShell 脚本在 Azure Stack Edge Pro 设备上创建和管理虚拟机 (VM)。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 44ac0b06bb72d722797a20ed44ece14768c80997
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
-ms.translationtype: MT
+ms.openlocfilehash: 36c7078a79cf8b0b7414c5031acb79b9a2c2453c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763780"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102630480"
 ---
-# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 Vm
+# <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>通过 Azure PowerShell 脚本在 Azure Stack Edge Pro GPU 设备上部署 VM
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 本教程介绍如何使用 Azure PowerShell 脚本在 Azure Stack Edge Pro 设备上创建和管理 VM。
 
 ## <a name="prerequisites"></a>先决条件
 
-使用此脚本开始在 Azure Stack Edge Pro 设备上创建和管理 VM 之前，需要确保已完成以下步骤中列出的先决条件：
+在开始使用此脚本在 Azure Stack Edge Pro 设备上创建和管理 VM 之前，你需要确保已完成以下步骤中列出的先决条件：
 
-### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>对于通过本地 web UI Azure Stack Edge Pro 设备
+### <a name="for-azure-stack-edge-pro-device-via-the-local-web-ui"></a>对于通过本地 Web UI 的 Azure Stack Edge Pro 设备
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
-### <a name="for-your-windows-client"></a>适用于你的 Windows 客户端
+### <a name="for-your-windows-client"></a>对于 Windows 客户端
 
-1. 请确保已修改： 
+1. 请确保你已修改： 
 
     - 客户端上的主机文件，或
     - DNS 服务器配置
@@ -41,7 +41,7 @@ ms.locfileid: "97763780"
 
     1. 以管理员身份启动“记事本”（保存文件需要管理员权限），然后打开位于 `C:\Windows\System32\Drivers\etc` 的 hosts 文件 。
     
-        ![Windows 资源管理器 hosts 文件](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![Windows 资源管理器 hosts 文件](media/azure-stack-edge-gpu-connect-resource-manager/hosts-file.png)
     
     2. 将以下条目添加到 hosts 文件，替换为设备的适当值：
     
@@ -50,17 +50,17 @@ ms.locfileid: "97763780"
         <device IP> management.<appliance name>.<DNS domain>
         <device IP> <storage name>.blob.<appliance name>.<DNS domain>
         ```
-        对于存储帐户，你可以提供希望脚本稍后用于创建新存储帐户的名称。 该脚本不会检查该存储帐户是否存在。
+        对于存储帐户，可以提供一个名称，以便脚本稍后使用该名称来创建新的存储帐户。 脚本不会检查该存储帐户是否存在。
 
     3. 使用下图作为参考。 保存 **hosts** 文件。
 
-        ![记事本中的 hosts 文件](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![记事本中的 hosts 文件](media/azure-stack-edge-gpu-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
-2. 下载此过程中使用[的 PowerShell 脚本](https://aka.ms/ase-vm-powershell)。
+2. [下载此过程中使用的 PowerShell 脚本](https://aka.ms/ase-vm-powershell)。
 
-3. 确保你的 Windows 客户端运行的是 PowerShell 5.0 或更高版本。
+3. 请确保 Windows 客户端运行的是 PowerShell 5.0 或更高版本。
 
-4. 请确保 `Azure.Storage Module version 4.5.0` 系统上安装了。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0)获取此模块。 若要安装此模块，请键入：
+4. 请确保系统上安装了 `Azure.Storage Module version 4.5.0`。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/Azure.Storage/4.5.0)获取此模块。 若要安装此模块，请键入：
 
     `Install-Module -Name Azure.Storage -RequiredVersion 4.5.0`
 
@@ -68,20 +68,20 @@ ms.locfileid: "97763780"
 
     `Get-InstalledModule -name Azure.Storage`
 
-    若要卸载任何其他版本模块，请键入：
+    若要卸载任何其他版本的模块，请键入：
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. 将[AzCopy 10 下载](../storage/common/storage-use-azcopy-v10.md#download-azcopy)到你的 Windows 客户端。 记下该位置，因为在运行脚本时，会将其作为参数传递。
+5. [将 AzCopy 10](../storage/common/storage-use-azcopy-v10.md#download-azcopy) 下载到 Windows 客户端。 记下该位置，因为你将在运行脚本时将其作为参数传递。
 
-6. 确保 Windows 客户端运行的是 TLS 1.2 或更高版本。
+6. 请确保 Windows 客户端运行的是 TLS 1.2 或更高版本。
 
 
 ## <a name="create-a-vm"></a>创建 VM
 
 1. 以管理员身份运行 PowerShell。
-1. 中转到你在客户端上下载该脚本的文件夹。
-1. 在运行该脚本之前，请确保仍连接到该设备的本地 Azure 资源管理器并且该连接未过期。
+1. 转到客户端上脚本下载到的文件夹。
+1. 在运行该脚本之前，请确保仍连接到设备的本地 Azure 资源管理器，并且连接尚未过期。
 
     ```powershell
     PS C:\windows\system32> login-AzureRMAccount -EnvironmentName aztest1 -TenantId c0257de7-538f-415c-993a-1b87a031879d
@@ -97,13 +97,13 @@ ms.locfileid: "97763780"
  
     `.\ArmPowershellClient.ps1 -NicPrivateIp <Private IP> -VHDPath <Path> -VHDFile <VHD File, with extension> -StorageAccountName <Name> -OS <Windows/Linux> -VMSize <Supported VM Size> -VMUserName <Username to be used to sign in to VM> -VMPassword <Password for the VM> --AzCopy10Path <Absolute Path>`
 
-    如果希望将 IP 动态分配到 VM，请省略 `-NicPrivateIp` 参数。
+    如果要将 IP 动态分配给 VM，请省略 `-NicPrivateIp` 参数。
 
-    下面是运行脚本来创建 Windows VM 和 Linux VM 时的示例。
+    以下是运行脚本以创建 Windows VM 和 Linux VM 时的示例。
 
-    **对于 Windows VM：**
+    **对于Windows VM：**
 
-    下面是创建的 Windows VM 的示例输出。
+    下面是已创建的 Windows VM 的示例输出。
 
     ```powershell
     PS C:\Users\v2> .\ArmPowershellClient.ps1 -VHDPath \\asefs\Logs\vmvhd -VHDFile WindowsServer2016Datacenter.vhd -StorageAccountName myasesatest -OS Windows -VMSize Standard_D1_v2 -VMUserName Administrator -VMPassword Password1 -AzCopy10Path C:\Users\AzCopy10\AzCopy.exe
@@ -307,11 +307,11 @@ ms.locfileid: "97763780"
     ```
 
   
-1. 成功创建 Vm 后，这些 Vm 应在 Azure 门户中的虚拟机列表中显示。 若要查看 Vm，请在 Azure 门户的设备的 Azure Stack Edge 资源中，参阅 " **边缘服务 > 虚拟机**"。 
+1. 成功创建 VM 后，这些 VM 应显示在 Azure 门户的虚拟机列表中。 若要查看 VM，请在 Azure 门户中设备的 Azure Stack Edge 资源中，转到“边缘服务”>“虚拟机”。 
 
     ![查看虚拟机列表](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell-script/list-virtual-machine-1.png)
 
-    若要查看 VM 的详细信息，请选择 VM 名称。 请注意此 VM 的 IP 动态分配。
+    若要查看 VM 的详细信息，请选择 VM 名称。 请注意，此 VM 的 IP 是动态分配的。
 
     ![查看 VM 详细信息](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell-script/view-virtual-machine-details-1.png)
 
@@ -328,4 +328,4 @@ ms.locfileid: "97763780"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure PowerShell cmdlet 部署 Vm](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)
+[使用 Azure PowerShell cmdlet 部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)

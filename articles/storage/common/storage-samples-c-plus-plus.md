@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 158f908dfd52a3365d19f65eb00faf1787893af5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372877"
 ---
 # <a name="azure-storage-samples-using-v12-c-client-libraries"></a>使用 v12 C++ 客户端库的 Azure 存储示例
@@ -149,7 +149,7 @@ ms.locfileid: "92372877"
 了解有关其他语言的示例的信息：
 
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
-* Java：[使用 Java 的 Azure 存储示例](storage-samples-java.md)
+* Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
 * Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)
 * JavaScript/Node.js：[使用 JavaScript 的 Azure 存储示例](storage-samples-javascript.md)
 * 所有其他语言：[Azure 存储示例](storage-samples.md)

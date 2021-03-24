@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198602"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>快速入门：使用 ARM 模板设置 IoT 中心设备预配服务 (DPS)
@@ -61,7 +61,7 @@ ms.locfileid: "102198602"
 
     除非下面已指定，否则请使用默认值创建 IoT 中心和 DPS 资源。
 
-    | 字段 | 说明 |
+    | 字段 | 描述 |
     | :---- | :---------- |
     | **订阅** | 选择 Azure 订阅。 |
     | **资源组** | 单击“新建”，输入资源组的唯一名称，然后单击“确定” 。 |

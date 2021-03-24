@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 956428b6f197912e2ab7c3a94133ed9d59f37749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279918"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
@@ -70,4 +70,4 @@ Convert-MsolDomainToFederated -DomainName fabrikam.com -Verbose -SupportMultiple
 上述操作会将域 fabrikam.com 与同一 AD FS 联合。 可以对两个域使用 Get-MsolDomainFederationSettings，以便验证域设置。
 
 ## <a name="next-steps"></a>后续步骤
-[将 Active Directory 与 Azure Active Directory 连接](whatis-hybrid-identity.md)
+[将 Active Directory 连接到 Azure Active Directory](whatis-hybrid-identity.md)

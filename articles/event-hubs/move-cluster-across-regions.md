@@ -4,10 +4,10 @@ description: 本文介绍如何将 Azure 事件中心专用群集从当前区域
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89380608"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>将 Azure 事件中心专用群集移到另一个区域
@@ -45,12 +45,12 @@ ms.locfileid: "89380608"
 1. 选择“保存”以保存该模板。 
 1. 在“自定义部署”页上执行以下步骤： 
     1. 选择 Azure 订阅。 
-    2. 选择现有的**资源组**或创建一个资源组。 
+    2. 选择现有的 **资源组** 或创建一个资源组。 
     3. 选择目标位置或区域。 如果选择了现有资源组，则此设置为只读。 
     4. 在“设置”部分中，执行以下步骤：    
         1. 输入新的群集名称。 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="下载资源管理器模板":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="部署资源管理器模板":::
     5. 在页面底部选择“查看 + 创建”。 
     1. 在“查看 + 创建”页上查看设置，然后选择“创建” 。  
 

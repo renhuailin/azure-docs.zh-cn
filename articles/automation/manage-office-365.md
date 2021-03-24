@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398039"
 ---
 # <a name="manage-office-365-services"></a>管理 Office 365 服务
@@ -99,7 +99,7 @@ Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAdd
 3. 选择新的 Runbook，然后单击“编辑”。
 4. 复制脚本，并将其粘贴到 Runbook 的文本编辑器中。
 5. 选择“资产”，然后展开“凭据”并检查 Office 365 凭据是否在此处。 
-6. 单击“ **保存** ”。
+6. 单击“ **保存**”。
 7. 选择“测试”窗格，然后单击“开始”以开始测试 Runbook。  请参阅[在 Azure 自动化中管理 Runbook](./manage-runbooks.md)。
 8. 测试完成后，退出“测试”窗格。
 
@@ -111,5 +111,5 @@ Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAdd
 
 * 有关凭据用法的详细信息，请参阅[在 Azure 自动化中管理凭据](shared-resources/credentials.md)。
 * 有关模块的信息，请参阅[在 Azure 自动化中管理模块](shared-resources/modules.md)。
-* 如果需要启动 Runbook，请参阅[在 Azure 自动化中启动 Runbook](start-runbooks.md)。
+* 如果需要启动 runbook，请参阅[在 Azure 自动化中启动 runbook](start-runbooks.md)。
 * 有关 PowerShell 的详细信息，请参阅 [PowerShell 文档](/powershell/scripting/overview)。

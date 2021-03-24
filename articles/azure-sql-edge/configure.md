@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392327"
 ---
 # <a name="configure-azure-sql-edge"></a>配置 Azure SQL Edge
@@ -44,7 +44,7 @@ Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如果已
 
 | 环境变量 | 说明 |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | 启用可用性组。 例如， **1** 为已启用， **0** 为已禁用。 |
+| **MSSQL_ENABLE_HADR** | 启用可用性组。 例如，**1** 为已启用，**0** 为已禁用。 |
 
 > [!IMPORTANT]
 > SQL Edge 的 MSSQL_PID 环境变量仅接受 Premium 和 Developer 作为有效值。 Azure SQL Edge 不支持使用产品密钥进行初始化。

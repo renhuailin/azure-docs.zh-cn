@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 94b152c842845433a55c8c1e285adabda1591260
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>教程：Azure Active Directory 与 HR2day by Merces 的集成
@@ -101,7 +101,7 @@ ms.locfileid: "92442895"
 
     ![HR2day by Merces 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.force.com/<instancename>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.force.com/<instancename>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://hr2day.force.com/<companyname>`
 
@@ -138,7 +138,7 @@ ms.locfileid: "92442895"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“保存”  。
 
 7. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -169,7 +169,7 @@ ms.locfileid: "92442895"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -184,7 +184,7 @@ ms.locfileid: "92442895"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -202,7 +202,7 @@ ms.locfileid: "92442895"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

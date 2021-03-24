@@ -6,10 +6,10 @@ ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
 ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100007102"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
@@ -226,7 +226,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 # <a name="python"></a>[Python](#tab/python)
 
-对于 Python，可以使用 [OpenCensus Python 遥测处理器](api-filtering-sampling.md#opencensus-python-telemetry-processors) 。
+对于 Python，可使用 [OpenCensus Python 遥测处理器](api-filtering-sampling.md#opencensus-python-telemetry-processors)。
 
 ```python
 def callback_function(envelope):

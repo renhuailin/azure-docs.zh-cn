@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397529"
 ---
 # <a name="application-gateway-request-routing-rules"></a>应用程序网关请求传递规则
 
-使用 Azure 门户创建应用程序网关时，可创建一个默认规则 (rule1)。 此规则会将默认侦听器 ( *appGatewayHttpListener* ) 绑定到默认后端池 ( *appGatewayBackendPool* ) 和默认后端 HTTP 设置 ( *appGatewayBackendHttpSettings* )。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
+使用 Azure 门户创建应用程序网关时，可创建一个默认规则 (rule1)。 此规则会将默认侦听器 (*appGatewayHttpListener*) 绑定到默认后端池 (*appGatewayBackendPool*) 和默认后端 HTTP 设置 (*appGatewayBackendHttpSettings*)。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
 
 ## <a name="rule-type"></a>规则类型
 
@@ -57,7 +57,7 @@ ms.locfileid: "93397529"
 
 ### <a name="redirection-type"></a>重定向类型
 
-选择所需的重定向类型： *Permanent(301)* 、 *Temporary(307)* 、 *Found(302)* 或 *See other(303)* 。
+选择所需的重定向类型：*Permanent(301)* 、*Temporary(307)* 、*Found(302)* 或 *See other(303)* 。
 
 ### <a name="redirection-target"></a>重定向目标
 

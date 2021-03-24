@@ -11,18 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077636"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952756"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
 [条件访问](./overview.md)是 Azure Active Directory (Azure AD) 中的一项功能，用于控制已获授权的用户访问云应用的方式。 如何知道环境中的条件访问策略会带来什么？ 若要回答此问题，可以使用“条件访问 What If 工具”。
 
 本文介绍如何使用此工具来测试条件访问策略。
+
+> [!VIDEO https://www.youtube.com/embed/M_iQVM-3C3E]
 
 ## <a name="what-it-is"></a>作用
 
@@ -36,7 +38,7 @@ ms.locfileid: "93077636"
 
 - 想要测试的用户 
 - 用户要尝试访问的云应用
-- 对已配置的云应用进行访问的条件
+- 访问配置的云应用时存在的条件
      
 下一步，可以启动用于评估设置的模拟运行。 评估运行中仅包含启用的策略。
 
@@ -44,11 +46,11 @@ ms.locfileid: "93077636"
 
 ## <a name="running-the-tool"></a>运行此工具
 
-可以在 Azure 门户中的“ [条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到 **What If** 工具。
+可以在 Azure 门户中的“[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)”页上找到 **What If** 工具。
 
-若要启动此工具，请在策略列表顶部的工具栏中单击 **What If** 。
+若要启动此工具，请在策略列表顶部的工具栏中单击 **What If**。
 
-:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure 门户中的 &quot;条件访问-策略&quot; 页的屏幕截图。在工具栏中，突出显示 &quot;if&quot; 项。" border="false":::
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure 门户中“条件访问 - 策略”页的屏幕截图。在工具栏中，突出显示了“What if”项。" border="false":::
 
 必须先配置设置，才可以运行评估。
 
@@ -56,7 +58,7 @@ ms.locfileid: "93077636"
 
 本部分介绍有关模拟运行的设置的信息。
 
-:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure 门户 &quot;What If&quot; 页的屏幕截图，其中包含用户的字段、云应用、I P 地址、设备平台、客户端应用和登录风险。" border="false":::
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure门户“What If”页的屏幕截图，其中包含用户、云应用、IP 地址、设备平台、客户端应用和登录风险的字段。" border="false":::
 
 ### <a name="user"></a>User
 
@@ -90,7 +92,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 通过单击 **What If** 启动评估。 评估结果提供包含以下内容的报表： 
 
-:::image type="content" source="./media/what-if-tool/03.png" alt-text="计算报表的屏幕截图。文本指示至少配置了一个经典策略。选项卡可用于查看策略。" border="false":::
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="评估报表的屏幕截图。文本指示至少配置了一个经典策略。选项卡可用于查看策略。" border="false":::
 
 - 一个指示器，指示环境中是否存在经典策略
 - 应用于用户的策略

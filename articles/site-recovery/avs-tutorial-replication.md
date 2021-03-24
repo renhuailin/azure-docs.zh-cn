@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 3ac1f5bd3d44b7f98284cead60b34689f3d7be30
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395489"
 ---
 # <a name="setup-azure-site-recovery-for-azure-vmware-solution-vms"></a>为 Azure VMware 解决方案 VM 设置 Azure Site Recovery
@@ -130,7 +130,7 @@ ms.locfileid: "93395489"
 完成配置服务器的设置和注册。 在继续之前，请确保已满足全部[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)，以便成功设置配置服务器。
 
 
-1. 在配置服务器管理向导中，选择“设置连接”。  在下拉列表中，首先选择内置进程服务器用于发现的 NIC，将移动服务的安装推送到源计算机上，然后选择配置服务器用来与 Azure 连接的 NIC。 再选择“保存”  。 配置后无法更改此设置。
+1. 在配置服务器管理向导中，选择“设置连接”。  在下拉列表中，首先选择内置进程服务器用于发现的 NIC，将移动服务的安装推送到源计算机上，然后选择配置服务器用来与 Azure 连接的 NIC。 再选择“保存”。 配置后无法更改此设置。
 2. 在“选择恢复服务保管库”中，选择自己的 Azure 订阅以及相关的资源组和保管库。
 3. 在“安装第三方软件”中，接受许可协议。 选择“下载并安装”，安装 MySQL 服务器。 如果已将 MySQL 置于路径中，则可跳过此步骤。 了解[更多](vmware-azure-deploy-configuration-server.md#configure-settings)
 4. 在“验证设备配置”中验证先决条件，然后继续。

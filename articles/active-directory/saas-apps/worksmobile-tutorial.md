@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
 ms.openlocfilehash: a8b344cd9e4428c3508534edaec4fd98fb67d832
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>教程：Azure Active Directory 与 LINE WORKS 的集成
@@ -49,7 +49,7 @@ ms.locfileid: "96182030"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“LINE WORKS” 。
 1. 从结果面板中选择“LINE WORKS”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -77,7 +77,7 @@ ms.locfileid: "96182030"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.worksmobile.com/d/login/<domain>/` 
 

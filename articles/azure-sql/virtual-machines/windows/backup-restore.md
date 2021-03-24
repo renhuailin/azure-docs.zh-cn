@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: 2fcba81bcd20db321d791fcda589f40fb0699702
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97733067"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 中 SQL Server 的备份和还原
@@ -72,7 +72,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 - **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
 - **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
 - **合并的故障电子邮件警报**：针对任何故障配置合并的电子邮件通知。
-- **Azure 基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。
+- Azure 基于角色的访问控制：确定谁可以通过门户管理备份和还原操作。
 
 有关此解决方案工作原理的简要概述和演示，请观看以下视频：
 

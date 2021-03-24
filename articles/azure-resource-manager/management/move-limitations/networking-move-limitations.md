@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器将虚拟网络和其他网络资源移
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75485229"
 ---
 # <a name="move-guidance-for-networking-resources"></a>网络资源移动指南
@@ -32,4 +32,4 @@ ms.locfileid: "75485229"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](../move-resource-group-and-subscription.md)。
+有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](../move-resource-group-and-subscription.md)。

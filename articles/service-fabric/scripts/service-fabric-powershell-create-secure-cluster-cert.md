@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: bae42c9ec8643da1563fb6b566d8db4af6039225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078939"
 ---
 # <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name $groupname -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | 新建 Service Fabric 群集。 |
 

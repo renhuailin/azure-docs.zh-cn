@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92426366"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配 Python 设备
@@ -42,7 +42,7 @@ ms.locfileid: "92426366"
 
 ## <a name="prepare-the-python-sdk-environment"></a>准备 Python SDK 环境 
 
-1. 确保在计算机上安装 Git 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括  Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
+1. 确保在计算机上安装 Git 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解要安装的最新版 `git` 工具，其中包括 Git Bash，这是一个命令行应用，可以用来与本地 Git 存储库交互。 
 
 2. 打开命令提示符。 克隆 Azure IoT Python SDK 的 GitHub 存储库：
     
@@ -65,15 +65,15 @@ ms.locfileid: "92426366"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务 (DPS) 实例。
 
-2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
-   - **机制** ：选择“对称密钥”作为标识证明“机制”   。
+   - **机制**：选择“对称密钥”作为标识证明“机制”   。
 
-   - **自动生成密钥** ：选中此框。
+   - **自动生成密钥**：选中此框。
 
-   - **注册 ID** ：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，symm-key-python-device-008。
+   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如，symm-key-python-device-008。
 
    - **IoT 中心设备 ID：** 输入设备标识符。 例如，python-device-008。
 
@@ -170,7 +170,7 @@ ms.locfileid: "92426366"
     ![设备注册到 IoT 中心](./media/quick-create-device-symm-key-python/hub-registration-python.png) 
 
 > [!NOTE]
-> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397166"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure 应用程序网关资源运行状况概述
@@ -31,7 +31,7 @@ ms.locfileid: "93397166"
 
 ![可用的运行状况状态](media/resource-health-overview/available-full.png)
 
-## <a name="unavailable"></a>Unavailable
+## <a name="unavailable"></a>不可用
 
 状态为“不可用”表示服务已检测到影响网关运行状况的正在发生的平台或非平台事件。
 
@@ -61,4 +61,4 @@ ms.locfileid: "93397166"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关应用程序网关 Web 应用程序防火墙 (WAF) 的疑难解答，请参阅 [Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 疑难解答](../web-application-firewall/ag/web-application-firewall-troubleshoot.md)。
+若要了解如何排查应用程序网关 Web 应用程序防火墙 (WAF) 问题，请参阅[排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题](../web-application-firewall/ag/web-application-firewall-troubleshoot.md)。

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420523"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect：如果你有现有的租户
@@ -34,7 +34,7 @@ Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象�
 如果最初在 Azure AD 中管理用户，而这些用户同时又在本地 AD 中，后来你想要使用 Connect，那么，就需要考虑到其他一些因素。
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>与 Azure AD 中的现有用户同步
-安装 Azure AD Connect 并开始同步时，Azure AD 同步服务（在 Azure AD 中）将对每个新对象执行检查，并尝试查找匹配的现有对象。 此过程使用三个属性： **userPrincipalName** 、 **proxyAddresses** 和 **sourceAnchor**/**immutableID** 。 根据 **userPrincipalName** 和 **proxyAddresses** 执行的匹配称为 **软匹配** 。 根据 **sourceAnchor** 执行的匹配称为 **硬匹配** 。 对于 **proxyAddresses** 属性，只会将包含 **SMTP:** （即主要电子邮件地址）的值用于评估。
+安装 Azure AD Connect 并开始同步时，Azure AD 同步服务（在 Azure AD 中）将对每个新对象执行检查，并尝试查找匹配的现有对象。 此过程使用三个属性：**userPrincipalName**、**proxyAddresses** 和 **sourceAnchor**/**immutableID**。 根据 **userPrincipalName** 和 **proxyAddresses** 执行的匹配称为 **软匹配**。 根据 **sourceAnchor** 执行的匹配称为 **硬匹配**。 对于 **proxyAddresses** 属性，只会将包含 **SMTP:** （即主要电子邮件地址）的值用于评估。
 
 只会针对来自 Connect 的新对象评估匹配。 如果更改现有对象，使它与其中的任一属性匹配，则看到的是错误。
 

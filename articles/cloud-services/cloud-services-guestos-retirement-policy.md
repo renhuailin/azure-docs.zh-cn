@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945449"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure 来宾 OS 可支持性和停用策略
@@ -27,9 +27,9 @@ Microsoft 已发布[来宾 OS 的支持策略](https://support.microsoft.com/gp/
 
 该策略规定，
 
-1. Microsoft 支持**至少两个最新的来宾 OS 系列**。 在某个系列停用后，客户可以在从正式停用之日起的 12 个月内更新为受支持的较新来宾 OS 系列。
-2. Microsoft 支持至少两个最新的支持来宾 OS 系列版本  。
-3. Microsoft 支持至少两个最新的 Azure SDK 版本  。 在某个 SDK 版本停用后，客户可以在从正式停用之日起的 12 个月内更新为较新的版本。
+1. Microsoft 支持 **至少两个最新的来宾操作系统系列**。 在某个系列停用后，客户可以在从正式停用之日起的 12 个月内更新为受支持的较新来宾 OS 系列。
+2. Microsoft 支持至少两个最新的支持来宾 OS 系列版本。
+3. Microsoft 支持至少两个最新的 Azure SDK 版本。 在某个 SDK 版本停用后，客户可以在从正式停用之日起的 12 个月内更新为较新的版本。
 
 有时，可能会支持两个以上的系列或发行版。 将在 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)中显示正式的来宾 OS 支持信息。
 
@@ -52,7 +52,7 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 来宾 OS 版本每个月发布一次。 由于常规发布的速率，每个版本都具有固定生存期。
 
-60 天使用期后，版本会“停用”  。 “停用”表示该版本将从门户中删除。 该版本再也无法通过 CSCFG 配置文件进行设置。 现有部署仍保持运行。 但是不允许进行新部署以及针对现有部署的代码和配置更新。
+60 天使用期后，版本会“停用”。 “停用”表示该版本将从门户中删除。 该版本再也无法通过 CSCFG 配置文件进行设置。 现有部署仍保持运行。 但是不允许进行新部署以及针对现有部署的代码和配置更新。
 
 在“停用”后的某个时间，来宾 OS 版本“过期”，仍在运行该过期版本的任何安装都会面临安全和漏洞问题。 通常情况下，过期是分批过期的，因此从停用到过期的时间段可能各不相同。
 
@@ -64,14 +64,14 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 * **系列停用** <br>Microsoft 将使用博客文章和门户通知。 将通过与指定的服务管理员进行直接通信（电子邮件、门户消息、电话）以通知仍使用停用的来宾 OS 系列的客户。 将在 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)中发布所有更改。
 * **版本停用** <br>所有更改及其发生日期将发布到 [Azure 来宾 OS 版本和 SDK 兼容性矩阵](cloud-services-guestos-update-matrix.md)（包括发布日期、禁用日期和到期日期）。 如果服务管理员有运行在禁用的来宾 OS 版本或系列上的部署，则将收到电子邮件。 这些电子邮件的时间可能各不相同。 通常，在禁用前至少有一个月的时间，但是此时间安排并不是官方的 SLA。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 **我如何消除迁移的影响？**
 
 建议使用最新的来宾 OS 系列设计你的云服务。
 
 1. 及早开始计划迁移到较新的系列。
 2. 设置临时测试部署以测试在新系列上运行的云服务。
-3. 将来宾 OS 版本设置为“自动”（在 [.cscfg](cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
+3. 将来宾 OS 版本设置为“**自动**”（在 [.cscfg](cloud-services-model-and-package.md#cscfg) 文件中设置 osVersion=*），以便自动迁移到新的来宾 OS 版本。
 
 **如果我的 Web 应用程序需要更深入地与 OS 集成，我该怎么办？**
 

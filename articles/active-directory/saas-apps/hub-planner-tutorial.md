@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 2d9dc483a9d60dc395c0aff52b721690d4fc701d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442348"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hub Planner 的集成
@@ -47,8 +47,8 @@ ms.locfileid: "92442348"
 若要配置 Hub Planner 与 Azure AD 的集成，需从库中将 Hub Planner 添加到托管 SaaS 应用列表中。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Hub Planner” 。
 1. 从结果面板中选择“Hub Planner”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -79,7 +79,7 @@ ms.locfileid: "92442348"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.hubplanner.com`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.hubplanner.com`。
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://app.hubplanner.com/sso/metadata`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92442348"
 
 在本部分，你将通过授予 B.Simon 访问 Hub Planner 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中选择“Hub Planner”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 

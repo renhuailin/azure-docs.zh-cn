@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 567388277f5a68ae23e8c806a8581c177c3fd1dd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: cccb42041ece65ad4f245c28dd7c5cf356d5e63c
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549458"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775147"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 创建你的第一个持久函数
 
@@ -213,7 +213,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 

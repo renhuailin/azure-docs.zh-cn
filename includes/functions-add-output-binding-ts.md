@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: glenga
 ms.openlocfilehash: dab5f0f24fa1f36b611eb79329336832d8a4b3cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78190997"
 ---
 添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。

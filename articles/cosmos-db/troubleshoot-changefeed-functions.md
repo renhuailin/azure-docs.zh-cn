@@ -9,10 +9,10 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97825622"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
@@ -71,7 +71,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 这种情形可能是多种原因造成的，应检查所有这些原因：
 
 1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为了获得最佳的网络延迟，应将 Azure 函数和 Azure Cosmos 帐户并置在同一个 Azure 区域。
-2. Azure Cosmos 容器中发生的更改是持续性的还是偶发性的？
+2. Azure Cosmos 容器中发生的更改是连续性的还是偶发性的？
 如果是后者，原因可能是存储更改与 Azure 函数拾取更改的时间有所延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到任何等待读取的更改时，它将休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
 3. Azure Cosmos 容器可能受到[速率限制](./request-units.md)。
 4. 可以使用触发器中的 `PreferredLocations` 属性来指定 Azure 区域的逗号分隔列表，以定义自定义的首选连接顺序。
@@ -85,7 +85,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>触发器中缺少某些更改
 
-如果发现 Azure Cosmos 容器中发生的某些更改未被 Azure 函数选取，或在复制目标时目标中缺少某些更改，请执行以下步骤。
+如果发现 Azure Cosmos 容器中发生的某些更改未被 Azure 函数获取，或者在复制时目标中缺少某些更改，请按照以下步骤操作。
 
 当 Azure 函数收到更改时，它通常会处理这些更改，并可能会选择性地将结果发送到另一个目标。 调查丢失更改的问题时，请确保度量在引入时间点（启动 Azure 函数时）收到的更改，而不要度量目标上的更改。 
 
@@ -96,7 +96,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 > [!NOTE]
 > 默认情况下，如果在代码执行期间发生未经处理的异常，则适用于 Cosmos DB 的 Azure Functions 触发器不会重试一批更改。 这意味着，更改未抵达目标的原因是无法处理它们。
 
-如果目标是另一个 Cosmos 容器，并且你要执行 Upsert 操作来复制项， **请验证监视的容器和目标容器上的分区键定义是否相同**。 由于此配置差异，Upsert 操作可能会将多个源项保存为目标中的一个。
+如果目标是另一个 Cosmos 容器，并且你正在执行更新插入操作来复制项，请验证受监视容器和目标容器上的分区键定义是否相同。 由于此配置差异，更新插入操作可能会将多个源项保存为目标中的一个项。
 
 如果你发现触发器根本未收到某些更改，则最常见的情形是有另一个 Azure 函数正在运行  。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用 **完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 

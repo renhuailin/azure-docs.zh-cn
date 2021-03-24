@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
 ms.openlocfilehash: d201f80aea2c22e1bee06c776d2a84fb69f2bd7d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92452577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Fluxx Labs 的集成
@@ -47,8 +47,8 @@ ms.locfileid: "92452577"
 要配置 Fluxx Labs 与 Azure AD 的集成，需要从库中将 Fluxx Labs 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Fluxx Labs” 。
 1. 从结果面板中选择“Fluxx Labs”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -78,14 +78,14 @@ ms.locfileid: "92452577"
 
 1. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：
+    a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
     | 环境 | URL 模式|
     |-------------|------------|
     | 生产 | `https://<subdomain>.fluxx.io` |
     | 预生产 | `https://<subdomain>.preprod.fluxxlabs.com`|
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
     | 环境 | URL 模式|
     |-------------|------------|
@@ -111,8 +111,8 @@ ms.locfileid: "92452577"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -125,12 +125,12 @@ ms.locfileid: "92452577"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-fluxx-labs-sso"></a>配置 Fluxx Labs SSO
@@ -151,9 +151,9 @@ ms.locfileid: "92452577"
 
     a. 选中“SAML SSO”复选框。
 
-    b. 在“请求路径”文本框中，键入 **/auth/saml** 。
+    b. 在“请求路径”文本框中，键入 **/auth/saml**。
 
-    c. 在“回调路径”文本框中，键入 **/auth/saml/callback** 。
+    c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。
 
     d. 在“断言使用者服务 URL (单一登录 URL)”文本框中，输入已在 Azure 门户中输入的“回复 URL”值。
 
@@ -165,7 +165,7 @@ ms.locfileid: "92452577"
 
     h. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 
-    i. 单击“ **保存** ”。
+    i. 单击“ **保存**”。
 
     > [!NOTE]
     > 保存内容后，字段会出于安全原因显示空白，但值已保存到配置中。
@@ -178,7 +178,7 @@ ms.locfileid: "92452577"
 
 1. 以管理员身份登录到 Fluxx Labs 公司站点。
 
-2. 单击下面显示的 **图标** 。
+2. 单击下面显示的 **图标**。
 
     ![显示管理员选项的屏幕截图，其中已选择“你的仪表板为空”下方的“+”图标。](./media/fluxxlabs-tutorial/config6.png)
 
@@ -192,7 +192,7 @@ ms.locfileid: "92452577"
 
     a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。
 
-    b. 单击“ **保存** ”。
+    b. 单击“ **保存**”。
 
 ## <a name="test-sso"></a>测试 SSO
 

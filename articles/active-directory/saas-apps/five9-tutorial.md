@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 68de5b11c131fe33252178ebecdeb9c3855fe239
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>教程：将 Azure Active Directory 与 Five9 Plus Adapter (CTI, Contact Center Agents) 集成
@@ -41,13 +41,13 @@ ms.locfileid: "92453427"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Five9 Plus Adapter (CTI, Contact Center Agents) 支持 IDP 发起的 SSO 
+* Five9 Plus Adapter (CTI, Contact Center Agents) 支持 IDP 发起的 SSO
 
 ## <a name="adding-five9-plus-adapter-cti-contact-center-agents-from-the-gallery"></a>从库添加 Five9 Plus Adapter (CTI, Contact Center Agents)
 
 若要配置 Five9 Plus Adapter (CTI, Contact Center Agents) 与 Azure AD 的集成，请从库将 Five9 Plus Adapter (CTI, Contact Center Agents) 添加到托管 SaaS 应用列表中。
 
-若要从库添加 Five9 Plus Adapter (CTI, Contact Center Agents)，请执行以下步骤： 
+若要从库添加 Five9 Plus Adapter (CTI, Contact Center Agents)，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92453427"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Five9 Plus Adapter (CTI, Contact Center Agents)”，在结果面板中选择“Five9 Plus Adapter (CTI, Contact Center Agents)”，然后单击“添加按钮”，以添加该应用程序    。
+4. 在搜索框中，键入“Five9 Plus Adapter (CTI, Contact Center Agents)”，在结果面板中选择“Five9 Plus Adapter (CTI, Contact Center Agents)”，然后单击“添加按钮”，以添加该应用程序。
 
      ![结果列表中的 Five9 Plus Adapter (CTI, Contact Center Agents)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分将基于名为 Britta Simon 的测试用户来配置并测试 Five9 Plus Adapter (CTI, Contact Center Agents) 的 Azure AD 单一登录  。
+本部分将基于名为 Britta Simon 的测试用户来配置并测试 Five9 Plus Adapter (CTI, Contact Center Agents) 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Five9 Plus Adapter (CTI, Contact Center Agents) 中相关用户之间建立链接关系。
 
 若要配置和测试 Five9 Plus Adapter (CTI, Contact Center Agents) 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92453427"
 
 若要配置 Five9 Plus Adapter (CTI, Contact Center Agents) 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Five9 Plus Adapter (CTI, Contact Center Agents) 应用程序集成页中，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Five9 Plus Adapter (CTI, Contact Center Agents) 应用程序集成页中，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "92453427"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![Five9 Plus Adapter (CTI, Contact Center Agents) 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "92453427"
 
     ![证书下载链接](common/certificatebase64.png)
 
-7. 在“设置 Five9 Plus Adapter (CTI, Contact Center Agents)”部分，根据要求复制相应 URL  。
+7. 在“设置 Five9 Plus Adapter (CTI, Contact Center Agents)”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "92453427"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -163,17 +163,17 @@ ms.locfileid: "92453427"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Five9 Plus Adapter (CTI, Contact Center Agents) 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Five9 Plus Adapter (CTI, Contact Center Agents)”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Five9 Plus Adapter (CTI, Contact Center Agents)”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Five9 Plus Adapter (CTI, Contact Center Agents)”。 
+2. 在应用程序列表中，选择“Five9 Plus Adapter (CTI, Contact Center Agents)”。
 
     ![应用程序列表中的 Five9 Plus Adapter (CTI, Contact Center Agents)](common/all-applications.png)
 
