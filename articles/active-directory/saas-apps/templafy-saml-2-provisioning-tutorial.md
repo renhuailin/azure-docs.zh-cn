@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
 ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101648197"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>教程：为 Templafy SAML2 配置自动用户预配
@@ -113,7 +113,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

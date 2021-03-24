@@ -10,10 +10,10 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.openlocfilehash: 750a2100d34e02cac7c613cc6b95160fc348b535
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576360"
 ---
 # <a name="update-the-rdp-port-range-values"></a>更新 RDP 端口范围值
@@ -32,7 +32,7 @@ ms.locfileid: "96576360"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取 `Microsoft.Network/loadBalancers` 资源。 |
 |[Set-AzResource](/powershell/module/az.resources/set-azresource)|更新 `Microsoft.Network/loadBalancers` 资源。|

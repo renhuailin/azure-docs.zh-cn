@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.author: zarhoads
 ms.openlocfilehash: f12dffe0b538738a8f6dd00cd3d87d44da828f21
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96779161"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>使用 Helm 在 Azure Kubernetes 服务 (AKS) 中安装现有应用程序
@@ -48,7 +48,7 @@ version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6
 
 ### <a name="add-helm-repositories"></a>添加 Helm 存储库
 
-使用 [helm][helm-repo-add] 存储库命令添加 *nginx* 存储库。
+使用 [helm repo][helm-repo-add] 命令添加 ingress-nginx 存储库。
 
 ```console
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

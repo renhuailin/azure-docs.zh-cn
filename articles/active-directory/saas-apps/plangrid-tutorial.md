@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 PlanGrid 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 PlanGrid 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 PlanGrid 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 40bc9da59138a2e5f70f1b8c5f06a9ba606791fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>教程：Azure Active Directory 与 PlanGrid 集成
@@ -61,13 +61,13 @@ ms.locfileid: "92516658"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **PlanGrid** ，在结果面板中选择“PlanGrid”，并单击“添加”按钮添加该应用程序   。
+4. 在搜索框中键入 **PlanGrid**，在结果面板中选择“PlanGrid”，并单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 PlanGrid](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，请基于一个名为“Britta Simon”的测试用户使用 PlanGrid 配置和测试 Azure AD 单一登录。 
+在本部分中，请基于一个名为“Britta Simon”的测试用户使用 PlanGrid 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 PlanGrid 相关用户之间建立链接关系。
 
 若要配置并测试 PlanGrid 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92516658"
 
 若要配置 PlanGrid 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 **PlanGrid** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)的 **PlanGrid** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "92516658"
 
     在“标识符”  文本框中，键入一个 URL：`https://io.plangrid.com/sessions/saml/metadata`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "92516658"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 PlanGrid”部分，根据要求复制相应的 URL  。
+7. 在“设置 PlanGrid”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "92516658"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "92516658"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 PlanGrid 的访问权限支持她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“PlanGrid”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“PlanGrid”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“PlanGrid”。 
+2. 在应用程序列表中，选择“PlanGrid”。
 
     ![应用程序列表中的 PlanGrid 链接](common/all-applications.png)
 

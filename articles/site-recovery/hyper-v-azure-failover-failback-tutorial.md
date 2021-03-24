@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132453"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>将 Hyper-V VM 故障转移到 Azure
@@ -48,7 +48,7 @@ ms.locfileid: "86132453"
 
 在“受保护的项”中，单击“复制的项”>“虚拟机”。
 
-1. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
+1. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”可查看更多详细信息。
 
 1. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置
 
@@ -70,8 +70,8 @@ ms.locfileid: "86132453"
 
 1. 如果想在故障转移后通过使用远程桌面协议 (RDP) 和安全外壳 (SSH) 连接到 Azure VM，请[验证是否符合要求](failover-failback-overview.md#connect-to-azure-after-failover)。
 2. 故障转移后，请转到该 VM，并通过与它建立[连接](../virtual-machines/windows/connect-logon.md)来进行验证。
-3. 若要在故障转移后使用不同的恢复点，请使用“更改恢复点”。 在下一步骤中提交故障转移后，此选项不再可用。
-4. 验证后，选择“提交”以确认故障转移后的 VM 恢复点。
+3. 若要在故障转移后使用不同的恢复点，请使用“更改恢复点”。  在下一步骤中提交故障转移后，此选项不再可用。
+4. 验证后，选择“提交”以确认故障转移后的 VM 恢复点  。
 5. 提交后，系统会删除其他所有可用的恢复点。 完成此步骤，就完成了故障转移。
 
 >[!TIP]

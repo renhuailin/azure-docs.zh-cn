@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c522f5f194adae793f0676b24f95abc98dd89010
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>教程：Azure Active Directory 与 Workrite 的集成
@@ -41,7 +41,7 @@ ms.locfileid: "92520126"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Workrite 支持启用了 SP 的 SSO 
+* Workrite 支持启用了 SP 的 SSO
 
 ## <a name="adding-workrite-from-the-gallery"></a>从库中添加 Workrite
 
@@ -61,13 +61,13 @@ ms.locfileid: "92520126"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Workrite”，在结果面板中选择“Workrite”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“Workrite”，在结果面板中选择“Workrite”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Workrite](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Workrite 的 Azure AD 单一登录  。
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Workrite 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Workrite 相关用户之间建立链接关系。
 
 若要配置和测试 Workrite 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92520126"
 
 若要配置 Workrite 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Workrite”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Workrite”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92520126"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Workrite 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=<uniqueid>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=<uniqueid>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Workrite 客户端支持团队](mailto:support@workrite.co.uk)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92520126"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Workrite”部分中，根据要求复制相应 URL  。
+6. 在“设置 Workrite”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92520126"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -146,17 +146,17 @@ ms.locfileid: "92520126"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Workrite 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workrite”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workrite”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Workrite”  。
+2. 在应用程序列表中，选择“Workrite”。
 
     ![应用程序列表中的 Workrite 链接](common/all-applications.png)
 
@@ -182,27 +182,27 @@ ms.locfileid: "92520126"
 
 1. 以管理员身份登录到 Workrite 公司站点。
 
-2. 在导航窗格中，单击“管理员”  。
+2. 在导航窗格中，单击“管理员”。
    
     ![管理员控制][400]
 
-3. 转到“快速链接”，并单击“创建用户”  。
+3. 转到“快速链接”，并单击“创建用户”。
    
     ![“创建用户”部分][401]
 
-4. 在“创建用户”对话框中，执行以下步骤： 
+4. 在“创建用户”对话框中执行以下步骤：
    
     ![创建用户对话框][402]
     
     a. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    b. 在“名字”文本框中，键入用户的名字（如 Britta）  。
+    b. 在“名字”文本框中，键入用户的名字（如 Britta）。
 
-    c. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）  。
+    c. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）。
     
     d. 对于“选择角色”选项，请选择“客户端管理员”。  
     
-    e. 单击“ **保存** ”。
+    e. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

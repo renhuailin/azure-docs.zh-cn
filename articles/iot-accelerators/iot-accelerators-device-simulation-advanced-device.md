@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852551"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
@@ -30,11 +30,11 @@ ms.locfileid: "96852551"
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
-如果尚未部署设备模拟，请参阅 GitHub 上的 [设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 ### <a name="open-device-simulation"></a>打开设备模拟
 
-如果尚未部署设备模拟，请参阅 GitHub 上的 [设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) 。
+如果尚未部署设备模拟，请参阅 GitHub 上的[设备模拟部署](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)。
 
 ## <a name="device-models"></a>设备模型
 

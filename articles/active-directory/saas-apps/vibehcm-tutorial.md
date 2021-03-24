@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 59dfd1020b65923ebbcee6bc8c80fab92f23b4f1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92635960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>教程：Azure Active Directory 与 Vibe HCM 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92635960"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Vibe HCM 的集成，需要具有以下项：
 
@@ -61,13 +61,13 @@ ms.locfileid: "92635960"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Vibe HCM”，在结果面板中选择“Vibe HCM”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Vibe HCM”，在结果面板中选择“Vibe HCM”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Vibe HCM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Vibe HCM 配置和测试 Azure AD 单一登录。 
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Vibe HCM 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Vibe HCM 相关用户之间建立关联。
 
 若要配置和测试 Vibe HCM 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92635960"
 
 要为 Vibe HCM 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Vibe HCM** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Vibe HCM** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,15 +97,15 @@ ms.locfileid: "92635960"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。  
+4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。
 
     ![屏幕截图显示了“基本 SAML 配置”，其中包含“上传元数据文件”链接。](common/preintegrated.png)
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyName>.vibehcm.com/portal.jsp`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyName>.vibehcm.com/portal.jsp`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Vibe HCM 客户端支持团队](mailto:support@vibehcm.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -116,7 +116,7 @@ ms.locfileid: "92635960"
 
 ### <a name="configure-vibe-hcm-single-sign-on"></a>配置 Vibe HCM 单一登录
 
-若要在 Vibe HCM  端配置单一登录，需要将应用联合元数据 URL  发送给 [Vibe HCM 支持团队](mailto:support@vibehcm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Vibe HCM 端配置单一登录，需要将应用联合元数据 URL 发送给 [Vibe HCM 支持团队](mailto:support@vibehcm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -126,7 +126,7 @@ ms.locfileid: "92635960"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -140,17 +140,17 @@ ms.locfileid: "92635960"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予访问 Vibe HCM 的权限，允许 Britta Simon 使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Vibe HCM”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Vibe HCM”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Vibe HCM”  。
+2. 在应用程序列表中，选择“Vibe HCM”。
 
     ![应用程序列表中的 Vibe HCM 链接](common/all-applications.png)
 

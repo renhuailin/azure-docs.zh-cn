@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Yonyx Interactive Guides 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 1cbf0b03928f8cf8823fe2491c48d0470cf24606
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>教程：Azure Active Directory 与 Yonyx Interactive Guides 的集成
@@ -63,7 +63,7 @@ ms.locfileid: "92519140"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Yonyx Interactive Guides”，从结果面板中选择“Yonyx Interactive Guides”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Yonyx Interactive Guides”，从结果面板中选择“Yonyx Interactive Guides”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Yonyx Interactive Guides](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92519140"
 
 若要配置 Yonyx Interactive Guides 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Yonyx Interactive Guides”应用程序集成页上，单击“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Yonyx Interactive Guides”应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "92519140"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Yonyx Interactive Guides 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com/y/conversation/?id=<guid number>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.yonyx.com`
 
@@ -114,7 +114,7 @@ ms.locfileid: "92519140"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Yonyx Interactive Guides”部分中，根据要求复制相应 URL  。
+6. 在“设置 Yonyx Interactive Guides”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "92519140"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "92519140"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Yonyx Interactive Guides 的权限，使她能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yonyx Interactive Guides”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Yonyx Interactive Guides”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Yonyx Interactive Guides”  。
+2. 在应用程序列表中，选择“Yonyx Interactive Guides”。
 
     ![应用程序列表中的 Yonyx Interactive Guides 链接](common/all-applications.png)
 

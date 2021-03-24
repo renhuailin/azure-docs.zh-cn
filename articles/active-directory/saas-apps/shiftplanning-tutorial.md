@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>教程：Azure Active Directory 与 Humanity 的集成
@@ -47,7 +47,7 @@ ms.locfileid: "92522149"
 
 若要配置 Humanity 与 Azure AD 的集成，需要从库中将 Humanity 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Humanity，请执行以下步骤： 
+若要从库中添加 Humanity，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92522149"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Humanity”  ，在结果面板中选择“Humanity”，并单击“添加”按钮添加该应用程序   。
+4. 在搜索框中键入“Humanity”，在结果面板中选择“Humanity”，并单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Humanity](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”  的测试用户配置和测试 Humanity 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Humanity 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Humanity 相关用户之间建立链接关系。
 
 若要配置和测试 Humanity 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92522149"
 
 若要配置 Humanity 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Humanity  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Humanity 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92522149"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Humanity 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://company.humanity.com/includes/saml/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://company.humanity.com/includes/saml/` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://company.humanity.com/app/`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92522149"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Humanity”部分中，根据要求复制相应 URL  。
+6. 在“设置 Humanity”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,28 +124,28 @@ ms.locfileid: "92522149"
 
 ### <a name="configure-humanity-single-sign-on"></a>配置 Humanity 单一登录
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Humanity  公司站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Humanity 公司站点。
 
 2. 在顶部菜单中，单击“管理员”。 
 
     ![管理员](./media/shiftplanning-tutorial/iC786619.png "管理员")
-3. 在“集成”  下，单击“单一登录”  。
+3. 在 **“集成”** 下，单击 **“单一登录”**。
 
     ![显示从“集成”菜单中选择了“单一登录”的屏幕截图。](./media/shiftplanning-tutorial/iC786620.png "单一登录")
 
-4. 在“单一登录”  部分中，执行以下步骤：
+4. 在“单一登录”部分中，执行以下步骤：
 
     ![显示“单一登录”选项的屏幕截图，你可以在其中输入所述值。](./media/shiftplanning-tutorial/iC786905.png "单一登录")
 
     a. 选择“已启用 SAML”  。
 
-    b. 选择“允许密码登录”  。
+    b. 选择“允许密码登录”。
 
-    c. 在“SAML 颁发者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    c. 在“SAML 颁发者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    d. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    d. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    e. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“X.509 证书”  文本框中。
+    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到 **“X.509 证书”** 文本框中。
 
     f. 单击“保存设置”。 
 
@@ -157,7 +157,7 @@ ms.locfileid: "92522149"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -172,17 +172,17 @@ ms.locfileid: "92522149"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Humanity 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Humanity”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Humanity”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Humanity”  。
+2. 在应用程序列表中，选择“Humanity”。
 
     ![应用程序列表中的 Humanity 链接](common/all-applications.png)
 
@@ -206,27 +206,27 @@ ms.locfileid: "92522149"
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 以管理员身份登录到 Humanity  公司站点。
+1. 以管理员身份登录到 Humanity 公司站点。
 
 2. 单击“管理”  。
 
     ![管理员](./media/shiftplanning-tutorial/iC786619.png "管理员")
 
-3. 单击“人员”  。
+3. 单击 **“员工”**。
 
     人员![](./media/shiftplanning-tutorial/ic786623.png "人员")
 
-4. 在“操作”  下，单击“添加员工”  。
+4. 在“操作”下，单击“添加员工”。
 
     ![添加员工](./media/shiftplanning-tutorial/iC786624.png "添加员工")
 
-5. 在“添加员工”  部分中，执行以下步骤：
+5. 在 **“添加员工”** 部分中，执行以下步骤：
 
     ![保存员工](./media/shiftplanning-tutorial/iC786625.png "保存员工")
 
-    a. 将要预配的有效 Azure AD 帐户的名字、姓氏和电子邮件键入相关文本框    。
+    a. 将要预配的有效 Azure AD 帐户的名字、姓氏和电子邮件键入相关文本框。
 
-    b. 单击“保存员工”  。
+    b. 单击 **“保存员工”**。
 
 > [!NOTE]
 > 可以使用 Humanity 提供的任何其他 Humanity 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

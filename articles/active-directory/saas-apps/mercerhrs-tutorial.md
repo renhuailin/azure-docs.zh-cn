@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: fc60b838219e73b008f82271353ca75d0d24d2e3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>教程：Azure Active Directory 与 Mercer BenefitsCentral (MBC) 集成
@@ -103,7 +103,7 @@ ms.locfileid: "92517185"
 
     a. 在“标识符”文本框中键入 URL：`stg.mercerhrs.com/saml2.0`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx`
 
     > [!NOTE]
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Mercer BenefitsCentral (MBC) 客户端支持团队](https://www.mercer.com/contact-us.html)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -134,7 +134,7 @@ ms.locfileid: "92517185"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "92517185"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

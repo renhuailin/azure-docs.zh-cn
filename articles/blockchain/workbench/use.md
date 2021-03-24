@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324043"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中使用应用程序
@@ -36,15 +36,15 @@ ms.locfileid: "74324043"
 
 ## <a name="create-new-contract"></a>创建新合同
 
-若要创建新合同，需要成为指定为合同**发起人**的成员。 有关定义应用程序角色和合同发起人的信息，请参阅[配置中的工作流概述](configuration.md#workflows)。 有关将成员分配给应用程序角色的信息，请参阅[将成员添加到应用程序](manage-users.md#add-member-to-application)。
+若要创建新合同，需要成为指定为合同 **发起人** 的成员。 有关定义应用程序角色和合同发起人的信息，请参阅[配置中的工作流概述](configuration.md#workflows)。 有关将成员分配给应用程序角色的信息，请参阅[将成员添加到应用程序](manage-users.md#add-member-to-application)。
 
 1. 在 Blockchain Workbench 应用程序部分，选择包含要创建的合同的应用程序磁贴。 此时会显示有效合同的列表。
 
-2. 若要创建新的合同，请选择“新建合同”。****
+2. 若要创建新的合同，请选择“新建合同”。
 
     ![“新建合同”按钮](./media/use/contract-list.png)
 
-3. 此时会显示“新建合同”窗格。**** 指定初始参数值。 选择“创建”。
+3. 此时会显示“新建合同”窗格。 指定初始参数值。 选择“创建”。
 
     ![“新建合同”窗格](./media/use/new-contract.png)
 
@@ -68,18 +68,18 @@ ms.locfileid: "74324043"
     | 操作 | 有关上一操作的详细信息 |
     | 活动 | 合同的事务历史记录 |
     
-3. 在“操作”**** 部分，选择“执行操作”****。
+3. 在“操作”部分，选择“执行操作”。
 
 4. 有关合同当前状态的详细信息显示在窗格中。 在下拉列表中选择要执行的操作。 
 
     ![选择操作](./media/use/choose-action.png)
 
-5. 选择“执行操作”**** 以启动操作。
+5. 选择“执行操作”以启动操作。
 6. 如果操作需要参数，请指定操作的值。
 
     ![执行操作](./media/use/take-action.png)
 
-7. 选择“执行操作”**** 以执行操作。
+7. 选择“执行操作”以执行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

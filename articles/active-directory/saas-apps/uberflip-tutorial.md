@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
@@ -51,7 +51,7 @@ Uberflip 支持以下功能：
 若要配置 Uberflip 与 Azure AD 的集成，需要从 Azure 市场中将 Uberflip 添加到托管 SaaS 应用列表。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在左窗格中选择“Azure Active Directory”  。
+1. 在左窗格中选择“Azure Active Directory”。
 
    ![“Azure Active Directory”选项](common/select-azuread.png)
 

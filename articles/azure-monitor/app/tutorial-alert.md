@@ -8,10 +8,10 @@ ms.author: lagayhar
 ms.date: 04/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 6b8cc951301ec315f758478eda1c0736882e66f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100597308"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
@@ -40,13 +40,13 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 
 1. 选择“Application Insights”，然后选择订阅  。  
 
-2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”    。
+2. 选择“调查”菜单下的“可用性”，然后单击“创建测试”。
 
     ![添加可用性测试](media/tutorial-alert/add-test-001.png)
 
 3. 键入测试名称，保留其他默认值。  此项选择将从五个不同的地理位置，每隔 5 分钟针对应用程序 URL 触发请求。
 
-4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应   。 选择“Near-realtime”并将状态设置为“已启用”。  
+4. 选择“警报”打开“警报”下拉列表，可在其中定义测试失败时如何做出响应。 选择“Near-realtime”并将状态设置为“已启用”。
 
     键入满足警报条件时要发送到的电子邮件地址。  可根据需要键入满足警报条件时要调用的 webhook 的地址。
 

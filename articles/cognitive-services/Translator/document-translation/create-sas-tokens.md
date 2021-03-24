@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102489627"
 ---
 # <a name="create-sas-tokens-for-document-translation-processing"></a>为文档翻译处理创建 SAS 令牌
@@ -65,7 +65,7 @@ ms.locfileid: "102489627"
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>在 Azure 门户中创建 Blob 的 SAS 令牌
 
 > [!NOTE]
-> 目前不支持直接在 Azure 门户中创建容器的 SAS 令牌。 但是，可以使用 [**Azure 存储资源管理器**](#create-your-sas-tokens-with-azure-storage-explorer)创建 SAS 令牌，或者[以编程方式](../../../storage/blobs/sas-service-create.md)完成该任务。
+> 目前不支持直接在 Azure 门户中创建容器的 SAS 令牌。 但是，可以使用 [**Azure 存储资源管理器**](#create-your-sas-tokens-with-azure-storage-explorer)创建 SAS 令牌，或者 [以编程方式](../../../storage/blobs/sas-service-create.md)完成该任务。
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>先决条件

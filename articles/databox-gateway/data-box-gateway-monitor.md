@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.openlocfilehash: ed05f3d60f8ba4fbb06327136c7a117ae1d1d2db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96581555"
 ---
 # <a name="monitor-your-azure-data-box-gateway"></a>监视 Azure Data Box Gateway
@@ -37,7 +37,7 @@ ms.locfileid: "96581555"
 
 ### <a name="metrics-on-your-device"></a>设备上的指标
 
-本部分介绍设备上的监视指标。 指标可为：
+本部分介绍了设备上的监视指标。 指标可以是：
 
 * 容量指标。 容量指标与设备的容量有关。
 

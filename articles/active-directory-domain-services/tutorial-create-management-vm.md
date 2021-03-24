@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: d017fc3fc53c9f89978893670df10ecd731da904
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618172"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
@@ -102,10 +102,10 @@ Azure AD DS 为用户、应用程序和服务提供一个托管域供其使用�
 若要在已加入域的 VM 上安装 Active Directory 管理工具，请完成以下步骤：
 
 1. 如果在登录 VM 时服务器管理器默认情况下未打开，请选择“开始”菜单，然后选择“服务器管理器”。
-1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。 
+1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。
-1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。 
-1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.aaddscontoso.com*），然后选择“下一步”。 
+1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。
+1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.aaddscontoso.com*），然后选择“下一步”。
 1. 在“服务器角色”页上，单击“下一步”。
 1. 在“功能”页上，依次展开“远程服务器管理工具”节点和“角色管理工具”节点。  
 

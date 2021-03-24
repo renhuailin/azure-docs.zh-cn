@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 设备, 查找, 打开
 ms.openlocfilehash: 67fc93b924d5d663bb43098969c54d1975bd5895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73931741"
 ---
 # <a name="find-then-open-the-azure-kinect-device"></a>找到并打开 Azure Kinect 设备
@@ -57,7 +57,7 @@ for (uint8_t deviceIndex = 0; deviceIndex < device_count; deviceIndex++)
 }
 ```
 
-`index`[`k4a_device_open()` 的 ](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 参数指示当连接了多个设备时要打开哪个设备。 如果你预期只会连接一个设备，可以传递 `K4A_DEVICE_DEFAULT` 的参数或 0 来指示第一台设备。
+[`k4a_device_open()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 的 `index` 参数指示当连接了多个设备时要打开哪个设备。 如果你预期只会连接一个设备，可以传递 `K4A_DEVICE_DEFAULT` 的参数或 0 来指示第一台设备。
 
 用完句柄后，每当打开设备时，都需要调用 [`k4a_device_close()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7a3931d9a690b3971caaac83b43f9423.html#ga7a3931d9a690b3971caaac83b43f9423)。 在关闭句柄之前，无法打开同一设备的其他句柄。
 

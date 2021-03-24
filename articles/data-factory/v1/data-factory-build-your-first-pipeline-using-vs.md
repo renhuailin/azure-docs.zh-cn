@@ -3,17 +3,17 @@ title: 构建第一个数据工厂 (Visual Studio)
 description: 本教程使用 Visual Studio 创建一个示例 Azure 数据工厂管道。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: 2ae8e24b10a6661f5a18f3d04e243232436b2911
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7431dcbdcd94b74482786625a052bc5abc31c164
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377442"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783160"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -60,14 +60,14 @@ ms.locfileid: "100377442"
 2. 只有订阅/资源组级别的 [数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。  
 3. 必须在计算机上安装了以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
-   * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。   
+   * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。  
    * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
 ### <a name="create-visual-studio-project"></a>创建 Visual Studio 项目
-1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。    将显示“新建项目”  对话框。  
-2. 在“新建项目”对话框中，选择“DataFactory”模板，并单击“空数据工厂项目”。      
+1. 启动 **Visual Studio 2013** 或 **Visual Studio 2015**。 单击“文件”，指向“新建”并单击“项目”。    将显示“新建项目”对话框。  
+2. 在“新建项目”对话框中，选择“DataFactory”模板，并单击“空数据工厂项目”。     
 
     ![“新建项目”对话框](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 3. 输入项目的 **名称**、**位置** 以及 **解决方案** 的名称，并单击“确定”。 
@@ -290,7 +290,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
 
 1. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布”  。
-2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。  
+2. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。 
 3. 应该会看到以下对话框：
 
    ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -415,7 +415,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用“服务器资源管理器”查看数据工厂
 1. 在 **Visual Studio** 中，在菜单上单击“视图”，并单击“服务器资源管理器”。  
-2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。   如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的 **帐户**，并单击“继续”。 输入 **密码**，并单击“登录”。  Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。 
+2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。  如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的 **帐户**，并单击“继续”。  输入 **密码**，并单击“登录”。 Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。
 
     ![服务器资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。 
@@ -425,9 +425,9 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ## <a name="update-data-factory-tools-for-visual-studio"></a>更新适用于 Visual Studio 的数据工厂工具
 若要更新适用于 Visual Studio 的 Azure 数据工厂工具，请执行以下步骤：
 
-1. 在菜单中单击“工具”，并选择“扩展和更新”。  
-2. 在左窗格中选择“更新”，并选择“Visual Studio 库”。  
-3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，并单击“更新”。   如果未看到此项，说明已有此工具的最新版本。
+1. 在菜单中单击“工具”，并选择“扩展和更新”。 
+2. 在左窗格中选择“更新”，并选择“Visual Studio 库”。 
+3. 选择“用于 Visual Studio 的 Azure 数据工厂工具”，并单击“更新”。  如果未看到此项，说明已有此工具的最新版本。
 
 ## <a name="use-configuration-files"></a>使用配置文件
 可以在 Visual Studio 中使用配置文件，以不同的方式为每个环境配置链接服务/表/管道的属性。
@@ -450,8 +450,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 ### <a name="add-a-configuration-file"></a>添加配置文件
 执行以下步骤，为每个环境添加配置文件：   
 
-1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。  
-2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的 **名称**，并单击“添加”。
+1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。 
+2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的 **名称**，并单击“添加”。  
 
     ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 使用以下格式添加配置参数及其值：
@@ -527,14 +527,14 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 使用配置文件在 Azure 数据工厂项目中发布实体：   
 
-1. 右键单击数据工厂项目，并单击“发布”查看“发布项”对话框。  
-2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，并单击“下一步”。     
-3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。  
+1. 右键单击数据工厂项目，并单击“发布”查看“发布项”对话框。 
+2. 选择现有的数据工厂，或者在“配置数据工厂”页上指定用于创建数据工厂的值，并单击“下一步”。    
+3. 在“发布项”页上，可以看到一个下拉列表，其中包含“选择部署配置”字段的可用配置。 
 
     ![选择配置文件](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
-4. 选择要使用的 **配置文件**，并单击“下一步”。 
-5. 确认在“摘要”页上显示了 JSON 文件的名称，并单击“下一步”。  
-6. 部署操作完成后，请单击“完成”。 
+4. 选择要使用的 **配置文件**，并单击“下一步”。
+5. 确认在“摘要”页上显示了 JSON 文件的名称，并单击“下一步”。 
+6. 部署操作完成后，请单击“完成”。
 
 如果进行部署，则在将实体部署到 Azure 数据工厂服务之前，请使用配置文件中的值设置 JSON 文件中的属性。   
 

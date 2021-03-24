@@ -4,12 +4,12 @@ description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933726"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866992"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教程：使用企业安全性套餐在 HDInsight 中配置 Apache HBase 策略
 
@@ -86,7 +86,7 @@ ms.locfileid: "98933726"
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase shell 输出](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="HDInsight Hadoop HBase shell 输出" border="true":::
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 
@@ -94,11 +94,11 @@ ms.locfileid: "98933726"
 
 1. 打开“Ranger 管理 UI”  。 在“HBase”下，单击“\<ClusterName>_hbase”。
 
-   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger 管理 UI" border="true":::
 
 2. “策略列表”屏幕将显示针对此群集创建的所有 Ranger 策略。  可以列出一个预先配置的策略。 单击“添加新策略”。 
 
-    ![Apache Ranger HBase 策略列表](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Apache Ranger HBase 策略列表" border="true":::
 
 3. 在“创建策略”屏幕上输入以下值  ：
 
@@ -117,7 +117,7 @@ ms.locfileid: "98933726"
    * `*` 表示字符出现零次或多次。
    * `?` 表示单个字符。
 
-   ![Apache Ranger 策略创建 sales](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Apache Ranger 策略创建 sales" border="true":::
 
    >[!NOTE]
    >如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
@@ -136,7 +136,7 @@ ms.locfileid: "98933726"
    |选择用户  | marketing_user1 |
    |权限  | 读取 |
 
-   ![Apache Ranger 策略创建 marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Apache Ranger 策略创建 marketing" border="true":::  
 
 6. 单击“添加”保存策略。 
 
@@ -226,15 +226,15 @@ ms.locfileid: "98933726"
 
 1. 从 Ranger UI 查看审核访问事件。
 
-   ![HDInsight Ranger UI 策略审核](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="HDInsight Ranger UI 策略审核" border="true":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在顶部的“搜索”框中，键入 **HDInsight**。  
-1. 选择“服务”下的“HDInsight 群集”   。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 在顶部的“搜索”框中，键入 **HDInsight**。 
+1. 选择“服务”下的“HDInsight 群集” 。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
 1. 单击 **“删除”** 。 单击 **“是”** 。
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Mindflash 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Mindflash 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Mindflash 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fbc79723dd484148ddf2f8836848aa9bc333341
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522578"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 集成
+# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>教程：Azure Active Directory 与 Mindflash 的集成
 
 本教程介绍如何将 Mindflash 与 Azure Active Directory (Azure AD) 集成。
 将 Mindflash 与 Azure AD 集成具有以下优势：
@@ -41,13 +41,13 @@ ms.locfileid: "92522578"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Mindflash 支持 SP 发起的 SSO 
+* Mindflash 支持 SP 发起的 SSO
 
 ## <a name="adding-mindflash-from-the-gallery"></a>从库中添加 Mindflash
 
 若要配置 Mindflash 与 Azure AD 的集成，需要从库中将 Mindflash 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Mindflash，请执行以下步骤： 
+**若要从库中添加 Mindflash，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92522578"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Mindflash”，在结果面板中选择“Mindflash”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Mindflash”，在结果面板中选择“Mindflash”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Mindflash](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置并测试 Mindflash 的 Azure AD 单一登录。 
+在本部分中，基于名为“Britta Simon”的测试用户配置并测试 Mindflash 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Mindflash 相关用户之间建立链接关系。
 
 若要配置和测试 Mindflash 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -76,7 +76,7 @@ ms.locfileid: "92522578"
 2. **[配置 Mindflash 单一登录](#configure-mindflash-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Mindflash 测试用户](#create-mindflash-test-user) - 在 Mindflash 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式  。
+5. [创建 Mindflash 测试用户](#create-mindflash-test-user) - 在 Mindflash 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "92522578"
 
 若要配置 Mindflash 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Mindflash** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Mindflash** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92522578"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Mindflash 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.mindflash.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.mindflash.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.mindflash.com`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92522578"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Mindflash”部分，根据要求复制相应的 URL  。
+6. 在“设置 Mindflash”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92522578"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92522578"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Mindflash 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Mindflash”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Mindflash”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Mindflash”  。
+2. 在应用程序列表中，选择“Mindflash”。
 
     ![应用程序列表中的 Mindflash 链接](common/all-applications.png)
 
@@ -183,23 +183,23 @@ ms.locfileid: "92522578"
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
 
-1. 以管理员身份登录到 **Mindflash** 公司站点。
+1. 以管理员身份登录到你的 **Mindflash** 公司站点。
 
 1. 转到“管理用户”。 
    
     ![管理用户](./media/mindflash-tutorial/ic787140.png "管理用户")
 
-1. 单击“添加用户”，并单击“新建”。  
+1. 单击 **“添加用户”**，然后单击 **“新建”**。
 
-1. 在“添加新用户”部分，对要预配的有效 Azure AD 帐户执行下列步骤： 
+1. 在“添加新用户”部分，对要预配的有效 Azure AD 帐户执行下列步骤：
    
     ![添加新用户](./media/mindflash-tutorial/ic787141.png "添加新用户")
    
-    a. 在“名字”文本框中，输入用户的名字（如“Britta”）    。
+    a. 在“名字”文本框中，输入用户的名字（如“Britta”）。
 
-    b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）    。
+    b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
     
-    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 **BrittaSimon\@contoso.com** ）。
+    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（如 **BrittaSimon\@contoso.com**）。
 
     b. 单击“添加”  。
 

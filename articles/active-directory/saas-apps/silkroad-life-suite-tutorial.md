@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 89d086ce136885e203e300f04bdbf3ade0affeb3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教程：Azure Active Directory 与 SilkRoad Life Suite 集成
@@ -97,10 +97,10 @@ ms.locfileid: "92516041"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
+4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     > [!NOTE]
-    > 你将获取本教程中稍后介绍的 **服务提供程序元数据文件** 。
+    > 你将获取本教程中稍后介绍的 **服务提供程序元数据文件**。
 
     a. 单击“上传元数据文件”  。
 
@@ -119,7 +119,7 @@ ms.locfileid: "92516041"
 
     d. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.silkroad-eng.com/Authentication/`。
 
-5. 在“基本 SAML 配置”  部分中，如果你没有 **服务提供程序元数据文件** ，请执行以下步骤：
+5. 在“基本 SAML 配置”  部分中，如果你没有 **服务提供程序元数据文件**，请执行以下步骤：
 
     ![SilkRoad Life Suite 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "92516041"
 
     ![屏幕截图显示从“服务提供商”中选择的“联合身份验证详细信息”。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
-1. 单击“下载联合元数据”  ，并在计算机上保存该元数据文件。 在 Azure 门户的“基本 SAML 配置”部分中，使用所下载的联合元数据作为 **服务提供程序元数据文件** 。
+1. 单击“下载联合元数据”  ，并在计算机上保存该元数据文件。 在 Azure 门户的“基本 SAML 配置”部分中，使用所下载的联合元数据作为 **服务提供程序元数据文件**。
 
     ![屏幕截图显示“下载联合元数据”链接。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
@@ -195,11 +195,11 @@ ms.locfileid: "92516041"
 
     b. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。  
 
-    c. 在“IdP 说明”  文本框中，键入配置说明（例如： *Azure AD SSO* ）。
+    c. 在“IdP 说明”  文本框中，键入配置说明（例如：*Azure AD SSO*）。
 
     d. 在“元数据文件”  文本框中，上传从 Azure 门户下载的 **元数据** 文件。
   
-    e. 在“IdP 名称”  文本框中，键入特定于配置的名称（例如： *Azure SP* ）。
+    e. 在“IdP 名称”  文本框中，键入特定于配置的名称（例如：*Azure SP*）。
   
     f. 在“注销服务 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
@@ -219,7 +219,7 @@ ms.locfileid: "92516041"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -234,7 +234,7 @@ ms.locfileid: "92516041"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

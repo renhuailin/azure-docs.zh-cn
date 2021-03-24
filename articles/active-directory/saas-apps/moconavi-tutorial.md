@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f4ddb41528357d2f1b5c9e671ec2dd1308f9bf11
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>教程：Azure Active Directory 与 moconavi 集成
@@ -105,7 +105,7 @@ ms.locfileid: "92516816"
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/SSO`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [moconavi 客户端支持团队](mailto:support@recomot.co.jp)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -136,7 +136,7 @@ ms.locfileid: "92516816"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "92516816"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -201,9 +201,9 @@ ms.locfileid: "92516816"
 
     ![屏幕截图显示了 moconavi 页面，你可以在其中输入所述值。](./media/moconavi-tutorial/testing3.png)
 
-    a. 将 **输入身份验证密钥** :`azureAD` 输入到“输入身份验证密钥”  文本框中。
+    a. 将 **输入身份验证密钥**:`azureAD` 输入到“输入身份验证密钥”  文本框中。
 
-    b. 将 **输入用户 ID** :`your ad account` 输入到“输入用户 ID”  文本框中。
+    b. 将 **输入用户 ID**:`your ad account` 输入到“输入用户 ID”  文本框中。
 
     c. 单击“登录”  。
 

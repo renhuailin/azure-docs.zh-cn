@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636147"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
@@ -61,7 +61,7 @@ ms.locfileid: "92636147"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Work.com** ，在结果面板中选择“Work.com”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Work.com**，在结果面板中选择“Work.com”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“Work.com”](common/search-new-app.png)
 
@@ -182,7 +182,7 @@ ms.locfileid: "92636147"
     
     i. 对于“服务提供程序发起的请求绑定”  ，请选择“HTTP Post”  。
     
-    j. 单击“ **保存** ”。
+    j. 单击“ **保存**”。
 
 10. 在 Work.com 经典门户内，从左侧导航窗格中，单击“域管理”  以展开相关部分，并单击“我的域”  ，打开“我的域”  页。 
     
@@ -204,7 +204,7 @@ ms.locfileid: "92636147"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -214,11 +214,11 @@ ms.locfileid: "92636147"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -236,7 +236,7 @@ ms.locfileid: "92636147"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -270,21 +270,21 @@ ms.locfileid: "92636147"
    
     ![用户编辑](./media/work-com-tutorial/ic794118.png "用户编辑")
    
-    a. 在“名字”文本框中，键入用户的 **名字** ( **Britta** )  。
+    a. 在“名字”文本框中，键入用户的 **名字** (**Britta**)  。
     
-    b. 在“姓氏”文本框中，键入用户的 **姓氏** ( **Simon** )  。
+    b. 在“姓氏”文本框中，键入用户的 **姓氏** (**Simon**)  。
     
-    c. 在“别名”文本框中，键入用户的 **别名** ( **BrittaS** )  。
+    c. 在“别名”文本框中，键入用户的 **别名** (**BrittaS**)  。
     
     d. 在“电子邮件”文本框中，键入用户的 **电子邮件地址**Brittasimon@contoso.com。 
     
     e. 在“用户名”  文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
     
-    f. 在“昵称”  文本框中，键入用户的 **昵称** ( **Simon** )。
+    f. 在“昵称”  文本框中，键入用户的 **昵称** (**Simon**)。
     
     g. 选择“角色”  、“用户许可证”  和“配置文件”  。
     
-    h. 单击“ **保存** ”。  
+    h. 单击“ **保存**”。  
       
     > [!NOTE]
     > Azure AD 帐户持有者会收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。

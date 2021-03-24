@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788615"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 托管实例中的安全性
@@ -120,7 +120,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
 
 - 要使新建的 Azure AD 服务器主体（登录名）能够为其他 Azure AD 用户、组或应用程序创建其他登录名，请向新建的登录名授予 `sysadmin` 或 `securityadmin` 服务器角色。
 - 最起码需要向 Azure AD 服务器主体（登录名）授予 **ALTER ANY LOGIN** 权限才能让其创建其他 Azure AD 服务器主体（登录名）。
-- 默认情况下，向 master 数据库中新建的 Azure AD 服务器主体（登录名）授予的标准权限为： **CONNECT SQL** 和 **VIEW ANY DATABASE** 。
+- 默认情况下，向 master 数据库中新建的 Azure AD 服务器主体（登录名）授予的标准权限为：**CONNECT SQL** 和 **VIEW ANY DATABASE**。
 - 可向托管实例中的多个 Azure AD 服务器主体（登录名）授予 `sysadmin` 服务器角色。
 
 将登录名添加到 `sysadmin` 服务器角色：
@@ -280,7 +280,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
     );
     ```
 
-1. 使用创建的用户在 SSMS 中创建连接。 你会注意到，无法看到 `sysadmin` 在以前创建的表 **TestTable** 。 我们需要向该用户提供读取数据库中的数据的权限。
+1. 使用创建的用户在 SSMS 中创建连接。 你会注意到，无法看到 `sysadmin` 在以前创建的表 **TestTable**。 我们需要向该用户提供读取数据库中的数据的权限。
 
 1. 可以执行以下命令来检查用户当前拥有的权限：
 
@@ -405,7 +405,7 @@ SQL 托管实例支持模拟 Azure AD 服务器级主体（登录名）。
     );
     ```
 
-1. 在新查询窗口中执行以下命令，在新数据库 **MyMITestDB2** 中创建用户 _mygroup_ ，并向 _mygroup_ 授予对该数据库的 SELECT 权限：
+1. 在新查询窗口中执行以下命令，在新数据库 **MyMITestDB2** 中创建用户 _mygroup_，并向 _mygroup_ 授予对该数据库的 SELECT 权限：
 
     ```sql
     USE MyMITestDB2

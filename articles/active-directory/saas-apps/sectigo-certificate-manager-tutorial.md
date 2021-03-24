@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>教程：Azure Active Directory 与 Sectigo Certificate Manager 的集成
@@ -156,7 +156,7 @@ Sectigo Certificate Manager 支持以下功能：
 
 1. 在“用户”窗格中完成以下步骤： 
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension\> 。 例如，brittasimon\@contoso.com  。
 

@@ -15,10 +15,10 @@ ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 167fa74b04af7c086c2c95b0fdd56e5932483080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87076203"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>添加入站网络安全组规则
@@ -37,7 +37,7 @@ ms.locfileid: "87076203"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取 `Microsoft.Network/networkSecurityGroups` 资源。 |
 |[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| 按名称获取网络安全组。|
