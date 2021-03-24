@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 801197a171b5be2cfe46c249398381e1b25857ff
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>教程：Azure Active Directory 与 Predictix Price Reporting 的集成
@@ -53,11 +53,11 @@ ms.locfileid: "92515349"
 
     ![选择“Azure Active Directory”](common/select-azuread.png)
 
-2. 转到“企业应用程序” > “所有应用程序” ：
+2. 转到“企业应用程序” > “所有应用程序”   ：
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加应用程序，请在窗口顶部选择“新建应用程序”：
+3. 若要添加应用程序，请在窗口顶部选择“新建应用程序”  ：
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "92515349"
 
     ![选择“单一登录”](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录： 
+2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
 
     ![选择单一登录方法](common/select-saml-option.png)
 
-3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：  
+3. 在“设置 SAML 单一登录”页上，选择“编辑”图标打开“基本 SAML 配置”对话框：   
 
     ![“编辑”图标](common/edit-urls.png)
 
@@ -101,11 +101,11 @@ ms.locfileid: "92515349"
 
     ![“基本 SAML 配置”对话框](common/sp-identifier.png)
 
-    1. 在“登录 URL”框中，输入以下模式的 URL：
+    1. 在“登录 URL”框中，输入以下模式的 URL  ：
 
        `https://<companyname-pricing>.predictix.com/sso/request`
 
-    1. 在“标识符(实体 ID)”框中，输入以下模式的 URL：
+    1. 在“标识符(实体 ID)”框中，输入以下模式的 URL  ：
 
         ```https
         https://<companyname-pricing>.predictix.com
@@ -123,11 +123,11 @@ ms.locfileid: "92515349"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 ### <a name="configure-predictix-price-reporting-single-sign-on"></a>配置 Predictix Price Reporting 单一登录
 
@@ -137,25 +137,25 @@ ms.locfileid: "92515349"
 
 在本部分，我们将在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”：  
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”：   
 
     ![选择“所有用户”](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”：
+2. 选择屏幕顶部的“新建用户”： 
 
     ![选择“新建用户”](common/new-user.png)
 
-3. 在“用户”对话框中执行以下步骤：
+3. 在“用户”对话框中执行以下步骤： 
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
-    1. 选择“显示密码”，然后记下“密码”框中的值 。
+    1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -169,17 +169,17 @@ ms.locfileid: "92515349"
 
     ![应用程序列表](common/all-applications.png)
 
-3. 在左窗格中选择“用户和组”：
+3. 在左窗格中选择“用户和组”： 
 
     ![选择“用户和组”](common/users-groups-blade.png)
 
-4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+4. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![选择“添加用户”](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。  
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”，然后单击屏幕底部的“选择”按钮。   
 
-6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 单击屏幕底部的“选择”按钮。
+6. 如果希望在 SAML 断言中使用角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  单击屏幕底部的“选择”按钮  。
 
 7. 在“添加分配”对话框中选择“分配”。 
 

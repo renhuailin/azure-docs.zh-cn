@@ -1,5 +1,5 @@
 ---
-title: 启用和管理 (经典) Azure 存储分析度量值 |Microsoft Docs
+title: 启用和管理 Azure 存储分析指标（经典）| Microsoft Docs
 description: 了解如何启用、编辑和查看 Azure 存储分析指标。
 author: normesta
 ms.service: storage
@@ -10,22 +10,22 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 784929e50d25a07ae92cf388be5ac14f6fa820a6
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99221520"
 ---
-# <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a> (经典) 启用和管理 Azure 存储分析度量值
+# <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>启用和管理 Azure 存储分析指标（经典）
 
-[Azure 存储分析](storage-analytics.md) 提供了 blob、队列和表的所有存储服务的指标。 你可以使用 [Azure 门户](https://portal.azure.com) 来配置为你的帐户记录的指标，并配置图表来提供指标数据的可视表示形式。 本文介绍如何启用和管理指标。 若要了解如何启用日志，请参阅 [ (经典) 启用和管理 Azure 存储分析日志 ](manage-storage-analytics-logs.md)。
+[Azure 存储分析](storage-analytics.md)提供了有关 Blob、队列和表的所有存储服务的指标。 你可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标，并配置图表来提供指标数据的可视化表示形式。 本文介绍了如何启用和管理指标。 若要了解如何启用日志，请参阅[启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)。
 
 建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 无需启用或配置任何设置，即可立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
 > [!NOTE]
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。
 >
-> 高级性能块 blob 存储帐户不支持存储分析指标。 如果要使用高级性能块 blob 存储帐户查看指标，请考虑 [在 Azure Monitor 中使用 Azure 存储度量值](../blobs/monitor-blob-storage.md)。
+> 高级性能块 blob 存储帐户不支持存储分析指标。 若要查看高级性能块 blob 存储帐户的指标，可以考虑使用 [Azure Monitor 中的 Azure 存储指标](../blobs/monitor-blob-storage.md)。
 >
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
@@ -34,11 +34,11 @@ ms.locfileid: "99221520"
 
 ## <a name="enable-metrics"></a>启用指标
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户名称打开帐户仪表板。
 
-2. 在菜单边栏选项卡的 "**监视 (经典)** " 部分中，选择 "**诊断设置" (经典)** 。
+2. 在菜单边栏选项卡的“监视(经典)”部分中选择“诊断设置(经典)”。
    
    ![屏幕截图，突出显示了“监视(经典)”部分下的“诊断设置(经典)”选项。](./media/manage-storage-analytics-metrics/storage-enable-metrics-00.png)
 
@@ -50,12 +50,12 @@ ms.locfileid: "99221520"
    若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则由用户自行决定是否删除监视数据。
 
    > [!WARNING]
-   > Dc 存储为帐户中的数据。 指标数据可以在你的帐户中累积，这会增加存储成本。 如果只需要少量时间的指标数据，则可以通过修改数据保留策略来降低成本。 陈旧的指标数据 (保留策略) 的数据将被系统删除。 建议根据要为帐户保留度量值数据的时间来设置保留策略。 有关详细信息，请参阅[按存储指标计费](storage-analytics-metrics.md#billing-on-storage-metrics)。
+   > 指标作为数据存储在你的帐户中。 指标数据会随着时间的推移在你的帐户中累积，这可能会增加存储成本。 如果只需要一小段时间的指标数据，则可以通过修改数据保留策略来降低成本。 陈旧的指标数据（超出保留策略的数据）将被系统删除。 建议根据要将帐户的指标数据保留多长时间来设置保留策略。 有关详细信息，请参阅[按存储指标计费](storage-analytics-metrics.md#billing-on-storage-metrics)。
    >
 
 4. 完成监视配置后，选择“保存”。
 
-" **概览** " 边栏选项卡上的图表中显示一组默认度量值，以及 **(经典)** 边栏选项卡的指标。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任何指标图表中选择“编辑”，配置要在图表中显示的指标。
+“概览”边栏选项卡以及“指标(经典)”边栏选项卡上的图表中会显示默认的一组指标。 启用服务的指标后，最长可能需要一小时，数据才会显示在其图表中。 可以在任何指标图表中选择“编辑”，配置要在图表中显示的指标。
 
 将“状态”设置为“关闭”可以禁用指标收集和日志记录。
 
@@ -72,7 +72,7 @@ ms.locfileid: "99221520"
    Connect-AzAccount
    ```
 
-3. 如果你的标识与多个订阅相关联，请设置你的活动订阅。
+3. 如果你的标识关联到多个订阅，请设置你的活动订阅。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -92,9 +92,9 @@ ms.locfileid: "99221520"
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。 
 
-6. 你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值。 使用 Azure PowerShell cmdlet **AzStorageServiceMetricsProperty** 更改当前设置。 
+6. 可以使用本地计算机上的 PowerShell 在存储帐户中配置存储指标。 使用 Azure PowerShell cmdlet“Set-AzStorageServiceMetricsProperty”更改当前设置。 
 
-   以下命令在保留期设置为5天的情况下，在存储帐户中为 blob 服务启用分钟度量值。
+   以下命令在存储帐户中开启 blob 服务的分钟指标，并将保留期设置为五天。
 
    ```powershell
    Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $ctx
@@ -146,13 +146,13 @@ queueClient.SetServiceProperties(serviceProperties);
 
 <a id="view-metrics"></a>
 
-## <a name="view-metrics-in-a-chart"></a>查看图表中的度量值
+## <a name="view-metrics-in-a-chart"></a>在图表中查看指标
 
-在将存储分析指标配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录指标。 你可以配置图表以在 [Azure 门户](https://portal.azure.com)中查看每小时指标。
+在将存储分析指标配置为监视存储帐户后，存储分析将使用存储帐户在一组已知表中记录指标。 可以在 [Azure 门户](https://portal.azure.com)中配置图表以查看每小时指标。
 
 使用以下过程选择要在指标图表中查看哪些存储指标。
 
-1. 首先在 Azure 门户中显示存储指标图表。 可以在 **存储帐户边栏选项卡** 和 **指标 (经典)** 边栏选项卡中找到图表。
+1. 首先在 Azure 门户中显示存储指标图表。 可以在“存储帐户”边栏选项卡和“指标（经典）”边栏选项卡上找到图表。
 
    本示例使用“存储帐户边栏选项卡”上显示的以下图表：
 
@@ -183,7 +183,7 @@ queueClient.SetServiceProperties(serviceProperties);
 * “聚合”监视提供入口/出口、可用性、延迟和成功百分比等指标。 系统将从 Blob、表、文件和队列服务聚合这些指标。
 * “按 API”除了提供服务级别的聚合外，还提供更精细的解析，包括可用于单个存储操作的指标。
 
-## <a name="download-metrics-to-archive-or-analyze-locally"></a>下载用于本地存档或分析的指标
+## <a name="download-metrics-to-archive-or-analyze-locally"></a>下载指标以在本地进行存档或分析
 
 如果要为长期存储下载指标或在本地分析这些指标，则需要使用工具或编写一些代码来读取表。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问。 很多存储浏览工具可识别这些表，并可用于直接查看这些表。 有关可用工具的列表，请参阅 [Azure 存储客户端工具](./storage-explorers.md)。
 
@@ -209,7 +209,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 此示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，QueryEntities 请求数加 QueryEntity 请求数再加 UpdateEntity 请求数的和为 7。 这是显示在 user:All 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 user:All 行得到平均端到端延迟为 104.4286。  
 
-## <a name="view-metrics-data-programmatically"></a>以编程方式查看度量值数据
+## <a name="view-metrics-data-programmatically"></a>以编程方式查看指标数据
 
 以下列表显示示例 C# 代码，该代码用于访问分钟范围的分钟指标，并在控制台窗口中显示结果。 代码示例使用 Azure 存储客户端库版本 4.x 或更高版本，其中包括 CloudAnalyticsClient 类，用于简化访问存储中的指标表的过程。 
 
@@ -278,6 +278,6 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解存储分析，请参阅存储分析的 [存储分析](storage-analytics.md) 。
+* 若要详细了解存储分析，请参阅[存储分析](storage-analytics.md)。
 * [配置存储分析日志](manage-storage-analytics-logs.md)。
-* 了解有关指标架构的详细信息。 请参阅 [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。
+* 详细了解指标架构。 请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。

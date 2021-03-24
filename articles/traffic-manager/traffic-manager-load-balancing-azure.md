@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
 ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98184367"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
@@ -65,7 +65,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>步骤 1：创建流量管理器配置文件
 
-1. 在 Azure 门户中，单击 "**创建资源**" "  >    >  **流量管理器配置文件**" "  >  **创建**"。
+1. 在 Azure 门户中，单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”   。
 2. 输入以下基本信息：
 
    * **名称**：为流量管理器配置文件提供 DNS 前缀名称。

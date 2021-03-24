@@ -14,10 +14,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
 ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452431"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>向数据库授予对 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的访问权限
@@ -25,7 +25,7 @@ ms.locfileid: "96452431"
 
 本文介绍：
 
-- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的选项，使用户能够执行管理任务并访问存储在这些数据库中的数据。
+- 用于配置 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的选项，目的是使用户能够执行管理任务和访问这些数据库中存储的数据。
 - 最初新建服务器后的访问权限和授权配置。
 - 如何在 master 数据库和用户账户中添加登录名和用户帐户，然后为这些帐户授予管理权限。
 - 如何在用户数据库中添加用户帐户（与登录名关联或作为包含的用户帐户）。
@@ -135,7 +135,7 @@ ms.locfileid: "96452431"
 
 在数据库中创建用户帐户后，可以授权该用户基于登录名或以包含的用户身份执行各种操作及访问特定数据库中的数据。 可使用以下方法来授权访问：
 
-- 固定数据库角色
+- **固定数据库角色**
 
   将用户帐户添加到[固定数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)。 有 9 个固定数据库角色，每个角色拥有一组定义的权限。 最常用的固定数据库角色为：db_owner、db_ddladmin、db_datawriter、db_datareader、db_denydatawriter 和 db_denydatareader。      **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如，db_datareader 固定数据库角色授予用户对数据库中每个表的读取访问权限，这超出了必要的范畴。
 

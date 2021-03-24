@@ -4,10 +4,10 @@ description: 本文说明如何使用 Azure 资源管理器模板在 Azure 事�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115156"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>使用资源管理器模板在 Azure 事件网格中创建系统主题
@@ -52,7 +52,7 @@ ms.locfileid: "86115156"
             "type": "String",
             "defaultValue": "mystoragesystemtopic",
             "metadata": {
-                "description": "Provide a name for the system topic."
+                "description": "Provide a name for the system topic."
             }
         }
     },
@@ -80,7 +80,7 @@ ms.locfileid: "86115156"
                 "[parameters('storageName')]"
             ],
             "properties": {
-                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
+                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
                 "topicType": "Microsoft.Storage.StorageAccounts"
             }
         },

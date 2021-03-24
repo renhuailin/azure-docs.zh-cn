@@ -1,26 +1,26 @@
 ---
-title: 日志-Azure Database for PostgreSQL-灵活的服务器
-description: 介绍 Azure Database for PostgreSQL 灵活的服务器中的日志记录配置、存储和分析
+title: 日志 - Azure Database for PostgreSQL - 灵活服务器
+description: 介绍 Azure Database for PostgreSQL 灵活服务器中的日志记录配置、存储和分析
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 852bce26e348c817b609d5ff837641741afe4461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90934757"
 ---
-# <a name="logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL-灵活服务器中的日志
+# <a name="logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的日志
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
 Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。 可以配置和访问的日志信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （无法访问事务日志）。
 
-审核日志记录通过 Postgres 扩展提供 `pgaudit` 。 有关详细信息，请访问[审核的概念](concepts-audit.md)一文。
+审核日志是通过 Postgres 扩展 `pgaudit` 提供的。 有关详细信息，请访问[审核的概念](concepts-audit.md)一文。
 
 ## <a name="configure-logging"></a>配置日志记录
 
@@ -67,6 +67,6 @@ Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何 [配置和访问日志](howto-configure-and-access-logs.md)。
+- 详细了解如何[配置和访问日志](howto-configure-and-access-logs.md)。
 - 详细了解 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 - 详细了解[审核日志](concepts-audit.md)

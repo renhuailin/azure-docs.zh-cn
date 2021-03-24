@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f0e89fdfba852fc056cf48efd1b92daabb272cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568245"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>处理 Azure Blob 存储中的更改源
@@ -79,7 +79,7 @@ public void showEventData(List<BlobChangeFeedEvent> changeFeedEvents)
 
 ## <a name="resume-reading-records-from-a-saved-position"></a>从已保存的位置继续读取记录
 
-你可以选择保存你在更改源中的读取位置，以后可以继续循环访问记录。 可以通过获取更改源游标来保存读取位置。 该游标是一个**字符串**，你的应用程序可以采用适合你的应用程序设计的任何方式保存该字符串（例如，保存到文件或数据库中）。
+你可以选择保存你在更改源中的读取位置，以后可以继续循环访问记录。 可以通过获取更改源游标来保存读取位置。 该游标是一个 **字符串**，你的应用程序可以采用适合你的应用程序设计的任何方式保存该字符串（例如，保存到文件或数据库中）。
 
 此示例将循环访问更改源中的所有记录，将它们添加到列表中，然后保存游标。 列表和游标将返回到调用方。 
 

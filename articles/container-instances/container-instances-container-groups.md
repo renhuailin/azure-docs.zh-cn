@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 72ebe6186da179bc5a1effddcc14327455eb7557
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89612413"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。** 本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="what-is-a-container-group"></a>什么是容器组？
 
@@ -63,9 +63,9 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
-* 将**最少** 1 个 CPU 和 1 GB 内存分配到容器组。 可为组中的单个容器实例预配少于 1 个 CPU 和 1 GB 内存。 
+* 将 **最少** 1 个 CPU 和 1 GB 内存分配到容器组。 可为组中的单个容器实例预配少于 1 个 CPU 和 1 GB 内存。 
 
-* 有关容器组中的**最大**资源量，请参阅部署区域中 Azure 容器实例的[资源可用性][region-availability]。
+* 有关容器组中的 **最大** 资源量，请参阅部署区域中 Azure 容器实例的 [资源可用性][region-availability]。
 
 ## <a name="networking"></a>网络
 

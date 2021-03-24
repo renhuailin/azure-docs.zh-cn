@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 70b9be6fdb500d9f877659a12e6fdc0e206ea964
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538215"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
@@ -22,7 +22,7 @@ ms.locfileid: "92538215"
 
 ## <a name="symptoms"></a>症状
 
-日志中会显示错误 **409002 LinkCreationConflict** ，以及设备断开连接或云到设备的消息失败。
+你会在日志中看到错误 409002 LinkCreationConflict 以及设备断开连接或云到设备的消息失败。
 
 <!-- When using AMQP? -->
 

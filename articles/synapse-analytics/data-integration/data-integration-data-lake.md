@@ -10,13 +10,13 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: fbc4f11b450a645002daedc800d4fed74ed37a3d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219566"
 ---
-# <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>将数据引入 Azure Data Lake Storage Gen2 
+# <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>将数据引入到 Azure Data Lake Storage Gen2 中 
 
 本文介绍如何使用 Azure Synapse Analytics 将数据从 Azure Data Lake Gen2 (Azure Data Lake Gen 2) 存储帐户中的一个位置引入到另一个位置。
 
@@ -32,23 +32,23 @@ ms.locfileid: "98219566"
 1. 打开 Azure Synapse Analytics UX，转到“管理”选项卡。
 1. 在“外部连接”下，选择“链接服务”。
 1. 若要添加链接服务，请选择“新建”。
-1. 从列表中选择 "Azure Data Lake Storage Gen2" 磁贴，然后选择 " **继续**"。
-1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 选择 "测试连接" 以验证你的凭据是否正确。 
+1. 从列表中选择“Azure Data Lake Storage Gen2”磁贴，然后选择“继续”。
+1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 选择“测试连接”以验证你的凭据是否正确。 
 1. 完成后，选择“创建”。
 
 ## <a name="create-pipeline"></a>创建管道
 
-管道包含用于执行一组活动的逻辑流。 在本部分中，你将创建一个包含复制活动的管道，该活动将 Azure Data Lake 第2代中的数据引入到专用的 SQL 池中。
+管道包含用于执行一组活动的逻辑流。 在本部分中，你将创建一个包含复制活动的管道，该复制活动将数据从 Azure Data Lake Gen 2 引入到专用的 SQL 池中。
 
-1. 请参阅 " **协调** " 选项卡。选择 "管道" 标头旁边的加号图标，然后选择 " **管道**"。
+1. 转到“协调”选项卡。选择管道标题旁边的加号图标，然后选择“管道”。
 1. 在“活动”窗格中的“移动和转换”下，将“复制数据”拖到管道画布上。
-1. 选择 "复制" 活动，并中转到 " **源** " 选项卡。选择 " **新建** " 以创建新的源数据集。
-1. 选择 "Azure Data Lake Storage Gen2" 作为数据存储，然后选择 "继续"。
-1. 选择 DelimitedText 作为你的格式，然后选择 "继续"。
+1. 选择复制活动并转到“源”选项卡。选择“新建”以创建新的源数据集。
+1. 选择 Azure Data Lake Storage Gen2 作为数据存储，然后选择“继续”。
+1. 选择 DelimitedText 作为格式，然后选择“继续”。
 1. 在“设置属性”窗格中，选择你创建的 ADLS 链接服务。 指定源数据的文件路径，并指定第一行是否具有标题。 你可以从文件存储或示例文件导入架构。 完成后，选择“确定”。
-1. 中转到 " **接收器** " 选项卡。选择 " **新建** " 以创建新的接收器数据集。
-1. 选择 Azure Data Lake Storage gen2 作为数据存储，然后选择 "继续"。
-1. 选择 DelimitedText 作为你的格式，然后选择 "继续"。
+1. 转到“接收器”选项卡。选择“新建”以创建新的接收器数据集。
+1. 选择 Azure Data Lake Storage Gen2 作为数据存储，然后选择“继续”。
+1. 选择 DelimitedText 作为格式，然后选择“继续”。
 1. 在“设置属性”窗格中，选择你创建的 ADLS 链接服务。 指定要在其中写入数据的文件夹的路径。 完成后，选择“确定”。
 
 ## <a name="debug-and-publish-pipeline"></a>调试和发布管道
@@ -72,4 +72,4 @@ ms.locfileid: "98219566"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到专用 SQL 池一](data-integration-sql-pool.md) 文。
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅[将数据引入到专用的 SQL 池中](data-integration-sql-pool.md)一文。

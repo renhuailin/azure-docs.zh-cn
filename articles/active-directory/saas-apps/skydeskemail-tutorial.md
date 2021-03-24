@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>教程：Azure Active Directory 与 SkyDesk Email 集成
@@ -149,7 +149,7 @@ ms.locfileid: "92516010"
     ![显示“SAML 身份验证详细信息”对话框的屏幕截图，可在其中输入所述的值。](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
-    > 若要使用基于 SAML 的身份验证，应已 **验证域** 或已设置 **门户 URL** 。 可以设置具有唯一名称的门户 URL。
+    > 若要使用基于 SAML 的身份验证，应已 **验证域** 或已设置 **门户 URL**。 可以设置具有唯一名称的门户 URL。
 
     ![显示“门户 URL”的屏幕截图，可在其中输入名称。](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "92516010"
 
     d. 单击“从文件获取密钥”，从 Azure 门户选择已下载的证书，并单击“打开”上传证书   。
 
-    e. 选择“RSA”，作为 **算法** 。
+    e. 选择“RSA”，作为 **算法**。
 
     f. 单击“确定”以保存更改  。
 
@@ -173,7 +173,7 @@ ms.locfileid: "92516010"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "92516010"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

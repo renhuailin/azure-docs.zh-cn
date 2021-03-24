@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436634"
 ---
 # <a name="application-and-version-settings"></a>应用程序和版本设置
@@ -22,7 +22,7 @@ ms.locfileid: "96436634"
 
 1. 登录到 [LUIS 门户](https://www.luis.ai)。
 1. 从“我的应用”列表中选择应用。
-。
+.
 1. 从顶部导航栏中选择“管理”，然后从左侧导航栏中选择“设置” 。
 
 > [!div class="mx-imgBorder"]

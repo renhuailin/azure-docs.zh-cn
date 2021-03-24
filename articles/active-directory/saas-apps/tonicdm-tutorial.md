@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 0144e7e5cc9c6df376d78f39aab7fdb8cc70538e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>教程：Azure Active Directory 与 TonicDM 集成
@@ -49,7 +49,7 @@ ms.locfileid: "92520466"
 
 要配置 TonicDM 与 Azure AD 的集成，需要从库中将 TonicDM 添加到托管 SaaS 应用列表。
 
-若要从库中添加 TonicDM，请执行以下步骤： 
+若要从库中添加 TonicDM，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -63,13 +63,13 @@ ms.locfileid: "92520466"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“TonicDM”  ，在结果面板中选择“TonicDM”  ，然后单击“添加”  按钮添加该应用程序。
+4. 在搜索框中，键入“TonicDM”，在结果面板中选择“TonicDM”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 TonicDM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 TonicDM 的 Azure AD 单一登录。 
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 TonicDM 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 TonicDM 相关用户之间建立链接关系。
 
 若要配置和测试 TonicDM 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -78,7 +78,7 @@ ms.locfileid: "92520466"
 2. **[配置 TonicDM 单一登录](#configure-tonicdm-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 TonicDM 测试用户](#create-tonicdm-test-user)  - 在 TonicDM 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. [创建 TonicDM 测试用户](#create-tonicdm-test-user) - 在 TonicDM 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -87,7 +87,7 @@ ms.locfileid: "92520466"
 
 若要配置 TonicDM 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 **TonicDM** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)的 **TonicDM** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "92520466"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![TonicDM 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://tonicdm.com/`
+    a. 在“登录 URL”文本框中，键入 URL：`https://tonicdm.com/` 
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://tonicdm.com/saml/metadata`
 
@@ -111,7 +111,7 @@ ms.locfileid: "92520466"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 TonicDM”部分，根据要求复制相应 URL  。
+6. 在“设置 TonicDM”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "92520466"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -147,17 +147,17 @@ ms.locfileid: "92520466"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 TonicDM 的访问权限允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TonicDM”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TonicDM”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TonicDM”  。
+2. 在应用程序列表中，选择“TonicDM”。
 
     ![应用程序列表中的 TonicDM 链接](common/all-applications.png)
 

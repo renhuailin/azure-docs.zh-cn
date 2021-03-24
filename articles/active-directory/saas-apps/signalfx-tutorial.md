@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SignalFx 集成
@@ -67,8 +67,8 @@ ms.locfileid: "92516063"
 1. 在“名称”中，输入用户可以理解的且易于辨识的名称。 
 1. 勾选“在登录页上显示”。 
     * 此功能将在登录页中显示一个可让用户单击的自定义按钮。 
-    * 在“名称”中输入的信息将显示在该按钮上。  因此，请输入用户可以识别的 **名称** 。 
-    * 仅当对 SignalFx 应用程序使用自定义子域（例如 **yourcompanyname.signalfx.com** ）时，此选项才起作用。 若要获取自定义子域，请联系 SignalFx 支持人员。 
+    * 在“名称”中输入的信息将显示在该按钮上。  因此，请输入用户可以识别的 **名称**。 
+    * 仅当对 SignalFx 应用程序使用自定义子域（例如 **yourcompanyname.signalfx.com**）时，此选项才起作用。 若要获取自定义子域，请联系 SignalFx 支持人员。 
 1. 复制“集成 ID”。  稍后的步骤需要用到此信息。 
 1. 将 SignalFx UI 保持打开状态。 
 
@@ -144,7 +144,7 @@ ms.locfileid: "92516063"
 1. 在“证书(Base64)”旁边，单击“上传文件”，然后找到前面从 Azure 门户下载的 **Base64 编码证书** 文件。  
 1. 在“Azure AD 标识符”旁边，粘贴前面从 Azure 门户复制的“Azure AD 标识符”值。   
 1. 在“联合元数据 URL”旁边，粘贴前面从 Azure 门户复制的“应用联合元数据 URL”值。   
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 ## <a name="step-7-test-sso"></a>步骤 7：测试 SSO
 

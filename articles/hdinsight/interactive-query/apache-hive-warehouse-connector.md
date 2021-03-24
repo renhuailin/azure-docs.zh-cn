@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594428"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869882"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Spark 和 Apache Hive 与 Hive Warehouse Connector 集成
 
@@ -23,7 +23,7 @@ Apache Hive 为原子性、一致性、隔离性和持久性 (ACID) 数据库事
 
 Apache Spark 具有一个结构化流 API，可提供 Apache Hive 中不可用的流式处理功能。 从 HDInsight 4.0 开始，Apache Spark 2.3.1 和 Apache Hive 3.1.0 具有单独的元存储。 单独的元存储可能会使互操作性难以实现。 通过 Hive Warehouse Connector 可更轻松地将 Spark 和 Hive 一起使用。 HWC 库将数据从 LLAP 守护程序并行加载到 Spark 执行程序。 与从 Spark 到 Hive 的标准 JDBC 连接相比，此过程可更高效且更具适应性。
 
-![hive warehouse connector 体系结构](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+:::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png" alt-text="hive warehouse connector 体系结构" border="true":::
 
 Hive Warehouse Connector 支持的部分操作包括：
 
@@ -39,10 +39,10 @@ Hive Warehouse Connector 支持的部分操作包括：
 
 > [!IMPORTANT]
 > - 不支持将 Spark 2.4 企业安全性套餐群集上安装的 HiveServer2 Interactive 实例与 Hive Warehouse Connector 一起使用。 相反，必须配置一个独立的 HiveServer2 Interactive 群集来承载 HiveServer2 Interactive 工作负载。 不支持使用单一 Spark 2.4 群集的 Hive Warehouse Connector 配置。
-> - 不支持将 Hive 仓库连接器 (HWC) 库用于启用了工作负荷管理 (WLM) 功能的交互式查询群集。 <br>
-在仅具有 Spark 工作负荷并想要使用 HWC 库的情况下，请确保交互式查询群集未启用工作负荷管理功能 (`hive.server2.tez.interactive.queue` 配置未在 Hive 配置) 中进行设置。 <br>
-对于这两个 Spark 工作负荷 (HWC) 和 LLAP 本机工作负载的情况，需要使用共享的元存储数据库创建两个单独的交互式查询群集。 一个适用于本机 LLAP 工作负荷的群集，其中，可以根据需要启用 WLM 功能，并将其他群集用于 HWC，而不应配置 WLM 功能。
-需要注意的是，即使只在一个群集中启用了群集，也可以从两个群集查看 WLM 资源计划。 请勿对群集中禁用 WLM 功能的资源计划进行任何更改，因为这可能会影响其他群集中的 WLM 功能。
+> - 不支持将 Hive Warehouse Connector (HWC) 库用于启用了工作负载管理 (WLM) 功能的 Interactive Query 群集。 <br>
+在你仅有 Spark 工作负载并想要使用 HWC 库的情况下，请确保 Interactive Query 群集未启用工作负载管理功能（未在 Hive 配置中设置 `hive.server2.tez.interactive.queue` 配置）。 <br>
+对于同时存在 Spark 工作负载 (HWC) 和 LLAP 原生工作负载的情况，你需要创建使用共享的元存储数据库的两个单独的 Interactive Query 群集。 一个群集用于原生 LLAP 工作负载，可以在其中根据需要启用 WLM 功能；另一个群集用于仅限 HWC 的工作负载，不应当在其中配置 WLM 功能。
+需要注意的是，从两个群集都可以查看 WLM 资源计划，即使只在一个群集中启用了该计划。 请勿在禁用了 WLM 功能的群集中对资源计划进行任何更改，因为这可能会影响另一个群集中的 WLM 功能。
 
 Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要单独的群集。 按照以下步骤在 Azure HDInsight 中设置这些群集。
 
@@ -72,7 +72,7 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
 
 1. 展开“自定义 spark2-defaults”。
 
-    ![Apache Ambari Spark2 配置](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png" alt-text="Apache Ambari Spark2 配置" border="true":::
 
 1. 选择“添加属性...”，以添加以下配置：
 
@@ -103,11 +103,11 @@ Hive Warehouse Connector 对于 Spark 和 Interactive Query 工作负责需要�
     
     * 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 CLUSTERNAME 是 Interactive Query 群集的名称。 单击 HiveServer2 Interactive。 将看到运行 LLAP 的头节点的完全限定的域名 (FQDN)，如屏幕截图中所示。 将 `<llap-headnode>` 替换为此值。
 
-        ![Hive Warehouse Connector 头节点](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hive Warehouse Connector 头节点" border="true":::
 
     * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Interactive Query 群集。 在 `/etc/krb5.conf` 文件中查找 `default_realm` 参数。 以大写字符串的形式使用此值替换 `<AAD-DOMAIN>`，否则会找不到凭据。
 
-        ![Hive Warehouse Connector AAD 域](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector AAD 域" border="true":::
 
     * 例如：`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`。
     
@@ -211,21 +211,21 @@ kinit USERNAME
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![应用 Ranger 策略之前的演示表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png" alt-text="应用 Ranger 策略之前的演示表" border="true":::
 
 1. 应用仅显示该列最后四个字符的列掩码策略。  
     1. 转到 Ranger 管理 UI (`https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/`)。
     1. 在“Hive”下单击用于群集的 Hive 服务。
-        ![ranger 服务管理器](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png" alt-text="ranger 服务管理器" border="true":::
     1. 单击“掩码”选项卡，然后单击“添加新策略” 
 
-        ![hive warehouse connector ranger hive 策略列表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png" alt-text="hive warehouse connector ranger hive 策略列表" border="true":::
 
-    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加”。
-                ![创建策略](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+    1. 提供所需的策略名称。 从“选择掩码选项”菜单中选择数据库“默认”、Hive 表“演示”、Hive 列“名称”、用户“rsadmin2”、访问类型“选择”和“部分掩码: 显示最后 4 个”。       单击“添加” 。
+                :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png" alt-text="创建策略" border="true":::
 1. 再次查看表的内容。 应用 Ranger 策略之后，我们只能看到该列的最后四个字符。
 
-    ![应用 Ranger 策略之后的演示表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png" alt-text="应用 Ranger 策略之后的演示表" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98132058"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 门户中为 Linux VM 创建完全限定的域名
@@ -25,11 +25,11 @@ ms.locfileid: "98132058"
 
 
 1. 在门户中选择 VM。 
-1. 在左侧菜单中，选择 "**配置**"
-1. 在 " **DNS 名称标签**" 下，输入要使用的前缀。
+1. 在左侧菜单中选择“配置”
+1. 在“DNS 名称标签”下，输入要使用的前缀。
 1. 在页面顶部选择“保存”。
-1. 在左侧菜单中选择 " **概述** "，返回到 "VM 概述" 边栏选项卡。 
-1. 验证 *DNS 名称* 是否正确显示。 
+1. 在左侧菜单中选择“概述”，返回到“VM 概述”边栏选项卡。 
+1. 验证是否正确显示“DNS 名称”。 
 
 ## <a name="next-steps"></a>后续步骤
 

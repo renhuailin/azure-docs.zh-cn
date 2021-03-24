@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 9c98071695d16b8a5e6deeaefc5e485cbc7c8aa4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mobile-locker"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Mobile Locker 的集成
@@ -79,18 +79,18 @@ ms.locfileid: "92521133"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app.mobilelocker.com/saml2/metadata?service=[UUID]`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app.mobilelocker.com/saml2/metadata?service=[UUID]`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.mobilelocker.com/saml2/acs?service=[UUID]`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.mobilelocker.com/saml2/login?service=[UUID]`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Mobile Locker 客户端支持团队](mailto:support@mobilelocker.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 

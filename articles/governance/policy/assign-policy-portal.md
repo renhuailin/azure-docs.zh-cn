@@ -4,10 +4,10 @@ description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy �
 ms.date: 01/29/2021
 ms.topic: quickstart
 ms.openlocfilehash: e5cbf31e897b5be404327efa254eb90ead990f5f
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99220881"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>创建策略分配以识别不合规资源。
@@ -82,7 +82,7 @@ ms.locfileid: "99220881"
 
 :::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="“策略符合性”页上符合性详细信息的屏幕截图。" border="false":::
 
-如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示。
+如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示  。
 
 针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的。 尽管在 Azure 门户中看不到评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515315"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>教程：Azure Active Directory 单一登录与 Prezi 的集成
@@ -114,7 +114,7 @@ ms.locfileid: "92515315"
 1. 在 Azure 门户最左侧的窗格中，选择“Azure Active Directory”。 转到“用户”，然后选择“所有用户” 。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”框中，输入 **B.Simon** 。
+   1. 在“名称”框中，输入 **B.Simon**。
    1. 在“用户名”框中，输入 `username@companydomain.extension`（例如 `B.Simon@contoso.com`）。
    1. 选中“显示密码”复选框。 记下“密码”框中显示的值。
    1. 选择“创建”。

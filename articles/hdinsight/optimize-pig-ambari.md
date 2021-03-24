@@ -4,12 +4,12 @@ description: 使用 Apache Ambari Web UI 来配置和优化 Apache Pig。
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 690cfc66d0f08e63ac6ef1d21b6722fed59eca14
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 43159360342063af1682a984db037ae286721411
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98939015"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871157"
 ---
 # <a name="optimize-apache-pig-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Apache Ambari 优化 Apache Pig
 
@@ -23,7 +23,7 @@ Apache Ambari 是用于管理和监视 HDInsight 群集的 Web 界面。 有关 
 
 1. 选择窗口右上方的“保存”以保存新值。 某些属性可能需要重启服务才能生效。
 
-    ![高级 Apache Pig 属性](./media/optimize-pig-ambari/advanced-pig-properties.png)
+    :::image type="content" source="./media/optimize-pig-ambari/advanced-pig-properties.png" alt-text="高级 Apache Pig 属性" border="true":::
 
 > [!NOTE]  
 > 任何会话级设置都会重写 `pig.properties` 文件中的属性值。

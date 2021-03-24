@@ -14,10 +14,10 @@ ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 29a64931ac92eacf8948ae067118b6b25198c85d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223459"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同的部署模型和不同的订阅
@@ -43,11 +43,11 @@ ms.locfileid: "98223459"
 本教程为每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。
 
 1. 以 UserA 的身份登录 [Azure 门户](https://portal.azure.com)。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
-2. 依次单击“+ 新建”、“网络”、“虚拟网络”。  
+2. 依次单击“+ 新建”、“网络”、“虚拟网络”。   
 3. 在“创建虚拟网络”边栏选项卡中，为以下设置输入或选择值，然后单击“创建”： 
     - **名称**：*myVnetA*
     - **地址空间**：*10.0.0.0/16*
-    - 子网名称：默认值
+    - 子网名称：默认值  
     - **子网地址范围**：*10.0.0.0/24*
     - **订阅**：选择订阅 A。
     - **资源组**：选择“新建”，然后输入 myResourceGroupA
@@ -65,7 +65,7 @@ ms.locfileid: "98223459"
 
     - **名称**：*myVnetB*
     - **地址空间**：*10.1.0.0/16*
-    - 子网名称：默认值
+    - 子网名称：默认值  
     - **子网地址范围**：*10.1.0.0/24*
     - **订阅**：选择订阅 B。
     - **资源组**：选择“新建”，然后输入 myResourceGroupB

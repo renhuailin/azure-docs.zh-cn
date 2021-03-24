@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 65e424c6275f9990a5d5a42a54bc4131300a45bf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895029"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
@@ -100,29 +100,29 @@ ms.locfileid: "92895029"
 
 4. 若要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置部分”中执行以下步骤： 
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     1. 在“标识符”  文本框中，输入采用以下模式的 URL：<br/>
-    *https://< *
+    https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/metadata
 
-    1. 在“回复 URL”文本框中，输入以下格式的 URL：<br/>
-    *https://<  *_
+    1. 在“回复 URL”文本框中，输入采用以下模式的 URL：<br/>
+    https://<<i></i>INSTANCENAME>-saml.workspot.com/saml/assertion
 
 5. 如果要在 SP 发起的模式下配置应用程序，选择“设置其他 URL”。
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，输入采用以下模式的 URL：<br/>
-    https://<<i></i>INSTANCENAME>-saml.workspot.com/_*
+    在“登录 URL”文本框中，输入采用以下模式的 URL：<br/>
+    https://<<i></i>INSTANCENAME>-saml.workspot.com/
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的标识符、回复 URL 和登录 URL 替换这些值。 请联系 [Workspot Control 客户端支持团队](mailto:support@workspot.com)来获取这些值。 也可以参考 Azure 门户的“基本 SAML 配置”部分中显示的模式。
 
-6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据要求从可用选项中下载“证书(Base64)”。  然后将其保存到计算机上。
+6. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，选择“下载”以根据要求从可用选项中下载“证书(Base64)”。 然后将其保存到计算机上。
 
     ![证书 (Base64) 下载链接](common/certificatebase64.png)
 
-7. 在“设置 Workspot Control”部分中，根据要求复制响应的 URL  ：
+7. 在“设置 Workspot Control”部分中，根据要求复制响应的 URL：
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -136,21 +136,21 @@ ms.locfileid: "92895029"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Workspot Control。
 
-2. 在页面顶部的工具栏中，选择“设置”。  ，然后选择“SAML”  。
+2. 在页面顶部的工具栏中，选择“设置”。，然后选择“SAML”。
 
     ![安装选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
-3. 在“安全断言标记语言配置”窗口中，执行以下步骤  ：
+3. 在“安全断言标记语言配置”窗口中，执行以下步骤：
  
     ![“安全断言标记语言配置”窗口](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    1. 在“实体 ID”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”  。
+    1. 在“实体 ID”框中，粘贴从 Azure 门户复制的“Azure AD 标识符”。
 
-    1. 在“登录服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”  。
+    1. 在“登录服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”。
 
-    1. 在“注销服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”  。
+    1. 在“注销服务 URL”框中，粘贴从 Azure 门户复制的“登录 URL”。
 
-    1. 选择“更新文件”，将从 Azure 门户下载的 base-64 编码证书上传到 X.509 证书中  。
+    1. 选择“更新文件”，将从 Azure 门户下载的 base-64 编码证书上传到 X.509 证书中。
 
     1. 选择“保存”。 
 
@@ -158,11 +158,11 @@ ms.locfileid: "92895029"
 
 在本部分，将在 Azure 门户中创建一个测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择窗口顶部的“新建用户”。 
+2. 选择窗口顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -172,9 +172,9 @@ ms.locfileid: "92895029"
 
     1. 在“姓名”字段中，输入“BrittaSimon”。
   
-    1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”。
+    1. 在“用户名”字段中，输入“brittasimon@yourcompanydomain.extension”****。 例如，输入“BrittaSimon@contoso<i></i>com”。
 
-    1. 选中“显示密码”复选框  。 然后记下“密码”框中显示的值  。
+    1. 选中“显示密码”复选框  。 然后记下“密码”框中显示的值。
 
     1. 选择“创建”。
 
@@ -182,27 +182,27 @@ ms.locfileid: "92895029"
 
 在本部分中，授予 Britta Simon 访问 Workspot Control 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workspot Control”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workspot Control”。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-2. 从应用程序列表中，选择“Workspot Control”  。
+2. 从应用程序列表中，选择“Workspot Control”。
 
     ![应用程序列表中的“Workspot Control”链接](common/all-applications.png)
 
-3. 从左侧菜单中选择“用户和组”  。
+3. 从左侧菜单中选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 选择“添加用户”按钮。 然后，在“添加分配”  窗口中选择“用户和组”  。
+4. 选择“添加用户”按钮。 然后，在“添加分配”窗口中选择“用户和组”。
 
     ![“添加分配”窗口](common/add-assign-user.png)
 
-5. 在“用户和组”窗口中，从“用户”列表选择“Britta Simon”。  然后单击“选择”。
+5. 在“用户和组”窗口中，从“用户”列表选择“Britta Simon”。 然后单击“选择”。
 
-6. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”窗口中，从列表中为用户选择相应的角色。  然后单击底部的“选择”。 
+6. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”窗口中，从列表中为用户选择相应的角色。 然后单击底部的“选择”。
 
-7. 在“添加分配”  窗口中，选择“分配”  。
+7. 在“添加分配”窗口中，选择“分配”。
 
 ### <a name="create-a-workspot-control-test-user"></a>创建 Workspot Control 测试用户
 
@@ -212,31 +212,31 @@ ms.locfileid: "92895029"
 
 1. 以安全管理员身份登录 Workspot Control。
 
-2. 在页面顶部的工具栏中，选择“用户”。  ，然后选择“添加用户”  。
+2. 在页面顶部的工具栏中，选择“用户”。，然后选择“添加用户”。
 
     ![“用户”选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
-3. 在“添加新用户”  窗口中，执行以下步骤：
+3. 在“添加新用户”窗口中，执行以下步骤：
 
     ![“添加新用户”窗口](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
-    1. 在“名字”框中，输入用户的名字，例如 Britta  。
+    1. 在“名字”框中，输入用户的名字，例如 Britta。
 
-    1. 在“姓氏”框中，输入用户的姓氏，例如 Simon  。
+    1. 在“姓氏”框中，输入用户的姓氏，例如 Simon。
 
     1. 在“电子邮件”框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com。
 
-    1. 从“角色”下拉列表中选择相应的用户角色  。
+    1. 从“角色”下拉列表中选择相应的用户角色。
 
-    1. 从“组”下拉列表中选择相应的用户组  。
+    1. 从“组”下拉列表中选择相应的用户组。
 
     1. 选择“添加用户”。 
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-在本部分中，通过访问面板  测试 Azure AD 单一登录配置。
+在本部分中，通过访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的“Workspot Control”  磁贴时，应当会自动登录到为其设置了 SSO 的 Workspot Control。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
+单击访问面板中的“Workspot Control”磁贴时，应当会自动登录到为其设置了 SSO 的 Workspot Control。 有关详细信息，请参阅[访问面板简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -4,10 +4,10 @@ description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90061421"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南
@@ -49,17 +49,17 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 - **防火墙阻止流量** - 确保防火墙未阻止端口 **9093**。
 - **TopicAuthorizationException** - 此异常的最常见原因包括：
     - 配置文件中的连接字符串中有拼写错误，或者
-    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 [仅标准和专用层命名空间支持](https://azure.microsoft.com/pricing/details/event-hubs/)Kafka 功能的事件中心。
+    - 尝试在“基本”层命名空间中使用用于 Kafka 的事件中心。 [只有标准层和专用层命名空间支持](https://azure.microsoft.com/pricing/details/event-hubs/)用于 Kafka 功能的事件中心。
 - **Kafka 版本不匹配** - 用于 Kafka 生态系统的事件中心支持 Kafka 1.0 及更高版本。 某些使用 Kafka 0.10 及更高版本的应用程序有时可能会有效，因为 Kafka 协议具有后向兼容性，但我们强烈建议你不要使用旧的 API 版本。 Kafka 0.9 及更低版本不支持必需的 SASL 协议，因此无法连接到事件中心。
 - **与 Kafka 配合使用时，AMQP 标头上出现奇怪的编码** - 通过 AMQP 将事件发送到事件中心时，系统会采用 AMQP 编码来序列化任何 AMQP 有效负载标头。 Kafka 使用者不会反序列化 AMQP 中的标头。 若要读取标头值，请手动解码 AMQP 标头。 或者，如果你知道要通过 Kafka 协议来使用 AMQP 标头，则可避免使用这些标头。 有关详细信息，请参阅[此 GitHub 问题](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56)。
 - **SASL 身份验证** - 将框架与事件中心所需的 SASL 身份验证协议配合使用可能不是看起来那么容易。 看看你是否可以在 SASL 身份验证的基础上使用框架的资源来排查配置问题。 
 
 ## <a name="limits"></a>限制
-我们可以将 Apache Kafka 与事件中心 Kafka 进行比较。 大多数情况下，Azure 事件中心的 Kafka 接口具有相同的默认值、属性、错误代码和 Apache Kafka 执行的常规行为。 下面列出了这二者明显不同的情况（或事件中心施加了某个限制而 Kafka 没有施加该限制的情况）：
+我们可以将 Apache Kafka 与事件中心 Kafka 进行比较。 大多数情况下，Azure 事件中心的 Kafka 接口的默认值、属性、错误代码和常规行为与 Apache Kafka 的相同。 下面列出了这二者明显不同的情况（或事件中心施加了某个限制而 Kafka 没有施加该限制的情况）：
 
 - `group.id` 属性的最大长度为 256 个字符
 - `offset.metadata.max.bytes` 的最大大小为 1024 个字节
-- 每个分区的偏移量提交数限制为4次，最大内部日志大小为 1 MB
+- 偏移提交数限制为每个分区 4 个调用/秒，内部日志最大大小为 1 MB
 
 
 ## <a name="next-steps"></a>后续步骤

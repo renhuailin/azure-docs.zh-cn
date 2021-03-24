@@ -8,14 +8,16 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d07a1d1ab0d3b1f4315c09f1c403126139b34612
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
-ms.translationtype: MT
+ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043895"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103487728"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 若要将使用 Modbus TCP 或 RTU 协议的 IoT 设备连接到 Azure IoT 中心，可以使用 IoT Edge 设备作为网关。 此网关设备从 Modbus 设备读取数据，然后使用支持的协议将该数据传送到云。
 
@@ -43,26 +45,26 @@ ms.locfileid: "92043895"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中转到 IoT 中心。
 
-2. 转到“IoT Edge”  ，然后单击 IoT Edge 设备。
+2. 转到“IoT Edge”，然后单击 IoT Edge 设备。
 
-3. 选择“设置模块”  。
+3. 选择“设置模块”。
 
-4. 在“IoT Edge 模块”部分中，添加 Modbus 模块  ：
+4. 在“IoT Edge 模块”部分中，添加 Modbus 模块：
 
-   1. 单击“添加”下拉列表，然后选择“市场模块”   。
-   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”  。
-   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”  。
-   4. 查看部署清单并选择“创建”  。
+   1. 单击“添加”下拉列表，然后选择“市场模块”。
+   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”。
+   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”。
+   4. 查看部署清单并选择“创建”。
 
-5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡  。自动填充模块孪生所需属性的必需 JSON。
+5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡。自动填充模块孪生所需属性的必需 JSON。
 
-6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址  。
+6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址。
 
-7. 选择“更新”  。
+7. 选择“更新”。
 
-8. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
+8. 选择“查看 + 创建”，检查部署，然后选择“创建”。
 
-9. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
+9. 返回到“设备详细信息”页，并选择“刷新”。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
 
 ## <a name="view-data"></a>查看数据
 

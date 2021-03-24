@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心经典 IP 筛选器 (弃用) |Microsoft Docs
-description: 如何从经典 IP 筛选器升级以及有哪些优点
+title: Azure IoT 中心经典 IP 筛选器（已弃用）| Microsoft Docs
+description: 如何从经典 IP 筛选器升级以及升级有哪些好处
 author: jlian
 ms.service: iot-hub
 services: iot-hub
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
 ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661148"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>IoT 中心经典 IP 筛选器和升级方式 
 
-用于 IoT 中心的升级 IP 筛选器保护内置终结点，默认情况下是安全的。 虽然我们不会进行重大更改，但升级后的 IP 筛选器的增强安全模型与经典 IP 筛选器不兼容，因此我们宣布其停用。 若要了解有关新的已升级 IP 筛选器的详细信息，请参阅新增 [功能](#whats-new) 和 [IoT 中心 IP 筛选器](iot-hub-ip-filtering.md)。
+用于 IoT 中心的已升级 IP 筛选器可保护内置终结点，且在默认情况下处于安全状态。 虽然我们尽力不进行重大更改，但已升级 IP 筛选器的增强安全模型与经典 IP 筛选器不兼容，因此我们宣布将其停用。 若要了解有关新的已升级 IP 筛选器的详细信息，请参阅[新增功能](#whats-new)和 [IoT 中心 IP 筛选器](iot-hub-ip-filtering.md)。
 
-若要避免服务中断，必须在迁移截止时间之前执行引导式升级，此时将自动执行升级。 若要了解有关迁移时间线的详细信息，请参阅 [Azure update](https://aka.ms/ipfilterv2azupdate)。
+为了避免服务中断，必须在迁移截止时间之前执行引导式升级，在迁移截止时间将自动执行升级。 若要了解有关迁移时间线的详细信息，请参阅 [Azure 更新](https://aka.ms/ipfilterv2azupdate)。
 
 ## <a name="how-to-upgrade"></a>如何升级
 
 1.  访问 Azure 门户
 2.  导航到 IoT 中心。
 3.  从左侧菜单中选择“网络”。
-4.  你会看到一个横幅，提示你将 IP 筛选器升级到新模型。 选择“是”，以继续操作。
+4.  你应看到一个横幅，提示你将 IP 筛选器升级到新模型。 选择“是”，以继续操作。
     :::image type="content" source="media/iot-hub-ip-filter-classic/ip-filter-upgrade-banner.png" alt-text="显示从经典 IP 筛选器升级的横幅提示的图像":::
-5.  由于默认情况下新的 IP 筛选器会阻止所有 IP，升级会删除你的单个拒绝规则，但你可以在保存之前查看它们。 请仔细查看规则，以确保它们适用于你。
+5.  由于默认情况下新的 IP 筛选器会阻止所有 IP，因此升级会删除你的个人拒绝规则，但你可以在保存之前查看这些规则。 请仔细查看规则，确保它们对你有用。
 6.  按照提示完成升级。
 
 ## <a name="whats-new"></a>新增功能
 
 ### <a name="secure-by-default"></a>默认保护
 
-默认情况下，典型 IP 筛选器会隐式允许所有 IP 地址连接到 IoT 中心，这与最常见的网络安全方案不一致。 通常，你只希望受信任的 IP 地址能够连接到 IoT 中心并拒绝其他所有内容。 为实现此目标和经典 IP 筛选器，这是一个多步骤过程。 例如，如果只想接受来自的流量 `192.168.100.0/22` ，则必须
+默认情况下，经典 IP 筛选器会隐式允许所有 IP 地址连接到 IoT 中心，这与最常见的网络安全方案不太一致。 通常，你只希望受信任的 IP 地址能够连接到 IoT 中心并拒绝其他所有内容。 若要使用经典 IP 筛选器实现此目标，需要完成一个多步过程。 例如，如果只想接受来自 `192.168.100.0/22` 的流量，则必须
 
-1. 为配置单个 *允许* 规则 `192.168.100.0/22` 。
-1. 为 `0.0.0.0/0` ("阻止全部" 规则配置不同的块规则) 
-1. 请确保规则排序正确，并在阻止规则之上排序 allow 规则。
+1. 为 `192.168.100.0/22` 配置单个允许规则。
+1. 为 `0.0.0.0/0` 配置不同的阻止规则（“阻止全部”规则）
+1. 确保规则排序正确，允许规则位于阻止规则之上。
 
-实际上，这一多步骤过程会导致混淆。 用户未配置 "阻止全部" 规则，或未正确对规则进行排序，导致意外泄露。 
+实际上，此多步过程会造成混淆。 用户未配置“阻止全部”规则，或未对规则进行正确排序，从而导致意外暴露。 
 
-默认情况下，新的 IP 筛选器会阻止所有 IP 地址。 仅允许显式添加的 IP 范围连接到 IoT 中心。 在上面的示例中，不再需要执行步骤2和步骤3。 这一新行为通过 [安全的默认原则](https://wikipedia.org/wiki/Secure_by_default)简化了配置和遵守美国。
+默认情况下，新的 IP 筛选器会阻止所有 IP 地址。 仅允许显式添加的 IP 范围连接到 IoT 中心。 在上面的示例中，不再需要执行步骤 2 和 3。 这一新行为简化了配置，并遵循[默认安全原则](https://wikipedia.org/wiki/Secure_by_default)。
 
-### <a name="protect-the-built-in-event-hub-compatible-endpoint"></a>保护内置的与事件中心兼容的终结点
+### <a name="protect-the-built-in-event-hub-compatible-endpoint"></a>保护内置的事件中心兼容终结点
 
-不能将经典 IP 筛选器应用到内置终结点。 此限制意味着，具有阻止所有规则 (块 `0.0.0.0/0`) 配置的事件，仍可从任何 IP 地址访问内置终结点。
+不能将经典 IP 筛选器应用于内置终结点。 此限制意味着，配置了“阻止全部”规则（阻止 `0.0.0.0/0`）的事件仍可从任何 IP 地址访问内置终结点。
 
-新的 IP 筛选器提供了一种将规则应用到内置终结点的选项，从而减少了网络安全威胁的风险。
+新的 IP 筛选器提供了一种将规则应用于内置终结点的选项，该选项可减少暴露于网络安全威胁。
 
-:::image type="content" source="media/iot-hub-ip-filter-classic/ip-filter-built-in-endpoint.png" alt-text="显示要应用于内置终结点的切换的图像":::
+:::image type="content" source="media/iot-hub-ip-filter-classic/ip-filter-built-in-endpoint.png" alt-text="显示是否应用于内置终结点的切换的图像":::
 
 > [!NOTE]
-> 此选项不能用于免费 (F1) IoT 中心。 若要将 IP 筛选规则应用到内置终结点，请使用付费 IoT 中心。
+> 此选项不能用于免费 (F1) IoT 中心。 若要将 IP 筛选器规则应用于内置终结点，请使用付费 IoT 中心。
 
 ### <a name="api-impact"></a>API 影响
 
-升级的 IP 筛选器在 IoT 中心资源 API 中提供，从 (，以及 `2020-08-31` `2020-08-31-preview`) 和更高版本。 经典 IP 筛选器在所有 API 版本中仍可用，但将在未来的 API 版本中删除，截止时间晚于迁移截止时间。 若要了解有关迁移时间线的详细信息，请参阅 [Azure update](https://aka.ms/ipfilterv2azupdate)。
+从 `2020-08-31`（以及 `2020-08-31-preview`）起，IoT 中心资源 API 中提供已升级 IP 筛选器。 所有 API 版本中仍提供经典 IP 筛选器，但在靠近迁移截止时间的未来 API 版本中，将删除该筛选器。 若要了解有关迁移时间线的详细信息，请参阅 [Azure 更新](https://aka.ms/ipfilterv2azupdate)。
 
 ## <a name="tip-try-the-changes-before-they-apply"></a>提示：在应用之前尝试更改
 
-由于默认情况下，新的 IP 筛选器会阻止所有 IP 地址，因此，单个块规则不再兼容。 因此，引导式升级过程将删除这些单独的块规则。 
+由于默认情况下，新的 IP 筛选器会阻止所有 IP 地址，因此，单独的阻止规则将不再兼容。 因此，引导式升级过程将删除这些单独的阻止规则。 
 
 若要尝试通过经典 IP 筛选器进行更改，请执行以下操作：
 
-1. 访问 IoT 中心的 " **网络** " 选项卡
-1. 请注意 (经典) 配置的现有 IP 筛选器，以防你想要回滚
-1. 在 "带 **块** 的规则" 旁边，选择 "垃圾桶" 图标以删除它们
-1. 在底部添加另一个规则 `0.0.0.0/0` ，然后选择 "**阻止**"
+1. 访问 IoT 中心的“网络”选项卡
+1. 记下现有 IP 筛选器（经典）配置，以防你想要回滚
+1. 在包含“阻止”的规则旁边，选择垃圾桶图标以删除这些规则
+1. 使用 `0.0.0.0/0` 在底部添加另一规则，然后选择“阻止”
 1. 选择“保存”
 
-此配置模拟了从经典升级后新 IP 筛选器的行为方式。 一个例外是内置的 endpoint protection，无法尝试使用经典 IP 筛选器。 不过，该功能是可选的，因此，如果您认为它可能会中断某些内容，则无需使用此功能。
+此配置模拟了从经典升级后新 IP 筛选器的行为。 一个例外情况是内置终结点保护，它无法尝试使用经典 IP 筛选器。 不过，该功能是可选的，因此，如果你认为它可能会中断某些内容，则无需使用它。
 
-## <a name="tip-check-diagnostic-logs-for-all-ip-connections-to-your-iot-hub"></a>提示：检查到 IoT 中心的所有 IP 连接的诊断日志
+## <a name="tip-check-diagnostic-logs-for-all-ip-connections-to-your-iot-hub"></a>提示：检查与 IoT 中心的所有 IP 连接的诊断日志
 
-若要确保顺利转换，请在 "连接" 类别下检查诊断日志。 查找 `maskedIpAddress` 属性以查看这些范围是否与预期的相同。 请记住：新的 IP 筛选器将阻止所有未显式添加的 IP 地址。
+若要确保顺利转换，请在“连接”类别下检查诊断日志。 查找 `maskedIpAddress` 属性以查看这些范围是否符合预期。 请记住：新的 IP 筛选器将阻止未显式添加的所有 IP 地址。
 
-## <a name="iot-hub-classic-ip-filter-documentation-retired"></a>IoT 中心经典 IP 筛选器文档 (退休) 
+## <a name="iot-hub-classic-ip-filter-documentation-retired"></a>IoT 中心经典 IP 筛选器文档（已停用）
 
 > [!IMPORTANT]
-> 下面是要停用的经典 IP 筛选器的原始文档。
+> 下面是将停用的经典 IP 筛选器的原始文档。
 
 安全性对于基于 Azure IoT 中心的任何 IoT 解决方案来说都是一个重要方面。 作为安全配置的一部分，有时需要显式指定设备可从其连接的 IP 地址。 使用 *IP 筛选器* 功能，可以配置规则来拒绝或接受来自特定 IPv4 地址的流量。
 

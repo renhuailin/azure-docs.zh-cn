@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: ba0b02067c032f9038051c169866588ded44af73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85566022"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>使用存储资源管理器查看知识存储
@@ -31,7 +31,7 @@ ms.locfileid: "85566022"
 
 1. 在存储帐户的左侧导航窗格中，单击“存储资源管理器”。
 
-1. 展开**表**列表以显示对酒店评论示例数据运行“导入数据”向导时创建的 Azure 表投影列表。
+1. 展开 **表** 列表以显示对酒店评论示例数据运行“导入数据”向导时创建的 Azure 表投影列表。
 
 选择任何表可查看已扩充的数据，包括关键短语和情绪评分。
 

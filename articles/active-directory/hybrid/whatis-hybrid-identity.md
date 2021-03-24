@@ -14,17 +14,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895355b5acebffe6ad24b15b0c709d21e8f20be4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90016642"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>什么是使用 Azure Active Directory 的混合标识？
 
 如今，企业和公司越来越成为本地应用程序和云应用程序的混合体。  用户需要同时访问位于本地和云中的这些应用程序。 同时在本地和云中管理用户面临一些很有挑战性的方案。 
 
-Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  这些解决方案创建一个通用用户标识，用于针对所有资源进行身份验证和授权，无论资源位于什么位置。 我们称此为**混合标识**。
+Microsoft 的标识解决方案涵盖了本地功能和基于云的功能。  这些解决方案创建一个通用用户标识，用于针对所有资源进行身份验证和授权，无论资源位于什么位置。 我们称此为 **混合标识**。
 
 借助 Azure AD 混合标识和混合标识管理，这些方案将成为可能。
 

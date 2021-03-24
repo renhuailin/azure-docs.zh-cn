@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941304"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871582"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 中的 Hive Warehouse Connector 支持的 Apache Spark 操作
 
@@ -86,7 +86,7 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
     hive.table("sampletable_colorado").show()
     ```
     
-    ![hive warehouse connector 显示 hive 表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png" alt-text="hive 仓库连接器显示 hive 表" border="true":::
 
 
 ## <a name="structured-streaming-writes"></a>结构化流写入
@@ -105,25 +105,25 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
     ```
 
 1. 通过执行以下步骤，为创建的 Spark 流生成数据：
-    1. 在同一个 Spark 群集上打开第二个 SSH 会话。
-    1. 在命令提示符下键入 `nc -lk 9999`。 此命令使用 netcat 实用程序将数据从命令行发送到指定端口。
+    1. 在同一个 Spark 群集上打开另一个 SSH 会话。
+    1. 在命令提示符下键入 `nc -lk 9999`。 此命令使用 netcat 实用工具通过命令行将数据发送到指定的端口。
 
-1. 返回到第一个 SSH 会话并创建一个新 Hive 表来保存流数据。 在 spark shell 中，输入以下命令：
+1. 返回到第一个 SSH 会话，并创建新的 Hive 表来保存流数据。 在 spark-shell 中输入以下命令：
 
     ```scala
     hive.createTable("stream_table").column("value","string").create()
     ```
 
-1. 然后使用以下命令将流数据写入新创建的表：
+1. 然后，使用以下命令将流数据写入新建的表：
 
     ```scala
     lines.filter("value = 'HiveSpark'").writeStream.format("com.hortonworks.spark.sql.hive.llap.streaming.HiveStreamingDataSource").option("database", "default").option("table","stream_table").option("metastoreUri",spark.conf.get("spark.datasource.hive.warehouse.metastoreUri")).option("checkpointLocation","/tmp/checkpoint1").start()
     ```
 
     >[!Important]
-    > 由于 Apache Spark 中的已知问题，目前必须手动设置 `metastoreUri` 和 `database` 选项。 有关此问题的详细信息，请参阅 [SPARK-25460](https://issues.apache.org/jira/browse/SPARK-25460)。
+    > 由于 Apache Spark 的已知问题，目前必须手动设置 `metastoreUri` 和 `database` 选项。 有关此问题的详细信息，请参阅 [SPARK-25460](https://issues.apache.org/jira/browse/SPARK-25460)。
 
-1. 返回到第二个 SSH 会话，并输入以下值：
+1. 返回到另一个 SSH 会话，然后输入以下值：
 
     ```bash
     foo
@@ -131,13 +131,13 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
     bar
     ```
 
-1. 返回到第一个 SSH 会话并记下简短的活动。 使用以下命令查看数据：
+1. 返回到第一个 SSH 会话，并记下简单的活动。 若要查看数据，请使用以下命令：
 
     ```scala
     hive.table("stream_table").show()
     ```
 
-使用“Ctrl + C”在第二个 SSH 会话上停止 netcat。 使用 `:q` 在第一个 SSH 会话中退出 spark shell。
+使用 **Ctrl + C** 停止第二个 SSH 会话上的 netcat。 使用 `:q` 在第一个 SSH 会话中退出 spark shell。
 
 ## <a name="next-steps"></a>后续步骤
 

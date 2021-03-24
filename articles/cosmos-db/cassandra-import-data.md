@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100399"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
@@ -67,7 +67,7 @@ ms.locfileid: "93100399"
 
 * **增加吞吐量：** 数据迁移的持续时间取决于为 Azure Cosmos DB 中的表预配的吞吐量。 在迁移期间增加吞吐量。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 完成迁移后，减少吞吐量以节约成本。 此外，还建议在源数据库所在的同一区域中拥有 Azure Cosmos 帐户。 
 
-* 启用 TLS：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 TLS。 当你将 CQL 与 SSH 配合使用时，可以选择提供 TLS 信息。
+* 启用 TLS：  Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 TLS。 当你将 CQL 与 SSH 配合使用时，可以选择提供 TLS 信息。
 
 ## <a name="options-to-migrate-data"></a>迁移数据的选项
 

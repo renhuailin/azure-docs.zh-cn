@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178450"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
@@ -72,7 +72,7 @@ sudo -u postgres createuser -d <signed-in-user>
 
 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行下列命令以克隆示例存储库。
+运行下列命令，克隆示例存储库。
 
 ```bash
 git clone https://github.com/Azure-Samples/rubyrails-tasks.git

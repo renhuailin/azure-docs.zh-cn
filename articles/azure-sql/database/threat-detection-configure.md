@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 12/01/2020
 ms.openlocfilehash: 1425003c718ca52c0bea712e9d25cd3e4c035cf1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453957"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>为 Azure SQL 数据库配置高级威胁防护
@@ -29,11 +29,11 @@ Azure SQL 数据库的[高级威胁防护](threat-detection-overview.md)可检�
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>在 Azure 门户中设置高级威胁防护
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 导航到要保护的服务器的配置页。 在 "安全设置" 中，选择 " **安全中心**"。
-3. 在 " **用于 SQL 的 Azure Defender** 配置" 页上：
+2. 导航到要保护的服务器的配置页。 在安全设置中，选择“安全中心”。
+3. 在 Azure Defender for SQL 配置页中：
 
-   - 在服务器上启用 **适用于 SQL 的 Azure Defender** 。
-   - 在 " **高级威胁防护设置**" 中，提供在 "将 **警报发送到** " 文本框中检测到异常数据库活动时要接收安全警报的电子邮件列表。
+   - 在服务器上启用 Azure Defender for SQL。
+   - 在“高级威胁防护设置”中的“发送警报到”文本框中，提供检测到异常数据库活动时接收安全警报的电子邮件列表 。
    
    :::image type="content" source="media/azure-defender-for-sql/set-up-advanced-threat-protection.png" alt-text="设置高级威胁防护":::
 
