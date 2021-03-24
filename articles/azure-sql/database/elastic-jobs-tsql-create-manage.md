@@ -14,10 +14,10 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/01/2021
 ms.openlocfilehash: 11b94ba5bcedf56f0115b8730dc58f808aff5c58
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371594"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业（预览版）
@@ -31,7 +31,7 @@ Transact-SQL (T-SQL) 用于创建、配置、执行和管理作业。 T-SQL 不�
 
 ## <a name="create-a-credential-for-job-execution"></a>创建执行作业所需的凭据
 
-此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用 [逻辑 SQL server](logical-servers.md) 和/或池目标组成员时，强烈建议创建一个凭据，以便在执行作业时在服务器和/或池的扩展之前，使用来刷新凭据。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。 
+此凭据用于连接到目标数据库，以便执行脚本。 此凭据需要在目标组指定的数据库上拥有适当的权限，否则无法成功地执行脚本。 使用[逻辑 SQL 服务器](logical-servers.md)和/或池目标组成员时，强烈建议创建一个用于刷新此凭据的凭据，然后再在执行作业时扩展服务器和/或池。 数据库范围的凭据在作业代理数据库中创建。 必须使用同一凭据来创建登录名，并创建基于登录名的用户，以便在目标数据库上授予登录数据库权限。 
 
 ```sql
 --Connect to the new job database specified when creating the Elastic Job agent

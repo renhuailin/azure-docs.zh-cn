@@ -11,10 +11,10 @@ ms.date: 09/15/2020
 ms.author: mbaldwin
 author: msmbaldwin
 ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357566"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>什么是 Azure Key Vault 托管 HSM（预览版）？
@@ -25,17 +25,17 @@ Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、�
 
 ### <a name="fully-managed-highly-available-single-tenant-hsm-as-a-service"></a>完全托管、高度可用、单租户 HSM 即服务
 
-- **完全托管** ：HSM 预配、配置、修补和维护由服务处理。 
-- **高度可用和区域复原能力** （支持可用性区域的位置）：每个 HSM 群集由跨至少两个可用性区域的多个 HSM 分区组成。 如果硬件出现故障，HSM 群集的成员分区将自动迁移到正常节点。
-- **单租户** ：每个托管 HSM 实例都专用于单个客户，并包含由多个 HSM 分区组成的群集。 每个 HSM 群集都使用特定于客户的单独安全域，该域以加密方式隔离每个客户的 HSM 群集。
+- **完全托管**：HSM 预配、配置、修补和维护由服务处理。 
+- **高度可用和区域复原能力**（支持可用性区域的位置）：每个 HSM 群集由跨至少两个可用性区域的多个 HSM 分区组成。 如果硬件出现故障，HSM 群集的成员分区将自动迁移到正常节点。
+- **单租户**：每个托管 HSM 实例都专用于单个客户，并包含由多个 HSM 分区组成的群集。 每个 HSM 群集都使用特定于客户的单独安全域，该域以加密方式隔离每个客户的 HSM 群集。
 
 
 ### <a name="access-control-enhanced-data-protection--compliance"></a>访问控制、增强的数据保护与合规性
 
-- **集中式密钥管理** ：在一个位置管理整个组织内的重要高价值密钥。 通过精细控制每个密钥的权限，可根据“最低特权访问”原则控制每个密钥的访问权限。
-- **独立的访问控制** ：托管 HSM“本地 RBAC”访问控制模型允许指定的 HSM 群集管理员完全控制甚至连管理组、订阅或资源组管理员都无法重写的 HSM。
-- **通过 FIPS 140-2 级别 3 验证的 HSM** ：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
-- **监视和审核** ：与 Azure Monitor 完全集成。 通过 Azure Monitor 获取所有活动的完整日志。 将 Azure Log Analytics 用于分析和警报。
+- **集中式密钥管理**：在一个位置管理整个组织内的重要高价值密钥。 通过精细控制每个密钥的权限，可根据“最低特权访问”原则控制每个密钥的访问权限。
+- **独立的访问控制**：托管 HSM“本地 RBAC”访问控制模型允许指定的 HSM 群集管理员完全控制甚至连管理组、订阅或资源组管理员都无法重写的 HSM。
+- **通过 FIPS 140-2 级别 3 验证的 HSM**：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
+- **监视和审核**：与 Azure Monitor 完全集成。 通过 Azure Monitor 获取所有活动的完整日志。 将 Azure Log Analytics 用于分析和警报。
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>与 Azure 和 Microsoft PaaS/SaaS 服务集成 
 

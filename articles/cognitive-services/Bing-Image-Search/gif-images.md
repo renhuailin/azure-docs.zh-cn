@@ -12,10 +12,10 @@ ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: d1fcac891db240def2e7bbdcb45b45caf7f49a82
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96341897"
 ---
 # <a name="search-for-gif-images"></a>搜索 .gif 图像 
@@ -213,5 +213,5 @@ class SearchResults{
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [C # 快速入门](quickstarts/csharp.md)
+- [C# 快速入门](quickstarts/csharp.md)
 - [教程：图像搜索单页应用程序](tutorial-bing-image-search-single-page-app.md)

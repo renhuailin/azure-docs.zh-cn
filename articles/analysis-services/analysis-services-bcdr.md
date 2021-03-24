@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: abfcc38601887cd14509ac436e0344b681e3577e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86506744"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services 高可用性
@@ -35,5 +35,5 @@ ms.locfileid: "86506744"
 
 [备份和还原](analysis-services-backup.md)   
 [管理 Azure Analysis Services](analysis-services-manage.md)   
-[别名服务器名称](analysis-services-server-alias.md) 
+[服务器别名](analysis-services-server-alias.md) 
 

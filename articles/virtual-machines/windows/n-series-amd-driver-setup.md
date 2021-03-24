@@ -3,17 +3,19 @@ title: 适用于 Windows 的 Azure N 系列 AMD GPU 驱动程序安装
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 AMD GPU 驱动程序
 author: vikancha-MSFT
 manager: jkabat
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: vm-sizes-gpu
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1e08d54b9467231233c62635dafc5135456a3843
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695407"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557414"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -31,12 +33,12 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows 10 企业多会话-内部版本1909 <br/><br/>Windows 10-内部版本1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) ( .exe)  |
+| Windows 10 Enterprise 多会话 - 版本 1909 <br/><br/>Windows 10 - 版本 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe) |
 
  > [!NOTE]
-   >  如果使用版本1903/1909，可能需要更新以下组策略才能获得最佳性能。 任何其他 Windows 版本都不需要这些更改。
+   >  如果使用版本 1903/1909，可能需要更新以下组策略才能获得最佳性能。 任何其他的 Windows 版本都不需要这些更改。
    >  
-   >  [计算机配置->策略->Windows 设置->管理模板->Windows 组件->远程桌面服务 >远程桌面会话主机 >远程会话环境]，将 "策略 [使用 WDDM 图形显示驱动程序进行远程桌面连接]" 设置为 "禁用"。
+   >  [计算机配置->策略->Windows 设置->管理模板->Windows 组件->远程桌面服务->远程桌面会话主机->远程会话环境]，将策略 [使用 WDDM 图形显示驱动程序进行远程桌面连接] 设置为“禁用”。
    >  
 
 
@@ -44,7 +46,7 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 1. 通过远程桌面连接到每个 NVv4 系列 VM。
 
-2. 如果需要卸载以前的驱动程序版本，请在 [此处](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) 下载 AMD 清理实用程序。请不要使用以前版本的驱动程序随附的实用程序。
+2. 如果需要卸载以前的驱动程序版本，则在[此处](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)下载 AMD 清理实用工具。请不要使用旧版驱动程序随附的实用工具。
 
 3. 下载并安装最新版驱动程序。
 
@@ -55,11 +57,11 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 可以在设备管理器中验证驱动程序安装。 以下示例展示了如何在 Azure NVv4 VM 上成功配置 Radeon Instinct MI25 卡。
 <br />
 
-![显示 Azure NVv4 VM 上的 Radeon Instinct MI25 卡成功配置的屏幕截图。](./media/n-series-amd-driver-setup/device-manager.png)
+![此屏幕截图展示了如何在 Azure NVv4 VM 上成功配置 Radeon Instinct MI25 卡。](./media/n-series-amd-driver-setup/device-manager.png)
 
 可以使用 dxdiag 验证 GPU 显示属性（包括视频 RAM）。 以下示例显示了 Azure NVv4 VM 上 Radeon Instinct MI25 卡的 1/2 分区。
 <br />
-![屏幕截图，显示 Azure NVv4 VM 上的 Radeon Instinct MI25 卡的1/2 分区。](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![此屏幕截图显示了 Azure NVv4 VM 上 Radeon Instinct MI25 卡的 1/2 分区。](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 如果运行的是 Windows 10 内部版本 1903 或更高版本，则 dxdiag 不会在“显示”选项卡中显示任何信息。请使用底部的“保存所有信息”选项，输出文件会显示与 AMD MI25 GPU 相关的信息。
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: alkohli
 ms.openlocfilehash: 309fa85d0a4d877522a89dd8f1e6e71fb2074744
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022932"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
@@ -87,7 +87,7 @@ ms.locfileid: "96022932"
 
 #### <a name="to-view-volume-information"></a>查看卷信息
 1. 单击桌面图标启动 StorSimple Snapshot Manager。 
-2. 在 **“作用域”** 窗格中，单击 **“卷”** 节点。 本地卷和已装入卷的列表（其中包括所有 Azure StorSimple 卷）会显示在“**结果**”窗格中。 " **结果** " 窗格中的列是可配置的。  (右键单击 " **卷** " 节点，选择 " **查看**"，然后选择 " **添加/删除列**"。 ) 
+2. 在 **“作用域”** 窗格中，单击 **“卷”** 节点。 本地卷和已装入卷的列表（其中包括所有 Azure StorSimple 卷）会显示在“**结果**”窗格中。 “**结果**”窗格中的列是可以配置的。 （右键单击“**卷**”节点，选择“**查看**”，并选择“**添加/删除列**”。）
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
@@ -102,7 +102,7 @@ ms.locfileid: "96022932"
 使用以下过程从 StorSimple Snapshot Manager 中删除卷。
 
 > [!NOTE]
-> 如果该卷是任何卷组的一部分，则无法将其删除。  (删除选项不可用于作为卷组的成员的卷。 ) 必须删除整个卷组才能删除该卷。
+> 如果该卷是任何卷组的一部分，则无法将其删除。 （该删除选项不适用于作为某个卷组成员的卷。）必须删除整个卷组才能删除该卷。
 
 #### <a name="to-delete-a-volume"></a>删除卷
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
@@ -134,7 +134,7 @@ ms.locfileid: "96022932"
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](./storsimple-8000-deployment-walkthrough-u2.md)。
-* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请参阅 [部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
+* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请转到[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>配置基本卷的备份
 1. 在 StorSimple 设备上创建基本卷。
@@ -162,7 +162,7 @@ ms.locfileid: "96022932"
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
-* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请参阅 [部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
+* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请转到[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 * 在 StorSimple 设备上配置两个卷。 （在示例中，可用卷为 **“磁盘 1”** 和 **“磁盘 2”**。） 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>步骤 1：使用磁盘管理创建动态镜像的卷
@@ -198,7 +198,7 @@ ms.locfileid: "96022932"
 2. 在 **“作用域”** 窗格中，右键单击 **“卷”** 节点，然后选择 **“重新扫描卷”**。 当扫描完成时，**“结果”** 窗格中会显示卷列表。 动态镜像卷被列为单个卷。 
 3. 在 **“结果”** 窗格中，右键单击动态镜像卷，然后单击 **“创建卷组”**。 
 4. 在 **“创建卷组”** 对话框中，键入卷组的名称，将动态镜像卷分配给该组，然后单击 **“确定”**。 
-5. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点。 新卷组应出现在 "  **卷组** " 节点下。 
+5. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点。 新卷组应出现在“**卷组**”节点下。 
 6. 右键单击卷组名称。 
    
    * 若要启动交互式（按需）备份作业，请单击 **“单次备份”**。 

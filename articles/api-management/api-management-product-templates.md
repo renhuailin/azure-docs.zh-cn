@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86249897"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
@@ -38,7 +38,7 @@ ms.locfileid: "86249897"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="product-list"></a><a name="ProductList"></a> 产品列表  
- **产品列表**模板可用于自定义开发人员门户中产品列表页的正文。  
+ **产品列表** 模板可用于自定义开发人员门户中产品列表页的正文。  
   
  ![产品列表](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
@@ -79,7 +79,7 @@ ms.locfileid: "86249897"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
 |Filtering|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
@@ -124,7 +124,7 @@ ms.locfileid: "86249897"
 ```  
   
 ##  <a name="product"></a><a name="Product"></a> Product  
- **产品**模板可用于自定义开发人员门户中产品页的正文。  
+ **产品** 模板可用于自定义开发人员门户中产品页的正文。  
   
  ![开发人员门户产品页](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
@@ -204,7 +204,7 @@ ms.locfileid: "86249897"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |Products|[Product](api-management-template-data-model-reference.md#Product)|指定的产品。|  
 |IsDeveloperSubscribed|boolean|当前用户是否订阅了此产品。|  

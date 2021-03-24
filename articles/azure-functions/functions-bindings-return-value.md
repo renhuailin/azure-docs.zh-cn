@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491352"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
@@ -143,7 +143,7 @@ module.exports = function (context, input) {
 }
 ```
 
-下面是使用 http 输出绑定的返回值的 PowerShell 代码：
+以下 PowerShell 代码使用 http 输出绑定的返回值：
 
 ```powershell
 Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{

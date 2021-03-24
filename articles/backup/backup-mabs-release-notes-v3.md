@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
 ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254255"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
@@ -81,7 +81,7 @@ ms.locfileid: "91254255"
 1. 在 Web 门户 URL 上，DPMReports 文件夹以 `DPMReports_<GUID>` 的格式存在
 
     >[!NOTE]
-    >始终只有一个文件夹具有此命名约定。 如果 MABS 是从以前的版本升级的，则可能还存在另一个旧文件夹，但无法将其打开。
+    >始终只有一个使用此命名约定的文件夹。 如果 MABS 是从之前的版本升级的，可能另外还有一个较旧的文件夹，但你无法打开它。
 
     ![DPMReports 文件夹](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
 

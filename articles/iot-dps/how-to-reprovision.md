@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791890"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
-在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 本主题旨在帮助解决方案运营商配置重新设置策略。
+在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 本主题旨在帮助解决方案操作员配置重新预配策略。
 
-有关重新设置方案的更详细概述，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md)。
+有关更详细的重新预配方案，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>配置注册分配策略

@@ -3,16 +3,17 @@ title: 将门户用于维护通知
 description: 使用门户查看在 Azure 中运行的虚拟机的维护通知并启动自助维护。
 author: shants123
 ms.service: virtual-machines
+ms.subservice: maintenance-control
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 318095e6cf68ec100dc9ea5221ecd93cba8f7c1e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: a13d79a28ac07d736b1eaf0d0e6b7f7b1ba4a4ec
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656812"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557703"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知
 
@@ -34,11 +35,11 @@ ms.locfileid: "97656812"
       
     | Value | 说明 |
     |-------|-------------|
-    | 立即启动 | VM 位于自助服务维护窗口中，可让你自行启动维护。 请参阅下面的如何在 VM 上启动维护。 | 
-    | 计划 | VM 已计划进行维护，无任何选项可用于启动维护。 通过在此视图中选择 "计划内维护" 窗口或单击 VM 即可了解维护时段。 | 
-    | 已经更新 | VM 已更新，此时不需要执行任何其他操作。 | 
-    | 稍后重试 | 已经启动维护，但没有成功。 稍后你将能够使用自助服务维护选项。 | 
-    | 立即重试 | 您可以重试先前未能成功的自行启动的维护。 | 
+    | 立即启动 | VM 处于自助维护时段，用户可以自行启动维护。 请参阅以下内容，了解如何在 VM 上启动维护。 | 
+    | 已计划 | 已安排 VM 进行维护，无需用户启动维护。 若要了解维护时段，可以在此视图中选择“维护 - 计划内”时段，也可以单击 VM。 | 
+    | 已经更新 | 你的 VM 已经更新，此时无需任何进一步的操作。 | 
+    | 稍后重试 | 已经启动维护，但没有成功。 稍后将能够使用自助式维护选项。 | 
+    | 立即重试 | 可以重试以前未成功的自行启动的维护。 | 
     | - | 计划内维护流程不处理你的 VM。 |
 
    **维护 - 自助时段**：显示可以自行启动 VM 维护的时间范围。

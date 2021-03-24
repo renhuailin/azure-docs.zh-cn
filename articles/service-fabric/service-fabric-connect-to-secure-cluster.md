@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791115"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
@@ -100,7 +100,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My 
 ```
-ServerCommonName 是群集节点上安装的服务器证书的公用名称  。 FindValue 是管理客户端证书的公用名称  。 填充参数以后，命令将如以下示例所示：
+ServerCommonName 是群集节点上安装的服务器证书的公用名称。 FindValue 是管理客户端证书的公用名称。 填充参数以后，命令将如以下示例所示：
 ```powershell
 $ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
 $certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
@@ -164,7 +164,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 
-群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](/dotnet/api/system.fabric.x509credentials) 上设置的 [RemoteCommonNames 属性](/dotnet/api/system.fabric.fabricclient)中。 按此过程操作就可以在客户端与群集节点之间进行相互身份验证。
+群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](/dotnet/api/system.fabric.fabricclient) 上设置的 [RemoteCommonNames 属性](/dotnet/api/system.fabric.x509credentials)中。 按此过程操作就可以在客户端与群集节点之间进行相互身份验证。
 
 ```csharp
 using System.Fabric;

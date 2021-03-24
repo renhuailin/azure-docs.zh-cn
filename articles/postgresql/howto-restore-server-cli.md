@@ -1,6 +1,6 @@
 ---
-title: 备份和还原-Azure Database for PostgreSQL-单服务器 Azure CLI
-description: 了解如何使用 Azure CLI 设置备份配置和还原 Azure Database for PostgreSQL 单服务器中的服务器。
+title: 备份和还原 - Azure CLI - Azure Database for PostgreSQL - 单一服务器
+description: 了解如何使用 Azure CLI 在 Azure Database for PostgreSQL 单一服务器中设置备份配置和还原服务器。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ef397eb67c1f60c14fb36bf455236d84b730f611
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659567"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
- - 本文需要 Azure CLI 版本2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+ - 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="set-backup-configuration"></a>设置备份配置
 

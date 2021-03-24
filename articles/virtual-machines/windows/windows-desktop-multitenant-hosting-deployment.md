@@ -2,34 +2,35 @@
 title: 如何使用多租户托管权限在 Azure 上部署 Windows 10
 description: 了解如何使用多租户托管权限来充分利用 Windows 软件保障权益，从而将本地许可证引入到 Azure 中。
 author: mimckitt
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt
-ms.openlocfilehash: 6e6f6ced1cdba429abd914354a5eba861ab127ec
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: bb86ba6867ad796ef0f5eeb1357a6df9e93e9f9e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670051"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555765"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
-对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 多租户托管权限仅适用于 Windows 10 (版本1703或更高版本) 。
+对于其用户使用 Windows 10 企业版 E3/E5 或使用 Windows 虚拟桌面访问（用户订阅许可证或附加设备用户订阅许可证）的客户，通过使用 Windows 10 多租户托管权限，他们可以在云中使用其 Windows 10 许可证并在 Azure 上运行 Windows 10 虚拟机，无需购买其他许可证。 多租户托管权限仅适用于 Windows 10（版本 1703 或更高版本）。
 
-有关详细信息，请参阅 [适用于 Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
+有关详细信息，请参阅[适用于 Windows 10 的多租户托管](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
 
 > [!NOTE]
-> - 若要使用 Windows 7、8.1 和10映像进行开发或测试，请参阅 [Azure 中的 windows 客户端以进行开发/测试方案](client-images.md)
+> - 若要使用 Windows 7、8.1 和 10 映像进行开发或测试，请参阅[适用于开发/测试方案的 Azure 中的 Windows 客户端](client-images.md)
 > - 有关 Windows Server 许可权益，请参阅 [Windows Server 映像的 Azure 混合使用权益](hybrid-use-benefit-licensing.md)。
 
 ## <a name="subscription-licenses-that-qualify-for-multitenant-hosting-rights"></a>符合多租户托管权限的订阅许可证
 
-使用 [Microsoft 管理中心](/microsoft-365/admin/admin-overview/about-the-admin-center?preserve-view=true&view=o365-worldwide)，可以确认是否向用户分配了支持 Windows 10 的许可证。
+使用 [Microsoft 管理中心](/microsoft-365/admin/admin-overview/about-the-admin-center)，可以确认是否已向用户分配支持 Windows 10 的许可证。
 
 > [!IMPORTANT]
-> 若要在 Azure 中使用 Windows 10 映像，用户必须具有以下订阅许可证之一。 如果你没有这些订阅许可证，则可以通过 [云服务合作伙伴](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/) 或直接通过 [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1)购买。
+> 若要在 Azure 中使用 Windows 10 映像，用户必须具有以下订阅许可证之一。 如果你没有这些订阅许可证，可通过[云服务合作伙伴](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)或直接通过 [Microsoft](https://www.microsoft.com/microsoft-365?rtc=1) 购买。
 
 **符合条件的订阅许可证：**
 
@@ -42,7 +43,7 @@ ms.locfileid: "101670051"
 
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure 市场部署 Windows 10 映像 
-对于 PowerShell、CLI 和 Azure 资源管理器模板部署，可以使用和找到 Windows 10 映像 `PublisherName: MicrosoftWindowsDesktop` `Offer: Windows-10` 。 多租户托管权限支持 Windows 10 版本创意者更新 (1809) 或更高版本。 
+对于 PowerShell、CLI 和 Azure 资源管理器模板部署，可使用 `PublisherName: MicrosoftWindowsDesktop` 和 `Offer: Windows-10` 找到 Windows 10 映像。 多租户托管权限支持 Windows 10 版本创意者更新 (1809) 或更高版本。 
 
 ```powershell
 Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
@@ -57,7 +58,7 @@ rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus
 rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
 ```
 
-有关可用映像的详细信息，请参阅 [使用 Azure MARKETPLACE VM 映像查找并使用 Azure PowerShell](./cli-ps-findimage.md)
+有关可用映像的详细信息，请参阅[通过 Azure PowerShell 查找并使用 Azure 市场 VM 映像](./cli-ps-findimage.md)
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>将 Windows 10 VHD 上传到 Azure
 如果要上传通用化的 Windows 10 VHD，请注意，Windows 10 不会默认启用内置 Administrator 帐户。 若要启用内置 Administrator 帐户，请在自定义脚本扩展中包含以下命令。

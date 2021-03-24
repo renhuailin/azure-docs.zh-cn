@@ -1,5 +1,5 @@
 ---
-title: 应用程序开发-Azure Database for MySQL
+title: 应用程序开发 - Azure Database for MySQL
 description: 介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项
 author: savjani
 ms.author: pariks
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 45447a26c0455fc5945af8b8e9f7442af7facfbe
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99830679"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
@@ -23,7 +23,7 @@ ms.locfileid: "99830679"
 为各种编程语言和平台提供了代码示例。 可在以下位置找到代码示例的链接：[用于连接 Azure Database for MySQL 的连接库](concepts-connection-libraries.md)
 
 ## <a name="tools"></a>工具
-Azure Database for MySQL 使用 MySQL 社区版本，与 MySQL 或 MySQL 实用程序（例如，mysql.exe、 [phpMyAdmin](https://www.phpmyadmin.net/)、 [Navicat](https://www.navicat.com/products/navicat-for-mysql)、 [dbForge Studio for MySQL](https://www.devart.com/dbforge/mysql/studio/) 等）中的 mysql 常见管理工具兼容。 还可以使用 Azure 门户、Azure CLI 和 REST API 与数据库服务进行交互。
+Azure Database for MySQL 使用 MySQL 社区版，此版本与 MySQL 常用管理工具（如 Workbench）或 MySQL 实用程序（如 mysql.exe、[phpMyAdmin](https://www.phpmyadmin.net/)、[Navicat](https://www.navicat.com/products/navicat-for-mysql) 和 [dbForge Studio for MySQL](https://www.devart.com/dbforge/mysql/studio/)）及其他工具兼容。 还可以使用 Azure 门户、Azure CLI 和 REST API 与数据库服务进行交互。
 
 ## <a name="resource-limitations"></a>资源限制
 Azure Database for MySQL 使用两种不同机制管理可用于服务器的资源： 

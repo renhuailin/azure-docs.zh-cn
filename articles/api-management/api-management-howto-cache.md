@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 11/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94638727"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
-API 管理中的 Api 和操作可以配置响应缓存。 响应缓存可以显著减少 api 调用方的延迟，并为 API 提供程序提供后端负载。
+API 管理中的 API 和操作可以使用响应缓存进行配置。 响应缓存可以显著减少 API 调用方的延迟和 API 提供程序的后端负载。
 
 > [!IMPORTANT]
-> 内置缓存是易失性的，由同一区域中的所有单元共享在同一 API 管理服务中。
+> 内置缓存是易失性的，由同一 API 管理服务中同一区域的所有单元共享。
 
 若要更详细地了解缓存，请参阅 [API 管理缓存策略](api-management-caching-policies.md)和 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 

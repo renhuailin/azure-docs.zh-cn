@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968112"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教程：使用 Azure Stack Edge Pro 转换用于高级部署流的数据
@@ -63,7 +63,7 @@ ms.locfileid: "97968112"
 3. 在“创建 IoT Edge 服务”上，输入以下内容：
 
    
-    |字段  |Value  |
+    |字段  |值  |
     |---------|---------|
     |订阅     |为 IoT 中心资源选择订阅。 可以选择 Azure Stack Edge 资源使用的同一订阅。        |
     |资源组     |为 IoT 中心资源输入资源组的名称。 可以选择 Azure Stack Edge 资源使用的同一资源组。         |
@@ -177,7 +177,7 @@ ms.locfileid: "97968112"
  
     2. 指定 IoT Edge 自定义模块的设置。 输入以下值。
      
-        |字段  |Value  |
+        |字段  |值  |
         |---------|---------|
         |名称     | 模块的唯一名称。 此模块是一个 Docker 容器，可以部署到与 Azure Stack Edge Pro 关联的 IoT Edge 设备。        |
         |映像 URI     | 模块的对应容器映像的映像 URI。        |

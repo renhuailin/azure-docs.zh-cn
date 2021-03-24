@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 join.me 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 join.me 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 与 join.me 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f836b47c0ede7956438f4730dc951a877cb653e7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459419"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>教程：Azure Active Directory 与 join.me 集成
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>教程：Azure Active Directory 与 join.me 的集成
 
 在本教程中，了解如何将 join.me 与 Azure Active Directory (Azure AD) 集成。
 将 join.me 与 Azure AD 集成可提供以下优势：
@@ -41,7 +41,7 @@ ms.locfileid: "92459419"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* join.me 支持 IDP 发起的 SSO 
+* join.me 支持 IDP 发起的 SSO
 
 ## <a name="adding-joinme-from-the-gallery"></a>从库中添加 join.me
 
@@ -61,13 +61,13 @@ ms.locfileid: "92459419"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“join.me”，在结果面板中选择“join.me”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“join.me”，在结果面板中选择“join.me”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 join.me](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 join.me 的 Azure AD 单一登录  。
+在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 join.me 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 join.me 相关用户之间建立链接关系。
 
 若要配置并测试 join.me 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92459419"
 
 若要配置 join.me 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **join.me** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **join.me** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "92459419"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -132,17 +132,17 @@ ms.locfileid: "92459419"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 join.me 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“join.me”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“join.me”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“join.me”。 
+2. 在应用程序列表中，选择“join.me”。
 
     ![应用程序列表中的 join.me 链接](common/all-applications.png)
 

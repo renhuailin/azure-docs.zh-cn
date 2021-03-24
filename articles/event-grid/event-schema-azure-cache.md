@@ -1,37 +1,37 @@
 ---
-title: 用于 Redis 的 Azure 缓存作为事件网格源
-description: 介绍通过 Azure 事件网格为 Azure Cache for Redis 事件提供的属性
+title: 充当事件网格源的 Azure Cache for Redis
+description: 介绍为 Azure 事件网格中的 Azure Cache for Redis 事件提供的属性
 ms.topic: conceptual
 ms.date: 02/11/2021
 author: curib
 ms.author: cauribeg
 ms.openlocfilehash: 1a2995bc9ef40cd4eab320ce1bb4c5faf61e0e6e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371271"
 ---
-# <a name="azure-cache-for-redis-as-an-event-grid-source"></a>用于 Redis 的 Azure 缓存作为事件网格源
+# <a name="azure-cache-for-redis-as-an-event-grid-source"></a>充当事件网格源的 Azure Cache for Redis
 
-本文提供适用于 Azure Cache for Redis 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
+本文提供 Azure Cache for Redis 事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
 
 ## <a name="available-event-types"></a>可用事件类型
-当客户端通过调用 Redis REST Api 的 Azure 缓存来导出、导入或缩放时，将触发这些事件。 修补事件由 Redis 更新触发。
+当客户端通过调用 Azure Cache for Redis REST API 来导出、导入或缩放时，将触发这些事件。 Redis 更新会触发修补事件。
 
  |事件名称 |说明|
  |----------|-----------|
- |**ExportRDBCompleted** |导出缓存数据时触发。 |
- |**ImportRDBCompleted** |导入缓存数据时触发。 |
- |**PatchingCompleted** |修补完成时触发。 |
- |**ScalingCompleted** |缩放完成后触发。 |
+ |**Microsoft.Cache.ExportRDBCompleted** |导出缓存数据时触发。 |
+ |**Microsoft.Cache.ImportRDBCompleted** |导入缓存数据时触发。 |
+ |**Microsoft.Cache.PatchingCompleted** |修补完成时触发。 |
+ |**Microsoft.Cache.ScalingCompleted** |缩放完成时触发。 |
 
 ## <a name="example-event"></a>示例事件
-触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。 本部分包含有关 Redis 事件的每个 Azure 缓存的数据外观的示例。
+触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。 本部分包含一个示例，介绍每个 Azure Cache for Redis 事件的数据外观。
 
 # <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
 
-### <a name="microsoftcachepatchingcompleted-event"></a>PatchingCompleted 事件
+### <a name="microsoftcachepatchingcompleted-event"></a>Microsoft.Cache.PatchingCompleted 事件
 
 ```json
 [{
@@ -48,7 +48,7 @@ ms.locfileid: "100371271"
 "eventTime":"2020-12-09T21:50:19.9995668+00:00"}]
 ```
 
-### <a name="microsoftcacheimportrdbcompleted-event"></a>ImportRDBCompleted 事件
+### <a name="microsoftcacheimportrdbcompleted-event"></a>Microsoft.Cache.ImportRDBCompleted 事件
 
 ```json
 [{
@@ -65,7 +65,7 @@ ms.locfileid: "100371271"
 "eventTime":"2020-12-09T21:50:19.9995668+00:00"}]
 ```
 
-### <a name="microsoftcacheexportrdbcompleted-event"></a>ExportRDBCompleted 事件
+### <a name="microsoftcacheexportrdbcompleted-event"></a>Microsoft.Cache.ExportRDBCompleted 事件
 
 ```json
 [{
@@ -82,7 +82,7 @@ ms.locfileid: "100371271"
 "eventTime":"2020-12-09T21:50:19.9995668+00:00"}]
 ```
 
-### <a name="microsoftcachescalingcompleted"></a>ScalingCompleted
+### <a name="microsoftcachescalingcompleted"></a>Microsoft.Cache.ScalingCompleted
 
 ```json
 [{
@@ -102,7 +102,7 @@ ms.locfileid: "100371271"
 # <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
 
 
-### <a name="microsoftcachepatchingcompleted-event"></a>PatchingCompleted 事件
+### <a name="microsoftcachepatchingcompleted-event"></a>Microsoft.Cache.PatchingCompleted 事件
 
 ```json
 [{
@@ -120,7 +120,7 @@ ms.locfileid: "100371271"
 }]
 ```
 
-### <a name="microsoftcacheimportrdbcompleted-event"></a>ImportRDBCompleted 事件
+### <a name="microsoftcacheimportrdbcompleted-event"></a>Microsoft.Cache.ImportRDBCompleted 事件
 
 ```json
 [{
@@ -138,7 +138,7 @@ ms.locfileid: "100371271"
 }]
 ```
 
-### <a name="microsoftcacheexportrdbcompleted-event"></a>ExportRDBCompleted 事件
+### <a name="microsoftcacheexportrdbcompleted-event"></a>Microsoft.Cache.ExportRDBCompleted 事件
 
 ```json
 [{
@@ -156,7 +156,7 @@ ms.locfileid: "100371271"
 }]
 ```
 
-### <a name="microsoftcachescalingcompleted"></a>ScalingCompleted
+### <a name="microsoftcachescalingcompleted"></a>Microsoft.Cache.ScalingCompleted
 
 ```json
 [{
@@ -189,7 +189,7 @@ ms.locfileid: "100371271"
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Azure Cache for Redis 事件数据。 |
+| `data` | 对象 | Azure Cache for Redis 事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -206,7 +206,7 @@ ms.locfileid: "100371271"
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Azure Cache for Redis 事件数据。 |
+| `data` | 对象 | Azure Cache for Redis 事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
@@ -214,15 +214,15 @@ ms.locfileid: "100371271"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `timestamp` | string | 发生事件的时间。 |
 | `name` | 字符串 | 事件的名称。 |
-| `status` | 字符串 | 事件的状态。 失败或成功。 |
+| `status` | 字符串 | 事件的状态。 “失败”或“成功”。 |
 
 ## <a name="quickstarts"></a>快速入门
 
-若要试用 Azure Cache for Redis 事件，请参阅以下任一快速入门文章：
+若要尝试 Azure Cache for Redis 事件，请参阅以下任意快速入门文章：
 
 |若要使用此工具：    |请参阅此文： |
 |--|-|

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87021454"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>关于 VMware VM 到 Azure 的灾难恢复
@@ -90,8 +90,8 @@ Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任�
 在 Azure 和本地基础结构就位后，可以设置灾难恢复。
 
 1. 若要了解需要部署的组件，请查看 [VMware 到 Azure 体系结构](vmware-azure-architecture.md)，以及[物理机到 Azure 体系结构](physical-azure-architecture.md)。 其中包含许多组件，请务必了解它们如何搭配在一起。
-2. 源环境****：作为部署中的第一步，需要设置复制源环境。 指定要复制的内容以及要复制到的位置。
-3. 配置服务器****：需要设置本地源环境中的配置服务器：
+2. 源环境：作为部署中的第一步，需要设置复制源环境。 指定要复制的内容以及要复制到的位置。
+3. 配置服务器：需要设置本地源环境中的配置服务器：
     - 配置服务器是一台本地计算机。 对于 VMware 灾难恢复，建议将其作为可通过可下载的 OVF 模板部署的 VMware VM 来部署。
     - 配置服务器协调本地环境与 Azure 之间的通信
     - 其他几个组件在配置服务器计算机上运行。
@@ -99,7 +99,7 @@ Site Recovery 可复制受支持的 VMware VM 或物理服务器上运行的任�
         - 主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
     - 设置过程包括在保管库中注册配置服务器、下载 MySQL Server 和 VMware PowerCLI，以及指定为自动发现和移动服务安装所创建的帐户。
 4. **目标环境**：通过指定 Azure 订阅和网络设置来设置目标 Azure 环境。
-5. 复制策略****：指定复制的方式。 设置包括创建和存储恢复点的频率，以及是否应创建应用一致性快照。
+5. 复制策略：指定复制的方式。 设置包括创建和存储恢复点的频率，以及是否应创建应用一致性快照。
 6. **启用复制**。 为本地计算机启用复制。 如果你创建了一个帐户用于安装移动服务，则在为计算机启用复制时将进行安装。 
 
 *需要更多帮助？*

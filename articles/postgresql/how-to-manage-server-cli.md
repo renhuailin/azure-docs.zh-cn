@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935795"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure Database for PostgreSQL 单一服务器
@@ -33,13 +33,13 @@ az login
 az account set --subscription <subscription id>
 ```
 
-如果尚未创建服务器，请参阅此 [快速入门](quickstart-create-server-database-azure-cli.md) 创建一个。
+如果尚未创建服务器，请参考此[快速入门](quickstart-create-server-database-azure-cli.md)创建一个。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
 
-你可以使用以下命令轻松扩展你的定价层、计算和存储。 可以参阅 [az postgres server 概述](/cli/azure/mysql/server)，了解可执行的所有服务器操作
+可以使用以下命令轻松地纵向扩展定价层、计算和存储。 可以参阅 [az postgres server 概述](/cli/azure/mysql/server)，了解可执行的所有服务器操作
 
 ```azurecli-interactive
 az postgres server update --resource-group myresourcegroup --name mydemoserver --sku-name GP_Gen5_4 --storage-size 6144

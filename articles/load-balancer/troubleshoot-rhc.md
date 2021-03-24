@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
 ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955614"
 ---
-# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>解决资源运行状况问题和入站可用性问题 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>排查资源运行状况和入站可用性问题 
 
 本文介绍了如何调查影响负载均衡器前端 IP 和后端资源的可用性的问题。 
 
-负载均衡器的资源运行状况检查 (RHC) 用于确定负载均衡器的运行状况。 它在 **2 分钟** 的时间间隔内分析数据路径可用性指标，以确定负载均衡终结点、前端 IP 和具有负载均衡规则的前端端口组合是否可用。
+负载均衡器的资源运行状况检查 (RHC) 用于确定负载均衡器的运行状况。 它在 2 分钟间隔内分析数据路径可用性指标，以确定负载均衡终结点、前端 IP 和具有负载均衡规则的前端端口组合是否可用。
 
 下表描述了用于确定负载均衡器的运行状况状态的 RHC 逻辑。
 

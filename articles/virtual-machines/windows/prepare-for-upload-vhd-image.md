@@ -3,17 +3,19 @@ title: 准备好要上传到 Azure 的 Windows VHD
 description: 了解如何准备要上传到 Azure 的 Windows VHD 或 VHDX
 author: glimoli
 manager: dcscontentpm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556258"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -195,7 +197,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    此代码可确保在部署 VM 时可以连接。 在 Azure 中部署 VM 后，还可以查看这些设置。
 
-1. 如果 VM 是域的一部分，请检查以下策略，以确保不会还原以前的设置。
+1. 如果 VM 是域的一部分，请检查以下策略以确保未还原以前的设置。
 
     |                 目标                  |                                                                            策略                                                                            |                           Value                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -213,7 +215,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled True
    ```
 
-1. 运行下面的示例，允许 WinRM 通过三个防火墙配置文件 (域、专用和公用) ，并启用 PowerShell 远程服务：
+1. 运行以下示例，以通过三个防火墙配置文件（“域”、“专用”和“公共”）来允许 WinRM，并启用 PowerShell 远程服务：
 
    ```powershell
    Enable-PSRemoting -Force
@@ -239,7 +241,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    New-NetFirewallRule -DisplayName AzurePlatform -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
    ```
 
-1. 如果 VM 是域的一部分，请检查以下 Azure AD 策略，以确保不会还原以前的设置。
+1. 如果 VM 是域的一部分，请检查以下 Azure AD 策略以确保未还原以前的设置。
 
     |                 目标                 |                                                                         策略                                                                          |                  Value                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -328,7 +330,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights
       Assignment\Deny log on through Remote Desktop Services`
 
-1. 检查以下 Azure AD 策略，确保它们不会删除任何所需的访问帐户：
+1. 检查以下 Azure AD 策略，确保它们不会删除任何必需的访问帐户：
 
    - `Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment\Access this computer from the network`
 
@@ -423,7 +425,7 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 以管理员身份运行 PowerShell 会话。
 1. 删除 panther 目录 (C:\Windows\Panther)。
 1. 将目录切换到 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在 " **系统准备工具** " 对话框中，选择 " **进入系统全新体验 (OOBE)**，并确保已选中" **通用化** "复选框。
+1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，并确保已选中“通用化”复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在“关机选项”中选择“关机”。
@@ -500,7 +502,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
 
-如果具有 [vmdk 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [AZURE MIGRATE](../../migrate/server-migrate-overview.md) 来转换 vmdk，并将其上传到 Azure。
+如果你有 Windows VM 映像采用 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)，则可使用 [Azure Migrate](../../migrate/server-migrate-overview.md) 转换 VMDK 并将其上传到 Azure。
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 

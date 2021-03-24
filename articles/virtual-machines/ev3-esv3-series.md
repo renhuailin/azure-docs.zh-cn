@@ -1,18 +1,18 @@
 ---
 title: Ev3 系列和 Esv3 系列
 description: Ev3 和 Esv3 系列 VM 的规范。
-author: DavidCBerry13
+author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.author: daberry
-ms.openlocfilehash: 9d2c245cdc8b1aba644171089ed95bad2ab730a4
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.author: mimckitt
+ms.openlocfilehash: 878ca249a02d3b53d0085052b2ff1caf590e3ce3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558598"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557856"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -24,7 +24,7 @@ Ev3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 
 数据磁盘存储与虚拟机分开计费。 若要使用高级存储磁盘，请使用 ESv3 大小。 ESv3 系列大小的定价和计费标准与 Ev3 系列相同。
 
-Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
+Ev3 系列 VM 的 Intel® 超线程技术功能。
 
 [ACU](acu.md)：160 - 190<br>
 [高级存储](premium-storage-performance.md)：不支持<br>
@@ -32,7 +32,7 @@ Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
@@ -56,7 +56,7 @@ Ev3 系列 VM 的 Intel® Hyper-Threading 技术。
 
 Esv3 系列实例在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 处理器上运行，配置了 Intel Turbo Boost Technology 2.0，并使用高级存储。 Esv3 系列实例最适用于内存密集型企业应用程序。
 
-Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
+Esv3 系列 VM 的 Intel® 超线程技术功能。
 
 [ACU](acu.md)：160-190<br>
 [高级存储](premium-storage-performance.md)：支持<br>
@@ -64,8 +64,8 @@ Esv3 系列 VM 的 Intel® Hyper-Threading 技术。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |

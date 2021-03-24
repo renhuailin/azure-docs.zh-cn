@@ -1,6 +1,6 @@
 ---
 title: Microsoft Spark 实用工具简介
-description: 教程： Azure Synapse Analytics 笔记本中的 MSSparkutils
+description: 教程：Azure Synapse Analytics 笔记本中的 MSSparkutils
 author: ruixinxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -11,53 +11,53 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 58672bd68d9a2ea85f58b3761f3b89098b9f5afc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368653"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
-Microsoft Spark 实用工具 (MSSparkUtils) 是一个内置包，可帮助你轻松执行常见任务。 你可以使用 MSSparkUtils 来处理文件系统、获取环境变量以及使用机密。 MSSparkUtils 在 `PySpark (Python)` 、 `Scala` 和 `.NET Spark (C#)` 笔记本和 Synapse 管道中可用。
+Microsoft Spark 实用工具 (MSSparkUtils) 是内置的包，可帮助你轻松执行常见任务。 你可以使用 MSSparkUtils 来处理文件系统、获取环境变量以及处理机密。 MSSparkUtils 在 `PySpark (Python)`、`Scala` 和 `.NET Spark (C#)` 笔记本以及 Synapse 管道中可用。
 
 ## <a name="pre-requisites"></a>先决条件
 
-### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>配置对 Azure Data Lake Storage Gen2 的访问权限 
+### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>配置对 Azure Data Lake Storage Gen2 的访问 
 
-Synapse 笔记本使用 Azure active directory (Azure AD) 传递来访问 ADLS Gen2 帐户。 你需要是 **Blob 存储数据参与者** 才能访问 ADLS Gen2 帐户 (或) 文件夹。 
+Synapse 笔记本使用 Azure Active Directory (Azure AD) 直通来访问 ADLS Gen2 帐户。 你需要成为“Blob 存储数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。 
 
-Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要是 **Blob 存储数据参与者** ，才能访问 (或文件夹) 的 ADLS Gen2 帐户。
+Synapse 管道使用工作区标识 (MSI) 来访问存储帐户。 若要在管道活动中使用 MSSparkUtils，你的工作区标识需要为“Blob 存储数据参与者”才能访问 ADLS Gen2 帐户（或文件夹）。
 
 请按照以下步骤操作，确保 Azure AD 和工作区 MSI 可以访问 ADLS Gen2 帐户：
-1. 打开 [Azure 门户](https://portal.azure.com/) 和要访问的存储帐户。 可以导航到要访问的特定容器。
-2. 从左侧面板中选择 " **访问控制 (IAM")** 。
-3. 将 **Azure AD 帐户** 和 **工作区标识** (与你的工作区名称相同) 到存储帐户上的 " **存储 Blob 数据参与者** " 角色（如果尚未分配）。 
+1. 打开 [Azure 门户](https://portal.azure.com/)和要访问的存储帐户。 可以导航到要访问的特定容器。
+2. 从左侧面板中选择“访问控制(IAM)”。
+3. 将你的 Azure AD 帐户和工作区标识（与工作区名称相同）分配给存储帐户上的“Blob 存储数据参与者”角色（如果尚未分配）  。 
 4. 选择“保存”。
 
-可以通过以下 URL 访问 Synapse Spark ADLS Gen2 上的数据：
+可以通过以下 URL 使用 Synapse Spark 访问 ADLS Gen2 上的数据：
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问权限  
+### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问  
 
-Synapse 利用 **共享访问签名 (SAS)** 访问 Azure Blob 存储。 若要避免在代码中公开 SAS 密钥，我们建议在 Synapse 工作区中创建一个新的链接服务，并将其连接到要访问的 Azure Blob 存储帐户。
+Synapse 利用共享访问签名 (SAS) 访问 Azure Blob 存储。 为了避免在代码中公开 SAS 密钥，建议在 Synapse 工作区中为要访问的 Azure Blob 存储帐户创建一个新的链接服务。
 
 按照以下步骤为 Azure Blob 存储帐户添加新的链接服务：
 
 1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
-3. 在右侧的 "**新建链接服务**" 面板中搜索 " **Azure Blob 存储**"。
+2. 从左侧面板中选择“管理”，然后选择“外部连接”下的“链接服务”  。
+3. 在右侧的“新建链接服务”面板中搜索“Azure Blob 存储” 。
 4. 选择“继续”。
-5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用 **身份验证方法** 的 **帐户密钥**。
-6. 选择 " **测试连接** " 以验证设置是否正确。
-7. 依次选择 " **创建** " 和 " **全部发布** " 以保存所做的更改。 
+5. 选择要访问的 Azure Blob 存储帐户，并配置链接服务名称。 建议使用“帐户密钥”作为“身份验证方法” 。
+6. 选择“测试连接”以验证设置是否正确。
+7. 首先选择“创建”，然后单击“全部发布”以保存所做更改 。 
 
-可以通过以下 URL 通过 Synapse Spark 访问 Azure Blob 存储上的数据：
+可以通过以下 URL 使用 Synapse Spark 访问 Azure Blob 存储上的数据：
 
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
-下面是一个代码示例：
+下面是代码示例：
 
 :::zone pivot = "programming-language-python"
 
@@ -119,32 +119,32 @@ Console.WriteLine(wasbs_path);
 
 ::: zone-end 
  
-###  <a name="configure-access-to-azure-key-vault"></a>配置对 Azure Key Vault 的访问权限
+###  <a name="configure-access-to-azure-key-vault"></a>配置对 Azure Key Vault 的访问
 
-你可以添加一个 Azure Key Vault 作为链接服务，以在 Synapse 中管理你的凭据。 按照以下步骤将 Azure Key Vault 添加为 Synapse 链接服务：
+可以添加 Azure Key Vault 作为链接服务来管理 Synapse 中的凭据。 按照以下步骤将 Azure Key Vault 添加为 Synapse 链接服务：
 1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
-2. 从左侧面板中选择 "**管理**"，并选择 "**外部连接**" 下的 "**链接服务**"。
-3. 在右侧的 "**新建链接服务**" 面板中搜索 **Azure Key Vault** 。
+2. 从左侧面板中选择“管理”，然后选择“外部连接”下的“链接服务”  。
+3. 在右侧的“新建链接服务”面板中搜索“Azure Key Vault” 。
 4. 选择要访问的 Azure Key Vault 帐户，并配置链接服务名称。
-5. 选择 " **测试连接** " 以验证设置是否正确。
-6. 选择 "首先 **创建** "，然后单击 " **全部发布** " 以保存更改。 
+5. 选择“测试连接”以验证设置是否正确。
+6. 首先选择“创建”，然后单击“全部发布”以保存所做更改 。 
 
-Synapse 笔记本使用 Azure active directory (Azure AD) 传递来访问 Azure Key Vault。 Synapse 管道使用工作区标识 (MSI) 访问 Azure Key Vault。 若要确保你的代码在笔记本和 Synapse 管道中都能正常工作，我们建议为你的 Azure AD 帐户和工作区标识授予机密访问权限。
+Synapse 笔记本使用 Azure Active Directory (Azure AD) 直通来访问 Azure Key Vault。 Synapse 管道使用工作区标识 (MSI) 来访问 Azure Key Vault。 为了确保你的代码在笔记本和 Synapse 管道中都能正常工作，我们建议你向 Azure AD 帐户和工作区标识授予机密访问权限。
 
-请按照以下步骤授予对工作区标识的密钥访问权限：
-1. 打开要访问的 [Azure 门户](https://portal.azure.com/) 和 Azure Key Vault。 
-2. 从左侧面板中选择 " **访问策略** "。
-3. 选择 " **添加访问策略**"： 
-    - 选择 **"密钥"、"机密" 和 "将证书管理 &** 为配置模板"。
-    - 选择 **Azure AD 帐户** 和 **工作区标识** (与选择主体中) 的工作区名称相同，或者确保已分配此帐户。 
-4. 选择 " **选择** 并 **添加**"。
-5. 选择 " **保存** " 按钮以提交更改。  
+请按照以下步骤向工作区标识授予机密访问权限：
+1. 打开 [Azure 门户](https://portal.azure.com/)和要访问的 Azure Key Vault。 
+2. 在左侧面板中选择“访问策略”。
+3. 选择“添加访问策略”： 
+    - 选择“密钥、机密和证书管理”作为配置模板。
+    - 在选择主体中选择你的 Azure AD 帐户和工作区标识（与工作区名称相同），或确保它已分配 。 
+4. 依次选择“选择”和“添加” 。
+5. 选择“保存”按钮以提交更改。  
 
 ## <a name="file-system-utilities"></a>文件系统实用工具
 
-`mssparkutils.fs` 提供用于处理各种文件系统的实用程序，包括 Azure Data Lake Storage Gen2 (ADLS Gen2) 和 Azure Blob 存储。 请确保正确配置对 [Azure Data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) 和 [Azure Blob 存储](#configure-access-to-azure-blob-storage) 的访问。
+`mssparkutils.fs` 提供用于处理各种文件系统的实用工具，包括 Azure Data Lake Storage Gen2 (ADLS Gen2) 和 Azure Blob 存储。 请确保正确配置对 [Azure Data Lake Storage Gen2](#configure-access-to-azure-data-lake-storage-gen2) 和 [Azure Blob 存储](#configure-access-to-azure-blob-storage)的访问。
 
-有关可用方法的概述，请运行以下命令：
+运行以下命令以概要了解可用的方法：
 
 :::zone pivot = "programming-language-python"
 
@@ -253,7 +253,7 @@ foreach(var File in Files) {
 
 ### <a name="create-new-directory"></a>创建新目录
 
-如果给定的目录不存在，则创建该目录，并创建任何必要的父目录。
+创建给定目录（如果不存在）和任何必要的父目录。
 
 :::zone pivot = "programming-language-python"
 
@@ -306,7 +306,7 @@ FS.Cp("source file or directory", "destination file or directory", true) // Set 
 
 ### <a name="preview-file-content"></a>预览文件内容
 
-返回到以 UTF-8 编码的字符串形式的给定文件的第一个 "maxBytes" 字节。
+以 UTF-8 编码的字符串形式返回给定文件的第一个“maxBytes”之前的字节。
 
 :::zone pivot = "programming-language-python"
 
@@ -360,7 +360,7 @@ FS.Mv("source file or directory", "destination directory", true)
 
 ### <a name="write-file"></a>写入文件
 
-将给定的字符串写入文件，并以 UTF-8 编码。
+将以 UTF-8 编码的给定字符串写入文件。
 
 :::zone pivot = "programming-language-python"
 
@@ -387,7 +387,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 
 ### <a name="append-content-to-a-file"></a>将内容追加到文件
 
-将给定的字符串追加到文件中，以 UTF-8 编码。
+将以 UTF-8 编码的给定字符串追加到文件中。
 
 :::zone pivot = "programming-language-python"
 
@@ -442,9 +442,9 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ## <a name="credentials-utilities"></a>凭据实用工具
 
-你可以使用 MSSparkUtils 凭据实用程序获取链接服务的访问令牌，并在 Azure Key Vault 中管理机密。 
+可以使用 MSSparkUtils 凭据实用工具获取链接服务的访问令牌，并管理 Azure Key Vault 中的机密。 
 
-运行以下命令以获取可用方法的概述：
+运行以下命令以概要了解可用的方法：
 
 :::zone pivot = "programming-language-python"
 
@@ -483,18 +483,18 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 
 ### <a name="get-token"></a>获取令牌
 
-返回给定受众 Azure AD 令牌，名称 (可选) 。 下表列出了所有可用的受众类型： 
+返回给定受众的 Azure AD 令牌和名称（可选）。 下表列出了所有可用的受众类型： 
 
-|受众类型|访问群体密钥|
+|受众类型|受众密钥|
 |--|--|
-|受众解析类型|汇总|
-|存储受众资源|储存|
-|数据仓库访问群体资源|DW|
-|Data Lake 访问群体资源|'AzureManagement'|
-|保管库受众资源|DataLakeStore|
-|Azure OSSDB 受众资源|'AzureOSSDB'|
-|Azure Synapse 资源|'Synapse'|
-|Azure 数据工厂资源|ADF|
+|受众解析类型|“Audience”|
+|存储受众资源|“Storage”|
+|Data Warehouse 受众资源|“DW”|
+|Data Lake 受众资源|“AzureManagement”|
+|保管库受众资源|“DataLakeStore”|
+|Azure OSSDB 受众资源|“AzureOSSDB”|
+|Azure Synapse 资源|“Synapse”|
+|Azure 数据工厂资源|“ADF”|
 
 :::zone pivot = "programming-language-python"
 
@@ -522,7 +522,7 @@ Credentials.GetToken("audience Key")
 
 ### <a name="validate-token"></a>验证令牌
 
-如果令牌未过期，则返回 true。
+如果令牌尚未过期，则返回 true。
 
 :::zone pivot = "programming-language-python"
 
@@ -578,7 +578,7 @@ Credentials.GetConnectionStringOrCreds("linked service name")
 
 ### <a name="get-secret-using-workspace-identity"></a>使用工作区标识获取机密
 
-使用工作区标识返回给定 Azure Key Vault 名称、机密名称和链接服务名称 Azure Key Vault 机密。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问。
+使用工作区标识返回给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问。
 
 :::zone pivot = "programming-language-python"
 
@@ -606,7 +606,7 @@ Credentials.GetSecret("azure key vault name","secret name","linked service name"
 
 ### <a name="get-secret-using-user-credentials"></a>使用用户凭据获取机密
 
-使用用户凭据返回给定 Azure Key Vault 名称、机密名称和链接服务名称 Azure Key Vault 机密。 
+使用用户凭据返回给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 
 
 :::zone pivot = "programming-language-python"
 
@@ -639,7 +639,7 @@ Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and l
 
 ### <a name="put-secret-using-workspace-identity"></a>使用工作区标识放置机密
 
-使用工作区标识将 Azure Key Vault 的机密放入给定的 Azure Key Vault 名称、机密名称和链接服务名称。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问权限。
+使用工作区标识放置给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问。
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value','linked service name')
@@ -650,7 +650,7 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 ### <a name="put-secret-using-workspace-identity"></a>使用工作区标识放置机密
 
-使用工作区标识将 Azure Key Vault 的机密放入给定的 Azure Key Vault 名称、机密名称和链接服务名称。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问权限。
+使用工作区标识放置给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 请确保正确配置对 [Azure Key Vault](#configure-access-to-azure-key-vault) 的访问。
 
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value","linked service name")
@@ -675,7 +675,7 @@ Puts Azure Key Vault secret for a given Azure Key Vault name, secret name, and l
 
 ### <a name="put-secret-using-user-credentials"></a>使用用户凭据放置机密
 
-使用用户凭据将 Azure Key Vault 的机密放入给定的 Azure Key Vault 名称、机密名称和链接服务名称。 
+使用用户凭据放置给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 
 
 ```python
 mssparkutils.credentials.putSecret('azure key vault name','secret name','secret value')
@@ -686,7 +686,7 @@ mssparkutils.credentials.putSecret('azure key vault name','secret name','secret 
 
 ### <a name="put-secret-using-user-credentials"></a>使用用户凭据放置机密
 
-使用用户凭据将 Azure Key Vault 的机密放入给定的 Azure Key Vault 名称、机密名称和链接服务名称。 
+使用用户凭据放置给定 Azure Key Vault 名称、机密名称和链接服务名称的 Azure Key Vault 机密。 
 
 ```scala
 mssparkutils.credentials.putSecret("azure key vault name","secret name","secret value")
@@ -705,7 +705,7 @@ mssparkutils.credentials.putSecret("azure key vault name","secret name","secret 
 
 ## <a name="environment-utilities"></a>环境实用工具 
 
-运行以下命令以获取可用方法的概述：
+运行以下命令以概要了解可用的方法：
 
 :::zone pivot = "programming-language-python"
 

@@ -1,6 +1,6 @@
 ---
 title: 规划从经典部署模型到 Azure 资源管理器部署模型的迁移
-description: 本文介绍如何计划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器。
+description: 在本文中，了解如何规划从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移。
 services: virtual-machines
 author: tanmaygore
 manager: vashan
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 30a02a79e5e6e063c3d21e6626ed1a75c0f61133
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676099"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager

@@ -13,10 +13,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 5bea1753c87c11094e78f95a1bbadb02fb0b95e2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752987"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>单帐户和多帐户公共客户端应用
@@ -118,7 +118,7 @@ if (app.signOut())
 - 调用 `getAccount` 可获取特定的帐户。
 - 调用 `getAccounts` 可获取应用当前已知的帐户列表。
 
-你的应用程序将无法枚举代理应用已知的设备上的所有 Microsoft 标识平台帐户。 它只能枚举应用使用的帐户。  这些函数不会返回已从设备中删除的帐户。
+应用无法枚举代理应用已知的设备上的所有 Microsoft 标识平台帐户。 它只能枚举应用使用的帐户。  这些函数不会返回已从设备中删除的帐户。
 
 ### <a name="remove-an-account"></a>删除帐户
 

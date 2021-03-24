@@ -1,6 +1,6 @@
 ---
 title: 使用有序聚集列存储索引优化性能
-description: 当你使用有序聚集列存储索引以提高专用 SQL 池中的查询性能时，你应了解的建议和注意事项。
+description: 使用有序聚集列存储索引改善专用 SQL 池的查询性能时应了解的建议和注意事项。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460785"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
@@ -26,7 +26,7 @@ ms.locfileid: "96460785"
 
 默认情况下，对于不是使用索引选项创建的每个表，某个内部组件（索引生成器）将在该表中创建无序的聚集列存储索引 (CCI)。  每个列中的数据压缩成单独的 CCI 行组段。  每个段的值范围都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词边界的段。  CCI 提供最高级别的数据压缩，可减少要读取的段大小，因此查询可以更快地运行。 但是，由于索引生成器在将数据压缩成段之前不会将数据排序，因此可能会出现值范围重叠的段，从而导致查询从磁盘中读取更多的段，需要更长的时间才能完成。  
 
-创建按序的 CCI 时，专用 SQL 池引擎会按顺序键 (s) 在内存中对现有数据进行排序，然后索引生成器将它们压缩为索引段。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的表较大，因此这种情况不经常发生。  
+创建有序 CCI 时，专用 SQL 池引擎会先按顺序键将内存中的现有数据排序，然后，索引生成器会将这些数据压缩成索引段。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的表较大，因此这种情况不经常发生。  
 
 若要检查列的段范围，请结合表名称和列名称运行以下命令：
 

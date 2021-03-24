@@ -12,10 +12,10 @@ ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
 ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936611"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure Key Vault 中设置和检索机密
@@ -84,7 +84,7 @@ ms.locfileid: "97936611"
 
     * 订阅：选择一个 Azure 订阅。
     * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
-    * 位置：选择一个位置。 例如“美国中部”。
+    * 位置：选择一个位置。 例如“美国中部”。 
     * **密钥保管库名称**：输入密钥保管库的名称，该名称在 .vault.azure.net 命名空间中必须全局唯一。 在下一部分验证部署时，需要该名称。
     * **租户 ID**：模板函数会自动检索租户 ID。 不要更改默认值。
     * **AD 用户 ID**：输入在 [先决条件](#prerequisites)中检索到的 Azure AD 用户对象 ID。

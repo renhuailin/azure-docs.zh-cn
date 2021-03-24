@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
 ms.openlocfilehash: 1c8c766208132aec115e1fbeb15af3a057c3de3e
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94636684"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>防止删除或更改 Azure Cosmos DB 资源
@@ -26,9 +26,9 @@ ms.locfileid: "94636684"
 
 在父范围应用锁时，该范围内所有资源都会继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
-与 Azure 基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解有关的 Azure RBAC Azure Cosmos DB 参阅 [Azure Cosmos DB 中的 azure 基于角色的访问控制](role-based-access-control.md)。
+与 Azure 基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制。 若要了解适用于 Azure Cosmos DB 的 Azure RBAC，请参阅 [Azure Cosmos DB 中的 Azure 基于角色的访问控制](role-based-access-control.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 https://management.azure.com的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，Azure Cosmos 容器上的 ReadOnly 锁定会阻止你删除或修改容器。 它不会阻止你在容器中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 https://management.azure.com。
+资源管理器锁仅适用于管理平面内发生的操作，包括发送到 https://management.azure.com 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，Azure Cosmos 容器上的 ReadOnly 锁定会阻止你删除或修改容器。 它不会阻止你在容器中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 https://management.azure.com。
 
 ## <a name="manage-locks"></a>管理锁定
 

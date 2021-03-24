@@ -7,23 +7,23 @@ ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1b1bbb12412deec6ecac8cf1ffd47a00f778862e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98894722"
 ---
 # <a name="compose-dsc-configurations"></a>编写 DSC 配置
 
 当需要使用多个 Desired State Configuration (DSC) 来托管资源时，最佳方法是使用[复合资源](/powershell/scripting/dsc/resources/authoringresourcecomposite)。 复合资源是嵌套的参数化配置，在另一个配置中用作 DSC 资源。 使用复合资源可创建复杂配置，同时允许单独托管和构建基础复合资源。
 
-Azure 自动化可以[导入和编译复合资源](automation-dsc-compile.md)。 将复合资源导入自动化帐户后，可以通过 Azure 门户中的“状态配置(DSC)”功能使用 Azure 自动化状态配置。
+Azure 自动化支持[导入和撰写复合资源](automation-dsc-compile.md)。 将复合资源导入自动化帐户后，可以通过 Azure 门户中的“状态配置(DSC)”功能使用 Azure 自动化状态配置。
 
 ## <a name="compose-a-configuration"></a>撰写配置
 
 必须先撰写配置，才能分配从 Azure 门户的复合资源撰写的配置。 通过“State configuration (DSC)”页面上的“配置”或“已编译配置”选项卡的“撰写配置”进行撰写  。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)” 。
 1. 在“State configuration (DSC)”页上，单击“配置”或“已编译配置”选项卡，然后单击页面顶部菜单中的“撰写配置”  。

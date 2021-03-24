@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Software 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Igloo Software 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Igloo Software 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460375"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>教程：Azure Active Directory 与 Igloo Software 的集成
+# <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>教程：Azure Active Directory 与 Igloo Software 集成
 
 本教程介绍如何将 Igloo Software 与 Azure Active Directory (Azure AD) 集成。
 将 Igloo Software 与 Azure AD 集成具有以下优势：
@@ -42,13 +42,13 @@ ms.locfileid: "92460375"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Igloo Software 支持 **SP** 发起的 SSO
-* Igloo Software 支持“恰时”用户预配 
+* Igloo Software 支持“恰时”用户预配
 
 ## <a name="adding-igloo-software-from-the-gallery"></a>从库中添加 Igloo Software
 
 若要配置 Igloo Software 与 Azure AD 的集成，需要从库中将 Igloo Software 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Igloo Software，请执行以下步骤： 
+若要从库中添加 Igloo Software，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -62,13 +62,13 @@ ms.locfileid: "92460375"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Igloo Software”，在结果面板中选择“Igloo Software”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“Igloo Software”，在结果面板中选择“Igloo Software”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Igloo Software](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分将基于一个名为“Britta Simon”的测试用户，配置和测试 Igloo Software 的 Azure AD 单一登录。 
+本部分将基于一个名为“Britta Simon”的测试用户，配置和测试 Igloo Software 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Igloo Software 相关用户之间建立链接关系。
 
 若要配置并测试 Igloo Software 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -77,7 +77,7 @@ ms.locfileid: "92460375"
 2. **[配置 Igloo Software 单一登录](#configure-igloo-software-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Igloo Software 测试用户](#create-igloo-software-test-user) - 在 Igloo Software 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+5. [创建 Igloo Software 测试用户](#create-igloo-software-test-user) - 在 Igloo Software 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -86,7 +86,7 @@ ms.locfileid: "92460375"
 
 若要配置 Igloo Software 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Igloo Software”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Igloo Software”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,15 +98,15 @@ ms.locfileid: "92460375"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Igloo Software 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Igloo Software 客户端支持团队](https://www.igloosoftware.com/services/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -115,7 +115,7 @@ ms.locfileid: "92460375"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Igloo Software”部分中，根据需要复制相应的 URL  。
+6. 在“设置 Igloo Software”部分中，根据需要复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -129,55 +129,55 @@ ms.locfileid: "92460375"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Igloo Software 公司站点。
 
-2. 转到“控制面板”  。
+2. 转到 **“控制面板”**。
 
      ![控制面板](./media/igloo-software-tutorial/ic799949.png "控制面板")
 
-3. 在“成员身份”  选项卡中，单击“登录设置”  。
+3. 在 **“成员身份”** 选项卡中，单击 **“登录设置”**。
 
     ![登录设置](./media/igloo-software-tutorial/ic783968.png "登录设置")
 
-4. 在“SAML 配置”部分中，单击“配置 SAML 身份验证”  。
+4. 在“SAML 配置”部分中，单击 **“配置 SAML 身份验证”**。
 
     ![SAML 配置](./media/igloo-software-tutorial/ic783969.png "SAML 配置")
 
-5. 在“常规配置”  部分中，执行以下步骤：
+5. 在 **“常规配置”** 部分中，执行以下步骤：
 
     ![常规配置](./media/igloo-software-tutorial/ic783970.png "常规配置")
 
-    a. 在“连接名称”  文本框中，键入配置的自定义名称。
+    a. 在 **“连接名称”** 文本框中，键入你的配置的自定义名称。
 
-    b. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    b. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    c. 在“Idp 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    c. 在“Idp 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
 
-    d. 选择“注销响应和请求 HTTP 类型”作为“POST”   。
+    d. 选择“注销响应和请求 HTTP 类型”作为“POST”。
 
-    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后粘贴到“公用证书”文本框   。
+    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后粘贴到“公用证书”文本框。
 
-6. 在“响应和身份验证配置”  中，执行以下步骤：
+6. 在 **“响应和身份验证配置”** 中，执行以下步骤：
 
     ![响应和身份验证配置](./media/igloo-software-tutorial/IC783971.png "响应和身份验证配置")
   
-    a. 对于“标识提供者”  ，选择“Microsoft ADFS”  。
+    a. 选择 **“Microsoft ADFS”** 作为 **“标识提供程序”**。
 
-    b. 对于“标识符类型”  ，选择“电子邮件地址”  。 
+    b. 选择 **“电子邮件地址”** 作为 **“标识符类型”**。 
 
-    c. 在“电子邮件属性”文本框中，键入“emailaddress”。  
+    c. 在 **“电子邮件属性”** 文本框中，键入 **emailaddress**。
 
-    d. 在“名字属性”  文本框中，键入“givenname”  。
+    d. 在 **“名字属性”** 文本框中，键入 **givenname**。
 
-    e. 在“姓氏属性”  文本框中，键入“surname”  。
+    e. 在 **“姓氏属性”** 文本框中，键入 **surname**。
 
 7. 请执行以下步骤以完成配置：
 
     ![登录时创建用户](./media/igloo-software-tutorial/IC783972.png "登录时创建用户") 
 
-    a. 对于“登录时创建用户”  ，选择“用户登录时在站点中创建新用户”  。
+    a. 选择 **“登录时在你的站点中创建新用户”** 作为 **“登录时创建用户”**。
 
-    b. 对于“登录设置”  ，选择“使用‘登录’屏幕上的 SAML 按钮”  。
+    b. 选择 **“使用‘登录’屏幕中的 SAML 按钮”** 作为 **“登录设置”**。
 
-    c. 单击“ **保存** ”。
+    c. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -187,7 +187,7 @@ ms.locfileid: "92460375"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -197,22 +197,22 @@ ms.locfileid: "92460375"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 本部分将通过授予 Britta Simon 访问 Igloo Software 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Igloo Software”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Igloo Software”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Igloo Software”  。
+2. 在应用程序列表中，选择“Igloo Software”。
 
     ![应用程序列表中的 Igloo Software 链接](common/all-applications.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "92460375"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

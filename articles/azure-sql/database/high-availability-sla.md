@@ -12,17 +12,17 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690577"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889053"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL 数据库和 SQL 托管实例中的高可用性体系结构的目标是保证数据库在至少 99.99% 的时间内可正常运行（若要详细了解不同层级的特定 SLA，请参阅 [Azure SQL 数据库和 SQL 托管实例的 SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)），无需让用户担心维护操作所造成的影响和服务中断。 Azure 会自动处理关键服务任务，例如修补、备份、Windows 和 Azure SQL 升级，以及根本硬件、软件或网络故障等计划外事件。  修补或故障转移 Azure SQL 数据库中的底层数据库时，如果在应用中[使用重试逻辑](develop-overview.md#resiliency)，则停机不会产生明显影响。 即使出现最严重的问题，SQL 数据库和 SQL 托管实例也能快速恢复，确保数据始终可用。
+Azure SQL 数据库和 SQL 托管实例中的高可用性体系结构的目标是保证数据库在至少 99.99% 的时间内可正常运行（若要详细了解不同层级的特定 SLA，请参阅 [Azure SQL 数据库和 SQL 托管实例的 SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)），无需让用户担心维护操作所造成的影响和服务中断。 Azure 会自动处理关键的维护任务（例如修补、备份、Windows 和 Azure SQL 升级），以及底层硬件故障、软件故障或网络故障等计划外事件。  修补或故障转移 Azure SQL 数据库中的底层数据库时，如果在应用中[使用重试逻辑](develop-overview.md#resiliency)，则停机不会产生明显影响。 即使出现最严重的问题，SQL 数据库和 SQL 托管实例也能快速恢复，确保数据始终可用。
 
 高可用性解决方案旨在确保提交的数据永远不会由于故障而丢失，维护操作不会影响工作负荷，且数据库不会成为软件体系结构中的单一故障点。 在升级或维护数据库期间，维护或停机时段都不需要停止工作负荷。
 
@@ -46,24 +46,27 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 每当升级数据库引擎或操作系统，或者检测到故障时，Azure Service Fabric 会将无状态 `sqlservr.exe` 进程移到具有足够可用容量的另一个无状态计算节点。 Azure Blob 存储中的数据不受移动操作的影响，数据/日志文件将附加到新初始化的 `sqlservr.exe` 进程。 此过程保证 99.99% 的可用性，但在过渡期间，繁重工作负载的性能可能会有一定程度的下降，因为新的 `sqlservr.exe` 进程是使用冷缓存启动的。
 
-## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a> (预览版常规用途 service 层区域冗余可用性) 
+## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>“常规用途”服务层级区域冗余可用性（预览版）
 
-常规用途服务层的区域冗余配置利用 [Azure 可用性区域](../../availability-zones/az-overview.md)   跨 Azure 区域内的多个物理位置复制数据库。通过选择区域冗余，你可以使新的和现有的常规用途单一数据库和弹性池能够灵活应对一组更大的故障，包括灾难性的数据中心中断，无需更改应用程序逻辑。
+“常规用途”服务层级的区域冗余配置会利用 [Azure 可用性区域](../../availability-zones/az-overview.md) 跨 Azure 区域中的多个物理位置复制数据库。 通过选择区域冗余，你可以使新的和现有的常规用途单一数据库和弹性池能够灵活应对范围要广得多的故障（包括灾难性的数据中心服务中断），且不会对应用程序逻辑进行任何更改。
 
-"常规用途" 层的区域冗余配置具有两个层：  
+“常规用途”层级的区域冗余配置有两个层：  
 
-- 具有数据库文件 ( .mdf/.ldf) 的有状态数据层，这些文件存储在 ZRS PFS (区域冗余 [存储高级文件共享](../../storage/files/storage-how-to-create-file-share.md)中。 使用 [区域冗余存储](../../storage/common/storage-redundancy.md) 将数据和日志文件同步复制到三个物理隔离的 Azure 可用性区域中。
-- 无状态计算层，用于运行 sqlservr.exe 进程，并且仅包含暂时性和缓存的数据，例如 TempDB、附加的 SSD 上的模型数据库、计划缓存、缓冲池和内存中的列存储池。 此无状态节点由 Azure Service Fabric 操作，用于初始化 sqlservr.exe，控制节点的运行状况，并在必要时执行故障转移到另一个节点。 对于区域冗余常规用途数据库，具有备用容量的节点可在其他可用性区域中轻松地用于故障转移。
+- 有状态数据层：包含存储在 ZRS PFS（区域冗余[存储高级文件共享](../../storage/files/storage-how-to-create-file-share.md)）中的数据库文件 (.mdf/.ldf)。 使用[区域冗余存储](../../storage/common/storage-redundancy.md)时，数据和日志文件会同步复制到三个进行了物理隔离的 Azure 可用性区域中。
+- 无状态计算层：运行 sqlservr.exe 进程，仅包含暂时性的缓存数据，例如在附加的 SSD 上的 TempDB、模型数据库，内存中的计划缓存、缓冲池和列存储池。 此无状态节点由 Azure Service Fabric 运行。后者会初始化 sqlservr.exe、控制节点运行状况，并根据需要执行到另一节点的故障转移。 对于区域冗余常规用途数据库，具有备用容量的节点可在其他可用性区域中轻松地用于故障转移。
 
-以下关系图演示了常规用途服务层的高可用性体系结构的区域冗余版本：
+下图演示了适用于“常规用途”服务层级的高可用性体系结构的区域冗余版本：
 
-![适用于常规用途的区域冗余配置](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
+![常规用途的区域冗余配置](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
 
 > [!IMPORTANT]
-> 仅当选择 Gen5 计算硬件后，区域冗余配置才可用。 此功能在 SQL 托管实例中不可用。 "常规用途" 层的区域冗余配置仅在以下区域提供：美国东部、美国东部2、美国西部2、北欧、西欧、东南亚、澳大利亚东部、日本东部、英国南部和法国中部。
+> 仅当选择 Gen5 计算硬件后，区域冗余配置才可用。 此功能在 SQL 托管实例中不可用。 “常规用途”层级的区域冗余配置仅在以下区域提供：美国东部、美国东部 2、美国西部 2、北欧、西欧、东南亚、澳大利亚东部、日本东部、英国南部和法国中部。
 
 > [!NOTE]
-> 常规用途大小为 80 vcore 的数据库可能会遇到使用区域冗余配置时的性能下降。 此外，对于超过 1 TB 的任何单个数据库，诸如备份、还原、数据库复制和设置异地灾难恢复关系之类的操作可能会遇到较慢的性能。 
+> 使用区域冗余配置时，大小为 80 个 vCore 的“常规用途”数据库可能会遇到性能下降的问题。 此外，如果单个数据库大于 1 TB，则备份、还原、数据库复制和异地灾难恢复关系设置之类的操作可能会遇到执行速度变慢的问题。 
+> 
+> [!NOTE]
+> “预留实例”下未涵盖预览版
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>“高级”或“业务关键”服务层级本地冗余可用性
 
@@ -75,14 +78,14 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 作为一项额外的优势，高级可用性模型提供用于将只读 Azure SQL 连接重定向到某个次要副本的功能。 此功能称为[读取扩展](read-scale-out.md)。它通过主要副本免费提供 100% 的额外计算容量，以减轻分析工作负荷等只读操作的负担。
 
-## <a name="premium-and-business-critical-service-tier-zone-redundant-availability"></a>高级和业务关键服务层区域冗余可用性 
+## <a name="premium-and-business-critical-service-tier-zone-redundant-availability"></a>“高级”和“业务关键”服务层级区域冗余可用性 
 
-默认情况下，将在同一数据中心内创建高级可用性模型的节点群集。 引入 [Azure 可用性区域](../../availability-zones/az-overview.md)后，SQL 数据库可以将业务关键数据库的不同副本放置到同一区域中的不同可用性区域。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，因此你可以无需额外付费即可启用此功能。 通过选择区域冗余配置，你可以使你的高级或业务关键数据库弹性应对一组更大的故障，包括灾难性的数据中心中断，而不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
+默认情况下，将在同一数据中心创建高级可用性模型的节点群集。 引入 [Azure 可用性区域](../../availability-zones/az-overview.md)后，SQL 数据库可以将业务关键数据库的不同副本放置到同一区域的不同可用性区域中。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 “高级”或“业务关键”服务层级中的区域冗余配置不会创建其他数据库冗余，因此你可以在不支付额外费用的情况下启用它。 通过选择区域冗余配置，可以使“高级”或“业务关键”数据库能够应对范围要广得多的故障（包括灾难性的数据中心服务中断），且不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 
-由于区域冗余数据库的副本在不同的数据中心具有一定距离，因此增加的网络延迟可能会增加提交时间，从而影响某些 OLTP 工作负载的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是一种联机操作，类似于常规的服务层升级。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
+由于区域冗余数据库的副本位于不同数据中心，且互相之间有一定距离，因此增加的网络延迟可能会延长提交时间，从而影响某些 OLTP 工作负荷的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是一种联机操作，类似于常规的服务层级升级。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
 
 > [!IMPORTANT]
-> 使用业务关键层时，区域冗余配置仅在选择 Gen5 计算硬件时可用。 有关支持区域冗余数据库的区域的最新信息，请参阅 [按区域提供的服务支持](../../availability-zones/az-region.md)。
+> 如果使用“业务关键”层级，则仅当选择 Gen5 计算硬件后，区域冗余配置才可用。 有关支持区域冗余数据库的区域的最新信息，请参阅[按区域提供的服务支持](../../availability-zones/az-region.md)。
 
 > [!NOTE]
 > 此功能在 SQL 托管实例中不可用。
@@ -116,14 +119,14 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 ## <a name="testing-application-fault-resiliency"></a>测试应用程序的故障复原能力
 
-高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以通过调用特殊 API 来重启数据库、弹性池或托管实例，以便手动触发故障转移。 在区域冗余数据库或弹性池的情况下，API 调用将导致将客户端连接重定向到可用性区域中与旧主数据库的可用性区域不同的新主站点。 因此，除了测试故障转移对现有数据库会话的影响，还可以验证是否由于网络延迟的变化而更改了端到端性能。 由于重启操作会干扰系统，其数量过多可能会对平台造成压力，因此每个数据库、弹性池或托管实例每 15 分钟只能进行一次故障转移调用。
+高可用性是 SQL 数据库和 SQL 托管实例平台的基本功能，其运作对数据库应用程序透明。 不过，我们认识到，你可能需要先测试在计划内或计划外事件期间启动的自动故障转移操作对应用程序的具体影响，然后才会将其部署到生产环境。 可以通过调用特殊 API 来重启数据库、弹性池或托管实例，以便手动触发故障转移。 在使用区域冗余数据库或弹性池的情况下，API 调用会导致将客户端连接重定向到与旧主节点的可用性区域不同的可用性区域中的新主节点。 因此，除了测试故障转移对现有数据库会话的影响外，还可以验证它是否会由于网络延迟的变化而改变了端到端性能。 由于重启操作会干扰系统，其数量过多可能会对平台造成压力，因此每个数据库、弹性池或托管实例每 15 分钟只能进行一次故障转移调用。
 
 可以使用 PowerShell、REST API 或 Azure CLI 启动故障转移：
 
 |部署类型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
 |数据库|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[数据库故障转移](/rest/api/sql/databases/failover)|[az rest](/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
-|弹性池|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
+|弹性池|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools/failover)|[az rest](/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
 |托管实例|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[托管实例 - 故障转移](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]

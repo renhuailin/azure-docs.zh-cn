@@ -4,10 +4,10 @@ description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQ
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.openlocfilehash: 29813741e88ad5f2bc5109be87939abf7cc11502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316913"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
@@ -22,35 +22,35 @@ ms.locfileid: "91316913"
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
-* 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 MABS 不支持对远程文件共享上的 SQL Server 数据进行保护。
+* 如果具有包含远程文件共享上的文件的数据库，则保护将失败，错误 ID 为 104。 MABS 不支持保护远程文件共享上的 SQL Server 数据。
 * MABS 无法保护远程 SMB 共享上存储的数据库。
 * 确保[将可用性组副本配置为只读](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server)。
-* 必须将系统帐户 **NTAuthority\System** 显式添加到 SQL Server 上的 Sysadmin 组。
+* 必须将系统帐户 NTAuthority\System 显式添加到 SQL Server 上的 Sysadmin 组中。
 * 在为部分包含的数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[包含的数据库](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable)功能。
 * 在为文件流数据库执行备用位置恢复时，你必须确保目标 SQL 实例启用了[文件流数据库](/sql/relational-databases/blob/enable-and-configure-filestream)功能。
 * 对 SQL Server AlwaysOn 的保护：
-  * 在创建保护组时，MABS 检测可用性组。
-  * MABS 检测到故障转移并继续保护数据库。
+  * 在创建保护组期间运行查询时，MABS 会检测可用性组。
+  * MABS 会检测故障转移，并继续保护数据库。
   * MABS 支持 SQL Server 实例的多站点群集配置。
-* 当你保护使用 AlwaysOn 功能的数据库时，MABS 具有以下限制：
-  * 根据备份首选项，MABS 将遵循 SQL Server 中设置的可用性组的备份策略，如下所示：
-    * 首选辅助副本 - 除了主副本是唯一在线副本的情况之外，备份应在辅助副本上进行。 如果有多个辅助副本可用，则将选择具有最高备份优先级的节点进行备份。 如果只有主副本可用，则备份应在主副本上进行。
+* 保护使用 AlwaysOn 功能的数据库时，MABS 具有以下限制：
+  * MABS 将遵循基于备份首选项在 SQL Server 中设置的可用性组的备份策略，如下所示：
+    * 首选辅助副本 - 除了主副本是唯一在线副本的情况之外，备份应在辅助副本上进行。 如果有多个次要副本可用，则将选择具有最高备份优先级的节点进行备份。 如果只有主要副本可用，则应在主要副本上进行备份。
     * 仅辅助副本 - 不应在主副本上执行备份。 如果主副本是唯一在线副本，则不应进行备份。
     * 主副本 - 备份应始终在主副本上进行。
     * 任意副本 - 备份可以在可用性组中的任何可用性副本上进行。 将根据每个节点的备份优先级来确定要从中备份的节点。
   * 注意以下事项：
-    * 可以从任何可读副本（即主副本、同步辅助副本、异步辅助副本）进行备份。
-    * 如果将任何副本排除在备份之外（例如启用了 " **排除副本** " 或将副本标记为不可读），则在任何选项下都不会选择该副本进行备份。
-    * 如果有多个副本可用和可读，则将选择具有最高备份优先级的节点进行备份。
-    * 如果所选节点上的备份失败，则备份操作将失败。
+    * 可从任何可读副本（也就是主要副本、同步次要副本、异步次要副本）进行备份。
+    * 如果备份中排除了任何副本，例如“排除副本”已启用或标记为不可读，则在任何选项下都不会选择该副本进行备份。
+    * 如果有多个副本可用且可读，则将选择具有最高备份优先级的节点进行备份。
+    * 如果备份在所选节点上失败，则备份操作将失败。
     * 不支持恢复到原始位置。
 * SQL Server 2014 或更高版本备份问题：
   * SQL Server 2014 添加了一项新功能：[为 Windows Azure Blob 存储中的本地 SQL Server 创建数据库](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure)。 MABS 不能用于保护此配置。
-  * 对于 SQL AlwaysOn 选项，存在一些 "首选辅助" 备份首选项的已知问题。 MABS 始终从辅助副本进行备份。 如果找不到辅助副本，则备份将失败。
+  * SQL AlwaysOn 选项的“首选次要副本”备份首选项存在一些已知问题。 MABS 始终从次要副本创建备份。 如果找不到次要副本，则备份将失败。
 
 ## <a name="before-you-start"></a>开始之前
 
-在开始之前，请确保已 [安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
+在开始之前，请确保[已安装并准备好 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)。
 
 ## <a name="create-a-backup-policy"></a>创建备份策略
 
@@ -130,7 +130,7 @@ ms.locfileid: "91316913"
 1. 选择如何将初始备份副本传输到 Azure。
 
     * “自动通过网络”选项按照备份计划将数据传输到 Azure。
-    * 有关 **脱机备份**的详细信息，请参阅 [脱机备份概述](offline-backup-overview.md)。
+    * 有关脱机备份的详细信息，请参阅[脱机备份概述](offline-backup-overview.md)。
 
     选择传输机制后，选择“下一步”。
 1. 在“摘要”页上复查策略详细信息。 然后选择“创建组”。 可以选择“关闭”，并在“监视”工作区中监视作业进度。 
@@ -158,7 +158,7 @@ ms.locfileid: "91316913"
 
 若要从 Azure 恢复受保护的实体（例如某个 SQL Server 数据库）：
 
-1. 打开 DPM 服务器管理控制台。 转到“恢复”工作区查看 DPM 备份的服务器。 选择数据库（在本示例中为 ReportServer$MSDPM2012）。 选择以 **Online** 结尾的**恢复时间**。
+1. 打开 DPM 服务器管理控制台。 转到“恢复”工作区查看 DPM 备份的服务器。 选择数据库（在本示例中为 ReportServer$MSDPM2012）。 选择以 **Online** 结尾的 **恢复时间**。
 
     ![选择恢复点](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 1. 右键单击数据库名称并选择“恢复”。

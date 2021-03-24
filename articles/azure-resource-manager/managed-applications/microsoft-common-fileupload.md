@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: c4eb3972be85ac7e291380f64127c20424b0d0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87004268"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
@@ -81,7 +81,7 @@ ms.locfileid: "87004268"
 ## <a name="remarks"></a>备注
 
 - `constraints.accept` 指定在浏览器的文件对话框中显示的文件类型。 有关允许的值，请参阅 [HTML5 规范](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)。 默认值为 **null**。
-- 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值是 **false**秒。
+- 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值是 **false** 秒。
 - 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后会被清除。 默认值为 **file**。
 - 上传的文件受到保护。 输出 URL 包括用于在部署期间访问文件的 [SAS 令牌](../../storage/common/storage-sas-overview.md?toc=/azure/storage/blobs/toc.json)。
 - `options.openMode` 的值决定了如何读取文件。 如果文件应当为纯文本，请指定 **text**；否则，请指定 **binary**。 默认值为 **text**。

@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: 1663a842b7e00c611543451d4caef96b5b5a913f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97954985"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
@@ -57,9 +57,9 @@ ms.locfileid: "97954985"
 - 如果你是 System Center 客户，使用 System Center Data Protection Manager (DPM) 来保护 VMware VM。
 - 如果不是 System Center 客户，可以使用 Azure 备份服务器（即用即付）来保护 VMware VM。
 
-### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>是否可以将 Azure 中存储的 Hyper-v 或 VMware VM 备份还原为 azure VM？
+### <a name="can-i-restore-a-backup-of-a-hyper-v-or-vmware-vm-stored-in-azure-to-azure-as-an-azure-vm"></a>是否可以将 Azure 中存储的 Hyper-V 或 VMware VM 的备份作为 Azure VM 还原到 Azure？
 
-不可以。当前不可能。 只能还原到本地主机。
+否，目前不可能。 只能还原到本地主机。
 
 ## <a name="sharepoint"></a>SharePoint
 

@@ -4,10 +4,10 @@ description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出�
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 5f43b9d0041fa5842bc2557a61c5145ce588758a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363520"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>充当事件网格源的 Azure IoT 中心
@@ -265,7 +265,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| `id` | string | 事件的唯一标识符。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
 | `source` | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |

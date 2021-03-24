@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 进行 OpenID Connect 身份验证
-description: 有关通过 Azure Active Directory 实现 OpenID Connect 身份验证的体系结构指南。
+description: 有关如何实现使用 Azure Active Directory 进行 OpenID Connect 身份验证的体系结构指南。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e5bf7e51de38d42e64f6737e687c5946a464160
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96168655"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 进行 OpenID Connect 身份验证

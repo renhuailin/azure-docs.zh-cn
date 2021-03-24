@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
 ms.openlocfilehash: e676268abb9e1a4a597ef431ea6ba6593411711e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455215"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Coralogix 集成
@@ -74,11 +74,11 @@ ms.locfileid: "92455215"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的 B.Simon 应用程序集成页面上，找到“管理”部分，选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
     a. 在“登录 URL”框中，使用以下模式输入 URL：`https://<SUBDOMAIN>.coralogix.com`。 
 
@@ -106,7 +106,7 @@ ms.locfileid: "92455215"
 
     b. 从“选择名称标识符格式”列表中，选择“电子邮件地址”。
 
-    c. 在“源属性”列表中，选择 **user.mail** 。
+    c. 在“源属性”列表中，选择 **user.mail**。
 
     d. 选择“保存”。
 

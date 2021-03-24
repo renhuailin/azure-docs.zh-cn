@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451624"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Synapse SQL
@@ -34,7 +34,7 @@ ms.locfileid: "96451624"
 
 > [!NOTE]
 > 如果在查询执行时 AAD 登录的连接打开的时间超过 1 小时，则任何依赖于 AAD 的查询都将失败。 这包括使用 AAD 直通以及与 AAD 交互的语句（如 CREATE EXTERNAL PROVIDER）的查询存储。 这会影响使连接保持打开状态的每个工具，例如 SSMS 和 ADS 中的查询编辑器中的工具。 打开新连接以执行查询的工具不受影响，如 Synapse Studio。
-> 可以重启 SSMS，或在 ADS 中进行连接和断开连接以缓解此问题。 。
+> 可以重启 SSMS，或在 ADS 中进行连接和断开连接以缓解此问题。 .
 ## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件：  
@@ -89,7 +89,7 @@ ms.locfileid: "96451624"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 “新建查询”窗口随即打开。
+2. 选择“新建查询”  。 “新建查询”窗口随即打开。
    
     ![新建查询 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
@@ -109,7 +109,7 @@ ms.locfileid: "96451624"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 “新建查询”窗口随即打开。
+2. 选择“新建查询”  。 “新建查询”窗口随即打开。
    
     ![新建查询 2](./media/get-started-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96176284"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
@@ -203,10 +203,10 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
 2. 选择加号图标 (+) 并搜索“Azure Active Directory”   。
-3. 在搜索结果中选择“Azure Active Directory”  。
+3. 在搜索结果中选择“Azure Active Directory”。
 4. 选择“创建”  。</br>
 ![演示如何创建 Azure AD 租户的屏幕截图。](media/tutorial-password-hash-sync/create1.png)</br>
-5. 为组织提供名称以及初始域名   。 然后选择“创建”  。 随即创建目录。
+5. 为组织提供名称以及初始域名   。 然后选择“创建”。 随即创建目录。
 6. 完成此操作后，单击此处链接以管理目录  。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中创建全局管理员
@@ -275,7 +275,7 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 在左侧选择“Azure Active Directory” 
+2. 在左侧选择“Azure Active Directory”
 3. 在“管理”下，选择“用户”   。
 4. 验证租户中是否显示了新用户![同步](media/tutorial-password-hash-sync/synch1.png)
 

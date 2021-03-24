@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86243148"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
@@ -140,7 +140,7 @@ ms.locfileid: "86243148"
 |properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|问题的唯一标识符。|  
-|`ApiID`|字符串|报告了此问题的 API 的 ID。|  
+|`ApiID`|字符串|报告此问题时所针对的 API 的 ID。|  
 |`Title`|字符串|问题的标题。|  
 |`Description`|字符串|问题的说明。|  
 |`SubscriptionDeveloperName`|字符串|报告此问题的开发人员的名字。|  

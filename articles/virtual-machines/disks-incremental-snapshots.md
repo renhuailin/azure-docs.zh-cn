@@ -1,6 +1,6 @@
 ---
 title: 创建增量快照
-description: 了解托管磁盘的增量快照，包括如何使用 Azure 门户、Azure PowerShell 模块和 Azure 资源管理器创建快照。
+description: 了解托管磁盘的增量快照，包括如何使用 Azure 门户、Azure PowerShell 模块和 Azure 资源管理器创建增量快照。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 01/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 52e491c88d3483f21aa74f1a9f176246033bee3c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735786"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>为托管磁盘创建增量快照
@@ -68,7 +68,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-portal](../../includes/virtual-machines-disks-incremental-snapshots-portal.md)]
 
 # <a name="resource-manager-template"></a>[资源管理器模板](#tab/azure-resource-manager)
