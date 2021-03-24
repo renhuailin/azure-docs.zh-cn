@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519990"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889104"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
 
@@ -102,12 +102,14 @@ linked_service.unregister()
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格的“管理”部分中选择“链接服务” 。
 1. 选择“添加集成”。
-1. 在“链接工作区”窗体上，填充字段 
-    字段| 说明    
-    ---|---
-    名称| 为链接服务提供一个名称。 此名称将用于引用此特定链接服务。
-    订阅名称 | 选择与机器学习工作区关联的订阅的名称。 
-    Synapse 工作区 | 选择要链接到的 Synapse 工作区。
+1. 在“链接工作区”窗体上，填充字段
+
+    |字段| 说明    
+    |---|---
+    |名称| 为链接服务提供一个名称。 此名称将用于引用此特定链接服务。
+    |订阅名称 | 选择与机器学习工作区关联的订阅的名称。 
+    |Synapse 工作区 | 选择要链接到的 Synapse 工作区。
+    
 1. 选择“下一步”，打开“选择 Spark 池(可选)”窗体 。 在此窗体上，你可以选择要附加到 Synapse Spark 池的工作区
 
 1. 选择“下一步”，打开“审阅”窗体并检查你的选择 。

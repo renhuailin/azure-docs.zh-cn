@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91704508"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for PostgreSQL 服务器
@@ -50,7 +50,7 @@ ms.locfileid: "91704508"
 
 2. 通过将滑块移动到所需的值来更改“vCore”  设置。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择 vCore 选项":::
 
    > [!NOTE]
    > 缩放 vCore 会导致服务器重启。
@@ -63,7 +63,7 @@ ms.locfileid: "91704508"
 
 2. 通过将滑块向上移动到所需的值来更改“存储”  设置。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择存储规模":::
 
    > [!NOTE]
    > 存储无法纵向缩减。
@@ -76,11 +76,11 @@ ms.locfileid: "91704508"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“重置密码”   。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中重置密码":::
 
 2. 输入新密码并确认。 文本框会就密码复杂性要求提示你。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中重置密码并进行保存":::
 
 3. 选择“确定”以保存新密码。 
 
@@ -90,11 +90,11 @@ ms.locfileid: "91704508"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“删除”。  
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中删除服务器":::
 
 2. 在输入框中键入服务器名称，确认这是要删除的服务器。
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中选择“基本”、“常规用途”或“内存优化”层":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Azure 门户的屏幕截图，该门户用于在 Azure Database for PostgreSQL 中确认服务器删除操作":::
 
    > [!NOTE]
    > 删除服务器的操作不可逆。

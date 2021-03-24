@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 概览仪表板功能来监控应
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504094"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
@@ -53,7 +53,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ## <a name="troubleshooting"></a>故障排除
 
-对于仪表板中显示的数据，当前有30天的数据限制。如果选择超过30天的时间筛选器，或选择 " **配置磁贴设置** " 并将自定义时间范围设置为超过30天，则仪表板将不会显示超过30天的数据，即使默认数据保留期为90天。 目前没有针对此行为的解决方法。
+对于当前在仪表板中显示的数据，有 30 天的数据限制。如果选择超过 30 天的时间筛选器，或者选择“配置磁贴设置”并将自定义时间范围设置为超过 30 天，则即使默认数据保留期为 90 天，仪表板也不会显示超过 30 天的数据。 目前没有针对此行为的解决方法。
 
 ## <a name="next-steps"></a>后续步骤
 

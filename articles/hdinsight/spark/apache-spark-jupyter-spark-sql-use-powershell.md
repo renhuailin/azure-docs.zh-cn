@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7a04d65d5032e37433fb61c73e5f64fe89bb2d2c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0d4a8df4cb6ba47b7772e2ab3b3247d36622dcb6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930487"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865955"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -139,19 +139,19 @@ ms.locfileid: "98930487"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“HDInsight 群集”。
    
-   ![屏幕截图显示了用于 HDInsight 的 Azure 门户搜索。](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png" alt-text="屏幕截图显示了用于 HDInsight 的 Azure 门户搜索。" border="true":::
    
 1. 从列表中选择已创建的群集。
    
-   ![屏幕截图显示了 HDInsight 群集和你创建的群集。](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png" alt-text="屏幕截图显示了 HDInsight 群集和你创建的群集。" border="true":::
    
 1. 在群集“概览”页上选择“群集仪表板”，然后选择“Jupyter Notebook”  。 出现提示时，请输入群集的群集登录凭据。
 
-   ![打开 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "打开 Jupyter Notebook 以运行交互式 Spark SQL 查询")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="打开 Jupyter Notebook 以运行交互式 Spark SQL 查询" border="true":::
 
 1. 选择“新建” > “PySpark”，创建笔记本 。
 
-   ![创建 Jupyter Notebook 以运行交互式 Spark SQL 查询](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "创建 Jupyter Notebook 以运行交互式 Spark SQL 查询")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="创建 Jupyter Notebook 以运行交互式 Spark SQL 查询" border="true":::
 
    新笔记本随即已创建，并以 Untitled(Untitled.pynb) 名称打开。
 
@@ -161,7 +161,7 @@ SQL（结构化查询语言）是用于查询和定义数据的最常见、最�
 
 1. 验证 kernel 已就绪。 如果在 Notebook 中的内核名称旁边看到空心圆，则内核已准备就绪。 实心圆表示内核正忙。
 
-    ![内核状态](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "内核状态")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="内核状态" border="true":::
 
     首次启动 Notebook 时，内核在后台执行一些任务。 等待内核准备就绪。 
 1. 将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 此命令列出群集上的 Hive 表：
@@ -173,9 +173,9 @@ SQL（结构化查询语言）是用于查询和定义数据的最常见、最�
 
     将 Jupyter Notebook 与 HDInsight 中的 Spark 群集配合使用时，会获得一个预设的 `sqlContext`，用于通过 Spark SQL 运行 Hive 查询。 `%%sql` 指示 Jupyter Notebook 使用预设 `sqlContext` 运行 Hive 查询。 该查询从默认情况下所有 HDInsight 群集都带有的 Hive 表 (hivesampletable) 检索前 10 行。 需要大约 30 秒才能获得结果。 输出如下所示：
 
-    ![Spark on HDInsight 中的 Apache Hive 查询](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "HDInsight Spark 中的 Hive 查询")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png " alt-text="Spark on HDInsight 中的 Apache Hive 查询" border="true":::
 
-    每次在 Jupyter 中运行查询时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。
+    每次在 Jupyter 中运行查询时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”  文本的旁边还会出现一个实心圆。
 
 1. 运行另一个查询，请查看 `hivesampletable` 中的数据。
 
@@ -186,7 +186,7 @@ SQL（结构化查询语言）是用于查询和定义数据的最常见、最�
 
     屏幕在刷新后会显示查询输出。
 
-    ![HDInsight 中的 Hive 查询输出](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "HDInsight 中的 Hive 查询输出")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png " alt-text="HDInsight 中的 Hive 查询输出" border="true":::
 
 1. 请在 Notebook 的“文件”菜单中选择“关闭并停止” 。 关闭 Notebook 会释放群集资源。
 
@@ -196,9 +196,9 @@ HDInsight 将数据保存在 Azure 存储或 Azure Data Lake Storage 中，因�
 
 切换回 Azure 门户，并选择“删除”。
 
-![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png " alt-text="在 Azure 门户中删除 HDInsight 群集" border="true":::
 
-还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”。 删除资源组即可删除 HDInsight 群集和默认存储帐户。
+还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 删除资源组即可删除 HDInsight 群集和默认存储帐户。
 
 ### <a name="piecemeal-clean-up-with-powershell-az-module"></a>使用 PowerShell Az 模块进行段落清理
 

@@ -9,12 +9,13 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.custom: cosmos-db
+ms.openlocfilehash: ddeac8477246ae2b5d2f07e495d4721f9508afed
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222150"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864918"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>快速入门：连接到 Azure Synapse Link for Azure Cosmos DB
 
@@ -42,7 +43,7 @@ ms.locfileid: "98222150"
 可以在数据对象资源管理器中通过执行以下步骤直接连接 Azure Cosmos DB 数据库：
 
 1. 选择数据旁边的 + 图标
-2. 选择“连接到外部数据”*
+2. 选择“连接到外部数据”
 3. 选择要连接到的 API:SQL 或 MongoDB
 4. 选择“继续”
 5. 命名链接服务。 该名称将显示在对象资源管理器中，并由 Synapse 运行时用于连接到数据库和容器。 建议使用友好名称。

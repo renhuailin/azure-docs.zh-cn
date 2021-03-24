@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81729151"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
@@ -26,7 +26,7 @@ ms.locfileid: "81729151"
 
 ## <a name="charges-per-operation"></a>每个操作的费用
 
-| Operation | 计费信息 | 
+| 操作 | 计费信息 | 
 | --------- | ------------------- |
 | 标识注册表操作 <br/> （创建、检索、列表、更新、删除） | 不收费。 |
 | 设备到云的消息 | 成功发送的消息以流入 IoT 中心的 4KB 区块大小为单位进行收费。 例如，1 条 6KB 的消息按 2 条消息收费。 |

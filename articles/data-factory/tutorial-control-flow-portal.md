@@ -3,17 +3,17 @@ title: 使用 Azure 门户对管道中的活动进行分支和链接
 description: 了解如何使用 Azure 门户控制 Azure 数据工厂管道中的数据流。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 9d8d9af4892001ff1f8f60a92f28aedad14c17cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 034b0400190cadd750e7420ab37800783afa050c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378598"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783415"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -195,7 +195,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     1. 输入 **AzureStorageLinkedService** 作为 **名称**。
     2. 选择自己 Azure 存储帐户作为 **存储帐户名称**。
-    3. 单击“ **保存**”。
+    3. 单击“保存”  。
 
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 输入 `@pipeline().parameters.sourceBlobContainer` 作为文件夹，输入 `emp.txt` 作为文件名。 使用 sourceBlobContainer 管道参数设置数据集的文件夹路径。
@@ -311,7 +311,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/dummy/output**。
     3. 输入 **接收方** 的 **电子邮件地址**。
-    4. 单击“完成”。
+    4. 单击“完成”  。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>监视失败的管道运行
 

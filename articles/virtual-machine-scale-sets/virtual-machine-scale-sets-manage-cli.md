@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570522"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 管理虚拟机规模集
@@ -49,7 +49,7 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
-你还可以在一个 API 调用中获取所有实例的详细 *instanceView* 信息，这有助于避免大型安装的 API 限制。 为、和提供自己的值 `--resource-group` `--subscription` `--name` 。
+还可以通过一个 API 调用获取所有实例的详细 instanceView 信息，这有助于避免大型安装的 API 限制。 为 `--resource-group`、`--subscription` 和 `--name` 提供你自己的值。
 
 ```azurecli
 az vmss list-instances \

@@ -4,10 +4,10 @@ description: 在本教程中，了解如何将 Azure VM 上运行的 SQL Server 
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 17a8472da2595c08cb198baaf853faf110a619fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88612446"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
@@ -192,7 +192,7 @@ ms.locfileid: "88612446"
    ![保留范围间隔设置](./media/backup-azure-sql-database/retention-range-interval.png)
    ![打开差异备份策略菜单](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
-8. 在“差异备份策略”中，选择“启用”打开频率和保留控件。  
+8. 在“差异备份策略”中，选择“启用”打开频率和保留控件。 
 
     * 每天最多可以触发一次差异备份。
     * 差异备份最多可以保留 180 天。 如果需要保留更长时间，必须使用完整备份。

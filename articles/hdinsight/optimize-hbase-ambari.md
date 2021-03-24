@@ -4,12 +4,12 @@ description: 使用 Apache Ambari Web UI 来配置和优化 Apache HBase。
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428194"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864765"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化 Apache HBase
 
@@ -20,7 +20,7 @@ Apache Ambari 是用于管理和监视 HDInsight 群集的 Web 界面。 有关 
 ## <a name="set-hbase_heapsize"></a>设置 HBASE_HEAPSIZE
 
 > [!NOTE]
-> 本文包含对术语 " *master*" 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“主”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量（以 MB 为单位）。  默认值为 1,000 MB。 应该为群集工作负荷优化此值。
 
@@ -28,7 +28,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 1. 将默认值更改为 5,000 MB。
 
-    ![“Apache Ambari HBase 内存堆大小”](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="“Apache Ambari HBase 内存堆大小”" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>优化读取密集型工作负荷
 
@@ -40,7 +40,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 1. 若要修改此参数，请导航到 HBase“配置”选项卡中的“设置”选项卡，然后找到“分配到读取缓冲区的 RegionServer 内存百分比”。  
 
-    ![“Apache HBase 内存块缓存大小”](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="“Apache HBase 内存块缓存大小”" border="true":::
 
 1. 若要更改此值，请选择“编辑”图标。
 
@@ -58,7 +58,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 `hbase.client.scanner.caching` 设置定义在扫描程序中调用 `next` 方法时，要从磁盘读取的行数。  默认值为 100。 该数字越大，从客户端向区域服务器发出的远程调用数就越少，因而扫描速度也就越快。 但是，此设置也会增加客户端上的内存压力。
 
-![Apache HBase 提取的行数](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBase 提取的行数" border="true":::
 
 > [!IMPORTANT]  
 > 设置此值时，请不要使扫描程序中的下一次方法调用间隔时间大于扫描程序的超时时间。 扫描程序超时期限由 `hbase.regionserver.lease.period` 属性定义。
@@ -71,7 +71,7 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 HBase 使用称作 *HFile* 的内部文件格式存储数据。 属性 `hbase.hregion.max.filesize` 定义区域的单个 HFile 的大小。  如果区域中的 HFiles 总数大于此设置，则会将该区域拆分为两个区域。
 
-![“Apache HBase HRegion 最大文件大小”](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="“Apache HBase HRegion 最大文件大小”" border="true":::
 
 区域文件大小越大，拆分数目越小。 可以增大文件大小，以确定可以最大程度地提高写入性能的值。
 
@@ -85,7 +85,7 @@ HBase 使用称作 *HFile* 的内部文件格式存储数据。 属性 `hbase.hr
 
     使用刷新大小和块乘数的默认值时，如果 Memstore 大小为 128 * 4 = 512 MB，则会阻止更新。 若要减少更新阻止计数，请增大 `hbase.hregion.memstore.block.multiplier` 的值。
 
-![Apache HBase 区域块乘数](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Apache HBase 区域块乘数" border="true":::
 
 ## <a name="define-memstore-size"></a>定义 Memstore 大小
 
@@ -95,7 +95,7 @@ Memstore 大小由 `hbase.regionserver.global.memstore.upperLimit` 和 `hbase.re
 
 Memstore 本地分配缓冲区使用率由 `hbase.hregion.memstore.mslab.enabled` 属性确定。 如果已启用 (true)，则此设置可以防止在执行写入密集型操作期间出现堆碎片。 默认值为 true。
 
-![hbase.hregion.memstore.mslab.enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="hbase.hregion.memstore.mslab.enabled" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

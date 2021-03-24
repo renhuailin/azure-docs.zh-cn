@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 80ff2f3f3d5fdcf61770889dcdaaf075941b90ff
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91814180"
 ---
 # <a name="reprotect-from-azure-to-azure-vmware-solution-private-cloud"></a>从 Azure 重新保护到 Azure VMware 解决方案私有云
@@ -59,13 +59,13 @@ ms.locfileid: "91814180"
 
 按如下所述启用重新保护：
 
-1. 选择“保管库” > “复制的项”。 右键单击已故障转移的虚拟机，然后选择“重新保护”。**** 也可以从命令按钮中选择该计算机，然后选择“重新保护”。****
-2. 验证是否选择了“从 Azure 到本地”保护方向。****
-3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。********  
+1. 选择“保管库” > “复制的项”。 右键单击已故障转移的虚拟机，然后选择“重新保护”。 也可以从命令按钮中选择该计算机，然后选择“重新保护”。
+2. 验证是否选择了“从 Azure 到本地”保护方向。
+3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。  
 4. 对于“数据存储”，选择要将 Azure VMware 解决方案中的磁盘恢复到的数据存储。 删除 Azure VMware 解决方案 VM 后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项。 仍需指定一个值。
 5. 选择保留驱动器。
 6. 将自动选择故障回复策略。
-7. 选择“确定”开始重新保护。****
+7. 选择“确定”开始重新保护。
 
     ![“重新保护”对话框](./media/vmware-azure-reprotect/reprotectinputs.png)
     

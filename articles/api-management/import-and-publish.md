@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626935"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>教程：导入和发布第一个 API
@@ -48,7 +48,7 @@ ms.locfileid: "91626935"
 
    可以在创建 API 期间设置 API 值，或者以后转到“设置”选项卡进行设置。
 
-   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API 管理中新的 API":::
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="创建 API":::
 
 
    |设置|值|说明|
@@ -60,7 +60,7 @@ ms.locfileid: "91626935"
    |**URL 方案**|**HTTPS**|哪些协议可以访问 API。|
    |**API URL 后缀**|会议|追加到 API 管理服务基 URL 的后缀。 API 管理根据 API 的后缀区分 API，因此后缀对于给定发布者的每个 API 必须唯一。|
    |**标记**| |用于组织搜索、分组或筛选 API 的标记。|
-   |**产品**|**不受限制**|一个或多个 API 的关联。 每个 API 管理实例附带两个示例产品：**初学者**和**无限**。 通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。<br/><br/> 可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 若要将此 API 添加到另一个产品，请键入或选择产品名称。 重复此步骤以将 API 添加到多个产品。 以后也可以从“设置”页将 API 添加到产品。<br/><br/>  有关产品的详细信息，请参阅[创建和发布产品](api-management-howto-add-products.md)。|
+   |**产品**|**不受限制**|一个或多个 API 的关联。 每个 API 管理实例附带两个示例产品：**初学者** 和 **无限**。 通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。<br/><br/> 可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 若要将此 API 添加到另一个产品，请键入或选择产品名称。 重复此步骤以将 API 添加到多个产品。 以后也可以从“设置”页将 API 添加到产品。<br/><br/>  有关产品的详细信息，请参阅[创建和发布产品](api-management-howto-add-products.md)。|
    |**网关**|**托管**|公开此 API 的 API 网关。 此字段仅在“开发人员”和“高级”层服务中提供。<br/><br/>“托管”指示内置于 API 管理服务中并由 Microsoft 托管在 Azure 中的网关。 [自承载网关](self-hosted-gateway-overview.md)仅在“高级”和“开发人员”服务层中提供。 可以将这些网关部署在本地或其他云中。<br/><br/> 如果未选择任何网关，则无法使用此 API，API 请求不会成功。|
    |**对此 API 进行版本控制？**|选择或取消选择|有关详细信息，请参阅[发布 API 的多个版本](api-management-get-started-publish-versions.md)。|
 
@@ -79,7 +79,7 @@ ms.locfileid: "91626935"
 1. 选择“测试”选项卡，然后选择“GetSpeakers”。  页面中会显示“查询参数”和“标头”（如果有）。  对于与此 API 关联的订阅密钥，系统会自动填写“Ocp-Apim-Subscription-Key”。
 1. 选择“发送”。
 
-   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="API 管理中新的 API":::
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="在 Azure 门户中测试 API":::
 
    后端以“200 正常”和某些数据做出响应。
 

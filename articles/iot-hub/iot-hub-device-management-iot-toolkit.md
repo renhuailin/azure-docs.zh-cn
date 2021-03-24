@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81688098"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
@@ -52,18 +52,18 @@ ms.locfileid: "81688098"
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-1. 在 VS Code 的“资源管理器”视图中，展开左下角的“Azure IoT 中心设备”部分。
+1. 在 VS Code 的“资源管理器”  视图中，展开左下角的“Azure IoT 中心设备”  部分。
 
-2. 在上下文菜单中单击“选择 IoT 中心”。
+2. 在上下文菜单中单击“选择 IoT 中心”  。
 
 3. 弹出窗口将显示在右下角，以便让你首次登录 Azure。
 
 4. 登录后，将显示 Azure 订阅列表，然后选择“Azure 订阅和 IoT 中心”。
 
-5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
+5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”  选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
 
 ## <a name="direct-methods"></a>直接方法
 
@@ -91,11 +91,11 @@ ms.locfileid: "81688098"
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
  
-1. 右键单击设备，然后选择“将 C2D 消息发送到设备”。 
+1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。 
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出” > “Azure IoT 中心”视图中。
+3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

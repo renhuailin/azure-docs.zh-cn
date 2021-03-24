@@ -1,24 +1,14 @@
 ---
 title: 快速入门：调查安全警报
 description: 了解、深化和调查 IoT 设备上的 Defender for IoT 安全警报。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/30/2020
-ms.author: mlottner
-ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2eb4a10372680348536231aa0333c43199b8d883
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943346"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780984"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>快速入门：调查安全警报
 
@@ -44,12 +34,12 @@ IoT 中心安全警报列表显示 IoT 中心的所有聚合安全警报。
 
 1. 在“IoT 中心” > “安全” > “警报”列中，选择并打开任何安全警报  。 
 1. 查看警报“说明”、“严重性”、“检测源”，和在聚合期间发出此警报的所有设备的“设备详细信息”   。
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="使用新的警报标志调查新的 IoT 安全警报"::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="深化并查看聚合警报中每个设备的详细信息"::: 
 1. 查看警报细节后，使用“手动修正步骤”说明可帮助修正和/或解决导致警报的问题。 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="使用新的警报标志调查新的 IoT 安全警报":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="按照手动修正步骤帮助解决或修正设备安全警报":::
 
 1. 如果需要进一步调查，请使用此链接调查 Log Analytics 中的警报。 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="使用新的警报标志调查新的 IoT 安全警报":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="要进一步调查警报，请使用屏幕上提供的“使用 Log Analytics 进行调查”链接":::
 
 ## <a name="next-steps"></a>后续步骤
 

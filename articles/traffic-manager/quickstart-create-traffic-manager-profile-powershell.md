@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
 ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91631556"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流量管理器配置文件以实现 Web 应用程序的高可用性
@@ -68,7 +68,7 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>创建 Web 应用
 
-本快速入门需要两个部署在两个不同的 Azure 区域（“美国西部”和“美国东部”）的 Web 应用程序实例。**** 每个都可以充当流量管理器的主终结点和故障转移终结点。
+本快速入门需要两个部署在两个不同的 Azure 区域（“美国西部”和“美国东部”）的 Web 应用程序实例。 每个都可以充当流量管理器的主终结点和故障转移终结点。
 
 ### <a name="create-web-app-service-plans"></a>创建 Web 应用服务计划
 使用 [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) 为要部署在两个不同 Azure 区域的两个 Web 应用程序实例创建 Web 应用服务计划。
@@ -87,7 +87,7 @@ New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -
 
 ```
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在应用服务计划中创建 Web 应用
-在应用服务计划中使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 在“美国西部”和“美国东部”Azure 区域中创建 Web 应用程序的两个实例。****
+在应用服务计划中使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 在“美国西部”和“美国东部”Azure 区域中创建 Web 应用程序的两个实例。
 
 ```azurepowershell-interactive
 $App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
@@ -97,8 +97,8 @@ $App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 使用 [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 将两个 Web 应用作为流量管理器终结点添加到流量管理器配置文件，如下所示：
-- 将“美国西部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。** 
-- 将“美国东部”Azure 区域中的 Web 应用添加为故障转移终结点。** 当主终结点不可用时，流量自动路由到故障转移终结点。
+- 将“美国西部”Azure 区域中的 Web 应用添加为主要终结点，以路由所有用户流量。 
+- 将“美国东部”Azure 区域中的 Web 应用添加为故障转移终结点。 当主终结点不可用时，流量自动路由到故障转移终结点。
 
 ```azurepowershell-interactive
 New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `

@@ -1,5 +1,5 @@
 ---
-title: 映射数据流中存在转换
+title: 映射数据流中的存在转换
 description: 使用 Azure 数据工厂映射数据流中的存在转换检查现有行
 author: kromerm
 ms.author: makromer
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82982626"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
+# <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中的存在转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Exists 转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 Exists 转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS``` 。
+存在转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 存在转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS```。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
 ## <a name="configuration"></a>Configuration
 
-1. 在 " **正确的流** " 下拉列表中选择要检查是否存在的数据流。
-1. 指定是否要在 **存在类型** 设置中查找数据。
-1. 选择是否需要 **自定义表达式**。
+1. 在“右侧流”下拉菜单中选择要检查是否存在的数据流。
+1. 在“存在类型”设置中指定要查找的数据是否存在。
+1. 选择是否需要“自定义表达式”。
 1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉菜单上，然后选择“计算列”。
 
-![存在设置](media/data-flow/exists.png "存在1")
+![存在设置](media/data-flow/exists.png "存在 1")
 
 ### <a name="multiple-exists-conditions"></a>多个存在条件
 
-若要比较每个流中的多个列，请通过单击现有行旁边的加号图标来添加新的存在条件。 每个附加条件都通过 "and" 语句联接。 比较两个列与下面的表达式相同：
+若要比较每个流中的多列，请通过单击现有行旁边的加号图标来添加新的存在条件。 每个附加条件都由一个“and”语句连接。 比较两列与以下表达式相同：
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>自定义表达式
 
-若要创建包含非 "and" 和 "equals" 运算符的自由格式表达式，请选择 " **自定义表达式** " 字段。 通过单击蓝色框，通过数据流表达式生成器输入自定义表达式。
+若要创建包含除“and”与“equals to”之外的其他运算符的自由格式表达式，请选择“自定义表达式”字段。 单击蓝色框，通过数据流表达式生成器输入自定义表达式。
 
 ![存在自定义设置](media/data-flow/exists1.png "存在自定义")
 
@@ -67,11 +67,11 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为的 exists 转换 `checkForChanges` ，它采用左侧流 `NameNorm2` 和正确流 `TypeConversions` 。  Exists 条件是 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` 一个表达式，如果 `EMPID` `Region` 每个流中的和列都匹配，则返回 true。 由于我们要检查是否存在，因此 `negate` 为 false。 我们未在 "优化" 选项卡中启用任何广播，因此 `broadcast` 具有值 `'none'` 。
+下面的示例是一个名为 `checkForChanges` 的存在转换，它采用左侧流 `NameNorm2` 和右侧流 `TypeConversions`。  存在条件为表达式 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`，如果每个流中的 `EMPID` 和 `Region` 列均匹配，则返回 true。 由于我们将检查是否存在，`negate` 为 false。 我们未在“优化”选项卡中启用任何广播，因此 `broadcast` 的值为 `'none'`。
 
 在数据工厂 UX 中，此转换如下图所示：
 
-![Exists 示例](media/data-flow/exists-script.png "Exists 示例")
+![存在示例](media/data-flow/exists-script.png "存在示例")
 
 此转换的数据流脚本位于下面的代码片段中：
 
@@ -86,4 +86,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>后续步骤
 
-类似的转换是 [查找](data-flow-lookup.md) 和 [联接](data-flow-join.md)。
+类似的转换有[查找](data-flow-lookup.md)和[联接](data-flow-join.md)。

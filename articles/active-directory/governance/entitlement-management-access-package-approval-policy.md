@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97591288"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的审批和请求者信息（预览）设置。
@@ -140,7 +140,7 @@ ms.locfileid: "97591288"
 
     ![访问包 - 策略 - 添加后备审批者](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
 
-    如果为第一个审批者选择了经理作为审批者，你将有一个额外的选项，即 **第二级经理作为备用审批者**，可在备用审批者字段中进行选择。 如果选择此选项，则需要添加后备审批者，以便在系统找不到第二层管理器的情况下将请求转发到。
+    如果对于第一位审批者，选择“管理员”作为审批者，你将具有一个可在后备审批者字段中进行选择的额外选项“将二级管理员作为后备审批者”。 如果选择此选项，则需要添加后备审批者，以便在系统找不到二级管理员的情况下将请求转发给该审批者。
 
 1. 在“多少天后转发给后备审批者？”框中，输入审批者批准或拒绝请求的允许天数。 如果在请求持续期间没有审批者批准或拒绝请求，则请求将过期（超时），用户必须再提交一个访问包请求。 
 

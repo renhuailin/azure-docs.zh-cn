@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84687780"
 ---
-# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网关 SKU（传统 SKU）
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网络网关 SKU（旧式 SKU）
 
-本文包含有关传统（旧）虚拟网关 SKU 的信息。 传统 SKU 仍可用于已创建的 VPN 网关的两种部署模型。 经典 VPN 网关继续使用传统 SKU，不管是对于现有网关还是对于新网关。 新建资源管理器 VPN 网关时，使用新的网关 SKU。 有关新 SKU 的信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
+本文包含有关旧式虚拟网络网关 SKU 的信息。 旧式 SKU 仍可用于已创建的 VPN 网关的两种部署模型。 经典 VPN 网关继续使用旧式 SKU，不管是对于现有网关还是对于新网关。 新建资源管理器 VPN 网关时，使用新的网关 SKU。 有关新 SKU 的信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>网关 SKU
 
@@ -36,7 +36,7 @@ ms.locfileid: "84687780"
 
 可以在同一 SKU 系列内将网关大小重设到某个网关 SKU。 例如，如果具有标准 SKU，则可重设大小为高性能 SKU。 但不能在旧式 SKU 和新式 SKU 系列之间重设 VPN 网关大小。 例如，不能从标准 SKU 调整为 VpnGw2 SKU 或从标准 SKU 调整为 VpnGw1。
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>资源管理器
 
 若要使用 PowerShell 重设资源管理器部署模型的网关大小，请使用以下命令：
 

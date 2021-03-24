@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842880"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>教程：清理独立群集
@@ -57,7 +57,7 @@ Service Fabric 独立群集提供选择自己的环境以托管 Service Fabric �
 ## <a name="delete-azure-resources"></a>删除 Azure 资源
 
 1. 登录到 Azure 门户。
-2. 转到“虚拟机”**** 部分。
+2. 转到“虚拟机”部分。
 3. 选中在本教程的第一部分中创建的三个节点所对应的复选框。
 4. 选择“删除”。
 

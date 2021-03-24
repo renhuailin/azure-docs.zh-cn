@@ -11,10 +11,10 @@ ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7ab6d6511d1e2cec82b321003c9d663249ddcf49
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94740220"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
@@ -57,7 +57,7 @@ ms.locfileid: "94740220"
    
    ![创建项目](./media/group-manager-tasks/create-project.png)
 
-GroupCommon 项目的摘要页随即打开   。 页面 URL 是 *https： \/ / \<servername> / \<organization-name> /GroupCommon*。
+GroupCommon 项目的摘要页随即打开   。 页 URL 为“https:\//\<servername>/\<organization-name>/GroupCommon”。
 
 ![项目摘要页](./media/group-manager-tasks/project-summary.png)
 
@@ -173,15 +173,15 @@ Azure Repos 可为组托管以下类型的存储库：
    
 1. 在 GroupCommon 项目的摘要页上，选择“存储库”，然后在页面顶部选择要克隆的存储库。
    
-1. 在“存储库”页上，选择右上方的“克隆”。
+1. 在“存储库”页上，选择右上方的“克隆”  。
    
-1. 在“克隆存储库”对话框中，为 HTTP 连接选择“HTTPS”，或为 SSH 连接选择“SSH”，并将命令行下的克隆 URL 复制到剪贴板。
+1. 在“克隆存储库”对话框中，为 HTTP 连接选择“HTTPS”，或为 SSH 连接选择“SSH”，并将命令行下的克隆 URL 复制到剪贴板     。
    
    ![克隆存储库](./media/group-manager-tasks/clone.png)
    
 1. 在本地计算机上创建以下目录：
    
-   - 对于 Windows： **C:\GitRepos\GroupCommon**
+   - 对于 Windows：C:\GitRepos\GroupCommon
    - 对于 Linux：在主目录中创建 $/GitRepos/GroupCommon 
    
 1. 切换到创建的目录。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 10531f87ee4a170310a97831a374a836641ce12b
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>教程：Azure Active Directory 与 BGS Online 集成
@@ -61,13 +61,13 @@ ms.locfileid: "97673335"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“BGS Online”  ，从结果面板中选择“BGS Online”  ，再单击“添加”  按钮，添加此应用程序。
+4. 在搜索框中，键入“BGS Online”，从结果面板中选择“BGS Online”，再单击“添加”按钮，添加此应用程序。
 
     ![结果列表中的 BGS Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 BGS Online 的 Azure AD 单一登录。 
+在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 BGS Online 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 BGS Online 相关用户之间建立链接关系。
 
 若要配置和测试 BGS Online 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -76,7 +76,7 @@ ms.locfileid: "97673335"
 2. **[配置 BGS Online 单一登录](#configure-bgs-online-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 BGS Online 测试用户](#create-bgs-online-test-user)  - 在 BGS Online 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. [创建 BGS Online 测试用户](#create-bgs-online-test-user) - 在 BGS Online 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "97673335"
 
 若要配置 BGS Online 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“BGS Online”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“BGS Online”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,17 +97,17 @@ ms.locfileid: "97673335"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![BGS Online 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL  ：
+    a. 在“标识符”文本框中，使用以下模式键入 URL：
 
     对于生产环境，请使用此模式：`https://<company name>.millwardbrown.report`
 
     对于测试环境，请使用此模式：`https://millwardbrown.marketingtracker.nl/mt5/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
 
     对于生产环境，请使用此模式：`https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx`
 
@@ -120,7 +120,7 @@ ms.locfileid: "97673335"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 BGS Online”部分，根据要求复制相应 URL  。
+6. 在“设置 BGS Online”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "97673335"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -157,17 +157,17 @@ ms.locfileid: "97673335"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 BGS Online 的访问权限支持使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“BGS Online”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“BGS Online”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“BGS Online”  。
+2. 在应用程序列表中，选择“BGS Online”。
 
     ![应用程序列表中的 BGS Online 链接](common/all-applications.png)
 

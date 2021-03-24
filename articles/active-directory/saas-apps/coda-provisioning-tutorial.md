@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
 ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673218"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教程：为 Coda 配置自动用户预配
@@ -42,7 +42,7 @@ ms.locfileid: "97673218"
 * 具有配置预配[权限](../roles/permissions-reference.md)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。
 * [Coda 企业](https://help.coda.io/en/articles/3520174-getting-started-with-sso)管理员帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 Coda 之间映射](../app-provisioning/customize-application-attributes.md)的数据。
@@ -58,7 +58,7 @@ ms.locfileid: "97673218"
 
 ## <a name="step-3-add-coda-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Coda
 
-从 Azure AD 应用程序库添加 Coda，开始管理 Coda 的预配。 如果以前为 SSO 设置过 Coda，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。
+从 Azure AD 应用程序库添加 Coda，开始管理 Coda 的预配。 如果以前为 SSO 设置过 Coda，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中
 
@@ -87,7 +87,7 @@ ms.locfileid: "97673218"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "97673218"
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”。
+13. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

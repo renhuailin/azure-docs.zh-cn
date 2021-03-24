@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541996"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798793"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -40,7 +40,7 @@ ms.locfileid: "91541996"
 |朝鲜语|[ko-KR](#korean-entity-support)||
 |葡萄牙语|[pt-BR（巴西）](#portuguese-brazil-entity-support)||
 |西班牙语|[es-ES（西班牙）](#spanish-spain-entity-support)、[es-MX（墨西哥）](#spanish-mexico-entity-support)||
-|土耳其语|[土耳其](#turkish-entity-support)|土耳其语不支持预生成实体|
+|土耳其语|[土耳其](#turkish-entity-support)||
 
 ## <a name="prediction-endpoint-runtime"></a>预测终结点运行时
 
@@ -268,6 +268,8 @@ ms.locfileid: "91541996"
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
 [URL](luis-reference-prebuilt-url.md)   |    V2、V3   |
 
+KeyPhrase 不适用于葡萄牙语（巴西）```pt-BR``` 的所有子区域性。
+
 ## <a name="spanish-spain-entity-support"></a>西班牙语（西班牙）实体支持
 
 支持以下实体：
@@ -314,34 +316,25 @@ ms.locfileid: "91541996"
 
 请参阅有关[已废弃的预构建实体](luis-reference-prebuilt-deprecated.md)的说明。
 
-KeyPhrase 不适用于葡萄牙语（巴西）```pt-BR``` 的所有子区域性。
-
 ## <a name="turkish-entity-support"></a>土耳其语实体支持
 
-**土耳其语不支持预生成实体。**
-
-<!--
-
-| Prebuilt entity | tr-tr |
+| 预生成实体 | tr-tr |
 | --------------- | :---: |
-[Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
-[Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
-[Dimension](luis-reference-prebuilt-dimension.md):<br>volume<br>area<br>weight<br>information (ex: bit/byte)<br>length (ex: meter)<br>speed (ex: mile per hour)  |    -   |
-[Email](luis-reference-prebuilt-email.md)   |    -   |
-[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Number](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
-[Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
-[PersonName](luis-reference-prebuilt-person.md)   |    -   |
-[Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    -   |
-[Temperature](luis-reference-prebuilt-temperature.md):<br>fahrenheit<br>kelvin<br>rankine<br>delisle<br>celsius   |    -   |
+[存在时长](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
+[货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   |
+[电子邮件](luis-reference-prebuilt-email.md)   |    -   |
+[keyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
+[数字](luis-reference-prebuilt-number.md)   |    -   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    -   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
+[电话号码](luis-reference-prebuilt-phonenumber.md)   |    -   |
+[温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    -   |
 [URL](luis-reference-prebuilt-url.md)   |    -   |
 
+<!---
 See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.md)
-
-
 KeyPhrase is not available.
 -->
 

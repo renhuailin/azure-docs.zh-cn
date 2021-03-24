@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555594"
 ---
 # <a name="apply-sql-transformation"></a>应用 SQL 转换
@@ -29,14 +29,14 @@ ms.locfileid: "94555594"
 -   执行 SQL 查询语句，筛选或更改数据，并以数据表的形式返回查询结果。  
 
 > [!IMPORTANT]
-> 此模块中使用的 SQL 引擎是 SQLite  。 有关 SQLite 语法的详细信息，请参阅 [Sqlite 理解的 SQL](https://www.sqlite.org/index.html)。
-> 此模块会将数据从内存数据库中的 SQLite 上凹凸，因此模块执行需要更多内存，并且可能会遇到 `Out of memory` 错误。 确保计算机具有足够的 RAM。
+> 此模块中使用的 SQL 引擎是 SQLite  。 有关 SQLite 语法的详细信息，请参阅 [SQL as Understood by SQLite](https://www.sqlite.org/index.html)。
+> 此模块会将数据传输到内存 DB 中的 SQLite，因此模块执行需要更多内存，并且可能会遇到 `Out of memory` 错误。 确保计算机具有足够的 RAM。
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>如何配置应用 SQL 转换  
 
 该模块可将最多三个数据集用作输入。 引用连接到每个输入端口的数据集时，必须使用名称 `t1`、`t2` 和 `t3`。 表编号指示输入端口的索引。  
 
-下面是演示如何联接两个表的示例代码。 t1 和 t2 是连接到 " **应用 SQL 转换** " 的左输入和中间输入端口的两个数据集：
+下面是演示如何联接两个表的示例代码。 t1 和 t2 是连接到“应用 SQL 转换”左侧和中间输入端口的两个数据集：
 
 ```sql
 SELECT t1.*
@@ -75,7 +75,7 @@ on t1.placeID = t3.placeID
 - 可在 SQLite 中创建“视图”，但之后视图为只读。 不可在视图中执行 `DELETE`、`INSERT` 或 `UPDATE` 语句。 但可创建一个触发器，尝试在视图上执行 `DELETE`、`INSERT` 或 `UPDATE`，并在触发器主体中执行其他操作。  
   
 
-除了在官方 SQLite 网站上提供的不受支持的函数的列表之外，以下 wiki 还提供了其他不支持的功能的列表： [SQLite 不](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)支持的 SQL  
+除了在官方 SQLite 网站上提供不受支持的功能列表，下面的 Wiki 还提供其他不受支持的功能列表：[SQLite - 不受支持的 SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 54c296ed8013b9962de9487cfec3e2568c03e738
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377034"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
@@ -335,7 +335,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
     | properties | 说明 |
     |:--- |:--- |
-    | type | type 属性设置为 AzureSqlTable，因为数据复制到 Azure SQL 数据库中的表。 |
+    | type | type 属性设置为“AzureSqlTable”，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
     | tableName | 指定一个 **表**，以便将数据复制到其中。 | 
     | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时** 生成一次。  |
@@ -558,7 +558,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 1. 创建了包含 **复制活动** 的 **管道**，其中 **BlobSource** 为源，**SqlSink** 为接收器。
 
 ## <a name="next-steps"></a>后续步骤
-本教程中，你在复制操作中使用 Azure Blob 存储作为源数据存储，并使用 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
+在本教程中，在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75452148"
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
@@ -99,12 +99,12 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 - 应用程序实例中的服务数每次都会发生更改 
 - 服务存在，但不会消耗资源 
 
-为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity  
+为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity
 
-- MinimumNodes  - 定义应用程序实例应在其上运行的最小节点数。  
-- NodeReservationCapacity  - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
+- MinimumNodes - 定义应用程序实例应在其上运行的最小节点数。  
+- NodeReservationCapacity - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
 
-结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载   。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
+结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
 
 下面是容量预留的一个示例：
 
@@ -198,12 +198,12 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 在创建和更新应用程序的过程中，都会强制限制。
 
 ## <a name="how-not-to-use-application-capacity"></a>在哪些情况下不应使用应用程序容量
-- 不要尝试使用应用程序容量功能将应用程序限制为_特定_的节点子集。 换而言之，可以指定应用程序可在最多五个节点上运行，但不应指定要在群集中具体的哪五个节点上运行。 将应用程序限制到特定的节点可以使用服务的放置约束来实现。
+- 不要尝试使用应用程序容量功能将应用程序限制为 _特定_ 的节点子集。 换而言之，可以指定应用程序可在最多五个节点上运行，但不应指定要在群集中具体的哪五个节点上运行。 将应用程序限制到特定的节点可以使用服务的放置约束来实现。
 - 不要尝试通过使用应用程序容量确保将同一应用程序中的两个服务放在同一节点上。 改用[地缘](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)或[放置约束](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)。
 
 ## <a name="next-steps"></a>后续步骤
 - 有关配置服务的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
+- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[均衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 有关在一般情况下指标的工作原理的详细信息，请参阅 [Service Fabric 负载指标](service-fabric-cluster-resource-manager-metrics.md)
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章

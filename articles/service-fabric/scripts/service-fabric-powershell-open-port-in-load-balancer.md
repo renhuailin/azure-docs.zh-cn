@@ -15,10 +15,10 @@ ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87038080"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>打开 Azure 负载均衡器中的应用程序端口
@@ -35,9 +35,9 @@ ms.locfileid: "87038080"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取 Azure 资源。  |
 | [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) | 获取 Azure 负载均衡器。 |

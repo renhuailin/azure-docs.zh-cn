@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100518447"
 ---
 # <a name="supported-postgresql-major-versions"></a>支持的 PostgreSQL 主版本
@@ -29,8 +29,8 @@ Azure Database for PostgreSQL 目前支持以下主版本：
 ## <a name="postgresql-version-96"></a>PostgreSQL 版本 9.6
 当前次要版本为 9.6.16。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html)。
 
-## <a name="postgresql-version-95-retired"></a>PostgreSQL 版本 9.5 (退休) 
-与 Postgres 社区的 [版本控制策略](https://www.postgresql.org/support/versioning/)一致，Azure Database for PostgreSQL 已于2021年2月11日停用 Postgres 版本9.5。 请参阅 [Azure Database for PostgreSQL 版本控制策略](concepts-version-policy.md)以了解更多详细信息和限制。 如果你运行的是此主要版本，请升级到更高版本，最好是最早的方便 PostgreSQL 11。
+## <a name="postgresql-version-95-retired"></a>PostgreSQL 版本 9.5（已停用）
+为遵守 Postgres 社区的[版本控制策略](https://www.postgresql.org/support/versioning/)，Azure Database for PostgreSQL 已于 2021 年 2 月 11 日起停用 Postgres 版本 9.5。 请参阅 [Azure Database for PostgreSQL 版本控制策略](concepts-version-policy.md)以了解更多详细信息和限制。 如果运行的是此主版本，请升级到更高版本，最好尽早升级到 PostgreSQL 11。
 
 ## <a name="managing-upgrades"></a>管理升级
 PostgreSQL 项目定期发布次要版本来修复已报告的 bug。 Azure Database for PostgreSQL 在服务的每月部署期间会自动使用次要版本修补服务器。 

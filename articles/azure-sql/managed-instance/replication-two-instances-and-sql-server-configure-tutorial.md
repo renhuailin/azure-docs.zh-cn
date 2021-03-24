@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/21/2019
 ms.openlocfilehash: d2b45f5b51f4656294632aa46f679a7a09c06ed3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593920"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教程：在 Azure SQL 托管实例和 SQL Server 之间配置事务复制
@@ -285,7 +285,7 @@ GO
 1. 连接到 `sql-mi-publisher` 托管实例。
 1. 在“对象资源管理器”中，展开“复制”节点，然后右键单击“本地发布”文件夹  。 单击“新建发布...”。
 1. 选择“下一步”，离开“欢迎”页。
-1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一步**”。
+1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一页**”。
 1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一页**”。
 1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一页**”。
 1. 在“筛选器表行”页上，选择“下一步”而不添加任何筛选器 。
