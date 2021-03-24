@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84790240"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 拒绝分配
@@ -84,7 +84,7 @@ ms.locfileid: "84790240"
     | **拒绝分配适用于**  | 拒绝分配应用到的安全主体。 |
     | **拒绝分配排除** | 排除在拒绝分配之外的安全主体。 |
 
-    **系统定义的主体**代表 Azure AD 目录中的所有用户、组、服务主体和托管标识。
+    **系统定义的主体** 代表 Azure AD 目录中的所有用户、组、服务主体和托管标识。
 
 1. 若要查看已拒绝权限的列表，请单击“已拒绝权限”。
 

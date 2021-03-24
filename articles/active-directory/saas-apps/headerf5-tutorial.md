@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
 ms.openlocfilehash: 28040a92d713707204f0651773f7edce9f4daf6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101651758"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教程：在 Azure Active Directory 与 F5 之间配置单一登录 (SSO)
@@ -181,9 +181,9 @@ ms.locfileid: "101651758"
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在“应用程序”列表中选择“F5”。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。

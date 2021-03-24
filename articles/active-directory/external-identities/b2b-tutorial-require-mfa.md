@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95974113"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
@@ -73,7 +73,7 @@ ms.locfileid: "95974113"
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>创建需要 MFA 的条件访问策略
 1.  以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
-2.  在 Azure 门户中，选择“Azure Active Directory”。 
+2.  在 Azure 门户中，选择“Azure Active Directory”。  
 3.  在 Azure Active Directory 页的“安全性”部分中，选择“条件访问”  。
 4.  在“条件访问”页面顶部的工具栏中，选择“新建策略” 。
 5.  在“新建”页面的“名称”文本框中，键入“需要 MFA 才能访问 B2B 门户”  。
@@ -81,7 +81,7 @@ ms.locfileid: "95974113"
 7.  在“用户和组”页面上，选中“选择用户和组”，然后选择“所有来宾用户(预览版)”  。
 
     ![显示选择所有来宾用户的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  选择“完成” 。
+9.  选择“完成”  。
 10. 在“新建”页面的“分配”部分中，选择“云应用”  。
 11. 在“云应用”页面上，选中“选择应用”，然后勾选“选择”  。
 
@@ -101,7 +101,7 @@ ms.locfileid: "95974113"
 
     ![显示将“启用”策略选项设置为“开”的屏幕截图](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. 选择“创建” 。
+17. 选择“创建”  。
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>使用 What If 选项来模拟登录情形
 

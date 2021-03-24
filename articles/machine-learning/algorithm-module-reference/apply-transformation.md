@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/26/2020
 ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003899"
 ---
 # <a name="apply-transformation-module"></a>“应用转换”模块
 
 本文介绍 Azure 机器学习设计器中的一个模块。
 
-使用此模块来修改基于之前计算的转换的输入数据集。 如果需要更新推理管道中的转换，则必须在中执行此模块。
+使用此模块来修改基于之前计算的转换的输入数据集。 如果需要更新推理管道中的转换，则此模块是必需的。
 
 例如，如果使用了 z 分数通过“规范化数据”模块来规范化训练数据，则可能还需要使用在评分阶段为训练计算的 z 分数值。 在 Azure 机器学习中，可以将规范化方法另存为转换，然后使用“应用转换”在评分之前将 z 分数应用于输入数据。
 
@@ -49,10 +49,10 @@ ms.locfileid: "96003899"
 1. 若要将转换应用于新数据集，请提交管道。  
 
 > [!IMPORTANT]
-> 若要确保在定型管道中经过更新的转换也适用于推理管道，您需要在训练管道中每次出现更新转换时执行以下步骤：
-> 1. 在定型管道中，将 " [选择列" 转换](select-columns-transform.md) 的输出注册为数据集。
+> 若要确保在训练管道中更新的转换也适用于推理管道，你需要在训练管道中每次有更新转换时执行以下步骤：
+> 1. 在训练管道中，将 [Select Columns Transform](select-columns-transform.md) 的输出注册为数据集。
 > ![注册模块输出的数据集](media/module/select-columns-transform-register-dataset.png)
-> 1. 在推理管道中，删除 **TD** 模块，并将其替换为上一步中已注册的数据集。
+> 1. 在推理管道中删除 TD 模块，并将其替换为上一步中已注册的数据集。
 > ![替换 TD 模块](media/module/replace-tranformation-directory.png)
 
 ## <a name="next-steps"></a>后续步骤

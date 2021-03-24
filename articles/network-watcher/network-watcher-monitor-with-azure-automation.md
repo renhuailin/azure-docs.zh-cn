@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011806"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
@@ -42,7 +42,7 @@ ms.locfileid: "96011806"
 
 - 在 Azure 中有一个 Azure 自动化帐户。 请确保自动化帐户具有最新模块，同时确保具有 AzureRM.Network 模块。 如果需要将 AzureRM.Network 模块添加到自动化帐户，可以在模块库中找到此模块。
 - 必须在 Azure 自动化中配置一组凭据。 在 [Azure 自动化安全性](../automation/automation-security-overview.md)中了解详细信息。
-- 有效的 SMTP 服务器 (Microsoft 365、本地电子邮件或 Azure 自动化中定义的其他) 和凭据
+- 在 Azure 自动化中定义有效的 SMTP 服务器（Microsoft 365、本地电子邮件或其他服务器）和凭据
 - 在 Azure 配置的虚拟网络网关。
 - 现有存储帐户，其中具有一个存储登录信息的现有容器。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教程：Azure Active Directory 与 Trend Micro Web Security (TMWS) 的单一登录 (SSO) 集成
@@ -112,12 +112,12 @@ ms.locfileid: "96008389"
 
 在本部分中，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。  选择“用户”，然后选择“所有用户”   。
-1. 选择屏幕顶部的“新建用户”  。
+1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤  ：
    1. 在“名称”框中，输入 `B.Simon`。   
    1. 在“用户名”框中，输入“username@companydomain.extension” 。 例如，`B.Simon@contoso.com`。
-   1. 选择“显示密码”，然后记下“密码”框中显示的值。  
+   1. 选择“显示密码”，然后记下“密码”框中显示的值。 
    1. 选择“创建”  。
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>向 Azure AD 测试用户授予对 TMWS 的访问权限

@@ -4,10 +4,10 @@ description: 了解如何创建 Go 函数作为 Azure Functions 自定义处理�
 ms.topic: quickstart
 ms.date: 12/4/2020
 ms.openlocfilehash: 8b53031315cce3651a2de581d71da6ef6fe909c1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470364"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Go 或 Rust 函数

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
 ms.openlocfilehash: 9a02c4f5c5699b4a6308bfaa519fa9eb776414d6
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102234370"
 ---
 * 如果不再需要在本教程中创建的任何资源，可使用 [az group delete](/cli/azure/group#az-group-delete) 命令从本文中删除 Azure 数字孪生实例及其他所有资源。 这会删除资源组中的所有 Azure 资源及资源组本身。

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.openlocfilehash: 18e44ec43e1169aa054e6e5b4591ccd8611a7f4d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025219"
 ---
 # <a name="regular-expression-entity"></a>正则表达式实体
@@ -43,7 +43,7 @@ ms.locfileid: "95025219"
 
 如果将 `kb[0-9]{6}` 用作正则表达式实体定义，则下面的 JSON 响应就是一个示例话语，其中包含查询返回的正则表达式实体：
 
-`When was kb123456 published?`：
+`When was kb123456 published?`:
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 

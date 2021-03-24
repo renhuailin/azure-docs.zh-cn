@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012521"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
@@ -131,7 +131,7 @@ ms.locfileid: "96012521"
 ```
 
 > [!NOTE]
-> 对于 Linux 群集，若要以根  身份运行服务或安装程序入口点，可以将 AccountType  指定为 LocalSystem  。
+> 对于 Linux 群集，若要以根身份运行服务或安装程序入口点，可以将 AccountType 指定为 LocalSystem。
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>从安装程序入口点运行脚本
 现在将启动脚本添加到项目，以便在管理员特权下运行。 

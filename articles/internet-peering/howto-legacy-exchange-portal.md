@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
 ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84700155"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源

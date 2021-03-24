@@ -7,10 +7,10 @@ author: nabhishek
 ms.author: abnarain
 ms.date: 01/10/2018
 ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377782"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
@@ -82,7 +82,7 @@ ms.locfileid: "100377782"
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-1. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。    
+1. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/tutorial-transform-data-spark-portal/new-azure-data-factory-menu.png)
 1. 在“新建数据工厂”  窗格的“名称”下输入 **ADFTutorialDataFactory**  。 
@@ -96,7 +96,7 @@ ms.locfileid: "100377782"
 1. 对于“资源组”，请执行以下步骤之一： 
      
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
-   - 选择“新建”，并输入资源组的名称。    
+   - 选择“新建”，并输入资源组的名称。   
          
    本快速入门中的一些步骤假定对资源组使用 **ADFTutorialResourceGroup** 名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 1. 对于“版本”，选择“V2”。  
@@ -125,45 +125,45 @@ ms.locfileid: "100377782"
 1. 选择窗口底部的“连接”，然后选择“+ 新建”。   
 
    ![用于创建新连接的按钮](./media/tutorial-transform-data-spark-portal/new-connection.png)
-1. 在“新建链接服务”窗口中，选择“数据存储” > “Azure Blob 存储”，然后选择“继续”。     
+1. 在“新建链接服务”窗口中，选择“数据存储” > “Azure Blob 存储”，然后选择“继续”。 
 
    ![选择“Azure Blob 存储”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-storage.png)
-1. 至于“存储帐户名称”，  请从列表中选择名称，然后选择“保存”。  
+1. 至于“存储帐户名称”，请从列表中选择名称，然后选择“保存”。 
 
    ![指定存储帐户名称的框](./media/tutorial-transform-data-spark-portal/new-azure-storage-linked-service.png)
 
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>创建按需 HDInsight 链接服务
 
-1. 再次选择“+ 新建”按钮，创建另一个链接服务。  
-1. 在“新建链接服务”窗口中，选择“计算” > “Azure HDInsight”，然后选择“继续”。     
+1. 再次选择“+ 新建”按钮，创建另一个链接服务。 
+1. 在“新建链接服务”窗口中，选择“计算” > “Azure HDInsight”，然后选择“继续”。 
 
    ![选择“Azure HDInsight”磁贴](./media/tutorial-transform-data-spark-portal/select-azure-hdinsight.png)
 1. 在“新建链接服务”  窗口中完成以下步骤： 
 
-   a. 至于“名称”，请输入 **AzureHDInsightLinkedService**。 
+   a. 至于“名称”，请输入 **AzureHDInsightLinkedService**。
    
-   b. 至于“类型”，请确认选择了“按需 HDInsight”。  
+   b. 至于“类型”，请确认选择了“按需 HDInsight”。
    
-   c. 对于“Azure 存储链接服务”，请选择“AzureBlobStorage1”。   前面已创建此链接服务。 如果使用了其他名称，请在此处指定正确的名称。 
+   c. 对于“Azure 存储链接服务”，请选择“AzureBlobStorage1”。 前面已创建此链接服务。 如果使用了其他名称，请在此处指定正确的名称。 
    
-   d. 至于“群集类型”，请选择“spark”。  
+   d. 至于“群集类型”，请选择“spark”。
    
-   e. 至于“服务主体 ID”，请输入有权创建 HDInsight 群集的服务主题的 ID。  
+   e. 至于“服务主体 ID”，请输入有权创建 HDInsight 群集的服务主题的 ID。 
    
-      此服务主体需是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关详细信息，请参阅[创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 服务主体 ID 等效于应用程序 ID，服务主体密钥等效于客户端密码的值     。
+      此服务主体需是订阅“参与者”角色的成员，或创建群集的资源组的成员。 有关详细信息，请参阅[创建 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 服务主体 ID 等效于应用程序 ID，服务主体密钥等效于客户端密码的值。
    
-   f. 至于“服务主体密钥”，请输入此密钥。  
+   f. 至于“服务主体密钥”，请输入此密钥。 
    
-   g. 至于“资源组”，请选择创建数据工厂时使用的资源组。  将在此资源组中创建 Spark 群集。 
+   g. 至于“资源组”，请选择创建数据工厂时使用的资源组。 将在此资源组中创建 Spark 群集。 
    
-   h.如果该值不存在，请单击“添加行”。 展开“OS 类型”。 
+   h. 展开“OS 类型”。
    
    i. 输入名称作为 **群集用户名**。 
    
    j. 输入该用户的 **群集密码**。 
    
-   k. 选择“完成”。  
+   k. 选择“完成”。 
 
    ![HDInsight 链接服务设置](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -175,25 +175,25 @@ ms.locfileid: "100377782"
 1. 选择“+ (加)”按钮，然后在菜单上选择“管道”。  
 
    ![用于创建新管道的按钮](./media/tutorial-transform-data-spark-portal/new-pipeline-menu.png)
-1. 在“活动”  工具箱中，展开“HDInsight”  。 将“Spark”活动从“活动”工具箱拖到管道设计器图面。   
+1. 在“活动”工具箱中，展开“HDInsight”。 将“Spark”活动从“活动”工具箱拖到管道设计器图面。 
 
    ![拖动 Spark 活动](./media/tutorial-transform-data-spark-portal/drag-drop-spark-activity.png)
-1. 在底部“Spark”活动窗口的属性中完成以下步骤：  
+1. 在底部“Spark”活动窗口的属性中完成以下步骤： 
 
-   a. 切换到“HDI 群集”选项卡。 
+   a. 切换到“HDI 群集”选项卡。
    
    b. 选择 **AzureHDInsightLinkedService**（在上一过程中创建）。 
         
    ![指定 HDInsight 链接服务](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
-1. 切换到“脚本/Jar”  选项卡，然后完成以下步骤： 
+1. 切换到“脚本/Jar”选项卡，然后完成以下步骤： 
 
-   a. 对于“作业链接服务”，请选择“AzureBlobStorage1”。  
+   a. 对于“作业链接服务”，请选择“AzureBlobStorage1”。
    
-   b. 选择“浏览存储”。 
+   b. 选择“浏览存储”。
 
    ![在“脚本/Jar”选项卡上指定 Spark 脚本](./media/tutorial-transform-data-spark-portal/specify-spark-script.png)
    
-   c. 浏览到“adftutorial/spark/script”文件夹，选择“WordCount_Spark.py”，然后选择“完成”。         
+   c. 浏览到“adftutorial/spark/script”文件夹，选择“WordCount_Spark.py”，然后选择“完成”。      
 
 1. 若要验证管道，请选择工具栏中的“验证”按钮。  选择 **>>** （右键头）按钮，关闭验证窗口。 
     
@@ -220,7 +220,7 @@ ms.locfileid: "100377782"
 
    ![管道运行状态](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   选择顶部的“所有管道运行”链接可以切换回到管道运行视图。 
+   选择顶部的“所有管道运行”链接可以切换回到管道运行视图。
 
    ![“活动运行”视图](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -240,7 +240,7 @@ ms.locfileid: "100377782"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何： 
+此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。 

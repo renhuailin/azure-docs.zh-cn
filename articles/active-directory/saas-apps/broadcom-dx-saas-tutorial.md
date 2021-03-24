@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 5aa13598133b55547484609fc6d26d9375c04045
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 35ab4d335560689a7e55bf1a8dff9fcb0bcc7d7f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-broadcom-dx-saas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Broadcom DX SaaS 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102053526"
 * 让用户使用其 Azure AD 帐户自动登录到 Broadcom DX SaaS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -179,8 +179,8 @@ ms.locfileid: "102053526"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 Broadcom DX SaaS。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Broadcom DX SaaS”磁贴时，应会自动登录到为其设置了 SSO 的 Broadcom DX SaaS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Broadcom DX SaaS”磁贴时，应会自动登录到为其设置了 SSO 的 Broadcom DX SaaS。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Broadcom DX SaaS 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Broadcom DX SaaS 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

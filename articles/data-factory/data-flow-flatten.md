@@ -1,6 +1,6 @@
 ---
-title: 在映射数据流中平展转换
-description: 使用平展转换非规范化分层数据
+title: 映射数据流中的平展转换
+description: 利用平展转换使分层数据非规范化
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,17 +8,17 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81413680"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>在映射数据流中平展转换
+# <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的平展转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用平展转换在层次结构（如 JSON）中获取数组值，并将其展开到各个行。 此过程称为非规范化。
+使用平展转换获取层次结构（如 JSON）中的数组值，并将其展开到各个行。 此过程称为非规范化。
 
 ## <a name="configuration"></a>Configuration
 
@@ -26,23 +26,23 @@ ms.locfileid: "81413680"
 
 ![平展设置](media/data-flow/flatten1.png "平展设置")
 
-### <a name="unroll-by"></a>展开
+### <a name="unroll-by"></a>Unroll by
 
-选择要展开的数组。 每个数组中的每个项的输出数据都占一行。 如果输入行中的展开数组为 null 或为空，则会有一个输出行的 unrolled 值为 null。
+选择要展开的数组。 对于每个数组中的每一项，输出数据都会占用一行。 如果输入行中的 unroll by 数组为 NULL 或为空，则会有一个展开值为 NULL 的输出行。
 
 ### <a name="unroll-root"></a>展开根
 
-默认情况下，平展转换 unrolls 将数组置于其中存在的层次结构的顶部。 你可以选择将数组选择为展开根。 展开根必须是复杂对象的数组，这些对象要么为，要么包含展开 by 数组。 如果选择了展开根，则输出数据将在展开根中的每个项中至少包含一行。 如果输入行没有展开根中的任何项，则会将其从输出数据中删除。 选择展开根将始终输出小于或等于默认行为的行数。
+默认情况下，平展转换会将数组展开到其所在层次结构的顶部。 你可以选择将某个数组用作展开根。 展开根必须是复杂对象数组，该数组要么是 unroll by 数组，要么包含 unroll by 数组。 如果选择了展开根，则在展开根中的每一项中，输出数据都将至少包含一行。 如果输入行没有展开根中的任何项，该行便会从输出数据中删除。 选择展开根时，将始终输出小于或等于默认行为的行数。
 
 ### <a name="flatten-mapping"></a>平展映射
 
-类似于 "选择转换"，从传入字段和非规范化数组中选择新结构的投影。 如果映射了非规范化数组，则输出列的数据类型将与数组的数据类型相同。 如果展开 by 数组是包含子的复杂对象数组，则映射该 subarry 的项将输出一个数组。
+与选择转换类似，从传入字段和已实现非规范化的数组中选择新结构的投影。 如果映射了已实现非规范化的数组，则输出列的数据类型将与数组的数据类型相同。 如果 unroll by 数组是包含子数组的复杂对象数组，在映射该子数组的项时，便会输出一个数组。
 
 请参阅检查选项卡和数据预览，验证映射输出。
 
 ## <a name="examples"></a>示例
 
-有关平展转换的以下示例，请参阅以下 JSON 对象
+请参阅以下 JSON 对象的平展转换示例
 
 ``` json
 {
@@ -64,11 +64,11 @@ ms.locfileid: "81413680"
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>没有带字符串数组的展开根
+### <a name="no-unroll-root-with-string-array"></a>没有包含字符串数组的展开根
 
-| 展开 | 展开根 | 投影 |
+| Unroll by | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 商品。客户 | 无 | name <br> customer = 客户 |
+| goods.customers | 无 | name <br> customer = goods.customer |
 
 #### <a name="output"></a>输出
 
@@ -84,9 +84,9 @@ ms.locfileid: "81413680"
 
 ### <a name="no-unroll-root-with-complex-array"></a>没有包含复杂数组的展开根
 
-| 展开 | 展开根 | 投影 |
+| Unroll by | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 发货。 orderItems | 无 | name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
+| goods.orders.shipped.orderItems | 无 | name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> location = location |
 
 #### <a name="output"></a>输出
 
@@ -105,9 +105,9 @@ ms.locfileid: "81413680"
 
 ### <a name="same-root-as-unroll-array"></a>与展开数组相同的根
 
-| 展开 | 展开根 | 投影 |
+| Unroll by | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物订单 | 货物订单 | name <br> orderItems..。 <br> 商品。客户 <br> location |
+| goods.orders | goods.orders | name <br> goods.orders.shipped.orderItems.itemName <br> goods.customers <br> location |
 
 #### <a name="output"></a>输出
 
@@ -119,11 +119,11 @@ ms.locfileid: "81413680"
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>带有复杂数组的展开根
+### <a name="unroll-root-with-complex-array"></a>包含复杂数组的展开根
 
-| 展开 | 展开根 | 投影 |
+| Unroll by | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 发货。 orderItem | 货物订单 |name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
+| goods.orders.shipped.orderItem | goods.orders |name <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> location = location |
 
 #### <a name="output"></a>输出
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [透视转换](data-flow-pivot.md) 将行透视到列。
-* 使用 [逆透视转换](data-flow-unpivot.md) 将列透视到行。
+* 使用[透视转换](data-flow-pivot.md)将行转换为列。
+* 使用[逆透视转换](data-flow-unpivot.md)将列转换为行。

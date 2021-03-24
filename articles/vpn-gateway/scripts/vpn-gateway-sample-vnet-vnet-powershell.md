@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
 ms.openlocfilehash: 949c2b7810bc6b4f5a80b9932427f4aa3565794e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88030345"
 ---
 # <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>使用 Powershell 配置 VNet 到 VNet VPN 网关连接
@@ -148,7 +148,7 @@ Remove-AzResourceGroup -Name TestRG2
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 添加子网配置。 在虚拟网络创建过程中将使用此配置。 |
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 获取虚拟网络详细信息。 |

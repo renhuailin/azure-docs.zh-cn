@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83837174"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 对 Runbook 进行身份验证

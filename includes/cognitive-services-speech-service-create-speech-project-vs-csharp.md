@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001079"
 ---
 若要创建 Visual Studio 项目用于 Windows 开发，需要创建项目，安装用于 .NET 桌面开发的 Visual Studio，安装语音 SDK，然后选择目标体系结构。

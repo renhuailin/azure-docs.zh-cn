@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 469cfcd39ff606c6ed828d490f26e6e3e027993e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>教程：Azure Active Directory 与 Sciforma 集成
@@ -41,14 +41,14 @@ ms.locfileid: "95993193"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Sciforma 支持 SP 发起的 SSO 
-* Sciforma 支持实时  用户预配
+* Sciforma 支持 SP 发起的 SSO
+* Sciforma 支持实时用户预配
 
 ## <a name="adding-sciforma-from-the-gallery"></a>从库中添加 Sciforma
 
 若要配置 Sciforma 与 Azure AD 的集成，需从库中将 Sciforma 添加到托管的 SaaS 应用列表。
 
-若要从库中添加 Sciforma，请执行以下步骤： 
+**若要从库中添加 Sciforma，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -62,22 +62,22 @@ ms.locfileid: "95993193"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Sciforma”，在结果面板中选择“Sciforma”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Sciforma”，在结果面板中选择“Sciforma”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Sciforma](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Sciforma 的 Azure AD 单一登录  。
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Sciforma 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Sciforma 相关用户之间建立链接关系。
 
 若要配置和测试 Sciforma 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 Sciforma 单一登录](#configure-sciforma-single-sign-on)  - 在应用程序端配置单一登录。
+2. [配置 Sciforma 单一登录](#configure-sciforma-single-sign-on) - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Sciforma 测试用户](#create-sciforma-test-user)  - 在 Sciforma 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. [创建 Sciforma 测试用户](#create-sciforma-test-user) - 在 Sciforma 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -86,7 +86,7 @@ ms.locfileid: "95993193"
 
 若要配置 Sciforma 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Sciforma”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Sciforma”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "95993193"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Sciforma 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.sciforma.net/sciforma/main.html`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.sciforma.net/sciforma/main.html` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.sciforma.net/sciforma/saml`
 
@@ -113,7 +113,7 @@ ms.locfileid: "95993193"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Sciforma”部分，根据要求复制相应 URL  。
+6. 在“设置 Sciforma”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -125,7 +125,7 @@ ms.locfileid: "95993193"
 
 ### <a name="configure-sciforma-single-sign-on"></a>配置 Sciforma 单一登录
 
-若要在 Sciforma  端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [Sciforma 支持团队](https://www.sciforma.com/about/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Sciforma 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Sciforma 支持团队](https://www.sciforma.com/about/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -135,7 +135,7 @@ ms.locfileid: "95993193"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "95993193"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Sciforma 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Sciforma”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Sciforma”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Sciforma”  。
+2. 在应用程序列表中，选择“Sciforma”。
 
     ![应用程序列表中的 Sciforma 链接](common/all-applications.png)
 

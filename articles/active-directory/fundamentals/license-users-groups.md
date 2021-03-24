@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504400"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
@@ -51,16 +51,16 @@ ms.locfileid: "97504400"
 
     :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="“许可证”页，显示已购买服务和已分配许可证数量":::
 
-1. 选择 " **所有产品** " 查看 "所有产品" 页，并查看你的许可计划的 **总**、 **已分配**、 **可用** 和 **即将到期** 的数字。
+1. 选择“所有产品”可查看“所有产品”**页，以及查看许可计划的“总计”** 、“已分配”、“可用”和“即将到期”数。
 
-    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="服务页-具有服务许可证计划-关联的许可证信息":::
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="“服务”页 - 包含服务许可计划 - 关联的许可证信息":::
 
     > [!NOTE]
-    > 这些数字定义为： 
-    > - Total：购买的许可证总数
-    > - 已分配：分配给用户的许可证数
-    > - 可用：可用于分配的许可证的数量，包括即将过期的许可证
-    > - 即将过期：即将过期的许可证数
+    > 这些数字的定义为： 
+    > - 总计：购买的许可证总数
+    > - 已分配：已分配给用户的许可证数
+    > - 可用：可供分配的许可证数（包括即将到期的许可证）
+    > - 即将到期：即将到期的许可证数
 
 1. 选择计划名称可查看其已许可的用户和组。
 

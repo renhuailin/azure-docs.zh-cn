@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013528"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
@@ -128,10 +128,10 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 
 *  [Azure Active Directory B2C 概述]
 *  [Azure Active Directory B2C：可扩展的策略框架]
-*  [使用 Microsoft 帐户作为标识提供者 Azure Active Directory B2C]
-*  [在 Azure Active Directory B2C 中使用 Google 帐户作为标识提供者]
-*  [在 Azure Active Directory B2C 中使用 LinkedIn 帐户作为标识提供者]
-*  [在 Azure Active Directory B2C 中使用 Facebook 帐户作为标识提供者]
+*  [将 Microsoft 帐户用作 Azure Active Directory B2C 中的标识提供者]
+*  [将 Google 帐户用作 Azure Active Directory B2C 中的标识提供者]
+*  [将 LinkedIn 帐户用作 Azure Active Directory B2C 中的标识提供者]
+*  [将 Facebook 帐户用作 Azure Active Directory B2C 中的标识提供者]
 
 
 
@@ -197,10 +197,10 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于面�
 [Azure Active Directory B2C 概述]: ../active-directory-b2c/overview.md
 [如何使用 Azure Active Directory 为开发人员帐户授权]: ./api-management-howto-aad.md
 [Azure Active Directory B2C：可扩展的策略框架]: ../active-directory-b2c/user-flow-overview.md
-[使用 Microsoft 帐户作为标识提供者 Azure Active Directory B2C]: ../active-directory-b2c/identity-provider-microsoft-account.md
-[在 Azure Active Directory B2C 中使用 Google 帐户作为标识提供者]: ../active-directory-b2c/identity-provider-google.md
-[在 Azure Active Directory B2C 中使用 Facebook 帐户作为标识提供者]: ../active-directory-b2c/identity-provider-facebook.md
-[在 Azure Active Directory B2C 中使用 LinkedIn 帐户作为标识提供者]: ../active-directory-b2c/identity-provider-linkedin.md
+[将 Microsoft 帐户用作 Azure Active Directory B2C 中的标识提供者]: ../active-directory-b2c/identity-provider-microsoft-account.md
+[将 Google 帐户用作 Azure Active Directory B2C 中的标识提供者]: ../active-directory-b2c/identity-provider-google.md
+[将 Facebook 帐户用作 Azure Active Directory B2C 中的标识提供者]: ../active-directory-b2c/identity-provider-facebook.md
+[将 LinkedIn 帐户用作 Azure Active Directory B2C 中的标识提供者]: ../active-directory-b2c/identity-provider-linkedin.md
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

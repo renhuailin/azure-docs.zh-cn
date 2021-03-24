@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a8d98485b180d999fb0762551e05ea5e3ef365b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661471"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
@@ -62,7 +62,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git

@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743756"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure 资源角色配置安全警报
@@ -38,9 +38,9 @@ ms.locfileid: "84743756"
 
 | 警报 | 严重性 | 触发器 | 建议 |
 | --- | --- | --- | --- |
-| **向资源分配的所有者过多** |中型 |拥有所有者角色的用户过多。 |查看列表中的用户，并将某些用户重新分配到具有较低权限的角色。 |
-| **向资源分配的永久所有者过多** |中型 |太多用户永久地分配到了某个角色。 |查看列表中的用户，并将某些用户重新分配为需要激活才能使用该角色。 |
-| **创建了重复角色** |中型 |多个角色具有相同的条件。 |仅使用这些角色中的一个角色。 |
+| **向资源分配的所有者过多** |中 |拥有所有者角色的用户过多。 |查看列表中的用户，并将某些用户重新分配到具有较低权限的角色。 |
+| **向资源分配的永久所有者过多** |中 |太多用户永久地分配到了某个角色。 |查看列表中的用户，并将某些用户重新分配为需要激活才能使用该角色。 |
+| **创建了重复角色** |中 |多个角色具有相同的条件。 |仅使用这些角色中的一个角色。 |
 
 ### <a name="severity"></a>严重性
 
@@ -50,7 +50,7 @@ ms.locfileid: "84743756"
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 
-从“警报”页转到“设置”  。
+从“警报”页转到“设置”。
 
 ![突出显示了“设置”的“警报”页](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 

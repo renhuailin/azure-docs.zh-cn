@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015139"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>教程：将 MVISION Cloud Azure AD SSO 配置与 Azure Active Directory 集成
@@ -48,8 +48,8 @@ ms.locfileid: "96015139"
 若要配置 MVISION Cloud Azure AD SSO 配置到 Azure AD 集成，需要将 MVISION Cloud Azure AD SSO 配置从库添加到托管 SaaS 应用列表中。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“MVISION Cloud Azure AD SSO 配置” 。
 1. 从结果面板中选择“MVISION Cloud Azure AD SSO 配置”，然后添加应用。 在该应用添加到租户时等待几秒钟。
@@ -80,7 +80,7 @@ ms.locfileid: "96015139"
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
@@ -93,7 +93,7 @@ ms.locfileid: "96015139"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [MVISION Cloud Azure AD SSO 配置客户端支持团队](mailto:support@skyhighnetworks.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
+6. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96015139"
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
@@ -118,12 +118,12 @@ ms.locfileid: "96015139"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a. 在“名称”字段中，输入 BrittaSimon。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
     d. 单击“创建”。
 
@@ -147,9 +147,9 @@ ms.locfileid: "96015139"
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
-5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
 
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”  对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 
 7. 在“添加分配”对话框中，单击“分配”按钮。 
 

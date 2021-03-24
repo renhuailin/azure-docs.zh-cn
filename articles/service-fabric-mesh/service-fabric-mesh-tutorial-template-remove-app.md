@@ -7,16 +7,16 @@ ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d449343fd00ff958470a71ecb3a37d585d7ff8ed
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99626605"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>教程：删除应用程序和资源
 
 > [!IMPORTANT]
-> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持会持续到 2021 年 4 月 28 日。
+> Azure Service Fabric 网格的预览版已停用。 不允许再通过 Service Fabric 网格 API 进行新的部署。 对现有部署的支持将会持续到 2021 年 4 月 28 日。
 > 
 > 有关详细信息，请参阅 [Azure Service Fabric 网格预览版停用](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)。
 

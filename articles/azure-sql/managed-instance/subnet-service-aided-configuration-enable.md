@@ -11,10 +11,10 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
 ms.openlocfilehash: 67b398194d9094cd99fccaa85ed0df3be362ce2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91618006"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>为 Azure SQL 托管实例启用服务辅助子网配置
@@ -41,7 +41,7 @@ ms.locfileid: "91618006"
 
 若要了解此信息，可以在托管实例的 `Overview` 门户边栏选项卡上查看 `Virtual network/subnet`。
 
-作为替代方法，可以运行以下 PowerShell 命令来了解此信息。 将 subscription-id 替换为自己的订阅 ID。 此外，将 rg-name 替换为托管实例的资源组，并将 mi-name 替换为托管实例的名称。
+作为替代方法，可以运行以下 PowerShell 命令来了解此信息。 将 **subscription-id** 替换为你的订阅 ID。 将 **rg-name** 替换为托管实例的资源组，将 **mi-name** 替换为托管实例的名称。
 
 ```powershell
 Install-Module -Name Az
