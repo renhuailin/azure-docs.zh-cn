@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
 ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WhosOnLocation 集成
@@ -48,8 +48,8 @@ ms.locfileid: "92636674"
 若要配置 WhosOnLocation 与 Azure AD 的集成，需要从库中将 WhosOnLocation 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“WhosOnLocation” 。
 1. 从结果面板中选择“WhosOnLocation”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -80,7 +80,7 @@ ms.locfileid: "92636674"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.whosonlocation.com/saml/login/<CUSTOM_ID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.whosonlocation.com/saml/login/<CUSTOM_ID>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://login.whosonlocation.com/saml/metadata/<CUSTOM_ID>`
 

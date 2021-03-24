@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教程：Azure Active Directory 与 TurboRater 的集成
@@ -48,7 +48,7 @@ TurboRater 支持 IDP 发起的单一登录 (SSO)。
 若要配置 Azure AD 中的 TurboRater 集成，需要从 Azure 市场中将 TurboRater 添加到托管 SaaS 应用列表：
 
 1. 登录 [Azure 门户](https://portal.azure.com?azure-portal=true)。
-1. 在左窗格中选择“Azure Active Directory”  。
+1. 在左窗格中选择“Azure Active Directory”。
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 

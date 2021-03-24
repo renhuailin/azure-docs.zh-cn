@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: apimpm
-ms.openlocfilehash: f6ea02c32ec7fcb694d63f29c63c3880a7cfff9e
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: dc3d3b4658bd9a26363b6d41377d448059e30c0f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546646"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889665"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>教程：发布 API 的多个版本 
 
@@ -105,7 +105,7 @@ az apim api versionset list --resource-group apim-hello-word-resource-group \
 
 当 Azure 门户为你创建一个版本集时，它会分配一个字母数字名称并显示在列表的“名称”列中。 在其他 Azure CLI 命令中使用此名称。
 
-若要查看有关版本集的详细信息，请运行 [az apim api versionset show](/api/versionset#az_apim_api_versionset_show) 命令：
+若要查看有关版本集的详细信息，请运行 [az apim api versionset show](/cli/azure/apim/api/versionset#az_apim_api_versionset_show) 命令：
 
 ```azurecli
 az apim api versionset show --resource-group apim-hello-word-resource-group \

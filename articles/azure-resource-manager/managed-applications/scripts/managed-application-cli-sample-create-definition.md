@@ -8,10 +8,10 @@ ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7feb00b581732cdc1956c4ac23af571180ff09e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497828"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>使用 Azure CLI 创建托管应用程序定义
@@ -30,9 +30,9 @@ ms.locfileid: "87497828"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建托管应用程序定义。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建托管应用程序定义。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | 创建托管应用程序定义。 提供包含所需文件的包。 |
 

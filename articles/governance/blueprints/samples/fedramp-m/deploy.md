@@ -4,10 +4,10 @@ description: FedRAMP Moderate 蓝图示例的部署步骤，包括蓝图项目�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 9fa92bebf6ef5829796c45e0e83070a85395caf8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594675"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>部署 FedRAMP Moderate 蓝图示例

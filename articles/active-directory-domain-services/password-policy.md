@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619226"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory 域服务托管域上的密码和帐户锁定策略
@@ -90,7 +90,7 @@ ms.locfileid: "96619226"
 > [!NOTE]
 > 若要在托管域中创建自定义密码策略，必须登录到 AAD DC 管理员组成员的用户帐户。
 
-1. 在“开始”屏幕中选择“管理工具”。 其中显示了可用管理工具的列表，这些工具是在[创建管理 VM][tutorial-create-management-vm] 的教程中安装的。
+1. 在“开始”屏幕中选择“管理工具”。 其中显示了可用管理工具列表，这些工具是在教程[创建管理 VM][tutorial-create-management-vm] 中安装的。
 1. 若要创建和管理 OU，请从管理工具列表中选择“Active Directory 管理中心”。
 1. 在左窗格中选择你的托管域，例如 aaddscontoso.com。
 1. 打开“系统”容器，然后打开“密码设置”容器。
