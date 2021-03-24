@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 AppBlade 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 AppBlade 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 AppBlade 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 49fa266319423b4c1a0bc56ad2a32b49c18f168e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672604"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>教程：Azure Active Directory 与 AppBlade 的集成
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>教程：Azure Active Directory 与 AppBlade 集成
 
 本教程介绍如何将 AppBlade 与 Azure Active Directory (Azure AD) 集成。
 将 AppBlade 与 Azure AD 集成具有以下优势：
@@ -62,7 +62,7 @@ ms.locfileid: "97672604"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **AppBlade**，在结果面板中选择“AppBlade”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **AppBlade**，在结果面板中选择“AppBlade”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“AppBlade”](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "97672604"
 
 若要配置 AppBlade 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“AppBlade”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“AppBlade”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "97672604"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![AppBlade 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.appblade.com/saml/<tenantid>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.appblade.com/saml/<tenantid>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [AppBlade 客户端支持团队](mailto:support@appblade.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -111,7 +111,7 @@ ms.locfileid: "97672604"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 AppBlade”部分，根据要求复制相应的 URL。 
+6. 在“设置 AppBlade”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "97672604"
 
 ### <a name="configure-appblade-single-sign-on"></a>配置 AppBlade 单一登录
 
-若要在 **AppBlade** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [AppBlade 支持团队](mailto:support@appblade.com)。  另外，请要求他们将“SSO 颁发者 URL”  配置为 `https://appblade.com/saml`。 要使单一登录正常工作，此设置是必需的。
+若要在 **AppBlade** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [AppBlade 支持团队](mailto:support@appblade.com)。 另外，请要求他们将“SSO 颁发者 URL”配置为 `https://appblade.com/saml`。 要使单一登录正常工作，此设置是必需的。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -133,7 +133,7 @@ ms.locfileid: "97672604"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -143,22 +143,22 @@ ms.locfileid: "97672604"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 AppBlade 的访问权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“AppBlade”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“AppBlade”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“AppBlade”  。
+2. 在应用程序列表中，选择“AppBlade”。
 
     ![“应用程序”列表中的“AppBlade”链接](common/all-applications.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "97672604"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

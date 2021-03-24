@@ -7,10 +7,10 @@ ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
 ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178824"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池

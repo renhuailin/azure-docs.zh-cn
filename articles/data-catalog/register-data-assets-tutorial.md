@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 66bacdf27b2ef9cf624b645cb6e4c123d9c3fa2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de85cad8232d76706358c36806ce19a7c1df893f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88135872"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674999"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教程：在 Azure 数据目录中注册数据资产
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 本教程介绍如何使用注册工具将数据库示例中的数据资产注册到目录。 注册是从数据源及其包含的资产中提取关键结构元数据（例如名称、类型和位置），并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。
 
@@ -121,7 +123,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
    ![Azure 数据目录 - 基本文本搜索](media/register-data-assets-tutorial/data-catalog-basic-text-search.png)
 
-3. 确认是否在结果中看到了所有四个表和数据库。 可以选择工具栏上的按钮在**网格视图**与**列表视图**之间切换，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。  **每页显示的结果数** 。
+3. 确认是否在结果中看到了所有四个表和数据库。 可以选择工具栏上的按钮在 **网格视图** 与 **列表视图** 之间切换，如下图所示。 请注意，由于“突出显示”选项为“打开”，因此搜索结果中突出显示了搜索关键字。  **每页显示的结果数** 。
 
    ![Azure 数据目录 - 基本文本搜索结果](media/register-data-assets-tutorial/data-catalog-basic-text-search-results.png)
 

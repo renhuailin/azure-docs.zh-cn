@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 12/11/2020
 ms.author: rolyon
 ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369220"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
@@ -29,12 +29,12 @@ ms.locfileid: "97369220"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>步骤 1：确定所需的权限
 
-Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 下面是一些可帮助你确定要添加到自定义角色的权限的方法：
+Azure 具有数千个权限，你可将这些权限包含在自定义角色中。 可通过一些方法来确定要添加到自定义角色的权限：
 
-- 查看现有的 [内置角色](built-in-roles.md)。
-- 列出要授予访问权限的 Azure 服务。
-- 确定 [映射到 Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。 稍后在 [步骤4：权限](#step-4-permissions)中介绍了搜索方法。
-- 搜索 [可用权限](resource-provider-operations.md) ，查找想要包括的权限。 稍后在 [步骤4：权限](#step-4-permissions)中介绍了搜索方法。
+- 查看现有的[内置角色](built-in-roles.md)。
+- 列出要授予对其的访问权限的 Azure 服务。
+- 确定[映射到 Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。 搜索方法稍后在[步骤 4：权限](#step-4-permissions)中介绍。
+- 搜索[可用权限](resource-provider-operations.md)，找到要包括的权限。 搜索方法稍后在[步骤 4：权限](#step-4-permissions)中介绍。
 
 ## <a name="step-2-choose-how-to-start"></a>步骤 2：选择如何开始
 

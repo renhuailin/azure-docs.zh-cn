@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694715"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 还原 VM
@@ -72,7 +72,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 从你的恢复点还原磁盘。 将 mystorageaccount 替换为你在前一个命令中创建的存储帐户的名称。 将 myRecoveryPointName 替换为你在前面的 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令输出中获得的恢复点名称：还需提供将托管磁盘还原到的目标资源组 *。
+2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 从你的恢复点还原磁盘。 将 mystorageaccount 替换为你在前一个命令中创建的存储帐户的名称。 将 myRecoveryPointName 替换为你在前面的 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令输出中获得的恢复点名称： 还需提供将托管磁盘还原到的目标资源组。
 
     ```azurecli-interactive
     az backup restore restore-disks \

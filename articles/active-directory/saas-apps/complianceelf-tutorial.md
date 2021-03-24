@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Compliance ELF 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Compliance ELF 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Compliance ELF 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: jeedes
 ms.openlocfilehash: c27add82766516157d56fcf0a5c94123930112fc
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672917"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 集成
+# <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 的集成
 
 本教程介绍如何将 Compliance ELF 与 Azure Active Directory (Azure AD) 集成。
 将 Compliance ELF 与 Azure AD 集成提供以下优势：
@@ -61,7 +61,7 @@ ms.locfileid: "97672917"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Compliance ELF”，在结果面板中选择“Compliance ELF”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Compliance ELF”，在结果面板中选择“Compliance ELF”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Compliance ELF](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "97672917"
 
 若要配置 Compliance ELF 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Compliance ELF** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Compliance ELF** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "97672917"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     ![Compliance ELF 域和 URL 单一登录信息](common/idp-identifier.png)
 
     在“标识符”  文本框中，键入一个 URL：`https://sso.cordium.com`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "97672917"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -143,17 +143,17 @@ ms.locfileid: "97672917"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Compliance ELF 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Compliance ELF”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Compliance ELF”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Compliance ELF”。 
+2. 在应用程序列表中，选择“Compliance ELF”。
 
     ![应用程序列表中的 Compliance ELF 链接](common/all-applications.png)
 

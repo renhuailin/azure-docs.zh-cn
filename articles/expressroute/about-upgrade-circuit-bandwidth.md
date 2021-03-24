@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: duau
 ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89397944"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>关于升级 ExpressRoute 线路带宽
@@ -37,9 +37,9 @@ ms.locfileid: "89397944"
 如果 ExpressRoute 合作伙伴没有足够的可用容量，你需要在所需的对等互连位置请求额外的容量。 预配新容量后，可按照相关文章的[升级线路带宽](#upgrade)部分中包含的步骤来创建新线路、配置连接并删除旧线路。
 
 
-### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>ExpressRoute 直接带宽不足
+### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>ExpressRoute Direct 带宽不足
 
-如果 ExpressRoute 直接没有足够的容量，则可以删除与不再需要的 ExpressRoute 直接资源关联的线路，或创建新的 ExpressRoute 直接资源。 有关管理 ExpressRoute 直接资源的指南，请参阅 [如何配置 Expressroute 直通](how-to-expressroute-direct-portal.md)。
+如果 ExpressRoute Direct 没有足够的容量，则可以删除与不再需要的 ExpressRoute Direct 资源关联的线路，或创建新的 ExpressRoute Direct 资源。 有关管理 ExpressRoute Direct 资源的指南，请参阅[如何配置 ExpressRoute Direct](how-to-expressroute-direct-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

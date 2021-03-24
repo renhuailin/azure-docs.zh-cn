@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896607"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>教程：创建 PowerShell Runbook
@@ -51,7 +51,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。
+2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
 
 3. 选择“创建 Runbook”，创建一个新的 Runbook。
 

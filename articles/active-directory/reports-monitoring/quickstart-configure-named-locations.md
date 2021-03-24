@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89299858"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
@@ -37,11 +37,11 @@ ms.locfileid: "89299858"
 
 * Azure AD 租户。 注册[免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 
 * 一个身份为租户的全局管理员的用户。
-* 一个已建立且在组织中受到信任的 IP 范围。 IP 范围需采用**无类别域际路由 (CIDR)** 格式。
+* 一个已建立且在组织中受到信任的 IP 范围。 IP 范围需采用 **无类别域际路由 (CIDR)** 格式。
 
 ## <a name="configure-named-locations"></a>配置命名位置
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在左侧窗格中，选择“Azure Active Directory”，然后从“安全性”部分中选择“条件访问”。
 
@@ -55,7 +55,7 @@ ms.locfileid: "89299858"
 
    * 在“名称”框中，键入命名位置的名称。
    * 在“IP 范围”框中，键入 CIDR 格式的 IP 范围。  
-   * 单击**创建**。
+   * 单击“创建”。
     
      ![新建边栏选项卡](./media/quickstart-configure-named-locations/61.png)
 

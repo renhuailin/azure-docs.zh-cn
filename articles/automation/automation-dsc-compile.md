@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896336"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>在 Azure Automation State Configuration 中编译 DSC 配置
@@ -184,7 +184,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Azure Automation State Configuration 和 Runbook 中的资产引用是相同的。 有关详细信息，请参阅以下主题：
 
-- [证书](./shared-resources/certificates.md)
+- [Certificates](./shared-resources/certificates.md)
 - [连接](automation-connections.md)
 - [凭据](./shared-resources/credentials.md)
 - [变量](./shared-resources/variables.md)
@@ -264,7 +264,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
    ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
 
 1. 在“配置名称”字段中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
-1. 单击“确定”。
+1. 单击 **“确定”** 。
 
 ### <a name="import-a-node-configuration-with-azure-powershell"></a>使用 Azure PowerShell 导入节点配置
 

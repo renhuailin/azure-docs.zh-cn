@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91825630"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
@@ -89,10 +89,10 @@ ms.locfileid: "91825630"
 > [!WARNING]
 > 为了防止应用程序网关 WAF 中断在开发人员门户中 OpenAPI 规范的下载，需要禁用防火墙规则 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
 > 
-> 应用程序网关 WAF 规则可能会中断门户的功能，其中包括：
+> 应用程序网关 WAF 规则可能会破坏门户的功能，其中包括：
 > 
-> - `920300`，，，，，，，，，， `920330` `931130` `942100` `942110` `942180` `942200` `942260` `942340` `942370` 用于管理模式
-> - `942200``942260` `942370` `942430` `942440` 对于发布的门户，，，，
+> - 适用于管理模式的 `920300`、`920330`、`931130`、`942100`、`942110`、`942180`、`942200`、`942260`、`942340`、`942370`
+> - 适用于已发布门户的 `942200`、`942260`、`942370`、`942430`、`942440`
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
 
@@ -149,7 +149,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>步骤 3
 
-在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络********。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
+在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet

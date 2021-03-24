@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-基于消息正文大小路由请求
+title: 示例 API 管理策略 - 基于消息正文大小路由请求
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何基于请求的正文大小路由请求。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: e59aece0be39bf671e3d1e62f1a0e4c2a42a1ec8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92076464"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>基于请求的正文大小路由请求

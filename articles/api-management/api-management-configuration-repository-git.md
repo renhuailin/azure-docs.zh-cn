@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400343"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
@@ -47,7 +47,7 @@ ms.locfileid: "89400343"
 
 ## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
 
-若要查看和配置 Git 配置设置，可单击 " **部署和基础结构** " 菜单，然后导航到 " **存储库** " 选项卡。
+若要查看和配置 Git 配置设置，可单击“部署和基础结构”菜单，并导航到“存储库”选项卡 。
 
 ![启用 Git][api-management-enable-git]
 
@@ -62,7 +62,7 @@ ms.locfileid: "89400343"
 
 克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”。
 
-在确认屏幕上进行任何所需的更改，然后单击 " **保存** " 以保存。
+在确认屏幕上进行任何所需的更改，并单击“保存”进行保存。
 
 片刻后配置已保存，并显示存储库的配置状态，包括上次配置更改和服务配置与存储库之间上次同步的日期和时间。
 
@@ -82,7 +82,7 @@ ms.locfileid: "89400343"
 
 以下示例使用 [Git for Windows](https://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
 
-使用 Azure 门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令，将 Git 存储库克隆到本地计算机。
+使用 Azure 门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令，以将 Git 存储库克隆到本地计算机。
 
 ```
 git clone https://{name}.scm.azure-api.net/
@@ -112,7 +112,7 @@ git clone https://username:url encoded password@{name}.scm.azure-api.net/
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
 
-如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 为此，请在 Azure 门户的 "**存储库**" 选项卡上单击 "**保存到存储库**"，然后在本地存储库中发出以下命令。
+如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“存储库”选项卡上的“保存到存储库”，然后在本地存储库中发布以下命令 。
 
 ```
 git pull
@@ -198,17 +198,17 @@ git push
 }
 ```
 
-在 " `RegistrationEnabled` `UserRegistrationTerms` `UserRegistrationTermsEnabled` `UserRegistrationTermsConsentRequired` **开发人员门户**" 部分的 "**标识**" 选项卡上， (、、和) 的前四个设置映射到以下设置。
+前四个设置（`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled` 和 `UserRegistrationTermsConsentRequired`）映射到“开发人员门户”部分“标识”选项卡上的以下设置 。
 
 | 标识设置 | 映射到 |
 | --- | --- |
-| RegistrationEnabled |是否存在**用户名和密码**标识提供者 |
+| RegistrationEnabled |是否存在 **用户名和密码** 标识提供者 |
 | UserRegistrationTerms |“用户登录时的使用条款”文本框 |
 | UserRegistrationTermsEnabled |“显示用户登录时的使用条款”复选框 |
 | UserRegistrationTermsConsentRequired |“需要同意”复选框 |
 | RequireUserSigninEnabled |“将匿名用户重定向到登录页”复选框 |
 
-接下来的四个设置 (`DelegationEnabled` 、 `DelegationUrl` 、 `DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`) 映射到**开发人员门户**中 "**委派**" 选项卡上的以下设置。
+接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“开发人员门户”部分“委派”选项卡上的以下设置 。
 
 | 委派设置 | 映射到 |
 | --- | --- |

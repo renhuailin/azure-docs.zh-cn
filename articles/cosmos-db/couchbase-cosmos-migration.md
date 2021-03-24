@@ -9,16 +9,16 @@ ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
 ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606192"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 是一种可扩展、全球分布式、完全托管的数据库。 它能够确保数据访问延迟较低。 若要详细了解 Azure Cosmos DB，请参阅[概述](introduction.md)文章。 本文说明如何将连接到 Couchbase 的 Java 应用程序迁移到 Azure Cosmos DB 中的 SQL API 帐户。
+Azure Cosmos DB 是一种可扩展、全球分布式、完全托管的数据库。 它提供对数据的访问且保证访问延迟很低。 若要详细了解 Azure Cosmos DB，请参阅[概述](introduction.md)一文。 本文说明如何将连接到 Couchbase 的 Java 应用程序迁移到 Azure Cosmos DB 中的 SQL API 帐户。
 
 ## <a name="differences-in-nomenclature"></a>术语差别
 
@@ -164,7 +164,7 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 
 ### <a name="insert-and-update-operations"></a>插入和更新操作
 
-其中 _repo 是存储库的对象，而 doc 是 POJO 类的对象。 可以使用 `.save` 执行插入或更新插入（如果找到了具有指定 ID 的文档）。 以下代码片段演示如何插入或更新 doc 对象：
+其中 _repo 是存储库的对象，而 doc 是 POJO 类的对象。 你可以使用 `.save` 插入或更新插入（如果找到具有指定 ID 的文档）。 以下代码片段演示如何插入或更新 doc 对象：
 
 ```_repo.save(doc);```
 
@@ -176,12 +176,12 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 
 ### <a name="read-operation"></a>读取操作
 
-无论指定还是不指定分区键，均可读取文档。 如果未指定分区键，则将其视为跨分区查询。 考虑以下代码示例。第一个示例使用 ID 和分区键字段执行操作。 第二个示例使用常规字段，且不指定分区键字段。
+可以通过指定或不指定分区键来读取文档。 如果未指定分区键，则将其视为跨分区查询。 请考虑以下代码示例，第一个代码示例将使用 ID 和分区键字段执行操作。 第二个示例使用常规字段且未指定分区键字段。
 
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-就这么简单，你现在可以将应用程序用于 Azure Cosmos DB。 本文档中所述示例的完整代码示例已在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub 存储库中提供。
+就这么简单，你现在可以将应用程序用于 Azure Cosmos DB。 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub 存储库中提供了本文档中所述示例的完整代码示例。
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>用作文档存储库的 Couchbase，使用 N1QL 查询
 
@@ -191,9 +191,9 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 |-------------------|-------------------|
 |SELECT META(`TravelDocument`).id AS id, `TravelDocument`.* FROM `TravelDocument` WHERE `_type` = "com.xx.xx.xx.xxx.xxx.xxxx " and country = 'India’ and ANY m in Visas SATISFIES m.type == 'Multi-Entry' and m.Country IN ['India', Bhutan’] ORDER BY ` Validity` DESC LIMIT 25 OFFSET 0 | SELECT c.id,c FROM c JOIN m in  c.country=’India’ WHERE c._type = " com.xx.xx.xx.xxx.xxx.xxxx" and c.country = 'India' and m.type = 'Multi-Entry' and m.Country IN ('India', 'Bhutan') ORDER BY c.Validity DESC OFFSET 0 LIMIT 25 |
 
-在 N1QL 查询中，可以注意到以下更改：
+你可能会注意到 N1QL 查询中的以下更改：
 
-* 不需要使用 META 关键字或引用第一级文档。 你可以创建自己的对容器的引用。 在此示例中，我们已将其视为“c”（可以是任何内容）。 此引用用作所有第一级字段的前缀。 例如，c.id、c.country，等等。
+* 不需要使用 META 关键字或引用第一级文档。 你可以转为创建自己的对容器的引用。 在此示例中，我们已将其视为“c”（可以是任何内容）。 此引用用作所有第一级字段的前缀。 例如，c.id、c.country，等等。
 
 * 在不指定“ANY”的情况下，现在可以针对子文档执行联接，并使用专用别名（例如“m”）来引用它。 为子文档创建别名后，需要使用别名。 例如 m.Country。
 

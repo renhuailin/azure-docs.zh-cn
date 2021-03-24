@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: ddfffb77ca889aea9ff32c7be1ce2e4cb7fc04a7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037572"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教程：Azure Active Directory 与 LaunchDarkly 集成
 
@@ -159,8 +159,8 @@ ms.locfileid: "102037572"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 LaunchDarkly。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“LaunchDarkly”磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“LaunchDarkly”磁贴时，应会自动登录到为其设置了 SSO 的 LaunchDarkly。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 LaunchDarkly 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 LaunchDarkly 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

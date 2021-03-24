@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 15Five 的集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 15Five 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 15Five 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>教程：Azure Active Directory 与 15Five 的集成
@@ -41,13 +41,13 @@ ms.locfileid: "97673896"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* 15Five 支持 SP 发起的 SSO 
+* 15Five 支持 SP 发起的 SSO
 
 ## <a name="adding-15five-from-the-gallery"></a>从库中添加 15Five
 
 若要配置 15Five 与 Azure AD 的集成，需要从库中将 15Five 添加到托管的 SaaS 应用列表。
 
-若要从库中添加 15Five，请执行以下步骤  ：
+若要从库中添加 15Five，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "97673896"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“15Five”，在结果面板中选择“15Five”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“15Five”，在结果面板中选择“15Five”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 15Five](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 15Five 的 Azure AD 单一登录。 
+在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 15Five 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 15Five 中的相关用户之间建立链接关系。
 
 若要配置和测试 15Five 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "97673896"
 
 若要配置 15Five 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“15Five”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“15Five”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "97673896"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![15Five 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com/saml2/metadata/`
 
@@ -112,7 +112,7 @@ ms.locfileid: "97673896"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 15Five”部分中，根据要求复制相应 URL  。
+6. 在“设置 15Five”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "97673896"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "97673896"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予访问 15Five 的权限，允许 Britta Simon 使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“15Five”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“15Five”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“15Five”  。
+2. 在应用程序列表中，选择“15Five”。
 
     ![应用程序列表中的 15Five 链接](common/all-applications.png)
 
@@ -183,9 +183,9 @@ ms.locfileid: "97673896"
 
 ### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
 
-1. 以管理员身份登录到 **15Five** 公司站点。
+1. 以管理员身份登录到你的 **15Five** 公司站点。
 
-2. 转到“管理公司”  。
+2. 转到 **“管理公司”**。
 
     ![管理公司](./media/15five-tutorial/ic784675.png "管理公司")
 
@@ -193,11 +193,11 @@ ms.locfileid: "97673896"
 
     ![People](./media/15five-tutorial/ic784676.png "人员")
 
-4. 在“添加新人员”部分中，执行以下步骤： 
+4. 在“添加新人员”部分中，执行以下步骤：
 
     ![添加新人员](./media/15five-tutorial/ic784677.png "添加新人员")
 
-    a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”  、“姓氏”  、“职位”  、“电子邮件地址”  。
+    a. 在相关文本框中键入要设置的有效 Azure Active Directory 帐户的 **“名字”**、**“姓氏”**、**“职务”**、**“电子邮件”**。
 
     b. 单击“完成”  。
 

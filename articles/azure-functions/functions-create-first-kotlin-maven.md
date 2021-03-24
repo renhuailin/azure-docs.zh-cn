@@ -8,10 +8,10 @@ ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179555"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入门：使用 Kotlin 和 Maven 创建第一个函数

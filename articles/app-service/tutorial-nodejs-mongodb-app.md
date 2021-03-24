@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 5e76c87da1dc9ab7d4adeb0e964ae5a3248b8431
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347653"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
@@ -76,7 +76,7 @@ mongo
 
 在终端窗口中，通过 `cd` 转到工作目录。  
 
-运行下列命令以克隆示例存储库。 
+运行下列命令，克隆示例存储库。 
 
 ```bash
 git clone https://github.com/Azure-Samples/meanjs.git
@@ -305,7 +305,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
 Writing objects: 100% (5/5), 489 bytes | 0 bytes/s, done.
 Total 5 (delta 3), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '6c7c716eee'.
 remote: Running custom deployment command...
@@ -316,7 +316,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 你可能会注意到，部署进程将在运行 `npm install` 之后运行 [Gulp](https://gulpjs.com/)。 应用服务在部署期间不会运行 Gulp 或 Grunt 任务，因此该示例存储库的根目录中有两个额外文件用于启用它： 
@@ -342,7 +342,7 @@ http://<app-name>.azurewebsites.net
 
 选择“管理员”>“管理文章”，添加一些文章。 
 
-祝贺你！ 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
+**祝贺你！** 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -467,7 +467,7 @@ node server.js
 
 ```bash
 git commit -am "added article comment"
-git push azure master
+git push azure main
 ```
 
 `git push` 完成后，请导航到 Azure 应用，并试用新功能。
@@ -510,7 +510,7 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
-![Azure 门户中的应用服务页](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
+![Azure 门户中的“应用服务”页](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

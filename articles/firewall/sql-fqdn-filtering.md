@@ -1,5 +1,5 @@
 ---
-title: 配置使用 SQL FQDN 的 Azure 防火墙应用程序规则
+title: 使用 SQL FQDN 配置 Azure 防火墙应用程序规则
 description: 本文介绍如何在 Azure 防火墙应用程序规则中配置 SQL FQDN。
 services: firewall
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
 ms.openlocfilehash: c65f32cc3ce56ddf3fd235de8c002528e7a3cebd
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791436"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 配置 Azure 防火墙应用程序规则
@@ -21,7 +21,7 @@ ms.locfileid: "98791436"
 使用 SQL FQDN 可以筛选流量：
 
 - 从 VNet 到 Azure SQL 数据库或 Azure Synapse Analytics。 例如：仅允许访问 sql-server1.database.windows.net。
-- 从本地发往 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS 的流量。
+- 从本地到 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS。
 - 从“分支到分支”到 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS。
 
 仅在[代理模式](../azure-sql/database/connectivity-architecture.md#connection-policy)下支持 SQL FQDN 筛选（端口 1433）。 如果在默认重定向模式下使用 SQL，则可以使用 SQL 服务标记作为[网络规则](features.md#network-traffic-filtering-rules)的一部分来筛选访问。
@@ -93,9 +93,9 @@ ms.locfileid: "98791436"
 
    > [!NOTE]
    > 与重定向相比，SQL 代理模式可能会导致更大的延迟。 若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
-3. 在应用程序规则中添加相应的协议、端口和 SQL FQDN，然后选择“保存”。
+3. 添加带有适当协议、端口和 SQL FQDN 的应用程序规则，然后选择“保存”。
    ![带有 SQL FQDN 的应用程序规则](media/sql-fqdn-filtering/application-rule-sql.png)
-4. 从通过防火墙筛选流量的 VNet 中的虚拟机访问 SQL。 
+4. 从 VNet 中的虚拟机访问 SQL，该虚拟机通过防火墙筛选流量。 
 5. 验证 [Azure 防火墙日志](./firewall-workbook.md)是否显示允许流量。
 
 ## <a name="next-steps"></a>后续步骤

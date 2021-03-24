@@ -17,10 +17,10 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006070"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>使用 CLI 将应用服务与应用程序网关集成
@@ -43,7 +43,7 @@ ms.locfileid: "97006070"
 
 此脚本使用以下命令创建资源组、应用服务应用、Cosmos DB 和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | 创建虚拟网络。 |

@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023782"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>如何通过 PHP 使用 SendGrid 电子邮件服务
 
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 通过 PHP 编写示例。
-所涉及的任务包括 **创建电子邮件**、**发送电子邮件** 以及 **添加附件**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅 [后续步骤](#next-steps) 部分。
+所涉及的任务包括 **创建电子邮件**、**发送电子邮件** 以及 **添加附件**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什么是 SendGrid 电子邮件服务？
 SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的[事务电子邮件传递]、伸缩性、实时分析以及可用于简化自定义集成的灵活的 API。 常见 SendGrid 使用方案包括：
@@ -299,7 +299,7 @@ SendGrid 的 Web API 与 REST API 非常相似，尽管它不是真正的 RESTfu
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>如何：使用筛选器启用页脚、跟踪和分析
 
-SendGrid 通过使用 *筛选器* 来提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
+SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些设置添加到电子邮件以启用特定功能（例如启用单击跟踪、Google 分析、订阅跟踪等）。
 
 可使用 filters 属性将筛选器应用于邮件。 每个筛选器均由一个包含特定于筛选器的设置的哈希指定。 下面的示例将启用页脚筛选器并指定将追加到电子邮件底部的短信。 在此示例中，我们将使用 [sendgrid-php 库]。
 

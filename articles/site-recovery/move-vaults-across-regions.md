@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87422634"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>将恢复服务保管库和 Azure Site Recovery 配置移到另一个 Azure 区域
@@ -45,7 +45,7 @@ ms.locfileid: "87422634"
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>识别 Azure Site Recovery 使用的资源
 我们建议你在继续下一步之前执行此步骤。 在复制 VM 时，更容易确定相关资源。
 
-对于要复制的每个 Azure VM，请转至“受保护的项”   > “已复制的项”   > “属性”  并确定以下资源：
+对于要复制的每个 Azure VM，请转至“受保护的项” > “已复制的项” > “属性”并确定以下资源：
 
 - 目标资源组
 - 缓存存储帐户
@@ -56,7 +56,7 @@ ms.locfileid: "87422634"
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>禁用现有的灾难恢复配置
 
 1. 转到“恢复服务保管库”。
-2. 在“受保护的项”   > “已复制的项”  中，右键单击计算机，选择“禁用复制”  。
+2. 在“受保护的项” > “已复制的项”中，右键单击计算机，选择“禁用复制”。
 3. 对于要移动的所有 VM 重复执行此步骤。
 
 > [!NOTE]

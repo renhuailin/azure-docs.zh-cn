@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018689"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
@@ -42,7 +42,7 @@ ms.locfileid: "92018689"
 ## <a name="get-server-name"></a>获取服务器名称
 若要从 SSMS 连接到服务器，首先需要服务器名称。 可以从门户获取服务器名称。
 
-在 **Azure 门户**中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
+在 **Azure 门户** 中，单击“服务器”>“概述”   > “服务器名称”  ，并复制服务器名称。
    
    ![在 Azure 中获取服务器名称](./media/analysis-services-tutorial-roles/aas-copy-server-name.png)
 

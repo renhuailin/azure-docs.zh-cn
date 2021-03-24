@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
 ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84888711"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon 中的自定义报表
@@ -34,7 +34,7 @@ ms.locfileid: "84888711"
     ![CDN 配置文件管理按钮](./media/cdn-reports/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“自定义报表”浮出控件********。 单击“边缘 CNAME”****。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“自定义报表”浮出控件。 单击“边缘 CNAME”。
    
     ![CDN 管理门户 - 自定义报表菜单](./media/cdn-reports/cdn-custom-reports.png)
 
@@ -58,11 +58,11 @@ ms.locfileid: "84888711"
    - 缓存状态：按缓存状态组织统计信息。
 
 
-若要为报表设置日期范围，可从下拉列表中选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围************。 
+若要为报表设置日期范围，可从下拉列表中选择预定义的日期范围，例如“今天”或“本周”，也可选择“自定义”，并通过单击日历图标手动输入日期范围。 
 
-选择日期范围后，单击“开始”生成报表****。
+选择日期范围后，单击“开始”生成报表。
 
-单击“开始”按钮右侧的 Excel 符号，可以 Excel 格式导出数据****。
+单击“开始”按钮右侧的 Excel 符号，可以 Excel 格式导出数据。
 
 ![CNAME 报表](./media/cdn-reports/cdn-cnames-report.png)
 

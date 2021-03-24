@@ -10,10 +10,10 @@ ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: a6e3407d9ddb799ab0ee5846acc149048f593563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202002"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）

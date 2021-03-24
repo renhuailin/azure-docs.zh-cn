@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure API 管理中将事件记录到 Azure 事件中心 | Microsoft Docs
-description: 了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。 事件中心是一个高度可缩放的数据入口服务。
+description: 了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。 事件中心是高度可缩放的数据入口服务。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
 ms.openlocfilehash: 5066169951409fa86aa75a64e8fc6d4189947f27
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072401"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
@@ -63,12 +63,12 @@ ms.locfileid: "92072401"
 ```
 将 `logger-id` 替换为请求 URL 中用于 `{loggerId}` 的值，以创建上一步中的记录器。
 
-可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，将记录 JSON 格式的字符串，其中包含日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称。
+可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，将记录一个 JSON 格式的字符串，其中包含日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称。
 
 单击“保存”保存更新后的策略配置。 保存后，策略立即处于活动状态，并且事件记录到指定的事件中心。
 
 > [!NOTE]
-> 可从此 API 管理策略发送到事件中心的最大受支持消息大小为 200 kb (KB) 。 如果发送到事件中心的消息大于 200 KB，将自动截断该消息，并且截断的消息将传输到事件中心。
+> 允许从此 API 管理策略发送到事件中心的最大消息大小为 200 KB。 如果发送到事件中心的消息大于 200 KB，系统会自动截断该消息，而截断的消息则会传输到事件中心。
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 流分析在事件中心预览日志
 

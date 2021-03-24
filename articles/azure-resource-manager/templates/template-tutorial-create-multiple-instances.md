@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: e669e27547633639a88674ffee499fb1d84facdf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673947"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教程：使用 ARM 模板创建多个资源实例
@@ -179,7 +179,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应会看到，该资源组中总共有三个资源。
 4. 在顶部菜单中选择“删除资源组”。

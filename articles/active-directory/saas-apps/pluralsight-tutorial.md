@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
 ms.openlocfilehash: a9ca24886ae14eb1b9107ea2df53227140cc30f1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101651376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pluralsight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Pluralsight 集成
@@ -88,7 +88,7 @@ ms.locfileid: "101651376"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Pluralsight 客户端支持团队](mailto:support@pluralsight.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 

@@ -4,10 +4,10 @@ description: 通过使用媒体图，你可以定义应从何处捕获媒体、�
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97401094"
 ---
 # <a name="media-graph"></a>媒体图
@@ -70,7 +70,7 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="rtsp-source"></a>RTSP 源 
 
-使用 RTSP 源节点可以从 [RTSP](https://tools.ietf.org/html/rfc2326) 服务器中引入媒体。 监控和基于 IP 的照相机使用名为 RTSP（实时流式处理协议）的协议传输它们的数据，这不同于其他类型的设备（例如手机和摄像机）。 此协议用于建立和控制服务器（照相机）和客户端之间的媒体会话。 媒体图中的 RTSP 源节点充当客户端，可以与 RTSP 服务器建立会话。 许多设备（例如大多数 [IP 照相机](https://en.wikipedia.org/wiki/IP_camera)）有内置的 RTSP 服务器。 [ONVIF](https://www.onvif.org/) 强制要求在 [Profile G、S 和 T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 兼容设备的定义中支持 RTSP。 RTSP 源节点要求你指定 RTSP URL 以及凭据才能启用经过身份验证的连接。
+使用 RTSP 源节点，你可以从 [RTSP](https://tools.ietf.org/html/rfc2326) 服务器引入媒体。 监控和基于 IP 的照相机使用名为 RTSP（实时流式处理协议）的协议传输它们的数据，这不同于其他类型的设备（例如手机和摄像机）。 此协议用于建立和控制服务器（照相机）和客户端之间的媒体会话。 媒体图中的 RTSP 源节点充当客户端，可以与 RTSP 服务器建立会话。 许多设备（例如大多数 [IP 照相机](https://en.wikipedia.org/wiki/IP_camera)）有内置的 RTSP 服务器。 [ONVIF](https://www.onvif.org/) 强制要求在 [Profile G、S 和 T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) 兼容设备的定义中支持 RTSP。 RTSP 源节点要求你指定 RTSP URL 以及凭据才能启用经过身份验证的连接。
 
 #### <a name="iot-hub-message-source"></a>IoT 中心消息源 
 
@@ -88,7 +88,7 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 通过帧速率筛选器处理器节点，你可以采用指定的速率从传入的视频流中采样帧。 这使你能够减少发送到下游组件（例如 HTTP 扩展处理器节点）以进行进一步处理的帧数。
 >[!WARNING]
-> IoT Edge 模块上的最新版本的实时视频分析中 **弃用** 了此处理器。 图形扩展处理器本身现在支持帧速率管理。
+> 在最新发布的基于 IoT Edge 模块的实时视频分析中，此处理器已弃用。 图形扩展处理器本身现在支持帧速率管理。
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
@@ -110,9 +110,9 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="file-sink"></a>文件接收器  
 
-通过文件接收器节点，你可以将媒体（视频和/或音频）数据写入 IoT Edge 设备本地文件系统上的位置。 媒体图中只能有一个文件接收器节点，并且它必须是信号门处理器节点的下游。 这会将输出文件的持续时间限制为信号门处理器节点属性中指定的值。 若要确保边缘设备不会用尽磁盘空间，还可以设置 IoT Edge 模块上的实时视频分析可用于存储数据的最大大小。  
+通过文件接收器节点，你可以将媒体（视频和/或音频）数据写入 IoT Edge 设备本地文件系统上的位置。 媒体图中只能有一个文件接收器节点，并且它必须是信号门处理器节点的下游。 这会将输出文件的持续时间限制为信号门处理器节点属性中指定的值。 为确保边缘设备不会耗尽磁盘空间，还可以设置一个最大大小，供 IoT Edge 模块上的实时视频分析用来存储数据。  
 > [!NOTE]
-如果文件接收器已满，则 IoT Edge 模块上的实时视频分析将开始删除最旧的数据，并将其替换为新数据。
+如果文件接收器已满，则 IoT Edge 模块上的实时视频分析就会开始删除最旧的数据，将其替换为新数据。
 #### <a name="iot-hub-message-sink"></a>IoT 中心消息接收器  
 
 通过 IoT 中心消息接收器节点，你可以将事件发布到 IoT Edge 中心。 IoT Edge 中心随后可以将数据路由到其他模块或边缘设备上的应用，或路由到云中的 IoT 中心（根据部署清单中指定的路由）。 IoT 中心消息接收器节点可以接受来自上游处理器（例如运动检测处理器节点）的事件，或通过 HTTP 扩展处理器节点接受来自外部推理服务的事件。

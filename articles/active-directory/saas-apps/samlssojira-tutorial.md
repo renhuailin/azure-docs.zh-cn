@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 450db7c01de4ea7db0133ceca962941ae1a927e5
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 827a05a8dfbf05b0dacb0bd812fb964567f39b3f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173059"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Jira by resolution GmbH 集成
 
@@ -243,7 +243,7 @@ ms.locfileid: "102173059"
 
 * 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到你为其设置了 SSO 的 SAML SSO for Jira by resolution GmbH。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 SAML SSO for Jira by resolution GmbH 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 SAML SSO for Jira by resolution GmbH。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 SAML SSO for Jira by resolution GmbH 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 SAML SSO for Jira by resolution GmbH。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="enable-sso-redirection-for-jira"></a>为 Jira 启用 SSO 重定向
 
@@ -268,4 +268,4 @@ ms.locfileid: "102173059"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 SAML SSO for Jira by resolution GmbH 后，就可强制实施会话控制，以便实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 SAML SSO for Jira by resolution GmbH 后，就可强制实施会话控制，以便实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

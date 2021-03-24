@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148588"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器
 
-由于规模较小并面向应用程序，容器非常适合敏捷交付环境和基于微服务的体系结构。 自动化和管理大量容器及其交互方式的任务称为*协调*。 流行的容器业务流程协调程序包括 Kubernetes、DC/OS 和 Docker Swarm。
+由于规模较小并面向应用程序，容器非常适合敏捷交付环境和基于微服务的体系结构。 自动化和管理大量容器及其交互方式的任务称为 *协调*。 流行的容器业务流程协调程序包括 Kubernetes、DC/OS 和 Docker Swarm。
 
 Azure 容器实例提供了业务流程平台的一些基本调度功能。 虽然它没有涵盖那些平台提供的更高价值的服务，但 Azure 容器实例可以作为它们的补充。 本文介绍 Azure 容器实例的处理范围，以及整套容器协调器如何与它交互。
 
@@ -52,7 +52,7 @@ Azure 容器实例支持分层的协调方法，提供全部所需的调度和�
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>示例实现：Azure Kubernetes 服务 (AKS) 的虚拟节点
 
-可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。  ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
+可以使用在 Azure 容器实例中动态创建的虚拟节点，来快速缩放 [Azure Kubernetes 服务](../aks/intro-kubernetes.md) (AKS) 群集中的应用程序工作负载。 ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 
 
 目前虚拟节点支持 Linux 容器实例。 可通过 [Azure CLI](../aks/virtual-nodes-cli.md) 或 [Azure门户](../aks/virtual-nodes-portal.md)开始使用虚拟节点。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: ac77203d395a76079fcf2a44b2081193d0e7fd72
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>教程：Azure Active Directory 与 Consent2Go 集成
@@ -30,7 +30,7 @@ ms.locfileid: "97671346"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Consent2Go 的集成，需要以下项：
 
@@ -41,13 +41,13 @@ ms.locfileid: "97671346"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Consent2Go 支持 SP 发起的 SSO 
+* Consent2Go 支持 SP 发起的 SSO
 
 ## <a name="adding-consent2go-from-the-gallery"></a>从库添加 Consent2Go
 
 要配置 Consent2Go 与 Azure AD 的集成，需要从库中将 Consent2Go 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Consent2Go，请执行以下步骤： 
+若要从库中添加 Consent2Go，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "97671346"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Consent2Go”  ，在结果面板中选择“Consent2Go”  ，然后单击“添加”  按钮添加该应用程序。
+4. 在搜索框中，键入“Consent2Go”，在结果面板中选择“Consent2Go”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Consent2Go](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 Consent2Go 配置和测试 Azure AD 单一登录。 
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Consent2Go 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Consent2Go 相关用户之间建立链接关系。
 
 若要配置和测试 Consent2Go 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "97671346"
 
 若要配置 Consent2Go 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Consent2Go”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Consent2Go”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "97671346"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Consent2Go 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://www.mcbschools.com/Login`
+    在“登录 URL”文本框中，键入 URL：`https://www.mcbschools.com/Login` 
 
 5. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -109,7 +109,7 @@ ms.locfileid: "97671346"
 
 ### <a name="configure-consent2go-single-sign-on"></a>配置 Consent2Go 单一登录
 
-若要在 Consent2Go  端配置单一登录，需要将应用联合元数据 URL  发送给 [Consent2Go 支持团队](mailto:support@consent2go.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Consent2Go 端配置单一登录，需要将应用联合元数据 URL 发送给 [Consent2Go 支持团队](mailto:support@consent2go.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -119,7 +119,7 @@ ms.locfileid: "97671346"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -134,17 +134,17 @@ ms.locfileid: "97671346"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Consent2Go 的权限，支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Consent2Go”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Consent2Go”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Consent2Go”  。
+2. 在应用程序列表中，选择“Consent2Go”。
 
     ![应用程序列表中的 Consent2Go 链接](common/all-applications.png)
 

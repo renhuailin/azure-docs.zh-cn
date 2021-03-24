@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/19/2019
 ms.openlocfilehash: 68fa089713c3dd89b4699011ded7d667bca6f73f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178061"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
@@ -388,7 +388,7 @@ ms.locfileid: "102178061"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建在 Azure SQL 数据库中托管单一数据库和弹性池的服务器。 |
@@ -407,7 +407,7 @@ ms.locfileid: "102178061"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 注释 |
+| 命令 | 注释 |
 |---|---|
 | [az account set](/cli/azure/account#az-account-set) | 将订阅设置为当前的活动订阅。 |
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |

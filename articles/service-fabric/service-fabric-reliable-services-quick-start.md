@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791521"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
@@ -21,12 +21,12 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 ## <a name="basic-concepts"></a>基本概念
 
-若要开始使用 Reliable Services，只需了解几个基本概念：
+了解几个基本概念，即可开始使用 Reliable Services：
 
-* **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
+* **服务类型**：这是你的服务实现。 它由编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
 * **命名服务实例**：若要运行服务，需要创建服务类型的命名实例，就像创建类类型的对象实例一样。 服务实例具有使用“fabric:/”方案（如“fabric:/MyApp/MyService”）的 URI 形式的名称。
 * **服务主机**：创建的命名服务实例需要在主机进程内运行。 服务宿主是可以运行服务实例的进程。
-* **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
+* **服务注册**：通过注册可将所有对象融合在一起。 只有在服务宿主中将服务类型注册 Service Fabric 运行时，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
 
@@ -94,7 +94,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务实例的此打开-关闭循环可能会在服务的整个生存期内出现多次。 发生这种情况的原因多种多样，包括：
+当服务实例已放置并且可以执行时，平台将调用此方法。 对于无状态服务，这就意味着打开服务实例。 需要关闭服务实例时，将提供取消标记进行协调。 在 Service Fabric 中，服务的整个生存期内可能多次出现服务实例的这一打开-关闭循环。 发生这种情况的原因多种多样，包括：
 
 * 系统可能会移动服务实例以实现资源平衡。
 * 代码中发生错误。
@@ -161,7 +161,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 ### <a name="runasync"></a>RunAsync
 
-`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表你执行额外的工作，然后再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
+`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表用户执行额外的工作，再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠集合与可靠状态管理器
 
@@ -178,7 +178,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
   
    切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个 *更新* 方法。
 
-可靠状态管理器管理可靠集合。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
+可靠状态管理器管理可靠集合。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器会代为处理此工作，且已针对重复访问对其进行优化。
 
 ### <a name="transactional-and-asynchronous-operations"></a>事务和异步操作
 

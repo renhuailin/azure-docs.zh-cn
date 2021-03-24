@@ -10,10 +10,10 @@ ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
 ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91570581"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 管理虚拟机规模集
@@ -45,7 +45,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
-你还可以在一个 API 调用中获取所有实例的详细 *instanceView* 信息，这有助于避免大型安装的 API 限制。
+还可以通过一个 API 调用获取所有实例的详细 instanceView 信息，这有助于避免大型安装的 API 限制。
 
 ```powershell
 Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"

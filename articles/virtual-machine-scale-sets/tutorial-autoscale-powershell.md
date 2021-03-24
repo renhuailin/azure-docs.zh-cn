@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurepowershell
 ms.openlocfilehash: 8ee124f866a5241620671ff84c24f3713f62efe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078463"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
@@ -240,7 +240,7 @@ MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6        
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+若要删除规模集和其他资源，请使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其所有资源。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob

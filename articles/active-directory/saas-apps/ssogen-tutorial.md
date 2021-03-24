@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
 ms.openlocfilehash: 9eeafaf0f5fbfaff9394ced0a0623f2fb462ed4d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>教程：Azure Active Directory 与 SSOGEN（用于 Oracle 电子商务套件（EBS、PeopleSoft 和 JDE）的 Azure AD SSO 网关）的单一登录 (SSO) 集成

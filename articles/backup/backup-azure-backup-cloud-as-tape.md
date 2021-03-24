@@ -4,10 +4,10 @@ description: 了解 Azure 备份如何提供类似于磁带的语义，让你在
 ms.topic: conceptual
 ms.date: 04/30/2017
 ms.openlocfilehash: 695cc2644521384527ecd871f3613a078e987aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89378434"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>将长期存储从磁带移动到 Azure 云

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.openlocfilehash: a65d3f24fdcc684d5a47c19497d36b091764406b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kisi Physical Security 的集成
@@ -49,8 +49,8 @@ ms.locfileid: "96020766"
 若要配置 Kisi Physical Security 与 Azure AD 的集成，需从库中将 Kisi Physical Security 添加到托管 SaaS 应用程序列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Kisi Physical Security” 。
 1. 从结果面板中选择“Kisi Physical Security”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -81,7 +81,7 @@ ms.locfileid: "96020766"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.kisi.io/saml/metadata`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://api.kisi.io/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.kisi.io/saml/consume/<DOMAIN>`
 
@@ -107,7 +107,7 @@ ms.locfileid: "96020766"
     | LastName | user.surname |
     | 电子邮件 | user.userprincipalname |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "96020766"
 
 在本部分中，你通过授予 B.Simon 访问 Kisi Physical Security 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“Kisi Physical Security”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 

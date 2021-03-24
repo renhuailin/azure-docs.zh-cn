@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81391829"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure 托管应用程序中的自定义角色定义项目
@@ -63,7 +63,7 @@ customRoleDefinition.json 文件有一个顶级 `roles` 属性，该属性是角
 > [!NOTE]
 > 可以使用 `id` 或 `roleName` 字段。 只需要一个。 这些字段用于查找应该应用的角色定义。 如果同时提供两者，则会使用 `id` 字段。
 
-|properties|必需？|说明|
+|属性|必需？|说明|
 |---------|---------|---------|
 |id|是|内置角色的 ID。 可以使用完整 ID 或只使用 GUID。|
 |roleName|是|内置角色的名称。|

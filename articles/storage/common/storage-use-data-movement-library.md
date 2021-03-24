@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023408"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
@@ -38,7 +38,7 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 - [Visual Studio Code](https://code.visualstudio.com/)
 - 一个 [Azure 存储帐户](storage-account-create.md)
 
-## <a name="setup"></a>设置
+## <a name="setup"></a>安装
 
 1. 访问 [.NET Core 安装指南](https://www.microsoft.com/net/core)安装 .NET Core。 选择环境时，请选择命令行选项。
 2. 通过命令行创建项目的目录。 导航到此目录，并键入 `dotnet new console -o <sample-project-name>` 创建 C# 控制台项目。
@@ -260,7 +260,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="track-transfer-progress"></a>跟踪传输进度
 
-了解数据传输所花费的时间会很有用。 但是，如果在传输操作过程中  能够看到传输的进度，则更有帮助。 若要实现此方案，需要创建一个 `TransferContext` 对象。 `TransferContext` 对象采用两种形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者用于传输单个文件，后者用于传输文件的目录。
+了解数据传输所花费的时间会很有用。 但是，如果在传输操作过程中能够看到传输的进度，则更有帮助。 若要实现此方案，需要创建一个 `TransferContext` 对象。 `TransferContext` 对象采用两种形式：`SingleTransferContext` 和 `DirectoryTransferContext`。 前者用于传输单个文件，后者用于传输文件的目录。
 
 将 `GetSingleTransferContext` 和 `GetDirectoryTransferContext` 方法添加到 `Program.cs`：
 

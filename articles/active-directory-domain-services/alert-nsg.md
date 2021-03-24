@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693924"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的网络配置警报
@@ -38,7 +38,7 @@ Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上
 
 ### <a name="inbound-security-rules"></a>入站安全规则
 
-| 优先级 | 名称 | 端口 | 协议 | Source | 目标 | 操作 |
+| 优先级 | 名称 | 端口 | 协议 | 源 | 目标 | 操作 |
 |----------|------|------|----------|--------|-------------|--------|
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | 任意 | 允许 |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | 拒绝<sup>1</sup> |
@@ -47,7 +47,7 @@ Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上
 | 65500    | DenyAllInBound | 任意 | 任意 | 任意 | 任意 | 拒绝 |
 
 
-<sup>1</sup>可选，用于调试。 当需要进行高级故障排除时，允许。
+<sup>1</sup>对调试可选。 在高级故障排除需要时允许。
 
 > [!NOTE]
 > 如果[配置安全 LDAP][configure-ldaps]，还可使用其他规则来允许入站流量。 此附加规则是进行正确 LDAPS 通信的必需条件。

@@ -7,10 +7,10 @@ ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179657"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新库存
@@ -31,7 +31,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保已安装：
 

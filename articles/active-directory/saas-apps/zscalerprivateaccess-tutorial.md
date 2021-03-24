@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 347fc931dcc7f794fe7376daaac21ce7ed9198df
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184721"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955663"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>教程：将 Zscaler Private Access (ZPA) 与 Azure Active Directory 集成
 
@@ -163,8 +163,8 @@ ms.locfileid: "102184721"
 
 * 直接转到 Zscaler Private Access (ZPA) 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler Private Access (ZPA)”磁贴时，将会重定向到 Zscaler Private Access (ZPA) 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Zscaler Private Access (ZPA)”磁贴时，将会重定向到 Zscaler Private Access (ZPA) 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在配置 Zscaler Private Access (ZPA) 后，即可强制实施会话控制，从而实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+在配置 Zscaler Private Access (ZPA) 后，即可强制实施会话控制，从而实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
