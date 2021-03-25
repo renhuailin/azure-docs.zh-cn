@@ -11,29 +11,29 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545389"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复性的大型设备阵列管理任务。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，然后在设备进入管理范畴时让 IoT 中心更新这些设备。 此更新是使用自动设备配置或自动模块配置执行的。使用此项功能还能汇总完整度与合规性、处理合并与冲突，以及分阶段推出配置 。
+Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复性的大型设备阵列管理任务。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，然后在设备进入管理范畴时让 IoT 中心更新这些设备。 此更新是使用自动设备配置或自动模块配置执行的。使用此项功能还能汇总完整度与符合性、处理合并与冲突，以及分阶段推出配置。  
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自动设备管理的工作原理是使用所需属性更新一组设备孪生或模块孪生，并报告基于孪生报告属性的摘要。  其中引入了一个新类以及名为 Configuration 的 JSON 文档，其中包含三个组成部分：
+自动设备管理的工作原理是使用所需属性更新一组设备孪生或模块孪生，并报告基于孪生报告属性的摘要。  它引入了一个新类以及名为 *Configuration* 的 JSON 文档，其中包含三个组成部分：
 
 * 目标条件定义要更新的设备孪生或模块孪生的范围。 目标条件在孪生标记和/或报告属性中指定为查询。
 
 * 目标内容定义要在目标设备孪生或模块孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标** 定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。   自定义指标指定为孪生报告属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
+* **指标** 定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
 
-自动配置在配置创建不久后就首次运行，然后按五分钟间隔运行。 每次自动配置运行时，都会运行指标查询。
+自动配置在配置创建不久后就首次运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
 
 ## <a name="implement-twins"></a>实现孪生
 
@@ -194,7 +194,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 * 如果孪生不满足旧目标条件，但满足新目标条件，并且此配置是该孪生的最高优先级，则会应用此配置。 
 
-* 如果当前运行此配置的孪生不再满足目标条件，则会删除配置中的设置，并且孪生将被下一个最高优先级配置修改。 
+* 如果当前运行此配置的孪生不再满足目标条件，则会删除配置中的设置，并且孪生会被下一个最高优先级配置修改。 
 
 * 如果当前正在运行此配置的孪生不再满足目标条件，且不满足其他任何配置的目标条件，则会删除配置中的设置，并且不会在孪生中进行其他任何更改。 
 
@@ -233,7 +233,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何大规模配置和监视 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
+本文介绍了如何大规模配置和监视 IoT 设备。 若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
 * [批量管理 IoT 中心设备标识](iot-hub-bulk-identity-mgmt.md)
 * [监视 IoT 中心](monitor-iot-hub.md)

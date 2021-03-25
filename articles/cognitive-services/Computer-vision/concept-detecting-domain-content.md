@@ -1,5 +1,5 @@
 ---
-title: 特定于域的内容-计算机视觉
+title: 特定于域的内容 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定图像分类域以返回有关图像的更多详细信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 5cd872d66088e165bfc8356ab6d96a0a6135a0e0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94538302"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
@@ -26,7 +26,7 @@ ms.locfileid: "94538302"
 
 ### <a name="scoped-analysis"></a>作用域分析
 
-可以通过调用 [模型/ \<model\> /analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API，仅使用所选的特定于域的模型来分析映像。
+可通过调用 [Models/\<model\>/Analyze](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API，仅使用所选的特定于域的模型来分析图像。
 
 以下是 **models/celebrities/analyze** API 为给定图像返回的示例 JSON 响应：
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 90946b10bbc7717aa12566c4a25686f8471fb6e7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353351"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>必应自动推荐 API 的语言和区域支持
@@ -63,13 +63,13 @@ ms.locfileid: "96353351"
 | 俄语     | `ru`          |
 | 西班牙语（阿根廷）    | `es-AR`          |
 | 西班牙语（智利）     | `es-CL`          |
-| 西班牙语（墨西哥）    | `es-MX`          |
+| 西班牙语(墨西哥)    | `es-MX`          |
 | 西班牙语(西班牙)    | `es-ES`          |
 | 西班牙语（美国）    | `es-US`          |
 | 瑞典语     | `sv`          |
 | 土耳其语     | `tr`          |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Azure 认知服务文档页](../index.yml)
 - [Azure 认知服务产品页](https://azure.microsoft.com/services/cognitive-services/)

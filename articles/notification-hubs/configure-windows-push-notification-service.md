@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 62d73a23fff3bd15d873a579d451b2f91509b7fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87758724"
 ---
 # <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>在 Azure 门户中配置 Windows 推送通知服务设置
@@ -32,7 +32,7 @@ ms.locfileid: "87758724"
 
 1. 在 Azure 门户的“通知中心”页上，在左侧菜单中选择“Windows (WNS)”。  
 2. 输入“包 SID”和“安全密钥”的值。  
-3. 选择“保存”  。
+3. 选择“保存”。
 
    ![显示“包 SID”和“安全密钥”框的屏幕截图](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 

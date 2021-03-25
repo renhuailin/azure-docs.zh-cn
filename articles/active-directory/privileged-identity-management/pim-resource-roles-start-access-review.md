@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370540"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564027"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure 资源角色的访问评审
 
-员工的特权 Azure 资源角色的访问权限会随时间推移而变化。 若要降低与过时角色分配相关的风险，应定期查看访问权限。 可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 为特权 Azure 资源角色创建访问评审。 还可以配置自动进行的定期访问评审。
+员工对有特权的 Azure 资源角色的访问需求会随着时间推移而变化。 若要降低与过时角色分配相关的风险，应定期查看访问权限。 可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 为 Azure 资源角色的特权访问创建访问评审。 还可以配置自动进行的定期访问评审。 本文介绍如何创建一个或多个访问评审。
 
-本文介绍如何为特权 Azure 资源角色创建一个或多个访问评审。
+## <a name="prerequisite-role"></a>必备角色
 
-## <a name="prerequisites"></a>必备条件
-
- 若要创建访问评审，你必须被分配到资源的 " [所有者](../../role-based-access-control/built-in-roles.md#owner) " 或 " [用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) " Azure 角色。
+ 若要创建访问评审，必须具有资源的[所有者](../../role-based-access-control/built-in-roles.md#owner)或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator) Azure 角色。
 
 ## <a name="open-access-reviews"></a>打开访问评审
 
-1. 使用“特权角色管理员”角色成员的用户身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用分配有某个必备角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。 
 
@@ -50,7 +48,7 @@ ms.locfileid: "100370540"
 
 ## <a name="start-the-access-review"></a>启动访问评审
 
-指定访问评审的设置后，单击“启动”。  访问评审将显示在列表中，并带有其状态指示器。
+指定访问评审的设置后，单击“启动”。 访问评审将显示在列表中，并带有其状态指示器。
 
 ![访问评审列表，其中显示已启动评审的状态](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
 

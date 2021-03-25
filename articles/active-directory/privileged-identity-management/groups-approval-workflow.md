@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536981"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>批准特权访问组成员和所有者的激活请求（预览）
@@ -40,15 +40,15 @@ ms.locfileid: "91536981"
 
     ![显示要评审的请求的“审批请求 - Azure 资源”页](./media/groups-approval-workflow/groups-select-request.png)
 
-    在“请求激活角色”部分，将看到等待审批的请求列表****。
+    在“请求激活角色”部分，将看到等待审批的请求列表。
 
 ## <a name="approve-requests"></a>审批请求
 
 1. 找到并选择要审批的请求，然后选择“批准”。
 
-    ![显示 "批准请求" 页的屏幕截图，其中突出显示了 "批准" 和 "确认" 按钮。](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![屏幕截图显示“审批请求”页，其中突出显示了“审批”和“确认”按钮。](./media/groups-approval-workflow/groups-confirm-approval.png)
 
-1. 在“理由”**** 框中，输入业务理由。
+1. 在“理由”框中，输入业务理由。
 
 1. 选择“确认”。 批准将生成 Azure 通知。
 
@@ -58,7 +58,7 @@ ms.locfileid: "91536981"
 
     ![“审批请求 - 批准或拒绝”窗格，其中包含详细信息和“理由”框](./media/groups-approval-workflow/groups-confirm-denial.png)
 
-1. 在“理由”**** 框中，输入业务理由。
+1. 在“理由”框中，输入业务理由。
 
 1. 选择“确认”。 拒绝将生成 Azure 通知。
 

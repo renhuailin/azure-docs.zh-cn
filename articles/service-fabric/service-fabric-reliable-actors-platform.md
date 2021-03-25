@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e204b47b7fa9f528341507c315c926159d524e13
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789576"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台
@@ -90,7 +90,7 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
 * [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [执行组件 API 参考文档](/dotnet/api/microsoft.servicefabric.actors)
-* [.NET 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

@@ -1,39 +1,39 @@
 ---
 title: 为站点到站点连接配置强制隧道
-description: 如何重定向 (强制) 所有 Internet 绑定的流量返回到本地位置。
+description: 如何将所有 Internet 绑定的流量重定向（强制）回到本地位置。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855033"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869032"
 ---
 # <a name="configure-forced-tunneling"></a>配置强制隧道
 
-借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 如果未配置强制隧道，来自 Azure 中 Vm 的 Internet 绑定流量始终从 Azure 网络基础结构直接传输到 Internet，而不允许你检查或审核流量。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
+借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 如果未配置强制隧道，来自 Azure 中 VM 的 Internet 绑定流量会始终从 Azure 网络基础结构直接流出到 Internet，而你无法选择对这些流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
-可以使用 Azure PowerShell 配置强制隧道。 不能使用 Azure 门户来配置它。 本文可帮助你配置使用资源管理器部署模型创建的虚拟网络的强制隧道。 若要为经典部署模型配置强制隧道，请参阅 [强制隧道-经典](vpn-gateway-about-forced-tunneling.md)。
+可以通过使用 Azure PowerShell 来配置强制隧道。 不能使用 Azure 门户来配置强制隧道。 本文有助于为使用资源管理器部署模型创建的虚拟网络配置强制隧道。 如果需要为经典部署模型配置强制隧道，请参阅[强制隧道 - 经典](vpn-gateway-about-forced-tunneling.md)。
 
 ## <a name="about-forced-tunneling"></a>关于强制隧道
 
 下图说明了强制隧道的工作方式。
 
-:::image type="content" source="./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png" alt-text="关系图显示强制隧道。":::
+:::image type="content" source="./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png" alt-text="显示强制隧道的关系图。":::
 
-在此示例中，前端子网不是强制隧道。 前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。 中间层和后端子网会使用强制隧道。 从这两个子网到 Internet 的所有出站连接将通过一个站点到站点 (S2S) VPN 隧道强制或重定向回本地站点。
+在本示例中，前端子网没有使用强制隧道。 前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。 中间层和后端子网会使用强制隧道。 任何从这两个子网到 Internet 的出站连接都会通过某一站点到站点 (S2S) VPN 隧道强制或重定向回到本地站点。
 
 这样，在继续支持所需的多层服务体系结构的同时，可以限制并检查来自虚拟机或 Azure 云服务的 Internet 访问。 如果在虚拟网络中没有面向 Internet 的工作负荷，也能对整个虚拟网络应用强制隧道。
 
 ## <a name="requirements-and-considerations"></a>要求和注意事项
 
-Azure 中的强制隧道是使用虚拟网络自定义用户定义的路由配置的。 将流量重定向到本地站点，这是 Azure VPN 网关的默认路由。 有关用户定义路由和虚拟网络的详细信息，请参阅 [自定义用户定义的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)。
+Azure 中的强制隧道是使用虚拟网络自定义用户定义的路由来配置的。 将流量重定向到本地站点，这是 Azure VPN 网关的默认路由。 若要详细了解用户定义的路由和虚拟网络，请参阅[自定义用户定义的路由](../virtual-network/virtual-networks-udr-overview.md#user-defined)。
 
 * 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
   

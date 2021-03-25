@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: eea3c8525d31a3ca551e9cbc7d21d7dde163b5cc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94697979"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题解答
@@ -71,7 +71,7 @@ ms.locfileid: "94697979"
 * [服务部署](/powershell/module/wds)和[服务管理](/powershell/azure/servicemanagement/overview) PowerShell cmdlet。
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何向管理员组添加用户？
-Administrators 组是不可变的系统组。 Azure 订阅管理员是此组的成员。 无法将用户添加到此组。 有关详细信息，请参阅 [如何创建和使用组来管理 AZURE API 管理中的开发人员帐户](./api-management-howto-create-groups.md) 。
+管理员组是不可变的系统组。 Azure 订阅管理员是此组的成员。 无法向此组添加用户。 有关详细信息，请参阅[如何创建和使用组以管理 Azure API 管理中的开发人员帐户](./api-management-howto-create-groups.md)。
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>想要添加的策略为何在策略编辑器中不可用？
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保你处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](./api-management-policies.md)中的策略的用法部分。

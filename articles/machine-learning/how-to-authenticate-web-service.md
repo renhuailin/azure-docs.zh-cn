@@ -1,7 +1,7 @@
 ---
-title: 为部署为 web 服务的模型配置身份验证
+title: 为部署为 Web 服务的模型配置身份验证
 titleSuffix: Azure Machine Learning
-description: 了解如何为部署到 Azure 机器学习中的 web 服务的机器学习模型配置身份验证。
+description: 了解如何为部署到 Azure 机器学习中的 Web 服务的机器学习模型配置身份验证。
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -12,20 +12,20 @@ ms.date: 11/06/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 5bd938fce347d439c2acb4e3fcace04d5b27d770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94447553"
 ---
-# <a name="configure-authentication-for-models-deployed-as-web-services"></a>为部署为 web 服务的模型配置身份验证
+# <a name="configure-authentication-for-models-deployed-as-web-services"></a>为部署为 Web 服务的模型配置身份验证
 
-Azure 机器学习允许你将定型的机器学习模型部署为 web 服务。 本文介绍如何为这些部署配置身份验证。
+使用 Azure 机器学习，可以将经过训练的机器学习模型部署为 Web 服务。 本文介绍如何为这些部署配置身份验证。
 
-可以将 Azure 机器学习创建的模型部署配置为使用以下两种身份验证方法之一：
+可以将 Azure 机器学习创建的模型部署配置为使用两种身份验证方法之一：
 
-* **基于密钥** ：使用静态密钥向 Web 服务进行身份验证。
-* **基于令牌** ：必须使用 Azure Active Directory) 从 Azure 机器学习工作 (区获取临时令牌，并使用该令牌通过 web 服务进行身份验证。 此令牌在一段时间后将过期，并且必须刷新才能继续使用 Web 服务。
+* **基于密钥**：使用静态密钥向 Web 服务进行身份验证。
+* **基于令牌**：必须从 Azure 机器学习工作区（使用 Azure Active Directory）获取临时令牌，并用于对 Web 服务进行身份验证。 此令牌在一段时间后将过期，并且必须刷新才能继续使用 Web 服务。
 
     > [!NOTE]
     > 只有部署到 Azure Kubernetes 服务时，基于令牌的身份验证才适用。
@@ -74,7 +74,7 @@ aci_service.regen_key("Secondary")
 
 * 部署到 Azure Kubernetes 服务时，会默认禁用令牌身份验证。
 * 部署到 Azure 容器实例时，不支持令牌身份验证。
-* 令牌身份验证 **不能与基于密钥的身份验证同时使用** 。
+* 令牌身份验证 **不能与基于密钥的身份验证同时使用**。
 
 若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数：
 
@@ -116,9 +116,9 @@ print(token)
 >
 > 我们强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。
 >
-> 若要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果你的工作区区域不可用，则即使你的群集与你的工作区位于不同的区域，也无法获取 web 服务的令牌。 因此 Azure AD 身份验证不可用，直到工作区区域再次可用。
+> 若要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用，即使你的群集和工作区不在同一区域，你也无法获取 Web 服务的令牌。 结果是直到工作区的区域再次可用时，Azure AD 身份验证才可用。
 >
-> 此外，群集区域与工作区区域之间的距离越大，提取令牌所需的时间就越长。
+> 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
 
 ## <a name="next-steps"></a>后续步骤
 

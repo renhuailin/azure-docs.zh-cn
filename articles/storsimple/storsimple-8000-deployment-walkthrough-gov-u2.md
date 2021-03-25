@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
 ms.openlocfilehash: d736c09fc1c9490f79dfc526895970e01b8b45cc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94963175"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
@@ -36,7 +36,7 @@ ms.locfileid: "94963175"
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看配置清单。 部署和配置过程可能需要一些时间才能完成。
 
 > [!NOTE]
-> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 有关7000系列设备的完整信息，请参阅： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) 。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
+> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 如需 7000 系列设备的完整信息，请转到：[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
 
 
 ## <a name="deployment-steps"></a>部署步骤
@@ -48,10 +48,10 @@ ms.locfileid: "94963175"
 | [部署配置清单](#deployment-configuration-checklist) |使用此清单来收集和记录部署之前或期间的信息。 |
 | [部署先决条件](#deployment-prerequisites) |这些项会验证环境是否已做好部署准备。 |
 |  | |
-| **分步部署** |需要完成这些步骤，以在生产中部署 StorSimple 设备。 |
+| **逐步部署** |需要完成这些步骤，以在生产中部署 StorSimple 设备。 |
 | [步骤 1：创建新服务](#step-1-create-a-new-service) |设置 StorSimple 设备的云管理和存储。 *如果其他 StorSimple 设备有现有服务，请跳过此步骤*。 |
 | [步骤 2：获取服务注册密钥](#step-2-get-the-service-registration-key) |使用此密钥注册 StorSimple 设备，并将其连接到管理服务。 |
-| [步骤3：通过用于 StorSimple 的 Windows PowerShell 配置和注册设备](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服务将设备连接到网络，并通过 Azure 注册以完成安装。 |
+| [步骤 3︰通过 Windows PowerShell for StorSimple 配置和注册设备](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服务将设备连接到网络，并通过 Azure 注册以完成安装。 |
 | [步骤 4：完成最低要求的设备设置](#step-4-complete-minimum-device-setup) </br>可选：更新 StorSimple 设备。 |使用管理服务来完成设备安装，并启用以使其能够提供存储。 |
 | [步骤 5：创建卷容器](#step-5-create-a-volume-container) |创建容以预配卷。 卷容器具有其中所包含的所有卷的存储帐户、带宽和加密设置。 |
 | [步骤 6：创建卷](#step-6-create-a-volume) |在服务器的 StorSimple 设备上预配存储卷。 |
@@ -59,7 +59,7 @@ ms.locfileid: "94963175"
 | [步骤 8：执行备份](#step-8-take-a-backup) |设置备份策略以保护数据 |
 |  | |
 | **其他过程** |在部署解决方案时可能需要参阅这些过程。 |
-| [为服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) | |
+| [针对服务配置新的存储帐户](#configure-a-new-storage-account-for-the-service) | |
 | [使用 PuTTY 连接到设备串行控制台](#use-putty-to-connect-to-the-device-serial-console) | |
 | [扫描并应用更新](#scan-for-and-apply-updates) | |
 | [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host) | |
@@ -198,4 +198,4 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 
 ## <a name="next-steps"></a>后续步骤
 * 配置 [虚拟设备](storsimple-8000-cloud-appliance-u2.md)。
-* 使用 [storsimple 设备管理器服务](storsimple-8000-manager-service-administration.md) 管理 StorSimple 设备。
+* 使用 [StorSimple Device Manager 服务](storsimple-8000-manager-service-administration.md)管理 StorSimple 设备。

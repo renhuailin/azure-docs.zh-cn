@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 16c0b3e6dc4bd9097312e3a8c43618e66781ef85
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92092879"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
@@ -37,11 +37,11 @@ ms.locfileid: "92092879"
 
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
 
-在以管理员身份登录时，可从“开发人员门户”  编辑模板。 若要首先打开 Azure 门户并单击 API 管理实例的服务工具栏中的 " **开发人员门户** "。
+在以管理员身份登录时，可从“开发人员门户”  编辑模板。 若要访问它，请先打开 Azure 门户，再单击 API 管理实例的服务工具栏中的“开发人员门户”。
 
 要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”  。
 
-![突出显示 "自定义" 图标以显示 "自定义" 菜单的屏幕截图。][api-management-customize-menu]
+![突出显示自定义图标以显示自定义菜单的屏幕截图。][api-management-customize-menu]
 
 模板列表显示模板的多个类别，涵盖开发人员门户中的不同页面。 每个模板都不同，但编辑它们并发布更改的步骤均相同。 若要编辑模板，请单击模板的名称。
 
@@ -103,7 +103,7 @@ ms.locfileid: "92092879"
 }
 ```
 
-**产品列表**模板中的标记处理数据以显示所需的输出，方法是循环访问产品集合以显示信息和指向每个单独产品的链接。 请注意标记中的 `<search-control>` 和 `<page-control>` 元素。 这些元素控制页面上的搜索和分页控件的显示。 `ProductsStrings|PageTitleProducts` 是一个本地化字符串参考，包含页面的 `h2` 标题文本。 有关可在开发人员门户模板中使用的字符串资源、页面控件和图标的列表，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
+**产品列表** 模板中的标记处理数据以显示所需的输出，方法是循环访问产品集合以显示信息和指向每个单独产品的链接。 请注意标记中的 `<search-control>` 和 `<page-control>` 元素。 这些元素控制页面上的搜索和分页控件的显示。 `ProductsStrings|PageTitleProducts` 是一个本地化字符串参考，包含页面的 `h2` 标题文本。 有关可在开发人员门户模板中使用的字符串资源、页面控件和图标的列表，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
 
 ```html
 <search-control></search-control>
@@ -145,7 +145,7 @@ ms.locfileid: "92092879"
 
 单击“是”  确认并使模板在开发人员门户中生效。
 
-![显示您选择 "是" 以使模板成为活动位置的屏幕截图。][api-management-publish-template-confirm]
+![显示可选择“是”以使模板生效的位置的屏幕截图。][api-management-publish-template-confirm]
 
 若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”  。 未发布的模板通过模板名称后跟星号来指定。 在此示例中，将发布“产品列表”  和“产品”  模板。
 
@@ -164,7 +164,7 @@ ms.locfileid: "92092879"
 
 单击“是”  确认。
 
-![屏幕截图，显示你选择 "是" 以确认更改的位置。][api-management-revert-template-confirm]
+![显示可选择“是”以确认更改的位置的屏幕截图。][api-management-revert-template-confirm]
 
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 

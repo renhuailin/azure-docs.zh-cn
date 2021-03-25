@@ -8,10 +8,10 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019421"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
@@ -46,7 +46,7 @@ ms.locfileid: "92019421"
 
 * 即使查询池中没有副本，也允许同步。 如果在主服务器上通过处理操作将包含新数据的副本数从零个横向扩展为一个或多个，请先在查询池中不包含任何副本的情况下执行同步，然后再横向扩展。在横向扩展之前执行同步可以避免多余地合成新添加的副本。
 
-* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。 若要确定某个模型数据库是否存在于查询池中的副本上，但不存在于主服务器上，请确保“从查询池分离处理服务器”设置为“是”。******** 然后，通过 SSMS 使用 `:rw` 限定符连接到主服务器，看该数据库是否存在。 然后，在没有 `:rw` 限定符的情况下连接到查询池中的副本，看同一数据库是否还存在。 如果该数据库存在于查询池中的副本上，但不存在于主服务器上，请运行同步操作。   
+* 从主服务器中删除模型数据库时，不会自动从查询池中的副本内删除该数据库。 必须使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell 命令执行同步操作。该命令会从副本的共享 Blob 存储位置删除该数据库的文件，然后删除查询池中的副本内的模型数据库。 若要确定某个模型数据库是否存在于查询池中的副本上，但不存在于主服务器上，请确保“从查询池分离处理服务器”设置为“是”。 然后，通过 SSMS 使用 `:rw` 限定符连接到主服务器，看该数据库是否存在。 然后，在没有 `:rw` 限定符的情况下连接到查询池中的副本，看同一数据库是否还存在。 如果该数据库存在于查询池中的副本上，但不存在于主服务器上，请运行同步操作。   
 
 * 重命名主服务器上的数据库时，需要执行一个额外的步骤来确保数据库正确同步到所有副本。 重命名后，使用 [Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) 并使用旧数据库名称指定 `-Database` 参数，来执行同步。 这种同步会从所有副本中删除使用旧名称的数据库和文件。 然后，使用新数据库名称指定 `-Database` 参数，来执行另一次同步。 第二次同步会将新命名的数据库复制到第二组文件，并合成所有副本。 无法在门户中使用“同步模型”命令执行这些同步。
 
@@ -84,10 +84,10 @@ ms.locfileid: "92019421"
 
 **按 ServerResourceType 配置 QPU**
 
-1. 在“指标”折线图中，单击“添加指标”。**** 
-2. 在“资源”中选择你的服务器，在“指标命名空间”中选择“Analysis Services 标准指标”，在“指标”中选择“QPU”，然后在“聚合”中选择“平均”。**************************** 
+1. 在“指标”折线图中，单击“添加指标”。 
+2. 在“资源”中选择你的服务器，在“指标命名空间”中选择“Analysis Services 标准指标”，在“指标”中选择“QPU”，然后在“聚合”中选择“平均”。 
 3. 单击“应用拆分”。 
-4. 在“值”中选择“ServerResourceType”。********  
+4. 在“值”中选择“ServerResourceType”。  
 
 ### <a name="detailed-diagnostic-logging"></a>详细的诊断日志记录
 
@@ -100,13 +100,13 @@ ms.locfileid: "92019421"
 
 1. 在门户中，单击“横向扩展”。使用滑块选择查询副本服务器的数量。 选择的副本数量不包括现有的服务器。  
 
-2. 在“从查询池分离处理服务器”中，选择“是”以将处理服务器和查询服务器分开****。 使用默认连接字符串（不带 `:rw`）的客户端[连接](#connections)将重定向到查询池中的副本。 
+2. 在“从查询池分离处理服务器”中，选择“是”以将处理服务器和查询服务器分开。 使用默认连接字符串（不带 `:rw`）的客户端[连接](#connections)将重定向到查询池中的副本。 
 
    ![横向扩展滑块](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
-3. 单击“保存”以预配新的查询副本服务器****。 
+3. 单击“保存”以预配新的查询副本服务器。 
 
-首次配置服务器的横向扩展时，主服务器上的模型将自动与查询池中的副本同步。 自动同步只发生一次，即，首次配置横向扩展为一个或多个副本时。 以后对同一台服务器上的副本数进行更改不会再次触发自动同步。** 即使将服务器设置为零个副本，然后再次横向扩展为任意数目的副本，也不会再次发生自动同步。 
+首次配置服务器的横向扩展时，主服务器上的模型将自动与查询池中的副本同步。 自动同步只发生一次，即，首次配置横向扩展为一个或多个副本时。 以后对同一台服务器上的副本数进行更改不会再次触发自动同步。 即使将服务器设置为零个副本，然后再次横向扩展为任意数目的副本，也不会再次发生自动同步。 
 
 ## <a name="synchronize"></a>同步 
 
@@ -114,13 +114,13 @@ ms.locfileid: "92019421"
 
 ### <a name="in-azure-portal"></a>在 Azure 门户中配置
 
-在“概述”>“模型”>“同步模型”中操作********。
+在“概述”>“模型”>“同步模型”中操作。
 
 ![“同步”图标](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST API
 
-使用**同步**操作。
+使用 **同步** 操作。
 
 #### <a name="synchronize-a-model"></a>同步模型   
 
@@ -164,7 +164,7 @@ ms.locfileid: "92019421"
 
 对于最终用户客户端连接（如 Power BI Desktop、Excel 和自定义应用），请使用“服务器名称”。 
 
-对于 PowerShell 中的 SSMS、Visual Studio 和连接字符串、Azure 函数应用以及 AMO，请使用“管理服务器名称”****。 管理服务器名称包含特殊限定符 `:rw`（读取-写入）。 所有处理操作均在管理服务器（主服务器）上发生。
+对于 PowerShell 中的 SSMS、Visual Studio 和连接字符串、Azure 函数应用以及 AMO，请使用“管理服务器名称”。 管理服务器名称包含特殊限定符 `:rw`（读取-写入）。 所有处理操作均在管理服务器（主服务器）上发生。
 
 ![服务器名称](media/analysis-services-scale-out/aas-scale-out-name.png)
 

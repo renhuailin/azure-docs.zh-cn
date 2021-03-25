@@ -3,17 +3,17 @@ title: 虚拟机上的 Azure 机密计算解决方案
 description: 了解虚拟机上的 Azure 机密计算解决方案。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204178"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102566577"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
@@ -47,7 +47,7 @@ az vm list-skus `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>专用主机要求
-在 DCSv2-Series VM 系列中部署 **Standard_DC8_v2** 虚拟机大小将占用整个主机，而不会与其他租户或订阅共享。 此 VM SKU 系列提供了你可能需要的隔离，以满足通常通过专用主机服务实现的符合性和安全法规要求。 选择 **Standard_DC8_v2** SKU 时，物理主机服务器会将所有可用的硬件资源（包括 EPC 内存）分配给虚拟机。 请注意，此功能在基础结构设计中存在，并且将支持 **Standard_DC8_v2** 的所有功能。 此部署与其他 Azure VM 系列提供的 [Azure 专用主机](../virtual-machines/dedicated-hosts.md) 服务不同。
+在 DCSv2 系列 VM 系列中部署 Standard_DC8_v2 虚拟机大小将占用整个主机，并且不会与其他租户或订阅共享。 此 VM SKU 系列提供了你可能需要的隔离，以满足通常通过专用主机服务实现的合规性和安全法规要求。 选择 Standard_DC8_v2 SKU 时，物理主机服务器会将所有可用的硬件资源（包括 EPC 内存）仅分配给虚拟机。 请注意，此功能由基础结构设计提供，并且将支持 Standard_DC8_v2 的所有功能。 此部署与其他 Azure VM 系列提供的 [Azure 专用主机](../virtual-machines/dedicated-hosts.md)服务不同。
 
 
 ## <a name="deployment-considerations"></a>部署注意事项
@@ -76,15 +76,15 @@ az vm list-skus `
 
 在 Azure 中使用虚拟机时，你需要负责实施高可用性和灾难恢复解决方案，以避免出现任何停机。 
 
-Azure 机密计算目前不支持通过可用性区域实现区域冗余。 若要实现机密计算的最高可用性和冗余，请使用[可用性集](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。 由于硬件限制，机密计算实例的可用性集最多只能包含 10 个更新域。 
+Azure 机密计算目前不支持通过可用性区域实现区域冗余。 若要实现机密计算的最高可用性和冗余，请使用[可用性集](../virtual-machines/availability-set-overview.md)。 由于硬件限制，机密计算实例的可用性集最多只能包含 10 个更新域。 
 
-## <a name="deployment-with-azure-resource-manager-arm-template"></a>用 Azure 资源管理器 (ARM) 模板进行部署
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>使用 Azure 资源管理器 (ARM) 模板进行部署
 
 Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
-若要了解 ARM 模板，请参阅 [模板部署概述](../azure-resource-manager/templates/overview.md)。
+若要了解 ARM 模板，请参阅[模板部署概述](../azure-resource-manager/templates/overview.md)。
 
-若要在 ARM 模板中部署 DCsv2-Series VM，你将利用 [虚拟机资源](../virtual-machines/windows/template-description.md)。 确保为 **vmSize** 和 **imageReference** 指定正确的属性。
+若要在 ARM 模板中部署 DCsv2 系列 VM，可以利用[虚拟机资源](../virtual-machines/windows/template-description.md)。 确保为 **vmSize** 和 **imageReference** 指定正确的属性。
 
 ### <a name="vm-size"></a>VM 大小
 

@@ -2,23 +2,24 @@
 title: 创建不含预配代理的 Linux 映像
 description: 在 Azure 中创建不含预配代理的通用 Linux 映像。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
-ms.translationtype: MT
+ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223045"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102551702"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>创建不含预配代理的通用映像
 
-Microsoft Azure 提供适用于 Linux Vm 的预配代理，其形式为 " [walinuxagent](https://github.com/Azure/WALinuxAgent) " 或 " [云初始化](https://github.com/canonical/cloud-init) (建议) "。 但在某些情况下，你不希望使用这些应用程序之一作为你的预配代理，例如：
+Microsoft Azure 以 [walinuxagent](https://github.com/Azure/WALinuxAgent) 或 [cloud-init](https://github.com/canonical/cloud-init)（推荐）的形式为 Linux VM 提供预配代理。 但在某些情况下，你不希望使用这些应用程序之一作为你的预配代理，例如：
 
 - 你的 Linux 发行版/版本不支持 cloud-init/Linux 代理。
 - 你需要设置特定的 VM 属性，例如主机名。

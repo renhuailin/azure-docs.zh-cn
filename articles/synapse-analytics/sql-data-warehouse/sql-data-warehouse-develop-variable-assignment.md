@@ -1,6 +1,6 @@
 ---
 title: 分配变量
-description: 本文介绍了在 Azure Synapse 分析中为专用 SQL 池分配 T-sql 变量的基本技巧。
+description: 本文介绍在 Azure Synapse Analytics 中为专用 SQL 池分配 T-SQL 变量的基本技巧。
 services: synapse-analytics
 author: MSTehrani
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459230"
 ---
-# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中为专用 SQL 池分配变量
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中为专用 SQL 池分配变量
 
-在本文中，你将了解在专用 SQL 池中分配 T-sql 变量的重要提示。
+本文介绍在专用 SQL 池中分配 T-SQL 变量的基本技巧。
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 设置变量
 
-专用 SQL 池中的变量是使用 `DECLARE` 语句或语句设置的 `SET` 。 使用 DECLARE 初始化变量是在 SQL 池中设置变量值的最灵活方式之一。
+使用 `DECLARE` 语句或 `SET` 语句设置专用 SQL 池中的变量。 使用 DECLARE 初始化变量是在 SQL 池中设置变量值的最灵活方式之一。
 
 ```sql
 DECLARE @v  int = 0

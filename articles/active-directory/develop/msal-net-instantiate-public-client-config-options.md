@@ -1,5 +1,5 @@
 ---
-title: " (MSAL.NET) 实例化公用客户端应用 |Microsoft"
+title: 实例化公共客户端应用 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化公共客户端应用程序。
 services: active-directory
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98064702"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
 
-本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 实例化 [公用客户端应用程序](msal-client-applications.md) 。  应用程序使用设置文件中定义的配置选项进行实例化。
+本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 实例化[公共客户端应用程序](msal-client-applications.md)。  应用程序使用设置文件中定义的配置选项进行实例化。
 
 在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便应用可以与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
 

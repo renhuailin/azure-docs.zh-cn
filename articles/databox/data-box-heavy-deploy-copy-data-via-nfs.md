@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87921021"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box Heavy
@@ -67,7 +67,7 @@ ms.locfileid: "87921021"
 
     ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。
+2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击 **“确定”** 。
 
     ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "87921021"
      我们建议从 16 个并行副本开始，并根据可用的资源增加线程数。
 
 > [!IMPORTANT]
-> 不支持以下 Linux 文件类型：符号链接、字符文件、块文件、套接字和管道。 在**准备交付**步骤期间，这些文件类型将导致失败。
+> 不支持以下 Linux 文件类型：符号链接、字符文件、块文件、套接字和管道。 在 **准备交付** 步骤期间，这些文件类型将导致失败。
 
 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的错误文件。 有关详细信息，请参阅[查看将数据复制到 Data Box Heavy 期间生成的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅[排查 Data Box Heavy 问题](data-box-troubleshoot.md)。
 

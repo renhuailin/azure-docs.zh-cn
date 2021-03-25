@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 72bf252488878c8b6fabb2ea2d61658a2cd87e14
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966201"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
@@ -164,7 +164,7 @@ StorSimple 设备管理器服务的主要作用是管理和配置 StorSimple 设
 
 服务数据加密密钥和数据加密证书不会过期。 但是，我们建议每年更改一次服务数据加密密钥以帮助防止密钥泄漏。
 
-## <a name="protect-data-at-rest"></a>保护静态数据
+## <a name="protect-data-at-rest"></a>保护静止的数据
 
 StorSimple 设备管理数据的方法是根据它们的使用频率，将它们存储在本地和云中的多个层中。 连接到设备的所有主机都将数据发送到设备，并设备根据需要将数据移到云中。 数据通过 Internet 从设备安全传输到云。 每个设备都有一个 iSCSI 目标，它会显示该设备上的所有共享卷。 所有数据在发送到云存储之前都进行了加密。 
 
@@ -185,7 +185,7 @@ StorSimple 设备管理数据的方法是根据它们的使用频率，将它们
 
 ## <a name="protect-data-via-storage-accounts"></a>通过存储帐户保护数据
 
-每个 Microsoft Azure 订阅都可以创建一个或多个存储帐户。  (存储帐户提供唯一的命名空间来处理 Azure 云中存储的数据。 ) 对存储帐户的访问权限由与该存储帐户关联的订阅和访问密钥控制。
+每个 Microsoft Azure 订阅都可以创建一个或多个存储帐户。 （存储帐户提供唯一命名空间，方便使用存储在 Azure 云中的数据。）对存储帐户的访问由订阅以及与该存储帐户关联的访问密钥控制。
 
 创建存储帐户时，Microsoft Azure 生成两个 512 位存储访问密钥，其中一个用于在 StorSimple 设备访问存储帐户时进行身份验证。 请注意，这两个密钥中只有一个投入使用。 另外一个密钥保留，让你能够定期轮换密钥。 要轮换密钥，可让辅助密钥成为活动密钥，并删除主密钥。 然后，可以创建一个新密钥，在下一次轮换时使用。 （出于安全原因，很多数据中心要求密钥轮换。）
 
@@ -219,7 +219,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
 
 以下是有关安全及 Microsoft Azure StorSimple 的部分问答。
 
@@ -242,7 +242,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。   应采取何种操作？
+**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 应采取何种操作？
 
 **答：** 如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
 
@@ -250,7 +250,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 4 小时时限仅适用于启动更改操作。 一旦在授权的 StorSimple 设备上开始更新过程，授权会保持有效，直至所有设备都已更新。
 
-**问：** 我们的 StorSimple 管理员离开了公司。   应采取何种操作？
+**问：** 我们的 StorSimple 管理员离开了公司。 应采取何种操作？
 
 **答：** 请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
 

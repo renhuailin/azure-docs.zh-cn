@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658343"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867281"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -81,9 +81,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步骤 5。 检查本地 VPN 设备的外部接口地址
 
-- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。 
-- 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换或防火墙。
-- 若要将防火墙群集配置为具有虚拟 IP，必须中断群集并直接向可以与网关连接的公共接口公开 VPN 设备。
+如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。 
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>步骤 6. 验证子网是否完全匹配（基于 Azure Policy 的网关）
 
@@ -110,5 +108,5 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ## <a name="next-steps"></a>后续步骤
 
--   [配置与虚拟网络的站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [配置与虚拟网络的站点到站点连接](./tutorial-site-to-site-portal.md)
 -   [配置站点到站点 VPN 连接的 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)

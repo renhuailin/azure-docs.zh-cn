@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 46a22b78ade3d137f25b14e5cbdaff3264208228
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942738"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868386"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -53,10 +53,10 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 3. 从列表中选择一个 HDInsight 群集。  如果没有群集，必须先创建一个。  请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 4. 在“设置”目录下，选择“应用程序” 。 可在主窗口中看到已安装应用程序的列表。 
    
-    ![HDInsight 应用程序门户菜单](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png" alt-text="HDInsight 应用程序门户菜单":::
 5. 在菜单中选择“+添加”。 可看到可用应用程序的列表。  如果“+添加”呈灰色，表示任何应用程序可用于此版本的 HDInsight 群集。
    
-    ![HDInsight 应用程序可用应用程序](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png" alt-text="HDInsight 应用程序可用应用程序":::
 6. 选择某个可用的应用程序，然后按照说明来接受法律条款。
 
 可通过门户通知查看安装状态（选择门户顶部的铃铛图标）。 安装应用程序后，应用程序会出现在“已安装的应用”列表中。
@@ -65,7 +65,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 可以选择在创建群集时安装 HDInsight 应用程序。 在此过程中，HDInsight 应用程序会在群集创建并处于运行状态后安装。 若要通过 Azure 门户在群集创建期间安装应用程序，请从“配置与定价”选项卡中选择“+添加应用程序” 。
 
-![Azure 门户群集配置应用程序](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
+:::image type="content" source="./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png" alt-text="Azure 门户群集配置应用程序":::
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>列出已安装的 HDInsight 应用和属性
 门户会显示群集的已安装 HDInsight 应用程序列表，以及每个已安装应用程序的属性。
@@ -77,7 +77,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 3. 从列表中选择一个 HDInsight 群集。
 4. 在“设置”目录下，选择“应用程序” 。 可在主窗口中看到已安装应用程序的列表。 
    
-    ![HDInsight 应用程序已安装的应用](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
+    :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png" alt-text="HDInsight 应用程序已安装的应用":::
 5. 选择一个已安装的应用程序来查看属性。 属性列表：
 
     |属性 | 说明 |

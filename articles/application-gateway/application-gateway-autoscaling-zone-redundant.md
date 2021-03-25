@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059715"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
@@ -74,7 +74,7 @@ Azure 应用程序网关始终以高度可用的方式部署。 服务由多个�
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务 (AKS) 入口控制器 |          | &#x2713; |
-| Azure Key Vault 集成                       |          | &#x2713; |
+| Azure 密钥保管库集成                       |          | &#x2713; |
 | 重写 HTTP(S) 标头                           |          | &#x2713; |
 | 基于 URL 的路由                                 | &#x2713; | &#x2713; |
 | 多站点托管                             | &#x2713; | &#x2713; |

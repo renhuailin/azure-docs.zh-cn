@@ -12,10 +12,10 @@ ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
 ms.openlocfilehash: 322b036fee840db58ed610795155af6c9e1320cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100366939"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源程序包配合使用来评估机器学习模型的公平性（预览版）
@@ -214,15 +214,15 @@ pip install fairlearn==0.4.6
     1. 在左侧窗格中选择“试验”，以查看在 Azure 机器学习中运行的试验列表。
     1. 选择特定的试验可查看该试验中的所有运行。
     1. 选择一个运行，然后选择“公平性”选项卡来查看解释可视化效果仪表板。
-    1. 登录 " **公平** " 选项卡后，单击右侧菜单中的 " **公平 id** "。
-    1. 通过在 "公平评估" 页上选择你的敏感属性、性能指标和对土地感兴趣的公平指标来配置仪表板。
-    1. 将图表类型从一个转换为另一个，以同时观察 **分配** 损害和 **服务质量的** 损害。
+    1. 打开“公平性”选项卡后，单击右侧菜单中的“公平性 ID” 。
+    1. 配置仪表板：将感兴趣的敏感属性、性能指标和公平性指标选入公平性评估页面。
+    1. 将图表从一种类型切换为另一种类型，同时观察“分配”损害和“服务质量”损害 。
 
 
 
-    [![公平仪表板分配](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
+    [![公平性仪表板分配](./media/how-to-machine-learning-fairness-aml/dashboard-1.png)](./media/how-to-machine-learning-fairness-aml/dashboard-1.png#lightbox)
     
-    [![公平面板服务质量](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
+    [![公平性仪表板服务质量](./media/how-to-machine-learning-fairness-aml/dashboard-2.png)](./media/how-to-machine-learning-fairness-aml/dashboard-2.png#lightbox)
     * “模型”窗格
     1. 如果已通过前面的步骤注册了原始模型，则可在左侧窗格中选择“模型”来查看它。
     1. 选择一个模型，然后选择“公平性”选项卡来查看解释可视化效果仪表板。

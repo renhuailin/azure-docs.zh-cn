@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87025585"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
@@ -73,12 +73,12 @@ ms.locfileid: "87025585"
 
 ## <a name="device-security"></a>设备安全性
 
-- **已注册到 Azure AD 的设备**利用最终用户管理的帐户，此帐户是使用以下一项或多项措施保护的 Microsoft 帐户或其他本地管理的凭据。
+- **已注册到 Azure AD 的设备** 利用最终用户管理的帐户，此帐户是使用以下一项或多项措施保护的 Microsoft 帐户或其他本地管理的凭据。
    - 密码
    - PIN
    - 模式
    - Windows Hello
-- **已加入 Azure AD 或混合 Azure AD 的设备**利用 Azure AD 中受以下一项或多项措施保护的组织帐户。
+- **已加入 Azure AD 或混合 Azure AD 的设备** 利用 Azure AD 中受以下一项或多项措施保护的组织帐户。
    - 密码
    - Windows Hello for Business
 

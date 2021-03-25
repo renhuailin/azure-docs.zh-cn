@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
 ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92637932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Visibly 集成
@@ -48,8 +48,8 @@ ms.locfileid: "92637932"
 要配置 Visibly 与 Azure AD 的集成，需要从库中将 Visibly 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Visibly” 。
 1. 在结果面板中选择“Visibly”，然后添加该应用。 在该应用添加到租户时等待几秒钟。

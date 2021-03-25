@@ -9,10 +9,10 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service .
 ms.openlocfilehash: a12bfa042c8741814cedc70f1dcb67dedbfd331e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400428"
 ---
 # <a name="tutorial-register-a-peering-service-connection-using-azure-powershell"></a>教程：使用 Azure PowerShell 注册对等互连服务连接

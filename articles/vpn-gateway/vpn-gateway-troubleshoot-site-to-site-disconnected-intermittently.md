@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369333"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867247"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性地断开连接
 
@@ -56,13 +56,11 @@ ms.locfileid: "100369333"
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>步骤 6 检查本地 VPN 设备外部接口地址
 
-- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的 **本地网络网关** 定义中，你可能会遇到偶发的断开连接。
-- 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换 (NAT) 或防火墙。
--  如果将防火墙群集配置为具有虚拟 IP，则必须中断群集并直接向可以与网关连接的公共接口公开 VPN 设备。
+如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的 **本地网络网关** 定义中，你可能会遇到偶发的断开连接。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步骤 7 检查本地 VPN 设备是否已启用“完全向前保密”
 
-“完全向前保密”功能可能会导致断开连接问题  。 如果 VPN 设备已启用“完全向前保密”  ，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+“完全向前保密”功能可能会导致断开连接问题。 如果 VPN 设备已启用“完全向前保密”，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

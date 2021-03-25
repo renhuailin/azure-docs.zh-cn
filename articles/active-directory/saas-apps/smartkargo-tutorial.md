@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.openlocfilehash: fc04b25c4f410fa710ed293a0594f3aa189c986f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514905"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SmartKargo 集成
@@ -47,8 +47,8 @@ ms.locfileid: "92514905"
 若要配置 SmartKargo 与 Azure AD 的集成，需要从库中将 SmartKargo 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“SmartKargo” 。
 1. 在结果面板中选择“SmartKargo”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -79,7 +79,7 @@ ms.locfileid: "92514905"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.smartkargo.com/`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.smartkargo.com/`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.smartkargo.com/`
 
@@ -88,7 +88,7 @@ ms.locfileid: "92514905"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、回复 URL 和标识符更新这些值。 请联系 [SmartKargo 客户端支持团队](https://www.smartkargo.com/company/contact-2/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92514905"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -118,12 +118,12 @@ ms.locfileid: "92514905"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-smartkargo-sso"></a>配置 SmartKargo SSO

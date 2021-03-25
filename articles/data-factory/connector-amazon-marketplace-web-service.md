@@ -8,10 +8,10 @@ author: linda33wj
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: c25bdac0b52af425557464f17350fb8a46244f2f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364335"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Marketplace Web 服务复制数据
@@ -41,7 +41,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Amazon Marketplace Web 服务链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：AmazonMWS  | 是 |
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
@@ -85,7 +85,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 要从 Amazon Marketplace Web 服务复制数据，请将数据集的 type 属性设置为“AmazonMWSObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AmazonMWSObject  | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -116,10 +116,10 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 
 要从 Amazon Marketplace Web 服务复制数据，请将复制活动中的源类型设置为“AmazonMWSSource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：AmazonMWSSource  | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -153,7 +153,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

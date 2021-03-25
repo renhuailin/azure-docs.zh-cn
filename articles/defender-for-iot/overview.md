@@ -1,23 +1,14 @@
 ---
 title: 服务概述
 description: 详细了解 Defender for IoT 功能和服务，并了解 Defender for IoT 如何提供全面的 IoT 安全性。
-services: defender-for-iot
-ms.service: azure
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 4590396b0e867a3e545577767581dd1a951bfc50
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 15772ee21587ed2bc010e31174af6daac71dfc12
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447378"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786832"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>欢迎使用 Azure Defender for IoT
 

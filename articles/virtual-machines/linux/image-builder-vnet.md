@@ -1,23 +1,24 @@
 ---
-title: '使用适用于 Linux Vm 的 Azure 映像生成器，以允许访问现有的 Azure VNET (预览) '
-description: 使用 Azure 映像生成器创建 Linux VM 映像，以允许访问现有的 Azure VNET
+title: 使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Linux VM（预览版）
+description: 使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Linux VM 映像
 author: danielsollondon
 ms.author: danis
 ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-linux
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: image-builder
+ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: b523168429aa05a148a6e814881d1338a1bb39cf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 500ddec9b84f9d73db45ddb4b7f5a8486a48d3e5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695611"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565302"
 ---
-# <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用适用于 Linux Vm 的 Azure 映像生成器，允许访问现有的 Azure VNET
+# <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Linux VM
 
-本文介绍如何使用 Azure 映像生成器创建可访问 VNET 中现有资源的基本自定义 Linux 映像。 你创建的生成 VM 将部署到你在订阅中指定的新的或现有的 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
+本文介绍如何使用 Azure 映像生成器创建有权访问 VNET 中现有资源的基本自定义 Linux 映像。 创建的生成 VM 将部署到在订阅中指定的新的或现有 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要建立公共网络连接。
 
 > [!IMPORTANT]
 > Azure 映像生成器目前提供公共预览版。
@@ -27,7 +28,7 @@ ms.locfileid: "101695611"
 
 ## <a name="register-the-features"></a>注册功能
 
-首先，必须注册 Azure 映像生成器服务。 注册将授予服务创建、管理和删除暂存资源组的权限。 服务还具有添加资源所需的资源组的权限。
+首先必须注册 Azure 映像生成器服务。 注册会向该服务授予创建、管理和删除暂存资源组的权限。 该服务还拥有添加映像生成所需的组资源的权限。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -35,7 +36,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 
 ## <a name="set-variables-and-permissions"></a>设置变量和访问权限 
 
-你将重复使用某些信息。 创建一些变量来存储该信息。
+你将反复使用一些信息片段。 请创建一些变量用于存储这些信息。
 
 ```azurecli-interactive
 # set your environment variables here!!!!
@@ -77,7 +78,7 @@ az group create -n $imageResourceGroup -l $location
 
 ## <a name="configure-networking"></a>配置网络
 
-如果没有现有的 VNET\Subnet\NSG，请使用以下脚本创建一个。
+如果目前没有 VNET/子网/NSG，请使用以下脚本创建一个。
 
 ```bash
 
@@ -107,7 +108,7 @@ az network vnet subnet update \
 
 ### <a name="add-network-security-group-rule"></a>添加网络安全组规则
 
-此规则允许从 Azure 映像生成器负载均衡器连接到代理 VM。 端口60001适用于 Linux 操作系统，端口60000适用于 Windows OSs。 代理 VM 使用适用于 Linux Os 的端口22和 Windows OSs 的端口5986连接到生成 VM。
+此规则允许建立从 Azure 映像生成器负载均衡器到代理 VM 的连接。 端口 60001 适用于 Linux OS，端口 60000 适用于 Windows OS。 代理 VM 使用端口 22（在 Linux OS 中）或端口 5986（在 Windows OS 中）连接到生成 VM。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -161,7 +162,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>设置资源组的权限
+## <a name="set-permissions-on-the-resource-group"></a>设置对资源组的权限
 
 映像生成器将使用提供的[用户标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)，来将映像注入到 Azure 共享映像库 (SIG)。 在此示例中，你将创建一个 Azure 角色定义，其中包含将映像分发到 SIG 的精细操作。 然后将此角色定义分配给用户标识。
 
@@ -188,7 +189,7 @@ sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g
 sed -i -e "s/Azure Image Builder Service Networking Role/$netRoleDefName/g" aibRoleNetworking.json
 ```
 
-你可以创建两个角色，而不是将映像生成器更低粒度和更高权限。 一种方法为生成器提供创建映像的权限，另一种方法允许其将生成 VM 和负载均衡器连接到 VNET。
+可以创建两个角色，而无需向映像生成器授予更低的权限粒度和更高的特权。 一个角色向生成器授予创建映像的权限，另一个角色允许生成器将生成 VM 和负载均衡器连接到 VNET。
 
 ```bash
 # create role definitions
@@ -207,7 +208,7 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/$vnetRgName
 ```
 
-有关权限的详细信息，请参阅 [使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md) 或 [使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
+有关权限的详细信息，请参阅[使用 Azure CLI 配置 Azure 映像生成器服务权限](image-builder-permissions-cli.md)或[使用 PowerShell 配置 Azure 映像生成器服务权限](image-builder-permissions-powershell.md)。
 
 ## <a name="create-the-image"></a>创建映像
 
@@ -271,10 +272,10 @@ ssh aibuser@<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果现在想要尝试 recustomizing 映像版本来创建同一映像的新版本，请跳过后续步骤，并继续 [使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
+如果你现在就想要尝试重新自定义映像版本以创建同一映像的新版本，请跳过后续步骤，继续学习[使用 Azure 映像生成器创建另一个映像版本](image-builder-gallery-update-image-version.md)。
 
 
-以下操作将删除创建的映像以及所有其他资源文件。 删除这些资源前，请确保已完成此部署。
+以下操作会删除已创建的映像以及所有其他资源文件。 删除这些资源前，请确保已完成此部署。
 
 删除映像库资源时，需要先删除所有版本的映像，然后才能删除用于创建它们的映像定义。 若要删除库，首先需要删除库中的所有映像定义。
 
@@ -312,7 +313,7 @@ az identity delete --ids $imgBuilderId
 az group delete -n $imageResourceGroup
 ```
 
-如果为本快速入门创建了 VNET，则可以删除不再使用的 VNET。
+如果你为本快速入门创建了一个 VNET，但以后不再要使用它，可以删除该 VNET。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 97a8dd2476642e693b589b4046f612c5569b9c0b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945676"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865122"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -80,17 +80,17 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
    > [!NOTE]  
    > 第一次登录时，系统会提示创建帐户来登录 Hue 门户。 在此处指定的凭据只能用于该门户，并且与预配群集时指定的管理员或 SSH 用户凭据不相关。
 
-    ![HDInsight Hue 门户登录窗口](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "指定用于 Hue 门户的凭据")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png" alt-text="HDInsight Hue 门户登录窗口":::
 
 ### <a name="run-a-hive-query"></a>运行 Hive 查询
 
 1. 在 Hue 门户中，依次选择“查询编辑器”和“Hive”，以打开 Hive 编辑器。
 
-    ![在 HDInsight Hue 门户中使用 Hive 编辑器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "使用 Hive")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png" alt-text="在 HDInsight Hue 门户中使用 Hive 编辑器":::
 
 2. 在“帮助”选项卡上的“数据库”下面，应会看到 **hivesampletable**。 这是 HDInsight 上的所有 Hadoop 群集随附的示例表。 在右窗格中输入示例查询，并在下方窗格的“结果”选项卡中查看输出，如屏幕截图所示。
 
-    ![HDInsight Hue 门户 Hive 查询](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "运行 Hive 查询")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png" alt-text="HDInsight Hue 门户 Hive 查询":::
 
     也可以使用“图表”选项卡查看结果的视觉表示形式。
 
@@ -99,7 +99,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 1. 在 Hue 门户中，选择菜单栏右上角的“文件浏览器”。
 2. 默认情况下，文件浏览器在 **/user/myuser** 目录中打开。 选择路径中紧接在用户目录前面的正斜杠，以转到与群集关联的 Azure 存储容器的根目录。
 
-    ![HDInsight Hue 门户文件浏览器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "使用文件浏览器")
+    :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png" alt-text="HDInsight Hue 门户文件浏览器":::
 
 3. 右键单击某个文件或文件夹，以查看可用的操作。 使用右侧的“上传”按钮，将文件上传到当前目录。 使用“新建”按钮创建新的文件或目录。
 
@@ -118,7 +118,7 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 
 1. 使用 Linux 群集时，可能会出现这种情况：服务在主头节点上运行，而 Resource Manager 可能在辅助头节点上运行。 使用 Hue 查看群集上正在运行的作业的详细信息时，这种情况可能会导致错误（如下所示）。 不过，可以在作业完成后查看作业详细信息。
 
-   ![Hue 门户错误示例消息](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Hue 门户错误")
+   :::image type="content" source="./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png" alt-text="Hue 门户错误示例消息":::
 
    这是由已知问题造成的。 解决方法如下：修改 Ambari，使活动 Resource Manager 也在主头节点上运行。
 

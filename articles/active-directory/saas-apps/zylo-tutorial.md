@@ -16,10 +16,10 @@ ms.date: 08/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c84c126e3b611b0bf37abec4f07ab7f3f187b1b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zylo"></a>教程：Azure Active Directory 与 Zylo 的单一登录 (SSO) 集成
@@ -89,7 +89,7 @@ ms.locfileid: "92517389"
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.zylo.com/saml/sso/azuread/<CUSTOMER_NAME>` 
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入 URL：`https://app.zylo.com/login`
 
@@ -114,7 +114,7 @@ ms.locfileid: "92517389"
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

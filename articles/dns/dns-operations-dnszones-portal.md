@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
 ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94965793"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>如何在 Azure 门户中管理 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [门户](dns-operations-dnszones-portal.md)
+> * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure 经典 CLI](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
@@ -35,7 +35,7 @@ ms.locfileid: "94965793"
 
     ![DNS 区域](./media/dns-operations-dnszones-portal/openzone650.png)
 
-4. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：  
+4. 在“创建 DNS 区域”边栏选项卡上，输入以下值，并单击“创建”：
 
 
    | **设置** | **值** | **详细信息** |
@@ -50,13 +50,13 @@ ms.locfileid: "94965793"
 
 ## <a name="list-dns-zones"></a>列出 DNS 区域
 
-在 Azure 门户中，导航到“更多服务”   > “网络”   > “DNS 区域”  。 每个 DNS 区域都是其自己的资源，可从该视图查看记录集的数目和名称服务器等信息。 列 NAME SERVERS  不在默认视图中。 要添加它，请单击“列”  ，选择“名称服务器”  ，然后单击“完成”  。
+在 Azure 门户中，导航到“更多服务” > “网络” > “DNS 区域”。 每个 DNS 区域都是其自己的资源，可从该视图查看记录集的数目和名称服务器等信息。 列 NAME SERVERS 不在默认视图中。 要添加它，请单击“列”，选择“名称服务器”，然后单击“完成”。
 
 ![列出 DNS 区域](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>删除 DNS 区域
 
-在门户中导航到 DNS 区域。 在“DNS 区域”  边栏选项卡上，单击“删除区域”  。 然后系统会提示你确认是否需要删除 DNS 区域。 删除 DNS 区域还会删除该区域中包含的所有记录。
+在门户中导航到 DNS 区域。 在“DNS 区域”边栏选项卡上，单击“删除区域”。 然后系统会提示你确认是否需要删除 DNS 区域。 删除 DNS 区域还会删除该区域中包含的所有记录。
 
 ## <a name="next-steps"></a>后续步骤
 

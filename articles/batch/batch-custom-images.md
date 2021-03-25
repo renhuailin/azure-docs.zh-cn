@@ -4,10 +4,10 @@ description: 从托管映像创建 Batch 自定义映像池，以使用软件和
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 0a357a1d8a22341297f3bee73fb0867fb03f374f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916570"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用托管映像创建自定义映像池

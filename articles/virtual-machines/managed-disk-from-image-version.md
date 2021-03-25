@@ -3,18 +3,18 @@ title: 从映像版本创建托管磁盘
 description: 从共享映像库中的映像版本创建托管磁盘。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 84ec5ecbfdc2aab2445d050cc51d2b56acb7f3fd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 359816bbf3fb93a4ec2bfa3092adbb2236ae2f07
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202549"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562548"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>从映像版本创建托管磁盘
 
@@ -35,7 +35,7 @@ az sig image-version list \
 
 将 `source` 变量设置为映像版本的 ID，然后使用 [az disk create](/cli/azure/disk#az_disk_create) 创建托管磁盘。 
 
-在此示例中，我们将导出映像版本的 OS 磁盘，以在名为 *myResourceGroup* 的资源组中创建名为 *myManagedOSDisk**的托管* 磁盘。 
+在此示例中，我们将导出映像版本的 OS 磁盘，在 EastUS 区域的名为“myResourceGroup”的资源组中创建一个名为“myManagedOSDisk”的托管磁盘  。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
@@ -47,7 +47,7 @@ az disk create --resource-group myResourceGroup --location EastUS --name myManag
 
 如果要从映像版本导出数据磁盘，请添加 `--gallery-image-reference-lun` 以指定要导出的数据磁盘的 LUN 位置。 
 
-在此示例中，我们导出位于映像版本的 LUN 0 的数据磁盘，在名为 *myResourceGroup* 的资源组中的 *EastUS* 区域中创建名为 *myManagedDataDisk* 的托管磁盘。 
+在此示例中，我们将导出位于映像版本的 LUN 0 的数据磁盘，在 EastUS 区域的名为“myResourceGroup”的资源组中创建一个名为“myManagedDataDisk”的托管磁盘  。 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
@@ -77,7 +77,7 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 
 将 `source` 变量设置为映像版本的 ID 后，使用 [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) 创建磁盘配置，并使用 [New-AzDisk](/powershell/module/az.compute/new-azdisk) 创建磁盘。 
 
-在此示例中，我们将导出映像版本的 OS 磁盘，以在名为 *myResourceGroup* 的资源组中创建名为 *myManagedOSDisk**的托管* 磁盘。 
+在此示例中，我们将导出映像版本的 OS 磁盘，在 EastUS 区域的名为“myResourceGroup”的资源组中创建一个名为“myManagedOSDisk”的托管磁盘  。 
 
 创建磁盘配置。
 ```azurepowershell-interactive
@@ -97,7 +97,7 @@ New-AzDisk -Disk $diskConfig `
 
 如果要从映像版本导出数据磁盘，请将 LUN ID 添加到磁盘配置，以指定要导出的数据磁盘的 LUN 位置。 
 
-在此示例中，我们导出位于映像版本的 LUN 0 的数据磁盘，在名为 *myResourceGroup* 的资源组中的 *EastUS* 区域中创建名为 *myManagedDataDisk* 的托管磁盘。 
+在此示例中，我们将导出位于映像版本的 LUN 0 的数据磁盘，在 EastUS 区域的名为“myResourceGroup”的资源组中创建一个名为“myManagedDataDisk”的托管磁盘  。 
 
 创建磁盘配置。
 ```azurepowershell-interactive

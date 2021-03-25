@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: b68e338c2675a3aeefda390d12ab2d82ea1c7a9f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94956647"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 系列 Update 2 发行说明
@@ -59,12 +59,12 @@ Update 2 推出以下新功能。
   
   * LSI: lsi_sas2.sys 产品版本 2.00.72.10
   * 仅 SSD（没有 HDD 更新）：XMGG、XGEG、KZ50、F6C2 和 VR08
-* **主动支持** – Update 2 使 Microsoft 可以从设备中提取其他诊断信息。 当运营团队标识有问题的设备时，我们可以更好地从设备中收集信息并诊断问题。 **接受 Update 2 即允许我们提供此主动支持**。    
+* **主动支持** – Update 2 使 Microsoft 可以从设备中提取其他诊断信息。 当运营团队标识有问题的设备时，我们可以更好地从设备中收集信息并诊断问题。 **通过接受 Update 2，我们就能够提供此主动支持**。    
 
 ## <a name="issues-fixed-in-update-2"></a>在 Update 2 中修复的问题
 下表提供在 Updates 2 中已修复问题的摘要。    
 
-| 不是。 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |网络接口 |升级到 Update 1 之后，StorSimple Manager 服务报告在一个控制器上报告 Data2 和 Data3 端口出现故障。 现在已修复此问题。 |是 |否 |
 | 2 |更新 |升级到 Update 1 之后，在多个设备上的 Azure 经典门户中出现有声警报通知。 现在已修复此问题。 |是 |否 |
@@ -73,7 +73,7 @@ Update 2 推出以下新功能。
 ## <a name="known-issues-in-update-2"></a>Update 2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不是。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不是。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |错误的控制器 ID |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要任何用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |

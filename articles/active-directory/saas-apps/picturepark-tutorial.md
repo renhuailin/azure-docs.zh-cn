@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a00cf11edfea2e732a18a392d465525b38ea45f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>教程：Azure Active Directory 与 Picturepark 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92520833"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Picturepark 的集成，需要以下项：
 
@@ -47,7 +47,7 @@ ms.locfileid: "92520833"
 
 若要配置 Picturepark 与 Azure AD 的集成，需要从库中将 Picturepark 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Picturepark，请执行以下步骤  ：
+若要从库中添加 Picturepark，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92520833"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Picturepark** ，在结果面板中选择“Picturepark”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Picturepark**，在结果面板中选择“Picturepark”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“Picturepark”](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92520833"
 
 若要配置 Picturepark 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Picturepark”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Picturepark”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92520833"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Picturepark 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.picturepark.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.picturepark.com` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
     ```http
         https://<companyname>.current-picturepark.com
@@ -122,7 +122,7 @@ ms.locfileid: "92520833"
 
     ![复制指纹值](common/copy-thumbprint.png)
 
-7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。  对于“登录 URL”，请使用模式如下的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。 对于“登录 URL”，请使用模式如下的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
@@ -137,29 +137,29 @@ ms.locfileid: "92520833"
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Picturepark 公司站点。
 
-2. 在顶部工具栏中，单击“管理工具”，并单击“管理控制台”。  
+2. 在顶部工具栏中，单击“管理工具”，然后单击“管理控制台”。
    
     ![管理控制台](./media/picturepark-tutorial/ic795062.png "管理控制台")
 
-3. 单击“身份验证”，并单击“标识提供者”。  
+3. 单击“身份验证”，然后单击“标识提供程序”。
    
-    ![身份验证](./media/picturepark-tutorial/ic795063.png "Authentication")
+    ![身份验证](./media/picturepark-tutorial/ic795063.png "身份验证")
 
-4. 在“标识提供者配置”部分执行以下步骤： 
+4. 在“标识提供程序配置”部分中执行以下步骤：
    
     ![标识提供者配置](./media/picturepark-tutorial/ic795064.png "标识提供者配置")
    
-    a. 单击“添加”  。
+    a. 单击“添加”。
   
     b. 键入配置名称。
    
-    c. 选择“设为默认值”。 
+    c. 选择“设为默认值”。
    
-    d. 在“颁发者 URI”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    d. 在“颁发者 URI”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
    
-    e. 在“受信任的证书颁发者指纹”文本框中，粘贴从“SAML 签名证书”部分复制的“指纹”值    。 
+    e. 在“受信任的证书颁发者指纹”文本框中，粘贴从“SAML 签名证书”部分复制的“指纹”值。 
 
-5. 单击“JoinDefaultUsersGroup”。 
+5. 单击“JoinDefaultUsersGroup”。
 
 6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 并单击“保存”。
 
@@ -173,7 +173,7 @@ ms.locfileid: "92520833"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -187,17 +187,17 @@ ms.locfileid: "92520833"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Picturepark 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Picturepark”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Picturepark”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Picturepark”  。
+2. 在应用程序列表中，选择“Picturepark”。
 
     ![“应用程序”列表中的“Picturepark”链接](common/all-applications.png)
 
@@ -223,37 +223,37 @@ ms.locfileid: "92520833"
 
 1. 登录到 **Picturepark** 租户。
 
-1. 在顶部工具栏中，单击“管理工具”，并单击“用户”。  
+1. 在顶部工具栏中，单击“管理工具”，然后单击“用户”。
    
     ![用户](./media/picturepark-tutorial/ic795067.png "用户")
 
-1. 在“用户概述”选项卡中，单击“新建”。  
+1. 在“用户概况”选项卡中，单击“新建”。
    
     ![用户管理](./media/picturepark-tutorial/ic795068.png "用户管理")
 
-1. 在“创建用户”对话框中，执行以下预配有效的 Azure Active Directory 用户所需的步骤  ：
+1. 在“创建用户”对话框中，执行以下预配有效的 Azure Active Directory 用户所需的步骤：
    
     ![创建用户](./media/picturepark-tutorial/ic795069.png "创建用户")
    
     a. 在“电子邮件地址”文本框中，键入用户 `BrittaSimon@contoso.com` 的 **电子邮件地址** 。  
    
-    b. 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）    。 
+    b. 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）。 
    
-    c. 在“名字”文本框中，键入用户的“名字”（“Britta”）    。 
+    c. 在“名字”文本框中，键入用户的“名字”（“Britta”）  。 
    
-    d. 在“姓氏”文本框中，键入用户的“姓氏”（“Simon”）    。
+    d. 在“姓氏”文本框中，键入用户的“姓氏”（“Simon”）  。
    
-    e. 在“公司”文本框中，键入用户的公司名称   。 
+    e. 在“公司”文本框中，键入用户的公司名称。 
    
-    f. 在“国家/地区”文本框中，选择用户的 **国家/地区** 。
+    f. 在“国家/地区”文本框中，选择用户的 **国家/地区**。
   
-    g. 在“邮政编码”文本框中，键入城市的邮政编码   。
+    g. 在“邮政编码”文本框中，键入城市的邮政编码。
    
-    h. 在“市/县”文本框中，键入用户所在的市/县名称   。
+    h. 在“市/县”文本框中，键入用户所在的市/县名称。
 
-    i. 选择一种 **语言** 。
+    i. 选择 **“语言”**。
    
-    j. 单击“创建”。 
+    j. 单击“创建”。
 
 >[!NOTE]
 >可以使用任何其他 Picturepark 用户帐户创建工具或 Picturepark 提供的 API 来预配 Azure AD 用户帐户。
