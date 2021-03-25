@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 778424cbb81f8fe51a57dd41d94aa9015ffad94e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 5d94625e3eb121e556b28038cf59626be1332966
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381505"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455799"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -278,7 +278,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 }
 ```
 
-若要在队列中设置单个消息，请向方法传递单个值 `set` 。
+若要在队列中设置单个消息，请将单个值传递给 `set` 方法。
 
 ```python
 import azure.functions as func
@@ -394,11 +394,11 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
-|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
+|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。<br><br>例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -424,12 +424,12 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧版 `CloudQueue` 和 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueue` 和 `CloudQueueMessage` 类型的支持：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
-- 用于写入多个队列消息的[QueueClient](/dotnet/api/azure.storage.queues.queueclient)
+- 用于编写多个队列消息的 [QueueClient](/dotnet/api/azure.storage.queues.queueclient)
 
-有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -451,12 +451,12 @@ Python 不支持特性。
 
 ### <a name="additional-types"></a>其他类型
 
-使用 [存储扩展插件的5.0.0 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.queues-readme)中的类型。 此版本支持旧版 `CloudQueue` 和 `CloudQueueMessage` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.queues-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudQueue` 和 `CloudQueueMessage` 类型的支持：
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
-- 用于写入多个队列消息的[QueueClient](/dotnet/api/azure.storage.queues.queueclient)
+- 用于编写多个队列消息的 [QueueClient](/dotnet/api/azure.storage.queues.queueclient)
 
-有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)中的扩展。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -478,9 +478,9 @@ Python 不支持特性。
 
 有两个选项可用于从函数输出队列消息：
 
-- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将持久保存为队列存储消息。
+- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将作为队列存储消息保留。
 
-- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) 方法。 传递给的值 `set` 将持久保存为队列存储消息。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) 方法。 传递给 `set` 的值将作为队列存储消息保留。
 
 ---
 

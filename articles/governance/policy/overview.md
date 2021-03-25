@@ -4,10 +4,10 @@ description: Azure Policy 是 Azure 中的一项服务，用于创建、分配�
 ms.date: 01/14/2021
 ms.topic: overview
 ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220722"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
@@ -148,7 +148,7 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 

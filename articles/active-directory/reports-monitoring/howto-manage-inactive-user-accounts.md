@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98660658"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
@@ -85,7 +85,7 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview?view=gra
 
 若要生成 lastSignInDateTime 时间戳，你需要成功登录。 由于 lastSignInDateTime 属性是一项新功能，因此，在以下情况下，lastSignInDateTime 属性的值可能为空：
 
-- 用户的最后一次成功登录发生在2020年4月之前。
+- 用户的上一次成功登录发生在 2020 年 4 月之前。
 - 受影响的用户帐户从未进行成功登录。
 
 ## <a name="next-steps"></a>后续步骤

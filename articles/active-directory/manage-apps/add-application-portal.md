@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.openlocfilehash: 2d3b0be88a23bbbb0573b4d11a2e5a39dc6254da
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259061"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 向 Azure AD 租户添加应用程序：
 
 1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，选择“Azure Active Directory”。
-2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。 此时会打开“所有应用程序”窗格，其中显示了 Azure AD 租户中应用程序的随机示例。
+2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。  此时会打开“所有应用程序”窗格，其中显示了 Azure AD 租户中应用程序的随机示例。
 3. 在“企业应用程序”窗格中，选择“新建应用程序” 。 
     ![选择“新建应用程序”以将库应用添加到租户](media/add-application-portal/new-application.png)
 4. 切换到新的库预览体验：在“添加应用程序”页顶部的横幅中，选择显示“单击此处以试用新的和改进的应用库”的链接 。

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305967"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>使用提取的数据运行跨租户分析 - 单租户应用
@@ -107,7 +107,7 @@ ms.locfileid: "93305967"
 在 SSMS 对象资源管理器中展开分析存储节点，查看以下数据库项：
 
 - 表 **TicketsRawData** 和 **EventsRawData** 保存从租户数据库提取的原始数据。
-- 星型架构表为 **fact_Tickets** 、 **dim_Customers** 、 **dim_Venues** 、 **dim_Events** 和 **dim_Dates** 。
+- 星型架构表为 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
 - 存储过程用于在星型架构表中填充来自原始数据表的数据。
 
 ![SSMS 对象资源管理器中显示的数据库项目的屏幕截图。](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -116,7 +116,7 @@ ms.locfileid: "93305967"
 
 ### <a name="create-target-groups"></a>创建目标组 
 
-在继续下一步之前，请确保已部署作业帐户和作业帐户数据库。 在接下来的一系列步骤中，将使用弹性作业从每个租户数据库提取数据，并将数据存储在分析存储中。 然后，第二个作业将数据分片，并将其存储到星型架构的表中。 这两个作业针对两个不同的目标组（即 **TenantGroup** 和 **AnalyticsGroup** ）运行。 提取作业针对包含所有租户数据库的 TenantGroup 运行。 分片作业针对只包含分析存储的 AnalyticsGroup 运行。 使用以下步骤创建目标组：
+在继续下一步之前，请确保已部署作业帐户和作业帐户数据库。 在接下来的一系列步骤中，将使用弹性作业从每个租户数据库提取数据，并将数据存储在分析存储中。 然后，第二个作业将数据分片，并将其存储到星型架构的表中。 这两个作业针对两个不同的目标组（即 **TenantGroup** 和 **AnalyticsGroup**）运行。 提取作业针对包含所有租户数据库的 TenantGroup 运行。 分片作业针对只包含分析存储的 AnalyticsGroup 运行。 使用以下步骤创建目标组：
 
 1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 数据库。
 2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
@@ -133,14 +133,14 @@ ms.locfileid: "93305967"
 每个作业提取自身的目标数据，并将其发布到分析存储。 有一个单独的作业会将提取的数据分片到分析星型架构。
 
 1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 服务器中的 **jobaccount** 数据库。
-2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql* 。
+2. 在 SSMS 中，打开 *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*。
 3. 修改脚本顶部的 @User，将 `<User>` 替换为部署 Wingtip SaaS 应用时使用的用户名 
 4. 按 F5 运行脚本，以创建并运行从每个租户数据库提取门票和客户数据的作业。 该作业会将数据保存到分析存储中。
 5. 查询 tenantanalytics 数据库中的 TicketsRawData 表，确保该表中已填充来自所有租户的门票信息。
 
 ![屏幕截图显示在对象资源管理器中选择了 TicketsRawData dbo 的 ExtractTickets 数据库。](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
-重复上述步骤，但这一次请将 **\ExtractTickets.sql** 替换为步骤 2 中的 **\ExtractVenuesEvents.sql** 。
+重复上述步骤，但这一次请将 **\ExtractTickets.sql** 替换为步骤 2 中的 **\ExtractVenuesEvents.sql**。
 
 成功运行该作业后，分析存储中的 EventsRawData 表中将会填充来自所有租户的新活动和会场信息。 
 
@@ -153,10 +153,10 @@ ms.locfileid: "93305967"
 在本教程部分，定义并运行一个用于将提取的原始数据与星型架构表中的数据合并的作业。 合并作业完成后，将删除原始数据，以便下一个租户数据提取作业可以填充表。
 
 1. 在 SSMS 中，连接到 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 数据库。
-2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql* 。
+2. 在 SSMS 中，打开 *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*。
 3. 按 **F5** 运行脚本，以定义一个调用分析存储中 sp_ShredRawExtractedData 存储过程的作业。
 4. 请耐心等待，让作业成功运行。
-    - 在 jobs.jobs_execution 表的 **Lifecycle** 列中检查作业状态。 确保作业的状态为 **Succeeded** ，然后继续。 如果运行成功，将显示类似于以下图表所示的数据：
+    - 在 jobs.jobs_execution 表的 **Lifecycle** 列中检查作业状态。 确保作业的状态为 **Succeeded**，然后继续。 如果运行成功，将显示类似于以下图表所示的数据：
 
 ![分片](./media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 

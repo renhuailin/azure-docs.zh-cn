@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305660"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的客户验收阶段
@@ -34,13 +34,13 @@ ms.locfileid: "93305660"
 
 
 ## <a name="goal"></a>目标
-**完成项目可交付结果** ：确认生产环境中的管道、模型及其部署满足客户的目标。
+**完成项目可交付结果**：确认生产环境中的管道、模型及其部署满足客户的目标。
 
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了两个主要任务：
 
-   * **系统验证** ：确认部署的模型和管道满足客户的需求。
-   * **项目提交** ：将项目提交到要在生产中运行系统的实体。
+   * **系统验证**：确认部署的模型和管道满足客户的需求。
+   * **项目提交**：将项目提交到要在生产中运行系统的实体。
 
 客户应验证系统是否满足自己的业务需求，且能否准确回答问题，以便将系统部署到生产环境中，供客户端应用程序使用。 最终确定所有文档，并进行评审。 已将项目提交到负责操作的实体。 例如，此实体可能是 IT、客户数据科学团队或负责在生产中运行系统的客户代理。 
 

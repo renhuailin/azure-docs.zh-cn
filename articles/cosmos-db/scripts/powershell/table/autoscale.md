@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
 ms.openlocfilehash: 023e75549265a0784db2ea49ab9b5af83ca1acd8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98674654"
 ---
 # <a name="create-a-table-with-autoscale-for-azure-cosmos-db---table-api"></a>为 Azure Cosmos DB 创建表（具有自动缩放功能）- 表 API
@@ -19,7 +19,7 @@ ms.locfileid: "98674654"
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-本示例要求使用 Azure PowerShell Az 5.4.0 或更高版本。 运行 `Get-Module -ListAvailable Az`，查看已安装哪些版本。
+本示例需要 Azure PowerShell Az 5.4.0 或更高版本。 运行 `Get-Module -ListAvailable Az`，查看已安装哪些版本。
 如果需要安装，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 通过运行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 登录到 Azure。

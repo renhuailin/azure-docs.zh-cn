@@ -3,14 +3,14 @@ title: 使用重定向进行连接 - Azure Database for MariaDB
 description: 本文介绍了如何将应用程序配置为使用重定向连接到 Azure Database for MariaDB。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 29f2ab8f70af2ca19cbffcbba6db39c5a93445fe
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664896"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>使用重定向连接到 Azure Database for MariaDB

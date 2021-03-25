@@ -2,14 +2,14 @@
 title: 为池选择 VM 大小和映像
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576695"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455189"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
@@ -29,19 +29,17 @@ ms.locfileid: "99576695"
 | VM 系列  | 支持的大小 |
 |------------|---------|
 | 基本 A | 除 Basic_A0 (A0) 之外的所有大小 |
-| A | 除 Standard_A0、Standard_A8、Standard_A9、Standard_A10、Standard_A11 *之外* 的所有大小 |
+| A | 除 Standard_A0、Standard_A8、Standard_A9、Standard_A10、Standard_A11 以外的所有大小 |
 | Av2 | 所有大小 |
 | B | 不支持 |
 | DC | 不支持 |
 | Dv2, DSv2 | 所有大小 |
 | Dv3, Dsv3 | 所有大小 |
-| Dav4 | 所有大小 |
-| Dasv4 | 所有大小 |
+| Dav4、Dasv4 | 所有大小 |
 | Ddv4、Ddsv4 |  所有大小 |
 | Dv4、Dsv4 | 不支持 |
 | Ev3, Esv3 | 除 E64is_v3 之外的所有大小 |
-| Eav4 | 所有大小 |
-| Easv4 | 所有大小 |
+| Eav4、Easv4 | 所有大小 |
 | Edv4, Edsv4 |  所有大小 |
 | Ev4、Esv4 | 不支持 |
 | F, Fs | 所有大小 |
@@ -58,7 +56,7 @@ ms.locfileid: "99576695"
 | NC | 所有大小 |
 | NCv2 | 所有大小 |
 | NCv3 | 所有大小 |
-| NCasT4_v3 | 无（尚不可用） |
+| NCasT4_v3 | 所有大小 |
 | ND | 所有大小 |
 | NDv2 | 无（尚不可用） |
 | NV | 所有大小 |
@@ -66,11 +64,11 @@ ms.locfileid: "99576695"
 | NVv4 | 所有大小 |
 | SAP HANA | 不支持 |
 
-<sup>1</sup> 这些 VM 系列仅适用于第2代 vm 映像。
+<sup>1</sup> 这些 VM 系列只能与第 2 代 VM 映像一起使用。
 
-### <a name="using-generation-2-vm-images"></a>使用第2代 VM 映像
+### <a name="using-generation-2-vm-images"></a>使用第 2 代 VM 映像
 
-某些 VM 系列（如 [Mv2](../virtual-machines/mv2-series.md)）只能与 [第2代 vm 映像](../virtual-machines/generation-2.md)一起使用。 使用 ["imageReference"](/rest/api/batchservice/pool/add#imagereference) 配置的 "sku" 属性，按任何 VM 映像指定第2代 vm 映像;"sku" 字符串具有后缀，如 "-g2" 或 "-gen2"。 若要获取 Batch 支持的 VM 映像的列表（包括第2代映像），请使用 ["列出支持的映像"](/rest/api/batchservice/account/listsupportedimages) API、 [PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)或 [Azure CLI](/cli/azure/batch/pool/supported-images)。
+一些 VM 系列（如 [Mv2](../virtual-machines/mv2-series.md)）只能与[第 2 代 VM 映像](../virtual-machines/generation-2.md)一起使用。 第 2 代 VM 映像的指定方式与任何 VM 映像的指定方式一样，都是使用[“imageReference”](/rest/api/batchservice/pool/add#imagereference)配置的“sku”属性；“sku”字符串具有后缀，如“-g2”或”-gen2”。 若要获得 Batch 支持的 VM 映像列表（包括第 2 代映像），请使用[“列表支持的映像”](/rest/api/batchservice/account/listsupportedimages)API、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](/cli/azure/batch/pool/supported-images)。
 
 ### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
 

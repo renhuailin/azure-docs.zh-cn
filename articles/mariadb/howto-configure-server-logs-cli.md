@@ -3,16 +3,16 @@ title: 访问慢查询日志 - Azure CLI - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 命令行实用工具访问 Azure Database for MariaDB 中的慢查询日志。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c8f69f00ed4314fbe8b3fd1958b52c82ce55d99
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98662383"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问 Azure Database for Maria DB 慢查询日志

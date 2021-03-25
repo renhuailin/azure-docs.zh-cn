@@ -1,19 +1,20 @@
 ---
-title: 更改 VM 可用性集
+title: 使用 Azure PowerShell 更改 VM 可用性集
 description: 了解如何使用 Azure PowerShell 更改虚拟机的可用性集。
 ms.service: virtual-machines
 author: cynthn
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 65bf2dea6f3bc2e33ec10dc75b1678466401c10b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.openlocfilehash: 99985d0bb2294c538efa712e477cc6f8a2eb4938
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102184468"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102498466"
 ---
-# <a name="change-the-availability-set-for-a-vm"></a>更改 VM 的可用性集
+# <a name="change-the-availability-set-for-a-vm-using-azure-powershell"></a>使用 Azure PowerShell 更改 VM 的可用性集    
 以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 若要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 
 
 本文同时适用于 Linux VM 和 Windows VM。

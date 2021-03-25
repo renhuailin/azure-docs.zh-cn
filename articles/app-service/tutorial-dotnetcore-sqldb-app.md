@@ -7,10 +7,10 @@ ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623849"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 Azure SQL 数据库应用
@@ -354,7 +354,7 @@ http://<app-name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-祝贺你！ 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 

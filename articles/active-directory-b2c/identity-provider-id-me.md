@@ -1,25 +1,25 @@
 ---
-title: 设置 ID.me 帐户的注册和登录
+title: 设置使用 ID.me 帐户进行注册和登录
 titleSuffix: Azure AD B2C
-description: 在应用程序中 Azure Active Directory B2C 使用 ID.me 帐户向客户提供注册和登录。
+description: 为客户提供使用 Azure Active Directory B2C 在应用程序中通过 ID.me 帐户进行注册与登录的设置。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: baf02c6da2b3c54b5a459ec6a5dbcb5dd939f2af
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 39896d88aeab4c592c74ded2d6edddfb46d2d203
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952590"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448279"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置 ID.me 帐户的注册和登录
+# <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>设置使用 Azure Active Directory B2C 通过 ID.me 帐户进行注册和登录
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -32,22 +32,22 @@ ms.locfileid: "98952590"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
 
-## <a name="create-an-idme-application"></a>创建 ID.me 应用程序
+## <a name="create-an-idme-application"></a>创建一个 ID.me 应用程序
 
-若要使用 Azure Active Directory B2C (Azure AD B2C) 中的 ID.me 帐户登录用户，需要在 [API & SDK 的 ID.me 开发人员资源](https://developers.id.me/)中创建应用程序。 有关详细信息，请参阅 [OAuth 集成指南](https://developers.id.me/documentation/oauth/overview/kyc)。 如果还没有 ID.me 开发人员帐户，则可以在上注册 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 。
+要使用户能够在 Azure Active Directory B2C (Azure AD B2C) 中使用 ID.me 帐户登录，需在 [ID.me Developer Resources for API & SDK](https://developers.id.me/)（ID.me API 和 SDK 开发人员资源）中创建一个应用程序。 有关详细信息，请参阅 [OAuth 集成指南](https://developers.id.me/documentation/oauth/overview/kyc)。 如果没有 ID.me 开发人员帐户，可以在 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 上注册。
 
-1. 通过 ID.me 帐户凭据登录到 [API & SDK 的 ID.me 开发人员资源](https://developers.id.me/) 。
-1. 选择 " **查看我的应用程序**"，并选择 " **继续**"。
+1. 使用 ID.me 帐户凭据登录到 [ID.me Developer Resources for API & SDK](https://developers.id.me/)（ID.me API 和 SDK 开发人员资源）。
+1. 依次选择“View My Applications”（查看我的应用程序）、“Continue”（继续）。 
 1. 选择“新建”
-    1. 输入 " **名称**" 和 " **显示名称**"。
-    1. 在 " **重定向 URI**" 中，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 。 将 `your-tenant-name` 替换为租户的名称。 
+    1. 输入 **名称** 和 **显示名称**。
+    1. 在“Redirect URI”（重定向 URI）中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 
 1. 单击“继续” 。
-1. 复制 " **客户端 ID** " 和 " **客户端密钥**" 的值。 将标识提供者添加到租户时需要这两个值。
+1. 复制“客户端 ID”和“客户端密钥”的值。 将标识提供者添加到租户时需要这两个值。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -64,11 +64,11 @@ ms.locfileid: "98952590"
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
 
-## <a name="configure-idme-as-an-identity-provider"></a>将 ID.me 配置为标识提供程序
+## <a name="configure-idme-as-an-identity-provider"></a>将 ID.me 配置为标识提供者
 
-若要允许用户使用 ID.me 帐户登录，需要将该帐户定义为声明提供程序，Azure AD B2C 可通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要使用户能够使用 ID.me 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与之通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过将 ID.me 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
+可以通过在策略的扩展文件中将 ID.me 帐户添加到 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -122,7 +122,7 @@ ms.locfileid: "98952590"
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-接下来，需要使用声明转换来创建 displayName 声明。 将以下声明转换添加到 `<ClaimsTransformations>` 中的元素 `<BuildingBlocks>` 。 
+接下来，需使用声明转换来创建 displayName 声明。 将以下声明转换添加到 `<BuildingBlocks>` 中的 `<ClaimsTransformations>` 元素。 
 
 ```xml
  <ClaimsTransformations>
@@ -163,7 +163,13 @@ ms.locfileid: "98952590"
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
 
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页面中，选择“ID.me”以使用 ID.me 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

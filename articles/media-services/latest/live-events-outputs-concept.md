@@ -1,5 +1,5 @@
 ---
-title: 实时事件和实时输出概念
+title: 直播活动和实时输出概念
 description: 本主题概述 Azure 媒体服务 v3 中的直播活动和实时输出。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7a74eca129ce273bd96ea8962ed9ddf2907ea100
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: a66532856263d31e9070bc99f297ae105ca48312
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216167"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454781"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -53,7 +53,7 @@ ms.locfileid: "102216167"
 > 当你要在很长一段时间内进行多个活动，并且已在本地编码器上进行投入时，使用直通方法是进行实时传送视频流的最经济方式。 请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)详细信息。
 >
 
-请参阅 .NET 代码示例，了解如何 [使用 DVR 在 Live 事件](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/4a436376e77bad57d6cbfdc02d7df6c615334574/Live/LiveEventWithDVR/Program.cs#L214)中创建传递实时事件。
+请参阅 .NET 代码示例，了解如何在 [DVR 直播活动](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/4a436376e77bad57d6cbfdc02d7df6c615334574/Live/LiveEventWithDVR/Program.cs#L214)中创建直通直播活动。
 
 ### <a name="live-encoding"></a>实时编码  
 
@@ -100,7 +100,7 @@ ms.locfileid: "102216167"
 <br/><br/>
 如果要在自己的防火墙上启用某些 IP，或者要将直播活动的输入约束到 Azure IP 地址，请从 [Azure 数据中心 IP 地址范围](https://www.microsoft.com/download/details.aspx?id=41653)下载 JSON 文件。 有关此文件的详细信息，请选择页面上的“详细信息”部分。 
 
-* 创建事件时，可以选择打开 "实时转录"。 默认情况下，将禁用实时脚本。 有关实时脚本的详细信息，请阅读 [实时](live-transcription.md)脚本。
+* 创建活动时，可以选择打开“实时听录”。 默认情况下，将禁用“实时听录”。 有关实时转录的详细信息，请阅读[实时听录](live-transcription.md)。
 
 ### <a name="naming-rules"></a>命名规则
 
@@ -149,7 +149,7 @@ ms.locfileid: "102216167"
     |---|---|---|
     |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--vanity-url](/cli/azure/ams/live-event#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 

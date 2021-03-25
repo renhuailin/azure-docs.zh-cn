@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 678b6f02245e463870fc5b2c4bfc8b5ffa50de60
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381677"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455867"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -260,13 +260,13 @@ Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($Inp
 
 [配置](#configuration)部分解释了这些属性。
 
-`dataType`属性确定所使用的绑定。 以下值可用于支持不同的绑定策略：
+`dataType` 属性确定使用的绑定。 以下值可用于支持不同的绑定策略：
 
 | 绑定值 | 默认 | 说明 | 示例 |
 | --- | --- | --- | --- |
 | `undefined` | Y | 使用丰富绑定 | `def main(input: func.InputStream)` |
 | `string` | N | 使用泛型绑定，并将输入类型强制转换为 `string` | `def main(input: str)` |
-| `binary` | N | 使用泛型绑定并将输入 blob 强制转换为 `bytes` Python 对象 | `def main(input: bytes)` |
+| `binary` | N | 使用泛型绑定，并将输入 blob 强制转换为 `bytes` Python 对象 | `def main(input: bytes)` |
 
 下面是 Python 代码：
 
@@ -345,12 +345,12 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `blob`。 |
+|type | 不适用 | 必须设置为 `blob`。 |
 |**direction** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
-|name  | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
-|连接  |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，则 Functions 运行时会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。<br><br>如果你使用的是 [版本 5. x 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对定义该连接的配置节的引用。 请参阅 [连接](./functions-reference.md#connections)。|
-|**dataType**| 不适用 | 对于动态类型化语言，指定基础数据类型。 可能的值为 `string`、`binary` 或 `stream`。 有关更多详细信息，请参阅 [触发器和绑定概念](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)。 |
+|连接  |**Connection**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，则 Functions 运行时会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。<br><br>如果使用 [5.x 版或更高版本的扩展](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](./functions-reference.md#connections)。|
+|**dataType**| 不适用 | 对于动态类型化语言，指定基础数据类型。 可能的值为 `string`、`binary` 或 `stream`。 有关更多详细信息，请参阅[触发器和绑定概念](functions-triggers-bindings.md?tabs=python#trigger-and-binding-definitions)。 |
 |不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -379,7 +379,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
+通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream) 的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
 
 ---
 

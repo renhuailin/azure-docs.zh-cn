@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97510492"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境

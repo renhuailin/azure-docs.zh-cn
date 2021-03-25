@@ -1,15 +1,15 @@
 ---
 title: 配置 runbook 输出和消息流
-description: 本文介绍如何实现错误处理逻辑，并介绍 Azure 自动化 runbook 中的输出和消息流。
+description: 本文介绍了如何实现错误处理逻辑，并说明了 Azure 自动化 runbook 中的输出和消息流。
 services: automation
 ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324425"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>配置 runbook 输出和消息流
@@ -24,7 +24,7 @@ ms.locfileid: "93324425"
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录 |不显示在测试输出窗格中 |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录 |显示在测试输出窗格中 |
 | 进度 |完成 Runbook 中每个活动之前和之后自动生成的记录。 由于 runbook 面向交互式用户，因此不应尝试创建自身的进度记录。 |仅当为 Runbook 启用了进度日志记录时，才写入作业历史记录 |不显示在测试输出窗格中 |
-| “详细” |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录 |仅当在 Runbook 中将 `VerbosePreference` 设置为 Continue 时，才显示在“测试输出”窗格中 |
+| 详细 |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录 |仅当在 Runbook 中将 `VerbosePreference` 设置为 Continue 时，才显示在“测试输出”窗格中 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录 |显示在测试输出窗格中 |
 
 ## <a name="use-the-output-stream"></a>使用输出流
@@ -123,7 +123,7 @@ Runbook 包括输出类型 `Microsoft.Azure.Commands.Profile.Models.PSAzureConte
 
 生成的输出是订阅名称。<br> ![Test-ChildOutputType Runbook 结果](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-## <a name="working-with-message-streams"></a>使用消息流
+## <a name="working-with-message-streams"></a>处理消息流
 
 与输出流不同，消息流向用户传递信息。 有多个消息流用于传递不同类型的信息，且 Azure 自动化以不同的方式处理每个流。
 
@@ -143,32 +143,32 @@ Write-Warning –Message "This is a warning message."
 Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 ```
 
-### <a name="write-output-to-debug-stream"></a>将输出写入调试流
+### <a name="write-output-to-debug-stream"></a>将输出写入到调试流
 
-Azure 自动化对交互式用户使用调试消息流。 默认情况下，当 runbook 配置为捕获时，Azure 自动化将不捕获任何调试流数据，只捕获输出、错误和警告数据以及详细数据。
+Azure 自动化对交互式用户使用调试消息流。 默认情况下，Azure 自动化不会捕获任何调试流数据，只捕获输出、错误和警告数据。另外，如果将 runbook 配置为捕获详细数据，则也会捕获详细数据。
 
-为了捕获调试流数据，你必须在 runbook 中执行两项操作：
+若要捕获调试流数据，需要在 runbook 中执行两项操作：
 
-1. 设置变量 `$GLOBAL:DebugPreference="Continue"` ，该变量指示在遇到调试消息时 PowerShell 继续。  **$GLOBAL：** 部分通知 PowerShell 在全局范围内执行此操作，而不是在执行语句时，将脚本所在的任何本地范围。
+1. 设置变量 `$GLOBAL:DebugPreference="Continue"`，以便在遇到调试消息时指示 PowerShell 继续运行。  “$GLOBAL:”部分指示 PowerShell 在全局范围内执行此操作，而不是在执行语句时脚本所在的任何本地范围内这样做。
 
-1. 将我们未捕获的调试流重定向到我们捕获的流，例如 *输出* 。 这是通过对要执行的语句设置 PowerShell 重定向来完成的。 有关 PowerShell 重定向的详细信息，请参阅 [关于重定向](/powershell/module/microsoft.powershell.core/about/about_redirection)。
+1. 将我们不会捕获的调试流重定向到我们会捕获的流（如输出）。 此操作通过对要执行的语句设置 PowerShell 重定向来完成。 有关 PowerShell 重定向的详细信息，请参阅[关于重定向](/powershell/module/microsoft.powershell.core/about/about_redirection)。
 
 #### <a name="examples"></a>示例
 
-在此示例中，使用和 cmdlet 配置了 runbook， `Write-Output` `Write-Debug` 目的是输出两个不同的流。
+在此示例中，为了输出两个不同的流，我们使用 `Write-Output` 和 `Write-Debug` cmdlet 来配置 runbook。
 
 ```powershell
 Write-Output "This is an output message." 
 Write-Debug "This is a debug message."
 ```
 
-如果此 runbook 按原样执行，runbook 作业的 "输出" 窗格会流式传输以下输出：
+如果此 runbook 按原样执行，runbook 作业的输出窗格就会流式传输以下输出：
 
 ```output
 This is an output message.
 ```
 
-在此示例中，runbook 的配置与前面的示例类似，不同之处在于语句 `$GLOBAL:DebugPreference="Continue"` 末尾添加了语句 `5>&1` `Write-Debug` 。
+在此示例中，runbook 的配置与前一个示例类似，不同之处是加入了 `$GLOBAL:DebugPreference="Continue"` 语句，并且在 `Write-Debug` 语句的结尾添加了 `5>&1`。
 
 ```powershell
 Write-Output "This is an output message." 
@@ -176,14 +176,14 @@ $GLOBAL:DebugPreference="Continue"
 Write-Debug "This is a debug message." 5>&1
 ```
 
-如果要执行此 runbook，runbook 作业的 "输出" 窗格会流式传输以下输出：
+如果执行此 runbook，runbook 作业的输出窗格就会流式传输以下输出：
 
 ```output
 This is an output message.
 This is a debug message.
 ```
 
-出现这种情况的原因是 `$GLOBAL:DebugPreference="Continue"` ，语句告诉 powershell 显示调试消息，而 `5>&1` 向语句末尾添加会 `Write-Debug` 告诉 powershell 将 stream 5 (调试) 重定向到流 1 (输出) 。
+出现这种情况的原因是，`$GLOBAL:DebugPreference="Continue"` 语句指示 PowerShell 显示调试消息，而在 `Write-Debug` 语句的结尾添加 `5>&1` 则会指示 PowerShell 将流 5（调试）重定向到流 1（输出）。
 
 ### <a name="write-output-to-verbose-stream"></a>将输出写入到详细流
 
@@ -222,7 +222,7 @@ Write-Verbose –Message "This is a verbose message."
 
 下表列出了在 Runbook 中有效的首选项变量值的行为。
 
-| 值 | 行为 |
+| Value | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |
@@ -293,10 +293,10 @@ Azure 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics
 * 跨自动化帐户关联作业。
 * 可视化作业历史记录。
 
-有关配置与 Azure Monitor 日志的集成以收集、关联和处理作业数据的详细信息，请参阅 [将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+若要详细了解如何配置与 Azure Monitor 日志的集成以收集、关联和处理作业数据，请参阅[将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要使用 runbook，请参阅[在 Azure 自动化中管理 runbook](manage-runbooks.md)。
-* 如果不熟悉 PowerShell 脚本，请参阅 [powershell](/powershell/scripting/overview) 文档。
-* 有关 Azure 自动化 PowerShell cmdlet 参考，请参阅 [Az. Automation](/powershell/module/az.automation)。
+* 如果你不熟悉 PowerShell 脚本编写，请参阅 [PowerShell](/powershell/scripting/overview) 文档。
+* 有关 Azure 自动化 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

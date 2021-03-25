@@ -10,10 +10,10 @@ ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: 8aad9df4720c833a74659b5cd36b7f5aafdf9b60
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631833"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 性能提示
@@ -76,10 +76,10 @@ Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 --- 
 
 <a name="collocate-clients"></a>
-* **归置同一 Azure 区域中的客户端性能**
+* **将客户端并置在同一 Azure 区域内以提高性能**
 <a id="same-region"></a>
 
-如果可能，请将调用 Azure Cosmos DB 的任何应用程序与 Azure Cosmos DB 数据库放在同一个区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅 [Azure Regions](https://azure.microsoft.com/regions/#services)（Azure 区域）。
+如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅 [Azure Regions](https://azure.microsoft.com/regions/#services)（Azure 区域）。
 
 :::image type="content" source="./media/performance-tips/same-region.png" alt-text="Azure Cosmos DB 连接策略演示" border="false":::
 
@@ -150,15 +150,15 @@ Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
 在 Azure Cosmos DB Java SDK v4 中，直接模式是为大多数工作负荷改善数据库性能的最佳选择。 
 
-* ***直接模式概述** _
+* ***直接模式概述***
 
 :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="直接模式体系结构插图" border="false":::
 
-在直接模式下采用的客户端体系结构使得网络利用率可预测，并实现对 Azure Cosmos DB 副本的多路访问。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在客户端为每个数据库副本最多分配 10 个通道。 一个通道是前面带有请求缓冲区（深度为 30 个请求）的 TCP 连接。 属于某个副本的通道由该副本的服务终结点按需动态分配。 当用户在直接模式下发出请求时，TransportClient 会根据分区键将请求路由到适当的服务终结点。 请求队列在服务终结点之前缓冲请求。
+在直接模式下采用的客户端体系结构使得网络利用率可预测，并实现对 Azure Cosmos DB 副本的多路访问。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在客户端上为每个数据库副本最多分配 10 个通道。 一个通道是前面带有请求缓冲区（深度为 30 个请求）的 TCP 连接。 属于某个副本的通道由该副本的服务终结点按需动态分配。 当用户在直接模式下发出请求时，TransportClient 会根据分区键将请求路由到适当的服务终结点。 请求队列在服务终结点之前缓冲请求。
 
-* ***直接模式的配置选项** _
+* ***直接模式的配置选项***
 
-如果需要非默认的直接模式行为，则在 Azure Cosmos DB 客户端生成器中创建 DirectConnectionConfig 实例并自定义其属性，然后将自定义的属性实例传递到 directMode() 方法。
+ 如果需要非默认的直接模式行为，则在 Azure Cosmos DB 客户端生成器中创建 DirectConnectionConfig 实例并自定义其属性，然后将自定义的属性实例传递到 directMode() 方法。
 
 这些配置设置控制以上讨论的基础直接模式体系结构的行为。
 
@@ -176,19 +176,19 @@ Java SDK V4 (Maven com.azure::azure-cosmos) 同步 API
 
 Azure Cosmos DB Java SDK v4 支持并行查询，允许以并行方式查询分区的集合。 有关详细信息，请参阅与使用 Azure Cosmos DB Java SDK v4 相关的[代码示例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
 
-* ***优化 setMaxDegreeOfParallelism\:** _
+* ***优化 setMaxDegreeOfParallelism\:***
     
 并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 setMaxDegreeOfParallelism 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。
 
 必须注意，如果查询时数据均衡分布在所有分区之间，则并行查询可提供最大的优势。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区会遇到查询的性能瓶颈。
 
-_ ***优化 setMaxBufferedItemCount\:** _
+* ***优化 setMaxBufferedItemCount\:***
     
 并行查询设计为当客户端正在处理当前结果批时预提取结果。 预提取帮助改进查询中的的总体延迟。 setMaxBufferedItemCount 会限制预提取结果的数目。 通过将 setMaxBufferedItemCount 设置为预期返回的结果数（或较高的数值），可使查询从预提取获得最大的好处。
 
 预提取的工作方式不因 MaxDegreeOfParallelism 而异，并且有一个单独的缓冲区用来存储所有分区的数据。
 
-_ **横向扩展客户端工作负荷**
+* **增大客户端工作负荷**
 
 如果在高吞吐量级别进行测试，客户端应用程序可能会由于计算机的 CPU 或网络利用率达到上限而成为瓶颈。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
 
@@ -233,11 +233,11 @@ Azure Cosmos DB Java SDK 的异步功能基于 [netty](https://netty.io/) 非阻
 
 由于各种原因，你可能希望或需要在某个产生较高请求吞吐量的线程中添加日志记录。 如果你的目标是使用此线程生成的请求使容器的预配吞吐量完全饱和，则日志记录优化可以极大地提升性能。
 
-* ***配置异步记录器** _
+* 配置异步记录器
 
 生成请求的线程的总体延迟计算必然会考虑到同步记录器延迟的因素。 建议使用异步记录器（例如 [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0)），以便将日志记录开销与高性能应用程序线程分开。
 
-_ ***禁用 netty 的日志记录** _
+* ***禁用 netty 的日志记录***
 
 Netty 库日志记录非常琐碎，因此需要将其关闭（在配置中禁止登录可能并不足够），以避免产生额外的 CPU 开销。 如果不处于调试模式，请一起禁用 netty 日志记录。 因此，如果要使用 log4j 来消除 netty 中 ``org.apache.log4j.Category.callAppenders()`` 产生的额外 CPU 开销，请将以下行添加到基代码：
 
@@ -245,7 +245,7 @@ Netty 库日志记录非常琐碎，因此需要将其关闭（在配置中禁�
 org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
 ```
 
- _ **OS 打开文件资源限制**
+ * **OS 打开文件资源限制**
  
 某些 Linux 系统（例如 Red Hat）对打开的文件数和连接总数施加了上限。 运行以下命令以查看当前限制：
 
