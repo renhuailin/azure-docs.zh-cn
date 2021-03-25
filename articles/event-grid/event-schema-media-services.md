@@ -3,20 +3,20 @@ title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: be56c383c8c2d755ef82d4caad5e779bef418a19
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363349"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591922"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
 本文介绍媒体服务事件的架构和属性。
 
-## <a name="job-related-event-types"></a>与作业相关的事件类型
+## <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的 **与作业相关**  的事件类型。 **与作业相关** 的事件有两个类别： "监视作业状态更改" 和 "监视作业输出状态更改"。 
+媒体服务会发出如下所述的作业相关事件类型。 作业相关事件有两个类别：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。   
 
@@ -57,7 +57,7 @@ ms.locfileid: "100363349"
 
 | 事件类型 | 说明 |
 | ---------- | ----------- |
-| Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 不保证进度值从0% 开始，或者达到100%，也不能保证随着时间的推移而增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
+| Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 无法保证进度值从 0% 开始或达到 100%，也无法保证其随时间推移而以恒定速率增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
 
 请参阅后面的[架构示例](#event-schema-examples)。
 
@@ -279,7 +279,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `outputs` | Array | 获取作业输出。|
 
@@ -506,7 +506,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | `ingestUrl` | string | 直播活动提供的引入 URL。 |  
@@ -569,7 +569,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
 | `ingestUrl` | string | 直播活动提供的引入 URL。 |
@@ -631,7 +631,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `streamId` | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | `ingestUrl` | string | 直播活动提供的引入 URL。 |  
@@ -710,7 +710,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 轨道类型（音频/视频）。 |
 | `trackName` | string | 轨道名称。 |
@@ -782,7 +782,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 轨道类型（音频/视频）。 |
 | `trackName` | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -914,7 +914,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `firstTimestamp` | string | 收到视频类型的某个轨迹/质量级别的时间戳。 |
 | `firstDuration` | string | 具有第一个时间戳的数据区块的持续时间。 |
@@ -992,7 +992,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 轨道类型（音频/视频）。 |
 | `trackName` | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -1066,7 +1066,7 @@ ms.locfileid: "100363349"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `trackType` | string | 轨道类型（音频/视频）。 |
 | `trackName` | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -1105,14 +1105,14 @@ ms.locfileid: "100363349"
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | 媒体服务事件数据。 |
-| `specversion` | string | CloudEvents 架构规范版本。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-[注册作业状态更改事件](../media-services/latest/job-state-events-cli-how-to.md)
+[注册作业状态更改事件](../media-services/latest/monitoring/job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>另请参阅
 

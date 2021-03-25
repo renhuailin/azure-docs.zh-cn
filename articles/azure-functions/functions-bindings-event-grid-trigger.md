@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250122"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
@@ -226,7 +226,7 @@ module.exports = function (context, eventGridEvent) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何在文件 *function.js上* 配置事件网格触发器绑定。
+以下示例显示如何在 function.json 文件中配置事件网格触发器绑定。
 
 ```powershell
 {
@@ -240,7 +240,7 @@ module.exports = function (context, eventGridEvent) {
 }
 ```
 
-事件网格事件通过名为的参数提供给函数 `eventGridEvent` ，如下面的 PowerShell 示例中所示。
+事件网格事件通过名为 `eventGridEvent` 的参数提供给函数，如下面的 PowerShell 示例所示。
 
 ```powershell
 param($eventGridEvent, $TriggerMetadata)
@@ -340,7 +340,7 @@ Python 不支持特性。
 |---------|---------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | **direction** | 必需 - 必须设置为 `in`。 |
-| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -382,7 +382,7 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-可以通过在 function.json 文件的 `name` 属性中配置的参数来使用事件网格实例。
+可以通过在 *function.json* 文件的 `name` 属性中配置的参数来使用事件网格实例。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -603,7 +603,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ### <a name="manually-post-the-request"></a>手动发布请求
 
-在本地运行事件网格函数。 `Content-Type`和 `aeg-event-type` 标头需要手动设置，而所有其他值都可以保留为默认值。
+在本地运行事件网格函数。 需要手动设置 `Content-Type` 和 `aeg-event-type` 标头，而其他所有值都可以保留为默认值。
 
 使用 [Postman](https://www.getpostman.com/) 或 [curl](https://curl.haxx.se/docs/httpscripting.html) 等工具创建 HTTP POST 请求：
 

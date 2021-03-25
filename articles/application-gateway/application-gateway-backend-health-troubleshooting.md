@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592749"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
@@ -83,7 +83,7 @@ BackendAddressPoolsText : [
 > [!NOTE]
 > 默认探测请求将以“\<protocol\>://127.0.0.1:\<port\>/”格式发送。 例如，对于端口 80 上的 HTTP 探测，格式为 http://127.0.0.1:80 。 只将 HTTP 状态代码 200 至 399 视为正常。 协议和目标端口继承自 HTTP 设置。 如果你希望应用程序网关探测不同的协议、主机名或路径，并识别其他状态代码为正常，请配置一个自定义探测，并将其关联到 HTTP 设置。
 
-<a name="error-messages"></a>错误消息
+<a name="error-messages"></a>Error messages
 ------------------------
 #### <a name="backend-server-timeout"></a>后端服务器超时
 
@@ -242,7 +242,7 @@ BackendAddressPoolsText : [
 
 #### <a name="trusted-root-certificate-mismatch"></a>受信任的根证书不匹配
 
-**消息：** 后端使用的服务器证书的根证书与添加到应用程序网关的受信任根证书不匹配。 确保将正确的根证书添加到后端允许列表。
+**消息：** 后端使用的服务器证书的根证书与添加到应用程序网关的受信任根证书不匹配。 请确保添加正确的根证书，以将后端列入允许列表。
 
 **原因：** 带应用程序网关 v2 的端到端 SSL 必须验证后端服务器的证书，才能断定服务器是否正常运行。
 要信任某个 TLS/SSL 证书，后端服务器证书必须由应用程序网关受信任存储中包含的 CA 颁发。 如果证书不是由受信任的 CA 颁发的（例如，使用自签名证书），则用户应将证书颁发者的证书上传到应用程序网关。

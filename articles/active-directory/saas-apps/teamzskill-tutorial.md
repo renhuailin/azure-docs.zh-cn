@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 22e237a3451c87fd4867949b9aa94d19b6fcbbdf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729422"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>教程：Azure Active Directory 与 TeamzSkill 的单一登录 (SSO) 集成
@@ -77,11 +77,11 @@ ms.locfileid: "98729422"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.teamzskill.com/login/callback`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.teamzskill.com/login/callback`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.teamzskill.com/login/callback`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_SUBDOMAIN>.teamzskill.com/login/callback`
 
@@ -124,7 +124,7 @@ ms.locfileid: "98729422"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

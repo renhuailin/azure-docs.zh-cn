@@ -1,26 +1,27 @@
 ---
 title: 在 Azure 中扩展 Windows VM 的 OS 驱动器
 description: 在资源管理器部署模型中，使用 Azure PowerShell 增加虚拟机的 OS 驱动器大小。
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: kirpasingh
 manager: roshar
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549594"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -32,44 +33,44 @@ ms.locfileid: "93393823"
 > [!IMPORTANT]
 > 若要重设 Azure 虚拟机的 OS 磁盘或数据磁盘的大小，需要将虚拟机解除分配。
 >
-> 压缩现有磁盘不受支持，可能导致数据丢失。
+> 不支持收缩现有磁盘，收缩现有磁盘可能导致数据丢失。
 > 
 > 扩展磁盘后，需要[扩展 OS 中的卷](#expand-the-volume-within-the-os)才能使用更大的磁盘。
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>重设 Azure 门户中的托管磁盘的大小
 
-1. 在 [Azure 门户](https://portal.azure.com)中，请前往要在其中扩展磁盘的虚拟机。 选择 " **停止** " 以解除分配 VM。
-2. VM 停止后，请在 " **设置** " 下的左侧菜单中选择 " **磁盘** "。
+1. 在 [Azure 门户](https://portal.azure.com)中，转到要在其中扩展磁盘的虚拟机。 选择“停止”以解除分配 VM。
+2. 停止 VM 后，在“设置”下的左侧菜单中，选择“磁盘” 。
 
-    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="屏幕截图，显示在菜单的 &quot;设置&quot; 部分中选择的 &quot;磁盘&quot; 选项。":::
+    :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="显示在菜单的“设置”部分中选择了“磁盘”选项的屏幕截图。":::
 
  
-3. 在 " **磁盘名称** " 下，选择要调整大小的磁盘。
+3. 在“磁盘名称”下，选择要调整大小的磁盘。
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="屏幕截图，显示选中了磁盘名称的 &quot;磁盘&quot; 窗格。":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="显示“磁盘”窗格的屏幕截图，其中选择了一个磁盘名称。":::
 
-4. 在左侧菜单中的 " **设置** " 下，选择 " **配置** "。
+4. 在左侧菜单中的“设置”下选择“配置” 。
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="屏幕截图，显示在菜单的 &quot;设置&quot; 部分中选择的配置选项。":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="该屏幕截图显示已在菜单的“设置”部分选择了“配置”选项。":::
 
-5. 在 " **大小 (GiB")** 中，选择所需的磁盘大小。
+5. 在“大小 (GiB)”中，选择所需的磁盘大小。
    
    > [!WARNING]
-   > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 2,048 GB。  (可以将 VHD blob 扩展到该大小以上，但 OS 仅适用于前 2048 GB 空间。 ) 
+   > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 2,048 GB。 （可以扩展 VHD Blob，使之超出该大小，但操作系统只能使用空间的头 2,048 GB。）
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示所选磁盘大小的 &quot;配置&quot; 窗格的屏幕截图。":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="显示“配置”窗格的屏幕截图，其中选择了磁盘大小。":::
 
 6. 选择“保存”。
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="屏幕截图，显示已选中 &quot;保存&quot; 按钮的配置窗格。":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="该屏幕截图显示“配置”窗格，其中“保存”按钮处于选中状态。":::
 
 
-## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 调整托管磁盘的大小
+## <a name="resize-a-managed-disk-by-using-powershell"></a>使用 PowerShell 重设托管磁盘的大小
 
 在管理模式下打开 PowerShell ISE 或 PowerShell 窗口，执行以下步骤：
 
-1. 在资源管理模式下登录到 Microsoft Azure 帐户，并选择订阅：
+1. 在资源管理模式下登录 Microsoft Azure 帐户，并选择订阅：
    
     ```powershell
     Connect-AzAccount
@@ -118,7 +119,7 @@ ms.locfileid: "93393823"
 
 在管理模式下打开 PowerShell ISE 或 PowerShell 窗口，执行以下步骤：
 
-1. 在资源管理模式下登录到 Microsoft Azure 帐户，并选择订阅：
+1. 在资源管理模式下登录 Microsoft Azure 帐户，并选择订阅：
    
     ```powershell
     Connect-AzAccount

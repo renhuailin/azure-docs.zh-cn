@@ -7,10 +7,10 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.openlocfilehash: e46517865ba01a0d4d113696fbadabf5ae7b0105
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037925"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
@@ -43,4 +43,4 @@ ms.locfileid: "102037925"
 ## <a name="next-steps"></a>后续步骤
 获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报  
 了解有关[短信速率限制](alerts-rate-limiting.md)的详细信息  
-了解有关[操作组](./action-groups.md)的详细信息
+详细了解[操作组](./action-groups.md)

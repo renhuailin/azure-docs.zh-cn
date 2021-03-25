@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟网络-概念和最佳实践
-description: 了解 Azure 虚拟网络概念和最佳实践。
+title: Azure 虚拟网络 - 概念和最佳做法
+description: 了解 Azure 虚拟网络概念和最佳做法。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
 ms.openlocfilehash: 0a9945a58aa6ec49ad58f3a0a0d03ea75e30f6d8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223612"
 ---
-# <a name="azure-virtual-network-concepts-and-best-practices"></a>Azure 虚拟网络概念和最佳实践
+# <a name="azure-virtual-network-concepts-and-best-practices"></a>Azure 虚拟网络概念和最佳做法
 
-本文介绍了 Azure 虚拟网络 (VNet) 的主要概念和最佳实践。
+本文介绍 Azure 虚拟网络 (VNet) 的主要概念和最佳做法。
 
 ## <a name="vnet-concepts"></a>VNet 概念
 

@@ -9,10 +9,10 @@ ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339829"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
@@ -44,7 +44,7 @@ ms.locfileid: "93339829"
 
 其中的处理器和估算器共享同一 `leaseContainer` 和同一名称。
 
-另外有两个参数，一个是委托，其接收的数字表示 **有多少更改待处理器读取** ，另一个是需要进行该度量的时间间隔。
+另外有两个参数，一个是委托，其接收的数字表示 **有多少更改待处理器读取**，另一个是需要进行该度量的时间间隔。
 
 例如，下面是用于接收估算的委托：
 

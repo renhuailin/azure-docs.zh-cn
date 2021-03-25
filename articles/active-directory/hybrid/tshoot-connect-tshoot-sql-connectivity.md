@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce2525927b38a2d3300d15b7d34324f5ff59e4e5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96457430"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题
@@ -29,7 +29,7 @@ ms.locfileid: "96457430"
 ![SQL 错误](./media/tshoot-connect-tshoot-sql-connectivity/sql1.png)
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
-打开 PowerShell 窗口，并导入 ADSyncTools Powershell 模块
+打开 PowerShell 窗口并导入 ADSyncTools Powershell 模块
 
 ``` powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -42,13 +42,13 @@ Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\T
 或者安装 [PackageManagement PowerShell 模块预览 - 2016 年 3 月，适用于 PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
 -  显示所有命令：`Get-Command -Module AdSyncTools` 
-- **执行 PowerShell 函数**： `Connect-ADSyncDatabase` 并带有以下参数
+- 执行 PowerShell 函数：具有以下参数的 `Connect-ADSyncDatabase`
     - Server。 SQL Server 名称。
     - Instance。 （可选）SQL Server 实例名称和（可选）你要使用的端口号。 不要指定此参数来使用默认实例。
-    - UserName。 （可选）用于连接的用户帐户。 如果留空，将使用当前登录的用户。 如果要连接到远程 SQL Server 这应该是你为 Azure AD Connect SQL 连接性创建的自定义服务帐户。 Azure AD Connect 使用 Azure AD Connect 同步服务帐户向远程 SQL Server 进行身份验证。
+    - UserName。 （可选）用于连接的用户帐户。 如果留空，将使用当前登录的用户。 如果要连接到远程 SQL Server，应使用你为 Azure AD Connect SQL 连接创建的自定义服务帐户。 Azure AD Connect 使用 Azure AD Connect 同步服务帐户向远程 SQL Server 进行身份验证。
     - Password。 （可选）所提供的 UserName 的密码。
 
-此 PowerShell 函数将尝试使用传入的凭据绑定到指定的 SQL Server 和实例，或使用当前用户的凭据。 如果找不到 SQL Server，该脚本将尝试连接到 SQL Browser 服务，以确定已启用的协议和端口。
+此 PowerShell 函数将尝试使用传入的凭据或使用当前用户的凭据绑定到指定的 SQL Server。 如果找不到 SQL Server，该脚本将尝试连接到 SQL Browser 服务，以确定已启用的协议和端口。
 
 仅使用服务器名称的示例：
 ```

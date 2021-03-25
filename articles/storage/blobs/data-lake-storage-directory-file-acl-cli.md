@@ -1,6 +1,6 @@
 ---
-title: '使用 Azure CLI 管理数据 (Azure Data Lake Storage Gen2) '
-description: 使用 Azure CLI 管理具有分层命名空间的存储帐户中的目录和文件。
+title: 使用 Azure CLI 管理数据 (Azure Data Lake Storage Gen2)
+description: 使用 Azure CLI 在具有分层命名空间的存储帐户中管理目录和文件。
 services: storage
 author: normesta
 ms.service: storage
@@ -11,17 +11,17 @@ ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3e9afd4617eb7445ba83948d46eef0890832e2be
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100650348"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 [Azure Command-Line 接口 (CLI) ](/cli/azure/) 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍了如何使用 [Azure 命令行接口 (CLI)](/cli/azure/) 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-cli.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)。
 
 [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [提高反馈](https://github.com/Azure/azure-cli-extensions/issues)
 
@@ -29,7 +29,7 @@ ms.locfileid: "100650348"
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 - Azure CLI 版本 `2.6.0` 或更高版本。
 
@@ -68,7 +68,7 @@ ms.locfileid: "100650348"
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
 > [!NOTE]
-> 本文中所述的示例演示了) 授权 Azure AD Azure Active Directory (。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
+> 本文中提供的示例演示 Azure Active Directory (Azure AD) 授权操作。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
 
 ## <a name="create-a-container"></a>创建容器
 
@@ -225,4 +225,4 @@ az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --accou
 - [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 - [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
 - [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
-- [使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 Acl](data-lake-storage-acl-cli.md)
+- [使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)

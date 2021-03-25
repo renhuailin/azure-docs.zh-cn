@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: f40286a39694307ac43ecd60f6861d509f760990
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: 9adf525f4edb4104978bae32bbbef15ffb131f68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340783"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587247"
 ---
 # <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,17 +36,17 @@ Ticks
 
 以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|描述|
-  |-|-|
-  |YYYY|四位数的年份|
-  |MM|两位数的月份（01 = 1 月，依此类推。）|
-  |DD|两位数的月份日期（01 到 31）|
-  |T|时间元素开头的符号|
-  |hh|两位数的小时（00 到 23）|
-  |MM|两位数的分钟（00 到 59）|
-  |ss|两位数的秒（00 到 59）|
-  |.fffffff|七位数的小数秒|
-  |Z|UTC（协调世界时）指示符||
+|格式|描述|
+|-|-|
+|YYYY|四位数的年份|
+|MM|两位数的月份（01 = 1 月，依此类推。）|
+|DD|两位数的月份日期（01 到 31）|
+|T|时间元素开头的符号|
+|hh|两位数的小时（00 到 23）|
+|MM|两位数的分钟（00 到 59）|
+|ss|两位数的秒（00 到 59）|
+|.fffffff|七位数的小数秒|
+|Z|UTC（协调世界时）指示符|
   
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

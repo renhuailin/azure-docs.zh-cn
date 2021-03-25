@@ -1,7 +1,7 @@
 ---
 title: 文本审查 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 对于可能不需要的文本、个人数据和自定义的字词列表，请使用文本审核。
+description: 对可能不需要的文本、个人数据和自定义字词列表使用文本审查。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912899"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
-使用内容审查器的文本审核模型来分析文本内容。
+使用内容审查器的文本审查模型来分析文本内容。
 
-您可以根据您的策略和阈值来阻止、批准或查看内容 (查看 [评审、工作流和作业](./review-api.md) ，以了解如何设置人为评审) 。 使用文本审核模型，可以在合作伙伴、员工和消费者生成文本内容的环境中增加人员审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。
+可以根据策略和阈值阻止、批准或审阅内容（请参阅[审阅、工作流和作业](./review-api.md)，了解如何设置人工审阅）。 使用文本审查模型来增强对合作伙伴、员工和消费者生成文本内容所在环境的人工审查。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。
 
 服务响应包含以下信息：
 
@@ -47,13 +47,13 @@ ms.locfileid: "92912899"
 ```
 
 > [!NOTE]
-> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的 **分类** 响应（预览功能）。 **此功能仅支持英语** 。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的 **分类** 响应（预览功能）。 **此功能仅支持英语**。
 >
 > 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 ## <a name="classification"></a>分类
 
-内容审查器的计算机辅助 **文本分类功能** 仅支持 **英语** ，有助于检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
+内容审查器的机器辅助文本分类功能仅支持英语，可帮助检测可能不需要的内容。 根据上下文，可能会将标记的内容评估为不合适。 它传达了每个类别的可能性，并可能建议进行人工审核。 该功能使用训练的模型来识别可能的辱骂、贬损或歧视性语言。 要评审的内容包括俚语、缩写词、冒犯性言语，以及有意拼错的单词。 
 
 以下 JSON 摘录内容显示了示例输出：
 
@@ -82,7 +82,7 @@ ms.locfileid: "92912899"
 
 ## <a name="personal-data"></a>个人数据
 
-个人数据功能检测到此信息的潜在状态：
+个人数据功能检测是否可能存在以下信息：
 
 - 电子邮件地址
 - 美国邮寄地址
@@ -129,20 +129,20 @@ ms.locfileid: "92912899"
 
 ## <a name="auto-correction"></a>自动更正
 
-假设输入文本为 ("lzay" 和 "f0x" 是特意) 的：
+假设输入文本如下（“lzay”和“f0x”是有意拼错的）：
 
-> Qu！ ck 棕色 f0x 将跳过 lzay 狗。
+> The qu!ck brown f0x jumps over the lzay dog.
 
 如果请求执行自动更正，则响应会包含更正后的文本版本：
 
-> 快速棕色的 fox 会跳过延迟犬。
+> The quick brown fox jumps over the lazy dog.
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>创建和管理自定义字词列表
 
 尽管在默认情况下，全局字词列表能够很好地满足大部分需要，但你可能想要根据自己的具体业务需求筛选字词。 例如，你可能想要从用户的发布内容中，筛选出所有竞争品牌名称。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表  ，每个列表中的术语数不得超过 10,000 个  。
+> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
 >
 
 以下示例显示匹配的列表 ID：
@@ -161,4 +161,4 @@ ms.locfileid: "92912899"
 
 ## <a name="next-steps"></a>后续步骤
 
-利用 [文本审核 api 控制台](try-text-api.md)测试 api。 另请参阅 [评审、工作流和作业](./review-api.md) ，了解如何设置人为审阅。
+使用[文本审查 API 控制台](try-text-api.md)测试这些 API。 另请参阅[审阅、工作流和作业](./review-api.md)，了解如何设置人工审阅。

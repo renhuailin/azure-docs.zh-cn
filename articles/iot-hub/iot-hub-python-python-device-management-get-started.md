@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: d4c514042b89341b90b0bb9c939ef4b463741916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87872712"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
@@ -60,7 +60,7 @@ ms.locfileid: "87872712"
 
 * 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
-1. 在命令提示符处，运行以下命令以安装 azure-iot-device 包：
+1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
 
     ```cmd/sh
     pip install azure-iot-device
@@ -153,7 +153,7 @@ ms.locfileid: "87872712"
 
 此部分将创建一个 Python 控制台应用，以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
-1. 在命令提示符处，运行以下命令以安装 azure-iot-hub 包：
+1. 在命令提示符处，运行以下命令以安装 **azure-iot-hub** 包：
 
     ```cmd/sh
     pip install azure-iot-hub

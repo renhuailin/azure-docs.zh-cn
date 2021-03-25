@@ -6,16 +6,16 @@ ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 201f2f585c907ff82f28b96562efe3622dae6422
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: daf844870670c14db5208f45fbd9c9adf46be985
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666044"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504620"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>使用门户创建邻近放置组
+# <a name="create-a-proximity-placement-group-using-the-azure-portal"></a>使用 Azure 门户创建邻近放置组
 
 若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](../co-location.md#proximity-placement-groups)中。
 
@@ -24,7 +24,7 @@ ms.locfileid: "101666044"
 > [!NOTE]
 > 邻近放置组不能与专用主机一起使用。
 >
-> 如果要将可用性区域与放置组一起使用，则需要确保放置组中的 Vm 也全部位于同一可用性区域中。
+> 如果要将可用性区域与放置组一起使用，则需要确保放置组中的所有 VM 也都位于同一可用性区域中。
 >
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
