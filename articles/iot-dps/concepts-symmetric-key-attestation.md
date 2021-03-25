@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90531553"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
@@ -74,7 +74,7 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 [如何使用对称密钥预配旧设备](how-to-legacy-device-symm-key.md)一文中使用了该示例。
 
-为设备定义注册 ID 后，将使用注册组的对称密钥来计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
+为设备定义注册 ID 后，注册组的对称密钥用于计算注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) 哈希，以生成派生的设备密钥。 可使用以下 C# 代码执行注册 ID 的哈希处理：
 
 ```csharp
 using System; 

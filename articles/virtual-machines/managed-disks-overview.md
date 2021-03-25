@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627809"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604026"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
 
@@ -35,7 +35,7 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 
 ### <a name="integration-with-availability-sets"></a>集成可用性集
 
-托管磁盘集成可用性集，可确保[可用性集中的 VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的磁盘彼此之间完全隔离以避免单点故障。 磁盘自动放置于不同的存储缩放单元（模块）。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
+托管磁盘集成可用性集，可确保[可用性集中的 VM](./availability-set-overview.md) 的磁盘彼此之间完全隔离以避免单点故障。 磁盘自动放置于不同的存储缩放单元（模块）。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
 ### <a name="integration-with-availability-zones"></a>与可用性区域集成
 
@@ -47,7 +47,7 @@ Azure 托管磁盘是由 Azure 托管并与 Azure 虚拟机配合使用的块级
 
 #### <a name="azure-disk-backup"></a>Azure 磁盘备份
 
-Azure 备份以基于云的本机备份解决方案的形式提供 Azure 磁盘备份 (预览) ，以保护托管磁盘中的数据。 这是一个简单、安全且经济高效的解决方案，使你可以通过几个步骤配置对托管磁盘的保护。 Azure 磁盘备份提供了一个全包式解决方案，该解决方案通过使用备份策略自动创建快照并将其保留为配置的持续时间，为托管磁盘提供快照生命周期管理。 有关 Azure 磁盘备份的详细信息，请参阅 [预览版) 中的 Azure 磁盘备份概述 (](../backup/disk-backup-overview.md)。
+Azure 备份提供 Azure 磁盘备份（预览版）作为基于云的本机备份解决方案，可保护托管磁盘中的数据。 它是一个简单、安全且经济高效的解决方案，使你能够通过几个步骤为托管磁盘配置保护。 Azure 磁盘备份提供了一个统包式解决方案，通过自动定期创建快照并使用备份策略在配置的时间段内保留快照，为托管磁盘提供快照生命周期管理。 有关 Azure 磁盘备份的详细信息，请参阅 [Azure 磁盘备份概述（预览版）](../backup/disk-backup-overview.md)。
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
@@ -63,7 +63,7 @@ Azure 备份以基于云的本机备份解决方案的形式提供 Azure 磁盘�
 
 ### <a name="private-links"></a>专用链接
 
-对托管磁盘的私有链接支持可用于导入或导出网络内部的托管磁盘。 通过专用链接，可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，将数据导出到其他区域以进行区域扩展、灾难恢复和取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。 现在，可以利用[专用链接](../private-link/private-link-overview.md)将托管磁盘的导出和导入限制于 Azure 虚拟网络。 通过专用链接，可以确保数据仅在安全的 Microsoft 骨干网络内传输。
+对托管磁盘的专用链接支持可用于导入或导出网络内部的托管磁盘。 通过专用链接，可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，将数据导出到其他区域以进行区域扩展、灾难恢复和取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。 现在，可以利用[专用链接](../private-link/private-link-overview.md)将托管磁盘的导出和导入限制于 Azure 虚拟网络。 通过专用链接，可以确保数据仅在安全的 Microsoft 骨干网络内传输。
 
 若要了解如何启用专用链接以导入或导出托管磁盘，请参阅 [CLI](linux/disks-export-import-private-links-cli.md) 或[门户](disks-enable-private-links-for-import-export-portal.md)文章。
 
@@ -100,7 +100,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-大多数 VM 都包含一个临时磁盘，该磁盘不是托管磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json) 时，临时磁盘上的数据可能会丢失。 在以标准方式成功重启 VM 期间，临时磁盘上的数据将保留。 有关无临时磁盘的 VM 的详细信息，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
+大多数 VM 都包含一个临时磁盘，该磁盘不是托管磁盘。 临时磁盘为应用程序和进程提供短期存储，仅用于存储页面或交换文件等数据。 在[维护事件](./understand-vm-reboots.md)期间或[重新部署 VM](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 时，临时磁盘上的数据可能会丢失。 在以标准方式成功重启 VM 期间，临时磁盘上的数据将保留。 有关无临时磁盘的 VM 的详细信息，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
 
 在 Azure Linux VM 上，临时磁盘通常为“/dev/sdb”；在 Windows VM 上，临时磁盘默认为 D:。 务器端加密不会加密临时磁盘，除非你在主机上启用加密。
 

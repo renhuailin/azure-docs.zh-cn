@@ -14,10 +14,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92478127"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
@@ -30,8 +30,8 @@ ms.locfileid: "92478127"
 
 授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](../azuread-dev/v1-permissions-consent.md)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
 
-- **用户许可流**是指应用程序开发人员将用户定向到授权终结点，意图仅记录当前用户的许可。
-- **管理员许可流**是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](./reference-app-manifest.md)。
+- **用户许可流** 是指应用程序开发人员将用户定向到授权终结点，意图仅记录当前用户的许可。
+- **管理员许可流** 是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](./reference-app-manifest.md)。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>许可提示的构建基块
 
@@ -65,13 +65,13 @@ ms.locfileid: "92478127"
     
     2. 用户将看到传统许可提示。
 
-        ![显示传统许可提示的屏幕截图。](./media/application-consent-experience/consent_prompt_1b.png)
+        ![显示传统同意提示的屏幕截图。](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. 个人访问应用，该应用需要至少一项超出个人授权范围的权限。
     1. 管理员将看到与上面所示的 1.i 相同的提示。
     2. 将阻止用户向该应用程序授予许可，并将告知用户向其管理员索要对该应用的访问权限。 
                 
-        ![许可提示屏幕截图，告诉用户要求管理员访问应用。](./media/application-consent-experience/consent_prompt_2b.png)
+        ![同意提示的屏幕截图，告知用户向管理员请求对该应用的访问权限](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. 个人导航或定向到管理员许可流。
     1. 管理员用户将看到管理员许可提示。 此提示上的标题和权限说明已更改，这些更改强调了一个事实：接受此提示即表示授予应用代表整个租户访问所请求数据的权限。

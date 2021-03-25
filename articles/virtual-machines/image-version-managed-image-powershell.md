@@ -4,17 +4,17 @@ description: 了解如何使用 Azure PowerShell 将托管映像克隆到共享�
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: cec4f258cfaa0584c24f2cfc92ec1a536f6277cc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682709"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556974"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>将托管映像克隆到共享映像库映像
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。 
 >
-> 你还可以通过添加 `-StorageAccountType Premium_LRS` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `-StorageAccountType Standard_ZRS` 。
+> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 将映像存储在高级存储中，或者通过添加 `-StorageAccountType Standard_ZRS` 将其存储在[区域冗余存储](../storage/common/storage-redundancy.md)中。
 >
 
 ## <a name="delete-the-managed-image"></a>删除托管映像

@@ -9,16 +9,16 @@ ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 7f5b2831f45e902b312636e4133557a16ee7ec95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341631"
 ---
-# <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB) 
+# <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-提供正则表达式功能。 正则表达式是用于查找文本模式的简洁而灵活的表示法。 Azure Cosmos DB 使用 [ (PCRE) 的 PERL 兼容正则表达式 ](http://www.pcre.org/)。 
+提供正则表达式功能。 正则表达式是简明而灵活的表示法，用于找到文本的模式。 Azure Cosmos DB 使用[与 PERL 兼容的正则表达式 (PCRE)](http://www.pcre.org/)。 
 
 ## <a name="syntax"></a>语法
   
@@ -32,19 +32,19 @@ RegexMatch(<str_expr1>, <str_expr2>, [, <str_expr3>])
    是要搜索的字符串表达式。  
   
 *str_expr2*  
-   正则表达式。
+   是正则表达式。
 
 *str_expr3*  
-   要用于正则表达式的选定修饰符的字符串。 此字符串值是可选的。 如果要运行不带修饰符的 RegexMatch，可以添加一个空字符串或完全省略。 
+   是要与正则表达式一起使用的选定修饰符的字符串。 此字符串值是可选的。 如果要运行不带修饰符的 RegexMatch，可以添加空字符串或完全省略。 
 
-您可以了解有关 [在 Perl 中创建正则表达式的语法](https://perldoc.perl.org/perlre)。 
+可以了解[在 Perl 中创建正则表达式的语法](https://perldoc.perl.org/perlre)。 
 
-Azure Cosmos DB 支持以下四个修饰符：
+Azure Cosmos DB 支持以下四种修饰符：
 
 | 修饰符 | 说明 |
 | ------ | ----------- |
-| `m` | 将要搜索的字符串表达式视为多行。 如果没有此选项，则 "^" 和 "$" 将在字符串的开头或结尾处匹配，而不是与每个单独的行匹配。 |
-| `s` | 允许 "." 匹配任何字符，包括换行符。 | 
+| `m` | 将要搜索的字符串表达式视为多行。 如果没有此选项，“^”和“$”将在字符串的开头或结尾匹配，而不是在每一行匹配。 |
+| `s` | 允许使用“.”以匹配任何字符，包括换行符。 | 
 | `i` | 模式匹配时忽略大小写。 |
 | `x` | 忽略所有空白字符。 |
 
@@ -54,7 +54,7 @@ Azure Cosmos DB 支持以下四个修饰符：
   
 ## <a name="examples"></a>示例
   
-以下简单的 RegexMatch 示例使用几个不同的修饰符来检查字符串 "abcd" 中是否存在正则表达式匹配。
+以下简单的 RegexMatch 示例使用一些不同的修饰符检查字符串“abcd”是否匹配正则表达式。
   
 ```sql
 SELECT RegexMatch ("abcd", "ABC", "") AS NoModifiers, 
@@ -78,12 +78,12 @@ RegexMatch ("abcd", "aB c", "ix") AS CaseInsensitiveAndIgnoreWhiteSpace
 ]
 ```
 
-使用 RegexMatch，可以使用元字符执行更复杂的字符串搜索，而不能使用 StartsWith、EndsWith、Contains 或 StringEquals 系统函数。 下面是一些其他示例，可使用通过 [Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)提供的营养数据集运行。 
+借助 RegexMatch，可以使用元字符执行更复杂的字符串搜索，而 StartsWith、EndsWith、Contains 或 StringEquals 系统函数则无法做到这一点。 下面是一些附加的示例，你可以使用通过 [Azure Cosmos DB 查询操场](https://www.documentdb.com/sql/demo)获得的营养数据集来运行这些示例。 
 
 > [!NOTE] 
-> 如果需要在正则表达式中使用元字符，而不希望它具有特殊意义，则应该使用对元字符进行转义 `\` 。
+> 如果需要在正则表达式中使用元字符，并且不希望它具有特殊的含义，则应使用 `\` 对该元字符进行转义。
 
-**检查其说明中包含单词 "salt" 的项是否恰好一次：**
+检查说明中包含单词“salt”刚好一次的项：
 
 ```sql
 SELECT * 
@@ -91,7 +91,7 @@ FROM c
 WHERE RegexMatch (c.description, "salt{1}","")
 ```
 
-**检查其说明包含0到99之间的一个数字的项：**
+检查说明中包含 0 到 99 之间的数字的项：
 
 ```sql
 SELECT * 
@@ -99,7 +99,7 @@ FROM c
 WHERE RegexMatch (c.description, "[0-99]","")
 ```
 
-**检查其说明中包含四个字母单词（以 "S" 或 "s" 开头）的项：**
+检查说明中包含以“S”或“s”开头的四个字母单词的项：
 
 ```sql
 SELECT * 
@@ -107,9 +107,9 @@ FROM c
 WHERE RegexMatch (c.description, " s... ","i")
 ```
 
-## <a name="remarks"></a>备注
+## <a name="remarks"></a>注解
 
-如果正则表达式可以分解为 StartsWith、EndsWith、Contains 或 StringEquals 系统函数，则此系统函数将从 [范围索引](index-policy.md#includeexclude-strategy) 中受益。
+如果正则表达式可以分解为 StartsWith、EndsWith、Contains 或 StringEquals 系统函数，则该系统函数将受益于[范围索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>后续步骤
 

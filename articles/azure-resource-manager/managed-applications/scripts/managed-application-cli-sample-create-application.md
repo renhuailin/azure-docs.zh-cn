@@ -8,10 +8,10 @@ ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a9912f5134c3596740ef53f23531d57fe9467682
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497845"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>使用 Azure CLI 为服务目录部署托管应用程序
@@ -30,9 +30,9 @@ ms.locfileid: "87497845"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令部署托管应用程序。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令部署托管应用程序。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
 

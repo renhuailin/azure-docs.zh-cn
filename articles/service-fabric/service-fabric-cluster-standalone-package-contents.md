@@ -1,15 +1,15 @@
 ---
 title: 适用于 Windows Server 的 Azure Service Fabric 独立包
-description: 适用于 Windows Server 的 Azure{1}{2}Service Fabric 独立包的说明和内容。
+description: 适用于 Windows Server 的 AzureService Fabric 独立包的说明和内容。
 author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86261012"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
@@ -25,7 +25,7 @@ ms.locfileid: "86261012"
 | TestConfiguration.ps1 |PowerShell 脚本，用于分析 Cluster.json 中指定的基础结构。 |
 | DownloadServiceFabricRuntimePackage.ps1 |用于下载最新带外运行时包的 PowerShell 脚本，适用于部署计算机未连接到 Internet 的方案。 |
 | DeploymentComponentsAutoextractor.exe |包含独立包脚本所用部署组件的自解压缩存档。 |
-| EULA_ENU.txt |有关使用 Microsoft Azure Service Fabric Windows Server 独立包的许可条款。 现在，可以[下载 EULA 的副本](https://go.microsoft.com/fwlink/?LinkID=733084)。 |
+| EULA_ENU.txt |有关使用 Microsoft Azure Service Fabric Windows Server 独立包的许可条款。 可以立即 [下载一份 EULA](https://go.microsoft.com/fwlink/?LinkID=733084) 。 |
 | Readme.txt |发行说明和基本安装说明的链接。 这是本文中说明的子集。 |
 | ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe，它按需运行，以便收集跟踪日志并将其上传到 Microsoft 以提供支持。 |
@@ -51,4 +51,4 @@ ms.locfileid: "86261012"
 
 ## <a name="related"></a>相关内容
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
-* [Service Fabric 群集安全性方案](service-fabric-windows-cluster-windows-security.md)
+* [Service Fabric 群集安全方案](service-fabric-windows-cluster-windows-security.md)

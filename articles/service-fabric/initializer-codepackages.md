@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258971"
 ---
 # <a name="initializer-codepackages"></a>Initializer CodePackage
 
-从 7.1 版开始，Service Fabric 支持适用于[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序的 **Initializer CodePackage**。 Initializer CodePackage 提供了在其他 Codepackage 开始执行之前在 ServicePackage 范围内执行初始化操作的机会。 它们与 ServicePackage 的关系类似于 [SetupEntryPoint][setup-entry-point-link] 相对于 CodePackage 的关系。
+从 7.1 版开始，Service Fabric 支持适用于 [容器][containers-introduction-link]应用程序和 [来宾可执行文件][guest-executables-introduction-link]应用程序的 **Initializer CodePackage**。 Initializer CodePackage 提供了在其他 Codepackage 开始执行之前在 ServicePackage 范围内执行初始化操作的机会。 它们与 ServicePackage 的关系类似于 [SetupEntryPoint][setup-entry-point-link] 相对于 CodePackage 的关系。
 
 继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型][application-model-link]和 [Service Fabric 托管模型][hosting-model-link]。
 

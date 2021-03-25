@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.custom: accessibility
 ms.openlocfilehash: 2637dd6112d1cf1f9a3131cb9043a8b6aac2884f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735820"
 ---
 # <a name="supported-devices"></a>支持的设备
 
-[Azure 门户](https://portal.azure.com)是基于 Web 的控制台，可在所有新式的台式机和平板电脑设备的浏览器中运行。 若要使用门户，必须在浏览器上启用 JavaScript。 建议不要在浏览器中使用 ad 阻止程序，因为它们可能会导致某些门户功能出现问题。
+[Azure 门户](https://portal.azure.com)是基于 Web 的控制台，可在所有新式的台式机和平板电脑设备的浏览器中运行。 若要使用门户，必须在浏览器上启用 JavaScript。 我们建议你不要在浏览器中使用广告拦截器，因为它们可能会导致某些门户功能出现问题。
 
 如果需要从移动设备管理 Azure 资源，请尝试 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)。 它适用于 iOS 和 Android。
 

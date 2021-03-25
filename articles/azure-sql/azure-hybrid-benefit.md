@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: f7a37e761e37e295bbb92e442b1813ebded2a7cd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633812"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955272"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure 混合权益 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,6 @@ ms.locfileid: "100633812"
 使用 Azure CLI 设置或更新许可证类型：
 
 - [az sql db create](/cli/azure/sql/db#az-sql-db-create)
-- [az sql db update](/cli/azure/sql/db#az-sql-db-update)
 - [az sql mi create](/cli/azure/sql/mi#az-sql-mi-create)
 - [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)
 
@@ -85,12 +84,12 @@ ms.locfileid: "100633812"
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>面向 SQL Server 的 Azure 混合权益的特殊权利有哪些？
 
-SQL 数据库和 SQL 托管实例客户具有与 SQL Server 的 Azure 混合权益相关联的下列权限：
+SQL 数据库和 SQL 托管实例客户将获得与面向 SQL Server 的 Azure 混合权益相关的以下权利：
 
 |许可证足迹|面向 SQL Server 的 Azure 混合权益可带来哪些好处？|
 |---|---|
 |具有 SA 的 SQL Server Enterprise Edition 核心客户|<li>可以根据“超大规模”、“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1个本地核心 =“超大规模”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“常规用途”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
-|具有 SA 的 SQL Server Standard Edition 核心客户|<li>可以根据“超大规模”、“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1 个本地核心 =“超大规模”SKU 中的 1 个核心</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li><br><li>4核心本地 = 业务关键 SKU 中的1个核心</li>|
+|具有 SA 的 SQL Server Standard Edition 核心客户|<li>可以根据“超大规模”、“常规用途”或“业务关键”SKU 支付基准费率</li><br><li>1 个本地核心 =“超大规模”SKU 中的 1 个核心</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li><br><li>4 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
 |||
 
 

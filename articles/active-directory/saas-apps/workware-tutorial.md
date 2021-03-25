@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
 ms.openlocfilehash: f4996943fd95252be45f7a270d143f14e7f2d48a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181265"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workware"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workware 集成
@@ -26,7 +26,7 @@ ms.locfileid: "96181265"
 * 让用户使用其 Azure AD 帐户自动登录到 Workware。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,7 +45,7 @@ ms.locfileid: "96181265"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Workware” 。
 1. 从结果面板中选择“Workware”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -78,7 +78,7 @@ ms.locfileid: "96181265"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`<WORKWARE_URL>/WW/AuthServices`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`<WORKWARE_URL>/WW/AuthServices/Acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`<WORKWARE_URL>/WW/AuthServices/Acs`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请与 [Workware 客户端支持团队](mailto:support@activeops.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

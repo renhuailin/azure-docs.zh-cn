@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601648"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件访问经典策略迁移
@@ -75,7 +75,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ### <a name="exchange-online"></a>Exchange Online
 
-如果你想要迁移包含**Exchange Active Sync**作为客户端应用条件的**Exchange online**经典策略，你可能无法将其合并到一个新策略。 
+若要迁移 Exchange Online 的经典策略，而这些策略包含用作客户端应用条件的 Exchange Active Sync，则可能无法将它们整合到一个新策略中。 
 
 例如，如果希望支持所有客户端应用类型，则无法进行这种整合。 在将 **Exchange Active Sync** 用作客户端应用条件的新策略中，无法选择其他客户端应用。
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![条件访问条件](./media/policy-migration/16.png)
  
-用于 Exchange Online 的基于应用的经典策略，其中包括作为客户端应用条件的**Exchange Active Sync** ，它允许支持的和**不受****支持**的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
+Exchange Online 的基于应用的经典策略（包括作为客户端应用条件的 Exchange Active Sync）允许受支持的和不受支持的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
 
 ![条件访问选择 Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ### <a name="device-platforms"></a>设备平台
 
-包含基于应用的控制条件的经典策略中已预先将 iOS 和 Android 配置为设备平台条件。 
+包含基于应用的控制的经典策略已预先配置为将 iOS 和 Android 作为设备平台条件。 
 
 在新策略中，需要选择希望单独支持的[设备平台](concept-conditional-access-conditions.md#device-platforms)。
 
@@ -119,4 +119,4 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 - [在仅限报告模式下进行条件访问来确定新策略决定的影响。](concept-conditional-access-report-only.md)
 - 若要了解如何配置条件访问策略，请参阅[条件访问常见策略](concept-conditional-access-policy-common.md)。
-- 如果已准备好为环境配置条件访问策略，请参阅文章 [如何：在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。 
+- 如果已准备好针对环境配置条件访问策略，请参阅 [如何：规划 Azure Active Directory 中的条件访问部署](plan-conditional-access.md)一文。 

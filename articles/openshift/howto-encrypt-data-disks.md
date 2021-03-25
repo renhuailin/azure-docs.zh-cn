@@ -8,10 +8,10 @@ ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: 加密, byok, aro, cmk, openshift, red hat
 ms.openlocfilehash: fa84096dcc44e668a6cf7ebd0369c6d3631c28d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555612"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>在 Azure Red Hat OpenShift (ARO) 上使用客户管理的密钥 (CMK) 加密永久性卷声明（预览版）
@@ -24,7 +24,7 @@ ms.locfileid: "102555612"
 > [!IMPORTANT]
 > ARO 预览版功能是可选择启用的自助功能。 预览版功能“一经发布”就会“按原样”提供，不包括在服务级别协议和有限保证中。 客户支持部门会尽力为 ARO 预览版功能提供部分支持。 因此，这些功能不应用于生产。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 本文假设读者：
 
 * 在 OpenShift 4.4（或更高版本）中有预先存在的 ARO 群集。

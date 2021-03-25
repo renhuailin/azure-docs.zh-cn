@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f15d00f1050177c6255fb5528f03314153c3ed9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>教程：Azure Active Directory 与 ThirdLight 集成
@@ -59,7 +59,7 @@ ms.locfileid: "92514647"
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在“搜索”框中，输入“ThirdLight”  。 在搜索结果中选择“ThirdLight”，然后选择“添加”。  
+4. 在“搜索”框中，输入“ThirdLight”。 在搜索结果中选择“ThirdLight”，然后选择“添加”。
 
      ![搜索结果](common/search-new-app.png)
 
@@ -71,10 +71,10 @@ ms.locfileid: "92514647"
 若要配置并测试 ThirdLight 的 Azure AD 单一登录，需要完成以下步骤：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，为用户启用该功能。
-2. 在应用程序端[配置 ThirdLight 单一登录](#configure-thirdlight-single-sign-on)  。
-3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录  。
+2. 在应用程序端[配置 ThirdLight 单一登录](#configure-thirdlight-single-sign-on)。
+3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录。
 4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，为用户启用 Azure AD 单一登录  。
-5. 创建与用户的 Azure AD 表示形式相链接的 [ThirdLight 测试用户](#create-a-thirdlight-test-user)  。
+5. 创建与用户的 Azure AD 表示形式相链接的 [ThirdLight 测试用户](#create-a-thirdlight-test-user)。
 6. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -83,9 +83,9 @@ ms.locfileid: "92514647"
 
 若要配置 ThirdLight 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“ThirdLight”应用程序集成页上，选择“单一登录”： 
+1. 在 [Azure 门户](https://portal.azure.com/)中的“ThirdLight”应用程序集成页上，选择“单一登录”：
 
-    ![选择“单一登录”](common/select-sso.png)
+    ![选择单一登录](common/select-sso.png)
 
 2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
 
@@ -95,7 +95,7 @@ ms.locfileid: "92514647"
 
     ![“编辑”图标](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”对话框中完成以下步骤  。
+4. 在“基本 SAML 配置”对话框中完成以下步骤。
 
     ![“基本 SAML 配置”对话框](common/sp-identifier.png)
 
@@ -110,25 +110,25 @@ ms.locfileid: "92514647"
        > [!NOTE]
        > 这些值是占位符。 需要使用实际登录 URL 和标识符。 若要获取这些值，请与 [ThirdLight 支持团队](https://www.thirdlight.com/support)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
 
-5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，根据要求选择“联合元数据 XML”旁边的“下载”链接，并将文件保存在计算机上：    
+5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，根据要求选择“联合元数据 XML”旁边的“下载”链接，并将文件保存在计算机上：   
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 ThirdLight”部分，根据要求复制相应的 URL： 
+6. 在“设置 ThirdLight”部分，根据要求复制相应的 URL：
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 ### <a name="configure-thirdlight-single-sign-on"></a>配置 ThirdLight 单一登录
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录到 ThirdLight 公司站点。
 
-1. 转到“配置”   > “系统管理”   >   “SAML2”：
+1. 转到“配置” > “系统管理” > “SAML2”：
 
     ![系统管理](./media/thirdlight-tutorial/ic805843.png "系统管理")
 
@@ -136,13 +136,13 @@ ms.locfileid: "92514647"
   
     ![“SAML2 配置”部分](./media/thirdlight-tutorial/ic805844.png "“SAML2 配置”部分")
 
-    1. 选择“启用 SAML2 单一登录”  。
+    1. 选择“启用 SAML2 单一登录”。
 
-    1. 在“IdP 元数据的源”下选择“从 XML 加载 IdP 元数据”   。
+    1. 在“IdP 元数据的源”下选择“从 XML 加载 IdP 元数据”。
 
-    1. 打开在上一部分从 Azure 门户下载的元数据文件。 复制文件的内容，将其粘贴到“IdP 元数据 XML”框中  。
+    1. 打开在上一部分从 Azure 门户下载的元数据文件。 复制文件的内容，将其粘贴到“IdP 元数据 XML”框中。
 
-    1. 选择“保存 SAML2 设置”  。
+    1. 选择“保存 SAML2 设置”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -160,23 +160,23 @@ ms.locfileid: "92514647"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
-    1. 选择“显示密码”，然后记下“密码”框中的值   。
+    1. 选择“显示密码”，然后记下“密码”框中的值 。
 
-    1. 选择“创建”  。
+    1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 ThirdLight 的权限，使她能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“ThirdLight”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“ThirdLight”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“ThirdLight”  。
+2. 在应用程序列表中，选择“ThirdLight”。
 
     ![应用程序列表](common/all-applications.png)
 
@@ -202,15 +202,15 @@ ms.locfileid: "92514647"
 
 1. 以管理员身份登录到 ThirdLight 公司站点。
 
-1. 转到“用户”  选项卡。
+1. 转到“用户”选项卡。
 
-1. 选择“用户和组”  。
+1. 选择“用户和组”。
 
-1. 选择“添加新用户”。 
+1. 选择“添加新用户”。
 
 1. 输入要预配的有效 Azure AD 帐户的用户名、名称或说明，以及电子邮件地址。 选择新成员的预设或组。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 > [!NOTE]
 > 可以使用 ThirdLight 提供的任何用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

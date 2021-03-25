@@ -1,18 +1,18 @@
 ---
 title: Azure 服务总线消息传递的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 服务总线消息传递的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 578d292a33459bfd36c75676b384b4085bd95690
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 40aa2243c0130ad749ef396f322110e7885302e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636585"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604198"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Azure 服务总线消息传递的 Azure Policy 法规遵从性控制
 

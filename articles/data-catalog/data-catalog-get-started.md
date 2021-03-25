@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a56e5a4cae7c5a8e931b074f08a7152e53a8eb31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151998"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674727"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入门：创建 Azure 数据目录
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Azure 数据目录是一个完全托管的云服务，具有企业数据资产的注册系统和发现系统的功能。 有关详细的概述，请参阅 [What is Azure Data Catalog](overview.md)（什么是 Azure 数据目录）。
 
@@ -41,7 +43,7 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 
     ![Azure 数据目录创建按钮](media/data-catalog-get-started/data-catalog-create.png)
 
-2. 指定数据目录的**名称**、要使用的**订阅**、目录的**位置**和**定价层**。 然后选择“创建”。
+2. 指定数据目录的 **名称**、要使用的 **订阅**、目录的 **位置** 和 **定价层**。 然后选择“创建”。
 
 3. 转到 [Azure 数据目录主页](http://azuredatacatalog.com)，单击“发布数据”。
 
@@ -55,7 +57,7 @@ Azure 数据目录是一个完全托管的云服务，具有企业数据资产�
 
     ![Azure 数据目录 - 预配数据目录](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
 
-5. 展开“定价”，并检查 Azure 数据目录的**版本**（“免费”或“标准”）。
+5. 展开“定价”，并检查 Azure 数据目录的 **版本**（“免费”或“标准”）。
 
     ![Azure 数据目录 - 选择版本](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
 

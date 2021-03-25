@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/27/2020
 ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
-ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96303757"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
@@ -65,9 +65,9 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="indexing-complex-types"></a>为复杂类型编制索引
 
-在编制索引期间，单个文档中的所有复杂集合最多可以有3000个元素。 复杂集合的某个元素是该集合的成员，因此，对于会议室 (宾馆示例中唯一的复杂集合) ，每个房间都是一个元素。 在上面的示例中，如果 "机密点 Motel" 有500个房间，旅馆记录将包含500个房间元素。 对于嵌套的复杂集合，还会计算每个嵌套元素，同时还会计算外部 (父) 元素的计数。
+在编制索引期间，单个文档中的所有复杂集合总共最多可包含 3000 个元素。 复杂集合的元素是该集合的成员，因此“客房”集合（此酒店示例中唯一的复杂集合）中的每个客房都是一个元素。 在上面的示例中，如果“秘密点汽车旅馆”有 500 个客房，酒店文档将包含 500 个客房元素。 对于嵌套的复杂集合，除了外部（父）元素之外，还计入每个嵌套元素。
 
-此限制仅适用于复杂集合，而不是复杂类型 (如地址) 或字符串集合 (如标记) 。
+此限制仅适用于复杂集合，不适用于复杂类型（如地址）或字符串集合（如标记）。
 
 ## <a name="creating-complex-fields"></a>创建复杂字段
 
@@ -102,7 +102,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="updating-complex-fields"></a>更新复杂字段
 
-一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 在这里，重述几个主要规则，将字段添加到复杂类型不需要重新生成索引，但大多数修改都是如此。
+一般情况下，应用于字段的所有[重建索引规则](search-howto-reindex.md)仍会应用于复杂字段。 在此处重述一些主要规则以及将字段添加到复杂类型并不需要重建索引，但大多数修改操作需要重建索引。
 
 ### <a name="structural-updates-to-the-definition"></a>对定义的结构更新
 

@@ -4,10 +4,10 @@ description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97858718"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
@@ -34,7 +34,7 @@ Azure 备份在门户的“备份作业”下显示了所有计划的和按需�
 
 若要监视数据库备份警报：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 在保管库仪表板中，选择“备份警报”。
 

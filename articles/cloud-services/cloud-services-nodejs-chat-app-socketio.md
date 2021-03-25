@@ -9,18 +9,18 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743315"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>使用 Socket.IO 在 Azure 云服务上构建 Node.js chat 应用程序 (经典) 
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>在 Azure 云服务（经典）中使用 Socket.IO 生成 Node.js 聊天应用程序
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
-Socket.IO 提供 node.js 服务器和客户端之间的实时通信。 本教程指导你在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 有关 Socket.IO 的详细信息，请参阅 [socket.io](https://socket.io)。
+Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程指导你在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 有关 Socket.IO 的详细信息，请参阅 [socket.io](https://socket.io)。
 
 以下是已完成应用程序的屏幕截图：
 
@@ -51,7 +51,7 @@ Socket.IO 提供 node.js 服务器和客户端之间的实时通信。 本教程
     PS C:\> cd node
     ```
 
-4. 输入以下命令以创建一个名为的新解决方案 `chatapp` 和一个名为的辅助角色 `WorkerRole1` ：
+4. 输入以下命令，创建一个名为 `chatapp` 的新解决方案和一个名为 `WorkerRole1` 的辅助角色：
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -149,7 +149,7 @@ Socket.IO 提供 node.js 服务器和客户端之间的实时通信。 本教程
    > [!IMPORTANT]
    > 确保使用唯一名称，否则发布过程会失败。 部署完成后，会打开浏览器并导航到已部署的服务。
    >
-   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”部分
+   > 如果收到错误消息，指出导入的发布配置文件中不存在提供的订阅名称，则必须先为用户的订阅下载和导入发布配置文件，再部署到 Azure。 请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](https://azure.microsoft.com/develop/nodejs/tutorials/getting-started/)中的“将应用程序部署到 Azure”  部分
    >
    >
 

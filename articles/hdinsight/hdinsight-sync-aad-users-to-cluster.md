@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 2a753a33e9ddf16cc277ab10c1f91049a6382066
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931619"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871939"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -29,11 +29,11 @@ ms.locfileid: "98931619"
 
 2. 从左侧菜单选择“所有用户”，然后选择“新建用户”。 
 
-    ![Azure 门户 - 用户和组 - 所有用户](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png" alt-text="Azure 门户 - 用户和组 - 所有用户":::
 
 3. 完成新用户表单。 选择所创建的组，以便分配基于群集的权限。 在此示例中，请创建名为“HiveUsers”的组，以便向其分配新用户。 [示例说明](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)介绍如何创建 ESP 群集，其中包括如何添加 `HiveUsers` 和 `AAD DC Administrators` 这两个组。
 
-    ![Azure 门户 - 用户窗格 - 选择组](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png" alt-text="Azure 门户 - 用户窗格 - 选择组":::
 
 4. 选择“创建” 。
 
@@ -129,15 +129,15 @@ ms.locfileid: "98931619"
 
 1. 在 Ambari 仪表板中，选择“管理”菜单下的“管理 Ambari”。 
 
-    ![Apache Ambari 仪表板 - 管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png" alt-text="Apache Ambari 仪表板 - 管理 Ambari":::
 
 2. 在页面左侧的“用户 + 组管理”菜单组下选择“用户”。 
 
-    ![HDInsight 的“用户和组”菜单](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png" alt-text="HDInsight 的“用户和组”菜单":::
 
 3. 新用户应在“用户”表中列出。 “类型”设置为 `LDAP` 而非 `Local`。
 
-    ![HDInsight AAD 用户页面概述](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    :::image type="content" source="./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png" alt-text="HDInsight AAD 用户页面概述":::
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>作为新用户登录到 Ambari
 

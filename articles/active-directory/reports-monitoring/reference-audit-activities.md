@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231140"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
@@ -31,7 +31,7 @@ ms.locfileid: "89231140"
 Azure AD 中的报告体系结构由以下部分组成：
 
 - **活动报告** 
-    - [登录](concept-sign-ins.md) –提供有关托管应用程序和用户登录活动的使用情况的信息
+    - [登录](concept-sign-ins.md) - 提供有关托管应用程序的使用情况和用户登录活动的信息
     - [审核日志](concept-audit-logs.md) - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 
     
 - **安全报表** 

@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 6385f03556d155941139b77333d6f4a25081fe67
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100103152"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
@@ -79,9 +79,9 @@ ms.locfileid: "100103152"
 
 ### <a name="username-password-authentication"></a>用户名-密码身份验证
 
-如果应用仅使用用户名-密码身份验证，则无需为应用程序注册重定向 URI。 此流将执行到 Microsoft 标识平台的往返过程。 不会在任何特定 URI 上调用你的应用程序。
+如果应用仅使用用户名-密码身份验证，则无需为应用程序注册重定向 URI。 此流将往返访问 Microsoft 标识平台。 不会在任何特定 URI 上调用你的应用程序。
 
-但是，将应用程序标识为公用客户端应用程序。 为此，请执行以下操作：
+但是，请将应用程序标识为公共客户端应用程序。 为此，请执行以下操作：
 
 1. 仍在 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>中，选择“应用注册”中的应用，然后选择“身份验证” 。
 1. 在“高级设置” > “允许公共客户端流” > “启用以下移动和桌面流:”中，选择“是”。

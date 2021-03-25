@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: cb4f1ecdada68218c104558a85277417641906f6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033005"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558689"
 ---
 # <a name="azure-resource-logs"></a>Azure 资源日志
 Azure 资源日志是[平台日志](../essentials/platform-logs-overview.md)，可以通过它深入了解已在 Azure 资源中执行的操作。 资源日志的内容因 Azure 服务和资源类型而异。 默认不会收集资源日志。 必须为每个 Azure 资源创建诊断设置，以便将其资源日志发送到 Log Analytics 工作区与 [Azure Monitor 日志](../logs/data-platform-logs.md)一起使用，发送到 Azure 事件中心以转发到 Azure 外部，或者发送到 Azure 存储进行存档。
@@ -28,11 +28,11 @@ Azure 资源日志是[平台日志](../essentials/platform-logs-overview.md)，�
 
 [创建诊断设置](../essentials/diagnostic-settings.md)，以便将资源日志发送到 Log Analytics 工作区。 如 [Azure Monitor 日志的结构](../logs/data-platform-logs.md)中所述，此数据将存储在表中。 资源日志使用的表取决于资源使用的收集类型：
 
-- Azure 诊断 - 所有数据将写入到 _AzureDiagnostics_ 表中。
+- Azure 诊断 - 所有数据将写入到 [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) 表中。
 - 特定于资源 - 每个类别的资源的数据将写入到单独的表中。
 
 ### <a name="azure-diagnostics-mode"></a>Azure 诊断模式 
-在此模式下，任何诊断设置中的所有数据都将收集到 AzureDiagnostics 表中。 这是当今大多数 Azure 服务使用的传统方法。 由于多个资源类型会将数据发送到同一个表，因此其架构是所收集的所有不同数据类型的架构的超集。
+在此模式下，任何诊断设置中的所有数据都将收集到 AzureDiagnostics 表中。 这是当今大多数 Azure 服务使用的传统方法。 由于多个资源类型会将数据发送到同一个表，因此其架构是所收集的所有不同数据类型的架构的超集。 如需详细了解此表的结构以及此表如何适用于如此大量的列，请参阅 [AzureDiagnostics 参考](/azure/azure-monitor/reference/tables/azurediagnostics)。
 
 在以下示例中，以下数据类型的诊断设置将收集到同一个工作区中：
 
@@ -95,16 +95,6 @@ AzureDiagnostics 表的外观如下所示：
 可将现有的诊断设置修改为特定于资源的模式。 在这种情况下，已收集的数据将保留在 _AzureDiagnostics_ 表中，直到根据工作区的保留设置删除了这些数据。 新数据将收集到专用表中。 可以使用 [union](/azure/kusto/query/unionoperator) 运算符跨两个表查询数据。
 
 有关支持特定于资源模式的 Azure 服务的公告，请继续阅读 [Azure 更新](https://azure.microsoft.com/updates/)博客。
-
-### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics 中的列限制
-Azure Monitor 日志中的任何一个表限制为 500 个属性。 一旦达到该限制，在引入时，包含不属于前 500 个属性的数据的所有行将被删除。 *AzureDiagnostics* 表特别容易超过此限制，因为它包含写入到其中的所有 Azure 服务的属性。
-
-如果从多个服务收集资源日志，AzureDiagnostics 可能会超过此限制，因此数据将会丢失。 在所有 Azure 服务都支持特定于资源的模式之前，应将资源配置为写入到多个工作区，以减少达到 500 列限制的可能性。
-
-### <a name="azure-data-factory"></a>Azure 数据工厂
-由于包含一组详细的日志，因此 Azure 数据工厂是一种已知会写入大量列并可能导致 AzureDiagnostics 超过其限制的服务。 对于在启用特定于资源的模式之前配置的任何诊断设置，将会针对任一活动，为每个唯一命名的用户参数创建一个新列。 由于活动输入和输出的详细特性，将会创建更多列。
- 
-应尽快迁移日志，以使用特定于资源的模式。 如果无法立即做到这一点，一种临时的替代方案是将 Azure 数据工厂日志隔离到其自身的工作区，以尽量减少这些日志影响工作区中收集的其他日志类型的可能性。
 
 
 ## <a name="send-to-azure-event-hubs"></a>发送到 Azure 事件中心

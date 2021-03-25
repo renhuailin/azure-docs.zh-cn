@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89484286"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>将活动 DNS 名称迁移到 Azure 应用服务
@@ -29,7 +29,7 @@ ms.locfileid: "89484286"
 
 ## <a name="bind-the-domain-name-preemptively"></a>提前绑定域名
 
-绑定自定义域提前时，可以在对现有 DNS 记录进行任何更改之前完成以下两项操作：
+提前绑定自定义域时，请先完成下面的两项操作，再对现有 DNS 记录进行更改：
 
 - 验证域所有权
 - 为应用启用域名
@@ -40,17 +40,17 @@ ms.locfileid: "89484286"
 
 ### <a name="get-domain-verification-id"></a>获取域验证 ID
 
-按照 [获取域验证 id](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)中的步骤操作，获取应用的域验证 id。
+按照[获取域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) 中的步骤获取应用的域验证 ID。
 
 ### <a name="create-domain-verification-record"></a>创建域验证记录
 
-若要验证域所有权，请添加用于域验证的 TXT 记录。 TXT 记录的主机名取决于要映射的 DNS 记录类型类型。 请参阅下表 (`@` 通常表示根域) ：
+若要验证域所有权，请添加用于域验证的 TXT 记录。 TXT 记录的主机名取决于要映射的 DNS 记录类型的类型。 请参阅下表（`@` 通常表示根域）：
 
 | DNS 记录示例 | TXT 主机 | TXT 值 |
 | - | - | - |
-| \@（根） | _asuid_ | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| www（子域） | _asuid_ | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
-| \*（通配符） | _asuid_ | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \@（根） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| www（子域） | asuid.www | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
+| \*（通配符） | asuid | [应用的域验证 ID](app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id) |
 
 在 DNS 记录页中，记下要迁移的 DNS 名称的记录类型。 应用服务支持来自 CNAME 和 A 记录的映射。
 
@@ -63,11 +63,11 @@ ms.locfileid: "89484286"
 
     ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-1. 在 " **自定义域** " 页中，选择 " **添加自**定义域"。
+1. 在“自定义域”页，选择“添加自定义域” 。
 
     ![添加主机名](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-1. 键入要迁移的完全限定的域名，该域名对应于所创建的 TXT 记录，例如 `contoso.com` 、 `www.contoso.com` 或 `*.contoso.com` 。 选择“验证”。
+1. 键入要迁移的完全限定的域名，该域名对应于所创建的 TXT 记录，如 `contoso.com`、`www.contoso.com` 或 `*.contoso.com`。 选择“验证”。
 
     “添加自定义域”按钮随即激活。 
 
@@ -106,8 +106,8 @@ ms.locfileid: "89484286"
 | FQDN 示例 | 记录类型 | 主机 | Value |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | 通过[复制应用的 IP 地址](#info)获得的 IP 地址 |
-| www\.contoso.com (sub) | CNAME | `www` | _&lt;appname>. azurewebsites.net_ |
-| \*.contoso.com（通配符域） | CNAME | _\*_ | _&lt;appname>. azurewebsites.net_ |
+| www\.contoso.com (sub) | CNAME | `www` | &lt;appname>.azurewebsites.net |
+| \*.contoso.com（通配符域） | CNAME | _\*_ | &lt;appname>.azurewebsites.net |
 
 保存设置。
 

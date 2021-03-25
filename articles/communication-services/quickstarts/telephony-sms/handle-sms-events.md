@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47a8f1edb4afed41587eac3d539b5ad7cb8180f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488459"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655982"
 ---
 # <a name="quickstart-handle-sms-events"></a>快速入门：处理短信事件
 
@@ -27,7 +27,7 @@ ms.locfileid: "103488459"
 
 ## <a name="about-azure-event-grid"></a>关于 Azure 事件网格
 
-[Azure 事件网格](../../../event-grid/overview.md)是一种基于云的事件处理服务。 在本文中，你将了解如何针对[通信服务事件](../../concepts/event-handling.md)订阅事件，以及触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们会将事件发送到收集并显示消息的 Web 应用。
+[Azure 事件网格](../../../event-grid/overview.md)是一种基于云的事件处理服务。 在本文中，你将了解如何针对[通信服务事件](../../../event-grid/event-schema-communication-services.md)订阅事件，以及触发事件以查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 在本文中，我们会将事件发送到收集并显示消息的 Web 应用。
 
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -68,7 +68,7 @@ ms.locfileid: "103488459"
 
 如果系统提示输入系统主题名称，请随意输入唯一的字符串。 此字段不会对体验造成影响，适用于内部遥测。
 
-查看 [Azure 通信服务支持的事件](../../concepts/event-handling.md)的完整列表。
+查看 [Azure 通信服务支持的事件](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)的完整列表。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="显示选择了“短信已收到”和“短信传递报告已收到”事件类型的屏幕截图。":::
 
@@ -93,7 +93,7 @@ ms.locfileid: "103488459"
 - 当通信服务电话号码收到短信时，会生成 `SMS Received` 事件。 若要触发事件，只需将消息从你的电话发送到附加到通信服务资源的电话号码。
 - 当使用通信服务电话号码向用户发送短信时，会生成 `SMS Delivery Report Received` 事件。 若要触发和事件，需要在[已发送短信](../telephony-sms/send.md)的选项中启用 `Delivery Report`。 尝试使用 `Delivery Report` 向你的电话发送消息。 完成此操作会从你的 Azure 帐户中扣取最多几美分的费用。
 
-查看 [Azure 通信服务支持的事件](../../concepts/event-handling.md)的完整列表。
+查看 [Azure 通信服务支持的事件](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)的完整列表。
 
 ### <a name="receiving-sms-events"></a>接收短信事件
 
@@ -103,7 +103,7 @@ ms.locfileid: "103488459"
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="显示“短信传递报告”事件的事件网格架构的屏幕截图。":::
 
-详细了解[事件架构和其他事件处理概念](../../concepts/event-handling.md)。
+详细了解[事件架构和其他事件处理概念](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -118,5 +118,5 @@ ms.locfileid: "103488459"
 
 你可能还想要：
 
- - [了解事件处理概念](../../concepts/event-handling.md)
+ - [了解事件处理概念](../../../event-grid/event-schema-communication-services.md)
  - [了解事件网格](../../../event-grid/overview.md)

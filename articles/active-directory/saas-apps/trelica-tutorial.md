@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517746"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Trelica 的集成
@@ -101,7 +101,7 @@ ms.locfileid: "92517746"
 1. 在 Azure 门户的最左侧窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon** 。
+   1. 在“姓名”字段中输入 **B.Simon**。
    1. 在“用户名”字段中，输入“B.Simon@companydomain.extension”。  例如，B.Simon@contoso.com。
    1. 选中“显示密码”复选框，并记下“密码”框中显示的值。 
    1. 选择“创建”。

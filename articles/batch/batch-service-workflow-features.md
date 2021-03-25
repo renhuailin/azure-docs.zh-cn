@@ -4,10 +4,10 @@ description: 从开发的角度了解 Batch 服务的功能及其高级工作流
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85965206"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch 服务工作流和资源
@@ -23,7 +23,7 @@ ms.locfileid: "85965206"
 
 几乎所有使用 Batch 服务处理并行工作负荷的应用程序和服务都使用以下典型高级工作流：
 
-1. 将要处理的**数据文件**上传到 [Azure 存储](../storage/index.yml)帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到[计算节点](nodes-and-pools.md#nodes) 。
+1. 将要处理的 **数据文件** 上传到 [Azure 存储](../storage/index.yml)帐户。 Batch 包含访问 Azure Blob 存储的内置支持，在运行任务时，任务可以将这些文件下载到[计算节点](nodes-and-pools.md#nodes) 。
 2. 上传任务所要运行的 **应用程序文件** 。 这些文件可能是二进制文件或脚本及其依赖项，并由作业中的任务执行。 任务可以从存储帐户下载这些文件，也可使用 Batch 的 [应用程序包](nodes-and-pools.md#application-packages) 功能来管理和部署应用程序。
 3. 创建计算节点的 [池](nodes-and-pools.md#pools) 。 创建池时，可以指定池的计算节点数目、其大小和操作系统。 运行作业中的每个任务时，会将任务分配到池中的某个节点以执行。
 4. 创建 [作业](jobs-and-tasks.md#jobs)。 作业管理任务的集合。 可将每个作业关联到要运行该作业的任务的特定池。

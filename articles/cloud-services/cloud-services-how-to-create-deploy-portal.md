@@ -1,5 +1,5 @@
 ---
-title: 如何创建和部署云服务 (经典) |Microsoft Docs
+title: 如何创建和部署云服务（经典）| Microsoft Docs
 description: 了解如何使用“快速创建”方法创建云服务，并使用“上传”在 Azure 中上传和部署云服务包。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743400"
 ---
-# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>如何创建并部署 Azure 云服务 (经典) 
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>如何创建和部署 Azure 云服务（经典）
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 Azure 门户提供了两种创建和部署云服务的方法：*快速创建* 和 *自定义创建*。
 
@@ -60,7 +60,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建* �
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“创建资源”>“计算”  ，向下滚动到“云服务”并单击它  。
 
-    ![发布云 service1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![发布云服务 1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 
 3. 在新的“云服务”  窗格中，输入“DNS 名称”  的值。
 4. 创建一个新“资源组”  或选择一个现有的资源组。
@@ -70,7 +70,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建* �
 8. 单击“确定”  ，这将关闭“上载包”  窗格。
 9. 如果不添加任何证书，请单击“创建”  。
 
-    ![发布云 service2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![发布云服务 2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>上传证书
 如果部署包已 [配置为使用证书](cloud-services-configure-ssl-certificate-portal.md#modify)，现在就可以上传证书。
@@ -79,7 +79,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建* �
 2. 单击“附加证书”  ，然后在“添加证书”  窗格上单击“确定”  。
 3. 在“云服务”  窗格上单击“创建”  。 当部署达到“就绪”  状态时，可以继续执行后续步骤。
 
-    ![发布云 service3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![发布云服务 3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>确认部署已成功完成
 1. 单击云服务实例。
