@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.custom: seo-nov-2020
 ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368658"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>创建具有自动缩放吞吐量的 Azure Cosmos 容器和数据库
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-在 Azure Cosmos DB 中，你可以为数据库和容器配置标准 (手动) 或自动缩放预配吞吐量。 Azure Cosmos DB 中的自动缩放预配吞吐量使你能够 **自动、即时地自动扩展数据库或容器)  (的吞吐量**。 吞吐量会根据使用情况进行缩放，而不会影响工作负荷的可用性、延迟、吞吐量或性能。
+在 Azure Cosmos DB 中，可以在数据库和容器上配置标准的（手动的）或自动缩放的预配吞吐量。 通过自动缩放 Azure Cosmos DB 中预配的吞吐量，可以立即自动缩放数据库或容器的吞吐量 (RU/s)。 吞吐量会根据使用情况进行缩放，而不会影响工作负荷的可用性、延迟、吞吐量或性能。
 
 自动缩放预配吞吐量非常适合于具有可变或不可预测流量模式，并且在高性能和规模方面需要 SLA 的任务关键型工作负载。 本文介绍自动缩放预配吞吐量的好处和用例。
 
@@ -59,11 +59,11 @@ ms.locfileid: "97368658"
 
 ## <a name="enable-autoscale-on-existing-resources"></a>对现有资源启用自动缩放
 
-使用 [Azure 门户](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、 [Azure 资源管理器模板](how-to-provision-autoscale-throughput.md#azure-resource-manager)、 [CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) 在现有数据库或容器上启用自动缩放。 随时可以在自动缩放与标准（手动）预配吞吐量之间切换。 有关详细信息，请参阅[此文档](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。
+使用 [Azure 门户](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[Azure 资源管理器模板](how-to-provision-autoscale-throughput.md#azure-resource-manager)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) 在现有数据库或容器上启用自动缩放。 随时可以在自动缩放与标准（手动）预配吞吐量之间切换。 有关详细信息，请参阅[此文档](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自动缩放的吞吐量和存储限制
 
-对于 `Tmax` 的任何值，数据库或容器均可以存储总计 `0.01 * Tmax GB`。 达到此存储量之后，将基于新的存储值自动增加最大 RU/s，而不会影响应用程序。 
+对于 `Tmax` 的任何值，数据库或容器都可以存储总共 `0.01 * Tmax GB`。 达到此存储量之后，将基于新的存储值自动增加最大 RU/s，而不会影响应用程序。 
 
 例如，如果从 50,000 RU/s 的最大 RU/s（在 5000 - 50,000 RU/s 之间缩放）开始，则最多可存储 500 GB 数据。 如果超过 500 GB（例如，存储现在为 600 GB），则新的最大 RU/s 将是 60,000 RU/s（在 6000 - 60,000 RU/s 之间缩放）。
 

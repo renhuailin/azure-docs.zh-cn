@@ -9,10 +9,10 @@ ms.date: 03/01/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a1d3bdae1e870b094472a63d4b808d9df95c129d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101741899"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
@@ -149,7 +149,7 @@ ms.locfileid: "101741899"
 1. 选择“创建”。 
 1. 在“创建防火墙”页上，使用下表配置防火墙：
 
-   |设置  |“值”  |
+   |设置  |值  |
    |---------|---------|
    |订阅     |\<your subscription\>|
    |资源组     |选择“RG-DNAT-Test” |

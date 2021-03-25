@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8bc2cddf4d0380e5dc22e8250b6ee26f4d005b8a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 2fa8c2ea990644fa82ae79114322fa087259378b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952421"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448179"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 QQ 帐户注册与登录
 
@@ -25,18 +25,18 @@ ms.locfileid: "98952421"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-qq-application"></a>创建 QQ 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 QQ 帐户登录用户，需要在 " [qq 开发人员门户](http://open.qq.com)" 中创建应用程序。 如果还没有 QQ 帐户，可以在注册 [https://ssl.zc.qq.com](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 。
+要使用户能够在 Azure Active Directory B2C (Azure AD B2C) 中使用 QQ 帐户登录，需在 [QQ 开发人员门户](http://open.qq.com)中创建一个应用程序。 如果没有 QQ 帐户，可以在 [https://ssl.zc.qq.com](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 上注册。
 
 ### <a name="register-for-the-qq-developer-program"></a>注册 QQ 开发人员计划
 
 1. 使用 QQ 帐户凭据登录 [QQ 开发人员门户](http://open.qq.com)。
-1. 登录后，请继续进行 [https://open.qq.com/reg](https://open.qq.com/reg) 注册，作为开发人员。
+1. 登录后，请转到 [https://open.qq.com/reg](https://open.qq.com/reg) 将自己注册为开发者。
 1. 选择“个人”(individual developer)。
 1. 输入所需的信息，并选择“下一步” (next step)。
 1. 完成电子邮件验证过程。 注册为开发人员后，需要等待几天，以获得批准。
@@ -58,8 +58,8 @@ ms.locfileid: "98952421"
 ## <a name="configure-qq-as-an-identity-provider"></a>将 QQ 配置为标识提供者
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“标识提供者”，然后选择“QQ (预览)”。
 1. 输入“名称”。 例如，QQ。
 1. 对于 **客户端 ID**，输入你之前创建的 QQ 应用程序的应用 ID。
@@ -69,12 +69,16 @@ ms.locfileid: "98952421"
 ## <a name="add-qq-identity-provider-to-a-user-flow"></a>将 QQ 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要添加 QQ 标识提供者的用户流。
-1. 在 **社交标识提供者** 下，选择 " **QQ**"。
+1. 单击要将 QQ 标识提供者添加到的用户流。
+1. 在“社交标识提供者”下，选择“QQ”。
 1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页上，选择“QQ”以使用 QQ 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
+
 
 ::: zone-end
 
@@ -97,9 +101,9 @@ ms.locfileid: "98952421"
 
 ## <a name="configure-qq-as-an-identity-provider"></a>将 QQ 配置为标识提供者
 
-要使用户能够使用 QQ 帐户登录，需要将该帐户定义为声明提供程序，Azure AD B2C 可通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要使用户能够使用 QQ 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与之通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过将 QQ 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素来将其定义为声明提供程序。
+可以通过在策略的扩展文件中将 QQ 帐户添加到 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -170,6 +174,13 @@ ms.locfileid: "98952421"
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页上，选择“QQ”以使用 QQ 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

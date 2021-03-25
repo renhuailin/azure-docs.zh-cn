@@ -3,14 +3,14 @@ title: 驱动程序和工具兼容性 - Azure Database for MariaDB
 description: 本文介绍与 Azure Database for MariaDB 兼容的 MariaDB 驱动程序和管理工具。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e1d544004d4361d11b40d8016f38f8bdd01bf5c5
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 49fd2c8da3ba0a44f4901bc6c7a2241e9e20df4d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659863"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>与 Azure Database for MariaDB 兼容的 MariaDB 驱动程序和管理工具

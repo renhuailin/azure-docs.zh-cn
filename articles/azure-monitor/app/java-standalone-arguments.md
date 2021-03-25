@@ -1,19 +1,19 @@
 ---
-title: 为 Java 添加 JVM arg Azure Monitor Application Insights
-description: 如何添加启用 Java 的 Azure Monitor Application Insights 的 JVM 参数
+title: 添加 JVM 参数 - Azure Monitor Application Insights for Java
+description: 如何添加启用 Azure Monitor Application Insights for Java 的 JVM 参数
 ms.topic: conceptual
 ms.date: 04/16/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.openlocfilehash: bd6ed2e5c848b39ad946209d5ea92fcf6ce3b438
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625358"
 ---
-# <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>为 Java 添加 JVM arg Azure Monitor Application Insights
+# <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>添加 JVM 参数 - Azure Monitor Application Insights for Java
 
 
 

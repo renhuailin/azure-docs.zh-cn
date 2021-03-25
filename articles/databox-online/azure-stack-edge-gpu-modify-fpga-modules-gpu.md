@@ -1,41 +1,43 @@
 ---
-title: 修改 FPGA 设备上 IoT Edge 模块，使其在 Azure Stack Edge Pro GPU 设备上运行
-description: 描述现有 FPGA 设备上的现有 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行所需的修改。
+title: 修改 FPGA 设备上的 IoT Edge 模块，使其在 Azure Stack Edge Pro GPU 设备上运行
+description: 介绍要使现有 FPGA 设备上的现有 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行需要进行哪些修改。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.openlocfilehash: 660fbf7cc4dd28c800d8f49fd5d990c99f97c4c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550212"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102442989"
 ---
-# <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上从 Azure Stack Edge Pro FPGA 设备运行现有 IoT Edge 模块
+# <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上运行 Azure Stack Edge Pro FPGA 设备中的现有 IoT Edge 模块
 
-本文详细介绍了在 Azure Stack Edge Pro FPGA 上运行的基于 docker 的 IoT Edge 模块所需的更改，使其可以在 Azure Stack 边缘 Pro GPU 设备上基于 Kubernetes 的 IoT Edge 平台上运行。 
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
-## <a name="about-iot-edge-implementation"></a>关于 IoT Edge 实现 
+本文详细介绍了要使在 Azure Stack Edge Pro FPGA 上运行的基于 docker 的 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上的基于 Kubernetes 的 IoT Edge 平台上运行需要进行哪些更改。 
 
-IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro GPU 设备上的实现不同。 对于 GPU 设备，Kubernetes 用作 IoT Edge 的托管平台。 FPGA 设备上的 IoT Edge 使用基于 docker 的平台。 基于 docker 的应用程序模型 IoT Edge 会自动转换为 Kubernetes 本机应用程序模型。 但是，可能仍然需要进行一些更改，因为仅支持 Kubernetes 应用程序模型的一小部分。
+## <a name="about-iot-edge-implementation"></a>IoT Edge 实现简介 
 
-如果要将工作负荷从 FPGA 设备迁移到 GPU 设备，则需要更改现有 IoT Edge 模块，使其在 Kubernetes 平台上成功运行。 你可能需要以不同的方式指定你的存储、网络、资源使用情况和 web 代理要求。 
+Azure Stack Edge Pro FPGA 设备上的 IoT Edge 实现与 Azure Stack Edge Pro GPU 设备上的实现不同。 对于 GPU 设备，Kubernetes 用作 IoT Edge 的托管平台。 FPGA 设备上的 IoT Edge 使用基于 docker 的平台。 IoT Edge 基于 docker 的应用程序模型会自动转换为 Kubernetes 原生应用程序模型。 但是，可能仍然需要进行一些更改，因为仅支持一小部分的 Kubernetes 应用程序模型。
+
+如果要将工作负载从 FPGA 设备迁移到 GPU 设备，则需要对现有 IoT Edge 模块进行更改，使其在 Kubernetes 平台上成功运行。 你可能需要以不同的方式指定存储、网络、资源使用情况和 Web 代理要求。 
 
 ## <a name="storage"></a>存储
 
 为 IoT Edge 模块指定存储时，请考虑以下信息。
 
 - 使用卷装载指定 Kubernetes 上的容器存储。
-- Kubernetes 上的部署不能具有绑定来关联持久性存储或主机路径。
-    - 对于永久性存储，请使用 `Mounts` with type `volume` 。
-    - 对于主机路径，请使用 `Mounts` with type `bind` 。
-- 对于 Kubernetes 上的 IoT Edge，bind `Mounts` 仅适用于目录，而不适用于文件。
+- Kubernetes 上的部署不能具有针对关联的永久性存储或主机路径的绑定。
+    - 对于永久性存储，请使用类型为 `volume` 的 `Mounts`。
+    - 对于主机路径，请使用类型为 `bind` 的 `Mounts`。
+- 对于 Kubernetes 上的 IoT Edge，通过 `Mounts` 进行绑定仅适用于目录，而不适用于文件。
 
-#### <a name="example---storage-via-volume-mounts"></a>示例-通过卷装载进行存储 
+#### <a name="example---storage-via-volume-mounts"></a>示例 - 通过卷装载进行存储 
 
 对于 docker 上的 IoT Edge，将使用主机路径绑定将设备上的共享映射到容器中的路径。 下面是在 FPGA 设备上使用的容器创建选项：
 
@@ -51,7 +53,7 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 }
 ```
 <!-- is this how it will look on GPU device?-->
-对于 Kubernetes 上 IoT Edge 的主机路径，此处显示了使用 `Mounts` 类型的示例 `bind` ：
+对于 Kubernetes 上的 IoT Edge 的主机路径，此处显示了使用类型为 `bind` 的 `Mounts` 的示例：
 ```
 {
     "HostConfig": {
@@ -69,7 +71,7 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 
 <!--following example is for persistent storage where we use mounts w/ type volume-->
 
-对于在 Kubernetes 上运行 IoT Edge 的 GPU 设备，将使用卷装入来指定存储。 若要使用共享设置存储，的值应 `Mounts.Source` 为 GPU 设备上预配的 SMB 或 NFS 共享的名称。 `/home/input`是在容器中可访问的卷的路径。 下面是在 GPU 设备上使用的容器创建选项：
+对于在 Kubernetes 上运行 IoT Edge 的 GPU 设备，将使用卷装载来指定存储。 若要使用共享预配存储，`Mounts.Source` 的值将为之前在 GPU 设备上预配的 SMB 或 NFS 共享的名称。 `/home/input` 是可在容器中访问卷的路径。 下面是在 GPU 设备上使用的容器创建选项：
 
 ```
 {
@@ -95,15 +97,15 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 
 为 IoT Edge 模块指定网络时，请考虑以下信息。 
 
-- `HostPort` 在群集内部和外部公开服务时，必须提供规范。
-    - K8sExperimental 选项，用于限制仅向群集公开服务。
-- 模块间通信需要 `HostPort` 规范，并使用映射端口 (连接，而不是使用容器公开端口) 。
-- 主机网络可与一起使用 `dnsPolicy = ClusterFirstWithHostNet` ，因为所有容器 (尤其 `edgeHub`) 并不一定要在主机网络上运行。 <!--Need further clarifications on this one-->
-- 添加 TCP 的端口映射，同一请求中的 UDP 不起作用。
+- 需要 `HostPort` 规范才能在群集内外部公开服务。
+    - K8sExperimental 选项用于将服务公开范围仅限于群集。
+- 模块间通信需要 `HostPort` 规范以及使用映射端口（而非使用容器公开端口）的连接。
+- 主机网络适用于 `dnsPolicy = ClusterFirstWithHostNet` 的情况，因此所有容器（尤其是 `edgeHub`）也不必都位于主机网络上。 <!--Need further clarifications on this one-->
+- 添加 TCP 的端口映射时，同一请求中的 UDP 不起作用。
 
-#### <a name="example---external-access-to-modules"></a>示例-对模块的外部访问 
+#### <a name="example---external-access-to-modules"></a>示例 - 对模块的外部访问 
 
-对于指定端口绑定的任何 IoT Edge 模块，将使用在设备的本地 UI 中指定的 Kubernetes 外部服务 IP 范围来分配 IP 地址。 在 docker 上的 IoT Edge 与在 Kubernetes 上 IoT Edge 之间没有任何更改，如以下示例中所示。  
+对于指定端口绑定的任何 IoT Edge 模块，均使用 Kubernetes 外部服务 IP 范围（已在设备的本地 UI 中指定）分配 IP 地址。 docker 上的 IoT Edge 与 Kubernetes 上的 IoT Edge 之间的容器创建选项没有任何更改，如以下示例中所示。  
 
 ```json 
 {
@@ -119,18 +121,18 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 }
 ```
 
-但是，若要查询分配给模块的 IP 地址，可以使用 Kubernetes 仪表板，如 [获取服务或模块的 ip 地址](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)中所述。 
+但是，若要查询分配给模块的 IP 地址，可以使用 Kubernetes 仪表板，如[获取服务或模块的 IP 地址](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)中所述。 
 
-或者，你可以 [连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface) ，并使用 `iotedge` list 命令列出你设备上运行的所有模块。 [命令输出](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)还将指示与模块关联的外部 ip。
+或者，可以[连接到设备的 PowerShell 接口](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)并使用 `iotedge` 列表命令以列出在设备上运行的所有模块。 [命令输出](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)还将指示与模块关联的外部 IP。
 
 
 ## <a name="resource-usage"></a>资源使用情况 
 
-对于 GPU 设备上基于 Kubernetes 的 IoT Edge 设置，将以不同于 FPGA 设备的方式指定硬件加速、内存和 CPU 需求等资源。 
+通过 GPU 设备上基于 Kubernetes 的 IoT Edge 设置，将以不同于 FPGA 设备的方式指定硬件加速、内存和 CPU 要求等资源。 
 
-#### <a name="compute-acceleration-usage"></a>计算加速度使用情况
+#### <a name="compute-acceleration-usage"></a>计算加速使用情况
 
-若要在 FPGA 上部署模块，请使用容器创建选项 <!--with Device Bindings--> 如以下配置所示： <!--not sure where are device bindings in this config--> 
+若要在 FPGA 上部署模块，请使用容器创建选项， <!--with Device Bindings--> 如以下配置所示： <!--not sure where are device bindings in this config--> 
 
 ```json
 {
@@ -163,7 +165,7 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
     
 <!--Note: The IP address assigned to your FPGA module's service can be used to send inferencing requests from outside the cluster OR your ML module can be used along with DBE Simple Module Flow by passing files to the module using an input share.-->
     
-对于 GPU，请使用资源请求规范而不是设备绑定，如下面的最小配置中所示。 请求 nvidia 资源而不是杀手，并且不需要指定 `wireserver` 。 
+对于 GPU，请使用资源请求规范而不是设备绑定，如下面的最小配置中所示。 请求 nvidia 资源而非 catapult，并且不需要指定 `wireserver`。 
 
 ```json     
 {
@@ -186,9 +188,9 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
 }
 ```
 
-#### <a name="memory-and-cpu-usage"></a>内存和 CPU 使用率
+#### <a name="memory-and-cpu-usage"></a>内存和 CPU 使用情况
  
-若要设置内存和 CPU 使用情况，请在部分中为模块使用处理器限制 `k8s-experimental` 。 <!--can we verify if this is how we set limits of memory and CPU-->
+若要设置内存和 CPU 使用情况，请对 `k8s-experimental` 部分中的模块使用处理器限制。 <!--can we verify if this is how we set limits of memory and CPU-->
 
 ```json
     "k8s-experimental": {
@@ -203,29 +205,29 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
         }
 }
 ```
-内存和 CPU 规范并不是必需的，但通常是良好的做法。 如果 `requests` 未指定，则使用限制中设置的值作为所需的最小值。 
+内存和 CPU 规范并不是必需的，但通常是不错的做法。 如果未指定 `requests`，则在限制范围内设置的值将用作所需的最小值。 
 
-为模块使用共享内存还需要另一种方法。 例如，可以在实时视频分析和推理解决方案之间使用主机 IPC 模式来访问共享内存，如在 [Azure Stack Edge 上部署实时视频分析](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)中所述。
+为模块使用共享内存还需要采用另一种方法。 例如，可以使用主机 IPC 模式在实时视频分析和推理解决方案之间提供共享内存访问权限，如[在 Azure Stack Edge 上部署实时视频分析](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal)中所述。
 
 
 ## <a name="web-proxy"></a>Web 代理 
 
-配置 web 代理时，请考虑以下信息：
+配置 Web 代理时，请考虑以下信息：
 
-如果在网络中配置了 web 代理，请在 `edgeHub` FPGA 设备上基于 docker 的 IoT Edge 安装程序上配置部署的以下环境变量：
+如果在网络中配置了 Web 代理，请在 FPGA 设备上基于 docker 的 IoT Edge 设置上为 `edgeHub` 部署配置以下环境变量：
 
 - `https_proxy : <proxy URL>`
-- `UpstreamProtocol : AmqpWs` (，除非 web 代理允许 `Amqp` 流量) 
+- `UpstreamProtocol : AmqpWs`（除非 Web 代理允许 `Amqp` 流量）
 
 对于 GPU 设备上基于 Kubernetes 的 IoT Edge 设置，需要在部署过程中配置此附加变量：
 
-- `no_proxy`： localhost
+- `no_proxy`：localhost
 
-- Kubernetes 平台上的 IoT Edge 代理使用端口35000和35001。 请确保模块不在这些端口上运行，否则可能导致端口冲突。 
+- Kubernetes 平台上的 IoT Edge 代理使用端口 35000 和 35001。 请确保模块不会在这些端口上运行，否则可能导致端口冲突。 
 
 ## <a name="other-differences"></a>其他差异
 
-- **部署策略**：你可能需要将任何更新的部署行为更改为模块。 IoT Edge 模块的默认行为是滚动更新。 如果模块正在使用硬件加速或网络端口等资源，则此行为会阻止更新的模块重新启动。 当处理 GPU 设备的 Kubernetes 平台上的永久性卷时，此行为可能会产生意想不到的后果。 若要重写此默认行为，你可以 `Recreate` 在模块的部分中指定。 `k8s-experimental`
+- **部署策略**：你可能需要针对模块的任何更新更改部署行为。 IoT Edge 模块的默认行为是滚动更新。 如果模块正在使用硬件加速或网络端口等资源，则此行为会阻止更新的模块重启。 此行为可能会产生意想不到的影响，尤其是在处理 GPU 设备的 Kubernetes 平台上的永久性卷时。 若要替代此默认行为，可以在模块的 `k8s-experimental` 部分中指定 `Recreate`。
 
     ```    
     {
@@ -237,13 +239,13 @@ IoT Edge 实现在 Azure Stack Edge Pro FPGA 设备上与 Azure Stack Edge Pro G
     }
     ```
 
-- **模块名称**：模块名称应遵循 Kubernetes 命名约定。 将这些模块移动到 Kubernetes 时，可能需要将在 IoT Edge 上运行的模块重命名 IoT Edge 为 Docker。 有关命名的详细信息，请参阅 [Kubernetes 命名约定](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)。
+- **模块名称**：模块名称应遵循 Kubernetes 命名约定。 将在具有 Docker 的 IoT Edge 上运行的模块移动具有 Kubernetes 的 IoT Edge 时，需要重命名这些模块。 有关命名的详细信息，请参阅 [Kubernetes 命名约定](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)。
 - **其他选项**： 
-    - 某些在 FPGA 设备上工作的 docker create 选项在 GPU 设备上的 Kubernetes 环境中不起作用。 例如：，如– EntryPoint。<!--can we confirm what exactly is required here-->
-    - 等环境变量 `:` 需要替换为 `__` 。
-    - **容器** 为 Kubernetes pod 创建状态将导致 IoT 中心资源上某个模块的 **回退** 状态。 尽管此状态的原因有很多，但通常是因为在较低的网络带宽连接上请求大型容器映像。 当该 pod 处于此状态时，模块的状态在 IOT **中心中显示为 "** 正在运行"。
+    - 某些在 FPGA 设备上可用的 docker 创建选项在 GPU 设备上的 Kubernetes 环境中将不可用。 例如 EntryPoint。<!--can we confirm what exactly is required here-->
+    - `:` 之类的环境变量需要替换为 `__`。
+    - Kubernetes Pod 的状态为“正在创建容器”时，会导致 IoT 中心资源上的模块呈现“回退”状态 。 尽管导致 Pod 处于此状态的原因有很多，但一个常见的原因是通过低网络宽带连接拉取大型容器映像。 当 Pod 处于此状态时，尽管模块刚启动，但该模块在 IoT 中心的状态显示为“回退”。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何 [将 GPU 配置为使用模块](azure-stack-edge-j-series-configure-gpu-modules.md)。
+- 详细了解如何[配置 GPU 以使用模块](azure-stack-edge-j-series-configure-gpu-modules.md)。

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7234a8c45c20c64dddb43a52a099aa92f2d297d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321116"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
@@ -24,7 +24,7 @@ ms.locfileid: "93321116"
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)

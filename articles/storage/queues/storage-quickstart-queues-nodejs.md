@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-js
 ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97586527"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
@@ -26,7 +26,7 @@ ms.locfileid: "97586527"
 - 查看队列中的消息
 - 更新队列中的消息
 - 从队列接收消息
-- 从队列中删除消息
+- 删除队列中的消息
 - 删除队列
 
 其他资源：

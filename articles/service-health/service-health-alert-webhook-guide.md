@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: a70c4fcd01a1a95c598d980004ee60292a6cf24b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594618"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知

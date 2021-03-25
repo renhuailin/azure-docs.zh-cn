@@ -4,10 +4,10 @@ description: 本文介绍如何获取事件网格主题或域的访问密钥
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.openlocfilehash: a642affbac79766684dc75a37dae0373450d20e8
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632523"
 ---
 # <a name="get-access-keys-for-event-grid-resources-topics-or-domains"></a>获取事件网格资源（主题或域）的访问密钥

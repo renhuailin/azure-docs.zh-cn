@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
 ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630092"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述

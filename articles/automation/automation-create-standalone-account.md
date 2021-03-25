@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/07/2021
 ms.topic: conceptual
 ms.openlocfilehash: e0088fb129e9c6558de7539ba754a45e067dc3d8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576831"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
@@ -38,7 +38,7 @@ ms.locfileid: "99576831"
 如果已将某用户添加到全局管理员/共同管理员角色，则可先将其从订阅的 Active Directory 实例中删除， 然后将其重新添加到 Active Directory 中的用户角色。 若要验证用户角色，请执行以下操作：
 
 1. 在 Azure 门户中，转到“Azure Active Directory”窗格。
-1. 选择“用户和组”。
+1. 选择“用户和组”  。
 1. 选择“所有用户”。
 1. 选择特定的用户后，选择“配置文件”。 用户配置文件下的“用户类型”属性值不应为“来宾”。
 
@@ -93,7 +93,7 @@ ms.locfileid: "99576831"
 
 ## <a name="create-a-classic-run-as-account"></a>创建经典运行方式帐户
 
-创建 Azure 自动化帐户时，默认情况下不会创建经典运行方式帐户。 如果需要经典运行方式帐户来管理 Azure 经典资源，请执行以下步骤：
+默认情况下，在创建 Azure 自动化帐户时不会创建经典运行方式帐户。 若需使用经典运行方式帐户管理 Azure 经典资源，请执行以下步骤：
 
 1. 在“自动化帐户”的“帐户设置”下，选择“运行方式帐户” 。
 2. 选择“Azure 经典运行方式帐户”。
@@ -104,5 +104,5 @@ ms.locfileid: "99576831"
 * 若要详细了解图形创作，请参阅[在 Azure 自动化中创作图形 Runbook](automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
 * 若要开始使用 PowerShell 工作流 Runbook，请参阅[教程：创建 PowerShell 工作流 Runbook](learn/automation-tutorial-runbook-textual.md)。
-* 若要开始使用 Python 3 runbook，请参阅 [教程：创建 Python 3 runbook](learn/automation-tutorial-runbook-textual-python-3.md)。
+* 若要开始使用 Python 3 Runbook，请参阅[教程：创建 Python 3 Runbook](learn/automation-tutorial-runbook-textual-python-3.md)。
 * 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。

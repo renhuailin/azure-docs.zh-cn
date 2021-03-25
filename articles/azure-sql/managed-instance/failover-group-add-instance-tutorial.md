@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: sashan
 ms.date: 08/27/2019
 ms.openlocfilehash: 1609f188af8ffb58251edc806e19f7820a6b0869
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525715"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
@@ -40,13 +40,13 @@ ms.locfileid: "99525715"
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
 
-- Azure 订阅。 [创建免费帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教程，请确保准备好以下各项：
 
-- Azure 订阅。 [创建免费帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
+- Azure 订阅。 [创建 Batch 帐户](https://azure.microsoft.com/free/)（如果还没有该帐户）。
 - [Azure PowerShell](/powershell/azure/)
 
 ---

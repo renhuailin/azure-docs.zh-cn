@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c3bf8e5f81ae7bf35ff34039fa1e81c9fd4a406b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324540"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
@@ -39,7 +39,7 @@ ms.locfileid: "93324540"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决的主要任务：
 
-**操作模型** ：将模型和管道部署到生产中或生产类似的环境中供应用程序操作。
+**操作模型**：将模型和管道部署到生产中或生产类似的环境中供应用程序操作。
 
 ### <a name="operationalize-a-model"></a>操作模型
 如果拥有一组运行良好的模型，则可操作这些模型，以供其他应用程序使用。 根据具体的业务需求，实时作出预测或基于批处理作出预测。 若要部署模型，请使用开放 API 接口公开模型。 通过该接口，各种应用程序可轻松使用模型，例如：
@@ -52,7 +52,7 @@ ms.locfileid: "93324540"
 
 有关使用 Azure 机器学习 Web 服务使模型可操作化的示例，请参阅[部署 Azure 机器学习 Web 服务](../classic/deploy-a-machine-learning-web-service.md)。 将遥测和监视功能构建到部署的生产模型和数据管道中是一种最佳做法。 此做法有助于后续进行系统状态报告和故障排除。  
 
-## <a name="artifacts"></a>项目
+## <a name="artifacts"></a>Artifacts
 
 * 显示系统运行状况和关键指标的状态仪表板
 * 具有部署详细信息的最终建模报表

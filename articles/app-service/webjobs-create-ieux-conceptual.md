@@ -1,20 +1,20 @@
 ---
-title: Azure 上的 WebJob、后台任务
-description: 了解 Web 作业。
+title: WebJob, 后台任务, 在 Azure 上
+description: 了解 WebJobs。
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1cb5e99558d6bf1a5baa21d05d45415855c61cb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 7714b090399b0b184e2e216ff6da7b10f2bf4386
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744468"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452265"
 ---
-# <a name="webjobs-run-background-tasks-in-azure-app-service"></a>Web 作业在 Azure App Service 中运行后台任务
+# <a name="webjobs-run-background-tasks-in-azure-app-service"></a>WebJobs 在 Azure 应用服务中运行后台任务
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
@@ -41,9 +41,9 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
-## <a name="add-webjob-to-source-control"></a>向源代码管理添加 Web 作业
+## <a name="add-webjob-to-source-control"></a>将 WebJob 添加到源代码管理
 
-如果你使用应用程序配置了源代码管理，则 Web 作业应作为源代码管理集成的一部分进行部署。 在应用程序中配置源代码管理后，将无法从 Azure 门户添加 WebJob。
+如果你的应用程序配置了源代码管理，则 Webjobs 应已部署为源代码管理集成的一部分。 应用程序配置了源代码管理后，便无法从 Azure 门户添加 WebJob 了。
 
 ## <a name="supported-file-types-for-scripts-or-programs"></a><a name="acceptablefiles"></a>支持的脚本或程序文件类型
 
@@ -59,5 +59,5 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何 [创建 Web 作业](./webjobs-create-ieux.md)
-* 查看 Web 作业的日志历史记录] (./webjobs-create-ieux-view-log.md) 
+* 了解如何[创建 WebJob](./webjobs-create-ieux.md)
+* 查看 [WebJobs](./webjobs-create-ieux-view-log.md) 的日志历史记录

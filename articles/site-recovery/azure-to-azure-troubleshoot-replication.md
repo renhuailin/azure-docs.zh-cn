@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007352"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
@@ -134,7 +134,7 @@ Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRI
 
 如果已禁用 VSS：
 
-- 验证 VSS 提供程序服务的启动类型是否设置为“自动”。
+- 确认 VSS 提供程序服务的启动类型是否设置为“自动”。
 - 重启以下服务：
   - VSS 服务。
   - Azure Site Recovery VSS 提供程序。

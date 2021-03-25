@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001280"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
@@ -23,7 +23,7 @@ ms.locfileid: "96001280"
 应用程序网关支持在网关上终止 TLS，之后，流量通常会以未加密状态流到后端服务器。 在应用程序网关上执行 TLS 终止可以带来诸多优势：
 
 - **提高性能** - 执行 TLS 解密时，初次握手最容易造成性能下降。 为了提高性能，执行解密的服务器会缓存 TLS 会话 ID 并管理 TLS 会话票证。 如果在应用程序网关上完成此操作，则来自同一客户端的所有请求都可以使用缓存值。 如果此操作是在后端服务器上执行的，则每当客户端的请求转到另一台服务器时，客户端都必须重新进行身份验证。 使用 TLS 票证有助于缓解此问题，但并非所有客户端都支持 TLS 票证，并且配置和管理这些票证可能有难度。
-- **更好地利用后端服务器** - SSL/TLS 处理非常占用 CPU，并且密钥越大，占用的 CPU 就越多。 从后端服务器中消除此任务可使它们专注于以最有效的方式提供内容。
+- **更好地利用后端服务器** - SSL/TLS 处理非常占用 CPU，并且密钥越大，占用的 CPU 就越多。 从后端服务器中解除此任务可使它们专注于以最有效的方式提供内容。
 - **智能路由** - 解密流量后，应用程序网关便可以访问标头、URI 等请求内容，并可以使用此数据来路由请求。
 - **证书管理** - 只需在应用程序网关上购买并安装证书，所有后端服务器都不需要证书。 这可以节省时间和开支。
 

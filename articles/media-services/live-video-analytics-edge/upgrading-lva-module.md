@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
 ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955643"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>将 IoT Edge 上的实时视频分析从 1.0 升级为 2.0
@@ -101,7 +101,7 @@ ms.locfileid: "98955643"
     #### <a name="ai-composition"></a>AI 组合
     * 实时视频分析2.0 现在支持在拓扑中使用多个媒体图形扩展处理器。 可以将来自 RTSP 相机的媒体帧按顺序、并行或两者结合的方式传递给不同的 AI 模型。 请参阅样本拓扑，其中显示了两个按顺序使用的 AI 模型。
 
-### <a name="disk-space-management-with-sink-nodes"></a>带有接收器节点的磁盘空间管理
+### <a name="disk-space-management-with-sink-nodes"></a>具有接收器节点的磁盘空间管理
 * 在“文件接收器”节点中，现在可以指定“IoT Edge 上的实时视频分析”模块可以使用多少磁盘空间来存储已处理的映像。 为此，请将 **`maximumSizeMiB`** 字段添加到“文件接收器”节点。 样本“文件接收器”节点如下所示：
     ```
     "sinks": [
@@ -170,7 +170,7 @@ ms.locfileid: "98955643"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="事件的分类":::
 
-使用 docker 可以轻松生成带自定义配置的 Telegraf 映像。 在 " [监视和日志记录](monitoring-logging.md#azure-monitor-collection-via-telegraf) " 页中了解详细信息。
+使用 docker 可以轻松生成带自定义配置的 Telegraf 映像。 请访问[监视和日志记录](monitoring-logging.md#azure-monitor-collection-via-telegraf)页，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

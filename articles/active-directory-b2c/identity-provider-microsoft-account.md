@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1f4aea472988555047a736e6a248fa5690e42a23
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645841"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448211"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Microsoft 帐户注册与登录
 
@@ -36,7 +36,7 @@ ms.locfileid: "101645841"
 
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
 
-若要为具有 Microsoft 帐户 Azure Active Directory B2C (Azure AD B2C) 的用户登录，需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅 [将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。 如果还没有 Microsoft 帐户，可以在 [https://www.live.com/](https://www.live.com/) 获取。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Microsoft 帐户的用户启用登录，你需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。 如果还没有 Microsoft 帐户，可以在 [https://www.live.com/](https://www.live.com/) 获取。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
@@ -48,11 +48,11 @@ ms.locfileid: "101645841"
    有关不同帐户类型选择的详细信息，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 1. 在“重定向 URI（可选）”下，选择“Web”，然后在文本框中输入 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp`。 将 `<tenant-name>` 替换为 Azure AD B2C 租户的名称。
 1. 选择“注册”
-1. 记录应用程序概述页上显示的“应用程序（客户端）ID”。 在下一部分中配置标识提供者时需要客户端 ID。
+1. 记录应用程序概述页上显示的“应用程序（客户端）ID”。 在下一部分配置标识提供者时，需要此客户端 ID。
 1. 选择“证书和密码”
 1. 单击“新客户端密码”
 1. 为密码输入“说明”，例如“应用程序密码 1”，然后单击“添加”。
-1. 记录“值”列中显示的应用程序密码。 在下一部分中配置标识提供者时需要客户端密码。
+1. 记录“值”列中显示的应用程序密码。 在下一部分配置标识提供者时，需要此客户端密码。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -71,11 +71,14 @@ ms.locfileid: "101645841"
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要添加 Microsoft 标识提供者的用户流。
-1. 在 **社交标识提供者** 下，选择 " **Microsoft 帐户**"。
+1. 在“社交标识提供者”下，选择“Microsoft 帐户”。
 1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页上，选择“Microsoft”以使用 Microsoft 帐户登录。
+
+如果登录过程成功，则浏览器会重定向到 `https://jwt.ms`，后者显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -111,7 +114,7 @@ ms.locfileid: "101645841"
 
 ## <a name="configure-microsoft-as-an-identity-provider"></a>将 Microsoft 配置为标识提供者
 
-若要使用户能够使用 Microsoft 帐户登录，需要将该帐户定义为 Azure AD B2C 可以通过终结点进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要让用户使用 Microsoft 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
 要将 Azure AD 定义为声明提供程序，可在策略的扩展文件中添加 **ClaimsProvider** 元素。
 
@@ -188,6 +191,13 @@ ms.locfileid: "101645841"
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，选择[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页上，选择“Microsoft”以使用 Microsoft 帐户登录。
+
+如果登录过程成功，则浏览器会重定向到 `https://jwt.ms`，后者显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

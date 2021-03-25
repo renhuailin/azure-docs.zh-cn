@@ -5,13 +5,13 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 8de819fc5444146f40a6a052cd51e6164cdfb230
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.date: 03/05/2021
+ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653051"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454272"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -23,7 +23,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 ## <a name="cluster-configuration-requirements"></a>群集配置要求
 
 * 所有 OpenShift 群集操作员都必须处于托管状态。 可以通过运行 `oc get clusteroperators` 来返回群集操作员的列表。
-* 群集必须至少有两个工作节点。 不要有阻止计划 OpenShift 组件的 taints。 不要将群集辅助角色缩放为零，或尝试正常的群集关闭。
+* 群集必须至少具有三个工作器节点和三个管理员节点。 不能有阻止计划 OpenShift 组件的污点。 请勿将群集工作器缩放为零，也不要尝试正常关闭群集。
 * 请勿删除或修改群集 Prometheus 和 Alertmanager 服务。
 * 请勿删除“服务 Alertmanager”规则。
 * 请勿删除或修改网络安全组。
@@ -32,7 +32,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 * 所有群集虚拟机须至少具有对 Azure 资源管理器 (ARM) 和服务日志记录 (Geneva) 终结点的直接出站 internet 访问权限。  不支持任何形式的 HTTPS 代理。
 * 请勿修改群集虚拟网络的 DNS 配置。 必须使用默认的 Azure DNS 解析程序。
 * 不要以任何方式重写群集的任何 MachineConfig 对象（例如，kubelet 配置）。
-* 请勿设置任何 unsupportedConfigOverrides 选项。 设置这些选项可防止次版本升级。
+* 请勿设置任何 unsupportedConfigOverrides 选项。 设置这些选项可防止次要版本升级。
 * Azure Red Hat OpenShift 服务通过专用链接服务访问群集。  请勿删除或修改服务访问权限。
 * 不支持非 RHCOS 计算节点。 例如，不能使用 RHEL 计算节点。
 

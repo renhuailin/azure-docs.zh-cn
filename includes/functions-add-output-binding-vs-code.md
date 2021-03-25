@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/30/2020
 ms.author: glenga
 ms.openlocfilehash: 3759dce2ab527cab5b2d2afe8eae30461cbc9031
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493933"
 ---
 Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 function.json 文件。 
 
-若要添加绑定，请打开命令托盘 (F1) ，键入 **Azure Functions：添加 binding ...**，为新绑定选择函数，然后按照提示进行操作，这取决于要添加到函数的绑定的类型。 
+若要添加绑定，请打开命令托盘 (F1) 并键入“Azure Functions: add binding...”，选择新绑定的函数，然后按照提示操作，这些提示因添加到函数的绑定类型而异。 
 
 下面是有关定义新的存储输出绑定的示例提示：
 
@@ -25,7 +25,7 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 | **要将消息发送到的队列** | `outqueue` | 绑定要写入到的队列的名称。 如果 *queueName* 不存在，首次使用绑定时，它会创建该属性。 |
 | **从“local.settings.json”中选择设置** | `MyStorageConnection` | 包含存储帐户连接字符串的应用程序设置的名称。 `AzureWebJobsStorage` 设置包含连同函数应用一起创建的存储帐户的连接字符串。 |
 
-你还可以右键单击 (在函数文件夹中的 **function.js上** ，单击 "macOS") 直接单击，选择 " **添加绑定**"，然后按照相同的提示进行操作。
+还可以直接右键单击（在 macOS 上，请按住 Ctrl 并单击）function 文件夹中的 function.json 文件，选择“添加绑定”，然后按照相同的提示进行操作 。
 
 在此示例中，以下绑定已添加到 function.json 文件中的 `bindings` 数组：
 

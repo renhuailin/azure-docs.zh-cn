@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95543164"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入门：使用 Azure 存储资源管理器创建 blob
@@ -33,8 +33,8 @@ ms.locfileid: "95543164"
 |任务|目的|
 |---|---|
 |添加 Azure 帐户 | 将你重定向到组织的登录页，向 Azure 进行身份验证。 |
-|使用连接字符串或共享访问签名 URI | 可以用来通过 SAS 令牌或共享的连接字符串直接访问容器或存储帐户。 |
-|使用存储帐户名称和密钥| 使用存储帐户的名称和密钥连接到 Azure 存储。|
+|使用连接字符串或共享访问签名 URI | 可用于通过 SAS 令牌或共享连接字符串直接访问容器或存储帐户。 |
+|使用存储帐户名称和密钥| 使用存储帐户的存储帐户名称和密钥连接到 Azure 存储。|
 
 选择“添加 Azure 帐户”  ，然后单击“登录...”  。按照屏幕提示操作，登录到 Azure 帐户。
 
@@ -42,7 +42,7 @@ ms.locfileid: "95543164"
 
 完成连接以后，Azure 存储资源管理器会进行加载并显示“资源管理器”选项卡。 以下视图可以查看通过 [Azure 存储模拟器](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 帐户或 [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 环境配置的所有 Azure 存储帐户和本地存储。
 
-![Microsoft Azure 存储资源管理器 -“连接”窗口](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
+![“Microsoft Azure 存储资源管理器 - 连接”窗口](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
 ## <a name="create-a-container"></a>创建容器
 
@@ -64,7 +64,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 
 
 ![Microsoft Azure 存储资源管理器 - 上传 Blob](media/storage-quickstart-blobs-storage-explorer/uploadblob.png)
 
-选择“确定”以后，所选文件会排队上传。每个文件都会上传。 上传完成后，结果显示在“活动”窗口中。
+选择“确定”后，选定的文件会排队等待上传，然后上传每个文件。  上传完成后，结果显示在“活动”窗口中。
 
 ## <a name="view-blobs-in-a-container"></a>查看容器中的 Blob
 

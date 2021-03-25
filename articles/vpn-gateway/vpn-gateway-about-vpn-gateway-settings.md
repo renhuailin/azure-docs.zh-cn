@@ -1,6 +1,6 @@
 ---
 title: Azure VPN 网关：配置设置
-description: 了解资源管理器部署模型中创建的虚拟网络的 VPN 网关资源和设置。
+description: 了解在资源管理器部署模型中创建的虚拟网络的 VPN 网关资源和设置。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1aba87b2139fb8a7d395fb3180d2074e47310fa9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010750"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
@@ -158,7 +158,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 本地网络网关不同于虚拟网络网关。 创建 VPN 网关配置时，本地网络网关通常代表本地网络和相应的 VPN 设备。 在经典部署模型中，本地网络网关称为本地站点。
 
-为本地网络网关指定一个名称、公共 IP 地址或完全限定的域名 (的本地 VPN 设备的 FQDN) ，并指定位于本地位置的地址前缀。 Azure 将查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。 如果在 VPN 设备上使用边界网关协议 (BGP) ，则将提供 VPN 设备的 BGP 对等 IP 地址和本地网络 (ASN) 的自治系统编号。 也应该针对使用 VPN 网关连接的 VNet 到 VNet 配置指定本地网络网关。
+指定本地网络网关的名称、本地 VPN 设备的公共 IP 地址或完全限定的域名 (FQDN)，并指定位于本地位置的地址前缀。 Azure 将查看网络流量的目标地址前缀、查阅针对本地网络网关指定的配置，并相应地路由数据包。 如果在 VPN 设备上使用边界网关协议 (BGP)，则需提供 VPN 设备的 BGP 对等节点 IP 地址以及本地网络的自治系统编号 (ASN)。 也应该针对使用 VPN 网关连接的 VNet 到 VNet 配置指定本地网络网关。
 
 以下 PowerShell 示例创建新的本地网络网关：
 

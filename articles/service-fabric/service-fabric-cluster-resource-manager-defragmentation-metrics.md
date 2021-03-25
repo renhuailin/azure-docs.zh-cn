@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric 中的指标碎片整理
-description: 了解如何对 Service Fabric 中的指标使用碎片整理或打包作为策略。 此技术对于大型服务很有用。
+description: 了解如何使用碎片整理或打包作为 Service Fabric 中的指标策略。 此方法对于非常大的服务很有用。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75563354"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102449197"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric 中指标和负载的重整
 Service Fabric 群集资源管理器用于管理群集中的负载指标的默认策略是分散负载。 确保均匀地使用节点，避免出现导致争用和浪费资源的热点和冷点。 若要幸免于故障，让工作负荷分布在群集中还是最安全的方法，因为它可确保某个故障不会导致给定的工作负荷大部分失效。 
@@ -67,7 +67,7 @@ ClusterManifest.xml：
 </Section>
 ```
 
-通过 ClusterConfig.json 进行独立部署或将 Template.json 用于 Azure 托管群集：
+通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：
 
 ```json
 "fabricSettings": [
@@ -90,6 +90,6 @@ ClusterManifest.xml：
 
 ## <a name="next-steps"></a>后续步骤
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
-- 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
+- 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[此文](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

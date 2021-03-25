@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d69675d7ab07e4097556d269c97c3ecb66dc2fc6
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545828"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448075"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -32,7 +32,7 @@ ms.locfileid: "100545828"
 
 ## <a name="create-a-weibo-application"></a>创建 Weibo 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中为具有 Weibo 帐户的用户登录，需要在 Weibo 开发人员门户中创建应用程序。 如果还没有 Weibo 帐户，可以在注册 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Weibo 帐户的用户启用登录，你需要在 Weibo 开发人员门户中创建应用程序。 如果还没有 Weibo 帐户，可以在 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 中注册。
 
 1. 使用微博帐户凭据登录微博开发人员门户。
 1. 登录后，选择右上角的显示名称。
@@ -57,7 +57,7 @@ ms.locfileid: "100545828"
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-weibo-as-an-identity-provider"></a>将 Weibo 配置为标识提供程序
+## <a name="configure-weibo-as-an-identity-provider"></a>将“Weibo”配置为标识提供者
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
@@ -71,12 +71,15 @@ ms.locfileid: "100545828"
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>将 Weibo 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要添加 Weibo 标识提供程序的用户流。
-1. 在 **社交标识提供者** 下，选择 " **Weibo**"。
+1. 单击要添加 Weibo 标识提供者的用户流。
+1. 在“社交标识提供者”下，选择“Weibo”。
 1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页上，选择“Weibo”以使用 Weibo 帐户登录。
+
+如果登录过程成功，则浏览器会重定向到 `https://jwt.ms`，后者显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -97,11 +100,11 @@ ms.locfileid: "100545828"
 9. 在“密钥用法”处选择 `Signature`。
 10. 单击“创建”。
 
-## <a name="configure-weibo-as-an-identity-provider"></a>将 Weibo 配置为标识提供程序
+## <a name="configure-weibo-as-an-identity-provider"></a>将“Weibo”配置为标识提供者
 
-若要允许用户使用 Weibo 帐户登录，需要将该帐户定义为声明提供程序，Azure AD B2C 可通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要使用户能够使用 Weibo 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与之通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过将 Weibo 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
+可以通过在策略的扩展文件中将 Weibo 帐户添加到 ClaimsProviders 元素，将该帐户定义为声明提供程序。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -154,13 +157,13 @@ ms.locfileid: "100545828"
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **numericUserId** 的新声明类型。
+GitHub 技术配置文件要求将 CreateIssuerUserId 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 ClaimsTransformations 元素，请按如下所示添加父 XML 元素。 声明转换还需要定义一个名为 **numericUserId** 的新声明类型。
 
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 numericUserId 声明添加到 **ClaimsSchema** 元素中。
-1. 找到 " [ClaimsTransformations](claimstransformations.md) " 元素。 如果该元素不存在，请添加该元素。
-1. 将 CreateIssuerUserId 声明转换添加到 **ClaimsTransformations** 元素。
+1. 将 numericUserId 声明添加到 ClaimsSchema 元素。
+1. 找到 [ClaimsTransformations](claimstransformations.md) 元素。 如果该元素不存在，请添加该元素。
+1. 将 CreateIssuerUserId 声明转换添加到 ClaimsTransformations 元素。
 
 ```xml
 <BuildingBlocks>
@@ -205,6 +208,13 @@ GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，选择[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页上，选择“Weibo”以使用 Weibo 帐户登录。
+
+如果登录过程成功，则浏览器会重定向到 `https://jwt.ms`，后者显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

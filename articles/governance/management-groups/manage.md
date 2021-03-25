@@ -4,10 +4,10 @@ description: 了解如何查看、维护、更新和删除管理组层次结构�
 ms.date: 01/15/2021
 ms.topic: conceptual
 ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596484"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
@@ -283,7 +283,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ### <a name="move-subscriptions-in-arm-template"></a>在 ARM 模板中移动订阅
 
-若要将 Azure 资源管理器模板中的订阅移动 (ARM 模板) ，请使用以下模板。
+若要在 Azure 资源管理器模板（ARM 模板）中移动订阅，请使用以下模板。
 
 ```json
 {

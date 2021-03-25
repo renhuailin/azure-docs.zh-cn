@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 ms.openlocfilehash: 390c804692029d7cdee8f78325b441592879582b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103488578"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>快速入门：使用 Azure 门户获取电话号码

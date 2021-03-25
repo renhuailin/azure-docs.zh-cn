@@ -9,10 +9,10 @@ ms.date: 01/06/2021
 ms.author: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 019ca26143a4879efafa973299703f0abcb21162
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102488080"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
@@ -250,9 +250,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | 毫秒 | 加载文档时花费的时间  | 
 | `systemFunctionExecuteTimeInMs` | 毫秒 | 执行系统（内置）函数花费的总时间（毫秒）  | 
 | `userFunctionExecuteTimeInMs` | 毫秒 | 执行用户定义的函数花费的总时间（毫秒） | 
-| `retrievedDocumentCount` | 计数 | 检索的文档总数  | 
+| `retrievedDocumentCount` | count | 检索的文档总数  | 
 | `retrievedDocumentSize` | 字节 | 检索的文档的总大小（字节）  | 
-| `outputDocumentCount` | 计数 | 输出文档数 | 
+| `outputDocumentCount` | count | 输出文档数 | 
 | `writeOutputTimeInMs` | 毫秒 | 查询执行时间（毫秒） | 
 | `indexUtilizationRatio` | 比率 (<=1) | 由筛选器匹配出的文档数与加载的文档数的比率  | 
 

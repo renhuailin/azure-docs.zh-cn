@@ -11,10 +11,10 @@ ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516354"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
@@ -61,11 +61,11 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 | 代码哈希 | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)。  |
 | 访问令牌哈希 | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌哈希才包含在 ID 令牌中。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce | `nonce` | `12345` | Nonce 是缓和令牌重放攻击的策略。 应用程序可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值将仅在 ID 令牌的 `nonce` 声明中发出（未经修改）。 此声明可让应用程序根据请求中指定的值验证该值。 应用程序应该在 ID 令牌验证过程中执行这项验证。 |
-| 主题 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 令牌针对其断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用。 可以使用它来安全地执行授权检查，例如，当使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
+| 使用者 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 令牌针对其断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用。 可以使用它来安全地执行授权检查，例如，当使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
 | 身份验证上下文类引用 | `acr` | 不适用 | 仅与旧策略配合使用。 |
 | 信任框架策略 | `tfp` | `b2c_1_signupsignin1` | 用于获取 ID 令牌的策略名称。 |
 | 身份验证时间 | `auth_time` | `1438535543` | 用户最后一次输入凭据的时间，以新纪元时间表示。 该身份验证是全新登录、单一登录 (SSO) 会话还是其他登录类型之间没有区别。 `auth_time` 是应用程序（或用户）上次针对 Azure AD B2C 发起身份验证尝试的时间。 不区分用于身份验证的方法。 |
-| 范围 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
+| 作用域 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
 | 授权方 | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | 发起请求的客户端应用程序的 **应用程序 ID**。 |
 
 ## <a name="configuration"></a>配置
@@ -89,15 +89,15 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 以下属性用于[管理令牌兼容性](configure-tokens.md)：
 
-- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值是 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
+- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值为 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
 
 - **使用者 (sub) 声明** - 此属性标识令牌断言其信息的实体。 默认值为 **ObjectID**，即在令牌的 `sub` 声明中填充用户的对象 ID。 **Not supported** 值仅供用于实现后向兼容。 建议尽快改用 **ObjectID**。
 
-- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值是 `tfp`。 `acr` 值仅供用于实现后向兼容。
+- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值为 `tfp`。 `acr` 值仅供用于实现后向兼容。
 
 ## <a name="pass-through"></a>直通
 
-用户旅程开始时，Azure AD B2C 会从标识提供者处收到一个访问令牌。 Azure AD B2C 使用该令牌来检索有关用户的信息。 允许用户流中的声明将 [令牌传递](idp-pass-through-user-flow.md) 到 Azure AD B2C 中注册的应用程序。 应用程序必须使用[建议的用户流](user-flow-versions.md)才能利用将令牌作为声明传递的优势。
+用户旅程开始时，Azure AD B2C 会从标识提供者处收到一个访问令牌。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将[该令牌传递](idp-pass-through-user-flow.md)给你在 Azure AD B2C 中注册的应用程序。 应用程序必须使用[建议的用户流](user-flow-versions.md)才能利用将令牌作为声明传递的优势。
 
 Azure AD B2C 当前仅支持传递 OAuth 2.0 标识提供者（包括 Facebook 和 Google）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 

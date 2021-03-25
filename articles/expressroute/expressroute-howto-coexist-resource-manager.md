@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b20bb4df7524c179766a2b2f7f090fccbddd7f37
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: 15ec8417ba5e2858b45176f0a214f6126209f942
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122606"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449741"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -36,24 +36,25 @@ ms.locfileid: "102122606"
 >
 
 ## <a name="limits-and-limitations"></a>限制和局限性
-* **不支持传输路由。** 无法在通过站点到站点 VPN 连接的本地网络与通过 ExpressRoute 连接的本地网络之间进行路由（通过 Azure）。
-* **不支持基本 SKU 网关。** 必须为 [ExpressRoute 网关](expressroute-about-virtual-network-gateways.md)和 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)使用非基本 SKU 网关。
 * **仅支持基于路由的 VPN 网关。** 必须使用基于路由的 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 还可以将基于路由的 VPN 网关与为“基于策略的流量选择器”配置的 VPN 连接一起使用，如[连接到多个基于策略的 VPN 设备](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
-* **应该为 VPN 网关配置静态路由。** 如果本地网络同时连接到 ExpressRoute 和站点到站点 VPN，则必须在本地网络中配置静态路由，以便将站点到站点 VPN 连接路由到公共 Internet。
-* **如果未指定，则 VPN 网关将默认为 ASN 65515。** Azure VPN 网关支持 BGP 路由协议。 通过添加 -Asn 开关，可为虚拟网络指定 ASN（AS 编号）。 如果未指定此参数，则默认 AS 编号为 65515。 可以将任何 ASN 用于配置，但如果选择 65515 以外的其他 ASN，则必须重置网关才能使设置生效。
+* Azure VPN 网关的 ASN 必须设置为 65515。 Azure VPN 网关支持 BGP 路由协议。 要使 ExpressRoute 和 Azure VPN 协同工作，必须将 Azure VPN 网关的自治系统编号保留为其默认值 65515。 如果先前选择的是其他 ASN（而不是 65515），并且将设置更改为 65515，则必须重置 VPN 网关才能使设置生效。
 * 网关子网必须是 /27 或更短的前缀（例如 /26、/25），否则，添加 ExpressRoute 虚拟网络网关时将收到错误消息。
-* **不支持双堆栈 vnet 中的共存。** 如果使用的是 ExpressRoute IPv6 支持和双堆栈 ExpressRoute 网关，则无法使用 VPN 网关。
+* 不支持双堆栈 VNet 中的共存。 如果使用的是 ExpressRoute IPv6 支持和双堆栈 ExpressRoute 网关，则将无法与 VPN 网关共存。
 
 ## <a name="configuration-designs"></a>配置设计
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>将站点到站点 VPN 配置为 ExpressRoute 的故障转移路径
 可以将站点到站点 VPN 连接配置为 ExpressRoute 的备份。 此连接仅适用于链接到 Azure 专用对等互连路径的虚拟网络。 对于可通过 Azure Microsoft 对等互连访问的服务，没有基于 VPN 的故障转移解决方案。 ExpressRoute 线路始终是主链接。 仅当 ExpressRoute 线路失败时，数据才会流经站点到站点 VPN 路径。 若要避免不对称路由，本地网络配置还应当引用基于站点到站点 VPN 的 ExpressRoute 线路。 对于接收 ExpressRoute 的路由，可以通过设置更高的本地优先级来首选 ExpressRoute 路径。 
+
+>[!NOTE]
+> 如果已启用 ExpressRoute Microsoft 对等互连，则可以在 ExpressRoute 连接上接收 Azure VPN 网关的公共 IP 地址。 若要将站点到站点 VPN 连接设置为备份，必须配置本地网络，以便将 VPN 连接路由到 Internet。
+>
 
 > [!NOTE]
 > 虽然在两个路由相同的情况下 ExpressRoute 线路优先于站点到站点 VPN，Azure 仍会使用最长的前缀匹配来选择指向数据包目标的路由。
 > 
 > 
 
-![显示一个站点到站点 VPN 连接作为 ExpressRoute 的备份的关系图。](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
+![显示将站点到站点 VPN 连接作为 ExpressRoute 的备份的示意图。](media/expressroute-howto-coexist-resource-manager/scenario1.jpg)
 
 ### <a name="configure-a-site-to-site-vpn-to-connect-to-sites-not-connected-through-expressroute"></a>配置站点到站点 VPN，以便连接到不通过 ExpressRoute 进行连接的站点
 可以对网络进行配置，使得部分站点通过站点到站点 VPN 直接连接到 Azure，部分站点通过 ExpressRoute 进行连接。 
@@ -261,8 +262,11 @@ ms.locfileid: "102122606"
    $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
    ```
-
 有关点到站点 VPN 的详细信息，请参阅[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)。
+
+## <a name="to-enable-transit-routing-between-expressroute-and-azure-vpn"></a>在 ExpressRoute 和 Azure VPN 之间启用传输路由
+如果要在连接到 ExpressRoute 的某个本地网络与另一个连接到站点到站点 VPN 连接的本地网络之间启用连接，则需要设置 [Azure 路由服务器](../route-server/expressroute-vpn-support.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247176"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客
@@ -233,7 +233,7 @@ ms.locfileid: "98247176"
 
 1. 选择你的产品/服务，然后转到“产品/服务设置”选项卡。
 
-1. 在“潜在顾客”部分下，选择“连接”。
+1. 在“潜在顾客”部分下，选择“连接” 。
 
     :::image type="content" source="./media/commercial-marketplace-lead-management-instructions-https/customer-leads.png" alt-text="潜在顾客":::
 
@@ -244,7 +244,7 @@ ms.locfileid: "98247176"
 
 1. 选择“确定”。
 
-若要确保已成功连接到潜在顾客目标，请选择“验证”按钮。 如果成功，则在潜在顾客目标中会出现测试潜在顾客。
+要确保已成功连接到潜在顾客目标，请选择“验证”按钮。 如果成功，则在潜在顾客目标中会出现测试潜在顾客。
 
 >[!NOTE] 
 >必须先完成产品/服务的其余内容的配置并进行发布，然后才能接收产品/服务的潜在顾客。

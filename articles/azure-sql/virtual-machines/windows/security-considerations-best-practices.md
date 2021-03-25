@@ -1,5 +1,5 @@
 ---
-title: 安全注意事项 |Microsoft Docs
+title: 安全注意事项 | Microsoft Docs
 description: 本主题提供有关保护 Azure 虚拟机中运行的 SQL Server 的常规指南。
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 54010359f226fe02336f039e3dcbb98075e9b06a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97360078"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
@@ -68,9 +68,9 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-配置后，可通过两种方式进行预配：
+若要在预配后配置此端口，可以使用两个选项：
 
-- 对于资源管理器 VM，可以从 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)中选择“安全性”。 这提供了更改端口的选项。
+- 对于资源管理器 VM，可以从 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)中选择“安全性”。 这会提供一个用于更改端口的选项。
 
   ![在门户中更改 TCP 端口](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 

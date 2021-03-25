@@ -1,5 +1,5 @@
 ---
-title: 排查 Kerberos 约束委派应用代理问题
+title: 排查 Kerberos 约束委派问题 - 应用代理
 description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 65d68924fbc3a777ef7ef59d2532a1ae20e23c48
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.openlocfilehash: b8562f3bdd82b5b0c2c1340f511f87ad90dfbe3b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258212"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487944"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "99258212"
 - 服务器和应用程序主机驻留在单个 Azure Active Directory 域中。 有关跨域和林方案的详细信息，请参阅 [KCD 白皮书](https://aka.ms/KCDPaper)。
 - 主体应用程序在启用了预身份验证的 Azure 租户中发布。 用户需要通过基于窗体的身份验证进行 Azure 身份验证。 本文不介绍丰富的客户端身份验证方案。 可能会在未来某个时候添加这些方案。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure AD 应用程序代理可以部署到许多类型的基础结构或环境中。 不同组织的体系结构有所不同。 与 KCD 相关的问题的最常见原因并非环境。 造成大多数问题的原因可能是简单的配置错误或常规错误。
 
@@ -41,7 +41,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 - 域成员服务器有时会使用特定的域控制器 (DC) 来打开安全通道对话框。 然后服务器可能在任意给定时间移动到另一个对话框。 因此，连接器主机不限制于仅与特定的本地站点 DC 进行通信。
 - 跨域方案依赖于将连接器主机定向至 DC 的引荐，而这些 DC 可能不在本地网络外围内。 在这些情况下，将流量发送到表示其他各个域的 DC 同样重要。 如果未发送，则委派失败。
-- 如果可能，避免在连接器主机和 DC 之间放置任何活动 IPS 或 IDS 设备。 这些设备有时会过于干扰，并干扰核心 RPC 通信。
+- 如果可能，避免在连接器主机和 DC 之间放置任何活动 IPS 或 IDS 设备。 这些设备有时会过度干扰，并干扰核心 RPC 流量。
 
 用简单方案测试委派。 引入的变量越多，可能需要应对的变量也越多。 为节省时间，将测试限制为在单个连接器中进行。 解决问题后，添加其他连接器。
 
@@ -51,9 +51,9 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 什么显示 KCD 问题？ 有多个常见迹象指示 KCD SSO 失败。 浏览器中显示问题的第一个迹象。
 
-![屏幕截图显示了错误的 K C D 配置错误的示例，出现错误 "Kerberos 约束委派 ..."加亮.](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![屏幕截图显示不正确的 K C D 配置错误的例子，其中突出显示了错误“不正确的 Kerberos 约束委派...”。](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![示例：授权失败，因为缺少权限](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![示例：授权因缺少权限而失败](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
 这两个图像显示相同症状：SSO 失败。 拒绝用户访问应用程序。
 
@@ -79,7 +79,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 如前所述，浏览器错误消息会提供有关操作失败原因的有用线索。 请确保记下响应中的活动 ID 和时间戳。 此信息可帮助用户将行为与 Azure 代理事件日志中的实际事件相关联。
 
-![示例：不正确的 KCD 配置错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![示例：不正确 KCD 配置错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 在事件日志中看到的相应条目显示为事件 13019 或 12027。 在“应用程序和服务日志”**“Microsoft”** &gt; **“AadApplicationProxy”** &gt; **“连接器”** &gt; **“管理员”** &gt; 中找到连接器事件日志。
 
@@ -124,7 +124,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
      *Microsoft AAD 应用程序代理连接器无法对用户进行身份验证，因为后端服务器回应给 Kerberos 身份验证尝试的是 HTTP 401 错误。*
 
-      ![显示 HTTTP 401 禁止显示错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![显示 HTTTP 401 禁止错误](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - 检查 IIS 应用程序。 请确保已配置的应用程序池和 SPN 配置为使用 Azure AD 中的相同帐户。 在 IIS 中导航，如下图所示：
 
@@ -160,8 +160,8 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
 ## <a name="other-scenarios"></a>其他方案
 
-- 在将请求发送至应用程序前，Azure 应用程序代理将请求 Kerberos 票证。 某些第三方应用程序不像这种身份验证方法。 这些应用程序希望进行更多常规协商。 首个请求为匿名请求，允许应用程序响应通过 401 支持的身份验证类型。 可以使用本文档中所述的步骤启用这种类型的 Kerberos 协商： [用于单一登录的 Kerberos 约束委派](application-proxy-configure-single-sign-on-with-kcd.md)。
-- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 若要配置多跃点方案，请参阅支持文章 [Kerberos 约束委派在多跃点方案中可能需要协议转换](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
+- 在将请求发送至应用程序前，Azure 应用程序代理将请求 Kerberos 票证。 某些第三方应用程序不喜欢此身份验证方法。 这些应用程序希望进行更多常规协商。 首个请求为匿名请求，允许应用程序响应通过 401 支持的身份验证类型。 可使用本文档中概述的步骤启用此类型的 Kerberos 协商：[用于单一登录的 Kerberos 约束委托](application-proxy-configure-single-sign-on-with-kcd.md)。
+- 多跃点身份验证常用于应用程序分层的情形，具有都需要验证身份的后端和前端，例如 SQL Server Reporting Services。 有关详细信息，请参阅[如何为 Web 注册代理页面配置 Kerberos 约束委托](/troubleshoot/windows-server/identity/configure-kerberos-constrained-delegation)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735363"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
@@ -25,7 +25,7 @@ HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以
 有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果你使用的是 Azure Databricks 而不是 HDInsight，并且想要通过使用命令行界面与数据进行交互，则可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [Databricks CLI](/azure/databricks/dev-tools/cli/)。
+>如果你使用的是 Azure Databricks 而不是 HDInsight，并且要使用命令行接口与数据进行交互，可使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅 [Databricks CLI](/azure/databricks/dev-tools/cli/)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 

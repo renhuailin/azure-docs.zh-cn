@@ -12,21 +12,21 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da22a4e5e9ab13ec18347e58bea6cfc5f45333de
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98630694"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
-已加入 Azure Active Directory (Azure AD) 的设备为租户的云应用提供单一登录 (SSO) 体验可能并不意外。 如果你的环境有本地 Active Directory (AD) ，则还可以在已加入依赖于本地 AD 的资源和应用程序上 Azure AD 的已加入设备获取 SSO 体验。 
+已加入 Azure Active Directory (Azure AD) 的设备为租户的云应用提供单一登录 (SSO) 体验可能并不意外。 如果环境具有本地 Active Directory (AD)，你还可以在已加入 Azure AD 的设备上获得对依赖于本地 AD 的资源和应用程序的 SSO 体验。 
 
 本文介绍它的工作原理。
 
 ## <a name="prerequisites"></a>先决条件
 
-本地 SSO 需要与本地 AD DS 域控制器进行视距通信。 如果 Azure AD 联接的设备未连接到组织的网络，则需要 VPN 或其他网络基础结构。 
+本地 SSO 需要与本地 AD DS 域控制器进行视距通信。 如果已加入 Azure AD 的设备未连接到组织的网络，则需要 VPN 或其他网络基础结构。 
 
 ## <a name="how-it-works"></a>工作原理 
 
@@ -34,7 +34,7 @@ ms.locfileid: "98630694"
 
 已加入 Azure AD 的设备不了解你的本地 AD 环境，因为它们未加入其中。 但是，可以使用 Azure AD Connect 向这些设备提供本地 AD 的其他信息。
 
-如果你有混合环境，同时在 Azure AD 和本地 AD 中，则可能已部署 Azure AD Connect 来将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 同步本地用户和域信息以 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
+如果拥有同时具有 Azure AD 和本地 AD 的混合环境，那么你很可能已部署了 Azure AD Connect 以将本地标识信息同步到云。 作为同步过程的一部分，Azure AD Connect 将本地用户和域信息同步到 Azure AD。 当用户登录到混合环境中的已加入 Azure AD 的设备时：
 
 1. Azure AD 会将用户的本地域的详细信息以及[主刷新令牌](concept-primary-refresh-token.md)发送回设备
 1. 本地安全机构 (LSA) 服务在该设备允许进行 Kerberos 和 NTLM 身份验证。

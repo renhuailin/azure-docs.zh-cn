@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e081acc357c1b8872dd3a25c552d4cbe9785e212
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007063"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
@@ -47,7 +47,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 2 |本地固定卷 |在以前的版本中，本地固定卷存在与 I/O 失败、卷转换失败和数据路径失败相关的问题。 在此版本中已找到这些问题的根本原因并进行了修复。 |是 |否 |
 | 3 |监视 |有多个与报告单位和监视以及设备仪表板图表相关的问题，其中针对本地固定卷显示了不正确的信息。 在此版本中已修复这些问题。 |是 |否 |
 | 4 |大量写入 I/O |使用 StorSimple 时处理涉及大量写入操作的工作负荷时，用户会遇到工作集被分层到云中罕见错误。 在此版本中已修复这一 bug。 |是 |是 |
-| 5 |备份 |在某些极少数情况下，在以前版本的软件中，当用户备份远程克隆时，它们将会出现云错误，操作将会出现错误。在此版本中，此问题已修复，并且操作已成功完成。 |是 |是 |
+| 5 |备份 |在某些极少数情况下，在早期版本的软件中，用户执行远程克隆备份时，会遇到云错误，进而使操作出错。在此版本中，已修复此问题并且操作可成功完成。 |是 |是 |
 | 6 |备份策略 |在某些极少数情况下，在早期版本的软件中，存在与删除备份策略相关的错误。 在此版本中已修复了此问题。 |是 |是 |
 
 ## <a name="known-issues-in-update-3"></a>Update 3 中的已知问题

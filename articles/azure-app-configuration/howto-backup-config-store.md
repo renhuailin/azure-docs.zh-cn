@@ -10,12 +10,12 @@ ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 39c50f539c04a6c49316f4541c759859be861f9d
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: b3e0bcad7beccc31e1772fbb24ffad7f502b8140
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454237"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自动备份应用程序配置存储区
 
@@ -137,7 +137,7 @@ az eventgrid event-subscription create \
 
 如果之前提供的示例代码不符合你的要求，你还可以创建自己的函数。 函数必须能够执行以下任务才能完成备份：
 - 定期读取队列的内容，以查看其是否包含来自事件网格的任何通知。 有关实现的详细信息，请参阅[存储队列 SDK](../storage/queues/storage-quickstart-queues-dotnet.md)。
-- 如果队列包含[事件网格中的事件通知](./concept-app-configuration-event.md?branch=pr-en-us-112982#event-schema)，从事件信息中提取唯一的 `<key, label>` 信息。 键和标签的组合是主存储中“键值更改”的唯一标识符。
+- 如果队列包含[事件网格中的事件通知](./concept-app-configuration-event.md#event-schema)，从事件信息中提取唯一的 `<key, label>` 信息。 键和标签的组合是主存储中“键值更改”的唯一标识符。
 - 从主存储读取所有设置。 仅更新辅助存储中在队列中具有相应事件的设置。 从辅助存储中删除在队列中存在但主存储中不存在的所有设置。 可以使用[应用程序配置 SDK](https://github.com/Azure/AppConfiguration#sdks) 以编程方式访问配置存储区。
 - 如果处理过程中没有异常，从队列中删除消息。
 - 根据需要实现错误处理。 请参阅前面的代码示例，查看你可能想要处理的一些常见异常。
@@ -177,7 +177,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要 `Owner` 权限。 如果需要有关角色分配的帮助，请参阅 [如何使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+> 要执行所需的资源创建和角色管理，帐户在相应的范围（订阅或资源组）需要 `Owner` 权限。 如需角色分配方面的帮助，请了解[如何使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 使用以下命令或 [Azure 门户](./howto-integrate-azure-managed-service-identity.md#grant-access-to-app-configuration)向函数应用的托管标识授予对应用程序配置存储区的访问权限。 使用以下角色：
 - 分配主应用程序配置存储区中的 `App Configuration Data Reader` 角色。

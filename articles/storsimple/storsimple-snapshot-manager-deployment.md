@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003865"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 管理单元
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager 可以安装在运行 Windows Server 2008 R2 SP1、W
 2. 在 **“作用域”** 窗格中，右键单击 **“设备”** 节点，然后单击 **“配置设备”**。 此时会显示 **“配置设备”** 对话框。
    
     ![配置设备](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. 在“设备”列表框中，选择 Microsoft Azure StorSimple 设备或虚拟设备的 IP 地址。 在“密码”文本框中，键入为 Azure 门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击“确定”。
+3. 在“设备”列表框中，选择 Microsoft Azure StorSimple 设备或虚拟设备的 IP 地址。 在“密码”文本框中，键入为 Azure 门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击 **“确定”** 。
 4. StorSimple Snapshot Manager 搜索你所标识的设备。 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。 可以 [验证到设备的连接](#to-verify-the-connection) 以确认已成功添加连接。
    
     如果设备由于任何原因而不可用，则 StorSimple Snapshot Manager 会返回一条错误消息。 单击 **“确定”** 以关闭错误消息，然后单击 **“取消”** 以关闭 **“配置设备”** 对话框。

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 0c85049d6c8921432a753bf08989cab473b7c734
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525121"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
@@ -44,7 +44,7 @@ IPv4 反向查找区域的名称基于其所代表的 IP 范围。 应采用以�
 >
 > 例如，对于 IP 范围 192.0.2.128/26，区域名称必须为 `128-26.2.0.192.in-addr.arpa`，而不是 `128/26.2.0.192.in-addr.arpa`。
 >
-> 虽然 DNS 标准支持这两种方法，但 Azure DNS 不支持包含正斜杠 () 字符的 DNS 区域名称 `/` 。
+> 虽然 DNS 标准支持这两种形式，但 Azure DNS 不支持包含正斜杠 (`/`) 字符的 DNS 区域名称。
 
 以下示例演示如何通过 Azure 门户在 Azure DNS 中创建名为 `2.0.192.in-addr.arpa` 的“类 C”的反向 DNS 区域：
 

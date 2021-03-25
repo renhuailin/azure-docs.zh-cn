@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 524df7805207ce517c7ae805fb17de1b041a2248
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002098"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
@@ -180,16 +180,16 @@ JavaScript 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
-|direction  | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|name  | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | （可选）应用设置的名称，该应用设置包含指向保留租用集合的服务的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值是 `false`。 |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
 |**leasesCollectionThroughput**| **LeasesCollectionThroughput**| （可选）在创建租用集合时，定义要分配的请求单位的数量。 仅当 `createLeaseCollectionIfNotExists` 设置为 `true` 时，才会使用该设置。 使用门户创建绑定时，将自动设置该参数。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| （可选）设置后，此项向在此 Function 的“租用”集合中创建的租用添加一个前缀，实际上就是允许两个不同的 Azure Functions（使用不同的前缀）共享同一“租用”集合。
 |**feedPollDelay**| **FeedPollDelay**| （可选）设置后，此项以毫秒为单位定义在所有当前更改均耗尽后，源上新更改的分区轮询间的延迟。 默认为 5000（5 秒）。
@@ -1113,11 +1113,11 @@ JavaScript 不支持特性。
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表解释了在 function.json 文件和 `DocumentDB` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `DocumentDB` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `documentdb`。        |
+|type     | 不适用 | 必须设置为 `documentdb`。        |
 |**direction**     | 不适用 | 必须设置为 `in`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
@@ -1454,11 +1454,11 @@ JavaScript 不支持特性。
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表解释了在 function.json 文件和 `DocumentDB` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `DocumentDB` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `documentdb`。        |
+|type     | 不适用 | 必须设置为 `documentdb`。        |
 |**direction**     | 不适用 | 必须设置为 `out`。         |
 |**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |

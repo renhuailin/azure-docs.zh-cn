@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95992995"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
@@ -36,7 +36,7 @@ ms.locfileid: "95992995"
   * **状态** - 作业可以是“全部”、“正在进行”、“成功”或“失败”或“已取消”。
   * **实体** - 作业可以与卷、共享或设备相关联。
   * **设备** – 在其上启动作业的设备的名称。
-  * **启动** 时间–启动作业的时间。
+  * **启动时间** - 启动作业的时间。
   * **持续时间** - 运行作业的持续时间。
 * **状态** - 可搜索全部、正在运行的、已完成的或失败的作业。
 * **作业类型** - 作业类型可以是“全部”、“备份”、“还原”、“故障转移”、“下载更新”或“安装更新”。
@@ -52,7 +52,7 @@ ms.locfileid: "95992995"
    
     ![“作业”边栏选项卡](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
 3. 在页面底部，单击 **“详细信息”**。
-4. 在 " **详细信息** " 对话框中，可以查看状态、详细信息和时间统计信息。 下图显示“备份作业详细信息”对话框的示例。
+4. 在“详细信息”对话框中，可查看状态、详细信息和时间统计信息。 下图显示“备份作业详细信息”对话框的示例。
    
     ![作业详细信息](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)
 
@@ -64,5 +64,5 @@ ms.locfileid: "95992995"
 这些失败适用于备份、还原、更新和故障转移作业。 如果在 Hyper-V 中预配了虚拟机，则虚拟机最终将与虚拟机监控程序同步时间。 一旦同步后，可重新启动作业。
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何使用本地 WEB UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
+[了解如何使用本地 Web UI 管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
 
