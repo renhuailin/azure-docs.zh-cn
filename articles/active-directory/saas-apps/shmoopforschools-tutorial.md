@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: d1d29e939ab01f6311b665eaec8425b7cd38f207
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729455"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教程：将 Shmoop For Schools 与 Azure Active Directory 集成
@@ -26,7 +26,7 @@ ms.locfileid: "98729455"
 * 让用户使用其 Azure AD 帐户自动登录到 Shmoop For Schools。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -74,7 +74,7 @@ ms.locfileid: "98729455"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>` 
 
@@ -108,7 +108,7 @@ ms.locfileid: "98729455"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
     1. 在“名称”字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
     1. 单击“创建”。
 

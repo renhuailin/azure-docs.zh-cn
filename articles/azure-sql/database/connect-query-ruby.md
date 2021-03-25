@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 0434a99d28b4f71594e0ca9ce312087dee5b0ee2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672532"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Ruby 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
@@ -32,13 +32,13 @@ ms.locfileid: "92672532"
 
   | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
-  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|
   |||[来自本地的连接](../managed-instance/point-to-site-p2s-configure.md) | [连接到 SQL Server 实例](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) | [还原 Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) |
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 的一个 [BACPAC](database-import.md) 文件还原或导入 Adventure Works| 从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](database-import.md) 文件还原或导入 Adventure Works|
+  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](database-import.md) 文件还原或导入 Adventure Works| 从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](database-import.md) 文件还原或导入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -46,9 +46,9 @@ ms.locfileid: "92672532"
   
 - 适用于你的操作系统的 Ruby 和相关软件：
   
-  - **macOS** ：安装 Homebrew、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS。 请参阅 [Create Ruby apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)（在 macOS 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
+  - **macOS**：安装 Homebrew、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS。 请参阅 [Create Ruby apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)（在 macOS 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
   
-  - **Ubuntu** ：安装 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的先决条件。 请参阅 [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)（在 Ubuntu 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
+  - **Ubuntu**：安装 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的先决条件。 请参阅 [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)（在 Ubuntu 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
   
   - Windows：安装 Ruby、Ruby Devkit 和 TinyTDS。 请参阅[配置用于 Ruby 开发的开发环境](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "92672532"
 
 获取连接到 Azure SQL 数据库中的数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。
 

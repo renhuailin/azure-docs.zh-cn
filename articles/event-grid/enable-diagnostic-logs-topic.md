@@ -4,19 +4,19 @@ description: 本文提供了有关如何为 Azure 事件网格主题启用诊断
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576445"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域启用诊断日志
-本文提供了为事件网格主题或域启用诊断设置的分步说明。  这些设置允许您捕获和查看 **发布和传递失败** 日志。 
+本文提供了有关如何为事件网格主题或域启用诊断设置的分步说明。  这些设置使你可以捕获和查看“发布和传递失败”日志。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - 预配的事件网格主题
-- 用于捕获诊断日志的预配目标。 它可以是与事件网格主题位于同一位置的下列目标之一：
+- 用于捕获诊断日志的预配目标。 它可以是事件网格主题所在位置中的以下目标之一：
     - Azure 存储帐户
     - 事件中心
     - Log Analytics 工作区
@@ -87,10 +87,10 @@ ms.locfileid: "96576445"
 
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>查看 Azure 存储中的诊断日志 
 
-1. 启用存储帐户作为捕获目标后，事件网格会开始发出诊断日志。 你应在存储帐户中看到名为 **insights-deliveryfailures** 和 **insights-publishfailures** 的新容器。 
+1. 启用存储帐户作为捕获目标后，事件网格会开始发出诊断日志。 应在存储帐户中看到名为“insights-logs-deliveryfailures”和“insights-logs-publishfailures”的新容器。 
 
     ![存储 - 诊断日志的容器](./media/enable-diagnostic-logs-topic/storage-containers.png)
-2. 当你在一个容器中导航时，最终将以 JSON 格式的 blob 结束。 该文件包含传递失败或发布失败的日志条目。 导航路径表示事件网格主题的 ResourceId 以及有关何时发出日志条目的时间戳（分钟级别）。 该 blob/JSON 文件（可下载）在结尾处遵循下一节中所述的架构。 
+2. 当你在其中一个容器中导航时，最终将停在一个 JSON 格式的 blob 中。 该文件包含传递失败或发布失败的日志条目。 导航路径表示事件网格主题的 ResourceId 以及有关何时发出日志条目的时间戳（分钟级别）。 该 blob/JSON 文件（可下载）在结尾处遵循下一节中所述的架构。 
 
     [![存储中的 JSON 文件](./media/enable-diagnostic-logs-topic/select-json.png)](./media/enable-diagnostic-logs-topic/select-json.png)
 3. 你应该在 JSON 文件中看到类似于以下示例的内容： 

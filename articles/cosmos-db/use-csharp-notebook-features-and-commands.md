@@ -9,10 +9,10 @@ ms.date: 05/19/2020
 ms.author: dech
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 67fe71d8e2d6ab239989cb30e9bf5a1b4d731037
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340464"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>使用 Azure Cosmos DB C# 笔记本中的内置笔记本命令和功能（预览版）

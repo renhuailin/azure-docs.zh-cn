@@ -10,10 +10,10 @@ ms.date: 04/03/2020
 ms.author: menchi
 ms.custom: devx-track-python
 ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139402"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT 中心模块标识和模块孪生 (Python) 入门

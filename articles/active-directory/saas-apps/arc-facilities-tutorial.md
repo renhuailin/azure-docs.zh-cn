@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 2ca26d9730c335023864c071657522270880f74a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735419"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ARC Facilities 集成
@@ -27,7 +27,7 @@ ms.locfileid: "98735419"
 * 在一个中心位置（Azure 门户）管理帐户。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -118,7 +118,7 @@ ms.locfileid: "98735419"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -130,7 +130,7 @@ ms.locfileid: "98735419"
 1. 在应用程序列表中，选择“ARC Facilities”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 

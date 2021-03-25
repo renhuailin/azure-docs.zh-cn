@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/30/2020
 ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91613775"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>快速入门：浏览 Azure 时序见解 Gen1
@@ -90,7 +90,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化效果服�
 现在你已完成本教程，请清除已创建的资源：
 
 1. 从 [Azure 门户](https://portal.azure.com)的左侧菜单中，选择“所有资源”  ，找到“Azure 时序见解”资源组。
-1. 通过选择“删除”  来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
+1. 通过选择“删除”来删除整个资源组（以及其中包含的所有资源），或者单独删除每个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

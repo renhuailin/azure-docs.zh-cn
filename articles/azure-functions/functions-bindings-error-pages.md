@@ -1,15 +1,15 @@
 ---
 title: Azure Functions 错误处理和重试指南
-description: 了解如何处理 Azure Functions 中的错误和重试事件，其中包含指向特定绑定错误的链接。
+description: 通过指向特定绑定错误的链接，了解如何处理 Azure Functions 中的错误并在其中重试事件。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
 ms.openlocfilehash: e52babd5b0612b4590f1422a941b25ba30c3f169
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93284456"
 ---
 # <a name="azure-functions-error-handling-and-retries"></a>Azure Functions 错误处理和重试

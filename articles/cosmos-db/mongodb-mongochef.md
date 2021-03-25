@@ -9,10 +9,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096506"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
@@ -33,7 +33,7 @@ ms.locfileid: "93096506"
 
 2. 单击“连接”  以打开“连接管理器”，并单击“新建连接” 
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="用于突出显示 &quot;新建连接&quot; 按钮的 Studio 3T 连接管理器的屏幕截图。":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Studio 3T 连接管理器的屏幕截图，其中突出显示了“新建连接”按钮。":::
 3. 在“新建连接”窗口中的“服务器”选项卡上，输入 Azure Cosmos 帐户的主机 (FQDN) 和端口   。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Studio 3T 连接管理器服务器选项卡的屏幕截图":::

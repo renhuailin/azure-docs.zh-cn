@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
 ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596466"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
@@ -80,7 +80,7 @@ ulimit -a
 * 将公共 IP 分配给 Azure VM。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
-``ConnectTimeoutException`` 指示 SDK 不能访问服务。
+``ConnectTimeoutException`` 表示 SDK 无法访问服务。
 使用直接模式时，可能会出现如下所示的故障：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]

@@ -11,10 +11,10 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102553776"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 将托管映像克隆到映像版本
@@ -71,7 +71,7 @@ az sig image-definition create \
 az image list --query "[].[name, id]" -o tsv
 ```
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
 在此示例中，映像版本为 1.0.0，我们将使用区域冗余存储在“美国中南部”区域创建 1 个副本，并在“美国东部 2”区域创建 1 个副本  。 选择复制的目标区域时，请记住，你还需包括源区域作为复制的目标。
 

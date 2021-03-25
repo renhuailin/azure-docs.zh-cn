@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Functions 扩展 Azure 开发测试实验�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501152"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>使用 Azure Functions 扩展开发测试实验室

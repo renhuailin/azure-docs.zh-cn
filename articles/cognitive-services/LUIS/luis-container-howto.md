@@ -13,10 +13,10 @@ ms.date: 03/02/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器
 ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040186"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>安装并运行 LUIS 的 Docker 容器

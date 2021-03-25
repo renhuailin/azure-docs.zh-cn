@@ -11,10 +11,10 @@ ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
 ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102488267"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>迁移概述：将 SQL Server 到 SQL 数据库
@@ -102,7 +102,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 下表列出了推荐的迁移工具： 
 
-|技术 | 说明|
+|技术 | 描述|
 |---------|---------|
 | [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | 通过 Azure Migrate for Azure SQL，可以在 VMware 上大规模发现和评估 SQL 数据资产，并获得 Azure SQL 部署建议、目标大小和每月估算。 | 
 |[数据迁移助手 (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|数据迁移助手是一种桌面工具，可提供对 SQL Server 的无缝评估和到 Azure SQL 数据库（架构和数据）的迁移。 此工具可以安装在本地服务器上，也可以安装在可以连接到源数据库的本地计算机上。 迁移过程是在源数据库和目标数据库中的对象之间进行的逻辑数据移动。 </br> - 迁移单一数据库（架构和数据）|

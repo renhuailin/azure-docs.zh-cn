@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 6e4cb3c372b696b203d2441c74a6cafff175af47
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736125"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Alibaba Cloud Service (Role-based SSO) 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98736125"
 * 让用户使用其 Azure AD 帐户自动登录到 Alibaba Cloud Service (Role-based SSO)。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,7 +45,7 @@ ms.locfileid: "98736125"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Alibaba Cloud Service (Role-based SSO)”   。
 1. 从结果面板中选择“Alibaba Cloud Service (Role-based SSO)”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
@@ -108,13 +108,13 @@ ms.locfileid: "98736125"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

@@ -4,10 +4,10 @@ description: 本文介绍如何设置在 Windows 开发计算机上运行的 Ser
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087071"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
@@ -15,16 +15,16 @@ ms.locfileid: "93087071"
 本文档介绍如何在 Windows 开发计算机上设置本地 Linux Service Fabric 群集。 设置本地 Linux 群集有助于快速测试在 Windows 计算机上开发的面向 Linux 群集的应用程序。
 
 ## <a name="prerequisites"></a>先决条件
-基于 Linux 的 Service Fabric 群集不在 Windows 上运行，但为了实现跨平台原型，我们提供了一个可通过用于 Windows 的 Docker 部署的 Linux Service Fabric 一个 box 群集 docker 容器。
+基于 Linux 的 Service Fabric 群集不在 Windows 上运行，但为了实现跨平台原型设计，我们提供了一个可以通过用于 Windows 的 Docker 进行部署的 Linux Service Fabric 单机群集 Docker 容器。
 
 准备事项：
 
 * 至少 4 GB RAM
-* 最新版本的 [用于 Windows 的 Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+* 最新版的[用于 Windows 的 Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
 * Docker 必须在 Linux 容器模式下运行
 
 >[!TIP]
-> 若要在 Windows 计算机上安装 Docker，请按照 [Docker 文档](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中的步骤进行操作。 安装之后，请[验证安装](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine)。
+> 若要在 Windows 计算机上安装 Docker，请按 [Docker 文档](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中的步骤操作。 安装之后，请[验证安装](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine)。
 >
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>创建本地容器和设置 Service Fabric
@@ -39,11 +39,11 @@ ms.locfileid: "93087071"
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    建议的更新方法是： 
+    建议的更新方法是转到： 
 
-    * Docker 图标 > 设置 > Docker 引擎
+    * Docker 图标 >“设置”>“Docker 引擎”
     * 添加上面列出的新字段
-    * 应用 & 重新启动-重新启动 Docker 守护程序以使更改生效。
+    * 应用和重启 - 重启 Docker 守护程序以使更改生效。
 
 2. 通过 PowerShell 启动群集。<br/>
     <b>Ubuntu 18.04 LTS：</b>
@@ -57,16 +57,16 @@ ms.locfileid: "93087071"
     ```
 
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请参阅 Docker Hub 上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 页面。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请参阅 Docker Hub 上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 页。
 
 
 
-3. 可选：生成扩展 Service Fabric 映像。
+3. 可选：构建扩展的 Service Fabric 映像。
 
-    在新目录中，创建一个名为的文件 `Dockerfile` 来构建自定义映像：
+    在新目录中创建名为 `Dockerfile` 的文件，以构建自定义映像：
 
     >[!NOTE]
-    >您可以使用 Dockerfile 调整上面的图像，将其他程序或依赖项添加到容器中。
+    >可以使用 Dockerfile 修改上面的映像，以将其他程序或依赖项添加到容器中。
     >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
     ```Dockerfile
     FROM mcr.microsoft.com/service-fabric/onebox:u18
@@ -77,9 +77,9 @@ ms.locfileid: "93087071"
     ```
     
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 页。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
 
-    若要从生成可重复使用的映像 `Dockerfile` ，请打开终端并 `cd` 直接保存， `Dockerfile` 然后运行：
+    若要通过 `Dockerfile` 生成可重用的映像，请打开终端并使用 `cd` 直接切换到 `Dockerfile` 所在的目录，然后运行：
 
     ```powershell 
     docker build -t mysfcluster .
@@ -88,7 +88,7 @@ ms.locfileid: "93087071"
     >[!NOTE]
     >此操作需要一段时间，但只需执行一次。
 
-    现在，你可以在每次需要时通过运行来快速启动 Service Fabric 的本地副本：
+    现在，每当有需要时，都可以运行以下命令，快速启动 Service Fabric 的本地副本：
 
     ```powershell 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -109,12 +109,12 @@ ms.locfileid: "93087071"
     docker logs sftestcluster
     ```
 
-5. 成功部署群集后，如步骤4中所述，你可以 ``http://localhost:19080`` 从 Windows 计算机中转到查找 Service Fabric Explorer 仪表板。 此时，你可以使用 Windows 开发人员计算机中的工具连接到此群集，并部署面向 Linux Service Fabric 群集的应用程序。 
+5. 按照步骤 4 的说明成功部署群集后，可以从 Windows 计算机转到 ``http://localhost:19080``，以找到 Service Fabric Explorer 仪表板。 此时，可使用 Windows 开发人员计算机上的工具连接到此群集，并部署面向 Linux Service Fabric 群集的应用程序。 
 
     > [!NOTE]
     > Windows 当前不支持 Eclipse 插件。 
 
-6. 完成后，请通过此命令停止并清除容器：
+6. 完成后，可使用以下命令来停止并清理容器：
 
     ```powershell 
     docker rm -f sftestcluster
@@ -124,7 +124,7 @@ ms.locfileid: "93087071"
  
  以下是在 Mac 的容器中运行的本地群集的已知限制： 
  
- * DNS 服务未运行，并且在容器中目前不受支持。 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS 服务未运行，并且目前在容器中不受支持。 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
  * 运行基于容器的应用需要在 Linux 主机上运行 SF。 当前不支持嵌套容器应用。
 
 ## <a name="next-steps"></a>后续步骤

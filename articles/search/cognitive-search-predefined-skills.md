@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: bde82a0ad50c2172e70337ad202b91af0a62c530
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535519"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547809"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>在编制索引期间用于文本和图像处理的内置认知技能（Azure 认知搜索）
 
@@ -34,11 +34,11 @@ ms.locfileid: "91535519"
 | 技能 | 说明 |
 |-------|-------------|
 |[Microsoft.Skills.Text.CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| 在用户自定义的单词和短语列表中查找文本。|
-| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | 此技能使用预定型模型来检测基于术语放置、语言规则、与其他术语的接近度以及该术语在源数据内的异常程度的重要短语。 |
+| [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | 此技能使用预定型模型来检测基于术语放置、语言规则、与其他术语的接近度以及该术语在源数据内的异常程度的重要短语。 |
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | 该技能使用预定型模型来检测使用语言的语言类型（每个文档一个语言 ID）。 在同一文本段中使用多种语言时，输出是主要使用的语言的 LCID。|
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | 将字段集合中的文本合并到单个字段中。  |
 | [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | 此技能使用预训练模型为固定的一组类别建立实体：人员、位置、组织、电子邮件、URL、日期时间字段。 |
-| [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | 此技能使用预先训练模型从给定文本中提取个人信息。 该技能还提供了各种选项来屏蔽文本中检测到的个人信息实体。  |
+| [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | 此技能使用预先训练的模型从给定文本中提取个人信息。 此技能还提供了用于过滤文本中检测到的个人信息实体的各种选项。  |
 | [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | 此技能使用预定型模型根据记录对记录中的正面或负面情绪进行评分。 得分介于 0 和 1 之间。 当无法检测到情绪以及文本被认为是中性时，这两个 null 事例都会出现中性分数。  |
 | [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | 将文本拆分为多页，以便以增量方式扩充或增加内容。 |
 | [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md) | 此技能使用预先训练的模型将输入文本转换为各种语言，以用于规范化或本地化用例。 |
@@ -48,7 +48,7 @@ ms.locfileid: "91535519"
 | [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | 从扩充管道内的文件中提取内容。 |
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | 将输出映射到复杂类型（多部分数据类型，可用于全名、多行地址或姓氏和个人标识符的组合）。 |
 | [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | 通过对自定义 Web API 执行 HTTP 调用，实现 AI 扩充管道的可扩展性 |
-| [Microsoft AmlSkill](cognitive-search-aml-skill.md) | 允许具有 Azure 机器学习模型的 AI 扩充管道的可扩展性 |
+| [Microsoft.Skills.Custom.AmlSkill](cognitive-search-aml-skill.md) | 允许使用 Azure 机器学习模型扩展 AI 扩充管道 |
 
 
 有关创建[自定义技能](cognitive-search-custom-skill-web-api.md)的指导，请参阅[如何定义自定义界面](cognitive-search-custom-skill-interface.md)和[示例：创建用于 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200795"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592517"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102200795"
 * 让用户使用其 Azure AD 帐户自动登录到 Cisco Webex。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,7 +38,7 @@ ms.locfileid: "102200795"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Cisco Webex 支持 SP 发起的 SSO  。
-* Cisco Webex 支持 [**自动用户预配**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)。
+* Cisco Webex 支持 [**自动用户预配**](./cisco-webex-provisioning-tutorial.md)。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>从库中添加 Cisco Webex
 
@@ -159,7 +159,7 @@ ms.locfileid: "102200795"
 
 ### <a name="create-cisco-webex-test-user"></a>创建 Cisco Webex 测试用户
 
-在本部分，我们将在 Cisco Webex 中创建名为 B.Simon 的用户。此应用程序支持自动用户预配，可让你根据业务规则启用自动预配和取消预配。  Microsoft 建议尽可能地使用自动预配。 了解如何为 [Cisco Webex](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial) 启用自动预配。
+在本部分，我们将在 Cisco Webex 中创建名为 B.Simon 的用户。此应用程序支持自动用户预配，可让你根据业务规则启用自动预配和取消预配。  Microsoft 建议尽可能地使用自动预配。 了解如何为 [Cisco Webex](./cisco-webex-provisioning-tutorial.md) 启用自动预配。
 
 如果需要手动创建用户，请执行以下步骤：
 
@@ -195,7 +195,7 @@ ms.locfileid: "102200795"
 
 * 直接转到 Cisco Webex 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Webex”磁贴时，会自动重定向到 Cisco Webex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Cisco Webex”磁贴时，会自动重定向到 Cisco Webex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

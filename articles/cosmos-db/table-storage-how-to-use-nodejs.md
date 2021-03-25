@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079693"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储或 Azure Cosmos DB 表 API
@@ -42,7 +42,7 @@ ms.locfileid: "93079693"
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node 包管理器 (NPM) 安装包
 
-1. 使用 **PowerShell** (Windows)、 **Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了应用程序的文件夹。
+1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了应用程序的文件夹。
 2. 在命令窗口中键入 **npm install azure-storage** 。 该命令的输出类似于以下示例。
 
    ```bash
@@ -133,7 +133,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
 
-若要添加实体，首先创建定义实体属性的对象。 所有实体都必须都包含 **PartitionKey** 和 **RowKey** ，它们是实体的唯一标识符。
+若要添加实体，首先创建定义实体属性的对象。 所有实体都必须都包含 **PartitionKey** 和 **RowKey**，它们是实体的唯一标识符。
 
 * **PartitionKey** - 确定实体存储在其中的分区。
 * **RowKey** - 唯一标识分区内的实体。
@@ -300,7 +300,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-由于未使用 select，因此将返回所有字段。 若要对表执行查询，请使用 **queryEntities** 。 下面的示例使用此查询来返回“mytable”中的实体。
+由于未使用 select，因此将返回所有字段。 若要对表执行查询，请使用 **queryEntities**。 下面的示例使用此查询来返回“mytable”中的实体。
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -358,7 +358,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-如果不确定表是否存在，则使用 **deleteTableIfExists** 。
+如果不确定表是否存在，则使用 **deleteTableIfExists**。
 
 ## <a name="use-continuation-tokens"></a>使用继续标记
 
@@ -417,7 +417,7 @@ var host = tableSvc.host;
 
 请注意，还必须提供主机信息，因为 SAS 持有者尝试访问表时，必须提供该信息。
 
-然后，客户端应用程序将 SAS 用于 **TableServiceWithSAS** ，以便针对表执行操作。 下面的示例连接到该表，并执行一个查询。 有关 tableSAS 的格式，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)一文。
+然后，客户端应用程序将 SAS 用于 **TableServiceWithSAS**，以便针对表执行操作。 下面的示例连接到该表，并执行一个查询。 有关 tableSAS 的格式，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)一文。
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;

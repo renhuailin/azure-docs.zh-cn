@@ -1,19 +1,19 @@
 ---
-title: 使用邻近放置组
+title: 使用 Azure CLI 创建邻近放置组
 description: 了解如何针对 Azure 中的虚拟机创建和使用邻近放置组。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 21f657af60fa0012c517e4788a5d087b3924823f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666245"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505641"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
 

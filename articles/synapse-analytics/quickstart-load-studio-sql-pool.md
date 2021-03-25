@@ -2,19 +2,19 @@
 title: 快速入门：使用专用 SQL 池大容量加载数据
 description: 使用 Synapse Studio 将数据大容量加载到 Azure Synapse Analytics 中的专用 SQL 池中。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53b6810b0042df382fd1f553bc4bd0fae61793b3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672791"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586720"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>快速入门：使用 Synapse Studio 进行大容量加载
 

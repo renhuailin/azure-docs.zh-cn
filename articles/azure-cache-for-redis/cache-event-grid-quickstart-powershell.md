@@ -7,10 +7,10 @@ ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
 ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508157"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>快速入门：使用 PowerShell 将 Azure Cache for Redis 事件路由到 Web 终结点

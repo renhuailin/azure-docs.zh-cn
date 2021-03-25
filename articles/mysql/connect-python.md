@@ -11,12 +11,12 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: 8aa0ea4b1e01cc7363f49d5897695c7c237b339b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a4391ecb7175b0e473b47cc3de43fd113795bc6b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535582"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889019"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Python 连接到 Azure Database for MySQL 并查询其中的数据
 
@@ -31,9 +31,9 @@ ms.locfileid: "94535582"
 
    |操作| 连接方法|操作指南|
    |:--------- |:--------- |:--------- |
-   | **配置防火墙规则** | 公用 | [门户](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
-   | 配置服务终结点 | 公用 | [门户](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)| 
-   | 配置专用链接 | Private | [门户](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) | 
+   | **配置防火墙规则** | 公用 | [Portal](./howto-manage-firewall-using-portal.md) <br/> [CLI](./howto-manage-firewall-using-cli.md)|
+   | 配置服务终结点 | 公用 | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)| 
+   | 配置专用链接 | Private | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) | 
 
 - [创建数据库和非管理员用户](./howto-create-users.md)
 
@@ -64,7 +64,7 @@ ms.locfileid: "94535582"
 
 从 Azure 门户获取连接到 Azure Database for MySQL 所需的连接信息。 需要服务器名称、数据库名称和登录凭据。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
    
 1. 在门户搜索栏中，搜索并选择创建的 Azure Database for MySQL 服务器，如 **mydemoserver**。
    
@@ -96,8 +96,8 @@ config = {
   'user':'<myadmin>@<mydemoserver>',
   'password':'<mypassword>',
   'database':'<mydatabase>',
-  'client_flags': [ClientFlag.SSL],
-  'ssl_cert': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
+  'client_flags': [mysql.connector.ClientFlag.SSL],
+  'ssl_ca': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
 }
 
 # Construct connection string

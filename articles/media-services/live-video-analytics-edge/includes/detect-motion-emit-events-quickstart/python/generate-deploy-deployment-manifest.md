@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 94044e95e83742487a0d4d650814a5324f07011a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750824"
 ---
 部署清单定义要部署到边缘设备的模块。 它还定义了这些模块的配置设置。 

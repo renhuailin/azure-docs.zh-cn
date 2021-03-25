@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 0b02662658b2199a13f117ad95c6402f9b2974f9
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95519840"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
 ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176614"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
@@ -101,7 +101,7 @@ ms.locfileid: "102176614"
 
  6. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
 
-     |  properties   | 说明   |  
+     |  属性   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `scala`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.jar`|
@@ -141,7 +141,7 @@ ms.locfileid: "102176614"
 
  6. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
     
-     |  properties   | 说明   |  
+     |  属性   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 <br> 示例： `dotnet`|
      |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可以选择“上传文件”以将文件上传到存储帐户。 <br> 示例： `abfss://…/path/to/wordcount.zip`|

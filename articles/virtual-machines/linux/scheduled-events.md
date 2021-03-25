@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 1029790cbcfa86f988c2249d67640a642e529229
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8b4f8b064ab19a578ce5854697a1ed9bb0195759
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674862"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505386"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
@@ -50,18 +50,18 @@ ms.locfileid: "101674862"
 
   元数据服务公开在 VM 中使用可访问的 REST 终结点运行 VM 的相关信息。 该信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 计划的事件传送到：
 
 - 独立虚拟机。
 - 云服务中的所有 VM。
 - 可用性集中的所有 VM。
-- 可用性区域中的所有 Vm。 
+- 可用性区域中的所有 VM。 
 - 规模集位置组中的所有 VM。 
 
 > [!NOTE]
-> 特定于可用性区域中的 Vm，计划事件会在区域中的单个 Vm 上执行。
-> 例如，如果某个可用性集中有100个 Vm，并且其中一个虚拟机有一个更新，则计划的事件将转到全部100，而如果一个区域中有100个单个 Vm，则事件只会转到受影响的 VM。
+> 特定于可用性区域中的 VM，计划事件会转到区域中的单个 VM。
+> 例如，如果一个可用性集中有 100 个 VM，其中一个 VM 有更新，则计划事件会转到所有 100 个 VM，但如果一个区域中有 100 个单一 VM，则事件将只转到受影响的 VM。
 
 因此，检查事件中的 `Resources` 字段可确定哪些 VM 受到了影响。
 
@@ -137,7 +137,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除现成虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |
 | ResourceType | 此事件影响的资源类型。 <br><br> 值： <ul><li>`VirtualMachine`|
-| 资源| 此事件影响的资源列表。 它保证最多只能包含一个[更新域](../manage-availability.md)的计算机，但可能不包含该更新域中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| 资源| 此事件影响的资源列表。 它保证最多只能包含一个[更新域](../availability.md)的计算机，但可能不包含该更新域中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 不提供 `Completed` 或类似状态。 事件完成后，将不再返回该事件。
 | NotBefore| 在可以启动此事件之前所要经过的时间。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 | 说明 | 此事件的说明。 <br><br> 示例： <br><ul><li> 主机服务器正在维护中。 |

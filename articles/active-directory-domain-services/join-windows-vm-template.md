@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619430"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板，将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
@@ -84,7 +84,7 @@ ms.locfileid: "96619430"
 1. 浏览到[快速启动模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择“部署到 Azure”选项。
 1. 在“自定义部署”页上，输入以下信息以创建 Windows Server VM 并将其加入托管域：
 
-    | 设置                   | Value |
+    | 设置                   | 值 |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择 VM 的资源组。 |
@@ -117,7 +117,7 @@ ms.locfileid: "96619430"
 1. 浏览到[快速启动模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择“部署到 Azure”选项。
 1. 在“自定义部署”页上，输入以下信息，将 VM 加入托管域：
 
-    | 设置                   | Value |
+    | 设置                   | 值 |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择包含现有 VM 的资源组。 |

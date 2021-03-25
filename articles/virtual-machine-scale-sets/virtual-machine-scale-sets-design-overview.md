@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648558"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774960"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
 本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](./overview.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "88648558"
 
 ### <a name="scale-set-specific-features"></a>特定于规模集的功能
 
-- 指定规模集配置后，可以更新“容量”** 属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
+- 指定规模集配置后，可以更新“容量”属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
 - 可以[使用 Azure 自动缩放来自动缩放规模集](./virtual-machine-scale-sets-autoscale-overview.md)，但不能使用它来自动缩放单个 VM。
 - 可以[重置规模集 VM 的映像](/rest/api/compute/virtualmachinescalesets/reimage)，但[不能重置单个 VM 的映像](/rest/api/compute/virtualmachines)。
 - 可以[过度预配](#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
@@ -50,7 +50,7 @@ ms.locfileid: "88648558"
 如果存在现有的模板，则还可以[将该模板更新为使用托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)。
 
 ### <a name="user-managed-storage"></a>用户管理的存储
-未使用 Azure 托管磁盘定义的规模集依赖于用户创建的存储帐户在规模集中存储 VM 的 OS 磁盘。 建议为每个存储帐户预配不超过 20 个 VM 的比率，以实现最大 IO，并充分利用_过度预配_（请参见下文）。 还建议存储帐户名称的开始部分字符采用字母表中的不同字符。 这样做有助于在多个不同的内部系统中分散负载。 
+未使用 Azure 托管磁盘定义的规模集依赖于用户创建的存储帐户在规模集中存储 VM 的 OS 磁盘。 建议为每个存储帐户预配不超过 20 个 VM 的比率，以实现最大 IO，并充分利用 _过度预配_（请参见下文）。 还建议存储帐户名称的开始部分字符采用字母表中的不同字符。 这样做有助于在多个不同的内部系统中分散负载。 
 
 
 ## <a name="overprovisioning"></a>预配过度
@@ -67,4 +67,4 @@ ms.locfileid: "88648558"
 
 基于自定义映像（用户构建的映像）构建的规模集配置 Azure 托管磁盘后最多可拥有 600 个 VM 的容量。 如果规模集配置了用户管理的存储帐户，则必须在同一存储帐户中创建所有 OS 磁盘 VHD。 因此，基于自定义映像和用户管理的存储构建的规模集中 VM 的最大建议数目为 20。 如果关闭预配过度，最大可为 40。
 
-对于高出这些限制所允许的 VM，需要部署多个规模集，如[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)所示。
+对于高出这些限制所允许的 VM，需要部署多个规模集，如[此模板](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/)所示。

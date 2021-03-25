@@ -1,26 +1,26 @@
 ---
 title: 可管理性和监视 - 概述
-description: 有关资源利用率、日志和查询活动、建议以及数据保护的监视和可管理性概述 (在 Azure Synapse Analytics 中使用专用 SQL 池的备份和还原) 。
+description: 有关资源利用率、日志和查询活动、建议以及使用 Azure Synapse Analytics 中的专用 SQL 池进行数据保护（备份和还原）的监视和可管理性方面的概述性介绍。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 08/27/2018
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4792842eddac3e8082be2d3a67736824a02dfebd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.openlocfilehash: 56ec38140d53788de7cc94f3cb6046177ad2bed4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317493"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585462"
 ---
 # <a name="manageability-and-monitoring-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的可管理性和监视
 
-Synapse SQL 允许通过专用 SQL 池预配数据仓库。 以下文章可帮助你管理和监视数据仓库。 你还将了解如何优化数据仓库的使用和性能。
+Synapse SQL 允许你通过专用 SQL 池预配数据仓库。 以下文章可帮助你管理和监视数据仓库。 你还将了解如何优化数据仓库的使用和性能。
 
 ## <a name="overview"></a>概述
 
@@ -33,4 +33,4 @@ Synapse SQL 允许通过专用 SQL 池预配数据仓库。 以下文章可帮�
 
 
 ## <a name="next-steps"></a>后续步骤
-有关操作指南，请参阅 [监视和优化专用 SQL 池](sql-data-warehouse-manage-monitor.md)。
+有关操作指南的信息，请参阅[监视和优化专用 SQL 池](sql-data-warehouse-manage-monitor.md)。

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
 ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92132765"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure CDN 上创建 WAF 策略
@@ -33,7 +33,7 @@ ms.locfileid: "92132765"
 
 首先使用门户创建包含托管的默认规则集 (DRS) 的基本 WAF 策略。
 
-1. 在屏幕的左上方选择“创建资源”，搜索 **WAF** ，然后选择“Web 应用程序防火墙”>“创建”。   
+1. 在屏幕的左上方选择“创建资源”，搜索 **WAF**，然后选择“Web 应用程序防火墙”>“创建”。   
 2. 在“创建 WAF 策略”页的“基本”选项卡中输入或选择以下信息，对剩余的设置保留默认值，然后选择“查看 + 创建”：   
 
     | 设置                 | 值                                              |
@@ -64,25 +64,25 @@ ms.locfileid: "92132765"
 
 若要查看 WAF 的运作方式，可将模式设置从“检测”更改为“阻止”。   在“阻止”模式下，与默认规则集 (DRS) 中定义的规则匹配的请求将被阻止，并记录在 WAF 日志中。 
 
- :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="“创建 WAF 策略”页的屏幕截图，其中包含“查看 + 创建”按钮以及为各种设置输入的值。" border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="“策略设置”部分的屏幕截图。“模式”切换开关设置为“阻止”。" border="false":::
 
 ### <a name="custom-rules"></a>自定义规则
 
-若要创建自定义规则，请在“自定义规则”部分下选择“添加自定义规则”。   这将打开自定义规则配置页。 有两种类型的自定义规则： **匹配规则** 和 **速率限制** 规则。
+若要创建自定义规则，请在“自定义规则”部分下选择“添加自定义规则”。   这将打开自定义规则配置页。 有两种类型的自定义规则：**匹配规则** 和 **速率限制** 规则。
 
-下面的屏幕截图显示了一个自定义匹配规则，如果查询字符串包含值 **blockme** ，则该规则将阻止请求。
+下面的屏幕截图显示了一个自定义匹配规则，如果查询字符串包含值 **blockme**，则该规则将阻止请求。
 
-:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="“创建 WAF 策略”页的屏幕截图，其中包含“查看 + 创建”按钮以及为各种设置输入的值。" border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="“自定义规则配置”页的屏幕截图，其中显示了一个规则的设置，该规则可检查 QueryString 变量是否包含值 blockme。" border="false":::
 
-速率限制规则需要另外两个字段： **速率限制持续时间** 和 **速率限制阈值(请求数)** ，如以下示例中所示：
+速率限制规则需要另外两个字段：**速率限制持续时间** 和 **速率限制阈值(请求数)** ，如以下示例中所示：
 
-:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="“创建 WAF 策略”页的屏幕截图，其中包含“查看 + 创建”按钮以及为各种设置输入的值。" border="false":::
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="“速率限制规则配置”页的屏幕截图。其中显示了“速率限制持续时间”列表框和“速率限制阈值(请求数)”框。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>默认规则集 (DRS)
 
 默认情况下会启用 Azure 托管的默认规则集。 若要禁用规则组中的单个规则，请展开该规则组中的规则，选中规则编号前面的复选框，然后在上面的选项卡中选择“禁用”。  若要更改规则集中单个规则的操作类型，请选中规则编号前面的复选框，然后选择上面的“更改操作”选项卡。 
 
- :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="“创建 WAF 策略”页的屏幕截图，其中包含“查看 + 创建”按钮以及为各种设置输入的值。" border="false":::
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="“托管规则”页的屏幕截图，其中显示了规则集、规则组、规则，以及“启用”、“禁用”和“更改操作”按钮。已选中一个规则。" border="false":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

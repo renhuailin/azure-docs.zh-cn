@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063300"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
@@ -86,9 +86,9 @@ ms.locfileid: "87063300"
 ## <a name="remarks"></a>备注
 
 - 如果 `constraints.required.domainNameLabel` 设置为 **true**，则用户在创建新的公共 IP 地址时必须提供域名标签。 没有标签的现有公共 IP 地址不可供选择。
-- 如果 `options.hideNone` 设置为 **true**，则用于为公共 IP 地址选择 **None** 的选项会被隐藏。 默认值是 **false**秒。
-- 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值是 **false**秒。
-- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公共 IP 地址。 默认值是 **false**秒。
+- 如果 `options.hideNone` 设置为 **true**，则用于为公共 IP 地址选择 **None** 的选项会被隐藏。 默认值是 **false** 秒。
+- 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值是 **false** 秒。
+- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公共 IP 地址。 默认值是 **false** 秒。
 - 对于 `zone`，仅指定区域的公共 IP 地址或区域复原公共 IP 地址可用。
 
 ## <a name="next-steps"></a>后续步骤

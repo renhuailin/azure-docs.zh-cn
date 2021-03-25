@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.openlocfilehash: 785c87e8136430557af819cd8c7ab1db8f54c060
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186382"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507715"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -30,8 +30,8 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 * [云计算术语](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 常规行业云术语。
 
 ## <a name="account"></a>account
-用于访问和管理 Azure 订阅的帐户。 它通常称为 Azure 帐户，尽管帐户可以是以下任何一种：现有的工作、学校或个人 Microsoft 帐户。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
-请参阅使用 [Microsoft 365 帐户注册 Azure 订阅](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) 和 [可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+用于访问和管理 Azure 订阅的帐户。 它通常被称为 Azure 帐户，尽管帐户可以是以下任何一个：现有的工作、学校或个人 Microsoft 帐户。 当注册[免费试用版](https://azure.microsoft.com)时，还可以创建一个帐户来管理 Azure 订阅。  
+请参阅[使用 Microsoft 365 帐户注册 Azure 订阅](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md)和[可用于登录的帐户](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 应用
 又叫[应用服务应用](#app-service-app)。
@@ -41,7 +41,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure 经典部署模型
 用于在 Azure 中部署资源的两个[部署模型](./azure-resource-manager/management/deployment-models.md)中的一个（新模型是 Azure Resource Manager）。 有些 Azure 服务仅支持资源管理器部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
@@ -58,7 +58,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="fault-domain"></a>容错域
 可用性集中可能会同时发生故障的虚拟机集合。 一个例子是机架中共用一个电源和网络交换机的计算机组。 在 Azure 中，可用性集内的虚拟机自动分布在多个容错域中。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[管理 Linux 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
 ## <a name="geo"></a>地区
 针对数据驻留位置定义的边界，通常包含两个或更多个区域。 边界可能在国界内或超出国界，并受到税法影响。 每个地区至少有一个区域。 地区的示例包括亚太区和日本。 也称为 *地理位置*。  
@@ -135,7 +135,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="update-domain"></a>更新域
 可用性集中可同时更新的虚拟机集合。 同一个更新域中的虚拟机会在计划维护期间一起重新启动。 Azure 永远不会一次性重新启动多个更新域。 也称为升级域。  
-请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+请参阅[管理 Windows 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)和[管理 Linux 虚拟机的可用性](./virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-machine"></a><a name="vm"></a>虚拟机
 运行操作系统的物理计算机的软件实现。 多个虚拟机可以在同一个硬件上同时运行。 在 Azure 中，虚拟机具有不同的大小。  

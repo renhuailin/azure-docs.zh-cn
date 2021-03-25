@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
 ms.openlocfilehash: 12752e3d3cc08e8a13e9679725fbb6678c4bbd71
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728676"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Academy Attendance 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98728676"
 * 让用户使用其 Azure AD 帐户自动登录到 Academy Attendance。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -48,7 +48,7 @@ ms.locfileid: "98728676"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入 **Academy Attendance**。
 1. 从结果面板中选择“Academy Attendance”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -77,9 +77,9 @@ ms.locfileid: "98728676"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.aattendance.com/sso/saml2/login?idp=<IDP_NAME>`
+    1. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.aattendance.com/sso/saml2/login?idp=<IDP_NAME>` 
 
     1. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.aattendance.com/sso/saml2/metadata?idp=<IDP_NAME>` 
 
@@ -112,7 +112,7 @@ ms.locfileid: "98728676"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
