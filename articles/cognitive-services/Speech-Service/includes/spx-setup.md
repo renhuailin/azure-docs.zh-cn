@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a995a110c4f777603e5b0273b6025cd68fe55b67
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645505"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102532573"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -19,7 +19,7 @@ ms.locfileid: "100645505"
 按照以下步骤在 Windows 上安装语音 CLI：
 
 1. 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 首次安装时，可能需要重启。
-1. 安装 [.NET Core 3.1 SDK](/dotnet/core/install/linux)。
+1. 安装 [.NET Core 3.1 SDK](/dotnet/core/install/windows)。
 2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
 
    ```console
@@ -52,7 +52,7 @@ ms.locfileid: "100645505"
 
 按照以下步骤在 x64 CPU 上安装 Linux 上的语音 CLI：
 
-1. 安装 [.NET Core 3.1](/dotnet/core/install/linux)。
+1. 安装 [.NET Core 3.1 SDK](/dotnet/core/install/linux)。
 2. 通过输入以下命令，使用 NuGet 安装语音 CLI：
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
@@ -67,7 +67,7 @@ ms.locfileid: "100645505"
 
 按照以下步骤在 Docker 容器中安装语音 CLI：
 
-1. 为你的平台<a href="https://www.docker.com/get-started" target="_blank">安装 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a>（如果尚未安装）。
+1. 为你的平台<a href="https://www.docker.com/get-started" target="_blank">安装 Docker Desktop</a>（如果尚未安装）。
 2. 在新的命令提示符或终端中，键入以下命令：
    ```console   
    docker pull msftspeech/spx
@@ -118,7 +118,7 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 例如，在 Windows 上，此命令将设置密钥：
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 若要使用命令行工具进行更扩展的交互，可以通过添加入口点参数启动具有交互式 bash shell 的容器。
@@ -171,8 +171,8 @@ Follow these instructions to create a shortcut:
 获得订阅密钥和区域标识符后（例如 `eastus` 和 `westus`），运行以下命令。
 
 ```console
-spx config --set @key SUBSCRIPTION-KEY
-spx config --set @region REGION
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 现在会存储订阅身份验证，用于将来的 SPX 请求。 如果需要删除这些已存储值中的任何一个，请运行 `spx config @region --clear` 或 `spx config @key --clear`。

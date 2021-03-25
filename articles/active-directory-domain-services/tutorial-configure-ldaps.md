@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564078"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579546"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -152,7 +152,7 @@ Thumbprint                                Subject
 
     在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。 加密算法必须是 TripleDES-SHA1。 输入并确认密码，然后选择“下一步”。 下一部分将使用此密码来为托管域启用安全 LDAP。
 
-    如果使用 [PowerShell export-pfxcertificate cmdlet](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) 进行导出，则需要使用 TripleDES_SHA1 传递 -CryptoAlgorithmOption 标志。
+    如果使用 [PowerShell export-pfxcertificate cmdlet](/powershell/module/pkiclient/export-pfxcertificate) 进行导出，则需要使用 TripleDES_SHA1 传递 -CryptoAlgorithmOption 标志。
 
     ![如何对密码进行加密的屏幕截图](./media/tutorial-configure-ldaps/encrypt.png)
 

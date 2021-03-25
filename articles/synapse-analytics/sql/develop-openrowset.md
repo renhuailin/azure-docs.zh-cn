@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695696"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589610"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -241,7 +241,7 @@ DATAFILETYPE = { 'char' | 'widechar' }
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
-指定该数据文件中数据的代码页。 默认值为 65001（UTF-8 编码）。 [此处](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)有关于此选项的更多详细信息。
+指定该数据文件中数据的代码页。 默认值为 65001（UTF-8 编码）。 [此处](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)有关于此选项的更多详细信息。
 
 ## <a name="fast-delimited-text-parsing"></a>带分隔符的文本的快速分析
 

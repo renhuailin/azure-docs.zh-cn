@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97670309"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教程：Azure Active Directory 与 ClickUp Productivity Platform 集成
@@ -103,7 +103,7 @@ ms.locfileid: "97670309"
 
     a. 在“登录 URL”文本框中，键入 URL：`https://app.clickup.com/login/sso` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://api.clickup.com/v1/team/<team_id>/microsoft` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > 标识符非实际值。 本教程稍后将介绍如何使用实际标识符来更新此值。
@@ -146,7 +146,7 @@ ms.locfileid: "97670309"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -156,12 +156,12 @@ ms.locfileid: "97670309"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -179,7 +179,7 @@ ms.locfileid: "97670309"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

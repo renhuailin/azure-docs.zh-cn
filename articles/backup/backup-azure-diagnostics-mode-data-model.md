@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 2d2146612763bac39eb636bb7da522586a0daee2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586769"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500982"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -18,7 +18,8 @@ ms.locfileid: "100586769"
 
 > [!NOTE]
 >
-> 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的 Azure 诊断模式。 若要了解新的资源特定模式的数据模型，可以参考以下文章：[Azure 备份诊断事件的数据模型](./backup-azure-reports-data-model.md)
+> * 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的 Azure 诊断模式。 若要了解新的资源特定模式的数据模型，可以参考以下文章：[Azure 备份诊断事件的数据模型](./backup-azure-reports-data-model.md)
+> * 若要创建自定义报表视图，建议使用 [Azure Monitor 日志中的系统函数](backup-reports-system-functions.md)，而不是使用下面列出的原始表。
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 备份数据模型
 
@@ -47,14 +48,14 @@ ms.locfileid: "100586769"
 | State_s |文本 |警报对象的当前状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 |执行备份的提供程序类型，例如此警报所属的 IaaSVM、FileFolder |
 | OperationName |文本 |当前操作的名称，例如 Alert |
-| Category |文本 |推送到 Azure Monitor 日志的诊断数据类别。 始终为 AzureBackupReport |
+| 类别 |文本 |推送到 Azure Monitor 日志的诊断数据类别。 始终为 AzureBackupReport |
 | 资源 |文本 |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedContainerUniqueId_s |文本 |与警报关联的受保护服务器的唯一标识符（在 V1 中为 ProtectedServerUniqueId_s）|
 | VaultUniqueId_s |文本 |与警报关联的受保护保管库的唯一标识符 |
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |与收集的数据相关的资源的唯一标识符。 例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序。 例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型。 例如 Vaults |
 
@@ -79,12 +80,12 @@ ms.locfileid: "100586769"
 | State_s |文本 |备份项对象的状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 |执行备份的提供程序类型，例如此备份项所属的 IaaSVM、FileFolder |
 | OperationName |文本 |操作的名称，例如 BackupItem |
-| Category |文本 |推送到 Azure Monitor 日志的诊断数据类别。 始终为 AzureBackupReport |
+| 类别 |文本 |推送到 Azure Monitor 日志的诊断数据类别。 始终为 AzureBackupReport |
 | 资源 |文本 |正在收集其数据的资源，例如“恢复服务保管库名称” |
 | SourceSystem |文本 |当前数据的源系统 - Azure |
 | ResourceId |文本 |所收集数据的资源 ID，例如“恢复服务保管库资源 ID” |
 | SubscriptionId |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
-| resourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
+| ResourceGroup |文本 |正在收集其数据的资源（例如 恢复服务保管库）的资源组 |
 | ResourceProvider |文本 |正在收集其数据的资源提供程序，例如 Microsoft.RecoveryServices |
 | ResourceType |文本 |正在收集其数据的资源类型，例如 Vaults |
 
@@ -101,7 +102,7 @@ ms.locfileid: "100586769"
 | BackupManagementType_s |文本 |服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | BackupItemSourceSize_s |文本 | 备份项的前端大小 |
 | BackupManagementServerUniqueId_s |文本 | 用于唯一标识保护备份项所用的备份管理服务器的字段（如果适用） |
-| Category |文本 |此字段表示推送到 Log Analytics 的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 |此字段表示推送到 Log Analytics 的诊断数据的类别。 值为 AzureBackupReport |
 | OperationName |文本 |此字段表示当前操作的名称 - BackupItemAssociation |
 | 资源 |文本 |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedContainerUniqueId_s |文本 |与备份项关联的受保护服务器的唯一标识符（在 V1 中为 ProtectedServerUniqueId_s） |
@@ -144,7 +145,7 @@ ms.locfileid: "100586769"
 | State_s |文本 |作业对象的当前状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 |服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |文本 |此字段表示当前操作的名称 - Job |
-| Category |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
 | 资源 |文本 |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedServerUniqueId_s |文本 |与作业关联的受保护服务器的唯一标识符 |
 | ProtectedContainerUniqueId_s |文本 | 用于标识运行作业的受保护容器的唯一 ID |
@@ -179,7 +180,7 @@ ms.locfileid: "100586769"
 | State_s |文本 ||策略对象的当前状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 ||服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |文本 ||此字段表示当前操作的名称 - Policy |
-| Category |文本 ||此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 ||此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
 | 资源 |文本 ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | PolicyUniqueId_g |文本 ||用于标识策略的唯一 ID |
 | PolicyName_s |文本 ||已定义的策略的名称 |
@@ -227,7 +228,7 @@ ms.locfileid: "100586769"
 | State_s |文本 ||策略对象的当前状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 ||服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |文本 ||此字段表示当前操作的名称 - PolicyAssociation |
-| Category |文本 ||此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 ||此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
 | 资源 |文本 ||这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | PolicyUniqueId_g |文本 ||用于标识策略的唯一 ID |
 | VaultUniqueId_s |文本 ||此策略所属的保管库的唯一 ID |
@@ -271,7 +272,7 @@ ms.locfileid: "100586769"
 | State_s |文本 |存储对象的当前状态，例如 Active、Deleted |
 | BackupManagementType_s |文本 |服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
 | OperationName |文本 |此字段表示当前操作的名称 - Storage |
-| Category |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
 | 资源 |文本 |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | ProtectedServerUniqueId_s |文本 |计算其存储的受保护服务器的唯一 ID |
 | VaultUniqueId_s |文本 |计算其存储的保管库的唯一 ID |
@@ -310,7 +311,7 @@ ms.locfileid: "100586769"
 | SchemaVersion_s |文本 |此字段表示架构的当前版本。 值为“V2” |
 | State_s |文本 |保管库对象的当前状态，例如 Active、Deleted |
 | OperationName |文本 |此字段表示当前操作的名称 - Vault |
-| Category |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
+| 类别 |文本 |此字段表示推送到 Azure Monitor 日志的诊断数据的类别。 值为 AzureBackupReport |
 | 资源 |文本 |这是正在收集其数据的资源，显示恢复服务保管库名称 |
 | VaultUniqueId_s |文本 |保管库的唯一 ID |
 | VaultName_s |文本 |保管库的名称 |
@@ -462,7 +463,7 @@ ms.locfileid: "100586769"
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 架构与 V2 架构
 
-之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为 ***V1 架构** _ 的架构中的 Azure 诊断表。 接下来，添加新列以支持其他方案和工作负荷，并将诊断数据推送到称为 _ *_V2 架构_* * 的新架构。  
+之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为“V1 架构”的架构中的 Azure 诊断表*_。 随后，添加了新列以支持其他方案和工作负荷，并且已将诊断数据推送到称为“V2 架构”的新架构中。_***  
 
 出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。
 

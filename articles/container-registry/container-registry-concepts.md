@@ -1,13 +1,13 @@
 ---
-title: 关于注册表、存储库、图像和项目
-description: Azure 容器注册表、存储库、容器映像和其他项目的主要概念简介。
+title: 关于注册表、存储库、映像和项目
+description: Azure 容器注册表、存储库和容器映像和其他项目的重要概念简介。
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: 991be79b10b6061f2034eb19e4e139af65aef3cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100578090"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>关于注册表、存储库和项目
@@ -18,13 +18,13 @@ ms.locfileid: "100578090"
 
 ## <a name="registry"></a>注册表
 
-容器 *注册表* 是用于存储和分发容器映像及相关项目的服务。 Docker 中心是公共容器注册表的一个示例，它充当 Docker 容器映像的一般目录。 Azure 容器注册表为用户提供对其容器内容的直接控制，同时提供集成身份验证、 [异地复制](container-registry-geo-replication.md) 支持全局分发和可靠性、用于网络关闭部署的 [虚拟网络配置、具有专用链接的虚拟网络配置](container-registry-private-link.md)、 [标记锁定](container-registry-image-lock.md)以及许多其他增强功能。 
+容器注册表是一项用来存储和分发容器映像和相关项目的服务。 Docker Hub 是公共容器注册表的一个示例，它充当 Docker 容器映像的一般目录。 Azure 容器注册表为用户提供对容器内容的直接控制、集成身份验证、支持全局分发和网络邻近部署可靠性的[异地复制](container-registry-geo-replication.md)、[采用专用链接的虚拟网络配置](container-registry-private-link.md)、[标记锁定](container-registry-image-lock.md)以及许多其他的增强功能。 
 
-除了与 Docker 兼容的容器映像以外，Azure 容器注册表还支持一系列 [内容项目](container-registry-image-formats.md) ，其中包括 Helm 图表和 (OCI) 图像格式的开放容器计划。
+除了 Docker 兼容的容器映像以外，Azure 容器注册表还支持广泛的[内容项目](container-registry-image-formats.md)，包括 Helm 图表和开放容器计划 (OCI) 映像格式。
 
 ## <a name="repository"></a>存储库
 
-*存储库* 是在注册表中具有相同名称但具有不同标记的容器映像或其他项目的集合。 例如，以下三个映像位于 `acr-helloworld` 存储库中：
+存储库是注册表中名称相同但标记不同的容器映像或其他项目的集合。 例如，以下三个映像位于 `acr-helloworld` 存储库中：
 
 - *acr-helloworld:latest*
 - *acr-helloworld:v1*
@@ -58,19 +58,19 @@ ms.locfileid: "100578090"
 
 ### <a name="layer"></a>层
 
-容器映像和项目由一个或多个 *层* 组成。 不同的项目类型以不同的方式定义层。 例如，在 Docker 容器映像中，每个层都对应于 Dockerfile 中定义图像的行：
+容器映像和项目由一个或多个层组成。 不同的项目类型以不同的方式定义层。 例如，在 Docker 容器映像中，每个层都对应于 Dockerfile 中定义了映像的一行：
 
 :::image type="content" source="media/container-registry-concepts/container-image-layers.png" alt-text="容器映像的层":::
 
-注册表中的项目共享公共层，从而提高存储效率。 例如，不同存储库中的多个映像可能具有一个通用的 ASP.NET Core 基本层，但只有一个该层的副本存储在注册表中。 层共享还会优化到节点的层分布，并将多个项目共享公用层。 如果节点上已有的映像包含作为其基础的 ASP.NET Core 层，则引用同一层的其他映像的后续拉取不会将该层传输到节点。 相反，它会引用节点上已存在的层。
+注册表中的项目共享公用的层，因而提高了存储效率。 例如，不同存储库中的多个映像可能有一个公用的 Alpine Linux 基础层，但注册表中仅存储该层的一个副本。 通过让多个项目共享公用层，层共享还优化了到节点的层分布。 如果某个节点上已有的映像包含 ASP.NET Core 层作为其基础层，则在后续拉取引用同一层的不同映像时，不会将层传输到节点。 相反，它会引用节点上已存在的层。
 
 为了针对潜在的层操作提供安全隔离和保护，层不会在注册表之间共享。
 
 ### <a name="manifest"></a>清单
 
-推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送内容时由注册表生成的清单，用于唯一标识项目并指定层。 可以使用 Azure CLI 命令 [az acr repository show-][az-acr-repository-show-manifests]list 列出存储库的清单。 
+推送到容器注册表的每个容器映像或项目都与一个清单相关联。 推送内容时由注册表生成的清单唯一标识映像并指定其层。 可以使用 Azure CLI 命令 [az acr repository show-manifests][az-acr-repository-show-manifests] 列出存储库的清单。 
 
-Linux 映像的基本清单 `hello-world` 类似于以下内容：
+Linux `hello-world` 映像的基本清单类似于以下内容：
 
   ```json
   {
@@ -132,31 +132,31 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="manifest-digest"></a>清单摘要
 
-清单由唯一的 SHA-256 哈希（即清单摘要）进行标识  。 每个映像或项目（无论是否标记）均由其摘要标识。 即使项目的层数据与另一个项目的层数据相同，digest 值也是唯一的。 此机制使你能够反复向注册表推送标记相同的映像。 例如，你可反复向注册表推送 `myimage:latest` 而不出任何错误，因为每个映像均由其唯一摘要标识。
+清单由唯一的 SHA-256 哈希（即清单摘要）进行标识  。 每个映像或项目（无论是否标记）均由其摘要标识。 即便项目的层数据与其他项目的层数据相同，摘要值也是唯一的。 此机制使你能够反复向注册表推送标记相同的映像。 例如，你可反复向注册表推送 `myimage:latest` 而不出任何错误，因为每个映像均由其唯一摘要标识。
 
-可以通过在提取操作中指定项目的摘要，从注册表中提取项目。 某些系统可能配置为按摘要式请求，因为它可以保证所请求的映像版本，即使稍后会将具有相同标记的映像推送到注册表。
+通过在拉取操作中指定项目的摘要，可从注册表拉取该项目。 某些系统可能配置为按摘要拉取，因为它保证即便以后向注册表推送标记相同的映像，也会拉取该映像版本。
 
 > [!IMPORTANT]
-> 如果使用相同的标记重复推送已修改的项目，则可以创建 "孤立项"-未标记的项目，但仍会在注册表中占用空间。 按标记列出或查看映像时，Azure CLI 或 Azure 门户中不显示无标记的映像。 但是，它们的层仍然存在，且占用注册表中的空间。 当清单是指向特定层的唯一清单或最后一个清单时，删除未标记的映像将释放注册表空间。 有关释放未标记映像所用空间的信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
+> 如果反复推送具有相同标记的已修改项目，则可能会创建孤立的项目；此类项目不带标记，但仍占用注册表中的空间。 按标记列出或查看映像时，Azure CLI 或 Azure 门户中不显示无标记的映像。 但是，它们的层仍然存在，且占用注册表中的空间。 当清单是指向特定层的唯一清单或最后一个清单时，删除未标记的映像将释放注册表空间。 有关释放未标记映像所用空间的信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
 ## <a name="addressing-an-artifact"></a>对项目进行寻址
 
-若要使用 Docker 或其他客户端工具处理推送和请求操作的注册表项目，请将完全限定的注册表名称、存储库名称 (包括命名空间路径（如果适用) ），以及项目标记或清单摘要。 有关这些术语的说明，请参阅前面的部分。
+若要使用 Docker 或其他客户端工具对用于推送和拉取操作的注册表项目进行寻址，请将完全限定的注册表名称、存储库名称（包括适用的命名空间路径）以及项目标记或清单摘要组合到一起。 有关这些术语的解释，请参阅前面的部分。
 
-  **按标记进行寻址**： `[loginServerUrl]/[repository][:tag]`
+  **按标记进行寻址**：`[loginServerUrl]/[repository][:tag]`
     
-  **按摘要进行寻址**： `[loginServerUrl]/[repository@sha256][:digest]`  
+  **按摘要进行寻址**：`[loginServerUrl]/[repository@sha256][:digest]`  
 
-使用 Docker 或其他客户端工具将项目请求或推送到 Azure 容器注册表时，使用注册表的完全限定 URL，也称为 *登录服务器* 名称。 在 Azure 云中，Azure 容器注册表的完全限定 URL 的格式为 `myregistry.azurecr.io` 所有小写)  (。
+使用 Docker 或其他客户端工具将项目拉取或推送到 Azure 容器注册表时，请使用注册表的完全限定 URL，也称为登录服务器名称。 在 Azure 云中，Azure 容器注册表的完全限定 URL 的格式为 `myregistry.azurecr.io`（全小写）。
 
 > [!NOTE]
-> * 不能在注册表登录服务器 URL 中指定端口号，例如 `myregistry.azurecr.io:443` 。 
-> * `latest`如果你未在命令中提供标记，则默认情况下将使用标记。  
+> * 不能在注册表登录服务器 URL 中指定端口号，例如 `myregistry.azurecr.io:443`。 
+> * 如果未在命令中提供标记，则默认使用标记 `latest`。  
 
    
 ### <a name="push-by-tag"></a>按标记推送
 
-示例: 
+示例： 
 
    `docker push myregistry.azurecr.io/samples/myimage:20210106`
 
@@ -164,7 +164,7 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ### <a name="pull-by-tag"></a>按标记拉取
 
-示例： 
+例如： 
 
   `docker pull myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2`
 
@@ -179,9 +179,9 @@ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure 容器注册表中的 [注册表存储](container-registry-storage.md) 和 [受支持内容格式](container-registry-image-formats.md) 的详细信息。
+详细了解 Azure 容器注册表中的[注册表存储](container-registry-storage.md)和[支持的内容格式](container-registry-image-formats.md)。
 
-了解如何从 Azure 容器注册表 [推送和提取映像](container-registry-get-started-docker-cli.md) 。
+了解如何从 Azure 容器注册表[推送和拉取](container-registry-get-started-docker-cli.md)映像。
 
 <!-- LINKS - Internal -->
 [az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

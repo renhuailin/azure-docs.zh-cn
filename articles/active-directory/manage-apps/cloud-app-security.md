@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 682549b5b99169060437c8c91d465121002edc6e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259598"
 ---
 # <a name="cloud-app-visibility-and-control"></a>云应用可见性和控制
@@ -24,15 +24,15 @@ ms.locfileid: "99259598"
 
 ## <a name="discover-and-manage-shadow-it-in-your-network"></a>发现和管理网络中的影子 IT
 
-让 IT 管理员说出他们认为员工使用了多少个云应用时，他们说出的平均数字是 30 到 40 个，但在现实中，组织中的员工使用的不同应用数平均超过 1,000 个。 影子 IT 可帮助你了解和识别正在使用的应用，以及面临的风险级别。 80% 的员工使用的应用未经批准（未经过任何人评审），可能不符合安全与合规策略。 此外，由于员工能够从企业网络外部访问资源和应用，因此，只是在防火墙中配置规则和策略不再足够。
+当询问 IT 管理员他们认为员工使用了多少个云应用时，通常他们会回答平均 30 或 40 个，而实际上组织的员工平均使用超过 1,000 个不同的应用。 影子 IT 有助于你得知并找出哪些应用正被人使用，以及你的风险级别。 80% 的员工使用的应用未经批准（未经过任何人评审），可能不符合安全与合规策略。 而且由于你的员工可以从公司网络外部访问你的资源和应用，因此在防火墙上设置规则和策略不再足以提供有效保护。
 
 使用 Microsoft Cloud App Discovery（一项 Azure Active Directory Premium P1 功能）可以发现正在使用的应用、探索这些应用的风险、配置策略来识别新的有风险应用，并取消批准这些应用，以使用代理或防火墙设备在本地将其阻止。
 
-- 发现和识别影子 IT
+- 发现并识别影子 IT
 - 评估和分析
 - 管理应用
 - 高级影子 IT 发现报告
-- 控制已批准的应用
+- 控制批准的应用
  
 ### <a name="learn-more"></a>了解详细信息
 

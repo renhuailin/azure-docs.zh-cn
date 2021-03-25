@@ -7,16 +7,16 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: 6910fda855402d2f99994da1e835560be84ca2dd
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.openlocfilehash: 907ed0774db0e07a61a3ad568e6c451ea5d37b44
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98703371"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501730"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure 防火墙中的 IP 组
 
-IP 组允许通过以下方式对 Azure 防火墙规则的 IP 地址进行分组和管理：
+通过 IP 组，你可以利用以下方式对 Azure 防火墙规则的 IP 地址进行分组和管理：
 
 - 作为 DNAT 规则中的源地址
 - 作为网络规则中的源或目标地址
@@ -28,7 +28,7 @@ IP 组允许通过以下方式对 Azure 防火墙规则的 IP 地址进行分组
 可以跨 Azure 中的区域和订阅在 Azure 防火墙 DNAT、网络和多个防火墙的应用程序规则中重复使用 IP 组。 组名称必须是唯一的。 可以在 Azure 门户、Azure CLI 或 REST API 中配置 IP 组。 提供有帮助你入门的一个示例模板。
 
 > [!NOTE]
-> IP 组目前在 Azure 国内云环境中不可用。
+> Azure 国家云环境中目前无法提供 IP 组。
 
 ## <a name="sample-format"></a>示例格式
 
@@ -63,13 +63,13 @@ IP 组允许通过以下方式对 Azure 防火墙规则的 IP 地址进行分组
 
 ## <a name="use-an-ip-group"></a>使用 IP 组
 
-你现在可以选择 **Ip 组** 作为 ip 地址的 **源类型** 或 **目标类型** ， (ES) 在创建 Azure 防火墙 DNAT、应用程序或网络规则时。
+现在，在创建 Azure 防火墙 DNAT、应用程序或网络规则时，可以选择“IP 组”作为 IP 地址的“源类型”或“目标类型”  。
 
 ![防火墙中的 IP 组](media/ip-groups/fw-ipgroup.png)
 
 ## <a name="region-availability"></a>上市区域
 
-IP 组在所有公有云区域中均可用。
+所有公有云区域均提供 IP 组。
 
 ## <a name="ip-address-limits"></a>IP 地址限制
 
@@ -79,13 +79,13 @@ IP 组在所有公有云区域中均可用。
 
 下面的 Azure PowerShell cmdlet 可用于创建和管理 IP 组：
 
-- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [新-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
-- [New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
-- [新-AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup)
+- [New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
+- [New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule)
+- [New-AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule)
 
 ## <a name="next-steps"></a>后续步骤
 

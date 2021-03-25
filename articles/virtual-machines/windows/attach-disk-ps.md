@@ -2,17 +2,18 @@
 title: 使用 PowerShell 将数据磁盘附加到 Azure 中的 Windows VM
 description: 如何配合使用 PowerShell 和 Resource Manager 部署模型将新磁盘或现有数据磁盘附加到 Windows VM。
 author: roygara
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d2f283aa8b049602d25cf8969bc2327ebcfafe08
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: d5c638a63e4e8dc1a55c07f4bdf713fd36ca6b3d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202872"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102550869"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
 
@@ -23,7 +24,7 @@ ms.locfileid: "98202872"
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](../sizes.md)。
 * 若要使用高级 SSD，则需要使用[支持高级存储的 VM 类型](../sizes-memory.md)，例如 DS 系列或 GS 系列虚拟机。
 
-本文在 [Azure Cloud Shell](../../cloud-shell/overview.md)中使用 PowerShell，它不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
+本文在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 PowerShell，后者会不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
 

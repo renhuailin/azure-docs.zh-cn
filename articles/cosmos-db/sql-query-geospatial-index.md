@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: tisande
 ms.openlocfilehash: 47eedf1ddbb155180d364c42ec179b3e01279e44
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336208"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 为地理空间数据编制索引
@@ -21,10 +21,10 @@ ms.locfileid: "93336208"
 
 简单来说，测地坐标的几何图形会投影在 2D 平面上，并使用 **四叉树** 以渐进方式划分成单元格。 这些单元格会根据 **Hilbert 空间填充曲线** 内的单元格位置映射到 1D，并保留点的位置。 此外，当位置数据进行索引编制后，会经历称为 **分割** 的过程，也就是说，在某个位置上相交的所有单元格都会被识别为键并存储在 Azure Cosmos DB 索引中。 在查询时，点和多边形等参数也会经过分割，以提取相关的格子 ID 范围，并用于从索引检索数据。
 
-如果指定的索引策略包含 `/*`) 的所有路径 (的空间索引，则在该容器中找到的所有数据都会进行索引以实现高效的空间查询。
+如果指定的索引策略包含 `/*`（所有路径）的空间索引，则会为容器中找到的所有数据编制索引，以实现高效的空间查询。
 
 > [!NOTE]
-> Azure Cosmos DB 支持对点、Linestring、多边形和 MultiPolygons 的索引。 如果为这些类型中的任何一个编制索引，将自动为所有其他类型建立索引。 换句话说，如果为多边形编制索引，则还将为点、Linestring 和 MultiPolygons 编制索引。 为新的空间类型编制索引不会影响写入 RU 的费用或索引大小，除非你具有该类型的有效 GeoJSON 数据。
+> Azure Cosmos DB 支持为 Point、LineString、Polygon 和 MultiPolygon 编制索引。 如果你为其中任一类型编制索引，我们将自动为其他所有类型编制索引。 换句话说，如果你为 Polygons 编制索引，则我们还将为 Point、Linestring 和 MultiPolygon 编制索引。 为新的空间类型编制索引不会影响写入 RU 费用或索引大小，除非你具有该类型的有效 GeoJSON 数据。
 
 ## <a name="modifying-geospatial-configuration"></a>修改地理空间配置
 
@@ -111,10 +111,10 @@ ms.locfileid: "93336208"
 
 边界框包括以下属性：
 
-- **xmin** ：编制索引的最小 x 坐标
-- **ymin** ：编制索引的最小 y 坐标
-- **xmax** ：编制索引的最大 x 坐标
-- **ymax** ：编制索引的最大 y 坐标
+- **xmin**：编制索引的最小 x 坐标
+- **ymin**：编制索引的最小 y 坐标
+- **xmax**：编制索引的最大 x 坐标
+- **ymax**：编制索引的最大 y 坐标
 
 边界框是必需的，因为几何图形数据占有的平面可以是无限的。 但是，空间索引需要有限空间。 对于 geography 数据类型，地球是边界，你无需设置边界框。
 

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102501222"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
@@ -254,7 +254,7 @@ Runbook 通过定义一个或多个输入参数来接受输入。 用户在 Runb
 
 按下表中的属性定义每个输入参数：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 | 必需。 参数的名称。 此名称在 Runbook 中必须是唯一的。 它必须以字母开头，且只能包含字母、数字和下划线字符。 此名称不得包含空格。 |
 | 说明 |可选。 有关输入参数用途的说明。 |

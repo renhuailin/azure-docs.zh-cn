@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 087989638193bb59001ed33c4ee253d61682d8bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 078a9312a7ee1b3b0eafd000928ed74348a540c3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935987"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548047"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
@@ -21,7 +21,7 @@ ms.locfileid: "88935987"
 
 当需要提供文本的语言作为其他技能（例如，[情绪分析技能](cognitive-search-skill-sentiment.md)或[文本拆分技能](cognitive-search-skill-textsplit.md)）的输入时，此功能尤其有用。
 
-语言检测利用必应的自然语言处理库，此类库超出为文本分析列出的[受支持的语言和区域](../cognitive-services/text-analytics/language-support.md)的数目。 语言的具体列表未发布，但包含所有广泛传播的语言，以及变体、方言和某些区域性的和文化性的语言。 如果你的内容是采用不常用的语言表达的，可以[尝试语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)，看是否会返回一个代码。 无法检测到的语言的响应为 `unknown`。
+语言检测利用必应的自然语言处理库，此类库超出为文本分析列出的[受支持的语言和区域](../cognitive-services/text-analytics/language-support.md)的数目。 语言的具体列表未发布，但包含所有广泛传播的语言，以及变体、方言和某些区域性的和文化性的语言。 如果你的内容是采用不常用的语言表达的，可以[尝试语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)，看是否会返回一个代码。 无法检测到的语言的响应为 `(Unknown)`。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -35,6 +35,15 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 ## <a name="data-limits"></a>数据限制
 记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果在将数据发送到语言检测技能之前需要拆分数据，可以使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
+## <a name="skill-parameters"></a>技能参数
+
+参数区分大小写。
+
+| 输入 | 说明 |
+|---------------------|-------------|
+| `defaultCountryHint` | （可选）ISO 3166-1 alpha-2 双字母国家/地区代码如果不能区分语言，则可以作为语言检测模型的提示使用。 有关详细信息，请参阅本主题的[文本分析文档](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content)。 具体而言，`defaultCountryHint` 参数与未明确指定 `countryHint` 输入的文档一起使用。  |
+| `modelVersion`   | （可选）调用文本分析服务时要使用的模型版本。 如果未指定，将默认为最新可用版本。 建议不要指定此值，除非绝对必要。 有关详细信息，请参阅[文本分析 API 中的模型版本控制](../cognitive-services/text-analytics/concepts/model-versioning.md)。 |
+
 ## <a name="skill-inputs"></a>技能输入
 
 参数区分大小写。
@@ -42,6 +51,7 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 | 输入     | 说明 |
 |--------------------|-------------|
 | `text` | 要分析的文本。|
+| `countryHint` | ISO 3166-1 alpha-2 双字母国家/地区代码如果不能区分语言，则可以作为语言检测模型的提示使用。 有关详细信息，请参阅本主题的[文本分析文档](../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md#ambiguous-content)。 |
 
 ## <a name="skill-outputs"></a>技能输出
 
@@ -60,6 +70,10 @@ Microsoft.Skills.Text.LanguageDetectionSkill
       {
         "name": "text",
         "source": "/document/text"
+      },
+      {
+        "name": "countryHint",
+        "source": "/document/countryHint"
       }
     ],
     "outputs": [
@@ -98,6 +112,14 @@ Microsoft.Skills.Text.LanguageDetectionSkill
            {
              "text": "Estamos muy felices de estar con ustedes."
            }
+      },
+      {
+        "recordId": "3",
+        "data":
+           {
+             "text": "impossible",
+             "countryHint": "fr"
+           }
       }
     ]
 ```
@@ -125,14 +147,19 @@ Microsoft.Skills.Text.LanguageDetectionSkill
               "languageName": "Spanish",
               "score": 1,
             }
+      },
+      {
+        "recordId": "3",
+        "data":
+            {
+              "languageCode": "fr",
+              "languageName": "French",
+              "score": 1,
+            }
       }
     ]
 }
 ```
-
-
-## <a name="error-cases"></a>错误案例
-如果以不支持的语言表达文本，会生成错误，且不返回任何语言标识符。
 
 ## <a name="see-also"></a>另请参阅
 

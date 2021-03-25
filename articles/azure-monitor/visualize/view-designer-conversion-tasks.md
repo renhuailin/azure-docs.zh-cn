@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor 视图设计器到工作簿转换常见任务
-description: 从视图转换到 Azure Monitor 中的工作簿时的常见任务。
+description: 在 Azure Monitor 中从视图转换到工作簿时的常见任务。
 author: austonli
 ms.author: aul
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: d479e64620519491ba4847349ea33820747fcea7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043467"
 ---
 # <a name="view-designer-to-workbooks-conversion-common-tasks"></a>视图设计器到工作簿转换常见任务

@@ -3,15 +3,15 @@ title: 教程：设计 Azure Database for MariaDB - Azure 门户
 description: 本教程介绍如何使用 Azure 门户创建和管理 Azure Database for MariaDB 服务器和数据库。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664463"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for MariaDB 数据库
@@ -97,7 +97,7 @@ Azure Database for MariaDB 受防火墙保护。 默认情况下，将拒绝与�
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>通过 mysql 连接到服务器
 
-使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)建立与 Azure Database for MariaDB 服务器的连接。 可以通过 Azure Cloud Shell 在浏览器中运行 mysql 命令行工具，也可以使用本地安装的 mysql 工具在计算机上运行。 若要打开 Azure Cloud Shell，请选择本文中代码块上的“试用”按钮，或访问 Azure 门户并单击右上角工具栏中的 **>_** 图标。 
+使用 [mysql 命令行工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)建立与 Azure Database for MariaDB 服务器的连接。 可以通过 Azure Cloud Shell 在浏览器中运行 mysql 命令行工具，也可以使用本地安装的 mysql 工具在计算机上运行。 若要打开 Azure Cloud Shell，请选择本文中代码块上的“试用”按钮，或访问 Azure 门户并单击右上角工具栏中的 **>_** 图标。
 
 输入进行连接的命令：
 

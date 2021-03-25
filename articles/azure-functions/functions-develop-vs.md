@@ -5,10 +5,10 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655809"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
@@ -88,7 +88,7 @@ Visual Studio 在开发函数时具有以下优势：
 
 ## <a name="configure-your-build-output-settings"></a>配置生成输出设置
 
-生成 Azure Functions 项目时，生成工具会优化输出，以便保留与函数运行时共享的任何程序集的一个副本。 结果就是一个经过优化的生成，它可节省尽可能多的空间。 但是，当你移动到任何项目程序集的较新版本时，生成工具可能不知道必须保留这些程序集。 若要确保在优化过程中保留这些程序集，你可以使用 `FunctionsPreservedDependencies` 项目中的元素指定它们 ( .csproj) 文件：
+生成 Azure Functions 项目时，生成工具会优化输出，以便只保留与函数运行时共享的任何程序集的一个副本。 结果可实现经过优化的生成，可最大程度地节省空间。 但是，当你转向任何项目程序集的较新版本时，生成工具可能不知道必须保留这些程序集。 若要确保在优化过程中保留这些程序集，可以使用项目 (.csproj) 文件中的 `FunctionsPreservedDependencies` 元素指定它们：
 
 ```xml
   <ItemGroup>

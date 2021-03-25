@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81383818"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548217"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
 
@@ -22,11 +22,11 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预�
 
 例如，可以阻止来自 192.168.5.4/24 范围内的某个 IP 地址的所有请求。 在此规则中，运算符是 *IPMatch*，matchValues 是 IP 地址范围 (192.168.5.4/24)，操作是阻止流量。 还可以设置规则的名称和优先级。
 
-自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 **and** 条件 2，**or** 条件 3）。 这意味着，如果满足条件 1 **和**条件 2，**或者**满足条件 3，则 WAF 应执行自定义规则中指定的操作。
+自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 **and** 条件 2，**or** 条件 3）。 这意味着，如果满足条件 1 **和** 条件 2，**或者** 满足条件 3，则 WAF 应执行自定义规则中指定的操作。
 
 同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，仅当发送方使用特定浏览器时，才阻止来自特定 IP 地址的流量。
 
-若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或阻止使用特定浏览器的发送方的流量。
+若要在两个不同的条件之间使用 or，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或阻止使用特定浏览器的发送方的流量。
 
 > [!NOTE]
 > WAF 自定义规则的最大数目为 100。 有关应用程序网关限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
@@ -73,7 +73,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
               }
             ],
             "operator": "Contains",
-            "negationConditon": false,
+            "negationCondition": false,
             "matchValues": [
               "evilbot"
             ],
@@ -107,14 +107,14 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 必须是以下变量之一：
 
-- RemoteAddr –远程计算机连接的 IP 地址/主机名
-- RequestMethod – (GET、POST、PUT、DELETE 等的 HTTP 请求方法。 ) 
-- QueryString – URI 中的变量
-- PostArgs –在 POST 正文中发送的参数。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”和“multipart/form-data”时，才会应用使用此匹配变量的自定义规则。
-- RequestUri –请求的 URI
-- RequestHeaders –请求的标头
-- RequestBody –其中包含整个请求正文。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”时，才会应用使用此匹配变量的自定义规则。 
-- RequestCookies –请求的 Cookie
+- RemoteAddr - 远程计算机连接的 IP 地址/主机名
+- RequestMethod - HTTP 请求方法（GET、POST、PUT、DELETE 等。）
+- QueryString - URI 中的变量
+- PostArgs - 在 POST 正文中发送的参数。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”和“multipart/form-data”时，才会应用使用此匹配变量的自定义规则。
+- RequestUri - 请求的 URI
+- RequestHeaders - 请求的标头
+- RequestBody - 包含整个请求正文。 仅当“Content-Type”标头设置为“application/x-www-form-urlencoded”时，才会应用使用此匹配变量的自定义规则。 
+- RequestCookies - 请求的 Cookie
 
 ### <a name="selector-optional"></a>Selector [可选]
 
@@ -125,7 +125,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 必须是以下运算符之一：
 
 - IPMatch - 仅当匹配变量为 *RemoteAddr* 时才使用
-- 等于–输入与 MatchValue 相同
+- Equal - 输入与 MatchValue 相同
 - Contains
 - LessThan
 - GreaterThan
@@ -157,13 +157,13 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ### <a name="action-required"></a>Action [必需]
 
-- Allow –授权事务，并跳过所有其他规则。 指定的请求将添加到允许列表，并且一旦匹配，该请求将停止进一步的评估，并会被发送到后端池。 不会根据允许列表中的规则评估任何其他自定义规则或托管规则。
-- Block –基于 *SecDefaultAction* (检测/阻止模式) 阻止事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
-- Log –允许规则写入日志，但允许其余规则运行以进行评估。 其他自定义规则按优先顺序进行评估，后跟托管规则。
+- Allow - 授权事务，跳过所有其他规则。 指定的请求将添加到允许列表，并且一旦匹配，该请求将停止进一步的评估，并会被发送到后端池。 不会根据允许列表中的规则评估任何其他自定义规则或托管规则。
+- Block - 基于 SecDefaultAction（检测/阻止模式）阻止事务。 与 Allow 操作一样，对请求进行评估并将其添加到阻止列表后，评估将会停止，请求将被阻止。 然后，将不会评估满足相同条件的任何请求，而只会将其阻止。 
+- Log - 允许该规则写入日志，但允许其他规则运行以进行评估。 其他自定义规则按优先顺序进行评估，后跟托管规则。
 
 ## <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
-自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅 [Geomatch 自定义规则 (预览) ](geomatch-custom-rules.md)。
+自定义规则允许创建定制的规则，以满足应用程序和安全策略的确切需要。 可以按国家/地区限制对 Web 应用程序的访问。 有关详细信息，请参阅 [ 自定义规则（预览版）](geomatch-custom-rules.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -137,6 +137,8 @@
       href: fhir-faq.md
     - name: 支持的功能
       href: fhir-features-supported.md
+    - name: GitHub 项目
+      href: fhir-github-projects.md
     - name: 合作伙伴生态系统
       href: partner-ecosystem.md
 - name: 参考

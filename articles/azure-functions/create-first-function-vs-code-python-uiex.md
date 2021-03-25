@@ -6,10 +6,10 @@ ms.date: 11/04/2020
 ms.custom: devx-track-python
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 42f07b76cefed38aad53caba9ba35c74238540fe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031729"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Python 函数
@@ -33,7 +33,7 @@ ms.locfileid: "102031729"
 
 在开始之前，请确保已满足下列要求：
 
-+ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 版本 3.x。
 
@@ -50,7 +50,7 @@ ms.locfileid: "102031729"
 
 ## <a name="2-create-your-local-project"></a>2.<a name="create-an-azure-functions-project"></a>创建本地项目
 
-1. 在活动栏中选择 Azure 图标 <abbr title="Visual Studio Code 窗口左侧的垂直图标组。">活动栏</abbr>然后，在“Azure: Functions”区域中，选择“新建项目...”图标 。
+1. 在活动栏中选择 Azure 图标 <abbr title="Visual Studio Code 窗口左侧的垂直图标组。">活动栏</abbr>，然后在“Azure: 函数”区域中，选择“新建项目...”图标 。
 
     ![选择“创建新项目”](./media/functions-create-first-function-vs-code/create-new-project.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "102031729"
 
     + **选择运行时**：选择你一直在本地运行的 Python 版本。 可以使用 `python --version` 命令来检查你的版本。
 
-    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。
+    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。
 
     在 Azure 中创建单个资源时，扩展会在通知区域显示这些资源的状态。
 

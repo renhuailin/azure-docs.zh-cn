@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
@@ -61,13 +61,13 @@ ms.locfileid: "97673214"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Adobe Captivate Prime”，在结果面板中选择“Adobe Captivate Prime”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Adobe Captivate Prime”，在结果面板中选择“Adobe Captivate Prime”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Adobe Captivate Prime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 Adobe Captivate Prime 配置和测试 Azure AD 单一登录。 
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Adobe Captivate Prime 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Adobe Captivate Prime 相关用户之间建立链接关系。
 
 若要使用 Adobe Captivate Prime 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "97673214"
 
 若要使用 Adobe Captivate Prime 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Adobe Captivate Prime”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Adobe Captivate Prime”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "97673214"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![Adobe Captivate Prime 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "97673214"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Adobe Captivate Prime”部分中，根据要求复制相应的 URL  。
+6. 在“设置 Adobe Captivate Prime”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "97673214"
 
     c. 注销 URL
 
-7. 转到“属性”选项卡，复制“用户访问 URL”并将其粘贴在记事本中   。
+7. 转到“属性”选项卡，复制“用户访问 URL”并将其粘贴在记事本中。
 
     ![用户访问链接](./media/adobecaptivateprime-tutorial/tutorial_adobecaptivateprime_appprop.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "97673214"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "97673214"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Adobe Captivate Prime 的访问权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Adobe Captivate Prime”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Adobe Captivate Prime”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Adobe Captivate Prime”  。
+2. 在应用程序列表中，选择“Adobe Captivate Prime”。
 
     ![应用程序列表中的 Adobe Captivate Prime 链接](common/all-applications.png)
 

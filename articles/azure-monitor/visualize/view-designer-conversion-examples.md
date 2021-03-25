@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor 视图设计器到工作簿转换示例
-description: Azure Monitor 中从视图转换到工作簿的示例。
+description: Azure Monitor 中视图到工作簿的转换示例。
 author: austonli
 ms.author: aul
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: bd57838dd3cceae308b55dd2d7fdbb55cec79ec4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043348"
 ---
 # <a name="view-designer-conversion-examples"></a>视图设计器转换示例

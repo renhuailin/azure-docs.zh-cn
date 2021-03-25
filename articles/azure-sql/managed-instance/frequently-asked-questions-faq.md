@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 9e8ef5bf9d5d8000bfdd581cd7e9ae1a1a775fc9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178127"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503192"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,15 +46,15 @@ ms.locfileid: "102178127"
 
 **SQL 托管实例支持哪些订阅类型？**
 
-有关支持的订阅类型的列表，请参阅 [支持的订阅类型](resource-limits.md#supported-subscription-types)。 
+有关受支持的订阅类型的列表，请参阅[受支持的订阅类型](resource-limits.md#supported-subscription-types)。 
 
 支持哪些 Azure 区域？
 
-可以在大多数 Azure 区域中创建托管实例；请参阅 [SQL 托管实例支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)。 如果你需要当前不受支持的区域中的托管实例，请 [通过 Azure 门户发送支持请求](../database/quota-increase-request.md)。
+可以在大多数 Azure 区域中创建托管实例；请参阅 [SQL 托管实例支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)。 如果需要当前不支持的区域中的托管实例，请[通过 Azure 门户发送支持请求](../database/quota-increase-request.md)。
 
 SQL 托管实例部署是否有配额限制？
 
-托管实例具有两个默认限制：对可以使用的子网数的限制，以及对可以预配的 vCore 数的限制。 限制在各种订阅类型和区域间有所不同。 有关按订阅类型列出的区域资源限制的列表，请参阅[区域资源限制](resource-limits.md#regional-resource-limitations)中的表。 这些是可以按需增加的软限制。 如果需要在当前区域中预配更多托管实例，则发送支持请求以使用 Azure 门户增加配额。 有关详细信息，请参阅 [AZURE SQL 数据库的请求配额增加](../database/quota-increase-request.md)。
+托管实例具有两个默认限制：对可以使用的子网数的限制，以及对可以预配的 vCore 数的限制。 限制在各种订阅类型和区域间有所不同。 有关按订阅类型列出的区域资源限制的列表，请参阅[区域资源限制](resource-limits.md#regional-resource-limitations)中的表。 这些是可以按需增加的软限制。 如果需要在当前区域中预配更多托管实例，请使用 Azure 门户发送增加配额的支持请求。 有关详细信息，请参阅[请求增加 Azure SQL 数据库的配额](../database/quota-increase-request.md)。
 
 是否可以按需对托管实例增加数据库数限制 (100)？
 
@@ -86,9 +86,9 @@ SQL 托管实例部署是否有配额限制？
 
 是否可以在现有订阅中预配托管实例？
 
-是的，如果订阅属于所 [支持的订阅类型](resource-limits.md#supported-subscription-types)，则可以在现有订阅中设置托管实例。
+是的，如果该订阅属于[受支持的订阅类型](resource-limits.md#supported-subscription-types)，则可以在该订阅中预配托管实例。
 
-**为什么无法在子网中设置名称以数字开头的托管实例？**
+**为什么无法在名称以数字开头的子网中预配托管实例？**
 
 这是针对基本组件的一个当前限制，它会按照正则表达式 ^[a-zA-Z_][^\\\/\:\*\?\"\<\>\|\`\'\^]*(?<![\.\s])$ 验证子网名称。 当前支持所有通过正则表达式的名称以及有效的子网名称。
 
@@ -102,7 +102,7 @@ SQL 托管实例部署是否有配额限制？
 
 如何删除托管实例？
 
-可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
+可以通过 Azure 门户、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) 或[资源管理器 REST API](/rest/api/sql/managedinstances/delete) 来删除托管实例。
 
 创建或更新实例或还原数据库需要多长时间？
 
@@ -116,7 +116,7 @@ SQL 托管实例部署是否有配额限制？
 
 是否可以更改 DNS 区域前缀？
 
-是，托管实例默认 DNS 区域 *。 database.windows.net* 可以更改。 
+是的，可更改托管实例的默认 DNS 区域 .database.windows.net。 
 
 若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”），请执行以下操作： 
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作。
@@ -170,7 +170,7 @@ SQL 托管实例部署是否有配额限制？
 **如何优化托管实例的性能？**
 
 可以通过以下方式优化托管实例的性能：
-- [自动优化](../database/automatic-tuning-overview.md) ，通过基于 AI 和机器学习的持续性能优化，提供高峰性能和稳定工作负荷。
+- [自动优化](../database/automatic-tuning-overview.md)，通过基于 AI 和机器学习的持续性能优化，提供最佳性能和稳定的工作负载。
 -   [内存中 OLTP](../in-memory-oltp-overview.md)，可改进事务处理工作负载的吞吐量和延迟，并提供更快的业务见解。 
 
 若要进一步优化性能，请考虑应用一些有关[应用程序和数据库优化](../database/performance-guidance.md#tune-your-database)的最佳做法。
@@ -264,7 +264,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 否。 由于以下几个原因，不支持此功能：
 -   表示对入站管理请求的响应的路由流量是非对称的，无法正常工作。
--   转到存储的路由流量将受到吞吐量限制和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
+-   转到存储的路由流量会受到吞吐量约束和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
 -   根据经验，这些配置容易出错，不受支持。
 
 是否可以为出站非管理流量设置 NVA 或防火墙？
@@ -363,7 +363,7 @@ SQL 托管实例负责对管理端口设置规则。 这通过名为[服务辅�
 
 **是否可以执行 DNS 刷新？**
 
-是的。 请参阅 [在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
+是的。 请参阅[在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)。
 
 ## <a name="change-time-zone"></a>更改时区
 
@@ -396,7 +396,7 @@ SQL 托管实例是否支持透明数据加密？
 
 如何为 SQL 托管实例配置 TDE 保护程序轮换？
 
-您可以使用 Azure Cloud Shell 来旋转托管实例的 TDE 保护程序。 有关说明，请参阅[使用 Azure Key Vault 中自己的密钥在 SQL 托管实例中实现透明数据加密](scripts/transparent-data-encryption-byok-powershell.md)。
+可以使用 Azure Cloud Shell 为托管实例轮换 TDE 保护程序。 有关说明，请参阅[使用 Azure Key Vault 中自己的密钥在 SQL 托管实例中实现透明数据加密](scripts/transparent-data-encryption-byok-powershell.md)。
 
 **是否可将加密的数据库还原到 SQL 托管实例？**
 
@@ -417,16 +417,16 @@ SQL 托管实例有哪些成本权益？
 
 可以通过以下方式使用 Azure SQL 权益节省成本：
 -   利用 [Azure 混合权益](../azure-hybrid-benefit.md?tabs=azure-powershell)，最大化本地许可证的现有投资并节省高达 55%。 
--   提交给计算资源的预订，并使用 [保留实例权益](../database/reserved-capacity-overview.md)节省高达33%。 结合 Azure 混合权益，节省高达82%。 
--   利用 [Azure 开发/测试定价权益](https://azure.microsoft.com/pricing/dev-test/) ，为正在进行的开发和测试工作负荷提供折扣率，可节省高达55% 与标价。
+-   通过[预留实例权益](../database/reserved-capacity-overview.md)，承诺保留计算资源，并节省费用多达 33%。 与 Azure 混合权益搭配使用时最多可节省 82%。 
+-   利用 [Azure 开发/测试定价权益](https://azure.microsoft.com/pricing/dev-test/)（为正在进行的开发和测试工作负载提供折扣费率），可节省费用高达 55%（相对于标价）。
 
-**谁有资格获得预订实例权益？**
+**要获得预留实例权益需要符合什么条件？**
 
-若要获得预订实例权益的资格，订阅类型必须是企业协议 (产品/服务（BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p) ）或使用即用即付定价 (产品/服务的个人协议产品/服务) 。 有关预订的详细信息，请参阅 [保留实例权益](../database/reserved-capacity-overview.md)。 
+要获得预留实例权益的资格，订阅类型必须为企业协议（服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 有关预留的详细信息，请参阅[预留实例权益](../database/reserved-capacity-overview.md)。 
 
-**是否可以取消、交换或退款预留？**
+**是否可以对预留执行取消、交换或退款操作？**
 
-您可以取消、交换或退款保留，但有一些限制。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="billing-for-managed-instance-and-backup-storage"></a>托管实例和备份存储计费
 
@@ -434,19 +434,19 @@ SQL 托管实例定价选项有哪些？
 
 若要浏览托管实例定价选项，请参阅[定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
-**如何跟踪托管实例的计费成本？**
+**如何跟踪托管实例的账单费用？**
 
-可以使用 [Azure 成本管理解决方案](../../cost-management-billing/index.yml)实现此目的。 导航到 [Azure 门户](https://portal.azure.com)中的 "**订阅**"，然后选择 "**成本分析**"。 
+可以使用 [Azure 成本管理解决方案](../../cost-management-billing/index.yml)来实现此目的。 在 [Azure 门户](https://portal.azure.com)中，导航到“订阅”，并选择“成本分析” 。 
 
-使用 **累积成本** 选项，并按 **资源类型** 筛选 `microsoft.sql/managedinstances` 。
+使用“累计成本”选项，然后按“资源类型”（如 `microsoft.sql/managedinstances`）进行筛选 。
 
 自动备份的成本是多少？
 
-不管备份保持期设置如何，都可以获得与购买的预留数据存储空间相等的可用备份存储空间量。 如果备份存储消耗在分配的可用备份存储空间内，则托管实例上的自动备份不会产生额外费用，因此是免费的。 超过可用空间的情况下，如果超过可用空间，将会产生大约 $0.20-$0.24 美元/月的费用，或者查看定价页以了解你所在区域的详细信息。 有关更多详细信息，请参阅 [备份存储消耗说明](https://techcommunity.microsoft.com/t5/azure-sql-database/backup-storage-consumption-on-managed-instance-explained/ba-p/1390923)。
+不管备份保持期设置如何，都可以获得与购买的预留数据存储空间相等的可用备份存储空间量。 如果备份存储消耗在分配的可用备份存储空间内，则托管实例上的自动备份不会产生额外费用，因此是免费的。 对于美国区域，超过可用空间使用的备份存储所产生的费用以每月每 GB 约 0.20-0.24 美元的费率计算。你也可以参阅定价页，了解你所在地区的详细信息。 有关更多详细信息，请参阅[备份存储使用说明](https://techcommunity.microsoft.com/t5/azure-sql-database/backup-storage-consumption-on-managed-instance-explained/ba-p/1390923)。
 
 如何监视备份存储消耗的计费成本？
 
-可以通过 Azure 门户来监视备份存储的成本。 有关说明，请参阅[监视自动备份的成本](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs)。 
+可以通过 Azure 门户监视备份存储的成本。 有关说明，请参阅[监视自动备份的成本](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs)。 
 
 **如何优化托管实例上的备份存储成本？**
 
@@ -506,21 +506,21 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 ## <a name="service-updates"></a>服务更新
 
-**& SQL 托管实例的 Azure SQL 数据库的根 CA 更改是什么？**
+**什么是 Azure SQL 数据库和 SQL 托管实例的根 CA 更改？**
 
-请参阅 [AZURE Sql 数据库 & SQL 托管实例的证书轮换](../updates/ssl-root-certificate-expiring.md)。 
+请参阅 [Azure SQL 数据库和 SQL 托管实例的证书轮换](../updates/ssl-root-certificate-expiring.md)。 
 
 **什么是 SQL 托管实例的计划内维护事件？**
 
-请参阅 [规划 SQL 托管实例中的 Azure 维护事件](../database/planned-maintenance.md)。 
+请参阅[在 SQL 托管实例中计划 Azure 维护事件](../database/planned-maintenance.md)。 
 
 
 ## <a name="azure-feedback-and-support"></a>Azure 反馈和支持
 
-**在哪里可以保留我对 SQL 托管实例改进的看法？**
+**我可以在哪儿提出对 SQL 托管实例改进的意见？**
 
-你可以为新的托管实例功能投票，或对 [SQL 托管实例反馈论坛](https://feedback.azure.com/forums/915676-sql-managed-instance)上的投票提供新的改进建议。 这样一来，您就可以对产品开发做出贡献，并帮助我们确定潜在改进的优先级。
+可以通过 [SQL 托管实例反馈论坛](https://feedback.azure.com/forums/915676-sql-managed-instance)，针对新的托管实例功能投票，也可以针对投票提出新的改进意见。 这样，你可以为产品开发做出贡献，并帮助我们确定可能的改进的优先级。
 
 **如何创建 Azure 支持请求？**
 
-若要了解如何创建 Azure 支持请求，请参阅 [如何创建 azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
+若要了解如何创建 Azure 支持请求，请参阅[如何创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。

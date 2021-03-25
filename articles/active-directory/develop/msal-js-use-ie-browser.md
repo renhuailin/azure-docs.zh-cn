@@ -14,15 +14,15 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 73dd7877b399d34a009c9fe479550eb1bf6dc0f1
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99583970"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 浏览器 (MSAL.js) 的已知问题
 
-适用于 JavaScript 的 Microsoft 身份验证库 ( # A0) 为 [JAVASCRIPT ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 生成，以便它可以在 Internet Explorer 中运行。 但是，需要注意几个问题。
+适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 是为 [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 生成的，因此可以在 Internet Explorer 中运行。 但是，需要注意几个问题。
 
 ## <a name="run-an-app-in-internet-explorer"></a>在 Internet Explorer 中运行应用
 若要在能够在 Internet Explorer 中运行的应用程序中使用 MSAL.js，需在引用 MSAL.js 脚本之前添加对承诺填充代码的引用。
@@ -39,7 +39,7 @@ ms.locfileid: "99583970"
 将应用程序部署到生产环境（例如，部署到 Azure Web 应用）通常是可行的，前提是最终用户已接受弹出窗口。 我们已在 Internet Explorer 11 中测试了它。
 
 ### <a name="running-locally"></a>在本地运行
-如果你想要在 Internet Explorer 中运行的应用程序本地运行和调试，请注意以下注意事项 (假设你要将应用程序作为) 运行 *http://localhost:1234* ：
+若要在本地运行并调试在 Internet Explorer 中运行的应用程序，请了解以下注意事项（假设要将应用程序作为 http://localhost:1234 运行）：
 
 - Internet Explorer 有一个名为“保护模式”的安全机制，该机制会妨碍 MSAL.js 正常运行。 其症状是，在登录后，页面可能会重定向到 http://localhost:1234/null 。
 

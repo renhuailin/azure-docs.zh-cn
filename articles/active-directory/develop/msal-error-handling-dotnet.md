@@ -1,7 +1,7 @@
 ---
 title: 处理 MSAL.NET 中的错误和异常
 titleSuffix: Microsoft identity platform
-description: 了解如何在 MSAL.NET 中处理错误和异常、条件性访问声明质询和重试。
+description: 了解如何处理 MSAL.NET 中的错误和异常、条件访问声明质询以及重试。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 565acd745ba5d7fdec71f306d3851e599838f7d9
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584038"
 ---
 # <a name="handle-errors-and-exceptions-in-msalnet"></a>处理 MSAL.NET 中的错误和异常
@@ -39,15 +39,15 @@ ms.locfileid: "99584038"
 | 异常 | 错误代码 | 缓解措施|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS65001：用户或管理员尚未许可使用名为“{appName}”、ID 为“{appId}”的应用程序。 针对此用户和资源发送交互式授权请求。| 首先获取用户同意。 如果未使用 .NET Core（它没有任何 Web UI），请调用 `AcquireTokeninteractive`（仅一次）。 如果使用 .NET Core 或者不希望执行 `AcquireTokenInteractive`，则用户可以导航到某个 URL 来提供许可：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 要调用 `AcquireTokenInteractive`，请使用 `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079：用户必须使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。| 无缓解措施。 如果为你的租户配置了 MFA，并 Azure Active Directory (AAD) 决定强制执行，则回退到交互式流，如 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 。|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception) | AADSTS50079：用户必须使用[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。| 无缓解措施。 如果已为租户配置 MFA 并且 Azure Active Directory (AAD) 决定对其进行强制实施，则回退到 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode` 等交互式流。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) |AADSTS90010：/common 或 /consumers 终结点不支持此授权类型 。 请使用 */organizations* 或特定于租户的终结点。 使用了 */common*。| 根据 Azure AD 发出的消息中所述，颁发机构需要使用一个租户或 */organizations*。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception) | AADSTS70002：请求正文必须包含以下参数：`client_secret or client_assertion`。| 如果应用程序未注册为 Azure AD 中的公共客户端应用程序，则可能引发此异常。 在 Azure 门户中编辑应用程序的清单，并将 `allowPublicClient` 设置为 `true`。 |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`：无法识别已登录的用户| 库无法查询当前的 Windows 登录用户，或者此用户不是 AD 或 Azure AD 加入 (加入用户的) 不受支持。 缓解措施 1：在 UWP 中，检查应用程序是否具有以下功能：企业身份验证、专用网络（客户端和服务器）、用户帐户信息。 缓解措施 2：实现自己的逻辑以提取用户名（例如 john@contoso.com），并使用 `AcquireTokenByIntegratedWindowsAuth` 表单来提取用户名。|
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)|integrated_windows_auth_not_supported_managed_user| 此方法依赖于 Active Directory (AD) 公开的协议。 如果用户是在没有 AD 支持的 Azure AD 中创建的 ( "托管" 用户) ，则此方法将失败。 在 AD 中创建并 Azure AD ( "联合" 用户的支持的用户) 可以利用这种非交互式身份验证方法。 缓解：使用交互式身份验证。|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)| `unknown_user Message`：无法识别已登录的用户| 库无法查询当前的 Windows 已登录用户，或者此用户未加入 AD 或 Azure AD（已加入工作区的用户不受支持）。 缓解措施 1：在 UWP 中，检查应用程序是否具有以下功能：企业身份验证、专用网络（客户端和服务器）、用户帐户信息。 缓解措施 2：实现自己的逻辑以提取用户名（例如 john@contoso.com），并使用 `AcquireTokenByIntegratedWindowsAuth` 表单来提取用户名。|
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception)|integrated_windows_auth_not_supported_managed_user| 此方法依赖于 Active Directory (AD) 公开的协议。 如果在 Azure AD 中创建了一个用户但该用户不受 AD 的支持（“托管”用户），则此方法将会失败。 在 AD 中创建的受 Azure AD 支持的用户（“联合”用户）可以受益于这种非交互式身份验证方法。 缓解：使用交互式身份验证。|
 
 ### `MsalUiRequiredException`
 
-调用 `AcquireTokenSilent()` 时，从 MSAL.NET 返回的其中一个常见状态代码是 `MsalError.InvalidGrantError`。 此状态代码意味着应用程序应再次调用身份验证库，但对于公共客户端应用程序 (AcquireTokenInteractive 或 AcquireTokenByDeviceCodeFlow，在 Web apps) 中，确实面临了挑战。 这是因为在颁发身份验证令牌之前，需要进行其他用户交互。
+调用 `AcquireTokenSilent()` 时，从 MSAL.NET 返回的其中一个常见状态代码是 `MsalError.InvalidGrantError`。 此状态代码表示应用程序应再次调用身份验证库，但要在交互模式下调用（用于公共客户端应用程序的 AcquireTokenInteractive 或 AcquireTokenByDeviceCodeFlow 会在 Web 应用中执行质询）。 这是因为在颁发身份验证令牌之前，需要进行其他用户交互。
 
 大多数情况下，`AcquireTokenSilent` 失败的原因是，令牌缓存没有与请求匹配的令牌。 访问令牌将在 1 小时后过期，`AcquireTokenSilent` 将尝试基于刷新令牌获取新的令牌（在 OAuth2 术语中，这是刷新令牌流）。 此流也可能因各种原因而失败，例如，如果租户管理员配置了更严格的登录策略。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "99584038"
 
 ### <a name="msaluirequiredexception-classification-enumeration"></a>`MsalUiRequiredException` 分类枚举
 
-MSAL 公开一个 `Classification` 字段，你可以读取该字段以提供更好的用户体验。 例如，告知用户其密码已过期，或者需要提供使用某些资源的许可。 支持的值是 `UiRequiredExceptionClassification` 枚举的一部分：
+MSAL 公开一个 `Classification` 字段，你可以读取该字段，以便提供更好的用户体验。 例如，用于告知用户其密码已过期，或者他们需要许可使用某些资源。 支持的值是 `UiRequiredExceptionClassification` 枚举的一部分：
 
 | 分类    | 含义           | 建议的处理方式 |
 |-------------------|-------------------|----------------------|
@@ -177,4 +177,4 @@ do
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑 [在 MSAL.NET 中启用日志记录](msal-logging-dotnet.md) ，以帮助你诊断和调试问题。
+请考虑启用 [MSAL.NET 中的日志](msal-logging-dotnet.md)，以帮助诊断并调试问题。

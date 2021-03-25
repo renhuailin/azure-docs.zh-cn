@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 9754a043c90c01f889be9639d2d045fb1929de17
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 84a6bba390b0f6b101bd8243cf47b79af9618999
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178110"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521639"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -30,6 +30,8 @@ ms.locfileid: "102178110"
  * **将缓存实例和应用程序定位在同一区域中。**  连接到不同区域中的缓存可能会明显增大延迟并降低可靠性。  尽管可以从 Azure 外部进行连接，但不建议这样做，尤其是使用 Redis 作为缓存时。  如果只是使用 Redis 作为键/值存储，则延迟可能不是主要考虑因素。 
 
  * **重复使用连接。**  创建新连接是高开销的操作，会增大延迟，因此请尽量重复使用连接。 如果你选择创建新连接，请确保在释放旧连接之前先将其关闭（即使是在 .NET 或 Java 等托管内存语言中）。
+
+* **使用管道。**  尝试选择支持 [Redis 管道](https://redis.io/topics/pipelining)的 Redis 客户端，以便最有效地利用网络来获得尽量最佳的吞吐量。
 
  * **将客户端库配置为使用至少 15 秒的连接超时**，以便即使是在 CPU 负载较高的情况下，系统也有时间建立连接。  使用较小的连接超时值无法保证在该时间范围内能够建立连接。  如果出现问题（客户端 CPU 负载偏高、服务器 CPU 负载偏高等），则使用较短的连接超时值会导致连接尝试失败。 此行为通常会使问题变得更糟。  使用较短的超时不仅无助于解决问题，而且会加剧问题，这会强制系统重启尝试重新连接的进程，从而可能导致出现“连接 -> 失败 -> 重试”循环。 我们通常建议将连接超时保留为 15 秒或更长。 让连接尝试在 15 或 20 秒后成功，比失败后立即重试更有利。 与最初让系统花费更长时间尝试连接相比，这种重试循环可能会导致服务中断的持续时间变长。  
      > [!NOTE]
@@ -73,8 +75,8 @@ ms.locfileid: "102178110"
  * 用于测试的客户端 VM 应与 Redis 缓存实例位于 **同一区域**。
  * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。 
- * 在缓存上的 **故障转移条件下进行测试**。 务必确保不在稳定状态条件下对缓存进行性能测试。 同时，在故障转移条件下进行测试，并在该时间测量缓存上的 CPU/服务器负载。 可以通过 [重新启动主节点](cache-administration.md#reboot)来启动故障转移。 这将允许你查看应用程序在故障转移情况下的吞吐量和延迟方面的行为， (在更新过程中发生，并在计划外事件) 期间发生。 理想情况下，即使在故障转移期间，即使在故障转移期间，don't't 的 CPU/服务器负载峰值超过80%，也不会影响性能。
- * **高级 P2 及更高** 版本托管在具有4个或更多内核的 vm 上。 这对于跨多个内核分发 TLS 加密/解密工作负荷以降低总体 CPU 使用率很有用。  [有关 VM 大小和内核的详细信息，请参阅此处](cache-planning-faq.md#azure-cache-for-redis-performance)
+ * 在缓存中 **按照故障转移条件进行测试**。 必须确保不只是在稳定状态条件下对缓存进行性能测试。 还需要按照故障转移条件进行测试，并在测试期间测量缓存中的 CPU/服务器负载。 可以通过[重新启动主节点](cache-administration.md#reboot)来启动故障转移。 这样，便可以看到在根据条件进行故障转移的过程中（可以在更新期间进行，也可以在计划外事件期间进行），应用程序在吞吐量和延迟方面的行为。 理想情况下，即使是在故障转移期间，CPU/服务器负载峰值也应该不会很高（例如超过 80%），因为这可能会影响性能。
+ * **某些大小的缓存** 托管在具有 4 个或更多核心的 VM 上。 这有助于将 TLS 加密/解密以及 TLS 连接/断开连接工作负载分散到多个核心，使缓存 VM 上的总体 CPU 使用率降低。  [参阅此文了解有关 VM 大小和核心的详细信息](cache-planning-faq.md#azure-cache-for-redis-performance)
  * 如果是在 Windows 设备上操作，请在客户端计算机上 **启用 VRSS**。  [请参阅此处了解详细信息](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。  PowerShell 脚本示例：
      >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (    Get-NetAdapter).Name 
 
@@ -85,10 +87,10 @@ ms.locfileid: "102178110"
 
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 **测试前的设置**：使用下列延迟和吞吐量测试命令所需的数据准备缓存实例。
-> redis--yourcache.redis.cache.windows.net-a yourAccesskey-1024 t 
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
 
 **测试延迟**：使用 1k 有效负载测试 GET 请求。
-> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t d 1024-P 50-c 4
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
 
 **测试吞吐量：** 管道化的 GET 请求，其有效负载为 1k。
-> redis-yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-benchmark -h yourcache.redis.cache.windows.net -a yourAccesskey -t  GET -n 1000000 -d 1024 -P 50  -c 50

@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553742"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582062"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>部署已启用受信任启动的 VM（预览版）
 
@@ -134,13 +134,13 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 每个订阅只需将此模板部署一次。 它会自动在所有受支持的 VM 上安装 `GuestAttestation` 和 `AzureSecurity` 扩展。 如果出现错误，请尝试重新部署此模板。
 
-若要获取有关受信任启动 VM 的 vTPM 和安全启动建议，请参阅[将自定义计划添加到订阅](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription)。
+若要获取有关受信任启动 VM 的 vTPM 和安全启动建议，请参阅[将自定义计划添加到订阅](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)。
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>在 Linux 上为安全启动签名
 
 在某些情况下，可能需要为 UEFI 安全启动签名。  例如，你可能需要了解[如何为 Ubuntu 的安全启动签名](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot)。 在这些情况下，需要为 VM 输入 MOK 实用工具注册密钥。 为此，需要使用 Azure 串行控制台来访问 MOK 实用工具。
 
-1. 启用适用于 Linux 的 Azure 串行控制台。 有关详细信息，请参阅[适用于 Linux 的串行控制台](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux)。
+1. 启用适用于 Linux 的 Azure 串行控制台。 有关详细信息，请参阅[适用于 Linux 的串行控制台](/troubleshoot/azure/virtual-machines/serial-console-linux)。
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索“虚拟机”，然后从列表中选择你的 VM。
 1. 在左菜单中的“支持 + 故障排除”下，选择“串行控制台” 。 此时会在右侧打开一个页面，其中包含串行控制台。

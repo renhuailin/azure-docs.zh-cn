@@ -3,16 +3,16 @@ title: Fsv2 系列
 description: Fsv2 系列 VM 的规范。
 author: brbell
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e738a3e18d4ee16b2bbfd7edb6cc32152bb82b48
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 7181766d366358719a32b5e7a7f4eeb82de5e935
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557810"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549152"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
@@ -26,8 +26,8 @@ Fsv2 系列 VM 采用了 Intel® 超线程技术。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
@@ -46,10 +46,10 @@ Fsv2 系列 VM 采用了 Intel® 超线程技术。
 - Windows Server 2016 或更高版本
 - Ubuntu 16.04 LTS 或更高版本，带 Azure 优化内核（4.15 内核或更高版本）
 - SLES 12 SP2 或更高版本
-- RHEL 或 CentOS 版本6.7 至6.10，使用 Microsoft 提供的 .LIS 包 4.3.1 (或更高版本) 安装
-- RHEL 或 CentOS 版本7.3，其中安装了 Microsoft 提供的 .LIS 包 4.2.1 (或更高版本) 
-- RHEL 或 CentOS 版本7.6 或更高版本
-- UEK4 或更高版本的 Oracle Linux
+- RHEL 或 CentOS 版本 6.7 到 6.10，安装了 Microsoft 提供的 LIS 程序包 4.3.1（或更高版本）
+- RHEL 或 CentOS 版本 7.3，安装了 Microsoft 提供的 LIS 程序包 4.2.1（或更高版本）
+- RHEL 或 CentOS 版本 7.6 或更高版本
+- 包含 UEK4 或更高版本的 Oracle Linux
 - Debian 9，带有向后移植内核 Debian 10 或更高版本
 - 带有 4.14 内核或更高版本的 CoreOS
 
