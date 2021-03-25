@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: e20611cbc2df17bcd201a493d1ef2f40cc984321
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>教程：Azure Active Directory 与 RedVector 集成
@@ -61,7 +61,7 @@ ms.locfileid: "92515047"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **RedVector** ，在结果面板中选择“RedVector”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **RedVector**，在结果面板中选择“RedVector”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“RedVector”](common/search-new-app.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "92515047"
 
     ![RedVector 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso2.redvector.com/adfs/<Companyname>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso2.redvector.com/adfs/<Companyname>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://sso2.redvector.com/saml2`
 
@@ -134,7 +134,7 @@ ms.locfileid: "92515047"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92515047"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

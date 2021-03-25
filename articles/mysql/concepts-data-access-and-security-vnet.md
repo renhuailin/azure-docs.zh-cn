@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
 ms.openlocfilehash: 364d9c20c0bfce1f31103ddf6df0c8d7b228eca2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96461771"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>对 Azure Database for MySQL 使用虚拟网络服务终结点和规则
@@ -25,7 +25,7 @@ ms.locfileid: "96461771"
 > Azure 的所有区域均提供此功能，其中 Azure Database for MySQL 部署用于常规用途和内存优化服务器。
 > 在 VNet 对等互连的情况下，如果流量通过具有服务终结点的公共 VNet 网关流动，并且应该流向对等机，请创建 ACL/VNet 规则，以便网关 VNet 中的 Azure 虚拟机能够访问 Azure Database for MySQL 服务器。
 
-还可以考虑使用[专用链接](concepts-data-access-security-private-link.md)进行连接。 专用链接在 VNet 中为 Azure Database for MySQL 服务器提供专用 IP 地址。
+还可以考虑将[专用链接](concepts-data-access-security-private-link.md)用于连接。 专用链接在 VNet 中为 Azure Database for MySQL 服务器提供专用 IP 地址。
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -88,11 +88,11 @@ ms.locfileid: "96461771"
 - **网络管理员：** &nbsp; 启用终结点。
 - **数据库管理员：** &nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MySQL 服务器。
 
-Azure RBAC 备用：
+*Azure RBAC 备用：*
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于 Azure 角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+可以选择在 Azure 中使用 [Azure 基于角色的访问控制 (Azure RBAC)][rbac-what-is-813s]，创建一个只有部分必需功能的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MySQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -112,7 +112,7 @@ Azure RBAC 备用：
 
 - 虚拟网络规则仅适用于 Azure 资源管理器虚拟网络，不适用于[经典部署模型][arm-deployment-model-568f]网络。
 
-- 使用 **Synapse 服务标记** 启用虚拟网络服务终结点 Azure Database for MySQL，还可以为所有 Azure 数据库服务启用终结点： Azure Database for MySQL、Azure Database for PostgreSQL、Azure Sql 数据库和 Azure 分析。
+- 使用 **Microsoft.Sql** 服务标记为 Azure Database for MySQL 启用虚拟网络服务终结点也会为以下所有 Azure 数据库服务启用终结点：Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL 数据库和 Azure Synapse Analytics。
 
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 

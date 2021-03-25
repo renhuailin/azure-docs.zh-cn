@@ -9,44 +9,44 @@ ms.date: 02/10/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5d43d6f56b48a34fa34baf727508ad8f1c151aa7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101674314"
 ---
-# <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>从 Synapse 工作区连接到安全的 Azure 存储帐户
+# <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>从 Synapse 工作区连接到安全 Azure 存储帐户
 
-本文介绍如何从 Azure Synapse 工作区连接到安全的 Azure 存储帐户。 创建工作区时，可以将 Azure 存储帐户链接到 Synapse 工作区。 创建工作区之后，可以链接更多的存储帐户。
+本文介绍如何从 Azure Synapse 工作区连接到安全的 Azure 存储帐户。 创建工作区时，可以将 Azure 存储帐户链接到 Synapse 工作区。 创建工作区之后，可以链接更多存储帐户。
 
 
 ## <a name="secured-azure-storage-accounts"></a>受保护的 Azure 存储帐户
-Azure 存储提供分层的安全模型，使你能够保护和控制对存储帐户的访问。 你可以配置 IP 防火墙规则，以将流量从所选的公共 IP 地址范围授予对存储帐户的访问权限。 你还可以配置网络规则，以便从所选虚拟网络向存储帐户授予流量。 可以合并允许从所选 IP 地址范围访问的 IP 防火墙规则，以及允许从同一存储帐户上的所选虚拟网络访问的网络规则。 这些规则适用于存储帐户的公共终结点。 不需要任何访问规则即可允许从工作区中创建的托管专用终结点到存储帐户的流量。 存储防火墙规则可以应用于现有存储帐户，也可以在创建新存储帐户时应用到新存储帐户。 可在 [此处](../../storage/common/storage-network-security.md)详细了解如何保护存储帐户。
+Azure 存储提供分层的安全模型，使你能够保护和控制对存储帐户的访问。 可以配置 IP 防火墙规则，向来自所选公共 IP 地址范围的流量授予对存储帐户的访问权限。 还可配置网络规则，向来自所选所选虚拟网络的流量授予对存储帐户的访问权限。 在同一存储帐户上可以合并允许来自所选 IP 地址范围的访问的 IP 防火墙规则，以及允许来自所选虚拟网络的访问的网络规则。 这些规则应用到存储帐户的公共终结点。 不需要任何访问规则即可允许工作区中所创建的托管专用终结点的流量访问存储帐户。 可对现有的存储帐户应用存储防火墙规则，或者在创建新存储帐户时应用这些规则。 可在[此处](../../storage/common/storage-network-security.md)详细了解如何保护存储帐户。
 
 ## <a name="synapse-workspaces-and-virtual-networks"></a>Synapse 工作区和虚拟网络
-当你创建 Synapse 工作区时，你可以选择启用要与之关联的托管虚拟网络。 如果你在创建工作区时未为其启用托管虚拟网络，则你的工作区位于共享虚拟网络中，同时还与其他未关联托管虚拟网络的 Synapse 工作区结合使用。 如果在创建工作区时启用了托管虚拟网络，则工作区与 Azure Synapse 管理的专用虚拟网络相关联。 不会在你的客户订阅中创建这些虚拟网络。 因此，你将无法使用上述网络规则将来自这些虚拟网络的流量授予对受保护的存储帐户的访问权限。  
+创建 Synapse 工作区时，可以选择启用要与之关联的托管虚拟网络。 如果创建工作区时未为其启用托管虚拟网络，则工作区与其他没有托管虚拟网络与之关联的 Synapse 工作区一起位于共享的虚拟网络中。 如果创建工作区时启用了托管虚拟网络，则工作区与 Azure Synapse 管理的专用虚拟网络相关联。 不会在你的客户订阅中创建这些虚拟网络。 因此，将无法使用上述网络规则向来自这些虚拟网络的流量授予对受保护存储帐户的访问权限。  
 
 ## <a name="access-a-secured-storage-account"></a>访问受保护的存储帐户
-Synapse 操作来自网络规则中不能包含的网络。 若要启用从工作区到安全存储帐户的访问，需要执行以下操作。
+Synapse 从不能包含在网络规则中的网络进行操作。 若要实现从工作区访问安全存储帐户，需要执行以下操作。
 
-* 创建一个 Azure Synapse 工作区，其中包含与其关联的托管虚拟网络，并从该工作区创建托管专用终结点到安全存储帐户
-* 允许 Azure Synapse 工作区访问安全存储帐户作为受信任的 Azure 服务。 作为受信任的服务，Azure Synapse 将使用强身份验证安全地连接到你的存储帐户。   
+* 创建一个与托管虚拟网络关联了的 Azure Synapse 工作区，并从该工作区创建托管专用终结点到安全存储帐户
+* 允许 Azure Synapse 工作区作为受信任的 Azure 服务访问安全存储帐户。 然后 Azure Synapse 作为受信任服务会使用强身份验证安全地连接到存储帐户。   
 
-### <a name="create-a-synapse-workspace-with-a-managed-virtual-network-and-create-managed-private-endpoints-to-your-storage-account"></a>使用托管虚拟网络创建 Synapse 工作区，并创建托管专用终结点到你的存储帐户
-可以按照 [以下步骤](./synapse-workspace-managed-vnet.md) 创建 Synapse 工作区，该工作区具有与之关联的托管虚拟网络。 创建关联的托管虚拟网络的工作区后，可以按照 [此处](./how-to-create-managed-private-endpoints.md)列出的步骤，在安全存储帐户中创建托管专用终结点。 
+### <a name="create-a-synapse-workspace-with-a-managed-virtual-network-and-create-managed-private-endpoints-to-your-storage-account"></a>创建具有托管虚拟网络的 Synapse 工作区，并创建托管专用终结点到存储帐户
+可以按照[这些步骤](./synapse-workspace-managed-vnet.md)创建关联了托管虚拟网络的 Synapse 工作区。 创建关联了托管虚拟网络的工作区后，可以按照[此处](./how-to-create-managed-private-endpoints.md)列出的步骤创建托管专用终结点到安全存储帐户。 
 
-### <a name="grant-your-azure-synapse-workspace-access-to-your-secure-storage-account-as-a-trusted-azure-service"></a>允许 Azure Synapse 工作区访问安全存储帐户作为受信任的 Azure 服务
-分析功能（如专用 SQL 池和无服务器 SQL 池）使用未部署到托管虚拟网络中的多租户基础结构。 为了使来自这些功能的流量能够访问受保护的存储帐户，你必须按照以下步骤配置对你的存储帐户的访问，方法是基于工作区的系统分配的托管标识。
+### <a name="grant-your-azure-synapse-workspace-access-to-your-secure-storage-account-as-a-trusted-azure-service"></a>允许 Azure Synapse 工作区作为受信任的 Azure 服务访问安全存储帐户
+分析功能（如专用 SQL 池和无服务器 SQL 池）使用未部署到托管虚拟网络中的多租户基础结构。 为了使来自这些功能的流量访问受保护的存储帐户，必须按照以下步骤基于工作区系统分配的托管标识配置对存储帐户的访问。
 
-在 Azure 门户中，导航到受保护的存储帐户。 从左侧导航窗格中选择 " **网络** "。 在 " **资源实例** " 部分中，选择 " *Synapse"/"工作区* " 作为 **资源类型** ，并输入 " **实例名称**" 的工作区名称。 选择“保存”。
+在 Azure 门户中导航到受保护的存储帐户。 从左侧导航窗格选择“网络”。  在“资源实例”部分中，选择 Microsoft.Synapse/workspaces 作为“资源类型”，并输入工作区名称作为“实例名称”。 选择“保存”。
 
 ![存储帐户网络配置。](./media/connect-to-a-secure-storage-account/secured-storage-access.png)
 
-现在应能够从工作区访问安全存储帐户。
+现在应能够从工作区访问受保护的存储帐户。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [托管工作区虚拟网络](./synapse-workspace-managed-vnet.md)的详细信息。
+详细了解[托管工作区虚拟网络](./synapse-workspace-managed-vnet.md)。
 
-了解有关 [托管专用终结点](./synapse-workspace-managed-private-endpoints.md)的详细信息。
+详细了解[托管专用终结点](./synapse-workspace-managed-private-endpoints.md)。

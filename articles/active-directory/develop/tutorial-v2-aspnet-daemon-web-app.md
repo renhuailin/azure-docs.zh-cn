@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653756"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教程：生成使用 Microsoft 标识平台的多租户守护程序
@@ -203,7 +203,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>创建 dotnet-web-daemon-v2 并将其发布到 Azure 网站
 
-1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 在左上角，选择“创建资源”。
 1. 选择“Web” > “Web 应用”，然后为网站命名。  例如，将它命名为 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 选择“订阅”、“资源组”和“应用服务计划和位置”的信息。   为“OS”选择“Windows”，为“发布”选择“代码”。   

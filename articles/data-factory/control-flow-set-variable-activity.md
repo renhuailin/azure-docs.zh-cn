@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
-ms.openlocfilehash: 122a0a01c420d5efa12fa267a0d3605fc7a25960
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.reviewer: jburchel
+ms.openlocfilehash: 113829dd35c14b5efae39c55a8085dcd2c1ecef4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385330"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786152"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "100385330"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 必选
+属性 | 说明 | 必需
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487681"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>快速入门：使用 Azure Data Share 和 ARM 模板共享数据
@@ -71,7 +71,7 @@ ms.locfileid: "92487681"
 
     * 订阅：选择用于创建数据共享和其他资源的 Azure 订阅。
     * 资源组：选择“新建”以创建新的资源组，或选择现有资源组。
-    * **位置** ：选择资源组的位置。
+    * **位置**：选择资源组的位置。
     * 项目名称：输入项目名称。  项目名称用于生成资源名称。  请参阅上一个模板中的变量定义。
     * 位置：选择资源的位置。  可以为资源组使用相同的位置。
     * 邀请电子邮件：输入数据共享收件人的 Azure 登录电子邮件地址。  电子邮件别名不起作用。

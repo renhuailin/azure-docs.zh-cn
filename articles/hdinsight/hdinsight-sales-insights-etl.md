@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 32c331b10fcc73b5449588595370f8f69ef9893c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932047"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872041"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
 
@@ -18,7 +18,7 @@ ms.locfileid: "98932047"
 
 此数据管道将合并各种存储中的数据，删除所有不需要的数据，追加新数据，并将所有这些数据加载回到存储中，以可视化业务见解。 请在[大规模提取、转换和加载 (ETL)](./hadoop/apache-hadoop-etl-at-scale.md) 中详细了解 ETL 管道。
 
-![ETL 体系结构](./media/hdinsight-sales-insights-etl/architecture.png)
+:::image type="content" source="./media/hdinsight-sales-insights-etl/architecture.png" alt-text="ETL 体系结构" border="false":::
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -251,7 +251,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 
 1. 在菜单中，导航到“获取数据” > “更多...” > “Azure”“HDInsight Interactive Query” > 。
 
-1. 选择“连接”。
+1. 选择“连接”  。
 
 1. 在“HDInsight Interactive Query”对话框中执行以下操作：
     1. 在“服务器”文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。
@@ -261,7 +261,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 1. 在“AzureHive”对话框中执行以下操作：
     1. 在“用户名”文本框中，输入 `admin`。
     1. 在“密码”文本框中，输入 `Thisisapassword1`。
-    1. 选择“连接” 。
+    1. 选择“连接”  。
 
 1. 在“导航器”中，选择 `sales` 和/或 `sales_raw` 以预览数据。 加载数据后，可以尝试创建仪表板。 若要开始使用 Power BI 仪表板，请参阅以下链接：
 

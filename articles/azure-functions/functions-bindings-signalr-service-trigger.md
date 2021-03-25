@@ -7,17 +7,17 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763501"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
 使用 SignalR 触发器绑定来响应从 Azure SignalR 服务发送的消息。 触发函数时，传递给函数的消息分析为 json 对象。
 
-在 SignalR Service 无服务器模式下，SignalR 服务使用 [上游](../azure-signalr/concept-upstream.md) 功能从客户端向 Function App 发送消息。 和 Function App 使用 SignalR 服务触发器绑定来处理这些消息。 一般的体系结构如下所示： :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR 触发器体系结构":::
+在 SignalR 服务无服务器模式下，SignalR 服务使用[上游](../azure-signalr/concept-upstream.md)功能从客户端向函数应用发送消息。 函数应用会使用 SignalR 服务触发器绑定来处理这些消息。 一般的体系结构如下所示：:::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR 触发器体系结构":::
 
 有关设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
@@ -205,21 +205,21 @@ InvocationContext 包含 SignalR 服务发送的消息中的所有内容。
 
 ## <a name="using-parameternames"></a>使用 `ParameterNames`
 
-通过 `SignalRTrigger` 中的属性 `ParameterNames`，可将调用消息的参数绑定到函数的参数。 你定义的名称可用作其他绑定中的 [绑定表达式](../azure-functions/functions-bindings-expressions-patterns.md) 的一部分，或者用作代码中的参数。 这为你提供了更方便的方法来访问 `InvocationContext` 的参数。
+通过 `SignalRTrigger` 中的属性 `ParameterNames`，可将调用消息的参数绑定到函数的参数。 你定义的名称可在其他绑定中用作[绑定表达式](../azure-functions/functions-bindings-expressions-patterns.md)的一部分，或者用作代码中的参数。 这为你提供了更方便的方法来访问 `InvocationContext` 的参数。
 
-假设你有一个 JavaScript SignalR 客户端尝试 `broadcast` 在 Azure 函数中使用两个参数调用方法 `message1` `message2` 。
+假设你有 JavaScript SignalR 客户端尝试使用两个参数 `message1`、`message2` 调用 Azure Function 中的方法 `broadcast`。
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-设置后 `parameterNames` ，您定义的名称将分别对应于客户端发送的参数。 
+设置 `parameterNames` 后，你定义的名称将分别对应于客户端发送的参数。 
 
 ```cs
 [SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
 ```
 
-然后， `arg1` 将包含的内容 `message1` ，并且 `arg2` 将包含的内容 `message2` 。
+然后，`arg1` 将包含 `message1` 的内容，`arg2` 将包含 `message2` 的内容。
 
 
 ### <a name="remarks"></a>备注
@@ -230,24 +230,24 @@ await connection.invoke("broadcast", message1, message2);
 
 ## <a name="signalr-service-integration"></a>SignalR 服务集成
 
-使用 SignalR 服务触发器绑定时，SignalR 服务需要 URL 来访问 Function App。 URL 应在 SignalR 服务端的 **上游设置** 中进行配置。 
+当你使用 SignalR 服务触发器绑定时，SignalR 服务需要一个用于访问函数应用的 URL。 应在 SignalR 服务端的 **上游设置** 中配置 URL。 
 
 :::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="上游门户":::
 
-使用 SignalR 服务触发器时，URL 可以简单和格式化，如下所示：
+使用 SignalR 服务触发器时，URL 可以十分简单，其格式可以设置为如下所示：
 
 ```http
 <Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`Function_App_URL`可在 Function App 的 "概述" 页上找到， `API_KEY` 由 Azure Function 生成。 可以 `API_KEY` `signalr_extension` 在 Function App 的 " **应用程序密钥** " 边栏选项卡中获取。
+`Function_App_URL` 可在函数应用的“概述”页上找到，`API_KEY` 由 Azure Function 生成。 可以从函数应用的“应用密钥”边栏选项卡中获取 `signalr_extension` 的 `API_KEY`。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API 密钥":::
 
-如果要将多个 Function App 与一个 SignalR 服务一起使用，上游还可以支持复杂路由规则。 在 [上游设置](../azure-signalr/concept-upstream.md)中查找更多详细信息。
+如果要将多个函数应用与一个 SignalR 服务一起使用，上游还可以支持复杂的路由规则。 有关更多详细信息，请查看[上游设置](../azure-signalr/concept-upstream.md)。
 
 ## <a name="step-by-step-sample"></a>分步示例
 
-可以按照 GitHub 中的示例使用 SignalR 服务触发器绑定和上游功能在 Function App 上部署聊天室： [双向聊天室示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
+可以按照 GitHub 中的示例，使用 SignalR 服务触发器绑定和上游功能在函数应用上部署聊天室：[双向聊天室示例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>后续步骤
 

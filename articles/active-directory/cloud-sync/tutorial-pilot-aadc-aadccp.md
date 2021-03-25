@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611913"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798708"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云同步 
 
@@ -78,7 +78,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  
  4. 在“范围筛选器”页上，输入试运行所依据的 OU 或安全组。  若要按 OU 筛选，请添加可分辨名称的 OU 部分。 此规则将应用到该 OU 中的所有用户。  因此，如果 DN 以“OU=CPUsers,DC=contoso,DC=com”结尾，请添加此筛选器。  然后单击“下一步”。 
 
-    |规则|Attribute|操作员|值|
+    |规则|Attribute|运算符|值|
     |-----|----|----|-----|
     |范围 OU|DN|ENDSWITH|OU 的可分辨名称。|
     |范围组||ISMEMBEROF|安全组的可分辨名称。|
@@ -208,20 +208,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 1.  在 Azure 门户中禁用预配配置。 
 2.  使用同步规则编辑器工具禁用为云预配创建的所有自定义同步规则。 禁用后，应会在所有连接器上执行完全同步。
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>配置 Azure AD Connect sync 以排除试运行 OU
-验证试点 OU 中的用户已由云同步成功管理后，可以重新配置 Azure AD Connect，以排除前面创建的试点 OU。  云预配代理今后将处理这些用户的同步。  使用以下步骤来限定 Azure AD Connect 的范围。
 
- 1. 在运行 Azure AD Connect 的服务器上，双击“Azure AD Connect”图标。
- 2. 单击“配置”。
- 3. 选择“自定义同步选项”，然后单击“下一步”。
- 4. 登录到 Azure AD 并单击“下一步”。
- 5. 在“连接目录”屏幕上，单击“下一步”。 
- 6. 在“域和 OU 筛选”屏幕上，选择“同步选定的域和 OU”。 
- 7. 展开自己的域，**取消选择**“CPUsers”OU。  单击“下一步”。
-![作用域](media/tutorial-existing-forest/scope-1.png)</br>
- 9. 在“可选功能”屏幕上单击“下一步”。 
- 10. 在“准备好配置”屏幕上，单击“配置”。
- 11. 完成该操作后，单击“退出”。 
 
 ## <a name="next-steps"></a>后续步骤 
 

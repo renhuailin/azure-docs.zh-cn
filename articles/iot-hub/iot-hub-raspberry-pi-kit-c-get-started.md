@@ -11,10 +11,10 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97804048"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
@@ -125,7 +125,7 @@ ms.locfileid: "97804048"
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. 在“接口”  选项卡上，将“SPI”  和“SSH”  设置为“启用”  ，并单击“确定”  。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+3. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -203,7 +203,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    ```
 
    > [!NOTE] 
-   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据  。 `sudo ./setup.sh --simulated-data`
+   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据。 `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序

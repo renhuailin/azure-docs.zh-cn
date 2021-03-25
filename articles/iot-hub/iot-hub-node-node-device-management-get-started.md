@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: cfc0fa45c08f917b2e0b4a0b055e801173a4ba39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251994"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (Node.js)
@@ -83,7 +83,7 @@ ms.locfileid: "91251994"
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将 `{yourdeviceconnectionstring}` 占位符值替换为以前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
+5. 添加 **connectionString** 变量，并使用它创建一个 **客户端** 实例。  将 `{yourdeviceconnectionstring}` 占位符值替换为以前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';

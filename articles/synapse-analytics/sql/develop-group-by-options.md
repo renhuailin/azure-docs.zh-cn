@@ -1,6 +1,6 @@
 ---
 title: 在 Synapse SQL 中使用 GROUP BY 选项
-description: Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。
+description: Synapse SQL 允许通过实现各种 GROUP BY 选项来开发解决方案。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101671317"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
 
-Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。 
+Synapse SQL 允许通过实现各种 GROUP BY 选项来开发解决方案。 
 
-## <a name="what-group-by-does"></a>分组依据
+## <a name="what-group-by-does"></a>GROUP BY 的用处
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL 子句用于将数据聚合成摘要行集。
 
-无服务器 SQL 池支持整组分组选项。 专用 SQL 池支持的 GROUP BY 选项数量有限。
+无服务器 SQL 池支持所有 GROUP BY 选项。 专用 SQL 池支持部分 GROUP BY 选项。
 
 ## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>专用 SQL 池中支持的 GROUP BY 选项
 
@@ -40,7 +40,7 @@ GROUP BY 具有专用 SQL 池不支持的一些选项。 这些选项有解决�
 
 此处最简单的选项是使用 UNION ALL 来执行汇总，而不是依赖显式语法。 结果应完全相同
 
-下面的示例使用带有 ROLLUP 选项的 GROUP BY 语句：
+下面的示例使用了具有 ROLLUP 选项的 GROUP BY 语句：
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -94,7 +94,7 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 可以使用 UNION ALL 方法创建 GROUP BY WITH CUBE。 问题在于，代码可能很快就会变得庞大且失控。 若要缓解此问题，可以使用这种更高级的方法。
 
-第一步是定义“cube”，它定义我们想要创建的所有聚合级别。 请记下两个派生表的交叉联接，因为它会生成所有级别。 其余代码适用于格式设置。
+第一步是定义“cube”，它定义我们想要创建的所有聚合级别。 记下两个派生表的交叉联接，因为这会生成所有级别。 其余的代码用于设置格式。
 
 ```sql
 CREATE TABLE #Cube
@@ -125,7 +125,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下图显示了 [CREATE TABLE 为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)的结果：
+下图显示了 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 的结果：
 
 ![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
 
@@ -152,7 +152,7 @@ WITH
 ;
 ```
 
-第三步是遍历执行聚合的列的多维数据集。 此查询将针对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
+第三步是循环访问执行聚合的列 cube。 此查询将针对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);

@@ -1,6 +1,6 @@
 ---
 title: 将 Windows Server/System Center VMM 2012 R2 升级到 Windows Server 2016-Azure Site Recovery
-description: 了解如何将配置有 Azure Site Recovery 的 & SCVMM 2012 R2 的 Windows Server 2012 R2 主机升级到 Windows Server 2016 & SCVMM 2016。
+description: 了解如何将使用 Azure Site Recovery 配置的 Windows Server 2012 R2 主机和 SCVMM 2012 R2 升级到 Windows Server 2016 和 SCVMM 2016。
 services: site-recovery
 author: Sharmistha-Rai
 manager: gaggupta
@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250058"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>将 Windows Server/System Center 2012 R2 VMM 升级到 Windows Server/VMM 2016 
@@ -51,7 +51,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 - 如果在两端由 SCVMM 管理的两个站点之间复制，请确保先升级恢复端，然后再升级主要端。
   > [!WARNING]
-  > 升级 SCVMM 2012 R2 时，请在分发式密钥管理下选择**在 Active Directory 中存储加密密钥**。 请慎重选择服务帐户和分布式密钥管理的设置。 根据所做的选择，加密的数据（例如模板中的密码）在升级后可能不可用，并可能会影响使用 Azure Site Recovery 进行的复制
+  > 升级 SCVMM 2012 R2 时，请在分发式密钥管理下选择 **在 Active Directory 中存储加密密钥**。 请慎重选择服务帐户和分布式密钥管理的设置。 根据所做的选择，加密的数据（例如模板中的密码）在升级后可能不可用，并可能会影响使用 Azure Site Recovery 进行的复制
 
 > [!IMPORTANT]
 > 请参阅[先决条件](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)的详细 SCVMM 文档

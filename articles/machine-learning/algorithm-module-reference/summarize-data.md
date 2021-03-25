@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
 ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898210"
 ---
 # <a name="summarize-data"></a>汇总数据
@@ -32,7 +32,7 @@ ms.locfileid: "90898210"
 
 ## <a name="how-to-configure-summarize-data"></a>如何配置“汇总数据”  
 
-1. 将“汇总数据”模块添加到管道****。 可以在设计器的“统计函数”**** 类别中找到此模块。
+1. 将“汇总数据”模块添加到管道。 可以在设计器的“统计函数”类别中找到此模块。
 
 1. 连接要为其生成报表的数据集。
 

@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566514"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
@@ -36,7 +36,7 @@ ms.locfileid: "94566514"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - 本教程需要 Azure CLI 版本的2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+ - 本教程需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -183,7 +183,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在本文中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1* 、 *myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
+在本文中，你将创建三个虚拟机规模集以支持所创建的三个后端池。 你将创建名为 *myvmss1*、*myvmss2* 和 *myvmss3* 的规模集。 每个规模集都包含两个虚拟机实例，将在其上安装 NGINX。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

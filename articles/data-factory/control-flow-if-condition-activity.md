@@ -3,16 +3,16 @@ title: Azure 数据工厂中的 If Condition 活动
 description: If Condition 活动允许你控制基于条件的处理流。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c0dbda298cf808dd3caa7a767e0ec5e847c92108
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: cd745f90598666e1fc5c849de335c81a2380d99f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385517"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786220"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -61,7 +61,7 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition” | String | 是

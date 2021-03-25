@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
-ms.translationtype: MT
+ms.openlocfilehash: 724b94a44ae289063bbb1c6ebf53b38c0a617b88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845464"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799321"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -44,7 +44,7 @@ LUIS 理解以下语言：
 | 朝鲜语 |`ko-KR` |✔|-|-|仅关键短语|
 | 马拉地语 | `mr-IN`|-|-|-|-|
 | 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
-| 西班牙语（墨西哥）|`es-MX` |-|-|✔|✔|
+| 西班牙语（墨西哥）|`es-MX` |-|✔|✔|✔|
 | 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 泰米尔语 | `ta-IN`|-|-|-|-|
 | 泰卢固语 | `te-IN`|-|-|-|-|

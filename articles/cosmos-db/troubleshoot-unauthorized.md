@@ -9,10 +9,10 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: aa9bf1fd706ccf6064893f1141be5e5b2f185ff3
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94411161"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>诊断和排查 Azure Cosmos DB 未经授权异常
@@ -51,7 +51,7 @@ HTTP 401：HTTP 请求中的 MAC 签名与计算出的签名不同。
 创建容器时出现争用状况。 在容器创建完成之前，某个应用程序实例正在尝试访问容器。 出现此争用条件的最常见情况是，应用程序正在运行就删除了容器，并重新创建了同名的容器。 SDK 尝试使用新容器，但由于容器创建仍在进行，因此无法获得密钥。
 
 ## <a name="next-steps"></a>后续步骤
-* [诊断和排查](troubleshoot-dot-net-sdk.md)使用 Azure Cosmos DB .NET SDK 时遇到的问题。
+* [诊断和排查](troubleshoot-dot-net-sdk.md)在使用 Azure Cosmos DB .NET SDK 时遇到的问题。
 * 了解 [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.NET v2](performance-tips.md) 的性能准则。
-* [诊断并解决](troubleshoot-java-sdk-v4-sql.md) 使用 Azure Cosmos DB JAVA v4 SDK 时遇到的问题。
-* 了解 [Java V4 SDK](performance-tips-java-sdk-v4-sql.md)的性能准则。
+* [诊断和排查](troubleshoot-java-sdk-v4-sql.md)使用 Azure Cosmos DB Java v4 SDK 时遇到的问题。
+* 了解 [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) 的性能准则。

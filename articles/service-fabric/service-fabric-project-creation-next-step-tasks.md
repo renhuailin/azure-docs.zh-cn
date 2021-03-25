@@ -5,20 +5,20 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97760429"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
-已创建 Azure Service Fabric 应用程序。 本文包含多个资源、你可能感兴趣的一些信息以及可能的 [后续步骤](#next-steps)。
+已创建 Azure Service Fabric 应用程序。 本文包含许多资源、你可能感兴趣的更多信息以及可能的[后续步骤](#next-steps)。
 
-新用户可能会发现 [教程、演练和示例](#get-started-with-tutorials-walk-throughs-and-samples) 有帮助。 它还可用于检查 [所创建的应用程序项目的结构](#the-application-project)。 还包括 Service Fabric 的 [编程模型](#learn-more-about-the-programming-models)、 [服务通信](#learn-about-service-communication)、 [应用程序安全性](#learn-about-configuring-application-security)和 [应用程序生命周期](#learn-about-the-application-lifecycle)的说明。
+新用户可能会发现[教程、演练和示例](#get-started-with-tutorials-walk-throughs-and-samples)有所帮助。 检查[所创建应用程序项目的结构](#the-application-project)也很有用。 还包括 Service Fabric [编程模型](#learn-more-about-the-programming-models)、[服务通信](#learn-about-service-communication)、[应用程序安全](#learn-about-configuring-application-security)和[应用程序生命周期](#learn-about-the-application-lifecycle)的说明。
 
-更有经验的用户可能会发现 Service Fabric [最佳实践](#learn-about-best-practices) 部分，以了解如何利用最大效力的平台和结构应用程序。
+较有经验的用户可能会发现 Service Fabric [最佳做法](#learn-about-best-practices)部分对了解如何以最大效率利用平台和构造应用程序非常有用。
 
-对于有疑问或反馈的用户或希望报告问题的人员，请参阅相应的 [部分](#have-questions-or-feedback--need-to-report-an-issue)。
+如有疑问或反馈，或想要报告问题，请参阅[相应部分](#have-questions-or-feedback--need-to-report-an-issue)。
 
 ## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>快速入门教程、演练和示例
 准备好开始了吗？  
@@ -59,8 +59,8 @@ Service Fabric 应用程序由不同的服务组成，其中每个服务执行�
 与其他平台一样，Service Fabric 应用程序通常将经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 [本文](service-fabric-application-lifecycle.md)提供了有关 API 的概述，并且介绍了在 Service Fabric 应用程序生命周期的各个阶段，它们如何被不同角色所使用。
 
 ## <a name="learn-about-best-practices"></a>了解最佳做法
-Service Fabric 提供了许多介绍 [最佳实践](./service-fabric-best-practices-overview.md)的文章。 利用此信息来帮助确保群集和应用程序的运行。
-涉及的主题包括：
+Service Fabric 有许多介绍[最佳做法](./service-fabric-best-practices-overview.md)的文章。 利用此信息来帮助确保群集和应用程序尽可能正常地运行。
+涵盖的主题包括：
 * [安全性](./service-fabric-best-practices-security.md)
 * [网络](./service-fabric-best-practices-networking.md)
 * [计算规划和缩放](./service-fabric-best-practices-capacity-scaling.md)
@@ -68,12 +68,12 @@ Service Fabric 提供了许多介绍 [最佳实践](./service-fabric-best-practi
 * [监视和诊断](./service-fabric-best-practices-monitoring.md)
 * [应用程序设计](./service-fabric-best-practices-applications.md)
 
-还包括一个 [生产就绪清单](./service-fabric-production-readiness-checklist.md) ，该清单以一种易于使用的格式集成所有最佳做法信息。
+还包括一个[生产就绪情况清单](./service-fabric-production-readiness-checklist.md)，其中以一种易于使用的格式集成了所有最佳做法信息。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>有问题或反馈？  需要报告问题？
 请浏览[常见问题](service-fabric-common-questions.md)，了解有关 Service Fabric 的功能及用法方面的解答。
 
-[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides) 有助于诊断和解决 Service Fabric 群集中的常见问题。
+[疑难解答指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)有助于诊断和解决 Service Fabric 群集中的常见问题。
 
 [支持选项](service-fabric-support.md)列出了 StackOverflow 和 MSDN 的相关论坛和选项，可通过论坛提问并通过选项报告问题、获得支持和提交产品反馈。
 

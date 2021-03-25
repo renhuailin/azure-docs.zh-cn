@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420914"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>操作说明：配置警报并使用挂钩获取通知
@@ -28,7 +28,7 @@ ms.locfileid: "93420914"
 ### <a name="email-hook"></a>电子邮件挂钩
 
 > [!Note]
-> 指标顾问资源管理员需要配置电子邮件设置，并在发送异常警报之前将 SMTP 相关信息输入指标顾问。 资源组管理员或订阅管理员需要在指标顾问资源的“访问控制”选项卡中至少分配一个“认知服务指标顾问管理员”角色。 [了解有关电子邮件设置配置的详细信息](../faq.md#how-to-set-up-email-settings-and-enable-alerting-by-email)。
+> 指标顾问资源管理员需要配置电子邮件设置，并在发送异常警报之前将 SMTP 相关信息输入指标顾问。 资源组管理员或订阅管理员需要在指标顾问资源的“访问控制”选项卡中至少分配一个“认知服务指标顾问管理员”角色。 [详细了解电子邮件设置配置](../faq.md#how-to-set-up-email-settings-and-enable-alerting-by-email)。
 
 若要创建电子邮件挂钩，可使用以下参数： 
 

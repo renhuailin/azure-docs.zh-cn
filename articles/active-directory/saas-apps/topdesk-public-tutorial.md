@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 TOPdesk - Public 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 TOPdesk - Public 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 与 TOPdesk - Public 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
@@ -61,7 +61,7 @@ ms.locfileid: "92520432"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **TOPdesk - Public** ，在结果面板中选择“TOPdesk - Public”，单击“添加”按钮添加该应用程序   。
+4. 在搜索框中键入 **TOPdesk - Public**，在结果面板中选择“TOPdesk - Public”，单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 TOPdesk - Public](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92520432"
 
 若要配置 TOPdesk - Public 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **TOPdesk - Public** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **TOPdesk - Public** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,10 +97,10 @@ ms.locfileid: "92520432"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4.  在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
+4.  在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     >[!NOTE]
-    >从本教程下文中将介绍的“配置 TOPdesk - Public 单一登录”  部分中获取 **服务提供商元数据文件** 。
+    >从本教程下文中将介绍的“配置 TOPdesk - Public 单一登录”部分中获取 **服务提供商元数据文件**。
 
     a. 单击“上传元数据文件”  。
     
@@ -116,18 +116,18 @@ ms.locfileid: "92520432"
 
     d. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net`。
 
-    e. 在“标识符 URL”  文本框中，填写可从 TOPdesk 配置中检索的 TOPdesk 元数据 URL。 它应使用以下模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    e. 在“标识符 URL”文本框中，填写可从 TOPdesk 配置中检索的 TOPdesk 元数据 URL。 它应使用以下模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
     f. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<companyname>.topdesk.net/tas/public/login/verify`
     
     > [!NOTE] 
-    > 如果“标识符”  和“回复 URL”  值未自动填充，则需要手动输入它们。 对于标识符，请遵循上面提到的模式，你可从本教程下文中将介绍的“配置 TOPdesk - Public 单一登录”  部分获取回复 URL。 “登录 URL”  值不是真实值，因此你需要将该值更新为实际登录 URL。 请联系 [TOPdesk - Public 客户端支持团队](https://help.topdesk.com/saas/enterprise/user/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 如果“标识符”和“回复 URL”值未自动填充，则需要手动输入它们。 对于标识符，请遵循上面提到的模式，你可从本教程下文中将介绍的“配置 TOPdesk - Public 单一登录”部分获取回复 URL。 “登录 URL”值不是真实值，因此你需要将该值更新为实际登录 URL。 请联系 [TOPdesk - Public 客户端支持团队](https://help.topdesk.com/saas/enterprise/user/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 TOPdesk - Public”部分中，根据要求复制相应的 URL  。
+6. 在“设置 TOPdesk - Public”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -139,31 +139,31 @@ ms.locfileid: "92520432"
 
 ### <a name="configure-topdesk---public-single-sign-on"></a>配置 TOPdesk - Public 单一登录
 
-1. 以管理员身份登录 **TOPdesk - Public** 公司站点。
+1. 以管理员身份登录到你的 **TOPdesk（公共版）** 公司站点。
 
-2. 在“TOPdesk”菜单中，单击“设置”   。
+2. 在 **“TOPdesk”** 菜单中，单击 **“设置”**。
    
     ![设置](./media/topdesk-public-tutorial/ic790598.png "设置")
 
-3. 单击“登录设置”  。
+3. 单击 **“登录设置”**。
    
     ![登录设置](./media/topdesk-public-tutorial/ic790599.png "登录设置")
 
-4. 展开“登录设置”  菜单，并单击“常规”  。
+4. 展开 **“登录设置”** 菜单，然后单击 **“常规”**。
    
     ![常规](./media/topdesk-public-tutorial/ic790600.png "常规")
 
-5. 在“SAML 登录”配置部分的“公共”部分中，执行以下步骤   ：
+5. 在 **“SAML 登录”** 配置部分的 **“公共”** 部分中，执行以下步骤：
    
     ![技术设置](./media/topdesk-public-tutorial/ic790601.png "技术设置")
    
-    a. 单击“下载”  下载公共元数据文件，并将该文件保存到本地计算机上。
+    a. 单击 **“下载”** 以下载公共元数据文件，然后将其本地保存到计算机上。
    
     b. 打开下载的元数据文件，找到 **AssertionConsumerService** 节点。
 
     ![AssertionConsumerService](./media/topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. 复制 **AssertionConsumerService** 值，并将此值粘贴到“基本 SAML 配置”部分中的“回复 URL”文本框内。        
+    c. 复制 **AssertionConsumerService** 值，并将此值粘贴到“基本 SAML 配置”部分中的“回复 URL”文本框内。      
    
 6. 若要创建证书文件，请执行以下步骤：
     
@@ -171,31 +171,31 @@ ms.locfileid: "92520432"
     
     a. 在 Azure 门户中打开下载的元数据文件。
     
-    b. 展开其 **xsi:type** 为 **fed:ApplicationServiceType** 的 **RoleDescriptor** 节点。
+    b. 展开 **xsi:type** 为 **fed:ApplicationServiceType** 的 **RoleDescriptor** 节点。
     
     c. 复制 **X509Certificate** 节点的值。
     
-    d. 将复制的 **X509Certificate** 值保存到本地计算机上的文件中。
+    d. 将复制的 **X509Certificate** 值本地保存到计算机文件中。
 
-7. 在“公共”  部分中，单击“添加”  。
+7. 在 **“公共”** 部分中，单击 **“添加”**。
     
     ![SAML 登录](./media/topdesk-public-tutorial/ic790625.png "SAML 登录")
 
-8. 在“SAML 配置助手”  对话框页上，执行以下步骤：
+8. 在 **“SAML 配置助手”** 对话框页上，执行以下步骤：
     
     ![SAML 配置助手](./media/topdesk-public-tutorial/ic790608.png "SAML 配置助手")
     
-    a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。  
+    a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
-    b. 若要上载证书文件，请在“证书(RSA)”  下，单击“浏览”  。
+    b. 若要上载你的证书文件，请在 **“证书 (RSA)”** 下单击 **“浏览”**。
 
-    c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在“徽标图标”  下，单击“浏览”  。
+    c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在 **“徽标图标”** 下单击 **“浏览”**。
 
-    d. 在“用户名属性”  文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    d. 在“用户名属性”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
-    e. 在“显示名称”  文本框中，键入配置名称。
+    e. 在 **“显示名”** 文本框中，键入你的配置名称。
 
-    f. 单击“ **保存** ”。
+    f. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -205,7 +205,7 @@ ms.locfileid: "92520432"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -215,21 +215,21 @@ ms.locfileid: "92520432"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，通过授予 Britta Simon 访问 TOPdesk - Public 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”  、“所有应用程序”  和“TOPdesk - Public”  。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“TOPdesk - Public”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TOPdesk - Public”。 
+2. 在应用程序列表中，选择“TOPdesk - Public”。
 
     ![应用程序列表中的 TOPdesk - Public 链接](common/all-applications.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "92520432"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -255,7 +255,7 @@ ms.locfileid: "92520432"
 
 1. 以管理员身份登录 **TOPdesk - Public** 公司站点。
 
-2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“人员”  。
+2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“人员”。
    
     ![Person](./media/topdesk-public-tutorial/ic790628.png "人员")
 
@@ -265,11 +265,11 @@ ms.locfileid: "92520432"
    
     a. 单击“常规”选项卡。
 
-    b. 在“姓氏”文本框中，键入用户的姓氏（如 Simon） 
+    b. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）
  
-    c. 为该帐户选择 **站点** 。
+    c. 为帐户选择 **“站点”**。
  
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 > [!NOTE]
 > 可以使用任何其他 TOPdesk - Public 用户帐户创建工具或 TOPdesk - Public 提供的 API 来预配 Azure AD 用户帐户。

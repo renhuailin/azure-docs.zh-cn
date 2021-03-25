@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377952"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
@@ -71,7 +71,7 @@ ms.locfileid: "100377952"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 登录到 [Azure 门户](https://portal.azure.com/)。    
-2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。   
+2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。    
    
    ![新建 -> DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. 在“新建数据工厂”页中，输入 **ADFTutorialHiveFactory** 作为 **名称**。 
@@ -84,7 +84,7 @@ ms.locfileid: "100377952"
 3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于 **资源组**，请执行以下步骤之一：
      
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。   
          
      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
@@ -165,7 +165,7 @@ ms.locfileid: "100377952"
     2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 
     3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
     4. 若要测试与存储帐户的连接，请单击“测试连接”。
-    5. 单击“ **保存**”。
+    5. 单击“保存”  。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 

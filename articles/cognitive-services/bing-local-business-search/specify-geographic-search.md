@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 2e72abd777ac4834385fd916b730d438b8540203
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96490255"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>使用地理边界筛选必应本地业务搜索 API 的结果
@@ -55,7 +55,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [本地业务搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
-- [本地业务搜索 c # 快速入门](quickstarts/local-quickstart.md)
-- [本地业务搜索节点快速入门](quickstarts/local-search-node-quickstart.md)
+- [当地企业搜索 Java 快速入门](quickstarts/local-search-java-quickstart.md)
+- [当地企业搜索 C# 快速入门](quickstarts/local-quickstart.md)
+- [当地企业搜索 Node 快速入门](quickstarts/local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](quickstarts/local-search-python-quickstart.md)

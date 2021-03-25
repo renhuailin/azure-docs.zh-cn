@@ -4,10 +4,10 @@ description: 了解如何将 Azure Service Fabric 群集证书从基于指纹的
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97900781"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>将群集证书从基于指纹的声明转换为公用名
@@ -67,7 +67,7 @@ Service Fabric 支持以两种方式通过 CN 声明证书：
 - `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `GoalCert` 具有比 `OldCert1` 的日期更晚的 `NotBefore` 日期
 
 > [!NOTE]
-> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择最早过期证书 (最远的 "NotAfter" 属性) 的证书，因此 7.2 CU4 之前的开始状态要求 GoalCert 的 `NotAfter` 日期晚于 `OldCert1`
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 选择了最后面的即将到期的证书（具有最远的“NotAfter”属性的证书），因此上述 7.2 CU4 之前的起始状态要求 GoalCert 的 `NotAfter` 日期晚于 `OldCert1`
 
 如果你的群集未处于前面所述的有效状态之一，请参阅本文末尾部分关于如何实现该状态的内容。
 
@@ -227,7 +227,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | 删除 `OldCert1` 或 `OldCert2` 以达到状态 `Thumbprint: OldCertx, ThumbprintSecondary: None` | 从新的起始状态继续 |
 
 > [!NOTE]
-> 对于版本7.2.445 之前版本的群集 (7.2 CU4) ，请 `NotBefore` `NotAfter` 在上述状态中将替换为。
+> 对于 7.2.445 (7.2 CU4) 之前版本上的群集，在上述状态下，将 `NotBefore` 替换为 `NotAfter`。
 
 有关如何执行这些升级中的任一升级的说明，请参阅[管理 Azure Service Fabric 群集中的证书](service-fabric-cluster-security-update-certs-azure.md)。
 

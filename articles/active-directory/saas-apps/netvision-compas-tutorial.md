@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netvision Compas 的集成
@@ -51,7 +51,7 @@ ms.locfileid: "92519395"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Netvision Compas** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **Netvision Compas**。 
 1. 在结果面板中选择“Netvision Compas”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -74,19 +74,19 @@ ms.locfileid: "92519395"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“Netvision Compas”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<TENANT>.compas.cloud/Identity/Saml20`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Netvision Compas 客户端支持团队](mailto:contact@net.vision)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -101,13 +101,13 @@ ms.locfileid: "92519395"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -119,12 +119,12 @@ ms.locfileid: "92519395"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-netvision-compas-sso"></a>配置 Netvision Compas SSO
@@ -146,7 +146,7 @@ ms.locfileid: "92519395"
 1. 为“显示名称”和“说明”字段输入有意义的值。  
 1. 将 Netvision Compas 用户分配到 IDP，方法是：在“可用用户”列表中选择用户，然后选择“添加所选项”按钮。    还可以遵循以下预配过程将用户分配到 IDP。
 1. 对于“元数据”SAML 选项，请单击“选择文件”按钮，然后选择以前保存在计算机上的元数据文件。  
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
     ![编辑 IDP](media/netvision-compas-tutorial/idp-edit.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ed46a7bb7fd8600bf35d102259be257adfacb3f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>教程：Azure Active Directory 与 Korn Ferry ALP 的集成
@@ -61,7 +61,7 @@ ms.locfileid: "92458891"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Korn Ferry ALP** ，在结果面板中选择“Korn Ferry ALP”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Korn Ferry ALP**，在结果面板中选择“Korn Ferry ALP”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Korn Ferry ALP”](common/search-new-app.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "92458891"
     https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
     ```
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     
     ```http
     https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
@@ -136,7 +136,7 @@ ms.locfileid: "92458891"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -146,12 +146,12 @@ ms.locfileid: "92458891"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -169,7 +169,7 @@ ms.locfileid: "92458891"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
