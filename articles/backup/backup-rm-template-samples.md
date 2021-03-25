@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96309573"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板

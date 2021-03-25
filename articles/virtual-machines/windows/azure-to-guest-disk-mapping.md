@@ -2,18 +2,19 @@
 title: 如何将 Azure 磁盘映射到 Windows VM 来宾磁盘
 description: 如何确定构成 Windows VM 来宾磁盘基础的 Azure 磁盘。
 author: timbasham
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 7a4fad066af37217eb42060d5fc5a7ef716770c6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881866"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560984"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>如何将 Azure 磁盘映射到 Windows VM 来宾磁盘
 
@@ -35,7 +36,7 @@ ms.locfileid: "98881866"
 
 如果使用的不是存储池，则可以使用[磁盘管理](/windows-server/storage/disk-management/overview-of-disk-management)查找 LUN。
 
-1. 连接到 VM，打开 "磁盘管理"。 右键单击 "开始" 按钮，然后选择 "磁盘管理"。 还可以在“开始搜索”框中键入 `diskmgmt.msc`
+1. 连接到 VM 并打开“磁盘管理”。 右键单击“开始”按钮并选择“磁盘管理”。 还可以在“开始搜索”框中键入 `diskmgmt.msc`
 1. 在下面的窗格中，右键单击任一磁盘，然后选择“属性”
 1. LUN 列在“常规”选项卡上的“位置”属性中
 

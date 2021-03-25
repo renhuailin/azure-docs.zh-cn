@@ -4,10 +4,10 @@ description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87461232"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
@@ -28,7 +28,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
    从版本 2018-05-01-preview 开始，事件网格支持手动验证握手。 如果你在创建事件订阅时使用的 SDK 或工具使用了 API 版本 2018-05-01-preview 或更高版本，则事件网格将在订阅验证事件的数据部分中发送 `validationUrl` 属性。 若要完成握手，请在事件数据中找到该 URL 并向其发送一个 GET 请求。 你可以使用 REST 客户端或 Web 浏览器。
 
-   所提供的 URL 的有效期为 5 分钟****。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 5 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
+   所提供的 URL 的有效期为 5 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 5 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
 
    此身份验证机制还要求 Webhook 终结点返回 HTTP 状态代码 200，这样它就知道验证事件的 POST 已被接受，然后它就可以进入手动验证模式。 换句话说，如果终结点返回 200，但没有同步返回验证响应，则模式将转换为手动验证模式。 如果在 5 分钟内在验证 URL 上出现 GET，则可以认为验证握手成功。
 

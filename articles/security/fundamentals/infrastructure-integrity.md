@@ -1,6 +1,6 @@
 ---
 title: Azure 基础结构完整性
-description: 了解 Azure 基础结构完整性以及 Microsoft 用于保护它的步骤，如软件组件生成的病毒扫描。
+description: 了解有关 Azure 基础结构完整性以及 Microsoft 对其进行保护所采取的步骤，例如对软件组件内部版本的病毒扫描。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: b0df14dfcf66f53e01989a27a95afa5e19fcb2fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87543633"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure 基础结构完整性

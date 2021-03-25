@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87495937"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
@@ -65,7 +65,7 @@ ms.locfileid: "87495937"
 
 ![此图显示了故障转移前的子网。](./media/hyper-v-vmm-networking/network-design2.png)
 
-故障转移后 
+**故障转移之后**
 
 ![此图显示了故障转移后的子网。](./media/hyper-v-vmm-networking/network-design3.png)
 
@@ -120,7 +120,7 @@ $ip.address
 
 ![此图显示了故障转移前不同的 IP 地址。](./media/hyper-v-vmm-networking/network-design10.png)
 
-故障转移后 
+**故障转移之后**
 
 ![显示故障转移后不同 IP 地址的图。](./media/hyper-v-vmm-networking/network-design11.png)
 

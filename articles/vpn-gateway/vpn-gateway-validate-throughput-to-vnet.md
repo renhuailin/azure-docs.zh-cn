@@ -1,5 +1,5 @@
 ---
-title: 验证 Microsoft Azure 虚拟网络的 VPN 吞吐量
+title: 验证到达 Microsoft Azure 虚拟网络的 VPN 吞吐量
 description: 本文可帮助你验证从本地资源到 Azure 虚拟机的网络吞吐量。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -11,10 +11,10 @@ ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: 2d5b51e8cfbfcb5f771e9da524231f8ddfc40a9e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660927"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
@@ -265,4 +265,4 @@ Make install 速度较快
 
 有关详细信息或帮助，请查看以下链接：
 
-* [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

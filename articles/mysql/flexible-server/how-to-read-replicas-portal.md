@@ -1,31 +1,31 @@
 ---
-title: 管理读取副本-Azure 门户 Azure Database for MySQL-灵活服务器
-description: 了解如何使用 Azure 门户在 Azure Database for MySQL 灵活的服务器中设置和管理读取副本。
+title: 管理只读副本 - Azure 门户 - Azure Database for MySQL 灵活服务器
+description: 了解如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中设置和管理只读副本。
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.openlocfilehash: d33734dc7404e49aed94dffae8644b2bc4386925
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492822"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 灵活的服务器中创建和管理读取副本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理只读副本
 
 > [!IMPORTANT]
-> 读取 Azure Database for MySQL-灵活服务器中的副本处于预览阶段。
+> Azure Database for MySQL 灵活服务器中的只读副本现处于预览状态。
 
-在本文中，你将学习如何使用 Azure 门户在 Azure Database for MySQL 灵活的服务器上创建和管理读取副本。
+本文介绍如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理只读副本。
 
 > [!Note]
-> 启用了高可用性的服务器上不支持副本。 
+> 启用高可用性的服务器不支持副本。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 将用作源服务器的 [Azure Database for MySQL 服务器灵活服务器](quickstart-create-server-portal.md) 。
+- 将用作源服务器的 [Azure Database for MySQL 服务器灵活服务器](quickstart-create-server-portal.md)。
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 
@@ -51,7 +51,7 @@ ms.locfileid: "96492822"
 6. 选择“确定”以确认创建该副本。
 
 > [!NOTE]
-> 将用与源相同的服务器配置创建读取副本。 副本服务器配置在创建后可以更改。 副本服务器始终在与源服务器相同的资源组、相同的位置和订阅中创建。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建议副本服务器的配置应保留为等于或大于源的值，以确保副本能够与源保持同步。
+> 只读副本是使用与源服务器相同的服务器配置创建的。 副本服务器配置在创建后可以更改。 始终会在与源服务器相同的资源组、位置和订阅中创建副本服务器。 如果要将副本服务器创建到不同的资源组或不同的订阅，可以在创建后[移动副本服务器](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建议副本服务器的配置应始终采用与源服务器相同或更大的值，以确保副本能够与源服务器保持一致。
 
 一旦创建副本服务器，可以从“复制”边栏选项卡中进行查看。
 
@@ -64,7 +64,7 @@ ms.locfileid: "96492822"
 
 若要从 Azure 门户停止源服务器和副本服务器之间的复制，请使用以下步骤：
 
-1. 在 Azure 门户中，选择你的源 Azure Database for MySQL 灵活的服务器。 
+1. 在 Azure 门户中，选择源 Azure Database for MySQL 灵活服务器。 
 
 2. 从菜单中的“设置”下，选择“复制”。
 
@@ -84,7 +84,7 @@ ms.locfileid: "96492822"
 
 若要从 Azure 门户删除只读副本服务器，请使用以下步骤：
 
-1. 在 Azure 门户中，选择你的源 Azure Database for MySQL 灵活的服务器。
+1. 在 Azure 门户中，选择源 Azure Database for MySQL 灵活服务器。
 
 2. 从菜单中的“设置”下，选择“复制”。
 
@@ -107,19 +107,19 @@ ms.locfileid: "96492822"
 
 若要从 Azure 门户删除源服务器，请使用以下步骤：
 
-1. 在 Azure 门户中，选择你的源 Azure Database for MySQL 灵活的服务器。
+1. 在 Azure 门户中，选择源 Azure Database for MySQL 灵活服务器。
 
 2. 从“概览”中，选择“删除”。
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL-删除源":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
+   [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL - 删除源":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
 
 3. 键入源服务器的名称，然后单击“删除”以确认删除源服务器。  
 
-   :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL-删除源确认":::
+   :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL - 删除源确认":::
 
 ## <a name="monitor-replication"></a>监视复制
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for MySQL 灵活服务器的副本。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的副本 Azure Database for MySQL 灵活服务器。
 
 2. 在边栏的“监视”部分，选择“指标”：
 

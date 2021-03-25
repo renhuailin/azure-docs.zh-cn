@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357243"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -26,7 +26,7 @@ ms.locfileid: "94357243"
 
 ### <a name="symptom-1"></a>症状 1
 
-在日志中，可以看到设备的模式与 **401003 IoTHubUnauthorized** 断开连接，后跟 **404104 DeviceConnectionClosedRemotely** ，然后很快就会成功连接。
+在日志中，你会看到这样一种情况：设备断开连接并出现“401003 IoTHubUnauthorized”，接着出现“404104 DeviceConnectionClosedRemotely”，然后在不久之后成功连接 。
 
 ### <a name="symptom-2"></a>症状 2
 
@@ -60,21 +60,21 @@ IoT 中心无法对 auth 标头、规则或密钥进行身份验证。 这可能
 
 如果使用 IoT SDK 通过设备连接字符串进行连接，则不需要执行任何操作。 IoT SDK 会重新生成新令牌，以在 SAS 令牌过期时重新连接。
 
-默认令牌生存期为跨 Sdk 60 分钟;但对于某些 Sdk，令牌生命周期和令牌续订阈值是可配置的。 此外，每个 SDK 的设备断开连接和重新连接时生成的错误都不同。 若要了解详细信息，以及有关如何确定设备在日志中使用的 SDK 的信息，请参阅 [MQTT device disconnect With Azure IoT sdk](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks)。
+SDK 的默认令牌有效期为 60 分钟；但是，对于某些 SDK，令牌有效期和令牌续订阈值是可配置的。 此外，设备在令牌续订时断开连接并重新连接时生成的错误对于每个 SDK 都是不同的。 若要了解更多信息，并了解如何确定设备在日志中使用哪个 SDK，请参阅 [Azure IoT SDK 的 MQTT 设备断开连接行为](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks)。
 
-对于设备开发人员，如果错误量是一个问题，请切换到 C SDK，它会在过期之前续订 SAS 令牌。 对于 AMQP，SAS 令牌可以在不断开连接的情况下进行刷新。
+对于设备开发人员，如果担心错误数量太多，请切换到 C SDK，这会在 SAS 令牌过期之前续订它。 对于 AMQP，SAS 令牌可以在不断开连接的情况下进行刷新。
 
 ### <a name="solution-2"></a>解决方案 2
 
 通常情况下，出现的错误消息应说明如何修复此错误。 如果由于某种原因无法访问错误消息详细信息，请确保：
 
 - 所用的 SAS 或其他安全令牌未过期。
-- 对于 x.509 证书身份验证，设备证书或与设备关联的 CA 证书未过期。 若要了解如何向 IoT 中心注册 x.509 CA 证书，请参阅 [在 Azure IoT 中心设置 x.509 安全性](iot-hub-security-x509-get-started.md)。
-- 对于 x.509 证书指纹身份验证，设备证书的指纹将注册到 IoT 中心。
-- 授权凭据的格式正确，适用于所使用的协议。 若要了解详细信息，请参阅 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)。
+- 对于 X.509 证书身份验证，设备证书或与设备关联的 CA 证书未过期。 若要了解如何将 X.509 CA 证书注册到 IoT 中心，请参阅[在 Azure IoT 中心设置 X.509 安全性](iot-hub-security-x509-get-started.md)。
+- 对于 X.509 证书指纹身份验证，需要向 IoT 中心注册设备证书的指纹。
+- 授权凭据的格式正确，适用于所使用的协议。 若要了解详细信息，请参阅[控制 IoT 中心的访问权限](iot-hub-devguide-security.md)。
 - 使用的授权规则对所请求的操作具有权限。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 为了更轻松地向 IoT 中心进行身份验证，我们建议使用 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
-- 有关 IoT 中心身份验证的详细信息，请参阅 [控制对 Iot 中心的访问](iot-hub-devguide-security.md)。
+- 有关 IoT 中心身份验证的详细信息，请参阅[控制 IoT 中心的访问权限](iot-hub-devguide-security.md)。

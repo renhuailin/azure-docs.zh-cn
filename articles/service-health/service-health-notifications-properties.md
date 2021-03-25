@@ -4,10 +4,10 @@ description: 借助服务运行状况通知，可以查看由 Microsoft Azure �
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86529006"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>使用 Azure 门户查看服务运行状况通知

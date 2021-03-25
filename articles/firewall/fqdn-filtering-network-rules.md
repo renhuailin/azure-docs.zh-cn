@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: victorh
 ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94695939"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>在网络规则中使用 FQDN 筛选
@@ -25,7 +25,7 @@ ms.locfileid: "94695939"
 
 定义你的组织需要的 DNS 服务器（Azure DNS 或你自己的自定义 DNS）后，Azure 防火墙将基于所选 DNS 服务器将 FQDN 转换为 IP 地址。 将针对应用程序和网络规则处理进行此转换。
 
-发生新的 DNS 解析时，会将新的 IP 地址添加到防火墙规则。 DNS 服务器不再返回的旧 IP 地址将在15分钟后过期。 Azure 防火墙规则每15秒更新一次，从 DNS 解析网络规则中的 Fqdn。
+进行新 DNS 解析时，会将新的 IP 地址添加到防火墙规则。 DNS 服务器不再返回的旧 IP 地址会在 15 分钟后过期。 对网络规则中的 FQDN 进行 DNS 解析时，Azure 防火墙规则每隔 15 秒更新一次。
 
 ### <a name="differences-in-application-rules-vs-network-rules"></a>应用程序规则与网络规则的差异
 

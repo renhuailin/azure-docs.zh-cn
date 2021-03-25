@@ -8,10 +8,10 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87474319"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
@@ -35,7 +35,7 @@ ms.locfileid: "87474319"
 
 在主机名中使用通配符，你可以在单个侦听器中匹配多个主机名。 例如，`*.contoso.com` 可以与 `ecom.contoso.com`、`b2b.contoso.com` 和 `customer1.b2b.contoso.com` 等匹配。 使用主机名数组，你可以为侦听器配置多个主机名，以将请求路由到后端池。 例如，侦听器可以包含接受两个主机名的请求的 `contoso.com, fabrikam.com`。
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="多站点应用程序网关":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="通配符侦听器":::
 
 >[!NOTE]
 > 此功能处于预览状态，仅适用于应用程序网关 Standard_v2 和 WAF_v2 SKU。 若要了解关于预览的详细信息，请参阅[此处的使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94694987"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>仅出站的负载均衡器配置
@@ -74,7 +74,7 @@ ms.locfileid: "94694987"
     | 资源组   | 选择“新建”。 </br> 输入“myResourceGroupLB”。 </br> 选择“确定”。 |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
-    | 区域           | 选择 **美国东部 2** |
+    | 区域           | 选择“美国东部 2” |
 
 3. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 
@@ -116,14 +116,14 @@ ms.locfileid: "94694987"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
     | 资源组 | 选择“myResourceGroupLB” |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入“myVM” |
-    | 区域 | 选择 **美国东部 2** |
+    | 区域 | 选择“美国东部 2” |
     | 可用性选项 | 选择“无需基础结构冗余” |
     | 映像 | 选择“Windows Server 2019 Datacenter” |
     | Azure Spot 实例 | 请选择“否” |
@@ -140,7 +140,7 @@ ms.locfileid: "94694987"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-----|------------|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -153,7 +153,7 @@ ms.locfileid: "94694987"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **Monitoring** |  |
     | 启动诊断 | 选择“关闭” |
@@ -177,7 +177,7 @@ ms.locfileid: "94694987"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 myResourceGroupLB。|
@@ -199,7 +199,7 @@ ms.locfileid: "94694987"
 
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中输入 myResourceGroupLB 。|
@@ -207,7 +207,7 @@ ms.locfileid: "94694987"
     | 区域         | 选择“美国东部 2”。                                        |
     | 类型          | 选择“公共”。                                        |
     | SKU           | 选择“标准” |
-    | 公共 IP 地址 | 选择“新建”。  |
+    | 公共 IP 地址 | 选择“新建”。 |
     | 公共 IP 地址名称 | 在文本框中输入“myFrontendIP”。|
     | 可用性区域 | 选择“区域冗余” |
     | 添加一个公共 IPv6 地址 | 请选择“否”。 |
@@ -316,4 +316,4 @@ ms.locfileid: "94694987"
 - 了解 [Azure 负载均衡器](load-balancer-overview.md)。
 - 了解 [Azure 中的出站连接](load-balancer-outbound-connections.md)。
 - 负载均衡器[常见问题解答](load-balancer-faqs.md)。
-- 了解 [Azure 堡垒](../bastion/bastion-overview.md)
+- 了解 [Azure Bastion](../bastion/bastion-overview.md)

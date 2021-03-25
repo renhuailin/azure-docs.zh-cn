@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/05/2020
 ms.openlocfilehash: b7adb6bf13cba5f886b442515e8ba5661cfeb8ef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96490918"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>映射数据流中的排名转换 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-根据用户指定的排序条件，使用排名转换生成排序排名。 
+根据用户指定的排序条件，使用排名转换生成已排序的排名。 
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4GGJo]
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ![排名设置](media/data-flow/rank-configuration.png "排名设置")
 
-不 **区分大小写：** 如果排序列的类型为 string，则会将 case 分解为排名。 
+不区分大小写：如果排序列的类型为 string，则大小写会影响排名结果。 
 
-**密集：** 如果启用，则排名列将为密集排名。 每个排名计数都是连续数字，并且在绑定后不会跳过排名值。
+密集：如果启用，则排名列将会是密集排名的排名列。 每个排名计数都将是连续数字，并且在出现不相上下的结果后不会跳过排名值。
 
-**排名列：** 生成的排名列的名称。 此列的类型为 long。
+排名列：生成的排名列的名称。 此列的类型为 long。
 
-**排序条件：** 选择要排序的列以及排序发生的顺序。 顺序决定排序优先级。
+排序条件：选择要作为排序依据的列以及排序顺序。 该顺序决定排序优先级。
 
-上述配置将使用传入的篮球数据，并创建一个名为 "pointsRanking" 的排名列。 具有列 *pt* 最大值的行的 *pointsRanking* 值为1。
+上述配置将使用传入的篮球数据，并创建一个名为“pointsRanking”的排名列。 PTS 列值最高的行的 pointsRanking 值将为 1。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -57,7 +57,7 @@ ms.locfileid: "96490918"
 
 ![排名设置](media/data-flow/rank-configuration.png "排名设置")
 
-以下代码片段中提供了上述排名配置的数据流脚本。
+以上排名配置的数据流脚本在下面的代码片段中。
 
 ```
 PruneColumns
@@ -71,4 +71,4 @@ PruneColumns
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 [筛选器转换](data-flow-filter.md)基于排名值筛选行。
+使用[筛选器转换](data-flow-filter.md)根据排名值筛选行。

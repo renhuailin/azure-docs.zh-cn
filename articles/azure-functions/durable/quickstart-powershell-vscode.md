@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317253"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>在 PowerShell 中创建你的第一个持久函数
@@ -132,7 +132,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数应用时，系统会提示你安装这些工具。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/run.ps1) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (Hello/run.ps1) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
@@ -213,7 +213,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
         > [!NOTE]
         > Azure Functions VS Code 扩展可能尚不支持 PowerShell 7。 如果无法使用 PowerShell 7，请暂时选择 PowerShell 6.x，然后在创建函数应用后[手动更新版本](#update-function-app-ps7)。
 
-    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。 
+    + **选择新资源的位置**：为了获得更好的性能，请选择你附近的 [区域](https://azure.microsoft.com/regions/)。 
     
 1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
     

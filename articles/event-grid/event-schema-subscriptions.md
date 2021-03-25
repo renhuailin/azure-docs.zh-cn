@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格的订阅事件提供的属性
 ms.topic: reference
 ms.date: 02/12/2021
 ms.openlocfilehash: b9753ecfb46f5ac5f383f19e3d409e703c144d48
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363179"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>充当事件网格源的 Azure 订阅
@@ -442,13 +442,13 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | 订阅事件数据。 |
-| `specversion` | string | CloudEvents 架构规范版本。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `authorization` | object | 操作请求的授权。 |
 | `claims` | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |

@@ -13,10 +13,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 12/01/2020
 ms.openlocfilehash: 69bebcf872f55055117acf5cef410d1f89eafe34
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96446906"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>在 Azure SQL 托管实例中配置高级威胁防护
@@ -31,10 +31,10 @@ ms.locfileid: "96446906"
 ##  <a name="azure-portal"></a>Azure 门户
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
-2. 导航到要保护的 SQL 托管实例的实例配置页面。 在 " **安全性**" 下，选择 " **安全中心**"。
+2. 导航到要保护的 SQL 托管实例的实例配置页面。 在“安全性”下，选择“安全中心” 。
 3. 在 Azure Defender for SQL 配置页中
    - 启用 Azure Defender for SQL。
-   - 配置向电子邮件地址 **发送警报** ，以便在检测到异常数据库活动时接收安全警报。
+   - 配置“警报发送对象”电子邮件地址，用于在检测到异常数据库活动时接收安全警报。
    - 选择保存异常的威胁审核记录的 **Azure 存储帐户**。
    - 选择要配置的 **高级威胁防护类型**。 详细了解[高级威胁防护警报](../database/threat-detection-overview.md)。
 4. 单击“保存”，保存新的或更新后的适用于 Azure Defender for SQL 策略。

@@ -5,15 +5,15 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f51a195f9ad43c7facb7dc413a4da83fc6b202b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531388"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
 
-本教程是一个系列中的第三部分。 在本教程中，了解如何在 Service Fabric 容器应用程序中处理故障转移。 此外，了解如何缩放容器。 本教程介绍以下操作：
+本教程是一个系列中的第三部分。 在本教程中，了解如何在 Service Fabric 容器应用程序中处理故障转移。 此外，了解如何缩放容器。 在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 了解 Service Fabric 群集中的容器故障转移
@@ -30,9 +30,9 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 若要故障转移前端容器，请执行以下步骤：
 
 1. 在群集中打开 Service Fabric Explorer（例如，`http://lin4hjim3l4.westus.cloudapp.azure.com:19080`）。
-2. 在树视图中单击“fabric:/TestContainer/azurevotefront”  节点，并展开分区节点（由 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`
-3. 在树视图中展开“节点”  节点。 单击正在运行容器的节点旁边的省略号（三个点）。
-4. 选择“重启”  以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
+2. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点，并展开分区节点（由 GUID 表示）。 注意树视图中的节点名称，它显示了当前正在运行容器的节点，例如 `_nodetype_1`
+3. 在树视图中展开“节点”节点。 单击正在运行容器的节点旁边的省略号（三个点）。
+4. 选择“重启”以重启该节点，并确认重启操作。 重启会导致容器故障转移到群集中的另一个节点。
 
 ![noderestart][noderestart]
 
@@ -45,14 +45,14 @@ Service Fabric 可确保在发生故障时，将容器实例自动转移到群�
 若要缩放 Web 前端，请执行以下步骤：
 
 1. 在群集中打开 Service Fabric Explorer - 例如 `http://lin4hjim3l4.westus.cloudapp.azure.com:19080`。
-2. 在树视图中单击“fabric:/TestContainer/azurevotefront”  节点旁边的省略号（三个点），并选择“缩放服务”  。
+2. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点旁边的省略号（三个点），并选择“缩放服务”。
 
 ![sfxscale][sfxscale]
 
 现在可以选择缩放 Web 前端的实例数量。
 
-1. 将数字更改为 2  ，再单击“缩放服务”  。
-1. 在树视图中单击“fabric:/TestContainer/azurevotefront”  节点，并展开分区节点（由 GUID 表示）。
+1. 将数字更改为 2，再单击“缩放服务”。
+1. 在树视图中单击“fabric:/TestContainer/azurevotefront”节点，并展开分区节点（由 GUID 表示）。
 
 ![sfxscaledone][sfxscaledone]
 

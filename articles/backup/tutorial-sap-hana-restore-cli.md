@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0e524bfe090f0d67b76c13e876f44e83986aeb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91334797"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
@@ -26,10 +26,10 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 
 本教程假设你有一个 SAP HANA 数据库在通过 Azure 备份完成备份的 Azure VM 上运行。 如果你已按照[使用 CLI 在 Azure 中备份 SAP HANA 数据库](tutorial-sap-hana-backup-cli.md)中的说明备份 SAP HANA 数据库，则要使用以下资源：
 
-* 名为 saphanaResourceGroup 的资源组
-* 名为 saphanaVault 的保管库
-* 名为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM 的受保护容器
-* 名为 saphanadatabase;hxe;hxe 的已备份数据库/项
+* 名为 saphanaResourceGroup 的资源组 
+* 名为 saphanaVault 的保管库 
+* 名为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM 的受保护容器 
+* 名为 saphanadatabase;hxe;hxe 的已备份数据库/项 
 * westus2 区域中的资源
 
 ## <a name="view-restore-points-for-a-backed-up-database"></a>查看已备份数据库的还原点

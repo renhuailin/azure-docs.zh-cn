@@ -1,6 +1,6 @@
 ---
 title: 分析专用 SQL 池的工作负荷
-description: 用于分析 Azure Synapse Analytics 中专用 SQL 池的查询优先顺序的方法。
+description: 在 Azure Synapse Analytics 中分析专用 SQL 池的查询优先级的技巧。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96454536"
 ---
 # <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析专用 SQL 池的工作负荷
 
-用于在 Azure Synapse Analytics 中分析专用 SQL 池工作负荷的方法。 
+在 Azure Synapse Analytics 中分析专用 SQL 池工作负荷的技巧。 
 
 ## <a name="resource-classes"></a>资源类
 
-专用 SQL 池提供将系统资源分配给查询的资源类。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
+专用 SQL 池提供了资源类来将系统资源分配给查询。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关管理数据库用户和安全性的详细信息，请参阅 [保护专用 sql 池 (以前的 SQL DW) ](sql-data-warehouse-overview-manage-security.md)。 若要进一步了解如何通过更大型资源类来改进聚集列存储索引质量，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[保护专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-overview-manage-security.md)。 若要进一步了解如何通过更大型资源类来改进聚集列存储索引质量，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

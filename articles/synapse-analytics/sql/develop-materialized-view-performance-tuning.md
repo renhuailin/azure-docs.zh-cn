@@ -1,6 +1,6 @@
 ---
 title: 通过具体化视图进行性能优化
-description: 用于提高查询性能的具体化视图的建议和注意事项。
+description: 使用具体化视图提高查询性能时的建议和注意事项。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,15 +11,15 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676592"
 ---
-# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池优化使用具体化视图的性能
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池通过具体化视图进行性能优化
 
-在专用的 SQL 池中，具体化视图为复杂的分析查询提供一种低维护方法，以便在不更改任何查询的情况下获取快速性能。 本文讨论了使用具体化视图的一般指南。
+在专用 SQL 池中，具体化视图为复杂的分析查询提供了一种方便维护的方法，可以在不更改任何查询的情况下提升性能和速度。 本文讨论了使用具体化视图的一般指南。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化视图与标准视图
 
@@ -27,7 +27,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 每次使用标准视图时，该视图都会计算其数据。  磁盘上不存储任何数据。 人们通常使用标准视图作为工具，帮助组织数据库中的逻辑对象和查询。  若要使用标准视图，查询需要直接引用它。
 
-具体化视图预先计算、存储和维护其在专用 SQL 池中的数据，就像表一样。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
+像表一样，具体化视图在专用 SQL 池中预先计算、存储和维护其数据。  每次使用具体化视图时都不需要重新计算。  这就是为什么使用具体化视图中全部或部分数据的查询可以获得更快的性能。  更好的是，查询可以使用具体化视图，而无需直接引用它，因此无需更改应用程序代码。  
 
 大多数标准视图要求仍适用于具体化视图。 如需详细了解具体化视图语法和其他要求，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
 
@@ -40,19 +40,19 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 |额外存储                   | 否                                           | 是
 |语法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-materialized-views"></a>具体化视图的优点
+## <a name="benefits-of-materialized-views"></a>具体化视图的优势
 
 设计合理的具体化视图具有以下优势：
 
 - 使用 JOIN 和聚合函数减少复杂查询的执行时间。 查询越复杂，就越有可能节省执行时间。 当查询的计算成本很高而生成的数据集很小时，可以获得最大的优势。  
 
-- 专用 SQL 池中的查询优化器可以自动使用已部署的具体化视图来改善查询执行计划。  此过程对提供更快查询性能的用户是透明的，并且不需要查询直接引用具体化视图。
+- 专用 SQL 池中的查询优化器可以自动使用部署的具体化视图来改善查询执行计划。  此过程对提供更快查询性能的用户是透明的，并且不需要查询直接引用具体化视图。
 
 - 只需对视图进行少量维护。  具体化视图将数据存储在两个位置，一个聚集列存储索引（用于创建视图时的初始数据），一个增量存储区（用于增量数据更改）。  基表中的所有数据更改将以同步方式自动添加到增量存储区中。  后台进程（元组发动机）定期将数据从增量存储区移至视图的列存储索引。  这种设计可以使查询具体化视图后返回的数据与直接查询基表后返回的数据相同。
 - 具体化视图中的数据可以采用与基表不同的方式分发。  
 - 具体化视图中的数据与常规表中的数据具有相同的高可用性和复原优势。  
 
-与其他数据仓库提供程序相比，在专用 SQL 池中实现的具体化视图还提供以下附加优势：
+与其他数据仓库提供程序相比，在专用 SQL 池中实现的具体化视图还提供了以下附加优势：
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
@@ -151,7 +151,7 @@ GROUP BY A, C
 
 **具体化视图和结果集缓存**
 
-这两个功能在与查询性能优化相同的时间的专用 SQL 池中引入。 结果集缓存用于在静态数据的重复查询中实现高并发性和快速响应。  
+这两项优化查询性能的功能是在大致相同的时间引入专用 SQL 池的。 结果集缓存用于在静态数据的重复查询中实现高并发性和快速响应。  
 
 为使用缓存结果，请求缓存的查询的形式必须与生成缓存的查询匹配。  此外，缓存的结果必须应用于整个查询。  
 
@@ -358,7 +358,7 @@ GROUP BY c_customer_id
 
 ```
 
-再次检查原始查询的执行计划。  现在，联接数量从 17 个更改为 5 个，且不再有随机排布。  在计划中选择 "筛选器操作" 图标。 其输出列表显示数据是从具体化视图读取的，而不是从基表读取的。  
+再次检查原始查询的执行计划。  现在，联接数量从 17 个更改为 5 个，且不再有随机排布。  选择计划中的“筛选”操作图标。 其输出列表显示数据是从具体化视图读取的，而不是从基表读取的。  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

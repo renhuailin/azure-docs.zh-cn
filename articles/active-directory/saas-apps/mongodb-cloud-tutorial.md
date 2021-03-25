@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96602166"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 MongoDB Cloud 的集成
@@ -48,7 +48,7 @@ ms.locfileid: "96602166"
 若要配置 MongoDB Cloud 与 Azure AD 的集成，需要从库中将 MongoDB Cloud 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧窗格中，选择“Azure Active Directory”  。
+1. 在左侧窗格中，选择“Azure Active Directory”。
 1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 MongoDB Cloud。  
@@ -99,7 +99,7 @@ ms.locfileid: "96602166"
     
     | 名称 | 源属性|
     | ---------------| --------- |
-    | email | user.userprincipalname |
+    | 电子邮件 | user.userprincipalname |
     | firstName | user.givenname |
     | lastName | user.surname |
 
@@ -115,10 +115,10 @@ ms.locfileid: "96602166"
 在本部分，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下密码  。
    1. 选择“创建”  。
 
@@ -132,7 +132,7 @@ ms.locfileid: "96602166"
 
    ![“管理”部分的屏幕截图，其中突出显示了“用户和组”](common/users-groups-blade.png)
 
-1. 选择“添加用户”。  然后，在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”。 然后，在“添加分配”对话框中选择“用户和组”。  
 
     ![“用户和组”页的屏幕截图，其中已突出显示“添加用户”](common/add-assign-user.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SiteIntel 集成
@@ -48,7 +48,7 @@ ms.locfileid: "92509958"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧窗格中，选择“Azure Active Directory”。
-1. 转到“企业应用程序”，并选择“所有应用程序”。 
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”框中，输入“SiteIntel” 。
 1. 在结果列表中选择“SiteIntel”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -108,13 +108,13 @@ ms.locfileid: "92509958"
 1. 选择窗格顶部的“新建用户”。
 1. 在“用户”属性中，执行以下操作：
 
-   a. 在“名称”框中，输入 **B.Simon** 。  
+   a. 在“名称”框中，输入 **B.Simon**。  
 
    b. 在“用户名”框中，按以下格式输入用户名：`username@companydomain.extension`（例如 `B.Simon@contoso.com`）。
 
-   c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
-   d. 选择“创建”。
+   d. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

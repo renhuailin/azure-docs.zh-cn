@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
 ms.openlocfilehash: 0d009522ea0d0986233983f8725549b618ffb537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91444871"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>用于 ADO.NET 4.5 的非 1433 端口
@@ -29,7 +29,7 @@ ms.locfileid: "91444871"
 
 ## <a name="outside-vs-inside"></a>外部与内部
 
-对于 Azure SQL 数据库的连接，首先必须询问客户端程序是在 Azure 云边界*外部*还是*内部*运行。 以下小节讨论了两种常见方案。
+对于 Azure SQL 数据库的连接，首先必须询问客户端程序是在 Azure 云边界 *外部* 还是 *内部* 运行。 以下小节讨论了两种常见方案。
 
 ### <a name="outside-client-runs-on-your-desktop-computer"></a>*外部：* 客户端在台式机上运行
 
@@ -52,7 +52,7 @@ ms.locfileid: "91444871"
 * 具体而言，范围中的端口必须没有其他任何出站阻塞器。
 * 在 Azure VM 上， **高级安全 Windows 防火墙** 控制端口设置。
   
-  * 可以使用[防火墙的用户界面](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access)为指定 **TCP** 协议以及语法类似于 **11000-11999** 的端口范围添加规则。
+  * 可以使用 [防火墙的用户界面](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access)为指定 **TCP** 协议以及语法类似于 **11000-11999** 的端口范围添加规则。
 
 ## <a name="version-clarifications"></a>版本澄清
 

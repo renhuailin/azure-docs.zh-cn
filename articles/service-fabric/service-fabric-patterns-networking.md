@@ -4,10 +4,10 @@ description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87421461"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
@@ -38,7 +38,7 @@ Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模�
 
 ### <a name="existing-virtual-network"></a>现有虚拟网络
 
-在以下示例中，我们从 **ExistingRG** 资源组中名为 ExistingRG-vnet 的现有虚拟网络着手。 子网命名为 default。 这些默认资源是在使用 Azure 门户创建标准虚拟机 (VM) 时创建的。 可以只创建虚拟网络和子网而不创建 VM，但是，将群集添加到现有虚拟网络的主要目的是提供与其他 VM 之间的网络连接。 创建 VM 可以很好地示范现有虚拟网络的典型用法。 如果 Service Fabric 群集仅使用不带公共 IP 地址的内部负载均衡器，则可以将 VM 及其公共 IP 用作安全的*转接盒*。
+在以下示例中，我们从 **ExistingRG** 资源组中名为 ExistingRG-vnet 的现有虚拟网络着手。 子网命名为 default。 这些默认资源是在使用 Azure 门户创建标准虚拟机 (VM) 时创建的。 可以只创建虚拟网络和子网而不创建 VM，但是，将群集添加到现有虚拟网络的主要目的是提供与其他 VM 之间的网络连接。 创建 VM 可以很好地示范现有虚拟网络的典型用法。 如果 Service Fabric 群集仅使用不带公共 IP 地址的内部负载均衡器，则可以将 VM 及其公共 IP 用作安全的 *转接盒*。
 
 ### <a name="static-public-ip-address"></a>静态公共 IP 地址
 

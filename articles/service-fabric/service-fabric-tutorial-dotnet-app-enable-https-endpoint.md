@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326229"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
@@ -25,7 +25,7 @@ ms.locfileid: "91326229"
 > * 在 Azure 负载均衡器中打开端口 443
 > * 将应用程序部署到远程群集
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -68,7 +68,7 @@ Thumbprint                                Subject
 
 ## <a name="define-an-https-endpoint-in-the-service-manifest"></a>在服务清单中定义一个 HTTPS 终结点
 
-以**管理员**身份启动 Visual Studio，然后打开 Voting 解决方案。 在解决方案资源管理器中，打开 *VotingWeb/PackageRoot/ServiceManifest.xml*。 服务清单定义服务终结点。  找到 **Endpoints** 节，编辑现有的“ServiceEndpoint”终结点。  将名称更改为“EndpointHttps”，将协议设置为 *https*，类型设置为 *Input*，端口设置为 *443*。  保存所做更改。
+以 **管理员** 身份启动 Visual Studio，然后打开 Voting 解决方案。 在解决方案资源管理器中，打开 *VotingWeb/PackageRoot/ServiceManifest.xml*。 服务清单定义服务终结点。  找到 **Endpoints** 节，编辑现有的“ServiceEndpoint”终结点。  将名称更改为“EndpointHttps”，将协议设置为 *https*，类型设置为 *Input*，端口设置为 *443*。  保存所做更改。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -188,7 +188,7 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 ## <a name="grant-network-service-access-to-the-certificates-private-key"></a>授予网络服务访问证书私钥的权限
 
-在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中[配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
+在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中 [配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
 
 >[!NOTE]
 > Service Fabric 支持按指纹或使用者公用名声明终结点证书。 在这种情况下，运行时会设置绑定，并根据作为服务运行身份的标识设置证书私钥的 ACL。 运行时还会监视证书的更改/续订，并相应地重新设置对应私钥的 ACL。
@@ -418,7 +418,7 @@ $nsg | Set-AzNetworkSecurityGroup
 
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
-保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布” 。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。
+保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布”   。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。
 
 在应用程序部署后，打开 Web 浏览器，导航到 `https://mycluster.region.cloudapp.azure.com:443`（使用群集的连接终结点更新 URL）。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 

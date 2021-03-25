@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96580059"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教程：连接、设置、激活 Azure Data Box Gateway
@@ -61,7 +61,7 @@ ms.locfileid: "96580059"
 
 ## <a name="set-up-and-activate-the-virtual-device"></a>设置和激活虚拟设备
  
-仪表板会显示配置虚拟设备并将其注册到 Data Box Gateway 服务所需的各种设置。 “设备名”、“网络设置”、“Web 代理设置”和“时间设置”为可选设置     。 只有“云设置”是必需设置  。
+仪表板会显示配置虚拟设备并将其注册到 Data Box Gateway 服务所需的各种设置。 “设备名”、“网络设置”、“Web 代理设置”和“时间设置”为可选设置     。 只有“云设置”是必需设置。
    
 ![本地 Web UI“仪表板”页](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 

@@ -1,24 +1,14 @@
 ---
 title: 快速入门：入门
 description: 在本快速入门中，你将了解 Defender for IoT 部署的基本工作流。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/18/2021
-ms.author: shhazam
-ms.openlocfilehash: 487f9be432c908bf8ee1da858a9e45a18adffb8c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447701"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784486"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
