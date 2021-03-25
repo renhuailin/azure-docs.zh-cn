@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: System Architecture'
 ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148346"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>使用 IoT 中心进行设备管理的概述
@@ -24,7 +24,7 @@ Azure IoT 中心提供功能和可扩展性模型，使设备和后端开发人�
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-创建成功的企业 IoT 解决方案的一个重要部分，是提供操作员如何处理其设备集合的日常管理的策略。 IoT 操作员需要简单且可靠的工具和应用程序，使他们能够重点处理其工作的更具战略意义方面。 本文将提供：
+创建成功的企业 IoT 解决方案的一个重要部分，是提供操作员如何处理其设备集合的日常管理的策略。 IoT 操作员需要简单且可靠的工具和应用程序，使他们能够重点处理其工作的更具战略意义方面。 本文提供以下内容：
 
 * Azure IoT 中心设备管理方法的简要概述。
 * 常见设备管理原则的说明。

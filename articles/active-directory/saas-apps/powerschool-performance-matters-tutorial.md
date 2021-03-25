@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 1312a995589b0408edc56a0883cc9fd899fc9e6f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>教程：Azure Active Directory 与 Powerschool Performance Matters 的集成
@@ -61,7 +61,7 @@ ms.locfileid: "92515434"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Powerschool Performance Matters** ，在结果面板中选择“Powerschool Performance Matters”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Powerschool Performance Matters**，在结果面板中选择“Powerschool Performance Matters”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“Powerschool Performance Matters”](common/search-new-app.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "92515434"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "92515434"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -170,7 +170,7 @@ ms.locfileid: "92515434"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

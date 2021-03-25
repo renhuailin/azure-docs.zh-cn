@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 929c447d1a19b85ab8e12b45198508e5f5747c12
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521843"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>教程：Azure Active Directory 与 SumTotalCentral 集成
@@ -97,7 +97,7 @@ ms.locfileid: "92521843"
     > [!NOTE]
     > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新该值。 请联系 [SumTotalCentral 客户端支持团队](http://www.sumtotalsystems.com/support/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上   。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -118,10 +118,10 @@ ms.locfileid: "92521843"
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon** 。  
+   1. 在“姓名”字段中输入 **B.Simon**。  
    1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值 。
-   1. 选择“创建”。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92168335"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素
@@ -26,19 +26,19 @@ DropDown 元素提供不同的选项，用于确定其在门户中的视觉效�
 
 当包含说明时，控件将显示为：
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="Microsoft.Common.DropDown 单项选择":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-2.png" alt-text="带有说明的 Microsoft.Common.DropDown 单项选择":::
 
 启用多选时，控件将添加“全选”选项和用于选择多个项目的复选框：
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown 单项选择":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-3.png" alt-text="Microsoft.Common.DropDown 多选":::
 
 启用多选时可以包含说明。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="Microsoft.Common.DropDown 单项选择":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-4.png" alt-text="此屏幕截图显示了如何在启用多选的情况下包含说明":::
 
 启用筛选后，控件包含用于添加筛选值的文本框。
 
-:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="Microsoft.Common.DropDown 单项选择":::
+:::image type="content" source="./media/managed-application-elements/microsoft-common-dropdown-5.png" alt-text="带有说明的 Microsoft.Common.DropDown 多项选择":::
 
 ## <a name="schema"></a>架构
 

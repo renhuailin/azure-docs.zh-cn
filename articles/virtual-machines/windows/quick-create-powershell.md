@@ -10,10 +10,10 @@ ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 78b912dd649ff942e0187f9b3602d9213383b8c9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102560729"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机

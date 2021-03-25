@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: a31fb48443cf760186faad705b8be21a62846a44
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017973"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048413"
 ---
 # <a name="features"></a>功能
 
@@ -35,14 +35,14 @@ ms.locfileid: "103017973"
 | 具有开放式锁定的更新 | 是       | 是       | 是       |                                                     |
 | 更新 (条件)            | 是       | 是       | 是       |                                                     |
 | 修补程序                          | 否        | 否        | 否        |                                                     |
-| delete                         | 是       | 是       | 是       |  请参阅下面的说明                                                   |
+| delete                         | 是       | 是       | 是       |  请参阅下面的说明。                                   |
 | 删除 (条件)            | 否        | 否        | 否        |                                                     |
 | history                        | 是       | 是       | 是       |                                                     |
 | create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 搜索                         | 部分   | 部分   | 部分   | 请参阅下文                                           |
-| 链式搜索                 | 否        | 是       | 否        |                                                     |
-| 反向链接搜索         | 否        | 是       | 否        |                                                     |
+| search                         | 部分   | 部分   | 部分   | 请参阅下面的搜索部分。                           |
+| 链式搜索                 | 是       | 是       | 部分   | 请参阅下面的注释2。                                   |
+| 反向链接搜索         | 是       | 是       | 部分   | 请参阅下面的注释2。                                   |
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批处理                          | 是       | 是       | 是       |                                                     |
 | transaction                    | 否        | 是       | 否        |                                                     |
@@ -51,6 +51,12 @@ ms.locfileid: "103017973"
 
 > [!Note]
 > FHIR 规范定义的删除在删除后，对资源的后续非特定于版本的读取将返回 410 HTTP 状态代码，并且不再通过搜索找到资源。 通过用于 FHIR 的 Azure API，还可以完全删除 (包括资源) 所有历史记录。 若要完全删除资源，可以将参数设置传递 `hardDelete` 给 true (`DELETE {server}/{resource}/{id}?hardDelete=true`) 。 如果未传递此参数或将其设置 `hardDelete` 为 false，则资源的历史版本仍将可用。
+
+
+ **注释 2**
+* 在 CosmosDB 中添加对链式和反向链接 FHIR 搜索的 MVP 支持。 
+
+  在用于 FHIR 的 Azure API 和 Cosmos 支持的开源 FHIR 服务器中，链式搜索和反向链接搜索是 MVP 实现。 若要在 Cosmos DB 上完成链式搜索，实现会遍历搜索表达式，并发出子查询来解析匹配的资源。 这适用于表达式的每个级别。 如果任何查询返回的结果超过100，则将引发错误。 默认情况下，链式搜索位于功能标志之后。 若要在 Cosmos DB 上使用链式搜索，请使用标头 `x-ms-enable-chained-search: true` 。 有关更多详细信息，请参阅 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)。
 
 ## <a name="search"></a>搜索
 

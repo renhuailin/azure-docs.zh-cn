@@ -9,10 +9,10 @@ ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206964"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 将虚拟网络连接到 ExpressRoute 线路（经典）
@@ -40,7 +40,7 @@ ms.locfileid: "92206964"
 * 在开始配置之前，请先查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 必须有一个活动的 ExpressRoute 线路。
    * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并让连接提供商启用该线路。
-   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅 [配置路由](expressroute-howto-routing-classic.md) 一文。
+   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-classic.md)一文。
    * 确保配置 Azure 专用对等互连并运行网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
    * 必须已创建并完全预配一个虚拟网络和一个虚拟网络网关。 请按说明[为 ExpressRoute 配置虚拟网络](./expressroute-howto-add-gateway-portal-resource-manager.md)。
 
@@ -77,7 +77,7 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
 ![跨订阅连接](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>管理
-“线路所有者”** 是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户**）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
+“线路所有者”是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消其访问权限的订阅中删除所有链接。
 

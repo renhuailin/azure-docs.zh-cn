@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792542"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>有关 Linux 虚拟机上的 SQL Server 的常见问题解答
@@ -69,7 +69,7 @@ ms.locfileid: "92792542"
 
 1. **如果 VM 是基于一个即用即付库映像创建的，是否可以将它更改为使用我自己的 SQL Server 许可证？**
 
-   否。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
+   不是。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
 
 ## <a name="administration"></a>管理
 
@@ -95,13 +95,13 @@ ms.locfileid: "92792542"
 
 ## <a name="resources"></a>资源
 
-**Linux VM** ：
+**Linux VM**：
 
 * [Linux VM 上的 SQL Server 概述](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [在 Linux VM 上预配 SQL Server](sql-vm-create-portal-quickstart.md)
 * [“Linux 上的 SQL Server”文档](/sql/linux/sql-server-linux-overview)
 
-**Windows VM** ：
+**Windows VM**：
 
 * [Windows VM 上的 SQL Server 概述](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [在 Windows VM 上预配 SQL Server](../windows/sql-vm-create-portal-quickstart.md)

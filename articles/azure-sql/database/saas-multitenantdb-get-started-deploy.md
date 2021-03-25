@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 4de7e428bff0feaafdec00b0c0014bbaf6acb917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790961"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>部署和浏览分片多租户应用程序
@@ -77,10 +77,10 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
     > 不要使用该应用程序及其创建的任何资源进行生产。 为了便于演示，应用中身份验证的某些部分和服务器防火墙设置将有意设置为不安全。
 
     - 对于资源组 - 选择“新建”，然后为资源组提供一个名称（区分大小写）。
-        - 从下拉列表中选择一个 **位置** 。
+        - 从下拉列表中选择一个 **位置**。
     - 对于“用户”，建议选择短的“用户”值。
 
-1. **部署应用程序** 。
+1. **部署应用程序**。
 
     - 单击“我同意上述条款和条件”。
     - 单击“购买”。
@@ -110,7 +110,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 运行任何脚本之前，在 UserConfig.psm1 中设置“资源组”和“用户”值。 将这些变量设置为在部署期间设置的相同值。
 
-1. 在 *PowerShell ISE* 中打开 ...\\Learning Modules\\*UserConfig.psm1* 。
+1. 在 *PowerShell ISE* 中打开 ...\\Learning Modules\\*UserConfig.psm1*。
 2. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
 3. 保存更改。
 
@@ -137,9 +137,9 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 Wingtip 应用使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户的事件页都会在其 URL 中包括租户名称。 每个 URL 还包括特定的“用户”值。 每个 URL 都通过以下步骤遵循所显示的格式：
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/ *fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
-1. 事件应用可以从 URL 分析租户名称。 在前一示例 URL 中，租户名称为 *fabrikamjazzclub* 。
+1. 事件应用可以从 URL 分析租户名称。 在前一示例 URL 中，租户名称为 *fabrikamjazzclub*。
 2. 然后，该应用会对租户名称进行哈希处理，以便创建密钥，从而使用[分片映射管理](elastic-scale-shard-map-management.md)来访问目录。
 3. 应用在目录中查找密钥，并获取租户数据库的相应位置。
 4. 应用使用位置信息来查找和访问包含租户的所有数据的那个数据库。
@@ -164,14 +164,14 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
 关闭 PowerShell 会话将停止所有作业
 
-你可能需要重新启动负载生成器会话才能使用不同的参数值。 如果是这样，请关闭 PowerShell 生成会话，然后重新运行 *Demo-LoadGenerator.ps1* 。
+你可能需要重新启动负载生成器会话才能使用不同的参数值。 如果是这样，请关闭 PowerShell 生成会话，然后重新运行 *Demo-LoadGenerator.ps1*。
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>将新租户预配到分片数据库
 
 初始部署在 Tenants1 数据库中包括了三个示例租户。 让我们再创建一个租户，观察其对已部署应用程序的影响。 在此步骤中，按一个键即可创建新租户：
 
-1. 在 *PowerShell ISE* 中打开...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* 。
-2. 按“F5”（不是 **F8** ）运行该脚本（目前请保留默认值）。
+1. 在 *PowerShell ISE* 中打开...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1*。
+2. 按“F5”（不是 **F8**）运行该脚本（目前请保留默认值）。
 
    > [!NOTE]
    > 必须按 **F5** 键来运行 PowerShell 脚本，而不是按 **F8** 来运行脚本的选定部分。 **F8** 的问题是 *$PSScriptRoot* 变量不会进行计算。 许多脚本需要此变量来导航文件夹、调用其他脚本或导入模块。
@@ -193,7 +193,7 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
 接下来我们预配其他租户，这次是在其自己的数据库中：
 
-1. 在 ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* 中，将 *$TenantName* 修改为 **Salix Salsa** ，将 *$VenueType* 修改为 **dance** ，将 *$Scenario* 修改为 **2** 。
+1. 在 ...\\Learning Modules\\Provision and Catalog\\*Demo-ProvisionTenants.ps1* 中，将 *$TenantName* 修改为 **Salix Salsa**，将 *$VenueType* 修改为 **dance**，将 *$Scenario* 修改为 **2**。
 
 2. 按 F5 再次运行脚本。
     - 此次按 **F5** 将预配单独数据库中的新租户。 数据库和租户在目录中注册。 然后，浏览器打开到租户的“事件”页。
@@ -202,7 +202,7 @@ Demo-LoadGenerator.ps1 脚本将打开运行负载生成器的另一个 PowerShe
 
    - 滚动到页面底部。 在横幅中可以看到存储租户数据的数据库名称。
 
-3. 刷新 **事件中心** ，两个新租户将会出现在列表中。
+3. 刷新 **事件中心**，两个新租户将会出现在列表中。
 
 ## <a name="explore-the-servers-and-tenant-databases"></a>浏览服务器和租户数据库
 

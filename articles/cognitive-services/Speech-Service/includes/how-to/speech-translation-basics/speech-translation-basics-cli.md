@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: v-demjoh
 ms.openlocfilehash: a5796dfb066ea8ac7c59c02b29ef67b184c67edb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94424834"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门将麦克风中的语音翻译成另一种语言的文本。

@@ -12,32 +12,32 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145093"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>排查使用条件访问时的登录问题
 
 可以参考本文中的信息，使用错误消息和 Azure AD 登录日志来排查与条件访问相关的意外登录结果。
 
-## <a name="select-all-consequences"></a>选择 "所有" 结果
+## <a name="select-all-consequences"></a>选择“所有”后果
 
-条件访问框架提供了极大的配置灵活性。 不过，很大的灵活性还意味着您应该仔细检查每个配置策略，然后再发布它以避免产生不良结果。 在这种情况下，应该特别注意影响完整集的任务，例如**所有用户/组/云应用**。
+条件访问框架提供了极大的配置灵活性。 不过，极大的灵活性也意味着应先仔细检查每个配置策略，然后才能发布，以免产生不良后果。 在这种情况下，应该特别注意影响完整集的任务，例如 **所有用户/组/云应用**。
 
 组织应避免以下配置：
 
 **对于所有用户、所有云应用：**
 
-- **阻止访问** -此配置将阻止整个组织。
-- **要求设备标记为合规** -对于尚未注册其设备的用户，此策略将阻止所有访问权限，包括对 Intune 门户的访问权限。 如果是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
-- **需要混合 Azure AD 加入域的设备** -此策略阻止访问还可能会阻止组织中所有用户的访问，前提是这些用户未加入混合 Azure AD 设备。
+- **阻止访问** - 此配置将阻止整个组织访问。
+- **需要标记为合规的设备** - 对于尚未注册其设备的用户，此策略将阻止所有访问权限（包括对 Intune 门户的访问权限）。 如果是不具有注册设备的管理员，则此策略会阻止你回到 Azure 门户更改策略。
+- **需要已建立混合 Azure AD 域联接的设备** - 如果他们不具有已建立混合 Azure AD 域联接的设备，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。
 - **需要应用保护策略** - 如果没有 Intune 策略，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。 如果你是管理员，没有设置了 Intune 应用保护策略的客户端应用程序，则此策略会阻止你返回到 Intune 和 Azure 之类的门户。
 
 **对于所有用户、所有云应用、所有设备平台：**
 
-- **阻止访问** -此配置将阻止整个组织。
+- **阻止访问** - 此配置将阻止整个组织访问。
 
 ## <a name="conditional-access-sign-in-interrupt"></a>条件访问登录中断
 
@@ -99,12 +99,12 @@ ms.locfileid: "92145093"
 | 53003 | BlockedByConditionalAccess |
 | 53004 | ProofUpBlockedDueToRisk |
 
-## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>如果已 Azure 门户锁定，该怎么办？
+## <a name="what-to-do-if-you-are-locked-out-of-the-azure-portal"></a>如果你被锁定在 Azure 门户之外，该怎么办？
 
-如果由于条件性访问策略中的设置不正确而导致 Azure 门户锁定：
+如果你因为条件访问策略中的设置不正确而被锁定在 Azure 门户之外，请执行以下操作：
 
 - 检查组织中是否有其他管理员尚未被阻止。 具有 Azure 门户访问权限的管理员可以禁用影响你登录的策略。 
-- 如果组织中的任何管理员都无法更新策略，请提交支持请求。 Microsoft 支持人员可以检查并确认更新了阻止访问的条件访问策略。
+- 如果组织中没有管理员可以更新策略，请提交支持请求。 Microsoft 支持人员可以审核并在确认后更新妨碍访问的条件访问策略。
 
 ## <a name="next-steps"></a>后续步骤
 

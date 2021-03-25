@@ -15,10 +15,10 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 7b55dc6a400f936ac23b233e4c84a6b1aebf45cb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784691"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>升级 Service Fabric 应用程序
@@ -35,7 +35,7 @@ ms.locfileid: "98784691"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) | 获取 Service Fabric 群集中的所有应用程序或特定应用程序。  |
 | [Get-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/get-servicefabricapplicationupgrade) | 获取 Service Fabric 应用程序的升级状态。 |

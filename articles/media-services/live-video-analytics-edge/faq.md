@@ -4,10 +4,10 @@ description: 本文解答了有关 IoT Edge 上的实时视频分析的常见问
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702243"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge 上的实时视频分析常见问题解答

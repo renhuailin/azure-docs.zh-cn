@@ -15,10 +15,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
 ms.openlocfilehash: ebd189e1cf6e053f5400b8217fc1c2fc385cdac9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701716"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
@@ -215,16 +215,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 如果需要，可以直接在 `pom.xml` 中修改应用服务的配置。 下面列出了一些常见配置：
 
-属性 | 必选 | 说明 | 版本
+属性 | 必须 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+
-`<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
-`<appName>` | true | Web 应用的名称。 | 0.1.0+
-`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
+`<resourceGroup>` | 是 | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
+`<appName>` | 是 | Web 应用的名称。 | 0.1.0+
+`<region>` | 是 | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)部分中列出了所有有效区域。 | 0.1.0+
 `<pricingTier>` | false | Web 应用的定价层。 生产工作负载的默认值为 P1V2，而 B2 是建议用于 Java 开发/测试的最低值 。 [了解详细信息](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
-`<runtime>` | true | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
-`<deployment>` | true | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<runtime>` | 是 | 运行时环境配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
+`<deployment>` | 是 | 部署配置，可以在[此处](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看详细信息。 | 0.1.0+
 
 请注意 `<appName>` 和 `<resourceGroup>` 的值（在演示中相应地为 `helloworld-1590394316693` 和 `helloworld-1590394316693-rg`），后面会使用它们。
 

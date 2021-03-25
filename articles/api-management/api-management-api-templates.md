@@ -15,10 +15,10 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: devx-track-python
 ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87851708"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
@@ -47,7 +47,7 @@ ms.locfileid: "87851708"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="api-list"></a><a name="APIList"></a> API 列表  
- **API 列表**模板可用于自定义开发人员门户中 API 列表页的正文。  
+ **API 列表** 模板可用于自定义开发人员门户中 API 列表页的正文。  
   
  ![开发人员门户 API 列表](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 开发人员门户模板 API 列表")  
   
@@ -115,7 +115,7 @@ ms.locfileid: "87851708"
 ```  
   
 ## <a name="operation"></a><a name="Product"></a> 操作  
- **操作**模板可用于自定义开发人员门户中操作页的正文。  
+ **操作** 模板可用于自定义开发人员门户中操作页的正文。  
   
  ![开发人员门户操作页](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 开发人员门户模板操作页")  
   
@@ -347,7 +347,7 @@ ms.locfileid: "87851708"
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
-|`apiId`|string|当前 API 的 ID。|  
+|`apiId`|字符串|当前 API 的 ID。|  
 |`apiName`|string|API 的名称。|  
 |`apiDescription`|string|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  

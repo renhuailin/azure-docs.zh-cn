@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 800ce9d6603f60f7328525a964565bb233c04a5e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>教程：Azure Active Directory 与 Real Links 集成
@@ -103,7 +103,7 @@ ms.locfileid: "92516109"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.reallinks.io` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:amazon:cognito:sp:<SUBDOMAIN>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:amazon:cognito:sp:<SUBDOMAIN>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Real Links 客户端支持团队](mailto:support@reallinks.io)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -124,7 +124,7 @@ ms.locfileid: "92516109"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "92516109"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -156,7 +156,7 @@ ms.locfileid: "92516109"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

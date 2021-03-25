@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410532"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
 Azure AD Connect 的同步功能有两个组件：
 
-* 名为 **Azure AD Connect 同步** 的本地组件，也称为 **同步引擎** 。
+* 名为 **Azure AD Connect 同步** 的本地组件，也称为 **同步引擎**。
 * 驻留在 Azure AD 中的服务，也称为 **Azure AD Connect 同步服务**
 
 本主题说明 **Azure AD Connect 同步服务** 的以下功能如何工作，以及如何使用 Windows PowerShell 来配置这些功能。

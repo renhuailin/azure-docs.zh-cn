@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-基于 JWT 声明授予访问权限
+title: API 管理策略示例 - 基于 JWT 声明授予访问权限
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何基于 JWT 声明授予对 API 中特定 HTTP 方法的访问权限。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: b5b0c2feb31eab5e39bbebd7108b3ec8504769d4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92076277"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>基于 JWT 声明授权访问权限

@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672493"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
@@ -51,7 +51,7 @@ ms.locfileid: "92672493"
 
 ### <a name="macos"></a>**macOS**
 
-对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL** 。
+对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -74,7 +74,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页 。
 
@@ -86,7 +86,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 打开新的 Visual Studio Code 窗口。
 
-2. 按 **Ctrl**+**N** 。 这会打开一个新的纯文本文件。
+2. 按 **Ctrl**+**N**。 这会打开一个新的纯文本文件。
 
 3. 选择状态栏右下角的“纯文本”。
 
@@ -101,13 +101,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板 。
 
-2. 选择“MS SQL:Connect”，然后选择 **Enter** 。
+2. 选择“MS SQL:Connect”，然后选择 **Enter**。
 
 3. 选择“创建连接配置文件”。
 
 4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择 **Enter** 以继续。
 
-   | 属性       | 建议的值 | 说明 |
+   | properties       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |

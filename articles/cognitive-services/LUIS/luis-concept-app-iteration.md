@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91538715"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
@@ -61,17 +61,17 @@ ms.locfileid: "91538715"
 
 ## <a name="add-example-utterances-to-intents"></a>将示例言语添加到意向
 
-LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要有足够的单词选择和单词顺序方面的变化，才能确定言语表达的意向。
+LUIS 需要在每个 **意向** 中添加几个示例言语。 示例言语需要有足够的单词选择和单词顺序方面的变化，才能确定言语表达的意向。
 
 > [!CAUTION]
 > 请不要批量添加示例言语。 先添加 15 到 30 个具体的且有变化的示例。
 
-需要为每个示例言语设计任何**需要提取的数据**，并将这些数据标记为**实体**。
+需要为每个示例言语设计任何 **需要提取的数据**，并将这些数据标记为 **实体**。
 
 |关键元素|目的|
 |--|--|
-|Intent|将用户言语**分类**成单一意图或操作。 示例包括 `BookFlight` 和 `GetWeather`。|
-|实体|从言语中**提取**实现意图所需的数据。 示例包括旅行日期和时间以及地点。|
+|Intent|将用户言语 **分类** 成单一意图或操作。 示例包括 `BookFlight` 和 `GetWeather`。|
+|实体|从言语中 **提取** 实现意图所需的数据。 示例包括旅行日期和时间以及地点。|
 
 可以通过将言语分配到 **None** 意向，将 LUIS 应用设计为忽略与应用域不相关的言语。
 
@@ -97,7 +97,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 ### <a name="begin-by-cloning-an-existing-version"></a>首先克隆现有版本
 
-克隆现有版本，用作每个新版本的起点。 克隆版本后，新版本将成为**活动**版本。
+克隆现有版本，用作每个新版本的起点。 克隆版本后，新版本将成为 **活动** 版本。
 
 ### <a name="publishing-slots"></a>发布槽
 
@@ -122,7 +122,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 唯一的区别是，在应用级别导出的版本是当前活动版本，而在版本级别，可在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本。
 
-导出的文件**不**包含：
+导出的文件 **不** 包含：
 
 * 机器学习信息，因为应用在导入后会经过重新训练
 * 参与者信息

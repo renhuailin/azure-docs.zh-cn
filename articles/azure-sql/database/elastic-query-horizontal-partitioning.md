@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792100"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨横向扩展的云数据库进行报告（预览版）
@@ -163,7 +163,7 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
 2. **REPLICATED** 表示每个数据库都存在表的相同副本。 要负责确保各数据库上的副本是相同的。
 3. **ROUND\_ROBIN** 表示使用依赖于应用程序的分布方法对表进行横向分区。
 
-**数据层引用** ：外部表 DDL 引用外部数据源。 外部数据源指定分片映射，后者为外部表提供在数据层中找到所有数据库所需的信息。
+**数据层引用**：外部表 DDL 引用外部数据源。 外部数据源指定分片映射，后者为外部表提供在数据层中找到所有数据库所需的信息。
 
 ### <a name="security-considerations"></a>安全注意事项
 

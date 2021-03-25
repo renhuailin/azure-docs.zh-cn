@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88035479"
 ---
 # <a name="storage-explorer-accessibility"></a>存储资源管理器可访问性
@@ -37,7 +37,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ## <a name="zoom"></a>Zoom
 
-可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”****。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
+可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
 
 ![帮助菜单中的缩放选项][0]
 
@@ -45,7 +45,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ## <a name="high-contrast-themes"></a>高对比度主题
 
-存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”********。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
+存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
 
 ![“主题”子菜单][1]
 

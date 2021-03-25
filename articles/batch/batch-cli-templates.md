@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91848715"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
@@ -62,7 +62,7 @@ az extension add --name azure-batch-cli-extensions
 
 Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
 
--   **参数**
+-   **Parameters**
 
     -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅为 `poolId` 定义一个参数；因此仅需提供一个池 ID 字符串来创建池。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cf1e71d67424258ccae6794f28d37399cd68996e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fde57eb3727eda6f810f861102e47a9f5746d1f8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654317"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955576"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>教程：Azure Active Directory 单一登录 (SSO) 与 VMware Horizon - Unified Access Gateway 的集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "101654317"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [VMware Horizon - Unified Access Gateway 客户端支持团队](mailto:support@vmware.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -145,4 +145,4 @@ ms.locfileid: "101654317"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 VMware Horizon - Unified Access Gateway 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 VMware Horizon - Unified Access Gateway 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

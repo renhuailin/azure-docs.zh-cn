@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212247"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
@@ -137,7 +137,7 @@ module.exports = function (context, myQueueItem) {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type | 不适用 | 必须设置为“mobileTable”|
+| type| 不适用 | 必须设置为“mobileTable”|
 | direction | 不适用 |必须设置为“in”|
 | name | 不适用 | 函数签名中的输入参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
@@ -295,7 +295,7 @@ public static object Run(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type | 不适用 | 必须设置为“mobileTable”|
+| type| 不适用 | 必须设置为“mobileTable”|
 | direction | 不适用 |必须设置为“out”|
 | name | 不适用 | 函数签名中的输出参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|

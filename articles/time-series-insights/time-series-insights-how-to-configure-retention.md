@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 468b4f7ca7b0af4abc32df5d9ef64a74154d3de1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91569411"
 ---
 # <a name="configuring-retention-in-azure-time-series-insights-gen1"></a>在 Azure 时序见解第 1 代中配置保留期
@@ -22,11 +22,11 @@ ms.locfileid: "91569411"
 > [!CAUTION]
 > 这是一篇 Gen1 文章。
 
-本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
+本文介绍如何在 Azure 时序见解中配置 **数据保留时间** 和 **超出存储限制时的行为**。
 
 ## <a name="summary"></a>总结
 
-每个 Azure 时序见解环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
+每个 Azure 时序见解环境都有用于配置 **数据保留时间** 的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
 每个 Azure 时序见解环境都有一项附加设置：“超出存储限制时的行为”。 此设置控制达到环境最大容量时的传入和清除行为。 可以从两种行为中进行选择：
 

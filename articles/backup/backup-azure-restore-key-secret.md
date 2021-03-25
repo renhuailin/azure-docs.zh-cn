@@ -4,10 +4,10 @@ description: 了解如何使用 PowerShell 在 Azure 备份中还原密钥保管
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88827080"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>使用 Azure 备份还原已加密 VM 的密钥保管库密钥和机密
@@ -19,7 +19,7 @@ ms.locfileid: "88827080"
 ## <a name="prerequisites"></a>先决条件
 
 * **备份加密的 VM** - 已使 Azure 备份备份加密的 Azure VM。 有关如何备份已加密 Azure VM 的详细信息，请参阅[使用 PowerShell 管理 Azure VM 的备份和还原](backup-azure-vms-automation.md)一文。
-* **配置 Azure Key Vault** –确保需要将密钥和机密还原到其中的密钥保管库已存在。 请参阅文章 [Azure Key Vault 入门](../key-vault/general/overview.md)，了解有关密钥保管库管理的详细信息。
+* **配置 Azure 密钥保管库** - 确保已存在要将密钥和机密还原到其中的密钥保管库。 请参阅文章 [Azure Key Vault 入门](../key-vault/general/overview.md)，了解有关密钥保管库管理的详细信息。
 * **还原磁盘** - 请确保已使用 [PowerShell 步骤](backup-azure-vms-automation.md#restore-an-azure-vm)触发还原作业，还原加密 VM 的磁盘。 这是因为此作业会在存储帐户中生成一个 JSON 文件，其中包含要还原的加密 VM 的密钥和机密。
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>从 Azure 备份获取密钥和机密
@@ -28,7 +28,7 @@ ms.locfileid: "88827080"
 > 为加密 VM 还原磁盘后，请确保：
 >
 > * 在 $details 中填写还原磁盘作业详细信息，如[“还原磁盘”部分中的 PowerShell 步骤](backup-azure-vms-automation.md#restore-an-azure-vm)所述
-> * 只有**将密钥和机密还原到 Key Vault 之后**，才应该从还原磁盘创建 VM。
+> * 只有 **将密钥和机密还原到 Key Vault 之后**，才应该从还原磁盘创建 VM。
 
 查询已还原磁盘属性以获取作业详细信息。
 
@@ -60,7 +60,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 ## <a name="restore-secret"></a>还原机密
 
-使用先前生成的 JSON 文件来获取密钥名称和值，并将其他提供给设置密钥 cmdlet，以便将机密 (BEK) 放回 Key Vault。 如果 VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet。
+使用先前生成的 JSON 文件来获取密钥名称和值，并将其他提供给设置密钥 cmdlet，以便将机密 (BEK) 放回 Key Vault。  如果 VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet。
 
 **如果 Windows VM 通过 BEK 和 KEK 加密，请使用这些 cmdlet。**
 
@@ -82,7 +82,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-使用先前生成的 JSON 文件来获取密钥名称和值，并将其他提供给设置密钥 cmdlet，以便将机密 (BEK) 放回 Key Vault。 如果 VM 仅通过 BEK 加密，请使用这些 cmdlet。
+使用先前生成的 JSON 文件来获取密钥名称和值，并将其他提供给设置密钥 cmdlet，以便将机密 (BEK) 放回 Key Vault。  如果 VM 仅通过 BEK 加密，请使用这些 cmdlet。
 
 ```powershell
 $secretDestination = 'C:\secret.blob'

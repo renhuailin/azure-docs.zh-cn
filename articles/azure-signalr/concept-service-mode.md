@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
 ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143266"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Azure SignalR 服务中的服务模式
@@ -21,7 +21,7 @@ ms.locfileid: "92143266"
 
 稍后还可以在设置菜单中对其进行更改：
 
-:::image type="content" source="media/concept-service-mode/update.png" alt-text="创建时选择服务模式":::
+:::image type="content" source="media/concept-service-mode/update.png" alt-text="更新服务模式":::
 
 Azure SignalR 服务目前支持三种服务模式：默认、无服务器和经典  。 SignalR 资源在不同模式下的行为方式有所不同。 本文将介绍它们之间的差异，以及如何根据场景选择合适的服务模式。
 
@@ -29,7 +29,7 @@ Azure SignalR 服务目前支持三种服务模式：默认、无服务器和经
 
 默认模式是新建 SignalR 资源时服务模式的默认值。 在这种模式下，你的应用程序像典型的 ASP.NET Core（或 ASP.NET）SignalR 应用程序一样工作；在该应用程序中，你有一个托管集线器的 Web 服务器（以下称为集线器服务器），并且客户端可以与集线器服务器进行双工实时通信。 唯一的区别是，客户端和服务器都连接到 SignalR 服务并将该服务用作代理，而不是直接连接客户端和服务器。 下图说明了默认模式下的典型应用程序结构：
 
-:::image type="content" source="media/concept-service-mode/default.png" alt-text="创建时选择服务模式":::
+:::image type="content" source="media/concept-service-mode/default.png" alt-text="默认模式下的应用程序结构":::
 
 因此，如果你拥有 SignalR 应用程序并且希望与 SignalR 服务集成，则大多数情况下，默认模式应是正确选择。
 
@@ -59,7 +59,7 @@ Azure SignalR 服务目前支持三种服务模式：默认、无服务器和经
 
 下图说明了无服务器模式的工作方式：
 
-:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="创建时选择服务模式":::
+:::image type="content" source="media/concept-service-mode/serverless.png" alt-text="无服务器模式下的应用程序结构":::
 
 > [!NOTE]
 > 请注意，在默认模式下，如果你不想通过集线器服务器，还可以使用 REST API/管理 SDK/函数绑定将消息直接发送到客户端。 但在默认模式下，客户端连接仍由集线器服务器处理，且上游在该模式下无法正常工作。

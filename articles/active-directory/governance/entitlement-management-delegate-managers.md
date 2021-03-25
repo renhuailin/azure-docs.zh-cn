@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798625"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>将访问治理委托给 Azure AD 权利管理中的访问包管理者
@@ -44,15 +44,15 @@ ms.locfileid: "87798625"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。
 
-1. 在左侧菜单中，单击“角色和管理员”。****
+1. 在左侧菜单中，单击“角色和管理员”。
 
     ![目录角色和管理员](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
 1. 单击“添加访问包管理者”，以选择这些角色的成员。
 
-1. 单击“选择”以添加这些成员。****
+1. 单击“选择”以添加这些成员。
 
 ## <a name="remove-an-access-package-manager"></a>删除访问包管理者
 
@@ -62,9 +62,9 @@ ms.locfileid: "87798625"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。****
+1. 在左侧菜单中单击“目录”，然后打开要将管理员添加到的目录。
 
-1. 在左侧菜单中，单击“角色和管理员”。****
+1. 在左侧菜单中，单击“角色和管理员”。
 
 1. 在要删除的访问包管理者旁边添加一个复选标记。
 

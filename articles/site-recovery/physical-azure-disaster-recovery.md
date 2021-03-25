@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87927277"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
@@ -143,7 +143,7 @@ ms.locfileid: "87927277"
 
 1. 单击“准备基础结构”   > “目标”  ，并选择要使用的 Azure 订阅。
 2. 指定目标部署模型。
-3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
+3. Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
    ![用于设置目标环境的选项的屏幕截图。](./media/physical-azure-disaster-recovery/network-storage.png)
 

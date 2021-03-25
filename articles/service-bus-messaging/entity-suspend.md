@@ -4,41 +4,41 @@ description: 本文介绍如何暂时暂停和重新激活 Azure 服务总线消
 ms.topic: article
 ms.date: 09/29/2020
 ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543045"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
 
 可以暂停队列、主题和订阅。 暂停后，实体处于禁用状态，其中所有消息都保留在存储中。 不过，无法删除或添加消息，相应的协议操作也会导致错误出现。
 
-出于紧急管理的原因，可能需要挂起实体。 例如，错误的接收方会将消息从队列中移除，处理失败，还会错误地完成消息并将其删除。 在这种情况下，你可能希望在更正和部署代码之前禁用接收队列。 
+出于紧急管理原因，你可能希望暂停实体。 例如，有故障的接收程序将消息从队列中移出、无法处理消息，还会错误地完成消息并将其删除。 在这种情况下，建议禁用接收队列，直到更正和部署代码为止。 
 
-暂停或重新激活可以由用户或系统执行。 系统仅出于多种原因（例如达到订阅支出限制）暂停实体。 系统禁用的实体不能被用户重新激活，但在暂停原因消除后就会还原。
+暂停或重新激活可以由用户或系统执行。 系统只会出于重大管理原因（如达到订阅支出限制），才会暂停实体。 系统禁用的实体不能被用户重新激活，但在暂停原因消除后就会还原。
 
 ## <a name="queue-status"></a>队列状态 
-可为 **队列** 设置的状态为：
+可以为队列设置如下状态：
 
--   **Active** ：队列处于活动状态。 您可以向队列发送消息和从队列接收消息。 
--   **Disabled** ：队列处于暂停状态。 它相当于同时设置 **SendDisabled** 和 **microsoft.servicebus.messaging.entitystatus.receivedisabled** 。 
--   **SendDisabled** ：不能将消息发送到队列，但可以从该队列接收消息。 如果尝试将消息发送到队列，则会出现异常。 
--   **Microsoft.servicebus.messaging.entitystatus.receivedisabled** ：可以向队列发送消息，但不能从该队列接收消息。 如果尝试将消息接收到队列，则会出现异常。
+-   **Active**：队列处于活动状态。 可以向队列发送消息或从队列接收消息。 
+-   **Disabled**：队列处于暂停状态。 它相当于同时设置 SendDisabled 和 ReceiveDisabled 。 
+-   **SendDisabled**：不能将消息发送到队列，但可以从队列接收消息。 如果尝试将消息发送到队列，则会出现异常。 
+-   **ReceiveDisabled**：可以将消息发送到队列，但不能从队列接收消息。 如果尝试接收队列的消息，则会出现异常。
 
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>在 Azure 门户中更改队列状态： 
 
 1. 在 Azure 门户中，导航到你的服务总线命名空间。 
-1. 选择要更改其状态的队列。 你将在中间窗格中看到队列。 
-1. 在 " **服务总线队列** " 页上，将队列的当前状态视为超链接。 如果未在左侧菜单中选择 " **概述** "，请选择它以查看队列的状态。 选择要更改的队列的当前状态。 
+1. 选择要更改其状态的队列。 可在底部的中间窗格中看到队列。 
+1. 在“服务总线队列”页面上，将看到队列的当前状态显示为超链接。 如果未在左侧菜单中选择“概述”，请选择该选项以查看队列的状态。 选择队列的当前状态进行更改。 
 
     :::image type="content" source="./media/entity-suspend/select-state.png" alt-text="选择队列状态":::
-4. 选择队列的新状态，然后选择 **"确定"** 。 
+4. 为队列选择新状态，然后选择“确定”。 
 
     :::image type="content" source="./media/entity-suspend/entity-state-change.png" alt-text="设置队列状态":::
     
-你还可以使用 .NET SDK 中的服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) api 来禁用发送和接收操作，或者通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
+也可以禁用发送和接收操作，方法是在 .NET SDK 中使用服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API，或通过 Azure CLI 或 Azure PowerShell 使用 Azure 资源管理器模板。
 
 ### <a name="change-the-queue-status-using-azure-powershell"></a>使用 Azure PowerShell 更改队列状态
 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”即可。
@@ -52,31 +52,31 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 ```
 
 ## <a name="topic-status"></a>主题状态
-可以在 Azure 门户中更改主题状态。 选择主题的当前状态以查看以下页面，此页面允许您更改状态。 
+可以在 Azure 门户中更改主题状态。 选择主题的当前状态以查看下一页，这将允许更改状态。 
 
 :::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="更改主题状态":::
 
-可为 **主题** 设置的状态包括：
-- **活动** ：主题处于活动状态。 您可以向主题发送消息。 
-- **Disabled** ：主题被挂起。 不能将消息发送到主题。 
-- **SendDisabled** ：与 **已禁用** 的效果相同。 不能将消息发送到主题。 如果尝试向主题发送消息，则会出现异常。 
+可以为主题设置如下状态：
+- **活动**：主题处于活动状态。 可以将消息发送到主题。 
+- **Disabled**：主题已暂停。 不能将消息发送到主题。 
+- **SendDisabled**：状态与“禁用”效果相同。 不能将消息发送到主题。 如果尝试将消息发送到主题，则会出现异常。 
 
 ## <a name="subscription-status"></a>订阅状态
-可以在 Azure 门户中更改订阅状态。 选择订阅的当前状态以查看以下页面，此页面允许您更改状态。 
+可以在 Azure 门户中更改订阅状态。 选择订阅的当前状态以查看下一页，这将允许更改状态。 
 
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="更改订阅状态":::
 
-可为 **订阅** 设置的状态如下：
-- **活动** ：订阅处于活动状态。 可以接收 inline.frm 订阅的消息。
-- **已禁用** ：订阅已挂起。 不能从订阅接收消息。 
-- **Microsoft.servicebus.messaging.entitystatus.receivedisabled** ：与 **已禁用** 的效果相同。 不能从订阅接收消息。 如果尝试接收到订阅的消息，则会出现异常。
+可以为订阅设置如下状态：
+- **活动**：订阅处于活动状态。 可以从订阅接收消息。
+- **Disabled**：订阅已暂停。 不能从订阅接收消息。 
+- **ReceiveDisabled**：状态与“禁用”效果相同。 不能从订阅接收消息。 如果尝试接收订阅的消息，则会出现异常。
 
 | 主题状态 | 订阅状态 | 行为 | 
 | ------------ | ------------------- | -------- | 
-| 可用 | 可用 | 您可以向主题发送消息，并从订阅接收消息。 | 
-| 可用 | 禁用或接收已禁用 | 你可以向主题发送消息，但无法从订阅接收消息 | 
-| 禁用或发送已禁用 | 可用 | 不能向主题发送消息，但可以接收已经在订阅中的消息。 | 
-| 禁用或发送已禁用 | 禁用或接收已禁用 | 无法将消息发送到主题，也无法从订阅接收消息。 | 
+| 可用 | 可用 | 可以将消息发送到主题，并从订阅接收消息。 | 
+| 可用 | “禁用”或“接收已禁用” | 可以将消息发送到主题，但不能从订阅接收消息 | 
+| “禁用”或“发送已禁用” | 可用 | 不能将消息发送到主题，但可以接收已在订阅中的消息。 | 
+| “禁用”或“发送已禁用” | “禁用”或“接收已禁用” | 无法将消息发送到主题，也无法从订阅接收消息。 | 
 
 ## <a name="other-statuses"></a>其他状态
 [EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 

@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 3f3287dd67f89f678a9875ddce93e2d0d26b2209
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89077618"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
@@ -109,7 +109,7 @@ ms.locfileid: "89077618"
 
 ## <a name="resources-to-deploy"></a>要部署的资源
 
-创建类型为 **Messaging**的包含主题、订阅和规则的标准服务总线命名空间。
+创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
 
 ```json
  "resources": [{

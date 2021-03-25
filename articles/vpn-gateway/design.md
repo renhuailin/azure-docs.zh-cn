@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397209"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
@@ -77,7 +77,7 @@ Azure 当前具有两个部署模型：经典模型和 Resource Manager 模型�
 
 ## <a name="expressroute-private-connection"></a><a name="ExpressRoute"></a>ExpressRoute（专用连接）
 
-使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，你可以与 Microsoft 云服务建立连接，例如 Microsoft Azure、Microsoft 365 和 CRM Online。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在场地租用设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
+使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Microsoft 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在场地租用设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。
 
 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 

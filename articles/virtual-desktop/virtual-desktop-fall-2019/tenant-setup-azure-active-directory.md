@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542030"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建租户
@@ -107,10 +107,10 @@ ms.locfileid: "91542030"
 
 继续创建 Windows 虚拟桌面租户前，需提供下列两项信息：
 
-   - Azure Active Directory 租户 ID（或**目录 ID**）
+   - Azure Active Directory 租户 ID（或 **目录 ID**）
    - Azure 订阅 ID
 
-若要查找 Azure Active Directory 租户 ID（或**目录 ID**），请执行以下操作：
+若要查找 Azure Active Directory 租户 ID（或 **目录 ID**），请执行以下操作：
 1. 在同一 [Azure 门户](https://portal.azure.com)会话中，搜索并选择“Azure Active Directory”。
 
    > [!div class="mx-imgBorder"]

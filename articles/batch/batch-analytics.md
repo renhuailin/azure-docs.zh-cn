@@ -4,15 +4,15 @@ description: 批处理分析中的主题包含可用于批处理服务资源的�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 0d55ecd7f10e267a9cb469dffcdf26c131c8ce41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91849505"
 ---
 # <a name="batch-analytics"></a>批处理分析
 
-本节中的主题包含可用于批处理服务资源的事件和警报的参考信息。
+本部分中的主题包含可用于批处理服务资源的事件和警报的参考信息。
 
 有关启用和使用批处理诊断日志的详细信息，请参阅 [Azure Batch 诊断日志记录](./batch-diagnostics.md)。
 

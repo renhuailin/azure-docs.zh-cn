@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88890274"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
@@ -33,7 +33,7 @@ Azure 备份服务会触发各种情况下在后台运行的作业，例如触�
 }
 ```
 
-Azure VM 备份作业由“jobId”字段予以标识，并且可以如[此处](/rest/api/backup/jobdetails/)所述使用简单的 *GET* 请求进行跟踪。
+Azure VM 备份作业由“jobId”字段予以标识，并且可以如 [此处](/rest/api/backup/jobdetails/)所述使用简单的 *GET* 请求进行跟踪。
 
 ## <a name="tracking-the-job"></a>跟踪作业
 

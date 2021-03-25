@@ -4,10 +4,10 @@ description: 在本快速入门中，你将使用 Azure PowerShell 创建 Azure 
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88548406"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建策略分配以识别不符合的资源
@@ -36,7 +36,7 @@ Azure PowerShell 模块用于从命令行或脚本管理 Azure 资源。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 
-本快速入门将为_不带托管磁盘的审核 VM_ 定义创建策略分配。 此策略定义可识别不使用托管磁盘的虚拟机。
+本快速入门将为 _不带托管磁盘的审核 VM_ 定义创建策略分配。 此策略定义可识别不使用托管磁盘的虚拟机。
 
 运行以下命令创建新的策略分配：
 

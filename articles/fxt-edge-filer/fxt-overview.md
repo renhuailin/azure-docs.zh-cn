@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: 72308bf64246a8041bd40fa557280014a13c95eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218776"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Azure FXT Edge Filer 混合存储缓存是什么？
@@ -47,7 +47,7 @@ Azure FXT Edge Filer 可用于支持超级用户快速访问文件，即使这�
 
 提供两种硬件型号。
 
-| “模型” | DRAM | NVMe SSD | 网络端口 |
+| 建模 | DRAM | NVMe SSD | 网络端口 |
 |-------|------|----------|---------------|
 | FXT 6600 | 1536 GB | 25.6 TB | 6 x 25Gb/10Gb + 2 x 1Gb |
 | FXT 6400 | 768 GB | 12.8 TB | 6 x 25Gb/10Gb + 2 x 1Gb |

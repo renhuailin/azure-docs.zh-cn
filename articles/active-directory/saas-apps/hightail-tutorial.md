@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 29f2610c371ecd567a18dc70e51b3eb34754d8ff
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hightail 集成
@@ -26,7 +26,7 @@ ms.locfileid: "96180846"
 * 让用户使用其 Azure AD 帐户自动登录到 Hightail。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -46,7 +46,7 @@ ms.locfileid: "96180846"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Hightail”   。
 1. 从结果面板中选择“Hightail”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
@@ -74,7 +74,7 @@ ms.locfileid: "96180846"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符(实体 ID)”文本框中，键入 URL：`https://api.spaces.hightail.com/api/v1/saml/consumer` 
     
@@ -127,7 +127,7 @@ ms.locfileid: "96180846"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Hightail”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  

@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788360"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 托管实例的点到站点连接
@@ -80,10 +80,10 @@ ms.locfileid: "92788360"
 
 ## <a name="connect-to-the-vpn-connection"></a>连接到 VPN 连接
 
-1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“SQL 托管实例”虚拟网络，以便建立到此 VNet 的连接。  在下图中，VNet 名为 **MyNewVNet** 。
+1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“SQL 托管实例”虚拟网络，以便建立到此 VNet 的连接。  在下图中，VNet 名为 **MyNewVNet**。
 
     ![VPN 连接](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. 选择“连接” 。
+2. 选择“连接”。
 3. 在对话框中，选择“连接”。
 
     ![突出显示“连接”按钮的屏幕截图。](./media/point-to-site-p2s-configure/vpn-connection2.png)  

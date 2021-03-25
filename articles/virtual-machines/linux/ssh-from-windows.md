@@ -1,25 +1,26 @@
 ---
-title: 使用 SSH 密钥连接到 Linux Vm
+title: 使用 SSH 密钥连接到 Linux VM
 description: 了解如何生成和使用来自 Windows 计算机的 SSH 密钥，以连接到 Azure 上的 Linux 虚拟机。
 author: cynthn
 ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
-ms.translationtype: MT
+ms.openlocfilehash: f018f591052050431996e3017335ab003973d25a
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147141"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770999"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
-本文适用于希望[创建](#create-an-ssh-key-pair)并使用安全外壳 (SSH) 密钥以[连接](#connect-to-your-vm)到 Azure 中的 Linux 虚拟机 (VM) 的 Windows 用户。 你还可以 [在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md) ，以便在门户中创建 vm 时使用。
+本文适用于希望[创建](#create-an-ssh-key-pair)并使用安全外壳 (SSH) 密钥以[连接](#connect-to-your-vm)到 Azure 中的 Linux 虚拟机 (VM) 的 Windows 用户。 你还可以[在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md)，以便在门户中创建 VM 时使用。
 
 
-若要从 Linux 或 macOS 客户端使用 SSH 密钥，请参阅 [快速步骤](mac-create-ssh-keys.md)。 有关 SSH 的更详细概述，请参阅[详细步骤：创建和管理用于在 Azure 中对 Linux VM 进行身份验证的 SSH 密钥](create-ssh-keys-detailed.md)。
+若要从 Linux 或 macOS 客户端使用 SSH 密钥，请参阅[快速步骤](mac-create-ssh-keys.md)。 有关 SSH 的更详细概述，请参阅[详细步骤：创建和管理用于在 Azure 中对 Linux VM 进行身份验证的 SSH 密钥](create-ssh-keys-detailed.md)。
 
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和密钥概述
 
@@ -43,7 +44,7 @@ ms.locfileid: "93147141"
 
 最新版本的 Windows 10 包括 [OpenSSH 客户端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)用于创建和使用 SSH 密钥，以及通过 PowerShell 或命令提示符建立 SSH 连接。 这是从 Windows 计算机创建到 Linux VM 的 SSH 连接的最简单方法。 
 
-你还可以在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 Bash 来连接到 VM。 你可以在 [web 浏览器](https://shell.azure.com/bash)中使用 Cloud Shell，也可以在 [Azure 门户](https://portal.azure.com)中使用，也可以使用 [Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)在 Visual Studio Code 中使用。
+你还可以在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 Bash 来连接到 VM。 你可以在 [Web 浏览器](https://shell.azure.com/bash)中通过 [Azure 门户](https://portal.azure.com)使用 Cloud Shell，或者使用 [Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)在 Visual Studio Code 中将 Cloud Shell 作为终端使用。
 
 你还可以安装[适用于 Linux 的 Windows 子系统](/windows/wsl/about)，以通过 SSH 连接到 VM，并在 Bash shell 中使用其他本机 Linux 工具。
 
@@ -67,12 +68,12 @@ az vm create \
    --name myVM \
    --image UbuntuLTS\
    --admin-username azureuser \
-   --ssh-key-value ~/.ssh/id_rsa.pub
+   --ssh-key-value ~/.ssh/id_rsa
 ```
 
 通过 PowerShell，使用 `New-AzVM` 并使用 ` 将 SSH 密钥添加到 VM 配置。 有关示例，请参阅[快速入门：使用 PowerShell 在 Azure 中创建 Linux 虚拟机](quick-create-powershell.md)。
 
-如果你使用门户进行大量部署，则可能需要将公钥上传到 Azure，以便在从门户创建 VM 时可以轻松地选择它。 有关详细信息，请参阅 [上传 SSH 密钥](../ssh-keys-portal.md#upload-an-ssh-key)。
+如果你使用门户进行大量部署，则最好将公钥上传到 Azure，以便在从门户创建 VM 时可以轻松选择公钥。 有关详细信息，请参阅[上传 SSH 密钥](../ssh-keys-portal.md#upload-an-ssh-key)。
 
 
 ## <a name="connect-to-your-vm"></a>连接到 VM
@@ -90,10 +91,10 @@ ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure 门户中的 SSH 密钥的信息，请参阅在门户中创建 Vm 时， [在 Azure 门户中生成并存储 ssh 密钥](../ssh-keys-portal.md) 。
+- 如需了解 Azure 门户中的 SSH 密钥，请参阅[在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md)，以便在门户中创建 VM 时使用。
 
 - 有关使用 SSH 密钥的详细步骤、选项以及高级示例，请参阅[创建 SSH 密钥对的详细步骤](create-ssh-keys-detailed.md)。
 
 - 也可使用 Azure Cloud Shell 中的 PowerShell 来生成 SSH 密钥并通过 SSH 连接到 Linux VM。 请参阅 [PowerShell 快速入门](../../cloud-shell/quickstart-powershell.md#ssh)。
 
-- 如果在使用 SSH 连接到 Linux VM 时遇到麻烦，请参阅 [Troubleshoot SSH connections to an Azure Linux VM](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)（通过 SSH 连接到 Azure Linux VM 故障排除）。
+- 如果在使用 SSH 连接到 Linux VM 时遇到麻烦，请参阅 [Troubleshoot SSH connections to an Azure Linux VM](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（通过 SSH 连接到 Azure Linux VM 故障排除）。

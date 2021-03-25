@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: fb8c1f25c8a22c96679a0310353f474f6b9d5ba5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88165424"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory 入门（WebApi 项目）
@@ -23,7 +23,7 @@ ms.locfileid: "88165424"
 > - [入门](vs-active-directory-webapi-getting-started.md)
 > - [发生了什么情况](vs-active-directory-webapi-what-happened.md)
 
-本文提供通过 Visual Studio 的“项目”>“连接的服务”  命令将 Active Directory 添加到 ASP.NET WebAPI 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
+本文提供通过 Visual Studio 的“项目”>“连接的服务”命令将 Active Directory 添加到 ASP.NET WebAPI 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
 
 请参阅[我的 WebAPI 项目发生了什么情况？](vs-active-directory-webapi-what-happened.md)，了解添加连接服务时对项目所做的更改。
 

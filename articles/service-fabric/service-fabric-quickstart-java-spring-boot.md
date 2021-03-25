@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529994"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
@@ -62,7 +62,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar *spring-boot*.jar
     ```
 
-1. 在 gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml  文件中添加**终结点**资源
+1. 在 gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml  文件中添加 **终结点** 资源
 
     ```xml 
         <Resources>

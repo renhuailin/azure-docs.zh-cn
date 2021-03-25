@@ -13,10 +13,10 @@ ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88799377"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录

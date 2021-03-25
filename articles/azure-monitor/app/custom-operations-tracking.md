@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 42a5318325f9961483465357403089755feb130d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933301"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
@@ -264,7 +264,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 
 若要减少应用程序报告的遥测数或者由于其他原因不想跟踪 `Enqueue` 操作，可直接使用 `Activity` API：
 
-- 创建（并启动）新的 `Activity`，而不是启动 Application Insights 操作。 *无*需在其上分配除操作名称以外的任何属性。
+- 创建（并启动）新的 `Activity`，而不是启动 Application Insights 操作。 *无* 需在其上分配除操作名称以外的任何属性。
 - 将 `yourActivity.Id` 串行化到消息有效负载，而不是 `operation.Telemetry.Id`。 还可以使用 `Activity.Current.Id`。
 
 
@@ -347,7 +347,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依赖项类型
 
-Application Insights 使用依赖关系类型自定义 UI 体验。 对于队列，它识别出以下可改善[事务诊断体验](./transaction-diagnostics.md)的 `DependencyTelemetry` 类型：
+Application Insights 使用依赖项类型来自定义 UI 体验。 对于队列，它识别出以下可改善[事务诊断体验](./transaction-diagnostics.md)的 `DependencyTelemetry` 类型：
 - `Azure queue` 适用于 Azure 存储队列
 - `Azure Event Hubs` 适用于 Azure 事件中心
 - `Azure Service Bus` 适用于 Azure 服务总线
@@ -426,7 +426,7 @@ public async Task RunMyTaskAsync()
 
 释放操作会导致操作停止，因此你可以执行此操作而不用调用 `StopOperation`。
 
-*警告*：在某些情况下，未处理的异常可能会[阻止](/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
+*警告*：在某些情况下，未处理的异常可能会 [阻止](/dotnet/csharp/language-reference/keywords/try-finally)调用 `finally`，因此无法跟踪操作。
 
 ### <a name="parallel-operations-processing-and-tracking"></a>并行处理和跟踪操作
 
@@ -448,7 +448,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-请确保始终在同一**异步**方法中调用 `StartOperation` 和处理操作，以隔离并行运行的操作。 如果操作是同步的（或非异步的），请包装过程并使用 `Task.Run` 跟踪：
+请确保始终在同一 **异步** 方法中调用 `StartOperation` 和处理操作，以隔离并行运行的操作。 如果操作是同步的（或非异步的），请包装过程并使用 `Task.Run` 跟踪：
 
 ```csharp
 public void RunMyTask(string name)
@@ -479,7 +479,7 @@ public async Task RunAllTasks()
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 Application Insights 中的[遥测关联](correlation.md)基础知识。
-- 查看相关数据如何支持 [事务诊断体验](./transaction-diagnostics.md) 和 [应用程序映射](./app-map.md)。
+- 查看关联数据如何为[事务诊断体验](./transaction-diagnostics.md)和[应用程序映射](./app-map.md)提供支持。
 - 有关 Application Insights 的类型和数据模型，请参阅[数据模型](./data-model.md)。
 - 向 Application Insights 报告自定义[事件和指标](./api-custom-events-metrics.md)。
 - 查看上下文属性集合的标准[配置](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。

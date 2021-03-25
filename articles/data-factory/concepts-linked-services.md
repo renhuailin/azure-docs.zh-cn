@@ -3,16 +3,16 @@ title: Azure 数据工厂中的链接服务
 description: 了解数据工厂中的链接服务。 链接服务将计算/数据存储链接到数据工厂。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 768af9e8568a3842b642a3ebd447d9df8064e840
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: aaa690a4205951bd251a5230721e34fcb960a3b1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389920"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782735"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure 数据工厂中的链接服务
 
@@ -62,7 +62,7 @@ ms.locfileid: "100389920"
 
 下表描述了上述 JSON 中的属性：
 
-properties | 说明 | 必须 |
+属性 | 说明 | 必需 |
 -------- | ----------- | -------- |
 name | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 链接服务的类型。 例如：AzureBlobStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91bcd998849c619a328a198c97bb8c977b9d8232
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792219"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>使用 RecoveryManager 类解决分片映射问题
@@ -37,7 +37,7 @@ RecoveryManager 类是[弹性数据库客户端库](elastic-database-client-libr
 
 GSM 和 LSM 可能会因为以下原因而出现不同步的情况：
 
-1. 删除其范围被认为是不再使用的分片，或重命名分片。 删除分片导致 **孤立的分片映射** 。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 根据更改的目的，可能需要删除分片或需要更新分片位置。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](recovery-using-backups.md)。
+1. 删除其范围被认为是不再使用的分片，或重命名分片。 删除分片导致 **孤立的分片映射**。 类似地，重命名的数据库同样可能会造成孤立的分片映射。 根据更改的目的，可能需要删除分片或需要更新分片位置。 若要恢复已删除的数据库，请参阅[还原已删除的数据库](recovery-using-backups.md)。
 2. 发生异地故障转移事件。 如果要继续，必须有人更新服务器名称和应用程序中分片映射管理器的数据库名称，并更新分片映射中所有分片的分片映射详细信息。 如果存在异地故障转移，此类恢复逻辑应该在故障转移工作流中自动化。 自动化修复操作能够实现顺畅地管理启用异地冗余的数据库，并避免人工操作。 若要了解在出现数据中心服务中断时用于恢复数据库的选项，请参阅[业务连续性](business-continuity-high-availability-disaster-recover-hadr-overview.md)和[灾难恢复](disaster-recovery-guidance.md)。
 3. 分片或 ShardMapManager 数据库还原到较早的时间点。 若要了解使用备份的时点恢复，请参阅[使用备份恢复](recovery-using-backups.md)。
 

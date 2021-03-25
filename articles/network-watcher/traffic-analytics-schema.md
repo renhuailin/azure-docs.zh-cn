@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017776"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
@@ -39,7 +39,7 @@ ms.locfileid: "98017776"
 5. FlowStartTime_t 字段指示流日志处理间隔中出现在“FlowIntervalStartTime_t”与“FlowIntervalEndTime_t”之间的第一个此类聚合流（相同的四元组）。
 6. 对于 TA 中的任何资源，UI 中指示的流是 NSG 看到的总流数，但在 Log Analytics 中，用户只会看到一条简化的记录。 若要查看所有流，请使用可从存储引用的 blob_id 字段。 该记录的总流数将与 Blob 中出现的各个流相匹配。
 
-下面的查询可帮助查看在过去30天内与非 Azure 公共 Ip 交互的所有子网。
+下面的查询有助于查看过去 30 天内与非 Azure 公共 IP 交互的所有子网。
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"

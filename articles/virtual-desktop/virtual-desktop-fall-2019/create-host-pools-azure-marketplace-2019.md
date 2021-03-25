@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008587"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池
@@ -62,7 +62,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 1. 选择一个“订阅”  。
 1. 对于“资源组”，请选择“新建”，并为新资源组提供一个名称。
-1. 选择一个**区域**。
+1. 选择一个 **区域**。
 1. 输入主机池的名称，该名称在 Windows 虚拟桌面租户中必须唯一。
 1. 选择“桌面类型”。 如果选择“个人”，则连接到此主机池的每个用户将永久分配到某个虚拟机。
 1. 输入可以登录到 Windows 虚拟桌面客户端并可以访问桌面的用户。 使用逗号分隔列表。 例如，如果要分配 `user1@contoso.com` 和 `user2@contoso.com` 访问权限，请输入 *`user1@contoso.com,user2@contoso.com`*
@@ -99,7 +99,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    >
    > 此外，该帐户必须属于 Azure AD DS 托管域或 Azure AD 租户。 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。
 
-1. 选择连接到 Active Directory 服务器的**虚拟网络**，然后选择一个子网用于托管虚拟机。
+1. 选择连接到 Active Directory 服务器的 **虚拟网络**，然后选择一个子网用于托管虚拟机。
 1. 在完成时选择“下一步:  Windows 虚拟桌面信息”。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows 虚拟桌面租户信息

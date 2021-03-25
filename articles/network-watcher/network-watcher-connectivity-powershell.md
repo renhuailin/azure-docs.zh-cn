@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: f32823686dca37cb992746924cbaff0695660242
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019799"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
 > [!div class="op_single_selector"]
-> - [门户](network-watcher-connectivity-portal.md)
+> - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
@@ -270,7 +270,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”  。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
+以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
 
 ```json
 ConnectionStatus : Reachable

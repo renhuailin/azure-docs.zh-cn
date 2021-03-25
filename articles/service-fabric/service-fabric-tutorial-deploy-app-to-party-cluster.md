@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
 ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91441283"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
@@ -35,7 +35,7 @@ ms.locfileid: "91441283"
 在开始学习本教程之前：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
+* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发** 以及 **ASP.NET 和 Web 开发** 工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)。
 
 > [!NOTE]
@@ -76,7 +76,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在“连接终结点”中，选择“创建新群集”   。  如果要部署到现有群集，请从列表中选择群集终结点。  此时会打开“创建 Service Fabric 群集”对话框。
 
-在“群集”选项卡中，  输入**群集名称**（例如“mytestcluster”），选择订阅，选择群集的区域（例如“美国中南部”），输入群集节点的数目（对于测试群集，建议使用三节点），然后输入资源组（例如“mytestclustergroup”）。 单击“下一步”。 
+在“群集”选项卡中，  输入 **群集名称**（例如“mytestcluster”），选择订阅，选择群集的区域（例如“美国中南部”），输入群集节点的数目（对于测试群集，建议使用三节点），然后输入资源组（例如“mytestclustergroup”）。 单击“下一步”。 
 
 ![屏幕截图显示了“创建 Service Fabric 群集”对话框的“群集”选项卡。](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 

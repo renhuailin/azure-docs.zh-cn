@@ -4,16 +4,16 @@ description: 本文介绍两个客户端角色以及提供给这些角色的权�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: abca19e686d39338fcaa2e0b0c8126913135170b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451904"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
 Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  
 
-**管理员**对管理功能（包括读取/写入功能）拥有完全访问权限。 默认情况下，**用户**只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。
+**管理员** 对管理功能（包括读取/写入功能）拥有完全访问权限。 默认情况下，**用户** 只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。
 
 可在创建群集时为每个角色提供不同的证书，以指定两个客户端角色（管理员和客户端）。 有关设置安全 Service Fabric 群集的详细信息，请参阅 [Service Fabric 群集安全性](service-fabric-cluster-security.md)。
 
@@ -50,7 +50,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FinishInfrastructureTask**：完成基础结构任务                             
 * **InvokeInfrastructureCommand**：基础结构任务管理命令                              
 * **ActivateNode**：激活一个节点                             
-* **DeactivateNode**：停用一个节点                             
+* **DeactivateNode** 停用一个节点                             
 * **DeactivateNodesBatch**：停用多个节点                             
 * **RemoveNodeDeactivations**：在多个节点上还原停用操作                             
 * **GetNodeDeactivationStatus**：检查停用状态                             
@@ -60,7 +60,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FileDownload**：启动映像存储客户端文件下载（群集外部）                             
 * **InternalList**：映像存储客户端文件列表操作（内部）                             
 * **Delete**：映像存储客户端删除操作                              
-* Upload：映像存储客户端上传操作                             
+* **Upload**：映像存储客户端上传操作                             
 * **NodeControl**：启动、停止和重新启动节点                             
 * **MoveReplicaControl**：将副本从一个节点移到另一个节点                             
 
@@ -89,7 +89,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 管理员访问控制也有权访问上述操作。
 
 ## <a name="changing-default-settings-for-client-roles"></a>更改客户端角色的默认设置
-在群集清单文件中，可以根据需要向客户端提供管理功能。 可以更改默认设置，方法是在[创建群集](service-fabric-cluster-creation-via-portal.md)过程中转到“**结构设置**”选项，并在“**名称**”、“**管理员**”、“**用户**”和“**值**”字段中提供上述设置。
+在群集清单文件中，可以根据需要向客户端提供管理功能。 可以更改默认设置，方法是在 [创建群集](service-fabric-cluster-creation-via-portal.md)过程中转到“**结构设置**”选项，并在“**名称**”、“**管理员**”、“**用户**”和“**值**”字段中提供上述设置。
 
 ## <a name="next-steps"></a>后续步骤
 [Service Fabric 群集安全性](service-fabric-cluster-security.md)

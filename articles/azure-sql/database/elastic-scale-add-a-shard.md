@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: efab0234d428a8283845946289cdd1e8a17ded26
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792049"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>使用弹性数据库工具添加分片
@@ -79,6 +79,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**重要说明** ：仅当确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际的数据分布将与更新后的分片映射不匹配。 在这种情况下，请改用[拆分/合并工具](elastic-scale-overview-split-and-merge.md)来执行操作。  
+**重要说明**：仅当确定所更新映射的范围为空时，才使用此方法。  上述方法不会在数据中检查要移动的范围，因此最好在代码中包含检查操作。  如果要移动的范围中存在行，则实际的数据分布将与更新后的分片映射不匹配。 在这种情况下，请改用[拆分/合并工具](elastic-scale-overview-split-and-merge.md)来执行操作。  
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

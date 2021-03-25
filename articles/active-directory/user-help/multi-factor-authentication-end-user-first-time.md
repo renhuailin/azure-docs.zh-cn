@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88795977"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什么是“附加验证”页？
@@ -63,7 +63,7 @@ ms.locfileid: "88795977"
     | 联系方式 | 说明 |
     | --- | --- |
     | 移动应用 | <ul><li>**接收验证通知。** 此选项将通知推送到智能手机或平板电脑上的验证器应用。 查看通知，如果合法，则在应用中选择“身份验证”。 公司或学校可能要求在身份验证之前，输入 PIN。</li><li>**使用验证码。** 在此模式下，应用生成每隔 30 秒更新一次的验证码。 在登录屏幕中输入最新验证码。<br>Microsoft Authenticator 应用可用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594) 和 [iOS](https://go.microsoft.com/fwlink/?linkid=866594)。</li></ul> |
-    | 身份验证电话 | <ul><li>**电话呼叫**向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的井号键 (#) 进行身份验证。</li><li>**短信**发送包含验证码的短信。 遵循短信中的提示，回复短信或在登录界面中输入提供的验证码。</li></ul> |
+    | 身份验证电话 | <ul><li>**电话呼叫** 向提供的电话号码发起自动语音呼叫。 接听电话，并按电话键盘上的井号键 (#) 进行身份验证。</li><li>**短信** 发送包含验证码的短信。 遵循短信中的提示，回复短信或在登录界面中输入提供的验证码。</li></ul> |
     | 办公电话 | 向已提供的电话号码进行自动语音呼叫。 接听电话，并按电话键盘上的井号键 (#) 进行身份验证。 |
 
 ## <a name="next-steps"></a>后续步骤

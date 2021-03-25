@@ -1,24 +1,14 @@
 ---
 title: 基于代理的解决方案体系结构
 description: 了解基于 Azure Defender for IoT 代理的体系结构和信息流。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/25/2021
-ms.author: shhazam
-ms.openlocfilehash: 51b1f639ada01eda06bdf6c938eef7dce2a379fc
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448602"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784877"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>适用于设备构建者的基于代理的解决方案
 

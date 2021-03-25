@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88924633"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
@@ -20,7 +20,7 @@ ms.locfileid: "88924633"
 文本合并  技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
-> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
+> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该 [附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖 **免费** 资源选项，该选项限制你每天进行少量的每日扩充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

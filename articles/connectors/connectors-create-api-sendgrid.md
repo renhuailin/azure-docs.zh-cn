@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: a140ae0f27c61959d8ebc6854c5bcb2a916a0fc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87290443"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
@@ -24,7 +24,7 @@ ms.locfileid: "87290443"
 
 可以在逻辑应用中使用 SendGrid 操作来执行这些任务。 还可以让其他操作使用来自 SendGrid 操作的输出。 
 
-此连接器仅提供操作，因此，若要启动逻辑应用，请使用单独的触发器，例如**定期**触发器。 例如，如果你定期将收件人添加到你的列表中，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送关于收件人和列表的电子邮件。
+此连接器仅提供操作，因此，若要启动逻辑应用，请使用单独的触发器，例如 **定期** 触发器。 例如，如果你定期将收件人添加到你的列表中，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送关于收件人和列表的电子邮件。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
@@ -37,7 +37,7 @@ ms.locfileid: "87290443"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 SendGrid 帐户的逻辑应用。 若要使用 SendGrid 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
+* 要在其中访问 SendGrid 帐户的逻辑应用。 若要使用 SendGrid 操作，请使用其他触发器（例如 **定期** 触发器）启动逻辑应用。
 
 ## <a name="connect-to-sendgrid"></a>连接到 SendGrid
 

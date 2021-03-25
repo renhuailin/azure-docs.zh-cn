@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.openlocfilehash: 2080139732d71aa5df9a9d4ad13fcc4545128dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541911"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>为常用使用方案添加预生成模型
@@ -43,7 +43,7 @@ LUIS 提供了一组预生成模型，用以快速添加常用的对话式用户
     > [!div class="mx-imgBorder"]
     > ![添加预生成意向](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
 
-1. 选择“完成”按钮。****
+1. 选择“完成”按钮。
 
 ## <a name="add-a-prebuilt-entity"></a>添加预构建实体
 1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。

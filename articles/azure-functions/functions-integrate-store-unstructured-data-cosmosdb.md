@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 5bc3895cb219338acde492b871dce806db70622b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91661153"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>使用 Azure Functions 和 Azure Cosmos DB 存储非结构化数据
@@ -42,11 +42,11 @@ ms.locfileid: "91661153"
 
 1. 选择“集成”和“+ 添加输出”。
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-add-output-binding.png" alt-text="添加 Azure Cosmos DB 输出绑定。" border="true":::
 
 1. 根据表中的指定使用“创建输出”设置：
 
-     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+     :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-configure-cosmosdb-binding.png" alt-text="配置 Azure Cosmos DB 输出绑定。" border="true":::
 
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -138,23 +138,23 @@ module.exports = async function (context, req) {
     + `task`
     + `duedate`
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png" alt-text="测试函数。" border="true":::
 
 
 1. 选择“运行”并验证是否返回了 200 状态。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function-output.png" alt-text="屏幕截图显示选择“运行”后突出显示的 HTTP 响应代码 200 状态。" border="true":::
 
 
 1. 在 Azure 门户中，搜索并选择“Azure Cosmos DB”。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png" alt-text="搜索 Cosmos DB 服务。" border="true":::
 
 1. 选择 Azure Cosmos DB 帐户，然后选择“数据资源管理器”。
 
 1. 展开“TaskCollection”节点，选择新的文档，确认该文档包含查询字符串值以及一些其他的元数据。
 
-    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="在 Azure 门户中选择 Http 函数。" border="true":::
+    :::image type="content" source="./media/functions-integrate-store-unstructured-data-cosmosdb/functions-data-explorer-check-document.png" alt-text="验证文档中的字符串值。" border="true":::
 
 你已成功地将绑定添加到 HTTP 触发器，用以在 Azure Cosmos DB 中存储非结构化数据。
 

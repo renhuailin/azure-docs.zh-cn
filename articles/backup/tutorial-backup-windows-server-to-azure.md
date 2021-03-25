@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88261899"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
@@ -33,7 +33,7 @@ ms.locfileid: "88261899"
 
    ![打开恢复服务保管库](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2. 在“恢复服务保管库”菜单中，选择“添加”。********
+2. 在“恢复服务保管库”菜单中，选择“添加”。
 
    ![提供保管库信息](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "88261899"
     * 当前订阅 ID 显示在“订阅”中。
     * 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroup” 。 如果没有“myResourceGroup”，请选择“新建”，然后键入“myResourceGroup”。
     * 从“位置”下拉菜单中选择“西欧”。
-    * 选择“创建”以创建恢复服务保管库。****
+    * 选择“创建”以创建恢复服务保管库。
 
 创建保管库后，它会显示在“恢复服务保管库”的列表中。
 
@@ -55,7 +55,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
    ![选择保管库以打开面板](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2. 在保管库仪表板菜单中，选择“备份”****。
+2. 在保管库仪表板菜单中，选择“备份”。
 
 3. 在“备份目标”菜单上：
 
@@ -96,7 +96,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 使用 Microsoft Azure 恢复服务代理规划何时将 Windows Server 备份到 Azure。 在代理下载到的服务器上执行以下步骤。
 
-1. 打开 Microsoft Azure 恢复服务代理。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
+1. 打开 Microsoft Azure 恢复服务代理。 可以通过在计算机中搜索 **Microsoft Azure 备份** 找到该代理。
 
 2. 在恢复服务代理控制台中，选择“操作”窗格中的“计划备份” 。
 

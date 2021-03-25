@@ -4,10 +4,10 @@ description: Batch 任务开始事件的参考信息。 当任务已计划由计
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91851010"
 ---
 # <a name="task-start-event"></a>任务开始事件
@@ -65,7 +65,7 @@ ms.locfileid: "91851010"
 |------------------|----------|-----------|
 |`numberOfInstances`|int|任务所需的计算节点数。|
 
-###  <a name="constraints"></a><a name="constraints"></a> 约束
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|

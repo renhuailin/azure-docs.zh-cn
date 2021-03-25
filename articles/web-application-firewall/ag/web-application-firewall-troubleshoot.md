@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92131830"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题
@@ -150,11 +150,11 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 使用排除列表的一个好处是可以仅禁用请求的特定部分。 但这意味着，特定的排除项将适用于通过 WAF 的所有流量，因为这是一项全局设置。 例如，如果对于特定的应用而言，*1=1* 是正文中的有效请求，但对于其他应用而言不是有效的请求，则可能会导致问题。 另一个好处是，如果满足特定的条件，则可以在正文、标头和 Cookie 之间选择要排除的部分，而不用排除整个请求。
 
-特定的参数偶尔会以一种不直观的方式传入 WAF。 例如，使用 Azure Active Directory 进行身份验证时会传递一个令牌。 此令牌 *__RequestVerificationToken* 通常以请求 Cookie 的形式传入。 但是，在某些情况下禁用 Cookie 时，此令牌还会以请求属性或“参数”的形式传递。 如果存在这种情况，需确保同时将 *__RequestVerificationToken* 作为**请求属性名称**添加到排除列表中。
+特定的参数偶尔会以一种不直观的方式传入 WAF。 例如，使用 Azure Active Directory 进行身份验证时会传递一个令牌。 此令牌 *__RequestVerificationToken* 通常以请求 Cookie 的形式传入。 但是，在某些情况下禁用 Cookie 时，此令牌还会以请求属性或“参数”的形式传递。 如果存在这种情况，需确保同时将 *__RequestVerificationToken* 作为 **请求属性名称** 添加到排除列表中。
 
 ![排除项](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-在此示例中，你希望排除等于 *text1* 的**请求属性名称**。 在防火墙日志中可以一目了解地看到该属性名称：**数据:匹配的数据:在 ARGS:text1:1=1 中找到 1=1**。 属性为 **text1**。 还可以通过其他几种方法找到此属性名称，具体请参阅[查找请求属性名称](#finding-request-attribute-names)。
+在此示例中，你希望排除等于 *text1* 的 **请求属性名称**。 在防火墙日志中可以一目了解地看到该属性名称：**数据:匹配的数据:在 ARGS:text1:1=1 中找到 1=1**。 属性为 **text1**。 还可以通过其他几种方法找到此属性名称，具体请参阅[查找请求属性名称](#finding-request-attribute-names)。
 
 ![WAF 排除列表](../media/web-application-firewall-troubleshoot/waf-config.png)
 
@@ -174,7 +174,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 在此示例中可以看到，输入了 *1=1* 字符串的字段名为 **text1**。
 
-:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="进度 Telerik Fiddler Web 调试器的屏幕截图。在原始选项卡中，1 = 1 在名称 text1 后可见。" border="false":::
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-1.png" alt-text="进程 Telerik Fiddler Web 调试器的屏幕截图。在“原始”选项卡中，在名称“text1”之后可以看到“1 = 1”。" border="false":::
 
 这是一个可以排除的字段。 若要详细了解排除列表，请参阅 [Web 应用程序防火墙请求大小限制和排除列表](application-gateway-waf-configuration.md#waf-exclusion-lists)。 在本例中，可以通过配置以下排除项来排除评估：
 
@@ -293,13 +293,13 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 记录第一个条目的原因是用户使用数字 IP 地址导航到了应用程序网关，在本例中可以忽略此条目。
 
-需要关注的是第二个条目（规则 942130）。 在详细信息中可以看到，它匹配了某个模式 (1=1)，而字段名为 **text1**。 遵循前面的相同步骤排除**等于** **1=1** 的**请求属性名称**。
+需要关注的是第二个条目（规则 942130）。 在详细信息中可以看到，它匹配了某个模式 (1=1)，而字段名为 **text1**。 遵循前面的相同步骤排除 **等于** **1=1** 的 **请求属性名称**。
 
 ## <a name="finding-request-header-names"></a>查找请求标头名称
 
 在 Fiddler 中还能够很方便地查找请求标头名称。 在以下屏幕截图中，可以看到此 GET 请求的标头，其中包括 *Content-Type*、*User-Agent* 等。
 
-:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="进度 Telerik Fiddler Web 调试器的屏幕截图。原始选项卡列出请求标头详细信息，如连接、内容类型和用户代理。" border="false":::
+:::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="进程 Telerik Fiddler Web 调试器的屏幕截图。“原始”选项卡列出了请求头详细信息（如 connection、content-type 和 user-agent）。" border="false":::
 
 查看请求和响应标头的另一种方式是使用 Chrome 的开发人员工具。 可以按 F12，或右键单击并选择“检查” -> “开发人员工具”->“网络”选项卡。  加载一个网页，然后单击要检查的请求。
 
@@ -329,7 +329,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 对于 v1 Web 应用防火墙，门户中现在提供以下指标： 
 
 1. Web 应用程序防火墙阻止的请求计数   被阻止的请求数
-2. Web 应用程序防火墙阻止的规则计数   阻止请求**和**匹配的所有规则
+2. Web 应用程序防火墙阻止的规则计数   阻止请求 **和** 匹配的所有规则
 3. Web 应用程序防火墙规则分配总数   在评估过程中匹配的所有规则
      
 若要启用指标，请在门户中选择“指标”选项卡，然后选择三个指标之一。

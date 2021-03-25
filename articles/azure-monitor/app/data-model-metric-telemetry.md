@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320572"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
@@ -41,7 +41,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 度量的单个值。 要聚合的各个度量值的总和。
 
-## <a name="count"></a>Count
+## <a name="count"></a>计数
 
 聚合指标的指标权重。 不应为度量设置。
 
@@ -49,7 +49,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 聚合指标的最小值。 不应为度量设置。
 
-## <a name="max"></a>Max
+## <a name="max"></a>最大值
 
 聚合指标的最大值。 不应为度量设置。
 
