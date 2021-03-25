@@ -3,16 +3,16 @@ title: Azure 数据工厂中的 Until 活动
 description: Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6431321d788e7311e076d302173ffffb96e07876
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 2ac5474f1b20e409da01c531ef13060e72fd548c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385364"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786118"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,10 +49,10 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 name | `Until` 活动的名称。 | String | 是
-type | 必须设置为 Until  。 | String | 是
+type | 必须设置为 Until。 | String | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
 timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
 活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
@@ -63,7 +63,7 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-until-activity"></a>包含 Until 活动的管道
-在此示例中，管道具有两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
+在此示例中，管道包含两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
 
 ```json
 {

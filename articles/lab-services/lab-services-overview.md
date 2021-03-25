@@ -4,10 +4,10 @@ description: 了解实验室服务如何轻松创建、管理以及保护包含�
 ms.topic: overview
 ms.date: 09/16/2020
 ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333930"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
@@ -27,9 +27,9 @@ Azure 实验室服务支持以下关键功能：
 ## <a name="managed-lab-types"></a>托管的实验室类型
 使用 Azure 实验室服务可创建由 Azure 管理其基础结构的实验室。 本文将它们称为托管实验室类型。 托管实验室类型提供不同类型的实验室，可满足用户的特定需求。 目前，支持的唯一托管实验室类型是课堂实验室。 
 
-使用托管实验室类型，可立即开始工作，且仅需进行极少的设置。 从启动 VM 到处理错误及缩放基础结构，该服务本身可处理实验室基础结构的所有管理工作。 若要创建托管实验室（例如教室实验室）类型，首先需要为组织创建实验室帐户。 实验室帐户用作中心帐户，由该帐户管理组织中的所有实验室。 
+使用托管实验室类型，可立即开始工作，且仅需进行极少的设置。 从启动 VM 到处理错误及缩放基础结构，该服务本身可处理实验室基础结构的所有管理工作。  若要创建托管实验室（例如教室实验室）类型，首先需要为组织创建实验室帐户。 实验室帐户用作中心帐户，由该帐户管理组织中的所有实验室。 
 
-在这些托管实验室类型中创建和使用 Azure 资源时，该服务会在内部 Microsoft 订阅中创建和管理资源。 它们并非创建在在用户自己的 Azure 订阅中。 服务会跟踪内部 Microsoft 订阅中这些资源的使用情况。 会就使用情况，对包含该实验室帐户的 Azure 订阅收费。   
+在这些托管实验室类型中创建和使用 Azure 资源时，该服务会在内部 Microsoft 订阅中创建和管理资源。 它们并非创建在在用户自己的 Azure 订阅中。 服务会跟踪内部 Microsoft 订阅中这些资源的使用情况。 会就使用情况，对包含该实验室帐户的 Azure 订阅收费。   
 
 下面是一些托管实验室类型的用例： 
 

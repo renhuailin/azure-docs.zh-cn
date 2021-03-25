@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 13f8f1067ce7c9fe55160400d20ec0b20788c17b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
@@ -131,11 +131,11 @@ ms.locfileid: "92515278"
 
     b. 在“SAML 登录目标 URL”框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    c. 现在打开上面从 Azure 门户下载的 **联合元数据 XML** ，并复制名为 **X509Certificate** 的标记中的证书。 将复制的值粘贴到“单一登录 x509 证书”  框中。
+    c. 现在打开上面从 Azure 门户下载的 **联合元数据 XML**，并复制名为 **X509Certificate** 的标记中的证书。 将复制的值粘贴到“单一登录 x509 证书”  框中。
 
 4. 单击“保存更改”  。
 
-5. 进行这些设置之后，需要将用于登录到 Procore 的 **域名** （例如 **contoso.com** ）发送给 [Procore 支持团队](https://support.procore.com/)，他们会为该域激活联合 SSO。
+5. 进行这些设置之后，需要将用于登录到 Procore 的 **域名**（例如 **contoso.com**）发送给 [Procore 支持团队](https://support.procore.com/)，他们会为该域激活联合 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -145,7 +145,7 @@ ms.locfileid: "92515278"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "92515278"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -201,9 +201,9 @@ ms.locfileid: "92515278"
 
     ![显示“将人员添加到 Boylan 构造”的屏幕截图，可在其中输入用户信息。](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. 在“名字”  文本框中，输入用户的名字（如 **Britta** ）。
+    a. 在“名字”  文本框中，输入用户的名字（如 **Britta**）。
 
-    b. 在“姓氏”  文本框中，输入用户的姓氏（如 **Simon** ）。
+    b. 在“姓氏”  文本框中，输入用户的姓氏（如 **Simon**）。
 
     c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 

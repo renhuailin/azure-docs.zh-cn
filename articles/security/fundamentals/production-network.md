@@ -1,6 +1,6 @@
 ---
 title: Azure 生产网络
-description: 了解 Azure 生产网络。 请参阅用于建立网络连接的安全访问方法和保护机制。
+description: 了解 Azure 生产网络。 请参阅用于与网络建立连接的安全访问方法和保护机制。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87543803"
 ---
 # <a name="the-azure-production-network"></a>Azure 生产网络

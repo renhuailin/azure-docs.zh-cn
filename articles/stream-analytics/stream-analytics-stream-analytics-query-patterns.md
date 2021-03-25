@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019986"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式
@@ -931,7 +931,7 @@ JOIN
 
 ## <a name="get-help"></a>获取帮助
 
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页](/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

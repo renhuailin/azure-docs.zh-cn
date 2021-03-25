@@ -1,6 +1,6 @@
 ---
 title: 用户定义的还原点
-description: 如何创建 (以前的 SQL DW) 专用 SQL 池的还原点。
+description: 如何创建专用 SQL 池（以前称为 SQL DW）的还原点。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 097a3132208eee98b3f95291e414263e637bc265
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545581"
 ---
-# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a> (以前的 SQL DW) 的专用 SQL 池的用户定义的还原点
+# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>专用 SQL 池（以前称为 SQL DW）的用户定义还原点
 
-在本文中，你将了解如何使用 PowerShell 和 Azure 门户在 Azure Synapse Analytics 中为专用 (SQL DW) 创建新的用户定义的还原点。
+本文介绍如何使用 PowerShell 和 Azure 门户为 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）新建用户定义的还原点。
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>通过 PowerShell 创建用户定义的还原点
 
@@ -62,9 +62,9 @@ Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)帐户。
 
-2. 导航到要为其创建还原点 (以前的 SQL DW) 的专用 SQL 池。
+2. 导航到需要为其创建还原点的专用 SQL 池（以前称为 SQL DW）。
 
-3. 从左窗格中选择“概述”  ，选择“+ 新建还原点”  。 如果 "新还原点" 按钮未启用，请确保专用 SQL 仓库 (以前的 SQL DW) 未暂停。
+3. 从左窗格中选择“概述”  ，选择“+ 新建还原点”  。 如果“新建还原点”按钮未启用，请确保专用 SQL 池（以前称为 SQL DW）未暂停。
 
     ![新建还原点](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,6 +74,6 @@ Get-AzSqlDatabaseRestorePoint -ResourceGroupName $ResourceGroupName -ServerName 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原现有的专用 SQL 池 (以前的 SQL DW) ](sql-data-warehouse-restore-active-paused-dw.md)
-- [还原已删除的专用 SQL 池 (以前的 SQL DW) ](sql-data-warehouse-restore-deleted-dw.md)
-- [从异地备份专用 SQL 池还原 (以前的 SQL DW) ](sql-data-warehouse-restore-from-geo-backup.md)
+- [还原现有专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-restore-active-paused-dw.md)
+- [还原已删除的专用 SQL 池（以前称为 SQL DW）](sql-data-warehouse-restore-deleted-dw.md)
+- [从异地备份专用 SQL 池（以前称为 SQL DW）进行还原](sql-data-warehouse-restore-from-geo-backup.md)

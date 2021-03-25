@@ -4,10 +4,10 @@ description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.openlocfilehash: 4c1990909dc555e9e2a6d09538b807ba7e07ce83
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363213"
 ---
 # <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
@@ -440,13 +440,13 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | 资源组事件数据。 |
-| `specversion` | string | CloudEvents 架构规范版本。 |
+| `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `authorization` | object | 操作请求的授权。 |
 | `claims` | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |

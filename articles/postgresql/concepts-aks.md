@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708843"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
@@ -26,11 +26,11 @@ Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes �
 可以确认 AKS 群集是否已加速了网络：
 1. 转到 Azure 门户并选择 AKS 群集。
 2. 选择“属性”选项卡。
-3. 复制**基础结构资源组**的名称。
+3. 复制 **基础结构资源组** 的名称。
 4. 使用门户搜索栏找到并打开基础结构资源组。
 5. 在该资源组中选择一个 VM。
 6. 转到 VM 的“网络”  选项卡。
-7. 确认是否已启用**加速网络**。
+7. 确认是否已启用 **加速网络**。
 
 也可以通过 Azure CLI 使用以下两个命令：
 ```azurecli

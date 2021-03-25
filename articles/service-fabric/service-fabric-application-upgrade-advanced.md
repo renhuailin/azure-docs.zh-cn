@@ -4,10 +4,10 @@ description: 本文介绍有关升级 Service Fabric 应用程序的一些高级
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98792042"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
@@ -212,7 +212,7 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 在回滚期间，可以随时使用 [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade) 更改 *UpgradeReplicaSetCheckTimeout* 的值和模式。
 
 ## <a name="next-steps"></a>后续步骤
-[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 

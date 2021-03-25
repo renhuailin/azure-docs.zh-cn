@@ -13,10 +13,10 @@ ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100103169"
 ---
 # <a name="single-page-application-app-registration"></a>单页应用程序：应用注册
@@ -47,7 +47,7 @@ ms.locfileid: "100103169"
 1. 在 Azure 门户中，选择先前在[创建应用注册](#create-the-app-registration)中创建的应用注册。
 1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 在“Web 应用程序”下，选择“单页应用程序”磁贴。
-1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。 不要 **选中 "** **隐式授权" 和 "混合流**" 下的任一复选框。
+1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。 请勿选中“隐式授权和混合流”下的任一复选框 。
 1. 选择“配置”以添加重定向 URI。
 
 现在，你已经完成了单页应用程序 (SPA) 的注册，并配置了重定向 URI，客户端将被重定向到该 URI，并且安全令牌也将发送到该 URI。 通过使用“添加平台”窗格中的“单页应用程序”磁贴来配置重定向 URI，可以将应用程序注册配置为支持使用 PKCE 和 CORS 的授权代码流。
@@ -62,7 +62,7 @@ ms.locfileid: "100103169"
 1. 在“管理”下，选择“身份验证” > “添加平台”  。
 1. 在“Web 应用程序”下，选择“单页应用程序”磁贴。
 1. 在“重定向 URI”下，输入 [重定向 URI](reply-url.md)。
-1. 启用 **隐式授权和混合流**：
+1. 启用“隐式授权和混合流”：
     - 如果你的应用程序登录了用户，请选择“ID 令牌”。
     - 如果你的应用程序也需调用受保护的 Web API，请选择“访问令牌”。 有关这些令牌类型的更多信息，请参阅 [ID 令牌](id-tokens.md)和[访问令牌](access-tokens.md)。
 1. 选择“配置”以添加重定向 URI。

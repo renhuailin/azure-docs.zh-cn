@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: active-directory
 author: msaburnley
@@ -9,10 +9,10 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98052936"
 ---
 ## <a name="lifecycle"></a>生命周期
@@ -33,7 +33,7 @@ ms.locfileid: "98052936"
 
 1. 若要允许用户延期其分配，请将“允许用户延期访问权限”设置为“是”。
 
-    如果策略中允许使用扩展，则用户将收到电子邮件14天，还会在其访问包分配设置为过期之前的一天内接收，并提示他们扩展分配。 在请求扩展时，用户仍必须在策略的作用域中。 此外，如果策略的分配是明确的结束日期，并且用户提交了扩展访问的请求，则该请求中的扩展日期必须在分配过期时（即在用于向用户授予访问包访问权限的策略中定义）过期。 例如，如果策略指示分配设置为在 6 月 30 日过期，则用户最多可以请求延期到 6 月 30 日。
+    如果策略中允许延期，在将用户的访问包分配设置为过期之前的 14 天以及 1 天，用户会收到一封电子邮件，其中提示他们是否要延期分配。 用户在请求扩展时必须仍在策略范围内。 如果策略有明确的分配结束日期，且用户提交将访问权限延期的请求，则请求中的延期日期不得迟于分配过期日期，如用于向用户授予访问包访问权限的策略中定义的那样。 例如，如果策略指示分配设置为在 6 月 30 日过期，则用户最多可以请求延期到 6 月 30 日。
 
     如果用户的访问延期，则用户将无法在指定的延期日期（在创建了策略的用户的时区中设置的日期）之后请求访问包。
 

@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格中的容器注册表事件提供的属
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 7e19b223e43f30a532c1cd8bdc86f9a29220f5aa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363570"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>充当事件网格源的 Azure 容器注册表
@@ -295,7 +295,7 @@ Azure 容器注册表发出以下事件类型：
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Blob 存储事件数据。 |
+| `data` | object | Blob 存储事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---

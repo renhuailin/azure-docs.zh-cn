@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: a20510ee2800a54f9a51a2f498ee8ae8a3e51d55
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543143"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
@@ -78,7 +78,7 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 
 :::image type="content" source="./media/howto-troubleshoot-sys-schema/redundant-indexes.png" alt-text="冗余的索引":::
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 总而言之，sys_schema 是用于优化性能和维护数据库的极佳工具。 请务必在 Azure Database for MySQL 中利用此功能。 
 

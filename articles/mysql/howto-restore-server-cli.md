@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ee06eed1b8f54877d01a8b316c015938038879cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535395"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
@@ -27,7 +27,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 本文需要 Azure CLI 版本2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="set-backup-configuration"></a>设置备份配置
 
@@ -85,7 +85,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 *   time_zone - 此值设置为默认值“SYSTEM”
 *   event_scheduler - 还原的服务器上的 event_scheduler 设置为“OFF”
 
-你将需要从主服务器复制该值，并通过重新配置[服务器参数](howto-server-parameters.md)在还原的服务器上设置该值
+你将需要从主服务器复制该值，然后通过重新配置[服务器参数](howto-server-parameters.md)在还原的服务器上对其进行设置
 
 在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 

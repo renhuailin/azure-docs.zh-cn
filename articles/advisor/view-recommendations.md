@@ -4,10 +4,10 @@ description: 查看和筛选 Azure 顾问建议以减少干扰。
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 43bdaba7d774bba8857a6eb3ef296d7ab8e1c264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90986859"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>查看对你重要的 Azure 顾问建议
@@ -47,7 +47,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 1. 选择建议列表中的建议
 1. 针对要推迟或关闭的建议选择“推迟”或“关闭”
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="显示筛选选项的 Azure 顾问的屏幕截图。":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss.png" alt-text="使用托管磁盘”窗口的屏幕截图，其中突出显示了选择列和一条建议的“推迟”和“消除”操作。":::
 
 ### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>在 Azure 门户中推迟或关闭多个建议
 
@@ -57,7 +57,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 1. 针对需要推迟或关闭建议的所有资源，选择行左侧的复选框。
 1. 选择表左上的“推迟”或“关闭”。 
 
-     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="显示筛选选项的 Azure 顾问的屏幕截图。":::
+     :::image type="content" source="./media/view-recommendations/postpone-dismiss-multiple.png" alt-text="“使用托管磁盘”窗口的屏幕截图，其中突出显示了选择列和左上角的“推迟”和“消除”操作。":::
 
 > [!NOTE]
 > 需要参与者或所有者权限才能关闭或推迟建议。 详细了解 Azure 顾问中的权限。
@@ -73,7 +73,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 
 1. 在“概览”面板上将筛选器更改为“已推迟”。 Azure 顾问然后会显示已推迟或关闭的建议。
 
-    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="显示筛选选项的 Azure 顾问的屏幕截图。":::
+    :::image type="content" source="./media/view-recommendations/activate-postponed.png" alt-text="“Azure 顾问”窗口的屏幕截图，其中显示了选择的“已推迟”下拉菜单。":::
 
 1. 选择一个用于查看“已推迟”或“已关闭”建议的类别。 
 
@@ -81,7 +81,7 @@ Azure 顾问允许关闭或推迟单个资源的建议。 如果关闭某个建�
 
 1. 单击行尾的“激活”。 单击后，该资源的建议处于活动状态，并会从此表中删除。 现在，建议在“活动”选项卡中处于可见状态。
  
-     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="显示筛选选项的 Azure 顾问的屏幕截图。":::
+     :::image type="content" source="./media/view-recommendations/activate-postponed-2.png" alt-text="“启用软删除”窗口的屏幕截图，其中突出显示了“已推迟并消除”选项卡和“激活”操作。":::
 
 ## <a name="next-steps"></a>后续步骤
 

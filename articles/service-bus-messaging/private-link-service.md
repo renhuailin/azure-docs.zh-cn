@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
 ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427141"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 服务总线命名空间
@@ -23,7 +23,7 @@ ms.locfileid: "94427141"
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 >[!WARNING]
-> 实施专用终结点可以阻止其他 Azure 服务与服务总线进行交互。 例外情况是，即使在启用了专用终结点的情况下，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅 [受信任服务](#trusted-microsoft-services)。
+> 实施专用终结点可以阻止其他 Azure 服务与服务总线进行交互。 例外情况是，可以允许从某些受信任的服务访问服务总线资源，即使启用了专用终结点也是如此。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 >
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure 应用服务
@@ -229,7 +229,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ## <a name="validate-that-the-private-link-connection-works"></a>验证专用链接连接是否有效
 
-应该验证专用终结点的虚拟网络中的资源是否通过专用 IP 地址连接到服务总线命名空间，以及它们是否具有正确的专用 DNS 区域集成。
+应该验证专用终结点的虚拟网络中的资源是否可以通过专用 IP 地址连接到服务总线命名空间，以及它们是否具有正确的专用 DNS 区域集成。
 
 首先，遵循[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)中的步骤创建一个虚拟机。
 
@@ -257,9 +257,9 @@ Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>限制和设计注意事项
 
-**定价** ：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
+**定价**：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
 
-**限制** ：此功能可在所有 Azure 公共区域中使用。
+**限制**：此功能可在所有 Azure 公共区域中使用。
 
 每个服务总线命名空间的最大专用终结点数目：120。
 

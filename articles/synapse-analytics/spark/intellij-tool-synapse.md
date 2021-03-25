@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
 ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675821"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
@@ -218,7 +218,7 @@ ms.locfileid: "101675821"
 3. 在主窗口中，选择“在本地运行”选项卡。
 4. 提供以下值，然后选择“确定”：
 
-    |属性 |Value |
+    |属性 |值 |
     |----|----|
     |环境变量|请确认 HADOOP_HOME 的值是否正确。|
     |WINUTILS.exe 位置|请确保路径正确。|

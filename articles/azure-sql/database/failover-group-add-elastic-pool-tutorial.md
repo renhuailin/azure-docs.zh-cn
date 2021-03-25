@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
 ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593971"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
@@ -55,14 +55,14 @@ ms.locfileid: "94593971"
     ![选择弹性池](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. 使用以下值配置弹性池：
-   - **名称** ：提供弹性池的唯一名称，例如 `myElasticPool`。
-   - **订阅** ：从下拉列表中选择订阅。
-   - **ResourceGroup** ：从下拉菜单中选择在第 1 部分创建的资源组 `myResourceGroup`。
-   - **服务器** ：从下拉菜单中选择在第 1 部分创建的服务器。  
+   - **名称**：提供弹性池的唯一名称，例如 `myElasticPool`。
+   - **订阅**：从下拉列表中选择订阅。
+   - **ResourceGroup**：从下拉菜单中选择在第 1 部分创建的资源组 `myResourceGroup`。
+   - **服务器**：从下拉菜单中选择在第 1 部分创建的服务器。  
 
        ![为弹性池创建新服务器](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **计算 + 存储** ：选择“配置弹性池”以配置计算和存储，并将单一数据库添加到弹性池中。 在“池设置”选项卡上，保留默认值“第 5 代”、2 个 vCore 和 32GB 存储。
+   - **计算 + 存储**：选择“配置弹性池”以配置计算和存储，并将单一数据库添加到弹性池中。 在“池设置”选项卡上，保留默认值“第 5 代”、2 个 vCore 和 32GB 存储。
 
 1. 在“配置”页上选择“数据库”选项卡，然后选择“添加数据库”。   选择在第 1 部分创建的数据库，然后选择“应用”将其添加到弹性池中。 再次选择“应用”以应用弹性池设置并关闭“配置”页。 
 
@@ -144,11 +144,11 @@ ms.locfileid: "94593971"
     ![添加新的故障转移组](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
 1. 在“故障转移组”页上输入或选择以下值，然后选择“创建”： 
-    - **故障转移组名称** ：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
-    - **辅助服务器** ：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 为新的辅助服务器输入以下值之后，选择“选择”。
-        - **服务器名称** ：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
-        - **服务器管理员登录名** ：键入 `azureuser`
-        - **密码** ：键入符合密码要求的复杂密码。
+    - **故障转移组名称**：键入唯一的故障转移组名称，例如 `failovergrouptutorial`。
+    - **辅助服务器**：选择“配置所需设置”选项，然后选择“创建新服务器”。 或者，可以选择现有的服务器作为辅助服务器。 为新的辅助服务器输入以下值之后，选择“选择”。
+        - **服务器名称**：键入辅助服务器的唯一名称，例如 `mysqlsecondary`。
+        - **服务器管理员登录名**：键入 `azureuser`
+        - **密码**：键入符合密码要求的复杂密码。
         - 位置：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器的位置相同。
 
        > [!NOTE]
@@ -391,7 +391,7 @@ ms.locfileid: "94593971"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管数据库和弹性池的服务器。 |

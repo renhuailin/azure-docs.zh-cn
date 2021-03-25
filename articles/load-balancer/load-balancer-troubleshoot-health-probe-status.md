@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 负载均衡器运行状况探测状态问题
-description: 了解如何对 Azure 负载均衡器运行状况探测状态的已知问题进行故障排除。
+title: 排查 Azure 负载均衡器运行状况探测状态的问题
+description: 了解如何排查 Azure 负载均衡器运行状况探测状态的已知问题。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: allensu
 ms.openlocfilehash: 28823c997cd974d5061829df88680ed52075caa0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98029169"
 ---
-# <a name="troubleshoot-azure-load-balancer-health-probe-status"></a>排查 Azure 负载均衡器运行状况探测状态问题
+# <a name="troubleshoot-azure-load-balancer-health-probe-status"></a>排查 Azure 负载均衡器运行状况探测状态的问题
 
-本页提供常见的 Azure 负载均衡器运行状况探测问题的疑难解答信息。
+此页介绍有关 Azure 负载均衡器运行状况探测常见问题的故障排查信息。
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>故障描述：负载均衡器后端的 VM 不响应运行状况探测
 后端服务器必须通过探测检查后，才可加入负载均衡器集。 有关运行状况探测的详细信息，请参阅[了解负载均衡器探测](load-balancer-custom-probe-overview.md)。 
@@ -45,7 +45,7 @@ ms.locfileid: "98029169"
 验证及解决方法
 
 1. 登录到后端 VM。
-2. 打开命令提示符并运行以下命令，以验证是否有应用程序在侦听探测端口： netstat-a
+2. 打开命令提示符并运行下列命令，以验证是否有应用程序在侦听探测端口：          netstat -an
 3. 如果端口状态未列为“正在侦听”，请配置适当的端口。 
 4. 或者，选择其他列为“正在侦听”的端口，并相应地更新负载均衡器配置。
 

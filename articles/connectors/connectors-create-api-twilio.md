@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: d144960972f5a1b45e88cc3a0ea015925cae3b91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288142"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
@@ -35,7 +35,7 @@ ms.locfileid: "87288142"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 Twilio 帐户的逻辑应用。 若要使用 Twilio 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
+* 要在其中访问 Twilio 帐户的逻辑应用。 若要使用 Twilio 操作，请使用其他触发器（例如 **定期** 触发器）启动逻辑应用。
 
 ## <a name="connect-to-twilio"></a>连接到 Twilio
 

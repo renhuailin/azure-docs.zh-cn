@@ -3,17 +3,17 @@ title: 数据集
 description: 了解数据工厂中的数据集。 数据集表示输入/输出数据。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 167fb0014f2f0a9e7a2530fe276289f94347146e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390022"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785778"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -63,7 +63,7 @@ ms.locfileid: "100390022"
 ```
 下表描述了上述 JSON 中的属性：
 
-properties | 说明 | 必须 |
+属性 | 说明 | 必需 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：DelimitedText、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |

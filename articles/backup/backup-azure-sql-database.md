@@ -4,10 +4,10 @@ description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316829"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
@@ -15,7 +15,7 @@ ms.locfileid: "91316829"
 [Azure 备份](backup-overview.md)提供了一个基于流的专业解决方案，用于备份在 Azure VM 中运行的 SQL Server。 此解决方案考虑到了 Azure 备份的零基础结构备份、长期保留和集中管理的优点。 它还特别为 SQL Server 提供了以下优势：
 
 1. 工作负荷感知备份，支持所有备份类型（完整备份、差异备份和日志备份）
-2. 通过频繁的日志备份 (恢复点目标) 15 分钟 RPO
+2. 15 分钟恢复点目标 (RPO)，频繁备份日志
 3. 最多一秒的时点恢复
 4. 单数据库级别的备份和还原
 
@@ -27,10 +27,10 @@ ms.locfileid: "91316829"
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 该 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是一个 [虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份使用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户必须是 SQL 上的公用登录。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是[虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份使用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此该帐户需要是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
-* 该插件会直接将数据发送到恢复服务保管库，从而无需暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
+* 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
 * 数据传输完成后，协调器通过备份服务确认提交。
 
   ![SQL 备份体系结构](./media/backup-azure-sql-database/azure-backup-sql-overview.png)
@@ -40,7 +40,7 @@ ms.locfileid: "91316829"
 在开始之前，请验证以下要求：
 
 1. 确保有一个 SQL Server 实例在 Azure 中运行。 可以在市场中[快速创建 SQL Server 实例](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
-2. 查看 [功能注意事项](sql-support-matrix.md#feature-considerations-and-limitations) 和 [方案支持](sql-support-matrix.md#scenario-support)。
+2. 查看[功能注意事项](sql-support-matrix.md#feature-considerations-and-limitations)和[方案支持](sql-support-matrix.md#scenario-support)。
 3. 查看有关此方案的[常见问题解答](faq-backup-sql-server.md)。
 
 ## <a name="set-vm-permissions"></a>设置 VM 权限
@@ -51,9 +51,9 @@ ms.locfileid: "91316829"
 * 创建 NT SERVICE\AzureWLBackupPluginSvc 帐户，以发现虚拟机上的数据库。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 * Azure 备份使用 NT AUTHORITY\SYSTEM 帐户来发现 VM 上运行的数据库。 此帐户必须是 SQL 上的公共登录名。
 
-如果未在 Azure Marketplace 中创建 SQL Server VM，或者使用的是 SQL 2008 或 2008 R2，则可能会收到 **UserErrorSQLNoSysadminMembership** 错误。
+如果你未在 Azure 市场中创建 SQL Server VM，或者在 SQL 2008 或 2008 R2 上操作，可能会收到 UserErrorSQLNoSysadminMembership 错误。
 
-对于在 Windows 2008 R2 上运行的 **SQL 2008** 和 **2008 R2** 的情况下提供权限，请参阅 [此处](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
+要了解在使用 Windows 2008 R2 上运行的 SQL 2008 和 2008 R2 时如何授权，请参阅[此处](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2) 。
 
 对于所有其他版本，可使用以下步骤解决权限问题：
 
@@ -91,7 +91,7 @@ ms.locfileid: "91316829"
 
 1. 在对象资源管理器中转到该 SQL Server 实例。
 2. 导航到“安全性”->“登录名”
-3. 右键单击 "登录名"，然后选择 "*新建登录名 ...* "
+3. 右键单击登录名，然后选择“新建登录名…”
 
     ![使用 SSMS 的新登录名](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
@@ -103,13 +103,13 @@ ms.locfileid: "91316829"
 
     ![在 SSMS 中选择角色](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. 转到“状态”。 *授予*连接到数据库引擎的权限，并将“登录名”设置为“已启用”。
+6. 转到“状态”。 *授予* 连接到数据库引擎的权限，并将“登录名”设置为“已启用”。
 
     ![在 SSMS 中授予权限](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. 选择“确定”。
 8. 重复相同的步骤序列（上述步骤 1-7），将 NT Service\AzureWLBackupPluginSvc 登录名添加到 SQL Server 实例。 如果该登录名已存在，请确保它具有 sysadmin 服务器角色并处于这种状态：已授予连接到数据库引擎的权限，且“登录名”设置为“已启用”。
-9. 授予权限后，在门户中**重新发现数据库**：“保管库”->“备份基础结构”->“Azure VM 中的工作负荷”： 
+9. 授予权限后，在门户中 **重新发现数据库**：“保管库”->“备份基础结构”->“Azure VM 中的工作负荷”： 
 
     ![在 Azure 门户中重新发现数据库](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

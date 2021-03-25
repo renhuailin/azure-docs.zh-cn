@@ -14,10 +14,10 @@ ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860569"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>在 Azure Active Directory 中撤销用户访问
@@ -119,5 +119,5 @@ ms.locfileid: "96860569"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure AD 管理员的安全访问实践](../roles/security-planning.md)
+- [面向 Azure AD 管理员的安全访问做法](../roles/security-planning.md)
 - [添加或更新用户配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)

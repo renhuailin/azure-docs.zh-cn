@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540377"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安装 Azure Functions 运行时预览版 2
@@ -47,7 +47,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
     ![Azure Functions 运行时预览版安装程序][1]
 
 1. 单击“下一步”  。
-1. 在阅读 **EULA** 的条款后，**选中复选框**以接受条款并单击“下一步”  以继续操作。
+1. 在阅读 **EULA** 的条款后，**选中复选框** 以接受条款并单击“下一步”  以继续操作。
 1. 选择要在此计算机上安装的角色“Functions 管理角色”和/或“Functions 辅助角色”并单击“下一步”    。
 
     ![Azure Functions 运行时预览版安装程序 - 角色选择][3]
@@ -55,19 +55,19 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
     > [!NOTE]
     > 可以在其他许多计算机上安装 **Functions 辅助角色**。 为此，请按照这些说明进行操作，并且仅在安装程序中选择“Functions 辅助角色”。 
 
-1. 单击“下一步”，让 **Azure Functions 运行时安装向导**开始在计算机上执行安装过程  。
+1. 单击“下一步”，让 **Azure Functions 运行时安装向导** 开始在计算机上执行安装过程  。
 1. 完成后，安装向导将启动“Azure Functions 运行时”配置工具  。
 
     ![Azure Functions 运行时预览版安装程序完成][6]
 
     > [!NOTE]
-    > 如果是在 **Windows 10** 上进行安装并且未启用**容器**功能，则 **Azure Functions 运行时安装程序**会提示重新启动计算机来完成安装。
+    > 如果是在 **Windows 10** 上进行安装并且未启用 **容器** 功能，则 **Azure Functions 运行时安装程序** 会提示重新启动计算机来完成安装。
 
 ## <a name="configure-the-azure-functions-runtime"></a>配置 Azure Functions 运行时
 
 若要完成 Azure Functions 运行时安装，必须完成配置。
 
-1. **Azure Functions 运行时**配置工具会显示计算机上安装了哪些角色。
+1. **Azure Functions 运行时** 配置工具会显示计算机上安装了哪些角色。
 
     ![Azure Functions 运行时预览版配置工具][7]
 
@@ -75,7 +75,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版数据库配置][8]
 
-1. 单击“凭据”选项卡  。在此处，必须为托管所有函数应用的文件共享创建两个凭据。  为**文件共享所有者**和**文件共享用户**指定**用户名**和**密码**组合，并单击“应用”  。
+1. 单击“凭据”选项卡  。在此处，必须为托管所有函数应用的文件共享创建两个凭据。  为 **文件共享所有者** 和 **文件共享用户** 指定 **用户名** 和 **密码** 组合，并单击“应用”  。
 
     ![Azure Functions 运行时预览版凭据][9]
 
@@ -87,7 +87,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
     ![Azure Functions 运行时预览版 IIS][11]
 
-1. 单击“服务”选项卡。  此选项卡显示 Azure Functions 运行时配置工具中的服务的状态。  完成初始配置后，如果 **Azure Functions 主机激活服务**未运行，请单击“启动服务” 
+1. 单击“服务”选项卡。  此选项卡显示 Azure Functions 运行时配置工具中的服务的状态。  完成初始配置后，如果 **Azure Functions 主机激活服务** 未运行，请单击“启动服务” 
 
     ![Azure Functions 运行时预览版配置完成][12]
 
@@ -101,7 +101,7 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
 1. 以 `https://<machinename>.<domain>` 的形式浏览到 **Azure Functions 运行时门户**，例如 `https://mycomputer.mydomain.com`。
 
-1. 系统会提示**登录**。如果是在域中部署的，请使用帐户用户名和密码登录；否则，请使用本地帐户用户名和密码登录到门户。
+1. 系统会提示 **登录**。如果是在域中部署的，请使用帐户用户名和密码登录；否则，请使用本地帐户用户名和密码登录到门户。
 
     ![Azure Functions 运行时预览版门户登录][14]
 

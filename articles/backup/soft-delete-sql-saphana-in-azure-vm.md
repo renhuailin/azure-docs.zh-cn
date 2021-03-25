@@ -4,10 +4,10 @@ description: 了解 Azure VM 中 SQL Server 的软删除以及 Azure VM 工作�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254289"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中 SQL Server 的软删除和 Azure VM 工作负荷中 SAP HANA 的软删除
@@ -25,7 +25,7 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 
    ![停止备份](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 
-2. 在接下来的窗口中，会提供用于删除或保留备份数据的选项。 如果选择“删除备份数据”****，则不会永久删除数据库备份， 而是将备份数据以软删除状态保留 14 天。 删除操作将延迟到第 15 天，并在第 1 天、第 12 天和第 15 天通过定期的警报电子邮件通知用户该数据库的备份状态。
+2. 在接下来的窗口中，会提供用于删除或保留备份数据的选项。 如果选择“删除备份数据”，则不会永久删除数据库备份， 而是将备份数据以软删除状态保留 14 天。 删除操作将延迟到第 15 天，并在第 1 天、第 12 天和第 15 天通过定期的警报电子邮件通知用户该数据库的备份状态。
 
    ![删除备份数据](./media/soft-delete-sql-saphana-in-azure-vm/delete-backup-data.png)
 
@@ -33,7 +33,7 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 
    ![已软删除的项](./media/soft-delete-sql-saphana-in-azure-vm/soft-deleted-items.png)
 
-4. 若要还原已软删除的 DB，必须先将其取消删除。 若要取消删除，请选择已软删除的 DB，然后选择“取消删除”选项****。
+4. 若要还原已软删除的 DB，必须先将其取消删除。 若要取消删除，请选择已软删除的 DB，然后选择“取消删除”选项。
 
    ![取消删除数据库](./media/soft-delete-sql-saphana-in-azure-vm/undelete-database.png)
 
@@ -41,11 +41,11 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 
    ![取消删除警告](./media/soft-delete-sql-saphana-in-azure-vm/undelete-warning.png)
 
-5. 此时，还可以通过从已软删除的选定备份项中选择“还原”来还原数据****。
+5. 此时，还可以通过从已软删除的选定备份项中选择“还原”来还原数据。
 
    ![还原 VM](./media/soft-delete-sql-saphana-in-azure-vm/restore-vm.png)
 
-6. 取消删除操作完成后，状态将恢复为“停止备份并保留数据”，然后，你可以选择“恢复备份”。**** “恢复备份”操作会恢复处于活动状态的、与定义备份和保留计划的用户所选的备份策略相关联的备份项。****
+6. 取消删除操作完成后，状态将恢复为“停止备份并保留数据”，然后，你可以选择“恢复备份”。 “恢复备份”操作会恢复处于活动状态的、与定义备份和保留计划的用户所选的备份策略相关联的备份项。
 
    ![恢复备份](./media/soft-delete-sql-saphana-in-azure-vm/resume-backup.png)
 
@@ -64,7 +64,7 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
 ```
 
-备份项的“DeleteState”**** 将从“NotDeleted”**** 更改为“ToBeDeleted”****。 备份数据会保留 14 天。 如果要还原删除操作，则应执行撤消-删除操作。
+备份项的“DeleteState”将从“NotDeleted”更改为“ToBeDeleted”。 备份数据会保留 14 天。 如果要还原删除操作，则应执行撤消-删除操作。
 
 ### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>使用 Azure PowerShell 撤销删除操作
 
@@ -82,7 +82,7 @@ $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkloa
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
 ```
 
-备份项的“DeleteState”**** 将还原为“NotDeleted”****。 但保护仍处于停止状态。 恢复备份以重新启用保护。
+备份项的“DeleteState”将还原为“NotDeleted”。 但保护仍处于停止状态。 恢复备份以重新启用保护。
 
 ## <a name="how-to-disable-soft-delete"></a>如何禁用软删除
 

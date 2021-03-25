@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
 ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94538489"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
@@ -30,7 +30,7 @@ ms.locfileid: "94538489"
 > 
 
 ## <a name="exceptions-in-codelens"></a>CodeLens 中的异常
-![屏幕截图显示 CodeLens 中显示的47异常。](./media/visual-studio-codelens/codelens-exceptions.png)
+![屏幕截图显示了 CodeLens 中显示的 47 个异常。](./media/visual-studio-codelens/codelens-exceptions.png)
 
 异常 CodeLens 指示器会在处理方法提供的请求时，显示过去 24 小时内应用程序中发生的十五大最频繁发生的异常的数量。
 
@@ -52,7 +52,7 @@ ms.locfileid: "94538489"
 > 
 
 ## <a name="requests-in-codelens"></a>CodeLens 中的请求
-![屏幕截图显示684请求的详细信息，包括7% 故障。](./media/visual-studio-codelens/codelens-requests.png)
+![屏幕截图显示了 684 个请求的详细信息，包括 7% 的失败。](./media/visual-studio-codelens/codelens-requests.png)
 
 请求 CodeLens 指示器显示过去 24 小时内某个方法提供的 HTTP 请求的数量，以及失败请求的百分比。
 

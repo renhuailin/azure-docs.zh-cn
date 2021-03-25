@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983876"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 OpenID Connect 提供程序（预览版）进行登录
@@ -24,7 +24,7 @@ ms.locfileid: "90983876"
 
 ## <a name="register-your-application-with-the-identity-provider"></a><a name="register"> </a>向以下标识提供者注册你的应用程序
 
-提供者会要求你向其注册应用程序的详细信息。 请参阅与该提供者相关的说明。 你需要收集应用程序的**客户端 ID** 和**客户端机密**。
+提供者会要求你向其注册应用程序的详细信息。 请参阅与该提供者相关的说明。 你需要收集应用程序的 **客户端 ID** 和 **客户端机密**。
 
 > [!IMPORTANT]
 > 应用程序密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。

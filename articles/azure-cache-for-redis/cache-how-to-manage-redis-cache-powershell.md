@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536753"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
@@ -146,7 +146,7 @@ ms.locfileid: "92536753"
 | ResourceGroupName |要在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
-| SKU |指定缓存的 SKU。 有效值是：Basic、Standard、Premium |标准 |
+| SKU |指定缓存的 SKU。 有效值是：Basic、Standard、Premium |Standard |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
@@ -156,7 +156,7 @@ ms.locfileid: "92536753"
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| 属性 | 说明 | 定价层 |
+| properties | 说明 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
@@ -367,7 +367,7 @@ ms.locfileid: "92536753"
 > * 不能从 **高级** 缓存向下缩放到 **标准** 或 **基本** 缓存。
 > * 不能从 **标准** 缓存向下缩放到 **基本** 缓存。
 > * 可从 **基本** 缓存缩放到 **标准** 缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
-> * 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 必须在一个缩放操作中从 **基本** 缩放到 **标准** ，并在后续的缩放操作中从 **标准** 缩放到 **高级** 。
+> * 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 必须在一个缩放操作中从 **基本** 缩放到 **标准**，并在后续的缩放操作中从 **标准** 缩放到 **高级**。
 > * 不能从较大的大小减小为 **C0 (250 MB)** 。
 > 
 > 有关详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。

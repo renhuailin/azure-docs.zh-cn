@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
 ms.openlocfilehash: 04d0fe2b322f6b70cb1cda8d61fbd49638ec214a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385823"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>配置点到站点 VPN - 证书身份验证 - PowerShell 脚本示例
@@ -98,7 +98,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 添加子网配置。 在虚拟网络创建过程中将使用此配置。 |
 | [Add-AzVpnClientRootCertificate](/powershell/module/az.network/add-azvpnclientrootcertificate) | 将根证书公钥信息上传到 VPN 网关。|

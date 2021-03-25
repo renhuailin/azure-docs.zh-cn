@@ -1,7 +1,7 @@
 ---
 title: 简单实体类型 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 简单实体介绍了机器学习上下文中的单个概念。 使用简单实体时添加短语列表以改进结果。
+description: 简单实体描述来自机器学习上下文的单个概念。 使用简单实体时添加短语列表以改进结果。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,15 +9,15 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.openlocfilehash: 384d3df2de551e7c79f13a0fe47ffb26c7825f1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91539278"
 ---
 # <a name="simple-entity"></a>简单实体
 
-简单实体是描述单个概念并从机器学习上下文中学习的泛型实体。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。
+简单实体是描述单个概念的通用实体，通过机器学习上下文习得。 由于简单实体采用概括性的名称，例如公司名称、产品名称或其他类别的名称，因此，在使用简单实体时，请添加一个[短语列表](luis-concept-feature.md)，以提升所用名称的信号。
 
 **在以下情况下，非常适合使用此实体：**
 

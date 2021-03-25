@@ -9,10 +9,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6ff31c3c0d37078f8dfbd934593adb4b6a6ef4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377102"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建包含复制活动的管道
@@ -68,7 +68,7 @@ ms.locfileid: "100377102"
 
 3. 在数据工厂中创建 **管道**。 本步骤创建包含复制活动的管道。   
 
-    复制活动会将数据从 Azure Blob 存储中的 Blob 复制到 Azure SQL 数据库中的表。 可以通过管道中的复制活动，将数据从任何支持的源复制到任何支持的目标。 有关支持的数据存储的列表，请参阅[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文。
+    复制活动将数据从 Azure Blob 存储中的 Blob 复制到 Azure SQL 数据库中的表。 可以通过管道中的复制活动，将数据从任何支持的源复制到任何支持的目标。 有关支持的数据存储的列表，请参阅[数据移动活动](data-factory-data-movement-activities.md#supported-data-stores-and-formats)一文。
 
 4. 在部署数据工厂实体（链接服务、数据集/表、管道）时创建 Azure **数据工厂**。 
 
@@ -224,7 +224,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
     | properties | 说明 |
     |:--- |:--- |
-    | type | type 属性设置为 AzureSqlTable，因为数据复制到 Azure SQL 数据库中的表。 |
+    | type | type 属性设置为“AzureSqlTable”，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
     | tableName | 指定一个 **表**，以便将数据复制到其中。 | 
     | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时** 生成一次。  |
@@ -375,10 +375,10 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 5. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。 
 
 ## <a name="summary"></a>总结
-在本教程中，你创建了一个 Azure 数据工厂来将数据从 Azure Blob 复制到 Azure SQL 数据库。 你使用 Visual Studio 创建了数据工厂、链接服务、数据集和管道。 下面是本教程中执行的进阶步骤：  
+在本教程中，你创建了一个 Azure 数据工厂来将数据从 Azure Blob 复制到 Azure SQL 数据库。 你使用 Visual Studio 创建了数据工厂、链接服务、数据集和管道。 下面是本教程中执行的高级步骤：  
 
-1. 创建了一个 Azure 数据工厂。
-2. 创建了链接服务：
+1. 创建了 Azure **数据工厂**。
+2. 创建 **链接服务**：
    1. 一个 Azure 存储链接服务，用于链接保存输入数据的 Azure 存储帐户。     
    2. 一个 Azure SQL 链接服务，用于链接保存输出数据的数据库。 
 3. 创建了数据集，它们用于描述管道的输入和输出数据。
@@ -523,7 +523,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你在复制操作中使用 Azure Blob 存储作为源数据存储，使用 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
+在本教程中，在复制操作中使用了 Azure Blob 存储作为源数据存储，使用了 Azure SQL 数据库作为目标数据存储。 下表列出了复制活动支持的充当源和目标的数据存储： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

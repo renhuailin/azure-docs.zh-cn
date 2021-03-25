@@ -4,10 +4,10 @@ description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035047"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
@@ -102,7 +102,7 @@ ACI_IP=$(az container show \
 ```
 
 > [!IMPORTANT]
-> 如果容器组已停止、启动或重新启动，则容器组的专用 IP 可能会发生更改。 如果发生这种情况，你将需要更新应用程序网关配置。
+> 如果容器组停止、启动或重启，容器组的专用 IP 可能会发生更改。 如果发生这种情况，你将需要更新应用程序网关配置。
 
 ## <a name="create-application-gateway"></a>创建应用程序网关
 

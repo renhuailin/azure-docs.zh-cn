@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
 ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91541947"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 GeographyV2 预生成实体
@@ -22,7 +22,7 @@ ms.locfileid: "91541947"
 ## <a name="subtypes"></a>子类型
 地理位置具有以下子类型：
 
-|子类型|目的|
+|子类型|目标|
 |--|--|
 |`poi`|兴趣点|
 |`city`|城市名称|
@@ -68,7 +68,7 @@ ms.locfileid: "91541947"
 }
 ```
 
-在上述 JSON 中，`poi` 是**兴趣点**的缩写。
+在上述 JSON 中，`poi` 是 **兴趣点** 的缩写。
 
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
@@ -161,7 +161,7 @@ ms.locfileid: "91541947"
 ```
 #### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
-以下示例显示了 builtin.geographyV2 实体的解析  。
+以下示例显示了 builtin.geographyV2 实体的解析。
 
 ```json
 "entities": [
