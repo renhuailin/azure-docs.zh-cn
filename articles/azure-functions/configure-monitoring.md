@@ -5,10 +5,10 @@ ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493747"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何为 Azure Functions 配置监视
@@ -229,7 +229,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
-启用缩放控制器日志记录后，便可以 [查询缩放控制器日志](analyze-telemetry-data.md#query-scale-controller-logs)。 
+启用缩放控制器日志记录后，便可以[查询缩放控制器日志](analyze-telemetry-data.md#query-scale-controller-logs)。 
 
 ## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 
@@ -248,7 +248,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>添加到现有函数应用 
 
-如果 Application Insights 资源不是使用函数应用创建的，请使用以下步骤来创建资源。 然后，可以添加该资源中的检测密钥，作为函数应用中的[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)。
+如果未使用函数应用创建 Application Insights 资源，请使用以下步骤创建资源。 然后，可以添加该资源中的检测密钥，作为函数应用中的[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“函数应用”，然后选择你的函数应用。 
 

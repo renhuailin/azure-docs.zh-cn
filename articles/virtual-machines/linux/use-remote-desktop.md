@@ -1,26 +1,26 @@
 ---
-title: 将 xrdp 与 Linux 配合使用
+title: 在 Linux 中使用 xrdp
 description: 了解如何使用图形工具安装和配置远程桌面 (xrdp) 以连接到 Azure 中的 Linux VM
-services: virtual-machines-linux
+services: virtual-machines
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 0fecf9f16cd1069b140e61a019a43510b59e76e8
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199133"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580362"
 ---
-# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>安装和配置 xrdp 以将远程桌面与 Ubuntu 配合使用
+# <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>安装并配置 xrdp 以在 Ubuntu 上使用远程桌面
 
-通常使用安全外壳 (SSH) 连接从命令行管理 Azure 中的 Linux 虚拟机 (VM)。 如果不熟悉 Linux，或者要快速进行故障排除，使用远程桌面可能会更方便。 本文详细介绍了如何安装和配置桌面环境 ([xfce](https://www.xfce.org)) 和远程桌面 ([xrdp](http://xrdp.org)) ，适用于运行 Ubuntu 的 Linux VM。
+通常使用安全外壳 (SSH) 连接从命令行管理 Azure 中的 Linux 虚拟机 (VM)。 如果不熟悉 Linux，或者要快速进行故障排除，使用远程桌面可能会更方便。 本文详细介绍如何为运行 Ubuntu 的 Linux VM 安装和配置桌面环境 ([xfce](https://www.xfce.org)) 和远程桌面 ([xrdp](http://xrdp.org))。
 
-本文使用 Ubuntu 18.04 VM 进行写入和测试。 
+本文使用 Ubuntu 18.04 VM 进行编写和测试。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -101,7 +101,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 输入 VM 上的用户帐户的用户名和密码，如下所示：
 
-:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="Xrdp 登录屏幕的屏幕截图。":::
+:::image type="content" source="media/use-remote-desktop/xrdp-login.png" alt-text="xrdp 登录屏幕的屏幕截图。":::
 
 进行身份验证后，将加载 xfce 桌面环境，其外观类似于以下示例：
 
@@ -110,7 +110,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 如果本地 RDP 客户端使用网络级别身份验证 (NLA)，则可能需要禁用该连接设置。 XRDP 目前不支持 NLA。 还可以考虑其他支持 NLA 的替代 RDP 解决方案，例如 [FreeRDP](https://www.freerdp.com)。
 
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 如果无法使用远程桌面客户端连接到 Linux VM，请在 Linux VM上使用 `netstat` 验证 VM 是否正在侦听 RDP 连接，如下所示：
 
 ```bash
@@ -138,7 +138,7 @@ tail -f /var/log/syslog
 
 其他 Linux 分发（例如，Red Hat Enterprise Linux 和 SUSE）重新启动服务的方式可能有所不同，并且可能需要更换要查看的日志文件位置。
 
-如果用户在远程桌面客户端中未收到任何响应，并且在系统日志中看不到任何事件，则此行为指示远程桌面流量无法到达 VM。 查看网络安全组规则，以确保有规则允许端口 3389 上的 TCP。 有关详细信息，请参阅[排查应用程序连接问题](../troubleshooting/troubleshoot-app-connection.md)。
+如果用户在远程桌面客户端中未收到任何响应，并且在系统日志中看不到任何事件，则此行为指示远程桌面流量无法到达 VM。 查看网络安全组规则，以确保有规则允许端口 3389 上的 TCP。 有关详细信息，请参阅[排查应用程序连接问题](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection)。
 
 
 ## <a name="next-steps"></a>后续步骤

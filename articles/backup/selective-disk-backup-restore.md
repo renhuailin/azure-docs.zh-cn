@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806372"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501817"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -189,7 +189,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 确保使用 Azure PowerShell 3.7.0 或更高版本。
 
-在配置保护操作期间，你需要指定包含/排除参数的磁盘列表设置，从而提供要在备份中包括或排除的磁盘的 LUN 编号。
+在配置保护操作期间，需要使用 inclusion/exclusion 参数指定磁盘列表设置，以提供要在备份中包含或排除的磁盘的 LUN 编号。
 
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 启用备份
 
@@ -219,10 +219,10 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ### <a name="get-backup-item-object-to-be-passed-in-modify-protection-with-powershell"></a>使用 PowerShell 获取要在修改保护操作中传递的备份项对象
 
 ```azurepowershell
-$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $Vault.ID -FriendlyName "V2VM"
+$item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -WorkloadType "AzureVM" -VaultId $targetVault.ID -FriendlyName "V2VM"
 ```
 
-你需要将上述 **$item** 获取的对象传递给以下 cmdlet 中的 **– item** 参数。
+需要将上面获取的 $item 对象传递给以下 cmdlet 中的 –Item 参数 。
 
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>使用 PowerShell 修改对已备份 VM 的保护
 
@@ -249,7 +249,10 @@ Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -V
 ### <a name="restore-selective-disks-with-powershell"></a>使用 PowerShell 还原选择性磁盘
 
 ```azurepowershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [Strings]
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $targetVault.ID
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID -RestoreDiskList [$disks]
 ```
 
 ### <a name="restore-only-os-disk-with-powershell"></a>使用 PowerShell 仅还原 OS 磁盘
@@ -315,7 +318,7 @@ Azure 虚拟机备份遵循现有定价模式，[此处](https://azure.microsoft
 
 仅当选择使用“仅 OS 磁盘”选项进行备份时，才为 OS 磁盘计算受保护实例 (PI) 成本。  如果配置备份并选择至少一个数据磁盘，则将为附加到 VM 的所有磁盘计算 PI 成本。 系统仅基于包含磁盘计算备份存储成本，因此可以节省存储成本。 系统始终为 VM 中的所有磁盘（包含和排除的磁盘）计算快照成本。
 
-如果已选择 "跨区域还原 (CRR) 功能"，则在排除磁盘后， [CRR 定价](https://azure.microsoft.com/pricing/details/backup/) 适用于备份存储开销。
+如果已选择跨区域还原 (CRR) 功能，则排除磁盘后，[CRR 定价](https://azure.microsoft.com/pricing/details/backup/)适用于备份存储成本。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

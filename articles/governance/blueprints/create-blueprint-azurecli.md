@@ -4,10 +4,10 @@ description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建�
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920234"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图

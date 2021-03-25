@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093632"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD 存储报告数据多长时间？
@@ -47,13 +47,13 @@ ms.locfileid: "97093632"
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>获得高级许可证后多久可看见活动数据？
 
-如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 如果你没有任何数据，则在升级到高级版许可证后，将需要长达三天的时间，数据才会显示在报表中。
+如果已经拥有免费许可证的活动数据，则可在升级时立即看到这些数据。 升级到高级许可证后，如果没有任何数据，则最多需要三天，数据就会显示在报告中。
 
 ---
 
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Azure AD 何时开始收集安全信号数据？  
 
-对于安全信号，当你选择使用 **Identity Protection Center** 时，收集过程将开始。 
+当用户选择使用 **标识防护中心** 时，收集安全信号的过程会开始。 
 
 ---
 

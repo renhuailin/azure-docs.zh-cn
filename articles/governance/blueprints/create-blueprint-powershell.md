@@ -4,10 +4,10 @@ description: 本快速入门中通过 PowerShell 使用 Azure 蓝图创建、定
 ms.date: 01/27/2021
 ms.topic: quickstart
 ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918273"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入门：使用 PowerShell 定义和分配 Azure 蓝图

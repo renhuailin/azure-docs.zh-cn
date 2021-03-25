@@ -1,7 +1,7 @@
 ---
 title: 用于修整结果的安全筛选器
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用安全筛选器和用户标识，在文档级别实现 Azure 认知搜索搜索结果的安全权限。
+description: 了解如何使用安全筛选器和用户标识实现 Azure 认知搜索搜索结果的文档级别安全权限。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631797"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
@@ -156,9 +156,9 @@ api-key: [admin or query key]
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了基于用户标识和函数筛选结果的模式 `search.in()` 。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
+本文介绍了基于用户标识和 `search.in()` 函数筛选结果的模式。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
 
 对于基于 Active Directory 的替代模式，或者要重新访问其他安全功能，请参阅以下链接。
 
-* [使用 Active Directory 标识修整结果的安全筛选器](search-security-trimming-for-azure-search-with-aad.md)
+* [用于使用 Active Directory 标识修剪结果的安全筛选器](search-security-trimming-for-azure-search-with-aad.md)
 * [Azure 认知搜索中的安全性](search-security-overview.md)

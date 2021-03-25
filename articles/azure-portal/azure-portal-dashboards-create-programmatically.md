@@ -4,10 +4,10 @@ description: 使用 Azure 门户中的仪表板作为模板以编程方式创建
 ms.topic: how-to
 ms.date: 12/4/2020
 ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095170"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
@@ -46,7 +46,7 @@ ms.locfileid: "101095170"
 
 ![共享仪表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ![对共享和访问权限进行更改](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

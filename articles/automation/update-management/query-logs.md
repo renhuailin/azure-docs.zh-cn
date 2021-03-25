@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100592867"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
@@ -55,7 +55,7 @@ ms.locfileid: "100592867"
 | Computer | 报告计算机的完全限定域名。 |
 | ComputerEnvironment | 环境。 可能的值为 Azure 或 Non-Azure。 |
 | MSRCBulletinID | 安全公告 ID 号。 |
-| MSRCSeverity | 漏洞的严重性分级。 值为：<br> 严重<br> 重要<br> 中等<br> 低 |  
+| MSRCSeverity | 漏洞的严重性分级。 值为：<br> 严重<br> 重要说明<br> 中等<br> 低 |  
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | UpdateID | 软件更新的唯一标识符。 |

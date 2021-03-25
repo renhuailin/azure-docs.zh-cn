@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031644"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
@@ -34,7 +34,7 @@ ms.locfileid: "102031644"
 
 在开始之前，必须满足以下条件：
 
-+ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。 
   
@@ -126,7 +126,7 @@ py -m venv .venv
 
 ## <a name="3-create-a-local-function-project"></a>3.创建本地函数项目
 
-在本部分，你将使用 Python 创建一个本地 <abbr title="一个逻辑容器，它用于一个或多个可同时部署和管理的单独函数。">Azure Functions 项目</abbr> 。 项目中的每个函数都响应特定的 <abbr title="调用函数代码的事件类型，例如 HTTP 请求、队列消息或特定时间。">触发器</abbr>.
+在本部分，你将使用 C# 创建一个本地 <abbr title="一个逻辑容器，它用于一个或多个可同时部署和管理的单独函数。">Azure Functions 项目</abbr> 。 项目中的每个函数都响应特定的 <abbr title="调用函数代码的事件类型，例如 HTTP 请求、队列消息或特定时间。">触发器</abbr>.
 
 1. 运行 `func init` 命令，在名为 LocalFunctionProj 的文件夹中创建使用指定运行时的函数项目：  
 

@@ -2,18 +2,18 @@
 title: 使用 cloud-init 时进行故障排除
 description: 使用 cloud-init 预配 Azure VM 时进行故障排除。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666222"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582147"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>对使用 cloud-init 的 VM 预配进行故障排除
 
@@ -56,11 +56,11 @@ VM 预配失败的主要原因是 OS 映像不满足在 Azure 上运行的先决
 
 你需要在 VM 处于运行状态的情况下使用其中的日志来了解预配为何失败。  若要了解 VM 预配为何失败，请不要停止 VM。 让 VM 保持运行状态。 为了收集日志，你需要使发生故障的 VM 保持运行状态。 若要收集日志，请使用以下方法之一：
 
-- [串行控制台](../troubleshooting/serial-console-grub-single-user-mode.md)
+- [串行控制台](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
 - 在创建 VM 之前[启用启动诊断](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)，然后在启动过程中[查看](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)它们。
 
-- [运行 AZ VM Repair](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) 来附加和装载 OS 磁盘，这将允许你收集以下日志：
+- [运行 AZ VM Repair](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands) 来附加和装载 OS 磁盘，这将允许你收集以下日志：
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -108,7 +108,7 @@ Stderr: mount: unknown filesystem type 'udf'
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-如果有权访问 [串行控制台](../troubleshooting/serial-console-grub-single-user-mode.md)，可以尝试重新运行 cloud init 正在尝试运行的命令。
+如果拥有对[串行控制台](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)的访问权限，可以尝试重新运行 cloud-init 试图运行的命令。
 
 还可以在 /etc/cloud/cloud.cfg.d/05_logging.cfg 中重新配置 `/var/log/cloud-init.log` 的日志记录。 有关 cloud-init 日志记录的更多详细信息，请参阅 [cloud-init 文档](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)。 
 

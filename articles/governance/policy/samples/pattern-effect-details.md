@@ -4,10 +4,10 @@ description: 此 Azure Policy 模式通过示例介绍了如何使用策略定�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92073030"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy 模式：效果
@@ -36,7 +36,7 @@ modify  效果需要 policyRule.then.details  块，该块定义 roleDefinitionI
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json" range="45-58":::
 
-**auditIfNotExists** 效果需要 **policyRule.then.details** 块来定义要查找的 **type** 和 **existenceCondition**。 **existenceCondition** 使用策略语言元素（如[逻辑运算符](../concepts/definition-structure.md#logical-operators)）来确定是否存在匹配的相关资源。 在此示例中，对照每个[别名](../concepts/definition-structure.md#aliases)检查的值在参数中定义。
+**auditIfNotExists** 效果需要 **policyRule.then.details** 块来定义要查找的 **type** 和 **existenceCondition**。 **existenceCondition** 使用策略语言元素（如 [逻辑运算符](../concepts/definition-structure.md#logical-operators)）来确定是否存在匹配的相关资源。 在此示例中，对照每个[别名](../concepts/definition-structure.md#aliases)检查的值在参数中定义。
 
 ## <a name="next-steps"></a>后续步骤
 

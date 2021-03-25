@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173930"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579189"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "96173930"
 >
 > **如果你是最终用户并且需要返回到你的帐户，请转到 [https://aka.ms/sspr](https://aka.ms/sspr)** 。
 
-[自助式密码重置 (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) 是一项 Azure Active Directory (AD) 功能，使用户无需联系 IT 人员寻求帮助即可重置密码。 无论何时何地，用户都可以快速解锁帐户并继续工作。 由于员工可以自行解锁，组织可以降低大多数常见密码相关问题造成的非产出时间和较高的支持成本。
+[自助式密码重置 (SSPR)](https://www.youtube.com/watch?v=pS3XwfxJrMo) 是一项 Azure Active Directory (AD) 功能，使用户无需联系 IT 人员寻求帮助即可重置密码。 用户可以随时随地快速重置密码并继续顺畅工作。 由于员工可以自行解锁，组织可以降低大多数常见密码相关问题造成的非产出时间和较高的支持成本。
 
 SSPR 提供以下重要功能：
 
@@ -78,6 +78,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 | 视频| [通过更好的 IT 可伸缩性为用户提供助力](https://youtu.be/g9RpRnylxS8) 
 | |[什么是自助式密码重置？](https://youtu.be/hc97Yx5PJiM)|
 | |[部署自助式密码重置](https://www.youtube.com/watch?v=Pa0eyqjEjvQ&index=18&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0)|
+| |[如何在 Azure AD 中启用和配置 SSPR](https://www.youtube.com/watch?v=rA8TvhNcCvQ)|
 | |[如何在 Azure AD 中为用户配置自助式密码重置？](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[如何 [让用户准备好] 注册 [其] Azure Active Directory 安全信息](https://youtu.be/gXuh0XS18wA) |
 | 在线课程|[在 Microsoft Azure Active Directory 中管理标识](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) 使用 SSPR 为用户提供受保护的新式体验。 另请参阅“[管理 Azure Active Directory 用户和组](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)”模块。 |
@@ -105,7 +106,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 注意：对于已禁用[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 的用户，SSPR 仅将密码存储在本地 Active Directory 中。
 
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 
 连同组织中的其他常用应用程序或服务一起部署 SSPR 可帮助用户快速完成注册。 此操作会产生大量登录，可推进注册操作。
 
@@ -115,7 +116,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 Microsoft 建议组织为 SSPR 和多重身份验证启用组合注册体验。 启用此组合注册体验后，用户只需选择其注册信息一次即可启用这两项功能。
 
-组合注册体验不需要组织同时启用 SSPR 和 Azure AD 多重身份验证。 组合注册可为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册](concept-registration-mfa-sspr-combined.md)
+组合注册体验不需要组织同时启用 SSPR 和 Azure AD 多重身份验证。 组合注册为组织提供更好的用户体验。 有关详细信息，请参阅[组合安全信息注册](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 
@@ -321,9 +322,9 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 ### <a name="authentication-methods--usage-and-insights"></a>身份验证方法 - 使用情况和见解
 
-[使用情况和见解](./howto-authentication-methods-usage-insights.md) 使你可以了解 Azure AD MFA 和 SSPR 等功能的身份验证方法在你的组织中的工作方式。 此报告功能可让组织了解注册的方法，以及这些方法的用法。
+可以通过[使用情况和见解](./howto-authentication-methods-activity.md)了解针对 Azure AD MFA 和 SSPR 等功能的身份验证方法在组织中的使用方式。 此报告功能可让组织了解注册的方法，以及这些方法的用法。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 * 参阅[排查自助式密码重置问题](./troubleshoot-sspr.md) 
 

@@ -5,16 +5,16 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: ba2c31872ae026cfdfcb7be17d333fb98194dce6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 84cadc54a11c2e57d73fd1f06e98deb3d599d648
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389002"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501169"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
-默认情况下，使用服务主体创建的 AKS 群集具有为期一年的有效期。 在有效期即将结束时，你可以重置凭据来将服务主体延长额外的一段时间。 作为已定义安全策略的一部分，还可能要更新或轮换凭据。 本文详细介绍如何为 AKS 群集更新这些凭据。
+使用服务主体创建的 AKS 群集具有为期一年的有效期。 在有效期即将结束时，你可以重置凭据来将服务主体延长额外的一段时间。 作为已定义安全策略的一部分，还可能要更新或轮换凭据。 本文详细介绍如何为 AKS 群集更新这些凭据。
 
 还可以[将 AKS 群集与 Azure Active Directory 集成][aad-integration]，并将其用作群集的身份验证提供程序。 在这种情况下，你将为群集、AAD 服务器应用和 AAD 客户端应用创建另外 2 个标识，还可以重置这些凭据。
 
@@ -49,7 +49,7 @@ az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 若要为现有服务主体更新凭据，请使用 [az aks show][az-aks-show] 命令获取群集的服务主体 ID。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的 ID 。 服务主体 ID 设置为名为“SP_ID”变量以供在其他命令中使用。 这些命令使用 Bash 语法。
 
 > [!WARNING]
-> 当你在使用 Azure 虚拟机规模集的 AKS 群集上重置群集凭据时，将执行 [节点映像升级][node-image-upgrade] ，以使用新凭据信息更新节点。
+> 在使用 Azure 虚拟机规模集的 AKS 群集上重置群集凭据时，将执行[节点映像升级][node-image-upgrade]，使用新凭据信息更新节点。
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \

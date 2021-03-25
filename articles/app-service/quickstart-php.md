@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: f6876d0aef0d3d87e038b623c395f8368a14e90c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561845"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>在 Azure 应用服务中创建 PHP Web 应用
@@ -32,7 +32,7 @@ ms.locfileid: "97561845"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程需要：
+若要完成本快速入门教程，需先执行以下操作：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://php.net/manual/install.php" target="_blank">安装 PHP</a>
@@ -163,9 +163,9 @@ http://<app-name>.azurewebsites.net
 
 PHP 示例代码正在 Azure 应用服务 Web 应用中运行。
 
-![在 Azure 中运行的示例应用](media/quickstart-php/hello-world-in-browser.png)
+![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-祝贺你！ 现已将第一个 PHP 应用部署到应用服务。
+**祝贺你！** 现已将第一个 PHP 应用部署到应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 
@@ -184,7 +184,7 @@ git push azure main
 
 完成部署后，返回到“浏览到应用”步骤期间打开的浏览器窗口，然后刷新页面。
 
-![已更新的在 Azure 中运行的示例应用](media/quickstart-php/hello-azure-in-browser.png)
+![已更新的在 Azure 中运行应用的示例](media/quickstart-php/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 应用
 

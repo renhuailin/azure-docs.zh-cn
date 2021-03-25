@@ -7,10 +7,10 @@ ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.openlocfilehash: 5eff593075db118b23d74147e33b40eb4402193c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031151"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据（预览版）

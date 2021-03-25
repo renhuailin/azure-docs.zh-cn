@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755076"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌
@@ -30,7 +30,7 @@ MSAL 在获取令牌后会缓存令牌。 在尝试通过其他方式获取令�
 
 ## <a name="scopes-when-acquiring-tokens"></a>获取令牌时的范围
 
-[范围](v2-permissions-and-consent.md)是客户端应用程序可以请求访问的 Web API 公开的权限。 在发出身份验证请求以获取用于访问 Web API 的令牌时，客户端应用程序将请求用户许可这些范围。 MSAL 可让你获取令牌，以便为开发人员 (v1.0) 和 Microsoft 标识平台 Api 访问 Azure AD。 v2.0 协议在请求中使用范围而不是资源。 有关详细信息，请阅读 [v1.0 与 v2.0 的比较](../azuread-dev/azure-ad-endpoint-comparison.md)。 根据 v2.0 终结点接受的令牌版本的 Web API 配置，该终结点会将访问令牌返回到 MSAL。
+[范围](v2-permissions-and-consent.md)是客户端应用程序可以请求访问的 Web API 公开的权限。 在发出身份验证请求以获取用于访问 Web API 的令牌时，客户端应用程序将请求用户许可这些范围。 使用 MSAL 可以获取令牌来访问面向开发人员的 Azure AD (v1.0) 和 Microsoft 标识平台 API。 v2.0 协议在请求中使用范围而不是资源。 有关详细信息，请阅读 [v1.0 与 v2.0 的比较](../azuread-dev/azure-ad-endpoint-comparison.md)。 根据 v2.0 终结点接受的令牌版本的 Web API 配置，该终结点会将访问令牌返回到 MSAL。
 
 MSAL 的一些令牌获取方法需要使用 `scopes` 参数。 `scopes` 参数是一个字符串列表，这些字符串声明了所需的权限和所请求的资源。 广为人知的范围是 [Microsoft Graph 权限](/graph/permissions-reference)。
 

@@ -4,10 +4,10 @@ description: 本文说明如何将事件发布到自定义主题。 它显示发
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681594"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
@@ -71,7 +71,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 事件允许的最大大小也是 1 MB。 超过 64 KB 的事件以 64 KB 为增量计费。 
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 一个事件允许的最大大小也为 1 MB。 超过 64 KB 的事件以 64 KB 为增量计费。 
 
 例如，有效的事件数据架构是：
 

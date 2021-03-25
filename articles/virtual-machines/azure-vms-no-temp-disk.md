@@ -1,18 +1,19 @@
 ---
 title: 无本地临时磁盘的 Azure VM 规格的常见问题解答
-description: 本文提供常见问题的解答 (FAQ) 有关没有本地临时磁盘的 Microsoft Azure VM 大小。
+description: 本文提供有关不带本地临时磁盘的 Microsoft Azure VM 规格的常见问题解答 (FAQ)。
 author: brbell
 ms.service: virtual-machines
 ms.topic: conceptual
+ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665304"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582096"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>无本地临时磁盘的 Azure VM 规格 
 本文提供有关没有本地临时磁盘（即无本地临时磁盘）的 Azure VM 大小的常见问题解答 (FAQ)。 有关这些 VM 规格的详细信息，请参阅 [Dv4 和 Dsv4 系列规范（常规用途工作负载）](dv4-dsv4-series.md)或 [Ev4 和 Esv4 系列规范（内存优化工作负载）](ev4-esv4-series.md)。
@@ -40,8 +41,22 @@ ms.locfileid: "91665304"
 1. VM（具有本地临时磁盘）-> VM（具有本地临时磁盘）；以及 
 2. VM（无本地临时磁盘）-> VM（无本地临时磁盘）。 
 
+如果你想知道解决方法，请查看下一个问题。
+
 > [!NOTE]
-> 如果映像依赖于资源磁盘，或者本地临时磁盘上存在页面文件或交换文件，则无盘映像将不起作用-改为使用 "使用磁盘" 替代项。 
+> 如果映像依赖于资源磁盘，或者本地临时磁盘上存在页面文件或交换文件，则无磁盘映像将不起作用，而需改用“具有磁盘”替代项。 
+
+## <a name="how-do-i-migrate-from-a-vm-size-with-local-temp-disk-to-a-vm-size-with-no-local-temp-disk"></a>如何从具有本地临时磁盘的 VM 规格迁移到无本地临时磁盘的 VM 规格？  
+可按以下步骤迁移： 
+
+1. 以本地管理员身份连接到具有本地临时磁盘（例如 D: 驱动器）的虚拟机。
+2. 按照[使用 D: 驱动器作为 Windows VM 上的数据驱动器](./windows/change-drive-letter.md)的“将 pagefile.sys 临时移到 C 驱动器”部分中所述的指导原则，将本地临时磁盘（D: 驱动器）中的页面文件移到 C: 驱动器。
+
+   > [!NOTE]
+   > 按照“使用 D: 驱动器作为 Windows VM 上的数据驱动器”的“将 pagefile.sys 临时移到 C 驱动器”部分中所述的指导原则，将本地临时磁盘（D: 驱动器）中的页面文件移到 C: 驱动器。 **不严格按照所述步骤操作可能导致出现错误消息 -“无法调整 VM 大小，因为不允许将资源磁盘 VM 规格更改为非资源磁盘 VM 规格，反之亦然。”**
+
+3. 按照[使用门户或 Azure CLI 创建快照](./linux/snapshot-copy-managed-disk.md)中所述的步骤创建 VM 的快照。 
+4. 按照[使用 CLI 从快照创建虚拟机](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)中所述的步骤，使用快照创建新的无磁盘 VM（例如 Dv4、Dsv4、Ev4、Esv4 系列）。 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>这些 VM 规格是否支持 Linux 和 Windows 操作系统 (OS)？
 是的。

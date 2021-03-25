@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: dc0cd57eb32baaeac0850337bbead3a73dec9292
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897322"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>教程：Azure Active Directory 与 SAP Cloud Platform Identity Authentication 的单一登录 (SSO) 集成
@@ -26,7 +26,7 @@ ms.locfileid: "98897322"
 * 让用户使用其 Azure AD 帐户自动登录到 SAP Cloud Platform Identity Authentication。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -64,7 +64,7 @@ ms.locfileid: "98897322"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分中，在搜索框中键入“SAP Cloud Platform Identity Authentication”。
 1. 从结果面板中选择“SAP Cloud Platform Identity Authentication”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -97,7 +97,7 @@ ms.locfileid: "98897322"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`<IAS-tenant-id>.accounts.ondemand.com`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [SAP Cloud Platform Identity Authentication 客户支持团队](https://cloudplatform.sap.com/capabilities/security/trustcenter.html)获取这些值。 如果不了解标识符值，请阅读有关[租户 SAML 2.0 配置](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html)的 SAP Cloud Platform Identity Authentication 文档。
@@ -134,7 +134,7 @@ ms.locfileid: "98897322"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。

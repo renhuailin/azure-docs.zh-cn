@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98673563"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
@@ -32,7 +32,7 @@ ms.locfileid: "98673563"
 
 另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。
 
-在设计表的过程中，尽可能多地了解数据以及数据查询方式。    例如，考虑以下问题：
+作为表设计的一部分，请尽可能多地去了解你的数据及其查询方式。  例如，请考虑以下问题：
 
 - 表有多大？
 - 表的刷新频率是多少？
@@ -51,7 +51,7 @@ ms.locfileid: "98673563"
 在以下情况下，考虑使用哈希分布表：
 
 - 磁盘上的表大小超过 2 GB。
-- 对表进行频繁的插入、更新和删除操作。
+- 表具有频繁的插入、更新和删除操作。
 
 ### <a name="round-robin-distributed"></a>轮循机制分布
 

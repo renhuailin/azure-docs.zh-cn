@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 066fb32dc9da13e8a77660a9144b53675d689f63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553793"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580345"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与符合性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
+Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
 
 Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关详细信息，请参阅[支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
 
@@ -108,7 +108,7 @@ Azure 磁盘加密在[基本、A 系列 VM](https://azure.microsoft.com/pricing/
 
 Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块或强制扩展数据驱动器上的 OS 装入点/文件夹的系统强化步骤与 Azure 磁盘加密不兼容。 
 
-在启用加密之前，必须在 /etc/fstab 中正确列出要加密的数据磁盘。 创建条目时，请使用“nofail”选项，然后选择一个永久性的块设备名称（因为采用“/dev/sdX”格式的设备名称在重启期间可能不会与同一磁盘关联，尤其是在加密之后。有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](../troubleshooting/troubleshoot-device-names-problems.md)）。
+在启用加密之前，必须在 /etc/fstab 中正确列出要加密的数据磁盘。 创建条目时，请使用“nofail”选项，然后选择一个永久性的块设备名称（因为采用“/dev/sdX”格式的设备名称在重启期间可能不会与同一磁盘关联，尤其是在加密之后。有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)）。
 
 确保正确配置用于装载的 /etc/fstab 设置。 若要配置这些设置，请运行 mount -a 命令，或重新启动 VM 并以这种方法触发重新装载。 装载完成后，检查 lsblk 命令的输出，以验证驱动器是否仍已装载。 
 
@@ -143,11 +143,12 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 有关详细信息，请参阅[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。
 
 ## <a name="terminology"></a>术语
+
 下表定义了 Azure 磁盘加密文档中使用的一些常用术语：
 
 | 术语 | 定义 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
+| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |

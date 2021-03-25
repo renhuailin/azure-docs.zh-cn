@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: aec26c0109b4aa8e0819e7f5e9b3c69db7f74648
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 28abe5dbd9064fb0a6bc1b3f167830672deacdcc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726897"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452690"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 版本
 
@@ -47,8 +47,8 @@ ms.locfileid: "101726897"
 | 2020 年 11 月 9 日 | [Azure Service Fabric 7.2 第二次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-second-refresh-release/ba-p/1874738) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU2-releasenotes.md) |
 | 2020 年 11 月 10 日  | Azure Service Fabric 7.2 第三次刷新版本 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
 | 2020 年 12 月 2 日 | [Azure Service Fabric 7.2 第四次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
-| 2021年1月25日 | [Azure Service Fabric 7.2 第5次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
-| 2021年2月17日 | [Azure Service Fabric 7.2 第六次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
+| 2021 年 1 月 25 日 | [Azure Service Fabric 7.2 第五次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
+| 2021 年 2 月 17 日 | [Azure Service Fabric 7.2 第六次刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 
 ## <a name="previous-versions"></a>旧版
 
@@ -71,7 +71,7 @@ ms.locfileid: "101726897"
       -  降低了总体成本（磁盘免费，不会产生额外的存储成本）
 - 支持 [**按使用者公用名声明 Service Fabric 应用程序的服务终结点证书**](./service-fabric-service-manifest-resources.md)。
 - [**支持对容器化服务进行运行状况探测**](./probes-codepackage.md)：支持针对容器化应用程序的运行情况探测机制。 运行情况探测可以用来通知容器化应用程序的运行情况，在应用程序未及时响应时会导致重启。 
-- 支持针对 [容器](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)和 [来宾可执行](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)应用程序的 [**初始化表达式代码包**](./initializer-codepackages.md)。 因此，可以按指定顺序执行代码包（例如容器），以便执行服务包初始化。
+- 支持针对 [容器](/azure/service-fabric/service-fabric-containers-overview)和 [来宾可执行](/azure/service-fabric/service-fabric-guest-executables-introduction)应用程序的 [**初始化表达式代码包**](./initializer-codepackages.md)。 因此，可以按指定顺序执行代码包（例如容器），以便执行服务包初始化。
 - **FabricObserver 和 ClusterObserver** 是无状态应用程序，用于捕获与 SF 群集的不同方面相关的 Service Fabric 遥测数据。 这两个应用程序都已做好部署到 Windows 生产群集的准备，可以通过所实施的对 ApplicationInsights、EventSource 和 LogAnalytics 的支持功能来捕获丰富的遥测数据。
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) - 在所有节点上运行，生成运行状况事件，并在达到用户配置的资源使用率阈值时发出遥测数据。 此版本包含的几项增强功能涉及监视、数据管理、运行状况事件详细信息、结构化遥测。
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - 在一个节点上运行，捕获群集级运行状况遥测。 在此版本中，ClusterObserver 还监视节点状态，并在节点处于关闭/正在禁用/已禁用状态的时间超过用户指定的时长时发出遥测数据。
@@ -101,11 +101,11 @@ ms.locfileid: "101726897"
 |---|---|---|
 | 2020 年 4 月 20 日 | [Azure Service Fabric 7.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [发行说明](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
 | 2020 年 6 月 16 日 | [Microsoft Azure Service Fabric 7.1 第一次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-first-refresh-release/ba-p/1466517) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU1-releasenotes.md)
-| 2020 年 7 月 20 日 | [Microsoft Azure Service Fabric 7.1 秒刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
+| 2020 年 7 月 20 日 | [Microsoft Azure Service Fabric 7.1 第二次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 | 2020 年 8 月 12 日 | [Microsoft Azure Service Fabric 7.1 第三次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-third-refresh-release/ba-p/1587586) | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU3-releasenotes.md)
 | 2020 年 9 月 10 日 | [Microsoft Azure Service Fabric 7.1 第四次刷新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-fourth-refresh-release/ba-p/1653859)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU5-releasenotes.md)|
-| 2020 年 10 月 7 日 | Microsoft Azure Service Fabric 7.1 第六个刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU6-releasenotes.md)|
-| 2020 年 11 月 23 日 | Microsoft Azure Service Fabric 7.1 第8个刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU8-releasenotes.md)|
+| 2020 年 10 月 7 日 | Microsoft Azure Service Fabric 7.1 第六次刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU6-releasenotes.md)|
+| 2020 年 11 月 23 日 | Microsoft Azure Service Fabric 7.1 第八次刷新 | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU8-releasenotes.md)|
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0
@@ -117,11 +117,11 @@ Azure Service Fabric 7.0 现已推出！ 你可以通过 Azure 门户或 Azure �
 #### <a name="key-announcements"></a>重要公告
  - [**对应用程序机密的 KeyVaultReference 支持（预览版）**](./service-fabric-keyvault-references.md)：已启用 [托管标识](./concepts-managed-identity.md)的 Service Fabric 应用程序现在可以直接将 Key Vault 机密 URL 引用为环境变量、应用程序参数或容器存储库凭据。 Service Fabric 会使用应用程序的托管标识自动解析机密。 
      
-- **改进了无状态服务的升级安全性**：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借这项全新的每个服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的健康和安全检查）期间保留最少的实例数。
+- **改进了无状态服务的升级安全性**：为了保证应用程序升级期间的可用性，我们引入了新的配置来定义视为可用的 [无状态服务的最小实例数](/dotnet/api/system.fabric.description.statelessservicedescription)。 以前，对于所有服务，此值都是 1，且不可更改。 凭借此全新的每服务安全检查，你可以确保服务在应用程序升级、群集升级和其他维护（依赖于 Service Fabric 的运行状况和安全检查）期间保留最少的正常运行实例数。
   
 - [**用户服务的资源限制**](./service-fabric-resource-governance.md#enforcing-the-resource-limits-for-user-services)：用户可以为节点上的用户服务设置资源限制，以防止诸如 Service Fabric 系统服务资源耗尽之类的情况。 
   
-- 副本类型的 [**服务移动成本非常高**](./service-fabric-cluster-resource-manager-movement-cost.md)。 只有当群集中存在约束冲突且该冲突无法通过任何其他方式解决时，才会移动成本非常高的副本。 请参阅链接文档，以了解有关何时使用 "非常高" 移动成本的详细信息，以及其他注意事项。
+- 副本类型的 [**服务移动成本非常高**](./service-fabric-cluster-resource-manager-movement-cost.md)。 只有当群集中存在约束冲突且该冲突无法通过任何其他方式解决时，才会移动成本非常高的副本。 若要详细了解何时使用“非常高”的移动成本是合理的，并了解其他注意事项，请参考链接的文档。
   
 -  **其他群集安全检查**：在此版本中，我们引入了一项可配置的种子节点仲裁安全检查。 这允许你自定义在群集生命周期和管理方案中必须有多少种子节点可用。 导致群集低于所配置值的操作会被阻止。 现在，默认值始终是种子节点的仲裁，例如，如果你有 7 个种子节点，则默认情况下会阻止导致群集低于 5 个种子节点的操作。 进行此更改后，你可以将最小安全值设置为 6，这样，一次只允许关闭一个种子节点。
    

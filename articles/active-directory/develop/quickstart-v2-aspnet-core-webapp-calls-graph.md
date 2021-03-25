@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 0a5d44f0cc42b80fa344e06f31275e87d265800e
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: efa9465adc13b50e6ae12628d21347152c3fc2c0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103832"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104578713"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>快速入门：实现用户登录并代表用户调用 Microsoft Graph 的 ASP.NET Core Web 应用
 
@@ -49,7 +49,7 @@ ms.locfileid: "100103832"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `AspNetCoreWebAppCallsGraph-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 输入 `https://localhost:44321/signin-oidc` 的“重定向 URI”。
@@ -81,6 +81,8 @@ ms.locfileid: "100103832"
 
 > [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
 > [下载代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore3-1-callsgraph.zip)
+
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行

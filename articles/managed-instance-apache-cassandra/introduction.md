@@ -7,10 +7,10 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 03/02/2021
 ms.openlocfilehash: d99c62e7d88510c351f87d85b4f8c5c271767cb3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101747420"
 ---
 # <a name="what-is-azure-managed-instance-for-apache-cassandra-preview"></a>什么是适用于 Apache Cassandra 的 Azure 托管实例？ （预览版）
@@ -55,6 +55,6 @@ ms.locfileid: "101747420"
 
 通过以下快速入门之一来完成入门：
 
-* [从 Azure 门户中创建托管实例群集](create-cluster-portal.md)
-* [使用 Azure Databricks 部署托管 Apache Spark 群集](deploy-cluster-databricks.md)
-* [使用 Azure CLI 管理适用于 Apache Cassandra 资源的 Azure 托管实例](manage-resources-cli.md)
+* [通过 Azure 门户创建托管实例群集](create-cluster-portal.md)
+* [使用 Azure Databricks 部署托管的 Apache Spark 群集](deploy-cluster-databricks.md)
+* [使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源](manage-resources-cli.md)

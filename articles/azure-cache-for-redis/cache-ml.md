@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions
-description: 本文将使用 Azure Cache for Redis 实例，将模型作为函数应用从 Azure 机器学习部署到 Azure Functions。 适用于 Redis 的 Azure 缓存具有极高的性能和可缩放性–当与 Azure 机器学习模型配对时，你的应用程序中将获得低延迟和高吞吐量。
+description: 本文将使用 Azure Cache for Redis 实例，将模型作为函数应用从 Azure 机器学习部署到 Azure Functions。 Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 83fc88a57a1cdbec35a8f939a81698799d290d70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183618"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499690"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions 
 
 本文将使用 Azure Cache for Redis 实例，将模型作为函数应用从 Azure 机器学习部署到 Azure Functions。  
 
-适用于 Redis 的 Azure 缓存具有极高的性能和可缩放性–当与 Azure 机器学习模型配对时，你的应用程序中将获得低延迟和高吞吐量。 几种情况下缓存特别有用，例如，可以将缓存用于数据推理和实际的模型推理结果。 在任一情况下，元数据或结果存储在内存中，因而提高了性能。 
+Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。 几种情况下缓存特别有用，例如，可以将缓存用于数据推理和实际的模型推理结果。 在任一情况下，元数据或结果存储在内存中，因而提高了性能。 
 
 > [!NOTE]
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。  
@@ -128,7 +128,7 @@ def run(data):
 这些实体被封装到推理配置中。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](/python/api/azureml-core/azureml.core.environment%28class%29) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -161,7 +161,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>创建映像
 
-若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 或特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
+若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions) 或特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
 
 > [!NOTE]
 > 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
@@ -316,6 +316,6 @@ print(model_package.location)
 ## <a name="next-steps"></a>后续步骤 
 
 * 详细了解 [Azure Cache for Redis](./cache-overview.md)
-* 了解如何在 [函数](../azure-functions/functions-create-function-linux-custom-image.md) 文档中配置 function app。
-* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* 通过 [Functions](../azure-functions/functions-create-function-linux-custom-image.md) 文档，了解如何配置函数应用。
+* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
 * 创建[使用 Azure Cache for Redis 的 Python 应用](./cache-python-get-started.md)

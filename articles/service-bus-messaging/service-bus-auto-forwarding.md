@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/20/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678982"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
@@ -16,7 +16,7 @@ ms.locfileid: "98678982"
 通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
 
 > [!NOTE]
-> Service Bus 的基本层不支持自动转发功能。 标准层和高级层支持该功能。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
+> 基本层的服务总线不支持自动转发功能。 标准层和高级层支持该功能。 有关这些层之间的差异，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 

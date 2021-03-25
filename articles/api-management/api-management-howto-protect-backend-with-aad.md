@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: apimpm
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97027911"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>在 Azure API 管理中使用 OAuth 2.0 授权和 Azure AD 保护 Web API 后端 
@@ -171,7 +171,7 @@ ms.locfileid: "97027911"
 
 1. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。  
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 

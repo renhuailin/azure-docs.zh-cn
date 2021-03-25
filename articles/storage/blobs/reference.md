@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: e6cd816858efb3487fad5ca03959abfb24e7dbe4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054070"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505488"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob 存储参考
 
@@ -21,11 +21,11 @@ ms.locfileid: "99054070"
 
 ## <a name="net-client-libraries"></a>.NET 客户端库
 
-下表列出了 Azure Blob 存储 .NET Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 .NET API 的参考文档和示例文档。
 
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [适用于 .NET 的 Azure Blob 存储客户端库](/dotnet/api/overview/azure/storage.blobs-readme) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [快速入门：用于 .NET 的 Azure Blob 存储客户端库 v12](./storage-quickstart-blobs-dotnet.md) |
+| 12.x | [适用于 .NET 的 Azure Blob 存储客户端库](/dotnet/api/overview/azure/storage.blobs-readme) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](./storage-quickstart-blobs-dotnet.md) |
 | 11.x | [Microsoft.Azure.Storage.Blob 命名空间](/dotnet/api/microsoft.azure.storage.blob) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>存储管理
@@ -46,7 +46,7 @@ ms.locfileid: "99054070"
 
 ## <a name="java-client-libraries"></a>Java 客户端库
 
-下表列出了 Azure Blob 存储 Java Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 Java API 的参考文档和示例文档。
 
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -63,7 +63,7 @@ ms.locfileid: "99054070"
 
 ## <a name="python-client-libraries"></a>Python 客户端库
 
-下表列出了 Azure Blob 存储 Python Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 Python API 的参考文档和示例文档。
 
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,7 +72,7 @@ ms.locfileid: "99054070"
 
 ## <a name="javascript-client-libraries"></a>JavaScript 客户端库
 
-下表列出了 Azure Blob 存储 JavaScript Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 JavaScript API 的参考文档和示例文档。
 
 |  版本  | 参考文档 | 程序包 | 快速入门 |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -81,7 +81,7 @@ ms.locfileid: "99054070"
 
 ## <a name="rest-apis"></a>REST API
 
-下表列出了 Azure Blob 存储 REST Api 的参考文档和示例文档。
+下表列出了 Azure Blob 存储 REST API 的参考文档和示例文档。
 
 | 参考文档 | 概述 |
 | ----------------------- | -------- |
@@ -107,7 +107,7 @@ ms.locfileid: "99054070"
 
 | 版本 | 平台 |
 | ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
 |  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 

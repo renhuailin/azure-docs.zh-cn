@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 09/17/2020
 ms.openlocfilehash: 081eea7842652884363603bc5ba742ba48539f85
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503602"
 ---
 **一个训练作业的计算目标可以在下一个训练作业中重复使用。** 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。 对于机器学习管道，请对每个计算目标使用适当的[管道步骤](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)。
