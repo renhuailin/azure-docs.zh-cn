@@ -1,6 +1,6 @@
 ---
 title: 使用标签来检测查询
-description: 在 Azure Synapse Analytics 中使用标签检测专用 SQL 池的查询的技巧。
+description: 有关在 Azure Synapse Analytics 中使用标签检测专用 SQL 池的查询的技巧。
 services: synapse-analytics
 author: MSTehrani
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462744"
 ---
 # <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用标签检测专用 SQL 池的查询
 
-本文介绍如何使用标签来开发解决方案，以便在专用 SQL 池中检测查询。
+本文介绍了使用标签在专用 SQL 池中检测查询以开发解决方案的技巧。
 
 ## <a name="what-are-labels"></a>什么是标签？
 
-专用 SQL 池支持称为查询标签的概念。 在继续之前，让我们看一个示例：
+专用 SQL 池支持称为“查询标签”的概念。 在继续之前，让我们看一个示例：
 
 ```sql
 SELECT *

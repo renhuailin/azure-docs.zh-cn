@@ -1,6 +1,6 @@
 ---
 title: 使用无服务器 SQL 池查询文件夹和多个文件
-description: 无服务器 SQL 池支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。
+description: 无服务器 SQL 池支持使用通配符（类似于 Windows 操作系统中使用的通配符）读取多个文件/文件夹。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,27 +10,27 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462633"
 ---
 # <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
 
-本文介绍如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。
+在本文中，你将了解如何在 Azure Synapse Analytics 中使用无服务器 SQL 池编写查询。
 
-无服务器 SQL 池支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。 但是，由于允许使用多个通配符，因此存在更大的灵活性。
+无服务器 SQL 池支持使用通配符（类似于 Windows 操作系统中使用的通配符）读取多个文件/文件夹。 但是，由于允许使用多个通配符，因此需要更大的灵活性。
 
 ## <a name="prerequisites"></a>先决条件
 
 第一步是创建将在其中执行查询的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据以及在这些示例中使用的外部文件格式。
 
-你将使用文件夹 *csv/出租车* 来执行示例查询。 它包含 NYC 出租车-从7月2016日到6月 6 2018 日，记录数据。 *Csv/出租车* 中的文件采用以下模式按年份和月份命名 <year> ： yellow_tripdata_ - <month>
+将使用文件夹 csv/taxi 执行示例查询。 它包含 2016 年 7 月到 2018 年 6 月的 NYC Taxi - Yellow Taxi Trip Records 数据。 csv/taxi 中的文件采用以下格式按年份和月份命名：yellow_tripdata_<year>-<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>读取文件夹中的所有文件
 
-下面的示例从 *csv/出租车* 文件夹中读取所有 NYC 的黄色出租车数据文件，并返回乘客和搭乘的总次数。 它还显示聚合函数的使用情况。
+下面的示例从 csv/taxi 文件夹中读取所有 NYC Yellow Taxi 数据文件，并返回每年乘客总数和搭乘总次数。 它还显示聚合函数的使用情况。
 
 ```sql
 SELECT 
@@ -54,11 +54,11 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
 ### <a name="read-subset-of-files-in-folder"></a>读取文件夹中的文件子集
 
-下面的示例使用通配符从 *csv/出租车* 文件夹中读取 2017 NYC 的黄色出租车数据文件，并返回每个付款类型的总费用金额。
+下面的示例使用通配符读取 csv/taxi 文件夹中的 2017 NYC Yellow Taxi 数据文件，并返回每个付款类型的总费用金额。
 
 ```sql
 SELECT 
@@ -79,20 +79,20 @@ ORDER BY payment_type;
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
 ## <a name="read-folders"></a>读取文件夹
 
-您向 OPENROWSET 提供的路径也可以是指向文件夹的路径。 以下各节包含这些查询类型。
+向 OPENROWSET 提供的路径也可以是指向文件夹的路径。 以下部分包含这些查询类型。
 
 ### <a name="read-all-files-from-specific-folder"></a>读取特定文件夹中的所有文件
 
-您可以使用文件级别通配符读取文件夹中的所有文件，如 [读取文件夹中的所有文件](#read-all-files-in-folder)中所示。 不过，有一种方法可以查询文件夹并使用该文件夹中的所有文件。
+可以使用文件级别通配符读取文件夹中的所有文件，如[读取文件夹中所有文件](#read-all-files-in-folder)所示。 但有一种方法可以查询文件夹并使用该文件夹中的所有文件。
 
-如果 OPENROWSET 中提供的路径指向某个文件夹，则该文件夹中的所有文件都将用作查询的源。 以下查询将读取 *csv/出租车* 文件夹中的所有文件。
+如果 OPENROWSET 中提供的路径指向文件夹，则该文件夹中的所有文件都将用作查询的源。 以下查询将读取 csv/taxi 文件夹中的所有文件。
 
 > [!NOTE]
-> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将以一个名为 *出租车* 的文件为目标。
+> 请注意以下查询中路径的末尾是否存在 /。 它表示文件夹。 如果省略了 /，则查询将改为以名为 taxi 的文件作为目标。
 
 ```sql
 SELECT
@@ -131,14 +131,14 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
 ### <a name="read-all-files-from-multiple-folders"></a>读取多个文件夹中的所有文件
 
-可以通过使用通配符从多个文件夹读取文件。 下面的查询将从 *csv* 文件夹中的所有文件夹（名称以 *t* 开头并以 *i* 结尾）读取所有文件。
+可以通过使用通配符从多个文件夹读取文件。   下面的查询读取 csv 文件夹中所有以 t 开头并以 i 结尾的文件夹中的所有文件。
 
 > [!NOTE]
-> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为 *t &ast; i* 的文件。
+> 请注意以下查询中路径的末尾是否存在 /。 它表示文件夹。 如果省略 /，则查询将改为以名为 t&ast;i 的文件作为目标。
 
 ```sql
 SELECT
@@ -177,13 +177,13 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
-由于只有一个与条件相匹配的文件夹，因此查询结果与 " [读取文件夹中的所有文件](#read-all-files-in-folder)" 相同。
+由于只有一个文件夹与条件匹配，因此查询结果与[读取文件夹中的所有文件](#read-all-files-in-folder)的相同。
 
 ## <a name="traverse-folders-recursively"></a>以递归方式遍历文件夹
 
-如果在路径末尾指定了/* *，则无服务器 SQL 池可以以递归方式遍历文件夹。 以下查询将读取位于 *csv* 文件夹中的所有文件夹和子文件夹中的所有文件。
+如果在路径末尾指定 /**，则无服务器 SQL 池可以递归方式遍历文件夹。 以下查询读取 csv 文件夹中所有文件夹和子文件夹中的所有文件。
 
 ```sql
 SELECT
@@ -222,15 +222,15 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
 ## <a name="multiple-wildcards"></a>多个通配符
 
-可以在不同的路径级别使用多个通配符。 例如，你可以将以前的查询扩充为仅读取包含2017数据的文件，从所有文件夹中的名称以 *t* 开头，并以 *i* 结尾。
+可以在不同的路径级别使用多个通配符。  例如，可以将之前的查询扩充为仅读取所有以 t 开头并以 i 结尾的文件夹中包含 2017 数据的文件。
 
 > [!NOTE]
-> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为 *t &ast; i* 的文件。
-> 每个查询的最大限制为10个通配符。
+> 请注意以下查询中路径的末尾是否存在 /。 它表示文件夹。 如果省略 /，则查询将改为以名为 t&ast;i 的文件作为目标。
+> 每个查询最多有 10 个通配符。
 
 ```sql
 SELECT
@@ -269,10 +269,10 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构 (例如，列数及其数据类型) 。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
 
-由于只有一个与条件相匹配的文件夹，因此查询结果与 " [在文件夹中读取文件的子集](#read-subset-of-files-in-folder) " 和 " [读取特定文件夹中的所有文件](#read-all-files-from-specific-folder)" 相同。 [查询 Parquet 文件](query-parquet-files.md)中介绍了更复杂的通配符使用方案。
+由于只有一个文件夹与条件匹配，因此查询结果与[读取文件夹中文件的子集](#read-subset-of-files-in-folder)和[读取特定文件夹中的所有文件](#read-all-files-from-specific-folder)的相同。 [查询 Parquet 文件](query-parquet-files.md)中介绍了更复杂的通配符使用方案。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [查询特定文件](query-specific-files.md) 一文。
+有关详细信息，可参阅[查询特定文件](query-specific-files.md)一文。

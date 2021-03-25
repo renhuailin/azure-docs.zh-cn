@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049162"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
@@ -32,7 +32,7 @@ ms.locfileid: "102049162"
 | 警告 | 提供潜在问题而不是实际错误的预警的事件。 指示资源未处于理想状态，以后可能降级为显示错误或严重事件。  
 | 信息 | 向管理员传递非关键信息的事件。 类似于这样一个备注：“仅供参考”。 
 
-每个资源提供程序的开发人员都会选择其资源条目的严重性级别。 因此，根据应用程序的生成方式，实际的严重性可能会有所不同。 例如，对于在隔离中进行的特定资源 "关键" 的项，与 Azure 应用程序的中心资源类型中的 "错误" 可能并不一样重要。 确定要针对其发出警报的事件时，请务必考虑这一事实。  
+每个资源提供程序的开发人员都会选择其资源条目的严重性级别。 因此，根据应用程序的生成方式，实际的严重性可能会有所不同。 例如，对于单独获取的特定资源来说，“关键”项可能不如对 Azure 应用程序极为重要的资源类型中的“错误”那么重要。 确定要针对其发出警报的事件时，请务必考虑这一事实。  
 
 ## <a name="categories"></a>Categories
 活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 请参阅以下各部分，了解从门户、PowerShell、CLI 和 REST API 访问活动日志时，每个类别及其架构的详细信息。 [将活动日志流式传输到存储或事件中心](./resource-logs.md#send-to-azure-event-hubs)时，架构是不同的。 本文最后一个部分提供了这些属性到[资源日志架构](./resource-logs-schema.md)的映射。

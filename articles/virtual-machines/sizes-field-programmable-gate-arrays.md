@@ -1,25 +1,25 @@
 ---
-title: '用于现场可编程入口阵列的 Azure 虚拟机大小 (FPGA) '
-description: 列出了可用于 Azure 中虚拟机的不同 FPGA 优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
+title: 现场可编程门阵列 (FPGA) 的 Azure 虚拟机大小
+description: 列出了 Azure 中虚拟机可用的不同 FPGA 优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-fpga
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: vikancha
-ms.openlocfilehash: b05c3198f6c3d84f852d9535a3cf0b67f66e01f6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: d9eb0d5bc93cbe9c2a7cbae56c336115bb227b04
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100417086"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557669"
 ---
-# <a name="fpga-optimized-virtual-machine-sizes"></a>FPGA 优化的虚拟机大小
+# <a name="fpga-optimized-virtual-machine-sizes"></a>FPGA 优化虚拟机大小
 
-FPGA 优化的 VM 大小是单个或多个 Fpga 可用的专用虚拟机。 这些大小是为计算密集型工作负荷设计的。 本文提供了有关 Fpga、个 vcpu、数据磁盘和 Nic 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
+FPGA 优化 VM 大小是具有单个或多个 FPGA 的专用虚拟机。 这些大小专为计算密集型工作负载而设计。 本文介绍有关 FPGA、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
-- [Np-in 系列](np-series.md)大小针对工作负荷进行了优化，包括机器学习推理、视频转码和数据库搜索 & 分析。 NP-IN 系列由 Xilinx U250 加速服务提供支持。
+- [NP 系列](np-series.md)大小针对工作负载进行了优化，包括机器学习推理、视频转码及数据库搜索和分析。 NP 系列由 Xilinx U250 加速器提供支持。
 
 
 ## <a name="deployment-considerations"></a>部署注意事项
@@ -30,7 +30,7 @@ FPGA 优化的 VM 大小是单个或多个 Fpga 可用的专用虚拟机。 这�
 
 - 如果需要部署的 N 系列 VM 较多，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 
-- 你可能需要提高 Azure 订阅中每个区域) 的核心配额 (，并增加 NP-IN 内核的单独配额。 若要请求增加配额，可免费 [建立联机客户支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md) 。 默认限制可能因订阅类别而异。
+- 你可能需要增加 Azure 订阅中的核心配额（按区域）以及增加单独针对 NP 核心的配额。 若要请求增加配额，可免费 [建立联机客户支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md) 。 默认限制可能因订阅类别而异。
 
 ## <a name="other-sizes"></a>其他大小
 

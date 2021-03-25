@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: chrande
 ms.openlocfilehash: d99e2e2ffd63b050e7373c98084fed3fb14727bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93357039"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
@@ -72,13 +72,13 @@ ms.locfileid: "93357039"
 
 一个常见的缺陷是将单个实体的属性映射为单独的顶点。 请考虑下面的示例，其中相同的实体以两种不同的方式表示：
 
-* **基于顶点属性** ：在这种方法中，实体使用三个单独的顶点和两个边缘来描述其属性。 虽然这种方法可以减少冗余，但会增加模型复杂性。 模型复杂性的增加可能会导致延迟、查询复杂性和计算成本增加。 此模型还可能在分区方面带来挑战。
+* **基于顶点属性**：在这种方法中，实体使用三个单独的顶点和两个边缘来描述其属性。 虽然这种方法可以减少冗余，但会增加模型复杂性。 模型复杂性的增加可能会导致延迟、查询复杂性和计算成本增加。 此模型还可能在分区方面带来挑战。
 
 :::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="具有属性顶点的实体模型。" border="false":::
 
-* **属性嵌入式顶点** ：这种方法利用键值对列表来表示顶点内实体的所有属性。 这种方法降低了模型复杂性，使查询更简单、遍历成本更低。
+* **属性嵌入式顶点**：这种方法利用键值对列表来表示顶点内实体的所有属性。 这种方法降低了模型复杂性，使查询更简单、遍历成本更低。
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="关系图显示了上图中的 Luis 顶点，其中包含 i d、label 和 properties。" border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="关系图显示上图中的 Luis 顶点，其中包含 ID、标签和属性。" border="false":::
 
 > [!NOTE]
 > 上面的示例显示了一个简化的图形模型，仅对划分实体属性的两种方法进行了比较。

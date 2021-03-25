@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 02bd4927216b6b60d2720e6f32c5768499e310bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022194"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for PostgreSQL - 单一服务器中创建和管理防火墙规则
@@ -54,8 +54,8 @@ ms.locfileid: "96022194"
 ## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>通过 Azure 门户管理现有的服务器级别防火墙规则
 重复这些步骤来管理防火墙规则。
 * 若要添加当前计算机，请单击“添加我的 IP”的 + 按钮。  单击“保存”  以保存更改。
-* 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP 地址”和“结束 IP 地址”。 单击“保存”  以保存更改。
-* 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”  以保存更改。
+* 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP 地址”和“结束 IP 地址”。 单击“保存”以保存更改。
+* 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”以保存更改。
 * 要删除现有规则，请单击省略号 […]，并单击“删除”即可删除该规则  。 单击“保存”以保存更改。
 
 ## <a name="next-steps"></a>后续步骤

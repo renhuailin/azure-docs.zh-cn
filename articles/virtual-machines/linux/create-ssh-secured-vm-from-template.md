@@ -2,20 +2,21 @@
 title: 使用模板在 Azure 中创建 Linux VM
 description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 184e856636a74ce5b7ac72b2e8cab3d1f19c4e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a4e1bf56df52717255d2bae0a38186335d922ff1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89074383"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554677"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
-了解如何使用 azure 资源管理器模板和 Azure Cloud shell 中的 Azure CLI，创建 (VM) 的 Linux 虚拟机。 若要创建 Windows 虚拟机，请参阅[通过资源管理器模板创建 Windows 虚拟机](../windows/ps-template.md)。
+了解如何使用 Azure 资源管理器模板和 Azure Cloud Shell 中的 Azure CLI 来创建 Linux 虚拟机 (VM)。 若要创建 Windows 虚拟机，请参阅[通过资源管理器模板创建 Windows 虚拟机](../windows/ps-template.md)。
 
 一种替代方法是从 Azure 门户部署模板。 若要在门户中打开该模板，请选择“部署到 Azure”按钮。
 
@@ -36,7 +37,7 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
 
 [!code-json[create-linux-vm](~/quickstart-templates/101-vm-sshkey/azuredeploy.json)]
 
-若要运行 CLI 脚本，请选择“试用”**** 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择 " **粘贴**"：
+若要运行 CLI 脚本，请选择“试用”以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&

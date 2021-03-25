@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89319555"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
@@ -129,7 +129,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 “基本信息”步骤是 Azure 门户分析文件时生成的第一步。 默认情况下，通过“基本信息”步骤，用户可选择订阅、资源组和部署位置。
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="选项卡向导":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="基本信息默认值":::
 
 在本部分中可以添加更多元素。 在可能的情况下，请添加可查询部署范围内的参数的元素（例如群集名称或管理员凭据）。
 

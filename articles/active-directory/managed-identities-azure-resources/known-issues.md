@@ -18,10 +18,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3f1be2e64435cb0bcdb369a398a9a65fc3714fb2
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100008530"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
@@ -51,7 +51,7 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 ### <a name="can-the-same-managed-identity-be-used-across-multiple-regions"></a>是否可以跨多个区域使用同一托管标识？
 
-简而言之，可以在多个 Azure 区域中使用用户分配的托管标识。 更长的答案是，当用户分配的托管标识作为区域资源创建时，在 Azure AD 中创建的关联 [服务主体](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) 可在全球范围内使用。 可以从任何 Azure 区域使用服务主体，其可用性依赖于 Azure AD 的可用性。 例如，如果在 South-Central 区域中创建了用户分配的托管标识，并且该区域变为不可用，则此问题只会影响托管标识本身的 [控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md) 活动。  已配置为使用托管标识的任何资源执行的活动不会受到影响。
+简而言之，是的，可以在多个 Azure 区域中使用用户分配的托管标识。 展开来说就是，当用户分配的托管标识作为区域资源创建时，在 Azure AD 中创建的关联[服务主体](../develop/app-objects-and-service-principals.md#service-principal-object) (SPN) 可在全球范围使用。 可以从任何 Azure 区域使用服务主体，其可用性取决于 Azure AD 的可用性。 例如，如果在中南部区域创建了一个用户分配的托管标识，而该区域变为不可用，则此问题仅影响托管标识本身的[控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)活动。  已经配置为使用托管标识的任何资源执行的活动都不会受到影响。
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Azure 资源托管标识可以用于 Azure 云服务吗？
 
@@ -82,7 +82,7 @@ az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  princi
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不是。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
 

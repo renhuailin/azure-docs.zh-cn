@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86249506"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
@@ -41,7 +41,7 @@ ms.locfileid: "86249506"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="profile"></a><a name="Profile"></a> 配置文件  
- **配置文件**模板用于自定义开发人员门户中用户配置文件页的用户配置文件部分。  
+ **配置文件** 模板用于自定义开发人员门户中用户配置文件页的用户配置文件部分。  
   
  ![“用户配置文件”页](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "“APIM 用户配置文件”页")  
   
@@ -186,7 +186,7 @@ ms.locfileid: "86249506"
 ```  
   
 ##  <a name="subscriptions"></a><a name="Subscriptions"></a> 订阅  
- **订阅**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
+ **订阅** 模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![“用户订阅”页](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "“APIM 用户订阅”页")  
   
@@ -287,7 +287,7 @@ ms.locfileid: "86249506"
                 <a href="#" class="btn-link" id="regenerateSecondary_{{subscription.id}}" data-bind="click: regenerateKey, text: regenerateKeyLabel">{% localized "SubscriptionListStrings|WebDevelopersRegenerateLink" %}</a>  
               </div>  
             </div>  
-            <div class="clearfix"> </div>  
+            <div class="clearfix"> </div>  
           </div>  
           <!-- /ko -->  
           {% endif %}  
@@ -407,7 +407,7 @@ ms.locfileid: "86249506"
 ```  
   
 ##  <a name="applications"></a><a name="Applications"></a> 应用程序  
- **应用程序**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
+ **应用程序** 模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![“用户帐户应用程序”页](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "“APIM 用户帐户应用程序”页")  
   
@@ -570,7 +570,7 @@ ms.locfileid: "86249506"
 ```  
   
 ##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> 更新帐户信息  
- “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。    
+ “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。  
   
  ![“用户帐户信息”页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "“APIM 用户帐户信息”页开发人员门户模板")  
   

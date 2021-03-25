@@ -1,5 +1,5 @@
 ---
-title: 转到生产调用 web Api 的 web 应用 |Microsoft
+title: 将调用 Web API 的 Web 应用移动到生产 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何将调用 Web API 的 Web 应用移到生产环境。
 services: active-directory
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6252e33631fb07a61ed3c1ac2be65762b290600b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: cf32274a49cb1b790e9d872efe36f2e1cb188d1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753217"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675934"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移到生产环境
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移动到生产
 
-现在你已了解如何获取用于调用 Web API 的令牌，接下来了解如何移到生产环境。
+现在你已了解如何获取用于调用 Web API 的令牌，下面是将应用程序移到生产环境时需要考虑的一些事项。
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 

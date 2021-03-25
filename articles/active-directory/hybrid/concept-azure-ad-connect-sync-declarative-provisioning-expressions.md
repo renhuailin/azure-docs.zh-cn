@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280207"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
@@ -48,12 +48,12 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 
 有关函数的完整列表，请参阅[函数参考](reference-connect-sync-functions-reference.md)。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 通过连接器或由管理员使用 PowerShell 定义参数。 参数通常包含因系统不同而各异的值，例如用户所在域的名称。 这些参数可在属性流中使用。
 
 Active Directory 连接器为入站同步规则提供以下参数：
 
-| 参数名称 | 注释 |
+| 参数名称 | 评论 |
 | --- | --- |
 | Domain.Netbios |当前正在导入的域的 Netbios 格式，例如 FABRIKAMSALES |
 | Domain.FQDN |当前正在导入的域的 FQDN 格式，例如 sales.fabrikam.com |
@@ -88,9 +88,9 @@ Active Directory 连接器为入站同步规则提供以下参数：
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
-* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
+* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
 * 在 [Understanding the default configuration](concept-azure-ad-connect-sync-default-configuration.md)（了解默认配置）中了解如何现成地使用声明式预配。
-* 在 [How to make a change to the default configuration](how-to-connect-sync-change-the-configuration.md)（如何对默认配置进行更改）中了解如何使用声明性预配进行实际更改。
+* 在[如何更改默认配置](how-to-connect-sync-change-the-configuration.md)中了解如何使用声明性预配进行实际更改。
 
 **概述主题**
 

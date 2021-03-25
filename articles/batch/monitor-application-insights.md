@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Application Insights 库检测 Azure Batch
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 04/05/2018
-ms.openlocfilehash: d06e2b61725f05d025acd8a2995ea041f138ae4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 9decb99c3de798df43dedc2441208066d18e3a13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933556"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605777"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "88933556"
   
    * 使用 Azure 门户创建一个 Application Insights 资源。 选择“常规”作为应用程序类型。
 
-   * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。 本文稍后会用到此密钥。
+   * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)。 本文稍后会用到此密钥。
   
   > [!NOTE]
   > Application Insights 中存储的数据可能会产生[费用](https://azure.microsoft.com/pricing/details/application-insights/)。 这包括本文中所述的诊断和监视数据。

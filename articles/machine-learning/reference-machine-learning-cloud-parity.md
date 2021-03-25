@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97725014"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure 机器学习主权云平等性
@@ -92,7 +92,7 @@ ms.locfileid: "97725014"
 | ML 辅助标记（图像分类和对象检测）           | 公共预览版       | YES                | YES         |
 | **负责的 ML** |   | | |
 | UI 的可说明性                                                       | 公共预览版       | 是                 | 是          |
-| 差分隐私 SmartNoise 工具包                                    | OSS                  | 是                 | 是          |
+| 差异隐私 SmartNoise 工具包                                    | OSS                  | 是                 | 是          |
 | Azure 机器学习中用于实现数据表的自定义标记              | GA                   | 是                 | 是          |
 | 公平 AzureML 集成                                               | 公共预览版       | 是                 | 是          |
 | 可解释性 SDK                                                      | GA                   | YES                | YES         |
@@ -205,7 +205,7 @@ ms.locfileid: "97725014"
 | ML 辅助标记（图像分类和对象检测）           | 公共预览版   | YES       | 空值        |
 | **负责的 ML** |    | | |
 | UI 的可说明性                                                       | 公共预览版   | 是        | 空值        |
-| 差分隐私 SmartNoise 工具包                                    | OSS              | 是        | 空值        |
+| 差异隐私 SmartNoise 工具包                                    | OSS              | 是        | 空值        |
 | Azure 机器学习中用于实现数据表的自定义标记              | GA               | 是        | 空值        |
 | 公平 AzureML 集成                                               | 公共预览版   | 是        | 空值        |
 | 可解释性 SDK                                                      | GA               | YES       | 空值        |

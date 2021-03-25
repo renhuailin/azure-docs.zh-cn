@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86133817"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>为多层 Dynamics AX 应用程序设置灾难恢复   
@@ -116,7 +116,7 @@ ms.locfileid: "86133817"
 可通过添加以下步骤来自定义 Dynamics AX 应用程序的恢复计划。 以上快照显示添加所有步骤后的完整恢复计划。
 
 
-* **SQL Server 故障转移步骤**：有关 SQL Server 特定恢复步骤的信息，请参阅[使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
+* **SQL Server 故障转移步骤**：有关 SQL Server 特定恢复步骤的信息，请参阅 [使用 SQL Server 和 Azure Site Recovery 复制应用程序](site-recovery-sql.md)。
 
 * **故障转移组 1**：对应用程序对象服务器 VM 进行故障转移。
 确保选择的恢复点尽量靠近数据库 PIT，但不能在它的前面。

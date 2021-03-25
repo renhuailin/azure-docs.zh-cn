@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339659"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Cosmos DB 和容器
@@ -65,18 +65,18 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
     * 订阅：选择一个 Azure 订阅。
     * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
-    * 位置：选择一个位置。  例如“美国中部”。
-    * **帐户名称** ：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。
-    * **位置** ：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
-    * **主要区域** ：Azure Cosmos 帐户的主要副本区域。
-    * **次要区域** ：Azure Cosmos 帐户的次要副本区域。
-    * **默认一致性级别** ：Azure Cosmos 帐户的默认一致性级别。
-    * **最大过期前缀** ：最大过时请求数。 对于 BoundedStaleness 是必需的。
-    * **以秒为单位的最大间隔** ：最大延迟时间。 对于 BoundedStaleness 是必需的。
-    * **数据库名称** ：Azure Cosmos 数据库的名称。
-    * **容器名称** ：Azure Cosmos 容器的名称。
-    * **吞吐量** ：容器的吞吐量，最小吞吐量值为 400 RU/秒。
-    * **我同意上述条款和条件** ：选中。
+    * 位置：选择一个位置。  例如“美国中部”。 
+    * **帐户名称**：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。
+    * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
+    * **主要区域**：Azure Cosmos 帐户的主要副本区域。
+    * **次要区域**：Azure Cosmos 帐户的次要副本区域。
+    * **默认一致性级别**：Azure Cosmos 帐户的默认一致性级别。
+    * **最大过期前缀**：最大过时请求数。 对于 BoundedStaleness 是必需的。
+    * **以秒为单位的最大间隔**：最大延迟时间。 对于 BoundedStaleness 是必需的。
+    * **数据库名称**：Azure Cosmos 数据库的名称。
+    * **容器名称**：Azure Cosmos 容器的名称。
+    * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。
+    * **我同意上述条款和条件**：选中。
 
 3. 选择“购买”。 成功部署 Azure Cosmos 帐户后，你会收到通知：
 

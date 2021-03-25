@@ -6,25 +6,25 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75464698"
 ---
 # <a name="performance-metrics"></a>性能指标
 
 应收集指标，以了解群集及其中运行的应用程序的性能。 对于 Service Fabric 群集，建议收集以下性能计数器。
 
-## <a name="nodes"></a>Nodes
+## <a name="nodes"></a>节点
 
-对于群集中的计算机，建议收集以下性能计数器，以便更好地了解每台计算机上的负载，并做出相应的群集缩放决策。
+对于群集中的计算机，建议收集以下性能计数器，以便更好地了解每台计算机上的负载，并制定相应的群集缩放决策。
 
 | 计数器类别 | 计数器名称 |
 | --- | --- |
 | 逻辑磁盘 | 逻辑磁盘可用空间 |
-| PhysicalDisk(per Disk) | 平均值磁盘读取队列长度 |
-| PhysicalDisk(per Disk) | 平均值磁盘写入队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
 | PhysicalDisk(per Disk) | 平均值磁盘秒数/读取 |
 | PhysicalDisk(per Disk) | 平均值磁盘秒数/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
@@ -69,7 +69,7 @@ ms.locfileid: "75464698"
 
 ### <a name="service-fabrics-custom-performance-counters"></a>Service Fabric 的自定义性能计数器
 
-Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可以在 Windows 计算机上的“性能监视器”应用程序（“开始”>“性能监视器”）中看到综合列表。 
+Service Fabric 生成大量自定义性能计数器。 如果已安装 SDK，可以在 Windows 计算机上的“性能监视器”应用程序（“开始”>“性能监视器”）中看到完整列表。 
 
 在要部署到群集的应用程序中，如果使用的是 Reliable Actors，请添加 `Service Fabric Actor` 和 `Service Fabric Actor Method` 类别的计数器（请参阅 [Service Fabric Reliable Actors 诊断](service-fabric-reliable-actors-diagnostics.md)）。
 

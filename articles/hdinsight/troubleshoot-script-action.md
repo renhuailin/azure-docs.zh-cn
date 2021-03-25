@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944683"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871429"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>排查 Azure HDInsight 中的脚本操作问题
 
@@ -26,11 +26,11 @@ ms.locfileid: "98944683"
 
 1. 从页面顶部栏中选择“操作”条目  。 此时会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
 
-    ![选中了“操作”的 Ambari Web UI 栏](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="选中了“操作”的 Ambari Web UI 栏" border="true":::
 
 1. 查找“操作”列中包含 **run\_customscriptaction** 的条目。 这些条目是在运行脚本操作时创建的。
 
-    ![“Apache Ambari 脚本操作”操作](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="“Apache Ambari 脚本操作”操作" border="true":::
 
     若要查看 **STDOUT** 和 **STDERR** 输出，请选择 **run\customscriptaction** 条目，并通过链接向下钻取。 此输出是在脚本运行时生成的，可能包含有用的信息。
 
@@ -40,7 +40,7 @@ ms.locfileid: "98944683"
 
 * 存储日志位于 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`。
 
-    ![脚本操作日志](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="脚本操作日志" border="true":::
 
     在此目录下，日志分别针对 **头节点**、**工作器节点** 和 **Zookeeper 节点** 进行组织。 请看以下示例：
 

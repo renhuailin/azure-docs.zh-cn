@@ -8,10 +8,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90007360"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
@@ -67,7 +67,7 @@ ms.locfileid: "90007360"
 
      ![跨可用性集的 VM 部署](media/move-vm-overview/avset.png)
 
-* **每个层中跨可用性区域部署的 VM**：层中的每个 VM 跨[可用性区域](../availability-zones/az-overview.md)进行配置。 Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
+* **每个层中跨可用性区域部署的 VM**：层中的每个 VM 跨 [可用性区域](../availability-zones/az-overview.md)进行配置。 Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
 
      ![可用性区域部署](media/move-vm-overview/zone.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>教程：Azure Active Directory 与 Mind Tools Toolkit 的集成
@@ -111,8 +111,8 @@ ms.locfileid: "92448361"
 1. 在 Azure 门户的最左侧，选择“Azure Active Directory” > “用户” > “所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon** 。  
-   1. 在“用户名”字段中，输入“B.Simon@companydomain.extension”。  例如，B.Simon@contoso.com 。
+   1. 在“姓名”字段中输入 **B.Simon**。  
+   1. 在“用户名”字段中，输入“B.Simon@companydomain.extension”。  例如，B.Simon@contoso.com。
    1. 选中“显示密码”复选框，并记下“密码”框中显示的值。 
    1. 选择“创建”。
 

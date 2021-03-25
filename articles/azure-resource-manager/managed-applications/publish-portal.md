@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: tomfitz
 ms.openlocfilehash: 05302d92f2304be35a7b88fac6fabfc17b13c63e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75651717"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>通过 Azure 门户发布服务目录应用程序
 
 可以使用 Azure 门户发布适用于组织成员的[托管应用程序](overview.md)。 例如，IT 部门可发布确保符合组织标准的托管应用程序。 这些托管应用程序通过服务目录（而不是 Azure 市场）提供。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 发布托管应用程序时，请指定用于管理资源的标识。 我们建议你指定 Azure Active Directory 用户组。 若要创建 Azure Active Directory 用户组，请参阅[在 Azure Active Directory 中创建组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 
 
@@ -24,17 +24,17 @@ ms.locfileid: "75651717"
 
 ## <a name="create-managed-application-with-portal"></a>使用门户创建托管应用程序
 
-1. 在左上角，选择“+ 新建”  。
+1. 在左上角，选择“+ 新建”。
 
    ![新建服务](./media/publish-portal/new.png)
 
-1. 搜索**服务目录**。
+1. 搜索 **服务目录**。
 
-1. 在结果中，向下滚动直至找到“服务目录托管应用程序定义”  。 选择它。
+1. 在结果中，向下滚动直至找到“服务目录托管应用程序定义”。 选择该文件夹。
 
    ![搜索托管应用程序定义](./media/publish-portal/select-managed-apps-definition.png)
 
-1. 选择“创建”以启动创建托管应用程序定义的过程。 
+1. 选择“创建”以启动创建托管应用程序定义的过程。
 
    ![创建托管应用程序定义](./media/publish-portal/create-definition.png)
 

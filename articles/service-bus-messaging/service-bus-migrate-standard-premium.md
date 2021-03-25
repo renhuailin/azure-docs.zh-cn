@@ -4,10 +4,10 @@ description: 有关将现有 Azure 服务总线标准命名空间迁移到高级
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85340738"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
@@ -21,11 +21,11 @@ ms.locfileid: "85340738"
 
 需要注意的一些要点：
 
-- 此迁移将就地进行，这意味着，现有的发送方和接收方应用程序 **不需要对代码或配置进行任何更改** 。 现有的连接字符串将自动指向新的高级命名空间。
-- 要使迁移成功， **高级** 命名空间 **不能包含任何实体** 。
+- 此迁移将就地进行，这意味着，现有的发送方和接收方应用程序 **不需要对代码或配置进行任何更改**。 现有的连接字符串将自动指向新的高级命名空间。
+- 要使迁移成功，**高级** 命名空间 **不能包含任何实体**。
 - 在迁移过程中，标准命名空间中的所有 **实体** 都将 **复制** 到高级命名空间。
-- 在高级层上，迁移支持 **每个消息传送单元包含 1,000 个实体** 。 若要确定你需要多少个消息传送单元，请从当前标准命名空间上的实体数开始。
-- 不能直接从 **基本层** 迁移到 **高级层** ，但可以间接地实现这种迁移：先从基本层迁移到标准层，然后从标准层迁移到高级层。
+- 在高级层上，迁移支持 **每个消息传送单元包含 1,000 个实体**。 若要确定你需要多少个消息传送单元，请从当前标准命名空间上的实体数开始。
+- 不能直接从 **基本层** 迁移到 **高级层**，但可以间接地实现这种迁移：先从基本层迁移到标准层，然后从标准层迁移到高级层。
 
 ## <a name="migration-steps"></a>迁移步骤
 
@@ -45,7 +45,7 @@ ms.locfileid: "85340738"
 
 若要使用 Azure CLI 或 PowerShell 工具将服务总线标准命名空间迁移到高级命名空间，请执行以下步骤。
 
-1. 创建新的服务总线高级命名空间。 可以引用 [Azure 资源管理器模板](service-bus-resource-manager-namespace.md)或[使用 Azure 门户](service-bus-create-namespace-portal.md)。 对于 **serviceBusSku** 参数，请确保选择 **premium** 。
+1. 创建新的服务总线高级命名空间。 可以引用 [Azure 资源管理器模板](service-bus-resource-manager-namespace.md)或[使用 Azure 门户](service-bus-create-namespace-portal.md)。 对于 **serviceBusSku** 参数，请确保选择 **premium**。
 
 1. 设置以下环境变量以简化迁移命令。
 

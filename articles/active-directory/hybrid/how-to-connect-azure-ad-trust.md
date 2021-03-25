@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85360089"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
@@ -37,7 +37,7 @@ Azure AD Connect 可以管理本地 Active Directory 联合身份验证服务 (A
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Azure AD Connect 控制的设置
 
-Azure AD Connect **仅**管理与 Azure AD 信任相关的设置。 Azure AD Connect 不会修改 AD FS 中有关其他信赖方信任的任何设置。 下表指出了 Azure AD Connect 控制的设置。
+Azure AD Connect **仅** 管理与 Azure AD 信任相关的设置。 Azure AD Connect 不会修改 AD FS 中有关其他信赖方信任的任何设置。 下表指出了 Azure AD Connect 控制的设置。
 
 | 设置 | 说明 |
 | :--- | :--- |

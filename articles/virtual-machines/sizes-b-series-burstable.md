@@ -2,18 +2,18 @@
 title: B 系列可突增 - Azure 虚拟机
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: c19c47ac64f1e41fa998a29d3ea0480bf0d92a63
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594394"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554456"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -27,11 +27,11 @@ B 系列有以下 VM 大小：
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 * *<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 
 *B 系列 VM 是可突发的，因此 ACU 数量会因工作负荷和核心使用情况而异。<br>
-* * 仅 *Standard_B12ms*、 *Standard_B16ms* 和 *Standard_B20ms* 支持加速网络。
+加速网络仅支持 Standard_B12ms、Standard_B16ms 和 Standard_B20ms  。
 <br>
 <br>
 
@@ -94,7 +94,7 @@ B16 特征：
 
 <sup>1</sup> 累积的积分/在一小时中使用的积分等于：`((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
 
-对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936 个小时 (每月 $673.92) ; 对于带有16个 vcpu 和 64 GiB 内存的 B16ms，速度为每小时 $0.794 (每小时 $547.86 月) 。 <b> 这会节省15% 的费用！</b>
+对于 D16s_v3（有 16 个 vCPU 和 64 GiB 内存）来说，小时费率为 0.936 美元（每月 673.92 美元）；对于 B16ms（有 16 个 vCPU 和 64 GiB 内存）来说，小时费率为 0.794 美元（每月 547.86 美元）。 <b>这可以节省 15% 的费用！</b>
 
 ## <a name="q--a"></a>问题解答
 
@@ -103,7 +103,7 @@ B16 特征：
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>问：如何从 VM 获得 135% 的基线性能？
 
-**答**：135% 在组成 VM 大小的8个 vCPU 之间共享。 例如，如果应用程序使用 8 个核心中的 4 个进行批处理，并且这 4 个 vCPU 中的每个都以 30% 的利用率运行，那么 VM CPU 性能的总额就等于 120%。  这意味着 VM 将基于从基线性能起的 15% 增量来累积积分时间。  但它也意味着，如果有积分可用，则同一个 VM 可以使用所有 8 个 vCPU 的 100%，为该 VM 提供 800% 的最大 CPU 性能。
+**答**：135% 的基线性能在组成 VM 大小的 8 个 vCPU 之间共享。 例如，如果应用程序使用 8 个核心中的 4 个进行批处理，并且这 4 个 vCPU 中的每个都以 30% 的利用率运行，那么 VM CPU 性能的总额就等于 120%。  这意味着 VM 将基于从基线性能起的 15% 增量来累积积分时间。  但它也意味着，如果有积分可用，则同一个 VM 可以使用所有 8 个 vCPU 的 100%，为该 VM 提供 800% 的最大 CPU 性能。
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>问：如何监视积分余额和消耗情况？
 

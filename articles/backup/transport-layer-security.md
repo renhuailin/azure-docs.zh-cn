@@ -4,10 +4,10 @@ description: 了解如何使 Azure 备份能够使用加密协议传输层安全
 ms.topic: conceptual
 ms.date: 11/01/2020
 ms.openlocfilehash: ba9c9d91f562f54695a0739908c8a409d14d5852
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96327111"
 ---
 # <a name="transport-layer-security-in-azure-backup"></a>Azure 备份中的传输层安全性

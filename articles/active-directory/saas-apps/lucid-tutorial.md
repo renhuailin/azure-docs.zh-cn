@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 4a4eccf90756b9b34e024a0ece8e71b1c191c233
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96180721"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucid-all-products"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Lucid（所有产品）的集成
@@ -50,7 +50,7 @@ ms.locfileid: "96180721"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分中，在搜索框中键入“Lucid(所有产品)” 。
 1. 从结果面板中选择“Lucid(所有产品)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -79,7 +79,7 @@ ms.locfileid: "96180721"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://lucid.app/saml/sso/<TENANT_NAME>?idpHash=<HASH_ID>`
 

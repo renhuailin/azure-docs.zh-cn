@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89657113"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
@@ -36,9 +36,9 @@ ms.locfileid: "89657113"
 
 1. 以管理员身份登录 Azure 门户。
 2. 在左侧选择“Active Directory”。 
-3. 在“Active Directory”**** 页上，双击要设置的用户所在的目录。
-4. 在“目录”页的顶部，选择“许可证”。****
-5. 在“许可证”**** 页上，选择“Active Directory Premium”**** 或“企业移动套件”****，并单击“分配”****。
+3. 在“Active Directory”页上，双击要设置的用户所在的目录。
+4. 在“目录”页的顶部，选择“许可证”。
+5. 在“许可证”页上，选择“Active Directory Premium”或“企业移动套件”，并单击“分配”。
 6. 在对话框中，选择要向其分配许可证的用户，并单击复选标记图标以保存更改。
 
 ## <a name="verify-the-scheduled-synchronization-task"></a>验证计划的同步任务
@@ -46,8 +46,8 @@ ms.locfileid: "89657113"
 
 ### <a name="to-verify-the-scheduled-synchronization-task"></a>验证计划的同步任务
 1. 以管理员身份登录 Azure 门户。
-2. 在左侧，选择“Active Directory”****。
-3. 在左侧选择“Azure AD Connect”****
+2. 在左侧，选择“Active Directory”。
+3. 在左侧选择“Azure AD Connect”
 4. 在页面顶部，记下最后一次同步。
 
 ![目录同步时间](./media/how-to-connect-post-installation/verify2.png)
@@ -57,10 +57,10 @@ ms.locfileid: "89657113"
 
 1. 双击 Azure AD Connect 桌面快捷方式以启动向导。
 2. 单击 **“配置”** 。
-3. 在任务屏幕上，选择“自定义同步选项”****，然后单击“下一步”****。
+3. 在任务屏幕上，选择“自定义同步选项”，然后单击“下一步”。
 4. 输入 Azure AD 凭据
 5. 单击 **“下一步”** 。 单击 **“下一步”** 。  单击 **“下一步”** 。
-5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。********
+5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。
 6.  单击 **“配置”** 。
 
 有关 Azure AD Connect 同步计划程序的详细信息，请参阅 [Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。

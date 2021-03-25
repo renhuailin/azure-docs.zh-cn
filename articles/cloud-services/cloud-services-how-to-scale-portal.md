@@ -1,6 +1,6 @@
 ---
 title: 在门户中自动缩放云服务（经典）| Microsoft Docs
-description: 了解如何使用门户在 Azure 中配置云服务的自动缩放规则 (经典) 角色。
+description: 了解如何使用门户在 Azure 中为云服务（经典）角色配置自动缩放规则。
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -9,21 +9,21 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99980824"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>如何在门户中为云服务（经典）配置自动缩放
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 针对云服务辅助角色设置条件，以触发横向缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
 
 > [!NOTE]
-> 本文重点介绍云服务 (经典) 。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic)相关联来缩放标准虚拟机，并手动将其打开或关闭。
+> 本文着重于云服务（经典）。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic)相关联来缩放标准虚拟机，并手动将其打开或关闭。
 
 ## <a name="considerations"></a>注意事项
 在配置应用程序的缩放之前，应考虑以下信息：

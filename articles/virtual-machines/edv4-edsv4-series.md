@@ -6,15 +6,15 @@ ms.author: brbell
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 656b2e44ec4a4e9de0d594301cb3e4c1b9a33b13
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: d6edee1f349b37c274f71c9db7abac35f9c88c4a
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558618"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557108"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
@@ -30,7 +30,7 @@ Edv4 系列尺寸在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
@@ -58,8 +58,8 @@ Edsv4 系列尺寸在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (至少 *需要4个 vCPU*) <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | <sup>**</sup> 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |

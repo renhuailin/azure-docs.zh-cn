@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424738"
 ---
 # <a name="scenario-isolating-vnets"></a>方案：隔离 VNet
@@ -29,7 +29,7 @@ ms.locfileid: "92424738"
 | VNet     | &#8594;| 直接 |   直接    |
 | 分支   | &#8594;|  直接  |   直接    |
 
-上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端，行标题) 与流的 "To" 端 (目标前缀（斜体) 中的列标题）进行通信。 在这种情况下，不存在防火墙或网络虚拟设备，因此通信直接通过虚拟 WAN (，因此) 的表中 "Direct" 一词。
+上表中的各单元格描述了虚拟 WAN 连接（流的“源”端，行标题）是否与目标前缀（流的“目标”端，斜体形式的列标题）通信。 在此场景中，没有防火墙或网络虚拟设备，因此通信直接通过虚拟 WAN 进行（因此在表中使用“直接”一词）。
 
 此连接矩阵提供了两种不同的行模式，它们会转换为两个路由表。 虚拟 WAN 已经有一个 Default 路由表，所以我们需要有另一个路由表。 在此示例中，我们将该路由表命名为 RT_VNET。
 

@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 460ea446fc6dfc43e81a1a57bbba032a61f3a72d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90532539"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型
@@ -95,14 +95,14 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 在经典模式下，ExpressRoute 线路没有绑定到区域的概念。 但是，在资源管理器中，每个资源都需要映射到 Azure 区域。 从技术上来讲，Move-AzExpressRouteCircuit cmdlet 中指定的区域可以是任何区域。 对组织来说，建议选择一个最能代表对等位置的区域。
 
 > [!NOTE]
-> * 将经典 ExpressRoute 线路转移到资源管理器部署模型之后，默认情况下，它将有权访问经典模型和资源管理器部署模型。
-> * 上一个 cmdlet 中列出的新名称将用于对资源进行寻址。 线路实质上已重命名。
+> * 将经典 ExpressRoute 线路移到资源管理器部署模型后，它将默认具有对经典部署模型和资源管理器部署模型的访问权限。
+> * 在上一 cmdlet 中列出新名称将用于处理资源。 线路实质上已重命名。
 
 ## <a name="modify-circuit-access"></a>修改线路访问权限
 
 ### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>为两种部署模型启用 ExpressRoute 线路访问权限
 
-你可以为在资源管理器部署模型中创建的 ExpressRoute 线路启用对经典部署模型的访问。 运行以下 cmdlet 启用对两种部署模型的访问权限：
+可为在资源管理器部署模型中创建的 ExpressRoute 线路启用对经典部署模型的访问权限。 运行以下 cmdlet 启用对两种部署模型的访问权限：
 
 1. 获取线路详细信息。
 

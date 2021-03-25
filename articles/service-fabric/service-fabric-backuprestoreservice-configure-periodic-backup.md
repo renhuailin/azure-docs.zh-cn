@@ -4,10 +4,10 @@ description: 使用 Service Fabric 的定期备份和还原功能，来配置可
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018879"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置
@@ -46,7 +46,7 @@ ms.locfileid: "96018879"
         ```
 
     2. **基于时间的备份计划**：如果需要在每天或每周的特定时间执行数据备份，应使用此计划类型。 计划频率类型可以是每日或每周。
-        1. **_每日_ 基于时间的备份计划**：如果需要在一天的特定时间进行数据备份，则应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00  ，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00  和下午 6:00  点触发每日备份的配置。
+        1. **每日基于时间的备份计划**：如果需要在每天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Daily_，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 例如，`0001-01-01T18:00:00` 表示每天下午 6:00  ，忽略日期部分 _0001-01-01_。 下面的示例展示了在每天上午 9:00  和下午 6:00  点触发每日备份的配置。
 
             ```json
             {
@@ -59,7 +59,7 @@ ms.locfileid: "96018879"
             }
             ```
 
-        2. **_每周_ 基于时间的备份计划**：如果需要在一天的特定时间进行数据备份，则应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00  和下午 6:00  点触发每日备份的配置。
+        2. **每周基于时间的备份计划**：如果需要在每天的特定时间执行数据备份，应使用此计划类型。 若要指定此计划类型，请将 `ScheduleFrequencyType` 设置为 _Weekly_，将 `RunDays` 设置为需要触发备份的星期几的列表，将 `RunTimes` 以 ISO8601 格式设置为每天中的所需时间的列表，随时间一起指定的日期将被忽略。 要触发定期备份的星期几的列表。 下面的示例展示了从星期一到星期五在上午 9:00  和下午 6:00  点触发每日备份的配置。
 
             ```json
             {

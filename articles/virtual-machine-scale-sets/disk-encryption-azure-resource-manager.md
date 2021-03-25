@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86129758"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>使用 Azure 资源管理器加密虚拟机规模集
@@ -40,7 +40,7 @@ ms.locfileid: "86129758"
 
 1. 单击 **“部署到 Azure”** 。
 2. 填写必填字段，然后同意条款和条件。
-3. 单击“购买”以部署模板。****
+3. 单击“购买”以部署模板。
 
 ## <a name="next-steps"></a>后续步骤
 

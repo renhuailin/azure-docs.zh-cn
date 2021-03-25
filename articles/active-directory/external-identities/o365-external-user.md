@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d003008ea5b0d2591574f6f488b0145ee6f08a5e
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100008122"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Microsoft 365 外部共享与 Azure Active Directory (Azure AD) B2B 协作
@@ -32,7 +32,7 @@ OneDrive/SharePoint Online 具有单独的邀请管理器。 在 Azure AD 开发
 
 - 可以从 OneDrive/SharePoint Online 共享对话框选取 Azure AD B2B 协作邀请的用户。 OneDrive/SharePoint Online 邀请的用户在他们兑换其邀请后也会显示在 Azure AD 中。
 
-- 许可要求不同。 若要了解有关许可的详细信息，请参阅 [Azure AD 外部标识许可](./external-identities-pricing.md) 和 [SharePoint Online 外部共享概述](/sharepoint/external-sharing-overview)。
+- 许可要求不同。 若要了解有关授权的详细信息，请参阅 [Azure AD 外部标识授权](./external-identities-pricing.md)和 [SharePoint Online 外部共享概述](/sharepoint/external-sharing-overview)。
 若要通过 Azure AD B2B 协作管理 OneDrive/SharePoint Online 中的外部共享，请将 OneDrive/SharePoint Online 外部共享设置设为“仅允许与组织的目录中已存在的外部用户共享”。 用户可以转到外部共享站点，从管理员已添加的外部协作者中进行选取。 管理员可以通过 B2B 协作邀请 API 添加外部协作者。
 
 

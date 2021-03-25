@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96445381"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什么是 Azure SQL 数据库和 Azure Synapse Analytics 中的逻辑 SQL server？
@@ -26,7 +26,7 @@ ms.locfileid: "96445381"
 
 此服务器不同于在本地环境中你可能熟悉的 SQL Server 实例。 要说明的一点是，无法确保数据库或数据仓库数据库相对于管理它们的服务器的确切位置。 此外，Azure SQL 数据库和 Azure Synapse 都不会公开任何实例级访问权限或功能。 与此相反，托管实例中实例数据库的物理归置方式与你熟悉的本地或虚拟机环境中的 SQL Server 归置方式相同。
 
-创建服务器时，你将提供一个对该服务器上的 master 数据库以及在该服务器上创建的所有数据库具有管理权限的服务器登录帐户和密码。 这一初始帐户就是 SQL 登录帐户。 Azure SQL Database 和 Azure Synapse Analytics 支持 SQL 身份验证，并 Azure Active Directory 身份验证进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](logins-create-manage.md)。 不支持 Windows 身份验证。
+创建服务器时，你将提供一个对该服务器上的 master 数据库以及在该服务器上创建的所有数据库具有管理权限的服务器登录帐户和密码。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库和 Azure Synapse Analytics 支持 SQL 身份验证和使用 Azure Active Directory 身份验证进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](logins-create-manage.md)。 不支持 Windows 身份验证。
 
 SQL 数据库和 Azure Synapse 中的服务器：
 

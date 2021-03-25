@@ -16,10 +16,10 @@ ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89178665"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>如何将 Azure 资源托管标识用于 Azure 虚拟机
@@ -40,7 +40,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ![托管服务标识和 Azure VM](media/how-managed-identities-work-vm/data-flow.png)
 
-|  properties    | 系统分配的托管标识 | 用户分配的托管标识 |
+|  属性    | 系统分配的托管标识 | 用户分配的托管标识 |
 |------|----------------------------------|--------------------------------|
 | 创建 |  作为 Azure 资源（例如 Azure 虚拟机或 Azure 应用服务）的一部分创建。 | 作为独立 Azure 资源创建。 |
 | 生命周期 | 与用于创建托管标识的 Azure 资源共享生命周期。 <br/> 删除父资源时，也会删除托管标识。 | 独立生命周期。 <br/> 必须显式删除。 |

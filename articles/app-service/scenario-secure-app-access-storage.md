@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435835"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>教程：从 Web 应用访问 Azure 存储
@@ -82,7 +82,7 @@ Azure 存储中的 Blob 已组织成容器。 你需要先创建容器，然后�
     |--|--|
     |部署模型|Resource Manager|
     |性能|标准|
-    |帐户类型|StorageV2（常规用途 v2）|
+    |帐户种类|StorageV2（常规用途 v2）|
     |复制|读取访问异地冗余存储 (RA-GRS)|
     |访问层|热|
 

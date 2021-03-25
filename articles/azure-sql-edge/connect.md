@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/25/2020
 ms.openlocfilehash: b56b65261950e9cf534a3755d214229ef7d5bb1e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395200"
 ---
 # <a name="connect-and-query-azure-sql-edge"></a>连接和查询 Azure SQL Edge
@@ -36,8 +36,8 @@ ms.locfileid: "93395200"
 
 若要从网络计算机连接到 Azure SQL Edge 数据库引擎，你需要以下各项：
 
-- **主机的 IP 地址或网络名称** ：这是运行 Azure SQL Edge 容器的主机。
-- **Azure SQL Edge 容器主机端口映射** ：这是 Docker 容器端口到主机端口的映射。 在容器内，Azure SQL Edge 始终映射到端口 1433。 如果需要，你可以更改此端口。 若要更改端口号，请在 Azure IoT Edge 中更新 Azure SQL Edge 模块的“容器创建选项”。 在下面的示例中，容器上的端口 1433 映射到主机上的端口 1600。
+- **主机的 IP 地址或网络名称**：这是运行 Azure SQL Edge 容器的主机。
+- **Azure SQL Edge 容器主机端口映射**：这是 Docker 容器端口到主机端口的映射。 在容器内，Azure SQL Edge 始终映射到端口 1433。 如果需要，你可以更改此端口。 若要更改端口号，请在 Azure IoT Edge 中更新 Azure SQL Edge 模块的“容器创建选项”。 在下面的示例中，容器上的端口 1433 映射到主机上的端口 1600。
 
     ```JSON
     {
@@ -51,7 +51,7 @@ ms.locfileid: "93395200"
     }
     ```
 
-- **Azure SQL Edge 实例的 SA 密码** ：这是在部署 Azure SQL Edge 期间为 `SA_PASSWORD` 环境变量指定的值。
+- **Azure SQL Edge 实例的 SA 密码**：这是在部署 Azure SQL Edge 期间为 `SA_PASSWORD` 环境变量指定的值。
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>从容器内连接到数据库引擎
 

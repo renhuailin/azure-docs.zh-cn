@@ -3,16 +3,17 @@ title: 在 Linux VM 上使用 cloud-init 配置交换分区
 description: 如何在通过 Azure CLI 进行创建时使用 cloud-init 在 Linux VM 中配置交换分区
 author: rickstercdn
 manager: gwallace
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1f8746e67ba712ac4c2c3e832fcb5ffefb170d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: b9f4adc4e1e980db2af4fcc20b3a4492309c89f3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371934"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559369"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>在 Linux VM 上使用 cloud-init 配置交换分区
 本文介绍如何使用 [cloud-init](https://cloudinit.readthedocs.io) 在各种 Linux 分发版中配置交换分区。 在传统上，交换分区由 Linux 代理 (WALA) 根据分发版的需要进行配置。  本文档概述在预配期间，使用 cloud-init 按需生成交换分区的过程。  有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -20,9 +21,9 @@ ms.locfileid: "87371934"
 ## <a name="create-swap-partition-for-ubuntu-based-images"></a>为基于 Ubuntu 的映像创建交换分区
 在 Azure 上，Ubuntu 库映像默认不会创建交换分区。 若要在预配 VM 期间使用 cloud-init 启用交换分区配置，请参阅 Ubuntu wiki 中的 [AzureSwapPartitions 文档](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
-## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>为基于 Red Hat 和 CentOS 的图像创建交换分区
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>为基于 Red Hat 和 CentOS 的映像创建交换分区
 
-在当前 shell 中，创建名为 cloud_init_swappart.txt  的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_swappart.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+在当前 shell 中，创建名为 cloud_init_swappart.txt 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_swappart.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 ```yaml
 #cloud-config

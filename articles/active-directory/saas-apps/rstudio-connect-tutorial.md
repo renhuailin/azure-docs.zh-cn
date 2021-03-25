@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 84e8c7fc1d2655ea0685ac79841a9c467bf766cf
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect-saml-authentication"></a>教程：Azure Active Directory 与 RStudio Connect SAML 身份验证的集成
@@ -48,7 +48,7 @@ ms.locfileid: "96182385"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“RStudio Connect SAML 身份验证” 。
 1. 在结果面板中选择“RStudio Connect SAML 身份验证”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -83,7 +83,7 @@ ms.locfileid: "96182385"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<example.com>/__login__/saml`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<example.com>/__login__/saml/acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<example.com>/__login__/saml/acs`
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 

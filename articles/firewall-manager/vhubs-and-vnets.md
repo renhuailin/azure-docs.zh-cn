@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
 ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90563142"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>什么是 Azure 防火墙管理器体系结构选项？
@@ -40,11 +40,11 @@ Azure 防火墙管理器可为两种网络体系结构类型提供安全管理�
 |**Azure 防火墙 – 多个公共 IP 地址**      |由客户提供|自动生成|
 |**Azure 防火墙可用性区域**     |支持|目前不可用|
 |**使用第三方安全即服务合作伙伴的高级 Internet 安全性**     |客户建立并管理与所选合作伙伴服务的 VPN 连接|通过安全合作伙伴提供程序流和合作伙伴管理体验自动连接|
-|**集中式路由管理以将流量路由到中心**     |客户托管的用户定义的路由|支持使用 BGP|
+|**集中式路由管理以将流量路由到中心**     |客户管理的用户定义的路由|支持使用 BGP|
 |**多个安全提供程序支持**|支持手动配置到第三方防火墙的强制隧道|自动支持两个安全提供程序：用于专用流量筛选的 Azure 防火墙和用于 Internet 筛选的第三方|
 |**应用程序网关上的 Web 应用程序防火墙** |在虚拟网络中受支持|目前在分支网络中受支持|
 |**网络虚拟设备**|在虚拟网络中受支持|目前在分支网络中受支持|
-|**Azure DDoS 保护标准支持**|是|否|
+|**Azure DDoS 防护标准支持**|是|否|
 
 ## <a name="next-steps"></a>后续步骤
 

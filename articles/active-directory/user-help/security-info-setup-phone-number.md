@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 7500b6b146a627dcdebacd9d2e2c7c61bc43c105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83744449"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>将电话号码设置为验证方法
@@ -90,7 +90,7 @@ ms.locfileid: "83744449"
 
     ![从安全信息中删除电话方法的链接](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
-2. 从确认框中选择“是”，以删除**电话**号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
+2. 从确认框中选择“是”，以删除 **电话** 号码。 删除电话号码后，该帐户将从你的安全信息中删除，并从“安全信息”页消失。 如果“电话”是默认方法，则默认方法将更改为另一种可用方法。
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
 
@@ -116,7 +116,7 @@ ms.locfileid: "83744449"
 
 - **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
 
-- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

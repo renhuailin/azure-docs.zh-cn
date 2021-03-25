@@ -11,10 +11,10 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86186497"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
@@ -46,5 +46,5 @@ ms.locfileid: "86186497"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 PowerShell DSC，请参阅 [Windows PowerShell Desired State Configuration 概述](/powershell/scripting/dsc/overview/overview)。
-- 在 [DSC 资源](/powershell/scripting/dsc/resources/resources)中了解 PowerShell DSC 资源。
+- 了解 [DSC 资源](/powershell/scripting/dsc/resources/resources)中的 PowerShell DSC 资源。
 - 有关本地 Configuration Manager 配置的详细信息，请参阅[配置本地 Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig)。

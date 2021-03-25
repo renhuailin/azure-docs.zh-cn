@@ -10,10 +10,10 @@ ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
 ms.openlocfilehash: 023c2c89b90d6ddc71abc95db325dcdeb7684a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89500124"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>将自托管网关部署到 Kubernetes
@@ -33,9 +33,9 @@ ms.locfileid: "89500124"
 1. 选择“部署和基础结构”下的“网关” 。
 2. 选择要部署的自承载网关资源。
 3. 选择“部署”。
-4. " **令牌** " 文本框中的访问令牌是根据默认的 " **过期** **" 和 "密钥"** 值自动生成的。 如果需要，请在其中一个或两个控件中选择值以生成新令牌。
+4. 根据默认的“过期时间”和“机密密钥”值，“令牌”文本框中已自动生成了访问令牌  。 如果需要，请在其中一个或两个控件中选择值以生成新令牌。
 5. 选择“部署脚本”下的“Kubernetes”选项卡 。
-6. 选择** \<gateway-name\> docker-compose.override.yml**文件链接并下载 YAML 文件。
+6. 选择 \<gateway-name\>.yml 文件链接并下载 YAML 文件。
 7. 选择“部署”文本框右下角的“复制”图标，将 `kubectl` 命令保存到剪贴板 。
 8. 将命令粘贴到终端（或命令）窗口。 第一个命令创建 Kubernetes 机密，其中包含在步骤 4 中生成的访问令牌。 第二个命令将在步骤 6 中下载的配置文件应用于 Kubernetes 群集，并假定该文件位于当前目录中。
 9. 运行命令以在[默认命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)中创建必要的 Kubernetes 对象，并从 Microsoft 容器注册表下载的[容器映像](https://aka.ms/apim/sputnik/dhub)中启动自承载网关 Pod。
@@ -108,13 +108,13 @@ Azure 门户中提供的 YAML 文件将应用默认的 [ClusterFirst](https://ku
 若要了解 Kubernetes 中的名称解析，请参阅 [Kubernetes 网站](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)。 请考虑根据你的设置自定义 [DNS 策略](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)或 [DNS 配置](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config)。
 
 ### <a name="external-traffic-policy"></a>外部流量策略
-Azure 门户将 `externalTrafficPolicy` [服务](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core) 对象上的字段设置为所提供的 YAML 文件 `Local` 。 这会保留调用方 IP 地址 (在 [请求上下文](api-management-policy-expressions.md#ContextVariables) 中可访问) 并禁用跨节点负载平衡，从而消除由其导致的网络跃点。 请注意，此设置可能会导致部署中的流量不对称分布于每个节点的网关箱数不相等的部署中。
+Azure 门户中提供的 YAML 文件将[服务](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#service-v1-core)对象上的 `externalTrafficPolicy` 字段设置为 `Local`。 这样可以保留调用方 IP 地址（可在[请求上下文](api-management-policy-expressions.md#ContextVariables)中访问）并禁用跨节点负载均衡，从而消除由此引起的网络跃点。 请注意，在每个节点的网关 Pod 数不相等的部署中，此设置可能导致流量的不对称分布。
 
 ### <a name="custom-domain-names-and-ssl-certificates"></a>自定义域名和 SSL 证书
 
-如果为 API 管理终结点使用自定义域名，尤其是对管理终结点使用自定义域名时，你可能需要更新 `config.service.endpoint` ** \<gateway-name\> yaml**文件中的值，以将默认域名替换为自定义域名。 请确保可以从 Kubernetes 群集中自承载网关的 pod 访问管理终结点。
+如果对 API 管理终结点使用自定义域名，尤其是对管理终结点使用自定义域名时，你可能需要更新 \<gateway-name\>.yaml 文件中的 `config.service.endpoint` 的值，将默认域名替换为自定义域名。 请确保可以从 Kubernetes 群集中自承载网关的 pod 访问管理终结点。
 
-在这种情况下，如果管理终结点使用的 SSL 证书不是由已知 CA 证书签名的，则必须确保自托管网关的 pod 信任 CA 证书。
+在这种情况下，如果管理终结点使用的 SSL 证书不是由已知 CA 证书签名的，则必须确保自承载网关的 Pod 信任 CA 证书。
 
 ### <a name="configuration-backup"></a>配置备份
 若要了解出现临时 Azure 连接中断时的自承载网关行为，请参阅[自承载网关概述](self-hosted-gateway-overview.md#connectivity-to-azure)。

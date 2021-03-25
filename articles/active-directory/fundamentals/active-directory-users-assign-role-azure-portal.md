@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370927"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>为具有 Azure Active Directory 的用户分配管理员和非管理员角色
@@ -49,7 +49,7 @@ ms.locfileid: "92370927"
 
       ![“所有用户”页 - 选择用户](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-5. 在“Alain Charon - 个人资料”**** 页上，选择“分配的角色”。****
+5. 在“Alain Charon - 个人资料”页上，选择“分配的角色”。
 
     此时会显示“Alain Charon - 管理角色”页。
 
@@ -65,9 +65,9 @@ ms.locfileid: "92370927"
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>从用户删除角色分配
 
-1. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择删除分配了角色的用户********。 例如，_Alain Charon_。
+1. 选择“Azure Active Directory”，选择“用户”，然后搜索并选择删除分配了角色的用户。 例如，_Alain Charon_。
 
-2. 选择“分配的角色”，选择“应用程序管理员”，然后选择“删除分配”。************
+2. 选择“分配的角色”，选择“应用程序管理员”，然后选择“删除分配”。
 
     ![“分配的角色”页，其中显示了所选角色和删除选项](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 

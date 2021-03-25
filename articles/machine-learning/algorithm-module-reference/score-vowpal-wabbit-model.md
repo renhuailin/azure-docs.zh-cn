@@ -9,14 +9,14 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
 ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898408"
 ---
 # <a name="score-vowpal-wabbit-model"></a>对 Vowpal Wabbit 模型评分
-本文介绍如何使用 Azure 机器学习设计器中的 **评分 Vowpal Wabbit** 模块，使用现有的定型 Vowpal Wabbit 模型生成一组输入数据的分数。  
+本文介绍如何使用 Azure 机器学习设计器中的“对 Vowpal Wabbit 模型评分”模块，借助经过训练的现有 Vowpal Wabbit 模型为一组输入数据生成分数。  
 
 本模块提供 Vowpal Wabbit 框架的最新版本 - 版本 8.8.1。 使用此模块，借助以 VW 版本 8 格式保存的经过训练的模型对数据进行评分。  
 
@@ -78,7 +78,7 @@ Vowpal Wabbit 具有许多用于选择和优化算法的命令行选项。 这�
   
      模块已自动配置这些属性。  
   
--   此外，不允许任何生成多个输出或接受多个输入的选项。 这些选项包括 *`--cbt`* 、 *`--lda`* 和 *`--wap`* 。  
+-   此外，不允许任何生成多个输出或接受多个输入的选项。 这些选项包括 `--cbt`、`--lda` 和 `--wap`  。  
   
 -   仅支持监督式学习算法。 无法使用这些选项： *`–active`* 、`--rank`、 *`--search`* 等。  
 

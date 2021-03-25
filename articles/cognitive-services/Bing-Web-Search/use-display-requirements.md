@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351838"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>必应搜索 API 使用和显示要求
@@ -39,7 +39,7 @@ ms.locfileid: "96351838"
 ## <a name="definitions"></a>定义
 
 
-|术语  |描述  |
+|术语  |说明  |
 |---------|---------|
 |答案     | 响应中返回的一类结果。 例如，从必应 Web 搜索 API 返回的响应可能包括网页结果、图片、视频、视觉对象和新闻类别的答复。 |
 |响应     | 在响应针对搜索 API 的单个调用时收到的任何答复和关联的数据。 |

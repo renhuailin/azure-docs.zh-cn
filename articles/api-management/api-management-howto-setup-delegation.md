@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341835"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
@@ -52,24 +52,24 @@ ms.locfileid: "93341835"
    
     登录/注册示例的查询参数：
    
-   * **operation** ：确定委派请求的类型，在此示例中只能为 **SignIn**
-   * **returnUrl** ：用户已单击了其中的登录或注册链接的页的 URL
-   * **salt** ：用于计算安全哈希的特殊 salt 字符串
-   * **sig** ：计算的安全哈希，用于与用户自行计算的哈希进行比较
+   * **operation**：确定委派请求的类型，在此示例中只能为 **SignIn**
+   * **returnUrl**：用户已单击了其中的登录或注册链接的页的 URL
+   * **salt**：用于计算安全哈希的特殊 salt 字符串
+   * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 根据 **returnUrl** 和 **salt** 查询参数计算字符串的 HMAC-SHA512 哈希（ [下文提供了示例代码]）：
+   * 根据 **returnUrl** 和 **salt** 查询参数计算字符串的 HMAC-SHA512 哈希（[下文提供了示例代码]）：
      
-     > HMAC( **salt** + '\n' + **returnUrl** )
+     > HMAC(**salt** + '\n' + **returnUrl**)
 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 验证收到的是否为登录/注册请求：需将 **operation** 查询参数设置为“ **SignIn** ”。
+3. 验证收到的是否为登录/注册请求：需将 **operation** 查询参数设置为“**SignIn**”。
 4. 向用户提供登录或注册 UI
 5. 如果用户要注册，则需在 API 管理中为其创建相应的帐户。 请使用 API 管理 REST API [创建用户]。 这样做时，请确保将用户 ID 设置为与用户存储中的用户 ID 相同的值，或设置为可跟踪的 ID。
 6. 在成功对用户进行身份验证后：
    
-   * 通过 API 管理[请求共享访问令牌]REST API
-   * 将 returnUrl 查询参数追加到你从上述 API 调用接收的 SSO URL：
+   * 通过 API 管理 REST API [请求共享访问令牌]
+   * 将 returnUrl 查询参数追加到从上述 API 调用接收的 SSO URL：
      
      > 例如，`https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
@@ -84,10 +84,10 @@ ms.locfileid: "93341835"
 
 若要执行帐户管理操作，必须传递以下查询参数。
 
-* **operation** ：确定委派请求的类型（ChangePassword、ChangeProfile 或 CloseAccount）
-* **userId** ：要管理的帐户的用户 ID
-* **salt** ：用于计算安全哈希的特殊 salt 字符串
-* **sig** ：计算的安全哈希，用于与用户自行计算的哈希进行比较
+* **operation**：确定委派请求的类型（ChangePassword、ChangeProfile 或 CloseAccount）
+* **userId**：要管理的帐户的用户 ID
+* **salt**：用于计算安全哈希的特殊 salt 字符串
+* **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>委派产品订阅
 
@@ -108,21 +108,21 @@ ms.locfileid: "93341835"
    
     产品订阅示例的查询参数：
    
-   * **operation** ：标识委派请求的类型。 对于产品订阅请求，有效选项包括：
+   * **operation**：标识委派请求的类型。 对于产品订阅请求，有效选项包括：
      * “Subscribe”：请求为用户订阅具有所提供的 ID 的给定产品（参见下文）
      * “Unsubscribe”：请求为用户取消订阅某个产品
      * “Renew”：请求续订某个订阅（例如即将到期的订阅）
-   * **productId** （“Subscribe”中）- 用户请求订阅的产品的 ID
-   * **subscriptionId** （ *Unsubscribe* 和 *Renew* ）中 - 产品订阅的 ID
-   * **userId** （“Subscribe”中）- 请求所针对的用户的 ID
-   * **salt** ：用于计算安全哈希的特殊 salt 字符串
-   * **sig** ：计算的安全哈希，用于与用户自行计算的哈希进行比较
+   * **productId**（“Subscribe”中）- 用户请求订阅的产品的 ID
+   * **subscriptionId**（*Unsubscribe* 和 *Renew*）中 - 产品订阅的 ID
+   * **userId**（“Subscribe”中）- 请求所针对的用户的 ID
+   * **salt**：用于计算安全哈希的特殊 salt 字符串
+   * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 根据 **productId** 、 **userId** 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
+   * 根据 **productId**、**userId** 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
      
-     > HMAC( **salt** + '\n' + **productId** + '\n' + **userId** )
+     > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
@@ -173,7 +173,7 @@ var signature = digest.toString('base64');
 ```
 
 > [!IMPORTANT]
-> 需要[重新发布开发人员门户](api-management-howto-developer-portal-customize.md#publish)才能使委托更改生效。
+> 需要[重新发布开发人员门户](api-management-howto-developer-portal-customize.md#publish)才能使委派更改生效。
 
 ## <a name="next-steps"></a>后续步骤
 有关委派的详细信息，请观看以下视频：

@@ -1,35 +1,36 @@
 ---
 title: 在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
 description: 了解如何在启用 Python 3 的 Linux 系统中使用 VM 扩展
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: v-miegge
 ms.author: jparrel
 manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: c5593257fa17944eebce6346a1eb9e88e7af2c06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: d38b41bc47c01b01fcbb1b05238396dca6d8eb4e
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965946"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558638"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在启用 Python 3 的 Linux Azure 虚拟机系统中使用 VM 扩展时遇到的问题
 
 > [!NOTE]
-> Microsoft 鼓励用户在其系统中采用 **python** 3.x，除非你的工作负载需要 **python** 2.x 支持。 此要求的示例可能包括旧版管理脚本或扩展，如 Azure 磁盘加密和 Azure Monitor 。
+> Microsoft 鼓励用户在系统中采用 Python 3.x，除非他们的工作负载需要 Python 2.x 支持 。 此要求的示例可能包括旧版管理脚本或扩展，如 Azure 磁盘加密和 Azure Monitor 。
 >
 > 在生产环境中安装 Python 2.x 之前，请考虑 Python 2.x 的长期支持问题，尤其是它们接收安全更新的能力。 由于产品（包括上述一些扩展）使用 Python 3.8 支持进行更新，应停止使用 Python 2.x。
 
-某些 Linux 发行版已转换为 Python 3.8，并完全删除了 Python 的旧版 `/usr/bin/python` 入口点。 此转换会影响特定虚拟机的现成、自动部署 (VM) 扩展，这两个条件如下：
+某些 Linux 发行版已转换为 Python 3.8，并完全删除了 Python 的旧版 `/usr/bin/python` 入口点。 此转换会影响具备以下两个条件的某些虚拟机 (VM) 扩展的开箱即用和自动部署：
 
 - 仍在转换为 Python 3.x 支持的扩展
 - 使用旧版 `/usr/bin/python` 入口点的扩展
@@ -44,7 +45,7 @@ ms.locfileid: "94965946"
 
 ## <a name="resolution"></a>解决方法
 
-在以下摘要中的前面介绍的已知受影响的方案中部署扩展之前，请考虑以下常规建议：
+在上文摘要中介绍的已知受影响的场景中部署扩展之前，请考虑以下常规建议：
 
 1. 部署扩展之前，请使用 Linux 发行版供应商提供的方法恢复 `/usr/bin/python` 符号链接。
 
@@ -52,7 +53,7 @@ ms.locfileid: "94965946"
 
 1. 此建议适用于 Azure 客户，在 Azure Stack 中不受支持：
 
-   - 如果已部署出现此问题的实例，请使用 "VM" 边栏选项卡中的 "运行命令" 功能运行上面提到的命令。 运行命令扩展本身不受向 Python 3.8 的转换的影响。
+   - 如果已部署的实例出现此问题，请使用 VM 边栏选项卡中的“运行命令”功能运行上述命令。 运行命令扩展本身不受向 Python 3.8 的转换的影响。
 
 1. 如果要部署新实例，并需要在预配时设置扩展，请使用 cloud-init 用户数据来安装上述程序包。
 
@@ -79,7 +80,7 @@ ms.locfileid: "94965946"
        --custom-data ./cloudinitConfig.json
    ```
 
-1. 如果你的组织的策略管理员确定不应将扩展部署到 Vm 中，你可以在预配时禁用扩展支持：
+1. 如果组织的策略管理员确定不应在 VM 中部署扩展，则可以在预配时禁用扩展支持：
 
    - REST API
 
