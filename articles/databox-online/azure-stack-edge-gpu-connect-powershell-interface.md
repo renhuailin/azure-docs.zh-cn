@@ -1,53 +1,37 @@
 ---
-title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro GPU 设备 |Microsoft Docs
-description: 描述如何通过 Windows PowerShell 界面连接到 Azure Stack Edge Pro GPU 并进行管理。
+title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro GPU 设备 | Microsoft Docs
+description: 介绍如何通过 Windows PowerShell 界面连接并管理 Azure Stack Edge Pro GPU。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 27af230f8fa157f76865bd38a48c17640491d7db
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896183"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102517545"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备
 
-Azure Stack Edge Pro 解决方案允许处理数据，并通过网络将数据发送到 Azure。 本文介绍 Azure Stack Edge Pro 设备的一些配置和管理任务。 你可以使用 Azure 门户、本地 web UI 或 Windows PowerShell 界面来管理你的设备。
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文重点介绍如何连接到设备的 PowerShell 接口，以及使用此接口可以执行的任务。 
+Azure Stack Edge Pro 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
+
+本文重点介绍如何连接到设备的 PowerShell 界面，以及使用此界面可以执行的任务。 
 
 
 ## <a name="connect-to-the-powershell-interface"></a>连接到 PowerShell 接口
 
-[!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
+[!INCLUDE [Connect to admin runspace](../../includes/azure-stack-edge-gateway-connect-minishell.md)]
 
 ## <a name="create-a-support-package"></a>创建支持包
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-<!--## Upload certificate
-
-[!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
-
-You can also upload IoT Edge certificates to enable a secure connection between your IoT Edge device and the downstream devices that may connect to it. There are three IoT Edge certificates (*.pem* format) that you need to install:
-
-- Root CA certificate or the owner CA
-- Device CA certificate
-- Device key certificate
-
-The following example shows the usage of this cmdlet to install IoT Edge certificates:
-
-```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
-```
-When you run this cmdlet, you will be prompted to provide the password for the network share.
-
-For more information on certificates, go to [Azure IoT Edge certificates](../iot-edge/iot-edge-certs.md) or [Install certificates on a gateway](../iot-edge/how-to-create-transparent-gateway.md).-->
 
 ## <a name="view-device-information"></a>查看设备信息
  
@@ -55,7 +39,7 @@ For more information on certificates, go to [Azure IoT Edge certificates](../iot
 
 ## <a name="view-gpu-driver-information"></a>查看 GPU 驱动程序信息
 
-如果在设备上配置了计算角色，还可以通过 PowerShell 界面获取 GPU 驱动程序信息。 
+如果在设备上配置了计算角色，则还可以通过 PowerShell 界面获取 GPU 驱动程序信息。 
 
 1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
 2. 使用 `Get-HcsGpuNvidiaSmi` 获取设备的 GPU 驱动程序信息。
@@ -65,7 +49,7 @@ For more information on certificates, go to [Azure IoT Edge certificates](../iot
     ```powershell
     Get-HcsGpuNvidiaSmi
     ```
-    记下此 cmdlet 的示例输出中的驱动程序信息。
+    请记下此 cmdlet 的示例输出中的驱动程序信息。
 
     ```powershell    
     +-----------------------------------------------------------------------------+    
@@ -82,21 +66,12 @@ For more information on certificates, go to [Azure IoT Edge certificates](../iot
     +-------------------------------+----------------------+----------------------+
     ```
 
-## <a name="enable-multi-process-service-mps"></a>启用多进程服务 (MP) 
+## <a name="enable-multi-process-service-mps"></a>启用多进程服务 (MPS)
 
-在 Nvidia Gpu 上，多进程服务 (MPS) 提供一种机制，可通过多个作业来共享 Gpu，其中每个作业分配了一定百分比的 GPU 资源。 MPS 是 Azure Stack Edge Pro GPU 设备上的预览功能。 若要在设备上启用 MP，请执行以下步骤：
+Nvidia GPU 上的多进程服务 (MPS) 提供下述机制：GPU 可供多个作业共享，而每个作业分配有某个百分比的 GPU 资源。 MPS 是 Azure Stack Edge Pro GPU 设备上的预览版功能。 若要在设备上启用 MPS，请执行以下步骤：
 
-1. 在开始之前，请确保： 
+[!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
-    1. 已使用 Azure 中的 Azure Stack Edge Pro/Data Box Gateway 资源配置和 [激活 Azure Stack Edge pro 设备](azure-stack-edge-gpu-deploy-activate.md) 。
-    1. 已在 [Azure 门户中的此设备上配置计算](azure-stack-edge-deploy-configure-compute.md#configure-compute)。
-    
-1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
-1. 使用以下命令在设备上启用 MP。
-
-    ```powershell
-    Start-HcsGpuMPS
-    ```
 
 ## <a name="reset-your-device"></a>重置设备
 
@@ -115,26 +90,26 @@ For more information on certificates, go to [Azure IoT Edge certificates](../iot
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection    
     ```
 
-    下面是用于 cmdlet 的参数的说明：
+    下面是用于该 cmdlet 的参数的说明：
     - `Path`：提供要在其中创建计算日志包的共享的网络路径。
     - `Credential`：提供网络共享的用户名。 运行此 cmdlet 时，需要提供共享密码。
-    - `FullLogCollection`：此参数可确保日志包将包含所有计算日志。 默认情况下，日志包仅包含一小部分的日志。
+    - `FullLogCollection`：此参数确保日志包中包含所有计算日志。 默认情况下，日志包仅包含一部分日志。
 
 
-## <a name="change-kubernetes-pod-and-service-subnets"></a>更改 Kubernetes pod 和服务子网
+## <a name="change-kubernetes-pod-and-service-subnets"></a>更改 Kubernetes Pod 和服务子网
 
-默认情况下，Azure Stack 边缘设备上的 Kubernetes 使用子网 172.27.0.0/16 和 172.28.0.0/16 来分别使用 pod 和服务。 如果这些子网已在网络中使用，则可以运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。
+默认情况下，Azure Stack Edge 设备上的 Kubernetes 分别为 pod 和服务使用子网 172.27.0.0/16 和 172.28.0.0/16。 如果这些子网在网络中已被使用，你可以运行 `Set-HcsKubeClusterNetworkInfo` cmdlet 来更改这些子网。
 
-在从 Azure 门户配置计算之前，要执行此配置，因为在此步骤中创建 Kubernetes 群集。
+最好是在从 Azure 门户配置计算之前执行此项配置，因为 Kubernetes 群集就是在此配置计算的步骤中创建的。
 
-1. [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
-1. 从设备的 PowerShell 接口运行：
+1. [连接到设备的 PowerShell 界面](#connect-to-the-powershell-interface)。
+1. 在设备的 PowerShell 界面中，运行：
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
 
-    将替换为 <subnet details> 要使用的子网范围。 
+    请将 <subnet details> 替换为要使用的子网范围。 
 
-1. 运行此命令后，可以使用 `Get-HcsKubeClusterNetworkInfo` 命令验证 pod 和服务子网是否已更改。
+1. 运行此命令后，可以使用 `Get-HcsKubeClusterNetworkInfo` 命令来验证 pod 和服务子网是否已更改。
 
 下面是此命令的示例输出。
 
@@ -148,55 +123,23 @@ Id                                   PodSubnet    ServiceSubnet
 [10.100.10.10]: PS>
 ```
 
-
 ## <a name="debug-kubernetes-issues-related-to-iot-edge"></a>调试与 IoT Edge 相关的 Kubernetes 问题
 
-<!--When the Kubernetes cluster is created, there are two system namespaces created: `iotedge` and `azure-arc`. --> 
+在开始之前，必须：
 
-<!--### Create config file for system namespace
+- 已配置计算网络。 请参阅[教程：为带有 GPU 的 Azure Stack Edge Pro 配置网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
+- 已在设备上配置计算角色。
+    
+在配置了计算角色的 Azure Stack Edge Pro 设备上，可以使用两个不同的命令集对设备进行故障排除或监视。
 
-To troubleshoot, first create the `config` file corresponding to the `iotedge` namespace with `aseuser`.
+- 使用 `iotedge` 命令。 这些命令适用于针对设备的基本操作。
+- 使用 `kubectl` 命令。 这些命令适用于针对设备的更广泛操作。
 
-Run the `Get-HcsKubernetesUserConfig -AseUser` command and save the output as `config` file (no file extension). Save the file in the `.kube` folder of your user profile on the local machine.
-
-Following is the sample output of the `Get-HcsKubernetesUserConfig` command.
-
-```PowerShell
-[10.100.10.10]: PS>Get-HcsKubernetesUserConfig -AseUser
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJd01EVXhNekl4TkRRME5sb1hEVE13TURVeE1USXhORFEwTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS0M1CjlJbzRSU2hudG90QUdxdjNTYmRjOVd4UmJDYlRzWXU5S0RQeU9xanVoZE1UUE9PcmROOGNoa0x4NEFyZkZaU1AKZithUmhpdWZqSE56bWhucnkvZlprRGdqQzQzRmV5UHZzcTZXeVVDV0FEK2JBdi9wSkJDbkg2MldoWGNLZ1BVMApqU1k0ZkpXenNFbzBaREhoeUszSGN3MkxkbmdmaEpEanBQRFJBNkRWb2pIaktPb29OT1J1dURvUHpiOTg2dGhUCkZaQXJMZjRvZXRzTEk1ZzFYRTNzZzM1YVhyU0g3N2JPYVVsTGpYTzFYSnpFZlZWZ3BMWE5xR1ZqTXhBMVU2b1MKMXVJL0d1K1ArY
-===========CUT=========================================CUT===================
-    server: https://compute.myasegpu1.wdshcsso.com:6443
-    name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    user: aseuser
-    name: aseuser@kubernetes
-current-context: aseuser@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: aseuser
-    user:
-    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMwRENDQWJpZ0F3SUJBZ0lJY1hOTXRPU2VwbG93RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TURBMU1UTXlNVFEwTkRaYUZ3MHlNVEExTVRNeU1UVXhNVEphTUJJeApFREFPQmdOVkJBTVRCMkZ6WlhWelpYSXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCCkFRRHVjQ1pKdm9qNFIrc0U3a1EyYmVjNEJkTXdpUEhmU2R2WnNDVVY0aTRRZGY1Yzd0dkE3OVRSZkRLQTY1d08Kd0h0QWdlK3lLK0hIQ1Qyd09RbWtNek1RNjZwVFEzUlE0eVdtRDZHR1cWZWMExBR1hFUUxWWHRuTUdGCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
-
-[10.100.10.10]: PS>
-```
--->
-
-在配置了计算角色的 Azure Stack Edge Pro 设备上，你可以使用两个不同的命令集对设备进行故障排除或监视。
-
-- 使用 `iotedge` 命令。 这些命令可用于设备的基本操作。
-- 使用 `kubectl` 命令。 这些命令适用于你的设备的一组广泛的操作。
-
-若要执行上述任一命令集，需要 [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+若要执行上述任一命令集，需要[连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
 
 ### <a name="use-iotedge-commands"></a>使用 `iotedge` 命令
 
-若要查看可用命令的列表，请 [连接到 PowerShell 接口](#connect-to-the-powershell-interface) 并使用 `iotedge` 函数。
+若要查看可用命令的列表，请[连接到 PowerShell 界面](#connect-to-the-powershell-interface)并使用 `iotedge` 函数。
 
 ```powershell
 [10.100.10.10]: PS>iotedge -?                                                                                                                           
@@ -210,18 +153,18 @@ Commands:
 [10.100.10.10]: PS>
 ```
 
-下表简要说明了可用于的命令 `iotedge` ：
+下表简要说明了适用于 `iotedge` 的命令：
 
-|命令  |说明 |
+|command  |说明 |
 |---------|---------|
 |`list`     | 列出模块         |
 |`logs`     | 提取模块的日志        |
-|`restart`     | 停止并重新启动模块         |
+|`restart`     | 停止和重启模块         |
 
 
 若要列出设备上运行的所有模块，请使用 `iotedge list` 命令。
 
-下面是此命令的示例输出。 此命令列出所有模块、关联的配置以及与模块关联的外部 Ip。 例如，你可以访问上的 **web** 服务器应用 `https://10.128.44.244` 。 
+下面是此命令的示例输出。 此命令列出所有模块、关联的配置，以及与模块关联的外部 IP。 例如，可以通过 `https://10.128.44.244` 访问 **webserver** 应用。 
 
 
 ```powershell
@@ -241,7 +184,7 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 ### <a name="use-kubectl-commands"></a>使用 kubectl 命令
 
-在配置了计算角色的 Azure Stack Edge Pro 设备上，所有 `kubectl` 命令都可用于监视模块或对其进行故障排除。 若要查看可用命令的列表，请 `kubectl --help` 在命令窗口中运行。
+在配置了计算角色的 Azure Stack Edge Pro 设备上，所有 `kubectl` 命令均可用于对模块进行监视或故障排除。 若要查看可用命令的列表，请在命令窗口中运行 `kubectl --help`。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -267,7 +210,7 @@ Use "kubectl options" for a list of global command-line options (applies to all 
 C:\Users\myuser>
 ```
 
-有关命令的完整列表 `kubectl` ，请参阅[ `kubectl` 速查表](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)。
+有关 `kubectl` 命令的完整列表，请参阅 [`kubectl` 速查表](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)。
 
 
 #### <a name="to-get-ip-of-service-or-module-exposed-outside-of-kubernetes-cluster"></a>获取在 Kubernetes 群集外部公开的服务或模块的 IP
@@ -276,7 +219,7 @@ C:\Users\myuser>
 
 `kubectl get svc -n iotedge`
 
-下面是在 Kubernetes 群集外公开的所有服务或模块的示例输出。 
+下面是在 Kubernetes 群集外部公开的所有服务或模块的示例输出。 
 
 
 ```powershell
@@ -288,17 +231,17 @@ webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP    
 
 [10.100.10.10]: PS>
 ```
-"外部 IP" 列中的 IP 地址对应于服务或模块的外部终结点。 还可以 [在 Kubernetes 仪表板中获取外部 IP](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)。
+“外部 IP”列中的 IP 地址对应于服务或模块的外部终结点。 还可以[在 Kubernetes 仪表板中获取外部 IP](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#get-ip-address-for-services-or-modules)。
 
 
 #### <a name="to-check-if-module-deployed-successfully"></a>检查模块是否已成功部署
 
-计算模块是已实现业务逻辑的容器。 Kubernetes pod 可以运行多个容器。 
+计算模块是实现了业务逻辑的容器。 一个 Kubernetes pod 可以包含多个运行的容器。 
 
-若要检查是否成功部署了计算模块，请连接到设备的 PowerShell 接口。
-运行 `get pods` 命令，并检查容器 (与计算模块) 是否正在运行。
+若要检查是否已成功部署计算模块，请连接到设备的 PowerShell 界面。
+运行 `get pods` 命令，然后检查容器（对应于计算模块）是否正在运行。
 
-若要获取在特定命名空间中运行的所有 pod 的列表，请运行以下命令：
+若要获取特定命名空间中运行的所有 pod 的列表，请运行以下命令：
 
 `get pods -n <namespace>`
 
@@ -306,7 +249,7 @@ webserverapp   LoadBalancer   10.105.186.35   10.128.44.244   8080:30976/TCP    
 
 `get pods -n iotedge`
 
-下面是在命名空间中运行的所有 pod 的示例输出 `iotedge` 。
+下面是 `iotedge` 命名空间中运行的所有 pod 的示例输出。
 
 ```
 [10.100.10.10]: PS>kubectl get pods -n iotedge
@@ -319,20 +262,20 @@ iotedged-675d7f4b5f-9nml4   1/1     Running   0          20h
 [10.100.10.10]: PS>
 ```
 
-状态 **状态** 表明命名空间中的所有 pod 都正在运行，并且 " **就绪** " 表示在 pod 中部署的容器数。 在上面的示例中，所有 pod 都在运行，并且每个 pod 中部署的所有模块都在运行。 
+“Status”列下的状态指示命名空间中的所有 pod 正在运行，“Ready”指示 pod 中部署的容器数。  在以上示例中，所有 pod 正在运行，部署在每个 pod 中的所有模块也正在运行。 
 
 若要检查通过 Azure Arc 部署的模块，请运行以下命令：
 
 `get pods -n azure-arc`
 
-或者，你可以 [连接到 Kubernetes 仪表板，以查看 IoT Edge 或 Azure Arc 部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status)。
+或者，可以[连接到 Kubernetes 仪表板以查看 IoT Edge 或 Azure Arc 部署](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md#view-module-status)。
 
 
-对于给定命名空间的特定 pod 更详细的输出，你可以运行以下命令：
+要获取给定命名空间的特定 pod 的更详细输出，可运行以下命令：
 
 `kubectl describe pod <pod name> -n <namespace>` 
 
-示例输出显示在此处。
+下面显示了示例输出。
 
 ```
 [10.100.10.10]: PS>kubectl describe pod filemove-66c49984b7 -n iotedge
@@ -397,13 +340,13 @@ Events:          <none>
 
 #### <a name="to-get-container-logs"></a>获取容器日志
 
-若要获取模块的日志，请从设备的 PowerShell 接口运行以下命令：
+若要获取模块的日志，请在设备的 PowerShell 界面中运行以下命令：
 
 `kubectl logs <pod_name> -n <namespace> --all-containers` 
 
-由于 `all-containers` 标志将转储所有容器的所有日志，因此查看最近的错误的一种好方法是使用选项 `--tail 10` 。
+由于 `all-containers` 标志将转储所有容器的所有日志，因此查看最近发生的错误的适当方法是使用选项 `--tail 10`。
 
-下面是一个示例输出。 
+下面是示例输出。 
 
 ```
 [10.100.10.10]: PS>kubectl logs filemove-66c49984b7-h8lxc -n iotedge --all-containers --tail 10
@@ -425,16 +368,16 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
-### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>更改内存，Kubernetes 工作节点的处理器限制
+### <a name="change-memory-processor-limits-for-kubernetes-worker-node"></a>更改 Kubernetes 工作器节点的内存或处理器限制
 
-若要更改 Kubernetes 工作节点的内存或处理器限制，请执行以下步骤：
+若要更改 Kubernetes 工作器节点的内存或处理器限制，请执行以下步骤：
 
-1. [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
-1. 若要获取辅助角色节点和角色选项的当前资源，请运行以下命令：
+1. [连接到设备的 PowerShell 界面](#connect-to-the-powershell-interface)。
+1. 若要获取工作器节点和角色选项的当前资源，请运行以下命令：
 
     `Get-AzureDataBoxEdgeRole`
 
-    下面是一个示例输出。 请注意 `Name` 节和下的的值 `Compute` `Resources` 。 `MemoryInBytes` 和 `ProcessorCount` 表示 Kubernetes 辅助角色节点当前分配的值的内存和处理器数。  
+    下面是示例输出。 请注意 `Resources` 节下的 `Name` 和 `Compute` 值。 `MemoryInBytes` 和 `ProcessorCount` 表示当前为 Kubernetes 工作器节点分配的内存和处理器计数值。  
 
     ```powershell
     [10.100.10.10]: PS>Get-AzureDataBoxEdgeRole
@@ -477,11 +420,11 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
     [10.100.10.10]: PS>
     ```
     
-1. 若要更改辅助角色节点的内存和处理器的值，请运行以下命令：
+1. 若要更改工作器节点的内存和处理器值，请运行以下命令：
 
-    Set-AzureDataBoxEdgeRoleCompute 名称 <Name value from the output of Get-AzureDataBoxEdgeRole> -内存 <Value in Bytes> -ProcessorCount <No。 > 核心
+    Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <核心 数目>
 
-    下面是一个示例输出。 
+    下面是示例输出。 
     
     ```powershell
     [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16
@@ -528,18 +471,18 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
     [10.100.10.10]: PS>    
     ```
 
-更改内存和处理器使用情况时，请遵循以下准则。
+更改内存和处理器使用率时，请遵循以下指导原则。
 
-- 默认内存为设备规格的25%。
-- 默认处理器计数为设备规格的30%。
-- 更改内存和处理器计数的值时，建议你将值介于15% 到65% 的设备内存和处理器计数之间。 
-- 建议上限为65%，以便为系统组件提供足够的资源。 
+- 默认内存为设备规格的 25%。
+- 默认处理器计数为设备规格的 30%。
+- 更改内存和处理器计数值时，我们建议在设备内存和处理器计数的 15% 到 60% 之间改变值。 
+- 建议的上限为 60%，以便为系统组件提供足够的资源。 
 
 ## <a name="connect-to-bmc"></a>连接到 BMC
 
-基板管理控制器 (BMC) 用于远程监视和管理你的设备。 本部分介绍可用于管理 BMC 配置的 cmdlet。 在运行任何这些 cmdlet 之前，请 [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
+基板管理控制器 (BMC) 用于远程监视和管理设备。 本部分介绍可用于管理 BMC 配置的 cmdlet。 在运行其中的任何 cmdlet 之前，请[连接到设备的 PowerShell 界面](#connect-to-the-powershell-interface)。
 
-- `Get-HcsNetBmcInterface`：使用此 cmdlet 可获取 BMC 的网络配置属性，例如，、、 `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` 、 `DhcpEnabled` 。 
+- `Get-HcsNetBmcInterface`：使用此 cmdlet 可以获取 BMC 的网络配置属性，例如 `IPv4Address`、`IPv4Gateway`、`IPv4SubnetMask` 和 `DhcpEnabled`。 
     
     下面是示例输出：
     
@@ -550,9 +493,9 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
     10.128.53.186 10.128.52.1 255.255.252.0        False
     [10.100.10.10]: PS>
     ```
-- `Set-HcsNetBmcInterface`：可以通过以下两种方式使用此 cmdlet。
+- `Set-HcsNetBmcInterface`：可通过以下两种方式使用此 cmdlet。
 
-    - 使用 cmdlet 可为 BMC 启用或禁用 DHCP 配置，方法是使用参数的适当值 `UseDhcp` 。 
+    - 使用该 cmdlet 并通过对 `UseDhcp` 参数使用适当的值，为 BMC 启用或禁用 DHCP 配置。 
 
         ```powershell
         Set-HcsNetBmcInterface -UseDhcp $true
@@ -569,7 +512,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
         [10.100.10.10]: PS>
         ```
 
-    - 使用此 cmdlet 可为 BMC 配置静态配置。 您可以为 `IPv4Address` 、和指定值 `IPv4Gateway` `IPv4SubnetMask` 。 
+    - 使用此 cmdlet 可以配置 BMC 的静态配置。 可以指定 `IPv4Address`、`IPv4Gateway` 和 `IPv4SubnetMask` 的值。 
     
         ```powershell
         Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
@@ -586,7 +529,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`：此 cmdlet 用于修改的 BMC 密码 `EdgeUser` 。 用户名- `EdgeUser` -区分大小写。
+- `Set-HcsBmcPassword`：使用此 cmdlet 可以修改 `EdgeUser` 的 BMC 密码。 用户名 `EdgeUser` 区分大小写。
 
     下面是示例输出： 
 

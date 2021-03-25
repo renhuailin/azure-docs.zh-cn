@@ -4,10 +4,10 @@ description: 本文概述了使用 Azure Site Recovery 服务将本地物理服�
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654721"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
@@ -31,7 +31,7 @@ ms.locfileid: "97654721"
 
 ## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
 
-若要使 Site Recovery 按预期工作，需修改出站网络连接以使环境进行复制。
+若要使 Site Recovery 按预期工作，需修改出站网络连接以允许环境复制。
 
 > [!NOTE]
 > Site Recovery 不支持使用身份验证代理来控制网络连接。

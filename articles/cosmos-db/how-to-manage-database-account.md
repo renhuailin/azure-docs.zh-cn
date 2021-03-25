@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 01/06/2021
 ms.author: mjbrown
-ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339863"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102489746"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ ms.locfileid: "93339863"
 
 打开“全局复制数据”选项卡，选择“启用”以启用多区域写入 。 启用多区域写入后，你的帐户当前拥有的所有读取区域将变为读取和写入区域。
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos 帐户配置多区域写入屏幕快照":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Azure Cosmos 帐户配置多区域写入屏幕截图":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -83,7 +83,7 @@ ms.locfileid: "93339863"
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager 模板
 
-通过部署用于创建帐户和设置的资源管理器模板，可以将帐户从单一写入区域迁移到多个写入区域 `enableMultipleWriteLocations: true` 。 以下 Azure 资源管理器模板是一个极简模板，它将为 SQL API 部署 Azure Cosmos 帐户，并启用两个区域和多个写入位置。
+可部署资源管理器模板（用于创建帐户）和 `enableMultipleWriteLocations: true` 设置，将该帐户从单个写入区域迁移到多个写入区域。 以下 Azure 资源管理器模板是一个极简模板，它将为 SQL API 部署 Azure Cosmos 帐户，并启用两个区域和多个写入位置。
 
 ```json
 {
@@ -165,7 +165,7 @@ ms.locfileid: "93339863"
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-请参阅 [使用 PowerShell 启用自动故障转移](manage-with-powershell.md#enable-automatic-failover)
+请参阅[使用 PowerShell 启用自动故障转移](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户设置故障转移优先级
 
@@ -206,7 +206,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 执行手动故障转移的过程涉及将帐户的写入区域（故障转移优先级 = 0）更改为已为该帐户配置的其他区域。
 
 > [!NOTE]
-> 具有多个写入区域的帐户无法进行手动故障转移。 对于使用 Azure Cosmos SDK 的应用程序，SDK 会检测某个区域何时变为不可用，然后自动重定向到下一个最近的区域（如果在 SDK 中使用多宿主 API）。
+> 具有多个写入区域的帐户无法进行手动故障转移。 对于使用 Azure Cosmos SDK 的应用程序，SDK 会检测某个区域何时变为不可用，然后自动重定向到下一个最近的区域。
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure 门户
 

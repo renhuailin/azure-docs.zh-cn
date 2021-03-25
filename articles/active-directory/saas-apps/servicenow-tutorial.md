@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99092595"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
@@ -127,7 +127,7 @@ ms.locfileid: "99092595"
 
 在本部分，将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 对于“名称”，请输入 `B.Simon`。  
@@ -262,7 +262,7 @@ ms.locfileid: "99092595"
 
              ![“标识提供者”部分的屏幕截图](./media/servicenow-tutorial/automatic-config.png "配置单一登录")
 
-               a. 对于“名称”，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”）。
+               a. 对于“名称”  ，为你的配置输入一个名称（例如，“Microsoft Azure Federated single sign-on”  ）。
 
                b. 复制“ServiceNow 主页”值，将其粘贴到 Azure 门户上“ServiceNow 基本 SAML 配置”部分中的“登录 URL”内。
 

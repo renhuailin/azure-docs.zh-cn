@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
 ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934192"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>将公共 IP 地址与 Azure VM 取消关联 
@@ -28,7 +28,7 @@ ms.locfileid: "98934192"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览或搜索要将公共 IP 地址与之取消关联的虚拟机，然后将其选中。
 3. 在 VM 页中选择“概述”，然后选择公共 IP 地址，如下图所示：
 
@@ -45,7 +45,7 @@ ms.locfileid: "98934192"
 安装 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“试用”按钮。 选择“试用”会调用可用于登录到 Azure 帐户的 Cloud Shell。
 
 1. 如果在 Bash 本地使用 CLI，请使用 `az login` 登录到 Azure。
-2. 公共 IP 地址与连接到 VM 的网络接口的 IP 配置相关联。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 命令将公共 IP 地址与 IP 配置取消关联。 以下示例将名为 myVMPublicIP 的公共 IP 地址与名为 myVMVMNic 的现有网络接口（已连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM）的名为 ipconfigmyVM 的 IP 配置取消关联。
+2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 命令将公共 IP 地址与 IP 配置取消关联。 以下示例将名为 myVMPublicIP 的公共 IP 地址与名为 myVMVMNic 的现有网络接口（已连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM）的名为 ipconfigmyVM 的 IP 配置取消关联。
   
    ```azurecli-interactive
     az network nic ip-config update \
@@ -55,21 +55,21 @@ ms.locfileid: "98934192"
     --remove PublicIpAddress
    ```
 
-   如果不知道连接到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
+   如果你不知道附加到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
      ```
 
-     输出包括一个或多个类似以下示例的行：
+     输出中包含类似于以下示例的一个或多个行：
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-     在上一个示例中，myVMVMNic 是网络接口的名称。
+     在以上示例中，*myVMVMNic* 是网络接口的名称。
 
-   - 如果不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) 命令进行检索。 例如，以下命令列出了名为 myResourceGroup 的资源组中名为 myVMVMNic 的网络接口的公共 IP 配置的名称：
+   - 如果你不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) 命令检索名称。 例如，以下命令列出了名为 myResourceGroup 的资源组中名为 myVMVMNic 的网络接口的公共 IP 配置的名称：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
@@ -87,9 +87,9 @@ ms.locfileid: "98934192"
 安装 [PowerShell](/powershell/azure/install-az-ps)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 shell。 它预安装有 PowerShell，并配置为与帐户一起使用。 在随后的 PowerShell 命令中选择“试用”按钮。 选择“试用”会调用可用于登录到 Azure 帐户的 Cloud Shell。
 
 1. 如果在本地使用 PowerShell，请使用 `Connect-AzAccount` 登录到 Azure。
-2. 公共 IP 地址与连接到 VM 的网络接口的 IP 配置相关联。 使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令获取网络接口。 将公共 IP 地址值设置为 null，然后使用 [Set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) 命令将新 IP 配置写入网络接口。
+2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令获取网络接口。 将公共 IP 地址值设置为 null，然后使用 [Set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) 命令将新 IP 配置写入网络接口。
 
-   以下示例将名为 myVMPublicIP 的公共 IP 地址与连接到名为 myVM 的 VM 的名为 myVMVMNic 的网络接口取消关联。 所有资源都位于名为 myResourceGroup 的资源组中。
+   以下示例将名为 myVMPublicIP 的公共 IP 地址与连接到名为 myVM 的 VM 的名为 myVMVMNic 的网络接口取消关联。 所有资源位于名为 *myResourceGroup* 的资源组中。
   
    ```azurepowershell
     $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroup myResourceGroup
@@ -97,27 +97,27 @@ ms.locfileid: "98934192"
     Set-AzNetworkInterface -NetworkInterface $nic
    ```
 
-  - 如果不知道连接到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
+  - 如果你不知道附加到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
 
     ```azurepowershell
     $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
     $vm.NetworkProfile
     ```
 
-     输出包括一个或多个类似以下示例的行。 在示例输出中，myVMVMNic 是网络接口的名称。
+     输出中包含类似于以下示例的一个或多个行。 在示例输出中，*myVMVMNic* 是网络接口的名称。
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-   - 如果不知道网络接口的 IP 配置的名称，请使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令进行检索。 例如，以下命令列出了名为 myResourceGroup 的资源组中名为 myVMVMNic 的网络接口的 IP 配置的名称：
+   - 如果你不知道网络接口的 IP 配置的名称，请使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令检索名称。 例如，以下命令会列出资源组 *myResourceGroup* 中网络接口 *myVMVMNic* 的 IP 配置的名称：
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
      $nic.IPConfigurations.id
      ```
 
-     输出包括一个或多个类似以下示例的行。 在示例输出中，ipconfigmyVM 是 IP 配置的名称。
+     输出中包含类似于以下示例的一个或多个行。 在示例输出中，*ipconfigmyVM* 是 IP 配置的名称。
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM"

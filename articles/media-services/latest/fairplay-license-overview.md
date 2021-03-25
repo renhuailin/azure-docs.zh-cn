@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956185"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454375"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置
 
@@ -86,7 +86,7 @@ spc=<Base64 encoded SPC>
 > [!NOTE]
 > 通常，可能只需配置一次 FairPlay 策略选项，因为仅有一套证书和 ASK。
 
-以下示例使用[媒体服务 .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 配置许可证。
+以下示例使用[媒体服务 .NET SDK](/dotnet/api/microsoft.azure.management.media.models) 配置许可证。
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()

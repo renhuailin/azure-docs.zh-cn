@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/16/2020
 ms.author: surmb
 ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215767"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>使用 Azure 应用程序网关重写 URL - Azure 门户（预览版）
@@ -37,43 +37,43 @@ ms.locfileid: "92215767"
 
 `contoso.com/article/123/fabrikam` -> `contoso.com/article.aspx?id=123&title=fabrikam`
 
-1. 选择“所有资源”，然后选择你的应用程序网关****。
+1. 选择“所有资源”，然后选择你的应用程序网关。
 
-2. 在左窗格中，选择“重写”。****
+2. 在左窗格中，选择“重写”。 
 
-3. 选择“重写集”****：
+3. 选择“重写集”：
 
     :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-1.png" alt-text="添加重写集":::
 
 4. 为重写集提供一个名称，并将其与路由规则相关联：
 
-    a. 在“名称”框中输入重写集的名称。****
+    a. 在“名称”框中输入重写集的名称。
     
-    b. 选择在“关联的路由规则”列表中列出的一个或多个规则。**** 这用于通过传递规则将重写配置关联到源侦听器。 只能选择尚未与其他重写集关联的传递规则。 已经与其他重写集关联的规则处于灰显状态。
+    b. 选择在“关联的路由规则”列表中列出的一个或多个规则。 这用于通过传递规则将重写配置关联到源侦听器。 只能选择尚未与其他重写集关联的传递规则。 已经与其他重写集关联的规则处于灰显状态。
     
     c. 选择“下一步”。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="添加重写集":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-2.png" alt-text="关联到规则":::
 
 5. 创建重写规则：
 
-    a. 选择“添加重写规则”。****
+    a. 选择“添加重写规则”。
     
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="添加重写集":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-3.png" alt-text="突出显示“添加重写规则”的屏幕截图。":::
     
-    b. 在“重写规则名称”框中输入重写规则的名称。**** 在“规则顺序”框中输入一个数字。****
+    b. 在“重写规则名称”框中输入重写规则的名称。 在“规则顺序”框中输入一个数字。
 
 6. 在此示例中，仅当路径包含 /article 时，我们才会重写 URL 路径和 URL 查询字符串。 为此，请添加条件用于评估 URL 路径是否包含 /article
 
-    a. 选择“添加条件”，**** 然后选择包含 **If** 指令的框将其展开。
+    a. 选择“添加条件”，然后选择包含 **If** 指令的框将其展开。
     
     b. 由于我们在此示例中要检查 URL 路径中的模式 /article，请在“要检查的变量的类型”列表中，选择“服务器变量”。
     
     c. 在“服务器变量”列表中，选择“uri_path”
     
-    d. 在“区分大小写”下选择“否”。********
+    d. 在“区分大小写”下选择“否”。
     
-    e. 在“运算符”列表中选择“等于(=)”。********
+    e. 在“运算符”列表中选择“等于(=)”。
     
     f. 输入正则表达式模式。 在此示例中，我们将使用 `.*article/(.*)/(.*)` 模式
     
@@ -89,7 +89,7 @@ ms.locfileid: "92215767"
 
    a. 在“重写类型”列表中，选择“URL”。
 
-   b. 在“操作类型”列表中，选择“设置”。********
+   b. 在“操作类型”列表中，选择“设置”。
 
    c. 在“组件”下，选择“URL 路径和 URL 查询字符串”
 
@@ -101,13 +101,13 @@ ms.locfileid: "92215767"
     
    f. 选择“确定”。
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="添加重写集":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-5.png" alt-text="操作":::
 
 8. 单击“创建”以创建重写集。
 
 9. 验证新的重写集是否在重写集列表中显示
 
-    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="添加重写集":::
+    :::image type="content" source="./media/rewrite-url-portal/rewrite-url-portal-6.png" alt-text="添加重写规则":::
 
 ## <a name="verify-url-rewrite-through-access-logs"></a>通过访问日志验证 URL 重写
 

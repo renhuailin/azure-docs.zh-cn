@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: adf80d36edbe8f9a5535e8fa04501918a62ea7ca
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335602"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
@@ -29,17 +29,17 @@ EXP (<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
-  返回数值表达式。  
+  返回一个数值表达式。  
   
 ## <a name="remarks"></a>备注
   
-  常量 e (2.718281…) 是自然对数的底数 **e** 。  
+  常量 **e** (2.718281…) 是自然对数的底数。  
   
-  数字的指数是常量 e 使用该数字进行幂运算  。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
+  一个数字的指数是常量 **e** 的该数字次幂。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。  
   
   某个数的自然对数的指数就是该数本身：EXP (LOG (n)) = n。 并且某个数的指数的自然对数也是该数本身：LOG (EXP (n)) = n。  
   
@@ -51,7 +51,7 @@ EXP (<numeric_expr>)
 SELECT EXP(10) AS exp  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{exp: 22026.465794806718}]  
@@ -63,7 +63,7 @@ SELECT EXP(10) AS exp
 SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{exp1: 19.999999999999996, exp2: 20}]  

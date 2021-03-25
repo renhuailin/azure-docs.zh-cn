@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99583733"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 Web 浏览器 (MSAL.NET)
@@ -30,7 +30,7 @@ ms.locfileid: "99583733"
 
 必须知道，在以交互方式获取令牌时，对话框的内容不是由该库提供，而是由 STS（安全令牌服务）提供。 身份验证终结点发回一些 HTML 和 JavaScript，以控制在 Web 浏览器或 Web 控件中呈现的交互。 让 STS 处理 HTML 交互可以带来诸多好处：
 
-- 应用程序和身份验证库永远不会存储密码（如果用户键入了密码）。
+- 应用程序或身份验证库绝不会存储密码（如果键入了密码）。
 - 允许重定向到其他标识提供者（例如，使用具有 MSAL 的工作学校帐户或个人帐户登录，或使用具有 Azure AD B2C 的社交帐户登录）。
 - 允许 STS 控制条件访问，例如，让用户在身份验证阶段进行[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)（在其手机上或手机上的身份验证应用中输入 Windows Hello PIN 或接听电话）。 如果尚未设置所需的多重身份验证，用户可以在同一对话框中及时设置。  用户输入手机号码后，系统会引导他们安装身份验证应用程序并扫描 QR 标记以添加其帐户。 此服务器驱动的交互方式是一种极佳的体验！
 - 用户密码过期时，可让用户在同一个对话框中更改密码（分别提供旧密码和新密码的字段）。
@@ -45,15 +45,15 @@ MSAL.NET 是一个多框架库，它具有特定于框架的代码，可在 UI �
 
 ### <a name="at-a-glance"></a>速览
 
-| Framework        | 嵌入式 | 系统 | 默认 |
+| 框架        | 嵌入 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |
-| .NET Classic     | 是 | 是^ | 嵌入式 |
+| .NET Classic     | 是 | 是^ | 嵌入 |
 | .NET Core     | 否 | 是^ | 系统 |
 | .NET Standard | 否 | 是^ | 系统 |
-| UWP | 是 | 否 | 嵌入式 |
+| UWP | 是 | 否 | 嵌入 |
 | Xamarin.Android | 是 | 是  | 系统 |
 | Xamarin.iOS | 是 | 是  | 系统 |
-| Xamarin.Mac| 是 | 否 | 嵌入式 |
+| Xamarin.Mac| 是 | 否 | 嵌入 |
 
 ^ 需要“http://localhost”重定向 URI
 
@@ -141,7 +141,7 @@ var options = new SystemWebViewOptions()
 
 开发人员在使用面向 Xamarin 的 MSAL.NET 时，可以选择使用嵌入式 Web 视图或系统浏览器。 你可以根据要实现的用户体验和要解决的安全问题来进行选择。
 
-目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 因此，为了 (SSO) 提供单一登录，系统浏览器可能仍是更好的选择。 在嵌入式 Web 浏览器中支持代理属于 MSAL.NET 积压工作。
+目前，MSAL.NET 尚不支持 Android 和 iOS 代理。 因此，若要提供单一登录 (SSO)，系统浏览器可能仍是一个更好的选择。 在嵌入式 Web 浏览器中支持代理属于 MSAL.NET 积压工作。
 
 ### <a name="differences-between-embedded-webview-and-system-browser"></a>嵌入式 Web 视图与系统浏览器之间的差异
 MSAL.NET 中嵌入式 Web 视图与系统浏览器之间一些视觉差异。

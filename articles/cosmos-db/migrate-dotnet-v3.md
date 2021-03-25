@@ -1,6 +1,6 @@
 ---
-title: '迁移你的应用程序以使用 Azure Cosmos DB .NET SDK 3.0 (Cosmos) '
-description: 了解如何将现有 .NET 应用程序从 v2 SDK 升级到较新的 .NET SDK v3 () 用于核心 (SQL) API。
+title: 迁移应用程序以使用 Azure Cosmos DB .NET SDK 3.0 (com.azure.cosmos)
+description: 了解如何将现有 .NET 应用程序从 v2 SDK 升级到适用于 Core (SQL) API 的较新 .NET SDK v3（com.azure.cosmos 包）。
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
@@ -8,67 +8,67 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: 514a6c6daccfe63865ae0b2b9f5bf29c5cbedc29
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334015"
 ---
-# <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>迁移你的应用程序以使用 Azure Cosmos DB .NET SDK v3
+# <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>迁移应用程序以使用 Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
-> 若要了解 Azure Cosmos DB .NET SDK v3，请参阅 [发行说明](sql-api-sdk-dotnet-standard.md)， [.net GitHub 存储库](https://github.com/Azure/azure-cosmos-dotnet-v3)，.Net SDK V3 [性能提示](performance-tips-dotnet-sdk-v3-sql.md)和 [故障排除指南](troubleshoot-dot-net-sdk.md)。
+> 若要了解 Azure Cosmos DB .NET SDK v3，请参阅[发行说明](sql-api-sdk-dotnet-standard.md)、[.NET GitHub 存储库](https://github.com/Azure/azure-cosmos-dotnet-v3)、.NET SDK v3 [性能提示](performance-tips-dotnet-sdk-v3-sql.md)和[故障排除指南](troubleshoot-dot-net-sdk.md)。
 >
 
-本文重点介绍了将现有 .NET 应用程序升级到较新的 Azure Cosmos DB .NET SDK v3 for Core (SQL) API 时的一些注意事项。 Azure Cosmos DB .NET SDK v3 对应于 Cosmos 命名空间。 如果要从以下任一 Azure Cosmos DB .NET Sdk 迁移应用程序，则可以使用此文档中提供的信息：
+本文重点介绍将现有 .NET 应用程序升级到适用于 Core (SQL) API 的较新 Azure Cosmos DB .NET SDK v3 时的一些注意事项。 Azure Cosmos DB .NET SDK v3 对应于 Microsoft.Azure.Cosmos 命名空间。 如果要从以下任何 Azure Cosmos DB .NET SDK 迁移应用程序，则可以使用此文档中提供的信息：
 
 * 适用于 SQL API 的 Azure Cosmos DB .NET Framework SDK v2
 * 适用于 SQL API 的 Azure Cosmos DB .NET Core SDK v2
 
-本文中的说明还有助于迁移以下外部库，它们现在是 .NET SDK v3 Azure Cosmos DB 核心 (SQL) API 的一部分：
+本文中的说明还有助于迁移以下外部库，这些库现在是适用于 Core (SQL) API 的 Azure Cosmos DB .NET SDK v3 的一部分：
 
-* .NET 更改源处理器库2。0
-* .NET 批量执行器库1.1 或更高版本
+* .NET 更改源处理器库 2.0
+* .NET 批量执行工具库 1.1 或更高版本
 
 ## <a name="whats-new-in-the-net-v3-sdk"></a>.NET V3 SDK 的新增功能
 
-V3 SDK 包含许多可用性和性能改进，包括：
+v3 SDK 包含许多可用性和性能改进，包括：
 
 * 直观编程模型命名
-* .NET Standard 2.0 * *
+* .NET Standard 2.0 **
 * 通过流 API 支持提高了性能
-* 不需要 URI 工厂的熟知层次结构
+* 取代 URI 工厂需求的 fluent 层次结构
 * 对更改源处理器库的内置支持
-* 对大容量操作的内置支持
-* 用于简化单元测试的 Mockabale Api
+* 对批量操作的内置支持
+* 用于简化单元测试的 Mockabale API
 * 事务性批处理和 Blazor 支持
 * 可插入序列化程序
 * 缩放非分区和自动缩放容器
 
-* * SDK 的目标 .NET Standard 2.0，将现有 Azure Cosmos DB .NET Framework 和 .NET Core Sdk 统一到单个 .NET SDK 中。 可以在任何实现 .NET Standard 2.0 的平台（包括 .NET Framework 4.6.1 + 和 .NET Core 2.0 + 应用程序）中使用 .NET SDK。
+**该 SDK 面向 .NET Standard 2.0，.NET Standard 2.0 将现有 Azure Cosmos DB .NET Framework 和 .NET Core SDK 统一到单个 .NET SDK 中。 可以在任何实现 .NET Standard 2.0 的平台（包括 .NET Framework 4.6.1+ 和 .NET Core 2.0+ 应用程序）中使用 .NET SDK。
 
-大多数网络、重试逻辑和更低级别的 SDK 在很大程度上保持不变。
+大多数网络、重试逻辑和较低级别的 SDK 在很大程度上保持不变。
 
-**Azure Cosmos DB .NET SDK v3 现在为开源。** 欢迎使用任何拉取请求，并将在 GitHub 上记录问题和跟踪反馈 [。](https://github.com/Azure/azure-cosmos-dotnet-v3/) 我们将使用可改善客户体验的任何功能。
+**Azure Cosmos DB .NET SDK v3 现在为开源。** 欢迎提出任何拉取请求，我们将在 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/) 上记录问题并跟踪反馈。 我们致力于提供任何能够改善客户体验的功能。
 
-## <a name="why-migrate-to-the-net-v3-sdk"></a>迁移到 .NET v3 SDK 的原因
+## <a name="why-migrate-to-the-net-v3-sdk"></a>为何要迁移到 .NET v3 SDK
 
-除了大量的可用性和性能改进之外，最新 SDK 中的新功能投资也不会退回到较旧版本。
+除了大量的可用性和性能改进之外，最新 SDK 中的新功能投资将不会反向移植到较旧版本。
 
-尽管没有立即计划来停用对 [2.0 sdk 的支持](sql-api-sdk-dotnet.md)，但 sdk 会在将来被新版本替换，sdk 将进入维护模式。 为了获得最佳的开发体验，我们建议始终从最新的受支持版本的 SDK 着手。
+尽管现在还没有计划[停用对 2.0 SDK 的支持](sql-api-sdk-dotnet.md)，但 SDK 会在将来被较新版本替代，该 SDK 将进入维护模式。 如需获得最佳的开发体验，我们建议务必从最新的受支持的 SDK 版本入手。
 
 ## <a name="major-name-changes-from-v2-sdk-to-v3-sdk"></a>主名称从 v2 SDK 更改为 v3 SDK
 
-在整个 .NET 3.0 SDK 中应用了以下名称更改，使其符合核心 (SQL) API 的 API 命名约定：
+在整个 .NET 3.0 SDK 中应用了以下名称更改，与 Core (SQL) API 的 API 命名约定保持一致：
 
 * `DocumentClient` 已重命名为 `CosmosClient`
 * `Collection` 已重命名为 `Container`
 * `Document` 已重命名为 `Item`
 
-所有资源对象都是用附加属性重命名的，其中包含资源名称以清楚易懂。
+所有资源对象都是用附加属性重命名的，为清楚起见，其中包含资源名称。
 
-下面是一些主要的类名称更改：
+下面是一些主要的类名更改：
 
 | .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
@@ -82,9 +82,9 @@ V3 SDK 包含许多可用性和性能改进，包括：
 |`Microsoft.Azure.Documents.Client.StoredProcedure`|`Microsoft.Azure.Cosmos.StoredProcedureProperties`|
 |`Microsoft.Azure.Documents.Client.Trigger`|`Microsoft.Azure.Cosmos.TriggerProperties`|
 
-### <a name="classes-replaced-on-net-v3-sdk"></a>.NET v3 SDK 上替换的类
+### <a name="classes-replaced-on-net-v3-sdk"></a>.NET v3 SDK 上被替换的类
 
-以下类已替换为 3.0 SDK：
+在 3.0 SDK 上，以下类已被替换:
 
 * `Microsoft.Azure.Documents.UriFactory`
 
@@ -92,11 +92,11 @@ V3 SDK 包含许多可用性和性能改进，包括：
 
 * `Microsoft.Azure.Documents.Resource`
 
-Microsoft.Azure.Documents。UriFactory 类已被熟知设计取代。 熟知设计在内部生成 Url，并允许 `Container` 传递单个对象，而不是使用 `DocumentClient` 、 `DatabaseName` 和 `DocumentCollection` 。
+Microsoft.Azure.Documents.UriFactory 类已被替换为 fluent 设计。 Fluent 设计在内部生成 URL，并支持传递单个 `Container` 对象，而不是 `DocumentClient`、`DatabaseName` 和 `DocumentCollection`。
 
-### <a name="changes-to-item-id-generation"></a>项 ID 生成更改
+### <a name="changes-to-item-id-generation"></a>对项 ID 生成的更改
 
-在 .NET v3 SDK 中不再自动填充项 ID。 因此，项 ID 必须特别包括生成的 ID。 查看以下示例：
+.NET v3 SDK 中不再自动填充项 ID。 因此，项 ID 必须具体包括生成的 ID。 查看以下示例：
 
 ```csharp
 [JsonProperty(PropertyName = "id")]
@@ -105,19 +105,19 @@ public Guid Id { get; set; }
 
 ### <a name="changed-default-behavior-for-connection-mode"></a>更改了连接模式的默认行为
 
-SDK v3 现在默认为直接 + TCP 连接模式，而后者默认为网关 + HTTPS 连接模式。 此更改提供增强的性能和可伸缩性。
+SDK v3 现在默认为直接 + TCP 连接模式，而以前的 v2 SDK 默认为网关 + HTTPS 连接模式。 此更改增强了性能和可伸缩性。
 
-### <a name="changes-to-feedoptions-queryrequestoptions-in-v30-sdk"></a>) 3.0 SDK 中对 FeedOptions (QueryRequestOptions 的更改
+### <a name="changes-to-feedoptions-queryrequestoptions-in-v30-sdk"></a>对 FeedOptions 的更改（v3.0 SDK 中的 QueryRequestOptions）
 
-`FeedOptions`Sdk v2 中的类现已重命名为 `QueryRequestOptions` sdk v3 和类中的，多个属性的名称和/或默认值已更改，或者已完全删除。  
+SDK v2 中的 `FeedOptions` 类现已在 SDK v3 中被重命名为 `QueryRequestOptions`，在此类中，多个属性的名称和/或默认值已更改，或者已完全删除。  
 
-`FeedOptions.MaxDegreeOfParallelism` 已重命名为 `QueryRequestOptions.MaxConcurrency` ，并且默认值和关联行为保持不变，则并行查询执行过程中运行的客户端将以非并行执行顺序执行。
+`FeedOptions.MaxDegreeOfParallelism` 已重命名为 `QueryRequestOptions.MaxConcurrency`，默认值和关联行为保持不变，并行查询执行期间运行客户端的操作将以非并行方式串行执行。
 
 `FeedOptions.EnableCrossPartitionQuery` 已删除，SDK 3.0 中的默认行为是将执行跨分区查询，而不需要专门启用属性。
 
-`FeedOptions.PopulateQueryMetrics` 默认情况下启用，结果显示在响应的诊断属性中。
+默认情况下启用 `FeedOptions.PopulateQueryMetrics`，结果显示在响应的诊断属性中。
 
-`FeedOptions.RequestContinuation` 现已升级为查询方法本身。
+`FeedOptions.RequestContinuation` 现已提升为查询方法本身。
 
 已删除以下属性：
 
@@ -133,9 +133,9 @@ SDK v3 现在默认为直接 + TCP 连接模式，而后者默认为网关 + HTT
 
 ### <a name="constructing-a-client"></a>构造客户端
 
-.NET SDK v3 提供一个无 `CosmosClientBuilder` 需 SDK V2 URI 工厂的流畅类。
+.NET SDK v3 提供取代 SDK v2 URI 工厂需求的 fluent `CosmosClientBuilder` 类。
 
-下面的示例 `CosmosClientBuilder` 使用强 ConsistencyLevel 和首选位置列表创建新的：
+下面的示例创建一个新 `CosmosClientBuilder`，其中包含强 ConsistencyLevel 和首选位置列表：
 
 ```csharp
 CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder(
@@ -146,21 +146,21 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder(
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-### <a name="using-the-change-feed-processor-apis-directly-from-the-v3-sdk"></a>直接从 v3 SDK 使用更改源处理器 Api
+### <a name="using-the-change-feed-processor-apis-directly-from-the-v3-sdk"></a>直接从 v3 SDK 使用更改源处理器 API
 
-V3 SDK 内置了对更改源处理器 Api 的支持，允许您使用同一 SDK 来生成应用程序和更改源处理器实现。 以前，您必须使用单独的更改源处理器库。
+v3 SDK 具有对更改源处理器 API 的内置支持，支持使用同一 SDK 来生成应用程序和更改源处理器实现。 以前，必须使用单独的更改源处理器库。
 
-有关详细信息，请参阅 [如何从更改源处理器库迁移到 Azure Cosmos DB .net V3 SDK](how-to-migrate-from-change-feed-library.md)
+有关详细信息，请参阅[如何从更改源处理器库迁移到 Azure Cosmos DB .NET v3 SDK](how-to-migrate-from-change-feed-library.md)
 
-### <a name="using-the-bulk-executor-library-directly-from-the-v3-sdk"></a>直接从 V3 SDK 使用大容量执行程序库
+### <a name="using-the-bulk-executor-library-directly-from-the-v3-sdk"></a>直接从 V3 SDK 使用批量执行工具库
 
-V3 SDK 具有对大容量执行程序库的内置支持，允许您使用同一 SDK 来生成应用程序和执行批量操作。 以前，需要使用单独的批量执行程序库。
+v3 SDK 具有对批量执行工具库的内置支持，支持使用同一 SDK 来生成应用程序和执行批量操作。 以前，需要使用单独的批量执行工具库。
 
-有关详细信息，请参阅 [如何从大容量执行器库迁移到 Azure Cosmos DB .Net V3 SDK 中的批量支持](how-to-migrate-from-bulk-executor-library.md)
+有关详细信息，请参阅[如何从批量执行工具库迁移到 Azure Cosmos DB .NET V3 SDK 中的批量操作支持](how-to-migrate-from-bulk-executor-library.md)
 
 ## <a name="code-snippet-comparisons"></a>代码片段比较
 
-下面的代码片段演示了如何在 .NET v2 和 v3 Sdk 之间创建资源的不同之处：
+以下代码片段显示了 .NET v2 和 v3 SDK 在资源创建方式上的差异：
 
 ## <a name="database-operations"></a>数据库操作
 
@@ -281,7 +281,7 @@ foreach (Database _database in await client.ReadDatabaseFeedAsync())
 
 ## <a name="container-operations"></a>容器操作
 
-### <a name="create-a-container-autoscale--time-to-live-with-expiration"></a>创建容器 (自动缩放 + 生存时间和过期时间) 
+### <a name="create-a-container-autoscale--time-to-live-with-expiration"></a>创建容器（自动缩放 + 生存时间（包含到期时间））
 
 # <a name="net-sdk-v3"></a>[.NET SDK v3](#tab/dotnet-v3)
 
@@ -642,5 +642,5 @@ private static async Task DeleteItemAsync(DocumentClient client)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [构建一个控制台应用](sql-api-get-started.md) ，用于使用 v3 SDK 管理 AZURE COSMOS DB SQL API 数据
-* 详细了解如何 [通过 V3 SDK 执行的操作](sql-api-dotnet-v3sdk-samples.md)
+* 使用 v3 SDK [生成控制台应用](sql-api-get-started.md)以管理 Azure Cosmos DB SQL API 数据
+* 详细了解 [v3 SDK 的用途](sql-api-dotnet-v3sdk-samples.md)

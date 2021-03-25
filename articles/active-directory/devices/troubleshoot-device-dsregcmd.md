@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 614b3f927dc22bc534168f8fe95cc2f97031b621
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98725517"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd 命令排查设备问题
@@ -305,10 +305,10 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 
 ## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
-本部分针对 Windows Hello 企业版 (WHFB) 的设置执行先决条件检查。 
+本部分对 Windows Hello 企业版 (WHFB) 的预配执行先决条件检查。 
 
 > [!NOTE]
-> 如果用户已成功配置 WHFB，则不能在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
+> 如果用户已成功配置 WHFB，在 dsregcmd /status 中可能就看不到 NGC 先决条件检查详细信息。
 
 - **IsDeviceJoined：** - 如果设备已建立 Azure AD 联接，请设置为“是”。
 - **IsUserAzureAD：** - 如果 Azure AD 中存在登录用户，则设置为“是”。

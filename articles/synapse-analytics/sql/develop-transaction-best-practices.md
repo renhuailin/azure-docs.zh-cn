@@ -1,6 +1,6 @@
 ---
 title: 优化专用 SQL 池的事务
-description: 了解如何在专用 SQL 池中优化事务性代码的性能。
+description: 了解如何优化专用 SQL 池中事务性代码的性能。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 74deebb66bc0db316e2aa36588034c6afb3bbe40
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8b1f820cfca0e352b49d815e2b99d407ccc8ce43
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674030"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505692"
 ---
-# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中利用专用 SQL 池优化事务 
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池优化事务 
 
 了解如何在尽量降低长时间回退风险的情况下优化专用 SQL 池中事务性代码的性能。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
-事务是关系数据库引擎的一个重要组成部分。 专用 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元中的情况。
+事务是关系数据库引擎的一个重要组成部分。 专用 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 当需要将多个修改语句绑定到一个原子单元中时，通常使用显式事务。
 
-专用 SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 但是，虽然此过程可保证写入，但它确实会在系统中引入开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
+专用 SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 但是，尽管此过程可保证写入，但确实会在系统中引入开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
 * 尽可能使用最少日志记录构造
 * 使用限定范围的批来处理数据，避免单数形式的长时运行事务
@@ -71,14 +71,14 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 | 堆 |任意 |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
-| 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
+| 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
-| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
+| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
 
 值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
 
 > [!IMPORTANT]
-> 专用 SQL 池有60个分发版。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
+> 专用 SQL 池有 60 个分布区。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > 重新创建大型表时，使用专用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-## <a name="optimize-with-partition-switching"></a>通过分区切换进行优化
+## <a name="optimize-with-partition-switching"></a>使用分区切换进行优化
 
 面对[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 
@@ -406,7 +406,7 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
 
-Azure Synapse Analytics 允许你根据需要 [暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 专用 SQL 池。 
+借助 Azure Synapse Analytics，可以根据需要[暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)专用 SQL 池。 
 
 暂停或缩放专用 SQL 池时，必须明白，任何正在运行的事务都会立即终止，导致打开的事务回退。 
 
@@ -415,11 +415,11 @@ Azure Synapse Analytics 允许你根据需要 [暂停、恢复和缩放](../sql-
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。
 
-最佳方案是在暂停或缩放专用 SQL 池之前，使数据修改事务完成。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
+最佳方案是在暂停或缩放专用 SQL 池之前完成正在执行的数据修改事务。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
 * 使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[专用 SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅 [SQL 池最佳做法](best-practices-sql-pool.md)。
+请参阅[专用 SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅[专用 SQL 池最佳做法](best-practices-sql-pool.md)。

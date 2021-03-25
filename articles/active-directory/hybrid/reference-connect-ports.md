@@ -16,12 +16,12 @@ ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 681d92ed162feff0510067556d7eeaa47b12d988
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80331091"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520024"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合标识所需的端口和协议
 以下文档是用于实现混合标识解决方案所需的端口和协议的技术参考。 使用下图并参考相应的表格。
@@ -39,7 +39,7 @@ ms.locfileid: "80331091"
 | LDAP |389 (TCP/UDP) |用于从 AD 导入数据。 数据将使用 Kerberos 签名和签章加密。 |
 | SMB | 445 (TCP) |由无缝 SSO 用于在 AD 林中创建计算机帐户。 |
 | LDAP/SSL |636 (TCP/UDP) |用于从 AD 导入数据。 数据传输经过签名和加密。 仅在使用 TLS 时使用。 |
-| RPC |49152-65535（随机高 RPC 端口）(TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 期间及密码同步期间使用。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
+| RPC |49152-65535（随机高 RPC 端口）(TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 期间及密码同步期间使用。 如果动态端口已更改，则需打开该端口。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
 |WinRM  | 5985 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用|
 |AD DS Web 服务 | 9389 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用 |
 
@@ -105,9 +105,9 @@ ms.locfileid: "80331091"
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
 | HTTPS |443(TCP) |出站 |
-| Azure 服务总线 |5671 (TCP)  |出站 |
+| Azure 服务总线 |5671 (TCP) |出站 |
 
-最新版本的代理不再需要 Azure 服务总线端口5671。 最新 Azure AD Connect Health 代理版本仅需端口443。
+代理的最新版本不再需要 Azure 服务总线端口 5671。 最新 Azure AD Connect Health 代理版本仅需端口 443。
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理的终结点
 有关终结点的列表，请参阅 [Azure AD Connect Health 代理的要求部分](how-to-connect-health-agent-install.md#requirements)。

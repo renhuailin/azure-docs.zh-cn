@@ -1,21 +1,23 @@
 ---
-title: 监视 Azure Stack Edge Pro 设备 |Microsoft Docs
-description: 描述如何使用 Azure 门户和本地 web UI 监视 Azure Stack Edge Pro。
+title: 监视 Azure Stack Edge Pro 设备 | Microsoft Docs
+description: 介绍如何使用 Azure 门户和本地 Web UI 监视 Azure Stack Edge Pro。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/02/2021
+ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 388be1b13f89a50bed003731c01c6ab6287faaf9
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.openlocfilehash: aae64cad3603725a4062d5afb42df974bbf8ac40
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438774"
 ---
 # <a name="monitor-your-azure-stack-edge-pro"></a>监视 Azure Stack Edge Pro
+
+[!INCLUDE [applies-to-GPU-and-pro-r-mini-r-and-fpga-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
 本文介绍如何监视 Azure Stack Edge Pro。 若要监视设备，可以使用 Azure 门户或本地 Web UI。 使用 Azure 门户查看设备事件、配置和管理警报，以及查看指标。 使用物理设备上的本地 Web UI 查看各种设备组件的硬件状态。
 
@@ -58,8 +60,8 @@ ms.locfileid: "99491058"
 
 |容量度量值                     |说明  |
 |-------------------------------------|-------------|
-|**可用容量**               | 指的是能向设备写入的数据量。 换句话说，此指标就是可在设备上使用的容量。 <br></br>可以通过删除设备和云上都有副本的文件的本地副本来释放设备容量。        |
-|**总容量**                   | 指设备上写入数据的总字节数（也称为本地缓存的总大小）。 <br></br> 通过添加数据磁盘，可以提升现有虚拟设备的容量。 通过虚拟机监控程序管理为 VM 添加数据磁盘，然后重启 VM。 网关设备的本地存储池将进行扩展，以容纳新添加的数据磁盘。 <br></br>若要了解详细信息，请转到[为 Hyper-V 虚拟机添加硬盘](https://www.youtube.com/watch?v=EWdqUw9tTe4)。 |
+|**可用容量**               | 指的是能向设备写入的数据量。 换句话说，此指标指的是设备上可用的容量。 <br></br>通过删除在设备和云中都有副本的文件的本地副本，可释放设备容量。        |
+|**总容量**                   | 指的是要向其写入数据的设备上的总字节数，也称为本地缓存的总大小。 <br></br> 通过添加数据磁盘，可以提升现有虚拟设备的容量。 通过虚拟机监控程序管理为 VM 添加数据磁盘，然后重启 VM。 网关设备的本地存储池将进行扩展，以容纳新添加的数据磁盘。 <br></br>若要了解详细信息，请转到[为 Hyper-V 虚拟机添加硬盘](https://www.youtube.com/watch?v=EWdqUw9tTe4)。 |
 
 |事务度量值              | 说明         |
 |-------------------------------------|---------|
@@ -69,8 +71,8 @@ ms.locfileid: "99491058"
 |**云读取吞吐量**            | 在设备上的所有共享中从云读取的所有字节数之和     |
 |**云上传吞吐量**          | 在设备上的所有共享中写入云的所有字节数之和     |
 |**云上传吞吐量（共享）**  | 在共享中写入云的所有字节数之和/共享数得出的是平均值、每个共享的最大值和最小值      |
-|**读取吞吐量（网络）**           | 包括从云中读取的所有字节数的系统网络吞吐量。 此视图可以包含不限于共享的数据。 <br></br>拆分将显示设备上的所有网络适配器上的流量，包括未连接或未启用的适配器。      |
-|**写入吞吐量（网络）**       | 包括写入云的所有字节数的系统网络吞吐量。 此视图可以包含不限于共享的数据。 <br></br>拆分将显示设备上的所有网络适配器上的流量，包括未连接或未启用的适配器。          |
+|**读取吞吐量（网络）**           | 包括从云中读取的所有字节数的系统网络吞吐量。 此视图可以包含不限于共享的数据。 <br></br>使用拆分功能，可以显示设备上所有网络适配器（包括未连接或未启用的适配器）上的流量。      |
+|**写入吞吐量（网络）**       | 包括写入云的所有字节数的系统网络吞吐量。 此视图可以包含不限于共享的数据。 <br></br>使用拆分功能，可以显示设备上所有网络适配器（包括未连接或未启用的适配器）上的流量。          |
 
 | Edge 计算指标              | 说明         |
 |-------------------------------------|---------|
@@ -80,4 +82,4 @@ ms.locfileid: "99491058"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[管理带宽](azure-stack-edge-manage-bandwidth-schedules.md)。
-了解如何 [管理设备事件警报通知](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)。
+了解如何[管理设备事件警报通知](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)。

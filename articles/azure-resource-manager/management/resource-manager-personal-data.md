@@ -4,10 +4,10 @@ description: 了解如何管理与 Azure 资源管理器操作相关联的个人
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693692"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>管理与 Azure 资源管理器相关联的个人数据
@@ -32,7 +32,7 @@ ms.locfileid: "97693692"
 
 * [删除](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [az 部署组删除](/cli/azure/deployment/group#az_deployment_group_delete)
+* [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>在资源组名称中删除个人数据
 

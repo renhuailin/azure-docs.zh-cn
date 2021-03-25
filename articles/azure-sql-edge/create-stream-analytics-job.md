@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656336"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中创建数据流作业 
@@ -38,7 +38,7 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 
 | 数据源类型 | 输入 | 输出 | 说明 |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge 中心 | Y | Y | 用于将流式处理数据读取和写入到 Azure IoT Edge 中心的数据源。 有关详细信息，请参阅 [IoT Edge 中心](../iot-edge/iot-edge-runtime.md#iot-edge-hub)。|
+| Azure IoT Edge 中心 | Y | Y | 将流式处理数据读/写到 Azure IoT Edge 中心的数据源。 有关详细信息，请参阅 [IoT Edge 中心](../iot-edge/iot-edge-runtime.md#iot-edge-hub)。|
 | SQL 数据库 | N | Y | 将流式处理数据写入 SQL 数据库的数据源连接。 数据库可以是 Azure SQL Edge 中的本地数据库，也可以是 SQL Server 或 Azure SQL 数据库中的远程数据库。|
 | Kafka | Y | N | 从 Kafka 主题读取流式处理数据的数据源。 此适配器目前仅适用于 Azure SQL Edge 的 Intel 或 AMD 版本。 它不适用于 Azure SQL Edge 的 ARM64 版本。|
 

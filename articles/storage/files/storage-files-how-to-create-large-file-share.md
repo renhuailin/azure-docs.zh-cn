@@ -8,12 +8,12 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 118c08c8ede369eecd86fe8e6db24473b67ff306
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214433"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501288"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
@@ -23,19 +23,19 @@ ms.locfileid: "102214433"
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
-- 如果你打算使用 Azure PowerShell 模块，请[安装最新版本](/powershell/azure/install-az-ps?view=azps-4.6.0)。
+- 如果你打算使用 Azure PowerShell 模块，请[安装最新版本](/powershell/azure/install-az-ps)。
 
 ## <a name="restrictions"></a>限制
 
-现在，只能在已启用大型文件共享的帐户上使用本地冗余存储 (LRS) 或区域冗余存储 (ZRS) 。 不能使用区域冗余存储 (GZRS) ，异地冗余存储 (GRS) ，读取访问异地冗余存储 (GRS) 或读取访问地域冗余存储 (RA-GZRS) 。
+目前，只能在启用了大型文件共享的帐户中使用本地冗余存储 (LRS) 或区域冗余存储 (ZRS)。 不能使用异地区域冗余存储 (GZRS)、异地冗余存储 (GRS)、读取访问异地冗余存储 (RA-GRS) 或读取访问异地区域冗余存储 (RA-GZRS)。
 
-在帐户中启用大型文件共享是一个不可逆的过程。 启用后，你将无法将你的帐户转换为 GZRS、GRS、GRS 或 GZRS。
+在帐户中启用大型文件共享是一个不可逆的过程。 启用后，无法将帐户转换为 GZRS、GRS、RA-GRS 或 RA-GZRS。
 
 ## <a name="create-a-new-storage-account"></a>新建存储帐户
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户中，选择“所有服务”。 
 1. 在资源列表中输入“存储帐户”。 键入时，列表会根据输入的内容进行筛选。 选择“存储帐户”。
 1. 在显示的“存储帐户”窗口中，选择“添加”。 
@@ -46,7 +46,7 @@ ms.locfileid: "102214433"
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须是 3 到 24 个字符，只能包含数字和小写字母。
 1. 选择存储帐户的位置。
-1. 将复制设置为 **本地冗余存储** 或 **区域冗余存储**。
+1. 将复制设置为“本地冗余存储”或“区域冗余存储” 。
 1. 将以下字段保留其默认值：
 
    |字段  |Value  |
@@ -76,7 +76,7 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-首先[安装最新版本的 PowerShell](/powershell/azure/install-az-ps?view=azps-3.0.0)，以便可以启用大型文件共享。
+首先[安装最新版本的 PowerShell](/powershell/azure/install-az-ps)，以便可以启用大型文件共享。
 
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 
@@ -88,7 +88,7 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>在现有帐户中启用大型文件共享
 
-也可以在现有帐户中启用大型文件共享。 如果启用大型文件共享，则无法转换为 GZRS、GRS、GRS 或 GZRS。 在此存储帐户中启用大型文件共享的操作不可逆。
+也可以在现有帐户中启用大型文件共享。 如果启用大型文件共享，将无法转换为 GZRS、GRS、RA-GRS 或 RA-GZRS。 在此存储帐户中启用大型文件共享的操作不可逆。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

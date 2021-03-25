@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: abcfce43b90c7371d5b38aa5b7a6d478e9d6a0dd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92207800"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>教程：在流量管理器中配置加权流量路由方法
@@ -58,25 +58,25 @@ ms.locfileid: "92207800"
     | 容许的失败次数 | 配置触发终结点失败之前容许的运行状况探测失败次数。 请输入介于 0 和 9 之间的数字。 | 
     | 探测超时 | 配置终结点运行状况探测超时之前所需的时间。此值必须至少为 5 并且小于探测时间间隔值。 |
 
-1. 选择“保存”，以完成配置。 
+1. 选择“保存”，以完成配置。
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="搜索流量管理器配置文件"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-configuration.png" alt-text="流量管理器加权配置"::: 
 
 1. 选择“终结点”并配置每个终结点的权重。 权重可以介于 1-1000 之间。 权重越高，优先级就越高。  
 
-    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="搜索流量管理器配置文件"::: 
+    :::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-configure-endpoints-weighted.png" alt-text="流量管理器加权终结点配置"::: 
 
 ## <a name="use-the-traffic-manager-profile"></a>使用流量管理器配置文件
 
 “流量管理器配置文件”  会显示新建的流量管理器配置文件的 DNS 名称。 任何客户端（例如，通过使用 Web 浏览器导航到客户端）均可使用此名称来路由到由路由类型确定的相应终结点。 在这种情况下，所有请求都以轮循机制的方式路由每个终结点。
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="搜索流量管理器配置文件"::: 
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/traffic-manager-weighted-overview.png" alt-text="流量管理器加权概述"::: 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要流量管理器配置文件，请找到该配置文件，然后选择“删除配置文件”。
 
-:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="搜索流量管理器配置文件":::
+:::image type="content" source="./media/traffic-manager-weighted-routing-method/delete-traffic-manager-weighted-profile.png" alt-text="删除流量管理器加权配置文件":::
 
 ## <a name="next-steps"></a>后续步骤
 

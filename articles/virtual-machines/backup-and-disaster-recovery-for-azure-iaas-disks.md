@@ -8,10 +8,10 @@ ms.date: 07/19/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: e5ae08c23748e55a8c3b75eb8fb9c112684f022e
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102507900"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
@@ -108,7 +108,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
  下表汇总了可用于 DR 的解决方案。
 
-| 场景 | 自动复制 | DR 解决方案 |
+| 方案 | 自动复制 | DR 解决方案 |
 | --- | --- | --- |
 | 高级·SSD 磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |
 | 托管磁盘 | 本地（[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)） | [Azure 备份](https://azure.microsoft.com/services/backup/) |

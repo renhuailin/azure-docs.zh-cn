@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2d97d02aec84fec92e29e971cd5c667c847b2541
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 733b2375a26b0157f88bc148b52932e2f3e3f2e2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368041"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488267"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>迁移概述：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -79,7 +79,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 - [超大规模服务层级](../../database/service-tier-hyperscale.md)适用于具有不断增长的数据量并且需要自动纵向扩展到 100 TB 的数据库大小的数据库。 专为特大型数据库设计。 
 
 > [!IMPORTANT]
-> [事务日志速率受](../../database/resource-limits-logical-server.md#transaction-log-rate-governance) Azure SQL 数据库限制，以限制高引入率。 因此，在迁移过程中，可能需要扩展目标数据库资源 (Vcore/Dtu) ，以减轻 CPU 或吞吐量的压力。 选择适当大小的目标数据库，但计划在必要时为迁移扩展资源。 
+> [管理 Azure SQL 数据库中的事务日志记录速率](../../database/resource-limits-logical-server.md#transaction-log-rate-governance)以限制过高的数据引入速率。 因此在迁移过程中可能需要扩展目标数据库资源 (vCore/DTU) 以减轻 CPU 或吞吐量的压力。 选择适当大小的目标数据库，但计划在必要时为迁移扩展资源。 
 
 
 ### <a name="sql-server-on-azure-vm-alternative"></a>Azure VM 上的 SQL Server 替代项
@@ -104,6 +104,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 
 |技术 | 说明|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | 通过 Azure Migrate for Azure SQL，可以在 VMware 上大规模发现和评估 SQL 数据资产，并获得 Azure SQL 部署建议、目标大小和每月估算。 | 
 |[数据迁移助手 (DMA)](/sql/dma/dma-migrateonpremsqltosqldb)|数据迁移助手是一种桌面工具，可提供对 SQL Server 的无缝评估和到 Azure SQL 数据库（架构和数据）的迁移。 此工具可以安装在本地服务器上，也可以安装在可以连接到源数据库的本地计算机上。 迁移过程是在源数据库和目标数据库中的对象之间进行的逻辑数据移动。 </br> - 迁移单一数据库（架构和数据）|
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-azure-sql.md)|第一方 Azure 服务，可使用 Azure 门户将 SQL Server 数据库迁移到 Azure SQL 数据库，或通过 PowerShell 自动迁移。 Azure DMS 要求在预配过程中选择首选的 Azure 虚拟网络 (VNet)，以确保与源 SQL Server 数据库建立连接。 </br> - 迁移单一数据库或大规模迁移。 |
 | | |
@@ -154,7 +155,7 @@ SQL 数据库为多种[部署模型](../../database/sql-database-paas-overview.m
 如果迁移的工作负载还依赖其他 SQL Server 功能，则还有其他注意事项。
 
 #### <a name="sql-server-integration-services"></a>SQL Server Integration Services
-通过将 SQL Server Integration Services (SSIS) 包重新部署到 [Azure 数据工厂](../../../data-factory/introduction.md)中的 Azure SSIS 运行时，将包迁移到 Azure。 Azure 数据工厂通过提供用于在 Azure 中执行 SSIS 包的运行时来[支持 SSIS 包的迁移](../../../data-factory/scenario-ssis-migration-overview.md#azure-sql-database-as-database-workload-destination)。 此外，还可以使用 [数据流](../../../data-factory/concepts-data-flow-overview.md)在 ADF 中以本机方式重写 SSIS ETL 逻辑。
+通过将 SQL Server Integration Services (SSIS) 包重新部署到 [Azure 数据工厂](../../../data-factory/introduction.md)中的 Azure SSIS 运行时，将包迁移到 Azure。 Azure 数据工厂通过提供用于在 Azure 中执行 SSIS 包的运行时来[支持 SSIS 包的迁移](../../../data-factory/scenario-ssis-migration-overview.md#azure-sql-database-as-database-workload-destination)。 此外，还可以使用[数据流](../../../data-factory/concepts-data-flow-overview.md)在 ADF 中以本机方式重写 SSIS ETL 逻辑。
 
 
 #### <a name="sql-server-reporting-services"></a>SQL Server Reporting Services
@@ -185,7 +186,7 @@ Windows 用户和组也可以通过在“DMS 配置”页中启用相应的切�
 
 要增强安全性，请考虑使用  [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、[审核](../../database/auditing-overview.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)。
 
-除了高级管理和安全功能以外，SQL 数据库还提供一组高级工具来帮助你[监视和优化工作负载](../../database/monitor-tune-overview.md)。 [Azure SQL Analytics (预览版) ](../../../azure-monitor/insights/azure-sql.md) 是一种高级云监视解决方案，用于在单个视图中大规模和跨多个订阅监视 Azure SQL 数据库中的所有数据库的性能。 Azure SQL Analytics 收集和直观显示关键性能指标，并提供内置的智能性能故障排除。
+除了高级管理和安全功能以外，SQL 数据库还提供一组高级工具来帮助你[监视和优化工作负载](../../database/monitor-tune-overview.md)。 [Azure SQL Analytics（预览）](../../../azure-monitor/insights/azure-sql.md)是一种高级云监视解决方案，用于在单个视图中跨多个订阅大规模监视 Azure SQL 数据库中的所有数据库的性能。 Azure SQL Analytics 使用内置的智能收集和直观显示关键性能指标，以进行性能故障排除。
 
 [自动优化](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) 会持续监视 SQL 执行计划统计信息的性能，并自动修复已识别的性能问题。 
 
@@ -201,7 +202,7 @@ Windows 用户和组也可以通过在“DMS 配置”页中启用相应的切�
 |[使用 PowerShell 批量创建数据库](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Database%20Creation%20with%20PowerShell)|这包括一组三个 PowerShell 脚本，可用于创建资源组 (create_rg.ps1)、[Azure 中的逻辑服务器](../../database/logical-servers.md) (create_sqlserver.ps1) 和 Azure SQL 数据库 (create_sqldb.ps1)。 这些脚本包括循环功能，因此你可以根据需要循环访问和创建任意数量的服务器和数据库。|
 |[使用 MSSQL-Scripter 和 PowerShell 批量部署架构](https://github.com/Microsoft/DataMigrationTeam/tree/master/Bulk%20Schema%20Deployment%20with%20MSSQL-Scripter%20&%20PowerShell)|此资产在 Azure 中创建一个资源组、一个或多个[逻辑服务器](../../database/logical-servers.md)来承载 Azure SQL 数据库，从一个本地 SQL Server（或多个 SQL Server (2005+)）导出每个架构，并将其导入 Azure SQL 数据库。|
 |[将 SQL Server 代理作业转换为弹性数据库作业](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Convert%20SQL%20Server%20Agent%20Jobs%20into%20Elastic%20Database%20Jobs)|此脚本将源 SQL Server 代理作业迁移到弹性数据库作业。|
-|[从 Azure SQL 数据库发送邮件](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|这提供了一种解决方案作为本地 SQL Server 中提供的 SendMail 功能的替代方案。 解决方案使用 Azure Functions 和 Azure SendGrid 服务从 Azure SQL Database 发送电子邮件。|
+|[从 Azure SQL 数据库发送邮件](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|这提供了一个解决方案，可作为本地 SQL Server 中可用的 SendMail 功能的替代方案。 该解决方案使用 Azure Functions 和 Azure SendGrid 服务从 Azure SQL 数据库发送电子邮件。|
 |[用于将本地 SQL Server 登录名移动到 Azure SQL 数据库的实用工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|一个 PowerShell 脚本，可创建 T-SQL 命令脚本以重新创建登录名并从本地 SQL Server 到 Azure SQL 数据库选择数据库用户。 该工具允许将 Windows AD 帐户自动映射到 Azure AD 帐户，还可以选择性地迁移 SQL Server 本机登录名。|
 |[使用 Logman 的 PerfMon 数据收集自动化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|一种工具，用于收集 PerMon 数据以了解基线性能，并帮助提供迁移目标建议。 该工具使用 logman.exe 创建将创建、启动、停止和删除在远程 SQL Server 上设置的性能计数器的命令|
 |[白皮书 - 使用 BACPAC 将数据库迁移到 Azure SQL DB](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20-%20Benchmarks%20and%20Steps%20to%20Import%20to%20Azure%20SQL%20DB%20Single%20Database%20from%20BACPAC.pdf)|此白皮书提供了一些指导和步骤，可帮助你使用 BACPAC 文件加快从 SQL Server 到 Azure SQL 数据库的迁移。|

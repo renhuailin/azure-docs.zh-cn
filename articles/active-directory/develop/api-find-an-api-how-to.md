@@ -12,19 +12,19 @@ ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 28cfb3d8b09c9661d16ac6e7146c50e7043d913a
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99581952"
 ---
 # <a name="how-to-find-a-specific-api-needed-for-a-custom-developed-application"></a>如何为自定义开发的应用程序查找所需的特定 API
 
-访问 API 需要配置访问作用域和访问角色。 如果要将资源应用程序 web Api 公开给客户端应用程序，请为 API 配置访问作用域和角色。 如果希望客户端应用程序访问 web API，请在应用注册中配置权限以访问 API。
+访问 API 需要配置访问作用域和访问角色。 如果想要将资源应用程序 Web API 公开至客户端应用程序，请为 API 配置访问作用域和访问角色。 如果想要让客户端应用程序访问 Web API，请配置权限以访问应用注册中的 API。
 
 ## <a name="configuring-a-resource-application-to-expose-web-apis"></a>将资源应用程序配置为公开 Web API
 
-当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”  列表中。 若要添加访问范围，请按照[配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md) 中列出的步骤进行操作。
+当 Web API 公开后，将权限添加到应用注册时，API 会显示在“选择 API”列表中。 若要添加访问范围，请按照[配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md) 中列出的步骤进行操作。
 
 ## <a name="configuring-a-client-application-to-access-web-apis"></a>将客户端应用程序配置为访问 Web API
 

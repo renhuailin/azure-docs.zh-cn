@@ -15,15 +15,15 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 75650d7ff0ac647aeb6dace76c270680b1b89347
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954947"
 ---
 ## <a name="enable-logging"></a>启用日志记录
 
-为了帮助调试和身份验证故障排除方案，Microsoft 身份验证库提供了内置日志记录支持。 日志记录是以下文章中介绍的每个库：
+为了帮助对调试和身份验证失败进行故障排除，Microsoft 身份验证库提供了内置的日志记录支持。 以下文章介绍了如何记录每个库：
 
 :::row:::
     :::column:::
@@ -38,11 +38,11 @@ ms.locfileid: "98954947"
     :::column-end:::
 :::row-end:::
 
-以下是有关数据收集的一些建议：
+一些数据收集建议如下：
 
-- 用户可能会在遇到问题时询问帮助。 最佳做法是捕获并临时存储日志。 提供用户可在其中上传日志的位置。 MSAL 提供日志记录扩展来捕获有关身份验证的详细信息。
+- 用户在有问题时可能会寻求帮助。 最佳做法是捕获日志并将其临时存储。 提供一个供用户上传日志的位置。 MSAL 提供日志记录扩展来捕获有关身份验证的详细信息。
 
-- 如果遥测可用，请通过 MSAL 启用该功能，收集有关用户如何登录到应用的数据。
+- 如果遥测可用，请通过 MSAL 启用它，以收集有关用户如何登录应用的数据。
 
 
 ## <a name="validate-your-integration"></a>验证你的集成
