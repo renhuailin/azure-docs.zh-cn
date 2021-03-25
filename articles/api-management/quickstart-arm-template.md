@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/09/2020
 ms.openlocfilehash: 1610c51b613712c06410247e2eb673a50a9988b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792236"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-an-arm-template"></a>快速入门：使用 ARM 模板创建新的 Azure API 管理服务实例
@@ -23,7 +23,7 @@ ms.locfileid: "92792236"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-api-management-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-api-management-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +91,7 @@ ms.locfileid: "92792236"
 1. 在“资源组”页上，选择相应资源组。
 1. 在资源组页上，选择“删除资源组”。
 
-    :::image type="content" source="media/quickstart-arm-template/delete-resource-group.png" alt-text="删除资源组":::
+    删除资源组
 1. 键入资源组的名称，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤

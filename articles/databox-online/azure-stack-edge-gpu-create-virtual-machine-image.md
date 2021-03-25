@@ -6,24 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: ee0587063c0fac67068869c58471ada58354fab7
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806686"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102437666"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>为 Azure Stack Edge Pro 设备创建自定义 VM 映像
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-若要在 Azure Stack Edge Pro 设备上部署 VM，你需要能够创建可用于创建 VM 的自定义 VM 映像。 本文介绍了创建 Linux 或 Windows VM 自定义映像所需的步骤，这些映像可用于在 Azure Stack Edge Pro 设备上部署 Vm。
+若要在 Azure Stack Edge Pro 设备上部署 VM，你需要能够创建可用于创建 VM 的自定义 VM 映像。 本文介绍了创建 Linux 或 Windows VM 自定义映像所需的步骤，可使用这些自定义映像在 Azure Stack Edge Pro 设备上部署 VM。
 
 ## <a name="vm-image-workflow"></a>VM 映像工作流
 
-此工作流要求你在 Azure 中创建虚拟机、自定义 VM、实现通用化，然后下载与该 VM 相对应的 VHD。 此通用化 VHD 上传到 Azure Stack Edge Pro。 将从该 VHD 创建托管磁盘。 从托管磁盘创建映像。 最后，从该映像创建 Vm。
+此工作流要求你在 Azure 中创建虚拟机、自定义 VM、实现通用化，然后下载与该 VM 相对应的 VHD。 此通用化 VHD 将上传到 Azure Stack Edge Pro。 托管磁盘将从该 VHD 创建。 映像将从该托管磁盘创建。 最后，VM 将从该映像创建。
 
 有关详细信息，请转到[使用 Azure PowerShell 在 Azure Stack Edge Pro 设备上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)。
 

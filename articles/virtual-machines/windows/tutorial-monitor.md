@@ -11,10 +11,10 @@ ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 8c4345d16efe296413ea9d995c2307bba62d33f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102560695"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Windows 虚拟机

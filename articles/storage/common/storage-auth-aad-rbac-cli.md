@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c42061520b73966f2cd516716039d78c2b9cbeb8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375980"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配一个可以访问 blob 和队列数据的 Azure 角色
@@ -59,9 +59,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 若要向安全主体分配 Azure 角色，请使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令。 命令的格式因分配范围而异。 以下示例显示如何在各种范围内为用户分配角色，但可以使用相同的命令将角色分配给任何安全主体。
 
 > [!IMPORTANT]
-> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 必须为自己明确分配用于数据访问的 Azure RBAC 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
+> 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 必须为自己显式分配一个 Azure RBAC 角色以进行数据访问。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
 >
-> 如果存储帐户已使用 Azure 资源管理器只读锁定进行锁定，则锁定会阻止分配作用域为存储帐户或 (blob 容器或队列) 的数据容器的 Azure RBAC 角色。
+> 如果存储帐户被 Azure 资源管理器只读锁锁定，那么该锁将阻止将范围限定为存储帐户或数据容器（blob 容器或队列）的 Azure RBAC 角色分配。
 
 ### <a name="container-scope"></a>容器范围
 

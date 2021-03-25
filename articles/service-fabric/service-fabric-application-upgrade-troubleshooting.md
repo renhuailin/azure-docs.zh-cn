@@ -4,10 +4,10 @@ description: 本文介绍一些围绕升级 Service Fabric 应用程序的常见
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009341"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
@@ -82,7 +82,7 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
 
-在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空  。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级   。
+在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级。
 
 ### <a name="investigate-health-check-failures"></a>调查运行状况检查失败
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590560"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557992"
 ---
 # <a name="security-alerts-schemas"></a>安全警报架构
 
@@ -24,7 +24,7 @@ ms.locfileid: "100590560"
 
 可以在 Azure 安全中心的“威胁防护”页中或通过以下外部工具查看这些安全警报：
 
-- [Azure Sentinel](../sentinel/index.yml) -Microsoft 的云本地 SIEM。 Sentinel 连接器从 Azure 安全中心获取警报，并将其发送到 Azure Sentinel 的 [Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md) 。
+- [Azure Sentinel](../sentinel/index.yml) - Microsoft 的云原生 SIEM。 Sentinel 连接器从 Azure 安全中心获取警报，并将它们发送到 Azure Sentinel 的 [Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 - 第三方 SIEM - 向 [Azure 事件中心](../event-hubs/index.yml)发送数据。 然后，将事件中心数据与第三方 SIEM 集成。 有关详细信息，请参阅[将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案](export-to-siem.md)。
 - [REST API](/rest/api/securitycenter/) - 如果你使用 REST API 访问警报，请参阅[在线警报 API 文档](/rest/api/securitycenter/alerts)。
 
@@ -57,11 +57,11 @@ ms.locfileid: "100590560"
 
 ### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel 和 Log Analytics 工作区](#tab/schema-sentinel)
 
-Sentinel 连接器从 Azure 安全中心获取警报，并将其发送到 Azure Sentinel 的 Log Analytics 工作区。 
+Sentinel 连接器从 Azure 安全中心获取警报，并将它们发送到 Azure Sentinel 的 Log Analytics 工作区。 
 
-若要使用安全中心警报创建 Sentinel 事例或事件，你将需要如下所示的警报的架构。 
+若要创建使用安全中心警报的 Sentinel 案例或事件，你需要以下所示警报的架构。 
 
-有关 Azure Sentinel 的详细信息，请参阅 [文档](../sentinel/index.yml)。
+有关 Azure Sentinel 的详细信息，请参阅[文档](../sentinel/index.yml)。
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -173,7 +173,7 @@ Azure 安全中心将 Azure 活动日志中生成的安全警报作为事件进�
 
 Microsoft Graph 是 Microsoft 365 中数据和智能的网关。 它提供了一个统一的可编程性模型，你可以使用该模型访问 Microsoft 365、Windows 10 和企业移动性 + 安全性中的大量数据。 使用 Microsoft Graph 中丰富的数据为与数百万用户交互的组织和使用者构建应用。
 
-[Microsoft Graph 文档](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)中提供了发送到 MS Graph 的安全警报的架构和 JSON 表示形式。
+[Microsoft Graph 文档](/graph/api/resources/alert)中提供了发送到 MS Graph 的安全警报的架构和 JSON 表示形式。
 
 ---
 
@@ -184,7 +184,7 @@ Microsoft Graph 是 Microsoft 365 中数据和智能的网关。 它提供了一
 
 有关从外部安全中心访问安全警报的方法的详细信息，请参阅以下页面：
 
-- [Azure Sentinel](../sentinel/index.yml) -Microsoft 的云-本机 SIEM
+- [Azure Sentinel](../sentinel/index.yml) - Microsoft 的云原生 SIEM
 - [Azure 事件中心](../event-hubs/index.yml) - Microsoft 的完全托管的实时数据引入服务
 - [连续导出安全中心数据](continuous-export.md)
 - [Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md) - Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区是一个包含数据和配置信息的容器

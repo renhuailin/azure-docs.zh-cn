@@ -3,15 +3,15 @@ title: 使用 PowerShell 生成连接字符串 - Azure Database for MariaDB
 description: 本文提供一个 Azure PowerShell 示例，用于生成连接到 Azure Database for MariaDB 所用的连接字符串。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: 79109a7f39debfa14c8a11d9014685382151ab3b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 9dee109c701d3760c93f39e639dcfd7cae07b595
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98663717"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>如何使用 PowerShell 生成 Azure Database for MariaDB 连接字符串

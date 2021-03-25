@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783872"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
@@ -57,7 +57,7 @@ ms.locfileid: "92783872"
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-尽管 Azure 存储支持在连接字符串中使用 HTTP 和 HTTPS，但我们 *强烈建议使用 HTTPS* 。
+尽管 Azure 存储支持在连接字符串中使用 HTTP 和 HTTPS，但我们 *强烈建议使用 HTTPS*。
 
 > [!TIP]
 > 可以在 [Azure 门户](https://portal.azure.com)中找到存储帐户的连接字符串。 在存储帐户的菜单边栏选项卡中导航到“设置” > “访问密钥”，即可看到主访问密钥和辅助访问密钥的连接字符串。 
@@ -110,7 +110,7 @@ AccountKey=<account-key>
 
 如果已将某个存储终结点映射到自定义域并在连接字符串中省略该终结点，则无法使用该连接字符串从代码访问该服务中的数据。
 
-有关为 Azure 存储配置自定义域的详细信息，请参阅将 [自定义域映射到 Azure Blob 存储终结点](../blobs/storage-custom-domain-name.md)。
+若要详细了解如何为 Azure 存储配置自定义域，请参阅[将自定义域映射到 Azure Blob 存储终结点](../blobs/storage-custom-domain-name.md)。
 
 > [!IMPORTANT]
 > 连接字符串中的服务终结点值必须是格式正确的 URI，包括 `https://`（推荐）或 `http://`。

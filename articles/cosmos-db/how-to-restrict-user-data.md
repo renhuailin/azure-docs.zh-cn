@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
 ms.openlocfilehash: 61e8ee2cbcd1252704b2d1e220fcfaaff17c2f28
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93085983"
 ---
-# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中限制用户对数据操作的访问权限
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中限制用户对数据操作的访问
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 在 Azure Cosmos DB 中，可通过两种方式来验证与数据库服务的交互：

@@ -4,10 +4,10 @@ description: 从开发的角度来了解作业和任务及其在 Azure Batch 工
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95808596"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch 中的作业和任务
@@ -18,17 +18,17 @@ ms.locfileid: "95808596"
 
 作业是任务的集合。 作业控制其任务对池中计算节点执行计算的方式。
 
-作业指定要在其上运行工作的[池](nodes-and-pools.md#pools)。 可以为每个作业创建新池，或将池用于多个作业。 可以为与 [作业计划](#scheduled-jobs)关联的每个作业创建一个池，也可以为与作业计划关联的所有作业创建一个池。
+作业指定要在其上运行工作的[池](nodes-and-pools.md#pools)。 可以为每个作业创建新池，或将池用于多个作业。 可以针对与[作业计划](#scheduled-jobs)关联的每个作业创建池，或者针对与作业计划关联的所有作业创建池。
 
 ### <a name="job-priority"></a>作业优先级
 
-可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定每个池) wtihin 的作业中所有任务的计划 (顺序。
+可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定每个池内的计划顺序（针对作业中的所有任务）。
 
-若要更新作业的优先级，请调用 [更新作业](/rest/api/batchservice/job/update) 操作的属性 (batch REST) ，或修改 [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) (batch .net) 。 优先级值范围为-1000 (最低优先级) 到 1000 (最高优先级) 。
+若要更新作业的优先级，请调用[更新作业的属性](/rest/api/batchservice/job/update)操作 (Batch REST) 或修改 [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .NET)。 优先级值范围为 -1000（最低优先级）到 1000（最高优先级）。
 
-在同一池中，高优先级作业的计划优先顺序高于低优先级作业。 已在运行的低优先级作业中的任务不会被较高优先级作业中的任务抢占。 具有相同优先级的作业有相同的计划机会，未定义任务执行的顺序。
+在同一个池内，高优先级作业的计划优先顺序高于低优先级作业。 运行中的低优先级作业中的任务不会被高优先级作业中的任务抢占。 相同优先级的作业有相同的计划机会，并且不会定义任务执行顺序。
 
-对于在一个池中运行的高优先级值的作业，不会影响在单独池中或不同批处理帐户中运行的作业的计划。 作业优先级不适用于在提交作业时创建的 [autopools](nodes-and-pools.md#autopools)。
+在一个池中运行的具有高优先级值的作业不会影响在不同的池中或不同 Batch 帐户中运行的作业的计划。 作业优先级不适用于在提交作业时创建的[自动池](nodes-and-pools.md#autopools)。
 
 ### <a name="job-constraints"></a>作业约束
 
@@ -41,9 +41,9 @@ ms.locfileid: "95808596"
 
 客户端应用程序可将任务添加到作业，用户也可以指定 [作业管理器任务](#job-manager-task)。 作业管理器任务包含必要的信息用于为池中某个计算节点上运行的包含作业管理器任务的作业创建所需的任务。 作业管理器任务专门由 Batch 来处理；创建作业和重新启动失败的作业后，会立即将任务排队。 [作业计划](#scheduled-jobs)创建的作业需要作业管理器任务，因为它是在实例化作业之前定义任务的唯一方式。
 
-默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 OnAllTasksComplete (属性设置为 Batch .NET [) 中的](/dotnet/api/microsoft.azure.batch.cloudjob)" **onAllTasksComplete** `terminatejob` " 设置为 "*"，以在其所有任务都处于 "已完成" 状态时自动终止作业。
+默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 onAllTasksComplete 属性（在 Batch .NET 中为 [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)）设置为 `terminatejob`*`，可在作业的所有任务处于已完成状态时自动终止该作业。
 
-Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果要在不使用作业管理器的情况下使用自动作业终止，则应该先将新作业的 **onAllTasksComplete** 属性设置为 `noaction` ，然后在 `terminatejob` 完成将任务添加到作业后，将其设置为 * '。
+Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应将新作业的 onAllTasksComplete 属性设置为 `noaction`，然后仅在完成将任务添加到作业的操作之后才将它设置为 `terminatejob`*`。
 
 ### <a name="scheduled-jobs"></a>计划的作业
 

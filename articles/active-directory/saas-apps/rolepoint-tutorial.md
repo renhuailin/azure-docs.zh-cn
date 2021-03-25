@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3225aa9eaff5c3cd0acca99261935feb9774810f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>教程：Azure Active Directory 与 RolePoint 的集成
@@ -52,7 +52,7 @@ ms.locfileid: "96010259"
 
     ![选择“Azure Active Directory”](common/select-azuread.png)
 
-2. 转到“企业应用程序” > “所有应用程序”：
+2. 转到“企业应用程序” > “所有应用程序”   ：
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 

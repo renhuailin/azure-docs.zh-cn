@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: ramamill
 ms.openlocfilehash: dba585fbadca479c146ad42ac1bc5aa9d5349f49
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93186699"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>在 VMware 部署规划器中查看成本估算 
@@ -31,15 +31,15 @@ ms.locfileid: "93186699"
  
 可以按月或按年查看成本。 详细了解[支持的目标区域](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)和[支持的货币](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)。
 
-**按组件成本** ：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Azure Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
+**按组件成本**：总 DR 成本分为四个部分：计算成本、存储成本、网络成本和 Azure Site Recovery 许可证成本。 成本计算基于在复制时和 DR 演练时上述四个部分（计算、存储（高级和标准）、在本地站点和 Azure 之间配置的 ExpressRoute/VPN，以及 Azure Site Recovery 许可证）所对应的使用量。
 
-**按状态成本** ：总灾难恢复 (DR) 成本按两种不同的状态（“复制”和“DR 演练”）分类。 
+**按状态成本**：总灾难恢复 (DR) 成本按两种不同的状态（“复制”和“DR 演练”）分类。 
 
-**复制成本** ：复制期间产生的成本， 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。 
+**复制成本**：复制期间产生的成本， 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。 
 
-**DR 演练成本** ：测试性故障转移期间产生的成本。 Azure Site Recovery 会在测试性故障转移期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。 
+**DR 演练成本**：测试性故障转移期间产生的成本。 Azure Site Recovery 会在测试性故障转移期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。 
 
-**每月/年的 Azure 存储成本** ：表示针对高级和标准存储进行复制和 DR 演练时产生的总存储成本。
+**每月/年的 Azure 存储成本**：表示针对高级和标准存储进行复制和 DR 演练时产生的总存储成本。
 
 ## <a name="detailed-cost-analysis"></a>详细成本分析
 计算、存储、网络等方面的 Azure 价格因 Azure 区域而异。 可以根据订阅、与订阅相关联的套餐、指定的目标 Azure 区域和指定的货币，使用最新的 Azure 价格生成成本估算报表。 默认情况下，此工具使用“美国西部 2”Azure 区域和美元 (USD) 货币。 如果使用了任何其他区域和货币，则下一次在不使用订阅 ID、套餐 ID、目标区域和货币的情况下生成报表时，该报表会使用上次使用的目标区域和上次使用的货币所对应的价格进行成本估算。
@@ -52,19 +52,19 @@ ms.locfileid: "93186699"
 ### <a name="overall-dr-cost-by-components"></a>按组件估算的总体 DR 成本
 第一部分显示按组件估算的总体 DR 成本和按状态估算的总体 DR 成本。 
 
-**计算** ：根据 DR 需要在 Azure 上运行的 IaaS VM 的成本。 其中包括由 Azure Site Recovery 在 DR 演练（测试性故障转移）期间创建的 VM，以及在 Azure 上运行的 VM，例如启用了 Always On 可用性组和域控制器/域名服务器的 SQL Server。
+**计算**：根据 DR 需要在 Azure 上运行的 IaaS VM 的成本。 其中包括由 Azure Site Recovery 在 DR 演练（测试性故障转移）期间创建的 VM，以及在 Azure 上运行的 VM，例如启用了 Always On 可用性组和域控制器/域名服务器的 SQL Server。
 
-**存储** ：符合 DR 需要的 Azure 存储使用成本。 其中包括用于复制和 DR 演练的存储。
+**存储**：符合 DR 需要的 Azure 存储使用成本。 其中包括用于复制和 DR 演练的存储。
 网络：符合 DR 需要的 ExpressRoute 和站点到站点 VPN 成本。 
 
-**ASR 许可证** ：针对所有兼容 VM 的 Azure Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Azure Site Recovery 许可证成本。
+**ASR 许可证**：针对所有兼容 VM 的 Azure Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Azure Site Recovery 许可证成本。
 
 ### <a name="overall-dr-cost-by-states"></a>按状态估算的总体 DR 成本
 总 DR 成本按两种不同的状态（“复制”和“DR 演练”）分类。
 
-**复制成本** ：在复制时产生的成本。 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。 
+**复制成本**：在复制时产生的成本。 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。 
 
-**DR 演练成本** ：在进行 DR 演练时产生的成本。 Azure Site Recovery 会在 DR 演练期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。
+**DR 演练成本**：在进行 DR 演练时产生的成本。 Azure Site Recovery 会在 DR 演练期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。
 一年的总 DR 演练持续时间 = DR 演练次数 x 每次 DR 演练的持续时间（天） 平均 DR 演练成本（每月）= 总 DR 演练成本/12
 
 ### <a name="storage-cost-table"></a>存储成本表：
@@ -73,11 +73,11 @@ ms.locfileid: "93186699"
 ### <a name="site-to-azure-network"></a>站点到 Azure 网络
 根据要求选择适当的设置。 
 
-**ExpressRoute** ：默认情况下，此工具选择最接近的 ExpressRoute 计划，只要该计划符合进行增量复制所需的网络带宽条件即可。 可以根据要求更改此计划。
+**ExpressRoute**：默认情况下，此工具选择最接近的 ExpressRoute 计划，只要该计划符合进行增量复制所需的网络带宽条件即可。 可以根据要求更改此计划。
 
-**VPN 网关** ：如果环境中有任意网关，请选择 VPN 网关。 默认为不可用。
+**VPN 网关**：如果环境中有任意网关，请选择 VPN 网关。 默认为不可用。
 
-**目标区域** ：为 DR 指定的 Azure 区域。 报表中使用的计算、存储、网络和许可证价格基于该区域的 Azure 定价。 
+**目标区域**：为 DR 指定的 Azure 区域。 报表中使用的计算、存储、网络和许可证价格基于该区域的 Azure 定价。 
 
 ### <a name="vm-running-on-azure"></a>在 Azure 上运行的 VM
 如果有任何域控制器或 DNS VM 或 SQL Server VM 的 Always On 可用性组运行在用于 DR 的 Azure 上，则可提供 VM 数目和大小，以便估算在总 DR 成本中，其计算成本为多少。 
@@ -90,7 +90,7 @@ ms.locfileid: "93186699"
 
 ### <a name="settings"></a>设置 
 
-**货币** ：生成报告时使用的货币。 成本持续时间：可以查看一个月或一整年的所有成本。 
+**货币**：生成报告时使用的货币。 成本持续时间：可以查看一个月或一整年的所有成本。 
 
 ## <a name="detailed-cost-analysis-table"></a>详细成本分析表
 ![详细成本分析](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) 此表列出了每个兼容 VM 的成本明细。 也可通过手动添加 VM 的方式，使用此表获取非分析 VM 的 Azure DR 估算成本。 在需要为新的灾难恢复部署估算 Azure 成本而又不做详细分析的情况下，这很有用。
@@ -112,35 +112,35 @@ ms.locfileid: "93186699"
 
 1. 单击“重新计算成本”即可更新成本。
 
-**VM 名称** ：VM 的名称。
+**VM 名称**：VM 的名称。
 
-**VM 数** ：与配置相符的 VM 数。 可以更新现有 VM 的数目，前提是不对类似的配置 VM 进行分析，而会对其进行保护。
+**VM 数**：与配置相符的 VM 数。 可以更新现有 VM 的数目，前提是不对类似的配置 VM 进行分析，而会对其进行保护。
 
-**IaaS 大小(建议)** ：此工具建议的兼容 VM 的 VM 角色大小。 
+**IaaS 大小(建议)**：此工具建议的兼容 VM 的 VM 角色大小。 
 
-**IaaS 大小(你的选择)** ：默认情况下与建议的 VM 角色大小相同。 可以根据需要更改角色。 计算成本取决于所选 VM 角色大小。
+**IaaS 大小(你的选择)**：默认情况下与建议的 VM 角色大小相同。 可以根据需要更改角色。 计算成本取决于所选 VM 角色大小。
 
-**存储类型** ：VM 使用的存储类型， 可以是标准存储或高级存储。
+**存储类型**：VM 使用的存储类型， 可以是标准存储或高级存储。
 
 **VM 总存储大小(GB)** ：源 VM 的总存储大小。
 
-**一年的 DR 演练次数** ：一年中进行 DR 演练的次数， 默认为一年 4 次。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。  
+**一年的 DR 演练次数**：一年中进行 DR 演练的次数， 默认为一年 4 次。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。  
 
-**每次 DR 演练的持续时间(天)** ：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
+**每次 DR 演练的持续时间(天)**：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
   
-**OS 类型** ：VM 的 OS 类型。 可以是 Windows 或 Linux。 如果 OS 类型为 Windows，则可将 Azure 混合使用权益应用到该 VM。 
+**OS 类型**：VM 的 OS 类型。 可以是 Windows 或 Linux。 如果 OS 类型为 Windows，则可将 Azure 混合使用权益应用到该 VM。 
 
-**数据冗余** ：可以是以下项之一 - 本地冗余存储 (LRS)、异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)。 默认值为 LRS。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM，只需更改顶部行的类型，然后单击“应用到所有项”按钮即可。  根据所选数据冗余的价格来计算复制的存储成本。 
+**数据冗余**：可以是以下项之一 - 本地冗余存储 (LRS)、异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)。 默认值为 LRS。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM，只需更改顶部行的类型，然后单击“应用到所有项”按钮即可。  根据所选数据冗余的价格来计算复制的存储成本。 
 
-**Azure 混合权益** ：可以在适用情况下将 Azure 混合权益应用到 Windows VM。  默认值为“是”。 可以更改特定 VM 的设置，也可以通过单击“应用到所有项”按钮更新所有 VM。
+**Azure 混合权益**：可以在适用情况下将 Azure 混合权益应用到 Windows VM。  默认值为“是”。 可以更改特定 VM 的设置，也可以通过单击“应用到所有项”按钮更新所有 VM。
 
-**总 Azure 使用量** ：包括用于 DR 的计算、存储和 Azure Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
+**总 Azure 使用量**：包括用于 DR 的计算、存储和 Azure Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
 
-**稳定状态复制成本** ：包括复制的存储成本。
+**稳定状态复制成本**：包括复制的存储成本。
 
-**总 DR 演练成本(平均)** ：包括 DR 演练的计算和存储成本。
+**总 DR 演练成本(平均)**：包括 DR 演练的计算和存储成本。
 
-**ASR 许可证成本** ：Azure Site Recovery 许可证成本。
+**ASR 许可证成本**：Azure Site Recovery 许可证成本。
 
 ## <a name="supported-target-regions"></a>支持的目标区域
 Azure Site Recovery 部署规划器为以下 Azure 区域提供成本估算。 如果你的区域没有列在下面，可以使用下面定价最接近你的区域的任何区域。

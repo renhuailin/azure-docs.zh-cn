@@ -8,10 +8,10 @@ ms.date: 10/16/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 93375f6047fbe4eda2132e024dab0e067e83ccf1
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998963"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用响应通过 Azure 事件网格收到的 Azure 服务总线事件

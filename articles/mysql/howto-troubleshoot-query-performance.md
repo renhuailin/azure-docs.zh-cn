@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: 81ec7e6f822f24f2b9e6ca4298e9668358c78149
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540750"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 分析 Azure Database for MySQL 中的查询性能
@@ -33,7 +33,7 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-如此示例中所示， *key* 的值为 NULL。 此输出表明，MySQL 找不到针对查询优化的任何索引，并且它执行全表扫描。 让我们通过添加一个基于 **ID** 列的索引来优化此查询。
+如此示例中所示，*key* 的值为 NULL。 此输出表明，MySQL 找不到针对查询优化的任何索引，并且它执行全表扫描。 让我们通过添加一个基于 **ID** 列的索引来优化此查询。
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
@@ -75,7 +75,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-如输出所示，MySQL 未使用任何索引，因为没有正确的索引可用。 它还显示了 *Using temporary; Using file sort* ，这意味着 MySQL 创建一个临时表来满足 **GROUP BY** 子句。
+如输出所示，MySQL 未使用任何索引，因为没有正确的索引可用。 它还显示了 *Using temporary; Using file sort*，这意味着 MySQL 创建一个临时表来满足 **GROUP BY** 子句。
  
 单独基于 **c2** 列创建索引没有任何区别，并且 MySQL 仍然需要创建一个临时表：
 
@@ -97,7 +97,7 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-在本例中，可以同时基于 **c1** 和 **c2** 创建一个 **涵盖索引** ，从而将 **c2** 的值直接添加到索引中以避免进一步的数据查找。
+在本例中，可以同时基于 **c1** 和 **c2** 创建一个 **涵盖索引**，从而将 **c2** 的值直接添加到索引中以避免进一步的数据查找。
 
 ```sql 
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);

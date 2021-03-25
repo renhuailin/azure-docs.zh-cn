@@ -9,10 +9,10 @@ ms.date: 02/08/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f3eb2d9469ab3a3d2c1d09e4adc3ee2cb1f86e6e
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979057"
 ---
 ## <a name="extract-the-zip-file"></a>解压缩 zip 文件
@@ -23,12 +23,12 @@ ms.locfileid: "99979057"
 * 泛型
 * OpenVPN（如果已在网关上启用 OpenVPN 和 Azure 证书或 RADIUS 身份验证设置） 。 选择对应于你的配置的相应项目以创建租户。
 
-  * [VPN 网关-创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。
-  * [虚拟 WAN-创建租户](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
+  * [VPN 网关 - 创建租户](../articles/vpn-gateway/openvpn-azure-ad-tenant.md)。
+  * [虚拟 WAN - 创建租户](../articles/virtual-wan/openvpn-azure-ad-tenant.md)。
 
 ## <a name="retrieve-information"></a>检索信息
 
-在 **azurevpn.bgpsettings.asn** 文件夹中，导航到 **_azurevpnconfig.xml_** 文件，然后用记事本打开该文件。 记下以下标记之间的文本。
+在 AzureVPN 文件夹中导航到 azurevpnconfig.xml 文件，然后用记事本打开它 。 记下以下标记之间的文本。
 
 ```
 <audience>          </audience>
@@ -42,10 +42,10 @@ ms.locfileid: "99979057"
 
 添加连接时，请使用在上一步中为配置文件详细信息页面收集的信息。 这些字段对应于以下信息：
 
-* **受众：** 标识用于标记的接收方资源。
-* **颁发者：** 标识发出令牌以及 Azure AD 租户 (STS) 的安全令牌服务。
-* **租户：** 包含已颁发令牌的目录租户的不可变、唯一标识符。
-* **FQDN：** Azure VPN 网关上 (FQDN) 的完全限定域名。
+* **受众：** 标识令牌所针对的接收方资源。
+* **颁发者：** 标识发出令牌的安全令牌服务 (STS) 以及 Azure AD 租户。
+* **租户：** 包含颁发令牌的目录租户的一个不变的唯一标识符。
+* **FQDN：** Azure VPN 网关上的完全限定的域名 (FQDN)。
 * **ServerSecret：** VPN 网关预共享密钥。
 
 ## <a name="folder-contents"></a>文件夹内容

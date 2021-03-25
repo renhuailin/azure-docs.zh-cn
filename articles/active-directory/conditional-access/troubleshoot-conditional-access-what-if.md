@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0112ab53c501d639d3f8e0d09d82ef3a12cb93a8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94837240"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具对条件访问进行故障排除
@@ -78,4 +78,4 @@ What If 工具只需要一名用户即可开始使用。
 * [什么是条件访问？](overview.md)
 * [Azure Active Directory 标识保护是什么？](../identity-protection/overview-identity-protection.md)
 * [什么是设备标识？](../devices/overview.md)
-* [工作原理： Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)
+* [工作原理：Azure AD 多重身份验证](../authentication/concept-mfa-howitworks.md)

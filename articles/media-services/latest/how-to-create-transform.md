@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例-创建转换
+title: Azure CLI 脚本示例 - 创建转换
 description: 转换描述了处理视频或音频文件的任务的简单工作流（通常称为“工作程序”）。 本文中的 Azure CLI 脚本演示如何创建转换。
 services: media-services
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101718907"
 ---
 # <a name="create-a-transform"></a>创建转换

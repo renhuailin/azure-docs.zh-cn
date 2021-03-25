@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002742"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure 认知搜索中的全文搜索
@@ -315,7 +315,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ## <a name="stage-4-scoring"></a>阶段 4：计分  
 
-将为搜索结果集中的每个文档分配一个相关性评分。 相关性评分的作用是提高能够为搜索查询所表示的用户问题提供最佳答案的文档的排名。 评分是根据匹配的字词的统计属性计算的。 评分公式的核心是 [TF/IDF (术语频率-) 反转文档频率 ](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)。 在包含不常见和常见字词的查询中，TF/IDF 会提升包含不常见字词的结果。 例如，在包含所有 Wikipedia 文章的假想索引中，对于匹配查询 *the president* 的文档，匹配 *president* 的文档的相关性被视为高于匹配 *the* 的文档。
+将为搜索结果集中的每个文档分配一个相关性评分。 相关性评分的作用是提高能够为搜索查询所表示的用户问题提供最佳答案的文档的排名。 评分是根据匹配的字词的统计属性计算的。 评分公式的核心是 [TF/IDF（字词频率-逆向文档频率）](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)。 在包含不常见和常见字词的查询中，TF/IDF 会提升包含不常见字词的结果。 例如，在包含所有 Wikipedia 文章的假想索引中，对于匹配查询 *the president* 的文档，匹配 *president* 的文档的相关性被视为高于匹配 *the* 的文档。
 
 
 ### <a name="scoring-example"></a>评分示例

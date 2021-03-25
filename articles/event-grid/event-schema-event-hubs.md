@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格中的事件中心事件提供的属性
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: e9bb4b5a27173181c7295e96a1eb0654a1a929e6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363503"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>充当事件网格源的 Azure 事件中心
@@ -115,7 +115,7 @@ ms.locfileid: "100363503"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `fileUrl` | string | 捕获文件的路径。 |
 | `fileType` | string | 捕获文件的文件类型。 |

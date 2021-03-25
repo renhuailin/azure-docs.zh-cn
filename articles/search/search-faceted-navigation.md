@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002786"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
@@ -26,7 +26,7 @@ ms.locfileid: "89002786"
 
 搜索技术不同，分面导航的实现也不同。 在 Azure 认知搜索中，分面导航在查询时生成，使用之前在架构中特性化的字段。
 
--   在应用程序生成的查询中，查询必须发送*分面查询参数*，才能获取该记录结果集的可用分面筛选值。
+-   在应用程序生成的查询中，查询必须发送 *分面查询参数*，才能获取该记录结果集的可用分面筛选值。
 
 -   若要实际剪裁记录结果集，应用程序还必须应用 `$filter` 表达式。
 
@@ -283,7 +283,7 @@ if (businessTitleFacet != "")
 
 **使用更多筛选器修剪分面结果**
 
-分面结果是在匹配分面词语的搜索结果中找到的记录。 在以下示例中，在*云计算*的搜索结果中，254 个项还具有*内部规范*作为内容类型。 项不一定互相排斥。 如果某个项满足这两个筛选条件，它将分别计入每一个。 针对通常用于实现记录标记的 `Collection(Edm.String)` 字段进行分面时，可能会出现这种重复。
+分面结果是在匹配分面词语的搜索结果中找到的记录。 在以下示例中，在 *云计算* 的搜索结果中，254 个项还具有 *内部规范* 作为内容类型。 项不一定互相排斥。 如果某个项满足这两个筛选条件，它将分别计入每一个。 针对通常用于实现记录标记的 `Collection(Edm.String)` 字段进行分面时，可能会出现这种重复。
 
 ```output
 Search term: "cloud computing"

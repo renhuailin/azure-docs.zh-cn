@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: 586dad7439cc57ed2c863ee5f6692e12f7a78c50
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781220"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
@@ -37,7 +37,7 @@ ms.locfileid: "92781220"
 1. 按照文章部分 [下载并运行示例应用](elastic-scale-get-started.md#download-and-run-the-sample-app-1)中的步骤，生成并运行 **弹性数据库工具入门** 示例应用程序。 完成所有步骤后，会看到以下命令提示符：
 
     ![命令提示符][1]
-2. 在命令窗口中键入“1”，并按 **Enter** 。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按 **Enter** ；重复该操作四次。 这会在分片中插入示例数据行。
+2. 在命令窗口中键入“1”，并按 **Enter**。 这会创建分片映射管理器，并将两个分片添加到服务器。 然后键入“3”并按 **Enter**；重复该操作四次。 这会在分片中插入示例数据行。
 3. [Azure 门户](https://portal.azure.com)应显示服务器中的 3 个新数据库：
 
    ![Visual Studio 确认][2]

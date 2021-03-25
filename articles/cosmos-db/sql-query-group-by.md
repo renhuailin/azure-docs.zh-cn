@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
 ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545411"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
@@ -41,7 +41,7 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
 
 ## <a name="remarks"></a>备注
   
-  当查询使用 GROUP BY 子句时，SELECT 子句只能包含包括在 GROUP BY 子句中的属性和系统函数的一部分。 [聚合函数](sql-query-aggregate-functions.md)是一个例外，它可以出现在 SELECT 子句中，而不包括在 group by 子句中。 也可始终在 SELECT 子句中包含文本值。
+  当查询使用 GROUP BY 子句时，SELECT 子句只能包含包括在 GROUP BY 子句中的属性和系统函数的一部分。 一个例外是[聚合函数](sql-query-aggregate-functions.md)，此类函数可以出现在 SELECT 子句中，但不需包含在 GROUP BY 子句中。 也可始终在 SELECT 子句中包含文本值。
 
   GROUP BY 子句必须位于 SELECT、FROM 和 WHERE 子句后面，OFFSET LIMIT 子句前面。 目前不能将 GROUP BY 和 ORDER BY 子句配合使用，但这已在计划内。
 

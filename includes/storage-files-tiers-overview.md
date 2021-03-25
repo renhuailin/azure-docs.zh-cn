@@ -9,10 +9,10 @@ ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98633371"
 ---
 Azure 文件存储提供了四种不同的存储层（高级、事务优化、热和冷存储层），因此你能够根据方案的性能和价格要求定制共享：

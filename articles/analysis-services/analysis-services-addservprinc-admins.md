@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93100722"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
@@ -40,7 +40,7 @@ ms.locfileid: "93100722"
 
 4. 验证服务主体帐户 ID，然后单击“确定”。
     
-    ![屏幕截图，显示服务主体帐户 ID 并突出显示 "确定" 按钮。](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![此屏幕截图显示了服务主体帐户 ID 并突出显示了“确定”按钮。](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>使用资源管理器模板
 

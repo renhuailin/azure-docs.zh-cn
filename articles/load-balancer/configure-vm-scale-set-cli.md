@@ -1,16 +1,16 @@
 ---
 title: 配置包含现有 Azure 负载均衡器的虚拟机规模集 - Azure CLI
-description: 了解如何使用 Azure CLI 通过现有的 Azure 负载均衡器来配置虚拟机规模集。
+description: 了解如何使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集。
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/25/2020
 ms.openlocfilehash: a60a6889217ce6ca8dccd5ebf5ee74b8f67a7757
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94518203"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集
@@ -21,17 +21,17 @@ ms.locfileid: "94518203"
 
 ## <a name="prerequisites"></a>必备条件 
 
-- 需要在要部署虚拟机规模集的订阅中使用现有的标准 sku 负载均衡器。
+- 在将要部署虚拟机规模集的订阅中，需要现有的标准 SKU 负载均衡器。
 
-- 需要为虚拟机规模集使用 Azure 虚拟网络。
+- 需要一个用于虚拟机规模集的 Azure 虚拟网络。
  
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 本文要求 Azure CLI 版本2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 Azure CLI 2.0.28 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>使用现有的负载均衡器部署虚拟机规模集
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>部署包含现有负载均衡器的虚拟机规模集
 
-将括号中的值替换为配置中资源的名称。
+请将括号中的值替换为配置中的资源名称。
 
 ```azurecli-interactive
 az vmss create \
@@ -48,14 +48,14 @@ az vmss create \
     --backend-pool-name <backend-pool-name>
 ```
 
-下面的示例使用部署虚拟机规模集：
+以下示例部署一个虚拟机规模集：
 
-- 名为 **myVMSS** 的虚拟机规模集
-- 名为 **myLoadBalancer** 的 Azure 负载均衡器
-- 名为 **myBackendPool** 的负载均衡器后端池
-- 名为 **myVnet** 的 Azure 虚拟网络
-- 名为 **mySubnet** 的子网
-- 名为 **myResourceGroup** 的资源组
+- 该虚拟机规模集名为 myVMSS
+- 其中包含名为 myLoadBalancer 的 Azure 负载均衡器
+- 其中包含名为 myBackendPool 的负载均衡器后端池
+- 其中包含名为 myVnet 的 Azure 虚拟网络
+- 其中包含名为 mySubnet 的子网
+- 其中包含名为 myResourceGroup 的资源组
 - 虚拟机规模集的 Ubuntu 服务器映像
 
 ```azurecli-interactive

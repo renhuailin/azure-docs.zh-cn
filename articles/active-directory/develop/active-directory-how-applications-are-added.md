@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861113"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
@@ -118,7 +118,7 @@ Azure AD 中的应用程序有两种表示形式：
 * 基于角色的访问控制 - 使用目录定义应用程序角色，以便在应用程序中执行基于角色的授权检查
 * OAuth 授权服务 - 供 Microsoft 365 和其他 Microsoft 应用程序用来授予对 API/资源的访问权限
 * 应用程序发布和代理 - 将应用程序从专用网络发布到 Internet
-* 目录架构扩展属性- [扩展服务主体和用户对象的架构](active-directory-schema-extensions.md) ，以存储其他数据 Azure AD 
+* 目录架构扩展属性 - [扩展服务主体和用户对象的架构](active-directory-schema-extensions.md)以在 Azure AD 中存储其他数据 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>谁有权向我的 Azure AD 实例添加应用程序？
 

@@ -4,10 +4,10 @@ description: 使用 Azure 备份服务器 (MABS) 还原 VMware vCenter/ESXi 服�
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263514"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
@@ -36,7 +36,7 @@ ms.locfileid: "88263514"
 
 5. 选择“下一步”，转到“指定恢复选项”屏幕 。
 
-6. 在“指定恢复选项”屏幕上，若要启用网络带宽限制，请选择“修改” 。 若要禁用网络限制，请选择“下一步”。 对于 VMware VM，此向导屏幕上没有其他可用选项。 如果选择修改网络带宽限制，请在“限制”对话框中，选择“启用网络带宽用量限制”，以启用此功能。  启用后，配置“设置”和“工作计划”。  
+6. 在“指定恢复选项”屏幕上，若要启用网络带宽限制，请选择“修改” 。 若要禁用网络限制，请选择“下一步”。 在此向导屏幕上，无其他选项可用于 VMware VM。 如果选择修改网络带宽限制，请在“限制”对话框中，选择“启用网络带宽使用限制”来打开。 启用后，配置“设置”和“工作计划”。  
 
 7. 在“选择恢复类型”屏幕上，选择是要恢复到原始实例还是新位置。 然后，选择“下一步”。
 

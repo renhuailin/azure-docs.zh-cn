@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94686253"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>群集操作员和开发人员的最佳做法，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
@@ -30,7 +30,7 @@ ms.locfileid: "94686253"
 * [有关高级计划程序功能的最佳做法](operator-best-practices-advanced-scheduler.md)
     * 包括使用排斥 (taint) 和容许 (toleration)、节点选择器和关联，以及 pod 间关联与反关联。
 * [身份验证和授权的最佳做法](operator-best-practices-identity.md)
-    * 包括与 Azure Active Directory 的集成，使用基于角色的 Kubernetes 访问控制 (Kubernetes RBAC) ，使用 Azure RBAC 和 pod 标识。
+    * 包括与 Azure Active Directory 集成、使用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)、使用 Azure RBAC，以及 Pod 标识。
 
 **安全性**
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678343"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 C# Service Fabric 应用程序
@@ -49,7 +49,7 @@ sudo code . --user-data-dir='.'
 ![工作区中的计数器服务应用程序](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-application-in-workspace.png)
 
 ## <a name="build-the-application"></a>构建应用程序
-1. 在 VS Code 中，按 (Ctrl + Shift + p) 打开 **命令面板** 。
+1. 在 VS Code 中，按 (Ctrl + Shift + p) 打开 **命令面板**。
 2. 搜索并选择“Service Fabric:  生成应用程序”命令。 生成输出将发送到集成式终端。
 
    ![VS Code 中的“生成应用程序”命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-build-application.png)
@@ -91,7 +91,7 @@ sudo code . --user-data-dir='.'
 
 2. 在调试配置菜单中选择“.NET Core 附加”。 
 
-   ![显示在 "调试配置" 菜单中选择 ".NET Core 附加" 的屏幕截图。](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![屏幕截图显示“调试配置”菜单中处于选定状态的“.NET Core 附加”。](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
 3. 在浏览器中打开 Service Fabric Explorer：http:\//localhost:19080/Explorer。 单击“应用程序”并向下钻取，以确定运行 CounterService 的主节点。  在下图中，CounterService 的主节点是“节点 0”。
 

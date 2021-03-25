@@ -10,15 +10,15 @@ ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954318"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
-本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限  。 权限可根据功能限制对服务实例的访问。
+本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限。 权限可根据功能限制对服务实例的访问。
 
 本文介绍：
 
@@ -31,16 +31,16 @@ ms.locfileid: "94954318"
 
 ## <a name="access-control-and-permissions"></a>访问控制和权限
 
-可以通过以下方式授予[权限](#device-provisioning-service-permissions)：
+可以通过以下方式授予 [权限](#device-provisioning-service-permissions) ：
 
-* 共享访问授权策略  。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
+* 共享访问授权策略。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
 
-* provisioningserviceowner：包含所有权限的策略  。
+* provisioningserviceowner：包含所有权限的策略。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，授予对终结点的访问权限。 安全凭据（例如对称密钥）永远不会通过网络发送。
 
@@ -49,7 +49,7 @@ Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，�
 
 有关如何构造和使用安全令牌的详细信息，请参阅下一部分。
 
-HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证  。
+HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证。
 
 #### <a name="example"></a>示例
 ```csharp
@@ -68,7 +68,7 @@ SharedAccessSignature sr =
 
 可使用安全令牌向服务授予限时访问 IoT 设备预配服务中特定功能的权限。 要获取连接到预配服务的权限，服务必须发送使用共享访问或对称密钥进行签名的安全令牌。
 
-使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 
+使用共享访问密钥进行签名的令牌可授权访问与共享访问策略权限相关的所有功能。 
 
 安全令牌采用以下格式：
 
@@ -78,12 +78,12 @@ SharedAccessSignature sr =
 
 | 值 | 说明 |
 | --- | --- |
-| {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
+| {signature} |HMAC-SHA256 签名字符串的格式为： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
-| {URL-encoded-resourceURI} | 小写资源 URI 的小写 URL 编码。 此令牌可访问的终结点的 URI 前缀（按分段），以 IoT 设备预配服务的主机名开头（无协议）。 例如，`mydps.azure-devices-provisioning.net` 。 |
+| {URL-encoded-resourceURI} | 小写资源 URI 的小写 URL 编码。 此令牌可访问的终结点的 URI 前缀（按分段），以 IoT 设备预配服务的主机名开头（无协议）。 例如，`mydps.azure-devices-provisioning.net`。 |
 | {policyName} |此令牌所引用的共享访问策略名称。 |
 
-**有关前缀的说明**：URI 前缀是根据分段而不是字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
+**有关前缀的说明**：URI 前缀是按分段而不是按字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
 
 以下 Node.js 代码片段显示名为 **generateSasToken** 的函数，该函数通过输入 `resourceUri, signingKey, policyName, expiresInMins` 计算令牌。 以下各节将详细讲解如何初始化不同令牌用例的不同输入。
 
@@ -149,11 +149,11 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 | `{your-service}.azure-devices-provisioning.net/registrations/{id}` |提供用于检索和管理设备注册状态的操作。 |
 
 
-例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌  ：
+例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌：
 
-* 资源 URI：`{mydps}.azure-devices-provisioning.net`，
-* 签名密钥：`enrollmentread` 策略的密钥之一，
-* 策略名称：`enrollmentread`，
+* 资源 URI： `{mydps}.azure-devices-provisioning.net`，
+* 签名密钥： `enrollmentread` 策略的密钥之一，
+* 策略名称： `enrollmentread`，
 * 任何过期 time.backn
 
 ![在门户中为设备预配服务实例创建共享访问策略][img-add-shared-access-policy]
@@ -178,13 +178,13 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 下表列出了可用于控制对 IoT 设备预配服务的访问的权限。
 
-| 权限 | 说明 |
+| 权限 | 注释 |
 | --- | --- |
-| ServiceConfig  |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentRead  |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentWrite  |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusRead  |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusWrite   |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
+| **ServiceConfig** |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentWrite |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusRead |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusWrite  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
 
 <!-- links and images -->
 

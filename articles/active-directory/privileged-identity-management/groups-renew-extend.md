@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87505986"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中延期或续订特权访问组分配（预览版）
@@ -68,7 +68,7 @@ Privileged Identity Management 会向管理员以及过期的特权访问组分�
 
 当用户或组提交延期组分配的请求时，管理员会收到一封电子邮件通知，其中包含原始分配的详细信息，以及请求的原因。 此通知还包含一个直接链接，让管理员批准或拒绝该请求。
 
-除了使用电子邮件中的链接以外，管理员还可以通过转到 Privileged Identity Management 管理门户，并从左窗格中选择“审批请求”来批准或拒绝请求。****
+除了使用电子邮件中的链接以外，管理员还可以通过转到 Privileged Identity Management 管理门户，并从左窗格中选择“审批请求”来批准或拒绝请求。
 
 ![“特权访问组分配 - 审批请求”页列出了请求和“批准”或“拒绝”链接](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
@@ -76,13 +76,13 @@ Privileged Identity Management 会向管理员以及过期的特权访问组分�
 
 ![使用请求者原因、分配类型、开始时间、结束时间和原因审批组分配请求](media/groups-renew-extend/group-assignment-extend-admin-approve-reason.png)
 
-批准延期组分配的请求时，资源管理员可以选择新的开始日期、结束日期和分配类型。 如果管理员希望提供受限的访问权限来完成特定的任务（例如，一天的访问权限），则可能需要更改分配类型。 在此示例中，管理员可将分配从“符合条件”更改为“活动”。******** 这意味着，他们可为请求者提供访问权限，而无需让请求者激活。
+批准延期组分配的请求时，资源管理员可以选择新的开始日期、结束日期和分配类型。 如果管理员希望提供受限的访问权限来完成特定的任务（例如，一天的访问权限），则可能需要更改分配类型。 在此示例中，管理员可将分配从“符合条件”更改为“活动”。 这意味着，他们可为请求者提供访问权限，而无需让请求者激活。
 
 ### <a name="admin-initiated-extension"></a>管理员发起的延期
 
 如果分配到某个组的用户未请求组分配延期，管理员可以代表该用户延期分配。 组分配的管理延期不需要审批，但在完成分配延期后，系统会向其他所有管理员发送通知。
 
-若要延期组分配，请浏览 Privileged Identity Management 中的分配视图。 找到需要延期的分配。 在操作列中选择“延期”。****
+若要延期组分配，请浏览 Privileged Identity Management 中的分配视图。 找到需要延期的分配。 在操作列中选择“延期”。
 
 ![“分配”页列出了带有“延期”链接的符合条件的组分配](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
@@ -106,9 +106,9 @@ Privileged Identity Management 会向管理员以及过期的特权访问组分�
 
 ### <a name="admin-approves"></a>管理员审批
 
-资源管理员可以通过电子邮件通知中的链接，或者在 Azure 门户中访问 Privileged Identity Management 并从左窗格中选择“审批请求”，来访问续订请求。****
+资源管理员可以通过电子邮件通知中的链接，或者在 Azure 门户中访问 Privileged Identity Management 并从左窗格中选择“审批请求”，来访问续订请求。
 
-当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的业务理由。********
+当管理员选择“批准”或“拒绝”时，将显示请求的详细信息，同时会显示一个字段，让管理员提供审核日志的业务理由。
 
 批准续订组分配的请求时，资源管理员必须输入新的开始日期、结束日期和分配类型。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841982"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
@@ -31,7 +31,7 @@ ms.locfileid: "94841982"
 - 将安全重心从以网络为中心的方案转换为以标识为中心的外围安全方案
 - 实施一般的 PaaS 安全最佳实践建议
 
-[开发适用](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/) 于云的应用程序时，在软件开发生命周期的每个阶段应考虑的安全问题和控制措施是一般的指导。
+[在 Azure 上开发安全应用程序](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)是一个常规指南，其针对的安全问题和控制是你在开发适用于云的应用程序时应该在软件开发生命周期的每个阶段考虑的。
 
 ## <a name="cloud-security-advantages"></a>云的安全优势
 请务必了解你与 Microsoft 之间的[责任分工](shared-responsibility.md)。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
@@ -80,21 +80,21 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 **详细信息**：唯一比丢失密钥和凭据更遭糕的事情是让未经授权的一方获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共代码存储库。
 
 **最佳做法**：通过使用可以直接远程管理这些 VM 的管理接口来保护混合 PaaS 和 IaaS 服务上的 VM 管理接口。   
-**详细信息**：可以使用远程管理协议，如 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、 [RDP](https://support.microsoft.com/kb/186607)和 [PowerShell 远程处理](/powershell/module/microsoft.powershell.core/enable-psremoting) 。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
+详细信息：可以使用 [SSH](https://en.wikipedia.org/wiki/Secure_Shell)、[RDP](https://support.microsoft.com/kb/186607) 和 [PowerShell 远程处理](/powershell/module/microsoft.powershell.core/enable-psremoting)等远程管理协议。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。
 
-如果可以，请使用替代方法，例如在 Azure 虚拟网络中使用虚拟专用网络。 如果其他方法不可用，请确保使用复杂的密码和双因素身份验证 (例如 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)) 。
+如果可以，请使用替代方法，例如在 Azure 虚拟网络中使用虚拟专用网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并使用双重身份验证（例如 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)）。
 
 **最佳做法**：使用强身份验证和授权平台。   
 **详细信息**：在 Azure AD 而不是自定义用户存储中使用联合标识。 使用联合标识时，可以利用基于平台的方法，将已获授权的标识的管理权限委托给合作伙伴。 如果员工离职后，需要通过多个标识和授权系统反映该信息，则联合标识方法就特别重要。
 
 使用平台提供的身份验证和授权机制，而不要使用自定义代码。 原因是开发自定义身份验证代码可能很容易出错。 大部分开发人员都不是安全专家，不太可能会注意到身份验证和授权的细微之处与最新开发情况。 商业代码（例如 Microsoft 编写的代码）通常会接受广泛的安全性评审。
 
-使用双重身份验证。 双重身份验证是最新的身份验证和授权标准，它避免了用户名与密码类型的身份验证所固有的安全漏洞。 应将对 Azure 管理 (门户/远程 PowerShell) 接口和面向客户的服务的访问权限设计并配置为使用 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)。
+使用双重身份验证。 双重身份验证是最新的身份验证和授权标准，它避免了用户名与密码类型的身份验证所固有的安全漏洞。 需要访问 Azure 管理界面（门户/远程 PowerShell）和面向客户的服务的应用程序应设计并配置为使用 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 使用 OAuth2 和 Kerberos 等标准身份验证协议。 这些协议经过广泛的同行评审，有时可实现为平台库的一部分用于身份验证和授权。
 
 ## <a name="use-threat-modeling-during-application-design"></a>在应用程序设计期间使用威胁建模
-Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定团队应在设计阶段参与名为威胁建模的过程。 为了帮助简化此过程，Microsoft 已创建 [SDL 威胁建模工具](../develop/threat-modeling-tool.md)。 对应用程序设计进行建模，并在所有信任边界中枚举 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁可能会及早捕获设计错误。
+Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定团队应在设计阶段参与名为威胁建模的过程。 为了帮助简化此过程，Microsoft 已创建 [SDL 威胁建模工具](../develop/threat-modeling-tool.md)。 对应用程序设计进行建模以及跨所有信任边界枚举 [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 威胁可以在早期捕获设计错误。
 
 下表列出了 STRIDE 威胁，并提供了一些使用 Azure 功能的示例缓解措施。 这些缓解措施并非在每种情况下都起作用。
 
@@ -116,7 +116,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 **详细信息**：应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。
 
 **最佳做法**：根据“需要知道”和“最低权限”安全原则限制访问。   
-**详细信息**：对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可以使用 Azure RBAC 向特定范围内的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](../../role-based-access-control/overview.md)。
+**详细信息**：对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可以使用 Azure RBAC 向用户、组和应用程序分配对特定作用域的权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](../../role-based-access-control/overview.md)。
 
 **最佳做法**：保护密钥。   
 **详细信息**：Azure Key Vault 可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](../../key-vault/general/overview.md) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
