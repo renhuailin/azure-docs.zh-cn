@@ -8,10 +8,10 @@ ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672485"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD) 授予对 blob 的访问权限
@@ -185,49 +185,49 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ## <a name="authorize-without-a-secret-store"></a>不使用机密存储授权
 
-此 `azcopy login` 命令检索 OAuth 令牌，然后将该令牌放入系统中的密钥存储。 如果操作系统没有密钥存储（如 Linux *keyring*），则该 `azcopy login` 命令将不起作用，因为存在用于放置令牌的位置。 
+`azcopy login` 命令检索 OAuth 令牌，然后将该令牌放入系统上的机密存储。 如果操作系统没有机密存储（如 Linux keyring），则 `azcopy login` 命令将不起作用，因为没有地方可以放置令牌。 
 
-可以不使用 `azcopy login` 命令设置内存环境变量。 然后运行 AzCopy 命令。 AzCopy 将检索完成此操作所需的身份验证令牌。 操作完成后，标记将从内存中消失。 
+可以设置内存中环境变量来代替使用 `azcopy login` 命令。 然后运行任何 AzCopy 命令。 AzCopy 将检索完成操作所需的 Auth 令牌。 操作完成后，令牌将从内存中消失。 
 
 ### <a name="authorize-a-user-identity"></a>授权用户标识
 
-验证用户标识是否已获得所需的授权级别后，键入以下命令，然后按 ENTER 键。
+验证你的用户标识已获得所需的授权级别后，键入以下命令并按 Enter。
 
 ```bash
 export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
 ```
 
-然后，运行任意 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
 此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。
 
 ![创建容器](media/storage-use-azcopy-v10/azcopy-login.png)
 
-此时会出现登录窗口。 在该窗口中，使用 Azure 帐户凭据登录到 Azure 帐户。 成功登录后，可以完成此操作。
+此时会出现登录窗口。 在该窗口中，使用 Azure 帐户凭据登录到 Azure 帐户。 成功登录后，操作即可完成。
 
 ### <a name="authorize-by-using-a-system-wide-managed-identity"></a>通过使用系统范围的托管标识来授权
 
 首先，确保已在 VM 上启用系统范围的托管标识。 请参阅[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-键入以下命令，然后按 ENTER 键。
+键入以下命令，然后按 Enter。
 
 ```bash
 export AZCOPY_AUTO_LOGIN_TYPE=MSI
 ```
 
-然后，运行任意 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
 ### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>通过使用用户分配的托管标识来授权
 
 首先，确保已在 VM 上启用用户分配的托管标识。 请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。
 
-键入以下命令，然后按 ENTER 键。
+键入以下命令，然后按 Enter。
 
 ```bash
 export AZCOPY_AUTO_LOGIN_TYPE=MSI
 ```
 
-然后，键入以下任意命令，然后按 ENTER 键。
+然后，键入以下任何命令并按 Enter。
 
 ```bash
 export AZCOPY_MSI_CLIENT_ID=<client-id>
@@ -247,7 +247,7 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 
 请将 `<resource-id>` 占位符替换为用户分配的托管标识的资源 ID。
 
-设置这些变量后，可以运行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+设置这些变量后，可以运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
 ### <a name="authorize-a-service-principal"></a>授权服务主体
 
@@ -255,7 +255,7 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 
 #### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>通过使用客户端密码来授权服务主体
 
-键入以下命令，然后按 ENTER 键。
+键入以下命令，然后按 Enter。
 
 ```bash
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
@@ -263,12 +263,12 @@ export AZCOPY_SPA_APPLICATION_ID=<application-id>
 export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 ```
 
-请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 将 `<client-secret>` 占位符替换为客户端密码。
+请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 将 `<client-secret>` 占位符替换为客户端机密。
 
 > [!NOTE]
-> 请考虑使用提示符来收集用户的密码。 这样，你的密码就不会出现在你的命令历史记录中。 
+> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。 
 
-然后，运行任意 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
 #### <a name="authorize-a-service-principal-by-using-a-certificate"></a>通过使用证书来授权服务主体
 
@@ -276,7 +276,7 @@ export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 
 除了将证书上传到应用注册以外，还需要在运行 AzCopy 的计算机或 VM 中保存该证书的副本。 此证书副本应采用 .PFX 或 .PEM 格式，且必须包含私钥。 该私钥应通过密码予以保护。 
 
-键入以下命令，然后按 ENTER 键。
+键入以下命令，然后按 Enter。
 
 ```bash
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
@@ -287,9 +287,9 @@ export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
 请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 将 `<certificate-password>` 占位符替换为证书的密码。
 
 > [!NOTE]
-> 请考虑使用提示符来收集用户的密码。 这样，你的密码就不会出现在你的命令历史记录中。 
+> 考虑使用提示从用户处收集密码。 这样，密码就不会显示在命令历史记录中。 
 
-然后，运行任意 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
+然后，运行任何 azcopy 命令（例如 `azcopy list https://contoso.blob.core.windows.net`）。
 
 ## <a name="next-steps"></a>后续步骤
 

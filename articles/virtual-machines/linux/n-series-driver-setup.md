@@ -1,19 +1,21 @@
 ---
 title: 适用于 Linux 的 Azure N 系列 GPU 驱动程序安装
 description: 如何为 Azure 中运行 Linux 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
-services: virtual-machines-linux
+services: virtual-machines
 author: vikancha-MSFT
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subervice: vm-sizes-gpu
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 11/11/2019
 ms.author: vikancha
-ms.openlocfilehash: 553a0fb1f7eb578bcd5c89c1aec45c38a1d2305e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: c4c6bee6d3f9e423d83458ad48d213fe65223514
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672538"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102551754"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -29,7 +31,6 @@ ms.locfileid: "101672538"
 
 从 NVIDIA CUDA 工具包在 N 系列 VM 上安装 CUDA 驱动程序的步骤如下。 
 
-
 C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速应用程序。 有关详细信息，请参阅 [CUDA 安装指南](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)。
 
 要安装 CUDA 驱动程序，请建立到每个 VM 的 SSH 连接。 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
@@ -41,29 +42,31 @@ lspci | grep -i NVIDIA
 
 ![lspci 命令输出](./media/n-series-driver-setup/lspci.png)
 
+lspci 列出了 VM 上的 PCIe 设备，包括 InfiniBand NIC 和 GPU（如果有）。 如果 lspci 没有成功返回，你可能需要在 CentOS/RHEL 上安装 LIS（说明如下）。
 然后，运行特定于分发的安装命令。
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. 从 NVIDIA 网站下载并安装 CUDA 驱动程序。 例如，对于 Ubuntu 16.04 LTS：
+1. 从 NVIDIA 网站下载并安装 CUDA 驱动程序。 
+    > [!NOTE]
+   >  以下示例显示了 Ubuntu 16.04 的 CUDA 包路径。 替换特定于你计划使用的版本的路径。 
+   >  
+   >  请访问 [Nvidia 下载中心] (https://developer.download.nvidia.com/compute/cuda/repos/) )，以获取特定于每个版本的完整路径。 
+   > 
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
-
    wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
-
    sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub 
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo apt-get update
-
    sudo apt-get install cuda-drivers
-
    ```
 
    安装可能需要几分钟。
+ 
 
 2. 若要安装完整的 CUDA 工具包，请键入：
 
@@ -79,11 +82,8 @@ lspci | grep -i NVIDIA
 
 ```bash
 sudo apt-get update
-
 sudo apt-get upgrade -y
-
 sudo apt-get dist-upgrade -y
-
 sudo apt-get install cuda-drivers
 
 sudo reboot
@@ -95,42 +95,33 @@ sudo reboot
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
-  
-   sudo reboot
-
-2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106). Check if LIS is required by verifying the results of lspci. If all GPU devices are listed as expected, installing LIS is not required.
-
-Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer required for these versions.
-
-Please note that LIS is applicable to Red Hat Enterprise Linux, CentOS, and the Oracle Linux Red Hat Compatible Kernel 5.2-5.11, 6.0-6.10, and 7.0-7.7. Please refer to the [Linux Integration Services documentation] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) for more details. 
-
-Skip this step if you are not using the Kernel versions listed above.
-
-   ```bash
-   wget https://aka.ms/lis
- 
-   tar xvzf lis
- 
-   cd LISISO
- 
-   sudo ./install.sh
- 
    sudo reboot
    ```
- 
+
+2. 安装最新的[适用于 Hyper-V 和 Azure 的 Linux 集成服务](https://www.microsoft.com/download/details.aspx?id=55106)。 通过验证 lspci 的结果来检查是否需要 LIS。 如果所有 GPU 设备都按预期列出（并已在上面记录），则不需要安装 .LIS。
+
+   请注意，LIS 适用于 Red Hat Enterprise Linux、CentOS 和 Oracle Linux Red Hat 兼容内核 5.2-5.11、6.0-6.10 和 7.0-7.7。 有关更多详细信息，请参阅 [Linux Integration Services 文档] (https://www.microsoft.com/en-us/download/details.aspx?id=55106) 。 
+   如果计划使用 CentOS/RHEL 7.8（或更高版本），请跳过此步骤，因为这些版本不再需要 LIS。
+
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
+
+      sudo ./install.sh
+      sudo reboot
+      ```
+
 3. 重新连接到 VM 并使用以下命令继续安装：
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
    sudo yum install dkms
-
+   
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
-
    wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
-
    rm -f /tmp/${CUDA_REPO_PKG}
 
    sudo yum install cuda-drivers
@@ -144,7 +135,7 @@ Skip this step if you are not using the Kernel versions listed above.
    sudo yum install cuda
    ```
    > [!NOTE]
-   >  如果你看到与缺少包（如 vulkan）相关的错误消息，则可能需要编辑/etc/yum.repos.d/rh-cloud，查找可选-rpm 并将启用设置为1
+   >  如果你看到与缺少 vulkan-filesystem 等包有关的错误消息，则可能需要编辑 /etc/yum.repos.d/rh-cloud，寻找 optional-rpms 并将“已启用”设置为“1”
    >  
 
 5. 重新启动 VM，并继续验证安装。
@@ -200,20 +191,15 @@ Skip this step if you are not using the Kernel versions listed above.
 
    ```bash
    sudo apt-get update
-
    sudo apt-get upgrade -y
-
    sudo apt-get dist-upgrade -y
-
    sudo apt-get install build-essential ubuntu-desktop -y
-   
    sudo apt-get install linux-azure -y
    ```
 3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （只能在 NV 或 NVv2 VM 上使用 NVIDIA 驱动程序。）若要执行此操作，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
 
@@ -228,9 +214,7 @@ Skip this step if you are not using the Kernel versions listed above.
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
-
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
@@ -263,40 +247,32 @@ Skip this step if you are not using the Kernel versions listed above.
  
    ```bash  
    sudo yum update
- 
    sudo yum install kernel-devel
- 
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
- 
    sudo yum install dkms
-   
    sudo yum install hyperv-daemons
    ```
 
-2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。  (仅使用 NV 或 NV3 Vm 上的 NVIDIA 驱动程序。 ) 为此，请使用 `/etc/modprobe.d` 以下内容在名为的文件中创建一个文件 `nouveau.conf` ：
+2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （只能在 NV 或 NV3 VM 上使用 NVIDIA 驱动程序。）若要执行此操作，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
-
    blacklist lbm-nouveau
    ```
- 
-3. 重新启动 VM、重新进行连接并安装最新[适用于 Hyper-V 和 Azure 的 Linux 集成服务](https://www.microsoft.com/download/details.aspx?id=55106)。 通过验证 lspci 的结果来检查是否需要 LIS。 如果所有 GPU 设备都按预期列出，则不需要安装 .LIS。 
 
-跳过此步骤是使用 CentOS/RHEL 7.8 和更高版本。
- 
-   ```bash
-   wget https://aka.ms/lis
+3. 重新启动 VM、重新进行连接并安装最新[适用于 Hyper-V 和 Azure 的 Linux 集成服务](https://www.microsoft.com/download/details.aspx?id=55106)。 通过验证 lspci 的结果来检查是否需要 LIS。 如果所有 GPU 设备都按预期列出（并已在上面记录），则不需要安装 .LIS。 
 
-   tar xvzf lis
+   如果计划使用 CentOS/RHEL 7.8（或更高版本），请跳过此步骤，因为这些版本不再需要 LIS。
 
-   cd LISISO
+      ```bash
+      wget https://aka.ms/lis
+      tar xvzf lis
+      cd LISISO
 
-   sudo ./install.sh
+      sudo ./install.sh
+      sudo reboot
 
-   sudo reboot
-
-   ```
+      ```
  
 4. 重新连接到 VM 并运行 `lspci` 命令。 验证 NVIDIA M60 卡是否显示为 PCI 设备。
  
@@ -304,7 +280,6 @@ Skip this step if you are not using the Kernel versions listed above.
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
-
    chmod +x NVIDIA-Linux-x86_64-grid.run
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
@@ -338,7 +313,7 @@ Skip this step if you are not using the Kernel versions listed above.
 
 如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
-![屏幕截图，显示在查询 GPU 设备状态时的输出。](./media/n-series-driver-setup/smi-nv.png)
+![显示查询 GPU 设备状态时的输出的屏幕截图。](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11 服务器
@@ -384,7 +359,7 @@ fi
 
 * 可以使用 `nvidia-smi` 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
 * 如果已将 NVIDIA CUDA 驱动程序更新到最新版本，并且发现 RDMA 连接不再工作，请[重新安装 RDMA 驱动程序](#rdma-network-connectivity)以重新建立该连接。 
-* 如果某个 CentOS/RHEL OS 版本 (或内核) 不支持用于 .LIS，则会引发错误 "不支持的内核版本"。 请报告此错误以及 OS 和内核版本。
+* 安装 LIS 期间，如果 LIS 不支持特定的 CentOS/RHEL OS 版本（或内核），则会引发“内核版本不受支持”错误。 请报告此错误以及 OS 和内核版本。
 
 ## <a name="next-steps"></a>后续步骤
 

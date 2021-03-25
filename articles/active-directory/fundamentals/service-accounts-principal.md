@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552144"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587842"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
-Azure Active Directory (Azure AD) [服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)是单个租户或目录中应用对象的本地表示形式。  ‎它可作为应用程序实例的标识。 服务主体定义谁可以访问应用程序，以及应用程序可以访问哪些资源。 在使用应用程序的每个租户中创建服务主体，并引用全局唯一的应用程序对象。 租户确保服务主体可登录并访问资源。  
+Azure Active Directory (Azure AD) [服务主体](../develop/app-objects-and-service-principals.md)是单个租户或目录中应用对象的本地表示形式。  ‎它可作为应用程序实例的标识。 服务主体定义谁可以访问应用程序，以及应用程序可以访问哪些资源。 在使用应用程序的每个租户中创建服务主体，并引用全局唯一的应用程序对象。 租户确保服务主体可登录并访问资源。  
 
 ### <a name="tenant-service-principal-relationships"></a>租户-服务主体关系
 单租户应用程序在其宿主租户中只有一个服务主体。 多租户 Web 应用程序或 API 需要每个租户的服务主体。 当该租户的用户同意使用应用程序或 API 时，将创建服务主体。 此同意在多租户应用程序与其相关服务主体之间建立了一对多关系。
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) [服务主体](https://docs.microsoft.com/azur
 
 ApplicationID 代表全局应用程序，对于租户的所有应用程序实例都是一样的。 ObjectID 是应用程序对象的唯一值，代表服务主体。 与用户、组和其他资源一样，ObjectID 有助于在 Azure AD 中唯一标识应用程序实例。
 
-有关本主题的详细信息，请参阅[应用程序和服务主体关系](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
+有关本主题的详细信息，请参阅[应用程序和服务主体关系](../develop/app-objects-and-service-principals.md)。
 
 还可使用 Azure PowerShell、Azure CLI、Microsoft Graph 和 Azure 门户以及其他工具在租户中创建应用程序及其服务主体对象 (ObjectID)。 
 
@@ -63,7 +63,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 
 * 密码 
 
-有关 Azure Key Vault 以及如何将其用于证书和机密管理的详细信息，请参阅[关于 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) 和[使用 Azure 门户分配 Key Vault 访问策略](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)。 
+有关 Azure Key Vault 以及如何将其用于证书和机密管理的详细信息，请参阅[关于 Azure Key Vault](../../key-vault/general/overview.md) 和[使用 Azure 门户分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-portal.md)。 
 
  ### <a name="challenges-and-mitigations"></a>挑战和缓解措施
 下表为你在使用服务主体时可能遇到的挑战提供了缓解措施。
@@ -89,7 +89,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-有关详细信息，请参阅 [Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal)
+有关详细信息，请参阅 [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal)
 
 ## <a name="assess-service-principal-security"></a>评估服务主体安全性
 
@@ -105,7 +105,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 | 默认的 Azure RBAC 角色是“参与者”。 |评估需求，并应用具有尽可能少的权限的角色来满足这一需求。|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>从用户帐户移动到服务主体  
-‎如果使用 Azure 用户帐户作为服务主体，请评估是否可以移动到[托管标识](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)或服务主体。 如果不能使用托管标识，请预配仅有足够的权限和范围来运行所需任务的服务主体。 可以通过[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)或 [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell) 来创建服务主体。
+‎如果使用 Azure 用户帐户作为服务主体，请评估是否可以移动到[托管标识](../../app-service/overview-managed-identity.md?tabs=dotnet)或服务主体。 如果不能使用托管标识，请预配仅有足够的权限和范围来运行所需任务的服务主体。 可以通过[注册应用程序](../develop/howto-create-service-principal-portal.md)或 [PowerShell](../develop/howto-authenticate-service-principal-powershell.md) 来创建服务主体。
 
 使用 Microsoft Graph 时，请检查特定 API 的文档（[如本示例中所示](/powershell/azure/create-azure-service-principal-azureps)），‎并确保应用程序的权限类型显示为支持。
 
@@ -115,7 +115,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 
 [创建服务主体](../develop/howto-create-service-principal-portal.md)
 
- [监视服务主体登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [监视服务主体登录](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **详细了解保护服务帐户：**
 

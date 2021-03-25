@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: jingwang
 ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381760"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
@@ -55,7 +55,7 @@ ms.locfileid: "100381760"
 
 Teradata 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Teradata**。 | 是 |
 | connectionString | 指定连接到 Teradata 实例所需的信息。 请参阅以下示例。<br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -163,7 +163,7 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `TeradataTable`。 | 是 |
 | database | Teradata 实例的名称。 | 否（如果指定了活动源中的“query”） |
@@ -217,7 +217,7 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `TeradataSource`。 | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
@@ -273,7 +273,7 @@ Teradata 链接服务支持以下属性：
 
 建议同时启用并行复制和数据分区，尤其是从 Teradata 加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 场景                                                     | 建议的设置                                           |
+| 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 从大型表进行完整加载。                                   | **分区选项**：哈希。 <br><br/>在执行期间，数据工厂将自动检测主索引列，对其应用哈希，然后按分区复制数据。 |
 | 使用自定义查询加载大量数据。                 | **分区选项**：哈希。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于应用哈希分区的列。 如果未指定，数据工厂将自动检测 Teradata 数据集中指定的表的 PK 列。<br><br>在执行期间，数据工厂会将 `?AdfHashPartitionCondition` 替换为哈希分区逻辑，并发送到 Teradata。 |
@@ -346,7 +346,7 @@ Teradata 链接服务支持以下属性：
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| 时间戳 |DateTime |
+| Timestamp |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
 | VarChar |String |

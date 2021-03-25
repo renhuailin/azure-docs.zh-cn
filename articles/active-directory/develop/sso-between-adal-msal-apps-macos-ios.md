@@ -1,7 +1,7 @@
 ---
-title: ADAL & MSAL apps (iOS/macOS) 的 SSOMicrosoft
+title: ADAL 和 MSAL 应用 (iOS/macOS) 之间的 SSO | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何在 ADAL 和 MSAL 应用之间共享 SSO
+description: 了解如何共享 ADAL 与 MSAL 应用之间的 SSO
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,13 +14,13 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 396e9cfeace8791a59dec4a9c9c7203212f57304
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584241"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上，在 ADAL 和 MSAL 应用之间 SSO
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>操作方法：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
 
 适用于 iOS 的 Microsoft 身份验证库 (MSAL) 可与 [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) 共享应用程序之间的 SSO 状态。 你可以按照自己的步调将应用迁移到 MSAL，确保用户仍可受益于跨应用 SSO - 即使混用基于 ADAL 和基于 MSAL 的应用。
 
@@ -34,7 +34,7 @@ ms.locfileid: "99584241"
 
 ### <a name="cache-format"></a>缓存格式
 
-ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，请注意这两个库支持的帐户标识符之间的差异。
+ADAL 2.7.x 可以读取 MSAL 缓存格式。 对于版本 ADAL 2.7.x 的跨应用 SSO，无需执行任何特殊操作。 但是，请注意这两个库支持的帐户标识符的差异。
 
 ### <a name="account-identifier-differences"></a>帐户标识符差异
 

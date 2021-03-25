@@ -4,19 +4,19 @@ description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩
 ms.date: 01/11/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107933"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
-> 适用于 Azure 策略扩展版本 **0.1.1** 和更高版本
+> 适用于 Azure Policy 扩展版本 0.1.1 和更高版本
 
 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找[别名](../concepts/definition-structure.md#aliases)、查看资源和策略、导出对象以及评估策略定义。 首先，本文将介绍如何在 Visual Studio Code 中安装 Azure Policy 扩展。 接下来演练如何查找别名。
 
-可在 Windows 上安装适用于 Visual Studio Code 的 Azure 策略扩展。
+可以在 Windows 上安装适用于 Visual Studio Code 的 Azure Policy 扩展。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "98107933"
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - [Visual Studio Code](https://code.visualstudio.com)。
 
-## <a name="install-and-configure-the-azure-policy-extension"></a>安装和配置 Azure 策略扩展
+## <a name="install-and-configure-the-azure-policy-extension"></a>安装和配置 Azure Policy 扩展
 
 满足先决条件后，可遵循以下步骤安装适用于 Visual Studio Code 的 Azure Policy 扩展：
 
@@ -43,7 +43,7 @@ ms.locfileid: "98107933"
 
    :::image type="content" source="../media/extension-for-vscode/set-default-azure-cloud-sign-in.png" alt-text="选择 Visual Studio Code 的 Azure 国家云登录的屏幕截图。" border="false":::
 
-## <a name="using-the-policy-extension"></a>使用策略扩展
+## <a name="using-the-policy-extension"></a>使用 Policy 扩展
 
 > [!NOTE]
 > 在适用于 Visual Studio Code 的 Azure Policy 扩展中查看的、在本地对策略所做的更改不会同步到 Azure。
@@ -122,7 +122,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code 的 Azure Policy 扩展的屏幕截图，鼠标悬停在属性上以显示别名。" border="false":::
 
 > [!NOTE]
-> VS Code 扩展仅支持资源管理器模式属性的计算。 有关模式的详细信息，请参阅 [模式定义](../concepts/definition-structure.md#mode)。
+> VS Code 扩展仅支持评估资源管理器模式属性。 有关模式的详细信息，请参阅[模式定义](../concepts/definition-structure.md#mode)。
 
 ### <a name="search-for-and-view-policies-and-assignments"></a>搜索和查看策略与分配
 
@@ -170,7 +170,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 1. 在“评估”窗格的顶部，选择“运行评估”图标。 随即在 Visual Studio Code 中打开一个新窗格，其中包含 JSON 格式的生成的评估详细信息。
 
 > [!NOTE]
-> 对于 [AuditIfNotExists](../concepts/effects.md#auditifnotexists) 或 [DeployIfNotExists](../concepts/effects.md#deployifnotexists) 策略定义，使用 " **评估** " 窗格中的加号图标为存在检查选择 _相关_ 资源。
+> 对于 [AuditIfNotExists](../concepts/effects.md#auditifnotexists) 或 [DeployIfNotExists](../concepts/effects.md#deployifnotexists) 策略定义，请使用“评估”窗格中的加号图标选择相关资源进行存在性检查。
 
 评估结果提供有关策略定义和策略分配以及“policyEvaluations.evaluationResult”属性的信息。 输出与以下示例类似：
 
@@ -192,7 +192,7 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 ```
 
 > [!NOTE]
-> VS Code 扩展仅支持资源管理器模式属性的计算。 有关模式的详细信息，请参阅 [模式定义](../concepts/definition-structure.md#mode)。
+> VS Code 扩展仅支持评估资源管理器模式属性。 有关模式的详细信息，请参阅[模式定义](../concepts/definition-structure.md#mode)。
 >
 > 评估功能不适用于扩展的 macOS 和 Linux 安装。
 

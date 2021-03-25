@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736886"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508310"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,7 +55,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/><br/> 为了实现更高的冗余和可用性，Azure Vm 可以部署在不同的 [可用性区域](../../../availability-zones/az-overview.md) 中，如 [可用性组概述](availability-group-overview.md)中所述。 如果可用性组中的 SQL Server Vm 部署在可用性区域中，请将 [azure 标准负载均衡器](../../../load-balancer/load-balancer-overview.md) 用于侦听器，如 [AZURE SQL VM CLI](./availability-group-az-commandline-configure.md) 和 [azure 快速入门模板](availability-group-quickstart-template-configure.md) 文章中所述。<br/> ![示意图中在“WSFC 群集”（由“主要副本”、“次要副本”和“文件共享见证”组成）上方显示了“域控制器”。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](./availability-group-quickstart-template-configure.md)。 |
+| **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/><br/> 为了实现更高的冗余性和可用性，可以按照[可用性组概述](availability-group-overview.md)中的说明，将 Azure VM 部署在不同的[可用性区域](../../../availability-zones/az-overview.md)中。 如果已在可用性区域中部署可用性组中的 SQL Server VM，则将 [Azure 标准负载均衡器](../../../load-balancer/load-balancer-overview.md)用于侦听器，如 [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) 和 [Azure 快速入门模板](availability-group-quickstart-template-configure.md)文章中所述。<br/> ![示意图中在“WSFC 群集”（由“主要副本”、“次要副本”和“文件共享见证”组成）上方显示了“域控制器”。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](./availability-group-quickstart-template-configure.md)。 |
 | **故障转移群集实例** |SQL Server VM 支持故障转移群集实例。 由于 FCI 功能需要共享存储，因此，可以在 Azure VM 上的 SQL Server 中使用五个解决方案： <br/><br/> - 对于 Windows Server 2019，使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 共享托管磁盘是一种允许同时将托管磁盘附加到多个虚拟机的 Azure 产品。 群集中的 VM 可以根据群集应用程序通过 SCSI 永久预留 (SCSI PR) 选择的预留在附加的磁盘中进行读取或写入。 SCSI PR 是一种行业标准的存储解决方案，可供在本地存储区域网络 (SAN) 上运行的应用程序使用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。 <br/><br/>- 对于 Windows Server 2016 及更高版本，使用[存储空间直通\( S2D\)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 提供基于软件的虚拟 SAN。<br/><br/>- 对于 Windows Server 2012 及更高版本，使用[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)。 高级文件共享由 SSD 提供支持，延迟稳定且较低，完全支持用于 FCI。<br/><br/>- 对于群集功能，使用合作伙伴解决方案支持的存储。 有关使用 SIOS DataKeeper 的具体示例，请参阅博客文章：[故障转移群集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>- 对于经由 Azure ExpressRoute 的远程 iSCSI 目标，使用共享块存储。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于 Microsoft 合作伙伴提供的共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>仅限 Azure：灾难恢复解决方案
@@ -83,19 +83,19 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 
 ## <a name="free-dr-replica-in-azure"></a>Azure 中的免费 DR 副本
 
-如果具有 [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，则可以使用 SQL Server 实现混合灾难恢复 (DR) 计划，而不会为被动灾难恢复实例带来额外的许可成本。
+如果具有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，可以使用 SQL Server 实现混合灾难恢复 (DR) 计划，且不会因被动灾难恢复实例产生额外的许可费用。
 
-例如，在 Azure 中托管所有三个副本时，可以有两个免费的被动辅助副本： 
+例如，可以拥有两个免费被动次要副本，前提是所有三个副本全在 Azure 中托管： 
 
-![Azure 中的所有内容时，有两个免费 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+![拥有两个免费被动副本，前提是所有副本都托管在 Azure 中](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-或者，你可以配置混合故障转移环境，其中包含本地许可的主本地、一种免费被动的 HA、本地灾难恢复以及 Azure 中的一个免费的被动恢复：
+也可以在 Azure 中配置一个混合故障转移环境，其中包含一个许可的主要本地副本、一个用于实现 HA 的免费被动副本、一个用于 DR 的免费本地被动副本和一个用于 DR 的免费被动副本：
 
-![当环境与一个主本地副本混合时，三个免费 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
+![环境是混合环境且具有一个主要本地副本时配置三个免费被动副本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
 
 有关详细信息，请参阅[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)。 
 
-若要启用此权益，请跳到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 选择 "**设置**" 下的 "**配置**"，然后在 " **SQL Server 许可证**" 下选择 "**灾难恢复**" 选项。 选中该复选框以确认该 SQL Server VM 将用作被动副本，然后选择 " **应用** " 以保存设置。 
+要启用此权益，请转到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 在“设置”下选择“配置”，然后在“SQL Server 许可证”下选择“灾难恢复”   。 选中复选框以确认此 SQL Server VM 将用作被动副本，然后选择“应用”以保存设置。 
 
 ![在 Azure 中配置灾难恢复副本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -106,12 +106,12 @@ Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性集中的高可用性节点
 使用 Azure 中的可用性集，可以将高可用性节点放置在单独的容错域和更新域中。 Azure 平台为可用性集中的每个虚拟机分配一个更新域和一个容错域。 数据中心内的这种配置可以确保在发生计划内或计划外维护事件时，至少有一个虚拟机可用，并满足 99.95% 的 Azure SLA 要求。 
 
-若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要配置高可用性设置，请将所有参与的 SQL Server 虚拟机放在同一可用性集中，以避免在维护事件期间丢失应用程序或数据。 只有同一云服务中的节点可加入同一可用性集。 有关详细信息，请参阅[管理虚拟机的可用性](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性区域中的高可用性节点
-可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源以及散热和网络设备。 区域内可用性区域的物理分离有助于保护应用程序和数据免受数据中心故障，方法是确保至少有一个虚拟机可用，并满足99.99% 的 Azure SLA 要求。 
+可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源以及散热和网络设备。 区域内可用性区域的物理隔离通过确保至少有一个虚拟机可用且 Azure SLA 的可用性达 99.99%，来帮助保护应用程序和数据免受数据中心故障的影响。 
 
-若要配置高可用性，请将参与 SQL Server 虚拟机分散到该区域中的可用性区域。 在可用性区域之间进行网络间传输时，会产生额外的费用。 有关详细信息，请参阅[可用性区域](../../../availability-zones/az-overview.md)。 
+若要配置高可用性，请将参与的 SQL Server 虚拟机分散到该区域中的各个可用性区域。 可用性区域之间的网络到网络传输会产生额外的费用。 有关详细信息，请参阅[可用性区域](../../../availability-zones/az-overview.md)。 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>故障转移群集在 Azure 网络中的行为

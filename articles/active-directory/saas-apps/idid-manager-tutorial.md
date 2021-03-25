@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 9562c81fcd159d61e36aa77f01fa5d5f09f71b8c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>教程：Azure Active Directory 与 iDiD Manager 的集成
@@ -103,9 +103,9 @@ ms.locfileid: "92460421"
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://idid2.fi/saml/login/<domain>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取该值，请与 [iDiD Manager 客户端支持团队](mailto:support@idid.fi)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -126,7 +126,7 @@ ms.locfileid: "92460421"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -136,12 +136,12 @@ ms.locfileid: "92460421"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -159,7 +159,7 @@ ms.locfileid: "92460421"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

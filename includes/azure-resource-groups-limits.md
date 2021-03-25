@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/01/2020
 ms.author: tomfitz
 ms.openlocfilehash: 543aa50d72de5a06a9a1c7ac88ac5ecae993bc9d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98697975"
 ---
 | 资源 | 限制 |
@@ -17,7 +17,7 @@ ms.locfileid: "98697975"
 | 每个资源组的资源（按资源类型） |800 - 某些资源类型可能超过 800 的限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |
 | 每个部署的资源数 |800 |
-| 管理锁数（按唯一的[作用域](../articles/azure-resource-manager/management/overview.md#understand-scope)）  |20 个 |
+| 管理锁数（按唯一的[作用域](../articles/azure-resource-manager/management/overview.md#understand-scope)）  |20 |
 | 标记数（按资源或资源组） |50 |
 | 标记键长度 |512 |
 | 标记值长度 |256 |

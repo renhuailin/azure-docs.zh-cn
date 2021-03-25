@@ -2,18 +2,20 @@
 title: 创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure 中使用
 description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 07c5be6339048517169f14032e8c37b1dc5fbf01
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
-ms.translationtype: MT
+ms.openlocfilehash: ff22010f12a7d76e60b629c4c1c4e24946d4af5a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546612"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102552960"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 
@@ -21,7 +23,7 @@ ms.locfileid: "100546612"
 
 ## <a name="hyper-v-manager"></a>Hyper-V 管理器
 
-本部分介绍如何使用 Hyper-v 管理器准备 [rhel 6](#rhel-6-using-hyper-v-manager)、 [Rhel 7](#rhel-7-using-hyper-v-manager)或 [rhel 8](#rhel-8-using-hyper-v-manager) 虚拟机。
+本部分说明如何使用 Hyper-V 管理器准备 [RHEL 6](#rhel-6-using-hyper-v-manager)、[RHEL 7](#rhel-7-using-hyper-v-manager) 或 [RHEL 8](#rhel-8-using-hyper-v-manager) 虚拟机。
 
 ### <a name="prerequisites"></a>先决条件
 本部分假定你已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
@@ -396,7 +398,7 @@ ms.locfileid: "100546612"
     GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
     ```
    
-   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会关闭 Nic 的新命名约定。
+   这还可确保所有控制台消息都发送到第一个串行端口并启用与串行控制台的交互，从而可以协助 Azure 支持人员针对问题进行调试。 此配置还会禁用 NIC 的新命名约定。
    
    1. 另外，还建议删除以下参数：
 
@@ -1469,4 +1471,4 @@ add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 ## <a name="next-steps"></a>后续步骤
 * 现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 * 有关已通过认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的更多详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。
-* 若要了解有关使用生产就绪 RHEL BYOS 映像的详细信息，请参阅 [BYOS](../workloads/redhat/byos.md)的文档页。
+* 若要详细了解如何使用生产就绪的 RHEL BYOS 映像，请查看 [BYOS](../workloads/redhat/byos.md) 的文档页面。

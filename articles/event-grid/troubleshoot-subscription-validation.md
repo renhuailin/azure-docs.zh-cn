@@ -4,10 +4,10 @@ description: 本文介绍如何解决订阅验证问题。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 857760182675d5673a3b09495c2faaf7372a4164
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94592934"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>排查 Azure 事件网格订阅验证问题
@@ -15,18 +15,18 @@ ms.locfileid: "94592934"
 
 - 使用 Postman 或 curl 或类似工具，通过一个[示例 SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) 请求正文向 Webhook URL 发出 HTTP POST 请求。
 - 如果 Webhook 实现了同步验证握手机制，请验证 ValidationCode 是否作为响应的一部分返回。
-- 如果 webhook 要实现异步验证握手机制，请验证 HTTP POST 是否返回200。
-- 如果 webhook `403 (Forbidden)` 在响应中返回，请检查 webhook 是否在 Azure 应用程序网关或 Web 应用程序防火墙后面。 如果是，则需要禁用这些防火墙规则，然后重新执行 HTTP POST：
-    - 920300 (请求缺少 accept 标头) 
-    - 942430 (受限制的 SQL 字符异常检测 (参数) ：超出 (了 12) # A5 的特殊字符数
-    - 920230 (检测到多个 URL 编码) 
-    - 942130 (SQL 注入攻击：检测到 SQL tautology。 ) 
-    - 931130 (可能的远程文件包含 (RFI) 攻击 = 域外引用/链接) 
+- 如果 Webhook 实现了异步验证握手机制，请验证 HTTP POST 是否返回了“200 正常”。
+- 如果 Webhook 在响应中返回了 `403 (Forbidden)`，请检查 Webhook 是否位于 Azure 应用程序网关或 Web 应用程序防火墙后面。 如果是，则需要禁用这些防火墙规则，然后重新执行 HTTP POST：
+    - 920300（请求缺少 Accept 标头）
+    - 942430（受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (12)）
+    - 920230（检测到多个 URL 编码）
+    - 942130（SQL 注入攻击：检测到 SQL 同义反复。）
+    - 931130（可能的远程文件包含 (RFI) 攻击 = 域外引用/链接）
 
 > [!IMPORTANT]
 > 有关 webhook 终结点验证的详细信息，请参阅 [Webhook 事件传送](webhook-event-delivery.md)。
 
-以下部分说明如何使用 Postman 和卷曲验证事件订阅。  
+以下各节介绍如何使用 Postman 和 Curl 验证事件订阅。  
 
 ## <a name="validate-event-grid-event-subscription-using-postman"></a>使用 Postman 验证事件网格事件订阅
 下面是一个示例，演示如何使用 Postman 来验证事件网格事件的 webhook 订阅： 

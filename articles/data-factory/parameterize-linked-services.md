@@ -3,15 +3,15 @@ title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 03/18/2021
 author: dcstwh
 ms.author: weetok
-ms.openlocfilehash: fbb7cb6fd0041ab77e649b14712907d916eaa449
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: df26b77f37100ae41b26c013c57cccbfa0d7e205
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372920"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595577"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "100372920"
 > 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化 *机密名称*。
 
 > [!Note]
-> 存在用于在参数名称中使用 "-" 的开放 bug，我们建议使用名称而不使用 "-"，直到 bug 得到解决。
+> 存在导致在参数名中使用“-”的待解决的 bug，在该 bug 被解决之前，建议使用不带“-”的名称。
 
 有关此功能的 7 分钟介绍和演示，请观看以下视频：
 
@@ -38,18 +38,21 @@ ms.locfileid: "100372920"
 
 - Amazon Redshift
 - Amazon S3
+- Azure Blob 存储
 - Azure Cosmos DB (SQL API)
+- Azure Data Lake Storage Gen2
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
 - Azure SQL 数据库
 - Azure SQL 托管实例
 - Azure Synapse Analytics 
+- Azure 表存储
+- 泛型 HTTP
+- 泛型 REST
 - MySQL
 - Oracle
 - SQL Server
-- 泛型 HTTP
-- 泛型 REST
 
 对于不在上述列表中的其他链接服务类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：
 

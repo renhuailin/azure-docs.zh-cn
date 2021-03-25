@@ -4,10 +4,10 @@ description: 在运行 Windows Server 的任何本地或任意云计算机（物
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785678"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
@@ -24,7 +24,7 @@ ms.locfileid: "98785678"
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>获取用于 Windows Server 的 Service Fabric 包的支持
 * 在 [Azure Service Fabric 的 Microsoft Q&A 问题页](/answers/topics/azure-service-fabric.html)中询问社区关于 Windows Server 的 Service Fabric 独立包的信息。
-* 开具 [Service Fabric 专业支持](https://support.microsoft.com/oas/default.aspx?prid=16146)票证。  在[此处](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)了解有关 Microsoft 专业支持的详细信息。
+* 打开 [Service Fabric 专业支持](https://support.microsoft.com/oas/default.aspx?prid=16146)票证。  在[此处](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)了解有关 Microsoft 专业支持的详细信息。
 * 还可以获取作为 [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)的一部分的对此包的支持。
 * 有关详细信息，请参阅 [Azure Service Fabric 支持选项](./service-fabric-support.md)。
 * 若要出于支持目的收集日志，请运行 [Service Fabric 独立日志收集器](service-fabric-cluster-standalone-package-contents.md)。

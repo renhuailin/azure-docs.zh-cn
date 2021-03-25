@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536056"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 配置 IoT 中心文件上传
@@ -89,15 +89,15 @@ az storage account show-connection-string --name {your storage account name} \
 
 配置需要以下值：
 
-* **存储容器** ：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
+* **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
 * 接收已上传文件的通知：启用或禁用文件上传通知。 
 
-* **SAS TTL** ：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
+* **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 
-* **文件通知设置默认 TTL** ：文件上传通知到期前的生存时间。 默认设置为一天。
+* **文件通知设置默认 TTL**：文件上传通知到期前的生存时间。 默认设置为一天。
 
-* **文件通知最大传送数** ：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10。
+* **文件通知最大传送数**：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10。
 
 使用以下 Azure CLI 命令在 IoT 中心内配置文件上传设置：
 

@@ -5,15 +5,15 @@ ms.topic: how-to
 ms.date: 01/21/2021
 ms.custom: seodec18, devx-track-azurepowershell
 ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98685504"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
-利用 Azure Batch PowerShell cmdlet，可以执行许多常见批处理任务并为其编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
+利用 Azure Batch PowerShell cmdlet，可以执行许多常见 Batch 任务并为其编写脚本。 本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。
 
 如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](/powershell/module/az.batch)。
 
@@ -114,9 +114,9 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ### <a name="create-a-batch-pool"></a>创建 Batch 池
 
-创建或更新 Batch 池时，请指定 [配置](nodes-and-pools.md#configurations)。 通常应使用虚拟机配置来配置池，这使你可以指定 [Azure 虚拟机 Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)中列出的某个受支持的 Linux 或 Windows VM 映像，或提供已准备好的自定义映像。 云服务配置池仅提供 Windows 计算节点，并且不支持所有批处理功能。
+创建或更新 Batch 池时，请指定[配置](nodes-and-pools.md#configurations)。 通常应使用虚拟机配置来配置池，该虚拟机配置可以让你指定 [Azure 虚拟机市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)中列出的受支持 Linux 或 Windows VM 映像之一，或者提供已准备的自定义映像。 云服务配置池仅提供 Windows 计算节点，并不支持所有 Batch 功能。
 
-运行 **AzBatchPool** 时，请在 PSVirtualMachineConfiguration 或 PSCloudServiceConfiguration 对象中传递操作系统设置。 例如，以下代码片段可以在虚拟机配置中创建包含 Standard_A1 大小计算节点的 Batch 池，这些节点包含 Ubuntu Server 18.04-LTS 映像。 在这里，**VirtualMachineConfiguration** 参数指定 *$configuration* 变量作为 PSVirtualMachineConfiguration 对象。 **BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
+运行 New-AzBatchPool 时，将操作系统设置传入 PSVirtualMachineConfiguration 或 PSCloudServiceConfiguration 对象中。 例如，以下代码片段可以在虚拟机配置中创建包含 Standard_A1 大小计算节点的 Batch 池，这些节点包含 Ubuntu Server 18.04-LTS 映像。 在这里，**VirtualMachineConfiguration** 参数指定 *$configuration* 变量作为 PSVirtualMachineConfiguration 对象。 **BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
 
 ```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
@@ -190,7 +190,7 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>应用程序包管理
 
-[应用程序包](batch-application-packages.md) 提供将应用程序部署到池中的计算节点的简化方法。 使用批处理 PowerShell cmdlet，可以上传和管理批处理帐户中的应用程序包，以及将包版本部署到计算节点。
+[应用程序包](batch-application-packages.md)提供了将应用程序部署到池中计算节点的简化方式。 使用批处理 PowerShell cmdlet，可以上传和管理批处理帐户中的应用程序包，以及将包版本部署到计算节点。
 
 > [!IMPORTANT]
 > 必须将一个 Azure 存储帐户链接到你的 Batch 帐户才能使用应用程序包。
@@ -271,7 +271,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-接下来，从批处理获取池，清除任何现有包，添加新的包引用，并用新的池设置更新 Batch 服务：
+接下来，从 Batch 获取池，清除任何现有的包，添加新的包引用，并使用新的池设置更新 Batch 服务：
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -294,5 +294,5 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 [Azure Batch cmdlet 参考](/powershell/module/az.batch) ，了解详细的 cmdlet 语法和示例。
-- 了解如何 [通过 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
+- 有关详细的 cmdlet 语法和示例，请查看 [Azure Batch cmdlet 参考](/powershell/module/az.batch)。
+- 了解如何[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。

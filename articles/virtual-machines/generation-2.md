@@ -3,17 +3,17 @@ title: Azure 对第 2 代 VM 的支持
 description: 第 2 代 VM 的 Azure 支持概述
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: generation-2-vm
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 356afea7573b24649f682205d26823b4e24e7fbe
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: a9c832d9a5e90cb2c9ffcbe8a26cdb08ebcddfcc
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695186"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553113"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -79,13 +79,13 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 | 第 2 代的特性                | 本地 Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| 安全启动                         | :heavy_check_mark:  | 具有可信启动 (预览)    |
+| 安全启动                         | :heavy_check_mark:  | 采用受信任启动（预览版）   |
 | 屏蔽 VM                         | :heavy_check_mark:  | :x:   |
-| vTPM                                | :heavy_check_mark:  | 具有可信启动 (预览)   |
-| 基于虚拟化的安全性 (VBS) | :heavy_check_mark:  | 具有可信启动 (预览)    |
+| vTPM                                | :heavy_check_mark:  | 采用受信任启动（预览版）  |
+| 基于虚拟化的安全性 (VBS) | :heavy_check_mark:  | 采用受信任启动（预览版）   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
 
-有关详细信息，请参阅 " [可信启动 (预览") ](trusted-launch.md)。
+有关详细信息，请参阅[受信任启动（预览版）](trusted-launch.md)。
 
 ## <a name="features-and-capabilities"></a>特性和功能
 
@@ -173,7 +173,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   否。
+   不是。
 
 * **我有一个来自本地第 2 代 VM 的 .vhd 文件。我可以使用该 .vhd 文件在 Azure 中创建第 2 代 VM 吗？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
@@ -208,7 +208,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第 2 代 VM 在 Azure 中是否支持安全启动或 vTPM？**
-    VTPM 和安全启动都是第2代 Vm 的受信任启动 (预览) 功能。 有关详细信息，请参阅 [受信任的启动](trusted-launch.md)。
+    vTPM 和安全启动都是第 2 代 VM 的受信任启动（预览版）功能。 有关详细信息，请参阅[受信任启动](trusted-launch.md)。
     
 * **第 2 代是否支持 VHDX？**  
     否，第 2 代 VM 仅支持 VHD。
@@ -228,6 +228,6 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 ## <a name="next-steps"></a>后续步骤
 
-在第2代 Vm 中了解有关 [受信任的启动 (预览) ](trusted-launch-portal.md) 的详细信息。
+详细了解第 2 代 VM 的[受信任启动（预览版）](trusted-launch-portal.md)。
 
 了解 [Hyper-V 中的第 2 代虚拟机](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。

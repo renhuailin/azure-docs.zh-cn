@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031712"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Java 函数

@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927747"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>将 Azure Key Vault 与 Azure Policy 集成
@@ -29,9 +29,9 @@ ms.locfileid: "92927747"
 
 ## <a name="types-of-policy-effects-and-guidance"></a>策略影响和指南的类型
 
-**审核** ：当策略的影响设置为“审核”时，策略不会对环境造成任何中断性变更。 它只会通过在策略合规性仪表板中将组件（例如在指定范围内不符合策略定义的证书）标记为不合规，提醒你注意这些组件。 如果未选择任何策略影响，则“审核”为默认值。
+**审核**：当策略的影响设置为“审核”时，策略不会对环境造成任何中断性变更。 它只会通过在策略合规性仪表板中将组件（例如在指定范围内不符合策略定义的证书）标记为不合规，提醒你注意这些组件。 如果未选择任何策略影响，则“审核”为默认值。
 
-**拒绝** ：当策略的效果设置为“拒绝”时，策略将阻止创建新组件（如证书），并阻止不符合策略定义的现有组件的新版本。 Key Vault 中现有的不合规资源不受影响。 “审核”功能将继续运行。
+**拒绝**：当策略的效果设置为“拒绝”时，策略将阻止创建新组件（如证书），并阻止不符合策略定义的现有组件的新版本。 Key Vault 中现有的不合规资源不受影响。 “审核”功能将继续运行。
 
 ## <a name="available-built-in-policy-definitions"></a>可用的“内置”策略定义
 

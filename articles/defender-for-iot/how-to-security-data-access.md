@@ -1,24 +1,14 @@
 ---
 title: 访问安全与建议数据
 description: 了解如何在使用 Defender for IoT 时访问安全警报和建议数据。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: d054b005b6b11e718662619b5525de3fc1ae5f4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 160f7c014c890f5d8c4dd6366d3acca70f21ad11
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592648"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781681"
 ---
 # <a name="access-your-security-data"></a>访问安全数据
 

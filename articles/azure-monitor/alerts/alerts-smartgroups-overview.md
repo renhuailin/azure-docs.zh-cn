@@ -4,10 +4,10 @@ description: 智能组是警报的聚合，可帮助你降低警报噪音
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: 8a164fe6e5fd5be58da969d9266329755705ea82
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037959"
 ---
 # <a name="smart-groups"></a>智能组
@@ -49,7 +49,7 @@ ms.locfileid: "102037959"
 | 部分 | 说明 |
 |:---|:---|
 | 警报 | 列出智能组中包含的各个警报。 选择某个警报会打开它的“警报详细信息”页。 |
-| 历史记录 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |
+| 历史 | 列出智能组执行的每个操作，以及对智能组进行的任何更改。 目前仅限状态更改和警报成员身份更改。 |
 
 ## <a name="smart-group-taxonomy"></a>智能组分类
 

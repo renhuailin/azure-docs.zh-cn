@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2a955273c01d8c0d865aabd91bb1bfcce70fd373
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 29922f088a51e4876e5e2ec8fe87c3bbce4482f3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587379"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521673"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -28,11 +28,11 @@ ms.locfileid: "100587379"
 
 PowerShell 需要拥有管理员级别的权限才能对计算机进行更改。
 ### <a name="execution-policy"></a>执行策略
-- 说明:默认禁用 PowerShell 脚本的运行。 我们建议仅允许在当前范围运行 RemoteSigned 脚本。
-- 参考：[关于执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)和 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)。
+- 说明：默认禁用 PowerShell 脚本的运行。 我们建议仅允许在当前范围运行 RemoteSigned 脚本。
+- 参考：[关于执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies)和 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy)。
 - 命令：`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`。
 - 可选参数：
-    - `-Force`。 跳过确认提示。
+    - `-Force`. 跳过确认提示。
 
 **示例错误**
 
@@ -71,18 +71,18 @@ SerializationVersion           1.1.0.1
 这些步骤会准备你的服务器，以从 PowerShell 库下载模块。
 
 > [!NOTE] 
-> Windows 10、Windows Server 2016 和 PowerShell 6 支持 PowerShell 库。
+> Windows 10、Windows Server 2016 和 PowerShell 6+ 支持 PowerShell 库。
 > 有关早期版本的信息，请参阅[安装 PowerShellGet](/powershell/scripting/gallery/installing-psget)。
 
 
 1. 以管理员身份使用提升的执行策略运行 PowerShell。
 2. 安装 NuGet 包提供程序。
-    - 说明:需要使用此提供程序才能与基于 NuGet 的存储库（例如 PowerShellGallery）交互。
-    - 参考：[Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6)。
+    - 说明：需要使用此提供程序才能与基于 NuGet 的存储库（例如 PowerShell 库）交互。
+    - 参考：[Install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider)。
     - 命令：`Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201`。
     - 可选参数：
-        - `-Proxy`。 指定请求的代理服务器。
-        - `-Force`。 跳过确认提示。
+        - `-Proxy`. 指定请求的代理服务器。
+        - `-Force`. 跳过确认提示。
     
     如果未设置 NuGet，则会看到此提示：
 
@@ -97,11 +97,11 @@ SerializationVersion           1.1.0.1
     ```    
 
 3. 将 PowerShell 库配置为受信任的存储库。
-    - 说明:默认情况下，PowerShell 库是不受信任的存储库。
-    - 参考：[Set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6)。
+    - 说明：默认情况下，PowerShell 库是不受信任的存储库。
+    - 参考：[Set-PSRepository](/powershell/module/powershellget/set-psrepository)。
     - 命令：`Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted`。
     - 可选参数：
-        - `-Proxy`。 指定请求的代理服务器。
+        - `-Proxy`. 指定请求的代理服务器。
 
     如果 PowerShell 库不受信任，则会看到此提示：
 
@@ -117,12 +117,12 @@ SerializationVersion           1.1.0.1
     可以运行 `Get-PSRepository` 命令，确认此更改并审核所有 PowerShell 存储库。
 
 4. 安装最新版本的 PowerShellGet。
-    - 说明:此模块包含用于从 PowerShell 库中获取其他模块的工具。 Windows 10 和 Windows Server 随附了版本 1.0.0.1。 需要 1.6.0 或更高版本。 若要确定安装了哪个版本，请运行 `Get-Command -Module PowerShellGet` 命令。
+    - 说明：此模块包含用于从 PowerShell 库中获取其他模块的工具。 Windows 10 和 Windows Server 随附了版本 1.0.0.1。 需要 1.6.0 或更高版本。 若要确定安装了哪个版本，请运行 `Get-Command -Module PowerShellGet` 命令。
     - 参考：[安装 PowerShellGet](/powershell/scripting/gallery/installing-psget)。
     - 命令：`Install-Module -Name PowerShellGet`。
     - 可选参数：
-        - `-Proxy`。 指定请求的代理服务器。
-        - `-Force`。 忽略“已安装”警告并安装最新版本。
+        - `-Proxy`. 指定请求的代理服务器。
+        - `-Force`. 忽略“已安装”警告并安装最新版本。
 
     如果使用的不是最新 PowerShellGet 版本，则会看到此错误：
 
@@ -144,13 +144,13 @@ SerializationVersion           1.1.0.1
 1. 确保满足 PowerShell 库的所有先决条件。
 2. 以管理员身份使用提升的执行策略运行 PowerShell。
 3. 安装 Az.ApplicationMonitor 模块。
-    - 参考：[Install-Module](/powershell/module/powershellget/install-module?view=powershell-6)。
+    - 参考：[Install-Module](/powershell/module/powershellget/install-module)。
     - 命令：`Install-Module -Name Az.ApplicationMonitor`。
     - 可选参数：
-        - `-Proxy`。 指定请求的代理服务器。
-        - `-AllowPrerelease`。 允许安装 alpha 和 beta 版本。
-        - `-AcceptLicense`。 跳过“接受许可证”提示
-        - `-Force`。 忽略“不受信任的存储库”警告。
+        - `-Proxy`. 指定请求的代理服务器。
+        - `-AllowPrerelease`. 允许安装 alpha 和 beta 版本。
+        - `-AcceptLicense`. 跳过“接受许可证”提示
+        - `-Force`. 忽略“不受信任的存储库”警告。
 
 ## <a name="download-and-install-the-module-manually-offline-option"></a>手动下载并安装模块（脱机选项）
 
@@ -159,8 +159,8 @@ SerializationVersion           1.1.0.1
 ### <a name="manually-download-the-latest-nupkg-file"></a>手动下载最新的 nupkg 文件
 
 1. 转到  https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
-2. 在“版本历史记录”表中选择文件的最新版本。 
-3. 在“安装选项”下选择“手动下载”。  
+2. 在“版本历史记录”表中选择文件的最新版本。
+3. 在“安装选项”下选择“手动下载”。
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>选项 1：安装到 PowerShell 模块目录中
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
@@ -169,8 +169,8 @@ SerializationVersion           1.1.0.1
 
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>使用 Expand-Archive (v1.0.1.0) 将 nupkg 作为 zip 文件解压缩
 
-- 说明:基础版本的 Microsoft.PowerShell.Archive (v1.0.1.0) 无法解压缩 nupkg 文件。 使用 .zip 扩展名重命名文件。
-- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)。
+- 说明：基础版本的 Microsoft.PowerShell.Archive (v1.0.1.0) 无法解压缩 nupkg 文件。 使用 .zip 扩展名重命名文件。
+- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive)。
 - 命令：
 
     ```console
@@ -183,8 +183,8 @@ SerializationVersion           1.1.0.1
 
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>使用 Expand-Archive (v1.1.0.0) 解压缩 nupkg
 
-- 说明:使用最新版本的 Expand-Archive 解压缩 nupkg 文件但不更改扩展名。
-- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) 和 [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)。
+- 说明：使用最新版本的 Expand-Archive 解压缩 nupkg 文件但不更改扩展名。
+- 参考：[Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive) 和 [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0)。
 - 命令：
 
     ```console
@@ -197,7 +197,7 @@ SerializationVersion           1.1.0.1
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
 有关详细信息，请参阅[安装 PowerShell 模块](/powershell/scripting/developer/module/installing-a-powershell-module)。
 
-若要将模块安装到任何其他目录中，请使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) 手动导入模块。
+若要将模块安装到任何其他目录中，请使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module) 手动导入模块。
 
 > [!IMPORTANT] 
 > DLL 会通过相对路径进行安装。
@@ -216,7 +216,7 @@ SerializationVersion           1.1.0.1
 用于从 PowerShell 库下载并安装 Az.ApplicationMonitor 的 PowerShell 命令支持 `-Proxy` 参数。
 编写安装脚本时，请查看上述说明。
 
-Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 建议在 web.config 文件中配置应用的代理设置。 有关详细信息，请参阅 [Application Insights 常见问题解答：代理透传](../faq.md#proxy-passthrough)。
+Application Insights SDK 需要将应用的遥测数据发送给 Microsoft。 建议在 web.config 文件中配置应用的代理设置。 有关详细信息，请参阅 [Application Insights 常见问题解答：代理传递](../faq.md#proxy-passthrough)。
 
 
 ## <a name="enable-monitoring"></a>启用监视

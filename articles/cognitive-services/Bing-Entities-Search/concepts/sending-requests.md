@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: ad6d89fec9f2c94129e19c09ee3e1e76d5bb6e44
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353266"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>向必应实体搜索 API 发送搜索请求
@@ -40,14 +40,14 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>指定查询参数和请求头
 
-请求必须指定包含用户搜索词的 [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查询参数。 请求还必须指定 [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查询参数，用于确定所需的结果来源市场。 有关可选查询参数的列表，请参阅 [查询参数](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 URL 对所有查询参数进行编码。  
+请求必须指定包含用户搜索词的 [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查询参数。 请求还必须指定 [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) 查询参数，用于确定所需的结果来源市场。 有关可选查询参数列表，请参阅[查询参数](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)。 URL 对所有查询参数进行编码。  
   
 请求必须指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) 请求头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
--   [用户代理](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-搜索-位置](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [X-MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 

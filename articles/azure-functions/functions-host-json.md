@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 545b02ee8496c9530b263227d4138441f27f0cf9
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: cbedf2212c52d8f1996d3cce0d96d494313ea525
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441697"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102608812"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -253,7 +253,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中心触发器和绑定](functions-bindings-event-hubs-trigger.md#host-json)中查找配置设置。 
+可在[事件中心触发器和绑定](functions-bindings-event-hubs.md#host-json)中查找配置设置。 
 
 ## <a name="extensions"></a>扩展
 

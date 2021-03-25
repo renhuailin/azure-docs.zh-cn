@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321427"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>轮换透明数据加密 (TDE) 保护器
@@ -28,7 +28,7 @@ ms.locfileid: "93321427"
 本指南介绍在服务器上轮换 TDE 保护器的两个选项。
 
 > [!NOTE]
-> 必须先恢复 Azure Synapse Analytics 中暂停的专用 SQL 池，然后才能进行密钥轮替。
+> 需要在密钥轮换之前先恢复 Azure Synapse Analytics 中已暂停的专用 SQL 池。
 
 > [!IMPORTANT]
 > 在滚动更新之后，请勿删除旧版密钥。 滚动更新密钥时，某些数据仍使用以前的密钥进行加密，例如旧版数据库备份。

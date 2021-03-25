@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263106"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>将文件从 Azure 恢复到 Windows Server
@@ -27,7 +27,7 @@ ms.locfileid: "88263106"
 
 使用 Microsoft Azure 恢复服务 (MARS) 代理安装名为“Microsoft Azure 备份”的有用用户界面向导。 Microsoft Azure 备份向导与 Microsoft Azure 恢复服务 (MARS) 代理协同工作，从存储在 Azure 中的恢复点检索备份数据。 使用 Microsoft Azure 备份向导确定要还原到 Windows Server 的文件或文件夹。
 
-1. 打开“Microsoft Azure 备份”管理单元。 可以通过在计算机中搜索 **Microsoft Azure 备份**找到该代理。
+1. 打开“Microsoft Azure 备份”管理单元。 可以通过在计算机中搜索 **Microsoft Azure 备份** 找到该代理。
 
     ![“Microsoft Azure 备份”管理单元](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "88263106"
 
 4. 在“选择恢复模式”页上，选择“单个文件和文件夹”，然后选择“下一步”以开始恢复点选择过程  。
 
-5. 在“选择卷和日期”页上，选择包含想要还原的文件或文件夹的卷，然后选择“装载” 。 选择日期，然后从下拉菜单中选择与恢复点相对应的时间。 以**粗体**显示的日期指示当天至少有一个可用的恢复点。
+5. 在“选择卷和日期”页上，选择包含想要还原的文件或文件夹的卷，然后选择“装载” 。 选择日期，然后从下拉菜单中选择与恢复点相对应的时间。 以 **粗体** 显示的日期指示当天至少有一个可用的恢复点。
 
     ![选择卷和日期](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 

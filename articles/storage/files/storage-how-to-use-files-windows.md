@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
-description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件共享。 在本地或 Azure Vm 上运行的 Windows 安装上，使用 SMB 3.0 的 Azure 文件共享。
+description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件共享。 在 Windows 安装（在本地或 Azure VM 上运行）上，将 Azure 文件共享与 SMB 3.0 配合使用。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -9,13 +9,13 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626888"
 ---
-# <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
+# <a name="use-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
 
 若要在某个 Azure 文件共享的托管 Azure 区域（例如本地或其他 Azure 区域）外部使用该文件共享，OS 必须支持 SMB 3.0。 
@@ -34,8 +34,8 @@ ms.locfileid: "94626888"
 | Windows 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
 
-<sup>1</sup>Windows 10 版本1507、1607、1803、1809、1903、1909和2004。  
-<sup>2</sup>Windows Server，版本1809、1903、1909、2004。  
+<sup>1</sup>Windows 10 版本 1507、1607、1803、1809、1903、1909 和 2004。  
+<sup>2</sup>Windows Server 版本 1809、1903、1909、2004。  
 <sup>3</sup>Microsoft 对 Windows 7 和 Windows Server 2008 R2 的常规支持已结束。 只有通过[扩展安全更新 (ESU) 程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)才能购买对安全更新的附加支持。 我们强烈建议从这些操作系统中迁移。
 
 > [!Note]  

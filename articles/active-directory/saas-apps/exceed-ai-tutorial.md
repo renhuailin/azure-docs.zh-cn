@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 16d1547b81f48b0525c667262a7a903d747a40dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5db18b36464e51d8832e0879e55cfe6f0f73eab5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435588"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597787"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exceedai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Exceed.ai 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "102435588"
 * 让用户使用其 Azure AD 帐户自动登录到 Exceed.ai。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -125,11 +125,9 @@ ms.locfileid: "102435588"
 
 * 直接转到 Exceed.ai 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exceed.ai 磁贴时，会重定向到 Exceed.ai 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Exceed.ai 磁贴时，会重定向到 Exceed.ai 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在配置 Exceed.ai 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+在配置 Exceed.ai 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

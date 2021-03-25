@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: alkohli
 ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443006"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Azure Stack Edge 设备上的主动日志收集
@@ -60,7 +60,7 @@ Microsoft 客户支持和工程团队使用 Azure Stack Edge 设备中的系统�
 启用了主动日志收集后，在设备上检测到以下事件之一时，系统会自动上传日志：  
 
 
-|Alert/Error/Condition  |说明  |
+|Alert/Error/Condition  |描述  |
 |---------|---------|
 |AcsUnhealthyCondition     |Azure 一致服务未正常运行。         |
 |IOTEdgeAgentNotRunningCondition      |IoT Edge 代理未运行。         |

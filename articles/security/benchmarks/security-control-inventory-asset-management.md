@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: f3079ea475c20e3ae0e78319d6c6b24ee579fd0c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521299"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
@@ -74,7 +74,7 @@ ms.locfileid: "102521299"
 
 使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 

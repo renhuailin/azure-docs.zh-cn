@@ -1,7 +1,7 @@
 ---
 title: 处理 MSAL.js 中的错误和异常
 titleSuffix: Microsoft identity platform
-description: 了解如何处理 MSAL.js 应用程序中的错误和异常、条件性访问声明质询和重试。
+description: 了解如何处理 MSAL.js 应用程序中的错误和异常、条件访问声明质询以及重试。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 20d276aba2ee3260911748cbee0a16020270059a
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761332"
 ---
 # <a name="handle-errors-and-exceptions-in-msaljs"></a>处理 MSAL.js 中的错误和异常
@@ -26,7 +26,7 @@ ms.locfileid: "98761332"
 
 ## <a name="error-handling-in-msaljs"></a>MSAL.js 中的错误处理
 
-MSAL.js 提供了一些错误对象，这些对象可对不同类型的常见错误进行抽象和分类。 它还提供了一个接口用于访问错误的特定详细信息，例如错误消息处理适当的错误消息。
+MSAL.js 提供了一些错误对象，这些对象可对不同类型的常见错误进行抽象和分类。 它还提供用于访问具体错误详细信息的接口，例如，用于适当处理错误的错误消息。
 
 ### <a name="error-object"></a>错误对象
 
@@ -155,4 +155,4 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenRespon
 
 ## <a name="next-steps"></a>后续步骤
 
-请考虑启用 [MSAL.js日志记录 ](msal-logging-js.md) ，以帮助你诊断和调试问题。
+请考虑[在 MSAL.js 中启用日志记录](msal-logging-js.md)，以帮助你诊断和调试问题。

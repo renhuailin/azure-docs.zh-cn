@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 文件存储的 DNS 转发 | Microsoft Docs
-description: 了解如何配置 Azure 文件的 DNS 转发。
+description: 了解如何配置 Azure 文件存储的 DNS 转发。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94630186"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>配置 Azure 文件存储的 DNS 转发
@@ -32,7 +32,7 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 
 默认情况下，`storageaccount.file.core.windows.net` 解析为公共终结点的 IP 地址。 存储帐户的公共终结点托管在 Azure 存储群集上，该群集托管存储帐户的其他许多公共终结点。 创建专用终结点时，专用 DNS 区域将使用与存储帐户专用终结点专用 IP 地址的 A 记录条目建立的 CNAME 记录映射 `storageaccount.file.core.windows.net`，链接到该专用终结点所添加到的虚拟网络。 这样，你便可以在虚拟网络中使用 `storageaccount.file.core.windows.net` FQDN，并使其解析为专用终结点的 IP 地址。
 
-由于我们的最终目标是使用 VPN 或 ExpressRoute 连接等网络隧道从本地访问存储帐户中托管的 Azure 文件共享，因此，必须将本地 DNS 服务器配置为向 Azure 专用 DNS 服务转发对 Azure 文件存储服务发出的请求。 为此，需要设置为将 `*.core.windows.net`（或美国政府、德国或中国国家云的相应存储终结点后缀）条件转发到 Azure 虚拟网络中托管的 DNS 服务器。  然后，此 DNS 服务器以递归方式将请求转发到 Azure 的专用 DNS 服务，后者将存储帐户的完全限定域名解析为相应的专用 IP 地址。
+由于我们的最终目标是使用 VPN 或 ExpressRoute 连接等网络隧道从本地访问存储帐户中托管的 Azure 文件共享，因此，必须将本地 DNS 服务器配置为向 Azure 专用 DNS 服务转发对 Azure 文件存储服务发出的请求。 为此，需要设置为将 `*.core.windows.net`（或美国政府、德国或中国国家云的相应存储终结点后缀）条件转发到 Azure 虚拟网络中托管的 DNS 服务器。 然后，此 DNS 服务器以递归方式将请求转发到 Azure 的专用 DNS 服务，后者将存储帐户的完全限定域名解析为相应的专用 IP 地址。
 
 为 Azure 文件存储配置 DNS 转发需要运行一个虚拟机来托管用于转发请求的 DNS 服务器，但是，对于虚拟网络中托管的所有 Azure 文件共享，只需执行此步骤一次。 此外，这并不是 Azure 文件存储特有的要求 - 支持你要从本地访问的专用终结点的任何 Azure 服务都可以利用在本指南中配置的 DNS 转发：Azure Blob 存储、SQL Azure、Cosmos DB 等。 
 

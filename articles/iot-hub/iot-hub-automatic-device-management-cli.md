@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545406"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
@@ -155,7 +155,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**hub-name** - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
-在命令窗口中检查配置。   **metrics** 属性列出由每个中心评估的每个指标的计数：
+在命令窗口中检查配置。  **metrics** 属性列出由每个中心评估的每个指标的计数：
 
 * **targetedCount** - 一个系统指标，根据目标条件指定 IoT 中心的设备孪生或模块孪生数。
 

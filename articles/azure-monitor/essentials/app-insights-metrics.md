@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049128"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583456"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 
@@ -95,6 +95,8 @@ availabilityResults
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>浏览器页面加载时间 (browserTimings/totalDuration)
 
+从用户请求一直到 DOM、样式表、脚本和映像加载完之间的时间。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -110,6 +112,8 @@ browserTimings
 ```
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>客户端处理时间 (browserTiming/processingDuration)
+
+从接收文档的最后一个字节到 DOM 加载完之间的时间。 可能仍在处理异步请求。
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
@@ -127,6 +131,8 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>页面加载网络连接时间 (browserTimings/networkDuration)
 
+用户请求和网络连接之间的时间。 包括 DNS 查找和传输连接。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -143,6 +149,8 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>接收响应时间 (browserTimings/receiveDuration)
 
+第一个和最后一个字节之间的时间，或直至断开连接的时间。
+
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|
 |毫秒|Average、Min、Max|无|
@@ -158,6 +166,8 @@ browserTimings
 ```
 
 ### <a name="send-request-time-browsertimingssendduration"></a>发送请求时间 (browserTimings/sendDuration)
+
+网络连接和接收第一个字节之间的时间。
 
 |度量单位|支持的聚合|预先聚合的维度|
 |---|---|---|

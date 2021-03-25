@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 11439a8c93c0f1ef682e7104e989a3a2cbbdc28e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92446712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>教程：Azure Active Directory 与 GTNexus SSO System 集成
@@ -97,7 +97,7 @@ ms.locfileid: "92446712"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
+4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -107,7 +107,7 @@ ms.locfileid: "92446712"
 
     ![屏幕截图显示“选择文件”字段，其中选择了“文件夹”徽标和“上传”按钮。](common/browse-upload-metadata.png)
 
-    c. 成功将元数据文件上传后， **标识符** 和 **回复 URL** 值会自动填充在“GTNexus SSO System”部分的文本框中：
+    c. 成功将元数据文件上传后，**标识符** 和 **回复 URL** 值会自动填充在“GTNexus SSO System”部分的文本框中：
 
     ![image](common/idp-intiated.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "92446712"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -140,12 +140,12 @@ ms.locfileid: "92446712"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -163,7 +163,7 @@ ms.locfileid: "92446712"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

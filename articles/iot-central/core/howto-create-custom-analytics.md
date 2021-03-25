@@ -1,7 +1,7 @@
 ---
 title: 通过自定义分析扩展 Azure IoT Central | Microsoft Docs
 description: 解决方案开发人员将配置一个 IoT Central 应用程序来执行自定义分析和可视化。 此解决方案使用 Azure Databricks。
-author: TheJasonAndrew
+author: TheRealJasonAndrew
 ms.author: v-anjaso
 ms.date: 02/18/2020
 ms.topic: how-to
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 86f94b8059d85b892a87c82537b1e9b02552f8f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741654"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551311"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
@@ -39,10 +39,10 @@ ms.locfileid: "101741654"
 
 | 设置 | “值” |
 | ------- | ----- |
-| 定价计划 | Standard |
+| 定价计划 | 标准 |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
-| 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |
+| URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
 | 目录 | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
@@ -59,7 +59,7 @@ ms.locfileid: "101741654"
 
 在 [Azure 门户中使用以下设置创建一个事件中心命名空间](https://portal.azure.com/#create/Microsoft.EventHub)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
@@ -78,7 +78,7 @@ ms.locfileid: "101741654"
 | 订阅 | 你的订阅 |
 | 资源组 | IoTCentralAnalysis |
 | 位置 | 美国东部 |
-| 定价层 | Standard |
+| 定价层 | 标准 |
 
 创建所需的资源后，**IoTCentralAnalysis** 资源组将如以下屏幕截图所示：
 
@@ -103,18 +103,18 @@ ms.locfileid: "101741654"
 
 在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分，你将配置应用程序，以将其模拟设备发来的遥测数据流式传输到事件中心。 若要配置导出：
 
-1. 导航到 " **数据导出 (旧)** " 页，依次选择 " **+ 新建**" 和 " **Azure 事件中心**"。
+1. 导航到“数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。
 1. 使用以下设置配置导出，然后选择“保存”：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | 已启用 | 启用 |
+    | 已启用 | 开 |
     | 事件中心命名空间 | 事件中心命名空间的名称 |
     | 事件中心 | centralexport |
-    | 度量 | 启用 |
-    | 设备 | 关闭 |
-    | 设备模板 | 关闭 |
+    | 度量 | 开 |
+    | 设备 | 关 |
+    | 设备模板 | 关 |
 
 ![数据导出配置](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -133,8 +133,8 @@ ms.locfileid: "101741654"
 | 设置 | Value |
 | ------- | ----- |
 | 群集名称 | centralanalysis |
-| 群集模式 | Standard |
-| Databricks 运行时版本 | 5.5 LTS (Scala 2.11，Spark 2.4.5)  |
+| 群集模式 | 标准 |
+| Databricks 运行时版本 | 5.5 LTS (Scala 2.11, Spark 2.4.5) |
 | Python 版本 | 3 |
 | 启用自动缩放 | 否 |
 | 在非活动几分钟后终止 | 30 |
@@ -172,7 +172,7 @@ ms.locfileid: "101741654"
 
 1. 在 Databricks 环境中导航到“工作区”页。 选择帐户名旁边的下拉列表，然后选择“导入”。
 
-1. 选择 "从 URL 导入"，并输入以下地址： [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. 选择从 URL 导入并输入以下地址：[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
 1. 若要导入笔记本，请选择“导入”。
 

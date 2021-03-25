@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: c1fd4cb248abdc219c6ee5d098e10c329826c160
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361972"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
@@ -115,7 +115,7 @@ ms.locfileid: "100361972"
 
     ![显示使用模板创建的 2 个管道和 3 个数据集的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. 中转到 "BulkCopyFromS3" 管道，然后选择 " **调试**"，然后输入 **参数**。 然后选择“完成”。
+6. 转到“BulkCopyFromS3”管道，选择“调试”，然后输入“参数” 。 然后选择“完成”。
 
     ![显示选择“完成”之前在哪里选择“调试”和输入参数的屏幕截图。](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "100361972"
 
     ![查看管道](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6.  中转到 "DeltaCopyFromS3" 管道，选择 " **调试**"，然后输入 **参数**。 然后选择“完成”。
+6.  转到“DeltaCopyFromS3”管道，选择“调试”，然后输入“参数” 。 然后选择“完成”。
 
     ![单击“调试”****](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

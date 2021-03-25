@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430473"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
@@ -32,7 +32,7 @@ ms.locfileid: "102430473"
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
-1. 在 Visual Studio 中，依次选择“文件”菜单、“新建”、“项目”。
+1. 在 Visual Studio 中，依次选择“文件”菜单、“新建”，然后选择“项目”。
 2. 选择“控制台应用(.NET Framework)”，然后选择“下一步” 。
 3. 在“项目名称”中，输入 `CreateADLApplication`，然后选择“创建”。
 
