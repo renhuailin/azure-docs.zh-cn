@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: f373c849cd542769fec7a10f20dad04e742c9591
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725072"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565132"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>安全地从外部访问 Microsoft Teams、SharePoint 和 OneDrive for Business 
 
@@ -90,7 +90,7 @@ Microsoft 365 中的共享有一部分是通过 Azure Active Directory (Azure AD
 
 * [在 Microsoft Teams 中管理外部访问](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 标识模型和 Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 标识模型和 Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity)
 
 * [Microsoft Teams 的标识模型和身份验证](/MicrosoftTeams/identify-models-authentication)
 
@@ -104,7 +104,7 @@ SharePoint 管理员有许多可用于协作的设置。 组织级设置从 Shar
 
 建议你[启用 SharePoint 和 OneDrive 与 Azure AD B2B 的集成的预览版](/sharepoint/sharepoint-azureb2b-integration-preview)，这是用于治理外部协作的总体策略的一部分。
 
-Azure AD B2B 提供了对来宾用户的身份验证和管理。 使用 SharePoint 和 OneDrive 集成， [AZURE AD B2B 一次性密码](../external-identities/one-time-passcode.md) 用于文件、文件夹、列表项、文档库和站点的外部共享。 此功能提供了现有 [安全外部共享收件人体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)的升级体验。
+Azure AD B2B 提供了对来宾用户的身份验证和管理。 通过与 SharePoint 和 OneDrive 集成，[Azure AD B2B 一次性密码](../external-identities/one-time-passcode.md)可用于文件、文件夹、列表项、文档库和站点的外部共享。 此功能提供了从现有的[安全外部共享收件人体验](/sharepoint/what-s-new-in-sharing-in-targeted-release)升级的体验。
 
 > [!NOTE]
 > 如果你启用 Azure AD B2B 集成的预览版，则 SharePoint 和 OneDrive 共享需遵守 Azure AD 组织关系设置，例如“成员可以邀请”和“来宾可以邀请”。
@@ -179,7 +179,7 @@ SharePoint 与 Azure AD B2B 的集成更改了控件与帐户进行交互的方�
 
 请参阅以下文章，了解如何保护对资源的外部访问。 建议你按列出顺序执行这些操作。
 
-1. [确定与外部访问相关的安全状况](1-secure-access-posture.md)
+1. [确定外部访问的安全状况](1-secure-access-posture.md)
 
 2. [了解当前状况](2-secure-access-current-state.md)
 

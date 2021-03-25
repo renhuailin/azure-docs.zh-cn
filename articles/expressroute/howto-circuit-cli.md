@@ -9,17 +9,17 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a1d50c3f8f94fbfd7dbcb9b25e051b7f2951c518
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91969052"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和修改 ExpressRoute 线路
 
 本快速入门介绍如何使用命令行接口 (CLI) 创建 Azure ExpressRoute 线路。 本文还介绍如何检查状态，以及如何更新、删除和取消预配线路。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -155,7 +155,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 az network express-route list
 ```
 
-服务密钥会在响应的 ServiceKey 字段中列出**。
+服务密钥会在响应的 ServiceKey 字段中列出。
 
 ```output
 "allowClassicOperations": false,
@@ -276,7 +276,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 * 为 ExpressRoute 线路启用或禁用 ExpressRoute 高级版外接程序。 不支持将 SKU 从“标准”/“高级”更改为“本地” 。
 * 你可增加 ExpressRoute 线路的带宽，前提是端口上有可用容量。 但不支持对线路的带宽进行降级。
 * 将计量套餐从数据流量套餐更改为无限制流量套餐。 但是，不支持将数据流量套餐从“不限流量”更改为“按流量计费”。
-* 可以启用和禁用允许经典操作**。
+* 可以启用和禁用允许经典操作。
 
 有关限制和局限性的详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
 ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020394"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
@@ -83,6 +83,6 @@ QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过�
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [扩展流分析作业](stream-analytics-scale-jobs.md)
+* [缩放流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](/stream-analytics-query/stream-analytics-query-language-reference)
 * [流分析管理 REST API 参考](/rest/api/streamanalytics/)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87810218"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>从 Express.js 转换到 Azure Functions
@@ -24,7 +24,7 @@ Express.js 是 Web 开发人员最欢迎的 Node.js 框架之一，并且仍是�
 
 - **默认路由：** 默认情况下，Azure Functions 终结点公开在 `api` 路由下。 路由规则可通过 [host.json 文件中的 `routePrefix`](./functions-bindings-http-webhook-output.md#hostjson-settings) 进行配置。
 
-- **配置和约定**：Functions 应用使用 function.json 文件来定义 HTTP 谓词和安全策略，并可以配置函数的[输入和输出](./functions-triggers-bindings.md)。 默认情况下，包含函数文件的文件夹名称定义终结点名称，但可以通过 [function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) 文件中的 `route` 属性更改该名称。
+- **配置和约定**：Functions 应用使用 function.json 文件来定义 HTTP 谓词和安全策略，并可以配置函数的 [输入和输出](./functions-triggers-bindings.md)。 默认情况下，包含函数文件的文件夹名称定义终结点名称，但可以通过 [function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint) 文件中的 `route` 属性更改该名称。
 
 > [!TIP]
 > 有关详细信息，请参阅交互式教程[使用 Azure Functions 将 Node.js 和 Express API 重构为无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)。

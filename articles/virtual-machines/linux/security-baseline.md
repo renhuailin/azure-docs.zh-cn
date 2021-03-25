@@ -2,17 +2,19 @@
 title: 适用于 Linux 虚拟机的 Azure 安全基线
 description: Linux 虚拟机安全基线为实现 Azure 安全基准中指定的安全建议提供了过程指南和资源。
 author: msmbaldwin
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
+ms.subservice: security
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e1569cf4c7e91fd0c90d407846a9165d4b7b3776
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: fdf3c1e012a017d59fef91add8b86b0b3e1cdcd4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592947"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102552838"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure 安全基线
 
@@ -412,7 +414,7 @@ Azure 安全中心监视：不可用
 
 * [如何部署 Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure 安全中心风险检测 (可疑活动) ](../../active-directory/identity-protection/overview-identity-protection.md)
+* [了解 Azure 安全中心风险检测（可疑活动）](../../active-directory/identity-protection/overview-identity-protection.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -908,7 +910,7 @@ Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure DevOps/存储库来安全地存储和管理代码，如自定义 azure 策略定义、azure 资源管理器模板、所需状态配置脚本和其他代码。 若要访问在 Azure DevOps 中管理的资源（例如代码、生成和工作跟踪），必须拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如“权限和访问”中所述。 你可以向特定用户、内置安全组或者 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）或 Active Directory（如果与 TFS 集成）中定义的组授予权限，或拒绝向其授予权限。
+**指导**：使用 Azure DevOps/Repos 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板、Desired State Configuration 脚本和其他代码。 若要访问在 Azure DevOps 中管理的资源（例如代码、生成和工作跟踪），需要拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如“权限和访问”中所述。 你可以向特定用户、内置安全组或者 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）或 Active Directory（如果与 TFS 集成）中定义的组授予权限，或拒绝向其授予权限。
 
 * [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 

@@ -1,38 +1,31 @@
 ---
 title: 适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
-description: 使用虚拟机扩展在 Windows 虚拟机上部署 Azure Monitor 依赖关系代理。
-services: virtual-machines-windows
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
+description: 使用虚拟机扩展在 Windows 虚拟机上部署 Azure Monitor 依赖项代理。
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 0151e7b3a30cd4b00dba75b7490563923cd5b8ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.collection: windows
+ms.date: 03/29/2019
+ms.openlocfilehash: 429cc01f466c55283985729c3395bb2137e38fa6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580303"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566290"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
 
-用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 适用于 Windows 的 Azure VM 依赖关系代理虚拟机扩展由 Microsoft 发布和支持。 该扩展在 Azure 虚拟机上安装依赖项代理。 本文档详细介绍适用于 Windows 的 Azure VM 依赖关系代理虚拟机扩展支持的平台、配置和部署选项。
+用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 适用于 Windows 的 Azure VM 依赖项代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装依赖项代理。 本文档详细介绍适用于 Windows 的 Azure VM 依赖项代理虚拟机扩展支持的平台、配置和部署选项。
 
 ## <a name="operating-system"></a>操作系统
 
-适用于 Windows 的 Azure VM 依赖关系代理扩展可以针对用于 VM 的 Azure Monitor 部署一文的 " [支持的操作系统](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) " 部分中列出的受支持操作系统运行。
+适用于 Windows 的 Azure VM 依赖项代理扩展可以针对“适用于 VM 的 Azure Monitor”部署文章中的[支持的操作系统](../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)部分中列出的支持的操作系统运行。
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Azure Windows VM 上的 Azure VM 依赖关系代理扩展的架构。
+以下 JSON 显示了 Azure Windows VM 上 Azure VM 依赖项代理扩展的架构。
 
 ```json
 {
@@ -81,7 +74,7 @@ ms.locfileid: "100580303"
 
 ## <a name="template-deployment"></a>模板部署
 
-可以通过 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Azure VM 依赖项代理扩展。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行 Azure VM 依赖项代理扩展。
 
 用于虚拟机扩展的 JSON 可以嵌套在虚拟机资源中。 或者，可以将其置于资源管理器 JSON 模板的根部或顶层。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。
 
@@ -128,7 +121,7 @@ ms.locfileid: "100580303"
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-你可以使用 `Set-AzVMExtension` 命令将依赖关系代理虚拟机扩展部署到现有的虚拟机。 在运行该命令之前，需要将公共和专用配置存储在 PowerShell 哈希表中。
+可以使用 `Set-AzVMExtension` 命令将依赖项代理虚拟机扩展部署到现有的虚拟机。 运行该命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。
 
 ```powershell
 
@@ -145,7 +138,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>疑难解答
 
-有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
+有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName

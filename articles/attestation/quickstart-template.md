@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: mbaldwin
 ms.date: 10/16/2020
 ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144972"
 ---
 # <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 证明提供程序
@@ -49,9 +49,9 @@ ms.locfileid: "92144972"
 
     除非另有指定，否则请使用默认值创建证明提供程序。
 
-    - **证明提供程序名称** ：为 Azure 证明提供程序选择一个名称。
+    - **证明提供程序名称**：为 Azure 证明提供程序选择一个名称。
     - 位置：选择一个位置。 例如“美国中部”。
-    - **标记** ：选择一个位置。 例如“美国中部”。
+    - **标记**：选择一个位置。 例如“美国中部”。
 
 1. 选择“购买”。 成功部署证明资源后，你会收到通知。
 

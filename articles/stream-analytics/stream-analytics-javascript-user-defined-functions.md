@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 12/15/2020
 ms.openlocfilehash: 70015ef24039694789ce96a6c4853221fe2377c3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020377"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
@@ -80,7 +80,7 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 
 流分析查询语言与 JavaScript 支持的类型有差别。 下表列出了两者之间的转换映射：
 
-流分析 | Javascript
+流分析 | JavaScript
 --- | ---
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
@@ -92,7 +92,7 @@ Null | Null
 
 下面是 JavaScript 到流分析的转换：
 
-Javascript | 流分析
+JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime

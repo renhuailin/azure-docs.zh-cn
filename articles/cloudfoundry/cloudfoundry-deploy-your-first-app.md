@@ -2,17 +2,17 @@
 title: 将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 description: 将应用程序部署到 Azure 上的 Cloud Foundry
 author: seanmck
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: 037ac972dca49484f7b8c0ad8eed6942c901b997
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519670"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562922"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -27,11 +27,11 @@ ms.locfileid: "95519670"
 - 通过设置 [BOSH](https://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
-> 如果要从 Azure 市场部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，市场部署指南中对两者都有介绍。 完成本教程也需要它们。 对于 marketplace 部署，SYSTEMDOMAINURL 的格式为 `https://system.*ip-address*.cf.pcfazure.com` 。
+> 如果要从 Azure 市场部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，市场部署指南中对两者都有介绍。 完成本教程也需要它们。 在市场部署中，SYSTEMDOMAINURL 的形式为 `https://system.*ip-address*.cf.pcfazure.com`。
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 
-云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在本例中，通过 [Cloud Foundry CLI][cf-cli] 与其进行交互。 你可以在 Linux、macOS 或 Windows 上安装 CLI，但如果不想安装它，则可在 [Azure Cloud Shell][cloudshell-docs]中预安装该 CLI。
+云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在本例中，通过 [Cloud Foundry CLI][cf-cli] 与其进行交互。 可以在 Linux、macOS 或 Windows 上安装 CLI，但如果不想安装，可将其预安装在 [Azure Cloud Shell][cloudshell-docs] 中。
 
 若要登录，请将 `api` 追加到从市场部署中获得的 SYSTEMDOMAINURL 中。 由于默认部署使用自签名证书，因此还应设置 `skip-ssl-validation` 开关。
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 现在，部署应用程序时，其会自动创建在新的组织和空间中。 若要确认新的组织/空间中目前没有任何应用，请再次键入 `cf apps`。
 
 > [!NOTE] 
-> 有关组织和空格的详细信息以及如何将它们用于 Cloud Foundry 基于角色的访问控制 (Cloud Foundry RBAC) ，请参阅 [Cloud Foundry 文档][cf-orgs-spaces-docs]。
+> 若要详细了解组织和空间以及如何将其用于 Cloud Foundry 基于角色的访问控制 (Cloud Foundry RBAC)，请参阅 [Cloud Foundry 文档][cf-orgs-spaces-docs]。
 
 ## <a name="deploy-an-application"></a>部署应用程序
 
@@ -79,7 +79,7 @@ git clone https://github.com/cloudfoundry-samples/hello-spring-cloud
 cd hello-spring-cloud
 ```
 
-### <a name="build-the-application"></a>构建应用程序
+### <a name="build-the-application"></a>生成应用程序
 
 使用 [Apache Maven ](https://maven.apache.org) 生成应用。
 

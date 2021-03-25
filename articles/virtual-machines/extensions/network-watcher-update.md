@@ -1,24 +1,25 @@
 ---
 title: 将网络观察程序扩展更新到最新版本
 description: 了解如何将 Azure 网络观察程序扩展更新到最新版本。
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: damendo
 manager: balar
 editor: ''
 tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 144320ea1b2505d8a43e1885091ec14a847e4ab1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.openlocfilehash: 42efe2927b4d711f7fa66a96ebd25f1a62bf654a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853656"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563602"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>将网络观察程序扩展更新到最新版本
 
@@ -35,7 +36,7 @@ ms.locfileid: "96853656"
 当前，网络观察程序扩展的最新版本为 `1.4.1693.1`。
 
 ## <a name="update-your-extension-using-a-powershell-script"></a>使用 PowerShell 脚本更新扩展
-具有需要一次更新多个 Vm 的大型部署的客户。 若要手动更新 select Vm，请参阅下一节 
+要进行大型部署的客户需要一次更新多个 VM。 要手动更新选定的 VM，请参阅下一节 
 
 ```powershell
 <#
@@ -151,7 +152,7 @@ else
 ```azurecli
 az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```
-在输出中找到 **"AzureNetworkWatcherExtension"** ，并从输出中的 *"TypeHandlerVersion"* 字段标识版本号。  请注意：有关扩展的信息会在 JSON 输出中多次出现。 请在“extensions”块下查看，你会看到扩展的完整版本号。 
+在输出中找到“AzureNetworkWatcherExtension”，并从输出中的“TypeHandlerVersion”字段确定版本号。  请注意：有关扩展的信息会在 JSON 输出中多次出现。 请在“extensions”块下查看，你会看到扩展的完整版本号。 
 
 你会该看到如下内容：![Azure CLI 屏幕截图](./media/network-watcher/azure-cli-screenshot.png)
 
@@ -162,13 +163,13 @@ az vm get-instance-view --resource-group  "SampleRG" --name "Sample-VM"
 ```powershell
 Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 ```
-在输出中找到 Azure 网络观察程序扩展，并在输出的 *"TypeHandlerVersion"* 字段中标识版本号。   
+在输出中找到“Azure Network Watcher extension”，并从输出中的“TypeHandlerVersion”字段确定版本号。   
 
 你会该看到如下内容：![PowerShell 屏幕截图](./media/network-watcher/powershell-screenshot.png)
 
 ### <a name="update-your-extension"></a>更新扩展
 
-如果你的版本低于上面提到的最新版本，请使用以下任一选项更新你的扩展。
+如果你的版本低于上面提到的最新版本，请使用以下任一选项更新扩展。
 
 #### <a name="option-1-use-powershell"></a>选项 1：使用 PowerShell
 
@@ -241,4 +242,4 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ## <a name="support"></a>支持
 
-如果在本文的任何位置需要更多帮助，请参阅 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md) 的网络观察程序扩展文档。 你还可以联系 MSDN Azure 上的 Azure 专家 [并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，提交 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 " **获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果在本文的任何位置需要更多帮助，请参阅 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md) 的网络观察程序扩展文档。 还可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

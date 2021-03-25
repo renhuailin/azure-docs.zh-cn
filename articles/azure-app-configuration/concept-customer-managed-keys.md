@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930494"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户管理的密钥加密应用程序配置数据
@@ -20,7 +20,7 @@ Azure 应用程序配置[对敏感信息进行静态加密](../security/fundamen
 Azure 应用程序配置使用 Microsoft 提供的 256 位 AES 加密密钥来静态加密敏感信息。 每个应用程序配置实例都有其自己的加密密钥，该密钥由服务管理并用于加密敏感信息。 敏感信息包括在键值对中找到的值。  启用客户管理的密钥功能后，应用程序配置将使用分配给应用程序配置实例的托管标识对 Azure Active Directory 进行身份验证。 然后，托管标识调用 Azure Key Vault 并包装应用程序配置实例的加密密钥。 然后存储已包装的加密密钥，并在应用程序配置中将已解包的加密密钥缓存一小时。 应用程序配置每小时刷新应用程序配置实例加密密钥的已解包版本。 这可确保在正常操作情况下的可用性。 
 
 >[!IMPORTANT]
-> 如果分配给应用程序配置实例的标识不再有权解包实例的加密密钥，或者如果永久删除了托管密钥，则将无法再对存储在应用程序配置实例中的敏感信息进行解密。 使用 Azure Key Vault 的 [软删除](../key-vault/general/soft-delete-overview.md) 功能减少了意外删除加密密钥的几率。
+> 如果分配给应用程序配置实例的标识不再有权解包实例的加密密钥，或者如果永久删除了托管密钥，则将无法再对存储在应用程序配置实例中的敏感信息进行解密。 使用 Azure Key Vault 的[软删除](../key-vault/general/soft-delete-overview.md)功能可降低意外删除加密密钥的概率。
 
 当用户在其 Azure 应用程序配置实例上启用客户管理的密钥功能时，他们将控制服务访问其敏感信息的能力。 托管密钥用作根加密密钥。 用户可以通过更改其密钥保管库访问策略来撤消其应用程序配置实例对其托管密钥的访问权限。 撤消此访问权限时，应用程序配置将在一小时内失去解密用户数据的能力。 此时，应用程序配置实例将禁止所有访问尝试。 可通过再次向服务授予对托管密钥的访问权限来从这种情况中恢复。  在一小时内，应用程序配置将能够对用户数据进行解密，并在正常情况下运行。
 

@@ -4,10 +4,10 @@ description: 有关如何使用 Azure Functions 代理的概述
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96601367"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
@@ -108,7 +108,7 @@ ms.locfileid: "96601367"
 
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用函数支持的任意 [部署方法](./functions-continuous-deployment.md) 时，可以手动编辑此文件并将其作为应用的一部分进行部署。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用 Functions 支持的任意[部署方法](./functions-continuous-deployment.md)时，可以手动编辑此文件并将其部署为应用的一部分。 
 
 > [!TIP] 
 > 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。  这样，便可以看到 Function App 的整个文件结构并进行更改。

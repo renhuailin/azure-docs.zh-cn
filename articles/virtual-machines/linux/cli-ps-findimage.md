@@ -2,16 +2,18 @@
 title: 使用 Azure CLI 选择 Linux VM 映像
 description: 了解如何使用 Azure CLI 确定发布服务器、产品/服务、SKU 和市场 VM 映像的版本。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 8954ad03bd5f539e9dcfbb4249f4e7cc1cf0bc7f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.collection: linux
+ms.openlocfilehash: efa0b91c9c0e43104f36017c3b1a1f3167190d63
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685117"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562803"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 
@@ -19,23 +21,23 @@ ms.locfileid: "98685117"
 
 还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure PowerShell](../windows/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-请确保已登录到 Azure 帐户 (`az login`) 。
+确保你已经登录到 Azure 帐号 (`az login`)。
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用采购计划参数从 VHD 部署
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用购买计划参数从 VHD 部署
 
-如果现有 VHD 是使用付费 Azure Marketplace 映像创建的，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。 
+如果你有一个使用付费 Azure 市场映像创建的现有 VHD，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。 
 
-如果仍具有原始 VM 或使用相同的 marketplace 映像创建的其他 VM，则可以使用 [az VM get-help](/cli/azure/vm#az_vm_get_instance_view)获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
+如果你仍有原始 VM 或有使用同一市场映像创建的其他 VM，则可以使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 从其中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
 
 ```azurepowershell-interactive
 az vm get-instance-view -g myResourceGroup -n myVM --query plan
 ```
 
-如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 它们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
+如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
 
 获得计划信息后，可以使用 `--attach-os-disk` 参数指定 VHD 来创建新的 VM。
 
@@ -51,9 +53,9 @@ az vm create \
   --plan-product planProduct 
 ```
 
-## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>使用采购计划参数部署新的 VM
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>使用购买计划参数部署新的 VM
 
-如果你已经有映像的相关信息，可以使用命令来部署它 `az vm create` 。 在此示例中，我们将使用由 Bitnami 映像认证的 RabbitMQ 部署 VM：
+如果你已经有映像的相关信息，可以使用 `az vm create` 命令来部署它。 在此示例中，使用 Bitnami 认证的 RabbitMQ 映像部署 VM：
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus
@@ -340,7 +342,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。  (一些映像还具有 `promotion code` 属性。 ) 若要部署此映像，请参阅以下部分以接受条款并启用编程部署。
+对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。）若要部署此映像，请参阅以下部分，以接受条款并启用编程部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest

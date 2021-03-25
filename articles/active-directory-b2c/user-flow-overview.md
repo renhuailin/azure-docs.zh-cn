@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 06253b571fd71623501c27fd5b0d9d4013727fc2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94840182"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流
@@ -70,8 +70,8 @@ Azure AD B2C 包括多种类型的用户流：
 > [!IMPORTANT]
 > 如果你以前在 Azure AD B2C 中使用过用户流，会发现我们已更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 现在，我们已将用户流合并为两个版本：
 >
->- “推荐”用户流是用户流的新预览版本。 它们已经过全面测试，而且合并了旧版 V2 和 V1.1 版本的所有功能 。 今后我们将会维护和更新这些新的推荐用户流。 转到这些新的推荐用户流后，新功能一经发布你就会有新功能的使用权限。
->- “标准”用户流（以前称为 V1）是正式发布的、可随时用于生产的用户流 。 如果你的用户流是关键任务型，并且依赖高度稳定的版本，则可继续使用标准用户流，只是要知道这些版本将不会得到维护和更新。
+>- 建议的用户流是用户流的新预览版本。 它们经过全面测试，并结合了旧的 V2 和 V1.1 版本的所有功能 。 今后，将维护并更新新的建议用户流。 转到这些新的建议用户流后，就可以在新功能发布后对其进行访问。
+>- 标准用户流（以前称为 V1）是正式发布的生产就绪用户流 。 如果用户流是任务关键型，并且依赖于高度稳定的版本，可以继续使用标准用户流，但请认识到我们不会维护和更新这些版本。
 >
 >所有旧的预览版用户流（V1.1 和 V2）都将在 2021 年 8 月 1 日之前逐渐被弃用。 强烈建议尽早[切换到新的推荐用户流](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow)，以便始终能够利用最新功能和更新。
 

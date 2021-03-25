@@ -1,21 +1,31 @@
 ---
 title: 将数据迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 description: 本文档概述将数据从 MongoDB 迁移到 Cosmos DB 的先决条件。
-author: christopheranderson
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.author: chrande
-ms.openlocfilehash: ced795385fdf00e706ea897db80f558b513a9f9d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.author: anfeldma
+ms.openlocfilehash: cdc5dc9cee3520d9a3f22ff710dfa193e6ef4fed
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656952"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553283"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
+> [!IMPORTANT]  
+> 本 MongoDB 迁移前指南是有关将 MongoDB 大规模迁移到 Azure Cosmos DB Mongo API 的系列教程中的第一篇。 在自我管理的基础结构上许可和部署 MongoDB 的客户可能希望通过迁移到采用即用即付定价模式并具有弹性可伸缩性的托管云服务（例如 Azure Cosmos DB），来降低和控制其数据资产的成本。 本系列教程旨在引导客户完成迁移过程：
+>
+> 1. [迁移之前](mongodb-pre-migration.md) - 盘点现有的 MongoDB 数据资产，规划迁移，并选择适当的迁移工具。
+> 2. 执行 - 使用提供的[教程]()从 MongoDB 迁移到 Azure Cosmos DB。
+> 3. [迁移之后](mongodb-post-migration.md) - 更新并优化现有应用程序，使其针对新的 Azure Cosmos DB 数据资产执行。
+>
+
+可靠的迁移前计划可对团队迁移的时效和成功产生巨大影响。 迁移前的规划就好比是起动一个新项目，一开始可能是定义要求，然后列出相关任务的纲要，并规定哪些最重大的任务需要优先处理。 这有助于项目计划变得可预测，但当然，将来可能有意外的要求出现，使项目计划变得更复杂。 回到迁移的话题 - 在迁移前的阶段制定综合性的执行计划能够在后面的迁移过程中最大程度地减少出现意外迁移任务的可能性，在迁移期间节省时间，并帮助确保符合目标。
 
 在将数据从 MongoDB（本地或云中）迁移到 Azure Cosmos DB's API for MongoDB 之前，应执行以下操作：
 
@@ -48,7 +58,7 @@ ms.locfileid: "101656952"
 |联机|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
 |Offline|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
 |Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)|&bull; 易于设置且支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
-|Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
+|脱机|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
 
 ## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a>估算工作负荷的吞吐量需求
 
@@ -80,7 +90,7 @@ ms.locfileid: "101656952"
 
 ## <a name="index-your-data"></a><a id="indexing"></a>为数据编制索引
 
-适用于 MongoDB 服务器版本3.6 和更高版本的 API 仅自动为字段编制索引 `_id` 。 Azure Cosmos DB 无法删除此字段。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 若要为其他字段编制索引，请应用 [MongoDB 索引管理命令](mongodb-indexing.md)。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
+Azure Cosmos DB's API for MongoDB 服务器 3.6 和更高版本仅自动为 `_id` 字段编制索引。 无法删除此字段。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 若要对其他字段编制索引，请应用 [MongoDB 索引管理命令](mongodb-indexing.md)。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
 
 Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 详情请参阅 [Azure Cosmos DB API for MongoDB 中的索引编制](mongodb-indexing.md)一文。
 

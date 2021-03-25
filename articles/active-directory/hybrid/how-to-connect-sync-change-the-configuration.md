@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2044653673da10de59d5ff125da44ac1f89e22f9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861844"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
@@ -262,19 +262,19 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮创建新的入站规则。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | Value | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
     | 说明 | *提供说明* |  |
     | 连接的系统 | 选择本地 AD 连接器 |  |
-    | 连接的系统对象类型 | **User** |  |
+    | 连接的系统对象类型 | **用户** |  |
     | Metaverse 对象类型 | **Person** |  |
     | 链接类型 | **Join** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含以下子句的 **单个范围筛选器组**：
 
-    | 属性 | 运算符 | Value |
+    | 属性 | 运算符 | 值 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 用户\_ |
 
@@ -282,13 +282,13 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 6. 转到“转换”选项卡并实现所需转换规则。 例如，如果指定了未使用的本地 AD 属性（例如 extensionAttribute1）作为 UserType 的源属性，则可以实现直接属性流：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | extensionAttribute1 | 未选中 | 更新 |
 
     另举一例，我们可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性结尾是域部分 <em>@partners.fabrikam123.org</em>，则应将这些用户全部同步为 Guest。可如下所示实现表达式：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 表达式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | 未选中 | 更新 |
 
@@ -304,19 +304,19 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | Value | 详细信息 |
+    | 属性 | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
     | 说明 | *提供说明* ||
     | 连接的系统 | 选择 AAD 连接器 ||
-    | 连接的系统对象类型 | **User** ||
+    | 连接的系统对象类型 | **用户** ||
     | Metaverse 对象类型 | **Person** ||
     | 链接类型 | **Join** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的 **单个范围筛选器组**：
 
-    | 属性 | 运算符 | Value |
+    | 属性 | 运算符 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -325,7 +325,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | UserType | 未选中 | 更新 |
 
@@ -394,7 +394,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 ## <a name="next-steps"></a>后续步骤
 * 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
-* 在[了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)中阅读有关表达式语言的详细信息。
+* 在 [Understanding Declarative Provisioning Expressions](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)（了解声明性预配表达式）中了解有关表达式语言的详细信息。
 
 **概述主题**
 

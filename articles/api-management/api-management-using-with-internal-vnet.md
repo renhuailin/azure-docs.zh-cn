@@ -12,14 +12,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
-ms.translationtype: MT
+ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145508"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565948"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -43,11 +43,11 @@ ms.locfileid: "93145508"
 
 若要执行本文中所述的步骤，必须具有：
 
-+ **一个有效的 Azure 订阅** 。
++ **一个有效的 Azure 订阅**。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **一个 Azure API 管理实例** 。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 当 API 管理服务部署在虚拟网络中时，将使用[列表中的端口](./api-management-using-with-vnet.md#required-ports)并且需要重新打开它们。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
@@ -74,7 +74,7 @@ ms.locfileid: "93145508"
 
 [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
 也可以使用 PowerShell cmdlet 启用虚拟网络连接。
 
@@ -83,7 +83,7 @@ ms.locfileid: "93145508"
 * 在虚拟网络中更新 API 管理服务的现有部署：使用 cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS 配置
-如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须自行管理 DNS。
+如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须自行管理 DNS。 建议配置 Azure DNS 专用区域并将其链接到部署到的虚拟网络 API 管理服务。  单击[此处](../dns/private-dns-getstarted-portal.md)以了解如何在 Azure DNS 中设置专用区域。
 
 > [!NOTE]
 > API 管理服务不会侦听来自 IP 地址的请求， 它只响应到发往其服务终结点上配置的主机名的请求。 这些终结点包括网关、Azure 门户和开发人员门户、直接管理终结点和 Git。
@@ -93,9 +93,9 @@ ms.locfileid: "93145508"
 
    * 网关或代理：contosointernalvnet.azure-api.net
 
-   * 开发人员门户： contosointernalvnet.portal.azure-api.net
+   * 开发人员门户：contosointernalvnet.portal.azure-api.net
 
-   * 新开发人员门户： contosointernalvnet.developer.azure-api.net
+   * 新开发人员门户：contosointernalvnet.developer.azure-api.net
 
    * 直接管理终结点：contosointernalvnet.management.azure-api.net
 
@@ -107,7 +107,7 @@ ms.locfileid: "93145508"
 
    * 10.1.0.5     contosointernalvnet.portal.azure-api.net
 
-   * 10.1.0.5 contosointernalvnet.developer.azure-api.net
+   * 10.1.0.5     contosointernalvnet.developer.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.management.azure-api.net
 

@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 35fa0fc134045585eebd21324352f9b4ff272e87
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954233"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 用户界面管理备份作业和备份目录
@@ -37,8 +37,8 @@ StorSimple Snapshot Manager 具有直观的用户界面，可用于执行和管�
 * [菜单栏](#menu-bar) 
 * [工具栏](#tool-bar) 
 * [作用域窗格](#scope-pane) 
-* [结果窗格](#results-pane) 
-* [操作窗格](#actions-pane) 
+* [“结果”窗格](#results-pane) 
+* [“操作”窗格](#actions-pane) 
 
 此外，StorSimple Snapshot Manager 还支持[键盘导航和许多快捷键](#keyboard-navigation-and-shortcuts)。
 
@@ -354,7 +354,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 ### <a name="menu-bar-shortcut-keys"></a>菜单栏的快捷键
 下表介绍了菜单栏的快捷键组合。 按下快捷键且菜单打开后，可以使用菜单的快捷键（菜单上带下划线的键）。 有关菜单栏的详细信息，请转至[菜单栏](#menu-bar)。
 
-| 快捷方式 | 结果 | 菜单的快捷键 | 结果 |
+| 快捷键 | 结果 | 菜单的快捷键 | 结果 |
 |:--- |:--- |:--- |:--- |
 | ALT+F |打开 **“文件”** 菜单。 |N |可打开一个新的控制台实例。 |
 |  |O |打开 **“管理工具”** 页。 | |

@@ -1,16 +1,16 @@
 ---
 title: 了解 Azure 应用程序配置键值存储
-description: 了解 Azure 应用配置中的键-值存储，将配置数据存储为键值。 键-值为应用程序设置的表示形式。
+description: 了解 Azure 应用程序配置中的键值存储，这一功能可将配置数据存储为键值。 键值是应用程序设置的表示形式。
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930239"
 ---
 # <a name="keys-and-values"></a>键和值

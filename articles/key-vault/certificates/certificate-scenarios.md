@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94920434"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
@@ -37,7 +37,7 @@ ms.locfileid: "94920434"
 
 **步骤 1** - 证书颁发机构 (CA) 提供者  
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
-    以下 Ca 是 Key Vault 的当前合作提供商。 在[此处](./create-certificate.md#partnered-ca-providers)了解详细信息   
+    以下 CA 是目前可以与 Key Vault 配合使用的提供者。 在[此处](./create-certificate.md#partnered-ca-providers)了解详细信息   
     -   DigiCert - Key Vault 提供 DigiCert 的 OV TLS/SSL 证书。  
     -   GlobalSign - Key Vault 提供 GlobalSign 的 OV TLS/SSL 证书。  
 

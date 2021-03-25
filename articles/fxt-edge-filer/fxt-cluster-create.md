@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220799"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教程：创建 Azure FXT Edge Filer 群集
@@ -152,7 +152,7 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 下一个屏幕将提示你配置用于新群集的选项。
 
-该页分为两个主要部分：“基本配置”和“网络配置”   。 “网络配置”部分还包含子部分：一个用于**管理**网络，另一个用于**群集**网络。
+该页分为两个主要部分：“基本配置”和“网络配置”   。 “网络配置”部分还包含子部分：一个用于 **管理** 网络，另一个用于 **群集** 网络。
 
 ### <a name="basic-configuration"></a>基本配置
 
@@ -177,21 +177,21 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
   
   应该为管理群集的每个人设置单独的用户帐户，但不能删除用户 `admin`。 如果需要创建其他用户，请以 `admin` 身份登录。
 
-  可以在群集控制面板的“管理” > “用户”设置页中更改 `admin` 的密码   。 有关详细信息，请阅读[群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html)中的**用户**文档。
+  可以在群集控制面板的“管理” > “用户”设置页中更改 `admin` 的密码   。 有关详细信息，请阅读 [群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html)中的 **用户** 文档。
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>网络配置
 
-**网络**部分会提示你指定群集将使用的网络基础结构。
+**网络** 部分会提示你指定群集将使用的网络基础结构。
 
 有两个单独的网络可供配置：
 
-* *管理网络*提供对群集的管理员访问权限，以进行配置和监视。 连接到控制面板或进行 SSH 访问时使用此处指定的 IP 地址。
+* *管理网络* 提供对群集的管理员访问权限，以进行配置和监视。 连接到控制面板或进行 SSH 访问时使用此处指定的 IP 地址。
 
   大多数群集仅使用单个管理 IP 地址，但如果想要添加接口，则可以在创建群集后执行此操作。
 
-* *群集网络*用于群集节点之间以及群集节点和后端存储（核心文件管理器）之间的通信。
+* *群集网络* 用于群集节点之间以及群集节点和后端存储（核心文件管理器）之间的通信。
 
 面向客户端的网络在稍后进行配置，即创建群集后。
 
@@ -311,7 +311,7 @@ Azure FXT Edge Filer 混合存储缓存群集使用三种 IP 地址：
 
 * 指定后端存储
 
-  为群集将使用的每个后端存储系统添加*核心文件管理器*定义。 有关详细信息，请阅读[添加后端存储并配置虚拟命名空间](fxt-add-storage.md#about-back-end-storage)。
+  为群集将使用的每个后端存储系统添加 *核心文件管理器* 定义。 有关详细信息，请阅读[添加后端存储并配置虚拟命名空间](fxt-add-storage.md#about-back-end-storage)。
 
 * 设置客户端访问和虚拟命名空间
 

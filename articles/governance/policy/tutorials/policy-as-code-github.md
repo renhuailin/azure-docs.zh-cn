@@ -4,10 +4,10 @@ description: 本教程介绍如何通过导出、GitHub 操作和 GitHub 工作�
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92325838"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>教程：通过 GitHub 实现 Azure Policy as Code
@@ -40,10 +40,10 @@ ms.locfileid: "92325838"
 
 1. 在“基本信息”选项卡上，设置以下选项，然后选择“策略”选项卡或页面底部的“下一步:  策略”按钮。
 
-   - **存储库筛选器** ：设置为“我的存储库”以仅查看自己拥有的存储库，或设置为“所有存储库”以查看为 GitHub 操作授予了访问权限的所有存储库 。
-   - **存储库** ：设置为要将 Azure Policy 资源导出到的存储库。
-   - **分支** ：在存储库中设置分支。 在将更新进一步合并到源代码中之前，非常适合使用非默认分支来验证更新。
-   - **目录** ：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
+   - **存储库筛选器**：设置为“我的存储库”以仅查看自己拥有的存储库，或设置为“所有存储库”以查看为 GitHub 操作授予了访问权限的所有存储库 。
+   - **存储库**：设置为要将 Azure Policy 资源导出到的存储库。
+   - **分支**：在存储库中设置分支。 在将更新进一步合并到源代码中之前，非常适合使用非默认分支来验证更新。
+   - **目录**：要将 Azure Policy 资源导出到的根级别文件夹。 此目录下的子文件夹基于导出的资源而创建。
 
 1. 在“策略”选项卡上，选择省略号，然后选择管理组、订阅或资源组的组合，以设置搜索范围。
    
@@ -88,11 +88,11 @@ ms.locfileid: "92325838"
 
 1. 工作流通过 Azure 同步对策略对象的更改，然后在日志中显示状态。
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="GitHub Web 界面中的“操作”选项卡、工作流和“运行工作流”按钮的屏幕截图。":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="运行中的工作流和记录到日志中的详细信息的屏幕截图。":::
 
 1. 工作流还会将详细信息添加到 Azure Policy 对象 `properties.metadata` 中，以便用户跟踪。
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="GitHub Web 界面中的“操作”选项卡、工作流和“运行工作流”按钮的屏幕截图。":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Azure 门户中 Azure Policy 定义的屏幕截图，其中更新了特定于 GitHub 操作的元数据。":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>使用 GitHub 操作触发符合性扫描
 

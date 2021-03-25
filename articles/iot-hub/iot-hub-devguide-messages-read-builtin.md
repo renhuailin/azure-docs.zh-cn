@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147670"
 ---
-# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>从内置终结点读取设备到云的消息
+# <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
-默认情况下，消息将路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (**messages/events**) 中。 目前仅在端口 5671 上使用 [AMQP](https://www.amqp.org/) 协议公开此终结点。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
+默认情况下，消息将路由到与 [事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的内置面向服务的终结点 (**messages/events**) 中。 目前仅在端口 5671 上使用 [AMQP](https://www.amqp.org/) 协议公开此终结点。 IoT 中心公开以下属性，以便用户控制内置的与事件中心兼容的消息传送终结点 **messages/events**。
 
 | 属性            | 说明 |
 | ------------------- | ----------- |
@@ -41,7 +41,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 某些产品集成和事件中心 SDK 可以感知 IoT 中心，并让你使用 IoT 中心服务连接字符串连接到内置的终结点。
 
-使用无法感知 IoT 中心的事件中心 SDK 或产品集成时，需要一个与事件中心兼容的终结点以及与事件中心兼容的名称。 可以从门户检索这些值，如下所示：
+使用无法感知 IoT 中心的事件中心 SDK 或产品集成时，需要一个与事件中心兼容的终结点以及与事件中心兼容的名称。 可以从门户中检索这些值，如下所示：
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
@@ -51,11 +51,11 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
     ![设备到云的设置](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456。 如果所用 SDK 需求其他值，则这些值将会是：
+在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456。 如果你使用的 SDK 需要其他值，则这些值将是：
 
-| 名称 | Value |
+| 名称 | 值 |
 | ---- | ----- |
-| 终结点 | sb://abcd1234namespace.servicebus.windows.net/ |
+| 端点 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主机名 | abcd1234namespace.servicebus.windows.net |
 | 命名空间 | abcd1234namespace |
 
@@ -63,7 +63,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 可以用来连接到内置的、与事件中心兼容的且由 IoT 中心公开的终结点的 SDK 包括：
 
-| 语言 | SDK | 示例 |
+| 语言 | SDK 中 IsInRole 中的声明 | 示例 |
 | -------- | --- | ------ |
 | .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](quickstart-send-telemetry-dotnet.md) |
 | Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |
