@@ -5,10 +5,10 @@ ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
 ms.openlocfilehash: 9843b824c62e0f9919d7a71a717d9aad03dcbd9c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590837"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
@@ -92,7 +92,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../
 
 | Azure 角色名称             | 创建 | 重命名 | 移动\*\* | 删除 | 分配访问权限 | 分配策略 | 读取  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|所有者                       | X      | X      | X        | X      | X             | X             | X     |
+|“所有者”                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
 |读取器                      |        |        |          |        |               |               | X     |

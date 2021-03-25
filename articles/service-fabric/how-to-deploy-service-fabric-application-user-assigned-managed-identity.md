@@ -4,10 +4,10 @@ description: 本文介绍如何使用用户分配的托管标识部署 Service F
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260086"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>使用用户分配的托管标识部署 Service Fabric 应用程序
@@ -16,7 +16,7 @@ ms.locfileid: "86260086"
 
 > [!NOTE] 
 > 
-> 未部署为 Azure 资源的应用程序**不能**有托管标识。 
+> 未部署为 Azure 资源的应用程序 **不能** 有托管标识。 
 >
 > API 版本 `"2019-06-01-preview"` 支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。
 >

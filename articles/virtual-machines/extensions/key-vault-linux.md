@@ -1,20 +1,21 @@
 ---
 title: 适用于 Linux 的 Azure Key Vault VM 扩展
 description: 部署一个代理，该代理使用虚拟机扩展在虚拟机上执行 Key Vault 证书自动刷新操作。
-services: virtual-machines-linux
+services: virtual-machines
 author: msmbaldwin
 tags: keyvault
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: a674f4a2a31fd217307ff373cba2b883a4d129f8
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051355"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557057"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
@@ -38,7 +39,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
   - 具有证书的 Key Vault 实例。 请参阅[创建 Key Vault](../../key-vault/general/quick-create-portal.md)
   - VM/VMSS 必须已分配[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
   - 必须使用机密 `get` 和 `list` 权限为 VM/VMSS 托管标识设置 Key Vault 访问策略，以检索证书的机密部分。 请参阅[如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)和[分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-cli.md)。
-  -  VMSS 应具有以下标识设置： ` 
+  -  VMSS 应具有以下标识设置：` 
   "identity": {
   "type": "UserAssigned",
   "userAssignedIdentities": {
@@ -47,7 +48,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
   }
   `
   
- - AKV 扩展应具有此设置： `
+ - AKV 扩展应具有此设置：`
                  "authenticationSettings": {
                     "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
@@ -56,7 +57,7 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体来说：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -163,7 +164,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
     ...
 }
 ```
-> 纪录使用此功能与创建系统分配的标识并使用该标识更新 Key Vault 访问策略的 ARM 模板不兼容。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
+> [注意] 使用此功能与 ARM 模板不兼容（该模板会创建系统分配的标识并使用该标识更新 Key Vault 访问策略）。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]
@@ -249,7 +250,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
   没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 

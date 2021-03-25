@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect 云同步按需预配
-description: 本文介绍按需预配功能。
+title: Azure AD Connect 云同步中的按需预配
+description: 本文介绍如何使用 Azure AD Connect 的云同步功能来测试配置更改。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,88 +11,90 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622518"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554269"
 ---
-# <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect 云同步按需预配
+# <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步中的按需预配
 
-Azure AD Connect 云同步引入了一项新功能，通过将这些更改应用于单个用户，可以测试配置更改。  你可以使用它来验证并验证对配置所做的更改是否已正确应用并正确地同步到 Azure AD。  
+可以使用 Azure Active Directory (Azure AD) Connect 的云同步功能来测试配置更改，方法是将这些更改应用于单个用户。 此按需预配可帮助你验证和确认对配置所做的更改是否已适当应用并正确同步到 Azure AD。  
 
 > [!IMPORTANT] 
-> 使用按需预配时，范围筛选器将不会应用于所选用户。  这意味着，你可以在指定的 Ou 之外的用户上使用按需预配。
+> 使用按需预配时，范围筛选器不会应用于所选用户。 你可以在指定的组织单位之外的用户上使用按需预配。
 
-
-## <a name="using-on-demand-provisioning"></a>使用按需预配
-若要使用新功能，请执行以下步骤。
-
+## <a name="validate-a-user"></a>验证用户
+若要使用按需预配，请执行以下步骤：
 
 1.  在 Azure 门户中，选择“Azure Active Directory”。 
 2.  选择“Azure AD Connect”。
-3.  选择 " **管理云同步**"。
+3.  选择“管理云同步”。
 
-    ![管理预配](media/how-to-install/install-6.png)
-4. 在 " **配置**" 下，选择您的配置。
-5. 在 " **验证** " 下单击 " **设置用户** " 按钮。 
+    ![屏幕截图，显示用于管理云同步的链接。](media/how-to-install/install-6.png)
+4. 在“配置”下选择你的配置。
+5. 在“验证”下选择“预配用户”按钮。  
 
- ![预配用户](media/how-to-on-demand-provision/on-demand-2.png)
+   ![屏幕截图，显示用于预配用户的按钮。](media/how-to-on-demand-provision/on-demand-2.png)
 
-6. 在 "按需设置" 屏幕上。  输入用户的 **可分辨名称** ，然后单击 " **设置** " 按钮。  
+6. 在“按需预配”屏幕上输入用户的可分辨名称，然后选择“预配”按钮。   
  
- ![按需预配](media/how-to-on-demand-provision/on-demand-3.png)
-7. 完成后，应会看到 "成功" 屏幕和4个绿色复选框，指示已成功设置。  任何错误都将显示在左侧。
+   ![屏幕截图，显示用户名和“预配”按钮。](media/how-to-on-demand-provision/on-demand-3.png)
+7. 预配完成后，会显示包含四个绿色对勾标记的成功屏幕。 任何错误都显示在左侧。
 
-  ![成功](media/how-to-on-demand-provision/on-demand-4.png)
+   ![屏幕截图，显示成功进行预配。](media/how-to-on-demand-provision/on-demand-4.png)
 
-现在，你可以查看用户并确定是否已应用你在配置中所做的更改。  本文档的其余部分将介绍已成功同步用户的详细信息中显示的各个部分。
+## <a name="get-details-about-provisioning"></a>获取有关预配的详细信息
+现在，你可以查看用户信息并确定是否已应用在配置中所做的更改。 本文其余部分介绍了会在成功同步的用户的详细信息中显示的各个部分。
 
-## <a name="import-user-details"></a>导入用户详细信息
-本部分提供有关从 Active Directory 导入的用户的信息。  这是用户在将其预配到 Azure AD 之前的样子。  单击 " **查看详细信息** " 链接以显示此信息。
+### <a name="import-user"></a>导入用户
+“导入用户”部分提供已从 Active Directory 导入的用户的信息。 这是用户在预配到 Azure AD 中之前的外观。 选择“查看详细信息”链接以显示此信息。
 
-![导入用户](media/how-to-on-demand-provision/on-demand-5.png)
+![屏幕截图，显示一个用于查看已导入用户的详细信息的按钮。](media/how-to-on-demand-provision/on-demand-5.png)
 
-使用此信息，可以看到导入的各种属性及其值。  如果已创建自定义属性映射，则可以在此处看到值。
-![导入用户详细信息](media/how-to-on-demand-provision/on-demand-6.png)
+你可以通过此信息查看各种已导入的属性（及其值）。 如果创建了自定义属性映射，则可在此处看到值。
 
-## <a name="determine-if-user-is-in-scope-details"></a>确定用户是否处于范围详细信息
-本部分提供有关已导入到 Azure AD 的用户是否在范围内的信息。  单击 " **查看详细信息** " 链接以显示此信息。
+![屏幕截图显示了用户详细信息。](media/how-to-on-demand-provision/on-demand-6.png)
 
-![用户范围](media/how-to-on-demand-provision/on-demand-7.png)
+### <a name="determine-if-user-is-in-scope"></a>确定用户是否在范围内
+“确定用户是否在范围内”部分说明了导入到 Azure AD 的用户是否在范围内。 选择“查看详细信息”链接以显示此信息。
 
-使用此信息，可以查看有关用户范围的其他信息。
+![屏幕截图，显示一个用于查看用户范围详细信息的按钮。](media/how-to-on-demand-provision/on-demand-7.png)
 
-![用户范围详细信息](media/how-to-on-demand-provision/on-demand-10a.png)
+可以通过此信息查看用户是否在范围内。
 
-## <a name="match-user-between-source-and-target-system-details"></a>在源和目标系统的详细信息之间匹配用户
-本部分提供有关用户是否已存在于 Azure AD 中的信息，是否应进行联接而不是设置新用户。  单击 " **查看详细信息** " 链接以显示此信息。
-![查看详细信息](media/how-to-on-demand-provision/on-demand-8.png)
+![屏幕截图显示了用户范围详细信息。](media/how-to-on-demand-provision/on-demand-10a.png)
 
-使用此信息，可以查看是否找到了匹配项，或者是否要创建新用户。
+### <a name="match-user-between-source-and-target-system"></a>在源系统和目标系统之间匹配用户
+“在源系统和目标系统之间匹配用户”部分说明了用户是否已存在于 Azure AD 中，以及是否应进行联接（而不是预配新用户）。 选择“查看详细信息”链接以显示此信息。
 
-![用户信息](media/how-to-on-demand-provision/on-demand-11.png)
+![屏幕截图，显示一个用于查看已匹配用户的详细信息的按钮。](media/how-to-on-demand-provision/on-demand-8.png)
 
-匹配详细信息将显示具有以下三个操作之一的消息。  它们是：
-- "创建"-在 Azure AD 中创建用户
-- 更新-用户根据配置中所做的更改进行更新
-- 删除-用户已从 Azure AD 中删除。
+可以通过此信息查看是否找到了匹配项，或者是否要创建新用户。
 
-根据执行的操作类型，消息将有所不同。
+![屏幕截图显示了用户信息。](media/how-to-on-demand-provision/on-demand-11.png)
 
-## <a name="perform-action-details"></a>执行操作详细信息
-本部分提供有关在应用配置后已设置或导出到 Azure AD 的用户的信息。  这是用户在将其预配到 Azure AD 后的样子。  单击 " **查看详细信息** " 链接以显示此信息。
-![执行操作详细信息](media/how-to-on-demand-provision/on-demand-9.png)
+匹配的详细信息显示了一条消息，其中包含以下三个操作之一：
+- **创建**：在 Azure AD 中创建用户。
+- **更新**：根据配置中所做的更改更新用户。
+- **删除**：从 Azure AD 中删除用户。
 
-使用此信息，可以在应用配置后查看属性的值。  它们看上去类似于导入的内容还是不同的内容？  配置是否成功？  
+消息因执行的操作的类型而异。
 
-这将允许你跟踪属性转换，因为它通过云端进入到 Azure AD 租户。
+### <a name="perform-action"></a>执行操作
+“执行操作”部分说明了已在应用配置后预配或导出到 Azure AD 中的用户。 这是用户在预配到 Azure AD 中之后的外观。 选择“查看详细信息”链接以显示此信息。
 
-![trace 特性](media/how-to-on-demand-provision/on-demand-12.png)
+![屏幕截图，显示一个用于查看已执行操作的详细信息的按钮。](media/how-to-on-demand-provision/on-demand-9.png)
+
+可以通过此信息在应用配置后查看属性的值。 它们看上去是类似于导入的内容还是有所不同？ 配置是否已成功应用？  
+
+此过程使你能够在属性转换通过云进行移动并进入 Azure AD 租户中时对其进行跟踪。
+
+![屏幕截图，显示所跟踪属性的详细信息。](media/how-to-on-demand-provision/on-demand-12.png)
 
 ## <a name="next-steps"></a>后续步骤 
 
 - [什么是 Azure AD Connect 云同步？](what-is-cloud-sync.md)
-- [如何安装 Azure AD Connect 云同步](how-to-install.md)
+- [安装 Azure AD Connect 云同步](how-to-install.md)
  

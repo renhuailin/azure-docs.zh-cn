@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: e096de5eea9bf5bbd47b976976192e62eb6aa33e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93096404"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>将 Robo 3T 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用
@@ -36,16 +36,16 @@ ms.locfileid: "93096404"
 
 3. 单击“文件”  下的“连接”按钮以管理连接。 然后，在“MongoDB 连接”  窗口中单击“创建”  ，这会打开“连接设置”  窗口。
 
-4. 在“连接设置”  窗口中，选择名称。 然后，从步骤 1 的连接信息中找到 **主机** 和 **端口** ，并将其分别输入到“地址”  和“端口”  中。
+4. 在“连接设置”  窗口中，选择名称。 然后，从步骤 1 的连接信息中找到 **主机** 和 **端口**，并将其分别输入到“地址”  和“端口”  中。
 
-    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
-5. 在“身份验证”  选项卡上，单击“执行身份验证”  。 然后，输入数据库（默认值为 Admin  ）、 **用户名** 和 **密码** 。
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Robomongo 管理连接的屏幕截图":::
+5. 在“身份验证”  选项卡上，单击“执行身份验证”  。 然后，输入数据库（默认值为 Admin  ）、**用户名** 和 **密码**。
 **用户名** 和 **密码** 可以在步骤 1 的连接信息中找到。
 
-    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Robomongo 身份验证选项卡的屏幕截图":::
 6. 在“SSL”  选项卡上，选中“使用 SSL 协议”  ，并将“身份验证方法”  更改为“自签名证书”  。
 
-    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="连接字符串边栏选项卡的屏幕截图":::
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Robomongo SSL 选项卡的屏幕截图":::
 7. 最后，单击“测试”  验证是否能够连接，并单击“保存”  。
 
 ## <a name="next-steps"></a>后续步骤

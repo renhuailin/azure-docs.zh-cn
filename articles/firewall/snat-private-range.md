@@ -7,16 +7,16 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.openlocfilehash: c425afc314435c38d15d53ab0c38dcd48e35a40b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072235"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508922"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火墙 SNAT 专用 IP 地址范围
 
-对于发往公共 IP 地址的所有出站流量，Azure 防火墙提供自动 SNAT。 默认情况下，当目标 IP 地址在符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 地址范围内时，Azure 防火墙不使用网络规则执行 SNAT。 应用程序规则始终使用 [透明代理](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) 来应用，不管目标 IP 地址是什么。
+对于发往公共 IP 地址的所有出站流量，Azure 防火墙提供自动 SNAT。 默认情况下，当目标 IP 地址在符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 地址范围内时，Azure 防火墙不使用网络规则执行 SNAT。 无论目标 IP 地址是什么，始终使用[透明代理](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)来应用应用程序规则。
 
 将流量直接路由到 Internet 时，此逻辑非常有效。 但是，如果已启用[强制隧道](forced-tunneling.md)，则会将 Internet 绑定的流量由 SNAT 转换为 AzureFirewallSubnet 中的某个防火墙专用 IP 地址，从而向本地防火墙隐藏源。
 
@@ -38,7 +38,7 @@ ms.locfileid: "98072235"
 
 ### <a name="new-firewall"></a>新建防火墙
 
-对于新的防火墙，Azure PowerShell cmdlet 是：
+对于新建防火墙，Azure PowerShell cmdlet 如下：
 
 ```azurepowershell
 $azFw = @{
@@ -53,12 +53,12 @@ $azFw = @{
 New-AzFirewall @azFw
 ```
 > [!NOTE]
-> 使用部署 Azure 防火墙 `New-AzFirewall` 需要现有的 VNet 和公共 IP 地址。 有关完整的部署指南，请参阅 [使用 Azure PowerShell 部署和配置 Azure 防火墙](deploy-ps.md) 。
+> 使用 `New-AzFirewall` 部署 Azure 防火墙需要一个现有的 VNet 和公共 IP 地址。 有关完整的部署指南，请参阅[使用 Azure PowerShell 部署和配置 Azure 防火墙](deploy-ps.md)。
 
 > [!NOTE]
 > 将其他范围添加到 Azure 防火墙中时，IANAPrivateRanges 将扩展到 Azure 防火墙上的当前默认值。 若要在专用范围规范中保留 IANAPrivateRanges 默认值，则必须将其保留在 `PrivateRange` 规范中，如以下示例所示。
 
-有关详细信息，请参阅 [New-AzFirewall](/powershell/module/az.network/new-azfirewall?view=azps-3.3.0)。
+有关详细信息，请参阅 [New-AzFirewall](/powershell/module/az.network/new-azfirewall)。
 
 ### <a name="existing-firewall"></a>现有防火墙
 
@@ -70,13 +70,13 @@ $azfw.PrivateRange = @("IANAPrivateRanges","192.168.1.0/24", "192.168.1.10")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>配置 SNAT 专用 IP 地址范围-Azure CLI
+## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>配置 SNAT 专用 IP 地址范围 - Azure CLI
 
 可以使用 Azure CLI 为防火墙指定专用 IP 地址范围。
 
 ### <a name="new-firewall"></a>新建防火墙
 
-对于新的防火墙，Azure CLI 命令为：
+对于新建防火墙，Azure CLI 命令如下：
 
 ```azurecli-interactive
 az network firewall create \
@@ -86,14 +86,14 @@ az network firewall create \
 ```
 
 > [!NOTE]
-> 使用 Azure CLI 命令部署 Azure 防火墙 `az network firewall create` 需要额外的配置步骤来创建公共 IP 地址和 IP 配置。 有关完整的部署指南，请参阅 [使用 Azure CLI 部署和配置 Azure 防火墙](deploy-cli.md) 。
+> 使用 Azure CLI 命令 `az network firewall create` 部署 Azure 防火墙需要额外的配置步骤来创建公共 IP 地址和 IP 配置。 有关完整的部署指南，请参阅[使用 Azure CLI 部署和配置 Azure 防火墙](deploy-cli.md)。
 
 > [!NOTE]
 > 将其他范围添加到 Azure 防火墙中时，IANAPrivateRanges 将扩展到 Azure 防火墙上的当前默认值。 若要在专用范围规范中保留 IANAPrivateRanges 默认值，则必须将其保留在 `PrivateRange` 规范中，如以下示例所示。
 
 ### <a name="existing-firewall"></a>现有防火墙
 
-若要配置现有防火墙，Azure CLI 命令为：
+若要配置现有防火墙，可使用以下 Azure CLI 命令：
 
 ```azurecli-interactive
 az network firewall update \
@@ -102,7 +102,7 @@ az network firewall update \
 --private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
 ```
 
-## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>配置 SNAT 专用 IP 地址范围-ARM 模板
+## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>配置 SNAT 专用 IP 地址范围 - ARM 模板
 
 若要在 ARM 模板部署期间配置 SNAT，可将以下内容添加到 `additionalProperties` 属性：
 

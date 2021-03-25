@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
 ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979838"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
@@ -67,7 +67,7 @@ ms.locfileid: "99979838"
 
 ### <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥。 
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 
     如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
     ```console

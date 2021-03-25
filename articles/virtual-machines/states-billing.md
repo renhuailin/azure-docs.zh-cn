@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 0325dcf16c8e637a58365311a4ebd37a442d6b8c
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525412"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596291"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Azure 虚拟机的状态和计费
 
@@ -82,6 +82,6 @@ OS 预配状态仅适用于使用 OS 映像创建的虚拟机。 专用映像将
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅 [Azure 成本管理和计费文档](https://docs.microsoft.com/azure/cost-management-billing/)
+- 请参阅 [Azure 成本管理和计费文档](../cost-management-billing/index.yml)
 - 使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)来规划你的部署。
-- 若要详细了解如何监视 VM，请参阅[在 Azure 中监视虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。
+- 若要详细了解如何监视 VM，请参阅[在 Azure 中监视虚拟机](../azure-monitor/vm/monitor-vm-azure.md)。

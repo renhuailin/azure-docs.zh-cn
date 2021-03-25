@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097798"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Mongoose 连接到 Cosmos DB
@@ -22,7 +22,7 @@ ms.locfileid: "93097798"
 
 本教程包含多个部分，演示了如何通过 Express 和 Angular 创建 Node.js 应用，然后将其连接到[使用 Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md)。 本文是教程的第 5 部分，内容基于[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)。
 
-本教程部分介绍以下操作：
+本教程的此部分介绍如何：
 
 > [!div class="checklist"]
 > * 使用 Mongoose 连接到 Cosmos DB。
@@ -225,9 +225,9 @@ Mongoose 是适用于 MongoDB 和 Node.js 的对象数据建模 (ODM) 库。 可
     function getHeroes(req, res) {
     ```
 
-请花点时间查看并演练上面的代码。 首先查看 index.js 文件，此文件用于设置节点服务器。 可以看到，其中设置并定义了路由。 接下来，routes.js 文件与 Hero 服务通信，要求该服务获取 **getHeroes** 之类的函数，并传递请求和响应。 hero.service.js 文件获取模型并连接到 Mongo。 然后，此文件执行调用的 **getHeroes** ，并返回响应 200。 
+请花点时间查看并演练上面的代码。 首先查看 index.js 文件，此文件用于设置节点服务器。 可以看到，其中设置并定义了路由。 接下来，routes.js 文件与 Hero 服务通信，要求该服务获取 **getHeroes** 之类的函数，并传递请求和响应。 hero.service.js 文件获取模型并连接到 Mongo。 然后，此文件执行调用的 **getHeroes**，并返回响应 200。 
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 接下来，请使用以下步骤运行应用：
 

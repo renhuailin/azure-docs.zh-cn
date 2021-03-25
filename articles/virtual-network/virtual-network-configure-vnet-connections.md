@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943650"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452095"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接
 
@@ -227,7 +227,7 @@ Azure 当前使用两种部署模型：资源管理器部署模型和经典部�
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但依赖于网络配置文件中静态定义的地址空间。 尚不支持通过经典部署模型使用 Azure 虚拟网络和 VPN 网关配置 BGP。 如果没有 BGP，手动定义传输地址空间很容易出错，因此不建议这样做。
 
 > [!Note]
-> 使用 Azure 经典门户或在经典门户中使用网络配置文件来配置经典网络到网络连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1)。
+> 可以使用 Azure 经典门户或使用经典门户中的网络配置文件来配置经典网络到网络连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1)。
 
 ### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>在站点到站点连接中配置传输路由
 
@@ -236,7 +236,7 @@ Azure 当前使用两种部署模型：资源管理器部署模型和经典部�
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但依赖于网络配置文件中静态定义的地址空间。 尚不支持通过经典部署模型使用 Azure 虚拟网络和 VPN 网关配置 BGP。 如果没有 BGP，手动定义传输地址空间很容易出错，因此不建议这样做。
 
 > [!Note]
-> 使用 Azure 经典门户或在经典门户中使用网络配置文件来配置经典站点到站点连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1)。
+> 可以使用 Azure 经典门户或使用经典门户中的网络配置文件来配置经典站点到站点连接。 无法通过 Azure 资源管理器部署模型或 Azure 门户来创建或修改经典虚拟网络。 有关经典虚拟网络传输路由的详细信息，请参阅 [Microsoft 开发人员博客](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1)。
 
 ## <a name="configure-bgp-for-a-vpn-gateway"></a>为 VPN 网关配置 BGP
 
@@ -248,7 +248,7 @@ BGP 是在 Internet 上使用的，用于在两个或更多网络之间交换路
 
 若要配置使用 BGP 的 VPN 连接，请参阅[使用 PowerShell 在 Azure VPN 网关上配置 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md)。
 
-通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。   如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)）更改为“VpnGw1”。   
+通过为虚拟网络网关创建自治系统 (AS) 编号在虚拟网络网关上启用 BGP。 基本网关不支持 BGP。 若要检查网关的 SKU，请在 Azure 门户中转到“VPN 网关”边栏选项卡的“概述”部分。   如果 SKU 为“基本”，则必须将 SKU（请参阅[调整网关大小](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)）更改为“VpnGw1”。   
 
 检查 SKU 会导致 20 到 30 分钟的停机时间。 网关获得正确的 SKU 后，你可以使用 [Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) PowerShell cmdlet 添加 AS 编号。 配置 AS 编号后，系统会自动提供网关的 BGP 对等互连 IP。
 

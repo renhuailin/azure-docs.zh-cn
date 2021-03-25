@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: e18c09130fcbcdbb470abc19d76bdf2ccfef0775
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175698"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510806"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -76,7 +76,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 IMDS 不用于在代理后使用，系统不支持那样做。 大多数 HTTP 客户端提供了一个选项，供你对你的请求禁用代理，当与 IMDS 通信时必须使用此功能。 有关详细信息，请参阅客户端的文档。
 
 > [!IMPORTANT]
-> 即使你不知道环境中的任何代理配置的信息，也必须重写任何默认的客户端代理设置。 可以自动发现代理配置，并且无法绕过此类配置，使你能够在未来更改计算机的配置时，为你提供中断风险。
+> 即使你不知道环境中的任何代理配置的信息，也必须重写任何默认的客户端代理设置。 代理配置可以被自动发现，未能绕过这样的配置就必须冒服务中断的风险（如果将来要更改计算机的配置的话）。
 
 ## <a name="rate-limiting"></a>速率限制
 
@@ -269,7 +269,7 @@ IMDS API 包含多个表示不同数据源的终结点类别，每一个都包�
 | `/metadata/attested` | 请参阅[证明数据](#attested-data) | 2018-10-01
 | `/metadata/identity` | 请参阅[通过 IMDS 托管的托管标识](#managed-identity) | 2018-02-01
 | `/metadata/instance` | 请参阅[实例元数据](#instance-metadata) | 2017-04-02
-| `/metadata/loadbalancer` | 请参阅 [通过 IMDS 检索负载均衡器元数据](#load-balancer-metadata) | 2020-10-01
+| `/metadata/loadbalancer` | 请参阅[通过 IMDS 检索负载均衡器元数据](#load-balancer-metadata) | 2020-10-01
 | `/metadata/scheduledevents` | 请参阅[通过 IMDS 计划的计划事件](#scheduled-events) | 2017-08-01
 | `/metadata/versions` | 请参阅[版本](#versions) | 不适用
 
@@ -333,7 +333,7 @@ GET /metadata/instance
 |------|-------------|--------------------|
 | `azEnvironment` | VM 运行时所在的 Azure 环境 | 2018-10-01
 | `customData` | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
-| `evictionPolicy` | 设置如何逐出 [专色 VM](../articles/virtual-machines/spot-vms.md) 。 | 2020-12-01
+| `evictionPolicy` | 设置逐出[现成 VM](../articles/virtual-machines/spot-vms.md) 的方式。 | 2020-12-01
 | `isHostCompatibilityLayerVm` | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
 | `licenseType` | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit)许可证的类型。 这仅适用于启用了 AHB 的 VM | 2020-09-01
 | `location` | VM 在其中运行的 Azure 区域 | 2017-04-02
@@ -345,9 +345,9 @@ GET /metadata/instance
 | `osType` | Linux 或 Windows | 2017-04-02
 | `placementGroupId` | 虚拟机规模集的[放置组](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 | `plan` | 包含 VM 的名称、产品和发布者（如果是 Azure 市场映像）的[计划](/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
-| `platformUpdateDomain` |  正在运行 VM 的[更新域](../articles/virtual-machines/manage-availability.md) | 2017-04-02
-| `platformFaultDomain` | 正在运行 VM 的[容错域](../articles/virtual-machines/manage-availability.md) | 2017-04-02
-| `priority` | VM 的优先级。 有关详细信息，请参阅[污点 vm](../articles/virtual-machines/spot-vms.md) | 2020-12-01
+| `platformUpdateDomain` |  正在运行 VM 的[更新域](../articles/virtual-machines/availability.md) | 2017-04-02
+| `platformFaultDomain` | 正在运行 VM 的[容错域](../articles/virtual-machines/availability.md) | 2017-04-02
+| `priority` | VM 的优先级。 有关详细信息，请参阅[现成 VM](../articles/virtual-machines/spot-vms.md) | 2020-12-01
 | `provider` | VM 的提供商 | 2018-10-01
 | `publicKeys` | [公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
 | `publisher` | VM 映像的发布者 | 2017-04-02
@@ -477,7 +477,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 0
 ```
 
-#### <a name="sample-3-get-vm-tags"></a>示例3：获取 VM 标记
+#### <a name="sample-3-get-vm-tags"></a>示例 3：获取 VM 标记
 
 VM 标记包含在实例/计算/标记终结点下的实例 API。
 标记可能已应用到 Azure VM 中，以逻辑方式将其归入一个分类。 可使用以下请求检索分配给 VM 的标记。
@@ -568,7 +568,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 ---
 
 
-#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>示例4：在支持案例期间获取有关 VM 的详细信息
+#### <a name="sample-4-get-more-information-about-the-vm-during-support-case"></a>示例 4：在支持案例期间获取有关 VM 的详细信息
 
 作为服务提供商，你可能会接到支持电话，了解有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以支持专业人员了解有关 Azure 上的 VM 类型。
 
@@ -797,7 +797,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
 
 ---
 
-#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>示例5：获取运行 VM 的 Azure 环境
+#### <a name="sample-5-get-the-azure-environment-where-the-vm-is-running"></a>示例 5：获取运行 VM 的 Azure 环境
 
 Azure 具有各种主权云，如 [Azure 政府](https://azure.microsoft.com/overview/clouds/government/)。 有时你需要使用 Azure 环境来做出一些运行时决策。 以下示例显示了如何实现此行为。
 
@@ -833,7 +833,7 @@ AzurePublicCloud
 | [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/) | AzureGermanCloud
 
 
-#### <a name="sample-6-retrieve-network-information"></a>示例6：检索网络信息
+#### <a name="sample-6-retrieve-network-information"></a>示例 6：检索网络信息
 
 **请求**
 
@@ -880,7 +880,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/ne
 }
 ```
 
-#### <a name="sample-7-retrieve-public-ip-address"></a>示例7：检索公共 IP 地址
+#### <a name="sample-7-retrieve-public-ip-address"></a>示例 7：检索公共 IP 地址
 
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
@@ -1049,7 +1049,7 @@ Verification successful
 }
 ```
 
-验证签名是否来自 Microsoft Azure，并检查证书链中是否存在错误。
+验证签名是否来自 Microsoft Azure 并检查证书链中是否存在错误。
 
 ```bash
 # Verify the subject name for the main certificate
@@ -1101,7 +1101,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 有关启用此功能的详细步骤，请参阅[获取访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)。
 
 ## <a name="load-balancer-metadata"></a>负载均衡器元数据
-将虚拟机或虚拟机集实例置于 Azure 标准负载均衡器后面时，可以使用 IMDS 检索与负载均衡器和实例相关的元数据。 有关详细信息，请参阅 [检索负载平衡器信息](../articles/load-balancer/instance-metadata-service-load-balancer.md)。
+将虚拟机或虚拟机集实例置于 Azure 标准负载均衡器后面时，可以使用 IMDS 检索与负载均衡器和实例相关的元数据。 有关详细信息，请参阅[检索负载均衡器信息](../articles/load-balancer/instance-metadata-service-load-balancer.md)。
 
 ## <a name="scheduled-events"></a>计划事件
 可以使用 IMDS 获取计划事件的状态。 然后，用户可以指定一组在发生这些事件时要运行的操作。 有关详细信息，请参阅 [Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)或 [Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)。

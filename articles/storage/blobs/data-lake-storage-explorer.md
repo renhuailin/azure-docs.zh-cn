@@ -9,21 +9,21 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e6147918e7cd56aed5b5b333a8e9825a34d60fd4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100652269"
 ---
-# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录和文件
+# <a name="use-azure-storage-explorer-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件
 
-本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录和文件。
+本文介绍了如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录和文件。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
+- 已启用分层命名空间 (HNS) 的存储帐户。 按[这些](../common/storage-account-create.md)说明创建一个。
 
 - 已在本地计算机上安装了 Azure 存储资源管理器。 若要安装适用于 Windows、Macintosh 或 Linux 的 Azure 存储资源管理器，请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "100652269"
 
 ## <a name="create-a-container"></a>创建容器
 
-容器用来存储目录和文件。 若要创建容器，请展开在前面的步骤中创建的存储帐户。 选择 " **Blob 容器**"，右键单击，然后选择 " **创建 blob 容器**"。 输入容器的名称。 有关对容器进行命名的规则和限制的列表，请参阅[创建容器](storage-quickstart-blobs-dotnet.md#create-a-container)部分。 完成后，请按 **Enter** 创建容器。 成功创建容器后，该容器将显示在所选存储帐户的“Blob 容器”文件夹下。 
+容器用来存储目录和文件。 若要创建容器，请展开在前面的步骤中创建的存储帐户。 选择并右键单击“Blob 容器”，然后选择“创建 Blob 容器”。  输入容器的名称。 有关对容器进行命名的规则和限制的列表，请参阅[创建容器](storage-quickstart-blobs-dotnet.md#create-a-container)部分。 完成后，请按 **Enter** 创建容器。 成功创建容器后，该容器将显示在所选存储帐户的“Blob 容器”文件夹下。 
 
 ![Microsoft Azure 存储资源管理器 - 创建容器](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "100652269"
 
 ## <a name="upload-blobs-to-the-directory"></a>将 blob 上传到目录
 
-在 "目录" 功能区上，选择 " **上传** " 按钮。 此操作提供上传文件夹或文件的选项。
+在目录功能区上，选择“上传”按钮。 此操作提供上传文件夹或文件的选项。
 
 选择要上传的文件或文件夹。
 
@@ -82,7 +82,7 @@ ms.locfileid: "100652269"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何通过设置访问控制列表 (Acl 来管理文件和目录权限) 
+了解如何通过设置访问控制列表 (ACL) 来管理文件和目录权限
 
 > [!div class="nextstepaction"]
-> [使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的 Acl](./data-lake-storage-explorer-acl.md)
+> [使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL](./data-lake-storage-explorer-acl.md)

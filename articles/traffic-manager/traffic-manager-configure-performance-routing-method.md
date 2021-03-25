@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: duau
 ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994904"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
@@ -29,7 +29,7 @@ ms.locfileid: "95994904"
 2. 在门户的搜索栏中，搜索“流量管理器配置文件”，并单击要为其配置路由方法的配置文件名称。
 3. 在“流量管理器配置文件”  边栏选项卡中，检查要包含在配置中的云服务和网站是否都存在。
 4. 在“设置”  部分，单击“配置”  ，并在“配置”  边栏选项卡中完成如下操作：
-    1. 对于“流量路由方法设置”  和“路由方法”  ，请选择“性能”  。
+    1. 对于“流量路由方法设置”和“路由方法”，请选择“性能”。
     2. 为此配置文件中的所有终结点设置相同的“终结点监视器设置”  ，如下所示：
         1. 选择相应的“协议”  ，并指定“端口”  号。 
         2. 对于“路径”  ，请键入正斜杠 */* 。 若要监视终结点，必须指定路径和文件名。 正斜杠“/”是有效的相对路径条目，表示文件位于根目录（默认位置）中。

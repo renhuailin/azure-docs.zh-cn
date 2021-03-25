@@ -4,22 +4,22 @@ description: 介绍如何在部署扩展资源类型时使用 scope 属性。
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492155"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 模板中设置扩展资源的范围
 
-扩展资源是用于修改其他资源的资源。 例如，可以将角色分配给资源。 角色分配是扩展资源类型。
+扩展资源是用于修改其他资源的资源。 例如，可以为资源分配角色。 角色分配是扩展资源类型。
 
 有关扩展资源类型的完整列表，请参阅[用于扩展其他资源的功能的资源类型](../management/extension-resource-types.md)。
 
 本文介绍如何在使用 Azure 资源管理器模板（ARM 模板）进行部署时设置扩展资源类型的范围。 它介绍了在应用到资源时可用于扩展资源的 scope 属性。
 
 > [!NOTE]
-> 作用域属性仅适用于扩展资源类型。 若要为非扩展类型的资源类型指定不同的作用域，请使用嵌套或链接的部署。 有关详细信息，请参阅 [资源组部署](deploy-to-resource-group.md)、 [订阅部署](deploy-to-subscription.md)、 [管理组部署](deploy-to-management-group.md)和 [租户部署](deploy-to-tenant.md)。
+> scope 属性仅适用于扩展资源类型。 若要为非扩展类型的资源类型指定其他范围，请使用嵌套部署或链接部署。 有关详细信息，请参阅[资源组部署](deploy-to-resource-group.md)、[订阅部署](deploy-to-subscription.md)、[管理组部署](deploy-to-management-group.md)和[租户部署](deploy-to-tenant.md)。
 
 ## <a name="apply-at-deployment-scope"></a>在部署范围内应用
 
@@ -87,4 +87,4 @@ New-AzSubscriptionDeployment `
 
 * 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 有关部署需要 SAS 令牌的模板的信息，请参阅 [使用 sas 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。
+* 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](secure-template-with-sas-token.md)。

@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.openlocfilehash: 60d6e40b568c1189cdc01ef4239612d3717063b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755054"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578832"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>适用于 Python 的 ADAL 到 MSAL 迁移指南
 
@@ -38,13 +38,13 @@ ADAL 适用于 Azure Active Directory (Azure AD) v1.0 终结点。 Microsoft 身
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-有关更多详细信息，请参阅 [Microsoft 标识平台的不同之处](../azuread-dev/azure-ad-endpoint-comparison.md) 。
+有关详细信息，请参阅 [Microsoft 标识平台有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ### <a name="scopes-not-resources"></a>范围不是资源
 
 ADAL Python 获取资源的令牌，而 MSAL Python 则是获取范围的令牌。 MSAL Python 中的 API 面不再包含资源参数。 可能需要以字符串列表的形式提供范围，这些字符串声明所需的权限和请求的资源。 若要查看一些示例范围，请参阅 [Microsoft Graph 的范围](/graph/permissions-reference)。
 
-可以将 `/.default` 范围后缀添加到资源中，以帮助将应用从 v2.0 终结点 (ADAL) 迁移到 Microsoft 标识平台 (MSAL) 。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
+可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台 (MSAL)。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
 
 有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)以及[接受 v1.0 令牌的 Web API 的作用域](./msal-v1-app-scopes.md)两篇文章。
 
@@ -107,7 +107,7 @@ app = msal.PublicClientApplication(
     "client_id", authority="...",
     # token_cache=...  # Default cache is in memory only.
                        # You can learn how to use SerializableTokenCache from
-                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+                       # https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache
     )
 
 # We choose a migration strategy of migrating all RTs in one loop

@@ -7,10 +7,10 @@ ms.custom:
 - devx-track-js
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 3cf47d04da51db898e667ef8b31d42d79c9f354e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101747317"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 JavaScript 函数
@@ -73,7 +73,7 @@ ms.locfileid: "101747317"
 <summary><strong>无法创建函数项目？</strong></summary>
 
 在创建本地 Functions 项目时，要解决的最常见的问题是：
-* 你没有安装 Azure Functions 扩展。 
+* 未安装 Azure Functions 扩展。 
 </details>
 
 <hr/>
@@ -108,7 +108,7 @@ ms.locfileid: "101747317"
 <summary><strong>无法在本地运行函数？</strong></summary>
 
 在运行本地 Functions 项目时，要解决的最常见的问题是：
-* 你没有安装 Core Tools。 
+* 未安装 Core Tools。 
 *  如果在 Windows 上运行时遇到问题，请确保用于 Visual Studio Code 的默认终端 shell 未设置为“WSL Bash”。 
 </details>
 
@@ -119,7 +119,7 @@ ms.locfileid: "101747317"
 
 若要发布应用，请登录 Azure。 如果已登录，请转到下一部分。
 
-1. 在活动栏中选择“Azure”图标，然后在“Azure: 函数”区域中，选择“登录到 Azure...” 。
+1. 在活动栏中选择“Azure”图标，然后在“Azure: Functions”区域中选择“登录 Azure...” 。
 
     ![在 VS Code 中登录到 Azure](../../includes/media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "101747317"
 
     + **在 Azure 中选择函数应用**：选择`+ Create new Function App`。
 
-    + **输入函数应用的全局唯一名称**：在 URL 路径中键入 Azure 中唯一的名称。 验证键入的名称，确保它在全局唯一。
+    + **输入函数应用的全局唯一名称**：在 URL 路径中键入在 Azure 中唯一的名称。 验证键入的名称，确保它在全局唯一。
 
     + **选择运行时**：选择你一直在本地运行的 Node.js 版本。 可以使用 `node --version` 命令来检查你的版本。
 

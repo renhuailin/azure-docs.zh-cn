@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 7ab60fb364eb3268a03c04bb4950251ae030f015
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 545b02ee8496c9530b263227d4138441f27f0cf9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374042"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441697"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -219,7 +219,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 ## <a name="blobs"></a>Blob
 
-可在 [存储 blob 触发器和绑定](functions-bindings-storage-blob.md#hostjson-settings)中找到配置设置。  
+可在[存储 Blob 触发器和绑定](functions-bindings-storage-blob.md#hostjson-settings)中查找配置设置。  
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -345,7 +345,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 |属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
-|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 2\.x 及更高版本遵循 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)。 |
+|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅[配置日志级别](configure-monitoring.md#configure-log-levels)。 |
 |控制台|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
@@ -431,7 +431,7 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

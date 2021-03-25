@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012353"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
@@ -20,7 +20,7 @@ ms.locfileid: "98012353"
 > [!NOTE]
 > Visual Studio 和 Visual Studio Code 工具不支持“中国东部”、“中国北部”、“德国中部”和“德国东北部”区域中的作业。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -36,9 +36,9 @@ ms.locfileid: "98012353"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源” > “物联网” > “IoT 中心”  。
+2. 选择“创建资源” > “物联网” > “IoT 中心”。
 
-3. 在“IoT 中心”窗格中，输入以下信息：
+3. 在“IoT 中心”窗格中，输入以下信息： 
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
@@ -79,7 +79,7 @@ ms.locfileid: "98012353"
 
 4. 从“Blob 服务”页面中，选择“容器”，为你的容器提供一个名称，例如 *container1*。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”。  
 
-   ![创建 blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
+   ![创建 Blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-project"></a>创建流分析项目
 
@@ -114,7 +114,7 @@ ms.locfileid: "98012353"
    |---------|---------|---------|
    |输入别名  |  输入   |  输入一个名称，用于标识作业的输入。   |
    |源类型   |  数据流 |  选择合适的输入源：数据流或参考数据。   |
-   |Source  |  IoT 中心 |  选择合适的输入源。   |
+   |源  |  IoT 中心 |  选择合适的输入源。   |
    |资源  | 选择当前帐户中的数据源 | 选择手动输入数据或选择现有帐户。   |
    |订阅  |  \<Your subscription\>   | 选择包含创建的 IoT 中心的 Azure 订阅。   |
    |IoT 中心  |  MyASAIoTHub   |  选择或输入 IoT 中心的名称。 如果在同一订阅中创建 IoT 中心名称，则会自动将其删除。   |

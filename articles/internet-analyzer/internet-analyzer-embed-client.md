@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 0d4b27b85ac7bc61e14a79f29e4e26ec4973ced1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84744045"
 ---
 # <a name="embed-the-internet-analyzer-client"></a>嵌入 Internet 分析器客户端
@@ -30,7 +30,7 @@ Internet 分析器需要拥有对 Azure 和其他 Microsoft 服务的访问权�
 
 配置测试后，可以通过 Azure 门户或 Azure CLI 找到脚本 URL。 有关详细信息，请参阅[创建 Internet 分析器资源](internet-analyzer-create-test-portal.md)。
 
-选项 1. 在 Azure 门户中，使用[此链接](https://aka.ms/InternetAnalyzerPreviewPortal)打开 Azure Internet 分析器的预览门户页。 通过转到“设置”>“配置”  ，转到 Internet 分析器配置文件以查看脚本 URL。
+选项 1. 在 Azure 门户中，使用[此链接](https://aka.ms/InternetAnalyzerPreviewPortal)打开 Azure Internet 分析器的预览门户页。 通过转到“设置”>“配置”，转到 Internet 分析器配置文件以查看脚本 URL。
 
 选项 2. 使用 Azure CLI 检查 `scriptFileUri` 属性。
 ```azurecli-interactive

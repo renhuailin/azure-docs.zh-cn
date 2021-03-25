@@ -9,10 +9,10 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 08f4e76869f124d946566f64da394c895d0af308
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102205987"
 ---
 回到本地终端窗口，将 Azure 远程功能添加到本地 Git 存储库。 将 \<deploymentLocalGitUrl-from-create-step> 替换为在[创建 Web 应用](#create-a-web-app)中保存的 Git 远程 URL。

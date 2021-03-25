@@ -7,17 +7,17 @@ ms.date: 12/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-python
 ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97683395"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
 
 通过 Azure 自动化，可以在 Azure 和 Linux 混合 Runbook 辅助角色上运行 Python 2 runbook。 为了帮助简化 runbook，可以使用 Python 包导入所需的模块。 本文介绍如何在 Azure 自动化中管理和使用 Python 包。
 
-## <a name="import-packages"></a>导入包
+## <a name="import-packages"></a>导入程序包
 
 在 Azure 自动化帐户中，选择“共享资源”下的“Python 2 包” 。 单击“+ 添加 Python 2 包”。
 
@@ -47,7 +47,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ### <a name="runbook"></a>Runbook
 
- 若要获取 runbook，请将 pypi 中的 Python 2 包从 Azure Automation GitHub 组织导入到 [Azure 自动化帐户](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account) ，并将其导入自动化帐户。 请确保“运行设置”设置为“Azure”并启动具有参数的 runbook。 runbook 需要有一个运行方式帐户，Azure 自动化帐户才能正常使用。 对于每个参数，请确保按照以下列表和图片中所示，通过开关进行启动：
+ 若要获取 runbook，请按[将 Python 2 包从 pypi 导入到 Azure 自动化帐户](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account)中的要求操作，将其从 Azure 自动化 GitHub 组织导入到你的自动化帐户。 请确保“运行设置”设置为“Azure”并启动具有参数的 runbook。 runbook 需要有一个运行方式帐户，Azure 自动化帐户才能正常使用。 对于每个参数，请确保按照以下列表和图片中所示，通过开关进行启动：
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>

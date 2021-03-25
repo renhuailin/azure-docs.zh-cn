@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 3f7d6f8ca285fdc024db9ba952af9f7d169e7188
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678468"
 ---
 # <a name="optimizing-transactions-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化专用 SQL 池中的事务
@@ -72,9 +72,9 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 | 堆 |任意 |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
-| 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
+| 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
-| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
+| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
 
 值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
 

@@ -12,10 +12,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043739"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
@@ -152,9 +152,9 @@ KEK 必须实现以下方法才能成功加密数据：
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -184,9 +184,9 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -217,9 +217,9 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ```python
 # Create the KEK used for encryption.
@@ -260,9 +260,9 @@ my_table_service.get_entity(
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-我们当前正在创建的代码段反映了 Azure 存储客户端库的版本2.x。 有关详细信息，请参阅 [宣布 Azure 存储 V12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
+我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="python-v21"></a>[Python 2.1 版](#tab/python2)
+# <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
 ```python
 encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)

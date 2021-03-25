@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 05/06/2020
 ms.openlocfilehash: 77b9988557106ef460d3b222ef85eb29e08f31c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693991"
 ---
 # <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
@@ -71,7 +71,7 @@ az role assignment create \
 ```
 
 > [!IMPORTANT]
-> 在某些情况下，帐户中的 *user.name* 与 *userPrincipalName* 不同，例如 Azure AD guest 用户：
+> 在某些情况下，帐户中的“user.name”与“userPrincipalName”不同，例如在使用 Azure AD 来宾用户的情况下：
 >
 > ```output
 > $ az account show --query user.name -o tsv
@@ -80,7 +80,7 @@ az role assignment create \
 > user_contoso.com#EXT#@contoso.onmicrosoft.com
 > ```
 >
-> 在这种情况下，请将 *ACCOUNT_UPN* 的值设置为 Azure AD 用户的 *userPrincipalName* 。 例如，如果帐户 *user.name* 是 *用户 \@ contoso.com*：
+> 在这种情况下，请将 ACCOUNT_UPN 的值设置为 Azure AD 用户的 userPrincipalName。 例如，如果帐户 user.name 是 user\@contoso.com：
 > 
 > ```azurecli-interactive
 > ACCOUNT_UPN=$(az ad user list --query "[?contains(otherMails,'user@contoso.com')].{UPN:userPrincipalName}" -o tsv)

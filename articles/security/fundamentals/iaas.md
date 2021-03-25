@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7e8d51b8227acd033c95583d6e61d78a56d62a3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 6f073777930b4d026d826d2c3586e0886f906206
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590280"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503073"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 本文介绍了 VM 和操作系统的安全最佳做法。
@@ -63,7 +63,7 @@ ms.locfileid: "100590280"
 控制 VM 访问和设置的组织可改善其整体 VM 安全性。
 
 ## <a name="use-multiple-vms-for-better-availability"></a>使用多个 VM 提高可用性
-如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为了获得更好的可用性，请使用 [可用性集](../../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) 或可用性 [区域](../../availability-zones/az-overview.md)。
+如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为提高可用性，可使用[可用性集](../../virtual-machines/availability-set-overview.md)或可用性[区域](../../availability-zones/az-overview.md)。
 
 可用性集是一种逻辑分组功能，在 Azure 中使用它可以确保将 VM 资源部署在 Azure 数据中心后，这些资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果出现硬件或 Azure 软件故障，只有一部分 VM 会受到影响，整体应用程序仍可供客户使用。 如果想要构建可靠的云解决方案，可用性集是一项关键功能。
 
@@ -155,7 +155,7 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 **详细信息**：Azure 磁盘加密将生成加密密钥并将其写入密钥保管库。 在 Key Vault 中管理加密密钥需要 Azure AD 身份验证。 为此，请创建 Azure AD 应用程序。 对于身份验证，可以使用基于客户端机密的身份验证或[基于客户端证书的 Azure AD 身份验证](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
 
 最佳做法：使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层。 将 KEK 添加到密钥保管库。   
-**详细信息**：使用 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在 key vault 中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/keys/hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
+详细信息：使用 [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在 Key Vault 中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/keys/hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
 
 **最佳做法**：在加密磁盘之前创建 [快照](../../virtual-machines/windows/snapshot-copy-managed-disk.md)和/或备份。 如果加密期间发生意外故障，备份可提供恢复选项。   
 **详细信息**：加密之前，需要备份包含托管磁盘的 VM。 备份之后，可以通过指定“-skipVmBackup”参数，使用“Set-AzVMDiskEncryptionExtension cmdlet”来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../../backup/backup-azure-vms-encryption.md)一文。
@@ -169,13 +169,13 @@ Azure 磁盘加密可解决以下业务需求：
 - IaaS VM 会根据客户控制的密钥和策略启动，客户可以在 Key Vault 中审核密钥和策略的使用方式。
 
 ## <a name="restrict-direct-internet-connectivity"></a>限制直接 Internet 连接
-监视和限制 VM 直接 Internet 连接。 攻击者会不断地扫描公共云 IP 范围，寻找开放管理端口，并尝试 "轻松" 的攻击，如常见密码和已知的修补漏洞。 下表列出了有助于防范这些攻击的最佳做法：
+监视和限制 VM 直接 Internet 连接。 攻击者可能会不断利用猜出的常用密码和已知的未修补漏洞，扫描公有云 IP 范围中的开放管理端口，然后试图发起“轻而易举”的攻击。 下表列出了有助于防范这些攻击的最佳做法：
 
 **最佳做法**：防止无意中暴露网络路由和安全性。   
 **详细信息**：使用 Azure RBAC 确保只有中心网络组有权访问网络资源。
 
-**最佳做法**：标识并修正允许从 "任何" 源 IP 地址进行访问的公开 vm。   
-**详细信息**：使用 Azure 安全中心。 如果你的任何网络安全组有一个或多个允许从 "任何" 源 IP 地址进行访问的入站规则，安全中心将建议你通过面向 internet 的终结点限制访问。 安全中心将建议编辑这些入站规则，以对实际需要访问的源 IP 地址[限制访问](../../security-center/security-center-network-recommendations.md)。
+最佳做法：标识并修正允许从“任何”源 IP 地址访问的公开 VM。   
+**详细信息**：使用 Azure 安全中心。 如果任何网络安全组具有一个或多个允许从“任何”源 IP 地址进行访问的入站规则，安全中心将建议通过面向 Internet 的终结点限制访问。 安全中心将建议编辑这些入站规则，以对实际需要访问的源 IP 地址[限制访问](../../security-center/security-center-network-recommendations.md)。
 
 **最佳做法**：限制管理端口（RDP、SSH）。   
 **详细信息**：[实时 (JIT) VM 访问](../../security-center/security-center-just-in-time.md)可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。 当 JIT 时，安全中心会通过创建网络安全组规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受 JIT 解决方案控制。

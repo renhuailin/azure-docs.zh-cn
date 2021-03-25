@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996945"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
@@ -46,7 +46,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 * 使用快速入门文章的[创建帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 
-* [创建数据库和集合](create-sql-api-java.md#add-a-container) –可以使用 "将集合吞吐量值设置为 1000 RU/s"。 
+* [创建数据库和集合](create-sql-api-java.md#add-a-container) – 可以将集合吞吐量值设置为 1000 RU/秒。 
 
 * 将示例电子游戏机销售数据加载到 Cosmos DB 帐户。 可以使用 Azure Cosmos DB 数据迁移工具导入数据，可以执行[按顺序](import-data.md#SQLSeqTarget)或[批量导入](import-data.md#SQLBulkTarget)数据。 大约需要 3 到 5 分钟才能将数据导入到 Cosmos DB 帐户。
 

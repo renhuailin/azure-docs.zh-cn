@@ -1,5 +1,5 @@
 ---
-title: 暂停、恢复、缩放用于专用 SQL 池 (以前的 SQL DW) 的 REST Api
+title: 使用适用于专用 SQL 池（之前称为 SQL DW）的 REST API 进行暂停、恢复和缩放
 description: 通过 REST API 在 Azure Synapse Analytics 中管理专用 SQL 池（以前称为 SQL DW）的计算能力。
 services: synapse-analytics
 author: antvgski
@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: c04f61aaef5f5072ce0fb39ff111ba07ee151700
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375895"
 ---
 # <a name="rest-apis-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的 REST API

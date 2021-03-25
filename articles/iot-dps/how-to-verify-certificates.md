@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0326eef86b42fa8b06c336bbf2b1c6f2f9df0bcf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730348"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
@@ -58,7 +58,7 @@ Microsoft 提供了工具和示例来帮助你创建签名的验证证书：
 > [!IMPORTANT]
 > 除了执行所有权证明以外，使用上述 PowerShell 和 Bash 脚本还可创建根证书、中间证书和叶证书用于验证和预配设备。 只能在开发中使用这些证书。 切勿将它们用于生产环境。 
 
-文档和 SDK 中提供的 PowerShell 与 Bash 脚本依赖于 [OpenSSL](https://www.openssl.org/)。 还可以借助 OpenSSL 或其他第三方工具执行所有权证明。 有关使用 Sdk 提供的工具的示例，请参阅 [创建 x.509 证书链](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 
+文档和 SDK 中提供的 PowerShell 与 Bash 脚本依赖于 [OpenSSL](https://www.openssl.org/)。 还可以借助 OpenSSL 或其他第三方工具执行所有权证明。 有关使用随 SDK 提供的工具的示例，请参阅[创建 X.509 证书链](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)。 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>上传已签名的验证证书

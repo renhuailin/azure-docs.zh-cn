@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 24f6052c436b73d0075371fa74160d21826e2209
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97866025"
 ---
-## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 容器实例资源
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>通过 Azure 门户创建 Azure 容器实例资源
 
 1. 转到容器实例的[创建](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances)页。
 
 2. 在“基本信息”选项卡中输入以下详细信息：
 
-    |设置|Value|
+    |设置|值|
     |--|--|
     |订阅|选择订阅。|
     |资源组|选择可用的资源组，或者创建一个新的，例如 `cognitive-services`。|
@@ -41,10 +41,10 @@ ms.locfileid: "97866025"
 
 4. 在“高级”选项卡上，输入所需的 **环境变量** 作为 Azure 容器实例资源的容器计费设置：
 
-    | 键 | Value |
+    | 键 | 值 |
     |--|--|
-    |`ApiKey`|从资源的 " **密钥和终结点** " 页中复制。 它是一个由 32 个字母数字组成的字符串（不包含空格或短划线），即 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
-    |`Billing`| 从资源的 " **密钥和终结点** " 页复制的终结点 URL。|
+    |`ApiKey`|从资源的“键和终结点”页复制。 它是一个由 32 个字母数字组成的字符串（不包含空格或短划线），即 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。|
+    |`Billing`| 从资源的“键和终结点”页复制的终结点 URL。|
     |`Eula`|`accept`|
 
 5. 单击“查看并创建”

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 8312c3267e826088f34b3bffe1520703eec00bdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76961109"
 ---
 # <a name="403002-iothubquotaexceeded"></a>403002 IoTHubQuotaExceeded
@@ -34,4 +34,4 @@ ms.locfileid: "76961109"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何将操作计入配额（如孪生查询和直接方法），请参阅[了解 IoT 中心定价](iot-hub-devguide-pricing.md#charges-per-operation)
-* 若要针对每日配额使用情况来设置监视，请设置一个警报，其指标为“使用的消息总数”。  有关分步说明，请参阅[使用 IoT 中心设置指标和警报](tutorial-use-metrics-and-diags.md#set-up-metrics)
+* 若要针对每日配额使用情况来设置监视，请设置一个警报，其指标为“使用的消息总数”。 有关分步说明，请参阅[使用 IoT 中心设置指标和警报](tutorial-use-metrics-and-diags.md#set-up-metrics)

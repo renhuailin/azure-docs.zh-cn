@@ -1,6 +1,6 @@
 ---
-title: 用 Synapse SQL 赋值变量
-description: 本文介绍了如何通过 Synapse SQL 分配 T-sql 变量。
+title: 使用 Synapse SQL 分配变量
+description: 本文介绍使用 Synapse SQL 分配 T-SQL 变量的技巧。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4ec59b7cc124a87b3939d095d03ee4a8bae9070f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94685760"
 ---
-# <a name="assign-variables-with-synapse-sql"></a>用 Synapse SQL 赋值变量
+# <a name="assign-variables-with-synapse-sql"></a>使用 Synapse SQL 分配变量
 
-本文介绍了如何通过 Synapse SQL 分配 T-sql 变量。
+本文介绍使用 Synapse SQL 分配 T-SQL 变量的技巧。
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 设置变量
 
-Synapse SQL 中的变量是使用 `DECLARE` 语句或语句设置的 `SET` 。 使用 DECLARE 初始化变量是在 Synapse SQL 中设置变量值的最灵活方式之一。
+使用 `DECLARE` 语句或 `SET` 语句设置 Synapse SQL 中的变量。 使用 DECLARE 初始化变量是在 Synapse SQL 中设置变量值的最灵活方式之一。
 
 ```sql
 DECLARE @v  int = 0
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-不能在同一 DECLARE 语句中初始化和使用变量。 为了说明这一点，不允许使用下面的示例，因为 *\@ p1* 是在同一 DECLARE 语句中初始化和使用的。 下面的示例会出错。
+不能在同一 DECLARE 语句中初始化和使用变量。 为了进行演示，不允许出现以下示例中的情况，因为已在同一 DECLARE 语句中初始化和使用 \@p1。 下面的示例会出错。
 
 ```sql
 DECLARE @p1 int = 0
@@ -66,4 +66,4 @@ SET     @v +=1;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅 [SYNAPSE SQL 开发概述](develop-overview.md) 一文。
+有关更多开发技巧，请参阅 [Synapse SQL 开发概述](develop-overview.md)一文。

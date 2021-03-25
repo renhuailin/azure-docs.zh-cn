@@ -4,10 +4,10 @@ description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Ser
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99557750"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
@@ -206,20 +206,20 @@ ms.locfileid: "99557750"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-AzureBackup 工作负载扩展操作失败。 | VM 已关闭，或者由于 internet 连接问题，VM 无法联系 Azure 备份服务。| <li> 确保 VM 已启动且正在运行且具有 internet 连接。<li> [重新注册 SQL Server VM 上的扩展](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
+Azure 备份工作负荷扩展操作失败。 | VM 已关闭，或者由于 Internet 连接问题，VM 无法联系 Azure 备份服务。| <li> 确保 VM 已启动并正在运行，且具有 Internet 连接。<li> [重新注册 SQL Server VM 上的扩展](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| <li> 如果使用 NSG 来限制连接性，则应使用 *AzureBackup* service 标记允许对 Azure 备份服务进行出站访问，同样，对于 Azure AD (*AzureActiveDirectory*) 和 Azure 存储 (*存储*) 服务。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。 <li> 确保 DNS 正在解析 Azure 终结点。 <li> 检查 VM 是否在阻止访问 internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。 <li> 验证没有防火墙/防病毒/代理正在阻止调用上述三个目标服务。
+由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| <li> 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务进行出站访问，同样也允许对 Azure AD (AzureActiveDirectory) 和 Azure 存储（存储）服务进行出站访问  。 请按照这些[步骤](./backup-sql-server-database-azure-vms.md#nsg-tags)授予访问权限。 <li> 确保 DNS 在解析 Azure 终结点。 <li> 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。 <li> 验证是否有防火墙/防病毒软件/代理正在阻止对上述三个目标服务的调用。
 
 ## <a name="re-registration-failures"></a>重新注册失败
 
 在触发重新注册操作之前，请检查是否存在以下一种或多种症状：
 
-- 所有操作 (例如备份、还原和配置备份) 在 VM 上失败，并出现以下错误代码之一： **[WorkloadExtensionNotReachable](#workloadextensionnotreachable)**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
+- 所有操作（例如备份、还原和配置备份）在 VM 失败，并出现以下错误代码之一：[WorkloadExtensionNotReachable](#workloadextensionnotreachable)、UserErrorWorkloadExtensionNotInstalled、WorkloadExtensionNotPresent、WorkloadExtensionDidntDequeueMsg。
 - 如果备份项的“备份状态”区域显示为“无法访问”，请排除可能导致相同状态的其他所有原因：
 
   - 缺少在 VM 上执行备份相关操作的权限。

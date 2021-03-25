@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 01/07/2021
+ms.date: 03/08/2021
 tags: connectors
-ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: 983e0d34692d67302e11c35abac590fefd610b2e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016756"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102449622"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -42,12 +42,12 @@ ms.locfileid: "98016756"
 
 * SFTP-SSH 连接器支持私钥身份验证或密码身份验证，但不支持同时使用这两种身份验证。
 
-* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认块区大小为 15 MB，但此大小可从 5 MB 开始动态更改，并根据网络延迟、服务器响应时间等因素逐步增加到最大 50 MB。
+* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
   > [!NOTE]
-  > 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的 ISE 标记版本需要使用 [ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
+  > 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本需要分块操作以使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
-  当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设您有一个 45 MB 的文件和一个可以支持该文件的大小不受延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的块大小。 在不同的情况下，如果逻辑应用超时，例如，使用 15 MB 的区块时，可以尝试将大小减小到 5 MB。
+  当改用[指定固定区块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设你有一个 45 MB 的文件，以及一个可以支持该文件大小且没有延迟的网络。 自适应分块会导致多次调用，而不是一次调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同情况下，如果逻辑应用超时（例如，当使用 15 MB 的块时），可以尝试将该大小减小到 5 MB。
 
   区块大小与连接相关，这意味着你可以对支持分块的操作以及不支持分块的操作使用相同的连接。 在这种情况下，不支持分块的操作的区块大小范围为 5 MB 到 50 MB。 下表显示了哪些 SFTP-SSH 操作支持分块：
 
@@ -103,10 +103,10 @@ ms.locfileid: "98016756"
   >
   > * **指纹**：MD5
   >
-  > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 在为此连接提供 SSH 私钥时，请不要手动输入或编辑该密钥，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中 。 
+  > 在向逻辑应用添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，***请勿手动输入或编辑密钥***，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中。 
   > 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
 
-有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基础知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 SFTP 帐户的逻辑应用。 若要从 SFTP-SSH 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SFTP-SSH 操作，请使用另一个触发器（例如“重复”触发器）启动逻辑应用。
 
@@ -116,7 +116,7 @@ ms.locfileid: "98016756"
 
 ### <a name="polling-behavior"></a>轮询行为
 
-SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生了更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
+SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
@@ -128,9 +128,9 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
 <a name="trigger-recurrence-shift-drift"></a>
 
-### <a name="trigger-recurrence-shift-and-drift"></a>触发重复周期转换和偏移
+### <a name="trigger-recurrence-shift-and-drift"></a>触发器重复周期移动和偏移
 
-基于连接的触发器，需要首先创建连接，例如 SFTP SSH 触发器，不同于在 Azure 逻辑应用中以本机方式运行的内置触发器，如 [定期触发器](../connectors/connectors-native-recurrence.md)。 在重复的基于连接的触发器中，重复计划不是控制执行的唯一驱动程序，时区只确定初始开始时间。 后续运行取决于重复执行计划、上一个触发器执行以及可能导致运行时间发生偏差或产生意外行为 *的其他因素* ，例如，在夏令时 (DST) 开始和结束时不保持指定的计划。 若要确保重复执行时间在 DST 生效时不会发生变化，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动1小时，在 DST 结束时向后移动一小时。 有关详细信息，请参阅 [基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
+你需要首先为其创建连接的基于连接的触发器（例如 SFTP SSH 触发器）不同于在 Azure 逻辑应用中以原生方式运行的内置触发器，如[重复周期触发器](../connectors/connectors-native-recurrence.md)。 在基于连接的周期性触发器中，重复周期计划不是控制执行的唯一驱动因素，并且时区只确定初始开始时间。 后续运行取决于重复周期计划、上一次触发器执行以及其他可能导致运行时间发生偏差或产生意外行为的因素，例如，在夏令时 (DST) 开始和结束时未维护指定的计划。 若要确保重复周期时间在 DST 生效时不会移动，请手动调整重复周期，使逻辑应用继续按预期时间运行。 否则，开始时间将在 DST 开始时向前移动 1 小时，在 DST 结束时向后移动 1 小时。 有关详细信息，请参阅[基于连接的触发器的重复周期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="convert-to-openssh"></a>
 
@@ -140,7 +140,7 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
 ### <a name="unix-based-os"></a>基于 Unix 的 OS
 
-1. 如果系统上未安装 PuTTY 工具，请立即执行此操作，例如：
+1. 如果 PuTTY 工具尚未安装在系统上，请立即安装，例如：
 
    `sudo apt-get install -y putty`
 
@@ -170,7 +170,15 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
 ## <a name="considerations"></a>注意事项
 
-本部分介绍查看此连接器的触发器和操作的注意事项。
+本部分介绍使用此连接器的触发器和操作时要查看的注意事项。
+
+<a name="different-folders-trigger-processing-file-storage"></a>
+
+### <a name="use-different-sftp-folders-for-file-upload-and-processing"></a>使用不同的 SFTP 文件夹进行文件上传和处理
+
+在 SFTP 服务器上，请确保在存储已上传文件的位置以及触发器监视这些文件以进行处理的位置使用单独的文件夹，这意味着你需要一种方法在这些文件夹之间移动文件。 否则，触发器将不会触发且行为不可预测，例如，跳过触发器处理的随机数量的文件。
+
+如果发生此问题，请从触发器监视的文件夹中删除这些文件，并使用其他文件夹存储已上传的文件。
 
 <a name="create-file"></a>
 
@@ -208,9 +216,9 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
    1. 选择“编辑” > “复制”。
 
-   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。请务必粘贴该密钥  *， 而不要手动输入或编辑该密钥。
+   1. 在添加的 SFTP-SSH 触发器或操作中，粘贴已复制到“SSH 私钥”属性中的完整密钥，支持换行。  请确保粘贴了密钥。不要手动输入或编辑密钥。
 
-1. 输入完连接详细信息后，选择 "创建"。
+1. 输入完连接详细信息后，请选择“创建”。
 
 1. 现在，为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -228,7 +236,7 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
    ![指定要改用的区块大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. 完成后，请选择 " **完成**"。
+1. 完成后，选择“完成”。
 
 ## <a name="examples"></a>示例
 
@@ -274,7 +282,7 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 
 ### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 错误：“引用了不存在的文件或文件夹”
 
-如果逻辑应用通过 SFTP SSH 的 " **创建文件** " 操作在 sftp 服务器上创建一个新文件，则会发生此错误，但在逻辑应用服务可以获取该文件的元数据之前立即移动新创建的文件。 当逻辑应用运行“创建文件”操作时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果逻辑应用移动了该文件，则逻辑应用服务无法再找到该文件，因此你会收到 `404` 错误消息。
+如果逻辑应用通过 SFTP-SSH“创建文件”操作在 SFTP 服务器上创建新文件，但在逻辑应用服务可以获取该文件的元数据之前立即移动了新创建的文件，则可能会发生此错误。 当逻辑应用运行“创建文件”操作时，逻辑应用服务也会自动调用 SFTP 服务器来获取文件的元数据。 但是，如果逻辑应用移动了该文件，逻辑应用服务将无法再找到该文件，因此你将收到 `404` 错误消息。
 
 如果无法避免或延迟移动文件，则可以在创建文件后跳过读取文件元数据的操作，方法是执行以下步骤：
 
@@ -287,7 +295,7 @@ SFTP SSH 触发器轮询 SFTP 文件系统，并查找自上次轮询后发生�
 有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/sftpwithssh/)。
 
 > [!NOTE]
-> 对于 [integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用 (ISE) ，此连接器的 ISE 标记版本需要使用 " [ise 消息" 限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本需要分块操作以使用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 
