@@ -4,10 +4,10 @@ description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99833994"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
@@ -31,7 +31,7 @@ ms.locfileid: "99833994"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -117,7 +117,7 @@ output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 默认值 |
 | intOutput | int | 1 |

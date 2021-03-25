@@ -1,26 +1,26 @@
 ---
-title: Azure 应用配置 REST API-锁定
-description: 使用 Azure 应用配置处理键值锁的参考页面 REST API
+title: Azure 应用配置 REST API - 锁
+description: 使用 Azure 应用配置 REST API 处理键/值锁的参考页
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: e99ce5595bae8ed64285317d9249da60e0fc1b83
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932516"
 ---
 # <a name="locks"></a>锁
 
-此 API (版本 1.0) 为键-值资源提供锁定和解除锁定语义。 它支持以下操作：
+此 API（版本 1.0）为键/值资源提供锁定和取消锁定语义。 它支持以下操作：
 
 - 放置锁
 - 删除锁
 
-如果存在，则 `label` 必须是 (不是通配符) 的显式标签值。 对于所有操作，它是一个可选参数。 如果省略，则暗指没有标签。
+如果存在，`label` 必须是显式标签值（不是通配符）。 对于所有操作，它是一个可选参数。 如果省略，则暗指没有标签。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "96932516"
 
 ## <a name="lock-key-value"></a>锁定键-值
 
-- 必需： ``{key}`` 、 ``{api-version}``  
+- 必需：``{key}``、``{api-version}``  
 - 可选：``label``
 
 ```http
@@ -63,7 +63,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="unlock-key-value"></a>解锁键-值
 
-- 必需： ``{key}`` 、 ``{api-version}``  
+- 必需：``{key}``、``{api-version}``  
 - 可选：``label``
 
 ```http
@@ -98,7 +98,7 @@ HTTP/1.1 404 Not Found
 
 ## <a name="conditional-lock-and-unlock"></a>条件锁定和解锁
 
-若要防止出现争用情况，请使用 `If-Match` 或 `If-None-Match` 请求标头。 `etag` 参数是键表示形式的一部分。 如果 `If-Match` `If-None-Match` 省略或，则操作为无条件。
+若要防止出现争用情况，请使用 `If-Match` 或 `If-None-Match` 请求标头。 `etag` 参数是键表示形式的一部分。 如果省略 `If-Match` 或 `If-None-Match`，则该操作是无条件的。
 
 以下请求仅在当前键/值表示形式与指定的 `etag` 匹配时才应用操作：
 

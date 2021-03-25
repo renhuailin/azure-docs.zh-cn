@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135678"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
@@ -46,8 +46,8 @@ ms.locfileid: "86135678"
 检查是否已安装代理：
 
 1. 在 Azure VM 上的 C:\WindowsAzure\Packages 文件夹中，应看到 WaAppAgent.exe 文件。
-2. 右键单击该文件，在“属性”**** 中选择“详细信息”**** 选项卡。
-3. 验证“产品版本”**** 字段是否显示 2.6.1198.718 或更高版本。
+2. 右键单击该文件，在“属性”中选择“详细信息”选项卡。
+3. 验证“产品版本”字段是否显示 2.6.1198.718 或更高版本。
 
 [详细了解](../virtual-machines/extensions/agent-windows.md) Windows 的代理安装。
 
@@ -72,7 +72,7 @@ ms.locfileid: "86135678"
 ## <a name="uninstall-the-mobility-service"></a>卸载移动服务
 
 1. 使用以下方法之一从 Azure VM 上手动卸载移动服务。 
-    - 对于 Windows，在控制面板中 >“添加/删除程序”****，卸载“Microsoft Azure Site Recovery 移动服务/主目标服务器”****。 在提升的命令提示符下，运行：
+    - 对于 Windows，在控制面板中 >“添加/删除程序”，卸载“Microsoft Azure Site Recovery 移动服务/主目标服务器”。 在提升的命令提示符下，运行：
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```

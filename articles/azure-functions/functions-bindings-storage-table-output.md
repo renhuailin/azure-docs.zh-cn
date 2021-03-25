@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 825a336b5ad07f50d96b19036d70c759b907bd07
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209673"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452996"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 表存储输出绑定
 
@@ -267,7 +267,7 @@ foreach ($i in 1..10) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何使用表存储输出绑定。 `table`通过将值分配给 `name` 、 `tableName` 、和，在function.js中配置绑定 `partitionKey` `connection` ：
+下面的示例演示如何使用表存储输出绑定。 通过为 `name`、`tableName`、`partitionKey` 和 `connection` 分配值，在 function.json 中配置 `table` 绑定：
 
 ```json
 {
@@ -300,7 +300,7 @@ foreach ($i in 1..10) {
 }
 ```
 
-以下函数为值生成唯一的 UUI `rowKey` ，并将该消息保存到表存储中。
+以下函数为 `rowKey` 值生成唯一 UUI，并将消息持久保存在表存储中。
 
 ```python
 import logging
@@ -436,9 +436,9 @@ Python 不支持特性。
 
 有两个选项可用于从函数输出表存储行消息：
 
-- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将持久保存为表存储行。
+- **返回值**：将 function.json 中的 `name` 属性  设置为 `$return`。 使用此配置时，函数的返回值将作为表存储行保留。
 
-- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
+- **命令性**：将值传递给声明为 [Out](/python/api/azure-functions/azure.functions.out) 类型的参数的 [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) 方法。 传递给 `set` 的值将作为事件中心消息保留。
 
 ---
 

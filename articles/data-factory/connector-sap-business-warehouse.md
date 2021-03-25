@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 4a5eb7c8d729fc0c3b95a61a4b8dbc8266d1eec3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386656"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
@@ -62,7 +62,7 @@ ms.locfileid: "100386656"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapBw** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -130,7 +130,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SapBwSource** | 是 |
 | 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |

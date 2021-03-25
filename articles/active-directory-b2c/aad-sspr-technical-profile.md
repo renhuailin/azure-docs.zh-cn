@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383591"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure AD SSPR 技术配置文件
@@ -70,9 +70,9 @@ Azure AD SSPR 协议提供程序未返回任何 OutputClaims，因此无需指�
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 操作 | 是 | 必须是 SendCode。  |
 
@@ -124,9 +124,9 @@ Azure AD SSPR 协议提供程序未返回任何 OutputClaims，因此无需指�
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 操作 | 是 | 必须是 VerifyCode |
 

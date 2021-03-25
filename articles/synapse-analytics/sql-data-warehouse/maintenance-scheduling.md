@@ -11,10 +11,10 @@ ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: 886e99d6f56a008c694b3bcb366cfb4049f3528e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590206"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
@@ -38,7 +38,7 @@ ms.locfileid: "100590206"
 我们会在所有维护事件之前提前 24 小时通知，DWC400c 和更低层例外。
 
 > [!NOTE]
-> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。 这可能会在标识的维护时段之外发生，因为更新的关键本质。
+> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。 由于更新的主要性质，这种情况可能会在确定的维护时段之外发生。
 
 如果你提前收到了维护通知，但维护无法在通知中指定的时段进行，你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 

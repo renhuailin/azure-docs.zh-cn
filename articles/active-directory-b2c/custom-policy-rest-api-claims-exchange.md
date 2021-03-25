@@ -11,10 +11,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949473"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略
@@ -114,14 +114,14 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 
 ### <a name="configure-the-restful-api-technical-profile"></a>配置 RESTful API 技术配置文件 
 
-部署 REST API 后，请设置 `REST-ValidateProfile` 技术配置文件的元数据以反映你自己的 REST API，包括：
+部署 REST API 后，设置 `REST-ValidateProfile` 技术配置文件的元数据以反映你自己的 REST API，包括：
 
 - **ServiceUrl**。 设置 REST API 终结点的 URL。
 - **SendClaimsIn**。 指定如何将输入声明发送到 RESTful 声明提供程序。
-- **AuthenticationType**。 设置 RESTful 声明提供程序所执行的身份验证的类型。 
+- **AuthenticationType**。 设置 RESTful 声明提供程序所执行的身份验证类型。 
 - **AllowInsecureAuthInProduction**。 在生产环境中，请确保将此元数据设置为 `true`
     
-有关更多配置，请参阅 [RESTful 技术配置文件元数据](restful-technical-profile.md#metadata) 。
+有关更多配置，请参阅 [RESTful 技术配置文件元数据](restful-technical-profile.md#metadata)。
 
 `AuthenticationType` 和 `AllowInsecureAuthInProduction` 上的注释指定了在移到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful API，请参阅[保护 RESTful API](secure-rest-api.md)。
 

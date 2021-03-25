@@ -1,6 +1,6 @@
 ---
 title: 可视化效果
-description: 使用 Azure Synapse 笔记本直观显示你的数据
+description: 使用 Azure Synapse 笔记本可视化数据
 author: midesa
 ms.author: midesa
 ms.reviewer: euang
@@ -10,56 +10,56 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
 ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98121519"
 ---
 # <a name="visualize-data"></a>可视化数据
-Azure Synapse 是一种集成的分析服务，可在数据仓库和大数据分析系统之间加快洞察的时间。 数据可视化是一项关键组件，能够深入了解你的数据。 这有助于人们更轻松地理解大数据和小数据。 它还可以更轻松地检测数据组中的模式、趋势和离群值。 
+Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据分析系统中进行见解提取所需的时间。 数据可视化效果是一项关键组件，能够深入了解你的数据。 它有助于人们更轻松地理解大数据和小型数据。 还可使人们更轻松地检测数据组中的模式、趋势和离群值。 
 
-使用 Azure Synapse Analytics 中的 Apache Spark 时，有多种内置选项可帮助你可视化数据，其中包括 Synapse 笔记本图表选项、对常用开源库的访问以及与 Synapse SQL 和 Power BI 的集成。
+使用 Azure Synapse Analytics 中的 Apache Spark 时，有多种内置选项可帮助你可视化数据，包括 Synapse 笔记本图表选项、访问常用开源库的选项以及与 Synapse SQL 和 Power BI 的集成选项。
 
 ## <a name="notebook-chart-options"></a>笔记本图表选项
-使用 Azure Synapse 笔记本时，可以使用图表选项将表格结果视图转变为自定义图表。 在这里，无需编写任何代码即可直观显示数据。 
+使用 Azure Synapse 笔记本时，可以使用图表选项将表格结果视图转变为自定义图表。 在这里，无需编写任何代码即可实现数据可视化。 
 
-### <a name="displaydf-function"></a>显示 (df) 函数
-```display```函数使你能够将 SQL 查询和 Apache Spark dataframes 和 rdd 转换为丰富的数据可视化效果。```display```函数可用于在 PySpark、Scala、Java 和 .net 中创建的 dataframes 或 rdd。
+### <a name="displaydf-function"></a>display(df) 函数
+使用 ```display``` 函数，可以将 SQL 查询、Apache Spark 数据帧和 RDD 转换为丰富的数据可视化效果。你可以在采用 PySpark、Scala、Java 和 .NET 创建的数据帧或 RDD 上使用 ```display``` 函数。
 
 访问图表选项：
-1. ```%%sql```默认情况下，幻命令的输出显示在呈现的表视图中。 你还可以 ```display(df)``` 在 Spark DataFrames 或弹性分布式数据集上调用 (RDD) 函数以生成呈现的表视图。 
+1. 默认情况下，在呈现的表视图中显示 ```%%sql``` magic 命令的输出。 你也可以对 Spark 数据帧或弹性分布式数据集 (RDD) 函数调用 ```display(df)```，以生成呈现的表视图。 
    
-2. 获得呈现的表视图后，切换到 "图表" 视图。
-   ![内置图表](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
+2. 获得呈现的表视图后，请切换到图表视图。
+   ![built-in-charts](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
-3. 现在可以通过指定以下值自定义可视化效果：
+3. 现在，你可以通过指定以下值自定义可视化效果：
    | 配置 | 说明 |
    |--|--| 
-   | 图表类型 | ```display```函数支持多种图表类型，包括条形图、散点图、折线图等 |
-   | 密钥 | 指定 x 轴的值范围|
-   | “值” | 指定 y 轴值的值范围 |
+   | 图表类型 | ```display``` 函数支持多种图表类型，包括条形图、散点图、折线图等 |
+   | 键 | 指定 x 轴的值范围|
+   | 值 | 指定 y 轴的值范围 |
    | 序列组 | 用于确定聚合的组 | 
-   | 聚合 | 用于聚合可视化对象中的数据的方法| 
+   | 聚合 | 用于聚合可视化效果中的数据的方法| 
    
    
     > [!NOTE]
-    > 默认情况下，该 ```display(df)``` 函数将只接受数据的前1000行来呈现图表。 检查 **所有结果的聚合** ，并单击 " **应用** " 按钮，将从整个数据集中应用图表生成。 当图表设置发生更改时，将触发 Spark 作业。 请注意，完成计算并呈现图表可能需要几分钟时间。
+    > 默认情况下，```display(df)``` 函数将只选择数据的前 1000 行来呈现图表。 查看“聚合所有结果”并单击“应用”按钮，随即将应用根据整个数据集生成的图表 。 当图表设置发生更改时，将触发 Spark 作业。 请注意，可能需要几分钟时间才能完成计算并呈现图表。
    
-4. 完成后，可以查看最终的可视化效果并与其交互！
+4. 完成后，可以查看最终的可视化效果并与之交互！
 
-### <a name="displaydf-statistic-details"></a>显示 (df) 统计信息详细信息
-您可以使用 <code>display(df, summary = true)</code> 来检查给定 Apache Spark 数据帧的统计信息摘要，其中包括列名、列类型、唯一值和每列的缺失值。 您还可以选择特定列以查看其最小值、最大值、平均值和标准偏差。
-    ![内置图表-摘要](./media/apache-spark-development-using-notebooks/synapse-built-in-charts-summary.png#lightbox)
+### <a name="displaydf-statistic-details"></a>display(df) 统计信息详情
+你可以使用 <code>display(df, summary = true)</code> 来查看给定 Apache Spark 数据帧的统计信息摘要，包括列名、列类型、唯一值和每列的缺失值。 还可以选择特定列来查看其最小值、最大值、平均值和标准偏差。
+    ![built-in-charts-summary](./media/apache-spark-development-using-notebooks/synapse-built-in-charts-summary.png#lightbox)
    
-### <a name="displayhtmldf-option"></a>displayHTML (df) 选项
-Azure Synapse Analytics 笔记本使用函数支持 HTML 图形 ```displayHTML``` 。
+### <a name="displayhtmldf-option"></a>displayHTML(df) 选项
+Azure Synapse Analytics 笔记本使用 ```displayHTML``` 函数来支持 HTML 图形。
 
-下图是使用 [D3.js](https://d3js.org/)创建可视化效果的示例。
+下图是使用 [D3.js](https://d3js.org/) 创建可视化效果的示例。
 
-   ![d3-js-示例](./media/apache-spark-data-viz/d3-boxplot.png#lightbox)
+   ![d3-js-example](./media/apache-spark-data-viz/d3-boxplot.png#lightbox)
 
-运行以下代码来创建上面的可视化效果。
+运行以下代码，以创建可视化效果。
 
 ```python
 displayHTML("""<!DOCTYPE html>
@@ -146,10 +146,10 @@ svg
 ```
 
 ## <a name="popular-libraries"></a>常用库
-当涉及到数据可视化时，Python 提供了多个图形库，这些库已打包为许多不同的功能。 默认情况下，Azure Synapse Analytics 中的每个 Apache Spark 池包含一组特选和常用的开源库。 还可以使用 Azure Synapse Analytics 库管理功能添加或管理其他库 & 版本。 
+在数据可视化效果方面，Python 提供了多个图形库，这些库包含许多不同的功能。 默认情况下，Azure Synapse Analytics 中的每个 Apache Spark 池都包含一组精选和常用的开放源代码库。 你也可以使用 Azure Synapse Analytics 库管理功能添加或管理其他库和版本。 
 
 ### <a name="bokeh"></a>Bokeh
-可以使用呈现 HTML 或交互式库，如 **bokeh** ```displayHTML(df)``` 。 
+可以使用 ```displayHTML(df)``` 来呈现 HTML 或交互库，如 **bokeh** 。 
 
 下图是使用 bokeh 在地图上绘制字形的示例。
 
@@ -187,10 +187,10 @@ displayHTML(html)
 ```
 
 ### <a name="matplotlib"></a>Matplotlib
-可以使用每个库的内置呈现功能，来呈现标准绘图库，如 Matplotlib。
+可以使用每个库的内置呈现功能（如 Matplotlib），来呈现标准绘图库。
 
-下图是使用 **Matplotlib** 创建条形图的示例。
-   ![折线图：](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
+下图是使用 Matplotlib 创建条形图的示例。
+   ![折线图示例。](./media/apache-spark-data-viz/matplotlib-example.png#lightbox)
 
 运行下面的示例代码，绘制上面的图像。
 
@@ -217,19 +217,19 @@ plt.show()
 ```
 
 ### <a name="additional-libraries"></a>其他库 
-除了这些库以外，Azure Synapse Analytics 运行时还包括以下一组库，这些库通常用于数据可视化：
+除了这些库，Azure Synapse Analytics 运行时还包含下面的一组库，通常用于数据可视化效果：
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
 
-有关可用库和版本的最新信息，请访问 Azure Synapse Analytics 运行时 [文档](./spark/../apache-spark-version-support.md) 。
+有关可用库和版本的最新信息，请访问 Azure Synapse Analytics 运行时[文档](./spark/../apache-spark-version-support.md)。
 
-## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>使用 Apache Spark & SQL 点播连接到 Power BI
-Azure Synapse Analytics 与 Power BI 紧密集成，使数据工程师能够构建分析解决方案。
+## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>使用 Apache Spark 和按需 SQL 连接到 Power BI
+Azure Synapse Analytics 与 Power BI 紧密集成，可让数据工程师构建分析解决方案。
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池和无服务器 SQL 池之间共享数据库和表。 使用 [共享的元数据模型](../metadata/overview.md)，可以按需使用 SQL 查询 Apache Spark 表。 完成后，可以将 SQL 点播终结点连接到 Power BI，以便轻松地查询已同步的 Spark 表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池与无服务器 SQL 池之间共享数据库和表。 借助[共享的元数据模型](../metadata/overview.md)，可以使用按需 SQL 查询 Apache Spark 表。 完成后，可以将 SQL 按需终结点连接到 Power BI，以便轻松查询已同步的 Spark 表。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 有关如何设置 Spark SQL DW 连接器的详细信息，请： [SYNAPSE sql Connector](./spark/../synapse-spark-sql-pool-import-export.md)
-- 查看默认库： [Azure Synapse Analytics 运行时](../spark/apache-spark-version-support.md)
+- 要详细了解如何设置 Spark SQL DW 连接器，请参阅 [Synapse SQL 连接器](./spark/../synapse-spark-sql-pool-import-export.md)
+- 查看默认库：[Azure Synapse Analytics 运行时](../spark/apache-spark-version-support.md)

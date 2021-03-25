@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
 ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341224"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中的表 API 的常见问题解答
@@ -69,7 +69,7 @@ ms.locfileid: "93341224"
   | TableServiceExtensions | " " |
   | TableServiceQuery | " " |
 
-## <a name="other-frequently-asked-questions"></a>其他常见问题
+## <a name="other-frequently-asked-questions"></a>其他常见问题解答
 
 ### <a name="do-i-need-a-new-sdk-to-use-the-table-api"></a>是否需要新的 SDK 才能使用表 API？
 
@@ -133,7 +133,7 @@ Azure Cosmos DB 旨在通过横向缩放提供无限的存储。 该服务可以
 
 ### <a name="can-i-use-the-table-api-sdk-locally-with-the-emulator"></a>是否可以在本地将表 API SDK 用于模拟器？
 
-现在不行。
+目前没有。
 
 ### <a name="can-my-existing-application-work-with-the-table-api"></a>现有的应用程序是否适用于表 API？
 
@@ -179,7 +179,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 
 表 API 利用 Cosmos DB 的全球分布式平台。 若要确保应用程序能够容许数据中心停机，需在 Azure Cosmos DB 门户中至少再为帐户启用一个区域（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。 可以通过使用门户设置区域的优先级（[使用多区域 Azure Cosmos DB 帐户进行开发](high-availability.md)）。
 
-可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 [最新的 .NET 客户端 SDK](table-sdk-dotnet.md) 可自动寻址，但其他 SDK 则不可以。 也就是说，它能够检测到有故障的区域，并自动故障转移到新区域。
+可以视需要为帐户添加任意数目的区域，并通过提供故障转移优先级来控制可将该帐户故障转移到哪个位置。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。 [最新的 .NET 客户端 SDK](table-sdk-dotnet.md) 可自动寻址，但其他 SDK 则不可以。 也就是说，它能够检测到有故障的区域，并自动故障转移到新区域。
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>是否能够为表 API 启用备份？
 

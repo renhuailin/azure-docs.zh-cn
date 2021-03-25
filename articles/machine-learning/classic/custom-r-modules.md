@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: d44f2cfa72bd53b01da073fca31ca698eb42720d
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520470"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>定义机器学习工作室（经典）的自定义 R 模块

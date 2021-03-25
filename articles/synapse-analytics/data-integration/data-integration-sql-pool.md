@@ -1,6 +1,6 @@
 ---
-title: 将数据引入专用 SQL 池
-description: 了解如何在 Azure Synapse 分析中将数据引入专用 SQL 池
+title: 将数据引入专用 SQL 池中
+description: 了解如何将数据引入 Azure Synapse Analytics 中的专用 SQL 池中
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -10,47 +10,47 @@ ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: a02abff712fc26f653307108fcc3bb284444d0c7
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676648"
 ---
-# <a name="ingest-data-into-a-dedicated-sql-pool"></a>将数据引入专用 SQL 池
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>将数据引入专用 SQL 池中
 
-在本文中，你将了解如何将数据从 Azure Data Lake 第2代存储帐户引入到 Azure Synapse Analytics 中的专用 SQL 池中。
+本文介绍如何将数据从 Azure Data Lake Gen 2 存储帐户引入 Azure Synapse Analytics 中的专用 SQL 池中。
 
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* **Azure 存储帐户**：使用 Azure Data Lake Storage Gen 2 作为 *源* 数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)来了解创建步骤。
-* **Azure Synapse 分析**：将专用 SQL 池用作 *接收器* 数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建专用 SQL 池](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，了解创建该实例的步骤。
+* Azure 存储帐户：使用 Azure Data Lake Storage Gen 2 作为源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)来了解创建步骤。
+* **Azure Synapse Analytics**：使用专用 SQL 池作为接收器数据存储。 如果你没有 Azure Synapse Analytics 实例，请参阅[创建专用 SQL 池](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，了解创建该实例的步骤。
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-在 Azure Synapse Analytics 中，链接服务是定义到其他服务的连接信息的一个位置。 在本部分中，你将添加 Azure Synapse 分析和 Azure Data Lake Storage Gen2 链接服务。
+在 Azure Synapse Analytics 中，链接服务是定义到其他服务的连接信息的一个位置。 在本部分中，你将添加 Azure Synapse Analytics 和 Azure Data Lake Storage Gen2 链接服务。
 
 1. 打开 Azure Synapse Analytics UX，转到“管理”选项卡。
 1. 在“外部连接”下，选择“链接服务”。
 1. 若要添加链接服务，请选择“新建”。
-1. 从列表中选择 "Azure Data Lake Storage Gen2" 磁贴，然后选择 " **继续**"。
-1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 选择 "测试连接" 以验证你的凭据是否正确。 完成后，选择“创建”。
-1. 重复步骤3-5，但不要 Azure Data Lake Storage Gen2，选择 "Azure Synapse Analytics" 磁贴，并在相应的连接凭据中输入。 对于 Azure Synapse 分析，当前支持 SQL 身份验证、托管标识和服务主体。
+1. 从列表中选择“Azure Data Lake Storage Gen2”磁贴，然后选择“继续”。
+1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 选择“测试连接”以验证你的凭据是否正确。 完成后，选择“创建”。
+1. 重复步骤 3-5，但不要选择 Azure Data Lake Storage Gen2，而是选择“Azure Synapse Analytics”磁贴并输入相应的连接凭据。 对于 Azure Synapse Analytics，当前支持 SQL 身份验证、托管标识和服务主体。
 
 ## <a name="create-pipeline"></a>创建管道
 
-管道包含用于执行一组活动的逻辑流。 在本部分中，你将创建一个包含复制活动的管道，该活动将 ADLS Gen2 中的数据引入到专用的 SQL 池中。
+管道包含用于执行一组活动的逻辑流。 本部分将创建一个包含复制活动的管道，该复制活动将数据从 ADLS Gen2 引入到专用 SQL 池中。
 
-1. 请参阅 " **集成** " 选项卡。选择 "管道" 标头旁边的加号图标，然后选择 " **管道**"。
+1. 转到“集成”选项卡。选择管道标题旁边的加号图标，然后选择“管道”。
 1. 在“活动”窗格中的“移动和转换”下，将“复制数据”拖到管道画布上。
-1. 选择 "复制" 活动，并中转到 " **源** " 选项卡。选择 " **新建** " 以创建新的源数据集。
-1. 选择 Azure Data Lake Storage gen2 作为数据存储，然后选择 "继续"。
-1. 选择 DelimitedText 作为你的格式，然后选择 "继续"。
+1. 选择复制活动并转到“源”选项卡。选择“新建”以创建新的源数据集。
+1. 选择 Azure Data Lake Storage Gen2 作为数据存储，然后选择“继续”。
+1. 选择 DelimitedText 作为格式，然后选择“继续”。
 1. 在“设置属性”窗格中，选择你创建的 ADLS 链接服务。 指定源数据的文件路径，并指定第一行是否具有标题。 你可以从文件存储或示例文件导入架构。 完成后，选择“确定”。
-1. 中转到 " **接收器** " 选项卡。选择 " **新建** " 以创建新的接收器数据集。
-1. 选择 "Azure Synapse Analytics" 作为数据存储，然后选择 "继续"。
-1. 在 "设置属性" 窗格中，选择你创建的 Azure Synapse Analytics 链接服务。 如果要写入现有表，请从下拉列表中选择它。 否则，请选中 " **编辑** "，然后输入新的表名称。 完成后选择 "确定"
-1. 如果要创建表，请在 "表选项" 字段中启用 **自动创建表** 。
+1. 转到“接收器”选项卡。选择“新建”以创建新的接收器数据集。
+1. 选择 Azure Synapse Analytics 作为数据存储，然后选择“继续”。
+1. 在“设置属性”窗格中，选择你创建的 Azure Synapse Analytics 链接服务。 如果要写入现有表，请在下拉列表中选择它。 否则，请选中“编辑”，并输入新的表名称。 完成后，选择“确定”
+1. 如果要创建表，请在“表选项”字段中启用“自动创建表”。
 
 ## <a name="debug-and-publish-pipeline"></a>调试和发布管道
 
@@ -73,4 +73,4 @@ ms.locfileid: "101676648"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅将 [数据引入到 Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) 一文。
+有关 Azure Synapse Analytics 的数据集成的详细信息，请参阅[将数据引入到 Azure Data Lake Storage Gen2 中](data-integration-data-lake.md)一文。

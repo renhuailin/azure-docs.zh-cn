@@ -4,44 +4,57 @@ description: 了解如何配置并自定义 Azure RTOS 安全模块。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: fb2b7810c0829859f4a104c62b6df2ca0495bac7
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
-ms.translationtype: MT
+ms.date: 03/07/2021
+ms.author: shhazam
+ms.openlocfilehash: 524286fa7a923485d0085fb63f3ef9669db1a4d5
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809195"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449809"
 ---
-# <a name="configure-and-customize-security-module-for-azure-rtos-preview"></a>配置并自定义 Azure RTOS 安全模块（预览版）
+# <a name="configure-and-customize-defender-iot-micro-agent-for-azure-rtos-ga"></a>配置和自定义适用于 Azure RTOS 正式版的 Defender IoT 微代理
+
+本文介绍如何为 Azure RTOS 设备配置 Defender IoT 微代理，以满足网络、带宽和内存要求。
+
+请务必从 `netxduo/addons/azure_iot/azure_iot_security_module/configs` 目录中选择具有 `*.dist` 扩展名的目标分发文件。  
+
+使用 CMake 编译环境时，必须针对所选值将命令行参数设置为 `IOT_SECURITY_MODULE_DIST_TARGET`。 例如，`-DIOT_SECURITY_MODULE_DIST_TARGET=RTOS_BASE`。
+
+在 IAR 或其他非 CMake 编译环境中，必须将 `netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/<target distribution>/` 路径添加到任何已知的包含的路径中。 例如，`netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/RTOS_BASE`。
 
 使用以下文件配置设备行为。
 
-## <a name="azure_iot_security_moduleincasc_porth"></a>azure_iot_security_module/inc/asc_port.h
+netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/\<target distribution>/asc_config.h
 
- 下面的表提供了每个配置的默认行为： 
+在 CMake 编译环境中，必须通过编辑 `netxduo/addons/azure_iot/azure_iot_security_module/configs/<target distribution>.dist` 文件来更改默认配置。 对于所有其他环境，请使用 `set(ASC_XXX ON)` CMake 格式，或 `netxduo/addons/azure_iot/azure_iot_security_module/inc/configs/<target distribution>/asc_config.h` 文件。 例如，`#define ASC_XXX`。
 
-### <a name="general"></a>常规
+下面的表提供了每个配置的默认行为： 
 
-| 名称 | 类型 | 默认 | 详细信息 |
-| - | - | - | - |
-| ASC_SECURITY_MODULE_ID | 字符串 | --- | 设备的唯一标识符  |
-| ASC_SECURITY_MODULE_PENDING_TIME  | Number | 300 | 安全模块挂起时间（秒）。 如果超时，状态会更改为“挂起”。 |
-
-#### <a name="collection"></a>集合
+## <a name="general"></a>常规
 
 | 名称 | 类型 | 默认 | 详细信息 |
 | - | - | - | - |
-| ASC_HIGH_PRIORITY_INTERVAL | Number | 10 | 收集器高优先级组间隔（秒）。 |
-| ASC_MEDIUM_PRIORITY_INTERVAL | Number | 30 | 收集器中等优先级组间隔（秒）。 |
-| ASC_LOW_PRIORITY_INTERVAL | Number | 145,440  | 收集器低优先级组间隔（秒）。 |
+| ASC_SECURITY_MODULE_ID | 字符串 | defender-iot-micro-agent | 设备的唯一标识符。  |
+| SECURITY_MODULE_VERSION_(MAJOR)(MINOR)(PATCH)  | Number | 3.2.1 | 版本。 |
+| ASC_SECURITY_MODULE_SEND_MESSAGE_RETRY_TIME  | Number  | 3 | Defender IoT 微代理在失败后发送安全消息所需的时间。 （以秒为单位） |
+| ASC_SECURITY_MODULE_PENDING_TIME  | Number | 300 | Defender IoT 微代理挂起时间（秒）。 如果超过该时间，则状态将更改为“挂起”。 |
+
+## <a name="collection"></a>集合
+
+| 名称 | 类型 | 默认 | 详细信息 |
+| - | - | - | - |
+| ASC_FIRST_COLLECTION_INTERVAL | Number  | 30  | 收集器的启动收集间隔偏移量。 在启动过程中，该值将会添加到系统的集合中，以免同时从多个设备发送消息。  |
+| ASC_HIGH_PRIORITY_INTERVAL | Number | 10 | 收集器的高优先级组间隔（秒）。 |
+| ASC_MEDIUM_PRIORITY_INTERVAL | Number | 30 | 收集器的中等优先级组间隔（秒）。 |
+| ASC_LOW_PRIORITY_INTERVAL | Number | 145,440  | 收集器的低优先级组间隔（秒）。 |
 
 #### <a name="collector-network-activity"></a>收集器网络活动
 
@@ -49,34 +62,32 @@ ms.locfileid: "99809195"
 
 | 名称 | 类型 | 默认 | 详细信息 |
 | - | - | - | - |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boolean | false | 筛选 `TCP` 网络活动 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boolean | false | 筛选 `UDP` 网络活动事件 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boolean | false | 筛选 `ICMP` 网络活动事件 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | 布尔 | 是 | 仅捕获单播传入数据包，设置为“false”时也捕获广播和多播 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Number | 64 | 要存储在内存中的 IPv4 网络事件的最大数目 |
-| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Number | 64  | 要存储在内存中的 IPv6 网络事件的最大数目 |
-
-
-## <a name="compile-flags"></a>编译标志
-编译标志允许重写预定义的配置。
+| ASC_COLLECTOR_NETWORK_ACTIVITY_TCP_DISABLED | Boolean | false | 筛选 `TCP` 网络活动。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_UDP_DISABLED | Boolean | false | 筛选 `UDP` 网络活动事件。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_ICMP_DISABLED | Boolean | false | 筛选 `ICMP` 网络活动事件。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_CAPTURE_UNICAST_ONLY | 布尔 | 是 | 仅捕获单播传入数据包。 如果设置为 false，它还将捕获广播和多播。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_SEND_EMPTY_EVENTS  | Boolean  | false  | 发送收集器的空事件。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV4_OBJECTS_IN_CACHE | Number | 64 | 要存储在内存中的 IPv4 网络事件的最大数目。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_MAX_IPV6_OBJECTS_IN_CACHE | Number | 64  | 要存储在内存中的 IPv6 网络事件的最大数目。 |
 
 ### <a name="collectors"></a>Collectors
 | 名称 | 类型 | 默认 | 详细信息 |
 | - | - | - | - |
-| collector_heartbeat_enabled | Boolean | ON | 启用检测信号收集器 |
-| collector_network_activity_enabled | Boolean | ON | 启用网络活动收集器 |
-| collector_system_information_enabled | Boolean | ON | 启用系统信息收集器 |
+| ASC_COLLECTOR_HEARTBEAT_ENABLED | Boolean | ON | 启用检测信号收集器。 |
+| ASC_COLLECTOR_NETWORK_ACTIVITY_ENABLED  | Boolean | ON | 启用网络活动收集器。 |
+| ASC_COLLECTOR_SYSTEM_INFORMATION_ENABLED | Boolean | ON | 启用系统信息收集器。  |
 
+其他配置标志是高级标志，具有不支持的功能。 若要对此进行更改或需要了解详细信息，请联系支持部门。
+ 
 ## <a name="supported-security-alerts-and-recommendations"></a>支持的安全警报和建议
 
-Azure RTOS 安全模块支持特定的安全警报和建议。 请确保[查看并自定义服务的相关警报和建议值](concept-rtos-security-alerts-recommendations.md)。
+适用于 Azure RTOS 的 Defender IoT 微代理支持特定的安全警报和建议。 请确保[查看并自定义服务的相关警报和建议值](concept-rtos-security-alerts-recommendations.md)。
 
 ## <a name="log-analytics-optional"></a>Log Analytics（可选）
 
-虽然是可选的而不是必需的，但是当你希望进一步调查设备事件和活动时，启用和配置 Log Analytics 会很有帮助。 阅读有关如何设置和使用 [适用于 IoT 服务的 Log Analytics 的](how-to-security-data-access.md#log-analytics) 详细信息。 
+可以启用和配置 Log Analytics 来调查设备事件和活动。 若要了解详细信息，请阅读关于如何设置 Log Analytics 并[将 Log Analytics 与 Defender for IoT 服务配合使用](how-to-security-data-access.md#log-analytics)的文章。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 查看并自定义 Azure RTOS 安全模块的[安全警报和建议](concept-rtos-security-alerts-recommendations.md)
 - 根据需要参阅 [Azure RTOS 安全模块 API](azure-rtos-security-module-api.md)。
-

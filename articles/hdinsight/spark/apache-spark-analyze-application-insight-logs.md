@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 9ae06565039e53c0096ff0541f7b28a5b041d9e8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940477"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864544"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>使用 HDInsight 上的 Apache Spark 分析 Application Insights 遥测日志
 
@@ -36,7 +36,7 @@ ms.locfileid: "98940477"
 
 下图演示了本示例的服务体系结构：
 
-![数据从 Application Insights 流动到 Blob 存储，然后到 Spark](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+:::image type="content" source="./media/apache-spark-analyze-application-insight-logs/application-insights.png" alt-text="数据从 Application Insights 流动到 Blob 存储，然后到 Spark" border="false":::
 
 ### <a name="azure-storage"></a>Azure 存储
 
@@ -373,7 +373,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供 [导出数据
 有关使用 Apache Spark 处理 Azure 中数据和服务的更多示例，请参阅以下文档：
 
 * [Apache Spark 与 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 

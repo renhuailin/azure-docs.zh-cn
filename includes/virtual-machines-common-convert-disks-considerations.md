@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 091e4dc0759ce1b227349d5d1b6b08b9eda66ee0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 72050ff4887642ba16d52948c1c1253ca01443c0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017333"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102473747"
 ---
-* 该转换需要重启 VM，因此请在预先存在的维护时段内计划 VM 迁移。 
+* 该转换将重新启动 VM，因此请在预先存在的维护时段内规划 VM 迁移。 
 
 * 转换是不可逆的。 
 

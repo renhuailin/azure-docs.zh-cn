@@ -4,10 +4,10 @@ description: 本文提供保护矩阵，其中列出 Azure 备份服务器 V3 RT
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98986881"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 备份服务器 V3 RTM 保护矩阵
@@ -16,7 +16,7 @@ ms.locfileid: "98986881"
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 
-|工作负载|版本|Azure 备份服务器</br> 安装|支持的 Azure 备份服务器|保护和恢复|
+|工作负荷|版本|Azure 备份服务器</br> 安装|支持的 Azure 备份服务器|保护和恢复|
 |------------|-----------|---------------|--------------|--------------|
 |客户端计算机（64 位和 32 位）|Windows 10|物理服务器<br /><br />Hyper-V 虚拟机<br /><br />VMware 虚拟机|V3、V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须采用 NTFS 格式。 不支持 FAT 和 FAT32。<br /><br />卷必须至少有 1 GB 空间。 Azure 备份服务器使用卷影复制服务 (VSS) 来创建数据快照；仅当卷至少有 1 GB 空间时，快照才能正常工作。|
 |客户端计算机（64 位和 32 位）|Windows 8.1|物理服务器<br /><br />Hyper-V 虚拟机|V3、V2|文件<br /><br />受保护的卷必须采用 NTFS 格式。 不支持 FAT 和 FAT32。<br /><br />卷必须至少有 1 GB 空间。 Azure 备份服务器使用卷影复制服务 (VSS) 来创建数据快照；仅当卷至少有 1 GB 空间时，快照才能正常工作。|

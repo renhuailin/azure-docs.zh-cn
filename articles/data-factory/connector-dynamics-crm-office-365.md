@@ -1,20 +1,20 @@
 ---
 title: 在 Dynamics (Common Data Service) 中复制数据
-description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Microsoft Dynamics CRM 或 Microsoft Dynamics 365 (Common Data Service) 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Dynamics CRM 或 Dynamics 365。
+description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Microsoft Dynamics CRM 或 Microsoft Dynamics 365 (Common Data Service/Microsoft Dataverse) 复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 Dynamics CRM 或 Dynamics 365。
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100380995"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447429"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service/Microsoft Dataverse) 或 Dynamics CRM 复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "100380995"
 - [复制活动](copy-activity-overview.md)和[支持的源和接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-可以将数据从 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Common Data Service) 或 Dynamics CRM。 如需复制活动支持将其用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可将数据从 Dynamics 365 (Common Data Service/Microsoft Dataverse) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Common Data Service) 或 Dynamics CRM。 如需复制活动支持将其用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 此 Dynamics 连接器支持联机的和本地的 Dynamics 版本 7-9。 更具体地说：
 
@@ -363,6 +363,32 @@ Dynamics 链接服务支持以下属性。
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>从视图检索数据
+
+若要从 Dynamics 视图检索数据，需要获取视图已保存的查询，并使用该查询来获取数据。
+
+有两个实体用于存储不同类型的视图：“已保存的查询”存储系统视图，而“用户查询”存储用户视图。 若要获取这些视图的信息，请参阅下面的 FetchXML 查询，并将“TARGETENTITY”替换为 `savedquery` 或 `userquery`。 每个实体类型都有更多可用属性，你可根据需要向查询添加它们。 详细了解 [savedquery 实体](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery)和 [userquery 实体](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)。
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+还可添加筛选器来筛选视图。 例如，添加以下筛选器以获取帐户实体中名为“我的活动帐户”的视图。
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Dynamics 的数据类型映射

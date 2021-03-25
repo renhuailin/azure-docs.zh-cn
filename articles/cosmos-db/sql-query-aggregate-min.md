@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查询语言中的最小值
-description: 了解 Azure Cosmos DB 中 (MIN) SQL 系统函数的最小值。
+title: Azure Cosmos DB 查询语言中的 MIN
+description: 了解 Azure Cosmos DB 中的 Min (MIN) SQL 系统函数。
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.date: 12/02/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 679814822cca5a72bd261d3c8944863715e31f70
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96552363"
 ---
-# <a name="min-azure-cosmos-db"></a>最小 (Azure Cosmos DB) 
+# <a name="min-azure-cosmos-db"></a>MIN (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-此聚合函数返回表达式中的最小值。
+此聚合函数返回表达式中值的最小值。
   
 ## <a name="syntax"></a>语法
   
@@ -26,10 +26,10 @@ ms.locfileid: "96552363"
 MIN(<scalar_expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
-*scalar_expr*  
-   是标量表达式。 
+scalar_expr  
+   它是一个标量表达式。 
   
 ## <a name="return-types"></a>返回类型
   
@@ -37,7 +37,7 @@ MIN(<scalar_expr>)
   
 ## <a name="examples"></a>示例
   
-下面的示例返回的最小值 `propertyA` ：
+以下示例返回 `propertyA` 的最小值：
   
 ```sql
 SELECT MIN(c.propertyA)
@@ -46,11 +46,11 @@ FROM c
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。 中的参数 `MIN` 可以是 number、string、boolean 或 null。 所有未定义的值都将被忽略。
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。 `MIN` 中的参数可以是数字、字符串、布尔值或 null。 任何未定义的值将被忽略。
 
-比较不同类型的数据时，按升序 (使用以下优先级顺序) ：
+比较不同类型的数据时，使用以下优先级顺序（升序）：
 
-- null
+- Null
 - boolean
 - number
 - string

@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99832379"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
@@ -110,7 +110,7 @@ ms.locfileid: "99832379"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | Date   |
+    | 最后维修日期 | 无          | 日期   |
     | 客户名称     | 无          | 字符串 |
 
 2. 选择“保存”。 

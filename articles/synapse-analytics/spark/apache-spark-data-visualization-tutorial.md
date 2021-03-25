@@ -1,6 +1,6 @@
 ---
 title: 使用 Apache Spark 实现数据可视化
-description: 使用 Apache Spark 和 Azure Synapse Analytics 笔记本创建丰富的数据可视化
+description: 使用 Apache Spark 和 Azure Synapse Analytics 笔记本创建丰富数据可视化效果
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,17 +9,17 @@ ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
 ms.openlocfilehash: 56af49b6fa862c93822293056752182b534ac442
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942264"
 ---
-# <a name="analyze-data-with-apache-spark"></a>用 Apache Spark 分析数据
+# <a name="analyze-data-with-apache-spark"></a>使用 Apache Spark 分析数据
 
-在本教程中，你将了解如何使用 Azure 开放式数据集和 Apache Spark 执行探索数据分析。 然后，你可以在 Azure Synapse Analytics 的 Synapse Studio 笔记本中显示结果。
+在本教程中，你将了解如何使用 Azure 开放数据集和 Apache Spark 执行探索性数据分析。 然后，你可以在 Azure Synapse Analytics 的 Synapse Studio 笔记本中将结果可视化。
 
-具体而言，我们将分析 [纽约 (NYC) 出租车](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 数据集。 数据通过 Azure 开放数据集提供。 此数据集的子集包含有关以下内容的信息：每次行程的相关信息、开始和结束时间、地点、成本和其他有趣的属性。
+具体而言，我们会分析[纽约市 (NYC) 出租车](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)数据集。 数据通过 Azure 开放数据集提供。 此数据集子集包含有关黄色出租车行程的信息：有关每次行程、开始和结束时间、位置、成本和其他令人感兴趣的属性的信息。
   
 ## <a name="before-you-begin"></a>在开始之前
 按照[创建 Apache Spark 池教程](../articles/../quickstart-create-apache-spark-pool-studio.md)创建 Apache Spark 池。 
@@ -30,7 +30,7 @@ ms.locfileid: "98942264"
    > [!Note]
    > 由于使用的是 PySpark 内核，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 上下文。
 
-2. 在本教程中，我们将使用几个不同的库来帮助我们直观显示数据集。 若要执行此分析，请导入以下库： 
+2. 在本教程中，我们将使用几个不同的库来直观地显示数据集。 若要执行此分析，请导入以下库： 
 
    ```python
    import matplotlib.pyplot as plt
@@ -38,7 +38,7 @@ ms.locfileid: "98942264"
    import pandas as pd
    ```
 
-3. 由于原始数据是 Parquet 格式，因此可以使用 Spark 上下文直接将文件作为数据帧提取到内存中。 通过打开的数据集 API 检索数据，创建 Spark 数据帧。 在这里，我们将使用 Spark 数据帧 *架构读取* 属性来推断数据类型和架构。
+3. 由于原始数据是 Parquet 格式，因此可以使用 Spark 上下文直接将文件作为数据帧提取到内存中。 通过开放数据集 API 检索数据，创建 Spark 数据帧。 在这里，我们使用 Spark 数据帧“基于读取的架构”属性来推断数据类型和架构。
 
    ```python
    from azureml.opendatasets import NycTlcYellow
@@ -51,7 +51,7 @@ ms.locfileid: "98942264"
    df = nyc_tlc.to_spark_dataframe()
    ```
 
-4. 读取数据后，我们需要执行一些初始筛选来清理数据集。 我们可能删除不需要的列，并添加提取重要信息的列。 此外，我们将筛选出数据集内的异常。
+4. 读取数据后，我们需要执行一些初始筛选来清理数据集。 我们可能会删除不需要的列，并添加可提取重要信息的列。 此外，我们会筛选掉数据集内的异常。
 
    ```python
    # Filter the dataset 
@@ -70,12 +70,12 @@ ms.locfileid: "98942264"
    ```
 
 ## <a name="analyze-data"></a>分析数据
-作为数据分析人员，您可以使用多种工具来帮助您从数据中提取见解。 在本教程的此部分中，我们将逐步介绍 Azure Synapse Analytics 笔记本中提供的几个有用工具。 在此分析中，我们想要了解在所选时间段内产生更多出租车提示的因素。
+作为数据分析人员，你可以使用多种工具从数据中提取见解。 在本教程的此部分，我们将逐步介绍 Azure Synapse Analytics 笔记本中提供的几个有用工具。 在此分析中，我们想要了解在所选时间段内司机获得较多出租车小费的因素。
 
-### <a name="apache-spark-sql-magic"></a>Apache Spark SQL 幻 
-首先，我们将使用 Azure Synapse 笔记本 Apache Spark SQL 和魔棒命令来执行探索性数据分析。 查询完成后，我们将使用内置功能对结果进行可视化 ```chart options``` 。 
+### <a name="apache-spark-sql-magic"></a>Apache Spark SQL Magic 
+首先，我们将使用 Azure Synapse 笔记本通过 Apache Spark SQL 和 magic 命令来执行探索性数据分析。 进行查询以后，我们将使用内置的 ```chart options``` 功能将结果可视化。 
 
-1. 在笔记本中，创建一个新单元格，并复制以下代码。 使用此查询，我们想要了解平均笔尖量在我们选择的时间段内的变化情况。 此查询还将帮助我们确定其他有用的见解，包括每天的最小/最大 tip 数量和平均费用金额。
+1. 在笔记本中，创建一个新单元格并复制以下代码。 我们想要使用此查询来了解平均小费金额在所选时间段内的变化情况。 此查询还将帮助我们确定其他有用的见解，包括每天的最小/最大小费金额和平均车费金额。
    
    ```sql
    %%sql
@@ -90,15 +90,15 @@ ms.locfileid: "98942264"
    ORDER BY day_of_month ASC
    ```
 
-2. 查询运行完成后，可以通过切换到 "图表" 视图来可视化结果。 此示例通过 ```day_of_month``` 将字段指定为键并将指定为值来创建折线图 ```avgTipAmount``` 。 做出选择后，选择 " **应用** " 以刷新图表。 
+2. 查询运行完以后，我们可以通过切换到图表视图来可视化结果。 此示例通过将 ```day_of_month``` 字段指定为键并将 ```avgTipAmount``` 指定为值来创建折线图。 做出选择后，请选择“应用”以刷新图表。 
    
 ## <a name="visualize-data"></a>可视化数据
-除了内置的笔记本图表选项外，还可以使用常用的开放源代码库来创建自己的可视化效果。 在下面的示例中，我们将使用 Seaborn 和 Matplotlib。 这些常用于数据可视化的 Python 库。 
+除了内置的笔记本图表选项外，你还可以使用常用的开放源代码库来创建自己的可视化效果。 在下面的示例中，我们将使用 Seaborn 和 Matplotlib。 这两个都是常用于数据可视化的 Python 库。 
 
 > [!Note]
-> 默认情况下，Azure Synapse Analytics 中的每个 Apache Spark 池都包含一组常用和默认的库。 可以在 [Azure Synapse 运行时](../spark/apache-spark-version-support.md) 文档中查看库的完整列表。 此外，若要使第三方或本地生成的代码可用于你的应用程序，你可以将 [库安装](../spark/apache-spark-azure-portal-add-libraries.md) 到一个 Spark 池上。
+> 默认情况下，Azure Synapse Analytics 中的每个 Apache Spark 池都包含一组常用的和默认的库。 可以在 [Azure Synapse 运行时](../spark/apache-spark-version-support.md)文档中查看库的完整列表。 此外，若要使第三方或本地生成的代码可用于你的应用程序，可[将库安装](../spark/apache-spark-azure-portal-add-libraries.md)到某个 Spark 池中。
 
-1. 为了更轻松、更便宜，我们将数据集缩减到一倍。 我们将使用内置 Apache Spark 采样功能。 此外，Seaborn 和 Matplotlib 都需要 Pandas 数据帧或 NumPy 数组。 若要获取 Pandas 数据帧，请使用 ```toPandas()``` 命令转换数据帧。
+1. 为了降低开发的难度和费用，我们将降低数据集的采样。 我们将使用内置的 Apache Spark 采样功能。 此外，Seaborn 和 Matplotlib 都需要 Pandas 数据帧或 NumPy 数组。 若要获取 Pandas 数据帧，请使用 ```toPandas()``` 命令来转换数据帧。
 
    ```python
    # To make development easier, faster, and less expensive, downsample for now
@@ -108,7 +108,7 @@ ms.locfileid: "98942264"
    sampled_taxi_pd_df = sampled_taxi_df.toPandas()
    ```
 
-1. 我们想要了解数据集中的提示分布。 我们将使用 Matplotlib 创建一个直方图，以显示 tip 数量和计数的分布情况。 根据分发情况，我们可以看到，对于小于或等于 $10 的数量，这些提示将会呈倾斜。
+1. 我们想要了解数据集中小费的分布情况。 我们将使用 Matplotlib 创建一个直方图，以显示小费金额和计数的分布情况。 根据分布情况，我们可以看到，小费倾向于 10 美元或 10 美元以下的金额。
 
    ```python
    # Look at a histogram of tips by count by using Matplotlib
@@ -121,9 +121,9 @@ ms.locfileid: "98942264"
    plt.show()
    ```
 
-   ![提示直方图。](./media/apache-spark-machine-learning-mllib-notebook/histogram.png)
+   ![小费直方图。](./media/apache-spark-machine-learning-mllib-notebook/histogram.png)
 
-1. 接下来，我们想要了解给定行程的提示与一周中的哪一天之间的关系。 使用 Seaborn 创建一个框须图，用于汇总一周中每一天的趋势。 
+1. 接下来，我们想要了解给定行程的小费与一周中的某一天的关系。 请使用 Seaborn 创建一个箱线图，用于汇总一周中每一天的趋势。 
 
    ```python
    # View the distribution of tips by day of week using Seaborn
@@ -134,9 +134,9 @@ ms.locfileid: "98942264"
    plt.show()
 
    ```
-   ![显示每日提示的分布图。](./media/apache-spark-data-viz/data-analyst-tutorial-per-day.png)
+   ![显示每日小费分布情况的示意图。](./media/apache-spark-data-viz/data-analyst-tutorial-per-day.png)
 
-4. 我们的另一个假设可能是乘客数与出租车总笔尖量之间存在积极关系。 若要验证此关系，请运行以下代码以生成一个框须图，以演示每个乘客计数的提示分布。 
+4. 我们的另一个假设是乘客数与出租车小费总金额之间存在正相关的关系。 为了验证此关系，请运行以下代码以生成一个箱线图，以展示按乘客计数的小费分布情况。 
    
    ```python
    # How many passengers tipped by various amounts 
@@ -148,9 +148,9 @@ ms.locfileid: "98942264"
    plt.suptitle('')
    plt.show()
    ```
-   ![图：显示箱形图。](./media/apache-spark-machine-learning-mllib-notebook/box-whisker-plot.png)
+   ![显示了一个箱线图的示意图。](./media/apache-spark-machine-learning-mllib-notebook/box-whisker-plot.png)
 
-1. 最后，我们想要了解费用金额与 tip 量之间的关系。 根据结果，我们可以看到，在人们不提示的情况下，有几个观察值。 但是，我们还会在整体费用和刀尖量之间看到正面关系。
+1. 最后，我们想要了解车费金额与小费金额之间的关系。 从结果来看，我们可以看到几个人们不付小费的案例。 但是，我们也看到，在车费总金额和小费总金额之间存在正相关关系。
    
    ```python
    # Look at the relationship between fare and tip amounts
@@ -163,11 +163,11 @@ ms.locfileid: "98942264"
    plt.suptitle('')
    plt.show()
    ```
-   ![Tip 量的散点图。](./media/apache-spark-machine-learning-mllib-notebook/scatter.png)
+   ![小费金额散点图。](./media/apache-spark-machine-learning-mllib-notebook/scatter.png)
 
 ## <a name="shut-down-the-spark-instance"></a>关闭 Spark 实例
 
-完成应用程序的运行后，关闭笔记本以释放资源。 关闭该选项卡，或从笔记本底部的 "状态" 面板中选择 " **结束会话** "。
+运行完应用程序以后，请关闭笔记本以释放资源。 请关闭选项卡，或者在笔记本底部的状态面板中选择“结束会话”。
 
 ## <a name="see-also"></a>另请参阅
 

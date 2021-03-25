@@ -9,10 +9,10 @@ ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653811"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>准备 Azure 以实现本地到 Azure 的灾难恢复
@@ -57,7 +57,7 @@ ms.locfileid: "88653811"
 1. 在 Azure 门户菜单中选择“创建资源”，然后在市场中搜索“恢复” 。
 2. 从搜索结果中选择“备份和站点恢复”，然后在“备份和站点恢复”页中单击“创建”。 
 3. 在“创建恢复服务保管库”页中，选择“订阅”。 我们将使用“Contoso 订阅”。
-4. 在**资源组**中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
+4. 在 **资源组** 中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
 5. 在“保管库名称”中输入一个易记名称，用于标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
 6. 在“区域”中，选择保管库应位于的区域。 我们将使用“西欧”。
 7. 选择“查看 + 创建”。

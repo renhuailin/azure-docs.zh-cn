@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/02/2020
 ms.openlocfilehash: b766ce248a3543ef3323e026d760e550a0e3dd75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386673"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
@@ -21,7 +21,7 @@ ms.locfileid: "100386673"
 本文概述了如何使用 Azure 数据工厂中的复制活动，通过 Open Hub 从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[关于使用 Azure 数据工厂进行 SAP 数据集成的白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -86,7 +86,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
     - RFC 和 SAP BW 的授权。 
     - “执行”授权对象“S_SDSAUTH”的活动的权限。
 
-- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 使用 DTP (直接执行或集成到现有进程链) ，以将数据从源对象 (如已选择 "打开中心目标" 表的多维数据集) 。
+- 将 SAP Open Hub Destination 类型创建为“数据库表”（勾选“技术密钥”选项）。  另外还建议取消选中“从表中删除数据”，虽然这不是必需的操作。 使用 DTP（直接执行或集成到现有进程链中）将数据从所选源对象（例如多维数据集）移到 Open Hub Destination 表。
 
 ## <a name="getting-started"></a>入门
 
@@ -148,7 +148,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3e9e924d6626d9f0dcd2db8a5e8b8f90a0aa01ce
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100593843"
 ---
 # <a name="query-logs-from-startstop-vms-during-off-hours"></a>从“在空闲时间启动/停止 VM”查询日志
@@ -18,7 +18,7 @@ Azure 自动化将两种类型的记录转发到链接的 Log Analytics 工作�
 
 ## <a name="job-logs"></a>作业日志
 
-|properties | 说明|
+|属性 | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。|
@@ -39,7 +39,7 @@ Azure 自动化将两种类型的记录转发到链接的 Log Analytics 工作�
 
 ## <a name="job-streams"></a>作业流
 
-|properties | 说明|
+|属性 | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|

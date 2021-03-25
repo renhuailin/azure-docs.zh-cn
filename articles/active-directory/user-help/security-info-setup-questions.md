@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83744435"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>设置安全性问题作为验证方法
@@ -98,7 +98,7 @@ ms.locfileid: "83744435"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

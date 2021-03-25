@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：生成 & 导出 P2S 的证书： MakeCert
+title: Azure VPN 网关：为 P2S 生成并导出证书：MakeCert
 description: 使用 MakeCert 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 55e22ebec5853d6b4f10b53be8e24f4dbebe4e1f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659771"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 Makecert 为点到站点连接生成并导出证书
@@ -27,7 +27,7 @@ ms.locfileid: "94659771"
 以下步骤演示如何使用 MakeCert 创建自签名证书。 这些步骤并非特定于部署模型。 它们同样适用于 Resource Manager 和经典部署模型。
 
 1. 下载并安装 [MakeCert](/windows/win32/seccrypto/makecert)。
-2. 安装完成后，通常可以在以下路径下找到 makecert.exe 实用程序： "C:\Program Files (x86) \Windows Kits\10\bin arch> \<arch> "。 但它也有可能安装到了另一位置。 以管理员身份打开命令提示符，并导航到 MakeCert 实用工具所在位置。 可使用以下示例，调整到适当的位置：
+2. 安装后，通常可在此路径中找到 makecert.exe 实用工具：“C:\Program Files (x86)\Windows Kits\10\bin\<arch>”。 但它也有可能安装到了另一位置。 以管理员身份打开命令提示符，并导航到 MakeCert 实用工具所在位置。 可使用以下示例，调整到适当的位置：
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64

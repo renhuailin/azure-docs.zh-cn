@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
 ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018864"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析分析欺诈性呼叫数据，并在 Power BI 仪表板中可视化结果

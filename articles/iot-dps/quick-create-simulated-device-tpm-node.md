@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 6e7e986f658570553763001afdd58d7bb1880f94
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968173"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
@@ -146,22 +146,22 @@ Azure IoT 设备预配服务支持两类注册：
 
 本文演示单个注册。
 
-1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务。
+1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 
 1. 在“设备预配服务”菜单中，选择“管理注册”。 选择“个人注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
 
 1. 在“添加注册”面板中，输入以下信息：
-   - 选择“TPM”作为标识证明 *机制*。
-   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥” 。
+   - 选择“TPM”  作为标识证明 *机制*。
+   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
    - 选择与预配服务链接的 IoT 中心。
    - （可选）可以提供以下信息：
-       - 输入唯一“设备 ID”。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
-       - 使用设备所需的初始配置更新“初始设备孪生状态”。
+       - 输入唯一“设备 ID”  。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
+       - 使用设备所需的初始配置更新“初始设备孪生状态”  。
    - 完成后，按“保存”按钮。 
 
      ![在门户边栏选项卡中输入设备注册信息](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-   成功注册以后，设备的“注册 ID”显示在“单个注册”选项卡下的列表中。  
+   成功注册以后，设备的“注册 ID”显示在“单个注册”选项卡下的列表中。   
 
 
 ## <a name="register-the-device"></a>注册设备
@@ -245,7 +245,7 @@ Azure IoT 设备预配服务支持两类注册：
     node RegisterDevice.js
     ```
 
-1. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上。 
+1. 请注意相关消息，这些消息模拟设备启动后连接到设备预配服务以获取 IoT 中心信息的情况。 将模拟设备成功预配到与预配服务链接的 IoT 中心以后，设备 ID 会显示在该中心的“IoT 设备”边栏选项卡上  。 
 
     ![设备注册到 IoT 中心](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -259,7 +259,7 @@ Azure IoT 设备预配服务支持两类注册：
 1. 关闭计算机上的设备客户端示例输出窗口。
 1. 关闭计算机上的 TPM 模拟器窗口。
 1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”边栏选项卡，然后选择“单个注册”选项卡 。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮。 
-1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮。
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”边栏选项卡，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮。
 
 
 ## <a name="next-steps"></a>后续步骤

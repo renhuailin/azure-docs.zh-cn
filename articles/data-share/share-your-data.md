@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659618"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
@@ -174,7 +174,7 @@ ms.locfileid: "94659618"
 
 1. 选择“开始共享数据”  。
 
-1. 选择“创建”。   
+1. 选择“创建”  。   
 
 1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 

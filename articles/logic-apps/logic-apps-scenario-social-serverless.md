@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784806"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
@@ -30,7 +30,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用。 
 
-   如果你不熟悉逻辑应用，请查看 [Azure 门户的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md) 或 [Visual Studio 的快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+   如果你不熟悉逻辑应用，请查看 [Azure 门户快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)或 [Visual Studio 快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
 2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时”
 

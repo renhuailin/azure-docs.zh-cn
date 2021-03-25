@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001132"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
@@ -47,7 +47,7 @@ ms.locfileid: "96001132"
 可以在以下位置找到此设置：
 
 * Azure 门户：**认知服务**“资源管理”部分的“密钥”下
-* LUIS 门户： " **密钥" 和 "终结点设置** " 页。 
+* LUIS 门户：“密钥和终结点”设置页。 
 
 请勿使用初学者密钥或创作密钥。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "96001132"
 可以在以下位置找到此设置：
 
 * Azure 门户：**认知服务** 概述，标记为 `Endpoint`
-* LUIS portal： **Keys 和 endpoint settings** 页面，作为终结点 URI 的一部分。
+* LUIS 门户：“密钥和终结点设置”页面，作为终结点 URI 的一部分。
 
 | 必须 | 名称 | 数据类型 | 说明 |
 |----------|------|-----------|-------------|
@@ -90,13 +90,13 @@ ms.locfileid: "96001132"
 
 LUIS 容器不使用输入或输出装载来存储训练或服务数据。 
 
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机装载位置权限之间发生冲突， [主机计算机](luis-container-howto.md#the-host-computer)的装载位置可能无法访问。 
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](luis-container-howto.md#the-host-computer)的装载位置。 
 
 下表描述了支持的设置。
 
 |必须| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|是| `Input` | String | 输入装入点的目标。 默认值是 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
+|是| `Input` | 字符串 | 输入装入点的目标。 默认值是 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
@@ -151,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>日志记录示例 
 
-以下命令设置日志记录级别， `Logging:Console:LogLevel` 以将日志记录级别配置为 [`Information`](https://msdn.microsoft.com) 。 
+以下命令设置日志记录级别 `Logging:Console:LogLevel`，将日志记录级别配置为 [`Information`](https://msdn.microsoft.com)。 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^

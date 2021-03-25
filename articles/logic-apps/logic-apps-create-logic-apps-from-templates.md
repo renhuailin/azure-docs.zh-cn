@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100593098"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
@@ -44,7 +44,7 @@ ms.locfileid: "100593098"
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | “值” | 说明 | 
    | ------- | ----- | ----------- | 
    | **名称** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 

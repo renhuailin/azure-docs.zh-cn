@@ -10,21 +10,21 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
 ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787006"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
-批处理测试会验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性。 查看批处理测试结果以采取适当的措施来提高准确性，例如，如果应用经常无法识别正确的意向或在话语中标记实体，则向意向添加更多示例话语。
+批处理测试会验证活动训练版本，以判断其预测准确性。 批量测试可帮助你查看活动版本中每个意向和实体的准确性。 查看批处理测试结果以采取适当的措施来提高准确性，例如，如果应用经常无法识别正确的意向或在话语中标记实体，则向意向添加更多示例话语。
 
 ## <a name="group-data-for-batch-test"></a>批处理测试的组数据
 
 对于 LUIS 来说，用于批处理测试的表达必须是全新，这一点很重要。 如果有话语数据集，请将话语划分为三个集：添加到意向的示例话语、从已发布的终结点接收的话语，以及在训练 LUIS 后用于对其进行批处理测试的话语。
 
-你使用的批处理 JSON 文件应包括最谈话，其中包含标记为 "开始" 和 "结束位置" 的顶级计算机学习实体。 言语不应是已包含在应用中的示例的一部分。 它们应该是你要在其中积极预测意向和实体的言语。
+你使用的批处理 JSON 文件中的言语应包含机器学习的带有标签的顶级实体（包括开始和结束位置）。 言语不应是已包含在应用中的示例的一部分。 它们应该是你要在其中积极预测意向和实体的言语。
 
 可以按意向和/或实体划分测试，或者将所有测试（最多 1000 个言语）包含在同一文件中。 
 
@@ -32,10 +32,10 @@ ms.locfileid: "98787006"
 
 如果在将批处理文件上传到 LUIS 时遇到错误，请检查是否存在以下常见问题：
 
-* 批处理文件中的最谈话超过1000
+* 批处理文件中的言语多于 1,000 条
 * 不具有实体属性的话语 JSON 对象。 此属性可以是空数组。
 * 在多个实体中标记的字词
-* 实体标签在空间的起始或结束。
+* 实体标签以空格开头或结尾。
 
 ## <a name="fixing-batch-errors"></a>修复批处理错误
 
@@ -44,7 +44,7 @@ ms.locfileid: "98787006"
 
 <a name="batch-testing"></a>
 
-## <a name="batch-testing-using-the-luis-portal"></a>使用 LUIS 门户进行批处理测试 
+## <a name="batch-testing-using-the-luis-portal"></a>使用 LUIS 门户进行批量测试 
 
 ### <a name="import-and-train-an-example-app"></a>导入并训练示例应用
 
@@ -53,7 +53,7 @@ ms.locfileid: "98787006"
 1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true)。
 
 1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
-1. 选择 " **新建应用** " 旁边的箭头，然后单击 "以 **JSON 格式导** 入"，将 JSON 导入到新应用。 命名应用程序 `Pizza app` 。
+1. 选择“新建应用”旁边的箭头，并单击“以 JSON 格式导入”，以便将 JSON 导入到一个新应用。 将应用命名为 `Pizza app`。
 
 
 1. 选择导航栏右上角的“训练”以训练该应用。
@@ -61,7 +61,7 @@ ms.locfileid: "98787006"
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
-### <a name="batch-test-file"></a>批处理测试文件
+### <a name="batch-test-file"></a>批量测试文件
 
 示例 JSON 包含一个言语（该言语包含一个带标签的实体）用于演示测试文件的外观。 你自己的测试中应该包含多个言语，这些言语标记了正确的意向和机器学习实体。
 
@@ -79,7 +79,7 @@ ms.locfileid: "98787006"
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-3. 选择“导入”  。 在出现的对话框中，选择 " **选择文件** "，然后找到具有 *不超过 1000* 最谈话要测试的正确 json 格式的 json 文件。
+3. 选择“导入”。 在出现的对话框中，选择“选择文件”并找到具有正确 JSON 格式的 JSON 文件，该文件包含不超过 1,000 条待测试的言语。
 
     浏览器顶部的红色通知栏中将报告导入错误。 导入出现错误时，不会创建任何数据集。 有关详细信息，请参阅[常见错误](#common-errors-importing-a-batch)。
 
@@ -87,11 +87,11 @@ ms.locfileid: "98787006"
 
 5. 命名数据集 `pizza test`，然后选择“完成”。
 
-6. 选择“运行”按钮。 运行批处理测试后，选择 " **查看结果**"。 
+6. 选择“运行”按钮。 在批量测试运行后，选择“查看结果”。 
 
     > [!TIP]
-    > * 选择 " **下载** " 将下载相同的文件。
-    > * 如果你看到批处理测试失败，则至少有一个查询文本意向与预测不匹配。
+    > * 选择“下载”会下载你上传的同一文件。
+    > * 如果你看到批量测试失败，则至少一个言语意向与预测不匹配。
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
@@ -121,7 +121,7 @@ ms.locfileid: "98787006"
 
 ### <a name="review-batch-test-results-for-entities"></a>查看实体的批处理测试结果
 
-ModifyOrder 实体作为带有子实体的计算机实体，显示是否匹配顶级实体以及如何预测子实体。
+ModifyOrder 实体（包含子实体的机器实体）显示顶级实体是否匹配，并显示子实体是如何预测的。
 
 1. 在筛选器列表中选择“ModifyOrder”实体，然后选择网格中的圆圈。
 
@@ -140,7 +140,7 @@ ModifyOrder 实体作为带有子实体的计算机实体，显示是否匹配�
 
 ### <a name="chart-result-examples"></a>图表结果示例
 
-在 LUIS 门户中的图表中，你可以执行以下操作：
+对于 LUIS 门户中的图表，你可以执行以下操作：
  
 #### <a name="view-single-point-utterance-data"></a>查看单点陈述数据
 
@@ -164,15 +164,15 @@ ModifyOrder 实体作为带有子实体的计算机实体，显示是否匹配�
 
 该图表中绿色的两个分区与预期预测相匹配。
 
-## <a name="batch-testing-using-the-rest-api"></a>使用 REST API 的批处理测试 
+## <a name="batch-testing-using-the-rest-api"></a>使用 REST API 进行批量测试 
 
-LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面列出了 REST API 的终结点。 有关使用 LUIS 门户进行批处理测试的信息，请参阅 [教程：批处理测试数据集]()。 使用下面的完整 Url，并将占位符值替换为你自己的 LUIS 预测密钥和终结点。 
+LUIS 允许你使用 LUIS 门户和 REST API 进行批量测试。 下面列出了 REST API 的终结点。 有关使用 LUIS 门户进行批量测试的信息，请参阅[教程：批量测试数据集]()。 请使用下面的完整 URL（将占位符值替换为你自己的 LUIS 预测密钥和终结点）。 
 
-请记得将 LUIS 键添加到 `Ocp-Apim-Subscription-Key` 标头中，并将设置 `Content-Type` 为 `application/json` 。
+不要忘记将 LUIS 键添加到标头中的 `Ocp-Apim-Subscription-Key` 并将 `Content-Type` 设置为 `application/json`。
 
-### <a name="start-a-batch-test"></a>启动批处理测试
+### <a name="start-a-batch-test"></a>启动批量测试
 
-使用应用版本 ID 或发布槽开始批处理测试。 将 **POST** 请求发送到以下终结点格式之一。 在请求的正文中包括你的批处理文件。
+使用应用版本 ID 或发布槽启动批量测试。 将 POST 请求发送到以下终结点格式之一。 在请求正文中包括你的批处理文件。
 
 发布槽
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
@@ -180,12 +180,12 @@ LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面�
 应用版本 ID
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
 
-这些终结点将返回一个操作 ID，你将使用它来检查状态并获取结果。 
+这些终结点会返回一个操作 ID，你将使用它来检查状态并获取结果。 
 
 
-### <a name="get-the-status-of-an-ongoing-batch-test"></a>获取正在进行的批处理测试的状态
+### <a name="get-the-status-of-an-ongoing-batch-test"></a>获取正在进行的批量测试的状态
 
-使用启动的批处理测试中的操作 ID 从以下终结点格式获取其状态： 
+使用你启动的批量测试中的操作 ID 通过以下终结点格式获取其状态： 
 
 发布槽
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
@@ -193,9 +193,9 @@ LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面�
 应用版本 ID
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
-### <a name="get-the-results-from-a-batch-test"></a>获取批处理测试的结果
+### <a name="get-the-results-from-a-batch-test"></a>获取批量测试的结果
 
-使用启动的批处理测试中的操作 ID 从以下终结点格式获取其结果： 
+使用你启动的批量测试中的操作 ID 通过以下终结点格式获取其结果： 
 
 发布槽
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
@@ -204,9 +204,9 @@ LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面�
 * `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 
-### <a name="batch-file-of-utterances"></a>最谈话的批处理文件
+### <a name="batch-file-of-utterances"></a>言语的批处理文件
 
-提交话语批处理文件（称为数据集  ），以用于批处理测试。 数据集是 JSON 格式的文件，最多包含1000标记为最谈话。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。 即使批处理文件数据中没有对应的实体，模型中的所有自定义实体也会出现在批处理测试实体筛选器中。
+提交话语批处理文件（称为数据集  ），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 条带标签的言语。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。 即使批处理文件数据中没有对应的实体，模型中的所有自定义实体也会出现在批处理测试实体筛选器中。
 
 批处理文件包含表达。 每个言语都必须有预期的意向预测，此外还必须有你预期可以检测到的[机器学习实体](luis-concept-entity-types.md#types-of-entities)。
 
@@ -249,15 +249,15 @@ LUIS 可让你使用 LUIS 门户进行批处理测试，并 REST API。 下面�
 
 如果不想测试实体，请包含 `entities` 属性并将值设置为空数组 `[]`。
 
-### <a name="rest-api-batch-test-results"></a>REST API 批处理测试结果
+### <a name="rest-api-batch-test-results"></a>REST API 批量测试结果
 
-API 返回了几个对象：
+下面是 API 返回的几个对象：
 
-* 有关意向和实体模型的信息，如精度、召回和 F 分数。
-* 有关实体模型的信息，例如每个实体的精度、召回和 F 分数)  
-  * 使用 `verbose` 标志，可以获取有关实体的详细信息，例如 `entityTextFScore` 和 `entityTypeFScore` 。
-* 为最谈话提供了预测名称和标记意向名称
-* 假正实体的列表和假负实体的列表。
+* 有关意向和实体模型的信息，例如精准率、召回率和 F 分数。
+* 有关实体模型的信息，例如每个实体的精准率、召回率和 F 分数 
+  * 使用 `verbose` 标志，你可以获取有关实体的详细信息，例如 `entityTextFScore` 和 `entityTypeFScore`。
+* 提供的言语以及预测的和标记的意向名称
+* 误报的实体的列表，和漏报的实体的列表。
 
 ## <a name="next-steps"></a>后续步骤
 

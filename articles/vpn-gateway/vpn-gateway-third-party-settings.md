@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2021
 ms.author: delhan
 ms.openlocfilehash: 0448cb5442746e5e8fced13be13dbebfc0fe32fd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389308"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
