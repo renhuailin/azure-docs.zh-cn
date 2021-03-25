@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022966"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
@@ -83,7 +83,7 @@ ms.locfileid: "96022966"
    
     ![配置 StorSimple 设备](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. 在“设备”下拉框中，选择设备或虚拟设备的 IP 地址。 
-4. 在“密码”文本框中，键入为 Azure 经典门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击“确定”。 StorSimple Snapshot Manager 搜索你所标识的设备。 
+4. 在“密码”文本框中，键入为 Azure 经典门户中的设备创建的 StorSimple Snapshot Manager 密码。 单击 **“确定”** 。 StorSimple Snapshot Manager 搜索你所标识的设备。 
    
    * 如果设备可用，则 StorSimple Snapshot Manager 会添加一个连接。
    * 如果设备由于任何原因而不可用，则 StorSimple Snapshot Manager 会返回一条错误消息。 单击 **“确定”** 以关闭错误消息，然后单击 **“取消”** 以关闭 **“配置设备”** 对话框。
@@ -101,7 +101,7 @@ ms.locfileid: "96022966"
 3. 右键单击 **“作用域”** 窗格中的顶级节点，然后单击 **“切换导入显示”**。
    
     ![选择“切换导入显示”](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. 此时会出现 **“切换导入显示”** 对话框，其中显示已导入卷组和备份的状态。 单击“确定”。
+4. 此时会出现 **“切换导入显示”** 对话框，其中显示已导入卷组和备份的状态。 单击 **“确定”** 。
 
 成功导入卷组和备份后，可以使用 StorSimple Snapshot Manager 对其进行管理，就像管理使用 StorSimple Snapshot Manager 创建和配置的卷组和备份一样。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "96022966"
 
 #### <a name="to-change-the-expired-password"></a>更改过期的密码
 1. 在 Azure 经典门户中，启动 StorSimple Manager 服务。
-2. 单击 "**设备**  >  " "**配置**"。
+2. 针对该设备单击“设备” > “配置”。
 3. 向下滚动到 StorSimple Snapshot Manager 部分。 输入包含 14-15 个字符的密码。 请确保该密码包含大写、小写字母、数字和特殊字符的组合。
 4. 再次输入密码进行确认。
 5. 单击页面底部的“保存”  。

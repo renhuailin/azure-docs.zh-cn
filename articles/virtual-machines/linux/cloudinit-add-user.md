@@ -1,23 +1,24 @@
 ---
-title: 使用 cloud init 将用户添加到 Azure 上的 Linux VM
+title: 使用 cloud-init 将用户添加到 Azure 上的 Linux VM
 description: 如何通过 Azure CLI 使用 cloud-init 在创建期间将用户添加到 Linux VM
 author: rickstercdn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 569ceb4c7158ba9dc08c99c234951fb4507b69f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 2c459965f2eb29a469ac90fdeb42107d1dbcf86a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87370064"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559403"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>使用 cloud-init 将用户添加到 Azure 中的 Linux VM
 本文介绍如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时将用户添加到 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS)。 Azure 预配资源后，此 cloud-init 脚本将在首次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)。
 
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>使用 cloud-init 向 VM 添加用户
-任何新 Linux VM 的首要任务之一就是，自行添加附加的用户以避免使用 *root*。 SSH 密钥是安全性和可用性的最佳做法。 使用此 cloud-init 脚本将密钥添加到“~/.ssh/authorized_keys”  文件。
+任何新 Linux VM 的首要任务之一就是，自行添加附加的用户以避免使用 *root*。 SSH 密钥是安全性和可用性的最佳做法。 使用此 cloud-init 脚本将密钥添加到“~/.ssh/authorized_keys”文件。
 
 若要将用户添加到 Linux VM，请在当前 shell 中创建名为 *cloud_init_add_user.txt* 的文件并粘贴以下配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_add_user.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  需要提供自己的公钥（例如 *~/.ssh/id_rsa.pub* 的内容）作为 `ssh-authorized-keys:` 的值 - 为简化示例，此处已缩短。
 
@@ -58,13 +59,13 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-若要确认已将用户添加到 VM 和指定的组，请查看“/etc/group”  文件的内容，如下所示：
+若要确认已将用户添加到 VM 和指定的组，请查看“/etc/group”文件的内容，如下所示：
 
 ```bash
 cat /etc/group
 ```
 
-以下示例输出显示“cloud_init_add_user.txt”  文件中的用户已被添加至 VM 和相应群组：
+以下示例输出显示“cloud_init_add_user.txt”文件中的用户已被添加至 VM 和相应群组：
 
 ```bash
 root:x:0:

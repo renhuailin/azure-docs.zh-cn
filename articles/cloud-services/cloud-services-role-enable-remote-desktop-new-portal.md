@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743247"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>为 Azure 云服务中的角色启用远程桌面连接 (经典) 
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色启用远程桌面连接
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -35,7 +35,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 
 1. 单击“云服务”，再选择云服务的名称，然后选择“远程桌面”   。
 
-    ![图像显示云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
+    ![此图显示了云服务远程桌面](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
 2. 选择想要为单个角色还是所有角色启用远程桌面，然后将切换器的值更改为“已启用”  。
 
@@ -58,7 +58,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 2. 选择一个配置了远程桌面的角色实例。
 3. 单击“连接”  ，下载角色实例的 RDP 文件。
 
-    ![云服务远程桌面映像](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
+    ![云服务远程桌面图像](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Connect.png)
 
 4. 依次单击“**打开**”和“**连接**”，以启动远程桌面连接。
 

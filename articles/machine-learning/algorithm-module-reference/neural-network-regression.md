@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 403576454615effeb53651b51679681422b08e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890352"
 ---
 # <a name="neural-network-regression-module"></a>神经网络回归模块
@@ -24,7 +24,7 @@ ms.locfileid: "90890352"
   
 ## <a name="module-overview"></a>模块概述  
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块可以通过可自定义的神经网络算法创建回归模型。
   
@@ -85,15 +85,15 @@ ms.locfileid: "90890352"
 
     + 如果将“创建训练程序模式”设置为“单个参数”，请连接带标记的数据集和[训练模型](train-model.md)模块 。  
   
-    + 如果将“创建训练程序模式”设置为“参数范围”，则连接标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)模块来训练模型 。  
+    + 如果将“创建训练程序模式”设置为“参数范围”，请连接带标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)来训练模型 。  
   
     > [!NOTE]
     > 
-    > 如果将参数范围传递给[训练模型](train-model.md)模块，则它只使用单个参数列表中的默认值。  
+    > 如果将参数范围传递给[训练模型](train-model.md)，则它只使用单个参数列表中的默认值。  
     > 
     > 如果将一组参数值传递给[优化模型超参数](tune-model-hyperparameters.md)模块，则当它期望每个参数有一系列设置时，它会忽略这些值，并为学习器使用默认值。  
     > 
-    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个扫描过程中都会使用你指定的单个值，即使其他参数的一系列值发生了更改。  
+    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个整理过程中都会使用你指定的单个值，即使其他参数的值发生一系列更改。  
   
    
 14. 提交管道。  

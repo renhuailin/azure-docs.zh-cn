@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98745979"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
@@ -51,7 +51,7 @@ ms.locfileid: "98745979"
 > [!NOTE]
 > 此注册表项不是由安装程序默认创建的，并且在重启该服务时，AuthZOptCh 日志中会出现错误。 可能会忽略日志中的此错误，但如果创建了此注册表项并在不需要时将其保留为空，则不会返回错误消息。
 
-当发出请求的 IP 地址来自 `IP_WHITELIST` 时，将跳过双重验证。 将 IP 列表与 RADIUS 请求的 ratNASIPAddress 属性中提供的 IP 地址相比较。 如果在不使用包含 ratnasipaddress 属性的情况下传入 RADIUS 请求，则会记录一条警告： "IP_WHITE_LIST_WARNING：： IP 白名单被忽略，因为 RADIUS 请求 NasIpAddress 属性中缺少源 IP。
+当发出请求的 IP 地址来自 `IP_WHITELIST` 时，将跳过双重验证。 将 IP 列表与 RADIUS 请求的 ratNASIPAddress 属性中提供的 IP 地址相比较。 如果传入的 RADIUS 请求不包含 ratNASIPAddress 属性，则会记录以下警告：“IP_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

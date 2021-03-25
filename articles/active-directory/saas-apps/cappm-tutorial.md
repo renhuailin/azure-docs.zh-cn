@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
 ms.openlocfilehash: 7931bc58b1035a425b30b01b802345b7aa7b8d14
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>教程：Azure Active Directory 与 Clarity 集成
@@ -47,8 +47,8 @@ ms.locfileid: "92456494"
 若要配置 Clarity 与 Azure AD 的集成，需要从库中将 Clarity 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Clarity” 。
 1. 从结果面板中选择“Clarity”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -78,7 +78,7 @@ ms.locfileid: "92456494"
 
 4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://ca.ondemand.saml.20.post.<companyname>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://ca.ondemand.saml.20.post.<companyname>`
 
     b. 在“回复 URL”文本框中键入：`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
@@ -102,7 +102,7 @@ ms.locfileid: "92456494"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -115,11 +115,11 @@ ms.locfileid: "92456494"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 1. 在“添加分配”对话框中，单击“分配”按钮 
 

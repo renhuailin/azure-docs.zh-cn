@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a0dcf1a5475032b5f76bff8a7ba20ffb9e295987
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>教程：Azure Active Directory 与 GlassFrog 集成
@@ -41,13 +41,13 @@ ms.locfileid: "92448990"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* GlassFrog 支持 SP 发起的 SSO 
+* GlassFrog 支持 SP 发起的 SSO
 
 ## <a name="adding-glassfrog-from-the-gallery"></a>从库中添加 GlassFrog
 
 要配置 GlassFrog 与 Azure AD 的集成，需要从库中将 GlassFrog 添加到托管 SaaS 应用列表。
 
-若要从库中添加 GlassFrog，请执行以下步骤： 
+若要从库中添加 GlassFrog，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92448990"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“GlassFrog”，在结果面板中选择“GlassFrog”，然后单击“添加”按钮添加应用程序    。
+4. 在搜索框中，键入“GlassFrog”，在结果面板中选择“GlassFrog”，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 GlassFrog](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分将基于名为“Britta Simon”的测试用户配置和测试 GlassFrog 的 Azure AD 单一登录  。
+本部分将基于名为“Britta Simon”的测试用户配置和测试 GlassFrog 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 GlassFrog 相关用户之间建立链接关系。
 
 若要配置和测试 GlassFrog 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92448990"
 
 若要配置 GlassFrog 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在  GlassFrog 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 GlassFrog 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92448990"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![GlassFrog 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.glassfrog.com/people/sso?org_id=<ORGANIZATIONID>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.glassfrog.com/people/sso?org_id=<ORGANIZATIONID>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [GlassFrog 客户端支持团队](mailto:support@glassfrog.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92448990"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 GlassFrog”部分中，根据要求复制相应的 URL  。
+6. 在“设置 GlassFrog”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92448990"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -146,17 +146,17 @@ ms.locfileid: "92448990"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 GlassFrog 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“GlassFrog”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“GlassFrog”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“GlassFrog”  。
+2. 在应用程序列表中，选择“GlassFrog”。
 
     ![应用程序列表中的 GlassFrog 链接](common/all-applications.png)
 

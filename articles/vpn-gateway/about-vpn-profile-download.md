@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
 ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979058"
 ---
 # <a name="working-with-p2s-vpn-client-profile-files"></a>使用 P2S VPN 客户端配置文件
 
 配置文件包含配置 VPN 连接所需的信息。 本文将帮助你获取和了解 VPN 客户端配置文件所需的信息。
 
-## <a name="generate-and-download-profile"></a>生成和下载配置文件
+## <a name="generate-and-download-profile"></a>生成并下载配置文件
 
 可使用 PowerShell 或使用 Azure 门户生成客户端配置文件。 两种方法之一都会返回相同的 zip 文件。
 

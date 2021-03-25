@@ -1,7 +1,7 @@
 ---
-title: 部署用于 Cloud Foundry 监视的 Azure Log Analytics 喷嘴
+title: 部署 Azure Log Analytics Nozzle 以进行 Cloud Foundry 监视
 description: 有关为 Azure Log Analytics 部署 Cloud Foundry Loggregator Nozzle 的分步指南。 使用 Nozzle 监视 Cloud Foundry 的运行状况和性能指标。
-services: virtual-machines-linux
+services: virtual-machines
 author: ningk
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -11,20 +11,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 9fafa9bd014a44fdd0098ef2364375c3f9672bea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 54001c47d03b686a8e7c1f59f1e53d405e3bc506
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571064"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102557380"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
 [Azure Monitor](https://azure.microsoft.com/services/log-analytics/) 是 Azure 中的一项服务。 它有助于用户收集并分析云和本地环境生成的数据。
 
-喷嘴) Log Analytics 喷嘴 (是 Cloud Foundry (CF) 组件，该组件将指标从 [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose 转发到 Azure Monitor 日志。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
+Log Analytics Nozzle（以下简称 Nozzle）是 Cloud Foundry (CF) 组件，负责将指标从 [Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) Firehose 转发到 Azure Monitor 日志。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
 
-在本文档中，将了解如何将喷嘴部署到 CF 环境，然后从 Azure Monitor 日志控制台访问数据。
+本文档介绍了如何将 Nozzle 部署到 CF 环境，然后从 Azure Monitor 日志控制台访问数据。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "100571064"
 
 在部署 Nozzle 之前，必须先完成以下步骤。
 
-### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1. 在 Azure 中部署 CF 或 Pivotal Cloud Foundry 环境
+### <a name="1-deploy-a-cf-or-pivotal-cloud-foundry-environment-in-azure"></a>1.在 Azure 中部署 CF 或 Pivotal Cloud Foundry  环境
 
 可在开源 CF 部署或 Pivotal Cloud Foundry (PCF) 部署中使用 Nozzle。
 
@@ -40,7 +40,7 @@ ms.locfileid: "100571064"
 
 * [在 Azure 上部署 Pivotal Cloud Foundry](https://docs.pivotal.io/pivotalcf/1-11/customizing/azure.html)
 
-### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2. 安装 CF 命令行工具以部署喷嘴
+### <a name="2-install-the-cf-command-line-tools-for-deploying-the-nozzle"></a>2.安装用于部署 Nozzle 的 CF 命令行工具
 
 Nozzle 在 CF 环境中以应用程序的形式运行。 需使用 CF CLI 来部署应用程序。
 
@@ -50,15 +50,15 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 * [安装 Cloud Foundry UAA 命令行客户端](https://github.com/cloudfoundry/cf-uaac/blob/master/README.md)
 
-设置 UAA 命令行客户端之前，请确保已安装 RubyGems。
+在设置 UAA 命令行客户端之前，请确保已安装 RubyGems。
 
-### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. 在 Azure 中创建 Log Analytics 工作区
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.在 Azure 中创建 Log Analytics 工作区
 
-可以手动或使用模板创建 Log Analytics 工作区。 该模板将部署 "Azure Monitor 日志" 控制台的预配置 KPI 视图和警报的设置。 
+可以手动或使用模板创建 Log Analytics 工作区。 该模板将部署 Azure Monitor 日志控制台预配置的 KPI 视图和警报的设置。 
 
 #### <a name="to-create-the-workspace-manually"></a>手动创建工作区：
 
-1. 在 Azure 门户中，在 Azure Marketplace 中搜索服务列表，然后选择 "Log Analytics 工作区"。
+1. 在 Azure 门户的 Azure 市场中搜索服务列表，再选择“Log Analytics 工作区”。
 2. 选择“创建”，然后为以下各项选择选项：
 
    * Log Analytics 工作区：键入工作区的名称。
@@ -100,7 +100,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 #### <a name="sign-in-to-your-cf-deployment-as-an-admin-through-cf-cli"></a>通过 CF CLI 以管理员身份登录到 CF 部署
 
-运行以下命令：
+运行下面的命令：
 ```
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
@@ -124,7 +124,7 @@ uaac member add doppler.firehose ${FIREHOSE_USER}
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>下载最新的 Log Analytics Nozzle 版本
 
-运行以下命令：
+运行下面的命令：
 ```
 git clone https://github.com/Azure/oms-log-analytics-firehose-nozzle.git
 cd oms-log-analytics-firehose-nozzle
@@ -155,7 +155,7 @@ LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azur
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
 
-请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行以下命令：
+请务必在 oms-log-analytics-firehose-nozzle 文件夹下操作。 运行下面的命令：
 ```
 cf push
 ```
@@ -177,19 +177,19 @@ cf apps
 
 ## <a name="view-the-data-in-the-azure-portal"></a>在 Azure 门户中查看数据
 
-如果已通过市场模板部署了监视解决方案，请转到 Azure 门户，并找到解决方案。 可以在模板中指定的资源组中找到解决方案。 单击解决方案，浏览到 "log analytics console"，将列出预配置的视图，其中包含 top Cloud Foundry 系统 Kpi、应用程序数据、警报和 VM 运行状况指标。 
+如果已通过市场模板部署了监视解决方案，请转到 Azure 门户，并找到解决方案。 可以在模板中指定的资源组中找到解决方案。 单击该解决方案，浏览到“Log Analytics 控制台”，将列出预配置的视图，顶部为 Cloud Foundry 系统 KPI、应用程序数据、警报和 VM 运行状况指标。 
 
 如果已手动创建 Log Analytics 工作区，请执行以下步骤来创建视图和警报：
 
-### <a name="1-import-the-oms-view"></a>1. 导入 OMS 视图
+### <a name="1-import-the-oms-view"></a>1.导入 OMS 视图
 
-在 OMS 门户中，浏览到 "**查看设计器**  >  " "**导入**  >  " "**浏览**"，然后选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。   例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
 
 可以通过“视图设计器”自定义这些视图或新建视图。
 
 “Cloud Foundry.omsview”是预览版的 Cloud Foundry OMS 视图模板。 这是一个完全配置的默认模板。 如有模板相关的建议或反馈，请在[问题部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)中发送。
 
-### <a name="2-create-alert-rules"></a>2. 创建警报规则
+### <a name="2-create-alert-rules"></a>2.创建警报规则
 
 可以[创建警报](../azure-monitor/alerts/alerts-overview.md)，并视需要自定义查询和阈值。 下面是建议的警报：
 
@@ -201,7 +201,7 @@ cf apps
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 结果数 > 0   | Consul 定期发出自己的运行状况状态。 0 表示系统正常，1 表示路由发射器检测到 Consul 停止运行。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 结果数 > 0 | 由于反压力，Doppler 特意降低了消息的增量数。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 结果数 > 0   | Loggregator 发出 **LGR**，指示日志记录进程存在的问题。 例如，日志消息输出过高时，就会出现此类问题。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当喷嘴接收到来自 loggregator 的使用者警报缓慢时，它会将 **slowConsumerAlert** 向 valuemetric 发送到 Azure Monitor 日志。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当 Nozzle 从 Loggregator 收到慢使用者警报时，它会向 Azure Monitor 日志发送 slowConsumerAlert ValueMetric。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 结果数 > 0   | 如果丢失的事件增量数达到阈值，表示 Nozzle 存在问题，无法正常运行。 |
 
 ## <a name="scale"></a>缩放
@@ -226,7 +226,7 @@ Loggregator 发送 **LGR** 日志消息，指示日志记录进程存在的问�
 ### <a name="remove-the-nozzle-from-ops-manager"></a>通过 Ops Manager 删除 Nozzle
 
 1. 登录到 Ops Manager
-2. 找到 PCF 磁贴 **Log Analytics 喷嘴 Microsoft Azure** 。
+2. 找到“适用于 PCF 的 Microsoft Azure Log Analytics Nozzle”磁贴。
 3. 选择垃圾桶图标并确认删除。
 
 ### <a name="remove-the-nozzle-from-your-development-computer"></a>通过开发计算机删除 Nozzle
@@ -236,14 +236,14 @@ Loggregator 发送 **LGR** 日志消息，指示日志记录进程存在的问�
 cf delete <App Name> -r
 ```
 
-删除 Nozzle 不会自动删除 OMS 门户中的数据。 它会根据 Azure Monitor 日志保留期设置过期。
+删除 Nozzle 不会自动删除 OMS 门户中的数据。 它的过期日期取决于 Azure Monitor 日志保留期设置。
 
 ## <a name="support-and-feedback"></a>支持和反馈
 
 Azure Log Analytics Nozzle 是开放源代码。 若有问题和反馈，请发送到 [GitHub 部分](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)。 若要提出 Azure 支持请求，请选择“运行 Cloud Foundry 的虚拟机”作为服务类别。 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
-从 PCF 2.0 中，VM 性能指标会按系统指标转发器传输到 Azure Log Analytics 喷嘴，并集成到 Log Analytics 工作区中。 不再需要 Log Analytics 代理来获取 VM 性能指标。 但仍然可以使用 Log Analytics 代理来收集 Syslog 信息。 Log Analytics 代理可作为 Bosh 加载项安装到 CF VM 中。 
+自 PCF2.0 起，VM 性能指标将由系统指标转发器传输至 Azure Log Analytics Nozzle，并集成到 Log Analytics 工作区。 不再需要 Log Analytics 代理来获取 VM 性能指标。 但仍然可以使用 Log Analytics 代理来收集 Syslog 信息。 Log Analytics 代理可作为 Bosh 加载项安装到 CF VM 中。 
 
 有关详细信息，请参阅[将 Log Analytics 代理部署到 Cloud Foundry 部署](https://github.com/Azure/oms-agent-for-linux-boshrelease)。

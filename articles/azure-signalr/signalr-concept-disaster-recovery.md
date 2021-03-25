@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90976489"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR 服务中的复原能力和灾难恢复
@@ -42,7 +42,7 @@ ms.locfileid: "90976489"
 
 下图演示了这种拓扑：
 
-![关系图显示了每个区域，每个区域都有一个应用服务器和一个 SignalR 服务，其中每个服务器都与作为主服务器的区域中的 SignalR 服务关联，另一个区域中的服务作为辅助区域。](media/signalr-concept-disaster-recovery/topology.png)
+![该图显示了两个区域，每个区域都有一个应用服务器和一个 SignalR 服务，其中每个服务器在其区域中都与 SignalR 服务关联为主要，在另一区域中与该服务关联为次要。](media/signalr-concept-disaster-recovery/topology.png)
 
 ## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>使用多个 SignalR 服务实例配置应用服务器
 

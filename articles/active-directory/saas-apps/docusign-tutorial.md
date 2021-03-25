@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "92454688"
 * 让用户通过其 Azure AD 帐户自动登录到 DocuSign。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -56,7 +56,7 @@ ms.locfileid: "92454688"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **DocuSign** 。
+1. 在“从库中添加”部分的搜索框中，键入 **DocuSign**。
 1. 在结果面板中选择“DocuSign”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
@@ -103,7 +103,7 @@ ms.locfileid: "92454688"
     > [!NOTE]
     > 括号中的值是占位符。 请将这些占位符替换为实际登录 URL、标识符和回复 URL。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”  。 选择“下载”以下载证书，并将其保存在计算机上。 
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -118,10 +118,10 @@ ms.locfileid: "92454688"
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。  
 1. 在屏幕顶部选择“新建用户”。
 1. 在“用户”属性中执行以下步骤：
-   1. 在“姓名”字段中输入 **B.Simon** 。  
+   1. 在“姓名”字段中输入 **B.Simon**。  
    1. 在“用户名”字段中输入 `<username>@<companydomain>.<extension>`。 例如：`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值 。
-   1. 选择“创建”。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值   。
+   1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -193,7 +193,7 @@ ms.locfileid: "92454688"
 
        ![“自定义属性映射”UI][62]
 
-    i. 选择要映射到 Azure AD 声明的字段。 在本示例中， **emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”。
+    i. 选择要映射到 Azure AD 声明的字段。 在本示例中，**emailaddress** 声明已映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 值。 这是 Azure AD 中用于电子邮件声明的默认声明名称。 选择“保存”。
 
        ![“自定义属性映射”字段][57]
 

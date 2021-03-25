@@ -8,10 +8,10 @@ ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489568"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
@@ -50,7 +50,7 @@ ms.locfileid: "92489568"
 
     ![选择”添加文件共享”按钮](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. 将新文件共享命名为 *qsfileshare* ，在“配额”中输入“1”，然后选择“创建”。 配额最高可为 5 TiB，但本快速入门只需 1 GiB。
+1. 将新文件共享命名为 *qsfileshare*，在“配额”中输入“1”，然后选择“创建”。 配额最高可为 5 TiB，但本快速入门只需 1 GiB。
 1. 在本地计算机上创建名为 *qsTestFile* 的新 txt 文件。
 1. 选择新文件共享，然后在文件共享位置选择“上传”。
 
@@ -68,9 +68,9 @@ ms.locfileid: "92489568"
 
    ![在门户边栏选项卡中输入 VM 的基本信息](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
-1. 在“实例详细信息”下，将 VM 命名为 *qsVM* 。
+1. 在“实例详细信息”下，将 VM 命名为 *qsVM*。
 1. 保留“区域”、“可用性选项”、“映像”和“大小”的默认设置。
-1. 在“管理员帐户”下，添加 *VMadmin* 作为 **用户名** ，并输入 VM 的 **密码** 。
+1. 在“管理员帐户”下，添加 *VMadmin* 作为 **用户名**，并输入 VM 的 **密码**。
 1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP”。
 1. 选择“查看 + 创建”。
 1. 选择“创建”。 创建新的 VM 需要数分钟才能完成。
@@ -101,7 +101,7 @@ ms.locfileid: "92489568"
    ![屏幕截图显示了“秒数”框的内容，你应将其复制并粘贴到记事本中。](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. 在 VM 中打开“文件资源管理器”，并在窗口中选择“此电脑”。 这会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。
-1. 选择驱动器号并输入 UNC 路径。 如果已按本快速入门中的建议命名，请从 **记事本** 中将复制 *\\qsstorageacct.file.core.windows.net\qsfileshare* 。
+1. 选择驱动器号并输入 UNC 路径。 如果已按本快速入门中的建议命名，请从 **记事本** 中将复制 *\\qsstorageacct.file.core.windows.net\qsfileshare*。
 
    确保选中这两个复选框。
 
@@ -110,7 +110,7 @@ ms.locfileid: "92489568"
 1. 选择“完成”  。
 1. 在“Windows 安全性”对话框中：
 
-   - 从记事本中复制前面带有 AZURE\ 的存储帐户名，并将其作为用户名粘贴到“Windows 安全性”对话框中。 如果已按本快速入门中的建议命名，请复制 *AZURE\qsstorageacct* 。
+   - 从记事本中复制前面带有 AZURE\ 的存储帐户名，并将其作为用户名粘贴到“Windows 安全性”对话框中。 如果已按本快速入门中的建议命名，请复制 *AZURE\qsstorageacct*。
    - 从记事本中复制存储帐户密钥，并将其作为密码粘贴到“Windows 安全性”对话框中。
 
       ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)

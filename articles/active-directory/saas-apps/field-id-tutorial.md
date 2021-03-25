@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453529"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Field iD 的集成
@@ -78,7 +78,7 @@ ms.locfileid: "92453529"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-   a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.fieldid.com/fieldid`
+   a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<tenantname>.fieldid.com/fieldid`
 
    b. 在“回复 URL”文本框中，键入使用以下模式的 URL：`https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
 
@@ -116,7 +116,7 @@ ms.locfileid: "92453529"
     ![“添加用户”的屏幕截图](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后选择屏幕底部的“选择”   。
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后选择屏幕底部的“选择”。
+1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。 然后选择屏幕底部的“选择”  。
 1. 在“添加分配”对话框中选择“分配”。 
 
 ## <a name="configure-field-id-sso"></a>配置 Field iD SSO

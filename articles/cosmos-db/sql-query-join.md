@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: tisande
 ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011367"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
@@ -19,7 +19,7 @@ ms.locfileid: "98011367"
 
 在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。 
 
-联接将生成参与联接的集的完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
+联接可获得参与联接的集的完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
 
 ## <a name="syntax"></a>语法
 
@@ -254,7 +254,7 @@ JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基
     ]
 ```
 
-如果查询有联接和筛选器，则可以将查询的一部分作为 [子](sql-query-subquery.md#optimize-join-expressions) 查询重写，以提高性能。
+如果你的查询具有 JOIN 和筛选器，那么你可将查询的一部分重写为[子查询](sql-query-subquery.md#optimize-join-expressions)来提高性能。
 
 ## <a name="next-steps"></a>后续步骤
 

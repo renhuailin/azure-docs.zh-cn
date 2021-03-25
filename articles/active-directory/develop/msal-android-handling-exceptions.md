@@ -13,10 +13,10 @@ ms.date: 08/07/2020
 ms.author: hahamil
 ms.reviewer: marsma
 ms.openlocfilehash: 4185206e92a78c2684ba1690f03700ef2532cc5e
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761397"
 ---
 # <a name="handle-exceptions-and-errors-in-msal-for-android"></a>处理适用于 Android 的 MSAL 中的异常和错误
@@ -77,4 +77,4 @@ private SilentAuthenticationCallback getAuthSilentCallback() {
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何 [在适用于 Android 的 MSAL 中登录](msal-logging-android.md)。
+详细了解 [MSAL for Android 中的日志记录](msal-logging-android.md)。

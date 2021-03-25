@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014030"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
@@ -24,13 +24,13 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ### <a name="partition-key-options"></a>分区键选项
 
-用于对输入数据进行分区的分区键或列名称可能包含对 [blob 名称](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)接受的任何字符。 不能使用嵌套字段作为分区键，除非将其与别名结合使用，但你可以使用特定字符创建文件层次结构。 例如，您可以使用以下查询来创建一个列，该列将两个其他列中的数据合并为一个唯一的分区键。
+用于对输入数据进行分区的分区键或列名可以包含 [blob 名称](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)可以接受的任何字符。 除非与别名结合使用，否则不能将嵌套字段用作分区键，但是可以使用某些字符来创建文件层次结构。 例如，可以使用以下查询创建一个列，该列将来自其他两个列的数据组合在一起以构成唯一的分区键。
 
 ```sql
 SELECT name, id, CONCAT(name, "/", id) AS nameid
 ```
 
-分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和记录类型，但如果将其转换为字符串，则可以将其用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
+分区键必须为 NVARCHAR(MAX)、BIGINT、FLOAT 或 BIT（1.2 兼容级别或更高级别）。 不支持 DateTime、Array 和 Records 类型，但是如果将它们转换为 String，则可将它们用作分区键。 有关详细信息，请参阅 [Azure 流分析数据类型](/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>示例
 

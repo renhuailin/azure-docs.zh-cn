@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727202"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 信息系统的组件和边界
@@ -97,7 +97,7 @@ Microsoft 的员工（或合同工）被视为内部用户。 其他所有用户
 | Azure 部署工程师 | 内部 | 有权访问客户数据 | 部署/升级平台组件、软件和有计划的配置更改，以支持 Azure。 | 环境的适时访问权限，对非客户系统的持久性访问权限有限。 |
 | Azure 客户中断支持（租户） | 内部 | 有权访问客户数据 | 调试和诊断单个计算租户与 Azure 帐户出现的平台中断和故障。 分析故障。 为平台或客户推进关键修复措施，在整个支持团队中推进技术改进。 | 环境的适时访问权限，对非客户系统的持久性访问权限有限。 |
 | Azure 现场工程师（监控工程师）和事件 | 内部 | 有权访问客户数据 | 使用诊断工具诊断和缓解平台运行状况。 推进批量发布的驱动程序的修复措施、修复中断时造成的问题，并为中断复原措施提供协助。 | 环境的适时访问权限，对非客户系统的持久性访问权限有限。 |
-|Azure 客户 | 外部 | 空值 | 空值 | 空值 |
+|Azure 客户 | 外部 | 空值 | 不适用 | 空值 |
 
 Azure 使用唯一标识符对组织用户和客户（或代表组织用户执行操作的流程）进行身份验证。 这适用于 Azure 环境中包括的所有资产和设备。
 

@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980064"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看、添加和删除访问包的分配
@@ -36,25 +36,25 @@ ms.locfileid: "90980064"
 
 ## <a name="view-who-has-an-assignment"></a>查看谁具有分配
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 单击“分配”查看活动分配的列表。****
+1. 单击“分配”查看活动分配的列表。
 
     ![访问包分配情况的列表](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
 1. 单击特定的分配可查看更多详细信息。
 
-1. 若要查看并非所有资源角色都已未正确预配的分配列表，请单击筛选器状态，然后选择“正在传递”。****
+1. 若要查看并非所有资源角色都已未正确预配的分配列表，请单击筛选器状态，然后选择“正在传递”。
 
-    在“请求”页上找到用户的对应请求，可以查看有关传递错误的更多详细信息。****
+    在“请求”页上找到用户的对应请求，可以查看有关传递错误的更多详细信息。
 
-1. 若要查看已过期的分配，请单击筛选器状态，然后选择“已过期”。****
+1. 若要查看已过期的分配，请单击筛选器状态，然后选择“已过期”。
 
-1. 若要下载筛选列表的 CSV 文件，请单击“下载”。****
+1. 若要下载筛选列表的 CSV 文件，请单击“下载”。
 
 ### <a name="viewing-assignments-programmatically"></a>以编程方式查看分配
 
@@ -64,15 +64,15 @@ ms.locfileid: "90980064"
 
 在某些情况下，你可能希望直接将特定的用户分配到访问包，使其不必要完成请求访问包的过程。 若要直接分配用户，访问包必须有一个允许管理员直接分配的策略。
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“分配”。****
+1. 在左侧菜单中单击“分配”。
 
-1. 单击“新建分配”打开“将用户添加到访问包”。****
+1. 单击“新建分配”打开“将用户添加到访问包”。
 
     ![分配 - 将用户添加到访问包](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
@@ -84,9 +84,9 @@ ms.locfileid: "90980064"
 
 1. （可选）为直接分配提供理由，以保留记录。
 
-1. 单击“添加”将所选用户直接分配到访问包。****
+1. 单击“添加”将所选用户直接分配到访问包。
 
-    片刻之后，单击“刷新”查看“分配”列表中的用户。****
+    片刻之后，单击“刷新”查看“分配”列表中的用户。
 
 ### <a name="directly-assigning-users-programmatically"></a>以编程方式直接分配用户
 
@@ -94,13 +94,13 @@ ms.locfileid: "90980064"
 
 ## <a name="remove-an-assignment"></a>删除分配
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理器或访问包分配管理器
+**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中单击“访问包”，然后打开访问包。****
+1. 在左侧菜单中单击“访问包”，然后打开访问包。
 
-1. 在左侧菜单中单击“分配”。****
+1. 在左侧菜单中单击“分配”。
  
 1. 单击要从访问包中删除其分配的用户旁边的复选框。 
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725238"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560610"
 ---
 # <a name="securing-external-access-with-groups"></a>使用组保护外部访问 
 
@@ -34,11 +34,11 @@ ms.locfileid: "98725238"
 
 组具有以下角色：
 
-* 所有者–组所有者管理组设置及其成员身份。
+* 所有者 - 组所有者管理组设置及其成员身份。
 
-* 成员–继承分配给组的权限和访问权限的成员。
+* 成员 - 成员继承分配给组的权限和访问权限。
 
-* 来宾–来宾是组织外部的成员。 
+* 来宾 - 来宾是组织外部的成员。 
 
 ## <a name="determine-your-group-strategy"></a>确定组策略
 
@@ -54,7 +54,7 @@ ms.locfileid: "98725238"
 
    * 默认情况下，所有用户均可创建 M365 组，并且组对租户中的所有（内部和外部）用户开放，以便加入。 
 
-      * 可以限制只有特定安全组的成员才可[创建 Microsoft 365 组](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide)。 使用 Windows PowerShell 配置此设置。 
+      * 可以限制只有特定安全组的成员才可[创建 Microsoft 365 组](/microsoft-365/solutions/manage-creation-of-groups)。 使用 Windows PowerShell 配置此设置。 
 
 * 谁应该能够邀请人员加入组？ 所有组成员都能添加其他成员，还是只有组所有者能添加成员？
 
@@ -139,7 +139,7 @@ Azure AD 安全组还可用于：
 ![创建安全组的屏幕截图。](media/secure-external-access/4-create-security-group.png)
 
 > [!IMPORTANT]
-> **若要创建启用邮件的安全组，请前往 [Microsoft 365 管理中心](https://admin.microsoft.com/)**。 无法在 Azure AD 门户中创建它。 
+> 若要创建支持邮件的安全组，请转到 [Microsoft 365 管理中心](https://admin.microsoft.com/)。 无法在 Azure AD 门户中创建它。 
 <br>必须在创建时为安全组启用邮件功能。 之后无法启用它。
 
 ### <a name="hybrid-organizations-and-azure-ad-security-groups"></a>混合组织和 Azure AD 安全组
@@ -150,13 +150,13 @@ Azure AD 安全组还可用于：
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 组
 
-[Microsoft 365 组](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)是驱动 M365 上所有访问的基础成员身份服务。 可以通过 [Azure 门户](https://portal.azure.com/)或 [M365 门户](https://admin.microsoft.com/)来创建它们。 创建 M365 组后，你可授予对用于协作的一组资源的访问权限。 有关这些资源的完整列表，请参阅[面向管理员的 Microsoft 365 组概述](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)。
+[Microsoft 365 组](/microsoft-365/admin/create-groups/office-365-groups)是驱动 M365 上所有访问的基础成员身份服务。 可通过 [Azure 门户](https://portal.azure.com/)或 [M365 门户](https://admin.microsoft.com/)来创建这种组。 创建 M365 组后，你可授予对用于协作的一组资源的访问权限。 有关这些资源的完整列表，请参阅[面向管理员的 Microsoft 365 组概述](/microsoft-365/admin/create-groups/office-365-groups)。
 
 M365 组在角色方面有以下细微差别
 
 * **所有者** - 组所有者可以添加或删除成员，并具有独特的权限，例如可从共享收件箱中删除会话或更改组设置。 组所有者可以重命名组、更新说明或图片等。
 
-* **成员** - 成员可以访问组中的所有内容，但不能更改组设置。 默认情况下，组成员可以邀请来宾加入你的组，但你可[控制该设置](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide)。
+* **成员** - 成员可以访问组中的所有内容，但不能更改组设置。 默认情况下，组成员可以邀请来宾加入你的组，但你可[控制该设置](/microsoft-365/admin/create-groups/manage-guest-access-in-groups)。
 
 * **来宾** - 组来宾是组织外部的成员。 默认情况下，来宾对 Teams 中的功能有一些限制。
 
@@ -176,7 +176,7 @@ M365 组在角色方面有以下细微差别
 
 1. [确定外部访问所需的安全状况](1-secure-access-posture.md)
 
-2. [了解当前状态](2-secure-access-current-state.md)
+2. [了解当前状况](2-secure-access-current-state.md)
 
 3. [创建治理计划](3-secure-access-plan.md)
 

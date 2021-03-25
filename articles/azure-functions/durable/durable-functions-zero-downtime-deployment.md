@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c96f2cc37c47c77b82ca86d5fd0295f0c66a896
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009477"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558757"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
 
@@ -54,7 +54,7 @@ Durable Functions 的[可靠执行模型](./durable-functions-orchestrations.md)
 
 1. 对于每个槽，请创建新的应用设置，例如 `DurableManagementStorage`。 将其值设置为不同存储帐户的连接字符串。 Durable Functions 扩展使用这些存储帐户来实现[可靠执行](./durable-functions-orchestrations.md)。 对每个槽使用单独的存储帐户。 不要将此设置标记为部署槽设置。
 
-1. 在函数应用host.js的 [ "durableTask" 部分](durable-functions-bindings.md#hostjson-settings)中，指定 " `connectionStringName` (耐用的 2.x) " 或 " `azureStorageConnectionStringName` (持久的 1.x) " 作为在步骤3中创建的应用设置的名称。
+1. 在函数应用的 [host.json 文件的 durableTask 节](durable-functions-bindings.md#hostjson-settings)中，将 `connectionStringName` (Durable 2.x) 或 `azureStorageConnectionStringName` (Durable 1.x) 指定为在步骤 3 中创建的应用设置的名称。
 
 下图显示了部署槽和存储帐户的所述配置。 在这种可能的部署前方案中，函数应用版本 2 在生产槽中运行，而版本 1 保留在过渡槽中。
 
@@ -111,7 +111,7 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅 [使用入口发布部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+接下来，将过渡门限配置为等到没有任何业务流程运行为止。 有关详细信息，请参阅[使用入口的发布部署控制](/azure/devops/pipelines/release/approvals/gates)
 
 ![部署入口](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 

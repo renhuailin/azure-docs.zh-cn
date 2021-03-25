@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: b239811e9fe49f420b5e9d15afafdcf26832dbf8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735371"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askyourteam"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AskYourTeam 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98735371"
 * 让用户使用其 Azure AD 帐户自动登录到 AskYourTeam。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,7 +45,7 @@ ms.locfileid: "98735371"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **AskYourTeam**。 
 1. 在结果面板中选择“AskYourTeam”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
@@ -73,7 +73,7 @@ ms.locfileid: "98735371"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COMPANY>.app.askyourteam.com/users/auth/saml/callback`
 
@@ -97,7 +97,7 @@ ms.locfileid: "98735371"
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
@@ -195,13 +195,13 @@ ms.locfileid: "98735371"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AskYourTeam 登录 URL，可以在其中启动登录流。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AskYourTeam 登录 URL，可在其中启动登录流。
 
 * 直接转到 AskYourTeam 登录 URL，并从那里启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 AskYourTeam
+* 在 Azure 门户中单击“测试此应用程序”后，应会自动登录到为其设置了 SSO 的 AskYourTeam
 
 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 AskYourTeam 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 AskYourTeam。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 

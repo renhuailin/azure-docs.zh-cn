@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b4d78b339bab02b5c44a31939e0da769dc21c3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75452164"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>限制 Service Fabric 群集资源管理器
@@ -46,7 +46,7 @@ Service Fabric 具有两种机制用于限制副本移动数。 Service Fabric 5
 </Section>
 ```
 
-通过 ClusterConfig.json 进行独立部署或将 Template.json 用于 Azure 托管群集：
+通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：
 
 ```json
 "fabricSettings": [
@@ -83,5 +83,5 @@ Service Fabric 具有两种机制用于限制副本移动数。 Service Fabric 5
 这些限制的配置遵循与基于百分比的限制相同的模式。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
+- 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[均衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章

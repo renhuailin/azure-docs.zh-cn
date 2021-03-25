@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5b0542bbcc4d1acd37f7eeb333a53fb6826a4eea
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101643586"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558723"
 ---
 # <a name="manage-app-consent-policies"></a>管理应用同意策略
 
@@ -31,7 +31,7 @@ ID 以“microsoft-”开头的应用同意策略是内置策略。 其中的某
 
 ## <a name="pre-requisites"></a>先决条件
 
-1. 请确保使用 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0) 模块和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块，则此步骤非常重要。
+1. 请确保使用 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块。 如果同时安装了 [AzureAD](/powershell/module/azuread/) 模块和 [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) 模块，则此步骤非常重要。
 
     ```powershell
     Remove-Module AzureAD -ErrorAction SilentlyContinue
@@ -138,8 +138,8 @@ ID 以“microsoft-”开头的应用同意策略是内置策略。 其中的某
 | 权限 | 要与之匹配的特定权限的权限 ID 的列表；或其中包含单个值“all”的列表，这匹配任何权限。 默认值为单个值“all”。 <ul><li>可以在 API 的 ServicePrincipal 对象的 **OAuth2Permissions** 属性中找到委托的权限 ID。</li><li>可以在 API 的 ServicePrincipal 对象的 **AppRoles** 属性中找到应用程序权限 ID。</li></ol> |
 | ClientApplicationIds | 要与之匹配的客户端应用程序的 **AppId** 值的列表；或其中包含单个值“all”的列表，这匹配任何客户端应用程序。 默认值为单个值“all”。 |
 | ClientApplicationTenantIds | 在其中注册了客户端应用程序的 Azure Active Directory 租户 ID 的列表；或其中包含单个值“all”的列表，这将匹配在任何租户中注册的客户端应用。 默认值为单个值“all”。 |
-| ClientApplicationPublisherIds | 已验证的客户端应用程序 [发布者](../develop/publisher-verification-overview.md) 的 MICROSOFT 合作伙伴网络 (MPN) id 的列表，或单个值为 "全部" 的列表，以与任何发布者的客户端应用匹配。 默认值为单个值“all”。 |
-| ClientApplicationsFromVerifiedPublisherOnly | 设置为 `$true` 仅在客户端应用程序中与 [已验证的发布服务器](../develop/publisher-verification-overview.md)匹配。 设置为 `$false` 将匹配任何客户端应用，即使它没有已验证的发布者。 默认值为 `$false`。 |
+| ClientApplicationPublisherIds | 客户端应用程序的[已验证发布者](../develop/publisher-verification-overview.md)的 Microsoft 合作伙伴网络 (MPN) ID 的列表；或其中包含单个值“all”的列表，这将匹配来自任何发布者的客户端应用。 默认值为单个值“all”。 |
+| ClientApplicationsFromVerifiedPublisherOnly | 设置为 `$true` 将仅匹配具有[已验证发布者](../develop/publisher-verification-overview.md)的客户端应用程序。 设置为 `$false` 将匹配任何客户端应用，即使它没有已验证的发布者。 默认值为 `$false`。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -152,4 +152,4 @@ ID 以“microsoft-”开头的应用同意策略是内置策略。 其中的某
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
-* [Microsoft Azure AD 上的&](/answers/products/)
+* [Microsoft Q&A 上的 Azure AD](/answers/products/)

@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85202953"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -35,7 +35,7 @@ ClaimsTransformations 元素包含一个可在用户旅程中用作[自定义策
 
 ClaimsTransformation 元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必需 | 说明 |
 | --------- |-------- | ----------- |
 | ID |是 | 用于唯一标识声明转换的标识符。 从策略中的其他 XML 元素引用此标识符。 |
 | TransformationMethod | 是 | 用于声明转换的转换方法。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
@@ -67,7 +67,7 @@ ClaimsTransformation 元素包含以下元素：
 
 ### <a name="inputclaims"></a>InputClaims
 
-InputClaims 元素包含以下元素：
+InputClaims  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -75,9 +75,9 @@ InputClaims 元素包含以下元素：
 
 #### <a name="inputclaim"></a>InputClaim
 
-InputClaim 元素包含以下属性：
+InputClaim  元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必需 | 说明 |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | TransformationClaimType |是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
@@ -92,7 +92,7 @@ InputParameters 元素包含以下元素：
 
 #### <a name="inputparameter"></a>InputParameter
 
-| 属性 | 必须 |说明 |
+| 属性 | 必需 |说明 |
 | --------- | ----------- |----------- |
 | ID | 是 | 是对声明转换方法的参数的引用的标识符。 每个声明转换方法都有其自己的值。 有关可用值的完整列表，请参阅声明转换表。 |
 | 数据类型 | 是 | 参数的数据类型，例如根据自定义策略 XML 架构中的 DataType 枚举的字符串、布尔值、Int 或 DateTime。 此类型用于正确执行算术操作。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
@@ -100,7 +100,7 @@ InputParameters 元素包含以下元素：
 
 ### <a name="outputclaims"></a>OutputClaims
 
-OutputClaims 元素包含以下元素：
+OutputClaims  元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -110,7 +110,7 @@ OutputClaims 元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| 属性 |必须 | 说明 |
+| 属性 |必需 | 说明 |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | 是 | 对在策略的 ClaimsSchema 部分定义的 ClaimType 的引用。
 | TransformationClaimType | 是 | 用于引用转换声明类型的标识符。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |

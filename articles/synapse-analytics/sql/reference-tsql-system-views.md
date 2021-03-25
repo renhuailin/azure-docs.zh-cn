@@ -9,15 +9,15 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: da033523e95d89ba6fd6b0eec780b45f7587bc55
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101666276"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支持的系统视图
 
-Synapse SQL 中支持的 T-sql 语句的文档链接。
+Synapse SQL 中支持的 T-SQL 语句的相关文档的链接。
 
 > [!NOTE]
 > Synapse 无服务器 SQL 池仅支持 SQL Server 目录视图。  
@@ -252,5 +252,5 @@ SQL 池和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多参考信息，请参阅 [SYNAPSE sql 中的 t-sql 语句](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)和 [Synapse Sql 中的 t-sql 语言元素](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md)。
+有关更多参考信息，请参阅 [Synapse SQL 中的 T-SQL 语句](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)和 [Synapse SQL 中的 T-SQL 语言元素](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md)。
 

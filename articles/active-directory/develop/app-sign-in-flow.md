@@ -1,7 +1,7 @@
 ---
-title: Microsoft 标识平台的应用登录流 |Microsoft
+title: 使用 Microsoft 标识平台的应用登录流 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 Microsoft 标识平台中的 web、桌面和移动应用的登录流。
+description: 了解 Microsoft 标识平台中 Web、桌面和移动应用的登录流。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,13 +14,13 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755690"
 ---
-# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Microsoft 标识平台的应用登录流
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>使用 Microsoft 标识平台的应用登录流
 
 本主题介绍使用 Microsoft 标识平台的 Web、桌面和移动应用的基本登录流。 请参阅[身份验证流和应用方案](authentication-flows-app-scenarios.md)，了解 Microsoft 标识平台支持的登录方案。
 
@@ -30,12 +30,12 @@ ms.locfileid: "98755690"
 
 * Web 应用确定用户是否进行了身份验证。
 * 如果用户未进行身份验证，则 Web 应用将委托 Azure AD 登录该用户。 该登录将符合组织的策略，这可能意味着要求用户输入其凭据，使用[多重身份验证](../authentication/concept-mfa-howitworks.md)（有时称为双因素身份验证或 2FA），或者根本不使用密码（例如使用 Windows Hello）。
-* 要求用户同意该客户端应用所需的访问。 这就是需要在 Azure AD 中注册客户端应用程序的原因，以便 Microsoft 标识平台可以提供令牌，这些令牌代表用户同意的访问权限。
+* 要求用户同意该客户端应用所需的访问。 正因如此，需要在 Azure AD 中注册客户端应用，这样 Microsoft 标识平台就能够传送代表用户许可的访问权限的令牌。
 
 成功对用户进行身份验证以后，请执行以下操作：
 
-* Microsoft 标识平台会将令牌发送到 web 应用。
-* 将保存与 Azure AD 的域相关联的 cookie，其中包含浏览器 cookie jar 中用户的标识。 下一次应用使用浏览器导航到 Microsoft 标识平台授权终结点时，浏览器会显示该 cookie，这样用户就无需再次登录。 这也是实现 SSO 的方式。 Cookie 由 Azure AD 生成，只能通过 Azure AD 理解。
+* Microsoft 标识平台会发送令牌到 Web 应用。
+* 将保存与 Azure AD 的域相关联的 cookie，其中包含浏览器 cookie jar 中用户的标识。 应用下次使用浏览器导航到 Microsoft 标识平台授权终结点时，浏览器会提供 Cookie，这样用户就无需再次登录。 这也是实现 SSO 的方式。 Cookie 由 Azure AD 生成，只能通过 Azure AD 理解。
 * 然后，Web 应用对令牌进行验证。 如果验证成功，Web 应用将显示受保护的页面并将会话 cookie 保存在浏览器的 cookie jar 中。 当用户导航到另一个页面时，Web 应用知道用户是基于会话 cookie 进行身份验证。
 
 下面的序列图概述了这种交互：
@@ -48,12 +48,12 @@ Web 应用开发人员可以指示是否所有或仅某些页面需要身份验�
 
 此属性可让 ASP.NET 检查是否存在包含用户标识的会话 cookie。 如果 cookie 不存在，ASP.NET 将身份验证重定向到指定的标识提供者。 如果标识提供者是 Azure AD，则 Web 应用将身份验证重定向到 `https://login.microsoftonline.com`，后者将显示登录对话框。
 
-### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Web 应用如何委托登录 Microsoft 标识平台和获取令牌
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Web 应用如何将登录委托给 Microsoft 标识平台并获取令牌
 
 通过浏览器进行用户身份验证。 OpenID 协议使用标准 HTTP 协议消息。
 
 * Web 应用将 HTTP 302（重定向）发送到浏览器以使用 Microsoft 标识平台。
-* 在对用户进行身份验证时，Microsoft 标识平台使用重定向通过浏览器将令牌发送到 web 应用。
+* 用户进行身份验证时，Microsoft 标识平台会通过浏览器使用重定向来发送令牌到 Web 应用。
 * Web 应用以重定向 URI 的形式提供重定向。 此重定向 URI 已注册到 Azure AD 应用程序对象。 可能有多个重定向 URI，因为应用程序可能部署在多个 URL 上。 因此，Web 应用还需要指定要使用的重定向 URI。
 * Azure AD 验证 Web 应用发送的重定向 URI 是否是该应用的某个注册重定向 URI。
 

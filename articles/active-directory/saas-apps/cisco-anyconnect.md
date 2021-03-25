@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
@@ -26,7 +26,7 @@ ms.locfileid: "92456082"
 * 让用户使用其 Azure AD 帐户自动登录到 Cisco AnyConnect。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -47,7 +47,7 @@ ms.locfileid: "92456082"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Cisco AnyConnect** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **Cisco AnyConnect**。 
 1. 在结果面板中选择“Cisco AnyConnect”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-cisco-anyconnect"></a>配置和测试 Cisco AnyConnect 的 Azure AD SSO
@@ -73,9 +73,9 @@ ms.locfileid: "92456082"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值：
+1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`< YOUR CISCO ANYCONNECT VPN VALUE >`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`< YOUR CISCO ANYCONNECT VPN VALUE >`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`< YOUR CISCO ANYCONNECT VPN VALUE >`
 
@@ -101,7 +101,7 @@ ms.locfileid: "92456082"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

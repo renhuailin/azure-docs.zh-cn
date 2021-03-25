@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a35442dd8af1cd4acf22de453c8d10460e1e39f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371522"
 ---
 # <a name="update-or-remove-an-assigned-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中更新或删除分配的 Azure AD 自定义角色
@@ -40,17 +40,17 @@ ms.locfileid: "92371522"
 按照以下步骤更新或删除现有的自定义角色分配。
 
 1. 在 Azure 门户中使用分配给特权角色管理员角色的用户帐户登录到 [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
-1. 选择“Azure AD 自定义角色(预览版)”。****
+1. 选择“Azure AD 自定义角色(预览版)”。
 
     ![选择 Azure AD 自定义角色预览版，查看符合条件的角色分配](./media/azure-ad-custom-roles-assign/view-custom.png)
 
-1. 选择“角色”，查看 Azure AD 应用程序的自定义角色的“分配”列表。********
+1. 选择“角色”，查看 Azure AD 应用程序的自定义角色的“分配”列表。
 
     ![选择“角色”以查看符合条件的角色分配列表](./media/azure-ad-custom-roles-update-remove/assignments-list.png)
 
 1. 选择要更新或删除的角色。
-1. 在“合格角色”**** 或“活动角色”**** 选项卡上查找角色分配。
-1. 选择“更新”**** 或“删除”**** 以更新或删除角色分配。
+1. 在“合格角色”或“活动角色”选项卡上查找角色分配。
+1. 选择“更新”或“删除”以更新或删除角色分配。
 
     ![在符合条件的角色分配中选择“删除”或“更新”](./media/azure-ad-custom-roles-update-remove/remove-update.png)
 

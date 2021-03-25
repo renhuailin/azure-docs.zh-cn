@@ -2,17 +2,19 @@
 title: 适用于 Linux 虚拟机和 Windows 虚拟机的 Azure 安全基线
 description: Windows 虚拟机安全基线为实现 Azure 安全基准中指定的安全建议提供了过程指南和资源。
 author: msmbaldwin
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: security
+ms.collection: linux
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5a9bc576541c5991bb5f9352dc41fb0cce99c601
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 11f0a58f8c6d38d070d4bafe68794bdd9ada7cf3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594278"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556156"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -192,7 +194,7 @@ ms.locfileid: "100594278"
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
-**指南**： Microsoft 维护 Azure 资源的时间源，但你可以选择管理 Windows 虚拟机的时间同步设置。
+**指导**：Microsoft 维护 Azure 资源的时间源，但是，你可以选择管理 Windows 虚拟机的时间同步设置。
 
 * [如何为 Azure 计算资源配置时间同步](./time-sync.md)
 
@@ -262,7 +264,7 @@ ms.locfileid: "100594278"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：启用 Log Analytics 代理，也称为 MICROSOFT MONITORING AGENT (MMA) ，并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理会将从各种源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有的日志或指标。
+**指导**：启用 Log Analytics 代理（也称 Microsoft Monitoring Agent (MMA)），并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理会将从各种源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有的日志或指标。
 
 分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 查看日志并对日志数据执行查询。
 
@@ -406,7 +408,7 @@ Azure 安全中心监视：不可用
 
 * [如何部署 Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure 安全中心风险检测 (可疑活动) ](../../active-directory/identity-protection/overview-identity-protection.md)
+* [了解 Azure 安全中心风险检测（可疑活动）](../../active-directory/identity-protection/overview-identity-protection.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 

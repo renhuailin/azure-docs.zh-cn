@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
 ms.openlocfilehash: dc9be41cd7975610f2779da09b94066c70a91652
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IamIP Patent Platform 的集成
@@ -49,10 +49,10 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 若要配置 IamIP Patent Platform 与 Azure AD 的集成，需要从库中将 IamIP Patent Platform 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左窗格中选择“Azure Active Directory”  。
+1. 在左窗格中选择“Azure Active Directory”。
 1. 转到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **IamIP Patent Platform** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **IamIP Patent Platform**。 
 1. 在结果面板中选择“IamIP Patent Platform”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-iamip-patent-platform"></a>配置并测试 IamIP Patent Platform 的 Azure AD SSO
@@ -62,7 +62,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 若要配置并测试 IamIP Patent Platform 的 Azure AD SSO，请执行以下高级步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
-    * [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录  。
+    * [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录。
     * **[向测试用户授予访问权限](#grant-access-to-the-test-user)** ，使用户能够使用 Azure AD 单一登录。
 
 1. 在应用程序端 **[配置 IamIP Patent Platform SSO](#configure-iamip-patent-platform-sso)** 。
@@ -76,7 +76,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“IamIP Patent Platform”应用程序集成页上的“管理”部分选择“单一登录”。   
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的铅笔按钮以编辑设置：  
+1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的铅笔按钮以编辑设置： 
 
    ![“基本 SAML 配置”对应的铅笔按钮](common/edit-urls.png)
 
@@ -99,7 +99,7 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
 1. 若要在 SP 发起的模式下配置应用程序，请选择“设置其他 URL”并完成以下步骤： 
 
-    在“登录 URL”框中，输入 **https:\//patents.iamip.com/login-user** 。 
+    在“登录 URL”框中，输入 **https:\//patents.iamip.com/login-user**。 
 
 1. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分，找到“证书(原始)”对应的“下载”链接，以下载证书并将其保存到计算机上：    
 
@@ -113,12 +113,12 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
 在本部分，你将在 Azure 门户中创建名为 B. Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。  选择“用户”，然后选择“所有用户”   。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中，完成以下步骤： 
-   1. 在“名称”  框中，输入 **B.Simon** 。  
-   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com` 。
-   1. 选择“显示密码”，然后记下“密码”框中显示的值。  
+1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中，完成以下步骤：
+   1. 在“名称”框中，输入 **B.Simon**。  
+   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
+   1. 选择“显示密码”，然后记下“密码”框中显示的值。 
    1. 选择“创建”  。
 
 ### <a name="grant-access-to-the-test-user"></a>向测试用户授予访问权限
@@ -131,11 +131,11 @@ IamIP Patent Platform 支持 SP 和 IDP 发起的 SSO。
 
    ![选择“用户和组”](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”：   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”：  
 
     ![选择“添加用户”](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。    
+1. 在“用户和组”对话框中的“用户”列表内选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
 1. 在“添加分配”对话框中，选择“分配”按钮。  
 

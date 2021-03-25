@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3061a4f0b6a41e5057436e15cabd2db0cbec5c00
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
@@ -97,7 +97,7 @@ ms.locfileid: "92454875"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![显示“基本 SAML 配置”部分的屏幕截图，其中突出显示了“标识符”、“回复 URL”和“保存”按钮。](common/idp-intiated.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "92454875"
 
     ![配置单一登录](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. 启用 **社交登录** 。
+    a. 启用 **社交登录**。
    
     b. 在记事本中打开从 Azure 门户下载的 Base64 编码证书，将其内容复制到剪贴板，然后将其粘贴到“OpenSSL 证书”文本框  。
    
@@ -185,7 +185,7 @@ ms.locfileid: "92454875"
     
     d. 在“SAML SSO URL”文本框中，将 `<your subdomain>` 替换为你的子域。
    
-    e. 在“SAML SSO URL”文本框中，将 `<saml sso url>` 替换成从 Azure 门户中复制的 **登录 URL** 。
+    e. 在“SAML SSO URL”文本框中，将 `<saml sso url>` 替换成从 Azure 门户中复制的 **登录 URL**。
    
     f. 单击“保存设置”。 
 
@@ -197,7 +197,7 @@ ms.locfileid: "92454875"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -207,12 +207,12 @@ ms.locfileid: "92454875"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -230,7 +230,7 @@ ms.locfileid: "92454875"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

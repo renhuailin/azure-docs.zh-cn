@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85551710"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
@@ -77,7 +77,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 | --- | --- | --- |
 | grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 client_credentials。 |
 | client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序 。 client_id 是应用程序 ID |
-| client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion_type |必需 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)的相关信息。|
 | resource | 必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”   。 |
 

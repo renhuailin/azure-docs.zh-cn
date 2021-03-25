@@ -1,24 +1,14 @@
 ---
 title: 创建自定义警报
 description: 了解、创建和分配针对 Azure Defender for IoT 安全服务的自定义设备警报。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 836619fa200983bc91d26db4d063e8545b11a1b5
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809025"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781035"
 ---
 # <a name="create-custom-alerts"></a>创建自定义警报
 
