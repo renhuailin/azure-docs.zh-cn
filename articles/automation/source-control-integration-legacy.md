@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97591867"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>在 Azure 自动化中使用源代码管理集成 - 传统
@@ -38,12 +38,12 @@ ms.locfileid: "97591867"
 
 2. “源代码管理”页面随即打开，可以在其中配置 GitHub 帐户详细信息。 下面是要配置的参数的列表：  
 
-   | **Parameter** | **说明** |
+   | **参数** | **说明** |
    |:--- |:--- |
    | 选择源 |选择源。 目前仅支持 **GitHub**。 |
    | 授权 |单击“授权”按钮，授予 GitHub 存储库的 Azure 自动化访问权限。 如果已在不同的窗口中登录 GitHub 帐户，将使用该帐户的凭据。 成功授权之后，页面上的“授权属性”下将显示你的 GitHub 用户名。 |
    | 选择存储库 |从可用存储库列表中选择 GitHub 存储库。 |
-   | 选择分支 |从可用分支列表中选择分支。 如果尚未创建任何分支，则只显示 **main** 分支。 |
+   | 选择分支 |从可用分支列表中选择分支。 如果尚未创建任何分支，则只显示 main 分支。 |
    | Runbook 文件夹路径 |Runbook 文件夹路径可指定 GitHub 存储库中的路径，以便从中推送或提取代码。 必须以 **/foldername/subfoldername** 格式输入路径。 只有 Runbook 文件夹路径中的 Runbook 才同步到自动化帐户。 Runbook 文件夹路径的子文件夹中的 Runbook **不会** 同步。 使用 **/** 来同步存储库下的所有 Runbook。 |
 3. 例如，如果有名为 **PowerShellScripts** 的存储库，其中包含名为 **RootFolder** 的文件夹，而该文件夹包含名为 **SubFolder** 的文件夹。 那么，可以使用以下字符串来同步每个文件夹级别：
 
@@ -60,7 +60,7 @@ ms.locfileid: "97591867"
 
    * 变量 **Microsoft.Azure.Automation.SourceControl.Connection** 包含连接字符串的值，如下所示。  
 
-     | **Parameter** | **值** |
+     | **参数** | **值** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
      | `Type`  |字符串 |
@@ -68,7 +68,7 @@ ms.locfileid: "97591867"
 
    * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
 
-     |**Parameter**            |**值** |
+     |**参数**            |**值** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |

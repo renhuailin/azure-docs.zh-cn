@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f4f3fc8c928cd284088cc51120f1a7b485b4fac0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102554235"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595339"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -31,21 +31,21 @@ Azure 数字孪生配备有“控制平面 API”和“数据平面 API”，用
 若要使用控制平面 API：
 * 可参考[控制平面 Swagger 存储库](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable)中最新的 Swagger 文件夹来直接调用 API。 此文件夹还包括一个示例文件夹，其中显示了用法。
 * 当前可通过以下方式访问控制 API 的 SDK：
-  - [ **.NET (C#)** ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/)（[参考 [自动生成]](/dotnet/api/overview/azure/digitaltwins/management)）（[源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)）
+  - [ **.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/)（[参考 [自动生成]](/dotnet/api/overview/azure/digitaltwins/management)）（[源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)）
   - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins)（[参考 [自动生成]](/java/api/overview/azure/digitaltwins)）（[源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)）
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins)（[源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)）
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/)（[源](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins)）
-  - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)（[源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins)）
+  - [**Go**](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt)（[源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt)）
 
 还可通过 [Azure 门户](https://portal.azure.com)和 [CLI](how-to-use-cli.md) 与 Azure 数字孪生交互，运用控制平面 API。
 
 ## <a name="overview-data-plane-apis"></a>概述：数据平面 API
 
 数据平面 API 是用于管理 Azure 数字孪生实例中的元素的 Azure 数字孪生 API。 其中包括创建路由、上传模型、创建关系和管理孪生体等操作。 这些 API 大致可分为以下几类：
-* **DigitalTwinModels** - DigitalTwinModels 类别包含用于管理 Azure 数字孪生实例中的[模型](concepts-models.md)的 API。 管理活动包括上传、验证、检索和删除在 DTDL 中创作的模型。
-* **DigitalTwins** - DigitalTwins 类别包含让开发人员能够在 Azure 数字孪生实例中创建、修改和删除[数字孪生体](concepts-twins-graph.md)及其关系的 API。
-* **查询** - 查询类别让开发人员能够跨关系[查找孪生图中的数字孪生体集](how-to-query-graph.md)。
-* **事件路由** - 事件路由类别包含通过系统向下游服务[路由数据](concepts-route-events.md)的 API。
+* **DigitalTwinModels** - DigitalTwinModels 类别包含用于管理 Azure 数字孪生实例中的 [模型](concepts-models.md)的 API。 管理活动包括上传、验证、检索和删除在 DTDL 中创作的模型。
+* **DigitalTwins** - DigitalTwins 类别包含让开发人员能够在 Azure 数字孪生实例中创建、修改和删除 [数字孪生体](concepts-twins-graph.md)及其关系的 API。
+* **查询** - 查询类别让开发人员能够跨关系 [查找孪生图中的数字孪生体集](how-to-query-graph.md)。
+* **事件路由** - 事件路由类别包含通过系统向下游服务 [路由数据](concepts-route-events.md)的 API。
 
 最新的数据平面 API 版本为 2020-10-31。
 

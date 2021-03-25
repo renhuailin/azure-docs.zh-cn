@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 诊断日志记录 | Microsoft Docs
-description: 介绍如何设置日志记录以监视 Azure Analysis Services 服务器。
+description: 描述如何设置日志记录以监视 Azure Analysis Services 服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2bee856adef1208aabbe65ecd5fd11235579bb82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582697"
 ---
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
@@ -78,7 +78,7 @@ ms.locfileid: "100582697"
 
 2. 在“诊断设置”中，指定以下选项： 
 
-    * **Name**。 为要创建的日志输入名称。
+    * **名称**。 为要创建的日志输入名称。
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
@@ -132,13 +132,13 @@ ms.locfileid: "100582697"
    (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
-可以结合这些参数启用多个输出选项。
+可以组合这些参数，以启用多个输出选项。
 
 ### <a name="rest-api"></a>REST API
 
 了解如何[使用 Azure Monitor REST API 更改诊断设置](/rest/api/monitor/)。 
 
-### <a name="resource-manager-template"></a>Resource Manager 模板
+### <a name="resource-manager-template"></a>资源管理器模板
 
 了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/essentials/resource-manager-diagnostic-settings.md)。 
 
@@ -146,7 +146,7 @@ ms.locfileid: "100582697"
 
 通常在设置日志记录数小时后可使用日志。 存储帐户中的日志完全由你管理：
 
-* 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
+* 使用标准 Azure 访问控制方法，通过限制访问你的日志的人员来保护日志的安全。
 * 删除不想继续保留在存储帐户中的日志。
 * 请务必设置保留期，以便从存储帐户中删除旧日志。
 
@@ -156,7 +156,7 @@ ms.locfileid: "100582697"
 
 若要查看诊断数据，请从 Log Analytics 工作区的左侧菜单中打开“日志”。
 
-![Azure 门户中的日志搜索选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
+![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
 在查询生成器中，展开 LogManagement > AzureDiagnostics 。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询。 请务必保存查询以便稍后重复使用。
 
@@ -222,7 +222,7 @@ window
 
 ### <a name="aconnect-to-your-subscriptions"></a></a>连接到订阅
 
-启动 Azure PowerShell 会话，并使用以下命令登录用户的 Azure 帐户：  
+启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
 
 ```powershell
 Connect-AzAccount

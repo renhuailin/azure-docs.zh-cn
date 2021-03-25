@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88116438"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 * 在处理登录或者交换令牌时，Azure AD 需要与应用程序进行通信。 Azure AD 和应用程序之间传递的信息包括以下内容：
   
   * **应用程序 ID URI** - 应用程序的标识符。 此值在身份验证期间发送给 Azure AD 以指明调用方想要哪个应用程序的令牌。 另外，此值还包括在令牌中以便应用程序知道它是预定目标。
-  * **回复 URL** 和**重定向 URI** - 对于 Web API 或 Web 应用程序，回复 URL 是当身份验证成功时 Azure AD 要将身份验证响应（包括令牌）发送到的位置。 对于本机应用程序，重定向 URI 是一个唯一标识符，Azure AD 会将 OAuth 2.0 请求中的用户代理重定向到该标识符。
+  * **回复 URL** 和 **重定向 URI** - 对于 Web API 或 Web 应用程序，回复 URL 是当身份验证成功时 Azure AD 要将身份验证响应（包括令牌）发送到的位置。 对于本机应用程序，重定向 URI 是一个唯一标识符，Azure AD 会将 OAuth 2.0 请求中的用户代理重定向到该标识符。
   * **应用程序 ID** - 应用程序的 ID，这是在注册应用程序时由 Azure AD 生成的。 当请求授权代码或令牌时，在身份验证期间会将应用程序 ID 和密钥发送到 Azure AD。
   * **密钥** - 向 Azure AD 进行身份验证以调用 Web API 时会随应用程序 ID 一起发送的密钥。
 * Azure AD 需要确保应用程序具有访问目录数据、组织中的其他应用程序等内容所需的权限。

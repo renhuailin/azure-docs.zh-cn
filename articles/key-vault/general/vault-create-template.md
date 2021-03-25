@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 10/5/2020
+ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: e489efd335d2a46a0e55d4ceb9bdee809ae6c39d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664344"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595237"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用资源管理器模板创建 Azure 密钥保管库和保管库访问策略
 
@@ -150,7 +150,7 @@ ms.locfileid: "98664344"
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": "[parameters('certificatesPermissions')]"
+              "certificates": "[parameters('certificatePermissions')]"
             }
           }
         ]
@@ -169,7 +169,7 @@ ms.locfileid: "98664344"
 
 | 机密 | 键 | 证书 |
 |--|--|--|
-|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](/azure/templates/microsoft.keyvault/vaults/secrets)|不可用|不可用|
+|<ul><li>[快速入门](../secrets/quick-create-template.md)<li>[引用](/azure/templates/microsoft.keyvault/vaults/secrets)|空值|空值|
 
 可在以下文章中找到更多 Key Vault 模板：[Key Vault 资源管理器参考](/azure/templates/microsoft.keyvault/allversions)。
 
@@ -177,7 +177,7 @@ ms.locfileid: "98664344"
 
 可以使用 Azure 门户来部署上述模板，方法是按下面所述使用“在编辑器中生成自己的模板”选项：[从自定义模板部署资源](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-你还可以将上述模板保存到文件中，并使用以下命令：  [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
+还可以将上述模板保存到文件中，并使用以下命令：[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json

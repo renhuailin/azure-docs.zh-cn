@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: afa6920a36a5a7218571239b36815004d8f2d450
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619345"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 DNS 并在 Azure Active Directory 域服务托管域中创建条件转发器
@@ -45,7 +45,7 @@ ms.locfileid: "96619345"
 
 ## <a name="install-dns-server-tools"></a>安装 DNS 服务器工具
 
-若要在托管域中创建和修改 DNS 记录，需要安装 DNS 服务器工具。 这些工具可以作为 Windows Server 中的一项功能进行安装。 有关如何在 Windows 客户端上安装管理工具的详细信息，请参阅[安装远程服务器管理工具 (RSAT)][install-rsat]。
+若要在托管域中创建和修改 DNS 记录，需要安装 DNS 服务器工具。 这些工具可以作为 Windows Server 中的一项功能进行安装。 有关如何在 Windows 客户端上安装管理工具的详细信息，请参阅安装[远程服务器管理工具 (RSAT)][install-rsat]。
 
 1. 登录到管理 VM。 有关如何使用 Azure 门户进行连接的步骤，请参阅[连接到 Windows Server VM][connect-windows-server-vm]。
 1. 如果在登录 VM 时服务器管理器默认情况下未打开，请选择“开始”菜单，然后选择“服务器管理器”。

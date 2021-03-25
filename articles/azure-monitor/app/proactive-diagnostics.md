@@ -4,10 +4,10 @@ description: Application Insights 执行应用遥测的自动深入分析，并�
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.openlocfilehash: 974795e853416ff7a4c051530b050fc663c9423d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100585650"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测

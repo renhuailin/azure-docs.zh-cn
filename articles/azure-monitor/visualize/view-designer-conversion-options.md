@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor 视图设计器到工作簿转换选项
-description: 用于从视图转换到 Azure Monitor 中工作簿的转换选项。
+description: Azure Monitor 中用于从视图转换到工作簿的转换选项。
 author: austonli
 ms.author: aul
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b8b6b8b41c729c3cbb6cf4589d679e93149e5314
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043382"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Azure Monitor 视图设计器到工作簿转换选项

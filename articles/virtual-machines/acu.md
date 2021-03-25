@@ -3,22 +3,22 @@ title: Azure 计算单位概述
 description: Azure 计算单位的概念概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
 author: mimckitt
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: ba8c3f730897c01c52aaf4499269425426d0b7b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ae37771cd9e48f450ae538174b9bed9cfa866f9d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667174"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565523"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 
-Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在小型 (上进行了标准化 Standard_A1) VM 为100，而所有其他 Sku 表示 SKU 在运行标准基准测试时大约快得多
+Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在数量为 100 的小型 (Standard_A1) VM 上标准化，而所有其他 SKU 则表示该 SKU 在运行标准基准测试时大约会快多少
 
 *ACU 使用 Intel® Turbo 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
 
@@ -45,16 +45,16 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [DS1_v2 - DS15_v2](dv2-dsv2-series.md) |210 - 250* | 1:1 |
 | [D_v3](dv3-dsv3-series.md) |160 - 190* | 2:1\*\*\* |
 | [Ds_v3](dv3-dsv3-series.md) |160 - 190* | 2:1\*\*\* |
-| [Dav4](dav4-dasv4-series.md) |230-260 * * | 2:1 |
-| [Dasv4](dav4-dasv4-series.md) |230-260 * * | 2:1 |
+| [Dav4](dav4-dasv4-series.md) |230 - 260** | 2:1 |
+| [Dasv4](dav4-dasv4-series.md) |230 - 260** | 2:1 |
 | [Dv4](dv4-dsv4-series.md) | 195 - 210 | 2:1\*\*\* |
 | [Dsv4](dv4-dsv4-series.md) | 195 - 210 | 2:1\*\*\* |
-| [Ddv4](ddv4-ddsv4-series.md) | 195-210 * | 2:1\*\*\* |
+| [Ddv4](ddv4-ddsv4-series.md) | 195 -210* | 2:1\*\*\* |
 | [Ddsv4](ddv4-ddsv4-series.md) | 195 - 210* | 2:1\*\*\* |
 | [E_v3](ev3-esv3-series.md) |160 - 190* | 2:1\*\*\*|
 | [Es_v3](ev3-esv3-series.md) |160 - 190* | 2:1\*\*\* |
-| [Eav4](eav4-easv4-series.md) |230-260 * * | 2:1 |
-| [Easv4](eav4-easv4-series.md) | 230-260 * * | 2:1 |
+| [Eav4](eav4-easv4-series.md) |230 - 260** | 2:1 |
+| [Easv4](eav4-easv4-series.md) | 230 - 260** | 2:1 |
 | [Ev4](ev4-esv4-series.md) | 195 - 210 | 2:1\*\*\* |
 | [Esv4](ev4-esv4-series.md) | 195 - 210 | 2:1\*\*\* |
 | [Edv4](edv4-edsv4-series.md) | 195 - 210* | 2:1\*\*\* |
@@ -65,12 +65,12 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [G1 - G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1 - GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [H](h-series.md) |290 - 300* | 1:1 |
-| [HB-ACCT-WC](hb-series.md) |199-216 * * | 1:1 |
-| [HC](hc-series.md) |297-315 * | 1:1 |
+| [HB](hb-series.md) |199 - 216** | 1:1 |
+| [HC](hc-series.md) |297 - 315* | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 - 180 | 2:1\*\*\* |
-| [NVv4](nvv4-series.md) |230-260 * * | 2:1 |
+| [NVv4](nvv4-series.md) |230 - 260** | 2:1 |
 
 有关各种大小的详细信息，请访问以下链接：
 

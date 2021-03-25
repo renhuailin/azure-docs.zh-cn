@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397362"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序与 Azure 认知搜索的设计模式
@@ -26,15 +26,15 @@ ms.locfileid: "91397362"
 
 在讨论设计模式之前，应务必了解一些基本概念。
 
-使用 Azure 认知搜索时，即已订阅一种*搜索服务*。 当数据上传到 Azure 认知搜索后，将存储在搜索服务内的一个*索引*中。 单个服务中可能有大量索引。 若要利用熟悉的数据库概念，搜索服务可以比作一个数据库，而服务中的索引可以比作数据库中的表。
+使用 Azure 认知搜索时，即已订阅一种 *搜索服务*。 当数据上传到 Azure 认知搜索后，将存储在搜索服务内的一个 *索引* 中。 单个服务中可能有大量索引。 若要利用熟悉的数据库概念，搜索服务可以比作一个数据库，而服务中的索引可以比作数据库中的表。
 
-搜索服务中的每个索引具有自己的架构，由大量的可自定义*字段*定义。 数据以各*文档*的形式添加到 Azure 认知搜索索引中。 每个文档都必须上传到一个特定索引，并且必须适合该索引的架构。 使用 Azure 认知搜索进行数据搜索时，将针对某个特定索引发出全文搜索查询。  若要与数据库中的概念进行比较，字段可以比作表中的列，文档可以比作行。
+搜索服务中的每个索引具有自己的架构，由大量的可自定义 *字段* 定义。 数据以各 *文档* 的形式添加到 Azure 认知搜索索引中。 每个文档都必须上传到一个特定索引，并且必须适合该索引的架构。 使用 Azure 认知搜索进行数据搜索时，将针对某个特定索引发出全文搜索查询。  若要与数据库中的概念进行比较，字段可以比作表中的列，文档可以比作行。
 
 ### <a name="scalability"></a>可伸缩性
 标准[定价层](https://azure.microsoft.com/pricing/details/search/)中的任何 Azure 认知搜索服务都可以在两个维度中扩展：存储和可用性。
 
-* 可以添加*分区*以便增加搜索服务的存储。
-* 可以将*副本*添加到服务中，以便增加搜索服务可处理请求的吞吐量。
+* 可以添加 *分区* 以便增加搜索服务的存储。
+* 可以将 *副本* 添加到服务中，以便增加搜索服务可处理请求的吞吐量。
 
 添加和删除分区以及副本，可使搜索服务的容量随着应用程序需要的大量数据和流量一起增加。 为了使搜索服务实现读取 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)，需要两个副本。 为了使服务实现读写 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)，需要三个副本。
 
@@ -95,7 +95,7 @@ Azure 认知搜索允许各索引和索引总数的规模增加。 如果选择�
 
 ## <a name="2-service-per-tenant"></a>2.每租户服务
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="每租户索引模型描绘" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="每租户服务模型描绘" border="false":::
 
 在每租户服务体系结构中，每个租户都有自己的搜索服务。
 

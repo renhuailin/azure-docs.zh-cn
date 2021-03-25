@@ -15,10 +15,10 @@ ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42d38990289169412f06b0c7e4bcbdf67f688da7
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99539003"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>在 Privileged Identity Management 中发现要管理的 Azure 资源
@@ -34,7 +34,7 @@ ms.locfileid: "99539003"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择“Azure 资源” 。
 
@@ -66,7 +66,7 @@ ms.locfileid: "99539003"
 
     ![已选择资源并突出显示“管理资源”选项的“发现”窗格](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 如果看到确认加入要管理的所选资源的消息，请选择“是”。 然后，PIM 将配置为管理)  (资源下的所有新的和现有子对象。
+1. 如果看到确认加入要管理的所选资源的消息，请选择“是”。 然后将 PIM 配置为管理资源下的所有新的和现有的子对象。
 
     ![确认加入所选资源以进行管理的消息](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

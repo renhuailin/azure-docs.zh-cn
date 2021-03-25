@@ -1,23 +1,26 @@
 ---
-title: 快速入门-使用调用客户端库的 Azure 通信服务
+title: 快速入门 - 使用 Azure 通信服务呼叫客户端库
 titleSuffix: An Azure Communication Services quickstart
-description: 了解调用客户端库功能的通信服务。
+description: 了解通信服务呼叫客户端库功能。
 author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/18/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: e99af324e02e81e4b6888ee0e054ef466df899c1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661509"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103488072"
 ---
-# <a name="quickstart-use-the-communication-services-calling-client-library"></a>快速入门：使用通信服务调用客户端库
+# <a name="quickstart-use-the-communication-services-calling-client-library"></a>快速入门：使用通信服务呼叫客户端库
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 通过使用通信服务呼叫客户端库向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 

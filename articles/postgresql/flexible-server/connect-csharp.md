@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
 ms.openlocfilehash: fd6df64482c5eaeec79fe5f2c9a92aaae475dfdc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98605902"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>快速入门：使用 .NET (C#) 连接到 Azure Database for PostgreSQL 灵活服务器并查询其中的数据
@@ -24,7 +24,7 @@ ms.locfileid: "98605902"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)。
 - [使用 Azure 门户](./quickstart-create-server-portal.md)创建 Azure Database for PostgreSQL 灵活服务器 <br/> 或 [Azure CLI](./quickstart-create-server-cli.md) 创建 Azure Database for PostgreSQL 单一服务器（如果没有）。
-- 使用服务器上可用的空 *postgres* 数据库，或创建[新数据库](./quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)。
+- 使用服务器上可用的空 *postgres* 数据库，或创建 [新数据库](./quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)。
 - 安装适用于平台（Windows、Ubuntu Linux 或 macOS）的 [.NET Framework](https://www.microsoft.com/net/download)。
 - 安装 [Visual Studio](https://www.visualstudio.com/downloads/) 以生成项目。
 - 在 Visual Studio 中安装 [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet 包。

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 03/16/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: af8403f80f7282207ee1bc6b2f81da0d83d264e0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 1c673cae41fcbd3d54aa9b4062dd030ace9f0767
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180932"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577795"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
@@ -20,10 +20,10 @@ ms.locfileid: "102180932"
 
 ## <a name="before-you-begin"></a>开始之前
 
-Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用 *高级* 网络 (Azure CNI) 创建的 AKS 群集。 默认情况下，使用 *基本* 网络 (kubenet) 创建 AKS 群集。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
+Azure 容器实例 (ACI) 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级网络 (Azure CNI) 创建的 AKS 群集。 默认情况下，AKS 群集是使用基本网络 (kubenet) 创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
 > [!IMPORTANT]
-> 在将虚拟节点用于 AKS 之前，请查看 [AKS 虚拟节点的限制][virtual-nodes-aks] 和 [ACI 的虚拟网络限制][virtual-nodes-networking-aci]。 这些限制会影响 AKS 群集和虚拟节点的位置、网络配置和其他配置详细信息。
+> 在将虚拟节点用于 AKS 之前，请查看 [AKS 虚拟节点的限制][virtual-nodes-aks]和 [ACI 的虚拟网络限制][virtual-nodes-networking-aci]。 这些限制会影响 AKS 群集和虚拟节点的位置、网络配置和其他配置详细信息。
 
 如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 你可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
 
@@ -55,7 +55,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 *westus* 位置创建名为 *myResourceGroup* 的资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 westus 位置创建名为 myResourceGroup 的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -86,7 +86,7 @@ az network vnet subnet create \
 
 ## <a name="create-a-service-principal-or-use-a-managed-identity"></a>创建服务主体或使用托管标识
 
-若要允许 AKS 群集与其他 Azure 资源交互，请使用 Azure Active Directory 服务主体。 可以通过 Azure CLI 或门户自动创建此服务主体，也可以预先创建一个服务主体并分配其他权限。 或者，可以使用托管标识而不是服务主体来获得权限。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+为了允许 AKS 群集与其他 Azure 资源进行交互，将使用群集标识。 可以通过 Azure CLI 或门户自动创建此群集标识，也可以预先创建一个服务主体并分配其他权限。 默认情况下，此群集标识为托管标识。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 还可以使用服务主体作为群集标识。 以下步骤说明如何手动创建服务主体并将其分配给群集。
 
 使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体。 `--skip-assignment` 参数限制分配任何其他权限。
 
@@ -132,7 +132,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 将替换 `<subnetId>` 为上一步中获取的 ID，然后将替换为 `<appId>` `<password>` 在上一节中收集的值。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获得的 ID ，然后将 `<appId>` 和 `<password>` 替换为上一部分中收集的值。
 
 ```azurecli-interactive
 az aks create \
@@ -246,7 +246,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 若要测试虚拟节点上运行的 Pod，请使用 Web 客户端浏览到演示应用程序。 由于为该 Pod 分配了一个内部 IP 地址，因此，可以从 AKS 群集上的另一个 Pod 快速测试此连接。 创建一个测试 Pod，并在其上附加一个终端会话：
 
 ```console
-kubectl run -it --rm testvk --image=debian
+kubectl run -it --rm testvk --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 使用 `apt-get` 在 Pod 中安装 `curl`：
@@ -277,15 +277,15 @@ curl -L http://10.241.0.4
 
 如果不再想要使用虚拟节点，则可以使用 [az aks disable-addons][az aks disable-addons] 命令禁用它们。 
 
-如有必要，请 [https://shell.azure.com](https://shell.azure.com) 在浏览器中打开并打开 Azure Cloud Shell。
+如有必要，请转到 [https://shell.azure.com](https://shell.azure.com)，以在浏览器中打开 Azure Cloud Shell。
 
-首先，删除 `aci-helloworld` 虚拟节点上运行的 pod：
+首先，删除虚拟节点上运行的 `aci-helloworld` pod：
 
 ```console
 kubectl delete -f virtual-node.yaml
 ```
 
-下面的示例命令禁用 Linux 虚拟节点：
+以下示例命令禁用 Linux 虚拟节点：
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node

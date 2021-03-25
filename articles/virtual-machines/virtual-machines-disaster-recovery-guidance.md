@@ -8,10 +8,10 @@ ms.date: 05/31/2017
 ms.author: cynthn
 ms.reviewer: ''
 ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98701027"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服务中断影响了 Azure VM，该怎么办
@@ -37,7 +37,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 
 > [!NOTE]
-> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅 [灾难恢复的数据策略](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)部分。
+> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅[灾难恢复的数据策略](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)部分。
 >
 >
 

@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
 ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508225"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
@@ -48,7 +48,7 @@ ms.locfileid: "102508225"
 
 ## <a name="create-datastores"></a>创建数据存储
 
-可从[这些 Azure 存储解决方案](how-to-access-data.md#matrix)创建数据存储。 **对于不支持的存储解决方案**，为了在 ML 试验期间节省数据出口成本，你必须[将数据移到](how-to-access-data.md#move)支持的 Azure 存储解决方案。 [了解有关数据存储的详细信息](how-to-access-data.md)。 
+可从[这些 Azure 存储解决方案](how-to-access-data.md#matrix)创建数据存储。 **对于不支持的存储解决方案**，为了在 ML 试验期间节省数据出口成本，你必须 [将数据移到](how-to-access-data.md#move)支持的 Azure 存储解决方案。 [了解有关数据存储的详细信息](how-to-access-data.md)。 
 
 在 Azure 机器学习工作室中通过几个步骤创建新的数据存储。
 

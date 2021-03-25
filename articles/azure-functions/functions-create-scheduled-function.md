@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 中创建按计划运行的函数
-description: 了解如何使用 Azure 门户创建基于您定义的计划运行的函数。
+description: 了解如何使用 Azure 门户创建根据所定义的计划运行的函数。
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035183"
 ---
 # <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>在 Azure 门户中创建按计划运行的函数
 
-了解如何使用 Azure 门户创建一个函数，该函数根据你定义的计划在 Azure 上运行 [无服务器](https://azure.microsoft.com/solutions/serverless/) 。
+了解如何使用 Azure 门户创建根据所定义的计划在 Azure 上运行[无服务器](https://azure.microsoft.com/solutions/serverless/)的函数。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +73,7 @@ ms.locfileid: "98035183"
 
 1. 将“计划”值更新为 `0 0 */1 * * *`，然后选择“保存”。  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="Azure 门户中的更新函数计时器计划。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="更新 Azure 门户中的函数计时器计划。" border="true":::
 
 现在已获得一个每小时运行一次的函数。
 

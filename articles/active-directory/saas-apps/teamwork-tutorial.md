@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Teamwork.com 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Teamwork.com 的集成 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 与 Teamwork.com 之间的单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: f1b20adf444cc7fb8a7ed14288ef65e124484936
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521245"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 集成
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>教程：Azure Active Directory 与 Teamwork.com 的集成
 
 本教程介绍如何将 Teamwork.com 与 Azure Active Directory (Azure AD) 集成。
 将 Teamwork.com 与 Azure AD 集成具有以下优势：
@@ -41,7 +41,7 @@ ms.locfileid: "92521245"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-*  Teamwork.com 支持 SP 发起的 SSO
+* Teamwork.com 支持 SP 发起的 SSO
 
 ## <a name="adding-teamworkcom-from-the-gallery"></a>从库添加 Teamwork.com
 
@@ -61,13 +61,13 @@ ms.locfileid: "92521245"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Teamwork.com”，在结果面板中选择“Teamwork.com”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Teamwork.com”，在结果面板中选择“Teamwork.com”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Teamwork.com](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分将基于名为“Britta Simon”的测试用户配置和测试 Teamwork.com 的 Azure AD 单一登录  。
+本部分将基于名为“Britta Simon”的测试用户配置和测试 Teamwork.com 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Teamwork.com 相关用户之间建立链接关系。
 
 要配置和测试 Teamwork.com 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92521245"
 
 要配置 Teamwork.com 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户中的 Teamwork.com 应用程序集成页上，选择 [单一登录](https://portal.azure.com/)   。
+1. 在 Azure 门户中的 Teamwork.com 应用程序集成页上，选择 [单一登录](https://portal.azure.com/)。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92521245"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Teamwork.com 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.teamwork.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.teamwork.com` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL： 
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：
 
     - `https://teamwork.com/saml`
     - `https://eu.teamwork.com/saml`
@@ -115,7 +115,7 @@ ms.locfileid: "92521245"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Teamwork.com”部分，根据要求复制相应 URL  。
+6. 在“设置 Teamwork.com”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "92521245"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -151,17 +151,17 @@ ms.locfileid: "92521245"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Teamwork.com 的权限，支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Teamwork.com”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Teamwork.com”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Teamwork.com”  。
+2. 在应用程序列表中，选择“Teamwork.com”。
 
     ![应用程序列表中的 Teamwork.com 链接](common/all-applications.png)
 

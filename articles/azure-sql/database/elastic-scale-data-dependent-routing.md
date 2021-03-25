@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 60e8b4b21a9e62279cd0eccfabbbed680183e2a9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92787017"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库
@@ -23,7 +23,7 @@ ms.locfileid: "92787017"
 
 **数据依赖型路由** 是使用查询中的数据将请求路由到相应数据库的功能。 在使用分片数据库时，数据依赖型路由是一种基础模式。 请求上下文也可用于路由请求，尤其是当分片键不是查询的一部分时。 将应用程序中使用数据依赖型路由的每个特定查询和事务限制为针对每个请求访问一个数据库。 对于 Azure SQL 数据库弹性工具，这种路由是通过 ShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）类实现的。
 
-应用程序无需在分片环境中跟踪与不同的数据片相关联的各种连接字符串或数据库位置。 相反， [分片映射管理器](elastic-scale-shard-map-management.md) 在需要时基于分片映射中的数据以及作为应用程序请求目标的分片键的值，打开到正确的数据库的连接。 该键通常为 customer_id、tenant_id、date_key 或一些作为数据库请求的基础参数的其他特定标识符。
+应用程序无需在分片环境中跟踪与不同的数据片相关联的各种连接字符串或数据库位置。 但是，[分片映射管理器](elastic-scale-shard-map-management.md)在需要时基于分片映射中的数据以及作为应用程序请求目标的分片键值，将开放连接分发给正确的数据库。 该键通常为 customer_id、tenant_id、date_key 或一些作为数据库请求的基础参数的其他特定标识符。
 
 有关详细信息，请参阅[使用数据依赖型路由横向扩展 SQL Server](/previous-versions/sql/sql-server-2005/administrator/cc966448(v=technet.10))。
 
@@ -36,7 +36,7 @@ ms.locfileid: "92787017"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>在数据依赖型路由应用程序中使用 ShardMapManager
 
-应用程序应使用工厂调用 GetSQLShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）在初始化期间实例化 ShardMapManager 。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap** 。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](/previous-versions/azure/dn824173(v=azure.100))）方法。
+应用程序应使用工厂调用 GetSQLShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)）在初始化期间实例化 ShardMapManager 。 在本示例中，将同时初始化 **ShardMapManager** 以及它所包含的特定 **ShardMap**。 本例演示 GetSqlShardMapManager 和 GetRangeShardMap（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](/previous-versions/azure/dn824173(v=azure.100))）方法。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
 ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100385262"
 ---
 #  <a name="session-log-in-copy-activity"></a>复制活动中的会话日志
@@ -98,7 +98,7 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 ```
 
 > [!NOTE]
-> 当 `enableCopyActivityLog` 属性设置为时 `Enabled` ，将生成日志文件名。
+> 当 `enableCopyActivityLog` 属性设置为 `Enabled` 时，将生成日志文件名。
 
 ### <a name="the-schema-of-the-log-file"></a>日志文件的架构
 
@@ -108,7 +108,7 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 -------- | -----------  
 时间戳 | ADF 读取、写入或跳过对象时的时间戳。
 Level | 此项的日志级别。 它可以是“Warning”或“Info”。
-OperationName | 每个对象上的 ADF 复制活动操作行为。 它可以是 ' FileRead '、' FileWrite '、' FileSkip ' 或 ' TabularRowSkip '。
+OperationName | 每个对象上的 ADF 复制活动操作行为。 它可以是“FileRead”、“FileWrite”、“FileSkip”或“TabularRowSkip”。
 OperationItem | 文件名或跳过的行。
 消息 | 已从源存储中读取文件或已将文件写入到目标存储时会显示的更多信息。 它也可能是文件或行被跳过的原因。
 

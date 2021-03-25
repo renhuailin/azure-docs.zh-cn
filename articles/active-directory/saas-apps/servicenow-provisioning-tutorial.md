@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: b3b62e7c16106fd9d94d4a3438331dab4ce8b6e8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99539020"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
@@ -145,7 +145,7 @@ ms.locfileid: "99539020"
 * 在 ServiceNow 中预配某些属性（如 Department 和 Location）时，这些值必须已存在于 ServiceNow 的引用表中 。 否则，你将收到 InvalidLookupReference 错误。 
 
    例如，在 ServiceNow 的某一表中，可能有两个地点（西雅图、洛杉矶）和三个部门（销售、财务、市场）。 如果尝试预配部门为“销售”以及地点为“西雅图”的用户，则该用户将预配成功。 如果尝试预配部门为“销售”以及地点为“洛杉矶”的用户，则该用户将预配失败。 必须将位置“洛杉矶”添加到 ServiceNow 的引用表中，或者必须更新 Azure AD 中的用户属性才能匹配 ServiceNow 中的格式。 
-* 如果收到 **EntryJoiningPropertyValueIsMissing** 错误，请查看[属性映射](../app-provisioning/customize-application-attributes.md)，以标识匹配的属性。 该值必须存在于要预配的用户或组上。 
+* 如果收到 **EntryJoiningPropertyValueIsMissing** 错误，请查看 [属性映射](../app-provisioning/customize-application-attributes.md)，以标识匹配的属性。 该值必须存在于要预配的用户或组上。 
 * 查看 [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 以了解任何要求或限制（例如，为用户指定国家/地区代码的格式）。
 * 默认情况下，预配请求将发送到 https://{你的实例名称}.service-now.com/{表名称}。 如果需要一个自定义租户 URL，可以提供整个 URL 作为实例名称。
 * ServiceNowInstanceInvalid 错误表示与 ServiceNow 实例通信时出现问题。 以下是错误的文本：

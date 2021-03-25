@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6013d14d7639bf4f7fe318c9a2da96e4d8acbcb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546278"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>为 Azure Active Directory 中的组命名策略
@@ -34,20 +34,20 @@ ms.locfileid: "96546278"
 ## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>在 Azure 门户中配置组命名策略
 
 1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。
+1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。  
 
     ![在管理中心打开“命名策略”页](./media/groups-quickstart-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>查看或编辑前后缀命名策略
 
-1. 在“命名策略”页上，选择“组命名策略”。
+1. 在“命名策略”页上，选择“组命名策略”。  
 1. 可以单独查看或编辑当前的前缀或后缀命名策略，只需选择需要在命名策略中强制实施的属性或字符串即可。
 1. 若要从列表中删除某个前缀或后缀，请选择该前缀或后缀，然后选择“删除”。 可以同时删除多个项。
 1. 选择“保存”，以便对策略所做的更改生效。
 
 ### <a name="view-or-edit-the-custom-blocked-words"></a>查看或编辑自定义阻止字词
 
-1. 在“命名策略”页上，选择“阻止字词”。
+1. 在“命名策略”页上，选择“阻止字词”。  
 
     ![编辑并上传命名策略的阻止字词列表](./media/groups-quickstart-naming-policy/blockedwords.png)
 

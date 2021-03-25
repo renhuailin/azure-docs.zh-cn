@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: jeedes
 ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Starmind 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "92521979"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Starmind。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -77,7 +77,7 @@ ms.locfileid: "92521979"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com`。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com`。
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`
 
@@ -89,7 +89,7 @@ ms.locfileid: "92521979"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“登录 URL”、“标识符”、“回复 URL”和“注销 URL”值更新这些值。 请联系 [Starmind 客户端支持团队](mailto:support@starmind.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
