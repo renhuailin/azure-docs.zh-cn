@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: abe4bb3a53e3177857cb8041fd255ec916985054
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93089859"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Azure Cosmos DB 中的数据加密 
@@ -19,7 +19,7 @@ ms.locfileid: "93089859"
 
 “静态加密”这个短语通常指非易失性存储设备（例如固态硬盘 (SSD) 和机械硬盘 (HDD)）上的数据的加密。 Cosmos DB 将其主数据库存储在 SSD 上。 其媒体附件和备份存储在通常由 HDD 备份的 Azure Blob 存储中。 随着 Cosmos DB 的静态加密功能的发布，所有数据库、媒体附件以及备份都是加密的。 现在数据在传输中（通过网络）以及在静态时（非易失性存储）都处于加密状态，从而实现端到端加密。
 
-Azure Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Azure Cosmos DB 中的所有用户数据无论是在传输过程中，还是处于静态时都处于加密状态，因此无需采取任何措施。 实现这一理念的另一方式是默认“开启”静态加密。 没有任何控件可以关闭或打开它。 Azure Cosmos DB 在运行帐户的所有区域中使用 AES-256 加密。 我们在提供此功能的同时也会遵守[可用性和性能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。 存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务托管密钥）进行无缝加密。 或者，可以选择使用自己的密钥来添加另一层加密，如[客户托管的密钥](how-to-setup-cmk.md)一文中所述。
+Azure Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Azure Cosmos DB 中的所有用户数据无论是在传输过程中，还是处于静态时都处于加密状态，因此无需采取任何措施。 实现这一理念的另一方式是默认“开启”静态加密。 没有任何控件可以关闭或打开它。 Azure Cosmos DB 在运行帐户的所有区域中使用 AES-256 加密。 在提供此功能的同时，我们继续满足[可用性和性能 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)。 存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务托管密钥）进行无缝加密。 或者，可以选择使用自己的密钥来添加另一层加密，如[客户托管的密钥](how-to-setup-cmk.md)一文中所述。
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>实现针对 Azure Cosmos DB 的静态加密
 
@@ -44,7 +44,7 @@ Azure Cosmos DB 属于 PaaS 服务，非常便于使用。 存储在 Azure Cosmo
 A:密钥由 Microsoft 管理。
 
 ### <a name="q-how-often-are-encryption-keys-rotated"></a>问：加密密钥多久轮换一次？
-A:Microsoft 有一套关于加密密钥轮换的内部指导，Cosmos DB 按该指导执行。 未发布具体的指导原则。 Microsoft 会对外公布[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，其被视为内部指导的一部分，可为开发人员提供有用的最佳实践。
+A:Microsoft 有一套关于加密密钥轮换的内部指导，Cosmos DB 按该指导执行。 具体指导方针不对外公布。 Microsoft 会对外公布[安全开发生命周期 (SDL)](https://www.microsoft.com/sdl/default.aspx)，其被视为内部指导的一部分，可为开发人员提供有用的最佳实践。
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>问：我可以使用自己的加密密钥吗？
 答：是的，此功能现可用于新的 Azure Cosmos DB 帐户，这应在创建帐户时完成。 有关详细信息，请参阅[客户托管的密钥](./how-to-setup-cmk.md)文档。
@@ -61,5 +61,5 @@ A:Microsoft 有一套关于加密密钥轮换的内部指导，Cosmos DB 按该�
 ## <a name="next-steps"></a>后续步骤
 
 * 可以选择使用自己的密钥来添加另一层加密，若要了解详细信息，请参阅[客户托管的密钥](how-to-setup-cmk.md)一文。
-* 有关 Cosmos DB 安全性和最新改进的概述，请参阅 [Azure Cosmos 数据库安全性](database-security.md)。
+* 有关 Cosmos DB 安全性的概述以及最新改进，请参阅 [Azure Cosmos 数据库安全性](database-security.md)。
 * 有关 Microsoft 认证的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

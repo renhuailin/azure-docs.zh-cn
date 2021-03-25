@@ -10,10 +10,10 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 0afe349473bcddcbf1ac35136f2991ffe82670c6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576067"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>与 Azure Monitor 日志集成
@@ -131,10 +131,10 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建以下两种类别的�
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| properties | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
-| OperationName |`DscNodeStatusData` 列中的一个值匹配。 |
+| OperationName |`DscNodeStatusData`. |
 | ResultType |指示节点是否符合要求的值。 |
 | NodeName_s |托管节点的名称。 |
 | NodeComplianceStatus_s |指定节点是否符合要求的状态值。 |
@@ -142,7 +142,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建以下两种类别的�
 | ConfigurationMode | 用于将配置应用到节点的模式。 可能的值包括： <ul><li>`ApplyOnly`：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 在 `ApplyOnly` 值生效之前，DSC 将尝试应用配置，直至成功。 </li><li>`ApplyAndMonitor`：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 在 `ApplyAndMonitor` 值生效之前，DSC 将尝试应用配置，直至成功。</li><li>`ApplyAndAutoCorrect`：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
 | HostName_s | 托管节点的名称。 |
 | IPAddress | 托管节点的 IPv4 地址。 |
-| 类别 | `DscNodeStatus` 列中的一个值匹配。 |
+| 类别 | `DscNodeStatus`. |
 | 资源 | Azure 自动化帐户的名称。 |
 | Tenant_g | 用于为调用方标识租户的 GUID。 |
 | NodeId_g | 标识托管节点的 GUID。 |
@@ -162,10 +162,10 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建以下两种类别的�
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| properties | 说明 |
+| 属性 | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
-| OperationName |`DscResourceStatusData` 列中的一个值匹配。|
+| OperationName |`DscResourceStatusData`.|
 | ResultType |资源是否符合。 |
 | NodeName_s |托管节点的名称。 |
 | 类别 | DscNodeStatus。 |

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: cb030456eb3b9e3c81fadd8451b5b0526920ba33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728563"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>在 Azure Monitor 中设定监视解决方案的目标（预览版）
@@ -21,13 +21,13 @@ ms.locfileid: "101728563"
 可通过三个步骤为解决方案设定目标，如以下各节中所述。 
 
 
-### <a name="1-create-a-computer-group"></a>1. 创建计算机组
+### <a name="1-create-a-computer-group"></a>1.创建计算机组
 通过在 Azure Monitor 中创建[计算机组](../logs/computer-groups.md)指定要在范围中包括的计算机。  计算机组可以基于日志查询，也可以从其他来源（例如 Active Directory 或 WSUS 组）导入。 如[下文所述](#solutions-and-agents-that-cant-be-targeted)，只有直接连接到 Azure Monitor 的计算机才会包括在范围中。
 
 在工作区中创建计算机组后，将该组包括在范围配置中，然后可以将范围配置应用于一个或多个解决方案。
  
  
-### <a name="2-create-a-scope-configuration"></a>2. 创建作用域配置
+### <a name="2-create-a-scope-configuration"></a>2.创建范围配置
  **范围配置** 包括一个或多个计算机组并且可以应用于一个或多个解决方案。 
  
  使用以下过程创建范围配置。  
@@ -41,7 +41,7 @@ ms.locfileid: "101728563"
  6. 单击“确定”以创建范围配置。 
 
 
-### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. 将范围配置应用于解决方案。
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3.将范围配置应用于解决方案。
 创建范围配置后，可以将其应用于一个或多个解决方案。  请注意，虽然单个范围配置可以用于多个解决方案，但每个解决方案只能使用一个范围配置。
 
 使用以下过程应用范围配置。  

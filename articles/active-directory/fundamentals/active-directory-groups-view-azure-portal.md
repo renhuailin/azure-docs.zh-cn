@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996722"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -88,7 +88,7 @@ ms.locfileid: "95996722"
     ![“组 - 所有组”页，其中显示了所有现有的组](media/active-directory-groups-view-azure-portal/groups-all-groups-blade-with-all-groups.png)
 
 ## <a name="search-for-the-group"></a>搜索组
-搜索“组 – 所有组”页，找到“MDM 策略 - 西部”组。  
+搜索“组 – 所有组”页，找到“MDM 策略 - 西部”组。 
 
 1. 在“组 - 所有组”页上的“搜索”框中键入 _MDM_。  
 
@@ -96,7 +96,7 @@ ms.locfileid: "95996722"
 
     ![已填写搜索框的“组 – 所有组”页](media/active-directory-groups-view-azure-portal/search-for-specific-group.png)
 
-3. 选择“MDM 策略 - 西部”组。 
+3. 选择“MDM 策略 - 西部”组。
 
 4. 在“MDM 策略 - 西部概述”页上查看组信息，包括该组的成员数目。 
 

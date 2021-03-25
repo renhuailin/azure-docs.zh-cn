@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97007579"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>使用 Azure 专用链接的 Azure Cache for Redis（公共预览版）
@@ -43,7 +43,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 4. 在“创建虚拟网络”  的“基本信息”选项卡中输入或选择以下信息  ：
 
-   | 设置      | 建议的值  | 描述 |
+   | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此虚拟网络的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建虚拟网络和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
@@ -112,7 +112,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 > [!IMPORTANT]
 > 
 > 有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 
-> 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以将值设置为 `Disabled` 或 `Enabled` ，并在下面提供修补程序请求。 编辑值，以反映要缓存的标志。
+> 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以使用以下 PATCH 请求将值设置为 `Disabled` 或 `Enabled`。 编辑该值以反映你希望为缓存设置的标志。
 > ```http
 > PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
 > {    "properties": {
@@ -142,7 +142,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 4. 在“创建虚拟网络”  的“基本信息”选项卡中输入或选择以下信息  ：
 
-   | 设置      | 建议的值  | 描述 |
+   | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此虚拟网络的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建虚拟网络和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
@@ -181,7 +181,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 5. 在“创建专用终结点”页面上，配置专用终结点的设置。
 
-   | 设置      | 建议的值  | 描述 |
+   | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此专用终结点的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建专用终结点和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
@@ -212,8 +212,8 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>专用终结点不支持哪些功能？
 异地复制、防火墙规则、门户控制台支持、每个群集缓存多个终结点、防火墙规则的持久性和区域冗余。 
 
-### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>如何从公共网络访问中禁用或启用要禁用或启用的专用终结点？
-有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以将值设置为 `Disabled` 或 `Enabled` ，并在下面提供修补程序请求。 编辑值，以反映要缓存的标志。
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>如何将专用终结点更改为禁用或启用公用网络访问？
+有一个 `publicNetworkAccess` 标志，默认情况下为 `Disabled`。 如果缓存设置为 `Enabled`，此标志旨在允许你选择性地同时允许公共和专用终结点访问缓存。 如果设置为 `Disabled`，它将只允许专用终结点访问。 你可以使用以下 PATCH 请求将值设置为 `Disabled` 或 `Enabled`。 编辑该值以反映你希望为缓存设置的标志。
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -224,12 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>是否对专用终结点启用了网络安全组 (NSG)？
-否，已对专用终结点禁用了 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](../private-link/disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR。 
+否，已对专用终结点禁用了 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](../private-link/disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR。 
 
 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息
 
 ### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>能否对专用终结点使用防火墙规则？
-不是，这是专用终结点的当前限制。 如果在缓存上配置了防火墙规则，则专用终结点将无法正常工作。
+不能，这是专用终结点当前的一项限制。 如果在缓存上配置了防火墙规则，则专用终结点将无法正常工作。
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>如何连接到群集缓存？
 需要将 `publicNetworkAccess` 设置为 `Disabled`，并且只能有一个专用终结点连接。

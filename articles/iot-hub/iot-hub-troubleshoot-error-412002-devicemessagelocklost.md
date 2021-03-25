@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7d48474d88a60c73f6094d3b9e65017c23404d8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.openlocfilehash: 53364009f9b9c041c39728e438c3e24eacfd1665
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144258"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435471"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
 
@@ -25,8 +25,8 @@ ms.locfileid: "92144258"
 
 ## <a name="cause"></a>原因
 
-当设备通过某种方式（例如，使用 [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)）从队列接收云到设备的消息时，IoT 中心会将该消息锁定，锁定超时持续时间为一分钟。 如果在锁定超时过期后设备尝试完成消息，则 IoT 中心会引发此异常。
+当设备通过某种方式（例如，使用 [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync) ）从队列接收云到设备的消息时，IoT 中心会将该消息锁定，锁定超时持续时间为一分钟。 如果在锁定超时过期后设备尝试完成消息，则 IoT 中心会引发此异常。
 
 ## <a name="solution"></a>解决方案
 
-如果 IoT 中心在一分钟的锁定超时期限内没有收到通知，则会将该消息设置回“已排队”  状态。 设备可以再次尝试接收消息。 若要防止将来发生错误，请在接收消息的一分钟内实现设备端逻辑来完成该消息。 无法更改这个一分钟的超时时间。
+如果 IoT 中心在一分钟的锁定超时期限内没有收到通知，则会将该消息设置回“已排队”状态。 设备可以再次尝试接收消息。 若要防止将来发生错误，请在接收消息的一分钟内实现设备端逻辑来完成该消息。 无法更改这个一分钟的超时时间。

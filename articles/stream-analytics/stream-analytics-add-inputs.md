@@ -2,16 +2,16 @@
 title: 理解 Azure 流分析的输入
 description: 本文介绍了有关 Azure 流分析作业中的输入的概念，将流式处理输入与引用数据输入进行了比较。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 442c5a1174c4a91ea9401315bb3e518e4fe6cc4e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 1e5bf3e884e5f2c1a57cee08cbf3c22379dab080
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183907"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102436033"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入
 
@@ -25,7 +25,7 @@ Azure 流分析作业连接到一个或多个数据输入。 每个输入定义�
 
 这些输入资源与流分析作业可以属于同一 Azure 订阅，也可以属于不同的订阅。
 
-可以使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-input)、  [AZURE POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、 [.Net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、 [REST API](/rest/api/streamanalytics/2016-03-01/inputs)和 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 来创建、编辑和测试流分析作业输入。
+可以使用 [Azure 门户](stream-analytics-quick-create-portal.md#configure-job-input)、[Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、[REST API](/rest/api/streamanalytics/2016-03-01/inputs) 和 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 来创建、编辑和测试流分析作业输入。
 
 ## <a name="stream-and-reference-inputs"></a>流输入和引用输入
 将数据推送到数据源后，流分析作业就可使用该数据并对其进行实时处理。 输入分为两种类型：数据流输入和引用数据输入。

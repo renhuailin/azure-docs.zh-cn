@@ -1,5 +1,5 @@
 ---
-title: 排查活动日志中缺少的数据问题 |Microsoft Docs
+title: 排查活动日志中缺少数据的问题 | Microsoft Docs
 description: 为你提供了一种解决方法，解决在 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93123058"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>故障排除：Azure Active Directory 活动日志中缺少数据 
@@ -32,7 +32,7 @@ ms.locfileid: "93123058"
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
- ![屏幕截图显示审核日志条目。](./media/troubleshoot-missing-audit-data/01.png)
+ ![屏幕截图显示了“审核日志”条目。](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>原因
 
@@ -53,7 +53,7 @@ ms.locfileid: "93123058"
 
 我最近登录了 Azure 门户，本应在`Activity logs > Sign-ins`边栏选项卡中看到这些操作的登录日志，但却找不到。
 
- ![屏幕截图显示活动日志中的登录。](./media/troubleshoot-missing-audit-data/02.png)
+ ![屏幕截图显示了“活动日志”中的“登录”。](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>原因
 
@@ -62,7 +62,7 @@ ms.locfileid: "93123058"
 | 报表 | 延迟 (P95) | 延迟 (P99) |
 |--------|---------------|---------------|
 | 目录审核 | 2 分钟 | 5 分钟 |
-| 登录活动2分钟 | 5 分钟 |
+| 登录活动  2 分钟 | 5 分钟 |
 
 ### <a name="resolution"></a>解决方法
 
@@ -74,7 +74,7 @@ ms.locfileid: "93123058"
 
 无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
- ![屏幕截图显示 "日期" 菜单。](./media/troubleshoot-missing-audit-data/03.png)
+ ![屏幕截图显示了“日期”菜单。](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>原因
 
@@ -94,6 +94,6 @@ ms.locfileid: "93123058"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure AD 报告保留期](reference-reports-data-retention.md)。
-* [Azure Active Directory 报告滞后](reference-reports-latencies.md)时间。
-* [Azure Active Directory 报表常见问题](reports-faq.md)。
+* [Azure Active Directory 报告延迟](reference-reports-latencies.md)。
+* [Azure Active Directory 报告常见问题解答](reports-faq.md)。
 

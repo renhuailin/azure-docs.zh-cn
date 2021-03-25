@@ -10,10 +10,10 @@ ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572963"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
@@ -40,23 +40,23 @@ ms.locfileid: "98572963"
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 此时会显示“新建”窗口。
 
-2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”   。
+2. 选择“网络”，然后在“特色”列表中选择“应用程序网关” 。
 
 ### <a name="basics-tab"></a>“基本信息”选项卡
 
-1. 在“基本信息”选项卡上，输入这些值作为以下应用程序网关设置  ：
+1. 在“基本信息”选项卡上，输入这些值作为以下应用程序网关设置：
 
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
 
-     ![新建应用程序网关：基础知识](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     ![新建应用程序网关：基础](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2. Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，或者使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在独立的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
     > [!NOTE]
     > 应用程序网关子网中当前不支持[虚拟网络服务终结点策略](../virtual-network/virtual-network-service-endpoint-policies-overview.md)。
 
-    在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网：
+    在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
     - **名称**：输入 *myVNet* 作为虚拟网络的名称。
 
@@ -66,15 +66,15 @@ ms.locfileid: "98572963"
 
     - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24  。
 
-    选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置 。
+    选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
      ![新建应用程序网关：虚拟网络](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. 在“基本信息”选项卡上，接受其他设置的默认值，然后选择“下一步:前端”。
+3. 在“基本信息”  选项卡上，接受其他设置的默认值，然后选择“下一步:  前端”。
 
 ### <a name="frontends-tab"></a>“前端”选项卡
 
-1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”    。 <br>可根据用例将前端 IP 配置为公共或专用 IP。 本示例将选择公共前端 IP。
+1. 在“前端”选项卡上，验证“IP 地址类型”是否设置为“公共”  。 <br>可根据用例将前端 IP 配置为公共或专用 IP。 本示例将选择公共前端 IP。
    > [!NOTE]
    > 对于应用程序网关 v2 SKU，必须有一个 **公共** 前端 IP 配置。 你仍可以同时有公共和专用前端 IP 配置，但目前没有为 v2 SKU 启用仅专用前端 IP 配置（仅限 ILB 模式）。 
 
@@ -92,8 +92,8 @@ ms.locfileid: "98572963"
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **名称**：输入“myBackendPool”作为后端池的名称  。
-    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池。 你将在创建应用程序网关之后添加后端目标。
+    - **名称**：输入“myBackendPool”作为后端池的名称。
+    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡  。
 
@@ -103,15 +103,15 @@ ms.locfileid: "98572963"
 
 ### <a name="configuration-tab"></a>配置选项卡
 
-在“配置”选项卡上，将连接使用传递规则创建的前端和后端池  。
+在“配置”选项卡上，将连接使用传递规则创建的前端和后端池。
 
 1. 选择“传递规则”列中的“添加传递规则” 。
 
-2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称    。
+2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
 
-3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值   ：
+3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值 ：
 
-    - **侦听器名称**：输入“myListener”作为侦听器名称  。
+    - **侦听器名称**：输入“myListener”作为侦听器名称。
     - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP。
   
       接受“侦听器”选项卡上其他设置的默认值，然后选择“后端目标”选项卡以配置剩余的传递规则 。
@@ -124,7 +124,7 @@ ms.locfileid: "98572963"
 
      ![新建应用程序网关：HTTP 设置](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
-6. 在“添加传递规则”窗口上，选择“添加”以保存传递规则并返回到“配置”选项卡  。
+6. 在“添加传递规则”窗口上，选择“添加”以保存传递规则并返回到“配置”选项卡    。
 
      ![新建应用程序网关：传递规则](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "98572963"
 为此，将要：
 
 1. 创建两个新的 VM（myVM 和 myVM2），用作后端服务器 。
-2. 在虚拟机上安装 IIS，以验证是否成功创建了应用程序网关。
+2. 可以在虚拟机上安装 IIS，以验证是否已成功创建了应用程序网关。
 3. 将后端服务器添加到后端池。
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机

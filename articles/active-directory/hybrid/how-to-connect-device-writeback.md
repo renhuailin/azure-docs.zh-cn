@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95973416"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
@@ -31,10 +31,10 @@ ms.locfileid: "95973416"
 
 以下文档提供有关如何在 Azure AD Connect 中启用设备写回功能的信息。 设备写回用于以下方案：
 
-* 启用 [使用混合证书信任部署的 Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
-*  (2012 R2 或更高) 版本的受保护应用程序 (信赖方信任) ，启用基于设备的条件访问。
+* 使用混合证书信任部署启用 [Windows Hello 企业版](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* 对于受 ADFS（2012 R2 或更高版本）保护的应用程序（信赖方信任），启用基于设备的条件访问。
 
-这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件性访问的详细信息，请参阅使用 [条件性访问管理风险](../conditional-access/overview.md) 和 [使用 Azure Active Directory 设备注册设置本地条件性访问](../devices/overview.md)。
+这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。 有关条件访问的详细信息，请参阅[使用条件访问管理风险](../conditional-access/overview.md)和[使用 Azure Active Directory Device Registration 设置本地的条件访问](../devices/overview.md)。
 
 > [!IMPORTANT]
 > <li>设备必须位于用户所在的同一个林中。 由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。</li>
@@ -61,7 +61,7 @@ ms.locfileid: "95973416"
 
     a. **提供企业管理员凭据**：如果为需要设备写回的林提供企业管理员凭据，Azure AD Connect 将在配置设备写回期间自动准备林。
 
-    b. **下载 PowerShell 脚本**：Azure AD Connect 会自动生成 PowerShell 脚本，该脚本可以为设备写回准备 Active Directory。 如果无法在 Azure AD Connect 中提供企业管理员凭据，则建议下载 PowerShell 脚本。 提供下载的 PowerShell 脚本 **CreateDeviceContainer.ps1** 到林的企业管理员，将设备写回到该林。
+    b. **下载 PowerShell 脚本**：Azure AD Connect 会自动生成 PowerShell 脚本，该脚本可以为设备写回准备 Active Directory。 如果无法在 Azure AD Connect 中提供企业管理员凭据，则建议下载 PowerShell 脚本。 将下载的 PowerShell 脚本 CreateDeviceContainer.ps1 提供给设备将写回到的林的企业管理员。
     ![准备 Active Directory 林](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     执行以下操作来准备 Active Directory 林：
@@ -82,7 +82,7 @@ ms.locfileid: "95973416"
 
    ![Active Directory 管理中心 - 已注册的设备列表](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
-## <a name="enable-conditional-access"></a>启用条件性访问
+## <a name="enable-conditional-access"></a>启用条件访问
 [使用 Azure Active Directory Device Registration 设置本地条件性访问](../devices/overview.md)中提供了有关启用此方案的详细说明。
 
 ## <a name="troubleshooting"></a>疑难解答

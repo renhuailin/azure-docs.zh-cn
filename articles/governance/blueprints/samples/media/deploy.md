@@ -4,10 +4,10 @@ description: 媒体蓝图示例的部署步骤，包括蓝图项目参数详细�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 13d50c2a791a72c58d8ebef7a46c592efd0cb9a8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100577303"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>部署媒体蓝图示例

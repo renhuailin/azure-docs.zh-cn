@@ -8,10 +8,10 @@ ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
 ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600528"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 服务器响应标头
@@ -36,7 +36,7 @@ ms.locfileid: "98600528"
 
 ## <a name="status-codes"></a>状态代码
 
-`x-ms-status-code`下面列出了服务器为状态属性返回的最常见代码。
+下面列出了服务器为 `x-ms-status-code` 状态属性返回的最常见代码。
 
 | 状态 | 说明 |
 | --- | --- |
@@ -52,7 +52,7 @@ ms.locfileid: "98600528"
 | **1004** | 此状态代码表示图形请求格式不正确。 如果请求反序列化失败、将非值类型反序列化为值类型，或请求了不受支持的 Gremlin 操作，则请求的格式可能不正确。 应用程序不应重试该请求，因为该请求不会成功。 | 
 | **1007** | 通常，此状态代码会连同错误消息 `"Could not process request. Underlying connection has been closed."` 一起返回。 如果客户端驱动程序尝试使用服务器正在关闭的连接，则可能会发生这种情况。 应用程序应在不同的连接上重试遍历。
 | **1008** | Cosmos DB Gremlin 服务器可以终止连接以重新平衡群集中的流量。 客户端驱动程序应处理这种情况，并仅使用活动的连接将请求发送到服务器。 客户端驱动程序偶尔检测不到该连接已关闭。 当应用程序遇到错误 `"Connection is too busy. Please retry after sometime or open more connections."` 时，应在另一个连接上重试遍历。
-| **1009** | 此操作未在分配的时间内完成，并已由服务器取消。 通过在每个遍历点上筛选顶点或边缘来缩小搜索范围，优化遍历以快速运行。 请求超时默认值为 **60 秒**。 |
+| **1009** | 此操作未在分配的时间内完成，并已由服务器取消。 通过以下方式优化遍历，使之快速运行：在每个遍历跃点上筛选顶点或边，以缩小搜索范围。 请求超时默认值为 60 秒。 |
 
 ## <a name="samples"></a>示例
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567795"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for MySQL 服务器
@@ -43,7 +43,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
    订阅 | 订阅 | 选择所需的 Azure 订阅。
    资源组 |  myresourcegroup | 输入新资源组，或订阅中的现有资源组。
    服务器名称 | **mydemoserver** | 输入唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 必须包含 3 到 63 个字符。
-   数据源 |无  | 选择“无”，从头开始创建新的服务器  。 仅当从现有服务器的异地备份进行还原时，才选择“备份”。
+   数据源 |**无** | 选择“无”，从头开始创建新的服务器  。 仅当从现有服务器的异地备份进行还原时，才选择“备份”。
    位置 |你所需的位置 | 从列表中选择一个位置。
    版本 | 最新主版本| 使用最新主版本。 请参阅[所有受支持的版本](concepts-supported-versions.md)。
    计算 + 存储 | 使用默认值| 默认定价层是“常规用途”，其中包含 4 个 vCore 和 100 GB 存储  。 备份保留期设置为 7 天，并提供“异地冗余”备份选项 。<br/>查看[定价](https://azure.microsoft.com/pricing/details/mysql/)页，根据需要更新默认值。

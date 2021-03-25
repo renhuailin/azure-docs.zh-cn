@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875730"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439453"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -54,18 +54,26 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 在存储资源管理器中，可以通过收集连接到 Azure 资源所需的信息，来轻松访问资源。 例如，若要显示 Blob 容器，存储资源管理器会向 Blob 服务终结点发送“列出容器”请求。 若要获取该终结点，存储资源管理器会搜索你有权访问的订阅和存储帐户列表。 若要查找订阅和存储帐户，存储资源管理器还需要有权访问管理层。
 
-如果没有授予任何管理层权限的角色，存储资源管理器无法获取连接到数据层所需的信息。
+如果你没有一个可以授予任何管理层权限的角色，则存储资源管理器无法获取连接到数据层所需的信息。
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
-若要访问 blob 容器或队列，可以使用 Azure 凭据连接到这些资源。
+若要要访问 Blob 容器、ADLS Gen2 容器或目录或队列，你可以使用 Azure 凭据连接到这些资源。
 
 1. 打开“连接”对话框。
-2. 选择“通过 Azure Active Directory (Azure AD)添加资源”。 选择“下一步”。
-3. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
-4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接”。
+1. 选择要连接到的资源类型。
+1. 选择“使用 Azure Active Directory(Azure AD) 登录”。 选择“下一步”。
+1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
+1. 输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接” 。
 
-对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)。
+对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 作为一种解决方法，你可以请求 SAS URL，然后通过以下步骤连接到你的资源：
+
+1. 打开“连接”对话框。
+1. 选择要连接到的资源类型。
+1. 选择“共享访问签名(SAS)”。 选择“下一步”。
+1. 输入你收到的 SAS URL，并输入连接的独特显示名称。 选择“下一步”，然后选择“连接” 。
+ 
+有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建议的 Azure 内置角色
 
@@ -169,7 +177,7 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 如果成功登录后无法检索订阅，请尝试以下故障排除方法：
 
 * 验证你的帐户是否有权访问所需的订阅。 可以通过登录到尝试使用的 Azure 环境的门户，来验证是否能够访问这些订阅。
-* 请确保已通过正确的 Azure 环境 (Azure、Azure 中国世纪互联、Azure 德国、Azure 美国政府或自定义环境) 登录。
+* 请确保已通过正确的 Azure 环境登录（Azure、Azure 中国 21Vianet、Azure 德国、Azure 美国政府或自定义环境）。
 * 如果使用代理服务器，请确保已正确配置存储资源管理器代理。
 * 尝试删除并重新添加帐户。
 * 如果有“更多信息”链接，请检查针对失败的租户报告的错误消息。 如果你不确定如何处理错误消息，请随意[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。

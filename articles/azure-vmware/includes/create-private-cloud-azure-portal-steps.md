@@ -4,10 +4,10 @@ description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步�
 ms.topic: include
 ms.date: 02/17/2021
 ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725386"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
@@ -18,7 +18,7 @@ ms.locfileid: "101725386"
 
 1. 在“基本信息”选项卡上，输入相关字段的值。 下表列出了字段的属性。
 
-   | 字段   | Value  |
+   | 字段   | 值  |
    | ---| --- |
    | **订阅** | 你打算用于部署的订阅。|
    | **资源组** | 私有云资源的资源组。 |

@@ -1,20 +1,20 @@
 ---
 title: 部署模板 - IntelliJ IDEA
-description: 了解如何使用 IntelliJ 创意创建第一个 Azure 资源管理器模板 (ARM 模板) ，以及如何对其进行部署。
+description: 了解如何使用 IntelliJ IDEA 创建第一个 Azure 资源管理器模板（ARM 模板），以及如何部署该模板。
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
 ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905955"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ IDEA 创建和部署 ARM 模板
 
-了解如何使用 IntelliJ 创意将 Azure 资源管理器模板 (ARM 模板) 部署到 Azure，以及如何直接从 IDE 中编辑和更新模板。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [模板部署概述](overview.md)。
+了解如何使用 IntelliJ IDEA 将 Azure 资源管理器模板（ARM 模板）部署到 Azure，以及如何直接从 IDE 编辑和更新该模板。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
 
 ![资源管理器模板门户关系图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -22,7 +22,7 @@ ms.locfileid: "96905955"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
@@ -60,7 +60,7 @@ ms.locfileid: "96905955"
 
 ## <a name="edit-and-update-an-existing-deployment"></a>编辑和更新现有部署
 
-1. 从右键单击菜单或前面所示的“显示属性”视图中选择“编辑部署”。  此时会打开另一个选项卡视图，其中显示了 Azure 上的部署的模板和参数文件。 若要将这些文件保存到本地文件，可以单击 " **导出模板文件**  " 或 " **导出参数文件**"。
+1. 从右键单击菜单或前面所示的“显示属性”视图中选择“编辑部署”。  此时会打开另一个选项卡视图，其中显示了 Azure 上的部署的模板和参数文件。 若要将这些文件保存到本地，可以单击“导出模板文件”或“导出参数文件”。 
 
     ![资源管理器模板 - 编辑部署](./media/create-templates-use-intellij/resource-manager-edit-deployment.png)
 

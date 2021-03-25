@@ -1,6 +1,6 @@
 ---
 title: 临时表
-description: 在专用 SQL 池中使用临时表的基本指南，重点介绍会话级别临时表的原则。
+description: 在专用 SQL 池中使用临时表的基本指南，重点介绍会话级临时表的原则。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93310687"
 ---
 # <a name="temporary-tables-in-dedicated-sql-pool"></a>专用 SQL 池中的临时表
@@ -31,11 +31,11 @@ ms.locfileid: "93310687"
 
 临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
-临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 对于专用 SQL 池，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
+临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 使用专用 SQL 池时，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>专用 SQL 池中的临时表
 
-在专用 SQL 池资源中，临时表可提供性能优势，因为其结果将写入到本地而不是远程存储。
+在专用 SQL 池资源中，临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
 ### <a name="create-a-temporary-table"></a>创建临时表
 
@@ -207,7 +207,7 @@ GO
 
 但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  
 
-在专用 SQL 池中，与其他 SQL Server 数据库不同的是，可以在创建该数据库的过程之外使用该临时表。  可以在会话中的 **任何位置** 使用专用的 SQL 池临时表。 此功能可提高代码的模块化程度与易管理性，如以下示例所示：
+与其他 SQL Server 数据库不同，在专用 SQL 池中，可以脱离创建临时表的过程来使用该临时表。  可以在会话中的任何位置使用专用 SQL 池临时表。 此功能可提高代码的模块化程度与易管理性，如以下示例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -229,11 +229,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>临时表的限制
-在实现临时表时，专用 SQL 池的确会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  
+专用 SQL 池在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  
 
 并且，不能基于临时表创建视图。  只能通过哈希或轮循机制分布来创建临时表。  不支持重复的临时表分布。 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关开发表的详细信息，请参阅 [使用专用 SQL 池设计表](sql-data-warehouse-tables-overview.md) 一文。
+若要详细了解如何开发表，请参阅[使用专用 SQL 池设计表](sql-data-warehouse-tables-overview.md)一文。
 

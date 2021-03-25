@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 0dd460bce01b86c72d0b8fd70351fdcc85c69bd4
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146954"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>将逻辑应用导入为 API
@@ -31,7 +31,7 @@ ms.locfileid: "93146954"
 > -   在 Azure 门户中测试 API
 > -   在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 -   请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 -   确保订阅中已有一个公开 HTTP 终结点的逻辑应用。 有关详细信息，请参阅[使用 HTTP 终结点触发工作流](../logic-apps/logic-apps-http-endpoint.md)
@@ -70,7 +70,7 @@ ms.locfileid: "93146954"
 
     该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 如果创建了 API 管理实例，那么你已是管理员，因此会自动填充该密钥。
 
-4. 按“发送”。 
+4. 按“发送”。
 
     后端以“200 正常”和某些数据做出响应  。
 

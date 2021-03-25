@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861776"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步：了解用户、组和联系人
@@ -58,7 +58,7 @@ ms.locfileid: "96861776"
 ## <a name="contacts"></a>联系人
 合并和收购之后，不同林中具有表示用户的联系人很常见，其中，GALSync 解决方案对两个或多个 Exchange 林桥接。 联系人对象始终使用邮件属性从连接器空间联接到 metaverse。 如果已存在具有相同邮件地址的联系人对象或用户对象，则会将这些对象联接在一起。 这是在规则 **In from AD – Contact Join** 中进行配置的。 此外还有一个名为 **In from AD – Contact Common** 的规则，使用流向 Metaverse 属性 **sourceObjectType** 的属性流，并使用常量 **Contact**。 此规则的优先级非常低，因此如果将任何用户对象联接到同一 Metaverse 对象，规则 **In from AD – User Common** 就会向该属性提供值“User”。 在使用此规则的情况下，如果没有联接任何用户，此属性则会具有值 Contact，如果至少找到了一个用户，则会具有值 User。
 
-若要将对象预配到 Azure AD，如果元节属性 **sourceObjectType** 设置为 "**联系人**"，则出站规则 **Out to AAD – Contact Join** 将创建 Contact 对象。 如果将此属性设置为 **user**，则规则 **Out To AAD – user Join** 将改为创建用户对象。
+对于为 Azure AD 设置对象，如果将 metaverse 属性 **sourceObjectType** 设置为 **Contact**，出站规则 **Out to AAD – Contact Join** 则会创建联系人对象。 如果将此属性设置为 **User**，**Out to AAD – User Join** 规则则会改为创建用户对象。
 当导入和同步更多源 Active Directory 时，对象很可能由 Contact 提升为 User。
 
 例如，在 GALSync 拓扑中，当我们导入第一个林时，我们会在第二个林中发现每个的联系人对象。 这会在 AAD 连接器中暂存新的联系人对象。 当我们之后导入并同步第二个林时，我们会找到实际用户并将他们联接到现有的 metaverse 对象。 然后我们会删除 AAD 中的联系人对象，并改为创建新的用户对象。

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95975949"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用门户创建应用程序网关的自定义探测
@@ -34,7 +34,7 @@ ms.locfileid: "95975949"
 
 ### <a name="enter-probe-properties"></a><a name="createprobe"></a>输入探测属性
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个 [月免费试用版](https://azure.microsoft.com/free)
+1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[一个月免费试用版](https://azure.microsoft.com/free)
 
 2. 在 Azure 门户的“收藏夹”窗格中单击“所有资源”。 在“所有资源”边栏选项卡中单击应用程序网关。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“partners.contoso.net”， 轻松访问应用程序网关。
 
@@ -85,7 +85,7 @@ ms.locfileid: "95975949"
 
 ### <a name="create-the-probe"></a><a name="createprobe"></a>创建探测
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个 [月免费试用版](https://azure.microsoft.com/free)
+1. 登录到 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[一个月免费试用版](https://azure.microsoft.com/free)
 
 2. 在 Azure 门户上的“收藏夹”窗格中，选择“所有资源”。 在“所有资源”页中选择应用程序网关。 如果所选订阅中已包含多个资源，则可在“按名称筛选…”框中输入“partners.contoso.net”， 轻松访问应用程序网关。
 

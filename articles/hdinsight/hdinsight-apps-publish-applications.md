@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
 ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942663"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
@@ -19,10 +19,10 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 
 有关详细信息，请参阅以下 HDInsight 应用程序相关文章：
 
-* [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)。 了解如何在群集上安装 HDInsight 应用程序。
+* [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md). 了解如何在群集上安装 HDInsight 应用程序。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。 了解如何安装和测试自定义 HDInsight 应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要在市场中提交自定义应用程序，首先需[创建并测试该自定义应用程序](hdinsight-apps-install-custom-applications.md)。
 
 还必须注册开发人员帐户。 有关详细信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/overview.md)和[创建 Microsoft 开发人员帐户](../marketplace/overview.md)。
@@ -88,8 +88,8 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 3. 输入标题，然后选择“创建新的解决方案模板”。
 4. 如果尚未注册组织，选择“创建开发人员中心帐户并加入 Azure 计划”。  有关详细信息，请参阅[创建 Microsoft 开发人员帐户](../marketplace/overview.md)。
 5. 选择“定义一些拓扑以开始使用”。 解决方案模板是其所有拓扑的“父级”。 可以在一个产品或解决方案模板中定义多个拓扑。 将产品/服务推送到过渡环境时，它会随其所有拓扑一起推送。 
-6. 输入拓扑名称，然后选择 **+** 。
-7. 输入新版本，然后选择 **+** 。
+6. 输入拓扑名称，然后选择 +。
+7. 输入新版本，然后选择 +。
 8. 打包应用程序时上传创建的 .zip 文件。  
 9. 选择“请求认证”。 Microsoft 认证团队将审查该文件并认证拓扑。
 

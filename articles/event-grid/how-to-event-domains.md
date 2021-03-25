@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e6861e89def10eec391bf302b1ddc726b38bb98c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97109889"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
@@ -124,7 +124,7 @@ New-AzEventGridSubscription `
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
-为主题设置的权限存储在 Azure Active Directory 中，必须显式删除。 如果删除事件订阅，则不会撤销用户访问权限来创建事件订阅。
+为主题设置的权限存储在 Azure Active Directory 中，必须显式删除。 如果用户对主题拥有写访问权限，则删除事件订阅不会撤销用户创建事件订阅的访问权限。
 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>将事件发布到事件网格域
@@ -195,18 +195,18 @@ Get-AzEventGridDomainKey `
 
 然后，使用偏好的方法发出 HTTP POST，将事件发布到事件网格域。
 
-## <a name="search-lists-of-topics-or-subscriptions"></a>搜索主题或订阅列表
+## <a name="search-lists-of-topics-or-subscriptions"></a>搜索主题或订阅的列表
 
-若要搜索和管理大量主题或订阅，事件网格的 Api 支持列表和分页。
+若要搜索和管理大量主题或订阅，事件网格的 API 支持列表和分页。
 
 ### <a name="using-cli"></a>使用 CLI
-例如，以下命令将列出名称包含的所有主题 `mytopic` 。 
+例如，以下命令列出名称包含 `mytopic` 的所有主题。 
 
 ```azurecli-interactive
 az eventgrid topic list --odata-query "contains(name, 'mytopic')"
 ```
 
-有关此命令的详细信息，请参阅 [`az eventgrid topic list`](/cli/azure/eventgrid/topic?#az_eventgrid_topic_list) 。 
+有关此命令的详细信息，请参阅 [`az eventgrid topic list`](/cli/azure/eventgrid/topic?#az_eventgrid_topic_list)。 
 
 
 ## <a name="next-steps"></a>后续步骤

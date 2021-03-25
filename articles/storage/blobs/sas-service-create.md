@@ -12,10 +12,10 @@ ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f55cfcf6d6ec369cdf871e8ba38bd81774dacd8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97092306"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>为容器或 blob 创建服务 SAS
@@ -206,7 +206,7 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 
 ## <a name="create-a-service-sas-for-a-directory"></a>为目录创建服务 SAS
 
-在启用了分层命名空间的存储帐户中，可以为目录创建服务 SAS。 若要创建服务 SAS，请确保已安装12.5.0 或更高版本的 [DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) 包。
+在启用了分层命名空间的存储帐户中，可以为目录创建服务 SAS。 若要创建服务 SAS，请确保已安装 12.5.0 或更高版本的 [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) 包。
 
 下面的示例演示如何使用适用于 .NET 的 v12 客户端库为目录创建服务 SAS：
 

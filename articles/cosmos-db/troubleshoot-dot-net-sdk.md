@@ -3,18 +3,18 @@ title: 诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 description: 通过客户端日志记录等功能及其他第三方工具来识别、诊断和排查在使用 .NET SDK 时出现的 Azure Cosmos DB 问题。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 02/05/2021
+ms.date: 03/05/2021
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 04813b9d70557314e619fded5294644f5f6fadf5
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831240"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102442190"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "99831240"
 如果可以在 SDK 中重试，则任何 IO 故障的 Cosmos DB SDK 都将尝试重试失败的操作。 重试任何故障是一种好习惯，特别是处理/重试写入故障必不可少。 由于重试逻辑不断改进，因此建议使用最新的 SDK。
 
 1. SDK 会重试读取和查询 IO 故障，而不会将它们呈现给最终用户。
-2. 写入（创建、更新、替换、删除）不是幂等的，因此，SDK 不能总是盲目地重试失败的写入操作。 要求用户的应用程序逻辑能够处理故障并重试。
+2. 写入（创建、更新、替换、删除）不是幂等的，因此，SDK 不能总是盲目地重试失败的写入操作。 用户的应用程序逻辑必须能够处理故障并重试。
 3. [SDK 可用性疑难解答](troubleshoot-sdk-availability.md)说明了多区域 Cosmos DB 帐户的重试。
 
 ## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
@@ -91,14 +91,49 @@ ms.locfileid: "99831240"
 * [将公共 IP 分配给 Azure VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>高网络延迟
-可以使用 V2 SDK 中的[诊断字符串](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet)或 V3 SDK 中的[诊断](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)来识别高网络延迟。
+可以使用 V2 SDK 中的[诊断字符串](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)或 V3 SDK 中的[诊断](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)来识别高网络延迟。
 
-如果未发生[超时](troubleshoot-dot-net-sdk-request-timeout.md)，并且诊断根据 `ResponseTime` 和 `RequestStartTime`之差显示单个请求的延迟明显较高（在本示例中超过 300 毫秒），如下所示：
+如果未发生[超时](troubleshoot-dot-net-sdk-request-timeout.md)，则诊断会显示延迟明显较高的单个请求。
+
+# <a name="v3-sdk"></a>[V3 SDK](#tab/diagnostics-v3)
+
+可以调用 `Diagnostics` 属性从任何 `ResponseMessage`、`ItemResponse`、`FeedResponse` 或 `CosmosException` 中获取诊断：
+
+```csharp
+ItemResponse<MyItem> response = await container.CreateItemAsync<MyItem>(item);
+Console.WriteLine(response.Diagnostics.ToString());
+```
+
+例如，诊断中的网络交互是：
+
+```json
+{
+    "name": "Microsoft.Azure.Documents.ServerStoreModel Transport Request",
+    "id": "0e026cca-15d3-4cf6-bb07-48be02e1e82e",
+    "component": "Transport",
+    "start time": "12: 58: 20: 032",
+    "duration in milliseconds": 1638.5957
+}
+```
+
+其中 `duration in milliseconds` 显示延迟。
+
+# <a name="v2-sdk"></a>[V2 SDK](#tab/diagnostics-v2)
+
+当客户端以[直接模式](sql-sdk-connection-modes.md)配置时，可通过 `RequestDiagnosticsString` 属性获取诊断：
+
+```csharp
+ResourceResponse<Document> response = await client.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(partitionKey) });
+Console.WriteLine(response.RequestDiagnosticsString);
+```
+
+延迟将是 `ResponseTime` 与 `RequestStartTime` 之间的差异：
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
 ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
 ```
+--- 
 
 这种延迟的可能原因有多种：
 
