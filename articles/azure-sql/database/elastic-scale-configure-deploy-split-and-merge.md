@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792066"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
@@ -39,7 +39,7 @@ ms.locfileid: "92792066"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 创建要用作拆分/合并状态数据库的 Azure SQL 数据库数据库。 转到 [Azure 门户](https://portal.azure.com)。 新建 **SQL 数据库** 。 为数据库指定一个名称，并新建管理员和密码。 确保记录该名称和密码以供日后使用。
+1. 创建要用作拆分/合并状态数据库的 Azure SQL 数据库数据库。 转到 [Azure 门户](https://portal.azure.com)。 新建 **SQL 数据库**。 为数据库指定一个名称，并新建管理员和密码。 确保记录该名称和密码以供日后使用。
 
 1. 确保服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”中，确保“允许访问 Azure 服务”设置设为“打开”。 单击“保存”图标。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92792066"
 
 ### <a name="split-merge-service-configuration"></a>拆分/合并服务配置
 
-1. 在下载了拆分/合并程序集的文件夹中，创建 *SplitMergeService.cspkg* 随附的 *ServiceConfiguration.Template.cscfg* 文件的副本，并将其重命名为 *ServiceConfiguration.cscfg* 。
+1. 在下载了拆分/合并程序集的文件夹中，创建 *SplitMergeService.cspkg* 随附的 *ServiceConfiguration.Template.cscfg* 文件的副本，并将其重命名为 *ServiceConfiguration.cscfg*。
 
 1. 在文本编辑器（如 Visual Studio）中打开 *ServiceConfiguration.cscfg* ，它会验证输入内容（例如证书指纹的格式）。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92792066"
 
 1. 转到 [Azure 门户](https://portal.azure.com)
 2. 选择先前创建的云服务。
-3. 单击“概览”。
+3. 单击“概览”。 
 4. 选择过渡环境，并单击“上传”。
 5. 在对话框中，输入一个部署标签。 对于“程序包”和“配置”，单击“从本地”，并选择 *SplitMergeService.cspkg* 文件和之前配置的 cscfg 文件。
 6. 确保选中标记为“即使一个或多个角色包含单个实例也部署”  的复选框。
@@ -234,7 +234,7 @@ ms.locfileid: "92792066"
 2. 创建一个将要在其中创建分片映射管理器和分片的服务器（或选择现有服务器）。
 
    > [!NOTE]
-   > 在默认情况下， *SetupSampleSplitMergeEnvironment.ps1* 脚本将在同一服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
+   > 在默认情况下，*SetupSampleSplitMergeEnvironment.ps1* 脚本将在同一服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
 
    拆分/合并服务需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
 
@@ -321,11 +321,11 @@ ms.locfileid: "92792066"
 
 为了执行拆分/合并操作，必须声明要移动的分片表和引用表。 使用 **SchemaInfo** API 完成此操作。 此 API 位于 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 命名空间中。
 
-1. 对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象描述表的父架构名称 (可选，默认为 "dbo" ) 、表名称以及该表中包含分片键的列名称。
-2. 对于每个引用表，请创建一个 **shardedtableinfo** 对象，该对象描述了表的父架构名称 (可选，默认为 "dbo" ) 和表名。
+1. 对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象在包含分片密钥的表中描述了此表的父架构名称（可选，默认为“dbo”）、表名称以及列名称。
+2. 对于每个引用表，请创建一个 **ShardedTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
 3. 将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
-4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection** 。
-5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection** ，从而提供分片映射名称。
+4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
+5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
 
 可在 SetupSampleSplitMergeEnvironment.ps1 脚本中看到此操作的示例。
 

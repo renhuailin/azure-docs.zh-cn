@@ -6,10 +6,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 722fe393ad7637be20360463a4c3b6234224a036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88653964"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
@@ -42,8 +42,8 @@ ms.locfileid: "88653964"
 
 Azure 文件存储和 Azure 磁盘均可在“标准”和“高级”性能层中使用：
 
-- *高级*磁盘由高性能固态硬盘 (SSD) 支持。 建议为所有生产工作负载使用高级磁盘。
-- *标准*磁盘由常规旋转磁盘 (HDD) 支持，适用于存档或不经常访问的数据。
+- *高级* 磁盘由高性能固态硬盘 (SSD) 支持。 建议为所有生产工作负载使用高级磁盘。
+- *标准* 磁盘由常规旋转磁盘 (HDD) 支持，适用于存档或不经常访问的数据。
 
 了解应用程序性能需求和访问模式，选择合适的存储层。 有关托管磁盘大小和性能层的详细信息，请参阅 [Azure 托管磁盘概述][managed-disks]
 

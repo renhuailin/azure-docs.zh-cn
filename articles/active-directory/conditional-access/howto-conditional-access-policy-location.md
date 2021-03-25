@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98597976"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
@@ -24,7 +24,7 @@ ms.locfileid: "98597976"
 
 ## <a name="define-locations"></a>定义位置
 
-1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问” > “命名位置”。
 1. 选择“新建位置”。
 1. 为位置命名。
@@ -37,12 +37,12 @@ ms.locfileid: "98597976"
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
-1. 选择“新策略”。
-1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。
-1. 在“分配”下，选择“用户和组”
-   1. 在“包括”下，选择“所有用户”。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 选择“新策略”  。
+1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
+1. 在“分配”  下，选择“用户和组” 
+   1. 在“包括”下，选择“所有用户”。  
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，选择“所有云应用”。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
 ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95811632"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
@@ -85,7 +85,7 @@ ms.locfileid: "95811632"
 **目标网络** | **详细信息**
 --- | ---
 目标网络是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。 <br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。 例如：如果源 IP 地址是 10.0.0.19，故障转移网络使用范围 10.0.0.0/24，则分配给目标 VM 的下一个 IP 地址是 10.0.0.254。
-目标网络不是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是10.0.0.19，故障转移位于不是故障转移网络的网络上，其范围为 10.0.0.0/24，则目标静态 IP 地址将为10.0.0.19 （如果可用），否则将为10.0.0.254。
+目标网络不是故障转移 VNet | - 目标 IP 地址将是静态的，使用相同的 IP 地址。<br/><br/>  - 如果已分配相同的 IP 地址，则 IP 地址是子网范围末尾的下一个可用 IP 地址。<br/><br/> 例如：如果源静态 IP 地址是 10.0.0.19，故障转移在范围为 10.0.0.0/24 的非故障转移网络中发生，则目标静态 IP 地址将是 10.0.0.19（前提是此地址可用，否则将是 10.0.0.254）。
 
 - 故障转移 VNet 是设置灾难恢复时选择的目标网络。
 - 我们建议始终使用非生产网络进行测试故障转移。

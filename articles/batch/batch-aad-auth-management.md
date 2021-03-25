@@ -5,15 +5,15 @@ ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930207"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 
-调用 Azure Batch Management 服务的应用程序使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 进行身份验证。 Azure AD 是 Microsoft 提供的基于多租户云的目录和标识管理服务。 Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进行身份验证。
+调用 Azure Batch 管理服务的应用程序使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 进行身份验证。 Azure AD 是 Microsoft 提供的基于多租户云的目录和标识管理服务。 Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进行身份验证。
 
 批处理管理 .NET 库公开用于使用批处理帐户、帐户密钥、应用程序和应用程序包的类型。 Batch Management .NET 库是一个 Azure 资源提供程序客户端，可与 [Azure 资源管理器](../azure-resource-manager/management/overview.md)一起使用，以编程方式管理这些资源。 需要使用 Azure AD 对通过任何 Azure 资源提供程序客户端（包括 Batch Management .NET 库）和 Azure 资源管理器发出的请求进行身份验证。
 

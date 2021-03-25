@@ -9,10 +9,10 @@ ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 9ec5920295117b1726a684bcd08534cd6917f7e5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100569796"
 ---
 1. 在 Azure 门户菜单或“主页”页中，选择“创建资源” 。
@@ -26,7 +26,7 @@ ms.locfileid: "100569796"
     | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
     | **[资源组](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | 要在其中创建 Function App 的新资源组的名称。 |
     | **函数应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。  |
-    |<bpt id="p1">**</bpt>Publish<ept id="p1">**</ept>| 代码 | 用于发布代码文件或 Docker 容器的选项。 |
+    |**发布**| 代码 | 用于发布代码文件或 Docker 容器的选项。 |
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 门户中编辑仅适用于 JavaScript、PowerShell、TypeScript 和 C# 脚本。 C# 类库、Java 和 Python 函数必须[在本地开发](../articles/azure-functions/functions-develop-local.md#local-development-environments)。  |
     |**版本**| 版本号 | 选择已安装的运行时的版本。 |
     |**区域**| 首选区域 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |

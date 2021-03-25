@@ -4,10 +4,10 @@ description: 记录和分析 Azure 容器注册表的资源日志事件，例如
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572002"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 8f4c35a61edc970f5d4d3beb0c4255ccfe4e336a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968139"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
@@ -153,7 +153,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 5. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。 
 
-6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
+6. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  对于重新生成项目的提示，请选择“是”，以便在运行项目之前重新生成项目  。
 
     以下输出示例显示预配设备客户端示例成功启动，然后连接到预配服务实例来获取 IoT 中心信息并注册：
 
@@ -179,7 +179,7 @@ Azure IoT 设备预配服务支持两类注册：
 如果打算继续使用和探索设备客户端示例，请勿清理在本快速入门中创建的资源。 如果不打算继续学习，请按以下步骤删除本快速入门中创建的所有资源。
 
 1. 关闭计算机上的设备客户端示例输出窗口。
-1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务  。 打开服务的“管理注册”，然后选择“个人注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择设备预配服务。 打开服务的“管理注册”，然后选择“个人注册”选项卡   。选中在本快速入门中注册的设备的“注册 ID”旁边的复选框，然后按窗格顶部的“删除”按钮   。 
 1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择 IoT 中心  。 打开中心的“IoT 设备”，选中在本快速入门中注册的设备的“设备 ID”旁边的复选框，然后按窗格顶部的“删除”按钮    。
 
 ## <a name="next-steps"></a>后续步骤

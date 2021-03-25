@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996113"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
@@ -35,7 +35,7 @@ ms.locfileid: "95996113"
   * 仅限使用 F0 或标准定价层的“计算机视觉”资源。
   * 仅限使用 F0 或标准定价层的“表单识别器”资源。
   * 具有 S0 定价层的认知服务资源。
-* 如果你使用的是封闭预览版容器，你将需要完成 [联机请求窗体](https://aka.ms/csgate/) 才能使用。
+* 如果使用的是封闭预览版容器，则需要填写[在线请求表单](https://aka.ms/csgate/)才能使用它。
 
 ## <a name="docker-compose-file"></a>Docker Compose 文件
 

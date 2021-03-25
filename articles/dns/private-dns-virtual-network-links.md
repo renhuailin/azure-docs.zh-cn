@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 5e43ad35cdaad89d5b9f43007bad8782f358c1a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954335"
 ---
 # <a name="what-is-a-virtual-network-link"></a>什么是虚拟网络链接？
@@ -43,7 +43,7 @@ ms.locfileid: "94954335"
 
 * 专用 DNS 区域下的每个虚拟网络链接必须在专用 DNS 区域上下文中具有唯一的名称。 可在不同的专用 DNS 区域中拥有具有相同名称的链接。
 
-* 创建虚拟网络链接后，请检查虚拟网络链接资源的“链接状态”字段。 根据虚拟网络的大小，链接可能需要几分钟才能运行，并且“链接状态”会更改为“已完成”  。
+* 创建虚拟网络链接后，请检查虚拟网络链接资源的“链接状态”字段。 根据虚拟网络的大小，链接可能需要几分钟才能运行，并且“链接状态”会更改为“已完成”。
 
 * 删除虚拟网络时，所有虚拟网络链接和与之关联的其他专用 DNS 区域中自动注册的 DNS 记录都将自动删除。
 

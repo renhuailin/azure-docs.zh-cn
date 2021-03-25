@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002804"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升级到 Azure 认知搜索 .NET SDK 版本 10
@@ -69,7 +69,7 @@ Azure 认知搜索 .NET SDK 版本 10 面向 REST API `2019-05-06`，其中包�
 
 版本 9 和更低版本中错误地指定了[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)的定义。 
 
-`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。 以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的**顶级字典属性** - 请求被视为来自 REST API 的有效请求。
+`WebApiSkill` 的模型将 `HttpHeaders` 指定为包含字典的对象属性。 以这种方式创建带有 `WebApiSkill` 构造的技能集会导致异常，因为 REST API 会将请求视为格式不当。 此问题已得到更正，`HttpHeaders` 现在会设置为 `WebApiSkill` 模型本身上的 **顶级字典属性** - 请求被视为来自 REST API 的有效请求。
 
 例如，如果你以前尝试按如下所示实例化 `WebApiSkill`：
 

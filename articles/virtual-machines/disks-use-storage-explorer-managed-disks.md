@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88749380"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
@@ -29,7 +29,7 @@ ms.locfileid: "88749380"
 
 如果存储资源管理器未连接到 Azure，则将无法使用它来管理资源。 本部分介绍如何将存储资源管理器连接到 Azure 帐户，以便可以使用它来管理资源。
 
-1. 启动 Azure 存储资源管理器并单击左侧的**插件**图标。
+1. 启动 Azure 存储资源管理器并单击左侧的 **插件** 图标。
 
     ![单击插件图标](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 

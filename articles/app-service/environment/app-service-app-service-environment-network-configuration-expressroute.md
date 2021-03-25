@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961816"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
@@ -131,7 +131,7 @@ ms.locfileid: "88961816"
 
 将虚拟机部署到子网，并确认以下状况：
 
-* 本文所述的发往 Azure 和非 Azure 终结点的出站流量**不会**通过 ExpressRoute 线路传送。 如果来自子网的出站流量在本地使用强制隧道，则创建应用服务环境始终会失败。
+* 本文所述的发往 Azure 和非 Azure 终结点的出站流量 **不会** 通过 ExpressRoute 线路传送。 如果来自子网的出站流量在本地使用强制隧道，则创建应用服务环境始终会失败。
 * 本文所述的终结点 DNS 查找都可正常解析。 
 
 完成配置步骤并确认路由后，请删除虚拟机。 创建应用服务环境时，子网需是“空的”。

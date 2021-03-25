@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cosmos DB 中创建容器 Cassandra API
-description: 了解如何使用 Azure 门户、.NET、Java、Python、Node.js 和其他 Sdk 在 Azure Cosmos DB Cassandra API 中创建容器。
+title: 在 Azure Cosmos DB Cassandra API 中创建容器
+description: 了解如何使用 Azure 门户、.NET、Java、Python、Node.js 和其他 SDK 在 Azure Cosmos DB Cassandra API 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -9,18 +9,18 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101640"
 ---
-# <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB 中创建容器 Cassandra API
+# <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中创建容器
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-本文介绍了在 Azure Cosmos DB Cassandra API 中创建容器的不同方法。 它演示了如何使用 Azure 门户、Azure CLI、PowerShell 或受支持的 Sdk 创建容器。 本文演示如何创建容器、指定分区键和预配吞吐量。
+本文介绍在 Azure Cosmos DB Cassandra API 中创建容器的不同方式。 它演示了如何使用 Azure 门户、Azure CLI、PowerShell 或受支持的 SDK 来创建容器。 本文演示如何创建容器、指定分区键和预配吞吐量。
 
-本文介绍了在 Azure Cosmos DB Cassandra API 中创建容器的不同方法。 如果你使用的是其他 API，请参阅用于 [MongoDB 的 api](how-to-create-container-mongodb.md)、 [Gremlin api](how-to-create-container-gremlin.md)、 [表 API](how-to-create-container-table.md)和 [SQL API](how-to-create-container.md) 文章，以创建容器。
+本文介绍在 Azure Cosmos DB Cassandra API 中创建容器的不同方式。 如果你使用其他 API，请参阅[适用于 MongoDB 的 API](how-to-create-container-mongodb.md)、[Gremlin API](how-to-create-container-gremlin.md)、[表 API](how-to-create-container-table.md) 和 [SQL API](how-to-create-container.md) 文章来创建容器。
 
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。

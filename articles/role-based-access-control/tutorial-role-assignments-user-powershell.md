@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 45993d617028dec13c7a8b57587c7204322965cf
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555186"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限
 
 可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在不同范围授予用户访问权限
@@ -48,8 +48,8 @@ ms.locfileid: "100555186"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 用户<br>（RBAC 教程用户） | [读者](built-in-roles.md#reader) | 订阅 |
-| 用户<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
+| User<br>（RBAC 教程用户） | [读者](built-in-roles.md#reader) | 订阅 |
+| User<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
 
    ![用户的角色分配](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 

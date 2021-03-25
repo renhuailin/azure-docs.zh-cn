@@ -4,10 +4,10 @@ description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中�
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: ca5995c3e1b9923d925ddc4deae299c28261d18a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100560855"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 事件中心命名空间
@@ -19,7 +19,7 @@ ms.locfileid: "100560855"
 > 默认情况下，除非请求源自从允许的公共 IP 地址运行的服务，否则，为事件中心命名空间启用防火墙规则会阻止传入请求。 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 例外情况是，可以允许从某些受信任的服务访问事件中心资源，即使在启用了 IP 筛选功能时也是如此。 有关受信任服务的列表，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。
 
 > [!IMPORTANT]
-> 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以使用访问密钥) 通过公共 internet (访问该命名空间。  
+> 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。  
 
 
 ## <a name="ip-firewall-rules"></a>IP 防火墙规则
@@ -32,7 +32,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 4. 在左侧“设置”下选择“网络” 。 只会为“标准”或“专用”命名空间显示“网络”选项卡。 
     
     > [!WARNING]
-    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过 **公共 internet** (访问该命名空间。  
+    > 如果你在此页上选择了“所选网络”选项并且未添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。   
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="网络选项卡 -“所选网络”选项" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -44,7 +44,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
     2. 对于“地址范围”，请输入某个特定的 IPv4 地址或以 CIDR 表示法表示的 IPv4 地址范围。 
 
     >[!WARNING]
-    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
+    > 如果你在此页上选择了“所选网络”选项并且未添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
 1. 指定是否要“允许受信任的 Microsoft 服务绕过此防火墙”。 有关详细信息，请参阅[受信任的 Microsoft 服务](#trusted-microsoft-services)。 
 
       ![防火墙 - 选中了“所有网络”选项](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
@@ -63,9 +63,9 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加 IP 筛选器规则。
 
-模板中的 **ipMask** 是单个 IPv4 地址或 CIDR 表示法中的 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
+模板中的 **ipMask** 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
-添加虚拟网络或防火墙规则时，将的值设置 `defaultAction` 为 `Deny` 。
+添加虚拟网络或防火墙规则时，请将 `defaultAction` 的值设置为 `Deny`。
 
 ```json
 {
@@ -132,7 +132,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 > [!IMPORTANT]
-> 如果没有 IP 和虚拟网络规则，则所有流量都将流向命名空间，即使你将设置 `defaultAction` 为 `deny` 。  可以使用访问密钥) 通过公共 internet (访问命名空间。 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。  
+> 如果没有 IP 和虚拟网络规则，则所有流量都将流向命名空间，即使你将 `defaultAction` 设置为 `deny`。  可以通过公共 Internet（使用访问密钥）访问命名空间。 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。  
 
 ## <a name="next-steps"></a>后续步骤
 

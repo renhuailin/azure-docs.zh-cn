@@ -12,10 +12,10 @@ ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96853526"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
@@ -24,7 +24,7 @@ ms.locfileid: "96853526"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
@@ -37,11 +37,11 @@ ms.locfileid: "96853526"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-在 Azure 门户中导航到新的 AMS 订阅，并从菜单中选择“API 访问”。  选择“通过服务主体连接到 Azure 媒体服务”。  记下“REST API 终结点”字段中的值，因为稍后需要用到。 
+在 Azure 门户中导航到新的 AMS 订阅，并从菜单中选择“API 访问”。 选择“通过服务主体连接到 Azure 媒体服务”。 记下“REST API 终结点”字段中的值，因为稍后需要用到。
 
-在“Azure AD 应用程序”部分，选择“新建”并为新的 Azure AD 应用程序注册命名（例如“VideoModADApp”）。   单击“保存”并等待几分钟时间，让应用程序配置完成。  然后，页面的“Azure AD 应用”部分下应会显示新的应用注册。 
+在“Azure AD 应用程序”部分，选择“新建”并为新的 Azure AD 应用程序注册命名（例如“VideoModADApp”）。 单击“保存”并等待几分钟时间，让应用程序配置完成。 然后，页面的“Azure AD 应用”部分下应会显示新的应用注册。
 
-选择该应用注册，并单击其下面的“管理应用程序”按钮。  记下“应用程序 ID”字段中的值，因为稍后需要用到。  选择“设置” > “密钥”，并输入新密钥的说明（例如“VideoModKey”）。 单击“保存”，然后注意新密钥值。  复制此字符串并将其保存到安全的位置。
+选择该应用注册，并单击其下面的“管理应用程序”按钮。 记下“应用程序 ID”字段中的值，因为稍后需要用到。 选择“设置” > “密钥”，并输入新密钥的说明（例如“VideoModKey”）。  单击“保存”，然后注意新密钥值。 复制此字符串并将其保存到安全的位置。
 
 有关上述过程的全面演练，请参阅 [Azure AD 身份验证入门](../../media-services/previous/media-services-portal-get-started-with-aad.md)。
 
@@ -57,7 +57,7 @@ Azure 媒体服务资源管理器是 AMS 的用户友好前端。 使用它可�
 
 1. 在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目并将其命名为 **VideoModeration**。 
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
-1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
+1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包：
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
 
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>设置资源引用
 
-向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值，`CLIENT_SECRET` 是为该应用创建的“VideoModKey”的值。
+向 Program.cs 中的 Program 类添加以下静态字段。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值，`CLIENT_SECRET` 是为该应用创建的“VideoModKey”的值。
 
 ```csharp
 // declare constants and globals
@@ -197,7 +197,7 @@ static void CreateStorageContext()
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>添加代码以从本地文件和 blob 创建 Azure 媒体资产
 
-内容审查器媒体处理器对 Azure 媒体服务平台内的  “资产”上运行作业。
+内容审查器媒体处理器对 Azure 媒体服务平台内的“资产”上运行作业。
 这些方法会从本地文件或关联的 blob 创建资产。
 
 ```csharp
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 内容审查作业完成后，分析 JSON 响应。 它由以下元素组成：
 
 - 视频信息摘要
--  截图作为“片段” 
--  基于“成人”和“不雅”分数，关键帧作为具有 reviewRecommended“（= true 或 false）”标志的“事件”    
--     “开始时间”、“持续时间”、“总持续时间”和“时间戳”以“刻度”为单位。 除以  “时间刻度”以获得数字（以秒为单位）。
+- 截图作为“片段”
+- 基于“成人”和“不雅”分数，关键帧作为具有 reviewRecommended“（= true 或 false）”标志的“事件”
+- “开始时间”、“持续时间”、“总持续时间”和“时间戳”以“刻度”为单位。 除以“时间刻度”以获得数字（以秒为单位）。
  
 > [!NOTE]
 > - `adultScore` 表示可能存在某些情况下可能被视为色情或成人性质的内容以及预测分数。

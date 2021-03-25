@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 000b91529b3b02f2c7d03b50ddc841c68625dada
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644797"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102426784"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -33,7 +33,7 @@ ms.locfileid: "101644797"
 * 需要 Azure AD 租户。 通过 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)获得一个租户。 可以使用以下门户之一来管理 Azure AD Connect：
   * [Azure 门户](https://portal.azure.com)。
   * [Office 门户](https://portal.office.com)。
-* [添加并验证域](../fundamentals/add-custom-domain.md)，该域是计划在 Azure AD 中使用的。 例如，如果计划对用户使用 contoso.com，请确保此域已经过验证，并且未仅使用 contoso.onmicrosoft.com 默认域。
+* [添加并验证域](../fundamentals/add-custom-domain.md)，该域是计划在 Azure AD 中使用的。 例如，如果计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
 * 默认情况下，一个 Azure AD 租户允许 5 万个对象。 在验证域后，该限制增加到 30 万个对象。 如果 Azure AD 中需要更多的对象，则请创建支持案例来请求增大此限制。 如果需要 50 万个以上的对象，则需要具备许可证，例如 Microsoft 365、Azure AD Premium 或企业移动性 + 安全性。
 
 ### <a name="prepare-your-on-premises-data"></a>准备本地数据
@@ -73,7 +73,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
     - 必须配置 TLS/SSL 证书。 有关详细信息，请参阅[管理 AD FS 的 SSL/TLS 协议和密码套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)和[管理 AD FS 中的 SSL 证书](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap)。
     - 必须配置名称解析。 
 - 如果全局管理员已启用 MFA，URL https://secure.aadcdn.microsoftonline-p.com 必须在受信任的站点列表中。 在显示 MFA 质询提示之前，系统会先提示将此 URL 添加到受信任的站点列表中（如果尚未添加）。 可以使用 Internet Explorer 将它添加到受信任站点。
-- 如果计划使用 Azure AD Connect Health 进行同步，请确保还满足 Azure AD Connect Health 的先决条件。 有关详细信息，请参阅 [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)。
+- 如果你计划使用 Azure AD Connect Health 进行同步，请确保也满足 Azure AD Connect Health 的先决条件。 有关详细信息，请参阅 [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)。
 
 #### <a name="harden-your-azure-ad-connect-server"></a>强化 Azure AD Connect 服务器 
 建议强化 Azure AD Connect 服务器来减小 IT 环境中的此关键组件的安全攻击面。 遵循这些建议有助于降低组织的部分安全风险。
@@ -102,9 +102,10 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
 
 ### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
+* Azure AD Connect 需要到所有配置的域的网络连接
 * 如果 Intranet 有防火墙，且需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](reference-connect-ports.md)，了解详细信息。
 * 如果代理或防火墙限制了可访问的 URL，则必须打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。 另请参阅[在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)。
-  * 如果使用的是德国或 Microsoft Azure 政府云中的 Microsoft 云，请参阅 Url 的 [Azure AD Connect 同步服务实例注意事项](reference-connect-instances.md) 。
+  * 如果在德国使用 Microsoft 云或 Microsoft Azure 政府版云，请参阅 [Azure AD Connect 同步服务实例注意事项](reference-connect-instances.md)以了解 URL。
 * Azure AD Connect（1.1.614.0 版及更高版本）默认情况下使用 TLS 1.2 对同步引擎和 Azure AD 之间的通信进行加密。 如果 TLS 1.2 在基础操作系统上不可用，Azure AD Connect 会递增地回退到较旧的协议（TLS 1.1 和 TLS 1.0）。
 * 在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎和 Azure AD 之间的通信进行加密。 若要更改为 TLS 1.2，请按照[为 Azure AD connect 启用 TLS 1.2](#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。
 * 如果使用出站代理连接到 Internet，则必须在 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config 文件中添加以下设置，才能将安装向导和 Azure AD Connect 同步连接到 Internet 和 Azure AD。 必须在文件底部输入此文本。 在此代码中，&lt;PROXYADDRESS&gt; 代表实际代理 IP 地址或主机名。
@@ -135,7 +136,7 @@ Azure AD Connect 服务器包含关键标识数据。 确保对此服务器的�
         </system.net>
     ```
 
-* 如果正在现有的安装程序中完成代理配置，则 **Microsoft Azure AD 同步服务** 需要重新启动一次，以便 Azure AD Connect 读取代理配置并更新该行为。 
+* 如果代理配置是在现有设置中完成的，则需要重启一次 Microsoft Azure AD Sync 服务，以便 Azure AD Connect 读取代理配置并更新行为。 
 * 当 Azure AD Connect 在目录同步过程中将 Web 请求发送到 Azure AD 时，Azure AD 可能需要最多 5 分钟才能响应。 代理服务器具有连接空闲超时配置很常见。 确保配置设置为至少 6 分钟或更长时间。
 
 有关[默认代理元素](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)的详细信息，请参阅 MSDN。
@@ -171,9 +172,9 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。 服�
 ### <a name="dcom-prerequisites-on-the-synchronization-server"></a>同步服务器上的 DCOM 必备组件
 在同步服务的安装过程中，Azure AD Connect 会检查是否存在以下注册表项：
 
-- HKEY_LOCAL_MACHINE： Software\Microsoft\Ole
+- HKEY_LOCAL_MACHINE:  Software\Microsoft\Ole
 
-在此注册表项下，Azure AD Connect 将检查是否存在以下值并未损坏： 
+在此注册表项下，Azure AD Connect 将检查以下值是否存在且未损坏： 
 
 - [MachineAccessRestriction](/windows/win32/com/machineaccessrestriction)
 - [MachineLaunchRestriction](/windows/win32/com/machinelaunchrestriction)

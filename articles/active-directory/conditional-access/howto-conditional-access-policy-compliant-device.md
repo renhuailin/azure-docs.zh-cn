@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c98269f9851272e8caa9b26ae0c57ed13e9a99f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89049122"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件访问：要求符合的设备
@@ -39,7 +39,7 @@ ms.locfileid: "89049122"
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  
-   1. 在“排除”下  选择“用户和组”  ，然后选择组织的紧急访问帐户或不受限帐户。 
+   1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”  。
 1. 在“云应用或操作”   >   “包括”下，选择“所有云应用”。 
    1. 如果必须将特定应用程序排除在策略之外，可以在“选择排除的云应用”下的“排除”选项卡中选择它们，然后选择“选择”。   
@@ -59,7 +59,7 @@ ms.locfileid: "89049122"
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问常见策略](concept-conditional-access-policy-common.md)
+[常用条件访问策略](concept-conditional-access-policy-common.md)
 
 [使用条件访问仅限报告模式确定影响](howto-conditional-access-insights-reporting.md)
 

@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e2930a3ca2ecb9d8217fdfea1cbcb0e669f61775
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94960030"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
@@ -39,7 +39,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -53,9 +53,9 @@ Azure IoT 设备预配服务支持两类注册：
 
     在进行 `CMake` 安装 **之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令，克隆最新版 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -135,8 +135,8 @@ Azure IoT 设备预配服务支持两类注册：
 1. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
 
 1. 在“添加注册”面板中，输入以下信息：
-   - 选择“TPM”作为标识证明 *机制*。
-   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥” 。
+   - 选择“TPM”  作为标识证明 *机制*。
+   - 使用你之前记下的值输入 TPM 设备的“注册 ID”和“认可密钥”   。
    - 选择与预配服务链接的 IoT 中心。
    - （可选）可以提供以下信息：
        - 输入唯一“设备 ID”（可以使用建议的 test-docs-device，也可以提供自己的设备 ID）。 为设备命名时，请确保避免使用敏感数据。 如果选择不提供此项，则系统将改用注册 ID 来标识设备。
@@ -189,7 +189,7 @@ Azure IoT 设备预配服务支持两类注册：
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-6. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
+6. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
 
 7. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。  出现重新生成项目的提示时，请选择“是”，以便在运行项目之前重新生成项目。
 

@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953482"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
@@ -39,7 +39,7 @@ ms.locfileid: "94953482"
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“拥有的应用程序”选项卡 。
@@ -47,7 +47,7 @@ ms.locfileid: "94953482"
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 在“管理”下选择“应用程序(旧版)”。 
@@ -160,7 +160,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 接下来添加以下标头：
 
-    | 键 | Value |
+    | 密钥 | 值 |
     | --- | ----- |
     | `Authorization` | 前面记下的已编码令牌值，带有 `Bearer ` 前缀（请在“Bearer”后面包含空格） |
     | `Ocp-Apim-Subscription-Key` | 前面记下的 APIM 订阅密钥 |
@@ -241,13 +241,13 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 如果具有的某个 APIM API 可验证旧 `login.microsoftonline.com` 终结点颁发的令牌，则应迁移该 API 及调用它的应用程序，以使用 [b2clogin.com](b2clogin.md) 颁发的令牌。
 
-可以遵循以下一般过程来执行分阶段的迁移：
+可以遵循以下常规过程来执行分步迁移：
 
 1. 在 APIM 入站策略中添加对 b2clogin.com 和 login.microsoftonline.com 颁发的令牌的支持。
 1. 一次更新一个应用程序，以从 b2clogin.com 终结点获取令牌。
 1. 当所有应用程序都能够正确地从 b2clogin.com 获取令牌后，请从 API 中删除对 login.microsoftonline.com 颁发的令牌的支持。
 
-下面的 APIM 入站策略示例说明了如何接受 b2clogin.com 和 login.microsoftonline.com 颁发的令牌。 此外，它还支持来自两个应用程序的 API 请求。
+下面的 APIM 入站策略示例说明了如何接受 b2clogin.com 和 login.microsoftonline.com 颁发的令牌。 此外，它支持来自两个应用程序的 API 请求。
 
 ```xml
 <policies>
@@ -273,6 +273,6 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure API 管理策略的更多详细信息，请参阅 [APIM 策略参考索引](../api-management/api-management-policies.md)。
+有关 Azure API 管理策略的其他详细信息，请参阅 [APIM 策略引用索引](../api-management/api-management-policies.md)。
 
 可在[将基于 OWIN 的 Web API 迁移到 b2clogin.com](multiple-token-endpoints.md) 中找到关于将基于 OWIN 的 Web API 及其应用程序迁移到 b2clogin.com 的信息。

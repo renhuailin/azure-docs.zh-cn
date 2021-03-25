@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234199"
 ---
 # <a name="azure-for-network-engineers"></a>面向网络工程师的 Azure
@@ -67,7 +67,7 @@ ms.locfileid: "98234199"
 
 ## <a name="security"></a>安全性
 
-可使用网络安全组来筛选虚拟网络中到达或来自资源的网络流量。 你还可以使用 (NVA) 的网络虚拟设备，例如 Azure 防火墙或其他供应商提供的防火墙。 可控制 Azure 如何路由来自子网的流量。 还可限制组织中的人员使用虚拟网络中的资源。
+可使用网络安全组来筛选虚拟网络中到达或来自资源的网络流量。 还可以使用网络虚拟设备 (NVA)，例如 Azure 防火墙或其他供应商提供的防火墙。 可控制 Azure 如何路由来自子网的流量。 还可限制组织中的人员使用虚拟网络中的资源。
 
 网络安全组 (NSG) 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝流向子网和/或 NIC 的网络流量。 NSG 可与子网或者已连接到子网的各个 NIC 相关联。 当 NSG 与某个子网相关联时，ACL 规则将应用到该子网中的所有 VM。 另外，可以通过将 NSG 直接关联到 NIC，对流向单个 NIC 的流量进行限制。
 

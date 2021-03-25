@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure 存储帐户中 blob 的访问层
-description: 了解如何更改 GPv2 或 Blob 存储帐户中 blob 的层
+description: 了解如何更改 GPv2 或 Blob 存储帐户中 Blob 的层
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/11/2021
@@ -9,15 +9,15 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.openlocfilehash: 183593022c934eaf52ffe18649c23e8deced34d8
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98166478"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>管理 Azure 存储帐户中 blob 的访问层
 
-每个 blob 都有一个默认访问层： "热"、"冷" 或 "存档"。 Blob 在创建该 blob 的 Azure 存储帐户的默认访问层上使用。 Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性。 此属性指定在对象级别未显式设置的任何 blob 的默认访问层。 对于已在对象级别设置该层的对象，不会应用帐户层。 存档层仅适用于对象级别。 可以通过执行以下步骤，随时在访问层之间切换。
+每个 blob 都有默认访问层：热访问层、冷访问层或存档访问层。 blob 采用创建该 blob 的 Azure 存储帐户的默认访问层。 Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性。 此属性会为未在对象级别显式设置访问层的任何 Blob 指定默认访问层。 对于已在对象级别设置该层的对象，不会应用帐户层。 存档层仅适用于对象级别。 可以随时通过执行以下步骤在访问层之间切换。
 
 ## <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户中 Blob 的层
 

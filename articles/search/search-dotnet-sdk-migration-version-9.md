@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002702"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>升级到 Azure 搜索 .NET SDK 版本 9
@@ -40,7 +40,7 @@ Azure 搜索 .NET SDK 的版本 9 面向 Azure 搜索 REST API 的 2019-05-06 �
 
 * [AI 扩充](cognitive-search-concept-intro.md)是从图像、Blob 和其他非结构化数据源中提取文本的功能 - 扩充内容以使其在 Azure 搜索索引中更易于搜索。
 * 使用[复杂类型](search-howto-complex-data-types.md)支持几乎可为 Azure 搜索索引中的任何嵌套式 JSON 结构建模。
-* [自动完成](search-autocomplete-tutorial.md)可以取代**建议** API 来实现“一边键入，一边搜索”的行为。 “自动完成”是指“完成”用户当前键入的单词或短语。
+* [自动完成](search-autocomplete-tutorial.md)可以取代 **建议** API 来实现“一边键入，一边搜索”的行为。 “自动完成”是指“完成”用户当前键入的单词或短语。
 * [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
 
 ### <a name="new-preview-features-in-version-80-preview"></a>版本 8.0-preview 中的新预览版功能

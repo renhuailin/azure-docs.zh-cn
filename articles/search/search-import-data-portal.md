@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88935205"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
@@ -109,7 +109,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
 1. 设置属性以确定如何在索引中使用该字段。 
 
-   请花些时间来完成此步骤，因为属性确定了索引中字段的物理表达式。 以后若要更改属性（即使是以编程方式进行更改），几乎总要删除并重建索引。 **Searchable** 和 **Retrievable** 等核心属性[对存储会产生负面影响](search-what-is-an-index.md#index-size)。 启用筛选器和使用建议器会提高存储要求。 
+   请花些时间来完成此步骤，因为属性确定了索引中字段的物理表达式。 以后若要更改属性（即使是以编程方式进行更改），几乎总要删除并重建索引。 **Searchable** 和 **Retrievable** 等核心属性 [对存储会产生负面影响](search-what-is-an-index.md#index-size)。 启用筛选器和使用建议器会提高存储要求。 
    
    + “可搜索”启用全文搜索  。 在自由格式查询或查询表达式中使用的每个字段必须有此属性。 为标记为“可搜索”的每个字段创建反向索引  。
 
@@ -121,7 +121,7 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 
    + “可排序”允许在排序中使用该字段  。 在 $Orderby 表达式中使用的每个字段必须有此属性  。
 
-1. 是否需要[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)？ 对于**可搜索的** Edm.string 字段，若要获得语言增强的索引和查询，可以设置**分析器**。 
+1. 是否需要[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)？ 对于 **可搜索的** Edm.string 字段，若要获得语言增强的索引和查询，可以设置 **分析器**。 
 
    默认值为“标准 Lucene”，但如果想要使用 Microsoft 的分析器以进行高级词汇处理（如解决不规则名词和动词形式），可选择“Microsoft 英语”   。 在门户中只能指定语言分析器。 若要使用自定义分析器或非语言分析器（例如关键字、模式等），必须以编程方式来实现。 有关分析器的详细信息，请参阅[添加语言分析器](search-language-support.md)。
 

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306901"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
@@ -38,7 +38,7 @@ Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的�
 > 使用 PowerShell 的 Azure 功能必须已安装 `Az` 模块。 `AzTable` 的当前版本与较旧的 AzureRM 模块不兼容。
 > 如果需要，请遵循[用于安装 Az 模块的最新安装说明](/powershell/azure/install-az-ps)。
 
-安装或更新 Azure PowerShell 后，必须安装模块 **AzTable** ，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module 命令。
+安装或更新 Azure PowerShell 后，必须安装模块 **AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module 命令。
 
 > [!IMPORTANT]
 > 出于模块名称兼容性原因，我们在 PowerShell 库中仍然以旧名称 `AzureRmStorageTables` 发布此同一模块。 此文档将仅引用新名称。

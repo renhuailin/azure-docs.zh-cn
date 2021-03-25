@@ -4,10 +4,10 @@ description: 注册表性能常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148411"
 ---
 # <a name="troubleshoot-registry-performance"></a>注册表性能故障排除

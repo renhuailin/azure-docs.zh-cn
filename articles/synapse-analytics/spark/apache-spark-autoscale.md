@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
 ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93313640"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>自动缩放 Azure Synapse Analytics Apache Spark 池
@@ -49,7 +49,7 @@ Azure Synapse Analytics Apache Spark 池的自动缩放功能自动缩放群集�
 
 ## <a name="get-started"></a>入门
 
-### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>使用自动缩放创建无服务器 Apache Spark 池
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>使用自动缩放功能创建无服务器 Apache Spark 池
 
 若要启用自动缩放功能，请在正常池创建过程中完成以下步骤：
 
@@ -69,7 +69,7 @@ Azure Synapse Analytics Apache Spark 池的自动缩放功能自动缩放群集�
 
 ### <a name="prepare-for-scaling-down"></a>准备进行纵向缩减
 
-在实例缩小过程中，自动缩放会使节点处于解除锁定状态，以便不会在该节点上启动新的执行程序。
+在实例纵向缩减过程中，自动缩放会使节点处于解除授权状态，以便不会在该节点上启动新的执行程序。
 
 正在运行的作业将继续运行并完成。 挂起作业将和往常一样等待调度，可用节点更少。
 

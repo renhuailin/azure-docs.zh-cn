@@ -7,21 +7,21 @@ ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708486"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
 自动检测或无代码附加允许使用 Application Insights 来启用应用程序监视，无需更改代码。  
 
-Application Insights 与各种资源提供程序集成，可在不同的环境中工作。 实质上，你只需启用和-在某些情况下-配置代理，该代理将自动收集遥测数据。 你会立刻在 Application Insights 资源中看到指标、数据和依赖项，因此可以在潜在问题出现之前发现其来源，并通过端到端事务视图分析根本原因。
+Application Insights 与各种资源提供程序集成，可在不同的环境中工作。 事实上，你只需启用代理并在某些情况下对其进行配置，该代理便可自动收集遥测数据。 你会立刻在 Application Insights 资源中看到指标、数据和依赖项，因此可以在潜在问题出现之前发现其来源，并通过端到端事务视图分析根本原因。
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>支持的环境、语言和资源提供程序
 
-在添加更多的集成时，自动检测功能矩阵变得很复杂。 下表显示了与各种资源提供程序、语言和环境的支持相对应的项目的当前状态。
+随着我们添加更多集成，自动检测功能矩阵会变得很复杂。 下表显示了与各种资源提供程序、语言和环境的支持相对应的项目的当前状态。
 
 |环境/资源提供程序          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
@@ -42,13 +42,13 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 ### <a name="windows"></a>Windows
 
 #### <a name="net"></a>.NET
-Windows 上的 Azure App Service 上的应用程序监视适用于 [.net 应用程序](./azure-web-apps.md?tabs=net) ，并且默认情况下处于启用状态。
+Windows 上 Azure 应用服务的应用程序监视可用于 [.NET 应用程序](./azure-web-apps.md?tabs=net) .NET，并且默认启用。
 
 #### <a name="netcore"></a>.NETCore
-监视 [。](./azure-web-apps.md?tabs=netcore) 只需要单击一次即可启用 NETCore 应用程序。
+只需单击一次便可启用对 [.NETCore 应用程序](./azure-web-apps.md?tabs=netcore)的监视。
 
 #### <a name="java"></a>Java
-用于监视 Windows 应用服务上的 Java 应用程序的门户集成目前不可用，但你可以在将应用部署到应用服务之前，将 Application Insights [Java 3.0 独立代理](./java-in-process-agent.md) 添加到你的应用程序，而无需进行任何代码更改。 Application Insights Java 3.0 代理现已正式发布。
+当前，门户中未集成用于监视 Windows 上的应用服务中的 Java 应用程序的功能，但你可以在将应用部署到应用服务之前，将 Application Insights [Java 3.0 独立代理](./java-in-process-agent.md)添加到你的应用程序，无需更改任何代码。 Application Insights Java 3.0 代理已正式发布。
 
 #### <a name="nodejs"></a>Node.js
 当前无法从门户中启用对 Windows 上的 Node.js 应用程序的监视。 若要监视 Node.js 应用程序，请使用 [SDK](./nodejs.md)。
@@ -56,13 +56,13 @@ Windows 上的 Azure App Service 上的应用程序监视适用于 [.net 应用�
 ### <a name="linux"></a>Linux
 
 #### <a name="netcore"></a>.NETCore
-监视。NETCore 在 Linux 上运行的应用程序，请使用 [SDK](./asp-net-core.md)。
+若要监视在 Linux 上运行的 .NETCore 应用程序，请使用 [SDK](./asp-net-core.md)。
 
 #### <a name="java"></a>Java 
-为 Linux 上的应用服务启用 Java 应用程序监视功能不可用，但你可以在将应用部署到应用服务之前，将 [Application Insights Java 3.0 代理](./java-in-process-agent.md) 添加到应用。 Application Insights Java 3.0 代理现已正式发布。
+当前无法从门户中为 Linux 上的应用服务启用 Java 应用程序监视，但你可以在将应用部署到应用服务之前，将 [Application Insights Java 3.0 代理](./java-in-process-agent.md)添加到你的应用。 Application Insights Java 3.0 代理已正式发布。
 
 #### <a name="nodejs"></a>Node.js
-在[Linux 应用服务中监视 Node.js 应用程序](./azure-web-apps.md?tabs=nodejs)以公共预览版提供，可在 Azure 门户中启用，所有区域均提供此功能。 
+[监视 Linux 上应用服务中的 Node.js 应用程序](./azure-web-apps.md?tabs=nodejs)的功能目前为公共预览版，可以在 Azure 门户中启用，在所有区域中提供。 
 
 #### <a name="python"></a>Python
 使用 SDK [监视你的 Python 应用](./opencensus-python.md) 
@@ -77,7 +77,7 @@ Windows 上的 Azure App Service 上的应用程序监视适用于 [.net 应用�
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM 和虚拟机规模集
 
-适用于 Azure Vm 和虚拟机规模集的自动检测适用于 [.net](./azure-vm-vmss-apps.md) 和 [Java](./java-in-process-agent.md)。  
+适用于 Azure VM 和虚拟机规模集的自动检测可用于 [.NET](./azure-vm-vmss-apps.md) 和 [Java](./java-in-process-agent.md)。  
 
 ## <a name="on-premises-servers"></a>本地服务器
 可以轻松地为[适用于 .NET 应用程序的本地 Windows 服务器](./status-monitor-v2-overview.md)和 [Java 应用](./java-in-process-agent.md)启用监视功能。

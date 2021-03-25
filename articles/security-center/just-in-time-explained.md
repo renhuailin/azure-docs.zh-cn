@@ -9,17 +9,17 @@ ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
 ms.openlocfilehash: 9a52596aa0dd5fa7b9a7226d2ae57259dab08d37
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93285729"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
 本页介绍 Azure 安全中心的实时 (JIT) VM 访问功能背后的原理和建议背后的逻辑。
 
-若要了解如何使用 Azure 门户 (安全中心或 Azure 虚拟机) 或以编程方式将 JIT 应用于 Vm，请参阅 [如何使用 JIT 保护管理端口](security-center-just-in-time.md)。
+若要了解如何使用 Azure 门户（安全中心或 Azure 虚拟机）或以编程方式向 VM 应用 JIT，请参阅[如何使用 JIT 保护管理端口](security-center-just-in-time.md)。
 
 
 ## <a name="the-risk-of-open-management-ports-on-a-virtual-machine"></a>虚拟机上的开放管理端口的风险
@@ -67,7 +67,7 @@ ms.locfileid: "93285729"
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>配置和使用 JIT 时需要哪些权限？
 
-JIT 要求在订阅上启用 [服务器的 Azure Defender](defender-for-servers-introduction.md) 。 
+JIT 要求在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)。 
 
 “读取者”角色和“安全读取者”角色都可以查看 JIT 状态和参数。
 

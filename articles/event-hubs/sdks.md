@@ -4,10 +4,10 @@ description: 本文提供有关 Azure 事件中心的客户端 SDK 的信息。
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 9f4eec603245f1e4ea6fa4d97b843ca6a770f2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88930870"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure 事件中心 - 客户端 SDK
@@ -22,11 +22,11 @@ ms.locfileid: "88930870"
 
 | 语言 | 程序包 | 参考 | 
 | -------- | ------- | --------------- | 
-| 上获取。 NET Standard（最新版并支持 .NET Core 和 .NET Framework） | [Azure.Messaging.EventHubs](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) |<ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
+| . NET Standard（最新版并支持 .NET Core 和 .NET Framework） | [Azure.Messaging.EventHubs](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) |<ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
 |       | [Azure.Messaging.EventHubs.Processor](https://www.nuget.org/packages/Azure.Messaging.EventHubs.Processor/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
-| 上获取。 NET Standard（旧版并支持 .NET Core 和 .NET Framework） | [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> | 
+| . NET Standard（旧版并支持 .NET Core 和 .NET Framework） | [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> | 
 |       | [Microsoft.Azure.EventHubs.Processor](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.Processor)</li><li>[教程](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
-| 上获取。 NET Framework（旧版） | [WindowsAzure.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) |<ul><li>[教程](event-hubs-dotnet-framework-getstarted-send.md)</li></ul> |
+| . NET Framework（旧版） | [WindowsAzure.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) |<ul><li>[教程](event-hubs-dotnet-framework-getstarted-send.md)</li></ul> |
 | Java | [azure-messaging-eventhubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs)</li><li>[教程](event-hubs-java-get-started-send.md)</li></ul> |
 |      | [azure-eventhubs](https://search.maven.org/search?q=a:azure-eventhubs)（旧版） | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/microsoft-azure-eventhubs)</li><li>[教程](event-hubs-java-get-started-send.md)</li></ul> |
 | Python |  [azure-eventhub](https://pypi.org/project/azure-eventhub/) | <ul><li>[GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub)</li><li>[教程](event-hubs-python-get-started-send.md)</li></ul> |

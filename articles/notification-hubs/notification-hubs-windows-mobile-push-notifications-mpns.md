@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998333"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>教程：使用通知中心向 Windows Phone 应用发送推送通知
@@ -145,7 +145,7 @@ ms.locfileid: "88998333"
     1. 对于“平台”，请选择“Windows Phone”  。 
     2. 对于“通知类型”，请选择“Toast”。  
     3. 选择“发送” 
-    4. 请在窗口底部的列表中查看**结果**。
+    4. 请在窗口底部的列表中查看 **结果**。
 
         ![“测试性发送”窗口](./media/notification-hubs-windows-phone-get-started/test-send-window.png)
 4. 在 Windows Phone 模拟器或 Windows Phone 中，确认看到通知消息。

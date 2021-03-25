@@ -7,10 +7,10 @@ ms.date: 06/07/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c5b5d413eee2528e2d5c7d04d06f1607949beaae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89012698"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services 基于 WCF 的通信堆栈
@@ -57,7 +57,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 ```
 
 ## <a name="writing-clients-for-the-wcf-communication-stack"></a>为 WCF 通信堆栈编写客户端
-为编写客户端以便使用 WCF 与服务进行通信，该框架提供了**WcfClientCommunicationFactory**，这是特定于 WCF 的 [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) 实现。
+为编写客户端以便使用 WCF 与服务进行通信，该框架提供了 **WcfClientCommunicationFactory**，这是特定于 WCF 的 [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) 实现。
 
 ```csharp
 

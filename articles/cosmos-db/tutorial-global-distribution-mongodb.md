@@ -10,10 +10,10 @@ ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 89826eab7b1686ae695a2716a03b2f5d03da277f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099243"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置全局分布式数据库
@@ -66,14 +66,14 @@ ms.locfileid: "93099243"
 
 ## <a name="connecting-to-a-preferred-region"></a>连接到首选区域 
 
-使用 Azure Cosmos DB 的用于 MongoDB 的 API，可以为全局分布式数据库指定集合的读取首选项。 为实现低延迟读取和全局高可用性，建议将集合的读取首选项设置为“就近”。  当读取首选项配置为“就近”时，将从最近的区域进行读取。 
+使用 Azure Cosmos DB 的用于 MongoDB 的 API，可以为全局分布式数据库指定集合的读取首选项。 为实现低延迟读取和全局高可用性，建议将集合的读取首选项设置为“就近”。 当读取首选项配置为“就近”时，将从最近的区域进行读取。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-对于具有主读取/写入区域和用于灾难恢复 (DR) 方案的辅助区域的应用程序，建议将集合的读取首选项设置为“辅助优先”。  当读取首选项配置为“辅助优先”时，如果主区域不可用，将从辅助区域进行读取。 
+对于具有主读取/写入区域和用于灾难恢复 (DR) 方案的辅助区域的应用程序，建议将集合的读取首选项设置为“辅助优先”。 当读取首选项配置为“辅助优先”时，如果主区域不可用，将从辅助区域进行读取。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);

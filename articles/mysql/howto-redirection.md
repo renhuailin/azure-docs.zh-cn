@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98201427"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重定向连接到 Azure Database for MySQL
 
 本主题介绍了如何使用重定向模式将应用程序连接到 Azure Database for MySQL 服务器。 重定向是为了减小客户端应用程序与 MySQL 服务器之间的网络延迟，因为它允许应用程序直接连接到后端服务器节点。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 登录到 [Azure 门户](https://portal.azure.com)。 使用引擎版本 5.6、5.7 或 8.0 创建 Azure Database for MySQL 服务器。 
 
 有关详细信息，请参阅如何使用 [Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)或 [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md) 创建 Azure Database for MySQL 服务器。
 
 > [!IMPORTANT]
-> [Azure Database for MySQL 的私有链接](concepts-data-access-security-private-link.md)当前不支持重定向。
+> [Azure Database for MySQL 的专用链接](concepts-data-access-security-private-link.md)当前不支持重定向。
 
 ## <a name="enable-redirection"></a>启动重定向
 

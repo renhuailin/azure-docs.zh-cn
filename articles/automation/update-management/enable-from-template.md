@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 09/18/2020
 ms.openlocfilehash: 95ef52acedc9171ba86110a665d08ea97c59bfbb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575816"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”

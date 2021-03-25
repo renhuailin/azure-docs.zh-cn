@@ -2,13 +2,13 @@
 title: 有关使用 Azure 资源管理器模板创建 Azure 恢复服务保管库的快速入门。
 description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 恢复服务保管库。
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92745876"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板创建恢复服务保管库
@@ -52,18 +52,18 @@ ms.locfileid: "92745876"
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="用于创建恢复服务保管库的模板。":::
 
-   - **订阅** ：选择 Azure 订阅。
-   - **资源组** ：选择现有的组，或选择“新建”以添加组。
-   - **位置** ：默认为资源组的位置，选择资源组后将不可用。
-   - **保管库名称** ：提供保管库的名称。
-   - **更改存储类型** ：默认值为 **false** 。 只有在需要更改保管库的存储类型时，才选择“true”。
-   - **保管库存储类型** ：默认值为“GloballyRedundant”。 如果存储类型设置为“true”，请选择“LocallyRedundant” 。
-   - **位置** ：函数 `[resourceGroup().location]` 默认为资源组的位置。 若要更改位置，请输入一个值，例如 westus。
+   - **订阅**：选择 Azure 订阅。
+   - **资源组**：选择现有的组，或选择“新建”以添加组。
+   - **位置**：默认为资源组的位置，选择资源组后将不可用。
+   - **保管库名称**：提供保管库的名称。
+   - **更改存储类型**：默认值为 **false**。 只有在需要更改保管库的存储类型时，才选择“true”。
+   - **保管库存储类型**：默认值为“GloballyRedundant”。 如果存储类型设置为“true”，请选择“LocallyRedundant” 。
+   - **位置**：函数 `[resourceGroup().location]` 默认为资源组的位置。 若要更改位置，请输入一个值，例如 westus。
    - 选中“我同意上述条款和条件”复选框。
 
 1. 若要开始部署保管库，请选择“购买”按钮。 成功部署后，会显示一条通知。
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="用于创建恢复服务保管库的模板。":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="保管库部署成功。":::
 
 ## <a name="validate-the-deployment"></a>验证部署
 

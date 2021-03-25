@@ -10,10 +10,10 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 938f55ae0ba911ea3a97cd49e6424bf8aaefdc76
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100381676"
 ---
 ### <a name="default"></a>默认
@@ -39,7 +39,7 @@ ms.locfileid: "100381676"
 
 ### <a name="additional-types"></a>其他类型
 
-使用 [存储扩展插件的5.0.0 或更高版本](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher) 的应用程序也可以使用 [Azure SDK for .net](/dotnet/api/overview/azure/storage.blobs-readme)中的类型。 此版本支持旧的 `CloudBlobContainer` 、、、 `CloudBlobDirectory` 、 `ICloudBlob` `CloudBlockBlob` `CloudPageBlob` 和 `CloudAppendBlob` 类型，以支持以下类型：
+应用如果使用 [5.0.0 版或更高版本的存储扩展](../articles/azure-functions/functions-bindings-storage-blob.md#storage-extension-5x-and-higher)，还可以使用[用于 .NET 的 Azure SDK](/dotnet/api/overview/azure/storage.blobs-readme) 中的类型。 此版本为了支持以下类型，删除了对旧的 `CloudBlobContainer`、`CloudBlobDirectory`、`ICloudBlob`、`CloudBlockBlob`、`CloudPageBlob` 和 `CloudAppendBlob` 类型的支持：
 
 - [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)
 - [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)<sup>1</sup>
@@ -50,4 +50,4 @@ ms.locfileid: "100381676"
 
 <sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
-有关使用这些类型的示例，请参阅 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)中的扩展。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)。

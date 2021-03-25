@@ -5,10 +5,10 @@ ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88066196"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
@@ -24,11 +24,11 @@ ms.locfileid: "88066196"
 - 删除主题和订阅
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照[快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线**命名空间**并获取**连接字符串**。
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照 [快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线 **命名空间** 并获取 **连接字符串**。
 
     > [!NOTE]
-    > 在本快速入门中，你将使用 **PHP** 创建一个**主题**和对此主题的**订阅**。 
+    > 在本快速入门中，你将使用 **PHP** 创建一个 **主题** 和对此主题的 **订阅**。 
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
 创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用[用于 PHP 的 Azure SDK](https://github.com/Azure/azure-sdk-for-php) 中的类。 可以使用任何开发工具或记事本创建应用程序。

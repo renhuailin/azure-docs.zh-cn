@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: d0cc7630a3bea67a99c3cb65d2015e934e8ac2da
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.date: 03/05/2021
+ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539088"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433788"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建搜索索引
 
-认知搜索存储 *搜索索引* 中用于全文和筛选查询的可搜索内容。 索引由架构定义并保存到服务，紧接着的第二步是数据导入。 
+认知搜索会在搜索索引中会存储用于全文查询和筛选后查询的可搜索内容。 索引由架构定义并保存到服务，紧接着的第二步是数据导入。 
 
 索引包含 *搜索文档*。 从概念上讲，文档是索引中的一个可搜索数据单元。 零售商可能有每件产品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：搜索索引等同于表，文档大致相当于表中的行   。
 
 ## <a name="whats-an-index-schema"></a>什么是索引架构？
 
-索引的物理结构由架构确定。 "字段" 集合通常是索引的最大一部分，其中每个字段都命名为，分配有 [数据类型](/rest/api/searchservice/Supported-data-types)，并具有确定如何使用的允许行为。
+索引的物理结构由架构确定。 通常，索引中大部分都是“字段”集合，其中每个字段都已命名、分配了[数据类型](/rest/api/searchservice/Supported-data-types)，并具有允许行为的属性（确定该字段的用法）。
 
 ```json
 {
@@ -57,64 +57,64 @@ ms.locfileid: "99539088"
 }
 ```
 
-为了简洁起见，还折叠了其他元素，但是下面的链接可以提供详细信息： [建议器](index-add-suggesters.md)、 [计分配置文件](index-add-scoring-profiles.md)、用于根据语言规则或分析器支持的其他特性处理标记的 [分析器](search-analyzers.md) ，以及 [跨源远程脚本 (CORS) ](#corsoptions) 设置。
+为简洁起见，系统折叠了其他元素，但以下链接可以提供详细信息：[建议器](index-add-suggesters.md)、[计分概要文件](index-add-scoring-profiles.md)、[分析器](search-analyzers.md)（用于根据语言规则或分析器支持的其他特性将字符串处理成令牌），以及[跨域远程脚本 (CORS)](#corsoptions) 设置。
 
 ## <a name="choose-a-client"></a>选择客户端
 
-有几种方法可用于创建搜索索引。 建议将 Azure 门户或 REST Api 用于早期开发和概念证明测试。
+可通过几种方法来创建搜索索引。 我们建议将 Azure 门户或 SDK 用于早期开发和概念证明测试。
 
 在开发过程中，规划频繁的重新生成。 由于物理结构是在服务中创建的，对现有的字段定义进行的许多更改，都必须[删除并重新创建索引](search-howto-reindex.md)。 可以考虑使用一部分数据来加快重新生成的速度。
 
 ### <a name="permissions"></a>权限
 
-与搜索索引相关的所有操作（包括 GET 请求其定义）在请求上都需要 [管理 api 密钥](search-security-api-keys.md) 。
+与搜索索引相关的所有操作（包括 GET 请求其定义的操作）在请求中都需要[管理 API 密钥](search-security-api-keys.md)。
 
 ### <a name="limits"></a>限制
 
-所有 [服务层限制](search-limits-quotas-capacity.md#index-limits) 了你可以创建的对象数。 如果要试验免费层，在任何给定时间只能有3个索引。
+所有[服务层都会限制](search-limits-quotas-capacity.md#index-limits)你可以创建的对象数量。 如果要试用免费层，则你在任何时候都只能有 3 个索引。
 
 ### <a name="use-azure-portal-to-create-a-search-index"></a>使用 Azure 门户创建搜索索引
 
-门户提供了两个用于创建搜索索引的选项： [**导入数据向导**](search-import-data-portal.md) 和添加用于指定索引架构的字段的 **索引** 。 向导还会通过创建索引器、数据源和加载数据，在其他操作中进行打包。 如果这是您所需的内容，则应只使用 **添加索引** 或其他方法。
+门户提供了两个用于创建搜索索引的选项：[“导入数据”向导](search-import-data-portal.md)和“添加索引”（提供用于指定索引架构的字段） 。 该向导还会通过创建索引器、数据源和加载数据来打包其他操作。 如果你需要的功能没有那么多，那么只需使用“添加索引”或其他方法。
 
-以下屏幕截图显示了在门户中查找 " **添加索引** " 的位置。 **导入数据** 是右下一门。
+以下屏幕截图显示了可以在门户中的哪个位置找到“添加索引”。 “导入数据”就在旁边。
 
   :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="添加索引命令" border="true":::
 
 > [!Tip]
-> 通过门户的索引设计强制实施特定数据类型的要求和架构规则，例如禁用对数值字段的全文搜索功能。 获得可使用的索引后，可以从门户复制 JSON，并将其添加到解决方案中。
+> 通过门户设计的索引可强制实施针对特定数据类型的要求和架构规则，例如，对数值字段禁用全文搜索功能。 获得可使用的索引后，就可以从门户复制 JSON 并将其添加到解决方案中。
 
 ### <a name="use-a-rest-client"></a>使用 REST 客户端
 
-使用 Azure 认知搜索) 的扩展 (的 Postman 和 Visual Studio Code 都可以充当搜索索引客户端。 使用任一工具，你都可以连接到搜索服务，并 [ (REST) 请求发送创建索引 ](/rest/api/searchservice/create-index) 。 有许多教程和示例演示了用于创建对象的 REST 客户端。 
+Postman 和 Visual Studio Code（带有 Azure 认知搜索的扩展）都可以充当查询索引客户端。 使用任一工具都可以连接到搜索服务，并发送[创建文档 (REST)](/rest/api/searchservice/create-index) 请求。 有许多教程和示例演示了用于创建对象的 REST 客户端。 
 
-请从以下文章之一开始了解每个客户端：
+请从以下任一文章开始阅读，了解每个客户端：
 
 + [使用 REST 和 Postman 创建搜索索引](search-get-started-rest.md)
 + [Visual Studio Code 和 Azure 认知搜索入门](search-get-started-vs-code.md)
 
-请参阅 [索引操作 (REST) ](/rest/api/searchservice/index-operations) ，以获取有关如何表述索引请求的帮助。
+请参阅[索引操作 (REST)](/rest/api/searchservice/index-operations)，获取有关构建索引请求的帮助。
 
 ### <a name="use-an-sdk"></a>使用 SDK
 
-对于认知搜索，Azure Sdk 实现了公开提供的功能。 因此，你可以使用任何 Sdk 来创建搜索索引。 所有这些方法都提供一个 **SearchIndexClient** ，其中包含用于创建和更新索引的方法。
+对于认知搜索，Azure SDK 实现了正式发布的功能。 因此，你可以使用任何 SDK 来创建查询索引。 所有 SDK 都提供了 SearchIndexClient，其中包含用于创建和更新索引的方法。
 
 | Azure SDK | 客户端 | 示例 |
 |-----------|--------|----------|
-| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-dotnet/快速入门/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
-| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
-| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [索引](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
-| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations. py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
+| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
+| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
+| Javascript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [索引](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
+| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
 ## <a name="define-fields"></a>定义字段
 
-搜索文档由 `fields` 集合定义。 你将需要用于查询和键的字段。 你可能还需要字段来支持筛选器、方面和排序。 你可能还需要用户从不看到的数据字段，例如，你可能需要用于修改搜索排名的利润或营销促销字段。
+搜索文档由 `fields` 集合定义。 你需要查询和键字段。 可能还需要用于支持筛选器、facet 和排序的字段。 还需要用户无法看到的数据字段，例如你可能需要用于修改搜索排名的利润率或市场推广字段。
 
-类型为 Edm 的一个字段必须指定为文档键。 它用于唯一标识每个搜索文档。 可以按文档的键来检索文档，以填充详细信息页。  
+必须将类型为 Edm.String 的字段指定为文档键。 它用于唯一标识每个搜索文档，并区分大小写。 你可以按文档键来检索文档，以填充详细信息页。
 
 如果传入数据在本质上是分层的，则分配[复杂类型](search-howto-complex-data-types.md)数据类型来表示嵌套结构。 内置的示例数据集 Hotels 演示的复杂类型使用一个 Address（包含多个子字段），其中有与每个酒店的一对一关系，并且有一个 Rooms 复杂集合，其中有多个房间与每个酒店相关联。 
 
-在创建索引之前将任何分析器分配给字符串字段。 如果要启用特定字段的自动完成功能，请为建议器执行相同操作。
+在创建索引之前，将所有分析器分配给字符串字段。 如果要在特定字段上启用自动完成功能，请为建议器执行相同的操作。
 
 <a name="index-attributes"></a>
 
@@ -150,9 +150,9 @@ ms.locfileid: "99539088"
 
 尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置“retrievable”是否会增大索引大小？ 否。 将字段添加到 suggester 是否会增大索引大小？ 可以。 
 
-使字段可筛选或可排序还会增加存储消耗量，因为筛选和排序字段不会进行标记，因此字符序列可以逐字匹配。
+使字段可筛选或可排序也会增加存储使用量，因为已筛选和已排序的字段未进行切分，因此可以逐字匹配字符序列。
 
-也未在上表中反映出 [分析器](search-analyzers.md)的影响。 如果使用 edgeNgram 标记器来存储逐字字符序列 (a、ab、abc、abcd) ，则索引大小将大于使用标准分析器时的大小。
+未在上表中反映出的还有[分析器](search-analyzers.md)的影响。 如果使用 edgeNgram 分词器来存储逐字字符序列（a、ab、abc、abcd），则索引大小将大于使用标准分析器时的大小。
 
 > [!Note]
 > 存储体系结构被视为 Azure 认知搜索的实现细节，随时可能在不另行通知的情况下进行更改。 不保证将来仍会保持当前的行为。
@@ -161,11 +161,11 @@ ms.locfileid: "99539088"
 
 ## <a name="about-corsoptions"></a>关于 `corsOptions`
 
-索引架构包含用于设置的部分 `corsOptions` 。 默认情况下，客户端 JavaScript 无法调用任何 API，因为浏览器将阻止所有跨域请求。 若要允许对索引进行跨域查询，请通过设置 **corsOptions** 来启用 CORS（跨域资源共享）。 出于安全原因，只有查询 API 才支持 CORS。 
+索引架构包含用于设置 `corsOptions` 的部分。 默认情况下，客户端 JavaScript 无法调用任何 API，因为浏览器将阻止所有跨域请求。 若要允许对索引进行跨域查询，请通过设置 **corsOptions** 来启用 CORS（跨域资源共享）。 出于安全原因，只有查询 API 才支持 CORS。 
 
 可为 CORS 设置以下选项：
 
-+ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅 [跨域资源共享 (维基百科) ](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 。
++ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
   若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。 
 
@@ -173,10 +173,10 @@ ms.locfileid: "99539088"
 
 ## <a name="next-steps"></a>后续步骤
 
-您可以使用几乎任何示例或演练认知搜索来获取创建索引的实践体验。 对于初学者，你可以从目录中选择任意快速入门。
+你几乎可以使用认知搜索的任何示例或演练来亲身体验如何创建索引。 对于初学者，可以从目录中选择任何快速入门。
 
-但您还希望熟悉用于加载带有数据的索引的方法。 索引定义和数据导入策略在一起定义。 以下文章提供有关加载索引的详细信息。
+但你最好也要熟悉加载索引和数据的方法。 索引定义和数据导入策略是一起定义的。 以下文章提供有关如何加载索引的详细信息。
 
 + [数据导入概述](search-what-is-data-import.md)
 
-+ [ (REST) 添加、更新或删除文档 ](/rest/api/searchservice/addupdate-or-delete-documents) 
++ [添加、更新或删除文档 (REST API)](/rest/api/searchservice/addupdate-or-delete-documents) 

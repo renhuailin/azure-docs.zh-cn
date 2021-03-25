@@ -1,35 +1,35 @@
 ---
 title: NDv2 系列
-description: NDv2 系列 Vm 的规格。
+description: NDv2 系列 VM 的规格。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 7a417def30fcb3a2b429151b9d4c9ba4152220a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 2f062aa43132543a2c149039eb50c0a0ab22d83d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101669165"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102618553"
 ---
-# <a name="updated-ndv2-series"></a>更新的 NDv2 系列
+# <a name="updated-ndv2-series"></a>已更新 NDv2 系列
 
-NDv2 系列虚拟机是 GPU 系列的新补充，旨在满足最苛刻的 GPU 加速 AI、机器学习、模拟和 HPC 工作负荷的需求。
+NDv2 系列虚拟机是 GPU 系列中新增的系列，旨在满足最严苛 GPU 加速 AI、机器学习、模拟和 HPC 工作负载的需求。
 
-NDv2 由8个 NVIDIA Tesla V100 NVLINK 连接的 Gpu 提供支持，其中每个 Gpu 都具有 32 GB 的 GPU 内存。 每个 NDv2 VM 还具有40超线程的 Intel 至强8168白金 (Skylake) 核心和 672 GiB 的系统内存。
+NDv2 由 8 个 NVIDIA Tesla V100 NVLINK 连接的 GPU 提供支持，每个 GPU 都有 32 GB 的 GPU 内存。 每个 NDv2 VM 还具有 40 个非超线程的 Intel Xeon Platinum 8168 (Skylake) 核心和 672 GiB 的系统内存。
 
-NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷提供卓越的性能，并为支持 GPU 加速的众多 AI、ML 和分析工具（如 TensorFlow、Pytorch、Caffe、RAPIDS 和其他框架）提供出色的性能。
+NDv2 实例使用 CUDA GPU 优化计算内核、众多 AI、ML、支持 GPU 加速的现成分析工具（如 TensorFlow、Pytorch、Caffe、RAPIDS）以及其他框架，为 HPC 和 AI 工作负载提供卓越的性能。
 
-严重而言，NDv2 是为计算密集型向上扩展 (利用每个 VM 8 个 Gpu) 和向外扩展， (跨多个 Vm 实现) 工作负载。 NDv2 系列现在支持100千兆位的 ""，它类似于 HB-ACCT-WC 系列 HPC VM 提供的功能，从而为并行方案（包括 AI 和 ML 的分布式培训）提供高性能群集。 此后端网络支持所有主要的不受支持的协议（包括 NVIDIA 的 NCCL2 库使用的协议），从而允许对 Gpu 进行无缝群集。
+最重要的是，NDv2 是为计算密集型纵向扩展（每个 VM 利用 8 个 GPU）和横向扩展（利用多个协同工作的 VM）工作负载而构建的。 NDv2 系列现在支持 100 GB InfiniBand EDR 后端网络（类似于 HB 系列 HPC VM 上提供的网络），可对并行场景执行高性能聚类分析，包括针对 AI 和 ML 的分布式训练。 此后端网络支持所有主要的 InfiniBand 协议（包括 NVIDIA 的 NCCL2 库使用的协议），可实现 GPU 的无缝聚类分析。
 
 > [!IMPORTANT]
-> 在 ND40rs_v2 VM 上 [启用 "允许](./workloads/hpc/enable-infiniband.md) " 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
+> 在 ND40rs_v2 VM 上[启用 InfiniBand](./workloads/hpc/enable-infiniband.md) 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
 >
-> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用 [第2代 vm](./generation-2.md) 和 marketplace 映像。 
+> 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用[第 2 代 VM](./generation-2.md) 和市场映像。 
 >
-> 请注意：具有 16 GB 的每个 GPU 内存的 ND40s_v2 不再可供预览，已被更新的 ND40rs_v2 取代。
+> 请注意：每 GPU 内存为 16 GB 的 ND40s_v2 不再提供预览版，已被更新的 ND40rs_v2 取代。
 
 <br>
 
@@ -37,16 +37,16 @@ NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷�
 [高级存储缓存](premium-storage-performance.md)：支持<br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
-[VM 生成支持](generation-2.md)：第2代<br>
+[VM 代系支持](generation-2.md)：第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
-不受支持：支持<br>
-Nvidia NVLink Interconnect：支持<br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
+InfiniBand：支持<br>
+Nvidia NVLink 互连：支持<br>
 <br>
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) ： GiB | GPU | GPU 内存： GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网络带宽 | 最大 NIC 数 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD)：GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网络带宽 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink)  | 32 | 32 | 80000 / 800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000 / 800 | 24000 Mbps | 8 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -56,7 +56,7 @@ Nvidia NVLink Interconnect：支持<br>
 
 [NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-linux.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅 [适用于 Linux 的 N 系列 gpu 驱动程序设置](./linux/n-series-driver-setup.md)。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)。
 
 ## <a name="other-sizes"></a>其他大小
 

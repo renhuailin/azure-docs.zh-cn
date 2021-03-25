@@ -9,10 +9,10 @@ ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100391501"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
@@ -50,14 +50,14 @@ ms.locfileid: "100391501"
 3. 选择要在其中创建数据工厂的 Azure **订阅**。 
 4. 对于 **资源组**，请执行以下步骤之一：
      
-   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+   - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。  
    - 选择“新建”，并输入资源组的名称。   
          
      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 4. 选择“V2”作为“版本”。
 5. 选择数据工厂的 **位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”。     
-7. 单击 **创建**。
+7. 单击“创建”。
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
      ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -120,7 +120,7 @@ ms.locfileid: "100391501"
 
     ![立即触发](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
-2. 在“管道运行”窗口中选择“完成”。 
+2. 在“管道运行”窗口中选择“完成”。  
 3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
     ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)

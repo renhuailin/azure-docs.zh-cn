@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109130"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>教程：使用 Azure 门户为 Microsoft 对等互连配置路由筛选器
@@ -79,27 +79,27 @@ ms.locfileid: "92109130"
 
 1. 请将路由筛选器放置在资源组中。 确保该位置与 ExpressRoute 路线相同。 选择“查看 + 创建”，然后选择“创建” 。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+    :::image type="content" source="./media/how-to-routefilter-portal/create-route-filter-basic.png" alt-text="显示“创建路由筛选器”页面的屏幕截图，其中输入了示例值":::
 
 ### <a name="create-a-filter-rule"></a>创建筛选器规则
 
 1. 若要添加和更新规则，请为路由筛选器选择“管理规则”选项卡。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+    :::image type="content" source="./media/how-to-routefilter-portal/manage-route-filter.png" alt-text="显示“概述”页面的屏幕截图，其中突出显示了“管理规则”操作":::
 
 1. 从下拉列表中选择希望连接的服务，并在完成后保存规则。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="显示“管理规则”窗口的屏幕截图，其中的“允许的服务社区”下拉列表中年选择了服务":::
 
 ## <a name="attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>将路由筛选器附加到 ExpressRoute 线路
 
 选择“+添加线路”按钮，并从下拉列表中选择 ExpressRoute 线路，将路由筛选器附加到线路中。
 
-:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+:::image type="content" source="./media/how-to-routefilter-portal/add-circuit-to-route-filter.png" alt-text="显示“概述”页面的屏幕截图，其中选择了“添加线路”操作":::
 
 如果连接服务提供商为 ExpressRoute 线路配置了对等互连，请先从 ExpressRoute 线路页面中刷新该线路，再选择“+添加线路”按钮。
 
-:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+:::image type="content" source="./media/how-to-routefilter-portal/refresh-express-route-circuit.png" alt-text="显示“概述”页面的屏幕截图，其中选择了“刷新”操作。":::
 
 ## <a name="common-tasks"></a><a name="tasks"></a>常见任务
 
@@ -107,30 +107,30 @@ ms.locfileid: "92109130"
 
 在门户中打开资源时，可以查看路由筛选器的属性。
 
-:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+:::image type="content" source="./media/how-to-routefilter-portal/view-route-filter.png" alt-text="显示“概述”页的屏幕截图":::
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>更新路由筛选器的属性
 
 1. 可通过选择“管理规则”按钮更新附加到线路的 BGP 社区值列表。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+    :::image type="content" source="./media/how-to-routefilter-portal/update-route-filter.png" alt-text="使用“管理规则”操作来更新路由筛选器":::
 
 1. 选择所需的服务社区，然后选择“保存”。
 
-    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+    :::image type="content" source="./media/how-to-routefilter-portal/add-route-filter-rule.png" alt-text="显示已选择服务的“管理规则”窗口的屏幕截图":::
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 若要从路由筛选器中分离线路，请右键单击该线路，然后选择“取消关联”。
 
-:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+:::image type="content" source="./media/how-to-routefilter-portal/detach-route-filter.png" alt-text="显示“概述”页面的屏幕截图，其中突出显示了“取消关联”操作":::
 
 
 ## <a name="clean-up-resources"></a>清理资源
 
 可选择“删除”按钮来删除路由筛选器。 删除之前，请确保路由筛选器未关联到任何线路。
 
-:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="显示“路由筛选器”页面的屏幕截图":::
+:::image type="content" source="./media/how-to-routefilter-portal/delete-route-filter.png" alt-text="删除路由筛选器":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98246700"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
@@ -39,12 +39,12 @@ ms.locfileid: "98246700"
 * **dt** - UTC 日期/时间
 * **enum** - 已知常量的枚举
 * **exp** - 表达式，它的计算结果应当是一个布尔值
-* **mvbin** –多值二进制
-* **mvstr** –多值字符串
-* **mvref** –多值引用
+* **mvbin** – 多值二进制
+* **mvstr** – 多值字符串
+* **mvref** – 多值引用
 * **num** - 数字
-* **ref** –参考
-* **str** – String
+* **ref** – 引用
+* **str** – 字符串
 * **var** -（几乎）任何其他类型的一个变体
 * **void** - 不返回值
 

@@ -10,10 +10,10 @@ ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: f31eb0fa6dbb881f7a09b21b9dd4842fdfd291f5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090284"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入门：构建一个 Spring Data Azure Cosmos DB v3 应用以管理 Azure Cosmos DB SQL API 数据
@@ -56,7 +56,7 @@ Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以�
 
 可在[此处](account-databases-containers-items.md)阅读有关数据库、容器和项的详细信息。 几个重要属性在容器级别定义，其中包括预配吞吐量和分区键。 
 
-预配吞吐量以具有货币价格的请求单位 ( *RU* ) 度量，是帐户运营成本中重要的确定性因素。 可以按单容器粒度或单数据库粒度选择预配吞吐量，但通常首选容器级别吞吐量规范。 可在[此处](set-throughput.md)阅读有关吞吐量预配的详细信息。
+预配吞吐量以具有货币价格的请求单位 (*RU*) 度量，是帐户运营成本中重要的确定性因素。 可以按单容器粒度或单数据库粒度选择预配吞吐量，但通常首选容器级别吞吐量规范。 可在[此处](set-throughput.md)阅读有关吞吐量预配的详细信息。
 
 将项插入 Cosmos DB 容器时，数据库会添加更多的存储和计算来处理请求，以水平方式增长。 存储和计算容量添加到称为分区的离散单元中，你必须在文档中选择一个字段作为分区键，以便将每个文档映射到分区。 分区的管理方式是从分区键值的范围内为每个分区分配一个大致相等的切片；因此，建议选择相对随机或均匀分布的分区键。 否则，某些分区看到的请求数会多得多（热分区），而其他分区看到的请求数会少得多（冷分区），这是应该避免的。 可以在[此处](partitioning-overview.md)详细了解分区。
 
@@ -83,7 +83,7 @@ Cosmos DB 帐户的结构。 不管使用 API 还是编程语言，都具有以�
 
 现在，让我们转到如何使用代码上来。 接下来，克隆 GitHub 中的 SQL API 应用程序，设置连接字符串，并运行应用程序。 会看到以编程方式处理数据是多么容易。 
 
-运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started.git
