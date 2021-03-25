@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: ffc2ffb8a390ec48ad093c934339544c83568885
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92507051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>教程：Azure Active Directory 与 Neota Logic Studio 集成
@@ -101,7 +101,7 @@ ms.locfileid: "92507051"
 
     ![Neota Logic Studio 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub domain>.neotalogic.com/a/<sub application>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub domain>.neotalogic.com/a/<sub application>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<sub domain>.neotalogic.com/wb`
 
@@ -134,7 +134,7 @@ ms.locfileid: "92507051"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "92507051"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

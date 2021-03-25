@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536039"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
@@ -36,13 +36,13 @@ ms.locfileid: "92536039"
 
 下面是一些可以为 IoT 中心设置的属性：
 
-**定价和缩放** ：可使用此属性迁移到其他层或设置 IoT 中心单元数。 
+**定价和缩放**：可使用此属性迁移到其他层或设置 IoT 中心单元数。 
 
-**操作监视** ：打开或关闭不同的监视类别，如与设备到云消息或云到设备消息相关的事件的日志记录。
+**操作监视**：打开或关闭不同的监视类别，如与设备到云消息或云到设备消息相关的事件的日志记录。
 
-**IP 筛选器** ：可指定 IoT 中心会接受或拒绝的 IP 地址范围。
+**IP 筛选器**：可指定 IoT 中心会接受或拒绝的 IP 地址范围。
 
-**属性** ：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
+**属性**：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
 
 ### <a name="shared-access-policies"></a>共享访问策略
 
@@ -78,7 +78,7 @@ ms.locfileid: "92536039"
 
 ![显示了添加新路由的屏幕截图](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-命名路由。 路由名称在该集线器的路由列表中必须是唯一的。 
+命名路由。 路由名称在该中心的路由列表中必须是唯一的。 
 
 对于“终结点”  ，可从下拉列表中选择一个或新添加一个。 在此示例中，已有存储帐户和容器。 若要将其添加为终结点，请单击终结点下拉列表旁的“+”（添加）  并选择“Blob 存储”  。 以下屏幕显示指定存储帐户和容器的位置。
 

@@ -8,10 +8,10 @@ ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
 ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675698"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>有关教育中心的常见问题
@@ -252,8 +252,8 @@ Windows Server<br>
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>如何查找我的订阅者 ID？
 
-- **首次在计划中注册时** ：订阅者 ID 号显示在你接收的订阅欢迎电子邮件中。
-- **如果续订了订阅** ：订阅者 ID 显示在订阅管理员接收的续订电子邮件中。
+- **首次在计划中注册时**：订阅者 ID 号显示在你接收的订阅欢迎电子邮件中。
+- **如果续订了订阅**：订阅者 ID 显示在订阅管理员接收的续订电子邮件中。
 
 订阅者 ID 也显示在 Visual Studio 订阅门户中。 登录后，可在“我的帐户”页上的“我的订阅”下查看 。
 

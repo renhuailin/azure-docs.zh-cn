@@ -4,10 +4,10 @@ description: 了解如何使 Azure 中运行的函数代码更安全，使其免
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368483"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
@@ -58,7 +58,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 下表比较了不同类型的访问密钥的用法：
 
-| 操作                                        | 范围                    | 有效密钥         |
+| 操作                                        | 作用域                    | 有效密钥         |
 |-----------------------------------------------|--------------------------|--------------------|
 | 执行函数                            | 特定函数        | 函数           |
 | 执行函数                            | 任何函数             | 函数或主机   |
@@ -76,7 +76,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 默认情况下，密钥存储在通过 `AzureWebJobsStorage` 设置提供的帐户中的 Blob 存储容器中。 可以使用特定的应用程序设置来重写此行为，将密钥存储在另一位置。
 
-|位置  |设置 | “值” | 描述  |
+|位置  |设置 | 值 | 描述  |
 |---------|---------|---------|---------|
 |不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
 |文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥持久保留在文件系统中，在使用函数应用特有的机密进行存储之前加密。 |
@@ -107,7 +107,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 [!INCLUDE [app-service-managed-identities](../../includes/app-service-managed-identities.md)]
 
-托管标识可用于替代来自某些触发器和绑定的连接的机密。 请参阅 [基于标识的连接](#identity-based-connections)。
+托管标识可用于替代来自某些触发器和绑定的连接的机密。 请参阅[基于标识的连接](#identity-based-connections)。
 
 有关详细信息，请参阅[如何使用应用服务和 Azure Functions 的托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
 
@@ -143,9 +143,9 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 标识可用于代替机密来连接到某些资源。 这种方法的优点是不需要管理机密，而是提供更精细的访问控制和审核。 
 
-编写用于创建与 [支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)的连接的代码时，可以选择使用标识，而不是使用机密或连接字符串。 每个服务的文档中介绍了这两种连接方法的详细信息。
+编写用于创建与[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)的连接的代码时，可以选择使用标识而不是机密或连接字符串。 每个服务的文档中都介绍了这两种连接方法的详细信息。
 
-某些 Azure Functions 的触发器和绑定扩展可以使用基于标识的连接进行配置。 如今，这包括 [Azure Blob](./functions-bindings-storage-blob.md) 和 [azure 队列](./functions-bindings-storage-queue.md) 扩展。 有关如何配置这些扩展以使用标识的信息，请参阅 [如何在 Azure Functions 中使用基于标识的连接](./functions-reference.md#configure-an-identity-based-connection)。
+某些 Azure Functions 触发器和绑定扩展可以使用基于标识的连接进行配置。 现在，这包括 [Azure Blob](./functions-bindings-storage-blob.md) 和 [Azure 队列](./functions-bindings-storage-queue.md)扩展。 有关如何配置这些扩展以使用标识的详细信息，请参阅[如何在 Azure Functions 中使用基于标识的连接](./functions-reference.md#configure-an-identity-based-connection)。
 
 ### <a name="set-usage-quotas"></a>设置使用配额
 

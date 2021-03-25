@@ -4,10 +4,10 @@ description: 本文就本地开发群集的故障介绍一些建议
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.openlocfilehash: 20948cd1626c02d73fb6e9ef096b552bbab627fb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575901"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障

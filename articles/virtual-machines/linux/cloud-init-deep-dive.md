@@ -2,18 +2,18 @@
 title: 了解 cloud-init
 description: 深入了解如何使用 cloud-init 来预配 Azure VM。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86042063"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559437"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>深入了解 cloud-init
 若要详细了解 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 或在更深级别对其进行故障排除，你需要了解其工作原理。 本文档重点介绍了重要的部分，并介绍了 Azure 具体内容。
@@ -26,7 +26,7 @@ ms.locfileid: "86042063"
 
 某些配置已经内置到附带了 cloud-init 的 Azure 市场映像中，例如：
 
-1. **云数据源** - cloud-init 包含可与云平台（称为“数据源”）进行交互的代码。 从 [azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure)中的云初始化映像创建 VM 时，云初始化会加载 azure 数据源，该数据源将与 azure 元数据终结点交互，以获取特定于 VM 的配置。
+1. **云数据源** - cloud-init 包含可与云平台（称为“数据源”）进行交互的代码。 在 [Azure](https://cloudinit.readthedocs.io/en/latest/topics/datasources/azure.html#azure) 中基于 cloud-init 映像创建 VM 时，cloud-init 会加载 Azure 数据源，该数据源将与 Azure 元数据终结点进行交互来获取特定于 VM 的配置。
 2. **运行时配置** (/run/cloud-init)
 3. **映像配置** (/etc/cloud)，如 `/etc/cloud/cloud.cfg`、`/etc/cloud/cloud.cfg.d/*.cfg`。 例如，在 Azure 中使用此功能的情况下，具有 cloud-init 的 Linux OS 映像通常可以发出一个 Azure 数据源指令，告诉 cloud-init 应该使用哪个数据源，这将节省 cloud-init 时间：
 

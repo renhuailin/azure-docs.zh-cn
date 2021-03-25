@@ -1,6 +1,6 @@
 ---
 title: Azure VPN 网关：加密要求
-description: 了解如何配置 Azure VPN 网关，以满足跨界 S2S VPN 隧道和 Azure VNet 到 VNet 连接的加密要求。
+description: 了解如何配置 Azure VPN 网关，满足跨界 S2S VPN 隧道和 Azure VNet 到 VNet 连接的加密要求。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96546839"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
@@ -32,7 +32,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如�
 
 ### <a name="default-policy"></a>默认策略
 
-Azure VPN 网关的默认策略集在文章： [关于用于站点到站点 Vpn 网关连接的 vpn 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)一文中列出。
+文章中列出了 Azure VPN 网关的默认策略集：[关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)。
 
 ## <a name="cryptographic-requirements"></a>加密要求
 

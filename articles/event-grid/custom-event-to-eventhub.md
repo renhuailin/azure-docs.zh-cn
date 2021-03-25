@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91324104"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
@@ -23,7 +23,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 事件中心是受�
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 
 
-以下示例在“westus2”** 位置创建名为“gridResourceGroup”** 的资源组。
+以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2

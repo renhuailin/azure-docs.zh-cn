@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: fd2923c68aa77a4d17936eaa3a738c963458e8cb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
@@ -101,9 +101,9 @@ ms.locfileid: "92514650"
 
     ![Tangoe Command Premium Mobile Domain 域和 URL 单一登录信息](common/sp-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>` 
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/ACS.saml2`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Tangoe Command Premium Mobile 客户端支持团队](https://www.tangoe.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -134,7 +134,7 @@ ms.locfileid: "92514650"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92514650"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

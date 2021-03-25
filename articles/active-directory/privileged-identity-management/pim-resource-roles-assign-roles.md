@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 011b50449f0a02b128bc000535f93e1809fd9777
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92673881"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure 资源角色
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
 遵循以下步骤可使用户符合 Azure 资源角色的条件。
 
-1. 使用 "所有者" 或 "用户访问管理员" 角色权限登录到 [Azure 门户](https://portal.azure.com/) 。
+1. 使用“所有者”或“用户访问管理员”角色权限登录到 [Azure 门户](https://portal.azure.com/)。
 
     有关如何授予其他管理员访问权限以管理 Privileged Identity Management 的信息，请参阅[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
-1. 打开“Azure AD Privileged Identity Management”。 
+1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择“Azure 资源”  。
 
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
     - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
 
-    - “活动”分配不要求成员执行任何操作便可使用该角色。 分配为“活动”的成员始终具有分配给该角色的权限。
+    - “活动”  分配不要求成员执行任何操作便可使用该角色。 分配为“活动”的成员始终具有分配给该角色的权限。
 
 1. 若要指定特定分配持续时间，请更改开始和结束日期与时间。
 
@@ -105,11 +105,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
 1. 选择要更新或删除的角色。
 
-1. 在“合格角色”  或“活动角色”  选项卡上查找角色分配。
+1. 在“合格角色”或“活动角色”选项卡上查找角色分配。
 
     ![更新或删除角色分配](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. 选择“更新”  或“删除”  以更新或删除角色分配。
+1. 选择“更新”或“删除”以更新或删除角色分配。
 
     有关扩展角色分配的信息，请参阅[在 Privileged Identity Management 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)。
 

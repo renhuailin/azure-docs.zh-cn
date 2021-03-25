@@ -3,18 +3,21 @@ title: 使用虚拟网络的方案
 description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033823"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606882"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
 
 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)为 Azure 资源和本地资源提供安全的专用网络。 将容器组部署到 Azure 虚拟网络后，容器可与该虚拟网络中的其他资源安全通信。 
 
 本文提供有关虚拟网络方案、限制和资源的背景知识。 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
+
+> [!IMPORTANT]
+> 虚拟网络中的容器组部署通常适用于大多数同时可使用 Azure 容器实例的区域中的 Linux 容器。 有关详细信息，请参阅[区域和资源可用性](container-instances-region-availability.md)。 
 
 ## <a name="scenarios"></a>方案
 
@@ -33,7 +36,7 @@ ms.locfileid: "98033823"
 * **Azure 负载均衡器** - 不支持在网络容器组中将 Azure 负载均衡器置于容器实例之前
 * **全球虚拟网络对等互连** - 不支持全球对等互连（跨 Azure 区域连接虚拟网络）
 * **公共 IP 或 DNS 标签** - 部署到虚拟网络的容器组目前不支持使用公共 IP 地址或完全限定的域名直接向 Internet 公开容器
-* **虚拟网络 NAT** -部署到虚拟网络的容器组目前不支持使用 NAT 网关资源进行出站 internet 连接。
+* **虚拟网络 NAT** - 部署到虚拟网络的容器组目前不支持使用 NAT 网关资源进行出站 Internet 连接。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -42,15 +45,9 @@ ms.locfileid: "98033823"
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
 * 不能在部署到虚拟网络的容器组中启用[运行情况探测](container-instances-liveness-probe.md)或[就绪情况探测](container-instances-readiness-probe.md)。
 * 由于涉及到其他网络资源，部署到虚拟网络通常比部署标准容器实例要慢。
-* 如果要将容器组连接到 Azure 存储帐户，则必须将 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 添加到该资源。
+* 如果要将容器组连接到 Azure 存储帐户，则必须向该资源添加[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
-
-## <a name="where-to-deploy"></a>部署位置
-
-以下区域和最大资源可用于在 Azure 虚拟网络中部署容器组。
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="required-network-resources"></a>所需的网络资源
 

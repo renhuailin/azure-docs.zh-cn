@@ -1,5 +1,5 @@
 ---
-title: 设置 CI/CD 管道 Azure Cosmos DB 模拟器生成任务
+title: 通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 description: 教程：如何使用 Cosmos DB 模拟器生成任务在 Azure DevOps 中设置生成和发布工作流
 author: deborahc
 ms.service: cosmos-db
@@ -8,19 +8,19 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.openlocfilehash: c7246511a88e2d2756a8ef56c5adf51ddbfd3e58
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996995"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560525"
 ---
-# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>使用 Azure DevOps 中的 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
+# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 为方便进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 可以利用模拟器在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 
 
-Azure DevOps 的 Azure Cosmos DB 模拟器生成任务允许在 CI 环境中执行相同的操作。 使用生成任务时，可以在生成和发布工作流中针对模拟器运行测试。 该任务启动一个包含已运行模拟器的 Docker 容器，并提供一个可供生成定义的其余部分使用的终结点。 可以根据需要创建并启动模拟器的多个实例，每一个都在单独的容器中运行。 
+使用针对 Azure DevOps 的 Azure Cosmos DB 模拟器生成任务，可以在 CI 环境中执行相同的操作。 使用生成任务时，可以在生成和发布工作流中针对模拟器运行测试。 该任务启动一个包含已运行模拟器的 Docker 容器，并提供一个可供生成定义的其余部分使用的终结点。 可以根据需要创建并启动模拟器的多个实例，每一个都在单独的容器中运行。 
 
 本文演示如何在适用于 ASP.NET 应用程序的 Azure DevOps 中设置 CI 管道，该应用程序使用 Cosmos DB 模拟器生成任务来运行测试。 可以使用类似的方法为 Node.js 或 Python 应用程序设置 CI 管道。 
 
@@ -33,13 +33,13 @@ Azure DevOps 的 Azure Cosmos DB 模拟器生成任务允许在 CI 环境中执�
 接下来，选择要在其中安装扩展的组织。 
 
 > [!NOTE]
-> 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
+> 要将扩展安装到 Azure DevOps 组织，必须是帐户所有者或项目集合管理员。 如果你没有权限，但却是帐户成员，可以改为请求扩展。 [了解详细信息。](/azure/devops/marketplace/faq-extensions)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="选择要在其中安装扩展的 Azure DevOps 组织":::
 
 ## <a name="create-a-build-definition"></a>创建生成定义
 
-安装扩展后，请登录 Azure DevOps 组织，并从项目仪表板中找到项目。 可以向项目添加[生成管道](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts)，也可以修改现有的生成管道。 如果已经有生成管道，则可跳转到[向生成定义添加模拟器生成任务](#addEmulatorBuildTaskToBuildDefinition)。
+安装扩展后，请登录 Azure DevOps 组织，并从项目仪表板中找到项目。 可以向项目添加[生成管道](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav)，也可以修改现有的生成管道。 如果已经有生成管道，则可跳转到[向生成定义添加模拟器生成任务](#addEmulatorBuildTaskToBuildDefinition)。
 
 1. 若要创建新的生成定义，请导航到 Azure DevOps 中的 **“生成”** 选项卡。 选择 **“+新建”** 。 \> **新建生成管道**
 
@@ -49,12 +49,12 @@ Azure DevOps 的 Azure Cosmos DB 模拟器生成任务允许在 CI 环境中执�
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="针对生成管道选择团队项目、存储库和分库":::
 
-3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 现在，你有了一个生成管道，你可以将其设置为使用 Azure Cosmos DB 模拟器生成任务。 
+3. 最后，选择生成管道所需的模板。 在本教程中，我们将选择 **ASP.NET** 模板。 现在，我们有了一个生成管道，可以通过设置它来使用 Azure Cosmos DB 模拟器生成任务。 
 
 > [!NOTE]
-> 为此 CI 选择的代理池应该安装用于 Windows 的 Docker，除非已在以前的任务中作为 CI 的一部分手动完成该安装。 有关代理池的选择，请参阅 [Microsoft 托管代理](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops)一文；我们建议从 `Hosted VS2017` 开始。
+> 为此 CI 选择的代理池应该安装用于 Windows 的 Docker，除非已在以前的任务中作为 CI 的一部分手动完成该安装。 有关代理池的选择，请参阅 [Microsoft 托管代理](/azure/devops/pipelines/agents/hosted?tabs=yaml)一文；我们建议从 `Hosted VS2017` 开始。
 
-Azure Cosmos DB 模拟器目前不支持托管 VS2019 代理池。 但是，模拟器安装了 VS2019，因此可以通过以下 PowerShell cmdlet 启动模拟器，对它进行使用。 如果在使用 VS2019 时遇到任何问题，请联系 [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) 团队获取帮助：
+Azure Cosmos DB 模拟器目前不支持托管的 VS2019 代理池。 但是，模拟器安装了 VS2019，因此可以通过以下 PowerShell cmdlet 启动模拟器，对它进行使用。 如果在使用 VS2019 时遇到任何问题，请联系 [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) 团队获取帮助：
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"

@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b04b9ababfe0e4c2a60d14044b9d3ee120837dc5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96491037"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
@@ -50,7 +50,7 @@ Analysis Services 还支持由托管标识使用服务主体执行的操作。 �
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>使用 Az.AnalysisServices 模块
 
-将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
+将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用来执行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
 
 以下示例使用 appID 和密码执行控制平面操作，以便与只读副本同步并进行纵向/横向扩展：
 

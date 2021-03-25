@@ -1,25 +1,24 @@
 ---
 title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection
 description: 了解如何在使用经典部署模型创建的新的或现有的 Azure VM 上安装和配置 Symantec Endpoint Protection 安全扩展。
-author: roiyz
-tags: azure-service-management
-ms.service: virtual-machines-windows
-ms.subservice: extensions
-ms.workload: infrastructure-services
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 03/31/2017
-ms.author: akjosh
-ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: 9a25e9eb27111a450f787f4efb3e0d39456fc757
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967935"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559641"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器部署模型和经典部署模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
 
 本文介绍如何在运行 Windows Server 的现有虚拟机 (VM) 上安装和配置 Symantec Endpoint Protection 客户端。 这是完整的客户端，其中包括病毒和间谍软件防护、防火墙和入侵防御等服务。 该客户端通过 VM 代理作为安全扩展插件进行安装。
 
@@ -28,7 +27,7 @@ Azure 具有用于创建和处理资源的两个不同的部署模型：[资源�
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>在现有 VM 上安装 Symantec Endpoint Protection
 在开始之前，需具备以下先决条件：
 
-* 在工作计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明以及指向最新版本的链接，请参阅 [如何安装和配置 Azure PowerShell][PS]。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
+* 在工作计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell][PS]。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
 * 在 Azure 虚拟机上运行的 VM 代理。
 
 首先，请验证虚拟机上是否已安装 VM 代理。 填写云服务名称和虚拟机名称，并在管理员级别的 Azure PowerShell 命令提示符下运行以下命令。 替换引号内的所有内容，包括 < and > 字符。

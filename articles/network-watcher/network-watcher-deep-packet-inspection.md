@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 3bd85d6faf05fcf659e9335ee9de3d64198dfa08
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011163"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
@@ -77,7 +77,7 @@ ms.locfileid: "98011163"
 
 ### <a name="step-1"></a>步骤 1
 
-在前面的方案中使用相同的捕获单击 **统计信息**  >  **协议层次结构**
+使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构” 
 
 ![协议层次结构菜单][2]
 
@@ -85,7 +85,7 @@ ms.locfileid: "98011163"
 
 ![打开的协议层次结构][3]
 
-如以下屏幕截图中所示，有的流量使用了 BitTorrent 协议来建立对等文件共享。 管理员不希望此特定虚拟机上出现 BitTorrent 流量。 现在我们发现了这种流量，可以删除此虚拟机上安装的对等软件，或者使用网络安全组或防火墙来阻止该流量。 此外，可以选择按计划运行数据包捕获，以便定期检查虚拟机上使用的协议。 有关如何在 azure 中自动执行网络任务的示例，请访问 [使用 azure 自动化监视网络资源](network-watcher-monitor-with-azure-automation.md)
+如以下屏幕截图中所示，有的流量使用了 BitTorrent 协议来建立对等文件共享。 管理员不希望此特定虚拟机上出现 BitTorrent 流量。 现在我们发现了这种流量，可以删除此虚拟机上安装的对等软件，或者使用网络安全组或防火墙来阻止该流量。 此外，可以选择按计划运行数据包捕获，以便定期检查虚拟机上使用的协议。 有关如何在 Azure 中自动执行任务的示例，请访问 [Monitor network resources with azure automation](network-watcher-monitor-with-azure-automation.md)（使用 Azure 自动化监视网络资源）
 
 ## <a name="finding-top-destinations-and-ports"></a>查找最常使用的目标和端口
 
@@ -93,7 +93,7 @@ ms.locfileid: "98011163"
 
 ### <a name="step-1"></a>步骤 1
 
-在前面的方案中使用相同的捕获单击 **统计信息**  >  **IPv4 统计信息**  >  **目标和端口**
+使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”  
 
 ![数据包捕获窗口][4]
 

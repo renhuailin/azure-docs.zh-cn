@@ -4,14 +4,14 @@ description: 了解自定义映像和公式（例如 VM 基项）之间的差异
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87287529"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>比较自定义映像和 DevTest 实验室中的公式
-在[创建新的虚拟机](devtest-lab-add-vm.md)时，[自定义映像](devtest-lab-create-template.md) 和 [公式](devtest-lab-manage-formulas.md) 都可以用作基项。 但是，自定义映像和公式之间的主要区别在于自定义映像只是基于 VHD 的映像，而公式不仅是基于 VHD 的映像，*还有*预配置的设置 - 如 VM 大小、虚拟网络、子网和项目。 使用可在创建 VM 时重写的默认值，对这些预配置进行设置。 本文介绍和使用公式相比，使用自定义映像的一些优点和缺点。
+在[创建新的虚拟机](devtest-lab-add-vm.md)时，[自定义映像](devtest-lab-create-template.md) 和 [公式](devtest-lab-manage-formulas.md) 都可以用作基项。 但是，自定义映像和公式之间的主要区别在于自定义映像只是基于 VHD 的映像，而公式不仅是基于 VHD 的映像，*还有* 预配置的设置 - 如 VM 大小、虚拟网络、子网和项目。 使用可在创建 VM 时重写的默认值，对这些预配置进行设置。 本文介绍和使用公式相比，使用自定义映像的一些优点和缺点。
 
 ## <a name="custom-image-pros-and-cons"></a>自定义映像得优点和缺点
 自定义映像以静态、不可变的方式，从所需的环境中创建 VM。 

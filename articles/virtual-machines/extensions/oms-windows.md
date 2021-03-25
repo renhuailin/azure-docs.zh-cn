@@ -1,26 +1,19 @@
 ---
 title: 适用于 Windows 的 Log Analytics 虚拟机扩展
 description: 使用虚拟机扩展在 Windows 虚拟机上部署 Log Analytics 代理。
-services: virtual-machines-windows
-documentationcenter: ''
-author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: feae6176-2373-4034-b5d9-a32c6b4e1f10
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 06/26/2020
-ms.author: akjosh
-ms.openlocfilehash: 1b394a6daf7ba680d193a13dd4cb25dbebc576e4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580074"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559012"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
@@ -39,8 +32,8 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | 2020 年 10 月   | <ul><li>新代理疑难解答</li><li>代理如何处理 Azure 服务的证书更改的更新</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>解决 Azure Arc 问题</li></ul> |
-| 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure Monitor 专用链接作用域启用通过专用链接建立连接</li><li>添加引入限制，以避免在引入工作区时突然出现意外流入</li><li>添加了对其他 Azure 政府云和区域的支持</li><li>解决 HealthService.exe 出现故障的 bug</li></ul> |
-| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代码签名支持</li><li>改进了 VM 扩展安装和管理</li><li>解决了用于服务器的 Azure Arc 集成中的 Bug</li><li>添加了用于客户支持的内置故障排除工具</li><li>添加其他 Azure 政府区域支持</li> |
+| 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure Monitor 专用链接作用域启用通过专用链接建立连接</li><li>添加引入限制，以避免在引入工作区时突然出现意外流入</li><li>添加对其他 Azure 政府云和区域的支持</li><li>解决 HealthService.exe 出现故障的 bug</li></ul> |
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>添加 SHA-2 代码签名支持</li><li>改进了 VM 扩展安装和管理</li><li>解决了用于服务器的 Azure Arc 集成中的 Bug</li><li>添加了用于客户支持的内置故障排除工具</li><li>添加对其他 Azure 政府区域的支持</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 次要 bug 修复和稳定性改进 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> MaxExpressionDepth 已增加到10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 次要 bug 修复和稳定性改进 </li><li> 添加了在建立代理连接时禁用默认凭据的功能（支持 WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH） </li></ul>|

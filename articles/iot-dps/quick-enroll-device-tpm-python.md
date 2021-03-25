@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 96bd1e85de45ac36515580025dfc392e931643f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323757"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>快速入门：使用 Python 预配服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
@@ -62,7 +62,7 @@ ms.locfileid: "91323757"
 
 1. 使用文本编辑器，新建一个 **TpmEnrollment.py** 文件。
 
-1. 在 **TpmEnrollment.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户**的**设备预配服务**的“共享访问策略”  下。 将 `endorsementKey` 替换为此前在[准备环境](quick-enroll-device-tpm-python.md#prepareenvironment)中记下的值。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
+1. 在 **TpmEnrollment.py** 文件的开头添加以下 `import` 语句和变量： 然后，将 `dpsConnectionString` 替换为你的连接字符串，该字符串位于 **Azure 门户** 的 **设备预配服务** 的“共享访问策略”  下。 将 `endorsementKey` 替换为此前在[准备环境](quick-enroll-device-tpm-python.md#prepareenvironment)中记下的值。 最后，创建唯一的 `registrationid`，确保其只包含小写字母数字和连字符。  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient

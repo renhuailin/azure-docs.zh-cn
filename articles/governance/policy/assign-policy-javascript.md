@@ -5,10 +5,10 @@ ms.date: 09/24/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91347879"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>快速入门：使用 JavaScript 创建策略分配以识别不合规的资源
@@ -19,7 +19,7 @@ JavaScript 库用于从命令行或脚本管理 Azure 资源。 本指南介绍�
 
 ## <a name="prerequisites"></a>先决条件
 
-- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个 [免费](https://azure.microsoft.com/free/)帐户。
 
 - **Node.js**：需要 [Node.js](https://nodejs.org/) 版本 12 或更高版本。
 

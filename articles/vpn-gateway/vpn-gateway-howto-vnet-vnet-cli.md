@@ -10,17 +10,17 @@ ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94660060"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 配置 VNet 到 VNet 的 VPN 网关连接
 
 本文介绍如何使用 VNet 到 VNet 连接类型来连接虚拟网络。 虚拟网络可位于相同或不同的区域，来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。
 
-本文中的步骤适用于资源管理器部署模型并使用 Azure CLI。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
+本文中的步骤适用于资源管理器部署模型并使用 Azure CLI。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -58,7 +58,7 @@ ms.locfileid: "94660060"
   * 使用 Azure 流量管理器和负载均衡器，可以设置支持跨多个 Azure 区域实现异地冗余的高可用性工作负荷。 一个重要的示例就是对分布在多个 Azure 区域中的可用性组设置 SQL Always On。
 * **具有隔离或管理边界的区域多层应用程序**
 
-  * 在同一区域中，由于存在隔离或管理要求，可以设置多个虚拟网络连接在一起的多层应用程序。
+  * 在同一区域中，由于存在隔离或管理要求，可以设置具有多个虚拟网络的多层应用程序，这些虚拟网络相互连接在一起。
 
 可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
@@ -68,11 +68,11 @@ ms.locfileid: "94660060"
 
 就本练习来说，可以将配置组合起来，也可以只是选择要使用的配置。 所有配置使用 VNet 到 VNet 连接类型。 网络流量在彼此直接连接的 VNet 之间流动。 在此练习中，流量不从 TestVNet4 路由到 TestVNet5。
 
-* [驻留在同一订阅中的 vnet：](#samesub) 此配置的步骤使用 TestVNet1 和 TestVNet4。
+* [驻留在同一订阅中的 VNet](#samesub)：此配置的步骤使用 TestVNet1 和 TestVNet4。
 
-  ![此图显示了位于同一订阅中的 V 网络的 V Net 到 V Net 步骤。](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![此图显示的 VNet 到 VNet 步骤适用于同一订阅中的 VNet。](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [驻留在不同订阅中的 vnet：](#difsub) 此配置的步骤使用 TestVNet1 和 TestVNet5。
+* [驻留在不同订阅中的 VNet](#difsub)：此配置的步骤使用 TestVNet1 和 TestVNet5。
 
   ![v2v 示意图](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "94660060"
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用以下值：
+示例中使用了以下值：
 
 **TestVNet1 的值：**
 
@@ -101,7 +101,7 @@ ms.locfileid: "94660060"
 * GatewayName：VNet1GW
 * 公共 IP：VNet1GWIP
 * VPNType：RouteBased
-* Connection(1to4)：VNet1toVNet4
+* 连接（1 到 4）：VNet1 到 VNet4
 * Connection(1to5)：VNet1toVNet5（适用于不同订阅中的 VNet）
 
 **TestVNet4 的值：**
@@ -116,7 +116,7 @@ ms.locfileid: "94660060"
 * GatewayName：VNet4GW
 * 公共 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4toVNet1
+* 连接：VNet4 到 VNet1
 
 ### <a name="step-1---connect-to-your-subscription"></a><a name="Connect"></a>步骤 1 - 连接到订阅
 
@@ -144,12 +144,12 @@ ms.locfileid: "94660060"
    ```azurecli
    az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
    ```
-5. 创建网关子网。 请注意，网关子网命名为“GatewaySubnet”。 此名称是必需的。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
+5. 创建网关子网。 请注意，网关子网命名为“GatewaySubnet”。 此名称是必需的。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够的地址，满足将来可能需要使用的其他配置。
 
    ```azurecli 
    az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
    ```
-6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 注意，AllocationMethod 是动态的。 无法指定要使用的 IP 地址。 它会动态分配到网关。
+6. 请求一个公共 IP 地址，以分配给要为 VNet 创建的网关。 请注意，AllocationMethod 为 Dynamic。 无法指定要使用的 IP 地址。 它会动态分配到网关。
 
    ```azurecli
    az network public-ip create -n VNet1GWIP -g TestRG1 --allocation-method Dynamic
@@ -189,7 +189,7 @@ ms.locfileid: "94660060"
    ```azurecli
    az network public-ip create -n VNet4GWIP -g TestRG4 --allocation-method Dynamic
    ```
-6. 创建 TestVNet4 虚拟网关。
+6. 创建 TestVNet4 虚拟网络网关。
 
    ```azurecli
    az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
@@ -197,7 +197,7 @@ ms.locfileid: "94660060"
 
 ### <a name="step-4---create-the-connections"></a><a name="createconnect"></a>步骤 4 - 创建连接
 
-现在有两个带 VPN 网关的 VNet。 下一步是创建虚拟网关之间的 VPN 网关连接。 如果使用了上面的示例，则 VNet 网关位于不同的资源组。 如果网关位于不同的资源组中，则在进行连接时需标识并指定每个网关的资源 ID。 如果 VNet 位于同一资源组中，则可使用[第二组说明](#samerg)，因为不需指定资源 ID。
+现在有两个带 VPN 网关的 VNet。 下一步是创建虚拟网络网关之间的 VPN 网关连接。 如果使用了上面的示例，则 VNet 网关位于不同的资源组。 如果网关位于不同的资源组中，则在进行连接时需标识并指定每个网关的资源 ID。 如果 VNet 位于同一资源组中，则可使用[第二组说明](#samerg)，因为不需指定资源 ID。
 
 ### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a><a name="diffrg"></a>若要连接驻留在不同资源组中的 VNet，请执行以下步骤
 
@@ -226,7 +226,7 @@ ms.locfileid: "94660060"
    "ipConfigurations":
    ```
 
-   复制引号中 "id": 后面的值。
+   复制引号中 "id": 后面的值。 
 
    ```
    "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
@@ -238,7 +238,7 @@ ms.locfileid: "94660060"
    az network vnet-gateway show -n VNet4GW -g TestRG4
    ```
 
-3. 创建 TestVNet1 到 TestVNet4 的连接。 在此步骤中，创建 TestVNet1 到 TestVNet4 的连接。 示例中引用了一个共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接短时间即可完成。
+3. 创建 TestVNet1 到 TestVNet4 的连接。 本步骤创建从 TestVNet1 到 TestVNet4 的连接。 示例中引用了一个共享密钥。 可以对共享密钥使用自己的值。 共享密钥必须与两个连接匹配，这一点非常重要。 创建连接短时间即可完成。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
@@ -252,7 +252,7 @@ ms.locfileid: "94660060"
 
 ### <a name="to-connect-vnets-that-reside-in-the-same-resource-group"></a><a name="samerg"></a>若要连接驻留在同一资源组中的 VNet，请执行以下步骤
 
-1. 创建 TestVNet1 到 TestVNet4 的连接。 在此步骤中，创建 TestVNet1 到 TestVNet4 的连接。 请注意，示例中的资源组是相同的。 还可以看到示例中引用了共享密钥。 可以对共享密钥使用自己的值，但两个连接的共享密钥必须匹配。 创建连接短时间即可完成。
+1. 创建 TestVNet1 到 TestVNet4 的连接。 本步骤创建从 TestVNet1 到 TestVNet4 的连接。 请注意，示例中的资源组是相同的。 还可以看到示例中引用了共享密钥。 可以对共享密钥使用你自己的值，但两个连接的共享密钥必须匹配。 创建连接短时间即可完成。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 VNet4GW
@@ -289,7 +289,7 @@ ms.locfileid: "94660060"
 * 公共 IP：VNet5GWIP
 * VPNType：RouteBased
 * 连接：VNet5toVNet1
-* ConnectionType：VNet2VNet
+* 连接类型：VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>步骤 7 - 创建并配置 TestVNet5
 
@@ -356,7 +356,7 @@ ms.locfileid: "94660060"
 
    复制 "id:" 的输出。 通过电子邮件或其他方法将 VNet 网关 (VNet5GW) 的 ID 和名称发送到订阅 1 的管理员。
 
-3. [订阅 1] 在此步骤中，创建 TestVNet1 到 TestVNet5 的连接。 可以对共享密钥使用自己的值，但两个连接的共享密钥必须匹配。 创建连接可能需要简短的一段时间才能完成。 请确保连接到订阅 1。
+3. [订阅 1] 在此步骤中，创建 TestVNet1 到 TestVNet5 的连接。 可以对共享密钥使用你自己的值，但两个连接的共享密钥必须匹配。 创建连接可能需要简短的一段时间才能完成。 请确保连接到订阅 1。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW

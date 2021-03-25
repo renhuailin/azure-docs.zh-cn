@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 75f4cea0e5cd2b0bf42c28cbd81e199115834e11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283956"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Slack
@@ -35,7 +35,7 @@ ms.locfileid: "87283956"
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
-* 要在其中访问 Slack 帐户的逻辑应用。 若要使用 Slack 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 操作，请使用一个触发器启动逻辑应用，例如 Slack 触发器或其他个触发器（例如**定期**触发器）。
+* 要在其中访问 Slack 帐户的逻辑应用。 若要使用 Slack 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 操作，请使用一个触发器启动逻辑应用，例如 Slack 触发器或其他个触发器（例如 **定期** 触发器）。
 
 ## <a name="connect-to-slack"></a>连接到 Slack
 

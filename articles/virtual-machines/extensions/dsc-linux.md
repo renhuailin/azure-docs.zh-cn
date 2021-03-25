@@ -1,33 +1,28 @@
 ---
 title: 适用于 Linux 的 Azure DSC 扩展
 description: 安装 OMI 和 DSC 包，以便能够使用 Desired State Configuration 来配置 Azure Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
-author: mgoedtel
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.collection: linux
+ms.date: 06/12/2018
+ms.openlocfilehash: 3a9478f93a2a6f8e31be39a58a18e0e394b9d5c2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093703"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560079"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) 是一个管理平台，可让你使用“配置即代码”来管理 IT 和开发基础结构。
 
 > [!NOTE]
-> 适用于 linux 的 DSC 扩展和适用于 [linux 的 Log Analytics 虚拟机扩展](./oms-linux.md) 当前存在冲突，并行配置中不支持。 不要在同一 VM 上同时使用这两个解决方案。
+> 适用于 Linux 的 DSC 扩展和[适用于 Linux 的 Log Analytics 虚拟机扩展](./oms-linux.md)当前存在冲突，并在并列配置中不受支持。 不要在同一 VM 上同时使用这两个解决方案。
 
-DSCForLinux 扩展已发布并受 Microsoft 支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作：
+DSCForLinux 扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 OMI 和 DSC 代理。 DSC 扩展还能执行以下操作：
 
 - 将 Linux VM 注册到 Azure 自动化帐户，以便从 Azure 自动化服务提取配置 (Register ExtensionAction)
 - 将 MOF 配置推送到 Linux VM (Push ExtensionAction)。
@@ -44,7 +39,7 @@ DSCForLinux 扩展已发布并受 Microsoft 支持。 该扩展在 Azure 虚拟�
 ### <a name="internet-connectivity"></a>Internet 连接
 
 DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Register 扩展要求连接到自动化服务。
-对于其他操作，例如请求、请求、安装，需要连接到 Azure 存储和 GitHub。 它依赖于客户提供的设置。
+对于其他操作（例如“拉取”），Pull 和 Install 扩展要求连接到 Azure 存储和 GitHub。 它依赖于客户提供的设置。
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -428,7 +423,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -447,7 +442,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以提供 Azure 支持事件。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 " **获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 

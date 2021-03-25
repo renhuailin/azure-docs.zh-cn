@@ -1,21 +1,21 @@
 ---
-title: 使用 Azure PowerShell 创建分区的 Windows VM
-description: 使用 Azure PowerShell 在可用性区域中创建 Windows 虚拟机
+title: 使用 Azure PowerShell 创建分区的 VM
+description: 使用 Azure PowerShell 在可用性区域中创建虚拟机
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7167c5806fde883a84878d4947dba9fd8c095f69
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825236"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102558825"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性区域中创建 Windows 虚拟机
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>使用 Azure PowerShell 在可用性区域中创建虚拟机
 
 本文详细介绍如何使用 Azure PowerShell 在 Azure 可用性区域中创建运行 Windows Server 2016 的 Azure 虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
@@ -170,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的 [可用性](../availability.md) 。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[可用性](../availability.md)。

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489738"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure Database for PostgreSQL（单一服务器）移到另一个区域
@@ -51,7 +51,7 @@ ms.locfileid: "92489738"
 1. 选择“确定”以确认创建该副本。 在创建副本的过程中，数据将从源服务器复制到副本。 创建时间可能会持续几分钟或更长时间，这与源服务器的大小成正比。
 
 >[!NOTE]
-> 创建副本时，它不会继承主服务器的防火墙规则和 VNet 服务终结点。 必须单独为副本设置这些规则。
+> 创建副本时，该副本不会继承主服务器的防火墙规则和 VNet 服务终结点。 必须单独为副本设置这些规则。
 
 ## <a name="move"></a>移动
 

@@ -1,16 +1,16 @@
 ---
-title: 自动增长存储-Azure 门户-Azure Database for PostgreSQL-单一服务器
-description: 本文介绍如何使用 Azure Database for PostgreSQL 单一服务器中的 Azure 门户配置存储自动增长
+title: 自动增长存储 - Azure 门户 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中配置存储的自动增长
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
 ms.openlocfilehash: d49047e9b3a65da90f4a5ac9e4b3cb1e32bd59a7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489976"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中自动增长存储
@@ -38,7 +38,7 @@ ms.locfileid: "92489976"
 
 5. 此时将显示一则通知，确认自动增长已成功启用。
 
-    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png" alt-text="Azure Database for PostgreSQL - Settings_Pricing_tier - 自动增长":::
+    :::image type="content" source="./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png" alt-text="Azure Database for PostgreSQL - 自动增长成功":::
 
 ## <a name="next-steps"></a>后续步骤
 

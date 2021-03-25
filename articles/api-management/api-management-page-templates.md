@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的页模板 | Microsoft Docs
-description: 了解如何在 Azure API 管理中自定义开发人员门户页面模板的内容。
+description: 了解如何在 Azure API 管理中自定义开发人员门户页模板的内容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 24d026785025dba4ae45de404edec67c2cf3871a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91335579"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
@@ -39,7 +39,7 @@ ms.locfileid: "91335579"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="sign-in"></a><a name="SignIn"></a>登录  
- **登录**模板用于自定义开发人员门户中的登录页面。  
+ **登录** 模板用于自定义开发人员门户中的登录页面。  
   
  ![登录页](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
   
@@ -138,7 +138,7 @@ ms.locfileid: "91335579"
 ```  
   
 ##  <a name="sign-up"></a><a name="SignUp"></a>注册  
- **注册**模板用于自定义开发人员门户中的注册页面。  
+ **注册** 模板用于自定义开发人员门户中的注册页面。  
   
  ![注册页](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
   
@@ -186,7 +186,7 @@ ms.locfileid: "91335579"
 ```  
   
 ##  <a name="page-not-found"></a><a name="PageNotFound"></a>找不到页面  
- **找不到页面**模板用于自定义开发人员门户中的“找不到页面”页面。  
+ **找不到页面** 模板用于自定义开发人员门户中的“找不到页面”页面。  
   
  ![找不到页面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到页面开发人员门户模板")  
   
@@ -227,7 +227,7 @@ ms.locfileid: "91335579"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |referenceCode|字符串|因内部错误显示页面时生成的代码。|  
 |errorCode|字符串|因内部错误显示页面时生成的代码。|  

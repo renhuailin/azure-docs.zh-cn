@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0fc1bc3158e04c9b1f677af7ef2375ac3ed2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91320041"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>在 Azure AD Connect 中修复已修改的默认规则
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 #### <a name="add-an-inbound-sync-rule"></a>添加入站同步规则
 入站同步规则表示属性的源是连接器空间，目标是 Metaverse。 例如，若要将本地 Active Directory 中的某个新属性流送到 Azure Active Directory，请创建一个新的入站同步规则。 启动“同步规则编辑器”，选择“入站”作为方向，然后选择“添加新规则”。    
 
- ![屏幕截图，显示 "同步规则编辑器"，其中选择了 "入站" 和 "添加新规则"。](media/how-to-connect-fix-default-rules/default3a.png)
+ ![显示“同步规则编辑器”的屏幕截图，其中已选择“入站”和“新增规则”。](media/how-to-connect-fix-default-rules/default3a.png)
 
 遵循自己的命名约定为规则命名。 此处我们使用了“Custom In from AD - User”。  这表示该规则是自定义规则，并且是从 Active Directory 连接器空间到 Metaverse 的入站规则。   
 
@@ -96,7 +96,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 
 ![同步规则编辑器](media/how-to-connect-fix-default-rules/default3c.png)
 
-与在入站规则中一样，可以使用自己的命名约定来为规则命名。 选择“Azure AD 租户”作为**连接的系统**，并选择要设置其属性值的联网系统对象。 设置从 0 到 99 的优先顺序。 
+与在入站规则中一样，可以使用自己的命名约定来为规则命名。 选择“Azure AD 租户”作为 **连接的系统**，并选择要设置其属性值的联网系统对象。 设置从 0 到 99 的优先顺序。 
 
 ![创建出站同步规则](media/how-to-connect-fix-default-rules/default3d.png)
 
@@ -176,7 +176,7 @@ Azure AD Sync 负责处理大部分对象。 你可以缩小对象的范围，�
 
 在“预览”窗口的左窗格中选择“生成预览”和“导入属性流”。  
 
-![显示 "预览" 窗口的屏幕截图，其中选择了 "导入属性流" 和 "生成预览"。](media/how-to-connect-fix-default-rules/default14.png)
+![显示“预览”窗口的屏幕截图，其中已选择“导入属性流”和“生成预览”。](media/how-to-connect-fix-default-rules/default14.png)
  
 在此处可以看到，新添加的规则已针对该对象运行，并且已将 `cloudFiltered` 属性设置为 true。
 
@@ -188,7 +188,7 @@ Azure AD Sync 负责处理大部分对象。 你可以缩小对象的范围，�
 
 ![windiff 工具输出](media/how-to-connect-fix-default-rules/default17.png)
  
-若要修复规则以将其更改回默认设置，请删除已修改的规则并启用默认规则。 请确保不会丢失你正在尝试实现的自定义。 准备就绪后，运行**完全同步**。
+若要修复规则以将其更改回默认设置，请删除已修改的规则并启用默认规则。 请确保不会丢失你正在尝试实现的自定义。 准备就绪后，运行 **完全同步**。
 
 ## <a name="next-steps"></a>后续步骤
 - [硬件和先决条件](how-to-connect-install-prerequisites.md) 

@@ -5,14 +5,14 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/19/2020
+ms.date: 12/23/2020
 ms.topic: how-to
-ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
-ms.translationtype: MT
+ms.openlocfilehash: 2feb4d85e7be4076eef8b2796d15b622f6b17c3a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122988"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658295"
 ---
 # <a name="manage-iot-central-programmatically"></a>以编程方式管理 IoT Central
 
@@ -36,6 +36,8 @@ ms.locfileid: "92122988"
 ## <a name="samples"></a>示例
 
 [Azure IoT Central ARM SDK 示例](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/)存储库提供多种编程语言的代码示例，这些示例演示如何创建、更新、列出和删除 Azure IoT Central 应用程序。
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355468"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>使用 DevOps Starter 部署到 Azure Functions
@@ -140,13 +140,13 @@ DevOps Starter 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 1. 基于在创建过程中选择的应用程序语言，存储库已包含名为 SampleFunctionApp 的代码。 打开 **Application/SampleFunctionApp/Function1.cs** 文件。
 
-1. 选择“编辑”，然后对**第 31 行**进行更改。 例如，可以将其更新为“你好！**欢迎体验使用 DevOps Starter 的 Azure Functions**
+1. 选择“编辑”，然后对 **第 31 行** 进行更改。 例如，可以将其更新为“你好！**欢迎体验使用 DevOps Starter 的 Azure Functions**
 
 1. 在右上角选择“提交”，然后再次选择“提交”以推送更改。 
 
 1. 打开 **Application/SampleFunctionApp.Test/Function1TestRunner.cs** 文件。 
 
-1. 选择“编辑”，然后对**第 21 行**进行更改。 例如，可以将其更新为“你好！**欢迎体验使用 Azure DevOps Starter 的 Azure Functions**。
+1. 选择“编辑”，然后对 **第 21 行** 进行更改。 例如，可以将其更新为“你好！**欢迎体验使用 Azure DevOps Starter 的 Azure Functions**。
 
      片刻之后，某个生成会在 Azure DevOps 中启动，并且某个发布将会执行以部署更改。 使用 Azure DevOps 组织通过 DevOps Starter 仪表板或浏览器监视生成状态。
 

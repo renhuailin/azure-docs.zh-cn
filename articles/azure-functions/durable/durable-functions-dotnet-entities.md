@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740021"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
@@ -70,7 +70,7 @@ public class Counter
 `Run` 函数包含使用基于类的语法所需的样板。 它必须是静态的 Azure 函数。  它对实体处理的每个操作消息执行一次。 调用 `DispatchAsync<T>` 时，如果该实体尚未进入内存，该函数将构造 `T` 类型的对象，并基于存储中最后保存的 JSON（如果有）填充该对象的字段。 然后，它结合匹配的名称调用方法。
 
 > [!NOTE]
-> 基于类的实体的状态是在实体处理操作之前 **隐式创建** 的，可以通过调用 `Entity.Current.DeleteState()` 在操作中 **显式删除** 。
+> 基于类的实体的状态是在实体处理操作之前 **隐式创建** 的，可以通过调用 `Entity.Current.DeleteState()` 在操作中 **显式删除**。
 
 ### <a name="class-requirements"></a>类要求
  

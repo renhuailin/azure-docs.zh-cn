@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.openlocfilehash: 0e25d41fbf6a9683f178cbfd1b07fde1b6796509
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967969"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656815"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>使用 StorSimple Device Manager 服务管理 StorSimple 设备
 
@@ -47,6 +47,8 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 下表显示了可以在 StorSimple Device Manager 服务 UI 中执行的所有常见管理任务和复杂工作流的摘要。 这些任务根据在其中启动它们的 UI 边栏选项卡进行组织。
 
 有关每个工作流的详细信息，请单击表中的相应过程。
+
+[!INCLUDE [StorSimple software warning](../../includes/storsimple-update-software-warning.md)]
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple Device Manager 工作流
 

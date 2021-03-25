@@ -4,10 +4,10 @@ description: Service Fabric 群集会在 Windows Server 或 Linux 上运行，�
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94683992"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 独立群集概述
@@ -46,7 +46,7 @@ Service Fabric 群集是你拥有的资源。  你应保护群集，防止未经
 ### <a name="service-fabric-role-based-access-control"></a>Service Fabric 基于角色的访问控制
 Service Fabric 还支持使用访问控制限制对不同用户组的某些群集操作的访问。 这就使得群集更加安全。 连接到群集的客户端支持两种访问控制类型：管理员角色和用户角色。  
 
-有关详细信息，请阅读 [Service Fabric 基于角色的访问控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。
+有关详细信息，请参阅 [Service Fabric 基于角色的访问控制](service-fabric-cluster-security.md#service-fabric-role-based-access-control)。
 
 ## <a name="scaling"></a>扩展
 

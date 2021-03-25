@@ -4,10 +4,10 @@ description: 了解如何将现有应用程序打包为来宾可执行文件，�
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86259260"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
@@ -242,7 +242,7 @@ WorkingFolder 用于设置正确的工作目录，以便应用程序或初始化
 可以使用 `ConsoleRedirection` 元素在 `ServiceManifest.xml` 文件中配置控制台重定向。
 
 > [!WARNING]
-> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅*将其用于本地开发和调试目的。  
+> 永远不要在生产中部署的应用程序中使用控制台重定向策略，因为这可能会影响应用程序故障转移。 *仅* 将其用于本地开发和调试目的。  
 >
 >
 
@@ -293,8 +293,8 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 
 `New-ServiceFabricService` cmdlet 的 `InstanceCount` 参数用于指定应在 Service Fabric 群集中启动的服务实例的数量。 可以根据要部署的应用程序类型设置 `InstanceCount` 值。 最常见的两种方案是：
 
-* `InstanceCount = "1"`。 在此情况下，只会在群集中部署一个服务实例。 Service Fabric 的计划程序确定在哪一个节点上部署服务。
-* `InstanceCount ="-1"`。 在此情况下，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是群集中的每个节点上都有一个（且只有一个）服务实例。
+* `InstanceCount = "1"`. 在此情况下，只会在群集中部署一个服务实例。 Service Fabric 的计划程序确定在哪一个节点上部署服务。
+* `InstanceCount ="-1"`. 在此情况下，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是群集中的每个节点上都有一个（且只有一个）服务实例。
 
 这是前端应用程序（不包括 REST 终结点）的有用配置，因为客户端应用程序需要“连接到”群集中的任何节点才能使用该终结点。 例如，当 Service Fabric 群集的所有节点都连接到负载均衡器时，也可以使用此配置。 然后，客户端流量可以分布于在集群中所有节点上运行的服务。
 

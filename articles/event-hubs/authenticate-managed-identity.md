@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98805292"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
@@ -42,7 +42,7 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 1. 选择“保存”，保存设置。 
 
     :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Web 应用的托管标识":::
-4. 在信息消息中选择 **"是"** 。 
+4. 在信息消息中选择“是”。 
 
     启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
 
@@ -57,12 +57,12 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 1. 在 Azure 门户中导航到事件中心命名空间，显示该命名空间的“概览”。 
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示事件中心的访问控制设置。
 1.  选择“角色分配”选项卡以查看角色分配列表。
-3.  选择 " **添加**"，然后选择 " **添加角色分配**"。
-4.  在 _ "*添加角色分配*" 页上，执行以下步骤：
-    1. 对于 " **角色**"，请选择要分配的事件中心角色。 在此示例中，它是 **Azure 事件中心数据所有者**。
-    1. 对于 "**分配访问权限**" 字段，请在 "**系统分配的托管标识**" 下选择 "**应用服务**"。 
-    1. 选择用于创建 web 应用的托管标识的 **订阅** 。
-    1. 选择创建的 web 应用的 **托管标识** 。 标识的默认名称与 web 应用的名称相同。 
+3.  依次选择“添加”、“添加角色分配”*****。
+4.  在“添加角色分配”页上，按照以下步骤操作：
+    1. 对于“角色”，选择要分配的“事件中心”角色。 在此示例中，它是“Azure 事件中心数据所有者”。
+    1. 对于“访问权限分配对象”字段，选择“系统分配的托管标识”下的“应用服务”  。 
+    1. 选择在其中创建了 Web 应用的托管标识的订阅。
+    1. 选择为 Web 应用创建的托管标识。 标识的默认名称与 Web 应用的名称相同。 
     1. 然后选择“保存”。 
     
         ![“添加角色分配”页](./media/authenticate-managed-identity/add-role-assignment-page.png)
@@ -70,7 +70,7 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
     分配此角色后，Web 应用程序即可访问已定义范围内的事件中心资源。 
 
     > [!NOTE]
-    > 有关支持托管标识的服务的列表，请参阅 [支持 Azure 资源的托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+    > 如需支持托管标识的服务列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ### <a name="test-the-web-application"></a>测试 Web 应用程序
 1. 创建事件中心命名空间和事件中心。 

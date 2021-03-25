@@ -2,24 +2,25 @@
 title: Linux VM 上的 Azure 磁盘加密方案
 description: 本文介绍了如何针对各种方案为 Linux VM 启用 Microsoft Azure 磁盘加密
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d32e5c55bbaa7357c1f13200213dbaed19986825
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6ebec78d5a9e82cc8a2f6ceb020a8b9552d6311e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694336"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604009"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
 适用于 Linux 虚拟机 (VM) 的 Azure 磁盘加密使用 Linux 的 DM-Crypt 功能为 OS 磁盘和数据磁盘提供全磁盘加密。 此外，它还在使用 EncryptFormatAll 功能时提供临时磁盘加密。
 
-Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，有助于你控制和管理磁盘加密密钥和机密。 有关此服务的概述，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
+Azure 磁盘加密[与 Azure Key Vault 集成](disk-encryption-key-vault.md)，帮助你控制和管理磁盘加密密钥与机密。 有关此服务的概述，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 只能对具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)的虚拟机应用磁盘加密。 还必须满足以下先决条件：
 
@@ -261,7 +262,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
 
 1. 格式化、装载这些磁盘并将其添加到 fstab 文件。
 
-1. 选择分区标准，创建跨越整个驱动器的分区，然后格式化该分区。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名问题](../troubleshooting/troubleshoot-device-names-problems.md)一文。
+1. 选择分区标准，创建跨越整个驱动器的分区，然后格式化该分区。 此处使用了 Azure 生成的符号链接。 使用符号链接可避免设备名更改所造成的问题。 有关详细信息，请参阅[排查设备名问题](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)一文。
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt
@@ -407,10 +408,10 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 创建已加密 VM 的映像或快照，并使用它来部署其他 VM。
 - 内核故障转储 (kdump)。
 - Oracle ACFS（ASM 群集文件系统）。
-- Lsv2 系列 Vm 的 NVMe 磁盘 (参阅： [Lsv2 系列](../lsv2-series.md)) 。
+- Lsv2 系列 VM 的 NVMe 磁盘（请参阅：[Lsv2 系列](../lsv2-series.md)）。
 - 具有“嵌套装入点”的 VM，即一个路径中有多个装入点（例如“/1stmountpoint/data/2stmountpoint”）。
 - 包含数据驱动器的 VM 装载在 OS 文件夹之上。
-- 一个 VM，其根 (OS 磁盘) 逻辑卷已使用数据磁盘进行扩展。
+- 一个已使用数据磁盘在其上扩展了根（OS 磁盘）逻辑卷的 VM。
 - 具有写入加速器磁盘的 M 系列 VM。
 - 将 ADE 应用到一个 VM，此 VM 使用[服务器端加密和客户管理的密钥](../disk-encryption.md) (SSE + CMK) 加密磁盘。 将 SSE+CMK 应用于使用 ADE 加密的 VM 上的数据磁盘，这种方案也不受支持。
 - 将使用 ADE 加密的 VM，或者曾经使用 ADE 加密的 VM 迁移到[使用客户管理的密钥的服务器端加密](../disk-encryption.md)。

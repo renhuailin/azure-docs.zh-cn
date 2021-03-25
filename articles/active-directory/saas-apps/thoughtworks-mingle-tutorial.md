@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c3eeb1577e628965e3e5a35fa20c072224383149
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92514616"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Thoughtworks Mingle 的集成，需要以下项：
 
@@ -61,7 +61,7 @@ ms.locfileid: "92514616"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Thoughtworks Mingle”，从结果面板中选择“Thoughtworks Mingle”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“Thoughtworks Mingle”，从结果面板中选择“Thoughtworks Mingle”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Thoughtworks Mingle](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92514616"
 
 若要使用 Thoughtworks Mingle 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Thoughtworks Mingle”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Thoughtworks Mingle”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92514616"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Thoughtworks Mingle 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.mingle.thoughtworks.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.mingle.thoughtworks.com`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Thoughtworks Mingle 客户支持团队](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92514616"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Thoughtworks Mingle”部分，根据要求复制相应的 URL  。
+6. 在“设置 Thoughtworks Mingle”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,15 +124,15 @@ ms.locfileid: "92514616"
 
 1. 以管理员身份登录 **Thoughtworks Mingle** 公司站点。
 
-2. 单击“管理员”  选项卡，并单击“SSO 配置”  。
+2. 单击 **“管理员”** 选项卡，然后单击 **SSO 配置**。
    
     ![“管理员”选项卡](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO 配置")
 
-3. 在“SSO 配置”  部分中，执行以下步骤：
+3. 在 **“SSO 配置”** 部分中，执行以下步骤：
    
     ![SSO 配置](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO 配置")
     
-    a. 若要上传元数据文件，请单击“选择文件”。  
+    a. 若要上载元数据文件，请单击 **“选择文件”**。 
 
     b. 单击 **“保存更改”** 。
 
@@ -144,7 +144,7 @@ ms.locfileid: "92514616"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -158,17 +158,17 @@ ms.locfileid: "92514616"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Thoughtworks Mingle 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Thoughtworks Mingle”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Thoughtworks Mingle”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Thoughtworks Mingle”  。
+2. 在应用程序列表中，选择“Thoughtworks Mingle”。
 
     ![应用程序列表中的 Thoughtworks Mingle 链接](common/all-applications.png)
 
@@ -194,15 +194,15 @@ ms.locfileid: "92514616"
 
 1. 以管理员身份登录 Thoughtworks Mingle 公司站点。
 
-2. 单击“配置文件”  。
+2. 单击 **“配置文件”**。
    
     ![第一个项目](./media/thoughtworks-mingle-tutorial/ic785160.png "第一个项目")
 
-3. 单击“管理员”  选项卡，并单击“用户”  。
+3. 单击 **“管理员”** 选项卡，然后单击 **“用户”**。
    
     ![用户](./media/thoughtworks-mingle-tutorial/ic785161.png "用户")
 
-4. 单击“新建用户”  。
+4. 单击 **“新建用户”**。
    
     ![新建用户](./media/thoughtworks-mingle-tutorial/ic785162.png "新建用户")
 
@@ -210,11 +210,11 @@ ms.locfileid: "92514616"
    
     ![“新建用户”对话框](./media/thoughtworks-mingle-tutorial/ic785163.png "新建用户")  
  
-    a. 将要预配的有效 Azure AD 帐户的 **登录名** 、 **显示名称** 、 **选择密码** 、 **确认密码** 键入到相关文本框中。 
+    a. 将要预配的有效 Azure AD 帐户的 **登录名**、**显示名称**、**选择密码**、**确认密码** 键入到相关文本框中。 
 
-    b. 对于“用户类型”  ，请选择“全用户”  。
+    b. 对于 **“用户类型”**，选择 **“完整用户”**。
 
-    c. 单击“创建此配置文件”  。
+    c. 单击 **“创建此配置文件”**。
 
 >[!NOTE]
 >可以使用 Thoughtworks Mingle 提供的任何其他 Thoughtworks Mingle 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SimpleNexus 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 SimpleNexus 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 SimpleNexus 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6e62859a95556b35540478fbcd5aef6418954afb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92510332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>教程：Azure Active Directory 与 SimpleNexus 集成
@@ -41,13 +41,13 @@ ms.locfileid: "92510332"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SimpleNexus 支持 SP 发起的 SSO 
+* SimpleNexus 支持 SP 发起的 SSO
 
 ## <a name="adding-simplenexus-from-the-gallery"></a>从库中添加 SimpleNexus
 
 若要配置 SimpleNexus 与 Azure AD 的集成，需要从库中将 SimpleNexus 添加到托管 SaaS 应用列表。
 
-若要从库添加 SimpleNexus，请执行以下步骤  ：
+若要从库添加 SimpleNexus，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,22 +61,22 @@ ms.locfileid: "92510332"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“SimpleNexus”，在结果面板中选择“SimpleNexus”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“SimpleNexus”，在结果面板中选择“SimpleNexus”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 SimpleNexus](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户使用 SimpleNexus 配置和测试 Azure AD 单一登录  。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 SimpleNexus 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 SimpleNexus 相关用户之间建立链接关系。
 
 若要配置并测试 SimpleNexus 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 SimpleNexus 单一登录](#configure-simplenexus-single-sign-on)  - 在应用程序端配置单一登录。
+2. [配置 SimpleNexus 单一登录](#configure-simplenexus-single-sign-on) - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 SimpleNexus 测试用户](#create-simplenexus-test-user) - 在 SimpleNexus 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 身份  。
+5. [创建 SimpleNexus 测试用户](#create-simplenexus-test-user) - 在 SimpleNexus 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 身份。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "92510332"
 
 若要配置 SimpleNexus 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“SimpleNexus”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“SimpleNexus”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92510332"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![SimpleNexus 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>_login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>_login` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://simplenexus.com/<companyname>`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92510332"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 SimpleNexus”部分，根据要求复制相应 URL  。
+6. 在“设置 SimpleNexus”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92510332"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92510332"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SimpleNexus 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SimpleNexus”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SimpleNexus”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SimpleNexus”  。
+2. 在应用程序列表中，选择“SimpleNexus”。
 
     ![应用程序列表中的 SimpleNexus 链接](common/all-applications.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 跨租户共享库映像
-description: 了解如何使用共享映像库在 Azure 租户之间共享的映像创建规模集。
+title: 在租户之间共享库映像
+description: 了解如何使用通过共享映像库在 Azure 租户之间共享的映像创建规模集。
 author: cynthn
 ms.author: cynthn
 ms.topic: how-to
@@ -10,13 +10,13 @@ ms.date: 04/05/2019
 ms.reviewer: akjosh
 ms.custom: akjosh, devx-track-azurecli
 ms.openlocfilehash: ea61b3bd76fc4ada48a8a2fb734a841b8a969272
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323475"
 ---
-# <a name="share-images-across-tenants-with-shared-image-gallery"></a>跨租户跨共享映像库共享映像
+# <a name="share-images-across-tenants-with-shared-image-gallery"></a>使用共享映像库在租户之间共享映像
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../includes/virtual-machines-share-images-across-tenants.md)]
 

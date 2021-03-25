@@ -3,12 +3,12 @@ title: 使用用于 Node.js 的 Azure Batch 客户端库
 description: 了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a2d86582c94804a20a3a9e952bc64d60414e25a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737280"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656016"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的 Batch SDK 入门
 
@@ -32,9 +32,9 @@ ms.locfileid: "98737280"
 
 node.js 客户端通过一个准备任务（稍后详细介绍）和一系列其他任务部署 Batch 作业，具体取决于存储帐户中的容器数。 可以从 GitHub 存储库下载脚本。
 
-- [Node.js 客户端](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-- [准备任务 shell 脚本](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-- [将 Python csv 转换为 JSON 的处理程序](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js 客户端](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/sample.js)
+- [准备任务 shell 脚本](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/startup_prereq.sh)
+- [将 Python csv 转换为 JSON 的处理程序](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/processcsv.py)
 
 > [!TIP]
 > 指定链接中的 Node.js 客户端不包含可部署为 Azure Function App 的特定代码。 如需创建该应用的说明，可参阅以下链接。

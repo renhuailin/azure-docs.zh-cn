@@ -2,21 +2,21 @@
 title: 将 Contoso 零售数据加载到专用 SQL 池
 description: 使用 PolyBase 和 T-SQL 命令可将两张表从 Contoso 零售数据加载到专用 SQL 池。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: aac0d8b923dc87f8be59cb594b155aafcf25fd0e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 13e78c707ca3bda338f9255c015c0e926fca90d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677148"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606134"
 ---
 # <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>将 Contoso 零售数据加载到 Azure Synapse Analytics 中的专用 SQL 池中
 

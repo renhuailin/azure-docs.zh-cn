@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91363199"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
@@ -34,7 +34,7 @@ ms.locfileid: "91363199"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 为开发人员帐户授权
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 选择 ![箭头图标。](./media/api-management-howto-aad/arrow.png)上获取。
+2. 选择 ![箭头图标。](./media/api-management-howto-aad/arrow.png).
 3. 在搜索框中键入 **api**。
 4. 选择“API 管理服务”。
 5. 选择自己的 API 管理服务实例。
