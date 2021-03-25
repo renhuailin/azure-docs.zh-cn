@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786898"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>弹性数据库工具常见问题解答 (FAQ)
@@ -39,11 +39,11 @@ ms.locfileid: "92786898"
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>是否我每次启动应用程序时，都需要创建分片映射管理器并填充分片
 
-不会-创建分片映射管理器 (例如， [通过 shardmapmanagerfactory.getsqlshardmapmanager CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) 是一次操作。  在启动应用程序时，应用程序应使用调用 [ShardMapManagerFactory.TryGetSqlShardMapManager()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager)。  每个应用程序域只应有一个这样的调用。
+不是 - 分片映射管理器（例如，[ShardMapManagerFactory.CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)）只需创建一次。  在启动应用程序时，应用程序应使用调用 [ShardMapManagerFactory.TryGetSqlShardMapManager()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager)。  每个应用程序域只应有一个这样的调用。
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>我在使用弹性数据库工具方面存在疑问，如何才能获得解答
 
-[有关 SQL 数据库的问题页面，请访问 Microsoft 问答&相关页面](/answers/topics/azure-sql-database.html)。
+请在[有关 SQL 数据库的 Microsoft 问答页](/answers/topics/azure-sql-database.html)上与我们联系。
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>当使用分片键建立数据库连接的同时，仍然可以对同一分片上的其他分片键查询数据。  这是设计使然吗
 

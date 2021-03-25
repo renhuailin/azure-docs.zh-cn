@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 237b9bc4d7ac6366a67accb31fdf3c80c778b5d6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94636752"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL VNet 服务终结点
@@ -24,7 +24,7 @@ ms.locfileid: "94636752"
 
 - 需要 [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
  
-- 本文需要 Azure CLI 版本2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 本文需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 > [!NOTE]
 > 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
@@ -33,7 +33,7 @@ ms.locfileid: "94636752"
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>为 Azure Database for MySQL 配置 Vnet 服务终结点
 [az network vnet](/cli/azure/network/vnet) 命令用于配置虚拟网络。
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅 ID。 将订阅的 **az login** 输出中的 **id** 属性替换为订阅 id 占位符。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅 ID。 用 az login 输出中你的订阅的 ID 属性替换订阅 ID 占位符 。
 
 - 该帐户必须拥有创建虚拟网络和服务终结点所需的必要权限。
 

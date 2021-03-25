@@ -12,10 +12,10 @@ ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96493610"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>使用 CLI 监视和缩放 Azure SQL 数据库中的单一数据库

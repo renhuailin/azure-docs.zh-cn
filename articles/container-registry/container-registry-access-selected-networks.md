@@ -2,13 +2,13 @@
 title: 配置公共注册表访问
 description: 配置 IP 规则，以便能够从所选的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488756"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773056"
 ---
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
 
@@ -17,6 +17,8 @@ ms.locfileid: "89488756"
 IP 网络规则在公共注册表终结点上进行配置。 IP 网络规则不适用于配置有[专用链接](container-registry-private-link.md)的专用终结点
 
 可在“高级”容器注册表服务层级配置 IP 访问规则。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
+
+每个注册表最多支持 100 条网络访问规则。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
@@ -64,7 +66,7 @@ az acr network-rule add \
 （可选）禁用注册表上的公共终结点。 禁用公共终结点会重写所有防火墙配置。 例如，建议使用[专用链接](container-registry-private-link.md)禁用对虚拟网络中受保护注册表的公共访问。
 
 > [!NOTE]
-> 如果在包含 [服务终结点](container-registry-vnet.md)的虚拟网络中设置注册表，则禁用对注册表的公共终结点的访问权限还会禁止对虚拟网络中的注册表进行访问。
+> 如果在虚拟网络中使用[服务终结点](container-registry-vnet.md)设置了注册表，则禁用对注册表公共终结点的访问也会在虚拟网络中禁用对注册表的访问。
 
 ### <a name="disable-public-access---cli"></a>禁用公共访问 - CLI
 
@@ -104,11 +106,11 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ![来自所有网络的公共访问][acr-access-all-networks]
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
-如果设置了公用网络规则，或对注册表的公共访问被拒绝，则尝试从禁止的公共网络登录到注册表会失败。 如果未设置代理的访问规则，则 HTTPS 代理后的客户端访问也将失败。 你将看到类似于或的错误 `Error response from daemon: login attempt failed with status: 403 Forbidden` 消息 `Looks like you don't have access to registry` 。
+如果设置了公用网络规则，或拒绝对注册表的公共访问，则尝试从禁止的公用网络登录注册表会失败。 如果未设置代理的访问规则，则从 HTTPS 代理后面进行的客户端访问也会失败。 你会看到类似于 `Error response from daemon: login attempt failed with status: 403 Forbidden` 或 `Looks like you don't have access to registry` 的错误消息。
 
-如果你使用网络访问规则允许的 HTTPS 代理，但未在客户端环境中正确配置代理，则也可能会发生这些错误。 检查是否为代理行为配置了 Docker 客户端和 Docker 后台程序。 有关详细信息，请参阅 Docker 文档中的 [HTTP/HTTPS 代理](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) 。
+如果使用网络访问规则所允许的 HTTPS 代理，但未在客户端环境中正确配置该代理，则也可能会发生这些错误。 检查 Docker 客户端和 Docker 守护程序均已针对代理行为进行了配置。 有关详细信息，请参阅 Docker 文档中的 [HTTP/HTTPS 代理](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)。
 
 
 ## <a name="next-steps"></a>后续步骤

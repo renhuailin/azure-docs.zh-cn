@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 22548703b456eb28a30c2d210d21f810d7b3ae6e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952692"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448364"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 GitHub 帐户注册与登录
 
@@ -32,20 +32,20 @@ ms.locfileid: "98952692"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>创建 GitHub OAuth 应用程序
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 GitHub 帐户进行登录，需要在 [GitHub 开发人员](https://github.com/settings/developers) 门户中创建应用程序。 有关详细信息，请参阅 [创建 OAuth 应用](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)。 如果还没有 GitHub 帐户，可以在注册 [https://www.github.com/](https://www.github.com/) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 GitHub 帐户登录，需要在 [GitHub 开发人员](https://github.com/settings/developers)门户中创建一个应用程序。 有关详细信息，请参阅[创建 OAuth 应用](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)。 如果没有 GitHub 帐户，可以在 [https://www.github.com/](https://www.github.com/) 上注册。
 
-1. 用 GitHub 凭据登录到 [Github 开发人员](https://github.com/settings/developers) 。
+1. 使用 GitHub 凭据登录到 [GitHub 开发人员](https://github.com/settings/developers)门户。
 1. 选择“OAuth 应用”，然后选择“新建 OAuth 应用”。
 1. 输入 **应用程序名称** 和 **主页 URL**。
 1. 在“授权回调 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
 1. 单击“注册应用程序”。
-1. 复制 " **客户端 ID** " 和 " **客户端密钥**" 的值。 将标识提供者添加到租户时需要这两个值。
+1. 复制“客户端 ID”和“客户端密钥”的值。 将标识提供者添加到租户时需要这两个值。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -57,18 +57,21 @@ ms.locfileid: "98952692"
 1. 选择“标识提供者”，然后选择“GitHub (预览)”。
 1. 输入“名称”。 例如，GitHub。
 1. 对于 **客户端 ID**，输入你之前创建的 GitHub 应用程序的客户端 ID。
-1. 对于 **客户端密码**，请输入你记录的客户端密码。
+1. 对于“客户端机密”，请输入记下的客户端机密。
 1. 选择“保存”。
 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>将 GitHub 标识提供者添加到用户流 
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
-1. 单击要添加 GitHub 标识提供者的用户流。
-1. 在 **社交标识提供者** 下，选择 " **GitHub**"。
+1. 单击要将 GitHub 标识提供者添加到的用户流。
+1. 在“社交标识提供者”下，选择“GitHub”。
 1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页面中，选择“GitHub”以使用 GitHub 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -91,9 +94,9 @@ ms.locfileid: "98952692"
 
 ## <a name="configure-github-as-an-identity-provider"></a>将 GitHub 配置为标识提供者
 
-若要允许用户使用 GitHub 帐户登录，需要将该帐户定义为声明提供程序，该提供程序 Azure AD B2C 可以通过终结点进行通信。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+要使用户能够使用 GitHub 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与之通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过将 GitHub 帐户添加到策略扩展文件中的 **ClaimsProviders** 元素来将其定义为声明提供程序。
+可以通过在策略的扩展文件中将 GitHub 帐户添加到 **ClaimsProviders** 元素，将该帐户定义为声明提供程序。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
@@ -148,12 +151,12 @@ ms.locfileid: "98952692"
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为 **numericUserId** 的新声明类型。
+GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 ClaimsTransformations 列表。 如果未在文件中定义 **ClaimsTransformations** 元素，请按如下所示添加父 XML 元素。 声明转换还需要定义一个名为 **numericUserId** 的新声明类型。
 
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 numericUserId 声明添加到 **ClaimsSchema** 元素中。
-1. 找到 " [ClaimsTransformations](claimstransformations.md) " 元素。 如果该元素不存在，请添加该元素。
+1. 将 numericUserId 声明添加到 **ClaimsSchema** 元素。
+1. 找到 [ClaimsTransformations](claimstransformations.md) 元素。 如果该元素不存在，请添加该元素。
 1. 将 CreateIssuerUserId 声明转换添加到 **ClaimsTransformations** 元素。
 
 ```xml
@@ -199,6 +202,13 @@ GitHub 技术配置文件要求将 **CreateIssuerUserId** 声明转换添加到 
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页面中，选择“GitHub”以使用 GitHub 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end

@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 32d91f01fcebec3e1ae0d19b1bff29a71f41c0d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050420"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
@@ -91,7 +91,7 @@ ms.locfileid: "102050420"
 1. Maven 会请求你提供所需的值，以在部署上完成项目的生成。
     系统提示时提供以下值：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | **groupId** | `com.fabrikam` | 一个值，用于按照 Java 的[包命名规则](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)在所有项目中标识你的项目。 |
     | **artifactId** | `fabrikam-functions` | 一个值，该值是 jar 的名称，没有版本号。 |

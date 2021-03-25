@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100590864"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>使用 Azure DevOps Starter 将 ASP.NET Core 应用部署到 Azure Kubernetes 服务
@@ -99,7 +99,7 @@ DevOps Starter 会自动在你的 Azure DevOps 组织中配置一个 CI/CD 管�
 
 1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。 
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。  
 
 1. 在生成管道名称下，选择“历史记录”。 此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 

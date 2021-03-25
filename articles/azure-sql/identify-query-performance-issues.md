@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98217220"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL 数据库中可检测的查询性能瓶颈类型
@@ -187,7 +187,7 @@ ORDER BY count (distinct p.query_id) DESC;
 
 - **阻塞**：
 
-  一个查询可能持有数据库中某些对象的锁，而其他查询正在尝试访问相同的对象。 可以使用 [DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或[智能见解](database/intelligent-insights-troubleshoot-performance.md#locking)来识别阻塞的查询。 有关详细信息，请参阅 [了解和解决 AZURE SQL 阻止问题](database/understand-resolve-blocking.md)。
+  一个查询可能持有数据库中某些对象的锁，而其他查询正在尝试访问相同的对象。 可以使用 [DMV](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或[智能见解](database/intelligent-insights-troubleshoot-performance.md#locking)来识别阻塞的查询。 有关详细信息，请参阅[了解并解决 Azure SQL 阻塞问题](database/understand-resolve-blocking.md)。
 - **IO 问题**
 
   查询可能正在等待将页面写入数据文件或日志文件。 在这种情况下，请检查 DMV 中的 `INSTANCE_LOG_RATE_GOVERNOR`、`WRITE_LOG` 或 `PAGEIOLATCH_*` 等待统计信息。 了解如何使用 DMV [识别 IO 性能问题](database/monitoring-with-dmvs.md#identify-io-performance-issues)。

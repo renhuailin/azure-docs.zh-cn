@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96534074"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
@@ -87,12 +87,12 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="login-to-docker-and-build-the-image"></a>登录到 Docker 并构建映像
+## <a name="login-to-docker-and-build-the-image"></a>登录到 Docker 并生成映像
 
-接下来，我们将创建运行你的 web 应用程序的映像。 从 Docker (例如 `python:2.7-slim` ，在我们的 Dockerfile) 中提取公共映像时，最佳做法是使用 Docker 中心帐户进行身份验证，而不是发出匿名拉取请求。
+接下来，我们将创建运行你的 Web 应用程序的映像。 从 Docker（如 Dockerfile 中的 `python:2.7-slim`）拉取公共映像时，最佳做法是使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。
 
 > [!NOTE]
-> 在频繁执行匿名拉取请求时，可能会看到类似于 `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` docker 中心或向 docker 中心进行身份验证的 docker 错误，以防出现这些错误。 有关详细信息，请参阅 [通过 Azure 容器注册表管理公共内容](../container-registry/buffer-gate-public-content.md) 。
+> 频繁发出匿名拉取请求时，你可能会看到 Docker 错误，类似于 `ERROR: toomanyrequests: Too Many Requests.` 或 `You have reached your pull rate limit.`。请对 Docker Hub 进行身份验证以避免这些错误。 有关详细信息，请参阅[通过 Azure 容器注册表管理公共内容](../container-registry/buffer-gate-public-content.md)。
 
 打开 PowerShell 窗口并导航到包含 Dockerfile 的目录。 然后运行以下命令：
 
@@ -181,7 +181,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
 
-若要了解如何为容器映像下载配置不同类型的身份验证，请参阅 [容器存储库身份验证](configure-container-repository-credentials.md)。
+请参阅[容器存储库身份验证](configure-container-repository-credentials.md)，了解如何为容器映像的下载配置不同类型的身份验证。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
 使用 6.3 运行时版本时，Linux 容器支持 VM 隔离，从而支持两种容器隔离模式：process 和 Hyper-V。 使用 Hyper-V 隔离模式时，内核将在每个容器与容器主机之间隔离。 使用 [Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) 实现 Hyper-V 隔离。 在应用程序清单文件中的 `ServicePackageContainerPolicy` 元素内，为 Linux 群集指定了隔离模式。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 默认为 process 隔离模式。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
@@ -228,7 +228,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ![HealthCheckUnhealthyDsp][3]
 
-可以通过将 **HealthConfig** 选项指定为 Applicationmanifest.xml 中 **ContainerHostPolicies** 的一部分，为每个容器配置 **HEALTHCHECK** 行为。
+可以为每个容器配置 **HEALTHCHECK** 行为，方法是在 ApplicationManifest 中将 **HealthConfig** 选项指定为 **ContainerHostPolicies** 的一部分。
 
 ```xml
 <ServiceManifestImport>
@@ -455,7 +455,7 @@ Service Fabric 运行时为下载和解压缩容器映像分配了 20 分钟的�
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果未指定 **ContainersRetentionCount**  属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果不指定 **ContainersRetentionCount** 属性，则不会保留任何容器。 ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 身份验证和用户权限 | Microsoft Docs
-description: 本文了解 Azure Analysis Services 如何使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。
+description: 本文介绍 Azure Analysis Services 如何使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 551bae56565140da3754e74a23b1cc18087f1171
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487433"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
@@ -32,7 +32,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/externa
 
 根据使用的客户端应用程序或工具，身份验证类型和登录方式可能有所不同。 每个应用程序可能支持连接到云服务（如 Azure Analysis Services）的不同功能。
 
-Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，这种交互式方法还支持 Azure AD 多因素身份验证 (MFA) 。 Azure AD MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它通过多个验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 **建议使用通用身份验证**。
+Power BI Desktop、Visual Studio 和 SSMS 支持 Active Directory 通用身份验证，该通用身份验证是一种交互式方法，还支持 Azure AD 多重身份验证 (MFA)。 Azure AD MFA 可帮助保护对数据和应用程序的访问，同时提供简单的登录过程。 它通过多个验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。 **建议使用通用身份验证**。
 
 如果使用 Windows 帐户登录到 Azure 并且通用身份验证未选中或不可用 (Excel)，则需要 [Active Directory 联合身份验证服务 (AD FS)](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)。 使用联合身份验证时，Azure AD 和 Microsoft 365 用户使用本地凭据进行身份验证，并且可以访问 Azure 资源。
 
@@ -44,7 +44,7 @@ Azure Analysis Services 服务器通过以下方式支持来自 [SSMS V17.1](/sq
 
 *  支持邀请 Azure B2B 来宾用户加入 Azure AS 租户。 连接到服务器时，来宾用户必须选择 Active Directory 通用身份验证。
 
-*  支持多重身份验证 (MFA)。 Azure AD MFA 可以通过一系列验证选项来保护对数据和应用程序的访问：电话呼叫、短信、带 pin 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
+*  支持多重身份验证 (MFA)。 Azure AD MFA 有助于通过一系列验证选项来保护对数据和应用程序的访问：电话呼叫、短信、含有 PIN 码的智能卡或移动应用通知。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
 
 ### <a name="visual-studio"></a>Visual Studio
 

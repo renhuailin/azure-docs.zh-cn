@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: lajanuar
 ms.openlocfilehash: e7f0e106c1ca154dcd54990395430b3e0f6c536f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895503"
 ---
 # <a name="translator-30-dictionary-examples"></a>翻译器 3.0：字典示例

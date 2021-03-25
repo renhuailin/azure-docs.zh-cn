@@ -9,10 +9,10 @@ ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: efe46c9a4e229c84f38a7643b880e5c498961104
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102244649"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/overview.md#app-service-on-linux)。 

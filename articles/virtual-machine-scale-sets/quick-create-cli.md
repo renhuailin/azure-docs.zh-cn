@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 5ed6ff00e2ec9a47cec0290fa88ef3b554287607
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94518152"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建虚拟机规模集
@@ -27,7 +27,7 @@ ms.locfileid: "94518152"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

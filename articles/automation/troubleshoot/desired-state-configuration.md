@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896522"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>排查 Azure 自动化状态配置问题
@@ -62,7 +62,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="resolution"></a>解决方法
 
-使用 [AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) cmdlet 删除配置。
+使用 [Remove-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration) cmdlet 来删除配置。
 
 ## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>场景：未能注册 DSC 代理
 
@@ -107,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 此问题是由证书错误或过期引起的。 请参阅[重新注册节点](../automation-dsc-onboarding.md#re-register-a-node)。
 
-此问题也可能是由于代理配置不允许访问 **_. azure-automation.net_*。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
+此问题也可能是由于代理配置不允许访问 *.azure-automation.net。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
 
 ### <a name="resolution"></a>解决方法
 
@@ -338,8 +338,8 @@ This event indicates that failure happens when LCM is processing the configurati
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在此处看不到你的问题，或者无法解决你的问题，请尝试以下通道之一以获取其他支持：
+如果你的问题未在本文中列出，或者无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持将 Azure 社区引导至解答、支持和专业化服务。
+* 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
 * 提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

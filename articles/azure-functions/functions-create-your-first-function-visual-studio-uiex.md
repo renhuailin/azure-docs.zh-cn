@@ -7,10 +7,10 @@ ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "102050114"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个函数
@@ -21,7 +21,7 @@ ms.locfileid: "102050114"
 
 ## <a name="1-prepare-your-environment"></a>1.准备环境
 
-+ 创建 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 创建 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + 安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/) 并在安装期间选择“Azure 开发”工作负载。 
 

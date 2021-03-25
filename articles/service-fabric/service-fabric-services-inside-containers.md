@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e0c5f3ecf0334ad2190d8542e54388a2a25d30fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999801"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
@@ -45,7 +45,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
           {
    ```
 
-4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令  。
+4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令。
 
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
 
@@ -67,7 +67,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
 
 6. 接下来需要[生成](service-fabric-get-started-containers.md#Build-Containers) Docker 容器包并将其[推送](service-fabric-get-started-containers.md#Push-Containers)到存储库。
 
-7. 修改 ApplicationManifest.xml 和 ServiceManifest.xml{1}，{2}添加容器映像、存储库信息、注册表身份验证和端口到主机映射。 有关修改清单的信息，请参阅[创建 Azure Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。 服务清单中的代码包定义需要替换为相应的容器映像。 请确保将入口点更改为 ContainerHost 类型。
+7. 修改 ApplicationManifest.xml 和 ServiceManifest.xml，添加容器映像、存储库信息、注册表身份验证和端口到主机映射。 有关修改清单的信息，请参阅[创建 Azure Service Fabric 容器应用程序](service-fabric-get-started-containers.md)。 服务清单中的代码包定义需要替换为相应的容器映像。 请确保将入口点更改为 ContainerHost 类型。
 
    ```xml
    <!-- Code package is your service executable. -->

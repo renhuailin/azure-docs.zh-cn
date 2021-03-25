@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SciQuest Spend Director 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 SciQuest Spend Director 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 SciQuest Spend Director 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a828f945c459142febbc2cee7a14d40a3d534435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>教程：Azure Active Directory 与 SciQuest Spend Director 集成
@@ -41,8 +41,8 @@ ms.locfileid: "95999852"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SciQuest Spend Director 支持 SP 发起的 SSO 
-* SciQuest Spend Director 支持实时用户预配 
+* SciQuest Spend Director 支持 SP 发起的 SSO
+* SciQuest Spend Director 支持实时用户预配
 
 ## <a name="adding-sciquest-spend-director-from-the-gallery"></a>从库中添加 SciQuest Spend Director
 
@@ -62,22 +62,22 @@ ms.locfileid: "95999852"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“SciQuest Spend Director”，在结果面板中选择“SciQuest Spend Director”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“SciQuest Spend Director”，在结果面板中选择“SciQuest Spend Director”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 SciQuest Spend Director](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 SciQuest Spend Director 的 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 SciQuest Spend Director 的 Azure AD 单一登录。
 要使单一登录生效，需要在 Azure AD 用户与 SciQuest Spend Director 中相关用户之间建立链接关系。
 
 若要配置和测试 SciQuest Spend Director 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 SciQuest Spend Director 单一登录](#configure-sciquest-spend-director-single-sign-on) - 在应用程序端配置单一登录设置  。
+2. [配置 SciQuest Spend Director 单一登录](#configure-sciquest-spend-director-single-sign-on) - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 SciQuest Spend Director 测试用户](#create-sciquest-spend-director-test-user) - 在 SciQuest Spend Director 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
+5. [创建 SciQuest Spend Director 测试用户](#create-sciquest-spend-director-test-user) - 在 SciQuest Spend Director 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -86,7 +86,7 @@ ms.locfileid: "95999852"
 
 要配置 SciQuest Spend Director 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 SciQuest Spend Director 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 SciQuest Spend Director 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "95999852"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![SciQuest Spend Director 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "95999852"
 
     b. 在“标识符”框中，使用以下模式键入 URL：`https://<companyname>.sciquest.com`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SciQuest Spend Director 客户端支持团队](https://www.jaggaer.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -115,7 +115,7 @@ ms.locfileid: "95999852"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 SciQuest Spend Director”部分中，根据要求复制相应的 URL  。
+6. 在“设置 SciQuest Spend Director”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "95999852"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -152,17 +152,17 @@ ms.locfileid: "95999852"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SciQuest Spend Director 的权限，使她能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SciQuest Spend Director”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SciQuest Spend Director”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SciQuest Spend Director”  。
+2. 在应用程序列表中，选择“SciQuest Spend Director”。
 
     ![应用程序列表中的 SciQuest Spend Director 链接](common/all-applications.png)
 

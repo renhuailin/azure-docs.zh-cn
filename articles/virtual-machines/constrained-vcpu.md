@@ -3,15 +3,16 @@ title: 受约束的 vCPU 大小
 description: 列出支持具有受约束的 vCPU 计数的 VM 大小。
 author: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 530ae08dabe54ed279a4055e52109aad0ef4f842
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
-ms.translationtype: MT
+ms.openlocfilehash: 7faeec8494a908b9aab00be9b63904354b5e0994
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426147"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102557074"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>支持受约束 vCPU 的 VM 大小
 

@@ -13,10 +13,10 @@ ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: sqldbrb=2
 ms.openlocfilehash: e0ad8e9e71a0ee2c23412d535fe79955edb39ba8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576644"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>快速入门：使用 PHP 查询 Azure SQL 数据库中的数据库
@@ -33,7 +33,7 @@ ms.locfileid: "99576644"
 
   | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
-  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|

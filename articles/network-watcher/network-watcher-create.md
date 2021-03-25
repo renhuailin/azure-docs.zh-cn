@@ -1,6 +1,6 @@
 ---
 title: 创建 Azure 网络观察程序实例 | Microsoft 文档
-description: 了解如何使用 Azure 门户或其他技术在 Azure 区域中创建 Azure 网络观察程序，以及如何删除网络观察程序。
+description: 了解如何使用 Azure 门户或其他技术在 Azure 区域中创建 Azure 网络观察程序，以及如何删除网络监视程序。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: c308824afdcae5f5c04a316c199bad71ad84a429
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961985"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Network
 
 将自动在名为 *NetworkWatcherRG* 的资源组中创建网络观察程序实例。 如果该资源组尚不存在，则会创建该资源组。
 
-如果希望自定义网络观察程序实例的名称以及将其置于其中的资源组，可以使用以下各节中介绍的 PowerShell、Azure CLI、REST API 或 ARMClient 方法。 在每个选项中，都必须存在资源组，然后才能在其中创建网络观察程序。  
+若要自定义网络观察程序实例的名称和放置该实例的资源组名称，可使用下面各部分中介绍的 PowerShell、Azure CLI、REST API 或 ARMClient 方法。 在每个选项中，都必须存在资源组，然后才能在其中创建网络观察程序。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>使用 PowerShell 创建网络观察程序
 
@@ -103,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>使用 Azure 快速入门模板创建网络观察程序
 
-若要创建网络观察程序实例，请参阅此 [快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
+若要创建网络观察程序实例，请参阅此[快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
 

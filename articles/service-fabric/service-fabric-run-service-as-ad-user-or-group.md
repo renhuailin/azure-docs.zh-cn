@@ -4,14 +4,14 @@ description: 了解如何在 Service Fabric Windows 独立群集上以 Active Di
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: d4a7afc2ddb0f39014a7cf0fd006d7fe23673a95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91840721"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>以 Active Directory 用户或组身份运行服务
-在 Windows Server 独立群集上，可以使用 RunAs 策略以 Active Directory 用户或组的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。  还可以采用[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 的身份来运行服务。
+在 Windows Server 独立群集上，可以使用 RunAs 策略以 Active Directory 用户或组的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。  还可以采用[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 的身份来运行服务。
 
 通过使用域用户或组，可以访问域中已被授予权限的其他资源（例如文件共享）。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91840721"
 ```
 
 > [!NOTE] 
-> 如果将 RunAs 策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则还必须指定 SecurityAccessPolicy  。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
+> 如果将 RunAs 策略应用到服务，且服务清单声明使用 HTTP 协议的终结点资源，则还必须指定 SecurityAccessPolicy。  有关详细信息，请参阅[为 HTTP 和 HTTPS 终结点分配安全访问策略](service-fabric-assign-policy-to-endpoint.md)。 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->

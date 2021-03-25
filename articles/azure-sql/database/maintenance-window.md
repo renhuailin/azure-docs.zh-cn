@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/05/2021
-ms.openlocfilehash: b658fa9f2df6e8a88df89f9e8ccc1cf6b68cec39
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/11/2021
+ms.openlocfilehash: bd91c29ca97c2096c4d8f3df19dbb9eab306b8e7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426053"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149743"
 ---
 # <a name="maintenance-window-preview"></a>维护时段（预览版）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -83,7 +83,8 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 - 美国中部
 - 美国东部
 - 美国东部 2
-- Japan East
+- 东亚
+- 日本东部
 - 美国中北部
 - 北欧
 - 美国中南部
@@ -130,7 +131,7 @@ Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组�
 * [提前通知](advance-notifications.md)
 * [配置维护时段](maintenance-window-configure.md)
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解更多信息
 
 * [维护时段常见问题解答](maintenance-window-faq.yml)
 * [Azure SQL 数据库](sql-database-paas-overview.md) 

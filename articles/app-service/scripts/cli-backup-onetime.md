@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.openlocfilehash: 4f87e610c1f3315b21a9c157f127e713ff5444f2
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98747536"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 备份应用
@@ -24,7 +24,7 @@ ms.locfileid: "98747536"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -36,7 +36,7 @@ ms.locfileid: "98747536"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | 创建存储帐户。 |

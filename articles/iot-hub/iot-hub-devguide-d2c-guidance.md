@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87319127"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南

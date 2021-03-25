@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544643"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
@@ -149,9 +149,9 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 Blob，请使用 **os.Open** 打开该文件。 然后即可使用一个 REST API（Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList)）将该文件上传到指定的路径。 
 
-另外，也可使用 SDK 提供的[高级 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)，这是在低级 REST API 的基础上生成的。 例如，UploadFileToBlockBlob 函数使用 StageBlock (PutBlock) 操作以区块方式同时上传一个文件，以便优化吞吐量。 如果文件小于 256 MB，则会改用 Upload (PutBlob) 通过单个事务完成传输。
+另外，也可使用 SDK 提供的[高级 API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go)，这是在低级 REST API 的基础上生成的。 例如，***UploadFileToBlockBlob*** 函数使用 StageBlock (PutBlock) 操作以区块方式同时上传一个文件，以便优化吞吐量。 如果文件小于 256 MB，则会改用 Upload (PutBlob) 通过单个事务完成传输。
 
-以下示例将文件上传到名为 quickstartblobs-[randomstring] 的容器。
+以下示例将文件上传到名为 **quickstartblobs-[randomstring]** 的容器。
 
 ```go
 // Create a file to test the upload and download.

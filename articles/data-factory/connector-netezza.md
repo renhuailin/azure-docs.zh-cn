@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 4b12c1f24f389634004de3d487a693bc588a7241
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100374348"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
@@ -25,7 +25,7 @@ ms.locfileid: "100374348"
 
 以下活动支持此 Netezza 连接器：
 
-- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 
@@ -49,7 +49,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
 Netezza 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | “type”属性必须设置为“Netezza” 。 | 是 |
 | connectionString | 用于连接到 Netezza 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -114,10 +114,10 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将数据集的 type 属性设置为“NetezzaTable” 。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**NetezzaTable** | 是 |
-| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -150,14 +150,14 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将复制活动中的 source 类型设置为“NetezzaSource” 。 复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的 type 属性设置为“NetezzaSource” 。 | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 示例： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 示例： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的“tableName”） |
 | partitionOptions | 指定用于从 Netezza 加载数据的数据分区选项。 <br>允许值为：**None**（默认值）、**DataSlice** 和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Netezza 数据库并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
-| partitionColumnName | 指定并行复制范围分区将使用的源列（整数类型）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分的示例。 | 否 |
-| partitionUpperBound | 要从中复制数据的分区列的最大值。 <br>当分区选项为 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionUpbound`。 如需示例，请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分。 | 否 |
+| partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分的示例。 | 否 |
+| partitionUpperBound | 要从中复制数据的分区列的最大值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionUpbound`。 如需示例，请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分。 | 否 |
 | partitionLowerBound | 要从中复制数据的分区列的最小值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionLowbound`。 如需示例，请参阅[从 Netezza 进行并行复制](#parallel-copy-from-netezza)部分。 | 否 |
 
 **示例：**
@@ -194,7 +194,7 @@ Netezza 链接服务支持以下属性：
 
 ## <a name="parallel-copy-from-netezza"></a>从 Netezza 进行并行复制
 
-数据工厂 Netezza 连接器提供内置的数据分区，用于从 Netezza 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。
+数据工厂 Netezza 连接器提供内置的数据分区，用于从 Netezza 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
 ![分区选项的屏幕截图](./media/connector-netezza/connector-netezza-partition-options.png)
 
@@ -205,8 +205,8 @@ Netezza 链接服务支持以下属性：
 | 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 从大型表进行完整加载。                                   | 分区选项：数据切片。 <br><br/>在执行期间，数据工厂自动根据 [Netezza 的内置数据切片](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)将数据分区，并按分区复制数据。 |
-| 使用自定义查询加载大量数据。                 | 分区选项：数据切片。<br>查询：`SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>执行期间，数据工厂将 `?AdfPartitionCount`（并行复制数在复制活动中设置）和 `?AdfDataSliceCondition` 替换为数据切片分区逻辑，并将其发送到 Netezza。 |
-| 使用自定义查询加载大量数据，某个整数列包含均匀分布的范围分区值。 | 分区选项：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>分区上限和分区下限 ：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Netezza。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
+| 使用自定义查询加载大量数据。                 | 分区选项：数据切片。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>执行期间，数据工厂将 `?AdfPartitionCount`（并行复制数在复制活动中设置）和 `?AdfDataSliceCondition` 替换为数据切片分区逻辑，并将其发送到 Netezza。 |
+| 使用自定义查询加载大量数据，某个整数列包含均匀分布的范围分区值。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限** 和 **分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Netezza。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
 
 **示例：使用数据切片分区进行查询**
 

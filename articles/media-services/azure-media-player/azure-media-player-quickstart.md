@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879184"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956054"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player 快速入门
 Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服务帐户中的媒体内容的基本播放。 本部分展示了基本步骤，未提供详细信息。 后面的部分介绍了有关如何安装和配置 Azure Media Player 的具体信息。  只需要将以下包括项添加到文档的 `<head>`：
@@ -39,7 +39,7 @@ Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服�
 
 如果不想使用自动安装，可以省略 `data-setup` 特性并手动初始化视频元素。
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服�
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

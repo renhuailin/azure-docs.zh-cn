@@ -10,10 +10,10 @@ ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 930594d2c1af198aba3dae936cd0ce8fcf91c336
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214093"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
@@ -196,7 +196,7 @@ ms.locfileid: "102214093"
    
    * 在“Web 项目”框中，输入 azure-cosmos-java-sample。
    * 在“目标”框中，选择一个目标以保存 WAR 文件。
-   * 单击“完成”。
+   * 单击“完成”  。
 
 1. 现在已经具有 WAR 文件，只需将它上传到 Azure 网站的 **webapps** 目录。 有关上传此文件的说明，请参阅[将 Java 应用程序添加到 Azure 应用服务 Web 应用](../app-service/quickstart-java.md)。 将 WAR 文件上传到 webapps 目录之后，运行时环境将检测到已经添加了此文件，并会自动加载它。
 

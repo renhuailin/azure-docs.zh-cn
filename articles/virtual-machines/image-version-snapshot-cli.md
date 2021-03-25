@@ -3,26 +3,26 @@ title: CLI - 从共享映像库中的快照或托管磁盘创建映像
 description: 了解如何使用 Azure CLI 从共享映像库中的快照或托管磁盘创建映像。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682675"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556955"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 从共享映像库中的托管磁盘或快照创建映像
 
 如果想要将现有快照或托管磁盘迁移到共享映像库，可直接从该托管磁盘或快照创建共享映像库映像。 测试新映像后，可删除源托管磁盘或快照。 还可使用 [Azure PowerShell](image-version-snapshot-powershell.md) 从共享映像库中的托管磁盘或快照创建映像。
 
 映像库中的映像具有两个组件，我们将在此示例中创建这两个组件：
-- “映像定义”包含有关映像及其使用要求的信息。 这包括该映像是 Windows 映像还是 Linux 映像、是专用映像还是通用映像，此外还包括发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
-- 使用共享映像库时，将使用映像版本来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本为 VM 创建新磁盘。 可以多次使用映像版本。
+- “映像定义”包含有关映像及其使用要求的信息。 这包括了该映像是 Windows 还是 Linux 映像、是专用映像还是通用映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 
+- 使用共享映像库时，将使用 **映像版本** 来创建 VM。 可根据环境的需要创建多个映像版本。 创建 VM 时，将使用该映像版本来为 VM 创建新磁盘。 可以多次使用映像版本。
 
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -97,9 +97,9 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 创建映像版本。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
-在此示例中，我们的映像的版本为 *1.0.0* ，我们将在 *美国中南部* 地区创建1个副本，并使用区域冗余存储在 *美国东部 2* 区域中创建1个副本。 选择复制的目标区域时，请记住，还需包含托管磁盘或快照的源区域作为复制的目标。
+在此示例中，映像版本为 1.0.0，我们将使用区域冗余存储在“美国中南部”区域创建 1 个副本，并在“美国东部 2”区域创建 1 个副本  。 选择复制的目标区域时，请记住，还需包含托管磁盘或快照的源区域作为复制的目标。
 
 在 `--os-snapshot` 参数中传入快照或托管磁盘的 ID。
 
@@ -120,7 +120,7 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 你还可以通过在创建映像版本时添加来将所有映像版本副本存储在 [区域冗余存储](../storage/common/storage-redundancy.md) 中 `--storage-account-type standard_zrs` 。
+> 也可在[区域冗余存储](../storage/common/storage-redundancy.md)中存储所有映像版本副本，只需在创建映像版本时添加 `--storage-account-type standard_zrs` 即可。
 >
 
 ## <a name="next-steps"></a>后续步骤

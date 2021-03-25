@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 0eeff0c8c338b09fbe375587db2b955a143138c2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94949813"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加 Web API 应用程序
@@ -25,7 +25,7 @@ ms.locfileid: "94949813"
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“应用注册”，然后选择“新建注册” 。
@@ -38,11 +38,11 @@ ms.locfileid: "94949813"
 
 1. 在“管理”下，选择“身份验证”。 
 1. 在“隐式授权”下，选中“访问令牌”和“ID 令牌”复选框  。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 4. 选择“应用程序(旧版)”，然后选择“添加” 。
@@ -50,14 +50,14 @@ ms.locfileid: "94949813"
 6. 对于“包括 Web 应用/Web API”和“允许隐式流”，请选择“是”。  
 7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点。 在生产应用程序中，可以将回复 URL 设置为 `https://localhost:44332` 之类的值。 出于测试目的，将回复 URL 设置为 `https://jwt.ms`。
 8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。 包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
-9. 单击 **创建**。
+9. 单击“创建”。
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
 
 * * *
 
 ## <a name="configure-scopes"></a>配置范围
 
-可通过范围控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
+可通过作用域控制对受保护资源的访问。 Web API 使用作用域实施基于作用域的访问控制。 例如，可以让 Web API 用户拥有读取和写入访问权限，或者只拥有读取访问权限。 在本教程中，请使用作用域为 Web API 定义读取和写入权限。
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 

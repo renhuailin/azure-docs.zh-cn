@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/07/2020
 ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93092171"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作

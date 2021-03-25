@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589596"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
@@ -38,7 +38,7 @@ ms.locfileid: "100589596"
 * [**订阅**](https://portal.azure.com) - 若要使用 Application Insights 或其他 Azure 资源，则登录到 Azure 订阅。 每个资源组都属于一个 Azure 订阅，从中选择价格封装，并选择成员及其访问权限（如果它是组织订阅）。
 * [**Microsoft 帐户**][account] - 用于登录到 Microsoft Azure 订阅、XBox Live、Outlook.com 和其他 Microsoft 服务的用户名和密码。
 
-## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制资源组中的访问权限
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制资源组中的访问
 
 请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 它们会附加到与 Application Insights 资源相同的[资源组](#resource-group)。 还可以在其中放置其他 Azure 服务，例如网站或存储。
 

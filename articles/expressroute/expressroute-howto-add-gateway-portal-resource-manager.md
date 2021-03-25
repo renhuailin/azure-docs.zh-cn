@@ -9,10 +9,10 @@ ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102038911"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教程：使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
@@ -76,7 +76,7 @@ ms.locfileid: "102038911"
 1. 在门户左侧选择“创建资源”，然后在搜索框中键入“虚拟网络网关”。 在搜索返回的结果中找到“虚拟网关”，并选择该条目  。 在“虚拟网关”页上，选择“创建”   。
 1. 在“创建虚拟网络网关”页面上，输入或选择以下设置：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | --------| ----- |
     | 订阅 | 确保选择正确的订阅。 |
     | 资源组 | 选择虚拟网络后，将自动选择资源组。 | 

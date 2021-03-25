@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 26a8a865a787a9c9b17031f94456272c93380704
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98117038"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入门：使用 Azure 门户缩放 Synapse SQL 池的计算
@@ -26,9 +26,9 @@ ms.locfileid: "98117038"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 可以缩放现有的 SQL 池，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的 SQL 池。 本快速入门教程缩放 **mySampleDataWarehouse**。
 

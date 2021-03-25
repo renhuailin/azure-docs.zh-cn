@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568772"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>从本地故障转移后连接到 Azure VM 

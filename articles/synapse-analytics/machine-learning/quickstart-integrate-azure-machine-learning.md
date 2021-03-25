@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219447"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>快速入门：在 Synapse 中创建新的 Azure 机器学习链接服务

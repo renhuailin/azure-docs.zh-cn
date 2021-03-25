@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96938743"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>教程：为 Dropbox for Business 配置自动用户预配
@@ -93,7 +93,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”设置为“自动”。
+4. 将“预配模式”  设置为“自动”  。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -141,7 +141,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![预配范围](common/provisioning-scope.png)
 
-17. 已准备好预配时，单击“保存”。
+17. 已准备好预配时，单击“保存”  。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

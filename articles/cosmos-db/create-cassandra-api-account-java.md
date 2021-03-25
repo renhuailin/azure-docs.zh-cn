@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
 ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212699"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
@@ -41,7 +41,7 @@ ms.locfileid: "102212699"
 
 ## <a name="create-a-database-account"></a>创建数据库帐户 
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。 
+1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 
 2. 选择“创建资源” > “数据库” > “Azure Cosmos DB”。 
 

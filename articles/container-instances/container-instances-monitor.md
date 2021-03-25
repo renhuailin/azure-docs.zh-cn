@@ -4,10 +4,10 @@ description: 如何监视 Azure 容器实例中的容器消耗的计算资源，
 ms.topic: article
 ms.date: 12/17/2020
 ms.openlocfilehash: ae9725ffe66bebbed26745c311b2ada07d5d2c00
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589300"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源

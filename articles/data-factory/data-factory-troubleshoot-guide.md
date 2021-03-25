@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
 ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382797"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
@@ -1017,7 +1017,7 @@ ms.locfileid: "100382797"
 
 ### <a name="activity-stuck-issue"></a>活动停滞问题
 
-如果观察到活动运行的时间比正常运行的时间长得多，并且几乎没有任何进展，则可能是停滞。 你可以尝试取消它，然后重试，看是否有帮助。 如果是复制活动，您可以了解有关如何 [排查复制活动性能](copy-activity-performance-troubleshooting.md)问题的性能监视和故障排除问题;如果是数据流，请参阅 [映射数据流性能](concepts-data-flow-performance.md) 和优化指南。
+如果观察到活动运行的时间比正常运行的时间长得多，并且几乎没有任何进展，则可能是停滞。 你可以尝试取消它，然后重试，看是否有帮助。 如果是复制活动，则可以参阅[排查复制活动的性能问题](copy-activity-performance-troubleshooting.md)一文，了解性能监视和故障排除；如果是数据流，请参阅[映射数据流性能](concepts-data-flow-performance.md)和优化指南。
 
 ### <a name="payload-is-too-large"></a>有效负载太大
 

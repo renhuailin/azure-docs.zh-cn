@@ -1,5 +1,5 @@
 ---
-title: Apache Spark 的超空间索引
+title: Apache Spark 的 Hyperspace 索引
 description: 使用 Hyperspace 索引优化 Apache Spark 性能
 services: synapse-analytics
 author: euangMS
@@ -11,34 +11,34 @@ ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 3aedef8452ad3e972f78958fc0765639692d76d6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98121050"
 ---
-# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>超空间： Apache Spark 的索引子系统
+# <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hyperspace：Apache Spark 的索引子系统
 
-超空间引入了 Apache Spark 用户为其数据集创建索引（如 CSV、JSON 和 Parquet）的功能，并将其用于潜在的查询和工作负荷加速。
+Hyperspace 使 Apache Spark 用户可以在其数据集（如 CSV、JSON 和 Parquet）上创建索引，并将其用于加速潜在查询和工作负载。
 
-在本文中，我们重点介绍了超空间的基本知识，强调其简易性，并展示了它是如何由任何人使用的。
+在本文中，我们重点介绍 Hyperspace 的基础知识，展示其简单性，几乎任何人都可以使用它。
 
-免责声明：超空间有助于在以下两种情况下加速工作负荷或查询：
+免责声明：Hyperspace 在以下两种情况下才有助于加速工作负载或查询：
 
-* 查询包含对具有高选择性的谓词的筛选器。 例如，你可能想要从一百万个候选行中选择100匹配行。
-* 查询包含需要大量洗牌的联接。 例如，你可能想要使用 10 GB 的数据集加入 100 GB 数据集。
+* 查询包含具有高选择性的谓词上的筛选器。 例如，你可能需要从一百万个候选行中选择 100 个匹配行。
+* 查询包含需要大量随机的联接。 例如，你可能需要将 100-GB 数据集和 10-GB 数据集进行联接。
 
-你可能需要认真监视工作负荷，并确定索引是否正在根据具体情况帮助你。
+你可能需要仔细监视你的工作负载，并确定索引是否在个别情况下对你有帮助。
 
-此文档也可以在笔记本窗体、 [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、 [c #](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)和 [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)中使用。
+本文档也以 [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)、[C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 和 [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb) 的笔记本形式提供。
 
 ## <a name="setup"></a>设置
 
-首先，启动新的 Spark 会话。 由于本文档只是说明超空间可以提供的内容的教程，因此你将进行配置更改，使我们能够突出显示在小型数据集上执行的超空间。 
+首先，启动新的 Spark 会话。 由于此文档是一个教程，仅说明 Hyperspace 可以提供什么，因此你将进行配置更改，使我们能够强调 Hyperspace 在小数据集上所做的工作。 
 
-默认情况下，当联接的一侧的数据大小 (较小时，Spark 使用广播联接优化联接查询，这是我们在本教程中使用的示例数据) 的情况。 因此，我们禁用了广播联接，以便以后在运行联接查询时，Spark 使用排序合并联接。 这主要用于演示如何在大规模中使用超空间索引以加速联接查询。
+默认情况下，当联接一侧的数据大小较小时（这就是我们在本教程中使用的示例数据的情况），Spark 使用广播联接来优化联接查询。 因此，我们禁用广播联接，以便以后当我们运行联接查询时，Spark 使用排序合并联接。 这主要是为了显示如何大规模使用 Hyperspace 索引来加速联接查询。
 
-运行以下单元格的输出显示对已成功创建的 Spark 会话的引用并输出 "-1" 作为已修改的联接配置的值，这表示已成功禁用广播联接。
+运行以下单元的输出将显示对成功创建的 Spark 会话的引用，并输出“-1”作为已修改联接配置的值，这表明广播联接已被成功禁用。
 
 :::zone pivot = "programming-language-scala"
 
@@ -90,13 +90,13 @@ res3: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@297e
 -1
 ```
 
-## <a name="data-preparation"></a>数据准备
+## <a name="data-preparation"></a>数据准备工作
 
-要准备您的环境，您需要创建示例数据记录并将其保存为 Parquet 数据文件。 Parquet 用于说明，但也可以使用其他格式（如 CSV）。 在后续单元中，你将了解如何在此示例数据集上创建多个超空间索引，并使 Spark 在运行查询时使用这些索引。
+为了准备你的环境，需要创建示例数据记录，并将它们保存为 Parquet 数据文件。 Parquet 只用于说明，但你也可以使用其他格式，如 CSV。 在随后的单元中，你将看到如何在此示例数据集上创建多个 Hyperspace 索引，并在运行查询时让 Spark 使用它们。
 
-示例记录对应于两个数据集：部门和员工。 应配置 "empLocation" 和 "deptLocation" 路径，以便在存储帐户上指向所需位置，以保存生成的数据文件。
+示例记录对应于两个数据集：部门和员工。 你应该配置“empLocation”和“deptLocation”路径，以便在存储帐户上指向你期望的位置，以保存生成的数据文件。
 
-运行下面的单元格的输出将我们的数据集的内容显示为 triplets 的列表，后跟 dataFrames 创建的引用，用于在首选位置保存每个数据集的内容。
+运行以下单元的输出会将我们数据集的内容显示为三元组列表，然后引用为保存首选位置中每个数据集的内容而创建的数据帧。
 
 :::zone pivot = "programming-language-scala"
 
@@ -241,9 +241,9 @@ empLocation: String = /your-path/employees.parquet
 deptLocation: String = /your-path/departments.parquet  
 ```
 
-让我们验证所创建的 Parquet 文件的内容，确保它们包含正确格式的预期记录。 稍后，我们将使用这些数据文件创建超空间索引并运行示例查询。
+让我们验证所创建的 Parquet 文件的内容，以确保它们包含正确格式的预期记录。 稍后，我们将使用这些数据文件创建 Hyperspace 索引并运行示例查询。
 
-运行以下单元将生成和输出，以表格形式显示员工和部门 dataFrames 中的行。 应该有14名员工和4个部门，每个部门都与您在上一单元中创建的 triplets 之一匹配。
+运行以下单元的生成和输出将以表格形式显示员工和部门数据帧中的行。 应该有 14 名员工和 4 个部门，每个部门都与你在上一个单元中创建的三元组之一相匹配。
 
 :::zone pivot = "programming-language-scala"
 
@@ -330,22 +330,22 @@ deptDF: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 1 mo
 
 ## <a name="indexes"></a>索引
 
-超空间使你可以对从保存的数据文件扫描的记录创建索引。 成功创建后，与索引对应的条目将添加到超空间的元数据中。 Apache Spark 的优化器 (将使用此元数据，在查询处理过程中，我们的扩展) 用于查找和使用适当的索引。
+使用 Hyperspace，你可在从持久数据文件扫描的记录上创建索引。 成功创建后，与索引对应的条目将添加到 Hyperspace 的元数据中。 此元数据后来被 Apache Spark 的优化器（与扩展一起）用于在查询处理期间查找和使用正确的索引。
 
 创建索引后，可以执行多个操作：
 
-* **如果基础数据发生更改，则刷新。** 可以刷新现有索引来捕获更改。
-* **如果索引不是必需的，则删除。** 您可以执行软删除，也就是说，索引不会被物理删除，而是标记为 "已删除"，这样就不会再用于工作负荷。
-* **如果不再需要索引，则为真空度。** 可以真空索引，这会强制从超空间的元数据中实际删除索引内容和关联元数据。
+* **如果基础数据发生更改则刷新。** 可以刷新现有索引来捕获更改。
+* **如果索引不是必需的则删除。** 你可以执行软删除，即不是以物理方式删除索引，而是将其标记为“已删除”，以便它不再用于你的工作负载。
+* **如果不再需要索引则清空。** 你可以清空索引，这会强制从 Hyperspace 的元数据中完全物理删除索引内容和关联的元数据。
 
-刷新如果基础数据发生更改，则可以刷新现有索引来捕获数据。
-删除如果索引不是必需的，则可以执行软删除，即索引不会被物理删除，而是将其标记为 "已删除"，因此不会再用于工作负荷。
+如果基础数据发生更改则刷新，你可以刷新现有索引以捕获该索引。
+如果索引不是必需的则删除，你可以执行软删除，即不是以物理方式删除索引，而是将其标记为“已删除”，以便它不再用于你的工作负载。
 
-以下部分说明了如何在超空间中执行此类索引管理操作。
+以下部分显示了如何在 Hyperspace 中执行此类索引管理操作。
 
-首先，需要导入所需的库，并创建超空间的实例。 稍后，你将使用此实例调用不同的超空间 Api 来创建示例数据的索引，并修改这些索引。
+首先，你需要导入所需的库并创建 Hyperspace 实例。 稍后，你将使用此实例调用不同的 Hyperspace API 来创建样示例数据上的索引并修改这些索引。
 
-运行以下单元格的输出显示对超空间的已创建实例的引用。
+运行以下单元的输出将显示对 Hyperspace 已创建实例的引用。
 
 :::zone pivot = "programming-language-scala"
 
@@ -391,17 +391,17 @@ hyperspace: com.microsoft.hyperspace.Hyperspace = com.microsoft.hyperspace.Hyper
 
 ## <a name="create-indexes"></a>创建索引
 
-若要创建超空间索引，需要提供两条信息：
+若要创建 Hyperspace 索引，你需要提供两条信息：
 
-* 一个 Spark 数据帧，它引用要编制索引的数据。
-* 索引配置对象 IndexConfig，它指定索引名称以及索引的索引和包含列。
+* 一个 Spark 数据帧，用于引用要编制索引的数据。
+* 一个索引配置对象 IndexConfig，用于指定索引名称以及索引的索引列和包含列。
 
-首先，对示例数据创建三个超空间索引：名为 "deptIndex1" 的部门数据集和 "deptIndex2" 的两个索引，以及一个名为 "empIndex" 的员工数据集的索引。 对于每个索引，需要一个相应的 IndexConfig 来捕获名称，以及索引列和包含列的列列表。 运行以下单元将创建这些 IndexConfigs，其输出会列出它们。
+首先，在我们的样本数据上创建三个 Hyperspace 索引：部门数据集上的名为“deptIndex1”和“deptIndex2”的两个索引，员工数据集上的名为“empIndex”的一个索引。 对于每个索引，需要一个相应的 IndexConfig 来捕获名称以及索引列和包含列的列列表。 运行以下单元将创建这些 IndexConfig，其输出会列出它们。
 
 > [!Note]
-> 索引列是显示在筛选器或联接条件中的列。 "包含列" 是在选择/项目中显示的列。
+> 索引列是显示在筛选器或联接条件中的列。 包含列是显示在你的选择/项目中的列。
 
-例如，在下面的查询中：
+例如，在以下查询中：
 
 ```sql
 SELECT X
@@ -459,7 +459,7 @@ empIndexConfig: com.microsoft.hyperspace.index.IndexConfig = [indexName: empInde
 deptIndexConfig1: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex1; indexedColumns: deptid; includedColumns: deptname]  
 deptIndexConfig2: com.microsoft.hyperspace.index.IndexConfig = [indexName: deptIndex2; indexedColumns: location; includedColumns: deptname]  
 ```
-现在，使用索引配置创建三个索引。 为此，请在超空间实例上调用 "createIndex" 命令。 此命令需要索引配置和包含要编制索引的行的数据帧。 运行以下单元将创建三个索引。
+现在，你可以使用索引配置创建三个索引。 为此，请在我们的 Hyperspace 实例中调用“createIndex”命令。 此命令需要索引配置和包含行的数据帧进行编制索引。 运行以下单元将创建三个索引。
 
 :::zone pivot = "programming-language-scala"
 
@@ -503,17 +503,17 @@ hyperspace.CreateIndex(deptDF, deptIndexConfig2);
 
 ## <a name="list-indexes"></a>列出索引
 
-下面的代码演示了如何列出超空间实例中所有可用的索引。 它使用 "索引" API，该 API 将现有索引的相关信息作为 Spark 数据帧返回，以便您可以执行其他操作。 
+下面的代码显示了如何在 Hyperspace 实例中列出所有可用的索引。 它使用“索引”API 将现有索引信息作为 Spark 数据帧返回，以便你可以执行其他操作。 
 
-例如，可以调用此数据帧上的有效操作来检查其内容或进一步分析 (例如，筛选特定索引，或者根据所需的属性) 对它们进行分组。
+例如，你可以调用此数据帧上的有效操作来检查其内容或进一步分析它（例如，筛选特定索引或根据某些所需属性对它们进行分组）。
 
-以下单元格使用数据帧的 "show" 操作完全打印行，并以表格形式显示索引的详细信息。 对于每个索引，可以在元数据中看到超空间中存储的所有信息。 你将立即注意到以下内容：
+以下单元使用数据帧的“显示”操作以表格形式完全输出行并显示我们索引的详细信息。 对于每个索引，你可以在元数据中查看 Hyperspace 存储的所有信息。 你将立即注意到以下内容：
 
-* indexName、indexedColumns、includedColumns 和 status。 status 是用户通常所引用的字段。
-* dfSignature 是由超空间自动生成的，并且对于每个索引都是唯一的。 超空间在内部使用此签名来维护索引，并在查询时对其进行利用。
+* config.indexName、config.indexedColumns、config.includedColumns 和 status.status 是用户通常引用的字段。
+* dfSignature 由 Hyperspace 自动生成，并且对于每个索引都是唯一的。 Hyperspace 在内部使用此签名来维护索引并在查询时间进行利用。
 
 
-在下面的输出中，所有三个索引都应将 "活动" 设置为 "状态"，其名称、索引列和包含列应与上面的索引配置中定义的内容相匹配。
+在以下输出中，所有三个索引都应具有“可用”状态及其名称、索引列，并且包含列应与我们在上面的索引配置中定义的内容匹配。
 
 :::zone pivot = "programming-language-scala"
 
@@ -555,11 +555,11 @@ hyperspace.Indexes().Show();
 
 ## <a name="delete-indexes"></a>删除索引
 
-您可以使用 "deleteIndex" API 并提供索引名称来删除现有索引。 删除索引需要软删除：它主要将超空间元数据中的索引状态从 "活动" 更新为 "已删除"。 这将从任何未来的查询优化中排除删除的索引，超空间不再为任何查询选择该索引。 
+你可以使用“deleteIndex”API 并提供索引名称来删除现有索引。 索引删除会进行软删除：它主要将索引在 Hyperspace 元数据中的状态从“可用”更新为“已删除”。 这将排除任何未来查询优化中删除的索引，Hyperspace 不再为任何查询选择该索引。 
 
-但是，已删除索引的索引文件仍然仍可用 (因为它是软删除的) ，因此，如果用户请求，则可以还原索引。
+但是，已删除索引的索引文件仍然可用（因为它是软删除），这样如果用户要求，可以恢复索引。
 
-以下单元格删除名为 "deptIndex2" 的索引，并在之后列出超空间元数据。 输出应类似于 "列表索引" 的 "列表索引" 单元格，但 "deptIndex2" 除外，此时应将其状态更改为 "已删除"。
+以下单元将删除名为“deptIndex2”的索引，并在此之后列出 Hyperspace 元数据。 输出应类似于“列出索引”的上述单元格，但“deptIndex2”除外，后者现在应将其状态更改为“已删除”。
 
 :::zone pivot = "programming-language-scala"
 
@@ -605,7 +605,7 @@ hyperspace.Indexes().Show();
 
 ## <a name="restore-indexes"></a>还原索引
 
-可以使用 "restoreIndex" API 还原已删除的索引。 这会将最新版本的索引恢复为活动状态，并使其再次可用于查询。 以下单元格显示了 "restoreIndex" 用法的示例。 删除 "deptIndex1" 并将其还原。 输出显示在调用 "deleteIndex" 命令后，"deptIndex1" 首先进入 "已删除" 状态，并在调用 "restoreIndex" 后恢复为 "活动" 状态。
+可以使用“restoreIndex”API 来还原已删除的索引。 这将使最新版本的索引恢复为“可用”状态，并使其再次用于查询。 以下单元将显示“restoreIndex”使用情况的示例。 删除“deptIndex1”并将其还原。 输出显示“deptIndex1”在调用“deleteIndex”命令后首次进入“已删除”状态，并在调用“restoreIndex”后返回到“可用”状态。
 
 :::zone pivot = "programming-language-scala"
 
@@ -667,11 +667,11 @@ hyperspace.Indexes().Show();
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="vacuum-indexes"></a>真空索引
+## <a name="vacuum-indexes"></a>清空索引
 
-可以使用 **vacuumIndex** 命令执行硬删除（即，删除索引的完全删除文件和元数据条目）。 此操作不可逆。 它会以物理方式删除所有索引文件，这就是硬删除的原因。
+你可以使用“vacuumIndex”命令执行硬删除，即完全删除已删除索引的文件和元数据条目。 此操作不可逆。 它以物理方式删除所有索引文件，这就是为什么它是硬删除。
 
-以下单元 vacuums "deptIndex2" 索引，并在清除后显示超空间元数据。 你应看到两个索引 "deptIndex1" 和 "empIndex" 的元数据条目，它们均为 "活动" 状态，没有 "deptIndex2" 的条目。
+以下单元将清空“deptIndex2”索引，并在清空后显示 Hyperspace 元数据。 你应看到两个索引“deptIndex1”和“empIndex”的元数据条目，这两个索引都具有“可用”状态，并且没有“deptIndex2”的条目。
 
 :::zone pivot = "programming-language-scala"
 
@@ -714,14 +714,14 @@ hyperspace.Indexes().Show();
 |        empIndex|             [deptId]|             [empName]|`deptId` INT,`emp...|com.microsoft.cha...|30768c6c9b2533004...|Relation[empId#32...|       200|abfss://datasets@...|      ACTIVE|              0|
 ```
 
-## <a name="enable-or-disable-hyperspace"></a>启用或禁用超空间
+## <a name="enable-or-disable-hyperspace"></a>启用或禁用 Hyperspace
 
-超空间提供使用 Spark 启用或禁用索引使用的 Api。
+Hyperspace 提供通过 Spark 启用或禁用索引使用的 API。
 
-* 通过使用 **enableHyperspace** 命令，超空间优化规则将对 Spark 优化器可见，并利用现有超空间索引来优化用户查询。
-* 通过使用 **disableHyperspace** 命令，在查询优化期间，超空间规则将不再适用。 禁用超空间不会影响已创建的索引，因为这些索引仍保持不变。
+* 通过使用 enableHyperspace 命令，Spark 优化器可以看到 Hyperspace 优化规则，并利用现有的 Hyperspace 索引来优化用户查询。
+* 通过使用 disableHyperspace 命令，在查询优化过程中 Hyperspace 规则将不再适用。 禁用 Hyperspace 对创建的索引没有影响，因为它们保持不变。
 
-以下单元格演示了如何使用这些命令来启用或禁用超空间。 输出显示对已更新其配置的现有 Spark 会话的引用。
+以下单元显示如何使用这些命令启用或禁用 Hyperspace。 输出显示对已更新配置的现有 Spark 会话的引用。
 
 :::zone pivot = "programming-language-scala"
 
@@ -772,9 +772,9 @@ res51: org.apache.spark.sql.Spark™Session = org.apache.spark.sql.SparkSession@
 
 ## <a name="index-usage"></a>索引使用情况
 
-若要使 Spark 在查询处理过程中使用超空间索引，需要确保启用超空间。
+若要使 Spark 在查询处理过程中使用 Hyperspace 索引，你需要确保已启用 Hyperspace。
 
-以下单元格启用超空间，并创建两个 DataFrames，其中包含用于运行示例查询的示例数据记录。 对于每个数据帧，会打印几个示例行。
+以下单元启用 Hyperspace，并创建两个包含示例数据记录的数据帧，用于运行示例查询。 对于每个数据帧，都会输出几个示例行。
 
 :::zone pivot = "programming-language-scala"
 
@@ -845,7 +845,7 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 | 7876|  ADAMS|    20|
 ```
 
-&nbsp;&nbsp;这仅显示前5行 &nbsp;&nbsp;
+&nbsp; &nbsp; 这仅显示前 5 行 &nbsp; &nbsp;
 
 ```console
 |deptId|  deptName|location|
@@ -858,14 +858,14 @@ deptDFrame: org.apache.spark.sql.DataFrame = [deptId: int, deptName: string ... 
 
 ## <a name="index-types"></a>索引类型
 
-目前，超空间包含用于对两组查询利用索引的规则：
+目前，Hyperspace 包含利用两组查询的索引的规则：
 
 * 带有查找或范围选择筛选谓词的选择查询。
-* 联接带有相等联接谓词的查询， (即同等联接) 。
+* 带有相等联接谓词的查询的联接查询（即同等联接）。
 
 ## <a name="indexes-for-accelerating-filters"></a>用于加速筛选器的索引
 
-第一个示例查询查找部门记录，如下面的单元中所示。 在 SQL 中，此查询类似于以下示例：
+第一个示例查询查找部门记录，如以下单元所示。 在 SQL 中，该查询如以下示例所示：
 
 ```sql
 SELECT deptName
@@ -873,12 +873,12 @@ FROM departments
 WHERE deptId = 20
 ```
 
-运行以下单元格的输出显示：
+运行以下单元的输出显示：
 
 * 查询结果，它是一个部门名称。
 * Spark 用于运行查询的查询计划。
 
-在查询计划中，计划底部的 **FileScan** 运算符显示从中读取记录的数据源。 此文件的位置指示最新版本的 "deptIndex1" 索引的路径。 此信息显示根据查询和使用超空间优化规则，Spark 决定在运行时利用正确的索引。
+在查询计划中，计划底部的 FileScan 运算符显示从中读取记录的数据源。 此文件的位置表示最新版本的“deptIndex1”索引的路径。 此信息表明，根据查询和使用 Hyperspace 优化规则，Spark 决定在运行时利用合适的索引。
 
 :::zone pivot = "programming-language-scala"
 
@@ -958,7 +958,7 @@ Project [deptName#534]
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), EqualTo(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
 
-第二个示例是针对部门记录的范围选择查询。 在 SQL 中，此查询类似于以下示例：
+第二个例子是部门记录上的范围选择查询。 在 SQL 中，该查询如以下示例所示：
 
 ```sql
 SELECT deptName
@@ -966,7 +966,7 @@ FROM departments
 WHERE deptId > 20
 ```
 
-与第一个示例类似，以下单元的输出显示 (两个部门的名称) 和查询计划的查询结果。 **FileScan** 运算符中的数据文件的位置显示 "deptIndex1" 用于运行该查询。
+与第一个示例类似，以下单元的输出显示查询结果（两个部门的名称）和查询计划。 FileScan 运算符中的数据文件的位置显示，“deptIndex1”用于运行查询。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1045,14 +1045,14 @@ Project [deptName#534]
 +- *(1) Filter (isnotnull(deptId#533) && (deptId#533 > 20))
    +- *(1) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId), GreaterThan(deptId,20)], ReadSchema: struct<deptId:int,deptName:string>
 ```
-第三个示例是部门 ID 上的查询联接部门和员工记录。 等效的 SQL 语句如下所示：
+第三个例子是部门 ID 上的查询联接部门和员工记录。 等效的 SQL 语句如下所示：
 
 ```sql
 SELECT employees.deptId, empName, departments.deptId, deptName
 FROM   employees, departments
 WHERE  employees.deptId = departments.deptId
 ```
-运行下面的单元格的输出显示查询结果，这些结果是14名员工的姓名以及每位员工工作的部门的名称。 查询计划也包含在输出中。 请注意，两个 **FileScan** 运算符的文件位置如何显示 Spark 使用 "empIndex" 和 "deptIndex1" 索引来运行查询。
+运行以下单元的输出显示查询结果，其为 14 名员工的姓名和每个员工所在的部门的名称。 查询计划也包含在输出中。 请注意两个 FileScan 运算符的文件位置如何显示 Spark 使用“empIndex”和“deptIndex1”索引来运行查询。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1167,7 +1167,7 @@ Project [empName#528, deptName#534]
 
 ## <a name="support-for-sql-semantics"></a>支持 SQL 语义
 
-索引用法对于使用数据帧 API 或 Spark SQL 是透明的。 下面的示例演示了与在 SQL 窗体中使用索引（如果适用）的相同联接示例。
+索引的使用对于你是否使用数据帧 API 或 Spark SQL 是透明的。 以下示例以 SQL 形式显示与以前相同的联接示例，从而显示索引的使用情况（如果适用）。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1288,9 +1288,9 @@ Project [empName#528, deptName#534]
 
 ## <a name="explain-api"></a>说明 API
 
-索引很好，但您如何知道它们是否正在使用？ 超空间允许用户在运行其查询前比较其原始计划与已更新索引相关计划。 您可以选择使用 HTML、纯文本或控制台模式来显示命令输出。
+索引非常好，但你怎么知道它们是否正在被使用？ 通过 Hyperspace，用户可以在运行查询之前比较其原始计划与更新的依赖索引的计划。 你可以选择使用 HTML、纯文本或控制台模式来显示命令输出。
 
-以下单元格显示了 HTML 的示例。 突出显示的部分表示原始计划和更新计划以及所使用的索引之间的差异。
+以下单元显示了使用 HTML 的示例。 突出显示的部分表示原始计划和更新计划以及正在使用的索引之间的差异。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1330,7 +1330,7 @@ hyperspace.Explain(eqJoin, false, input => DisplayHTML(input));
 
 结果：
 
-### <a name="plan-with-indexes"></a>规划索引
+### <a name="plan-with-indexes"></a>有索引的计划
 
 ```console
 Project [empName#528, deptName#534]
@@ -1343,7 +1343,7 @@ Project [empName#528, deptName#534]
          +- *(2) FileScan parquet [deptId#533,deptName#534] Batched: true, Format: Parquet, Location: InMemoryFileIndex[abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspaceon..., PartitionFilters: [], PushedFilters: [IsNotNull(deptId)], ReadSchema: struct
 ```
 
-### <a name="plan-without-indexes"></a>无索引计划
+### <a name="plan-without-indexes"></a>无索引的计划
 
 ```console
 Project [empName#528, deptName#534]
@@ -1369,12 +1369,12 @@ empIndex:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/<container>/i
 
 ## <a name="refresh-indexes"></a>刷新索引
 
-如果为其创建索引的原始数据发生更改，则该索引将不再捕获数据的最新状态。 可以使用 **refreshIndex** 命令刷新过时索引。 此命令将使索引完全重新生成，并根据最新的数据记录对其进行更新。 我们将向你展示如何以增量方式刷新其他笔记本中的索引。
+如果创建索引的原始数据发生变化，索引将不再捕获最新数据状态。 可以使用 refreshIndex 命令刷新过时索引。 此命令可使索引完全被重建，并根据最新数据记录进行更新。 我们将向你展示如何在其他笔记本中以增量方式刷新索引。
 
-以下两个单元显示了此方案的示例：
+以下两个单元显示了此情况的示例：
 
-* 第一个单元格向原始部门数据添加另外两个部门。 它会读取和打印部门列表，以验证是否正确添加了新部门。 输出显示了六个部门，共四个：四个，两个是新的。 调用 **refreshIndex** 更新 "deptIndex1"，以便索引捕获新部门。
-* 第二个单元格运行范围选择查询示例。 结果现在应包含四个部门：两个是在运行上述查询前看到的两个部门，另外两个是我们添加的新部门。
+* 第一个单元在原始部门数据中又增加了两个部门。 它读取并输出了一份部门列表，以验证新部门是否正确添加。 输出显示总共六个部门：四个旧部门和两个新部门。 调用 refreshIndex 可更新“deptIndex1”，以便索引捕获新部门。
+* 第二个单元运行范围选择查询示例。 结果现在应包含四个部门：两个部门是我们运行前一个查询时看到的部门，另外两个是我们添加的新部门。
 
 ### <a name="specific-index-refresh"></a>特定索引刷新
 
@@ -1538,25 +1538,25 @@ Project [deptName#675]
 
 ## <a name="hybrid-scan-for-mutable-datasets"></a>可变数据集的混合扫描
 
-通常，如果基础数据源数据中追加了一些新文件或删除了现有文件，则索引将会失效，而超空间决定不使用它。 不过，有时你只是想要使用索引，而不必每次都对其进行刷新。 执行此操作可能有多个原因：
+通常，如果你的基础源数据追加了一些新文件或删除了现有文件，则你的索引将过时，Hyperspace 决定不使用它。 但是，有时你只想使用索引，而不必每次刷新索引。 这样做可能有多种原因：
 
-- 您不希望持续刷新索引，而需要定期执行此操作，因为您了解工作负荷的最佳选择。
-- 你添加/删除了几个文件，但不希望等待另一个刷新作业完成。
+- 你不想不断刷新索引，而是希望定期刷新索引，因为你最了解你的工作负载。
+- 你只添加/删除了几个文件，不想等待另一个刷新工作完成。
 
-为了使你仍可以使用陈旧索引，超空间引入了混合扫描，这是一种 novel 的方法，它允许用户利用过时或过时的索引 (例如，基础数据源数据中追加了一些新文件，或者删除了现有文件) 不刷新索引。
+为了让你仍然使用过时索引，Hyperspace 引入了混合扫描，这是一种新技术，允许用户使用过时或陈旧的索引（例如，基础源数据追加了一些新文件或删除了现有文件），而无需刷新索引。
 
-若要实现此目的，当你将适当的配置设置为启用混合扫描时，超空间会修改查询计划，以利用如下所示的更改：
-* 附加的文件可以通过使用 Union 或 BucketUnion (for join) 来合并索引数据。 如果需要，还可以在合并之前应用混排追加数据。
-* 可以通过在索引数据的沿袭列上插入 Filter NOT IN 条件来处理已删除的文件，以便可以在查询时排除已删除文件中的索引行。
+为此，当你设置适当的配置以启用混合扫描时，Hyperspace 会修改查询计划，以利用以下更改：
+* 追加的文件可以通过使用 Union 或 BucketUnion（用于联接）合并到索引数据。 如果需要，还可以在合并之前应用随机追加的数据。
+* 删除的文件可以通过在索引数据的沿袭列上注入 Filter-NOT-IN 条件来处理，以便在查询时排除已删除文件中的索引行。
 
-您可以在以下示例中检查查询计划的转换。
+你可以在以下示例中检查查询计划的转换。
 
 > [!NOTE]
-> 目前，只有非分区数据支持混合扫描。
+> 目前，仅支持非分区数据的混合扫描。
 
-### <a name="hybrid-scan-for-appended-files---non-partitioned-data"></a>用于附加文件的混合扫描-非分区数据
+### <a name="hybrid-scan-for-appended-files---non-partitioned-data"></a>用于追加的文件的混合扫描 - 非分区数据
 
-在下面的示例中，将使用非分区数据。 在此示例中，我们预计联接索引可用于查询，并为追加的文件引入 BucketUnion。
+在下面的示例中，将使用非分区数据。 在本示例中，我们希望联接索引可用于查询，并为追加的文件引入 BucketUnion。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1778,9 +1778,9 @@ appendData.Write().Mode("Append").Parquet(testDataLocation);
 
 ::: zone-end
 
-默认情况下，混合扫描处于禁用状态。 因此，您会发现，由于我们追加了新数据，超空间将决定 *不* 使用索引。
+默认情况下，混合扫描处于禁用状态。 因此，你将看到，由于我们追加了新数据，Hyperspace 将决定不使用索引。
 
-在输出中，你将看不到任何计划差异 (因此，不会突出显示) 。
+在输出中，你将看不到计划差异（因此，不会突出显示）。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1881,7 +1881,7 @@ Project [name#678, qty#679, date#680, qty#685, date#686]
 
 ### <a name="enable-hybrid-scan"></a>启用混合扫描
 
-在规划索引的计划中，你可以看到仅为追加的文件所需的 Exchange 哈希分区，以便我们仍可以利用追加文件的 "无序" 索引数据。 BucketUnion 用于将 "无序" 追加的文件与索引数据合并在一起。
+在有索引的计划中，你可以看到仅追加的文件需要的 Exchange 哈希分区，以便我们仍然可以使用带有追加的文件的“随机”索引数据。 BucketUnion 用于将“随机”追加的文件和索引数据合并在一起。
 
 :::zone pivot = "programming-language-scala"
 
@@ -1987,11 +1987,11 @@ productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspa
 
 ## <a name="incremental-index-refresh"></a>增量索引刷新
 
-如果已准备好更新索引，但不希望重新生成整个索引，超空间支持使用 API 以增量方式更新索引 `hs.refreshIndex("name", "incremental")` 。 这样，便无需从头开始完全重新生成索引，而是利用以前创建的索引文件，以及仅更新新添加的数据的索引。
+当你准备好更新索引但不想重新生成整个索引时，Hyperspace 支持使用 `hs.refreshIndex("name", "incremental")` API 以增量方式更新索引。 这将消除从头开始全面重新生成索引的需要，而是利用以前创建的索引文件，以及仅更新新添加的数据上的索引。
 
-当然，应定期使用以下) 的互补 `optimizeIndex` API (，以确保不会看到性能回归。 `refreshIndex(..., "incremental")`假设你添加/删除的数据是原始数据集的 10% <，则建议每10次调用至少一次。 例如，如果原始数据集为 100 GB，并且以 1 GB 的增量/减量增量添加/删除数据，则可以在 `refreshIndex` 调用之前调用10次 `optimizeIndex` 。 请注意，此示例仅用于说明，你必须将其调整为工作负荷。
+当然，请务必定期使用补充的 `optimizeIndex` API（如下所示），以确保你不会看到性能回归。 假设你添加/删除的数据小于原始数据集的 10%，则建议每调用 `refreshIndex(..., "incremental")` 10 次至少调用一次优化。 例如，如果你的原始数据集为 100 GB，并且已以 1 GB 的增量/减量添加/删除数据，则可以在调用 `optimizeIndex` 之前调用 `refreshIndex` 10 次。 请注意，此示例只用于演示目的，你必须根据工作负载对此进行调整。
 
-在下面的示例中，请注意在使用索引时在查询计划中添加了排序节点。 这是因为在追加的数据文件上创建了部分索引，从而导致 Spark 引入 `Sort` 。 另请注意，这种 `Shuffle` 情况下，Exchange 仍会从该计划中消除，为你提供相应的加速。
+在下面的示例中，请注意，使用索引时在查询计划中添加了排序节点。 这是因为在追加的数据文件上创建了部分索引，从而导致 Spark 引入 `Sort`。 另请注意，`Shuffle`（即 Exchange）仍会从计划中消除，从而为你提供适当的加速。
 
 :::zone pivot = "programming-language-scala"
 
@@ -2072,9 +2072,9 @@ Project [name#820, qty#821, date#822, qty#827, date#828]
 
 ## <a name="optimize-index-layout"></a>优化索引布局
 
-在对新追加的数据多次调用增量刷新后 (例如，如果用户以较小的批次写入数据或) 流式处理情况下写入数据，则索引文件数往往会变得很大影响索引的性能 (大量的小文件问题) 。 超空间提供 `hyperspace.optimizeIndex("indexName")` API 来优化索引布局，并减少大文件问题。
+在新追加的数据上多次调用增量刷新后（例如，如果用户以小批量或在流式处理情况下写入到数据），索引文件的数量往往会变大，从而影响索引的性能（大量小文件问题）。 Hyperspace 提供 `hyperspace.optimizeIndex("indexName")` API 以优化索引布局并减少大文件问题。
 
-请注意，在下面的计划中，超空间已删除查询计划中的 "其他排序" 节点。 优化有助于避免对任何只包含一个文件的索引存储桶进行排序。 但是，如果所有索引 bucket 每个存储桶每个存储桶最多包含1个文件，则此值将仅为 true `optimizeIndex` 。
+在下面的计划中，请注意，Hyperspace 已删除查询计划中的其他排序节点。 优化可以帮助避免对仅包含一个文件的任何索引存储桶进行排序。 但是，只有当所有索引存储桶在 `optimizeIndex` 之后每个存储桶最多拥有 1 个文件时，才会如此。
 
 :::zone pivot = "programming-language-scala"
 
@@ -2168,7 +2168,7 @@ productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspa
 
 ### <a name="optimize-modes"></a>优化模式
 
-优化的默认模式是 "快速" 模式，在此模式下，会选取小于预定义阈值的文件进行优化。 若要最大程度地提高优化效果，超空间允许其他优化模式 "完全"，如下所示。 此模式将选取优化的所有索引文件，而不考虑其文件大小并创建最可能的索引布局。 这还比默认的优化模式慢，因为在此处处理的数据更多。
+优化的默认模式是“快速”模式，在这种模式下，会选择小于预定义阈值的文件进行优化。 为了最大限度地发挥优化的效果，Hyperspace 允许使用另一种优化模式，即“完整”，如下所示。 此模式选择所有索引文件进行优化，而不论其文件大小如何，并创建最可能的索引布局。 此模式也比默认优化模式慢，因为需要处理更多数据。
 
 :::zone pivot = "programming-language-scala"
 
@@ -2229,5 +2229,5 @@ productIndex2:abfss://datasets@hyperspacebenchmark.dfs.core.windows.net/hyperspa
 
 ## <a name="next-steps"></a>后续步骤
 
-* [项目超空间](https://microsoft.github.io/hyperspace/)
+* [Hyperspace 项目](https://microsoft.github.io/hyperspace/)
 * [Azure Synapse Analytics](../index.yml)

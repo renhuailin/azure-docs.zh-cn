@@ -3,14 +3,14 @@ title: 配置服务器参数 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 中配置 MariaDB 服务器参数。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: cda6b2bd3d49bd71b4c57d5d459c07b61addb493
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664794"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数

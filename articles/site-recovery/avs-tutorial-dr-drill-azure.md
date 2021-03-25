@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 46d5e1cf773a24b032874ee54021c780e1f361af
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91814179"
 ---
 # <a name="run-a-disaster-recovery-drill-from-azure-vmware-solution-to-azure"></a>运行从 Azure VMware 解决方案到 Azure 的灾难恢复演练
@@ -46,19 +46,19 @@ ms.locfileid: "91814179"
 
 运行测试故障转移前，请验证 VM 属性，确保 [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) 符合 Azure 要求。
 
-1. 在“受保护的项”**** 中，单击“复制的项”****，然后单击 VM。
+1. 在“受保护的项”中，单击“复制的项”，然后单击 VM。
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  ，查看详细信息。
-3. 在“计算和网络”中，可修改 Azure 名称、资源组、目标大小、可用性集和托管磁盘设置。
+3. 在“计算和网络”  中，可修改 Azure 名称、资源组、目标大小、可用性集和托管磁盘设置。
 4. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
-5. 在“磁盘”中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
+5. 在“磁盘”  中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
 
 ## <a name="create-a-network-for-test-failover"></a>创建用于测试故障转移的网络
 
-对于测试故障转移，我们建议选择与每个 VM 的“计算和网络”设置中指定的生产恢复站点网络相互独立的网络。**** 默认情况下，创建 Azure 虚拟网络时，该网络独立于其他网络。 测试网络应模拟生产网络：
+对于测试故障转移，我们建议选择与每个 VM 的“计算和网络”设置中指定的生产恢复站点网络相互独立的网络。  默认情况下，创建 Azure 虚拟网络时，该网络独立于其他网络。 测试网络应模拟生产网络：
 
 - 测试网络中的子网数目应与生产网络中的子网数目相同。 这些子网的名称应该相同。
 - 测试网络应使用相同的 IP 地址类和子网范围。
-- 使用“计算和网络”设置中为 DNS VM 指定的 IP 地址更新测试网络的 DNS。**** 有关更多详细信息，请参阅 [Active Directory 的测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)。
+- 使用“计算和网络”设置中为 DNS VM 指定的 IP 地址更新测试网络的 DNS。 有关更多详细信息，请参阅 [Active Directory 的测试性故障转移注意事项](site-recovery-active-directory.md#test-failover-considerations)。
 
 ## <a name="run-a-test-failover-for-a-single-vm"></a>为单个 VM 运行测试故障转移
 
@@ -71,8 +71,8 @@ ms.locfileid: "91814179"
 按如下所述运行测试故障转移：
 
 1. 在“设置” > “复制的项”中，单击“VM”>“+测试故障转移”。
-2. 为本教程选择最近处理的恢复点。**** 这会将 VM 故障转移到最近的可用时间点上。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
-3. 在“测试故障转移”中，选择 Azure VM 在故障转移之后要连接到的目标 Azure 网络。
+2. 为本教程选择最近处理的恢复点。 这会将 VM 故障转移到最近的可用时间点上。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
+3. 在“测试故障转移”  中，选择 Azure VM 在故障转移之后要连接到的目标 Azure 网络。
 4. 单击“确定”  开始故障转移。 可以通过单击 VM 打开其属性来跟踪进度。 或者，**可以在保管库名称** > **设置** > **作业** >
    **Site Recovery 作业** 中，单击“测试故障转移” 作业。
 5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。 请确保虚拟机的大小适当、已连接到正确的网络，并且正在运行。

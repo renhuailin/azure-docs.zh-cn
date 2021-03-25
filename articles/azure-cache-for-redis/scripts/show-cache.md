@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184240"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>获取 Azure Redis 缓存的详细信息
@@ -30,7 +30,7 @@ ms.locfileid: "96184240"
 
 此脚本使用以下命令检索 Azure Redis 缓存实例的详细信息。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az redis show](/cli/azure/redis) | 检索 Azure Redis 缓存实例的详细信息。 |
 

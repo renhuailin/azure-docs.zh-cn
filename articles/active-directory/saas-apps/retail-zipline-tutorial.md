@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 50cf98a2646d88360ea9d48d2d84d98ad237a099
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514956"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retail-zipline"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Retail Zipline 的集成
@@ -77,11 +77,11 @@ ms.locfileid: "92514956"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.retailzipline.com`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.retailzipline.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.retailzipline.com/sso/saml`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.retailzipline.com`
 

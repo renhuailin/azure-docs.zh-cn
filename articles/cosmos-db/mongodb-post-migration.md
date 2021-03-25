@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 02/14/2021
 ms.author: chrande
-ms.openlocfilehash: 300177b9d5a20ce8082db57837be3ff461fd51a0
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.openlocfilehash: ce0facaba43e9cc8e37b19fbd3dfc840067d278f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361650"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560389"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB MongoDB API 时的迁移后优化步骤
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "93361650"
 
 - [连接应用程序](#connect-your-application)
 - [优化索引策略](#optimize-the-indexing-policy)
-- [为 MongoDB Azure Cosmos DB 的 API 配置全局分发](#globally-distribute-your-data)
+- [为 Azure Cosmos DB API for MongoDB 配置全局分配](#globally-distribute-your-data)
 - [设置一致性级别](#set-consistency-level)
 
 > [!NOTE]
@@ -48,9 +48,9 @@ ms.locfileid: "93361650"
 
 ## <a name="globally-distribute-your-data"></a>全局分发数据
 
-Azure Cosmos DB 在全球范围的所有 [Azure 区域](https://azure.microsoft.com/regions/#services)中推出。 为 Azure Cosmos DB 帐户选择默认的一致性级别后，可以将一个或多个 Azure 区域关联 (，具体取决于你的全局分布需要) 。 为了实现高可用性和业务连续性，我们始终建议至少在 2 个区域中运行 Azure Cosmos DB。 可以查看有关 [Azure Cosmos DB 中多区域部署的优化成本](optimize-cost-regions.md)的提示。
+Azure Cosmos DB 在全球范围的所有 [Azure 区域](https://azure.microsoft.com/regions/#services)中推出。 为 Azure Cosmos DB 帐户选择默认的一致性级别后，可以关联一个或多个 Azure 区域（具体取决于全局分配需求）。 为了实现高可用性和业务连续性，我们始终建议至少在 2 个区域中运行 Azure Cosmos DB。 可以查看有关 [Azure Cosmos DB 中多区域部署的优化成本](optimize-cost-regions.md)的提示。
 
-若要在全球范围内分发数据，请参阅 [在 Azure Cosmos DB 的适用于 MongoDB 的 API 上全局分发数据](tutorial-global-distribution-mongodb.md)。
+若要全局分配数据，请参阅[在 Azure Cosmos DB API for MongoDB 中全局分配数据](tutorial-global-distribution-mongodb.md)。
 
 ## <a name="set-consistency-level"></a>设置一致性级别
 

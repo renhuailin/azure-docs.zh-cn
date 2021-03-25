@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358386"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
@@ -27,15 +27,15 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ## <a name="use-the-push-api"></a>使用推送 API
 
-使用 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments)将数据推送到索引中时，有几个关键注意事项会影响索引速度。 以下部分概述了这些因素，范围从将服务容量设置为代码优化。
+使用[添加文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 或 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments)将数据推送到索引中时，有几个影响索引编制速度的关键考虑因素。 这些因素将在以下部分进行概述，涵盖从设置服务容量到代码优化的范围。
 
-有关演示推送模型索引的详细信息和代码示例，请参阅 [教程：优化索引速度](tutorial-optimize-indexing-push-api.md)。
+有关演示推送模型索引编制的详细信息和代码示例，请参阅[教程：优化索引编制速度](tutorial-optimize-indexing-push-api.md)。
 
 ### <a name="capacity-of-your-service"></a>服务的容量
 
-第一步是查看预配服务的层的特性和 [限制](search-limits-quotas-capacity.md) 。 定价层中的主要区别因素之一是分区的大小和速度，它们直接影响索引速度。 如果在工作负荷不足的层中预配了搜索服务，则升级到新层可能是提高索引吞吐量的最简单且最有效的解决方案。
+第一步，检查你预配服务时所在层级的特征和[限制](search-limits-quotas-capacity.md)。 定价层之间的主要区别性因素之一是分区的大小和速度，这直接影响索引编制速度。 如果你在一个不足以满足工作负荷的层上预配了搜索服务，则升级到新层可能是提高索引编制吞吐量的最简单且最有效的解决方案。
 
-当你对层满意后，下一步就是增加分区数。 在初始索引运行后，可以重新调整分区分配，以降低运行服务的总体成本。
+对层满意后，下一步可能是增加分区数。 初始索引编制运行后，可以向下重新调整分区分配，以降低运行服务的总体成本。
 
 > [!NOTE]
 > 添加其他副本也可能会提高索引编制速度，但无法保证提高。 另一方面，其他副本将增加搜索服务可以处理的查询量。 副本也是获取 [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/) 的关键组件。
@@ -45,14 +45,14 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 ### <a name="review-index-schema"></a>查看索引架构
 
-索引架构在编制数据索引方面扮演重要角色。 你具有的字段越多，你设置的属性越多 (例如，可 *搜索* 、 *可查找* 或可 *筛选* ) 会导致索引时间增加。 通常，只应在搜索索引中创建并指定实际需要的字段。
+索引架构在编制数据索引方面扮演重要角色。 你的字段越多，设置的属性（例如，“searchable”、“facetable”或“filterable”）越多，索引编制时间越长。 通常，只应在搜索索引中创建并指定实际需要的字段。
 
 > [!NOTE]
 > 若要保持较小的文档大小，请避免向索引添加不可查询的数据。 图像和其他二进制数据不可直接搜索，不应存储在索引中。 若要将不可查询的数据集成到搜索结果中，应定义用于存储资源的 URL 引用的不可搜索字段。
 
 ### <a name="check-the-batch-size"></a>检查批大小
 
-为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 无论你使用的是 " [添加文档" REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是 .net SDK 中的 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments) ，这些限制都适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
+为较大数据集编制索引的最简单机制之一是在单个请求中提交多个文档或记录。 只要整个有效负载小于 16 MB，则请求就可以在一个批量上传操作中最多处理 1000 个文档。 不管你在 .NET SDK 中使用[添加文档 REST API](/rest/api/searchservice/addupdate-or-delete-documents) 还是 [IndexDocuments 方法](/dotnet/api/azure.search.documents.searchclient.indexdocuments)，这些限制均适用。 不管什么 API，你都会在每个请求的正文中打包 1000 个文档。
 
 使用批处理为文档编制索引可显著提高索引编制性能。 确定数据的最佳批大小是优化索引编制速度的关键。 影响最佳批大小的两个主要因素是：
 
@@ -92,7 +92,7 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 
 编制数据索引时，网络数据传输速度可能是一个限制因素。 在 Azure 环境中为数据编制索引是加快索引编制的一种简便方法。
 
-## <a name="use-indexers-pull-api"></a> (请求 API 使用索引器) 
+## <a name="use-indexers-pull-api"></a>使用索引器（拉取 API）
 
 [索引器](search-indexer-overview.md)用于在支持的 Azure 数据源中通过爬网找到可搜索的内容。 有几项索引器功能尽管并非专门用于大规模索引编制，但它们特别能够适应较大的数据集：
 
@@ -103,7 +103,7 @@ Azure 认知搜索的 .NET SDK 会自动重试 503 和其他失败的请求，�
 > [!NOTE]
 > 索引器特定于数据源，因此，使用索引器方法仅对 Azure 上的选定数据源可行：[SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)和 [Cosmos DB](search-howto-index-cosmosdb.md)。
 
-### <a name="check-the-batchsize-argument-on-create-indexer"></a>检查 Create 索引器上的 batchSize 参数
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>检查“创建索引器”上的 batchSize 参数
 
 与推送 API 一样，索引器允许配置每个批处理的项数。 对于基于[创建索引器 REST API](/rest/api/searchservice/Create-Indexer) 的索引器，可以设置 `batchSize` 参数来自定义此设置，以便与数据特征更相符。 
 

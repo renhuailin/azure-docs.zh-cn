@@ -4,10 +4,10 @@ description: 本快速入门介绍如何使用 Terraform 和 HCL 语法创建策
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93104894"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>快速入门：使用 Terraform 创建策略分配以识别不合规的资源
@@ -15,7 +15,7 @@ ms.locfileid: "93104894"
 若要了解 Azure 中的符合性，第一步是确定资源的状态。
 本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。
 
-此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
+此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,9 +80,9 @@ ms.locfileid: "93104894"
    terraform init
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-initialize.png" alt-text="运行 terraform init 命令的屏幕截图，其中显示下载 azurerm 模块和成功消息。":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-initialize.png" alt-text="运行 terraform init 命令的屏幕截图，其中显示了下载 azurerm 模块的过程和一条成功消息。":::
 
-1. 使用 Terraform 的 [Azure CLI](/cli/azure/) 进行身份验证。 有关详细信息，请参阅[Azure 提供程序：使用 Azure CLI 进行身份验证](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html)。
+1. 使用 [Azure CLI](/cli/azure/) 为 Terraform 进行身份验证。 有关详细信息，请参阅[Azure 提供程序：使用 Azure CLI 进行身份验证](https://www.terraform.io/docs/providers/azurerm/guides/azure_cli.html)。
 
    ```bash
    az login
@@ -94,7 +94,7 @@ ms.locfileid: "93104894"
    terraform plan -out assignment.tfplan
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="运行 terraform plan 命令和 out 参数的屏幕截图，显示将创建的 Azure 资源。":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="运行 terraform plan 命令和 out 参数（用于显示将创建的 Azure 资源）的屏幕截图。":::
 
    > [!NOTE]
    > 有关使执行计划和安全性持久化的信息，请参阅 [Terraform 计划：安全警告](https://www.terraform.io/docs/commands/plan.html#security-warning)。
@@ -109,13 +109,13 @@ ms.locfileid: "93104894"
 terraform apply assignment.tfplan
 ```
 
-:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="运行 terraform apply 命令和生成的资源创建的屏幕截图。":::
+:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="运行 terraform apply 命令以及随后创建的资源的屏幕截图。":::
 
-显示“应用完成！ 资源：1 个已添加，0 个已更改，0 个已销毁。” 消息，表示策略分配现已创建。 由于我们已定义 `outputs.tf` 文件，因此还会返回 assignment\_id。
+显示“应用完成! 资源：1 个已添加，0 个已更改，0 个已销毁。” 消息，表示策略分配现已创建。 由于我们已定义 `outputs.tf` 文件，因此还会返回 assignment\_id。
 
 ## <a name="identify-non-compliant-resources"></a>识别不合规的资源
 
-若要查看此新分配下不合规的资源，请使用 `terraform apply` 返回的 assignment\_id。 使用它，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
+若要查看此新分配下不合规的资源，请使用由 `terraform apply` 返回的 assignment\_id。 使用它，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
 
 ```console
 armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>

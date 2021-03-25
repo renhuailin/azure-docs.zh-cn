@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87315965"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
@@ -23,7 +23,7 @@ ms.locfileid: "87315965"
 
 依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](./correlation.md)页。
 
-## <a name="data"></a>data
+## <a name="data"></a>数据
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 
@@ -35,7 +35,7 @@ ms.locfileid: "87315965"
 
 依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](./correlation.md)页。
 
-## <a name="duration"></a>Duration
+## <a name="duration"></a>持续时间
 
 请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须小于 `1000` 天。
 
@@ -43,7 +43,7 @@ ms.locfileid: "87315965"
 
 依赖项调用的结果代码。 示例包括 SQL 错误代码和 HTTP 状态代码。
 
-## <a name="success"></a>Success
+## <a name="success"></a>成功
 
 指示调用成功还是失败。
 

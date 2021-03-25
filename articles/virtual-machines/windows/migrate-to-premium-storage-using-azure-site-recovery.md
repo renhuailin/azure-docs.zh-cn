@@ -9,10 +9,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: aeb8028468a1e1944a4fd39275f134bfae00dfa3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555340"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
@@ -203,7 +203,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [有关 Microsoft Azure Site Recovery 的 Microsoft 问答页](/answers/topics/azure-site-recovery.html)

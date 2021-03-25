@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: dc17ab55cb473036d8c40bd1e533bcc20c4c6259
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92742262"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>使用 Azure CLI 创建单一数据库并配置防火墙规则
@@ -46,9 +46,9 @@ az group delete --name $resource
 
 ## <a name="sample-reference"></a>示例参考
 
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | 服务器命令 |
 | [az sql server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 服务器防火墙命令。 |

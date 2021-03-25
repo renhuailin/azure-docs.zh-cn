@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87088013"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
@@ -61,7 +61,7 @@ let Run(blob: string, output: byref<Item>) =
     output <- item
 ```
 
-F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
+F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是 *从* 返回数据的参数。
 
 在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host` 列中的一个值匹配。
+* `Microsoft.Azure.WebJobs.Host`.
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
 与此类似，可以使用 `#r "AssemblyName"` 指令添加框架程序集引用。
@@ -160,7 +160,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 由 Azure 函数主机环境自动添加以下程序集：
 
-* `mscorlib`、
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -169,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting` 列中的一个值匹配。
+* `System.Net.Http.Formatting`.
 
 此外，以下程序集比较特殊，可能由 simplename 引用 (例如 `#r "AssemblyName"`)：
 
@@ -177,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common` 列中的一个值匹配。
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上传到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
 ms.openlocfilehash: f6b7fb79b5aab1ee3ea6b5b710c766c1a34b099c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519803"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-b2b-user-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler B2B User Portal 的集成
@@ -53,8 +53,8 @@ ms.locfileid: "92519803"
 若要配置 Zscaler B2B User Portal 与 Azure AD 的集成，需要从库中将 Zscaler B2B User Portal 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 Zscaler B2B User Portal。
 1. 在结果面板中选择“Zscaler B2B User Portal”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -82,16 +82,16 @@ ms.locfileid: "92519803"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值：
+1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/metadata/<UniqueID>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/metadata/<UniqueID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://samlsp.private.zscaler.com/auth/login?domain=EXAMPLE`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Zscaler B2B User Portal 客户端支持团队](https://help.zscaler.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "92519803"
 
 在本部分，你将通过授予 B.Simon 访问 Zscaler B2B User Portal 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中选择“Zscaler B2B User Portal”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
@@ -147,13 +147,13 @@ ms.locfileid: "92519803"
 
     a. 在“IdP 元数据文件上传”字段中单击“选择文件”，上传从 Azure AD 下载的元数据文件。
 
-    b. 它会从 Azure AD 读取 **IdP 元数据** ，并填充所有字段信息，如下所示。
+    b. 它会从 Azure AD 读取 **IdP 元数据**，并填充所有字段信息，如下所示。
 
     ![Zscaler Private Access Administrator 配置](./media/zscaler-b2b-user-tutorial/config.png)
 
     c. 从“域”字段中选择域。
     
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 ### <a name="create-zscaler-b2b-user-portal-test-user"></a>创建 Zscaler B2B User Portal 测试用户
 

@@ -9,10 +9,10 @@ ms.author: kecheung
 author: kcheeeung
 ms.date: 08/12/2020
 ms.openlocfilehash: d0a0df4791492c1c9f0d600630d723024c46c1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88227082"
 ---
 # <a name="scale-hiveserver2-on-azure-hdinsight-clusters-for-high-availability"></a>在 Azure HDInsight 群集上缩放 HiveServer2 以实现高可用性
@@ -37,13 +37,13 @@ ms.locfileid: "88227082"
 
 2. 单击“添加”按钮，然后单击“HiveServer2”
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="Ambari 的“主机”菜单。":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="主机的“添加 HiveServer2”面板。":::
 
 3. 确认，然后该进程将会运行。 对所有需要的主机重复步骤 1-3。
 
 4. 完成安装后，请使用过时配置重新启动所有服务并启动 HiveServer2。
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="Ambari 的“主机”菜单。":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="“启动 HiveServer2”面板。":::
 
 ## <a name="next-steps"></a>后续步骤
 

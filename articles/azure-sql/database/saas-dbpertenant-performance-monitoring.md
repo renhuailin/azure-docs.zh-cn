@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 21c0a7a3fe6d5be9d99ea53dbfa74cf72e163272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780659"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库的性能
@@ -51,8 +51,8 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 ### <a name="performance-management-strategies"></a>性能管理策略
 
 * 如不希望手动监视性能，最有效的方式是设置警报，在数据库或池的性能不在正常范围内时触发该警报。
-* **池 eDTU 级别可以上下缩放** ，以应对池聚合计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见， **则可让池按计划自动缩放** 。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
-* 要应对较长期的波动，或者应对数据库数目的变化， **可将单个数据库移至其他池** 。
+* **池 eDTU 级别可以上下缩放**，以应对池聚合计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，**则可让池按计划自动缩放**。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
+* 要应对较长期的波动，或者应对数据库数目的变化，**可将单个数据库移至其他池**。
 * 若要应对单个数据库负载的短期增加，可将单个数据库移出池，为其分配单独的计算大小。 一旦负载降低，则可让该数据库返回池中。 如果预先知道这种情况，则可提前移动数据库，确保数据库的资源始终满足需求，同时避免对池中的其他数据库造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 监视和警报功能可以在数据库和池上使用。 这种内置的监视和警报功能是特定于资源的，因此对于少量资源使用方便，但在处理大量资源时就不是很方便。
@@ -69,8 +69,8 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 
 如果在之前的教程中已预配一批租户，则可跳到[模拟所有租户数据库上的使用情况](#simulate-usage-on-all-tenant-databases)部分。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1* 。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
-1. 设置 **$DemoScenario** = **1** ， **预配一批租户**
+1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 设置 **$DemoScenario** = **1**，**预配一批租户**
 1. 按 **F5** 运行脚本。
 
 脚本会在不到五分钟的时间内部署 17 个租户。
@@ -91,7 +91,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../.
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 eDTU 为单位）、持续时间和间隔在各个数据库之间并不相同，模拟不可预测的租户活动。
 
-1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1* 。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
+1. 在 PowerShell ISE 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 $DemoScenario = 2，生成正常强度负载 。
 1. 按 **F5** 将负载应用到所有租户数据库。
 
@@ -148,7 +148,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 可以通过增加生成器生成的负载来模拟忙碌的池。 促使数据库更频繁且更长期地突发，在不更改单个数据库需求的情况下，增加池的聚合负载。 可以通过门户或 PowerShell 轻松地扩展池。 本演练使用门户。
 
-1. 设置 *$DemoScenario* = **3** ，生成单个数据库的突发时间更长且频率更高的负载，在不更改每个数据库所要求的高峰负载的情况下，增加池的聚合负载强度。
+1. 设置 *$DemoScenario* = **3**，生成单个数据库的突发时间更长且频率更高的负载，在不更改每个数据库所要求的高峰负载的情况下，增加池的聚合负载强度。
 1. 按 **F5** 将负载应用到所有租户数据库。
 
 1. 转到 Azure 门户中的 Pool1。
@@ -221,7 +221,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 **提前缩放** 在上述练习中，探索了如何缩放独立的数据库，知道要查找的数据库。 如果 Contoso 音乐厅的管理层将即将发生的售票事件告知了 Wingtip，则可能已提前将数据库移出池。 否则就可能需要在池或数据库上设置一个警报，监视所发生的事件。 并不希望从池中其他抱怨性能下降的租户处了解到这些情况。 如果租户可以预测其对额外资源的需求时间，便可以设置一个 Azure 自动化 Runbook，按定义的计划将数据库移出池，然后再移回去。
 
-**租户自助缩放** ：由于缩放是一项可以轻松地通过管理 API 调用的任务，可以轻松地构建一项功能，将租户数据库缩放到面向租户的应用程序中，作为 SaaS 服务的功能提供。 例如，可以让租户自行管理上下缩放，也许还可以将其与租户的计费直接关联在一起！
+**租户自助缩放**：由于缩放是一项可以轻松地通过管理 API 调用的任务，可以轻松地构建一项功能，将租户数据库缩放到面向租户的应用程序中，作为 SaaS 服务的功能提供。 例如，可以让租户自行管理上下缩放，也许还可以将其与租户的计费直接关联在一起！
 
 **根据使用模式将池按计划增大或缩小**
 

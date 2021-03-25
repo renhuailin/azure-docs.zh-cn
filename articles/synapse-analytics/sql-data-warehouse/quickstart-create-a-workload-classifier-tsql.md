@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: e757c8047bf6d634ab6d7cbc8963087c0eccc46a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98677362"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入门：使用 T-SQL 创建工作负荷分类器
@@ -98,7 +98,7 @@ DROP USER [TheCEO]
 
     ![清理资源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 若要暂停计算，请选择“暂停”  按钮。 暂停专用 SQL 池后，会看到“启动”按钮。  若要恢复计算，请选择“启动”  。
+2. 若要暂停计算，请选择“暂停”按钮。 暂停专用 SQL 池后，会看到“启动”按钮。  若要恢复计算，请选择“启动”  。
 
 3. 若要删除专用 SQL 池以免产生计算或存储费用，请选择“删除”。
 

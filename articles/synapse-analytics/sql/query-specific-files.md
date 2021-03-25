@@ -10,15 +10,15 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96299609"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>在无服务器 SQL 池查询中使用文件元数据
 
-无服务器 SQL 池可以处理多个文件和文件夹，如 [查询文件夹和多个文件](query-folders-multiple-csv-files.md) 一文中所述。 本文介绍如何在查询中使用有关文件和文件夹名称的元数据信息。
+根据[查询文件夹和多个文件](query-folders-multiple-csv-files.md)一文中所述，无服务器 SQL 池可处理多个文件和文件夹。 本文介绍如何在查询中使用有关文件和文件夹名称的元数据信息。
 
 有时，可能会需要知道哪个文件或文件夹源与结果集中的某个特定行相关。
 

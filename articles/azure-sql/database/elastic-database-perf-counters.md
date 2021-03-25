@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781254"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>创建性能计数器，以便跟踪分片映射管理器的性能
@@ -42,12 +42,12 @@ ms.locfileid: "92781254"
 也可以使用[此 ](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283)PowerShell 脚本来执行该方法。
 该方法将创建以下性能计数器：  
 
-* **缓存的映射** ：分片映射缓存的映射数。
-* **DDR 操作数/秒** ：分片映射的数据相关路由操作速率。 对 [OpenConnectionForKey()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) 的调用成功建立与目标分片的连接时，将更新此计数器。
-* **映射查找缓存命中数/秒** ：分片映射中映射的成功缓存查找操作速率。
-* **映射查找缓存未命中数/秒** ：分片映射中映射的失败缓存查找操作速率。
-* **在缓存中添加或更新的映射数/秒** ：在缓存中为分片映射添加或更新映射的速率。
-* **从缓存中删除的映射数/秒** ：从缓存中删除分片映射的映射速率。
+* **缓存的映射**：分片映射缓存的映射数。
+* **DDR 操作数/秒**：分片映射的数据相关路由操作速率。 对 [OpenConnectionForKey()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) 的调用成功建立与目标分片的连接时，将更新此计数器。
+* **映射查找缓存命中数/秒**：分片映射中映射的成功缓存查找操作速率。
+* **映射查找缓存未命中数/秒**：分片映射中映射的失败缓存查找操作速率。
+* **在缓存中添加或更新的映射数/秒**：在缓存中为分片映射添加或更新映射的速率。
+* **从缓存中删除的映射数/秒**：从缓存中删除分片映射的映射速率。
 
 性能计数器是按进程为每个缓存分片映射创建的。  
 
