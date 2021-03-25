@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba8ecf5442ea3da6db02335520eef3856ea48c62
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 0e0e1543f18c18c7fdf97c39f35ba38ded658392
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740153"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103007811"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -58,18 +58,18 @@ ms.locfileid: "98740153"
 若要安装 Azure AD PowerShell 模块，请使用以下命令：
 
 ``` PowerShell
-install-module azureadpreview 
-import-module azureadpreview 
+Install-Module -Name AzureADPreview 
+Import-Module -Name AzureADPreview 
 ```
 
 若要验证模块是否可供使用，请运行下面的命令：
 
 ``` PowerShell
-get-module azureadpreview 
+Get-Module -Name AzureADPreview 
 
   ModuleType Version      Name                         ExportedCommands 
   ---------- ---------    ----                         ---------------- 
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...} 
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...} 
 ```
 
 ### <a name="connect-to-azure"></a>连接到 Azure
@@ -177,7 +177,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 但与内置角色不同，自定义角色也可以在单个 Azure AD 资源的范围内分配。 这样你就可以被用户分配权限，使之可以更新单个应用的凭据和基本属性，不需创建另一个自定义角色。
 
-1. 通过 Azure AD 组织中的应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 使用 Azure AD 组织中的应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“应用注册” 。
 1. 选择要授予其管理权限的应用注册。 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。
 

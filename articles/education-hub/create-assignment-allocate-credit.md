@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 7904efb92aa8362605f1f68ee0b39f4241339031
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92332461"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>创建分配并分配学分
@@ -26,7 +26,7 @@ ms.locfileid: "92332461"
 
 ### <a name="accounts"></a>帐户
 
-Azure 教育中心接受任何电子邮件地址（以 _____@ ___.___ 格式表示）。 它目前不会检查组织中的有效帐户，也不检查该 Microsoft 帐户是当前帐户还是有效帐户。 请仔细检查每个电子邮件地址，然后再继续。
+Azure 教育中心接受任何电子邮件地址（以 _____@___.___ 格式表示）。 它目前不会检查组织中的有效帐户，也不检查该 Microsoft 帐户是当前帐户还是有效帐户。 请仔细检查每个电子邮件地址，然后再继续。
 
 > [!IMPORTANT]
 > 工作和学校帐户受其自身策略限制，包括是否允许来自组织以外的域的电子邮件地址（例如将 student2@outlook.com 添加到 @school.edu 域）。 在添加新用户之前，请务必检查这些策略。

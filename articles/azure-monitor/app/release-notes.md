@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
 ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934270"
 ---
-# <a name="release-notes---application-insights"></a>发行说明-Application Insights
+# <a name="release-notes---application-insights"></a>发行说明 - Application Insights
 
-此页概述了在何处可以找到有关每个 Application Insights Sdk 的更新和 bug 修复的详细发行说明。
+本页概述了在哪里可以找到有关每个 Application Insights SDK 的更新和 bug 修复的详细发行说明。
 
-## <a name="sdk"></a>SDK 中 IsInRole 中的声明 
+## <a name="sdk"></a>SDK 
 
 * .NET SDK
     - 对于版本 2.12 及更高版本：[.NET SDK（包括 ASP.NET、ASP.Net Core 和日志记录适配器）](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
@@ -32,7 +32,7 @@ ms.locfileid: "88934270"
 
 ## <a name="next-steps"></a>后续步骤
 
-无代码置备 monitor 无代码置备监视入门：
+无代码监视器无代码监视入门：
 
 * [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
 * [IIS 服务器](./monitor-performance-live-website-now.md)

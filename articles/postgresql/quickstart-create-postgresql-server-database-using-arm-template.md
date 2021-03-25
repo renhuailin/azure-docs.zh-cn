@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 02/11/2021
 ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100382185"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
@@ -26,7 +26,7 @@ ms.locfileid: "100382185"
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "100382185"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure Database for PostgreSQL 服务器模板：
 
@@ -144,7 +144,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for PostgreSQL 服务器的概览：
 

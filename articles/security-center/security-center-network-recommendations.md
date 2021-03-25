@@ -1,24 +1,18 @@
 ---
 title: 在 Azure 安全中心内保护你的网络资源
 description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 网络资源并保持符合安全策略。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: MT
+ms.openlocfilehash: c24e3473c07759aa256a077d11edb20c616629f6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133695"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439504"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -30,7 +24,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 安全中心的网络功能包括： 
 
 - 网络映射（需要 Azure Defender）
-- [自适应网络强化](security-center-adaptive-network-hardening.md) (需要 Azure Defender) 
+- [自适应网络强化](security-center-adaptive-network-hardening.md)（需要 Azure Defender）
 - 网络安全建议
  
 ## <a name="view-your-networking-resources-and-their-recommendations"></a>查看网络资源及其建议
@@ -65,7 +59,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="understanding-the-network-map"></a>了解网络映射
 
-网络映射可以在 **拓扑** 视图和 **流量** 视图中显示 Azure 资源。 
+网络映射可以在“拓扑”视图和“流量”视图中显示 Azure 资源 。 
 
 ### <a name="the-topology-view"></a>拓扑视图
 

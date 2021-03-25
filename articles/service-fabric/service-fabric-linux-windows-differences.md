@@ -4,10 +4,10 @@ description: Linux 上的 Azure Service Fabric 与 Windows 上的 Azure Service 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 4adae60ded804450c25809faa0edca6bb058adf7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574490"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异

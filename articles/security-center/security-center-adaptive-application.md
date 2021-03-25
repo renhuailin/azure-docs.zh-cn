@@ -1,24 +1,18 @@
 ---
 title: Azure 安全中心的自适应应用程序控制
 description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure 计算机中运行的应用程序加入允许列表。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/07/2021
 ms.author: memildin
-ms.openlocfilehash: be37f2d361b6bb164a3e01b9ac6f115294137dd0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099533"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439572"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -44,7 +38,7 @@ ms.locfileid: "102099533"
 - 防止使用组织禁止的特定软件
 - 加强对访问敏感数据的应用的监管
 
-当前没有任何强制选项可用。 自适应应用程序控件旨在提供安全警报，前提是任何应用程序都不是您定义为安全的应用程序。
+目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。
 
 ## <a name="availability"></a>可用性
 
@@ -193,12 +187,12 @@ ms.locfileid: "102099533"
 
 1. 要查看更多详细信息以及受影响的计算机列表，请选择一个警报。
 
-    "警报" 页将显示警报的更多详细信息，并提供 " **拍摄操作** " 链接，并提供有关如何缓解威胁的建议。
+    “警报”页将显示警报的更多详细信息，并提供“执行操作”链接以及有关如何缓解威胁的建议。
 
     :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="自适应应用程序控制警报的开始时间是 ":::
 
     > [!NOTE]
-    > 自适应应用程序控件每12小时计算一次事件。 "警报" 页面中显示的 "活动开始时间" 是自适应应用程序控制创建警报的时间，而 **不** 是可疑进程处于活动状态的时间。
+    > 自适应应用程序控制每 12 小时计算一次事件数量。 “警报”页中显示的“活动开始时间”是自适应应用程序控制创建警报的时间，而不是可疑进程处于活动状态的时间。
 
 
 ## <a name="move-a-machine-from-one-group-to-another"></a>将计算机从一个组移动到另一个组
@@ -225,7 +219,7 @@ ms.locfileid: "102099533"
 
 要以编程方式管理自适应应用程序控制，请使用我们的 REST API。 
 
-[安全中心的 api 文档的 "自适应应用程序控件" 部分](/rest/api/securitycenter/adaptiveapplicationcontrols)提供了相关的 api 文档。
+[安全中心 API 文档的“自适应应用程序控制”部分](/rest/api/securitycenter/adaptiveapplicationcontrols)提供了相关的 API 文档。
 
 REST API 提供的一些函数：
 
@@ -241,10 +235,10 @@ REST API 提供的一些函数：
    > 在 Put 请求中使用 JSON 之前，请删除以下属性：recommendationStatus、configurationStatus、issues、location 和 sourceSystem。
 
 
-## <a name="faq---adaptive-application-controls"></a>FAQ-自适应应用程序控件
+## <a name="faq---adaptive-application-controls"></a>常见问题解答 - 自适应应用程序控制
 
-### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何用于强制应用程序控件的选项？
-当前没有任何强制选项可用。 自适应应用程序控件旨在提供 **安全警报** ，前提是任何应用程序都不是您定义为安全的应用程序。 它们具有一系列优势 ([自适应应用程序控件的好处是什么？](#what-are-the-benefits-of-adaptive-application-controls)) 并且非常可自定义，如本页中所示。
+### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何强制执行应用程序控制的选项？
+目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。 如本页所示，它具有一系列的优势（[自适应应用程序控制的优势是什么？](#what-are-the-benefits-of-adaptive-application-controls)）并且具有良好的可定制性。
 
  
 

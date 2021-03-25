@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 测试将 Hyper-v VM 复制到辅助站点
+title: 使用 Azure Site Recovery 测试在 VMM 中将 Hyper-V VM 复制到辅助站点
 description: 本文介绍了使用 Azure Site Recovery 在 VMM 云中将 Hyper-V VM 复制到辅助站点时的性能测试。
 author: sujayt
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92327631"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
@@ -47,7 +47,7 @@ ms.locfileid: "92327631"
 * Hyper-V 副本利用自我维护的内存缓存最大程度地降低用于跟踪的 IOPS 开销。 它将向 VHDX 进行的写入存储在内存中，并在将日志发送到恢复站点之前将它们刷新到日志文件中。 如果写入数达到了预先确定的限制，也会发生磁盘刷新。
 * 下图显示了复制的稳定状态 IOPS 开销。 我们可以看到由复制导致的 IOPS 开销大约为 5%，非常低。
 
-  ![此图显示了复制的稳定状态 IOPS 开销。](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![图中显示了复制的稳定状态 IOPS 开销。](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V 副本使用主服务器上的内存来优化磁盘性能。 如下图中所示，主群集中所有服务器上的内存开销都很低。 所显示的内存开销是复制使用的内存占 Hyper-V 服务器上安装的总内存的百分比。
 
@@ -55,20 +55,20 @@ Hyper-V 副本使用主服务器上的内存来优化磁盘性能。 如下图�
 
 Hyper-V 副本具有最小的 CPU 开销。 如图中所示，复制的开销范围是 2-3%。
 
-![显示复制开销的图形处于2-3% 范围内。](./media/hyper-v-vmm-performance-results/IC744915.png)
+![图中显示了复制的开销范围是 2-3%。](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>辅助服务器性能
 
 Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最优化。 图中汇总了恢复服务器上的内存使用率。 所显示的内存开销是复制使用的内存占 Hyper-V 服务器上安装的总内存的百分比。
 
-![图形，该图形汇总了恢复服务器上的内存使用率。](./media/hyper-v-vmm-performance-results/IC744916.png)
+![图中汇总了恢复服务器上的内存使用情况。](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 恢复站点上的 I/O 操作数量是主站点上的写入操作数量的一个函数。 让我们在与主站点上的总 I/O 操作量和写入操作量进行比较的情况下看一下恢复站点上的总 I/O 操作量。 图中显示，恢复站点上的总 IOPS 大约是
 
 * 主站点上的写入 IOPS 的 1.5 倍。
 * 主站点上的总 IOPS 的 37%。
 
-![此图显示了主站点和辅助站点上的 IOPS 比较。](./media/hyper-v-vmm-performance-results/IC744917.png)
+![图中显示了主站点与辅助站点上的 IOPS 对比。](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![辅助服务器结果](./media/hyper-v-vmm-performance-results/IC744918.png)
 

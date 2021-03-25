@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077670"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件访问要求来自不受信任网络的访问进行 MFA   
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假定您熟悉条件性访问的 [基本概念](overview.md) 。 
+本文假设你熟悉条件访问的[基本概念](overview.md)。 
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 ## <a name="implementation"></a>实现
 
-此方案的难题是将 *访问从不受信任的网络位置* 转换为条件访问条件。 在条件访问策略中，可以配置 [位置条件](location-condition.md) ，以解决与网络位置相关的情况。 使用位置条件，你可以选择已命名位置，这些位置是 IP 地址范围、国家和地区的逻辑分组。  
+此场景的挑战在于将“来自不受信任网络位置的访问”转换为条件访问条件。 在条件访问策略中，可以配置[位置条件](location-condition.md)来应对与网络位置相关的场景。 使用位置条件，你可以选择已命名位置，这些位置是 IP 地址范围、国家和地区的逻辑分组。  
 
 通常，你的组织拥有一个或多个地址范围，例如 199.30.16.0 - 199.30.16.15。
 可以通过以下方式配置命名位置：
@@ -54,11 +54,11 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 - 包括任何位置 
 
-   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Azure &quot;D 位置&quot; 窗格的屏幕截图，将 &quot;配置&quot; 设置为 &quot;是&quot;，&quot;包括&quot; 选项卡可见，并选中并突出显示 &quot;任何位置&quot; 选项。" border="false":::
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="“Azure AD 位置”窗格的屏幕截图，其中的“配置”设置为“是”，“包括”选项卡可见，并且“任意位置”选项已选中并突出显示。" border="false":::
 
 - 排除所有受信任的位置 
 
-   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Azure &quot;D 位置&quot; 窗格的屏幕截图，将 &quot;配置&quot; 设置为 &quot;是&quot;，将显示 &quot;排除&quot; 选项卡，并选择 &quot;所有受信任位置&quot; 选项。" border="false":::
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="“Azure AD 位置”窗格的屏幕截图，其中的“配置”设置为“是”，“排除”选项卡可见，并且“所有受信任的位置”选项已选中。" border="false":::
 
 ## <a name="policy-deployment"></a>策略部署
 
@@ -66,4 +66,4 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要了解有关条件性访问的详细信息，请参阅 [什么是 Azure Active Directory 中的条件性访问？](./overview.md)
+若要了解有关条件访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件访问？](./overview.md)

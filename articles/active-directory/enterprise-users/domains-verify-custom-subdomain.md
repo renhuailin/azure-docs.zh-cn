@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 和图形 Azure Active Directory 更改子域身份验证类型 |Microsoft Docs
-description: 更改 Azure Active Directory 中从根域设置继承的默认子域身份验证设置。
+title: 使用 PowerShell 和 Graph 更改子域身份验证类型 - Azure Active Directory | Microsoft Docs
+description: 更改从 Azure Active Directory 中的根域设置继承的默认子域身份验证设置。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,21 +14,21 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 734e6824f13e62ad080500eff18c4892e1f76807
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95503668"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>在 Azure Active Directory 中更改子域身份验证类型
 
-将根域添加到 Azure Active Directory (Azure AD) 后，在 Azure AD 组织中添加到该根的所有后续子域会自动从根域继承身份验证设置。 但是，如果你想要独立于根域设置管理域身份验证设置，现在可以将 Microsoft Graph API。 例如，如果你有一个联合根域（如 contoso.com），则本文可以帮助你将子域（例如 child.contoso.com）验证为托管，而不是联合。
+将根域添加到 Azure Active Directory (Azure AD) 后，Azure AD 组织中添加到该根的所有后续子域将自动从根域继承身份验证设置。 但是，如果要独立于根域设置来管理域身份验证设置，现在可以使用 Microsoft Graph API 来实现。 例如，如果你有一个联合根域（如 contoso.com），则本文可以帮助你将子域（如 child.contoso.com）验证为托管子域而非联合子域。
 
-在 Azure AD 门户中，当父域联合并且管理员尝试验证 " **自定义域名** " 页上的托管子域时，你将收到 "无法添加域" 错误，原因是 "一个或多个属性包含无效值"。 如果尝试从 Microsoft 365 管理中心添加此子域，将收到类似的错误。 有关错误的详细信息，请参阅 [在 Office 365、Azure 或 Intune 中子域不会继承父域的更改](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes)。
+在 Azure AD 门户中，当父域联合并且管理员尝试在“自定义域名”页上验证托管子域时，你将收到“无法添加域”错误，原因为“一个或多个属性包含无效值”。 如果尝试从 Microsoft 365 管理中心添加此子域，将收到类似的错误。 有关错误的详细信息，请参阅[子域不继承 Office 365、Azure 或 Intune 中的父域更改](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes)。
 
 ## <a name="how-to-verify-a-custom-subdomain"></a>如何验证自定义子域
 
-由于子域默认继承根域的身份验证类型，因此必须使用 Microsoft Graph 将子域升级到 Azure AD 中的根域，以便将身份验证类型设置为所需的类型。
+因为默认情况下子域继承根域的身份验证类型，因此必须使用 Microsoft Graph 将子域升级为 Azure AD 中的根域，才能将身份验证类型设置为所需的类型。
 
 ### <a name="add-the-subdomain-and-view-its-authentication-type"></a>添加子域并查看其身份验证类型
 
@@ -38,7 +38,7 @@ ms.locfileid: "95503668"
    New-MsolDomain -Name "child.mydomain.com" -Authentication Federated
    ```
 
-1. 使用 [Azure AD Graph 资源管理器](https://graphexplorer.azurewebsites.net) 获取该域。 由于域不是根域，因此它继承根域身份验证类型。 使用自己的租户 ID，你的命令和结果可能如下所示：
+1. 使用 [Azure AD Graph 资源管理器](https://graphexplorer.azurewebsites.net)获取该域。 因为该域不是根域，所以它继承了根域身份验证类型。 使用你自己的租户 ID，命令和结果可能如下所示：
 
    ```http
    GET https://graph.windows.net/{tenant_id}/domains?api-version=1.6
@@ -62,9 +62,9 @@ ms.locfileid: "95503668"
      },
    ```
 
-### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>使用 Azure AD Graph 资源管理器 API 使其成为根域
+### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>使用 Azure AD Graph 资源管理器 API 将其设为根域
 
-使用以下命令来升级子域：
+使用以下命令升级子域：
 
 ```http
 POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?api-version=1.6
@@ -78,7 +78,7 @@ POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?ap
    Set-MsolDomainAuthentication -DomainName child.mydomain.com -Authentication Managed
    ```
 
-1. 通过获取 Azure AD Graph 资源管理器验证子域身份验证类型现在已托管：
+1. 在 Azure AD Graph 资源管理器中通过 GET 验证子域身份验证类型现是托管：
 
    ```http
    GET https://graph.windows.net/{{tenant_id} }/domains?api-version=1.6

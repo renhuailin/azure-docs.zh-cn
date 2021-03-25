@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621512"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis 网络隔离选项 
@@ -22,7 +22,7 @@ Azure 专用链接提供从虚拟网络到 Azure PaaS 服务的专用连接。 �
 ### <a name="advantages"></a>优点
 * 在基本、标准和高级 Azure Cache for Redis 实例上受支持。 
 * 通过使用 [Azure 专用链接](../private-link/private-link-overview.md)，你可以通过专用终结点从虚拟网络连接到 Azure Cache 实例，该终结点在虚拟网络中的子网内分配有一个专用 IP 地址。 通过此方法，可以从 VNet 内部和公共位置访问缓存实例。  
-* 创建专用终结点后，可以通过 `publicNetworkAccess` 标志限制对公用网络的访问。 默认情况下，此标志设置为 `Disabled` ，这将只允许专用链接访问。 您可以 `Enabled` 使用 PATCH 请求将值设置为或 `Disabled` 。 有关详细信息，请参阅[使用 Azure 专用链接的 Azure Cache for Redis（预览版）](cache-private-link.md)。 
+* 创建专用终结点后，可以通过 `publicNetworkAccess` 标志限制对公用网络的访问。 默认情况下，此标志设置为 `Disabled`，这将仅允许专用链接访问。 可以使用 PATCH 请求将该值设置为 `Enabled` 或 `Disabled`。 有关详细信息，请参阅[使用 Azure 专用链接的 Azure Cache for Redis（预览版）](cache-private-link.md)。 
 * 所有外部缓存依赖项都不会影响 VNet 的 NSG 规则。
 
 ### <a name="limitations"></a>限制 

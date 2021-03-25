@@ -10,10 +10,10 @@ author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
 ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098206"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>使用 Node.js 和 Azure Cosmos DB 的用于 MongoDB 的 API 生成应用 
@@ -36,7 +36,7 @@ ms.locfileid: "93098206"
 
 ## <a name="create-the-app"></a>创建应用
 
-1. 创建 app.js  文件，并复制粘贴以下代码。
+1. 创建 app.js 文件，并复制粘贴以下代码。
 
     ```javascript
     var MongoClient = require('mongodb').MongoClient;
@@ -118,7 +118,7 @@ ms.locfileid: "93098206"
     });
     ```
     
-    **可选** ：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段  ：
+    **可选**：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段：
 
     原始：
 
@@ -155,14 +155,14 @@ ms.locfileid: "93098206"
     });
     ```
     
-2. 按照帐户设置修改 app.js  文件中的以下变量（了解如何查找[连接字符串](connect-mongodb-account.md)）：
+2. 按照帐户设置修改 app.js 文件中的以下变量（了解如何查找[连接字符串](connect-mongodb-account.md)）：
 
     > [!IMPORTANT]
-    > MongoDB Node.js 3.0 驱动程序需要在 Cosmos DB 密码中对特殊字符进行编码  。 请务必将“=”字符编码为 %3D
+    > MongoDB Node.js 3.0 驱动程序需要在 Cosmos DB 密码中对特殊字符进行编码。 请务必将“=”字符编码为 %3D
     >
-    > 示例：密码 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv== 编码为 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D  
+    > 示例：密码 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv== 编码为 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D
     >
-    > MongoDB Node.js 2.2 驱动程序无需在 Cosmos DB 密码中对特殊字符进行编码  。
+    > MongoDB Node.js 2.2 驱动程序无需在 Cosmos DB 密码中对特殊字符进行编码。
     >
     >
    
@@ -170,10 +170,10 @@ ms.locfileid: "93098206"
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. 打开偏爱的终端，运行 **npm install mongodb --save** ，并使用 **node app.js** 运行应用程序
+3. 打开偏爱的终端，运行 **npm install mongodb --save**，并使用 **node app.js** 运行应用程序
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。

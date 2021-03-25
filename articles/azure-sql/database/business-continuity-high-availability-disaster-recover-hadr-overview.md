@@ -14,10 +14,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222558"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
@@ -51,7 +51,7 @@ SQL 数据库和 SQL 托管实例还提供多种业务连续性功能，用于�
 - 如果服务器尚未删除，可[将已删除的数据库还原](recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
 - 使用[长期备份保留](long-term-retention-overview.md)可将备份保留长达 10 年之久。 该功能处于 SQL 托管实例有限的公共预览版中
 - 使用[活动异地复制](active-geo-replication-overview.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
-- [自动故障转移组](auto-failover-group-overview.md#terminology-and-capabilities) 允许应用程序在数据中心中断的情况下自动恢复。
+- 发生数据中心中断时，应用程序可以通过[自动故障转移组](auto-failover-group-overview.md#terminology-and-capabilities)自动恢复。
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>恢复同一 Azure 区域内的数据库
 

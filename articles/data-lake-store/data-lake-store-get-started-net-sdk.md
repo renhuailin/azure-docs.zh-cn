@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5b2364328fc4e0103b969f94a4c877a388edb7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.openlocfilehash: 2c4ed092604e9511023a7025a69dc7a78652ea56
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103605"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430473"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -26,28 +26,28 @@ ms.locfileid: "92103605"
 
 若要了解如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行数据管理操作，请参阅[在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)。
 
-## <a name="prerequisites"></a>必备条件
-* **Visual Studio 2013 或更高**版本。 以下说明使用 Visual Studio 2019。
+## <a name="prerequisites"></a>先决条件
+* Visual Studio 2013 或更高版本。 以下说明使用的是 Visual Studio 2019。
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
-1. 在 Visual Studio 中，选择 " **文件** " 菜单，选择 " **新建**"，然后选择 " **项目**"。
-2. 选择 " **控制台应用 (" .NET Framework ") **，然后选择" **下一步**"。
-3. 在“项目名称”**** 中，输入 `CreateADLApplication`，然后选择“创建”****。
+1. 在 Visual Studio 中，依次选择“文件”菜单、“新建”、“项目”。
+2. 选择“控制台应用(.NET Framework)”，然后选择“下一步” 。
+3. 在“项目名称”中，输入 `CreateADLApplication`，然后选择“创建”。
 
 4. 将 NuGet 包添加到项目。
 
-   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” ****。
-   2. 在 " **NuGet 包管理器** " 选项卡中，确保 " **包源** " 设置为 **Nuget.org** ，并选中 " **包括预发行** 版" 复选框。
+   1. 在解决方案资源管理器中右键单击项目名称，单击“管理 NuGet 包” 。
+   2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。   
    3. 搜索并安装以下 NuGet 包：
 
       * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v2.1.3-预览版。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.12。
 
-        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
-   4. 关闭 **NuGet 包管理器**。
-5. 打开“Program.cs” ****，删除现有代码，并包含以下语句，添加对命名空间的引用。
+        ![添加 NuGet 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新建 Azure Data Lake 帐户")
+   4. 关闭“NuGet 包管理器”。
+5. 打开“Program.cs” ，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
     ```csharp
     using System;
@@ -144,7 +144,7 @@ _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>另请参阅
 * [在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK 参考](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK 参考](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>后续步骤
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

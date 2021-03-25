@@ -1,22 +1,22 @@
 ---
-title: NCv2 系列-Azure 虚拟机
-description: NCv2 系列 Vm 的规格。
+title: NCv2 系列 - Azure 虚拟机
+description: NCv2 系列 VM 的规范。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4fec1d16cc9ba8f55dca66648f97113bee0778ed
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 9d057afc130b75bdd62031e6d2b9372bc9a37615
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670294"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102615017"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
-NCv2 系列 VM 采用 NVIDIA Tesla P100 GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 Gpu 以外，NCv2 系列 Vm 还由 Intel Broadwell E5-2690 v4 提供支持 () Cpu。
+NCv2 系列 VM 采用 NVIDIA Tesla P100 GPU。 这些 GPU 可提供比 NC 系列高 2 倍以上的计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 除了 GPU 之外，NCv2 系列虚拟机还由 Intel Xeon E5-2690 v4 (Broadwell) CPU 提供支持。
 
 NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
@@ -26,7 +26,7 @@ NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 Nvidia NVLink 互连：不支持
 
 > [!IMPORTANT]
@@ -51,7 +51,7 @@ Nvidia NVLink 互连：不支持
 
 [NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于 [Windows 的 n 系列 gpu 驱动程序设置](./windows/n-series-driver-setup.md) 或适用于 [Linux 的 n 系列 gpu 驱动程序设置](./linux/n-series-driver-setup.md) ，以支持操作系统、驱动程序、安装和验证步骤。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解支持的操作系统、驱动程序以及安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 

@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be3947e3de18f8ccaf47382c4035e187521ac710
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571498"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量还原已删除的用户
@@ -34,9 +34,9 @@ Azure Active Directory (Azure AD) 支持批量用户还原操作，并支持下�
 
 下载的 CSV 模板中的行如下所示：
 
-- **版本号**：包含版本号的第一行必须包含在上传 CSV 中。
-- **列标题**：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Object ID [objectId] Required` 。 某些较旧版本的模板可能会略有不同。
-- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 你必须删除示例行并将其替换为你自己的项。
+- **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Object ID [objectId] Required`。 某些较旧版本的模板可能会略有不同。
+- 示例行：我们已经在模板中包含了一行示例，说明每列可接受的值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
 

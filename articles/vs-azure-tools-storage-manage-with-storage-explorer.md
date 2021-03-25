@@ -8,20 +8,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: be9b2d9a31d4affc9615f5d2f4b2585b7533a0f6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545901"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102441534"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
 ## <a name="overview"></a>概述
 
-Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 本文介绍如何通过多种方式连接到 Azure 存储帐户并对其进行管理。
+Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
 
-![Microsoft Azure 存储资源管理器][0]
+本文介绍如何通过多种方式连接到 Azure 存储帐户并对其进行管理。
+
+:::image type="content" alt-text="Microsoft Azure 存储资源管理器" source="./vs-storage-explorer-overview.png":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +47,7 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 
 最常用 Linux 分发版的 [Snap Store](https://snapcraft.io/storage-explorer) 中都提供了存储资源管理器。 我们建议通过 Snap Store 安装存储资源管理器。 将新版本发布到 Snap Store 时，存储资源管理器内嵌项会安装其所有依赖项和更新。
 
-有关支持的分发版，请参阅 [snapd 安装页](https://snapcraft.io/docs/installing-snapd)。
+有关受支持的分发版，请参阅[`snapd` 安装页](https://snapcraft.io/docs/installing-snapd)。
 
 存储资源管理器要求使用密码管理器。 可能必须手动连接到密码管理器。 可以运行以下命令，将存储资源管理器连接到系统的密码管理器：
 
@@ -53,7 +55,7 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
-存储资源管理器还以 *.tar.gz* 下载文件格式提供。 必须手动安装依赖项。 以下 Linux 分发版支持 *.tar.gz* 安装：
+存储资源管理器还以 *.tar.gz* 下载文件格式提供。 如果使用 .tar.gz，则必须手动安装依赖项。 以下 Linux 分发版支持 *.tar.gz* 安装：
 
 * Ubuntu 20.04 x64
 * Ubuntu 18.04 x64
@@ -71,141 +73,160 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="connect-to-a-storage-account-or-service"></a>连接到存储帐户或服务
 
-存储资源管理器提供多种连接到存储帐户的方式。 一般情况下，你可以：
+存储资源管理器提供了多种用来连接到 Azure 资源的方式：
 
 * [登录到 Azure 以访问自己的订阅及其资源](#sign-in-to-azure)
-* [附加特定的存储或 CosmosDB 资源](#attach-a-specific-resource)
+* [附加到单个 Azure 存储资源](#attach-to-an-individual-resource)
+* [附加到 CosmosDB 资源](#connect-to-azure-cosmos-db)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
 > [!NOTE]
-> 登录后，存储资源管理器要求拥有管理（Azure 资源管理器）和数据层权限才能全面访问资源。 这意味着，你需要拥有 Azure Active Directory (Azure AD) 权限，可以访问自己的存储帐户、该帐户中的容器以及该容器中的数据。 如果你仅在数据层拥有权限，请考虑[通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 若要详细了解存储资源管理器所需的具体权限，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md#azure-rbac-permissions-issues)。
+> 登录后，存储资源管理器要求拥有管理（Azure 资源管理器）和数据层权限才能全面访问资源。 这意味着，你需要拥有 Azure Active Directory (Azure AD) 权限以访问自己的存储帐户、该帐户中的容器以及该容器中的数据。 如果你仅在数据层具有权限，请考虑在附加到资源时，选择“使用 Azure Active Directory (Azure AD) 登录”。 若要详细了解存储资源管理器所需的具体权限，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md#azure-rbac-permissions-issues)。
 
 1. 在存储资源管理器中，选择“视图” > “帐户管理”，或选择“管理帐户”按钮。  
 
-    ![管理帐户][1]
+    :::image type="content" alt-text="管理帐户" source ="./vs-storage-explorer-manage-accounts.png":::
 
-1. “帐户管理”随即显示已登录到的所有 Azure 帐户。 若要连接到另一个帐户，请选择“添加帐户”。
+1. “帐户管理”现在显示登录的所有 Azure 帐户。 若要连接到另一个帐户，请选择“添加帐户…”。
 
-1. 在“连接到 Azure 存储”中，从“Azure 环境”中选择一个 Azure 云，以登录到国家云或 Azure Stack。  选择环境后，选择“下一步”。
+1. 随即将打开“连接到 Azure 存储”对话框。 在“选择资源”面板中，选择“订阅” 。
 
-    ![登录选项][2]
+    :::image type="content" alt-text="连接对话框" source="./vs-storage-explorer-connect-dialog.png":::
 
-    存储资源管理器将打开一个登录页。 有关详细信息，请参阅[将存储资源管理器连接到 Azure Stack 订阅或存储帐户](/azure-stack/user/azure-stack-storage-connect-se)。
+1. 在“选择 Azure 环境”面板中，选择要登录到的 Azure 环境。 你可以登录到全球 Azure、区域云和 Azure Stack 实例。 然后，选择“下一步”。
 
-1. 使用 Azure 帐户成功登录后，该帐户以及与之关联的 Azure 订阅将显示在“帐户管理”下。 选择“所有订阅”会选择所有列出的 Azure 订阅，或者一个都不选。 选择要使用的 Azure 订阅，并选择“应用”。
+    :::image type="content" alt-text="登录选项" source="./vs-storage-explorer-connect-environment.png":::
 
-    ![选择 Azure 订阅][3]
+    > [!TIP]
+    > 有关 Azure Stack 的详细信息，请参阅[将存储资源管理器连接到 Azure Stack 订阅或存储帐户](/azure-stack/user/azure-stack-storage-connect-se)。
 
-    “资源管理器”会显示与所选 Azure 订阅关联的存储帐户。
+1. 存储资源管理器将打开一个网页供你登录。
 
-    ![选择的 Azure 订阅][4]
+1. 使用 Azure 帐户成功登录后，该帐户以及与之关联的 Azure 订阅将显示在“帐户管理”下。 选择要使用的 Azure 订阅，并选择“应用”。
 
-### <a name="attach-a-specific-resource"></a>附加特定的资源
+    :::image type="content" alt-text="选择 Azure 订阅" source="./vs-storage-explorer-account-panel.png":::
 
-可通过多种方式在存储资源管理器中附加资源：
+1. “资源管理器”会显示与所选 Azure 订阅关联的存储帐户。
 
-* [通过 Azure AD 添加资源](#add-a-resource-via-azure-ad)。 如果你仅在数据层拥有权限，请使用此选项添加 Blob 容器或 Azure Data Lake Storage Gen2 Blob 存储容器。
-* [使用连接字符串](#use-a-connection-string)。 如果已获取存储帐户的连接字符串，请使用此选项。 存储资源管理器支持密钥和[共享访问签名](./storage/common/storage-sas-overview.md)连接字符串。
-* [使用共享访问签名 URI](#use-a-shared-access-signature-uri)。 如果已获取 Blob 容器、文件共享、队列或表的[共享访问签名 URI](./storage/common/storage-sas-overview.md)，请使用它附加到资源。 若要获取共享访问签名 URI，可以使用[存储资源管理器](#generate-a-sas-in-storage-explorer)或 [Azure 门户](https://portal.azure.com)。
-* [使用名称和密钥](#use-a-name-and-key)。 如果你知道存储帐户的任一帐户密钥，则可以使用此选项快速建立连接。 在 [Azure 门户](https://portal.azure.com)中选择“设置” > “访问密钥”，在存储帐户页中找到你的密钥。 
-* [附加到本地仿真器](#attach-to-a-local-emulator)。 如果你正在使用某个可用的 Azure 存储仿真器，则使用此选项可以轻松连接到该仿真器。
-* [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 如果已获取 CosmosDB 实例的连接字符串，请使用此选项。
-* [通过 URI 连接到 Azure Data Lake Store](#connect-to-azure-data-lake-store-by-uri)。 如果已获取 Azure Data Lake Store 的 URI，请使用此选项。
+    :::image type="content" alt-text="选择的 Azure 订阅" source="./vs-storage-explorer-subscription-node.png":::
 
-#### <a name="add-a-resource-via-azure-ad"></a>通过 Azure AD 添加资源
+### <a name="attach-to-an-individual-resource"></a>附加到单个资源
 
-1. 选择“连接”符号打开“连接到 Azure 存储”。 
+存储资源管理器允许使用各种身份验证方法连接到单个资源，如 Azure Data Lake Storage Gen2 容器。 某些资源类型仅支持某些身份验证方法。
 
-    ![“连接到 Azure 存储”选项][9]
+| 资源类型    | Azure AD | 帐户名称和密钥 | 共享访问签名 (SAS)  | 公共（匿名） |
+|------------------|----------|----------------------|--------------------------------|--------------------|
+| 存储帐户 | 是      | 是                  | 是（连接字符串或 URL） | 否                 |
+| Blob 容器  | 是      | 否                   | 是（URL）                      | 是                |
+| Gen2 容器  | 是      | 否                   | 是（URL）                      | 是                |
+| Gen2 目录 | 是      | 否                   | 是（URL）                      | 是                |
+| 文件共享      | 否       | 否                   | 是（URL）                      | 否                 |
+| 队列           | 是      | 否                   | 是（URL）                      | 否                 |
+| 表           | 否       | 否                   | 是（URL）                      | 否                 |
+ 
+存储资源管理器还可以使用仿真器的已配置端口连接到[本地存储仿真器](#local-storage-emulator)。
 
-1. 使用“添加 Azure 帐户”选项登录到有权访问资源的 Azure 帐户（如果尚未执行此操作）。 登录后，返回“连接到 Azure 存储”。
+若要连接到单个资源，请选择左侧工具栏中的“连接”按钮。 然后，按照你要连接到的资源类型的说明进行操作。
 
-1. 依次选择“通过 Azure Active Directory (Azure AD)添加资源”、“下一步”。 
+:::image type="content" alt-text="“连接到 Azure 存储”选项" source="./vs-storage-explorer-connect-button.png":::
 
-1. 选择 Azure 帐户和租户。 必须可以使用这些值访问要附加到的存储资源。 选择“**下一步**”。
+成功添加到存储帐户的连接后，“本地和附加” > “存储帐户”下将显示新的树节点 。
 
-1. 选择要附加的资源类型。 输入用于连接的信息。 
+对于其他资源类型，会在“本地和附加” > “存储帐户” > “(附加的容器)”下添加一个新节点  。 节点将出现在与其类型匹配的组节点下。 例如，到 Azure Data Lake Storage Gen2 容器的新连接将显示在“Blob 容器”下。
 
-   在此页上输入的信息取决于要添加的资源类型。 请确保选择正确的资源类型。 输入所需的信息后，选择“下一步”。
+如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
 
-1. 检查“连接摘要”，确保所有信息正确。 如果正确，请选择“连接”。 否则，请选择“后退”返回前面的页，以修复任何错误的信息。
+以下各节介绍了可用于连接到单个资源的不同身份验证方法。
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “Blob 容器”下。    如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
+#### <a name="azure-ad"></a>Azure AD
 
-#### <a name="use-a-connection-string"></a>使用连接字符串
+存储资源管理器可以使用 Azure 帐户连接到以下资源类型：
+* Blob 容器
+* Azure Data Lake Storage Gen2 容器
+* Azure Data Lake Storage Gen2 目录
+* 队列
+ 
+如果你具有对资源的数据层访问权限，但没有管理层访问权限，则 Azure AD 是首选选项。
 
-1. 选择“连接”符号打开“连接到 Azure 存储”。 
+1. 使用[上述步骤](#sign-in-to-azure)登录到至少一个 Azure 帐户。
+1. 在“连接到 Azure 存储”对话框的“选择资源”面板中，选择“Blob 容器”、“ADLS Gen2 容器”或“队列”    。
+1. 选择“使用 Azure Active Directory (Azure AD) 登录”，然后选择“下一步” 。
+1. 选择 Azure 帐户和租户。 帐户和租户必须有权访问所要附加到的存储资源。 选择“**下一步**”。
+1. 输入连接的显示名称和资源的 URL。 选择“**下一步**”。
+1. 在“摘要”面板中查看连接信息。 如果连接信息正确，请选择“连接”。
 
-    ![“连接到 Azure 存储”选项][9]
+#### <a name="account-name-and-key"></a>帐户名称和密钥
 
-1. 依次选择“使用连接字符串”、“下一步”。 
+存储资源管理器可以使用存储帐户的名称和密钥连接到存储帐户。
 
-1. 选择连接的显示名称，并输入连接字符串。 然后，选择“下一步”。
+可以在 [Azure 门户](https://portal.azure.com)中找到帐户密钥。 打开存储帐户页，然后选择“设置” > 访问密钥” 。
 
-1. 检查“连接摘要”，确保所有信息正确。 如果正确，请选择“连接”。 否则，请选择“后退”返回前面的页，以修复任何错误的信息。
+1. 在“连接到 Azure 存储”对话框的“选择资源”面板中，选择“存储帐户”  。
+1. 选择“帐户名称和密钥”并选择“下一步” 。
+1. 输入连接的显示名称、帐户名称和某个帐户密钥。 选择相应的 Azure 环境。 选择“**下一步**”。
+1. 在“摘要”面板中查看连接信息。 如果连接信息正确，请选择“连接”。
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。  如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
+#### <a name="shared-access-signature-sas-connection-string"></a>共享访问签名 (SAS) 连接字符串
 
-#### <a name="use-a-shared-access-signature-uri"></a>使用共享访问签名 URI
+存储资源管理器可以使用具有共享访问签名 (SAS) 的连接字符串连接到存储帐户。 SAS 连接字符串如下所示：
 
-1. 选择“连接”符号打开“连接到 Azure 存储”。 
+```text
+SharedAccessSignature=sv=2020-04-08&ss=btqf&srt=sco&st=2021-03-02T00%3A22%3A19Z&se=2020-03-03T00%3A22%3A19Z&sp=rl&sig=fFFpX%2F5tzqmmFFaL0wRffHlhfFFLn6zJuylT6yhOo%2FY%3F;
+BlobEndpoint=https://contoso.blob.core.windows.net/;
+FileEndpoint=https://contoso.file.core.windows.net/;
+QueueEndpoint=https://contoso.queue.core.windows.net/;
+TableEndpoint=https://contoso.table.core.windows.net/;
+```
 
-    ![“连接到 Azure 存储”选项][9]
+1. 在“连接到 Azure 存储”对话框的“选择资源”面板中，选择“存储帐户”  。
+1. 选择“共享访问签名(SAS)”并选择“下一步” 。
+1. 输入连接的显示名称和存储帐户的 SAS 连接字符串。 选择“**下一步**”。
+1. 在“摘要”面板中查看连接信息。 如果连接信息正确，请选择“连接”。
 
-1. 依次选择“使用共享访问签名(SAS) URI”、“下一步”。 
+#### <a name="shared-access-signature-sas-url"></a>共享访问签名 (SAS) URL
 
-1. 选择连接的显示名称，并输入共享访问签名 URI。 适用于要附加的资源类型的服务终结点应会自动填充。 如果使用的是自定义终结点，有可能不会填充该终结点。 选择“**下一步**”。
+存储资源管理器可以使用 SAS URI 连接到以下资源类型：
+* Blob 容器
+* Azure Data Lake Storage Gen2 容器或目录
+* 文件共享
+* 队列
+* 表
 
-1. 检查“连接摘要”，确保所有信息正确。 如果正确，请选择“连接”。 否则，请选择“后退”返回前面的页，以修复任何错误的信息。
+SAS URI 如下所示：
 
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户” > “(附加的容器)” > “<适用于附加容器类型的服务节点>”下。   如果存储资源管理器无法添加你的连接，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。 如果在成功添加连接后无法访问数据，请参阅故障排除指南。
+```text
+https://contoso.blob.core.windows.net/container01?sv=2020-04-08&st=2021-03-02T00%3A30%3A33Z&se=2020-03-03T00%3A30%3A33Z&sr=c&sp=rl&sig=z9VFdWffrV6FXU51T8b8HVfipZPOpYOFLXuQw6wfkFY%3F
+```
 
-#### <a name="use-a-name-and-key"></a>使用名称和密钥
+1. 在“连接到 Azure 存储”对话框的“选择资源”面板中，选择要连接到的资源 。
+1. 选择“共享访问签名(SAS)”并选择“下一步” 。
+1. 输入连接的显示名称和资源的 SAS URI。 选择“**下一步**”。
+1. 在“摘要”面板中查看连接信息。 如果连接信息正确，请选择“连接”。
 
-1. 选择“连接”符号打开“连接到 Azure 存储”。 
+#### <a name="local-storage-emulator"></a>本地存储仿真器
 
-    ![“连接到 Azure 存储”选项][9]
-
-1. 依次选择“使用存储帐户名和密钥”、“下一步”。 
-
-1. 选择连接的显示名称。
-
-1. 输入存储帐户名称及其任一访问密钥。
-
-1. 选择要使用的 **存储域**，然后选择“下一步”。
-
-1. 检查“连接摘要”，确保所有信息正确。 如果正确，请选择“连接”。 否则，请选择“后退”返回前面的页，以修复任何错误的信息。
-
-成功添加连接后，资源树中将打开表示该连接的节点。 该资源显示在“本地和附加” > “存储帐户”下。  如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
-
-#### <a name="attach-to-a-local-emulator"></a>附加到本地仿真器
-
-存储资源管理器目前支持两个官方存储仿真器：
+存储资源管理器可以连接到 Azure 存储仿真器。 当前有两个受支持的仿真器：
 
 * [Azure 存储仿真器](storage/common/storage-use-emulator.md)（仅适用于 Windows）
 * [Azurite](https://github.com/azure/azurite)（Windows、macOS 或 Linux）
 
-如果仿真器正在侦听默认端口，则你可以使用“仿真器 - 默认端口”节点访问仿真器。 请留意“本地和附加” > “存储帐户”下的“仿真器 - 默认端口”。  
+如果仿真器正在侦听默认端口，则可使用“本地和附加” > “存储帐户” > “仿真器 - 默认端口”节点访问仿真器  。
 
-若要为连接使用不同的名称，或者仿真器不是在默认端口上运行，请执行以下步骤：
+若要为连接使用不同的名称，或者仿真器不在默认端口上运行：
 
-1. 启动仿真器。 输入命令 `AzureStorageEmulator.exe status` 显示每种服务类型的端口。
+1. 启动仿真器。
 
    > [!IMPORTANT]
    > 存储资源管理器不会自动启动你的仿真器。 必须手动启动它。
 
-1. 选择“连接”符号打开“连接到 Azure 存储”。 
+1. 在“连接到 Azure 存储”对话框的“选择资源”面板中，选择“本地存储仿真器”  。
+1. 为连接输入显示名称，并为每个要使用的仿真服务输入端口号。 如果不想将其用于服务，请将相应的端口留空。 选择“**下一步**”。
+1. 在“摘要”面板中查看连接信息。 如果连接信息正确，请选择“连接”。
 
-    ![“连接到 Azure 存储”选项][9]
+### <a name="connect-to-azure-cosmos-db"></a>连接到 Azure Cosmos DB
 
-1. 依次选择“附加到本地仿真器”、“下一步”。 
-
-1. 选择连接的显示名称，并输入每种服务类型的仿真器所侦听的端口。 “附加到本地仿真器”会建议大多数仿真器的默认端口值。 “文件端口”保留空白，因为目前没有任何官方仿真器支持文件服务。 如果使用的仿真器不支持文件服务，你可以输入要使用的端口。 然后，选择“下一步”。
-
-1. 检查“连接摘要”，确保所有信息正确。 如果正确，请选择“连接”。 否则，请选择“后退”返回前面的页，以修复任何错误的信息。
-
-成功添加连接后，资源树中将打开表示该连接的节点。 该节点应显示在“本地和附加” > “存储帐户”下。  如果存储资源管理器无法添加你的连接，或者在成功添加连接后你无法访问自己的数据，请参阅 [Azure 存储资源管理器故障排除指南](./storage/common/storage-explorer-troubleshooting.md)。
+存储资源管理器还支持连接到 Azure Cosmos DB 资源。
 
 #### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>使用连接字符串连接到 Azure Cosmos DB 帐户
 
@@ -233,7 +254,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
     ![“连接到 Data Lake Store”操作结果](./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-explorer-attach-data-lake-finished.png)
 
-本示例使用 Data Lake Storage Gen1。 Azure Data Lake Storage Gen2 现已推出。 有关详细信息，请参阅 [什么是 Azure Data Lake Storage Gen1](./data-lake-store/data-lake-store-overview.md)。
+本示例使用 Data Lake Storage Gen1。 Azure Data Lake Storage Gen2 现已推出。 有关详细信息，请参阅[什么是 Azure Data Lake Storage Gen1](./data-lake-store/data-lake-store-overview.md)。
 
 ## <a name="generate-a-shared-access-signature-in-storage-explorer"></a>在存储资源管理器中生成共享访问签名<a name="generate-a-sas-in-storage-explorer"></a>
 
@@ -263,8 +284,6 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 > [!NOTE]
 > 若要加快搜索速度，可使用“帐户管理”取消选择不包含所要搜索的项的订阅。 还可以右键单击某个节点，然后选择“从此处搜索”，从特定的节点开始搜索。
->
->
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -272,26 +291,8 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * [使用 Azure 存储资源管理器处理数据](./cosmos-db/storage-explorer.md)
 * [使用存储资源管理器管理 Azure Data Lake Store 资源](./data-lake-store/data-lake-store-in-storage-explorer.md)
 
-[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Overview.png
-[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageAccounts.png
-[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-azure-environment.png
-[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/account-panel-subscriptions-apply.png
-[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SubscriptionNode.png
-[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png
-[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/PortalAccessKeys.png
-[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AccessKeys.png
-[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog.png
-[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-AddWithKeySelected.png
-[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-NameAndKeyPage.png
-[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithKeyAccount.png
-[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithKeyAccount-Detach.png
 [14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-shared-access-signature-for-storage-explorer.png
 [15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/create-shared-access-signature-for-storage-explorer.png
-[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-WithConnStringOrSASSelected.png
-[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-ConnStringOrSASPage-1.png
-[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AttachedWithSASAccount.png
-[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ConnectDialog-ConnStringOrSASPage-2.png
-[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ServiceAttachedWithSAS.png
 [21]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-cosmos-db-by-connection-string.png
 [22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string-for-cosmos-db.png
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-explorer-search-for-resource.png

@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.openlocfilehash: 45fa5cf4c76577cb5e8ba9bf482f4aab7301e3c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100391484"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据
@@ -30,7 +30,7 @@ Azure 存储扩展支持针对 blob 数据的操作。 可调用的操作取决�
 若要详细了解针对容器的每个 Azure 存储操作所需的权限，请参阅[使用 OAuth 令牌调用存储操作](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。  
 
 > [!IMPORTANT]
-> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，还没有帐户密钥的用户用户必须使用 Azure AD 凭据来访问 blob 数据。 在 PowerShell 中包含 `-UseConnectedAccount` 参数，以使用 Azure AD 凭据创建 **new-azurestoragecontext** 对象。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 “列出密钥”是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有的 POST 操作都会被阻止 。 出于此原因，在使用 ReadOnly 锁锁定了帐户时，还没有帐户密钥的用户必须使用 Azure AD 凭据来访问 Blob 数据。 在 PowerShell 中，包含 `-UseConnectedAccount` 参数，以使用 Azure AD 凭据创建 AzureStorageContext 对象。
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>使用 Azure AD 凭据调用 PowerShell 命令
 

@@ -4,10 +4,10 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95254015"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.openlocfilehash: ae2be8dbcb4839c7d16b864c484c3360fdcfe324
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788564"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102425577"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
@@ -176,7 +176,7 @@ module.exports = function (context, myTimer) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例显示了文件 *function.js上* 的服务总线输出绑定，以及使用绑定的 [PowerShell 函数](functions-reference-powershell.md) 。 
+以下示例演示了 function.json 文件中的服务总线输出绑定以及使用该绑定的 [PowerShell 函数](functions-reference-powershell.md)。 
 
 下面是 function.json 文件中的绑定数据：
 
@@ -211,7 +211,7 @@ Push-OutputBinding -Name outputSbMsg -Value @{
 
 以下示例演示如何写出到 Python 中的服务总线队列。
 
-在将 *类型* 设置为的 *function.js* 中定义了服务总线绑定定义 `serviceBus` 。
+function.json 中定义了服务总线绑定定义，其中类型设置为 `serviceBus` 。
 
 ```json
 {
@@ -243,7 +243,7 @@ Push-OutputBinding -Name outputSbMsg -Value @{
 }
 ```
 
-在 *_\__ \_ py* 中，通过将值传递给方法，可以将消息写入队列 `set` 。
+在 \_init\_.py 中，可将值传递给 `set` 方法将消息写出到队列。
 
 ```python
 import azure.functions as func
@@ -319,7 +319,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
 |**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
@@ -377,7 +377,7 @@ Python 不支持特性。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-可以通过 cmdlet 使用输出到服务总线， `Push-OutputBinding` 其中传递的参数与 *function.js文件上* 的绑定的 name 参数指定的名称相匹配。
+通过 `Push-OutputBinding` cmdlet 可以输出到服务总线，你在其中传递的参数与 function.json 文件中绑定的名称参数指定的名称匹配。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -429,7 +429,7 @@ Python 不支持特性。
 |---------|---------|---------|
 |prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
+|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
 |maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
 |maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
 

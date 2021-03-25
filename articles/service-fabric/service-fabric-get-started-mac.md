@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086771"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
@@ -41,7 +41,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标** ，然后选择“首选项” > “守护程序” > “高级”。
+    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项” > “守护程序” > “高级”。
     
     >[!NOTE]
     >
@@ -49,7 +49,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >
 
     >[!TIP]
-    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标** ，然后选择“高级”来调整核心数量和内存量。
+    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。
 
 2. 启动群集。<br/>
     <b>Ubuntu 18.04 LTS：</b>
@@ -63,16 +63,16 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     ```
 
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 Docker 中心上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 页面。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 Docker Hub 上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 页。
 
 
 
-3. 可选：生成扩展 Service Fabric 映像。
+3. 可选：构建扩展的 Service Fabric 映像。
 
-    在新目录中，创建一个名为的文件 `Dockerfile` 来构建自定义映像：
+    在新目录中创建名为 `Dockerfile` 的文件，以构建自定义映像：
 
     >[!NOTE]
-    >您可以使用 Dockerfile 调整上面的图像，将其他程序或依赖项添加到容器中。
+    >可以使用 Dockerfile 修改上面的映像，以将其他程序或依赖项添加到容器中。
     >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
     ```Dockerfile
     FROM mcr.microsoft.com/service-fabric/onebox:u18
@@ -83,9 +83,9 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     ```
     
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 页。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
 
-    若要从生成可重复使用的映像 `Dockerfile` ，请打开终端并 `cd` 直接保存， `Dockerfile` 然后运行：
+    若要通过 `Dockerfile` 生成可重用的映像，请打开终端并使用 `cd` 直接切换到 `Dockerfile` 所在的目录，然后运行：
 
     ```bash 
     docker build -t mysfcluster .
@@ -94,7 +94,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >[!NOTE]
     >此操作需要一段时间，但只需执行一次。
 
-    现在，你可以在每次需要时通过运行来快速启动 Service Fabric 的本地副本：
+    现在，每当有需要时，都可以运行以下命令，快速启动 Service Fabric 的本地副本：
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -108,14 +108,14 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-4. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，或跳转到仪表板查看群集运行状况： `http://localhost:19080`
+4. 群集需要一小段时间来启动。 运行群集时，可以使用以下命令来查看日志，或者跳转到仪表板来查看群集运行状况：`http://localhost:19080`
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-5. 若要停止并清除容器，请使用以下命令。 但是，我们将在下一步中使用此容器。
+5. 若要停止并清理容器，请使用以下命令。 但是，我们将在下一步中使用此容器。
 
     ```bash 
     docker rm -f sftestcluster
@@ -125,7 +125,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
  
  以下是在 Mac 的容器中运行的本地群集的已知限制： 
  
- * DNS 服务未运行，并且在容器中目前不受支持。 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * DNS 服务未运行，并且目前在容器中不受支持。 [问题 #132](https://github.com/Microsoft/service-fabric/issues/132)
  * 运行基于容器的应用需要在 Linux 主机上运行 SF。 当前不支持嵌套容器应用。
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>在 Mac 上设置 Service Fabric CLI (sfctl)
@@ -195,7 +195,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 ## <a name="set-up-net-core-31-development"></a>设置 .NET Core 3.1 开发
 
-安装 [用于 Mac 的 .Net Core 3.1 SDK](https://www.microsoft.com/net/core#macos) ，开始 [创建 c # Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序的包托管在 NuGet.org 上。
+安装[用于 Mac 的 .NET Core 3.1 SDK](https://www.microsoft.com/net/core#macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>在 Mac 上为 Eclipse 安装 Service Fabric 插件
 

@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: justinha
 ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619961"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Active Directory 域服务资源林以及到本地域的出站林信任
 
-在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希从不会进行同步。
+在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希永远不会同步。
 
 ![从 Azure AD DS 到本地 AD DS 的林信任关系图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -86,7 +86,7 @@ New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 若要创建托管域资源林，请使用 `New-AzureAaddsForest` 脚本。 此脚本是一组更广泛的命令的一部分，这些命令支持创建和管理托管域资源林，包括在下一部分中创建单向绑定林。 这些脚本可从 [PowerShell 库](https://www.powershellgallery.com/)获取，由 Azure AD 工程团队进行数字签名。
 
-1. 首先，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。  使用自己的名称和所需区域：
+1. 首先，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 以下示例中，资源组名为 myResourceGroup，在 westus 区域中创建。  使用自己的名称和所需区域：
 
     ```azurepowershell
     New-AzResourceGroup `

@@ -5,10 +5,10 @@ ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
 ms.openlocfilehash: 6fc7b8f6a6fa7cde8d10dec6a4b2b834d41325e6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920116"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入门：使用 Python 运行你的第一个 Resource Graph 查询

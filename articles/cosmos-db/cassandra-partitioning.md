@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087632"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中进行分区
@@ -84,11 +84,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 当返回数据时，数据将按聚类分析键进行排序，如 Apache Cassandra 中预期的那样：
 
-:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="分区":::
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="此屏幕截图显示了按聚类分析键排序的返回数据。":::
 
 对于以此方式建模的数据，可以将多条记录分配给每个分区，并按用户分组。 因此，我们可以发出按 `partition key`（在本例中为 `user`）进行高效路由的查询，以获取给定用户的所有消息。 
 
-:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="分区" border="false":::
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="此图显示了如何将多条记录分配给每个分区并按用户分组。" border="false":::
 
 
 ## <a name="composite-partition-key"></a>复合分区键

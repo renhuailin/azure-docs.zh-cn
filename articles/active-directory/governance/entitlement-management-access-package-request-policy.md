@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4a1aa737b1f671c08d51d780fa98db50f2869a1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211645"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102426954"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的请求设置
 
@@ -125,8 +125,8 @@ ms.locfileid: "102211645"
     |  |  |
     | --- | --- |
     | **特定的已连接的组织** | 如果要从管理员之前添加的组织列表中选择，请选择此选项。 来自选定组织的所有用户都可以请求此访问包。 |
-    | **所有配置的已连接组织** | 如果所有已配置连接的组织中的所有用户都可以请求此访问包，请选择此选项。 只有已配置的连接的组织中的用户可以请求从所有配置的组织向用户显示的访问包。 |
-    | **所有用户（所有已连接的组织 + 任何新外部用户）** | 如果 internet 上的任何用户应该能够请求此访问包，请选择此选项。  如果用户不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 自动创建的连接的组织将处于 "已 **建议** " 状态。 有关建议状态的详细信息，请参阅 [已连接组织的状态属性](entitlement-management-organization.md#state-properties-of-connected-organizations)。 |
+    | **所有配置的已连接组织** | 如果所有配置的已连接组织中的用户都可以请求此访问包，请选择此选项。 只有配置的已连接的组织中的用户才能请求对所有已配置组织的用户显示的访问包。 |
+    | **所有用户（所有已连接的组织 + 任何新外部用户）** | 如果 Internet 上的任何用户都应该能够请求此访问包，请选择此选项。  如果他们不属于目录中的已连接组织，则在请求包时将自动为其创建连接的组织。 自动创建的已连接组织将处于“建议”状态。 有关建议状态的详细信息，请参阅[连接的组织的状态属性](entitlement-management-organization.md#state-properties-of-connected-organizations)。 |
 
     已连接的组织是与你有关系的外部 Azure AD 目录或域。
 
@@ -197,6 +197,8 @@ ms.locfileid: "102211645"
     ![访问包 - 策略 - 启用策略设置](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
 1. 单击“下一步”  。
+
+1. 如果希望要求请求者在请求访问访问包时提供额外信息，请使用[在 Azure AD 权利管理中更改访问包的审批和请求者信息（预览）设置。](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview)中的步骤来配置请求者信息（预览）。
 
 1. 配置生命周期设置。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: daperlov
 ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386486"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure 数据工厂中的增量格式
@@ -37,7 +37,7 @@ ms.locfileid: "100386486"
 | 压缩类型 | delta 表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否应该以最佳方式压缩生成的文件。 | 如果指定了 `compressedType`，则为必需项。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 按时间顺序查看 | 选择是否查询 delta 表的旧快照 | 否 | 按时间戳查询：Timestamp <br> 按版本查询：Integer | timestampAsOf <br> versionAsOf |
-| 允许找不到文件 | 如果为 true，在找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+| 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
 
 #### <a name="import-schema"></a>导入架构
 
@@ -74,7 +74,7 @@ source(output(movieId as integer,
 | 压缩类型 | delta 表的压缩类型 | 否 | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | 压缩级别 | 选择压缩是否尽快完成，或者是否应该以最佳方式压缩生成的文件。 | 如果指定了 `compressedType`，则为必需项。 | `Optimal` 或 `Fastest` | compressionLevel |
 | 清空 | 以小时为单位指定旧版本表的保留期阈值。 小于等于 0 的值默认为 30 天 | 是 | Integer | vacuum |
-| Update 方法 | 指定在 delta lake 上允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | 可删除 <br> 可插入 <br> 可更新 <br> merge |
+| Update 方法 | 指定在 delta lake 上允许哪些更新操作。 对于不插入的方法，需要执行前面的更改行转换才能标记行。 | 是 | `true` 或 `false` | deletable <br> insertable <br> 可更新 <br> merge |
 
 ### <a name="delta-sink-script-example"></a>Delta 接收器脚本示例
 

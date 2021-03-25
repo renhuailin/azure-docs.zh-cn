@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936497"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
@@ -42,7 +42,7 @@ ms.locfileid: "88936497"
 
 请注意，可以筛选报告，以便仅显示异常。
 
-*没有显示异常？请参阅[捕获异常](#exceptions)。*
+*没有显示异常？请参阅 [捕获异常](#exceptions)。*
 
 单击异常报告，显示器堆栈跟踪。
 单击堆栈跟踪中的行引用，打开相关代码文件。
@@ -63,7 +63,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 
 **或者，** 可以切换到顶部的“异常”选项卡，从异常的总体视图开始，而不是查看特定失败操作的异常： 这里可以看到为所监视的应用收集的所有异常。
 
-*没有显示异常？请参阅[捕获异常](#exceptions)。*
+*没有显示异常？请参阅 [捕获异常](#exceptions)。*
 
 
 ## <a name="custom-tracing-and-log-data"></a>自定义跟踪和日志数据
@@ -97,8 +97,8 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 
 方法：
 
-* 通过在异常处理程序中插入代码来**显式记录异常**，从而报告这些异常。
-* 通过配置 ASP.NET 框架**自动捕获异常**。 框架类型不同，必要的附加内容也不同。
+* 通过在异常处理程序中插入代码来 **显式记录异常**，从而报告这些异常。
+* 通过配置 ASP.NET 框架 **自动捕获异常**。 框架类型不同，必要的附加内容也不同。
 
 ## <a name="reporting-exceptions-explicitly"></a>显式报告异常
 最简单的方法是在异常处理程序中插入对 TrackException() 的调用。
@@ -209,7 +209,7 @@ public class GoodController : ApiController
 * 在应用程序启动过程中引发的异常。
 * 在后台任务中引发的异常。
 
-仍需要手动跟踪应用程序*处理*的所有异常。
+仍需要手动跟踪应用程序 *处理* 的所有异常。
 源自控制器的未经处理异常通常会导致 500“内部服务器错误”响应。 如果此类响应是由于处理异常而手动构造的（或根本没有异常），则可在 `ResultCode` 为 500 的相应请求遥测中跟踪它，但是 Application Insights SDK 无法跟踪相应异常。
 
 ### <a name="prior-versions-support"></a>以前版本支持
@@ -301,7 +301,7 @@ public class GoodController : ApiController
 * 在应用程序启动过程中引发的异常。
 * 在后台任务中引发的异常。
 
-仍需要手动跟踪应用程序*处理*的所有异常。
+仍需要手动跟踪应用程序 *处理* 的所有异常。
 源自控制器的未经处理异常通常会导致 500“内部服务器错误”响应。 如果此类响应是由于处理异常而手动构造的（或根本没有异常），则可在 `ResultCode` 为 500 的相应请求遥测中跟踪它，但是 Application Insights SDK 无法跟踪相应异常。
 
 ### <a name="prior-versions-support"></a>以前版本支持

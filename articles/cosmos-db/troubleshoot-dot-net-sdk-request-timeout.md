@@ -4,17 +4,17 @@ description: 了解如何诊断和修复 .NET SDK 请求超时异常。
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/06/2020
+ms.date: 03/05/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8d448cf335f328b5ae55579fd30127ef0e37e9d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: c8d35f7c666562022f503b2777f30f84193d0231
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340492"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439997"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>诊断和排查 Azure Cosmos DB .NET SDK 请求超时异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,6 +42,22 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 ### <a name="high-cpu-utilization"></a>CPU 利用率较高
 最常见的情况是 CPU 利用率较高。 为实现最佳延迟，CPU 利用率应大约为 40%。 将时间间隔设为 10 秒来监视最大 CPU 利用率（而不是平均利用率）。 对于可能会为单个查询执行多个连接的跨分区查询，更常见的情况是出现 CPU 峰值。
 
+如果错误包含 `TransportException` 信息，它可能还包含 `CPU History`：
+
+```
+CPU history: 
+(2020-08-28T00:40:09.1769900Z 0.114), 
+(2020-08-28T00:40:19.1763818Z 1.732), 
+(2020-08-28T00:40:29.1759235Z 0.000), 
+(2020-08-28T00:40:39.1763208Z 0.063), 
+(2020-08-28T00:40:49.1767057Z 0.648), 
+(2020-08-28T00:40:59.1689401Z 0.137), 
+CPU count: 8)
+```
+
+* 如果 CPU 度量超过 70%，则超时可能是由于 CPU 耗尽导致的。 在这种情况下，解决方法是调查 CPU 利用率较高的源并使其减少，或将计算机扩展到更大的资源大小。
+* 如果 CPU 度量不是每 10 秒进行一次（例如，间隔或测量时间指示两次度量之间的时间更长），那么原因可能是“线程不足”。 在这种情况下，解决方法是调查线程不足（可能锁定的线程）的源，或将计算机扩展到更大的资源大小。
+
 #### <a name="solution"></a>解决方案：
 应纵向扩展或横向扩展使用 SDK 的客户端应用程序。
 
@@ -67,7 +83,7 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 遵循[性能提示](performance-tips-dotnet-sdk-v3-sql.md#sdk-usage)，并在整个过程中使用单个 DocumentClient 实例。
 
 ### <a name="hot-partition-key"></a>热分区键
-Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 存在热分区时，物理分区上的一个或多个逻辑分区键会消耗物理分区的所有请求单位/秒 (RU/s)。 同时，将无法使用其他物理分区上的 RU/s。 故障表现是，所消耗的 RU/s 总数将小于数据库或容器上整体预配的 RU/s，但针对热逻辑分区键仍将显示请求限制 (429s)。 使用 [规范化的 RU 消耗指标](monitor-normalized-request-units.md) 来查看工作负荷是否遇到热分区。 
+Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 存在热分区时，物理分区上的一个或多个逻辑分区键会消耗物理分区的所有请求单位/秒 (RU/s)。 同时，将无法使用其他物理分区上的 RU/s。 故障表现是，所消耗的 RU/s 总数将小于数据库或容器上整体预配的 RU/s，但针对热逻辑分区键仍将显示请求限制 (429s)。 使用[规范化 RU 使用量指标](monitor-normalized-request-units.md)来查看工作负载是否遇到热分区。 
 
 #### <a name="solution"></a>解决方案：
 选择均匀分配请求量和存储的适当分区键。 了解如何[更改分区键](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/)。

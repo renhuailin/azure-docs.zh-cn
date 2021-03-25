@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078894"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
@@ -20,7 +20,7 @@ ms.locfileid: "93078894"
 ## <a name="azure-portal"></a>Azure 门户
 在 [Azure 门户](https://portal.azure.com/)中，可创建和删除服务器、监控服务器资源、更改大小和管理有权访问服务器的人员。  如果遇到问题，可提交支持请求。
 
-![屏幕截图，显示了可在其中创建和删除服务器、监视服务器资源、更改大小和管理有权访问服务器的用户的 Azure 门户。](./media/analysis-services-manage/aas-manage-portal.png)
+![此屏幕截图显示了 Azure 门户，可以在其中创建和删除服务器、监视服务器资源、更改大小，并可管理有权访问服务器的人员。](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 就像连接到自身组织中的服务器实例一样，在 Azure 中连接到服务器。 可在 SSMS 中执行许多相同的任务，例如处理数据或创建处理脚本、管理角色和使用 PowerShell。
@@ -49,7 +49,7 @@ ms.locfileid: "93078894"
 
     选择“Windows 身份验证”  ，以使用 Windows 域\用户名和密码凭据。
 
-    **Active Directory 密码身份验证** ，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
+    **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
 
     选择“Active Directory - 通用且具有 MFA 支持”  ，以使用[非交互式或多重身份验证](../azure-sql/database/authentication-mfa-ssms-overview.md)。 
    

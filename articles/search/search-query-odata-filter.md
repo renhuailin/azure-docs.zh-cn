@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934848"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
@@ -50,13 +50,13 @@ boolean_expression ::=
 variable ::= identifier | field_path
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
 
 布尔表达式的类型包括：
 
@@ -78,7 +78,7 @@ variable ::= identifier | field_path
 | 组 | 运算符 |
 | --- | --- |
 | 逻辑运算符 | `not` |
-| 比较运算符 | `eq`、`ne`、`gt`、`lt`、`ge`、`le` |
+| 比较运算符 | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
 | 逻辑运算符 | `and` |
 | 逻辑运算符 | `or` |
 
@@ -101,7 +101,7 @@ variable ::= identifier | field_path
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 ```
 
-发生此错误的原因是，运算符仅与 `Rating` 类型的 `Edm.Int32` 字段相关联，而不与整个比较表达式相关联。 解决方法是将 `not` 的操作数括在括号中：
+发生此错误的原因是，运算符仅与 `Edm.Int32` 类型的 `Rating` 字段相关联，而不与整个比较表达式相关联。 解决方法是将 `not` 的操作数括在括号中：
 
 ```odata-filter-expr
     not (Rating gt 5)
@@ -114,7 +114,7 @@ variable ::= identifier | field_path
 可以发送到 Azure 认知搜索的筛选表达式的大小和复杂性存在限制。 限制大致基于筛选器表达式中的子句数。 一条合理的指导原则是，如果存在数百个子句，则存在超限的风险。 我们建议正确设计应用程序，使之不会生成大小不受限制的筛选器。
 
 > [!TIP]
-> 使用 [ `search.in` 函数](search-query-odata-search-in-function.md)而不是相等性比较的较长析取可帮助避免超出筛选子句限制，因为一个函数调用算作一个子句。
+> 使用 [`search.in` 函数](search-query-odata-search-in-function.md)而不是相等性比较的较长析取可帮助避免超出筛选子句限制，因为一个函数调用算作一个子句。
 
 ## <a name="examples"></a>示例
 
@@ -190,7 +190,7 @@ variable ::= identifier | field_path
     $filter=Description eq null
 ```
 
-查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 这些短语包含空格，而空格是默认的分隔符。 可将单引号中的备用分隔符指定为第三个字符串参数：  
+查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 这些短语包含空格，而空格是默认的分隔符。 可以将单引号中的备用分隔符指定为第三个字符串参数：  
 
 ```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
@@ -214,7 +214,7 @@ variable ::= identifier | field_path
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 ```
 
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
+查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](/rest/api/searchservice/search-documents)相同。
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
@@ -232,7 +232,7 @@ variable ::= identifier | field_path
     $filter=not search.ismatch('luxury')
 ```
 
-查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `HotelName` 和 `Description` 字段执行。 仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 的酒店。 为了清楚地表明这些文档与表达式的任何评分部分都不匹配，它们返回的分数等于零。
+查找包含短语“ocean view”或评分等于 5 分的文档。 `search.ismatchscoring` 查询仅针对 `HotelName` 和 `Description` 字段执行。 仅与析取的第二个子句匹配的文档也将被返回，即 `Rating` 等于 5 分的酒店。 为了清楚地表明这些文档与表达式的任何评分部分都不匹配，它们返回的分数等于零。
 
 ```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5

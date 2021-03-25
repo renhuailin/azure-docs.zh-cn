@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
 ms.openlocfilehash: eed7a304bdd57846cd038cc9bf9a67e8150ca505
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100392453"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
@@ -82,7 +82,7 @@ ms.locfileid: "100392453"
 
     ![查看管道](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. 选择“调试”，输入“参数”，然后选择“完成”。
+7. 选择“调试”，输入 **参数**，然后选择“完成”。  
 
     ![单击“调试”****](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 

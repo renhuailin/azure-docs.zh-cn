@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945762"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434655"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure Resource Manager 的开发工具
 
@@ -141,7 +141,7 @@ help *azurehdinsight*
 
 **与群集标识相关的 cmdlet：**
 
-* **AzHDInsightClusterIdentity**：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **Add-AzHDInsightClusterIdentity**：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>示例
 创建群集 
@@ -238,7 +238,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 
 | 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
-| 用于 .NET 的 Azure HDInsight SDK|请参阅[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
+| 用于 .NET 的 Azure HDInsight SDK|请参阅[用于 .NET 的 Azure HDInsight SDK](/dotnet/api/overview/azure/hdinsight) |
 | 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码片段使用交互式身份验证方法。 |
 | 配合使用 Azure Active Directory 与 .NET SDK 以非交互方式对应用程序进行身份验证 |请参阅[为 HDInsight 创建非交互式应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作业 |请参阅[提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

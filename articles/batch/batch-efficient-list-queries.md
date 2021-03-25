@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88933508"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
@@ -63,7 +63,7 @@ filter 字符串包含一个或多个表达式，其中一个表达式包含属�
 
 此示例性 filter 字符串仅列出正在运行的“呈现”任务：`(state eq 'running') and startswith(id, 'renderTask')`。
 
-### <a name="select"></a>Select
+### <a name="select"></a>选择
 
 select 字符串用于限制为每个项返回的属性值。 指定以逗号分隔的属性名称列表，并且只为查询结果中的项返回这些属性值。可指定正在查询的实体类型的任何属性。
 

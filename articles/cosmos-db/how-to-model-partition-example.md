@@ -9,10 +9,10 @@ ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185812"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
@@ -43,7 +43,7 @@ ms.locfileid: "98185812"
 
 在开始之前，让我们通过标识解决方案的访问模式，来为初始规范提供某种结构。 设计 Azure Cosmos DB 的数据模型时，必须了解模型需要为哪些请求提供服务，以确保模型能够有效地为这些请求提供服务。
 
-为了使整体过程更易于执行，我们将这些不同请求归类为命令或查询，从 [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) 中借用一些词汇，其中的命令是写入请求 (也就是说，要更新系统) 和查询为只读请求。
+为使整个过程更易于遵循，我们借用了 [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) 中的某个词汇表，将这些不同的请求分类为命令或查询，其中，命令表示写入请求（即，更新系统的意图），查询表示只读的请求。
 
 下面是平台必须公开的请求列表：
 
@@ -60,7 +60,7 @@ ms.locfileid: "98185812"
 
 在此阶段，我们尚未考虑每个实体（用户、帖子等）将要包含的详细信息。 针对关系存储进行设计时，此步骤往往是要处理的最初几个步骤之一，因为我们需要确定这些实体在表、列、外键等方面如何进行转换。对于在写入时不会实施任何架构的文档数据库，基本上不必要予以考虑。
 
-必须从一开始就标识访问模式的主要原因在于，请求列表将会成为我们的测试套件。 每当循环访问数据模型时，我们都会遍历每个请求，并检查其性能和可伸缩性。 计算每个模型中使用的请求单位并对它们进行优化。 所有这些模型都使用默认的索引策略，你可以通过索引特定属性来覆盖该策略，这样可以进一步提高 RU 消耗和延迟时间。
+必须从一开始就标识访问模式的主要原因在于，请求列表将会成为我们的测试套件。 每当循环访问数据模型时，我们都会遍历每个请求，并检查其性能和可伸缩性。 我们计算每个模型中消耗的请求单位并对其进行优化。 所有这些模型都使用默认索引策略，你可以通过为特定属性编制索引来覆盖该策略，这可以进一步改善 RU 消耗量和延迟。
 
 ## <a name="v1-a-first-version"></a>V1：第一个版本
 

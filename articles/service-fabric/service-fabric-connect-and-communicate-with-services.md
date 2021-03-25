@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576292"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
@@ -161,7 +161,7 @@ Azure 中的 Service Fabric 群集位于 Azure 负载均衡器之后。 发送�
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services：内置通信 API 选项
 Reliable Services 框架附带几个预建的通信选项。 可以根据所选的编程模型、通信框架和编写服务时使用的编程语言决定哪个选项最适合自己。
 
-* **无特定协议：**  如果没有特定的通信框架，但想要快速启动和运行，则 "理想" 选项为 " [服务远程处理](service-fabric-reliable-services-communication-remoting.md)"，它允许对 Reliable Services 和 Reliable Actors 执行强类型远程过程调用。 这是服务通信入门最简单、最快捷的方法。 服务远程处理可处理服务地址的解析、连接、重试和错误处理。 这适用于 C# 和 Java 应用程序。
+* **无特定协议：** 如果没有选择特定的通信框架，但想要快速启动并运行某个程序，则理想之选是[服务远程处理](service-fabric-reliable-services-communication-remoting.md)，此项允许对 Reliable Services 和 Reliable Actors 进行强类型远程过程调用。 这是服务通信入门最简单、最快捷的方法。 服务远程处理可处理服务地址的解析、连接、重试和错误处理。 这适用于 C# 和 Java 应用程序。
 * **HTTP**：对于与语言无关的通信，HTTP 为行业标准选择提供了可在许多不同语言（Service Fabric 全都支持）中使用的工具和 HTTP 服务器。 服务可以使用提供的任何 HTTP 堆栈，包括适用于 C# 应用程序的 [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。 以 C# 编写的客户端可以利用 `ICommunicationClient` 和 `ServicePartitionClient` 类（而 Java 则可以使用 `CommunicationClient` 和 `FabricServicePartitionClient` 类）来[进行服务解析、HTTP 连接和重试循环](service-fabric-reliable-services-communication.md)。
 * **WCF**：如果具备将 WCF 用作通信框架的现有代码，则可将 `WcfCommunicationListener` 用于服务器端，并将 `WcfCommunicationClient` 和 `ServicePartitionClient` 类用于客户端。 但是，这仅适用于基于 Windows 的群集上的 C# 应用程序。 有关更多详细信息，请参阅这篇有关[通信堆栈的基于 WCF 的实现](service-fabric-reliable-services-communication-wcf.md)的文章。
 

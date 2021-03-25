@@ -3,12 +3,12 @@ title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: df1eefec782835838add0beb8939bf4ff1a8a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a8168bf22aceaf5cbdec4b1346801aa62b7aa4ee
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541265"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439827"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -40,7 +40,7 @@ ms.locfileid: "91541265"
 
 1. “符合性详细信息”窗格显示对当前策略分配最近进行的计算得出的信息。 在此示例中，发现字段“Microsoft.Sql/servers/version”为“12.0”，而策略定义预期为“14.0”。 如果资源不符合有多种原因，则此窗格将列出每个原因。
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="符合性详细信息”窗格的屏幕截图，其中显示不符合的原因：当前值为 12，目标值为 14。" border="false":::
 
    对于“auditIfNotExists”或“deployIfNotExists”策略定义，详细信息包括“details.type”属性和任何可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上一个计算资源”为定义的“详细信息”部分中的相关资源。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91541265"
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="ifNotExists 的“符合性详细信息”窗格的屏幕截图，其中包括计算的资源计数。" border="false":::
 
 > [!NOTE]
 > 为保护数据，当属性值为“secret”时，当前值显示星号。
@@ -80,7 +80,7 @@ ms.locfileid: "91541265"
 
 以下矩阵将每个可能原因映射到策略定义中的负责[条件](../concepts/definition-structure.md#conditions)：
 
-|Reason | 条件 |
+|原因 | 条件 |
 |-|-|
 |当前值必须包含目标值作为关键值。 |containsKey 或不为 notContainsKey |
 |当前值必须包含目标值。 |contains 或不为 notContains |
@@ -106,15 +106,15 @@ ms.locfileid: "91541265"
 
 ## <a name="component-details-for-resource-provider-modes"></a>资源提供程序模式的组件详细信息
 
-对于具有 [资源提供程序模式](../concepts/definition-structure.md#resource-manager-modes)的分配，请选择 " _不符合_ " 资源以打开更详细的视图。 在 " **组件符合性** " 选项卡下，在分配的策略上，特定于资源提供程序模式的其他信息显示了 _不符合_的 **组件** 和 **组件 ID**。
+对于使用[资源提供程序模式](../concepts/definition-structure.md#resource-manager-modes)的分配，请选择不合规的资源，以打开更详细的视图。 在“组件合规性”选项卡下，显示了特定于已分配策略上的资源提供程序模式的其他信息，其中显示了不合规的组件和组件 ID 。
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="资源提供程序模式分配“组件合规性”选项卡及合规性详细信息的屏幕截图。" border="false":::
 
 ## <a name="compliance-details-for-guest-configuration"></a>来宾配置的符合性详细信息
 
-对于 "_来宾配置_" 类别中的_auditIfNotExists_策略，可能会在虚拟机中评估多个设置，并且需要查看每个设置的详细信息。 例如，如果你正在审核一个密码策略列表，其中只有一个密码策略的状态为“不符合”，这时你需要了解具体哪些密码策略不符合以及不符合的原因。
+对于“来宾配置”类别中的 auditIfNotExists 策略，虚拟机内可能有多个计算设置，你需要查看各个设置的详细信息 。 例如，如果你正在审核一个密码策略列表，其中只有一个密码策略的状态为“不符合”，这时你需要了解具体哪些密码策略不符合以及不符合的原因。
 
-你还可能无权直接登录到虚拟机，但需要报告虚拟机为何不 _合规_。
+你也可能无权直接登录到虚拟机，但需要报告虚拟机不符合的原因。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -122,80 +122,15 @@ ms.locfileid: "91541265"
 
 在“符合性详细信息”窗格视图中，选择“上次计算的资源”链接。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义符合性详细信息的屏幕截图。" border="false":::
 
 “来宾分配”页显示所有可用的符合性详细信息。 视图中的每一行都代表在计算机中执行的计算。 “原因”列中显示描述来宾分配“不符合”原因的短语。 例如，如果要审核密码策略，“原因”列将显示包含每个设置当前值的文本。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-还可以在 Azure PowerShell 上查看符合性详细信息。 首先，请确保已安装来宾配置模块。
-
-```azurepowershell-interactive
-Install-Module Az.GuestConfiguration
-```
-
-可以使用以下命令查看 VM 所有来宾分配的当前状态：
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
-```
-
-```output
-PolicyDisplayName                                                         ComplianceReasons
------------------                                                         -----------------
-Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
-Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
-```
-
-若要仅查看描述 VM 不符合原因的原因短语，只需返回原因子属性。
-
-```azurepowershell-interactive
-Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
-```
-
-```output
-The following applications are not installed: '<name>'.
-```
-
-还可以输出计算机范围内来宾分配的符合性历史记录。 此命令的输出包含 VM 的每个报告的详细信息。
-
-> [!NOTE]
-> 输出可能会返回大量数据。 建议将输出存储在变量中。
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
-<truncated>
-```
-
-若要简化视图，请使用“ShowChanged”参数。 此命令的输出仅包括遵循符合性状态更改的报告。
-
-```azurepowershell-interactive
-$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
-$guestHistory
-```
-
-```output
-PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
-                                                                                                                                                                  tId
------------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
-Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
-Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
-```
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="来宾分配符合性详细信息的屏幕截图。" border="false":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>更改历史记录（预览版）
 
-作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改 Azure 资源管理器属性时会触发更改检测。
+作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的 _视觉差异_。 添加、删除或修改 Azure 资源管理器属性时，就会触发更改检测。
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索并选择“策略”，以便启动 Azure Policy 服务。 
 
@@ -205,13 +140,13 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡 。 此时会显示检测到的更改的列表（如果存在）。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="“资源合规性”页上的“更改历史记录”选项卡和检测到的更改时间的屏幕截图。" border="false":::
 
 1. 选择其中一个检测到的更改。 资源的“视觉差异”在“更改历史记录”页上显示。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="“资源符合性”选项卡上的“查看符合性详细信息”链接的屏幕截图。" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="“更改历史记录”页上属性前后状态的更改历史记录视觉差异的屏幕截图。" border="false":::
 
-_视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
+_视觉差异_ 可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
 
 更改历史记录数据由 [Azure Resource Graph](../../resource-graph/overview.md) 提供。 若要在 Azure 门户之外查询此信息，请参阅[获取资源更改](../../resource-graph/how-to/get-resource-changes.md)。
 

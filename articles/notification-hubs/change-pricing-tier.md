@@ -14,10 +14,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87562763"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>更改 Azure 通知中心命名空间的定价层
@@ -28,7 +28,7 @@ ms.locfileid: "87562763"
 
 在 Azure 通知中心内，通知中心是最小的资源/实体。 它通常映射到一个应用程序，可以为每个能够用于应用的平台通知系统 (PNS) 保留一个证书。 该应用程序可以是一个混合应用程序，也可以是一个跨平台的本机应用程序。
 
-*命名空间*是通知中心的集合。 每个命名空间通常包含多个中心，这些中心是相关的，用于特定目的。 例如，可以有三个不同的命名空间，分别用于开发、测试和生产。
+*命名空间* 是通知中心的集合。 每个命名空间通常包含多个中心，这些中心是相关的，用于特定目的。 例如，可以有三个不同的命名空间，分别用于开发、测试和生产。
 
 可以将命名空间与“免费”  、“基本”  或“标准”  定价层相关联。 对于任何命名空间，都可以使用符合要求的层。 以下部分介绍如何更改通知中心命名空间的定价层。
 
@@ -67,7 +67,7 @@ ms.locfileid: "87562763"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，选择“所有服务”  。
 3. 在“物联网”部分选择“通知中心”。  
-4. 选择通知**中心**。
+4. 选择通知 **中心**。
 5. 在左菜单上选择“定价层”。 
 6. 更改定价层，然后单击“选择”按钮  。 此操作更改中心所在命名空间的定价层设置。 因此，会在命名空间页以及所有中心页上看到新的定价层。
 

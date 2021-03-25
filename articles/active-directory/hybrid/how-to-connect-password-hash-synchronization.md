@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96858733"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
@@ -53,7 +53,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 1. 每隔两分钟，AD Connect 服务器上的密码哈希同步代理都会从 DC 请求存储的密码哈希（unicodePwd 属性）。  此请求通过用于同步 DC 之间数据的标准 [MS-DRSR](/openspecs/windows_protocols/ms-drsr/f977faaa-673e-4f66-b9bf-48c640241d47) 复制协议进行。 服务帐户必须具有“复制目录更改”和“复制所有目录更改”AD 权限（默认情况下，在安装时授予），才能获取密码哈希。
 2. 在发送前，DC 将使用密钥（即 RPC 会话密钥的 [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) 哈希）和 salt 对 MD4 密码哈希进行加密。 然后，它通过 RPC 将结果发送到密码哈希同步代理。 DC 还使用 DC 复制协议将 salt 传递给同步代理，因此该代理能够解密信封。
-3. 密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理永远无权访问明文密码。 密码哈希同步代理使用 MD5 严格地与 DC 的复制协议兼容性，并且仅在 DC 和密码哈希同步代理之间使用。
+3. 密码哈希同步代理获得加密的信封后，将使用 [MD5CryptoServiceProvider](/dotnet/api/system.security.cryptography.md5cryptoserviceprovider)和 salt 生成密钥，以便将收到的数据重新解密为其原始的 MD4 格式。 密码哈希同步代理永远无权访问明文密码。 密码哈希同步代理使用 MD5 完全是为了实现与 DC 的复制协议兼容性，并仅在本地的 DC 和密码哈希同步代理之间使用。
 4. 密码哈希同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5. 密码哈希同步代理通过将每个用户的 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
 6. 然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](/dotnet/api/system.security.cryptography.hmacsha256) 键控哈希算法的 1000 次迭代。 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
 ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492380"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure Database for PostgreSQL 服务器
@@ -39,7 +39,7 @@ ms.locfileid: "96492380"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="显示创建单个服务器的基本选项卡的屏幕截图。":::
 
-   |设置|建议的值|描述|
+   |设置|建议的值|说明|
    |:---|:---|:---|
    |订阅|订阅名称|选择所需的 Azure 订阅。|
    |资源组| myresourcegroup| 新的资源组，或订阅中的现有资源组。|

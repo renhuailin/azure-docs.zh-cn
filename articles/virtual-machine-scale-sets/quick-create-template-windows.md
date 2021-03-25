@@ -10,10 +10,10 @@ ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
 ms.openlocfilehash: 03863171cb05c0557611fb8cd3c0ade667e7d79e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88650071"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-arm-template"></a>快速入门：使用 ARM 模板创建 Windows 虚拟机规模集
@@ -119,7 +119,7 @@ Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、规模集，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
+如果不再需要资源组、规模集，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令将其删除。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob

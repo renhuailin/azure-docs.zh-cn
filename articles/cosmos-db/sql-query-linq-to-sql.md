@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: tisande
 ms.openlocfilehash: 122c95fe9ac017ad7a6957dcdb8323837be34f21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96545377"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 如果要获取从 LINQ 转换的 SQL 查询，请对生成的 `IQueryable` 对象使用 `ToString()` 方法。 以下内容假设你对 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) 有一个基本的了解。 除 LINQ 外，Azure Cosmos DB 还支持与 SQL API 一起使用 [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli) 。
+Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 如果要获取从 LINQ 转换的 SQL 查询，请对生成的 `IQueryable` 对象使用 `ToString()` 方法。 以下内容假设你对 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) 有一个基本的了解。 除 LINQ 外，Azure Cosmos DB 还支持适用于 SQL API 的 [Entity Framework Core](/ef/core/providers/cosmos/?tabs=dotnet-core-cli)。
 
 查询提供程序类型系统仅支持 JSON 基元类型：数字、布尔值、字符串和 null。
 

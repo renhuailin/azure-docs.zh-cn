@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: d39ec93e0ad03d6c860bae9d0790e860c95457a5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575561"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在执行组件服务中实现服务级功能
@@ -42,7 +42,7 @@ CompletableFuture<?> MyActorMethod()
 }
 ```
 
-与所有 Reliable Services 一样，执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须将执行组件类型注册到执行组件服务。 `ActorRuntime` 注册方法将为执行组件执行此操作。 最简单的情况是，只需注册执行组件类型，然后执行组件服务就会使用默认的设置。
+与所有 Reliable Services 一样，执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须将执行组件类型注册到执行组件服务。 `ActorRuntime` 注册方法为执行组件执行此操作。 最简单的情况是，只需注册执行组件类型，然后执行组件服务就会使用默认的设置。
 
 ```csharp
 static class Program
@@ -215,7 +215,7 @@ public class Program
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
 * [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [执行组件 API 参考文档](/previous-versions/azure/dn971626(v=azure.100))
-* [.NET 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
