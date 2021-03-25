@@ -1,15 +1,15 @@
 ---
 title: Azure Functions 定价
-description: 了解 Azure Functions 计费的方式。
+description: 了解 Azure Functions 的计费方式。
 author: craigshoemaker
 ms.author: cshoe
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.openlocfilehash: cde1c5ee45edb4472bed992ee9ac4075f8ad05ff
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95002146"
 ---
 # <a name="azure-functions-pricing"></a>Azure Functions 定价

@@ -12,16 +12,16 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
 ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511699"
 ---
-# <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>在专用 SQL 池上启用 Synapse 工作区功能 (以前的 SQL DW) 在你的区域中。
+# <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>在区域中的专用 SQL 池（以前称为 SQL DW）上启用 Synapse 工作区功能。
 
 ## <a name="regions-not-supported"></a>不支持的区域 
-下表汇总了在现有专用 SQL 池上启用 Synapse 工作区功能的功能 (以前的 SQL DW) 不受支持的区域。 可返回查看，了解所在地区的可用时间。
+下表按区域（其中不支持在现有专用 SQL 池（以前称为 SQL DW）上启用 Synapse 工作区功能）进行了汇总。 可返回查看，了解所在地区的可用时间。
 
 \* 表示该区域的特定时间表当前不可用。
 
@@ -39,7 +39,7 @@ ms.locfileid: "97511699"
  
  
 > [!NOTE]
-> 上述区域列表仅与启用 Synapse 工作区功能的区域当前不可用相关。 
+> 上面的区域列表仅与当前不提供启用 Synapse 工作区功能的区域相关。 
 
 ## <a name="next-steps"></a>后续步骤
-[Synapse 工作区和 Studio](../get-started.md)入门。
+[Synapse 工作区和 Studio](../get-started.md) 入门。

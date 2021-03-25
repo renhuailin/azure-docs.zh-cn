@@ -9,16 +9,16 @@ ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1e7c124da91a947a0ac8426ce8c92347396236c4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004426"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- 返回一个布尔值，该值指示指定的 GeoJSON 点、多边形、MultiPolygon 或 LineString 表达式是否有效。  
+ 返回一个布尔值，该值指示指定的 GeoJSON 点、多边形、多多边形或 LineString 表达式是否有效。  
   
 ## <a name="syntax"></a>语法
   

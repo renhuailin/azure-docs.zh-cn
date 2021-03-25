@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 18a0037f2af221101b4202883e5c145471af1183
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455045"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyara-cx-assurance-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cyara CX Assurance Platform 的集成
@@ -47,8 +47,8 @@ ms.locfileid: "92455045"
 若要配置 Cyara CX Assurance Platform 与 Azure AD 的集成，需要从库中将 Cyara CX Assurance Platform 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Cyara CX Assurance Platform”。
 1. 从结果面板中选择“Cyara CX Assurance Platform”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -76,20 +76,20 @@ ms.locfileid: "92455045"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值：
+1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.cyaraportal.us/cyarawebidentity/identity/<provider>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://www.cyaraportal.us/cyarawebidentity/identity/<provider>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.cyaraportal.us/cyarawebidentity/identity/<provider>/Acs`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Cyara CX Assurance Platform 客户端支持团队](mailto:support@cyara.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“SAML 签名证书”部分中，单击“编辑”按钮以打开“SAML 签名证书”对话框。
+1. 在“SAML 签名证书”  部分中，单击“编辑”  按钮以打开“SAML 签名证书”  对话框。
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-1. 在“SAML 签名证书”部分，复制“指纹值”并将其保存在计算机上。 
+1. 在“SAML 签名证书”部分，复制“指纹值”并将其保存在计算机上。  
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -105,8 +105,8 @@ ms.locfileid: "92455045"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
@@ -119,12 +119,12 @@ ms.locfileid: "92455045"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-cyara-cx-assurance-platform-sso"></a>配置 Cyara CX Assurance Platform SSO

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
 ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397716"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>创建证书以允许 Azure 应用程序网关中的后端
@@ -35,7 +35,7 @@ ms.locfileid: "93397716"
 
 从 TLS/SSL 证书中导出公钥 .cer 文件（不是私钥）。 以下步骤可帮助你导出证书的 .cer 文件，其格式为 Base-64 编码的 X.509(.CER)：
 
-1. 若要获取证书 .cer 文件，请打开“管理用户证书”。 找到该证书（通常位于“证书 - 当前用户”>“个人”>“证书”中），并单击右键。 单击“所有任务”，并单击“导出”。 此操作将打开“证书导出向导” 。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”。
+1. 若要获取证书 .cer 文件，请打开“管理用户证书”。 找到该证书（通常位于“证书 - 当前用户”>“个人”>“证书”中），并单击右键。 单击“所有任务”，并单击“导出”。 此操作将打开“证书导出向导”  。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”。
 
    ![屏幕截图显示了证书管理器，其中已选择“证书”并依次选中了上下文菜单的“所有任务”、“导出”。](./media/certificates-for-backend-authentication/export.png)
 
@@ -43,15 +43,15 @@ ms.locfileid: "93397716"
 
    ![导出证书](./media/certificates-for-backend-authentication/exportwizard.png)
 
-3. 选择“否，不导出私钥”，并单击“下一步”。
+3. 选择“否，不导出私钥”  ，并单击“下一步”  。
 
    ![不要导出私钥](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. 在“导出文件格式”页上，选择“Base-64 编码的 X.509 (.CER)”，并单击“下一步”。
+4. 在“导出文件格式”  页上，选择“Base-64 编码的 X.509 (.CER)”  ，并单击“下一步”  。
 
    ![Base-64 编码](./media/certificates-for-backend-authentication/base64.png)
 
-5. 对于“要导出的文件”，“浏览”到要将证书导出的目标位置。 在“文件名”中，为证书文件命名。 然后单击“下一步”。
+5. 对于“要导出的文件”  ，“浏览”  到要将证书导出的目标位置。 在“文件名”  中，为证书文件命名。 然后单击“下一步”。
 
    ![屏幕截图显示了“证书导出向导”，在其中指定要导出的文件。](./media/certificates-for-backend-authentication/browse.png)
 

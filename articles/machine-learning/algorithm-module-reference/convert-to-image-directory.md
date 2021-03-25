@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555577"
 ---
 # <a name="convert-to-image-directory"></a>转换为图像目录
@@ -48,7 +48,7 @@ ms.locfileid: "94555577"
     ![图像示例数据集](./media/module/image-sample-dataset.png)
 
     > [!NOTE]
-    > 对于推理，image dataset 文件夹只需要包含未分类的图像。
+    > 对于推理，图像数据集文件夹仅需要包含未分类的图像。
 
 1. 在工作区中[将图像数据集注册为文件数据集](../how-to-create-register-datasets.md)，因为“转换为图像目录”模块的输入必须是文件数据集。
 

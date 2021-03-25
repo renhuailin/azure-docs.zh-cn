@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Edcor 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Edcor 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Edcor 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 04a15c3163e37e30636eefba638968c2e57c0536
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454275"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-edcor"></a>教程：Azure Active Directory 与 Edcor 集成
+# <a name="tutorial-azure-active-directory-integration-with-edcor"></a>教程：Azure Active Directory 与 Edcor 的集成
 
 本教程介绍了如何将 Edcor 与 Azure Active Directory (Azure AD) 进行集成。
 将 Edcor 与 Azure AD 集成可提供以下优势：
@@ -62,13 +62,13 @@ ms.locfileid: "92454275"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Edcor”，在结果面板中选择“Edcor”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Edcor”，在结果面板中选择“Edcor”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Edcor](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 Edcor 的 Azure AD 单一登录。 
+在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 Edcor 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Edcor 相关用户之间建立链接关系。
 
 若要配置和测试 Edcor 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -98,7 +98,7 @@ ms.locfileid: "92454275"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Edcor 域和 URL 单一登录信息](common/idp-identifier.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "92454275"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Edcor”部分，根据要求复制相应 URL  。
+6. 在“设置 Edcor”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "92454275"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -145,17 +145,17 @@ ms.locfileid: "92454275"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Edcor 的访问权限使她能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Edcor”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Edcor”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Edcor”  。
+2. 在应用程序列表中，选择“Edcor”。
 
     ![应用程序列表中的 Edcor 链接](common/all-applications.png)
 

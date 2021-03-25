@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6df1347eab57a6971fe2e39c0a55869c8f23939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317481"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>对 Azure AD Connect 中未同步的属性排除故障
@@ -67,7 +67,7 @@ ms.locfileid: "91317481"
 
 * 双击“Active Directory 连接器”  以查看连接器空间  属性。 单击“预览”  按钮，在后续对话框中单击“生成预览”  按钮。
 
-  ![显示 "连接器空间对象属性" 屏幕并突出显示 "预览" 按钮的屏幕截图。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
+  ![此屏幕截图显示了“连接器空间对象属性”屏幕，其中突出显示了“预览”按钮。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
 * 现在单击“导入属性流”  ，这会显示从 Active Directory 连接器空间  到 Metaverse  的属性流。 “同步规则”  列显示影响该属性的同步规则  。 “数据源”  列显示来自连接器空间  的属性。 “Metaverse 属性”  列显示 Metaverse  中的属性。 可以此处查找未同步的属性。 如果在此处找不到属性，则此属性未映射，必须创建新的自定义同步规则  以映射属性。
 
@@ -75,7 +75,7 @@ ms.locfileid: "91317481"
 
 * 单击左窗格中的“导出属性流”  以查看使用出站同步规则  从 Metaverse  回到 Active Directory 连接器空间  的属性流。
 
-  ![屏幕截图显示了使用出站同步规则从元节返回到 Active Directory 连接器空间的属性流。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
+  ![此屏幕截图显示了使用出站同步规则从 Metaverse 回到 Active Directory 连接器空间的属性流。](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvtocsattributeflow.png)
 
 * 同样，可以查看 Azure Active Directory 连接器空间  对象，并且可以生成预览  以查看从 Metaverse  到连接器空间  及相反方向的属性流，这样便可以调查属性为何未同步。
 

@@ -3,17 +3,17 @@ title: Azure 数据工厂管道中的分支
 description: 了解如何通过分支和链接活动控制 Azure 数据工厂中的数据流。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 111fff6e35bed9c2af9c638549362039f25def12
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 83bc90ca251fddd498dd365f1a4b00689a471475
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386010"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785659"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -452,9 +452,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 管道代码的第一个部分定义参数。
 
-* `sourceBlobContainer` 列中的一个值匹配。 源 Blob 数据集在管道中使用此参数。
-* `sinkBlobContainer` 列中的一个值匹配。 接收器 Blob 数据集在管道中使用此参数。
-* `receiver` 列中的一个值匹配。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
+* `sourceBlobContainer`. 源 Blob 数据集在管道中使用此参数。
+* `sinkBlobContainer`. 接收器 Blob 数据集在管道中使用此参数。
+* `receiver`. 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>

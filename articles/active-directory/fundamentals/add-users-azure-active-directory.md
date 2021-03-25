@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 11/12/2019
+ms.date: 03/05/2021
 ms.author: ajburnle
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996689"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594591"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -44,7 +44,7 @@ ms.locfileid: "95996689"
 
    - **用户名**。 必需。 新用户的用户名。 例如，`mary@contoso.com`。
 
-     用户名的域部分必须使用初始默认域名（ *\<yourdomainname> onmicrosoft.com*）或自定义域名（例如 *contoso.com*）。 若要详细了解如何创建自定义域名，请参阅[使用 Azure Active Directory 门户添加自定义域名](add-custom-domain.md)。
+     用户名的域名部分必须是初始默认域名“\<yourdomainname>.onmicrosoft.com”，或自定义域名（例如“contoso.com”） 。 若要详细了解如何创建自定义域名，请参阅[使用 Azure Active Directory 门户添加自定义域名](add-custom-domain.md)。
 
    - **组**。 （可选）可以将用户添加到一个或多个现有组。 也可以在以后将用户添加到组中。 有关将用户添加到组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
@@ -74,6 +74,9 @@ ms.locfileid: "95996689"
 
 可使用 Azure Active Directory 门户删除现有用户。
 
+>[!Note]
+>必须具有“全局管理员”或“用户管理员”角色分配，以删除组织中的用户。 全局管理员可以删除任何用户，包括其他管理员。 用户管理员可以删除任何非管理员用户、支持管理员和其他用户管理员。 有关详细信息，请参阅 [Azure AD 中的管理员角色权限](../roles/permissions-reference.md)。
+
 若要删除用户，请执行以下步骤：
 
 1. 使用组织的用户管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
@@ -91,7 +94,7 @@ ms.locfileid: "95996689"
 删除某个用户后，该用户使用的任何许可证可供其他用户使用。
 
 >[!Note]
->必须使用 Windows Server Active Directory 更新其授权来源为 Windows Server Active Directory 的用户的标识、联系信息或工作信息。 完成更新后，必须等待下一个同步循环完成，然后才能看到所做的更改。
+>若要更新其授权来源为 Windows Server Active Directory 的用户的标识、联系信息或工作信息，必须使用 Windows Server Active Directory。 完成更新后，必须等待下一个同步周期完成才能看到更改。
 
 ## <a name="next-steps"></a>后续步骤
 

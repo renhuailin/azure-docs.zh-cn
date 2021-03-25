@@ -4,10 +4,10 @@ description: 批处理任务完成事件参考。 无论退出代码如何，任
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 11f727b07723f32cd08130b4af17e57ede3d264f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91850885"
 ---
 # <a name="task-complete-event"></a>任务完成事件
@@ -52,7 +52,7 @@ ms.locfileid: "91850885"
 |`systemTaskVersion`|Int32|这是任务上的内部重试计数器。 批处理服务可能会在内部重试任务来解决暂时性问题。 这些问题可能包括内部计划错误或尝试恢复处于错误状态的计算节点。|
 |`requiredSlots`|Int32|运行任务所需的槽。|
 |[`nodeInfo`](#nodeInfo)|复杂类型|包含有关运行任务的计算节点的信息。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)有关详细信息，请参阅。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息，请参阅 [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`executionInfo`](#executionInfo)|复杂类型|包含有关任务执行的信息。|
 
@@ -69,7 +69,7 @@ ms.locfileid: "91850885"
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|任务所需的计算节点数。|
 
-###  <a name="constraints"></a><a name="constraints"></a> 约束
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
@@ -79,7 +79,7 @@ ms.locfileid: "91850885"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`startTime`|DateTime|任务开始运行的时间。 “Running”对应于**正在运行**状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
+|`startTime`|DateTime|任务开始运行的时间。 “Running”对应于 **正在运行** 状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
 |`endTime`|DateTime|任务完成的时间。|
 |`exitCode`|Int32|任务的退出代码。|
 |`retryCount`|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount。|

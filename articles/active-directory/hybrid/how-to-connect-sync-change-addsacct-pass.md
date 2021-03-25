@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85357505"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
@@ -42,13 +42,13 @@ AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用�
 
 3. 选择对应于密码已更改的 AD DS 帐户的 **AD 连接器**。
 
-4. 在“操作”下面，选择“属性”。  
+4. 在“操作”下面，选择“属性”。
 
-5. 在弹出对话框中，选择“连接到 Active Directory 林”  ：
+5. 在弹出对话框中，选择“连接到 Active Directory 林”：
 
-6. 在“密码”  文本框中输入 AD DS 帐户的新密码。
+6. 在“密码”文本框中输入 AD DS 帐户的新密码。
 
-7. 单击“确定”  保存新密码并关闭弹出对话框。
+7. 单击“确定”保存新密码并关闭弹出对话框。
 
 8. 在 Windows 服务控制管理器下重启 Azure AD Connect Synchronization Service。 这是为了确保从内存缓存中删除任何对旧密码的引用。
 

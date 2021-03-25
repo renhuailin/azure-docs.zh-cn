@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 58d547995d39505da18a6bca1a6c3925b95252a6
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97978778"
 ---
-若要将语音 SDK 配置为接受压缩的音频输入，请创建 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
+若要将语音 SDK 配置为接受压缩音频输入，请创建 `PullAudioInputStream` 或 `PushAudioInputStream`。 然后，从流类的实例创建 `AudioConfig`，并指定流的压缩格式。
 
 假设你的用例是将 `PullStream` 用于 `MP3` 文件。 你的代码可能如下所示：
 

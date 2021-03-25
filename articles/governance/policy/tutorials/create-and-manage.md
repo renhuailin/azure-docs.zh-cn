@@ -4,10 +4,10 @@ description: 本教程中将使用策略来强制执行标准、控制成本、�
 ms.date: 01/29/2021
 ms.topic: tutorial
 ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99221187"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
@@ -47,7 +47,7 @@ ms.locfileid: "99221187"
 
    此示例使用 Contoso 订阅。 你的订阅将有所不同。
 
-1. 可基于“范围”排除资源。 “排除”从低于“范围”级别的一个级别开始 。 “排除”是可选的，因此暂时将其留空。
+1. 可基于“范围”排除资源。 “排除”从低于“范围”级别的一个级别开始。 “排除”是可选的，因此暂时将其留空。
 
 1. 选择“策略定义”旁边的省略号打开可用定义的列表。 可以使用“内置”来筛选策略定义的 **类型**，以查看所有相关策略定义及其说明。
 

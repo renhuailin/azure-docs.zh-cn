@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Rackspace SSO 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Rackspace SSO 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Rackspace SSO 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: eed0ea075c5e9eb39810259be2aa6781a59f2f22
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511624"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 集成
+# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 的集成
 
 在本教程中，你将了解如何将 Rackspace SSO 与 Azure Active Directory (Azure AD) 进行集成。
 将 Rackspace SSO 与 Azure AD 集成可提供以下优势：
@@ -61,7 +61,7 @@ ms.locfileid: "92511624"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Rackspace SSO”  ，在结果面板中选择“Rackspace SSO”  ，单击“添加”  按钮添加该应用程序。
+4. 在搜索框中键入“Rackspace SSO”，在结果面板中选择“Rackspace SSO”，单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Rackspace SSO](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92511624"
 
 若要配置 Rackspace SSO 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Rackspace SSO”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Rackspace SSO”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "92511624"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  中，上传你可以从 [URL](https://login.rackspace.com/federate/sp.xml) 下载的 **服务提供程序元数据文件** ，然后执行以下步骤：
+4. 在“基本 SAML 配置”中，上传你可以从 [URL](https://login.rackspace.com/federate/sp.xml) 下载的 **服务提供程序元数据文件**，然后执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -127,7 +127,7 @@ ms.locfileid: "92511624"
 1. 它将引导你完成以下步骤：
     1. 创建新的标识提供者
     1. 指定在登录时用户将用来标识你的公司的电子邮件域。
-    1. 上传之前从 Azure 控制面板下载的 **联合元数据 XML** 。
+    1. 上传之前从 Azure 控制面板下载的 **联合元数据 XML**。
 
 这将正确配置 Azure 和 Rackspace 进行连接所需的基本 SSO 设置。
 
@@ -139,7 +139,7 @@ ms.locfileid: "92511624"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,21 +149,21 @@ ms.locfileid: "92511624"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Rackspace SSO 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Rackspace SSO”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Rackspace SSO”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Rackspace SSO”  。
+2. 在应用程序列表中，选择“Rackspace SSO”。
 
     ![应用程序列表中的 Rackspace SSO 链接](common/all-applications.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "92511624"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "92511624"
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>在 Rackspace 控制面板中设置属性映射
 
-Rackspace 使用 **属性映射策略** 为你的单一登录用户分配 Rackspace 角色和组。 **属性映射策略** 将 Azure AD SAML 声明转换为 Rackspace 所需的用户配置字段。 可以在 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文档。 一些注意事项：
+Rackspace 使用 **属性映射策略** 为你的单一登录用户分配 Rackspace 角色和组。 **属性映射策略** 将 Azure AD SAML 声明转换为 Rackspace 所需的用户配置字段。 可以在 Rackspace [属性映射基础知识文档](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文档。 注意事项：
 
 * 如果希望使用 Azure AD 组分配可变级别的 Rackspace 访问权限，则需要在 Azure **Rackspace SSO** 单一登录设置中启用组声明。 然后，可以使用 **属性映射策略** 将那些组匹配到所需的 Rackspace 角色和组：
 
@@ -195,8 +195,8 @@ Rackspace 使用 **属性映射策略** 为你的单一登录用户分配 Racksp
 
 下面的示例 **属性映射策略** 演示了以下内容：
 1. 将 Rackspace 用户的名称设置为 `user.name` SAML 声明。 可以使用任何声明，但最常见的做法是将其设置为包含用户电子邮件地址的字段。
-1. 通过按组名称或组 UID 匹配 Azure AD 组来为用户设置 Rackspace 角色 `admin` 和 `billing:admin`。 `roles` 字段中使用了替代项 `"{0}"`，它将替换为 `remote` 规则表达式的结果。 
-1. 使用 `"{D}"` 默认替代项  让 Rackspace 通过在 SAML 交换中查找标准且已知的 SAML 声明来检索其他 SAML 字段。
+1. 通过按组名称或组 UID 匹配 Azure AD 组来为用户设置 Rackspace 角色 `admin` 和 `billing:admin`。 `roles` 字段中使用了替代项 `"{0}"`，它将替换为 `remote` 规则表达式的结果。
+1. 使用  默认替代项`"{D}"` 让 Rackspace 通过在 SAML 交换中查找标准且已知的 SAML 声明来检索额外的 SAML 字段。
 
 ```yaml
 ---
@@ -230,7 +230,7 @@ mapping:
 
 在访问面板中单击“Rackspace SSO”磁贴时，应会自动登录到设置了 SSO 的 Rackspace SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
 
-还可以使用 **Rackspace SSO** 单一登录设置中的“验证”  按钮：
+还可以使用 **Rackspace SSO** 单一登录设置中的“验证”按钮：
 
    ![SSO“验证”按钮](common/sso-validate-sign-on.png)
 

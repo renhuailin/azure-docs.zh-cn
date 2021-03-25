@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: d39ade2536b96bf5e665ecfc01e81232f2fec075
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217935"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433908"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中的预配吞吐量简介
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -94,16 +94,16 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 可对数据库或容器配置的最大预配吞吐量没有限制。
 
-### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> 当前预配的吞吐量
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> 当前的预配吞吐量
 
 可以通过 Azure 门户或 SDK 来检索容器或数据库的预配吞吐量：
 
-* .NET SDK 上的 [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true)。
+* .NET SDK 上的 [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync)。
 * Java SDK 上的 [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput)。
 
 这些方法的响应还包含容器或数据库的[最小预配吞吐量](concepts-limits.md#storage-and-database-operations)：
 
-* .NET SDK 上的 [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true)。
+* .NET SDK 上的 [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput)。
 * Java SDK 上的 [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput)。
 
 实际的最小 RU/s 可能因帐户配置而异。 但一般情况下，它为最大值：
@@ -116,7 +116,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 可以通过 Azure 门户或 SDK 来缩放容器或数据库的预配吞吐量：
 
-* .NET SDK 上的 [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)。
+* .NET SDK 上的 [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync)。
 * Java SDK 上的 [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput)。
 
 如果你 **减小预配吞吐量**，则最多可以将其减小到 [最小值](#current-provisioned-throughput)。
@@ -128,7 +128,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 你可以通过编程方式检查缩放进度，方法是：读取[当前预配的吞吐量](#current-provisioned-throughput)并使用以下项：
 
-* .NET SDK 上的 [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true)。
+* .NET SDK 上的 [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending)。
 * Java SDK 上的 [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending)。
 
 可以使用 [Azure Monitor 指标](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)来查看资源上预配吞吐量 (RU/s) 和存储的历史记录。

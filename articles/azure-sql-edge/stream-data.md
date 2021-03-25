@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392106"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Azure SQL Edge 中的数据流式处理
@@ -35,15 +35,15 @@ T-SQL 流式处理的工作方式与 [Azure 流分析](../stream-analytics/strea
 
 流分析作业包括：
 
-- **流输入** ：此项定义了要从中读取数据流的数据源的连接。 Azure SQL Edge 目前支持以下流输入类型：
+- **流输入**：此项定义了要从中读取数据流的数据源的连接。 Azure SQL Edge 目前支持以下流输入类型：
     - Edge 中心
     - Kafka（对 Kafka 输入的支持目前仅适用于 Azure SQL Edge 的 Intel/AMD64 版本。）
 
-- **流输出** ：此项定义了要将数据流写入到其中的数据源的连接。 Azure SQL Edge 目前支持以下流输出类型
+- **流输出**：此项定义了要将数据流写入到其中的数据源的连接。 Azure SQL Edge 目前支持以下流输出类型
     - Edge 中心
     - SQL（SQL 输出可以是 Azure SQL Edge 实例中的本地数据库，也可以是远程 SQL Server 或 Azure SQL 数据库。） 
 
-- **流查询** ：此项定义了转换、聚合、筛选器、排序和联接，在将输入流写入到流输出之前，需要将这些内容应用到输入流。 流查询基于流分析使用的同一查询语言。 有关详细信息，请参阅[流分析查询语言](/stream-analytics-query/stream-analytics-query-language-reference)。
+- **流查询**：此项定义了转换、聚合、筛选器、排序和联接，在将输入流写入到流输出之前，需要将这些内容应用到输入流。 流查询基于流分析使用的同一查询语言。 有关详细信息，请参阅[流分析查询语言](/stream-analytics-query/stream-analytics-query-language-reference)。
 
 > [!IMPORTANT]
 > 与流分析不同，T-SQL 流式处理目前不支持[使用引用数据进行查找](../stream-analytics/stream-analytics-use-reference-data.md)或[在流作业中使用 UDF 和 UDA 的引用数据](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c)。

@@ -8,10 +8,10 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.openlocfilehash: e1b175a176255da465433b2db45cb3cb67d360d1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934496"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>使用 Azure IoT DPS IP 连接筛选器
@@ -258,5 +258,5 @@ IP 筛选器规则按顺序应用，与 IP 地址匹配的第一条规则决定�
 若要进一步探索管理 DPS，请参阅：
 
 * [了解 IoT DPS IP 地址](iot-dps-understand-ip-address.md)
-* [使用 Azure CLI 设置 DPS](quick-setup-auto-provision-cli.md)
+* [ Azure CLI 设置 DPS](quick-setup-auto-provision-cli.md)
 * [控制对 DPS 的访问](how-to-control-access.md)

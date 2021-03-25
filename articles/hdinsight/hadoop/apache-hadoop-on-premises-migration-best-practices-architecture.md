@@ -1,17 +1,17 @@
 ---
-title: 体系结构：本地 Apache Hadoop 到 Azure HDInsight
+title: 体系结构：从本地 Apache Hadoop 到 Azure HDInsight
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的体系结构最佳做法。
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946440"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435403"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -21,7 +21,7 @@ ms.locfileid: "98946440"
 
 许多本地 Apache Hadoop 部署由支持多个工作负荷的单一大型群集构成。 此单一群集可能比较复杂，需要抑制单个服务的功能才能让各个组件配合工作。 将本地 Hadoop 群集迁移到 Azure HDInsight 需要在方法上面做出革新。
 
-Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可以跨多个群集共享存储，因此可以创建多个工作负载优化的计算群集，以满足不同作业的需求。 每个群集类型根据该特定工作负荷采用最佳的配置。 下表列出了 HDInsight 中支持的群集类型和对应的工作负荷。
+Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可在多个群集上共享存储，可创建多个工作负载优化的计算群集以满足不同作业的需求。 每个群集类型根据该特定工作负荷采用最佳的配置。 下表列出了 HDInsight 中支持的群集类型和对应的工作负荷。
 
 |工作负荷|HDInsight 群集类型|
 |---|---|
@@ -41,7 +41,7 @@ Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可
 |[Azure CLI（版本 1.0）](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight)||||X|
 |[Python SDK](/python/api/overview/azure/hdinsight)||||X|
 |[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure Resource Manager 模板](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
@@ -58,9 +58,9 @@ HDInsight 群集可能长时间不被使用。 为了帮助节省资源成本，
 
 ## <a name="decouple-storage-from-compute"></a>从计算资源解耦存储资源
 
-典型的本地 Hadoop 部署使用相同的计算机组来存储和处理数据。 因为它们是协同定位的，所以必须将计算和存储一起横向扩展。
+典型的本地 Hadoop 部署使用相同的计算机组来存储和处理数据。 由于它们并置在一起，因此计算资源和存储资源必须一起缩放。
 
-在 HDInsight 群集上，存储无需与计算协同定位，也可以在 Azure 存储中 Azure Data Lake Storage 或两者中。 从计算资源解耦存储资源可带来以下好处：
+在 HDInsight 群集上，存储资源无需与计算资源并置在一起，而可以位于 Azure 存储和/或 Azure Data Lake Storage 中。 从计算资源解耦存储资源可带来以下好处：
 
 - 在群集之间共享数据。
 - 由于数据不依赖于群集，因此可以使用暂时性群集。
@@ -101,7 +101,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 - 定期备份自定义元存储。
 - 将元存储和 HDInsight 群集保留在同一区域。
 - 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Monitor 日志）监视元存储的性能和可用性。
-- `ANALYZE TABLE`根据需要执行命令，以便为表和列生成统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- 根据需要执行 `ANALYZE TABLE` 命令，以生成表和列的统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法
 

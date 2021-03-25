@@ -3,18 +3,18 @@ title: 使用 CLI 从另一个库复制映像版本
 description: 使用 Azure CLI 从另一个库复制映像版本。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675971"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553096"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 复制另一个库中的映像
 
@@ -135,9 +135,9 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az-image-list) 获取资源组中的映像的相关信息。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
-在此示例中，我们的映像的版本为 *1.0.0* ，我们将在 *美国中南部* 地区创建1个副本，并使用区域冗余存储在 *美国东部* 区域中创建1个副本。
+在此示例中，映像版本为 1.0.0，我们将使用区域冗余存储在“美国中南部”区域创建 1 个副本，并在“美国东部”区域创建 1 个副本  。
 
 
 ```azurecli-interactive 
@@ -154,13 +154,13 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 你还可以通过添加 `--storage-account-type  premium_lrs` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `--storage-account-type  standard_zrs` 。
+> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 将映像存储在高级存储中，或者通过添加 `--storage-account-type  standard_zrs` 将其存储在[区域冗余存储](../storage/common/storage-redundancy.md)中。
 >
 
 ## <a name="next-steps"></a>后续步骤
 
 从[通用化](vm-generalized-image-version-cli.md)或[专用化](vm-specialized-image-version-cli.md)映像版本创建 VM。
 
-同时，试用 [Azure 映像生成器 (预览版) ](./image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。 
+同时，试用 [Azure 映像生成器（预览版）](./image-builder-overview.md)可以帮助自动创建映像版本，你甚至可以使用它进行更新以及[从现有的映像版本创建新映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: eb178e38001e54ac39a269c8b8cdef12c77d74cf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96901943"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
@@ -70,7 +70,7 @@ ms.locfileid: "96901943"
 
    例如，如果从启用了 Microsoft.Sql 的子网中的 Azure VM 进行连接，但没有相应的 VNet 规则，则可能会看到以下错误：`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
-* **防火墙规则不适用于 IPv6 格式：** 防火墙规则必须为 IPv4 格式。 如果以 IPv6 格式指定防火墙规则，则会显示验证错误。
+* 防火墙规则不适用于 IPv6 格式：防火墙规则必须采用 IPv4 格式。 如果以 IPv6 格式指定防火墙规则，则会显示验证错误。
 
 ## <a name="next-steps"></a>后续步骤
 

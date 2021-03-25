@@ -4,10 +4,10 @@ description: 配置 Azure 负载均衡器，为 Azure Service Fabric 群集打�
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319901"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>为 Service Fabric 群集打开端口
@@ -21,7 +21,7 @@ ms.locfileid: "92319901"
 
 ## <a name="configure-service-fabric"></a>配置 Service Fabric
 
-Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序应使用的终结点  。 更新配置文件以定义终结点后，必须更新负载均衡器，公开该（或其他）端口。 有关如何创建 Service Fabric 终结点的详细信息，请参阅[设置终结点](service-fabric-service-manifest-resources.md)。
+Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序应使用的终结点。 更新配置文件以定义终结点后，必须更新负载均衡器，公开该（或其他）端口。 有关如何创建 Service Fabric 终结点的详细信息，请参阅[设置终结点](service-fabric-service-manifest-resources.md)。
 
 ## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -35,7 +35,7 @@ Service Fabric 应用程序 ServiceManifest.xml 配置文件定义应用程序�
 - 内部端口。
 
 ## <a name="azure-cli"></a>Azure CLI
-使用单个命令即可使用 Azure CLI 创建负载均衡器规则  。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
+使用单个命令即可使用 Azure CLI 创建负载均衡器规则。 你只需知道用于创建新规则的负载均衡器和资源组的名称。
 
 >[!NOTE]
 >如果需要确定负载均衡器的名称，可使用此命令来快速获取所有负载均衡器和关联资源组的列表。

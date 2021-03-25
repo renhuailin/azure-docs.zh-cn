@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086884"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
@@ -19,9 +19,9 @@ ms.locfileid: "93086884"
 
 若要在 Linux 开发计算机上部署和运行 [Azure Service Fabric 应用程序](service-fabric-application-model.md)，请安装运行时和常用 SDK。 还可以安装用于 Java 和 .NET Core 开发的可选 SDK。 
 
-本文中的步骤假设你是在 Linux 上本机安装的，或者使用 [Service Fabric OneBox 容器映像](https://hub.docker.com/_/microsoft-service-fabric-onebox)，例如 `mcr.microsoft.com/service-fabric/onebox:u18` 。
+本文中的步骤假设你在 Linux 上进行本地安装，或者使用 [Service Fabric OneBox 容器映像](https://hub.docker.com/_/microsoft-service-fabric-onebox)（即 `mcr.microsoft.com/service-fabric/onebox:u18`）。
 
-可以通过 Azure Service Fabric 命令行界面 (CLI) 来管理在云中或本地托管的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
+可以使用 Azure Service Fabric 命令行界面 (CLI) 来管理托管在云中或本地的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,7 +50,7 @@ ms.locfileid: "93086884"
 
 ## <a name="script-installation"></a>脚本安装
 
-为方便起见，提供了一个脚本，用于将 Service Fabric 运行时和 Service Fabric 通用 SDK 与 [ **sfctl** CLI](service-fabric-cli.md)一起安装。 运行该脚本即认为你同意所要安装的所有软件的许可条款。 或者，你可以在下一节中运行 [手动安装](#manual-installation) 步骤，其中将显示关联的许可证以及要安装的组件。
+为方便起见，我们提供了一个脚本，用于连同 [**sfctl** CLI](service-fabric-cli.md) 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 运行该脚本即认为你同意所要安装的所有软件的许可条款。 也可运行下一部分的[手动安装](#manual-installation)步骤，这会显示关联的许可证以及要安装的组件。
 
 成功运行脚本后，可以跳转到[设置本地群集](#set-up-a-local-cluster)。
 
@@ -120,10 +120,10 @@ sudo apt-get install servicefabricsdkcommon
 
 # <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
 
-## <a name="update-your-yum-repositories"></a>更新你的 Yum 存储库
+## <a name="update-your-yum-repositories"></a>更新 Yum 存储库
 若要通过 yum 命令行工具安装 SDK 和关联的运行时包，必须首先更新包源。
 
-## <a name="manual-installation-rhel"></a>手动安装 (RHEL) 
+## <a name="manual-installation-rhel"></a>手动安装 (RHEL)
 有关手动安装 Service Fabric 运行时和通用 SDK，请遵照本指南的余下部分操作。
 
 1. 打开终端。
@@ -152,7 +152,7 @@ sudo apt-get install servicefabricsdkcommon
     sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
     ```
 
-## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>为本地群集 (RHEL 安装并设置 Service Fabric SDK) 
+## <a name="install-and-set-up-the-service-fabric-sdk-for-a-local-cluster-rhel"></a>为本地群集安装并设置 Service Fabric SDK (RHEL)
 
 更新源后，可安装 SDK。 安装 Service Fabric SDK 包，确认安装，并同意许可协议。
 
@@ -171,17 +171,17 @@ SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。
 **RHEL** | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
-1. 启动本地 Service Fabric 群集以进行开发。
+1. 启动本地 Service Fabric 群集进行开发。
 
 # <a name="container-based-local-cluster"></a>[基于容器的本地群集](#tab/localclusteroneboxcontainer)
 
 启动基于容器的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 群集。
 
-1. 安装小鲸鱼以便能够部署 Docker 容器。
+1. 安装 Moby 以便能够部署 Docker 容器。
     ```bash
     sudo apt-get install moby-engine moby-cli -y
     ```
-2. 请在主机上用以下设置更新 Docker 守护程序配置，并重新启动 Docker 守护程序。 详细信息： [启用 IPv6 支持](https://docs.docker.com/config/daemon/ipv6/)
+2. 使用以下设置更新主机上的 Docker 守护程序配置并重启 Docker 守护程序。 详细信息：[启用 IPv6 支持](https://docs.docker.com/config/daemon/ipv6/)
 
     ```json
     {
@@ -202,7 +202,7 @@ SDK 安装随附的 Service Fabric 运行时包含下表中所述的包。
     ```
 
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 对于特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 页。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
 
 # <a name="local-cluster"></a>[本地群集](#tab/localcluster)
 
@@ -261,7 +261,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 ## <a name="set-up-net-core-31-development"></a>设置 .NET Core 3.1 开发
 
-安装 [适用于 Ubuntu 的 .Net Core 3.1 SDK](https://www.microsoft.com/net/core#linuxubuntu) ，开始 [创建 c # Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序的包托管在 NuGet.org 上。
+安装[用于 Ubuntu 的 .NET Core 3.1 SDK](https://www.microsoft.com/net/core#linuxubuntu)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core Service Fabric 应用程序包在 NuGet.org 上托管。
 
 ## <a name="set-up-java-development"></a>设置 Java 开发
 

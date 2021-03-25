@@ -255,8 +255,8 @@
           href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/digital_twins_endpoint_servicebus'
     - name: 工具和示例项目
       items:
-        - name: 设备模拟器服务
-          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
+        - name: Azure 数字孪生 Postman 集合
+          href: 'https://github.com/microsoft/azure-digital-twins-postman-samples'
         - name: Azure 数字孪生端到端示例
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Azure 数字孪生资源管理器（示例）
@@ -275,6 +275,8 @@
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
         - name: 逻辑应用连接器的自定义 Swagger
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+        - name: 设备模拟器服务
+          href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
     - name: DTDL
       items:
         - name: 适用于 VS Code 的 DTDL 扩展

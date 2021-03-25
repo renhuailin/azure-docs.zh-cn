@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92742398"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>通过 Azure API 管理服务使用外部服务
@@ -178,7 +178,7 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 ### <a name="making-the-requests"></a>发出请求
 创建该操作后，可以专门针对该操作配置策略。 
 
-![显示策略范围屏幕的屏幕截图。](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![显示“策略范围”屏幕的屏幕截图。](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
 第一个步骤是提取来自传入请求的任何查询参数，以便将其转发到后端。 在本示例中，仪表板每隔一段时间显示信息，因此具有 `fromDate` 和 `toDate` 参数。 可以使用 `set-variable` 策略来提取请求 URL 中的信息。
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94844857"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
@@ -112,7 +112,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 将 RD 网关加入管理员工作站所在的同一个[管理域](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10))。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
 * 配置[客户端连接授权策略](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11))，以让 RD 网关验证客户端计算机名称是否有效（已加入域）并可以访问 Azure 门户。
 * 针对 [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 隔离的 Internet 链接。
-* 启用多重身份验证 (通过 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)) 或通过 RD 网关登录的管理员的智能卡身份验证。
+* 为通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)）或智能卡身份验证。
 * 在 Azure 中配置源 [IP 地址限制](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)或[网络安全组](../../virtual-network/network-security-groups-overview.md)，将允许的管理终结点数降到最低。
 
 ## <a name="security-guidelines"></a>安全指导原则

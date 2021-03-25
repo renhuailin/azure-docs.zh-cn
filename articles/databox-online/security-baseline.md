@@ -8,10 +8,10 @@ ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102452367"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>适用于 Azure Stack Edge 的 Azure 安全基线
@@ -258,7 +258,7 @@ Azure Stack Edge Pro 设备是一种本地设备，它在本地处理数据，�
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4：加密传输中的敏感信息
 
-**指导**：Azure Stack Edge 为传输中的数据使用安全通道。 它们是：
+**指导**：Azure Stack Edge 为传输中的数据使用安全通道。 其中包括：
 
 - 标准 TLS 1.2，用于在设备与 Azure 云之间传输的数据。 不能回退到 TLS 1.1 和更早版本。 如果不支持 TLS 1.2，则代理通信将被阻止。 Azure 门户和软件开发工具包 (SDK) 管理也需要 TLS 1.2。
 

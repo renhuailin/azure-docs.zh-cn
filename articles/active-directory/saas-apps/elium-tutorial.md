@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Elium 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "92454107"
 * 让用户使用其 Azure AD 帐户自动登录到 Elium。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -51,8 +51,8 @@ ms.locfileid: "92454107"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Elium”  。
-1. 在结果面板中选择“Elium”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Elium”。
+1. 在结果面板中选择“Elium”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-sso-for-elium"></a>配置并测试 Elium 的 Azure AD SSO
 
@@ -79,11 +79,11 @@ ms.locfileid: "92454107"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/login`
 
@@ -105,13 +105,13 @@ ms.locfileid: "92454107"
     | company| user.companyname|
 
     > [!NOTE]
-    > 这是默认声明。 **只需电子邮件声明** 。 对于 JIT 预配，也只需电子邮件声明。 其他自定义声明根据客户平台的不同而异。
+    > 这是默认声明。 **只需电子邮件声明**。 对于 JIT 预配，也只需电子邮件声明。 其他自定义声明根据客户平台的不同而异。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Elium”部分中，根据要求复制相应的 URL  。
+1. 在“设置 Elium”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "92454107"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -132,9 +132,9 @@ ms.locfileid: "92454107"
 在本部分中，将通过授予 B.Simon 访问 Elium 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Elium”  。
+1. 在应用程序列表中，选择“Elium”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
@@ -174,21 +174,21 @@ ms.locfileid: "92454107"
 
     d. 单击“下载”按钮打开“SP 元数据”。  
 
-    e. 在“SP 元数据”文件中搜索 **entityID** ，复制“entityID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。     
+    e. 在“SP 元数据”文件中搜索 **entityID**，复制“entityID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中。     
 
     ![配置单一登录 Elium 04](./media/elium-tutorial/elium-04.png)
 
-    f. 在“SP 元数据”文件中搜索 **AssertionConsumerService** ，复制“Location”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中。    
+    f. 在“SP 元数据”文件中搜索 **AssertionConsumerService**，复制“Location”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中。    
 
     ![配置单一登录 Elium 05](./media/elium-tutorial/elium-05.png)
 
     g. 在写字板中打开从 Azure 门户下载的元数据文件内容，复制内容并将其粘贴到“IdP 元数据”文本框中  。
 
-    h. 单击“ **保存** ”。
+    h. 单击“ **保存**”。
 
 ### <a name="create-elium-test-user"></a>创建 Elium 测试用户
 
-本部分将在 Elium 中创建一个名为 B.Simon 的用户。 Elium 支持默认已启用的 **实时预配** 。 此部分不存在任何操作项。 尝试访问 Elium 时，如果 Elium 中尚不存在用户，则系统会创建一个新用户。
+本部分将在 Elium 中创建一个名为 B.Simon 的用户。 Elium 支持默认已启用的 **实时预配**。 此部分不存在任何操作项。 尝试访问 Elium 时，如果 Elium 中尚不存在用户，则系统会创建一个新用户。
 
 > [!Note]
 > 如果需要手动创建用户，请联系 [Elium 支持团队](mailto:support@elium.com)。

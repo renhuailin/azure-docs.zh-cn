@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Cosmos DB Gremlin API 资源上预配吞吐量
-description: 了解如何在 Azure Cosmos DB Gremlin API 资源中预配容器、数据库和自动缩放吞吐量。 将使用 Azure 门户、CLI、PowerShell 和其他各种 Sdk。
+description: 了解如何在 Azure Cosmos DB Gremlin API 资源中预配容器、数据库和自动缩放吞吐量。 你将使用 Azure 门户、CLI、PowerShell 和其他各种 SDK。
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -9,18 +9,18 @@ ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 3c2af7f33135a8c6621db233451231ffa89c2d64
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93086153"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-gremlin-api-resources"></a>在 Azure Cosmos DB Gremlin API 资源上预配数据库、容器或自动缩放吞吐量
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
-本文介绍如何在 Azure Cosmos DB Gremlin API 中预配吞吐量。 可以在容器或数据库上预配标准 (手动) 或自动缩放吞吐量，并将其共享到数据库内的容器中。 你可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB Sdk 来预配吞吐量。
+本文介绍如何在 Azure Cosmos DB Gremlin API 中预配吞吐量。 你可在一个容器或数据库上预配标准（手动）或自动缩放吞吐量，并在数据库中的容器之间共享它。 你可使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 来预配吞吐量。
 
-如果你使用的是其他 API，请参阅 [SQL api](how-to-provision-container-throughput.md)、 [Cassandra API](how-to-provision-throughput-cassandra.md)、 [MongoDB api for MongoDB](how-to-provision-throughput-mongodb.md) 文章来预配吞吐量。
+如果你使用的是其他 API，请参阅 [SQL API](how-to-provision-container-throughput.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[适用于 MongoDB 的 API](how-to-provision-throughput-mongodb.md) 这几篇文章来预配吞吐量。
 
 ## <a name="azure-portal"></a><a id="portal-gremlin"></a> Azure 门户
 
@@ -30,20 +30,20 @@ ms.locfileid: "93086153"
 
 1. 打开“数据资源管理器”窗格，然后选择“新建图形” 。 接下来，请提供以下详细信息：
 
-   * 表明要创建新数据库还是使用现有数据库。 如果要在数据库级别预配吞吐量，请选择 " **设置数据库吞吐量** " 选项。
+   * 表明要创建新数据库还是使用现有数据库。 如果要在数据库级别预配吞吐量，请选择“预配数据库吞吐量”选项。
    * 输入图形 ID。
    * 输入分区键值（例如 `/ItemID`）。
    * 输入要预配的吞吐量（例如，1000 RU）
    * 选择“确定”。
 
-    :::image type="content" source="./media/how-to-provision-throughput-gremlin/provision-database-throughput-portal-gremlin-api.png" alt-text="使用数据库级别吞吐量创建新图形时的数据资源管理器屏幕截图":::
+    :::image type="content" source="./media/how-to-provision-throughput-gremlin/provision-database-throughput-portal-gremlin-api.png" alt-text="使用数据库级吞吐量创建新图时的数据资源管理器的屏幕截图":::
 
 ## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
-> 使用适用于 SQL API 的 Cosmos Sdk 为除 Cassandra 和 MongoDB API 之外的所有 Azure Cosmos DB Api 预配吞吐量。
+> 使用适用于 SQL API 的 Cosmos SDK 为除 Cassandra 和 MongoDB API 之外的所有 Azure Cosmos DB API 预配吞吐量。
 
-### <a name="provision-container-level-throughput"></a>设置容器级别吞吐量
+### <a name="provision-container-level-throughput"></a>预配容器级吞吐量
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -65,7 +65,7 @@ await client.CreateDocumentCollectionAsync(
 
 ---
 
-### <a name="provision-database-level-throughput"></a>设置数据库级别吞吐量
+### <a name="provision-database-level-throughput"></a>预配数据库级吞吐量
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
