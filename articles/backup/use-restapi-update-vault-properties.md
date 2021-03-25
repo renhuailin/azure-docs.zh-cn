@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91567819"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
@@ -65,13 +65,13 @@ GET 操作的成功响应如下所示：
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>使用 REST API 更新软删除状态
 
-若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 *PUT* 操作
+若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 PUT 操作
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-PUT URI 具有 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 参数。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 如果将 URI 替换为上述值，则 URI 将如下所示。
+PUT URI 包含参数 `{subscriptionId}`、`{vaultName}` 和 `{vaultresourceGroupName}`。 在本示例中，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 如果将 URI 替换为上述值，则 URI 将如下所示。
 
 ```http
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15

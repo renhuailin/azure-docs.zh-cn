@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
 ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606277"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
@@ -111,7 +111,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [如何启用匿名拉取访问？](#how-do-i-enable-anonymous-pull-access)
-- [如何实现向注册表推送不可分发的层？](#how-do-i-push-non-distributable-layers-to-a-registry)
+- [如何将不可分发层推送到注册表？](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
@@ -266,15 +266,15 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 > * 仅可匿名访问拉取已知映像所需的 API。 不能匿名访问可以执行标记列表或存储库列表等操作的其他 API。
 > * 尝试匿名拉取操作前，请运行 `docker logout` 以确保清除任何现有 Docker 凭据。
 
-### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>如何实现向注册表推送不可分发的层？
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>如何将不可分发层推送到注册表？
 
-清单中的不可分发层包含 URL 参数，可以从该 URL 参数获取内容。 启用不可分发的层推送的一些可能用例包括：网络受限制的注册表、具有受限访问权限的气流注册表，或不带 internet 连接的注册表。
+清单中的不可分发层包含一个 URL 参数，可以通过该参数提取内容。 启用不可分发层推送的一些可能用例适用于：网络受限制的注册表、具有受限访问权限的气隙注册表，或没有 Internet 连接的注册表。
 
-例如，如果已设置 NSG 规则，以便 VM 只能从 Azure 容器注册表中提取映像，则 Docker 将会请求外部/非可分发层的故障。 例如，Windows Server Core 映像会在其清单中包含对 Azure 容器注册表的外部层引用，因此无法提取此方案。
+例如，如果你设置了 NSG 规则，使 VM 只能从你的 Azure 容器注册表中拉取映像，则 Docker 会让从外部/不可分发层进行的拉取失败。 例如，Windows Server Core 映像在其清单中会包含对 Azure 容器注册表的外部层引用，所以在此情况下将无法拉取。
 
-若要启用无法再分发的层：
+若要启用不可分发层的推送，请执行以下操作：
 
-1. 编辑 `daemon.json` 位于 `/etc/docker/` Linux 主机上和 `C:\ProgramData\docker\config\daemon.json` Windows Server 上的文件。 假设文件之前为空，请添加以下内容：
+1. 编辑 `daemon.json` 文件，该文件在 Linux 主机上位于 `/etc/docker/` 中，在 Windows Server 上位于 `C:\ProgramData\docker\config\daemon.json` 中。 假设文件之前为空，请添加以下内容：
 
    ```json
    {
@@ -282,16 +282,16 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
    }
    ```
    > [!NOTE]
-   > 值是注册表地址的数组，用逗号分隔。
+   > 值是注册表地址的数组，各个地址之间以逗号分隔。
 
 2. 保存并退出该文件。
 
-3. 重新启动 Docker。
+3. 重启 Docker。
 
-将映像推送到列表中的注册表时，它们的非可分发层将被推送到注册表。
+将映像推送到列表中的注册表时，它们的不可分发层会被推送到注册表。
 
 > [!WARNING]
-> 不可分发的项目通常会限制如何以及在何处分发和共享这些项目。 仅将此功能用于将项目推送到专用注册表。 请确保符合任何涵盖重新分发非分发项目的条款。
+> 不可分发项目通常在其分发和共享方式与位置方面存在限制。 请仅在将项目推送到专用注册表时使用此功能。 请确保遵守与重新分发不可分发项目相关的任何条款。
 
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 

@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 562162e0bd42b0a46b2b0c6d44ca9b37f1841750
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052854"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
@@ -95,4 +95,4 @@ Azure 或 Microsoft 365 订阅者可在线购买 Azure Active Directory Premium 
 激活过程通常只需几分钟的时间，然后即可使用 Azure AD 租户。 
 
 ## <a name="next-steps"></a>后续步骤
-现在，你已 Azure AD Premium，你可以 [自定义域](add-custom-domain.md)、添加 [企业品牌](customize-branding.md)、 [创建租户](active-directory-access-create-new-tenant.md)，以及 [添加组](active-directory-groups-create-azure-portal.md) 和 [用户](add-users-azure-active-directory.md)。
+你已具有 Azure AD Premium，接下来即可[自定义域](add-custom-domain.md)、添加[公司品牌](customize-branding.md)、[创建租户](active-directory-access-create-new-tenant.md)以及[添加组](active-directory-groups-create-azure-portal.md)和[用户](add-users-azure-active-directory.md)。

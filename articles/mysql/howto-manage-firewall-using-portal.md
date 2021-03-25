@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 032db324f9dd2f0d6a5dce5c4fd5c64342fed59f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540478"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
@@ -50,7 +50,7 @@ ms.locfileid: "94540478"
 ## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户管理现有的服务器级别防火墙规则
 重复这些步骤来管理防火墙规则。
 * 若要添加当前计算机，请单击“+ 添加我的 IP”。 单击“保存”以保存更改。
-* 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP”和“结束 IP”。 单击“保存”以保存更改。
+* 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP”和“结束 IP”。 单击“保存”  以保存更改。
 * 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”  以保存更改。
 * 若要删除现有规则，请单击省略号 […]，然后单击“删除”。 单击“保存”  以保存更改。
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc7bcab04da005fd0d46d18e7b708dcb1c9d58e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230511"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成
@@ -53,7 +53,7 @@ ms.locfileid: "89230511"
     * 部署中的应用程序设置保留在 Azure Function App 的“应用程序设置”中。 
     * 使用适用于 ArcSight 连接器的 Azure AD 应用程序以及包含映射文件（CEF 格式）的存储帐户，在 Azure 中创建 ArcSight 的新资源组。
 
-4. 最后，完成配置指南**部署后配置**中的部署后步骤。 此部分说明如何在实施应用服务计划时执行其他配置以防止函数应用在超时期限之后成为空闲状态、从事件中心配置资源日志流式传输以及更新 SysLog NG 守护程序 SmartConnector 密钥存储证书以将它与新创建的存储帐户相关联。
+4. 最后，完成配置指南 **部署后配置** 中的部署后步骤。 此部分说明如何在实施应用服务计划时执行其他配置以防止函数应用在超时期限之后成为空闲状态、从事件中心配置资源日志流式传输以及更新 SysLog NG 守护程序 SmartConnector 密钥存储证书以将它与新创建的存储帐户相关联。
 
 5. 配置指南还说明如何在 Azure 中自定义连接器属性以及如何升级和卸载连接器。 还有一个部分是关于性能改进，包括升级到 [Azure 消耗计划](https://azure.microsoft.com/pricing/details/functions)以及在事件负载大于单个 Syslog NG 守护程序 SmartConnector 可以处理的负载时配置 ArcSight 负载均衡器。
 

@@ -3,14 +3,14 @@ title: 管理服务器 - Azure 门户 - Azure Database for MariaDB
 description: 了解如何在 Azure 门户中管理 Azure Database for MariaDB 服务器。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: b492e04629f23c991c1c5d69dd5e2c472676d37a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664395"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MariaDB 服务器

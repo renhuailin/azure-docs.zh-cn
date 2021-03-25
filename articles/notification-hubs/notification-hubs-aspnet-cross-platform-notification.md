@@ -17,29 +17,29 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313892"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中心发送跨平台通知
 
 本教程基于前一教程：[使用 Azure 通知中心向特定用户发送通知]。 该教程介绍了如何向注册给经过身份验证的特定用户的所有设备推送通知。 该方法需要使用多个请求将通知发送到每个受支持的客户端平台。 Azure 通知中心支持模板，可以通过模板指定特定设备要如何接收通知。 此方法简化了发送跨平台通知的方式。
 
-本文演示了如何利用模板发送针对所有平台的通知。 本文使用单个请求发送不区分平台的通知。 有关模板的更多详细信息，请参阅 [通知中心概述][Templates]。
+本文演示了如何利用模板发送针对所有平台的通知。 本文使用单个请求发送不区分平台的通知。 有关模板的更多详细信息，请参阅[通知中心概述][Templates]。
 
 > [!IMPORTANT]
-> Visual Studio 2019 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2019 平台目标和兼容性](/visualstudio/releases/2019/compatibility)。
+> Visual Studio 2019 不支持使用 Windows Phone 项目 8.1 及更早的版本。 有关详细信息，请参阅 [Visual Studio 2019 平台目标以及兼容性](/visualstudio/releases/2019/compatibility)。
 
 > [!NOTE]
 > 通过通知中心，设备可使用同一标记注册多个模板。 在这种情况下，针对该标签的传入的邮件将导致系统向设备发送多个通知（每个通知对应一个模板）。 此过程可以在多个可视通知中显示同一消息，如显示为 Windows 应用商店应用中的徽章和 toast 通知。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>使用模板发送跨平台通知
 
-本部分使用了你在[使用 Azure 通知中心向特定用户发送通知]教程中构建的示例代码。 可以 [从 GitHub 下载完整的示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)。
+本部分使用了你在[使用 Azure 通知中心向特定用户发送通知]教程中构建的示例代码。 可以[从 GitHub 下载完整示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)。
 
-若要使用模板发送跨平台通知，请执行以下操作：
+若要使用模板发送跨平台通知，请执行以下步骤：
 
 1. 在 Visual Studio 的“解决方案资源管理器”中，展开“Controllers”文件夹，然后打开 RegisterController.cs 文件。   
 

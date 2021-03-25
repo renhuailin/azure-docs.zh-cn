@@ -7,10 +7,10 @@ ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91354796"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
@@ -26,9 +26,9 @@ ms.locfileid: "91354796"
 
 ## <a name="describing-auto-scaling"></a>描述自动缩放
 可以为 Service Fabric 群集中的每个服务定义自动扩展策略。 每个缩放策略由两部分组成：
-* **缩放触发器**描述了将何时执行服务的缩放。 定期检查触发器中定义的条件，确定是否应缩放服务。
+* **缩放触发器** 描述了将何时执行服务的缩放。 定期检查触发器中定义的条件，确定是否应缩放服务。
 
-* **缩放机制**描述了在触发时将如何执行缩放。 机制仅适用于满足触发条件的情况。
+* **缩放机制** 描述了在触发时将如何执行缩放。 机制仅适用于满足触发条件的情况。
 
 目前支持的所有触发器都可以实用[逻辑加载指标](service-fabric-cluster-resource-manager-metrics.md)，也可以使用物理指标（如CPU或内存使用率）。 无论采用哪种方式，Service Fabric 都将监视所报告的指标负载，并定期评估触发器以确定是否需要缩放。
 
@@ -133,7 +133,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 > [!WARNING] 
 > 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在进行横向扩展操作的情况下，新分区将为空；在进行横向缩减操作的情况下，分区将与其包含的所有数据一起被删除。
 
-## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>设置基于分区缩放的自动缩放策略
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>为基于分区的缩放设置自动缩放策略
 
 ### <a name="using-application-manifest"></a>使用应用程序清单
 ``` xml

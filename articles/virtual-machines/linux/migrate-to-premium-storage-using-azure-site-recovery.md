@@ -2,17 +2,18 @@
 title: 使用 Azure Site Recovery 将 Linux VM 迁移到 Azure 高级存储
 description: 使用 Site Recovery 将现有虚拟机迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 author: luywang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: 8688d278c40ba34b7c4344a73cb4717f3fd71368
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806166"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600065"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>使用 Site Recovery 迁移到高级存储
 
@@ -158,14 +159,14 @@ Site Recovery 检查是否有一个或多个兼容的 Azure 存储帐户和网�
    4. 在步骤 3 中，按 IP 地址添加受保护的 VM。 （要找到它们可能需要用到内部 IP 地址。）
    5. 在步骤 4 中，通过选择前面在进程服务器上设置的帐户来配置属性。
    6. 在步骤 5 中，选择前面在“步骤 5：设置复制设置”中创建的复制策略。
-   7. 选择“确定”。
+   7. 选择“确定”  。
 
    > [!NOTE]
    > 解除分配并再次启动 Azure VM 后，无法保证它会获得相同的 IP 地址。 如果配置服务器/进程服务器或受保护 Azure VM 的 IP 地址发生变化，此方案中的复制可能无法正常工作。
 
    ![选定了“源”的“启用复制”窗格][13]
 
-设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../manage-availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
+设计 Azure 存储环境时，我们建议针对可用性集中的每个 VM 使用不同的存储帐户。 我们建议按照存储层中的最佳做法[为每个可用性集使用多个存储帐户](../availability.md)。 将 VM 磁盘分配到多个存储帐户有助于改善存储可用性，以及在整个 Azure 存储基础结构中分配 I/O。
 
 如果 VM 位于可用性集中，我们强烈建议分多次迁移多个 VM，而不要将所有 VM 的磁盘都复制到一个存储帐户。 这是为了避免同一个可用性集中的 VM 共享单个存储帐户。 使用“启用复制”窗格为每个 VM 设置目标存储帐户，一次设置一个。
  
@@ -196,7 +197,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
    * 对于通过经典部署模型创建的 VM：将 VM 添加到 Azure 门户中的可用性集。 有关详细步骤，请参阅[将现有虚拟机添加到可用性集](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic)。
    * 对于通过资源管理器部署模型创建的 VM：保存 VM 的配置，并在可用性集中删除并再重新创建 VM。 为此，请使用 [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)（设置 Azure Resource Manager VM 可用性集）中所述的脚本。 运行此脚本之前，请检查其自身的限制并规划停机时间。
 
-2. **删除旧 VM 和磁盘**。 请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅[排查存储资源删除错误](../troubleshooting/storage-resource-deletion-errors.md)。
+2. **删除旧 VM 和磁盘**。 请确保高级磁盘与源磁盘一致，并且新 VM 执行的功能与源 VM 相同。 通过 Azure 门户删除源存储帐户中的 VM 和磁盘。 如果出现了即使删除 VM 也无法删除磁盘的问题，请参阅[排查存储资源删除错误](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors)。
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 

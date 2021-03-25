@@ -1,186 +1,186 @@
 ---
 title: Azure Percept 开发工具包安装程序概述
-description: 了解有关使用开发工具包安装程序加快使用 Azure Percept 进行高级开发的详细信息
+description: 详细了解如何使用开发工具包安装程序通过 Azure Percept 加速高级开发
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: 66498fabadc0784a4a4ab1c3762daaaa9a5738c4
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097697"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503209"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>开发工具包安装程序概述
 
-开发工具包安装程序是一种停止解决方案，用于安装和配置开发智能边缘解决方案所需的所有工具。 如果你已经安装了下面列出的任何软件包，则开发工具包安装程序将重新安装这些包，以便你的工具与安装程序软件版本保持一致。
+开发工具包安装程序是一站式解决方案，可安装和配置开发智能边缘解决方案所需的所有工具。 如果已安装下面列出的任何软件包，则开发工具包安装程序将重新安装这些包，以便你的工具与安装程序软件版本保持一致。
 
-## <a name="mandatory-tools-installed"></a>已安装强制工具
+## <a name="mandatory-tools-installed"></a>已安装的必需工具
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Python 3.6 (Windows) 或 3.5 (Linux) ](https://www.python.org/)
+* [Python 3.6 (Windows) 或 3.5 (Linux)](https://www.python.org/)
 * [Docker 19.03](https://www.docker.com/)
 * [PIP3](https://pip.pypa.io/en/stable/user_guide/)
 * [TensorFlow 1.13](https://www.tensorflow.org/)
-* [Azure 机器学习 SDK 1。1](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py)
+* [Azure 机器学习 SDK 1.1](https://docs.microsoft.com/python/api/overview/azure/ml/)
 
 ## <a name="optional-tools-available-for-installation"></a>可供安装的可选工具
 
-* [Nvidia DEEPSTREAM SDK 5](https://developer.nvidia.com/deepstream-sdk) (用于开发 Nvidia 加速器解决方案的工具包) 
-* [Intel OpenVino 工具包 2020.2](https://docs.openvinotoolkit.org/) (用于为 Intel 加速器开发解决方案的工具包) 
+* [Nvidia DeepStream SDK 5](https://developer.nvidia.com/deepstream-sdk)（用于开发 Nvidia 加速器解决方案的工具包）
+* [Intel OpenVino 工具包 2020.2](https://docs.openvinotoolkit.org/)（用于开发 Intel 加速器解决方案的工具包）
 * [Lobe.ai](https://lobe.ai/)  
 * [Streamlit](https://www.streamlit.io/)
-* [Pytorch 1.4.0 (Windows) 或 1.2.0 (Linux) ](https://pytorch.org/)
+* [Pytorch 1.4.0 (Windows) 或 1.2.0 (Linux)](https://pytorch.org/)
 * [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
-* [Chainer 5。2](https://chainer.org/)
+* [Chainer 5.2](https://chainer.org/)
 * [Caffe](https://caffe.berkeleyvision.org/)
-* [CUDA 工具包10.0.130](https://developer.nvidia.com/cuda-toolkit)
-* [Microsoft Cognitive Toolkit 2.5。1](https://www.microsoft.com/research/product/cognitive-toolkit/?lang=fr_ca)
+* [CUDA 工具包 10.0.130](https://developer.nvidia.com/cuda-toolkit)
+* [Microsoft Cognitive Toolkit 2.5.1](https://www.microsoft.com/research/product/cognitive-toolkit/?lang=fr_ca)
 
 ## <a name="known-issues"></a>已知问题
 
-- 如果 Docker 未在系统上正常运行，则可选的 Caffe 安装可能会失败。 如果要安装 Caffe，请确保在通过开发工具包安装程序尝试 Caffe 安装之前已安装并运行 Docker。 
+- 如果 Docker 没有在系统上正常运行，则可选的 Caffe 安装可能会失败。 如果要安装 Caffe，请确保在通过开发工具包安装程序尝试安装 Caffe 之前已安装并运行 Docker。 
 
-- 可选的 CUDA 在不兼容的系统上安装失败。 尝试通过开发工具包安装程序 [10.0.130 安装 CUDA 工具包](https://developer.nvidia.com/cuda-toolkit) 之前，请验证系统兼容性。
+- 可选的 CUDA 安装在不兼容的系统上失败。 尝试通过开发工具包安装程序安装 [CUDA 工具包 10.0.130](https://developer.nvidia.com/cuda-toolkit) 之前，请验证系统兼容性。
 
 ## <a name="minimum-requirements"></a>最低要求
 
 * Docker 最低要求：
 
-    * Windows：
+    * Windows:
         * https://docs.docker.com/docker-for-windows/install/#system-requirements
 
-        - Windows 10 64 位：专业版、企业版或教育版 (版本16299或更高版本) 。
+        - Windows 10 64 位：专业版、企业版或教育版（版本 16299 或更高版本）。
 
-             对于 Windows 10 家庭版，请参阅在 Windows Home 上安装 Docker Desktop。
-           - 必须启用 hyper-v 和容器 Windows 功能。
-           - 在 Windows 10 上成功运行客户端 Hyper-v 需要以下硬件必备组件：
+             对于 Windows 10 家庭版，请参阅“在 Windows 家庭版上安装 Docker Desktop”。
+           - 必须启用 Hyper-V 和容器 Windows 功能。
+           - 要在 Windows 10 上成功运行客户端 Hyper-V，需要满足以下硬件先决条件：
 
-              - 64位处理器，具有 [二级地址转换 (SLAT) ](https://en.wikipedia.org/wiki/Second_Level_Address_Translation)
+              - 具有[二级地址转换 (SLAT) ](https://en.wikipedia.org/wiki/Second_Level_Address_Translation)的 64 位处理器
               - 4 GB 系统 RAM
-              - Bios 级别硬件虚拟化支持必须在 BIOS 设置中启用。 有关详细信息，请参阅虚拟化。
+              - 必须在 BIOS 设置中启用 BIOS 级别硬件虚拟化支持。 有关详细信息，请参阅“虚拟化”。
 
         > [!NOTE]
-        > Docker 支持 Windows 上的 Docker Desktop，基于 Microsoft 为 Windows 10 操作系统提供的支持生命周期。 有关详细信息，请参阅 [Windows 生命周期事实数据表](https://support.microsoft.com/help/13853/windows-lifecycle-fact-sheet)。
+        > Docker 基于 Microsoft 对 Windows 10 操作系统的支持生命周期，在 Windows 上支持 Docker Desktop。 有关详细信息，请参阅 [Windows 生命周期简报](https://support.microsoft.com/help/13853/windows-lifecycle-fact-sheet)。
 
     * Mac：
         * https://docs.docker.com/docker-for-mac/install/#system-requirements
        
-        你的 Mac 必须满足以下要求才能成功安装 Docker 桌面：
+        Mac 必须满足以下要求才能成功安装 Docker Desktop：
          
-         - **Mac 硬件必须是2010或更高版本的型号**，其中包含 intel 处理器、intel 的硬件支持 (MMU) 虚拟化（包括扩展页表 (EPT) 和无限制模式）。 您可以通过在终端中运行以下命令来查看您的计算机是否具有此支持： ```sysctl kern.hv_support```
+         - Mac 硬件必须是具有 Intel 处理器的 2010 或更新的型号，并且 Intel 的硬件支持内存管理单元 (MMU) 虚拟化，包括扩展页表 (EPT) 和无限制模式。 可以通过在终端中运行以下命令来检查计算机是否具有此支持：```sysctl kern.hv_support```
 
-        如果 Mac 支持虚拟机监控程序框架，则会打印命令 ```kern.hv_support: 1``` 。
+        如果 Mac 支持虚拟机监控程序框架，则命令会打印 ```kern.hv_support: 1```。
 
-         - **macOS 必须是版本10.14 或更高版本**。 这就是 Mojave、Catalina 或大 .Sur。 建议升级到最新版本的 macOS。
+         - **macOS 必须是版本 10.14 或更新版本**。 即 Mojave、Catalina 或 Big Sur。 建议升级到 macOS 的最新版本。
 
-        如果将 macOS 升级到版本10.15 后遇到任何问题，则必须安装最新版本的 Docker Desktop，才能与此版本的 macOS 兼容。
+        如果将 macOS 升级到版本 10.15 后遇到任何问题，则必须安装最新版本的 Docker Desktop 才能与此版本的 macOS 兼容。
 
         - 至少 4 GB 的 RAM。
-        - 不得安装版本4.3.30 之前的 VirtualBox，因为它与 Docker 桌面不兼容。
+        - 不得安装版本 4.3.30 之前的 VirtualBox，因为它与 Docker Desktop 不兼容。
 
         > [!NOTE]
-        > Docker 在最新版本的 macOS 中支持 Docker 桌面。 也就是说，当前版本的 macOS 和之前的两个版本。 随着 macOS 的新主要版本公开发布，Docker 将停止支持最早版本，并支持最新版本的 macOS (除了之前的两个版本) 。 Docker Desktop 目前支持 macOS Mojave、macOS Catalina 和 macOS Big .Sur。
+        > Docker 在最新版本的 macOS 中支持 Docker Desktop。 也就是说，当前版本和上两个版本的 macOS。 随着 macOS 新的主版本正式发布，Docker 将不再支持最早版本的 macOS，而是支持最新版本的 macOS（除了上两个版本之外）。 Docker Desktop 目前支持 macOS Mojave、macOS Catalina 和 macOS Big Sur。
         > 
-        - Apple M1 上不支持安装程序。
+        - Apple M1 上不支持该安装程序。
 
 ## <a name="instructions"></a>说明
 
-1. 下载适用于 [Windows](https://go.microsoft.com/fwlink/?linkid=2132187)、 [Linux](https://go.microsoft.com/fwlink/?linkid=2132186)和 [Mac](https://go.microsoft.com/fwlink/?linkid=2132296)的开发工具包安装程序。
+1. 下载适用于 [Windows](https://go.microsoft.com/fwlink/?linkid=2132187)、[Linux](https://go.microsoft.com/fwlink/?linkid=2132186) 和 [Mac](https://go.microsoft.com/fwlink/?linkid=2132296) 的开发工具包安装程序。
 
-1. 根据你的平台，启动安装程序时存在一些差异。
+1. 启动安装程序时存在一些差异，具体取决于你的平台。
 
     1. 对于 Windows：
     
-        1. 单击 " **开发工具安装程序** " 以打开安装向导。
+        1. 单击“Dev-Tools-Pack-Installer”以打开安装向导。
         
     1. 对于 Mac：
     
-        1. 下载后，将 Dev-Tools-Pack-Installer 文件移动到 "应用程序" 文件夹。
+        1. 下载后，将 Dev-Tools-Pack-Installer.app 文件移动到“Applications”文件夹。
         
-        1. 单击 " **Dev-Tools-Pack-Installer** " 以打开安装向导。
+        1. 单击“Dev-Tools-Pack-Installer.app”以打开安装向导。
         
-        1. 如果收到 "无法识别的开发人员" 安全对话框：
+        1. 如果出现“无法识别的开发人员”安全对话框：
         
-            1. 中转到 "系统首选项"-> 安全 "& 隐私->" 常规 "，然后单击" Dev-Tools-Pack-Installer "旁边的" 仍打开 "按钮
+            1. 转到“系统首选项”->“安全和隐私”->“常规”，然后单击“Dev-Tools-Pack-Installer.app”旁边的“仍要打开”按钮
         
             1. 再次单击 Dock 上的 Electron 图标
         
-            1. 单击 "安全" 对话框中的 "打开" 按钮
+            1. 单击安全对话框中的“打开”按钮
     
     1. 对于 Linux：
     
-        1. 当浏览器提示时，单击 "保存" 以完成安装程序下载
+        1. 当浏览器提示时，单击“保存”以完成安装程序下载
         
-        1. 将执行权限添加到 **appimage** 文件方法 1 (命令行) ：
+        1. 将执行权限添加到 .appimage 文件方法 1（命令行）：
             
             1. 打开 Linux 终端
             
-            1. 在终端中键入以下内容，以跳到 "下载" 文件夹
+            1. 在终端中键入以下内容以转到“Downloads”文件夹
             
                 1. cd ~/Downloads/
                 
-            1. 在终端中键入以下各项，使 AppImage 可执行文件
+            1. 在终端中键入以下内容以使 AppImage 可执行
             
-                1. chmod + x **开发工具-AppImage**
+                1. chmod +x Dev-Tools-Pack-Installer.AppImage
                 
-            1. 在终端中键入以下各项以运行安装程序
+            1. 在终端中键入以下内容以运行安装程序
             
                 1. ./Dev-Tools-Pack-Installer.AppImage
         
-        1. 将执行权限添加到 **appimage** 文件方法 2 (UI) ：
+        1. 将执行权限添加到 .appimage 文件方法 2 (UI)：
         
-            1. 右键单击 "appimage" 文件，然后选择 "属性"
+            1. 右键单击 .appimage 文件并选择“属性”
             
-            1. 打开权限选项卡
+            1. 打开“权限”选项卡
             
-            1. 选中 "允许作为程序执行文件" 框
+            1. 选中“允许将文件作为程序执行”框
             
-            1. 关闭 "属性" 并打开 appimage 文件
+            1. 关闭“属性”并打开 .appimage 文件
 
-1. 在 " **安装开发工具包安装程序** " 页上，单击 " **查看许可证** " 以查看安装程序中包含的每个软件包的许可协议。 如果接受许可协议中的条款，请选中此框，然后单击 " **下一步**"。
+1. 在“安装开发工具包安装程序”页上，单击“查看许可证”以查看安装程序中包含的每个软件包的许可协议 。 如果接受许可协议中的条款，请选中此框，然后单击“下一步”。
 
-    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="安装程序中的 &quot;许可协议&quot; 屏幕。":::
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="安装程序中的许可协议屏幕。":::
 
-1. 单击 " **隐私声明** " 查看 Microsoft 隐私声明。 如果你同意隐私声明条款，并且想要将诊断数据发送给 Microsoft，请选择 **"是"** ，然后单击 " **下一步**"。 否则，选择 " **否** "，然后单击 " **下一步**"。
+1. 单击“隐私声明”以查看 Microsoft 隐私声明。 如果同意隐私声明条款，并且想要将诊断数据发送给 Microsoft，请选择“是”，然后单击“下一步” 。 否则，选择“否”，然后单击“下一步” 。
 
-    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="安装程序中的 &quot;隐私声明协议&quot; 屏幕。":::
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="安装程序中的隐私声明协议屏幕。":::
 
-1. 在 " **配置组件** " 页上，选择要安装的可选工具 (默认情况下将安装) 。
+1. 在“配置组件”页上，选择要安装的可选工具（默认情况下将安装必需工具）。
 
-    1. 如果你使用的是 azure Percept 深色的 Azure Percept 音频 SoM，请确保安装 Intel OpenVino 工具包和 Miniconda3。
+    1. 如果使用的是 Azure Percept Audio SoM（属于 Azure Percept DK），请确保安装 Intel OpenVino 工具包和 Miniconda3。
 
-    1. 单击 " **安装** " 以继续安装。
+    1. 单击“安装”以继续安装。
 
     :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="显示可用软件包的安装程序屏幕。":::
 
-1. 在成功安装所有选择的组件后，向导将转到 " **完成安装向导** " 页。 单击 " **完成** " 退出安装程序。
+1. 成功安装所有选定的组件后，向导将转到“完成安装向导”页面。 单击“完成”退出安装程序。
 
-    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="安装程序完成屏幕。":::
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="“安装程序完成”屏幕。":::
 
 ## <a name="docker-status-check"></a>Docker 状态检查
 
-如果安装程序通知你验证 Docker Desktop 处于良好运行状态，请参阅以下步骤：
+如果安装程序通知你验证 Docker Desktop 是否处于良好运行状态，请参阅以下步骤：
 
-   1. Windows：
+   1. Windows:
    
-      1. 展开系统托盘隐藏图标：
+      1. 展开系统托盘隐藏的图标：
       
-         1. 如果隐藏，则展开系统托盘隐藏图标：
+         1. 如果图标已隐藏，请展开系统托盘隐藏的图标：
 
             :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="系统托盘。":::
          
-         1. 验证 Docker 桌面图标是否显示 "Docker Desktop 正在运行"：
+         1. 验证 Docker Desktop 图标是否显示“Docker Desktop 正在运行”：
 
             :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker 状态。":::
          
-         1. 如果看不到系统托盘中列出的上述图标，请从 "开始" 菜单启动 Docker Desktop。
+         1. 如果没有在系统托盘中看到以上图标，请从“开始”菜单启动 Docker Desktop。
          
-         1. 如果 Docker 提示你重新启动，则可以在重新启动完成并且 Docker 处于运行状态后关闭安装程序并重新启动。 应检测到任何成功安装的第三方应用程序，并且不会自动重新安装该应用程序。
+         1. 如果 Docker 提示重新启动，可以关闭安装程序，在重新启动完成且 Docker 处于运行状态后重启。 任何成功安装的第三方应用程序都应该能被检测到，并且不会自动重新安装。
 
 ## <a name="next-steps"></a>后续步骤
 
-请查看 [Azure Percept 高级开发存储库](https://github.com/microsoft/azure-percept-advanced-development) ，了解 AZURE Percept 深色的高级开发入门。
+请查看 [Azure Percept 高级开发存储库](https://github.com/microsoft/azure-percept-advanced-development)，开始使用适用于 Azure Percept DK 的高级开发。

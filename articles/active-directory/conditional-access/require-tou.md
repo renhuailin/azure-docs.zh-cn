@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077891"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款
@@ -35,8 +35,8 @@ ms.locfileid: "93077891"
 
 若要完成本快速入门中的方案，你需要：
 
-- **对 Azure AD Premium 版本的访问权限** ：Azure AD 条件访问是一项 Azure AD Premium 功能。
-- **名为 Isabella Simonsen 的测试帐户** ：如果不知道如何创建测试帐户，请参阅 [添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
+- **对 Azure AD Premium 版本的访问权限**：Azure AD 条件访问是一项 Azure AD Premium 功能。
+- **名为 Isabella Simonsen 的测试帐户**：如果不知道如何创建测试帐户，请参阅 [添加基于云的用户](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)。
 
 ## <a name="test-your-sign-in"></a>测试登录
 
@@ -54,7 +54,7 @@ ms.locfileid: "93077891"
 **创建使用条款：**
 
 1. 在 Microsoft Word 中创建一个新文档。
-1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf** 。
+1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf**。
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。
 

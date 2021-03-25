@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 监视功能来监视 Azure 事件�
 ms.topic: article
 ms.date: 02/25/2021
 ms.openlocfilehash: 52ab66fe264b85be117eb8e2e21cb89f38d0fcae
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101715575"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标

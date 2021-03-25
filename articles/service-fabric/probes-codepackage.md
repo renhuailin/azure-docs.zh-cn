@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82137580"
 ---
 # <a name="liveness-probe"></a>运行情况探测
@@ -42,7 +42,7 @@ ms.locfileid: "82137580"
 
 * `Error`：容器重启之前，探测“failureCount” ==  “failureThreshold” 。
 
-* `Warning`： 
+* `Warning`: 
     * 探测失败，“failureCount” < “failureThreshold” 。 此运行状况报告会一直进行下去，直至“failureCount”达到在“failureThreshold”或“successThreshold”中设置的值  。
     * 如果失败后成功，警告仍然存在，但会包含更新的续成功。
 

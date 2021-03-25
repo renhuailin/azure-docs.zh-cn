@@ -1,26 +1,26 @@
 ---
 title: 部署资源的多个实例
-description: 使用 Azure 资源管理器模板中的复制操作和数组 (ARM 模板) 部署资源类型多次。
+description: 在 Azure 资源管理器模板（ARM 模板）中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97724487"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
-本文介绍如何在 Azure 资源管理器模板中创建多个资源实例 (ARM 模板) 。 通过将 `copy` 元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
+本文介绍如何在 Azure 资源管理器模板（ARM 模板）中创建一个资源的多个实例。 通过将 `copy` 元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
 
-还可以将 `copy` 与 [属性](copy-properties.md)、 [变量](copy-variables.md)和 [输出](copy-outputs.md)一起使用。
+还可以将 `copy` 用于 [properties](copy-properties.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
 ## <a name="syntax"></a>语法
 
-`copy`元素具有以下常规格式：
+`copy` 元素采用以下常规格式：
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ ms.locfileid: "97724487"
 }
 ```
 
-`name`属性是标识循环的任何值。 `count`属性指定资源类型所需的迭代数。
+`name` 属性是标识循环的任何值。 `count` 属性指定要对该资源类型进行的迭代次数。
 
-使用 `mode` 和 `batchSize` 属性来指定是以并行方式还是按顺序部署资源。 [串行或并行](#serial-or-parallel)中介绍了这些属性。
+使用 `mode` 和 `batchSize` 属性指定是并行还是按顺序部署资源。 [串行或并行](#serial-or-parallel)中介绍了这些属性。
 
 ## <a name="copy-limits"></a>复制限制
 
@@ -52,7 +52,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ## <a name="resource-iteration"></a>资源迭代
 
-以下示例创建在参数中指定的存储帐户的数目 `storageCount` 。
+以下示例创建在 `storageCount` 参数中指定的存储帐户数目。
 
 ```json
 {
@@ -97,7 +97,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 * storage1
 * storage2。
 
-若要偏移索引值，可以在 `copyIndex()` 函数中传递一个值。 迭代数仍在 copy 元素中指定，但的值以 `copyIndex` 指定的值为偏移。 因此，以下示例：
+若要偏移索引值，可以在 `copyIndex()` 函数中传递一个值。 迭代次数仍在 copy 元素中指定，但 `copyIndex` 的值会偏移一个指定的值。 因此，以下示例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-`mode`属性还接受 **parallel**，这是默认值。
+`mode` 属性也接受“parallel”（默认值）。
 
 ## <a name="iteration-for-a-child-resource"></a>子资源的迭代
 
@@ -252,9 +252,9 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要设置在复制循环中创建的资源的依赖项，请参阅 [定义在 ARM 模板中部署资源的顺序](define-resource-dependency.md)。
-* 若要学习教程，请参阅 [教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关涵盖资源复制的 Microsoft Learn 模块，请参阅 [使用高级 ARM 模板功能管理复杂的云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
+* 若要设置在复制循环中创建的资源的依赖项，请参阅[在 ARM 模板中定义部署资源的顺序](define-resource-dependency.md)。
+* 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 有关介绍资源副本的 Microsoft Learn 模块，请参阅[使用高级 ARM 模板功能管理复杂云部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 有关 copy 元素的其他用法，请参阅：
   * [ARM 模板中的属性迭代](copy-properties.md)
   * [ARM 模板中的变量迭代](copy-variables.md)

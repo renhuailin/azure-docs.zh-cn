@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
 ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98108137"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Single Sign-on for Skytap 的集成
@@ -74,7 +74,7 @@ ms.locfileid: "98108137"
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的“Single Sign-on for Skytap”应用程序集成页上，找到“管理”部分。   选择“单一登录”  。
-1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的笔形图标以编辑设置   。
 
    ![“设置 SAML 单一登录”页的屏幕截图，其中突出显示了铅笔图标](common/edit-urls.png)
@@ -108,10 +108,10 @@ ms.locfileid: "98108137"
 在本部分，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，并记下“密码”字段中显示的值。  
    1. 选择“创建”  。
 
@@ -125,12 +125,12 @@ ms.locfileid: "98108137"
 
    ![“管理”部分的屏幕截图，其中突出显示了“用户和组”](common/users-groups-blade.png)
 
-1. 选择“添加用户”。  在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”。 在“添加分配”对话框中选择“用户和组”。 
 
     ![“用户和组”页的屏幕截图，其中已突出显示“添加用户”](common/add-assign-user.png)
 
-1. 在“用户和组”对话框的“用户”列表中，选择“B.Simon”。   然后，选择屏幕底部的“选择”按钮。 
-1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  然后，选择屏幕底部的“选择”按钮。 
+1. 在“用户和组”对话框的“用户”列表中，选择“B.Simon”。  然后，选择屏幕底部的“选择”按钮。
+1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，从列表中为用户选择相应的角色。  然后，选择屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中选择“分配”。  
 
 ## <a name="configure-single-sign-on-for-skytap-sso"></a>配置 Single Sign-on for Skytap SSO

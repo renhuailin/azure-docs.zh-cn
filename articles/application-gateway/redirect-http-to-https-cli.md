@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: victorh
 ms.openlocfilehash: 0d56a1c46f251307755416ef44991ac6f809f330
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566735"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持 HTTP 到 HTTPS 重定向的应用程序网关
@@ -31,7 +31,7 @@ ms.locfileid: "94566735"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - 本教程需要 Azure CLI 版本的2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
+ - 本教程需要 Azure CLI 版本 2.0.4 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -85,7 +85,7 @@ az network public-ip create \
 
 可以使用 [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 
 
-将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress* 。 在此示例中，在创建应用程序网关时将关联所创建的证书及其密码。 
+将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 在此示例中，在创建应用程序网关时将关联所创建的证书及其密码。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -111,7 +111,7 @@ az network application-gateway create \
 - *appGatewayBackendPool* - 应用程序网关必须至少具有一个后端地址池。
 - *appGatewayBackendHttpSettings* - 指定将端口 80 和 HTTP 协议用于通信。
 - *appGatewayHttpListener* - 与 *appGatewayBackendPool* 关联的默认侦听器。
-- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener* 。
+- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener*。
 - *rule1* - 与 *appGatewayHttpListener* 关联的默认路由规则。
 
 ## <a name="add-a-listener-and-redirection-rule"></a>添加侦听器和重定向规则

@@ -1,6 +1,6 @@
 ---
 title: 媒体服务 Microsoft PlayReady 许可证模板
-description: 通过 PlayReady 许可证模板了解 Azure 媒体服务 v3 和如何配置 PlayReady 许可证。
+description: 了解带有 PlayReady 许可证模板的媒体服务 v3 以及如何配置 PlayReady 许可证。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955178"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455427"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>带有 PlayReady 许可证模板的媒体服务 v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-通过 Azure 媒体服务，可使用 Microsoft PlayReady 加密内容  。 媒体服务还提供用于交付 PlayReady 许可证的服务。 可使用媒体服务 API 来配置 PlayReady 许可证。 当播放器尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
+通过 Azure 媒体服务，可使用 Microsoft PlayReady 加密内容。 媒体服务还提供用于交付 PlayReady 许可证的服务。 可使用媒体服务 API 来配置 PlayReady 许可证。 当播放器尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并用来解密和播放指定的内容。
 
 PlayReady 许可证包含了当用户尝试播放受保护的内容时要由 PlayReady 数字版权管理 (DRM) 运行时强制实施的权限和限制。 下面是可以指定的 PlayReady 许可证限制的一些示例：
 
@@ -65,7 +65,7 @@ XML 遵循 [PlayReady 许可证模板 XML 架构](#schema)部分中定义的 Pla
 
 媒体服务提供了可用于配置 PlayReady 许可证模板的类型。 
 
-后面的代码片段使用媒体服务 .NET 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
+后面的代码片段使用媒体服务 .NET 类来配置 PlayReady 许可证模板。 这些类在 [Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models) 命名空间中定义。 此代码片段配置 PlayReady 许可证的 PlayRight。 PlayRight 授权用户播放受许可证中和 PlayRight 本身（用于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
 
 > [!IMPORTANT]
 > PlayReady 许可证具有功能强大的限制。 如果输出保护施加了太多限制，内容可能会无法在某些客户端上播放。 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)。

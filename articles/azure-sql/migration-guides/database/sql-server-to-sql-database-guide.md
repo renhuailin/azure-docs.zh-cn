@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/19/2021
+ms.openlocfilehash: 9205301cb77941e4ea7ca026710d44ba82f6a937
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690934"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563838"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>迁移指南：将 SQL Server 到 SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -51,13 +51,15 @@ ms.locfileid: "101690934"
 
 在“发现”阶段，扫描网络以查明你的组织使用的所有 SQL Server 实例和功能。 
 
-使用 [Azure Migrate](../../../migrate/migrate-services-overview.md) 评估本地服务器的迁移适用性、执行基于性能的大小调整，并提供在 Azure 中运行这些服务所需的成本估计。 
+使用 [Azure Migrate](../../../migrate/migrate-services-overview.md) 来评估本地服务器的迁移适用性，执行基于性能的大小调整，并为提供在 Azure 中运行服务器的成本估算。 
 
-另外，还可以使用 [Microsoft 评估和规划工具包 ("地图工具包" ) ](https://www.microsoft.com/download/details.aspx?id=7826) 来评估当前 IT 基础结构。 该工具包提供了功能强大的清单、评估和报告工具，可以简化迁移规划过程。 
+或者，使用  [Microsoft 评估和规划工具包（“MAP 工具包”）](https://www.microsoft.com/download/details.aspx?id=7826)来评估当前的 IT 基础结构。 该工具包提供了功能强大的清单、评估和报告工具，可以简化迁移规划过程。 
 
 若要详细了解可用于“发现”阶段的工具，请参阅[可用于数据迁移方案的服务和工具](../../../dms/dms-tools-matrix.md)。 
 
 ### <a name="assess"></a>评估 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 发现数据源后，评估可迁移到 Azure SQL 数据库的任何本地 SQL Server 数据库，以确定迁移阻碍或兼容性问题。 
 
@@ -85,7 +87,7 @@ ms.locfileid: "101690934"
 如果评估遇到多个阻碍，确认你的数据库未准备好进行 Azure SQL 数据库迁移，则还可以考虑：
 
 - [Azure SQL 托管实例](../managed-instance/sql-server-to-managed-instance-overview.md)（如果有多个以实例为作用域的依赖项）
-- 如果 SQL 数据库和 SQL 托管实例的目标都不合适，请[在 Azure 虚拟机上 SQL Server](../virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md) 。 
+- [Azure 虚拟机中的 SQL Server](../virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md)（如果 SQL 数据库和 SQL 托管实例都不能成为合适的目标）。 
 
 
 
@@ -152,15 +154,15 @@ ms.locfileid: "101690934"
 
 ## <a name="migration-recommendations"></a>迁移建议
 
-若要加快迁移到 Azure SQL Database 的速度，应考虑以下建议：
+若要加快迁移到 Azure SQL 数据库的速度，应考虑以下建议：
 
 |  | 资源争用 | 建议 |
 |--|--|--|
-| **源 (通常在本地)** |源中的迁移过程中的主要瓶颈是数据 i/o 和数据文件延迟，需要仔细监视。  |根据数据 IO 和数据文件的延迟时间，以及它是虚拟机还是物理服务器，你必须使用存储管理员并探索选项来缓解瓶颈。 |
-|**Azure SQL Database (目标)**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，最多可以获得 96 MB/s 的日志生成速率。 | 若要加快迁移速度，请将目标 SQL DB 扩展到业务关键 Gen5 8 vcore，以获取 96 MB/秒的最大日志生成速率，并为日志文件实现低延迟。 [超大规模](../../database/service-tier-hyperscale.md)服务层提供 100 MB/秒的对数率，而不考虑所选的服务级别 |
-|**Network** |所需的网络带宽等于最大日志引入速率 96 MB/s (768 Mb/秒)  |根据从本地数据中心到 Azure 的网络连接，请检查网络带宽 (通常是 [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)) ，以满足日志引入速率上限。 |
-|**用于数据迁移助手 (DMA 的虚拟机)** |CPU 是运行 DMA 的虚拟机的主要瓶颈 |使用快速启动数据迁移时要考虑的事项 </br>-Azure 计算密集型 Vm </br>-使用至少 F8s_v2 (8 vcore) VM 运行 DMA </br>-确保 VM 在与目标相同的 Azure 区域中运行 |
-|**Azure 数据库迁移服务 (DMS)** |DM 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DM 自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需任何手动干预。  |
+| **源（通常在本地）** |迁移期间源中的主要瓶颈是 DATA 文件的延迟和 DATA I/O，需要仔细监视。  |根据 DATA 文件的延迟时间和 DATA IO，以及它是虚拟机还是物理服务器，你必须与存储管理员联系，并探索各种选项来缓解瓶颈。 |
+|**目标（Azure SQL 数据库）**|最大的限制因素是日志生成速率和日志文件的延迟。 使用 Azure SQL 数据库时，日志生成速率最高可达 96-MB/秒。 | 若要加快迁移速度，请将目标 SQL DB 纵向扩展到业务关键 Gen5 8 vCore，以获取 96 MB/秒的最大日志生成速率，并实现日志文件的低延迟。 无论选择哪种服务级别，[超大规模](../../database/service-tier-hyperscale.md)服务层都提供 100-MB/秒的日志速率 |
+|**Network** |所需网络带宽等于最大日志引入速率 96 MB/秒（768 Mb/秒） |根据本地数据中心到 Azure 的网络连接情况，检查网络带宽（通常是 [Azure ExpressRoute](../../../expressroute/expressroute-introduction.md#bandwidth-options)），使其适应最大日志引入速率。 |
+|**用于数据迁移助手 (DMA) 的虚拟机** |对于运行 DMA 的虚拟机来说，主要的瓶颈是 CPU |通过以下项来加速数据迁移时的注意事项 </br>- Azure 计算密集型 VM </br>- 使用至少 F8s_v2 (8 vcore) VM 运行 DMA </br>- 确保 VM 在与目标相同的 Azure 区域中运行 |
+|**Azure 数据库迁移服务 (DMS)** |DMS 的计算资源争用和数据库对象注意事项 |使用高级 4 vCore。 DMS 会自动处理数据库对象（如外键、触发器、约束和非聚集索引），无需手动干预。  |
 
 
 ## <a name="post-migration"></a>迁移后
@@ -181,9 +183,6 @@ ms.locfileid: "101690934"
 1. 设置测试环境：测试环境应包含源数据库和目标数据库的副本。 请确保隔离测试环境。
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
-
-   > [!NOTE]
-   > 为帮助开发和运行迁移后验证测试，请考虑使用合作伙伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 提供的数据质量解决方案。 
 
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 

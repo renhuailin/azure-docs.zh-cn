@@ -4,15 +4,15 @@ description: 此 Azure Policy 模式通过示例介绍了如何使用策略定�
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3f644cdbfc45b06d1ad5db8e7727c0fa69742f00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545584"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure Policy 模式：逻辑运算符
 
-策略定义可以包含多个条件语句。 可能需要每个语句都为 true，或者只需其中一些语句为 true。 为了满足这些需求，语言提供与 **not**、**allOf** 和 **anyOf** 相对应的[逻辑运算符](../concepts/definition-structure.md#logical-operators)。 它们是可选的，可以通过嵌套来创建复杂的方案。
+策略定义可以包含多个条件语句。 可能需要每个语句都为 true，或者只需其中一些语句为 true。 为了满足这些需求，语言提供与 **not**、**allOf** 和 **anyOf** 相对应的 [逻辑运算符](../concepts/definition-structure.md#logical-operators)。 它们是可选的，可以通过嵌套来创建复杂的方案。
 
 ## <a name="sample-1-one-logical-operator"></a>示例 1：一个逻辑运算符
 
@@ -25,7 +25,7 @@ ms.locfileid: "88545584"
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json" range="6-22" highlight="3":::
 
 **policyRule.if** 块使用单个 **allOf** 来确保所有三个条件都为 true。
-仅当所有这些条件的评估结果都为 true 时，才会执行**审核**效果触发器。
+仅当所有这些条件的评估结果都为 true 时，才会执行 **审核** 效果触发器。
 
 ## <a name="sample-2-multiple-logical-operators"></a>示例 2：多个逻辑运算符
 

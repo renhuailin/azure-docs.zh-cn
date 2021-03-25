@@ -9,10 +9,10 @@ ms.date: 06/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: ebeca5ec1e3a478fdf1a62e2478cad9754c6ccd2
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99808520"
 ---
 1. 请确保已安装最新 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 Connect-AzAccount 登录到 Azure 帐户

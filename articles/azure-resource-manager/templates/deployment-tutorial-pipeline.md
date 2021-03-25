@@ -5,10 +5,10 @@ ms.date: 03/02/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 3ff98c1c033c6da4b6bdf40c3b8ecb3347601741
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101722786"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 ARM 模板
@@ -33,7 +33,7 @@ Azure DevOps 提供开发人员服务，以支持团队规划工作、协作开�
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -128,7 +128,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * **版本控制**：选择“Git”。 可能需要展开“高级”才能看到“版本控制” 。
 
     可以使用其他属性的默认值。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 创建服务连接，用于将项目部署到 Azure。
 
@@ -199,7 +199,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 名称是在管道 YAML 文件中指定的名称。 你将看到创建了一个存储帐户。 存储帐户名称以“存储”开头。
 1. 选择存储帐户名称以将其打开。
 1. 选择“属性”。 注意“复制”是“本地冗余存储(LRS)” 。
@@ -233,7 +233,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。

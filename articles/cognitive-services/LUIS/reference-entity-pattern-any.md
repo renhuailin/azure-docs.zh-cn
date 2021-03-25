@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91542200"
 ---
 # <a name="patternany-entity"></a>Pattern.any 实体
@@ -106,4 +106,4 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本 [教程](luis-tutorial-pattern.md)中，请使用 **模式。任何** 实体从最谈话中提取数据，其中最谈话的格式正确，并且数据的结尾可能会与查询文本中的其余单词轻松混淆。
+在本 [教程](luis-tutorial-pattern.md)中，对于格式良好且数据结尾可能容易与话语的剩余单词混淆的话语，我们使用 **Pattern.any** 实体从这些话语中提取数据。

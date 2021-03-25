@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: 832147fd06dbc7439500b911efbbde6d9b1d81fd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
-ms.translationtype: MT
+ms.openlocfilehash: a870b72d1dda04ab29dbb5f056873d47f888b837
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123056"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501356"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -22,16 +22,18 @@ ms.locfileid: "92123056"
 
 如果不在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序，可以使用 [Azure PowerShell](/powershell/azure/) 来管理应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
+
 如果你偏好于在本地计算机上运行 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 在本地运行 Azure PowerShell 时，请使用 **Connect-AzAccount** cmdlet 登录到 Azure，然后尝试运行本文中所述的 cmdlet。
 
 > [!TIP]
-> 如果需要在不同的 Azure 订阅中运行 PowerShell 命令，请参阅[更改活动订阅](/powershell/azure/manage-subscriptions-azureps?view=azps-3.4.0#change-the-active-subscription)。
+> 如果需要在另一个 Azure 订阅中运行 PowerShell 命令，请参阅[更改活动订阅](/powershell/azure/manage-subscriptions-azureps#change-the-active-subscription)。
 
 ## <a name="install-the-iot-central-module"></a>安装 IoT Central 模块
 
@@ -70,10 +72,10 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在 **澳大利亚**、 **亚太**、 **欧洲**、 **美国**、 **英国**和 **日本** 地区创建 IoT Central 应用程序。 |
+|位置 |此 cmdlet 默认使用资源组中的位置。 目前，可以在澳大利亚、亚太、欧洲、美国、英国和日本创建 IoT Central 应用程序     。 |
 |名称              |应用程序在 Azure 门户中的名称。 |
 |子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
-|SKU               |目前，可以使用 **ST1** 或 **ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+|SKU               |目前，可以使用 ST1 或 ST2 。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 |DisplayName       |UI 中显示的应用程序名称。 |
 

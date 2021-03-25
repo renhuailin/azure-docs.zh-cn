@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305704"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
@@ -28,9 +28,9 @@ ms.locfileid: "93305704"
 
 此 API 可以检测时序数据中以下类型的异常模式：
 
-* **正值和负值趋势** ：例如，监视计算向上趋势过程中的内存使用率可能会很有趣，因为可能会显示内存泄漏，
-* **值的动态范围的更改** ：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
-* **峰值和低值** ：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和低值可以预测非正常行为。
+* **正值和负值趋势**：例如，监视计算向上趋势过程中的内存使用率可能会很有趣，因为可能会显示内存泄漏，
+* **值的动态范围的更改**：例如，在监视云服务引发的异常情况时，值在动态范围内的任何更改可能表示该服务的运行状况不稳定，
+* **峰值和低值**：例如，监视服务中的登录失败次数或电子商务网站中的签出数，其峰值和低值可以预测非正常行为。
 
 这些机器学习检测程序跟踪值的更改，并将正在进行的更改报告为异常分数。 它们不需要临时阈值优化，分数可用于控制误报率。 API 在几种情形中非常有用：通过跟踪 KPI 的服务监视、通过度量值（如大量搜索、点击）监视使用情况和通过计数器（如内存、CPU、文件读取等）监视性能。
 

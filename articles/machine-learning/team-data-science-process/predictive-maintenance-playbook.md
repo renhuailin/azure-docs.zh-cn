@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880652"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
@@ -233,12 +233,12 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 | 资产 ID | 时间 | \<Feature Columns> | Label |
 | ---- | ---- | --- | --- |
-| A123 |第 1 天 | 上获取。 上获取。 上获取。 | 上获取。 |
-| A123 |第 2 天 | 上获取。 上获取。 上获取。 | 上获取。 |
-| ...  |...   | 上获取。 上获取。 上获取。 | 上获取。 |
-| B234 |第 1 天 | 上获取。 上获取。 上获取。 | 上获取。 |
-| B234 |第 2 天 | 上获取。 上获取。 上获取。 | 上获取。 |
-| ...  |...   | 上获取。 上获取。 上获取。 | 上获取。 |
+| A123 |第 1 天 | . . . | . |
+| A123 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |第 1 天 | . . . | . |
+| B234 |第 2 天 | . . . | . |
+| ...  |...   | . . . | . |
 
 特征工程的最后一个步骤是将目标变量加上 **标签**。 此过程依赖于建模技术。 而建模技术又依赖于业务问题和可用数据的性质。 下一部分将介绍标签。
 

@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 893e86ecf220ceb327eed9c6f95be4c7ed1afb1c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363638"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
@@ -519,7 +519,7 @@ ms.locfileid: "100363638"
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Blob 存储事件数据。 |
+| `data` | object | Blob 存储事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -534,14 +534,14 @@ ms.locfileid: "100363638"
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Blob 存储事件数据。 |
+| `data` | object | Blob 存储事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `api` | string | 触发事件的操作。 |
 | `clientRequestId` | string | 客户端提供的用于存储 API 操作的请求 ID。 此 ID 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |

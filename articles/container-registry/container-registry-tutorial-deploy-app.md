@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148419"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教程：通过异地复制的 Azure 容器注册表部署 Web 应用
@@ -58,7 +58,7 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将该 Web 应用预配到“美国西部”区域。  
 
-![屏幕截图显示用于容器的 Web 应用，其中突出显示了“创建”按钮。][deploy-app-portal-02]
+![屏幕截图显示了用于容器的 Web 应用，其中突出显示了“创建”按钮。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>查看已部署的 Web 应用
 
@@ -88,7 +88,7 @@ Azure 容器注册表支持直接将容器化应用程序部署到[用于容器�
 
 选择“创建”，将 Web 应用预配到“美国东部”区域。  
 
-![屏幕截图显示用于容器的 Web 应用创建窗口，其中突出显示了“创建”按钮。][deploy-app-portal-06]
+![屏幕截图显示了用于容器的 Web 应用的“创建”窗口，其中突出显示了“创建”按钮。][deploy-app-portal-06]
 
 ## <a name="view-the-second-deployed-web-app"></a>查看第二个已部署的 Web 应用
 

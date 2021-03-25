@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98752661"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
@@ -46,9 +46,9 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 ### <a name="access-control-lists"></a>访问控制列表
 
-资源提供程序可根据它所知并对其授予特定级别访问权限的应用程序（客户端）ID 列表，强制实施授权检查。 当资源从 Microsoft 标识平台接收令牌时，它可以解码令牌并从和声明中提取客户端的应用程序 ID `appid` `iss` 。 然后将应用程序与它所维护的访问控制列表 (ACL) 相比较。 ACL 的粒度和方法可能因资源不同而有较大差异。
+资源提供程序可根据它所知并对其授予特定级别访问权限的应用程序（客户端）ID 列表，强制实施授权检查。 资源从 Microsoft 标识平台接收令牌时，可将此令牌解码，并从 `appid` 和 `iss` 声明中提取客户端的应用程序 ID。 然后将应用程序与它所维护的访问控制列表 (ACL) 相比较。 ACL 的粒度和方法可能因资源不同而有较大差异。
 
-常见用例是使用 ACL 对 Web 应用程序或 Web API 运行测试。 Web API 可能仅向特定客户端授予部分完全权限。 若要在 API 上运行端到端测试，请创建一个测试客户端，以便从 Microsoft 标识平台获取令牌，然后将它们发送到 API。 然后，API 会检查测试客户端应用程序 ID 的 ACL，以获取对 API 整个功能的完全访问权限。 如果使用这种 ACL，不仅需要验证调用方的 `appid` 值，而且还要验证令牌的 `iss` 值是否受信任。
+常见用例是使用 ACL 对 Web 应用程序或 Web API 运行测试。 Web API 可能仅向特定客户端授予部分完全权限。 若要在 API 上运行端到端测试，请创建一个测试客户端，以便从 Microsoft 标识平台获取令牌并将令牌发送到 API。 然后，API 会检查测试客户端应用程序 ID 的 ACL，以获取对 API 整个功能的完全访问权限。 如果使用这种 ACL，不仅需要验证调用方的 `appid` 值，而且还要验证令牌的 `iss` 值是否受信任。
 
 对于需要访问使用者用户（拥有个人 Microsoft 帐户）所拥有数据的守护程序和服务帐户而言，这种授权类型很常见。 对于组织拥有的数据，建议通过应用程序权限获取必要的授权。
 
@@ -103,9 +103,9 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
-| `redirect_uri` | 必需 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
+| `tenant` | 必须 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
+| `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 
 此时，Azure AD 强制要求只有租户管理员可以登录来完成请求。 系统会要求管理员批准在应用注册门户中针对应用请求的所有直接应用程序权限。
@@ -141,7 +141,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 ## <a name="get-a-token"></a>获取令牌
 
-获取应用程序的必要授权后，可以继续获取 API 的访问令牌。 若要使用客户端凭据授予获取令牌，请向 `/token` Microsoft 标识平台发送 POST 请求：
+获取应用程序的必要授权后，可以继续获取 API 的访问令牌。 若要使用客户端凭据授予功能获取令牌，请将 POST 请求发送到 `/token` Microsoft 标识平台：
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （为获得最佳效果，请使用自己的应用 ID - 教程应用程序不会请求有用的权限。）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
@@ -167,10 +167,10 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必需 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
-| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台你为应用配置的所有直接应用程序权限，终结点应该为与要使用的资源相关联的应用程序颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必需 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
-| `grant_type` | 必需 | 必须设置为 `client_credentials`。 |
+| `client_id` | 必须 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台：在为应用配置的所有直接应用程序权限中，终结点应为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `client_secret` | 必须 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
@@ -188,12 +188,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
-| `client_id` | 必需 |分配给应用的应用程序（客户端）ID。 |
-| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值向 Microsoft 标识平台通知你已为你的应用配置的所有直接应用程序权限，它应该为与要使用的资源相关联的用户颁发一个令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
+| `tenant` | 必须 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
+| `client_id` | 必须 |分配给应用的应用程序（客户端）ID。 |
+| `scope` | 必须 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台：在为应用配置的所有直接应用程序权限中，终结点应为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
 | `client_assertion_type` | 必须 | 该值必须设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必需 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
-| `grant_type` | 必需 | 必须设置为 `client_credentials`。 |
+| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)的相关信息。|
+| `grant_type` | 必须 | 必须设置为 `client_credentials`。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
@@ -212,7 +212,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | 参数 | 说明 |
 | --- | --- |
 | `access_token` | 请求的访问令牌。 应用可以使用此令牌向受保护的资源（例如 Web API）进行身份验证。 |
-| `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `bearer` 。 |
+| `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `bearer`。 |
 | `expires_in` | 访问令牌有效的时间长短（以秒为单位）。 |
 
 ### <a name="error-response"></a>错误响应

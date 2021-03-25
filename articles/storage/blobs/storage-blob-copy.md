@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 28b23555f97e58dde038c5e3e12a4b741b81776d
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059035"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>使用 Azure 存储客户端库复制 blob
@@ -49,7 +49,7 @@ ms.locfileid: "98059035"
 - [StartCopyFromUri](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuri)
 - [StartCopyFromUriAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.startcopyfromuriasync)
 
-`StartCopyFromUri`和 `StartCopyFromUriAsync` 方法返回包含有关复制操作的信息的[CopyFromUriOperation](/dotnet/api/azure.storage.blobs.models.copyfromurioperation)对象。
+`StartCopyFromUri` 和 `StartCopyFromUriAsync` 方法返回包含有关复制操作的信息的 [CopyFromUriOperation](/dotnet/api/azure.storage.blobs.models.copyfromurioperation) 对象。
 
 以下代码示例获取表示以前创建的 Blob 的 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)，并将其复制到同一容器中的新 Blob：
 
@@ -62,7 +62,7 @@ ms.locfileid: "98059035"
 - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy)
 - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync)
 
-`StartCopy`和 `StartCopyAsync` 方法返回一个复制 ID 值，该值用于检查状态或中止复制操作。
+`StartCopy` 和 `StartCopyAsync` 方法返回用于检查状态或中止复制操作的复制 ID 值。
 
 以下代码示例获取对以前创建的 Blob 的引用，并将其复制到同一容器中的新 Blob：
 
@@ -125,7 +125,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-若要复制 Blob，请调用 [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) 方法。 `start_copy_from_url`方法返回包含有关复制操作的信息的字典。
+若要复制 Blob，请调用 [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) 方法。 `start_copy_from_url` 方法返回包含有关复制操作的信息的字典。
 
 以下代码示例获取表示以前创建的 Blob 的 [BlobClient](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient)，并将其复制到同一容器中的新 Blob：
 

@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f77efc877f210455be6716f8159ee000241c62f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040339"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102425696"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -80,7 +80,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 此值在初始化期间是读取的，并且可以设置为任意值。 只有 `Development` 、和的值 `Staging` `Production` 由运行时接受。 如果此应用程序设置在 Azure 中运行时不存在，则假定环境为 `Production` 。 `ASPNETCORE_ENVIRONMENT`如果需要将 Azure 中的运行时环境更改为以外的其他内容，请使用此设置，而不是 `Production` 。 `AZURE_FUNCTIONS_ENVIRONMENT` `Development` 当在本地计算机上运行时，Azure Functions Core Tools 设置为，并且无法在文件中的 local.settings.js中重写。 若要了解详细信息，请参阅 [基于环境的启动类和方法](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods)。
+在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 在初始化期间读取此值，并且可以将其设置为任意值。 运行时仅接受 `Development`、`Staging` 和 `Production` 的值。 如果在 Azure 中运行时此应用程序设置不存在，则假定环境为 `Production`。 如果需要将 Azure 中的运行时环境更改为 `Production` 以外的其他内容，请使用此设置，而不是 `ASPNETCORE_ENVIRONMENT`。 在本地计算机上运行时，Azure Functions Core Tools 将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为 `Development`，并且无法在 local.settings.json 文件中重写。 若要了解详细信息，请参阅[基于环境的启动类和方法](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods)。
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
@@ -159,11 +159,11 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-要在此函数应用中使用的 Functions 运行时版本。 波浪符加主要版本号表示使用该主要版本的最新版本（例如“~2”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“2.0.12345”）。 默认值为“~2”。 值 `~1` 让应用固定使用运行时版本 1.x。
+托管函数应用的 Functions 运行时版本。 波浪符（`~`）加主要版本号表示使用该主要版本的最新版本（例如“~3”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“3.0.12345”）。 默认值为“~3”。 值 `~1` 让应用固定使用运行时版本 1.x。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~2|
+|FUNCTIONS\_EXTENSION\_VERSION|~3|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
@@ -186,13 +186,13 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON \_ THREADPOOL \_ 线程 \_ 计数
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
-指定 Python 语言辅助角色将用于执行函数调用的最大线程数，其默认值 `1` 为 Python 版本及更高版本 `3.8` 。 对于 Python 版本 `3.9` 及更高版本，该值设置为 `None` 。 请注意，此设置不能保证在执行过程中设置的线程数。 此设置允许 Python 将线程数扩展到指定的值。 此设置仅适用于 Python 函数应用。 此外，此设置还适用于同步函数调用，不适用于协同程序。
+指定 Python 语言辅助角色将用于执行函数调用的最大线程数，对于 Python 版本 `3.8` 及更低版本，默认值为 `1`。 对于 Python 版本 `3.9` 及更高版本，该值设置为 `None`。 请注意，此设置不能保证在执行过程中设置的线程数。 此设置允许 Python 将线程数扩展到指定的值。 此设置仅适用于 Python 函数应用。 此外，此设置还适用于同步函数调用，而不适用于协同例程。
 
 |键|示例值|最大值|
 |---|------------|---------|
-|PYTHON \_ THREADPOOL \_ 线程 \_ 计数|2|32|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
@@ -203,17 +203,17 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="pip_extra_index_url"></a>PIP \_ 额外 \_ 索引 \_ URL
+## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
 此设置的值指示 Python 应用的自定义包索引 URL。 如果需要使用在额外的包索引中找到的自定义依赖项运行远程生成，请使用此设置。   
 
 |键|示例值|
 |---|------------|
-|PIP \_ 额外 \_ 索引 \_ URL|http://my.custom.package.repo/simple |
+|PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
-若要了解详细信息，请参阅 Python 开发人员参考中的 [自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url) 。
+若要了解详细信息，请参阅 Python 开发人员参考中的[自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url)。
 
-## <a name="scale_controller_logging_enabled"></a>扩展 \_ 控制器 \_ 日志记录 \_ 已启用
+## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
 _此设置当前处于预览状态。_  
 
@@ -235,7 +235,7 @@ _此设置当前处于预览状态。_
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-仅在部署到高级计划或在 Windows 上运行的消耗计划时使用。 对于运行 Linux 的使用量计划不支持。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
+仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -253,7 +253,7 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-仅在部署到高级计划或在 Windows 上运行的消耗计划时使用。 对于运行 Linux 的使用量计划不支持。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
+仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
 在部署期间使用 Azure 资源管理器创建函数应用时，请不要在模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
 
@@ -294,7 +294,7 @@ _仅限 Windows_。
 |键|(OS)|示例值|
 |---|--|------------|
 |WEBSITE\_TIME\_ZONE|Windows|东部标准时间|
-|WEBSITE\_TIME\_ZONE|Linux|美洲/New_York|
+|WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
