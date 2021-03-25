@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: evansma
 ms.service: resource-move
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 02/21/2021
 ms.author: raynew
-ms.openlocfilehash: a75cd3c5dbf205f49aa606bfe96623a61bce39db
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.openlocfilehash: e900250aea84b4a9c9112fa54632a2be8b9cb49c
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007050"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564265"
 ---
 # <a name="common-questions"></a>常见问题
 
@@ -23,7 +23,16 @@ ms.locfileid: "100007050"
 
 ### <a name="can-i-move-resources-across-any-regions"></a>我可以跨任何区域移动资源吗？
 
-目前，可以将资源从任何源公共区域移到任何目标公共区域，具体取决于 [该区域中可用的资源类型](https://azure.microsoft.com/global-infrastructure/services/)。 当前不支持在 Azure 政府区域中移动资源。
+目前，可以将资源从任何源公共区域移动到任何目标公共区域，具体取决于[该区域中可用的资源类型](https://azure.microsoft.com/global-infrastructure/services/)。 目前不支持在 Azure 政府区域中移动资源。
+
+### <a name="what-regions-are-currently-supported"></a>目前支持哪些区域？
+
+目前可按如下所述使用 Azure 资源转移器：
+
+**支持** | **详细信息**
+--- | ---
+移动支持 | 支持通过资源转移器移动的 Azure 资源可从任一公共区域转移到另一公共区域。
+元数据支持 |  支持存储有关所要移动的计算机的元数据的区域包括美国东部 2、北欧、东南亚、日本东部、英国南部和澳大利亚东部（元数据区域）。 <br/><br/> 也支持通过中国北部 2 元数据区域在 Azure 中国区域内部移动资源。
 
 ### <a name="what-resources-can-i-move-across-regions-using-resource-mover"></a>可以使用资源转移器跨区域移动哪些资源？
 
@@ -38,21 +47,20 @@ ms.locfileid: "100007050"
 - 内部和公共负载均衡器 
 - Azure SQL 数据库和弹性池
 
-### <a name="can-i-move-disks-across-regions"></a>能否跨区域移动磁盘？
+### <a name="can-i-move-disks-across-regions"></a>是否可以跨区域移动磁盘？
 
-不能选择磁盘作为跨区域移动的资源。 但是，磁盘将作为 VM 移动的一部分进行移动。
+不能选择磁盘作为要跨区域移动的资源。 但是，磁盘将在移动 VM 的过程中一同移动。
 
-### <a name="what-does-it-mean-to-move-a-resource-group"></a>移动资源组的意思是什么？
+### <a name="what-does-it-mean-to-move-a-resource-group"></a>移动资源组意味着什么？
 
-选择要移动的资源时，会自动添加相应的资源组进行移动。 这是必需的，因为目标资源需要放在与目标中的资源组相同的资源组下。 添加后，可以选择自定义并提供因此资源组进行移动。 请注意，移动资源组 **并不** 意味着源资源组中的所有资源都将被移动。
+选择要移动的资源时，会自动添加相应的资源组进行移动。 因此，可将目标资源放到资源组中。 添加要移动的资源后，可以选择自定义并提供现有的资源组。 移动资源组并不意味着源资源组中的所有资源都会移动。
 
 ### <a name="can-i-move-resources-across-subscriptions-when-i-move-them-across-regions"></a>当我跨区域移动资源时，我能否跨订阅移动资源？
 
 可以在将资源移动到目标区域后更改订阅。 [详细了解](../azure-resource-manager/management/move-resource-group-and-subscription.md)如何将资源移动到其他订阅。 
 
-### <a name="does-azure-resource-move-service-store-customer-data"></a>Azure 资源移动服务是否会将客户数据存储在一起？ 
-否。 资源移动服务不存储客户数据，它只存储元数据信息，这有助于客户跟踪和跟踪选定要移动的资源。
-
+### <a name="does-azure-resource-mover-store-customer-data"></a>Azure 资源转移器是否存储客户数据？ 
+不是。 资源转移器服务不存储客户数据，而只存储有助于跟踪资源转移进度的元数据信息。
 
 ### <a name="where-is-the-metadata-for-moving-across-regions-stored"></a>跨区域移动的元数据存储在何处？
 
@@ -66,7 +74,7 @@ ms.locfileid: "100007050"
 
 ### <a name="how-is-managed-identity-used-in-resource-mover"></a>在资源转移器中如何使用托管标识？
 
-[托管标识](../active-directory/managed-identities-azure-resources/overview.md) (以前称为托管服务标识 (MSI) # A3 为 Azure 服务提供 Azure AD 中的自动托管标识。
+[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识 (MSI)）为 Azure 服务提供一个在 Azure AD 中自动管理的标识。
 - 资源转移器使用托管标识，以便可以访问 Azure 订阅，从而跨区域移动资源。
 - 移动集合需要系统分配的标识，可以访问包含要移动资源的订阅。
 
@@ -85,22 +93,24 @@ Azure 资源转移器托管标识至少需要以下权限：
 > [!IMPORTANT]
 > 强烈建议不要修改或删除标识角色分配。 
 
-### <a name="what-should-i-do-if-i-dont-have-permissions-to-assign-role-identity"></a>如果我没有分配角色标识的权限，该怎么办？
+### <a name="what-if-i-dont-have-permissions-to-assign-role-identity"></a>如果我无权分配角色标识该怎么办？
+
+你可能出于多种原因没有获得权限。
 
 可能的原因  | **建议**
 --- | ---
 当你首次添加资源时，你不是参与者和用户访问管理员（或所有者）  。 | 为订阅使用具有参与者和用户访问管理员（或所有者）权限的帐户  。
 资源转移器托管标识没有所需的角色。 | 添加“参与者”和“用户访问管理员”角色。
-资源转移器托管标识重置为“无”。 | 在“移动集合”>“标识”中重新启用系统分配的标识。 或者，在“添加资源”中再次添加资源，这将执行相同的操作。  
-订阅已移动到其他租户。 | 禁用，然后为移动集合启用托管标识。
+资源转移器托管标识已重置为“无”。 | 在移动集合设置 >“标识”中重新启用系统分配的标识。 或者，在“添加资源”中再次添加资源，这可以实现相同的目的。  
+订阅已移到其他租户。 | 禁用，然后为移动集合启用托管标识。
 
 ### <a name="how-can-i-do-multiple-moves-together"></a>如何一起执行多个移动？
 
 使用门户中的更改选项根据需要更改源/目标组合。
 
-### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>从移动资源列表中删除资源时会发生什么情况？
+### <a name="what-happens-when-i-remove-a-resource-from-a-list-of-move-resources"></a>在要移动的资源列表中删除某个资源会发生什么情况？
 
-您可以删除已添加到移动列表中的资源。 从列表中删除资源时的行为取决于资源状态。 [了解详细信息](remove-move-resources.md#vm-resource-state-after-removing)。
+可以删除已添加到移动列表中的资源。 确切的删除行为取决于资源状态。 [了解详细信息](remove-move-resources.md#vm-resource-state-after-removing)。
 
 
 

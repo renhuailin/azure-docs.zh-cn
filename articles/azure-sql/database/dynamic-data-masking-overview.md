@@ -13,10 +13,10 @@ ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
 ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98918071"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
@@ -26,7 +26,7 @@ Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 支持�
 
 动态数据掩码允许客户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
 
-例如，呼叫中心的服务代表可通过确认其电子邮件地址的几个字符来识别呼叫者，但完整的电子邮件地址不应泄露给服务代表。 可以定义屏蔽规则来屏蔽任何查询的结果集中的所有电子邮件地址。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
+例如，呼叫中心的服务代表可能通过确认呼叫方电子邮件的几个字符来对其进行识别，但是完整的电子邮件地址不应泄露给服务代表。 掩码规则可定义为对任何查询的结果集中的所有电子邮件地址进行掩蔽。 另举一例：在需要进行故障排除时，开发人员可通过定义适当的数据掩码来保护个人数据，因此可在不违反符合性法规的情况下，对生产环境进行查询。
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
@@ -82,7 +82,7 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## <a name="permissions"></a>权限
 
-可以使用 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制来配置动态数据屏蔽 (RBAC) [SQL 安全管理员](../../role-based-access-control/built-in-roles.md#sql-security-manager) 角色。
+动态数据掩码可由 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制 (RBAC) [SQL 安全管理器](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色配置。
 
 ## <a name="next-steps"></a>后续步骤
 

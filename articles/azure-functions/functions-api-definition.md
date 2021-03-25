@@ -4,10 +4,10 @@ description: Azure Functions 中的 OpenAPI 支持概述
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000193"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 元数据支持（预览版）
@@ -52,7 +52,7 @@ Azure Functions 中的 OpenAPI 2.0（以前称为 Swagger）元数据支持一�
 |[路径](https://swagger.io/specification/#paths-object-29)|“集成” > “选择 HTTP 方法” |绑定：路由
 |[路径项](https://swagger.io/specification/#path-item-object-32)|“集成” > “路由模板” |绑定：方法
 |[安全性](https://swagger.io/specification/#security-scheme-object-112)|**“键”**|*不存在*|
-|operationID*|**路由 + 允许的谓词**|路由 + 允许的动作|
+|operationID*|路由 + 允许的动作|路由 + 允许的动作|
 
 \*仅与 PowerApps 和 Flow 集成才需要操作 ID。
 > [!NOTE]

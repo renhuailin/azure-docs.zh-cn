@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: victorh
 ms.openlocfilehash: 8b1d1007e817bafe3d75f0f0d7c3fc6eb5470854
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729464"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure Front Door 上创建 Web 应用程序防火墙策略
@@ -36,7 +36,7 @@ ms.locfileid: "101729464"
 1. 在屏幕的左上方选择“创建资源”，搜索 **WAF**，然后选择“Web 应用程序防火墙(预览版)”>“创建”。   
 2. 在“创建 WAF 策略”页的“基本”选项卡中输入或选择以下信息，对剩余的设置保留默认值，然后选择“查看 + 创建”：   
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅            |选择 Front Door 订阅名称。|
     | 资源组          |选择 Front Door 资源组名称。|

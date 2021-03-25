@@ -2,21 +2,22 @@
 title: 在 Azure 中为 Linux VM 创建并使用 SSH 密钥对
 description: 如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对，提高身份验证过程的安全性。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 7a6971bce2ba4cb3e18455aad34e2d10b73dc066
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203416"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582181"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
-使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 Azure 虚拟机 (VM)。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 你可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
+使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 Azure 虚拟机 (VM)。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
 
 > [!NOTE]
 > 使用 SSH 密钥创建的 VM 默认配置为禁用密码，这极大地增加了暴力破解猜测攻击的难度。 
@@ -29,7 +30,7 @@ ms.locfileid: "98203416"
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
-使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 ~/.ssh 目录中创建。 可以指定不同的位置，并指定可选的密码（通行短语）用于访问私钥文件。 如果给定的位置存在同名的 SSH 密钥对，则会覆盖这些文件。
+使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 ~/.ssh 目录中创建。 可以指定不同的位置，并指定可选的密码（通行短语）用于访问私钥文件。 如果给定位置存在具有相同名称的 SSH 密钥对，则这些文件将被覆盖。
 
 以下命令使用 RSA 加密和 4096 位长度创建 SSH 密钥对：
 
@@ -88,7 +89,7 @@ az vm create \
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-如果在创建密钥对时指定了通行短语，则在登录过程中看到提示时，请输入该通行短语。 VM 将添加到 ~/.ssh/known_hosts 文件。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 ~/.ssh/known_hosts 中删除了服务器名称。
+如果创建密钥对时指定了通行短语，则在登录过程中遇到提示时，请输入该通行短语。 VM 将添加到 ~/.ssh/known_hosts 文件。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 ~/.ssh/known_hosts 中删除了服务器名称。
 
 如果 VM 使用的是实时访问策略，则需要先请求访问权限，然后才能连接到 VM。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 
@@ -96,4 +97,4 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 * 有关使用 SSH 密钥对的详细信息，请参阅[创建和管理 SSH 密钥对的详细步骤](create-ssh-keys-detailed.md)。
 
-* 如果使用 SSH 连接 Azure VM 时遇到问题，请参阅[排查 Azure Linux VM 的 SSH 连接问题](../troubleshooting/troubleshoot-ssh-connection.md)。
+* 如果使用 SSH 连接 Azure VM 时遇到问题，请参阅[排查 Azure Linux VM 的 SSH 连接问题](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)。

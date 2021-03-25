@@ -1,7 +1,6 @@
 ---
 title: 在 Azure 安全中心创建自定义安全策略 | Microsoft Docs
 description: 受 Azure 安全中心监视的 Azure 自定义策略定义。
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -9,20 +8,23 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: a39b79c6c209c0fc66edac846d5458475ec75810
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: a901e71da640f8413e5714ad59073324f582c1b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100859"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102441051"
 ---
-# <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全方案和策略
+# <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全计划和策略
 
 为了帮助保护系统和环境，Azure 安全中心会生成安全建议。 这些建议基于行业最佳做法，并已合并在提供给所有客户的通用默认安全策略中。 此外，还可能会基于安全中心内有关行业和法规标准的知识来提供建议。
 
 你可以利用此功能添加自己的自定义计划。 如果环境未遵循所创建的策略，则你会收到建议。 你创建的任何自定义计划将连同内置计划一起显示在法规符合性仪表板中，如教程[改善法规符合性](security-center-compliance-dashboard.md)中所述。
 
 如 [Azure Policy 文档](../governance/policy/concepts/definition-structure.md#definition-location)中所述，当你为自定义计划指定位置时，该位置必须是某个管理组或订阅。 
+
+> [!TIP]
+> 有关本页关键概念的概述，请参阅[什么是安全策略、计划和建议？](security-policy-concept.md)
 
 ::: zone pivot="azure-portal"
 
@@ -88,7 +90,7 @@ Azure Policy 中的重要概念：
 
 - **分配** 是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心具有内置计划 Azure 安全基准，其中包括所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
+安全中心有一项内置计划（Azure 安全基准），它包括中心内的所有安全策略。 要评估对 Azure 资源的安全中心策略，应对管理组或希望评估的订阅创建一个分配。
 
 内置计划默认启用所有安全中心策略。 可以选择禁用内置计划中的某些策略。 例如，若要应用除 Web 应用程序防火墙之外的所有安全中心策略，请将策略的效果参数的值更改为“禁用” 。
 
@@ -96,9 +98,9 @@ Azure Policy 中的重要概念：
 
 在下面的示例中，替换以下三个变量：
 
-- **{scope}** 输入要将策略应用到的管理组或订阅的名称
-- **{policyAssignmentName}** 输入相关策略分配的名称
-- **{name}** 请输入你的姓名，或批准策略更改的管理员的姓名
+- {scope}，用于输入要应用策略的管理组或订阅的名称
+- {policyAssignmentName}，用于输入相关策略分配的名称
+- {name}，用于输入你的名字或批准策略更改的管理员的名字
 
 本示例演示如何对订阅或管理组分配内置的安全中心计划
  

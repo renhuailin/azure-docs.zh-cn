@@ -9,10 +9,10 @@ ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393339"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
@@ -49,25 +49,25 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>资产库存的主要功能是什么？
 库存页提供以下工具：
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure 安全中心中 &quot;资产清单&quot; 页的主要功能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure 安全中心内资产清单页的主要功能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
 
-### <a name="1---summaries"></a>1-摘要
-在定义任何筛选器之前，库存视图顶部的一条突出显示的值将显示：
+### <a name="1---summaries"></a>1 - 摘要
+在定义任何筛选器之前，会显示库存视图顶部突出的值条带：
 
 - **资源总数**：连接到安全中心的资源总数。
 - **不正常的资源**：具有有效安全建议的资源。 [详细了解安全建议](security-center-recommendations.md)。
 - **未受监视的资源**：有代理监视问题的资源 - 已部署 Log Analytics 代理，但代理没有发送数据或有其他运行状况问题。
-- 未 **注册的订阅**：所选范围中尚未连接到 Azure 安全中心的任何订阅。
+- **未注册的订阅**：所选作用域中尚未连接到 Azure 安全中心的任何订阅。
 
-### <a name="2---filters"></a>2-筛选器
-页面顶部的多个筛选器提供了一种方法，可根据您尝试回答的问题快速优化资源列表。 例如，如果你想要回答 *标记为 "生产" 的计算机中缺少 Log Analytics 代理* 的问题，则可以将 **代理监视** 筛选器与 tag **筛选器** 组合在一起。
+### <a name="2---filters"></a>2 - 筛选器
+页面顶部的多个筛选器提供一种根据你尝试回答的问题快速优化资源列表的方法。 例如，如果你想回答问题“我的哪台带有“生产”标记的计算机缺少 Log Analytics 代理？”，可以将“代理监视”筛选器与“标记”筛选器组合在一起。 
 
 应用筛选器后，摘要值就会更新为与查询结果相关的值。 
 
-### <a name="3---export-and-asset-management-tools"></a>3-导出和资产管理工具
+### <a name="3---export-and-asset-management-tools"></a>3 - 导出和资产管理工具
 
-**导出选项** -库存包含一个选项，可将所选筛选选项的结果导出到 CSV 文件。 还可以将查询本身导出到 Azure 资源图资源管理器，以便进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
+**导出选项** - 库存提供了将所选筛选器选项的结果导出到 CSV 文件的选项。 还可以将查询本身导出到 Azure Resource Graph 资源管理器，以进一步优化、保存或修改 Kusto 查询语言 (KQL) 查询。
 
 > [!TIP]
 > KQL 文档为数据库提供一些示例数据以及一些简单的查询，以获取相应语言的体验。 [通过此 KQL 教程了解详细信息](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
@@ -103,7 +103,7 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
     >
     > 例如，如果你仅选择了一个订阅，并且该订阅没有要修正的具有重要安全建议的资源（0 个运行不正常的资源），则“建议”筛选器将没有选项。 
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="使用 Azure 安全中心资产清单中的筛选器选项来筛选未监视的生产资源的资源":::
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="使用 Azure 安全中心的资产清单中的筛选器选项来筛选不受监视的生产资源":::
 
 1. 若要使用“安全发现包含”筛选器，请通过漏洞发现的 ID、安全检查或 CVE 名称输入自由文本以筛选受影响的资源：
 
@@ -114,7 +114,7 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
 1. 若要使用“Azure Defender”筛选器，请选择一个或多个选项（“关”、“开”或“部分”）：
 
-    - 关 - 不受 Azure Defender 计划保护的资源。 你可以右键单击其中的任何一个并升级它们：
+    - 关 - 不受 Azure Defender 计划保护的资源。 可以右键单击其中任意一些资源并对其进行升级：
 
         :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="通过右键单击将资源升级到 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.openlocfilehash: 2f27dd7daf310e425b09db7905ad2f7c37fcff81
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94834160"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用双重验证方法登录工作或学校帐户
 
 > [!NOTE]
-> 本文的目的是了解典型的登录体验。 有关登录的帮助或解决问题，请参阅 [Azure AD 多重身份验证时遇到](multi-factor-authentication-end-user-troubleshoot.md)问题。
+> 本文的目的是了解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure AD 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>登录体验是怎样的？
 根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），登录体验将有所不同。 请选择最适当地描述了活动的选项：
@@ -83,7 +83,7 @@ ms.locfileid: "94834160"
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>后续步骤
-- 如果在使用双重验证登录时遇到问题，请在 [遇到 Azure AD 多重身份验证时遇到](multi-factor-authentication-end-user-troubleshoot.md)问题中获取详细信息。
+- 如果使用双重验证登录时遇到问题，请在[使用 Azure AD 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获取详细信息。
 
 - 了解如何[管理双重验证设置](multi-factor-authentication-end-user-manage-settings.md)。
 

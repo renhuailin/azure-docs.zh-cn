@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100581217"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>将 Azure 自动化作业数据转发到 Azure Monitor 日志
@@ -88,7 +88,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | Tenant_g | 用于为调用方标识租户的 GUID。 |
 | JobId_g |标识 Runbook 作业的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- 新<br>- 已创建<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- 已完成 |
-| Category | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | Azure 中执行的操作的类型。 对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志用来收集数据的系统。 对于 Azure 诊断，值始终为 Azure。 |
@@ -110,7 +110,7 @@ Azure 自动化诊断将在 Azure Monitor 日志中创建两种类型的记录�
 | Tenant_g | 用于为调用方标识租户的 GUID。 |
 | JobId_g |标识 Runbook 作业的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |
-| Category | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
 | OperationName | Azure 中执行的操作的类型。 对于自动化，该值为 Job。 |
 | 资源 | 自动化帐户的名称。 |
 | SourceSystem | Azure Monitor 日志用来收集数据的系统。 对于 Azure 诊断，值始终为 Azure。 |

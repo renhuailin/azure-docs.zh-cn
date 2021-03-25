@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 405bcd4f3839b99879f76c23060ba24062b279de
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017641"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026779"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 
@@ -169,14 +169,20 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 > 实际设备准备就绪后，可以使用相同的 IoT Central 应用程序[加入设备](../../iot-central/core/howto-set-up-template.md)并替换设备模拟器。 设备数据也将自动开始流向 FHIR。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 IoT 数据
-> [!WARNING]
-> 本指南中提供的设备映射模板旨在与 IoT Central 中的数据导出（旧版）一起使用。
 
-部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../../iot-central/core/howto-export-data-legacy.md)。 在“连续数据导出”页上：
-- 选择“Azure 事件中心”作为导出目标。
-- 选择“事件中心命名空间”字段的“使用连接字符串”值。
-- 为“连接字符串”字段提供在上一步中获取的适用于 FHIR 的 Azure IoT 连接器的连接字符串。
-- 对于“要导出的数据”字段，保持“遥测”选项为启用状态。
+部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../../iot-central/core/howto-export-data.md)。 首先，需要创建与目标的连接，然后创建一个数据导出作业来持续运行： 
+
+创建新目标：
+- 请在 " **目标** " 选项卡上，创建一个新的目标。
+- 首先给予目标唯一名称。
+- 选取 *Azure 事件中心* 作为目标类型。
+- 为 " **连接字符串** " 字段提供上一步中获取的 FHIR 连接字符串的 Azure IoT 连接器。
+
+创建新的数据导出：
+- 创建目标后，请切换到 " **导出** " 选项卡并创建新的数据导出。 
+- 首先向其提供数据导出唯一名称。
+- 在 " **数据** " 下，选择 " *遥测* " 作为 *要导出的数据类型*。
+- 在 " **目标** " 下，选择你在以前的名称中创建的目标名称。
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>查看 Azure API for FHIR 中的设备数据
 

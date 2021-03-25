@@ -1,40 +1,40 @@
 ---
 title: 连接到 Azure 数据工厂
-description: 本文介绍如何连接 Azure 数据工厂和 Azure 监控范围来跟踪数据沿袭。
+description: 本文介绍如何连接 Azure 数据工厂和 Azure Purview 来跟踪数据世系。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/03/2021
-ms.openlocfilehash: 6a71999f0896a5d056b7d0b38be4d494c347e9f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049366"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449605"
 ---
-# <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure 监控范围
+# <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
-本文档介绍了使用 Azure 监控范围帐户连接 Azure 数据工厂帐户以跟踪数据沿袭所需的步骤。 该文档还介绍了覆盖率范围和支持的沿袭模式的详细信息。
+本文档介绍将 Azure 数据工厂帐户与 Azure Purview 帐户连接以跟踪数据世系所需的步骤。 本文档还详细介绍了覆盖范围和受支持的世系模式。
 
 ## <a name="view-existing-data-factory-connections"></a>查看现有的数据工厂连接
 
-多个 Azure 数据工厂可以连接到单个 Azure 监控范围数据目录来推送沿袭信息。 当前限制允许从监控范围管理中心一次连接10个数据工厂帐户。 若要显示连接到监控范围数据目录的数据工厂帐户的列表，请执行以下操作：
+多个 Azure 数据工厂可以连接到单个 Azure Purview 数据目录以推送世系信息。 当前限制允许从 Purview 管理中心一次最多连接十个数据工厂帐户。 若要显示已连接到 Purview 数据目录的数据工厂帐户列表，请执行以下操作：
 
-1. 选择左侧导航窗格中的 " **管理中心** "。
-2. 在 " **外部连接**" 下，选择 " **数据工厂连接**"。
-3. 此时将显示 "数据工厂连接" 列表。
+1. 在左侧导航窗格中选择“管理中心”。
+2. 在“外部连接”下，选择“数据工厂连接” 。
+3. 随即会显示数据工厂连接列表。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="显示数据工厂连接列表的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="屏幕截图显示数据工厂连接列表。" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
 
-4. 请注意连接 **状态** 的各个值：
+4. 请注意各种连接状态值：
 
     - **已连接**：数据工厂已连接到数据目录。
-    - **断开连接**：数据工厂有权访问该目录，但它已连接到另一个目录。 因此，不会自动向目录报告数据沿袭。
-    - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态为 "未知"。
+    - **已断开连接**：数据工厂有权访问该目录，但它已连接到其他目录。 因此，不会自动将数据世系报告给该目录。
+    - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态未知。
  >[!Note]
- >若要查看数据工厂连接，需要为其分配监控范围角色之一：
+ >若要查看数据工厂连接，你需要分配有以下任一 Purview 角色：
  >- 参与者
  >- 所有者
  >- 读取器
@@ -43,67 +43,67 @@ ms.locfileid: "102049366"
 ## <a name="create-new-data-factory-connection"></a>创建新的数据工厂连接
 
 >[!Note]
->若要添加或删除数据工厂连接，需要为其分配监控范围角色之一：
+>若要添加或删除数据工厂连接，你需要分配有以下任一 Purview 角色：
 >- “所有者”
 >- 用户访问管理员
 >
-> 除此之外，它还要求用户成为数据工厂的 "所有者" 或 "参与者"。 
+> 此外，用户还需要是数据工厂的“所有者”或“参与者”。 
 
-按照以下步骤将现有的数据工厂帐户连接到监控范围数据目录。
+按照以下步骤将现有的数据工厂帐户连接到 Purview 数据目录。
 
-1. 选择左侧导航窗格中的 " **管理中心** "。
-2. 在 " **外部连接**" 下，选择 " **数据工厂连接**"。
-3. 在 " **数据工厂连接** " 页上，选择 " **新建**"。
+1. 在左侧导航窗格中选择“管理中心”。
+2. 在“外部连接”下，选择“数据工厂连接” 。
+3. 在“数据工厂连接”页上，选择“新建” 。
 
-4. 从列表中选择数据工厂帐户，然后选择 **"确定"**。 还可以按订阅名称进行筛选以限制列表。
+4. 从列表中选择数据工厂帐户，然后选择“确定”。 此外，还可以按订阅名称进行筛选，以限制列表。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/connect-data-factory.png" alt-text="显示如何连接 Azure 数据工厂的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/connect-data-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/connect-data-factory.png" alt-text="屏幕截图显示如何连接 Azure 数据工厂。" lightbox="./media/how-to-link-azure-data-factory/connect-data-factory.png":::
 
-    如果数据工厂已连接到当前监控范围帐户，或者数据工厂没有托管标识，则可能会禁用某些数据工厂实例。
+    如果数据工厂已连接到当前的 Purview 帐户，或者数据工厂没有托管标识，则可能会禁用某些数据工厂实例。
 
-    如果任何所选数据工厂已连接到其他监控范围帐户，则将显示一条警告消息。 通过选择 "确定"，会断开与其他监控范围帐户的数据工厂连接。 不需要其他确认。
+    如果任何选定的数据工厂已连接到其他 Purview 帐户，则将显示一条警告消息。 选择“确定”，将断开与其他 Purview 帐户的数据工厂连接。 无需额外确认。
 
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="显示中断 Azure 数据工厂的警告的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="屏幕截图显示断开 Azure 数据工厂连接时的警告。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
 
 >[!Note]
->现在支持一次添加不超过10个数据工厂。 如果要一次添加10个以上的数据工厂，请提交支持票证。
+>现在支持一次最多添加 10 个数据工厂。 如果希望一次添加 10 个以上的数据工厂，请提交支持票证。
 
-### <a name="how-does-the-authentication-work"></a>身份验证的工作原理是什么？
+### <a name="how-does-the-authentication-work"></a>身份验证的工作原理
 
-当监控范围用户注册他们有权访问的数据工厂时，后端会发生以下情况：
+当 Purview 用户注册其有权访问的数据工厂时，后端会发生以下情况：
 
-1. **数据工厂托管标识** 将添加到监控范围 RBAC Role：**监控范围 Data 陈列**。
+1. 数据工厂托管标识会添加到 Purview RBAC 角色：Purview 数据策划者 。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="显示 Azure 数据工厂 MSI 的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="屏幕截图显示 Azure 数据工厂 MSI。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
      
-2. 需要重新执行数据工厂管道，以便沿袭元数据可以推送回监控范围。
-3. 执行后，数据工厂元数据将推送到监控范围。
+2. 需再次执行数据工厂管道，以便可以将世系元数据推送回 Purview 中。
+3. 执行后，数据工厂元数据将推送到 Purview 中。
 
 ### <a name="remove-data-factory-connections"></a>删除数据工厂连接
 若要删除数据工厂连接，请执行以下操作：
 
-1. 在 " **数据工厂连接** " 页上，选择一个或多个数据工厂连接旁边的 " **删除** " 按钮。
-2. 在弹出窗口中选择 " **确认** "，删除所选的数据工厂连接。
+1. 在“数据工厂连接”页上，选择一个或多个数据工厂连接旁边的“删除”按钮 。
+2. 在弹出窗口中选择“确认”，以删除选定的数据工厂连接。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="显示如何选择数据工厂以删除连接的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="屏幕截图显示如何选择数据工厂以删除连接。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>配置自承载 Integration Runtime 以收集沿袭
+## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>配置自承载集成运行时以收集世系
 
-数据工厂复制活动的沿袭可用于本地数据存储（如 SQL 数据库）。 如果运行自承载集成运行时与 Azure 数据工厂的数据移动，并且想要捕获 Azure 监控范围中的沿袭，请确保版本为5.0 或更高版本。 有关自承载集成运行时的详细信息，请参阅 [创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
+数据工厂复制活动的世系可用于本地数据存储，例如 SQL 数据库。 如果运行的是自承载集成运行时以使用 Azure 数据工厂进行数据移动，并且想要捕获 Azure Purview 中的世系，请确保版本为 5.0 或更高版本。 有关自承载集成运行时的详细信息，请参阅[创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
 
 ## <a name="supported-azure-data-factory-activities"></a>支持的 Azure 数据工厂活动
 
-Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
+Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 
 - [复制数据](../data-factory/copy-activity-overview.md)
 - [数据流](../data-factory/concepts-data-flow-overview.md)
 - [执行 SSIS 包](../data-factory/how-to-invoke-ssis-package-ssis-activity.md)
 
 > [!IMPORTANT]
-> 如果源或目标使用不受支持的数据存储系统，Azure 监控范围会丢弃沿袭。
+> 如果源或目标使用不受支持的数据存储系统，则 Azure Purview 将删除世系。
 
-数据工厂和监控范围之间的集成仅支持数据工厂支持的数据系统子集，如以下各节中所述。
+如以下各节部分所述，数据工厂与 Purview 之间的集成仅支持数据工厂支持的部分数据系统。
 
 ### <a name="data-factory-copy-activity-support"></a>数据工厂复制活动支持
 
@@ -112,40 +112,41 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 | Azure Blob 存储 | 是 |
 | Azure 认知搜索 | 是 | 
 | Azure Cosmos DB (SQL API) \* | 是 | 
-| Azure Cosmos DB 的适用于 MongoDB 的 API \* | 是 |
+| Azure Cosmos DB 的用于 MongoDB 的 API \* | 是 |
 | Azure 数据资源管理器 \* | 是 | 
 | Azure Data Lake Storage Gen1 | 是 | 
 | Azure Data Lake Storage Gen2 | 是 | 
-| 用于 Maria DB 的 Azure 数据库 \* | 是 | 
+| Azure Database for Maria DB \* | 是 | 
 | Azure Database for MySQL \* | 是 | 
 | Azure Database for PostgreSQL \* | 是 |
 | Azure 文件存储 | 是 | 
 | Azure SQL 数据库 \* | 是 | 
 | Azure SQL 托管实例 \* | 是 | 
-| Azure Synapse 分析 \* | 是 | 
-| Azure 表存储 \* | 是 |
-| SQL Server \* | 是 | 
+| Azure Synapse Analytics \* | 是 | 
+| Azure 表存储 | 是 |
 | Amazon S3 | 是 | 
-| 义项 \* | 是 | 
+| Hive \* | 是 | 
 | SAP ECC \* | 是 |
-| SAP 表 \* | 是 |
+| SAP 表 | 是 |
+| SQL Server \* | 是 | 
 | Teradata \* | 是 |
 
-*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
+\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
 > [!Note]
-> 沿袭功能在数据工厂复制活动中具有一定的性能开销。 对于在监控范围中设置数据工厂连接的用户，你可能会发现某些复制作业要花费更长时间才能完成。 大多数情况下，影响不会忽略。 如果复制作业的完成时间比平时长得多，请联系支持人员进行时间比较。
+> 世系功能在数据工厂复制活动中有一定的性能开销。 对于在 Purview 中设置数据工厂连接的用户，你可能会发现某些复制作业需要花费更长的时间才能完成。 大多数情况下，该影响是不可忽略的。 如果完成复制作业所需的时间比平时长得多，请联系支持人员并提供时间对比信息。
 
-#### <a name="known-limitations-on-copy-activity-lineage"></a>复制活动沿袭的已知限制
+#### <a name="known-limitations-on-copy-activity-lineage"></a>复制活动世系的已知限制
 
-目前，如果使用以下复制活动功能，则不支持沿袭：
+当前，如果使用以下复制活动功能，则尚不支持世系：
 
-- 使用二进制格式将数据复制到 Azure Data Lake Storage Gen1。
+- 采用二进制格式将数据复制到 Azure Data Lake Storage Gen1 中。
 - 使用 PolyBase 或 COPY 语句将数据复制到 Azure Synapse Analytics 中。
-- 二进制、分隔文本、Excel、JSON 和 XML 文件的压缩设置。
-- 适用于 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server 和 SAP 表的源分区选项。
-- 将数据复制到基于文件的接收器，并为每个文件设置最大行数。
-- 在复制过程中添加其他列。
+- 二进制、带分隔符的文本、Excel、JSON 和 XML 文件的压缩设置。
+- 针对 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server 和 SAP 表的源分区选项。
+- 针对基于文件的存储的源分区发现选项。
+- 将数据复制到基于文件的接收器，该接收器具有每个文件的最大行数设置。
+- 复制期间添加其他列。
 
 ### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
 
@@ -155,9 +156,9 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 | Azure Data Lake Storage Gen1 | 是 |
 | Azure Data Lake Storage Gen2 | 是 |
 | Azure SQL 数据库 \* | 是 |
-| Azure Synapse 分析 \* | 是 |
+| Azure Synapse Analytics \* | 是 |
 
-*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
+\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
 ### <a name="data-factory-execute-ssis-package-support"></a>数据工厂执行 SSIS 包支持
 
@@ -169,75 +170,75 @@ Azure 监控范围从以下 Azure 数据工厂活动中捕获运行时沿袭：
 | Azure 文件存储 | 是 |
 | Azure SQL 数据库 \* | 是 |
 | Azure SQL 托管实例 \*| 是 |
-| Azure Synapse 分析 \* | 是 |
+| Azure Synapse Analytics \* | 是 |
 | SQL Server \* | 是 |
 
-*\* Azure 监控范围当前不支持沿袭或扫描的查询或存储过程。沿袭仅限于表和视图源。*
+\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
 > [!Note]
 > Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)。
 
-## <a name="supported-lineage-patterns"></a>支持的沿袭模式
+## <a name="supported-lineage-patterns"></a>支持的世系模式
 
-Azure 监控范围支持多种沿袭模式。 生成的沿袭数据基于数据工厂活动中使用的源和接收器的类型。 尽管数据工厂支持80多个源和接收器，但 Azure 监控范围仅支持一个子集，如 [受支持的 Azure 数据工厂活动](#supported-azure-data-factory-activities)中所列。
+Azure Purview 支持多种世系模式。 生成的世系数据基于数据工厂活动中使用的源和接收器的类型。 虽然数据工厂支持 80 多种源和接收器，但其中仅部分受 Azure Purview 支持，如[支持的 Azure 数据工厂活动](#supported-azure-data-factory-activities)中所列。
 
-若要将数据工厂配置为发送沿袭信息，请参阅 [沿袭入门](catalog-lineage-user-guide.md#get-started-with-lineage)。
+若要配置数据工厂以发送世系信息，请参阅[世系入门](catalog-lineage-user-guide.md#get-started-with-lineage)。
 
-在沿袭视图中查找信息的其他方法包括：
+在世系视图中查找信息的其他一些方法包括：
 
-- 在 " **沿袭** " 选项卡中，将鼠标悬停在形状上，以在工具提示中预览有关资产的其他信息。
-- 选择节点或边缘以查看其所属的资产类型或切换资产。
-- 数据集的列将显示在 " **沿袭** " 选项卡的左侧。有关列级沿袭的详细信息，请参阅 [数据集列沿袭](catalog-lineage-user-guide.md#dataset-column-lineage)。
+- 在“世系”选项卡中，将鼠标悬停在各个形状上，可在工具提示中预览有关资产的其他信息。
+- 选择节点或边以查看其所属的资产类型或切换资产。
+- 数据集的列显示在“世系”选项卡的左侧。有关列级世系的详细信息，请参阅[数据集列世系](catalog-lineage-user-guide.md#dataset-column-lineage)。
 
-### <a name="data-lineage-for-11-operations"></a>1:1 操作的数据沿袭
+### <a name="data-lineage-for-11-operations"></a>1:1 操作的数据世系
 
-捕获数据沿袭的最常见的模式是将数据从单个输入数据集移到单个输出数据集，并在两者之间进行处理。
+捕获数据世系最常见的模式是将数据从单个输入数据集移动到单个输出数据集，两者之间包含一个进程。
 
-下面是此模式的示例：
+下面是此模式的一个示例：
 
-- 1源/输入： *Customer* (SQL 表) 
-- 1接收器/输出： *Customer1.csv* (Azure Blob) 
-- 1进程： *CopyCustomerInfo1 \#Customer1.csv* (数据工厂复制活动) 
+- 1 个源/输入：客户（SQL 表）
+- 1 个接收器/输出：Customer1.csv (Azure Blob)
+- 1 个进程：CopyCustomerInfo1\#Customer1.csv（数据工厂复制活动）
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="显示一到一个数据工厂复制操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="屏幕截图显示一对一数据工厂复制操作的世系。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
 
-### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>支持1:1 沿袭和通配符的数据移动
+### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>1:1 世系的数据移动（支持通配符）
 
-捕获沿袭的另一种常见情况是使用通配符将文件从单个输入数据集复制到单个输出数据集。 通配符允许复制活动匹配多个文件，以便使用文件名称的常见部分进行复制。 Azure 监控范围捕获相应复制活动复制的每个单独文件的文件级沿袭。
+捕获世系的另一个常见方案是使用通配符将文件从单个输入数据集复制到单个输出数据集。 借助通配符，复制活动可以使用文件名的共同部分匹配多个文件以进行复制。 Azure Purview 会捕获通过相应的复制活动复制的每个单独文件的文件级世系。
 
-下面是此模式的示例：
+下面是此模式的一个示例：
 
-* 源/输入： *CustomerCall \** (ADLS Gen2 路径) 
-* 接收器/输出： *CustomerCall \** (Azure blob 文件) 
-* 1进程： *CopyGen2ToBlob \#CustomerCall.csv* (数据工厂复制活动)   
+* 源/输入：CustomerCall\*.csv（ADLS Gen2 路径）
+* 接收器/输出：CustomerCall\*.csv（Azure blob 文件）
+* 1 个进程：CopyGen2ToBlob\#CustomerCall.csv（数据工厂复制活动）  
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png" alt-text="显示支持通配符的一对复制操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png" alt-text="屏幕截图显示支持通配符的一对一复制操作的世系。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage-wildcard.png":::
 
-### <a name="data-movement-with-n1-lineage"></a>采用 n：1沿袭的数据移动
+### <a name="data-movement-with-n1-lineage"></a>n:1 世系的数据移动
 
-您可以使用数据流活动执行合并、联接等数据操作。 可以使用多个源数据集生成目标数据集。 在此示例中，Azure 监控范围会将各个输入文件的文件级沿袭捕获到作为数据流活动一部分的 SQL 表。
+你可以使用数据流活动来执行合并、联接等数据操作。 可以使用多个源数据集来生成目标数据集。 在此示例中，Azure Purview 会将单个输入文件的文件级世系捕获到作为数据流活动一部分的 SQL 表中。
 
-下面是此模式的示例：
+下面是此模式的一个示例：
 
-* 2源/输入： *Customer.csv*、 *Parquet* (ADLS Gen2 路径) 
-* 1接收器/输出： *公司数据* (Azure SQL 表) 
-* 1进程： *DataFlowBlobsToSQL* (数据工厂数据流活动) 
+* 2 个源/输入：Customer.csv、Sales.parquet（ADLS Gen2 路径） 
+* 1 个接收器/输出：公司数据（Azure SQL 表）
+* 1 个进程：DataFlowBlobsToSQL（数据工厂数据流活动）
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png" alt-text="显示 n 到 A D F 数据流操作的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png" alt-text="屏幕截图显示 n 对 1 的 A D F 数据流操作的世系。" lightbox="./media/how-to-link-azure-data-factory/adf-data-flow-lineage.png":::
 
-### <a name="lineage-for-resource-sets"></a>资源集的沿袭
+### <a name="lineage-for-resource-sets"></a>资源集的世系
 
-资源集是目录中的一个逻辑对象，表示基础存储中的多个分区文件。 有关详细信息，请参阅 [了解资源集](concept-resource-sets.md)。 当 Azure 监控范围捕获 Azure 数据工厂中的沿袭时，它将应用这些规则以规范化单个分区文件并创建一个逻辑对象。
+资源集是目录中的逻辑对象，代表基础存储中的许多分区文件。 有关详细信息，请参阅[了解资源集](concept-resource-sets.md)。 当 Azure Purview 从 Azure 数据工厂捕获世系时，它将应用规则来规范化各个分区文件并创建单个逻辑对象。
 
-在以下示例中，将从 Azure Blob 生成 Azure Data Lake Gen2 资源集：
+在以下示例中，Azure Data Lake Gen2 资源集是从 Azure Blob 生成的：
 
-* 1源/输入： (Azure Blob 的 *员工 \_management.csv*) 
-* 1接收器/输出： *Employee \_management.csv* (Azure Data Lake 第2代) 
-* 1进程： *CopyBlobToAdlsGen2 \_ RS* (数据工厂复制活动) 
+* 1 个源/输入：Employee\_management.csv (Azure Blob)
+* 1 个接收器/输出：Employee\_management.csv (Azure Data Lake Gen 2)
+* 1 个进程：CopyBlobToAdlsGen2\_RS（数据工厂复制活动）
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="显示资源集的沿袭的屏幕截图。" lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png" alt-text="屏幕截图显示资源集的世系。" lightbox="./media/how-to-link-azure-data-factory/adf-resource-set-lineage.png":::
 
 ## <a name="next-steps"></a>后续步骤
 
-- [目录沿袭用户指南](catalog-lineage-user-guide.md)
-- [链接到 Azure 数据共享进行沿袭](how-to-link-azure-data-share.md)
+- [目录世系用户指南](catalog-lineage-user-guide.md)
+- [链接到 Azure Data Share 以获取世系](how-to-link-azure-data-share.md)

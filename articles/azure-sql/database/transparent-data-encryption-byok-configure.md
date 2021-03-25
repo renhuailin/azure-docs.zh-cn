@@ -12,20 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.openlocfilehash: 610f0a9692c18afbd7bb446959b09bac14d6f629
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461851"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507613"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文介绍如何在 Azure SQL 数据库或 Azure Synapse Analytics 中使用 Azure Key Vault 的密钥来透明数据加密 (TDE) 。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
+本文逐步介绍如何使用 Azure Key Vault 中的密钥对 Azure SQL 数据库或 Azure Synapse Analytics 启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
 
 > [!NOTE] 
-> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能 **公开预览版**。 Azure Key Vault 托管 HSM 是一项完全托管的、高度可用的单租户标准云服务，可让你使用 FIPS 140-2 第3级验证后的 Hsm 保护云应用程序的加密密钥。 详细了解 [托管的 hsm](../../key-vault/managed-hsm/index.yml)。
+> Azure SQL 现在支持使用存储在托管 HSM 中的 RSA 密钥作为 TDE 保护程序。 此功能目前以公共预览版提供。 Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 详细了解[托管 HSM](../../key-vault/managed-hsm/index.yml)。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "96461851"
   - 无过期日期
   - 未禁用
   - 能够执行“获取”、“包装密钥”和“解包密钥”操作  
-- **预览中的 ()** 要使用托管 HSM 密钥，请按照说明 [使用 Azure CLI](../../key-vault/managed-hsm/quick-create-cli.md)
+- （预览版）若要使用托管 HSM 密钥，请按照[使用 Azure CLI 创建并激活托管 HSM](../../key-vault/managed-hsm/quick-create-cli.md) 说明进行操作
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,18 +74,18 @@ ms.locfileid: "96461851"
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
-若要在托管 HSM 上添加对服务器的权限，请将 "Managed HSM Encryption Service Encryption" 本地 RBAC 角色添加到服务器。 这使服务器能够对托管 HSM 中的密钥执行 get、wrap key、解包关键操作。
-[有关在托管 HSM 上设置服务器访问权限的说明](../../key-vault/managed-hsm/role-management.md)
+若要在托管 HSM 上向服务器添加权限，请向服务器添加“托管 HSM 加密服务加密”本地 RBAC 角色。 这将使服务器能够在托管 HSM 中的密钥上执行获取、包装密钥、解包密钥操作。
+[有关在托管 HSM 上预配服务器访问的说明](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
-- 使用 [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) cmdlet 从密钥保管库中检索密钥 ID
+- 使用 [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) cmdlet 从密钥保管库中检索密钥 ID
 - 使用 [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) cmdlet 将 Key Vault 中的密钥添加到服务器。
 - 使用 [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 将密钥设置为所有服务器资源的 TDE 保护器。
 - 使用 [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 确认已按预期配置了 TDE 保护器。
 
 > [!NOTE]
-> **预览中的 ()** 对于托管 HSM 密钥，请使用 Az 2.11.1 版本的 PowerShell。
+> （预览版）对于托管 HSM 密钥，请使用 Az.Sql 2.11.1 版本的 PowerShell。
 
 > [!NOTE]
 > Key Vault 名称和密钥名称的总长度不能超过 94 个字符。

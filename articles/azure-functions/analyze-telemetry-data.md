@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: d06fe64ddc0475b5ca7d9c16876c8dfc9acda544
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101729362"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>在 Application Insights 中分析 Azure Functions 遥测数据 
@@ -65,7 +65,7 @@ Azure Functions 与 Application Insights 集成，以用于更好地监视函数
 | **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  基于函数失败和服务器异常来创建图表和警报。 操作名称是函数名称。 不显示依赖项中的失败，除非为依赖项实现了自定义遥测。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 通过查看每个 Cloud 角色实例的资源利用率和吞吐量来分析性能问题。 如果要针对函数阻碍基础资源正常工作的情况进行调试，此性能数据会很有用。 |
 | **[指标](../azure-monitor/essentials/metrics-charts.md)** | 创建基于指标的图表和警报。 指标包括函数调用次数、执行时间和成功率。 |
-| **[实时指标](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
+| **[实时指标：](../azure-monitor/app/live-stream.md)** | 随着指标数据的创建，近实时地查看指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
 
@@ -88,7 +88,7 @@ requests
 
 | 表 | 说明 |
 | ----- | ----------- |
-| **traces** | 由运行时、缩放控制器和函数代码中的跟踪创建的日志。 |
+| **traces** | 由函数代码中的运行时、规模控制器和跟踪创建的日志。 |
 | **requests** | 一个请求用于一个函数调用。 |
 | **异常** | 由运行时引发的任何异常。 |
 | **customMetrics** | 成功和失败调用的计数、成功率和持续时间。 |
@@ -106,13 +106,13 @@ traces
 
 运行时提供了 `customDimensions.LogLevel` 和 `customDimensions.Category` 字段。 可以在日志中提供在函数代码中编写的其他字段。 有关用 C# 编写的示例，请参阅 .NET 类库开发人员指南中的[结构化日志记录](functions-dotnet-class-library.md#structured-logging)。
 
-## <a name="query-scale-controller-logs"></a>查询缩放控制器日志
+## <a name="query-scale-controller-logs"></a>查询规模控制器日志
 
 _此功能为预览版。_
 
-启用 [缩放控制器日志记录](configure-monitoring.md#configure-scale-controller-logs) 和 [Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)后，可以使用 Application Insights 的日志搜索来查询已发出的规模控制器日志。 规模控制器日志保存在 `traces` **ScaleControllerLogs** 类别下的集合中。
+启用[规模控制器日志](configure-monitoring.md#configure-scale-controller-logs)和[ Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)后，可以使用 Application Insights 日志搜索来查询已发出的规模控制器日志。 规模控制器日志保存在 ScaleControllerLogs 下的 `traces` 集合中。
 
-以下查询可用于在指定的时间段内搜索当前函数应用的所有规模控制器日志：
+以下查询可用于在指定时间段内搜索当前函数应用的所有规模控制器日志：
 
 ```kusto
 traces 
@@ -120,7 +120,7 @@ traces
 | where CustomDimensions.Category == "ScaleControllerLogs"
 ```
 
-下面的查询对上一个查询进行了扩展，以演示如何只获取指示规模变化的日志：
+以下查询对上一个查询进行了扩展，以显示如何只获取指示规模更改的日志：
 
 ```kusto
 traces 
@@ -142,14 +142,14 @@ traces
 
 ## <a name="azure-monitor-metrics"></a>Azure Monitor 指标
 
-除了 Application Insights 收集的遥测数据以外，还可以从 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了 [适用于应用服务应用](../app-service/web-sites-monitor.md#understand-metrics)的常用指标以外，还有两个特定于相关函数的指标：
+除了 Application Insights 收集的遥测数据外，还可以从 [Azure Monitor 指标](../azure-monitor/essentials/data-platform-metrics.md)获取有关函数应用运行方式的数据。 除了通常[可用于 App 服务应用](../app-service/web-sites-monitor.md#understand-metrics)的指标外，还有两个特定于相关函数的指标：
 
 | 指标 | 说明 |
 | ---- | ---- |
-| **FunctionExecutionCount** | 函数执行计数指示函数应用执行的次数。 这与在应用程序中运行函数的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。 |
-| **FunctionExecutionUnits** | 函数执行单位是执行时间与内存使用情况的组合。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用 (应用服务) 计划。|
+| **FunctionExecutionCount** | 函数执行计数表示函数应用已执行的次数。 这与函数在应用中运行的次数相关。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。 |
+| **FunctionExecutionUnits** | 函数执行单位由执行次数和内存使用组成。  目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。 此指标目前不支持在 Linux 上运行的高级和专用（App 服务）计划。|
 
-若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅 [估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)入门。
+若要详细了解如何使用 Application Insights 数据计算消耗计划的成本，请参阅[估计消耗计划成本](functions-consumption-costs.md)。 若要详细了解如何使用监视器资源管理器查看指标，请参阅 [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

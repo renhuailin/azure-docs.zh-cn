@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000991"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务
@@ -42,12 +42,12 @@ ms.locfileid: "96000991"
 - Azure 文件存储，设置用于共享团队或项目的资产（如果适用） 
 - 权限，用于从项目存储库中克隆并推送回项目存储库  
 
-若要克隆存储库以及修改本地计算机或 DSVM 上的内容，或者将 Azure 文件存储装载到 DSVM，需考虑此清单：
+若要克隆存储库并修改本地计算机或 DSVM 上的内容，或将 Azure 文件存储装载到 DSVM，需要考虑以下清单：
 
 - Azure 订阅。
 - 计算机上安装的 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
 - 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](../data-science-virtual-machine/index.yml)。
-- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”    。 从安装程序页下载 .exe 安装程序并运行它  。 
+- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”。 从安装程序页下载 .exe 安装程序并运行它。 
 - 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”  部分。 
 - 针对需要装载到 DSVM 的任何 Azure 文件存储的 Azure 文件存储信息。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "96000991"
 
 要在本地使用存储库并将所做的更改推送到共享的团队和项目存储库，请先将存储库复制或克隆到本地计算机  。 
 
-1. 在 Azure DevOps 中，在 *https： \/ / \<server name> / \<organization name> / \<team name>*（例如， **https： \/ /dev.azure.com/DataScienceUnit/MyTeam**）中转到你的团队的项目摘要页。
+1. 在 Azure DevOps 中，转到团队项目的“摘要”页面，地址为 https:\//\<server name>/\<organization name>/\<team name>，例如 https:\//dev.azure.com/DataScienceUnit/MyTeam。
    
 1. 在左侧导航栏中，选择“存储库”，然后在页面顶部选择要克隆的存储库  。
    

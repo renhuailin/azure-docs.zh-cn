@@ -8,10 +8,10 @@ ms.author: dalek
 ms.date: 2/7/2021
 ms.reviewer: mbullwin
 ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726168"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
@@ -288,16 +288,16 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 这些旧的定价层已经过重命名。 “企业”定价层现在称为“按节点”层，而“基本”定价层现在称为“按 GB”层 。 下文和 Azure 门户中将使用这些新名称。  
 
-“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 了解有关 [新定价模型](..//usage-estimated-costs.md)的详细信息。
+“按节点”（以前称为“企业”）层按节点收费，并且每个节点都会收到每日数据限额。 在“按节点”定价层中，你需要为引入的数据中超出规定限额的数据付费。 如果你使用的是 Operations Management Suite，应选择“按节点”层。 在 2018 年 4 月，我们[引入了](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure 监视的新定价模型。 此模型在监视服务的完整组合中采用简单的“即用即付”模型。 详细了解[新定价模型](..//usage-estimated-costs.md)。
 
 有关在你所在区域中以适合你的货币计价的当前价格，请参阅 [Application Insights 定价](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>了解旧企业 (按节点) 层的计费使用情况 
+### <a name="understanding-billed-usage-on-the-legacy-enterprise-per-node-tier"></a>了解旧式企业（按节点）层的计费用量 
 
-如下面更详细地说明，每个节点) 层的旧企业 (将使用情况与订阅中所有 Application Insights 资源的使用情况相结合，以计算节点数和数据超额量。 由于此组合过程，将 **仅针对其中一个资源报告订阅中所有 Application Insights 资源的使用情况**。  这会使 [计费的使用](#viewing-application-insights-usage-on-your-azure-bill) 与每个 Application Insights 资源的使用情况非常复杂。 
+如下面详述，旧式企业（按节点）层合并了订阅中所有 Application Insights 资源的用量，以计算节点数和数据超额量。 由于这种合并过程，**对于订阅中的所有 Application Insights 资源，只会报告一个资源的用量**。  这样，让[计费用量](#viewing-application-insights-usage-on-your-azure-bill)与所观察到的每个 Application Insights 资源的用量相符合就变得非常复杂。 
 
 > [!WARNING]
-> 由于跟踪和了解 Application Insights 资源在旧版企业 (的使用情况) 层，因此强烈建议使用当前的即用即付定价层。 
+> 由于在旧式企业（按节点）层中跟踪和了解 Application Insights 资源用量非常复杂，因此我们强烈建议使用当前的“即用即付”定价层。 
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>“按节点”层和 Operations Management Suite 订阅权利
 

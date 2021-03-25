@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bec31f830adddfc7251ce36e13ef0bfaa0af7638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88931703"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中通过自定义图像列表进行审查
@@ -31,7 +31,7 @@ ms.locfileid: "88931703"
 - 删除自定义列表
 
 > [!NOTE]
-> 最多只能使用 5 个图像列表  ，每个列表中的图像数不得超过 10,000 张  。
+> 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 
 本指南的控制台应用程序模拟了一些可使用图像列表 API 执行的任务。
 
@@ -43,9 +43,9 @@ ms.locfileid: "88931703"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”项目。
 
-   在示例代码中，将项目命名为“ImageLists”  。
+   在示例代码中，将项目命名为“ImageLists”。
 
 1. 将此项目选为解决方案的单一启动项目。
 
@@ -73,7 +73,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-添加以下代码来为订阅创建内容审查器客户端。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”**** 选项卡中找到它们。
+添加以下代码来为订阅创建内容审查器客户端。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”选项卡中找到它们。
 
 ```csharp
 /// <summary>
@@ -115,7 +115,7 @@ public static class Clients
 
 ### <a name="initialize-application-specific-settings"></a>初始化应用专用设置
 
-向 Program.cs 中的 Program 类添加以下类和静态字段****。
+向 Program.cs 中的 Program 类添加以下类和静态字段。
 
 ```csharp
 /// <summary>
@@ -588,7 +588,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>添加代码以模拟使用图像列表
 
-将以下代码添加到 Main 方法****。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 借助日志记录功能，可以查看通过对内容审查器服务执行 SDK 调用生成的响应对象。
+将以下代码添加到 Main 方法。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 借助日志记录功能，可以查看通过对内容审查器服务执行 SDK 调用生成的响应对象。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 01/21/2021
 ms.author: justinha
 ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98673462"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教程：在 Azure Active Directory 域服务中创建到本地域的出站林信任
 
-在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希永远不会同步。
+在你无法同步密码哈希的环境中，或者在用户专门使用智能卡登录且不知道其密码的环境中，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希永远不会同步。
 
 ![从 Azure AD DS 到本地 AD DS 的林信任关系图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "98673462"
 1. 选择“开始” > “管理工具” > “Active Directory 域和信任”  。
 1. 右键单击域（例如“onprem.contoso.com”），然后选择“属性”。
 1. 选择“信任”选项卡，然后选择“信任此域的域(内向信任)”，单击要删除的信任，然后单击“删除”  。
-1. 在“信任”选项卡的“受此域信任的域(外向信任)”，单击要删除的信任，然后单击“删除”。
+1. 在“信任”选项卡的“受此域信任的域(外向信任)”下，单击要删除的信任，然后单击“删除”。
 1. 单击“不，只从本地域删除信任”。
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>在 Azure AD DS 中创建出站林信任
@@ -124,8 +124,8 @@ ms.locfileid: "98673462"
 如果环境不再需要林信任，请完成以下步骤以将其从 Azure AD DS 中删除：
 
 1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”，然后选择你的托管域，例如 aaddscontoso.com。
-1. 从托管域左侧的菜单中选择“信任”，选择林信任，然后单击“删除” 。
-1. 提供用于配置林信任的同一信任密码，然后单击“确定”。
+1. 从托管域左侧的菜单中选择“信任”，选择该林信任，然后单击“删除” 。
+1. 提供用于配置该林信任的同一信任密码，然后单击“确定”。
 
 ## <a name="validate-resource-authentication"></a>验证资源身份验证
 

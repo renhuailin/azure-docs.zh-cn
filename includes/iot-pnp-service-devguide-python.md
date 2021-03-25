@@ -4,26 +4,26 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7807c0df580a6763a69619cdaa3d9d29f72e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: a925c3a17988ef6f4b95a1e3cf4dd5fb8baa4829
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521355"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102510934"
 ---
 还可以使用以下资源：
 
-- [Python SDK 参考文档](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python)
+- [Python SDK 参考文档](/python/api/azure-iot-hub/azure.iot.hub)
 - [服务客户端示例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)
 - [数字孪生示例](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 
-本部分介绍使用 IoT 中心服务客户端和 **IoTHubRegistryManager** 和 **CloudToDeviceMethod** 类的 Python 示例。 使用 **IoTHubRegistryManager** 类通过设备孪生与设备状态交互。 还可以使用 **IoTHubRegistryManager** 类在 IoT 中心 [查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md) 。 使用 **CloudToDeviceMethod** 类调用设备上的命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。 在代码片段中， `device_id` 变量保存注册到 iot 中心的 iot 即插即用设备的设备 ID。
+此部分介绍的 Python 示例使用 IoT 中心服务客户端以及 IoTHubRegistryManager 和 CloudToDeviceMethod 类 。 使用 IoTHubRegistryManager 类通过设备孪生与设备状态交互。 还可以使用 IoTHubRegistryManager 类在 IoT 中心[查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md)。 使用 CloudToDeviceMethod 类在设备上调用命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。 在代码片段中，`device_id` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-device-twin-and-model-id"></a>获取设备克隆和模型 ID
+### <a name="get-the-device-twin-and-model-id"></a>获取设备孪生和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的设备克隆和模型 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的设备孪生和模型 ID，请执行以下命令：
 
 ```python
 from azure.iot.hub import IoTHubRegistryManager
@@ -48,7 +48,7 @@ if "modelId" in additional_props:
 
 ### <a name="update-device-twin"></a>更新设备孪生
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 此示例演示如何在更新之前获取克隆的 `etag` 。 在设备的默认组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 此示例演示你需要如何在更新孪生体之前获取其 `etag`。 在设备的默认组件中定义该属性：
 
 ```python
 iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
@@ -63,7 +63,7 @@ twin_patch.properties = TwinProperties(
 updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
 ```
 
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 此示例演示如何在更新之前获取克隆的 `ETag` 。 在 **thermostat1** 组件中定义属性：
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 此示例演示你需要如何在更新孪生体之前获取其 `ETag`。 在 thermostat1 组件中定义该属性：
 
 ```python
 iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
@@ -81,7 +81,7 @@ twin_patch.properties = TwinProperties(
 updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
 ```
 
-对于组件中的属性，属性修补程序类似于以下示例：
+对于组件中的属性，属性补丁类似于以下示例：
 
 ```json
 {
@@ -93,9 +93,9 @@ updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.e
 }
 ```
 
-### <a name="call-command"></a>Call 命令
+### <a name="call-command"></a>调用命令
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```python
 from azure.iot.hub import IoTHubRegistryManager
@@ -111,7 +111,7 @@ result = iothub_registry_manager.invoke_device_method(device_id, device_method)
 print(result.payload)
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 thermostat1 组件中定义该命令：
 
 ```python
 from azure.iot.hub import IoTHubRegistryManager
@@ -127,15 +127,15 @@ result = iothub_registry_manager.invoke_device_method(device_id, device_method)
 print(result.payload)
 ```
 
-## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字输出示例
+## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字孪生体示例
 
-使用 **DigitalTwinClient** 类通过数字孪生与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。
+使用 DigitalTwinClient 类通过数字孪生体与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。
 
-`device_id`变量包含注册到 iot 中心的 iot 即插即用设备的设备 ID。
+`device_id` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-digital-twin-and-model-id"></a>获取数字克隆和型号 ID
+### <a name="get-the-digital-twin-and-model-id"></a>获取数字孪生体和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的数字输出和型号 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的数字孪生体和模型 ID，请执行以下命令：
 
 ```python
 from azure.iot.hub import DigitalTwinClient
@@ -150,20 +150,9 @@ else:
     print("No digital_twin found")
 ```
 
-### <a name="update-digital-twin"></a>更新数字克隆
+### <a name="update-digital-twin"></a>更新数字孪生体
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 在设备的默认组件中定义属性：
-
-```python
-from azure.iot.hub import DigitalTwinClient
-
-digital_twin_client = DigitalTwinClient(iothub_connection_str)
-
-patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
-digital_twin_client.update_digital_twin(device_id, patch)
-```
-
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 在 **thermostat1** 组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 在设备的默认组件中定义该属性：
 
 ```python
 from azure.iot.hub import DigitalTwinClient
@@ -174,9 +163,20 @@ patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
 digital_twin_client.update_digital_twin(device_id, patch)
 ```
 
-### <a name="call-command"></a>Call 命令
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 在 thermostat1 组件中定义该属性：
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+```python
+from azure.iot.hub import DigitalTwinClient
+
+digital_twin_client = DigitalTwinClient(iothub_connection_str)
+
+patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
+digital_twin_client.update_digital_twin(device_id, patch)
+```
+
+### <a name="call-command"></a>调用命令
+
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```python
 from azure.iot.hub import DigitalTwinClient
@@ -198,7 +198,7 @@ else:
     print("No invoke_command_result found")
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 thermostat1 组件中定义该命令：
 
 ```python
 from azure.iot.hub import DigitalTwinClient
@@ -220,11 +220,11 @@ else:
     print("No invoke_command_result found")
 ```
 
-## <a name="read-device-telemetry"></a>读取设备遥测
+## <a name="read-device-telemetry"></a>读取设备遥测数据
 
-IoT 即插即用设备将在 DTDL 模型中定义的遥测发送到 IoT 中心。 默认情况下，IoT 中心会将遥测路由到事件中心终结点，你可以在其中使用该终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
+IoT 即插即用设备将 DTDL 模型中定义的遥测数据发送到 IoT 中心。 默认情况下，IoT 中心会将遥测数据路由到一个可供你在其中使用遥测数据的事件中心终结点。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
 
-下面的代码段演示如何从默认事件中心终结点读取遥测数据。 此代码段中的代码来自 IoT 中心快速入门，将 [遥测数据从设备发送到 IoT 中心，并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-python.md)：
+下面的代码片段演示如何从默认事件中心终结点读取遥测数据。 此代码片段中的代码取自 IoT 中心快速入门：[将设备的遥测数据发送到 IoT 中心并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-python.md)：
 
 ```python
 import asyncio
@@ -259,7 +259,7 @@ finally:
     loop.stop()
 ```
 
-以下来自前面代码的输出显示了 **恒温器** IoT 即插即用设备上只有默认组件发送的温度遥测。 " `dt-dataschema` 系统" 属性显示模型 ID：
+此前的代码的以下输出显示了由仅包含默认组件的无组件 Thermostat IoT 即插即用设备发送的温度遥测数据。 `dt-dataschema` 系统属性显示模型 ID：
 
 ```cmd/sh
 Received event from partition: 1.
@@ -268,7 +268,7 @@ Properties (set by device):  None
 System properties (set by IoT Hub):  {b'content-type': b'application/json', b'content-encoding': b'utf-8', b'iothub-connection-device-id': b'my-pnp-device', b'iothub-connection-auth-method': b'{"scope":"device","type":"sas","issuer":"iothub","acceptingIpFilterRule":null}', b'iothub-connection-auth-generation-id': b'637388855582764406', b'iothub-enqueuedtime': 1603288810715, b'iothub-message-source': b'Telemetry', b'dt-dataschema': b'dtmi:com:example:Thermostat;1', b'x-opt-sequence-number': 13280, b'x-opt-offset': b'12890070640', b'x-opt-enqueued-time': 1603288810824}
 ```
 
-前面代码的以下输出显示了由多组件 **TemperatureController** IoT 即插即用设备发送的温度遥测。 " `dt-subject` 系统" 属性显示发送了遥测数据的组件的名称。 在此示例中，两个组件都是 `thermostat1` 和 `thermostat2` 在 DTDL 模型中定义的。 " `dt-dataschema` 系统" 属性显示模型 ID：
+此前的代码的以下输出显示了由多组件 TemperatureController IoT 即插即用设备发送的温度遥测数据。 `dt-subject` 系统属性显示发送了遥测数据的组件的名称。 此示例中的两个组件是 DTDL 模型中定义的 `thermostat1` 和 `thermostat2`。 `dt-dataschema` 系统属性显示模型 ID：
 
 ```cmd/sh
 Received event from partition: 1.
@@ -282,11 +282,11 @@ Properties (set by device):  None
 System properties (set by IoT Hub):  {b'content-type': b'application/json', b'content-encoding': b'utf-8', b'iothub-connection-device-id': b'my-pnp-device', b'iothub-connection-auth-method': b'{"scope":"device","type":"sas","issuer":"iothub","acceptingIpFilterRule":null}', b'iothub-connection-auth-generation-id': b'637388858939631652', b'iothub-enqueuedtime': 1603289133017, b'iothub-message-source': b'Telemetry', b'dt-subject': b'thermostat2', b'dt-dataschema': b'dtmi:com:example:TemperatureController;1', b'x-opt-sequence-number': 13329, b'x-opt-offset': b'12890095928', b'x-opt-enqueued-time': 1603289133173}
 ```
 
-## <a name="read-device-twin-change-notifications"></a>读取设备克隆更改通知
+## <a name="read-device-twin-change-notifications"></a>读取设备孪生更改通知
 
-可以将 IoT 中心配置为生成设备克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的设备孪生更改通知。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心为非组件恒温器设备生成设备克隆更改通知时，上一个 Python 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成设备孪生更改通知时，此前的 Python 代码片段中显示的代码会生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Received event from partition: 1.
@@ -295,7 +295,7 @@ Properties (set by device):  {b'hubName': b'my-pnp-hub', b'deviceId': b'my-pnp-d
 System properties (set by IoT Hub):  {b'user-id': b'my-pnp-hub\x81\x0e\xa4\x7f', b'correlation-id': b'12104ced5402', b'content-type': b'application/json', b'content-encoding': b'utf-8', b'iothub-connection-device-id': b'my-pnp-device', b'iothub-enqueuedtime': 1603289442519, b'iothub-message-source': b'twinChangeEvents', b'x-opt-sequence-number': 13332, b'x-opt-offset': b'12890097392', b'x-opt-enqueued-time': 1603289442738}
 ```
 
-当 IoT 中心为包含组件的设备生成设备克隆更改通知时，上一个 Python 代码片段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成设备孪生更改通知时，此前的 Python 代码片段中显示的代码会生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Received event from partition: 1.
@@ -304,11 +304,11 @@ Properties (set by device):  {b'hubName': b'my-pnp-hub', b'deviceId': b'my-pnp-d
 System properties (set by IoT Hub):  {b'user-id': b'my-pnp-hub', b'correlation-id': b'1210b664ab83', b'content-type': b'application/json', b'content-encoding': b'utf-8', b'iothub-connection-device-id': b'my-pnp-device', b'iothub-enqueuedtime': 1603289619481, b'iothub-message-source': b'twinChangeEvents', b'x-opt-sequence-number': 13341, b'x-opt-offset': b'12890102216', b'x-opt-enqueued-time': 1603289619668}
 ```
 
-## <a name="read-digital-twin-change-notifications"></a>读取数字克隆更改通知
+## <a name="read-digital-twin-change-notifications"></a>读取数字孪生体更改通知
 
-可以配置 IoT 中心来生成数字克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的数字孪生体更改通知。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心生成非组件恒温器设备的数字克隆更改通知时，上一个 Python 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成数字孪生体更改通知时，此前的 Python 代码片段中显示的代码会生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Received event from partition: 1.
@@ -317,7 +317,7 @@ Properties (set by device):  {b'hubName': b'my-pnp-hub', b'deviceId': b'my-pnp-d
 System properties (set by IoT Hub):  {b'user-id': b'my-pnp-hub\x81\x0e\xa4\x7f', b'correlation-id': b'12104ced5402', b'content-type': b'application/json-patch+json', b'content-encoding': b'utf-8', b'iothub-connection-device-id': b'my-pnp-device', b'iothub-enqueuedtime': 1603289442519, b'iothub-message-source': b'digitalTwinChangeEvents', b'x-opt-sequence-number': 13333, b'x-opt-offset': b'12890098024', b'x-opt-enqueued-time': 1603289442738}
 ```
 
-当 IoT 中心为包含组件的设备生成数字克隆更改通知时，上一个 Python 代码片段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成数字孪生体更改通知时，此前的 Python 代码片段中显示的代码会生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Received event from partition: 1.

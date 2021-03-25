@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c2bde64c17520f4cf66ddecd9fc55a9bdd9edc37
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: 02abdd752528ce28642b6228648062ed961d5ae3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020581"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452384"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>来自 Azure 流分析的事件中心输出
 
@@ -37,7 +37,7 @@ ms.locfileid: "98020581"
 
 ## <a name="partitioning"></a>分区
 
-分区取决于分区对齐方式。 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与事件中心输出中的分区数量相同。 每个写入器使用 [EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true)将事件发送到特定分区。 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与该上一步骤中的分区数量相同。 每个写入器使用 **EventHubClient** 中的 [SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true)将事件发送到所有输出分区。 
+分区取决于分区对齐方式。 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与事件中心输出中的分区数量相同。 每个写入器使用 [EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender)将事件发送到特定分区。 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与该上一步骤中的分区数量相同。 每个写入器使用 **EventHubClient** 中的 [SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync)将事件发送到所有输出分区。 
 
 ## <a name="output-batch-size"></a>输出批大小
 
@@ -65,5 +65,5 @@ ms.locfileid: "98020581"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用托管标识从 Azure 流分析作业 (预览访问事件中心) ](event-hubs-managed-identity.md)
+* [使用托管标识通过 Azure 流分析作业访问事件中心（预览版）](event-hubs-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)

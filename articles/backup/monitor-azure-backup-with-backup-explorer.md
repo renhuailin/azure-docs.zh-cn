@@ -5,10 +5,10 @@ ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824406"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>使用备份资源管理器监视备份
@@ -29,7 +29,7 @@ ms.locfileid: "88824406"
 > * 备份资源管理器旨在充当可操作的仪表板，用于查看过去 7 天（上限）备份的相关信息。
 > * 国家云当前不支持备份资源管理器。
 > * 当前不支持自定义备份资源管理器模板。
-> * 不建议在 Azure 资源关系图数据上编写自定义自动化。
+> * 我们不建议针对 Azure Resource Graph 数据编写自定义的自动化程序。
 > * 当前，可通过备份资源管理器监视最多跨 1,000 个订阅（跨租户）的备份。
 
 ## <a name="get-started"></a>入门
@@ -78,7 +78,7 @@ ms.locfileid: "88824406"
 
 ### <a name="the-backup-not-enabled-tab"></a>“未启用备份”选项卡
 
-应为所有需要保护的计算机启用备份。 使用备份资源管理器，备份管理员可以快速确定组织中的哪些计算机尚未通过备份进行保护。 要查看此信息，请选择“未启用备份”选项卡。
+应为所有需要保护的计算机启用备份。 借助备份资源管理器，备份管理员可以快速识别组织中的哪些计算机尚未通过备份进行保护。 要查看此信息，请选择“未启用备份”选项卡。
 
 “未启用备份”窗格会显示一张表，其中包含未受保护的计算机的列表。 你的组织可能会将不同的标记分配给生产计算机和测试计算机，或者分配给提供多种功能的计算机。 由于每类计算机都需要一个单独的备份策略，因此按标记进行筛选有助于查看每个类别特定的信息。 选择任何计算机的名称都会将你重定向到该计算机的“配置备份”窗格，可在其中选择应用相应的备份策略。
 

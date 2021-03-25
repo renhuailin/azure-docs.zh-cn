@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: duau
 ms.openlocfilehash: b1901ddce2eb9c8ff5ec9ac90a56379e74c11aa6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994887"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
@@ -46,10 +46,10 @@ ms.locfileid: "95994887"
 #### <a name="create-vms-for-running-websites"></a>创建用于运行网站的 VM
 在本部分，我们将在“美国东部”和“西欧”Azure 区域创建两个 VM：myEndpointVMEastUS 和 myEndpointVMWEurope。
 
-1. 在 Azure 门户的左上角，选择 "**创建资源**" "计算" "  >  **Compute**  >  **Windows Server 2016 VM**"。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2016 VM”。  
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myIISVMEastUS|
     |用户名| 输入所选用户名。|
@@ -61,7 +61,7 @@ ms.locfileid: "95994887"
 4. 在“选择大小”下选择 VM 大小  。
 5. 对于“设置”  选择以下值，然后选择“确定”  ：
     
-    |设置|Value|
+    |设置|值|
     |---|---|
     |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。|
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
@@ -72,7 +72,7 @@ ms.locfileid: "95994887"
 
 7. 再次完成步骤 1-6，并做出以下更改：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |资源组 | 选择“新建”  ，然后键入 *myResourceGroupTM2*|
     |位置|西欧|
@@ -86,11 +86,11 @@ ms.locfileid: "95994887"
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>安装 IIS 并自定义默认网页
 
-在本部分中，将在两个 vm 上安装 IIS 服务器- *myIISVMEastUS*   &  *myIISVMWEurope*，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
+在本部分，我们将在 *myIISVMEastUS*  &  和 *myIISVMWEurope* 这两个 VM 上安装 IIS 服务器，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
 1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
-3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
+3. 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
 6. 在服务器桌面上导航到“Windows 管理工具”  >  “服务器管理器”。
@@ -121,7 +121,7 @@ ms.locfileid: "95994887"
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>为运行 IIS 的 VM 配置 DNS 名称
 
-流量管理器基于服务终结点的 DNS 名称路由用户流量。 在本部分中，将配置 IIS 服务器的 DNS 名称- *myIISVMEastUS* 和 *myIISVMWEurope*。
+流量管理器基于服务终结点的 DNS 名称路由用户流量。 在此部分中，将为 IIS 服务器配置 DNS 名称 - myIISVMEastUS 和 myIISVMWEurope。
 
 1. 在左侧菜单中单击“所有资源”，然后在资源列表中，选择位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。
 2. 在“概述”页上的“DNS 名称”下，选择“配置”。   
@@ -132,10 +132,10 @@ ms.locfileid: "95994887"
 
 在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*mVMEastUS* 和 *myVMWestEurope*）。 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在 Azure 门户的左上角，选择 "**创建资源**" "计算" "  >  **Compute**  >  **Windows Server 2016 VM**"。
+1. 在 Azure 门户的左上角选择“创建资源” > “计算” > “Windows Server 2016 VM”。  
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVMEastUS|
     |用户名| 输入所选用户名。|
@@ -146,7 +146,7 @@ ms.locfileid: "95994887"
 4. 在“选择大小”下选择 VM 大小  。
 5. 对于“设置”  选择以下值，然后选择“确定”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 myVNet3，为“子网”输入 mySubnet3      。|
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
@@ -172,7 +172,7 @@ ms.locfileid: "95994887"
 1. 在屏幕左上方，选择“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
@@ -185,13 +185,13 @@ ms.locfileid: "95994887"
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
-添加运行 IIS 服务器的两个 vm- *myIISVMEastUS*  &  *myIISVMWEurope* ，以根据用户查询的子网路由用户流量。
+添加运行 IIS 服务器的两个 VM (myIISVMEastUS & myIISVMWEurope)，根据用户查询的子网路由用户流量 。
 
 1. 在门户的搜索栏中，搜索在前面部分创建的流量管理器配置文件名称，并在显示的结果中选择该配置文件。
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
     | 名称           | myTestWebSiteEndpoint                                        |
@@ -227,7 +227,7 @@ ms.locfileid: "95994887"
 
 1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myVMEastUS”。
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
-3. 打开下载的 rdp 文件。 出现提示时，选择“连接”  。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
+3. 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”  ，然后选择“使用其他帐户”  ，以指定在创建 VM 时输入的凭据。
 4. 选择“确定”  。
 5. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
 1. 在 VM *myVMEastUS* 上的 Web 浏览器中，键入流量管理器配置文件的 DNS 名称，以查看网站。 由于 VM myVMEastUS IP 地址与终结点 myIISVMEastUS 关联，因此 Web 浏览器将启动测试网站服务器 - myIISVMEastUS。

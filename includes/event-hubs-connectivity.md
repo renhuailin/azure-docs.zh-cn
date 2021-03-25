@@ -9,10 +9,10 @@ ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98689717"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
@@ -53,7 +53,7 @@ ms.locfileid: "98689717"
     ```
 2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 
 
-如果对命名空间使用 **区域冗余** ，则需要执行一些额外的步骤： 
+如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
 
 1. 首先，在命名空间中运行 nslookup。
 
@@ -72,7 +72,7 @@ ms.locfileid: "98689717"
     > [!NOTE]
     > `nslookup` 命令返回的 IP 地址不是静态 IP 地址。 但是，在删除基础部署或将其移至其他群集之前，该地址保持不变。
 
-### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>哪些客户端 Ip 向我的命名空间发送事件或接收事件？
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>哪些客户端 IP 正在向/从我的命名空间发送/接收事件？
 首先，在命名空间上启用 [IP 筛选](../articles/event-hubs/event-hubs-ip-filtering.md)。 
 
 然后，按照[启用诊断日志](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的说明，为[事件中心虚拟网络连接事件](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)启用诊断日志。 你将看到连接遭到拒绝的 IP 地址。
@@ -94,4 +94,4 @@ ms.locfileid: "98689717"
 > 只有当命名空间允许从特定的 IP 地址（IP 筛选器规则）进行访问时，才会生成虚拟网络日志。 如果不希望使用这些功能限制对命名空间的访问，但仍希望获取虚拟网络日志来跟踪连接到事件中心命名空间的客户端的 IP 地址，则可以使用以下解决方法：启用 IP 筛选并添加整个可寻址 IPv4 范围 (1.0.0.0/1 - 255.0.0.0/1)。 事件中心不支持 IPv6 地址范围。 
 
 > [!NOTE]
-> 目前不能确定单个消息或事件的源 IP。 
+> 目前，无法确定单个消息或事件的源 IP。 

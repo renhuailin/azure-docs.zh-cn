@@ -4,26 +4,26 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 7bf32de017a5f8ad19eb044ae7dbcdc2eaa96ca5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.openlocfilehash: dfeeb451912dd32770a6ae92d73de83851d9d8f6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521358"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102234284"
 ---
 还可以使用以下资源：
 
-- [Node.js SDK 参考文档](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest)
+- [Node.js SDK 参考文档](/javascript/api/azure-iothub)
 - [服务客户端示例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)
 - [数字孪生示例](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 
-本部分介绍使用 IoT 中心服务客户端和 **注册表** 和 **客户端** 类的 JavaScript 示例。 使用 device 孪生将 **Registry** 类与设备状态交互。 还可以使用 **Registry** 类在 IoT 中心 [查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md) 。 使用 **客户端** 类来调用设备上的命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。 在代码片段中， `deviceId` 变量保存注册到 iot 中心的 iot 即插即用设备的设备 ID。
+本部分介绍有关使用 IoT 中心服务客户端的 JavaScript 示例以及 Registry 类和 Client 类 。 使用 Registry 类通过设备孪生与设备状态交互。 还可以使用 Registry 类在 IoT 中心[查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md)。 使用 Client 类在设备上调用命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。 在代码片段中，`deviceId` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-device-twin-and-model-id"></a>获取设备克隆和模型 ID
+### <a name="get-the-device-twin-and-model-id"></a>获取设备孪生和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的设备克隆和模型 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的设备孪生和模型 ID，请执行以下命令：
 
 ```javascript
 var Registry = require('azure-iothub').Registry;
@@ -43,7 +43,7 @@ registry.getTwin(deviceId, function(err, twin) {
 
 ### <a name="update-device-twin"></a>更新设备孪生
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 此示例演示如何在更新之前获取克隆。 在设备的默认组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 此示例演示为何需要以及如何在更新孪生之前获取孪生。 在设备的默认组件中定义该属性：
 
 ```javascript
 var Registry = require('azure-iothub').Registry;
@@ -71,7 +71,7 @@ registry.getTwin(deviceId, function(err, twin) {
 }
 ```
 
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 此示例演示如何在更新之前获取克隆。 在 **thermostat1** 组件中定义属性：
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 此示例演示为何需要以及如何在更新孪生之前获取孪生。 在 thermostat1 组件中定义该属性：
 
 ```javascript
 var Registry = require('azure-iothub').Registry;
@@ -103,7 +103,7 @@ registry.getTwin(deviceId, function(err, twin) {
 }
 ```
 
-对于组件中的属性，属性修补程序类似于以下示例：
+对于组件中的属性，属性补丁类似于以下示例：
 
 ```json
 {
@@ -115,9 +115,9 @@ registry.getTwin(deviceId, function(err, twin) {
 }
 ```
 
-### <a name="call-command"></a>Call 命令
+### <a name="call-command"></a>调用命令
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```javascript
 var Client = require('azure-iothub').Client;
@@ -142,7 +142,7 @@ client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
 });
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 thermostat1 组件中定义该命令：
 
 ```javascript
 var Client = require('azure-iothub').Client;
@@ -167,17 +167,17 @@ client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
 });
 ```
 
-## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字输出示例
+## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字孪生体示例
 
-使用 **DigitalTwinClient** 类通过数字孪生与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义设备实现的属性和命令。
+使用 DigitalTwinClient 类通过数字孪生体与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。
 
-本部分介绍使用数字孪生 API 的 JavaScript 示例。
+本部分演示有关使用数字孪生 API 的 JavaScript 示例。
 
-`digitalTwinId`变量包含注册到 iot 中心的 iot 即插即用设备的设备 ID。
+`digitalTwinId` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
-### <a name="get-the-digital-twin-and-model-id"></a>获取数字克隆和型号 ID
+### <a name="get-the-digital-twin-and-model-id"></a>获取数字孪生体和模型 ID
 
-若要获取连接到 IoT 中心的 IoT 即插即用设备的数字输出和型号 ID，请执行以下操作：
+若要获取连接到 IoT 中心的 IoT 即插即用设备的数字孪生体和模型 ID，请执行以下命令：
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -195,9 +195,9 @@ console.log(inspect(digitalTwin));
 console.log('Model Id: ' + inspect(digitalTwin.$metadata.$model));
 ```
 
-### <a name="update-digital-twin"></a>更新数字克隆
+### <a name="update-digital-twin"></a>更新数字孪生体
 
-下面的代码段演示如何更新 `targetTemperature` 设备上的属性。 在设备的默认组件中定义属性：
+下面的代码片段展示如何更新设备上的 `targetTemperature` 属性。 在设备的默认组件中定义该属性：
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -216,7 +216,7 @@ const patch = [{
 await digitalTwinClient.updateDigitalTwin(digitalTwinId, patch);
 ```
 
-以下代码片段演示如何更新组件的 `targetTemperature` 属性。 在 **thermostat1** 组件中定义属性：
+以下代码片段演示如何更新组件上的 `targetTemperature` 属性。 在 thermostat1 组件中定义该属性：
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -235,9 +235,9 @@ const patch = [{
 await digitalTwinClient.updateDigitalTwin(digitalTwinId, patch);
 ```
 
-### <a name="call-command"></a>Call 命令
+### <a name="call-command"></a>调用命令
 
-以下代码片段演示如何调用 `getMaxMinReport` 默认组件中定义的命令：
+以下代码片段演示如何调用默认组件中定义的 `getMaxMinReport` 命令：
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -260,7 +260,7 @@ const commandResponse = await digitalTwinClient.invokeCommand(digitalTwinId, "ge
 console.log(inspect(commandResponse));
 ```
 
-以下代码片段演示如何对组件调用 `getMaxMinReport` 命令。 命令在 **thermostat1** 组件中定义：
+以下代码片段演示如何在组件上调用 `getMaxMinReport` 命令。 在 thermostat1 组件中定义该命令：
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -283,11 +283,11 @@ const commandResponse = await digitalTwinClient.invokeComponentCommand(digitalTw
 console.log(inspect(commandResponse));
 ```
 
-## <a name="read-device-telemetry"></a>读取设备遥测
+## <a name="read-device-telemetry"></a>读取设备遥测数据
 
-IoT 即插即用设备将在 DTDL 模型中定义的遥测发送到 IoT 中心。 默认情况下，IoT 中心会将遥测路由到事件中心终结点，你可以在其中使用该终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
+IoT 即插即用设备将 DTDL 模型中定义的遥测数据发送到 IoT 中心。 默认情况下，IoT 中心会将遥测数据路由到一个可供你在其中使用遥测数据的事件中心终结点。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
 
-下面的代码段演示如何从默认事件中心终结点读取遥测数据。 此代码段中的代码来自 IoT 中心快速入门，将 [遥测数据从设备发送到 IoT 中心，并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-node.md)：
+下面的代码片段演示如何从默认事件中心终结点读取遥测数据。 此代码片段中的代码取自 IoT 中心快速入门：[将设备的遥测数据发送到 IoT 中心并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-node.md)：
 
 ```javascript
 const { EventHubConsumerClient } = require("@azure/event-hubs");
@@ -320,7 +320,7 @@ consumerClient.subscribe({
 });
 ```
 
-前面代码的以下输出显示了由多组件 **TemperatureController** IoT 即插即用设备发送的温度遥测。 " `dt-subject` 系统" 属性显示发送了遥测数据的组件的名称。 在此示例中，两个组件都是 `thermostat1` 和 `thermostat2` 在 DTDL 模型中定义的。 " `dt-dataschema` 系统" 属性显示模型 ID：
+前面代码的以下输出显示了由多组件 **TemperatureController** IoT 即插即用设备发送的温度遥测数据。 `dt-subject` 系统属性显示发送了遥测数据的组件的名称。 此示例中的两个组件是 DTDL 模型中定义的 `thermostat1` 和 `thermostat2`。 `dt-dataschema` 系统属性显示模型 ID：
 
 ```cmd/sh
 Telemetry received:
@@ -338,11 +338,11 @@ System properties (set by IoT Hub):
 {"iothub-connection-device-id":"my-pnp-device","iothub-connection-auth-method":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","iothub-connection-auth-generation-id":"637388034455888246","iothub-enqueuedtime":1603206665835,"iothub-message-source":"Telemetry","dt-subject":"thermostat2","dt-dataschema":"dtmi:com:example:TemperatureController;1","contentType":"application/json","contentEncoding":"utf-8"}
 ```
 
-## <a name="read-device-twin-change-notifications"></a>读取设备克隆更改通知
+## <a name="read-device-twin-change-notifications"></a>读取设备孪生更改通知
 
-可以将 IoT 中心配置为生成设备克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的设备孪生更改通知。 要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心为非组件恒温器设备生成设备克隆更改通知时，前面的 JavaScript 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成设备孪生更改通知时，前面 JavaScript 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Telemetry received:
@@ -353,7 +353,7 @@ System properties (set by IoT Hub):
 {"iothub-connection-device-id":"my-pnp-device","iothub-enqueuedtime":1603274500282,"iothub-message-source":"twinChangeEvents","userId":{"type":"Buffer","data":[109,121,45,112,110,112,45,104,117,98]},"correlationId":"11ed82d13f50","contentType":"application/json","contentEncoding":"utf-8"}
 ```
 
-当 IoT 中心为包含组件的设备生成设备克隆更改通知时，以前的 JavaScript 代码片段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成设备孪生更改通知时，前面 JavaScript 代码片段中显示的代码将生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Telemetry received:
@@ -364,11 +364,11 @@ System properties (set by IoT Hub):
 {"iothub-connection-device-id":"my-pnp-device","iothub-enqueuedtime":1603274871951,"iothub-message-source":"twinChangeEvents","userId":{"type":"Buffer","data":[109,121,45,112,110,112,45,104,117,98]},"correlationId":"11ee605b195f","contentType":"application/json","contentEncoding":"utf-8"}
 ```
 
-## <a name="read-digital-twin-change-notifications"></a>读取数字克隆更改通知
+## <a name="read-digital-twin-change-notifications"></a>读取数字孪生体更改通知
 
-可以配置 IoT 中心来生成数字克隆更改通知，以路由到受支持的终结点。 若要了解详细信息，请参阅 [使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点，> 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
+可以配置 IoT 中心，以便生成要路由到支持的终结点的数字孪生体更改通知。 要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点 > 非遥测事件](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-当 IoT 中心生成非组件恒温器设备的数字克隆更改通知时，前面的 JavaScript 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为无组件恒温器设备生成数字孪生更改通知时，前面 JavaScript 代码片段中显示的代码将生成以下输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Telemetry received:
@@ -379,7 +379,7 @@ System properties (set by IoT Hub):
 {"iothub-connection-device-id":"my-pnp-device","iothub-enqueuedtime":1603274500282,"iothub-message-source":"digitalTwinChangeEvents","userId":{"type":"Buffer","data":[109,121,45,112,110,112,45,104,117,98]},"correlationId":"11ed82d13f50","contentType":"application/json-patch+json","contentEncoding":"utf-8"}
 ```
 
-当 IoT 中心为包含组件的设备生成数字克隆更改通知时，以前的 JavaScript 代码片段中显示的代码将生成以下输出。 此示例显示了具有恒温器组件的温度传感器设备生成通知时的输出。 应用程序属性 `iothub-message-schema` ，并 `opType` 向你显示有关更改通知类型的信息：
+当 IoT 中心为包含组件的设备生成数字孪生更改通知时，前面 JavaScript 代码片段中显示的代码将生成以下输出。 此示例显示当具有恒温器组件的温度传感器设备生成通知时所生成的输出。 应用程序属性 `iothub-message-schema` 和 `opType` 提供有关更改通知类型的信息：
 
 ```cmd/sh
 Telemetry received:

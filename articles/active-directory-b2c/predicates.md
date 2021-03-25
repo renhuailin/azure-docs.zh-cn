@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97108410"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
@@ -428,4 +428,4 @@ PredicateReference 元素包含以下属性：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用谓词验证 [Azure Active Directory B2C 中的自定义策略配置密码复杂性](password-complexity.md) 。
+- 了解如何通过谓词验证[在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性](password-complexity.md)。

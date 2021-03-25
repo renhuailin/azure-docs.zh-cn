@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6c0cc1c8da6fddfad6d3f70c88860ddcdd35a11a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182411"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504246"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -23,11 +23,10 @@ ms.locfileid: "102182411"
 ## <a name="prerequisites"></a>先决条件
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
-* AKS 群集不得将 `169.254.0.0/16` 、、 `172.30.0.0/16` `172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、pod 地址范围或群集虚拟网络地址范围。
-* AKS 群集使用的服务主体在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
+* AKS 群集不得将 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24` 用于 Kubernetes 服务地址范围、Pod 地址范围或群集虚拟网络地址范围。
+* AKS 群集使用的群集标识在虚拟网络中的子网上必须至少具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)权限。 如果希望定义[自定义角色](../role-based-access-control/custom-roles.md)而不是使用内置的网络参与者角色，则需要以下权限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
-* 你可以使用系统分配的托管标识来获得权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 * 分配给 AKS 节点池的子网不能是[委托子网](../virtual-network/subnet-delegation-overview.md)。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
@@ -54,7 +53,7 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 | 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 子网大小还应考虑到帐户升级操作或将来的缩放需求。<p />若要计算最小子网大小，包括用于升级操作的其他节点：`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 个节点群集的示例：`(51) + (51  * 30 (default)) = 1,581`（/21 或更大）<p/>50 节点群集的示例，其中还包括纵向扩展额外 10 个节点的预配：`(61) + (61 * 30 (default)) = 1,891`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
 | Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 可以在不同 AKS 群集中重复使用此范围。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址，将由群集服务发现使用。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址。 |
-| Docker 桥地址 | Docker 桥网络地址表示所有 Docker 安装中都存在的默认 docker0 桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0 桥，但必须设置此地址以继续支持 AKS 群集内的 docker build 等方案。 需要为 Docker 桥网络地址选择 CIDR，因为否则 Docker 会自动选取子网，这可能会与其他 CIDRs 冲突。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。 默认地址为 172.17.0.1/16。 可以在不同 AKS 群集中重复使用此范围。 |
+| Docker 桥地址 | Docker 桥网络地址表示所有 Docker 安装中都存在的默认 docker0 桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0 桥，但必须设置此地址以继续支持 AKS 群集内的 docker build 等方案。 需要为 Docker 桥网络地址选择 CIDR，否则 Docker 会自动选择一个可能与其他 CIDR 冲突的子网。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。 默认地址为 172.17.0.1/16。 可以在不同 AKS 群集中重复使用此范围。 |
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
@@ -64,7 +63,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | 是（最大 250） |
 | Resource Manager 模板 | 110 | 30 | 是（最大 250） |
-| 门户 | 110 | 110 (在 "节点池" 选项卡中配置)  | 否 |
+| 门户 | 110 | 110（在“节点池”选项卡中配置） | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 
@@ -83,7 +82,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 > 上表中的最小值由 AKS 服务严格强制实施。 不能将 maxPods 值设置为低于所示的最小值，因为这样做可能会阻止群集启动。
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，请指定 `--max-pods` 参数。 最大值为 250。
-* **资源管理器模板**：在 `maxPods` 使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定属性。 最大值为 250。
+* **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为 250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
@@ -98,9 +97,9 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 
 **子网**：要将群集部署到的虚拟网络中的子网。 若要在虚拟网络中为群集创建新的子网，请选择“新建”，并按照“创建子网”部分中的步骤操作 。 对于混合连接，地址范围不应与环境中的其他任何虚拟网络重叠。
 
-**Azure 网络插件**：使用 azure 网络插件时，无法从不属于 AKS 群集的 clusterCIDR 中的 IP 访问 "ExternalTrafficPolicy = Local" 的内部 LoadBalancer 服务。
+**Azure 网络插件**：使用 Azure 网络插件时，无法从 clusterCIDR 中具有不属于 AKS 群集的 IP 的 VM 访问“externalTrafficPolicy=Local”的内部 LoadBalancer 服务。
 
-**Kubernetes 服务地址范围**：此参数是 Kubernetes 分配给群集中的内部 [服务][services] 的虚拟 ip 集。 可以使用任何专用地址范围，只要其符合以下要求即可：
+**Kubernetes 服务地址范围**：该参数是 Kubernetes 分配给群集中的内部[服务][services]的一组虚拟 IP。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
@@ -146,32 +145,32 @@ az aks create \
 
 以下 Azure 门户屏幕截图显示了在创建 AKS 群集过程中配置这些设置的示例：
 
-![Azure 门户中的高级网络配置][门户-01-网络-高级]
+![Azure 门户中的高级网络配置][portal-01-networking-advanced]
 
-## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>动态分配 Ip 和增强的子网支持 (预览) 
+## <a name="dynamic-allocation-of-ips-and-enhanced-subnet-support-preview"></a>IP 动态分配和增强版子网支持（预览版）
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 > [!NOTE] 
-> 此预览功能当前在以下区域中提供：
+> 此预览版功能当前在以下地区可用：
 >
 > * 美国中西部
 
-传统 CNI 的一个缺点是 AKS 群集增长时，pod IP 地址耗尽，这将导致需要在更大的子网中重建整个群集。 Azure CNI 中的新动态 IP 分配功能解决了这一问题： allotting pod Ip 不同于托管 AKS 群集的子网中的子网。  这能带来以下好处：
+传统 CNI 的一个缺点是，随着 AKS 群集的增长，Pod IP 地址将耗尽，导致需要在更大的子网中重建整个群集。 Azure CNI 中的新增 IP 动态分配功能可从与托管 AKS 群集的子网分隔的子网分配 Pod IP，以此来解决这个问题。  这能带来以下好处：
 
-* **更好的 IP 利用率**： Ip 从 Pod 子网动态分配到集群箱。 与传统的 CNI 解决方案相比，这可以更好地利用群集中的 Ip，这会为每个节点的 Ip 静态分配。  
+* **更高的 IP 利用率**：IP 从 Pod 子网动态分配给群集 Pod。 与传统的 CNI 解决方案（为每个节点静态分配 IP）相比，此功能可以优化群集中的 IP 利用率。  
 
-* **可伸缩且灵活**：可以单独缩放 Node 和 pod 子网。 可以跨群集的多个节点池或在同一 VNet 中部署的多个 AKS 群集共享单个 pod 子网。 你还可以为节点池配置单独的 pod 子网。  
+* **可缩放性和灵活性**：可以单独缩放节点和 Pod 子网。 单个 Pod 子网可以在群集的多个节点池之间或在同一 VNet 中部署的多个 AKS 群集之间共享。 你还可以为节点池配置单独的 Pod 子网。  
 
-* **高性能**：由于 pod 分配了 vnet ip，因此它们可以直接连接到 vnet 中的其他群集 pod 和资源。 此解决方案支持非常大的群集，不会降低性能。
+* **高性能**：由于为 Pod 分配了 VNet IP，因此它们可以直接连接到 VNet 中的其他群集 Pod 和资源。 此解决方案支持非常大的群集，且丝毫不会降低性能。
 
-* **为 Pod 单独使用 vnet 策略**：由于 pod 有单独的子网，因此可以为它们配置不同于节点策略的不同 vnet 策略。 这可以实现许多有用的方案，例如仅允许使用 pod 的 internet 连接，而不允许使用 VNet 网络 NAT 在节点池中修复 pod 的源 IP，并使用 Nsg 筛选节点池之间的流量。  
+* **用于 Pod 的单独 VNet 策略**：由于 Pod 具有单独的子网，因此你可以单独为它们配置不同于节点策略的 VNet 策略。 这样可以实现许多有用的场景，例如只允许 Pod 而不允许节点连接 Internet，使用 VNet 网络 NAT 修复节点池中 Pod 的源 IP 以及使用 NSG 筛选节点池之间的流量。  
 
-* **Kubernetes 网络策略**： Azure 网络策略和 Calico 都适用于此新解决方案。  
+* **Kubernetes 网络策略**：Azure 网络策略和 Calico 都适用于此新解决方案。  
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI
 
-需要 *aks-preview* Azure CLI 扩展。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+需要 aks-preview Azure CLI 扩展。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -181,11 +180,11 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-the-podsubnetpreview-preview-feature"></a>注册 `PodSubnetPreview` 预览功能
+### <a name="register-the-podsubnetpreview-preview-feature"></a>注册 `PodSubnetPreview` 预览版功能
 
-若要使用该功能，还必须 `PodSubnetPreview` 在订阅上启用功能标志。
+若要使用该功能，还必须在订阅上启用 `PodSubnetPreview` 功能标志。
 
-`PodSubnetPreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
+使用 [az feature register][az-feature-register] 命令注册 `PodSubnetPreview` 功能标志，如以下示例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "PodSubnetPreview"
@@ -197,7 +196,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "PodSubnetPr
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSubnetPreview')].{Name:name,State:properties.state}"
 ```
 
-准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -205,40 +204,40 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="additional-prerequisites"></a>其他先决条件
 
-已列出的适用于 Azure CNI 的必备组件仍适用，但还有一些额外的限制：
+已列出的适用于 Azure CNI 的先决条件仍适用，但还有一些额外的限制：
 
-* 仅支持 linux 节点群集和节点池。
+* 仅支持 Linux 节点群集和节点池。
 * 不支持 AKS 引擎和 DIY 群集。
 
-### <a name="planning-ip-addressing"></a>规划 IP 寻址
+### <a name="planning-ip-addressing"></a>计划 IP 寻址
 
-使用此功能时，规划会简单得多。 由于节点和箱是独立缩放的，因此也可以单独计划其地址空间。 由于可以将 pod 子网配置为节点池的粒度，因此客户在添加节点池时，始终可以添加新的子网。 群集/节点池中的系统盒还会接收 pod 子网中的 Ip，因此需要考虑到此行为。
+使用此功能时，计划会简单得多。 由于节点和 Pod 是独立缩放的，因此也可以单独计划其地址空间。 由于可以将 Pod 子网配置为节点池的粒度，因此客户在添加节点池时始终可以添加新的子网。 群集/节点池中的系统 Pod 也会从 Pod 子网中接收 IP，因此需要考虑此行为。
 
-K8S 服务和 Docker 桥的 Ip 规划会保持不变。
+K8S 服务和 Docker 桥的 IP 计划保持不变。
 
-### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>群集中每个节点的最大 pod 数，并动态分配 Ip 和增强的子网支持
+### <a name="maximum-pods-per-node-in-a-cluster-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>具有 IP 动态分配和增强版子网支持的群集中每个节点的最大 Pod 数
 
-使用 Azure CNI 进行 Ip 动态分配时，每个节点的 pod 值与传统的 CNI 行为略有不同：
+使用具有 IP 动态分配功能的 Azure CNI 时，每个节点的 Pod 值与传统的 CNI 行为相比略有变化：
 
 |CNI|部署方法|默认|可在部署时配置|
 |--|--| :--: |--|
 |传统 Azure CNI|Azure CLI|30|是（最大 250）|
-|具有 Ip 动态分配的 Azure CNI|Azure CLI|250|是（最大 250）|
+|具有 IP 动态分配功能的 Azure CNI|Azure CLI|250|是（最大 250）|
 
-所有与配置每个 pod 节点的最大节点相关的指导都保持不变。
+与配置每个 Pod 的最大节点数相关的所有其他指南保持不变。
 
 ### <a name="additional-deployment-parameters"></a>其他部署参数
 
 上面所述的部署参数仍然有效，但有一个例外：
 
-* **子网** 参数现在指与群集的节点相关的子网。
-* 额外的参数 **pod 子网** 用于指定子网，其 IP 地址将动态分配到 pod。
+* 现在，subnet 参数是指与群集节点有关的子网。
+* 另一个参数 pod subnet 用于指定其 IP 地址将动态分配给 Pod 的子网。
 
-### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>配置网络-CLI，动态分配 Ip 和增强的子网支持
+### <a name="configure-networking---cli-with-dynamic-allocation-of-ips-and-enhanced-subnet-support"></a>配置网络 - 具有 IP 动态分配和增强版子网支持的 CLI
 
-在群集中使用 Ip 和增强子网支持的动态分配类似于配置群集 Azure CNI 的默认方法。 下面的示例演示如何创建一个新的虚拟网络，其中包含用于节点的子网和用于 pod 的子网，以及如何创建一个使用 Azure CNI 进行 Ip 动态分配和增强子网支持的群集。 请确保将变量（如）替换为 `$subscription` 自己的值：
+在群集中使用 IP 动态分配和增强版子网支持类似于配置群集 Azure CNI 的默认方法。 下面的示例演示如何创建一个新的虚拟网络，其中包含一个用于节点的子网和一个用于 Pod 的子网，以及如何创建一个群集，该群集使用具有 IP 动态分配和增强版子网支持的 Azure CNI。 确保用自己的值替换变量（如 `$subscription`）：
 
-首先，创建包含两个子网的虚拟网络：
+首先创建包含两个子网的虚拟网络：
 
 ```azurecli-interactive
 $resourceGroup="myResourceGroup"
@@ -250,7 +249,7 @@ az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --addre
 az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
 ```
 
-然后，使用 `--vnet-subnet-id` 和 pod 子网创建群集，并将其引用到该节点 `--pod-subnet-id` ：
+然后，创建群集，使用 `--vnet-subnet-id` 引用节点子网，并使用 `--pod-subnet-id` 引用 Pod 子网：
 
 ```azurecli-interactive
 $clusterName="myAKSCluster"
@@ -260,9 +259,9 @@ $subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
 az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
 ```
 
-#### <a name="adding-node-pool"></a>正在添加节点池
+#### <a name="adding-node-pool"></a>添加节点池
 
-添加节点池时，请使用引用节点子网， `--vnet-subnet-id` 并使用 pod 子网 `--pod-subnet-id` 。 下面的示例创建两个新的子网，然后在创建新节点池时引用这些子网：
+添加节点池时，请使用 `--vnet-subnet-id` 引用节点子网，并使用 `--pod-subnet-id` 引用 Pod 子网。 以下示例创建了两个新子网，然后在创建新节点池时引用它们：
 
 ```azurecli-interactive
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
@@ -301,21 +300,21 @@ az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepoo
 
   此配置是可以的，但建议不要这样做。 该服务地址范围是 Kubernetes 分配给群集中的内部服务的虚拟 IP (VIP) 的集合。 Azure 网络无法查看 Kubernetes 群集的服务 IP 范围。 由于无法查看群集的服务地址范围，因此有可能以后会在群集虚拟网络中创建新的子网，该子网与服务地址范围重叠。 如果出现这种形式的重叠，则 Kubernetes 为服务分配的 IP 可能是子网中另一资源正在使用的，导致不可预测的行为或故障。 如果能够确保所用地址范围不在群集的虚拟网络中，则可避免这种重叠风险。
 
-### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>动态分配 IP 地址和增强的子网支持常见问题
+### <a name="dynamic-allocation-of-ip-addresses-and-enhanced-subnet-support-faqs"></a>IP 地址动态分配和增强版子网支持常见问题解答
 
-以下问题和解答适用于 **使用动态分配 IP 地址和增强子网支持的 AZURE CNI 网络配置**。
+以下问题和答案适用于使用 IP 地址动态分配和增强版子网支持时的 Azure CNI 网络配置。
 
-* *能否将多个 pod 子网分配给群集/节点池？*
+* 能否将多个 Pod 子网分配给群集/节点池？
 
   只能向群集或节点池分配一个子网。 但是，多个群集或节点池可以共享一个子网。
 
-* *是否可以从其他 VNet 同时分配 Pod 子网？*
+* 能否完全从不同的 VNet 分配 Pod 子网？
 
   Pod 子网应与群集来自同一 VNet。  
 
-* *群集中的某些节点池是否可以使用传统的 CNI，而另一些则使用新的 CNI？*
+* 能否群集中的一些节点池使用传统的 CNI，而其他节点池使用新的 CNI？
 
-  整个群集只应使用一种类型的 CNI。
+  整个群集只能使用一种类型的 CNI。
 
 ## <a name="aks-engine"></a>AKS 引擎
 
@@ -336,7 +335,7 @@ az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepoo
 * [使用动态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-tls]
 * [使用静态公共 IP 创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-static-tls]
 <!-- IMAGES -->
-[advanced-/media/networking-overview/]：. advanced-networking-diagram-01.png [门户-01-网络-advanced]：/media/networking-overview/portal-01-networking-advanced.png
+[advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png [portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
 [aks-engine]: https://github.com/Azure/aks-engine

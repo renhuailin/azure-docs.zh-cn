@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572283"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>什么是 Azure AD 中的登录诊断？

@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100634153"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
@@ -60,7 +60,7 @@ ms.locfileid: "100634153"
 
 1. 从安全中心的“安全警报”页：
 
-    - 选择不再想要查看的特定警报，然后在详细信息窗格中，选择 " **执行操作**"。
+    - 选择你不想再查看的特定警报，然后从详细信息窗格中选择“执行操作”。
 
     - 或者，选择页面顶部的“抑制规则”链接，然后从“抑制规则”页面中选择“创建新的抑制规则” ：
 
@@ -83,9 +83,9 @@ ms.locfileid: "100634153"
 1. 保存规则。 
 
 
-## <a name="edit-a-suppression-rule"></a>编辑禁止显示规则
+## <a name="edit-a-suppression-rule"></a>编辑抑制规则
 
-若要编辑已创建的规则，请使用 "抑制规则" 页。
+若要编辑已创建的规则，请使用“抑制规则”页。
 
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
 1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。

@@ -1,6 +1,6 @@
 ---
 title: 使用无服务器 SQL 池查询 Parquet 文件
-description: 本文介绍如何使用无服务器 SQL 池查询 Parquet 文件。
+description: 本文介绍了如何使用无服务器 SQL 池查询 Parquet 文件。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,23 +10,23 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694681"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的无服务器 SQL 池查询 Parquet 文件
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询 Parquet 文件
 
-本文介绍如何使用将读取 Parquet 文件的无服务器 SQL 池编写查询。
+在本文中，你将学习如何使用无服务器 SQL 池来编写读取 Parquet 文件的查询。
 
 ## <a name="quickstart-example"></a>快速入门示例
 
-`OPENROWSET` 函数可以通过提供文件的 URL 来读取 parquet 文件的内容。
+你可以使用 `OPENROWSET` 函数通过提供文件的 URL 来读取 parquet 文件的内容。
 
 ### <a name="read-parquet-file"></a>读取 parquet 文件
 
-查看文件内容的最简单方法 `PARQUET` 是提供要函数的文件 URL `OPENROWSET` 并指定 parquet `FORMAT` 。 如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用如下例所示的查询查看该文件的内容：
+查看 `PARQUET` 文件内容的最简单方法是向 `OPENROWSET` 函数提供文件 URL，并指定 parquet `FORMAT`。 如果文件公开可用，或者你的 Azure AD 标识可以访问该文件，则你应该能够使用类似于以下示例的查询来查看该文件的内容：
 
 ```sql
 select top 10 *
@@ -35,16 +35,16 @@ from openrowset(
     format = 'parquet') as rows
 ```
 
-请确保可以访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为 [sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+请确保你可以访问此文件。 如果文件由 SAS 密钥或自定义 Azure 标识保护，则你需要[为 sql 登录设置服务器级别的凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
 > [!IMPORTANT]
-> 请确保使用 UTF-8 数据库排序规则 (例如 `Latin1_General_100_BIN2_UTF8`) ，因为 PARQUET 文件中的字符串值使用 utf-8 编码进行编码。
+> 请确保使用 UTF-8 数据库排序规则（例如 `Latin1_General_100_BIN2_UTF8`），因为 PARQUET 文件中的字符串值使用 UTF-8 编码进行编码。
 > PARQUET 文件中的文本编码与排序规则不匹配可能会导致意外的转换错误。
-> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_BIN2_UTF8`
+> 可以使用 T-SQL 语句 `alter database current collate Latin1_General_100_BIN2_UTF8` 轻松地更改当前数据库的默认排序规则
 
 ### <a name="data-source-usage"></a>数据源使用情况
 
-前面的示例使用文件的完整路径。 作为替代方法，你可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
+上面的示例使用了文件的完整路径。 作为替代方法，你可以创建一个外部数据源（其中包含指向存储根文件夹的位置），并在 `OPENROWSET` 函数中使用该数据源和指向该文件的相对路径：
 
 ```sql
 create external data source covid
@@ -58,11 +58,11 @@ from openrowset(
     ) as rows
 ```
 
-如果使用 SAS 密钥或自定义标识来保护数据源，则可以 [使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+如果数据源由 SAS 密钥或自定义标识保护，则你可以[为数据源配置以数据库为作用域的凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
 
 ### <a name="explicitly-specify-schema"></a>显式指定架构
 
-`OPENROWSET` 使您能够使用子句显式指定要读取的列 `WITH` ：
+使用 `OPENROWSET`，你可以使用 `WITH` 子句显式指定要从文件中读取的列：
 
 ```sql
 select top 10 *
@@ -74,12 +74,12 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> 请确保 explicilty 指定某些 UTF-8 排序规则 (例如， `Latin1_General_100_BIN2_UTF8`) 对于子句中的所有字符串列， `WITH` 或者在数据库级别设置某些 utf-8 排序规则。
-> 文件中的文本编码与字符串列排序规则中的文本编码不匹配可能会导致意外的转换错误。
-> 您可以使用以下 T-sql 语句轻松更改当前数据库的默认排序规则： `alter database current collate Latin1_General_100_BIN2_UTF8`
-> 可以使用以下定义轻松地对双列类型设置排序规则： `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
+> 请确保在 `WITH` 子句中为所有字符串列显式指定某种 UTF-8 排序规则（例如 `Latin1_General_100_BIN2_UTF8`），或在数据库级别设置某种 UTF-8 排序规则。
+> 文件中的文本编码和字符串列排序规则不匹配可能会导致意外的转换错误。
+> 可以使用 T-SQL 语句 `alter database current collate Latin1_General_100_BIN2_UTF8` 轻松地更改当前数据库的默认排序规则
+> 可以使用以下定义轻松设置列类型的排序规则：`geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
-在以下部分中，可以了解如何查询各种类型的 PARQUET 文件。
+以下各部分介绍了如何查询各种类型的 PARQUET 文件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -122,7 +122,7 @@ ORDER BY
 下面的示例显示 Parquet 文件的自动架构推理功能。 该示例在不指定架构的情况下返回 2017 年 9 月的行数。
 
 > [!NOTE]
-> 读取 Parquet 文件时，无需指定 OPENROWSET WITH 子句中的列。 在这种情况下，无服务器 SQL 池查询服务将使用 Parquet 文件中的元数据，并按名称绑定列。
+> 读取 Parquet 文件时，无需指定 OPENROWSET WITH 子句中的列。 在这种情况下，无服务器 SQL 池查询服务将利用 Parquet 文件中的元数据，并按名称绑定列。
 
 ```sql
 SELECT TOP 10 *
@@ -166,7 +166,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>类型映射
 
-对于 Parquet，Parquet 类型映射到 SQL 本地类型的检查 [类型映射](develop-openrowset.md#type-mapping-for-parquet)。
+有关 Parquet 类型到 SQL 原生类型的映射，请查看 [Parquet 的类型映射](develop-openrowset.md#type-mapping-for-parquet)。
 
 ## <a name="next-steps"></a>后续步骤
 

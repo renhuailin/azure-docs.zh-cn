@@ -9,12 +9,12 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: a94064be54c1d957d6e7acb030ffae6a39634f55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: d0bee3229bb397fcceb219d506feadb5c542db65
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101181"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595634"
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>用于 Java 的 Azure Cosmos DB 表 API：发行说明和资源
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93101181"
 > * [Python](table-sdk-python.md)
  
 
-|   |   |
+|   | 链接  |
 |---|---|
 |**SDK 下载**|[下载选项](https://github.com/azure/azure-storage-java#download)|
 |**API 文档**|[Java API 参考文档](https://azure.github.io/azure-storage-java/)|
@@ -51,7 +51,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便�
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

@@ -2,18 +2,19 @@
 title: 从 Linux VM 中拆离数据磁盘 - Azure
 description: 了解如何使用 Azure CLI 或 Azure 门户从 Azure 虚拟机中分离数据磁盘。
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d8694a715e53f820556231ae6a549e98b2963fa1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 29a2cbbf2c390b81aa62b064a7cf93decbaa7457
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035698"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565982"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机中分离数据磁盘
 
@@ -108,12 +109,12 @@ az vm disk detach \
 
 1. 在左侧菜单中，选择“虚拟机”。
 1. 在虚拟机边栏选项卡中，选择“磁盘”。
-1. 在 " **磁盘** " 边栏选项卡中，选择要分离的数据磁盘最右侧的 " **X** " 按钮，以分离磁盘。
-1. 删除磁盘后，选择边栏选项卡顶部的 " **保存** "。
+1. 在“磁盘”边栏选项卡中，转到要分离的数据磁盘的最右侧，选择“X”按钮以分离磁盘 。
+1. 删除磁盘后，选择边栏选项卡顶部的“保存”。
 
-磁盘保留在存储中，但不再附加到虚拟机。 不会删除该磁盘。
+磁盘保留在存储中，但不再附加到虚拟机。 磁盘未被删除。
 
 ## <a name="next-steps"></a>后续步骤
 要重新使用数据磁盘，只需[将其附加到其他 VM](add-disk.md) 即可。
 
-如果要删除磁盘，以便不再产生存储费用，请参阅 [查找并删除未连接的 Azure 托管和非托管磁盘-Azure 门户](../disks-find-unattached-portal.md)。
+如果要删除磁盘，以便不再产生存储费用，请参阅[查找并删除未附加的 Azure 托管和非托管磁盘 - Azure 门户](../disks-find-unattached-portal.md)。

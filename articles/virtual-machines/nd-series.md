@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 750d99655098628ef0d72ae3208289f57e625f3d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 5516e17a74fffd28f432df305dfa7f592644d4a7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562259"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102611566"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -24,7 +24,7 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 Nvidia NVLink 互连：不支持<br>
 
 > [!IMPORTANT]
@@ -49,7 +49,7 @@ Nvidia NVLink 互连：不支持<br>
 
 [NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解受支持的操作系统、驱动程序以及安装和验证步骤。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)或[适用于 Linux 的 N 系列 GPU 驱动程序安装](./linux/n-series-driver-setup.md)，了解支持的操作系统、驱动程序以及安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 

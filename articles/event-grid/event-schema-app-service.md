@@ -3,14 +3,14 @@ title: 将 Azure 应用服务用作事件网格源
 description: 本文介绍了如何将 Azure 应用服务用作事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
 author: jasonfreeberg
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 03/06/2021
 ms.author: jafreebe
-ms.openlocfilehash: 224cb44ef7293f47855b5b418830a7fc4bf5ecd1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 404fac634a628da49dee72b10b52785820fe1bf6
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100366647"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443771"
 ---
 # <a name="azure-app-service-as-an-event-grid-source"></a>将 Azure 应用服务用作事件网格源
 
@@ -48,10 +48,10 @@ Azure 应用服务发出以下事件类型
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    `topic`              |    字符串    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
 |    `subject`            |    字符串    |    事件主题的发布者定义路径。                                                                                              |
-|    `eventType`          |    string    |    此事件源的已注册事件类型之一。                                                                                  |
+|    `eventType`          |    字符串    |    此事件源的已注册事件类型之一。                                                                                  |
 |    `eventTime`          |    字符串    |    事件的生成时间，基于提供程序的 UTC 时间。                                                                         |
 |    `id`                 |    字符串    |    事件的唯一标识符。                                                                                                            |
-|    `data`               |    对象 (object)    |    Blob 存储事件数据。                                                                                                                    |
+|    `data`               |    object    |    Blob 存储事件数据。                                                                                                                    |
 |    `dataVersion`        |    字符串    |    数据对象的架构版本。 发布者定义架构版本。                                                          |
 |    `metadataVersion`    |    字符串    |    事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。    |
 
@@ -60,14 +60,14 @@ Azure 应用服务发出以下事件类型
 触发某个事件后，事件网格服务会将有关该事件的数据发送到订阅终结点。
 本部分包含一个示例，介绍每个事件的数据外观。 每个事件具有以下顶级数据：
 
-|     properties          |     类型     |     说明                                                                                                                                |
+|     属性          |     类型     |     说明                                                                                                                                |
 |-----------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 |    `source`              |    字符串    |    事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。                                      |
 |    `subject`            |    字符串    |    事件主题的发布者定义路径。                                                                                              |
 |    `type`          |    字符串    |    此事件源的已注册事件类型之一。                                                                                  |
 |    `time`          |    字符串    |    事件的生成时间，基于提供程序的 UTC 时间。                                                                         |
-|    `id`                 |    string    |    事件的唯一标识符。                                                                                                            |
-|    `data`               |    对象 (object)    |    Blob 存储事件数据。                                                                                                                    |
+|    `id`                 |    字符串    |    事件的唯一标识符。                                                                                                            |
+|    `data`               |    object    |    Blob 存储事件数据。                                                                                                                    |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
@@ -89,7 +89,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -113,7 +113,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -128,13 +128,13 @@ Azure 应用服务发出以下事件类型
 
 数据对象包含以下属性：
 
-|    properties                |    类型      |    说明                                                                                                       |
+|    属性                |    类型      |    说明                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appEventTypeDetail`      |    对象 (object)    |    对应用执行的操作的详细信息                                                                                       |
+|    `appEventTypeDetail`      |    object    |    对应用执行的操作的详细信息                                                                                       |
 |    `action`                  |    字符串    |    操作的操作类型                                                                                   |
-|    `name`                    |    string    |    发生此事件的网站的名称                                                                          |
+|    `name`                    |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`         |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
+|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
 |    `requestId`               |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                 |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
 |    `verb`                    |    字符串    |    此操作的 HTTP 谓词                                                                                       |
@@ -154,7 +154,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -179,7 +179,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Started"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "None",
         "correlationRequestId": "None",
         "requestId": "292f499d-04ee-4066-994d-c2df57b99198",
@@ -194,14 +194,14 @@ Azure 应用服务发出以下事件类型
 
 数据对象包含以下属性：
 
-|    properties                |    类型      |    说明                                                                                                       |
+|    属性                |    类型      |    说明                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appEventTypeDetail`      |    对象 (object)    |    对应用执行的操作的详细信息                                                                                       |
+|    `appEventTypeDetail`      |    object    |    对应用执行的操作的详细信息                                                                                       |
 |    `action`                  |    字符串    |    操作的操作类型                                                                                   |
-|    `name`                    |    string    |    发生此事件的网站的名称                                                                          |
+|    `name`                    |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`         |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
-|    `requestId`               |    string    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
+|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
+|    `requestId`               |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                 |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
 |    `verb`                    |    字符串    |    此操作的 HTTP 谓词                                                                                       |
 
@@ -218,7 +218,7 @@ Azure 应用服务发出以下事件类型
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -243,7 +243,7 @@ Azure 应用服务发出以下事件类型
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -260,17 +260,17 @@ Azure 应用服务发出以下事件类型
 
 数据对象包含以下属性：
 
-|    properties                |    类型      |    说明                                                                                                       |
+|    属性                |    类型      |    说明                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appEventTypeDetail`      |    对象 (object)    |    对应用执行的操作的详细信息                                                                                       |
+|    `appEventTypeDetail`      |    object    |    对应用执行的操作的详细信息                                                                                       |
 |    `action`                 |    字符串    |    操作的操作类型                                                                                   |
-|    `name`                    |    string    |    发生此事件的网站的名称                                                                          |
+|    `name`                    |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`         |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
-|   `requestId`               |    string    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
+|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
+|   `requestId`               |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                 |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
 |    `verb`                    |    字符串    |    此操作的 HTTP 谓词                                                                                       |
-|    `sourceSlot`              |    string    |    用于交换的源槽                                                                                       |
+|    `sourceSlot`              |    字符串    |    用于交换的源槽                                                                                       |
 
 ### <a name="slotswapwithpreviewstarted-slotswapwithpreviewcancelled"></a>SlotSwapWithPreviewStarted、SlotSwapWithPreviewCancelled
 
@@ -285,7 +285,7 @@ Azure 应用服务发出以下事件类型
     "eventTime": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -310,7 +310,7 @@ Azure 应用服务发出以下事件类型
     "time": "2020-01-28T18:26:51.7194887Z",
     "data": {
         "appEventTypeDetail": null,
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "922f4841-20d9-4dd6-8c5b-23f0d85e5592",
         "correlationRequestId": "9ac46505-2b8a-4e06-834c-05ffbe2e8c3a",
         "requestId": "765117aa-eaf8-4bd2-a644-1dbf69c7b0fd",
@@ -327,16 +327,16 @@ Azure 应用服务发出以下事件类型
 
 数据对象包含以下属性：
 
-|    properties                |    类型      |    说明                                                                                                       |
+|    属性                |    类型      |    说明                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appEventTypeDetail`      |    对象 (object)    |    对应用执行的操作的详细信息                                                                                       |
+|    `appEventTypeDetail`      |    object    |    对应用执行的操作的详细信息                                                                                       |
 |    `action`                 |    字符串    |    操作的操作类型                                                                                   |
 |    `name`                    |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`         |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`    |    string    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
+|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
 |    `requestId`               |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                 |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
-|    `verb`                    |    string    |    此操作的 HTTP 谓词                                                                                       |
+|    `verb`                    |    字符串    |    此操作的 HTTP 谓词                                                                                       |
 
 ### <a name="appupdatedrestarted-appupdatedstopped-appupdatedchangedappsettings"></a>AppUpdated.Restarted、AppUpdated.Stopped、AppUpdated.ChangedAppSettings
 
@@ -353,7 +353,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -378,7 +378,7 @@ Azure 应用服务发出以下事件类型
         "appEventTypeDetail": {
             "action": "Stopped"
         },
-        "siteName": "<site-name>",
+        "name": "<site-name>",
         "clientRequestId": "64a5e0aa-7cee-4ff1-9093-b9197b820014",
         "correlationRequestId": "25bb36a5-8f6c-4f04-b615-e9a0ee045756",
         "requestId": "f2e8eb3f-b190-42de-b99e-6acefe587374",
@@ -393,16 +393,16 @@ Azure 应用服务发出以下事件类型
 
 数据对象具有以下属性：
 
-|    properties                |    类型      |    说明                                                                                                       |
+|    属性                |    类型      |    说明                                                                                                       |
 |----------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appEventTypeDetail`      |    对象 (object)    |    对应用执行的操作的详细信息                                                                                       |
+|    `appEventTypeDetail`      |    object    |    对应用执行的操作的详细信息                                                                                       |
 |    `action`                  |    字符串    |    操作的操作类型                                                                                   |
 |    `name`                    |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`         |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
+|    `correlationRequestId`    |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
 |    `requestId`               |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                 |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
-|    `verb`                    |    string    |    此操作的 HTTP 谓词                                                                                       |
+|    `verb`                    |    字符串    |    此操作的 HTTP 谓词                                                                                       |
 
 ### <a name="serverfarmsappserviceplanupdated"></a>Serverfarms.AppServicePlanUpdated
 
@@ -477,25 +477,25 @@ Azure 应用服务发出以下事件类型
 
 数据对象具有以下属性：
 
-|    properties                         |    类型      |    说明                                                                                                       |
+|    属性                         |    类型      |    说明                                                                                                       |
 |-------------------------------------|--------------|----------------------------------------------------------------------------------------------------------------------|
-|    `appServicePlanEventTypeDetail`    |    对象 (object)    |    对应用服务计划执行的操作的详细信息                                                                          |
+|    `appServicePlanEventTypeDetail`    |    object    |    对应用服务计划执行的操作的详细信息                                                                          |
 |    `stampKind`                        |    字符串    |    应用服务计划所在环境的种类                                                                     |
 |    `action`                           |    字符串    |    对应用服务计划执行的操作的类型                                                                            |
-|    `status`                           |    string    |    对应用服务计划执行的操作的状态                                                                   |
-|    `sku`                              |    对象 (object)    |    应用服务计划的 SKU                                                                                       |
+|    `status`                           |    字符串    |    对应用服务计划执行的操作的状态                                                                   |
+|    `sku`                              |    object    |    应用服务计划的 SKU                                                                                       |
 |    `name`                             |    字符串    |    应用服务计划的名称                                                                                      |
 |    `Tier`                             |    字符串    |    应用服务计划的层                                                                                      |
 |    `Size`                             |    字符串    |    应用服务计划的大小                                                                                      |
 |    `Family`                           |    字符串    |    应用服务计划的系列                                                                                        |
 |    `Capacity`                         |    字符串    |    应用服务计划的容量                                                                                      |
-|    `action`                           |    string    |    操作的操作类型                                                                                   |
+|    `action`                           |    字符串    |    操作的操作类型                                                                                   |
 |    `name`                             |    字符串    |    发生此事件的网站的名称                                                                          |
 |    `clientRequestId`                  |    字符串    |    应用服务为触发此事件的站点 API 操作生成的客户端请求 ID         |
-|    `correlationRequestId`             |    字符串    |    应用服务为触发此事件的站点 API 操作生成的相关请求 ID    |
+|    `correlationRequestId`             |    字符串    |    应用服务为触发此事件的站点 API 操作生成的关联请求 ID    |
 |    `requestId`                        |    字符串    |    应用服务为触发此事件的站点 API 操作生成的请求 ID                |
 |    `address`                         |    字符串    |    此操作的 HTTP 请求 URL                                                                                |
-|    `verb`                             |    string    |    此操作的 HTTP 谓词                                                                                       |
+|    `verb`                             |    字符串    |    此操作的 HTTP 谓词                                                                                       |
 
 ## <a name="next-steps"></a>后续步骤
 

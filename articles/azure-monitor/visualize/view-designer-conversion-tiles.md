@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor 视图设计器到工作簿磁贴转换
-description: 在从 Azure Monitor 中的视图转换时将磁贴转换为工作簿的详细信息。
+description: 详细介绍从 Azure Monitor 中的视图转换时如何将磁贴转换为工作簿。
 author: austonli
 ms.author: aul
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 9b8d1840c0b1cea4c03312d38ed892fde94faa4c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043331"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor 视图设计器磁贴转换
