@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95019834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教程：Azure Active Directory 与 Kontiki 的集成
@@ -56,7 +56,7 @@ Kontiki 支持以下功能：
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” > “所有应用程序”   。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -126,7 +126,7 @@ Kontiki 支持以下功能：
 
 在本部分中，会在 Azure 门户中创建名为“Britta Simon”的测试用户。
 
-1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。
+1. 在 Azure 门户中，选择“Azure Active Directory” > “用户” > “所有用户”。   
 
     ![“用户”和“所有用户”选项](common/users.png)
 
@@ -138,7 +138,7 @@ Kontiki 支持以下功能：
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension> 。 例如，brittasimon\@contoso.com。
+    1. 在“用户名”框中，输入 brittasimon\@\<your-company-domain>.\<extension> 。 例如，brittasimon\@contoso.com  。
 
     1. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
 

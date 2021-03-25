@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511240"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
@@ -33,7 +33,7 @@ ms.locfileid: "97511240"
 > API 管理还支持使用其他机制来保护对 API 的访问，包括以下示例：
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [客户端证书](api-management-howto-mutual-certificates-for-clients.md)
-> - [限制调用方 Ip](./api-management-access-restriction-policies.md#RestrictCallerIPs)
+> - [限制调用方 IP](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>订阅范围
 

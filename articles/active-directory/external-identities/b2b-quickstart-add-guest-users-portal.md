@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f134a11b6d0a561a8b53156c927906afe2874a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87910463"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>快速入门：在 Azure 门户中将来宾用户添加到目录
@@ -54,20 +54,20 @@ ms.locfileid: "87910463"
    - **组**：可以将来宾用户添加到一个或多个现有组，也可以稍后进行。
    - **目录角色**：如果需要用户的 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 
 
-6. 选择“邀请”，以自动向来宾用户发送邀请。 右上角会显示一则通知，其中的消息显示“已成功邀请用户”****。 
+6. 选择“邀请”，以自动向来宾用户发送邀请。 右上角会显示一则通知，其中的消息显示“已成功邀请用户”。 
 7.  发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
 ## <a name="assign-an-app-to-the-guest-user"></a>向来宾用户分配应用
 向测试租户添加 Salesforce 应用，并向应用分配测试来宾用户。
 1.  以 Azure AD 管理员身份登录到 Azure 门户。
-2.  在左窗格中，选择“企业应用程序”****。
+2.  在左窗格中，选择“企业应用程序”。
 3.  选择“新建应用程序”。
-4. 在“从库中添加”下，搜索 Salesforce，然后将其选中********。
+4. 在“从库中添加”下，搜索 Salesforce，然后将其选中。
 
     ![显示“从库添加”搜索框的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. 选择“添加”。
-6. 在“管理”下，选择“单一登录”，再在“单一登录模式”下选择“基于密码的登录”，然后单击“保存”********************。
-7. 在“管理”下，选择“用户和组” > “添加用户” > “用户和组”****************。
+6. 在“管理”下，选择“单一登录”，再在“单一登录模式”下选择“基于密码的登录”，然后单击“保存”。
+7. 在“管理”下，选择“用户和组” > “添加用户” > “用户和组”。
 8. 使用搜索框搜索测试用户（如必需），再选择列表中的测试用户。 然后单击“选择”。
 9. 选择“分配”。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "87910463"
 
     ![显示企业间邀请电子邮件的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
-3.  在电子邮件正文中，选择“入门”****。 浏览器中随即打开一个“查看权限”页面****。 
+3.  在电子邮件正文中，选择“入门”。 浏览器中随即打开一个“查看权限”页面。 
 
     ![显示“查看权限”页的屏幕截图](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
@@ -88,8 +88,8 @@ ms.locfileid: "87910463"
 不再需要测试来宾用户和测试应用时，请将其删除。
 1.  以 Azure AD 管理员身份登录到 Azure 门户。
 2.  在左窗格中选择“Azure Active Directory”。
-3.  在“管理”下，选择“企业应用程序”********。
-4.  打开 Salesforce 应用程序，然后选择“删除”********。
+3.  在“管理”下，选择“企业应用程序”。
+4.  打开 Salesforce 应用程序，然后选择“删除”。
 5.  在左窗格中选择“Azure Active Directory”。
 6.  在“管理”下，选择“用户” 。
 7.  选择测试用户，然后选择“删除用户”。

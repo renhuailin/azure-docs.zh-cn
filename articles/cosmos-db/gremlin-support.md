@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
 ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97630745"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin 图形支持并兼容 TinkerPop 功能
@@ -169,31 +169,31 @@ Azure Cosmos DB 提供的写入优化引擎默认支持自动对顶点和边缘�
 
 ## <a name="behavior-differences"></a>行为差异
 
-* Azure Cosmos DB Graph 引擎运行“广度优先”遍历，而 TinkerPop Gremlin 则是深度优先。 这种行为在像 Cosmos DB 这样的水平可缩放系统中可实现更好的性能。
+* Azure Cosmos DB Graph 引擎运行 ***广度优先*** 遍历，而 TinkerPop Gremlin 则深度优先。 这种行为在像 Cosmos DB 这样的水平可缩放系统中可实现更好的性能。
 
 ## <a name="unsupported-features"></a>不支持的功能
 
-[Gremlin 字节码](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)是与编程语言无关的图遍历规范。 Cosmos DB Graph 尚不支持它。 请使用 `GremlinClient.SubmitAsync()` 并以文本字符串的形式传递遍历。
+* ***[Gremlin 字节码](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** 是与编程语言无关的图遍历规范。 Cosmos DB Graph 尚不支持它。 请使用 `GremlinClient.SubmitAsync()` 并以文本字符串的形式传递遍历。
 
-目前不支持 `property(set, 'xyz', 1)` 集基数。 请改用 `property(list, 'xyz', 1)`。 若要了解详细信息，请参阅 [TinkerPop 的顶点属性](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)。
+* ***`property(set, 'xyz', 1)`*** 目前不支持集基数。 请改用 `property(list, 'xyz', 1)`。 若要了解详细信息，请参阅 [TinkerPop 的顶点属性](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)。
 
-`match()` 步骤当前不可用。 此步骤提供声明性查询功能。
+* `match()` 步骤当前不可用。 此步骤提供声明性查询功能。
 
-在顶点或边缘，不支持对象作为属性。 属性只能是基元类型或数组。
+* 不支持顶点或边上的 ***对象作为属性***。 属性只能是基元类型或数组。
 
-不支持按数组属性排序 `order().by(<array property>)`。 只支持按基元类型排序。
+* 不支持 ***按数组属性排序*** `order().by(<array property>)`。 只支持按基元类型排序。
 
-不支持非基元 JSON 类型。 使用 `string`、`number` 或 `true`/`false` 类型。 不支持 `null` 值。 
+* 不支持 ***非基元 JSON 类型***。 使用 `string`、`number` 或 `true`/`false` 类型。 不支持 `null` 值。 
 
-当前不支持 GraphSONv3 序列化程序。 在连接配置中使用 `GraphSONv2` Serializer、Reader 和 Writer 类。 Azure Cosmos DB Gremlin API 返回的结果的格式与 GraphSON 格式不同。 
+* 目前不支持 ***GraphSONv3*** 序列化程序。 在连接配置中使用 `GraphSONv2` Serializer、Reader 和 Writer 类。 Azure Cosmos DB Gremlin API 返回的结果的格式与 GraphSON 格式不同。 
 
-当前不支持 Lambda 表达式和函数。 这包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函数。 若要了解详细信息，并了解如何使用 Gremlin 步骤重写这些函数，请参阅[关于 Lambda 的说明](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
+* 目前不支持 **Lambda 表达式和函数**。 这包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函数。 若要了解详细信息，并了解如何使用 Gremlin 步骤重写这些函数，请参阅[关于 Lambda 的说明](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
 
-* 由于系统的分布式特性，因此事务不受支持*。  在 Gremlin 帐户上配置适当的一致性模型以“读取自己的写入”，并使用乐观并发解决冲突的写入。
+* 由于系统具有分布式特性，因此 ***事务*** 不受支持。  在 Gremlin 帐户上配置适当的一致性模型以“读取自己的写入”，并使用乐观并发解决冲突的写入。
 
 ## <a name="known-limitations"></a>已知的限制
 
-具有中间遍历 `.V()` 步骤的 Gremlin 查询的索引利用率：目前，只有遍历的第一次 `.V()` 调用将使用索引来解析附加到它的任何筛选器或谓词。 后续调用将不会访问索引，因为这可能会增加查询的延迟和成本。
+* **使用中间遍历 `.V()` 步骤的 Gremlin 查询的索引利用**：目前，只有遍历的第一次 `.V()` 调用将使用索引来解析附加到它的任何筛选器或谓词。 后续调用将不会访问索引，因为这可能会增加查询的延迟和成本。
     
 假设使用默认索引，以 `.V()` 步骤开始的典型读取 Gremlin 查询将在其附加的筛选步骤中使用参数，例如 `.has()` 或 `.where()`，以优化查询的成本和性能。 例如：
 

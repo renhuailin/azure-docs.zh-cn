@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311142"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>为 Azure API 管理实例配置自定义域名
@@ -50,8 +50,8 @@ ms.locfileid: "92311142"
     可以为许多终结点分配自定义域名。 当前有以下终结点可用：
 
     - **网关**（默认值为：`<apim-service-name>.azure-api.net`），
-    - ** (旧) 的开发人员门户 ** (默认值为： `<apim-service-name>.portal.azure-api.net`) 、
-    - **开发人员门户** (默认值为： `<apim-service-name>.developer.azure-api.net`) 。
+    - **开发人员门户（旧版）** （默认值为 `<apim-service-name>.portal.azure-api.net`），
+    - **开发人员门户**（默认值为 `<apim-service-name>.developer.azure-api.net`）。
     - **管理**（默认值为：`<apim-service-name>.management.azure-api.net`），
     - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`），
 
@@ -65,7 +65,7 @@ ms.locfileid: "92311142"
 1. 在右侧窗口中，单击“自定义”。
 
     - 在“自定义域名”中，指定要使用的名称。 例如，`api.contoso.com`。
-    - 在**证书**中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其**密码**。
+    - 在 **证书** 中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其 **密码**。
 
     > [!NOTE]
     > 通配符域名（例如 `*.contoso.com`）在除消耗层以外的所有层中都受支持。

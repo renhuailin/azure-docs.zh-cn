@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996621"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
@@ -42,8 +42,8 @@ ms.locfileid: "95996621"
 
 以下用户对象 **不会** 同步到 Azure AD：
 
-* `IsPresent([isCriticalSystemObject])`。 确保不会同步 Active Directory 中的多个现成对象（例如内置的管理员帐户）。
-* `IsPresent([sAMAccountName]) = False`。 确定不会同步没有 sAMAccountName 属性的用户对象。 这种情况实际上只发生在从 NT4 升级的域中。
+* `IsPresent([isCriticalSystemObject])`. 确保不会同步 Active Directory 中的多个现成对象（例如内置的管理员帐户）。
+* `IsPresent([sAMAccountName]) = False`. 确定不会同步没有 sAMAccountName 属性的用户对象。 这种情况实际上只发生在从 NT4 升级的域中。
 * `Left([sAMAccountName], 4) = "AAD_"`, `Left([sAMAccountName], 5) = "MSOL_"`. 不同步 Azure AD Connect 同步和早期版本使用的服务帐户。
 * 不同步不在 Exchange Online 中运行的 Exchange 帐户。
   * `[sAMAccountName] = "SUPPORT_388945a0"`
@@ -60,11 +60,11 @@ ms.locfileid: "95996621"
   * 非通用组（不适用于用户，但由于历史原因而存在）
   * 邮箱计划
   * 发现邮箱
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`。 不同步任何复制牺牲者对象。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. 不同步任何复制牺牲者对象。
 
 适用的属性规则如下：
 
-* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`。 sourceAnchor 属性不会从链接的邮箱提供。 根据假设，如果已找到链接的邮箱，实际的帐户在稍后加入。
+* `sourceAnchor <- IIF([msExchRecipientTypeDetails]=2,NULL,..)`. sourceAnchor 属性不会从链接的邮箱提供。 根据假设，如果已找到链接的邮箱，实际的帐户在稍后加入。
 * 仅当属性 **mailNickName** 有值时，才同步 Exchange 的相关属性。
 * 如果有多个林，将按以下顺序使用属性：
   1. 登录的相关属性（例如 userPrincipalName）将从具有已启用帐户的林提供。
@@ -77,17 +77,17 @@ ms.locfileid: "95996621"
 联系人对象必须满足以下条件才进行同步：
 
 * 联系人必须已启用邮件。 这可以使用以下规则来验证：
-  * `IsPresent([proxyAddresses]) = True)`。 必须填充 proxyAddresses 属性。
+  * `IsPresent([proxyAddresses]) = True)`. 必须填充 proxyAddresses 属性。
   * 可在 proxyAddresses 属性或 mail 属性中找到主要电子邮件地址。 提供的 \@ 用于验证内容是否为电子邮件地址。 以下两条规则之一必须评估为 True。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`。 是否有包含“SMTP:”的项，如果有，是否可在字符串中找到 \@？
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`。 是否已填充邮件属性，如果是，是否可在字符串中找到 \@？
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`. 是否有包含“SMTP:”的项，如果有，是否可在字符串中找到 \@？
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`. 是否已填充邮件属性，如果是，是否可在字符串中找到 \@？
 
 以下联系人对象 **不会** 同步到 Azure AD：
 
-* `IsPresent([isCriticalSystemObject])`。 确保不会同步标记为关键的联系人对象。 不应是任何使用默认配置的项。
-* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`。
-* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`。 这些对象无法在 Exchange Online 中运行。
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`。 不同步任何复制牺牲者对象。
+* `IsPresent([isCriticalSystemObject])`. 确保不会同步标记为关键的联系人对象。 不应是任何使用默认配置的项。
+* `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`.
+* `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`. 这些对象无法在 Exchange Online 中运行。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. 不同步任何复制牺牲者对象。
 
 ### <a name="group-out-of-box-rules"></a>组现成规则
 组对象必须满足以下条件才进行同步：
@@ -100,10 +100,10 @@ ms.locfileid: "95996621"
 
 以下组对象 **不会** 同步到 Azure AD：
 
-* `IsPresent([isCriticalSystemObject])`。 确保不会同步 Active Directory 中的多个现成对象（例如内置的管理员组）。
-* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`。 DirSync 使用的传统组。
-* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`。 角色组。
-* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`。 不同步任何复制牺牲者对象。
+* `IsPresent([isCriticalSystemObject])`. 确保不会同步 Active Directory 中的多个现成对象（例如内置的管理员组）。
+* `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"`. DirSync 使用的传统组。
+* `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)`. 角色组。
+* `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)`. 不同步任何复制牺牲者对象。
 
 ### <a name="foreignsecurityprincipal-out-of-box-rules"></a>ForeignSecurityPrincipal 现成规则
 FSP 联接到 Metaverse 中的“任何”（\*）对象。 这种联接实际上只发生在用户和安全组上。 这种配置可确保解析并在 Azure AD 中正确显示跨林成员身份。
@@ -111,7 +111,7 @@ FSP 联接到 Metaverse 中的“任何”（\*）对象。 这种联接实际�
 ### <a name="computer-out-of-box-rules"></a>计算机现成规则
 计算机对象必须满足以下条件才进行同步：
 
-* `userCertificate ISNOTNULL`。 只有 Windows 10 计算机填充此属性。 所有具有此属性值的计算机对象都进行同步。
+* `userCertificate ISNOTNULL`. 只有 Windows 10 计算机填充此属性。 所有具有此属性值的计算机对象都进行同步。
 
 ## <a name="understanding-the-out-of-box-rules-scenario"></a>了解现成的规则方案
 在本示例中，将使用具有一个帐户林(A)、一个资源林 (R) 和一个 Azure AD 目录的部署。
@@ -140,7 +140,7 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 ### <a name="synchronization-rule"></a>同步规则
 满足条件时，同步规则是具有一组流动属性的配置对象。 它还用于描述连接器空间中对象与 Metaverse 中对象的相关性，这种相关性称为联接或匹配。   同步规则具有优先级值，该优先级指示这些规则彼此的相关性。 数值较小的同步规则具有较高的优先级，当属性流发生冲突时，较高的优先级会赢得冲突解决方案。
 
-例如，查看 **FROM AD – User AccountEnabled 中** 的同步规则。 在 SRE 中标记此行，然后选择“编辑”。 
+例如，查看同步规则“In from AD – User AccountEnabled”。 在 SRE 中标记此行，然后选择“编辑”。 
 
 由于这是一条现成的规则，因此在打开该规则时将看到警告。 用户不应[对现成规则进行任何更改](how-to-connect-sync-best-practices-changing-default-configuration.md)，因此系统会询问意图是什么。 在本例中，我们只想要查看规则。 请选择“否”。 
 
@@ -162,14 +162,14 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 
 ![此屏幕截图显示了“编辑入站同步规则”窗口的“范围筛选器”部分。](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-范围筛选器具有可以嵌套的组和子句。 必须满足组内所有子句的条件，才能应用同步规则。 如果定义了多个组，则要应用该规则，必须满足至少一个组的条件。 也就是说，组之间按逻辑“或”进行计算，组内按逻辑“和”进行计算。 可以在出站同步规则 " **Out TO AAD-Group Join**" 中找到此配置的示例。 有多个同步筛选器组，例如，一个用于安全组 (`securityEnabled EQUAL True`)，一个用于分发组 (`securityEnabled EQUAL False`)。
+范围筛选器具有可以嵌套的组和子句。 必须满足组内所有子句的条件，才能应用同步规则。 如果定义了多个组，则要应用该规则，必须满足至少一个组的条件。 也就是说，组之间按逻辑“或”进行计算，组内按逻辑“和”进行计算。 可以在出站同步规则“Out to AAD - Group Join”中找到此配置的示例。 有多个同步筛选器组，例如，一个用于安全组 (`securityEnabled EQUAL True`)，一个用于分发组 (`securityEnabled EQUAL False`)。
 
 ![同步规则编辑器中的“范围”选项卡](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 此规则用于定义哪些组应设置到 Azure AD。 通讯组必须启用邮件，才能与 Azure AD 同步，但对于安全组，电子邮件不是必需的。
 
 #### <a name="join-rules"></a>联接规则
-第三部分用于配置连接器空间中的对象与 Metaverse 中的对象的相关性。 你之前查看过的规则没有适用于联接规则的任何配置，因此，你将看到 **"FROM AD-User Join**"。
+第三部分用于配置连接器空间中的对象与 Metaverse 中的对象的相关性。 前面查看过的规则没有针对“联接规则”的任何配置，因此现在将查看“In from AD - User Join”。
 
 ![同步规则编辑器中的“联接规则”选项卡](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
@@ -182,7 +182,7 @@ SRE 是一个资源套件工具，随 Azure AD Connect 同步一起安装。必�
 查看上图，可以看到规则尝试将 objectSID 与 msExchMasterAccountSid (Exchange) 和 msRTCSIP-OriginatorSid (Lync) 相联接，而这正是我们在帐户资源林拓扑中所预期的。    会发现所有林具有相同的规则。 假设每个林可以是帐户或资源林。 如果有帐户存在于单个林中且不需要联接，此配置也能正常运行。
 
 #### <a name="transformations"></a>转换
-“转换”部分定义当对象已联接且满足范围筛选条件时，应用于目标对象的所有属性流。 返回到 **from FROM AD-User AccountEnabled** 同步规则，你会发现以下转换：
+“转换”部分定义当对象已联接且满足范围筛选条件时，应用于目标对象的所有属性流。 回到“In from AD - User AccountEnabled”同步规则，找到以下转换：
 
 ![同步规则编辑器中的“转换”选项卡](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
@@ -211,11 +211,11 @@ NULL
 有关属性流表达式语言的详细信息，请参阅[了解声明性预配表达式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)。
 
 ### <a name="precedence"></a>优先级
-现已了解几个不同的同步规则，但这些规则在配置中配合运行。 在某些情况下，属性值由相同目标属性的多个同步规则提供。 在此情况下，可以使用属性优先级来确定哪个属性胜出。 以属性 sourceAnchor 为例。 此属性是决定能否登录 Azure AD 的重要属性。 您可以在两个不同的同步规则中， **在 "FROM ad – User AccountEnabled** " 和 **"From Ad-user Common**" 中找到此属性的属性流。 由于有同步规则优先级，如果有多个对象联接到 Metaverse 对象，sourceAnchor 属性将先由具有已启用帐户的林提供。 如果没有已启用的帐户，同步引擎将使用 **FROM AD – User Common 中** 的 "全部捕获" 同步规则。 此配置可确保即使帐户已禁用，也仍有一个 sourceAnchor。
+现已了解几个不同的同步规则，但这些规则在配置中配合运行。 在某些情况下，属性值由相同目标属性的多个同步规则提供。 在此情况下，可以使用属性优先级来确定哪个属性胜出。 以属性 sourceAnchor 为例。 此属性是决定能否登录 Azure AD 的重要属性。 可以在两个不同的同步规则中看到此属性的属性流：“In from AD – User AccountEnabled”和“In from AD – User Common”。  由于有同步规则优先级，如果有多个对象联接到 Metaverse 对象，sourceAnchor 属性将先由具有已启用帐户的林提供。 如果没有已启用的帐户，同步引擎将使用全部提取同步规则“In from AD – User Common”。 此配置可确保即使帐户已禁用，也仍有一个 sourceAnchor。
 
 ![入站同步规则](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-同步规则的优先级由安装向导设置在组中。 组中的所有规则具有相同的名称，但连接到不同的连接目录。 安装向导提供了 " **从 AD –用户加入** 最高优先级" 中的规则，并循环访问所有连接的 ad 目录。 接下来，以预定义的顺序继续处理后续规则组。 在组中，以在向导中添加连接器的顺序来添加规则。 如果通过向导添加其他连接器，同步规则会重新排序，新连接器规则插到每个组中的末尾。
+同步规则的优先级由安装向导设置在组中。 组中的所有规则具有相同的名称，但连接到不同的连接目录。 安装向导将最高优先级提供给规则“In from AD – User Join”，并迭代所有连接的 AD 目录。 接下来，以预定义的顺序继续处理后续规则组。 在组中，以在向导中添加连接器的顺序来添加规则。 如果通过向导添加其他连接器，同步规则会重新排序，新连接器规则插到每个组中的末尾。
 
 ### <a name="putting-it-all-together"></a>汇总
 我们现在对同步规则已有足够的认识，能够了解配置如何在不同的同步规则下运行。 如果观察某个用户和提供给 metaverse 的属性，会发现规则按以下顺序应用：

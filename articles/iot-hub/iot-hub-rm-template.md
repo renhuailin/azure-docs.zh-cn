@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: db4b676e65d36a9476fd72b66cc8ccfa38af4d85
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144492"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure 资源管理器模板创建 IoT 中心 (.NET)
@@ -32,18 +32,18 @@ ms.locfileid: "92144492"
 
 * Visual Studio。
 * 有效的 Azure 帐户。 <br/>如果没有帐户，只需花费几分钟就能创建一个[免费帐户][lnk-free-trial]。
-* 可以存储 Azure 资源管理器模板文件的 [Azure 存储帐户][lnk-storage-account]。
+* 可用于存储 Azure 资源管理器模板文件的 [Azure 存储帐][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>准备 Visual Studio 项目
 
-1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”  项目模板创建 Visual C# Windows 经典桌面项目。 将项目命名为 **CreateIoTHub**。
+1. 在 Visual Studio 中，使用“控制台应用(.NET Framework)”项目模板创建 Visual C# Windows 经典桌面项目。 将项目命名为 **CreateIoTHub**。
 
 2. 在解决方案资源管理器中右键单击项目，然后单击“**管理 NuGet 包**”。
 
-3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**  。 选择该包，单击“安装”  ，在“审阅更改”  中单击“确定”  ，并单击“我接受”  以接受许可证。
+3. 在 NuGet 包管理器中，选中“包括预发行版”，并在“浏览”页上搜索 **Microsoft.Azure.Management.ResourceManager**。 选择该包，单击“安装”，在“审阅更改”中单击“确定”，并单击“我接受”以接受许可证。
 
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。  单击“**安装**”，在“**审阅更改**”中单击“**确定**”，并单击“**我接受**”以接受许可证。
 
@@ -57,7 +57,7 @@ ms.locfileid: "92144492"
     using Microsoft.Rest;
     ```
 
-6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure 资源管理器模板文件的 Azure 存储帐户的名称。 资源组名称  是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称**是部署的名称，例如 **Deployment_01**。
+6. 在 Program.cs 中，将占位符值替换为以下静态变量。 在本教程前面的介绍中，已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。 **Your Azure Storage account name** 是要在其中存储 Azure 资源管理器模板文件的 Azure 存储帐户的名称。 资源组名称是创建 IoT 中心时要使用的资源组名称。 名称可以是现有的资源组或新资源组。 **部署名称** 是部署的名称，例如 **Deployment_01**。
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -77,7 +77,7 @@ ms.locfileid: "92144492"
 
 1. 在解决方案资源管理器中右键单击项目，单击“**添加**”，然后单击“**新建项**”。 将名为 **template.json** 的 JSON 文件添加到项目。
 
-2. 若要在美国东部**** 区域中添加一个标准 IoT 中心，请将“template.json”**** 的内容替换为以下资源定义。 有关支持 IoT 中心的区域的最新列表，请参阅 [Azure 状态][lnk-status]：
+2. 若要在美国东部区域中添加一个标准 IoT 中心，请将“template.json”的内容替换为以下资源定义。 有关支持 IoT 中心的区域的最新列表，请参阅 [Azure 状态][lnk-status]：
 
     ```json
     {
@@ -128,7 +128,7 @@ ms.locfileid: "92144492"
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. 在**服务器资源管理器**中，连接到 Azure 订阅，并在 Azure 存储帐户中创建名为 **templates** 的容器。 在“**属性**”面板中，将 **templates** 容器的“**公共读取访问权限**”权限设置为“**Blob**”。
+5. 在 **服务器资源管理器** 中，连接到 Azure 订阅，并在 Azure 存储帐户中创建名为 **templates** 的容器。 在“**属性**”面板中，将 **templates** 容器的“**公共读取访问权限**”权限设置为“**Blob**”。
 
 6. 在“**服务器资源管理器**”中，右键单击 **templates** 容器，并单击“**查看 Blob 容器**”。 单击“**上传 Blob**”按钮，选择“**parameters.json**”和“**templates.json**”这两个文件，然后单击“**打开**”，将 JSON 文件上传到 **templates** 容器。 包含 JSON 数据的 Blob 的 URL 如下：
 
@@ -183,7 +183,7 @@ ms.locfileid: "92144492"
 
 ## <a name="complete-and-run-the-application"></a>完成并运行应用程序
 
-现在，可以调用 CreateIoTHub  方法来完成应用程序，然后生成并运行该应用程序。
+现在，可以调用 CreateIoTHub 方法来完成应用程序，然后生成并运行该应用程序。
 
 1. 将以下代码添加到 **Main** 方法末尾：
 
@@ -205,7 +205,7 @@ ms.locfileid: "92144492"
 现在，已经使用包含 C# 程序的 Azure 资源管理器模板部署了 IoT 中心，你可能想要进一步探究：
 
 * 阅读了解 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
-* 若要详细了解 Azure 资源管理器功能，请阅读 [Azure 资源管理器概述][lnk-azure-rm-overview]。
+* 有关 Azure 资源管理器功能的详细信息，请参阅 [Azure 资源管理器概述][lnk-azure-rm-overview]。
 * 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.Devices 资源类型](/azure/templates/microsoft.devices/iothub-allversions)。
 
 若要详细了解如何开发 IoT 中心，请参阅以下文章：

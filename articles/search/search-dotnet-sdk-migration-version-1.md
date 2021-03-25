@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4860918fc4f995ad267fc35b142d3fcb460ce177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002821"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>升级到 Azure 搜索 .NET SDK 版本 1.1
@@ -113,7 +113,7 @@ Azure 搜索 .NET SDK 中的每个操作都公开为同步和异步调用方的�
 
 例如，较早版本的 SDK 中的“获取索引统计信息”操作公开以下签名：
 
-在 `IIndexOperations` 中：
+在 `IIndexOperations`中：
 
 ```csharp
 // Asynchronous operation with all parameters
@@ -122,7 +122,7 @@ Task<IndexGetStatisticsResponse> GetStatisticsAsync(
     CancellationToken cancellationToken);
 ```
 
-在 `IndexOperationsExtensions` 中：
+在 `IndexOperationsExtensions`中：
 
 ```csharp
 // Asynchronous operation with only required parameters
@@ -138,7 +138,7 @@ public static IndexGetStatisticsResponse GetStatistics(
 
 版本 1.1 中同一操作的方法签名如下所示：
 
-在 `IIndexesOperations` 中：
+在 `IIndexesOperations`中：
 
 ```csharp
 // Asynchronous operation with lower-level HTTP features exposed
@@ -149,7 +149,7 @@ Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMess
     CancellationToken cancellationToken = default(CancellationToken));
 ```
 
-在 `IndexesOperationsExtensions` 中：
+在 `IndexesOperationsExtensions`中：
 
 ```csharp
 // Simplified asynchronous operation
@@ -391,9 +391,9 @@ public class Model
 
 将 `IntValue` 设置为 0，该值现在线路上正确序列化为 0，并在索引中存储为 0。 往返过程也按预期工作。
 
-使用此方法时有一个潜在的问题需要注意：如果将模型类型与不可为 null 的属性一起使用，必须**保证**索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索 REST API 都不会帮助强制实施此检查。
+使用此方法时有一个潜在的问题需要注意：如果将模型类型与不可为 null 的属性一起使用，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 搜索 REST API 都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
 ```output
 Error converting value {null} to type 'System.Int32'. Path 'IntValue'.

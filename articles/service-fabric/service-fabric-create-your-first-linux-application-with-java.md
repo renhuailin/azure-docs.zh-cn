@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97655945"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上创建第一个 Java Service Fabric Reliable Actors 应用程序
@@ -104,7 +104,7 @@ HelloWorldActorApplication/
 ### <a name="actor-interface"></a>执行组件接口
 包含执行组件的接口定义。 此接口定义执行组件实现和调用执行组件的客户端所共享的执行组件协定，因此合理的做法是在独立于执行组件实现的某个位置定义接口，并且其他多个服务或客户端应用程序可以共享接口。
 
-`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`：
+`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
 
 ```java
 public interface HelloWorldActor extends Actor {
@@ -118,7 +118,7 @@ public interface HelloWorldActor extends Actor {
 ### <a name="actor-service"></a>执行组件服务
 包含执行组件实现和执行组件注册代码。 执行组件类实现执行组件接口。 这是执行组件的工作位置。
 
-`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`：
+`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
 
 ```java
 @ActorServiceAttribute(name = "HelloWorldActorService")
@@ -154,7 +154,7 @@ public class HelloWorldActorImpl extends FabricActor implements HelloWorldActor 
 ### <a name="actor-registration"></a>执行组件注册
 执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法为执行组件执行此操作。
 
-`HelloWorldActor/src/reliableactor/HelloWorldActorHost`：
+`HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
 
 ```java
 public class HelloWorldActorHost {

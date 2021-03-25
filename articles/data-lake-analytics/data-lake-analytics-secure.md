@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.openlocfilehash: 52bdd80dba1d5de150f403199fbd5c14d188a410
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220136"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中配置对作业信息的用户访问权限 
@@ -22,14 +22,14 @@ ms.locfileid: "92220136"
 
 ## <a name="configure-user-access-to-job-information"></a>配置对作业信息的用户访问权限
 
-你可以使用“添加用户向导”**** 在文件夹上配置 ACL。 有关详细信息，请参阅[添加新用户](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
+你可以使用“添加用户向导”在文件夹上配置 ACL。 有关详细信息，请参阅[添加新用户](data-lake-analytics-manage-use-portal.md#add-a-new-user)。
 
 如果需要更细化控制或需要为权限编写脚本，则按如下方式保护文件夹：
 
-1. 在根文件夹上授予**执行**权限（通过访问 ACL）：
+1. 在根文件夹上授予 **执行** 权限（通过访问 ACL）：
    - /
    
-2. 在包含作业文件夹的文件夹上授予**执行**和**读取**权限（通过访问 ACL 和默认 ACL）。 例如，对于在 2018 年 5 月 25 日运行的特定作业，需要访问以下文件夹：
+2. 在包含作业文件夹的文件夹上授予 **执行** 和 **读取** 权限（通过访问 ACL 和默认 ACL）。 例如，对于在 2018 年 5 月 25 日运行的特定作业，需要访问以下文件夹：
    - /system
    - /system/jobservice
    - /system/jobservice/jobs

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: c1409bd7f098c24efbb4196d78c6dffb6048119b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335410"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
@@ -65,7 +65,7 @@ WHERE 7 = 'a'
 
 |  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| **True** |True |False |Undefined |
+| **True** |True |错误 |Undefined |
 | **False** |False |False |False |
 | **未定义** |Undefined |错误 |Undefined |
 

@@ -1,19 +1,19 @@
 ---
-title: 管理虚拟网络-Azure CLI Azure Database for MySQL-灵活的服务器
-description: 使用 Azure CLI 为 Azure Database for MySQL 灵活的服务器创建和管理虚拟网络
+title: 管理虚拟网络 - Azure CLI - Azure Database for MySQL 灵活服务器
+description: 使用 Azure CLI 为 Azure Database for MySQL 灵活服务器创建和管理虚拟网络
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97109464"
 ---
-# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 灵活的服务器创建和管理虚拟网络
+# <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 灵活服务器创建和管理虚拟网络
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
@@ -23,9 +23,9 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 - 公共访问（允许的 IP 地址）
 - 专用访问（VNet 集成）
 
-在本文中，我们将重点介绍如何使用 Azure CLI **(VNet 集成)** 创建 MySQL 服务器。 通过 *私有访问 (VNet 集成)*，你可以将灵活的服务器部署到你自己的 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 Azure 虚拟网络提供专用的安全网络通信。 在 "专用访问" 中，到 MySQL 服务器的连接仅限在虚拟网络中。 若要了解详细信息，请参阅 [ (VNet 集成) 的私有访问权限 ](./concepts-networking.md#private-access-vnet-integration)。
+本文将重点介绍使用 Azure CLI 创建具有专用访问（VNet 集成）的 MySQL 服务器。 通过专用访问（VNet 集成），可以将灵活服务器部署到你自己的 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 Azure 虚拟网络提供专用的安全网络通信。 在专用访问中，与 MySQL 服务器的连接仅限于你的虚拟网络。 若要了解详细信息，请参阅[专用访问（VNet 集成）](./concepts-networking.md#private-access-vnet-integration)。
 
-在 Azure Database for MySQL 灵活的服务器中，你只能在创建服务器的过程中将服务器部署到虚拟网络和子网。 将灵活的服务器部署到虚拟网络和子网后，不能将其移动到另一个虚拟网络、子网或 *公共访问 (允许的 IP 地址)*。
+在 Azure Database for MySQL 灵活服务器中，在创建服务器期间，只能将服务器部署到虚拟网络和子网。 将灵活服务器部署到虚拟网络和子网后，无法将它移动到其他虚拟网络、子网或公共访问（允许的 IP 地址）。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -49,39 +49,39 @@ az login
 az account set --subscription <subscription id>
 ```
 
-## <a name="create-azure-database-for-mysql-flexible-server-using-cli"></a>使用 CLI 创建 Azure Database for MySQL 灵活的服务器
-你可以使用 `az mysql flexible-server` 命令创建具有 *私有访问权限的灵活服务器 (VNet 集成)*。 此命令使用 (VNet 集成) 的私有访问权限作为默认连接方法。 如果未提供任何虚拟网络和子网，则会为你创建一个。 你还可以使用子网 ID 提供已有的虚拟网络和子网。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 使用 CLI 创建灵活的服务器有多种选项，如以下示例中所示。
+## <a name="create-azure-database-for-mysql-flexible-server-using-cli"></a>使用 CLI 创建 Azure Database for MySQL 灵活服务器
+可以使用 `az mysql flexible-server` 命令创建具有专用访问（VNet 集成）的灵活服务器。 此命令使用专用访问（VNet 集成）作为默认连接方法。 如果未提供虚拟网络和子网，则将创建虚拟网络和子网。 还可以使用子网 ID 提供现有的虚拟网络和子网。 <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> 使用 CLI 创建灵活服务器有多种选项，如以下示例所示。
 
 >[!Important]
-> 使用此命令会将子网委托给 **DBforMySQL/flexibleServers**。 该委派意味着只有 Azure Database for MySQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。
+> 使用此命令会将子网委派给 Microsoft.DBforMySQL/flexibleServers。 该委派意味着只有 Azure Database for MySQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。
 >
 
-请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server)以获取可配置 CLI 参数的完整列表。 例如，在下面的命令中，可以选择指定资源组。
 
-- 使用默认的虚拟网络、具有默认地址前缀的子网创建灵活的服务器
+- 使用具有默认地址前缀的默认虚拟网络、子网创建灵活服务器
     ```azurecli-interactive
     az mysql flexible-server create
     ```
-- 使用现有虚拟网络和子网创建灵活的服务器。 如果提供的虚拟网络和子网不存在，则将创建具有默认地址前缀的虚拟网络和子网。
+- 使用现有的虚拟网络和子网创建灵活服务器。 如果提供的虚拟网络和子网不存在，则将创建具有默认地址前缀的虚拟网络和子网。
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --subnet mySubnet
     ```
 
-- 使用现有虚拟网络、子网和子网 ID 创建灵活的服务器。 提供的子网不应部署任何其他资源，并且此子网将委托给 **DBforMySQL/flexibleServers**（如果尚未委托）。
+- 使用现有的虚拟网络、子网并使用子网 ID 创建灵活服务器。 提供的子网不应部署任何其他资源，并且此子网将委派给 Microsoft.DBforMySQL/flexibleServers（如果尚未委派）。
     ```azurecli-interactive
     az mysql flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
-    > 虚拟网络和子网应与灵活服务器位于同一区域和订阅中。
+    > 虚拟网络和子网应与你的灵活服务器位于同一区域和订阅中。
 <
-- 使用新的虚拟网络、具有非默认地址前缀的子网创建灵活的服务器。
+- 使用具有非默认地址前缀的新虚拟网络、子网创建灵活服务器。
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
     ```
-请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server) ，了解可配置 CLI 参数的完整列表。
+请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server)以获取可配置 CLI 参数的完整列表。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解 [Azure Database for MySQL 灵活的服务器中的网络](./concepts-networking.md)。
+- 详细了解 [Azure Database for MySQL 灵活服务器中的网络](./concepts-networking.md)。
 - [使用 Azure 门户创建和管理 Azure Database for MySQL 灵活服务器虚拟网络](./how-to-manage-virtual-network-portal.md)。
-- 了解 [Azure Database for MySQL 灵活的服务器虚拟网络](./concepts-networking.md#private-access-vnet-integration)的详细信息。
+- 详细了解 [Azure Database for MySQL 灵活服务器虚拟网络](./concepts-networking.md#private-access-vnet-integration)。

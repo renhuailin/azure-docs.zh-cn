@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: victorh
 ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98986746"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关
 
 可以使用 Azure 门户为使用虚拟机作为后端服务器的[应用程序网关](overview.md)配置 TLS 终止证书。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书
@@ -80,11 +80,11 @@ Export-PfxCertificate `
    - **资源组**：选择 **myResourceGroupAG** 作为资源组。 如果该资源组不存在，请选择“新建”，创建一个新的。
    - **应用程序网关名称**：输入 *myAppGateway* 作为应用程序网关的名称。
 
-        ![新建应用程序网关：基础知识](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+        ![新建应用程序网关：基础](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，或者使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在独立的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
-    在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网：
+    在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
     - **名称**：输入 *myVNet* 作为虚拟网络的名称。
 
@@ -94,11 +94,11 @@ Export-PfxCertificate `
 
     - **地址范围**（后端服务器子网）：在子网网格的第二行中，输入不会与 myAGSubnet 的地址范围重叠的地址范围。 例如，如果 myAGSubnet 的地址范围为 10.0.0.0/24，则为 myBackendSubnet 的地址范围输入 10.0.1.0/24  。
 
-    选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置 。
+    选择“确定”以关闭“创建虚拟网络”窗口，并保存虚拟网络设置   。
 
     ![新建应用程序网关：虚拟网络](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. 在“基本信息”选项卡上，接受其他设置的默认值，然后选择“下一步:前端”。
+3. 在“基本信息”  选项卡上，接受其他设置的默认值，然后选择“下一步:  前端”。
 
 ### <a name="frontends-tab"></a>“前端”选项卡
 
@@ -118,16 +118,16 @@ Export-PfxCertificate `
 
 1. 在“后端”选项卡上，选择“添加后端池” 。
 
-2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池：
+2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
     - **名称**：输入“myBackendPool”作为后端池的名称。
-    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池。 你将在创建应用程序网关之后添加后端目标。
+    - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡  。
 
    ![新建应用程序网关：后端](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
-4. 在“后端”选项卡上，选择“下一步:配置”。
+4. 在“后端”  选项卡上，选择“下一步:  配置”。
 
 ### <a name="configuration-tab"></a>配置选项卡
 
@@ -140,7 +140,7 @@ Export-PfxCertificate `
 3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值 ：
 
     - **侦听器名称**：输入“myListener”作为侦听器名称。
-    - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP。
+    - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP  。
     - **协议**：选择 **HTTPS**。
     - **端口**：验证是否为端口输入了 443。
 
@@ -178,7 +178,7 @@ Export-PfxCertificate `
 为此，将要：
 
 1. 创建两个新的 VM（myVM 和 myVM2），用作后端服务器 。
-2. 在虚拟机上安装 IIS，以验证是否成功创建了应用程序网关。
+2. 可以在虚拟机上安装 IIS，以验证是否已成功创建了应用程序网关。
 3. 将后端服务器添加到后端池。
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
@@ -229,7 +229,7 @@ Export-PfxCertificate `
 
 ### <a name="add-backend-servers-to-backend-pool"></a>将后端服务器添加到后端池
 
-1. 选择“所有资源”，然后选择“myAppGateway”。  
+1. 选择“所有资源”，然后选择“myAppGateway”。
 
 2. 从左侧菜单中选择“后端池”。
 

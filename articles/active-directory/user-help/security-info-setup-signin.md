@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88798493"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>根据登录提示设置安全信息
@@ -70,11 +70,11 @@ ms.locfileid: "88798493"
 4. 打开 Microsoft Authenticator 应用，选择允许通知（如果出现相关提示），通过右上角的“自定义和控制”图标中选择“添加帐户”，然后选择“工作或学校帐户”。   
 
     >[!Note]
-    >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”  ，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+    >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
-5. 返回到计算机上的“设置帐户”页，然后选择“下一步”。  
+5. 返回到计算机上的“设置帐户”页，然后选择“下一步”。 
 
-    此时会出现“扫描 QR 码”页。 
+    此时会出现“扫描 QR 码”页。
 
     ![使用 Authenticator 应用扫描 QR 码](media/security-info/securityinfo-prompt-auth-app-qrcode.png)
 
@@ -82,13 +82,13 @@ ms.locfileid: "88798493"
 
     Authenticator 应用应该会成功添加你的工作或学校帐户，而无需提供其他任何信息。 但是，如果 QR 码读取器无法读取该代码，则你可以选择“无法扫描 QR 图像”，并将代码和 URL 手动输入到 Microsoft Authenticator 应用中。  有关手动添加代码的详细信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
-7. 在计算机上的“扫描 QR 码”页上选择“下一步”。  
+7. 在计算机上的“扫描 QR 码”页上选择“下一步”。 
 
     随即有一条通知发送到移动设备上的 Microsoft Authenticator 应用，以测试你的帐户。
 
     ![使用 Authenticator 应用测试帐户](media/security-info/securityinfo-prompt-test-app.png)
 
-8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。 
+8. 在 Microsoft Authenticator 应用中确认通知，然后选择“下一步”。
 
     ![成功通知，指出正在连接应用和帐户](media/security-info/securityinfo-prompt-auth-app-success.png)
 

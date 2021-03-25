@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334050"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
@@ -25,7 +25,7 @@ ms.locfileid: "93334050"
 
 Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和无服务器应用：
 
-* 为 Cosmos DB 创建事件驱动的 **Azure Functions 触发器** 。 此触发器依靠[更改源](change-feed.md)流监视 Azure Cosmos 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
+* 为 Cosmos DB 创建事件驱动的 **Azure Functions 触发器**。 此触发器依靠[更改源](change-feed.md)流监视 Azure Cosmos 容器的更改情况。 当对容器进行任何更改时，更改源流将发送到可调用 Azure Function 的触发器。
 * 或者，使用 **输入绑定** 将 Azure 函数绑定到 Azure Cosmos 容器。 执行某个函数时，输入绑定将从容器中读取函数。
 * 使用 **输出绑定** 将函数绑定到 Azure Cosmos 容器。 当函数执行完成时，输出绑定会将数据写入容器。
 
@@ -124,23 +124,23 @@ Azure Functions 提供创建可扩展工作单元的功能，或者提供按需�
 
 出于以下原因，建议对无服务器计算体系结构使用 Azure Cosmos DB 数据库：
 
-* **即时访问所有数据** ：可以粒度访问每个存储的值，因为 Azure Cosmos DB 在默认情况下会 [自动建立所有数据的索引](index-policy.md)，并使这些索引立即可用。 这意味着可以不断查询和更新新项目，并将它们添加到数据库，还可以通过 Azure Functions 即时访问这些项目。
+* **即时访问所有数据**：可以粒度访问每个存储的值，因为 Azure Cosmos DB 在默认情况下会 [自动建立所有数据的索引](index-policy.md)，并使这些索引立即可用。 这意味着可以不断查询和更新新项目，并将它们添加到数据库，还可以通过 Azure Functions 即时访问这些项目。
 
-* **无架构** 。 Azure Cosmos DB 没有架构，因此只有它可以处理来自 Azure Function 的任何数据输出。 这种“处理任何数据”的方法可以直接创建全部输出到 Azure Cosmos DB 的各种 Functions。
+* **无架构**。 Azure Cosmos DB 没有架构，因此只有它可以处理来自 Azure Function 的任何数据输出。 这种“处理任何数据”的方法可以直接创建全部输出到 Azure Cosmos DB 的各种 Functions。
 
-* **可缩放的吞吐量** 。 在 Azure Cosmos DB 中，吞吐量可以立即增加和减少。 如果在同一容器中拥有数百或数千个 Functions 查询和写入，可以增加 [RU/s](request-units.md) 以处理负载。 通过使用分配的 RU/s，所有函数都可并行运行，并且可保证数据[一致](consistency-levels.md)。
+* **可缩放的吞吐量**。 在 Azure Cosmos DB 中，吞吐量可以立即增加和减少。 如果在同一容器中拥有数百或数千个 Functions 查询和写入，可以增加 [RU/s](request-units.md) 以处理负载。 通过使用分配的 RU/s，所有函数都可并行运行，并且可保证数据[一致](consistency-levels.md)。
 
-* **全局复制** 。 可以[全局](distribute-data-globally.md)复制 Azure Cosmos DB 数据以减少延迟，因为这样可以使数据在地理位置上最靠近用户。 对于全部 Azure Cosmos DB 查询，事件驱动的触发器的数据从最靠近用户的 Azure Cosmos DB 读取。
+* **全局复制**。 可以[全局](distribute-data-globally.md)复制 Azure Cosmos DB 数据以减少延迟，因为这样可以使数据在地理位置上最靠近用户。 对于全部 Azure Cosmos DB 查询，事件驱动的触发器的数据从最靠近用户的 Azure Cosmos DB 读取。
 
 如果要寻求与 Azure Functions 集成以存储数据并且无需深层索引，或者如果需要存储附件和媒体文件，[Azure Blob 存储触发器](../azure-functions/functions-bindings-storage-blob.md)可能是一个更好的选择。
 
 Azure Functions 的优点： 
 
-* **事件驱动** 。 Azure Functions 受事件驱动，并且可以侦听 Azure Cosmos DB 的更改源。 这意味着无需创建侦听逻辑，只关注所侦听内容的更改即可。 
+* **事件驱动**。 Azure Functions 受事件驱动，并且可以侦听 Azure Cosmos DB 的更改源。 这意味着无需创建侦听逻辑，只关注所侦听内容的更改即可。 
 
-* **无限制** 。 函数均并行执行，并且可根据需要启动任意数量的服务。 设置参数。
+* **无限制**。 函数均并行执行，并且可根据需要启动任意数量的服务。 设置参数。
 
-* **适用于快捷任务** 。 每当事件触发时，服务都会触发函数的新实例，并在函数完成后立即关闭它们。 只需支付函数运行时间的费用。
+* **适用于快捷任务**。 每当事件触发时，服务都会触发函数的新实例，并在函数完成后立即关闭它们。 只需支付函数运行时间的费用。
 
 如果不确定流、逻辑应用、Azure Functions 或 WebJobs 是否最适用于你的实现，请参阅[在流、逻辑应用、Functions 和 WebJobs 之间进行选择](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 

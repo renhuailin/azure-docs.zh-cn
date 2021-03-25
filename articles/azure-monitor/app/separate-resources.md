@@ -3,12 +3,12 @@ title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 3964cddcf27a4b2c7397b508ccb3cc8928bd04ad
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589535"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102424659"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -32,6 +32,9 @@ ms.locfileid: "100589535"
 -   如果不需要在组件之间以不同的方式管理帐单/配额。
 -   如果可以让 API 密钥对所有组件中的数据具有相同的访问权限。 10 个 API 密钥足以满足所有组件的需求。
 -   如果可以在所有角色中具有相同的智能检测和工作项集成设置。
+
+> [!NOTE]
+> 如果要整合多个 Application Insights 资源，可以将现有的应用程序组件指向新的、合并的 Application Insights 资源。 存储在旧资源中的遥测数据不会转移到新资源，因此仅当新资源中有了足够的遥测数据时才会删除旧资源，以实现业务连续性。
 
 ### <a name="other-things-to-keep-in-mind"></a>其他注意事项
 

@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 143cf03a33739f43a29af94fc2f8a336fb3aef8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89076661"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
@@ -86,7 +86,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 az provider list
 ```
 
-若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的*命名空间*。
+若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的 *命名空间*。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
@@ -106,7 +106,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![选择所有服务](./media/error-register-resource-provider/select-all-services.png)
 
-1. 选择 **订阅**。
+1. 选择“订阅”。
 
    ![选择订阅](./media/error-register-resource-provider/select-subscriptions.png)
 

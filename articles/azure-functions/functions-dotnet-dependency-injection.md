@@ -8,10 +8,10 @@ ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
 ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955082"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
@@ -259,7 +259,7 @@ public class HttpTrigger
 
 ## <a name="using-aspnet-core-user-secrets"></a>使用 ASP.NET Core 用户机密
 
-在本地开发时，ASP.NET Core 提供了一个 [机密管理器工具](/aspnet/core/security/app-secrets#secret-manager) ，可用于将机密信息存储在项目根目录之外。 这使得机密意外提交到源代码管理的可能性更小。 Azure Functions Core Tools (版本3.0.3233 或更高版本) 会自动读取 ASP.NET Core 机密管理器创建的机密。
+在本地开发时，ASP.NET Core 提供了一个[机密管理器工具](/aspnet/core/security/app-secrets#secret-manager)，可用于将机密信息存储在项目根目录之外。 这使得机密意外提交到源代码管理的可能性更小。 Azure Functions Core Tools（版本 3.0.3233 或更高版本）会自动读取 ASP.NET Core 机密管理器创建的机密。
 
 若要将 .NET Azure Functions 项目配置为使用用户机密，请在项目根目录中运行以下命令。
 
@@ -267,13 +267,13 @@ public class HttpTrigger
 dotnet user-secrets init
 ```
 
-然后，使用 `dotnet user-secrets set` 命令创建或更新密码。
+然后，使用 `dotnet user-secrets set` 命令创建或更新机密。
 
 ```bash
 dotnet user-secrets set MySecret "my secret value"
 ```
 
-若要在 function app 代码中访问用户机密值，请使用 `IConfiguration` 或 `IOptions` 。
+若要在函数应用代码中访问用户机密值，请使用 `IConfiguration` 或 `IOptions`。
 
 ## <a name="customizing-configuration-sources"></a>自定义配置源
 

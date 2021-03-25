@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: amsriva
 ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631684"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>应用程序网关 TLS 策略概述
@@ -25,7 +25,7 @@ TLS 策略包括 TLS 协议版本控制和 TLS 握手期间会使用的密码套
 应用程序网关具有三种预定义的安全策略。 可以使用这些策略中的任意策略配置网关，以获得适当的安全性级别。 策略名称批注有其配置的年份和月份。 每个策略提供不同的 TLS 协议版本和密码套件。 建议使用最新的 TLS 策略来确保最佳的 TLS 安全性。
 
 ## <a name="known-issue"></a>已知问题
-应用程序网关 v2 不支持以下 DHE 密码，它们不会用于与客户端建立 TLS 连接，即使这些密码已在预定义策略中提到。 建议不要使用 DHE 密码，而是建议使用安全快捷的 ECDHE 密码。
+应用程序网关 v2 不支持以下 DHE 密码。即使预定义策略中提到了这些密码，也不会将它们用于与客户端的 TLS 连接。 建议不要使用 DHE 密码，而应使用安全快捷的 ECDHE 密码。
 
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_128_CBC_SHA
@@ -65,17 +65,17 @@ TLS 策略包括 TLS 协议版本控制和 TLS 握手期间会使用的密码套
 
 ## <a name="custom-tls-policy"></a>自定义 TLS 策略
 
-如果需要根据要求配置预定义 TLS 策略，则必须定义自己的自定义 TLS 策略。 使用自定义 TLS 策略，可以完全控制要支持的最低 TLS 协议版本，以及支持的密码套件及其优先级顺序。
+如果需要为你的需求配置预定义 TLS 策略，则必须定义自己的自定义 TLS 策略。 通过自定义 TLS 策略，可以完全控制要支持的最低 TLS 协议版本和支持的密码套件及其优先级顺序。
 
 > [!IMPORTANT]
-> 如果使用应用程序网关 v1 SKU (Standard 或 WAF) 中的自定义 SSL 策略，请确保将强制密码 "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256" 添加到列表。 在应用程序网关 v1 SKU 中启用指标和日志记录需要此密码。
-> 对于应用程序网关 v2 SKU (Standard_v2 或 WAF_v2) ，这不是必需的。
+> 如果在应用程序网关 v1 SKU（Standard 或 WAF）中使用自定义 SSL 策略，请确保将必需密码“TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256”添加到列表中。 在应用程序网关 v1 SKU 中启用指标和日志记录需要此密码。
+> 对于应用程序网关 v2 SKU（Standard_v2 或 WAF_v2），此密码不是必需的。
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL 协议版本
 
 * 默认情况下，所有应用程序网关都禁用 SSL 2.0 和 3.0。 无法对这些协议版本进行配置。
-* 自定义 TLS 策略允许你选择以下三种协议之一作为网关的最低 TLS 协议版本： TLSv1_0、TLSv1_1 和 TLSv1_2。
-* 如果未定义 TLS 策略，则会启用 TLSv1_0、TLSv1_1 和 TLSv1_2)  (所有三个协议。
+* 自定义 TLS 策略允许你选择以下三种协议之一作为网关的最低 TLS 协议版本：TLSv1_0、TLSv1_1 和 TLSv1_2。
+* 如果未定义任何 TLS 策略，这 3 个协议（TLSv1_0、TLSv1_1 和 TLSv1_2）会全部启用。
 
 ### <a name="cipher-suites"></a>密码套件
 
@@ -116,4 +116,4 @@ TLS 策略包括 TLS 协议版本控制和 TLS 握手期间会使用的密码套
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要了解如何配置 TLS 策略，请参阅 [在应用程序网关上配置 tls 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
+若要了解如何配置 TLS 策略，请参阅[在应用程序网关上配置 TLS 策略版本和密码套件](application-gateway-configure-ssl-policy-powershell.md)。
