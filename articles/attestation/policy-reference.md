@@ -1,22 +1,22 @@
 ---
 title: Azure 证明的内置策略定义
-description: 列出 azure 证明的 Azure 策略内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 02/11/2021
+description: 列出 Azure 证明的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+ms.date: 03/17/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: df03b953ba143d827159d8868150131071e2ce56
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 00be2bd99f1722d7096cf60fa26151080376c3ee
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100642344"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607003"
 ---
-# <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Azure 证明的 azure 策略内置定义
+# <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Azure 证明的 Azure Policy 内置定义
 
-此页是 azure 证明的 [Azure 策略](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
+此页是 Azure 证明的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。
 
 每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
 

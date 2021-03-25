@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 JobScore 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 JobScore 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 JobScore 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 275f87163e75c3ded7260229d40a61185877a7d8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>教程：Azure Active Directory 与 JobScore 集成
@@ -41,7 +41,7 @@ ms.locfileid: "92459401"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* JobScore 支持 SP 发起的 SSO 
+* JobScore 支持 SP 发起的 SSO
 
 ## <a name="adding-jobscore-from-the-gallery"></a>从库中添加 JobScore
 
@@ -61,13 +61,13 @@ ms.locfileid: "92459401"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“JobScore”，从结果面板中选择“JobScore”，然后单击“添加”按钮以添加该应用程序    。
+4. 在搜索框中键入“JobScore”，从结果面板中选择“JobScore”，然后单击“添加”按钮以添加该应用程序。
 
      ![结果列表中的 JobScore](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户使用 JobScore 配置和测试 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户使用 JobScore 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 JobScore 中的相关用户之间建立链接关系。
 
 若要配置和测试 JobScore 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92459401"
 
 若要配置 JobScore 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 JobScore 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 JobScore 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92459401"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![JobScore 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://hire.jobscore.com/auth/adfs/<company name>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://hire.jobscore.com/auth/adfs/<company name>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [JobScore 客户端支持团队](mailto:support@jobscore.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92459401"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 JobScore”部分中，根据要求复制相应的 URL  。
+6. 在“设置 JobScore”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92459401"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -147,17 +147,17 @@ ms.locfileid: "92459401"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 JobScore 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“JobScore”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“JobScore”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“JobScore”  。
+2. 在应用程序列表中，选择“JobScore”。
 
     ![应用程序列表中的 JobScore 链接](common/all-applications.png)
 

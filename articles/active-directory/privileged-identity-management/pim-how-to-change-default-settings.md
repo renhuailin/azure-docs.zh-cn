@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708477"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
@@ -99,7 +99,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure AD 多重身
 
 ## <a name="activation-maximum-duration"></a>最长激活持续时间
 
-使用“最长激活持续时间”  滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以是 1 到 24 个小时。
+使用“最长激活持续时间”滑块是角色在过期前保持活动状态的最大时间（以小时为单位）。 此值可以是 1 到 24 个小时。
 
 ## <a name="require-justification"></a>需要理由
 

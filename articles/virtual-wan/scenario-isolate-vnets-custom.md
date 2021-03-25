@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461815"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>方案：VNet 的自定义隔离
@@ -29,7 +29,7 @@ ms.locfileid: "92461815"
 | **红色 VNet**  |   &#8594;|              |   直接  |  直接 |
 | **分支**   |   &#8594;|   直接     |   直接  |  直接 |
 
-上表中的每个单元都说明了虚拟 WAN 连接 (流的 "From" 端，行标题) 与流的 "To" 端 (目标通信，) 中的列标题。 在这种情况下，不存在防火墙或网络虚拟设备，因此通信直接通过虚拟 WAN (，因此) 的表中 "Direct" 一词。
+上表中的各单元格描述了虚拟 WAN 连接（流的“源”端，行标题）是否与目标（流的“目标”端，斜体形式的列标题）通信。 在此场景中，没有防火墙或网络虚拟设备，因此通信直接通过虚拟 WAN 进行（因此在表中使用“直接”一词）。
 
 不同行模式的数量将是我们在此方案中需要的路由表的数量。 在本例中，我们将调用三个路由表，**RT_BLUE** 和 **RT_RED** 用于虚拟网络，**Default** 用于分支。 请记住，分支必须始终与 Default 路由表相关联。
 

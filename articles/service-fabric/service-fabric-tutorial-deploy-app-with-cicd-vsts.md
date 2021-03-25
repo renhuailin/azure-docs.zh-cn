@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326331"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
@@ -36,7 +36,7 @@ ms.locfileid: "91326331"
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发**以及 **ASP.NET 和 Web 开发**工作负荷。
+* [安装 Visual Studio 2019](https://www.visualstudio.com/)，并安装 **Azure 开发** 以及 **ASP.NET 和 Web 开发** 工作负荷。
 * [安装 Service Fabric SDK](service-fabric-get-started.md)
 * 在 Azure 上创建一个 Windows Service Fabric 群集，例如[根据此教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)创建
 * 创建一个 [Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)。 这允许你在 Azure DevOps 中创建项目并使用 Azure Pipelines。
@@ -117,9 +117,9 @@ Azure Pipelines 发布管道描述了将应用程序程序包部署到群集的�
 
 在“添加新的 Service Fabric 连接”视图中，选择“基于证书的”或“Azure Active Directory”身份验证。     指定连接名称“mysftestcluster”和群集终结点“tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000”（或你要部署到的群集的终结点）。
 
-对于基于证书的身份验证，添加用来创建群集的服务器证书的**服务器证书指纹**。  在“客户端证书”中，添加客户端证书文件的 base-64 编码。  有关如何获取证书的 base-64 编码表示形式的信息，请参阅有关该字段的帮助弹出项。 还需要添加证书的**密码**。  如果没有单独的客户端证书，可以使用群集或服务器证书。
+对于基于证书的身份验证，添加用来创建群集的服务器证书的 **服务器证书指纹**。  在“客户端证书”中，添加客户端证书文件的 base-64 编码。  有关如何获取证书的 base-64 编码表示形式的信息，请参阅有关该字段的帮助弹出项。 还需要添加证书的 **密码**。  如果没有单独的客户端证书，可以使用群集或服务器证书。
 
-对于 Azure Active Directory 凭据，请添加用来创建群集的服务器证书的**服务器证书指纹**，并在“用户名”  和“密码”  字段中添加要用来连接到群集的凭据。
+对于 Azure Active Directory 凭据，请添加用来创建群集的服务器证书的 **服务器证书指纹**，并在“用户名”  和“密码”  字段中添加要用来连接到群集的凭据。
 
 单击“添加”  以保存群集连接。
 

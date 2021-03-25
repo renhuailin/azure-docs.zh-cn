@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 73e376682670dfa63f7fe50694b37b181d537c64
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>教程：Azure Active Directory 与 EasyTerritory 的集成
@@ -103,7 +103,7 @@ ms.locfileid: "92454382"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://apps.easyterritory.com/<tenant id>/dev/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://apps.easyterritory.com/<tenant id>/dev/authservices/acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://apps.easyterritory.com/<tenant id>/dev/authservices/acs`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -140,7 +140,7 @@ ms.locfileid: "92454382"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92454382"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

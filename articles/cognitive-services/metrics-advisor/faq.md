@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: mbullwin
 ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420949"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>指标顾问常见问题解答
@@ -105,18 +105,18 @@ ms.locfileid: "93420949"
 如果数据通常极不稳定且波动很大，你希望在数据变得十分稳定甚至变成一条平线时收到警告，则可以将“更改阈值”配置为在更改极小时检测此类数据点。
 有关详细信息，请参阅[异常情况检测配置](how-tos/configure-metrics.md#anomaly-detection-methods)。
 
-### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>如何通过电子邮件设置电子邮件设置并启用警报？
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>如何设置电子邮件设置并启用通过电子邮件发送警报的功能？
 
-1.  具有订阅管理员或资源组管理员权限的用户需要导航到在 Azure 门户中创建的指标顾问资源，然后选择 " **访问控制 (" IAM)** "选项卡。 
-2.  选择 " **添加角色分配** "
-3.  选择 " **认知服务指标顾问管理员** " 角色，按下图所示选择帐户。
-4.  单击 " **保存** " 按钮，已成功地添加为指标顾问资源的管理员。 请注意，所有上述操作都需要由订阅管理员或资源组管理员执行。 
+1.  具有订阅管理员或资源组管理员权限的用户需要导航到在 Azure 门户中创建的指标顾问资源，并选择“访问控制(IAM)”选项卡。 
+2.  选择“添加角色分配”
+3.  选取“认知服务指标顾问管理员”角色，然后选择帐户，如下图所示。
+4.  单击“保存”按钮，你就会被成功地添加为指标顾问资源的管理员。 请注意，上述所有操作都需要由订阅管理员或资源组管理员执行。 
 
-:::image type="content" source="media/access-control.png" alt-text="&quot;访问控制&quot; (IAM) &quot;菜单&quot; 页，其中包含 &quot;添加角色分配&quot; 选项，后跟一个带有 &quot;认知服务指标&quot; 管理员管理员访问角色的 &quot;分配对选定用户的访问权限&quot; 框，后跟所选 UI 的 &quot;保存&quot; 按钮以演示搜索用户和添加特定级别的访问权限的步骤。" lightbox="media/access-control.png":::
+:::image type="content" source="media/access-control.png" alt-text="选择了“添加角色分配”的“访问控制(IAM)”菜单页，后跟一个显示“向选定用户分配访问权限”的框，其中包含“认知服务指标顾问管理员”访问角色，后跟所选 UI 的“保存”按钮，用于说明搜索用户和添加特定访问权限级别的步骤。" lightbox="media/access-control.png":::
 
 
-5.  传播权限可能需要长达一分钟的时间。 然后，选择 "指标顾问" 工作区，并选择左侧导航面板中的 " **电子邮件设置** " 选项。 填写所需的项，尤其是与 SMTP 相关的信息。 
-6.  选择 " **保存** "，并将其设置为电子邮件配置。 你可以创建新的挂钩并订阅指标异常，以获得近乎实时的警报。 
+5.  传播权限最多可能需要一分钟时间。 然后，选择指标顾问工作区，并选择“电子邮件设置”选项（在左侧导航面板中）。 填写必需项，尤其是与 SMTP 相关的信息。 
+6.  选择“保存”，完成电子邮件配置。 你可以创建新的挂钩并订阅指标异常，以获得近乎实时的警报。 
 
 ## <a name="advanced-concepts"></a>高级概念
 
@@ -150,7 +150,7 @@ ms.locfileid: "93420949"
  
 例如，当 `Service = S2 | Data Center = DC2 | Machine = M5` 上发生异常时，异常的偏差会影响也已检测到异常的父节点 `Service= S2`，但异常不会影响 `DC2` 上的整个数据中心以及 `M5` 上的所有服务。 将按照以下屏幕截图中的方式构建事件树，最常见的异常是在 `Service = S2` 上捕获的，根本原因可以按两条通向 `Service = S2 | Data Center = DC2 | Machine = M5` 的路径进行分析。
 
- :::image type="content" source="media/root-cause-paths.png" alt-text="5个标记的顶点，其中的两个不同路径由边缘和一个标记为 S2 的常见节点连接。最常见的异常在服务 = S2 上捕获，根本原因可以通过两个路径来进行分析，这两个路径会导致服务 = S2 |数据中心 = DC2 |计算机 = M5" lightbox="media/root-cause-paths.png":::
+ :::image type="content" source="media/root-cause-paths.png" alt-text="5 个标记的顶点，有两条不同的路径，这些路径通过边与标记为 S2 的公共节点相连。最常见的异常是在 Service = S2 上捕获的，根本原因可以按两条通向 Service = S2 | Data Center = DC2 | Machine = M5 的路径进行分析" lightbox="media/root-cause-paths.png":::
 
 ## <a name="next-steps"></a>后续步骤
 - [指标顾问概述](overview.md)

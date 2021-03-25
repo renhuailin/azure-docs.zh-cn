@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 349cc4ed17edeba6bdfabd0369fbef55c1a0f0f7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>教程：Azure Active Directory 与 eKincare 的集成
@@ -105,7 +105,7 @@ ms.locfileid: "92454212"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/hul/saml`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<instancename>.ekincare.com/hul/saml`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [eKincare 客户端支持团队](mailto:tech@ekincare.com)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -138,7 +138,7 @@ ms.locfileid: "92454212"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“保存”  。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -166,7 +166,7 @@ ms.locfileid: "92454212"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -181,7 +181,7 @@ ms.locfileid: "92454212"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -211,7 +211,7 @@ ms.locfileid: "92454212"
 
 ### <a name="create-ekincare-test-user"></a>创建 eKincare 测试用户
 
-在本部分中，我们会在 eKincare 中创建一个名为 Britta Simon 的用户。 eKincare 支持默认启用的 **恰时用户预配** 。 此部分不存在任何操作项。 如果 eKincare 中尚不存在用户，身份验证后会创建一个新用户。
+在本部分中，我们会在 eKincare 中创建一个名为 Britta Simon 的用户。 eKincare 支持默认启用的 **恰时用户预配**。 此部分不存在任何操作项。 如果 eKincare 中尚不存在用户，身份验证后会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

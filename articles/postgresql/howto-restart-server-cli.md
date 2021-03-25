@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e812b7872dd4d41d9a6cb87d75403524106c5981
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97706858"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for PostgreSQL - 单一服务器
@@ -20,7 +20,7 @@ ms.locfileid: "97706858"
 如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
  
 > [!NOTE] 
-> 完成重启所需的时间取决于 PostgreSQL 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。 你可能还需要增加检查点频率。 你还可以调整与检查点相关的参数值，包括 `max_wal_size` 。 还建议在 `CHECKPOINT` 重新启动服务器之前运行命令。
+> 完成重启所需的时间取决于 PostgreSQL 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。 你可能还需要增加检查点频率。 还可以调整与检查点相关的参数值，包括 `max_wal_size`。 还建议在重启服务器之前运行 `CHECKPOINT` 命令。
 
 ## <a name="prerequisites"></a>先决条件
 若要完成本操作说明指南：

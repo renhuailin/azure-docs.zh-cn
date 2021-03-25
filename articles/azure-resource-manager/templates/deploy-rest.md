@@ -3,12 +3,12 @@ title: 使用 REST API 和模板部署资源
 description: 使用 Azure 资源管理器和资源管理器 REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: MT
+ms.openlocfilehash: e688d7abfaca442c3de395d25961b4e81e6c7b24
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028958"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889189"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>使用 ARM 模板和 Azure 资源管理器 REST API 来部署资源
 
@@ -23,13 +23,13 @@ ms.locfileid: "98028958"
 - 若要部署到资源组，请使用[部署 - 创建](/rest/api/resources/deployments/createorupdate)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
 - 若要部署到订阅，请使用[部署 - 在订阅范围内创建](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
   有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
@@ -37,7 +37,7 @@ ms.locfileid: "98028958"
 - 若要部署到管理组，请使用[部署 - 在管理组范围内创建](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
   有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "98028958"
 - 若要部署到租户，请使用[部署 - 在租户范围内创建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。 请求发送到：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
   ```
 
   有关租户级别部署的详细信息，请参阅[在租户级别创建资源](deploy-to-tenant.md)。
@@ -78,12 +78,12 @@ ms.locfileid: "98028958"
 1. 若要部署模板，请在请求 URI 中提供订阅 ID、资源组名称和部署名称。
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-10-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2020-10-01
    ```
 
    在请求正文中，提供指向模板和参数文件的链接。 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-   请注意， `mode` 设置为 " **增量**"。 若要运行完整部署，请将设置 `mode` 为 **complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
+   请注意，`mode` 设置为 **Incremental**。 要运行完整部署，请将 `mode` 设置为 **Complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
 
    ```json
    {
@@ -122,7 +122,7 @@ ms.locfileid: "98028958"
    }
    ```
 
-    可以将存储帐户设置为使用共享访问签名 (SAS) 令牌。 有关详细信息，请参阅 [使用共享访问签名委托访问权限](/rest/api/storageservices/delegate-access-with-shared-access-signature)。
+    可以将存储帐户设置为使用共享访问签名 (SAS) 令牌。 有关详细信息，请参阅[使用共享访问签名委托访问权限](/rest/api/storageservices/delegate-access-with-shared-access-signature)。
 
     如果需要为参数（如密码）提供敏感值，请将该值添加到密钥保管库。 在部署过程中检索密钥保管库，如前面的示例所示。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。
 
@@ -192,7 +192,7 @@ ms.locfileid: "98028958"
 1. 要获取模板部署的状态，请使用[部署 - 获取](/rest/api/resources/deployments/get)。
 
    ```HTTP
-   GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-10-01
    ```
 
 ## <a name="deployment-name"></a>部署名称

@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336779"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (Node.js)
@@ -58,7 +58,7 @@ ms.locfileid: "91336779"
 
 在本部分中，将创建一个 Node.js 控制台应用，该应用将位置元数据添加到与 **myDeviceId** 关联的设备孪生。 然后，该应用将选择位于美国的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的**addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
+1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的 **addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
 
     ```cmd/sh
     npm init --yes

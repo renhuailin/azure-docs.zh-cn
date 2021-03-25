@@ -1,7 +1,7 @@
 ---
 title: 可视化 Azure NSG 流日志 - Power BI
 titleSuffix: Azure Network Watcher
-description: 了解如何使用 Power BI 可视化网络安全组流日志，以便查看有关 Azure 网络观察程序中的 IP 流量的信息。
+description: 了解如何使用 Power BI 可视化网络安全组流日志，以允许你查看有关 Azure 网络观察程序中 IP 流量的信息。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 50f08ffc304962cc66f6eed07adcb5b7e4aa6692
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011146"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志
@@ -54,8 +54,8 @@ ms.locfileid: "98011146"
 
 1. 在 Power BI Desktop 应用程序中下载并打开以下 Power BI 模板：[网络观察程序 PowerBI 流日志模板](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. 输入所需的查询参数
-   1. **StorageAccountName** –指定包含要加载和可视化的 NSG 流日志的存储帐户的名称。
-   1. **NumberOfLogFiles** –指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果启用 2 个 NSG 并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
+   1. **StorageAccountName** – 指定包含所要加载和可视化的 NSG 流日志的存储帐户的名称。
+   1. **NumberOfLogFiles** – 指定要在 Power BI 中下载和可视化的日志文件数。 例如，如果指定 50，则会下载 50 个最新的日志文件。 如果启用 2 个 NSG 并配置为向此帐户发送 NSG 流日志，则可以查看过去 25 小时的日志。
 
       ![Power BI 主界面][2]
 

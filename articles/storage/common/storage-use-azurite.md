@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490775"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
@@ -57,7 +57,7 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:Blob 主机** - Blob 服务的侦听终结点。 默认设置为 127.0.0.1。
    - **Azurite:Blob 端口** - Blob 服务的侦听端口。 默认端口为 10000。
    - **Azurite:证书** - 本地受信任 PEM 的路径或 PFX 证书文件路径，用于启用 HTTPS 模式。
-   - **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值是 **false**秒。
+   - **Azurite:调试** - 将调试日志输出到 Azurite 通道。 默认值是 **false** 秒。
    - **Azurite:密钥** - 本地受信任 PEM 密钥文件的路径，在“Azurite:证书”指向 PEM 文件文件时是必需的。
    - **Azurite:位置** - 工作区位置路径。 默认值为 Visual Studio Code 的工作文件夹。
    - **Azurite:松散** - 启用松散模式，将会忽略不受支持的标头和参数。
@@ -65,8 +65,8 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:Pwd** - PFX 文件的密码。 在“Azurite:证书”指向 PFX 文件时是必需的。
    - **Azurite:队列主机** - 队列服务的侦听终结点。 默认设置为 127.0.0.1。
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
-   - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false**秒。
-   - **Azurite:跳过 API 版本检查** - 跳过请求 API 版本检查。 默认值是 **false**秒。
+   - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false** 秒。
+   - **Azurite:跳过 API 版本检查** - 跳过请求 API 版本检查。 默认值是 **false** 秒。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
@@ -328,7 +328,7 @@ azurite --skipApiVersionCheck
 
 ### <a name="well-known-storage-account-and-key"></a>已知的存储帐户和密钥
 
-Azurite 接受旧版 Azure 存储模拟器使用的众所周知帐户和密钥。
+Azurite 接受旧式 Azure 存储模拟器使用的同一个众所周知的帐户和密钥。
 
 - 帐户名称：`devstoreaccount1`
 - 帐户密钥：`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -558,7 +558,7 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 
 ### <a name="table-support"></a>表支持
 
-目前正在开发对 Azurite 中表的支持，并公开发布内容！ 要获得最新进度，请检查 [Azurite V3 表](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) 项目。
+对 Azurite 中表的支持目前正在开发中，欢迎为此做出贡献！ 有关最新进度，请查看 [Azurite V3 表](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table)项目。
 
 支持持久函数需要表。
 
@@ -568,5 +568,5 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md) ，使旧的 Azure 存储模拟器被 Azurite 取代。
+- [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)介绍了旧式 Azure 存储模拟器（现由 Azurite 取代）。
 - [配置 Azure 存储连接字符串](storage-configure-connection-string.md)介绍了如何汇编有效的 Azure 存储连接字符串。

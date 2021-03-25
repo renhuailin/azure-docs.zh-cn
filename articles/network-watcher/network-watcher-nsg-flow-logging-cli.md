@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 46d12db413fdf01995bc84ae018065e877afb15e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98017810"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>使用 Azure CLI 配置网络安全组流日志
@@ -51,7 +51,7 @@ az network watcher flow-log create --resource-group resourceGroupName --enabled 
 
 你指定的存储帐户不能配置有仅限 Microsoft 服务或特定虚拟网络进行网络访问的网络规则。 存储帐户可以与启用流日志的 NSG 使用相同或不同的 Azure 订阅。 如果使用不同的订阅，它们必须都与同一 Azure Active Directory 租户相关联。 用于每个订阅的帐户必须有[必要的权限](required-rbac-permissions.md)。 
 
-如果存储帐户与网络安全组位于不同的资源组或订阅中，请指定存储帐户的完整 ID，而非其名称。 例如，如果存储帐户位于名为 RG-Storage 的资源组中，则请指定 /subscriptions/ {SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName，而不是在上一命令中指定 storageAccountName    。
+如果存储帐户与网络安全组位于不同的资源组或订阅中，请指定存储帐户的完整 ID，而非其名称。 例如，如果存储帐户位于名为 RG-Storage 的资源组中，则请指定 /subscriptions/ {SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName，而不是在上一命令中指定 storageAccountName。
 
 ## <a name="disable-network-security-group-flow-logs"></a>禁用网络安全组流日志
 

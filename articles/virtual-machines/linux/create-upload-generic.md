@@ -2,16 +2,17 @@
 title: 创建并上载 Linux VHD
 description: 了解如何创建和上传包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: 9888cde8bca9fb0646dbdc8bb601b0887908ad1d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: 5a62bae8881f20eb7778f179cbecce77f102f6e8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203229"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554626"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 
@@ -65,7 +66,7 @@ Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内�
 ### <a name="resizing-vhds"></a>调整 VHD 大小
 Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下，使用 Hyper-V 创建的 VHD 已正确调整。  如果未正确调整 VHD，在尝试基于 VHD 创建映像时，可能会收到如下错误消息：
 
-* VHD http： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小不受支持21475270656字节。 大小必须是整数（以 MB 为单位）。
+* The VHD http:\//\<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小为 21475270656 字节，该大小不受支持。 大小必须是整数（以 MB 为单位）。
 
 在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](/powershell/module/hyper-v/resize-vhd) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 

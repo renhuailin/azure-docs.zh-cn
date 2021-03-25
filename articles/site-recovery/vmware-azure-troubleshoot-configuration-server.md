@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371947"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
@@ -67,7 +67,7 @@ ms.locfileid: "92371947"
 - 通过运行以下命令行在系统用户内容中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 - 在 IE 中添加代理设置并重启 tmanssvc 服务。
 - 若要配置 DRA 代理设置，请运行 cd C:\Program Files\Microsoft Azure Site Recovery Provider
-- 接下来，执行 DRCONFIGURATOR.EXE /configure /AddBypassUrls [添加在[配置服务器部署](vmware-azure-deploy-configuration-server.md#configure-settings)的**配置 vCenter 服务器/vSphere ESXi 服务器**步骤中提供的 vCenter 服务器 IP 地址/FQDN]
+- 接下来，执行 DRCONFIGURATOR.EXE /configure /AddBypassUrls [添加在 [配置服务器部署](vmware-azure-deploy-configuration-server.md#configure-settings)的 **配置 vCenter 服务器/vSphere ESXi 服务器** 步骤中提供的 vCenter 服务器 IP 地址/FQDN]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>更改配置服务器的 IP 地址
 

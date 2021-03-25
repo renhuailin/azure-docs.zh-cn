@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 08/22/2020
 ms.openlocfilehash: db4fd52dad82542f20e58ebb3b8526c5be7f2f88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327317"
 ---
 # <a name="app-schema-definition"></a>应用架构定义
@@ -67,20 +67,20 @@ LUIS 应用使用 `.json` 或 `.lu` 表示，并且包括所有意向、实体�
 
 | element                  | 注释                              |
 |--------------------------|--------------------------------------|
-| "hierarchicals": [],     | 弃用，请使用 [机器学习实体](luis-concept-entity-types.md)。   |
-| "复合"： []，        | 弃用，请使用 [机器学习实体](luis-concept-entity-types.md)。 [复合实体](reference-entity-composite.md) 引用。 |
-| "closedLists": [],       | [列出实体](reference-entity-list.md) 引用，主要用作实体的功能。    |
-| "versionId"： "0.1"，      | LUIS 应用的版本。|
-| "name"： "example-app"，   | LUIS 应用的名称。 |
-| "desc"： ""，              | LUIS 应用的可选说明。  |
-| "culture"： "en-us"，      | 应用的[语言](luis-language-support.md)，影响基础功能，如预构建实体、机器学习和标记器。  |
-| "tokenizerVersion"： "1.0.0"， | [分词器](luis-language-support.md#tokenization)  |
+| "hierarchicals": [],     | 已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。   |
+| "composites": [],        | 已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。 [复合实体](reference-entity-composite.md)引用。 |
+| "closedLists": [],       | [列出实体](reference-entity-list.md)引用，主要用作实体的特征。    |
+| "versionId":"0.1",      | LUIS 应用的版本。|
+| "name": "example-app",   | LUIS 应用的名称。 |
+| "desc": "",              | LUIS 应用的可选说明。  |
+| "culture": "en-us",      | 应用的[语言](luis-language-support.md)，它会影响基础功能，如预生成实体、机器学习和 tokenizer。  |
+| "tokenizerVersion":"1.0.0", | [分词器](luis-language-support.md#tokenization)  |
 | "patternAnyEntities": [],   | [Pattern.any 实体](reference-entity-pattern-any.md)    |
-| "regex_entities"： []，    |  [正则表达式实体](reference-entity-regular-expression.md)   |
-| "phraselist"： []，       |  [短语列出 (功能) ](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
-| "regex_features"： []，    |  弃用，请使用 [机器学习实体](luis-concept-entity-types.md)。 |
-| "模式"： []，          |  模式利用[模式语法](reference-pattern-syntax.md)[提高预测准确性](luis-concept-patterns.md)   |
-| "设置"： []           | [应用设置](luis-reference-application-settings.md)|
+| "regex_entities": [],    |  [正则表达式实体](reference-entity-regular-expression.md)   |
+| "phraselists": [],       |  [短语列表（特征）](luis-concept-feature.md#create-a-phrase-list-for-a-concept)   |
+| "regex_features": [],    |  已弃用，请使用[机器学习实体](luis-concept-entity-types.md)。 |
+| "patterns": [],          |  [模式](luis-concept-patterns.md)通过[模式语法](reference-pattern-syntax.md)提高预测准确性   |
+| "settings": []           | [应用设置](luis-reference-application-settings.md)|
 
 ## <a name="version-6x"></a>版本 6.x
 

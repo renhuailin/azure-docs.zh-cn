@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: 6454bc863cb5fd628d581fff380c5ab61354f762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87053044"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
@@ -46,15 +46,15 @@ ms.locfileid: "87053044"
 > 
 >   **解码时间：** 在客户端解码某个样本所需的时间，符合 [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的定义。
 
-**片段：** 一个可单独下载的**媒体**单元，由一个或多个**样本**构成。
+**片段：** 一个可单独下载的 **媒体** 单元，由一个或多个 **样本** 构成。
 
 >   **HEVC：** 高效视频编码，符合 [ISO/IEC 23008-2] 中的定义
 > 
->   **清单：** 有关**呈现内容**的元数据，可让客户端发出**媒体**请求。 **媒体：** 由客户端用来播放**呈现内容**的压缩音频、视频和文本数据。 **媒体格式：** 以压缩**样本**形式呈现音频或视频时所用的妥善定义的格式。
+>   **清单：** 有关 **呈现内容** 的元数据，可让客户端发出 **媒体** 请求。 **媒体：** 由客户端用来播放 **呈现内容** 的压缩音频、视频和文本数据。 **媒体格式：** 以压缩 **样本** 形式呈现音频或视频时所用的妥善定义的格式。
 > 
->   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **响应:** 中的定义。从服务器发送到客户端的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义
+>   **呈现内容：** 播放单部电影所需的所有 **流** 和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **响应:** 中的定义。从服务器发送到客户端的 HTTP 消息，符合 [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) 中的定义
 > 
->   **样本：** 存储和处理**媒体**的最小基本单位（例如帧）。
+>   **样本：** 存储和处理 **媒体** 的最小基本单位（例如帧）。
 > 
 >   **可以、应该、必须、不应、不得：** 这些术语（全部大写）的用法符合 [[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) 中的描述 所有可选行为的陈述使用“可以”、“应该”或“不应”。
 

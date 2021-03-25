@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
 ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340934"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
@@ -38,17 +38,17 @@ ms.locfileid: "93340934"
 * [通过将 CQL 命令与特定 SDK 结合使用以编程方式管理](#use-cql-queries)
 * [使用自动缩放动态管理](#use-autoscale)
 
-下面的几节介绍了这些方法的优缺点。 然后，可以确定最佳的策略，以便在系统的缩放需求、整体成本以及解决方案的效率需求之间做出平衡。
+下面的几节介绍了这些方法的优缺点。 然后，可以确定最佳策略来平衡系统的缩放需求、整体成本和解决方案的效率需求。
 
 ## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>使用 Azure 门户
 
-可以使用 Azure 门户缩放 Azure Cosmos DB Cassandra API 帐户中的资源。 有关详细信息，请参阅有关[对容器和数据库预配吞吐量](set-throughput.md)的文章。 此文解释了通过 Azure 门户在[数据库](set-throughput.md#set-throughput-on-a-database)或[容器](set-throughput.md#set-throughput-on-a-container)级别设置吞吐量的相对优势。 这些文章中提到的术语“数据库”和“容器”分别对应于 Cassandra API 的“密钥空间”和“表”。
+可以使用 Azure 门户对 Azure Cosmos DB Cassandra API 帐户中的资源进行缩放。 有关详细信息，请参阅有关[对容器和数据库预配吞吐量](set-throughput.md)的文章。 此文解释了通过 Azure 门户在[数据库](set-throughput.md#set-throughput-on-a-database)或[容器](set-throughput.md#set-throughput-on-a-container)级别设置吞吐量的相对优势。 这些文章中提到的术语“数据库”和“容器”分别对应于 Cassandra API 的“密钥空间”和“表”。
 
-此方法的优点是能够以直截了当的统包方式管理数据库的吞吐量。 但缺点是，在许多情况下，缩放方法可能要求实现某些程度的自动化，它既要确保经济高效，同时又要具备高性能。 后续部分将介绍相关的方案和方法。
+此方法的优点是能够以直截了当的统包方式管理数据库的吞吐量。 但缺点是，在许多情况下，缩放方法可能要求实现某些程度的自动化，它既要确保经济高效，同时又要具备高性能。 以下各节介绍相关的场景和方法。
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>使用控制面板
 
-用于 Cassandra 的 Azure Cosmos DB API 提供使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](./templates-samples-cassandra.md)、[PowerShell](powershell-samples.md) 和 [Azure CLI](cli-samples.md) 文章。
+Azure Cosmos DB 的 Cassandra API 提供了使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](./templates-samples-cassandra.md)、[PowerShell](powershell-samples.md) 和 [Azure CLI](cli-samples.md) 文章。
 
 此方法的优点是可以根据计时器自动扩展或缩减资源，以反映活动的高峰或低活动期。 请参阅[此处](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的示例，了解如何使用 Azure Functions 和 PowerShell 实现此目的。
 
@@ -56,15 +56,15 @@ ms.locfileid: "93340934"
 
 ## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>将 CQL 查询与特定 SDK 配合使用
 
-可以针对给定的数据库或容器执行 [CQL ALTER 命令](cassandra-support.md#keyspace-and-table-options)，通过代码动态缩放系统。
+可以通过对给定的数据库或容器执行 [CQL ALTER 命令](cassandra-support.md#keyspace-and-table-options)来使用代码动态缩放系统。
 
-此方法的优点在于，能够以适合应用程序的自定义方式动态应对缩放需求。 使用此方法，仍可利用标准 RU/秒的费用和速率。 如果系统的缩放需求大部分是可预测的（大约 70% 或更多），那么将 SDK 与 CQL 配合使用可能是一种比使用自动缩放更为经济高效的自动缩放方法。 此方法的缺点是，实现重试可能会很复杂，同时，速率限制可能会增大延迟。
+此方法的优点在于，能够以适合应用程序的自定义方式动态应对缩放需求。 使用此方法，仍可利用标准 RU/秒的费用和速率。 如果系统的缩放需求大部分是可预测的（大约 70% 或更多），那么将 SDK 与 CQL 配合使用可能是一种比使用自动缩放更为经济高效的自动缩放方法。 此方法的缺点是，在速率限制可能会增加延迟的情况下，实现重试会相当复杂。
 
 ## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>使用自动缩放预配吞吐量
 
 除了标准（手动）或以编程方式预配吞吐量外，还可以在自动缩放预配的吞吐量中配置 Azure cosmos 容器。 自动缩放会自动立即缩放，以满足指定 RU 范围内的消耗需求，而不会影响 SLA。 若要了解详细信息，请参阅[在自动缩放中创建 Azure Cosmos 容器和数据库](provision-throughput-autoscale.md)一文。
 
-此方法的优点是，它是在系统中管理缩放需求的最简单的方法。 它不会 **在已配置的 RU 范围内** 应用速率限制。 缺点是，如果系统中的缩放需求是可预测的，那么相比使用上面提到的定制控制平面或 SDK 级别方法，自动缩放在处理缩放需求方面可能并没有那么经济高效。
+此方法的优点是，它是在系统中管理缩放需求的最简单的方法。 它不会在已配置的 RU 范围内应用速率限制。 缺点是，如果系统中的缩放需求是可预测的，那么相比使用上面提到的定制控制平面或 SDK 级别方法，自动缩放在处理缩放需求方面可能并没有那么经济高效。
 
 若要设置或更改使用 CQL 的自动缩放的最大吞吐量 (RU)，请使用以下内容（相应地替换密钥空间/表名称）：
 

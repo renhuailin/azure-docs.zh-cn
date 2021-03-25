@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 流分析作业处理 Azure 事件�
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85312888"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>使用 Azure 流分析处理事件中心的数据 
@@ -22,7 +22,7 @@ ms.locfileid: "85312888"
 ## <a name="end-to-end-flow"></a>端到端流
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-1. 导航到你的**事件中心命名空间**，然后导航到包含传入数据的**事件中心**。 
+1. 导航到你的 **事件中心命名空间**，然后导航到包含传入数据的 **事件中心**。 
 1. 在事件中心页上选择“处理数据”。  
 
     ![“处理数据”磁贴](./media/process-data-azure-stream-analytics/process-data-tile.png)
@@ -30,9 +30,9 @@ ms.locfileid: "85312888"
 
     ![选择流分析](./media/process-data-azure-stream-analytics/process-data-page-explore-stream-analytics.png)
 1. 你会看到一个查询页面，其中包含已为以下字段设置的值：
-    1. 你的**事件中心**，用作查询的输入。
+    1. 你的 **事件中心**，用作查询的输入。
     1. 包含 SELECT 语句的示例 **SQL 查询**。 
-    1. 一个**输出**别名，用于引用查询测试结果。 
+    1. 一个 **输出** 别名，用于引用查询测试结果。 
 
         ![查询编辑器](./media/process-data-azure-stream-analytics/query-editor.png)
         

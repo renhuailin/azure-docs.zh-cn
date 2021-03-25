@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: a248718d12abf90abd80c9210b994e7d74ab111b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92448701"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>教程：将 EY GlobalOne 与 Azure Active Directory 集成
@@ -47,8 +47,8 @@ ms.locfileid: "92448701"
 若要配置 EY GlobalOne 与 Azure AD 的集成，需要从库中将 EY GlobalOne 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入 EY GlobalOne 。
 1. 从结果面板中选择“EY GlobalOne”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -61,7 +61,7 @@ ms.locfileid: "92448701"
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)**，以使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 EY GlobalOne](#configure-ey-globalone)** ，以在应用程序端配置 SSO 设置。
     * **[创建 EY GlobalOne 测试用户](#create-ey-globalone-test-user)** ，以便在 EY GlobalOne 中拥有 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
@@ -72,7 +72,7 @@ ms.locfileid: "92448701"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“EY GlobalOne”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -91,23 +91,23 @@ ms.locfileid: "92448701"
     | 电子邮件 | user.mail |
     | 公司 | `<YOUR COMPANY NAME>` |
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     ![显示“用户声明”部分的屏幕截图，其中突出显示了“添加新声明”和“保存”操作。](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
-    c. 将“命名空间”留空。
+    c. 将“命名空间”留空  。
 
-    d. 选择“源”作为“属性”。
+    d. 选择“源”作为“属性”  。
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定”
+    f. 单击“确定” 
 
-    g. 单击“ **保存** ”。
+    g. 单击“ **保存**”。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92448701"
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮  。
+1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 

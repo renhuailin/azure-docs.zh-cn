@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 23b3aabf8e991e512ef9a5c07d725c3084ea7f83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86244729"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教程：升级 Azure 中 Service Fabric 群集的运行时
@@ -44,7 +44,7 @@ ms.locfileid: "86244729"
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* 设置 Windows 开发环境。 安装 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发**以及 **.NET Core 跨平台开发**工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
+* 设置 Windows 开发环境。 安装 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 开发**、**ASP.NET 和 Web 开发** 以及 **.NET Core 跨平台开发** 工作负荷。  然后设置 [.NET 开发环境](service-fabric-get-started.md)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 

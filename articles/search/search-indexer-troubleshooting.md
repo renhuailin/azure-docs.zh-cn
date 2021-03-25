@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355119"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器问题
@@ -38,7 +38,7 @@ Azure 存储、CosmosDB 和 Azure SQL 提供可配置的防火墙。 防火墙�
 
 有 2 个选项可让索引器访问此类实例中的这些资源：
 
-* 通过允许从**所有网络**进行访问（如果可行）来禁用防火墙。
+* 通过允许从 **所有网络** 进行访问（如果可行）来禁用防火墙。
 * 或者，可以允许搜索服务的 IP 地址以及资源防火墙规则中 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags)的 IP 地址范围进行访问（IP 地址范围限制）。
 
 在以下链接中可以找到有关对每种数据源类型配置 IP 地址范围限制的详细信息：

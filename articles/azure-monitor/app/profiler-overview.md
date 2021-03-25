@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499386"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
@@ -69,7 +69,7 @@ clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>加载代码 ([COLD])
 
-如果方法名称包含 **[COLD]** （例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过[按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
+如果方法名称包含 **[COLD]** （例如 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined**），则表示 .NET Framework 运行时首次执行的代码未经过 [按配置优化](/cpp/build/profile-guided-optimizations)功能的优化。 对于每个方法，在进程的生存期内，它最多只应显示一次。
 
 如果针对某个请求加载代码花费的时间很长，则表示这是第一个执行该方法的未优化部分的请求。 请考虑在用户访问该代码部分之前使用执行该代码部分的预热进程。
 

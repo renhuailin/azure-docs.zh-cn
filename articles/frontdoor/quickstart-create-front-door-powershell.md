@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
 ms.openlocfilehash: 8ccc50dfc4c53f1ee207a04d7d7775775f13cb65
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91347810"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Front Door，以实现高度可用的全局 Web 应用程序

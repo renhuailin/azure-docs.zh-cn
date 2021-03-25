@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559764"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601854"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](../troubleshooting/reset-rdp.md)。 运行此扩展后，应重置首次登录密码：
+在以下示例中，VM 访问扩展用于将 Windows VM 的管理密码重置为临时密码。 有关 VM 访问扩展的详细信息，请参阅[重置 Windows VM 中的远程桌面服务](/troubleshoot/azure/virtual-machines/reset-rdp)。 运行此扩展后，应重置首次登录密码：
 
 ```powershell
 $cred=Get-Credential

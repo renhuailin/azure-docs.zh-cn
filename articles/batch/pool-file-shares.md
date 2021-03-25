@@ -4,10 +4,10 @@ description: 如何在 Azure Batch 中从 Linux 或 Windows 池中的计算节�
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735488"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用

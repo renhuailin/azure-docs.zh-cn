@@ -1,13 +1,13 @@
 ---
 title: 防火墙访问规则
-description: 通过允许访问 REST API 和数据终结点域名或服务特定的 IP 地址范围，配置从防火墙后面访问 Azure 容器注册表的规则。
+description: 通过允许访问 REST API 和数据终结点域名或特定于服务的 IP 地址范围，来配置规则以访问防火墙后的 Azure 容器注册表。
 ms.topic: article
 ms.date: 05/18/2020
 ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935982"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>配置规则以访问防火墙后的 Azure 容器注册表

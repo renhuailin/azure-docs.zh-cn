@@ -18,10 +18,10 @@ ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014495"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
@@ -40,7 +40,7 @@ ms.locfileid: "98014495"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在 https://portal.azure.com 登录 Azure 门户。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -54,11 +54,11 @@ ms.locfileid: "98014495"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
-    |资源组| 选择“新建”，并输入 myResourceGroup  |
+    |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
 4. 选择 VM 的大小，然后选择“选择”  。
-5. 保留“设置”下的所有默认设置，然后选择“确定”。  
+5. 保留“设置”下的所有默认设置，然后选择“确定”。 
 6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
 ## <a name="test-network-communication"></a>测试网络通信
@@ -69,7 +69,7 @@ ms.locfileid: "98014495"
 
 如果已至少在一个区域中启用网络观察程序，请跳到[使用下一跃点](#use-next-hop)。
 
-1. 在门户中，选择“所有服务”。  在“筛选器”框中，输入“网络观察程序”   。 结果中出现“网络观察程序”后，将其选中  。
+1. 在门户中，选择“所有服务”。  在“筛选器”框中，输入“网络观察程序”。 结果中出现“网络观察程序”后，将其选中。
 2. 选择“区域”，以便将其展开，然后选择“美国东部”右侧的“...”，如下图所示：  
 
     ![启用网络观察程序](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -112,9 +112,9 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
 2. 选择“删除资源组”  。
-3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
+3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 

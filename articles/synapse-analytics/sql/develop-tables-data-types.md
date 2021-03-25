@@ -1,6 +1,6 @@
 ---
 title: Synapse SQL 中的表数据类型
-description: 用于在 Synapse SQL 中定义表数据类型的建议。
+description: 有关在 Synapse SQL 中定义表数据类型的建议。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: ae919a12dc1c50fcb30d08128e4ebf2faa2b2ccb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101674162"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL 中的表数据类型
 
-本文介绍如何在 Synapse SQL 中定义表数据类型。 
+本文包含关于在 Synapse SQL 中定义表数据类型的建议。 
 
 ## <a name="data-types"></a>数据类型
 
@@ -35,11 +35,11 @@ Synapse SQL 支持最常用的数据类型。 有关受支持数据类型的列�
 - 尽可能使用 NVARCHAR(4000) 或 VARCHAR(8000)，而非 NVARCHAR(MAX) 或 VARCHAR(MAX)。
 
 > [!NOTE]
-> 如果使用 PolyBase 外部表加载 Synapse SQL 表，则所定义的表行长度不能超过 1 MB。 当数据长度可变的行超过 1 MB 时，可使用 BCP 而不是 PolyBase 加载行。
+> 如果使用 PolyBase 外部表来加载 Synapse SQL 表，则定义的表行长度不能超过 1 MB。 当数据长度可变的行超过 1 MB 时，可使用 BCP 而不是 PolyBase 加载行。
 
 ## <a name="identify-unsupported-data-types"></a>识别不支持的数据类型
 
-如果要从另一个 SQL 数据库迁移数据库，则可能会遇到 Synapse SQL 不支持的数据类型。 使用此查询发现现有 SQL 架构中不支持的数据类型。
+如果从另一个 SQL 数据库迁移数据库，可能会遇到 Synapse SQL 不支持的数据类型。 使用此查询发现现有 SQL 架构中不支持的数据类型。
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -52,7 +52,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>对不受支持的数据类型的解决方法
 
-以下列表显示了 Synapse SQL 不支持的数据类型，并提供了可替代不支持的数据类型的替代项。
+下面的列表显示了 Synapse SQL 不支持的数据类型，同时提供可替代不支持的数据类型的可用数据类型。
 
 | 不支持的数据类型 | 解决方法 |
 | --- | --- |
@@ -63,7 +63,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 | [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?view=azure-sqldw-latest&preserve-view=true) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql?view=azure-sqldw-latest&preserve-view=true) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql?view=azure-sqldw-latest&preserve-view=true) |将列拆分成多个强类型化列。 |
-| [table](/sql/t-sql/data-types/table-transact-sql?view=azure-sqldw-latest&preserve-view=true) |转换为临时表，或考虑使用 [CETAS](../sql/develop-tables-cetas.md)将数据存储到存储。 |
+| [table](/sql/t-sql/data-types/table-transact-sql?view=azure-sqldw-latest&preserve-view=true) |转换为临时表，或考虑使用 [CETAS](../sql/develop-tables-cetas.md) 将数据存储到存储。 |
 | [timestamp](/sql/t-sql/data-types/date-and-time-types) |重写代码来使用 [datetime2](/sql/t-sql/data-types/datetime2-transact-sql?view=azure-sqldw-latest&preserve-view=true) 和 [CURRENT_TIMESTAMP](/sql/t-sql/functions/current-timestamp-transact-sql?view=azure-sqldw-latest&preserve-view=true) 函数。 仅支持常量作为默认值，因此，不能将 current_timestamp 定义为默认约束。 如果需要从 timestamp 类型化列迁移行版本值，请为 NOT NULL 或 NULL 行版本值使用 [BINARY](/sql/t-sql/data-types/binary-and-varbinary-transact-sql?view=azure-sqldw-latest&preserve-view=true)(8) 或 [VARBINARY](/sql/t-sql/data-types/binary-and-varbinary-transact-sql?view=azure-sqldw-latest&preserve-view=true)(8)。 |
 | [xml](/sql/t-sql/xml/xml-transact-sql?view=azure-sqldw-latest&preserve-view=true) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
 | [用户定义的类型](/sql/relational-databases/native-client/features/using-user-defined-types) |尽可能转换回本机数据类型。 |

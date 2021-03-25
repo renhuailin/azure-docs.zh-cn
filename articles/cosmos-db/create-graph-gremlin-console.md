@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: chrande
 ms.openlocfilehash: 20cb4cea52317022aea8a5b9e4b8280f8b88ff85
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93361505"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
@@ -53,11 +53,11 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>连接到应用服务/图
 
 1. 在启动 Gremlin 控制台之前，请在 `apache-tinkerpop-gremlin-console-3.2.5/conf` 目录中创建或修改 remote-secure.yaml 配置文件。
-2. 根据下表中的定义，填写 *host* 、 *port* 、 *username* 、 *password* 、 *connectionPool* 和 *serializer* 配置：
+2. 根据下表中的定义，填写 *host*、*port*、*username*、*password*、*connectionPool* 和 *serializer* 配置：
 
     设置|建议的值|说明
     ---|---|---
-    hosts|[ *account-name*. **gremlin**.cosmos.azure.com]|请参阅下面的屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。 注意：请确保使用 Gremlin 值，并且 **不是** 以 [ *account-name*.documents.azure.com] 结尾的 URI，这可能会在稍后尝试执行 Gremlin 查询时导致“主机未及时响应”异常。 
+    hosts|[*account-name*.**gremlin**.cosmos.azure.com]|请参阅下面的屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。 注意：请确保使用 Gremlin 值，并且 **不是** 以 [*account-name*.documents.azure.com] 结尾的 URI，这可能会在稍后尝试执行 Gremlin 查询时导致“主机未及时响应”异常。 
     port|443|设置为 443。
     username|*用户名*|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是数据库名称，`<coll>` 是集合名称。
     password|*主密钥*| 请参阅下面的第二幅屏幕截图。 这是主密钥，可以从 Azure 门户的“密钥”页上的“主密钥”框中检索到。 使用该框左侧的复制按钮可复制该值。
@@ -322,7 +322,7 @@ g.V().drop()
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形、创建顶点和边缘，以及使用 Gremlin 控制台遍历图形。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形、创建顶点和边缘，以及使用 Gremlin 控制台遍历图形。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

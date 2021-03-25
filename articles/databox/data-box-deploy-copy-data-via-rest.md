@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337587"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>教程：使用 REST API 将数据复制到 Azure Data Box Blob 存储  
@@ -85,7 +85,7 @@ ms.locfileid: "94337587"
 
 1. 登录到 Azure 门户。
 2. 转到你的 Data Box 订单，然后导航到“常规”>“设备详细信息”。
-3. 在“设备凭据”下，转到设备的“访问 API”。  单击“下载”。 此操作将下载 **\<your order name>.cer** 证书文件。 **保存** 此文件。 稍后将在用于连接到设备的客户端或主机上安装此证书。
+3. 在“设备凭据”下，转到设备的“访问 API”。  单击“下载”  。 此操作将下载 **\<your order name>.cer** 证书文件。 **保存** 此文件。 稍后将在用于连接到设备的客户端或主机上安装此证书。
 
     ![在 Azure 门户中下载证书](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 

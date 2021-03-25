@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 7021367e1230573343ddf57ccd399d998ad5280e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339268"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-可以使用推送模型或拉取模型来处理 Azure Cosmos DB 更改源。 使用推送模式时，更改源处理器会将工作推送到具有用于处理此工作的业务逻辑的客户端。 但是，在更改源处理器内处理检查工作和存储上次处理的工作的状态的复杂性。
+可以使用推送模型或拉取模型来处理 Azure Cosmos DB 更改源。 使用推送模型时，更改源处理器会将工作推送到具有用于处理此工作的业务逻辑的客户端。 但是，在检查工作以及存储上次已处理工作的状态时，所遇到的复杂情况将在更改源处理器中进行处理。
 
 使用拉取模型时，客户端必须从服务器拉取工作。 在这种情况下，客户端不仅具有用于处理工作的业务逻辑，而且还存储上次已处理工作的状态，在并行处理工作的多个客户端上处理负载均衡，并且处理错误。
 

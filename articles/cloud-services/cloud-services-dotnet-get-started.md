@@ -1,5 +1,5 @@
 ---
-title: " (经典) 和 ASP.NET 的 Azure 云服务入门 |Microsoft Docs"
+title: Azure 云服务（经典）和 ASP.NET 入门 | Microsoft Docs
 description: 了解如何使用 ASP.NET MVC 和 Azure 创建多层应用程序。 该应用程序运行在云服务中，带有 web 角色和辅助角色。 它使用实体框架、SQL 数据库和 Azure 存储队列和 Blob。
 ms.topic: article
 ms.service: cloud-services
@@ -9,18 +9,18 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742074"
 ---
-# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a> (经典) 和 ASP.NET 的 Azure 云服务入门
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Azure 云服务（经典）和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 本教程演示如何使用 ASP.NET MVC 前端创建多层 .NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "98742074"
 应用程序使用 [以队列为中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) 来减轻创建缩略图到后端进程的 CPU 密集型工作。
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>替代体系结构：应用服务和 WebJobs
-本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure App Service](../app-service/index.yml) 中运行前端，并为后端使用 [web 作业](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
+本教程演示如何在 Azure 云服务中运行前端和后端。 一种替代方法是在 [Azure 应用服务](../app-service/index.yml)中运行前端，并对后端使用 [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 功能。 有关如何使用 WebJobs 的教程，请参阅 [Azure WebJobs SDK 入门](https://github.com/Azure/azure-webjobs-sdk/wiki)。 有关如何选择最适合方案的服务的信息，请参阅 [Azure 应用服务、云服务和虚拟机比较](/azure/architecture/guide/technology-choices/compute-decision-tree)。
 
 ## <a name="what-youll-learn"></a>学习内容
 * 如何在计算机上安装 Azure SDK 以进行 Azure 开发。
@@ -84,11 +84,11 @@ ms.locfileid: "98742074"
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
-    ![Contoso Ad 体系结构1](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso 广告体系结构 1](./media/cloud-services-dotnet-get-started/home.png)
 8. 单击“创建广告”。
 9. 输入一些测试数据并选择一个要上传的 *.jpg* 图像，并单击“创建”。
 
-    ![图像显示 "创建" 页](./media/cloud-services-dotnet-get-started/create.png)
+    ![图像显示创建页面](./media/cloud-services-dotnet-get-started/create.png)
 
     该应用程序转到索引页，但它不显示新广告的缩略图，因为该处理尚未发生。
 10. 稍等片刻，并刷新该索引页查看缩略图。
@@ -130,7 +130,7 @@ Azure 云服务是该应用程序的运行环境。
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
-    ![图像显示新的云服务](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![图像显示“新建云服务”](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据库
 在云中运行应用程序时，它会使用基于云的数据库。
@@ -356,7 +356,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 6. 查找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 包，并将它安装在辅助角色项目中。
 
 ### <a name="set-project-references"></a>设置项目引用
-1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 右键单击 ContosoAdsWeb 项目，并单击“引用” - “添加引用”。 在 " **引用管理器** " 对话框中，选择左窗格中的 " **解决方案-项目** "，选择 " **ContosoAdsCommon**"，然后单击 **"确定"**。
+1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。 右键单击 ContosoAdsWeb 项目，并单击“引用” - “添加引用”。 在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，并单击“确定”。  
 2. 在 ContosoAdsWorker 项目中，设置对 ContosoAdsCommon 项目的引用。
 
     ContosoAdsCommon 包含实体框架数据模型和上下文类，将在前端和后端使用。

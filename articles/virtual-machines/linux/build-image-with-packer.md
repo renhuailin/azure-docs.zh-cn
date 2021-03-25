@@ -2,24 +2,25 @@
 title: 使用 Packer 创建 Linux Azure VM 映像
 description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 29a0c47bf24ecd916fb9402ffcb2a3ff13a36a84
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.collection: linux
+ms.openlocfilehash: 4d85106cb78b5f4799a78d18463d83594f54dbac
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016414"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102556734"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 从定义 Linux 分发版和操作系统版本的映像创建 Azure 中的每个虚拟机 (VM)。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
 > [!NOTE]
-> Azure 现推出一项服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器基于 Packer 构建，因此你可以将现有 Packer shell 配置程序脚本与之配合使用。 若要开始使用 Azure 映像生成器，请参阅 [使用 Azure 映像生成器创建 LINUX VM](image-builder.md)。
+> Azure 现推出一项服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器基于 Packer 构建，因此你可以将现有 Packer shell 配置程序脚本与之配合使用。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 Linux VM](image-builder.md)。
 
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组

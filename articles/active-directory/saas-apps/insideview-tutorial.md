@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 InsideView 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 InsideView 集成 | Microsoft Docs
 description: 本教程介绍如何在 Azure Active Directory 与 InsideView 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460098"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 的集成
+# <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教程：Azure Active Directory 与 InsideView 集成
 
 本教程介绍如何将 InsideView 与 Azure Active Directory (Azure AD) 集成。
 这种集成可提供以下优势：
@@ -60,7 +60,7 @@ ms.locfileid: "92460098"
 
     ![选择“新建应用程序”](common/add-new-app.png)
 
-4. 在搜索框中，输入“InsideView”  。 在搜索结果中选择“InsideView”，然后选择“添加”。  
+4. 在搜索框中，输入“InsideView”。 在搜索结果中选择“InsideView”，然后选择“添加”。
 
     ![搜索结果](common/search-new-app.png)
 
@@ -72,10 +72,10 @@ ms.locfileid: "92460098"
 若要为 InsideView 配置和测试 Azure AD 单一登录，需要完成以下步骤：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，为用户启用该功能。
-2. 在应用程序端[配置 InsideView 单一登录](#configure-insideview-single-sign-on)  。
-3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录  。
+2. 在应用程序端[配置 InsideView 单一登录](#configure-insideview-single-sign-on)。
+3. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，以测试 Azure AD 单一登录。
 4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，为用户启用 Azure AD 单一登录  。
-5. 创建与用户的 Azure AD 表示形式相关联的 [InsideView 测试用户](#create-an-insideview-test-user)  。
+5. 创建与用户的 Azure AD 表示形式相关联的 [InsideView 测试用户](#create-an-insideview-test-user)。
 6. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -84,9 +84,9 @@ ms.locfileid: "92460098"
 
 要为 InsideView 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“InsideView”应用程序集成页上，选择“单一登录”： 
+1. 在 [Azure 门户](https://portal.azure.com/)中的“InsideView”应用程序集成页上，选择“单一登录”：
 
-    ![选择“单一登录”](common/select-sso.png)
+    ![选择单一登录](common/select-sso.png)
 
 2. 在“选择单一登录方法”对话框中，选择“SAML/WS-Fed”模式以启用单一登录：  
 
@@ -107,45 +107,45 @@ ms.locfileid: "92460098"
     > [!NOTE]
     > 此值是一个占位符。 需要使用实际回复 URL。 请联系 [InsideView 支持团队](mailto:support@insideview.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”对话框中显示的模式  。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，根据要求选择“证书(原始)”旁的“下载”链接，并将证书保存在计算机上     ：
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，根据要求选择“证书(原始)”旁的“下载”链接，并将证书保存在计算机上：
 
     ![证书下载链接](common/certificateraw.png)
 
-6. 在“设置 InsideView”部分，根据要求复制相应的 URL： 
+6. 在“设置 InsideView”部分，根据要求复制相应的 URL：
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 ### <a name="configure-insideview-single-sign-on"></a>配置 InsideView 单一登录
 
 1. 在新的 Web 浏览器窗口中，以管理员身份登录到 InsideView 公司站点。
 
-1. 在窗口顶部，依次选择“管理”  、“单一登录设置”  、“添加 SAML”  。
+1. 在窗口顶部，依次选择“管理”、“单一登录设置”、“添加 SAML”。
    
    ![SAML 单一登录设置](./media/insideview-tutorial/ic794135.png "SAML 单一登录设置")
 
-1. 在“添加新 SAML”  部分中，执行以下步骤。
+1. 在“添加新 SAML”部分中，执行以下步骤。
 
     ![“添加新 SAML”部分](./media/insideview-tutorial/ic794136.png "“添加新 SAML”部分")
 
-    1. 在“STS 名称”  框中，输入配置名称。
+    1. 在“STS 名称”框中，输入配置名称。
 
-    1. 在“SamlP/WS-Fed 自主提供的终结点”框中，粘贴从 Azure 门户复制的“登录 URL”值  。
+    1. 在“SamlP/WS-Fed 自主提供的终结点”框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    1. 打开从 Azure 门户下载的原始证书。 将证书内容复制到剪贴板，然后将内容粘贴到“STS 证书”框中。 
+    1. 打开从 Azure 门户下载的原始证书。 将证书内容复制到剪贴板，然后将内容粘贴到“STS 证书”框中。
 
-    1. 在“Crm 用户 ID 映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 。 
+    1. 在“Crm 用户 ID 映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**。
 
-    1. 在“Crm 电子邮件映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 。 
+    1. 在“Crm 电子邮件映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**。
 
-    1. 在“Crm 名字映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 。 
+    1. 在“Crm 名字映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`**。
 
-    1. 在“Crm 姓氏映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 。   
+    1. 在“Crm 姓氏映射”框中，输入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`**。  
 
     1. 选择“保存”。 
 
@@ -165,7 +165,7 @@ ms.locfileid: "92460098"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 
@@ -177,11 +177,11 @@ ms.locfileid: "92460098"
 
 在本部分，我们通过授予 Britta Simon 访问 InsideView 的权限，使她能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“InsideView”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“InsideView”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“InsideView”  。
+2. 在应用程序列表中，选择“InsideView”。
 
     ![应用程序列表](common/all-applications.png)
 

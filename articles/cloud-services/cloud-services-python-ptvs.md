@@ -1,5 +1,5 @@
 ---
-title: " (经典) 的 Python 和 Azure 云服务入门 |Microsoft Docs"
+title: Python 和 Azure 云服务（经典）入门 | Microsoft Docs
 description: 有关使用 Python Tools for Visual Studio 来创建包括 Web 角色和辅助角色的 Azure 云服务的概述。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743281"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 本文概述了如何在 [Python Tools for Visual Studio][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 介绍如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
 

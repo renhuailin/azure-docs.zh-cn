@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: ea24716dba5e4e824a4fa986602007035be8e365
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018371"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
@@ -38,7 +38,7 @@ ms.locfileid: "98018371"
 > [!Important]
 > 对于网络观察程序 REST API 调用来说，请求 URI 中的资源组名称是包含网络观察程序的资源组，而不是要对其执行诊断操作的资源。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本文中介绍的方案演示了如何使用 REST API 启用、禁用和查询流日志。 若要了解有关网络安全组流日志记录的详细信息，请访问[网络安全组流日志记录 - 概述](network-watcher-nsg-flow-logging-overview.md)。
 

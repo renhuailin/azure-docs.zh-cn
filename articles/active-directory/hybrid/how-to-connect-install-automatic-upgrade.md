@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317610"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
@@ -40,7 +40,7 @@ ms.locfileid: "91317610"
 | 状态 | 注释 |
 | --- | --- |
 | Enabled |自动升级已启用。 |
-| 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
+| 已挂起 |只能由系统设置。 系统 **目前没有** 资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
 可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。  只有系统才能设置“暂停”状态。  在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
@@ -48,7 +48,7 @@ ms.locfileid: "91317610"
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
 
 
-如果服务器上正在运行**同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
+如果服务器上正在运行 **同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
 ## <a name="troubleshooting"></a>疑难解答
 如果 Connect 安装未按预期自动升级，请遵循以下步骤来找出可能的错误。
@@ -63,8 +63,8 @@ ms.locfileid: "91317610"
 
 然后，确保已在代理或防火墙中打开所需的 URL。 自动更新正在使用 Azure AD Connect Health，情形如[概述](#overview)中介绍的那样。 如果使用代理，请确保 Health 已配置为使用[代理服务器](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。 另请测试 [Health 的连接](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)（连接到 Azure AD）。
 
-确认与 Azure AD 建立了连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源 **Azure AD Connect 升级** 和事件 ID 范围 **300-399**添加 eventlog 筛选器。  
-![屏幕截图显示 "筛选当前日志" 窗口，其中包含 "事件源"，突出显示 "包括/排除" 事件 Id 框。](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
+确认与 Azure AD 建立了连接后，可以深入了解事件日志。 启动事件查看器，并查看 **应用程序** 事件日志。 为源“Azure AD Connect 升级”和事件 ID 范围“300-399”添加事件日志筛选器。   
+![此屏幕截图显示了“筛选当前日志”窗口，其中突出显示了“事件源”和“包括/排除事件 ID”框。](./media/how-to-connect-install-automatic-upgrade/eventlogfilter.png)  
 
 此时可以看到与自动升级状态关联的事件日志。  
 ![用于自动升级的事件日志筛选器](./media/how-to-connect-install-automatic-upgrade/eventlogresult.png)  
@@ -100,4 +100,4 @@ ms.locfileid: "91317610"
 |UpgradeNotSupportedAADHealthUploadDisabled|已从门户中禁用运行状况数据上传|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 9747abb5b614c5a59b56159399c3386a831b3337
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735044"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-proprofs-knowledge-base"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ProProfs 知识库的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98735044"
 * 让用户使用其 Azure AD 帐户自动登录到 ProProfs 知识库。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -46,7 +46,7 @@ ms.locfileid: "98735044"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“ProProfs 知识库” 。
 1. 从结果面板中选择“ProProfs 知识库”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -75,7 +75,7 @@ ms.locfileid: "98735044"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
+1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。

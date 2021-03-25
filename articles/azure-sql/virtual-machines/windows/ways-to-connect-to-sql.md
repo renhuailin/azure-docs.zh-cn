@@ -15,10 +15,10 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 37cb8f5a2ff0916f53ae50f5750664204ab1ba75
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737483"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
@@ -42,7 +42,7 @@ ms.locfileid: "98737483"
 
 | 选项 | 说明 |
 |---|---|
-| 公共 | 通过 Internet 连接到 SQL Server。 |
+| **公共** | 通过 Internet 连接到 SQL Server。 |
 | 专用 | 连接到同一虚拟网络中的 SQL Server。 |
 | 本地 | 在同一虚拟机上本地连接到 SQL Server。 | 
 
@@ -124,7 +124,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>使用 SSMS 进行连接
+## <a name="connect-with-ssms"></a>与 SSMS 连接
 
 以下步骤演示如何为 Azure VM 创建可选 DNS 标签，然后与 SQL Server Management Studio (SSMS) 进行连接。
 
