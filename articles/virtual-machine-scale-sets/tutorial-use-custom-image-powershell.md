@@ -10,10 +10,10 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
 ms.openlocfilehash: 803bbf485d783fc160d1f2644a56e1339f73690e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98678299"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像
@@ -39,7 +39,7 @@ ms.locfileid: "98678299"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 
 ## <a name="get-the-vm"></a>获取 VM
@@ -80,7 +80,7 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>创建映像定义 
 
-映像定义为映像创建逻辑分组。 映像定义用于管理在其中创建的映像版本的相关信息。 映像定义名称可以由大写或小写字母、数字、点、短划线和句点构成。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。
+映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 

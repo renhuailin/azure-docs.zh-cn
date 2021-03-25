@@ -1,18 +1,18 @@
 ---
 title: Azure 容器注册表的内置策略定义
 description: 列出 Azure 容器注册表的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 02/09/2021
+ms.date: 03/17/2021
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5dc5d27d0364bf64d9f8b695213c2f71cc822949
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: ef7a376340c98a3cf0e6096956904284f3c5a2f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048482"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577406"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>Azure 容器注册表的 Azure Policy 内置定义
 
@@ -26,7 +26,7 @@ ms.locfileid: "102048482"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅指导如何 [分配策略并查看符合性](container-registry-azure-policy.md)。
+- 请参阅有关[分配政策并查看合规性](container-registry-azure-policy.md)的指南。
 - 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
 - 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
 - 查看[了解策略效果](../governance/policy/concepts/effects.md)。

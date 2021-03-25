@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/05/2016
 ms.custom: devx-track-js
 ms.openlocfilehash: ca1c865b31739e7163b0db26cb666a8a42edbaa2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218453"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>使用适用于 Node.js 的 Azure SDK 管理 Azure Data Lake Analytics

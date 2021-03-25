@@ -4,10 +4,10 @@ description: 使用 Azure 事件网格将事件数据从源发送到处理程序
 ms.topic: overview
 ms.date: 01/28/2021
 ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99055122"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
@@ -34,7 +34,7 @@ ms.locfileid: "99055122"
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
-- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure 密钥保管库](event-schema-key-vault.md)
 - [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure 媒体服务](event-schema-media-services.md)

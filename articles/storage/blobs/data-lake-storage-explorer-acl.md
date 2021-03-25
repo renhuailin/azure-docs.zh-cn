@@ -1,6 +1,6 @@
 ---
-title: 存储资源管理器：在 Azure Data Lake Storage Gen2 中设置 Acl
-description: 使用 Azure 存储资源管理器在启用了分层命名空间 (HNS) 的存储帐户中 (Acl) 管理访问控制列表。
+title: 存储资源管理器：在 Azure Data Lake Storage Gen2 中设置 ACL
+description: 使用 Azure 存储资源管理器在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,19 +9,19 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3f5bd22619e49246583d8b9fc4e62ad8ab266993
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100654061"
 ---
-# <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL
 
-本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/) 来管理)  (启用了分层命名空间 (HNS) 的存储帐户中的访问控制列表。
+本文介绍如何使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 
-你可以使用存储资源管理器查看，然后更新目录和文件的 Acl。 ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父目录的现有子项目上以递归方式应用 ACL 设置，而无需为每个子项目单独进行这些更改。 
+可以使用存储资源管理器来查看然后更新目录和文件的 ACL。 ACL 继承已可用于在父目录下创建的新子项。 但还可为父目录的现有子项以递归方式应用 ACL 设置，而不必为每个子项单独进行这些更改。 
 
-本文介绍如何修改文件或目录的 ACL，以及如何将 ACL 设置递归应用于子目录。
+本文介绍如何修改文件或目录的 ACL，以及如何以递归方式将 ACL 设置应用于子目录。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,31 +54,31 @@ ms.locfileid: "100654061"
 
 ## <a name="manage-an-acl"></a>管理 ACL
 
-右键单击该容器、目录或文件，然后单击 " **管理访问控制列表**"。  下面的屏幕截图显示了右键单击目录时显示的菜单。
+右键单击容器、目录或文件，然后单击“管理访问控制列表”。  下面的屏幕截图显示了右键单击目录时出现的菜单。
 
 > [!div class="mx-imgBorder"]
-> ![右键单击 Azure 存储资源管理器中的目录](./media/data-lake-storage-explorer-acl/manage-access-control-list-option.png)
+> ![在 Azure 存储资源管理器中右键单击目录](./media/data-lake-storage-explorer-acl/manage-access-control-list-option.png)
 
-使用 " **管理访问权限** " 对话框，可以管理所有者和所有者组的权限。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
+“管理访问权限”对话框可以管理所有者和所有者组的权限。 它还可以将新用户和组添加访问控制列表中，然后你可以管理其权限。
 
 > [!div class="mx-imgBorder"]
-> !["管理访问" 对话框](./media/data-lake-storage-explorer-acl/manage-access-dialog-box.png)
+> ![“管理访问权限”对话框](./media/data-lake-storage-explorer-acl/manage-access-dialog-box.png)
 
-若要向访问控制列表中添加新用户或组，请选择 " **添加** " 按钮。 然后，输入要添加到列表中的相应 Azure Active Directory (Azure AD) 项，然后选择 " **添加**"。  用户或组随即出现在“用户和组:”字段中，然后便可开始管理其权限  。
+要将新用户或组添加到访问控制列表中，请选择“添加”按钮。 然后输入要添加到列表中的相应 Azure Active Directory (Azure AD) 条目，再选择“添加”。  用户或组随即出现在“用户和组:”字段中，然后便可开始管理其权限  。
 
 > [!NOTE]
-> 最佳做法是在 Azure AD 中创建安全组，并为组而不是单个用户维护权限。 有关此建议和其他最佳做法的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-explorer-acl.md)。
+> 建议的最佳做法是在 Azure AD 中创建安全组并维护组（而不是单个用户）的权限。 有关此建议以及其他最佳做法的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](data-lake-storage-explorer-acl.md)。
 
-使用复选框控件可以设置访问权限和默认 Acl。 若要详细了解这两种类型的 Acl 之间的差异，请参阅 [Acl 类型](data-lake-storage-access-control.md#types-of-acls)。
+使用复选框控件可以设置访问权限和默认 ACL。 若要详细了解这些 ACL 类型之间的差异，请参阅 [ACL 类型](data-lake-storage-access-control.md#types-of-acls)。
 
-## <a name="apply-acls-recursively"></a>以递归方式应用 Acl
+## <a name="apply-acls-recursively"></a>以递归方式应用 ACL
 
-您可以对父目录的现有子项以递归方式应用 ACL 项，而无需为每个子项目单独进行这些更改。
+可以为父目录的现有子项以递归方式应用 ACL 条目，而不必为每个子项单独进行这些更改。
 
-若要以递归方式应用 ACL 项，请右键单击容器或目录，然后单击 " **传播访问控制列表**"。  下面的屏幕截图显示了右键单击目录时显示的菜单。
+若要以递归方式应用 ACL 条目，请右键单击容器或目录，然后单击“传播访问控制列表”。  下面的屏幕截图显示了右键单击目录时出现的菜单。
 
 > [!div class="mx-imgBorder"]
-> ![右键单击目录，然后选择 "传播访问控制" 设置](./media/data-lake-storage-explorer-acl/propagate-access-control-list-option.png)
+> ![右键单击目录，并选择“传播访问控制”设置](./media/data-lake-storage-explorer-acl/propagate-access-control-list-option.png)
 
 ## <a name="next-steps"></a>后续步骤
 

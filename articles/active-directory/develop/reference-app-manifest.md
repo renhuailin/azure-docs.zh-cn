@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 47215070893c6fefd42554fdf4514e4aa8b45047
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.openlocfilehash: 199d85d2805b92e1421330be8f299c769637b649
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103339"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578458"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -27,7 +27,7 @@ ms.locfileid: "100103339"
 可以通过 Azure 门户或者使用 [REST API](/graph/api/resources/application) 或 [PowerShell](/powershell/module/azuread#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
 * 如果已将应用注册为 Azure AD 多租户和个人 Microsoft 帐户，则不能在 UI 中更改支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
-* 若要定义应用支持的权限和角色，必须修改应用程序清单。
+* 若要定义你的应用支持的权限和角色，则必须修改应用程序清单。
 
 ## <a name="configure-the-app-manifest"></a>配置应用清单
 
@@ -44,7 +44,7 @@ ms.locfileid: "100103339"
 
 ### <a name="id-attribute"></a>ID 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | id | String |
 
@@ -58,7 +58,7 @@ ms.locfileid: "100103339"
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | accessTokenAcceptedVersion | 可为 Null 的 Int32 |
 
@@ -164,7 +164,7 @@ ms.locfileid: "100103339"
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 |groupMembershipClaims | String |
 
@@ -172,9 +172,9 @@ ms.locfileid: "100103339"
 
 - `"None"`
 - `"SecurityGroup"`（适用于安全组和 Azure AD 角色）
-- `"ApplicationGroup"` (此选项仅包括分配给应用程序的组) 
-- `"DirectoryRole"` (获取用户所属的 Azure AD 目录角色) 
-- `"All"` (此项将获取已登录用户是) 成员的所有安全组、通讯组和 Azure AD 目录角色。
+- `"ApplicationGroup"`（此选项仅包括分配给应用程序的组）
+- `"DirectoryRole"`（获取用户所属的 Azure AD 目录角色）
+- `"All"`（此项将获取已登录用户所属的所有安全组、通讯组和 Azure AD 目录角色）。
 
 示例：
 
@@ -481,7 +481,7 @@ ms.locfileid: "100103339"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -522,7 +522,7 @@ ms.locfileid: "100103339"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInUrl | String |
 
@@ -556,7 +556,7 @@ ms.locfileid: "100103339"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| tags | String Array  |
+| 标记 | String Array  |
 
 可用来对应用程序进行分类和标识的自定义字符串。
 
@@ -620,7 +620,7 @@ ms.locfileid: "100103339"
 [ADD-UPD-RMV-APP]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AZURE-PORTAL]: https://portal.azure.com
 [DEV-GUIDE-TO-AUTH-WITH-ARM]: http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/
-[GRAPH-API]: active-directory-graph-api.md
+[GRAPH-API]: /graph/migrate-azure-ad-graph-planning-checklist
 [IMPLICIT-GRANT]:v1-oauth2-implicit-grant-flow.md
 [INTEGRATING-APPLICATIONS-AAD]: ./quickstart-register-app.md
 [O365-PERM-DETAILS]: /graph/permissions-reference

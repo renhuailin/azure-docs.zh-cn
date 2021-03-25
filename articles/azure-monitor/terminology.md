@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: fea85a85db1e555adea63f5b65b09a9285d714da
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031967"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改

@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 11/14/2020
+ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: MT
+ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605592"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521537"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
 
@@ -121,7 +121,7 @@ ms.locfileid: "97605592"
 > [!NOTE]
 > API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`。
 
-## <a name="supported-scenarios-using-system-assigned-identity"></a>使用系统分配的标识的支持方案
+## <a name="supported-scenarios-using-system-assigned-identity"></a>使用系统分配标识的受支持方案
 
 ### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>从 Azure 密钥保管库获取 API 管理实例的自定义 TLS/SSL 证书
 可以使用 API 管理实例的系统分配标识来检索存储在 Azure 密钥保管库中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。 请记住以下注意事项：
@@ -264,6 +264,19 @@ ms.locfileid: "97605592"
 
 可以使用系统分配的标识通过 [authentication-managed-identity](api-management-authentication-policies.md#ManagedIdentity) 策略向后端进行身份验证。
 
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>使用系统分配的托管标识连接到 IP 防火墙后面的 Azure 资源
+
+
+API 管理是针对以下资源的受信任 Microsoft 服务。 这允许服务连接到防火墙后面的以下资源。 在为该资源实例的[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)显式分配适当的 Azure 角色之后，该实例的访问范围将与分配给托管标识的 Azure 角色相对应。
+
+
+|Azure 服务 | 链接|
+|---|---|
+|Azure 存储 | [Trusted-access-to-azure-storage](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure 服务总线 | [Trusted-access-to-azure-service-bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure 事件中心 | [Trused-access-to-azure-event-hub](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+
+
 ## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
 > [!NOTE]
@@ -384,10 +397,10 @@ ms.locfileid: "97605592"
 > [!NOTE]
 > API 管理实例可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`。
 
-## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>使用用户分配的托管标识的受支持方案
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>使用用户分配托管标识的受支持方案
 
 ### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>从 Azure 密钥保管库获取 API 管理实例的自定义 TLS/SSL 证书
-你可以使用任何用户分配的标识在 API 管理实例和 KeyVault 之间建立信任。 然后，可以使用此信任检索存储在 Azure Key Vault 中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。 
+你可以使用任何用户分配标识在 API 管理实例和 KeyVault 之间建立信任。 然后，可以借助这种信任关系检索存储在 Azure Key Vault 中的自定义 TLS/SSL 证书。 然后，可以将这些证书分配给 API 管理实例中的自定义域。 
 
 请记住以下注意事项：
 
@@ -397,12 +410,12 @@ ms.locfileid: "97605592"
 > [!Important]
 > 如果未提供证书的对象版本，在将证书的较新版本上传到密钥保管库后的四小时内，API 管理将自动获取该版本。
 
-有关完整的模板，请参阅使用 [基于 KeyVault 的 SSL 进行 API 管理使用用户分配的标识](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json)。
+有关完整的模板，请参阅[使用基于 KeyVault 的 SSL 和用户分配标识的 API 管理](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json)。
 
 在此模板中，将部署：
 
 * Azure API 管理
-* Azure 托管用户分配的标识
+* Azure 用户分配托管标识
 * 用于存储 SSL/TLS 证书的 Azure KeyVault
 
 若要自动运行部署，请单击以下按钮：

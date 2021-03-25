@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730500"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>将维护控制配置中的资源移到另一区域
 
 按照本文所述将与维护控制配置关联的资源移到另一 Azure 区域。 出于多种原因，你可能需要移动配置。 例如，利用新的区域、部署在特定区域中可用的功能或服务、满足内部策略和治理要求，或者应对容量规划。
 
-[维护控制](maintenance-control.md)（带有自定义的维护配置）允许您控制将平台更新应用于 Vm 和 Azure 专用主机的方式。 跨区域移动维护控制有几种场景：
+使用带自定义维护配置的[维护控制](maintenance-control.md)，你可以控制如何将平台更新应用到 VM 和 Azure 专用主机。 跨区域移动维护控制有几种场景：
 
 - 若要移动与维护配置关联的资源，但不移动配置本身，请按照本文中的说明操作。
 - 若要移动维护控制配置，但不移动与配置关联的资源，请按照[这些说明](move-region-maintenance-configuration.md)操作。

@@ -1,28 +1,29 @@
 ---
 title: Azure 认可的 Linux 分发
 description: 了解 Azure 认可的分发中的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的指南。
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: MT
+ms.openlocfilehash: 091a06fd608763ac7265670733890e93bf71dde1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898073"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547401"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
-合作伙伴在 Azure 市场中提供了 Linux 映像。 Microsoft 与各种 Linux 社区合作，向认可的通讯组列表添加更多风格。 对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](./create-upload-generic.md)中的准则安装自己的 Linux。
+合作伙伴在 Azure 市场中提供了 Linux 映像。 Microsoft 与各大 Linux 社区合作以便在认可的发行版列表中添加更多成员。 对于市场未提供的分发，用户始终可以按照[创建并上传包含 Linux 操作系统的虚拟硬盘](./create-upload-generic.md)中的准则安装自己的 Linux。
 
 ## <a name="supported-distributions-and-versions"></a>支持的发行版和版本
 
@@ -36,10 +37,10 @@ Azure Linux 代理已预安装在 Azure 市场映像中，通常可从分发的�
 | --- | --- | --- | --- |
 | 由 Rogue Wave 软件提供的 CentOS |CentOS 6.x、7.x、8.x |CentOS 6.3：[LIS 下载](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+：在内核中 |包：在“WALinuxAgent”下的[存储库](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> 从 2020 年 5 月 26 日开始，CoreOS 已处于[生命周期终止](https://coreos.com/os/eol/)状态。 |不再可用 | | |
-| 由 Credativ 提供的 Debian |8mb、1.x、2。x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| 由 Credativ 提供的 Debian |8.x、9.x、10.x |在内核中 |包：在“waagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 |由 Kinvolk 提供的 Flatcar Container Linux| Pro、Stable、Beta 版本| 在内核中 | /usr/share/oem/bin/waagent 中已安装 wa-linux-agent |
-| Oracle Oracle Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| [用 Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| 由 Oracle 提供的 Oracle Linux |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| [由 Red Hat 提供的 Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |在内核中 |包：在“WALinuxAgent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 SUSE 提供的 SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE 公有云映像生命周期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在内核中 |包：<p> 对于 11，在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中<br>对于 12，包含在“公有云”模块中的“python-azure-agent”下<br/>源代码：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | 由 SUSE 提供的 openSUSE |openSUSE Leap 15.x |在内核中 |包：在“python-azure-agent”下的 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | 由 Canonical 提供的 Ubuntu |Ubuntu Server 和 Pro。 16.x、18.x、20.x<p>对 Ubuntu 12.04 和 14.04 的扩展支持有关的信息可在此处找到：[Ubuntu 扩展安全维护](https://www.ubuntu.com/esm)。 |在内核中 |包：在“walinuxagent”下的存储库中 <br/>源代码：[GitHub](https://github.com/Azure/WALinuxAgent) |
@@ -58,7 +59,7 @@ Azure 与众多认可的 Linux 分发商密切合作，以优化他们在 Azure 
 - [Debian 云内核 - 适用于 Azure 上的 Debian 10 和 Debian 9“后向移植”映像](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [SLES Azure 优化内核](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Ubuntu Azure 优化内核](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
-- [Flatcar 容器 Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
+- [Flatcar Container Linux Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>合作伙伴
 
@@ -74,27 +75,27 @@ Microsoft 为 CoreOS 用户提供了两 (2) 个迁移通道。
 
 [https://www.credativ.de/en/portfolio/support/open-source-support-center/](https://www.credativ.de/en/portfolio/support/open-source-support-center/)
 
-credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 与 Microsoft 一起，credativ 正在准备 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
+credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 credativ 正在联合 Microsoft 准备 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
 
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
 
-Kinvolk 是 Flatcar 容器 Linux 后面的公司，为容器化的应用程序继续原 CoreOS 愿景，实现最小、不可变和自动更新的基础。 最小的发行版是，Flatcar 只包含部署容器所需的包。 它的不可变文件系统确保一致性和安全性，而其自动更新功能使您始终可以使用最新的安全修补程序保持最新状态。 
+Kinvolk 是开发 Flatcar Container Linux 的公司，延续了最初的 CoreOS 愿景，为容器化应用程序提供最小、不可变且自动更新的基础。 作为最小发行版，Flatcar 只包含部署容器所需的包。 它的不可变文件系统保证了一致性和安全性，同时它的自动更新功能使你能够始终使用最新的安全修补程序。 
 
-Flatcar 容器 Linux 由 Kinvolk 的 Linux 和容器技术专家的全局团队进行备份，这些专家提供了可选的商业支持订阅，包括24x7 响应、安全和技术警报，以及独有的 Azure 优化映像，其中包括长期支持渠道。
+Flatcar Container Linux 由 Kinvolk 的全球 Linux 和容器技术专家团队提供支持，他们提供可选的商业支持订阅，包括全天候响应、安全和技术警报以及独家 Azure 优化映像（包括长期支持渠道）。
 
 
 ### <a name="oracle"></a>Oracle
 
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle 的策略是为公有云和私有云提供广泛的解决方案组合。 让客户面临如何在 Oracle 云以及其他云中部署 Oracle 软件这一问题时拥有更多选择权和灵活性。 Oracle 与 Microsoft 的合作关系使客户能够在 Microsoft 公有和私有云中部署 Oracle 软件，并满怀信心地信任 Oracle 提供的证书和支持。  Oracle 对 Oracle 公有和私有云解决方案的承诺和投资保持不变。
+Oracle 的策略是为公有云和私有云提供广泛的解决方案。 让客户面临如何在 Oracle 云以及其他云中部署 Oracle 软件这一问题时拥有更多选择权和灵活性。 通过 Oracle 与 Microsoft 的合作关系，客户可以凭借可信的证书和 Oracle 支持在 Microsoft 公有和私有云中部署 Oracle 软件。  Oracle 对 Oracle 公有和私有云的承诺和投资保持不变。
 
 ### <a name="red-hat"></a>Red Hat
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-世界上领先的开源解决方案提供商可帮助超过90% 的财富500公司解决业务难题、协调其 IT 和业务策略，并为未来的技术做好准备。 Red Hat 通过开放业务模型和价格合理且可预测的订阅模型提供安全解决方案来实现这一点。
+作为世界上领先的开源解决方案提供商，Red Hat 帮助 90% 以上的财富 500 强公司解决业务难题、调整 IT 与业务策略，以及为未来技术做准备。 Red Hat 通过开放式业务模型和价格合理、可预测的订阅模型提供安全的解决方案，从而实现了此目的。
 
 ### <a name="suse"></a>SUSE
 

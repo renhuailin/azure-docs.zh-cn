@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 75b8230a1027bbf3ff3d73fb35ce65107c2db7e9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
@@ -169,7 +169,7 @@ ms.locfileid: "98730656"
 
     ![屏幕截图显示“管理设置”，可在其中更改“基本 URL”。](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
-5. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分 。 单击“配置”配置新的插件。
+5. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分 。 单击“配置”  配置新的插件。
 
     ![屏幕截图显示“Jira 的 Azure AD SAML 单一登录”部分，其中“配置”处于选中状态。](./media/jiramicrosoft-tutorial/addon14.png)
 

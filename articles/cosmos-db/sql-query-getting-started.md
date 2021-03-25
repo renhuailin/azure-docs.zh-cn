@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: dfa6b8eaa5f4ce8b2ebfb24a280e048ed3b19dda
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102211509"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499554"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,10 +23,10 @@ ms.locfileid: "102211509"
 
 以下是一些如何使用各个 SDK 进行点读取的示例：
 
-- [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
+- [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK](/javascript/api/@azure/cosmos/item#read-requestoptions-)
-- [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+- [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 **SQL 查询** - 可以使用结构化查询语言 (SQL) 作为 JSON 查询语言来编写查询，以查询数据。 查询始终至少花费 2.3 个请求单位，并且与点读取相比，查询的延迟通常更高且变化更大。 查询可以返回许多项。
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 上的大部分读取密集型工作负荷使用点读取和 SQL
 
 ## <a name="upload-sample-data"></a>上传示例数据
 
-在 SQL API Cosmos DB 帐户中，打开 [数据资源管理器](./data-explorer.md) 以创建名为的容器 `Families` 。 创建后，使用数据结构浏览器来查找它并打开。 在 `Families` 容器中，你会在容器名称下面看到 `Items` 选项。 打开此选项，你会在屏幕中心的菜单栏中看到一个按钮，创建“新建项”。 你将使用此功能创建下面的 JSON 项。
+在 SQL API Cosmos DB 帐户中，打开[数据资源管理器](./data-explorer.md)以创建名为 `Families` 的容器。 创建后，使用数据结构浏览器来查找它并打开。 在 `Families` 容器中，你会在容器名称下面看到 `Items` 选项。 打开此选项，你会在屏幕中心的菜单栏中看到一个按钮，创建“新建项”。 你将使用此功能创建下面的 JSON 项。
 
 ### <a name="create-json-items"></a>创建 JSON 项
 
@@ -187,7 +187,7 @@ Azure Cosmos DB 上的大部分读取密集型工作负荷使用点读取和 SQL
 
 * Azure Cosmos DB 仅支持严格的 JSON 项。 类型系统和表达式仅限于处理 JSON 类型。 有关详细信息，请参阅 [JSON 规范](https://www.json.org/)。  
 
-* Cosmos 容器是 JSON 项的一个无架构集合。 容器项内部以及跨容器项的关系是按包含关系隐式捕获的，而不是按主键和外键关系捕获的。 此功能对于在 [Azure Cosmos DB 中的联接](sql-query-join.md)中描述的项内联接非常重要。
+* Cosmos 容器是 JSON 项的一个无架构集合。 容器项内部以及跨容器项的关系是按包含关系隐式捕获的，而不是按主键和外键关系捕获的。 此功能对于 [Azure Cosmos DB 中的联接](sql-query-join.md)中所述的项内联接很重要。
 
 ## <a name="next-steps"></a>后续步骤
 

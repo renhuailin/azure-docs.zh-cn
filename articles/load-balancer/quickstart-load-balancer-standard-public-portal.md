@@ -16,10 +16,10 @@ ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034381"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
@@ -107,7 +107,7 @@ ms.locfileid: "102034381"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -135,7 +135,7 @@ ms.locfileid: "102034381"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -293,7 +293,7 @@ ms.locfileid: "102034381"
 
 3. 使用以下值配置出站规则：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 myOutboundRule。 |
     | 前端 IP 地址 | 选择“新建”。 </br> 在“名称”中输入“LoadBalancerFrontEndOutbound”。 </br> 选择“IP 地址”或“IP 前缀”。 </br> 在“公共 IP 地址”或“公共 IP 前缀”下选择“新建”。 </br> 对于“名称”，请输入“myPublicIPOutbound”或“myPublicIPPrefixOutbound”。 </br> 选择“添加”  。|
@@ -432,7 +432,7 @@ ms.locfileid: "102034381"
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -450,7 +450,7 @@ ms.locfileid: "102034381"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -478,7 +478,7 @@ ms.locfileid: "102034381"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |

@@ -12,10 +12,10 @@ ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516373"
 ---
 # <a name="secure-your-restful-services"></a>保护 RESTful 服务 
@@ -208,7 +208,7 @@ Authorization: Bearer <token>
 
 声明在 Azure AD B2C 策略执行过程中提供数据的临时存储。 [声明架构](claimsschema.md)是发出声明的位置。 必须将访问令牌存储在声明中供稍后使用。 
 
-1. 打开策略的扩展文件， 例如 <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
+1. 打开策略的扩展文件， 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
 1. 将以下声明添加到 ClaimsSchema 元素。  
@@ -312,9 +312,9 @@ Authorization: Bearer <token>
 
 ### <a name="add-the-oauth2-bearer-token-policy-key"></a>添加 OAuth2 持有者令牌策略密钥
 
-若要使用 OAuth2 持有者令牌配置 REST API 技术配置文件，请从 REST API 所有者处获取访问令牌。 然后，创建以下加密密钥来存储持有者令牌。
+若要为 REST API 技术配置文件配置 OAuth2 持有者令牌，请从 REST API 所有者获取访问令牌。 然后，创建以下加密密钥来存储持有者令牌。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
@@ -367,28 +367,28 @@ Authorization: Bearer <token>
 
 ## <a name="api-key-authentication"></a>API 密钥身份验证
 
-API 密钥是用于对用户进行身份验证以访问 REST API 终结点的唯一标识符。 密钥是在自定义 HTTP 标头中发送的。 例如， [AZURE FUNCTIONS http 触发器](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) 使用 `x-functions-key` http 标头来标识请求者。  
+API 密钥是用于对要访问 REST API 终结点的用户进行身份验证的唯一标识符。 该密钥是在自定义 HTTP 标头中发送的。 例如，[Azure Functions HTTP 触发器](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)使用 `x-functions-key` HTTP 标头来标识请求者。  
 
 ### <a name="add-api-key-policy-keys"></a>添加 API 密钥策略密钥
 
-若要使用 API 密钥身份验证配置 REST API 技术配置文件，请创建以下加密密钥来存储 API 密钥：
+要为 REST API 技术配置文件配置 API 密钥身份验证，请创建以下加密密钥来存储 API 密钥：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加” 。
 1. 对于“选项”，请选择“手动” 。
-1. 对于 " **名称**"，请键入 **RestApiKey**。
+1. 键入“RestApiKey”作为名称 。
     可能会自动添加前缀 *B2C_1A_* 。
-1. 在 " **密钥** " 框中，输入 REST API 密钥。
+1. 在“机密”框中，输入 REST API 密钥。
 1. 对于“密钥用法”，请选择“加密” 。
 1. 选择“创建”。
 
 
 ### <a name="configure-your-rest-api-technical-profile-to-use-api-key-authentication"></a>将 REST API 技术配置文件配置为使用 API 密钥身份验证
 
-创建所需的密钥后，请配置 REST API 技术配置文件元数据以引用凭据。
+创建必要的密钥后，配置 REST API 技术配置文件元数据来引用凭据。
 
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 1. 搜索 REST API 技术配置文件， 例如 `REST-ValidateProfile` 或 `REST-GetProfile`。
@@ -402,9 +402,9 @@ API 密钥是用于对用户进行身份验证以访问 REST API 终结点的唯
     </CryptographicKeys>
     ```
 
-加密密钥的 **Id** 定义 HTTP 标头。 在此示例中，API 密钥以 **x 功能密钥** 的形式发送。
+加密密钥的 Id 定义 HTTP 标头。 在此示例中，API 密钥作为 x-functions-key 发送。
 
-下面是配置为使用 API 密钥身份验证调用 Azure Function 的 RESTful 技术配置文件的示例：
+下面是一个已配置为通过 API 密钥身份验证调用 Azure 函数的 RESTful 技术配置文件示例：
 
 ```xml
 <ClaimsProvider>

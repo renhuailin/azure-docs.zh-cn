@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: fa89a458b23d18bc6fddfca9cf6d9f2a16f91669
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934929"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 虚拟网络移到另一个区域
@@ -60,7 +60,7 @@ ms.locfileid: "98934929"
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到与命令一起导出的 *\<resource-group-name> json* 文件，然后在编辑器中将其打开：
+1. 下载文件的名称与从中导出资源的资源组的名称相同。 找到使用上述命令导出的 \<resource-group-name>.json 文件，然后在编辑器中打开它：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,9 +105,9 @@ ms.locfileid: "98934929"
     Get-AzLocation | format-table
     ```
 
-1.  (可选) 你还可以根据需要更改 *\<resource-group-name> json* 文件中的其他参数：
+1. （可选）还可以根据需求更改 \<resource-group-name>.json 文件中的其他参数：
 
-    * **地址空间**：在保存该文件之前，可以更改虚拟网络的地址空间，方法是修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性：
+    * 地址空间：在保存该文件之前，可以通过修改 resources > addressSpace 部分并更改 addressPrefixes 属性来更改虚拟网络的地址空间   ：
 
         ```json
                 "resources": [
@@ -126,7 +126,7 @@ ms.locfileid: "98934929"
                     },
         ```
 
-    * **子网**：可以通过更改该文件的 **subnets** 节来更改子网名称和子网地址空间或在其中添加内容。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
+    * 子网：可以通过更改该文件的 subnets 部分来更改或添加子网名称和子网地址空间 。 可以通过更改 **name** 属性来更改子网名称。 可以通过更改 **addressPrefix** 属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -201,7 +201,7 @@ ms.locfileid: "98934929"
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 使用 [AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)将编辑后的 *\<resource-group-name> json* 文件部署到你在上一步中创建的资源组：
+1. 通过使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)，将经过编辑的 \<resource-group-name>.json 文件部署到在上一步中创建的资源组：
 
     ```azurepowershell-interactive
 
@@ -231,7 +231,7 @@ ms.locfileid: "98934929"
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交更改并完成虚拟网络的移动，请执行以下操作之一：
 

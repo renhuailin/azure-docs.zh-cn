@@ -1,26 +1,26 @@
 ---
 title: 数据加载最佳做法
-description: 用于将数据加载到专用 SQL pool Azure Synapse Analytics 的建议和性能优化。
+description: 有关将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的建议和性能优化。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3c8c34cc3e23306f1d024cfa36b40c7975caa8c6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 33212d44fcb6be3f01cf968d00751d55e3bd7b8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585445"
 ---
-# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>将数据加载到专用 SQL pool Azure Synapse Analytics 的最佳实践
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 
-在本文中，你将找到用于加载数据的建议和性能优化。
+在本文中，你将了解有关加载数据的建议和性能优化。
 
 ## <a name="prepare-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
@@ -34,7 +34,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 将大型压缩文件拆分为较小的压缩文件。
 
-## <a name="run-loads-with-enough-compute"></a>运行具有足够计算的负载
+## <a name="run-loads-with-enough-compute"></a>使用足够的计算资源运行负载
 
 若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期的加载作业较大，可以考虑在加载前纵向扩展专用 SQL 池。
 
@@ -62,7 +62,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[数据仓库单元](resource-consumption-models.md)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。 对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
 
-## <a name="allow-multiple-users-to-load"></a>允许多个用户加载
+## <a name="allow-multiple-users-to-load"></a>允许多个用户进行加载
 
 通常需要允许多个用户将数据加载到数据仓库中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。 可能不需要让所有加载用户都具有对所有架构的控制访问权限。 若要限制权限，请使用 DENY CONTROL 语句。
 
@@ -86,11 +86,11 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 列存储索引需要将数据压缩成高质量的行组，因此需要大量的内存。 若要最大程度地提高压缩和索引效率，列存储索引需将最多 1,048,576 行压缩到每个行组中。 存在内存压力时，列存储索引可能无法达到最大压缩率。 这会影响查询性能。 若要进行深入了解，请参阅[列存储内存优化](data-load-columnstore-compression.md)。
 
 - 若要确保加载用户有足够的内存来实现最大压缩率，请使用属于中大型资源类的加载用户。
-- 加载足够的行，以便完全填充新的行组。 在大容量加载期间，每1048576行直接作为完整行组压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。 如果加载的行太少，这些行可能会全部进入增量存储中，不会立即压缩成列存储格式。
+- 加载足够的行，以便完全填充新的行组。 在大容量加载期间，数据会以 1,048,576 行为一个完整的行组直接压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。 如果加载的行太少，这些行可能会全部进入增量存储中，不会立即压缩成列存储格式。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
 
-如前所述，通过 PolyBase 加载将提供 Synapse SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用 SQLBulkCopy API (或 BCP) ，应考虑增加批大小以提高吞吐量-好的经验法则是10到1M 行之间的批大小。
+如前所述，使用 PolyBase 加载将为 Synapse SQL 池提供最高吞吐量。 如果无法使用 PolyBase 进行加载，并且必须使用 SQLBulkCopy API（或 BCP），应考虑增大批大小以提高吞吐量 - 一个好的经验法则是让批大小的行数介于 100K 到 1M 行之间。
 
 ## <a name="manage-loading-failures"></a>管理加载失败
 
@@ -98,15 +98,15 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果外部数据记录的子集是脏的，可以通过使用 CREATE EXTERNAL TABLE 中的拒绝选项，选择拒绝这些查询记录。
 
-## <a name="insert-data-into-a-production-table"></a>将数据插入生产表
+## <a name="insert-data-into-a-production-table"></a>将数据插入到生产表中
 
-可以使用 [INSERT 语句](/sql/t-sql/statements/insert-transact-sql?view=azure-sqldw-latest&preserve-view=true)将数据一次性加载到小型表中，甚至可以使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之类的语句定期重新加载某个查找。  不过，单独插入的效率不如执行大容量加载的效率。
+可以使用 [INSERT 语句](/sql/t-sql/statements/insert-transact-sql?view=azure-sqldw-latest&preserve-view=true)将数据一次性加载到小型表中，甚至可以使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之类的语句定期重新加载某个查找。  但是，单独插入的效率不如执行大容量加载的效率。
 
 如果一天中有成千上万的单个插入，可将插入成批进行大容量加载。  制定将单个插入追加到某个文件的流程，然后创建另一流程来定期加载该文件。
 
 ## <a name="create-statistics-after-the-load"></a>创建加载后的统计信息
 
-若要提高查询性能，必须在首次加载后对所有表的所有列创建统计信息，或者对数据进行重大更改。 可以手动执行创建统计信息，也可以启用 [自动创建统计信息](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+为了提高查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 可以手动创建统计信息，也可以启用[自动创建统计信息](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 有关统计信息的详细说明，请参阅[统计信息](develop-tables-statistics.md)。 以下示例演示如何针对 Customer_Speed 表的五个列创建统计信息。
 
@@ -144,6 +144,6 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要深入了解 PolyBase，并 (ELT) 过程中设计提取、加载和转换，请参阅 [为 Azure Synapse Analytics 设计 ELT](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
-- 有关加载教程，请 [使用 PolyBase 将数据从 azure blob 存储加载到 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
+- 若要详细了解 PolyBase 以及如何设计提取、加载和转换 (ELT) 过程，请参阅[为 Azure Synapse Analytics 设计 ELT](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+- 有关加载教程，请参阅[使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
 - 若要监视数据加载，请参阅[使用 DMV 监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。

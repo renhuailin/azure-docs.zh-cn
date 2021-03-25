@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 19febc833f087afdfecde3274a1044598d082521
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955302"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
@@ -159,27 +159,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |实体名称|属性名称|筛选器|订单|
 |---|---|---|---|
-|[资产](/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
+|[资产](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
-|[内容密钥策略](/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
-||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
+|[内容密钥策略](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[作业](/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
-||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
-||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
-|[流式处理定位符](/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-|[流式处理策略](/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
+|[流式处理定位符](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+|[流式处理策略](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
 |[转换](/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
-|| properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
-|| properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 

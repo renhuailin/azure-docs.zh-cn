@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652307"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547826"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
@@ -41,6 +41,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 |---------------------|-------------|
 | `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)。 |
 | `maxKeyPhraseCount`   | （可选）要生成的关键短语的最大数量。 |
+| `modelVersion`   | （可选）调用文本分析服务时要使用的模型版本。 如果未指定，将默认为最新可用版本。 建议不要指定此值，除非绝对必要。 有关详细信息，请参阅[文本分析 API 中的模型版本控制](../cognitive-services/text-analytics/concepts/model-versioning.md)。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
@@ -109,8 +110,8 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 可以使用“document/myKeyPhrases”作为其他技能的输入，或者将其作为[输出字段映射](cognitive-search-output-field-mapping.md)的源。
 
-## <a name="errors-and-warnings"></a>错误和警告
-如果提供了不支持的语言代码，会生成错误且不提取关键短语。
+## <a name="warnings"></a>警告
+如果提供了不支持的语言代码，会生成警告且不提取关键短语。
 如果你的文本为空，则不会生成警告。
 如果文本大于 50,000 个字符，只会分析前 50,000 个字符，并会发出警告。
 

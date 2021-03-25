@@ -3,16 +3,16 @@ title: DC 系列 - Azure 虚拟机
 description: DC 系列 VM 的规格。
 author: susaxen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 84987b12657a37264d3a1ca67fdc423ed8085662
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 677f4df0873f8b72d40dd373035111e2e0002491
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557915"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549224"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -21,13 +21,13 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 
 示例用例包括：多方机密数据共享、欺诈检测、反洗钱、区块链、机密使用情况分析、情报分析和机密机器学习。
 
-[高级存储](premium-storage-performance.md)：支持的 *<br> 
- [高级存储缓存](premium-storage-performance.md)：支持的 <br> 
- [实时迁移](maintenance-and-updates.md)：不支持的 <br> 
- [内存保留更新](maintenance-and-updates.md)：不支持的 <br> 
- [VM 生成支持](generation-2.md)：第2代 <br> 
- [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持的 (* 至少需要 4 vCPU * )  <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：受支持 <br>
+[高级存储](premium-storage-performance.md)：支持 *<br>
+[高级存储缓存](premium-storage-performance.md)：支持<br>
+[实时迁移](maintenance-and-updates.md)：不支持<br>
+[内存保留更新](maintenance-and-updates.md)：不支持<br>
+[VM 代系支持](generation-2.md)：第 2 代<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（* 至少需要 4 个 vCPU*） <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 
 *Standard_DC8_v2 除外 <br>
 
@@ -39,7 +39,7 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 系列 VM 是[第 2 代 VM](./generation-2.md#creating-a-generation-2-vm)，仅支持 `Gen2` 映像。
-- 当前在 [此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)列出的区域中可用。
+- 目前可在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)列出的区域中使用。
 - 上一代机密计算 VM：[DC 系列](sizes-previous-gen.md#preview-dc-series)
 - 使用 [Azure 门户](./linux/quick-create-portal.md)或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)创建 DCsv2 VM
 
@@ -60,4 +60,4 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

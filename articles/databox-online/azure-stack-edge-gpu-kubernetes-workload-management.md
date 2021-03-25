@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure Stack Edge Pro 设备上的 Kubernetes 工作负荷管理 |Microsoft Docs
-description: 介绍如何在 Azure Stack Edge Pro 设备上管理 Kubernetes 工作负荷。
+title: 了解 Azure Stack Edge Pro 设备上的 Kubernetes 工作负载管理 | Microsoft Docs
+description: 介绍如何管理 Azure Stack Edge Pro 设备上的 Kubernetes 工作负载。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,78 +8,80 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aac4278c6ce03c43418e99978cd039e24dc01194
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b962d66349bbed112114c010e8d185ba16c74c8d
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719264"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102443074"
 ---
-# <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负荷管理
+# <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负载管理
 
-在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，可以在 pod 中的 Kubernetes 群集上部署容器化应用程序。 可以通过不同的方式在 Kubernetes 群集中部署工作负载。 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍可用于在 Azure Stack Edge Pro 设备上部署工作负荷的各种方法。
+在 Azure Stack Edge Pro 设备上，配置计算角色时，会创建 Kubernetes 群集。 创建 Kubernetes 群集后，便可以在 Pod 中的 Kubernetes 群集上部署容器化应用程序。 可以通过不同的方式在 Kubernetes 群集中部署工作负载。 
 
-## <a name="workload-types"></a>工作负荷类型
+本文介绍可用于在 Azure Stack Edge Pro 设备上部署工作负载的各种方法。
 
-可在 Azure Stack Edge Pro 设备上部署的两种常见的工作负荷类型为无状态应用程序或有状态应用程序。
+## <a name="workload-types"></a>工作负载类型
 
-- **无状态应用程序** 不会保留其状态，也不会将任何数据保存到永久性存储。 所有用户和会话数据都在客户端上。 无状态应用程序的一些示例包括 web 前端（如 Nginx）和其他 web 应用程序。
+可在 Azure Stack Edge Pro 设备上部署的常见工作负载有两种：无状态应用程序或有状态应用程序。
 
-    你可以创建 Kubernetes 部署，以便在群集上部署无状态应用程序。 
+- **无状态应用程序** 不会保留自身状态，因此不会将任何数据保存到永久性存储中。 所有用户和会话数据会在客户端上保留。 无状态应用程序的一些例子包括 Web 前端（如 Nginx）和其他 Web 应用程序。
 
-- 有 **状态应用程序** 要求保存其状态。 有状态应用程序使用持久存储（例如永久卷）保存数据，供服务器或其他用户使用。 有状态应用程序的示例包括 [AZURE SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 之类的数据库。
+    可以创建用于在群集上部署无状态应用程序的 Kubernetes 部署。 
 
-    你可以创建 Kubernetes 部署来部署有状态应用程序。 
+- **有状态应用程序** 需要保存其状态。 有状态应用程序使用永久性存储（例如永久卷）来保存数据，以供服务器或其他用户使用。 有状态应用程序的例子包括 [Azure SQL Edge](../azure-sql-edge/overview.md) 和 MongoDB 等数据库。
+
+    可以创建 Kubernetes 部署来部署有状态应用程序。 
 
 ## <a name="deployment-flow"></a>部署流
 
 若要在 Azure Stack Edge Pro 设备上部署应用程序，请执行以下步骤： 
  
-1. **配置访问**：首先，你将使用 PowerShell 运行空间来创建用户、创建命名空间，并向用户授予对该命名空间的访问权限。
-2. **配置存储**：接下来，你将使用 Azure 门户中的 Azure Stack Edge 资源为要部署的有状态应用程序使用静态或动态预配创建持久卷。
-3. **配置网络**：最后，你将使用服务在 Kubernetes 群集外部公开应用程序。
+1. **配置访问权限**：先使用 PowerShell 运行空间创建用户和命名空间，并向用户授予对该命名空间的访问权限。
+2. **配置存储**：然后在 Azure 门户中使用 Azure Stack Edge 资源，通过对要部署的有状态应用程序使用静态或动态预配，来创建永久卷。
+3. **配置网络**：最后使用服务在 Kubernetes 群集外部和内部公开应用程序。
  
 ## <a name="deployment-types"></a>部署类型
 
-有三种主要方法可用于部署工作负荷。 其中每种部署方法允许连接到设备上的不同命名空间，然后部署无状态或有状态的应用程序。
+有三种主要方法可用于部署工作负载。 使用其中任一部署方法都能连接到设备上的不同命名空间，并部署无状态或有状态的应用程序。
 
-![Kubernetes 工作负荷部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
+![Kubernetes 工作负载部署](./media/azure-stack-edge-gpu-kubernetes-workload-management/kubernetes-workload-management-1.png)
 
-- **本地部署**：此部署通过命令行访问工具（例如） `kubectl` 来部署 Kubernetes `yamls` 。 通过文件访问 Azure Stack Edge Pro 上的 Kubernetes 群集 `kubeconfig` 。 有关详细信息，请参阅 [通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+- **本地部署**：此部署通过 `kubectl` 等命令行访问工具实现，使用这类工具可以部署 Kubernetes `yamls`。 通过 `kubeconfig` 文件来访问 Azure Stack Edge Pro 上的 Kubernetes 群集。 有关详细信息，请转到[通过 Kubectl 访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)。
 
-- **IoT Edge 部署**：这是通过 IoT Edge 连接到 Azure IoT 中心。 通过命名空间连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集 `iotedge` 。 此命名空间中部署的 IoT Edge 代理负责与 Azure 之间的连接。 `IoT Edge deployment.json`使用 Azure DEVOPS CI/CD 应用配置。 命名空间和 IoT Edge 管理通过 cloud operator 完成。
+- **IoT Edge 部署**：这是通过与 Azure IoT 中心连接的 IoT Edge 来实现的。 通过 `iotedge` 命名空间连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集。 此命名空间中部署的 IoT Edge 代理负责与 Azure 之间的连接。 通过使用 Azure DevOps CI/CD 来应用 `IoT Edge deployment.json` 配置。 命名空间和 IoT Edge 管理是通过云操作员来完成的。
 
-- **启用 Azure Arc Kubernetes 部署**：启用了 azure Arc 的 Kubernetes 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 可以通过在 Azure Stack Edge Pro 设备上连接到 Kubernetes 群集 `azure-arc namespace` 。 此命名空间中部署的代理负责连接到 Azure。 使用基于 GitOps 的配置管理应用部署配置。 
+- **启用了 Azure Arc 的 Kubernetes 部署**：启用了 Azure Arc 的 Kubernetes 是一种混合管理工具，可用于在 Kubernetes 群集上部署应用程序。 通过 `azure-arc namespace` 连接到 Azure Stack Edge Pro 设备上的 Kubernetes 群集。 此命名空间中部署的代理负责与 Azure 之间的连接。 通过使用基于 GitOps 的配置管理来应用部署配置。 
     
-    启用 Azure Arc 后，Kubernetes 还将允许使用容器 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅 [什么是启用了 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)。
+    通过启用了 Azure Arc 的 Kubernetes，还可以使用适用于容器的 Azure Monitor 来查看和监视群集。 有关详细信息，请转到[什么是启用了 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)。
     
-    从2021年3月开始，将对用户公开使用 Azure Arc Kubernetes，适用于用户和标准使用量收费。 作为一个有价值的预览客户，可免费使用 Azure Arc Kubernetes) Azure Stack Edge (设备。 若要获得预览版，请创建 [支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
+    启用了 Azure Arc 的 Kubernetes 将于 2021 年 3 月正式发布，收取标准使用费用。 作为重要的预览版客户，你可以在 Azure Stack Edge 设备上免费使用启用了 Azure Arc 的 Kubernetes。 若要获得预览版产品/服务，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
 
     1. 在“问题类型”下，选择“计费”。  
     2. 在“订阅”下，选择自己的订阅。
-    3. 在 " **服务**" 下，选择 " **我的服务**"，然后选择 **Azure Stack 边缘**"。
-    4. 在 " **资源**" 下，选择资源。
-    5. 在 " **摘要**" 下，键入问题说明。
-    6. 在 " **问题类型**" 下，选择 " **意外费用**"。
-    7. 在 " **问题子类型**" 下，选择 " **帮助我了解免费试用版的费用"**。
+    3. 在“服务”下选择“我的服务”，然后选择“Azure Stack Edge”。
+    4. 在“资源”下，选择你的资源。
+    5. 在“摘要”下，键入问题说明。
+    6. 在“问题类型”下，选择“意外费用”。
+    7. 在“问题子类型”下，选择“帮助我了解免费试用版的费用”。
 
 
 ## <a name="choose-the-deployment-type"></a>选择部署类型
 
 在部署应用程序时，请考虑以下信息：
 
-- **单个或多个类型**：可以选择单个部署选项或不同部署选项的混合。
-- **云与本地**：根据应用程序，可以通过 kubectl 或云部署通过 IoT Edge 和 Azure Arc 选择本地部署。 
-    - 选择本地部署时，将限制为在其中部署 Azure Stack Edge Pro 设备的网络。
-    - 如果你有可以部署的云代理，则应该部署云操作员，并使用云管理。
-- **IoT Vs Azure Arc**：部署选择还取决于产品方案的目的。 如果要部署的应用程序或容器与 IoT 或 IoT 生态系统更深层的集成，请选择 "IoT Edge" 以部署应用程序。 如果你有现有的 Kubernetes 部署，Azure Arc 将是首选选项。
+- **单个或多个类型**：可以选择一个部署选项，也可混合选用多个不同的部署选项。
+- **云还是本地**：根据拥有的应用程序，可以选择通过 kubectl 实现本地部署或通过 IoT Edge 和 Azure Arc 实现云部署。 
+    - 如果选择本地部署，只能使用部署了 Azure Stack Edge Pro 设备的网络。
+    - 如果有可以部署的云代理，应部署云操作员并使用云管理。
+- **IoT 还是 Azure Arc**：部署选择还取决于产品方案的目的。 如果要部署深度集成了 IoT 或 IoT 生态系统的应用程序或容器，请选择使用 IoT Edge 来部署应用程序。 如果有现有的 Kubernetes 部署，应首选 Azure Arc。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要通过 kubectl 本地部署应用，请参阅：
+若要通过 kubectl 在本地部署应用，请参阅：
 
 - [通过 kubectl 在 Azure Stack Edge Pro 上部署无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
 

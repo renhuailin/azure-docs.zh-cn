@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 895e22d94122539ee68bcac8ee4debce2d824ff0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935273"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547469"
 ---
 # <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
@@ -110,11 +110,9 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>注释
-如果为空，则不为这些记录返回情绪分数。
-
-## <a name="error-cases"></a>错误案例
-如果某种语言不受支持，则生成错误，并且不会返回情绪分数。
+## <a name="warning-cases"></a>警告情况
+如果文本为空，则会生成警告，且不返回情绪分数。
+如果某语言不受支持，则会生成警告，且不返回情绪分数。
 
 ## <a name="see-also"></a>另请参阅
 

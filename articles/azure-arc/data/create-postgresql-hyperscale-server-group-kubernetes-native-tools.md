@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: fd1b74d33793c06e586a92cc8b2e8d2d36f4827a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384939"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102519956"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 PostgreSQL 超大规模服务器组
 
@@ -22,21 +22,21 @@ ms.locfileid: "100384939"
 
 ## <a name="prerequisites"></a>先决条件
 
-应该已经创建了一个 [Azure Arc 数据控制器](./create-data-controller.md)。
+应已创建一个 [Azure Arc 数据控制器](./create-data-controller.md)。
 
-若要使用 Kubernetes 工具创建 PostgreSQL 超大规模服务器组，你将需要安装 Kubernetes 工具。  本文中的示例将使用 `kubectl` ，但类似的方法可与其他 Kubernetes 工具（如 Kubernetes 仪表板）或使用 `oc` `helm` 这些工具和 Kubernetes yaml/json 一起使用。
+若要使用 Kubernetes 工具创建 PostgreSQL 超大规模服务器组，需要安装 Kubernetes 工具。  本文中的示例将使用 `kubectl`，但如果你熟悉 Kubernetes 面板、`oc` 或 `helm` 等其他 Kubernetes 工具和 Kubernetes yaml/json，也可通过这些工具使用类似方法。
 
 [安装 kubectl 工具](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## <a name="overview"></a>概述
 
-若要创建 PostgreSQL 超大规模服务器组，需要创建 Kubernetes 机密，以便安全地存储 postgres 管理员登录名和密码，以及基于 PostgreSQL-12 或超大规模-11 自定义资源定义的 PostgreSQL PostgreSQL 服务器组自定义资源。
+若要创建 PostgreSQL 超大规模服务器组，需要一个创建 Kubernetes 机密以安全地存储 postgres 管理员登录名和密码，还需根据 postgresql-12 或 postgresql-11 自定义资源定义创建一个 PostgreSQL 超大规模服务器组自定义资源。
 
-## <a name="create-a-yaml-file"></a>创建 yaml 文件
+## <a name="create-a-yaml-file"></a>配置 yaml 文件
 
-你可以使用 [模板 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) 文件作为起点来创建你自己的自定义 PostgreSQL 超大规模服务器组 yaml 文件。  将此文件下载到本地计算机，并在文本编辑器中将其打开。  使用文本编辑器（如支持语法突出显示的 [VS Code](https://code.visualstudio.com/download) ）和 yaml 文件的 linting 很有用。
+可使用 [yaml 模板](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml)文件作为起点来创建自己的自定义 PostgreSQL 超大规模服务器组 yaml 文件。  将此文件下载到本地计算机，并在文本编辑器中打开。  使用文本编辑器（如支持语法突出显示和对 yaml 文件进行 Lint 分析的 [VS Code](https://code.visualstudio.com/download)）很有用。
 
-下面是一个示例 yaml 文件：
+下面是一个 yaml 文件示例：
 
 ```yaml
 apiVersion: v1
@@ -82,9 +82,9 @@ spec:
 ```
 
 ### <a name="customizing-the-login-and-password"></a>自定义登录名和密码。
-Kubernetes 机密存储为 base64 编码字符串-一个用于用户名，另一个用于密码。  需要对管理员登录名和密码进行 base64 编码，并将其放在和的占位符 `data.password` 位置 `data.username` 。  不要包含 `<` `>` 模板中提供的和符号。
+Kubernetes 机密以 base64 编码的字符串形式存储 - 一个用于用户名，另一个用于密码。  你需要对管理员登录名和密码进行 base64 编码，并将它们放在 `data.password` 和 `data.username` 占位符位置。  请勿包含模板中提供的 `<` 和 `>` 符号。
 
-可以使用联机工具对所需的用户名和密码进行 base64 编码，也可以根据平台使用内置 CLI 工具。
+可使用联机工具对所需的用户名和密码进行 base64 编码，也可根据平台使用内置 CLI 工具。
 
 PowerShell
 
@@ -99,45 +99,45 @@ PowerShell
 Linux/macOS
 
 ```console
-echo '<your string to encode here>' | base64
+echo -n '<your string to encode here>' | base64
 
 #Example
-# echo 'example' | base64
+# echo -n 'example' | base64
 ```
 
 ### <a name="customizing-the-name"></a>自定义名称
 
-对于 name 属性，模板的值为 "pg1"。  您可以更改它，但它必须是遵循 DNS 命名标准的字符。  还必须更改要匹配的机密名称。  例如，如果将 PostgreSQL 超大规模服务器组的名称更改为 "pg2"，则必须将机密名称从 "pg1" 更改为 "pg2"。
+模板的 name 属性的值为“pg1”。  可更改此值，但它必须是符合 DNS 命名标准的字符。  还必须更改机密名称以使二者相匹配。  例如，如果将 PostgreSQL 超大规模服务器组的名称更改为“pg2”，则必须将机密名称从“pg1”更改为“pg2”
 
 ### <a name="customizing-the-engine-version"></a>自定义引擎版本
 
-可以通过编辑属性，将引擎版本更改为 postgresql-11 或 postgresql-12 `kind` 。
+可编辑 `kind` 属性，将引擎版本更改为 postgresql-11 或 postgresql-12。
 
 ### <a name="customizing-the-resource-requirements"></a>自定义资源要求
 
-你可以根据需要更改资源需求-RAM 和核心限制和请求。  
+可根据需要更改资源要求（RAM 与核心限制和请求）。  
 
 > [!NOTE]
-> 可以详细了解 [Kubernetes 资源调控](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)。
+> 你可以详细了解 [Kubernetes 资源治理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)。
 
 资源限制和请求的要求：
-- 要进行计费， **需要** 内核限制值。
+- 出于计费目的，核心限制值是必需的。
 - 资源请求和限制的其余部分是可选的。
-- 内核限制和请求必须是正整数值（如果已指定）。
-- 如果指定，核心请求至少需要1个核心。
+- 核心限制和请求必须是正整数值（如果已指定）。
+- 核心请求至少需要 1 个核心（如果已指定）。
 - 内存值格式遵循 Kubernetes 表示法。  
 
 ### <a name="customizing-service-type"></a>自定义服务类型
 
-如果需要，可以将服务类型更改为 NodePort。  将分配一个随机端口号。
+如果需要，可将服务类型更改为 NodePort。  随即将分配一个随机端口号。
 
 ### <a name="customizing-storage"></a>自定义存储
 
-你可以自定义存储类，以便与你的环境匹配。  如果你不确定哪些存储类可用，可以运行命令 `kubectl get storageclass` 来查看它们。  模板的默认值为 "default"。  这意味着，存在一个 _名为_ "default" 的存储类，但存储 _类是默认_ 值。  还可以选择更改存储大小。  有关 [存储配置](./storage-configuration.md)的详细信息，请参阅。
+你可以自定义存储类，使存储与你的环境相匹配。  如果不确定哪些存储类可用，可运行命令 `kubectl get storageclass` 进行查看。  模板有一个默认值“default”。  这意味着，存在一个名为“default”的存储类，而不是存在一个默认的存储类 。  还可选择更改存储大小。  你可以详细了解[存储配置](./storage-configuration.md)。
 
 ## <a name="creating-the-postgresql-hyperscale-server-group"></a>创建 PostgreSQL 超大规模服务器组
 
-自定义 PostgreSQL 超大规模服务器组 yaml 文件后，可以通过运行以下命令来创建 PostgreSQL 超大规模服务器组：
+自定义 PostgreSQL 超大规模服务器组 yaml 文件后，可运行以下命令来创建 PostgreSQL 超大规模服务器组：
 
 ```console
 kubectl create -n <your target namespace> -f <path to your yaml file>
@@ -149,10 +149,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 
 ## <a name="monitoring-the-creation-status"></a>监视创建状态
 
-创建 PostgreSQL 超大规模服务器组将需要几分钟才能完成。 可以通过以下命令在另一个终端窗口中监视进度：
+创建 PostgreSQL 超大规模服务器组将需要几分钟才能完成。 可使用以下命令在另一个终端窗口中监视进度：
 
 > [!NOTE]
->  下面的示例命令假设你创建了一个名为 "pg1" 的 PostgreSQL 超大规模服务器组和一个名为 "arc" 的 Kubernetes 命名空间。  如果使用了其他命名空间/PostgreSQL 超大规模服务器组名称，则可以将 "arc" 和 "pg1" 替换为你的名称。
+>  下面的示例命令假定你创建了一个名为“pg1”的 PostgreSQL 超大规模服务器组和一个名为“arc”的 Kubernetes 命名空间。  如果你使用了其他命名空间/PostgreSQL 超大规模服务器组名称，可将“arc”和“pg1”替换为你使用的名称。
 
 ```console
 kubectl get postgresql-12/pg1 --namespace arc
@@ -162,7 +162,7 @@ kubectl get postgresql-12/pg1 --namespace arc
 kubectl get pods --namespace arc
 ```
 
-还可以通过运行如下命令来检查任何特定 pod 的创建状态。  这对于解决任何问题特别有用。
+还可运行如下命令来检查任何特定 Pod 的创建状态。  这对于排查任何问题特别有用。
 
 ```console
 kubectl describe po/<pod name> --namespace arc
@@ -171,6 +171,6 @@ kubectl describe po/<pod name> --namespace arc
 #kubectl describe po/pg1-0 --namespace arc
 ```
 
-## <a name="troubleshooting-creation-problems"></a>创建问题疑难解答
+## <a name="troubleshooting-creation-problems"></a>排查创建问题
 
-如果在创建 troubles 的过程中遇到任何问题，请参阅 [故障排除指南](troubleshoot-guide.md)。
+如果在创建过程中遇到任何问题，请参阅[故障排除指南](troubleshoot-guide.md)。

@@ -9,15 +9,15 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100653826"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>管理 Azure 存储帐户的默认访问层
 
-每个 Azure 存储帐户都有一个默认的访问层，即 "热" 或 "冷"。 在创建存储帐户时分配访问层。 默认访问层为热访问层。
+每个 Azure 存储帐户都有默认访问层：热访问层或冷访问层。 在创建存储帐户时分配访问层。 默认访问层为热访问层。
 
 可以通过设置存储帐户中的“访问层”属性来更改默认帐户层。 更改帐户层适用于存储在帐户中的所有对象，前提是该帐户没有设置一个显式层。 将帐户层从热切换为冷只对 GPv2 帐户中没有设置层的所有 Blob 产生写入操作次数（以 10,000 次为单位）收费，而从冷切换为热则会对 Blob 存储和 GPv2 帐户中的所有 Blob 产生读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。
 

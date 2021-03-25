@@ -4,10 +4,10 @@ description: 管理整个 Azure 中的警报实例
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: dc4b62f937e9338051c4018554ec47c94f01a743
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033531"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用统一警报管理警报实例
@@ -21,7 +21,7 @@ ms.locfileid: "102033531"
 
 可以通过以下任意一种方式转到“警报”页：
 
-- 在 [Azure 门户](https://portal.azure.com/)中，选择 "**监视**  >  **警报**"。  
+- 在 [Azure 门户](https://portal.azure.com/)中，选择“监视” > “警报”。   
 
      ![监视警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
@@ -53,4 +53,4 @@ ms.locfileid: "102033531"
 
 选择任何警报实例将打开“警报详细信息”页，让你可以查看有关该特定警报实例的更多详细信息。   
 
-![警报详细信息页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)
+![“警报详细信息”页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)

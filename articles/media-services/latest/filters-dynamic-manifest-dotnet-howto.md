@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 v3 .NET SDK 创建筛选器
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 v3 .NET SDK 创建动态清单以实现此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 v3 .NET SDK 将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093416"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455206"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093416"
 
 有关此功能及其使用方案的详细说明，请参阅[动态清单](filters-dynamic-manifest-overview.md)和[筛选器](filters-concept.md)。
 
-本主题展示了如何使用媒体服务 .NET SDK 为点播视频资产定义筛选器，以及如何创建[帐户筛选器](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)和[资产筛选器](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
+本主题展示了如何使用媒体服务 .NET SDK 为点播视频资产定义筛选器，以及如何创建[帐户筛选器](/dotnet/api/microsoft.azure.management.media.models.accountfilter)和[资产筛选器](/dotnet/api/microsoft.azure.management.media.models.assetfilter)。 
 
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
@@ -43,7 +43,7 @@ ms.locfileid: "101093416"
 
 ## <a name="define-a-filter"></a>定义筛选器  
 
-在 .NET 中，你使用 [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) 和 [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) 类配置曲目选择。 
+在 .NET 中，你使用 [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) 和 [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) 类配置曲目选择。 
 
 以下代码定义了一个筛选器，它包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 

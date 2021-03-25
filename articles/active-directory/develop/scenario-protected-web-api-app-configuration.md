@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c2a1f6de4e006cbb1b8566504fd16280c129f23
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 5206c2295ee7c01b4a2908e59da1cfdd8782bccd
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102210795"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102517712"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
-若要为受保护的 web API 配置代码，请了解：
+若要配置受保护 Web API 的代码，请了解：
 
 - API 受保护的定义是什么。
 - 如何配置持有者令牌。
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> 客户端应用程序请求将持有者令牌发送到 *WEB API* 的 Microsoft 标识平台。 Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
+> 客户端应用程序向 Web API 的 Microsoft 标识平台请求持有者令牌。 Web API 是唯一应该验证令牌并查看其中包含的声明的应用程序。 客户端应用永远不会尝试检查令牌中的声明。
 >
 > 将来，Web API 可能要求加密令牌。 这项要求会阻止可以查看访问令牌的客户端应用进行访问。
 
@@ -93,7 +93,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 #### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>为 Web API 使用自定义应用 ID URI 时
 
-如果已接受应用注册门户建议的应用 ID URI，则无需指定访问群体 (参阅 [应用程序 ID uri 和范围](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)) 。 否则，应添加一个 `Audience` 属性，其值为 Web API 的应用 ID URI。
+如果已接受应用注册门户建议的应用 ID URI，则无需指定受众（请参阅[应用程序 ID URI 和作用域](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)）。 否则，应添加一个 `Audience` 属性，其值为 Web API 的应用 ID URI。
 
 ```Json
 {
@@ -119,7 +119,7 @@ Microsoft.Identity.Web 提供 ASP.NET Core、身份验证中间件和适用于 .
 
 #### <a name="using-microsoftidentityweb-templates"></a>使用 Microsoft.Identity.Web 模板
 
-可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft WEB API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)。
+可以通过使用 Microsoft.Identity.Web 项目模板从头开始创建一个 Web API。 有关详细信息，请参阅 [Microsoft.Identity.Web - Web API 项目模板](https://aka.ms/ms-id-web/webapi-project-templates)。
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>从现有 ASP.NET Core 3.1 应用程序开始
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 他们不会通过个人帐户登录用户。 但是，你可以通过使用 *Startup.cs* 替换以下代码，将模板更改为 [使用 microsoft 标识](https://www.nuget.org/packages/Microsoft.Identity.Web)平台：
+ 目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 该模板不使用个人帐户进行用户登录。 但是，可以将模板更改为使用 Microsoft 标识平台，方法是使用 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) 替换 Startup.cs 中的代码：
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -208,7 +208,7 @@ services.AddControllers();
 
 验证程序与 **TokenValidationParameters** 类的属性相关联。 这些属性从 ASP.NET 和 ASP.NET Core 配置初始化。
 
-在大多数情况下，无需更改参数， 非单租户应用除外。 这些 web 应用将接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。 Microsoft.Identity.Web 还负责颁发者验证。 有关详细信息，请参阅 Microsoft.Identity.Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)。
+在大多数情况下，无需更改参数， 非单租户应用除外。 这些 Web 应用可接受来自任何组织或个人 Microsoft 帐户的用户。 对于这种情况，必须验证颁发者。 Microsoft.Identity.Web 还负责颁发者验证。 有关详细信息，请参阅 Microsoft.Identity.Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)。
 
 在 ASP.NET Core 中，如果要自定义令牌验证参数，请在 Startup.cs 中使用以下代码片段：
 
@@ -224,7 +224,7 @@ services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, opt
       // Your code to add extra configuration that will be executed after the current event implementation.
       options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
       options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
-  }
+  };
 });
 ```
 

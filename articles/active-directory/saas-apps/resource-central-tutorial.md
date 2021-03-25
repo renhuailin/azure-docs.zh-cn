@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
 ms.openlocfilehash: dbc148fcbcd9c3be86a29df1e08755611a347b07
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586575"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Resource Central 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "100586575"
 * 支持用户使用其 Azure AD 帐户自动登录到 Resource Central。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 

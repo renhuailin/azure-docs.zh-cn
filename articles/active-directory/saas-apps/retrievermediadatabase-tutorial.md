@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 786925799d19bf01e8edebbf85de04d92213298b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-retrievermediadatabase"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RetrieverMediaDatabase 的集成
@@ -45,7 +45,7 @@ ms.locfileid: "98732839"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中键入“RetrieverMediaDatabase” 。
 1. 从结果面板中选择“RetrieverMediaDatabase”，然后添加该应用。 在该应用添加到租户时等待几秒钟。

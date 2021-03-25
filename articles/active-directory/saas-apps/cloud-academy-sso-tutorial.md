@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: fa46d6e5c7f1007e3a90e22eb9d4f46e18251a28
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98729806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>教程：Azure Active Directory 单一登录与 Cloud Academy - SSO 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98729806"
 * 让用户使用其 Azure AD 帐户自动登录到 Cloud Academy - SSO。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -101,7 +101,7 @@ ms.locfileid: "98729806"
 在本部分中，你将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中选择“Azure Active Directory”。 选择“用户”，然后选择“所有用户” 。
-1. 选择屏幕顶部的“新建用户”  。
+1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中，完成以下步骤：
    1. 在“名称”框中，输入 **B.Simon**。  
    1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。

@@ -1,19 +1,19 @@
 ---
 title: Azure 虚拟机代理概述
 description: Azure 虚拟机代理概述
-services: virtual-machines-windows
-ms.subservice: extensions
-author: mimckitt
-ms.service: virtual-machines-windows
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.author: amjads
+author: amjads1
+ms.collection: windows
 ms.date: 07/20/2019
-ms.author: mimckitt
-ms.openlocfilehash: 3724b8a2afb89594c73f7dae782658ec8978963a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 1b1766c0385303993af436911391a1c858bbff61
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016465"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547452"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -65,7 +65,7 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>先决条件
 
-- Windows VM 代理需要至少 Windows Server 2008 SP2 (64 位) 才能运行，.NET Framework 4.0。 请参阅 [Azure 中虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
+- Windows VM 代理至少需要 Windows Server 2008 SP2（64 位）才能与 .NET Framework 4.0 一起运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
 - 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
@@ -113,7 +113,7 @@ foreach ($vm in $vms) {
 适用于 Windows 的 Azure VM 代理会在从 Azure 市场部署的映像上自动升级。 新 VM 部署到 Azure 后，会在 VM 预配时获得最新 VM 代理。 如果已手动安装了代理或正在部署自定义 VM 映像，则需要在创建映像时进行手动更新以包括新的 VM 代理。
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 来宾代理自动日志收集
-Windows 来宾代理具有自动收集一些日志的功能。 此功能由 CollectGuestLogs.exe 进程控制。 它同时适用于 PaaS 云服务和 IaaS 虚拟机，其目标是快速自动地从 VM 收集一些诊断日志 - 以便将它们用于脱机分析。 收集的日志包括事件日志、OS 日志、Azure 日志和一些注册表项。 它会生成一个压缩文件，该文件传输到 VM 的主机。 然后，工程团队和支持专业人员可以查看此 ZIP 文件，以根据拥有 VM 的客户的请求调查问题。
+Windows 来宾代理具有自动收集一些日志的功能。 此功能由 CollectGuestLogs.exe 进程控制。 它同时适用于 PaaS 云服务和 IaaS 虚拟机，其目标是快速自动地从 VM 收集一些诊断日志 - 以便将它们用于脱机分析。 收集的日志包括事件日志、OS 日志、Azure 日志和一些注册表项。 它将生成一个 ZIP 文件，该文件将传输到 VM 的主机。 然后，工程团队和支持专业人员可以查看此 ZIP 文件，以根据拥有 VM 的客户的请求调查问题。
 
 ## <a name="guest-agent-and-osprofile-certificates"></a>来宾代理和 OSProfile 证书
 Azure VM 代理负责安装在 VM 或虚拟机规模集的 `OSProfile` 中引用的证书。 如果从来宾 VM 内的证书 MMC 控制台中手动删除这些证书，则来宾代理应会重新添加这些证书。

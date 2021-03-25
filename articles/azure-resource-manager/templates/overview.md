@@ -2,13 +2,13 @@
 title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 7f850d06066a6892db9f17ae86a6bba9496bad58
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046374"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455729"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -18,7 +18,7 @@ ms.locfileid: "102046374"
 
 若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器模板（ARM 模板）。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
-我们引入了一种用于开发 ARM 模板的新语言。 该语言的名称为 Bicep，当前为预览版。 Bicep 和 JSON 模板提供相同的功能。 可以在这两种语言之间转换模板。 Bicep 提供了一个更易于用于创建模板的语法。 有关详细信息，请参阅 [什么是 Bicep (Preview) ？](bicep-overview.md)。
+我们引入了一种用于开发 ARM 模板的新语言。 该语言名为 Bicep，目前以预览版提供。 Bicep 和 JSON 模板提供的功能相同。 你可以在两种语言之间转换模板。 Bicep 提供的语法更容易用于创建模板。 有关详细信息，请参阅[什么是 Bicep（预览）？](bicep-overview.md)。
 
 ## <a name="why-choose-arm-templates"></a>为什么选择 ARM 模板？
 
@@ -50,7 +50,7 @@ ms.locfileid: "102046374"
 
 * **策略即代码**：[Azure Policy](../../governance/policy/overview.md) 是一个用于自动化监管的策略即代码框架。 如果使用 Azure 策略，在通过模板进行部署时，将会针对不合规的资源执行策略修正。
 
-* **部署蓝图**：你可以利用 Microsoft 提供的 [蓝图](../../governance/blueprints/overview.md) 来满足法规和合规性标准。 这些蓝图包括用于各种体系结构的预建模板。
+* **部署蓝图**：你可以利用 Microsoft 提供的[蓝图](../../governance/blueprints/overview.md)来达到监管和合规性标准。 这些蓝图包括各种体系结构的预生成模板。
 
 * **CI/CD 集成**：可以将模板集成到持续集成和持续部署 (CI/CD) 工具中，这些工具可以自动执行发布管道，以实现快速可靠的应用程序和基础结构更新。 通过 Azure DevOps 和资源管理器模板任务，可以使用 Azure Pipelines 持续生成和部署 ARM 模板项目。 若要了解详细信息，请参阅[使用管道的 VS 项目](add-template-to-azure-pipelines.md)和[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](./deployment-tutorial-pipeline.md)。
 
@@ -111,6 +111,15 @@ REQUEST BODY
 ```
 
 请注意，在资源模板中设置的 apiVersion 将用作 REST 操作的 API 版本。 你可以重复部署模板并可以相信它会继续工作。 通过使用相同的 API 版本，你就无需担心可能在更高版本中引入的中断性变更。
+
+若要部署模板，请使用以下任一选项：
+
+* [Azure 门户](deploy-portal.md)
+* [Azure CLI](deploy-cli.md)
+* [PowerShell](deploy-powershell.md)
+* [REST API](deploy-rest.md)
+* [GitHub 存储库中的按钮](deploy-to-azure-button.md)
+* [Azure Cloud Shell](deploy-cloud-shell.md)
 
 ## <a name="template-design"></a>模板设计
 

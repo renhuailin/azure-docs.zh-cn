@@ -4,10 +4,10 @@ description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事
 ms.topic: article
 ms.date: 02/16/2021
 ms.openlocfilehash: 9f0ec1223c06b908a9aa9f3ac5c5b19ead2fe962
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100595959"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
@@ -19,7 +19,7 @@ ms.locfileid: "100595959"
 事件中心捕获可让用户在同一个流上处理实时和基于批处理的管道。 这意味着可以构建随着时间的推移随用户的需要增长的解决方案。 无论用户现在正在构建基于批处理的系统并着眼于将来进行实时处理，还是要将高效的冷路径添加到现有的实时解决方案，事件中心捕获都可以使流式处理数据处理更加简单。
 
 > [!IMPORTANT]
-> 目标存储 (Azure 存储或 Azure Data Lake Storage) 帐户必须与事件中心位于同一订阅中。 
+> 目标存储（Azure 存储或 Azure Data Lake Storage）帐户必须与事件中心位于同一订阅中。 
 
 ## <a name="how-event-hubs-capture-works"></a>Azure 事件中心捕获的工作原理
 
@@ -79,7 +79,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 [Apache Drill：Azure Blob 存储插件][Apache Drill: Azure Blob Storage Plugin]
 
-若要轻松地查询捕获的文件，可以创建和执行通过容器启用的 Apache 钻取来访问 Azure Blob 存储。 请参阅以下示例： [大规模流式传输事件中心捕获](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
+若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储。 请参阅以下示例：[使用事件中心捕获功能进行大规模流式传输](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 

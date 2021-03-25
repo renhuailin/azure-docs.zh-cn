@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 62a5a5307e704b22a2c9ead197dae3360d5d03b1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102214790"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508803"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -28,7 +28,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
 |专用链接资源    |   用于通过可用类型列表中的资源 ID 或别名建立连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标子资源   |      要连接的子资源。 每个专用链接资源类型具有不同的选项，可根据偏好做出选择。    |
-|连接批准方法    |  自动或手动。 基于 Azure 基于角色的访问控制 (Azure RBAC) 权限，可以自动批准专用终结点。 如果尝试在不使用 Azure RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
+|连接批准方法    |  自动或手动。 根据 Azure 基于角色的访问控制 (Azure RBAC) 权限，可以自动批准专用终结点。 如果尝试在没有 Azure RBAC 的情况下连接到专用链接资源，请使用手动方法来允许资源所有者批准连接。        |
 |请求消息     |  可为请求手动批准的连接指定消息。 此消息可用于标识特定的请求。        |
 |连接状态   |   一个只读属性，指定专用终结点是否处于活动状态。 只能使用处于已批准状态的专用终结点发送流量。 可用的其他状态： <br>-**已批准**：连接已自动或手动批准，随时可供使用。</br><br>-**等待中**：连接是手动创建的，正等待由专用链接资源所有者批准。</br><br>-**已拒绝**：连接已被专用链接资源所有者拒绝。</br><br>-**已断开连接**：连接已被专用链接资源所有者删除。 专用终结点已变为参考性终结点，应将其删除以清理资源。 </br>|
 
@@ -110,7 +110,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 > 只有处于已批准状态的专用终结点才能将流量发送到给定的专用链接资源。 
 
 ### <a name="connecting-using-alias"></a>使用别名进行连接
-别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create)。 
+别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create)。 
 
 ## <a name="dns-configuration"></a>DNS 配置 
 使用完全限定的域名 (FQDN) 作为连接字符串的一部分连接到专用链接资源时，必须正确配置 DNS 设置，以解析为分配的专用 IP 地址。 现有的 Azure 服务可能已有在通过公共终结点进行连接时要使用的 DNS 配置。 需要替代此配置，以使用专用终结点进行连接。 
@@ -134,15 +134,15 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 为 SQL 数据库创建专用终结点](create-private-endpoint-powershell.md)
+- [使用 PowerShell 创建 SQL 数据库的专用终结点](create-private-endpoint-powershell.md)
 - [使用 CLI 创建 SQL 数据库的专用终结点](create-private-endpoint-cli.md)
-- [使用门户为存储帐户创建专用终结点](./tutorial-private-endpoint-storage-portal.md)
+- [使用门户创建存储帐户的专用终结点](./tutorial-private-endpoint-storage-portal.md)
 - [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
-- [使用门户创建 Azure Database for PostgreSQL 单一服务器的自己的专用链接](../postgresql/howto-configure-privatelink-portal.md)
+- [使用门户创建自己的用于 Azure Database for PostgreSQL - 单个服务器的专用链接](../postgresql/howto-configure-privatelink-portal.md)
 - [使用 CLI 创建自己的用于 Azure Database for PostgreSQL - 单个服务器的专用链接](../postgresql/howto-configure-privatelink-cli.md)
-- [使用门户创建 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-portal.md)
+- [使用门户创建自己的用于 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-portal.md)
 - [使用 CLI 创建自己的用于 Azure Database for MySQL 的专用链接](../mysql/howto-configure-privatelink-cli.md)
-- [使用门户创建 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-portal.md)
+- [使用门户创建自己的用于 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-portal.md)
 - [使用 CLI 创建自己的用于 Azure Database for MariaDB 的专用链接](../mariadb/howto-configure-privatelink-cli.md)
-- [使用门户和 CLI 为 Azure Key Vault 创建自己的专用链接](../key-vault/general/private-link-service.md)
+- [使用门户和 CLI 创建自己的用于 Azure Key Vault 的专用链接](../key-vault/general/private-link-service.md)

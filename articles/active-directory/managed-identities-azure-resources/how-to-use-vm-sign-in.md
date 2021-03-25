@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99090954"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
@@ -90,7 +90,7 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 - PowerShell：Invoke-WebRequest：无法连接到远程服务器
 - CLI：MSI：无法从 `http://localhost:50342/oauth2/token` 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342) 
 
-如果收到上述错误之一，请返回到 [Azure 门户](https://portal.azure.com) 中的 Azure VM，并中转到 " **标识** " 页，并确保 " **系统分配** " 设置为 "是"。
+如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM，转至“标识”页并确保将“系统分配”设为“是” 。
 
 ## <a name="next-steps"></a>后续步骤
 

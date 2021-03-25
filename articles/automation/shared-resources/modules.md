@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3f8e23fdeb0a05d2c19f131cf79a079426a9b494
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726489"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503413"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -32,19 +32,19 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 >[!NOTE]
 >请务必仅导入 runbook 和 DSC 配置所需的模块。 不建议导入根 Az 模块。 它包括可能不需要的许多其他模块，这可能导致性能问题。 改为导入单个模块，如 Az.Compute。
 
-云沙盒最多支持48系统调用，并出于安全原因限制所有其他调用。 云沙盒不支持其他功能，例如凭据管理和某些网络。
+云沙盒最多支持 48 个系统调用，并出于安全原因限制所有其他调用。 云沙盒不支持其他功能，例如凭据管理和某些网络连接。
 
-由于包含了模块和 cmdlet 的数量，因此很难提前知道哪些 cmdlet 会发出不受支持的调用。 通常，我们发现了需要提升访问权限的 cmdlet 的问题，需要凭据作为参数或与网络相关的 cmdlet。 沙盒不支持执行完整堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [AipService](/powershell/module/aipservice/connect-aipservice) 和从 Set-dnsclient 模块 [解析 DnsName](/powershell/module/dnsclient/resolve-dnsname) 。
+由于包含的模块和 cmdlet 数量众多，因此很难事先知道哪个 cmdlet 会进行不受支持的调用。 通常，对于需要提升的访问权限以及需要凭据作为参数的 cmdlet，或者对于与网络相关的 cmdlet，我们都知道其问题所在。 沙盒不支持执行完全堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [Connect-AipService](/powershell/module/aipservice/connect-aipservice) 和 DNSClient 模块中的 [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname)。
 
-这些是沙盒的已知限制。 建议的解决方法是部署 [混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md) 或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
+这些是沙盒的已知限制。 建议的解决方法是部署[混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md)或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
 
 ## <a name="default-modules"></a>默认模块
 
 下表列出了在创建自动化帐户时，Azure 自动化默认导入的模块。 自动化可以导入这些模块的较新版本。 但是，即使你删除了较新新版本，也不能从自动化帐户中删除原始版本。 请注意，这些默认模块包括多个 AzureRM 模块。
 
-默认模块也称为 "全局模块"。 在 Azure 门户中，当查看在创建帐户时导入的模块时， **全局模块** 属性将为 **true** 。
+默认模块也称为“全局模块”。 在 Azure 门户中，查看创建帐户时导入的模块时，“全局模块”属性将为 true 。
 
-![Azure 门户中的全局模块属性屏幕截图](../media/modules/automation-global-modules.png)
+![Azure 门户中的全局模块属性的屏幕截图](../media/modules/automation-global-modules.png)
 
 自动化不会自动将根 Az 模块导入任何新的或现有的自动化帐户。 要详细了解如何使用这些模块，请参阅[迁移到 Az 模块](#migrate-to-az-modules)。
 
@@ -142,7 +142,7 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 * runbook 从模块中调用 cmdlet 时。
 * runbook 使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module) cmdlet 显式导入模块时。
-* Runbook 使用 [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using?view=powershell-7.1#module-syntax) 语句显式导入模块。 从 Windows PowerShell 5.0 开始支持 using 语句，并支持类和枚举类型导入。
+* runbook 使用 [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) 语句显式导入模块时。 从 Windows PowerShell 5.0 开始支持 using 语句，并支持类和枚举类型导入。
 * runbook 导入另一个依赖模块时。
 
 可以在 Azure 门户中导入 Az 模块。 请记住仅导入所需的 Az 模块，而不是导入整个 Az.Automation 模块。 由于 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 是其他 Az 模块的依赖项，因此请确保在其他模块之前先将其导入。
@@ -164,15 +164,15 @@ Azure 自动化可以导入自定义模块以提供其 cmdlet。 它可以在后
 
 ## <a name="author-modules"></a>创作者模块
 
-当创作用于 Azure 自动化的自定义 PowerShell 模块时，建议遵循本部分中的注意事项。 若要准备要导入的模块，必须创建与 module 文件夹名称相同的 psd1、. hbase-runner.psm1 或 PowerShell 模块 **.dll** 文件。 然后压缩模块文件夹，以便 Azure 自动化可以将其作为单个文件导入。 .zip 包的名称应与包含的模块文件夹的名称相同。
+当创作用于 Azure 自动化的自定义 PowerShell 模块时，建议遵循本部分中的注意事项。 要准备要导入的模块，必须至少创建一个名称与模块文件夹的名称相同的 .psd1、.psm1 或 PowerShell 模块 .dll 文件。 然后压缩模块文件夹，以便 Azure 自动化可以将其作为单个文件导入。 .zip 包的名称应与包含的模块文件夹的名称相同。
 
 要详细了解如何创作 PowerShell 模块，请参阅[如何编写 PowerShell 脚本模块](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module)。
 
 ### <a name="version-folder"></a>版本文件夹
 
-通过 PowerShell 并行模块版本控制，可以在 PowerShell 中使用多个版本的模块。 如果你有经过测试的较旧脚本并仅适用于特定版本的 PowerShell 模块，则此方法很有用，但其他脚本需要同一 PowerShell 模块的较新版本。
+通过 PowerShell 并行模块版本控制，可以在 PowerShell 中使用一个模块的多个版本。 如果你有经过测试的较旧脚本并仅适用于特定版本的 PowerShell 模块，则此方法很有用，但其他脚本需要同一 PowerShell 模块的较新版本。
 
-若要构造 PowerShell 模块以使其包含多个版本，请创建 module 文件夹，然后在此模块文件夹中为要使用的模块的每个版本创建一个文件夹。 在下面的示例中，名为 *TestModule* 的模块提供了两个版本：1.0.0 和2.0.0。
+若要构造 PowerShell 模块以使其包含多个版本，请创建模块文件夹，然后在该模块文件夹中为要使用的每个模块版本创建一个文件夹。 在以下示例中，名为“TestModule”的模块提供了两个版本：1.0.0 和 2.0.0。
 
 ```dos
 TestModule
@@ -180,11 +180,11 @@ TestModule
    2.0.0
 ```
 
-在每个版本文件夹内，将组成模块的 hbase-runner.psm1、. psd1 或 PowerShell 模块 **.dll** 文件复制到相应的版本文件夹中。 压缩 module 文件夹，使 Azure 自动化可以将其作为单个 .zip 文件导入。 尽管自动化只显示导入的模块的最高版本，但如果模块包包含模块的并行版本，则它们都可在 runbook 或 DSC 配置中使用。  
+在每个版本文件夹中，将组成模块的 PowerShell .psm1、.psd1 或 PowerShell 模块 .dll 文件复制到相应的版本文件夹中。 压缩模块文件夹，以便 Azure 自动化可以将其作为单个 .zip 文件导入。 虽然 Azure 自动化仅显示导入的模块的最高版本，但如果模块包中包含并行版本的模块，则它们均可在你的 runbook 或 DSC 配置中使用。  
 
-尽管自动化支持的模块包含同一包中的并行版本，但它不支持跨模块包导入使用模块的多个版本。 例如，将包含版本1和2的 **模块 A** 导入到自动化帐户中。 稍后，将 **模块 A** 更新为包含版本3和4，当你将导入到自动化帐户时，只能在任何 RUNBOOK 或 DSC 配置中使用版本3和4。 如果需要所有版本-1、2、3和4可用，则导入的 .zip 文件应包含版本1、2、3和4。
+虽然自动化支持在同一包中包含并行版本的模块，但它不支持跨模块包导入使用模块的多个版本。 例如，将包含版本 1 和版本 2 的模块 A 导入到你的 Azure 自动化帐户中。 稍后，当你导入 Azure 自动化帐户时，如果将模块 A 更新为包括版本 3 和 4，则在任何 runbook 或 DSC 配置中只有版本 3 和 4 可用。 如果需要所有版本（版本 1、2、3 和 4 都可用），则导入的 .zip 文件应包含版本 1、2、3 和 4。
 
-如果要在 runbook 之间使用同一个模块的不同版本，则应始终使用 cmdlet 声明要在 runbook 中使用的版本 `Import-Module` ，并包括参数 `-RequiredVersion <version>` 。 即使您要使用的版本是最新版本。 这是因为 runbook 作业可以在同一沙盒中运行。 如果沙盒已经显式加载了某个版本号的模块，因为该沙箱中的上一个作业认为这样做了，则该沙箱中的后续作业不会自动加载该模块的最新版本。 这是因为它已在沙盒中加载。
+如果要在 runbook 之间使用同一模块的不同版本，则应始终使用 `Import-Module` cmdlet 声明要在 runbook 中使用的版本，并包括参数 `-RequiredVersion <version>`。 即使你要使用的版本是最新版本。 这是因为 Runbook 作业可能在同一沙盒中运行。 如果沙盒已经显式加载了某个版本号的模块（因为该沙盒中的先前作业显示是这样做的），则该沙盒中的未来作业将不会自动加载该模块的最新版本。 这是因为它的某些版本已在沙盒中加载。
 
 对于 DSC 资源，请使用以下命令指定特定版本：
 

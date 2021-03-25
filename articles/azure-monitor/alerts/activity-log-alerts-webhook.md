@@ -4,10 +4,10 @@ description: 了解有关活动日志警报激活时发布到 webhook URL 的 JS
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.openlocfilehash: 31b9f4b41d741475a031efd4392c7df2fd2260c4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034330"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
 ms.openlocfilehash: f46c093bffcc26b5f7975d25ccaca648bdc527da
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054680"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义

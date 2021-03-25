@@ -2,21 +2,21 @@
 title: 可管理性和监视 - 查询活动、资源利用率
 description: 了解可以使用哪些功能来管理和监视 Azure Synapse Analytics。 使用 Azure 门户和动态管理视图 (DMV) 来了解数据仓库的查询活动和资源利用率。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/09/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 96a076ef144af1d32e9ef3ec2903557b8edff006
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: e7f093860e9962db055a7551f5cdb608ecad9b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586710"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585666"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse Analytics 中的资源利用率和查询活动
 
@@ -26,21 +26,21 @@ Azure Synapse Analytics 在 Azure 门户中提供了丰富的监视体验，可�
 
 Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通过 [Azure Monitor](../../azure-monitor/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics) 显示。
 
-| 指标名称             | 说明                                                  | 聚合类型 |
+| 标准名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | Avg、Min、Max    |
-| 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | Avg、Min、Max    |
-| 内存百分比       | 数据仓库所有节点的内存利用率 (SQL Server) | Avg、Min、Max   |
+| CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | 平均值、最小值、最大值    |
+| 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | 平均值、最小值、最大值    |
+| 内存百分比       | 数据仓库所有节点的内存利用率 (SQL Server) | 平均值、最小值、最大值   |
 | 活动查询数          | 正在系统上执行的活动查询数             | Sum              |
 | 排队的查询数          | 等待开始执行的排队查询数          | Sum              |
-| 成功的连接数  | 针对数据库的成功连接数（登录数） | 总和、计数       |
-| 失败的连接数      | 针对数据库的失败连接数（登录数） | 总和、计数       |
+| 成功的连接数  | 针对数据库的成功连接数（登录数） | Sum、Count       |
+| 失败的连接数      | 针对数据库的失败连接数（登录数） | Sum、Count       |
 | 被防火墙阻止     | 登录数据仓库受阻次数     | Sum、Count       |
-| DWU 限制               | 数据仓库的服务级别目标                | Avg、Min、Max    |
-| DWU 百分比          | CPU 百分比与数据 IO 百分比之间的最大值        | Avg、Min、Max    |
-| 已用的 DWU                | DWU 限制 * DWU 百分比                                   | Avg、Min、Max    |
-| 缓存命中百分比    | (缓存命中数/缓存未命中数) * 100，其中，缓存命中数是在本地 SSD 缓存中所有列存储段的总命中数，缓存未命中数是所有节点上本地 SSD 缓存中列存储段的未命中数之和 | Avg、Min、Max    |
-| 缓存使用百分比   | (已用缓存/缓存容量) * 100，其中，已用缓存是所有节点上的本地 SSD 缓存中所有字节之和，缓存容量是所有节点上的本地 SSD 缓存存储容量之和 | Avg、Min、Max    |
+| DWU 限制               | 数据仓库的服务级别目标                | 平均值、最小值、最大值    |
+| DWU 百分比          | CPU 百分比与数据 IO 百分比之间的最大值        | 平均值、最小值、最大值    |
+| 已用的 DWU                | DWU 限制 * DWU 百分比                                   | 平均值、最小值、最大值    |
+| 缓存命中百分比    | (缓存命中数/缓存未命中数) * 100，其中，缓存命中数是在本地 SSD 缓存中所有列存储段的总命中数，缓存未命中数是所有节点上本地 SSD 缓存中列存储段的未命中数之和 | 平均值、最小值、最大值    |
+| 缓存使用百分比   | (已用缓存/缓存容量) * 100，其中，已用缓存是所有节点上的本地 SSD 缓存中所有字节之和，缓存容量是所有节点上的本地 SSD 缓存存储容量之和 | 平均值、最小值、最大值    |
 | 本地 tempdb 百分比 | 所有计算节点上的本地 tempdb 利用率 - 每五分钟发出一次值 | 平均值、最小值、最大值    |
 
 查看指标和设置警报时的注意事项：

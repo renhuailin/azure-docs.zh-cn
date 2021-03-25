@@ -5,17 +5,17 @@ services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 ms.author: mimckitt
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: b845d547224fb173d2a4b156575778783e0281fa
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: ba973bd5609dacf05eca842025d4e828d8a9f841
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488558"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102550941"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虚拟机使用情况
 通过分析 Azure 使用情况数据，可以获得强有力的使用情况见解，根据这些见解，可以更好地在整个组织内进行成本管理和分配。 本文档深入介绍 Azure 计算使用情况详细信息。 有关 Azure 一般使用情况的更多详细信息，请导航到[了解你的帐单](../cost-management-billing/understand/review-individual-bill.md)。
@@ -26,9 +26,9 @@ ms.locfileid: "96488558"
 
 | 字段 | 含义 | 示例值 | 
 |---|---|---|
-| 使用日期 | 使用资源的日期 | `11/23/2017` |
-| Meter ID | 标识此使用量所属的顶级服务| `Virtual Machines`|
-| 测定仪子类别 | 计费测定仪标识符。 <br><br> 对于计算小时数使用情况，每个 VM 大小、OS（Windows、非 Windows）及区域都有一个测定仪。 <br><br> 对于高级软件使用情况，每个软件类型都有一个测定仪。 大多数高级软件映像针对每个核心大小都有不同的测定仪。 有关详细信息，请访问 [计算定价页](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| 使用日期 | 使用资源时的日期 | `11/23/2017` |
+| Meter ID | 标识此使用情况所属的最上层服务| `Virtual Machines`|
+| 测定仪子类别 | 计费测定仪标识符。 <br><br> 对于计算小时数使用情况，每个 VM 大小、OS（Windows、非 Windows）及区域都有一个测定仪。 <br><br> 对于高级软件使用情况，每个软件类型都有一个测定仪。 大多数高级软件映像针对每个核心大小都有不同的测定仪。 有关详细信息，请访问[计算定价页面](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
 | 测定仪名称| 这对于 Azure 中的每个服务都是特定的。 对于计算，则始终是“计算小时数”。| `Compute Hours`|
 | 测定仪区域| 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。|  `JA East`|
 | 单位| 指明服务的计价单位。 按小时对计算资源计费。| `Hours`|
@@ -36,8 +36,8 @@ ms.locfileid: "96488558"
 | 资源位置  | 指明资源正在其中运行的数据中心。| `JA East`|
 | 已耗用的服务 | 使用的 Azure 平台服务。| `Microsoft.Compute`|
 | 资源组 | 部署的资源正在其中运行的资源组。 有关详细信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。|`MyRG`|
-| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>or<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
-| Tags| 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何使用 [CLI](./tag-cli.md) 或 [PowerShell](./tag-portal.md) 标记虚拟机这仅适用于资源管理器 vm。| `{"myDepartment":"RD","myUser":"myName"}`|
+| 实例 ID | 资源的标识符。 此标识符包含你在资源创建时为其指定的名称。 对于 VM，实例 ID 包含 SubscriptionId、ResourceGroupName 和 VMName（或规模集使用情况的规模集名称）。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Tags| 分配给资源的标记。 使用标记对计费记录进行分组。 了解如何使用 [CLI](./tag-cli.md) 或 [PowerShell](./tag-portal.md) 标记虚拟机。这仅适用于资源管理器 VM。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 其他信息 | 服务特定的元数据。 对于 VM，我们在其他信息字段中填充以下数据： <br><br> 映像类型 - 所运行的特定映像。 在“映像类型”下找到受支持字符串的完整列表。<br><br> 服务类型：所部署的大小。<br><br> VMName：VM 的名称。 仅规模集 VM 才填充此字段。 如果需要规模集 VM 的 VM 名称，可在上面的实例 ID 字符串中找到。<br><br> UsageType：指定其所代表的使用情况类型。<br><br> ComputeHR 是基础 VM（如 Standard_D1_v2）的计算小时数使用情况。<br><br> ComputeHR_SW 是 VM 使用高级软件（如 Microsoft R Server）产生的高级软件费用。 | 虚拟机<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虚拟机规模集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>高级软件<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>映像类型
@@ -59,7 +59,7 @@ ms.locfileid: "96488558"
 - Windows Server Preview 
 
 ## <a name="service-type"></a>服务类型
-其他信息字段中的服务类型字段对应所部署的 VM 的确切大小。 高级存储 VM（基于 SSD）和非高级存储 VM（基于 HDD）的定价相同。 如果部署基于 SSD 的大小（如标准 \_ DS2 \_ v2），则会在 "计量 Sub-Category" 列中看到非 ssd 大小 (`Standard\_D2\_v2 VM`) ，并 `Standard\_DS2\_v2` 在 "其他信息" 字段中找到 SSD 大小的 () 。
+其他信息字段中的服务类型字段对应所部署的 VM 的确切大小。 高级存储 VM（基于 SSD）和非高级存储 VM（基于 HDD）的定价相同。 如果部署基于 SSD 的大小（如 Standard\_DS2\_v2），则会在测定仪子类别列中看到非 SSD 大小 (`Standard\_D2\_v2 VM`)，在其他信息字段中看到 SSD 大小 (`Standard\_DS2\_v2`)。
 
 ## <a name="region-names"></a>区域名称
 使用情况详细信息“资源位置”字段中填充的区域名称与 Azure 资源管理器中使用的区域名称不同。 以下是区域值之间的映射：
@@ -124,7 +124,7 @@ VM 本身、在 VM 上运行的任何高级软件、与虚拟机相关的存储�
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>ComputeHR 在其他信息的 UsageType 字段中意味着什么？
 ComputeHR 代表计算小时数，表示底层基础结构成本的使用情况事件。 如果 UsageType 为 ComputeHR\_SW，则使用情况事件表示 VM 的高级软件费用。
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>如何知道高级软件是否计费？
-当探索哪个 VM 映像最适合你的需求时，请确保查看 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
+请务必访问 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)，寻找最符合自己需求的 VM 映像。 映像具有软件计划费率。 如果看到费率为“免费”，该软件则不会额外收费。 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>在使用的服务中，Microsoft.ClassicCompute 和 Microsoft.Compute 有何区别？
 Microsoft.ClassicCompute 表示通过 Azure 服务管理器部署的经典资源。 如果通过资源管理器进行部署，则会在使用的服务中填充 Microsoft.Compute。 详细了解 [Azure 部署模型](../azure-resource-manager/management/deployment-models.md)。
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>为什么虚拟机使用情况的 InstanceID 字段为空白？

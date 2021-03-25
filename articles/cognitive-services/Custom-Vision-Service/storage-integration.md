@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
 ms.openlocfilehash: 2afac0e25c394c9bf265daf1fe3ded3d763a7c61
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508497"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成用于通知和备份的 Azure 存储
@@ -206,6 +206,6 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本指南中，你已学习如何在自定义视觉资源之间复制和移动项目。 接下来请浏览 API 参考文档，以了解自定义视觉的其他作用。
+在本指南中，你已学习如何在“自定义视觉”资源之间复制和移动项目。 接下来请浏览 API 参考文档，以了解自定义视觉的其他作用。
 * [REST API 参考文档（训练）](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
 * [REST API 参考文档（预测）](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

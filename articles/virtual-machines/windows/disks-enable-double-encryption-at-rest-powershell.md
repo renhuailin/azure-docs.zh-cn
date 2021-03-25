@@ -5,15 +5,15 @@ author: roygara
 ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9f0642d3421e775d1c6930b672b37643a961178f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: cfef3925152c0b94a59c662443cf202724dadc0a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736282"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549543"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模块为托管磁盘启用静态双重加密
 
@@ -21,7 +21,7 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 
 ## <a name="prerequisites"></a>先决条件
 
-安装最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 [AzAccount](/powershell/module/az.accounts/connect-azaccount)登录到 Azure 帐户。
+安装最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 登录到 Azure 帐户。
 
 ## <a name="getting-started"></a>入门
 

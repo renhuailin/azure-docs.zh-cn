@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 419823086fd7ba05ba5023216be302576350e30a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: cadba181ea7d6a12ca64c78f3c7c58654d5f756f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687272"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500802"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -82,7 +82,7 @@ ms.locfileid: "101687272"
 
 - Server Core OS 不支持任何类型的设备注册。
 
--  (USMT) 用户状态迁移工具不能用于设备注册。  
+- 用户状态迁移 (USMT) 工具不适用于设备注册。  
 
 ### <a name="os-imaging-considerations"></a>OS 映像注意事项
 - 如果依赖于系统准备工具 (Sysprep)，并且使用 Windows 10 1809 以前版本的映像进行安装，请确保该映像不是来自已在 Azure AD 中注册为混合 Azure AD 联接的设备。
@@ -95,7 +95,7 @@ ms.locfileid: "101687272"
 如果已加入 Windows 10 域的设备向租户[注册了 Azure AD](overview.md#getting-devices-in-azure-ad)，则可能会导致已加入混合 Azure AD 和已注册 Azure AD 设备的双重状态。 建议升级到 Windows 10 1803（应用了 KB4489894）或更高版本来自动处理此场景。 在 1803 之前的版本中，需要手动删除已注册 Azure AD 状态，然后才能启用混合 Azure AD 联接。 在 1803 及更高版本中，进行了以下更改来避免此双重状态：
 
 - 在设备已加入混合 Azure AD 且同一用户登录后，系统会自动删除用户的任何现有的已注册 Azure AD 状态<i></i>。 例如，如果用户 A 在设备上有已注册 Azure AD 的状态，则仅当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当这些用户登录时，系统会单独清除双重状态。 除了删除已注册 Azure AD 状态外，如果注册是通过自动注册进行的 Azure AD 注册，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备。
-- 设备上的任何本地帐户上 Azure AD 注册状态不受此更改的影响。 它仅适用于域帐户。 因此，即使在用户登录后，也不会自动删除本地帐户上 Azure AD 注册状态，因为该用户不是域用户。 
+- 设备上任何本地帐户的 Azure AD 注册状态不受此更改影响。 它仅适用于域帐户。 因此，即使在用户登录之后，本地帐户的 Azure AD 注册状态也不会自动删除，因为该用户不是域用户。 
 - 可以通过将注册表值 "BlockAADWorkplaceJoin"=dword:00000001 添加到 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin阻止将已加入域的设备注册到 Azure AD。
 - 在 Windows 10 1803 中，如果已配置 Windows Hello 企业版，则用户需要在清除双重状态后重新设置 Windows Hello 企业版。此问题已通过 KB4512509 解决
 
@@ -128,7 +128,7 @@ ms.locfileid: "101687272"
 这些方案不需要配置联合服务器进行身份验证。
 
 > [!NOTE]
-> 仅支持[使用分阶段推出的云身份验证](../hybrid/how-to-connect-staged-rollout.md)启动 Windows 10 1903 更新
+> 仅从 Windows 10 1903 更新开始，才支持[使用分阶段推出的云身份验证](../hybrid/how-to-connect-staged-rollout.md)
 
 ### <a name="federated-environment"></a>联合环境
 
@@ -157,7 +157,7 @@ ms.locfileid: "101687272"
 
 ## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的本地 AD 用户 UPN 支持
 
-有时，本地 AD 用户 UPN 可能与 Azure AD UPN 不同。 在这种情况下，Windows 10 混合 Azure AD join 根据 [身份验证方法](../hybrid/choose-ad-authn.md)、域类型和 Windows 10 版本为本地 AD upn 提供有限的支持。 环境中可以存在两种类型的本地 AD UPN：
+有时，本地 AD 用户 UPN 可能与 Azure AD UPN 不同。 在此类情况下，Windows 10 混合 Azure AD 加入根据[身份验证方法](../hybrid/choose-ad-authn.md)、域类型和 Windows 10 版本对本地 AD UPN 提供有限支持。 环境中可以存在两种类型的本地 AD UPN：
 
 - 可路由用户 UPN：可路由的 UPN 具有已向域注册机构注册的有效的已验证域。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.org 是 Contoso 拥有的且[已在 Azure AD 中验证](../fundamentals/add-custom-domain.md)的本地 AD 中的主域
 - 不可路由用户 UPN：非可路由的 UPN 没有已验证域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
@@ -171,7 +171,7 @@ ms.locfileid: "101687272"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 托管 | 从 1803 版本开始 | 正式发布，不支持 Windows 锁屏上的 Azure AD SSPR |
+| 可路由的 | 托管 | 从 1803 版本开始 | 正式发布，不支持 Windows 锁屏上的 Azure AD SSPR 本地 UPN 必须同步到 Azure AD 中的 `onPremisesUserPrincipalName` 属性 |
 | 非可路由的 | 托管 | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤

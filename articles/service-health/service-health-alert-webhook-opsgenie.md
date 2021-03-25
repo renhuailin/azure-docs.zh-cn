@@ -4,10 +4,10 @@ description: 获取有关发送到 OpsGenie 实例的服务运行状况事件的
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594591"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>使用 Webhook 通过 OpsGenie 发送 Azure 服务运行状况警报

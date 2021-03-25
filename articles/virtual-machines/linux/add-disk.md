@@ -2,17 +2,18 @@
 title: 使用 Azure CLI 将数据磁盘添加到 Linux VM
 description: 了解如何使用 Azure CLI 将持久性数据磁盘添加到 Linux VM
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
-ms.subservice: disks
-ms.openlocfilehash: 1155b4274b97f540fd97bf39e51fd41c37bc9627
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730615"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580379"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 
@@ -147,7 +148,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 >
 > 即使文件系统已损坏或磁盘在引导时不存在， *nofail* 选项也能确保 VM 启动。 如果不使用此选项，可能会遇到 [Cannot SSH to Linux VM due to FSTAB errors](/archive/blogs/linuxonazure/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting)
 >
-> 如果修改 fstab 导致启动失败，则可以使用 Azure VM 串行控制台来访问 VM。 [串行控制台文档](../troubleshooting/serial-console-linux.md)中提供了更多详细信息。
+> 如果修改 fstab 导致启动失败，可以使用 Azure VM 串行控制台对 VM 进行控制台访问。 有关更多详细信息，请参阅[串行控制台文档](/troubleshoot/azure/virtual-machines/serial-console-linux)。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 中对 Linux 的 TRIM/UNMAP 支持
 某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 此功能主要用于标准存储中，如果你创建大型文件后又将其删除，则该功能将通知 Azure 已删除的页不再有效并且可以丢弃，可以节省成本。

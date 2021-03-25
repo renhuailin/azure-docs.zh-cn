@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 7dcb884d8eafdfa5218e96d63f62a5d462d20cf8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98679924"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>有关在 Synapse SQL 池中使用复制表的设计指南
@@ -36,7 +36,7 @@ ms.locfileid: "98679924"
 
 ## <a name="what-is-a-replicated-table"></a>什么是复制的表？
 
-复制的表具有可在每个计算节点上访问的完整表副本。 复制表后，在执行联接或聚合前将无需在计算节点之间传输数据。 由于表具有多个副本，因此当表压缩后的大小小于 2 GB 时，复制的表性能最佳。  2 GB 不是硬性限制。  如果数据为静态数据，不会更改，则可复制更大的表。
+复制的表具有可在每个计算节点上访问的完整表副本。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 由于表具有多个副本，因此当表压缩后的大小小于 2 GB 时，复制的表性能最佳。  2 GB 不是硬性限制。  如果数据为静态数据，不会更改，则可复制更大的表。
 
 下图显示了可在每个计算节点上访问的复制表。 在 SQL 池中，复制表会完整复制到每个计算节点上的分发数据库。
 

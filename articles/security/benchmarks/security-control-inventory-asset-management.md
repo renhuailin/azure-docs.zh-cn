@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: f3079ea475c20e3ae0e78319d6c6b24ee579fd0c
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498874"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521299"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>安全控制：清单和资产管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "96498874"
 
 - [如何使用 Azure Resource Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -74,7 +74,7 @@ ms.locfileid: "96498874"
 
 使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中的所有 Azure 资源均已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源已获得批准。
 
 - [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -86,7 +86,7 @@ ms.locfileid: "96498874"
 |--|--|--|
 | 6.6 | 2.3、2.4 | 客户 |
 
-使用 Azure 虚拟机库存自动收集有关虚拟机上所有软件的信息。 可从 Azure 门户获取软件名称、版本、发布者和刷新时间。 若要获取安装日期和其他信息的访问权限，请启用来宾级别诊断，并将 Windows 事件日志引入 Log Analytics 工作区。
+使用 Azure 虚拟机清单自动收集有关虚拟机上的所有软件的信息。 可从 Azure 门户获得软件名称、版本、发布者和刷新时间。 若要访问安装日期和其他信息，请启用来宾级别诊断，并将 Windows 事件日志引入 Log Analytics 工作区。
 
 - [如何启用 Azure 虚拟机清单](../../automation/automation-tutorial-installed-software.md)
 
@@ -96,7 +96,7 @@ ms.locfileid: "96498874"
 |--|--|--|
 | 6.7 | 2.5 | 客户 |
 
-使用 Azure 安全中心的文件完整性监视 (更改跟踪) 和虚拟机清单来识别虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
+使用 Azure 安全中心的文件完整性监视（更改跟踪）和虚拟机清单来识别虚拟机上安装的所有软件。 可以实现自己的未授权软件删除过程。 还可以使用第三方解决方案来识别未获批软件。
 
 - [如何使用文件完整性监视](../../security-center/security-center-file-integrity-monitoring.md)
 
@@ -144,7 +144,7 @@ ms.locfileid: "96498874"
 |--|--|--|
 | 6.11 | 2.9 | 客户 |
 
-使用 Azure 条件性访问，通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，限制用户与 Azure 资源管理器的交互能力。
+使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，限制用户与 Azure 资源管理器进行交互的能力。
 
 - [如何配置条件访问来阻止对 Azure 资源管理器的访问](../../role-based-access-control/conditional-access-azure-management.md)
 
@@ -156,7 +156,7 @@ ms.locfileid: "96498874"
 
 根据脚本的类型，可以使用特定于操作系统的配置或第三方资源来限制用户在 Azure 计算资源中执行脚本的能力。  还可以利用 Azure 安全中心自适应应用程序控制来确保仅执行已授权软件，并阻止所有未授权软件在 Azure 虚拟机上执行。
 
-- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 环境中控制 PowerShell 脚本的执行](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 - [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 

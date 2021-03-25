@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f8041656a11689d0cca64c3edae1af2e70409028
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97027707"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 创建基本组并添成员
@@ -77,7 +77,7 @@ ms.locfileid: "97027707"
 
 ## <a name="turn-on-or-off-group-welcome-email"></a>打开或关闭组欢迎电子邮件
 
-如果创建了任何新的 Microsoft 365 组（无论使用动态成员身份还是静态成员资格），欢迎通知将发送到添加到该组的所有用户。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) 中关闭此行为。 
+创建任何新的 Microsoft 365 组时，无论是使用动态还是静态成员身份，都会向添加到该组的所有用户发送欢迎通知。 当用户或设备的任何属性发生更改时，将处理组织中的所有动态组规则以进行潜在的成员身份更改。 添加的用户也会收到欢迎通知。 可以在 [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) 中关闭此行为。 
 
 ## <a name="next-steps"></a>后续步骤
 

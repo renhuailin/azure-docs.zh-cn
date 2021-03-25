@@ -6,14 +6,14 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 0418785fe558503b716ff1e798446fb64db998b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799832"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102442751"
 ---
-# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 通过 MySQL 进行身份验证
+# <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 进行 MySQL 的身份验证
 
 本文将分步介绍如何使用 Azure Database for MySQL 配置 Azure Active Directory 访问权限以及如何使用 Azure AD 令牌进行连接。
 
@@ -36,8 +36,6 @@ ms.locfileid: "87799832"
 
 每个 MySQL 服务器只能创建一个 Azure AD 管理员，选择另一个管理员将覆盖为服务器配置的现有 Azure AD 管理员。
 
-在将来的版本中，我们将支持指定 Azure AD 组，而不是让单个用户拥有多个管理员，但目前尚不支持此功能。
-
 配置管理员后，现在就可以登录了：
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>使用 Azure AD 连接到 Azure Database for MySQL
@@ -57,19 +55,19 @@ ms.locfileid: "87799832"
 
 以下是用户/应用程序使用 Azure AD 进行身份验证所需的步骤：
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-可以按照 Azure Cloud Shell、Azure VM 或本地计算机上的顺序进行。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
+可以在 Azure Cloud Shell、Azure VM 或本地计算机上继续操作。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="step-1-authenticate-with-azure-ad"></a>步骤 1：使用 Azure AD 进行身份验证
 
-首先使用 Azure CLI 工具通过 Azure AD 进行身份验证。 Azure Cloud Shell 中不需要执行此步骤。
+首先使用 Azure CLI 工具进行 Azure AD 的身份验证。 对于 Azure Cloud Shell 不需要执行此步骤。
 
 ```
 az login
 ```
 
-此命令将启动一个浏览器窗口到 Azure AD 身份验证 "页。 这一操作需要提供 Azure AD 的用户 ID 和密码。
+该命令将启动浏览器窗口，以显示 Azure AD 身份验证页。 这一操作需要提供 Azure AD 的用户 ID 和密码。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步骤 2：检索 Azure AD 访问令牌
 
@@ -124,14 +122,14 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
-连接时的重要注意事项：
+连接时的重要注意事项如下：
 
-* `user@tenant.onmicrosoft.com` 尝试连接的 Azure AD 用户或组的名称
-* 始终在 Azure AD 用户/组名称后追加服务器名称 (例如 `@mydb`) 
-* 请确保使用与 Azure AD 用户或组名称拼写相同的方式
-* Azure AD 的用户名和组名区分大小写
-* 作为组连接时，请仅使用组名称 (例如 `GroupName@mydb`) 
-* 如果名称包含空格，请 `\` 在每个空格前使用以对其进行转义
+* `user@tenant.onmicrosoft.com` 是你尝试要以其身份连接的 Azure AD 用户或组的名称
+* 在 Azure AD 用户/组名称的后面始终要追加服务器名称（例如 `@mydb`）
+* 请确保使用 Azure AD 用户或组名称的确切拼写方式
+* Azure AD 的用户名和组的名称区分大小写
+* 在作为组进行连接时，请只使用组名称（例如 `GroupName@mydb`）
+* 如果名称包含空格，请在每个空格前使用 `\` 对该空格进行转义
 
 请注意“enable-cleartext-plugin”设置，需要对其他客户端使用类似的配置，以确保在不进行哈希处理的情况下将令牌发送到服务器。
 

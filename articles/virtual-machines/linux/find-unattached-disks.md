@@ -8,10 +8,10 @@ ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 0c3e8bb2ff6f3313e851a4253a95a5ad923a8f70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016210"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>使用 Azure CLI 查找并删除未连接的 Azure 托管和非托管磁盘

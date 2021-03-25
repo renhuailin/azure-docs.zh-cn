@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: ca36c35d859e651c0d949f4b7fbb28137d01af90
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734955"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
@@ -28,7 +28,7 @@ ms.locfileid: "101734955"
 
 ### <a name="upgrade-windows-agent"></a>升级 Windows 代理 
 
-若要将 Windows VM 上的代理更新为未使用 Log Analytics VM 扩展安装的最新版本，你可以从命令提示符、脚本或其他自动化解决方案中运行，也可以使用 MMASetup \<platform\> 安装向导运行。  
+若要将 Windows VM 上的代理更新为未使用 Log Analytics VM 扩展安装的最新版本，可以通过命令提示符、脚本或其他自动化解决方案来运行，也可以使用 MMASetup-\<platform\>.msi 安装向导。  
 
 可以通过执行以下步骤从你的 Log Analytics 工作区下载 Windows 代理的最新版本。
 
@@ -50,7 +50,7 @@ ms.locfileid: "101734955"
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 执行 **MMASetup 以 \<platform\>** 启动安装向导。
+2. 执行 MMASetup-\<platform\>.exe 以启动安装向导。
 
 3. 在安装向导的第一页上，单击“下一步”。
 
