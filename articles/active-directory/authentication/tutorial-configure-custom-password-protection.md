@@ -11,10 +11,10 @@ author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741178"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教程：为 Azure Active Directory 密码保护配置自定义受禁密码
@@ -65,7 +65,7 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 若要启用自定义受禁密码列表并在其中添加条目，请完成以下步骤：
 
 1. 使用拥有全局管理员权限的帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。 
+1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“安全性”。
 1. 在“管理”菜单标题下，依次选择“身份验证方法”、“密码保护”。  
 1. 将“强制实施自定义列表”选项设置为“是”。
 1. 将字符串添加到“自定义受禁密码列表”，每行添加一个字符串。 以下注意事项和限制适用于自定义受禁密码列表：

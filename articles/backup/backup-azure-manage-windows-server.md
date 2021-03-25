@@ -4,10 +4,10 @@ description: 本文介绍如何使用恢复服务保管库的“概述”仪表�
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 74351d781287d863db8be0fc7d20517e0479106c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002124"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
@@ -156,7 +156,7 @@ ms.locfileid: "89002124"
 
    ![筛选警报](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-电子邮件通知默认已**打开**。 选择“关闭”会停止电子邮件通知。
+电子邮件通知默认已 **打开**。 选择“关闭”会停止电子邮件通知。
 
 如果不想要分组，或者没有许多可能生成警报的项，请在“通知”控件上选择“按警报”。  每个警报均会发送一条通知（默认设置），此外还会立即发送解决方法电子邮件。
 

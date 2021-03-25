@@ -4,10 +4,10 @@ description: 本文提供 Azure 事件中心消息传送异常和建议的操作
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100390889"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中心消息传送异常 - .NET（旧版）
@@ -125,11 +125,11 @@ ms.locfileid: "100390889"
 
     如果你看到的值大于 TU 的数量 * 限制（每秒 1 MB 的流入量或 1000 个流入量请求/秒、每秒 2 MB 的流出量），请使用事件中心命名空间的“缩放”（在左侧菜单上）页进行手动扩展或使用事件中心的[自动扩充](event-hubs-auto-inflate.md)功能来增加 TU 的数量。 请注意，自动扩充最多只能增加到 20 个 TU。 若要将 TU 提升到正好 40 个，请提交一个支持请求。
 
-### <a name="error-code-50008"></a>错误代码50008
+### <a name="error-code-50008"></a>错误代码 50008
 
 此错误很少发生。 但如果为命名空间运行代码的容器的 CPU 比较低时（在事件中心负载均衡器开始之前不超过几秒钟），则可能发生此错误。
 
-**解决** 方法：限制对 GetRuntimeInformation 方法的调用。 Azure 事件中心每个使用者组最多支持每秒50个调用 GetRuntimeInfo。 达到限制后，你可能会收到类似于以下内容的异常：
+**解决方法**：限制对 GetRuntimeInformation 方法的调用。 Azure 事件中心每秒每个使用者组最多支持 50 次对 GetRuntimeInfo 的调用。 达到限制后，你可能会收到类似于以下内容的异常：
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.

@@ -15,10 +15,10 @@ ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 9337d1c2767923e6dc7c6b267e0c180b460a116e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359415"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
@@ -38,7 +38,7 @@ ms.locfileid: "97359415"
 相关主题包括：
 
 * [在 Azure VM (GUI) 中配置 AlwaysOn 可用性组](availability-group-manually-configure-tutorial.md)   
-* [使用 Azure Resource Manager 和 PowerShell 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [使用 Azure 资源管理器和 PowerShell 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -208,7 +208,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 使用远程桌面协议 (RDP) 连接到同一虚拟网络中不拥有副本的 SQL Server。 这可能是群集中的其他 SQL Server。
 
-1. 使用 **sqlcmd** 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 **sqlcmd** 连接：
+1. 使用 **sqlcmd** 实用工具测试连接。 例如，以下脚本通过侦听器与 Windows 身份验证来与主副本建立 sqlcmd 连接：
    
     ```
     sqlcmd -S <listenerName> -E

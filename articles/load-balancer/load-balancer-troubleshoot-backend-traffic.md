@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
 ms.openlocfilehash: bfe2b21a86f2ce4b4630ba69cde87796fd367f4b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98029167"
 ---
 # <a name="troubleshoot-azure-load-balancer-backend-traffic-responses"></a>排查 Azure 负载均衡器后端流量响应问题
 
-本页提供有关 Azure 负载均衡器问题的疑难解答信息。
+此页介绍有关 Azure 负载均衡器问题的疑难解答信息。
 
 ## <a name="vms-behind-load-balancer-are-not-responding-to-traffic-on-the-configured-data-port"></a>负载均衡器后端的 VM 不响应已配置数据端口上的通信
 

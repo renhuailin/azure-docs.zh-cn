@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: a21d088680855b74e7259028ed7ef55165707c56
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98938693"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 公共 IP 配置移动到另一个区域
@@ -68,7 +68,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
    notepad <source-resource-group-name>.json
    ```
 
-5. 若要编辑公共 IP 名称的参数，请将源公共 IP 名称的属性 defaultValue 更改为目标公共 IP 的名称，确保对名称使用引号：
+5. 若要编辑公共 IP 名称的参数，请将源公共 IP 名称的属性 **defaultValue** 更改为目标公共 IP 的名称，确保对名称使用引号：
     
     ```json
         {
@@ -83,7 +83,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
 
     ```
 
-6. 若要编辑要将公共 IP 移到其中的目标区域，请更改 resources 下的 location 属性：
+6. 若要编辑要将公共 IP 移到其中的目标区域，请更改 resources 下的 **location** 属性：
 
     ```json
             "resources": [
@@ -133,9 +133,9 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
                     },
          ```
 
-         有关基本和标准 sku 公共 ip 之间的差异的详细信息，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)。
+         若要详细了解基本的和标准的 sku 公共 IP 的区别，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)。
 
-    * 公共 IP 分配方法和空闲超时 - 可以在模板中更改这两个选项，只需将 publicIPAllocationMethod 属性从 Dynamic 更改为 Static，或从 Static 更改为 Dynamic     即可。 若要更改空闲超时，可以将 idleTimeoutInMinutes 属性更改为所需时间。  默认值为 4：
+    * **公共 IP 分配方法** 和 **空闲超时** - 可以在模板中更改这两个选项，只需将 **publicIPAllocationMethod** 属性从 **Dynamic** 更改为 **Static** 或从 **Static** 更改为 **Dynamic** 即可。 若要更改空闲超时，可以将 **idleTimeoutInMinutes** 属性更改为所需时间。  默认为 **4**：
 
          ```json
          "resources": [
@@ -160,7 +160,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
                 }            
          ```
 
-        有关分配方法和空闲超时值的详细信息，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)。
+        若要详细了解分配方法和空闲超时值，请参阅[创建、更改或删除公共 IP 地址](./virtual-network-public-ip-address.md)。
 
 
 9. 保存 \<resource-group-name>.json 文件。
@@ -201,7 +201,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要提交更改并完成虚拟网络的移动，以及删除源虚拟网络或资源组，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 或 [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress)：
 

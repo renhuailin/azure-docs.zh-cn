@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教程：Azure Active Directory 与 Sauce Labs - Mobile and Web Testing 的集成
@@ -62,7 +62,7 @@ ms.locfileid: "92895091"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入 **Sauce Labs - Mobile and Web Testing** ，在结果面板中选择“Sauce Labs - Mobile and Web Testing”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中，键入 **Sauce Labs - Mobile and Web Testing**，在结果面板中选择“Sauce Labs - Mobile and Web Testing”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的 Sauce Labs - Mobile and Web Testing](common/search-new-app.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "92895091"
 
     ![屏幕截图显示选择了“用户”图标和“团队管理”下拉菜单。](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
-3. 在文本框中输入 **域名** 。
+3. 在文本框中输入 **域名**。
 
     ![屏幕截图显示了文本框中的示例域名。](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "92895091"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "92895091"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

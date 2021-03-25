@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: aca6981e2214b9dbd03e6808e77c26fcd67c13cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 21ca30b24c4824a2d303d02f3df712328885e199
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101711563"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435199"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输入绑定
 
@@ -300,7 +300,7 @@ namespace CosmosDBSamplesV2
 以下示例演示检索文档列表的 [C# 函数](functions-dotnet-class-library.md)。 此函数由 HTTP 请求触发。 此代码使用 Azure Cosmos DB 绑定提供的 `DocumentClient` 实例来读取文档列表。 `DocumentClient` 实例也可用于写入操作。
 
 > [!NOTE]
-> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet&preserve-view=true) 接口来简化测试。
+> 还可以使用 [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient) 接口来简化测试。
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1662,7 +1662,7 @@ Python 不支持特性。
 |**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。 |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。 它是在[分区的](../cosmos-db/partitioning-overview.md#logical-partitions)集合中进行查询所需的。|
-|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
+|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，“美国东部,美国中南部,北欧”。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1690,7 +1690,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-数据通过参数提供给函数 `DocumentList` 。 对文档所做的更改不会自动保存。
+数据通过 `DocumentList` 参数提供给函数。 不会自动保留对文档所做的更改。
 
 ---
 

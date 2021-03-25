@@ -1,6 +1,6 @@
 ---
 title: 配置域独立工作组可用性组
-description: 了解如何在 Azure 中的 SQL Server 虚拟机上配置 Active Directory 域无关的工作组 Always On 可用性组。
+description: 了解如何在 Azure 中的 SQL Server 虚拟机上配置独立于 Active Directory 域的工作组 Always On 可用性组。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359449"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
@@ -43,7 +43,7 @@ ms.locfileid: "97359449"
 | **Node2**   | AGNode2 (10.0.0.5) |
 | **群集名称** | AGWGAG (10.0.0.6) |
 | **侦听器** | AGListener (10.0.0.7) | 
-| **DNS 后缀** | ag.wgcluster.example.com | 
+| DNS 后缀 | ag.wgcluster.example.com | 
 | **工作组名称** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
@@ -53,7 +53,7 @@ ms.locfileid: "97359449"
 
 若要配置 DNS 后缀，请执行以下步骤：
 
-1. RDP 连接到第一个节点并打开服务器管理器。 
+1. 通过 RDP 访问第一个节点，然后打开服务器管理器。 
 1. 选择“本地服务器”，然后在“计算机名称”下选择虚拟机的名称 。 
 1. 选择“重命名此计算机…”下的“更改…” 。 
 1. 将工作组名称的名称更改为有意义的名称，例如 `AGWORKGROUP`： 
@@ -63,11 +63,11 @@ ms.locfileid: "97359449"
 1. 选择“更多…”以打开“DNS 后缀和 NetBIOS 计算机名”对话框 。 
 1. 在“此计算机的主 DNS 后缀”下键入 DNS 后缀的名称，例如 `ag.wgcluster.example.com`，然后选择“确定” ： 
 
-   ![屏幕截图显示了 "D N S 后缀和 NetBIOS 计算机名" 对话框，你可以在其中输入值。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![该屏幕截图显示你可在其中输入值的“DNS 后缀和 NetBIOS 计算机名称”对话框。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. 确认“完整计算机名”现在已显示 DNS 后缀，然后选择“确定”保存更改 ： 
 
-   ![屏幕截图显示了在何处查看完整的计算机名称。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![该屏幕截图显示了在何处查看完整的计算机名称。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. 当系统提示重启服务器时，请进行重启。 
 1. 在要用于可用性组的任何其他节点上重复这些步骤。 
@@ -78,7 +78,7 @@ ms.locfileid: "97359449"
 
 若要编辑主机文件，请执行以下步骤：
 
-1. RDP 连接到你的虚拟机。 
+1. 通过 RDP 访问虚拟机。 
 1. 使用文件资源管理器以转到 `c:\windows\system32\drivers\etc`。 
 1. 右键单击 hosts 文件，然后使用记事本（或任何其他文本编辑器）打开该文件 。
 1. 在该文件末尾，以 `IP Address, DNS Suffix #comment` 的形式为每个节点、可用性组和侦听器添加一个条目，如下所示： 
@@ -131,7 +131,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>创建云见证 
 
-在此步骤中，配置云共享见证。 如果你不熟悉这些步骤，请参阅 [为故障转移群集部署云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
+在此步骤中，配置云共享见证。 如果不熟悉这些步骤，请参阅[为故障转移群集部署云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
 ## <a name="enable-the-availability-group-feature"></a>启用可用性组功能 
 
@@ -287,7 +287,7 @@ GO
 
 ## <a name="configure-a-load-balancer"></a>配置负载均衡器
 
-在最后一步中，使用 [Azure 门户](availability-group-load-balancer-portal-configure.md) 或 [PowerShell](availability-group-listener-powershell-configure.md)配置负载均衡器。
+最后一个步骤使用 [Azure 门户](availability-group-load-balancer-portal-configure.md)或 [PowerShell](availability-group-listener-powershell-configure.md) 配置负载均衡器。
 
 
 ## <a name="next-steps"></a>后续步骤

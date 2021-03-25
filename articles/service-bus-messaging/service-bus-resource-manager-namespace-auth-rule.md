@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b0ffe022f6c61cf7d06c510c4f8fa5c764d72b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067182"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为命名空间和队列创建服务总线授权规则
@@ -44,7 +44,7 @@ ms.locfileid: "88067182"
 
 [![部署到 Azure](./media/service-bus-resource-manager-namespace-auth-rule/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F301-servicebus-create-authrule-namespace-and-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
@@ -95,7 +95,7 @@ ms.locfileid: "88067182"
 
 ## <a name="resources-to-deploy"></a>要部署的资源
 
-创建**消息传送**类型的标准服务总线命名空间，以及命名空间和实体的服务总线授权规则。
+创建 **消息传送** 类型的标准服务总线命名空间，以及命名空间和实体的服务总线授权规则。
 
 ```json
 "resources": [

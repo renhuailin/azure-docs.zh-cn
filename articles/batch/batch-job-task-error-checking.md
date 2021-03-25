@@ -6,21 +6,21 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: markscu
 ms.openlocfilehash: d8cf3b5e28d4455e00e0bdcbae2063771d3e8acd
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95736793"
 ---
 # <a name="job-and-task-error-checking"></a>作业和任务错误检查
 
-添加作业和任务时可能会出现各种错误。 检测这些操作的错误的方式非常直接，因为任何错误都会由 API、CLI 或 UI 立即返回。 但是，当作业和任务已计划并运行时，还可能会发生失败。
+添加作业和任务时可能会出现各种错误。 检测这些操作的错误的方式非常直接，因为任何错误都会由 API、CLI 或 UI 立即返回。 但是，以后在计划和运行作业和任务时，也可能会发生失败。
 
-本文介绍了在提交作业和任务后可能会发生的错误，以及如何检查和处理这些错误。
+本文介绍在提交作业和任务后可能出现的错误，以及如何检查和处理这些错误。
 
 ## <a name="jobs"></a>作业
 
-作业是一个或多个任务的分组，任务实际上指定要运行的命令行。
+作业是包含一个或多个任务的分组，任务实际指定了要运行的命令行。
 
 添加作业时，可以指定以下影响作业失败方式的参数：
 
@@ -51,7 +51,7 @@ ms.locfileid: "95736793"
 
 ### <a name="job-release-tasks"></a>作业发布任务
 
-如果为作业指定了作业释放任务，则在终止某个作业时，将在运行作业准备任务的每个池节点上运行作业释放任务的实例。 应检查作业发布任务实例，确定是否存在错误：
+如果为某个作业指定了作业释放任务，则当终止某个作业时，会在运行了作业准备任务的每个池节点上运行作业释放任务的实例。 应检查作业发布任务实例，确定是否存在错误：
 
 - 可以使用[列出准备和发布任务状态](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) API 从作业中获取所有正在运行的作业发布任务实例。 与任何任务一样，[执行信息](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation)可与 `failureInfo`、`exitCode` 和 `result` 等属性一起使用。
 - 如果一个或多个作业发布任务失败，该作业仍会终止，并变为 `completed` 状态。
@@ -61,8 +61,8 @@ ms.locfileid: "95736793"
 以下几个原因可能导致作业任务失败：
 
 - 任务命令行失败，返回非零退出代码。
-- 已 `resourceFiles` 为任务指定，但出现了一个错误，即一个或多个文件未下载。
-- 已 `outputFiles` 为任务指定，但出现了一个错误，即一个或多个文件未上传。
+- 为任务指定了 `resourceFiles`，但发生了表示未下载一个或多个文件的失败。
+- 为任务指定了 `outputFiles`，但发生了表示未上传一个或多个文件的失败。
 - 超出了任务[约束](/rest/api/batchservice/task/add#taskconstraints)中的 `maxWallClockTime` 属性指定的任务运行时间。
 
 在所有情况下，都必须检查以下属性是否存在错误，并查看错误相关信息：
@@ -81,9 +81,9 @@ ms.locfileid: "95736793"
 
 如果用于运行任务的池节点仍存在，则可以获取并查看日志文件。 例如，Azure 门户将列出并可以查看任务或池节点的日志文件。 通过多个 API 还可以列出和获取任务文件，如[从任务中获取](/rest/api/batchservice/file/getfromtask)。
 
-由于池和池节点通常是暂时的，因此，在持续添加和删除节点的情况下，我们建议保存日志文件。 [任务输出文件](./batch-task-output-files.md)是将日志文件保存到 Azure 存储的一种简便方法。
+由于池和池节点通常是临时性的，会不断地添加和删除节点，因此建议保存日志文件。 [任务输出文件](./batch-task-output-files.md)是将日志文件保存到 Azure 存储的一种简便方法。
 
-计算节点上的任务执行的命令行不在 shell 下运行，因此它们无法以本机方式利用 shell 功能，例如环境变量扩展。 若要利用此类功能，必须 [在命令行中调用 shell](batch-compute-node-environment-variables.md#command-line-expansion-of-environment-variables)。
+计算节点上的任务所执行的命令行不在 shell 下运行，因此它们无法原生地利用 shell 功能（例如环境变量扩展）。 若要利用此类功能，必须[在命令行中调用 shell](batch-compute-node-environment-variables.md#command-line-expansion-of-environment-variables)。
 
 ### <a name="output-file-failures"></a>输出文件错误
 
@@ -92,4 +92,4 @@ ms.locfileid: "95736793"
 ## <a name="next-steps"></a>后续步骤
 
 - 检查应用程序是否实现了全面的错误检查；及时检测和诊断问题非常重要。
-- 了解有关 [作业和任务](jobs-and-tasks.md)的详细信息。
+- 详细了解[作业和任务](jobs-and-tasks.md)。

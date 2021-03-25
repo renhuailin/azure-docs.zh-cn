@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a11869c3b606ed9e74ce4f598109139fa1bb4164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89012817"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
@@ -98,7 +98,7 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
  ```
 
-现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时将值指定为 *应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
 使用 PowerShell 时，参数将以[哈希表](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10))的形式提供给 `New-ServiceFabricApplication`：
 

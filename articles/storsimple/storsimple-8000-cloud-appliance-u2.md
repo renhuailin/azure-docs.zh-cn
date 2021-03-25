@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968836"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
@@ -81,7 +81,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 在预配云设备之前，需要在 Azure 环境中做好以下准备：
 
 * 确保在数据中心部署并运行 StorSimple 8000 系列物理设备（型号为 8100 或 8600）。 将此设备注册到要为其创建 StorSimple 云设备的 StorSimple 设备管理器服务。
-* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是对应于 [按区域列出的 Azure 服务](https://azure.microsoft.com/regions/services/)的磁盘存储行的区域。
+* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是 [Azure 服务（按区域）](https://azure.microsoft.com/regions/services/)列表中与“磁盘存储”所在的行对应的区域。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建云设备会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用云设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/windows/quick-create-portal.md)（主机服务器）。 这些服务器必须满足以下要求：

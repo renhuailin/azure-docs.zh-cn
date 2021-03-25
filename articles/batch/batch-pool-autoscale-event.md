@@ -1,20 +1,20 @@
 ---
 title: Azure Batch 池自动缩放事件
-description: Batch 池自动缩放事件的参考，一旦执行池自动缩放，就会发出此事件。 日志内容将公开池的自动缩放公式和计算结果。
+description: Batch 池自动缩放事件的引用，执行池自动缩放后，将发出此事件。 日志内容将公开池的自动缩放公式和计算结果。
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e548ed484e5f683a8f79434ce4095ac66900f01a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91852107"
 ---
 # <a name="pool-autoscale-event"></a>池自动缩放事件
 
  执行池自动缩放后，将发出此事件。 日志内容将公开池的自动缩放公式和计算结果。
 
- 下面的示例显示了池自动缩放的池自动缩放事件的正文，该自动缩放因样本数据不足而失败。
+ 以下示例显示了池自动缩放的池自动缩放事件的正文，该自动缩放由于样本数据不足而失败。
 
 ```
 {
@@ -36,7 +36,7 @@ ms.locfileid: "91852107"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|字符串|池的 ID。|
+|`id`|String|池的 ID。|
 |`timestamp`|DateTime|执行自动缩放时的时间戳。|
 |`formula`|字符串|为自动缩放定义的公式。|
 |`results`|字符串|公式中使用的所有变量的计算结果。|

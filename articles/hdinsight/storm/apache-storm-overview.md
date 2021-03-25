@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: a2bca34f683df27c97b131d57c6c3278f7cb175e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 867f042332457ebc5fdd6b1f10ce7fb636309ba8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928906"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865326"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -42,7 +42,7 @@ Storm on HDInsight 提供以下功能：
 
 Storm 运行的是拓扑，而不是你可能熟悉的 [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 作业。 Storm 拓扑由多个以有向无环图 (DAG) 形式排列的组件构成。 数据在该图中的组件之间流动。 每个组件使用一个或多个数据流，并可选择性地发出一个或多个流。 下图演示了一个基本单词计数拓扑中组件之间的数据流动方式：
 
-![Storm 拓扑中组件排列方式的示例](./media/apache-storm-overview/example-apache-storm-topology-diagram.png)
+:::image type="content" source="./media/apache-storm-overview/example-apache-storm-topology-diagram.png" alt-text="Storm 拓扑中组件排列方式的示例" border="false":::
 
 * Spout 组件将数据引入拓扑。 它们将一个或多个流发出到拓扑中。
 
@@ -56,7 +56,7 @@ Nimbus 节点提供的功能与 Apache Hadoop JobTracker 类似。 Nimbus 通过
 
 Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点将会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
 
-![nimbus、zookeeper 和 supervisor 示意图](./media/apache-storm-overview/storm-diagram-nimbus.png)
+:::image type="content" source="./media/apache-storm-overview/storm-diagram-nimbus.png" alt-text="nimbus、zookeeper 和 supervisor 示意图" border="false":::
 
 ## <a name="ease-of-use"></a>易于使用
 

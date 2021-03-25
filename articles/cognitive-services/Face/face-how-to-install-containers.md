@@ -13,10 +13,10 @@ ms.date: 02/23/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, 标识
 ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101706786"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装和运行人脸容器（预览版）

@@ -1,13 +1,13 @@
 ---
 title: 管理已签名的映像
-description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任实现 Docker 内容信任，是高级服务层的一项功能。
+description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任会实现 Docker 内容信任，是高级服务层的一项功能。
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148581"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
@@ -21,11 +21,11 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 对于在设计时需考虑安全性的任何分布式系统来说，重要的是验证进入系统的数据的源和完整性。 数据的使用者需要能够验证数据的发布者（源），并确保数据在发布后未修改过（完整性）。 
 
-作为映像发布者，你可以通过内容信任对发布到注册表的映像进行**签名**。 映像的使用者（从注册表拉取映像的人或系统）可以将其客户端配置为仅拉取签名的映像。 当映像使用者拉取签名的映像时，其 Docker 客户端会验证映像的完整性。 在此模型中，可以向使用者确保你注册表中的签名映像确实是你发布的，且自发布后未作修改。
+作为映像发布者，你可以通过内容信任对发布到注册表的映像进行 **签名**。 映像的使用者（从注册表拉取映像的人或系统）可以将其客户端配置为仅拉取签名的映像。 当映像使用者拉取签名的映像时，其 Docker 客户端会验证映像的完整性。 在此模型中，可以向使用者确保你注册表中的签名映像确实是你发布的，且自发布后未作修改。
 
 ### <a name="trusted-images"></a>受信任的映像
 
-内容信任使用存储库中的**标记**。 映像存储库包含的映像可以带签名的和未签名的标记。 例如，可以只对 `myimage:stable` 和 `myimage:latest` 映像签名，而不对 `myimage:dev` 映像签名。
+内容信任使用存储库中的 **标记**。 映像存储库包含的映像可以带签名的和未签名的标记。 例如，可以只对 `myimage:stable` 和 `myimage:latest` 映像签名，而不对 `myimage:dev` 映像签名。
 
 ### <a name="signing-keys"></a>签名密钥
 
@@ -72,17 +72,17 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 只有已获得授权的用户或系统能够向注册表推送受信任的映像。 若要向用户（或使用服务主体的系统）授予受信任映像的推送权限，请为其 Azure Active Directory 标识授予 `AcrImageSigner` 角色。 这是在 `AcrPush`（或等效）角色（此角色是将映像推送到注册表所必需的）基础上添加的角色。 有关详细信息，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。
 
 > [!IMPORTANT]
-> 不能将受信任的映像推送权限授予以下管理帐户： 
+> 不能将受信任映像推送权限授予以下管理帐户： 
 > * Azure 容器注册表的[管理员帐户](container-registry-authentication.md#admin-account)
-> * 在 Azure Active Directory 中具有 [经典系统管理员角色](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)的用户帐户。
+> * Azure Active Directory 中具有[经典系统管理员角色](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)的用户帐户。
 
 下面是在 Azure 门户和 Azure CLI 中授予 `AcrImageSigner` 角色的详细信息。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加角色分配”。 在“添加角色分配”下的“角色”下选择“`AcrImageSigner`”， 然后**选择**一个或多个用户或服务主体，然后单击“保存”。
+导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加角色分配”。 在“添加角色分配”下的“角色”下选择“`AcrImageSigner`”， 然后 **选择** 一个或多个用户或服务主体，然后单击“保存”。
 
-在此示例中，为两个实体分配了 `AcrImageSigner` 角色：一个名为 "服务主体" 的服务主体，以及一个名为 "Azure 用户" 的用户。
+在此示例中，为以下两个实体分配了 `AcrImageSigner` 角色：名为“service-principal”的服务主体，以及名为“Azure 用户”的用户。
 
 ![在 Azure 门户中授予 ACR 映像签名权限][content-trust-02-portal]
 
@@ -94,7 +94,7 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 az role assignment create --scope <registry ID> --role AcrImageSigner --assignee <user name>
 ```
 
-例如，若要向非管理用户授予角色，可以在经过身份验证的 Azure CLI 会话中运行以下命令。 修改 `REGISTRY` 值，使之反映 Azure 容器注册表的名称。
+例如，若要向非管理用户授予角色，可以在经身份验证的 Azure CLI 会话中运行以下命令。 修改 `REGISTRY` 值，使之反映 Azure 容器注册表的名称。
 
 ```bash
 # Grant signing permissions to authenticated Azure CLI user
@@ -115,11 +115,11 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份角色的信息，请参阅 [使用 Azure CLI 添加或删除 azure 角色分配](../role-based-access-control/role-assignments-cli.md) 和 [Azure RBAC 故障排除](../role-based-access-control/troubleshooting.md)。
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证角色身份的信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-cli.md)以及[排查 Azure RBAC 问题](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 
-若要将受信任的映像标记推送到容器注册表，请启用内容信任并使用 `docker push` 推送映像。 首次使用已签名标记的推送完成后，系统会要求你创建根签名密钥和存储库签名密钥的密码。 根密钥和存储库密钥都是以本地方式在计算机上生成并存储的。
+若要将受信任的映像标记推送到容器注册表，请启用内容信任并使用 `docker push` 推送映像。 首次使用已签名标记进行推送后，系统会要求你为根签名密钥和存储库签名密钥创建密码。 根密钥和存储库密钥都是以本地方式在计算机上生成并存储的。
 
 ```console
 $ docker push myregistry.azurecr.io/myimage:v1
@@ -158,7 +158,7 @@ Status: Downloaded newer image for myregistry.azurecr.io/myimage@sha256:0800d17e
 Tagging myregistry.azurecr.io/myimage@sha256:0800d17e37fb4f8194495b1a188f121e5b54efb52b5d93dc9e0ed97fce49564b as myregistry.azurecr.io/myimage:signed
 ```
 
-如果启用了内容信任的客户端尝试提取无符号标记，则操作将失败并出现类似于下面的错误：
+如果客户端在启用内容信任的情况下尝试拉取未签名的标记，则操作会失败，并显示类似以下内容的错误：
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:unsigned
@@ -170,7 +170,7 @@ Error: remote trust data does not exist
 运行 `docker pull` 时，Docker 客户端使用与 [Notary CLI][docker-notary-cli] 中的库相同的库为要拉取的标记请求 tag-to-SHA-256 摘要映射。 在验证信任数据上的签名以后，客户端会指示 Docker 引擎执行“按摘要进行的拉取”操作。 在拉取过程中，引擎使用 SHA-256 校验和作为内容地址，以便从 Azure 容器注册表请求映像清单并对其进行验证。
 
 > [!NOTE]
-> Azure 容器注册表不支持公证人 CLI，但与 Docker Desktop 随附的公证人服务器 API 兼容。 建议使用当前公证人版本的 **0.6.0** 。
+> Azure 容器注册表不正式支持 Notary CLI，但与 Docker Desktop 随附的 Notary Server API 兼容。 目前推荐使用 Notary 版本 0.6.0。
 
 ## <a name="key-management"></a>密钥管理
 
@@ -201,7 +201,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关内容信任的其他信息（包括[docker 信任](https://docs.docker.com/engine/reference/commandline/trust/)命令和[信任委派](https://docs.docker.com/engine/security/trust/trust_delegation/)），请参阅[Docker 中的内容信任][docker-content-trust]。 虽然本文介绍了一些要点，但内容信任是一个范围广泛的主题，若要深入进行了解，请查看 Docker 文档。
+* 有关内容信任的更多信息（包括 [docker trust](https://docs.docker.com/engine/reference/commandline/trust/) 命令和[信任委派](https://docs.docker.com/engine/security/trust/trust_delegation/)），请参阅 [Docker 中的内容信任][docker-content-trust]。 虽然本文介绍了一些要点，但内容信任是一个范围广泛的主题，若要深入进行了解，请查看 Docker 文档。
 
 * 有关在生成和推送 Docker 映像时使用内容信任的示例，请参阅 [Azure Pipelines](/azure/devops/pipelines/build/content-trust) 文档。
 

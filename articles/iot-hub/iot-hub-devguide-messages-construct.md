@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147694"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
@@ -42,9 +42,9 @@ IoT 中心消息由以下部分组成：
 
 * 设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 批最大可为 256 KB。
 
-* IoT 中心不允许任意分区。 设备到云的消息根据其源于的 **deviceId**进行分区。
+* IoT 中心不允许任意分区。 设备到云的消息根据其源于的 **deviceId** 进行分区。
 
-* 如[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中所述，IoT 中心允许基于设备的身份验证和访问控制。
+* 如[控制对 IoT 中心的访问](iot-hub-devguide-security.md)所述，IoT 中心允许基于设备的身份验证和访问控制。
 
 * 对于包含要进入应用程序属性的信息的消息，可以加上戳记。 有关详细信息，请参阅[消息扩充](iot-hub-message-enrichments-overview.md)。
 
@@ -59,10 +59,10 @@ IoT 中心消息由以下部分组成：
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 是 | userId |
 | iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId** 。 | 否 | connectionDeviceId |
 | iothub-connection-module-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **moduleId**。 | 否 | connectionModuleId |
-| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **connectionDeviceGenerationId**（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
+| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **connectionDeviceGenerationId**（根据 [设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | connectionAuthMethod |
-| dt-dataschema | 此值由 IoT 中心在设备到云消息上设置。 它包含设备连接中设置的设备型号 ID。 | 否 | 空值 |
-| dt-subject | 正在发送设备到云消息的组件的名称。 | 是 | 空值 |
+| dt-dataschema | 此值是由 IoT 中心对设备到云的消息设置的。 它包含在设备连接中设置的设备型号 ID。 | 否 | 空值 |
+| dt-subject | 正在发送设备到云的消息的组件的名称。 | 是 | 空值 |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系统属性
 

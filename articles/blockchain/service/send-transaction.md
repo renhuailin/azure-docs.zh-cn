@@ -5,10 +5,10 @@ ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
 ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763683"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>教程：在 Azure 区块链服务中创建、生成和部署智能合同
@@ -110,7 +110,7 @@ SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMes
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
+1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

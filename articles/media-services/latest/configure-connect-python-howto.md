@@ -15,10 +15,10 @@ ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-python
 ms.openlocfilehash: 76df8baaf170b05762b93478a496eb1e9ed802d5
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94916740"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>连接到媒体服务 v3 API - Python
@@ -44,7 +44,7 @@ ms.locfileid: "94916740"
 * `azure-mgmt-resource` 模块，其中包括用于 Active Directory 的 Azure 模块。
 * `azure-mgmt-media` 模块，其中包括媒体服务实体。
 
-    请确保获取 [最新版本的适用于 Python 的媒体服务 SDK](https://pypi.org/project/azure-mgmt-media/)。
+    确保获取[适用于 Python 的媒体服务 SDK 的最新版本](https://pypi.org/project/azure-mgmt-media/)。
 
 打开命令行工具并使用以下命令安装这些模块。
 

@@ -9,10 +9,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075250"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
@@ -221,7 +221,7 @@ New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-要运行[完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
+要运行 [完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

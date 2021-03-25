@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/28/2020
 ms.openlocfilehash: a3e701f3d433b5b52d8992035ac4ad75b78cb795
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100386690"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
@@ -26,7 +26,7 @@ ms.locfileid: "100386690"
 
 以下活动支持此 SAP ECC 连接器：
 
-- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP ECC 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -73,7 +73,7 @@ ms.locfileid: "100386690"
 
 SAP ECC 链接服务支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapEcc`。 | 是 |
 | `url` | SAP ECC OData 服务的 URL。 | 是 |
@@ -112,7 +112,7 @@ SAP ECC 链接服务支持以下属性：
 
 支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | `path` | SAP ECC OData 实体的路径。 | 是 |
 
@@ -145,7 +145,7 @@ SAP ECC 链接服务支持以下属性：
 
 复制活动的 `source` 节支持以下属性：
 
-| 属性 | 描述 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | `type` | 复制活动的 `source` 节的 `type` 属性必须设置为 `SapEccSource`。 | 是 |
 | `query` | 用于筛选数据的 OData 查询选项。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 连接器会从以下组合 URL 复制数据：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |

@@ -11,10 +11,10 @@ ms.date: 08/04/2020
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/15/2020
 ms.openlocfilehash: 2165351bee4ee260e768c10b23e26bf095779cad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88684637"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>快速入门：使用 ARM 模板创建通知中心
@@ -46,7 +46,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，允许你�
 
 选择下图登录到 Azure 并打开一个模板。 模板采用通知中心命名空间名称作为参数。 然后，该模板创建一个具有该名称的命名空间，并在该命名空间中创建名为“MyHub”的通知中心。
 
-[![“部署到 Azure”](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-notification-hub%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 

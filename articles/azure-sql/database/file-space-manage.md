@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 12/22/2020
 ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99096485"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**数据最大大小**|可由弹性池用于其所有数据库的最大数据空间量。|为弹性池分配的空间不应超过弹性池最大大小。  如果发生这种情况，可通过收缩数据库数据文件来回收未使用的空间。|
 
 > [!NOTE]
-> 错误消息 "弹性池已达到其存储限制" 表示数据库对象分配了足够的空间来满足弹性池存储限制，但数据空间分配中可能存在未使用的空间。 请考虑增加弹性池的存储限制或短期解决方案，使用下面的 [**回收未使用的已分配空间**](#reclaim-unused-allocated-space) 部分释放数据空间。 还应注意缩减数据库文件对性能产生负面影响的可能性，请参阅下面的 " [**重新生成索引**](#rebuild-indexes) " 一节。
+> “弹性池已达到其存储限制”错误消息表示数据库对象已分配足够的空间来满足弹性池存储上限，但分配的数据空间中可能存在未使用的空间。 请考虑增加弹性池的存储上限，或者采用短期的解决办法，即使用下面的[回收已分配但未使用的空间](#reclaim-unused-allocated-space)部分来释放数据空间。 还应注意删减数据库文件对性能造成的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>查询弹性池的存储空间信息
 
@@ -151,7 +151,7 @@ ORDER BY end_time DESC;
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
-PowerShell 脚本需要 SQL Server PowerShell 模块–请参阅 [下载 PowerShell 模块](/sql/powershell/download-sql-server-ps-module) 进行安装。
+PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](/sql/powershell/download-sql-server-ps-module)进行安装。
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -190,7 +190,7 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 
 ### <a name="elastic-pool-data-max-size"></a>弹性池数据最大大小
 
-修改以下 T-sql 查询，返回上次记录的弹性池数据最大大小。  查询结果以 MB 为单位。
+修改以下 T-SQL 查询，返回上次记录的弹性池数据最大大小。  查询结果以 MB 为单位。
 
 ```sql
 -- Connect to master
@@ -204,7 +204,7 @@ ORDER BY end_time DESC;
 ## <a name="reclaim-unused-allocated-space"></a>回收已分配但未使用的空间
 
 > [!NOTE]
-> 收缩命令在运行时影响数据库性能，如果可能，应在使用率较低的时间段内运行。
+> Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
 
 ### <a name="dbcc-shrink"></a>DBCC 收缩
 
@@ -215,16 +215,16 @@ ORDER BY end_time DESC;
 DBCC SHRINKDATABASE (N'db1');
 ```
 
-收缩命令在运行时影响数据库性能，如果可能，应在使用率较低的时间段内运行。  
+Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
 
-还应注意缩减数据库文件对性能产生负面影响的可能性，请参阅下面的 " [**重新生成索引**](#rebuild-indexes) " 一节。
+还应注意删减数据库文件对性能造成的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。
 
 有关此命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 
 ### <a name="auto-shrink"></a>自动收缩
 
 或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。  在管理包含多个数据库的弹性池时，自动收缩可能特别有用。  但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
-默认情况下，按建议为大多数数据库禁用自动收缩。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+默认情况下，建议为大多数数据库禁用“自动收缩”。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
 
 若要启用自动收缩，请修改以下命令中的数据库名称。
 

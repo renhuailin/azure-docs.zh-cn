@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教程：Azure Active Directory 与 Percolate 的集成
@@ -112,11 +112,11 @@ ms.locfileid: "92522251"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    1. **登录 URL** 。
+    1. **登录 URL**。
 
-    1. **Azure AD 标识符** 。
+    1. **Azure AD 标识符**。
 
-    1. **注销 URL** 。
+    1. **注销 URL**。
 
 ### <a name="configure-percolate-single-sign-on"></a>配置 Percolate 单一登录
 
@@ -162,7 +162,7 @@ ms.locfileid: "92522251"
 
     ![“用户”对话框](common/user-properties.png)
 
-    1. 在“姓名”  框中，输入 **BrittaSimon** 。
+    1. 在“姓名”  框中，输入 **BrittaSimon**。
   
     1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension> 。 （例如：BrittaSimon@contoso.com。）
 

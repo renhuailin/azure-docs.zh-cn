@@ -7,13 +7,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389665"
 ---
-# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>为 Redis 实例的高级 Azure 缓存配置 Redis 群集
+# <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置 Redis 群集功能
 
 Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.io/topics/cluster-tutorial)的一样。 Redis 群集具有以下优势： 
 
@@ -26,7 +26,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 在 Azure 中，Redis 群集以主/副模型提供。在该模型中，每个分片都有一个带副本的主/副对，副本由 Azure Redis 缓存服务管理。 
 
-## <a name="set-up-clustering"></a>设置群集
+## <a name="set-up-clustering"></a>设置群集功能
 
 在创建缓存期间，在“新建 Azure Redis 缓存”边栏选项卡上启用群集功能  。 
 

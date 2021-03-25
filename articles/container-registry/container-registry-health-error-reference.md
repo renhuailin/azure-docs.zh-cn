@@ -4,17 +4,17 @@ description: 在 Azure 容器注册表中运行 az acr check-health 命令时出
 ms.topic: article
 ms.date: 01/25/2021
 ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99061862"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
 下面是有关 [az acr check-health][az-acr-check-health] 命令返回的错误代码的详细信息。 其中针对每个错误列出了可能的解决方法。
 
-有关运行的信息 `az acr check-healh` ，请参阅 [检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
+有关运行 `az acr check-healh` 的信息，请参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -54,7 +54,7 @@ ms.locfileid: "99061862"
 
 ## <a name="cmk_error"></a>CMK_ERROR
 
-此错误表示注册表无法访问用户分配的或列值分配的托管标识，该标识用于使用客户托管的密钥来配置注册表加密。 托管标识可能已被删除。  
+此错误表示注册表无法访问用户分配或系统分配的托管标识，只有使用该标识才能通过客户管理的密钥配置注册表加密。 托管标识可能已被删除。  
 
 *可能的解决方案*：若要解决此问题并使用其他托管标识轮换密钥，请参阅对 [用户分配的标识](container-registry-customer-managed-keys.md#troubleshoot)进行故障排除的步骤。
 

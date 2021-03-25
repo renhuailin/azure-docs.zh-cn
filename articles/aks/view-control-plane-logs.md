@@ -1,19 +1,19 @@
 ---
 title: 查看 Azure Kubernetes 服务 (AKS) 控制器日志
-description: '了解如何启用和查看 Azure Kubernetes Service (AKS 中的 Kubernetes 控制平面日志) '
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 中启用和查看 Kubernetes 控制平面的日志
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.openlocfilehash: 4027b2ca66b4d4319f7df347df6d671e6d48b772
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735125"
 ---
-# <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>启用并查看 Azure Kubernetes 服务中的 Kubernetes 控制平面日志 (AKS) 
+# <a name="enable-and-review-kubernetes-control-plane-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中启用和查看 Kubernetes 控制平面日志
 
-使用 Azure Kubernetes Service (AKS) 时，控制平面组件（例如 *kube-apiserver* 和 *kube* ）将作为托管服务提供。 创建和管理运行 *kubelet* 与容器运行时的节点，并通过托管的 Kubernetes API 服务器部署应用程序。 为了帮助排查您的应用程序和服务问题，您可能需要查看这些控制平面组件生成的日志。 本文介绍如何使用 Azure Monitor 日志来启用和查询来自 Kubernetes 控制平面组件的日志。
+使用 Azure Kubernetes 服务 (AKS)，可以提供 kube-apiserver 和 kube-controller-manager 等控制平面组件作为托管服务。 创建和管理运行 *kubelet* 与容器运行时的节点，并通过托管的 Kubernetes API 服务器部署应用程序。 为帮助排查应用程序和服务问题，可能需要查看这些控制平面组件生成的日志。 本文介绍了如何使用 Azure Monitor 日志从 Kubernetes 控制平面组件启用和查询日志。
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -23,14 +23,14 @@ ms.locfileid: "101735125"
 
 为帮助收集和审查来自多个源的数据，Azure Monitor 日志提供了查询语言和分析引擎，该引擎可提供环境的见解。 工作区用于整理和分析数据，并可与 Application Insights 和安全中心等其他 Azure 服务集成。 若要使用不同的平台分析日志，可以选择将资源日志发送到 Azure 存储帐户或事件中心。 有关详细信息，请参阅[什么是 Azure Monitor 日志？][log-analytics-overview]。
 
-Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS 群集中的 Kubernetes 控制平面组件启用日志收集，请在 web 浏览器中打开 Azure 门户并完成以下步骤：
+Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS 群集中的 Kubernetes 控制平面组件启用日志收集，请在 Web 浏览器中打开 Azure 门户并完成以下步骤：
 
 1. 选择 AKS 群集的资源组，例如 *myResourceGroup*。 不要选择包含单个 AKS 群集资源的资源组，例如 *MC_myResourceGroup_myAKSCluster_eastus*。
 
 2. 在左侧选择“诊断设置”。
 
-3. 选择 AKS 群集（如 *myAKSCluster*），然后选择 " **添加诊断设置**"。
-  :::image type="content" source="media\view-control-plane-logs\select-add-diagnostic-setting.PNG" alt-text="浏览器窗口中的 Azure 门户屏幕截图，显示诊断设置，指出应选择 &quot;添加诊断设置&quot;":::
+3. 选择你的 AKS 群集（例如 myAKSCluster），然后选择“添加诊断设置”。
+  :::image type="content" source="media\view-control-plane-logs\select-add-diagnostic-setting.PNG" alt-text="浏览器窗口中的 Azure 门户的屏幕截图，其中显示了诊断设置，并指示应当选择“添加诊断设置”":::
 
 4. 输入名称（例如 myAKSClusterLogs），然后选择“发送到 Log Analytics 工作区”选项。
 
@@ -39,7 +39,7 @@ Azure Monitor 日志是在 Azure 门户中启用和管理的。 若要为 AKS �
 6. 在可用日志列表中，选择要启用的日志。 对于本示例，请启用 kube-audit 和 kube-audit-admin 日志 。 常见日志包括 kube-apiserver、kube-controller-manager 和 kube-scheduler。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
 
 7. 准备就绪后，选择“保存”以启用收集选定日志。
-  :::image type="content" source="media\view-control-plane-logs\settings-selected.PNG" alt-text="Azure 门户的 &quot;添加诊断设置&quot; 屏幕的屏幕截图。已选择 &quot;发送到 Log Analytics 工作区&quot; 和日志 &quot;kube&quot; 和 &quot;kube&quot; 的目标":::
+  :::image type="content" source="media\view-control-plane-logs\settings-selected.PNG" alt-text="屏幕截图显示了 Azure 门户的“添加诊断设置”屏幕。选择了目标“发送到 Log Analytics 工作区”，并且选择了日志“kube-audit”和“kube-audit-admin”。":::
 
 ## <a name="log-categories"></a>日志类别
 
@@ -163,7 +163,7 @@ AKS 记录以下事件：
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在 AKS 群集中启用和查看 Kubernetes 控制平面组件的日志。 若要进一步进行监视和故障排除，还可以[查看 Kubelet 日志][kubelet-logs]并[启用 SSH 节点访问][aks-ssh]。
+在本文中，你已了解了如何在 AKS 群集中启用和查看 Kubernetes 控制平面组件的日志。 若要进一步进行监视和故障排除，还可以[查看 Kubelet 日志][kubelet-logs]并[启用 SSH 节点访问][aks-ssh]。
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

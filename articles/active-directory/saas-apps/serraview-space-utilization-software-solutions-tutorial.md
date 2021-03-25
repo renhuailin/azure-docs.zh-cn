@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 6c31a20b527dd6f4741d00b8306c0f88b27f2f6b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672840"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-serraview-space-utilization-software-solutions"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Serraview Space Utilization Software Solutions 的集成
@@ -48,8 +48,8 @@ ms.locfileid: "92672840"
 若要将 Serraview Space Utilization Software Solutions 的集成配置到 Azure AD，你需要从库中将 Serraview Space Utilization Software Solutions 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中键入 Serraview Space Utilization Software Solutions 。
 1. 从结果面板中选择“Serraview Space Utilization Software Solutions”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -80,11 +80,11 @@ ms.locfileid: "92672840"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`urn:Serraview:<SERRAVIEW_IDENTIFIER>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`urn:Serraview:<SERRAVIEW_IDENTIFIER>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.serraview.com/SAML/AssertionConsumerService.aspx`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.serraview.com/`
 

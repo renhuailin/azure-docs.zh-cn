@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 27512ac694f20544f1fdd5b79b27d7bf2cabdd66
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92675499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>教程：Azure Active Directory 与 SensoScientific Wireless Temperature Monitoring System 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92675499"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 SensoScientific Wireless Temperature Monitoring System 的集成，需要做好以下准备：
 
@@ -61,7 +61,7 @@ ms.locfileid: "92675499"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **SensoScientific Wireless Temperature Monitoring System** ，在结果面板中选择“SensoScientific Wireless Temperature Monitoring System”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **SensoScientific Wireless Temperature Monitoring System**，在结果面板中选择“SensoScientific Wireless Temperature Monitoring System”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“SensoScientific Wireless Temperature Monitoring System”](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92675499"
 
 若要配置 SensoScientific Wireless Temperature Monitoring System 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“SensoScientific Wireless Temperature Monitoring System”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“SensoScientific Wireless Temperature Monitoring System”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92675499"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 SensoScientific Wireless Temperature Monitoring System”部分，根据要求复制相应的 URL。 
+6. 在“设置 SensoScientific Wireless Temperature Monitoring System”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -119,17 +119,17 @@ ms.locfileid: "92675499"
 
 1. 以管理员身份登录到 SensoScientific Wireless Temperature Monitoring System 应用程序。
 
-1. 在顶部的导航菜单中单击“配置”，转到“单一登录”下面的“配置”打开“单一登录设置”并执行以下步骤：   
+1. 在顶部的导航菜单中单击“配置”，转到“单一登录”下面的“配置”打开“单一登录设置”并执行以下步骤：
 
     ![配置单一登录](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
-    a. 为“颁发者名称”选择“Azure AD”。 
+    a. 为“颁发者名称”选择“Azure AD”。
 
-    b. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”   。
+    b. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”。
 
-    c. 在“单一登录服务 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。  
+    c. 在“单一登录服务 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”。
 
-    d. 在“单一注销服务 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。  
+    d. 在“单一注销服务 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”。
 
     e. 浏览从 Azure 门户下载的证书并在此处上传。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92675499"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -157,17 +157,17 @@ ms.locfileid: "92675499"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SensoScientific Wireless Temperature Monitoring System 的权限，允许该用户使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“SensoScientific Wireless Temperature Monitoring System”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“SensoScientific Wireless Temperature Monitoring System”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SensoScientific Wireless Temperature Monitoring System”。 
+2. 在应用程序列表中，选择“SensoScientific Wireless Temperature Monitoring System”。
 
     ![“应用程序”列表中的“SensoScientific Wireless Temperature Monitoring System”链接](common/all-applications.png)
 

@@ -1,51 +1,53 @@
 ---
-title: 在 Azure Stack Edge Pro 设备上使用 Vm 的自定义脚本扩展
-description: 介绍如何在虚拟机上安装自定义脚本扩展 (Vm) 使用模板在 Azure Stack Edge Pro 设备上运行。
+title: 在 Azure Stack Edge Pro 设备上使用 VM 的自定义脚本扩展
+description: 介绍如何使用模板在 Azure Stack Edge Pro 设备的正在运行的虚拟机 (VM) 上安装自定义脚本扩展。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804865"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438006"
 ---
-# <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备上运行的 Vm 上部署自定义脚本扩展
+# <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备的正在运行的 VM 上部署自定义脚本扩展
 
-自定义脚本扩展将下载并运行 Azure Stack Edge Pro 设备上运行的虚拟机上的脚本或命令。 本文详细介绍如何使用 Azure 资源管理器模板安装和运行自定义脚本扩展。 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack 边缘迷你 R 设备。
+自定义脚本扩展会将脚本或命令下载到 Azure Stack Edge Pro 设备的正在运行的虚拟机上并运行它们。 本文详细介绍如何使用 Azure 资源管理器模板来安装并运行自定义脚本扩展。 
+
+本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 设备。
 
 ## <a name="about-custom-script-extension"></a>关于自定义脚本扩展
 
-自定义脚本扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 你可以从 Azure 存储或其他可访问的 internet 位置下载脚本，或者将脚本或命令提供给扩展运行时。
+自定义脚本扩展适用于部署后配置、软件安装或任何其他的配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，也可以将脚本或命令提供给扩展运行时。
 
 将自定义脚本扩展与 Azure 资源管理器模板集成。 也可使用 Azure CLI、PowerShell 或 Azure 虚拟机 REST API 来运行它。
 
-## <a name="os-for-custom-script-extension"></a>自定义脚本扩展的 OS
+## <a name="os-for-custom-script-extension"></a>适用于自定义脚本扩展的 OS
 
-#### <a name="supported-os-for-custom-script-extension-on-windows"></a>Windows 上的自定义脚本扩展支持的操作系统
+#### <a name="supported-os-for-custom-script-extension-on-windows"></a>Windows 上的自定义脚本扩展支持的 OS
 
-适用于 Windows 的自定义脚本扩展将在以下操作系统上运行。 其他版本可以正常工作，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行测试。
+适用于 Windows 的自定义脚本扩展会在以下 OS 上运行。 其他版本可能也有效，但尚未在 Azure Stack Edge Pro 设备的正在运行的 VM 上进行内部测试。
 
 | 分发 | 版本 |
 |---|---|
 | Windows Server 2019 | 核心 |
 | Windows Server 2016 | 核心 |
 
-#### <a name="supported-os-for-custom-script-extension-on-linux"></a>适用于 Linux 上的自定义脚本扩展的支持 OS
+#### <a name="supported-os-for-custom-script-extension-on-linux"></a>Linux 上的自定义脚本扩展支持的 OS
 
-适用于 Linux 的自定义脚本扩展将在以下操作系统上运行。 其他版本可以正常工作，但尚未在 Azure Stack Edge Pro 设备上运行的 Vm 上进行测试。
+适用于 Linux 的自定义脚本扩展会在以下 OS 上运行。 其他版本可能也有效，但尚未在 Azure Stack Edge Pro 设备的正在运行的 VM 上进行内部测试。
 
 | 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 18.04 LTS |
-| Linux：Red Hat Enterprise Linux | 7.4、7.5、7。7 |
+| Linux：Red Hat Enterprise Linux | 7.4、7.5、7.7 |
 
 <!--### Script location
 
@@ -62,24 +64,24 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 将[VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将下载内容解压缩到将用作工作目录的目录中。
+1. [将 VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将下载内容解压缩到将用作工作目录的那个目录中。
 
-1. 应在设备上创建并部署 VM。 若要创建 Vm，请遵循 [使用模板在 Azure Stack Edge Pro 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)中的所有步骤。
+1. 你应该已在设备上创建并部署 VM。 若要创建 VM，请按照[使用模板在 Azure Stack Edge Pro 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md) 中的所有步骤操作。
 
-    如果需要从外部下载 GitHub 或 Azure 存储中的脚本，请在配置计算网络时，启用连接到 Internet 的端口进行计算。 这允许您下载脚本。
+    如果需要从外部下载特定位置（例如 GitHub 或 Azure 存储）中的脚本，则请在配置计算网络时启用连接到 Internet 的端口，以便进行计算。 这样就可以下载脚本。
 
-    在以下示例中，端口2已连接到 internet，并已用于启用计算网络。 如果你在前面的步骤中确定不需要 Kubernetes，可以跳过 Kubernetes 节点 IP 和外部服务 IP 分配。
+    在以下示例中，端口 2 已连接到 Internet 并用于启用计算网络。 如果你已在前面的步骤中确定不需要 Kubernetes，则可以跳过 Kubernetes 节点 IP 和外部服务 IP 的分配。
 
-    ![在连接到 internet 的端口上启用计算设置](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+    ![在连接到 Internet 的端口上启用计算设置](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
 ## <a name="install-custom-script-extension"></a>安装自定义脚本扩展
 
-根据 VM 的操作系统，可以安装适用于 Windows 或 Linux 的自定义脚本扩展。
+可以根据 VM 的操作系统安装适用于 Windows 或 Linux 的自定义脚本扩展。
  
 
 ### <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
-若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtWindowsVM.parameters.json` 参数文件，然后部署模板 `addCSextensiontoVM.json` 。
+若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtWindowsVM.parameters.json` 参数文件，然后部署模板 `addCSextensiontoVM.json`。
 
 #### <a name="edit-parameters-file"></a>编辑参数文件
 
@@ -113,9 +115,9 @@ If your script is on a local server, then you may still need additional firewall
     }
 }
 ```
-提供 VM 名称、扩展的名称和要执行的命令。
+请提供 VM 名称、扩展名称和要执行的命令。
 
-下面是本文中使用的示例参数文件。
+下面是本文中使用过的参数文件示例。
 
 ```powershell
 {
@@ -147,7 +149,7 @@ If your script is on a local server, then you may still need additional firewall
 ```
 #### <a name="deploy-template"></a>部署模板
 
-部署模板 `addCSextensiontoVM.json` 。 此模板将扩展部署到现有 VM。 运行以下命令：
+部署模板 `addCSextensiontoVM.json`。 此模板将扩展部署到现有 VM。 运行下面的命令：
 
 ```powershell
 $templateFile = "<Path to addCSExtensiontoVM.json file>"
@@ -156,9 +158,9 @@ $RGName = "<Resource group name>"
 New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "<Deployment name>"
 ```
 > [!NOTE]
-> 扩展部署是一个长时间运行的作业，完成时间大约需要10分钟。
+> 扩展部署是一个长时间运行的作业，大约需要 10 分钟才能完成。
 
-下面是一个示例输出：
+下面是示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
@@ -191,12 +193,12 @@ PS C:\WINDOWS\system32>
 ```
 #### <a name="track-deployment"></a>跟踪部署
 
-若要检查给定 VM 的扩展部署状态，请运行以下命令： 
+要查看给定 VM 扩展的部署状态，请运行以下命令： 
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName <Name of resource group> -VMName <Name of VM> -Name <Name of the extension>
 ```
-下面是一个示例输出：
+下面是示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -224,7 +226,7 @@ PS C:\WINDOWS\system32>
 ```
 
 > [!NOTE]
-> 部署完成后，将 `ProvisioningState` 更改为 `Succeeded` 。
+> 部署完成后，`ProvisioningState` 将变为 `Succeeded`。
 
 扩展输出将记录到可在目标虚拟机上的以下目录中找到的文件中。 
 
@@ -237,15 +239,15 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-其中，<n> 是一个十进制整数，可以在不同的扩展执行之间更改。 1. * 值与扩展的实际值（当前值）相匹配 `typeHandlerVersion` 。 例如，此实例中的实际目录为 `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0` 。 
+其中，<n> 是一个十进制整数，可以在不同的扩展执行之间更改。 1\.* 值与扩展的 `typeHandlerVersion` 的当前实际值匹配。 例如，此实例中的实际目录为 `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0`。 
 
 
-在此实例中，为自定义扩展执行的命令为： `md C:\\Users\\Public\\Documents\\test` 。 成功安装扩展后，可以在命令中的指定路径验证是否已在虚拟机中创建了目录。 
+在此实例中，为自定义扩展执行的命令为 `md C:\\Users\\Public\\Documents\\test`。 成功安装扩展后，可以在命令中的指定路径验证是否已在 VM 中创建了目录。 
 
 
 ### <a name="custom-script-extension-for-linux"></a>适用于 Linux 的自定义脚本扩展
 
-若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtLinuxVM.parameters.json` 参数文件，然后部署模板 `addCSExtensiontoVM.json` 。
+若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtLinuxVM.parameters.json` 参数文件，然后部署模板 `addCSExtensiontoVM.json`。
 
 #### <a name="edit-parameters-file"></a>编辑参数文件
 
@@ -279,9 +281,9 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
     }
 }
 ```
-提供 VM 名称、扩展的名称和要执行的命令。
+请提供 VM 名称、扩展名称和要执行的命令。
 
-下面是本文中使用的示例参数文件：
+下面是本文中使用过的一个参数文件示例：
 
 ```powershell
 $templateFile = "<Path to addCSExtensionToVM.json file>"
@@ -291,9 +293,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 ``` 
 
 > [!NOTE]
-> 扩展部署是一个长时间运行的作业，完成时间大约需要10分钟。
+> 扩展部署是一个长时间运行的作业，大约需要 10 分钟才能完成。
 
-下面是一个示例输出：
+下面是示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
@@ -325,7 +327,7 @@ DeploymentDebugLogLevel :
 PS C:\WINDOWS\system32>
 ```
 
-`commandToExecute`已设置为 `file2.txt` 在目录中创建一个文件 `/home/Administrator` ，并且该文件的内容是 `some text` 。 在这种情况下，你可以验证是否已在指定的路径中创建了该文件。
+`commandToExecute` 已设置为在 `/home/Administrator` 目录中创建文件 `file2.txt`，该文件的内容是 `some text`。 在这种情况下，你可以验证是否已在指定的路径中创建了该文件。
 
 ```powershell
 Administrator@VM6:~$ dir
@@ -337,12 +339,12 @@ Administrator@VM6:
 
 #### <a name="track-deployment-status"></a>跟踪部署状态    
     
-模板部署是长时间运行的作业。 若要检查给定 VM 的扩展部署状态，请打开另一个 PowerShell 会话 (以管理员身份运行) 。 运行以下命令： 
+模板部署是一个长时间运行的作业。 要检查给定 VM 扩展的部署状态，请打开另一个 PowerShell 会话（以管理员身份运行）。 运行下面的命令： 
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName <VM Name> -Name <Extension Name>
 ```
-下面是一个示例输出： 
+下面是示例输出： 
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM5 -Name CustomScriptExtension
@@ -370,9 +372,9 @@ PS C:\WINDOWS\system32>
 ```
 
 > [!NOTE]
-> 部署完成后，将 `ProvisioningState` 更改为 `Succeeded` 。
+> 部署完成后，`ProvisioningState` 将变为 `Succeeded`。
 
-扩展执行输出将记录到以下文件中： `/var/lib/waagent/custom-script/download/0/` 。
+扩展执行输出将记录到以下文件：`/var/lib/waagent/custom-script/download/0/`。
 
 
 ## <a name="remove-custom-script-extension"></a>删除自定义脚本扩展
@@ -381,7 +383,7 @@ PS C:\WINDOWS\system32>
 
 `Remove-AzureRmVMExtension -ResourceGroupName <Resource group name> -VMName <VM name> -Name <Extension name>`
 
-下面是一个示例输出：
+下面是示例输出：
 
 ```powershell
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
@@ -396,4 +398,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 资源管理器 cmdlet](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)
+[Azure 资源管理器 cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

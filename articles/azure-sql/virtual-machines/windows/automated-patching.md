@@ -16,10 +16,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 429fe39f84a54c22fa97178b85f417d76dc84a8e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359466"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 虚拟机（资源管理器）上 SQL Server 的自动修补
@@ -64,9 +64,9 @@ ms.locfileid: "97359466"
 > 
 
 ## <a name="settings"></a>设置
-下表描述了可为自动修补配置的选项。 实际配置步骤根据使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
+下表描述了可为自动修补配置的选项。 实际配置步骤根据你使用的是 Azure 门户还是 Azure Windows PowerShell 命令而有所不同。
 
-| 设置 | 可能的值 | 说明 |
+| 设置 | 可能值 | 说明 |
 | --- | --- | --- |
 | **自动修补** |启用/禁用（已禁用） |为 Azure 虚拟机启用或禁用自动修补。 |
 | **维护计划** |每天、星期一、星期二、星期三、星期四、星期五、星期六、星期日 |为虚拟机下载和安装 Windows、SQL Server 和 Microsoft 更新的计划。 |

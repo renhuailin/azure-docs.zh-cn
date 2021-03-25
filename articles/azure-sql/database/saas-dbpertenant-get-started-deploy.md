@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 497e714289c834e026c6b9b767ed2b7af5442783
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780829"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署并探索一个多租户 SaaS 应用，该应用通过 Azure SQL 数据库使用“每租户一个数据库”模式
@@ -48,8 +48,8 @@ ms.locfileid: "92780829"
 
 在本部分的步骤中，你将提供一个用来确保资源名称全局唯一的用户值。 你还将为包含由应用部署创建的所有资源的资源组提供一个名称。 对于名为 Ann Finley 的虚构人员，建议输入以下名称：
 
-- **用户** ： *af1* 由 Ann Finley 的首字母加一个数字构成。 如果是第二次部署应用，则使用不同的值。 例如 af2。
-- **资源组** ： *wingtip-dpt-af1* 指示这是“每租户一个数据库”应用。 追加用户名 af1 来将资源组名称与它包含的资源的名称相关联。
+- **用户**：*af1* 由 Ann Finley 的首字母加一个数字构成。 如果是第二次部署应用，则使用不同的值。 例如 af2。
+- **资源组**：*wingtip-dpt-af1* 指示这是“每租户一个数据库”应用。 追加用户名 af1 来将资源组名称与它包含的资源的名称相关联。
 
 现在请选择自己的名称，并将其写下来。
 
@@ -64,9 +64,9 @@ ms.locfileid: "92780829"
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 建议创建一个新的资源组。 不要使用现有资源组、服务器或池。 不要将此应用程序、脚本或所部署的任何资源用于生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
 
-    - **资源组** ：选择“新建”，并为资源组提供之前所选的唯一名称。
+    - **资源组**：选择“新建”，并为资源组提供之前所选的唯一名称。
     - 位置：从下拉列表中选择一个位置。
-    - **用户** ：使用之前所选的用户名值。
+    - **用户**：使用之前所选的用户名值。
 
 1. 部署应用程序。
 
@@ -131,7 +131,7 @@ Wingtip 应用程序使用 [Azure 流量管理器](../../traffic-manager/traffic
     | URL 部分        | 说明       |
     | :-------------- | :---------------- |
     | events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> -dpt 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个“每租户应用”(-sa) 实现，或多租户数据库 (-mt) 实现。 |
-    | . *&lt;user&gt;* | 在示例中为 *af1* 。 |
+    | . *&lt;user&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |
     | &nbsp; | &nbsp; |
@@ -200,7 +200,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 初始部署会创建三个示例租户。 现在，请创建另一个租户，看看这对已部署的应用程序的影响。 在 Wingtip 应用中，用于预配新租户的工作流在[预配和目录教程](saas-dbpertenant-provision-and-catalog.md)中进行了说明。 在此阶段，要创建新的租户，此过程不超过 1 分钟。
 
 1. 打开一个新的 PowerShell ISE。
-2. 打开 ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1* 。
+2. 打开 ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*。
 3. 若要运行脚本，请按 F5。 暂时保留默认值。
 
    > [!NOTE]
@@ -223,7 +223,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 现在，你已针对该组租户运行了加载，下面让我们看看一些已部署的资源。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的 SQL 服务器列表。 然后打开 **catalog-dpt-&lt;USER&gt;** 服务器。
-    - 目录服务器包含两个数据库： **tenantcatalog** 和 **basetenantdb** （为了创建新租户而复制的模板数据库）。
+    - 目录服务器包含两个数据库：**tenantcatalog** 和 **basetenantdb**（为了创建新租户而复制的模板数据库）。
 
    ![屏幕截图显示了包含两个数据库的目录服务器“概览”页。](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
@@ -242,7 +242,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始查看某些监视功能。 这些功能内置于池和数据库中。
 
-浏览到服务器 **tenants1-dpt-&lt;user&gt;** ，然后选择 **Pool1** 来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
+浏览到服务器 **tenants1-dpt-&lt;user&gt;**，然后选择 **Pool1** 来查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
 
    ![监视池](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

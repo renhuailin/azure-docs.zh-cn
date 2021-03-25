@@ -4,10 +4,10 @@ description: 介绍如何将 Webhook 用作 Azure 事件网格事件的事件处
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: aa20c75789a18b93f787134dffe165e60ff1ab6f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91875795"
 ---
 # <a name="webhooks-automation-runbooks-logic-apps-as-event-handlers-for-azure-event-grid-events"></a>Webhook、自动化 runbook、逻辑应用作为 Azure 事件网格事件的事件处理程序
@@ -15,7 +15,7 @@ ms.locfileid: "91875795"
 
 > [!NOTE]
 > - 支持通过 Webhook 将 Azure 自动化 runbook 和逻辑应用用作事件处理程序。 
-> - 即使可以使用 **Webhook** 作为 **终结点类型** 来将 azure 函数配置为事件处理程序，也可以使用 **Azure 函数** 作为终结点类型。 有关详细信息，请参阅 [Azure 函数作为事件处理程序](handler-functions.md)。
+> - 尽管可以使用“Webhook”作为终结点类型来将 Azure 函数配置为事件处理程序，但请使用“Azure 函数”作为终结点类型  。 有关详细信息，请参阅 [Azure 函数作为事件处理程序](handler-functions.md)。
 
 ## <a name="webhooks"></a>Webhook
 有关使用 Webhook 作为事件处理程序的概述和示例，请参阅以下文章。 

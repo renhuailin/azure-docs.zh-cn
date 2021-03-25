@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
 ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841455"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure 密钥管理库配置 Always Encrypted 
@@ -40,7 +40,7 @@ Always Encrypted 是一种数据加密技术，用于保护服务器上的静态
 ## <a name="prerequisites"></a>先决条件
 
 
-- Azure 帐户和订阅。 如果没有，请注册 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帐户和订阅。 如果没有订阅，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - [Azure SQL 数据库](single-database-create-quickstart.md)或 [Azure SQL 托管实例](../managed-instance/instance-create-quickstart.md)中的数据库。
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 版本 13.0.700.242 或更高版本。
 - [.NET Framework 4.6](/dotnet/framework/) 或更高版本（在客户端计算机上）。

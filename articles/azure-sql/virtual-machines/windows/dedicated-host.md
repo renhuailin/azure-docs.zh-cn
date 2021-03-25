@@ -15,10 +15,10 @@ ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358684"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>在 Azure 专用主机上运行 SQL Server VM 
@@ -31,7 +31,7 @@ ms.locfileid: "97358684"
 
 ## <a name="limitations"></a>限制
 
-- 并非所有 VM 系列在专用主机上都受支持，并且 VM 系列可用性因区域而异。 有关详细信息，请参阅 [Azure 专用主机概述](../../../virtual-machines/dedicated-hosts.md)。
+- 并非所有 VM 系列都在专用主机上受支持，VM 系列可用性因区域而异。 有关详细信息，请参阅 [Azure 专用主机概述](../../../virtual-machines/dedicated-hosts.md)。
 
 ## <a name="licensing"></a>授权
 

@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052798"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>在 Azure 自动化中管理凭据
@@ -53,9 +53,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ## <a name="python-functions-that-access-credentials"></a>用于访问凭据的 Python 函数
 
-下表中的函数用于在 Python 2 和 3 runbook 中访问凭据。 Python 3 runbook 目前处于预览阶段。
+下表中的函数用于在 Python 2 Runbook 和 Python 3 Runbook 中访问凭据。 Python 3 Runbook 目前处于预览阶段。
 
-| 功能 | 说明 |
+| 函数 | 说明 |
 |:---|:---|
 | `automationassets.get_automation_credential` | 检索有关凭据资产的信息。 |
 
@@ -144,7 +144,7 @@ print cred["password"]
 
 # <a name="python-3"></a>[Python 3](#tab/python3)
 
-下面的示例演示了在 Python 3 runbook (预览) 中访问凭据的示例。
+以下示例演示如何在 Python 3 Runbook（预览）中访问凭据。
 
 ```python
 import automationassets

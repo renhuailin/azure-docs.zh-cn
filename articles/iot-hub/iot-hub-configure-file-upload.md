@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: da28bfa31c74ff33a200967267500033dd6a9b1b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92535869"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
@@ -25,17 +25,17 @@ ms.locfileid: "92535869"
 
 ![在门户中查看 IoT 中心文件上传设置](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **存储容器** ：使用 Azure 门户在当前 Azure 订阅中选择 Azure 存储帐户中的 blob 容器，以便与 IoT 中心关联。 如有必要，可以在“存储帐户”  边栏选项卡上创建 Azure 存储帐户，并在“容器”  边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
+* **存储容器**：使用 Azure 门户在当前 Azure 订阅中选择 Azure 存储帐户中的 blob 容器，以便与 IoT 中心关联。 如有必要，可以在“存储帐户”  边栏选项卡上创建 Azure 存储帐户，并在“容器”  边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
    ![在门户中查看用于文件上传的存储容器](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **接收已上传文件的通知** ：通过切换来启用或禁用文件上传通知。
+* **接收已上传文件的通知**：通过切换来启用或禁用文件上传通知。
 
-* **SAS TTL** ：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时，但可以使用滑块自定义为其他值。
+* **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时，但可以使用滑块自定义为其他值。
 
-* **文件通知设置默认 TTL** ：文件上传通知到期前的生存时间。 默认设置为一天，但可以使用滑块自定义为其他值。
+* **文件通知设置默认 TTL**：文件上传通知到期前的生存时间。 默认设置为一天，但可以使用滑块自定义为其他值。
 
-* **文件通知最大传送数** ：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10，但可以使用滑块自定义为其他值。
+* **文件通知最大传送数**：IoT 中心将尝试传送文件上传通知的次数。 默认设置为 10，但可以使用滑块自定义为其他值。
 
    ![在门户中配置 IoT 中心文件上传](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

@@ -3,16 +3,16 @@ title: 生成第一个数据工厂 (REST)
 description: 本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9aa3e7f2b5f382e1212955479d8e35f91b458bf0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: eb9ce65985521fb3f82032f04aec62538a157639
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392011"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785455"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -316,7 +316,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   3. 运行以下两个命令来调用 REST API，创建数据工厂并列显操作结果。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 如果收到错误：“**该订阅未注册为使用命名空间 Microsoft.DataFactory**”，请执行下列操作之一，尝试再次发布：
+* 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 

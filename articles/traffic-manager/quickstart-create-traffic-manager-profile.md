@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 45489d3500a4a744f2aeb34dc21122d180797133
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92101288"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流量管理器配置文件
@@ -31,16 +31,16 @@ ms.locfileid: "92101288"
 
 本快速入门需要两个部署在两个不同的 Azure 区域（美国东部和西欧）的 Web 应用程序实例。   每个都可以充当流量管理器的主终结点和故障转移终结点。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在屏幕的左上方，选择“创建资源”。 搜索“Web 应用”，然后选择“创建” 。
 
 1. 在“创建 Web 应用”中，在“基本信息”选项卡中键入或选择以下值：  
 
-    | 设置                 | 值 |
+    | 设置                 | Value |
     | ---                     | --- |
     | 订阅            | 选择订阅。 |    
-    | 资源组          | 选择“新建”并在文本框中输入 myResourceGroupTM1。|
+    | 资源组          | 选择“新建”，然后在文本框中输入“myResourceGroupTM1”。|
     | 名称                    | 输入 Web 应用的唯一名称。 此示例使用 myWebAppEastUS。 |
     | 发布                 | 选择“代码”。 |
     | 运行时堆栈           | 选择“ASP.NET V4.7”。 |
@@ -49,7 +49,7 @@ ms.locfileid: "92101288"
     | Windows 计划            | 选择“新建”，然后在文本框中输入 myAppServicePlanEastUS。 |
     | SKU 和大小            | 选择“标准 S1: 总共 100 个 ACU，1.75 GB 内存”。 |
    
-1. 选择“监视”选项卡，或选择“下一步: 监视”。  在“监视”下，将“Application Insights” > “启用 Application Insights”设置为“否”     。
+1. 选择“监视”选项卡，或选择“下一步:  监视”。  在“监视”下，将“Application Insights” > “启用 Application Insights”设置为“否”     。
 
 1. 选择“查看并创建”。 
 
@@ -61,10 +61,10 @@ ms.locfileid: "92101288"
 
 创建根据终结点优先级定向用户流量的流量管理器配置文件。
 
-1. 在屏幕的左上方，选择“创建资源”。 然后搜索“流量管理器配置文件”，并选择“创建” 。
+1. 在屏幕的左上方，选择“创建资源”。 然后搜索“流量管理器配置文件”，然后选择“创建” 。
 1. 在“创建流量管理器配置文件”中，输入或选择以下设置： 
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | --------| ----- |
     | 名称 | 为流量管理器配置文件输入唯一名称。|
     | 路由方法 | 选择“优先级”。 |
@@ -86,26 +86,26 @@ ms.locfileid: "92101288"
 
 1. 输入或选择以下设置：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ------|
     | 类型 | 选择“Azure 终结点”。  |
-    | 名称 | 输入 *myPrimaryEndpoint* 。 |
+    | 名称 | 输入 *myPrimaryEndpoint*。 |
     | 目标资源类型 | 选择“应用服务”。  |
     | 目标资源 | 选择“选择应用服务” > “美国东部” |
     | 优先度 | 选择“1”。  如果此终结点处于正常状态，则所有流量都会转到此终结点。 |
 
-    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="将终结点添加到“流量管理器”配置文件的屏幕截图":::
+    :::image type="content" source="./media/quickstart-create-traffic-manager-profile/add-traffic-manager-endpoint.png" alt-text="将终结点添加到流量管理器配置文件的屏幕截图":::
     
 1. 选择“确定”  。
 1. 若要为第二个 Azure 区域创建故障转移终结点，请使用以下设置重复步骤 3 和 4：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ------|
     | 类型 | 选择“Azure 终结点”。  |
-    | 名称 | 输入 *myFailoverEndpoint* 。 |
+    | 名称 | 输入 *myFailoverEndpoint*。 |
     | 目标资源类型 | 选择“应用服务”。  |
     | 目标资源 | 选择“选择应用服务” > “西欧”。 |
-    | 优先度 | 选择 **2** 。 如果主终结点不正常，则所有流量都会转到此故障转移终结点。 |
+    | 优先度 | 选择 **2**。 如果主终结点不正常，则所有流量都会转到此故障转移终结点。 |
 
 1. 选择“确定”  。
 
@@ -135,7 +135,7 @@ ms.locfileid: "92101288"
 1. 若要查看流量管理器故障转移如何进行，请禁用主站点：
     1. 在“流量管理器配置文件”页的“概览”部分，选择“myPrimaryEndpoint”。  
     1. 在 *myPrimaryEndpoint* 中选择“禁用” > “保存”。  
-    1. 关闭 **myPrimaryEndpoint** 。 请注意，状态现在为“禁用”。 
+    1. 关闭 **myPrimaryEndpoint**。 请注意，状态现在为“禁用”。 
 1. 从上一步复制流量管理器配置文件的 DNS 名称即可在新的 Web 浏览器会话中查看网站。
 1. 验证 Web 应用是否仍然可用。
 
