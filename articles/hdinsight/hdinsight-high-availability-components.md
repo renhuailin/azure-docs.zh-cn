@@ -4,19 +4,19 @@ description: HDInsight 群集使用的各种高可用性组件的概述。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945313"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863711"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
 为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
 
 > [!NOTE]
-> 本文包含对字词 *从属* 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 ## <a name="high-availability-infrastructure"></a>高可用性基础结构
 
@@ -34,7 +34,7 @@ HDInsight 提供自定义的基础结构，以确保四个主要服务具有高�
 - 从属高可用性服务
 - 主高可用性服务
 
-![高可用性基础结构](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="高可用性基础结构" border="false":::
 
 此外，还有开源 Apache 可靠性组件支持的其他高可用性服务。 HDInsight 群集中还包含以下组件：
 
@@ -91,7 +91,7 @@ master-ha-service 仅在活动头节点上运行，它会停止待机头节点�
 
 ### <a name="the-failover-process"></a>故障转移过程
 
-![故障转移过程](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="故障转移过程" border="false":::
 
 运行状况监视器在每个头节点上连同主故障转移控制器一起运行，将检测信号通知发送到 Zookeeper 仲裁。 在此方案中，头节点被视为 HA 服务。 运行状况监视器检查每个高可用性服务是否正常，以及该服务是否已准备好参与领导选举。 如果是，则此头节点将参与竞选。 否则，它将退出选举，直到再次准备就绪。
 

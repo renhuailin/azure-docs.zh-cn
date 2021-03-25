@@ -1,7 +1,7 @@
 ---
 title: 在 .NET 中使用 Microsoft.Azure.Search (v10)
 titleSuffix: Azure Cognitive Search
-description: '了解如何在 .NET 应用程序中使用 c # 和 Microsoft (版本 10) 的 .NET SDK 创建和管理搜索对象。 代码片段演示了如何连接到服务、创建索引，以及如何查询。'
+description: 了解如何使用 C# 和 .NET SDK 的 Microsoft.Azure.Search（版本 10）在 .NET 应用程序中创建和管理搜索对象。 代码片段演示了如何连接到服务、创建索引，以及如何查询。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92681430"
 ---
-# <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>如何在 c # .NET 应用程序中使用 Microsoft Azure。
+# <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>如何在 C# .NET 应用程序中使用 Microsoft.Azure.Search
 
-本文介绍如何使用 Azure SDK for .NET 中的 c # 和旧的客户端库 [**(版本**](/dotnet/api/overview/azure/search/client10) 10) 来创建和管理搜索对象。 
+本文介绍如何使用 C# 和适用于 .NET 的 Azure SDK 中的旧版客户端库 [Microsoft.Azure.Search](/dotnet/api/overview/azure/search/client10)（版本 10）创建和管理搜索对象。 
 
-版本 10 是 Microsoft.Azure.Search 包的最新版。 前进后，将在 Azure SDK 团队 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) 中推出新功能。
+版本 10 是 Microsoft.Azure.Search 包的最新版。 今后，Azure SDK 团队将会在 [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) 中推出新功能。
 
 > [!NOTE]
-> 如果现有或即时开发项目，则可以继续使用版本10。 对于新项目，或若要使用新功能，应转换为 [新库](/dotnet/api/overview/azure/search.documents-readme)。
+> 如果你有现有的或正在进行外部测试的开发项目，可以继续使用版本 10。 对于新项目或者是要使用新功能的情况，则应转换到[新库](/dotnet/api/overview/azure/search.documents-readme)。
 
-## <a name="about-version-10"></a>关于版本10
+## <a name="about-version-10"></a>关于版本 10
 
 SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源、索引器和同义词映射，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 
@@ -45,7 +45,7 @@ SDK 中的其他 NuGet 程序包有：
 
 如果想要为 SDK 的未来更新提供反馈，请参阅我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)，或者在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上创建问题并在问题标题中提到“Azure 认知搜索”。
 
-.NET SDK 面向[ `2019-05-06` Azure 认知搜索](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/data-plane/Microsoft.Azure.Search.Data/stable/2019-05-06)的版本 REST API。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
+.NET SDK 面向 [`2019-05-06` 版 Azure 认知搜索 REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/data-plane/Microsoft.Azure.Search.Data/stable/2019-05-06)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
 
 此 SDK 不支持[管理操作](/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](/dotnet/api/overview/azure/search/management)。
 

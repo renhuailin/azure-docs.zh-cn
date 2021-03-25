@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784091"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
@@ -59,7 +59,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 分段列表操作的响应包括：
 
-* *_segment* ，其中包含针对列表 API 进行单个调用时返回的结果集。
+* *_segment*，其中包含针对列表 API 进行单个调用时返回的结果集。
 * continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码片段可能如下所示。 我们的 [示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中提供了该代码：

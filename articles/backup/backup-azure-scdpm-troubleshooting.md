@@ -4,10 +4,10 @@ description: 在本文中，了解使用 System Center Data Protection Manager �
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86513806"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
@@ -31,7 +31,7 @@ ms.locfileid: "86513806"
 
 - 若要消除不一致状态，请手动运行一致性检查，或计划每日一致性检查。
 - 确保使用最新版本的 Microsoft Azure 备份服务器和 Data Protection Manager。
-- 确保启用“自动一致性”设置。 
+- 确保启用“自动一致性”设置。
 - 尝试从命令提示符重启服务。 使用 `net stop dpmra` 命令，后接 `net start dpmra`。
 - 确保符合网络连接和带宽要求。
 - 检查源计算机是否意外关闭。
@@ -58,7 +58,7 @@ ms.locfileid: "86513806"
 
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。
+- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。  
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

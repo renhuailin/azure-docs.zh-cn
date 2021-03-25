@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793358"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>将弹性数据库客户端库与 Dapper 配合使用
@@ -23,7 +23,7 @@ ms.locfileid: "92793358"
 
 本文档面向依赖于使用 Dapper 生成应用程序，但同时想要运用[弹性数据库工具](elastic-scale-introduction.md)创建应用程序来实现分片，以横向扩展其数据层的开发人员。  本文档演示了与弹性数据库工具集成所需的基于 Dapper 的应用程序发生的更改。 我们将重点介绍如何使用 Dapper 构建弹性数据库分片管理和数据依赖型路由。 
 
-**示例代码** ： [Azure SQL 数据库的弹性数据库工具 - Dapper 集成](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
+**示例代码**：[Azure SQL 数据库的弹性数据库工具 - Dapper 集成](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
 将 **Dapper** 和 **DapperExtensions** 与 Azure SQL 数据库的弹性数据库客户端库的过程很简单。 将新 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 对象的创建和打开方式更改为使用来自[客户端库](/previous-versions/azure/dn765902(v=azure.100))的 [OpenConnectionForKey](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) 调用，应用程序即可使用数据依赖型路由。 这会将应用程序中的更改限制为已创建和打开新连接的位置。 
 
@@ -39,7 +39,7 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 若要获取 Dapper 程序集，请参阅 [Dapper .NET](https://www.nuget.org/packages/Dapper/)。 有关 Dapper 扩展，请参阅 [DapperExtensions](https://www.nuget.org/packages/DapperExtensions)。
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>弹性数据库客户端库速览
-使用弹性数据库客户端库，可以定义应用程序数据的分区（称为 shardlet），将它们映射到数据库，并根据分片键来识别这些分区 。 可以根据需要创建任意数目的数据库，并在这些数据库之间分布 shardlet。 分片键值到数据库的映射由库的 API 提供的分片映射存储。 此功能称为 **分片映射管理** 。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为数据依赖型路由。
+使用弹性数据库客户端库，可以定义应用程序数据的分区（称为 shardlet），将它们映射到数据库，并根据分片键来识别这些分区 。 可以根据需要创建任意数目的数据库，并在这些数据库之间分布 shardlet。 分片键值到数据库的映射由库的 API 提供的分片映射存储。 此功能称为 **分片映射管理**。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为数据依赖型路由。
 
 ![分片映射和数据依赖型路由][1]
 
@@ -50,9 +50,9 @@ Dapper 和 DapperExtensions 的另一个优点在于，应用程序可以控制�
 ### <a name="requirements-for-dapper-integration"></a>Dapper 集成的要求
 在使用弹性数据库客户端库和 Dapper API 时，希望保留以下属性：
 
-* **横向扩展** ：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 
-* **一致性** ：由于应用程序是使用分片横向扩展的，因此需要执行数据依赖型路由。 我们需要使用库的数据依赖型路由功能来实现此目的。 具体而言，需要保留验证和一致性保证（由通过分片映射管理器中转的连接提供，目的在于避免损坏或错误的查询结果）。 这可确保（举例而言）当前已使用 Split/Merge API 将 shardlet 移至其他分片时，拒绝或停止与给定 shardlet 的连接。
-* **对象映射** ：我们需要保留 Dapper 为了在应用程序中的类和基础数据库结构之间进行转换而提供的映射方便性。 
+* **横向扩展**：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 
+* **一致性**：由于应用程序是使用分片横向扩展的，因此需要执行数据依赖型路由。 我们需要使用库的数据依赖型路由功能来实现此目的。 具体而言，需要保留验证和一致性保证（由通过分片映射管理器中转的连接提供，目的在于避免损坏或错误的查询结果）。 这可确保（举例而言）当前已使用 Split/Merge API 将 shardlet 移至其他分片时，拒绝或停止与给定 shardlet 的连接。
+* **对象映射**：我们需要保留 Dapper 为了在应用程序中的类和基础数据库结构之间进行转换而提供的映射方便性。 
 
 以下部分基于 **Dapper** 和 **DapperExtensions** 的应用程序的这些要求的指南。
 
@@ -162,7 +162,7 @@ Microsoft 模式和实践团队发布了[暂时性故障处理应用程序块](/
     });
 ```
 
-上述代码中的 **SqlDatabaseUtils.SqlRetryPolicy** 定义为 **SqlDatabaseTransientErrorDetectionStrategy** ，重试计数为 10，每两次重试的等待时间为 5 秒。 如果正在使用事务，请确保在出现暂时性故障的情况下重试范围可以恢复为事务开始时间。
+上述代码中的 **SqlDatabaseUtils.SqlRetryPolicy** 定义为 **SqlDatabaseTransientErrorDetectionStrategy**，重试计数为 10，每两次重试的等待时间为 5 秒。 如果正在使用事务，请确保在出现暂时性故障的情况下重试范围可以恢复为事务开始时间。
 
 ## <a name="limitations"></a>限制
 本文档中概述的方法存在一些限制：

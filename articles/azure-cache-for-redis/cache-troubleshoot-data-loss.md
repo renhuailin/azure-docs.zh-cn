@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538589"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>排查 Azure Cache for Redis 中的数据丢失问题
@@ -36,7 +36,7 @@ ms.locfileid: "92538589"
 
 ### <a name="key-expiration"></a>密钥到期时间
 
-如果为密钥分配了超时，而该期限已过，则 Azure Cache for Redis 会自动删除该密钥。 有关 Redis 密钥过期的详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 命令文档。 还可以使用 [SET](https://redis.io/commands/set)、 [SETEX](https://redis.io/commands/setex)、 [GETSET](https://redis.io/commands/getset) 和其他 **\*STORE** 命令来设置超时值。
+如果为密钥分配了超时，而该期限已过，则 Azure Cache for Redis 会自动删除该密钥。 有关 Redis 密钥过期的详细信息，请参阅 [EXPIRE](https://redis.io/commands/expire) 命令文档。 还可以使用 [SET](https://redis.io/commands/set)、[SETEX](https://redis.io/commands/setex)、[GETSET](https://redis.io/commands/getset) 和其他 **\*STORE** 命令来设置超时值。
 
 若要获取有关已过期密钥数的统计信息，请使用 [INFO](https://redis.io/commands/info) 命令。 `Stats` 部分显示已过期密钥的总数。 `Keyspace` 部分提供有关设置了超时的密钥数以及平均超时值的详细信息。
 
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>选择了错误的数据库
 
-Azure Cache for Redis 默认使用 **db0** 数据库。 如果切换到其他数据库（例如 **db1** ），并尝试从该数据库读取密钥，则 Azure Cache for Redis 将无法在其中找到这些密钥。 每个数据库都是一个在逻辑上独立的单元，其中保存了不同的数据集。 使用 [SELECT](https://redis.io/commands/select) 命令来选择其他可用数据库，并在其中每个数据库中查找密钥。
+Azure Cache for Redis 默认使用 **db0** 数据库。 如果切换到其他数据库（例如 **db1**），并尝试从该数据库读取密钥，则 Azure Cache for Redis 将无法在其中找到这些密钥。 每个数据库都是一个在逻辑上独立的单元，其中保存了不同的数据集。 使用 [SELECT](https://redis.io/commands/select) 命令来选择其他可用数据库，并在其中每个数据库中查找密钥。
 
 ### <a name="redis-instance-failure"></a>Redis 实例故障
 

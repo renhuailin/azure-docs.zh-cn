@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92740375"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse 工作区
@@ -50,13 +50,13 @@ ms.locfileid: "92740375"
 
    - 订阅：选择 Azure 订阅。
    - 资源组： 选择“新建”，输入资源组的唯一名称，然后选择“确定”。 新的资源组会促进资源清理。
-   - **区域** ：选择区域。  例如“美国中部”。
+   - **区域**：选择区域。  例如“美国中部”。
    - 名称：输入工作区的名称。
    - SQL 管理员登录：输入 SQL Server 的管理员用户名。
    - SQL 管理员密码：输入 SQL Server 的管理员密码。
-   - **标记值** ：接受默认值。
+   - **标记值**：接受默认值。
    - 审阅并创建：选中。
-   - **创建** ：选中。
+   - **创建**：选中。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 创建 IoT 中心 | Microsoft Docs
-description: 了解如何使用 Azure CLI 命令创建资源组，然后在资源组中创建 IoT 中心。 还了解如何删除中心。
+description: 了解如何使用 Azure CLI 命令创建资源组，然后在该资源组中创建 IoT 中心。 并了解如何删除中心。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659907"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
@@ -58,14 +58,14 @@ ms.locfileid: "94659907"
 
 可使用 Azure CLI [删除单个资源](/cli/azure/resource)（例如 IoT 中心），或删除资源组及其所有资源（包括任何 IoT 中心）。
 
-若要 [删除 IoT 中心](/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
+若要[删除 IoT 中心](/cli/azure/iot/hub#az-iot-hub-delete)，请运行以下命令：
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-若要 [删除资源组](/cli/azure/group#az-group-delete) 及其所有资源，请运行以下命令：
+若要[删除资源组](/cli/azure/group#az-group-delete)及其所有资源，请运行以下命令：
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

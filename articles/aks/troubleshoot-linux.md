@@ -1,7 +1,7 @@
 ---
 title: Linux 性能工具
 titleSuffix: Azure Kubernetes Service
-description: 了解如何在使用 Azure Kubernetes Service (AKS) 时使用 Linux 性能工具排查和解决常见问题。
+description: 了解如何使用 Linux 性能工具排查和解决在使用 Azure Kubernetes 服务 (AKS) 时遇到的常见问题。
 services: container-service
 author: alexeldeib
 ms.service: container-service
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: aleldeib
 ms.openlocfilehash: 74f65780594c7bc938ed6d59437473c4363e5848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90982035"
 ---
 # <a name="linux-performance-troubleshooting"></a>Linux 性能故障排除

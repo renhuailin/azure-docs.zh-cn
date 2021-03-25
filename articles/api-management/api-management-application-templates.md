@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86255177"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -37,7 +37,7 @@ ms.locfileid: "86255177"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="application-list"></a><a name="ProductList"></a>应用程序列表  
- **应用程序列表**模板可用于自定义开发人员门户中应用程序列表页的正文。  
+ **应用程序列表** 模板可用于自定义开发人员门户中应用程序列表页的正文。  
   
  ![应用程序列表页开发人员门户模板](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 应用程序列表页开发人员门户模板")  
   
@@ -80,7 +80,7 @@ ms.locfileid: "86255177"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
@@ -137,8 +137,8 @@ ms.locfileid: "86255177"
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a> 程序  
- **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
+##  <a name="application"></a><a name="Application"></a> 应用程序  
+ **应用程序** 模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  
   

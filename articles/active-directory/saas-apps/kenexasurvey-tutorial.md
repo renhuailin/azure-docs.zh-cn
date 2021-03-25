@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
 ms.openlocfilehash: faea5fdc7fdab11c630f24dbb8527e5bf198765c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教程：Azure Active Directory 与 IBM Kenexa Survey Enterprise 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92459129"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 IBM Kenexa Survey Enterprise 的集成，需要以下项：
 
@@ -61,13 +61,13 @@ ms.locfileid: "92459129"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“IBM Kenexa Survey Enterprise”，在结果面板中选择“IBM Kenexa Survey Enterprise”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中键入“IBM Kenexa Survey Enterprise”，在结果面板中选择“IBM Kenexa Survey Enterprise”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 IBM Kenexa Survey Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分，将基于名为“Britta Simon”的测试用户配置并测试 IBM Kenexa Survey Enterprise 的 Azure AD 单一登录。 
+在本部分，将基于名为“Britta Simon”的测试用户配置并测试 IBM Kenexa Survey Enterprise 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 IBM Kenexa Survey Enterprise 相关用户之间建立链接关系。
 
 若要使用 IBM Kenexa Survey Enterprise 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92459129"
 
 若要使用 IBM Kenexa Survey Enterprise 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **IBM Kenexa Survey Enterprise** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **IBM Kenexa Survey Enterprise** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,20 +97,20 @@ ms.locfileid: "92459129"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![“IBM Kenexa Survey Enterprise 域和 URL”单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [IBM Kenexa Survey Enterprise 客户端支持团队](https://www.ibm.com/support/home/?lnk=fcw)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. IBM Kenexa Survey Enterprise 应用程序需要收到特殊格式的安全断言标记语言 (SAML) 断言，这将要求你将自定义属性映射添加到 SAML 令牌属性配置中。 响应中的用户标识符声明的值必须匹配在 Kenexa 中配置的 SSO ID。 若要在组织中映射适当的用户标识符作为 SSO Internet Datagram Protocol (IDP)，请联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。
 
-    默认情况下，Azure AD 会设置用户标识符作为用户主体名称 (UPN) 值。 可以在“用户属性”选项卡上更改此值，如以下屏幕截图所示。  仅在正确完成映射后集成才能运行。
+    默认情况下，Azure AD 会设置用户标识符作为用户主体名称 (UPN) 值。 可以在“用户属性”选项卡上更改此值，如以下屏幕截图所示。 仅在正确完成映射后集成才能运行。
 
     ![image](common/edit-attribute.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "92459129"
 
     ![证书下载链接](common/certificatebase64.png)
 
-7. 在“设置 IBM Kenexa Survey Enterprise”  部分，根据要求复制相应的 URL。
+7. 在“设置 IBM Kenexa Survey Enterprise”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "92459129"
 
 ### <a name="configure-ibm-kenexa-survey-enterprise-single-sign-on"></a>配置 IBM Kenexa Survey Enterprise 单一登录
 
-若要在 IBM Kenexa Survey Enterprise  端配置单一登录，需要将下载的“证书(Base64)”  以及从 Azure 门户复制的相应 URL 发送给 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 IBM Kenexa Survey Enterprise 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -140,7 +140,7 @@ ms.locfileid: "92459129"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -155,17 +155,17 @@ ms.locfileid: "92459129"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，通过授予 Britta Simon 访问 IBM Kenexa Survey Enterprise 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“IBM Kenexa Survey Enterprise”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“IBM Kenexa Survey Enterprise”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“IBM Kenexa Survey Enterprise”  。
+2. 在应用程序列表中，选择“IBM Kenexa Survey Enterprise”。
 
     ![应用程序列表中的“IBM Kenexa Survey Enterprise”链接](common/all-applications.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "92459129"
 
 在本部分中，会在 IBM Kenexa Survey Enterprise 中创建一个名为“Britta Simon”的用户。
 
-若要在 IBM Kenexa Survey Enterprise 系统中创建用户并为他们映射 SSO ID，可联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)获取帮助。 应将此 SSO ID 值映射到 Azure AD 中的用户标识符的值。 可以在“属性”选项上中更改此默认设置。 
+若要在 IBM Kenexa Survey Enterprise 系统中创建用户并为他们映射 SSO ID，可联系 [IBM Kenexa Survey Enterprise 支持团队](https://www.ibm.com/support/home/?lnk=fcw)获取帮助。 应将此 SSO ID 值映射到 Azure AD 中的用户标识符的值。 可以在“属性”选项上中更改此默认设置。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

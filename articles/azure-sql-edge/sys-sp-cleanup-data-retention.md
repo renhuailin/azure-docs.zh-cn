@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 9c0a6700a476d4f7f875af5373e3c99bc4e25af2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90933620"
 ---
 # <a name="syssp_cleanup_data_retention-transact-sql"></a>sys.sp_cleanup_data_retention (Transact-SQL)
@@ -48,6 +48,6 @@ sys.sp_cleanup_data_retention
  需要 db_owner 权限。
 
 ## <a name="next-steps"></a>后续步骤
-- [数据保留和数据自动清除](data-retention-overview.md)
+- [数据保留和自动数据清理](data-retention-overview.md)
 - [使用保留策略管理历史数据](data-retention-cleanup.md) 
 - [启用和禁用数据保留](data-retention-enable-disable.md)

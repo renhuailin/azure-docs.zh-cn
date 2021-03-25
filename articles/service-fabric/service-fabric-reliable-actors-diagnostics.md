@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789610"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的诊断和性能监视
@@ -20,7 +20,7 @@ Reliable Actors 运行时的 EventSource 提供程序名称为“Microsoft-Servi
 
 有助于收集和/或查看 EventSource 事件的工具和技术示例包括 [PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[语义日志记录](/previous-versions/msp-n-p/dn774980(v=pandp.10))和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
-### <a name="keywords"></a>Keywords
+### <a name="keywords"></a>关键字
 属于 Reliable Actors EventSource 的所有事件都与一个或多个关键字相关联。 这样能够对收集的事件进行筛选。 定义了以下关键字位。
 
 | bit | 说明 |
@@ -83,10 +83,10 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](/previous-versi
 ### <a name="actor-method-events-and-performance-counters"></a>执行组件方法事件和性能计数器
 Reliable Actors 运行时发出以下与[执行组件方法](service-fabric-reliable-actors-introduction.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |“详细” |0x2 |执行组件运行时即将调用执行组件方法。 |
-| ActorMethodStop |8 |“详细” |0x2 |执行组件方法已执行完毕。 也就是说，已返回运行时的对执行组件方法的异步调用，此执行组件方法返回的任务已完成。 |
+| ActorMethodStart |7 |详细 |0x2 |执行组件运行时即将调用执行组件方法。 |
+| ActorMethodStop |8 |详细 |0x2 |执行组件方法已执行完毕。 也就是说，已返回运行时的对执行组件方法的异步调用，此执行组件方法返回的任务已完成。 |
 | ActorMethodThrewException |9 |警告 |0x3 |在执行执行组件方法时，即在运行时的对执行组件方法的异步调用过程中或在执行执行组件方法返回的任务过程中引发异常。 此事件表示执行组件代码中出现某种形式的故障，需要调查。 |
 
 Reliable Actors 运行时发布与执行执行组件方法相关的下列性能计数器。
@@ -100,9 +100,9 @@ Reliable Actors 运行时发布与执行执行组件方法相关的下列性能�
 ### <a name="concurrency-events-and-performance-counters"></a>并发事件和性能计数器
 Reliable Actors 运行时发出以下与[并发](service-fabric-reliable-actors-introduction.md#concurrency)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |“详细” |0x8 |在执行组件中每次新的轮次开始时写入此事件。 其中包含挂起的执行组件调用数。这些调用稍后将获取用于强制执行基于轮次的并发的每执行组件锁定。 |
+| ActorMethodCallsWaitingForLock |12 |详细 |0x8 |在执行组件中每次新的轮次开始时写入此事件。 其中包含挂起的执行组件调用数。这些调用稍后将获取用于强制执行基于轮次的并发的每执行组件锁定。 |
 
 Reliable Actors 运行时发布与并发相关的以下性能计数器。
 
@@ -115,10 +115,10 @@ Reliable Actors 运行时发布与并发相关的以下性能计数器。
 ### <a name="actor-state-management-events-and-performance-counters"></a>执行组件状态管理事件和性能计数器
 Reliable Actors 运行时发出以下与[执行组件状态管理](service-fabric-reliable-actors-state-management.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |“详细” |0x4 |执行组件运行时即将保存执行组件状态。 |
-| ActorSaveStateStop |11 |“详细” |0x4 |执行组件运行时已完成保存执行组件状态。 |
+| ActorSaveStateStart |10 |详细 |0x4 |执行组件运行时即将保存执行组件状态。 |
+| ActorSaveStateStop |11 |详细 |0x4 |执行组件运行时已完成保存执行组件状态。 |
 
 Reliable Actors 运行时发布与执行组件状态管理相关的以下性能计数器。
 
@@ -130,7 +130,7 @@ Reliable Actors 运行时发布与执行组件状态管理相关的以下性能�
 ### <a name="events-related-to-actor-replicas"></a>与执行组件副本相关的事件
 Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ReplicaChangeRoleToPrimary |1 |信息 |0x1 |执行组件副本将角色更改为“主要”。 这意味着在此副本内创建此分区的执行组件。 |
 | ReplicaChangeRoleFromPrimary |2 |信息 |0x1 |执行组件副本将角色更改为“非主要”。 这意味着不再在此副本内创建此分区的执行组件。 不会将任何新请求传送到此副本中已创建的执行组件。 正在进行中的任何请求完成后会销毁执行组件。 |
@@ -138,7 +138,7 @@ Reliable Actors 运行时发出以下与[执行组件副本](service-fabric-reli
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>执行组件激活和停用事件以及性能计数器
 Reliable Actors 运行时发出以下与[执行组件激活和停用](service-fabric-reliable-actors-lifecycle.md)相关的事件。
 
-| 事件名称 | 事件 ID | 级别 | 关键字 | 说明 |
+| 事件名称 | 事件 ID | Level | 关键字 | 说明 |
 | --- | --- | --- | --- | --- |
 | ActorActivated |5 |信息 |0x1 |执行组件已激活。 |
 | ActorDeactivated |6 |信息 |0x1 |执行组件已停用。 |

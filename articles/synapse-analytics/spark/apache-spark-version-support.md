@@ -9,10 +9,10 @@ ms.subservice: spark
 ms.date: 01/04/2021
 ms.author: midesa
 ms.openlocfilehash: 1ed998412e1447e21b11bc08b1d69314f0ab7de5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379924"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Apache Spark 和依赖组件支持的语言和运行时版本  
@@ -29,7 +29,7 @@ Azure Synapse 中的 Apache Spark 在 Ubuntu 版本16.04 上运行。
 
 ## <a name="java-version"></a>Java 版本
 
-Azure Synapse 中的 Apache Spark 包括 Java 版本 1.8.0 _272
+Azure Synapse 中的 Apache Spark 包括 Java 版本 1.8.0_272
 
 ## <a name="scala-version"></a>Scala 版本
 
@@ -37,7 +37,7 @@ Azure Synapse 中的 Apache Spark 包括 Scala 2.11.12
 
 ## <a name="net-core-version"></a>.NET Core 版本
 
-Azure Synapse 中的 Apache Spark 包括 .NET Core 3。1
+Azure Synapse 中的 Apache Spark 包括 .NET Core 3.1
 
 ## <a name="net-support-for-apache-spark"></a>Apache Spark 的 .NET 支持
 
@@ -45,7 +45,7 @@ Azure Synapse 包括对 Apache Spark 1.0.0 的 .NET 支持
 
 ## <a name="delta-lake"></a>Delta Lake
 
-Synapse Analytics 包括对增量 Lake 0.6.1 的支持
+Synapse Analytics 包括对 Delta Lake 0.6.1 的支持
 
 ## <a name="python-version"></a>Python 版本
 
@@ -55,9 +55,9 @@ Azure Synapse 中的 Apache Spark 包括 Python 版本 3.6.1 的安装
 
 accessors-smart-1.2.jar
 
-nactivation-1.1.1 .jar
+nactivation-1.1.1.jar
 
-naircompressor-0.10 .jar
+naircompressor-0.10.jar
 
 antlr-2.7.7.jar
 
@@ -71,7 +71,7 @@ aopalliance-repackaged-2.4.0-b34.jar
 
 apacheds-i18n-2.0.0-M15.jar
 
-apacheds-2.0.0-M15 jar
+apacheds-kerberos-codec-2.0.0-M15.jar
 
 apache-log4j-extras-1.2.17.jar
 
@@ -95,11 +95,11 @@ avro-ipc-1.8.2.jar
 
 avro-mapred-1.8.2-hadoop2.jar
 
-aws-java-sdk-bundle-1.11.271
+aws-java-sdk-bundle-1.11.271.jar
 
-azure-keyvault-core-1.0。0
+azure-keyvault-core-1.0.0.jar
 
-azure-storage-7.0。1
+azure-storage-7.0.1.jar
 
 bonecp-0.8.0.RELEASE.jar
 
@@ -117,11 +117,11 @@ chill_2.11-0.9.3.jar
 
 chill-java-0.9.3.jar
 
-client-sdk-1.11。0
+client-sdk-1.11.0.jar
 
-cntk-2.4. .jar
+cntk-2.4.jar
 
-commons-beanutils-1.9。4
+commons-beanutils-1.9.4.jar
 
 commons-cli-1.2.jar
 
@@ -159,11 +159,11 @@ commons-pool-1.5.4.jar
 
 compress-lzf-1.0.3.jar
 
-config-1.3。4
+config-1.3.4.jar
 
 core-1.1.2.jar
 
-cosmos-analytics-spark-connector-assembly-1.4。3
+cosmos-analytics-spark-connector-assembly-1.4.3.jar
 
 curator-client-2.7.1.jar
 
@@ -177,7 +177,7 @@ datanucleus-core-3.2.10.jar
 
 datanucleus-rdbms-3.2.9.jar
 
-11-0.6.1 的增量 core_2
+delta-core_2.11-0.6.1.jar
 
 derby-10.12.1.1.jar
 
@@ -187,7 +187,7 @@ eigenbase-properties-1.1.5.jar
 
 flatbuffers-1.2.0-3f79e055.jar
 
-fluent-logger-jar-with-dependencies
+fluent-logger-jar-with-dependencies.jar
 
 geronimo-jcache_1.0_spec-1.0-alpha-1.jar
 
@@ -199,45 +199,45 @@ guice-3.0.jar
 
 guice-servlet-3.0.jar
 
-hadoop-annotations-2.9.1.2.6.99.201-25973884
+hadoop-annotations-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-auth-2.9.1.2.6.99.201-25973884
+hadoop-auth-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-aws-2.9.1.2.6.99.201-25973884
+hadoop-aws-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-azure-2.6.0.jar 2.9.1.2.6.99.201-25973884
+hadoop-azure-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-client-2.9.1.2.6.99.201-25973884
+hadoop-client-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-common-2.9.1.2.6.99.201-25973884
+hadoop-common-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-hdfs-client-2.9.1.2.6.99.201-25973884
+hadoop-hdfs-client-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-mapreduce-client-app-2.9.1.2.6.99.201-25973884
+hadoop-mapreduce-client-app-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-mapreduce-client-common-2.9.1.2.6.99.201-25973884
+hadoop-mapreduce-client-common-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-mapreduce-client-core-2.9.1.2.6.99.201-25973884
+hadoop-mapreduce-client-core-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-mapreduce-client-jobclient-2.9.1.2.6.99.201-25973884
+hadoop-mapreduce-client-jobclient-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-mapreduce-client-shuffle-2.9.1.2.6.99.201-25973884
+hadoop-mapreduce-client-shuffle-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-openstack-2.9.1.2.6.99.201-25973884
+hadoop-openstack-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-api-2.9.1.2.6.99.201-25973884
+hadoop-yarn-api-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-client-2.9.1.2.6.99.201-25973884
+hadoop-yarn-client-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-common-2.9.1.2.6.99.201-25973884
+hadoop-yarn-common-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-registry-2.9.1.2.6.99.201-25973884
+hadoop-yarn-registry-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-server-common-2.9.1.2.6.99.201-25973884
+hadoop-yarn-server-common-2.9.1.2.6.99.201-25973884.jar
 
-hadoop-yarn-server-web-proxy-2.9.1.2.6.99.201-25973884
+hadoop-yarn-server-web-proxy-2.9.1.2.6.99.201-25973884.jar
 
-hdinsight-spark-metrics_2_4-2.0 .jar
+hdinsight-spark-metrics_2_4-2.0.jar
 
 HikariCP-java7-2.4.12.jar
 
@@ -265,11 +265,11 @@ httpclient-4.5.6.jar
 
 httpcore-4.4.10.jar
 
-超空间-core_2. 11-0.3。2
+hyperspace-core_2.11-0.3.2.jar
 
-脉冲-core_2. 11-0.0。1
+impulse-core_2.11-0.0.1.jar
 
-isolation-forest_2. 3_2. 11-0。
+isolation-forest_2.4.3_2.11-0.3.2.jar
 
 ivy-2.4.0.jar
 
@@ -279,7 +279,7 @@ jackson-core-2.6.7.jar
 
 jackson-core-asl-1.9.13.jar
 
-jackson-databind-2.6.7。3
+jackson-databind-2.6.7.3.jar
 
 jackson-jaxrs-1.9.13.jar
 
@@ -345,9 +345,9 @@ jodd-core-3.5.2.jar
 
 jpam-1.1.jar
 
-jsch-0.1.54
+jsch-0.1.54.jar
 
-json-20090211
+json-20090211.jar
 
 json4s-ast_2.11-3.5.3.jar
 
@@ -357,7 +357,7 @@ json4s-jackson_2.11-3.5.3.jar
 
 json4s-scalap_2.11-3.5.3.jar
 
-json-simple-1。1
+json-simple-1.1.jar
 
 json-smart-2.3.jar
 
@@ -373,9 +373,9 @@ jul-to-slf4j-1.7.16.jar
 
 kryo-shaded-4.0.2.jar
 
-kusto-data-2.2。0
+kusto-data-2.2.0.jar
 
-kusto-ingest-2.2。0
+kusto-ingest-2.2.0.jar
 
 leveldbjni-all-1.8.jar
 
@@ -383,7 +383,7 @@ libfb303-0.9.3.jar
 
 libthrift-0.9.3.jar
 
-lightgbmlib-2.3.180
+lightgbmlib-2.3.180.jar
 
 log4j-1.2.17.jar
 
@@ -393,7 +393,7 @@ machinist_2.11-0.6.1.jar
 
 macro-compat_2.11-1.1.1.jar
 
-mdsdclientdynamic-2.0 .jar
+mdsdclientdynamic-2.0.jar
 
 metrics-core-3.1.5.jar
 
@@ -403,27 +403,27 @@ metrics-json-3.1.5.jar
 
 metrics-jvm-3.1.5.jar
 
-microsoft-catalog-metastore-client-1.0.23
+microsoft-catalog-metastore-client-1.0.23.jar
 
-microsoft-log4j-etwappender-1.0 .jar
+microsoft-log4j-etwappender-1.0.jar
 
-microsoft-spark
+microsoft-spark.jar
 
 minlog-1.3.0.jar
 
-mmlspark_2 11-rc3-6-0a30d1ae-SNAPSHOT
+mmlspark_2.11-1.0.0-rc3-6-0a30d1ae-SNAPSHOT.jar
 
 mssql-jdbc-6.2.1.jre7.jar
 
-mysql-connector-java-5.1.42-bin.jar 8.0.18
+mysql-connector-java-8.0.18.jar
 
 netty-3.9.9.Final.jar
 
-netty-all-4.1.42
+netty-all-4.1.42.Final.jar
 
 nimbus-jose-jwt-4.41.1.jar
 
-notebook-utils-2.4.4-20201103。2
+notebook-utils-2.4.4-20201103.2.jar
 
 objenesis-2.5.1.jar
 
@@ -433,7 +433,7 @@ okio-1.6.0.jar
 
 opencsv-2.3.jar
 
-opencv-3.2.0-1
+opencv-3.2.0-1.jar
 
 orc-core-1.5.5-nohive.jar
 
@@ -461,9 +461,9 @@ parquet-hadoop-bundle-1.6.0.jar
 
 parquet-jackson-1.10.1.jar
 
-peregrine-spark-0.5 .jar
+peregrine-spark-0.5.jar
 
-postgresql-42.2。9
+postgresql-42.2.9.jar
 
 protobuf-java-2.5.0.jar
 
@@ -495,63 +495,63 @@ snappy-0.2.jar
 
 snappy-java-1.1.7.3.jar
 
-spark-avro_2 11-2.4.4.2.6.99.201-25973884
+spark-avro_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-catalyst_2 11-2.4.4.2.6.99.201-25973884
+spark-catalyst_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-cdm-connector-assembly-0.18。2
+spark-cdm-connector-assembly-0.18.2.jar
 
-spark-core_2 11-2.4.4.2.6.99.201-25973884
+spark-core_2.11-2.4.4.2.6.99.201-25973884.jar
 
-SparkCustomEvents-2.0。0
+SparkCustomEvents-2.0.0.jar
 
-spark-graphx_2 11-2.4.4.2.6.99.201-25973884
+spark-graphx_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-hive_2 11-2.4.4.2.6.99.201-25973884
+spark-hive_2.11-2.4.4.2.6.99.201-25973884.jar
 
-thriftserver_2 spark-11-2.4.4.2.6.99.201-25973884
+spark-hive-thriftserver_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-kusto-connector-2.2。0
+spark-kusto-connector-2.2.0.jar
 
-spark-kusto-synapse-connector-0.9。0
+spark-kusto-synapse-connector-0.9.0.jar
 
-spark-kvstore_2 11-2.4.4.2.6.99.201-25973884
+spark-kvstore_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-launcher_2 11-2.4.4.2.6.99.201-25973884
+spark-launcher_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark telemetry_2-11-2.4.4.2.6.99.201-25973884
+spark-microsoft-telemetry_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark tools_2-11-2.4.4.2.6.99.201-25973884
+spark-microsoft-tools_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-mllib_2 11-2.4.4.2.6.99.201-25973884
+spark-mllib_2.11-2.4.4.2.6.99.201-25973884.jar
 
-mllib-local_2. 11-2.4.4.2.6.99.201-25973884
+spark-mllib-local_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-网络 common_2 11-2.4.4.2.6.99.201-25973884
+spark-network-common_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-网络 shuffle_2 11-2.4.4.2.6.99.201-25973884
+spark-network-shuffle_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-repl_2 11-2.4.4.2.6.99.201-25973884
+spark-repl_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-sketch_2 11-2.4.4.2.6.99.201-25973884
+spark-sketch_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-sql_2 11-2.4.4.2.6.99.201-25973884
+spark-sql_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-streaming_2 11-2.4.4.2.6.99.201-25973884
+spark-streaming_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-tags_2 11-2.4.4.2.6.99.201-25973884
+spark-tags_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-unsafe_2 11-2.4.4.2.6.99.201-25973884
+spark-unsafe_2.11-2.4.4.2.6.99.201-25973884.jar
 
-spark-yarn_2 11-2.4.4.2.6.99.201-25973884
+spark-yarn_2.11-2.4.4.2.6.99.201-25973884.jar
 
 spire_2.11-0.13.0.jar
 
 spire-macros_2.11-0.13.0.jar
 
-喷涂 json_2 11-1.3。2
+spray-json_2.11-1.3.2.jar
 
-sqlanalyticsconnector-1.0.9.2.6.99.201-25973884
+sqlanalyticsconnector-1.0.9.2.6.99.201-25973884.jar
 
 ST4-4.0.4.jar
 
@@ -567,19 +567,19 @@ stringtemplate-3.2.1.jar
 
 super-csv-2.2.0.jar
 
-synapse telemetry_2-11-0.0。1
+synapse-spark-telemetry_2.11-0.0.1.jar
 
-TokenLibrary-assembly-1.0 .jar
+TokenLibrary-assembly-1.0.jar
 
 univocity-parsers-2.7.3.jar
 
 validation-api-1.1.0.Final.jar
 
-VegasConnector-1.0.10。1
+VegasConnector-1.0.10.1.jar
 
-vw-jni-8.8。1
+vw-jni-8.8.1.jar
 
-wildfly-openssl-1.0。7
+wildfly-openssl-1.0.7.Final.jar
 
 woodstox-core-5.0.3.jar
 
@@ -589,242 +589,242 @@ xmlenc-0.52.jar
 
 xz-1.5.jar
 
-zookeeper-3.4.11.2.6.99.201-25973884
+zookeeper-3.4.11.2.6.99.201-25973884.jar
 
 zstd-jni-1.3.2-2.jar
  
 ## <a name="python-libraries"></a>Python 库
 
-_libgcc_mutex = = 0。1 
+_libgcc_mutex==0.1 
 
-_openmp_mutex = = 4。5
+_openmp_mutex==4.5
 
-ares = = 1.16。1
+c-ares==1.16.1
 
-ca-证书 = = 2020.6.20
+ca-certificates==2020.6.20
 
-certifi = = 2020.6.20
+certifi==2020.6.20
 
-cffi = 1.14。3
+cffi=1.14.3
 
 chardet==3.0.4
 
-加密 = = 3.1。1
+cryptography==3.1.1
 
-conda = = 4.3.21
+conda==4.3.21
 
 cytoolz==0.8.2
 
-gperftools = = 2。7
+gperftools==2.7
 
 h5py==2.10.0
 
-hdf5 = = 1.10。6
+hdf5==1.10.6
 
-jpeg = = 9d
+jpeg==9d
 
-libblas = = 3.9。0
+libblas==3.9.0
 
-libcblas = = 3.9。0
+libcblas==3.9.0
 
-libcurl = = 7.71。1
+libcurl==7.71.1
 
-libedit = = 3.1.20191231
+libedit==3.1.20191231
 
-libev = = 4.33
+libev==4.33
 
 libffi==3.2.1
 
-libgcc-ng = = 9.3。0
+libgcc-ng==9.3.0
 
-libgfortran-ng = = 9.3。0
+libgfortran-ng==9.3.0
 
-libgfortran4 = = 7.5。0
+libgfortran4==7.5.0
 
-libgfortran5 = = 9.3。0
+libgfortran5==9.3.0
 
-libgomp = = 9.3。0
+libgomp==9.3.0
 
-libiconv = = 1.16
+libiconv==1.16
 
-liblapack = = 3.9。0
+liblapack==3.9.0
 
-libnghttp2 = = 1.41。0
+libnghttp2==1.41.0
 
-libopenblas = = 0.3.12
+libopenblas==0.3.12
 
-numpy = = 1.18。5
+numpy==1.18.5
 
-ncurses = = 6。2
+ncurses==6.2
 
-openssl = = 1.1。1
+openssl==1.1.1
 
-perl = = 5.32。0
+perl==5.32.0
 
-pip = = 20.2。4
+pip==20.2.4
 
-pygments = = 2.7。3
+pygments==2.7.3
 
 pyopenssl==19.1.0
 
-python = = 3.6.11
+python==3.6.11
 
-readline = = 8。0
+readline==8.0
 
-requests = = 2.24。0
+requests==2.24.0
 
-sentencepiece = = 0.1.92
+sentencepiece==0.1.92
 
 setuptools==41.4.0
 
-6 = = 1.15。0
+six==1.15.0
 
-sqlite = = 3.33。0
+sqlite==3.33.0
 
-tk = = 8.6.10
+tk==8.6.10
 
-toolz = = 0.11。1
+toolz==0.11.1
 
-urllib3 = = 1.25.10
+urllib3==1.25.10
 
-unixodbc = = 2.3。9
+unixodbc==2.3.9
 
-xz = = 5.2。5
+xz==5.2.5
 
 wheel==0.30.0
 
-yaml = = 0.2。5
+yaml==0.2.5
 
-zlib = = = = 1.2.11
+zlib====1.2.11
 
-absl-py = = 0.11。0
+absl-py==0.11.0
 
-adal = = 1.2。4
+adal==1.2.4
 
-adlfs = = 0.5。5
+adlfs==0.5.5
 
-aiohttp = = 3.7。2
+aiohttp==3.7.2
 
-alembic = = 1.4。1
+alembic==1.4.1
 
-altair = = 4.1。0
+altair==4.1.0
 
-appdirs = = sqoop-user-guide-1.4。4
+appdirs==1.4.4
 
 applicationinsights==0.11.9
 
-asn1crypto = = 1.4。0
+asn1crypto==1.4.0
 
-astor = = 0.8。1
+astor==0.8.1
 
-astroid = = 2.4.2 sections
+astroid==2.4.2
 
-astunparse = = 1.6。3
+astunparse==1.6.3
 
-async-timeout = = 3.0。1
+async-timeout==3.0.1
 
-attrs = = 20.3。0
+attrs==20.3.0
 
 azure-common==1.1.25
 
-azure 核心 = = 1.8。2
+azure-core==1.8.2
 
-datalake = = 0.0.51
+azure-datalake-store==0.0.51
 
 azure-graphrbac==0.61.1
 
-azure-identity = = 1.4。1
+azure-identity==1.4.1
 
-azure 管理-授权 = = 0.61。0
+azure-mgmt-authorization==0.61.0
 
 azure-mgmt-containerregistry==2.8.0
 
 azure-mgmt-keyvault==2.2.0
 
-azure 管理-resource = = 10.2。0
+azure-mgmt-resource==10.2.0
 
-azure 管理-存储 = = 11.2。0
+azure-mgmt-storage==11.2.0
 
-azure 存储-blob = = 12.5。0
+azure-storage-blob==12.5.0
 
-azure 存储-common = = 2.1。0
+azure-storage-common==2.1.0
 
-automl-core = = 1.16。0
+azureml-automl-core==1.16.0
 
-automl = = 1.16。0
+azureml-automl-runtime==1.16.0
 
-azureml 核心 = = 1.16。0
+azureml-core==1.16.0
 
-azureml-dataprep = = 2.3。1
+azureml-dataprep==2.3.1
 
-dataprep-native = = 23.0。0
+azureml-dataprep-native==23.0.0
 
 
-dataprep-rslex = = 1.1。1
+azureml-dataprep-rslex==1.1.1
 
-azureml-runtime = = 1.16。0
+azureml-dataset-runtime==1.16.0
 
-azureml-默认值 = = 1.16。0
+azureml-defaults==1.16.0
 
-azureml-解读 = = 1.16。0
+azureml-interpret==1.16.0
 
-azureml-mlflow = = 1.16。0
+azureml-mlflow==1.16.0
 
 azureml-model-management-sdk==1.0.1b6.post1
 
-azureml-opendatasets = = 1.18。0
+azureml-opendatasets==1.18.0
 
-azureml-管道 = = 1.16。0
+azureml-pipeline==1.16.0
 
-azureml-流水线 = = 1.16。0
+azureml-pipeline-core==1.16.0
 
-azureml-管道-步骤 = = 1.16。0
+azureml-pipeline-steps==1.16.0
 
-azureml-sdk = = 1.16。0
+azureml-sdk==1.16.0
 
-azure 存储-blob = = 12.5。0
+azure-storage-blob==12.5.0
 
-azureml-遥测 = = 1.16。0
+azureml-telemetry==1.16.0
 
-azureml-定型 = = 1.16。0
+azureml-train==1.16.0
 
-azureml-automl = = 1.16。0
+azureml-train-automl==1.16.0
 
-azureml-automl-client = = 1.16。0
+azureml-train-automl-client==1.16.0
 
-azureml-automl = = 1.16。0
+azureml-train-automl-runtime==1.16.0
 
-azureml-核心 = = 1.16。0
+azureml-train-core==1.16.0
 
-azureml-restclients-hyperdrive = = 1.16。0
+azureml-train-restclients-hyperdrive==1.16.0
 
 backports.tempfile==1.0
 
 backports.weakref==1.0.post1
 
-beautifulsoup4 = = 4.9。3
+beautifulsoup4==4.9.3
 
-bitarray = = 1.6。1
+bitarray==1.6.1
 
-bokeh = = 2.2。3
+bokeh==2.2.3
 
 boto==2.49.0
 
-boto3 = = 1.15.14
+boto3==1.15.14
 
-botocore = = 1.18.14
+botocore==1.18.14
 
-瓶颈 = = 1.3。2
+Bottleneck==1.3.2
 
-bpemb = = 0.3。2
+bpemb==0.3.2
 
-cachetools = = 4.1。1
+cachetools==4.1.1
 
-certifi = = 2020.6.20
+certifi==2020.6.20
 
-单击 = = 7.1。2
+click==7.1.2
 
-cloudpickle = = 1.6。0
+cloudpickle==1.6.0
 
 configparser==3.7.4
 
@@ -832,177 +832,177 @@ contextlib2==0.6.0.post1
 
 cycler==0.10.0
 
-cython = = 0.29.21
+cython==0.29.21
 
 cytoolz==0.8.2
 
-dataclasses.dll = = 0。8
+dataclasses==0.8
 
-datashape = = 0.5。2
+datashape==0.5.2
 
-修饰器 = = 4.4。2
+decorator==4.4.2
 
-弃用 = = 1.2.10
+Deprecated==1.2.10
 
-深入了解 = = 0.3。2
+dill==0.3.2
 
-发行版 = = 1.5。0
+distro==1.5.0
 
-docker = = 4.3。1
+docker==4.3.1
 
-docutils = = 0.16
+docutils==0.16
 
-dotnetcore2 = = v2.1.17
+dotnetcore2==2.1.17
 
 entrypoints==0.3
 
-et-xmlfile = = 1.0。1
+et-xmlfile==1.0.1
 
-filelock = = 3.0.12
+filelock==3.0.12
 
-火灾 = = 0.3。1
+fire==0.3.1
 
-风格 = = 0。5
+flair==0.5
 
-Flask = = 1.0。3
+Flask==1.0.3
 
-fsspec = = 0.8。4
+fsspec==0.8.4
 
 fusepy==3.0.1
 
-未来 = = 0.18。2
+future==0.18.2
 
-gast = = 0.3。3
+gast==0.3.3
 
-gensim = = 3.8。3
+gensim==3.8.3
 
-geographiclib = = 1.50
+geographiclib==1.50
 
-geopy = = 2.0。0
+geopy==2.0.0
 
-gitdb = = 4.0。5
+gitdb==4.0.5
 
-GitPython = = 3.1.11
+GitPython==3.1.11
 
-google-auth = = 1.23。0
+google-auth==1.23.0
 
-google-auth-oauthlib = = 0.4。2
+google-auth-oauthlib==0.4.2
 
-google-意大利面食 = = 为0.2。0
+google-pasta==0.2.0
 
-gorilla = = 0.3。0
+gorilla==0.3.0
 
-grpcio = = 1.33。2
+grpcio==1.33.2
 
 gunicorn==19.9.0
 
-html5lib = = 1。1
+html5lib==1.1
 
-hummingbird-ml = = 0.0。6
+hummingbird-ml==0.0.6
 
-hyperopt = = 0.2。5
+hyperopt==0.2.5
 
-idna = = 2.10
+idna==2.10
 
-idna-ssl = = 1.1。0
+idna-ssl==1.1.0
 
-imageio = = 2.9。0
+imageio==2.9.0
 
-importlib = = 1.7。0
+importlib-metadata==1.7.0
 
-解释-社区 = = 0.15。1
+interpret-community==0.15.1
 
-解释核心 = = 0.2。1
+interpret-core==0.2.1
 
-ipython = = 7.8。0
+ipython==7.8.0
 
-ipython-genutils = = 为0.2。0
+ipython-genutils==0.2.0
 
 isodate==0.6.0
 
-isort = = 5.6。4
+isort==5.6.4
 
 itsdangerous==1.1.0
 
-jdcal = = 1.4。1
+jdcal==1.4.1
 
 jeepney==0.4.3
 
-Jinja2 = = 2.11。2
+Jinja2==2.11.2
 
-jmespath = = 0.10。0
+jmespath==0.10.0
 
-joblib = = 0.14。1
+joblib==0.14.1
 
 json-logging-py==0.2
 
-jsonpickle = = 1.4。1
+jsonpickle==1.4.1
 
-jsonschema = = 3.2。0
+jsonschema==3.2.0
 
 Keras-Applications==1.0.8
 
-Keras = = 1.1。2
+Keras-Preprocessing==1.1.2
 
-keras2onnx = = 1.6。0
+keras2onnx==1.6.0
 
-kiwisolver = = 1.3。1
+kiwisolver==1.3.1
 
-koalas = = 1.2。0
+koalas==1.2.0
 
-langdetect = = 1.0。8
+langdetect==1.0.8
 
-惰性对象-proxy = = 1.4。3
+lazy-object-proxy==1.4.3
 
-liac-arff = = 2.5。0
+liac-arff==2.5.0
 
-lightgbm = = 2.3。0
+lightgbm==2.3.0
 
-Mako = = 1.1。3
+Mako==1.1.3
 
-Markdown = = 3.3。3
+Markdown==3.3.3
 
 MarkupSafe==1.1.1
 
-matplotlib = = 3.2。2
+matplotlib==3.2.2
 
-mccabe = = 0.6。1
+mccabe==0.6.1
 
-mistune = = 0.8。4
+mistune==0.8.4
 
-mleap = = 0.16。1
+mleap==0.16.1
 
-mlflow = = 1.11。0
+mlflow==1.11.0
 
-itertools = = 8.6。0
+more-itertools==8.6.0
 
-mpld3 = = 0。3
+mpld3==0.3
 
-mpmath = = 1.1。0
+mpmath==1.1.0
 
-msal = = 1.5。0
+msal==1.5.0
 
-msal-extension = = 0.2。2
+msal-extensions==0.2.2
 
-msrest = = 0.6.19
+msrest==0.6.19
 
-msrestazure = = 0.6。4
+msrestazure==0.6.4
 
-multidict = = 5.0。0
+multidict==5.0.0
 
-multipledispatch = = 0.6。0
+multipledispatch==0.6.0
 
-mypy = = 0.780
+mypy==0.780
 
-mypy-extension = = 0.4。3
+mypy-extensions==0.4.3
 
 ndg-httpsclient==0.5.1
 
-networkx = = 2。5
+networkx==2.5
 
-nimbusml = = 1.7。1
+nimbusml==1.7.1
 
-nltk = = 3。5
+nltk==3.5
 
 nose==1.3.7
 
@@ -1010,57 +1010,57 @@ oauthlib==3.1.0
 
 odo==0.5.0
 
-olefile = = 0.46
+olefile==0.46
 
 onnx==1.6.0
 
-onnxconverter-common = = 1.6。0
+onnxconverter-common==1.6.0
 
 onnxmltools==1.4.1
 
-onnxruntime = = 1.3。0
+onnxruntime==1.3.0
 
-openpyxl = = 3.0。5
+openpyxl==3.0.5
 
-opt-einsum = = 3.3。0
+opt-einsum==3.3.0
 
-打包 = = 20。4
+packaging==20.4
 
 pandas==0.25.3
 
-pandasql = = iisnode-inspector-0.7.3.dll
+pandasql==0.7.3
 
-pathspec = = 0.8。0
+pathspec==0.8.0
 
 patsy==0.5.1
 
-pickleshare = = 0.7。5
+pickleshare==0.7.5
 
-Pillow = = 8.0。1
+Pillow==8.0.1
 
-plotly = = 4.12。0
+plotly==4.12.0
 
-pluggy = = 0.13。1
+pluggy==0.13.1
 
 pmdarima==1.1.1
 
-portalocker = = 1.7。1
+portalocker==1.7.1
 
-prometheus-client = = 0.8。0
+prometheus-client==0.8.0
 
-prometheus = = 0.18。1
+prometheus-flask-exporter==0.18.1
 
-protobuf = = 3.13。0
+protobuf==3.13.0
 
-psutil = = 5.7。2
+psutil==5.7.2
 
-py = = 1.9。0
+py==1.9.0
 
 py-cpuinfo==5.0.0
 
-py4j = = 0.10。7
+py4j==0.10.7
 
-pyarrow = = 1.0。1
+pyarrow==1.0.1
 
 pyasn1==0.4.8
 
@@ -1070,137 +1070,137 @@ pycrypto==2.6.1
 
 PyJWT==1.7.1
 
-pylint = = 2.6。0
+pylint==2.6.0
 
-pymssql = = 2.1。5
+pymssql==2.1.5
 
-pyodbc = = 4.0.30
+pyodbc==4.0.30
 
-pyopencl = = 2020。1
+pyopencl==2020.1
 
-pyparsing = = 2.4。7
+pyparsing==2.4.7
 
-pyrsistent = = 0.17。3
+pyrsistent==0.17.3
 
-pytest = = 5.3。2
+pytest==5.3.2
 
 python-dateutil==2.8.1
 
-python-editor = = 1.0。4
+python-editor==1.0.4
 
-pytools = = 2021。1
+pytools==2021.1
 
-pytz = = 2020。1
+pytz==2020.1
 
-PyWavelets = = 1.1。1
+PyWavelets==1.1.1
 
-PyYAML = = 5.3。1
+PyYAML==5.3.1
 
-querystring-parser = = 1.2。4
+querystring-parser==1.2.4
 
-regex = = 2020.10.28
+regex==2020.10.28
 
 requests-oauthlib==1.3.0
 
 retrying==1.3.3
 
-rsa = = 4。6
+rsa==4.6
 
-ruamel. yaml = = 0.16.12
+ruamel.yaml==0.16.12
 
-ruamel. yaml. clib = = 0.2。2
+ruamel.yaml.clib==0.2.2
 
 s3transfer==0.3.3
 
-sacremoses = = 0.0.43
+sacremoses==0.0.43
 
-scikit-learn = = 0.17。2
+scikit-image==0.17.2
 
-scikit-learn = = 0.22.2. post1
+scikit-learn==0.22.2.post1
 
 scipy==1.4.1
 
-seaborn = = 0.11。0
+seaborn==0.11.0
 
-SecretStorage = = 3.1。2
+SecretStorage==3.1.2
 
-segtok = = 1.5.10
+segtok==1.5.10
 
-shap = = 0.34。0
+shap==0.34.0
 
 skl2onnx==1.4.9
 
 sklearn-pandas==1.7.0
 
-智能打开 = = 1.9。0
+smart-open==1.9.0
 
-smmap = = 3.0。4
+smmap==3.0.4
 
-soupsieve = = 2.0。1
+soupsieve==2.0.1
 
-SQLAlchemy = = 1.3.13
+SQLAlchemy==1.3.13
 
-sqlitedict = = 1.7。0
+sqlitedict==1.7.0
 
-sqlparse = = 0.4。1
+sqlparse==0.4.1
 
-statsmodels = = 0.10。2
+statsmodels==0.10.2
 
-制表 = = 0.8。7
+tabulate==0.8.7
 
-tb-每夜 = = 1.14。0
+tb-nightly==1.14.0
 
-tensorboard = = 2.3。0
+tensorboard==2.3.0
 
-tensorboard-wit = = 1.7。0
+tensorboard-plugin-wit==1.7.0
 
-tensorflow = = 2.0.0 b1
+tensorflow==2.0.0b1
 
-tensorflow-估计器 = = 2.3。0
+tensorflow-estimator==2.3.0
 
 termcolor==1.1.0
 
-textblob = = 0.15。3
+textblob==0.15.3
 
-tf-估计器 = = 1.14。0
+tf-estimator-nightly==1.14.0
 
-tf2onnx = = 1.7。2
+tf2onnx==1.7.2
 
-tifffile = = 2020.9。3
+tifffile==2020.9.3
 
-tokenizer = = 0.9。2
+tokenizers==0.9.2
 
-toml = = 0.10。2
+toml==0.10.2
 
-torch = = 1.7。0
+torch==1.7.0
 
-龙卷风 = = 6。1
+tornado==6.1
 
-tqdm = = 4.48。2
+tqdm==4.48.2
 
-变压器 = = 3.4。0
+transformers==3.4.0
 
-类型化-ast = = 1.4。1
+typed-ast==1.4.1
 
-键入-extension = = 3.7.4。3
+typing-extensions==3.7.4.3
 
-urllib3 = = 1.25.10
+urllib3==1.25.10
 
-wcwidth = = 0.2。5
+wcwidth==0.2.5
 
-webencodings = = 0.5。1
+webencodings==0.5.1
 
 websocket-client==0.57.0
 
-Werkzeug = = 0.16。1
+Werkzeug==0.16.1
 
 wheel==0.30.0
 
 wrapt==1.11.2
 
-xgboost = = 0.90
+xgboost==0.90
 
-zict = = 1.0。0
+zict==1.0.0
 
 zipp==0.6.0
 

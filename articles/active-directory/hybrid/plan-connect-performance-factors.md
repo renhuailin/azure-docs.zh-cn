@@ -14,10 +14,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15bcb0f7ca30c343072da396abeac8d08dee03a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90087003"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
@@ -41,7 +41,7 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 
 下图显示了连接到一个林（尽管支持多个林）的预配引擎的高级体系结构。 此体系结构展示各组件之间的相互交互。
 
-![关系图显示连接目录和 Azure AD Connect 设置引擎如何交互，包括 SQL 数据库中的连接器空间和元节组件。 ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
+![关系图显示已连接目录和 Azure AD Connect 预配引擎如何交互，其中包括 SQL 数据库中的连接器空间和 Metaverse 组件。 ](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
 预配引擎连接到每个 Active Directory 林且连接到 Azure AD。 从每个目录读取信息的过程称为“导入”。 导出是指从预配引擎更新目录。 同步则评估规定对象在预配引擎内的流动方式的规则。 若要深入了解，可参阅 [Azure AD Connect 同步：了解体系结构](./concept-azure-ad-connect-sync-architecture.md)。
 
@@ -113,7 +113,7 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 
 
 
-- **基于域的筛选** –使用此选项可选择要同步到 Azure AD 的特定域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，必须在同步引擎配置中添加和删除域。
+- **基于域的筛选** - 使用此选项选择要同步到 Azure AD 的特定域。 在安装 Azure AD Connect 同步之后对本地基础结构进行更改时，必须在同步引擎配置中添加和删除域。
 - **组织单位 (OU) 筛选** - 使用 OU 来确定要将 Active Directory 域中的哪些特定对象预配到 Azure AD。 在建议的筛选机制中，OU 筛选排在第二位，因为它使用简单的 LDAP 范围查询从 Active Directory 导入较小的对象子集。
 - **按对象筛选属性** - 使用对象上的属性值确定是否在 Azure AD 中预配 Active Directory 中的特定对象。 当域和 OU 筛选无法满足特定筛选要求时，属性筛选非常适合用于微调筛选器。 属性筛选不会缩短导入时间，但会缩短同步和导出时间。
 - **基于组的筛选** - 使用组成员身份确定是否应在 Azure AD 中预配对象。 基于组的筛选仅适用于测试场景，不建议用于生产场景，因为在同步周期期间检查组成员身份需要额外的开销。
@@ -190,4 +190,4 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 在 Azure AD 中监视 [Azure AD Connect 同步运行状况](how-to-connect-health-agent-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

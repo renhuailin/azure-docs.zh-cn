@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693622"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600150"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>快速入门：创建 Synapse 工作区
 本快速入门介绍了使用 Azure 门户创建 Azure Synapse 工作区的步骤。
@@ -35,7 +35,7 @@ ms.locfileid: "101693622"
 
 > [!NOTE]
 > 创建 Azure Synapse 工作区后，将无法将工作区移动到另一个 Azure Active Directory 租户。 如果通过订阅迁移或其他操作执行此过程，可能会失去对工作区中项目的访问权限。
-> 另外，当前无法在[云解决方案提供商 (CSP)](https://docs.microsoft.com/partner-center/csp-overview) 订阅中创建 Synapse Analytics 工作区。
+> 另外，当前无法在[云解决方案提供商 (CSP)](/partner-center/csp-overview) 订阅中创建 Synapse Analytics 工作区。
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio
 

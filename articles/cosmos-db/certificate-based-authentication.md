@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.openlocfilehash: 84cbc681d0974e91561daf8918dff389226fa7aa
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334695"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553963"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>为基于证书的身份验证配置 Azure AD 标识以从 Azure Cosmos DB 帐户访问密钥
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,9 +38,9 @@ ms.locfileid: "93334695"
 
 1. 在“注册应用程序”表单中填写以下详细信息：   
 
-   * **名称** -提供应用程序的名称，可以是任意名称，如 "sampleapp.exe"。
-   * **支持的帐户类型** –选择 **"仅 (默认目录中的帐户")** ，以允许当前目录中的资源访问此应用程序。 
-   * **重定向 URL** -选择类型为 " **Web** " 的应用程序并提供托管应用程序的 url，可以是任何 url。 在此示例中，可以提供类似于 `https://sampleApp.com` 的测试 URL，即使该应用不存在，也没有关系。
+   * **名称** - 为应用程序提供一个名称，它可以是任何名称，如“sampleApp”。
+   * **支持的帐户类型** - 选择“仅限此组织目录(默认目录)中的帐户”，以允许当前目录中的资源访问此应用程序。 
+   * **重定向 URL** - 选择“Web”类型的应用程序，并提供应用程序所在的 URL（可以是任意 URL）。 在此示例中，可以提供类似于 `https://sampleApp.com` 的测试 URL，即使该应用不存在，也没有关系。
 
    :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="注册示例 Web 应用程序":::
 
@@ -65,7 +65,7 @@ ms.locfileid: "93334695"
    Set-AzContext $context 
    ```
 
-1. 安装并导入 [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) 模块
+1. 安装并导入 [AzureAD](/powershell/module/azuread/) 模块
 
    ```powershell
    Install-Module AzureAD
@@ -150,7 +150,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
       -Type "Keys"
    ```
 
-上面的命令将显示 Azure Cosmos 帐户的主要和辅助主密钥。 可以查看 Azure Cosmos 帐户的活动日志，以验证获取密钥的请求是否成功，以及“sampleApp”应用程序是否发起了该事件。
+以上命令将显示 Azure Cosmos 帐户的主要密钥和辅助主密钥。 可以查看 Azure Cosmos 帐户的活动日志，以验证获取密钥的请求是否成功，以及“sampleApp”应用程序是否发起了该事件。
 
 :::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="验证 Azure AD 中的获取密钥调用":::
 
@@ -238,7 +238,7 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-此脚本输出主主密钥和辅助主密钥，如以下屏幕截图所示：
+此脚本将输出以下屏幕截图所示的主要密钥和辅助主密钥：
 
 :::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="C# 应用程序输出":::
 

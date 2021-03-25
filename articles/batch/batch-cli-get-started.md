@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144748"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
@@ -79,7 +79,7 @@ az login
     
     如上一部分所述，以交互方式登录到 Azure 时，系统会缓存凭据，因此 Azure CLI 可以使用这些相同的凭据将你登录到 Batch 帐户。 如果通过服务主体登录到 Azure，也会使用这些凭据登录到 Batch 帐户。
 
-    Azure AD 的优势在于，它) Azure RBAC 提供 Azure 基于角色的访问 (控制。 使用 Azure RBAC，用户的访问权限取决于分配给他们的角色，而不是他们是否拥有帐户密钥。 你可以管理 Azure 角色而不是帐户密钥，让 Azure AD 处理访问权限和身份验证。  
+    Azure AD 的优势是提供 Azure 基于角色的访问控制 (Azure RBAC)。 使用 Azure RBAC 时，用户的访问权限取决于分配给他们的角色，而不是他们是否拥有帐户密钥。 你可以管理 Azure 角色而不是帐户密钥，让 Azure AD 处理访问权限和身份验证。  
 
      若要使用 Azure AD 登录到 Batch 帐户，请调用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令： 
 
@@ -156,7 +156,7 @@ az batch task list --job-id job001
 排查 Azure CLI 问题时，可以参考以下提示：
 
 * 使用 `-h` 获取任何 CLI 命令的 **帮助文本**
-* 使用 `-v` 和 `-vv` 显示**详细的**命令输出。 包括 `-vv` 标志时，Azure CLI 显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
+* 使用 `-v` 和 `-vv` 显示 **详细的** 命令输出。 包括 `-vv` 标志时，Azure CLI 显示实际的 REST 请求和响应。 使用这些开关可以方便地显示完整的错误输出。
 * 可以使用 `--json` 选项查看 **JSON 格式的命令输出**。 例如， `az batch pool show pool001 --json` 以 JSON 格式显示 pool001 的属性。 然后，可以复制并修改此输出，以便在 `--json-file` 中使用（请参阅本文前面的“JSON 文件”）。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 

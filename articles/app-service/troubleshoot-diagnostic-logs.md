@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6008304ea7c1d17363587a4fa5bf6017cb0903f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 03ef2110af2d9e642019c2b07b53fae3e32b1ea6
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049230"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950172"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -116,7 +116,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
     ```
 
-- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)。 有关 Web 作业 SDK 日志记录的信息，请参阅 [AZURE WEBJOBS SDK 入门](/azure/app-service/webjobs-sdk-get-started#enable-console-logging)
+- 默认情况下，ASP.NET Core 使用 [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) 日志记录提供程序。 有关详细信息，请参阅 [Azure 中的 ASP.NET Core 日志记录](/aspnet/core/fundamentals/logging/)。 有关 WebJobs SDK 日志记录的信息，请参阅 [Azure WebJobs SDK 入门](./webjobs-sdk-get-started.md#enable-console-logging)
 
 ## <a name="stream-logs"></a>流式传输日志
 
@@ -130,28 +130,26 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 若要在 [Azure 门户](https://portal.azure.com)中流式传输日志，请导航到你的应用并选择“日志流”。 
 
-### <a name="in-cloud-shell"></a>在 Cloud Shell
+### <a name="in-cloud-shell"></a>在 Cloud Shell 中
 
-若要在 [Cloud Shell](../cloud-shell/overview.md)中实时流式传输日志，请使用以下命令：
+若要在 [Cloud Shell](../cloud-shell/overview.md) 中实时流式传输日志，请使用以下命令：
+
+> [!IMPORTANT]
+> 此命令可能无法与 Linux 应用服务计划中托管的 Web 应用配合使用。
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-若要筛选特定事件（如错误），请使用 **--Filter** 参数。 例如：
+若要筛选特定日志类型（如 HTTP），请使用 --Provider 参数。 例如：
 
 ```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --filter Error
-```
-若要筛选特定日志类型（如 HTTP），请使用 **--Path** 参数。 例如：
-
-```azurecli-interactive
-az webapp log tail --name appname --resource-group myResourceGroup --path http
+az webapp log tail --name appname --resource-group myResourceGroup --provider http
 ```
 
 ### <a name="in-local-terminal"></a>在本地终端中
 
-若要在本地控制台中流式传输日志，请[安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录帐户](/cli/azure/authenticate-azure-cli)。 登录后，请按照 [Cloud Shell 的说明进行操作](#in-cloud-shell)
+若要在本地控制台中流式传输日志，请[安装 Azure CLI](/cli/azure/install-azure-cli) 并[登录帐户](/cli/azure/authenticate-azure-cli)。 登录后，请遵循 [Cloud Shell 的说明](#in-cloud-shell)
 
 ## <a name="access-log-files"></a>访问日志文件
 
@@ -159,7 +157,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于存储在应用服务文件系统中的日志，最简单的方法是在浏览器中通过以下链接下载 ZIP 文件：
 
-- Linux/容器应用： `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Linux/容器应用：`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
 - Windows 应用：`https://<app-name>.scm.azurewebsites.net/api/dump`
 
 对于 Linux/容器应用，ZIP 文件包含 docker 主机和 docker 容器的控制台输出日志。 对于横向扩展的应用，ZIP 文件包含每个实例的一组日志。 在应用服务文件系统中，这些日志文件是“/home/LogFiles”目录的内容。
@@ -191,11 +189,11 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
 | AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
-| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对网站内容所做的文件更改; **仅适用于高级层和更高版本** |
+| AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | Java SE 和 Tomcat Blessed 图像 <sup>1</sup> | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
-| AppServiceAntivirusScanAuditLogs | 是 | 是 | 是 | 是 | 使用 Microsoft Defender [的防病毒扫描日志](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html);**仅适用于高级层** | 
+| AppServiceAntivirusScanAuditLogs | 是 | 是 | 是 | 是 | 使用 Microsoft Defender 的[防病毒扫描日志](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)；仅适用于高级层 | 
 
 <sup>1</sup> 对于 Java SE 应用，请将“$WEBSITE_AZMON_PREVIEW_ENABLED”添加到应用设置，并将其设置为“1”或“true”。
 

@@ -2,24 +2,25 @@
 title: 启用适用于 Linux VM 的 Azure 磁盘加密
 description: 本文提供有关如何为 Linux VM 启用 Microsoft Azure 磁盘加密的说明。
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 066fb32dc9da13e8a77660a9144b53675d689f63
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694370"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553793"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
+Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与符合性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
 
-Azure 磁盘加密与虚拟机采用相同的区域弹性。 有关详细信息，请参阅 [支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
+Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关详细信息，请参阅[支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
 
 如果使用 [Azure 安全中心](../../security-center/index.yml)，当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
@@ -35,11 +36,11 @@ Azure 磁盘加密与虚拟机采用相同的区域弹性。 有关详细信息�
 
 ### <a name="supported-vms"></a>支持的 VM
 
-Linux VM 具有[各种大小](../sizes.md)。 第1代和第2代 Vm 支持 Azure 磁盘加密。 Azure 磁盘加密还可用于使用高级存储的 VM。
+Linux VM 具有[各种大小](../sizes.md)。 Azure 磁盘加密在第 1 代和第 2 代 VM 上受支持。 Azure 磁盘加密还可用于使用高级存储的 VM。
 
 请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.md)。
 
-Azure 磁盘加密也不适用于 [基本、A 系列 vm](https://azure.microsoft.com/pricing/details/virtual-machines/series/)或不满足以下最低内存要求的虚拟机：
+Azure 磁盘加密在[基本、A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或不满足以下最低内存要求的虚拟机上也不可用：
 
 | 虚拟机 | 内存最低要求 |
 |--|--|
@@ -67,11 +68,11 @@ Azure 磁盘加密也不适用于 [基本、A 系列 vm](https://azure.microsoft
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS 和数据磁盘 |
-| RedHat | RHEL 8-LVM | 8-LVM | RedHat： RHEL： 8-LVM：最新 | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 8。2 | 8.2 | RedHat： RHEL：8.2：最新 | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 8.1 | 8.1 | RedHat： RHEL：8.1：最新 | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 7-LVM | 7-LVM | RedHat： RHEL： 7-LVM：7.8.2020111201 | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 7。8 | 7.8 | RedHat： RHEL：7.8：最新 | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:latest | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 8.2 | 8.2 | RedHat:RHEL:8.2:latest | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 8.1 | 8.1 | RedHat:RHEL:8.1:latest | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM: 7.8.2020111201 | OS 和数据磁盘（请参阅下面的注释） |
+| RedHat | RHEL 7.8 | 7.8 | RedHat:RHEL:7.8:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS 和数据磁盘（请参阅下面的注释） |
@@ -80,9 +81,9 @@ Azure 磁盘加密也不适用于 [基本、A 系列 vm](https://azure.microsoft
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 6.8 | 6.8 | RedHat:RHEL:6.8:latest | 数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | 数据磁盘（请参阅下面的注释） |
-| OpenLogic | CentOS 8-LVM | 8-LVM | OpenLogic： CentOS-LVM： 8-LVM：最新 | OS 和数据磁盘 |
-| OpenLogic | CentOS 8。2 | 8_2 | OpenLogic： CentOS：8_2：最新 | OS 和数据磁盘 |
-| OpenLogic | CentOS 8。1 | 8_1 | OpenLogic： CentOS：8_1：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 8-LVM | 8-LVM | OpenLogic:CentOS-LVM:8-LVM:latest | OS 和数据磁盘 |
+| OpenLogic | CentOS 8.2 | 8_2 | OpenLogic:CentOS:8_2:latest | OS 和数据磁盘 |
+| OpenLogic | CentOS 8.1 | 8_1 | OpenLogic:CentOS:8_1:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic:CentOS-LVM:7-LVM:7.8.2020111100 | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.8 | 7.8 | OpenLogic:CentOS:7_8:latest | OS 和数据磁盘 |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS 和数据磁盘 |
@@ -156,7 +157,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门 - 使用 Azure CLI 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
-- [快速入门-使用 Azure PowerShell 创建并加密 Linux VM](disk-encryption-powershell-quickstart.md) 
+- [快速入门 - 使用 Azure PowerShell 创建和加密 Linux VM](disk-encryption-powershell-quickstart.md) 
 - [Linux VM 上的 Azure 磁盘加密方案](disk-encryption-linux.md)
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

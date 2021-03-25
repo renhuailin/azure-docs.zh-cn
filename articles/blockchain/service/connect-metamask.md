@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90530431"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>使用 MetaMask 进行连接并部署智能合同
@@ -29,11 +29,11 @@ ms.locfileid: "90530431"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到你的 Azure 区块链服务成员。
-1. 选择“事务节点”**** 和默认事务节点链接。
+1. 选择“事务节点”和默认事务节点链接。
 
     ![选择默认事务节点](./media/connect-metamask/transaction-nodes.png)
 
-1. 选择“连接字符串”>“访问密钥”****。
+1. 选择“连接字符串”>“访问密钥”。
 1. 从 **“HTTPS(访问密钥 1)”** 中复制终结点地址。
 
     ![连接字符串](./media/connect-metamask/connection-string.png)
@@ -41,12 +41,12 @@ ms.locfileid: "90530431"
 ## <a name="connect-metamask"></a>连接 MetaMask
 
 1. 打开 MetaMask 浏览器扩展并登录。
-1. 在网络下拉列表中，选择“自定义 RPC”****。
+1. 在网络下拉列表中，选择“自定义 RPC”。
 
     ![自定义 RPC](./media/connect-metamask/custom-rpc.png)
 
-1. 在“新建网络”>“新建 RPC URL”**** 中，粘贴前面复制的终结点地址。
-1. 选择“保存”。****
+1. 在“新建网络”>“新建 RPC URL”中，粘贴前面复制的终结点地址。
+1. 选择“保存”。
 
     如果连接成功，则专用网络会显示在网络下拉列表中。
 
@@ -57,14 +57,14 @@ ms.locfileid: "90530431"
 Remix 是一个基于浏览器的 Solidity 开发环境。 将 MetaMask 与 Remix 一起使用，你可以部署智能合同以及对其采取操作。
 
 1. 在浏览器中，导航到 `https://remix.ethereum.org`。
-1. 在“主页”**** 选项卡中的“文件”**** 下选择“新建文件”****。
+1. 在“主页”选项卡中的“文件”下选择“新建文件”。
 
     将新文件命名为 `simple.sol`。
 
     ![创建文件](./media/connect-metamask/create-file.png)
 
-    选择“确定”****。
-1. 在 Remix 编辑器中，粘贴以下 **simple 智能合同**代码。
+    选择“确定”。
+1. 在 Remix 编辑器中，粘贴以下 **simple 智能合同** 代码。
 
     ```solidity
     pragma solidity ^0.5.0;
@@ -86,16 +86,16 @@ Remix 是一个基于浏览器的 Solidity 开发环境。 将 MetaMask 与 Remi
     }
     ```
 
-    **simple 合同**声明了一个名为 **balance** 的状态变量。 定义了两个函数。 **add** 函数将一个数字加到 **balance**。 **get** 函数返回 **balance** 的值。
-1. 若要编译合同，请先选择 Solidity 编译器窗格，然后选择“编译 simple.sol”****。
+    **simple 合同** 声明了一个名为 **balance** 的状态变量。 定义了两个函数。 **add** 函数将一个数字加到 **balance**。 **get** 函数返回 **balance** 的值。
+1. 若要编译合同，请先选择 Solidity 编译器窗格，然后选择“编译 simple.sol”。
 
     ![屏幕捕获显示正在编译的合同。](./media/connect-metamask/compile.png)
 
-1. 选择“部署和运行”**** 窗格，然后将“环境”**** 设置为“注入 Web3”****，以通过 MetaMask 连接到区块链成员。
+1. 选择“部署和运行”窗格，然后将“环境”设置为“注入 Web3”，以通过 MetaMask 连接到区块链成员。
 
     ![“运行”选项卡](./media/connect-metamask/injected-web3.png)
 
-1. 选择 **simple** 合同，然后选择“部署”****。
+1. 选择 **simple** 合同，然后选择“部署”。
 
     ![屏幕捕获显示在选择了合同和“部署”的情况下部署和运行事务。](./media/connect-metamask/deploy.png)
 
@@ -104,27 +104,27 @@ Remix 是一个基于浏览器的 Solidity 开发环境。 将 MetaMask 与 Remi
 
     对于公共区块链网络，你需要使用 Ether 来支付事务成本。 因为这是联盟中的一个专用网络，因此可以将天然气价格设置为零。
 
-1.  选择“天然气费用”>“编辑”>“高级”****，将“天然气价格”**** 设置为 0。
+1.  选择“天然气费用”>“编辑”>“高级”，将“天然气价格”设置为 0。
 
     ![天然气价格](./media/connect-metamask/gas-price.png)
 
-    选择“保存”。****
+    选择“保存”。
 
-1. 选择“确认”**** 以将智能合同部署到区块链。
-1. 在“已部署的合同”**** 部分中，展开 **simple** 合同。
+1. 选择“确认”以将智能合同部署到区块链。
+1. 在“已部署的合同”部分中，展开 **simple** 合同。
 
     ![已部署的合同](./media/connect-metamask/deployed-contract.png)
 
-    **添加**和**获取**这两项操作会映射到合同中定义的函数。
+    **添加** 和 **获取** 这两项操作会映射到合同中定义的函数。
 
-1. 若要在区块链上执行**添加**事务，请输入要添加的数字，然后选择“添加”****。 可能会从 Remix 收到天然气估算失败消息：“正在将事务发送到不需要天然气的专用区块链。” 选择“发送事务”**** 以强制执行事务。
+1. 若要在区块链上执行 **添加** 事务，请输入要添加的数字，然后选择“添加”。 可能会从 Remix 收到天然气估算失败消息：“正在将事务发送到不需要天然气的专用区块链。” 选择“发送事务”以强制执行事务。
 1. 与部署合同时类似，MetaMask 通知会警告你没有足够的资金来执行此事务。
 
     因为这是联盟中的一个专用网络，因此可以将天然气价格设置为零。
 
-1. 选择“天然气费用”>“编辑”>“高级”****，将“天然气价格”**** 设置为 0，然后选择“保存”****。
-1. 选择“确认”**** 将事务发送到区块链。
-1. 选择“获取”**** 操作。 这是对查询节点数据的调用。 不需要使用事务。
+1. 选择“天然气费用”>“编辑”>“高级”，将“天然气价格”设置为 0，然后选择“保存”。
+1. 选择“确认”将事务发送到区块链。
+1. 选择“获取”操作。 这是对查询节点数据的调用。 不需要使用事务。
 
 Remix 的调试窗格会显示区块链上的事务的详细信息：
 
@@ -132,7 +132,7 @@ Remix 的调试窗格会显示区块链上的事务的详细信息：
 
 你可以看到 **simple** 合同创建，**simple.add** 的事务以及对 **simple.get** 的调用。
 
-若要查看 MetaMask 中的事务历史记录，请打开 MetaMask 浏览器扩展，在“历史记录”**** 部分查看已部署的合同和事务的日志。
+若要查看 MetaMask 中的事务历史记录，请打开 MetaMask 浏览器扩展，在“历史记录”部分查看已部署的合同和事务的日志。
 
 ## <a name="next-steps"></a>后续步骤
 

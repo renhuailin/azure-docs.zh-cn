@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教程：Azure Active Directory 与 Image Relay 的集成
@@ -101,7 +101,7 @@ ms.locfileid: "92460353"
 
     ![Image Relay 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.imagerelay.com/sso/metadata`
 
@@ -170,7 +170,7 @@ ms.locfileid: "92460353"
 
     ![屏幕截图显示已选择启用控件的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
-    h. 选择仅允许通过单一登录进行登录的权限组（例如， **SSO 基本** ）。
+    h. 选择仅允许通过单一登录进行登录的权限组（例如，**SSO 基本**）。
 
     ![屏幕截图显示已选择“SSO 基本”的“实时用户预配”部分。](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
@@ -184,7 +184,7 @@ ms.locfileid: "92460353"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "92460353"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

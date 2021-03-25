@@ -13,10 +13,10 @@ ms.custom:
 - fasttrack-edit
 - iot
 ms.openlocfilehash: e5d1dc345c72d77be6172fb9c3a10eb2f38d186a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94506322"
 ---
 # <a name="400027-connectionforcefullyclosedonnewconnection"></a>400027 ConnectionForcefullyClosedOnNewConnection
@@ -25,9 +25,9 @@ ms.locfileid: "94506322"
 
 ## <a name="symptoms"></a>症状
 
-使用 .NET SDK 和 MQTT 传输类型，你的设备将与 **Communication_Error** 作为 **ConnectionStatusChangeReason** 断开连接。
+你的设备在使用 .NET SDK 和 MQTT 传输类型时因为 ConnectionStatusChangeReason 断开连接，并显示 Communication_Error。
 
-设备到云的孪生操作（如读取或修补报告的属性）或直接方法调用失败，错误代码为 **400027** 。
+设备到云的孪生操作（如读取或修补报告的属性）或直接方法调用失败，错误代码为 **400027**。
 
 ## <a name="cause"></a>原因
 

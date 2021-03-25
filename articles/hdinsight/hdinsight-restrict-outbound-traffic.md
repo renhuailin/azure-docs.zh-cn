@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574597"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872075"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -52,13 +52,13 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
 1. 导航到“设置” > “规则” > “应用程序规则集合” > “+ 添加应用程序规则集合”。   
 
-    ![标题：添加应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png" alt-text="标题：添加应用程序规则集合":::
 
 1. 在“添加应用程序规则集合”屏幕上提供以下信息：
 
     **顶部部分**
 
-    | properties|  值|
+    | 属性|  值|
     |---|---|
     |名称| FwAppRule|
     |优先级|200|
@@ -66,19 +66,19 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **FQDN 标记部分**
 
-    | 名称 | 源地址 | FQDN 标记 | 注释 |
+    | 名称 | 源地址 | FQDN 标记 | 说明 |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate 和 HDInsight | HDI 服务所需 |
 
     **目标 FQDN 部分**
 
-    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 注释 |
+    | 名称 | 源地址 | 协议:端口 | 目标 FQDN | 说明 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
-    | Rule_4 | * | https:443,http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
+    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | 请将 `storage_account_name` 替换为实际的存储帐户名称。 要仅使用 https 连接，请确保在存储帐户上启用了[“需要安全传输”](../storage/common/storage-require-secure-transfer.md)。 如果使用专用终结点来访问存储帐户，则不需要此步骤，并且存储流量不会转发到防火墙。|
 
-   ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="标题：输入应用程序规则集合详细信息":::
 
 1. 选择 **添加** 。
 
@@ -92,7 +92,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
 
     **顶部部分**
 
-    | properties|  值|
+    | 属性|  值|
     |---|---|
     |名称| FwNetRule|
     |优先级|200|
@@ -105,7 +105,7 @@ HDInsight 出站流量依赖项几乎完全都是使用 FQDN 进行定义的。 
     | Rule_5 | TCP | * | SQL | 1433 | 如果使用的是 HDInsight 提供的默认 SQL 服务，请在“服务标记”部分为 SQL 配置网络规则，以便记录和审核 SQL 通信。 除非在 HDInsight 子网中为 SQL Server 配置了服务终结点，否则它将绕过防火墙。 如果对 Ambari、Oozie、Ranger 和 Hive 元存储使用自定义 SQL Server，则只需允许流量发送到自己的自定义 SQL Server 即可。|
     | Rule_6 | TCP | * | Azure Monitor | * | （可选）计划使用自动缩放功能的客户应添加此规则。 |
     
-   ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="标题：输入应用程序规则集合":::
 
 1. 选择 **添加** 。
 

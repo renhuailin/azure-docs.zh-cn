@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: e814487cb4dab9c8c19daab2ea3bb81391d4a98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983677"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>为虚拟 WAN 配置 Always On VPN 设备隧道
@@ -34,7 +34,7 @@ ms.locfileid: "90983677"
 
 若要删除配置文件，请运行以下命令：
 
-![屏幕截图显示运行命令 Remove-VpnConnection 名称 MachineCertTest 的 PowerShell 窗口。](./media/howto-always-on-device-tunnel/cleanup.png)
+![屏幕截图显示了运行 Remove-VpnConnection -Name MachineCertTest 命令的 PowerShell 窗口。](./media/howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>后续步骤
 

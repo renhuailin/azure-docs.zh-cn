@@ -4,10 +4,10 @@ description: 本主题概述了 IoT Edge 上的实时视频分析。 该平台�
 ms.topic: overview
 ms.date: 05/27/2020
 ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90904347"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>什么是 IoT Edge 上的实时视频分析？ （预览版）

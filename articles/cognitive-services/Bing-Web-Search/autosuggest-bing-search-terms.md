@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/03/2019
 ms.author: aahi
 ms.openlocfilehash: 1a3f479fbbe68c8880cd7fefb3b57c77d4cfbbfe
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349565"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>应用程序中的自动建议必应搜索词
@@ -46,6 +46,6 @@ ms.locfileid: "96349565"
 
 * 查看示例[必应 Web 搜索 API 响应](search-responses.md)。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 * [必应 Web 搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

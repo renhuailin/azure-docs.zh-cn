@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92505699"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Pulse Secure Virtual Traffic Manager 的集成
@@ -76,7 +76,7 @@ ms.locfileid: "92505699"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<published virtual server FQDN>/saml/consume`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<published virtual server FQDN>/saml/consume` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<published virtual server FQDN>/saml/metadata`
 
@@ -85,7 +85,7 @@ ms.locfileid: "92505699"
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Pulse Secure Virtual Traffic Manager 客户端支持团队](mailto:support@pulsesecure.net)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -137,7 +137,7 @@ b. 添加新的 SAML 受信任标识提供者的详细信息，从“单一登�
 
 * 在“URL”文本框中，输入从 Azure 门户复制的“登录 URL”值 。 
 
-* 打开从 Azure 门户下载到记事本中的 **证书** ，将内容粘贴到“证书”文本框中。
+* 打开从 Azure 门户下载到记事本中的 **证书**，将内容粘贴到“证书”文本框中。
 
 c. 验证是否已成功创建新的 SAML 标识提供者。 
 

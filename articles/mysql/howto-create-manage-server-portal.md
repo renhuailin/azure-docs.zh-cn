@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897979"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 服务器
@@ -18,7 +18,7 @@ ms.locfileid: "98897979"
 本文介绍如何管理 Azure Database for MySQL 服务器。 管理任务包括计算和存储缩放、管理员密码重置，以及查看服务器详细信息。
 
 > [!NOTE]
-> 本文包含对字词 _从属_ 的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 >
 
 ## <a name="sign-in"></a>登录
@@ -90,10 +90,10 @@ ms.locfileid: "98897979"
  
 
 > [!IMPORTANT]
-> 重置服务器管理员密码会将服务器管理员权限自动重置为默认值。 如果意外撤销了一个或多个服务器管理员权限，请考虑重置服务器管理员密码。
+> 重置服务器管理员密码会将服务器管理员权限自动重置为默认值。 如果不小心撤消了一个或多个服务器管理员权限，请考虑重置服务器管理员密码。
    
 > [!NOTE]
-> 默认情况下，服务器管理员用户具有以下权限：选择、插入、更新、删除、创建、删除、重新加载、处理、引用、索引、更改、显示数据库、创建临时表、锁定表、执行、复制从属项、复制客户端、创建视图、显示视图、创建例程、更改例程、创建用户、事件、触发器
+> 服务器管理员用户默认拥有以下权限：SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER
 
 ## <a name="delete-a-server"></a>删除服务器
 

@@ -1,5 +1,5 @@
 ---
-title: '从缓存中获取令牌 (MSAL.NET) '
+title: 从缓存获取令牌 (MSAL.NET)
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 以无提示方式获取访问令牌。
 services: active-directory
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 94e4a4d5b80e246ce822e977deafe5c41c9ff4ad
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98064770"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>使用 MSAL.NET 从令牌缓存获取令牌
 
-使用 Microsoft (MSAL.NET) 的 Microsoft 身份验证库获取访问令牌时，将缓存令牌。 应用程序需要令牌时，应该首先调用 `AcquireTokenSilent` 方法来验证缓存中是否有可接受的令牌。 在许多情况下，可以基于缓存中的令牌获取具有更多范围的另一个令牌。 当令牌快到期时也可以刷新令牌（因为令牌缓存也包含一个刷新令牌）。
+使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 获取访问令牌时，将缓存该令牌。 应用程序需要令牌时，应该首先调用 `AcquireTokenSilent` 方法来验证缓存中是否有可接受的令牌。 在许多情况下，可以基于缓存中的令牌获取具有更多范围的另一个令牌。 当令牌快到期时也可以刷新令牌（因为令牌缓存也包含一个刷新令牌）。
 
 建议的模式是首先调用 `AcquireTokenSilent` 方法。  如果 `AcquireTokenSilent` 失败，则使用其他方法获取令牌。
 

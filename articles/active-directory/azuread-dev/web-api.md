@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154417"
 ---
 # <a name="web-api"></a>Web API
@@ -40,7 +40,7 @@ Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>带有 OAuth 2.0 客户端凭据授权的应用程序标识
 
-1. 用户在 Web 应用中登录到 Azure AD（有关详细信息，请参阅 **Web 应用**部分）。
+1. 用户在 Web 应用中登录到 Azure AD（有关详细信息，请参阅 **Web 应用** 部分）。
 1. Web 应用程序需要获取访问令牌，以便通过 Web API 进行身份验证并检索所需的资源。 它向 Azure AD 的令牌终结点发出一个请求，在其中提供凭据、应用程序 ID 以及 Web API 的应用程序 ID URI。
 1. Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
 1. 通过 HTTPS，Web 应用程序使用返回的 JWT 访问令牌在发往 Web API 的请求的 Authorization 标头中添加一个具有“Bearer”限定符的 JWT 字符串。 然后，Web API 对 JWT 令牌进行验证，如果验证成功，则返回所需的资源。

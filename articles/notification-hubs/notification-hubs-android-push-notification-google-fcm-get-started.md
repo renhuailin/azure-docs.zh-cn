@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92428378"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教程：使用 Firebase SDK 版本 0.6 将推送通知发送到 Android 设备
@@ -175,8 +175,8 @@ ms.locfileid: "92428378"
 
     确保在 `NotificationSettings` 类的以下代码中更新这三个占位符：
 
-   * **HubListenConnectionString** ：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”。
-   * **HubName** ：使用 [Azure 门户]的中心页中显示的中心的名称。
+   * **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”。
+   * **HubName**：使用 [Azure 门户]的中心页中显示的中心的名称。
 
      `NotificationSettings` 代码：
 

@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89226023"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 开发和部署 WebJobs
@@ -184,9 +184,9 @@ Web 作业部署信息：
 
 Web 作业的类型可以为“触发式”或“连续式” ：
 
-- 触发式（默认值）：触发式 Web 作业按[计划](#scheduling-a-triggered-webjob)基于绑定事件启动，或在你（按需）手动触发时启动。 它在运行 web 应用的单个实例上运行。
+- 触发式（默认值）：触发式 Web 作业按[计划](#scheduling-a-triggered-webjob)基于绑定事件启动，或在你（按需）手动触发时启动。 它在 Web 应用运行于的单个实例上运行。
 
-- 连续式：[连续式](#continuous-execution) Web 作业在 Web 作业创建后立即启动。 默认情况下，它在所有 web 应用缩放实例上运行，但可以配置为通过 *settings*作为单个实例运行。
+- 连续式：[连续式](#continuous-execution) Web 作业在 Web 作业创建后立即启动。 默认情况下，它在所有 Web 应用缩放实例上运行，但可以通过 settings.job 将其配置为作为单个实例运行。
 
 [!INCLUDE [webjobs-alwayson-note](../../includes/webjobs-always-on-note.md)]
 

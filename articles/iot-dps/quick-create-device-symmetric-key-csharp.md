@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429222"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>快速入门：使用 C# 预配对称密钥设备
@@ -45,15 +45,15 @@ ms.locfileid: "92429222"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，选择左侧菜单上的“所有资源”按钮，打开设备预配服务 (DPS) 实例。
 
-2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮 。 
+2. 选择“管理注册”选项卡，然后选择顶部的“添加个人注册”按钮   。 
 
 3. 在“添加注册”面板中输入以下信息，然后按“保存”按钮   。
 
-   - **机制** ：选择“对称密钥”作为标识证明“机制”   。
+   - **机制**：选择“对称密钥”作为标识证明“机制”   。
 
-   - **自动生成密钥** ：选中此框。
+   - **自动生成密钥**：选中此框。
 
-   - **注册 ID** ：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如 symm-key-csharp-device-01。
+   - **注册 ID**：输入注册 ID 以标识注册。 仅使用小写字母数字和短划线（“-”）字符。 例如 symm-key-csharp-device-01。
 
    - **IoT 中心设备 ID：** 输入设备标识符。 例如 csharp-device-01。
 
@@ -167,7 +167,7 @@ ms.locfileid: "92429222"
     ![设备注册到 IoT 中心](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 
 > [!NOTE]
-> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”  ，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
+> 如果从设备的注册项中的默认值更改了“初始设备孪生状态”，则它会从中心拉取所需的孪生状态，并执行相应的操作。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 >
 
 

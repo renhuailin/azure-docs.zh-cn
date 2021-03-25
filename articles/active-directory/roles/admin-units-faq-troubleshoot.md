@@ -14,16 +14,16 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: c1f41dca3b52ce75ba2342506f621cca0618a3bf
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740374"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565880"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理单元：故障排除和常见问题解答
 
-若要在 Azure Active Directory (Azure AD) 中实现更精细的管理控制，可将用户分配到范围限定为一个或多个管理单元的 Azure AD 角色。 有关常见任务的 PowerShell 脚本示例，请参阅 [使用管理单元](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)。
+若要在 Azure Active Directory (Azure AD) 中实现更精细的管理控制，可将用户分配到范围限定为一个或多个管理单元的 Azure AD 角色。 有关常见任务的示例 PowerShell 脚本，请参阅[使用管理单元](/powershell/azure/active-directory/working-with-administrative-units)。
 
 ## <a name="frequently-asked-questions"></a>常见问题解答
 
@@ -69,9 +69,9 @@ ms.locfileid: "98740374"
 
 **问：PowerShell 和图形 API 中是否支持管理单元？**
 
-**答:** 是的。 你将在 [PowerShell cmdlet 文档](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) 和 [示例脚本](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true)中找到管理单元支持。
+**答:** 是的。 你可以在 [PowerShell cmdlet 文档](/powershell/module/Azuread/)和[示例脚本](/powershell/azure/active-directory/working-with-administrative-units)中找到对管理单元的支持。
 
-查找 Microsoft Graph 中对 [administrativeUnit 资源类型](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true)的支持。
+查找 Microsoft Graph 中对 [administrativeUnit 资源类型](/graph/api/resources/administrativeunit)的支持。
 
 ## <a name="next-steps"></a>后续步骤
 

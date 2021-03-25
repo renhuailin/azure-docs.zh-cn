@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 5ae930240872c00c8dbb45857e4e77d82766eadf
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93398056"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
@@ -79,10 +79,10 @@ ms.locfileid: "93398056"
 
 ### <a name="create-the-vault-in-any-region-except-the-source"></a>在除源以外的任一区域中创建保管库
 
-1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务** 。
+1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
 2. 选择“创建资源” > “管理工具” > “备份和 Site Recovery”    。
-3. 在“名称”  中，指定易记名称 **ContosoVMVault** 。 如果有多个订阅，请选择合适的一个。
-4. 创建资源组 **ContosoRG** 。
+3. 在“名称”  中，指定易记名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
+4. 创建资源组 **ContosoRG**。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 6. 对于“恢复服务保管库”，请选择“概述” > “ConsotoVMVault” > “+复制”。   
 7. 对于“源”，请选择“Azure”。  
@@ -109,9 +109,9 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 1. 转到保管库。 在“设置” > “复制的项”中，选择要移到目标区域的虚拟机。  然后选择“测试故障转移”  。
 2. 在“测试故障转移”中，选择要用于故障转移的恢复点  ：
 
-   - **最新处理** ：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
-   - **最新应用一致** ：将所有 VM 故障转移到最新的应用一致性恢复点。 将显示时间戳。
-   - **自定义** ：选择任何恢复点。
+   - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
+   - **最新应用一致**：将所有 VM 故障转移到最新的应用一致性恢复点。 将显示时间戳。
+   - **自定义**：选择任何恢复点。
 
 3. 选择要将 Azure VM 移到的目标 Azure 虚拟网络，以测试配置。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93396849"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
@@ -107,10 +107,10 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 配置重写 http 标头所需的新对象：
 
-- **RequestHeaderConfiguration** ：此对象用于指定要重写的请求标头字段以及需要重写的原始标头的新值。
-- **ResponseHeaderConfiguration** ：此对象用于指定要重写的响应标头字段以及需要重写的原始标头的新值。
-- **ActionSet** ：此对象包含上面指定的请求和响应标头的配置。 
-- **RewriteRule** ：此对象包含上面指定的所有“actionSets”  。 
+- **RequestHeaderConfiguration**：此对象用于指定要重写的请求标头字段以及需要重写的原始标头的新值。
+- **ResponseHeaderConfiguration**：此对象用于指定要重写的响应标头字段以及需要重写的原始标头的新值。
+- **ActionSet**：此对象包含上面指定的请求和响应标头的配置。 
+- **RewriteRule**：此对象包含上面指定的所有“actionSets”  。 
 - **RewriteRuleSet** - 此对象包含所有 rewriteRules，并且需要附加到（基本或基于路径的）请求路由规则  。
 
    ```azurepowershell
@@ -134,13 +134,13 @@ $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType bas
 
 现在可以为应用程序网关指定自动缩放配置。 支持两种自动缩放配置类型：
 
-* **固定容量模式** 。 在此模式下，应用程序网关不自动缩放，而是在固定缩放单元容量下运行。
+* **固定容量模式**。 在此模式下，应用程序网关不自动缩放，而是在固定缩放单元容量下运行。
 
    ```azurepowershell
    $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 
-* **自动缩放模式** 。 在此模式下，应用程序网关根据应用程序流量模式自动缩放。
+* **自动缩放模式**。 在此模式下，应用程序网关根据应用程序流量模式自动缩放。
 
    ```azurepowershell
    $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2

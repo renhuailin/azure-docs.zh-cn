@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 370ac489eeb0f38525c150cb82fba5ae9d47e2f4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92444785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>教程：Azure Active Directory 与 Heroku 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92444785"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Heroku 的集成，需要以下项目：
 
@@ -41,8 +41,8 @@ ms.locfileid: "92444785"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Heroku 支持 SP 发起的 SSO 
-* Heroku 支持“恰时”用户预配 
+* Heroku 支持 SP 发起的 SSO
+* Heroku 支持“恰时”用户预配
 
 ## <a name="adding-heroku-from-the-gallery"></a>从库中添加 Heroku
 
@@ -62,13 +62,13 @@ ms.locfileid: "92444785"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Heroku”，在结果面板中选择“Heroku”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Heroku”，在结果面板中选择“Heroku”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Heroku](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Heroku 的 Azure AD 单一登录。 
+在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Heroku 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Heroku 中的相关用户之间建立链接关系。
 
 若要配置和测试 Heroku 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -77,7 +77,7 @@ ms.locfileid: "92444785"
 2. **[配置 Heroku 单一登录](#configure-heroku-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 Heroku 测试用户 [ - 在 Heroku 中创建 Britta Simon 的对应用户，并且将其链接到用户在 Azure AD 中的代表](#create-heroku-test-user)** 。
+5. [创建 Heroku 测试用户](#create-heroku-test-user) - 在 Heroku 中创建 Britta Simon 的对应用户，并且将其链接到用户在 Azure AD 中的代表。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -86,7 +86,7 @@ ms.locfileid: "92444785"
 
 若要配置 Heroku 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 **Heroku** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)的 **Heroku** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "92444785"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Heroku 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.heroku.com/saml/<company-name>/init`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.heroku.com/saml/<company-name>/init` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://sso.heroku.com/saml/<company-name>`
 
@@ -113,7 +113,7 @@ ms.locfileid: "92444785"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Heroku”部分中，根据要求复制相应 URL  。
+6. 在“设置 Heroku”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -127,19 +127,19 @@ ms.locfileid: "92444785"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Heroku 租户。
 
-2. 单击“设置”选项卡。 
+2. 单击“设置”选项卡。
 
-3. 在“单一登录”页面上，单击“上载元数据”。  
+3. 在“单一登录”页面上，单击“上载元数据”。
 
 4. 上传从 Azure 门户下载的元数据文件。
 
 5. 安装成功后，管理员会看到一个确认对话框，其中显示最终用户的 SSO 登录 URL。
 
-6. 复制“Heroku 登录 URL”和“Heroku 实体 ID”值，返回 Azure 门户中的“基本 SAML 配置”部分，并分别将这两个值粘贴到“登录 URL”和“标识符(实体 ID)”文本框中      。
+6. 复制“Heroku 登录 URL”和“Heroku 实体 ID”值，返回 Azure 门户中的“基本 SAML 配置”部分，并分别将这两个值粘贴到“登录 URL”和“标识符(实体 ID)”文本框中。
 
     ![配置单一登录](./media/heroku-tutorial/tutorial_heroku_52.png)
 
-7. 单击“下一步”。 
+7. 单击“下一步”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -149,7 +149,7 @@ ms.locfileid: "92444785"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -164,17 +164,17 @@ ms.locfileid: "92444785"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Heroku 的访问权限，支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Heroku”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Heroku”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Heroku”  。
+2. 在应用程序列表中，选择“Heroku”。
 
     ![应用程序列表中的 Heroku 链接](common/all-applications.png)
 

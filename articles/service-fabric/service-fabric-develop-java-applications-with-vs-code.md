@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.custom: devx-track-java
 ms.author: pepogors
 ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87327355"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 Java Service Fabric 应用程序
@@ -37,14 +37,14 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>在 VS Code 中打开应用程序
 
-打开 VS Code。  单击**活动栏**中的“Explorer”图标并单击“打开文件夹”，或者单击“文件”->“打开文件夹”。   导航到存储库克隆到的文件夹中的 *./service-fabric-java-quickstart/Voting* 目录，然后单击“确定”。  工作区应包含以下屏幕截图中所示的相同文件。
+打开 VS Code。  单击 **活动栏** 中的“Explorer”图标并单击“打开文件夹”，或者单击“文件”->“打开文件夹”。   导航到存储库克隆到的文件夹中的 *./service-fabric-java-quickstart/Voting* 目录，然后单击“确定”。  工作区应包含以下屏幕截图中所示的相同文件。
 
 ![工作区中的 Java 投票应用程序](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
 ## <a name="build-the-application"></a>构建应用程序
 
-1. 在 VS Code 中，按 (Ctrl + Shift + p) 打开**命令面板**。
-2. 搜索并选择“Service Fabric: 生成应用程序”命令。  生成输出将发送到集成式终端。
+1. 在 VS Code 中，按 (Ctrl + Shift + p) 打开 **命令面板**。
+2. 搜索并选择“Service Fabric:  生成应用程序”命令。 生成输出将发送到集成式终端。
 
    ![VS Code 中的“生成应用程序”命令](./media/service-fabric-develop-java-applications-with-vs-code/sf-build-application.png)
 
@@ -54,7 +54,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 > [!IMPORTANT]
 > Windows 计算机上不支持将 Java 应用程序部署到本地群集。
 
-1. 在**命令面板**中，选择“Service Fabric: 部署应用程序(Localhost)”命令。  安装过程的输出将发送到集成式终端。
+1. 在 **命令面板** 中，选择“Service Fabric: 部署应用程序(Localhost)”命令。  安装过程的输出将发送到集成式终端。
 
    ![VS Code 中的“部署应用程序”命令](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
    ![浏览器中的投票应用程序](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. 若要从群集中删除应用程序，请在**命令面板**中选择“Service Fabric: 删除应用程序”命令。 卸载过程的输出将发送到集成式终端。 可以使用 Service Fabric Explorer 来验证是否已从本地群集中删除该应用程序。
+5. 若要从群集中删除应用程序，请在 **命令面板** 中选择“Service Fabric: 删除应用程序”命令。 卸载过程的输出将发送到集成式终端。 可以使用 Service Fabric Explorer 来验证是否已从本地群集中删除该应用程序。
 
 ## <a name="debug-the-application"></a>调试应用程序
 在 VS Code 中调试应用程序时，该应用程序必须在本地群集上运行。 然后，可将断点添加到代码中。
@@ -89,7 +89,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
          <StatefulService MinReplicaSetSize="1" ServiceTypeName="VotingDataServiceType" TargetReplicaSetSize="1">
    ```
 
-3. 单击**活动栏**中的“调试”图标，在 VS Code 中打开调试程序视图。 单击调试程序视图顶部的齿轮图标，从环境下拉菜单中选择“Java”。  此时会打开 launch.json 文件。 
+3. 单击 **活动栏** 中的“调试”图标，在 VS Code 中打开调试程序视图。 单击调试程序视图顶部的齿轮图标，从环境下拉菜单中选择“Java”。  此时会打开 launch.json 文件。 
 
    ![VS Code 工作区中的调试图标](./media/service-fabric-develop-java-applications-with-vs-code/debug-icon-workspace.png)
 
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
    > [!IMPORTANT]
    > 确保在可执行的代码行上设置断点。 例如，调试程序会遗漏方法声明、`try` 语句或 `catch` 语句上设置的断点。
-2. 若要开始调试，请单击**活动栏**中的“调试”图标，从调试菜单中选择“Debug (Attach)”配置，然后单击运行按钮（绿色箭头）。 
+2. 若要开始调试，请单击 **活动栏** 中的“调试”图标，从调试菜单中选择“Debug (Attach)”配置，然后单击运行按钮（绿色箭头）。 
 
    ![Debug (Attach) 配置](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 

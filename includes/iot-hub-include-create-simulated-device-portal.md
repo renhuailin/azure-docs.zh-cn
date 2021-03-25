@@ -9,10 +9,10 @@ ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 91b6f1ed06fbf1f5575650f96f4622b3df9ca083
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98187379"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
@@ -21,11 +21,11 @@ ms.locfileid: "98187379"
 
 1. 打开 [Azure 门户](https://portal.azure.com)并登录到 Azure 帐户。
 
-2. 选择“资源组”，然后选择你的资源组  。 本教程使用 ContosoResources  。
+2. 选择“资源组”，然后选择你的资源组。 本教程使用 ContosoResources  。
 
-3. 在资源列表中，选择 IoT 中心。 本教程使用 ContosoTestHub  。 从中心窗格选择“IoT 设备”  。
+3. 在资源列表中，选择 IoT 中心。 本教程使用 ContosoTestHub  。 从中心窗格选择“IoT 设备”。
 
-4. 选择“+ 新建”  。 在添加设备窗格中，填写设备 ID。 本教程使用 Contoso-Test-Device  。 将密钥留空，勾选“自动生成密钥”  。 确保已启用“将设备连接到 IoT 中心”  。 选择“保存”。 
+4. 选择“+ 新建”  。 在添加设备窗格中，填写设备 ID。 本教程使用 Contoso-Test-Device。 将密钥留空，勾选“自动生成密钥”。 确保已启用“将设备连接到 IoT 中心”。 选择“保存”。
 
    ![“添加设备”屏幕](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

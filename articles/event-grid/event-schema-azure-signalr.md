@@ -1,13 +1,13 @@
 ---
-title: 作为事件网格源的 Azure SignalR
+title: 充当事件网格源的 Azure SignalR
 description: 介绍为 Azure 事件网格中的 Azure SignalR 事件提供的属性
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 321dc4d21485af23a9cca0d42d74da0a3e121b7c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363682"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构
@@ -139,7 +139,7 @@ SignalR 服务发出以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | string | 事件的唯一标识符。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | SignalR 服务事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
@@ -147,7 +147,7 @@ SignalR 服务发出以下事件类型：
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `timestamp` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `hubName` | 字符串 | 客户端连接所属的中心。 |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91461285"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights 遥测数据模型
@@ -46,7 +46,7 @@ Application Insights 遥测模型定义了将遥测与它所属的操作进行[�
 
 Application Insights 数据模型采用简单基本的结构，不过，它能够非常有效地为应用程序遥测建模。 我们将努力保持该模型的精简结构，以便支持基本方案，并让用户根据高级用途扩展架构。
 
-[若要报告数据模型或架构问题和建议，请使用我们的 GitHub 存储库](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose)。
+[若要报告数据模型或架构问题以及建议，请使用 GitHub 存储库](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose)。
 
 ## <a name="next-steps"></a>后续步骤
 

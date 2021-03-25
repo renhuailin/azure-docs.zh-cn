@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: c6bbb389902c11239f665c6d0db787f61955a953
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555813"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954864"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -19,7 +19,7 @@ ms.locfileid: "100555813"
 
 ## <a name="what-is-changing"></a>有什么变化？
 
-以前，可以通过 HDInsight API 获得机密，这些用户拥有所有者、参与者或读取者 [Azure 角色](../role-based-access-control/rbac-and-directory-admin-roles.md)，因为有 `*/read` 权访问权限。 机密定义为值，可用于获取比用户角色允许的访问权限更高的权限。 这些值包括群集网关 HTTP 凭据、存储帐户密钥和数据库凭据等值。
+以前，处理“所有者”、“参与者”或“读取者”[Azure 角色](../role-based-access-control/rbac-and-directory-admin-roles.md)的群集用户可以通过 HDInsight API 获取机密，因为这些机密可以通过给具有 `*/read` 权限的任何人。 机密定义为值，可用于获取比用户角色允许的访问权限更高的权限。 这些值包括群集网关 HTTP 凭据、存储帐户密钥和数据库凭据等值。
 
 从 2019 年 9 月 3 日开始，访问这些机密需要 `Microsoft.HDInsight/clusters/configurations/action` 权限，这意味着这些机密不再可供具有“读取者”角色的用户访问。 拥有此权限的角色为“参与者”、“所有者”和新的“HDInsight 群集操作员”角色（下面将详细说明）。
 
@@ -27,8 +27,8 @@ ms.locfileid: "100555813"
 
 | 角色                                  | 以前                                                                                       | 今后       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| 读取器                                | - 读取访问权限，包括机密。                                                                   | - 读取访问权限，**不** 包括机密 |           |   |   |
-| HDInsight 群集操作员<br>（新角色） | 空值                                                                                              | - 读/写访问权限，包括机密         |   |   |
+| 读取器                                | - 读取访问权限，包括机密。                                                                   | - 读取访问权限，**不** 包括机密 | 
+| HDInsight 群集操作员<br>（新角色） | 空值                                                                                              | - 读/写访问权限，包括机密         | 
 | 参与者                           | - 读/写访问权限，包括机密。<br>- 创建和管理所有类型的 Azure 资源。<br>- 执行脚本操作。     | 没有变化 |
 | 所有者                                 | - 读/写访问权限，包括机密。<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人。<br>- 执行脚本操作。 | 没有变化 |
 
@@ -111,11 +111,11 @@ ms.locfileid: "100555813"
 
 请更新到 HDInsight SDK for .NET [版本 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
-    - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
-    - 如果只要检索 HTTP 网关凭据，请使用 [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true)。 
-- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) 现已弃用，已由 [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) 取代。 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) 和 [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) 现已弃用。 现在始终会启用 HTTP，因此不再需要这些方法。
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get) 将 **不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+    - 今后若要检索所有配置（包括敏感参数），请使用 [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list)。  请注意，具有“读取者”角色的用户将无法使用此方法。 这样便可以精细控制哪些用户可以访问群集的敏感信息。 
+    - 如果只要检索 HTTP 网关凭据，请使用 [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings)。 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update) 现已弃用，已由 [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings) 取代。 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp) 和 [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp) 现已弃用。 现在始终会启用 HTTP，因此不再需要这些方法。
 
 ### <a name="sdk-for-python"></a>用于 Python 的 SDK
 
@@ -182,7 +182,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-或者，可以使用 Azure 门户将 HDInsight 群集操作员角色分配添加到用户。 请参阅文档， [使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+或者，可以使用 Azure 门户将 HDInsight 群集操作员角色分配添加到用户。 请参阅文档[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="faq"></a>常见问题
 
@@ -190,11 +190,11 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 群集配置现在受到精细的基于角色的访问控制，需要拥有 `Microsoft.HDInsight/clusters/configurations/*` 权限才能访问这些配置。 若要获取此权限，请将“HDInsight 群集操作员”、“参与者”或“所有者”角色分配到尝试访问配置的用户或服务主体。
 
-### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>在运行 Azure CLI 命令将 HDInsight 群集操作员角色分配给另一个用户或服务主体时，为什么看不到 "权限不足，无法完成操作"？
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>运行 Azure CLI 命令将“HDInsight 群集操作员”角色分配到另一个用户或服务主体时，为何会出现“权限不足，无法完成该操作”？
 
-除了拥有 "所有者" 角色外，执行命令的用户或服务主体还需要有足够的 Azure AD 权限来查找工作负责人的对象 Id。 此消息指示 Azure AD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](/cli/azure/role/assignment#az-role-assignment-create)的“可选参数”部分。
+执行该命令的用户或服务主体除了要有“所有者”角色以外，还需要有足够的 Azure AD 权限来查找被分配者的对象 ID。 此消息表示 Azure AD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](/cli/azure/role/assignment#az-role-assignment-create)的“可选参数”部分。
 
-如果这仍不起作用，请与 Azure AD 管理员联系以获取正确的权限。
+如果这仍然不起作用，请联系你的 Azure AD 管理员以获取正确的权限。
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>如果不采取任何措施，会发生什么情况？
 

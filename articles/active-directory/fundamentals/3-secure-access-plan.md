@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725205"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554014"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3.为外部访问创建安全性计划 
 
@@ -106,7 +106,7 @@ ms.locfileid: "98725205"
 
 现在，若要将设备状态用作策略的输入，必须将设备注册或加入到你的租户。 
 
-可以使用[基于身份保护风险的策略](../conditional-access/howto-conditional-access-policy-risk.md)。 但是，必须在用户的主租户中缓解问题。
+可以使用[标识保护的基于风险的策略](../conditional-access/howto-conditional-access-policy-risk.md)。 但是，必须在用户的主租户中缓解问题。
 
 对于[网络位置](../conditional-access/howto-conditional-access-policy-location.md)，可以对你拥有的任何 IP 地址范围进行访问权限限制。 如果只希望外部合作伙伴在你组织的现场访问应用程序，则可以使用此功能。
 
@@ -132,7 +132,7 @@ ms.locfileid: "98725205"
 
    * 如果使用[连接的组织](../governance/entitlement-management-organization.md)对来自单个合作伙伴的所有用户进行分组，请安排与企业主和合作伙伴代表进行定期评审。
 
-* **Microsoft 365 组**。 为外部用户被邀请到的 Microsoft 365 组设置[组过期策略](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)。 
+* **Microsoft 365 组**。 为外部用户被邀请到的 Microsoft 365 组设置[组过期策略](/microsoft-365/solutions/microsoft-365-groups-expiration-policy)。 
 
 * **其他选项**。 如果外部用户具有权利管理访问包或 Microsoft 365 组之外的访问权限，请设置业务流程以查看应何时使帐户处于非活动状态或删除帐户。 例如：
 
@@ -175,7 +175,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 | 权利管理| **通过分配或自助服务访问添加用户**| **访问包**| **访问包**|  |
 | Office 365 组| | 对组中包含的站点（以及相关内容）的访问权限| 对组中包含的团队（以及相关内容）的访问权限|  |
 | 敏感度标签| | **手动和自动对访问进行分类和限制**| **手动和自动对访问进行分类和限制**| **手动和自动对访问进行分类和限制** |
-| Azure AD 安全组| **访问包中未包含访问的条件访问策略**| | |  |
+| Azure AD 安全组| **访问包中未包含用于访问的条件访问策略**| | |  |
 
 
 ### <a name="entitlement-management"></a>权利管理 
@@ -195,7 +195,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 | Azure AD B2B 协作| **通过电子邮件、OTP、自助服务邀请**| 直接 B2B 联合| **按合作伙伴定期评审**| 删除帐户<br>限制登录 |
 | Microsoft 或 Office 365 组| | | | 组过期或删除组。<br>从组中删除。 |
 | 安全组| | **将外部用户添加到安全组（组织、团队、项目等）**| |  |
-| 条件访问策略| | **外部用户的登录条件访问策略**| |  |
+| 条件访问策略| | **登录用于外部用户的条件访问策略**| |  |
 
 
  ### <a name="access-to-resources"></a>访问资源。
@@ -204,7 +204,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 | - |-|-|-|-|
 | Microsoft 或 Office 365 组| | **对组中包含的站点（以及相关内容）的访问权限**|**对 Microsoft 365 组中包含的团队（以及相关内容）的访问权限**|  |
 | 敏感度标签| | 手动分类和限制访问| 手动分类和限制访问。| 手动分类以限制和加密 |
-| 条件访问策略| 访问控制的条件性访问策略| | |  |
+| 条件访问策略| 用于访问控住的条件访问策略| | |  |
 | 其他方法| | 使用安全组精确限制 SharePoint 站点访问。<br>禁止直接共享。| **限制从团队内发出外部邀请**|  |
 
 
@@ -212,7 +212,7 @@ Azure AD P2 和 Microsoft 365 E5 具有全套安全性和治理工具。
 
 请参阅以下文章，了解如何保护对资源的外部访问。 建议你按列出顺序执行这些操作。
 
-1. [确定与外部访问相关的安全状况](1-secure-access-posture.md)
+1. [确定外部访问的安全状况](1-secure-access-posture.md)
 
 2. [了解当前状态](2-secure-access-current-state.md)
 

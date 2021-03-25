@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91532016"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 ## <a name="create-an-elk-server-in-azure"></a>在 Azure 中创建 ELK 服务器
 
-可以在本教程中使用预配置的 ELK 环境；如果已有一个 ELK 环境，请跳到**设置 Logstash** 部分。 如果没有此环境，请遵循以下步骤在 Azure 中创建一个环境。
+可以在本教程中使用预配置的 ELK 环境；如果已有一个 ELK 环境，请跳到 **设置 Logstash** 部分。 如果没有此环境，请遵循以下步骤在 Azure 中创建一个环境。
 
 1. 在 Azure 中创建由 [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) 认证的 ELK。 在本教程中，创建此服务器时不需要遵循任何特定的规范。
 
