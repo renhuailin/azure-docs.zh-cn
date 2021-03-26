@@ -3,19 +3,19 @@ title: 使用 Azure CLI 列出、更新和删除映像资源
 description: 使用 Azure CLI 列出、更新和删除共享映像库中的映像资源。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6099afc82e76ed28e8557ac0eee3e64cb292a715
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 3554eccf28c5abbe9741af5b9718fb83710dab38
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882002"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553623"
 ---
 # <a name="list-update-and-delete-image-resources"></a>列出、更新和删除映像资源 
 
@@ -27,4 +27,4 @@ ms.locfileid: "98882002"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 映像生成器 (预览版) ](./image-builder-overview.md) 可帮助自动创建映像版本，甚至还可以使用它来更新 [现有映像版本并创建新的映像版本](./linux/image-builder-gallery-update-image-version.md)。
+[Azure 映像生成器（预览版）](./image-builder-overview.md)可以帮助自动创建映像版本，你甚至可以使用它进行更新以及[从现有的映像版本创建新映像版本](./linux/image-builder-gallery-update-image-version.md)。

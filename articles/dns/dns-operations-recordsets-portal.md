@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94965725"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集
@@ -43,7 +43,7 @@ ms.locfileid: "94965725"
 
     ![添加记录](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. 单击边栏选项卡顶部的“保存”  以保存设置。 然后关闭该边栏选项卡。
+3. 单击边栏选项卡顶部的“保存”以保存设置。 然后关闭该边栏选项卡。
 4. 将在角落中看到正在保存该记录。
 
     ![保存记录集](./media/dns-operations-recordsets-portal/saving150.png)
@@ -59,7 +59,7 @@ ms.locfileid: "94965725"
 
     ![修改记录](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. 单击边栏选项卡顶部的“保存”  以保存设置。 在右上角中，会看到该记录已保存的通知。
+3. 单击边栏选项卡顶部的“保存”以保存设置。 在右上角中，会看到该记录已保存的通知。
 
     ![已保存记录集](./media/dns-operations-recordsets-portal/saved150.png)
 
@@ -70,11 +70,11 @@ ms.locfileid: "94965725"
 Azure 门户可用于从记录集中删除记录。 请注意，从记录集中删除最后一条记录不会删除记录集。
 
 1. 在记录集的“**记录集属性**”边栏选项卡中，搜索记录。
-2. 单击要删除的记录。 然后选择“删除”  。
+2. 单击要删除的记录。 然后选择“删除”。
 
     ![删除记录](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. 单击边栏选项卡顶部的“保存”  以保存设置。
+3. 单击边栏选项卡顶部的“保存”以保存设置。
 4. 删除记录后，记录在“**DNS 区域**”边栏选项卡中的值将反映删除操作。
 
 ## <a name="delete-a-record-set"></a><a name="delete"></a>删除记录集

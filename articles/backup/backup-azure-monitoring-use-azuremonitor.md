@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
 ms.openlocfilehash: 1800771bfff0afbcec8440383536734246ea8f5c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580738"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
-Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需配置任何附加的管理基础结构即可使用这些功能。 但是，仅限在以下方案中使用此内置服务：
+Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](backup-azure-monitoring-built-in-monitor.md)。 无需任何附加的管理基础结构即可使用这些功能。 但是，仅限在以下方案中使用此内置服务：
 
 - 监视不同订阅中多个恢复服务保管库中的数据
 - 首选的通知通道不是电子邮件
@@ -194,7 +194,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 - **方案受限**：通过活动日志发送通知仅适用于 Azure VM 备份。 必须为每个恢复服务保管库设置通知。
 - **定义适应**：计划的备份活动不能适应活动日志的最新定义。 相反，它适用于[资源日志](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)。 当通过活动日志通道传送数据发生变化时，这种相符性会导致意外的影响。
-- **活动日志通道的问题**：在恢复服务保管库中，从 Azure 备份传送的活动日志遵循一个新的模型。 遗憾的是，这一更改会影响 Azure 政府、Azure 德国和 Azure 中国世纪互联中的活动日志的生成。 如果这些云服务的用户在 Azure Monitor 中基于活动日志创建或配置了任何警报，将不会触发警报。 此外，在所有 Azure 公共区域，如果用户[将恢复服务活动日志收集到 Log Analytics 工作区中](../azure-monitor/essentials/activity-log.md)，这些日志不会显示。
+- 活动日志通道问题：在恢复服务保管库中，从 Azure 备份抽取的活动日志将遵循新模型。 遗憾的是，这一更改会影响 Azure 政府、Azure 德国和 Azure 中国世纪互联中的活动日志的生成。 如果使用这些云服务的用户在 Azure Monitor 的活动日志中创建或配置任何警报，则不会触发这些警报。 此外，在所有 Azure 公共区域，如果用户[将恢复服务活动日志收集到 Log Analytics 工作区中](../azure-monitor/essentials/activity-log.md)，这些日志不会显示。
 
 使用 Log Analytics 工作区可对 Azure 备份保护的所有工作负荷进行大规模监视和发出警报。
 

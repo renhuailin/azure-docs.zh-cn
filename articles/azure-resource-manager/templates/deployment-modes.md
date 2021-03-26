@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 45eee255cec06925095ed0696c669b5c205f8b56
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: MT
+ms.openlocfilehash: 3f1f74c0495e0d43671712281a35a7e74fd7d821
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724402"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888832"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -33,7 +33,7 @@ ms.locfileid: "97724402"
 
 资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。
 
-例如，如果资源组包含 DNS 区域 (`Microsoft.Network/dnsZones` 资源类型) 和 (资源类型) 的 cname 记录 `Microsoft.Network/dnsZones/CNAME` ，则 DNS 区域为 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域但不包含 CNAME 记录，则不会删除 CNAME。
+例如，如果资源组包含 DNS 区域（`Microsoft.Network/dnsZones` 资源类型）和 CNAME 记录（`Microsoft.Network/dnsZones/CNAME` 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域但不包含 CNAME 记录，则不会删除 CNAME。
 
 有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](complete-mode-deletion.md)。
 
@@ -114,7 +114,7 @@ az deployment group create \
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2017-05-10",
+    "apiVersion": "2020-10-01",
     "name": "linkedTemplate",
     "properties": {
       "mode": "Incremental",
@@ -126,6 +126,6 @@ az deployment group create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建资源管理器模板，请参阅 [了解 ARM 模板的结构和语法](template-syntax.md)。
-* 若要了解如何部署资源，请参阅 [利用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。
+* 若要了解如何创建资源管理器模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解部署资源，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

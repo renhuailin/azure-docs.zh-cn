@@ -7,10 +7,10 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169964"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
@@ -21,7 +21,7 @@ ms.locfileid: "86169964"
 - 没有存储大小限制。
 - 不需配置。
 
-从快照还原适用于在**高级**层或更高层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](manage-scale-up.md)。
+从快照还原适用于在 **高级** 层或更高层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](manage-scale-up.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -39,16 +39,16 @@ ms.locfileid: "86169964"
    
     ![显示如何从快照备份还原应用的屏幕截图。](./media/app-service-web-restore-snapshots/1.png)
 
-2. 在“还原”页中选择要还原的快照。****
+2. 在“还原”页中选择要还原的快照。
    
     ![显示如何选择要还原的快照的屏幕截图。 ](./media/app-service-web-restore-snapshots/2.png)
    
-3. 在“还原目标”中指定应用还原的目标。****
+3. 在“还原目标”中指定应用还原的目标。
    
     ![显示如何指定还原目标的屏幕截图。](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > 如果选择“覆盖”****，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”**** 之前，请确保该操作是想要执行的操作。
+   > 如果选择“覆盖”，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”之前，请确保该操作是想要执行的操作。
    > 
    > 
       
@@ -57,7 +57,7 @@ ms.locfileid: "86169964"
    > 
    > 
    
-    可以选择要还原到槽的**现有应用**。 在使用此选项之前，应该已在应用中创建一个槽。
+    可以选择要还原到槽的 **现有应用**。 在使用此选项之前，应该已在应用中创建一个槽。
 
 4. 可以选择还原站点配置。
    

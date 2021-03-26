@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
 ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331798"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入门：使用 Azure 门户和 Azure 数据库迁移服务创建混合模式实例
@@ -68,8 +68,8 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 3. 在“创建迁移服务”屏幕中：
 
     - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例。
-    - 选择要在其中创建实例的 Azure **订阅** 。
-    - 选择现有的 **资源组** ，或创建一个新组。
+    - 选择要在其中创建实例的 Azure **订阅**。
+    - 选择现有的 **资源组** 或创建一个新资源组。
     - 选择距离源或目标服务器最近的“位置”。
     - 对于“服务模式”，选择“混合（预览版）” 。
 
@@ -106,7 +106,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
     ![Azure 数据库迁移服务混合模式分配参与者角色](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-assign-contributor.png)
 
-6. 选择“ **参与者** ”作为角色，将访问权限分配给“ **Azure AD 用户或服务主体** ”，然后选择应用 ID 名称。
+6. 选择“**参与者**”作为角色，将访问权限分配给“**Azure AD 用户或服务主体**”，然后选择应用 ID 名称。
 
     ![Azure 数据库迁移服务混合模式分配参与者角色详细信息](media/quickstart-create-data-migration-service-hybrid-portal/dms-add-role-assignment.png)
 

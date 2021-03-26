@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98704634"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>具有低或无网络宽带的大型数据集的数据传输
@@ -38,7 +38,7 @@ ms.locfileid: "98704634"
 
 此方案中可用的选项是用于 Azure Data Box 脱机传输或 Azure 导入/导出的设备。
 
-- **适用于脱机传输 Azure Data Box 系列** –当你按时间、网络可用性或成本进行限制时，请使用 Microsoft 提供的 Data Box 设备中的设备将大量数据移到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
+- **用于脱机传输的 Azure Data Box 系列** – 当受到时间、网络可用性或成本的限制时，使用 Microsoft 提供的 Data Box 设备将大量数据移动到 Azure。 使用工具（例如 Robocopy）复制本地数据。 可从 Data Box Disk、Data Box 或 Data Box Heavy 中进行选择，具体取决于要传输的数据的大小。
 - **Azure 导入/导出** - 通过寄送自己的磁盘驱动器，使用 Azure 导入/导出服务安全地将大量数据导入 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure Blob 存储传输到磁盘驱动器，然后再寄送到本地站点。
 
 ## <a name="comparison-of-key-capabilities"></a>关键功能比较
@@ -67,5 +67,5 @@ ms.locfileid: "98704634"
 - 了解如何
 
     - [使用 Data Box Disk 传输数据](../../databox/data-box-disk-quickstart-portal.md)。
-    - 将[数据与 Data Box 传输](../../databox/data-box-quickstart-portal.md)。
+    - [使用 Data Box 传输数据](../../databox/data-box-quickstart-portal.md)。
     - [通过导入/导出转移数据](../../import-export/storage-import-export-data-to-blobs.md).

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200049"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102499129"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure 防火墙主动 FTP 支持
 
@@ -20,12 +20,10 @@ ms.locfileid: "102200049"
 
 默认情况下，在 Azure 防火墙上禁用主动 FTP 支持，防范使用 FTP `PORT` 命令进行的 FTP 弹跳攻击。 但是，可以在使用 Azure PowerShell、Azure CLI 或 Azure ARM 模板进行部署时启用主动 FTP。
 
-> [!NOTE]
-> 目前，只有虚拟网络中部署的防火墙才支持主动 FTP。 后续将添加虚拟 WAN 支持。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-若要使用 Azure PowerShell 进行部署，请使用 `AllowActiveFTP` 参数。 有关详细信息，请参阅[创建包含允许主动 FTP 的防火墙](/powershell/module/az.network/new-azfirewall?view=azps-5.4.0#16---create-a-firewall-with-allow-active-ftp-)。
+若要使用 Azure PowerShell 进行部署，请使用 `AllowActiveFTP` 参数。 有关详细信息，请参阅[创建包含允许主动 FTP 的防火墙](/powershell/module/az.network/new-azfirewall#16---create-a-firewall-with-allow-active-ftp-)。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -40,7 +38,7 @@ ms.locfileid: "102200049"
             "Network.FTP.AllowActiveFTP": "True"
         },
 ```
-有关详细信息，请参阅 [azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)。
+有关详细信息，请参阅 [Microsoft.Network azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)。
 
 ## <a name="next-steps"></a>后续步骤
 

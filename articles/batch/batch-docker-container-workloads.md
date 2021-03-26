@@ -1,21 +1,21 @@
 ---
-title: 容器工作负载
+title: 容器工作负荷
 description: 了解如何在 Azure Batch 上通过容器映像运行和缩放应用。 创建支持运行容器任务的计算节点池。
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91843441"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
 可以通过 Azure Batch 在 Azure 上运行和缩放大量批处理计算作业。 Batch 任务可直接在 Batch 池中的虚拟机（节点）上运行；但也可以设置一个 Batch 池，以便在节点上的 Docker 兼容容器中运行任务。 本文介绍如何创建支持运行容器任务的计算节点池，然后在池中运行容器任务。
 
-此处的代码示例使用 Batch .NET 和 Python Sdk。 也可以使用其他 Batch SDK 和工具，包括 Azure 门户，来创建支持容器的 Batch 池，以及运行容器任务。
+此处的代码示例使用 Batch .NET 和 Python SDK。 也可以使用其他 Batch SDK 和工具，包括 Azure 门户，来创建支持容器的 Batch 池，以及运行容器任务。
 
 ## <a name="why-use-containers"></a>为何使用容器？
 
@@ -285,9 +285,9 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 - 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
-- 对于 Windows，必须在将 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 设置为的情况下运行任务 `admin` 。 
+- 对于 Windows，任务必须在 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 设置为 `admin` 的情况下运行。 
 
-- 对于 Linux，Batch 会将用户/组权限映射到容器。 如果对容器中任何文件夹的访问权限都需要管理员权限，你可能需要以管理员提升级别的池范围运行任务。 这将确保批处理在容器上下文中以 root 身份运行任务。 否则，非管理员用户可能无权访问这些文件夹。
+- 对于 Linux，Batch 会将用户/组权限映射到容器。 如果访问容器中的任何文件夹都需要管理员权限，则可能需要以管理员提升级别在池范围内运行任务。 这将确保 Batch 在容器上下文中以 root 身份运行任务。 否则，非管理员用户可能无权访问这些文件夹。
 
 - 对于启用了 GPU 的硬件的容器池，Batch 会自动为容器任务启用 GPU，因此不应包含 `–gpus` 参数。
 

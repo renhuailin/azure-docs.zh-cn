@@ -3,19 +3,19 @@ title: 使用 Azure CLI 从 VM 创建映像
 description: 了解如何在共享映像库中从 Azure 中的 VM 创建映像。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ca354ee662ebad0cd514d4822794b056ee6f9850
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: 7c35be8821b6763531b43ec85b10325e91f8bc5f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99805371"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556854"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
 
@@ -80,7 +80,7 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 从 VM 创建映像版本。  
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
 在此示例中，映像版本为 1.0.0。我们将使用区域冗余存储在“美国中西部”区域创建 2 个副本，在“美国中南部”区域创建 1 个副本，在“美国东部 2”区域创建 1 个副本   。 复制区域必须包含源 VM 所在的区域。
 
@@ -100,7 +100,7 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 你还可以通过添加 `--storage-account-type  premium_lrs` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `--storage-account-type  standard_zrs` 。
+> 创建映像版本时，还可以通过添加 `--storage-account-type  premium_lrs` 将映像存储在高级存储中，或者通过添加 `--storage-account-type  standard_zrs` 将其存储在[区域冗余存储](../storage/common/storage-redundancy.md)中。
 >
 
 ## <a name="next-steps"></a>后续步骤

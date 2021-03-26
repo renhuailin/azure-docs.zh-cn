@@ -1,26 +1,19 @@
 ---
 title: Windows VM 扩展故障排除
 description: 了解如何进行 Azure Windows VM 扩展故障排除
-services: virtual-machines-windows
-documentationcenter: ''
-author: kundanap
-manager: gwallace
-editor: ''
-tags: top-support-issue,azure-resource-manager
-ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: windows
 ms.date: 03/29/2016
-ms.author: kundanap
-ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 8cc8a0b5ae0a83a152168b14a2c5577f8f7b48ab
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676753"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564792"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -78,30 +71,30 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 
 ### <a name="trigger-a-new-goalstate-to-the-vm"></a>触发 VM 的新 GoalState
 你可能会注意到某个扩展尚未执行，或者由于缺少“Windows Azure CRP 证书生成器”（该证书用于保护扩展的受保护设置的传输）而无法执行。
-此证书将通过从虚拟机内重新启动 Windows 来宾代理来自动重新生成：
+通过从虚拟机内重启 Windows 来宾代理，将会自动重新生成该证书：
 - 打开任务管理器
 - 转到“详细信息”选项卡
 - 找到 WindowsAzureGuestAgent.exe 进程
 - 右键单击并选择“结束任务”。 该进程将自动重启
 
 
-还可以通过执行 "VM 重新应用" 来触发到 VM 的新 GoalState。 VM [重新应用](/rest/api/compute/virtualmachines/reapply) 是一种在2020中引入的 API，用于重新应用 VM 的状态。 我们建议你一次执行此操作，这样可以容忍短暂的 VM 停机。 虽然重新应用本身不会导致 VM 重新启动，但大多数情况下调用 "重新应用" 不会重新启动 VM，但当重新应用触发新的目标状态时，将应用其他对 VM 模型的其他待定更新，并且其他更改可能需要重新启动。 
+还可以通过执行“VM 重新应用”来触发 VM 的新 GoalState。 VM [重新应用](/rest/api/compute/virtualmachines/reapply)是一个在 2020 年引入的 API，用于重新应用 VM 的状态。 建议在可以容忍 VM 短暂停机时执行此操作。 虽然“重新应用”本身并不会导致 VM 重启，而且，在绝大多数情况下，调用“重新应用”也不会重新启动 VM，但还是会存在很小的风险：在“重新应用”触发新目标状态时，VM 模型的另外某个挂起的更新会被应用，而这一另外的更改可能会需要重启。 
 
 Azure 门户：
 
-在门户中，选择 VM，并在左侧窗格中的 " **支持 + 故障排除**" 下，选择 "重新 **应用**"，然后选择 " **重新应用**"。
+在门户中，选择 VM，并在左侧窗格中的“支持 + 故障排除”下，选择“重新部署 + 重新应用”，然后选择“重新应用”  。
 
 
-Azure PowerShell *(将 RG 名称和 VM 名称替换为你的值)*：
+Azure PowerShell（将“RG 名称”和“VM 名称”替换为你的值）：
 
 ```azurepowershell
 Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI *(将 RG 名称和 VM 名称替换为你的值)*：
+Azure CLI（将“RG 名称”和“VM 名称”替换为你的值）：
 
 ```azurecli
 az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-如果 "VM 重新应用" 不起作用，则可以从 Azure 管理门户向 VM 添加新的空数据磁盘，然后在添加证书后将其删除。
+如果“VM 重新应用”未起作用，则可从 Azure 管理门户为该 VM 添加新的空数据磁盘，在重新添加回证书后再将该磁盘删除。

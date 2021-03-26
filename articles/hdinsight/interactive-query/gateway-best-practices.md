@@ -4,12 +4,12 @@ description: 了解如何根据最佳做法通过 Azure HDInsight 网关运行 H
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 549eab1547b75eb9461b23df2c157290943b4ed9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933104"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869780"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中关于 Apache Hive 的网关深入探讨和最佳做法
 
@@ -21,7 +21,7 @@ HDInsight 网关是 HDInsight 群集中唯一可通过 Internet 公开访问的�
 
 下图大致说明了网关如何对 HDInsight 中可选的所有不同主机解析进行抽象。
 
-![主机解析图](./media/gateway-best-practices/host-resolution-diagram.png "主机解析图")
+:::image type="content" source="./media/gateway-best-practices/host-resolution-diagram.png " alt-text="主机解析图" border="true":::
 
 ## <a name="motivation"></a>动机
 
@@ -39,7 +39,7 @@ HDInsight 网关是 HDInsight 群集中唯一可通过 Internet 公开访问的�
 
 下图说明了 SELECT 查询所涉及的步骤。
 
-![结果图](./media/gateway-best-practices/result-retrieval-diagram.png "结果图")
+:::image type="content" source="./media/gateway-best-practices/result-retrieval-diagram.png " alt-text="结果图" border="true":::
 
 Apache Hive 是基于与 HDFS 兼容的文件系统的关系抽象。 此抽象意味着 Hive 中的 SELECT 语句对应于文件系统上的 READ 操作 。 READ 操作在报告给用户之前，会被转换为适当的架构。 此过程的延迟随数据大小和到达最终用户所需的总跃点数的增大而增加。
 
@@ -53,9 +53,9 @@ Apache Hive 是基于与 HDFS 兼容的文件系统的关系抽象。 此抽象�
 
 * 执行大型 SELECT 查询时，请使用 LIMIT 子句 。 LIMIT 子句将减少报告给客户端主机的总行数。 LIMIT 子句仅影响结果生成，不会更改查询计划。 若要在查询计划中应用 LIMIT 子句，请使用配置 `hive.limit.optimize.enable`。 可以使用参数形式 LIMIT x,y 组合 LIMIT 与偏移量 。
 
-* 运行 "选择查询" 而不是使用 **select \** _ 时，**请** 命名感兴趣的列。 选择的列越少，读取的数据量就越小。
+* 运行 SELECT 查询而不是使用 SELECT \* 时，请为所需列命名 。 选择的列越少，读取的数据量就越小。
 
-请尝试通过 Apache Beeline 运行感兴趣的查询。 如果通过 Apache Beeline 进行的结果检索耗时较长，则通过外部工具检索相同结果时也会出现延迟。
+* 尝试通过 Apache Beeline 运行所需查询。 如果通过 Apache Beeline 进行的结果检索耗时较长，则通过外部工具检索相同结果时也会出现延迟。
 
 * 测试基本的 Hive 查询，确保可以与 HDInsight 网关建立连接。 尝试从两个或多个外部工具运行基本查询，确保不会有任何工具出现问题。
 

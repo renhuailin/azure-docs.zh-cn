@@ -2,18 +2,18 @@
 title: 使用门户创建 Azure 共享映像库
 description: 了解如何使用 Azure 门户创建和共享虚拟机映像。
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 25cd75035a814fd718cc1101e6575f78c50f105e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: e28a1412fa417b9f15ab7a6f79305d07ca6d9fec
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879691"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102556088"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -38,7 +38,7 @@ ms.locfileid: "98879691"
  
 ## <a name="create-vms"></a>创建 VM
 
-现在，可以创建一个或多个新的 VM。 此示例在 *美国东部* 数据中心的 *myResourceGroup* 中创建名为 *myVM* 的 VM。
+现在，可以创建一个或多个新的 VM。 本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVM”的 VM  。
 
 1. 转到映像定义。 可以使用资源筛选器显示所有可用的映像定义。
 1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。

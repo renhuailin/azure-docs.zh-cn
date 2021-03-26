@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 1186715003abef387343bb2b6cb71d56490c519d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101667841"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455816"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -53,21 +53,21 @@ ms.locfileid: "101667841"
 | **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory 域服务专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
-| **AzureAPIForFHIR** | 适用于 FHIR 的 Azure API (Fast 医疗保健互操作性资源) 。<br/><br/> *注意：此标记当前不可通过 Azure 门户进行配置。*| 出站 | 否 | 否 |
-| **AzureArcInfrastructure** | 启用了 azure Arc 的服务器、启用了 Azure Arc 的 Kubernetes 和来宾配置流量。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory**、**AzureTrafficManager** 和 **AzureResourceManager** 标记。 *此标记当前不可通过 Azure 门户进行配置*。| 出站 | 否 | 是 |
+| **AzureAPIForFHIR** | Azure API for FHIR（快速医疗保健互操作性资源）。<br/><br/> 注意：此标签当前无法通过 Azure 门户进行配置。| 出站 | 否 | 否 |
+| **AzureArcInfrastructure** | 已启用 Azure Arc 的服务器、已启用 Azure Arc 的 Kubernetes 和来宾配置流量。<br/><br/>注意：此标记依赖于 AzureActiveDirectory、AzureTrafficManager 和 AzureResourceManager 标记  。 此标记当前不可通过 Azure 门户进行配置。| 出站 | 否 | 是 |
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于 **存储** 和 **AzureActiveDirectory** 标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
 | **AzureCognitiveSearch** | Azure 认知搜索。 <br/><br/>可以使用此标记或此标记涵盖的 IP 地址授予索引器对数据源的安全访问权限。 有关更多详细信息，请参阅[索引器连接文档](../search/search-indexer-troubleshooting.md#connection-errors)。 <br/><br/> *注意*：此服务标记的 IP 范围列表中不包含搜索服务的 IP，该 IP **也需要添加** 到数据源的 IP 防火墙中。 | 入站 | 否 | 否 |
-| **AzureConnectors** | 此标记表示用于托管连接器的 IP 地址，这些地址对 Azure 逻辑应用服务进行入站 webhook 回拨，并向其各自的服务（例如 Azure 存储或 Azure 事件中心）发出出站调用。 | 入站/出站 | 是 | 是 |
+| **AzureConnectors** | 此标记表示用于托管连接器的 IP 地址，这些托管连接器对 Azure 逻辑应用服务进行入站 Webhook 回调，并对其各自的服务（例如 Azure 存储或 Azure 事件中心）进行出站调用。 | 入站/出站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
 | **AzureDatabricks** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 出站 | 否 | 是 |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 出站 | 否 | 否 |
-| **AzureDevOps** | Azure Dev Ops。<br/><br/>*注意：此标记当前不可通过 Azure 门户进行配置*| 入站 | 否 | 是 |
-| **AzureDigitalTwins** | Azure 数字孪生。<br/><br/>*注意：* 此标记或此标记涵盖的 IP 地址可用于限制对配置为事件路由的终结点的访问。 *此标记当前不可通过 Azure 门户进行配置* | 入站 | 否 | 是 |
+| **AzureDevOps** | Azure Dev Ops。<br/><br/>注意：此标签当前无法通过 Azure 门户进行配置| 入站 | 否 | 是 |
+| **AzureDigitalTwins** | Azure 数字孪生。<br/><br/>注意：此标记或此标记所涵盖的 IP 地址可用于限制对事件路由配置的终结点的访问。 此标记当前不可通过 Azure 门户进行配置 | 入站 | 否 | 是 |
 | **AzureEventGrid** | Azure 事件网格。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记依赖于 AzureActiveDirectory、AzureFrontDoor.Frontend 和 AzureFrontDoor.FirstParty 标记  。 | 出站 | 否 | 否 |
@@ -98,7 +98,7 @@ ms.locfileid: "101667841"
 | **LogicAppsManagement** | 逻辑应用的管理流量。 | 入站 | 否 | 否 |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 出站 | 否 | 否 |
 | **MicrosoftContainerRegistry** | 用于 Microsoft 容器映像的容器注册表。 <br/><br/>*注意：* 此标记依赖于 AzureFrontDoor.FirstParty 标记。 | 出站 | 是 | 是 |
-| **PowerBI** | PowerBi. *注意：此标记当前不可通过 Azure 门户进行配置。* | 推送、请求和匿名 | 否 | 否|
+| **PowerBI** | PowerBi。 注意：此标签当前无法通过 Azure 门户进行配置。 | 推送、请求和匿名 | 否 | 否|
 | **PowerQueryOnline** | Power Query Online。 | 推送、请求和匿名 | 否 | 否 |
 | **服务总线** | 使用高级服务层级的 Azure 服务总线流量。 | 出站 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 通过它，客户可从其 VNET 针对 Service Fabric 群集执行管理操作（终结点，例如 https:// westus.servicefabric.azure.com） | 推送、请求和匿名 | 否 | 否 |
@@ -131,7 +131,7 @@ ms.locfileid: "101667841"
 可以编程方式检索最新的服务标记列表和 IP 地址范围详细信息：
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
 - [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
@@ -153,8 +153,8 @@ ms.locfileid: "101667841"
 
 ### <a name="tips"></a>提示 
 - 可记下 JSON 文件中变大的 changeNumber 值，检测相邻两次发布中的更新内容。 每个子部分（例如 Storage.WestUS）都有自己的 changeNumber，该值在出现更改时递增。 任何子部分更改时，文件的 changeNumber 的顶层都将递增。
-- 要通过示例了解如何分析服务标记信息（例如获取美国西部区域存储的所有地址范围），请参阅[服务标记发现 API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2) 文档。
-- 将新的 IP 地址添加到服务标记时，它们将不会在 Azure 中至少使用一周。 这为你提供了更新可能需要跟踪与服务标记相关联的 IP 地址的任何系统的时间。
+- 要通过示例了解如何分析服务标记信息（例如获取美国西部区域存储的所有地址范围），请参阅[服务标记发现 API PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag) 文档。
+- 当新的 IP 地址添加到服务标签中时，它们至少一周内不会在 Azure 中使用。 可以利用这段时间更新任何可能需要跟踪与服务标记相关的 IP 地址的系统。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[创建网络安全组](tutorial-filter-network-traffic.md)。

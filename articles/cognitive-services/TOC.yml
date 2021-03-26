@@ -32,7 +32,7 @@
       items:
         - name: 容器
           items:
-            - name: 容器支持
+            - name: 认知服务容器
               href: cognitive-services-container-support.md
             - name: 容器映像标记和发行说明
               href: ./containers/container-image-tags.md

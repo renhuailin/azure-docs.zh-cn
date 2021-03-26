@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: eb02bff77ffedc0a1f2fee0a186d544c39374dbf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693860"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594727"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -88,7 +88,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 你 **只能** 增加操作系统磁盘的大小 (Win 和 Linux) ，这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
+映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 只可以增大 OS 磁盘（Win 和 Linux）的大小，这是可选的，值为 0 表示保留与源映像相同的大小。 你不能将 OS 磁盘大小缩小到小于源映像的大小。
 
 ```json
  {
@@ -121,7 +121,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="identity"></a>标识
 
-必需-若要使映像生成器具有读取/写入映像的权限，请从 Azure 存储中读取脚本，你必须创建一个具有单个资源权限的 Azure User-Assigned 标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看 [文档](image-builder-user-assigned-identity.md)。
+必需 - 若要使映像生成器有权读取/写入映像，请从 Azure 存储中读取脚本，你必须创建具有对单个资源的权限的 Azure 用户分配标识。 有关映像生成器权限工作原理的详细信息，以及相关步骤，请查看[文档](image-builder-user-assigned-identity.md)。
 
 
 ```json
@@ -134,7 +134,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 ```
 
 
-图像生成器支持 User-Assigned 标识：
+映像生成器支持用户分配标识：
 * 仅支持单个标识
 * 不支持自定义域名
 
@@ -143,7 +143,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="properties-source"></a>属性：source
 
-`source` 节包含有关映像生成器要使用的源映像的信息。 映像生成器目前仅支持创建 (Gen1) 1 映像的 Hyper-v 生成， (SIG) 或托管映像。 如果要创建 Gen2 映像，则需使用源 Gen2 映像，并将其分发到 VHD。 之后，你将需要从 VHD 创建托管映像，并将其作为 Gen2 映像插入到 SIG 中。
+`source` 节包含有关映像生成器要使用的源映像的信息。 映像生成器目前仅本机支持将 Hyper-V 第 1 代 (Gen1) 映像创建到 Azure 共享映像库 (SIG) 或托管映像。 如果你想要创建 Gen2 映像，则需要使用源 Gen2 映像并分发到 VHD。 之后，你将需要从 VHD 创建托管映像，并将其作为 Gen2 映像注入 SIG。
 
 API 需要通过一个“SourceType”来定义用于生成映像的源，目前有三种类型：
 - PlatformImage - 表示源映像是市场映像。
@@ -152,7 +152,7 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 
 
 > [!NOTE]
-> 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
+> 在使用现有的 Windows 自定义映像时，可以在单个 Windows 映像上运行 Sysprep 命令最多 8 次，有关详细信息，请参阅 [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
 Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](../image-builder-overview.md#os-support)。 
@@ -177,7 +177,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 可以在版本中使用“latest”，版本评估将在映像生成时进行，而不是在提交模板时进行。 如果对共享映像库目标使用此功能，则可以避免重新提交模板，并按时间间隔重新运行映像生成，以便基于最新的映像重新创建映像。
 
 #### <a name="support-for-market-place-plan-information"></a>支持市场位置计划信息
-您还可以指定计划信息，例如：
+你还可以指定计划信息，例如：
 ```json
     "source": {
         "type": "PlatformImage",
@@ -196,7 +196,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 将源映像设置为通用化 VHD 或 VM 的现有托管映像。
 
 > [!NOTE]
-> 源托管映像必须是受支持的操作系统，并且映像必须与 Azure 映像生成器模板的区域相同。 
+> 源托管映像必须采用受支持的 OS，映像必须与 Azure 映像生成器模板位于同一区域中。 
 
 ```json
         "source": { 
@@ -212,7 +212,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 将源映像设置为共享映像库中的现有映像版本。
 
 > [!NOTE]
-> 源托管映像必须是受支持的操作系统，并且映像必须与 Azure 映像生成器模板具有相同的区域，否则请将映像版本复制到映像生成器模板区域。
+> 源托管映像必须是受支持的 OS，映像必须与 Azure 映像生成器模板位于同一区域中（如果没有，请将映像版本复制到映像生成器模板区域）。
 
 
 ```json
@@ -249,7 +249,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 - 如果一个定制器失败，则整个自定义组件将会失败并报告错误。
 - 强烈建议在模板中使用脚本之前对其进行全面的测试。 在自己的 VM 上调试脚本会更方便。
 - 不要将敏感数据放在脚本中。 
-- 脚本位置需可公开访问，除非使用的是 [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)。
+- 脚本位置需可公开访问，除非使用的是 [MSI](./image-builder-user-assigned-identity.md)。
 
 ```json
         "customize": [
@@ -274,7 +274,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 customize 节是一个数组。 Azure 映像生成器将按顺序运行各个定制器。 任一定制器发生任何失败都会导致生成过程失败。 
 
 > [!NOTE]
-> 可在映像模板定义中查看内联命令，并通过 Microsoft 支持部门来帮助支持案例。 如果有敏感信息，则应将其移入 Azure 存储中的脚本，访问需要进行身份验证。
+> 帮助处理支持案例时，可以在映像模板定义中和由 Microsoft 支持部门查看内联命令。 如果有敏感信息，则应将其移入 Azure 存储中的脚本，其中访问需要身份验证。
  
 ### <a name="shell-customizer"></a>Shell 定制器
 
@@ -310,10 +310,10 @@ Customize 属性：
     * 若要生成 sha256Checksum，请使用 Mac/Linux 上的终端运行：`sha256sum <fileName>`
 
 > [!NOTE]
-> 内联命令作为映像模板定义的一部分进行存储，你可以在转储映像定义时看到这些命令，在进行故障排除时，这些命令也可用于 Microsoft 支持部门。 如果有敏感的命令或值，强烈建议将它们移入脚本，并使用用户标识对 Azure 存储进行身份验证。
+> 内联命令作为映像模板定义的一部分存储，当你转出映像定义时，你可以看到这些命令，如果出于故障排除目的，Microsoft 支持部门也会看到这些命令。 如果你敏感的命令或值，强烈建议将这些命令或值移入脚本，并使用用户标识来验证 Azure 存储。
 
 #### <a name="super-user-privileges"></a>超级用户权限
-对于使用超级用户权限运行的命令，这些命令必须加 `sudo` 上前缀，你可以将这些命令添加到脚本中或使用它内联命令，例如：
+若要通过超级用户权限运行命令，则必须用 `sudo` 进行前缀，你可以将这些命令添加到脚本中或使用内联命令，例如：
 ```json
                 "type": "Shell",
                 "name": "setupBuildPath",
@@ -321,7 +321,7 @@ Customize 属性：
                     "sudo mkdir /buildArtifacts",
                     "sudo cp /tmp/index.html /buildArtifacts/index.html"
 ```
-使用 sudo 的脚本示例，可使用 scriptUri 进行引用：
+使用 sudo 的脚本示例，你可以使用 scriptUri 进行引用：
 ```bash
 #!/bin/bash -e
 
@@ -391,7 +391,7 @@ Customize 属性：
 - **validExitCodes** - 可从脚本/内联命令返回的可选有效代码，可避免脚本/内联命令报告失败。
 - **runElevated** - 可选布尔值，支持使用提升的权限运行命令和脚本。
 - **sha256Checksum** - 文件的 sha256 校验和的值。你将在本地生成此校验和，然后，映像生成器会对其进行验证。
-    * 若要生成 sha256Checksum，请使用 Windows 上的 PowerShell [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * 若要生成 sha256Checksum，请使用 Windows 上的 PowerShell [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash)
 
 
 ### <a name="file-customizer"></a>File 定制器
@@ -417,7 +417,7 @@ File 定制器属性：
 - **sourceUri** - 可访问的存储终结点，可以是 GitHub 或 Azure 存储。 只能下载一个文件，而不能下载整个目录。 如果需要下载目录，请使用压缩文件，然后使用 Shell 或 PowerShell 定制器将其解压缩。 
 
 > [!NOTE]
-> 如果 sourceUri 是 Azure 存储帐户，而不考虑将 blob 标记为公共的，则将向托管用户标识授予对 blob 的读取访问权限。 请参阅此 [示例](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) 以设置存储权限。
+> 如果 sourceUri 是 Azure 存储帐户，无论 blob 是否被标记为公共，你都将授予托管用户标识权限以读取 blob 上的访问权限。 请参阅此[示例](./image-builder-user-assigned-identity.md#create-a-resource-group)以设置存储权限。
 
 - **destination** - 完整的目标路径和文件名。 任何被引用的路径和子目录必须存在，请使用 Shell 或 PowerShell 定制器提前设置这些路径和子目录。 可以使用脚本定制器创建路径。 
 
@@ -456,7 +456,7 @@ Customize 属性：
 - **updateLimit** -（可选）定义可安装的更新数，默认值为 1000。
  
 > [!NOTE]
-> 如果有任何未完成的 Windows 重启或仍在运行的应用程序安装，Windows 更新定制器可能会失败，通常您可能会在自定义日志中看到此 `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` 错误。 我们强烈建议你在 Windows 重启中添加和/或允许应用程序在运行 Windows 更新之前，使用 [睡眠] 或等待命令 https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) 在内联命令或脚本中 (来完成安装。
+> 如果有任何未完成的 Windows 重启或应用程序安装仍在运行，Windows 更新定制器可能会失败，通常你可能会在 customization.log `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` 中看到此错误。 强烈建议考虑添加 Windows 重启和/或允许应用程序有足够的时间来使用内联命令或脚本中的[睡眠](/powershell/module/microsoft.powershell.utility/start-sleep)或等待命令完成安装，然后再运行 Windows 更新。
 
 ### <a name="generalize"></a>通用化 
 默认情况下，Azure 映像生成器还会在每个映像自定义阶段结束时运行“deprovision”代码，以“通用化”映像。 通用化是设置映像并使其可重复用于创建多个 VM 的过程。 对于 Windows VM，Azure 映像生成器将使用 Sysprep。 对于 Linux，Azure 映像生成器将运行“waagent -deprovision”。 
@@ -511,10 +511,10 @@ Azure 映像生成器支持三个分发目标：
 - **sharedImage** - 共享映像库。
 - **VHD** - 存储帐户中的 VHD。
 
-您可以在同一配置中将图像分发到两种目标类型。
+可将映像分发到同一配置中的两种目标类型。
 
 > [!NOTE]
-> 默认的 AIB sysprep 命令不包括 "/mode： vm"，不过，在创建将安装 HyperV 角色的映像时，这可能是必需的。 如果需要添加此命令参数，则必须重写 sysprep 命令。
+> 默认的 AIB sysprep 命令不包括“/mode:vm”，但是，在创建将安装 HyperV 角色的映像时，可能需要这样做。 如果你需要添加此命令参数，则必须覆盖 sysprep 命令。
 
 由于可以分发到多个目标，映像生成器会维护每个分发目标的状态，可通过查询 `runOutputName` 来访问该状态。  分发后，可以在 `runOutputName` 对象中查询有关该分发的信息。 例如，可以查询 VHD 的位置、映像版本复制到的区域，或者创建的 SIG 映像版本。 这是每个分发目标的属性。 对于每个分发目标，`runOutputName` 必须独一无二。 以下示例查询某个共享映像库分发：
 
@@ -568,7 +568,7 @@ az resource show \
  
 Distribute 属性：
 - **type** - managedImage 
-- **imageId** –目标映像的资源 ID，格式应为：/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
+- **imageId** - 目标映像的资源 ID，预期格式：/subscriptions/\<subscriptionId>/resourceGroups/\<destinationResourceGroupName>/providers/Microsoft.Compute/images/\<imageName>
 - **location** - 托管映像的位置。  
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
@@ -608,21 +608,21 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 共享映像库的 Distribute 属性：
 
 - **type** - sharedImage  
-- **galleryImageId** –共享映像库的 ID，可采用以下两种格式指定：
-    * 自动版本控制-映像生成器将为你生成单调版本号，这对于你想要从同一模板中重新生成映像很有用：格式为： `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` 。
-    * 显式版本控制-可以传入希望映像生成器使用的版本号。 格式为： `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+- **galleryImageId** - 共享映像库的 ID，这可以指定为两种格式：
+    * 自动版本 - 映像生成器将为你生成单调的版本号，当你想要继续从同一模板中重建映像时，这很有用：格式是：`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>`。
+    * 显式版本 - 你可以传递希望映像生成器使用的版本号。 格式是：`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
-- **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。 添加区域意味着生成时间增加，因为在完成复制之前，生成不会完成。
-- **excludeFromLatest** (可选) 这使你可以将所创建的映像版本标记为 SIG 定义中的最新版本，默认值为 "false"。
-- **storageAccountType** (可选) AIB 支持为要创建的映像版本指定以下类型的存储：
-    * "Standard_LRS"
-    * "Standard_ZRS"
+- **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。 添加区域将意味着增加生成时间，因为生成在复制完成之前不会完成。
+- **excludeFromLatest**（可选）这允许你标记创建的映像版本，而不是用作 SIG 定义中的最新版本，默认值为“false”。
+- **storageAccountType**（可选）AIB 支持为要创建的映像版本指定这些类型的存储：
+    * “Standard_LRS”
+    * “Standard_ZRS”
 
 
 > [!NOTE]
-> 如果图像模板与所引用的 `image definition` 位置不在同一位置，你将看到创建映像的额外时间。 图像生成器当前没有 `location` 用于映像版本资源的参数，我们从其父代获取参数 `image definition` 。 例如，如果映像定义位于 westus 中，并且你希望将映像版本复制到 eastus，则会将一个 blob 复制到 westus，然后，将在 westus 中创建一个映像版本资源，然后将其复制到 eastus。 若要避免额外的复制时间，请确保 `image definition` 和映像模板位于同一位置。
+> 如果映像模板和引用的 `image definition` 不在同一位置，你将看到创建映像的额外时间。 映像生成器目前没有映像版本资源的 `location` 参数，我们从其父 `image definition` 中获取它。 例如，如果映像定义在 westus 中，并且你希望映像版本复制到 eastus，则将一个 blob 复制到 westus，从此创建 westus 中的映像版本资源，然后复制到 eastus。 为了避免额外的复制时间，请确保 `image definition` 和映像模板位于同一位置。
 
 
 ### <a name="distribute-vhd"></a>Distribute：VHD  
@@ -660,7 +660,7 @@ az resource show \
 ## <a name="image-template-operations"></a>映像模板操作
 
 ### <a name="starting-an-image-build"></a>启动映像生成
-若要启动生成，需要对映像模板资源调用 "Run"，如命令的示例 `run` ：
+若要启动生成，需要对映像模板资源调用“Run”，如 `run` 命令的示例：
 
 ```PowerShell
 Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
@@ -676,12 +676,12 @@ az resource invoke-action \
 ```
 
 ### <a name="cancelling-an-image-build"></a>取消映像生成
-如果你运行的是你认为不正确的映像生成，等待用户输入，或者你认为永远不会成功完成，则可以取消生成。
+如果你正在运行你认为不正确的映像生成，等待用户输入，或者你觉得永远不会成功完成，则可以取消生成。
 
-可随时取消生成。 如果分发阶段已开始，你仍可以取消，但你将需要清除可能未完成的任何映像。 "取消" 命令不等待 "取消" 完成，请 `lastrunstatus.runstate` 使用这些状态 [命令](image-builder-troubleshoot.md#customization-log)监视取消进度。
+可随时取消生成。 如果分发阶段已经开始，你仍然可以取消，但你需要清理任何可能无法完成的映像。 取消命令不会等待取消完成，请使用这些状态[命令](image-builder-troubleshoot.md#customization-log)监视取消进度 `lastrunstatus.runstate`。
 
 
-命令示例 `cancel` ：
+`cancel` 命令的示例：
 
 ```powerShell
 Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force

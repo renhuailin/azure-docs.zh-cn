@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b1f820cfca0e352b49d815e2b99d407ccc8ce43
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b47342a0013eafe9444c30ced4d00a96500ccdab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505692"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592976"
 ---
-# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池优化事务 
+# <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中优化专用 SQL 池中的事务 
 
 了解如何在尽量降低长时间回退风险的情况下优化专用 SQL 池中事务性代码的性能。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
-事务是关系数据库引擎的一个重要组成部分。 专用 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 当需要将多个修改语句绑定到一个原子单元中时，通常使用显式事务。
+事务是关系数据库引擎的一个重要组成部分。 专用 SQL 池在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在一个原子单元的时候。
 
-专用 SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 但是，尽管此过程可保证写入，但确实会在系统中引入开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
+专用 SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确实会在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
 * 尽可能使用最少日志记录构造
 * 使用限定范围的批来处理数据，避免单数形式的长时运行事务
@@ -82,7 +82,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
-## <a name="optimize-deletes"></a>优化删除
+## <a name="optimize-deletes"></a>优化删除操作
 
 DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据， `SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest&preserve-view=true) 操作使用新创建的表将旧表交换出来。
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimize-updates"></a>优化更新
+## <a name="optimize-updates"></a>优化更新操作
 
 UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > 重新创建大型表时，使用专用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-## <a name="optimize-with-partition-switching"></a>使用分区切换进行优化
+## <a name="optimize-with-partition-switching"></a>优化分区切换操作
 
 面对[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 
@@ -422,4 +422,4 @@ END
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[专用 SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅[专用 SQL 池最佳做法](best-practices-sql-pool.md)。
+请参阅[专用 SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅[专用 SQL 池最佳做法](best-practices-dedicated-sql-pool.md)。

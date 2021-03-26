@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: 181af5cf26d19a9f51e8d456e777badf7efa224d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097815"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 使用 Angular 生成 UI
@@ -354,7 +354,7 @@ ms.locfileid: "93097815"
 
 有了组件以后，如何让其显示在平面上？ 请修改 app.component.ts 中的默认组件。
 
-1. 在“资源管理器”窗格中，打开 **/app/app.component.ts** ，将标题更改为 Heroes，然后将已创建组件的名称置于 heroes.components.ts (app-heroes) 中，以便引用该新组件。 文件的内容现在应如下所示： 
+1. 在“资源管理器”窗格中，打开 **/app/app.component.ts**，将标题更改为 Heroes，然后将已创建组件的名称置于 heroes.components.ts (app-heroes) 中，以便引用该新组件。 文件的内容现在应如下所示： 
 
     ```ts
     import { Component } from '@angular/core';

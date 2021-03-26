@@ -4,12 +4,12 @@ description: 了解控制 Azure HDInsight 群集的入站和出站流量的方�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943364"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867026"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>在 Azure HDInsight 中控制网络流量
 
@@ -21,7 +21,7 @@ ms.locfileid: "98943364"
 
 作为托管服务，HDInsight 需要对 HDInsight 运行状况和管理服务具有不受限制的访问权限，以处理从 VNET 传入和传出的流量。 使用 NSG 时，必须确保这些服务仍然可以与 HDInsight 群集进行通信。
 
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/control-network-traffic/hdinsight-vnet-diagram.png)
+:::image type="content" source="./media/control-network-traffic/hdinsight-vnet-diagram.png" alt-text="在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图" border="false":::
 
 ## <a name="hdinsight-with-network-security-groups"></a>使用网络安全组的 HDInsight
 

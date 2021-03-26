@@ -1,6 +1,6 @@
 ---
 title: 排序规则支持
-description: 排序规则类型支持 Azure Synapse Analytics 中的 Synapse SQL
+description: 对 Azure Synapse Analytics 中 Synapse SQL 的排序规则类型支持
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
@@ -9,24 +9,24 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93311916"
 ---
-# <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>针对 Azure Synapse Analytics 中的 Synapse SQL 的数据库排序规则支持 
+# <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中 Synapse SQL 的数据库排序规则支持 
 
-排序规则提供基于字符的数据类型的区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
+排序规则为基于字符的数据类型提供区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
 
-创建新的专用 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
+新建专用 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
 
-您可以在创建时使用 CREATE DATABASE 语句指定默认的无服务器 SQL 池数据库排序规则。
+你可以在创建时使用 CREATE DATABASE 语句指定默认的无服务器 SQL 池数据库排序规则。
 
 ## <a name="change-collation"></a>更改排序规则
-若要更改专用 SQL 池数据库的默认排序规则，请更新预配体验中的排序规则字段。 例如，如果要将默认排序规则更改为区分大小写，请将排序规则从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS。 
+若要更改专用 SQL 池数据库的默认排序规则，请更新预配体验中的“排序规则”字段。 例如，如需将默认排序规则更改为区分大小写，请将“排序规则”从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS。 
 
-若要更改无服务器 SQL 池数据库的默认排序规则，您可以使用 ALTER DATABASE 语句。
+若要更改无服务器 SQL 池数据库的默认排序规则，可以使用 ALTER DATABASE 语句。
 
 ## <a name="list-of-unsupported-collation-types"></a>不受支持的排序规则类型的列表
 *    Japanese_Bushu_Kakusu_140_BIN
@@ -104,7 +104,7 @@ ms.locfileid: "93311916"
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="check-the-current-collation"></a>检查当前排序规则
+## <a name="check-the-current-collation"></a>查看当前排序规则
 若要查看数据库的当前排序规则，可运行以下 T-SQL 代码片段：
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
@@ -113,9 +113,9 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关专用 SQL 池和无服务器 SQL 池最佳实践的其他信息，请参阅以下文章：
+在以下文章中可以找到有关专用 SQL 池和无服务器 SQL 池最佳做法的更多信息：
 
-- [专用 SQL 池的最佳实践](best-practices-sql-pool.md)
-- [无服务器 SQL 池的最佳实践](best-practices-sql-on-demand.md)
+- [专用 SQL 池最佳做法](best-practices-sql-pool.md)
+- [无服务器 SQL 池最佳做法](best-practices-sql-on-demand.md)
 
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87171042"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向 PostgreSQL 进行身份验证
@@ -21,7 +21,7 @@ Microsoft Azure Active Directory (Azure AD) 身份验证是一种使用 Azure AD
 使用 Azure AD 带来的优势包括：
 
 - 以统一的方式跨 Azure 服务对用户进行身份验证
-- 在一处位置管理密码策略和密码轮换
+- 在统一的位置管理密码策略和密码轮换
 - Azure Active Directory 支持多种形式的身份验证，无需存储密码
 - 客户可以使用外部 (Azure AD) 组管理数据库权限。
 - Azure AD 身份验证使用 PostgreSQL 数据库角色在数据库级别对标识进行身份验证

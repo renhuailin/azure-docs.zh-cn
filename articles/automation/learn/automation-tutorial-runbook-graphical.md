@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92899791"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教程：创建图形 Runbook
@@ -42,11 +42,11 @@ ms.locfileid: "92899791"
 
     通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产是自动包括在新的自动化帐户中的模块。 你还应该有与你的订阅关联的凭据资产。
 
-2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。
+2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
 
 3. 选择“创建 Runbook”，创建一个新的 Runbook。
 
-4. 将该 Runbook 命名为 **MyFirstRunbook-Graphical** 。
+4. 将该 Runbook 命名为 **MyFirstRunbook-Graphical**。
 
 5. 在本例中，你将创建一个[图形 Runbook](../automation-graphical-authoring-intro.md)。 选择“图形”作为“Runbook 类型”。
 
@@ -178,7 +178,7 @@ ms.locfileid: "92899791"
 
 10. `Connect-AzAccount` cmdlet 有多个参数集，需要选择其中一个，然后提供参数值。 单击“参数集”，然后选择“ServicePrincipalCertificateWithSubscriptionId” 。
 
-11. 此参数集的参数将显示在“活动参数配置”页上。 单击“APPLICATIONID”。
+11. 此参数集的参数会显示在“活动参数配置”页上。 单击“APPLICATIONID”。
 
     ![添加 Azure 帐户参数](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
 
@@ -234,9 +234,9 @@ ms.locfileid: "92899791"
 
 5. 选择“ResourceGroupNameParameterSetName”作为参数集。 “ResourceGroupName”和“Name”字段旁边出现了感叹号，表示它们是必需的参数。 请注意，这两个字段都需要字符串值。
 
-6. 选择“名称”。 为“数据源”字段选择“PowerShell 表达式”。 对于用于启动此 Runbook 的 VM，请键入带双引号的计算机名称。 单击“确定”。
+6. 选择“名称”。 为“数据源”字段选择“PowerShell 表达式”。 对于用于启动此 Runbook 的 VM，请键入带双引号的计算机名称。 单击 **“确定”** 。
 
-7. 选择“ResourceGroupName”。 对“数据源”字段使用值“PowerShell 表达式”，并键入带双引号的资源组名称 。 单击“确定”。
+7. 选择“ResourceGroupName”。 对“数据源”字段使用值“PowerShell 表达式”，并键入带双引号的资源组名称 。 单击 **“确定”** 。
 
 8. 单击“测试”窗格，以便测试 Runbook。
 
@@ -297,11 +297,11 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 
 6. **GetVirtualMachineInResourceGroupNameParamSet** 参数集。 “ResourceGroupName”和“Name”字段旁边出现了感叹号，表示它们指定了必需的参数。 请注意，这两个字段都需要字符串值。
 
-7. 在“Name”的“数据源”下选择“Runbook 输入”，然后选择“VMName”   。 单击“确定”。
+7. 在“Name”的“数据源”下选择“Runbook 输入”，然后选择“VMName”   。 单击 **“确定”** 。
 
-8. 在“ResourceGroupName”的“数据源”下选择“Runbook 输入”，然后选择“ResourceGroupName”   。 单击“确定”。
+8. 在“ResourceGroupName”的“数据源”下选择“Runbook 输入”，然后选择“ResourceGroupName”   。 单击 **“确定”** 。
 
-9. 在“Status”的“数据源”下选择“常量值”，然后选择“True”   。 单击“确定”。
+9. 在“Status”的“数据源”下选择“常量值”，然后选择“True”   。 单击 **“确定”** 。
 
 10. 创建从 `Specify Subscription Id` 到 `Get-AzVM` 的链接。
 
@@ -335,7 +335,7 @@ Runbook 当前会启动资源组中为 `Start-AzVM` cmdlet 指定的 VM。 如�
 
 18. 对于“条件表达式”，请键入 `$ActivityOutput['Get Status'] -eq "Stopped"`。 现在，仅当 VM 已停止时，`Start-AzVM` 才会运行。
 
-19. 在库控件中，展开 **Cmdlet** 节点，并展开 **Microsoft.PowerShell.Utility** 。
+19. 在库控件中，展开 **Cmdlet** 节点，并展开 **Microsoft.PowerShell.Utility**。
 
 20. 将 `Write-Output` 添加到画布两次。
 

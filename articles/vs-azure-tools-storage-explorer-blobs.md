@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95531961"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
@@ -141,7 +141,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
    ![“访问策略”选项][12]
 6. 根据访问策略管理任务完成以下步骤：
 
-   * **添加新的访问策略** - 选择“添加”。 生成后，“访问策略”对话框会显示新添加的访问策略（以及默认设置）。
+   * **添加新的访问策略** - 选择“添加”。  生成后，“访问策略”对话框会显示新添加的访问策略（以及默认设置）。
    * **编辑访问策略** - 进行需要的编辑，并选择“保存”。
    * **删除访问策略** - 在要删除的访问策略旁边选择“删除”。
 

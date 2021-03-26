@@ -1,7 +1,7 @@
 ---
-title: 在 MSAL.js 中记录错误和异常
+title: 记录 MSAL.js 中的错误和异常
 titleSuffix: Microsoft identity platform
-description: 了解如何在 MSAL.js 中记录错误和异常
+description: 了解如何记录 MSAL.js 中的错误和异常
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d7463e3376847a219750254548c25ca79f4cdfb6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954811"
 ---
 # <a name="logging-in-msaljs"></a>MSAL.js 中的日志记录

@@ -4,12 +4,12 @@ description: 自带密钥 (BYOK) 来加密 AKS OS 和数据磁盘。
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 4b1c311132cc812ccb2bbbc95c4b7414b108008c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728129"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102499197"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>对 Azure Kubernetes Service (AKS) 中的 Azure 磁盘使用自带密钥 (BYOK)
 
@@ -93,7 +93,7 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 如果 v1.17.2 没有为数据磁盘提供密钥，则使用 OS 磁盘加密密钥对数据磁盘进行加密，并且还可以使用其他密钥对 AKS 数据磁盘进行加密。
 
 > [!IMPORTANT]
-> 确保你具有正确的 AKS 凭据。 对于在其中部署了 diskencryptionset 的资源组，服务主体需要有参与者访问权限。 否则，你将收到一条错误消息，指出服务主体没有权限。
+> 确保你具有正确的 AKS 凭据。 对于在其中部署了 diskencryptionset 的资源组，托管标识需要有参与者访问权限。 否则，你会收到一个错误，提示托管标识没有权限。
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below
@@ -119,7 +119,7 @@ someuser@Azure:~$ az account list
 ]
 ```
 
-创建一个名为 **byok-azure-disk.yaml** 的文件，在其中包含以下信息。  将 myAzureSubscriptionId、myResourceGroup 和 myDiskEncrptionSetName 替换为你的值并应用 yaml。  请确保使用在其中部署了 DiskEncryptionSet 的资源组。  如果使用 Azure Cloud Shell，则可使用 vi 或 nano 来创建此文件，就像在虚拟或物理系统上工作一样：
+创建一个名为 **byok-azure-disk.yaml** 的文件，在其中包含以下信息。  将 myAzureSubscriptionId、myResourceGroup 和 myDiskEncrptionSetName 替换为你的值并应用 yaml。  请确保使用在其中部署了 DiskEncryptionSet 的资源组。  如果使用 Azure Cloud Shell，则可以使用 vi 或 nano 来创建此文件，就像在虚拟或物理系统中操作一样：
 
 ```
 kind: StorageClass
