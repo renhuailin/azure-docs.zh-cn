@@ -9,10 +9,10 @@ ms.date: 05/20/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7217a8416354de260f958bfb5b980a8fdc391618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334916"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
@@ -28,10 +28,10 @@ STARTSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="arguments"></a>参数
   
-str_expr1  
-   一个字符串表达式。
+*str_expr1*  
+   是一个字符串表达式。
   
-str_expr2  
+*str_expr2*  
    要与 str_expr1 的开头进行比较的字符串表达式。
 
 bool_expr 忽略大小写的可选值。 如果设置为 true，则 STARTSWITH 将执行不区分大小写的搜索。 如果未指定，则此值为 false。

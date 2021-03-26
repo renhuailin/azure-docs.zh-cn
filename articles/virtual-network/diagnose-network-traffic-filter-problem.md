@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223663"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
@@ -170,12 +170,12 @@ az vm show \
 
 | properties                | 值                                                                              |
 |---------                |---------                                                                           |
-| 源                  | Any                                                                                |
+| 源                  | 任意                                                                                |
 | 源端口范围      | Any                                                                                |
 | 目标             | VM 的 IP 地址、IP 地址范围，或子网中的所有地址。 |
 | 目标端口范围 | 80                                                                                 |
 | 协议                | TCP                                                                                |
-| 操作                  | 允许                                                                              |
+| 操作                  | Allow                                                                              |
 | 优先级                | 100                                                                                |
 | 名称                    | Allow-HTTP-All                                                                     |
 

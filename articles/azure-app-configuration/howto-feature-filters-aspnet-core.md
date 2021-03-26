@@ -9,10 +9,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602285"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能筛选器启用条件功能标志
@@ -31,7 +31,7 @@ ms.locfileid: "98602285"
 
 ## <a name="registering-a-feature-filter"></a>注册功能筛选器
 
-您可以通过调用方法来注册功能筛选器 `AddFeatureFilter` ，并指定所需功能筛选器的类型名称。 例如，以下代码将注册 `PercentageFilter`：
+可以通过调用 `AddFeatureFilter` 方法并指定所需功能筛选器的类型名称来注册功能筛选器。 例如，以下代码将注册 `PercentageFilter`：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ public void ConfigureServices(IServiceCollection services)
     > [!div class="mx-imgBorder"]
     > ![编辑 Beta 功能标志](./media/edit-beta-feature-flag.png)
 
-1. 在 **编辑** 屏幕中，选中 " **启用功能标志** " 复选框（如果尚未启用）。 然后选中 " **使用功能筛选器** " 复选框，并选择 " **自定义**"。 
+1. 在“编辑”屏幕中，选中“启用功能标志”复选框（如果尚未启用）。 然后选中“使用功能筛选器”复选框，并选择“自定义”。 
 
-1. 在 " **名称** " 字段中，选择 " *Microsoft. 百分比*"。
+1. 在“名称”字段中，选择“Microsoft.Percentage”。
 
     > [!div class="mx-imgBorder"]
     > ![添加功能筛选器](./media/feature-flag-add-filter.png)
 
-1. 单击功能筛选器名称旁边的上下文菜单。 单击 " **编辑筛选器参数**"。
+1. 单击功能筛选器名称旁边的上下文菜单。 单击“编辑筛选器参数”。
 
     > [!div class="mx-imgBorder"]
     > ![编辑功能筛选器参数](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 单击“应用”以返回到“编辑功能标志”屏幕。 然后再次单击“应用”以保存功能标志设置。
 
-1. 在 "**功能管理器**" 页上，功能标志现在具有 "*自定义*"**功能筛选器** 值。 
+1. 现在，在“功能管理器”页上，功能标志的“功能筛选器”值为“自定义”。 
 
     > [!div class="mx-imgBorder"]
-    > ![功能标志与功能筛选器值 "Custom" 一起列出](./media/feature-flag-filter-custom.png)
+    > ![使用功能筛选器值“自定义”列出的功能标志](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>正在起作用的功能筛选器
 

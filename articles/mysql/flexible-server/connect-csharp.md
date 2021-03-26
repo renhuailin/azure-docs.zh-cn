@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
 ms.openlocfilehash: c13b8392a766dc29d8c83f9986d0b43271caabbb
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98605909"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 .NET (C#) 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
@@ -45,7 +45,7 @@ dotnet add package MySqlConnector
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户的左侧菜单中，选择“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 选择服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。 如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  :::image type="content" source="./media/connect-csharp/server-overview-name-login.png" alt-text="Azure Database for MySQL 服务器名称":::
 
 ## <a name="step-1-connect-and-insert-data"></a>步骤 1：连接并插入数据

@@ -1,78 +1,80 @@
 ---
-title: 使用 Azure 门户解决 Azure Stack Edge Pro 排序问题 |Microsoft Docs
-description: 介绍如何对 Azure Stack Edge Pro 排序问题进行故障排除。
+title: 使用 Azure 门户排查 Azure Stack Edge Pro 排序问题 | Microsoft Docs
+description: 介绍如何排查 Azure Stack Edge Pro 排序问题。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446371"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443397"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>排查 Azure Stack Edge Pro 排序问题
 
-本文介绍如何解决 Azure Stack Edge Pro 排序问题。
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-在本教程中，你将了解如何执行以下操作：
+本文介绍如何排查 Azure Stack Edge Pro 排序问题。
+
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 >
-> * 排序问题疑难解答
+> * 排查排序问题
 
-## <a name="unsupported-subscription-or-region"></a>不支持的订阅或区域
+## <a name="unsupported-subscription-or-region"></a>不支持该订阅或区域
 
 **错误说明：** 在 Azure 门户中，如果收到错误：
 
-*不支持所选的订阅或区域。请选择其他订阅或区域。*
+*不支持选定的订阅或区域。请选择其他订阅或区域。*
 
 ![不支持的订阅或区域](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**建议的解决方案：**  请确保使用受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、 [云解决方案提供商 (CSP)](/partner-center/azure-plan-lp)或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 有关详细信息，请参阅 [Azure Stack Edge 资源先决条件](azure-stack-edge-deploy-prep.md#prerequisites)。
+**建议的解决方案：** 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。 有关详细信息，请参阅 [Azure Stack Edge 资源先决条件](azure-stack-edge-deploy-prep.md#prerequisites)。
 
-Microsoft 可能会根据具体情况，允许订阅类型的升级。 请与 [Microsoft 支持](https://azure.microsoft.com/support/options/) 部门联系，以便他们能够了解你的需求并相应地调整这些限制。
+Microsoft 有可能会根据具体情况，允许按事例升级订阅类型。 请与 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)联系，以便他们能够了解你的需求并相应调整这些限制。
 
 ## <a name="selected-subscription-type-not-supported"></a>不支持所选的订阅类型
 
-**错误：** 你有 EA、CSP 或赞助订阅，并收到以下错误：
+**错误：** 你有 EA、CSP 或赞助的订阅并收到以下错误：
 
-*所选的订阅类型不受支持。请确保使用支持的订阅。 [了解更多](azure-stack-edge-deploy-prep.md#prerequisites)。如果使用受支持的订阅类型，请确保 `Microsoft.DataBoxEdge` 已注册该提供程序。有关如何注册的详细信息，请参阅 [注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)*。
+*不支持所选订阅类型。请确保使用支持的订阅。[了解详细信息](azure-stack-edge-deploy-prep.md#prerequisites)。如果使用支持的订阅类型，请确保注册了 `Microsoft.DataBoxEdge` 提供程序。有关如何注册的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)* 。
 
 **建议的解决方案：** 请按照以下步骤注册 Azure Stack Edge 资源提供程序：
 
-1. 在 Azure 门户中，请参阅 **Home**  >  **订阅**。
+1. 在 Azure 门户中，转到“主页” > “订阅” 。
 
-2. 选择用于订购设备的订阅。
+2. 选择要用于订购设备的订阅。
 
-3. 选择 " **资源提供程序** "，然后搜索 " **DataBoxEdge**"。
+3. 选择“资源提供程序”，然后搜索“Microsoft.DataBoxEdge” 。
 
     ![注册资源提供程序](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-02.png)
 
-如果你没有 "所有者" 或 "参与者" 访问权限来注册资源提供程序，则会看到以下错误： *订阅 &lt; 订阅名称没有 &gt; 注册资源提供程序 () ： DataBoxEdge 的权限。*
+如果注册资源提供程序时没有“所有者”或“参与者”访问权限来，会看到以下错误：*订阅“&lt;订阅名称&gt;”没有注册资源提供程序 Microsoft.DataBoxEdge 的权限。*
 
-有关详细信息，请参阅 [注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+有关详细信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
 
-## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>DataBoxEdge 未注册订阅
+## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>没有为订阅注册 Microsoft.DataBoxEdge
 
-**错误：** 在 Azure 门户中，选择要用于 Azure Stack Edge Pro 或 Data Box Gateway 的订阅，并收到以下错误：
+**错误：** 在 Azure 门户中，选择要用于 Azure Stack Edge Pro 或 Data Box Gateway 的订阅，然后收到以下错误：
 
-*资源提供程序 () ： DataBoxEdge 未注册订阅 &lt; 订阅名称 &gt; ，并且您没有为订阅 &lt; 订阅名称 &gt; 注册资源提供程序的权限*。
+*资源提供程序: 没有为订阅“&lt;订阅名称&gt;”注册 Microsoft.DataBoxEdge，并且你没有为订阅“&lt;订阅名称&gt;”注册资源提供程序的权限*。
 
-**建议的解决方案：** 提升订阅访问权限或查找具有所有者或参与者访问权限的某人来注册资源提供程序。
+**建议的解决方案：** 提升订阅访问权限或寻找具有注册资源提供程序时所需的所有者或参与者访问权限的他人。
 
 ## <a name="resource-disallowed-by-policy"></a>策略不允许的资源
 
-**错误：** 在 Azure 门户中，尝试注册资源提供程序并收到以下错误：
+**错误：** 在 Azure 门户中尝试注册资源提供程序时收到以下错误：
 
-*&lt; &gt; 策略不允许资源资源名称。 (代码： RequestDisallowedByPolicy) 。计划：拒绝通常不需要的资源类型。策略：不允许的资源类型。*
+*策略不允许使用资源“&lt;资源名称&gt;”。（代码：RequestDisallowedByPolicy）。计划: 拒绝通常不需要的资源类型。策略: 不允许的资源类型。*
 
-**建议的解决方案：** 此错误是由于现有的 Azure 策略阻止资源创建而发生的。 Azure 策略由组织的系统管理员设置，以确保使用或创建 Azure 资源时的符合性。 如果任何此类策略正在阻止 Azure Stack 创建 Edge 资源，请与系统管理员联系，以编辑 Azure 策略。
+**建议的解决方案：** 发生此错误的原因是现有的一个 Azure 策略阻止资源创建。 Azure 策略由组织的系统管理员设置，目的是在使用或创建 Azure 资源时确保相关合规性。 如果任何此类策略会阻止创建 Azure Stack Edge 资源，请与系统管理员联系，要求其编辑 Azure 策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关如何 [排查 Azure Stack Edge Pro 问题](azure-stack-edge-troubleshoot.md)的详细信息。
+* 深入了解如何[排查 Azure Stack Edge Pro 问题](azure-stack-edge-troubleshoot.md)。

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92912015"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
@@ -74,9 +74,9 @@ ms.locfileid: "92912015"
 
 若要创建新标记，必须在相应字段中输入短代码、名称和描述。
 
-- **短代码** ：为标记输入两个字母的代码。 示例：cb
-- **名称** ：以小写字母输入简短的描述性标记名称，不要使用空格。 示例：isbullying。
-- **描述** ：（可选）输入标记所针对的内容类型的描述。 示例： **网络欺凌的描述或实例** 。
+- **短代码**：为标记输入两个字母的代码。 示例：cb
+- **名称**：以小写字母输入简短的描述性标记名称，不要使用空格。 示例：isbullying。
+- **描述**：（可选）输入标记所针对的内容类型的描述。 示例：**网络欺凌的描述或实例**。
 
 单击“添加”以添加标记，并在完成标记创建后单击“保存”。
 

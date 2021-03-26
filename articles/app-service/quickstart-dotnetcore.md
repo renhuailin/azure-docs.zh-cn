@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
 ms.openlocfilehash: 77e0768a617ef79ab8510f88bfdcd41d5647f9bf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701631"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用
@@ -50,7 +50,7 @@ ms.locfileid: "101701631"
 
    ![配置 Web 应用项目](./media/quickstart-dotnetcore/configure-web-app-project.png)
 
-1. 可将任何类型的 ASP.NET Core Web 应用部署到 Azure，但对于本快速入门，请选择“Web 应用程序”模板。 确保“身份验证”设置为“无身份验证”，并且未选择其他选项。 然后选择“创建”  。
+1. 可将任何类型的 ASP.NET Core Web 应用部署到 Azure，但对于本快速入门，请选择“Web 应用程序”模板。 确保“身份验证”设置为“无身份验证”，并且未选择其他选项。 然后选择“创建”。
 
    ![创建新的 ASP.NET Core Web 应用](./media/quickstart-dotnetcore/create-aspnet-core-web-app.png) 
    
@@ -70,7 +70,7 @@ ms.locfileid: "101701631"
 
 1. 对于 .NET 5.0 应用，请在下拉列表中选择“ASP.NET Core 5.0”。
 
-1. 可将任何类型的 ASP.NET Core Web 应用部署到 Azure，但对于本快速入门，请选择“ASP.NET Core Web 应用”模板。 确保“身份验证”设置为“无身份验证”，并且未选择其他选项。 然后选择“创建”  。
+1. 可将任何类型的 ASP.NET Core Web 应用部署到 Azure，但对于本快速入门，请选择“ASP.NET Core Web 应用”模板。 确保“身份验证”设置为“无身份验证”，并且未选择其他选项。 然后选择“创建”。
 
    ![创建新的 ASP.NET Core Web 应用](./media/quickstart-dotnetcore/create-aspnet-core-web-app-5.png) 
    

@@ -9,15 +9,15 @@ ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100651931"
 ---
 下表列出了特定于 Azure 服务总线消息的配额信息。 若要了解服务总线的定价和其他配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-| 配额名称 | 作用域 | 注释 | 值 |
+| 配额名称 | 作用域 | 说明 | 值 |
 | --- | --- | --- | --- |
 | 每个 Azure 订阅的基本或标准命名空间的最大数量 |命名空间 |Azure 门户会拒绝对更多基本或标准命名空间的后续请求。 |100|
 | 每个 Azure 订阅的高级命名空间的最大数量 |命名空间 |门户会拒绝对更多高级命名空间的后续请求。 |100 |

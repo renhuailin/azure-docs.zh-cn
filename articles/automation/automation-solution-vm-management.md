@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559352"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597702"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
@@ -91,7 +91,8 @@ ms.locfileid: "102559352"
 | Microsoft.Authorization/permissions/read |订阅|
 | Microsoft.Authorization/roleAssignments/read | 订阅 |
 | Microsoft.Authorization/roleAssignments/write | 订阅 |
-| Microsoft.Authorization/roleAssignments/delete | 订阅 || Microsoft.Automation/automationAccounts/connections/read | 资源组 |
+| Microsoft.Authorization/roleAssignments/delete | 订阅 |
+| Microsoft.Automation/automationAccounts/connections/read | 资源组 |
 | Microsoft.Automation/automationAccounts/certificates/read | 资源组 |
 | Microsoft.Automation/automationAccounts/write | 资源组 |
 | Microsoft.OperationalInsights/workspaces/write | 资源组 |
@@ -167,7 +168,7 @@ ms.locfileid: "102559352"
 |Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 `Stop` 参数的 ScheduledStopStart_Parent runbook。  自动停止所有满足通过变量资产定义的规则的 VM。  启用相关计划 Scheduled-StartVM。|
 |Scheduled_StartVM | 用户定义，每天 | 每天在指定的时间运行带有 `Start` 参数值的 ScheduledStopStart_Parent runbook。 自动启动所有满足通过变量资产定义的规则的 VM。  启用相关计划 Scheduled-StopVM。|
 |Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每个星期五在指定的时间运行带有 `Stop` 参数值的 Sequenced_StopStop_Parent runbook。  将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅 [Runbook](#runbooks)。  启用相关计划 Sequenced-StartVM。|
-|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每个星期一在指定的时间运行带有 `Start` 参数值的 SequencedStopStart_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和变量资产的详细信息，请参阅 [Runbook](#runbooks)。 启用相关计划 Sequenced-StopVM。
+|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每个星期一在指定的时间运行带有 `Start` 参数值的 SequencedStopStart_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和变量资产的详细信息，请参阅 [Runbook](#runbooks)。 启用相关计划 Sequenced-StopVM。|
 
 ## <a name="use-the-feature-with-classic-vms"></a>将该功能与经典 VM 配合使用
 

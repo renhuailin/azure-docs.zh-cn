@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 08ba75b5160acb20cb5e2d172203ae48b546f17d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: dda3dcd3cd1234b2d0830010297e760201ed6160
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202226"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549271"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全控制：标识和访问控制
 
@@ -26,9 +26,9 @@ ms.locfileid: "98202226"
 
 Azure AD 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组的成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 ## <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -56,7 +56,7 @@ Azure AD 没有默认密码。 其他需要密码的 Azure 资源会强制创建
 |--|--|--|
 | 3.4 | 4.4 | 客户 |
 
-只要有可能，请使用 Azure Active Directory SSO，而不是为每个服务配置单独的单独凭据。 请使用 Azure 安全中心标识和访问管理建议。
+请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
 - [了解 Azure AD 的 SSO](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -146,7 +146,7 @@ Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 
 |--|--|--|
 | 3.12 | 16.13 | 客户 |
 
-使用 Azure AD 风险和标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+可使用 Azure AD 风险和标识保护功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
 
 - [如何查看 Azure AD 风险登录](../../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -160,7 +160,7 @@ Azure AD 提供日志来帮助发现过时的帐户。 此外，请使用 Azure 
 |--|--|--|
 | 3.13 | 16 | 客户 |
 
-在 Microsoft 需要访问客户数据的支持方案中，客户密码箱提供了一个用于查看、批准或拒绝客户数据访问请求的接口。
+在 Microsoft 需要访问客户数据的支持方案中，客户密码箱为你提供接口来审核和批准/拒绝客户数据访问请求。
 
 - [了解客户密码箱](../fundamentals/customer-lockbox-overview.md)
 

@@ -8,10 +8,10 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: ed7020a58f3f15403108934bcc3fab644bd1b627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584459"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>配置连接字符串
 
-在 Azure 门户中导航到存储帐户。 在存储帐户的“设置”  下选择“访问密钥”  。 从主密钥或辅助密钥复制 **连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
+在 Azure 门户中导航到存储帐户。 在存储帐户中选择“设置”下的“访问密钥”。  从主密钥或辅助密钥复制 **连接字符串**。 登录到上一教程中创建的虚拟机。 以管理员身份打开“命令提示符”，并使用 `/m` 开关运行 `setx` 命令，该命令可保存计算机设置环境变量  。 重载“命令提示符”后，环境变量才可用  。 替换以下示例中的“\<storageConnectionString\>”：
 
 ```console
 setx storageconnectionstring "<storageConnectionString>" /m
@@ -162,7 +162,7 @@ private static async Task UploadFilesAsync()
 ```
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
-|properties|值|说明|
+|properties|“值”|说明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |

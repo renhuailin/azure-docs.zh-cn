@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 671991a936fd0330c31017dd5f64e7b5eca9b3f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563653"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598399"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>基于编码方案的迁移指南
 
@@ -58,7 +58,7 @@ ms.locfileid: "102563653"
 
 ### <a name="v3-encoding-workflow"></a>V3 编码工作流
 
-[![V3 的编码工作流](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![V3 编码工作流](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. 设置
     1. 创建资产或使用现有资产。 如果使用新资产，请将内容上传到该资产。 如果使用现有资源，则应该对资产中已存在的文件进行编码。 不应将更多内容上传到该资产。
@@ -76,7 +76,7 @@ ms.locfileid: "102563653"
         - 输出资产
         - 资源组
         - AMS 帐户名称  
-1. 使用[事件网格](monitor-events-portal-how-to.md)来监视作业。
+1. 使用[事件网格](monitoring/monitor-events-portal-how-to.md)来监视作业。
 1. 提交作业。
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>从 V2 到 V3 编码的自定义预设

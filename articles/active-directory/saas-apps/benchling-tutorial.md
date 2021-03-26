@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 6ec2722592e5a89454a252ccf6f51bc857c513e1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728119"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benchling"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Benchling 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98728119"
 * 让用户使用其 Azure AD 帐户自动登录到 Benchling。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -76,7 +76,7 @@ ms.locfileid: "98728119"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.benchling.com/ext/saml/metadata.xml`
 
@@ -101,7 +101,7 @@ ms.locfileid: "98728119"
     | LastName | user.surname |
     | 电子邮件 | user.mail |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 

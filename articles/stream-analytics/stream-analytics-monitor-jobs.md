@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015070"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器

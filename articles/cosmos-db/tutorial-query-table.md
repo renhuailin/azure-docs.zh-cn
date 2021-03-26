@@ -10,10 +10,10 @@ ms.date: 06/05/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e184d85e3daee41f530334aa0034fc98f40a8766
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93099210"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
@@ -28,7 +28,7 @@ Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数
 
 本文中的查询使用如下示例 `People` 表：
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -54,7 +54,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 
 **结果**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -81,7 +81,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **结果**
 
-| PartitionKey | RowKey | Email | PhoneNumber |
+| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
@@ -98,7 +98,7 @@ IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中已完成以下操作：
+在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
 > * 已了解如何使用表 API 进行查询

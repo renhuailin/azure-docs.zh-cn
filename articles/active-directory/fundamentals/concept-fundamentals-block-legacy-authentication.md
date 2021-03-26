@@ -13,10 +13,10 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895282"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧式身份验证
@@ -37,7 +37,7 @@ ms.locfileid: "98895282"
 1. 按“客户端应用”进行筛选，然后选中显示的所有“旧式身份验证客户端”选项。 
 1. 按“状态” > “成功”进行筛选。  
 1. 如果需要，请使用“日期”筛选器扩展日期范围。
-1. 如果已激活新的 [登录活动报告预览](../reports-monitoring/concept-all-sign-ins.md)，请在 " **用户登录" (非交互式)** "选项卡上重复上述步骤。
+1. 如果你已激活[新登录活动报告预览](../reports-monitoring/concept-all-sign-ins.md)，请在“用户登录(非交互式)”选项卡上也重复上述步骤。
 
 筛选将仅显示通过所选旧式身份验证协议成功进行的登录尝试。 单击每个登录尝试会显示更多详细信息。 选择单个数据行后，“基本信息”选项卡下的“客户端应用”列或“客户端应用”字段将指示使用了哪个旧式身份验证协议。 这些日志将指示哪些用户仍然依赖于旧式身份验证，以及哪些应用程序正在使用旧式协议发出身份验证请求。 对于未出现在这些日志中且已被确认不使用旧式身份验证的用户，请仅为这些用户实施条件访问策略，或启用“基线策略: 阻止旧式身份验证”。
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
 ms.openlocfilehash: 4b568fa8d9e2fb8bd00acb27b0dc3f7c45c09c57
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019119"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
@@ -31,11 +31,11 @@ ms.locfileid: "98019119"
 
 ### <a name="open-the-job-view"></a>打开作业视图
 
-1. 在“服务器资源管理器”中，选择“流分析作业”，然后选择“刷新”    。 作业应显示在“流分析作业”下  。
+1. 在“服务器资源管理器”中，选择“流分析作业”，然后选择“刷新”  。 作业应显示在“流分析作业”下。
 
     ![流分析服务器资源管理器列表](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-2. 展开作业节点，并双击“作业视图”节点打开作业视图  。
+2. 展开作业节点，并双击“作业视图”节点打开作业视图。
     
    ![展开的作业节点](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "98019119"
 
 ## <a name="check-job-results"></a>检查作业结果
 
-适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”  中作业关系图的输出节点并输入相应凭据即可。
+适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”中作业关系图的输出节点并输入相应凭据即可。
 
    ![流分析作业 Blob 输出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
@@ -55,15 +55,15 @@ ms.locfileid: "98019119"
 
 可使用两种方法将现有作业导出到项目。
 
-1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点  。 选择“导出到新的流分析项目”  。
+1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点。 选择“导出到新的流分析项目”。
     
    ![将作业导出到项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    生成的项目会显示在“解决方案资源管理器”中  。
+    生成的项目会显示在“解决方案资源管理器”中。
     
    ![解决方案资源管理器](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. 在作业视图中，选择“生成项目”  。
+2. 在作业视图中，选择“生成项目”。
     
    ![从作业视图生成项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "98019119"
 
    ![“测试连接”下拉框](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-“测试连接”  结果会显示在“输出”  窗口中。
+“测试连接”结果会显示在“输出”窗口中。
 
    ![“测试连接”结果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 

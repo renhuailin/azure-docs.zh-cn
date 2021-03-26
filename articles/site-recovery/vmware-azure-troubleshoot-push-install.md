@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
 ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98127866"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
@@ -106,7 +106,7 @@ ms.locfileid: "98127866"
 
 若要解决该错误：
 
-* 使用本地帐户或域帐户验证用户帐户是否具有源计算机的管理访问权限。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
+* 请验证用户是否能够使用本地帐户或域帐户在源计算机上进行管理访问。 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
   * 若要手动添加注册表项来禁用远程用户访问控制，请执行以下操作：
     * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
     * 添加一个新的 `DWORD`：`LocalAccountTokenFilterPolicy`
@@ -117,11 +117,11 @@ ms.locfileid: "98127866"
 
 * 请确保你能够从配置服务器对源计算机执行 ping 操作。 如果在启用复制期间选择了横向扩展进程服务器，请确保能够从进程服务器对源计算机执行 ping 操作。
 
-* 请确保虚拟机上已启用 "文件和打印机共享" 服务。 查看 [此处](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)的步骤。
+* 请确保在虚拟机上启用了文件和打印机共享服务。 查看[此处](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)的步骤。
 
-* 请确保虚拟机上已启用 WMI 服务。 查看 [此处](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)的步骤。
+* 请确保虚拟机上已启用 WMI 服务。 查看[此处](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)的步骤。
 
-* 确保可从进程服务器访问虚拟机上的网络共享文件夹。 查看 [此处](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)的步骤。
+* 请确保可从进程服务器访问虚拟机上的网络共享文件夹。 查看[此处](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)的步骤。
 
 * 从源服务器计算机的命令行中，使用 `Telnet` 在 HTTPS 端口 135 上对配置服务器或横向扩展进程服务器执行 ping 操作，如以下命令所示。 此命令检查是否存在任何网络连接问题或防火墙端口阻止问题。
 
