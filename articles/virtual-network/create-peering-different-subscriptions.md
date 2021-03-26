@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
 ms.openlocfilehash: 1f8b7162787e870337918794f353ab8dc94c1965
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518239"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>创建虚拟网络对等互连 - 资源管理器、不同订阅和 Azure Active Directory 租户
@@ -103,7 +103,7 @@ ms.locfileid: "102518239"
 
 以下脚本：
 
-- 需要 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 需要 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 - 在 Bash shell 中操作。 有关在 Windows 客户端上运行 Azure CLI 脚本的选项，请参阅[在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)。
 
 除安装 CLI 及其依赖项外，还可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择下面脚本中的“试用”按钮，调用一个可用于登录 Azure 帐户的 Cloud Shell。
@@ -320,7 +320,7 @@ ms.locfileid: "102518239"
    ```
 
 2. 注销用户 A 的 Azure 登录，然后以用户 B 的身份登录。
-3. 执行以下命令：
+3. 运行以下命令：
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force

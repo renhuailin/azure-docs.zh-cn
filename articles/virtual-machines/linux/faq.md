@@ -1,18 +1,19 @@
 ---
-title: Azure 中 Linux Vm 的常见问题
+title: 有关 Azure 中的 Linux VM 的常见问题解答
 description: 回答了通过 Resource Manager 模型创建的 Linux 虚拟机的一些常见问题。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
-ms.translationtype: MT
+ms.openlocfilehash: d510fa35163a4c4a79352f5f35af9c384bf85304
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200815"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596308"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md)
@@ -30,7 +31,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
 使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md) 或[从 Linux 和 Mac](mac-create-ssh-keys.md) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
 
-如果遇到问题，请查看 [安全外壳 (SSH) 连接的疑难解答](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+如果遇到问题，请查阅[排除安全外壳 (SSH) 连接故障](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>我是否可以使用临时磁盘 (/dev/sdb1) 存储数据？
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。

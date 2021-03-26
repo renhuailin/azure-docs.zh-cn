@@ -4,10 +4,10 @@ description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632844"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
@@ -15,7 +15,7 @@ ms.locfileid: "98632844"
 AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保使用最新版本，可以从 [NuGet][NuGet]下载服务总线安装包。
 
 > [!NOTE]
-> 可以使用适用于服务总线的 .NET 库高级消息队列协议 (AMQP) 或 Service Bus 消息传送协议 (SBMP) 。 AMQP 是 .NET 库使用的默认协议。 建议你使用 AMQP 协议 (这是默认) ，而不是将其重写。 
+> 可以将高级消息队列协议 (AMQP) 或服务总线消息传送协议 (SBMP) 与用于服务总线的 .NET 库一起使用。 AMQP 是 .NET 库使用的默认协议。 我们建议你使用 AMQP 协议（默认协议），而不要替代它。 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>将 .NET 应用程序配置为使用 AMQP 1.0
 
@@ -46,11 +46,11 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法指示客户端库使用 AMQP 1.0 连接到服务总线。
 
 ### <a name="amqp-over-websockets"></a>基于 WebSockets 的 AMQP
-若要通过 Websocket 使用 AMQP，请 `TransportType` 在连接字符串中设置为 `AmqpWebSockets` 。 例如：`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
+若要通过 WebSocket 使用 AMQP，请在连接字符串中将 `TransportType` 设置为 `AmqpWebSockets`。 例如：`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
 
-如果使用的是 .NET ServiceBusConnection 库，请将 [TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
+如果使用的是 .NET Microsoft.Azure.ServiceBus 库，请将 [ServiceBusConnection.TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 设置为 [TransportType 枚举](/dotnet/api/microsoft.azure.servicebus.transporttype)的 AmqpWebSockets。
 
-如果使用的是 .NET ServiceBusClient 库，请将 [TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 设置为 [ServiceBusTransportType 枚举](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)的 AmqpWebSockets。
+如果使用的是 .NET Azure.Messaging.ServiceBus 库，请将 [ServiceBusClient.TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 设置为 [ServiceBusTransportType 枚举](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)的 AmqpWebSockets。
 
 
 ## <a name="message-serialization"></a>消息序列化

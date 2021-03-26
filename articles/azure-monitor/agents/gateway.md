@@ -1,21 +1,21 @@
 ---
-title: 使用 Log Analytics 网关连接计算机 |Microsoft Docs
+title: 使用 Log Analytics 网关连接计算机 | Microsoft Docs
 description: 使用 Log Analytics 网关连接设备和 Operations Manager 监视的计算机，以便在无法访问 Internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036565"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102509024"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 
 >[!NOTE]
->作为 Microsoft Operations Management Suite (OMS) 转换为 Microsoft Azure 监视器，术语正在改变。 本文将 OMS 网关称作 Azure Log Analytics 网关。 
+>由于 Microsoft Operations Management Suite (OMS) 正在过渡到 Microsoft Azure Monitor，因此术语即将发生变化。 本文将 OMS 网关称作 Azure Log Analytics 网关。 
 >
 
 本文介绍当直接连接的计算机或者受 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 Log Analytics 网关来配置与 Azure 自动化和 Azure Monitor 的通信。 
@@ -116,7 +116,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 或 
 
 1. 在工作区边栏选项卡中的“设置”下方，选择“高级设置”。
-1. 中转到 "**连接的源**" "  >  **Windows 服务器**"，选择 "**下载 Log Analytics 网关**"。
+1. 转到“连接的资源” > “Windows 服务器”，然后选择“下载 Log Analytics 网关”  。
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>使用安装向导安装 Log Analytics 网关
 
@@ -179,8 +179,8 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 安装完成后，可使用以下 PowerShell cmdlet 确认接受设置（不包括用户名和密码）：
 
-- **OMSGatewayConfig** –返回网关配置为侦听的 TCP 端口。
-- **OMSGatewayRelayProxy** –返回配置与之通信的代理服务器的 IP 地址。
+- **Get-OMSGatewayConfig** - 返回配置网关侦听的 TCP 端口。
+- **Get-OMSGatewayRelayProxy** - 返回配置为与网关通信的代理服务器的 IP 地址。
 
 ## <a name="configure-network-load-balancing"></a>配置网络负载均衡
 
@@ -205,7 +205,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 若要了解如何设计和部署 Azure 负载均衡器，请参阅[什么是 Azure 负载均衡器？](../../load-balancer/load-balancer-overview.md)。 若要部署基本负载均衡器，请遵循此[快速入门](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)中所述的步骤，但不要遵循“创建后端服务器”部分所述的步骤。   
 
 > [!NOTE]
-> 使用 **基本 SKU** 配置 Azure 负载均衡器需要 Azure 虚拟机属于某个可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../virtual-machines/manage-availability.md)。 若要将现有的虚拟机添加到可用性集，请参阅[设置 Azure 资源管理器 VM 可用性集](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
+> 使用 **基本 SKU** 配置 Azure 负载均衡器需要 Azure 虚拟机属于某个可用性集。 若要详细了解可用性集，请参阅[在 Azure 中管理 Windows 虚拟机的可用性](../../virtual-machines/availability.md)。 若要将现有的虚拟机添加到可用性集，请参阅[设置 Azure 资源管理器 VM 可用性集](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)。
 > 
 
 创建负载均衡器后，需要创建一个后端池，以便将流量分发到一个或多个网关服务器。 请遵循该快速入门文章的[为负载均衡器创建资源](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)部分所述的步骤。  
@@ -361,7 +361,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 | 103 |已从客户端收到 HTTP CONNECT 命令。 |
 | 104 |不是 HTTP CONNECT 命令。 |
 | 105 |目标服务器不在允许列表中，或者目标端口不是安全端口 (443)。 <br> <br> 请确保 OMS 网关服务器上的 MMA 代理以及与 OMS 网关通信的代理已连接到同一个 Log Analytics 工作区。 |
-| 105 |错误 TcpConnection –客户端证书无效： CN = Gateway。 <br><br> 确保使用 OMS 网关版本 1.0.395.0 或更高版本。 另请确保 OMS 网关服务器上的 MMA 代理以及与 OMS 网关通信的代理已连接到同一个 Log Analytics 工作区。 |
+| 105 |ERROR TcpConnection - 客户端证书无效：CN=Gateway。 <br><br> 确保使用 OMS 网关版本 1.0.395.0 或更高版本。 另请确保 OMS 网关服务器上的 MMA 代理以及与 OMS 网关通信的代理已连接到同一个 Log Analytics 工作区。 |
 | 106 |不支持的 TLS/SSL 协议版本。<br><br> Log Analytics 网关仅支持 TLS 1.0、TLS 1.1 和 1.2。 它不支持 SSL。|
 | 107 |已验证 TLS 会话。 |
 

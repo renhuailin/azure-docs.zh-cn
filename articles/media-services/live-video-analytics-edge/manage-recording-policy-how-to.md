@@ -4,17 +4,17 @@ description: 本主题介绍如何管理录制策略。
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: ec72f28496c1392b9d95134c343e1892998a0c28
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99224983"
 ---
 # <a name="manage-recording-policy"></a>管理录制策略
 
 可以使用 IoT Edge 上的实时视频分析进行[连续视频录制](continuous-video-recording-concept.md)，持续数周或数月将视频录制到云中。 可以使用 Azure 存储中内置的[生命周期管理工具](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)来管理云存档的时间长度（天）。  
 
-媒体服务帐户已链接到 Azure 存储帐户，将视频录制到云中时，内容会写入媒体服务[资产](../latest/assets-concept.md)。 每个资产都映射到存储帐户中的一个容器。 生命周期管理使你可以为存储帐户定义 [策略](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy) ，你可以在其中指定如下 [规则](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules) 。
+媒体服务帐户已链接到 Azure 存储帐户，将视频录制到云中时，内容会写入媒体服务[资产](../latest/assets-concept.md)。 每个资产都映射到存储帐户中的一个容器。 生命周期管理允许你为存储帐户定义[策略](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy)，你可以在其中指定[规则](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules)，如下所示。
 
 ```
 {
@@ -45,7 +45,7 @@ ms.locfileid: "99224983"
 * 指定当 blob 期限超过 30 天时，它们将从[热访问层移动到冷访问层](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
 * 如果 blob 期限超过 90 天，则将其删除。
 
-使用实时视频分析记录到资产时，指定一个 `segmentLength` 属性，该属性指示模块在将视频 (的最短持续时间（以秒为单位）聚合到云之前) 。 你的资产将包含一系列段，其中每个段的创建时间戳 `segmentLength` 比上一个更新。 当生命周期管理策略开始时，它会删除早于指定阈值的段。 但是，你将继续能够通过媒体服务 Api 访问和播放其余段。 有关详细信息，请参阅 [播放录制](playback-recordings-how-to.md)。 
+使用实时视频分析来记录到资产时，请指定 `segmentLength` 属性，该属性指示模块在将视频写入云之前聚合视频的最小持续时间（以秒为单位）。 你的资产将包含一系列片段，每个片段的创建时间戳都在上一个之后 `segmentLength`。 生命周期管理策略启动后，它会删除早于指定阈值的段。 但你可以继续通过媒体服务 API 访问和播放剩余的片段。 有关详细信息，请参阅[播放录制内容](playback-recordings-how-to.md)。 
 
 ## <a name="limitations"></a>限制
 

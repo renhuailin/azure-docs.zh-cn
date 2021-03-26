@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: e78c4a2f30cac1d6c503da6d1d2fdbc1105065e0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492499"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>快速入门：使用 Azure 门户诊断虚拟机网络流量筛选器问题
@@ -32,7 +32,7 @@ ms.locfileid: "96492499"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在 https://portal.azure.com 登录 Azure 门户。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -46,12 +46,12 @@ ms.locfileid: "96492499"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符，且符合定义的复杂性要求。|
     |订阅| 选择订阅。|
-    |资源组| 选择“新建”，并输入 myResourceGroup |
+    |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
-4. 选择 VM 的大小，然后选择“选择”。
+4. 选择 VM 的大小，然后选择“选择”  。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。 
-6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署  。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
+6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
 ## <a name="test-network-communication"></a>测试网络通信
 
@@ -80,7 +80,7 @@ ms.locfileid: "96492499"
     |---------          |---------                                                                                          |
     | 资源组    | 选择 myResourceGroup                                                                            |
     | 虚拟机   | 选择 myVm                                                                                       |
-    | 网络接口 | myvm - 你在创建 VM 时由门户创建的网络接口的名称是不同的。 |
+    | Linux | myvm - 你在创建 VM 时由门户创建的网络接口的名称是不同的。 |
     | 协议          | TCP                                                                                               |
     | 方向         | 出站                                                                                          |
     | 本地 IP 地址  | 10.0.0.4                                                                                          |
@@ -119,7 +119,7 @@ ms.locfileid: "96492499"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
-2. 选择“删除资源组”。
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤

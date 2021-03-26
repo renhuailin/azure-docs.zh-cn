@@ -9,10 +9,10 @@ ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c0cc93fee8aacc711a797925cb2e2808b73cafd1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93338823"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
@@ -32,7 +32,7 @@ ENDSWITH(<str_expr1>, <str_expr2> [, <bool_expr>])
    是一个字符串表达式。  
   
 *str_expr2*  
-   是要与 *str_expr1* 的结尾进行比较的字符串表达式。
+   要与 str_expr1 的结尾进行比较的字符串表达式。
 
 *bool_expr* 忽略大小写的可选值。 如果设置为 true，则 ENDSWITH 将执行不区分大小写的搜索。 如果未指定，则此值为 false。
   
