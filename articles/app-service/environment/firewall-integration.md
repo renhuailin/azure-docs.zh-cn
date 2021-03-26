@@ -8,10 +8,10 @@ ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594122"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
@@ -114,7 +114,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -122,7 +122,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
@@ -139,7 +139,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |graph.microsoft.com:443 |
 |login.live.com:443 |
@@ -287,7 +287,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -295,7 +295,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |

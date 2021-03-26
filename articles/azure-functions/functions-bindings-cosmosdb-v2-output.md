@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 779b66412319ec8422977a7e56570a4d16f89aa9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98071538"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>适用于 Azure Functions 2.x 及更高版本的 Azure Cosmos DB 输出绑定
@@ -470,7 +470,7 @@ JavaScript 代码如下所示：
     };
 ```
 
-对于大容量插入，请首先对对象进行窗体，然后运行 json.stringify 函数。 JavaScript 代码如下所示：
+对于批量插入，请先构建对象，然后运行 stringify 函数。 JavaScript 代码如下所示：
 
 ```javascript
     module.exports = function (context) {
@@ -495,7 +495,7 @@ JavaScript 代码如下所示：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-下面的示例演示如何使用输出绑定将数据写入 Cosmos DB。 绑定在函数的配置文件中声明 (functions.js) _上_ ，并从队列消息中提取数据并写出到 Cosmos DB 文档。
+下面的示例演示如何使用输出绑定将数据写入 Cosmos DB。 绑定在函数的配置文件 (functions.json) 中声明，并从队列消息中获取数据，然后写出到 Cosmos DB 文档中。
 
 ```json
 { 
@@ -509,7 +509,7 @@ JavaScript 代码如下所示：
 } 
 ```
 
-在 _run.ps1_ 文件中，从函数返回的对象映射到 `EmployeeDocument` 数据库中保留的对象。
+在 run.ps1 文件中，从函数返回的对象将映射到 `EmployeeDocument` 对象，该对象将持久保存在数据库中。
 
 ```powershell
 param($QueueItem, $TriggerMetadata) 
@@ -631,7 +631,7 @@ Python 不支持特性。
 |**partitionKey**|**PartitionKey** |当 `CreateIfNotExists` 为 true 时，将定义所创建集合的分区键路径。|
 |**collectionThroughput**|**CollectionThroughput**| 当 `CreateIfNotExists` 为 true 时，将定义所创建集合的[吞吐量](../cosmos-db/set-throughput.md)。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
-|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
+|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 For example, "East US,South Central US,North Europe". |
 |**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `PreferredLocations` 一起设置为 `true` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

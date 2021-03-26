@@ -13,10 +13,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./webjobs-create-ieux
 ms.openlocfilehash: 8afc8ca9b0dedb10ecdb30e8abb22a5d0986de5b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101723871"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
@@ -66,7 +66,7 @@ when making changes in one don't forget the other two.
 -->
 
 > [!IMPORTANT]
-> 如果你使用应用程序配置了源代码管理，则 Web 作业应作为源代码管理集成的一部分进行部署。 在应用程序中配置源代码管理后，将无法从 Azure 门户添加 WebJob。
+> If you have source control configured with your application, the Webjobs should be deployed as part of the source control integration. Once source control is configured with your application a WebJob cannot be add from the Azure Portal.
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到应用服务 Web 应用、API 应用或移动应用的“应用服务”页。
 
