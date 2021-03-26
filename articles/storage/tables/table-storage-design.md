@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 8f3bd2a998066804bfb589e3262ac5e68db601fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306946"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
@@ -37,7 +37,7 @@ ms.locfileid: "93306946"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -121,9 +121,9 @@ ms.locfileid: "93306946"
 </table>
 
 
-到目前为止，此数据看起来非常类似于关系数据库中的表，主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外， **FirstName** 或 **Age** 等用户定义的每个属性还具有数据类型（如 integer 或 string），就像关系数据库中的列一样。 虽然与关系数据库中不同，表服务的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 若要深入了解表服务（例如支持的数据类型、支持的日期范围、命名规则和大小限制），请参阅 [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）。
+到目前为止，此数据看起来非常类似于关系数据库中的表，主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外，**FirstName** 或 **Age** 等用户定义的每个属性还具有数据类型（如 integer 或 string），就像关系数据库中的列一样。 虽然与关系数据库中不同，表服务的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 若要深入了解表服务（例如支持的数据类型、支持的日期范围、命名规则和大小限制），请参阅 [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）。
 
-对 **PartitionKey** 和 **RowKey** 的选择是实现良好的表设计的基础。 表中存储的每个实体都必须具有唯一的 **PartitionKey** 和 **RowKey** 。 与关系数据库表中的键一样，将为 **PartitionKey** 和 **RowKey** 值编制索引来创建聚集索引以便快速地进行查找。 但是，表服务不创建任何辅助索引，因此， **PartitionKey** 和 **RowKey** 是唯一具有索引的属性。 [表设计模式](table-storage-design-patterns.md)中介绍的一些模式展示了可以如何解决此明显的限制。  
+对 **PartitionKey** 和 **RowKey** 的选择是实现良好的表设计的基础。 表中存储的每个实体都必须具有唯一的 **PartitionKey** 和 **RowKey**。 与关系数据库表中的键一样，将为 **PartitionKey** 和 **RowKey** 值编制索引来创建聚集索引以便快速地进行查找。 但是，表服务不创建任何辅助索引，因此，**PartitionKey** 和 **RowKey** 是唯一具有索引的属性。 [表设计模式](table-storage-design-patterns.md)中介绍的一些模式展示了可以如何解决此明显的限制。  
 
 一个表包含一个或多个分区，为优化解决方案，所做的很多设计决策都将围绕选取合适的 **PartitionKey** 和 **RowKey** 而展开。 一个解决方案可以仅包含单个表，该表包含组织为分区的所有实体，但通常一个解决方案具有多个表。 表可帮助你在逻辑上组织实体，帮助你使用访问控制列表管理对数据的访问，并且可以使用单个存储操作删除整个表。  
 

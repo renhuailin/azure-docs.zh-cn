@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 403d04039deef7890bdd5dba1ef337a4b26e86ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671658"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>教程：Azure Active Directory 与 Bambu by Sprout Social 集成
@@ -41,8 +41,8 @@ ms.locfileid: "97671658"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Bambu by Sprout Social 支持 IDP 发起的 SSO 
-* Bambu by Sprout Social 支持即时用户预配 
+* Bambu by Sprout Social 支持 IDP 发起的 SSO
+* Bambu by Sprout Social 支持即时用户预配
 
 ## <a name="adding-bambu-by-sprout-social-from-the-gallery"></a>从库中添加 Bambu by Sprout Social
 
@@ -62,13 +62,13 @@ ms.locfileid: "97671658"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Bambu by Sprout Social”，从结果面板中选择“Bambu by Sprout Social”，然后单击“添加”按钮以添加该应用程序    。
+4. 在搜索框中键入“Bambu by Sprout Social”，从结果面板中选择“Bambu by Sprout Social”，然后单击“添加”按钮以添加该应用程序。
 
     ![结果列表中的 Bambu by Sprout Social](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分介绍了使用名为“Britta Simon”的测试用户配置和测试 Bambu by Sprout Social 与 Azure AD 的单一登录  。
+本部分介绍了使用名为“Britta Simon”的测试用户配置和测试 Bambu by Sprout Social 与 Azure AD 的单一登录。
 要使单一登录生效，需要在 Azure AD 用户与 Bambu by Sprout Social 中的相关用户之间建立链接关系。
 
 若要配置和测试 Bambu by Sprout Social 与 Azure AD 的单一登录，需要完成以下构建基块：
@@ -86,7 +86,7 @@ ms.locfileid: "97671658"
 
 若要配置 Bambu by Sprout Social 与 Azure AD 的单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Bambu by Sprout Social 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Bambu by Sprout Social 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "97671658"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Bambu by Sprout Social”部分，根据要求复制相应的 URL  。
+6. 在“设置 Bambu by Sprout Social”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "97671658"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -143,17 +143,17 @@ ms.locfileid: "97671658"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 本部分中将授予 Britta Simon 访问 Bambu by Sprout Social 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Bambu by Sprout Social”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Bambu by Sprout Social”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中选择“Bambu by Sprout Social”  。
+2. 在应用程序列表中选择“Bambu by Sprout Social”。
 
     ![应用程序列表中的 Bambu by Sprout Social 链接](common/all-applications.png)
 

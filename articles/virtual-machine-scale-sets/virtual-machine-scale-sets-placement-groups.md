@@ -10,21 +10,21 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747825"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
-用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](./index.yml)。 在本文档中， _大型虚拟机规模集_ 定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 ( _singlePlacementGroup=False_ ) 设置。 
+用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](./index.yml)。 在本文档中，_大型虚拟机规模集_ 定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
 
 大型规模集在某些方面（例如负载均衡和容错域）的表现不同于标准规模集。 本文档介绍了大型规模集的特征，说明了在应用程序中成功使用大型规模集需要了解的事项。 
 
-部署大型的云基础结构的常用方法是创建一组 _缩放单元_ ，例如跨多个 VNET 和存储帐户创建多个 VM 规模集。 此方法和单个 VM 相比可以提供更简单的管理，并且多个缩放单元对于许多应用程序很有益处，尤其是那些需要其他堆叠组件（如多个虚拟网络和终结点）的应用程序。 不过，如果应用程序需要单个大型群集，则部署高达 1,000 台 VM 的单个规模集可能更直接。 示例方案包括：集中式大数据部署、需要对大型工作节点池进行简单管理的计算网格。 用户可以将大型规模集与虚拟机规模集[附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)结合使用，通过单次操作部署包含数千 vCPU 和千万亿字节存储的可缩放基础结构。
+部署大型的云基础结构的常用方法是创建一组 _缩放单元_，例如跨多个 VNET 和存储帐户创建多个 VM 规模集。 此方法和单个 VM 相比可以提供更简单的管理，并且多个缩放单元对于许多应用程序很有益处，尤其是那些需要其他堆叠组件（如多个虚拟网络和终结点）的应用程序。 不过，如果应用程序需要单个大型群集，则部署高达 1,000 台 VM 的单个规模集可能更直接。 示例方案包括：集中式大数据部署、需要对大型工作节点池进行简单管理的计算网格。 用户可以将大型规模集与虚拟机规模集[附加数据磁盘](virtual-machine-scale-sets-attached-disks.md)结合使用，通过单次操作部署包含数千 vCPU 和千万亿字节存储的可缩放基础结构。
 
 ## <a name="placement-groups"></a>放置组 
-_大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含的 _放置组_ 数。 放置组是类似于 Azure 可用性集的构造，具有自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将名为 _singlePlacementGroup_ 的规模集属性设置为 _false_ ，则该规模集可以由多个放置组组成，其范围为 0-1,000 台 VM。 设置为默认值 _true_ 时，规模集由单个放置组组成，其范围为 0-100 台 VM。
+_大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含的 _放置组_ 数。 放置组是类似于 Azure 可用性集的构造，具有自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将名为 _singlePlacementGroup_ 的规模集属性设置为 _false_，则该规模集可以由多个放置组组成，其范围为 0-1,000 台 VM。 设置为默认值 _true_ 时，规模集由单个放置组组成，其范围为 0-100 台 VM。
 
 ## <a name="checklist-for-using-large-scale-sets"></a>使用大型规模集时的核对清单
 若要确定应用程序能否有效使用大型规模集，请考虑以下要求：
@@ -58,7 +58,7 @@ _vmss create_ 命令会对某些配置值进行默认设置（如果用户未指
 az vmss create --help
 ```
 
-若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_ 。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
 
 ```json
 {
@@ -80,7 +80,7 @@ az vmss create --help
 有关大型规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json)。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>将现有的规模集转换为跨多个放置组
-要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_ 。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
+要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
 
 > [!NOTE]
 > 可以将规模集从仅支持单个放置组（默认行为）更改为支持多个放置组，但不能反过来进行转换。 因此，请确保在进行转换之前了解大型规模集的属性。

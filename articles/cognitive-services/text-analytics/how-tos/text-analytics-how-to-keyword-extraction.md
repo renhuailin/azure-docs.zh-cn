@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
 ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97654772"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语
@@ -27,7 +27,7 @@ ms.locfileid: "97654772"
 
 > [!TIP]
 > * 文本分析还提供一个基于 Linux 的 Docker 容器映像，用于提取关键短语，因此可以在靠近数据的位置[安装并运行文本分析容器](text-analytics-how-to-install-containers.md)。
-> * 你还可以使用端点 [异步](text-analytics-how-to-call-api.md) 使用此功能 `/analyze` 。
+> * 你也可以使用 `/analyze` 终结点来[异步](text-analytics-how-to-call-api.md)使用此功能。
 
 ## <a name="preparation"></a>准备工作
 
@@ -37,9 +37,9 @@ ms.locfileid: "97654772"
 
 每个文档的大小必须为 5,120 个或更少的字符，每个集合最多可包含 1,000 个项目 (ID)。 集合在请求正文中提交。 以下示例例举了可能提交以进行关键短语提取的内容。 
 
-有关请求和响应对象的详细信息，请参阅 [如何调用文本分析 API](text-analytics-how-to-call-api.md) 。  
+若要详细了解请求和响应对象，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。  
 
-### <a name="example-synchronous-request-object"></a>示例同步请求对象
+### <a name="example-synchronous-request-object"></a>同步请求对象示例
 
 
 ```json
@@ -74,9 +74,9 @@ ms.locfileid: "97654772"
     }
 ```
 
-### <a name="example-asynchronous-request-object"></a>示例异步请求对象
+### <a name="example-asynchronous-request-object"></a>异步请求对象示例
 
-从开始 `v3.1-preview.3` ，你可以使用终结点异步发送 NER 请求 `/analyze` 。
+从 `v3.1-preview.3` 开始，可以使用 `/analyze` 终结点来异步发送 NER 请求。
 
 
 ```json
@@ -110,7 +110,7 @@ ms.locfileid: "97654772"
 
 + 创建 POST 请求  。 查看此请求的 API 文档：[关键短语 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases)。
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 如果你以同步方式使用 API，则必须 `/text/analytics/v3.0/keyPhrases` 在 URL 中包含。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`。
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便提取关键短语。 如果要以同步方式使用该 API，则必须在 URL 中包括 `/text/analytics/v3.0/keyPhrases`。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`。
 
 + 设置请求头以包含文本分析操作的[访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "97654772"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 有关每分钟或每秒可以发送的请求的大小和数量的信息，请参阅概述中的 " [数据限制](../overview.md#data-limits) " 部分。
+在收到请求时执行分析。 若要了解每分钟或每秒可以发送的请求的大小和数量，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
@@ -197,7 +197,7 @@ ms.locfileid: "97654772"
 
 ### <a name="asynchronous-result"></a>异步结果
 
-如果将 `/analyze` 终结点用于异步操作，将收到一个包含发送到 API 的任务的响应。
+如果将 `/analyze` 终结点用于异步操作，你将会收到一个响应，其中包含你发送到 API 的任务。
 
 ```json
 {
@@ -256,7 +256,7 @@ ms.locfileid: "97654772"
 
 + [关键短语提取 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 适用于所选语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。
-+ POST 请求发送到 `/keyphrases` 或 `/analyze` 终结点，使用个性化 [访问密钥和](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) 对订阅有效的终结点。
++ POST 请求的目标是 `/keyphrases` 或 `/analyze` 终结点，使用了对订阅有效的个性化[访问密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 + 响应输出包含每个文档 ID 的关键单词和短语，可以流式传输到接受 JSON 的任何应用，包括 Microsoft Office Excel 和 Power BI（仅举几例）。
 
 ## <a name="see-also"></a>另请参阅

@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault 软删除 |Microsoft Docs
+title: Azure Key Vault 软删除 | Microsoft Docs
 description: 使用 Azure Key Vault 软删除可恢复已删除的密钥保管库和密钥保管库对象，例如密钥、机密和证书。
 ms.service: key-vault
 ms.subservice: general
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 331a7b1bef3621a080fe2fa891cf83565a1e55ac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702566"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452129"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "101702566"
 > 必须立即对密钥保管库启用软删除。 即将弃用选择退出软删除的功能。 请参阅[此处](soft-delete-change.md)的完整详细信息。
 
 > [!IMPORTANT]
-> 软删除的保管库触发删除与 Key Vault 服务集成的设置，即 Azure RBAC 角色分配、事件网格订阅、Azure Monitor 诊断设置。 恢复已软删除的集成服务 Key Vault 设置后，需要手动重新创建。 
+> 软删除的保管库会触发删除与 Key Vault 集成的服务的设置，也就是 Azure RBAC 角色分配、事件网格订阅和 Azure Monitor 诊断设置。 恢复软删除的 Key Vault 后，需要手动重新创建这些集成服务的设置。 
 
 Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的密钥保管库对象（例如，密钥、机密、证书），因而被称为软删除。 本文将具体探讨以下方案：这项保护措施提供以下保护：
 
@@ -30,7 +30,7 @@ Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的�
 
 ## <a name="supporting-interfaces"></a>支持接口
 
-软删除功能是通过 [REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md) 和 [.NET/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet&preserve-view=true) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供的。
+软删除功能是通过 [REST API](/rest/api/keyvault/)、[Azure CLI](./key-vault-recovery.md)、[Azure PowerShell](./key-vault-recovery.md) 和 [.NET/C#](/dotnet/api/microsoft.azure.keyvault) 接口以及 [ARM 模板](/azure/templates/microsoft.keyvault/2019-09-01/vaults)提供的。
 
 ## <a name="scenarios"></a>方案
 
@@ -102,6 +102,6 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 以下两个指南提供有关使用软删除的主要使用方案。
 
-- [如何在门户中使用 Key Vault 软删除](./key-vault-recovery.md?tabs=azure-portal)
+- [如何将 Key Vault 软删除与门户配合使用](./key-vault-recovery.md?tabs=azure-portal)
 - [如何将 Key Vault 软删除与 PowerShell 配合使用](./key-vault-recovery.md) 
 - [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)

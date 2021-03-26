@@ -12,8 +12,15 @@
   href: data-residency.md
 - name: 远程渲染示例存储库 (GitHub)
   href: 'https://github.com/Azure/azure-remote-rendering'
-- name: Azure 混合现实资源管理 REST API
-  href: /rest/api/mixedreality/
+- name: REST API
+  expanded: true
+  items:
+    - name: Azure 混合现实资源管理 REST API
+      href: /rest/api/mixedreality/
+    - name: 远程渲染 REST API 参考
+      href: /rest/api/mixedreality/2021-01-01/remoterendering
+    - name: 远程渲染 swagger 定义
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality'
 - name: C# API 文档
   href: /dotnet/api/Microsoft.Azure.RemoteRendering
 - name: C++ API 文档

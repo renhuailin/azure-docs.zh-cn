@@ -1,34 +1,35 @@
 ---
 title: Azure 磁盘加密示例脚本
-description: 本文是 Microsoft Azure 适用于 Linux Vm 的磁盘加密的附录。
+description: 本文是适用于 Linux VM 的 Microsoft Azure 磁盘加密的附录。
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.openlocfilehash: f11677d9ebc31f1c1f7cc6332b07b69f8e35ad52
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911488"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561171"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密示例脚本
 
 本文提供了用于准备预加密 VHD 和其他任务的示例脚本。  
 
 > [!NOTE]
-> 除注明的情况外，所有脚本都引用 ADE 的最新非 AAD 版本。
+> 除非另有说明，否则所有脚本均引用最新的非 AAD 版本的 ADE。
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁盘加密的示例 PowerShell 脚本 
 
 - **列出订阅中所有已加密的 VM**
   
-  使用 [此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)，可在订阅中存在的所有资源组中查找所有 ADE 加密的 vm 和扩展版本。
+  可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VM 和扩展版本。
 
-  此外，这些 cmdlet 会显示 (的所有 ADE 加密的 Vm，但不) 扩展版本：
+  另外，这些 cmdlet 将显示所有 ADE 加密的 VM（但不显示扩展版本）：
 
    ```azurepowershell-interactive
    $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
@@ -36,9 +37,9 @@ ms.locfileid: "92911488"
    Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
    ```
 
-- **列出订阅中的所有加密 VMSS 实例**
+- **列出订阅中所有已加密的 VMSS 实例**
     
-    使用 [此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)，可在订阅中存在的所有资源组中查找所有 ADE 加密的 VMSS 实例和扩展版本。
+    可以使用[此 PowerShell 脚本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)在订阅中存在的所有资源组中找到所有 ADE 加密的 VMSS 实例和扩展版本。
 
 - **列出 Key Vault 中用于加密 VM 的所有磁盘加密机密** 
 
@@ -240,7 +241,7 @@ ms.locfileid: "92911488"
    ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
    ```
-5. 通过追加行编辑 */etc/initramfs-tools/modules* ：
+5. 通过追加行编辑 */etc/initramfs-tools/modules*：
    ```
     vfat
     ntfs

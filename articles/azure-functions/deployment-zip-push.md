@@ -4,10 +4,10 @@ description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018409"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
@@ -52,7 +52,7 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
      所下载的 .zip 文件格式正确，可使用 .zip 推送部署将其重新发布到函数应用。 门户下载还可以添加在 Visual Studio 中直接打开函数应用所需的文件。
 
-+ **使用 REST Api：**
++ **使用 REST API：**
 
     使用以下部署 GET API 从 `<function_app>` 项目中下载文件： 
 

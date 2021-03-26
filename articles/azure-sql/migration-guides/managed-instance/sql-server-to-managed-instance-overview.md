@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690407"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561987"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>迁移概述：将 SQL Server 到 SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,9 @@ ms.locfileid: "101690407"
 可在部署期间选择计算和存储资源，然后在使用 [Azure 门户](../../database/scale-resources.md)之后对其进行更改，而不会导致应用程序停机。 
 
 > [!IMPORTANT]
-> 任何不符合[托管实例虚拟网络要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)的情况都可能导致无法创建新实例或使用现有实例。 详细了解如何 [创建新的](../../managed-instance/virtual-network-subnet-create-arm-template.md) 和  [配置现有的](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) 网络。 
+> 任何不符合[托管实例虚拟网络要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)的情况都可能导致无法创建新实例或使用现有实例。 详细了解如何 [创建新的](../../managed-instance/virtual-network-subnet-create-arm-template.md) 和  [配置现有的](../../managed-instance/vnet-existing-add-subnet.md) 网络。 
+
+在 Azure SQL 托管实例中选择目标服务层（常规用途与业务关键）的另一项主要考虑因素是某些功能的可用性，例如仅在业务关键层可用的内存中 OLTP。 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM 替代项
 
@@ -86,11 +88,12 @@ ms.locfileid: "101690407"
 
 下表列出了推荐的迁移工具： 
 
-|技术 | 说明|
+|技术 | 描述|
 |---------|---------|
+| [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) | 通过 Azure Migrate for Azure SQL，可以在 VMware 上大规模发现和评估 SQL 数据资产，并获得 Azure SQL 部署建议、目标大小和每月估算。 | 
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | 支持在脱机模式下迁移的第一方 Azure 服务，适合能够在迁移过程中适应停机的应用程序。 与联机模式下的连续迁移不同，脱机模式下的迁移将一次性完成从源到目标的完整数据库备份的还原。 | 
 |[本地备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 托管实例支持本机 SQL Server 数据库备份（.bak 文件）的还原 (RESTORE)，对于能够提供到 Azure 存储的完整数据库备份的客户而言，它是最简单的迁移选项。 还支持完整备份和差异备份，本文后面的[迁移资产部分](#migration-assets)中进行了介绍。| 
-|[日志重播服务 (LRS) ](../../managed-instance/log-replay-service-migrate.md) | 这是一项基于 SQL Server 日志传送技术为托管实例启用的云服务，它为可以向 Azure 存储提供完整、差异和日志数据库备份的客户提供迁移选项。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。| 
+|[日志重播服务 (LRS)](../../managed-instance/log-replay-service-migrate.md) | 这是一项基于 SQL Server 日志传送技术为托管实例启用的云服务，它是适用于可向 Azure 存储提供完整、差异和日志数据库备份的客户的迁移选项。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。| 
 | | |
 
 ### <a name="alternative-tools"></a>替代工具
@@ -117,7 +120,7 @@ ms.locfileid: "101690407"
 |---------|---------|---------|
 |[Azure 数据库迁移服务 (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机时间。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可以通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) 自动进行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | - 迁移单个业务线应用程序数据库。  </br> - 无需单独的迁移服务或工具即可快速轻松地进行迁移。  </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 数据库备份使用多个线程来优化指向 Azure Blob 存储的数据传输，但是 ISV 带宽和数据库大小会影响传输速率。 </br> - 停机时间应包含执行完整备份和还原所需的时间（这是数据操作的大小）。| 
-|[日志重播服务 (LRS) ](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> -需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> -SQL Server (2008-2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | -迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> -在迁移过程中要还原的数据库将处于还原模式，并且在完成该过程之前，无法用于读取或写入。| 
+|[日志重播服务 (LRS)](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> - 需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> - SQL Server (2008 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 LRS 用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> - 在迁移过程中还原的数据库将处于还原模式，并且在该过程完成之前不能用于读取或写入。| 
 | | | |
 
 ### <a name="alternative-options"></a>替代选项
@@ -149,7 +152,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 #### <a name="sql-server-analysis-services"></a>SQL Server Analysis Services
 
-可以将 SQL Server 2012 及更高版本中的 SQL Server Analysis Services 表格模型迁移到 Azure Analysis Services，这是 Azure 中 Analysis Services 表格模型的 PaaS 部署模型。 可以在本 [视频教程](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/)中了解有关将本地模型迁移到 Azure Analysis Services 的详细信息。
+可以将 SQL Server 2012 及更高版本中的 SQL Server Analysis Services 表格模型迁移到 Azure Analysis Services，这是 Azure 中 Analysis Services 表格模型的 PaaS 部署模型。 可以在此[视频教程](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/)中了解有关将本地模型迁移到 Azure Analysis Services 的详细信息。
 
 另外，还可以考虑[使用新的 XMLA 读/写终结点将本地 Analysis Services 表格模型迁移到 Power BI Premium](/power-bi/admin/service-premium-connect-tools)。 
 > [!NOTE]
@@ -174,7 +177,7 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 默认情况下，Azure 数据库迁移服务仅支持迁移 SQL 登录名。 但是，可通过以下方式启用迁移 Windows 登录名的功能：
 
-确保目标 SQL 托管实例具有 Azure AD 读取访问权限，该访问权限可通过具有 **全局管理员** 角色的用户 Azure 门户进行配置。
+确保目标 SQL 托管实例具有 Azure AD 读取访问权限，该权限可由具有“全局管理员”角色的用户通过 Azure 门户进行配置。
 配置 Azure 数据库迁移服务实例以启用 Windows 用户/组登录名迁移，这通过 Azure 门户在“配置”页上进行设置。 启用此设置后，重启服务以使更改生效。
 
 重启服务后，Windows 用户/组登录名将出现在可用于迁移的登录名列表中。 对于迁移的所有 Windows 用户/组登录名，系统都会提示提供关联的域名。 不支持服务用户帐户（域名为 NT AUTHORITY 的帐户）和虚拟用户帐户（域名为 NT SERVICE 的帐户）。
@@ -191,13 +194,33 @@ SQL Server Reporting Services (SSRS) 报表可迁移到 Power BI 中的分页报
 
 不支持还原系统数据库。 若要迁移实例级对象（存储在 master 或 msdb 数据库中），请使用 Transact-SQL (T-SQL) 对它们进行脚本编写，然后在目标托管实例上重新创建它们。 
 
+#### <a name="in-memory-oltp-memory-optimized-tables"></a>内存中 OLTP（内存优化表）
+
+SQL Server 提供内存中 OLTP 功能，允许使用内存优化表、内存优化表类型和本地编译的 SQL 模块来运行具有高吞吐量和低延迟事务处理要求的工作负载。 
+
+> [!IMPORTANT]
+> 内存中 OLTP 仅在 Azure SQL 托管实例中的业务关键层中受支持（在常规用途层中不受支持）。
+
+如果本地 SQL Server 中存在内存优化表或内存优化表类型，并且你想要迁移到 Azure SQL 托管实例，则你应该：
+
+- 为支持内存中 OLTP 的目标 Azure SQL 托管实例选择业务关键层，或
+- 如果你想迁移到 Azure SQL 托管实例中的常规用途层，请删除内存优化表、内存优化表类型和本地编译的 SQL 模块，它们在迁移数据库之前与内存优化对象交互。 以下 T-SQL 查询可用于识别迁移到常规用途层之前需要删除的所有对象：
+
+```tsql
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
+
+若要详细了解内存中技术，请参阅[通过使用 Azure SQL 数据库和 Azure SQL 托管实例的内存中技术来优化性能](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)
+
 ## <a name="leverage-advanced-features"></a>利用高级功能 
 
 请确保利用 SQL 托管实例提供的基于云的高级功能。 例如，你不用再操心备份管理，服务会为你管理。 可将数据库还原到某个[保留期内的时间点](../../database/recovery-using-backups.md#point-in-time-restore)。 此外，无需考虑设置高可用性，因为系统中内置了 [高可用性](../../database/high-availability-sla.md)。 
 
 若要增强安全性，请考虑使用  [Azure Active Directory 身份验证](../../database/authentication-aad-overview.md)、[审核](../../managed-instance/auditing-configure.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [行级别安全性](/sql/relational-databases/security/row-level-security)和 [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)。
 
-除了高级管理和安全功能以外，SQL 托管实例还提供一组高级工具来帮助你[监视和优化工作负载](../../database/monitor-tune-overview.md)。 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md)允许以集中式方式监视大量托管实例。 [自动优化](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)  在托管实例中，会持续监视 SQL 计划执行统计信息的性能，并自动修复已识别的性能问题。 
+除了高级管理和安全功能以外，SQL 托管实例还提供一组高级工具来帮助你[监视和优化工作负载](../../database/monitor-tune-overview.md)。 借助 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md)，你可以集中监视大量托管实例。托管实例中的 [自动优化](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) 连续监视 SQL 计划执行统计信息的性能，并自动修复已识别的性能问题。 
 
 只有将[数据库兼容性级别](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)更新到最新的兼容性级别 (150) 后，某些功能才可用。 
 

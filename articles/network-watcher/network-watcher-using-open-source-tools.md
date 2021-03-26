@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 0503f6910186b42bf381c662c7942e37c28bfdf0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709506"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用开源工具将传入和传出 VM 的网络流量模式可视化
@@ -84,9 +84,9 @@ CapAnalysis 提供多种选项来可视化数据包捕获，每种选项从不�
 
     ![筛选器][11]
 
-    请访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 以了解有关所有 CapAnalysis 功能的详细信息。
+    访问 [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) 可了解有关 CapAnalysis 所有功能的更多信息。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 使用网络观察程序的数据包捕获功能可以捕获所需的数据来执行网络取证，以及更好地了解网络流量。 本方案说明了如何轻松将网络观察程序中的数据包捕获与开源可视化工具相集成。 使用 CapAnalysis 等开源工具将数据包捕获可视化，可以执行深度数据包检查，快速识别网络流量中的趋势。
 

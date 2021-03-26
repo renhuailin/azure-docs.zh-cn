@@ -15,10 +15,10 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: e4021f0ca2c1c9ca9434744a4aebb4b7938315f0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584224"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
@@ -43,9 +43,9 @@ ms.locfileid: "99584224"
 
 ### <a name="app-types-impacted"></a>受影响的应用类型
 
-通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 仅在某些情况下，如果应用间接或无提示地请求服务的令牌，应用就需要更改代码来处理条件性访问质询。  此过程可能与执行交互式登录请求一样简单。
+通常，在多数情况下，条件访问不会更改应用的行为或要求开发人员进行任何更改。 只有在特定情况下（应用以间接方式或无提示的方式请求服务令牌时），应用才需要进行代码更改以处理条件访问质询。  此过程可能与执行交互式登录请求一样简单。
 
-具体而言，以下方案需要代码来处理条件性访问挑战：
+具体来说，在以下应用场景下需要代码来处理条件访问质询：
 
 * 执行代理流的应用
 * 访问多个服务/资源的应用
@@ -54,7 +54,7 @@ ms.locfileid: "99584224"
 
 条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要详细了解如何配置条件访问策略，请参阅[快速入门：使用 Azure Active Directory 条件访问要求针对特定应用进行 MFA](../authentication/tutorial-enable-azure-mfa.md)。
 
-根据具体的情况，企业客户随时可以应用和删除条件访问策略。 若要使应用在应用新策略时继续运行，请执行质询处理。 以下示例演示了质询处理的过程。
+根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，为了让应用继续正常工作，需执行质询处理。 以下示例演示了质询处理的过程。
 
 ### <a name="conditional-access-examples"></a>条件访问示例
 
@@ -182,6 +182,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 * 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](../conditional-access/overview.md)。
 * 有关更多的 Azure AD 代码示例，请参阅[示例](sample-v2-code.md)。
-* 有关 MSAL SDK 和访问参考文档的详细信息，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
+* 如需 MSAL SDK 的详细信息并访问参考文档，请参阅 [Microsoft 身份验证库概述](msal-overview.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](howto-convert-app-to-be-multi-tenant.md)。
 * 详细了解[条件访问以及如何保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)。

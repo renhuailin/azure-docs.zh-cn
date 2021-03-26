@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790145"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
@@ -64,36 +64,36 @@ ms.locfileid: "92790145"
 
 ### <a name="set-up-your-linux-vm"></a>设置 Linux VM
 
-1. 在“基本信息”选项卡中，选择自己的 **订阅** 和 **资源组** 。 
+1. 在“基本信息”选项卡中，选择自己的 **订阅** 和 **资源组**。 
 
     ![“基本信息”窗口](./media/sql-vm-create-portal-quickstart/basics.png)
 
 1. 在“虚拟机名称”中，输入新 Linux VM 的名称。
 1. 然后键入或选择以下值：
-   * **区域** ：选择合适的 Azure 区域。
-   * **可用性选项** ：选择最适合应用和数据的可用性与冗余选项。
-   * **更改大小** ：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [VM 大小](../../../virtual-machines/sizes.md)。
+   * **区域**：选择合适的 Azure 区域。
+   * **可用性选项**：选择最适合应用和数据的可用性与冗余选项。
+   * **更改大小**：选择此选项以选择计算机大小，完成后，选择“选择”。 有关 VM 计算机大小的详细信息，请参阅 [VM 大小](../../../virtual-machines/sizes.md)。
 
      ![选择 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
    > [!TIP]
    > 对于开发和功能测试，请使用 **DS2** 或更大的 VM 大小。 若要进行性能测试，则至少使用“DS13”。
 
-   * **身份验证类型** ：选择“SSH 公钥”。
+   * **身份验证类型**：选择“SSH 公钥”。
 
      > [!Note]
      > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](../../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
-   * **用户名** ：输入 VM 的管理员名称。
-   * **SSH 公钥** ：输入 RSA 公钥。
-   * **公共入站端口** ：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。   在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 进行连接的 Microsoft SQL Server 使用的默认端口 (1433) 的流量。
+   * **用户名**：输入 VM 的管理员名称。
+   * **SSH 公钥**：输入 RSA 公钥。
+   * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”端口。   在本快速入门中，必须执行此步骤才能建立连接并完成 SQL Server 配置。 如果要远程连接到 SQL Server，则需要在创建虚拟机后，手动允许通过 Internet 进行连接的 Microsoft SQL Server 使用的默认端口 (1433) 的流量。
 
      ![入站端口](./media/sql-vm-create-portal-quickstart/port-settings.png)
 
 1. 在后面的其他选项卡中对设置进行任何所需的更改，或保留默认设置。
     * **磁盘**
     * **联网**
-    * **Management**
+    * **管理**
     * **来宾配置**
     * **标记**
 
@@ -142,7 +142,7 @@ ssh azureadmin@40.55.55.555
 
    出现提示时，输入新的 SA 密码和密码确认。
 
-1. 重启 SQL Server 服务。
+1. 重新启动 SQL Server 服务。
 
    ```bash
    sudo systemctl start mssql-server

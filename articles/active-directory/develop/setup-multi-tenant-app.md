@@ -13,10 +13,10 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9c6272901600886958d4339d067ca75bb9a73793
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101649115"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
@@ -29,4 +29,4 @@ ms.locfileid: "101649115"
 - 有关详细信息，请参阅[如何对多租户应用程序进行端到端配置和编码](./howto-convert-app-to-be-multi-tenant.md)，其中包括如何注册、使用“通用”终结点、实现“用户”和“管理员”同意、如何实现更多高级多层方案
 
 ## <a name="next-steps"></a>后续步骤
-[AzureAD Microsoft Q&](/answers/topics/azure-active-directory.html)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

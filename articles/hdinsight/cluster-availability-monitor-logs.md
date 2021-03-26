@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Monitor 日志监视群集的运行状况�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 3bc5c659d9871cb8f1d49d2a3bfde2ce03faea86
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 299a17e23ca3eb2d954bae7335571ae1f645152e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571903"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867145"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>如何在 HDInsight 中使用 Azure Monitor 日志监视群集可用性
 
@@ -25,7 +25,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 在门户上的 HDInsight 群集资源页中，选择“Azure Monitor”。 然后选择“启用”并从下拉列表中选择你的 Log Analytics 工作区。
 
-![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/azure-portal-monitoring.png" alt-text="HDInsight Operations Management Suite":::
 
 默认情况下，这会将 OMS 代理安装在除边缘节点外的所有群集节点上。 由于群集边缘节点上未安装 OMS 代理，因此默认情况下，Log Analytics 中没有关于边缘节点的遥测数据。
 
@@ -33,7 +33,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 启用 Azure Monitor 日志集成后（这可能需要几分钟时间），导航到“Log Analytics 工作区”资源并选择“日志”。 
 
-![Log Analytics 工作区日志](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdinsight-portal-logs.png" alt-text="Log Analytics 工作区日志":::
 
 日志列出了多个示例查询，例如：
 
@@ -47,7 +47,7 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 例如，选择该查询对应的“运行”以运行“可用率”示例查询，如以上屏幕截图中所示。  这会以百分比显示群集中每个节点的可用率。 如果启用了多个 HDInsight 群集以将指标发送到相同的 Log Analytics 工作区，则会显示这些群集中所有节点（不包括边缘节点）的可用率。
 
-![Log Analytics 工作区日志的“可用率”示例查询](media/cluster-availability-monitor-logs/portal-availability-rate.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-availability-rate.png" alt-text="Log Analytics 工作区日志的“可用率”示例查询":::
 
 > [!NOTE]  
 > 可用率是按 24 小时期限测量的，因此，群集至少需要运行 24 小时才能显示准确的可用率。
@@ -60,16 +60,16 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 在“日志”中，选择该查询对应的“运行”以运行“不可用的计算机”示例查询，如下所示。  
 
-![Log Analytics 工作区日志中的“不可用的计算机”示例](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-unavailable-computers.png" alt-text="Log Analytics 工作区日志中的“不可用的计算机”示例":::
 
 如果所有节点可用，此查询应返回零个结果。 单击“新建警报规则”开始为此查询配置警报。
 
-![Log Analytics 工作区 - 新建警报规则](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png" alt-text="Log Analytics 工作区 - 新建警报规则":::
 
 警报有三个组成部分：要为其创建规则的资源（在本例中为 Log Analytics 工作区）、触发该警报的条件，以及确定触发警报时发生的操作的操作组。  
 单击如下所示的 **条件标题** 完成信号逻辑配置。
 
-![门户警报 - 创建规则条件](media/cluster-availability-monitor-logs/portal-condition-title.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-condition-title.png" alt-text="门户警报 - 创建规则条件":::
 
 此时会打开“配置信号逻辑”。
 
@@ -85,11 +85,11 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 完成信号逻辑配置后，选择“完成”。
 
-![警报规则 - 配置信号逻辑](media/cluster-availability-monitor-logs/portal-configure-signal-logic.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-configure-signal-logic.png" alt-text="警报规则 - 配置信号逻辑":::
 
 如果没有现有的操作组，请单击“操作组”部分下的“新建”。 
 
-![警报规则 - 创建新的操作组](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-new-action-group.png" alt-text="警报规则 - 创建新的操作组":::
 
 此时会打开“添加操作组”。 选择 **操作组名称**、**短名称**、**订阅** 和 **资源组**。 在“操作”部分下，选择一个 **操作名称**，并选择“电子邮件/短信/推送/语音”作为“操作类型”。  
 
@@ -98,26 +98,26 @@ HDInsight 群集包括 Azure Monitor 日志集成，它提供可查询的指标�
 
 此时会打开“电子邮件/短信/推送/语音”。 选择收件人的 **姓名**，**选中**“电子邮件”框，然后键入要将警报发送到的电子邮件地址。 在“电子邮件/短信/推送/语音”中选择“确定”，然后在“添加操作组”中完成操作组的配置。  
 
-![创建警报规则 - 添加操作组](media/cluster-availability-monitor-logs/portal-add-action-group.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-add-action-group.png" alt-text="创建警报规则 - 添加操作组":::
 
 关闭这些边栏选项卡后，应会看到你的操作组已列在“操作组”部分下。 最后，键入 **警报规则名称** 和 **说明** 并选择一种 **严重性** 来完成“警报详细信息”部分中的操作。 单击“创建警报规则”以完成操作。
 
-![门户 - 完成创建警报规则](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png" alt-text="门户 - 完成创建警报规则":::
 
 > [!TIP]
 > 指定“严重性”是一个强大的功能，可在创建多个警报时使用它。 例如，可以创建一个警报以便在一个头节点出现故障时引发“警告”警报（严重性 1），并创建另一个警报以便在两个头节点同时出现故障时（这种情况很少见）引发“严重”警报（严重性 0）。
 
 如果符合此警报的条件，则会激发该警报，你会收到一封电子邮件，其中包含如下所示的警报详细信息：
 
-![Azure Monitor 警报电子邮件示例](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alert-email.png" alt-text="Azure Monitor 警报电子邮件示例":::
 
 还可以转到 **Log Analytics 工作区** 中的“警报”，查看所有已激发的警报（按严重性分组）。
 
-![Log Analytics 工作区警报](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png" alt-text="Log Analytics 工作区警报":::
 
 选择某个严重性分组（例如，上图中突出显示的“严重性 1”）会显示具有该严重性的所有已激发警报的记录，如下所示：
 
-![Log Analytics 工作区严重性 1 警报](media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png)
+:::image type="content" source="media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png" alt-text="Log Analytics 工作区严重性 1 警报":::
 
 ## <a name="next-steps"></a>后续步骤
 

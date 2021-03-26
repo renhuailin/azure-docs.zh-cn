@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321996"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
@@ -37,13 +37,13 @@ ms.locfileid: "93321996"
 ## <a name="prerequisites"></a>先决条件
 若要执行本文所述任务，必须设置 Azure 订阅和 Azure 存储帐户。 若要上传或下载数据，需要 Azure 存储的帐户名和帐户密钥。
 
-* 若要设置 **Azure 订阅** ，请参阅 [免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
-* 有关创建 **存储帐户** 以及获取帐户和密钥信息的说明，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-account-create.md)。
+* 若要设置 **Azure 订阅**，请参阅 [免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
+* 若要查看存储帐户创建说明并了解如何获取帐户和密钥信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)。
 
-若要使用 **SSIS 连接器** ，则必须下载：
+若要使用 **SSIS 连接器**，则必须下载：
 
 * **SQL Server 2014 或 2016 标准版（或更高版本）** ：安装包括 SQL Server Integration Services。
-* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包** ：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这些连接器。
+* **适用于 Azure 的 Microsoft SQL Server 2014 或 2016 Integration Services 功能包**：可以从 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) 和 [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) 页面分别下载这些连接器。
 
 > [!NOTE]
 > SSIS 随 SQL Server 一起安装，但并不包括在 Express 版本中。 若要深入了解 SQL Server 各种版本中包含哪些应用程序，请参阅 [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)（SQL Server 版本）
@@ -74,7 +74,7 @@ ms.locfileid: "93321996"
 | **TimeRangeFrom/TimeRangeTo** |指定时间范围筛选器。 将包括在 *TimeRangeFrom* 之后以及 *TimeRangeTo* 之前修改的文件。 |
 
 > [!NOTE]
-> **AzureStorageConnection** 凭据必须正确，且在尝试进行传输之前， **BlobContainer** 必须存在。
+> **AzureStorageConnection** 凭据必须正确，且在尝试进行传输之前，**BlobContainer** 必须存在。
 > 
 > 
 

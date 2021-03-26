@@ -3,14 +3,14 @@ title: 模板部署 what-if
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591618"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102547928"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
@@ -322,7 +322,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
-若要在部署模板之前预览所做的更改，请在部署命令中使用 confirm 开关参数。 如果所做的更改与预期不同，请响应你希望部署完成。
+若要在部署模板之前预览所做的更改，请在部署命令中使用 confirm 开关参数。 如果更改符合预期，请确认你想要完成此部署。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -391,8 +391,6 @@ Are you sure you want to execute the deployment?
 
 ## <a name="next-steps"></a>后续步骤
 
+- 要在管道中使用 What-if 操作，请参阅[在管道中使用 What-If 测试 ARM 模板](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)。
 - 如果发现 What-if 操作出现了错误的结果，请在 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 上报告问题。
-- 有关介绍如何使用 if 的 Microsoft Learn 模块，请参阅 [使用假设和 ARM 模板测试工具包预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。
-- 若要使用 Azure PowerShell 来部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
-- 若要使用 Azure CLI 部署模板，请参阅[使用 ARM 模板和 Azure CLI 部署资源](deploy-cli.md)。
-- 若要使用 REST 来部署模板，请参阅[使用 ARM 模板和资源管理器 REST API 来部署资源](deploy-rest.md)。
+- 有关介绍如何使用 what if 的 Microsoft Learn 模块，请参阅[使用 What-if 和 ARM 模板测试工具包来预览更改和验证 Azure 资源](/learn/modules/arm-template-test/)。

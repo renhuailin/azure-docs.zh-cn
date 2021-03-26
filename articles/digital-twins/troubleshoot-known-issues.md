@@ -8,10 +8,10 @@ ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102434094"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
@@ -29,7 +29,7 @@ ms.locfileid: "102434094"
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>脚本安装后缺少角色分配
 
-**问题描述：** 一些用户可能在 [*如何：设置实例和身份验证（已编写脚本）* ](how-to-set-up-instance-scripted.md)的角色分配部分遇到问题。 脚本没有指示失败，但是 Azure 数字孪生数据所有者角色没有成功分配给用户，此问题将影响以后创建其他资源的能力。
+**问题描述：** 一些用户可能在 [*如何：设置实例和身份验证（已编写脚本）*](how-to-set-up-instance-scripted.md)的角色分配部分遇到问题。 脚本没有指示失败，但是 Azure 数字孪生数据所有者角色没有成功分配给用户，此问题将影响以后创建其他资源的能力。
 
 | 这是否会影响我？ | 原因 | 解决方法 |
 | --- | --- | --- |

@@ -1,25 +1,23 @@
 ---
 title: Azure 虚拟机扩展和功能
 description: 详细了解 Azure VM 扩展
-services: virtual-machines
-author: amjads1
+ms.topic: article
 ms.service: virtual-machines
 ms.subservice: extensions
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 08/03/2020
+author: amjads1
 ms.author: amjads
-ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
-ms.translationtype: MT
+ms.date: 08/03/2020
+ms.openlocfilehash: e1b96293db0389201fdab3340d8f0e74fefc4c52
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936941"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559709"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虚拟机扩展和功能
 扩展是小型应用程序，用于在 Azure VM 上提供部署后配置和自动化。 Azure 平台可承载许多扩展，涵盖 VM 配置、监视、安全性和实用工具应用程序。 发布服务器采用某个应用程序，将其包装到扩展中，对安装进行简化。 你只需提供必需的参数。 
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>如何查找可用的扩展？
+## <a name="how-can-i-find-what-extensions-are-available"></a>如何了解哪些扩展可用？
 若要查看可用扩展，可以先在左侧菜单中选择 VM，然后选择“扩展”。 若要拉取扩展的完整列表，请参阅[了解适用于 Linux 的 VM 扩展](features-linux.md)和[了解适用于 Windows 的 VM 扩展](features-windows.md)。
 
 ## <a name="how-can-i-install-an-extension"></a>如何安装扩展？
@@ -39,8 +37,8 @@ ms.locfileid: "96936941"
 
 | 命名空间 | 故障排除 |
 |-----------|-----------------|
-| dependencyagent. dependencyagentlinux。 | [适用于 Linux 的 Azure Monitor 依赖关系](agent-dependency-linux.md#troubleshoot-and-support) |
-| dependencyagent. dependencyagentwindows。 | [Windows 的 Azure Monitor 依赖关系](agent-dependency-windows.md#troubleshoot-and-support) |
+| microsoft.azure.monitoring.dependencyagent.dependencyagentlinux | [适用于 Linux 的 Azure Monitor 依赖项](agent-dependency-linux.md#troubleshoot-and-support) |
+| microsoft.azure.monitoring.dependencyagent.dependencyagentwindows | [适用于 Windows 的 Azure Monitor 依赖项](agent-dependency-windows.md#troubleshoot-and-support) |
 | microsoft.azure.security.azurediskencryptionforlinux | [适用于 Linux 的 Azure 磁盘加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
 | microsoft.azure.security.azurediskencryption | [适用于 Windows 的 Azure 磁盘加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
 | microsoft.compute.customscriptextension | [适用于 Windows 的自定义脚本](custom-script-windows.md#troubleshoot-and-support) |
@@ -51,7 +49,7 @@ ms.locfileid: "96936941"
 | microsoft.azure.security.iaasantimalware | [适用于 Windows 的反恶意软件扩展](iaas-antimalware-windows.md#troubleshoot-and-support) |
 | microsoft.enterprisecloud.monitoring.omsagentforlinux | [用于 Linux 的 Azure Monitor](oms-linux.md#troubleshoot-and-support)
 | microsoft.enterprisecloud.monitoring.microsoftmonitoringagent | [用于 Windows 的 Azure Monitor](oms-windows.md#troubleshoot-and-support) |
-| stackify. linuxagent. stackifylinuxagentextension | [适用于 Linux 的 Stackify 回描](stackify-retrace-linux.md#troubleshoot-and-support) |
+| stackify.linuxagent.extension.stackifylinuxagentextension | [适用于 Linux 的 Stackify Retrace](stackify-retrace-linux.md#troubleshoot-and-support) |
 | vmaccessforlinux.microsoft.ostcextensions | [重置 Linux 密码](vmaccess.md#troubleshoot-and-support) |
 | microsoft.recoveryservices.vmsnapshot | [适用于 Linux 的快照](vmsnapshot-linux.md#troubleshoot-and-support) |
 | microsoft.recoveryservices.vmsnapshot | [适用于 Windows 的快照](vmsnapshot-windows.md#troubleshoot-and-support) |

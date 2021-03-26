@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 00b6f116ef6f4c6c21578ef05595ed1903777948
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673743"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>教程：Azure Active Directory 与 Asset Bank 的集成
+# <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>教程：Azure Active Directory 与 Asset Bank 集成
 
 在本教程中，了解如何将 Asset Bank 与 Azure Active Directory (Azure AD) 集成。
 将 Asset Bank 与 Azure AD 集成提供以下优势：
@@ -62,7 +62,7 @@ ms.locfileid: "97673743"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Asset Bank**，在结果面板中选择“Asset Bank”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Asset Bank**，在结果面板中选择“Asset Bank”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“Asset Bank”](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "97673743"
 
 若要配置 Asset Bank 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Asset Bank”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Asset Bank”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "97673743"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Asset Bank 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.assetbank-server.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.assetbank-server.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.assetbank-server.com/shibboleth`
 
@@ -113,7 +113,7 @@ ms.locfileid: "97673743"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Asset Bank”部分，根据要求复制相应的 URL。 
+6. 在“设置 Asset Bank”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "97673743"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "97673743"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Asset Bank 的访问权限支持她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Asset Bank”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Asset Bank”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Asset Bank”  。
+2. 在应用程序列表中，选择“Asset Bank”。
 
     ![“应用程序”列表中的“Asset Bank”链接](common/all-applications.png)
 

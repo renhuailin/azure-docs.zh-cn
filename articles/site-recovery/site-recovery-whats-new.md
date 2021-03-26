@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 51d54ca4d46af3b9e0746f36114fadc47edd5b1f
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805057"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102454579"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -22,8 +22,9 @@ ms.locfileid: "98805057"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
-[汇总53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
-[汇总52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
+[汇总 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
+[汇总 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
+[汇总 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
 [汇总 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [汇总 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [汇总 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
@@ -31,9 +32,24 @@ ms.locfileid: "98805057"
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
-## <a name="updates-january-2021"></a>2021年1月 (更新) 
+## <a name="updates-february-2021"></a>更新（2021 年 2 月）
 
-### <a name="update-rollup-53"></a>更新汇总53
+### <a name="update-rollup-54"></a>更新汇总 54
+
+[更新汇总 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。 
+**Azure VM 灾难恢复** | 使用 Azure Site Recovery 的区域到区域灾难恢复现已在 4 个新增区域（欧洲北部、美国东部、美国中部和美国西部 2）公开发布。<br/>
+**VMware VM/物理计算机到 Azure 的灾难恢复** | 此更新包括在启用复制后，为 VMware/物理计算机选择邻近放置组的门户支持。<br/><br/> 现在支持保护数据磁盘大小最高为 32 TB 的 VMware 计算机。
+**Hyper-V 灾难恢复到 Azure** | 此更新包括在启用复制后，为 Hyper-V 计算机选择邻近放置组的门户支持。
+
+
+## <a name="updates-january-2021"></a>更新（2021 年 1 月）
+
+### <a name="update-rollup-53"></a>更新汇总 53
 
 [更新汇总 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) 提供以下更新：
 
@@ -41,13 +57,13 @@ ms.locfileid: "98805057"
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细说明的一些修复和改进。 
-**Azure VM 灾难恢复** | 现在支持标记复制。 添加到源区域中的 Azure Vm、磁盘和 Nic 的任何标记都将复制到目标区域中的计算机。<br/><br/> 现在支持复制运行 Debian 10 的 Azure Vm。
-**VMware VM/物理灾难恢复到 Azure** | 此更新包括将 VMware VM 复制到 Azure 的日志记录增强功能，并改进了错误消息传送。<br/><br/> 现在支持复制运行 Debian 10 的 VMware Vm 和物理计算机。
+**Azure VM 灾难恢复** | 现在支持标记复制。 为源区域中的 Azure VM、磁盘和 NIC 添加的所有标记都将复制到目标区域中的计算机。<br/><br/> 运行 Debian 10 的 Azure VM 现在支持复制。
+**VMware VM/物理计算机到 Azure 的灾难恢复** | 此更新包括用于将 VMware VM 复制到 Azure 的日志记录增强功能，以及改进的错误消息传递。<br/><br/> 运行 Debian 10 的 VMware VM 和物理计算机现在支持复制。
 
 
-## <a name="updates-november-2020"></a>2020年11月 (更新) 
+## <a name="updates-november-2020"></a>更新（2020 年 11 月）
 
-### <a name="update-rollup-52"></a>更新汇总52
+### <a name="update-rollup-52"></a>更新汇总 52
 
 [更新汇总 52](https://support.microsoft.com/help/4597409/update-rollup-52-for-azure-site-recovery) 提供以下更新：
 
@@ -55,8 +71,8 @@ ms.locfileid: "98805057"
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细介绍了许多修复程序和改进，包括对出行服务的新 Linux 支持。
-**Azure VM 灾难恢复** | 现在支持运行 RHEL 8.3 和 Oracle Linux 7.9 的 Vm
-**VMware VM/物理灾难恢复到 Azure** | 现在支持运行 RHEL 8.3 的 Vm，Oracle Linux 7.9/8.3。
+**Azure VM 灾难恢复** | 现在支持运行 RHEL 8.3 和 Oracle Linux 7.9 的 VM
+**VMware VM/物理计算机到 Azure 的灾难恢复** | 现在支持运行 RHEL 8.3、Oracle Linux 7.9/8.3 的 VM。
 
 ## <a name="updates-october-2020"></a>更新（2020 年 10 月）
 
@@ -362,7 +378,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 **功能** | **详细信息**
 --- | ---
 **复制添加的磁盘** | 为添加到已启用灾难恢复的 Azure VM 的数据磁盘启用复制。 [了解详细信息](azure-to-azure-enable-replication-added-disk.md)。
-**自动更新** | 为在启用了灾难恢复的 Azure Vm 上运行的移动服务扩展配置自动更新时，现在可以选择要使用的现有自动化帐户，而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
+**自动更新** | 为在启用了灾难恢复的 Azure VM 上运行的移动服务扩展配置自动更新时，现在可以选择要使用的现有自动化帐户，而不是使用 Site Recovery 创建的默认帐户。 [了解详细信息](azure-to-azure-autoupdate.md)。
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理服务器灾难恢复
@@ -507,7 +523,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 --- | ---
 **Linux 支持** | 添加了对具有 Red Hat 兼容内核的 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 的支持以及对 Unbreakable Enterprise Kernel (UEK) 第 5 版的支持。
 **Linux BRTFS 文件系统** | 支持对 Azure VM 使用。
-**可用性区域中的 Azure Vm** | 可以为在可用性区域中部署的 Azure Vm 启用到另一个区域的复制。 现在可以为 Azure VM 启用复制功能，并设置一个目标，以便故障转移到单个 VM 实例、可用性集中的 VM 或可用性区域中的 VM。 此设置不影响复制。 [阅读](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
+**可用性区域中的 Azure VM** | 可以为在可用性区域中部署的 Azure VM 启用到另一个区域的复制。 现在可以为 Azure VM 启用复制功能，并设置一个目标，以便故障转移到单个 VM 实例、可用性集中的 VM 或可用性区域中的 VM。 此设置不影响复制。 [阅读](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/)公告。
 **已启用防火墙的存储（门户/PowerShell）** | 添加了对[已启用防火墙的存储帐户](../storage/common/storage-network-security.md)的支持。<br/><br/> 可将已启用防火墙的存储帐户中使用非托管磁盘的 Azure VM 复制到另一个 Azure 区域，以实现灾难恢复。<br/><br/> 可将已启用防火墙的存储帐户用作非托管磁盘的目标存储帐户。<br/><br/> 支持在门户和 PowerShell 中使用。
 
 ## <a name="updates-december-2018"></a>更新（2018 年 12 月）
@@ -546,7 +562,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 **功能** | **详细信息**
 --- | ---
-**区域支持** | 为澳大利亚中部1和澳大利亚中部2添加了 Site Recovery 支持。
+**区域支持** | 添加了对澳大利亚中部 1 区和澳大利亚中部 2 区的 Site Recovery 支持。
 **磁盘加密支持** | 添加了对在 Azure AD 应用中使用 Azure 磁盘加密 (ADE) 进行加密的 Azure VM 进行灾难恢复的支持。 [了解详细信息](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 **磁盘排除** | 现在，在 Azure VM 复制期间会自动排除未初始化的磁盘。
 **已启用防火墙的存储 (PowerShell)** | 添加了对[已启用防火墙的存储帐户](../storage/common/storage-network-security.md)的支持。<br/><br/> 可将已启用防火墙的存储帐户中使用非托管磁盘的 Azure VM 复制到另一个 Azure 区域，以实现灾难恢复。<br/><br/> 可将已启用防火墙的存储帐户用作非托管磁盘的目标存储帐户。<br/><br/> 仅支持在 PowerShell 中使用。
