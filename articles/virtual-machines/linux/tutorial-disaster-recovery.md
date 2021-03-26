@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564741"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>教程：为 Linux 虚拟机设置灾难恢复

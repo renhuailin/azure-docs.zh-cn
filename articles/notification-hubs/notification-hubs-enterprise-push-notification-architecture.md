@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 018315b7ed468e24fb922337848d14703ffdcd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89003620"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
@@ -227,11 +227,11 @@ ms.locfileid: "89003620"
     }
     ```
 
-    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”********
+    e. 要将此应用发布为 WebJob，请右键单击 Visual Studio 中的解决方案，然后选择“发布为 WebJob”
 
     ![显示的右键单击选项的屏幕截图，其中“发布为 Azure Web 作业”以红色标出。][2]
 
-    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”****。
+    f. 选择发布配置文件并创建新的 Azure 网站（如果它尚未存在），该网站会托管此 WebJob，拥有该网站后，单击“发布”。
 
     :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="显示在 Azure 上创建网站的工作流的屏幕截图。":::
     “发布 Web”对话框的屏幕截图，其中已选中 Microsoft Azure 网站选项，有一个绿色箭头指向“选择现有网站”对话框，“新建”选项以红色标出，还有一个绿色箭头指向“在 Microsoft Azure 上创建网站”对话框，网站名称和“创建”选项以红色标出。
@@ -271,7 +271,7 @@ ms.locfileid: "89003620"
 
 1. 确保 WebJob 成功运行并且计划为“连续运行”。
 2. 运行 **EnterprisePushMobileApp**，这可启动 Windows 应用商店应用。
-3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知****：
+3. 运行 EnterprisePushBackendSystem 控制台应用程序，这可模拟 LoB 后端并开始发送消息，应该出现如下图所示的 toast 通知：
 
     ![运行企业推送后端系统应用的控制台以及应用发送的消息的屏幕截图。][5]
 

@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563806"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
@@ -303,7 +303,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 > [!IMPORTANT]
 > 请参阅 [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)，了解如何使用 PowerShell 或 REST API 来进一步自定义审核事件。
 
-### <a name="dynamic-data-masking"></a>动态数据屏蔽
+### <a name="dynamic-data-masking"></a>动态数据掩码
 
 数据掩码功能会自动隐藏数据库中的敏感数据。
 

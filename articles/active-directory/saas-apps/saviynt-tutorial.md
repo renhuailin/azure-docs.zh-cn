@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 0f17aa943f599c910d651a72b1ed2d3ae7b2434a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677513"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saviynt"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saviynt 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "92677513"
 * 让用户使用其 Azure AD 帐户自动登录到 Saviynt。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -77,11 +77,11 @@ ms.locfileid: "92677513"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`Saviynt-<ID>`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`Saviynt-<ID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.saviyntcloud.com/ECM/saml/SSO/alias/<SAVIYNT-ID>`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.saviyntcloud.com`
 
@@ -106,7 +106,7 @@ ms.locfileid: "92677513"
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

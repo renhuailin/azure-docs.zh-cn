@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384225"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>教程：部署本地 ARM 模板
@@ -157,7 +157,7 @@ az deployment group create \
 
 通过删除资源组来清理你部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788074"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容
@@ -45,7 +45,7 @@ ms.locfileid: "92788074"
 
 1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。 
 
-1. 右键单击 zip 文件并选择“全部提取”。 有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+1. 右键单击 zip 文件并选择“全部提取”。  有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
@@ -55,33 +55,33 @@ ms.locfileid: "92788074"
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
-1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。
+1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。 
 
-1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。
+1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。 
 
    :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="创建存储帐户" border="false":::
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
-   + **存储帐户名称** 。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus* 。 
+   + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
-   + **位置** 。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
+   + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   + **帐户类型** 。 选择默认设置“StorageV2 (常规用途 v2)”。
+   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”  。
 
-1. 单击“查看 + 创建”以创建服务。
+1. 单击“查看 + 创建”以创建服务。 
 
-1. 创建后，单击“转到资源”打开“概述”页。
+1. 创建后，单击“转到资源”打开“概述”页。 
 
-1. 单击“Blob”服务。
+1. 单击“Blob”服务。 
 
-1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo* 。
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。 
 
-1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。
+1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。 
 
-   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="创建存储帐户" border="false":::
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="上传示例文件" border="false":::
 
 1. 在退出 Azure 存储之前获取一个连接字符串，以便可以在 Azure 认知搜索中构建连接。 
 
@@ -111,13 +111,13 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。 可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="创建存储帐户" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="获取服务名称以及管理密钥和查询密钥" border="false":::
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -190,7 +190,7 @@ print(r.status_code)
 
 在 Azure 门户中，在搜索服务仪表板页面上，验证 cogsrch-py-datasource 是否出现在“数据源”列表中。 单击“刷新”更新页面。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="门户中的“数据源”磁贴" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>步骤 2：创建技能集
 
@@ -303,7 +303,7 @@ print(r.status_code)
 
 技能集的图形表示形式如下所示。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="了解技能组" border="false":::
 
 输出可以映射到索引、用作下游技能的输入，或者既映射到索引又用作输入（在语言代码中就是这样）。 在索引中，语言代码可用于筛选。 文本分析技能使用语言代码作为输入来告知有关断字的语言规则。
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 在响应中，监视 `"lastResult"` 的 `"status"` 和 `"endTime"` 值。 定期运行脚本以检查状态。 索引器完成后，状态将设置为 success ，将指定 endTime，响应将包括在扩充期间发生的任何错误和警告。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="已创建索引器" border="false":::
 
 处理某些源文件和技能的组合时经常会出现警告，这并不总是意味着出现了问题。 许多警告是良性的。 例如，如果为不包含文本的 JPEG 文件编制索引，则会看到此屏幕截图中所示的警告。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="索引器警告示例" border="false":::
 
 ## <a name="5---search"></a>5 - 搜索
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 最终结果如以下示例所示。 屏幕截图仅显示响应的一部分。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="查询所有字段的索引" border="false":::
 
 输出是索引架构，其中包含每个字段的名称、类型和特性。
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 最终结果如以下示例所示。 屏幕截图仅显示响应的一部分。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="查询组织内容的索引" border="false":::
 
 对其他字段重复此操作，在本练习中这些字段是 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
@@ -522,7 +522,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 可以使用门户来删除索引、索引器、数据源和技能集。 删除索引器时，可以根据需要选择同时删除索引、技能组和数据源。
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="创建存储帐户" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="在门户中删除搜索对象" border="false":::
 
 还可以使用脚本删除它们。 以下脚本演示如何删除技能集。 
 

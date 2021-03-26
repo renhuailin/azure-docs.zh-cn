@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428722"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
@@ -267,7 +267,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
-|name |string|标识 sinkname 的字符串。|  
+|**name**|string|标识 sinkname 的字符串。|  
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  

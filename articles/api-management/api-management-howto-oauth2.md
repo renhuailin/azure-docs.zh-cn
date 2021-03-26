@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/14/2020
 ms.author: apimpm
 ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077245"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
@@ -59,11 +59,11 @@ ms.locfileid: "93077245"
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
-    “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。 默认选择 **GET** 。
+    “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。 默认选择 **GET**。
 
 5. 然后，需要指定“令牌终结点 URL”、“客户端身份验证方法”、“访问令牌发送方法”和“默认范围”。
 
-    ![屏幕截图显示 "添加 OAuth2 服务" 屏幕。](./media/api-management-howto-oauth2/oauth-03.png)
+    ![显示“添加 OAuth2 服务”屏幕的屏幕截图。](./media/api-management-howto-oauth2/oauth-03.png)
 
     对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 `<TenantID>` 的格式为 `yourapp.onmicrosoft.com`。
 
@@ -78,7 +78,7 @@ ms.locfileid: "93077245"
     - `/signin-oauth/code/callback/{authServerName}` - 授权代码授予流
     - `/signin-oauth/implicit/callback` - 隐式授权流
 
-    ![显示在何处添加新的 OAuth2 服务的客户端凭据的屏幕截图。](./media/api-management-howto-oauth2/oauth-04.png)
+    ![此屏幕截图显示了在何处添加新 OAuth2 服务的客户端凭据。](./media/api-management-howto-oauth2/oauth-04.png)
 
     如果“授权的授权类型”设置为“资源所有者密码”，则可使用“资源所有者密码凭据”部分指定这些凭据；否则可将其留空。
 
@@ -96,7 +96,7 @@ ms.locfileid: "93077245"
 
 3. 从下拉列表中选择所需的“授权服务器”，并单击“保存”。
 
-    ![突出显示所选授权服务器和 "保存" 按钮的屏幕截图。](./media/api-management-howto-oauth2/oauth-07.png)
+    ![突出显示所选授权服务器和“保存”按钮的屏幕截图。](./media/api-management-howto-oauth2/oauth-07.png)
 
 ## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>旧开发人员门户 - 测试 OAuth 2.0 用户授权
 

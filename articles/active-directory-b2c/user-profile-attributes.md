@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db2715f0827203dac505fa4dc15c22bdab953010
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120209"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500523"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -69,8 +69,8 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |passwordPolicies     |字符串|密码策略。 它是由逗号分隔的不同策略名称构成的字符串。 例如，“DisablePasswordExpiration, DisableStrongPassword”。|否|否|持久化、输出|
 |physicalDeliveryOfficeName (officeLocation)|字符串|用户营业地点的办公室位置。 最大长度为 128。|是|否|持久化、输出|
 |postalCode      |字符串|用户邮政地址的邮政编码。 该邮政编码特定于用户所在的国家/地区。 在美国，此属性包含邮政编码。 最大长度为 40。|是|否|持久化、输出|
-|preferredLanguage    |字符串|用户的首选语言。 应遵循 ISO 639-1 代码。 示例：“en-US”。|否|否|持久化、输出|
-|refreshTokensValidFromDateTime|DateTime|在此时间之前颁发的所有刷新令牌无效，使用无效刷新令牌获取新的访问令牌时，应用程序会收到错误。 如果发生这种情况，应用程序需要通过向授权终结点发出请求来获取新的刷新令牌。 只读。|否|否|输出|
+|preferredLanguage    |字符串|用户的首选语言。 首选语言格式基于 RFC 4646。 名称是一个与语言相关的 ISO 639 双小写字母的区域性代码和一个与国家或地区相关的 ISO 3166 双大写字母子区域性代码的组合。 例如：“en-US”或“es-ES”。|否|否|持久化、输出|
+|refreshTokensValidFromDateTime (signInSessionsValidFromDateTime)|DateTime|在此时间之前颁发的所有刷新令牌无效，使用无效刷新令牌获取新的访问令牌时，应用程序会收到错误。 如果发生这种情况，应用程序需要通过向授权终结点发出请求来获取新的刷新令牌。 只读。|否|否|输出|
 |signInNames（[标识](#identities-attribute)） |字符串|目录中任何类型的本地帐户用户的唯一登录名。 使用此属性可以获取具有登录值的用户，而无需指定本地帐户类型。|否|否|输入|
 |signInNames.userName（[标识](#identities-attribute)） |字符串|目录中本地帐户用户的唯一用户名。 使用此属性可以创建或获取具有特定登录用户名的用户。 在执行修补操作期间，在 PersistedClaims 中单独指定此属性会删除其他 signInNames 类型。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
 |signInNames.phoneNumber（[标识](#identities-attribute)） |字符串|目录中本地帐户用户的唯一电话号码。 使用此属性可以创建或获取具有特定登录电话号码的用户。 在执行 Patch 操作期间，在 PersistedClaims 中单独指定此属性会删除其他类型的 signInNames。 若要添加新的 signInNames 类型，还需要保存现有的 signInNames。|否|否|输入、持久化、输出|
@@ -99,16 +99,16 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 客户帐户（可以是使用者、合作伙伴或居民）可与以下标识类型相关联：
 
 - **本地** 标识 - 将用户名和密码存储在 Azure AD B2C 目录本地。 我们通常将此类标识称为“本地帐户”。
-- **联合** 身份（也称为 *社交* 或 *企业* 帐户），用户的标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
+- 联合标识 - 也称为社交或企业帐户 ，该用户标识由 Facebook、Microsoft、ADFS 或 Salesforce 等联合标识提供者进行管理。
 
 具有客户帐户的用户可以使用多个标识进行登录。 例如，使用用户名、电子邮件、员工 ID、政府 ID 等。 一个帐户可以有多个密码相同的本地和社交标识。 
 
-在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity](/graph/api/resources/objectidentity) 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。 标识属性最多可以包含10个 [objectIdentity](/graph/api/resources/objectidentity) 对象。 每个对象包含以下属性：
+在 Microsoft Graph API 中，本地标识和联合标识都存储在 [objectIdentity](/graph/api/resources/objectidentity) 类型的用户 `identities` 特性中。 `identities` 集合表示用于登录到用户帐户的一组标识。 此集合使用户能够使用其关联的任何标识登录到用户帐户。 identities 属性最多可以包含十个 [objectIdentity](/graph/api/resources/objectidentity) 对象。 每个对象包含以下属性：
 
 | 名称   | 类型 |说明|
 |:---------------|:--------|:----------|
 |signInType|string| 指定目录中的用户登录类型。 对于本地帐户：`emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或所需的任何其他类型。 社交帐户必须设置为 `federated`。|
-|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社会身份 (，其中 **signInType** 为  `federated`) ，该值为颁发者的名称，例如 `facebook.com`|
+|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社交标识（其中 signInType 为 `federated`），该值是颁发者的名称，例如 `facebook.com`|
 |issuerAssignedId|string|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的 [电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
 
 以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 
 ## <a name="password-profile-property"></a>密码配置文件属性
 
-对于本地标识，passwordProfile 属性是必需的，其中包含用户的密码。 `forceChangePasswordNextSignIn`属性指示用户在下次登录时是否必须重置密码。 若要处理强制密码重置，请 [设置强制密码重置流](force-password-reset.md)。
+对于本地标识，passwordProfile 属性是必需的，其中包含用户的密码。 `forceChangePasswordNextSignIn` 属性指示用户在下次登录时是否必须重置密码。 若要处理强制密码重置，请[设置强制密码重置流](force-password-reset.md)。
 
 对于联合（社交）标识，passwordProfile 属性不是必需的。
 
@@ -166,7 +166,7 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 ## <a name="extension-attributes"></a>扩展属性
 
-每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息，例如名字、姓氏和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关详细信息，请参阅 [在 Azure Active Directory B2C 中添加用户属性和自定义用户输入](configure-user-input.md)
+每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息，例如名字、姓氏和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关详细信息，请参阅[在 Azure Active Directory B2C 中添加用户属性和自定义用户输入](configure-user-input.md)
 
 扩展属性[扩展](/graph/extensibility-overview#schema-extensions)目录中用户对象的架构。 尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性会附加到名为 `b2c-extensions-app` 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可在 Azure Active Directory 应用注册下找到此应用程序。
 

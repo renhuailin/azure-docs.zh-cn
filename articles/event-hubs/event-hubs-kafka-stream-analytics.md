@@ -4,10 +4,10 @@ description: 教程：本文介绍如何使用 Azure 流分析处理通过事件
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319379"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
@@ -32,10 +32,10 @@ ms.locfileid: "92319379"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
-当你创建**标准**层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照[使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建**标准**层事件中心命名空间。 
+当你创建 **标准** 层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照 [使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建 **标准** 层事件中心命名空间。 
 
 > [!NOTE]
-> Kafka 的事件中心仅在**标准**和**专用**层上可用。 **基本** 层不支持事件中心上的 Kafka。
+> Kafka 的事件中心仅在 **标准** 和 **专用** 层上可用。 **基本** 层不支持事件中心上的 Kafka。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>在事件中心内使用 Kafka 发送消息
 
@@ -90,10 +90,10 @@ ms.locfileid: "92319379"
 2. 在“Azure 市场”菜单中选择“Analytics”，然后选择“流分析作业”。 
 3. 在“新建流分析”页上执行以下操作： 
     1. 输入作业的名称。 
-    2. 选择**订阅**。
+    2. 选择 **订阅**。
     3. 为资源组选择“新建”，并输入名称。 也可以使用现有资源组。 
     4. 选择作业的位置。
-    5. 选择“创建”来创建作业。 
+    5. 选择“创建”  来创建作业。 
 
         ![新建流分析作业](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
 

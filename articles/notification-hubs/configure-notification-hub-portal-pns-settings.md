@@ -13,10 +13,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94887257"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
@@ -38,14 +38,14 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
    a. 如果选择“证书”：
    * 选择文件图标，再选择要上传的 .p12 文件。
    * 输入密码。
-   * 选择“沙盒”模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
+   * 选择“沙盒”  模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
 
      ![Azure 门户中 APNS 证书配置的屏幕截图](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
    b. 如果选择“令牌”：
 
    * 输入“密钥 ID”、“绑定 ID”、“团队 ID”和“令牌”的值   。
-   * 选择“沙盒”模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
+   * 选择“沙盒”  模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
 
      ![Azure 门户中 APNS 令牌配置的屏幕截图](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
@@ -137,7 +137,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
       * 在工具栏上选择“上传证书”  。
       * 选择“文件”图标，然后选择证书文件。
       * 输入证书的密码。
-      * 选择“确定”。
+      * 选择“确定”  。
       * 在“Windows Phone (MPNS)”页上选择“保存”。  
 
 有关详细信息，请参阅[通过通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。

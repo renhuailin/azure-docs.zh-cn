@@ -4,10 +4,10 @@ description: 本文提供 Azure 中继服务的概述。借助该服务，无需
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955376"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
@@ -17,7 +17,7 @@ ms.locfileid: "97955376"
 
 - 传统的单向请求/响应式通信和对等通信 
 - Internet 范围的事件分发，实现发布/订阅方案 
-- 跨网络边界的双向和无缓冲套接字通信
+- 跨网络边界的双向无缓冲套接字通信
 
 Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可以限定于一台计算机上的单个应用程序终结点。 VPN 技术的侵入性更强，因为它依赖于对网络环境的改造。 
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 集成
@@ -105,7 +105,7 @@ ms.locfileid: "96004171"
 
     b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Silverback 客户端支持团队](mailto:helpdesk@matrix42.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -150,7 +150,7 @@ ms.locfileid: "96004171"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "96004171"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

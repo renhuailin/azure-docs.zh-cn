@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017213"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>为 StorSimple 设备配置 Web 代理
@@ -71,7 +71,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 4. 选择“NTLM”、“基本”或“无”作为身份验证类型。 “基本”是代理服务器配置使用的安全性最低的身份验证。 NT LAN Manager (NTLM) 是高度安全和复杂的身份验证协议，使用三向消息传送系统（在需要更高的数据完整性时，有时还会使用四向）验证用户的身份。 默认的身份验证为 NTLM。 有关详细信息，请参阅[基本身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)和 [NTLM 身份验证](https://hc.apache.org/httpclient-3.x/authentication.html)。 
    
    > [!IMPORTANT]
-   > **在 StorSimple 设备管理器服务中，当在设备的代理服务器配置中启用了基本或 NTLM 身份验证时，设备监视图表将不起作用。若要使监视图表工作，需确保将身份验证设置为 "无"。**
+   > **在 StorSimple 设备管理器服务中，如果在设备的代理服务器配置中启用“基本”或“NTLM”身份验证，设备监视图表将不起作用。为使监视图表起作用，需确保将身份验证设置为“无”。**
   
 5. 如果启用了身份验证，请提供 **Web 代理用户名** 和 **Web 代理密码**。 还需要确认密码。
    
@@ -102,7 +102,7 @@ Web 代理是 StorSimple 设备的一项可选配置。 只能通过 Windows Pow
 Web 代理默认已禁用。 在 StorSimple 设备上配置 Web 代理设置后，使用用于 StorSimple 的 Windows PowerShell 启用 Web 代理设置。
 
 > [!NOTE]
-> **如果使用安装向导配置 web 代理，则不需要执行此步骤。默认情况下，在安装向导会话之后会自动启用 Web 代理。**
+> **如果 Web 代理是使用安装向导配置的，则不需要执行此步骤。安装向导会话结束后，默认会自动启用 Web 代理。**
 
 
 在 Windows PowerShell for StorSimple 中执行以下步骤，在设备上启用 Web 代理：

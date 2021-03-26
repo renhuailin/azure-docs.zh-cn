@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5bd52e8865bb704497740851f6a0e3c886ed9d6d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790145"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
@@ -40,7 +40,7 @@ ms.locfileid: "98790145"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -87,7 +87,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建三个子网配置，以创建三个子网。 以下示例针对公共、专用和外围网络子网创建三个子网配置：   
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建三个子网配置，以创建三个子网。 以下示例针对公共、专用和外围网络子网创建三个子网配置：
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -131,7 +131,7 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
 
 ### <a name="create-a-network-interface"></a>创建网络接口
 
-在创建网络接口之前，必须使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) 检索虚拟网络 ID，然后使用 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) 检索子网 ID。 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 在已启用 IP 转发的 DMZ 子网中创建网络接口： 
+在创建网络接口之前，必须使用 [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) 检索虚拟网络 ID，然后使用 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) 检索子网 ID。 使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 在已启用 IP 转发的 DMZ 子网中创建网络接口：
 
 ```azurepowershell-interactive
 # Retrieve the virtual network object into a variable.
@@ -190,7 +190,7 @@ $vmNva = New-AzVM `
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
-在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。  
+在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。
 
 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
 
@@ -205,7 +205,7 @@ New-AzVm `
   -AsJob
 ```
 
-在专用子网中创建一个 VM  。
+在专用子网中创建一个 VM。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -236,9 +236,9 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-打开下载的 RDP 文件。 出现提示时，选择“连接”  。
+打开下载的 RDP 文件。 出现提示时，选择“连接”。
 
-输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。    你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。 
+输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
 
 在稍后的步骤中，`tracert.exe` 命令用于测试路由。 Tracert 使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙会拒绝该协议。 在 *myVmPrivate* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
@@ -248,7 +248,7 @@ New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 
 虽然本文中使用跟踪路由来测试路由，但在生产部署中，不建议允许 ICMP 通过 Windows 防火墙。
 
-在“启用 IP 转发”中，已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
+在“启用 IP 转发”中已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
 
 在 *myVmPrivate* VM 中的命令提示符下，通过远程桌面连接到 *myVmNva*：
 
@@ -294,7 +294,7 @@ over a maximum of 30 hops:
 Trace complete.
 ```
 
-可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。  
+可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话，这样，就会与 *myVmPrivate* VM 保持连接。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 04fe19960f01709562a47404373801715385e9c3
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318695"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-altamira-hrm"></a>教程：Azure Active Directory 与 Altamira HRM 的单一登录 (SSO) 集成
@@ -48,8 +48,8 @@ ms.locfileid: "92318695"
 要配置 Altamira HRM 与 Azure AD 的集成，需要将库中的 Altamira HRM 添加到托管的 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Altamira HRM” 。
 1. 从结果面板中选择“Altamira HRM”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -80,11 +80,11 @@ ms.locfileid: "92318695"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.altamiraweb.com/`
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.altamiraweb.com/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.altamiraweb.com/AssertionService.aspx`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.altamirahrm.com/Default.aspx`
 

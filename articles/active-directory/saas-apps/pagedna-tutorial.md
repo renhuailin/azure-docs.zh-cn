@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
@@ -56,11 +56,11 @@ PageDNA 支持以下功能：
 
     ![“Azure Active Directory”选项](common/select-azuread.png)
 
-1. 转到“企业应用程序”，并选择“所有应用程序”。 
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
-1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”。
+1. 若要添加新应用程序，请在窗格顶部选择“+ 新建应用程序”  。
 
     ![“新建应用程序”选项](common/add-new-app.png)
 
@@ -91,11 +91,11 @@ PageDNA 支持以下功能：
 
     ![配置单一登录选项](common/select-sso.png)
 
-1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录 。
+1. 在“选择单一登录方法”窗格中，选择“SAML/WS-Fed”模式以启用单一登录   。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格  。
+1. 在“设置 SAML 单一登录”窗格中，选择“编辑”（铅笔图标）可打开“基本 SAML 配置”窗格    。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -146,11 +146,11 @@ PageDNA 支持以下功能：
 
     ![“用户”和“所有用户”选项](common/users.png)
 
-1. 在屏幕顶部选择“+ 新建用户”。
+1. 在屏幕顶部选择“+ 新建用户”  。
 
     ![“新建用户”选项](common/new-user.png)
 
-1. 在“用户”窗格中执行以下步骤：
+1. 在“用户”窗格中执行以下步骤  ：
 
     ![“用户”窗格](common/user-properties.png)
 
@@ -160,7 +160,7 @@ PageDNA 支持以下功能：
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
 
-    1. 选择“创建”。
+    1. 选择“创建”  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -178,13 +178,13 @@ PageDNA 支持以下功能：
 
     ![“用户和组”选项](common/users-groups-blade.png)
 
-1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”  。
+1. 选择“+ 添加用户”，然后在“添加分配”窗格中选择“用户和组”    。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
 1. 在“用户和组”窗格中，选择“用户”列表中的“Britta Simon”，然后选择窗格底部的“选择”   。
 
-1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色。 在窗格底部选择“选择”。
+1. 如果希望在 SAML 断言中使用角色值，请在“选择角色”窗格中，从列表中为用户选择相应的角色。 在窗格底部选择“选择”  。
 
 1. 在“添加分配”窗格中选择“分配” 。
 

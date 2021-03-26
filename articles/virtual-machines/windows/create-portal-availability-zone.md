@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 门户创建分区的 Windows VM
+title: 使用 Azure 门户创建分区的 VM
 description: 使用 Azure 门户在可用性区域中创建 Windows VM
 documentationcenter: virtual-machines
-author: cynthn
-ms.service: virtual-machines-windows
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.workload: infrastructure
-ms.date: 03/27/2018
-ms.author: cynthn
+ms.date: 3/8/2021
+ms.author: mimckitt
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 7c7f135d4033a31f855342c172d73f51478931ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828908"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501679"
 ---
-# <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
+# <a name="create-a-virtual-machine-in-an-availability-zone-using-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建虚拟机
 
 本文逐步说明如何使用 Azure 门户在 Azure 可用性区域中创建虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
@@ -30,9 +30,9 @@ ms.locfileid: "87828908"
 
 1. 在 Azure 门户的左上角单击“创建资源”。
 
-2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。******** 
+2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
 
-3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 选择一个位置，例如支持可用性区域的美国东部 2。 完成后，请单击“确定”****。
+3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 选择一个位置，例如支持可用性区域的美国东部 2。 完成后，请单击“确定”。
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
@@ -40,11 +40,11 @@ ms.locfileid: "87828908"
 
     ![选择 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. 在 "**设置**  >  **高可用性**" 下，从 "**可用性区域**" 下拉列表中选择一个编号的区域，保留剩余的默认值，然后单击 **"确定"**。
+5. 在“设置” > “高可用性”下，从“可用性区域”下拉列表中选择一个带编号的区域，保留其余默认值，并单击“确定”。
 
     ![选择可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. 在摘要页上，单击“创建”以启动虚拟机部署。****
+6. 在摘要页上，单击“创建”以启动虚拟机部署。
 
 7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
 
@@ -54,13 +54,13 @@ ms.locfileid: "87828908"
 
 可以在门户中确认这些资源的区域设置。  
 
-1. 单击“资源组”****，然后单击 VM 的资源组的名称，例如 *myResourceGroup*。
+1. 单击“资源组”，然后单击 VM 的资源组的名称，例如 *myResourceGroup*。
 
-2. 单击磁盘资源的名称。 “概述”**** 页包含有关资源的位置和可用性区域的详细信息。
+2. 单击磁盘资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
 
     ![托管磁盘的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
-3. 单击公共 IP 地址资源的名称。 “概述”**** 页包含有关资源的位置和可用性区域的详细信息。
+3. 单击公共 IP 地址资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
 
     ![IP 地址的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
 
@@ -68,4 +68,4 @@ ms.locfileid: "87828908"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的 [可用性](../availability.md) 。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[可用性](../availability.md)。

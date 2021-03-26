@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
 ms.openlocfilehash: e421efc4076ab075984022ccb5281d4b9e250c26
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178275"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hirebridge-ats"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hirebridge ATS 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "96178275"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Hirebridge ATS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -46,7 +46,7 @@ ms.locfileid: "96178275"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Hirebridge ATS” 。
 1. 从结果面板中选择“Hirebridge ATS”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -75,7 +75,7 @@ ms.locfileid: "96178275"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”按钮来保存配置。
+1. 在基本 SAML 配置部分，应用程序进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。

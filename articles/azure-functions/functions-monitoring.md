@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
 ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99550753"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
@@ -91,7 +91,7 @@ Application Insights 生成收集的依赖项数据的 _应用程序映射_。 �
 
 ## <a name="analyze-data"></a>分析数据
 
-默认情况下，从函数应用中收集的数据会存储在 Application Insights 中。 在 [Azure 门户](https://portal.azure.com)中，Application Insights 提供了一组全面的遥测数据可视化效果。 你可以深入查看错误日志，并且可以查询事件和指标。 若要了解详细信息，包括如何查看和查询收集的数据的基本示例，请参阅 [分析 Application Insights 中的 Azure Functions 遥测](analyze-telemetry-data.md)数据。 
+默认情况下，从函数应用中收集的数据会存储在 Application Insights 中。 在 [Azure 门户](https://portal.azure.com)中，Application Insights 提供了一组全面的遥测数据可视化效果。 你可以深入查看错误日志，并且可以查询事件和指标。 若要了解详细信息，包括关于如何查看和查询已收集数据的示例，请参阅[在 Application Insights 中分析 Azure Functions 遥测数据](analyze-telemetry-data.md)。 
 
 ## <a name="streaming-logs"></a>流式处理日志
 

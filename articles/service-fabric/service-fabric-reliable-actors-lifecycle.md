@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576037"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
@@ -42,7 +42,7 @@ ms.locfileid: "96576037"
 * 正在调用的 `IRemindable.ReceiveReminderAsync` 方法（仅当执行组件使用提醒时该方法才可用）
 
 > [!NOTE]
-> 如果执行组件使用计时器，且计时器回调得到调用，则不  计为“正在使用”。
+> 如果执行组件使用计时器，且计时器回调得到调用，则不计为“正在使用”。
 >
 >
 

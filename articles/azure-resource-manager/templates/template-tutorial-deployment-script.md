@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963957"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
@@ -345,7 +345,7 @@ ms.locfileid: "97963957"
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。  应该会看到，该资源组中总共有六个资源。
 4. 在顶部菜单中选择“删除资源组”。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961033"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>修改 StorSimple 8000 系列设备上的 DATA 0 网络接口设置
@@ -38,7 +38,7 @@ DATA 0 接口最先是在 StorSimple 设备的初始部署期间通过设置向�
 可以通过连接到 StorSimple 设备的 Windows PowerShell 接口并启动设置向导会话来重新配置 DATA 0 网络设置。 可以执行以下步骤来修改 DATA 0 设置：
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>通过设置向导修改 DATA 0 网络设置
-1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 当系统提示时，请提供 **设备管理员密码**。 默认密码为 `Password1`。
+1. 在串行控制台菜单中，选择选项 1，**使用完全访问权限登录**。 出现提示时，请提供 **设备管理员密码**。 默认密码为 `Password1`。
 2. 在命令提示符处，键入：
    
     `Invoke-HcsSetupWizard`

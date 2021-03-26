@@ -1,22 +1,22 @@
 ---
 title: NCas T4 v3 系列
-description: NCas T4 v3 系列 Vm 的规格。
+description: NCas T4 v3 系列 VM 的规格。
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 2a799fed92bea627d5974f27d5328b6c62825556
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042736"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562395"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
-NCasT4_v3 系列虚拟机由 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 提供支持 (罗马) cpu。 Vm 的功能最多支持4个 NVIDIA T4 Gpu，每个内存有 16 GB 内存，最多64个非多线程 AMD EPYC 7V12 (罗马) 处理器核心，440 GiB 的系统内存。 这些虚拟机非常适合用于部署 AI 服务，例如用户生成的请求的实时推断，或使用 NVIDIA 网格驱动程序和虚拟 GPU 技术的交互式图形和可视化工作负荷。 基于 CUDA、TensorRT、Caffe、ONNX 和其他框架的标准 GPU 计算工作负荷，或基于 GPU 加速图形应用程序的 OpenGL 和 DirectX，可以在 NCasT4_v3 系列上以经济实惠的方式部署到用户。
+NCasT4_v3 系列虚拟机采用 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12(Rome) CPU。 VM 配置最多 4 个 NVIDIA T4 GPU（每个具有 16 GB 的内存）、多达 64 个非多线程 AMD EPYC 7V12 (Rome) 处理器核心，以及 440 GiB 的系统内存。 这些虚拟机非常适合用于部署 AI 服务（例如对用户生成的请求的实时推断）或使用 NVIDIA 的 GRID 驱动程序和虚拟 GPU 技术的交互式图形和可视化工作负载。 基于 CUDA、TensorRT、Caffe、ONNX 和其他框架的标准 GPU 计算工作负载，或基于 OpenGL 和 DirectX 的 GPU 加速图形应用程序，可以在 NCasT4_v3 系列上以经济实惠的方式部署，并与用户非常接近。
 
 <br>
 
@@ -33,7 +33,7 @@ Nvidia NVLink 互连：不支持<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC4as_T4_v3 |4 |28 |180 | 1 | 16 | 8 | 2 / 8000 |
+| Standard_NC4as_T4_v3 |4 |28 |180 | 1 | 16 | 8 | 2/8000 |
 | Standard_NC8as_T4_v3 |8 |56 |360 | 1 | 16 | 16 | 4 / 8000  |
 | Standard_NC16as_T4_v3 |16 |110 |360 | 1 | 16 | 32 | 8 / 8000  |
 | Standard_NC64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8 / 32000  |
@@ -43,9 +43,9 @@ Nvidia NVLink 互连：不支持<br>
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-若要利用运行 Windows 或 Linux 的 Azure NCasT4_v3 系列 Vm 的 GPU 功能，必须安装 Nvidia GPU 驱动程序。
+若要利用运行 Windows 或 Linux 的 Azure NCasT4_v3 系列 VM 的 GPU 功能，必须安装 Nvidia GPU 驱动程序。
 
-若要手动安装 Nvidia GPU 驱动程序，请参阅适用于 [Windows 的 N 系列 gpu 驱动程序设置](./windows/n-series-driver-setup.md) 以获取支持的操作系统、驱动程序、安装和验证步骤。
+若要手动安装 Nvidia GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)，了解受支持的操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 

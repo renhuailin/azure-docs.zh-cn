@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015394"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
@@ -179,9 +179,9 @@ StorSimple 设备在主机箱和 EBOD 机箱中都有磁盘驱动器。 每个�
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>EBOD 机箱的磁盘驱动器指示器 LED
 | 状态 | 活动正常 LED（绿色） | 故障 LED（琥珀红） | 关联的操作面板 LED |
 | --- | --- | --- | --- |
-| 未安装驱动器 |OFF |OFF |无 |
-| 驱动器已安装且正常运行 |有活动时闪烁亮起/熄灭 |X |无 |
-| SCSI 机箱服务 (SES) 设备标识已设置 |ON |闪烁亮起 1 秒/熄灭 1 秒 |无 |
+| 未安装驱动器 |OFF |OFF |None |
+| 驱动器已安装且正常运行 |有活动时闪烁亮起/熄灭 |X |None |
+| SCSI 机箱服务 (SES) 设备标识已设置 |ON |闪烁亮起 1 秒/熄灭 1 秒 |None |
 | SES 设备故障位已设置 |ON |ON |逻辑故障（红色） |
 | 电源控制电路故障 |OFF |ON |模块故障（红色） |
 
@@ -204,8 +204,8 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | --- | --- | --- |
 | S0 |正常模式：静音 |鸣叫两声 |
 | S1 |故障模式：亮起 1 秒/熄灭 1 秒 |转变为 S2 或 S3（请参阅“注意”部分） |
-| S2 |提醒模式：间歇性鸣叫 |无 |
-| S3 |静音模式：静音 |无 |
+| S2 |提醒模式：间歇性鸣叫 |None |
+| S3 |静音模式：静音 |None |
 | S4 |严重故障模式：持续告警 |不可用：静音未处于活动状态 |
 
 > [!NOTE]
@@ -225,7 +225,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 损失了冗余 |S1 |模块故障 |
 | PCM 风扇故障 |故障 – 损失了冗余 |S1 |模块故障 |
 | SBB 模块检测到 PCM 故障 |故障 |S1 |模块故障 |
-| 移除了 PCM |配置错误 |无 |模块故障 |
+| 移除了 PCM |配置错误 |None |模块故障 |
 | 机箱配置错误 |故障 – 严重 |S1 |模块故障 |
 | 低等警告温度警报 |警告 |S1 |模块故障 |
 | 高等警告温度警报 |警告 |S1 |模块故障 |
@@ -235,10 +235,10 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 控制器错误 |故障 – 严重 |S1 |模块故障 |
 | SBB 接口模块故障 |故障 – 严重 |S1 |模块故障 |
 | SBB 接口模块故障 – 未剩余可以正常运行的模块 |故障 – 严重 |S4 |模块故障 |
-| 移除了 SBB 接口模块 |警告 |无 |模块故障 |
+| 移除了 SBB 接口模块 |警告 |None |模块故障 |
 | 驱动器电源控制故障 |警告 – 驱动器电源未断开 |S1 |模块故障 |
 | 驱动器电源控制故障 |故障 – 严重；驱动器电源断开 |S1 |模块故障 |
-| 移除了驱动器 |警告 |无 |模块故障 |
+| 移除了驱动器 |警告 |None |模块故障 |
 | 电力不足 |警告 |无 |模块故障 |
 
 ## <a name="next-steps"></a>后续步骤

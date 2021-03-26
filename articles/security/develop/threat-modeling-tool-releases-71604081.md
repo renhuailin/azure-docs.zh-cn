@@ -9,10 +9,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913562"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool 更新版本 7.1.60408.1 - 2019/4/9
@@ -28,7 +28,7 @@ Microsoft Threat Modeling Tool (TMT) 的版本 7.1.60408.1 于 2019 年 4 月 9 
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>适用于 Azure Key Vault 和 Azure 流量管理器的新模具
 
-![屏幕截图显示 Azure Key Vault 和 Azure 流量管理器的图标。](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![屏幕截图显示了 Azure Key Vault 和 Azure 流量管理器的图标。](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 已将适用于 Azure Key Vault 和 Azure 流量管理器的新模具和威胁添加到 Azure 模具集。 打开基于 Azure 模具集模型时，系统将提示用户更新与模型关联的模板。 还可以使用“文件”菜单中的“应用模板”命令并重新应用最新的 Azure Cloud Services.tb7 文件手动启动基于 Azure 模具集的模型更新。
 

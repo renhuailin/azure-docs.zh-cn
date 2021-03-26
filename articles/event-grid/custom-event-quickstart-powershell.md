@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3bd389ff523fd32e73ac19f1131c8c2784e16db5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075607"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入门：使用 PowerShell 和事件网格将自定义事件路由到 Web 终结点
@@ -31,7 +31,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-以下示例在“westus2”** 位置创建名为“gridResourceGroup”** 的资源组。
+以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 
 ```powershell-interactive
 New-AzResourceGroup -Name gridResourceGroup -Location westus2

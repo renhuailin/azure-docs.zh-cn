@@ -6,17 +6,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316437"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>通过评审终结点话语启用主动学习的相关概念
 主动学习是提高预测准确性的三个策略之一，也是最易于实现的策略。 评审终结点话语通过主动学习获取正确的意向和实体。 LUIS 选择它不确定的终结点话语。
 
 ## <a name="what-is-active-learning"></a>什么是主动学习
-主动学习是一个两步过程。 首先，LUIS 选择其在应用终结点收到的需要验证的陈述。 第二个步骤由应用程序所有者或协作者执行，用于验证所选的 [最谈话，包括](luis-how-to-review-endpoint-utterances.md)正确的意图和意向中的任何实体。 评审陈述后，再次训练并发布应用。
+主动学习是一个两步过程。 首先，LUIS 选择其在应用终结点收到的需要验证的陈述。 第二步由应用所有者或协作者执行：验证要[评审](luis-how-to-review-endpoint-utterances.md)的所选陈述包含正确意向及该意向中的所有实体。 评审陈述后，再次训练并发布应用。
 
 ## <a name="which-utterances-are-on-the-review-list"></a>评审列表上有哪些陈述
 首要触发意向分数较低或者两个最高的意向分数过于接近时，LUIS 会将陈述添加到评审列表。

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004025"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
@@ -43,7 +43,7 @@ ms.locfileid: "96004025"
 
 4. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。
 
-5. 确保身份验证设置为“不进行身份验证”。 选择“创建”。
+5. 确保身份验证设置为“不进行身份验证”。 选择“创建”  。
 
    ![创建 ASP.NET Web 应用程序](./media/quickstart-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "96004025"
 
 在“创建新的应用服务”页中指定的应用名称将用作 `http://<app-name>.azurewebsites.net` 格式的 URL 前缀。
 
-祝贺你！ 你的 ASP.NET Web 应用已在 Azure 应用服务中实时运行！
+**祝贺你！** 你的 ASP.NET Web 应用已在 Azure 应用服务中实时运行！
 
 ## <a name="update-the-app-and-redeploy"></a>更新应用并重新部署
 
@@ -132,7 +132,7 @@ ms.locfileid: "96004025"
 
    ![选择应用服务](./media/quickstart-dotnet-framework/app-services.png)
 
-2. 在“应用服务”页上，选择 Web 应用的名称  。
+2. 在“应用服务”页上，选择 Web 应用的名称。
 
    ![在门户中导航到 Azure 应用](./media/quickstart-dotnet-framework/access-portal-framework-vs2019.png)
 

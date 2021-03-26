@@ -1,6 +1,6 @@
 ---
-title: 用 Azure 资源管理器模板部署磁盘
-description: 详细介绍如何在 azure Vm 中使用 azure 资源管理器模板中的托管和非托管磁盘。
+title: 使用 Azure 资源管理器模板部署磁盘
+description: 详细介绍如何在 Azure 资源管理器模板中将托管和非托管磁盘用于 Azure VM。
 documentationcenter: ''
 author: jboeshart
 manager: ''
@@ -11,13 +11,13 @@ ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
 ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91976653"
 ---
-# <a name="using-disks-in-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板中的磁盘
+# <a name="using-disks-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中使用磁盘
 
 本文档逐步讲解在使用 Azure 资源管理器模板预配虚拟机时托管磁盘与非托管磁盘之间的差异。 该示例可以帮助你将使用非托管磁盘的现有模板更新为托管磁盘。 为方便参考，我们将使用 [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) 模板作为指导。 你可以查看使用[托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)的模板，以及使用[非托管磁盘](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)的早期版本，因此可以根据需要直接对两者进行比较。
 

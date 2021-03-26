@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073513"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -46,14 +46,14 @@ DATE_BUCKET (datePart, number, date, origin)
 |month |mm, m  |
 |quarter |qq, q  |  
 |**year**|yy, yyyy  |  
-|hour|**hh**|  
+|hour |**hh**|  
 |minute |mi, n  |  
 |second |ss, s  |  
 |millisecond |ms|  
 
 *数字*
 
-一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`** . 
+一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`**. 
 
 *date*
 

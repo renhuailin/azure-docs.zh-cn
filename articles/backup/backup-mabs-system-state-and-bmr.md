@@ -4,10 +4,10 @@ description: 使用 Azure 备份服务器备份系统状态，并提供裸机恢
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021616"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并将计算机还原成裸机
@@ -25,19 +25,19 @@ Azure 备份服务器备份系统状态，并提供裸机恢复 (BMR) 保护。
 
 |Backup|问题|从 Azure 备份服务器备份恢复|从系统状态备份恢复|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
-|文件数据<br /><br />常规数据备份<br /><br />BMR/系统状态备份|丢失文件数据|Y|N|N|
-|文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
+|**文件数据**<br /><br />常规数据备份<br /><br />BMR/系统状态备份|文件数据丢失|Y|N|N|
+|文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
 |文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失服务器（数据卷完整）|N|N|Y|
-|文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失服务器（数据卷丢失）|Y|N|Y<br /><br />BMR，随后对已备份文件数据进行常规恢复|
+|文件数据<br /><br />对文件数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷丢失）|Y|N|Y<br /><br />BMR，随后对已备份文件数据进行常规恢复|
 |**SharePoint 数据**<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失站点、列表、列表项、文档|Y|N|N|
-|**SharePoint 数据**<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
+|**SharePoint 数据**<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
 |**SharePoint 数据**<br /><br />对场数据进行 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 VM|Y|N|N|
-|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
-|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 完整）|N|N|Y|
-|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|丢失 Hyper-V 主机（VM 丢失）|N|N|Y<br /><br />BMR，随后进行常规 Azure 备份服务器恢复|
-|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|丢失应用数据|Y|N|N|
-|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
+|Windows Server 2012 R2 Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|VM 丢失|Y|N|N|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|Hyper-V 主机丢失（VM 完整）|N|N|Y|
+|Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />对主机进行 BMR/系统状态备份|Hyper-V 主机丢失（VM 丢失）|N|N|Y<br /><br />BMR，随后进行常规 Azure 备份服务器恢复|
+|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|应用数据丢失|Y|N|N|
+|SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|服务器丢失（数据库/事务日志完整）|N|N|Y|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|服务器丢失（数据库/事务日志丢失）|N|N|Y<br /><br />BMR 恢复，随后进行常规 Azure 备份服务器恢复|
 

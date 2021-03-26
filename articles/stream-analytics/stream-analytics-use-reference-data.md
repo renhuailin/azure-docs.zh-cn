@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99560208"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
@@ -32,7 +32,7 @@ WHERE R.Expired = '1'
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。 有关详细信息，请参阅在 [Azure 流分析作业中使用 Blob 存储中的引用数据](data-protection.md)。
+引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。 有关详细信息，请参阅[使用 Blob 存储中的参考数据进行 Azure 流分析作业](data-protection.md)。
 
 ### <a name="configure-blob-reference-data"></a>配置 blob 参考数据
 

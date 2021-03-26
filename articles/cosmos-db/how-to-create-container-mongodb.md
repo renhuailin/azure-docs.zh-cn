@@ -1,6 +1,6 @@
 ---
-title: 在 MongoDB Azure Cosmos DB API 中创建容器
-description: 了解如何使用 Azure 门户、.NET、Java、Node.js 和其他 Sdk 在 MongoDB Azure Cosmos DB API 中创建容器。
+title: 在 Azure Cosmos DB API for MongoDB 中创建容器
+description: 了解如何使用 Azure 门户、.NET、Java、Node.js 和其他 SDK 在 Azure Cosmos DB API for MongoDB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -9,18 +9,18 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: a5669b15c041f663605a62ef8d02b206928d0c14
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101589"
 ---
-# <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>在 MongoDB Azure Cosmos DB API 中创建容器
+# <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>在 Azure Cosmos DB API for MongoDB 中创建容器
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-本文介绍在 MongoDB Azure Cosmos DB API 中创建容器的不同方法。 它演示了如何使用 Azure 门户、Azure CLI、PowerShell 或受支持的 Sdk 创建容器。 本文演示如何创建容器、指定分区键和预配吞吐量。
+本文介绍在 Azure Cosmos DB API for MongoDB 中创建容器的不同方式。 它演示了如何使用 Azure 门户、Azure CLI、PowerShell 或受支持的 SDK 来创建容器。 本文演示如何创建容器、指定分区键和预配吞吐量。
 
-本文介绍在 MongoDB Azure Cosmos DB API 中创建容器的不同方法。 如果你使用的是其他 API，请参阅 [SQL API](how-to-create-container.md)、 [CASSANDRA API](how-to-create-container-cassandra.md)、 [Gremlin API](how-to-create-container-gremlin.md)和 [表 API](how-to-create-container-table.md) 文章来创建容器。
+本文介绍在 Azure Cosmos DB API for MongoDB 中创建容器的不同方式。 如果你使用其他 API，请参阅 [SQL API](how-to-create-container.md)、[Cassandra API](how-to-create-container-cassandra.md)、[Gremlin API](how-to-create-container-gremlin.md) 和[表 API](how-to-create-container-table.md) 这几篇文章来创建容器。
 
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。
@@ -55,15 +55,15 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 
 ## <a name="create-using-azure-cli"></a><a id="cli-mongodb"></a>使用 Azure CLI 创建
 
-[使用 Azure CLI 创建 MONGODB API Azure Cosmos DB 的集合](./scripts/cli/mongodb/create.md)。 有关所有 Azure Cosmos DB API 的所有 Azure CLI 示例的列表，请参阅 [Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
+[使用 Azure CLI 为 Azure Cosmos DB for MongoDB API 创建集合](./scripts/cli/mongodb/create.md)。 有关所有 Azure Cosmos DB API 的所有 Azure CLI 示例的列表，请参阅 [Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
 
 ## <a name="create-using-powershell"></a>使用 PowerShell 创建
 
-[使用 PowerShell 创建适用于 MONGODB API Azure Cosmos DB 的集合](./scripts/powershell/mongodb/create.md)。 有关所有 Azure Cosmos DB API 的所有 PowerShell 示例的列表，请参阅 [PowerShell 示例](powershell-samples.md)
+[使用 PowerShell 为 Azure Cosmos DB for MongoDB API 创建集合](./scripts/powershell/mongodb/create.md)。 有关所有 Azure Cosmos DB API 的所有 PowerShell 示例的列表，请参阅 [PowerShell 示例](powershell-samples.md)
 
-## <a name="create-a-container-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建容器
+## <a name="create-a-container-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板来创建容器
 
-[使用资源管理器模板为 MONGODB API Azure Cosmos DB 创建集合](./manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput)。
+[使用资源管理器模板为 Azure Cosmos DB for MongoDB API 创建集合](./manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput)。
 
 ## <a name="next-steps"></a>后续步骤
 

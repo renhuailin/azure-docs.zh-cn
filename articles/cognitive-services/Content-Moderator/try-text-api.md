@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001994"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
@@ -137,4 +137,4 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="next-steps"></a>后续步骤
 
-请在代码中使用 REST API，或按照 [.NET SDK 快速入门](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) 与应用程序集成。
+若要与应用程序集成，请在代码中使用 REST API，或按照 [.NET SDK 快速入门](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)进行操作。

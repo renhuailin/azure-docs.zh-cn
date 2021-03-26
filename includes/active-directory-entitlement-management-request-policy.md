@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: active-directory
 author: msaburnley
@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98697963"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
@@ -206,7 +206,7 @@ ms.locfileid: "98697963"
 
     如果选择了“无（仅限管理员直接分配）”，并且将“启用”设置为“否”，则管理员无法直接分配此访问包 。
 
-    ![显示用于启用新请求和分配的选项的屏幕截图。](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
+    ![此屏幕截图显示了用于启用新请求和分配的选项。](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
 1. 单击“下一步”  。
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96534023"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
@@ -52,7 +52,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    有关详细信息，请参阅 [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)（Dockerfile 参考）。
 
 
-4. 登录到 Docker，运行 `docker build` 命令以创建运行 web 应用程序的映像：
+4. 登录 Docker 并运行 `docker build` 命令，来创建运行上述 Web 应用程序的映像：
 
    ```bash
    docker login
@@ -100,7 +100,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    ```
 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>将 Tomcat 映像推送到容器注册表
-现在，你已经验证了 Tomcat 映像是否在开发计算机上的容器中运行，请将它推送到容器注册表中的存储库，以减少映像开发和部署工作流的 [中断](../container-registry/buffer-gate-public-content.md) 。 本文使用 Azure 容器注册表来存储图像，但是，只需对步骤稍作修改即可使用所选的任何容器注册表。 本文中的注册表名称假定为 myregistry，完整注册表名称为 myregistry.azurecr.io。 可根据自己的方案相应更改上述内容。 
+你现已确认 Tomcat 映像在开发计算机上的容器中运行，请将其推送到容器注册表中的存储库中，以[减少](../container-registry/buffer-gate-public-content.md)对映像开发和部署工作流的干扰。 本文使用 Azure 容器注册表来存储图像，但是，只需对步骤稍作修改即可使用所选的任何容器注册表。 本文中的注册表名称假定为 myregistry，完整注册表名称为 myregistry.azurecr.io。 可根据自己的方案相应更改上述内容。 
 
 1. 运行 `docker login`，以使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
 

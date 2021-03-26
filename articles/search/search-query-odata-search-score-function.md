@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0a84d0310573a1210e21157102a445fff9244782
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923970"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.score` 函数
 
-在不使用 [ **$orderby** 参数](search-query-odata-orderby.md)的情况下向 Azure 认知搜索发送查询时，返回的结果将按相关性评分降序排序。 即使你确实使用 **$orderby**，默认情况下，相关性评分也将用于打破平分的局面。 但是，有时使用相关性评分作为初始排序条件，并使用其他一些条件作为决定因素是有用的。 `search.score` 函数允许你执行此操作。
+在不使用 [**$orderby** 参数](search-query-odata-orderby.md)的情况下向 Azure 认知搜索发送查询时，返回的结果将按相关性评分降序排序。 即使你确实使用 **$orderby**，默认情况下，相关性评分也将用于打破平分的局面。 但是，有时使用相关性评分作为初始排序条件，并使用其他一些条件作为决定因素是有用的。 `search.score` 函数允许你执行此操作。
 
 ## <a name="syntax"></a>语法
 

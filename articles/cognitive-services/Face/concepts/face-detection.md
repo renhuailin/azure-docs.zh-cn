@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600184"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性
@@ -64,9 +64,9 @@ ms.locfileid: "98600184"
 
 * 支持的输入图像格式为 JPEG、PNG、GIF（第一帧）和 BMP。
 * 图像文件不得大于 6 MB。
-* 在不大于 1920 x 1080 像素的图像中，最小可检测的人脸大小为 36 x 36 像素。 大于 1920 x 1080 像素的图像的最小字体大小比例要大。 减小面部大小可能会导致无法检测到某些面，即使它们大于可检测到的最小字体大小。
-* 最大可检测的人脸大小为 4096 x 4096 像素。
-* 不会检测到 36 x 36 到 4096 x 4096 像素大小范围以外的人脸。
+* 在不大于 1920 x 1080 像素的图像中，最小可检测人脸大小是 36 x 36 像素。 在大于 1920 x 1080 像素的图像中，最小人脸大小相应更大。 减小人脸大小可能会导致无法检测到某些人脸，即使它们大于最小可检测人脸大小也是如此。
+* 最大可检测人脸大小为 4096 x 4096 像素。
+* 大小在 36 x 36 至 4096 x 4096 像素大小范围之外的人脸将不会被检测到。
 * 某些人脸会因技术难题而检测不到。 极端的人脸角度（头部姿势）或人脸遮挡物（太阳镜或遮挡人脸部位的手等物体）可能会影响检测。 正面和接近正面的人脸可提供最佳结果。
 
 若要检测视频源中的人脸，则可通过调整视频摄像头上的某些设置来改进性能：

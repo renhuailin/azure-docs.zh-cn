@@ -8,46 +8,46 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: duau
 ms.openlocfilehash: 432ecedbbb8965926499380eb1165fdf43018426
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680280"
 ---
 # <a name="reset-expressroute-circuit-peerings-by-using-the-azure-portal"></a>使用 Azure 门户重置 ExpressRoute 线路对等互连
 
-本文介绍如何使用 Azure 门户禁用和启用 Azure ExpressRoute 线路的对等互连。 禁用对等互连时，将关闭 ExpressRoute 线路的主连接和辅助连接的边界网关协议 (BGP) 会话。 启用对等互连时，将还原 ExpressRoute 线路的主连接和辅助连接上的 BGP 会话。
+本文介绍了如何使用 Azure 门户禁用和启用 Azure ExpressRoute 线路的对等互连。 禁用对等互连后，ExpressRoute 线路的主连接和辅助连接上的边界网关协议 (BGP) 会话都将关闭。 启用对等互连后，ExpressRoute 线路的主连接和辅助连接上的 BGP 会话都将还原。
 
 > [!Note]
-> 首次在 ExpressRoute 线路上配置对等互连时，默认情况下会启用对等互连。
+> 首次在 ExpressRoute 线路上配置对等互连时，将默认启用对等互连。
 
-在以下方案中，重置 ExpressRoute 对等互连可能会有所帮助：
+在以下情况中，重置 ExpressRoute 对等互连可能会有所帮助：
 
-* 正在测试灾难恢复设计和实现。 例如，假设您有两个 ExpressRoute 线路。 可以禁用一个线路的对等互连，并强制网络流量使用另一个线路。
+* 你在测试你的灾难恢复设计和实现。 例如，假设你有两条 ExpressRoute 线路。 你可以禁用一条线路的对等互连，并强制网络流量使用另一条线路。
 
-* 要在 Azure 专用对等互连或 Microsoft 对等互连上启用 (BFD) 的双向转发检测。 如果 ExpressRoute 线路是在2018年8月1日之前创建的，则在 Azure 专用对等互连上或在2020之前的之前，默认情况下未启用 BFD。 重置对等互连以启用 BFD。
+* 你希望在 Azure 专用对等互连或 Microsoft 对等互连上启用双向转发检测 (BFD)。 如果 ExpressRoute 线路是在 2018 年 8 月 1 日之前在 Azure 专用对等互连上创建的，或者是在 2020 年 1 月 10 日之前创建的，则 BFD 没有默认启用。 请重置对等互连以启用 BFD。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-从浏览器中转到 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
+在浏览器中，转到 [Azure 门户](https://portal.azure.com)，然后使用你的 Azure 帐户登录。
 
 ## <a name="reset-a-peering"></a>重置对等互连
 
-你可以单独重置 ExpressRoute 线路上的 Microsoft 对等互连和 Azure 专用对等互连。
+你可以分别重置 ExpressRoute 线路上的 Microsoft 对等互连和 Azure 专用对等互连。
 
-1. 选择要更改的线路。
+1. 选择你要更改的线路。
 
-    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/expressroute-circuit-list.png" alt-text="显示在 ExpressRoute 线路列表中选择线路的屏幕截图。":::
+    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/expressroute-circuit-list.png" alt-text="屏幕截图显示了在 ExpressRoute 线路列表中选择线路。":::
 
-1. 选择要重置的对等互连配置。
+1. 选择你要重置的对等互连配置。
 
-    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/expressroute-circuit.png" alt-text="屏幕截图显示了如何选择 ExpressRoute 线路概述中的对等互连。":::
+    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/expressroute-circuit.png" alt-text="屏幕截图显示了在 ExpressRoute 线路概览中选择对等互连。":::
 
-1. 清除 " **启用对等互连** " 复选框，然后选择 " **保存** " 以禁用对等互连配置。
+1. 清除“启用对等互连”复选框，然后选择“保存”以禁用对等互连配置。
 
-    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/disable-peering.png" alt-text="屏幕截图，显示清除 &quot;启用对等互连&quot; 复选框。":::
+    :::image type="content" source="./media/expressroute-howto-reset-peering-portal/disable-peering.png" alt-text="屏幕截图显示了清除“启用对等互连”复选框。":::
 
-1. 选中 " **启用对等互连** " 复选框，然后选择 " **保存** " 以重新启用对等互连配置。
+1. 选择“启用对等互连”复选框，然后选择“保存”以启用对等互连配置。
 
 ## <a name="next-steps"></a>后续步骤
 
