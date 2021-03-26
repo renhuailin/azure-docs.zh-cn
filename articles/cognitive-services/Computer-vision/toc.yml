@@ -48,13 +48,13 @@
     - name: 分析实时视频
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: 如何虚拟网络
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: 从 Read 2.x 升级到 Read 3.x
       href: upgrade-api-versions.md
     - name: 如何配置 AAD 身份验证
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: 如何使用客户管理的密钥
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: 部署计算机视觉
       items:
         - name: 容器
@@ -155,7 +155,7 @@
     - name: 区域支持
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: LEARN 模块
-      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: 支持和帮助
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: 合规性

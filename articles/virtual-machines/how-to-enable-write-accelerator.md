@@ -10,10 +10,10 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
 ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737908"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
@@ -49,8 +49,8 @@ ms.locfileid: "98737908"
 
 | VM SKU | 写入加速器磁盘数 | 每个 VM 的写入加速器磁盘 IOPS |
 | --- | --- | --- |
-| M416ms_v2，M416s_v2| 16 | 20000 |
-| M208ms_v2，M208s_v2| 8 | 10000 |
+| M416ms_v2, M416s_v2| 16 | 20000 |
+| M208ms_v2, M208s_v2| 8 | 10000 |
 | M128ms, M128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |

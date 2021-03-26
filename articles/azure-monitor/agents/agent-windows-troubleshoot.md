@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100605974"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952977"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查 Log Analytics Windows 代理的问题 
 
@@ -19,7 +19,7 @@ ms.locfileid: "100605974"
 如果这些步骤对你均无效，我们还提供了以下支持渠道：
 
 * 具有顶级支持权益的客户可以通过[顶级支持](https://premier.microsoft.com/)提出支持请求。
-* 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
+* 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://azure.microsoft.com/support/options/)中提出支持请求。
 * 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 故障排除工具
@@ -71,7 +71,7 @@ Log Analytics 代理 Windows 故障排除工具是一个 PowerShell 脚本集合
 |*.ods.opinsights.azure.com |端口 443 |出站|是 |  
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
 |\* .blob.core.windows.net |端口 443 |出站|是 |  
-|*. agentsvc.azure-automation.net |端口 443 |出站|是 |  
+|*.agentsvc.azure-automation.net |端口 443 |出站|是 |  
 
 有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)。 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接到自动化服务并在其中注册以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 

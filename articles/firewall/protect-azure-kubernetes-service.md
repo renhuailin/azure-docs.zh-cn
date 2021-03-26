@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: victorh
 ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98107848"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
@@ -47,7 +47,7 @@ Azure 防火墙提供 AKS FQDN 标记以简化此配置。 使用以下步骤允
    - 如果有应用需要与 API 服务器通信，则需要 TCP [IPAddrOfYourAPIServer]:443。 创建群集后，可以设置此更改。
    - TCP 端口 9000 和 UDP 端口 1194，使隧道前端 pod 与 API 服务器上的隧道后端进行通信。
 
-      若要更为具体，请参阅下表中的地址：
+      具体来说，请参见下表中的地址：
 
    | 目标终结点                                                             | 协议 | 端口    | 用途  |
    |----------------------------------------------------------------------------------|----------|---------|------|
