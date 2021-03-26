@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017904"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557694"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR 中启用诊断日志记录
 
@@ -42,7 +42,7 @@ ms.locfileid: "103017904"
     2. **流式传输到事件中心** ，以供第三方服务或自定义分析解决方案引入。 你将需要创建事件中心命名空间和事件中心策略，然后才能配置此步骤。
     3. **流到 Azure Monitor 中的 Log Analytics** 工作区。 你将需要创建日志分析工作区，然后才能选择此选项。
 
-6. 选择 **AuditLogs** 和/或 **AllMetrics**。 指标包括服务名称、可用性、数据大小、总延迟、请求总数、错误总数和时间戳。 可以在 [支持的指标](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)中找到更多详细信息。 
+6. 选择 **AuditLogs** 和/或 **AllMetrics**。 指标包括服务名称、可用性、数据大小、总延迟、请求总数、错误总数和时间戳。 可以在 [支持的指标](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices)中找到更多详细信息。 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 诊断设置。选择 AuditLogs 和/或 AllMetrics。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
@@ -104,7 +104,7 @@ MicrosoftHealthcareApisAuditLogs
 | where ResultType == "Failed" 
 ```
 
-## <a name="conclusion"></a>结束语 
+## <a name="conclusion"></a>结论 
 有权访问诊断日志对于监视服务和提供相容性报告非常重要。 使用用于 FHIR 的 Azure API 可以通过诊断日志执行这些操作。 
  
 FHIR 是 HL7 的注册商标，经 HL7 许可使用。
