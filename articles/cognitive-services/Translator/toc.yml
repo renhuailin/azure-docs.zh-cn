@@ -148,6 +148,22 @@
       items:
         - name: 文档翻译 REST API
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: 获取文档格式
+          href: document-translation/reference/get-document-formats.md
+        - name: 获取术语表格式
+          href: document-translation/reference/get-glossary-formats.md
+        - name: 获取文档存储源
+          href: document-translation/reference/get-document-storage-source.md
+        - name: 提交批处理请求
+          href: document-translation/reference/submit-batch-request.md
+        - name: 获取操作文档状态
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: 获取文档状态
+          href: document-translation/reference/get-document-status.md
+        - name: 获取操作
+          href: document-translation/reference/get-operations.md
+        - name: 取消操作
+          href: document-translation/reference/cancel-operation.md
 - name: 翻译器资源
   items:
     - name: 支持和帮助选项
