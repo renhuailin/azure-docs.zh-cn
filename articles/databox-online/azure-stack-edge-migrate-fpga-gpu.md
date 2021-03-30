@@ -6,36 +6,36 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/10/2021
+ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 1db6574f8ca22b6fe60899f00700ee19d61eab3b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382814"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573264"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>将工作负荷从 Azure Stack Edge Pro FPGA 迁移到 Azure Stack Edge Pro GPU
 
-本文介绍如何将工作负荷和数据从 Azure Stack Edge Pro FPGA 设备迁移到 Azure Stack Edge Pro GPU 设备。 迁移过程涉及迁移的概述，其中包括两台设备之间的比较、迁移注意事项、详细步骤，以及验证后的清理。
+本文介绍如何将工作负荷和数据从 Azure Stack Edge Pro FPGA 设备迁移到 Azure Stack Edge Pro GPU 设备。 迁移过程首先对两个设备进行比较，并给出迁移计划和回顾迁移注意事项。 迁移过程将提供详细步骤，最后一步是执行验证和设备清理。
 
-<!--Azure Stack Edge Pro FPGA devices will reach end-of-life in February 2024. If you are considering new deployments, we recommend that you explore Azure Stack Edge Pro GPU devices for your workloads.-->
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
 ## <a name="about-migration"></a>关于迁移
 
 迁移是将工作负荷和应用程序数据从一个存储位置转移到另一个位置的过程。 这需要将组织的当前数据从一台存储设备完全复制到另一台存储设备（最好能够避免中断或禁用活动的应用程序），然后将所有输入/输出 (I/O) 活动重定向到新设备。 
 
-此迁移指南提供了将数据从 Azure Stack Edge Pro FPGA 设备迁移到 Azure Stack Edge Pro GPU 设备所需步骤的分步演练。 本文档面向那些负责在数据中心运营、部署和管理 Azure Stack Edge 设备的信息技术 (IT) 专业人员和知识工作者。 
+此迁移指南提供了将数据从 Azure Stack Edge Pro FPGA 设备迁移到 Azure Stack Edge Pro GPU 设备所需步骤的分步演练。 本文档面向那些负责在数据中心运营、部署和管理 Azure Stack Edge 设备的信息技术 (IT) 专业人员和知识工作者。
 
 在本文中，将 Azure Stack Edge Pro FPGA 设备称为源设备，将 Azure Stack Edge Pro GPU 设备称为目标设备。 
 
 ## <a name="comparison-summary"></a>比较摘要
 
-本节提供 Azure Stack Edge Pro GPU 与 Azure Stack Edge Pro FPGA 设备之间功能的对比摘要。 源设备和目标设备中的硬件大致相同，只是硬件加速卡和存储容量不同。 
+本节提供 Azure Stack Edge Pro GPU 与 Azure Stack Edge Pro FPGA 设备之间功能的对比摘要。 源设备和目标设备中的硬件大致相同；只是硬件加速卡和存储容量可能不同。<!--Please verify: These components MAY, but need not necessarily, differ?-->
 
 |    功能  | Azure Stack Edge Pro GPU（目标设备）  | Azure Stack Edge Pro FPGA（源设备）|
 |----------------|-----------------------|------------------------|
-| 硬件       | 硬件加速：1 个或 2 个 Nvidia T4 GPU <br> 计算、内存、网络接口、电源单元、电源线规格与 FPGA 设备相同。  | 硬件加速：Intel Arria 10 FPGA <br> 计算、内存、网络接口、电源单元、电源线规格与 GPU 设备相同。          |
+| 硬件       | 硬件加速：1 个或 2 个 Nvidia T4 GPU <br> 计算、内存、网络接口、电源单元和电源线规格与搭载 FPGA 的设备相同。  | 硬件加速：Intel Arria 10 FPGA <br> 计算、内存、网络接口、电源单元和电源线规格与搭载 GPU 的设备相同。          |
 | 可用存储 | 4.19 TB <br> 预留空间供奇偶校验复原和内部使用之后 | 12.5 TB <br> 预留空间供内部使用之后 |
 | 安全性       | 证书 |                                                     |
 | 工作负荷      | IoT Edge 工作负荷 <br> VM 工作负荷 <br> Kubernetes 工作负载| IoT Edge 工作负荷 |
@@ -55,7 +55,7 @@ ms.locfileid: "100382814"
 
 在进行迁移之前，请考虑以下信息： 
 
-- Azure Stack Edge Pro GPU 设备不能针对 Azure Stack Edge Pro FPGA 资源进行激活。 应按照[创建 Azure Stack Edge Pro GPU 订单](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)中的说明，为 Azure Stack Edge Pro GPU 设备创建新资源。
+- Azure Stack Edge Pro GPU 设备不能针对 Azure Stack Edge Pro FPGA 资源进行激活。 应根据[创建 Azure Stack Edge Pro GPU 订单](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)中所述，为 Azure Stack Edge Pro GPU 设备创建新资源。
 - 需要将在使用 FPGA 的源设备上部署的机器学习模型更改为 GPU 目标设备。 有关模型的帮助，可以联系 Microsoft 支持部门。 在源设备上部署的自定义模型如果未使用 FPGA（仅使用 CPU），在目标设备上应该会按原样工作（使用 CPU）。
 - 可能需要更改在源设备上部署的 IoT Edge 模块，才能在目标设备上成功部署这些模块。 
 - 源设备支持 NFS 3.0 和 4.1 协议。 目标设备仅支持 NFS 3.0 协议。
@@ -99,15 +99,15 @@ Edge 云共享将层级数据从你的设备共享到 Azure。 通过 Azure 门�
 
 - 列出你在源设备上拥有的所有 Edge 云共享和用户。
 - 列出你拥有的所有带宽计划。 你将在目标设备上重新创建这些带宽计划。
-- 根据可用的网络带宽，在设备上配置带宽计划，最大限度地将数据分层到云。 这将最大限度地减少设备上的本地数据。
-- 确保共享完全分层到云。 通过在 Azure 门户中检查共享状态可以确认这一点。  
+- 根据可用的网络带宽，在设备上配置带宽计划，以最大限度地将数据分层到云。 这可以尽量减少设备上的本地数据。
+- 确保共享完全分层到云。 可以通过在 Azure 门户中检查共享状态来确认分层。  
 
 #### <a name="data-in-edge-local-shares"></a>Edge 本地共享中的数据
 
 Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设备上执行下面的步骤。 
 
-- 列出你的设备上的 Edge 本地共享。
-- 由于这是数据的一次性迁移，请将 Edge 本地共享数据的副本创建到另一台本地服务器上。 可以使用复制工具（如 `robocopy` (SMB) 或 `rsync` (NFS)）复制数据。 你也可能已经部署了第三方数据保护解决方案来备份本地共享中的数据。 以下第三方解决方案支持用于 Azure Stack Edge Pro FPGA 设备：
+- 列出设备上的 Edge 本地共享。
+- 由于执行的是一次性数据迁移，因此请在另一台本地服务器上创建 Edge 本地共享数据的副本。 可以使用复制工具（如 `robocopy` (SMB) 或 `rsync` (NFS)）复制数据。 你也可能已经部署了第三方数据保护解决方案来备份本地共享中的数据。 以下第三方解决方案支持用于 Azure Stack Edge Pro FPGA 设备：
 
     | 第三方软件           | 解决方案参考信息                               |
     |--------------------------------|---------------------------------------------------------|
@@ -157,9 +157,9 @@ Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设�
 
 请按照以下步骤操作，在目标设备上同步 Edge 云共享上的数据：
 
-1. [添加共享](azure-stack-edge-j-series-manage-shares.md#add-a-share)，使其与源设备上创建的共享名称相对应。 请确保在创建共享时，将“选择 blob 容器”设置为“使用现有容器”选项，然后选择之前设备使用的容器。
+1. [添加共享](azure-stack-edge-j-series-manage-shares.md#add-a-share)，使其与源设备上创建的共享名称相对应。 创建共享时，请确保将“选择 Blob 容器”设置为“使用现有容器”，然后选择在前一设备上使用的容器。 
 1. [添加用户](azure-stack-edge-j-series-manage-users.md#add-a-user)，使其有权访问之前的设备。
-1. [刷新来自 Azure 的共享数据](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 这会将现有容器中的所有云数据提取到共享中。
+1. [刷新来自 Azure 的共享数据](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 刷新共享会将现有容器中的所有云数据拉取到共享中。
 1. 重新创建要与共享关联的带宽计划。 有关详细步骤，请参阅[添加带宽计划](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule)。
 
 
@@ -172,12 +172,12 @@ Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设�
 按照以下步骤操作，从本地共享恢复数据：
 
 1. [在设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
-1. 在目标设备上添加所有本地共享。 请参阅[添加本地共享](azure-stack-edge-j-series-manage-shares.md#add-a-local-share)中的详细步骤。
+1. 在目标设备上添加所有本地共享。 请参阅[添加本地共享](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)中的详细步骤。
 1. 在源设备上访问 SMB 共享将使用 IP 地址，而在目标设备上，将使用设备名称。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 SMB 共享](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)。 若要在目标设备上连接到 NFS 共享，需要使用与该设备关联的新 IP 地址。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 NFS 共享](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)。 
 
-    如果通过 SMB/NFS 将共享数据复制到中间服务器，则可以将此数据复制到目标设备上的共享中。 如果源设备和目标设备都联机，还可以直接从源设备复制数据。
+    如果通过 SMB 或 NFS 将共享数据复制到了某台中间服务器，可将该中间服务器中的数据复制到目标设备上的共享。 如果源设备和目标设备都已联机，则还可以直接从源设备复制数据。
 
-    如果你曾经使用第三方软件备份本地共享中的数据，则需要运行所选的数据保护解决方案所提供的恢复过程。 请参阅下表中的参考信息。
+    如果你曾经使用第三方软件备份了本地共享中的数据，则需要运行所选的数据保护解决方案所提供的恢复过程。 请参阅下表中的参考信息。
 
     | 第三方软件           | 解决方案参考信息                               |
     |--------------------------------|---------------------------------------------------------|

@@ -1,20 +1,20 @@
 ---
-title: 如何对 HTTP 请求进行签名 C#
+title: 了解如何使用 C# 为 HTTP 请求签名
 titleSuffix: An Azure Communication Services tutorial
-description: 了解如何通过 C# 对 HTTP 请求通信服务进行签名
+description: 了解如何通过 C# 为针对 Azure 通信服务的 HTTP 请求签名。
 author: alexandra142
 manager: soricos
 services: azure-communication-services
 ms.author: apistrak
-ms.date: 01/15/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8a9191180dcf4a16f586d109e820e63def566a42
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e9b24e981e472371e477cd4dd895e976f709b2fb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488726"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103490495"
 ---
 # <a name="sign-an-http-request"></a>对 HTTP 请求进行签名
 
@@ -27,16 +27,16 @@ ms.locfileid: "102488726"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 你将能够深入了解如何[清理 Azure 通信服务资源](../quickstarts/create-communication-resource.md#clean-up-resources)以及如何[清理 Azure Function 资源](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources)。
+若要清理并删除通信服务订阅，请删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 你可以深入了解如何[清理 Azure 通信服务资源](../quickstarts/create-communication-resource.md#clean-up-resources)以及如何[清理 Azure Functions 资源](../../azure-functions/create-first-function-vs-code-csharp.md#clean-up-resources)。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [添加对应用的音频呼叫](../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
-你可能还想要：
+你可能还需要：
 
-- [向应用添加聊天](../quickstarts/chat/get-started.md)
+- [向应用中添加聊天](../quickstarts/chat/get-started.md)
 - [创建用户访问令牌](../quickstarts/access-tokens.md)
 - [了解客户端和服务器体系结构](../concepts/client-and-server-architecture.md)
 - [了解身份验证](../concepts/authentication.md)

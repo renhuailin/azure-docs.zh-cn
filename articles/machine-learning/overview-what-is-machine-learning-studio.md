@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 adobe-target: true
-ms.openlocfilehash: 320840277483776dfc74b98ab70410503008df67
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 48c4b2a73628ab2105e23054d747e28acc105d01
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374229"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563176"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 
@@ -76,31 +76,26 @@ ms.locfileid: "100374229"
 
 ## <a name="ml-studio-classic-vs-azure-machine-learning-studio"></a>机器学习工作室（经典）与 Azure 机器学习工作室
 
-机器学习工作室（经典）于 2015 年发布，是我们的第一个拖放式机器学习生成器。 它是一个只提供视觉体验的独立服务。 工作室（经典）不与 Azure 机器学习进行互操作。
+机器学习工作室（经典）于 2015 年发布，是我们的第一个拖放式机器学习生成器。 
+
+ML 工作室（经典）是一种仅提供视觉体验的独立服务。 工作室（经典）不与 Azure 机器学习进行互操作。
 
 Azure 机器学习是一种独立的新式服务，可提供完整的数据科学平台。 它同时支持代码优先和低代码体验。
 
 Azure 机器学习工作室是 Azure 机器学习中的 Web 门户，其中包含用于项目创作和资产管理的低代码和无代码选项。 
 
-我们建议新用户选择 Azure 机器学习而不是机器学习工作室（经典），以使用最新的数据科学工具。
+我们建议新用户选择 Azure 机器学习而不是机器学习工作室（经典），以使用最新的数据科学工具。 如果是现有的 ML 工作室（经典）用户，请考虑[迁移到 Azure 机器学习](classic/migrate-overview.md)。
+
+以下是切换到 Azure 机器学习的一些好处：
+
+- 用于大规模训练的可缩放计算群集。
+- 企业安全和治理。
+- 可与常用的开源工具互操作。
+- 端到端 MLOps。
 
 ### <a name="feature-comparison"></a>功能比较
 
-下表总结了机器学习工作室（经典）和 Azure 机器学习之间的一些重要差异。
-
-| 功能 | 机器学习工作室（经典版） | Azure 机器学习 |
-|---| --- | --- |
-| 拖放界面 | 经典体验 | 更新的体验 - [Azure 机器学习设计器](concept-designer.md)| 
-| 代码 SDK | 不支持 | 与 [Azure 机器学习 Python](/python/api/overview/azure/ml/) 和 [R](https://github.com/Azure/azureml-sdk-for-r) SDK 完全集成 |
-| 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
-| 训练计算目标 | 专用计算目标，仅限 CPU 支持 | 各种可自定义的[训练计算目标](concept-compute-target.md#train)。 包括 GPU 和 CPU 支持 | 
-| 部署计算目标 | 专用 Web 服务格式，不可自定义 | 各种可自定义的[部署计算目标](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支持 |
-| ML 管道 | 不支持 | 生成灵活的模块化[管道](concept-ml-pipelines.md)，用于自动完成工作流 |
-| MLOps | 基本模型管理和部署；仅 CPU 部署 | 实体版本控制（模型、数据、工作流）、工作流自动化、与 CICD 工具集成、CPU 和 GPU 部署，[等等](concept-model-management-and-deployment.md) |
-| 模型格式 | 专用格式，仅限工作室（经典） | 多个受支持的格式，具体取决于训练作业类型 |
-| 自动化模型训练和超参数优化 |  不支持 | [受支持](concept-automated-ml.md)。 代码优先和无代码选项。 | 
-| 数据偏移检测 | 不支持 | [支持](how-to-monitor-datasets.md) |
-| 数据标签项目 | 不支持 | [支持](how-to-create-labeling-projects.md) |
+[!INCLUDE [aml-compare-classic](../../includes/machine-learning-compare-classic-aml.md)]
 
 ## <a name="troubleshooting"></a>疑难解答
 

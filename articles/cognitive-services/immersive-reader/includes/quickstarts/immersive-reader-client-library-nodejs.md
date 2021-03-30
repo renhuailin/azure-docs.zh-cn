@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
-ms.openlocfilehash: c34ed97339076a4412f8b6bf36ddf342205c88be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ffef03457f9d3faf385bd0a924474dfa6efc4121
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376784"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619191"
 ---
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 你可在应用程序中使用沉浸式阅读器来隔离文本，以改进焦点、显示常用词的图片、突出显示语音的各个部分、大声朗读所选文本、实时翻译字词和短语等等。
 
@@ -256,4 +256,5 @@ npm start
 
 ## <a name="next-steps"></a>后续步骤
 
-* 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](../../reference.md)
+> [!div class="nextstepaction"]
+> [创建资源并配置 AAD](../../how-to-create-immersive-reader.md)

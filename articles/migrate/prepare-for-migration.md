@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 543fb7474c0a9efc41667945c89489054a44d657
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724483"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614881"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -111,11 +111,12 @@ ms.locfileid: "101724483"
 
 对于以下版本，Azure Migrate 会自动完成这些操作
 
-- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x
-- Cent OS 7.7、7.6、7.5、7.4、6.x
+- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
+- Cent OS 7.7、7.6、7.5、7.4、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
 - SUSE Linux Enterprise Server 12 SP1+
 - SUSE Linux Enterprise Server 15 SP1
-- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS
+- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS（Azure Linux VM 代理也会在迁移过程中自动安装）
+- Ubuntu 18.04LTS、16.04LTS
 - Debian 9、8、7
 - Oracle Linux 7.7、7.7-CI
 
@@ -147,6 +148,7 @@ ms.locfileid: "101724483"
 
 详细了解[在 Azure 上运行 Linux VM](../virtual-machines/linux/create-upload-generic.md) 所要执行的步骤，并获取适用于某些热门 Linux 发行版的说明。
 
+查看[必需包](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 安装 Linux VM 代理。
 
 ## <a name="check-azure-vm-requirements"></a>检查 Azure VM 要求
 

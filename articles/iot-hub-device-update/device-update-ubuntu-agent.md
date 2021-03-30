@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ea9d893f825822638803394e678e6e68f57a32d9
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507290"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103418634"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>使用 Ubuntu Server 18.04 x64 包代理的 Azure IoT 中心的设备更新教程
 
@@ -106,7 +106,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 
 Device Update for Azure IoT Hub 软件包受以下许可条款的约束：
   * [Device update for IoT Hub 许可证](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-  * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+  * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE)
 
 请在使用包之前阅读许可条款。 安装和使用包即表示你接受这些条款。 如果不同意许可条款，请勿使用该包。
 
@@ -128,9 +128,11 @@ Device Update for Azure IoT Hub 软件包受以下许可条款的约束：
 
 ## <a name="import-update"></a>导入更新
 
-1. 下载下面的 [apt 清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-apt-manifest.json)和[导入清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.1-importManifest.json)。 此 apt 清单将在你的设备上安装 `libcurl4-doc package` 的最新可用版本。
+1. 在 Github 中转到[设备更新版本](https://github.com/Azure/iot-hub-device-update/releases)，然后单击“资产”下拉列表。
 
-   或者，可以下载 [apt 清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-7.58-apt-manifest.json)和[导入清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-2-2.0.1-importManifest.json)。 这会将 `libcurl4-doc package` 的特定版本 v7.58.0 安装到设备上。
+3. 单击 `apt-update-import-samples.zip` 进行下载。
+
+5. 提取文件夹的内容以发现各种更新示例及其相应的导入清单。 
 
 2. 在 Azure 门户中，从 IoT 中心的左侧导航栏中选择“自动设备管理”下的“设备更新”选项。
 
@@ -138,7 +140,10 @@ Device Update for Azure IoT Hub 软件包受以下许可条款的约束：
 
 4. 选择“+ 导入新更新”。
 
-5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择之前下载的 apt 清单更新文件。
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 从先前下载的文件夹中选择 `sample-package-update-1.0.1-importManifest.json` 导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 从先前下载的文件夹中选择 `sample-1.0.1-libcurl4-doc-apt-manifest.json` apt 清单更新文件。
+此更新会将 `libcurl4-doc package` 的最新可用版本安装到你的设备。
+
+   也可从先前下载的文件夹中选择 `sample-package-update-2-2.0.1-importManifest.json` 导入清单文件和 `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` apt 清单更新文件。 这会将 `libcurl4-doc package` 的特定版本 v7.58.0 安装到设备上。
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="显示更新文件选择的屏幕截图。" lightbox="media/import-update/select-update-files.png":::
 
@@ -213,9 +218,9 @@ Device Update for Azure IoT Hub 软件包受以下许可条款的约束：
 
 ## <a name="bonus-steps"></a>额外步骤
 
-1. 下载下面的 [apt 清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/libcurl4-doc-remove-apt-manifest.json)和[导入清单文件](https://github.com/Azure/iot-hub-device-update/tree/main/docs/sample-artifacts/sample-package-update-1.0.2-importManifest.json)。 此 apt 清单将删除设备上已安装的 `libcurl4-doc package`。
-
 1. 重复执行“导入更新”和“部署更新”部分
+
+3. 在“导入更新”步骤中，从先前下载的文件夹中选择 `sample-package-update-1.0.2-importManifest.json` 导入清单文件和 `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt 清单更新文件。 此更新将从你的设备中删除已安装的 `libcurl4-doc package`。
 
 ## <a name="clean-up-resources"></a>清理资源
 

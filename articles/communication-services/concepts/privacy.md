@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 10/03/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561341"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495702"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -51,12 +51,14 @@ Azure 通信服务维护标识目录，使用 [DeleteIdentity](/rest/api/communi
 
 ### <a name="telephone-number-management"></a>电话号码管理
 
-Azure 通信服务维护与通信服务资源关联的电话号码目录。 使用这些 API 可检索电话号码并将其删除：
+Azure 通信服务维护与通信服务资源关联的电话号码目录。 使用[电话号码管理 API](/rest/api/communication/phonenumberadministration) 可检索电话号码并将其删除：
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>聊天
 
-聊天线程和消息将被保留，直到被显式删除。 完全空闲的线程在 30 天后会自动删除。 使用 [Chat API](/rest/api/communication/chat/deletechatmessage/deletechatmessage) 获取、列出、更新和删除消息。
+聊天线程和消息将被保留，直到被显式删除。 完全空闲的线程在 30 天后会自动删除。 使用 [Chat API](/rest/api/communication/chat/chatthread) 获取、列出、更新和删除消息。
 
 - `Get Thread`
 - `Get Message`

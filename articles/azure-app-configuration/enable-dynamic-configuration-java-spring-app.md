@@ -3,26 +3,47 @@ title: 在 Spring Boot 应用中使用动态配置
 titleSuffix: Azure App Configuration
 description: 了解如何动态更新 Spring Boot 应用的配置数据
 services: azure-app-configuration
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 08/06/2020
+ms.date: 12/09/2020
 ms.custom: devx-track-java
-ms.author: alkemper
-ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.author: mametcal
+ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929151"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636532"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>教程：在 Java Spring 应用中使用动态配置
 
-应用配置 Spring Boot 客户端库支持按需更新一组配置设置，不会导致应用程序重启。 客户端库会缓存每项设置，避免过多调用配置存储。 在缓存值过期前，刷新操作不会更新该值，即使该值在配置存储中已发生更改。 每个请求的默认过期时间为 30 秒。 可以根据需要重写它。
+应用程序配置包含两个适用于 Spring 的库。 `spring-cloud-azure-appconfiguration-config` 需要 Spring Boot 并依赖于 `spring-cloud-context`。 `spring-cloud-azure-appconfiguration-config-web` 需要 Spring Web 以及 Spring Boot。 支持手动触发这两个库来检查刷新的配置值。 `spring-cloud-azure-appconfiguration-config-web` 还添加了自动检查配置刷新的支持。
 
-可以通过调用 `AppConfigurationRefresh` 的 `refreshConfigurations()` 方法，根据需要检查是否有更新的设置。
+通过刷新操作，无需重启应用程序即可刷新配置值，不过，这会导致在 `@RefreshScope` 中重新创建所有的 bean。 客户端库将缓存当前加载的配置的哈希 ID，以避免对配置存储发出过多的调用。 在缓存值过期前，刷新操作不会更新该值，即使该值在配置存储中已发生更改。 每个请求的默认过期时间为 30 秒。 可以根据需要重写它。
 
-也可使用 `spring-cloud-azure-appconfiguration-config-web` 包，该包依赖 `spring-web` 来处理自动刷新。
+`spring-cloud-azure-appconfiguration-config-web` 的自动刷新是基于活动（具体而言，是基于 Spring Web 的 `ServletRequestHandledEvent`）触发的。 如果 `ServletRequestHandledEvent` 未触发，则即使缓存过期时间已过，`spring-cloud-azure-appconfiguration-config-web` 的自动刷新也不会触发刷新。
+
+## <a name="use-manual-refresh"></a>使用手动刷新
+
+应用程序配置公开可用于检查缓存是否已过期以及刷新触发时限是否已过的 `AppConfigurationRefresh`。
+
+```java
+import com.microsoft.azure.spring.cloud.config.AppConfigurationRefresh;
+
+...
+
+@Autowired
+private AppConfigurationRefresh appConfigurationRefresh;
+
+...
+
+public void myConfigurationRefreshCheck() {
+    Future<Boolean> triggeredRefresh = appConfigurationRefresh.refreshConfigurations();
+}
+```
+
+如果已触发刷新，`AppConfigurationRefresh` 的 `refreshConfigurations()` 将返回值为 true 的 `Future`，否则返回值 false。 False 表示缓存过期时间未过、未发生更改，或者另一线程当前正在检查刷新。
 
 ## <a name="use-automated-refresh"></a>使用自动刷新
 
@@ -59,7 +80,7 @@ ms.locfileid: "96929151"
     mvn spring-boot:run
     ```
 
-1. 打开浏览器窗口，访问 URL：`http://localhost:8080`。  将显示与密钥关联的消息。 
+1. 打开浏览器窗口，访问 URL：`http://localhost:8080`。  将显示与密钥关联的消息。
 
     还可以使用 curl 来测试应用程序，例如： 
     

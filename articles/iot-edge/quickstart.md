@@ -10,14 +10,16 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a00e5d262724f4799f8b7b91a54e4b2710f4ce2b
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.openlocfilehash: aa8c4abf57308ca3da05db6ecede7a330af04bdb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100008054"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103463538"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Windows 设备（预览版）
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 在本快速入门中通过将容器化代码部署到 Linux on Windows IoT Edge 设备来试用 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议你使用自己的设备，看看使用 Azure IoT Edge for Linux on Windows 有多么简单。
 
@@ -51,9 +53,16 @@ ms.locfileid: "100008054"
 
 请确保 IoT Edge 设备满足以下要求：
 
-* 1809 或更高版本的 Windows 电脑或服务器
-* 至少 4 GB 内存，建议 8 GB 内存
-* 10 GB 可用磁盘空间
+* 版本
+  * Windows 10 版本 1809 或更高版本；内部版本 17763 或更高版本
+    * Professional、Enterprise、IoT Enterprise
+  * Windows Server 2019 内部版本 17763 或更高版本
+
+  
+* 硬件要求
+  * 最小可用内存：2GB
+  * 最小可用磁盘空间：10GB
+
 
 >[!NOTE]
 >此快速入门使用 Windows Admin Center 创建 IoT Edge for Linux on Windows 部署。 你也可以使用 PowerShell。 如果希望使用 PowerShell 来创建部署，请按照[在 Windows 设备上安装和预配 Azure IoT Edge for Linux](how-to-install-iot-edge-on-windows.md) 操作指南中的步骤进行操作。
@@ -108,7 +117,7 @@ IoT Edge 设备的行为和管理方式与典型的 IoT 设备不同。 使用 `
 
 ![此图显示启动 IoT Edge 运行时的步骤。](./media/quickstart/start-runtime.png)
 
-1. [下载 Windows Admin Center](https://aka.ms/WACDownloadEFLOW)。
+1. [下载 Windows Admin Center](https://aka.ms/wacdownload)。
 
 1. 按照安装向导中的提示在设备上设置 Windows Admin Center。
 

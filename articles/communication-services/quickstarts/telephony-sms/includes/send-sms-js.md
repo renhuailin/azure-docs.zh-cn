@@ -2,20 +2,20 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: dademath
-manager: nimag
+author: bertong
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 07/28/2020
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dademath
-ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.author: bertong
+ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757106"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103622147"
 ---
 通过使用通信服务 JavaScript 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -72,8 +72,9 @@ npm install @azure/communication-sms --save
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | 所有短信功能都需要此类。 使用订阅信息对其进行实例化，然后使用它发送短信。 |
-| SendSmsOptions | 此接口提供用于配置传送报告的选项。 如果 `enable_delivery_report` 设置为 `true`，则在传送成功时将发出事件。 |
-| SendMessageRequest | 此接口是用于生成短信请求的模型（例如 配置收件方和发件方的电话号码和短信内容）。 |
+| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
+| SmsSendOptions | 此接口提供用于配置传送报告的选项。 如果 `enableDeliveryReport` 设置为 `true`，系统会在传送成功后发出事件。 |
+| SmsSendRequest | 此接口是用于生成短信请求的模型（例如 配置收件方和发件方的电话号码和短信内容）。 |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -92,27 +93,66 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const smsClient = new SmsClient(connectionString);
 ```
 
-## <a name="send-an-sms-message"></a>发送短信
+## <a name="send-a-1n-sms-message"></a>发送 1:N 短信
 
-通过调用 `send` 方法发送短信。 将此代码添加到 send-sms.js 方法的末尾：
+若要将短信发送给收件人列表，请使用收件人电话号码列表从 SmsClient 调用 `send` 函数（如果要向单个收件人发送消息，则列表中只能包含一个号码）。 将此代码添加到 send-sms.js 方法的末尾：
 
 ```javascript
 async function main() {
-  await smsClient.send({
-    from: "<leased-phone-number>",
-    to: ["<to-phone-number>"],
-    message: "Hello World 👋🏻 via Sms"
-  }, {
-    enableDeliveryReport: true //Optional parameter
+  const sendResults = await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Hello World 👋🏻 via SMS"
   });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
+}
+
+main();
+```
+应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
+
+## <a name="send-a-1n-sms-message-with-options"></a>发送包含选项的 1: N 短信
+
+你还可以传入选项对象，一个目的是指定是否应启用传送报告，另一个目的是设置自定义标记。
+
+```javascript
+
+async function main() {
+  await smsClient.send({
+    from: "<from-phone-number>",
+    to: ["<to-phone-number-1>", "<to-phone-number-2>"],
+    message: "Weekly Promotion!"
+  }, {
+    //Optional parameter
+    enableDeliveryReport: true,
+    tag: "marketing"
+  });
+
+  // individual messages can encounter errors during sending
+  // use the "successful" property to verify
+  for (const sendResult of sendResults) {
+    if (sendResult.successful) {
+      console.log("Success: ", sendResult);
+    } else {
+      console.error("Something went wrong when trying to send this message: ", sendResult);
+    }
+  }
 }
 
 main();
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
-
 `enableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
+`tag` 为可选参数，可用于将标记应用到传送报告。
 
 ## <a name="run-the-code"></a>运行代码
 

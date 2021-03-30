@@ -6,21 +6,21 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: ca6ef57db062ff22b20a8e968eaac39388b9551f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750882"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495369"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
-- 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- 安装 [Visual Studio](https://visualstudio.microsoft.com/downloads/) 
+- 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 安装 [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 - 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 需要为此快速入门记录资源终结点。
 - [用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串。
 
@@ -46,8 +46,8 @@ dotnet build
 安装适用于 .NET 的 Azure 通信聊天客户端库
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
-``` 
+dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
+```
 
 ## <a name="object-model"></a>对象模型
 
@@ -60,23 +60,33 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.4
 
 ## <a name="create-a-chat-client"></a>创建聊天客户端
 
-若要创建聊天客户端，你需要使用通信服务终结点以及在先决条件步骤中生成的访问令牌。 需要使用 `Administration` 客户端库的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。
+若要创建聊天客户端，你需要使用通信服务终结点以及在先决条件步骤中生成的访问令牌。 需要使用标识客户端库中的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。
 
 详细了解[用户访问令牌](../../access-tokens.md)。
 
 本快速入门不介绍如何创建服务层来管理聊天应用程序的令牌，尽管我们建议你这样做。 详细了解[聊天体系结构](../../../concepts/chat/concepts.md)
 
+复制以下代码片段，并将其粘贴到源文件 Program.cs 中
 ```csharp
-using Azure.Communication.Identity;
-using Azure.Communication.Chat;
 using Azure;
-using Azure.Communication
+using Azure.Communication;
+using Azure.Communication.Chat;
+using System;
 
-// Your unique Azure Communication service endpoint
-Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
+namespace ChatQuickstart
+{
+    class Program
+    {
+        static async System.Threading.Tasks.Task Main(string[] args)
+        {
+            // Your unique Azure Communication service endpoint
+            Uri endpoint = new Uri("https://<RESOURCE_NAME>.communication.azure.com");
 
-CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
-ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
+            CommunicationTokenCredential communicationTokenCredential = new CommunicationTokenCredential(<Access_Token>);
+            ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
+        }
+    }
+}
 ```
 
 ## <a name="start-a-chat-thread"></a>启动聊天会话
@@ -85,15 +95,15 @@ ChatClient chatClient = new ChatClient(endpoint, communicationTokenCredential);
 - 使用 `topic` 为该聊天提供一个主题；在创建聊天会话后可使用 `UpdateTopic` 函数更新主题。
 - 使用 `participants` 属性传递要添加到聊天会话的 `ChatParticipant` 对象的列表。 使用 `CommunicationIdentifier` 对象初始化 `ChatParticipant` 对象。 `CommunicationIdentifier` 可以是 `CommunicationUserIdentifier`、`MicrosoftTeamsUserIdentifier` 或 `PhoneNumberIdentifier` 类型。 例如，若要获取 `CommunicationIdentifier` 对象，需要传递一个已按照[创建用户](../../access-tokens.md#create-an-identity)中的说明创建的访问 ID
 
-来自 CreateChatThread 方法的响应对象包含 chatThread 详细信息。 若要与聊天会话操作（例如添加参与者、发送消息、删除消息，等等）进行交互，需要在 ChatClient 客户端上使用 GetChatThreadClient 方法将 chatThreadClient 客户端实例实例化。 
+`createChatThread` 方法的 response 对象包含 `chatThread` 详细信息。 若要与聊天会话操作（例如添加参与者、发送消息、删除消息，等等）进行交互，需要在 `ChatClient` 客户端上使用 `GetChatThreadClient` 方法将 `chatThreadClient` 客户端实例实例化。
 
 ```csharp
-var chatParticipant = new ChatParticipant(communicationIdentifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
+var chatParticipant = new ChatParticipant(identifier: new CommunicationUserIdentifier(id: "<Access_ID>"))
 {
     DisplayName = "UserDisplayName"
 };
 CreateChatThreadResult createChatThreadResult = await chatClient.CreateChatThreadAsync(topic: "Hello world!", participants: new[] { chatParticipant });
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(createChatThreadResult.ChatThread.Id);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: createChatThreadResult.ChatThread.Id);
 string threadId = chatThreadClient.Id;
 ```
 
@@ -102,7 +112,7 @@ string threadId = chatThreadClient.Id;
 
 ```csharp
 string threadId = "<THREAD_ID>";
-ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId);
+ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
 ## <a name="send-a-message-to-a-chat-thread"></a>向聊天会话发送消息
@@ -124,7 +134,7 @@ var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", t
 `ChatMessage` 是获取消息后返回的响应。它包含一个 ID（消息的唯一标识符）和其他字段。 请参阅 Azure.Communication.Chat.ChatMessage
 
 ```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
+ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>从聊天会话接收聊天消息
@@ -135,7 +145,7 @@ ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId);
 AsyncPageable<ChatMessage> allMessages = chatThreadClient.GetMessagesAsync();
 await foreach (ChatMessage message in allMessages)
 {
-    Console.WriteLine($"{message.Id}:{message.Id}:{message.Content}");
+    Console.WriteLine($"{message.Id}:{message.Content.Message}");
 }
 ```
 
@@ -164,7 +174,7 @@ await foreach (ChatMessage message in allMessages)
 ```csharp
 string id = "id-of-message-to-edit";
 string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(id, content);
+await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
 ```
 
 ## <a name="deleting-a-message"></a>删除消息
@@ -173,7 +183,7 @@ await chatThreadClient.UpdateMessageAsync(id, content);
 
 ```csharp
 string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(id);
+await chatThreadClient.DeleteMessageAsync(messageId: id);
 ```
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>将用户作为参与者添加到聊天会话
@@ -197,7 +207,7 @@ var participants = new[]
     new ChatParticipant(amy) { DisplayName = "Amy" }
 };
 
-await chatThreadClient.AddParticipantsAsync(participants);
+await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
 ## <a name="remove-user-from-a-chat-thread"></a>从聊天会话中删除用户
 
@@ -205,7 +215,7 @@ await chatThreadClient.AddParticipantsAsync(participants);
 
 ```csharp
 var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(gloria);
+await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
 ```
 
 ## <a name="get-thread-participants"></a>获取会话参与者
@@ -233,7 +243,7 @@ await chatThreadClient.SendTypingNotificationAsync();
 使用 `SendReadReceipt` 通知其他参与者：用户已阅读该消息。
 
 ```csharp
-await chatThreadClient.SendReadReceiptAsync(messageId);
+await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
 ## <a name="get-read-receipts"></a>获取阅读回执

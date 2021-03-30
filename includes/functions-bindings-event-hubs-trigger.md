@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0cd514c852e13b83a679821ca2d940e4ed112bd8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558167"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608898"
 ---
 使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
@@ -349,20 +349,70 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
+下表解释了在 function.json  文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type  | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 可以通过[应用设置](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) `%eventHubName%` 进行引用 |
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
 |**基数** | 不适用 | 用于所有非 C# 语言。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。<br><br>在 C# 中，只要触发器具有该类型的数组，就会自动分配此属性。|
-|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。<br><br>如果使用 [5.x 版或更高版本的扩展](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](../articles/azure-functions/functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+## <a name="usage"></a>使用情况
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="default"></a>默认
+
+可以将以下参数类型用于触发事件中心：
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+
+### <a name="additional-types"></a>其他类型 
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+
+### <a name="default"></a>默认
+
+可以将以下参数类型用于触发事件中心：
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+
+### <a name="additional-types"></a>其他类型 
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+
+# <a name="java"></a>[Java](#tab/java)
+
+有关详细信息，请参阅 Java [触发器示例](#example)。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+有关详细信息，请参阅 Javascript [触发器示例](#example)。
+
+# <a name="python"></a>[Python](#tab/python)
+
+有关详细信息，请参阅 Python [触发器示例](#example)。
+
+
+---
+
 
 ## <a name="event-metadata"></a>事件元数据
 
@@ -379,10 +429,3 @@ Python 不支持特性。
 |`SystemProperties`|`IDictionary<String,Object>`|系统属性，包括事件数据。|
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
-
-## <a name="hostjson-properties"></a>host.json 属性
-<a name="host-json"></a>
-
-[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 文件包含控制事件中心触发器行为的设置。 配置因 Azure Functions 版本而异。
-
-[!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

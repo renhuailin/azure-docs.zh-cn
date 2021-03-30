@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d12ce74cb961148776d81b3d7cabc281bbc59fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664179"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232369"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub（预览版）概述
 
@@ -23,10 +23,11 @@ Device Update for IoT Hub 是一项服务，可用于为 IoT 设备部署无线�
 
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>支持各种 IoT 设备
 
-Device Update for IoT Hub 旨在通过与 [Azure IoT 中心](https://azure.microsoft.com/en-us/services/iot-hub/)集成，提供优化的更新部署和简化的操作。 通过这种集成，可以轻松地在任何现有解决方案中采用 Device Update。 它提供了可用于连接几乎任何设备的云托管解决方案。 Device Update 支持范围广泛的 IoT 操作系统，包括 Linux 和 [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/)（实时操作系统），并且可通过开放源代码进行扩展。 
+
+Device Update for IoT Hub 旨在通过与 [Azure IoT 中心](https://azure.microsoft.com/en-us/services/iot-hub/)集成，提供优化的更新部署和简化的操作。 通过这种集成，可以轻松地在任何现有解决方案中采用 Device Update。 它提供了可用于连接几乎任何设备的云托管解决方案。 Device Update 支持范围广泛的 IoT 操作系统，包括 Linux 和 [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/)（实时操作系统），并且可通过开放源代码进行扩展。 我们正在与半导体合作伙伴（包括 STMicroelectronics、NXP、Renesas 和 Microchip）共同开发 IoT 中心产品/服务的设备更新。 请参阅主要半导体评估版块的[示例](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)（包括入门指南），以了解如何配置、生成和部署 MCU 类设备的无线 (OTA) 更新。 
 
 同时提供了 Device Update 代理模拟器二进制文件和 Raspberry Pi 引用 Yocto 映像。
-Device Update for IoT Hub 还支持更新 Azure IoT Edge 设备。 为 Ubuntu Server 18.04 amd64 平台提供了 Device Update 代理。 如果你运行的不是上述任一平台，Device Update for IoT Hub 还会提供开源代码。 这样你就可以将代理移植到你正在运行的分发版。
+Device Update for IoT Hub 还支持更新 Azure IoT Edge 设备。 为 Ubuntu Server 18.04 amd64 平台提供了 Device Update 代理。 如果你运行的不是上述任一平台，Device Update for IoT Hub 还会提供开源代码。 你可以将代理移植到你正在运行的分发版。
 
 Device Update 适用于 IoT 即插即用 (PnP)，可以管理支持所需 PnP 接口的任何设备。 有关详细信息，请参阅 [Device Update for IoT Hub 与 IoT 即插即用](device-update-plug-and-play.md)。
 
@@ -79,7 +80,7 @@ Device Update 功能可分为三个部分：代理集成、导入和管理。
 
 ### <a name="importing"></a>导入
 
-导入是将更新导入到 Device Update 的功能。 Device Update 支持为每个设备推出一个更新。 这使它非常适合于一次更新整个 OS 分区，或者是描述你要在设备上更新的所有包的 apt 清单的完整映像更新。 若要将更新导入到 Device Update 中，请先创建一个描述更新的导入清单，然后将更新文件和导入清单上传到可访问 Internet 的位置。 之后，可以使用 Azure 门户或 Device Update 导入 REST API 启动更新导入的异步过程。 Device Update 上传文件、处理文件，并使它们可分发到 IoT 设备。
+导入是将更新引入到“设备更新”中的方式，目的是将其部署到设备。 Device Update 支持为每个设备推出一个更新。 这使它非常适合于一次更新整个 OS 分区，或者是描述你要在设备上更新的所有包的 apt 清单的完整映像更新。 若要将更新导入到 Device Update 中，请先创建一个描述更新的导入清单，然后将更新文件和导入清单上传到可访问 Internet 的位置。 之后，你可以使用 Azure 门户或[设备更新导入 REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) 启动更新导入的异步过程。 Device Update 上传文件、处理文件，并使它们可分发到 IoT 设备。
 
 对于敏感内容，请使用共享访问签名 (SAS)（如 Azure Blob 存储的临时 SAS）来保护下载内容。 [详细了解 SAS](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
