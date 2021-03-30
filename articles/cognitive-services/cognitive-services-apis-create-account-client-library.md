@@ -8,21 +8,21 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 03/15/2021
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 1fd748a0184c1718ac9450aaca3e2db1a185051a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e042ac263d3a30a9790ba6a3a3d404e5e9cb9aad
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368944"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472152"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-management-client-library"></a>快速入门：使用 Azure 管理客户端库创建认知服务资源
 
 按照本快速入门使用 Azure 管理客户端库创建和管理 Azure 认知服务资源。
 
-Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮助开发人员将认知智能内置于应用程序，而无需具备直接的人工智能 (AI) 或数据科学技能或知识。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
+Azure 认知服务是一个基于云的服务家族，它提供 REST API 和客户端库，帮助开发者将认知智能构建到其应用程序中。 开发者不需要直接的人工智能 (AI) 或数据科学技能或知识就能获得成功。 借助 Azure 认知服务，开发人员可以通过能够看、听、说、理解甚至开始推理的认知解决方案，轻松将认知功能添加到他们的应用程序中。
 
 独立的 AI 服务由 Azure 订阅下创建的 Azure [资源](../azure-resource-manager/management/manage-resources-portal.md)表示。 创建资源后，可以使用生成的密钥和终结点对应用程序进行身份验证。
 

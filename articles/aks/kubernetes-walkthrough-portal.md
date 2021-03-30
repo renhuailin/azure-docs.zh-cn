@@ -4,18 +4,21 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-ms.date: 01/13/2021
-ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 5f758c0bc50b2d4f22b3dbf0efaa4ecbc3f334cb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
+ms.openlocfilehash: 1371fb22b3474e37e50fe0eb67541d9ced69555f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102507800"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771866"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
-Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 本快速入门介绍如何使用 Azure 门户部署 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。 然后，你将了解如何监视群集的运行状况，以及监视运行该应用程序的 Pod。
+Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 在本快速入门中，请执行以下操作：
+* 使用 Azure 门户部署 AKS 群集。 
+* 在该群集中运行一个包含 Web 前端和 Redis 实例的多容器应用程序。 
+* 监视运行应用程序的群集和 Pod 的运行状况。
 
 ![浏览到 Azure Vote 示例应用程序的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -23,180 +26,183 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="prerequisites"></a>先决条件
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-若要创建 AKS 群集，请完成以下步骤：
-
 1. 在 Azure 门户菜单上或在“主页”中，选择“创建资源”。
 
-2. 选择“容器” >  “Kubernetes 服务”。
+2. 选择“容器” > “Kubernetes 服务”。
 
 3. 在“基本信息”页面上，配置以下选项：
-    - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
-    - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
-    - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小。
-            - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
+    - **项目详细信息**： 
+        * 选择一个 Azure 订阅。
+        * 选择或创建一个 Azure **资源组**，例如 *myResourceGroup*。
+    - **群集详细信息**： 
+        * 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 
+        * 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
+    - **主节点池**： 
+        * 为 AKS 节点选择 VM 节点大小。 一旦部署 AKS 群集，不能更改 VM 大小。
+        * 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
     
     ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    在完成时选择“下一步:节点池”。
+4. 在完成时选择“下一步:节点池”。
 
-4. 在“节点池”页上，保留默认选项。 单击屏幕底部的“下一步:身份验证”。
+5. 保留默认的“节点池”选项。 单击屏幕底部的“下一步:身份验证”。
     > [!CAUTION]
-    > 创建新的群集标识可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到此问题，请访问[排查常见的 Azure Kubernetes 服务问题](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)以进行缓解。
+    > 新建的 Azure AD 服务主体可能需要几分钟时间才能完成传播并可供使用，这会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种麻烦，请参阅[我们的故障排除文章](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)获取缓解措施。
 
-5. 在“身份验证”页上，配置以下选项：
-    - 通过将“身份验证”字段保留为“系统评估的托管标识”，创建新的群集标识 。 或者，可以选择“服务主体”以使用服务主体。 选择“(新)默认服务主体”以创建默认服务主体，或者选择”配置服务主体”以使用现有的主体 。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
-    - 启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 所对应的选项。 这样可以更精细地控制对部署在 AKS 群集中的 Kubernetes 资源的访问权限。
+6. 在“身份验证”页上，配置以下选项：
+    - 通过以下方式之一创建新的群集标识：
+        * 在“身份验证”字段中保留“系统分配的托管标识”，或 
+        * 选择“服务主体”以使用服务主体。 
+            * 选择“(新)默认服务主体”以创建默认服务主体，或
+            * 选择“配置服务主体”以使用现有的服务主体。 需要提供现有主体的 SPN 客户端 ID 和机密。
+    - 启用 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 选项，以便更精细地控制对部署在 AKS 群集中的 Kubernetes 资源的访问权限。
 
-默认情况下将使用“基本”网络，并且会启用适用于容器的 Azure Monitor。 验证完成后，依次单击“查看 + 创建”、“创建”。
+    默认情况下将使用“基本”网络，并且会启用适用于容器的 Azure Monitor。 
 
-创建 AKS 群集需要几分钟时间。 完成部署后，单击“转到资源”，或浏览到 AKS 群集资源组（如 myResourceGroup），然后选择 AKS 资源（如 myAKSCluster）。 此时会显示 AKS 群集仪表板，如以下示例所示：
+7. 验证完成后，依次单击“查看 + 创建”、“创建”。 
 
-![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
+
+8. 创建 AKS 群集需要几分钟时间。 部署完成后，通过以下任一方式导航到你的资源：
+    * 单击“转到资源”，或
+    * 浏览到 AKS 群集资源组并选择 AKS 资源。 
+        * 下面显示了示例群集仪表板：浏览到“myResourceGroup”并选择“myAKSCluster”资源。 
+
+        ![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 `kubectl` 客户端已预装在 Azure Cloud Shell 中。
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 
 
-使用 Azure 门户顶部的 `>_` 按钮打开 Cloud Shell。
+1. 使用 Azure 门户顶部的 `>_` 按钮打开 Cloud Shell。
 
-![在门户中打开 Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
+    ![在门户中打开 Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-> [!NOTE]
-> 要在本地 shell 安装中执行这些操作，需先验证是否已安装 Azure CLI，然后使用 `az login` 命令连接到 Azure。
+    > [!NOTE]
+    > 若要在本地 shell 安装中执行这些操作：
+    > 1. 验证是否已安装 Azure CLI。
+    > 2. 通过 `az login` 命令连接到 Azure。
 
-若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。 以下示例获取名为 *myResourceGroup* 的资源组中群集名称 *myAKSCluster* 的凭据：
+2. 使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到你的 Kubernetes 群集。 以下命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
-```azurecli
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
+    ```azurecli
+    az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+    ```
 
-若要验证到群集的连接，请使用 `kubectl get` 命令返回群集节点列表。
+3. 使用 `kubectl get` 命令返回群集节点的列表，以此验证与群集之间的连接。
 
-```console
-kubectl get nodes
-```
+    ```console
+    kubectl get nodes
+    ```
 
-以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
+    输出显示在上一步骤中创建的单个节点。 确保节点状态为 *Ready*：
 
-```output
-NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
-```
+    ```output
+    NAME                       STATUS    ROLES     AGE       VERSION
+    aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
+    ```
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 Kubernetes 部署 - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 Kubernetes 服务 - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
+Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 
 
-在 Cloud Shell 中，使用编辑器创建一个名为 `azure-vote.yaml` 的文件，如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然后复制以下 YAML 定义：
+在本快速入门中，你将使用清单来创建运行 Azure Vote 应用程序所需的所有对象。 此清单包含两个 Kubernetes 部署：
+* 示例 Azure Vote Python 应用程序。
+* 一个 Redis 实例。 
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
+此外，还会创建两个 Kubernetes 服务：
+* Redis 实例的内部服务。
+* 用于通过 Internet 访问 Azure Vote 应用程序的外部服务。
+
+1. 在 Cloud Shell 中，使用编辑器创建名为 `azure-vote.yaml` 的文件，例如：
+    * `code azure-vote.yaml`
+    * `nano azure-vote.yaml` 或 
+    * `vi azure-vote.yaml`. 
+
+1. 复制以下 YAML 定义：
+
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      labels:
-        app: azure-vote-back
+      name: azure-vote-back
     spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
-        env:
-        - name: ALLOW_EMPTY_PASSWORD
-          value: "yes"
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
+      replicas: 1
+      selector:
+        matchLabels:
+          app: azure-vote-back
+      template:
+        metadata:
+          name: azure-vote-back
+        spec:
+          ports:
+          - port: 6379
+          selector:
+            app: azure-vote-back
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: azure-vote-front
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: azure-vote-front
+          template:
+            metadata:
+              labels:
+                app: azure-vote-front
+            spec:
+              nodeSelector:
+                "beta.kubernetes.io/os": linux
+              containers:
+              - name: azure-vote-front
+                image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+                resources:
+                  requests:
+                    cpu: 100m
+                    memory: 128Mi
+                  limits:
+                    cpu: 250m
+                    memory: 256Mi
+                ports:
+                - containerPort: 80
+                env:
+                - name: REDIS
+                  value: "azure-vote-back"
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: azure-vote-front
+        spec:
+          type: LoadBalancer
+          ports:
+          - port: 80
+          selector:
+            app: azure-vote-front
+    ```
 
-使用 `kubectl apply` 命令部署应用程序，并指定 YAML 清单的名称：
+1. 使用 `kubectl apply` 命令部署应用程序，并指定 YAML 清单的名称：
 
-```console
-kubectl apply -f azure-vote.yaml
-```
+    ```console
+    kubectl apply -f azure-vote.yaml
+    ```
 
-以下示例输出显示已成功创建了部署和服务：
+    输出显示已成功创建的部署和服务：
 
-```output
-deployment "azure-vote-back" created
-service "azure-vote-back" created
-deployment "azure-vote-front" created
-service "azure-vote-front" created
-```
+    ```output
+    deployment "azure-vote-back" created
+    service "azure-vote-back" created
+    deployment "azure-vote-front" created
+    service "azure-vote-front" created
+    ```
 
 ## <a name="test-the-application"></a>测试应用程序
 
@@ -208,14 +214,15 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
+`azure-vote-front` 服务的 **EXTERNAL-IP** 输出最初显示为 *pending*。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
+在 **EXTERNAL-IP** 地址从 *pending* 更改为实际公共 IP 地址后，请使用 `CTRL-C` 来停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
+
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -227,43 +234,44 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ## <a name="monitor-health-and-logs"></a>监视运行状况和日志
 
-创建群集后，适用于容器的 Azure Monitor 便已启用。 此监视功能为 AKS 群集以及群集上运行的 Pod 提供运行状况指标。
+创建群集后，适用于容器的 Azure Monitor 便已启用。 用于容器的 Azure Monitor 提供 AKS 群集以及该群集上运行的 Pod 的运行状况指标。
 
-在 Azure 门户中填充此数据可能需要几分钟。 若要查看 Azure Vote Pod 的当前状态、运行时间和资源使用情况，请浏览回到 Azure 门户中的 AKS 资源，例如 *myAKSCluster*。 然后可以访问运行状况，如下所示：
+指标数据需在几分钟后才会填充到 Azure 门户中。 若要查看 Azure Vote Pod 的当前运行状况、运行时间和资源使用情况：
 
-1. 在左侧的“监视”下，选择“见解”
-1. 在顶部，选择“+ 添加筛选器”
-1. 选择“命名空间”作为属性，然后选择 \<All but kube-system\>
-1. 选择查看“容器”。
+1. 浏览回到 Azure 门户中的 AKS 资源。
+1. 在左侧的“监视”下，选择“见解”。 
+1. 在顶部选择“+ 添加筛选器”。
+1. 选择“命名空间”作为属性，然后选择 *\<All but kube-system\>* 。
+1. 选择“容器”以查看容器。
 
-将显示 *azure-vote-back* 和 *azure-vote-front* 容器，如下面的示例中所示：
+将显示 `azure-vote-back` 和 `azure-vote-front` 容器，如以下示例中所示：
 
 ![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的日志，请从容器列表的下拉列表中选择“查看容器日志”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
+若要查看 `azure-vote-front` Pod 的日志，请从容器下拉列表中选择“查看容器日志”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
 ![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>删除群集
 
-不再需要群集时，可以删除群集资源，这会一并删除所有关联的资源。 选择 AKS 群集仪表板上的“删除”按钮即可在 Azure 门户中完成此操作。 也可在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
+为了避免产生 Azure 费用，请清理不需要的资源。 在 AKS 群集仪表板上选择“删除”按钮。 也可以在 Cloud Shell 中使用 [az aks delete][az-aks-delete] 命令：
 
 ```azurecli
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
-
 > [!NOTE]
-> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。 如果你使用了托管标识，则该标识由平台托管，不需要删除。
+> 删除群集时，AKS 群集使用的 Azure Active Directory 服务主体不会被删除。 有关如何删除服务主体的步骤，请参阅 [AKS 服务主体的注意事项和删除][sp-delete]。
+> 
+> 如果你使用了托管标识，则该标识由平台托管，不需要删除。
 
 ## <a name="get-the-code"></a>获取代码
 
-本快速入门使用预先创建的容器映像创建了 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
-
-[https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
+本快速入门使用现有的容器映像创建了 Kubernetes 部署。 [GitHub 上提供了][azure-vote-app]相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。
+在本快速入门中，你部署了一个 Kubernetes 群集，然后在其中部署了多容器应用程序。 访问 AKS 群集的 Kubernetes Web 仪表板。
+
 
 若要通过浏览完整的示例（包括构建应用程序、从 Azure 容器注册表进行部署、更新正在运行的应用程序，以及缩放和升级群集）来了解有关 AKS 的更多信息，请继续阅读 Kubernetes 群集教程。
 

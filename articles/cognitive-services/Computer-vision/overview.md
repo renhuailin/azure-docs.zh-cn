@@ -15,12 +15,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 - contperf-fy21q2
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: 69edbf558b4bd452c67478bac828bfde26be5a70
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 804dacc4351da9e04ac75b2484b4330901a69271
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575934"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488476"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -29,6 +29,12 @@ ms.locfileid: "99575934"
 使用 Azure 的计算机视觉服务，你可以访问高级算法，这些算法根据你感兴趣的视觉功能处理图像并返回信息。 例如，计算机视觉可以确定图像是否包含成人内容、查找特定的品牌或物体或查找人脸。
 
 可使用[客户端库 SDK](./quickstarts-sdk/client-library.md) 或直接调用 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) 来创建计算机视觉应用程序。 此页广泛地介绍了计算机视觉的功能。
+
+本文档包含以下类型的文章：
+* [快速入门](./quickstarts-sdk/client-library.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
+* [操作指南](./Vision-API-How-to-Topics/HowToCallVisionAPI.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [概念性文章](concept-recognizing-text.md)对服务的功能和特性进行了深入说明。
+* [教程](./tutorials/storage-lab-tutorial.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
 
 ## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
