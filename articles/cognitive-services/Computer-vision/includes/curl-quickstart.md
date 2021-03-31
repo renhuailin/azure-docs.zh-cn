@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/02/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c8221a15ddd92276c105f1e441c8da722655d576
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 914fe0bbf04fa8835cbe96e5bbb83604f0d07bc2
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445467"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103621928"
 ---
 使用计算机视觉 REST API：
 
@@ -40,17 +40,21 @@ ms.locfileid: "102445467"
 若要分析图像的各种视觉特征，请执行以下步骤：
 
 1. 将以下命令复制到文本编辑器中。
+1. 转到 Azure 门户。 如果在“先决条件”部分中创建的计算机视觉资源已成功部署，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到订阅密钥和终结点 。
 1. 必要时在命令中进行如下更改：
-    1. 将 `<subscriptionKey>` 的值替换为你的订阅密钥。
-    1. 将请求 URL 的第一部分 (`westcentralus`) 替换为你自己的终结点 URL 中的文本。
+    1. 将 `PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE` 的值替换为你的订阅密钥。
+    1. 将请求 URL 的第一部分 (`PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE`) 替换为你自己的计算机视觉终结点。 计算机视觉终结点的格式为 `https://<your_computer_vision_resource_name>.cognitiveservices.azure.com/`。
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. （可选）将请求正文中的图像 URL (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) 更改为要分析的其他图像的 URL。
 1. 打开命令提示符窗口。
 1. 将文本编辑器中的命令粘贴到命令提示符窗口，然后运行命令。
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: PASTE_YOUR_COMPUTER_VISION_SUBSCRIPTION_KEY_HERE" -H "Content-Type: application/json" "PASTE_YOUR_COMPUTER_VISION_ENDPOINT_HERE/vision/v3.1/analyze?visualFeatures=Categories,Description&details=Landmarks" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
+
+> [!IMPORTANT]
+> 记住在完成后将订阅密钥从代码中删除，永远不要公开发布它。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)。
 
 ### <a name="examine-the-response"></a>检查响应
 
