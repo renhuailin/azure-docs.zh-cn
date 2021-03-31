@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424540"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634968"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -120,6 +120,8 @@ Query
 返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，在“解决方案资源管理器”窗格中查找 SampleFunctionsApp 项目 。
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+
+要使函数应用能够访问 Azure 数字孪生，它需要具有系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 
