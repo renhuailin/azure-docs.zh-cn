@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: f07e3b6142ad99ba3b9e64e4733109a7e5ae04f9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 89de0752b3015fb8132bfa50c7dbdce174061bcc
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425723"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103467251"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -33,7 +33,7 @@ ms.locfileid: "102425723"
 若要完成本快速入门，必须具备以下条件：
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="创建表单识别器资源"  target="_blank">创建表单识别器资源 </a>，获取密钥和终结点。 部署后，选择”转到资源”。
   * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到表单识别器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
   * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 * 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 对于此快速入门，可使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)（下载并提取 sample_data.zip）。 将训练文件上传到标准性能层 Azure 存储帐户中 blob 存储容器的根目录。
@@ -124,7 +124,7 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ### <a name="configure-cross-domain-resource-sharing-cors"></a>配置跨域资源共享 (CORS)
 
-对存储帐户启用 CORS。 选择 Azure 门户中的存储帐户，并单击左窗格上的“CORS”选项卡。 在底部行上，填写以下值。 然后单击顶部的“保存”。
+对存储帐户启用 CORS。 在 Azure 门户中选择你的存储帐户，然后在左侧窗格中选择“CORS”选项卡。 在底部行上，填写以下值。 选择顶部的“保存”。
 
 * 允许的来源 = *
 * 允许的方法 = \[全选\]
@@ -137,11 +137,11 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>连接到示例标记工具
 
-示例标签工具连接到源（原始表单所在的位置）和目标（导出创建的标签和输出数据的位置）。
+ 示例标记工具将连接到源（上传的原始表单）和目标（创建的标签和输出数据）。
 
 可以在项目之间设置和共享连接。 它们使用可扩展的提供程序模型，因此你可以轻松地添加新的源/目标提供程序。
 
-若要创建新连接，请单击左侧导航栏中的“新建连接”（插头）图标。
+若要创建新连接，请在左侧导航栏中选择“新建连接”（插头）图标。
 
 在字段中填写以下值：
 
@@ -153,13 +153,12 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="示例标记工具的连接设置。":::
 
-
 ## <a name="create-a-new-project"></a>创建新项目
 
 在示例标记工具中，项目会存储你的配置和设置。 创建新项目并在字段中填写以下值：
 
 * **显示名称** - 项目显示名称
-* **安全令牌** - 某些项目设置可以包含敏感值，如 API 密钥或其他共享机密。 每个项目都会生成一个安全令牌，可用于加密/解密敏感项目设置。 可以在“应用程序设置”中找到安全令牌，方法是单击左侧导航栏底部的齿轮图标。
+* **安全令牌** - 某些项目设置可以包含敏感值，如 API 密钥或其他共享机密。 每个项目都会生成一个安全令牌，可用于加密/解密敏感项目设置。 可以在左侧导航栏底部选择齿轮图标，然后在“应用程序设置”中找到安全令牌。
 * **源连接** - 上一步中创建的、用于此项目的 Azure Blob 存储连接。
 * **文件夹路径** -（可选）如果源表单位于 blob 容器上的某个文件夹中，请在此处指定文件夹名称
 * **表单识别器服务 Uri** - 表单识别器终结点 URL。
@@ -176,26 +175,28 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 * 可以应用标记的主编辑器窗格。
 * 通过标记编辑器窗格，用户可以修改、锁定、重新排序和删除标记。
 
-### <a name="identify-text-elements"></a>标识文本元素
+### <a name="identify-text-and-tables"></a>标识文本和标签 
 
-单击左侧窗格中的“对所有文件运行 OCR"，以获取每个文档的文本布局信息。 标记工具将在每个文本元素周围绘制边界框。
+在左侧窗格中选择“对所有文件运行 OCR”，以获取每个文档的文本和表布局信息。 标记工具将在每个文本元素周围绘制边界框。
 
-它还将显示已自动提取的表。 单击文档左侧的表/网格图标可查看提取的表。 在本快速入门中，由于表内容是自动提取的，因此我们不会对表内容进行标记，而是依靠自动提取。
+标记工具还将显示已自动提取的表。 选择文档左侧的表/网格图标可查看提取的表。 在本快速入门中，由于表内容是自动提取的，因此我们不会对表内容进行标记，而是依靠自动提取。
 
 :::image type="content" source="../media/label-tool/table-extraction.png" alt-text="示例标记工具中的表可视化效果。":::
+
+在 v2.1 中，如果训练文档中有某个值未填写，可以在该值的输入位置绘制一个框。 使用窗口左上角的“绘制区域”使该区域可供标记。
 
 ### <a name="apply-labels-to-text"></a>将标签应用于文本
 
 接下来创建标记（标签），并将其应用到希望模型分析的文本元素。
 
-### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+### <a name="v20"></a>[v2.0](#tab/v2-1)  
 
-1. 首先，使用标记编辑器窗格来创建要识别的标记：
-   * 单击 **+** 创建新标记。
-   * 输入标记名称。
-   * 按 Enter 保存标记。
-1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。 在 v2.1 preview.2 API 中，也可单击选中单选按钮和复选框等选择标记作为键值对 。 表单识别器会确定是将“已选中”还是“未选中”作为选择标记的值。
-1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
+1. 首先，使用标记编辑器窗格创建要识别的标记。
+   1. 选择 **+** 创建新标记。
+   1. 输入标记名称。
+   1. 按 Enter 保存标记。
+1. 在主编辑器中，从突出显示的文本元素或绘制的区域中选择字词。
+1. 选择要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 在标记窗体时，请记住以下提示：
     >
@@ -212,11 +213,11 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 ### <a name="v20"></a>[v2.0](#tab/v2-0)
 
 1. 首先，使用标记编辑器窗格创建要识别的标记。
-   1. 单击 **+** 创建新标记。
+   1. 选择 **+** 创建新标记。
    1. 输入标记名称。
    1. 按 Enter 保存标记。
-1. 在主编辑器中，单击以从突出显示的文本元素中选择字词。
-1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
+1. 在主编辑器中，从突出显示的文本元素中选择字词。
+1. 选择要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
     > 在标记窗体时，请记住以下提示：
     >
@@ -231,6 +232,7 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 >
 
 ---
+---
 
 :::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="示例标记工具的主编辑器窗口。":::
 
@@ -238,7 +240,7 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ### <a name="specify-tag-value-types"></a>指定标记值类型
 
-（可选）你可以为每个标记设置所需的数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出某些假设，从而提高文本检测准确性。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 值类型信息保存在与标签文件位于相同路径的 fields.json 文件中。
+可以设置每个标记的预期数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出假设，从而提高文本检测准确度。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 值类型信息保存在与标签文件位于相同路径的 fields.json 文件中。
 
 > [!div class="mx-imgBorder"]
 > ![使用示例标记工具选择值类型](../media/whats-new/value-type.png)
@@ -285,12 +287,22 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 > * 2020Jan01
 > * 2020 Jan 01
 
+### <a name="label-tables-v21-only"></a>标签表（仅适用于 v2.1）
+
+有时，将数据标记为表可能比标记为键值对更好。 在这种情况下，可以单击“添加新的表标记”来创建表标记，根据文档指定该表包含固定还是可变的行数，并定义架构。
+
+:::image type="content" source="../media/label-tool/table-tag.png" alt-text="配置表标记。":::
+
+定义表标记后，标记单元格值。
+
+:::image type="content" source="../media/table-labeling.png" alt-text="标记表。":::
+
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
-单击左侧窗格中的“训练”图标以打开“训练”页。 然后单击“训练”按钮，开始训练模型。 训练过程完成后，你将看到以下信息：
+在左侧窗格中选择“训练”图标打开“训练”页。 然后选择“训练”按钮开始训练模型。 训练过程完成后，你将看到以下信息：
 
 * **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 [REST API](./client-library.md?pivots=programming-language-rest-api) 或[客户端库](./client-library.md)进行预测调用，则需要使用此字符串。
-* **平均准确度** - 模型的平均准确性。 可以通过再次标记其他表单和训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
+* **平均准确度** - 模型的平均准确性。 可以通过标记更多表单并重新训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
 * 标记列表，以及每个标记的估计准确度。
 
 
@@ -305,10 +317,10 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
 
-通过模型组合，最多可将 100 个模型组合到一个模型 ID。 通过此组合模型 ID 调用分析时，表单识别器首先将对你提交的表单进行分类、将其匹配到最佳匹配模型，然后返回该模型的结果。 当传入的表单可能属于多个模板中的一个模板时，这非常有用。
+通过模型组合，最多可将 100 个模型组合到一个模型 ID。 使用组合的 `modelID` 调用“分析”时，表单识别器首先将对提交的表单进行分类，选择最佳匹配的模型，然后返回该模型的结果。 当传入的表单可能属于多个模板中的一个模板时，此操作非常有用。
 
-若要在示例标记工具中组合模型，请单击左侧的模型组合（合并箭头）图标。 在左侧，选择要组合在一起的模型。 带有箭头图标的模型是已组合的模型。
-单击“组合”按钮。 在弹出窗口中，为新的组合模型命名，然后单击“组合”。 操作完成后，新的组合模型应出现在列表中。
+若要在示例标记工具中组合模型，请选择左侧的“模型组合”（合并箭头）图标。 在左侧，选择要组合在一起的模型。 带有箭头图标的模型是已组合的模型。
+选择“组合”按钮。 在弹出窗口中，为新的组合模型命名，然后选择“组合”。 操作完成后，新组合的模型应会出现在列表中。
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="模型组合 UX 视图。":::
 
@@ -320,16 +332,16 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ## <a name="analyze-a-form"></a>分析表单
 
-单击左侧的“预测(灯泡)”图标以测试模型。 上传训练过程中未使用的表单文档。 然后单击右侧的“预测”按钮，获取表单的键/值预测。 该工具将在边界框中应用标记，并报告每个标记的置信度。
+选择左侧的“预测”（灯泡）图标以测试模型。 上传训练过程中未使用的表单文档。 然后选择右侧的“预测”按钮，以获取表单的键/值预测。 该工具将在边界框中应用标记，并报告每个标记的置信度。
 
 > [!TIP]
 > 还可以通过 REST 调用运行分析 API。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="improve-results"></a>改进结果
 
-可能需要执行进一步的训练来改进模型，具体取决于报告的准确度。 完成预测后，检查每个已应用标记的置信度值。 如果平均准确度训练值高，但置信度分数低（或结果不准确），则应将用于预测的文件添加到训练集、进行标记并再次训练。
+可能需要执行进一步的训练来改进模型，具体取决于报告的准确度。 完成预测后，检查每个已应用标记的置信度值。 如果平均准确度训练值较高，但置信度分数较低（或结果不准确），则应将预测文件添加到训练集，标记该文件，然后再次训练。
 
-如果分析的文档不同于训练中使用的文档，则报告的平均准确度、置信度评分和实际准确度可能不一致。 请记住，用户查看某些文档时，虽然看起来很相似，但在 AI 模型中却有明显的区别。 例如，你可以使用具有两种变体的表单类型进行训练，其中训练集由 20% 变体 A 和 80% 变体 B 组成。在预测过程中，变体 A 文档的置信度分数可能会较低。
+如果分析的文档不同于训练中使用的文档，则报告的平均准确度、置信度分数和实际准确度可能不一致。 请记住，用户查看某些文档时，虽然看起来很相似，但在 AI 模型中却有明显的区别。 例如，你可以使用具有两种变体的表单类型进行训练，其中训练集由 20% 变体 A 和 80% 变体 B 组成。在预测过程中，变体 A 文档的置信度分数可能会较低。
 
 ## <a name="save-a-project-and-resume-later"></a>保存项目并在稍后恢复
 
@@ -341,11 +353,11 @@ docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form
 
 ### <a name="restore-project-credentials"></a>还原项目凭据
 
-若要恢复项目，首先需要创建到同一 blob 存储容器的连接。 为此，请重复上述步骤。 然后，转到应用程序设置页（齿轮图标），查看项目的安全令牌是否存在。 如果没有，请添加一个新的安全令牌，并复制上一步中的令牌名称和密钥。 然后单击“保存设置”。
+若要恢复项目，首先需要创建到同一 blob 存储容器的连接。 为此，请重复上述步骤。 然后，转到应用程序设置页（齿轮图标），查看项目的安全令牌是否存在。 如果没有，请添加一个新的安全令牌，并复制上一步中的令牌名称和密钥。 选择“保存”以重新训练设置。
 
 ### <a name="resume-a-project"></a>恢复项目
 
-最后，转到主页（房子图标），然后单击“打开云项目”。 然后选择 Blob 存储连接，并选择项目的 .fott 文件。 应用程序将加载项目的设置，因为它具有安全令牌。
+最后，转到主页（房子图标），然后选择“打开云项目”。 然后选择 Blob 存储连接，并选择项目的 .fott 文件。 应用程序将加载项目的设置，因为它具有安全令牌。
 
 ## <a name="next-steps"></a>后续步骤
 
