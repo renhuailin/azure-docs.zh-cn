@@ -6,15 +6,15 @@ author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
-ms.date: 07/20/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 15c697902681ece210895dfd4608547c59bbcad0
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489559"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103487815"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
@@ -116,7 +116,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 
 ## <a name="additional-reading"></a>其他阅读材料
 
-- [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
+- [示例](./overview.md) - 在示例概述页上查找更多示例。
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库
