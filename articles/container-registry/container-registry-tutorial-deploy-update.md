@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74454686"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>教程：将已更新的容器映像推送到异地复制的容器注册表以进行区域性 Web 应用部署
@@ -23,7 +23,7 @@ ms.locfileid: "74454686"
 > * 将更改推送到 Azure 容器注册表
 > * 查看两个不同区域中已更新的应用
 
-如果尚未配置两个“用于容器的 Web 应用”区域部署，请返回到本教程系列的前一篇教程：[从 Azure 容器注册表部署 Web 应用](container-registry-tutorial-deploy-app.md)。 
+如果尚未配置两个“用于容器的 Web 应用”区域部署，请返回到本教程系列的前一篇教程：[从 Azure 容器注册表部署 Web 应用](container-registry-tutorial-deploy-app.md)。
 
 ## <a name="modify-the-web-application"></a>修改 Web 应用程序
 
@@ -74,7 +74,7 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-接下来，将更新的 *acr-helloworld* 容器映像推送到异地复制的注册表。 在这里，我们会执行一条 `docker push` 命令将更新的映像同时部署到“美国西部”和“美国东部”区域的注册表副本。  
+接下来，将更新的 *acr-helloworld* 容器映像推送到异地复制的注册表。 在这里，我们会执行一条 `docker push` 命令将更新的映像同时部署到“美国西部”和“美国东部”区域的注册表副本。
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -99,11 +99,11 @@ v1: digest: sha256:4c3f2211569346fbe2d1006c18cbea2a4a9dcc1eb3a078608cef70d3a186e
 
 复制映像时，可以看到 Azure 容器注册表 Webhook 正在触发。
 
-若要查看在前一篇教程中将容器部署到“用于容器的 Web 应用”时创建的区域 Webhook，请在 Azure 门户中导航到容器注册表，选择“服务”下的“Webhook”。   
+若要查看在前一篇教程中将容器部署到“用于容器的 Web 应用”时创建的区域 Webhook，请在 Azure 门户中导航到容器注册表，选择“服务”下的“Webhook”。
 
 ![Azure 门户中的容器注册表 Webhook][tutorial-portal-01]
 
-选择每个 Webhook 可查看其调用和响应的历史记录。 在两个 Webhook 的日志中，应会看到 **push** 操作有一个对应的行。 此处，位于“美国西部”区域的 Webhook 日志显示了由上一步骤中的 `docker push` 触发的 **push** 操作： 
+选择每个 Webhook 可查看其调用和响应的历史记录。 在两个 Webhook 的日志中，应会看到 **push** 操作有一个对应的行。 此处，位于“美国西部”区域的 Webhook 日志显示了由上一步骤中的 `docker push` 触发的 **push** 操作：
 
 ![Azure 门户中的容器注册表 Webhook 日志（美国西部）][tutorial-portal-02]
 
@@ -115,11 +115,11 @@ Webhook 通知 Web 应用，新的映像已推送到注册表，后者会自动�
 
 ![Azure 门户中的“应用服务概述”][tutorial-portal-03]
 
-若要查看已更新的应用程序，请在“应用服务概述”中选择相应的链接。 下面是在“美国西部”运行的应用的示例视图： 
+若要查看已更新的应用程序，请在“应用服务概述”中选择相应的链接。 下面是在“美国西部”运行的应用的示例视图：
 
 ![在“美国西部”区域运行的已修改 Web 应用的浏览器视图][deployed-app-westus-modified]
 
-在浏览器中查看已更新的容器映像，验证它是否同时已部署到“美国东部”部署。 
+在浏览器中查看已更新的容器映像，验证它是否同时已部署到“美国东部”部署。
 
 ![在“美国东部”区域运行的已修改 Web 应用的浏览器视图][deployed-app-eastus-modified]
 
