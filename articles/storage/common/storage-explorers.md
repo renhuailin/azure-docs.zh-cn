@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: b02a08b7e8d8b867df820868b72a0ce14b6afa40
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "71670936"
 ---
 # <a name="microsoft-client-tools-for-working-with-azure-storage"></a>适用于 Azure 存储的 Microsoft 客户端工具
 
 Microsoft 提供了多个图形用户界面 (GUI) 工具来处理 Azure 存储帐户中的数据。 下表中列出的所有工具都是免费的。
 
-| Azure 存储客户端工具                 | 受支持的平台 | 块 blob | 页 blob | 追加 Blob | 表 | 队列 | 文件 |
+| Azure 存储客户端工具                 | 支持的平台 | 块 blob | 页 blob | 追加 Blob | 表 | 队列 | 文件 |
 |-------------------------------------------|---------------------|------------|-----------|-------------|--------|--------|-------|
 | [Azure 门户](https://portal.azure.com)                    | Web                 | 是          | 是         | 是           | 是      | 是      | 是     |
 | [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)          | Windows、OSX        | 是          | 是         | 是           | 是      | 是      | 是     |

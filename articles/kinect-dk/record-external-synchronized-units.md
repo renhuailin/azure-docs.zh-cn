@@ -9,17 +9,17 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, 传感器, 查看器, 外部同步, 相位延迟, 深度, RGB, 相机, 音频线, 录制器
 ms.openlocfilehash: 052f6f1ac9f90e764de25d1d4d1b25b3d50a848d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "73931699"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-devices"></a>将 Azure Kinect 录制器与外部同步设备配合使用
 
 本文提供有关 [Azure Kinect 录制器](azure-kinect-recorder.md)如何结合配置的外部同步设备记录数据的指导。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [设置多个 Azure Kinect DK 单元进行外部同步](https://support.microsoft.com/help/4494429)。
 

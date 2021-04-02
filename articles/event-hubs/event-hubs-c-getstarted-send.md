@@ -4,15 +4,15 @@ description: 快速入门：本文提供了创建 C 应用程序的演练，该�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: bfe1ca1a45f7b33d7431aed13446d8d72f79fb90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85315673"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入门：使用 C 将事件发送到 Azure 事件中心
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍如何使用用 C 编写的控制台应用程序将事件发送到事件中心。 
@@ -22,7 +22,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 * C 语言开发环境。 本教程假定 gcc 堆栈在使用 Ubuntu 14.04 的 Azure Linux VM 上。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
-* **创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。
+* **创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey。
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>编写将消息发送到事件中心的代码
 本部分介绍如何编写用于将事件发送到事件中心的 C 应用。 此代码使用 [Apache Qpid 项目](https://qpid.apache.org/)中的 Proton AMQP 库。 这类似于通过 C 将服务总线队列和主题与 AMQP 配合使用，如[此示例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)所示。 有关详细信息，请参阅 [Qpid Proton 文档](https://qpid.apache.org/proton/index.html)。
@@ -48,7 +48,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 在工作目录中，创建一个包含以下代码的名为 sender.c  的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
+5. 在工作目录中，创建一个包含以下代码的名为 sender.c 的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
    
     ```c
     #include "proton/message.h"

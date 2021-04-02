@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 45f18727b53b802ba746da41b47fe955543ed9d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75648544"
 ---
 # <a name="create-custom-actions-and-resources-in-azure"></a>在 Azure 中创建自定义操作和资源
@@ -40,7 +40,7 @@ ms.locfileid: "75648544"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已了解了自定义提供程序以及如何构建自定义提供程序。 若要继续学习下一个教程，请参阅[教程：设置用于 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md)。
+在本教程中，我们已了解了自定义提供程序以及如何构建自定义提供程序。 若要继续学习下一教程，请参阅[教程：设置 Azure 自定义提供程序的 Azure Functions](./tutorial-custom-providers-function-setup.md)。
 
 如果你正在寻找参考资料或快速入门，下面是一些有用的链接：
 

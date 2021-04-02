@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: how-to
 keywords: 人体, 帧, azure, kinect, 跟踪, 提示
 ms.openlocfilehash: be44f59cb84e99129bf526575293eee69ca64598
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "76760939"
 ---
 # <a name="access-data-in-body-frame"></a>访问人体帧中的数据

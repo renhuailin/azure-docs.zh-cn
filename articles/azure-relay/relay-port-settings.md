@@ -4,10 +4,10 @@ description: 本文提供了一个表，该表描述了 Azure 中继的端口值
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85314264"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置

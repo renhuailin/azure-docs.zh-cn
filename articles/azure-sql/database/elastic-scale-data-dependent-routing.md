@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 60e8b4b21a9e62279cd0eccfabbbed680183e2a9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92787017"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>使用数据依赖型路由可将查询路由到相应的数据库

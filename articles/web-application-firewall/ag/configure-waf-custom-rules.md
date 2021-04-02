@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83758956"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2

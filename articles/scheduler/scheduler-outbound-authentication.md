@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80878963"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 计划程序的出站身份验证
@@ -45,7 +45,7 @@ Azure 计划程序作业必须调用需要进行身份验证的服务，例如�
 
 使用 `ClientCertificate` 模型添加身份验证时，请在请求正文中指定以下附加元素。  
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素）  | 使用 SSL/TLS 客户端证书的身份验证对象 |
 | **type** | 是 | 身份验证类型。 对于 SSL/TLS 客户端证书，该值为 `ClientCertificate`。 |
@@ -165,7 +165,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 使用 `Basic` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素）  | 用于使用基本身份验证的身份验证对象 | 
 | **type** | 是 | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 | 
@@ -283,7 +283,7 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 使用 `ActiveDirectoryOAuth` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必须 | 说明 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素）  | 是 | 用于使用 ActiveDirectoryOAuth 身份验证的身份验证对象 |
 | **type** | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 |
