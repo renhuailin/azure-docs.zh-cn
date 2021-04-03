@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 MindTickle 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 MindTickle 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 MindTickle 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: db2cfc8ba0389f98d6f9407d7b4a31612e28b46a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519004"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>教程：Azure Active Directory 与 MindTickle 的集成
+# <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>教程：Azure Active Directory 与 MindTickle 集成
 
 本教程介绍如何将 MindTickle 与 Azure Active Directory (Azure AD) 集成。
 将 MindTickle 与 Azure AD 集成可提供以下优势：
@@ -63,7 +63,7 @@ ms.locfileid: "92519004"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **MindTickle** ，在结果面板中选择“MindTickle”，然后单击“添加”按钮添加该应用程序   。
+4. 在搜索框中键入 **MindTickle**，在结果面板中选择“MindTickle”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 MindTickle](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92519004"
 
 若要配置 MindTickle 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“MindTickle”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“MindTickle”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "92519004"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分，如果有 **服务提供程序元数据文件** ，请执行以下步骤：
+4. 在“基本 SAML 配置”部分，如果有 **服务提供程序元数据文件**，请执行以下步骤：
 
     a. 单击“上传元数据文件”  。
 
@@ -109,7 +109,7 @@ ms.locfileid: "92519004"
 
     ![选择元数据文件](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后，“标识符”值会自动填充在“基本 SAML 配置”部分中：  
+    c. 成功上传元数据文件后，“标识符”值会自动填充在“基本 SAML 配置”部分中： 
 
     ![MindTickle 域和 URL 单一登录信息](common/sp-identifier.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "92519004"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 MindTickle”部分，根据要求复制相应的 URL  。
+6. 在“设置 MindTickle”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92519004"
 
 ### <a name="configure-mindtickle-single-sign-on"></a>配置 MindTickle 单一登录
 
-若要在 **MindTickle** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [MindTickle 支持团队](mailto:support@mindtickle.com)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **MindTickle** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [MindTickle 支持团队](mailto:support@mindtickle.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -144,7 +144,7 @@ ms.locfileid: "92519004"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -154,30 +154,30 @@ ms.locfileid: "92519004"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过向 Britta Simon 授予 MindTickle 的访问权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“MindTickle”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“MindTickle”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“MindTickle”  。
+2. 在“应用程序”列表中，选择“MindTickle”。
 
     ![“应用程序”列表中的“MindTickle”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "92519004"
 
 ### <a name="create-mindtickle-test-user"></a>创建 MindTickle 测试用户
 
-在本部分，我们将在 MindTickle 中创建名为 Britta Simon 的用户。 MindTickle 支持默认已启用的 **实时用户预配** 。 此部分不存在任何操作项。 如果 MindTickle 中不存在用户，则身份验证后会创建一个新用户。
+在本部分，我们将在 MindTickle 中创建名为 Britta Simon 的用户。 MindTickle 支持默认已启用的 **实时用户预配**。 此部分不存在任何操作项。 如果 MindTickle 中不存在用户，则身份验证后会创建一个新用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 
