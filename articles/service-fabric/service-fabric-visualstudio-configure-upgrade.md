@@ -4,10 +4,10 @@ description: 了解如何使用 Microsoft Visual Studio 来配置 Service Fabric
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.openlocfilehash: 11df0387db07669ebacdba2e3d850e32903da133
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96573674"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级

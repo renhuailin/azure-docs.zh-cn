@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 OrgChart Now 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 OrgChart Now 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 OrgChart Now 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>教程：Azure Active Directory 与 OrgChart Now 集成
@@ -61,7 +61,7 @@ ms.locfileid: "92522319"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“OrgChart Now”，在结果面板中选择“OrgChart Now”，然后单击“添加”按钮添加应用程序。   
+4. 在搜索框中键入“OrgChart Now”，在结果面板中选择“OrgChart Now”，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 OrgChart Now](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92522319"
 
 若要配置 OrgChart Now 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“OrgChart Now”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“OrgChart Now”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,26 +97,26 @@ ms.locfileid: "92522319"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     ![OrgChart Now 域和 URL 单一登录信息](common/idp-identifier.png)
 
     在“标识符”  文本框中，键入一个 URL：`https://sso2.orgchartnow.com`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` 是从“设置 OrgChart Now”部分（本教程稍后会介绍）复制的“Azure AD 标识符”   。
+    > `<YourEntityID>` 是从“设置 OrgChart Now”部分（本教程稍后会介绍）复制的“Azure AD 标识符” 。
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 OrgChart Now”部分，根据要求复制相应的 URL。 
+7. 在“设置 OrgChart Now”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "92522319"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -153,17 +153,17 @@ ms.locfileid: "92522319"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 OrgChart Now 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“OrgChart Now”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“OrgChart Now”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“OrgChart Now”。 
+2. 在应用程序列表中，选择“OrgChart Now”。
 
     ![应用程序列表中的 OrgChart Now 链接](common/all-applications.png)
 
@@ -185,13 +185,13 @@ ms.locfileid: "92522319"
 
 若要让 Azure AD 用户登录 OrgChart Now，必须将其预配到 OrgChart Now 中。 
 
-1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建 **只读** 用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。  请遵循以下步骤创建访问组：
+1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建 **只读** 用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。 请遵循以下步骤创建访问组：
 
     a. 单击 UI 右上角的 **齿轮** 图标后，转到“管理组”选项。
 
     ![OrgChart Now 组](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
-    b. 选择“添加”图标，将组命名为“常规”，然后单击“确定”。    
+    b. 选择“添加”图标，将组命名为“常规”，然后单击“确定”。 
 
     ![OrgChart Now 添加](./media/orgchartnow-tutorial/tutorial_orgchartnow_add.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "92522319"
 
     ![OrgChart Now 文件夹](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **锁定** 文件夹，以便只有管理员用户可以修改它们。 然后按“确定”。 
+    d. **锁定** 文件夹，以便只有管理员用户可以修改它们。 然后按“确定”。
 
     ![OrgChart Now 锁定](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
@@ -207,17 +207,17 @@ ms.locfileid: "92522319"
 
     a. 以安全管理员身份登录到 OrgChart Now。
 
-    b.  单击右上角的“设置”，然后导航到“管理用户”。  
+    b.  单击右上角的“设置”，然后导航到“管理用户”。
 
     ![OrgChart Now 设置](./media/orgchartnow-tutorial/tutorial_orgchartnow_settings.png)
 
-    c. 单击“添加”并执行以下步骤： 
+    c. 单击“添加”并执行以下步骤：
 
     ![OrgChart Now 管理](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com** 。
+    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com**。
 
-    * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
+    * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com 。
 
     * 单击“添加”  。
 

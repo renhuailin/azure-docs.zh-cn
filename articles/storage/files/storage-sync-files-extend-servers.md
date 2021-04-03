@@ -8,10 +8,10 @@ ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1d2a0d79a5cdd53f8376c088fc986c20908575eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91329444"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
@@ -61,7 +61,7 @@ ms.locfileid: "91329444"
 
     ![选择”添加文件共享”按钮](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. 将新文件共享命名为 _afsfileshare_。 输入“1”作为**配额**，然后选择“创建”。  配额最高可以为 5 TiB，但本教程只需 1 GB。
+1. 将新文件共享命名为 _afsfileshare_。 输入“1”作为 **配额**，然后选择“创建”。  配额最高可以为 5 TiB，但本教程只需 1 GB。
 
     ![为新文件共享提供名称和配额](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "91329444"
 ### <a name="deploy-a-vm-and-attach-a-data-disk"></a>部署 VM 并附加数据磁盘
 
 1. 转到 Azure 门户，展开左侧的菜单。 在左上角选择“创建资源”。 
-1. 在 **Azure 市场**资源列表上方的搜索框中搜索“Windows Server 2016 Datacenter”，然后在结果中将其选中。  选择“创建”。 
+1. 在 **Azure 市场** 资源列表上方的搜索框中搜索“Windows Server 2016 Datacenter”，然后在结果中将其选中。  选择“创建”。 
 1. 转到“基本信息”  选项卡。在“项目详细信息”下，选择为本教程创建的资源组。 
 
    ![在门户边栏选项卡上输入 VM 的基本信息](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
@@ -102,10 +102,10 @@ ms.locfileid: "91329444"
       ![数据磁盘详细信息](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. 选择“确定”  。
-1. 选择“查看 + 创建”  。
+1. 选择“查看 + 创建”。
 1. 选择“创建”  。
 
-   可以选择“通知”图标，观察**部署进度**。  创建新的 VM 可能需要数分钟才能完成。
+   可以选择“通知”图标，观察 **部署进度**。  创建新的 VM 可能需要数分钟才能完成。
 
 1. VM 部署完成以后，请选择“转到资源”。 
 
@@ -170,7 +170,7 @@ ms.locfileid: "91329444"
 
     ![添加新的文本文件](media/storage-sync-files-extend-servers/new-file.png)
 
-1. 关闭**文件资源管理器**和**服务器管理器**。
+1. 关闭 **文件资源管理器** 和 **服务器管理器**。
 
 ### <a name="download-the-azure-powershell-module"></a>下载 Azure PowerShell 模块
 
@@ -222,7 +222,7 @@ ms.locfileid: "91329444"
    | **资源组** | 包含存储同步服务的资源组。<br><br>就本教程来说，请使用 _afsresgroup101918_。 |
    | **位置** | 美国东部 |
 
-1. 完成后请选择“创建”，部署**存储同步服务**  。
+1. 完成后请选择“创建”，部署 **存储同步服务**  。
 1. 选择“通知”选项卡  >“转到资源”。 
 
 ## <a name="install-the-agent"></a>安装代理
@@ -240,7 +240,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 1. 选择“允许一次”   > “运行”   >   “打开”。
 1. 如果尚未关闭 PowerShell 窗口，请将其关闭。
-1. 接受**存储同步代理设置向导**中的默认设置。
+1. 接受 **存储同步代理设置向导** 中的默认设置。
 1. 选择“安装”  。
 1. 选择“完成”  。
 
@@ -288,7 +288,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 1. 选择“创建”  。
 
-如果选择同步组，则可看到现在有一个**云终结点**。
+如果选择同步组，则可看到现在有一个 **云终结点**。
 
 ## <a name="add-a-server-endpoint"></a>添加服务器终结点
 

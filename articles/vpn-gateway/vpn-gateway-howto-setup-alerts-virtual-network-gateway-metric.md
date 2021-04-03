@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 05fbc5675d6ee3b6720d9db9e07e7010cf1d9172
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89435651"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>基于 VPN 网关指标设置警报
@@ -23,14 +23,14 @@ ms.locfileid: "89435651"
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| 字节/秒  | 5 分钟| 网关上所有站点到站点连接的组合带宽平均利用率。     |
 |**P2SBandwidth**| 字节/秒  | 1 分钟  | 网关上所有点到站点连接的组合带宽平均利用率。    |
-|**P2SConnectionCount**| 计数  | 1 分钟  | 网关上点到站点连接的计数。   |
+|**P2SConnectionCount**| Count  | 1 分钟  | 网关上点到站点连接的计数。   |
 |**TunnelAverageBandwidth** | 字节/秒    | 5 分钟  | 在网关上创建的隧道的带宽平均利用率。 |
 |**TunnelEgressBytes** | 字节 | 5 分钟 | 在网关上创建的隧道中的传出流量。   |
-|**TunnelEgressPackets** | 计数 | 5 分钟 | 在网关上创建的隧道中的传出数据包的计数。   |
-|**TunnelEgressPacketDropTSMismatch** | 计数 | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传出数据包的计数。 |
+|**TunnelEgressPackets** | Count | 5 分钟 | 在网关上创建的隧道中的传出数据包的计数。   |
+|**TunnelEgressPacketDropTSMismatch** | Count | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传出数据包的计数。 |
 |**TunnelIngressBytes** | 字节 | 5 分钟 | 在网关上创建的隧道中的传入流量。   |
-|**TunnelIngressPackets** | 计数 | 5 分钟 | 在网关上创建的隧道中的传入数据包的计数。   |
-|**TunnelIngressPacketDropTSMismatch** | 计数 | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传入数据包的计数。 |
+|**TunnelIngressPackets** | Count | 5 分钟 | 在网关上创建的隧道中的传入数据包的计数。   |
+|**TunnelIngressPacketDropTSMismatch** | Count | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传入数据包的计数。 |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>使用 Azure 门户基于指标设置 Azure Monitor 警报
