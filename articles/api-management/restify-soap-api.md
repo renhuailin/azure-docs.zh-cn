@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87843821"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>导入 SOAP API 并将其转换为 REST
@@ -30,7 +30,7 @@ ms.locfileid: "87843821"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 

@@ -11,15 +11,15 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91257057"
 ---
-如果你不熟悉身份和访问管理 (使用 OAuth 2.0 和 OpenID Connect 的 IAM) ，甚至是 Microsoft 标识平台上的 IAM 的新手，则阅读列表中的以下一组文章应会很高。
+如果你不熟悉 OAuth 2.0 和 OpenID Connect 的标识和访问管理 (IAM)，甚至不熟悉 Microsoft 标识平台上的 IAM，请将下列文章加入你的阅读列表。
 
-虽然在完成首个快速入门或教程之前不需要阅读，但它们涵盖了平台的有机组成部分，熟悉这些主题将有助于你构建更复杂的方案。
+虽然在完成第一个快速入门或教程之前不需要阅读这些文章，但是它们涵盖了平台不可或缺的主题，熟悉它们将有助于构建更复杂的方案。
 
 :::row:::
     :::column:::

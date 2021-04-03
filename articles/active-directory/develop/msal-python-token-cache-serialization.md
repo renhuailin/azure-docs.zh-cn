@@ -14,10 +14,10 @@ ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 7aaf59377949101ba8dd5c9454b89229e925e859
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87846184"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>适用于 Python 的 MSAL 中的自定义令牌缓存序列化

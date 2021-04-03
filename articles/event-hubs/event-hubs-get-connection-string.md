@@ -4,10 +4,10 @@ description: 本文说明如何获取客户端可用于连接 Azure 事件中心
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86537167"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串

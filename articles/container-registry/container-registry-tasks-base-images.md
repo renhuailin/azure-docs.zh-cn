@@ -4,10 +4,10 @@ description: 了解应用程序容器映像的基础映像，并了解基础映�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97707480"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>关于 ACR 任务的基础映像更新

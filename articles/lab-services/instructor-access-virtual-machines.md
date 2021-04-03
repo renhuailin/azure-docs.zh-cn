@@ -4,10 +4,10 @@ description: 本文介绍了教师如何从教师视图访问其学生 VM。 例
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85445094"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>作为学生从教师视图访问虚拟机

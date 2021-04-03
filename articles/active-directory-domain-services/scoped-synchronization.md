@@ -13,10 +13,10 @@ ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98660892"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户配置从 Azure AD 到 Azure Active Directory 域服务的区分范围的同步

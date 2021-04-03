@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 066a6489e6244369453ec5d9f21d5e1e83fcd6c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85201744"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
@@ -28,7 +28,7 @@ ms.locfileid: "85201744"
 
 将 long 数据类型转换为字符串数据类型。
 
-| Item | TransformationClaimType | 数据类型 | 注释 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要转换为字符串的 ClaimType。 |
 | OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |

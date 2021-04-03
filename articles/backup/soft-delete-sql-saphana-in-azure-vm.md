@@ -4,10 +4,10 @@ description: 了解 Azure VM 中 SQL Server 的软删除以及 Azure VM 工作�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 2a442997d426ff0bf4c74b0b45f7657cc0593b82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91254289"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中 SQL Server 的软删除和 Azure VM 工作负荷中 SAP HANA 的软删除
