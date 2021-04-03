@@ -4,10 +4,10 @@ description: 了解如何从各种输入源创建 Batch 资源文件。 本文�
 ms.date: 03/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109283"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件

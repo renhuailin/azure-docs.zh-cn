@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f51a195f9ad43c7facb7dc413a4da83fc6b202b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91531388"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>教程：使用 Service Fabric 演示容器服务的故障转移和缩放
@@ -19,7 +19,7 @@ ms.locfileid: "91531388"
 > * 了解 Service Fabric 群集中的容器故障转移
 > * 缩放应用程序中的 Web 前端容器
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [第 2 部分](service-fabric-tutorial-package-containers.md)中的应用程序在活动的 Service Fabric 群集中运行。
 

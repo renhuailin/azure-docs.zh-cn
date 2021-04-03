@@ -4,10 +4,10 @@ description: 排查将资源移到新资源组或订阅时出现的问题。
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 41b1e2435caf9874f3582a3394664c7b7f5a8d29
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90054156"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题

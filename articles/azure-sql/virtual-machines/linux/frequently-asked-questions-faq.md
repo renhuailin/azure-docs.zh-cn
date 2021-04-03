@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92792542"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>有关 Linux 虚拟机上的 SQL Server 的常见问题解答
@@ -69,7 +69,7 @@ ms.locfileid: "92792542"
 
 1. **如果 VM 是基于一个即用即付库映像创建的，是否可以将它更改为使用我自己的 SQL Server 许可证？**
 
-   不是。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
+   否。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
 
 ## <a name="administration"></a>管理
 

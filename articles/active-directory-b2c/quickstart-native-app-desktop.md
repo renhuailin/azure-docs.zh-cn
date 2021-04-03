@@ -13,10 +13,10 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ebed2f5e8664bd4336219f9387b8d27c8f3a1c59
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78187265"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录
@@ -27,7 +27,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) 与“ASP.NET 和 Web 开发”工作负载。
 - Facebook、Google 或 Microsoft 中的社交帐户。
 - [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip)或从 GitHub 克隆 [Azure-Samples/active-directory-b2c-dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) 存储库。
 
@@ -42,7 +42,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 
 ## <a name="sign-in-using-your-account"></a>使用帐户登录
 
-1. 单击“登录”开始“注册或登录”工作流。  
+1. 单击“登录”开始“注册或登录”工作流。
 
     ![示例 WPF 应用程序的屏幕截图](./media/quickstart-native-app-desktop/wpf-sample-application.png)
 
@@ -63,19 +63,19 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 
 Azure AD B2C 提供允许用户更新个人资料的功能。 示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件用户流。
 
-1. 在应用程序菜单栏中，单击“编辑个人资料”以编辑创建的个人资料。 
+1. 在应用程序菜单栏中，单击“编辑个人资料”以编辑创建的个人资料。
 
     ![WPF 示例应用中突出显示的“编辑配置文件”按钮](./media/quickstart-native-app-desktop/edit-profile-wpf.png)
 
 2. 选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Facebook 作为标识提供者，那么选择使用 Facebook 来修改关联的个人资料详细信息。
 
-3. 更改“显示名称”或“城市”，然后单击“继续”。   
+3. 更改“显示名称”或“城市”，然后单击“继续”。
 
-    新的访问令牌显示在“令牌信息”文本框中。  如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms ) 中。
+    新的访问令牌显示在“令牌信息”文本框中。 如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms) 中。
 
 ## <a name="access-a-protected-api-resource"></a>访问受保护的 API 资源
 
-单击“调用 API”，向受保护的资源发出请求。 
+单击“调用 API”，向受保护的资源发出请求。
 
 ![调用 API](./media/quickstart-native-app-desktop/call-api-wpf.png)
 

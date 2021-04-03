@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84744079"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>度量要在 Internet 分析器测试中评估的自定义终结点 
