@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 7d10c6c1ce440b2ffe964dc78379ef3ab108e78e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92217518"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>教程：添加后端存储并配置虚拟命名空间
@@ -30,7 +30,7 @@ ms.locfileid: "92217518"
 
 ## <a name="about-back-end-storage"></a>关于后端存储
 
-Azure FXT Edge Filer 群集使用“核心文件管理器”定义，将后端存储系统链接到 FXT 群集  。
+Azure FXT Edge Filer 群集使用“核心文件管理器”定义，将后端存储系统链接到 FXT 群集。
 
 Azure FXT Edge Filer 与几种常用的 NAS 硬件系统兼容，可以使用来自 Azure Blob 或其他云存储的空容器。
 
@@ -56,11 +56,11 @@ Azure FXT Edge Filer 与几种常用的 NAS 硬件系统兼容，可以使用来
 
 ## <a name="add-a-core-filer"></a>添加核心文件管理器
 
-单击“核心文件管理器” > “管理核心文件管理器”设置页面上的“创建”按钮，定义核心文件管理器    。
+单击“核心文件管理器” > “管理核心文件管理器”设置页面上的“创建”按钮，定义核心文件管理器。
 
 ![单击“管理核心文件管理器”页面上核心文件管理器列表上方的“创建”按钮](media/fxt-cluster-config/create-core-filer-button.png)
 
-“添加新的核心文件管理器”向导将引导你完成创建链接到后端存储的核心文件管理器  。 《群集配置指南》分步说明了该过程，NFS/NAS 存储和云存储的过程描述并不相同（链接在上面）。
+“添加新的核心文件管理器”向导将引导你完成创建链接到后端存储的核心文件管理器。 《群集配置指南》分步说明了该过程，NFS/NAS 存储和云存储的过程描述并不相同（链接在上面）。
 
 子任务包括：
 
@@ -80,11 +80,11 @@ Azure FXT Edge Filer 与几种常用的 NAS 硬件系统兼容，可以使用来
 
   ![“新的核心文件管理器”向导中的云核心文件管理器信息](media/fxt-cluster-config/new-core-filer-cloud3.png)
   
-  如果已经为此群集添加了云访问凭据，则它们将在列表中显示。 在“群集” > “云凭据”设置页中更新并添加凭据   。
+  如果已经为此群集添加了云访问凭据，则它们将在列表中显示。 在“群集” > “云凭据”设置页中更新并添加凭据 。
 
-在向导中填写所有必需设置后，单击“添加文件管理器”按钮以提交更改  。
+在向导中填写所有必需设置后，单击“添加文件管理器”按钮以提交更改。
 
-几分钟后，存储系统会显示在“仪表板”的核心文件管理器列表上，可以通过核心文件管理器设置页访问  。
+几分钟后，存储系统会显示在“仪表板”的核心文件管理器列表上，可以通过核心文件管理器设置页访问。
 
 ![“管理核心文件管理器”设置页中的核心文件管理器“Flurry-NAS”，文件管理器详细信息视图已展开](media/fxt-cluster-config/core-filer-in-manage-page.png)
 
@@ -92,7 +92,7 @@ Azure FXT Edge Filer 与几种常用的 NAS 硬件系统兼容，可以使用来
 
 ## <a name="configure-the-namespace"></a>配置命名空间
 
-Azure FXT Edge Filer 群集创建名为“群集命名空间”的虚拟文件系统，简化了客户端对不同后端系统上存储的数据的访问  。 由于客户端使用虚拟路径请求文件，因此可以添加或替换存储系统，而无需更改客户端工作流。
+Azure FXT Edge Filer 群集创建名为“群集命名空间”的虚拟文件系统，简化了客户端对不同后端系统上存储的数据的访问。 由于客户端使用虚拟路径请求文件，因此可以添加或替换存储系统，而无需更改客户端工作流。
 
 通过群集命名空间还能以类似的文件结构表示云和 NAS 存储系统。
 
@@ -126,23 +126,23 @@ VServer 是虚拟文件服务器，用于控制客户端和群集的核心文件
 
 * VServer 将处理的面向客户端的 IP 地址范围
 
-  创建 VServer 时，必须提供一个连续 IP 地址范围。 之后可以使用“面向客户端的网络”设置页来添加更多地址  。
+  创建 VServer 时，必须提供一个连续 IP 地址范围。 之后可以使用“面向客户端的网络”设置页来添加更多地址。
 
 * 如果网络具有多个 VLAN，则此 VServer 使用哪个 VLAN
 
-使用“VServer” > “管理 VServer”设置页创建新的 VServer   。 有关更多详细信息，请阅读《群集配置指南》中的[创建 VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)。
+使用“VServer” > “管理 VServer”设置页创建新的 VServer 。 有关更多详细信息，请阅读《群集配置指南》中的[创建 VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver)。
 
 ![用于创建新 VServer 的弹出窗口](media/fxt-cluster-config/new-vserver.png)
 
 ### <a name="create-a-junction"></a>创建交接点
 
-“交接点”将后端存储路径映射到客户端可见的命名空间  。
+“交接点”将后端存储路径映射到客户端可见的命名空间。
 
 因为一条虚拟路径可以容纳来自多个核心文件管理器的存储，所以可以使用此系统简化客户端装入点中使用的路径，并无缝缩放容量。
 
 ![添加已填充设置的“新建交接点”向导页面](media/fxt-cluster-config/add-junction-full.png)
 
-有关创建命名空间交接点的完整详细信息，请参考《群集配置指南》中的 [VServer > 命名空间](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)   。
+有关创建命名空间交接点的完整详细信息，请参考《群集配置指南》中的 [VServer > 命名空间](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html)。
 
 ![显示交接点详情的“Vserver”>“命名空间”设置页](media/fxt-cluster-config/namespace-populated.png)
 
@@ -150,9 +150,9 @@ VServer 是虚拟文件服务器，用于控制客户端和群集的核心文件
 
 在同时具有 VServer 和核心文件管理器之后，应该自定义导出规则和导出策略，用以控制客户端如何访问核心文件管理器导出上的文件。
 
-首先，使用“VServer” > “导出规则”页面添加新规则、修改默认策略或者创建自己的自定义导出策略   。
+首先，使用“VServer” > “导出规则”页面添加新规则、修改默认策略或者创建自己的自定义导出策略 。
 
-然后，使用“VServer” > “导出策略”页面，在通过该 VServer 进行访问时将自定义策略应用于核心文件管理器的导出   。
+然后，使用“VServer” > “导出策略”页面，在通过该 VServer 进行访问时将自定义策略应用于核心文件管理器的导出 。
 
 有关详细信息，请阅读《群集配置指南》文章中的[控制对核心文件管理器导出的访问](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html)。
 

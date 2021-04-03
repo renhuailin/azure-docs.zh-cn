@@ -4,10 +4,10 @@ description: 使用 Azure 备份服务器备份和还原 SharePoint 数据。 �
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89375391"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 将 SharePoint 场备份到 Azure
@@ -60,9 +60,9 @@ ms.locfileid: "89375391"
 
         * EnableSharePointProtection 启用对 SharePoint 场的保护、启用 VSS 编写器，并注册 DCOM 应用程序 WssCmdletsWrapper 的标识，以采用其凭据随此选项一起输入的用户身份运行。 此帐户应该是场管理员，也是前端 Web 服务器上的本地管理员。
 
-        * EnableSPSearchProtection 通过使用前端 Web 服务器上的 HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ 下的注册表项 SharePointSearchEnumerationEnabled 来保护 WSS 3.0 SP 搜索，并注册 DCOM 应用程序 WssCmdletsWrapper 的标识，以采用其凭据随此选项一起输入的用户身份运行。 此帐户应为前端 Web 服务器上的场管理员和本地管理员。
+        * **EnableSPSearchProtection** 通过使用前端 Web 服务器上 HKLM\\Software\\Microsoft\\ Microsoft Data Protection Manager\\Agent\\2.0\\ 下的注册表项 SharePointSearchEnumerationEnabled 启用 WSS 3.0 SP Search 保护，并注册 DCOM 应用程序 WssCmdletsWrapper 的标识，使其作为使用此选项输入凭据的用户运行。 此帐户应为前端 Web 服务器上的场管理员和本地管理员。
 
-        * **ResolveAllSQLAliases** 显示 SharePoint VSS 编写器报告的所有别名，并将它们解析为对应的 SQL Server。 它还显示这些别名解析的实例名称。 如果服务器已建立镜像，它还将显示镜像服务器。 它报告未解析为 SQL Server 的所有别名。
+        * ResolveAllSQLAliases 显示 SharePoint VSS 编写器报告的所有别名，并将它们解析为对应的 SQL Server。 它还显示这些别名解析的实例名称。 如果服务器已建立镜像，它还将显示镜像服务器。 它报告未解析为 SQL Server 的所有别名。
 
         * SetTempPath 将环境变量 TEMP 和 TMP 设置为指定的路径。 如果正在恢复大网站集、站点、列表或项目，并且场管理员临时文件夹中的空间不足，则项目级恢复将失败。 通过此选项，你可以将临时文件的文件夹路径更改为具有充足空间来存储所恢复的网站集或站点的卷。
 

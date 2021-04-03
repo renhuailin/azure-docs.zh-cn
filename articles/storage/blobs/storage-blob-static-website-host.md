@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888498"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -27,7 +27,7 @@ ms.locfileid: "94888498"
 > * 配置静态网站托管
 > * 部署 Hello World 网站
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "94888498"
 安装 Visual Studio Code 以后，请安装 Azure 存储预览版扩展。 此扩展将 Azure 存储管理功能与 Visual Studio Code 集成在一起。 可以使用此扩展将静态网站部署到 Azure 存储。 若要安装此扩展，请执行以下操作：
 
 1. 启动 Visual Studio Code。
-2. 在工具栏上，请单击“扩展”  。 搜索“Azure 存储”，然后从列表中选择“Azure 存储”扩展   。 然后单击“下载”  按钮，以便安装此扩展。
+2. 在工具栏上，请单击“扩展”。 搜索“Azure 存储”，然后从列表中选择“Azure 存储”扩展。 然后单击“下载”按钮，以便安装此扩展。
 
     ![在 VS Code 中安装 Azure 存储扩展](media/storage-blob-static-website-host/install-extension-vs-code.png)
 
@@ -53,10 +53,10 @@ ms.locfileid: "94888498"
 
 1. 在 Web 浏览器中打开 [Azure 门户](https://portal.azure.com/)。 
 1. 找到存储帐户并显示帐户概览。
-1. 选择“静态网站”，以显示静态网站的配置页。 
-1. 选择“启用”，启用针对存储帐户的静态网站托管功能。 
-1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。  当用户导航到静态网站的根目录时，会显示默认索引页。  
-1. 在“错误文档路径”字段中，  指定默认错误页 *404.html*。 当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
+1. 选择“静态网站”，以显示静态网站的配置页。
+1. 选择“启用”，启用针对存储帐户的静态网站托管功能。
+1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。 当用户导航到静态网站的根目录时，会显示默认索引页。  
+1. 在“错误文档路径”字段中，指定默认错误页 *404.html*。 当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
 1. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
@@ -66,7 +66,7 @@ ms.locfileid: "94888498"
 接下来，使用 Visual Studio Code 创建 Hello World 网页，并将其部署到在 Azure 存储帐户中托管的静态网站。
 
 1. 在本地文件系统上创建名为 *mywebsite* 的空文件夹。 
-1. 启动 Visual Studio Code，打开刚刚在“资源管理器”面板中创建的文件夹。 
+1. 启动 Visual Studio Code，打开刚刚在“资源管理器”面板中创建的文件夹。
 
     ![在 Visual Studio Code 中打开文件夹](media/storage-blob-static-website-host/open-folder-vs-code.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "94888498"
     ```
 
 1. 创建默认错误文件，将其命名为 *404.html*。
-1. 在编辑器中打开 404.html，将以下文本粘贴到该文件中，然后保存  ：
+1. 在编辑器中打开 404.html，将以下文本粘贴到该文件中，然后保存：
 
     ```
     <!DOCTYPE html>
@@ -97,7 +97,7 @@ ms.locfileid: "94888498"
     </html>
     ```
 
-1. 在“资源管理器”面板的 *mywebsite* 文件夹下双击，选择“部署到静态网站...”，以便部署网站。   系统会提示你登录到 Azure，以便检索订阅的列表。
+1. 在“资源管理器”面板的 *mywebsite* 文件夹下双击，选择“部署到静态网站...”，以便部署网站。 系统会提示你登录到 Azure，以便检索订阅的列表。
 
 1. 选择包含存储帐户的订阅，已经为该帐户启用静态网站托管功能。 接下来，根据提示选择存储帐户。
 

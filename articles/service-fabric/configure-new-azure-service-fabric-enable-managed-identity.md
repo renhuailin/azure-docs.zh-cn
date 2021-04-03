@@ -4,10 +4,10 @@ description: 下面介绍如何在新的 Azure Service Fabric 群集中启用托
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: ae4fec452a2342a68843d874ba955b594014c46d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574660"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>为新的 Service Fabric 群集配置托管标识支持

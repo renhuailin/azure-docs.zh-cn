@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
 ms.openlocfilehash: ddc8cce7b56e0d9d4b3dc33dc1ad2d8c16582841
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458700"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Leapsome 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Leapsome 集成
 
 本教程介绍如何将 Leapsome 与 Azure Active Directory (Azure AD) 集成。 将 Leapsome 与 Azure AD 集成后，可以：
 
@@ -39,7 +39,7 @@ ms.locfileid: "92458700"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Leapsome 支持 SP 和 IDP 发起的 SSO 
+* Leapsome 支持 SP 和 IDP 发起的 SSO
 
 ## <a name="adding-leapsome-from-the-gallery"></a>从库中添加 Leapsome
 
@@ -49,8 +49,8 @@ ms.locfileid: "92458700"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Leapsome”   。
-1. 从结果面板中选择“Leapsome”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Leapsome”。
+1. 从结果面板中选择“Leapsome”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-leapsome"></a>配置和测试 Leapsome 的 Azure AD 单一登录
 
@@ -69,21 +69,21 @@ ms.locfileid: "92458700"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Leapsome”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Leapsome”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”文本框中键入 URL：`https://www.leapsome.com` 
+    a. 在“标识符”文本框中键入 URL：`https://www.leapsome.com`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
 
     > [!NOTE]
     > 上面的回复 URL 和登录 URL 不是实际值。 将使用实际值更新这些值（本教程稍后将会介绍）。
@@ -105,11 +105,11 @@ ms.locfileid: "92458700"
     > [!Note]
     > 图片属性值不是实际值。 请使用实际图片 URL 更新此值。 若要获取此值，请联系 [Leapsome 客户端支持团队](mailto:support@leapsome.com)。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Leapsome”部分中，根据要求复制相应的 URL  。
+1. 在“设置 Leapsome”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -117,55 +117,55 @@ ms.locfileid: "92458700"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Leapsome 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Leapsome”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Leapsome”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-leapsome-sso"></a>配置 Leapsome SSO
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 Leapsome。
 
-1. 依次单击右上角的“设置”徽标和“管理员设置”  。
+1. 依次单击右上角的“设置”徽标和“管理员设置”。
 
     ![Leapsome 设置](./media/leapsome-tutorial/tutorial_leapsome_admin.png)
 
-1. 单击左侧菜单栏上的“单一登录(SSO)”  ，并在“基于 SAML 的单一登录(SSO)”  页上按照以下步骤操作：
+1. 单击左侧菜单栏上的“单一登录(SSO)”，并在“基于 SAML 的单一登录(SSO)”页上按照以下步骤操作：
 
     ![Leapsome saml](./media/leapsome-tutorial/tutorial_leapsome_samlsettings.png)
 
-    a. 选中“启用基于 SAML 的单一登录”  。
+    a. 选中“启用基于 SAML 的单一登录”。
 
-    b. 将“登录 URL (指引用户开始登录)”  值复制并粘贴到 Azure 门户上“基本 SAML 配置”  部分中的“登录 URL”  文本框。
+    b. 将“登录 URL (指引用户开始登录)”值复制并粘贴到 Azure 门户上“基本 SAML 配置”部分中的“登录 URL”文本框。
 
-    c. 将“回复 URL (接收标识提供程序的响应)”值复制并粘贴到 Azure 门户上“基本 SAML 配置”部分中的“回复 URL”文本框    。
+    c. 将“回复 URL (接收标识提供程序的响应)”值复制并粘贴到 Azure 门户上“基本 SAML 配置”部分中的“回复 URL”文本框。
 
-    d. 在“SSO 登录 URL (由标识提供程序提供)”  文本框中，粘贴从 Azure 门户复制的“登录 URL”  值。
+    d. 在“SSO 登录 URL (由标识提供程序提供)”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    e. 将从 Azure 门户下载的证书（不含 `--BEGIN CERTIFICATE and END CERTIFICATE--` 注释）复制并粘贴到“证书(由标识提供程序提供)”  文本框。
+    e. 将从 Azure 门户下载的证书（不含 `--BEGIN CERTIFICATE and END CERTIFICATE--` 注释）复制并粘贴到“证书(由标识提供程序提供)”文本框。
 
-    f. 单击“更新 SSO 设置”  。
+    f. 单击“更新 SSO 设置”。
 
 ### <a name="create-leapsome-test-user"></a>创建 Leapsome 测试用户
 

@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 48ee6de28bcd76d4c484b77c981062bad1a3754d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219745"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>教程：安装 Azure FXT Edge Filer
@@ -29,7 +29,7 @@ ms.locfileid: "92219745"
 > * 将设备装入机架
 > * 安装前挡板（可选）
 
-## <a name="installation-prerequisites"></a>安装的先决条件
+## <a name="installation-prerequisites"></a>安装先决条件
 
 开始安装之前，请确保要使用的数据中心和机架具有以下功能：
 
@@ -95,7 +95,7 @@ Azure FXT Edge Filer 混合存储缓存由三个或多个 Azure FXT Edge Filer �
 
 对于带卡入式方孔或圆孔的机架，请按照以下过程装配和安装导轨。
 
-1. 将带有“FRONT”  标记的左、右侧导轨尾段面朝内放置。 使每个尾段嵌入垂直机架法兰正面上的孔内。 (1)
+1. 将带有“FRONT”标记的左、右侧导轨尾段面朝内放置。 使每个尾段嵌入垂直机架法兰正面上的孔内。 (1)
 
 2. 将每个尾段对齐机架底部和顶部孔中要安装部件的位置。 (2)
 

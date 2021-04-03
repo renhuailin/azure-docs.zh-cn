@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 12/31/2019
 ms.author: jeedes
 ms.openlocfilehash: acba3561af13126f00663c3371aa60c3d30a497b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92457259"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benefithub"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenefitHub 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benefithub"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BenefitHub 集成
 
 在本教程中，你将了解如何将 BenefitHub 与 Azure Active Directory (Azure AD) 进行集成。 将 BenefitHub 与 Azure AD 集成后，可以：
 
@@ -49,37 +49,37 @@ ms.locfileid: "92457259"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“BenefitHub”   。
-1. 从结果面板中选择“BenefitHub”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“BenefitHub”。
+1. 从结果面板中选择“BenefitHub”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-benefithub"></a>配置和测试 BenefitHub 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 BenefitHub 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 BenefitHub 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 BenefitHub 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 BenefitHub 相关用户之间建立链接关系。
 
 若要配置和测试 BenefitHub 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. [配置 BenefitHub SSO](#configure-benefithub-sso) - 在应用程序端配置单一登录设置  。
-    * [创建 BenefitHub 测试用户](#create-benefithub-test-user) - 在 BenefitHub 中创建 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
+1. [配置 BenefitHub SSO](#configure-benefithub-sso) - 在应用程序端配置单一登录设置。
+    * [创建 BenefitHub 测试用户](#create-benefithub-test-user) - 在 BenefitHub 中创建 B. Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“BenefitHub”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“BenefitHub”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-    a. 在“标识符”文本框中键入以下值：`urn:benefithub:passport` 
+    a. 在“标识符”文本框中键入以下值：`urn:benefithub:passport`
 
-    b. 在“回复 URL”文本框中键入以下值：`https://passport.benefithub.info/saml/post/ac` 
+    b. 在“回复 URL”文本框中键入以下值：`https://passport.benefithub.info/saml/post/ac`
 
 1. BenefitHub 应用程序需要特定格式的 SAML 断言，这要求向“SAML 令牌属性”配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -99,7 +99,7 @@ ms.locfileid: "92457259"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 BenefitHub”部分中，根据要求复制相应的 URL  。
+1. 在“设置 BenefitHub”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -107,35 +107,35 @@ ms.locfileid: "92457259"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 BenefitHub 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中选择“BenefitHub”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中选择“BenefitHub”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-benefithub-sso"></a>配置 BenefitHub SSO
 
-若要在 **BenefitHub** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [BenefitHub 支持团队](https://www.benefithub.com/Home/ContactUs)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **BenefitHub** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [BenefitHub 支持团队](https://www.benefithub.com/Home/ContactUs)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-benefithub-test-user"></a>创建 BenefitHub 测试用户
 
