@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91950390"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义电话因素技术配置文件
@@ -59,7 +59,7 @@ InputClaims 元素必须包含以下声明。 还可将声明名称映射到电�
 
 |  数据类型| 必需 | 说明 |
 | --------- | -------- | ----------- | 
-| 字符串| 是 | 用户的唯一标识符。 声明名称或 PartnerClaimType 必须设置为 `UserId`。 此声明不应包含个人身份信息。|
+| string| 是 | 用户的唯一标识符。 声明名称或 PartnerClaimType 必须设置为 `UserId`。 此声明不应包含个人身份信息。|
 | string| 是 | 声明类型的列表。 每个声明都包含一个电话号码。 如果有任何输入声明不包含电话号码，则会要求用户注册并验证新的电话号码。 已验证的电话号码将作为输出声明返回。 如果其中一个输入声明包含电话号码，则要求用户对其进行验证。 如果有多个输入声明包含电话号码，则会要求用户选择并验证其中一个电话号码。 |
 
 以下示例演示如何使用多个电话号码。 有关详细信息，请参阅[示例策略](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)。

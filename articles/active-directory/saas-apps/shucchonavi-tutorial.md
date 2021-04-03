@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 7106ba0a9f2a95b96968cba28c327a6cc9b99610
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92522112"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>教程：Azure Active Directory 与 Shuccho Navi 集成
@@ -61,13 +61,13 @@ ms.locfileid: "92522112"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Shuccho Navi”，在结果面板中选择“Shuccho Navi”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Shuccho Navi”，在结果面板中选择“Shuccho Navi”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Shuccho Navi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Shuccho Navi 配置和测试 Azure AD 单一登录。 
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Shuccho Navi 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Shuccho Navi 相关用户之间建立关联。
 
 若要配置和测试 Shuccho Navi 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92522112"
 
 要为 Shuccho Navi 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Shuccho Navi”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Shuccho Navi”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92522112"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Shuccho Navi 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://naviauth.nta.co.jp/saml/login?ENTP_CD=<Your company code>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://naviauth.nta.co.jp/saml/login?ENTP_CD=<Your company code>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Shuccho Navi 客户端支持团队](mailto:sys_ntabtm@nta.co.jp)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92522112"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Shuccho Navi”部分，根据要求复制相应 URL  。
+6. 在“设置 Shuccho Navi”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92522112"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -147,17 +147,17 @@ ms.locfileid: "92522112"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Shuccho Navi 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Shuccho Navi”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Shuccho Navi”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Shuccho Navi”  。
+2. 在应用程序列表中，选择“Shuccho Navi”。
 
     ![应用程序列表中的 Shuccho Navi 链接](common/all-applications.png)
 

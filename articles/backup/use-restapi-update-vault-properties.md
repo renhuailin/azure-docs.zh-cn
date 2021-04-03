@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91567819"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
@@ -83,10 +83,10 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 有关详细信息，请参阅 [REST API 文档](/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|名称  |必须  |类型  |说明  |
+|名称  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  可选的 eTag       |
-|location     |  是       |String         |   资源位置      |
+|location     |  true       |String         |   资源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
 |tags     |         | Object        |     资源标记    |
 

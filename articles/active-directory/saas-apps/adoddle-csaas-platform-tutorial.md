@@ -1,5 +1,5 @@
 ---
-title: 教程：将 Azure Active Directory 与 Adoddle cSaas Platform 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Adoddle cSaas Platform 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Adoddle cSaas Platform 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 5554ec4521a126a2c2e823b707fe42d9983b5d8e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671608"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>教程：将 Azure Active Directory 与 Adoddle cSaas Platform 集成
+# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>教程：Azure Active Directory 与 Adoddle cSaas Platform 集成
 
 本教程介绍如何将 Adoddle cSaas Platform 与 Azure Active Directory (Azure AD) 集成。
 将 Adoddle cSaas Platform 与 Azure AD 集成具有以下优势：
@@ -30,7 +30,7 @@ ms.locfileid: "97671608"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Adoddle cSaas Platform 的集成，需要具有以下项：
 
@@ -41,9 +41,9 @@ ms.locfileid: "97671608"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Adoddle cSaas Platform 支持 IDP 发起的 SSO 
+* Adoddle cSaas Platform 支持 IDP 发起的 SSO
 
-* Adoddle cSaas Platform 支持“恰时”  用户预配
+* Adoddle cSaas Platform 支持“恰时”用户预配
 
 ## <a name="adding-adoddle-csaas-platform-from-the-gallery"></a>从库中添加 Adoddle cSaas Platform
 
@@ -63,13 +63,13 @@ ms.locfileid: "97671608"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Adoddle cSaas Platform”，在结果面板中选择“Adoddle cSaas Platform”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“Adoddle cSaas Platform”，在结果面板中选择“Adoddle cSaas Platform”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Adoddle cSaas Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分，将基于名为 Britta Simon 的测试用户配置并测试 Adoddle cSaas Platform 的 Azure AD 单一登录  。
+在本部分，将基于名为 Britta Simon 的测试用户配置并测试 Adoddle cSaas Platform 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Adoddle cSaas Platform 相关用户之间建立链接关系。
 
 若要配置和测试 Adoddle cSaas Platform 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -87,7 +87,7 @@ ms.locfileid: "97671608"
 
 若要配置 Adoddle cSaas Platform 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Adoddle cSaas Platform 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的 Adoddle cSaas Platform 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "97671608"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Adoddle cSaas Platform”部分，根据要求复制相应 URL  。
+6. 在“设置 Adoddle cSaas Platform”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "97671608"
 
 ### <a name="configure-adoddle-csaas-platform-single-sign-on"></a>配置 Adoddle cSaas Platform 单一登录
 
-若要在 Adoddle cSaas Platform 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Adoddle cSaas Platform 支持团队](mailto:support@asite.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Adoddle cSaas Platform 端配置单一登录，需要将下载的联合元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Adoddle cSaas Platform 支持团队](mailto:support@asite.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -129,7 +129,7 @@ ms.locfileid: "97671608"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -139,30 +139,30 @@ ms.locfileid: "97671608"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，通过授予 Britta Simon 访问 Adoddle cSaas Platform 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Adoddle cSaas Platform”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Adoddle cSaas Platform”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Adoddle cSaas Platform”  。
+2. 在应用程序列表中，选择“Adoddle cSaas Platform”。
 
     ![应用程序列表中的“Adoddle cSaas Platform”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
