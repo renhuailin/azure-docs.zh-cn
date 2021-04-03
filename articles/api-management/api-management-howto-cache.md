@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 732abed830afdb759ed52fd933673edd8e5cade6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94638727"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能

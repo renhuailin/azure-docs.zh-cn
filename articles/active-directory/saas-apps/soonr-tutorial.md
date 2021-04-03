@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 64c4eabf665fe64290f484adc1b4dfe7483170fe
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>教程：Azure Active Directory 与 Soonr Workplace 集成
@@ -61,7 +61,7 @@ ms.locfileid: "92514752"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Soonr Workplace** ，在结果面板中选择“Soonr Workplace”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Soonr Workplace**，在结果面板中选择“Soonr Workplace”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“Soonr Workplace”](common/search-new-app.png)
 
@@ -97,19 +97,19 @@ ms.locfileid: "92514752"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<servername>.soonr.com/singlesignon/saml/metadata`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<servername>.soonr.com/singlesignon/saml/SSO`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<servername>.soonr.com/singlesignon/saml/SSO`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<servername>.soonr.com/singlesignon/saml/SSO`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<servername>.soonr.com/singlesignon/saml/SSO`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Soonr Workplace 客户端支持团队](https://awp.autotask.net/help/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -143,7 +143,7 @@ ms.locfileid: "92514752"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "92514752"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

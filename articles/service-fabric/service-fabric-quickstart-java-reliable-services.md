@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 2f1e5f8f73f74d4b427e574b9e6a75aaf84a4211
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529841"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>快速入门：将 Java 应用部署到 Linux 上的 Azure Service Fabric
@@ -19,7 +19,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="prerequisites"></a>先决条件
 
-- [Java 环境](./service-fabric-get-started-linux.md#set-up-java-development) 和 [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Java 环境](./service-fabric-get-started-linux.md#set-up-java-development)和 [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
 - [Eclipse Neon (4.6)+](https://www.eclipse.org/downloads/packages/) 和[用于 Service Fabric 的 Eclipse 插件](./service-fabric-get-started-linux.md#install-the-eclipse-plug-in-optional)
 - [Service Fabric SDK 和命令行接口(CLI)](./service-fabric-get-started-linux.md#installation-methods)
 - [Git](https://git-scm.com/downloads)
@@ -44,13 +44,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![Azure Service Fabric Explorer 显示运行正常的节点](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. 打开 Eclipse。
-3. 选择“文件”   > “导入”   > “Gradle”   > “现有 Gradle 项目”  ，并按照向导进行操作。
-4. 选择“目录”  ，然后在从 GitHub 克隆的 **service-fabric-java-quickstart** 文件夹中选择 **Voting** 目录。 选择“完成”  。
+3. 选择“文件” > “导入” > “Gradle” > “现有 Gradle 项目”，并按照向导进行操作。
+4. 选择“目录”，然后在从 GitHub 克隆的 **service-fabric-java-quickstart** 文件夹中选择 **Voting** 目录。 选择“完成”。
 
     ![将 Gradle 项目导入 Eclipse](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
 5. Eclipse 的包资源管理器中现拥有 `Voting` 项目。
-6. 右键单击该项目并选择“Service Fabric”下拉列表中的“发布应用程序”   。 选择“PublishProfiles/Local.json”作为目标配置文件，然后选择“发布”   。
+6. 右键单击该项目并选择“Service Fabric”下拉列表中的“发布应用程序”。 选择“PublishProfiles/Local.json”作为目标配置文件，然后选择“发布”。
 
     ![Azure Service Fabric 发布本地 JSON](./media/service-fabric-quickstart-java/service-fabric-publish-local-json.png)
 
@@ -66,19 +66,19 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 可跨群集缩放服务来适应服务负载的变化。 可以通过更改群集中运行的实例数量来缩放服务。 有许多方法可以缩放服务。 例如，可以通过 Service Fabric CLI (`sfctl`) 使用脚本或命令。 以下步骤使用 Service Fabric Explorer。
 
-Service Fabric Explorer 在所有 Service Fabric 群集中运行，并且可以通过浏览到群集的 HTTP 管理端口 (19080) 从浏览器进行访问。 例如，`http://localhost:19080` 。
+Service Fabric Explorer 在所有 Service Fabric 群集中运行，并且可以通过浏览到群集的 HTTP 管理端口 (19080) 从浏览器进行访问。 例如 `http://localhost:19080`。
 
 若要缩放 Web 前端服务，请执行以下操作：
 
-1. 在群集中打开 Service Fabric Explorer。 例如，`https://localhost:19080` 。
-2. 在树视图中选择“fabric:/Voting/VotingWeb”节点旁边的省略号 ( **...** )，再选择“缩放服务”   。
+1. 在群集中打开 Service Fabric Explorer。 例如 `https://localhost:19080`。
+2. 在树视图中选择“fabric:/Voting/VotingWeb”节点旁边的省略号 (**...**)，再选择“缩放服务”。
 
     ![在 Azure Service Fabric 中缩放服务](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)
 
     现在可以缩放 Web 前端服务的实例数量。
 
-3. 将数字更改为 **2**，选择“缩放服务”  。
-4. 在树视图中选择“fabric:/Voting/VotingWeb”  节点，再展开分区节点（由 GUID 表示）。
+3. 将数字更改为 **2**，选择“缩放服务”。
+4. 在树视图中选择“fabric:/Voting/VotingWeb”节点，再展开分区节点（由 GUID 表示）。
 
     ![在 Azure Service Fabric 中缩放服务](./media/service-fabric-quickstart-java/service-fabric-explorer-service-scaled.png)
 

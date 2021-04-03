@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
 ms.openlocfilehash: ef2151c7f3c03ff8996bae1814e4df638b25490f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92513727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-otsuka-shokai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Otsuka Shokai 集成
@@ -39,7 +39,7 @@ ms.locfileid: "92513727"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Otsuka Shokai 支持 IDP 发起的 SSO 
+* Otsuka Shokai 支持 IDP 发起的 SSO
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -52,12 +52,12 @@ ms.locfileid: "92513727"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Otsuka Shokai”   。
-1. 从结果面板中选择“Otsuka Shokai”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Otsuka Shokai”。
+1. 从结果面板中选择“Otsuka Shokai”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-otsuka-shokai"></a>配置并测试 Otsuka Shokai 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户为 Otsuka Shokai 配置和测试 Azure AD SSO  。 若要使 SSO 有效，需要在 Azure AD 用户与 Otsuka Shokai 相关用户之间建立关联。
+使用名为 B.Simon 的测试用户为 Otsuka Shokai 配置和测试 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Otsuka Shokai 相关用户之间建立关联。
 
 若要为 Otsuka Shokai 配置和测试 Azure AD SSO，请完成以下构建基块：
 
@@ -65,22 +65,22 @@ ms.locfileid: "92513727"
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 Otsuka Shokai SSO](#configure-otsuka-shokai-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Otsuka Shokai 测试用户](#create-otsuka-shokai-test-user)** ，以便在 Otsuka Shokai 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Otsuka Shokai 测试用户](#create-otsuka-shokai-test-user)**，以便在 Otsuka Shokai 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Otsuka Shokai”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Otsuka Shokai”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在基本 SAML 配置  部分，应用程序在 **IDP** 发起的模块中进行了预配置，且已通过 Azure 预填充了必要的 URL。 用户需要单击“保存”  按钮来保存配置。
 
-1. Otsuka Shokai 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Otsuka Shokai 应用程序要求通过 **user.objectid** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
+1. Otsuka Shokai 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Otsuka Shokai 应用程序要求通过 **user.objectid** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
     ![image](common/default-attributes.png)
 
@@ -91,37 +91,37 @@ ms.locfileid: "92513727"
     | Appid | `<Application ID>` |
 
     >[!NOTE]
-    >`<Application ID>` 是从 Azure 门户的“属性”选项卡复制的值  。
+    >`<Application ID>` 是从 Azure 门户的“属性”选项卡复制的值。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 B.Simon 访问 Otsuka Shokai 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Otsuka Shokai”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Otsuka Shokai”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-otsuka-shokai-sso"></a>配置 Otsuka Shokai SSO
 

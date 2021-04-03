@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 实验室服务设置实验室帐户、添
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85445060"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>教程：使用 Azure 实验室服务设置实验室帐户

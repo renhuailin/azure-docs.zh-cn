@@ -6,10 +6,10 @@ ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
 ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90069690"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure CLI 创建一个服务总线主题和该主题的订阅

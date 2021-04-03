@@ -7,10 +7,10 @@ ms.date: 06/19/2019
 ms.author: jobreen
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4f425af7681b666b42fbcc70ac0e4c31d9df6d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87503746"
 ---
 # <a name="create-and-use-a-custom-provider"></a>创建并使用自定义提供程序
@@ -32,9 +32,9 @@ ms.locfileid: "87503746"
 }
 ```
 
-properties | 必选 | 说明
+属性 | 必选 | 说明
 ---|---|---
-name  | 是 | 终结点定义的名称。 Azure 会通过其 API 在“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}”下公开此名称
+**name** | 是 | 终结点定义的名称。 Azure 会通过其 API 在“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}”下公开此名称
 **routingType** | 否 | 终结点协定类型。 如果未指定值，则值默认为“Proxy”。
 **endpoint** | 是 | 终结点，可向其路由请求。 此终结点处理响应以及请求的任何附带作用。
 
@@ -124,7 +124,7 @@ az resource invoke-action --action myCustomAction \
                             }'
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
 *action* | 是 | 在自定义提供程序中定义的操作的名称
 *ids* | 是 | 自定义提供程序的资源 ID
@@ -157,7 +157,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
 *is-full-object* | 是 | 指示属性对象是否包含其他选项，例如位置、标记、SKU 或计划。
 *id* | 是 | 自定义资源的资源 ID。 此 ID 是自定义提供程序资源 ID 的扩展。
@@ -169,7 +169,7 @@ az resource create --is-full-object \
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
 *id* | 是 | 自定义资源的资源 ID。 此 ID 是自定义提供程序资源 ID 的扩展。
 
@@ -179,7 +179,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
 *id* | 是 | 自定义资源的资源 ID。 此 ID 是自定义提供程序资源 ID 的扩展。
 
@@ -205,7 +205,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 }
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
 *resourceTypeName* | 是 | 在自定义提供程序中定义的 **resourceTypes** 属性的 `name` 值。
 *resourceProviderName* | 是 | 自定义提供程序实例名称。

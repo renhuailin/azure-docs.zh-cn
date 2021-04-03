@@ -4,10 +4,10 @@ description: 有关如何使用 Azure Functions 代理的概述
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96601367"
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理

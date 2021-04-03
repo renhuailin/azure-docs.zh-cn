@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 74c3c4d1a9192256c36d41db7a4f9406b6c966f3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>教程：Azure Active Directory 与 SpaceIQ 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92514718"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 SpaceIQ 的集成，需具备以下各项：
 
@@ -41,7 +41,7 @@ ms.locfileid: "92514718"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* SpaceIQ 支持启用了 IDP 的 SSO 
+* SpaceIQ 支持启用了 IDP 的 SSO
 
 ## <a name="adding-spaceiq-from-the-gallery"></a>从库中添加 SpaceIQ
 
@@ -61,13 +61,13 @@ ms.locfileid: "92514718"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“SpaceIQ”，在结果面板中选择“SpaceIQ”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“SpaceIQ”，在结果面板中选择“SpaceIQ”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 SpaceIQ](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 SpaceIQ 的 Azure AD 单一登录  。
+在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 SpaceIQ 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 SpaceIQ 相关用户之间建立链接关系。
 
 若要配置和测试 SpaceIQ 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -76,7 +76,7 @@ ms.locfileid: "92514718"
 2. **[配置 SpaceIQ 单一登录](#configure-spaceiq-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **创建 SpaceIQ 测试用户 [ - 在 SpaceIQ 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式](#create-spaceiq-test-user)** 。
+5. [创建 SpaceIQ 测试用户](#create-spaceiq-test-user) - 在 SpaceIQ 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -85,7 +85,7 @@ ms.locfileid: "92514718"
 
 若要配置 SpaceIQ 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 SpaceIQ 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 SpaceIQ 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92514718"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![SpaceIQ 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”文本框中键入 URL：`https://api.spaceiq.com`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://api.spaceiq.com/saml/<instanceid>/callback`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://api.spaceiq.com/saml/<instanceid>/callback`
 
     > [!NOTE]
     > 本教程稍后将介绍如何使用实际的回复 URL 和标识符来更新该值。
@@ -112,7 +112,7 @@ ms.locfileid: "92514718"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 SpaceIQ”部分，根据要求复制相应 URL  。
+6. 在“设置 SpaceIQ”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -126,25 +126,25 @@ ms.locfileid: "92514718"
 
 1. 打开一个新的浏览器窗口，并以管理员身份登录到 SpaceIQ 环境。
 
-1. 登录后，单击右上角的拼图标志，然后单击“集成” 
+1. 登录后，单击右上角的拼图标志，然后单击“集成”
 
     ![帐户设置](./media/spaceiq-tutorial/setting1.png) 
 
-1. 在“所有预配和 SSO”下，单击 Azure 磁贴，添加 Azure 实例作为 IDP   。
+1. 在“所有预配和 SSO”下，单击 Azure 磁贴，添加 Azure 实例作为 IDP。
 
     ![SAML 图标](./media/spaceiq-tutorial/setting2.png)
 
-1. 在“SSO”对话框中，执行以下步骤  ：
+1. 在“SSO”对话框中，执行以下步骤：
 
     ![SAML 身份验证设置](./media/spaceiq-tutorial/setting3.png)
 
-    a. 在“SAML 颁发者 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“Azure AD 标识符”值   。
+    a. 在“SAML 颁发者 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“Azure AD 标识符”值。
 
-    b. 复制“SAML 回调终结点 URL (只读)”值，并将该值粘贴到 Azure 门户中的“基本 SAML 配置”部分的“回复 URL”框中    。
+    b. 复制“SAML 回调终结点 URL (只读)”值，并将该值粘贴到 Azure 门户中的“基本 SAML 配置”部分的“回复 URL”框中。
 
-    c. 复制“SAML 受众 URL (只读)”值，并将该值粘贴到 Azure 门户中的“基本 SAML 配置”部分的“标识符”框中    。
+    c. 复制“SAML 受众 URL (只读)”值，并将该值粘贴到 Azure 门户中的“基本 SAML 配置”部分的“标识符”框中。
 
-    d. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“X.509 证书”框中  。
+    d. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“X.509 证书”框中。
 
     e. 单击“保存”  。
 
@@ -156,7 +156,7 @@ ms.locfileid: "92514718"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -171,17 +171,17 @@ ms.locfileid: "92514718"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 SpaceIQ 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SpaceIQ”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“SpaceIQ”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“SpaceIQ”  。
+2. 在应用程序列表中，选择“SpaceIQ”。
 
     ![应用程序列表中的 SpaceIQ 链接](common/all-applications.png)
 
