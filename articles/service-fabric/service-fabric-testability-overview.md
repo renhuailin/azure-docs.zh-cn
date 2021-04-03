@@ -4,10 +4,10 @@ description: 本文介绍 Service Fabric 中用于针对服务引入故障和运
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91531371"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍

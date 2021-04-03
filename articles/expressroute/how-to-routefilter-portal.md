@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: d142028d197f9e279b5f1e05757946dc40d2c153
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109130"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-the-azure-portal"></a>教程：使用 Azure 门户为 Microsoft 对等互连配置路由筛选器
@@ -27,7 +27,7 @@ ms.locfileid: "92109130"
 
 可通过 Microsoft 对等互连访问 Exchange Online、SharePoint Online 和 Skype for Business 等 Microsoft 365 服务。 如果在 ExpressRoute 线路中配置了 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-与所有 Azure 和 Microsoft 365 服务的连接会导致大量前缀通过 BGP 进行播发。 大量前缀会显著增加网络中路由器所维护的路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
+与所有 Azure 和 Microsoft 365 服务的连接会导致大量前缀通过 BGP 进行播发。 大量前缀会显著增加网络中路由器所维护的路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 方法：
 
 * 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 路由筛选是标准的网络做法，通常在多个网络中使用。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92109130"
 > 在 2017 年 8 月 1 日之前配置的 ExpressRoute 线路的 Microsoft 对等互连会通过 Microsoft 对等互连播发所有服务前缀，即使未定义路由筛选器。 在 2017 年 8 月 1 日或之后配置的 ExpressRoute 线路的 Microsoft 对等互连的任何前缀只有在路由筛选器附加到线路之后才会播发。
 > 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
