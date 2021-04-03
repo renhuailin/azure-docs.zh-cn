@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86260828"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
@@ -21,7 +21,7 @@ ms.locfileid: "86260828"
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | 获取和设置 Chaos Schedule。 |
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | 活动 | 根据继续标记或时间范围获取 Chaos 事件的下一段。 |
 | get | 获取 Chaos 的状态。 |

@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 门户基于 VHD 文件在 Azure 开发测
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87289401"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>从 VHD 文件创建自定义映像

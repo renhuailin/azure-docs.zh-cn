@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d500270d579558a88cc4e5127ee7946b58bddda1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92894689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教程：Azure Active Directory 与 ZIVVER 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92894689"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 ZIVVER 的集成，需要具有以下项：
 
@@ -61,7 +61,7 @@ ms.locfileid: "92894689"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“ZIVVER”，在结果面板中选择“ZIVVER”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“ZIVVER”，在结果面板中选择“ZIVVER”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 ZIVVER](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92894689"
 
 若要配置 ZIVVER 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“ZIVVER”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“ZIVVER”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "92894689"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![ZIVVER 域和 URL 单一登录信息](common/idp-identifier.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "92894689"
 
     ![屏幕截图显示“用户属性”，并且已选择“编辑”图标。](common/edit-attribute.png)
 
-6. 除了上述属性，ZIVVER 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+6. 除了上述属性，ZIVVER 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 命名空间 | 源属性|
     | ---------------| --------------- |
@@ -130,13 +130,13 @@ ms.locfileid: "92894689"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“保存”  。
+    f. 单击“ **保存**”。
 
-7. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”，单击“复制”图标以根据要求从给定选项中复制“应用联合元数据 URL”并将其保存在计算机上       。
+7. 在“设置 SAML 单一登录”页上的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”，单击“复制”图标以根据要求从给定选项中复制“应用联合元数据 URL”并将其保存在计算机上。
 
     ![证书 URL 下载链接](./media/zivver-tutorial/metadataxmlurl.png)
 
-8. 在“设置 ZIVVER”部分中，根据要求复制相应 URL  。
+8. 在“设置 ZIVVER”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -150,15 +150,15 @@ ms.locfileid: "92894689"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 ZIVVER 公司[站点](https://app.zivver.com/login)。
 
-2. 单击浏览器窗口左下角的“组织设置”图标  。
+2. 单击浏览器窗口左下角的“组织设置”图标。
 
-3. 转到“单一登录”  。
+3. 转到“单一登录”。
 
 4. 打开从 Azure 门户下载的联合元数据 XML 文件。
 
-5. 在“标识提供者元数据 URL”文本框中，粘贴之前从 Azure 门户中保存的“应用联合元数据 URL”   。
+5. 在“标识提供者元数据 URL”文本框中，粘贴之前从 Azure 门户中保存的“应用联合元数据 URL”。
 
-6. 选中“开启 SSO”复选框  。
+6. 选中“开启 SSO”复选框。
 
 7. 单击“保存”  。
 
@@ -170,7 +170,7 @@ ms.locfileid: "92894689"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -184,17 +184,17 @@ ms.locfileid: "92894689"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 ZIVVER 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ZIVVER”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ZIVVER”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“ZIVVER”  。
+2. 在应用程序列表中，选择“ZIVVER”。
 
     ![应用程序列表中的 ZIVVER 链接](common/all-applications.png)
 

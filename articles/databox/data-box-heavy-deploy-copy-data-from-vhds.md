@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92127193"
 ---
-# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box Heavy 将数据作为托管磁盘导入
+# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教程：使用 Data Box Heavy 在 Azure 中作为托管磁盘导入数据
 
 本教程介绍如何在 Azure 中使用 Azure Data Box Heavy 将本地 VHD 迁移到托管磁盘。 本地 VM 中的 VHD 将作为页 Blob 复制到 Data Box Heavy，并作为托管磁盘上传到 Azure 中。 然后，可将这些托管磁盘附加到 Azure VM。
 
@@ -99,7 +99,7 @@ Data Box Heavy 根据指定的资源组按节点为每个关联的资源组创�
     C: \>
     ```
 
-4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。  单击“确定”打开文件资源管理器  。
+4. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>\<ShareName>`。 单击“确定”打开文件资源管理器  。
     
     ![通过文件资源管理器连接到共享](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -112,11 +112,11 @@ Data Box Heavy 根据指定的资源组按节点为每个关联的资源组创�
 
 如果使用的是 Linux 主机，请执行以下步骤将设备配置为允许访问 NFS 客户端。
 
-1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。  在“NFS 设置”下，单击“NFS 客户端访问”。  
+1. 提供允许访问共享的客户端的 IP 地址。 在本地 Web UI 中，转到“连接和复制”页。 在“NFS 设置”下，单击“NFS 客户端访问”。 
 
     ![配置 NFS 客户端访问](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
+2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。 可以重复此步骤为多个 NFS 客户端配置访问。 单击 **“确定”** 。
 
     ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 

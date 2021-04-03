@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96462633"
 ---
 # <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
@@ -54,7 +54,7 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（例如列数及其数据类型）。
+> 使用单个 OPENROWSET 访问的所有文件必须具有相同的结构（如列数及其数据类型）。
 
 ### <a name="read-subset-of-files-in-folder"></a>读取文件夹中的文件子集
 
@@ -83,7 +83,7 @@ ORDER BY payment_type;
 
 ## <a name="read-folders"></a>读取文件夹
 
-向 OPENROWSET 提供的路径也可以是指向文件夹的路径。 以下部分包含这些查询类型。
+为 OPENROWSET 提供的路径也可以是指向文件夹的路径。 以下部分包含这些查询类型。
 
 ### <a name="read-all-files-from-specific-folder"></a>读取特定文件夹中的所有文件
 

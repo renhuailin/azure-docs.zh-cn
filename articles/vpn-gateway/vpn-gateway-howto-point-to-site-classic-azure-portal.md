@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94657068"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
@@ -153,7 +153,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 1. 在客户端计算机上，转到 VPN 设置。
 1. 选择你创建的 VPN。 如果你使用了示例设置，则连接会被标记为“Group TestRG VNet1”。
-1. 选择“连接”  。
+1. 选择“连接”。
 1. 在“Windows Azure 虚拟网络”框中，选择“连接”。 如果显示了关于证书的弹出消息，请选择“继续”以使用提升的权限，并选择“是”以接受配置更改 。
 1. 当连接成功时，你会看到“已连接”通知。
 
