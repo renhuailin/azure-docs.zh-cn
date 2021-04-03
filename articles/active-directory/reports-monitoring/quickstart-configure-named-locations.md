@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89299858"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
@@ -33,7 +33,7 @@ ms.locfileid: "89299858"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本快速入门，需要以下项：
+若要完成本快速入门，你需要：
 
 * Azure AD 租户。 注册[免费试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 
 * 一个身份为租户的全局管理员的用户。

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 899132a823cfbbde600de790166ce8923f435725
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456402"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cbre-serviceinsight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CBRE ServiceInsight 集成
@@ -40,7 +40,7 @@ ms.locfileid: "92456402"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * CBRE ServiceInsight 支持 **SP** 发起的 SSO
-* CBRE ServiceInsight 支持恰时用户预配 
+* CBRE ServiceInsight 支持恰时用户预配
 
 ## <a name="adding-cbre-serviceinsight-from-the-gallery"></a>从库中添加 CBRE ServiceInsight
 
@@ -50,12 +50,12 @@ ms.locfileid: "92456402"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“CBRE ServiceInsight”   。
-1. 从结果面板中选择“CBRE ServiceInsight”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“CBRE ServiceInsight”。
+1. 从结果面板中选择“CBRE ServiceInsight”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cbre-serviceinsight"></a>配置和测试 CBRE ServiceInsight 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 CBRE ServiceInsight 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 CBRE ServiceInsight 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 CBRE ServiceInsight 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 CBRE ServiceInsight 相关用户之间建立链接关系。
 
 若要配置和测试 CBRE ServiceInsight 的 Azure AD SSO，请完成以下构建基块：
 
@@ -70,9 +70,9 @@ ms.locfileid: "92456402"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“CBRE ServiceInsight”应用程序集成页上，找到“管理”部分并选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“CBRE ServiceInsight”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -91,31 +91,31 @@ ms.locfileid: "92456402"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 CBRE ServiceInsight 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“CBRE ServiceInsight”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“CBRE ServiceInsight”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-cbre-serviceinsight-sso"></a>配置 CBRE ServiceInsight SSO
 

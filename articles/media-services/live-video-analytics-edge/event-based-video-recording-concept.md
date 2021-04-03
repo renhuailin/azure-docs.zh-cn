@@ -4,10 +4,10 @@ description: 基于事件的视频录制 (EVR) 是指由事件触发的视频录
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97401589"
 ---
 # <a name="event-based-video-recording"></a>基于事件的视频录制  

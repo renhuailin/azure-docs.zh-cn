@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 的单一登录 (SSO) 与 Coda 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Coda 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Coda 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.openlocfilehash: c78744538991e337b226e49a053807ef8174d507
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455725"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>教程：Azure Active Directory 的单一登录 (SSO) 与 Coda 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Coda 集成
 
 本教程介绍如何将 Coda 与 Azure Active Directory (Azure AD) 集成。 将 Coda 与 Azure AD 集成后，可以：
 
@@ -53,8 +53,8 @@ ms.locfileid: "92455725"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Coda** 。 
-1. 在结果面板中选择“Coda”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **Coda**。
+1. 在结果面板中选择“Coda”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-coda"></a>配置并测试 Coda 的 Azure AD 单一登录
@@ -75,7 +75,7 @@ ms.locfileid: "92455725"
 
 在 Coda 中执行以下步骤开始配置。
 
-1. 在 Coda 中，打开“组织设置”面板。 
+1. 在 Coda 中，打开“组织设置”面板。
 
    ![打开“组织设置”](media/coda-tutorial/org-settings.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "92455725"
 
    ![已禁用 GDrive](media/coda-tutorial/gdrive-off.png)
 
-1. 在“使用 SSO 进行身份验证(SAML)”下，选择“配置 SAML”选项。  
+1. 在“使用 SSO 进行身份验证(SAML)”下，选择“配置 SAML”选项。
 
    ![SAML 设置](media/coda-tutorial/saml-settings-link.png)
 
-1. 记下“实体 ID”和“SAML 响应 URL”的值，因为在后续步骤中需要用到。  
+1. 记下“实体 ID”和“SAML 响应 URL”的值，因为在后续步骤中需要用到。
 
    ![要在 Azure 中使用的实体 ID 和 SAML 响应 URL](media/coda-tutorial/azure-settings.png)
 
@@ -95,26 +95,26 @@ ms.locfileid: "92455725"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Coda”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Coda”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
 
-   a. 在“标识符”文本框中，输入前面记下的“实体 ID”。  它应采用以下模式：`https://coda.io/samlId/<CUSTOMID>`
+   a. 在“标识符”文本框中，输入前面记下的“实体 ID”。 它应采用以下模式：`https://coda.io/samlId/<CUSTOMID>`
 
-   b. 在“回复 URL”文本框中，输入前面记下的“SAML 响应 URL”。  它应采用以下模式：`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. 在“回复 URL”文本框中，输入前面记下的“SAML 响应 URL”。 它应采用以下模式：`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
    > 你的值将不同于上面所示的值；可以在 Coda 的“配置 SAML”控制台中找到自己的值。 请使用实际标识符和回复 URL 更新这些值。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
    ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Coda”部分，根据要求复制相应的 URL。 
+1. 在“设置 Coda”部分，根据要求复制相应的 URL。
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -122,43 +122,43 @@ ms.locfileid: "92455725"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 Coda 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序”列表中选择“Coda”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在“应用程序”列表中选择“Coda”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
    ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-coda-sso"></a>配置 Coda SSO
 
-若要完成设置，请在 Coda 的“配置 SAML”面板中，输入 Azure Active Directory 中的值。 
+若要完成设置，请在 Coda 的“配置 SAML”面板中，输入 Azure Active Directory 中的值。
 
-1. 在 Coda 中，打开“组织设置”面板。 
-1. 在“使用 SSO 进行身份验证(SAML)”下，选择“配置 SAML”选项。  
-1. 将“SAML 提供者”设置为“Azure Active Directory”。  
-1. 在“标识提供者登录 URL”中，粘贴从 Azure 控制台获取的“登录 URL”。  
-1. 在“标识提供者颁发者”中，粘贴从 Azure 控制台获取的“Azure AD 标识符”。  
-1. 在“标识提供者公共证书”中选择“上传证书”选项，然后选择前面下载的证书文件。  
-1. 选择“保存”。 
+1. 在 Coda 中，打开“组织设置”面板。
+1. 在“使用 SSO 进行身份验证(SAML)”下，选择“配置 SAML”选项。
+1. 将“SAML 提供者”设置为“Azure Active Directory”。
+1. 在“标识提供者登录 URL”中，粘贴从 Azure 控制台获取的“登录 URL”。
+1. 在“标识提供者颁发者”中，粘贴从 Azure 控制台获取的“Azure AD 标识符”。
+1. 在“标识提供者公共证书”中选择“上传证书”选项，然后选择前面下载的证书文件。
+1. 选择“保存”。
 
 配置 SAML SSO 连接设置所需的操作到此完成。
 
