@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 4170671b1dbcb8d2932b54f101cf5691b2461e31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86035565"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>从 Azure 门户复制凭据
@@ -21,7 +21,7 @@ ms.locfileid: "86035565"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。   在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
-4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。    下一步需将此连接字符串值添加到某个环境变量。
+3. 在存储帐户概述的“设置”部分，选择“访问密钥”。  在这里，可以查看你的帐户访问密钥以及每个密钥的完整连接字符串。
+4. 找到“密钥 1”下面的“连接字符串”值，选择“复制”按钮复制该连接字符串。 下一步需将此连接字符串值添加到某个环境变量。
 
     ![显示如何从 Azure 门户复制连接字符串的屏幕截图](media/storage-copy-connection-string-portal/portal-connection-string.png)

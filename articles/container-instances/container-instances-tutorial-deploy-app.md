@@ -5,24 +5,24 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-azurecli
 ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87500566"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
 
 这是由三个部分组成的系列教程的最后一个教程。 在本系列教程的前几篇文章中，我们已[创建一个容器映像](container-instances-tutorial-prepare-app.md)并将其[推送到 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文是本系列教程的最后一篇，介绍如何将容器部署到 Azure 容器实例。
 
-本教程介绍以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 将容器从 Azure 容器注册表部署到 Azure 容器实例
 > * 在浏览器中查看正在运行的应用程序
 > * 显示容器的日志
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "87500566"
 
 部署托管在专用 Azure 容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供用于访问该注册表的凭据。 
 
- 对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 请参阅[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)，获取示例脚本以创建具有必要权限的服务主体。 请记下服务主体 ID 和服务主体密码   。 部署容器时将使用这些凭据访问注册表。
+对于许多方案来说，最佳做法是创建和配置对注册表具有“拉取”权限的 Azure Active Directory 服务主体。 请参阅[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)，获取示例脚本以创建具有必要权限的服务主体。 请记下服务主体 ID 和服务主体密码。 部署容器时将使用这些凭据访问注册表。
 
 还需要容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
 
@@ -50,7 +50,7 @@ az acr show --name <acrName> --query loginServer
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
-将在几秒钟内收到来自 Azure 的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签**错误消息，请修改前一命令中的值。
+将在几秒钟内收到来自 Azure 的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签** 错误消息，请修改前一命令中的值。
 
 ### <a name="verify-deployment-progress"></a>检查部署进度
 
@@ -60,7 +60,7 @@ az container create --resource-group myResourceGroup --name aci-tutorial-app --i
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-重复 [az container show][az-container-show] 命令，直到状态从“挂起”更改为“正在运行”为止，此过程应不到 1 分钟   。 当容器状态为“正在运行”时，请继续执行下一步  。
+重复 [az container show][az-container-show] 命令，直到状态从“挂起”更改为“正在运行”为止，此过程应不到 1 分钟。 当容器状态为“正在运行”时，请继续执行下一步。
 
 ## <a name="view-the-application-and-container-logs"></a>查看应用程序和容器日志
 

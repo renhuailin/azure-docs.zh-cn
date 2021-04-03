@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 6cd1d981737db1e7c852931ecc2449e0afc03530
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94956783"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>对正常运行的 StorSimple 设备进行故障排除
@@ -45,7 +45,7 @@ ms.locfileid: "94956783"
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>在安装向导的后续运行过程中发生的错误
 下表介绍了在操作设备上运行安装向导时可能遇到的错误、发生错误的可能原因以及解决它们的建议的操作。 
 
-| 不是。 | 错误消息或条件 | 可能的原因 | 建议的操作 |
+| 不知道。 | 错误消息或条件 | 可能的原因 | 建议的操作 |
 |:--- |:--- |:--- |:--- |
 | 1 |错误 350032：此设备已被停用。 |如果在停用的设备上运行安装向导，会看到此错误。 |[联系 Microsoft 支持部门](./storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 停用的设备无法提供服务。 可能需要先恢复出厂设置，才可以重新激活设备。 |
 | 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Exception from HRESULT: 0x80070001) |DNS 服务器更新失败。 DNS 设置是全局设置，并应用于所有启用的网络接口。 |启用界面并再次应用 DNS 设置。 由于这些设置是全局的，可能会中断其他已启用接口的网络。 |

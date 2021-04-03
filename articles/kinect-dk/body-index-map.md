@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 索引, 分段, 映射
 ms.openlocfilehash: 8c128e59cef515aafb4f59794f0f644b90fd625d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "76756241"
 ---
 # <a name="azure-kinect-body-tracking-index-map"></a>Azure Kinect 人体跟踪索引映射
