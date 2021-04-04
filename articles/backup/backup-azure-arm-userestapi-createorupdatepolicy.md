@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89179600"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |必须  |类型  |说明  |
+|名称  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |tags     |         | Object        |  资源标记       |

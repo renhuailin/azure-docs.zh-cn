@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理层的基于功能的比较 | Microsoft Docs
-description: 基于其提供的功能比较 API 管理层。 查看概述每个定价层中可用的主要功能的表。
+description: 根据各个 API 管理层提供的功能对这些层进行比较。 请参阅汇总了每个定价层中提供的主要功能的表。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
 ms.openlocfilehash: eec913237ba978e52bb64fbd4c1f043a9214ffc8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077841"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
@@ -26,7 +26,7 @@ ms.locfileid: "92077841"
 > [!IMPORTANT]
 > 请注意，开发人员层适用于非生产用例和评估。 它不提供 SLA。
 
-| 功能                                                                                      | 消耗 | 开发人员 | 基本 | 标准 | 高级 |
+| 功能                                                                                      | 消耗 | 开发人员 | 基本 | Standard | 高级 |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 集成<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虚拟网络 (VNet) 支持                                                               | 否          | 是       | 否    | 否       | 是     |

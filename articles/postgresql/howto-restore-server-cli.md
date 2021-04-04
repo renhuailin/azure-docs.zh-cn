@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ef397eb67c1f60c14fb36bf455236d84b730f611
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94659567"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器

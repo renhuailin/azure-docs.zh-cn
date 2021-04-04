@@ -4,10 +4,10 @@ description: 在本教程中，你将连接到 Service Fabric 托管群集并通
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91410188"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>教程：将应用部署到 Service Fabric 托管群集（预览版）

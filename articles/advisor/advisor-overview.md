@@ -4,10 +4,10 @@ description: 使用 Azure 顾问优化 Azure 部署。
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 12e56bf44a29a32b2149bca14f7c99f319c9c4ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91405201"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
@@ -30,7 +30,7 @@ ms.locfileid: "91405201"
 * 安全性：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
 * **成本**：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
-* **卓越运营**：帮助你实现流程和工作流效率、资源可管理性和部署最佳做法。 上获取。 有关详细信息，请参阅[顾问卓越运营建议](advisor-operational-excellence-recommendations.md)。
+* **卓越运营**：帮助你实现流程和工作流效率、资源可管理性和部署最佳做法。 . 有关详细信息，请参阅[顾问卓越运营建议](advisor-operational-excellence-recommendations.md)。
 
   ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 

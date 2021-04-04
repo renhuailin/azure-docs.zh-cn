@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 AMMS 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 AMMS 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 AMMS 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4fdfe26104e4b69212b7bf6870582ef4cbb4de2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318763"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-amms"></a>教程：Azure Active Directory 与 AMMS 的集成
+# <a name="tutorial-azure-active-directory-integration-with-amms"></a>教程：Azure Active Directory 与 AMMS 集成
 
 本教程介绍如何将 AMMS 与 Azure Active Directory (Azure AD) 集成。
 将 AMMS 与 Azure AD 集成可提供以下优势：
@@ -30,7 +30,7 @@ ms.locfileid: "92318763"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 AMMS 的集成，需要准备好以下各项：
 
@@ -61,7 +61,7 @@ ms.locfileid: "92318763"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **AMMS**，在结果面板中选择“AMMS”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **AMMS**，在结果面板中选择“AMMS”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“AMMS”](common/search-new-app.png)
 
@@ -85,11 +85,11 @@ ms.locfileid: "92318763"
 
 若要配置 AMMS 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“AMMS”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“AMMS”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "92318763"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![AMMS 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.microwestcloud.com/amms/pages/login.aspx` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<SUBDOMAIN>.microwestcloud.com/amms` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`<SUBDOMAIN>.microwestcloud.com/amms`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [AMMS 客户端支持团队](mailto:techsupport@microwestsoftware.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -114,7 +114,7 @@ ms.locfileid: "92318763"
 
 ### <a name="configure-amms-single-sign-on"></a>配置 AMMS 单一登录
 
-若要在 **AMMS** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [AMMS 支持团队](mailto:techsupport@microwestsoftware.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **AMMS** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [AMMS 支持团队](mailto:techsupport@microwestsoftware.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -124,7 +124,7 @@ ms.locfileid: "92318763"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -134,29 +134,29 @@ ms.locfileid: "92318763"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 AMMS 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“AMMS”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“AMMS”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“AMMS”。 
+2. 在“应用程序”列表中，选择“AMMS”。
 
     ![“应用程序”列表中的“AMMS”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "92318763"
 
 ### <a name="create-amms-test-user"></a>创建 AMMS 测试用户
 
-在本部分，我们将在 AMMS 中创建名为 Britta Simon 的用户。 在  [AMMS 支持团队](mailto:techsupport@microwestsoftware.com)的配合下，将用户添加到 AMMS 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在 AMMS 中创建名为 Britta Simon 的用户。 在 [AMMS 支持团队](mailto:techsupport@microwestsoftware.com)的配合下，将用户添加到 AMMS 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

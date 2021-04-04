@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674881"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库中设计关系数据库
@@ -48,7 +48,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建空数据库
 
@@ -67,15 +67,15 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
     | ------------ | ------------------ | ------------------------------------------------- |
     | **数据库名称** | yourDatabase | 如需有效的数据库名称，请参阅[数据库标识符](/sql/relational-databases/databases/database-identifiers)。 |
     | **订阅** | yourSubscription  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-    | **资源组** | yourResourceGroup | 有关有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+    | **资源组** | yourResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
     | **选择源** | 空白数据库 | 指定应创建空白数据库。 |
 
 4. 单击“服务器”，使用现有服务器或创建和配置新服务器。 选择现有服务器或单击“创建新服务器”，然后在“新建服务器”窗体中填写以下信息 ：
 
     | 设置       | 建议的值 | 说明 |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **服务器名称** | 任何全局唯一名称 | 有关有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-    | **服务器管理员登录名** | 任何有效的名称 | 如需有效的登录名，请参阅[Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+    | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅[Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须使用以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置** | 任何有效的位置 | 有关区域的信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。 |
 
@@ -99,11 +99,11 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止外部应用程序和工具连接到服务器和服务器上的任何数据库，除非防火墙规则允许其 IP 通过防火墙。 若要启用与数据库的外部连接，必须首先为 IP 地址（或 IP 地址范围）添加 IP 防火墙规则。 遵循这些步骤创建[服务器级 IP 防火墙规则](firewall-configure.md)。
 
 > [!IMPORTANT]
-> 通过端口 1433 进行 Azure SQL 数据库通信。 如果尝试从企业网络内部连接到此服务，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到数据库，除非管理员打开端口 1433。
+> 通过端口 1433 进行的 Azure SQL 数据库通信。 如果尝试从企业网络内部连接到此服务，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到数据库，除非管理员打开端口 1433。
 
 1. 部署完成后，请从 Azure 门户菜单中选择“SQL 数据库”，或在任何页面上搜索并选择“SQL 数据库”。  
 
-1. 在“SQL 数据库”页上选择“yourDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的 **服务器名称** （例如 `contosodatabaseserver01.database.windows.net`），并提供了其他配置的选项。
+1. 在“SQL 数据库”页上选择“yourDatabase”。 此时会打开数据库的概览页，其中显示了完全限定的 **服务器名称**（例如 `contosodatabaseserver01.database.windows.net`），并提供了其他配置的选项。
 
    ![服务器名称](./media/design-first-database-tutorial/server-name.png)
 
@@ -115,7 +115,7 @@ Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
 1. 在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的 IP 防火墙规则。 IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-1. 单击“保存” 。 此时会针对当前的 IP 地址创建服务器级 IP 防火墙规则，在服务器上打开端口 1433。
+1. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级 IP 防火墙规则，在服务器上打开端口 1433。
 
 1. 单击“确定”，并关闭“防火墙设置”页。 
 
@@ -136,7 +136,7 @@ Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止�
    | **服务器类型** | 数据库引擎 | 此值是必需的。 |
    | **服务器名称** | 完全限定的服务器名称 | 例如，yourserver.database.windows.net。 |
    | **身份验证** | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-   | **登录名** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
+   | **登录** | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | **密码** | 服务器管理员帐户的密码 | 创建服务器时指定的密码。 |
 
    ![连接到服务器](./media/design-first-database-tutorial/connect.png)
@@ -145,7 +145,7 @@ Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
     ![连接到服务器上的 DB](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. 单击“连接” 。 此时会在 SSMS 中打开“对象资源管理器”窗口。
+4. 单击“连接”。 此时会在 SSMS 中打开“对象资源管理器”窗口。
 
 5. 在对象资源管理器中展开“数据库”，然后展开 yourDatabase，查看示例数据库中的对象 。
 
@@ -274,7 +274,7 @@ Azure SQL 数据库在服务器级别创建 IP 防火墙。 此防火墙阻止�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了许多基本数据库任务。 你已了解如何：
+本教程介绍了许多基本数据库任务。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
