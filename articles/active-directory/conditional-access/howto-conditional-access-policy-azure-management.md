@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92366167"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件访问：要求将 MFA 用于 Azure 管理
@@ -48,7 +48,7 @@ ms.locfileid: "92366167"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，依次选择“选择应用”、“Microsoft Azure 管理”、“选择”、“完成”。   
 1. 在“条件” > “客户端应用(预览版)”下，在“选择适用于该策略的客户端应用”下保留选择的所有默认值，然后选择“完成”   。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  

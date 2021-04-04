@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Certain Admin SSO 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Certain Admin SSO 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Certain Admin SSO 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 03a216f24013413fd03de9ae71eb599fd1334998
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672920"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>教程：Azure Active Directory 与 Certain Admin SSO 集成
+# <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>教程：Azure Active Directory 与 Certain Admin SSO 的集成
 
 本教程介绍如何将 Certain Admin SSO 与 Azure Active Directory (Azure AD) 集成。
 将 Certain Admin SSO 与 Azure AD 集成具有以下优势：
@@ -47,7 +47,7 @@ ms.locfileid: "97672920"
 
 若要配置 Certain Admin SSO 与 Azure AD 的集成，需要从库中将 Certain Admin SSO 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Certain Admin SSO，请执行以下步骤： 
+若要从库中添加 Certain Admin SSO，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "97672920"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Certain Admin SSO”  ，在结果面板中选择“Certain Admin SSO”  ，单击“添加”  按钮添加该应用程序。
+4. 在搜索框中键入“Certain Admin SSO”，在结果面板中选择“Certain Admin SSO”，单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Certain Admin SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”  的测试用户配置和测试 Certain Admin SSO 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Certain Admin SSO 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Certain Admin SSO 相关用户之间建立链接关系。
 
 若要通过 Certain Admin SSO 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "97672920"
 
 若要配置 Certain Admin SSO 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Certain Admin SSO”应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Certain Admin SSO”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "97672920"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Certain Admin SSO 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR DOMAIN URL>/svcs/sso_admin_login/handleRequest/<ID>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.certain.com`
 
@@ -112,7 +112,7 @@ ms.locfileid: "97672920"
 
     ![证书下载链接](common/certificateraw.png)
 
-6. 在“设置 Certain Admin SSO”部分中，根据需求复制相应的 URL  。
+6. 在“设置 Certain Admin SSO”部分中，根据需求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "97672920"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "97672920"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 本部分通过授予 Britta Simon 访问 Certain Admin SSO 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Certain Admin SSO”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Certain Admin SSO”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序列表”中，选择“Certain Admin SSO”  。
+2. 在“应用程序列表”中，选择“Certain Admin SSO”。
 
     ![应用程序列表中的 Certain Admin SSO 链接](common/all-applications.png)
 

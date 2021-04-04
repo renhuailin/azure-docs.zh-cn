@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 9df10760164dcd0d207663c14107f72c46b76d25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96501237"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>从 Visual Studio 部署模型
@@ -53,7 +53,7 @@ ms.locfileid: "96501237"
 就是这么简单！
 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果部署元数据时部署失败，可能是因为 Visual Studio 无法连接到服务器。 确保可以使用 SQL Server Management Studio (SSMS) 连接到服务器。 确保项目的“部署服务器”属性正确。
 

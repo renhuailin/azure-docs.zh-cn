@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 iPass SmartConnect 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 7f383b661d682242f6d60761827ee5b86e5ed4a2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459837"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 集成
 
 本教程介绍如何将 iPass SmartConnect 与 Azure Active Directory (Azure AD) 集成。 将 iPass SmartConnect 与 Azure AD 集成后，可以：
 
@@ -53,12 +53,12 @@ ms.locfileid: "92459837"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“iPass SmartConnect”   。
-1. 从结果面板中选择“iPass SmartConnect”，然后添加应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“iPass SmartConnect”。
+1. 从结果面板中选择“iPass SmartConnect”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ipass-smartconnect"></a>配置并测试 iPass SmartConnect 的 Azure AD 单元登录
 
-使用名为 B.Simon 的测试用户配置和测试 iPass SmartConnect 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 iPass SmartConnect 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 iPass SmartConnect 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 iPass SmartConnect 相关用户之间建立链接关系。
 
 若要配置和测试 iPass SmartConnect 的 Azure AD SSO，请完成以下构建基块：
 
@@ -73,19 +73,19 @@ ms.locfileid: "92459837"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“iPass SmartConnect”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“iPass SmartConnect”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，如果你要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为应用已与 Azure 进行预集成。  
+1. 在“基本 SAML 配置”部分，如果你要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为应用已与 Azure 进行预集成。 
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入 URL：`https://om-activation.ipass.com/ClientActivation/ssolanding.go` 
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 1. iPass SmartConnect 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -104,7 +104,7 @@ ms.locfileid: "92459837"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 iPass SmartConnect”部分，根据要求复制相应 URL  。
+1. 在“设置 iPass SmartConnect”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -112,35 +112,35 @@ ms.locfileid: "92459837"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 B.Simon 访问 iPass SmartConnect 的权限，以支持其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“iPass SmartConnect”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“iPass SmartConnect”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-ipass-smartconnect-sso"></a>配置 iPass SmartConnect SSO
 
-若要在 **iPass SmartConnect** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [iPass SmartConnect 支持团队](mailto:help@ipass.com)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **iPass SmartConnect** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [iPass SmartConnect 支持团队](mailto:help@ipass.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-ipass-smartconnect-test-user"></a>创建 iPass SmartConnect 测试用户
 

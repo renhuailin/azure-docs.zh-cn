@@ -11,10 +11,10 @@ ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97739852"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入到 Azure 机器学习设计器
@@ -101,7 +101,7 @@ ms.locfileid: "97739852"
 * 字符串
 * Integer
 * 小数
-* Boolean
+* 布尔
 * Date
 
 设计器使用一个内部数据类型在模块之间传递数据。 可使用[转换为数据集](algorithm-module-reference/convert-to-dataset.md)模块将数据显式转换为数据表格式。 接受非内部格式的任何模块都将在不提示的情况对数据进行转换，然后再将其传递给下一个模块。

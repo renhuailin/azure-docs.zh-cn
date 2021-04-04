@@ -4,10 +4,10 @@ description: 介绍了如何自定义事件网格的事件传递设置。 设置
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460931"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>设置死信位置和重试策略
