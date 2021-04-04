@@ -4,10 +4,10 @@ description: 批处理分析中的主题包含可用于批处理服务资源的�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: 0d55ecd7f10e267a9cb469dffcdf26c131c8ce41
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91849505"
 ---
 # <a name="batch-analytics"></a>批处理分析

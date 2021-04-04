@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: f48f7cf9507afae31e3c36aef517aab7b7d77ccf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教程：Azure Active Directory 与 Predictix Ordering 集成
@@ -154,7 +154,7 @@ ms.locfileid: "92515366"
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 
-    1. 选择“创建”  。
+    1. 选择“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
