@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515519"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>教程：Azure Active Directory 与 Perception United States (Non-UltiPro) 的集成
@@ -103,7 +103,7 @@ ms.locfileid: "92515519"
 
     a. 在“标识符”文本框中键入 URL：`https://perception.kanjoya.com/sp`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     c. “Perception United States (Non-UltiPro)”应用程序需要 URI 编码的 <entity_id> 形式的“Azure AD 标识符”值，可从“设置 Perception United States (Non-UltiPro)”部分获取该值。    若要获取 URI 编码值，请使用以下链接： **http://www.url-encode-decode.com/** 。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92515519"
     
     b. 在“帐户名”文本框中，键入 **帐户** 的名称。
 
-    c. 在“默认收件人电子邮件”文本框中，键入有效的 **电子邮件** 。
+    c. 在“默认收件人电子邮件”文本框中，键入有效的 **电子邮件**。
 
     d. 选择“SAML 2.0”作为“SSO 标识提供者”。  
 
@@ -171,7 +171,7 @@ ms.locfileid: "92515519"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -185,7 +185,7 @@ ms.locfileid: "92515519"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

@@ -1,6 +1,6 @@
 ---
 title: 内存和并发限制
-description: 查看分配给 Azure Synapse Analytics 中专用 SQL 池的各种性能级别和资源类的内存和并发限制。
+description: 查看分配给 Azure Synapse Analytics 中专用 SQL 池的各性能级别和资源类的内存和并发限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96455357"
 ---
 # <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的内存和并发限制
@@ -55,7 +55,7 @@ ms.locfileid: "96455357"
 
 随着[工作负载组](sql-data-warehouse-workload-isolation.md)的引入，并发槽位的概念不再适用。  每个请求的资源按百分比分配，并在工作负载组定义中指定。  但是，即使删除了并发槽位，每个查询也需要基于服务级别的最小资源量。  下表定义了各服务级别协议中，每个查询所需的最小资源量以及可以实现的关联并发。
 
-|服务级别|最大并行查询|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支持的最小百分比|
+|服务级别|并发查询数上限|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支持的最小百分比|
 |---|---|---|
 |DW100c|4|25%|
 |DW200c|8|12.5%|
@@ -83,7 +83,7 @@ ms.locfileid: "96455357"
 
 下表显示了每个[静态资源类](resource-classes-for-workload-management.md)的最大并发查询数和并发槽位数。  
 
-| 服务级别 | 最大并行查询 | 可用的并发槽位数 | staticrc10 使用的槽位数 | staticrc20 使用的槽位数 | staticrc30 使用的槽位数 | staticrc40 使用的槽位数 | staticrc50 使用的槽位数 | staticrc60 使用的槽位数 | staticrc70 使用的槽位数 | staticrc80 使用的槽位数 |
+| 服务级别 | 并发查询数上限 | 可用的并发槽位数 | staticrc10 使用的槽位数 | staticrc20 使用的槽位数 | staticrc30 使用的槽位数 | staticrc40 使用的槽位数 | staticrc50 使用的槽位数 | staticrc60 使用的槽位数 | staticrc70 使用的槽位数 | staticrc80 使用的槽位数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -106,7 +106,7 @@ ms.locfileid: "96455357"
 
 下表显示了每个[动态资源类](resource-classes-for-workload-management.md)的最大并发查询数和并发槽位数。 动态资源类对所有服务级别的 small-medium-large-xlarge 资源类使用 3-10-22-70 内存百分比分配。
 
-| 服务级别 | 最大并行查询 | 可用的并发槽位数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
+| 服务级别 | 并发查询数上限 | 可用的并发槽位数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
