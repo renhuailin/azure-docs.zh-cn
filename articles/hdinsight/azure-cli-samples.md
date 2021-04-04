@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946889"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 示例
@@ -21,11 +21,11 @@ ms.locfileid: "98946889"
 
 本文提供了常见任务的示例脚本。 对于每个示例，请用适当的值更新变量，然后执行命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure CLI。 有关步骤，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-* 可选：Bash。 本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](/windows/wsl/install-win10)。  这些示例经过一些细微的修改，即可在 Windows 命令提示符下运行。
+* 可选：Bash。 本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](/windows/wsl/install-win10)。  这些示例经过一些细微的修改，即可在 Windows 命令提示符下运行。
 
 ## <a name="az-login"></a>az login
 
@@ -40,7 +40,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[创建新群集](/cli/azure/hdinsight#az-hdinsight-create)。
+[创建新的群集](/cli/azure/hdinsight#az-hdinsight-create)。
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>使用现有存储帐户创建群集
 

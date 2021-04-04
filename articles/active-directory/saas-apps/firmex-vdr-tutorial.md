@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Firmex VDR 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Firmex VDR 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Firmex VDR 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453376"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Firmex VDR 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Firmex VDR 集成
 
 本教程介绍如何将 Firmex VDR 与 Azure Active Directory (Azure AD) 集成。 将 Firmex VDR 与 Azure AD 集成后，可以：
 
@@ -51,8 +51,8 @@ ms.locfileid: "92453376"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **Firmex VDR** 。 
-1. 在结果面板中选择“Firmex VDR”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **Firmex VDR**。
+1. 在结果面板中选择“Firmex VDR”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-firmex-vdr"></a>配置并测试 Firmex VDR 的 Azure AD 单一登录
@@ -72,8 +72,8 @@ ms.locfileid: "92453376"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Firmex VDR”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Firmex VDR”应用程序集成页上，找到“管理”部分并选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”旁边的编辑/铅笔图标以编辑设置。  
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
@@ -82,9 +82,9 @@ ms.locfileid: "92453376"
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：  `https://login.firmex.com`
+    在“登录 URL”文本框中，键入 URL：`https://login.firmex.com`
 
-1. 单击“ **保存** ”。
+1. 单击“ **保存**”。
 
 1. Firmex VDR 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -100,7 +100,7 @@ ms.locfileid: "92453376"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Firmex VDR”部分，根据要求复制相应的 URL。 
+1. 在“设置 Firmex VDR”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -108,35 +108,35 @@ ms.locfileid: "92453376"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 Firmex VDR 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序”列表中选择“Firmex VDR”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在“应用程序”列表中选择“Firmex VDR”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-firmex-vdr-sso"></a>配置 Firmex VDR SSO
 
-### <a name="before-you-get-started"></a>开始操作之前
+### <a name="before-you-get-started"></a>准备工作
 
 #### <a name="what-youll-need"></a>准备工作
 
@@ -168,7 +168,7 @@ ms.locfileid: "92453376"
 
 1. 以站点管理员身份登录到 Firmex。
 1. 在左上角单击你的公司徽标。
-1. 选择“SSO”选项卡。  然后选择“SSO 配置”。  单击要配置的域。
+1. 选择“SSO”选项卡。然后选择“SSO 配置”。 单击要配置的域。
 
     ![认领的域](./media/firmex-vdr-tutorial/edit-sso.png)  
 
@@ -178,11 +178,11 @@ ms.locfileid: "92453376"
 
     a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
     c. **公钥证书** - 对于身份验证目的，SAML 消息可由颁发者进行数字签名。 若要验证消息的签名，消息接收方可以使用已知属于颁发者的公钥。 同样，若要加密消息，属于最终接收方的公共加密密钥必须是颁发者已知的密钥。 在这两种情况下（签名和加密），必须提前共享受信任的公钥。  这是 **联合元数据 XML** 中的 **X509Certificate**
 
-    d. 单击“保存”完成 SSO 配置。  更改会立即生效。
+    d. 单击“保存”完成 SSO 配置。 更改会立即生效。
 
 1. 此时，已为站点启用 SSO。
 
