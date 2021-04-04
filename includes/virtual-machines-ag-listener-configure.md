@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91401080"
 ---
 可用性组侦听器是 SQL Server 可用性组侦听的 IP 地址和网络名称。 若要创建可用性组侦听器，请执行以下操作：
@@ -116,7 +116,7 @@ ms.locfileid: "91401080"
 
 1. 右键单击“IP 地址”  ，并选择“属性”  。
 
-1. 记下 IP 地址的**名称**。 该项可能为 `Cluster IP Address`。 
+1. 记下 IP 地址的 **名称**。 该项可能为 `Cluster IP Address`。 
 
 1. <a name="setwsfcparam"></a>在 PowerShell 中设置群集参数。
   

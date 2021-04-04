@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 09/08/2020
 ms.openlocfilehash: 2e53c9d7c7328ef631bd1ba3d678f31dd12e1f28
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91574004"
 ---
 [设置环境](../articles/iot-pnp/set-up-environment.md)部分创建了四个环境变量来配置示例，以使用设备预配服务 (DPS) 连接到 IoT 中心：

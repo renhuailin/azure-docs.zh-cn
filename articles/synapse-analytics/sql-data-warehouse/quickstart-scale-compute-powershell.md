@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96921901"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 缩放专用 SQL 池（之前称为 SQL DW）的计算
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 按照以下步骤查找数据仓库的位置信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户的左侧导航页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
 3. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开数据仓库。  
 

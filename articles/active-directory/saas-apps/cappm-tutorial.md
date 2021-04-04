@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
 ms.openlocfilehash: 7931bc58b1035a425b30b01b802345b7aa7b8d14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92456494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>教程：Azure Active Directory 与 Clarity 集成
@@ -85,7 +85,7 @@ ms.locfileid: "92456494"
     > [!NOTE]
     > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [Clarity 客户端支持团队](mailto:catechnicalsupport@ca.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 

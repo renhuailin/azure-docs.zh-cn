@@ -4,10 +4,10 @@ description: 了解实验室服务如何轻松创建、管理以及保护包含�
 ms.topic: overview
 ms.date: 09/16/2020
 ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91333930"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介

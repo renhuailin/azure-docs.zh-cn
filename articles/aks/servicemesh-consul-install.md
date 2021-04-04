@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 7c5ad53c0040009e9ed1f28072540b46ce7b0b9a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94683913"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装并使用 Consul

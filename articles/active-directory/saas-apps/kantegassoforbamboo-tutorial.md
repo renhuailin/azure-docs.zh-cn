@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: aa5f908cdf25925db63054adaf1e6dab15f5260b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>教程：Azure Active Directory 与 Kantega SSO for Bamboo 集成
@@ -97,19 +97,19 @@ ms.locfileid: "92459299"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 在配置 Bamboo 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -176,7 +176,7 @@ ms.locfileid: "92459299"
 
     ![屏幕截图显示了“元数据导入”部分，你可以在其中浏览元数据文件。](./media/kantegassoforbamboo-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。 
 
@@ -184,7 +184,7 @@ ms.locfileid: "92459299"
 
     ![屏幕截图显示了“名称和 SSO”位置，其中 Azure AD 是标识提供者名称。](./media/kantegassoforbamboo-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。 
 
@@ -198,7 +198,7 @@ ms.locfileid: "92459299"
 
     a. 选择“根据需要在 Bamboo 的内部目录中创建用户”，并为用户组输入合适名称（可以为多个  组，用逗号隔开）。
 
-    b. 单击“下一步”。 
+    b. 单击“下一步”。
 
 1. 单击“完成”  。
 
@@ -208,9 +208,9 @@ ms.locfileid: "92459299"
 
     ![屏幕截图显示了 Azure AD 的“已知域”，你可以在其中执行这些步骤。](./media/kantegassoforbamboo-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”  。
+    a. 从页的左侧面板中选择“已知域”。
 
-    b. 在“已知域”文本框中输入域名  。
+    b. 在“已知域”文本框中输入域名。
 
     c. 单击“保存”  。
 
@@ -222,7 +222,7 @@ ms.locfileid: "92459299"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "92459299"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

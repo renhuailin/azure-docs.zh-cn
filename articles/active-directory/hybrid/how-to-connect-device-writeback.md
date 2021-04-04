@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95973416"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：启用设备写回
@@ -130,4 +130,4 @@ ms.locfileid: "95973416"
 * [使用 Azure Active Directory Device Registration 设置本地条件性访问](../devices/overview.md)
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

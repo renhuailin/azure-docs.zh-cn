@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92536753"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
@@ -156,7 +156,7 @@ ms.locfileid: "92536753"
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| properties | 说明 | 定价层 |
+| 属性 | 说明 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |

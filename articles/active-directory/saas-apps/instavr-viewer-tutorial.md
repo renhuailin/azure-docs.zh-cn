@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: e60e8c73c9f1da617851cc67fb2dbab7171f1cb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>教程：Azure Active Directory 与 InstaVR Viewer 的集成
@@ -62,7 +62,7 @@ ms.locfileid: "92459996"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **InstaVR Viewer** ，在结果面板中选择“InstaVR Viewer”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **InstaVR Viewer**，在结果面板中选择“InstaVR Viewer”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的 InstaVR Viewer](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "92459996"
     > [!NOTE]
     > “登录 URL”没有固定的模式。 它是在 InstaVR Viewer 客户执行 Web 打包时生成的。 此 URL 对于每个客户和包都是唯一的。 若要获取确切的登录 URL，需要登录到 InstaVR Viewer 实例并执行 Web 打包。
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
 
     > [!NOTE]
     > 标识符非实际值。 本教程稍后将介绍如何使用实际标识符值来更新此值。
@@ -158,7 +158,7 @@ ms.locfileid: "92459996"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -168,12 +168,12 @@ ms.locfileid: "92459996"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -191,7 +191,7 @@ ms.locfileid: "92459996"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

@@ -10,10 +10,10 @@ ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97588193"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列

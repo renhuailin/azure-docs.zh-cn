@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1b23ee92fb691af6152d16c94dad59f0751810fc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>教程：Azure Active Directory 与 Infor Retail - Information Management 集成
@@ -97,7 +97,7 @@ ms.locfileid: "92460158"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
@@ -108,13 +108,13 @@ ms.locfileid: "92460158"
     http://<company name>.mingledev.infor.com
     ```
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/sp/ACS.saml2`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+    ![显示“设置其他 URL”的屏幕截图，可在其中输入登录 URL。](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/<company code>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/<company code>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Infor Retail – Information Management 客户端支持团队](mailto:innovate@infor.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -145,7 +145,7 @@ ms.locfileid: "92460158"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "92460158"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
