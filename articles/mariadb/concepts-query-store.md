@@ -1,16 +1,16 @@
 ---
-title: 查询存储-Azure Database for MariaDB
+title: 查询存储 - Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 0841a38ab6e4fe3b4d0faf755209d85cfea1ac17
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98664191"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
@@ -21,7 +21,7 @@ ms.locfileid: "98664191"
 
 ## <a name="common-scenarios-for-using-query-store"></a>使用查询存储的常见场景
 
-可以在许多情况下使用 Query store，其中包括：
+可以在许多场景中使用查询存储，包括：
 
 - 检测回归查询
 - 确定在给定时间范围内执行查询的次数
@@ -110,7 +110,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#create-more-admin-users)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
-删除文本和常数后，通过查看查询的结构来规范化查询。 如果两个查询（文本值除外）相同，则它们具有相同的哈希。
+删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询均相同，则它们将具有相同的哈希值。
 
 ### <a name="mysqlquery_store"></a>mysql.query_store
 
@@ -127,10 +127,10 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `execution_count` | bigint(20)| 是| 针对此时间戳 ID/在配置的间隔时间段内执行该查询的次数|
 | `warning_count` | bigint(20)| 是| 此查询在该时间间隔内生成的警告数|
 | `error_count` | bigint(20)| 是| 此查询在该时间间隔内生成的错误数|
-| `sum_timer_wait` | double| YES| 此查询在该时间间隔内的总执行时间|
-| `avg_timer_wait` | double| YES| 此查询在该时间间隔内的平均执行时间|
-| `min_timer_wait` | double| YES| 此查询的最小执行时间|
-| `max_timer_wait` | double| YES| 最大执行时间|
+| `sum_timer_wait` | Double| YES| 此查询在该时间间隔内的总执行时间|
+| `avg_timer_wait` | Double| YES| 此查询在该时间间隔内的平均执行时间|
+| `min_timer_wait` | Double| YES| 此查询的最小执行时间|
+| `max_timer_wait` | Double| YES| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
 | `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
@@ -138,8 +138,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `sum_select_full_join` | bigint(20)| 是| 完整联接的数目|
 | `sum_select_scan` | bigint(20)| 是| select 扫描数 |
 | `sum_sort_rows` | bigint(20)| 是| 排序的行数|
-| `sum_no_index_used` | bigint(20)| 是| 查询不使用任何索引的次数|
-| `sum_no_good_index_used` | bigint(20)| 是| 查询执行引擎未使用任何良好索引的次数|
+| `sum_no_index_used` | bigint(20)| 是| 查询未使用任何索引的次数|
+| `sum_no_good_index_used` | bigint(20)| 是| 查询执行引擎未使用任何适当索引的次数|
 | `sum_created_tmp_tables` | bigint(20)| 是| 创建的临时表总数|
 | `sum_created_tmp_disk_tables` | bigint(20)| 是| 在磁盘中创建的临时表总数（生成 I/O）|
 | `first_seen` | timestamp| 是| 在聚合时段发生第一次查询的时间 (UTC)|
@@ -147,7 +147,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
-此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有对应的一行。
+此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
 | **名称**| **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
@@ -159,7 +159,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `event_type` | varchar(32) | 是| 等待事件的类别 |
 | `event_name` | varchar(128) | 是| 等待事件的名称 |
 | `count_star` | bigint(20) | 是| 在查询间隔内采样的等待事件数 |
-| `sum_timer_wait_ms` | double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
+| `sum_timer_wait_ms` | Double | 是| 此查询在该时间间隔内的总等待时间（以毫秒为单位） |
 
 ### <a name="functions"></a>函数
 
@@ -171,7 +171,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 
-- 如果 MariaDB 服务器上有参数 `default_transaction_read_only` ，查询存储无法捕获数据。
+- 如果 MariaDB 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
 - 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。

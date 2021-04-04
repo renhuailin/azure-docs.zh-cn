@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.openlocfilehash: cdd712495d09f45054d046693833a7f6efee2c6a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>教程：Azure Active Directory 与 Proto.io 的单一登录 (SSO) 集成
@@ -103,7 +103,7 @@ ms.locfileid: "92516556"
     | fname | user.givenname |
     | lname | user.surname |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
