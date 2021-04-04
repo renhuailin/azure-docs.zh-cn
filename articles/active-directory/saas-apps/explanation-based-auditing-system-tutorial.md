@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Explanation-Based Auditing System 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Explanation-Based Auditing System 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Explanation-Based Auditing System 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 4d63b1fa82400d95b18c6dbd7f37ec321f72b3a7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92453699"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>教程：Azure Active Directory 与 Explanation-Based Auditing System 的集成
+# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>教程：Azure Active Directory 与 Explanation-Based Auditing System 集成
 
 本教程介绍如何将 Explanation-Based Auditing System 与 Azure Active Directory (Azure AD) 集成。
 将 Explanation-Based Auditing System 与 Azure AD 集成可提供以下优势：
@@ -30,7 +30,7 @@ ms.locfileid: "92453699"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Explanation-Based Auditing System 的集成，需要准备好以下各项：
 
@@ -63,7 +63,7 @@ ms.locfileid: "92453699"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Explanation-Based Auditing System** ，在结果面板中选择“Explanation-Based Auditing System”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Explanation-Based Auditing System**，在结果面板中选择“Explanation-Based Auditing System”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“Explanation-Based Auditing System”](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92453699"
 
 若要配置 Explanation-Based Auditing System 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Explanation-Based Auditing System”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Explanation-Based Auditing System”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "92453699"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Explanation-Based Auditing System 域和 URL 单一登录信息](common/sp-signonurl.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "92453699"
 
 ### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>配置 Explanation-Based Auditing System 单一登录
 
-若要在 **Explanation-Based Auditing System** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Explanation-Based Auditing System 支持团队](mailto:support@maizeanalytics.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Explanation-Based Auditing System** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Explanation-Based Auditing System 支持团队](mailto:support@maizeanalytics.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -121,7 +121,7 @@ ms.locfileid: "92453699"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -131,30 +131,30 @@ ms.locfileid: "92453699"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Explanation-Based Auditing System 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Explanation-Based Auditing System”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Explanation-Based Auditing System”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“Explanation-Based Auditing System”  。
+2. 在“应用程序”列表中，选择“Explanation-Based Auditing System”。
 
     ![“应用程序”列表中的“Explanation-Based Auditing System”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
