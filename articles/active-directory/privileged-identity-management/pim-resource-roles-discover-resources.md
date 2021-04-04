@@ -15,10 +15,10 @@ ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42d38990289169412f06b0c7e4bcbdf67f688da7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539003"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>在 Privileged Identity Management 中发现要管理的 Azure 资源
@@ -34,7 +34,7 @@ ms.locfileid: "99539003"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
 1. 选择“Azure 资源” 。
 

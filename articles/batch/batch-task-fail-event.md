@@ -4,10 +4,10 @@ description: 批处理任务失败事件参考。 除了任务完成事件，还
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e13692b45ff5a049d0b724525ad6565d2b894a3d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91850806"
 ---
 # <a name="task-fail-event"></a>任务失败事件
@@ -46,9 +46,9 @@ ms.locfileid: "91850806"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`jobId`|String|包含任务的作业的 ID。|
-|`id`|String|任务的 ID。|
-|`taskType`|String|任务的类型。 它可以是“JobManager”（指示它是作业管理器任务），也可以是“User”（指示它并非作业管理器任务）。 对于作业准备任务、作业释放任务或开始任务，不会发出此事件。|
+|`jobId`|字符串|包含任务的作业的 ID。|
+|`id`|字符串|任务的 ID。|
+|`taskType`|字符串|任务的类型。 它可以是“JobManager”（指示它是作业管理器任务），也可以是“User”（指示它并非作业管理器任务）。 对于作业准备任务、作业释放任务或开始任务，不会发出此事件。|
 |`systemTaskVersion`|Int32|这是任务上的内部重试计数器。 批处理服务可能会在内部重试任务来解决暂时性问题。 这些问题可能包括内部计划错误或尝试恢复处于错误状态的计算节点。|
 |`requiredSlots`|Int32|运行任务所需的槽。|
 |[`nodeInfo`](#nodeInfo)|复杂类型|包含有关运行任务的计算节点的信息。|
@@ -60,7 +60,7 @@ ms.locfileid: "91850806"
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`poolId`|String|运行任务的池的 ID。|
+|`poolId`|字符串|运行任务的池的 ID。|
 |`nodeId`|字符串|运行任务的节点的 ID。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings

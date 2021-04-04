@@ -4,10 +4,10 @@ description: 本文介绍如何解决订阅验证问题。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 857760182675d5673a3b09495c2faaf7372a4164
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94592934"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>排查 Azure 事件网格订阅验证问题

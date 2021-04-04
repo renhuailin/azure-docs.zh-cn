@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95993172"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高从 Azure 逻辑应用调用自定义 API 的安全性
@@ -197,7 +197,7 @@ ms.locfileid: "95993172"
 }
 ```
 
-| 属性 | 必须 | 说明 | 
+| 属性 | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | 受众 | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -248,7 +248,7 @@ ms.locfileid: "95993172"
 } 
 ```
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 | -------- | -------- | ----------- |
 | `type` | 是 | 身份验证类型。 对于 TLS/SSL 客户端证书，该值必须为 `ClientCertificate`。 |
 | `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
@@ -271,7 +271,7 @@ ms.locfileid: "95993172"
 }
 ```
 
-| 属性 | 必须 | 说明 | 
+| 属性 | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 
