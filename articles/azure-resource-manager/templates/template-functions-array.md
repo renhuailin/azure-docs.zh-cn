@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 数组
-description: 介绍用于在 Azure 资源管理器模板中使用的函数 (ARM 模板用于处理数组的) 。
+description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用来处理数组的函数。
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96920555"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM 模板的数组函数
 
-资源管理器提供了几个函数，用于在 Azure 资源管理器模板中使用数组 (ARM 模板) ：
+资源管理器提供了多个用于处理 Azure 资源管理器模板（ARM 模板）中数组的函数：
 
 * [array](#array)
 * [concat](#concat)
@@ -42,7 +42,7 @@ ms.locfileid: "96920555"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |整数、字符串、数组或对象 |要转换为数组的值。 |
 
@@ -129,7 +129,7 @@ output objectOutput array = array(objectToConvert)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
@@ -252,7 +252,7 @@ output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -360,11 +360,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 `createArray (arg1, arg2, arg3, ...)`
 
-从参数创建数组。 `createArray`Bicep 不支持该函数。  使用构造数组文本 `[]` 。
+从参数创建数组。 Bicep 不支持 `createArray` 函数。  使用 `[]` 构造数组文本。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | args |否 |字符串、整数、数组或对象 |数组中的值。 |
 
@@ -426,7 +426,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 > [!NOTE]
-> `createArray()` Bicep 不支持。  使用构造数组文本 `[]` 。
+> Bicep 不支持 `createArray()`。  使用 `[]` 构造数组文本。
 
 ---
 
@@ -448,7 +448,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -529,7 +529,7 @@ output stringEmpty bool = empty(testString)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -598,7 +598,7 @@ output stringOutput string = first('One Two Three')
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -706,7 +706,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -775,7 +775,7 @@ output stringOutput string = last('One Two three')
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -885,11 +885,11 @@ output objectLength int = length(objectToTest)
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
 > [!NOTE]
-> 循环尚未在 Bicep 中实现。  请参阅 [循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
+> Bicep 中尚未实现循环。  请参阅[循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
 
 ---
 
-有关将此函数与数组结合使用的详细信息，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
+若要详细了解如何将此函数与数组配合使用，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
 
 ## <a name="max"></a>max
 
@@ -899,7 +899,7 @@ output objectLength int = length(objectToTest)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -969,7 +969,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -1039,7 +1039,7 @@ output intOutput int = min(0,3,2,5,4)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | startIndex |是 |int |数组中的第一个整数。 startIndex 和 count 的总和不得大于 2147483647。 |
 | count |是 |int |数组中的整数个数。 必须为非负整数，最大为 10000。 |
@@ -1103,7 +1103,7 @@ output rangeOutput array = range(startingInt, numberOfElements)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素数或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1191,7 +1191,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值为 0 或更小，则返回一个空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1279,7 +1279,7 @@ output stringOutput string = take(testString, charactersToTake)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -1381,4 +1381,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅 [了解 arm 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

@@ -4,10 +4,10 @@ description: 介绍有关数据序列化的最佳实践，以及数据序列化�
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575629"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>数据序列化如何影响应用程序升级

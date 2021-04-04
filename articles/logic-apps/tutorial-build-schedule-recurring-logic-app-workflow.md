@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054054"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建基于计划的、定期执行的自动化工作流
@@ -92,7 +92,7 @@ ms.locfileid: "99054054"
 
    ![屏幕截图显示了对触发器的间隔和频率的更改。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **时间间隔** | 是 | 1 | 在两次检查之间需等待的时间间隔数 |
    | **频率** | 是 | Week | 用于定期触发的时间单位 |
@@ -141,7 +141,7 @@ ms.locfileid: "99054054"
 
    ![屏幕截图显示了必应地图连接框，其中具有指定的连接名称和必应地图 API 密钥。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | BingMapsConnection | 提供连接的名称。 本示例使用 `BingMapsConnection`。 |
    | **API 密钥** | 是 | <Bing-Maps-API-key> | 输入你之前收到的必应地图 API 密钥。 如果没有必应地图密钥，请了解[如何获取密钥](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)。 |
@@ -161,7 +161,7 @@ ms.locfileid: "99054054"
 
    ![屏幕截图显示了“获取路线”操作的其他属性值。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **路标 1** | 是 | <*start-location*> | 你的路线的起点。 此示例指定了一个示例起始地址。 |
    | **路标 2** | 是 | <*end-location*> | 你的路线的终点。 此示例指定了一个示例终点地址。 |
@@ -192,7 +192,7 @@ ms.locfileid: "99054054"
 
 1. 为你的变量提供此信息，如此表和表下方的步骤所示：
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | travelTime | 变量的名称。 本示例使用 `travelTime`。 |
    | 类型 | 是 | Integer | 变量的数据类型 |

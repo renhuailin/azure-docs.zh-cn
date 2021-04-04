@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92459180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教程：Azure Active Directory 与 Kantega SSO for FishEye/Crucible 集成
@@ -103,7 +103,7 @@ ms.locfileid: "92459180"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -176,19 +176,19 @@ ms.locfileid: "92459180"
 
     b. 单击“下一步”。 
 
-1. 在“元数据导入”部分，执行以下步骤  ：
+1. 在“元数据导入”部分，执行以下步骤：
 
     ![屏幕截图显示选择了“电脑上的元数据文件”的“元数据导入”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon7.png)
 
-    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件  。
+    a. 选择“我的计算机上的元数据文件”，上传从 Azure 门户下载的元数据文件。
 
     b. 单击“下一步”。 
 
-1. 在“名称和 SSO 位置”部分，执行以下步骤  ：
+1. 在“名称和 SSO 位置”部分，执行以下步骤：
 
     ![屏幕截图显示突出显示了“标识提供者名称”文本框并选择了“下一步”按钮的“名称和 SSO 位置”。](./media/kantegassoforfisheyecrucible-tutorial/addon8.png)
 
-    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）  。
+    a. 在“标识提供者名称”文本框中添加标识提供者名称（例如 Azure AD）。
 
     b. 单击“下一步”。 
 
@@ -202,7 +202,7 @@ ms.locfileid: "92459180"
 
     a. 选择“根据需要在 FishEye 的内部目录中创建用户”  ，并输入用户的组的合适名称（可以为多个 组，用逗号隔开）。
 
-    b. 单击“下一步”。 
+    b. 单击“下一步”。
 
 1. 单击“完成”  。
 
@@ -212,9 +212,9 @@ ms.locfileid: "92459180"
 
     ![屏幕截图显示选择了“保存”按钮的“Azure AD 已知域”部分。](./media/kantegassoforfisheyecrucible-tutorial/addon12.png)
 
-    a. 从页的左侧面板中选择“已知域”  。
+    a. 从页的左侧面板中选择“已知域”。
 
-    b. 在“已知域”文本框中输入域名  。
+    b. 在“已知域”文本框中输入域名。
 
     c. 单击“保存”  。
 
@@ -226,7 +226,7 @@ ms.locfileid: "92459180"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -240,7 +240,7 @@ ms.locfileid: "92459180"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -294,7 +294,7 @@ ms.locfileid: "92459180"
 
     c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d. 在“密码”文本框中，键入用户的密码。 
+    d. 在“密码”文本框中，键入用户的密码。
 
     e. 在“确认密码”文本框中，再次输入用户密码  。
 
