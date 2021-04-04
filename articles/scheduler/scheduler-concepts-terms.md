@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92368156"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
@@ -82,7 +82,7 @@ Azure 计划程序支持多个作业类型：
 
 作业还包括系统提供的数据，例如，作业的下一次计划运行时间。 作业的代码定义是一个 JavaScript 对象表示法 (JSON) 格式的对象，包括以下元素：
 
-| 元素 | 必须 | 说明 | 
+| 元素 | 必选 | 说明 | 
 |---------|----------|-------------| 
 | [**startTime**](#start-time) | 否 | 作业的开始时间，时区偏移量为 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | 是 | 主操作的详细信息，可以包含 errorAction  对象 | 
@@ -246,7 +246,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 必须 | Value | 说明 | 
+| 属性 | 必选 | 值 | 说明 | 
 |----------|----------|-------|-------------| 
 | **frequency** | 是，使用 recurrence  时 | Minute、Hour、Day、Week、Month、Year | 两次作业之间的时间单位 | 
 | **interval** | 否 | 1 - 1000（包含） | 一个正整数，根据频率  确定两次作业之间的时间单位数 | 
@@ -276,7 +276,7 @@ Azure 计划程序支持多个作业类型：
 },
 ```
 
-| 属性 | 必须 | Value | 说明 | 
+| 属性 | 必选 | 值 | 说明 | 
 |----------|----------|-------|-------------| 
 | **retryType** | 是 | **Fixed** **None** | 确定是否指定重试策略（固定  ）或（无  ）。 | 
 | **retryInterval** | 否 | PT30S | 指定每次重试尝试之间的间隔和频率（[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)）。 最小值为 15 秒，最大值为 18 个月。 | 

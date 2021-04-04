@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b00bb28128cfe9a2e701647ad174ea2c9dd458e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98742119"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-classic-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务（经典）应用程序的流

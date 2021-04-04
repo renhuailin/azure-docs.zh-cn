@@ -4,10 +4,10 @@ description: 说明如何将 CloudEvents v1.0 架构用于 Azure 事件网格中
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: d17e92c28784ca31f3c9809c93e885b22c6a38d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91324172"
 ---
 # <a name="cloudevents-v10-schema-with-azure-event-grid"></a>将 CloudEvents v1.0 架构与 Azure 事件网格配合使用

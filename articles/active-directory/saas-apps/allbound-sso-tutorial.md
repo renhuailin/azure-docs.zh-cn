@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92318875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>教程：Azure Active Directory 与 Allbound SSO 集成
@@ -42,7 +42,7 @@ ms.locfileid: "92318875"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Allbound SSO 支持 **SP 和 IDP** 发起的 SSO
-* Allbound SSO 支持**恰时**用户预配
+* Allbound SSO 支持 **恰时** 用户预配
 
 ## <a name="adding-allbound-sso-from-the-gallery"></a>从库添加 Allbound SSO
 
@@ -90,7 +90,7 @@ ms.locfileid: "92318875"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
+2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "92318875"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.allbound.com/acs`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -141,7 +141,7 @@ ms.locfileid: "92318875"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "92318875"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -189,7 +189,7 @@ ms.locfileid: "92318875"
 在本部分，我们将在 Allbound SSO 中创建一个名为 Britta Simon 的用户。 Allbound SSO 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 Allbound SSO 中尚不存在用户，身份验证后会创建一个新用户。
 
 > [!Note]
-> 如果需要手动创建用户，请联系  [Allbound SSO 支持团队](mailto:engineering@allbound.com)。
+> 如果需要手动创建用户，请联系 [Allbound SSO 支持团队](mailto:engineering@allbound.com)。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91779052"
 ---
 若要运行情绪分析 v3 容器，请执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：

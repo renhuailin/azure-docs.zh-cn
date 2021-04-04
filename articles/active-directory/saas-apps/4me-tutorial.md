@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 241450b9a6e97953205aca5de2a7cfd30a08d254
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319118"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>教程：Azure Active Directory 单一登录 (SSO) 与 4me 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>教程：Azure Active Directory 单一登录 (SSO) 与 4me 集成
 
 本教程介绍如何将 4me 与 Azure Active Directory (Azure AD) 进行集成。 将 4me 与 Azure AD 集成后，可以：
 
@@ -39,8 +39,8 @@ ms.locfileid: "92319118"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* 4me 支持 SP 发起的 SSO 
-* 4me 支持“恰时”用户预配 
+* 4me 支持 SP 发起的 SSO
+* 4me 支持“恰时”用户预配
 
 ## <a name="adding-4me-from-the-gallery"></a>从库中添加 4me
 
@@ -50,8 +50,8 @@ ms.locfileid: "92319118"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“4me”   。
-1. 从结果面板中选择“4me”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“4me”。
+1. 从结果面板中选择“4me”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-4me"></a>配置并测试 4me 的 Azure AD 单一登录
 
@@ -70,13 +70,13 @@ ms.locfileid: "92319118"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“4me”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“4me”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
@@ -112,11 +112,11 @@ ms.locfileid: "92319118"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-1. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+1. 在“SAML 签名证书”部分中，复制 **指纹** 并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
-1. 在“设置 4me”部分中，根据要求复制相应的 URL  。
+1. 在“设置 4me”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,37 +124,37 @@ ms.locfileid: "92319118"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 4me 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“4me”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“4me”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-4me-sso"></a>配置 4me SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 4me。
 
-1. 在左上角，单击“设置”徽标，然后单击左侧栏中的“单一登录”   。
+1. 在左上角，单击“设置”徽标，然后单击左侧栏中的“单一登录”。
 
     ![4me 设置](./media/4me-tutorial/tutorial_4me_settings.png)
 
@@ -162,15 +162,15 @@ ms.locfileid: "92319118"
 
     ![4me 单一登录](./media/4me-tutorial/tutorial_4me_singlesignon.png)
 
-    a. 选择“启用”选项  。
+    a. 选择“启用”选项。
 
-    b. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    b. 在“远程注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
 
-    c. 在 **SAML** 部分的“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值  。 
+    c. 在 **SAML** 部分的“SAML SSO URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    d. 在“证书指纹”文本框中，粘贴从 Azure 门户复制的“指纹”值，其中按双位为一对排序，每对之间用冒号分隔 (AA:BB:CC:DD:EE:FF:GG:HH:II)   。
+    d. 在“证书指纹”文本框中，粘贴从 Azure 门户复制的“指纹”值，其中按双位为一对排序，每对之间用冒号分隔 (AA:BB:CC:DD:EE:FF:GG:HH:II)。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-4me-test-user"></a>创建 4me 测试用户
 

@@ -4,10 +4,10 @@ description: 介绍顾问权限以及如何通过这些权限来阻止用户配�
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91712930"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure 顾问中的权限

@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
 ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91541947"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 GeographyV2 预生成实体
@@ -22,7 +22,7 @@ ms.locfileid: "91541947"
 ## <a name="subtypes"></a>子类型
 地理位置具有以下子类型：
 
-|子类型|目标|
+|子类型|用途|
 |--|--|
 |`poi`|兴趣点|
 |`city`|城市名称|
