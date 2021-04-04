@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95994734"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
@@ -30,7 +30,7 @@ ms.locfileid: "95994734"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 + 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + 确保订阅中已有 API 应用。 有关详细信息，请参阅[应用服务文档](../app-service/index.yml)
@@ -57,7 +57,7 @@ ms.locfileid: "95994734"
     * **入门**
     * **不受限制**   
 7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
-8. 选择“创建”  。
+8. 选择“创建”。
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API
 

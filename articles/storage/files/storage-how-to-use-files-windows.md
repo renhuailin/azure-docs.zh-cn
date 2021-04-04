@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94626888"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
@@ -133,13 +133,13 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 | Windows Server 2019                       | 已禁用             | 使用 Windows 功能删除 |
 | Windows Server 版本 1709+            | 已禁用             | 使用 Windows 功能删除 |
 | Windows 10 版本 1709+                | 已禁用             | 使用 Windows 功能删除 |
-| Windows Server 2016                       | Enabled              | 使用 Windows 功能删除 |
-| Windows 10 版本 1507、1607 和 1703 | Enabled              | 使用 Windows 功能删除 |
-| Windows Server 2012 R2                    | Enabled              | 使用 Windows 功能删除 | 
-| Windows 8.1                               | Enabled              | 使用 Windows 功能删除 | 
-| Windows Server 2012                       | Enabled              | 使用注册表禁用       | 
-| Windows Server 2008 R2                    | Enabled              | 使用注册表禁用       |
-| Windows 7                                 | Enabled              | 使用注册表禁用       | 
+| Windows Server 2016                       | 已启用              | 使用 Windows 功能删除 |
+| Windows 10 版本 1507、1607 和 1703 | 已启用              | 使用 Windows 功能删除 |
+| Windows Server 2012 R2                    | 已启用              | 使用 Windows 功能删除 | 
+| Windows 8.1                               | 已启用              | 使用 Windows 功能删除 | 
+| Windows Server 2012                       | 已启用              | 使用注册表禁用       | 
+| Windows Server 2008 R2                    | 已启用              | 使用注册表禁用       |
+| Windows 7                                 | 已启用              | 使用注册表禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
 > 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1

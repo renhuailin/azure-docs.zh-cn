@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92281874"
 ---
 # <a name="about-site-recovery"></a>关于 Site Recovery
@@ -43,7 +43,7 @@ Site Recovery 可以为以下计算机管理复制：
 **自定义的恢复计划** | 可以根据恢复计划对多个 VM 上运行的多层应用程序的故障转移和恢复进行自定义和排序操作。 可以在恢复计划中将计算机组合到一起，选择性地添加脚本和手动操作。 恢复计划可与 Azure 自动化 Runbook 集成。
 **BCDR 集成** | Site Recovery 可与其他 BCDR 技术集成。 例如，可使用 Site Recovery 保护企业工作负荷的 SQL Server 后端，为 SQL Server AlwaysOn 提供本机支持，进而管理可用性组的故障转移。
 **Azure 自动化集成** | 丰富的 Azure 自动化库提供特定于应用程序的生产就绪型脚本，可下载它们并将其与 Site Recovery 集成。
-**网络集成** | Site Recovery 与 Azure 集成即可进行应用程序网络管理。 例如，若要保留 IP 地址，请配置负载均衡器，并使用 Azure 流量管理器进行高效的网络切换。
+网络集成 | Site Recovery 与 Azure 集成即可进行应用程序网络管理。 例如，若要保留 IP 地址，请配置负载均衡器，并使用 Azure 流量管理器进行高效的网络切换。
 
 ## <a name="what-can-i-replicate"></a>可复制哪些内容？
 
@@ -51,8 +51,8 @@ Site Recovery 可以为以下计算机管理复制：
 --- | ---
 **复制方案** | 将 Azure VM 从一个 Azure 区域复制到另一个 Azure 区域。<br/><br/>  将本地 VMware VM、Hyper-V VM、物理服务器（Windows 和 Linux）、Azure Stack VM 复制到 Azure。<br/><br/> 将 AWS Windows 实例复制到 Azure。<br/><br/> 将本地 VMware VM、System Center VMM 托管的 Hyper-V VM 以及物理服务器复制到辅助站点。
 **区域** | 查看 Site Recovery [支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery)。 |
-复制的计算机  | 查看 [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) 复制、[本地 VMware VM 和物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)以及[本地 Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 的复制要求。
-**工作负荷** | 可以在支持复制的计算机上复制运行的任何工作负荷。 Site Recovery 团队对[许多应用](site-recovery-workload.md#workload-summary)进行了特定于应用的测试。
+**复制的计算机** | 查看 [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) 复制、[本地 VMware VM 和物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)以及[本地 Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 的复制要求。
+**工作负载** | 可以在支持复制的计算机上复制运行的任何工作负荷。 Site Recovery 团队对[许多应用](site-recovery-workload.md#workload-summary)进行了特定于应用的测试。
 
 ## <a name="next-steps"></a>后续步骤
 
