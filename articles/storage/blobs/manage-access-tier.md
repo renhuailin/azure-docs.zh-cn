@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.openlocfilehash: 183593022c934eaf52ffe18649c23e8deced34d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98166478"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>管理 Azure 存储帐户中 blob 的访问层
@@ -25,7 +25,7 @@ ms.locfileid: "98166478"
 
 # <a name="portal"></a>[门户](#tab/portal)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>教程：Azure Active Directory 与 Tidemark 集成
@@ -61,7 +61,7 @@ ms.locfileid: "92516454"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Tidemark** ，在结果面板中选择“Tidemark”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Tidemark**，在结果面板中选择“Tidemark”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“Tidemark”](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "92516454"
     - `https://<subdomain>.tidemark.com/login`
     - `https://<subdomain>.tidemark.net/login`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
 
     - `https://<subdomain>.tidemark.com/saml`
@@ -141,7 +141,7 @@ ms.locfileid: "92516454"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "92516454"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 4dfce2c0bd6b7e154e35e0e7e267549dd162ecf1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教程：Azure Active Directory 与 TrackVia 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92516290"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 TrackVia 的集成，需要以下项：
 
@@ -63,7 +63,7 @@ ms.locfileid: "92516290"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“TrackVia”  ，在结果面板中选择“TrackVia”  ，然后单击“添加”  按钮添加该应用程序。
+4. 在搜索框中，键入“TrackVia”，在结果面板中选择“TrackVia”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 TrackVia](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92516290"
 
 若要配置 TrackVia 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“TrackVia”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“TrackVia”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92516290"
 
     在“标识符”  文本框中，键入一个 URL：`TrackVia`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "92516290"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 TrackVia”部分，根据要求复制相应的 URL。 
+7. 在“设置 TrackVia”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,13 +132,13 @@ ms.locfileid: "92516290"
 
 1. 在不同的浏览器窗口中，以管理员身份登录到 TrackVia 公司站点。
 
-2. 在 Trackvia 中单击“我的帐户”设置，然后选择“单一登录”选项卡并执行以下步骤：  
+2. 在 Trackvia 中单击“我的帐户”设置，然后选择“单一登录”选项卡并执行以下步骤：
 
     ![TrackVia 配置](./media/trackvia-tutorial/configure1.png)
 
-    a. 在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    a. 在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    b. 选中“选择文件”  ，上传从 Azure 门户下载的元数据文件。
+    b. 选中“选择文件”，上传从 Azure 门户下载的元数据文件。
 
     c. 单击“保存” 
 
@@ -150,7 +150,7 @@ ms.locfileid: "92516290"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -164,17 +164,17 @@ ms.locfileid: "92516290"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 TrackVia 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TrackVia”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“TrackVia”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“TrackVia”  。
+2. 在应用程序列表中，选择“TrackVia”。
 
     ![应用程序列表中的 TrackVia 链接](common/all-applications.png)
 
