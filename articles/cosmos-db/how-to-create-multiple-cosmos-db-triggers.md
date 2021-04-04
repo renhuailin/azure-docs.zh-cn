@@ -9,10 +9,10 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93336667"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器

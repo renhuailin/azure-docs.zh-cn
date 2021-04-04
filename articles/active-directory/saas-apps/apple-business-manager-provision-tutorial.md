@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
 ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180364"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>教程：为 Apple Business Manager 配置自动用户预配

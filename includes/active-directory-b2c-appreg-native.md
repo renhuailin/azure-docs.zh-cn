@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 06/02/2020
 ms.author: mimart
 ms.openlocfilehash: 2ad6b90616077a6d18550e86692b109bda622af7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027485"
 ---
 要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](../articles/active-directory-b2c/app-registrations-training-guide.md)。

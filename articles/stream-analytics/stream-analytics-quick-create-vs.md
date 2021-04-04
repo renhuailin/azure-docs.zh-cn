@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98012353"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业
@@ -24,7 +24,7 @@ ms.locfileid: "98012353"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录到 [Azure 门户](https://portal.azure.com/)。
+* 登录 [Azure 门户](https://portal.azure.com/)。
 
 * 安装 Visual Studio 2019、Visual Studio 2015 或 Visual Studio 2013 Update 4。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。
 
@@ -34,7 +34,7 @@ ms.locfileid: "98012353"
 
 在定义流分析作业之前，应该对稍后会配置为作业输入的数据进行准备。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”。
 

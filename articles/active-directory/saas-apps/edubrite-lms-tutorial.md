@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 835b6d7c98654f6f7a3375020cfe5f81f6fe186c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>教程：Azure Active Directory 与 EduBrite LMS 的集成
@@ -63,7 +63,7 @@ ms.locfileid: "92454263"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **EduBrite LMS** ，在结果面板中选择“EduBrite LMS”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **EduBrite LMS**，在结果面板中选择“EduBrite LMS”，然后单击“添加”按钮添加该应用程序。  
 
     ![结果列表中的“EduBrite LMS”](common/search-new-app.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "92454263"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<customer-specific>.edubrite.com`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do`
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -142,7 +142,7 @@ ms.locfileid: "92454263"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -152,11 +152,11 @@ ms.locfileid: "92454263"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -174,7 +174,7 @@ ms.locfileid: "92454263"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
