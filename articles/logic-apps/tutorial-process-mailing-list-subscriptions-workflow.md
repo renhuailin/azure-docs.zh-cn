@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/07/2020
 ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054647"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于审批的工作流
@@ -194,7 +194,7 @@ ms.locfileid: "99054647"
 
    ![显示“将成员添加到列表”操作信息的屏幕截图。](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **列表 ID** | 是 | <mailing-list-name> | 选择 MailChimp 邮件列表的名称。 本示例使用 `test-members-ML`。 |
    | **电子邮件地址** | 是 | <*new-member-email-address*> | 在打开的动态内容列表中，从“新电子邮件到达时”部分中选择“发件人”，这是触发器的输出，并指定新成员的电子邮件地址 。 |
@@ -249,7 +249,7 @@ ms.locfileid: "99054647"
 
    ![屏幕截图显示“成功发送电子邮件”操作和为成功电子邮件提供的信息。](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **正文** | 是 | <success-email-body> | 成功电子邮件的正文内容。 学习本教程时，请执行以下步骤： <p>1.输入带尾随空格的以下文本：`New member has joined "test-members-ML":` <p>2.在显示的动态内容列表中，选择“电子邮件地址”属性。 <p>**注意**：如果未显示此属性，请在“将成员添加到列表”部分的标头旁边选择“查看详细信息” 。 <p>3.在下一行中，输入带尾随空格的以下文本：`Member opt-in status: ` <p>4.在动态内容列表的“将成员添加到列表”下，选择“状态”属性。  |
    | **主题** | 是 | <success-email-subject> | 成功电子邮件的主题。 学习本教程时，请执行以下步骤： <p>1.输入带尾随空格的以下文本：`Success! Member added to "test-members-ML": ` <p>2.在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。  |
@@ -274,7 +274,7 @@ ms.locfileid: "99054647"
 
    ![屏幕截图显示“发送电子邮件失败”操作和为失败电子邮件提供的信息。](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **正文** | 是 | <*body-for-failure-email*> | 失败电子邮件的正文内容。 对于本教程，请输入以下文本： <p>`Member might already exist. Check your MailChimp account.` |
    | **主题** | 是 | <*subject-for-failure-email*> | 失败电子邮件的主题。 学习本教程时，请执行以下步骤： <p>1.输入带尾随空格的以下文本：`Failed, member not added to "test-members-ML": ` <p>2.在动态内容列表的“将成员添加到列表”下，选择“电子邮件地址”属性。  |

@@ -14,10 +14,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92672493"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入门：使用 Visual Studio Code 进行连接和查询 
@@ -107,7 +107,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择 **Enter** 以继续。
 
-   | properties       | 建议的值 | 说明 |
+   | 属性       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |

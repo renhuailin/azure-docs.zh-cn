@@ -8,10 +8,10 @@ ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96455451"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>在合作伙伴中心使用“合作伙伴中心提交 API”加入 Azure 应用
