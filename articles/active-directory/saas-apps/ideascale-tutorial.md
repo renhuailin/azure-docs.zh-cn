@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96001654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
@@ -101,9 +101,9 @@ ms.locfileid: "96001654"
 
     ![IdeaScale 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.ideascale.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.ideascale.com` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     
     ```http
     http://<companyname>.ideascale.com
@@ -163,7 +163,7 @@ ms.locfileid: "96001654"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "96001654"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

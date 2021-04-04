@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: ab1171c69dc210051f034e8444c87de5d49a92be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96002064"
 ---
 # <a name="azure-event-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件中心输出绑定

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Workgrid 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Workgrid 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workgrid 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3f7b36cb091194f3ee68c531597ada7da33e5e0f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520177"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workgrid"></a>教程：Azure Active Directory 与 Workgrid 的集成
+# <a name="tutorial-azure-active-directory-integration-with-workgrid"></a>教程：Azure Active Directory 与 Workgrid 集成
 
 本教程介绍了如何将 Workgrid 与 Azure Active Directory (Azure AD) 进行集成。
 将 Workgrid 与 Azure AD 集成可提供以下优势：
@@ -62,7 +62,7 @@ ms.locfileid: "92520177"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Workgrid”，在结果面板中选择“Workgrid”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中键入“Workgrid”，在结果面板中选择“Workgrid”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Workgrid](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "92520177"
 
 若要配置 Workgrid 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Workgrid** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Workgrid** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,13 +98,13 @@ ms.locfileid: "92520177"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Workgrid 域和 URL 单一登录信息](common/sp-identifier.png)
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANYCODE>.workgrid.com/console` 
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:amazon:cognito:sp:us-east-1_<poolid>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:amazon:cognito:sp:us-east-1_<poolid>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Workgrid 客户端支持团队](mailto:support@workgrid.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -117,7 +117,7 @@ ms.locfileid: "92520177"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 Workgrid”  部分中，根据要求复制相应的 URL。
+7. 在“设置 Workgrid”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "92520177"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -153,25 +153,25 @@ ms.locfileid: "92520177"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Workgrid 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workgrid”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Workgrid”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Workgrid”  。
+2. 在应用程序列表中，选择“Workgrid”。
 
     ![应用程序列表中的 Workgrid 链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

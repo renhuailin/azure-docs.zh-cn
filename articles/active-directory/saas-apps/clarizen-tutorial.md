@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Clarizen 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Clarizen 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Clarizen 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97672922"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 集成
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>教程：Azure Active Directory 与 Clarizen 的集成
 
 在本教程中，了解如何将 Clarizen 与 Azure Active Directory (Azure AD) 集成。
 将 Clarizen 与 Azure AD 集成可提供以下优势：
@@ -61,7 +61,7 @@ ms.locfileid: "97672922"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Clarizen**，在结果面板中选择“Clarizen”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Clarizen**，在结果面板中选择“Clarizen”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“Clarizen”](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "97672922"
 
 若要配置 Clarizen 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Clarizen”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Clarizen”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "97672922"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![Clarizen 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，键入值：`Clarizen` 
+    a. 在“标识符”文本框中，键入值：`Clarizen`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际的标识符和回复 URL。 此处，我们建议使用唯一的字符串值作为标识符。 若要获取实际值，请与 [Clarizen 支持团队](https://success.clarizen.com/hc/en-us/requests/new)联系。
@@ -112,7 +112,7 @@ ms.locfileid: "97672922"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Clarizen”部分，根据要求复制相应的 URL  。
+6. 在“设置 Clarizen”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -126,29 +126,29 @@ ms.locfileid: "97672922"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Clarizen 公司站点。
 
-1. 单击用户名，然后单击“设置”。 
+1. 单击用户名，然后单击“设置”。
 
     ![单击用户名下的“设置”](./media/clarizen-tutorial/tutorial_clarizen_001.png "设置")
 
-1. 单击“全局设置”  选项卡。然后，在“联合身份验证”旁边，单击“编辑”。  
+1. 单击“全局设置”选项卡。然后，在“联合身份验证”旁边，单击“编辑”。 
 
     ![“全局设置”选项卡](./media/clarizen-tutorial/tutorial_clarizen_002.png "全局设置")
 
-1. 在“联合身份验证”  对话框中，执行以下步骤：
+1. 在“联合身份验证”对话框中，执行以下步骤：
 
     ![“联合身份验证”对话框](./media/clarizen-tutorial/tutorial_clarizen_003.png "联合身份验证")
 
-    a. 选择“启用联合身份验证”  。
+    a. 选择“启用联合身份验证”。
 
-    b. 单击“上传”以上传所下载的证书。 
+    b. 单击 **“上载”** 上载你下载的证书。
 
-    c. 在“登录 URL”框中，输入 Azure AD 应用程序配置窗口中的“登录 URL”值。  
+    c. 在“登录 URL”框中，输入 Azure AD 应用程序配置窗口中的“登录 URL”值。
 
-    d. 在“注销 URL”框中，输入 Azure AD 应用程序配置窗口中的“注销 URL”值。  
+    d. 在“注销 URL”框中，输入 Azure AD 应用程序配置窗口中的“注销 URL”值。
 
-    e. 选择“使用 POST”。 
+    e. 选择 **“使用 POST”**。
 
-    f. 单击“ **保存**”。
+    f. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -158,7 +158,7 @@ ms.locfileid: "97672922"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -168,22 +168,22 @@ ms.locfileid: "97672922"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Clarizen 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Clarizen”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Clarizen”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Clarizen”  。
+2. 在应用程序列表中，选择“Clarizen”。
 
     ![“应用程序”列表中的“Clarizen”链接](common/all-applications.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "97672922"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -211,19 +211,19 @@ ms.locfileid: "97672922"
 
 1. 以管理员身份登录到 Clarizen 公司站点。
 
-2. 单击“人员”。 
+2. 单击“人员”。
 
     ![单击“人员”](./media/clarizen-tutorial/create_aaduser_001.png "人员")
 
-3. 单击“邀请用户”  。
+3. 单击 **“邀请用户”**。
 
     ![“邀请用户”按钮](./media/clarizen-tutorial/create_aaduser_002.png "邀请用户")
 
-1. 在“邀请人员”  对话框中，执行以下步骤：
+1. 在“邀请人员”对话框中，执行以下步骤：
 
     ![“邀请人员”对话框](./media/clarizen-tutorial/create_aaduser_003.png "邀请人员")
 
-    a. 在“电子邮件”框中，键入 Britta Simon 帐户的电子邮件地址。 
+    a. 在“电子邮件”框中，键入 Britta Simon 帐户的电子邮件地址。
 
     b. 单击“邀请”。 
 

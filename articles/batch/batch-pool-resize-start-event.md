@@ -4,10 +4,10 @@ description: 批处理池调整大小开始事件参考。 示例显示了池调
 ms.topic: reference
 ms.date: 12/28/2020
 ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97803606"
 ---
 # <a name="pool-resize-start-event"></a>池调整大小开始事件
@@ -29,9 +29,9 @@ ms.locfileid: "97803606"
 }
 ```
 
-|元素|类型|注释|
+|元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|字符串|池的 ID。|
 |`nodeDeallocationOption`|字符串|指定何时从池中删除节点（如果池的大小正在减小）。<br /><br /> 可能的值包括：<br /><br /> **requeue** – 终止正在运行的任务并将其重新排队。 当作业启用时，任务将再次运行。 一旦任务终止，便会立即删除节点。<br /><br /> **terminate** – 终止正在运行的任务。 任务将不会再次运行。 一旦任务终止，便会立即删除节点。<br /><br /> **taskcompletion** – 允许完成当前正在运行的任务。 等待时不计划任何新任务。 在所有任务完成时，删除节点。<br /><br /> **Retaineddata** - 允许完成当前正在运行的任务，并等待所有任务数据保留期到期。 等待时不计划任何新任务。 在所有任务保留期都已过期时，删除节点。<br /><br /> 默认值为 requeue。<br /><br /> 如果池的大小正在增加，该值将设置为 **无效**。|
 |`currentDedicatedNodes`|Int32|当前分配到池的计算节点数。|
 |`targetDedicatedNodes`|Int32|池请求的计算节点数。|

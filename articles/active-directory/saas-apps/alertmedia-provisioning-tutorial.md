@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: b15b20ee8e643dc260578d17913810aaf68cc929
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181083"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>教程：为 AlertMedia 配置自动用户预配
@@ -44,7 +44,7 @@ ms.locfileid: "96181083"
 * [AlertMedia 租户](https://dashboard.alertmedia.com/#/login)。
 * AlertMedia 中具有管理员权限的用户帐户，用于配置 API 集成。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 AlertMedia 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
@@ -61,11 +61,11 @@ ms.locfileid: "96181083"
 
 ## <a name="step-3-add-alertmedia-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 AlertMedia
 
-从 Azure AD 应用程序库添加 AlertMedia，开始管理到 AlertMedia 的预配。 如果以前为 AlertMedia 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 AlertMedia，开始管理到 AlertMedia 的预配。 如果以前为 AlertMedia 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
 * 将用户和组分配到 AlertMedia 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
@@ -101,7 +101,7 @@ ms.locfileid: "96181083"
 
       输入之前在步骤 2 中检索到的机密令牌。 单击“测试连接”，以确保 Azure AD 可以连接到 AlertMedia。 如果连接失败，请确保 AlertMedia 帐户具有管理员权限，然后重试。
 
-      ![令牌](common/provisioning-testconnection-tenanturltoken.png)
+      ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 

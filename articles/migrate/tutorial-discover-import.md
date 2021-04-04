@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96753102"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教程：使用导入的 CSV 文件评估服务器
@@ -167,7 +167,7 @@ IP 地址 | 否 | 服务器地址。
 将信息添加到 CSV 模板之后，将 CSV 文件导入到“服务器评估”。
 
 1. 在 Azure Migrate 中，在“发现计算机”中，转到完成的模板。
-2. 选择“导入”。
+2. 选择“导入”  。
 3. 将显示导入状态。
     - 如果状态中出现警告，则可以修复它们，也可以继续操作而不解决它们。
     - 若要提高评估准确性，请按照警告中建议的方式改进服务器信息。
