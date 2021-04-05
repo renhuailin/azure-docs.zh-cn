@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure Active Directory 为 Jive 配置自动用户预配 | Microsoft Docs
-description: 了解在 Jive 中执行所需的步骤，并 Azure AD 自动预配和取消预配从 Azure AD 到 Jive 的用户帐户。
+description: 了解为了从 Azure AD 自动将用户帐户预配到 Jive 以及取消其预配而需要在 Jive 和 Azure AD 中执行的步骤。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: ebee5d986007e07d497056620f0cfc437b2da4d1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94356393"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
@@ -55,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分的目的是概述如何对 Jive 启用 Active Directory 用户帐户的用户预配。
 在此过程中，需要提供从 Jive.com 发出请求所需的用户安全令牌。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
 1. 如果已为 Jive 配置单一登录，请使用搜索字段搜索 Jive 实例。 否则，请选择“添加”并在应用程序库中搜索“Jive”。 从搜索结果中选择 Jive，并将其添加到应用程序列表。
 
@@ -63,7 +63,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 将“预配模式”  设置为“自动”  。 
 
-    ![屏幕截图显示了 Jive 预配页面，预配模式设置为 "自动"，可以设置其他值。](./media/jive-provisioning-tutorial/provisioning.png)
+    ![屏幕截图显示 Jive“预配”页，其中“预配模式”设置为“自动”或者可以设置的其他值。](./media/jive-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”部分中，提供以下配置设置：
    
@@ -75,7 +75,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
       
       > [!NOTE]
       > Jive 租户 URL 是组织用于登录到 Jive 的 URL。  
-      > 通常，URL 采用以下格式： **www. \<organization\> 。jive.com** 。          
+      > 通常，该 URL 具有以下格式：**www.\<organization\>.jive.com**。          
 
 1. 在 Azure 门户中，单击“测试连接”确保 Azure AD 可以连接到 Jive 应用。
 

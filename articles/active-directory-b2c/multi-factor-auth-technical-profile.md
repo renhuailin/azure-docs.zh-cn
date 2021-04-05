@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e81ac35555e6653cecb602e5af2f19aa3e2f05e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94840587"
 ---
 # <a name="define-an-azure-ad-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure AD MFA 技术配置文件
@@ -57,7 +57,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 InputClaims 元素包含要发送到 Azure AD MFA 的声明的列表。 还可将声明名称映射到 MFA 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | userPrincipalName | 是 | 拥有此电话号码的用户的标识符。 |
 | phoneNumber | 是 | 要将短信代码发送到的电话号码。 |
@@ -119,7 +119,7 @@ Azure AD MFA 协议提供程序未返回任何 OutputClaims，因此无需指定
 
 InputClaims 元素包含要发送到 Azure AD MFA 的声明的列表。 还可将声明名称映射到 MFA 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| 是 | 与之前用于发送代码的手机号相同。 它也用来定位电话验证会话。 |
 | verificationCode  | 是 | 待验证用户提供的验证码 |

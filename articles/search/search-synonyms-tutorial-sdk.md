@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 50d5d73e71b8129f061ec49b363a0ebb13d22bdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97704650"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词

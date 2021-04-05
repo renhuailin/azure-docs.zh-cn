@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 94cafb5044dab8e5ce6f965df73972dc21fe2744
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>教程：Azure Active Directory 与 Datahug 集成
@@ -103,7 +103,7 @@ ms.locfileid: "92454926"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://apps.datahug.com/identity/<uniqueID>`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://apps.datahug.com/identity/<uniqueID>/acs`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://apps.datahug.com/identity/<uniqueID>/acs`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -152,7 +152,7 @@ ms.locfileid: "92454926"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "92454926"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

@@ -7,10 +7,10 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422835"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>教程：使用 PyTorch 将预先训练的图像分类模型部署到 Azure Functions
@@ -104,7 +104,7 @@ py -m venv .venv
     func init --worker-runtime python
     ```
 
-    初始化后， *start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    初始化后，*start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
 
     > [!TIP]
     > 由于函数项目绑定到特定的运行时，因此必须使用相同的语言编写项目中的所有函数。
@@ -115,7 +115,7 @@ py -m venv .venv
     func new --name classify --template "HTTP trigger"
     ```
 
-    此命令创建与函数名称匹配的文件夹 *classify* 。 该文件夹中有两个文件： *\_\_init\_\_.py* ，其中包含函数代码； *function.json* ，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅 Python 快速入门中的[检查文件内容](./create-first-function-cli-python.md#optional-examine-the-file-contents)。
+    此命令创建与函数名称匹配的文件夹 *classify*。 该文件夹中有两个文件： *\_\_init\_\_.py*，其中包含函数代码；*function.json*，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅 Python 快速入门中的[检查文件内容](./create-first-function-cli-python.md#optional-examine-the-file-contents)。
 
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
@@ -162,7 +162,7 @@ py -m venv .venv
 
 1. 验证 *classify* 文件夹是否包含名为 *predict.py* 和 *labels.txt* 的文件。 如果不包含，请检查是否在 *start* 文件夹中运行了该命令。
 
-1. 在文本编辑器中打开 *start/requirements.txt* ，添加帮助器代码所需的依赖项，应当如下所示：
+1. 在文本编辑器中打开 *start/requirements.txt*，添加帮助器代码所需的依赖项，应当如下所示：
 
     ```txt
     azure-functions
@@ -172,7 +172,7 @@ py -m venv .venv
     torchvision==0.6.0+cpu
     ```
 
-1. 保存 *requirements.txt* ，然后从 *start* 文件夹中运行以下命令来安装依赖项。
+1. 保存 *requirements.txt*，然后从 *start* 文件夹中运行以下命令来安装依赖项。
 
 
     ```
@@ -185,7 +185,7 @@ py -m venv .venv
 
 ## <a name="update-the-function-to-run-predictions"></a>更新函数以运行预测
 
-1. 在文本编辑器中打开 *classify/\_\_init\_\_.py* ，并在现有的 `import` 语句后面添加以下行，以导入标准 JSON 库和 *predict* 帮助器：
+1. 在文本编辑器中打开 *classify/\_\_init\_\_.py*，并在现有的 `import` 语句后面添加以下行，以导入标准 JSON 库和 *predict* 帮助器：
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="1-6" highlight="5-6":::
 
