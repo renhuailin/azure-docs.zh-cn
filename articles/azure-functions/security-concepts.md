@@ -4,10 +4,10 @@ description: 了解如何使 Azure 中运行的函数代码更安全，使其免
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100368483"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
@@ -58,7 +58,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 下表比较了不同类型的访问密钥的用法：
 
-| 操作                                        | 作用域                    | 有效密钥         |
+| 操作                                        | 范围                    | 有效密钥         |
 |-----------------------------------------------|--------------------------|--------------------|
 | 执行函数                            | 特定函数        | 函数           |
 | 执行函数                            | 任何函数             | 函数或主机   |
