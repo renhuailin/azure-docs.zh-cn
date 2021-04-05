@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.openlocfilehash: b664a7e4aac571359fb1494cf69d5bbe3e841b4d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92455304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Contentful 集成
@@ -54,12 +54,12 @@ ms.locfileid: "92455304"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Contentful”   。
-1. 在结果中选择“Contentful”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入“Contentful”。
+1. 在结果中选择“Contentful”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>为 Contentful 配置和测试 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 Contentful 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Contentful 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 Contentful 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Contentful 相关用户之间建立链接关系。
 
 若要配置和测试 Contentful 的 Azure AD SSO，请完成以下构建基块：
 
@@ -74,19 +74,19 @@ ms.locfileid: "92455304"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Contentful”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Contentful”应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 若要在“IDP”发起模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值：  
 
-    - 在“回复 URL”文本框中，从 Contentful 中的“SSO 设置”页复制 ACS（断言使用者服务）URL  。 它将如下所示：`https://be.contentful.com/sso/<organization_id>/consume`
+    - 在“回复 URL”文本框中，从 Contentful 中的“SSO 设置”页复制 ACS（断言使用者服务）URL。 它将如下所示：`https://be.contentful.com/sso/<organization_id>/consume`
 
-1. 若要在“SP”发起模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤：  
+1. 若要在“SP”发起模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤： 
 
-    - 在“登录 URL”文本框中，复制相同的 ACS（断言使用者服务）URL  。 它将如下所示：`https://be.contentful.com/sso/<organization_id>/login`
+    - 在“登录 URL”文本框中，复制相同的 ACS（断言使用者服务）URL。 它将如下所示：`https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际回复 URL 和登录 URL 更新这些值，方法是从 Contentful 的“SSO 设置”页复制 ACS（断言使用者服务）URL。
@@ -101,11 +101,11 @@ ms.locfileid: "92455304"
     | --------------- | --------- |
     | 电子邮件 | user.userprincipalname |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Contentful”部分，复制登录 URL 以配置 Contentful SSO  。
+1. 在“设置 Contentful”部分，复制登录 URL 以配置 Contentful SSO。
 
     ![复制配置 URL](media/contentful-tutorial/copy-configuration-urls.png)
 
@@ -113,42 +113,42 @@ ms.locfileid: "92455304"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 Contentful 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Contentful”  。
-1. 在应用的概述页上找到“管理”部分，然后选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Contentful”。
+1. 在应用的概述页上找到“管理”部分，然后选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击页面底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击页面底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击页面底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击页面底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-contentful-sso"></a>配置 Contentful SSO
 
-请按照以下步骤在“Contentful”端配置单一登录  。
+请按照以下步骤在“Contentful”端配置单一登录。
 
-1. 在 [Contentful](https://app.contentful.com) 中，导航到“组织设置”中的 SSO 设置页  。
-1. 单击“设置 SSO”  。
-1. 从 Azure AD 中的“设置 Contentful”部分复制并粘贴登录 URL  。
+1. 在 [Contentful](https://app.contentful.com) 中，导航到“组织设置”中的 SSO 设置页。
+1. 单击“设置 SSO”。
+1. 从 Azure AD 中的“设置 Contentful”部分复制并粘贴登录 URL。
 1. 从下载自 Azure AD 的 Base64 证书文件中复制并粘贴证书。
 1. 为 SP 启动登录设置 SSO 名称。
-1. 单击“启用 SSO”  。
+1. 单击“启用 SSO”。
 
 如果这样不起作用，请联系 [Contentful 支持团队](mailto:support@contentful.com)。
 

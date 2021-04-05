@@ -4,10 +4,10 @@ description: 从开发的角度来了解文件和目录及其在 Azure Batch 工
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87552624"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Azure Batch 中的文件和目录

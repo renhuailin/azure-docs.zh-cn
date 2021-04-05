@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 656c7467507c105f492f266f06c05a9f41e8f76a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92458823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92458823"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Kudos 的集成，需要以下项：
 
@@ -41,7 +41,7 @@ ms.locfileid: "92458823"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Kudos 支持启用了 SP 的 SSO 
+* Kudos 支持启用了 SP 的 SSO
 
 ## <a name="adding-kudos-from-the-gallery"></a>从库中添加 Kudos
 
@@ -61,13 +61,13 @@ ms.locfileid: "92458823"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Kudos”，在结果面板中选择“Kudos”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Kudos”，在结果面板中选择“Kudos”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Kudos](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Kudos 的 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Kudos 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Kudos 中的相关用户之间建立链接关系。
 
 若要配置和测试 Kudos 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92458823"
 
 若要配置 Kudos 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 Kudos 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Kudos 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92458823"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Kudos 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<company>.kudosnow.com`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.kudosnow.com`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Kudos 客户端支持团队](http://success.kudosnow.com/home)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -110,7 +110,7 @@ ms.locfileid: "92458823"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Kudos”部分，根据要求复制相应 URL  。
+6. 在“设置 Kudos”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,21 +124,21 @@ ms.locfileid: "92458823"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Kudos 公司站点。
 
-1. 在顶部菜单中，单击“设置图标”  。
+1. 在顶部菜单中，单击“设置图标”。
 
     ![设置](./media/kudos-tutorial/ic787806.png "设置")
 
-1. 单击“集成 > SSO”并执行以下步骤  ：
+1. 单击“集成 > SSO”并执行以下步骤：
 
     ![SSO](./media/kudos-tutorial/ic787807.png "SSO")
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    b. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“X.509 证书”文本框中 
+    b. 在记事本中打开 Base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到 **“X.509 证书”** 文本框中
 
-    c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    c. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    d. 在“Kudos URL”  文本框中，键入公司名称。
+    d. 在 **“你的 Kudos URL”** 文本框中，键入你的公司名称。
 
     e. 单击“保存”  。
 
@@ -150,7 +150,7 @@ ms.locfileid: "92458823"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -165,17 +165,17 @@ ms.locfileid: "92458823"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Kudos 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Kudos”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Kudos”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Kudos”  。
+2. 在应用程序列表中，选择“Kudos”。
 
     ![应用程序列表中的 Kudos 链接](common/all-applications.png)
 
@@ -199,23 +199,23 @@ ms.locfileid: "92458823"
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 以管理员身份登录到 Kudos 公司站点  。
+1. 以管理员身份登录到 Kudos 公司站点。
 
-1. 在顶部菜单中，单击“设置图标”  。
+1. 在顶部菜单中，单击“设置图标”。
 
    ![设置](./media/kudos-tutorial/ic787806.png "设置")
 
-1. 单击“用户管理员”  。
+1. 单击 **“用户管理员”**。
 
-1. 单击“用户”选项卡，然后单击“添加用户”   。
+1. 单击“用户”选项卡，然后单击“添加用户” 。
 
    ![用户管理员](./media/kudos-tutorial/ic787809.png "用户管理员")
 
-1. 在“添加用户”  部分中，执行以下步骤：
+1. 在 **“添加用户”** 部分中，执行以下步骤：
 
     ![添加用户](./media/kudos-tutorial/ic787810.png "添加用户")
 
-    a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”  、“姓氏”  、“电子邮件地址”  和其他详细信息。
+    a. 在相关文本框中键入要设置的有效 Azure Active Directory 帐户的 **“名字”**、**“姓氏”**、**“电子邮件”** 和其他详细信息。
 
     b. 单击“创建用户”  。
 

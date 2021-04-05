@@ -4,10 +4,10 @@ description: Batch 池自动缩放事件的引用，执行池自动缩放后，�
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: e548ed484e5f683a8f79434ce4095ac66900f01a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91852107"
 ---
 # <a name="pool-autoscale-event"></a>池自动缩放事件
@@ -36,7 +36,7 @@ ms.locfileid: "91852107"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
+|`id`|字符串|池的 ID。|
 |`timestamp`|DateTime|执行自动缩放时的时间戳。|
 |`formula`|字符串|为自动缩放定义的公式。|
 |`results`|字符串|公式中使用的所有变量的计算结果。|

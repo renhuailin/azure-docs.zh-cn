@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 4c9eaf68036531530f844e919bacfae922441b79
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>教程：Azure Active Directory 与 ExcelityGlobal 的集成
@@ -61,7 +61,7 @@ ms.locfileid: "92453819"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **ExcelityGlobal** ，在结果面板中选择“ExcelityGlobal”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **ExcelityGlobal**，在结果面板中选择“ExcelityGlobal”，然后单击“添加”按钮添加该应用程序。  
 
      ![结果列表中的“ExcelityGlobal”](common/search-new-app.png)
 
@@ -103,15 +103,15 @@ ms.locfileid: "92453819"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    **对于生产环境** ：`https://ess.excelityglobal.com`
+    **对于生产环境**：`https://ess.excelityglobal.com`
 
-    **对于沙盒环境** ：`https://s6.excelityglobal.com`
+    **对于沙盒环境**：`https://s6.excelityglobal.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    **对于生产环境** ：`https://ess.excelityglobal.com/ACS`
+    **对于生产环境**：`https://ess.excelityglobal.com/ACS`
 
-    **对于沙盒环境** ：`https://s6.excelityglobal.com/ACS`
+    **对于沙盒环境**：`https://s6.excelityglobal.com/ACS`
 
 5. ExcelityGlobal 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 ExcelityGlobal 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
  
@@ -121,7 +121,7 @@ ms.locfileid: "92453819"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-7. 在“SAML 签名证书”部分中，复制 **指纹** 并将其保存在计算机上。 
+7. 在“SAML 签名证书”部分中，复制 **指纹** 并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "92453819"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -157,12 +157,12 @@ ms.locfileid: "92453819"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -180,7 +180,7 @@ ms.locfileid: "92453819"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

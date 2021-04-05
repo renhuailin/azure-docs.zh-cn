@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Novatus 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Novatus 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Novatus 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
 ms.openlocfilehash: ef9aaca17ced8ffecfb1b20a5537c19ae4ffbdb8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518647"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-novatus"></a>教程：Azure Active Directory 与 Novatus 集成
+# <a name="tutorial-azure-active-directory-integration-with-novatus"></a>教程：Azure Active Directory 与 Novatus 的集成
 
 本教程介绍了如何将 Novatus 与 Azure Active Directory (Azure AD) 集成。
 将 Novatus 与 Azure AD 集成具有以下优势：
@@ -41,7 +41,7 @@ ms.locfileid: "92518647"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Novatus 支持 SP 发起的 SSO 
+* Novatus 支持 SP 发起的 SSO
 
 * Novatus 支持 **恰时** 用户预配
 
@@ -49,7 +49,7 @@ ms.locfileid: "92518647"
 
 要通过配置将 Novatus 集成到 Azure AD 中，需从库将 Novatus 添加到托管式 SaaS 应用的列表中。
 
-**若要从库添加 Novatus，请执行以下步骤：**
+**若要从库中添加 Novatus，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -63,13 +63,13 @@ ms.locfileid: "92518647"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入“Novatus”，在结果面板中选择“Novatus”，然后单击“添加”按钮添加应用程序。   
+4. 在搜索框中键入“Novatus”，在结果面板中选择“Novatus”，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 Novatus](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 Novatus 的 Azure AD 单一登录。 
+在本部分中，将基于一个名为“Britta Simon”的测试用户配置和测试 Novatus 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Novatus 相关用户之间建立链接关系。
 
 若要使用 Novatus 配置和测试 Azure AD 单一登录，需完成以下构建基块：
@@ -87,7 +87,7 @@ ms.locfileid: "92518647"
 
 若要通过 Novatus 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Novatus** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Novatus** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "92518647"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Novatus 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://sso.novatuscontracts.com/<companyname>`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.novatuscontracts.com/<companyname>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Novatus 客户端支持团队](mailto:jvinci@novatusinc.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -112,7 +112,7 @@ ms.locfileid: "92518647"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Novatus”部分，根据要求复制相应 URL  。
+6. 在“设置 Novatus”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92518647"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92518647"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Novatus 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Novatus”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Novatus”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Novatus”。 
+2. 在应用程序列表中，选择“Novatus”。
 
     ![应用程序列表中的 Novatus 链接](common/all-applications.png)
 

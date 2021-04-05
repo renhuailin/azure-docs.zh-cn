@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.openlocfilehash: c115371c77f2d99b60ece1e58252b4d98b9061eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92455096"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crossknowledge-learning-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 CrossKnowledge Learning Suite 的集成
