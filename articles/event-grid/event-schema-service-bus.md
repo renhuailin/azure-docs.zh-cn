@@ -4,10 +4,10 @@ description: 介绍了针对 Azure 事件网格中的服务总线事件提供的
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.openlocfilehash: d3e14788d49697a1f86624bbe8d6d0ec2eb072c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363231"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>充当事件网格源的 Azure 服务总线

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 7b0e471e32650490e1896bb6ea171c8223b21378
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96854710"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库

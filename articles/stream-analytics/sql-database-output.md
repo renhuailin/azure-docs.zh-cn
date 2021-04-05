@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98013951"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
@@ -34,7 +34,7 @@ ms.locfileid: "98013951"
 |继承分区方案| 一个用于继承先前查询步骤的分区方案，以启用具有多个表的写入器的完全并行拓扑的选项。 有关详细信息，请参阅从 [Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。|
 |最大批数| 与每个大容量插入事务一起发送的推荐记录数上限。|
 
-有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics： SQL 数据库和 Azure Synapse。 如果以下任何条件成立，则建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
+有两个适配器可用于从 Azure 流分析输出到 Azure Synapse Analytics：SQL 数据库和 Azure Synapse。 如果以下任何条件成立，则建议选择 Azure Synapse Analytics 适配器，而不是 SQL 数据库适配器：
 
 * **吞吐量**：如果现在或未来的预期吞吐量大于 10 MB/秒，请使用 Azure Synapse 输出选项来获得更好的性能。
 
@@ -50,5 +50,5 @@ ms.locfileid: "98013951"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用托管标识从 Azure 流分析作业中访问 Azure SQL 数据库或 Azure Synapse Analytics (预览) ](sql-database-output-managed-identity.md)
+* [使用托管标识访问 Azure 流分析作业的 Azure SQL 数据库或 Azure Synapse Analytics（预览）](sql-database-output-managed-identity.md)
 * [快速入门：使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
