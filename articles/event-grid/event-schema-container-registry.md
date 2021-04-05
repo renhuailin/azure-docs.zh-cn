@@ -4,10 +4,10 @@ description: 介绍为 Azure 事件网格中的容器注册表事件提供的属
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.openlocfilehash: 7e19b223e43f30a532c1cd8bdc86f9a29220f5aa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363570"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>充当事件网格源的 Azure 容器注册表

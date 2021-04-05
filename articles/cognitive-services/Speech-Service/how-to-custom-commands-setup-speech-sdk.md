@@ -1,7 +1,7 @@
 ---
 title: 使用语音 SDK 与客户端应用集成
 titleSuffix: Azure Cognitive Services
-description: 如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。
+description: 如何从 UWP 应用程序中运行的语音 SDK 向已发布的自定义命令应用程序发出请求。
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -12,60 +12,60 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95026021"
 ---
-# <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
+# <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 来与客户端应用程序集成
 
-本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。 若要建立与自定义命令应用程序的连接，需要：
+本文介绍如何从 UWP 应用程序中运行的语音 SDK 向已发布的自定义命令应用程序发出请求。 若要与自定义命令应用程序建立连接，需要：
 
-- 发布自定义命令应用程序，并获取应用程序标识符 (应用 ID) 
-- 使用 Speech SDK 创建一个通用 Windows 平台 (UWP) 客户端应用程序，以允许你与自定义命令应用程序通信
+- 发布一个自定义命令应用程序，并获取应用程序标识符（应用 ID）
+- 使用语音 SDK 创建一个通用 Windows 平台 (UWP) 客户端应用，以便能够与自定义命令应用程序通信
 
 ## <a name="prerequisites"></a>先决条件
 
-需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在快速入门中执行以下操作：
+需要创建一个自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以遵循快速入门来创建一个：
 > [!div class = "checklist"]
 > * [创建自定义命令应用程序](quickstart-custom-commands-application.md)
 
-还需要：
+此外还需要：
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南基于 Visual Studio 2019。
-> * 语音服务的 Azure 订阅密钥。 [免费获取一个](overview.md#try-the-speech-service-for-free) 或创建一个 [Azure 门户](https://portal.azure.com)
+> * 语音服务的 Azure 订阅密钥。 [免费获取一个](overview.md#try-the-speech-service-for-free)或在 [Azure 门户](https://portal.azure.com)上创建它
 > * [启用设备进行开发](/windows/uwp/get-started/enable-your-device-for-development)
 
-## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
+## <a name="step-1-publish-custom-commands-application"></a>步骤 1：发布自定义命令应用程序
 
-1. 打开以前创建的自定义命令应用程序
-1. 单击 "**设置**"，选择 " **LUIS 资源**"
-1. 如果未分配 **预测资源** ，请选择查询预测密钥或创建一个新的预测密钥
+1. 打开先前创建的自定义命令应用程序
+1. 转到“设置”，选择“LUIS 资源” 
+1. 如果未分配“预测资源”，请选择一个查询预测密钥或新建一个密钥
 
-    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅 [创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)
+    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参考[创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)
 
-1. 返回到编辑命令，选择 "**发布**"
+1. 回过头来编辑命令，选择“发布”
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-commands/setup-speech-sdk-publish-application.png)
 
-1. 复制发布通知中的应用 ID 供以后使用
-1. 复制语音资源密钥以供将来使用
+1. 复制发布通知中的应用 ID，供稍后使用
+1. 复制语音资源密钥，供稍后使用
 
-## <a name="step-2-create-a-visual-studio-project"></a>步骤2：创建 Visual Studio 项目
+## <a name="step-2-create-a-visual-studio-project"></a>步骤 2：创建 Visual Studio 项目
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="step-3-add-sample-code"></a>步骤3：添加示例代码
+## <a name="step-3-add-sample-code"></a>步骤 3：添加示例代码
 
-在此步骤中，我们将添加定义应用程序的用户界面的 XAML 代码，并添加 c # 代码隐藏实现。
+此步骤添加用于定义应用程序用户界面的 XAML 代码，并添加 C# 代码隐藏实现。
 
 ### <a name="xaml-code"></a>XAML 代码
 
-通过添加 XAML 代码创建应用程序的用户界面。
+通过添加 XAML 代码来创建应用程序的用户界面。
 
-1. 在 **解决方案资源管理器** 中，打开 `MainPage.xaml`
+1. 在“解决方案资源管理器”中打开 `MainPage.xaml`。
 
 1. 在设计器的 XAML 视图中，将整个内容替换为以下代码片段：
 
@@ -118,9 +118,9 @@ ms.locfileid: "95026021"
 
 ### <a name="c-code-behind-source"></a>C# 代码隐藏源
 
-添加代码隐藏源，以便应用程序按预期方式工作。 代码隐藏源包括：
+添加代码隐藏源，使应用程序按预期方式工作。 代码隐藏源包括：
 
-- `using` `Speech` 和 `Speech.Dialog` 命名空间的必需语句
+- `Speech` 和 `Speech.Dialog` 命名空间必需的 `using` 语句
 - 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问
 - 基本的 UI 帮助程序，用于在应用程序中提供消息和错误
 - 初始化代码路径的登陆点，稍后将填充
@@ -129,9 +129,9 @@ ms.locfileid: "95026021"
 
 按如下所示添加代码隐藏源：
 
-1. 在 **解决方案资源管理器** 中，打开代码隐藏源文件 `MainPage.xaml.cs` (在) 下进行分组 `MainPage.xaml`
+1. 在“解决方案资源管理器”中，打开代码隐藏源文件 `MainPage.xaml.cs`（已分组到 `MainPage.xaml` 下）。
 
-1. 将文件的内容替换为以下代码： 
+1. 将该文件的内容替换为以下代码： 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,12 +298,12 @@ ms.locfileid: "95026021"
    }
    ```
     > [!NOTE]
-    > 如果看到错误： "类型" 对象 "在未被引用的程序集中定义
-    > 1. 向右客户端解决方案。
-    > 1. 选择 "**管理解决方案的 NuGet 包**"，选择 "**更新**" 
-    > 1. 如果在更新列表中看到 **NETCore** ，请将 **NETCore** 更新到最新版本
+    > 如果看到错误：“类型 'Object' 是在一个未引用的程序集中定义的”
+    > 1. 为解决方案指定正确的客户端。
+    > 1. 选择“管理解决方案的 NuGet 包”，然后选择“更新”  
+    > 1. 如果在更新列表中看到“Microsoft.NETCore.UniversalWindowsPlatform”，请将“Microsoft.NETCore.UniversalWindowsPlatform”更新到最新版本 
 
-1. 将以下代码添加到的方法体中： `InitializeDialogServiceConnector`
+1. 将以下代码添加到 `InitializeDialogServiceConnector` 的方法主体。
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -318,9 +318,9 @@ ms.locfileid: "95026021"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 将字符串 `YourApplicationId` 、 `YourSpeechSubscriptionKey` 和替换 `YourServiceRegion` 为你自己的应用、语音订阅和[区域](regions.md)的值
+1. 将字符串 `YourApplicationId`、`YourSpeechSubscriptionKey` 和 `YourServiceRegion` 分别替换为你自己的应用、语音订阅和[区域](regions.md)值。
 
-1. 将以下代码片段追加到的方法体末尾 `InitializeDialogServiceConnector`
+1. 将以下代码片段追加到 `InitializeDialogServiceConnector` 的方法主体的末尾
 
    ```csharp
    //
@@ -378,7 +378,7 @@ ms.locfileid: "95026021"
    };
    ```
 
-1. 将以下代码片段添加到 `ListenButton_ButtonClicked` 类中方法的主体 `MainPage`
+1. 将以下代码片段添加到 `MainPage` 类中 `ListenButton_ButtonClicked` 方法的正文
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -402,7 +402,7 @@ ms.locfileid: "95026021"
    }
    ```
 
-1. 从菜单栏中，选择 "**文件**" "  >  **全部保存**" 以保存所做的更改
+1. 在菜单栏中，选择“文件” > “全部保存”以保存所做的更改 
 
 ## <a name="try-it-out"></a>试试看
 
@@ -412,13 +412,13 @@ ms.locfileid: "95026021"
 
    ![C# 中的示例 UWP 虚拟助手应用程序 - 快速入门](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 选择“启用麦克风”。 如果弹出了访问权限请求，请选择 **"是"**。
+1. 选择“启用麦克风”。 如果弹出访问权限请求，请选择“是”。
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 选择 " **对话**"，并将英文短语或句子说入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
+1. 选择“讲话”，然后对着设备的麦克风讲出一个英文短语或句子。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [操作说明：将活动发送到客户端应用程序 (预览) ](./how-to-custom-commands-send-activity-to-client.md)
+> [如何：将活动发送到客户端应用程序（预览）](./how-to-custom-commands-send-activity-to-client.md)
