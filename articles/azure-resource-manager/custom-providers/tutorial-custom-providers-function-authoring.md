@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jobreen
 ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98200203"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>创作自定义提供程序的 RESTful 终结点
@@ -134,17 +134,17 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 
 **CreateCustomResource** 方法更新传入请求，使之包含特定于 Azure 的字段：**id**、**name** 和 **type**。 这些字段是供 Azure 中的服务使用的顶级属性。 自定义提供程序可以通过它们与其他服务（例如 Azure Policy、Azure 资源管理器模板、Azure 活动日志）互操作。
 
-properties | 示例 | 说明
+属性 | 示例 | 说明
 ---|---|---
-name  | {myCustomResourceName} | 自定义资源的名称
-type  | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | resource-type 命名空间
+**name** | {myCustomResourceName} | 自定义资源的名称
+type | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | resource-type 命名空间
 **id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | 资源 ID
 
 除了添加属性，我们还将 JSON 文档保存到了 Azure 表存储。
 
 ### <a name="retrieve-a-custom-resource"></a>检索自定义资源
 
-对于自定义提供程序，自定义资源通过 GET 请求检索。 自定义提供程序不接受 JSON 请求正文。  对于 GET 请求，终结点使用 `x-ms-customproviders-requestpath` 标头返回已创建的资源。
+对于自定义提供程序，自定义资源通过 GET 请求检索。 自定义提供程序不接受 JSON 请求正文。 对于 GET 请求，终结点使用 `x-ms-customproviders-requestpath` 标头返回已创建的资源。
 
 请添加以下 **RetrieveCustomResource** 方法来检索现有资源：
 
@@ -177,7 +177,7 @@ public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequest
 
 ### <a name="remove-a-custom-resource"></a>删除自定义资源
 
-对于自定义提供程序，自定义资源通过 DELETE 请求删除。 自定义提供程序不接受 JSON 请求正文。  对于 DELETE 请求，终结点通过 `x-ms-customproviders-requestpath` 标头删除已创建的资源。
+对于自定义提供程序，自定义资源通过 DELETE 请求删除。 自定义提供程序不接受 JSON 请求正文。 对于 DELETE 请求，终结点通过 `x-ms-customproviders-requestpath` 标头删除已创建的资源。
 
 请添加以下 **RemoveCustomResource** 方法来删除现有资源：
 
@@ -210,7 +210,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 ### <a name="list-all-custom-resources"></a>列出所有自定义资源
 
-对于自定义提供程序，可以通过 GET 请求的集合枚举一系列现有的自定义资源。 自定义提供程序不接受 JSON 请求正文。  对于 GET 请求的集合，终结点使用 `x-ms-customproviders-requestpath` 标头枚举已创建的资源。
+对于自定义提供程序，可以通过 GET 请求的集合枚举一系列现有的自定义资源。 自定义提供程序不接受 JSON 请求正文。 对于 GET 请求的集合，终结点使用 `x-ms-customproviders-requestpath` 标头枚举已创建的资源。
 
 请添加以下 **EnumerateAllCustomResources** 方法来枚举现有资源：
 
@@ -370,4 +370,4 @@ using Newtonsoft.Json.Linq;
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们创作了一个适用于 Azure 自定义提供程序终结点的 RESTful 终结点。 若要了解如何创建自定义提供程序，请参阅[教程：创建自定义提供程序](./tutorial-custom-providers-create.md)一文。
+在本文中，我们创作了一个适用于 Azure 自定义提供程序终结点的 RESTful 终结点。 若要了解如何创建自定义提供程序，请参阅文章[教程：创建自定义提供程序](./tutorial-custom-providers-create.md)。
