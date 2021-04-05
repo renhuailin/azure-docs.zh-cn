@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: eafbc1543db1681b58ed499f4f29659e14a06e9f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518455"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>教程：Azure Active Directory 与 Settling music 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92518455"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Settling music 的集成，需要准备好以下各项：
 
@@ -41,7 +41,7 @@ ms.locfileid: "92518455"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Settling music 支持 SP 发起的 SSO 
+* Settling music 支持 SP 发起的 SSO
 
 ## <a name="adding-settling-music-from-the-gallery"></a>从库中添加 Settling music
 
@@ -61,13 +61,13 @@ ms.locfileid: "92518455"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Settling music”，在结果面板中选择“Settling music”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Settling music”，在结果面板中选择“Settling music”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Settling music](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 Settling music 的 Azure AD 单一登录  。
+在本部分中，将基于名为 Britta Simon 的测试用户配置和测试 Settling music 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Settling music 相关用户之间建立链接关系。
 
 若要配置和测试 Settling music 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92518455"
 
 若要配置 Settling music 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 Settling music 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 Settling music 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92518455"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Settling music 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92518455"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Settling music”部分，根据要求复制相应 URL  。
+6. 在“设置 Settling music”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -126,29 +126,29 @@ ms.locfileid: "92518455"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Settling music。
 
-1. 在页面顶部，单击“管理”选项卡。 
+1. 在页面顶部，单击“管理”选项卡。
 
     ![Settling music 步骤 1](./media/settlingmusic-tutorial/tutorial_settlingmusic_step1.png)
 
-1. 单击“系统设置”  选项卡。
+1. 单击“系统设置”选项卡。
 
     ![Settling music 步骤 2](./media/settlingmusic-tutorial/tutorial_settlingmusic_step2.png)
 
-1. 切换到“安全性”  选项卡。
+1. 切换到“安全性”选项卡。
 
     ![Settling music 步骤 3](./media/settlingmusic-tutorial/tutorial_settlingmusic_step3.png)
 
-1. 在“单一登录设置”  部分中，执行以下步骤：
+1. 在“单一登录设置”部分中，执行以下步骤：
 
     ![Settling music 步骤 5](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
 
-    a. 单击“启用”。 
+    a. 单击“启用”。
 
-    b. 在“ID 提供者的登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    b. 在“ID 提供者的登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    c. 在“ID 提供者注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    c. 在“ID 提供者注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    d. 单击“选择文件”  来上传从 Azure 门户下载的 **证书 (Base64)** 。
+    d. 单击“选择文件”来上传从 Azure 门户下载的 **证书 (Base64)**。
 
     e. 单击“保存”按钮  。
 
@@ -160,7 +160,7 @@ ms.locfileid: "92518455"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -174,17 +174,17 @@ ms.locfileid: "92518455"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予对 Settling music 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Settling music”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Settling music”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Settling music”  。
+2. 在应用程序列表中，选择“Settling music”。
 
     ![应用程序列表中的 Settling music 链接](common/all-applications.png)
 

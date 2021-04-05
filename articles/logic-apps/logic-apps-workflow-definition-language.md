@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 71929cd449f4a00b91cc6c8620b33b0e0c6d506c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87078138"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
@@ -35,7 +35,7 @@ ms.locfileid: "87078138"
 }
 ```
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 |-----------|----------|-------------|
 | `definition` | 是 | 工作流定义的起始元素 |
 | `$schema` | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,7 +74,7 @@ ms.locfileid: "87078138"
 },
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*parameter-name*> | 是 | String | 要定义的参数的名称 |
 | <*parameter-type*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
@@ -112,7 +112,7 @@ ms.locfileid: "87078138"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | 是 | String | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
 | <*output-attributes-and-values-returned*> | 是 | 多种多样 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
@@ -275,7 +275,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*key-name*> | 是 | String | 输出返回值的密钥名称 |
 | <*key-type*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
@@ -294,7 +294,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 |----------|------|
 | ' | 若要使用字符串文本作为输入，或者在表达式和函数中使用字符串文本，请仅使用单引号包装该字符串，例如 `'<myString>'`。 不要使用双引号 ("")，否则与整个表达式两侧的 JSON 格式相冲突。 例如： <p>**正确**：length('Hello') </br>**错误**：length("Hello") <p>如果传递数组或数字，则不需要包装标点符号。 例如： <p>**正确**：length([1, 2, 3]) </br>**错误**：length("[1, 2, 3]") |
 | [] | 若要引用数组中特定位置（索引）处的某个值，请使用方括号。 例如，若要获取数组中的第二个项： <p>`myArray[1]` |
-| 上获取。 | 若要引用对象中的属性，请使用点运算符。 例如，若要获取 `customer` JSON 对象的 `name` 属性： <p>`"@parameters('customer').name"` |
+| . | 若要引用对象中的属性，请使用点运算符。 例如，若要获取 `customer` JSON 对象的 `name` 属性： <p>`"@parameters('customer').name"` |
 | ? | 若要引用未发生运行时错误的对象中的 null 属性，请使用问号运算符。 例如，若要处理触发器中的 null 输出，可使用以下表达式： <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 
@@ -302,7 +302,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 
 ## <a name="functions"></a>函数
 
-某些表达式从运行时操作获取其值，而这些操作在工作流定义开始运行时可能不存在。 若要在表达式中引用或处理这些值，可以使用工作流定义语言提供的[*函数*](../logic-apps/workflow-definition-language-functions-reference.md)。
+某些表达式从运行时操作获取其值，而这些操作在工作流定义开始运行时可能不存在。 若要在表达式中引用或处理这些值，可以使用工作流定义语言提供的 [*函数*](../logic-apps/workflow-definition-language-functions-reference.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

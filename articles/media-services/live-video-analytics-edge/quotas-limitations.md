@@ -4,10 +4,10 @@ description: 本文介绍 IoT Edge 上的实时视频分析配额和限制。
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97400518"
 ---
 # <a name="quotas-and-limitations"></a>配额和限制

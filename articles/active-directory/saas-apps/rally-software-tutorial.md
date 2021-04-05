@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92511046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>教程：Azure Active Directory 与 Rally Software 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92511046"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要配置 Azure AD 与 Rally Software 的集成，需要具有以下项：
 
@@ -47,7 +47,7 @@ ms.locfileid: "92511046"
 
 要配置 Rally Software 与 Azure AD 的集成，需要从库中将 Rally Software 添加到托管 SaaS 应用列表。
 
-**要从库中添加 Rally Software，请执行以下步骤：**
+**若要从库中添加 Rally Software，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92511046"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Rally Software”，在结果面板中选择“Rally Software”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Rally Software”，在结果面板中选择“Rally Software”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Rally Software](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "92511046"
 
 若要配置 Rally Software 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Rally Software”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Rally Software”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92511046"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Rally Software 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.rally.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.rally.com` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenant-name>.rally.com`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92511046"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Rally Software”部分，根据要求复制相应的 URL。 
+6. 在“设置 Rally Software”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -126,21 +126,21 @@ ms.locfileid: "92511046"
 
 1. 登录到 **Rally Software** 租户。
 
-2. 在顶部工具栏中，单击“设置”  ，并选择“订阅”  。
+2. 在顶部工具栏中，单击 **“安装”**，然后选择 **“订阅”**。
    
     ![订阅](./media/rally-software-tutorial/ic769531.png "订阅")
 
-3. 单击“操作”按钮  。 选择工具栏右上角的“编辑订阅”  。
+3. 单击“操作”按钮。 选择工具栏右上角的“编辑订阅”。
 
-4. 在“订阅”对话框页上，执行以下步骤，单击“保存并关闭”   ：
+4. 在“订阅”对话框页上，执行以下步骤，单击“保存并关闭”：
    
-    ![身份验证](./media/rally-software-tutorial/ic769542.png "Authentication")
+    ![身份验证](./media/rally-software-tutorial/ic769542.png "身份验证")
    
-    a. 从“身份验证”下拉列表中选择“Rally 或 SSO 身份验证”  。
+    a. 从“身份验证”下拉列表中选择“Rally 或 SSO 身份验证”。
 
-    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。 
+    b. 在“标识提供者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。 
 
-    c. 在“SSO 注销”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    c. 在“SSO 注销”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,7 +150,7 @@ ms.locfileid: "92511046"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -164,17 +164,17 @@ ms.locfileid: "92511046"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过向 Britta Simon 授予 Rally Software 的访问权限使之能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Rally Software”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Rally Software”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Rally Software”  。
+2. 在应用程序列表中，选择“Rally Software”。
 
     ![应用程序列表中的 Rally Software 链接](common/all-applications.png)
 
@@ -204,13 +204,13 @@ ms.locfileid: "92511046"
    
     ![用户](./media/rally-software-tutorial/ic781039.png "用户")
 
-3. 在“新用户”文本框中键入名称，并单击“添加详细信息”  。
+3. 在“新用户”文本框中键入名称，然后单击 **“添加详细信息”**。
 
 4. 在“创建用户”  部分中，执行以下步骤：
    
     ![创建用户](./media/rally-software-tutorial/ic781040.png "创建用户")
 
-    a. 在“用户名”文本框中，键入用户名，例如 Brittsimon   。
+    a. 在“用户名”文本框中，键入用户名，例如 Brittsimon。
    
     b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon@contoso.com。
 
@@ -218,7 +218,7 @@ ms.locfileid: "92511046"
 
     d. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    e. 单击“保存并关闭”  。
+    e. 单击“保存并关闭”。
 
    >[!NOTE]
    >可使用 Rally Software 提供的任何其他 Rally Software 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。

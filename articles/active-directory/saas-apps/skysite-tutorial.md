@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 9d4413c47e40a611fb1559b32aac1e32a71d1998
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SKYSITE 的集成
@@ -51,7 +51,7 @@ ms.locfileid: "92515978"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **SKYSITE** 。 
+1. 在“从库中添加”部分的搜索框中，键入 **SKYSITE**。 
 1. 在结果面板中选择“SKYSITE”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
 
@@ -80,7 +80,7 @@ ms.locfileid: "92515978"
 
 1. 在“SKYSITE”应用程序集成页上，导航到“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "92515978"
 
 1. 除上述属性以外，SKYSITE 应用程序还要求在 SAML 响应中传回其他几个属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
 
-    a. 单击“声明中返回的组”旁边的 **笔** 。 
+    a. 单击“声明中返回的组”旁边的 **笔**。 
 
     ![屏幕截图显示“用户声明”以及“添加新声明”选项。](./media/skysite-tutorial/config01.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "92515978"
 
     c. 选择“组 ID”作为“源属性”  。 
 
-    d. 单击“ **保存** ”。
+    d. 单击“ **保存**”。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -116,13 +116,13 @@ ms.locfileid: "92515978"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -134,12 +134,12 @@ ms.locfileid: "92515978"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="configure-skysite-sso"></a>配置 SKYSITE SSO
@@ -158,7 +158,7 @@ ms.locfileid: "92515978"
 
     b. 单击“上传证书”，以上传从 Azure 门户中下载的 Base64 编码证书。 
 
-    c. 单击“ **保存** ”。
+    c. 单击“ **保存**”。
 
 ### <a name="create-skysite-test-user"></a>创建 SKYSITE 测试用户
 

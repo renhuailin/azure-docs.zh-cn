@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 9432a3fe2f70ee9f84292c87c12b46671e667ec4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92517797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>教程：Azure Active Directory 与 Trakstar 集成
@@ -30,7 +30,7 @@ ms.locfileid: "92517797"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Trakstar 的集成，需要以下项：
 
@@ -63,7 +63,7 @@ ms.locfileid: "92517797"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Trakstar** ，在结果面板中选择“Trakstar”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Trakstar**，在结果面板中选择“Trakstar”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“Trakstar”](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92517797"
 
 若要配置 Trakstar 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Trakstar”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Trakstar”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,13 +99,13 @@ ms.locfileid: "92517797"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Trakstar 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”  文本框中，复制在 Trakstar 的“ACS (使用者) URL”  中找到的值（“设置”>“身份验证”和“SSO”），格式为：`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
+    a. 在“登录 URL”文本框中，复制在 Trakstar 的“ACS (使用者) URL”中找到的值（“设置”>“身份验证”和“SSO”），格式为：`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. 在“标识符(实体 ID)”文本框中保留默认值  ：`https://app.trakstar.com`
+    b. 在“标识符(实体 ID)”文本框中保留默认值：`https://app.trakstar.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 以管理员身份登录到 Trakstar 以获取这些值。
@@ -115,7 +115,7 @@ ms.locfileid: "92517797"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Trakstar”部分，根据要求复制相应的 URL。 
+6. 在“设置 Trakstar”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "92517797"
 
 ### <a name="configure-trakstar-single-sign-on"></a>配置 Trakstar 单一登录
 
-若要在 **Trakstar** 端配置单一登录，需要以管理员身份登录，并输入下载的“证书(Base64)”的内容，以及从 Azure 门户复制的相应 URL。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Trakstar** 端配置单一登录，需要以管理员身份登录，并输入下载的“证书(Base64)”的内容，以及从 Azure 门户复制的相应 URL。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -137,7 +137,7 @@ ms.locfileid: "92517797"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -151,17 +151,17 @@ ms.locfileid: "92517797"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Trakstar 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Trakstar”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Trakstar”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Trakstar”  。
+2. 在应用程序列表中，选择“Trakstar”。
 
     ![“应用程序”列表中的“Trakstar”链接](common/all-applications.png)
 
