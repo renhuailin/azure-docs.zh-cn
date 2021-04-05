@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 3280c97e735e68aa36f018a8de59964ade9567b7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96181889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nitro Productivity Suite 的集成
@@ -46,7 +46,7 @@ ms.locfileid: "96181889"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧窗格中，选择“Azure Active Directory”。
-1. 转到“企业应用程序”，并选择“所有应用程序”。 
+1. 转到“企业应用程序”，并选择“所有应用程序”。  
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 Nitro Productivity Suite。  
 1. 在结果中选择“Nitro Productivity Suite”，然后添加该应用。  在该应用添加到租户时等待几秒钟。

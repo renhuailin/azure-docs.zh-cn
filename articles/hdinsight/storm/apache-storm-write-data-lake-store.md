@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932553"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教程：从 Apache Storm on Azure HDInsight 写入到 Apache Hadoop HDFS
@@ -97,11 +97,11 @@ bolts:
 
 此 YAML 定义以下项：
 
-* `syncPolicy`设置用户帐户 ：定义何时将文件同步/刷新到文件系统。 在此示例中，为每隔 1000 个元组。
-* `fileNameFormat`设置用户帐户 ：定义写入文件时要使用的路径和文件名模式。 在此示例中，路径是在运行时使用筛选器提供的，文件扩展名为 `.txt`。
-* `recordFormat`设置用户帐户 ：定义写入的文件的内部格式。 在此示例中，字段由 `|` 字符分隔。
-* `rotationPolicy`设置用户帐户 ：定义何时轮换文件。 在此示例中，不执行轮换。
-* `hdfs-bolt`设置用户帐户 ：使用前面的组件作为 `HdfsBolt` 类的配置参数。
+* `syncPolicy`：定义何时将文件同步/刷新到文件系统。 在此示例中，为每隔 1000 个元组。
+* `fileNameFormat`：定义写入文件时要使用的路径和文件名模式。 在此示例中，路径是在运行时使用筛选器提供的，文件扩展名为 `.txt`。
+* `recordFormat`：定义写入的文件的内部格式。 在此示例中，字段由 `|` 字符分隔。
+* `rotationPolicy`：定义何时轮换文件。 在此示例中，不执行轮换。
+* `hdfs-bolt`：使用前面的组件作为 `HdfsBolt` 类的配置参数。
 
 有关 Flux 框架的详细信息，请参阅 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 
@@ -109,12 +109,12 @@ bolts:
 
 默认情况下，Storm on HDInsight 不会在 Storm 的类路径中包含 `HdfsBolt` 用来与 Azure 存储或 Data Lake Storage 通信的组件。 使用以下脚本操作可将这些组件添加到群集上 Storm 的 `extlib` 目录：
 
-| properties | 值 |
+| 属性 | 值 |
 |---|---|
 |脚本类型 |- Custom|
 |Bash 脚本 URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |节点类型 |Nimbus、Supervisor|
-|参数 |无|
+|参数 |None|
 
 有关在群集中使用此脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](./../hdinsight-hadoop-customize-cluster-linux.md)文档。
 
@@ -202,9 +202,9 @@ storm kill hdfswriter
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
-3. 选择“删除资源组”，然后进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
+3. 选择“删除资源组”，然后进行确认。
 
 ## <a name="next-steps"></a>后续步骤
 
