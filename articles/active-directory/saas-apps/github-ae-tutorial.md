@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d66396b2d97a7f33158f91025f5735c7714cd65
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 537378ef11333bd8942a61ab2bbb4e8a251c2b59
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221036"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103196812"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>教程：Azure Active Directory 与 GitHub AE 的单一登录 (SSO) 集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "99221036"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR-GITHUB-AE-HOSTNAME>`
 
@@ -101,9 +101,9 @@ ms.locfileid: "99221036"
 
 1. 单击“选择组”，搜索要包括此声明的“组”，该组的成员应为 GHAE 的管理员 。
 
-1. 为“源”选择“属性”，为“值”输入“true”   。 
+1. 为“源”选择“属性”，为“值”输入“true”（不带引号）   。 
 
-10. 单击“ **保存**”。
+1. 单击“ **保存**”。
 
     ![管理声明](./media/github-ae-tutorial/administrator.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "99221036"
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
-    ![证书下载链接](common/certificateBase64.png)
+    ![证书下载链接](common/certificatebase64.png)
 
 1. 在“设置 GitHub AE”部分中，根据要求复制相应 URL。
 
@@ -126,7 +126,7 @@ ms.locfileid: "99221036"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
