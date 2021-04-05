@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 32ad2c46a63e7cc8b84015cf99dfc95c5f5f4f13
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92514854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>教程：Azure Active Directory 与 Softeon WMS 集成
@@ -41,8 +41,8 @@ ms.locfileid: "92514854"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Softeon WMS 支持 SP 发起的 SSO 
-* Softeon WMS 支持实时  用户预配
+* Softeon WMS 支持 SP 发起的 SSO
+* Softeon WMS 支持实时用户预配
 
 ## <a name="adding-softeon-wms-from-the-gallery"></a>从库中添加 Softeon WMS
 
@@ -62,22 +62,22 @@ ms.locfileid: "92514854"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Softeon WMS”，在结果面板中选择“Softeon WMS”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Softeon WMS”，在结果面板中选择“Softeon WMS”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Softeon WMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Softeon WMS 的 Azure AD 单一登录。 
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Softeon WMS 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 Softeon WMS 相关用户之间建立链接关系。
 
 若要配置并测试 Softeon WMS 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 Softeon WMS 单一登录](#configure-softeon-wms-single-sign-on)  - 在应用程序端配置单一登录。
+2. [配置 Softeon WMS 单一登录](#configure-softeon-wms-single-sign-on) - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Softeon WMS 测试用户](#create-softeon-wms-test-user)  - 在 Softeon WMS 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. [创建 Softeon WMS 测试用户](#create-softeon-wms-test-user) - 在 Softeon WMS 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -86,7 +86,7 @@ ms.locfileid: "92514854"
 
 若要配置 Softeon WMS 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Softeon WMS”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Softeon WMS”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "92514854"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Softeon WMS 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/<instancename>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/<instancename>` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.softeon.com/sp`
 
@@ -113,7 +113,7 @@ ms.locfileid: "92514854"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 Softeon WMS”部分，根据要求复制相应的 URL  。
+6. 在“设置 Softeon WMS”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "92514854"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "92514854"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Softeon WMS 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Softeon WMS”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Softeon WMS”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Softeon WMS”  。
+2. 在应用程序列表中，选择“Softeon WMS”。
 
     ![应用程序列表中的“Softeon WMS”链接](common/all-applications.png)
 

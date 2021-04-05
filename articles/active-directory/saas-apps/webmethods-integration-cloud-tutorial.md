@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 webMethods Integration Suite 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 webMethods Integration Suite 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 webMethods Integration Suite 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 52ad0d0356f4d309db89db6527d7fd2d7dec253d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636810"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>教程：Azure Active Directory 与 webMethods Integration Suite 的集成
+# <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>教程：Azure Active Directory 与 webMethods Integration Suite 集成
 
 本教程介绍如何将 webMethods Integration Suite 与 Azure Active Directory (Azure AD) 集成。
 将 webMethods Integration Suite 与 Azure AD 集成可提供以下优势：
@@ -30,7 +30,7 @@ ms.locfileid: "92636810"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 webMethods Integration Suite 的集成，需要准备好以下各项：
 
@@ -63,7 +63,7 @@ ms.locfileid: "92636810"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **webMethods Integration Suite** ，在结果面板中选择“webMethods Integration Suite”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **webMethods Integration Suite**，在结果面板中选择“webMethods Integration Suite”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的“webMethods Integration Suite”](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "92636810"
 
 若要配置 webMethods Integration Suite 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“webMethods Integration Suite”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“webMethods Integration Suite”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "92636810"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 若要配置 **webMethods Integration Cloud** 并在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 若要配置 **webMethods Integration Cloud** 并在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
@@ -129,9 +129,9 @@ ms.locfileid: "92636810"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [webMethods Integration Suite 客户端支持团队](https://empower.softwareag.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 若要配置 **webMethods API Cloud** 并在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+5. 若要配置 **webMethods API Cloud** 并在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
-    ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
@@ -162,7 +162,7 @@ ms.locfileid: "92636810"
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 在“设置 webMethods Integration Suite”部分，根据要求复制相应的 URL。 
+7. 在“设置 webMethods Integration Suite”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "92636810"
 
 ### <a name="configure-webmethods-integration-suite-single-sign-on"></a>配置 webMethods Integration Suite 单一登录
 
-若要在 **webMethods Integration Suite** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [webMethods Integration Suite 支持团队](https://empower.softwareag.com/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **webMethods Integration Suite** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [webMethods Integration Suite 支持团队](https://empower.softwareag.com/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -184,7 +184,7 @@ ms.locfileid: "92636810"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -194,30 +194,30 @@ ms.locfileid: "92636810"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 webMethods Integration Suite 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“webMethods Integration Suite”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“webMethods Integration Suite”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“webMethods Integration Suite”。 
+2. 在应用程序列表中，选择“webMethods Integration Suite”。
 
     ![“应用程序”列表中的“webMethods Integration Suite”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

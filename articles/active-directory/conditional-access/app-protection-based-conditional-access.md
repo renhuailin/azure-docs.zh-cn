@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 720cd46ac37a82f56aa37c0041ca8d92db177071
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99575765"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求应用保护策略和核准的客户端设备通过条件访问来访问云应用
@@ -74,7 +74,7 @@ ms.locfileid: "99575765"
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作”   >   “包括”下，选择“Office 365 Exchange Online”。 
 1. 在“条件”下，选择“客户端应用” ：
    1. 将“配置”设置为“是”。  
@@ -134,7 +134,7 @@ ms.locfileid: "99575765"
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，选择“Office 365 Exchange Online”和“Office 365 SharePoint Online”     。
 1. 在“条件”下，选择“设备平台”。  
    1. 将“配置”设置为“是”。  
@@ -156,7 +156,7 @@ ms.locfileid: "99575765"
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作”   >   “包括”下，选择“Office 365 Exchange Online”。 
 1. 在“条件”下，选择“客户端应用” ：
    1. 将“配置”设置为“是”。  
