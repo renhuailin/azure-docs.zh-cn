@@ -11,10 +11,10 @@ ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97516354"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
@@ -65,7 +65,7 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 | 身份验证上下文类引用 | `acr` | 不适用 | 仅与旧策略配合使用。 |
 | 信任框架策略 | `tfp` | `b2c_1_signupsignin1` | 用于获取 ID 令牌的策略名称。 |
 | 身份验证时间 | `auth_time` | `1438535543` | 用户最后一次输入凭据的时间，以新纪元时间表示。 该身份验证是全新登录、单一登录 (SSO) 会话还是其他登录类型之间没有区别。 `auth_time` 是应用程序（或用户）上次针对 Azure AD B2C 发起身份验证尝试的时间。 不区分用于身份验证的方法。 |
-| 作用域 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
+| 范围 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
 | 授权方 | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | 发起请求的客户端应用程序的 **应用程序 ID**。 |
 
 ## <a name="configuration"></a>配置

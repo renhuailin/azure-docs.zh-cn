@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: 9c7fd03c2239cea05dc79ad4dd1965fe253a2ce9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96341591"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
@@ -70,9 +70,9 @@ ms.locfileid: "96341591"
 |法国|法语|fr-FR|  
 |意大利|意大利语|it-IT|
 |香港特别行政区|繁体中文|zh-HK|  
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |日本|日语|ja-JP|  
-|韩国|韩语|ko-KR|  
+|韩国|朝鲜语|ko-KR|  
 |荷兰|荷兰语|nl-NL|  
 |中华人民共和国|中文|zh-CN|  
 |巴西|葡萄牙语|pt-BR|

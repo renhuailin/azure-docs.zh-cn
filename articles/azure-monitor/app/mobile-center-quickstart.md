@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: 0c53569ea50d91bbd703197d1a4c3546e10e04ec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100626124"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
@@ -75,7 +75,7 @@ Analytics.trackEvent("Video clicked")
 
     随后会显示一个配置对话框。 请使用下表填写输入字段。
 
-    | 设置        |  值           | 描述  |
+    | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 某些全局唯一值，如“myApp-iOS” | 标识所监视的应用的名称 |
      | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |

@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/22/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 93443a321f22d232f8b2bfa6a0fe5a05a5e18175
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 69d23b9d02eb176a2e42985ef5c3673e83d9bb7e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607894"
 ---
 # <a name="quickstart-create-an-object-anchors-model-from-a-3d-model"></a>快速入门：从 3D 模型创建 Object Anchors 模型
 
@@ -102,7 +102,7 @@ Azure Object Anchors 是一项托管的云服务，它将 3D 模型转换为 AI 
 
     | 字段                    | 说明                       |
     | ---                      | ---                               |
-    | InputAssetPath           | 本地计算机上的 3D 模型的绝对路径（在 `assets/models` 文件夹中有一个可以使用的示例模型）。 支持的文件格式为 `fbx`、`ply`、`obj`、`glb` 和 `gltf`。 |
+    | InputAssetPath           | 本地计算机上 3D 模型的绝对路径。 支持的文件格式为 `fbx`、`ply`、`obj`、`glb` 和 `gltf`。 |
     | AssetDimensionUnit       | 3D 模型的度量单位。 所有支持的度量单位都可以使用 `Azure.MixedReality.ObjectAnchors.Conversion.AssetLengthUnit` 枚举进行访问。 |
     | 引力                  | 3D 模型的重力向量方向。 此 3D 向量给出了模型坐标系中的向下方向。 例如，如果负数 `y` 表示模型的 3D 空间中的向下方向，则此值为 `Vector3(0.0f, -1.0f, 0.0f)`。 |
 
