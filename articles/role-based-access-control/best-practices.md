@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
 ms.openlocfilehash: d58398c42cdc6faed758e5dba3431e0841fc0b03
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555568"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 最佳做法
@@ -30,7 +30,7 @@ ms.locfileid: "100555568"
 
 ![Azure RBAC 和最低权限](./media/best-practices/rbac-least-privilege.png)
 
-有关如何分配角色的信息，请参阅 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
+有关如何分配角色的信息，请参阅[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)。
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制订阅所有者的数量
 
@@ -44,7 +44,7 @@ ms.locfileid: "100555568"
 
 ## <a name="assign-roles-to-groups-not-users"></a>将角色分配给组，而不是用户
 
-为了使角色分配更易于管理，请避免将角色直接分配给用户。 而是将角色分配给组。 将角色分配给组而不是用户还有助于最大程度地减少角色分配的数量， [每个订阅的角色分配数限制为 2000](troubleshooting.md#azure-role-assignments-limit)。 
+为了使角色分配更易于管理，请避免将角色直接分配给用户。 而是将角色分配给组。 将角色分配给组而不是用户还有助于最大程度地减少角色分配的数量，[每个订阅的角色分配数限制为 2,000](troubleshooting.md#azure-role-assignments-limit)。 
 
 ## <a name="next-steps"></a>后续步骤
 

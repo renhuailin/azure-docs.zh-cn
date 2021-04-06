@@ -9,18 +9,34 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 54b650d598cf19e061465b3a4fa18d50808e7f29
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/18/2020
+ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426155"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654622"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
-Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。 在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
+在本教程中，你将使用纽约市出租车数据来探索专用 SQL 池的功能。
 
+## <a name="create-a-dedicated-sql-pool"></a>创建专用 SQL 池
+
+1. 在 Synapse Studio 的左窗格中，选择“管理” > “SQL 池” 。
+1. 选择“新建”
+1. 对于“SQL 池名称”，请选择“SQLPOOL1” 
+1. 对于“性能级别”，请选择“DW100C” 
+1. 选择“查看 + 创建” > “创建”。 你的专用 SQL 池将在几分钟内准备就绪。 
+
+您的专用 SQL 池与同样名为 **SQLPOOL1** 的 SQL 数据库相关联。
+1. 导航到 **数据** > **工作区**。
+1. 应看到名为 SQLPOOL1 的数据库。 如果没有看到，请单击“刷新”。
+
+只要专用 SQL 池处于活动状态，就会使用计费资源。 你可以在稍后暂停池以降低成本。
+
+> [!NOTE] 
+> 在工作区中新建专用 SQL 池（之前称为 SQL DW）时，将打开专用 SQL 池预配页面。 预配将在逻辑 SQL 服务器上进行。
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>将纽约市出租车数据加载到 SQLPOOL1
 
 1. 在 Synapse Studio 中，导航到“开发”中心，单击“+”按钮以添加新资源，然后新建 SQL 脚本 。
@@ -77,7 +93,6 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 
 1. 在 Synapse Studio 中，转到“数据”中心。
-1. 应看到名为 SQLPOOL1 的数据库。 如果没有看到，请单击“刷新”。
 1. 转到“SQLPOOL1” > “表” 。 
 3. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本” > “选择前 100 行”  。
 4. 等待新的 SQL 脚本创建并运行。
@@ -103,4 +118,4 @@ Azure Synapse Analytics 为你提供使用专用 SQL 池分析数据的功能。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 Spark 进行分析](get-started-analyze-spark.md)
+> [分析 Azure 存储帐户中的数据](get-started-analyze-storage.md)

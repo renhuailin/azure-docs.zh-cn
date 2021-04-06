@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 319ab7343792be92005611d26acc382df711bf1e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e6d548f4d792d8980e2aa5040b09530eaf7868c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565059"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609900"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>防范 Microsoft 365 遭受本地攻击
 
@@ -164,7 +164,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 使用 Azure AD 功能来安全管理设备。
 
--   **使用 Windows 10 工作站**：使用 MDM 策略[部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
+-   **使用 Windows 10 工作站**：使用 MDM 策略 [部署已加入 Azure AD](../devices/azureadjoin-plan.md) 的设备。 启用 [Windows Autopilot](/mem/autopilot/windows-autopilot) 以实现全自动化预配体验。
 
     -   弃用运行 Windows 8.1 和更低版本的计算机。
 
@@ -203,7 +203,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 * 尽可能地使用条件访问来[阻止旧式身份验证协议](../conditional-access/howto-conditional-access-policy-block-legacy.md)。 此外，使用应用程序特定的配置在应用程序级别禁用旧式身份验证协议。
 
-   有关详细信息，请参阅[旧式身份验证协议](../fundamentals/auth-sync-overview.md)。 或者查看有关 [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) 的具体详细信息。
+   有关详细信息，请参阅[旧式身份验证协议](../fundamentals/auth-sync-overview.md)。 或者查看有关 [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant) 的具体详细信息。
 
 * 实施建议的[标识和设备访问配置](/microsoft-365/security/office-365-security/identity-access-policies)。
 

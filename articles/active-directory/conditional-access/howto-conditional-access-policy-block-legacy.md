@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 982c33c5c55e32ce48131a4b2f0911e4f23dd408
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98877282"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>条件访问：阻止传统身份验证
@@ -33,7 +33,7 @@ ms.locfileid: "98877282"
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下，选择“所有用户”。  
    1. 在“排除”下，选择“用户和组”，然后选择必须保留使用旧式身份验证功能的任何帐户。 排除至少一个帐户以防止你被锁定。如果不排除任何帐户，将无法创建此策略。
-   1. 选择“完成”  。
+   1. 选择“完成”。
 1. 在“云应用或操作”下，选择“所有云应用”。
    1. 选择“完成”。
 1. 在“条件” > “客户端应用”下，将“配置”设置为“是”   。

@@ -12,10 +12,10 @@ ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
 ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102519633"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
@@ -420,25 +420,25 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>可视化超参数优化运行
 
-可以在 Azure 机器学习工作室中可视化超参数优化运行，也可以使用笔记本小部件。
+可以在 Azure 机器学习工作室中将超参数优化运行可视化，也可以使用笔记本小组件。
 
 ### <a name="studio"></a>工作室
 
-可以将 [Azure 机器学习工作室](https://ml.azure.com)中的所有超参数优化运行可视化。 有关如何在门户中查看试验的详细信息，请参阅[工作室中的运行记录](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中将所有超参数优化运行可视化。 要详细了解如何在门户中查看试验，请参阅[在工作室中查看运行记录](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
 
-- **指标图表**：此可视化效果跟踪在超参数优化期间为每个超驱动器子运行记录的指标。 每行表示一个子运行，每个点在运行时的迭代中度量主要指标值。  
+- **指标图**：此可视化效果跟踪在超参数优化持续时间内为每个 hyperdrive 子运行记录的指标。 每行表示一个子运行，每个点测量运行时迭代的主要指标值。  
 
-    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="超参数优化指标图表":::
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="超参数优化指标图":::
 
-- **并行坐标图表**：该可视化效果显示了主要指标性能与单个超参数值之间的相关性。 该图表通过轴的移动（通过轴标签单击并拖动）和突出显示单个轴上的值（沿单个轴垂直单击并拖动以突出显示所需值的范围）进行交互。
+- **并行坐标图**：此可视化效果显示主要指标性能与单个超参数值之间的关联。 可通过这些方式与图表进行交互：移动轴（单击并拖动轴标签）以及在单个轴上突出显示值（单击并沿单个轴垂直拖动即可突出显示所需范围的值）。
 
-    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="超参数优化并行坐标图表":::
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="超参数优化并行坐标图":::
 
-- **二维散点图**：该可视化效果显示了任意两个单独的超参数之间的相关性及其相关的主要指标值。
+- **二维散点图**：此可视化效果显示任意两个单独的超参数之间的关联以及它们对应的主要指标值。
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="超参数优化二维散点图":::
 
-- **三维散点图**：该可视化效果与二维相同，但允许与主要指标值相关的三个超参数维。 也可以单击并拖动来重新定位图表，以查看三维空间中的不同相关性。
+- **三维散点图**：此可视化效果与二维散点图相同，但可以显示三个超参数维度的关联和主要指标值。 还可以单击并拖动以调整图表，以在三维空间中查看不同的关联。
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="超参数优化三维散点图":::
 

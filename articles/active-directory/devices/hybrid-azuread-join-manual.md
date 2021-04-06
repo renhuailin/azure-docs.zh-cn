@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346b997b5e0c785d066ce3a1edaab8cbea10212
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 28cc8a858d1779e17c893d64eda5f907bb4c808e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644113"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577982"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -74,6 +74,9 @@ Azure AD Connect：
 对于 Windows 10 设备（1703 或更早版本），如果组织需要通过出站代理访问 Internet，则必须实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机可以注册到 Azure AD。
 
 从 Windows 10 1803 开始，即使由联合域中的设备通过 AD FS 进行的混合 Azure AD 加入尝试失败，在 Azure AD Connect 已配置为将计算机/设备对象同步到 Azure AD 的情况下，设备也会尝试使用同步的计算机/设备完成混合 Azure AD 加入操作。
+
+> [!NOTE]
+> 若要使设备注册同步加入成功，作为设备注册配置的一部分，请不要从 Azure AD Connect 同步配置中排除默认设备属性。 若要详细了解同步到 Azure AD 的默认设备属性，请参阅 [Azure AD Connect 同步的属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)。
 
 若要验证设备是否能够访问系统帐户下的上述 Microsoft 资源，可以使用[测试设备注册连接](/samples/azure-samples/testdeviceregconnectivity/testdeviceregconnectivity/)脚本。
 

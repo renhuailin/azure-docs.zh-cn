@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 199d85d2805b92e1421330be8f299c769637b649
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104578458"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
@@ -46,7 +46,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| id | String |
+| id | 字符串 |
 
 应用在目录中的唯一标识符。 此 ID 不是用于在任何协议事务中标识应用的标识符。 用于引用目录查询中的对象。
 
@@ -105,7 +105,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| allowPublicClient | Boolean |
+| allowPublicClient | 布尔 |
 
 指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，这样的一种情况是 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流，其中发生了没有 URL 重定向的 HTTP 请求。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。
 
@@ -119,7 +119,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| appId | String |
+| appId | 字符串 |
 
 指定由 Azure AD 分配给应用的应用唯一标识符。
 
@@ -158,7 +158,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | 字符串 |
 
 不受支持。
 
@@ -166,7 +166,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | 字符串 |
 
 配置应用所需的用户访问令牌或 OAuth 2.0 访问令牌中颁发的 `groups` 声明。 若要设置此属性，请使用以下有效的字符串值之一：
 
@@ -186,7 +186,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | 字符串 |
 
 此特定应用的安全令牌服务在令牌中返回的可选声明。
 
@@ -217,7 +217,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| informationalUrls | String |
+| informationalUrls | 字符串 |
 
 指定应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 有关详细信息，请参阅[如何：为已注册的 Azure AD 应用添加服务条款和隐私声明](howto-add-terms-of-service-privacy-statement.md)。
 
@@ -274,7 +274,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoUrl | String |
+| logoUrl | 字符串 |
 
 只读值，指向已在门户中上传的徽标的 CDN URL。
 
@@ -288,7 +288,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | 字符串 |
 
 用于注销应用的 URL。
 
@@ -302,7 +302,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| name | String |
+| name | 字符串 |
 
 应用的显示名称。
 
@@ -316,7 +316,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Boolean |
+| oauth2AllowImplicitFlow | 布尔 |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流访问令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。 若要了解详细信息，请在目录中输入 `OAuth 2.0 implicit grant flow`，并查看有关隐式流的主题。
 
@@ -330,7 +330,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Boolean |
+| oauth2AllowIdTokenImplicitFlow | 布尔 |
 
 指定此 Web 应用是否可以请求 OAuth2.0 隐式流 ID 令牌。 默认值为 false。 此标志用于基于浏览器的应用，例如 JavaScript 单页应用。
 
@@ -369,7 +369,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Boolean |
+| oauth2RequiredPostResponse | 布尔 |
 
 指定在 OAuth 2.0 令牌请求过程中，Azure AD 是否允许与 GET 请求相反的 POST 请求。 默认值为 false，即指定只允许 GET 请求。
 
@@ -383,7 +383,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| parentalControlSettings | String |
+| parentalControlSettings | 字符串 |
 
 - `countriesBlockedForMinors` 指定禁止未成年人使用该应用的国家/地区。
 - `legalAgeGroupRule` 指定适用于应用用户的法定年龄组规则。 可设置为 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids` 或 `BlockMinors`。
@@ -444,7 +444,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| publisherDomain | String |
+| publisherDomain | 字符串 |
 
 应用程序的已验证发布者域。 只读。
 
@@ -510,7 +510,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | 字符串 |
 
 应用的 SAML 元数据 URL。
 
@@ -524,7 +524,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInUrl | String |
+| signInUrl | 字符串 |
 
 指定应用主页的 URL。
 
@@ -538,7 +538,7 @@ ms.locfileid: "104578458"
 
 | 密钥 | 值类型 |
 | :--- | :--- |
-| signInAudience | String |
+| signInAudience | 字符串 |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值是：
 - `AzureADMyOrg` - 在我组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户

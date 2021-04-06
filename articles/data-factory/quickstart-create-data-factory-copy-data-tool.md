@@ -6,12 +6,12 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 48624e415649be2fb76aed99c5cb0e1b3b12f04b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 78bc815aff195124d3e79a83445b8d12506fc70d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372852"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613084"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -41,23 +41,23 @@ ms.locfileid: "100372852"
    Azure 数据工厂的名称必须全局唯一。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
   
    ![名称不可用时出错](./media/doc-common-process/name-not-available-error.png)
-1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。 
+1. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。  
 1. 对于“资源组”，请使用以下步骤之一：
      
    - 选择“使用现有”，并从列表中选择现有的资源组。 
    - 选择“新建”，并输入资源组的名称。   
          
    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
-1. 对于“版本”，选择“V2”。 
-1. 对于“位置”，请选择数据工厂所在的位置。
+1. 对于“版本”，选择“V2”。  
+1. 对于“位置”，请选择数据工厂所在的位置。 
 
    该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
-   ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/doc-common-process/data-factory-home-page.png)
+:::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 
 ## <a name="start-the-copy-data-tool"></a>启动“复制数据”工具
 
