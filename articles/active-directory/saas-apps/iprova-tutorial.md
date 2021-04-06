@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 iProva 的单一登录 (SSO) 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 iProva 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 iProva 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 717696053a742abae6756655a15416ac81221144
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459741"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>教程：Azure Active Directory 与 iProva 的单一登录 (SSO) 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iProva 集成
 
 本教程介绍如何将 iProva 与 Azure Active Directory (Azure AD) 集成。 将 iProva 与 Azure AD 集成后，可以：
 
@@ -39,7 +39,7 @@ ms.locfileid: "92459741"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* iProva 支持 SP 发起的 SSO 
+* iProva 支持 SP 发起的 SSO
 
 * 配置 iProva 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
 
@@ -51,8 +51,8 @@ ms.locfileid: "92459741"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分中，在搜索框中键入“iProva”   。
-1. 在结果面板中选择“iProva”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分中，在搜索框中键入“iProva” 。
+1. 在结果面板中选择“iProva”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>配置并测试 iProva 的 Azure AD 单一登录
 
@@ -72,7 +72,7 @@ ms.locfileid: "92459741"
 
 在本部分，我们将从 iProva 检索信息以配置 Azure AD 单一登录。
 
-1. 打开 Web 浏览器并使用以下 URL 模式转到 iProva 中的“SAML2 信息”页： 
+1. 打开 Web 浏览器并使用以下 URL 模式转到 iProva 中的“SAML2 信息”页：
 
     ```https
     https://SUBDOMAIN.iprova.nl/saml2info
@@ -87,19 +87,19 @@ ms.locfileid: "92459741"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **iProva** 应用程序集成页上，找到“管理”部分并选择“单一登录”   。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **iProva** 应用程序集成页上，找到“管理”部分并选择“单一登录” 。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”框中填写“iProva SAML2 信息”页上的标签“登录 URL”后面显示的值。    此页仍在另一浏览器标签页中打开。
+    a. 在“登录 URL”框中填写“iProva SAML2 信息”页上的标签“登录 URL”后面显示的值。 此页仍在另一浏览器标签页中打开。
 
-    b. 在“标识符”框中填写“iProva SAML2 信息”页上的标签“EntityID”后面显示的值。    此页仍在另一浏览器标签页中打开。
+    b. 在“标识符”框中填写“iProva SAML2 信息”页上的标签“EntityID”后面显示的值。 此页仍在另一浏览器标签页中打开。
 
-    c. 在“回复 URL”框中填写“iProva SAML2 信息”页上的标签“回复 URL”后面显示的值。    此页仍在另一浏览器标签页中打开。
+    c. 在“回复 URL”框中填写“iProva SAML2 信息”页上的标签“回复 URL”后面显示的值。 此页仍在另一浏览器标签页中打开。
 
 1. iProva 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -119,77 +119,77 @@ ms.locfileid: "92459741"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ## <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 iProva 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“iProva”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“iProva”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="create-iprova-test-user"></a>创建 iProva 测试用户
 
 1. 使用 **管理员** 帐户登录到 iProva。
 
-2. 打开“转到”菜单  。
+2. 打开“转到”菜单。
 
-3. 选择“应用程序管理”。 
+3. 选择“应用程序管理”。
 
-4. 选择“用户和用户组”面板中的“用户”   。
+4. 选择“用户和用户组”面板中的“用户”。
 
 5. 选择 **添加** 。
 
-6. 在“用户名”文本框中输入用户的用户名（如 `B.Simon@contoso.com`）  。
+6. 在“用户名”文本框中输入用户的用户名（如 `B.Simon@contoso.com`）。
 
-7. 在“全名”框中输入完整名称，例如 **B.Simon** 。 
+7. 在“全名”框中输入完整名称，例如 **B.Simon**。
 
-8. 选择“无密码(使用单一登录)”选项  。
+8. 选择“无密码(使用单一登录)”选项。
 
-9. 在“电子邮件地址”框中，输入用户的电子邮件地址（例如 `B.Simon@contoso.com`）  。
+9. 在“电子邮件地址”框中，输入用户的电子邮件地址（例如 `B.Simon@contoso.com`）。
 
-10. 向下滚动到页面底部，选择“完成”  。
+10. 向下滚动到页面底部，选择“完成”。
 
 ## <a name="configure-iprova-sso"></a>配置 iProva SSO
 
 1. 使用 **管理员** 帐户登录到 iProva。
 
-2. 打开“转到”菜单  。
+2. 打开“转到”菜单。
 
-3. 选择“应用程序管理”。 
+3. 选择“应用程序管理”。
 
-4. 在“系统设置”面板中选择“常规”   。
+4. 在“系统设置”面板中选择“常规”。
 
-5. 选择“编辑”  。
+5. 选择“编辑”。
 
-6. 向下滚动到“访问控制”  。
+6. 向下滚动到“访问控制”。
 
     ![iProva 访问控制设置](media/iprova-tutorial/iprova-accesscontrol.png)
 
-7. 查找设置“用户使用其网络帐户自动登录”，并将其更改为“是，通过 SAML 进行身份验证”   。 此时会显示其他选项。
+7. 查找设置“用户使用其网络帐户自动登录”，并将其更改为“是，通过 SAML 进行身份验证”。 此时会显示其他选项。
 
-8. 选择“设置”。 
+8. 选择“设置”。
 
-9. 选择“ **下一页** ”。
+9. 选择“**下一页**”。
 
-10. iProva 会询问是要从 URL 下载联合数据，还是从文件上传联合数据。 选择“从 URL”选项  。
+10. iProva 会询问是要从 URL 下载联合数据，还是从文件上传联合数据。 选择“从 URL”选项。
 
     ![下载 Azure AD 元数据](media/iprova-tutorial/iprova-download-metadata.png)
 
@@ -197,17 +197,17 @@ ms.locfileid: "92459741"
 
 12. 选择箭头按钮，从 Azure AD 下载元数据。
 
-13. 下载完成后，将显示确认消息“已下载有效的联合数据文件”  。
+13. 下载完成后，将显示确认消息“已下载有效的联合数据文件”。
 
-14. 选择“ **下一页** ”。
+14. 选择“**下一页**”。
 
-15. 暂时跳过“测试登录”选项，并选择“下一步”   。
+15. 暂时跳过“测试登录”选项，并选择“下一步”。
 
-16. 在“声明使用”下拉框中，选择“windowsaccountname”   。
+16. 在“声明使用”下拉框中，选择“windowsaccountname”。
 
-17. 选择“完成”  。
+17. 选择“完成”。
 
-18. 现在返回“编辑常规设置”屏幕  。 向下滚动到页面底部，选择“确定”以保存配置  。
+18. 现在返回“编辑常规设置”屏幕。 向下滚动到页面底部，选择“确定”以保存配置。
 
 ## <a name="test-sso"></a>测试 SSO
 

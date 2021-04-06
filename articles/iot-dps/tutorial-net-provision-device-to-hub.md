@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966558"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心预配服务客户端 (.NET) 将设备登记到 IoT 中心
 
 前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何使用此服务通过 **_单独登记_** 和 **_登记组_** 将设备预配到单个 IoT 中心。 本教程演示如何：
 
@@ -27,7 +27,7 @@ ms.locfileid: "94966558"
 
 ## <a name="prerequisites"></a>先决条件
 
-继续之前，请确保已配置设备及其“硬件安全模块”（按[使用 Azure IoT 中心设备预配服务设置设备以进行预配](./tutorial-set-up-device.md)教程所述）  。
+继续之前，请确保已配置设备及其“硬件安全模块”（按[使用 Azure IoT 中心设备预配服务设置设备以进行预配](./tutorial-set-up-device.md)教程所述）。
 
 * Visual Studio
 
@@ -42,11 +42,11 @@ ms.locfileid: "94966558"
 此步骤需要将设备的唯一安全项目添加到设备预配服务。 这些安全项目如下所示：
 
 - 对于基于 TPM 的设备：
-    - 对每个 TPM 芯片或模拟唯一的“认可密钥”  。 请阅读[了解 TPM 认可密钥](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))获取详细信息。
+    - 对每个 TPM 芯片或模拟唯一的“认可密钥”。 请阅读[了解 TPM 认可密钥](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11))获取详细信息。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 TPM 的设备，可能从 TPM 本身派生注册 ID，例如 TPM 认可密钥的 SHA-256 哈希。
 
 - 对于基于 X.509 的设备：
-    - [颁发给设备的 X.509 证书](/windows/win32/seccertenroll/about-x-509-public-key-certificates)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书    。
+    - [颁发给设备的 X.509 证书](/windows/win32/seccertenroll/about-x-509-public-key-certificates)，采用 *.pem* 或 *.cer* 文件格式。 对于单独登记，需要对 X.509 系统使用叶证书；对于登记组，需要使用根证书或同等的签名人证书。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备  。 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 X.509 的设备，注册 ID 派生自证书的公用名 (CN)。 有关这些要求的详细信息，请参阅[设备概念](./concepts-service.md)。
 
 可通过两种方法向设备预配服务注册设备：
@@ -57,19 +57,19 @@ ms.locfileid: "94966558"
 
 ### <a name="enroll-the-device-using-individual-enrollments"></a>使用单独登记来登记设备
 
-1. 在 Visual Studio 中，使用“控制台应用”项目模板创建一个 Visual C# 控制台应用程序项目。  将项目命名为 **DeviceProvisioning**。
+1. 在 Visual Studio 中，使用“控制台应用”项目模板创建一个 Visual C# 控制台应用程序项目。 将项目命名为 **DeviceProvisioning**。
     
-1. 在解决方案资源管理器中，右键单击“DeviceProvisioning”项目，然后单击“管理 NuGet 包...”。  
+1. 在解决方案资源管理器中，右键单击“DeviceProvisioning”项目，然后单击“管理 NuGet 包...”。
 
-1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices.provisioning.service**。   选择该项，单击“安装”以安装 **Microsoft.Azure.Devices.Provisioning.Service** 包，并接受使用条款。  此过程会下载、安装 [Azure IoT 设备预配服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
+1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices.provisioning.service**。 选择该项，单击“安装”以安装 **Microsoft.Azure.Devices.Provisioning.Service** 包，并接受使用条款。 此过程会下载、安装 [Azure IoT 设备预配服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs  文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. 将以下字段添加到 Program 类  。 将占位符值替换为上一部分中所述的设备预配服务连接字符串。
+1. 将以下字段添加到 Program 类。 将占位符值替换为上一部分中所述的设备预配服务连接字符串。
    
     ```csharp
     static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
@@ -129,7 +129,7 @@ ms.locfileid: "94966558"
     Console.ReadLine();
     ```
         
-1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”  。选择“单个启动项目”，并在下拉菜单中选择“DeviceProvisioning”项目。    
+1. 在 Visual Studio 的“解决方案资源管理器”中右键单击解决方案，并单击“设置启动项目...”。选择“单个启动项目”，并在下拉菜单中选择“DeviceProvisioning”项目。   
 
 1. 运行 .NET 设备应用 **DeviceProvisiong**。 该应用应会设置设备预配： 
 
@@ -144,15 +144,15 @@ ms.locfileid: "94966558"
 > [!NOTE]
 > 登记组示例需要 X.509 证书。
 
-1. 在 Visual Studio 的解决方案资源管理器中，打开前面创建的“DeviceProvisioning”项目。  
+1. 在 Visual Studio 的解决方案资源管理器中，打开前面创建的“DeviceProvisioning”项目。 
 
-1. 在 Program.cs  文件顶部添加以下 `using` 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
     ```
 
-1. 将以下字段添加到 Program 类  。 将占位符值替换为 X509 证书位置。
+1. 将以下字段添加到 Program 类。 将占位符值替换为 X509 证书位置。
    
     ```csharp
     private const string X509RootCertPathVar = "{X509 Certificate Location}";
@@ -235,7 +235,7 @@ ms.locfileid: "94966558"
 2. 对于 TPM 设备，设备预配服务将回复注册质询，设备需对此进行答复。 
 3. 注册成功后，设备预配服务会向设备发送 IoT 中心 URI、设备 ID 和加密密钥。 
 4. 设备上的 IoT 中心客户端应用程序随后会连接到你的中心。 
-5. 成功连接到中心后，设备应出现在 IoT 中心的“Device Explorer”中  。 
+5. 成功连接到中心后，设备应出现在 IoT 中心的“Device Explorer”中。 
 
     ![成功连接到门户中的中心](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 

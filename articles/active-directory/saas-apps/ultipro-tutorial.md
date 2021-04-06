@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 8ae693d7f6974415eac294289288879d9668604c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>教程：Azure Active Directory 与 UltiPro 集成
@@ -27,7 +27,7 @@ ms.locfileid: "98735575"
 * 在一个中心位置（Azure 门户）管理帐户。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

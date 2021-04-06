@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 08cee87d94b20e99bcc46d42cbac7eb4272561bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460221"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92460221"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Infinite Campus 的集成，需要以下项：
 
@@ -62,7 +62,7 @@ ms.locfileid: "92460221"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Infinite Campus** ，在结果面板中选择“Infinite Campus”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Infinite Campus**，在结果面板中选择“Infinite Campus”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 Infinite Campus](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "92460221"
 
 若要配置 Infinite Campus 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Infinite Campus”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Infinite Campus”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "92460221"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分执行以下步骤（请注意，域根据托管模型而异，但“完全限定的域”值必须与 Infinite Campus 安装相匹配）： 
+4. 在“基本 SAML 配置”部分执行以下步骤（请注意，域根据托管模型而异，但“完全限定的域”值必须与 Infinite Campus 安装相匹配）：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    b. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
 
@@ -116,25 +116,25 @@ ms.locfileid: "92460221"
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Infinite Campus。
 
-2. 在菜单左侧，单击“系统管理”。 
+2. 在菜单左侧，单击“系统管理”。
 
     ![管理](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. 导航到“用户安全性” > “SAML 管理” > “SSO 服务提供程序配置”。
+3. 导航到“用户安全性” > “SAML 管理” > “SSO 服务提供程序配置”。  
 
     ![SAML](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
-4. 在“SSO 服务提供程序配置”页上执行以下步骤： 
+4. 在“SSO 服务提供程序配置”页上执行以下步骤：
 
     ![SSO](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
-    a. 选择“启用 SAML 单一登录”  。
+    a. 选择“启用 SAML 单一登录”。
 
-    b. 编辑“可选属性名称”以包含“名称”  
+    b. 编辑“可选属性名称”以包含“名称”
 
-    c. 在“选择检索标识提供者(IDP)服务器数据的选项”部分，选择“元数据 URL”，在框中粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“同步”     。
+    c. 在“选择检索标识提供者(IDP)服务器数据的选项”部分，选择“元数据 URL”，在框中粘贴从 Azure 门户复制的“应用联合元数据 URL”值，然后单击“同步”。
 
-    d. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。   可以验证这些值是否与上述步骤 4 中显示的值相匹配。
+    d. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。 可以验证这些值是否与上述步骤 4 中显示的值相匹配。
 
     e. 单击“保存”  。
 
@@ -146,7 +146,7 @@ ms.locfileid: "92460221"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -160,20 +160,20 @@ ms.locfileid: "92460221"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 > [!NOTE]
-> 如果你希望所有 Azure 用户都能够对 Infinite Campus 进行单一登录访问，并依赖于使用 Infinite Campus 内部权限系统来控制访问，可将应用程序的“需要用户分配”属性设置为“否”，并跳过以下步骤。 
+> 如果你希望所有 Azure 用户都能够对 Infinite Campus 进行单一登录访问，并依赖于使用 Infinite Campus 内部权限系统来控制访问，可将应用程序的“需要用户分配”属性设置为“否”，并跳过以下步骤。
 
 在本部分，我们通过授予 Britta Simon 访问 Infinite Campus 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Infinite Campus”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Infinite Campus”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Infinite Campus”  。
+2. 在应用程序列表中，选择“Infinite Campus”。
 
     ![“应用程序”列表中的“Infinite Campus”链接](common/all-applications.png)
 

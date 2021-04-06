@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: bbe928084a758335e5fa3b0531726c77a6d599b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85838764"
 ---
 下表列出了适用于 Azure IoT 中心设备预配服务资源的限制。
@@ -33,6 +33,6 @@ ms.locfileid: "85838764"
 
 | 限制 | 每单位值 |
 | --- | --- |
-| 操作 | 200/分钟/服务 |
+| Operations | 200/分钟/服务 |
 | 设备注册数 | 200/分钟/服务 |
 | 设备轮询操作 | 5/10 秒/设备 |
