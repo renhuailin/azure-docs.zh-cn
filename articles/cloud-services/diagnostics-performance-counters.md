@@ -1,5 +1,5 @@
 ---
-title: " (经典) 在 Azure 云服务中收集性能计数器 |Microsoft Docs"
+title: 在 Azure 云服务（经典）中收集性能计数器 | Microsoft Docs
 description: 了解如何使用 Azure 诊断和 Application Insights 在云服务中发现、使用和创建性能计数器。
 ms.topic: article
 ms.service: cloud-services
@@ -9,16 +9,16 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100585506"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a> (经典) 收集 Azure 云服务的性能计数器
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>收集 Azure 云服务（经典）的性能计数器
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 使用性能计数器可以跟踪应用程序和主机的运行情况。 Windows Server 提供与硬件、应用程序、操作系统等相关的许多不同性能计数器。 通过收集性能计数器并将其发送到 Azure，可以分析此信息以帮助做出更明智的决策。 
 
