@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: ff5da4b87589889172a9518fd67486fe14451630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>教程：Azure Active Directory 与 Dossier 的集成
@@ -41,7 +41,7 @@ ms.locfileid: "92454637"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Dossier 支持 SP 发起的 SSO 
+* Dossier 支持 SP 发起的 SSO
 
 ## <a name="adding-dossier-from-the-gallery"></a>从库中添加 Dossier
 
@@ -61,13 +61,13 @@ ms.locfileid: "92454637"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Dossier”，在结果面板中选择“Dossier”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“Dossier”，在结果面板中选择“Dossier”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Dossier](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 Dossier 配置和测试 Azure AD 单一登录。 
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Dossier 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Dossier 相关用户之间建立关联。
 
 若要配置并测试 Dossier 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92454637"
 
 要为 Dossier 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 **Dossier** 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)的 **Dossier** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "92454637"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Dossier 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "92454637"
     > [!NOTE]
     > 标识符值应采用 `Dossier/<CLIENTNAME>` 格式或任何用户个性化值。
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
+    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：
     
     ```http
     https://<SUBDOMAIN>.dossiersystems.com/azuresso
@@ -124,11 +124,11 @@ ms.locfileid: "92454637"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Dossier 客户端支持团队](mailto:support@intellimedia.ca)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击复制按钮以根据要求复制从给定选项提供的“应用联合元数据 URL”并将其保存在计算机上    。
+4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击复制按钮以根据要求复制从给定选项提供的“应用联合元数据 URL”并将其保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-6. 在“设置 Dossier”部分，根据要求复制相应 URL  。
+6. 在“设置 Dossier”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "92454637"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -164,17 +164,17 @@ ms.locfileid: "92454637"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过向 Britta Simon 授予 Dossier 的访问权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Dossier”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Dossier”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Dossier”  。
+2. 在应用程序列表中，选择“Dossier”。
 
     ![应用程序列表中的 Dossier 链接](common/all-applications.png)
 

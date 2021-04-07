@@ -4,10 +4,10 @@ description: 以编程方式创建在 Azure 资源不可用时发出通知的警
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 4f1cbe1e2d2c185906feb4ccba380cb31df864f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100588197"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报

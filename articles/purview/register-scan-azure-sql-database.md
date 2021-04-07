@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a708f0c1884073a2f2ea73092d25006415c59d5f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677732"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655217"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -157,7 +157,8 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> 删除扫描不会删除以前的 Azure SQL 数据库扫描中的资产。
+> * 删除扫描不会删除以前的 Azure SQL 数据库扫描中的资产。
+> * 如果在 Purview 的“架构”选项卡中编辑描述后，更改了源表并重新扫描源表，则不会再用架构更改来更新该资产。
 
 ## <a name="next-steps"></a>后续步骤
 

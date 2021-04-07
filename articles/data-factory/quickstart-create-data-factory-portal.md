@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: e7d4770af38081353fc58eec9957f50e2b6a7348
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372784"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654993"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
@@ -39,7 +39,8 @@ ms.locfileid: "100372784"
 1. 在 Azure 门户菜单中，选择“创建资源”。
 1. 选择“集成”，然后选择“数据工厂” 。 
    
-   ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="在新建窗格中选择数据工厂。":::
+
 1. 在“创建数据工厂”页上的“基本”选项卡下，选择要在其中创建数据工厂的 Azure 订阅  。
 1. 对于“资源组”，请执行以下步骤之一：
 
@@ -55,8 +56,8 @@ ms.locfileid: "100372784"
  
 1. 对于“名称”，输入“ADFTutorialDataFactory” 。
    Azure 数据工厂的名称必须 *全局唯一*。 如果出现以下错误，请更改数据工厂的名称（例如改为 **&lt;yourname&gt;ADFTutorialDataFactory**），并重新尝试创建。 有关数据工厂项目的命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
-  
-   ![名称不可用时出错](./media/doc-common-process/name-not-available-error.png)
+
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
 
 1. 对于“版本”，选择“V2”。 
 
@@ -66,7 +67,7 @@ ms.locfileid: "100372784"
 
 1. 选择“创作和监视”磁贴，在单独的浏览器选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
-   ![数据工厂的主页，其中包含“创作和监视”磁贴](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含创作和监视磁贴。":::
    
    > [!NOTE]
    > 如果你看到 Web 浏览器停留在“正在授权”状态，请清除“阻止第三方 Cookie 和站点数据”复选框。 或者使其保持选中状态，为 **login.microsoftonline.com** 创建一个例外，然后再次尝试打开该应用。
@@ -79,7 +80,7 @@ ms.locfileid: "100372784"
 
 1. 在“链接服务”页上，选择“+ 新建”以创建新的链接服务。
 
-   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="新建链接服务。":::
    
 1. 在“新建链接服务”页中，选择“Azure Blob 存储”，然后选择“继续”。   
 
@@ -93,7 +94,7 @@ ms.locfileid: "100372784"
 
    d. 选择“创建”以保存链接服务。 
 
-      ![链接服务](./media/quickstart-create-data-factory-portal/linked-service.png)
+      :::image type="content" source="./media/quickstart-create-data-factory-portal/linked-service.png" alt-text="链接服务。":::
 
 
 ## <a name="create-datasets"></a>创建数据集
@@ -109,13 +110,13 @@ ms.locfileid: "100372784"
 
 1. 选择“+ (加)”按钮，然后选择“数据集”。 
 
-   ![用于创建数据集的菜单](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-dataset-menu.png" alt-text="用于创建数据集的菜单。":::
 
 1. 在“新建数据集”页中，选择“Azure Blob 存储”，然后选择“继续”。   
 
 1. 在“选择格式”页上选择数据的格式类型，然后选择“继续”。  在本例中，当按原样复制文件而不分析内容时，请选择“二进制”。
 
-   ![选择格式](./media/quickstart-create-data-factory-portal/select-format.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/select-format.png" alt-text="选择格式。":::   
    
 1. 在“设置属性”页上，完成以下步骤：
 
@@ -129,7 +130,8 @@ ms.locfileid: "100372784"
     
     e. 选择“确定”。   
 
-    ![设置 InputDataset 的属性](./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-inputdataset.png" alt-text="设置 InputDataset 的属性。":::
+
 1. 重复创建输出数据集的步骤：  
 
     a. 选择“+ (加)”按钮，然后选择“数据集”。 
@@ -144,7 +146,7 @@ ms.locfileid: "100372784"
 
     f. 选择“确定”。   
 
-    ![设置 OutputDataset 的属性](./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/set-properties-for-outputdataset.png" alt-text="设置 OutputDataset 的属性。":::    
 
 ## <a name="create-a-pipeline"></a>创建管道 
 此过程创建和验证一个管道，其中包含的复制活动可使用输入和输出数据集。 复制活动将数据从输入数据集设置中指定的文件复制到输出数据集设置中指定的文件。 如果输入数据集只指定了一个文件夹（不是文件名），则复制活动会将源文件夹中的所有文件复制到目标。 
@@ -155,7 +157,7 @@ ms.locfileid: "100372784"
 
 1. 在“活动”工具箱中，展开“移动和转换”。 将“复制数据”活动从“活动”工具箱拖到管道设计器图面。  也可在“活动”工具箱中搜索活动。 指定 **CopyFromBlobToBlob** 作为 **名称**。
 
-   ![创建复制数据活动](./media/quickstart-create-data-factory-portal/copy-activity.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-activity.png" alt-text="创建复制数据活动。":::   
 
 1. 切换到复制活动设置中的“源”选项卡，选择 **InputDataset** 作为 **源数据集**。
 
@@ -163,7 +165,7 @@ ms.locfileid: "100372784"
 
 1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择右上角的“验证”按钮。 
 
-   ![验证管道](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-validate.png"   alt-text="验证管道。":::
 
 ## <a name="debug-the-pipeline"></a>调试管道
 此步骤对管道进行调试，然后再将其部署到数据工厂。 
@@ -172,7 +174,7 @@ ms.locfileid: "100372784"
     
 1. 确认可以在底部的管道设置的“输出”选项卡中看到管道运行的状态。 
  
-    ![管道运行输出](./media/quickstart-create-data-factory-portal/pipeline-output.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/pipeline-output.png" alt-text="管道运行输出":::
 
 1. 确认可以在 **adftutorial** 容器的 **output** 文件夹中看到输出文件。 如果 output 文件夹不存在，数据工厂服务会自动创建它。 
 
@@ -181,7 +183,7 @@ ms.locfileid: "100372784"
 
 1. 在触发管道之前，必须将实体发布到数据工厂。 若要发布，请选择顶部的“全部发布”。 
 
-    ![全部发布](./media/quickstart-create-data-factory-portal/publish-all.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/publish-all.png" alt-text="全部发布。":::    
 
 1. 若要手动触发管道，请选择管道工具栏中的“添加触发器”，然后选择“立即触发”。  在“管道运行”页上，选择“确定” 。
 
@@ -189,12 +191,12 @@ ms.locfileid: "100372784"
 
 1. 在左侧切换到“监视”选项卡。 使用“刷新”按钮刷新列表。
 
-   ![用于监视管道运行的选项卡](./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/monitor-trigger-now-pipeline.png" alt-text="用于监视管道运行的选项卡"::: 
 1. 选择“CopyPipeline”链接，此时会在此页中看到复制活动运行的状态。 
 
 1. 若要查看复制操作的详细信息，请选择“详细信息”（眼镜图标）链接。 有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。 
 
-   ![复制操作详细信息](./media/quickstart-create-data-factory-portal/copy-operation-details.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/copy-operation-details.png" alt-text="复制操作详细信息。":::
 1. 确认可以在 **output** 文件夹中看到新文件。 
 1. 可以选择“所有管道运行”链接，从“活动运行”视图切换回到“管道运行”视图。   
 
@@ -213,7 +215,7 @@ ms.locfileid: "100372784"
 
 1. 在“新建触发器”页上选中“已激活”复选框，然后选择“确定”。   
 
-   ![“新建触发器”设置](./media/quickstart-create-data-factory-portal/trigger-settings-next.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-portal/trigger-settings-next.png" alt-text="新建触发器设置。":::   
 1. 查看警告消息，然后选择“确定”。
 
 1. 选择“全部发布”，将所做的更改发布到数据工厂。 

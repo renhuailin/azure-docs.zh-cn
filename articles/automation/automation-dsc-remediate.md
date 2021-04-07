@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
 ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500166"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>修正不符合条件的 Azure 自动化 State Configuration 服务器

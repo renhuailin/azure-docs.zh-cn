@@ -9,18 +9,20 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920851"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103461413"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
+# <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>教程：使用 Linux 容器开发 IoT Edge 模块
 
-使用 Visual Studio Code 开发代码并将其部署到运行 IoT Edge 的 Linux 设备。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-在快速入门中，你已使用 Linux 虚拟机创建了 IoT Edge 设备，并部署了来自 Azure 市场的模块。 本教程逐步介绍如何开发自己的代码并将其部署到 IoT Edge 设备。 本文是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。
+使用 Visual Studio Code 开发代码并将其部署到运行 IoT Edge 的设备。
+
+在快速入门中，你已创建了 IoT Edge 设备，并部署了来自 Azure 市场的模块。 本教程逐步介绍如何开发自己的代码并将其部署到 IoT Edge 设备。 本文是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。
 
 本教程使用 **将 C# 模块部署到 Linux 设备** 的示例。 之所以选择此示例，是因为它是 IoT Edge 解决方案中最常见的开发人员方案。 即使你计划使用其他语言或部署 Azure 服务，本教程仍然有助于了解开发工具和概念。 阅读开发过程的介绍，然后选择偏好的语言或 Azure 服务来深入了解细节。
 
@@ -44,7 +46,7 @@ ms.locfileid: "96920851"
 * [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
-Linux 上的 Azure IoT Edge 设备：
+Azure IoT Edge 设备：
 
 * 我们建议不要在开发计算机上运行 IoT Edge，而应使用单独的设备。 开发计算机和 IoT Edge 设备之间的这一区分可更准确地反映真实部署方案，并有助于区分不同的概念。
 * 如果没有第二台可用的设备，请按照快速入门文章的说明在 Azure 中使用 [Linux 虚拟机](quickstart-linux.md)创建 IoT Edge 设备。
@@ -61,7 +63,10 @@ Linux 上的 Azure IoT Edge 设备：
 
 开发 IoT Edge 模块时，了解开发计算机和最终将部署模块的目标 IoT Edge 设备之间的差异非常重要。 为保存模块代码而生成的容器必须与 *目标设备* 的操作系统 (OS) 匹配。 例如，最常见的方案是在 Windows 计算机上开发面向运行 IoT Edge 的 Linux 设备的模块。 在这种情况下，容器操作系统将为 Linux。 在学习本教程的过程中，请记住 *开发计算机 OS* 和 *容器 OS* 之间的差异。
 
-本教程针对运行 IoT Edge 的 Linux 设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选操作系统。 我们建议使用 Visual Studio Code 进行 Linux 设备开发，这也是本教程将使用的工具。 还可以使用 Visual Studio，但这两个工具提供的支持存在差异。
+>[!TIP]
+>如果使用的是 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md)，则方案中的“目标设备”是 Linux 虚拟机，而不是 Windows 主机。
+
+本教程针对使用 Linux 容器运行 IoT Edge 的设备。 只要开发计算机可以运行 Linux 容器，就可以使用首选操作系统。 我们建议通过 Linux 容器使用 Visual Studio Code 进行开发，因此这就是本教程将要使用的工具。 还可以使用 Visual Studio，但这两个工具提供的支持存在差异。
 
 下表列出了 Visual Studio Code 和 Visual Studio 支持的 **Linux 容器** 开发方案。
 

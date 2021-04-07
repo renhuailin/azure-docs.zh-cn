@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5c668783232533098822cca982f1af9008f13640
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 5e220759a46ad9098f81a9534fa64145adade2b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761725"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613118"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教程：准备部署 Azure Stack Edge Pro R
 
@@ -87,6 +87,8 @@ ms.locfileid: "98761725"
 
 如果现有的 Azure Stack Edge 资源可以管理物理设备，请跳过此步骤，转到[获取激活密钥](#get-the-activation-key)。
 
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 若要创建 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
 
 1. 使用 Microsoft Azure 凭据通过以下 URL 登录到 Azure 门户：[https://portal.azure.com](https://portal.azure.com)。
@@ -107,12 +109,12 @@ ms.locfileid: "98761725"
 
 6. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
-    |设置  |值  |
+    |设置  |“值”  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
-7. 输入或选择以下“实例详细信息”。 
+7. 输入或选择以下“实例详细信息”。
 
     |设置  |值  |
     |---------|---------|
@@ -128,7 +130,7 @@ ms.locfileid: "98761725"
 
         ![创建资源 5](media/azure-stack-edge-pro-r-deploy-prep/create-resource-5.png)
 
-    - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
+    - 如果这是您要订购的新设备，请输入联系人姓名、公司、要将该设备寄送到的地址，以及联系人信息。
 
         ![创建资源 6](media/azure-stack-edge-pro-r-deploy-prep/create-resource-6.png)
 
@@ -148,7 +150,7 @@ ms.locfileid: "98761725"
 
     ![转到 Azure Stack Edge Pro 资源](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
 
-在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
+在你下单以后，Microsoft 会审核该订单并通过电子邮件联系你，核对配送详细信息。
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
@@ -156,6 +158,51 @@ ms.locfileid: "98761725"
 > 如果要一次创建多个订单或克隆现有订单，可以使用 [Azure 示例中的脚本](https://github.com/Azure-Samples/azure-stack-edge-order)。 有关详细信息，请参阅自述文件。
 
 若在处理订单的过程中遇到任何问题，请参阅[排查订单问题](azure-stack-edge-troubleshoot-ordering.md)。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+如有必要，请为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+若要创建 Azure Stack Edge 资源，请在 Azure CLI 中运行以下命令。
+
+1. 通过使用 [az group create](/cli/azure/group#az_group_create) 命令来创建资源组，或者使用某个现有的资源组：
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. 若要创建设备，请使用 [az databoxedge device create](/cli/azure/databoxedge/device#az_databoxedge_device_create) 命令：
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgePR_Base
+   ```
+
+   选择离要部署设备的地理区域最近的位置。 该区域只存储用于设备管理的元数据。 实际数据可以存储在任何存储帐户中。
+
+   有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。
+
+1. 若要创建订单，请运行 [az databoxedge order create](/cli/azure/databoxedge/order#az_databoxedge_order_create) 命令：
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+创建资源需要几分钟时间。 运行 [az databoxedge order show](/cli/azure/databoxedge/order#az_databoxedge_order_show) 命令以查看该订单：
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+在你下单后，Microsoft 会审核该订单并通过电子邮件联系你，核对配送详细信息。
+
+---
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 

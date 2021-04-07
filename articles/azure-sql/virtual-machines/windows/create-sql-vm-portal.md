@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f0b7e04becd42180df3393d7036294c1629cdc21
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102499486"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>如何使用 Azure 门户为 Windows 虚拟机预配 SQL Server
@@ -184,7 +184,7 @@ ms.locfileid: "102499486"
 
 下表列出了配置 Azure Key Vault (AKV) 集成所需的参数。
 
-| 参数 | 说明 | 示例 |
+| 参数 | DESCRIPTION | 示例 |
 | --- | --- | --- |
 | **密钥保管库 URL** |密钥保管库的位置。 |`https://contosokeyvault.vault.azure.net/` |
 | **主体名称** |Azure Active Directory 服务主体名称。 该名称也称为客户端 ID。 |`fde2b411-33d5-4e11-af04eb07b669ccf2` |

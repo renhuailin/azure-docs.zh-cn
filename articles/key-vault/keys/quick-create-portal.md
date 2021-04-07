@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97935047"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
@@ -60,7 +60,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 3. 在“创建密钥”  屏幕上，选择以下值：
     - **选项**：生成。
     - **名称**：ExampleKey。
-    - 让其他值保留默认设置。 单击“创建”。 
+    - 让其他值保留默认设置。 单击 **创建**。
 
 收到密钥已成功创建的消息后，即可单击列表中的该密钥， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。
 
