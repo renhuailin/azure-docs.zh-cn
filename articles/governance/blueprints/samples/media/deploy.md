@@ -4,10 +4,10 @@ description: 媒体蓝图示例的部署步骤，包括蓝图项目参数详细�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 13d50c2a791a72c58d8ebef7a46c592efd0cb9a8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100577303"
 ---
 # <a name="deploy-the-media-blueprint-sample"></a>部署媒体蓝图示例
@@ -42,7 +42,7 @@ ms.locfileid: "100577303"
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
 
 1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。  在“策略”页上选择“蓝图”。 
 

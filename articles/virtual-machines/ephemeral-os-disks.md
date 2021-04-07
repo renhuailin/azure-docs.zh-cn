@@ -9,10 +9,10 @@ ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102485752"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘

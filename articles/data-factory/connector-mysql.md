@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: jingwang
 ms.openlocfilehash: b6a2253a4a124fe5e3725863c799f91714e66cab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100375249"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
@@ -60,7 +60,7 @@ MySQL 链接的服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必须 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`。| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | SSLCert | 包含用于证明客户端身份的 SSL 证书的 .pem 文件的完整路径和名称。 <br/> 若要在将此证书发送到服务器之前，指定私钥来加密此证书，请使用 `SSLKey` 属性。| | 是（如果使用双向 SSL 验证）。 |

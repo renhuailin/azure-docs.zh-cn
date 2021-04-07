@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: fdc7360911e37babdb830b7d67ad7224ea84c774
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92038572"
 ---
 运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 “输出”窗口中显示的消息包含正文部分和 applicationProperties 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](../../../../../iot-hub/iot-hub-devguide-messages-construct.md)。

@@ -9,17 +9,17 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67235248"
 ---
-设置终结点和消息路由以后，即可在门户中查看其配置。 登录 [Azure 门户](https://portal.azure.com)，转到“资源组”。  接下来选择你的资源组，然后选择中心（在本教程中，中心名称以 `ContosoTestHub` 开头）。 此时会看到“IoT 中心”窗格。
+设置终结点和消息路由以后，即可在门户中查看其配置。 登录 [Azure 门户](https://portal.azure.com)，转到“资源组”。 接下来选择你的资源组，然后选择中心（在本教程中，中心名称以 `ContosoTestHub` 开头）。 此时会看到“IoT 中心”窗格。
 
 ![IoT 中心属性平面](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)
 
-在适用于 IoT 中心的选项中，选择“消息路由”。  此时会显示已成功设置的路由。
+在适用于 IoT 中心的选项中，选择“消息路由”。 此时会显示已成功设置的路由。
 
 ![已设置的路由](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
 

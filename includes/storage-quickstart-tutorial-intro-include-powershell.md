@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 1f8f8d314a8bb37a08b3696f597b395a8a4beb8e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67173174"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 创建具有 LRS 复制功能的标准常规用途存储帐户。 接下来，获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复传入凭据。 使用以下示例创建一个名为 mystorageaccount  的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。
+使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 创建具有 LRS 复制功能的标准常规用途存储帐户。 接下来，获取用于定义要使用的存储帐户的存储帐户上下文。 对存储帐户执行操作时，引用上下文而不是重复传入凭据。 使用以下示例创建一个名为 mystorageaccount 的存储帐户，该帐户默认启用本地冗余存储 (LRS) 和 Blob 加密。
 
 ```powershell
 $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `

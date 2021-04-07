@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80272835"
 ---
 可以在一个订阅中创建多个服务。 每一个服务都可以在特定层上进行预配。 你仅受每个层允许的服务数量限制。 例如，在同一订阅中，最多可以在基本层创建 12 个服务，在 S1 层也创建 12 个服务。 有关层的详细信息，请参阅[为 Azure 认知搜索选择 SKU 或层](../articles/search/search-sku-tier.md)。
@@ -25,4 +25,4 @@ ms.locfileid: "80272835"
 
 <sup>1</sup> 免费层基于共享资源，而不基于专用资源。 共享资源不支持纵向扩展。
 
-<sup>2</sup> 搜索单位是计费单位，以副本  或分区  形式分配。 进行存储、索引和查询操作同时需要这两个资源。 若要了解有关 SU 计算的详细信息，请参阅[缩放查询和索引工作负荷的资源级别](../articles/search/search-capacity-planning.md)。 
+<sup>2</sup> 搜索单位是计费单位，以副本或分区形式分配。 进行存储、索引和查询操作同时需要这两个资源。 若要了解有关 SU 计算的详细信息，请参阅[缩放查询和索引工作负荷的资源级别](../articles/search/search-capacity-planning.md)。 

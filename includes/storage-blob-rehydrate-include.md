@@ -11,10 +11,10 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: a369eb7000fb8622a69f4205ffcc232ae9c9d242
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95545919"
 ---
 若要读取存档存储中的数据，必须先将 Blob 的层更改为热层或冷层。 此过程称为解冻，可能需要多个小时才能完成。 建议使用较大的 Blob 大小，以优化解冻性能。 同时解冻多个小型 Blob 可能导致该时间延长。 目前有两种解冻优先级：“高”和“标准”，可以在[设置 Blob 层](/rest/api/storageservices/set-blob-tier)或[复制 Blob](/rest/api/storageservices/copy-blob) 操作中通过可选的 x-ms-rehydrate-priority 属性进行设置。

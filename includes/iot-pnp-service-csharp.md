@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
 ms.openlocfilehash: 4308dd2b63b33604af83b360e5c1c0f02a3dec27
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95487779"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 C# 来连接和控制已与解决方案连接的 IoT 即插即用设备。

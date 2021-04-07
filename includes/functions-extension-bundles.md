@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
 ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010435"
 ---
 安装绑定扩展的最简单方法是启用[扩展捆绑包](../articles/azure-functions/functions-bindings-register.md#extension-bundles)。 启用捆绑包时，会自动安装一组预定义的扩展包。

@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.date: 02/14/2020
 ms.topic: include
 ms.openlocfilehash: 5eb2517b4b71b61dd70406f345c005d007d9e3ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91535945"
 ---
 通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。

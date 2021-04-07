@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: diviso
 ms.custom: include file
 ms.openlocfilehash: e584b6eff16636f0657c586f6c630dbf8bbb99b2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96026958"
 ---
 下面概述了 Azure 时序见解 Gen1 中的主要限制。
@@ -25,12 +25,12 @@ S1 和 S2 SKU 入口速率和容量可在配置新的 Azure 时序见解环境�
 | S1 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
 | 1 | 每天 1 GB（1 百万个事件） | 每月 30 GB（3 千万个事件） |
-| 10 个 | 每天 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
+| 10 | 每天 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
 
 | S2 SKU 容量 | 入口速率 | 最大存储容量
 | --- | --- | --- |
 | 1 | 每天 10 GB（1 千万个事件） | 每月 300 GB（3 亿个事件） |
-| 10 个 | 每天 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
+| 10 | 每天 100 GB（1 亿个事件） | 每月 3 TB（30 亿个事件） |
 
 > [!NOTE]
 > 容量呈线性增长，因此容量为 2 的 S1 SKU 每日入口速率支持 2 GB（2 百万）的事件，每月支持 60 GB（6 千万）的事件。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: tamram
 ms.openlocfilehash: 27617da97ced9ac775beae71e4c25202944b2aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "78940921"
 ---
 下表描述了表存储的容量、可伸缩性和性能目标。
@@ -21,7 +21,7 @@ ms.locfileid: "78940921"
 | 单个表的最大大小 | 500 TiB |
 | 单个实体的最大大小，包括所有属性值 | 1 MiB |
 | 表实体中属性的最大数目 | 255（包括 3 个系统属性：**PartitionKey**、**RowKey** 和 **Timestamp**） |
-| 实体中单个属性的最大总大小 | 因属性类型而异。 有关详细信息，请参阅[了解表服务数据模型](/rest/api/storageservices/understanding-the-table-service-data-model)中的**属性类型**。 |
+| 实体中单个属性的最大总大小 | 因属性类型而异。 有关详细信息，请参阅 [了解表服务数据模型](/rest/api/storageservices/understanding-the-table-service-data-model)中的 **属性类型**。 |
 | **PartitionKey** 的大小 | 大小最大为 1 KiB 的字符串 |
 | **RowKey** 的大小 | 大小最大为 1 KiB 的字符串 |
 | 实体组事务的大小 | 一个事务最多可包含 100 个实体，并且有效负载大小必须小于 4 MiB。 实体组事务只能包含对实体的更新一次。 |

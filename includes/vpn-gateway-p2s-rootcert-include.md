@@ -9,10 +9,10 @@ ms.date: 10/28/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 59d18c89a8f66f781f01d1dace9d8968df17a626
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93041578"
 ---
 获取根证书的 .cer 文件。 你可以使用通过企业解决方案生成的根证书（推荐），或者生成自签名证书。 创建根证书后，将公共证书数据（不是私钥）作为 Base64 编码的 X.509 .cer 文件导出。 稍后，请将此文件上传到 Azure。

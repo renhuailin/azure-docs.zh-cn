@@ -1,24 +1,14 @@
 ---
 title: 安装和部署 Linux C 代理
 description: 了解如何在 Linux 上安装和部署 Defender for IoT 基于 C 的安全代理
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 6d3f96ed60ca784402b6d24eea7234f37c4fb959
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 6f59db7ff24412c66a6a4898b14272ea9540fdd2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449775"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778808"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>部署适用于 Linux 的 Defender for IoT 基于 C 的安全代理
 
@@ -35,7 +25,7 @@ ms.locfileid: "102449775"
 
 1. 若要部署安全代理，在希望在其上进行安装的计算机上，需要拥有本地管理员权限 (sudo)。
 
-1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
+1. 为设备[创建 Defender-IoT-micro-agent](quickstart-create-security-twin.md)。
 
 ## <a name="installation"></a>安装
 

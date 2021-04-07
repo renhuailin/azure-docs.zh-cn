@@ -9,10 +9,10 @@ ms.date: 6/2/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a42f963f5eb79ef5b430f6fc9d2a0144c370353a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98673835"
 ---
 若要仅限特定的虚拟网络使用服务终结点访问存储帐户的公共终结点，首先需要收集有关该存储帐户和虚拟网络的信息。 填写 `<storage-account-resource-group>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>` 和 `<subnet-name>` 以收集此信息。

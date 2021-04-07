@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92479530"
 ---
 1. 打开虚拟网络网关的页面。 可通过转到你的 VNet 名称 ->“概述”->“已连接的设备”-> 你的网关名称来导航到网关（但也可以通过多种其他方法进行导航）。

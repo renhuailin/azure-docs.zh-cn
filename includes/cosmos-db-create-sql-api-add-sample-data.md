@@ -9,15 +9,15 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "70020173"
 ---
 现在可以使用数据资源管理器将数据添加到新容器。
 
-1. 在“数据资源管理器”中展开“Tasks”数据库，然后展开“Items”容器。    依次选择“项”、“新建项”。  
+1. 在“数据资源管理器”中展开“Tasks”数据库，然后展开“Items”容器。 依次选择“项”、“新建项”。
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
@@ -33,7 +33,7 @@ ms.locfileid: "70020173"
      }
      ```
 
-3. 将 json 添加到“文档”选项卡以后，即可选择“保存”。  
+3. 将 json 添加到“文档”选项卡以后，即可选择“保存”。
 
     ![通过复制添加 JSON 数据，然后在 Azure 门户上的数据资源管理器中选择“保存”](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 

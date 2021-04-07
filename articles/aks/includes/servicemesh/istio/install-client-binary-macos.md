@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/02/2020
 ms.author: pabouwer
 ms.openlocfilehash: 5dc9686e4a9994a085cc9f4a4631e66b05d7949d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91666687"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件
 
-在 macOS 上基于 bash 的 shell 中，使用 `curl` 下载 Istio 版本，然后提取， `tar` 如下所示：
+在 MacOS 上基于 bash 的 shell 中，使用 `curl` 下载 Istio 发行版，然后使用 `tar` 进行解压缩，如下所示：
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -21,7 +21,7 @@ ISTIO_VERSION=1.7.3
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-`istioctl`客户端二进制文件在客户端计算机上运行，并允许在 AKS 群集中安装和管理 Istio。 使用以下命令在 `istioctl` macOS 上的基于 bash 的 shell 中安装 Istio 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到 `PATH` 中的标准用户程序位置。
+`istioctl` 客户端二进制文件在客户端计算机上运行，这使你可以安装并管理 AKS 群集中的 Istio。 在 MacOS 上基于 bash 的 shell 中使用以下命令安装 Istio `istioctl` 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到 `PATH` 中的标准用户程序位置。
 
 ```bash
 sudo mv ./istioctl /usr/local/bin/istioctl

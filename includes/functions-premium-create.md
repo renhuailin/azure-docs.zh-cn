@@ -9,13 +9,13 @@ ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
 ms.openlocfilehash: cdeba09c91bee72508632b8468126150017df7cd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98187117"
 ---
-1. 在 Azure 门户菜单或“主页”页中，选择“创建资源”   。
+1. 在 Azure 门户菜单或“主页”页中，选择“创建资源” 。
 
 1. 在 **“新建”** 页面，选择 **“计算”**  >  **“函数应用”** 。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98187117"
 
     | 设置      | 建议的值  | 说明 |
     | ------------ | ---------------- | ----------- |
-    | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 |
+    | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 |
     | **[资源组](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | 要在其中创建 Function App 的新资源组的名称。 |
     | **函数应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。  |
     |**发布**| 代码 | 用于发布代码文件或 Docker 容器的选项。 |

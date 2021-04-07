@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: fauhse
 ms.custom: include file
 ms.openlocfilehash: a086aae35c9a800c6a4cfc3e872a34438bc84095
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99569499"
 ---
 默认情况下，标准文件共享不得超过 5 TiB，但你可将共享上限提高到 100 TiB。 若要提高共享上限，请在存储帐户上启用“大型文件共享”。 高级存储帐户（FileStorage 存储帐户）没有“大型文件共享”功能标志，原因是所有高级文件共享都已经可以预配到全容量 100 TiB。
