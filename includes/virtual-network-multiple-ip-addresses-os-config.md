@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84194202"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>将 IP 地址添加到 VM 操作系统
@@ -23,7 +23,7 @@ ms.locfileid: "84194202"
 <details>
   <summary>展开</summary>
 
-1. 在命令提示符下，键入 *ipconfig /all*。  只能看到*主要*专用 IP 地址（通过 DHCP）。
+1. 在命令提示符下，键入 *ipconfig /all*。  只能看到 *主要* 专用 IP 地址（通过 DHCP）。
 2. 在命令提示符下键入 *ncpa.cpl*，打开“网络连接”窗口。
 3. 打开相应适配器的属性：**以太网**。
 4. 双击“Internet 协议版本 4 (IPv4)”。

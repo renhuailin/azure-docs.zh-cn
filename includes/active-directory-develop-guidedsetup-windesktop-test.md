@@ -15,10 +15,10 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82181523"
 ---
 ## <a name="test-your-code"></a>测试代码
@@ -27,7 +27,7 @@ ms.locfileid: "82181523"
 
 ![测试应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。 使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
+首次运行该应用程序并选择“调用 Microsoft Graph API”按钮时，系统会提示登录。  使用 Azure Active Directory 帐户（工作或学校帐户）或 Microsoft 帐户（live.com、outlook.com）进行测试。
 
 ![登录应用程序](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 

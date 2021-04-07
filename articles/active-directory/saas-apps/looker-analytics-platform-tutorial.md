@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: jeedes
 ms.openlocfilehash: dbb6f6d278256730e77677e78f452615fe4b611e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96180732"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-looker-analytics-platform"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Looker Analytics Platform 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "96180732"
 * 让用户使用其 Azure AD 帐户自动登录到 Looker Analytics Platform。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

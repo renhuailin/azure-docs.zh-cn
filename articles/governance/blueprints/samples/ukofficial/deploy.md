@@ -4,10 +4,10 @@ description: UK OFFICIAL 和 UK NHS 蓝图示例的部署步骤，包括蓝图�
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: fc41e7d9d3867123286f970d7c54f5e6fff2d276
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578037"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署 UK OFFICIAL 和 UK NHS 蓝图示例
@@ -27,7 +27,7 @@ ms.locfileid: "100578037"
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
-1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。 
+1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
 1. 在“其他示例”下找到“UK OFFICIAL”或“UK NHS”蓝图示例，然后选择“使用此示例” 。
 
@@ -42,7 +42,7 @@ ms.locfileid: "100578037"
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
 
 1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 

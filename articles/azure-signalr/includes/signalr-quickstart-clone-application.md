@@ -8,10 +8,10 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: bef803de6cf8d6fdba05950a502d7d70f0da9581
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67173319"
 ---
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
@@ -20,7 +20,7 @@ ms.locfileid: "67173319"
 
 1. 打开 git 终端窗口。 切换到要克隆示例项目的文件夹。
 
-1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat.git
