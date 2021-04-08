@@ -7,18 +7,18 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 3c5e6fd62e4f4db9ccc1306d32d09b8338cbf963
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098020"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023157"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>使用 Azure Percept DK 和 Azure Percept 音频创建语音助理
 
 在本教程中，你将从模板创建一个语音助理，以便通过 Azure Percept DK 和 Azure Percept 音频使用。 语音助理演示在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 中运行，该演示包含一系列由语音控制的虚拟对象。 若要控制对象，请先说关键字（即用于唤醒设备的单词或短语），然后再说命令。 每个模板都响应一组特定命令。
 
-本指南将逐步介绍如何设置设备、创建语音助理和必要的[语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)资源、测试语音助理、配置关键字以及创建自定义关键字。
+本指南将逐步介绍如何设置设备、创建语音助理和必要的[语音服务](../cognitive-services/speech-service/overview.md)资源、测试语音助理、配置关键字以及创建自定义关键字。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -172,7 +172,7 @@ ms.locfileid: "102098020"
 
     :::image type="content" source="./media/tutorial-no-code-speech/speech-studio.png" alt-text="Speech studio 主屏幕的屏幕截图。":::
 
-有关开发自定义命令的详细信息，请参阅[语音服务文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands)。
+有关开发自定义命令的详细信息，请参阅[语音服务文档](../cognitive-services/speech-service/custom-commands.md)。
 
 ## <a name="troubleshooting"></a>疑难解答
 

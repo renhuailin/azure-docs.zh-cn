@@ -11,10 +11,10 @@ ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 030e09f0bb1514e8d3828da52604d751a2a8a11a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520075"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据

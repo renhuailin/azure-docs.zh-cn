@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
 ms.openlocfilehash: 3cca568245dfce01fb96d7a46590cb72349213ac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97591916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Web Cargo Air 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "97591916"
 * 让用户能够使用其 Azure AD 帐户自动登录到 Web Cargo Air。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7338fb480f76ed1a5edbf9502dc0946d08618a63
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4545e92767a427b8cd89af07ed4d06053685977a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644912"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577999"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -58,6 +58,9 @@ ms.locfileid: "101644912"
 > Azure AD 不支持托管域中的智能卡或证书。
 
 验证 Azure AD Connect 是否已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定的组织单位 (OU)，请将 OU 配置为在 Azure AD Connect 中进行同步。 若要详细了解如何使用 Azure AD Connect 同步计算机对象，请参阅[基于组织单位的筛选](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
+
+> [!NOTE]
+> 若要使设备注册同步加入成功，作为设备注册配置的一部分，请不要从 Azure AD Connect 同步配置中排除默认设备属性。 若要详细了解同步到 AAD 的默认设备属性，请参阅 [Azure AD Connect 同步的属性](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized#windows-10)。
 
 从版本 1.1.819.0 开始，Azure AD Connect 包含用于配置混合 Azure AD 加入的向导。 该向导显著简化了配置过程。 向导配置设备注册的服务连接点 (SCP)。
 

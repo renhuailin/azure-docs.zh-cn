@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
 ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520007"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>通过基于标识的数据访问连接到存储（预览版）
@@ -25,7 +25,7 @@ ms.locfileid: "102520007"
 
 本文介绍如何通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)，使用基于标识的数据访问和 Azure 机器学习数据存储连接到 Azure 上的存储服务。  
 
-通常，数据存储使用基于凭据的数据访问来确认你有权访问存储服务。 它们将连接信息（如订阅 ID 和令牌授权）存储在与工作区关联的 [Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 当创建使用基于标识的数据访问的数据存储时，系统使用你的 Azure 登录名（[Azure Active Directory 令牌](../active-directory/fundamentals/active-directory-whatis.md)）确认你有权访问存储服务。 在此方案中，不会保存任何身份验证凭据，并且只将存储帐户信息存储在数据存储中。 
+通常，数据存储使用基于凭据的数据访问来确认你有权访问存储服务。 它们将连接信息（如订阅 ID 和令牌授权）存储在与工作区关联的[密钥保管库](https://azure.microsoft.com/services/key-vault/)中。 当创建使用基于标识的数据访问的数据存储时，系统使用你的 Azure 登录名（[Azure Active Directory 令牌](../active-directory/fundamentals/active-directory-whatis.md)）确认你有权访问存储服务。 在此方案中，不会保存任何身份验证凭据，并且只将存储帐户信息存储在数据存储中。 
 
 若要创建使用基于凭据的身份验证（如访问密钥或服务主体）的数据存储，请参阅[连接到 Azure 上的存储服务](how-to-access-data.md)。
 
@@ -40,11 +40,11 @@ ms.locfileid: "102520007"
 
 可以使用 Azure 机器学习数据存储库或 [Azure 机器学习数据集](how-to-create-register-datasets.md)通过基于标识的数据访问连接到存储服务。 
 
-通常，身份验证凭据保存在数据存储中，该数据存储用于确保你有权访问存储服务。 将这些凭据注册到数据存储后，具有工作区“读者”角色的任何用户都可以检索它们，某些组织可能会因此产生安全方面的担忧。 [详细了解工作区读者角色](how-to-assign-roles.md#default-roles)。 
+通常，身份验证凭据保存在数据存储中，该数据存储用于确保你有权访问存储服务。 将这些凭据注册到数据存储后，具有工作区“读者”角色的任何用户都可以检索它们，某些组织可能会因此产生安全方面的担忧。 [详细了解工作区“读者”角色](how-to-assign-roles.md#default-roles)。 
 
 使用基于标识的数据访问时，Azure 机器学习会提示你输入用于数据访问身份验证的 Azure Active Directory 令牌，而不是将凭据保存在数据存储中。 这允许在存储级别进行数据访问管理，并使凭据保密。 
 
-这一行为也适用以下情况：
+这一行为也适用于以下情况：
 
 * [直接从存储 URL 创建数据集](#use-data-in-storage)。 
 * 通过本地计算机或[计算实例](concept-compute-instance.md)上的 Jupyter Notebook 以交互方式处理数据。

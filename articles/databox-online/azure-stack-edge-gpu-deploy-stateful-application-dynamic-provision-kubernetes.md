@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 160ba6014bbb2d5cb3ed4e8e4b28a61fe5e8d4cc
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520687"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>使用 kubectl，在 Azure Stack Edge Pro GPU 设备上通过 StorageClass 运行 Kubernetes 有状态应用程序
@@ -37,15 +37,15 @@ ms.locfileid: "102520687"
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
 - 你有一个将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
-    - 客户端运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版 Windows PowerShell，请转到[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
+    - 客户端在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版 Windows PowerShell，请参阅[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
     
     - 也可使用任何其他客户端，只要安装了[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)即可。 本文介绍使用 Windows 客户端时的过程。 
     
     - 你已完成[在 Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
-      - 通过 `New-HcsKubernetesNamespace` 命令创建了 `userns1` 命名空间。 
-      - 通过 `New-HcsKubernetesUser` 命令创建了用户 `user1`。 
-      - 通过 `Grant-HcsKubernetesNamespaceAccess` 命令向 `user1` 授予了对 `userns1` 的访问权限。       
-      - 在客户端上安装了 `kubectl` 并已将具有用户配置的 `kubeconfig` 文件保存到 C:\\Users\\&lt;username&gt;\\.kube。 
+      - 通过 `New-HcsKubernetesNamespace` 命令创建 `userns1` 命名空间。 
+      - 通过 `New-HcsKubernetesUser` 命令创建用户 `user1`。 
+      - 通过 `Grant-HcsKubernetesNamespaceAccess` 命令授予对 `userns1` 的 `user1` 访问权限。       
+      - 在客户端上安装了 `kubectl`，并且已将具有用户配置的 `kubeconfig` 文件保存到 C:\\Users\\&lt;username&gt;\\.kube。 
     
     - 确保 `kubectl` 客户端版本与 Azure Stack Edge Pro 设备上运行的 Kubernetes 主版本相差不超过一个版本。 
         - 使用 `kubectl version` 检查在客户端上运行的 kubectl 的版本。 记下完整版本。
@@ -78,7 +78,7 @@ ms.locfileid: "102520687"
     
    输出会指出，因为群集上没有运行任何应用程序，所以找不到任何资源 (Pod)。
 
-1. 你将使用以下 YAML 文件。 `mysql-deployment.yml` 文件描述了一个运行 MySQL 并引用 PVC 的部署。 该文件定义 `/var/lib/mysql` 的卷装载，然后创建用于查找卷大小为 20 GB 的 PVC。 已预配动态 PV，并且已将 PVC 绑定到此 PV。
+1. 你将使用以下 YAML 文件。 `mysql-deployment.yml` 文件说明运行 MySQL 并引用 PVC 的部署。 该文件定义 `/var/lib/mysql` 的卷装载，然后创建用于查找卷大小为 20 GB 的 PVC。 已预配动态 PV，并且已将 PVC 绑定到此 PV。
 
     将以下 `mysql-deployment.yml` 文件复制并保存到用于访问 Azure Stack Edge Pro 设备的 Windows 客户端上的文件夹中。
     
@@ -131,7 +131,7 @@ ms.locfileid: "102520687"
 2. 复制并作为 `mysql-pvc.yml` 文件保存到你保存了 `mysql-deployment.yml` 的同一文件夹中。 若要使用 Azure Stack Edge Pro 设备在附加的数据磁盘上的内置 StorageClass，请将 PVC 对象中的 `storageClassName` 字段设置为 `ase-node-local`，并且 accessModes 应为 `ReadWriteOnce`。 
 
     > [!NOTE] 
-    > 请确保 YAML 文件具有正确的缩进。 可以使用 [YAML lint](http://www.yamllint.com/) 检查并确认，然后进行保存。
+    > 请确保 YAML 文件具有正确的缩进。 可以使用 [YAML lint](http://www.yamllint.com/) 进行检查以便验证并保存。
    
     ```yml
     apiVersion: v1

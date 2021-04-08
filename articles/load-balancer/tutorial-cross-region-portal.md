@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561392"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104576911"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -41,7 +41,7 @@ ms.locfileid: "102561392"
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 
-[登录](https://preview.portal.azure.com)到 Azure 预览门户。
+[登录](https://portal.azure.com) Azure 门户。
 
 ## <a name="create-cross-region-load-balancer"></a>创建跨区域负载均衡器
 
@@ -52,7 +52,7 @@ ms.locfileid: "102561392"
 3. 在“负载均衡器”页上，选择“创建” 。
 4. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中输入“CreateCRLBTutorial-rg” 。|
