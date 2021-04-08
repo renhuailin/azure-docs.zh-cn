@@ -3,12 +3,12 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: c08a146d91a128dc48fa4c379055b8c0efc1df0c
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.openlocfilehash: 3203d5604f1bd5db9cf579af01b2ae6f34032d89
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986643"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467606"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "98986643"
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏、可能已过期，或者其文件扩展名可能不是“.vaultCredentials”。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然后相应地执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后，在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册 。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
+| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏、可能已过期，或者其文件扩展名可能不是“.vaultCredentials”。 （例如它们可能在注册前 10 多天就下载了。）| 请从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然后相应地执行以下步骤： <ul><li> 如果已经安装和注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后，在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册 。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> 注意：如果已下载多个保管库凭据文件，在接下来的 10 天内，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
 | **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 [Azure ExpressRoute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述内容配置设置。
 | **防病毒软件正在阻止注册** | 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
@@ -93,7 +93,7 @@ ms.locfileid: "98986643"
   - 其他进程干扰（例如，包含文件句柄的防病毒软件可能会阻止 MARS 代理访问文件）
   - 应用程序锁定的文件  
 
-- 备份服务会将日志文件中的这些文件标记为失败，采用以下命名约定 *LastBackupFailedFilesxxxx.txt* ：在 *C:\Program Files\Microsoft Azure Recovery 服务 Agent\temp* 文件夹下。
+- 备份服务会将日志文件中的这些文件标记为失败，采用以下命名约定：C:\Program Files\Microsoft Azure Recovery Service Agent\temp 文件夹下的 LastBackupFailedFilesxxxx.txt 。
 - 若要解决此问题，请查看日志文件以了解问题的性质：
 
   | 错误代码             | 原因                                             | 建议                                              |

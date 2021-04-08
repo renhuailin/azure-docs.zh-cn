@@ -9,21 +9,21 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: bfd5d42d83046c9c5b0bc3a78fabec08da5da646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96028039"
 ---
 本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。
 
 1. 在 Visual Studio 中创建新的 Visual C# 控制台应用程序：
-    1. 在菜单中，选择“文件”   > “新建”   > “项目”  。
-    1. 在“创建新项目”中，选择模板列表中适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
+    1. 在菜单中，选择“文件” > “新建” > “项目”。
+    1. 在“创建新项目”中，选择模板列表中适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。
     1. 输入应用程序的名称。
-    1. 对于“解决方案”  ，选择“添加到解决方案”  ，然后选择“创建”  以创建项目。
+    1. 对于“解决方案”，选择“添加到解决方案”，然后选择“创建”以创建项目。
 
-1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在控制台窗口中运行以下命令：
+1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在控制台窗口中运行以下命令  ：
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs

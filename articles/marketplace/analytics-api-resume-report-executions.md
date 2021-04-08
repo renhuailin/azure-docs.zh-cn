@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 4a11783b28352cb62c5a3c0d38e45dcdc47a8d86
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583423"
 ---
 # <a name="resume-report-executions-api"></a>继续报表执行 API
@@ -98,6 +98,6 @@ ms.locfileid: "102583423"
 | `ReportStatus` | 报表执行的状态。 可能的值为“已暂停”、“活动”和“非活动”。 |
 | `RecurrenceInterval` | 在报表创建期间提供的定期执行间隔 |
 | `RecurrenceCount` | 在报表创建期间提供的定期执行计数 |
-| `CallbackUrl` | 请求中提供的回调 URL |
+| `CallbackUrl` | 请求中提供的回叫 URL |
 | `Format` | 报表文件的格式 |
 |||

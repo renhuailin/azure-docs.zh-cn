@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 45993d617028dec13c7a8b57587c7204322965cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555186"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-azure-powershell"></a>教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限
@@ -48,8 +48,8 @@ ms.locfileid: "100555186"
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| User<br>（RBAC 教程用户） | [读者](built-in-roles.md#reader) | 订阅 |
-| User<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
+| 用户<br>（RBAC 教程用户） | [读者](built-in-roles.md#reader) | 订阅 |
+| 用户<br>（RBAC 教程用户）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
 
    ![用户的角色分配](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 

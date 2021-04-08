@@ -1,5 +1,5 @@
 ---
-title: 设计可缩放的高性能 Azure Cosmos DB 表
+title: 设计 Azure Cosmos DB 表以支持缩放和高性能
 description: Azure 表存储设计指南：Azure Cosmos DB 和 Azure 表存储中可缩放的高性能表
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,10 +9,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 603c891e53e5712d489fcef8415e3db55328c9ad
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99988440"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
@@ -25,7 +25,7 @@ ms.locfileid: "99988440"
 表存储旨在支持云级别应用程序，这些应用程序可包含数十亿个实体（或关系数据库术语所称的行）的数据，或者用于必须支持高事务量的数据集。 因此，需要以不同方式考虑如何存储数据，并了解表存储的工作原理。 相对于使用关系数据库的解决方案而言，设计良好的 NoSQL 数据存储可以使解决方案更进一步的扩展（以更低的成本）。 本指南中介绍这些主题。  
 
 ## <a name="about-azure-table-storage"></a>关于 Azure 表存储
-本部分重点介绍表存储的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果不熟悉 Azure 存储和表存储，请在阅读本文的其他部分之前，先阅读 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)和[通过 .NET 实现 Azure 表存储入门](./tutorial-develop-table-dotnet.md)。 尽管本指南的重点是介绍表服务，但它也包括对 Azure 队列存储和 Azure Blob 存储的论述，并介绍了如何在解决方案中将它们与表存储一起使用。  
+本部分重点介绍表存储的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果不熟悉 Azure 存储和表存储，请在阅读本文的其他部分之前，先阅读 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)和[通过 .NET 实现 Azure 表存储入门](./tutorial-develop-table-dotnet.md)。 尽管本指南的重点是介绍表存储，但它也将包括 Azure 队列存储和 Azure Blob 存储的一些讨论，并介绍如何在解决方案中将这些 Azure 队列存储和 Blob 存储与表存储一起使用。  
 
 表存储使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表存储使用该列来跟踪实体的最后更新时间。 时间戳字段是自动添加的，无法使用任意值手动覆盖它。 表存储使用此上次修改时间戳 (LMT) 来管理开放式并发。  
 
@@ -40,7 +40,7 @@ ms.locfileid: "99988440"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
@@ -53,7 +53,7 @@ ms.locfileid: "99988440"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -73,7 +73,7 @@ ms.locfileid: "99988440"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -85,7 +85,7 @@ ms.locfileid: "99988440"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>系</td>
+<td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -110,7 +110,7 @@ ms.locfileid: "99988440"
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -133,7 +133,7 @@ ms.locfileid: "99988440"
 ### <a name="table-partitions"></a>表分区
 帐户名称、表名称和 `PartitionKey` 共同标识存储服务中表存储用于存储实体的分区。 作为实体寻址方案的一部分，分区定义事务的范围（参阅本文稍后的[实体组事务](#entity-group-transactions)部分），并构成表存储缩放方式的基础。 有关表分区的详细信息，请参阅[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。  
 
-在表存储中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点承受负载，表存储会将该节点服务的分区范围拆分到不同的节点。 流量下降时，表存储可将无操作的节点的分区范围合并到单个节点。  
+在表存储中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点承受负载，表存储会将该节点服务的分区范围拆分到不同的节点。 当流量下降时，表存储可以将未负载节点的分区范围合并回单个节点。  
 
 有关表存储的内部细节（特别是管理分区的方式）的详细信息，请参阅 [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)。  
 
@@ -196,12 +196,12 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 | 列名称 | 数据类型 |
 | --- | --- |
-| `PartitionKey`（部门名称） |String |
-| `RowKey`（员工 ID） |String |
-| `FirstName` |String |
-| `LastName` |String |
+| `PartitionKey`（部门名称） |字符串 |
+| `RowKey`（员工 ID） |字符串 |
+| `FirstName` |字符串 |
+| `LastName` |字符串 |
 | `Age` |Integer |
-| `EmailAddress` |String |
+| `EmailAddress` |字符串 |
 
 下面是有关设计表存储查询的一般准则。 下述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
 
@@ -305,7 +305,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 若要了解如何加密表数据，请参阅 [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](../storage/common/storage-client-side-encryption.md)。  
 
-## <a name="model-relationships"></a>为关系建模
+## <a name="model-relationships"></a>模型关系
 构建域模型是复杂系统设计中的一个关键步骤。 通常情况下，使用建模流程确定实体及实体之间的关系，并以此作为了解业务域及获取系统设计信息的方式。 本部分重点介绍如何将域模型中找到的一些常见关系类型转换为表存储的设计。 从逻辑数据模型映射到基于 NoSQL 的物理数据模型的过程与在设计关系数据库时使用的过程不同。 关系型数据库设计通常采用数据规范化过程（针对最大限度减少冗余进行优化）。 此类设计还采用声明性查询功能来抽象化数据库工作原理的实现方式。  
 
 ### <a name="one-to-many-relationships"></a>一对多关系
@@ -433,12 +433,12 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 * $filter=(PartitionKey eq 'Sales') and (RowKey eq 'empid_000223')  
 * $filter=(PartitionKey eq 'Sales') and (RowKey eq 'email_jonesj@contoso.com')  
 
-如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中的相应前缀查询实体。  
+如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中相应的前缀查询实体。  
 
 * 若要查找销售部门中的所有员工，其员工 ID 范围为 000100 到 000199，请使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199')  
 * 要通过以字母“a”开头的邮件地址查找销售部门中的所有雇员，请使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b')  
   
-上述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
+之前的示例中使用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
@@ -493,12 +493,12 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 * $filter=(PartitionKey eq 'empid_Sales') and (RowKey eq '000223')
 * $filter=(PartitionKey eq 'email_Sales') and (RowKey eq 'jonesj@contoso.com')  
 
-如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中的相应前缀查询实体。  
+如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中相应的前缀查询实体。  
 
 * 若要查找销售部门中的所有员工，其员工 ID 范围为 **000100** 到 **000199** 且按照 ID 序号排列，请使用：$filter=(PartitionKey eq 'empid_Sales') and (RowKey ge '000100') and (RowKey le '000199')  
 * 要在销售部门中通过以“a”开头的邮件地址并按照邮件地址顺序查找所有员工，请使用：$filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b')  
 
-请注意，上述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
+注意之前的示例中使用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](/rest/api/storageservices/Query-Entities)。  
 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
@@ -632,7 +632,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE15.png" alt-text="屏幕截图，其中显示了员工索引实体，该实体包含姓氏存储在 RowKey 和 PartitionKey 中的员工的员工 ID 列表。":::
 
-`EmployeeDetails`属性包含存储在中的名为的雇员的雇员 id 和部门名称对列表 `RowKey` 。
+`EmployeeDetails` 属性包含一个员工 ID 和部门名称对列表，其中员工的姓氏存储在 `RowKey` 中。
 
 不能使用 EGT 来保持一致性，因为索引实体位于与员工实体不同的分区中。 确保索引实体与员工实体是最终一致的。  
 
@@ -1128,7 +1128,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
@@ -1141,7 +1141,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -1161,7 +1161,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -1198,7 +1198,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td></td>
@@ -1220,7 +1220,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
@@ -1234,7 +1234,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1256,7 +1256,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1279,7 +1279,7 @@ foreach (var e in entities)
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>系</td>
+<td>部门</td>
 <td></td>
 <td></td>
 </tr>
@@ -1297,7 +1297,7 @@ foreach (var e in entities)
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>Email</th>
+<th>电子邮件</th>
 </tr>
 <tr>
 <td>Employee</td>

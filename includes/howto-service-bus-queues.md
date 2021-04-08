@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: spelluru
 ms.openlocfilehash: d3d33c87dc1adf65a53b71cc4c833e7f4a191670
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67173190"
 ---
 ## <a name="what-are-service-bus-queues"></a>什么是 Service Bus 队列？
-服务总线队列支持中转消息传送  通信模型。 在使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介（代理）的队列交换消息。 消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。 消息使用方（接收方）以异步方式从队列中提取消息并处理它。 创建方不必等待使用方的答复即可继续处理并发送更多消息。 队列为一个或多个竞争使用方提供**先入先出 (FIFO)** 消息传递方式。 也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
+服务总线队列支持中转消息传送通信模型。 在使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介（代理）的队列交换消息。 消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。 消息使用方（接收方）以异步方式从队列中提取消息并处理它。 创建方不必等待使用方的答复即可继续处理并发送更多消息。 队列为一个或多个竞争使用方提供 **先入先出 (FIFO)** 消息传递方式。 也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 

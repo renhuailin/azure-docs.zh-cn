@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97608810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TimeOffManager 集成
@@ -140,13 +140,13 @@ ms.locfileid: "97608810"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-timeoffmanager-sso"></a>配置 TimeOffManager SSO
+## <a name="configure-timeoffmanager-sso&quot;></a>配置 TimeOffManager SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 TimeOffManager 公司站点。
 
 2. 转到“帐户”\>“帐户选项”\>“单一登录设置”  。
    
-    ![屏幕截图显示从“帐户选项”选择了“单一登录设置”。](./media/timeoffmanager-tutorial/ic795917.png "单一登录设置")
+    ![屏幕截图显示从“帐户选项”选择了“单一登录设置”。](./media/timeoffmanager-tutorial/ic795917.png &quot;单一登录设置")
 
 3. 在“单一登录设置”  部分中，执行以下步骤：
    

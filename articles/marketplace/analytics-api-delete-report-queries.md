@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 4fc3479f1e35970a97684396a7a2e0c0c2582128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583481"
 ---
 # <a name="delete-report-queries-api"></a>删除报表查询 API
@@ -33,7 +33,7 @@ ms.locfileid: "102583481"
 
 路径参数
 
-| **参数名称** | 类型 | **说明** |
+| **参数名称** | **类型** | **说明** |
 | --- | --- | --- |
 | `queryId` | string | 进行筛选以仅获取此参数中给定 ID 的查询的详细信息 |
 

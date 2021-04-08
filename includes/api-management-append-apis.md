@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96183802"
 ---
 ## <a name="append-other-apis"></a>追加其他 API
@@ -21,6 +21,6 @@ API 可以包含由其他服务公开的 API，这些服务包括 OpenAPI 规范
 
 1. 在 Azure 门户中转到自己的 Azure API 管理实例。
 2. 在左侧菜单中选择“API”  。
-3. 单击要将另一个 API 追加到的 API 旁边的“...”  。
-4. 从下拉菜单中选择“导入”。 
+3. 单击要将另一个 API 追加到的 API 旁边的“...”。
+4. 从下拉菜单中选择“导入”。
 5. 选择要从中导入 API 的服务。

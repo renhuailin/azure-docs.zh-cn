@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86050389"
 ---
 在此过程中，需要执行以下操作：
@@ -20,7 +20,7 @@ ms.locfileid: "86050389"
 
 #### <a name="to-prepare-to-run-the-maintainer"></a>准备运行 Maintainer
 1. 在 Web 前端服务器上，以管理员身份打开 SharePoint 2013 命令行管理程序。
-2. 导航到文件夹*引导盘*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\.
+2. 导航到文件夹 *引导盘*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\.
 3. 将 **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** 重命名为 **web.config**。
 4. 使用 `aspnet_regiis -pdf connectionStrings` 解密 web.config 文件。
 5. 在解密的 web.config 文件中的 `connectionStrings` 节点下，为 SQL Server 实例和内容数据库名称添加连接字符串。 请参阅以下示例。
@@ -38,7 +38,7 @@ ms.locfileid: "86050389"
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。******** 此操作同时会清空所有相关站点集合的回收站。 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序" (管理 web 应用程序) **"  ->  **SharePoint-80**  ->  **常规应用程序设置**。 将“回收站状态”设置为“关闭”。********
+2. 在 Web 前端服务器上的“管理中心”下，编辑所需内容数据库的“Web 应用程序常规设置”以暂时禁用回收站。 此操作同时会清空所有相关站点集合的回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。     将“回收站状态”设置为“关闭”。
    
     ![Web 应用程序常规设置](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ ms.locfileid: "86050389"
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。******** 为此，请单击 "**管理中心**" "应用程序管理" "  ->  **Application Management**  ->  **web 应用程序" (管理 web 应用程序) **"  ->  **SharePoint-80**  ->  **常规应用程序设置**。 将“回收站状态”设置为“打开”。****
+2. 在 Web 前端服务器上的“管理中心”中，编辑所需内容数据库的“Web 应用程序常规设置”以重新启用回收站。 为此，请单击“管理中心” -> “应用程序管理” -> “Web 应用程序(管理 Web 应用程序)” -> “SharePoint - 80” -> “常规应用程序设置”。     将“回收站状态”设置为“打开”。
 

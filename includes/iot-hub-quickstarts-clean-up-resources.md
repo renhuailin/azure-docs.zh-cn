@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "69626295"
 ---
 如果想要继续学习下一篇建议的文章，可以保留已创建的资源，以便重复使用。
@@ -27,7 +27,7 @@ ms.locfileid: "69626295"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-2. 在“按名称筛选”文本框中，键入包含 IoT 中心的资源组的名称  。 
+2. 在“按名称筛选”文本框中，键入包含 IoT 中心的资源组的名称。 
 
 3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”   。
 
