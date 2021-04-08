@@ -9,10 +9,10 @@ ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98051065"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
@@ -78,8 +78,8 @@ ms.locfileid: "98051065"
 3. 对于“订阅”，请选择自己的订阅。 
 1. 对于“资源组名称”，请键入 **FW-Hybrid-Test**。
 2. 对于“区域”，请选择“(US)美国东部”。 以后创建的所有资源必须位于同一位置。
-3. 选择“查看 + 创建”  。
-4. 选择“创建”  。
+3. 选择“查看 + 创建”。
+4. 选择“创建”。
 
 现在创建 VNet：
 
@@ -314,7 +314,7 @@ ms.locfileid: "98051065"
 8. 对于“区域”，请选择以前使用的同一位置。 
 1. 对于“名称”，请键入 **UDR-Hub-Spoke**。
 9. 选择“查看 + 创建”  。
-10. 选择“创建”  。
+10. 选择“创建”。
 11. 创建路由表后，请选择它以打开路由表页。
 12. 在左栏中选择“路由”。
 13. 选择 **添加** 。
@@ -343,7 +343,7 @@ ms.locfileid: "98051065"
 1. 键入 **UDR-DG** 作为名称。
 4. 对于“传播网关路由”，请选择“否” 。
 5. 选择“查看 + 创建”  。
-6. 选择“创建”  。
+6. 选择“创建”。
 7. 创建路由表后，请选择它以打开路由表页。
 8. 在左栏中选择“路由”。
 9. 选择 **添加** 。

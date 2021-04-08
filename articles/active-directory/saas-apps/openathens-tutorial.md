@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 0ff799c2cb01eedd7b5c03dc7208e9e727d17688
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101647160"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpenAthens 的集成
@@ -152,7 +152,7 @@ ms.locfileid: "101647160"
 
     f. 在“创建本地帐户”  中，选择“自动”  。
 
-    g. 选择“保存更改”。 
+    g. 选择“保存更改”。
 
     h. 在“信赖方”  选项卡上，复制 **元数据 URL** 并在浏览器中将其打开以下载 **SP 元数据 XML** 文件。 在 Azure AD 中的“基本 SAML 配置”  部分中上传此 SP 元数据文件。
 

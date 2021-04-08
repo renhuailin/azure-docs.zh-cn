@@ -7,29 +7,31 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174812"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102607911"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-在 [添加声明和使用自定义策略自定义用户输入](configure-user-input.md) 一文中，你将了解如何使用内置 [用户配置文件属性](user-profile-attributes.md)。 在本文中，你将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用一个自定义属性。 稍后，你可以将该新属性同时用作多个[用户流](user-flow-overview.md)或[自定义策略](custom-policy-get-started.md)中的自定义声明。
+在[使用自定义策略添加声明和自定义用户输入](configure-user-input.md)一文中，你将了解如何使用内置[用户配置文件属性](user-profile-attributes.md)。 在本文中，你将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用一个自定义属性。 稍后，你可以将该新属性同时用作多个[用户流](user-flow-overview.md)或[自定义策略](custom-policy-get-started.md)中的自定义声明。
 
 Azure AD B2C 目录附带了[一组内置属性](user-profile-attributes.md)。 但是，你通常需要创建自己的属性来管理你的特定方案，例如，在以下情况下：
 
 * 面向客户的应用程序需要持久保存 **LoyaltyId** 属性。
 * 标识提供者具有必须持久保存的唯一用户标识符 **uniqueUserGUID**。
 * 自定义用户旅程需要持久保存用户的状态 **migrationStatus**，以便其他逻辑基于该状态运行。
+
+术语扩展属性、自定义属性和自定义声明在本文的上下文中引用相同的内容。 名称会因上下文（应用程序、对象、策略）而异。
 
 Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可以使用 [Microsoft Graph API](microsoft-graph-operations.md) 读写这些属性。
 
@@ -66,11 +68,7 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C 扩展应用
 
-尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性附加到名为 b2c-extensions-app 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可以在 Azure AD B2C 应用注册下找到此应用程序。
-
-术语扩展属性、自定义属性和自定义声明在本文的上下文中引用相同的内容。 名称会因上下文（应用程序、对象、策略）而异。
-
-## <a name="get-the-application-properties"></a>获取应用程序属性
+尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性会附加到名为 `b2c-extensions-app` 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可以在 Azure AD B2C 应用注册下找到此应用程序。 获取应用程序属性：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
@@ -81,14 +79,6 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
     * **应用程序 ID**。 示例：`11111111-1111-1111-1111-111111111111`。
     * **对象 ID**。 示例：`22222222-2222-2222-2222-222222222222`。
 
-## <a name="using-custom-attribute-with-ms-graph-api"></a>将自定义属性与 MS Graph API 一起使用
-
-Microsoft Graph API 支持使用扩展特性创建和更新用户。 Graph API 中的扩展属性使用约定 `extension_ApplicationClientID_attributename` 命名，其中的 `ApplicationClientID` 是 `b2c-extensions-app` 应用程序的应用程序（客户端）ID。 请注意，应用程序（客户端）ID 以扩展属性名称表示时不包含连字符。 例如：
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
-
 ::: zone pivot="b2c-custom-policy"
 
 ## <a name="modify-your-custom-policy"></a>修改自定义策略
@@ -97,8 +87,8 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 Graph API �
 
 1. 打开策略的扩展文件， 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。
 1. 找到 ClaimsProviders 元素。 向 ClaimsProviders 元素添加一个新的 ClaimsProvider。
-1. 在开始和结束元素之间插入之前记录的 **应用程序 ID** `<Item Key="ClientId">` `</Item>` 。
-1. 在开始和结束元素之间插入之前记录的 **应用程序 ObjectID** `<Item Key="ApplicationObjectId">` `</Item>` 。
+1. 在开头的 `<Item Key="ClientId">` 和结尾的 `</Item>` 元素之间插入之前记录的“应用程序 ID”。
+1. 在开头的 `<Item Key="ApplicationObjectId">` 和结尾的 `</Item>` 元素之间插入之前记录的“应用程序 ObjectID”。
 
     ```xml
     <!-- 
@@ -173,6 +163,14 @@ Microsoft Graph API 支持使用扩展特性创建和更新用户。 Graph API �
 
 ::: zone-end
 
+## <a name="using-custom-attribute-with-ms-graph-api"></a>将自定义属性与 MS Graph API 一起使用
+
+Microsoft Graph API 支持使用扩展特性创建和更新用户。 Graph API 中的扩展属性使用约定 `extension_ApplicationClientID_attributename` 命名，其中的 `ApplicationClientID` 是 `b2c-extensions-app` 应用程序的应用程序（客户端）ID。 请注意，应用程序（客户端）ID 以扩展属性名称表示时不包含连字符。 例如：
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
+
 ## <a name="next-steps"></a>后续步骤
 
-按照有关如何 [使用自定义策略添加声明和自定义用户输入](configure-user-input.md)的指导进行操作。 此示例使用内置声明 "city"。 若要使用自定义属性，请将 "city" 替换为你自己的自定义属性。
+按照有关如何[使用自定义策略添加声明和自定义用户输入](configure-user-input.md)的指导进行操作。 此示例使用内置声明“city”。 若要使用自定义属性，请将“city”替换为你自己的自定义属性。

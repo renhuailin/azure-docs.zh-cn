@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 15db3e5182c39f756d4e9cd63378c3b86ab1eb32
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c58566c628eedd1dbc3d86ae6a142156cbf31211
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449509"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585190"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Boomi 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "102449509"
     | ---------------|  --------- |
     | FEDERATION_ID | user.mail |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -155,17 +155,17 @@ ms.locfileid: "102449509"
 
     f. 单击“保存”按钮。
 
-### <a name="create-boomi-test-user"></a>创建 Boomi 测试用户
+### <a name="create-boomi-test-user&quot;></a>创建 Boomi 测试用户
 
 为使 Azure AD 用户能够登录到 Boomi，必须将其预配到 Boomi 中。 就 Boomi 来说，预配任务需要手动完成。
 
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
+### <a name=&quot;to-provision-a-user-account-perform-the-following-steps&quot;></a>若要预配用户帐户，请执行以下步骤：
 
 1. 以管理员身份登录 Boomi 公司站点。
 
 1. 登录后，导航到“用户管理”并转到“用户”。
 
-    ![屏幕截图显示“用户管理”页，其中已选择“用户”。](./media/boomi-tutorial/user.png "用户")
+    ![屏幕截图显示“用户管理”页，其中已选择“用户”。](./media/boomi-tutorial/user.png &quot;用户")
 
 1. 单击 **+** 图标，此时会打开“添加/维护用户角色”对话框。
 
@@ -194,9 +194,9 @@ ms.locfileid: "102449509"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Boomi。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Boomi 磁贴时，你应该会自动登录到已为其设置了 SSO 的 Boomi。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Boomi 磁贴时，你应该会自动登录到已为其设置了 SSO 的 Boomi。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Boomi 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Boomi 后，可以强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

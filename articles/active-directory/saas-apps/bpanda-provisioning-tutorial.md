@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/05/2021
 ms.author: Zhchia
 ms.openlocfilehash: 7e11f60fee0565b86fe62008f418175bce21be03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104585173"
 ---
 # <a name="tutorial-configure-bpanda-for-automatic-user-provisioning"></a>教程：为 Bpanda 配置自动用户预配
@@ -48,7 +48,7 @@ ms.locfileid: "104585173"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 Bpanda 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
-## <a name="step-2-configure-bpanda-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Bpanda 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-bpanda-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Bpanda 以支持通过 Azure AD 进行预配
 1. 如需有关身份验证租户 URL 的详细信息，请联系 support@mid.de。
 
 2. 用于进一步生成访问令牌的客户端机密。 此机密肯定以安全方式传送给了你。 如需详细信息，请联系 support@mid.de。

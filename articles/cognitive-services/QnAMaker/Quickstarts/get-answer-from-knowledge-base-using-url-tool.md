@@ -1,22 +1,22 @@
 ---
-title: 快速入门：使用 URL 工具从知识库获取答案 - QnA Maker
+title: 使用 URL 工具从知识库获取答案 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 本快速入门详细介绍如何使用 cURL 或 Postman 等 URL 测试工具从知识库获取答案。
+description: 本文详细介绍如何使用 cURL 或 Postman 等 URL 测试工具从知识库获取答案。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: eddae69c0946ab135540b77d3cc89937079e6293
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103016247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583065"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>快速入门：从知识库获取答案
+# <a name="get-an-answer-from-a-knowledge-base"></a>从知识库获取答案
 
 
 ::: zone pivot="url-test-tool-curl"

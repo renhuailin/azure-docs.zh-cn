@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104579189"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
@@ -324,7 +324,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的附加信息。
 
 可以通过[使用情况和见解](./howto-authentication-methods-activity.md)了解针对 Azure AD MFA 和 SSPR 等功能的身份验证方法在组织中的使用方式。 此报告功能可让组织了解注册的方法，以及这些方法的用法。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 * 参阅[排查自助式密码重置问题](./troubleshoot-sspr.md) 
 
