@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 03/08/2021
 ms.openlocfilehash: 252117d21da199ef702dd090686ac17789d8ebcb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102510628"
 ---
 首次添加连接到服务或系统的触发器或操作时，逻辑应用设计器将提示你通过提供必要的信息（具体取决于连接）来创建连接，例如：

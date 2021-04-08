@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 3a8a7be6f437687a4de31ce8e0ac62588f64e2eb
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96016891"
 ---
 有关物理服务器复制的配置/进程服务器要求 
@@ -42,9 +42,9 @@ URL | 配置服务器需要访问这些 URL（直接或通过代理）：<br/><b
 端口 | 允许 443（控制通道协调）<br/><br/> 允许 9443（数据传输） 
 
 
-配置/进程服务器大小要求
+配置/进程服务器大小要求 
 
-**CPU** | **内存** | 缓存磁盘 | **数据更改率** | **复制的计算机**
+CPU  | **内存** | 缓存磁盘 | **数据更改率** | **复制的计算机**
 --- | --- | --- | --- | ---
 8 个 vCPU<br/><br/> 2 个插槽 * 4 个核心 \@ 2.5 GHz | 16GB | 300 GB | 500 GB 或更少 | < 100 台计算机
 12 个 vCPU<br/><br/> 2 个插槽 * 6 个核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 台计算机
