@@ -9,13 +9,13 @@ ms.date: 07/08/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8f8d366961049deb3eda193718ccb553aac930e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67666378"
 ---
-支付两项内容：虚拟网络网关的每小时计算成本和虚拟网络网关的出口数据传输。 可在 [定价](https://azure.microsoft.com/pricing/details/vpn-gateway) 页上找到定价信息。 有关旧版网关 SKU 定价的信息，请参阅 [ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)并滚动至“虚拟网络网关”  部分。
+支付两项内容：虚拟网络网关的每小时计算成本和虚拟网络网关的出口数据传输。 可在 [定价](https://azure.microsoft.com/pricing/details/vpn-gateway) 页上找到定价信息。 有关旧版网关 SKU 定价的信息，请参阅 [ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)并滚动至“虚拟网络网关”部分。
 
 **虚拟网络网关计算成本**<br>每个虚拟网络网关都有每小时计算成本。 价格基于创建虚拟网络网关时指定的网关 SKU。 成本与网关本身以及流经网关的数据传输相关。 主动-主动设置的成本与主动-被动设置的成本相同。
 

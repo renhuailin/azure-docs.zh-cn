@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97963957"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
@@ -324,7 +324,7 @@ ms.locfileid: "97963957"
 
 ## <a name="debug-the-failed-script"></a>调试失败的脚本
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 资源组是追加了 rg 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为 *部署脚本资源*。
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

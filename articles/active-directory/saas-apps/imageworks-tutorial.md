@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 6a4fabe23f9eb679b1aa059d9fa534147bcce32f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92460319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>教程：Azure Active Directory 与 IMAGE WORKS 的集成
@@ -30,7 +30,7 @@ ms.locfileid: "92460319"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 IMAGE WORKS 的集成，需要以下项：
 
@@ -41,13 +41,13 @@ ms.locfileid: "92460319"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* IMAGE WORKS 支持 SP 发起的 SSO 
+* IMAGE WORKS 支持 SP 发起的 SSO
 
 ## <a name="adding-image-works-from-the-gallery"></a>从库中添加 IMAGE WORKS
 
 若要配置 IMAGE WORKS 与 Azure AD 的集成，需要从库中将 IMAGE WORKS 添加到托管 SaaS 应用列表。
 
-**若要从库添加 IMAGE WORKS，请按以下步骤操作：**
+**若要从库中添加 IMAGE WORKS，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92460319"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索库中，键入 IMAGE WORKS，从结果窗格中选择 IMAGE WORKS，然后单击“添加”按钮添加应用程序    。
+4. 在搜索库中，键入 IMAGE WORKS，从结果窗格中选择 IMAGE WORKS，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 IMAGE WORKS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 IMAGE WORKS 的 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 IMAGE WORKS 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 IMAGE WORKS 中的相关用户之间建立链接关系。
 
 若要配置和测试 IMAGE WORKS 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92460319"
 
 若要配置 IMAGE WORKS 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的  IMAGE WORKS 应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的  IMAGE WORKS 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92460319"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![IMAGE WORKS 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://i-imageworks.jp/iw/<tenantName>/sso/Login.do` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://sp.i-imageworks.jp/iw/<tenantName>/postResponse`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92460319"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 在“设置 IMAGE WORKS”部分，根据要求复制相应的 URL  。
+6. 在“设置 IMAGE WORKS”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -124,7 +124,7 @@ ms.locfileid: "92460319"
 
 ### <a name="configure-image-works-single-sign-on"></a>配置 IMAGE WORKS 单一登录
 
-若要在 IMAGE WORKS  端配置单一登录，需要将下载的 **证书(Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [IMAGE WORKS](mailto:iw-sd-support@fujifilm.com){7}支持团队{8}。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 IMAGE WORKS 端配置单一登录，需要将下载的证书(Base64) 以及从 Azure 门户复制的相应 URL 发送给 IMAGE WORKS支持团队。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -134,7 +134,7 @@ ms.locfileid: "92460319"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92460319"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 IMAGE WORKS 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“IMAGE WORKS”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“IMAGE WORKS”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 IMAGE WORKS  。
+2. 在应用程序列表中，选择 IMAGE WORKS。
 
     ![应用程序列表中的 IMAGE WORKS 链接](common/all-applications.png)
 
