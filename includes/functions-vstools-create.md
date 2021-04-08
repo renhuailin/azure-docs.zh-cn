@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 164620bdcee7ac546468354f999dcb3ad96ecf4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84730969"
 ---
 Visual Studio 中的 Azure Functions 项目模板创建了一个项目，该项目可发布到 Azure 中的函数应用。 可使用函数应用将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
@@ -35,6 +35,6 @@ Visual Studio 中的 Azure Functions 项目模板创建了一个项目，该项�
     
     ![Azure Functions 项目设置](./media/functions-vs-tools-create/functions-project-settings.png)
 
-    请确保将“授权级别”设置为“匿名”。  如果选择默认级别的**函数**，需要在请求中提供[函数密钥](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)才能访问函数终结点。
+    请确保将“授权级别”设置为“匿名”。  如果选择默认级别的 **函数**，需要在请求中提供 [函数密钥](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)才能访问函数终结点。
 
 1. 选择“创建”以创建函数项目和 HTTP 触发器函数。

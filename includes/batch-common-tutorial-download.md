@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: lahugh
 ms.openlocfilehash: bd51eabcff412de4928c682683b2a69b3e82e601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67173300"
 ---
 ### <a name="retrieve-output-files"></a>检索输出文件
 
 可以使用 Azure 门户下载 ffmpeg 任务生成的输出 MP3 文件。 
 
-1. 单击“所有服务”   >   “存储帐户”，然后单击存储帐户的名称。
-2. 单击“Blob”   >   “输出”。
-3. 右键单击一个输出 MP3 文件，然后单击“下载”  。 在浏览器中按提示打开或保存该文件。
+1. 单击“所有服务” > “存储帐户”，然后单击存储帐户的名称。
+2. 单击“Blob” > “输出”。
+3. 右键单击一个输出 MP3 文件，然后单击“下载”。 在浏览器中按提示打开或保存该文件。
 
 ![下载输出文件](./media/batch-common-tutorial-download/download.png)
 
