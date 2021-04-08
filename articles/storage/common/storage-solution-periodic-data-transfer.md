@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96573912"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
@@ -69,5 +69,5 @@ ms.locfileid: "96573912"
 - [使用存储 REST API 传输数据的详细信息](/dotnet/api/overview/azure/storage)。
 - 了解如何：
     - [使用 Data Box Gateway 传输数据](../../databox-gateway/data-box-gateway-deploy-add-shares.md)。
-    - [在发送到 Azure 之前，将数据转换为 Data Box Edge](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+    - [在将数据发送到 Azure 之前使用 Data Box Edge 转换数据](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
 - [了解如何使用 Azure 数据工厂传输数据](../../data-factory/tutorial-bulk-copy-portal.md)。

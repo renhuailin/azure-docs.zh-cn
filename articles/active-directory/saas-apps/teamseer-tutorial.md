@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
@@ -120,13 +120,13 @@ ms.locfileid: "92521163"
 
     c. 注销 URL
 
-### <a name="configure-teamseer-single-sign-on"></a>配置 TeamSeer 单一登录
+### <a name="configure-teamseer-single-sign-on&quot;></a>配置 TeamSeer 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 TeamSeer 公司站点。
 
 1. 转到“HR 管理员”  。
 
-    ![显示从 TeamSeer 窗口选择了“HR 管理员”的屏幕截图。](./media/teamseer-tutorial/ic789634.png "HR 管理员")
+    ![显示从 TeamSeer 窗口选择了“HR 管理员”的屏幕截图。](./media/teamseer-tutorial/ic789634.png &quot;HR 管理员")
 
 1. 单击“设置”  。
 
@@ -205,7 +205,7 @@ ms.locfileid: "92521163"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-teamseer-test-user"></a>创建 TeamSeer 测试用户
+### <a name="create-teamseer-test-user&quot;></a>创建 TeamSeer 测试用户
 
 要使 Azure AD 用户能够登录到 TeamSeer，必须将其预配到 ShiftPlanning 中。 对于 TeamSeer，预配是一项手动任务。
 
@@ -215,7 +215,7 @@ ms.locfileid: "92521163"
 
 1. 转到“HR 管理员”\>“用户”，然后单击“运行新建用户向导”。  
 
-    ![显示“HR 管理员”选项卡的屏幕截图，可在其中选择要运行的向导。](./media/teamseer-tutorial/ic789640.png "HR 管理员")
+    ![显示“HR 管理员”选项卡的屏幕截图，可在其中选择要运行的向导。](./media/teamseer-tutorial/ic789640.png &quot;HR 管理员")
 
 1. 在“用户详细信息”  部分中，执行以下步骤：
 
