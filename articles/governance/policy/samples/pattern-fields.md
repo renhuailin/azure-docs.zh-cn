@@ -4,10 +4,10 @@ description: 此 Azure Policy 模式通过示例介绍了如何在策略定义�
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 267c687f78f0bbb100843faee40ab6f3d3cbb64c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072962"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy 模式：字段属性
@@ -16,7 +16,7 @@ ms.locfileid: "92072962"
 
 ## <a name="sample-policy-definition"></a>示例策略定义
 
-此策略定义使你能够定义满足组织的地理位置要求的允许区域。 允许的资源在参数 **listOfAllowedLocations**（数组）  中定义。 与定义匹配的资源会被[拒绝](../concepts/effects.md#deny)。
+此策略定义使你能够定义满足组织的地理位置要求的允许区域。 允许的资源在参数 **listOfAllowedLocations**（数组）中定义。 与定义匹配的资源会被[拒绝](../concepts/effects.md#deny)。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json":::
 
@@ -24,10 +24,10 @@ ms.locfileid: "92072962"
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json" range="18-36" highlight="3,7,11":::
 
-**field** 运算符在[逻辑运算符](../concepts/definition-structure.md#logical-operators) **allOf** 中使用三次。
+**field** 运算符在 [逻辑运算符](../concepts/definition-structure.md#logical-operators) **allOf** 中使用三次。
 
-- 第一次使用时，会通过 **listOfAllowedLocations** 参数的 **notIn** 条件评估 `location` 属性。 **notIn** 适用是因为它预期的是数组  ，而参数为数组  。 如果创建的或更新的资源的 `location` 不在批准项列表中，则此元素的评估结果为 true。
-- 第二次使用也评估 `location` 属性，但使用 **notEquals** 条件来查看资源是否为全局  资源。 如果创建的或更新的资源的 `location` 不是全局的，则此元素的评估结果为 true。 
+- 第一次使用时，会通过 **listOfAllowedLocations** 参数的 **notIn** 条件评估 `location` 属性。 **notIn** 适用是因为它预期的是数组，而参数为数组。 如果创建的或更新的资源的 `location` 不在批准项列表中，则此元素的评估结果为 true。
+- 第二次使用也评估 `location` 属性，但使用 **notEquals** 条件来查看资源是否为全局资源。 如果创建的或更新的资源的 `location` 不是全局的，则此元素的评估结果为 true。
 - 最后一次使用评估 `type` 属性，并使用 **notEquals** 条件来验证资源类型是否为 _Microsoft.AzureActiveDirectory/b2cDirectories_。 如果为否，则此元素的评估结果为 true。
 
 如果 **allOf** 逻辑运算符中的所有三个条件语句均为 true，则 Azure Policy 会阻止资源的创建或更新。

@@ -12,10 +12,10 @@ ms.date: 06/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85383591"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure AD SSPR 技术配置文件
@@ -57,7 +57,7 @@ Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, C
 
 InputClaims 元素包含要发送到 Azure AD SSPR 的声明的列表。 还可将声明名称映射到 SSPR 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | emailAddress | 是 | 拥有此电子邮件地址的用户的标识符。 输入声明的 `PartnerClaimType` 属性必须设置为 `emailAddress`。 |
 
@@ -111,7 +111,7 @@ Azure AD SSPR 协议提供程序未返回任何 OutputClaims，因此无需指�
 
 InputClaims 元素包含要发送到 Azure AD SSPR 的声明的列表。 还可将声明名称映射到 SSPR 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- | ----------- |
 | emailAddress| 是 | 与之前用于发送代码的电子邮件地址相同。 它也用来定位电子邮件验证会话。 输入声明的 `PartnerClaimType` 属性必须设置为 `emailAddress`。|
 | verificationCode  | 是 | 待验证用户提供的验证码。 输入声明的 `PartnerClaimType` 属性必须设置为 `verificationCode`。 |
