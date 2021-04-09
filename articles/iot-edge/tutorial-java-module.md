@@ -12,16 +12,18 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3f24f38db7704557894d866b789890763f9e1316
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177294"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463249"
 ---
-# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 Java IoT Edge 模块
+# <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 Java IoT Edge 模块
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 将使用的模拟 IoT Edge 设备是在 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 在本教程中，你将了解如何执行以下操作：
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 你将使用在快速入门文章的“在模拟设备上部署 Azure IoT Edge”部分创建的模拟 IoT Edge 设备。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -36,7 +38,7 @@ ms.locfileid: "102177294"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用 **Visual Studio Code** 以 **Java** 开发模块，以及如何将其部署到 **Linux 设备**。 IoT Edge 不支持 Windows 设备的 Java 模块。
+本教程演示如何在 Visual Studio Code 中使用 Java 开发模块，以及如何将其部署到 IoT Edge 设备。 IoT Edge 不支持以 Windows 容器形式生成的 Java 模块。
 
 使用下表了解用于开发和部署 Java 模块的选项：
 
@@ -48,12 +50,12 @@ ms.locfileid: "102177294"
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成这两个教程中的一个以后，你应该已经准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个运行 Azure IoT Edge 的设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
 
-若要开发以 Java 编写的 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件： 
+若要开发以 Java 编写的 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
 * 适用于 Visual Studio Code 的 [Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
 * [Java SE 开发工具包 11](/azure/developer/java/fundamentals/java-jdk-long-term-support)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。

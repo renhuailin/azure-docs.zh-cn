@@ -4,10 +4,10 @@ description: 获取有关发送到 PagerDuty 实例的服务运行状况事件�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 7ae5141f33ebf4ec6e32029625af3a199a04d67b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594524"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 Webhook 通过 PagerDuty 发送 Azure 服务运行状况警报

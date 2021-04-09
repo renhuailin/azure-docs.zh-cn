@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 50aaae9e71ac9de366ee4db1981e633491094946
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: f2ea671a6d44d12b3b37d5d06fa9405b7c589cdf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199970"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559411"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
 本文介绍 Azure Database for MariaDB 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for MariaDB 实例。
@@ -111,7 +111,7 @@ Azure Database for MariaDB 支持一个额外的连接策略（即“重定向�
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>如何验证你的连接是将连接到旧网关节点还是新网关节点？
 Ping 服务器的 FQDN，例如 ``ping xxx.mariadb.database.azure.com``。 如果返回的 IP 地址是上面文档中“网关 IP 地址(即将停用)”下列出的 IP 之一，则表明你的连接会通过旧网关。 与此相反，如果返回的 IP 地址是“网关 IP 地址”下列出的 IP 之一，则表明你的连接会通过新网关。
 
-你也可以通过客户端应用程序使用端口 3306 [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) 或 TCPPing 数据库服务器进行测试，并确保返回的 IP 地址不是即将停用的 IP 地址之一
+你也可以通过客户端应用程序使用端口 3306 对数据库服务器执行 [PSPing](/sysinternals/downloads/psping) 或 TCPPing 进行测试，并确保返回的 IP 地址不是即将停用的 IP 地址之一
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>我如何知道维护何时结束？旧 IP 地址停用后，我是否还会收到另一个通知？
 你会收到一封电子邮件，通知你我们会何时开始维护工作。 维护最多可能需要一个月的时间，具体取决于我们需要在各个区域迁移的服务器数量。 请准备客户端以使用 FQDN 或上表中的新 IP 地址连接到数据库服务器。 

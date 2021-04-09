@@ -3,12 +3,12 @@ title: Azure 事件网格事件筛选
 description: 介绍如何在创建 Azure 事件网格订阅时筛选事件。
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197769"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419841"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -54,11 +54,11 @@ ms.locfileid: "102197769"
 要按数据字段中的值进行筛选并指定比较运算符，请使用高级筛选选项。 在高级筛选中，指定：
 
 * 运算符类型 - 比较的类型。
-* 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值、字符串或数组。
+* 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔、字符串或数组。
 * 值 - 要与键进行比较的值。
 
-## <a name="key"></a>键
-Key 是用于筛选的事件数据中的字段。 它可以是以下类型之一：
+## <a name="key"></a>密钥
+键是用于筛选的事件数据中的字段。 可以是下列类型之一：
 
 - Number
 - 布尔
@@ -74,11 +74,11 @@ Key 是用于筛选的事件数据中的字段。 它可以是以下类型之一
     }
     ```
 
-对于 **事件网格架构** 中的事件，请将以下值用于键： `ID` 、 `Topic` 、、 `Subject` 、 `EventType` `DataVersion` 或事件数据 (如 `data.key1`) 。
+对于事件网格架构中的事件，请使用以下键值：`ID`、`Topic`、`Subject`、`EventType`、`DataVersion` 或事件数据（如 `data.key1`）。
 
-对于 **云事件架构** 中的事件，请将以下值用于键： `eventid` 、 `source` 、 `eventtype` 、 `eventtypeversion` 或事件数据 (如 `data.key1`) 。
+对于云事件架构中的事件，请使用以下键值：`eventid`、`source`、`eventtype`、`eventtypeversion` 或事件数据（如 `data.key1`）。
 
-对于 **自定义输入架构**，请使用 "事件数据" 字段 (如 `data.key1`) 。 若要访问 data 节中的字段，请使用 `.` (点) 表示法。 例如， `data.sitename` `data.appEventTypeDetail.action` 若要访问 `sitename` 或 `action` 以下示例事件，则为。
+对于自定义输入架构，请使用事件数据字段（如 `data.key1`）。 若要访问数据部分中的字段，请使用 `.`（点）表示法。 例如，使用 `data.sitename`、`data.appEventTypeDetail.action` 访问以下示例事件的 `sitename` 或 `action`。
 
 ```json
     "data": {
@@ -95,14 +95,14 @@ Key 是用于筛选的事件数据中的字段。 它可以是以下类型之一
 ```
 
 ## <a name="values"></a>值
-值可以是： number、string、boolean 或 array
+值可以是：数字、字符串、布尔或数组
 
 ## <a name="operators"></a>运算符
 
 可用的数字运算符为：
 
 ## <a name="numberin"></a>NumberIn
-如果 **键值** 为指定的 **筛选器** 值之一，则数值运算符的计算结果为 true。 在下面的示例中，它将检查 `counter` 部分中属性的值是否 `data` 为5或1。 
+如果键值为指定的筛选器值之一，则 NumberIn 运算符的计算结果为 true 。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是 5 还是 1。 
 
 ```json
 "advancedFilters": [{
@@ -116,7 +116,7 @@ Key 是用于筛选的事件数据中的字段。 它可以是以下类型之一
 ```
 
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a, b, c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a, b, c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -126,7 +126,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="numbernotin"></a>NumberNotIn
-如果 **键值****不** 是任何指定的 **筛选器** 值，NumberNotIn 的计算结果为 true。 在下面的示例中，它将检查 `counter` 节中特性的值是否 `data` 不是41和0。 
+如果键值不是任何指定的筛选器值，则 NumberNotIn 的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是否不是 41 和 0。 
 
 ```json
 "advancedFilters": [{
@@ -139,7 +139,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a, b, c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a, b, c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -149,7 +149,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="numberlessthan"></a>NumberLessThan
-如果 **键值****小于** 指定的 **筛选器** 值，则 NumberLessThan 运算符的计算结果为 true。 在下面的示例中，它将检查 `counter` 部分中属性的值是否 `data` 小于100。 
+如果键值小于指定的筛选器值，则 NumberLessThan 运算符的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是否小于 100。 
 
 ```json
 "advancedFilters": [{
@@ -159,7 +159,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值检查数组中的所有值。 下面是键为 `[v1, v2, v3]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH key IN (v1, v2, v3)
@@ -168,7 +168,7 @@ FOR_EACH key IN (v1, v2, v3)
 ```
 
 ## <a name="numbergreaterthan"></a>NumberGreaterThan
-如果 **键值****大于** 指定的 **筛选器** 值，则 NumberGreaterThan 运算符的计算结果为 true。 在下面的示例中，它将检查 `counter` 节中特性的值是否 `data` 大于20。 
+如果键值大于指定的筛选器值，则 NumberGreaterThan 运算符的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是否大于 20。 
 
 ```json
 "advancedFilters": [{
@@ -178,7 +178,7 @@ FOR_EACH key IN (v1, v2, v3)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值检查数组中的所有值。 下面是键为 `[v1, v2, v3]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH key IN (v1, v2, v3)
@@ -187,7 +187,7 @@ FOR_EACH key IN (v1, v2, v3)
 ```
 
 ## <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
-如果 **键值****小于或等于** 指定的 **筛选器** 值，则 NumberLessThanOrEquals 运算符的计算结果为 true。 在下面的示例中，它将检查 `counter` 部分中属性的值是否 `data` 小于或等于100。 
+如果键值小于或等于指定的筛选器值，则 NumberLessThanOrEquals 运算符的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是否小于或等于 100。 
 
 ```json
 "advancedFilters": [{
@@ -197,7 +197,7 @@ FOR_EACH key IN (v1, v2, v3)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值检查数组中的所有值。 下面是键为 `[v1, v2, v3]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH key IN (v1, v2, v3)
@@ -206,7 +206,7 @@ FOR_EACH key IN (v1, v2, v3)
 ```
 
 ## <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
-如果 **键值****大于或等于** 指定的 **筛选器** 值，则 NumberGreaterThanOrEquals 运算符的计算结果为 true。 在下面的示例中，它将检查 `counter` 部分中特性的值是否 `data` 大于或等于30。 
+如果键值大于或等于指定的筛选器值，则 NumberGreaterThanOrEquals 运算符的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `counter` 特性的值是否大于或等于 30。 
 
 ```json
 "advancedFilters": [{
@@ -216,7 +216,7 @@ FOR_EACH key IN (v1, v2, v3)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值检查数组中的所有值。 下面是键为 `[v1, v2, v3]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH key IN (v1, v2, v3)
@@ -225,7 +225,7 @@ FOR_EACH key IN (v1, v2, v3)
 ```
 
 ## <a name="numberinrange"></a>NumberInRange
-如果 **键值** 在指定的 **筛选范围** 之一内，则 NumberInRange 运算符的计算结果为 true。 在下面的示例中，它将检查部分中属性的值是否处于以下 `key1` `data` 两个范围之一： 3.14159-999.95、3000-4000。 
+如果键值在指定的筛选器范围之一内，则 NumberInRange 运算符的计算结果为 true 。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否在以下两个范围之内：3.14159 - 999.95，3000 - 4000。 
 
 ```json
 {
@@ -235,7 +235,7 @@ FOR_EACH key IN (v1, v2, v3)
 }
 ```
 
-`values`属性是范围的数组。 在上面的示例中，它是两个范围的数组。 下面是一个具有要检查的范围的数组的示例。 
+`values` 属性是一个范围数组。 在上面的示例中，它是两个范围的数组。 下面是具有一个要检查的范围的数组示例。 
 
 **具有一个范围的数组：** 
 ```json
@@ -246,7 +246,7 @@ FOR_EACH key IN (v1, v2, v3)
 }
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是包含键的伪代码： `[v1, v2, v3]` 和筛选器：范围的数组。 在此伪代码中， `a` 和 `b` 为数组中每个范围的最小值和最大值。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为范围数组的伪代码。 在此伪代码中，`a` 和 `b` 为数组中每个范围的最低值和最高值。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH (a,b) IN filter.Values
@@ -257,7 +257,7 @@ FOR_EACH (a,b) IN filter.Values
 
 
 ## <a name="numbernotinrange"></a>NumberNotInRange
-如果 **键值****不** 在任何指定的 **筛选范围** 内，则 NumberNotInRange 运算符的计算结果为 true。 在下面的示例中，它将检查部分中属性的值是否处于以下 `key1` `data` 两个范围之一： 3.14159-999.95、3000-4000。 如果是，则运算符返回 false。 
+如果键值不在任何指定的筛选器范围内，则 NumberNotInRange 运算符的计算结果为 true  。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否在以下两个范围之内：3.14159 - 999.95，3000 - 4000。 如果是，则运算符返回 false。 
 
 ```json
 {
@@ -266,7 +266,7 @@ FOR_EACH (a,b) IN filter.Values
     "values": [[3.14159, 999.95], [3000, 4000]]
 }
 ```
-`values`属性是范围的数组。 在上面的示例中，它是两个范围的数组。 下面是一个具有要检查的范围的数组的示例。
+`values` 属性是一个范围数组。 在上面的示例中，它是两个范围的数组。 下面是具有一个要检查的范围的数组示例。
 
 **具有一个范围的数组：** 
 ```json
@@ -277,7 +277,7 @@ FOR_EACH (a,b) IN filter.Values
 }
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是包含键的伪代码： `[v1, v2, v3]` 和筛选器：范围的数组。 在此伪代码中， `a` 和 `b` 为数组中每个范围的最小值和最大值。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为范围数组的伪代码。 在此伪代码中，`a` 和 `b` 为数组中每个范围的最低值和最高值。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH (a,b) IN filter.Values
@@ -290,7 +290,7 @@ FOR_EACH (a,b) IN filter.Values
 可用的布尔值运算符为： 
 
 ## <a name="boolequals"></a>BoolEquals
-如果 **键值** 为指定的布尔值 **筛选器**，则 BoolEquals 运算符的计算结果为 true。 在下面的示例中，它将检查 `isEnabled` 部分中属性的值是否 `data` 为 `true` 。 
+如果键值为指定的布尔值筛选器，则 BoolEquals 运算符的计算结果为 true 。 在下面的示例中，它将检查 `data` 部分中 `isEnabled` 特性的值是否为 `true`。 
 
 ```json
 "advancedFilters": [{
@@ -300,7 +300,7 @@ FOR_EACH (a,b) IN filter.Values
 }]
 ```
 
-如果该键为数组，则会对照筛选器布尔值检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器布尔值检查数组中的所有值。 下面是键为 `[v1, v2, v3]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH key IN (v1, v2, v3)
@@ -311,7 +311,7 @@ FOR_EACH key IN (v1, v2, v3)
 可用的字符串运算符为：
 
 ## <a name="stringcontains"></a>StringContains
-如果 **键值****包含** (为子字符串) 的任何指定 **筛选器** 值，则 **StringContains** 的计算结果为 true。 在下面的示例中，它将检查 `key1` 节中特性的值是否 `data` 包含指定的子字符串之一： `microsoft` 或 `azure` 。 例如， `azure data factory` 有一个 `azure` 。 
+如果键值包含任何指定的筛选器值（作为子字符串），则 StringContains 的计算结果为 true   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否包含指定的子字符串之一：`microsoft` 或 `azure`。 例如，`azure data factory` 中包含 `azure`。 
 
 ```json
 "advancedFilters": [{
@@ -324,7 +324,7 @@ FOR_EACH key IN (v1, v2, v3)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -334,7 +334,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringnotcontains"></a>StringNotContains
-如果 **键** 不 **包含** 指定的 **筛选器** 值作为子字符串，则 **StringNotContains** 运算符的计算结果为 true。 如果键包含一个指定值作为子字符串，则运算符的计算结果为 false。 在下面的示例中，仅当 `key1` 部分中的属性的值 `data` 不包含 `contoso` 和 `fabrikam` 作为子字符串时，运算符才返回 true。 
+如果键不包含指定的筛选器值作为子字符串，则 StringNotContains 运算符的计算结果为 true   。 如果键包含一个指定值作为子字符串，则运算符的计算结果为 false。 在下面的示例中，仅当 `data` 部分中 `key1` 特性的值不包含 `contoso` 和 `fabrikam` 作为子字符串时，运算符才返回 true。 
 
 ```json
 "advancedFilters": [{
@@ -347,7 +347,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -355,9 +355,10 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+有关此运算符的当前限制，请参阅[限制](#limitations)部分。
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
-如果 **键值** 以任何指定的 **筛选器** 值 **开头**，则 **StringBeginsWith** 运算符的计算结果为 true。 在下面的示例中，它将检查 `key1` 节中特性的值是否 `data` 以或开头 `event` `grid` 。 例如，以 `event hubs` 开头 `event` 。  
+如果键值以任何指定的筛选器值开头，则 StringBeginsWith 运算符的计算结果为 true   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否以 `event` 或 `grid` 开头。 例如，`event hubs` 以 `event` 开头。  
 
 ```json
 "advancedFilters": [{
@@ -370,7 +371,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -380,7 +381,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringnotbeginswith"></a>StringNotBeginsWith
-如果 **键值** 不是以任何指定的 **筛选器** 值 **开头**，则 **StringNotBeginsWith** 运算符的计算结果为 true。 在下面的示例中，它将检查 `key1` 节中特性的值是否 `data` 不以或开头 `event` `message` 。
+如果键值不以任何指定的筛选器值开头，则 StringNotBeginsWith 运算符的计算结果为 true   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否不以 `event` 或 `message` 开头。
 
 ```json
 "advancedFilters": [{
@@ -393,7 +394,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -403,7 +404,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringendswith"></a>StringEndsWith
-如果 **键值** 以指定的 **筛选器** 值之一 **结束**，则 **StringEndsWith** 运算符的计算结果为 true。 在下面的示例中，它将检查节中特性的值是否以 `key1` `data` `jpg` 或或结尾 `jpeg` `png` 。 例如，以 `eventgrid.png` 结尾 `png` 。
+如果键值以指定的筛选器值之一结尾，则 StringEndsWith 运算符的计算结果为 true   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否以 `jpg`、`jpeg` 或 `png` 结尾。 例如，`eventgrid.png` 以 `png` 结尾。
 
 
 ```json
@@ -418,7 +419,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -428,7 +429,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringnotendswith"></a>StringNotEndsWith
-如果 **键值** 不是以任何指定的 **筛选器** 值 **结束**，则 **StringNotEndsWith** 运算符的计算结果为 true。 在下面的示例中，它将检查 `key1` 节中特性的值是否 `data` 不是以 `jpg` 或 `jpeg` 或结尾 `png` 。 
+如果键值不以任何指定的筛选器值结尾，则 StringNotEndsWith 运算符的计算结果为 true   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否不以 `jpg`、`jpeg` 或 `png` 结尾。 
 
 
 ```json
@@ -443,7 +444,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -453,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>StringIn
-**字符串** 运算符检查 **密钥** 值是否与指定的 **筛选器** 值之一 **完全匹配**。 在下面的示例中，它将检查 `key1` 部分中特性的值是否 `data` 为 `exact` 或 `string` 或 `matches` 。 
+StringIn 运算符检查键值是否与指定的筛选器值之一完全匹配   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否为 `exact`、`string` 或 `matches`。 
 
 ```json
 "advancedFilters": [{
@@ -467,7 +468,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -477,7 +478,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringnotin"></a>StringNotIn
-**StringNotIn** 运算符检查 **键值** 是否与任何指定的 **筛选器** 值 **不匹配**。 在下面的示例中，它将检查 `key1` 节中特性的值是否 `data` 不为 `aws` 和 `bridge` 。 
+StringNotIn 运算符检查键值是否与任何指定的筛选器值不匹配   。 在下面的示例中，它将检查 `data` 部分中 `key1` 特性的值是否不是 `aws` 和 `bridge`。 
 
 ```json
 "advancedFilters": [{
@@ -490,7 +491,7 @@ FOR_EACH filter IN (a, b, c)
 }]
 ```
 
-如果该键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是带有密钥的伪代码： `[v1, v2, v3]` 和筛选器： `[a,b,c]` 。 将忽略任何数据类型与筛选器的数据类型都不匹配的键值。
+如果键为数组，则会对照筛选器值的数组检查数组中的所有值。 下面是键为 `[v1, v2, v3]`、筛选器为 `[a,b,c]` 的伪代码。 任何数据类型与筛选器的数据类型不匹配的键值都会被忽略。
 
 ```
 FOR_EACH filter IN (a, b, c)
@@ -500,12 +501,12 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 
-所有字符串比较不区分大小写。
+所有字符串比较都不区分大小写。
 
 > [!NOTE]
-> 如果事件 JSON 不包含高级筛选键，则对于以下运算符，筛选器将 evaulated 为 **不匹配** ： NumberGreaterThan、NumberGreaterThanOrEquals、NumberLessThan、NumberLessThanOrEquals、数值、BoolEquals、StringContains、StringNotContains、StringBeginsWith、StringNotBeginsWith、StringEndsWith、StringNotEndsWith、字符串。
+> 如果事件 JSON 不包含高级筛选键，则对于以下运算符，筛选器的计算结果为“不匹配”：NumberGreaterThan、NumberGreaterThanOrEquals、NumberLessThan、NumberLessThanOrEquals、NumberIn、BoolEquals、StringContains、StringNotContains、StringBeginsWith、StringNotBeginsWith、StringEndsWith、StringNotEndsWith、StringIn。
 > 
->对于以下运算符，筛选器与 evaulated **匹配** ： NumberNotIn、StringNotIn。
+>对于以下运算符，筛选器的计算结果为“匹配”：NumberNotIn、StringNotIn。
 
 
 ## <a name="isnullorundefined"></a>IsNullOrUndefined
@@ -552,7 +553,7 @@ FOR_EACH filter IN (a, b, c)
 }
 ```
 
-## <a name="or-and-and"></a>或和
+## <a name="or-and-and"></a>OR 和 AND
 如果指定具有多个值的单个筛选器，则将执行 **OR** 操作，因此键字段的值必须是这些值之一。 以下是示例：
 
 ```json
@@ -590,9 +591,9 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="cloudevents"></a>CloudEvents 
-对于 **CloudEvents 架构** 中的事件，请将以下值用于键： `eventid` 、 `source` 、 `eventtype` 、 `eventtypeversion` 或事件数据 (如 `data.key1`) 。 
+对于 CloudEvents 架构中的事件，请使用以下键值：`eventid`、`source`、`eventtype`、`eventtypeversion` 或事件数据（如 `data.key1`）。 
 
-你还可以 [在 CloudEvents 1.0 中使用扩展上下文属性](https://github.com/cloudevents/spec/blob/v1.0.1/spec.md#extension-context-attributes)。 在下面的示例中， `comexampleextension1` 和 `comexampleothervalue` 是扩展上下文特性。 
+还可以使用 [CloudEvents 1.0 中的扩展上下文特性](https://github.com/cloudevents/spec/blob/v1.0.1/spec.md#extension-context-attributes)。 在下面的示例中，`comexampleextension1` 和 `comexampleothervalue` 是扩展上下文特性。 
 
 ```json
 {
@@ -613,7 +614,7 @@ FOR_EACH filter IN (a, b, c)
 }
 ```
 
-下面是在筛选器中使用扩展上下文属性的示例。
+下面是在筛选器中使用扩展上下文特性的示例。
 
 ```json
 "advancedFilters": [{
@@ -634,6 +635,7 @@ FOR_EACH filter IN (a, b, c)
 * 每个事件网格订阅的所有筛选器都有 5 个高级筛选器和 25 个筛选器值
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值 
+* `StringNotContains` 运算符当前在门户中不可用。
 * 具有 `.`（点）字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
 
 可以在多个筛选器中使用相同的键。

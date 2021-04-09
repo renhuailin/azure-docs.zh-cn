@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: a13d79a28ac07d736b1eaf0d0e6b7f7b1ba4a4ec
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102557703"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知

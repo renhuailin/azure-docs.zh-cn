@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 02/23/2021
+ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735058"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721624"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -27,7 +27,7 @@ ms.locfileid: "101735058"
 > * 使用后端服务器创建后端池
 > * 创建后端侦听器
 > * 创建路由规则
-> * 在域中创建 CNAME 记录
+> * 编辑主机文件以进行名称解析
 
 :::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="多站点应用程序网关":::
 
@@ -212,9 +212,9 @@ ms.locfileid: "101735058"
 
 等待部署完成之后再继续下一步。
 
-## <a name="edit-your-hosts-file"></a>编辑 hosts 文件
+## <a name="edit-your-hosts-file-for-name-resolution"></a>编辑主机文件以进行名称解析
 
-使用其公共 IP 地址创建应用程序网关后，可以获取 IP 地址，并使用它来编辑 hosts 文件，以解析 `www.contoso.com` 和 `www.fabrikam.com`。 
+使用其公共 IP 地址创建应用程序网关后，可以获取 IP 地址，并使用它来编辑主机文件，用于解析 `www.contoso.com` 和 `www.fabrikam.com`。 在生产环境中，可以在 DNS 中创建 `CNAME` 以进行名称解析。
 
 1. 单击“所有资源”  ，然后单击“myAGPublicIPAddress”  。
 

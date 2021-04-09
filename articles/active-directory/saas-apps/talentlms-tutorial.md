@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2021
 ms.author: jeedes
 ms.openlocfilehash: 84d50d19a8356418a5cbf1f93784e5b8816d4be5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
@@ -96,7 +96,7 @@ ms.locfileid: "101689345"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -108,7 +108,7 @@ ms.locfileid: "101689345"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 TalentLMS 的权限，允许其使用 Azure 单一登录。
 
@@ -120,13 +120,13 @@ ms.locfileid: "101689345"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-talentlms-sso"></a>配置 TalentLMS SSO
+### <a name=&quot;configure-talentlms-sso&quot;></a>配置 TalentLMS SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 TalentLMS 公司站点。
 
 1. 在“帐户与设置” 部分中，单击“用户”选项卡。
 
-    ![帐户与设置](./media/talentlms-tutorial/IC777296.png "帐户与设置")
+    ![帐户与设置](./media/talentlms-tutorial/IC777296.png &quot;帐户与设置")
 
 1. 单击 **“单一登录(SSO)”**。
 

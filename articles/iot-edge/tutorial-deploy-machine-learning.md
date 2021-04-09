@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463045"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 使用 Azure Notebooks 开发机器学习模型，并将其部署到运行 Azure IoT Edge 的 Linux 设备。
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/how-to-deploy-and-where.md)。
@@ -41,7 +43,7 @@ ms.locfileid: "88271254"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将 Azure 虚拟机用作 IoT Edge 设备。
+* 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
 * Azure 机器学习模块不支持 Windows 容器。
 * Azure 机器学习模块不支持 ARM 处理器。
 

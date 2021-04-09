@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
 ms.openlocfilehash: 00e634ec62d1fda4b1f2763a8c69b8e950d54beb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505182"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>连接 Azure 密钥保管库诊断日志
@@ -23,7 +23,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 
 了解有关[监视 Azure 密钥保管库](../azure-monitor/insights/key-vault-insights-overview.md)以及 [Azure 密钥保管库诊断遥测](../key-vault/general/logging.md)的详细信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若将 Azure 密钥保管库日志引入 Azure Sentinel：
 

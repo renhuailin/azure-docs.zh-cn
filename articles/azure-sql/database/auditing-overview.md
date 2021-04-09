@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577589"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -99,7 +99,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 以下部分介绍如何使用 Azure 门户配置审核。
 
   > [!NOTE]
-  > - 不能对已暂停的专用 SQL 池启用审核。 要启用审核，请取消暂停专用 SQL 池。 详细了解[专用 SQL 池](../..//synapse-analytics/sql/best-practices-sql-pool.md)。
+  > - 不能对已暂停的专用 SQL 池启用审核。 要启用审核，请取消暂停专用 SQL 池。 详细了解[专用 SQL 池](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md)。
   > - 如果通过 Azure 门户或 PowerShell cmdlet 将审核配置为 Log Analytics 工作区或事件中心目标，则会创建一个启用了“SQLSecurityAuditEvents”类别的[诊断设置](../../azure-monitor/essentials/diagnostic-settings.md)。
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>对存储目标的审核
 
-若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。  依次选择要用于保存日志的 Azure 存储帐户以及保持期。 。 早于保留期的日志会被删除。
+若要配置将审核日志写入存储帐户，请在转到“审核”部分时选择“存储”。 打开“高级属性”，依次选择要用于保存日志的 Azure 存储帐户以及保留期。 然后单击“保存”  。 早于保留期的日志会被删除。
 
-- 保持期的默认值为 0（无限制保留）。 在配置用于审核的存储帐户时，可以通过在“存储设置”中移动“保留期（天数）”滑块来更改此值。
+- 保持期的默认值为 0（无限制保留）。 可以更改此值，只需在配置存储帐户以供审核时在“高级属性”中移动“保留期(天)”滑块即可。 
   - 如果将保留期从 0（无限期保留）更改为任何其他值，请注意：保留期仅应用于在保留期值更改后写入的日志（在保留期设置为“无限期”期间写入的日志会保留，即使在启用保留期后也是如此）。
 
   ![存储帐户](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>对 Log Analytics 目标的审核
   
-若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics”，并打开“Log Analytics 详细信息”。 选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。
+若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics”，并打开“Log Analytics 详细信息”。 选择要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。 如果尚未创建 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 
    ![LogAnalyticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ AzureDiagnostics
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>对事件中心目标的审核
 
-若要配置将审核日志写入事件中心的操作，请选择“事件中心”，打开“事件中心详细信息”。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
+若要配置将审核日志写入事件中心，请选择“事件中心”。 选择要将日志写入到的事件中心，然后单击“保存”。 请确保事件中心与数据库和服务器位于同一区域。
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -191,13 +191,12 @@ AzureDiagnostics
 
 - 使用 [Azure 门户](https://portal.azure.com)。  打开相关数据库。 在数据库的“审核”页的顶部，单击“查看审核日志”。
 
-    ![屏幕截图显示在数据库审核页上突出显示的“查看审核日志”按钮。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![查看审核日志](./media/auditing-overview/auditing-view-audit-logs.png)
 
     此时会打开“审核记录”，可在其中查看日志。
 
   - 可单击“审核记录”页顶部的“筛选”，查看特定的日期。
   - 可以通过切换“审核源”在服务器审核策略和数据库审核策略创建的审核记录之间进行切换。
-  - 通过选中“仅显示 SQL 注入的审核记录”复选框，可以仅查看与 SQL 注入相关的审核记录。
 
        ![屏幕截图显示查看审核记录的选项。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -242,7 +241,7 @@ AzureDiagnostics
 
 在生产环境中，可能会定期刷新存储密钥。 如果向 Azure 存储写入审核日志，则需在刷新密钥时重新保存审核策略。 过程如下：
 
-1. 打开“存储详细信息”。 在“存储访问密钥”框中，选择“辅助”并单击“确定”。 然后单击“审核配置”页顶部的“保存”。
+1. 打开“存储”下的“高级属性”。 在“存储访问密钥”框中，选择“辅助”。 然后单击“审核配置”页顶部的“保存”。
 
     ![屏幕截图显示选择辅助存储访问密钥的过程。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. 转到存储配置页，重新生成主访问密钥。

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051338"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577778"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -331,7 +331,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下，应用服务证书具有一年的有效期。
 
-选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 60 天自动续订。
+选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 30 天自动续订。
 
 ![自动续订应用服务证书](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 
@@ -377,11 +377,11 @@ az keyvault secret download \
 
 现在，你可以删除应用服务证书。 在左侧导航窗格中选择“概述” > “删除”。 在确认对话框中，键入证书名称并选择“确定”。
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts&quot;></a>使用脚本自动化
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 

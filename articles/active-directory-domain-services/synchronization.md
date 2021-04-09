@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 03/26/2021
 ms.author: justinha
-ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 779fd9bbfdd35061867fecc8d4be62b8768f43f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96618801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933298"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory 域服务托管域中同步对象和凭据
 
@@ -63,10 +63,11 @@ ms.locfileid: "96618801"
 |:--- |:--- |
 | accountEnabled |userAccountControl（设置或清除 ACCOUNT_DISABLED 位） |
 | city |l |
+| company |companyName |
 | country |co |
 | department |department |
 | displayName |displayName |
-| employeedId |employeeId |
+| employeeId |employeeId |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |

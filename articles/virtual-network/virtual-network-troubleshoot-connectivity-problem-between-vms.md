@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219192"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042860"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>排查 Azure VM 间的连接问题
 
@@ -49,7 +49,7 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>步骤 1：检查 NIC 的配置是否不正确
 
-按照[如何为 Azure Windows VM 重置网络接口](../virtual-machines/troubleshooting/reset-network-interface.md)中的步骤进行操作。 
+按照[如何为 Azure Windows VM 重置网络接口](/troubleshoot/azure/virtual-machines/reset-network-interface)中的步骤进行操作。 
 
 如果修改网络接口 (NIC) 后出现此问题，请按照下列步骤进行操作：
 
@@ -62,8 +62,8 @@ Azure 虚拟机 (VM) 间可能出现连接问题。 本文提供解决此问题�
 
 **单 NIC VM** 
 
-- [重新部署 Windows VM](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [重新部署 Linux VM](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [重新部署 Windows VM](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [重新部署 Linux VM](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>步骤 2：检查网络流量是否被 NSG 或 UDR 阻止
 
@@ -107,11 +107,11 @@ netstat -l
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>步骤 8：尝试连接到 VM 网络共享
 
-如果无法连接到 VM 网络共享，问题可能由 VM 中不可用的 NIC 引起。 要删除不可用的 NIC，请参阅[如何删除不可用的 NIC](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
+如果无法连接到 VM 网络共享，问题可能由 VM 中不可用的 NIC 引起。 要删除不可用的 NIC，请参阅[如何删除不可用的 NIC](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics)
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>步骤 9：检查 Vnet 间连接
 
 使用[网络观察程序 IP 流验证](../network-watcher/network-watcher-ip-flow-verify-overview.md)和 [NSG 流日志记录](../network-watcher/network-watcher-nsg-flow-logging-overview.md)确定是否存在干扰流量流的 NSG 或 UDR。 还可在[此处](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections)验证 Vnet 间配置。
 
-### <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
+### <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

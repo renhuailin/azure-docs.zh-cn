@@ -9,10 +9,10 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
 ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102504771"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代

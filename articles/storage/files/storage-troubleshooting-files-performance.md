@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737624"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103417665"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -34,14 +34,15 @@ ms.locfileid: "101737624"
 
 1. 选择“事务”作为指标。
 
-1. 添加 **响应类型** 的筛选器，然后查看是否已限制任何请求。 
+1. 添加一个“响应类型”筛选器，然后检查是否有任何请求被限制。 
 
-    对于标准文件共享，如果限制了请求，将记录以下响应类型：
+    对于标准文件共享，如果某个请求被限制，则会记录以下响应类型：
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
-    对于高级文件共享，如果请求受到限制，则会记录以下响应类型：
+    对于高级文件共享，如果某个请求被限制，则会记录以下响应类型：
 
     - SuccessWithShareEgressThrottling
     - SuccessWithShareIngressThrottling
@@ -50,7 +51,7 @@ ms.locfileid: "101737624"
     - ClientShareIngressThrottlingError
     - ClientShareIopsThrottlingError
 
-    若要了解有关每个响应类型的详细信息，请参阅 [公制维度](./storage-files-monitoring-reference.md#metrics-dimensions)。
+    若要详细了解每个响应类型，请参阅[指标维度](./storage-files-monitoring-reference.md#metrics-dimensions)。
 
     ![高级文件共享的指标选项的屏幕截图，其中显示了“响应类型”属性筛选器。](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
@@ -102,7 +103,7 @@ ms.locfileid: "101737624"
 
 ### <a name="workaround"></a>解决方法
 
-- 对于高级文件共享，请 [在 FileStorage 帐户上启用 SMB 多通道](storage-files-enable-smb-multichannel.md)。
+- 对于高级文件共享，请[在 FileStorage 帐户上启用 SMB 多通道](storage-files-enable-smb-multichannel.md)。
 - 获取核心更大的 VM 可能有助于提高吞吐量。
 - 从多个 VM 运行客户端应用程序会提高吞吐量。
 - 尽可能地使用 REST API。
@@ -186,65 +187,66 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
 
 - 安装可用的[修补程序](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)。
 
-## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>SMB 多通道选项在 "文件共享设置" 下不可见。 
+## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>SMB 多通道选项在“文件共享”设置下不可见。 
 
 ### <a name="cause"></a>原因
 
-没有为该功能注册订阅，或者不支持区域和帐户类型。
+没有为该功能注册订阅，或者不支持该区域和帐户类型。
 
 ### <a name="solution"></a>解决方案
 
-确保已为 SMB 多通道功能注册订阅。 请 [参阅 "](storage-files-enable-smb-multichannel.md#getting-started) 帐户概述" 页中的 "入门" 确保帐户类型为 "FileStorage (premium file account) 。 
+确保已为 SMB 多通道功能注册订阅。 请参阅[入门](storage-files-enable-smb-multichannel.md#getting-started)，确保帐户概述页中的帐户类型为 FileStorage（高级文件帐户）。 
 
-## <a name="smb-multichannel-is-not-being-triggered"></a>不会触发 SMB 多通道。
+## <a name="smb-multichannel-is-not-being-triggered"></a>SMB 多通道未触发。
 
 ### <a name="cause"></a>原因
 
-最近对 SMB 多通道配置设置的更改，无需重新装入。
+最近对 SMB 多通道配置设置进行了更改，但没有重新装载。
 
 ### <a name="solution"></a>解决方案
  
--   对 Windows SMB 客户端或帐户 SMB 多通道配置设置进行任何更改后，你必须卸载该共享，等待60秒，并重新装载该共享以触发多通道。
--   对于 Windows 客户端操作系统，生成高队列深度的 IO 负载假设 QD = 8，例如，复制文件以触发 SMB 多通道。  对于服务器操作系统，SMB 多通道是通过 QD = 1 触发的，这意味着，一旦向共享启动任何 IO，就会出现这种情况。
+-   对 Windows SMB 客户端或帐户 SMB 多通道配置设置进行任何更改后，必须卸载该共享，等待 60 秒，并重新装载该共享以触发多通道。
+-   对于 Windows 客户端 OS，生成具有高队列深度（如 QD=8）的 IO 负载（例如复制文件）以触发 SMB 多通道。  对于服务器 OS，在 QD=1 时触发 SMB 多通道，这意味着一旦启动对共享的任何 IO，就会触发 SMB 多通道。
 
-## <a name="high-latency-on-web-sites-hosted-on-file-shares"></a>文件共享上托管的网站上的高延迟 
+## <a name="high-latency-on-web-sites-hosted-on-file-shares"></a>托管文件共享的网站上的高延迟 
 
 ### <a name="cause"></a>原因  
 
-文件共享上的大文件更改通知可能会导致严重的高延迟。 这通常发生在具有深层嵌套目录结构的文件共享上托管的网站上。 典型方案是 IIS 托管的 web 应用程序，其中，为默认配置中的每个目录设置文件更改通知。 对 SMB 客户端注册的共享上 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) 的每个更改都会将更改通知从文件服务推送到客户端，这会占用系统资源，并发出更为恶化的更改次数。 这可能会导致共享限制，进而导致更高的客户端延迟。 
+文件共享上的大量文件更改通知可能会导致严重的高延迟。 这通常发生在托管具有深层嵌套目录结构的文件共享的网站上。 一个典型场景是 IIS 托管的 Web 应用程序，其中在默认配置中为每个目录设置了文件更改通知。 已注册 SMB 客户端的共享上的每个更改 ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) 都会将更改通知从文件服务推送到客户端，这会占用系统资源，并且随着更改数量的增加问题会变得更加严重。 这会导致共享限制，从而导致更高的客户端延迟。 
 
-若要确认，可以在门户中使用 Azure 指标- 
+若要进行确认，可以使用门户中的 Azure 指标 - 
 
 1. 在 Azure 门户中转到自己的存储帐户。 
-1. 在左侧菜单中的 "监视" 下，选择 "指标"。 
-1. 选择 "文件" 作为存储帐户范围的 "指标命名空间"。 
-1. 选择 "事务" 作为指标。 
-1. 为 ResponseType 添加筛选器并检查是否有任何请求的 SuccessWithThrottling (的响应代码为 SMB) 或 ClientThrottlingError (为 REST) 。
+1. 在左侧菜单中的“监视”下，选择“指标”。 
+1. 选择“文件”作为存储帐户范围的指标命名空间。 
+1. 选择“事务”作为指标。 
+1. 添加 ResponseType 的筛选器，并检查是否有任何请求的响应代码为 SuccessWithThrottling（适用于 SMB）或 ClientThrottlingError（适用于 REST）。
 
 ### <a name="solution"></a>解决方案 
 
-- 如果未使用文件更改通知，请禁用 (首选) 的文件更改通知。
-    - 通过更新 FCNMode[禁用文件更改通知](https://support.microsoft.com/help/911272/fix-asp-net-2-0-connected-applications-on-a-web-site-may-appear-to-sto)。 
-    - 通过在注册表中设置来将 IIS 工作进程 (W3WP.EXE) 轮询间隔更新为 0 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` ，并重新启动 w3wp.exe 进程。 若要了解有关此设置的详细信息，请参阅 [IIS 的许多部分使用的常见注册表项](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)。
-- 增加文件更改通知轮询间隔的频率以减少卷。
-    - 根据要求，将 W3WP.EXE 工作进程轮询间隔更新 (例如10分钟入门或 30mins) 。 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds `[在注册表中](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)设置并重新启动 w3wp.exe 进程。
-- 如果网站的映射物理目录具有嵌套的目录结构，可以尝试限制文件更改通知的范围，以减少通知量。 默认情况下，IIS 使用虚拟目录映射到的物理目录中 Web.config 文件中的配置，以及该物理目录中的任何子目录。 如果你不希望在子目录中使用 Web.config 文件，请为虚拟目录上的了 allowsubdirconfig 属性指定 false。 [此处](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)提供了更多详细信息。 
-    - 将 Web.Config 中的 IIS 虚拟目录 "了 allowsubdirconfig" 设置设置为 " *false* "，以从作用域中排除映射的物理子目录。  
+- 如果未使用文件更改通知，请禁用文件更改通知（首选）。
+    - 更新 FCNMode 以[禁用文件更改通知](https://support.microsoft.com/help/911272/fix-asp-net-2-0-connected-applications-on-a-web-site-may-appear-to-sto)。 
+    - 通过在注册表中设置 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` 来将 IIS 工作进程 (W3WP) 轮询间隔更新为 0，然后重启 W3WP 进程。 若要了解有关此设置的详细信息，请参阅 [IIS 的许多部分使用的常见注册表项](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)。
+- 增加文件更改通知轮询间隔的频率以减少通知量。
+    - 根据你的需求，将 W3WP 工作进程轮询间隔更新为更高的值（例如 10 分钟或 30 分钟）。 [在注册表中](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp)设置 `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds `，并重启 W3WP 进程。
+- 如果网站的映射物理目录具有嵌套的目录结构，可以尝试限制文件更改通知的范围以减少通知量。 默认情况下，IIS 使用虚拟目录映射到的物理目录以及该物理目录下任何子目录中的 Web.config 文件中的配置。 如果你不希望使用子目录中的 Web.config 文件，请将虚拟目录上的 allowSubDirConfig 特性指定为 false。 [此处](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories)提供了更多详细信息。 
+    - 将 Web.Config 中的 IIS 虚拟目录“allowSubDirConfig”设置设置为 false，以从范围中排除映射的物理子目录。  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何创建文件共享受到限制时的警报
 
 1. 在 Azure 门户 中转到自己的存储帐户。
-2. 在 " **监视** " 部分中，单击 " **警报**"，然后单击 " **+ 新建警报规则**"。
-3. 单击“编辑资源”，为存储帐户选择“文件资源类型”，然后单击“完成”。 例如，如果存储帐户名称为，则 `contoso` 选择 `contoso/file` 资源。
-4. 单击 " **添加条件** " 以添加条件。
+2. 在“监视”部分中单击“警报”，然后单击“+ 新建警报规则”。  
+3. 单击“编辑资源”，为存储帐户选择“文件资源类型”，然后单击“完成”。 例如，如果存储帐户名称为 `contoso`，请选择 `contoso/file` 资源。
+4. 单击“选择条件”以添加条件。
 5. 你将看到存储帐户支持的信号列表，请选择“事务”指标。
 6. 在“配置信号逻辑”边栏选项卡上，单击“维度名称”下拉列表，然后选择“响应类型”。
-7. 单击 " **维度值** " 下拉箭头，然后为文件共享选择适当的响应类型。
+7. 单击“维度值”下拉列表，然后为你的文件共享选择适当的响应类型。
 
     对于标准文件共享，请选择以下响应类型：
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     对于高级文件共享，请选择以下响应类型：
 
@@ -256,12 +258,12 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
     - ClientShareIopsThrottlingError
 
    > [!NOTE]
-   > 如果 " **维度值** " 下拉列表中未列出响应类型，这意味着资源未被限制。 若要添加维度值，请在 " **维度值** " 下拉列表旁边，选择 " **添加自定义值**"，输入页码类型 (例如， **SuccessWithThrottling**) ，选择 **"确定"**，然后重复上述步骤，为文件共享添加所有适用的响应类型。
+   > 如果“维度值”下拉列表中未列出响应类型，这意味着资源未被限制。 若要添加维度值，请在“维度值”下拉列表旁边选择“添加自定义值”，输入响应类型类型（例如 **SuccessWithThrottling**），选择“确定”，然后重复上述步骤，为你的文件共享添加所有适用的响应类型。
 
-8. 对于 **高级文件共享**，请单击 " **维度名称** " 下拉箭头，然后选择 " **文件共享**"。 对于 **标准文件共享**，请跳到 **步骤 #10**。
+8. 对于“高级文件共享”，请单击“维度名称”下拉列表，然后选择“文件共享”。 对于“标准文件共享”，请跳到“步骤 #10”。
 
    > [!NOTE]
-   > 如果文件共享是标准文件共享，则 **文件共享** 维度不会列出) 的文件 (共享，因为标准文件共享不提供每个共享的度量值。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。
+   > 如果文件共享是标准文件共享，则“File Share”维度不会列出文件共享，因为每个共享指标对标准文件共享不可用。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。
 
 9. 单击“维度值”下拉列表，并选择要对其发出警报的文件共享。
 10. 定义“警报参数”（阈值、运算符、聚合粒度和评估频率），然后单击“完成”。
@@ -269,8 +271,8 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
     > [!TIP]
     > 如果你使用的是静态阈值，并且文件共享当前受到限制，则可通过指标图表来确定合理的阈值。 如果使用的是动态阈值，则指标图表将显示基于最新数据计算出的阈值。
 
-11. 单击 " **添加操作组** "，通过选择现有操作组或创建新的操作组，将 **操作组** (电子邮件、SMS 等 ) 添加到警报。
-12. 填写警报 **详细信息** ，如 **警报规则名称**、 **描述** 和 **严重性**。
+11. 单击“添加操作组”，通过选择现有操作组或创建新的操作组，将一个操作组（电子邮件、短信等）添加到警报中。
+12. 填写 **警报详细信息**，例如 **警报规则名称**、**说明** 和 **严重性**。
 13. 单击“创建警报规则”以创建警报。
 
 若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
@@ -299,7 +301,7 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
    - 聚合粒度：*1 小时*
    - 评估频率：*1 小时*
 
-9. 选择 " **添加操作组**"，然后将 "操作组" (例如，通过选择一个现有操作组或创建一个新的操作组，将) 发送到警报。
+9. 选择“添加操作组”，然后通过选择现有操作组或创建新的操作组，将一个操作组（例如电子邮件或短信）添加到警报中。
 10. 输入警报详细信息，例如“警报规则名称”、“说明”和“严重性”  。
 11. 选择“创建警报规则”可以创建警报  。
 
