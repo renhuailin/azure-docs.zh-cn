@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户分配 Azure 角色-Azure RBAC
+title: 使用 Azure 门户分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 向用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 author: rolyon
@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555265"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
@@ -64,7 +64,7 @@ ms.locfileid: "100555265"
 
    ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
 
-    此时会打开“添加角色分配”窗格。
+    将打开“添加角色分配”窗格。
 
    ![“添加角色分配”窗格](./media/shared/add-role-assignment.png)
 

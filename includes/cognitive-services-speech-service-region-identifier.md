@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2020
 ms.author: wolfma
 ms.openlocfilehash: 329241c2660ff7828f57fb21daeb6de20caedc43
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97504451"
 ---
 | 地理位置 | 区域 | 区域标识符 |
@@ -22,12 +22,12 @@ ms.locfileid: "97504451"
 | 美洲 | 美国西部 | `westus` |
 | 美洲 | 美国西部 2 | `westus2` |
 | 美洲 | 加拿大中部 | `canadacentral` |
-| 美洲 | Brazil South | `brazilsouth` |
+| 美洲 | 巴西南部 | `brazilsouth` |
 | 亚太区 | 东亚 | `eastasia` |
-| 亚太区 | Southeast Asia | `southeastasia` |
+| 亚太区 | 东南亚 | `southeastasia` |
 | 亚太区 | 澳大利亚东部 | `australiaeast` |
 | 亚太区 | 印度中部 | `centralindia` |
-| 亚太区 | Japan East | `japaneast` |
+| 亚太区 | 日本东部 | `japaneast` |
 | 亚太区 | 日本西部 | `japanwest` |
 | 亚太区 | 韩国中部 | `koreacentral` |
 | 欧洲 | 北欧 | `northeurope` |

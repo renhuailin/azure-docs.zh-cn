@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96454536"
 ---
 # <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析专用 SQL 池的工作负荷
