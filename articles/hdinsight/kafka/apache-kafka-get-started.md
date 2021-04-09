@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104863286"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
@@ -32,7 +32,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 若要创建基于 HDInsight 的 Apache Kafka 群集，请使用以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在顶部菜单中，选择“+ 创建资源”  。
 

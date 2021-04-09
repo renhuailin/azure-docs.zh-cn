@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634968"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577244"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -121,35 +121,51 @@ Query
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-要使函数应用能够访问 Azure 数字孪生，它需要具有系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
+要使函数应用能够访问 Azure 数字孪生，它需要具有访问 Azure 数字孪生实例的权限以及该实例的主机名。 接下来将配置这些设置。
 
-### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
+### <a name="configure-permissions-for-the-function-app"></a>为函数应用配置权限
 
-为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 Azure AD 标识，并为此标识授予 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在[概念：Azure 数字孪生解决方案的安全性](concepts-security.md)中了解详细信息。
+需要为函数应用执行两项设置才能访问 Azure 数字孪生实例。 可以通过 [Azure Cloud Shell](https://shell.azure.com) 中的命令完成这两项设置。 
 
-在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用 Azure 数字孪生实例。 在占位符中填写资源详细信息（请记住，Azure 数字孪生实例 URL 是其主机名，以 https:// 开头）。
+#### <a name="assign-access-role"></a>分配访问角色
+
+第一个设置为函数应用提供 Azure 数字孪生实例中的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在[概念：Azure 数字孪生解决方案的安全性](concepts-security.md)中了解详细信息。 
+
+1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 principalId 字段。
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > 如果结果为空而不是显示标识详细信息，请使用以下命令为函数创建新的系统托管标识：
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > 然后，输出将显示标识的详细信息，包括下一步所需的 principalId 值。 
+
+1. 在以下命令中使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的 Azure 数字孪生数据所有者角色。
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+此命令的结果是已创建的角色分配的输出信息。 函数应用现在有权访问 Azure 数字孪生实例中的数据。
+
+#### <a name="configure-application-settings"></a>配置应用程序设置
+
+第二个设置使用 Azure 数字孪生实例的 URL 为函数创建环境变量。 函数代码将使用此变量来引用你的实例。 有关环境变量的详细信息，请参阅[管理函数应用](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)。 
+
+运行下面的命令，并在占位符中填入资源的详细信息。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 输出是 Azure 函数的设置列表，其中现在应包含一个名为 ADT_SERVICE_URL 的条目。
 
-使用以下命令创建系统管理的标识。 查找输出中的 principalId 字段。
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-在以下命令的输出中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-此命令的结果是已创建的角色分配的输出信息。 函数应用现在有权访问 Azure 数字孪生实例。
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>处理来自 IoT 中心设备的模拟遥测数据
 

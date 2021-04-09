@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
@@ -137,13 +137,13 @@ ms.locfileid: "92520432"
 
     c. 注销 URL
 
-### <a name="configure-topdesk---public-single-sign-on"></a>配置 TOPdesk - Public 单一登录
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>配置 TOPdesk - Public 单一登录
 
 1. 以管理员身份登录到你的 **TOPdesk（公共版）** 公司站点。
 
 2. 在 **“TOPdesk”** 菜单中，单击 **“设置”**。
    
-    ![设置](./media/topdesk-public-tutorial/ic790598.png "设置")
+    ![设置](./media/topdesk-public-tutorial/ic790598.png &quot;设置")
 
 3. 单击 **“登录设置”**。
    
@@ -247,17 +247,17 @@ ms.locfileid: "92520432"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-topdesk---public-test-user"></a>创建 TOPdesk - Public 测试用户
+### <a name="create-topdesk---public-test-user&quot;></a>创建 TOPdesk - Public 测试用户
 
 要使 Azure AD 用户能够登录 TOPdesk - Public，必须将这些用户预配到 TOPdesk - Public 中。 对于 TOPdesk - Public，预配是一项手动任务。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>若要配置用户设置，请执行以下步骤：
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>若要配置用户设置，请执行以下步骤：
 
 1. 以管理员身份登录 **TOPdesk - Public** 公司站点。
 
 2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“人员”。
    
-    ![Person](./media/topdesk-public-tutorial/ic790628.png "人员")
+    ![Person](./media/topdesk-public-tutorial/ic790628.png &quot;人员")
 
 3. 在“新建用户”对话框中，执行以下步骤：
    

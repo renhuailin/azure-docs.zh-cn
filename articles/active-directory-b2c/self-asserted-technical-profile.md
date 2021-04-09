@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/26/2020
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: MT
+ms.openlocfilehash: 8d3343838216522abfc11ec3f202ae2da1c0e38f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059052"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611872"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -197,7 +197,7 @@ ms.locfileid: "98059052"
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必需 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | setting.operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 否| 允许生成值为 NULL 的声明。 例如，在用户未选中复选框的情况下。|
@@ -208,15 +208,17 @@ ms.locfileid: "98059052"
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值： `AfterLabel` (默认值) 在没有标签时，直接显示标签之后或密码输入字段之后的链接，在 "  `AfterInput` 密码" 输入字段后显示链接，在 `AfterButtons` 按钮后显示窗体底部的链接，或 `None` 删除 "忘记密码" 链接。|
-| setting.enableRememberMe <sup>2</sup>| 否| 显示 " [使我保持登录](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) " 复选框。 可能的值：`true` 或 `false`（默认值）。 |
+| setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterLabel`（默认值）直接在标签后面或在没有标签时在密码输入字段后面显示链接，`AfterInput` 在密码输入字段后面显示链接，`AfterButtons` 在按钮后面的窗体底部显示链接，或 `None` 删除“忘记密码”链接。|
+| setting.enableRememberMe <sup>2</sup>| 否| 显示[使我保持登录状态](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi)复选框。 可能的值：`true` 或 `false`（默认值）。 |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 通过等待用户停止键入后再验证该值来改善用户体验。 默认值为 2000 毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
+|forgotPasswordLinkOverride <sup>4</sup>| 否 | 密码重置声明要执行交换。 有关详细信息，请参阅[自助式密码重置](add-password-reset-policy.md)。 |
 
 说明：
 1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd`。
 1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp` 或 `unifiedssd`。 [页面布局版本](page-layout.md) 1.1.0 及更高版本。
 1. 可用于[页面布局版本](page-layout.md) 1.2.0 及更高版本。
+1. 可用于内容定义 [DataUri](contentdefinitions.md#datauri) 类型 `unifiedssp`。 [页面布局版本](page-layout.md) 2.1.2 及更高版本。
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

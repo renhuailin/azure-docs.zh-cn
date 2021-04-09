@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94965725"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 门户管理 DNS 记录和记录集

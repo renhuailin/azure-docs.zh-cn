@@ -11,10 +11,10 @@ ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 12d425cfbb093d19efec19dfa02af5ff264c1bae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94696670"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI 脚本示例：对多个网站进行负载均衡
@@ -49,7 +49,7 @@ az group delete --name myResourceGroup --yes
 | [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
 | [az network lb create](/cli/azure/network/lb#az-network-lb-create) | 创建 Azure 负载均衡器。 |
 | [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
-| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
+| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
 | [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) | 为负载均衡器创建前端 IP 地址。 |
 | [az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) | 创建后端地址池。 |
 | [az network nic create](/cli/azure/network/nic#az-network-nic-create) | 创建虚拟网卡并将其连接到虚拟网络和子网。 |

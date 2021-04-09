@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
 ms.openlocfilehash: 50f3f05bd06101caa096b8126225c7b49ef1f3fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98675482"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>用于 Azure Cosmos DB - Gremlin API 的数据库或图的使用 PowerShell 实现的吞吐量 (RU/s) 操作

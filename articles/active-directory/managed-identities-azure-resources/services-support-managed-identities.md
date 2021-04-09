@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7b9ae52a0d62da6a8637f63f15d8680b54aeefd1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594540"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -73,7 +73,19 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-启用 Azure Arc 的 Kubernetes 目前 [支持系统分配的标识](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes)。 所有启用了 Azure Arc 的 Kubernetes 代理使用托管服务标识证书来与 Azure 通信。
+已启用 Azure Arc 的 Kubernetes 目前[支持系统分配的标识](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。 托管服务标识证书由所有启用了 Azure Arc 的 Kubernetes 代理用于与 Azure 进行通信。
+
+### <a name="azure-arc-enabled-servers"></a>已启用 Azure Arc 的服务器
+
+| 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | :-: | :-: | :-: | :-: |
+| 系统分配 | ![可用][check] | ![可用][check] | 不可用 | 不可用 |
+| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+
+所有启用了 Azure Arc 的服务器都有系统分配的标识。 无法在启用了 Azure Arc 的服务器上禁用或更改系统分配的标识。 请参阅以下资源，详细了解如何在启用了 Azure Arc 的服务器上使用托管标识：
+
+- [针对启用了 Arc 的服务器对 Azure 资源进行身份验证](../../azure-arc/servers/managed-identity-authentication.md)
+- [将托管标识用于启用了 Arc 的服务器](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure 自动管理
 
@@ -82,7 +94,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 预览 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-如果已将订阅移到新租户，请参阅以下文档来重新配置托管标识：
+如果已将订阅移到新租户，请参阅以下文档以重新配置托管标识：
 * [修复损坏的 Automanage 帐户](../../automanage/repair-automanage-account.md)
 
 ### <a name="azure-blueprints"></a>Azure 蓝图
@@ -174,7 +186,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表，在可用) 的区域中为 Azure 数字孪生 (配置托管标识：
+请参阅以下列表，为 Azure 数字孪生配置托管标识（在可用的区域中）：
 
 - [Azure 门户](../../digital-twins/how-to-enable-managed-identities-portal.md)
 
@@ -213,7 +225,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下列表，在可用) 的区域中配置适用于 Azure IoT 中心 (的托管标识：
+请参阅以下列表，为 Azure IoT 中心配置托管标识（在可用的区域中）：
 
 - [Azure 门户](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
@@ -241,7 +253,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 | 用户分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
 
-有关详细信息，请参阅[标识在 Azure Monitor 中的工作](../../azure-monitor/logs/customer-managed-keys.md)原理
+有关详细信息，请参阅[标识在 Azure Monitor 中的工作原理](../../azure-monitor/logs/customer-managed-keys.md)
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用
 
@@ -352,7 +364,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | 系统分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | [在支持的区域中可用](../../virtual-machines/image-builder-overview.md#regions) | 不可用 | 不可用 | 不可用 |
 
-若要了解如何在可用) 的区域中为 Azure VM 映像生成器 (配置托管标识，请参阅 [映像生成器概述](../../virtual-machines/image-builder-overview.md#permissions)。
+要了解如何配置 Azure VM 映像生成器的托管标识（在可用的区域中），请参阅[映像生成器概述](../../virtual-machines/image-builder-overview.md#permissions)。
 ### <a name="azure-signalr-service"></a>Azure SignalR 服务
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
@@ -368,10 +380,10 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
-| 系统分配 | 在 Azure 资源移动器服务可用的区域中提供 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 在提供 Azure 资源移动服务的区域中可用 | 不可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
-请参阅以下文档，使用 Azure 资源移动器：
+请参阅以下文档来使用 Azure 资源移动服务：
 
 - [Azure 资源移动器](../../resource-mover/overview.md)
 

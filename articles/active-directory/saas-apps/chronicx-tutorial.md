@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 0603e04424acfe979f44110b973b79f6c07e0b81
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97673593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>教程：Azure Active Directory 与 ChronicX® 集成
@@ -41,8 +41,8 @@ ms.locfileid: "97673593"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* ChronicX® 支持 SP 发起的 SSO 
-* ChronicX® 支持即时用户预配 
+* ChronicX® 支持 SP 发起的 SSO
+* ChronicX® 支持即时用户预配
 
 ## <a name="adding-chronicx-from-the-gallery"></a>从库中添加 ChronicX®
 
@@ -62,13 +62,13 @@ ms.locfileid: "97673593"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“ChronicX®”，在结果面板中选择“ChronicX®”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“ChronicX®”，在结果面板中选择“ChronicX®”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的 ChronicX®](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为 Britta Simon 的测试用户使用 ChronicX® 配置和测试 Azure AD 单一登录  。
+在本部分中，基于一个名为 Britta Simon 的测试用户使用 ChronicX® 配置和测试 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 ChronicX® 中的相关用户之间建立链接关系。
 
 若要使用 ChronicX® 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
@@ -86,7 +86,7 @@ ms.locfileid: "97673593"
 
 若要使用 ChronicX® 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 ChronicX® 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 ChronicX® 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -98,11 +98,11 @@ ms.locfileid: "97673593"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![ChronicX® 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp` 
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`ups.chronicx.com`
 
@@ -113,7 +113,7 @@ ms.locfileid: "97673593"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 ChronicX®”部分，根据要求复制相应的 URL  。
+6. 在“设置 ChronicX®”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "97673593"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -150,17 +150,17 @@ ms.locfileid: "97673593"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 ChronicX® 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ChronicX®”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“ChronicX®”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“ChronicX®”  。
+2. 在应用程序列表中，选择“ChronicX®”。
 
     ![应用程序列表中的 ChronicX® 链接](common/all-applications.png)
 

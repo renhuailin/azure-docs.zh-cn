@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
 ms.openlocfilehash: 1e26159c07ca551a78ee2f83a0ca64779c60f7b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98018864"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析分析欺诈性呼叫数据，并在 Power BI 仪表板中可视化结果
@@ -46,7 +46,7 @@ ms.locfileid: "98018864"
 
 请按以下步骤创建一个事件中心，然后向该事件中心发送呼叫数据：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源” > “物联网” > “事件中心”  。
 
    ![在门户中创建 Azure 事件中心](media/stream-analytics-real-time-fraud-detection/find-event-hub-resource.png)
