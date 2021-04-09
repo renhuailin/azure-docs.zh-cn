@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
 ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102213991"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建和部署逻辑应用工作流
@@ -64,7 +64,7 @@ ms.locfileid: "102213991"
 
 1. 在门户中的“使用模板创建逻辑应用”页面上，输入或选择这些值：
 
-   | 属性 | “值” | 说明 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
    | **资源组** | <*Azure-resource-group-name*> | 新的或现有的 Azure 资源组的名称。 本示例使用 `Check-Azure-Status-RG`。 |
@@ -186,7 +186,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    }
    ```
 
-   | 属性 | “值” | 说明 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | `location`| <*Azure-region*> | 用于部署的 Azure 区域。 本示例使用 `West US`。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | 用于部署的快速入门模板的 URL 位置： <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |

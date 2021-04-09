@@ -11,10 +11,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: b39a74bd06f942cf21d201c8cef48bc6dfc57d46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96548080"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
