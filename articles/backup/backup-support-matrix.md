@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
-ms.translationtype: MT
+ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915703"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225541"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -25,7 +25,7 @@ ms.locfileid: "98915703"
 
 ## <a name="vault-support"></a>保管库支持
 
-Azure 备份使用恢复服务保管库来安排和管理以下工作负荷类型的备份-azure vm、Azure Vm 中的 SQL SAP HANA、azure Vm、Azure 文件共享和本地工作负荷使用 Azure 备份代理、Azure 备份服务器和 System Center DPM。 它还使用恢复服务保管库来存储这些工作负荷的已备份数据。
+Azure 备份使用恢复服务保管库来协调和管理以下工作负荷类型的备份：Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA、Azure 文件共享，以及使用 Azure 备份代理、Azure 备份服务器和 System Center DPM 的本地工作负荷。 它还使用恢复服务保管库来存储这些工作负荷的已备份数据。
 
 下表介绍恢复服务保管库的功能：
 
@@ -39,7 +39,8 @@ Azure 备份使用恢复服务保管库来安排和管理以下工作负荷类�
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](./backup-azure-move-recovery-services-vault.md)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
-**区域冗余存储 (ZRS)** | 在英国南部中提供 (UKS) 和南部东亚 (海平面) 区域。
+**区域冗余存储 (ZRS)** | 在“英国南部(UKS)”和“东南亚(SEA)”区域提供。
+**终结点** | 请参阅[此部分](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start)，了解为恢复服务保管库创建专用终结点的要求。  
 
 ## <a name="on-premises-backup-support"></a>本地备份支持
 
@@ -146,14 +147,14 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 ## <a name="cross-region-restore"></a>跨区域还原
 
-Azure 备份添加了跨区域还原功能来增强数据可用性和复原能力，使你可以完全控制将数据还原到次要区域。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md#set-cross-region-restore)。 以下管理类型支持此功能：
+Azure 备份添加了“跨区域还原”功能以增强数据可用性和复原能力，使你能够完全控制将数据还原到次要区域的过程。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md#set-cross-region-restore)。 以下管理类型支持此功能：
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 支持具有托管磁盘和非托管磁盘的 Azure Vm。 经典 VM 不支持。 | 除法国中部、澳大利亚中部、南非北部、阿拉伯联合酋长国北部、瑞士北部、德国中西部、挪威东部以外，所有 Azure 公共区域均提供此功能。 <br>有关在这些区域中使用的信息，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL/SAP HANA | 预览                                                      | 除法国中部、澳大利亚中部、南非北部、阿拉伯联合酋长国北部、瑞士北部、德国中西部、挪威东部以外，所有 Azure 公共区域均提供此功能。 <br>有关在这些区域中使用的信息，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| MARS 代理/本地  | 否                                                           | 不适用               |
-|  (Azure 文件共享的 AFS)                  | 否                                                           | 不适用               |
+| Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM 支持。 经典 VM 不支持。 | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | 预览                                                      | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| MARS 代理/本地  | 否                                                           | 空值               |
+| AFS（Azure 文件共享）                 | 否                                                           | 空值               |
 
 ## <a name="next-steps"></a>后续步骤
 

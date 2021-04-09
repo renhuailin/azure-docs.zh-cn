@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102553419"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>发现组织中外部协作的当前状态 
@@ -79,7 +79,7 @@ ms.locfileid: "102553419"
 
 4. [使用组以确保安全性](4-secure-access-groups.md)
 
-5. [过渡到 Azure AD B2B](5-secure-access-b2b.md)
+5. [转换到 Azure AD B2B](5-secure-access-b2b.md)
 
 6. [通过权利管理实现安全访问](6-secure-access-entitlement-managment.md)
 

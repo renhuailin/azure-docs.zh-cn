@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Batch 通过 Azure 数据工厂将 Python 
 author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 03/12/2021
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 241a47ccf9021c6065fea907b4d9914744a64972
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106268"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103461685"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 
@@ -34,7 +34,7 @@ ms.locfileid: "97106268"
 
 * 已安装一个 [Python](https://www.python.org/downloads/) 分发版用于本地测试。
 * [azure-storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` 包。
-* [iris.csv 数据集](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* [iris.csv 数据集](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv)
 * Azure Batch 帐户和关联的 Azure 存储帐户。 有关如何创建 Batch 帐户并将其链接到存储帐户的详细信息，请参阅[创建 Batch 帐户](quick-create-portal.md#create-a-batch-account)。
 * 一个 Azure 数据工厂帐户。 有关如何通过 Azure 门户创建数据工厂的详细信息，请参阅[创建数据工厂](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)。
@@ -67,7 +67,7 @@ ms.locfileid: "97106268"
 1. 使用 Azure 凭据登录到存储资源管理器。
 1. 使用链接到批处理帐户的存储帐户，按照[创建 Blob 容器](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)的步骤创建两个 Blob 容器（一个用于输入文件，一个用于输出文件）。
     * 在本例中，我们将调用输入容器 `input` 和输出容器 `output`。
-1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) 上传到输入容器 `input`
+1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 [`iris.csv`](https://github.com/Azure-Samples/batch-adf-pipeline-tutorial/blob/master/iris.csv) 上传到输入容器 `input`
 
 ## <a name="develop-a-script-in-python"></a>在 Python 中开发脚本
 
@@ -75,32 +75,28 @@ ms.locfileid: "97106268"
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobClient
 import pandas as pd
 
 # Define parameters
-storageAccountURL = "<storage-account-url>"
-storageKey         = "<storage-account-key>"
-containerName      = "output"
+connectionString = "<storage-account-connection-string>"
+containerName = "output"
+outputBlobName  = "iris_setosa.csv"
 
 # Establish connection with the blob storage account
-blob_service_client = BlockBlobService(account_url=storageAccountURL,
-                               credential=storageKey
-                               )
+blob = BlobClient.from_connection_string(conn_str=connectionString, container_name=containerName, blob_name=outputBlobName)
 
 # Load iris dataset from the task node
 df = pd.read_csv("iris.csv")
 
-# Subset records
+# Take a subset of the records
 df = df[df['Species'] == "setosa"]
 
 # Save the subset of the iris dataframe locally in task node
-df.to_csv("iris_setosa.csv", index = False)
+df.to_csv(outputBlobName, index = False)
 
-# Upload iris dataset
-container_client = blob_service_client.get_container_client(containerName)
-with open("iris_setosa.csv", "rb") as data:
-    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
+with open(outputBlobName, "rb") as data:
+    blob.upload_blob(data)
 ```
 
 将脚本另存为 `main.py`，然后将其上传到 Azure 存储的 `input` 容器。 在将其上传到 Blob 容器之前，请务必在本地测试并验证其功能：
@@ -119,19 +115,17 @@ python main.py
 
     ![在“常规”选项卡中，将管道名称设置为“运行 Python”](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. 在“活动”框中展开“Batch 服务”。  将“活动”工具箱中的自定义活动拖到管道设计器图面。
-1. 在“常规”选项卡中，指定 **testPipeline** 作为名称。
-
-    ![在“常规”选项卡中，指定 testPipeline 作为名称](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. 在“Azure Batch”选项卡中，添加在前面步骤中创建的 **Batch 帐户**，然后选择“测试连接”以确保连接成功 
-
+1. 在“活动”框中展开“Batch 服务”。  将“活动”工具箱中的自定义活动拖到管道设计器图面。 为自定义活动填写以下选项卡：
+    1. 在“常规”选项卡中，指定“testPipeline”作为名称 ![在“常规”选项卡中，指定“testPipeline”作为名称](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    1. 在“Azure Batch”选项卡中，添加在前面步骤中创建的 Batch 帐户，然后选择“测试连接”以确保连接成功 。
     ![在“Azure Batch”选项卡中，添加在前面步骤中创建的 Batch 帐户，然后测试连接](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    1. 在“设置”选项卡中：
+        1. 将“命令”设置为 `python main.py`。
+        1. 对于“资源链接服务”，请添加在前面步骤中创建的存储帐户。 测试连接以确保连接成功。
+        1. 在“文件夹路径”中，选择包含 Python 脚本和关联输入的“Azure Blob 存储”容器的名称。  这会在执行 Python 脚本之前，将所选文件从该容器下载到池节点实例。
 
-1. 在“设置”选项卡中，输入命令 `python main.py`。
-1. 对于“资源链接服务”，请添加在前面步骤中创建的存储帐户。 测试连接以确保连接成功。
-1. 在“文件夹路径”中，选择包含 Python 脚本和关联输入的“Azure Blob 存储”容器的名称。  这会在执行 Python 脚本之前，将所选文件从该容器下载到池节点实例。
+        ![在“文件夹路径”中，选择 Azure Blob 存储容器的名称](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 
-    ![在“文件夹路径”中，选择 Azure Blob 存储容器的名称](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 &gt;&gt;（右箭头）按钮。
 1. 单击“调试”以测试管道，确保管道正常运行。
 1. 单击“发布”以发布管道。

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043093"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585853"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
@@ -105,7 +105,7 @@ DTDL 模型可以是非组件或多组件模型 ：
 - 非组件模型：简单的模型不使用嵌入或级联的组件。 所有遥测、属性和命令都定义为单个默认组件。 有关示例，请参阅[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)模型。
 - 多组件模型。 包含两个或以上组件的更为复杂的模型。 这些组件包括单个默认组件以及一个或多个附加嵌套组件。 有关示例，请参阅[温度控制器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)模型。
 
-若要了解详细信息，请参阅[模型中的 IoT 即插即用组件](../../iot-pnp/concepts-components.md)
+若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="conventions"></a>约定
 

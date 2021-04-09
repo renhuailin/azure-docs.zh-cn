@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1a0fc569b7d552101c1e0bd1a065b2a91ebfa3c4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 139eeaa83629f3ef51f8eda414622f7da54dfab4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439606"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560244"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备中的 Kubernetes 网络
 
@@ -86,4 +86,4 @@ IP 分配适用于：
 
 - [通过 IoT Edge 在 Azure Stack Edge Pro 外部公开无状态应用程序](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
 
-- [通过 kuebctl 在 Azure Stack Edge Pro 外部公开无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [通过 kuebctl 在 Azure Stack Edge Pro 外部公开无状态应用程序](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。

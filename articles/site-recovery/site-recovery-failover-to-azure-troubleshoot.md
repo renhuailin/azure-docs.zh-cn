@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371981"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043897"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -78,9 +78,9 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>由于虚拟机上的“连接”按钮已灰显，无法连接/通过 RDP/SSH 连接到已故障转移的虚拟机
 
-有关 RDP 问题的详细故障排除说明，请参阅[此处](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的文档。
+有关 RDP 问题的详细故障排除说明，请参阅[此处](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)的文档。
 
-有关 SSH 问题的详细故障排除说明，请参阅[此处](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的文档。
+有关 SSH 问题的详细故障排除说明，请参阅[此处](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)的文档。
 
 如果 Azure 中已故障转移的 VM 的“连接”按钮灰显，并且你未通过快速路由或站点到站点 VPN 连接来连接到 Azure，则执行以下操作：
 
@@ -94,7 +94,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>无法连接/RDP/SSH - VM 的“连接”按钮可用
 
-如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](../virtual-machines/troubleshooting/boot-diagnostics.md)中所列的错误。 
+如果 Azure 中已故障转移的 VM 的“连接”按钮可用（未灰显），则请检查虚拟机上的“启动诊断”，查看是否有[此文](/troubleshoot/azure/virtual-machines/boot-diagnostics)中所列的错误。 
 
 1. 如果虚拟机尚未启动，请尝试故障转移到以前的恢复点。
 2. 如果虚拟机中的应用程序未启动，请尝试故障转移到应用一致的恢复点。
@@ -182,7 +182,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 
 ## <a name="next-steps"></a>后续步骤
-- 排查[通过 RDP 连接到 Windows VM](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) 的问题
-- 排查[通过 SSH 连接到 Linux VM](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) 的问题
+- 排查[通过 RDP 连接到 Windows VM](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection) 的问题
+- 排查[通过 SSH 连接到 Linux VM](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection) 的问题
 
 如需更多帮助，请将疑问发布到 [有关 Site Recovery 的 Microsoft Q&A 问题页面](/answers/topics/azure-site-recovery.html)，或在本文档结尾处留下注释。 我们的活动社区应能够为你提供帮助。

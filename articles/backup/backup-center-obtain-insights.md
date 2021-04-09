@@ -4,10 +4,10 @@ description: 了解如何使用备份中心分析历史趋势和更深入地了�
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505999"
 ---
 # <a name="obtain-insights-using-backup-center"></a>使用备份中心获取见解
@@ -61,5 +61,5 @@ ms.locfileid: "102505999"
 ## <a name="next-steps"></a>后续步骤
 
 - [监视和操作备份](backup-center-monitor-operate.md)
-- [备份资产](backup-center-govern-environment.md)
+- [治理备份空间](backup-center-govern-environment.md)
 - [使用备份中心执行操作](backup-center-actions.md)
