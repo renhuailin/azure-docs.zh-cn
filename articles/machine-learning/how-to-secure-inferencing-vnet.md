@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 5d029f4328f955d64c5ce479e553769f8a107e45
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518562"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573432"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -278,3 +278,5 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
 * [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+
+另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。

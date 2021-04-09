@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104587298"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,19 +28,19 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>返回类型
   
-  以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
+以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |格式|描述|
-  |-|-|
-  |YYYY|四位数的年份|
-  |MM|两位数的月份（01 = 1 月，依此类推。）|
-  |DD|两位数的月份日期（01 到 31）|
-  |T|时间元素开头的符号|
-  |hh|两位数的小时（00 到 23）|
-  |MM|两位数的分钟（00 到 59）|
-  |ss|两位数的秒（00 到 59）|
-  |.fffffff|七位数的小数秒|
-  |Z|UTC（协调世界时）指示符||
+|格式|描述|
+|-|-|
+|YYYY|四位数的年份|
+|MM|两位数的月份（01 = 1 月，依此类推。）|
+|DD|两位数的月份日期（01 到 31）|
+|T|时间元素开头的符号|
+|hh|两位数的小时（00 到 23）|
+|MM|两位数的分钟（00 到 59）|
+|ss|两位数的秒（00 到 59）|
+|.fffffff|七位数的小数秒|
+|Z|UTC（协调世界时）指示符|
   
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
@@ -49,7 +49,7 @@ GetCurrentDateTime ()
 GetCurrentDateTime() 是非确定性的函数。 返回的结果为 UTC。 精度为 7 位，准确度为 100 纳秒。
 
 > [!NOTE]
-> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在执行查询之前获取当前时间，并在子句中使用该常量字符串值 `WHERE` 。
+> 此系统函数不会使用索引。 如果需要将值与当前时间进行比较，请在查询执行之前获取当前时间，并在 `WHERE` 子句中使用该常量字符串值。
 
 ## <a name="examples"></a>示例
   

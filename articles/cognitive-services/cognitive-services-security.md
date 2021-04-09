@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425288"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043864"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -29,13 +29,13 @@ ms.locfileid: "102425288"
 * 用于进行 HTTP 调用的语言（和平台）需要在请求中指定 TLS 1.2
   * 根据语言和平台，TLS 的指定可以通过隐式或显式方式完成
 
-对于 .NET 用户，请考虑<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">传输层安全性最佳做法</a>。
+对于 .NET 用户，请考虑<a href="/dotnet/framework/network-programming/tls" target="_blank">传输层安全性最佳做法</a>。
 
 ## <a name="authentication"></a>身份验证
 
 在讨论身份验证时，存在几种常见的误解。 身份验证和授权常常互相混淆。 标识也是安全性的主要组件。 标识是有关<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主体 </a> 的信息的集合。 标识提供者 (IdP) 为身份验证服务提供标识。 身份验证是验证用户身份的行为。 授权指为给定身份指定对资源的访问权限和特权。 有多种认知服务产品/服务，包括 Azure 基于角色的访问控制 (Azure RBAC)。 Azure RBAC 可用于简化与人工管理主体有关的一些仪式。 有关更多详细信息，请参阅 [Azure 资源的 Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
-有关使用订阅密钥、访问令牌和 Azure Active Directory (AAD) 进行身份验证的详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">对 Azure 认知服务请求进行身份验证</a>。
+有关使用订阅密钥、访问令牌和 Azure Active Directory (AAD) 进行身份验证的详细信息，请参阅<a href="/azure/cognitive-services/authentication" target="_blank">对 Azure 认知服务请求进行身份验证</a>。
 
 ## <a name="environment-variables-and-application-configuration"></a>环境变量和应用程序配置
 
@@ -113,7 +113,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a>。
+有关详细信息，请参阅 <a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a>。
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a>。
+有关详细信息，请参阅 <a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a>。
 
 ```cpp
 #include <stdlib.h>

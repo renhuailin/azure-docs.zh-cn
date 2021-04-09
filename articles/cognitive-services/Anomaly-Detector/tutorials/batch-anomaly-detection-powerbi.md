@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430592"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561723"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -175,4 +175,4 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
->[使用 Azure Databricks 流式处理异常检测](anomaly-detection-streaming-databricks.md)
+>[使用 Azure Databricks 流式处理异常检测](../overview.md)

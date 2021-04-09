@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102508803"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
@@ -22,7 +22,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|属性  |描述 |
+|属性  |说明 |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |

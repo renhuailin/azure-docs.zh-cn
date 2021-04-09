@@ -3,7 +3,7 @@ title: Azure 媒体服务发行说明 | Microsoft Docs
 description: 本文讨论 Microsoft Azure 媒体服务 v2 发行说明。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1700489b4f3ee37d95b87b1bf026d47c9f1de4d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694876"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067276"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -49,6 +49,26 @@ ms.locfileid: "98694876"
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure 媒体服务 v2 API 和 SDK 弃用公告
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>请在 2024 年 2 月 29 日之前将 Azure 媒体服务 REST API 和 SDK 更新到 v3
+
+由于版本 3 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK 提供了比版本 2 更多的功能，因此我们正在停用版本 2 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK。 我们鼓励你尽快切换，以获得版本 3 的 Azure 媒体服务 REST API 和适用于 .NET 和 Java 的客户端 SDK 的更多优势。
+版本 3 提供：
+ 
+- 全天候实时事件支持
+- ARM REST API、适用于 .NET core、Node.js、Python、Java、Go 和 Ruby 的客户端 SDK。
+- 客户管理的密钥、受信任的存储集成和专用链接支持[等等](https://review.docs.microsoft.com/en-us/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>需要执行操作：
+
+若要最大程度地减少工作负载的中断，请参阅[迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)，在 2024 年 2 月 29 日之前将代码从版本 2 API 和 SDK 转换为版本 3 API 和 SDK。
+**2024 年 2 月 29 日之后**，Azure 媒体服务将不再接受版本 2 REST API、ARM 帐户管理 API 版本 2015-10-01 或版本 2 .NET 客户端 SDK 中的流量。 其中包括可以调用版本 2 API 的任何第三方开源客户端 SDK。  
+
+请参阅官方的 [Azure 更新公告](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)。
+
 ## <a name="september-2020"></a>2020 年 9 月
 
 以下 v2 属性将不再用历史作业进度数据填充：
@@ -71,7 +91,7 @@ ms.locfileid: "98694876"
 
 我们宣布停用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
 
-有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。
 
 另请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
@@ -232,7 +252,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 有关详细信息，请参阅：
 
 * 以下[代码示例](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可帮助你快速入门：
-  * vodworkflow_aes.php：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)中所述的 .NET 示例。
+  * vodworkflow_aes.php：此 PHP 文件演示如何使用 AES-128 动态加密和密钥传送服务。 它基于[使用 AES-128 动态加密和密钥传送服务](media-services-playready-license-template-overview.md)中所述的 .NET 示例。
   * vodworkflow_aes.php：此 PHP 文件演示如何使用 PlayReady 动态加密和许可证传送服务。 它基于[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)中所述的 .NET 示例。
   * scale_encoding_units.php：此 PHP 文件演示如何缩放编码预留单位。
 

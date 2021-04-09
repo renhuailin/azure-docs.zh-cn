@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1ca526b7ecbe20a54ec115521cdfbc93c713e0da
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.openlocfilehash: 0acb882410d103cf6f6c34bbecf2006094437b04
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360048"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102634679"
 ---
 # <a name="input-metadata"></a>输入元数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "93360048"
 
 媒体服务不会先扫描输入资产以生成元数据。 只有在作业中处理输入资产时，才会生成输入元数据。 因此，此项目会写入到输出资产。 使用不同的工具为输入资产和输出资产生成元数据。 因此，输入元数据的模式与输出元数据略有不同。
 
-本文介绍了在 ) 基于的输入元数据 (asset_id_metadata.js的元素和类型 &lt; &gt; 。 若要深入了解包含有关输出资产的元数据的文件，请参阅[输出元数据](output-metadata-schema.md)。  
+本文讨论作为输入元数据 (&lt;asset_id&gt;_metadata.json) 的基础的 JSON 架构的元素和类型。 若要深入了解包含有关输出资产的元数据的文件，请参阅[输出元数据](output-metadata-schema.md)。  
 
 可以在本文末尾找到 JSON 架构示例。  
 
@@ -39,9 +39,7 @@ ms.locfileid: "93360048"
 包含用于编码作业的 AssetFile 元素集合。  
 
 > [!NOTE]
-> 以下四个子元素必须出现在一个序列中。  
-> 
-> 
+> 以下四个子元素必须出现在一个序列中。
 
 | “属性”  | 说明 |
 | --- | --- | 
@@ -53,7 +51,7 @@ ms.locfileid: "93360048"
 
 | “属性” | 说明 |
 | --- | --- |
-| **Name**<br />必须 |资产文件名称。 <br /><br />示例： `"Name": "Ignite-short.mp4"` |
+| **名称**<br />必须 |资产文件名称。 <br /><br />示例： `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必须 |输入资产所在的 URL。 若要标识输出资产所属的输入资产，请使用 `Uri` 字段，而不使用 ID。|
 | **大小**<br />必须 |以字节为单位的资产文件大小。  <br /><br />示例： `"Size": 75739259`|
 | **持续时间**<br />必须 |内容播放持续时间。 <br /><br />示例：`"Duration": "PT1M10.304S"`。 |
@@ -67,7 +65,7 @@ ms.locfileid: "93360048"
 
 | “属性” | 说明 |
 | --- | --- |
-| FourCC<br />必须 |ffmpeg 报告的视频编解码器 FourCC 代码。<br /><br />示例： `"FourCC": "avc1"` |
+| FourCC <br />必须 |ffmpeg 报告的视频编解码器 FourCC 代码。<br /><br />示例： `"FourCC": "avc1" | "hev1" | "hvc1"` |
 | **Profile** |视频轨道的配置文件。 <br /><br />示例： `"Profile": "Main"`|
 | **级别** |视频轨道的级别。 <br /><br />示例： `"Level": "3.2"`|
 | **PixelFormat** |视频轨道的像素格式。 <br /><br />示例： `"PixelFormat": "yuv420p"`|
@@ -81,10 +79,10 @@ ms.locfileid: "93360048"
 | Bitrate |由资产文件计算所得的平均视频比特率（比特/秒）。 仅针对基本流有效负载计数，不包含打包开销。 <br /><br />示例： `"Bitrate": 8421583`|
 | **HasBFrames** |B 帧的视频轨道数。 <br /><br />示例： `"HasBFrames": 2`|
 | Metadata |可以用来保存各种信息的通用键/值字符串。 <br />请参阅本文末尾的完整示例。 |
-| Id <br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 此 **Id** 不一定是在 TrackID 文件中使用的。 <br /><br />示例： `"Id": 2`|
-| **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264"`|
+| Id <br />必须 |此音频轨或视频轨从零开始的索引。<br /><br /> 此“Id”不一定是 MP4 文件中使用的 TrackID。 <br /><br />示例： `"Id": 2`|
+| **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264 | hev1"`|
 | **CodecLongName** |音频或视频轨道编解码器长名称。 <br /><br />示例： `"CodecLongName": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10"`|
-| **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264"`|
+| **Codec** |视频轨道编解码器字符串。 <br /><br />示例： `"Codec": "h264 | hev1"`|
 | TimeBase<br />必须 |时间基准。<br /><br />示例： `"TimeBase": "1/30000"`|
 | **NumberOfFrames** |帧数（针对视频轨）。 <br /><br />示例： `"NumberOfFrames": 2107`|
 | **StartTime** |轨道开始时间。<br /><br />示例： `"StartTime": "PT0.033S"` |
@@ -112,8 +110,8 @@ ms.locfileid: "93360048"
 
 | 名称 | 说明 |
 | --- | --- |
-| **键**<br />必须 |键/值对中的键。 |
-| value<br /> 必须 |键/值对中的值。 |
+| key <br />必须 |键/值对中的键。 |
+| value <br /> 必须 |键/值对中的值。 |
 
 ## <a name="schema-example"></a>架构示例
 

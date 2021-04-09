@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure 媒体服务常见方案 |Microsoft Docs
-description: 本文概述 Microsoft Azure 媒体服务方案。
+title: Microsoft Azure 媒体服务常见方案 | Microsoft Docs
+description: 本文概述了 Microsoft Azure 媒体服务方案。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/3/2020
+ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: d195ad6715c47b9b4c14dc2e65ba1d07ebf79ce8
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696255"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103007925"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure 媒体服务常见方案
 
@@ -94,8 +94,8 @@ ms.locfileid: "98696255"
 1. （可选）将流编码为自适应比特率流。
 1. 预览实时流。
 1. 通过以下方式传递内容：
-    1. 常用流式处理协议 (例如，将 MPEG 破折号、平滑、HLS) 直接传递给客户，
-    1.  (CDN) 的内容交付网络用于进一步分发，或
+    1. 通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）直接传递给客户，
+    1. 传递给内容分发网络 (CDN) 进行进一步分发，或
     1. 记录并存储引入的内容，以便稍后进行流式处理（视频点播）。
 
 执行实时传送视频流时，可以选择以下路由之一：

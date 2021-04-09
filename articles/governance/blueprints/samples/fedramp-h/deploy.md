@@ -4,10 +4,10 @@ description: FedRAMP High 蓝图示例的部署步骤，包括蓝图项目参数
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 53d48eff79f7227373c1e7dfb0c34ef17a00e125
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594768"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>部署 FedRAMP High 蓝图示例

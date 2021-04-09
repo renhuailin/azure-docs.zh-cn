@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 5c0b661f80bf7100215b25a66e5b5337af01ba75
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102635189"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>导出企业应用的机密和证书
-此 PowerShell 脚本示例将指定企业应用的所有机密和证书从目录导出到 CSV 文件中。
+此 PowerShell 脚本示例会将指定企业应用的所有机密、证书和所有者从目录导出到 CSV 文件。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,8 +36,9 @@ ms.locfileid: "102583257"
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | 从目录中检索应用程序。 |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | 从目录中检索应用程序的所有者。 |
+| [Get-AzureADServicePrincipal](/powershell/module/azuread/Get-azureADServicePrincipal?view=azureadps-2.0&preserve-view=true) | 从目录中检索企业应用程序。 |
+| [Get-AzureADServicePrincipalOwner](/powershell/module/azuread/Get-AzureADServicePrincipalOwner?view=azureadps-2.0&preserve-view=true) | 从目录中检索企业应用程序的所有者。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

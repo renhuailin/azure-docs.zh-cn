@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522183"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417631"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 若要在工作区的不同试验中重用和共享数据集，请[注册数据集](#register-datasets)。
 
+## <a name="wrangle-data"></a>处理数据
+创建并[注册](#register-datasets)数据集之后，可以在模型训练之前将其加载到笔记本中以进行数据处理和[浏览](#explore-data)。 
+
+如果不需要进行任何数据处理或浏览，请参阅[使用数据集进行训练](how-to-train-with-datasets.md)，了解如何在训练脚本中使用数据集，以便提交 ML 试验。
+
+### <a name="filter-datasets-preview"></a>筛选数据集（预览版）
+筛选功能取决于你拥有的数据集的类型。 
+> [!IMPORTANT]
+> 使用公共预览版方法筛选数据集，[`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) 是一个[试验性](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，可能会随时更改。 
+> 
+对于 TabularDatasets，可以使用 [keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) 和 [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) 方法保留或删除列。
+
+若要按 TabularDataset 中的特定列值筛选行，请使用 [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) 方法（预览版）。 
+
+以下示例基于指定的表达式返回未注册的数据集。
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+在 FileDatasets 中，每一行均对应一个文件路径，因此按列值筛选不起作用。 但是，可以按元数据（如 CreationTime、大小等）对行进行 [filter()](/python/api/azureml-core/azureml.data.filedataset#filter-expression-)。
+
+以下示例基于指定的表达式返回未注册的数据集。
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+从[数据标记项目](how-to-create-labeling-projects.md)创建的标记数据集是一种特殊情况。 这些数据集是由图像文件组成的 TabularDataset 的类型。 对于这两种类型的数据集，可以按元数据和列值（如 `label` 和 `image_details`）对图像进行 [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)。
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>浏览数据
 
-创建并[注册](#register-datasets)数据集之后，可以在模型训练之前将其加载到笔记本中以进行数据浏览。 如果不需要进行任何数据浏览，请参阅[使用数据集进行训练](how-to-train-with-datasets.md)，了解如何在训练脚本中使用数据集，以便提交 ML 试验。
+处理完数据后，可以[注册](#register-datasets)数据集，然后在模型训练之前将其加载到笔记本中以进行数据浏览。
 
 对于 FileDataset，可以装载或下载数据集，并应用通常用于数据浏览的 python 库。 [详细了解如何装载和下载](how-to-train-with-datasets.md#mount-vs-download)。
 

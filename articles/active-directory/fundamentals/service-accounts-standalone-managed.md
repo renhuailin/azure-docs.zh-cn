@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2b3079407774c3d36fe5515b39e964018f9087e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102548846"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>保护独立托管服务帐户
@@ -119,7 +119,7 @@ sMSA 本质上比需要持续进行密码管理的标准用户帐户更安全。
  
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解如何保护服务帐户
+参阅以下文章，了解如何保护服务帐户
 
 * [本地服务帐户简介](service-accounts-on-premises.md)
 
