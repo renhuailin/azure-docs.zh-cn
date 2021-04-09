@@ -11,18 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: MT
+ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741110"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103600856"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>排查在 Azure Active Directory 中进行自助式密码重置时遇到的问题
 
 通过 Azure Active Directory (Azure AD) 自助式密码重置 (SSPR)，用户可在云中重置自己的密码。
 
-如果你遇到 SSPR 方面的问题，以下故障排除步骤和常见错误可能会有所帮助。 如果找不到问题的解答，[我们的支持团队始终愿意提供](#contact-microsoft-support)进一步的帮助。
+如果你遇到 SSPR 方面的问题，以下故障排除步骤和常见错误可能会有所帮助。 还可以在[如何解决六个最常见的 SSPR 最终用户错误消息](https://www.youtube.com/watch?v=9RPrNVLzT8I&list=PL3ZTgFEc7LyuS8615yo39LtXR7j1GCerW&index=1)上观看此简短视频。
+
+如果找不到问题的解答，[我们的支持团队始终愿意提供](#contact-microsoft-support)进一步的帮助。
 
 ## <a name="sspr-configuration-in-the-azure-portal"></a>Azure 门户中的 SSPR 配置
 
@@ -98,7 +100,7 @@ UI 的许多元素都是隐藏的，直到需要它们时才会显示。 在查�
 | 用户在验证其电话号码时看到了一个错误。 | 当输入的电话号码与存档的电话号码不匹配时，会发生此错误。 当尝试使用基于电话的方法进行密码重置时，请确保用户输入了完整的电话号码（包括区域和国家/地区代码）。 |
 | 处理请求时出错。 | 许多问题都可能会导致出现一般性的 SSPR 注册错误，但此错误通常是由服务中断或配置问题造成的。 如果在重试 SSPR 注册过程时仍然看到这个一般性的错误，请[联系 Microsoft 支持部门](#contact-microsoft-support)来获取更多帮助。 |
 | 本地策略冲突 | 该密码不符合本地 Active Directory 密码策略。 用户必须定义满足复杂性或强度要求的密码。 |
-| 密码不符合模糊策略 | 使用的密码出现在 " [禁止密码" 列表](./concept-password-ban-bad.md#how-are-passwords-evaluated) 中，无法使用。 用户必须定义满足或超过禁用密码列表策略要求的密码。 |
+| 密码不符合模糊策略 | 使用的密码显示在[禁用密码列表](./concept-password-ban-bad.md#how-are-passwords-evaluated)中，无法使用。 用户必须定义满足或超过禁用密码列表策略要求的密码。 |
 
 ## <a name="sspr-errors-that-a-user-might-see"></a>用户可能会看到的 SSPR 错误
 

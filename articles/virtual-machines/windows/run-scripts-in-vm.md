@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: ab7d20a83c4cb8cb7a36c4603a5b0b2e69b0662f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102560661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043472"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>在 Windows VM 中运行脚本
 
@@ -58,7 +58,7 @@ ms.locfileid: "102560661"
 
 ## <a name="serial-console"></a>串行控制台
 
-[串行控制台](../troubleshooting/serial-console-windows.md)提供对 VM 的直接访问，类似于将键盘连接到 VM。
+[串行控制台](/troubleshoot/azure/virtual-machines/serial-console-windows)提供对 VM 的直接访问，类似于将键盘连接到 VM。
 
 * 在 Azure 虚拟机中运行命令。
 * 可以在 Azure 门户中使用基于文本的控制台运行到计算机。
@@ -72,4 +72,4 @@ ms.locfileid: "102560661"
 * [自定义脚本扩展](../extensions/custom-script-windows.md)
 * [运行命令](run-command.md)
 * [混合 Runbook 辅助角色](../../automation/automation-hybrid-runbook-worker.md)
-* [串行控制台](../troubleshooting/serial-console-windows.md)
+* [串行控制台](/troubleshoot/azure/virtual-machines/serial-console-windows)

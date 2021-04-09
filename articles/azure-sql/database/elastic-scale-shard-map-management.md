@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e23b94c850c6ec326c2f4ad034e1fefc158087a5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.openlocfilehash: 03bf92a2d77fb262ed6506bf18c0d27006e435a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201196"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92793443"
 
 ![分片映射管理](./media/elastic-scale-shard-map-management/glossary.png)
 
-了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](elastic-database-client-library.md)中的 ShardMapManager 类（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）来完成此操作。  
+了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](elastic-database-client-library.md)中发现的 ShardMapManager 类（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）来完成此操作。  
 
 ## <a name="shard-maps-and-shard-mappings"></a>分片映射
 
@@ -36,7 +36,7 @@ ms.locfileid: "92793443"
    1. 列表映射
    2. 范围映射
 
-对于单租户模型，创建 **列表映射** 分片映射。 单租户模型将每个租户分配给一个数据库。 这是适用于 SaaS 开发人员的有效模型，因为它可以简化管理。
+对于单租户模型，创建 **列表映射** 分片映射。 单租户模型将每个租户分配给一个数据库。 这是适用于 SaaS 开发人员的有效模型，因为它可以简化分片映射管理。
 
 ![列表映射][1]
 
@@ -100,7 +100,7 @@ ms.locfileid: "92793443"
 
 1. **全局分片映射 (GSM)** ：指定一个数据库以用作它的所有分片映射和映射的存储库。 自动创建特殊的表和存储过程以管理信息。 这通常是小型数据库且可轻松进行访问，但不应用于满足应用程序的其他需求。 这些表位于名为 __ShardManagement 的特殊架构中。
 2. **局部分片映射 (LSM)** ：修改指定为分片的每个数据库，以包含多个小表和特殊存储过程，其中包括特定于该分片的分片映射信息并对其进行管理。 对于 GSM 中的信息而言，该信息是冗余的，但应用程序通过该信息可验证缓存的分片映射信息，而无需将所有负载置于 GSM 上；应用程序可使用 LSM 确定缓存的映射是否仍然有效。 与每个分片上的 LSM 对应的表也位于架构 __ShardManagement 中。
-3. **应用程序缓存** ：每个用于访问 **ShardMapManager** 对象的应用程序实例都可维护其映射的本地内存中缓存。 它存储最近检索到的路由信息。
+3. **应用程序缓存**：每个用于访问 **ShardMapManager** 对象的应用程序实例都可维护其映射的本地内存中缓存。 它存储最近检索到的路由信息。
 
 ## <a name="constructing-a-shardmapmanager"></a>构造 ShardMapManager
 
@@ -225,7 +225,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 ## <a name="data-dependent-routing"></a>依赖于数据的路由
 
-分片映射管理器主要由需要数据库连接的应用程序用来执行特定于应用的数据操作。 这些连接必须与正确的数据库关联。 这称为 **依赖于数据的路由** 。 对于这些应用程序，通过使用在 GSM 数据库上具有只读访问权限的凭据，实例化来自工厂的分片映射管理器对象。 以后，单独的连接请求将提供连接相应分片数据库时所需的凭据。
+分片映射管理器主要由需要数据库连接的应用程序用来执行特定于应用的数据操作。 这些连接必须与正确的数据库关联。 这称为 **依赖于数据的路由**。 对于这些应用程序，通过使用在 GSM 数据库上具有只读访问权限的凭据，实例化来自工厂的分片映射管理器对象。 以后，单独的连接请求将提供连接相应分片数据库时所需的凭据。
 
 请注意，这些应用程序（使用具有只读权限的凭据打开的 ShardMapManager）无法对映射进行更改。 为了满足这些需求，请创建特定于管理的应用程序或 PowerShell 脚本，以提供如前所述的更高级别权限的凭据。 请参阅[用于访问弹性数据库客户端库的凭据](elastic-scale-manage-credentials.md)。
 
@@ -245,14 +245,14 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
     许多不同的点或范围可映射到相同的分片。 这些方法仅影响元数据，而不会影响已显示在分片中的任何数据。 如果为了与 **DeleteMapping** 操作保持一致而需要将数据从数据库中删除，需要单独执行这些操作，但需要结合使用这些方法。  
 * 若要将现有的范围拆分为两个，或将相邻的范围合并为一个：请使用 SplitMapping（[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping)[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)）和 MergeMappings（[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)）。  
   
-    请注意，拆分和合并操作 **不更改键值要映射到的分片** 。 拆分操作可将现有范围拆分为两个部分，但在映射到相同分片时同时保留这两个部分。 对在已映射到相同分片的两个相邻范围进行合并操作，从而可将其合并到单个范围中。  要在分片之间移动点或范围本身，需要将 **UpdateMapping** 与移动的实际数据结合使用，才能进行协调。  当需要移动数据时，可以使用弹性数据库工具中随附的 **拆分/合并** 服务，以将分片映射更改与数据移动相协调。
+    请注意，拆分和合并操作 **不更改键值要映射到的分片**。 拆分操作可将现有范围拆分为两个部分，但在映射到相同分片时同时保留这两个部分。 对在已映射到相同分片的两个相邻范围进行合并操作，从而可将其合并到单个范围中。  要在分片之间移动点或范围本身，需要将 **UpdateMapping** 与移动的实际数据结合使用，才能进行协调。  当需要移动数据时，可以使用弹性数据库工具中随附的 **拆分/合并** 服务，以将分片映射更改与数据移动相协调。
 * 若要将单独的点或范围重新映射（或移动）到不同的分片：请使用 UpdateMapping（[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)）。  
   
     由于可能需要将数据从一个分片移动到另一个分片，以便与 **UpdateMapping** 操作保持一致，因此需要单独执行此移动，但需要结合使用这些方法。
 
 * 若要在联机和脱机状态下执行映射：请使用 MarkMappingOffline（[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingoffline)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)）和 MarkMappingOnline（[Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.markmappingonline)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)）来控制映射的联机状态。
   
-    仅当映射处于 "脱机" 状态时才允许在分片映射上进行某些操作，其中包括 **UpdateMapping** 和 **DeleteMapping** 。 当映射处于脱机状态时，基于该映射中所包含的键的数据依赖请求将返回一个错误。 此外，当范围首次处于脱机状态时，所有到受影响分片的连接都会自动终止，以防止因范围的更改而导致查询出现不一致或不完整的结果。
+    仅当映射处于“脱机”状态时才允许在分片映射上进行某些操作，其中包括 **UpdateMapping** 和 **DeleteMapping**。 当映射处于脱机状态时，基于该映射中所包含的键的数据依赖请求将返回一个错误。 此外，当范围首次处于脱机状态时，所有到受影响分片的连接都会自动终止，以防止因范围的更改而导致查询出现不一致或不完整的结果。
 
 映射是 .NET 中的不可变对象。  以上会更改映射的所有方法也会使代码中任何对映射的引用失效。 为了更轻松地执行操作序列来更改映射的状态，所有会更改映射的方法都将返回新的映射引用，以便能够链接操作。 例如，若要在 shardmap sm 中删除包含键 25 的现有映射，可以执行以下命令：
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 0c6845f081ccbe42e70964eaa939d58597e3b69b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96185518"
 ---
 1. 转到设备的本地 Web UI 并登录到设备。 确保设备处于解锁状态。

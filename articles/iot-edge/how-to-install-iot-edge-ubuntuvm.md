@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.openlocfilehash: 1cd89f3f772effce4997fb69b37858ce2077c1dc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98629956"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201089"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 该运行时可以部署在像 Raspberry Pi 一样小的设备上，也可以部署在像工业服务器一样大的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。
 
@@ -26,7 +28,10 @@ ms.locfileid: "98629956"
 本文列出了部署一个使用预先提供的设备连接字符串安装并配置了 Azure IoT Edge 运行时的 Ubuntu 18.04 LTS 虚拟机的步骤。 部署是使用 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 项目存储库中维护的基于 [cloud-init](../virtual-machines/linux/using-cloud-init.md
 ) 的 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)完成的。
 
-首次启动时，该 Ubuntu 18.04 LTS 虚拟机会[通过 cloud-init 安装最新版本的 Azure IoT Edge 运行时](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt)。 在运行时启动之前，该虚拟机还会设置提供的连接字符串，使你可以轻松配置和连接 IoT Edge 设备，而无需启动 SSH 或远程桌面会话。 
+首次启动时，该 Ubuntu 18.04 LTS 虚拟机会[通过 cloud-init 安装最新版本的 Azure IoT Edge 运行时](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt)。 在运行时启动之前，该虚拟机还会设置提供的连接字符串，使你可以轻松配置和连接 IoT Edge 设备，而无需启动 SSH 或远程桌面会话。
+
+>[!NOTE]
+>本文使用的模板安装 IoT Edge 版本1.1。
 
 ## <a name="deploy-using-deploy-to-azure-button"></a>使用“部署到 Azure”按钮进行部署
 
@@ -50,7 +55,7 @@ ms.locfileid: "98629956"
 
     **管理员用户名**：一个用户名，将为其提供对部署的 root 特权。
 
-    **设备连接字符串**：在预期 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的 [设备连接字符串](./how-to-register-device.md)。
+    **设备连接字符串**：在所需 [IoT 中心](../iot-hub/about-iot-hub.md)内创建的设备的 [设备连接字符串](./how-to-register-device.md)。
 
     **VM 大小**：要部署的虚拟机的 [大小](../cloud-services/cloud-services-sizes-specs.md)
 

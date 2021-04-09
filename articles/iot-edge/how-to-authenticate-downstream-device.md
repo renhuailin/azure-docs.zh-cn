@@ -8,14 +8,16 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9e3e0f96d235829928c1f7c79864b1dc732f9e4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: c799e38092c5983b4ad0e3daea6aae99934c7302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046340"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200887"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 在透明网关方案中，与任何其他设备一样，下游设备（有时称为叶设备或子设备）需要在 IoT 中心内拥有标识。 本文将会逐步介绍用于在 IoT 中心对下游设备进行身份验证的选项，然后演示如何声明网关连接。
 
@@ -35,7 +37,7 @@ ms.locfileid: "102046340"
 
 如果使用的是 X.509 身份验证，你将为下游设备生成证书。 准备再次使用在透明网关文章中使用的根 CA 证书和证书生成脚本。
 
-本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上配置文件的 **hostname** 参数中声明。 下游设备的连接字符串中引用了它。 网关主机名必须能够解析为 IP 地址，不管是使用 DNS 还是使用下游设备上的主机文件条目。
+本文在多个位置提到了“网关主机名”。 网关主机名在 IoT Edge 网关设备上的配置文件的 hostname 参数中声明。 下游设备的连接字符串中引用了它。 网关主机名必须能够解析为 IP 地址，不管是使用 DNS 还是使用下游设备上的主机文件条目。
 
 ## <a name="register-device-with-iot-hub"></a>将设备注册到 IoT 中心
 
@@ -70,9 +72,9 @@ ms.locfileid: "102046340"
    ![在门户中使用对称密钥身份验证创建设备 ID](./media/how-to-authenticate-downstream-device/symmetric-key-portal.png)
 
    >[!NOTE]
-   >将父设备设置为使用对称密钥身份验证的下游设备的可选步骤。 但是，从 IoT Edge 版本开始，每个下游设备都必须分配给父设备1.1.0。
+   >对于使用对称密钥身份验证的下游设备来说，设置父设备曾是一个可选步骤。 但是，从 IoT Edge 版本 1.1.0 开始，每个下游设备都必须分配给父设备。
    >
-   >可以通过将环境变量 **AuthenticationMode** 设置为值 **CloudAndScope**，将 IoT Edge 集线器配置为返回到以前的行为。
+   >可以通过将环境变量 AuthenticationMode 设置为值 CloudAndScope 来将 IoT Edge 中心配置为返回到以前的行为 。
 
 还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的操作。 以下示例使用 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有对称密钥身份验证的新 IoT 设备，并分配父设备：
 
@@ -192,7 +194,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 * 身份验证方法：对称密钥或 X.509 证书
   * 如果使用对称密钥身份验证，请提供主密钥或辅助密钥：`SharedAccessKey={key}`
   * 如果使用 X.509 证书身份验证，请提供标志：`x509=true`
-* 设备用来建立连接的网关设备。 提供 IoT Edge 网关设备的配置文件中的 **主机名** 值： `GatewayHostName={gateway hostname}`
+* 设备用来建立连接的网关设备。 请提供 IoT Edge 网关设备配置文件中的 hostname 值：`GatewayHostName={gateway hostname}`
 
 所有这些组成部分共同构成了如下所示的完整连接字符串：
 
