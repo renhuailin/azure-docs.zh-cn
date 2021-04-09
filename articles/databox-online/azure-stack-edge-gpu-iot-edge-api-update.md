@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 10/26/2020
 ms.author: alkohli
 ms.openlocfilehash: f16f33e9aadcc01427602a1bd81f81cb0710e4dd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94578733"
 ---
 # <a name="iot-edge-role-management-changes-for-your-azure-stack-edge-device"></a>Azure Stack Edge 设备的 IoT Edge 角色管理更改

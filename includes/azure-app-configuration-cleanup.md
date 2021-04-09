@@ -9,10 +9,10 @@ ms.date: 1/31/2020
 ms.author: alkemper
 ms.custom: include file
 ms.openlocfilehash: 7d7f765a6a6dd9ef487b0bade7fa064af00f3149
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96929204"
 ---
 如果不想继续使用本文中创建的资源，请删除此处创建的资源组以避免产生费用。

@@ -7,10 +7,10 @@ ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1b1bbb12412deec6ecac8cf1ffd47a00f778862e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98894722"
 ---
 # <a name="compose-dsc-configurations"></a>编写 DSC 配置
@@ -23,7 +23,7 @@ Azure 自动化支持[导入和撰写复合资源](automation-dsc-compile.md)。
 
 必须先撰写配置，才能分配从 Azure 门户的复合资源撰写的配置。 通过“State configuration (DSC)”页面上的“配置”或“已编译配置”选项卡的“撰写配置”进行撰写  。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，单击“所有资源”，并单击自动化帐户的名称。
 1. 在“自动化帐户”页上的“配置管理”下，选择“State configuration (DSC)” 。
 1. 在“State configuration (DSC)”页上，单击“配置”或“已编译配置”选项卡，然后单击页面顶部菜单中的“撰写配置”  。

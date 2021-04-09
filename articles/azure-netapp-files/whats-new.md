@@ -12,22 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571033"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955216"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
 
+## <a name="march-2021"></a>2021 年 3 月
+
+* [SMB 连续可用性 (CA) 共享](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)（预览）  
+
+    SMB 透明故障转移可在 Azure NetApp 文件服务上实现维护操作，并且依然保持连接到存储和访问 SMB 卷上的数据的服务器应用程序。 为支持 SMB 透明故障转移，Azure NetApp 文件现在支持 SMB 连续可用性共享选项，适用于在 Azure 虚拟机上运行的基于 SMB 的 SQL Server 应用程序。 目前 Windows SQL Server 支持此功能。 目前 Linux SQL Server 不支持此功能。 启用这一功能可为[单实例、Always-On 故障转移群集实例和 Always-On 可用性组部署](azure-netapp-files-solution-architectures.md#sql-server)带来显著的 SQL Server 性能改进以及规模和成本效益。 请参阅[使用 Azure NetApp 文件进行 SQL Server 部署的好处](solutions-benefits-azure-netapp-files-sql-server.md)。
+
+* [自动调整跨区域复制目标卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    在跨区域复制关系中，目标卷会根据源卷的大小而自动调整大小。 因此，无需单独调整目标卷的大小。 当卷处于活动的复制关系中时，或者当复制对等互连与重新同步操作断开时，这种自动调整大小行为适用。 要使此功能正常工作，需要确保源卷和目标卷的容量池中都有足够的空余空间。
+
 ## <a name="december-2020"></a>2020 年 12 月
 
-* [Azure 应用程序一致性快照工具](azacsnap-introduction.md)（公共预览版）    
+* [Azure 应用程序一致性快照工具](azacsnap-introduction.md)（预览版）    
 
     Azure 应用程序一致性快照工具 (AzAcSnap) 是一款命令行工具，你可用它来简化 Linux 环境（例如 SUSE 和 RHEL）中第三方数据库 (SAP HANA) 的数据保护。   
 
@@ -47,7 +57,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-* [Azure NetApp 文件跨区域复制](cross-region-replication-introduction.md)（公共预览版）
+* [Azure NetApp 文件跨区域复制](cross-region-replication-introduction.md)（预览版）
 
   Azure NetApp 文件现在支持跨区域复制。 借助这项新的灾难恢复功能，可以快速且经济高效地将 Azure NetApp 文件卷从一个 Azure 区域复制到另一个 Azure 区域，从而保护数据免受不可预见的区域故障的影响。 Azure NetApp 文件跨区域复制采用 NetApp SnapMirror® 技术；只有已更改的块才以压缩、有效的格式通过网络发送。 这项专有技术最大程度地减少了跨区域复制所需的数据量，从而节省了数据传输成本。 它还可以缩短复制时间，让你可以实现较小的还原点目标 (RPO)。
 

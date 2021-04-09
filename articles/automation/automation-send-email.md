@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
 ms.openlocfilehash: 915a0d75622a98b33f647041f3c3b622cb5236b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99053714"
 ---
 # <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
@@ -79,7 +79,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 1. 转到 Azure 自动化帐户。
 2. 在“过程自动化”下，选择“Runbook”。 
 3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
-4. 在“添加 Runbook”页上，输入 Send-GridMailMessage 作为 runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。
+4. 在“添加 Runbook”页上，输入 Send-GridMailMessage 作为 runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”  。
    ![创建 Runbook](./media/automation-send-email/automation-send-email-runbook.png)
 5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页。
    ![编辑 Runbook](./media/automation-send-email/automation-send-email-edit.png)
@@ -99,8 +99,8 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
-    $VaultName = "<Enter your vault name>"
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValue
+    $VaultName = "<Enter your vault name>&quot;
+    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name &quot;SendGridAPIKey").SecretValue
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")
