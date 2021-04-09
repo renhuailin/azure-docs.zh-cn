@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448638"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631177"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -356,7 +356,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 | ID | 默认值 |
 | -- | ------------- |
-|intro_msg| 验证是必需的。 请单击“发送”按钮。|
+|intro_msg <sup>*</sup>| 验证是必需的。 请单击“发送”按钮。|
 |success_send_code_msg | 已发送验证码。 请将其复制到下面的输入框。|
 |failure_send_code_msg | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。|
 |success_verify_code_msg | 已验证电子邮件地址。 现在可以继续。|
@@ -365,6 +365,12 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |but_verify_code | 验证验证码|
 |but_send_new_code | 发送新验证码|
 |but_change_claims | 更改电子邮件|
+
+注意：`intro_msg` 元素将隐藏，并且不会显示在自断言页上。 若要使其可见，请将 [HTML 自定义](customize-ui-with-html.md) 与级联样式表一起使用。 例如：
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>验证显示控件示例
 

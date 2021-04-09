@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Brandfolder 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Brandfolder 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Brandfolder 之间配置单一登录。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97671963"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教程：Azure Active Directory 与 Brandfolder 的集成
+# <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教程：Azure Active Directory 与 Brandfolder 集成
 
 本教程介绍如何将 Brandfolder 与 Azure Active Directory (Azure AD) 集成。
 将 Brandfolder 与 Azure AD 集成可提供以下优势：
@@ -30,7 +30,7 @@ ms.locfileid: "97671963"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Brandfolder 的集成，需要准备好以下各项：
 
@@ -63,7 +63,7 @@ ms.locfileid: "97671963"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **Brandfolder**，在结果面板中选择“Brandfolder”，然后单击“添加”按钮添加该应用程序。  
+4. 在搜索框中键入 **Brandfolder**，在结果面板中选择“Brandfolder”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“Brandfolder”](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "97671963"
 
 若要配置 Brandfolder 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Brandfolder”应用程序集成页上，选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Brandfolder”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -99,13 +99,13 @@ ms.locfileid: "97671963"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
+4. 在“设置 SAML 单一登录”页上，执行以下步骤：
 
     ![Brandfolder 域和 URL 单一登录信息](common/idp-intiated.png)
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml/metadata`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Brandfolder 客户端支持团队](mailto:support@brandfolder.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -116,7 +116,7 @@ ms.locfileid: "97671963"
 
 ### <a name="configure-brandfolder-single-sign-on"></a>配置 Brandfolder 单一登录
 
-若要在 **Brandfolder** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Brandfolder 支持团队](mailto:support@brandfolder.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Brandfolder** 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Brandfolder 支持团队](mailto:support@brandfolder.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -126,7 +126,7 @@ ms.locfileid: "97671963"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -136,30 +136,30 @@ ms.locfileid: "97671963"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，我们通过授予 Britta Simon 访问 Brandfolder 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Brandfolder”。   
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Brandfolder”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在“应用程序”列表中，选择“Brandfolder”  。
+2. 在“应用程序”列表中，选择“Brandfolder”。
 
     ![“应用程序”列表中的“Brandfolder”链接](common/all-applications.png)
 
-3. 在左侧菜单中，选择“用户和组”  。
+3. 在左侧菜单中，选择“用户和组”。
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

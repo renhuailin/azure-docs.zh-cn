@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 47b955ebd8827a46ae718d8a89863d5b37024e5d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100393388"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Shopify 复制数据（预览）
@@ -43,7 +43,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Shopify 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：“Shopify”  | 是 |
 | host | Shopify 服务器的终结点。 （即，mystore.myshopify.com）  | 是 |
@@ -76,7 +76,7 @@ Shopify 链接服务支持以下属性：
 
 要从 Shopify 复制数据，请将数据集的 type 属性设置为“ShopifyObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：“ShopifyObject”  | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -106,10 +106,10 @@ Shopify 链接服务支持以下属性：
 
 要从 Shopify 复制数据，请将复制活动中的源类型设置为“ShopifySource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：“ShopifySource”  | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Products" WHERE Product_Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Products" WHERE Product_Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -143,7 +143,7 @@ Shopify 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

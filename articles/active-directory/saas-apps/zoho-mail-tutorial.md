@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
 ms.openlocfilehash: c5778f39a5091753a1658ec121379a4ed29a7542
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>教程：Azure Active Directory 与 Zoho 的集成
@@ -88,7 +88,7 @@ ms.locfileid: "101648367"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户 
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -100,7 +100,7 @@ ms.locfileid: "101648367"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 Zoho 的权限，允许该用户使用 Azure 单一登录。
 
@@ -112,13 +112,13 @@ ms.locfileid: "101648367"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-zoho-sso"></a>配置 Zoho SSO
+### <a name=&quot;configure-zoho-sso&quot;></a>配置 Zoho SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Zoho Mail 公司站点。
 
 2. 转到“控制面板”  。
    
-    ![控制面板](./media/zoho-mail-tutorial/control-panel.png "控制面板")
+    ![控制面板](./media/zoho-mail-tutorial/control-panel.png &quot;控制面板")
 
 3. 单击“SAML 身份验证”选项卡。 
    

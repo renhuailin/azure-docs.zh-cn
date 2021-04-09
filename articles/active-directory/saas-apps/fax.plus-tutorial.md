@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 528e1056574379f922b5de15f442b7fd92d8cf8c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104592449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-faxplus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FAX.PLUS 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "104592449"
 * 让用户使用其 Azure AD 帐户自动登录到 FAX.PLUS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -97,7 +97,7 @@ ms.locfileid: "104592449"
     | 名  | user.givenname |
     | 姓   | user.surname   |
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "104592449"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -117,7 +117,7 @@ ms.locfileid: "104592449"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 FAX.PLUS 的权限，使其能够使用 Azure 单一登录。
 
@@ -129,7 +129,7 @@ ms.locfileid: "104592449"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-faxplus-sso"></a>配置 FAX.PLUS SSO
+## <a name=&quot;configure-faxplus-sso&quot;></a>配置 FAX.PLUS SSO
 
 1. 以管理员身份登录到 FAX.PLUS 公司站点。
 
@@ -137,7 +137,7 @@ ms.locfileid: "104592449"
 
 3. 在“配置”面板上，单击“激活单一登录”按钮并执行以下步骤。 
     
-    ![帐户](./media/fax.plus-tutorial/configuration.png "帐户") 
+    ![帐户](./media/fax.plus-tutorial/configuration.png &quot;帐户") 
 
     a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
