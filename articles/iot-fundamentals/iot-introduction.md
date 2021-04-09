@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96453017"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167696"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure 物联网 (IoT) 是什么？
 
@@ -30,7 +30,7 @@ IoT 设备通常包括一块装有传感器的电路板，这些传感器使用 
 * 电梯中的加速计。
 * 房间中的感测器。
 
-不同的制造商提供多种设备用于构建解决方案。 有关经认证可与 Azure IoT 中心配合使用的设备列表，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/alldevices)。 对于原型制作，可以使用 [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 或 [Raspberry Pi](https://www.raspberrypi.org/) 等设备。 Devkit 包含内置的温度、压力、湿度传感器，以及陀螺仪、加速度传感器和磁力计。 Raspberry Pi 允许连接多种不同类型的传感器。 
+不同的制造商提供多种设备用于构建解决方案。 有关经认证可与 Azure IoT 中心配合使用的设备列表，请参阅 [Azure IoT 认证设备目录](https://devicecatalog.azure.com)。 对于原型制作，可以使用 [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) 或 [Raspberry Pi](https://www.raspberrypi.org/) 等设备。 Devkit 包含内置的温度、压力、湿度传感器，以及陀螺仪、加速度传感器和磁力计。 Raspberry Pi 允许连接多种不同类型的传感器。 
 
 Microsoft 提供开源[设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 用于构建在设备上运行的应用。 这些 [SDK 可以简化并加速](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/) IoT 解决方案的开发。
 

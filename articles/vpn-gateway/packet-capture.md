@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
 ms.openlocfilehash: 0983139d1c9af235eba4c9f99da7bc9dea3f231b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726608"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
@@ -318,13 +318,13 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 }
 ```
 
-## <a name="packet-capture---portal"></a>数据包捕获-门户
+## <a name="packet-capture---portal"></a>数据包捕获 - 门户
 
 可以在 Azure 门户中设置数据包捕获。
 
-:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
+:::image type="content" source="./media/packet-capture/portal.jpg" alt-text="门户中的数据包捕获的屏幕截图。" lightbox="./media/packet-capture/portal.jpg":::
 
-## <a name="packet-capture---powershell"></a>数据包捕获-PowerShell
+## <a name="packet-capture---powershell"></a>数据包捕获 - PowerShell
 
 以下示例显示使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅 [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 

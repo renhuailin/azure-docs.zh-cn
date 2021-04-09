@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure AD 我的应用登录应用程序时遇到的问题
-description: 排查 Azure AD 我的应用登录应用程序时遇到的问题
+title: 排查从 Azure AD 我的应用登录到应用程序时的问题
+description: 排查从 Azure AD 我的应用登录到应用程序时的问题
 services: active-directory
 author: kenwith
 manager: daveba
@@ -12,20 +12,20 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2a0411e97f78104de1356d482e4e43a42701c073
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: a54c7d6cc4ccf1d9f42702be030598ad1edfab24
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225143"
 ---
-# <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查 Azure AD 我的应用登录应用程序时遇到的问题
+# <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>排查从 Azure AD 我的应用登录到应用程序时的问题
 
-"我的应用" 是一种基于 web 的门户，在 Azure Active Directory (Azure AD) 中使用工作或学校帐户的用户可以查看和启动 Azure AD 管理员已授予他们访问权限的基于云的应用程序。 使用 web 浏览器访问我的应用 [https://myapps.microsoft.com](https://myapps.microsoft.com) 。
+“我的应用”是一个基于 Web 的门户，在 Azure Active Directory (Azure AD) 中拥有工作或学校帐户的用户可以使用它来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 使用 Web 浏览器在 [https://myapps.microsoft.com](https://myapps.microsoft.com) 中访问“我的应用”。
 
-若要了解有关使用 Azure AD 作为应用的标识提供者的详细信息，请参阅 [什么是 Azure AD 中的应用程序管理](what-is-application-management.md)。 若要快速加快速度，请 [在应用程序管理上查看快速入门系列](view-applications-portal.md)。
+若要了解有关如何将 Azure AD 用作应用的标识提供者的详细信息，请参阅[什么是 Azure AD 中的应用程序管理](what-is-application-management.md)。 若要快速了解，请查看[应用程序管理的快速入门系列](view-applications-portal.md)。
 
-这些应用程序代表用户在 Azure AD 门户中进行配置。 必须正确配置应用程序，并将其分配给用户或用户所属的组，才能在 "我的应用" 中看到该应用程序。 
+这些应用程序代表用户在 Azure AD 门户中进行配置。 应用程序必须正确配置并分配到用户或用户所属的组，才能在“我的应用”中看到应用程序。 
 
 用户看到的应用类型分为以下几类：
 -   Microsoft 365 应用程序
@@ -33,15 +33,15 @@ ms.locfileid: "101687618"
 -   基于密码的 SSO 应用程序
 -   使用现有 SSO 解决方案的应用程序
 
-下面是检查应用是否显示或未显示的一些内容。
-- 请确保已将应用添加到 Azure AD，并确保已分配该用户。 若要了解详细信息，请参阅 [应用程序管理中的快速入门系列](add-application-portal.md)。
+下面是检查应用是否显示的某些操作。
+- 确保已将应用添加到 Azure AD，并确保已分配用户。 若要了解详细信息，请参阅[应用程序管理的快速入门系列](add-application-portal.md)。
 - 如果最近添加了某个应用，请让用户注销并重新登录。 
 - 如果应用需要许可证（如 Office），请确保已向用户分配适当的许可证。
-- 根据组的大小和复杂程度，授权更改所用的时间可能会有所不同。
+- 授权更改所用的时间可能因组的大小和复杂程度而异。
 
 ## <a name="general-issues-to-check-first"></a>首先要检查的常规问题
 
--   请确保 web 浏览器满足要求，请参阅 [我的应用支持的浏览器](../user-help/my-apps-portal-end-user-access.md)。
+-   确保 Web 浏览器满足要求，请参阅[“我的应用”支持的浏览器](../user-help/my-apps-portal-end-user-access.md)。
 -   确保用户的浏览器已将应用程序的 URL 添加到其 **受信任的站点**。
 -   务必确认应用程序 **配置** 正确。
 -   确保用户的帐户 **已启用** 登录功能。
@@ -53,7 +53,7 @@ ms.locfileid: "101687618"
 -   同时还务必尝试清除浏览器 Cookie，并尝试重新登录。
 
 ## <a name="problems-with-the-users-account"></a>用户帐户问题
-由于用户帐户出现问题，因此无法访问我的应用。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
+对“我的应用”的访问可能会由于用户帐户存在的问题而被阻止。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
 -   [检查在 Azure Active Directory 中是否存在用户帐户](#check-if-a-user-account-exists-in-azure-active-directory)
 -   [检查用户帐户的状态](#check-a-users-account-status)
 -   [重置用户的密码](#reset-a-users-password)
@@ -61,41 +61,41 @@ ms.locfileid: "101687618"
 -   [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
 -   [检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 -   [检查用户的组成员身份](#check-a-users-group-memberships)
--   [检查用户是否具有超过999个应用角色分配](#check-if-a-user-has-more-than-999-app-role-assignments)
+-   [检查用户是否具有超过 999 个应用角色分配](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [检查用户的已分配许可证](#check-a-users-assigned-licenses)
 -   [为用户分配许可证](#assign-a-user-a-license)
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查在 Azure Active Directory 中是否存在用户帐户
 若要检查是否存在某个用户帐户，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
 7.  检查用户对象的属性，确保它们看上去与预期一致并且未丢失任何数据。
 
 ### <a name="check-a-users-account-status"></a>检查用户帐户的状态
 若要检查用户帐户的状态，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择 " **配置文件**"。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择“配置文件”。
 8.  在“设置”下，确保“阻止登录”设置为“否”。
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 若要重置用户的密码，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择用户窗格顶部的 " **重置密码** " 按钮。
-8.  在出现的 "**重置密码**" 窗格上，选择 "**重置密码**" 按钮。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择用户窗格顶部的“重置密码”按钮。
+8.  在出现的“重置密码”窗格上，选择“重置密码”按钮。
 9.  为用户复制 **临时密码** 或 **输入新密码**。
 10. 告知用户此新密码，在他们下一次登录到 Azure Active Directory 时，需要更改此密码。
 
@@ -107,12 +107,12 @@ ms.locfileid: "101687618"
 ### <a name="check-a-users-multi-factor-authentication-status"></a>检查用户的多重身份验证状态
 若要检查用户的多重身份验证状态，请执行以下步骤：
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2. 在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4. 在导航菜单中选择 " **用户和组** "。
+4. 在导航菜单中，选择“用户和组”。
 5. 选择“所有用户”。
-6. 选择窗格顶部的 " **多重身份验证** " 按钮。
-7. 在 **多重身份验证管理门户** 加载后，确保位于 " **用户** " 选项卡上。
+6. 选择窗格顶部的“多重身份验证”按钮。
+7. 在 **多重身份验证管理门户** 加载后，确保位于“用户”选项卡上。
 8. 通过搜索、筛选或排序在用户列表中找到用户。
 9. 从用户列表中选择用户，并根据需要 **启用**、**禁用** 或 **强制实施** 多重身份验证。
    >[!NOTE]
@@ -121,74 +121,74 @@ ms.locfileid: "101687618"
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择 " **配置文件**"。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择“配置文件”。
 8.  向下滚动到“身份验证联系信息”。
 9.  **查看** 为用户注册的数据并根据需要进行更新。
 
 ### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
 若要检查用户的组成员身份，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择 **组** 以查看用户所属的组。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择“组”查看用户所属的组。
 
-### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>检查用户是否具有超过999个应用角色分配
-如果用户的应用角色分配超过999，则他们可能无法在我的应用中看到其所有应用。
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>检查用户是否具有超过 999 个应用角色分配
+如果用户具有超过 999 个应用角色分配，则他们可能无法在“我的应用”中看到其所有应用。
 
-这是因为 "我的应用程序" 当前最多可读取999个应用角色分配，以确定向其分配用户的应用。 如果向用户分配的应用超过999个，则无法控制将在 "我的应用" 门户中显示的应用。
+这是因为“我的应用”当前最多可读取 999 个应用角色分配，以确定向其分配用户的应用。 如果将用户分配给 999 个以上的应用，则无法控制将在“我的应用”门户中显示的应用。
 
-若要检查用户是否具有超过999个应用角色分配，请执行以下步骤：
-1. 安装 [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell 模块。
+若要检查用户是否具有超过 999 个应用角色分配，请执行以下步骤：
+1. 安装 [Microsoft.Graph](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell 模块。
 2. 运行 `Connect-MgGraph -Scopes "User.ReadBasic.All Application.Read.All"`。
-3. 运行 `(Get-MgUserAppRoleAssignment -UserId "<userId>" -Top 999).Count` 确定用户当前已授予的应用角色分配的数量。
-4. 如果结果为999，则用户可能具有超过999个应用角色分配。
+3. 运行 `(Get-MgUserAppRoleAssignment -UserId "<user-id>" -PageSize 999).Count` 以确定当前已授予用户的应用角色分配数。
+4. 如果结果为 999，则用户可能具有超过 999 个应用角色分配。
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 若要检查用户的已分配许可证，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择 " **许可证** " 以查看用户当前已分配的许可证。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择“许可证”查看当前已分配给用户的许可证。
 
 ### <a name="assign-a-user-a-license"></a>为用户分配许可证 
 若要将许可证分配给用户，请执行以下步骤：
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2.  在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中选择 " **用户和组** "。
+4.  在导航菜单中，选择“用户和组”。
 5.  选择“所有用户”。
-6.  **搜索** 感兴趣的用户，并选择要选择 **的行** 。
-7.  选择 " **许可证** " 以查看用户当前已分配的许可证。
-8.  选择 " **分配** " 按钮。
+6.  搜索你感兴趣的用户，然后选择行进行选择。
+7.  选择“许可证”查看当前已分配给用户的许可证。
+8.  选择“分配”按钮。
 9.  从可用产品列表中选择 **一个或多个产品**。
-10. **可选** 选择 " **分配选项** " 项以按粒度分配产品。 选择“确定”  。
-11. 选择 " **分配** " 按钮，将这些许可证分配给此用户。
+10. **可选** 选择“分配选项”项以精确分配产品。 选择“确定”。
+11. 选择“分配”按钮，将这些许可证分配给此用户。
 
 ## <a name="troubleshooting-deep-links"></a>深层链接疑难解答
-深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户将自动登录到应用程序，而无需先转到 "我的应用"。 链接与用户用于从 Microsoft 365 应用程序启动器访问这些应用程序的链接相同。
+深层链接或用户访问 URL 是用户可用来直接从其浏览器 URL 栏访问其密码 - SSO 应用程序的链接。 通过导航到此链接，用户会自动登录到应用程序，而不必先转到“我的应用”。 此链接与用户从 Microsoft 365 应用程序启动器访问这些应用程序时使用的链接相同。
 
 ### <a name="checking-the-deep-link"></a>检查深层链接
 
 若要检查是否具有正确的深层链接，请执行以下步骤：
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
-2. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+2. 在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 4. 在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 5. 选择“所有应用程序”，查看所有应用程序的列表。
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 6. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
-7. 通过选择主左侧导航菜单顶部的 "**所有服务**" 打开 **Azure Active Directory 扩展**。
+7. 在左侧主导航菜单顶部选择“所有服务”，打开“Azure Active Directory 扩展”。
 8. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 9. 在 Azure Active Directory 的左侧导航菜单中，选择“企业应用程序”。
 10. 选择“所有应用程序”，查看所有应用程序的列表。
@@ -197,7 +197,7 @@ ms.locfileid: "101687618"
 12. 找到“用户访问 URL”标签。 深层链接应与此 URL 匹配。
 
 ## <a name="contact-support"></a>联系支持人员
-使用以下信息（如果有）打开支持票证：
+打开支持票证，并提供以下信息（如有）：
 -   相关错误 ID
 -   UPN（用户电子邮件地址）
 -   TenantID

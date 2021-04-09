@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a84942337b3c8eb5f7509f61f9ba5bcd564d8bb3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: ceac1e7b5e8efa7e87ecf6e1f4c9dd8286c87e98
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653072"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614065"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>用于开发人员运营的 Team Data Science Process
 
@@ -74,7 +74,7 @@ ms.locfileid: "97653072"
 |  |  | [此参考文章介绍如何为解决方案创建数据管道，可以“包”的形式将该管道保存为 JSON 模板](../../data-factory/v1/data-factory-introduction.md) | Azure 数据工厂 | 中级 | 普通的计算背景知识，有数据项目方面的经验 |
 |  |  | [此主题介绍 Azure 资源管理器模板的结构](../../azure-resource-manager/templates/template-syntax.md) | Azure Resource Manager | 中级 | 熟悉 Microsoft Azure 平台 |
 |  |  | [DSC 是 PowerShell 中的一个管理平台，使用它可以“配置即代码”（以包的形式保存）的形式管理 IT 和开发基础结构。此参考文章是该主题的概述](/powershell/scripting/dsc/overview/overview) | PowerShell 所需状态配置 | 中级 | 有 PowerShell 代码编写方面的经验，熟悉企业体系结构和脚本编写 |
-|  | 发布 | [此初步参考文章包含有关 CI/CD 环境的生成、测试和发布的概念](/azure/devops/pipelines/?view=azure-devops) | Visual Studio Codespace | 有经验 | 熟悉软件开发、CI/CD 环境和 SDLC |
+|  | 发布 | [此初步参考文章包含有关 CI/CD 环境的生成、测试和发布的概念](/azure/devops/pipelines/) | Visual Studio Codespace | 有经验 | 熟悉软件开发、CI/CD 环境和 SDLC |
 |  |  | [在这篇 Runbook 初步参考文章中了解如何使用 System Center 自动完成发布管理](/system-center/orchestrator/automate-runbooks) | System Center | 有经验 | 在 System Center Orchestrator 方面具有一定的经验 |
 |  |  | [此文可帮助读者确定将 Web 应用、移动应用后端或 API 应用的文件部署到 Azure 应用服务的最佳选项，并提供相应资源的链接，其中包含特定于首选选项的操作说明](../../app-service/deploy-local-git.md) | Microsoft Azure 部署 | 中级 | 在软件开发和 Microsoft Azure 平台方面有一定的经验 |
 |  | 监视 | [此参考文章介绍 Application Insights，以及如何将它添加到高级分析解决方案](../../azure-monitor/app/app-insights-overview.md) | Application Insights | 中级 | 熟悉软件开发和 Microsoft Azure 平台 |

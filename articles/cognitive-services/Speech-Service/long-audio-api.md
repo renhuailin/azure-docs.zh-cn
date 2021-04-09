@@ -1,5 +1,5 @@
 ---
-title: 长音频 API-语音服务
+title: 长音频 API - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解长音频 API 是如何为长格式文本转语音的异步合成而设计的。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: e28bd5b5caca259201758f0c633b2120a411f422
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
-ms.translationtype: MT
+ms.openlocfilehash: 65c0d80394317c2b2bfbf621d3cc2ad0c2e3448a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100007442"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618400"
 ---
 # <a name="long-audio-api"></a>长音频 API
 
-长音频 API 专为长格式文本转语音（例如有声读物、新闻文章和文档）的异步合成而设计。 此 API 不会实时返回合成音频，而是期望你轮询响应并消耗输出，因为服务中提供了这些响应和输出。 与语音 SDK 使用的文本到语音 API 不同，长音频 API 可以创建超过10分钟的合成音频，使其成为发布者和音频内容平台的理想选择，以便在批处理中创建音频书籍等长音频内容。
+长音频 API 专为长格式文本转语音（例如有声读物、新闻文章和文档）的异步合成而设计。 此 API 不会实时返回合成音频，而是期望你轮询响应并消耗输出，因为服务中提供了这些响应和输出。 与语音 SDK 使用的文本转语音 API 不同，长音频 API 可以创建超过 10 分钟的合成音频，使其成为发布商和音频内容平台的的理想之选，以便在在一个批处理中创建长音频内容（如的音频手册）。
 
 长音频 API 的其他好处：
 
@@ -48,6 +48,13 @@ ms.locfileid: "100007442"
   * 对于纯文本，通过点击 Enter/Return 来分隔每个段落 - 请查看[纯文本输入示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)
   * 对于 SSML 文本，每个 SSML 部分都被视为一个段落。 SSML 部分将分隔为不同的段落 - 请查看 [SSML 文本输入示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 
+## <a name="sample-code"></a>代码示例
+本页的其余部分将重点介绍 Python，但长音频 API 的示例代码可在 GitHub 上提供以下编程语言：
+
+* [示例代码：Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
+* [示例代码：C#](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
+* [示例代码：Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
+
 ## <a name="python-example"></a>Python 示例
 
 本部分包含的 Python 示例演示了长音频 API 的基本用法。 使用最喜欢的 IDE 或编辑器创建新的 Python 项目。 然后将以下代码片段复制到名为 `long_audio_synthesis_client.py` 的文件中。
@@ -58,11 +65,11 @@ import ntpath
 import requests
 ```
 
-这些库用于构造 HTTP 请求，并调用文本到语音转换的长音频合成 REST API。
+这些库用于构造 HTTP 请求以及调用文本转语音长音频合成 REST API。
 
 ### <a name="get-a-list-of-supported-voices"></a>获取受支持语音列表
 
-若要获取支持的语音列表，请将 GET 请求发送到 `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices` 。
+若要获取支持的语音列表，请将 GET 请求发送到 `https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/voices`。
 
 
 以下代码允许你获取可使用的特定区域/终结点的完整语音列表。
@@ -116,7 +123,7 @@ get_voices()
 }
 ```
 
-如果 **publicAvailable** 为 **true**，则语音为公共神经声音。 否则，它是自定义的神经声音。
+如果 properties.publicAvailable 为 true，则语音是公共神经语音。 否则，它是自定义神经语音。
 
 ### <a name="convert-text-to-speech"></a>将文本转换为语音
 
@@ -124,7 +131,7 @@ get_voices()
 
 > [!NOTE]
 > `concatenateResult` 是一个可选参数。 如果未设置此参数，则将按段落生成音频输出。 你还可以通过设置该参数，将音频连接成 1 个输出。 
-> `outputFormat` 也是可选的。 默认情况下，音频输出设置为 riff-16khz-16bit-mono-pcm。 有关支持的音频输出格式的详细信息，请参阅 [音频输出格式](#audio-output-formats)。
+> `outputFormat` 也是可选的。 默认情况下，音频输出设置为 riff-16khz-16bit-mono-pcm。 有关支持的音频输出格式的详细信息，请参阅[音频输出格式](#audio-output-formats)。
 
 ```python
 def submit_synthesis():
@@ -173,8 +180,8 @@ submit_synthesis()
 
 使用之前调用 `/voices` 终结点所返回的其中一个声音。
 
-* 如果使用公共神经声音，请将替换 `<voice_name>` 为所需的输出声音。
-* 若要使用自定义的神经声音，请将 `voice_identities` 变量替换为以下，并 `<voice_id>` 将替换为 `id` 自定义的神经声音。
+* 如果使用的是公共神经语音，请将 `<voice_name>` 替换为所需的输出语音。
+* 若要使用自定义神经语音，请将 `voice_identities` 变量替换为以下内容，并将 `<voice_id>` 替换为自定义神经语音的 `id`。
 ```Python
 voice_identities = [
     {
@@ -192,12 +199,12 @@ https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/<guid>
 
 > [!NOTE]
 > 如果有多个输入文件，则需要提交多个请求。 你需要注意以下限制。
-> * 对于每个 Azure 订阅帐户，客户端每秒最多可以向服务器提交 5 个请求。 如果超出限制，客户端将收到429错误代码， () 的请求太多。 请减少每秒的请求数。
-> * 对于每个 Azure 订阅帐户，服务器最多可以运行 120 个请求并将其排入队列。 如果超出限制，服务器将返回 429 错误代码（请求过多）。 请等待并避免提交新请求，直到完成一些请求。
+> * 对于每个 Azure 订阅帐户，客户端每秒最多可以向服务器提交 5 个请求。 如果超出限制，客户端将收到 429 错误代码（请求过多）。 请减少每秒的请求数。
+> * 对于每个 Azure 订阅帐户，服务器最多可以运行 120 个请求并将其排入队列。 如果超出限制，服务器将返回 429 错误代码（请求过多）。 请耐心等待，避免在某些请求完成之前提交新请求。
 
 输出中的 URL 可用于获取请求状态。
 
-### <a name="get-information-of-a-submitted-request"></a>获取已提交请求的信息
+### <a name="get-information-of-a-submitted-request"></a>获取已提交的请求的信息
 
 若要获取已提交的合成请求的状态，只需将 GET 请求发送到上一步骤返回的 URL。
 ```Python
@@ -213,7 +220,7 @@ def get_synthesis():
 
 get_synthesis()
 ```
-输出将如下所示：
+输出如下所示：
 ```console
 response.status_code: 200
 {
@@ -238,11 +245,11 @@ response.status_code: 200
 }
 ```
 
-从 `status` 属性中，你可以读取此请求的状态。 请求将从状态开始 `NotStarted` ，然后更改为 `Running` ，最后变成 `Succeeded` 或 `Failed` 。 可以使用循环轮询此 API，直到状态变为 `Succeeded` 。
+从 `status` 属性中，可以读取此请求的状态。 请求将从 `NotStarted` 状态开始，然后更改为 `Running`，最终变为 `Succeeded` 或 `Failed`。 可以使用循环轮询此 API，直到状态变为 `Succeeded`。
 
 ### <a name="download-audio-result"></a>下载音频结果
 
-合成请求成功后，可以通过调用 GET API 下载音频结果 `/files` 。
+合成请求成功后，可以通过调用 GET `/files` API 来下载音频结果。
 
 ```python
 def get_files():
@@ -260,9 +267,9 @@ def get_files():
 
 get_files()
 ```
-替换 `<request_id>` 为要下载结果的请求的 ID。 它可以在上一步的响应中找到。
+将 `<request_id>` 替换为要下载结果的请求的 ID。 可在上一步的响应中找到它。
 
-输出将如下所示：
+输出如下所示：
 ```console
 response.status_code: 200
 {
@@ -292,14 +299,14 @@ response.status_code: 200
   ]
 }
 ```
-输出包含2个文件的信息。 其中一个 `"kind": "LongAudioSynthesisScript"` 是提交的输入脚本。 另一种 `"kind": "LongAudioSynthesisResult"` 是此请求的结果。
-结果为 zip，其中包含生成的音频输出文件以及输入文本的副本。
+输出包含 2 个文件的信息。 包含 `"kind": "LongAudioSynthesisScript"` 的一个文件是已提交的输入脚本。 包含 `"kind": "LongAudioSynthesisResult"` 的另一个文件是此请求的结果。
+结果为 zip，其中包含生成的音频输出文件，以及输入文本的副本。
 
-可以从其属性中的 URL 下载这两个文件 `links.contentUrl` 。
+可以从其 `links.contentUrl` 属性的 URL 中下载这两个文件。
 
 ### <a name="get-all-synthesis-requests"></a>获取所有合成请求
 
-你可以使用以下代码获取所有提交的请求的列表：
+可以使用以下代码获取所有已提交的请求的列表：
 
 ```python
 def get_synthesis():
@@ -317,7 +324,7 @@ def get_synthesis():
 get_synthesis()
 ```
 
-输出将如下所示：
+输出如下所示：
 ```console
 response.status_code: 200
 {
@@ -367,19 +374,19 @@ response.status_code: 200
 }
 ```
 
-`values` 属性包含合成请求的列表。 此列表已分页，最大页大小为100。 如果请求数超过100，则 `"@nextLink"` 将提供一个属性以获取分页列表的下一页。
+`values` 属性包含合成请求的列表。 此列表已分页，最大页大小为 100。 如果请求数超过 100，则将提供 `"@nextLink"` 属性以获取分页列表的下一页。
 
 ```console
   "@nextLink": "https://<endpoint>/api/texttospeech/v3.0/longaudiosynthesis/?top=100&skip=100"
 ```
 
-还可以通过 `skip` `top` 在 URL 参数中提供和来自定义页面大小和跳过数字。
+还可以通过在 URL 参数中提供 `skip` 和 `top` 来自定义页面大小和跳过数字。
 
 ### <a name="remove-previous-requests"></a>删除以前的请求
 
 该服务最多为每个 Azure 订阅帐户保留 20,000 个请求。 如果请求数量超出此限制，请在创建新请求之前删除以前的请求。 如果不删除现有请求，则会收到错误通知。
 
-下面的代码演示如何删除特定的合成请求。
+以下代码演示如何删除特定的合成请求。
 ```python
 def delete_synthesis():
     id = '<request_id>'
@@ -394,14 +401,14 @@ def delete_synthesis():
     print('response.status_code: %d' % response.status_code)
 ```
 
-如果成功删除该请求，则响应状态代码将为 HTTP 204 (没有内容) 。
+如果成功删除该请求，则响应状态代码将为 HTTP 204（无内容）。
 
 ```console
 response.status_code: 204
 ```
 
 > [!NOTE]
-> `NotStarted` `Running` 不能删除或删除状态为或的请求。
+> 无法移除或删除状态为 `NotStarted` 或 `Running` 的请求。
 
 [GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py) 上提供了完整的 `long_audio_synthesis_client.py`。
 
@@ -431,7 +438,7 @@ response.status_code: 204
 
 长音频 API 可用于具有单独终结点的多个区域。
 
-| 区域 | 终结点 |
+| 区域 | 端点 |
 |--------|----------|
 | 美国东部 | `https://eastus.customvoice.api.speech.microsoft.com` |
 | 印度中部 | `https://centralindia.customvoice.api.speech.microsoft.com` |
@@ -456,10 +463,3 @@ response.status_code: 204
 * audio-24khz-48kbitrate-mono-mp3
 * audio-24khz-96kbitrate-mono-mp3
 * audio-24khz-160kbitrate-mono-mp3
-
-## <a name="sample-code"></a>代码示例
-GitHub 上提供了长语音 API 的示例代码。
-
-* [示例代码：Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
-* [示例代码：C#](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
-* [示例代码：Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)

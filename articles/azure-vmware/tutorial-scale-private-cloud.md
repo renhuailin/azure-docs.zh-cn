@@ -2,13 +2,13 @@
 title: 教程 - 缩放私有云
 description: 在本教程中，使用 Azure 门户缩放 Azure VMware 解决方案私有云。
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: d49d973cc6d97280dc0c7ea6681f2602b871e1ba
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 03/13/2021
+ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791233"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463576"
 ---
 # <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>教程：缩放 Azure VMware 解决方案私有云
 
@@ -22,7 +22,7 @@ ms.locfileid: "92791233"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，需要一个私有云。 如果未创建私有云，请使用[创建私有云教程](tutorial-create-private-cloud.md)来进行创建。 在 Azure 中为 VMware 私有云配置网络，以设置必需的虚拟网络。
+若要完成本教程，需要一个现有私有云。 如果未创建私有云，请使用[创建私有云教程](tutorial-create-private-cloud.md)来进行创建。 
 
 ## <a name="add-a-new-cluster"></a>添加新群集
 

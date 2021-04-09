@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 3e12bef7569110084cd059b0dfde8562bd914823
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030760"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562240"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准列
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../logs/data-platform-logs.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的列。 许多数据类型都具有在多种类型中通用的标准列。 本文介绍这些列，并提供如何在查询中使用它们的示例。
@@ -22,7 +22,7 @@ Application Insights 中基于工作区的应用程序将其数据存储在 Log 
 > 
 
 ## <a name="tenantid"></a>TenantId
-**TenantId** 列保存 Log Analytics 工作区的工作区 ID。
+TenantId 列保存 Log Analytics 工作区的工作区 ID。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
 TimeGenerated（Log Analytics 工作区）和 timestamp（Application Insights 应用程序）列包含数据源创建记录的日期和时间 。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
@@ -54,7 +54,7 @@ exceptions
 **\_TimeReceived** 列包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../logs/data-ingestion-time.md)。
 
 > [!NOTE]
-> **\_ TimeReceived** 列在每次使用时都将进行计算。 此过程会占用大量资源。 使用优化来筛选大量记录。 使用此函数周期性可能会导致查询执行持续时间增加。
+> \_TimeReceived 列在每次使用时都进行计算。 此过程会占用大量资源。 通过使用它筛选大量记录来进行优化。 重复使用此函数可能会导致查询执行持续时间增加。
 
 
 对于某个代理提供的事件记录，以下查询提供了按小时计的的平均延迟。 这包括从代理到云的时间，以及记录可供日志查询使用的总时间。
@@ -87,7 +87,7 @@ search *
 ## <a name="_resourceid"></a>\_ResourceId
 **\_ResourceId** 列包含与记录关联的资源的唯一标识符。 这为你提供了一个标准列，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
-对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 此列仅限于 Azure 资源，包括 [Azure Arc](../../azure-arc/overview.md) 资源，或用于在引入过程中指明资源 ID 的自定义日志。
+对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该列仅限于 Azure 资源（包括 [Azure Arc](../../azure-arc/overview.md) 资源）或在引入期间指示了资源 ID 的自定义日志。
 
 > [!NOTE]
 > 某些数据类型已具有包含 Azure 资源 ID 或至少包含其一部分（例如订阅 ID）的字段。 虽然为了实现向后兼容而保留了这些字段，但是建议使用 _ResourceId 来执行交叉关联，因为它将更为一致。
@@ -132,10 +132,10 @@ union withsource = tt *
 
 使用 \_SubscriptionId 列总是比通过分析 \_ResourceId 列来提取它更有效。
 
-## <a name="_substriptionid"></a>\_SubstriptionId
+## <a name="_subscriptionid"></a>\_SubscriptionId
 \_SubscriptionId 列包含与该记录关联的资源的订阅 ID。 这为你提供了一个标准列，用于将查询范围限定为来自特定订阅的记录，或者用于比较不同的订阅。
 
-对于 Azure 资源，__SubscriptionId 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md) 的订阅部分。 此列仅限于 Azure 资源，包括 [Azure Arc](../../azure-arc/overview.md) 资源，或用于在引入过程中指明资源 ID 的自定义日志。
+对于 Azure 资源，__SubscriptionId 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md) 的订阅部分。 该列仅限于 Azure 资源（包括 [Azure Arc](../../azure-arc/overview.md) 资源）或在引入期间指示了资源 ID 的自定义日志。
 
 > [!NOTE]
 > 某些数据类型已有包含 Azure 订阅 ID 的字段。 虽然为了实现后向兼容性而保留了这些字段，但是建议使用 \_SubscriptionId 列来执行交叉关联，因为它将更为一致。

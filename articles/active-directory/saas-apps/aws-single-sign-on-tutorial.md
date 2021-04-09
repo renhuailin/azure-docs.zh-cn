@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 906c7e00cba1e0feb85289e8f2a46e74924dc0c3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658628"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720663"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single Sign-on 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101658628"
 * 让用户使用其 Azure AD 帐户自动登录到 AWS Single Sign-on。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,9 +37,9 @@ ms.locfileid: "101658628"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* AWS Single Sign-on 支持 **SP 和 IDP** 发起的 SSO
+* AWS Single Sign-on支持 **SP 和 IDP** 发起的 SSO。
 
-* AWS Single Sign-on 支持 [**自动用户预配**](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial)。
+* AWS Single Sign-on 支持 [**自动用户预配**](./aws-single-sign-on-provisioning-tutorial.md)。
 
 ## <a name="adding-aws-single-sign-on-from-the-gallery"></a>从库中添加 AWS Single Sign-on
 
@@ -72,7 +72,7 @@ ms.locfileid: "101658628"
 
 1. 在 Azure 门户中的“AWS Single Sign-on”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ ms.locfileid: "101658628"
 
     a. 单击“上传元数据文件”  。
 
-    ![image1](common/upload-metadata.png)
-
-    b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
+    b. 单击 **文件夹徽标**，从 **配置 AWS 单一登录 SSO** 部分（点 8）中选择已下载的元数据文件，并单击 **添加**。
 
     ![image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ ms.locfileid: "101658628"
 
 ## <a name="configure-aws-single-sign-on-sso"></a>配置 AWS Single Sign-on SSO
 
-1. 打开 **AWS SSO 控制台**。 
+1. 若要在 AWS Single Sign-on 中自动执行配置，需要通过单击 **安装扩展** 来安装 **我的应用安全登录浏览器扩展**。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+2. 将扩展添加到浏览器后，单击 **设置 AWS Single Sign-on**，此时会将您定向到 AWS Single Sign-on 应用程序。 在此处提供管理员凭据以登录到 AWS Single Sign-on。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-10。
+
+    ![设置配置](common/setup-sso.png)
+
+3. 若要手动设置 AWS Single Sign-on，请在另一个 Web 浏览器窗口中，以管理员身份登录到 AWS Single Sign-on 公司站点。
+
+1. 请参阅 **服务 -> 安全性、标识和符合性 -> AWS Single Sign-On**。
 2. 在左侧导航窗格中选择“设置”。
-3. 在“设置”页上找到“标识源”，然后选择“更改”。  
-4. 在“更改目录”页上选择“外部标识提供者”。
-5. 在“服务提供商元数据”部分，找到“AWS SSO SAML 元数据”，然后选择“下载元数据文件”以下载元数据文件并将其保存在计算机上。  
-6. 在“标识提供者元数据”部分，选择“浏览”以上传从 Azure 门户下载的元数据文件。 
-7. 选择“下一步: 复查”。
-8. 在文本框中，键入 **CONFIRM** 以确认更改目录。
-9. 选择“完成”。
+3. 在 **设置** 页上找到 **标识源**，然后单击 **更改**。
+
+    ![标识源更改服务的屏幕截图](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. 在“更改标识源”上选择 **外部标识提供者**。
+
+    
+    ![选择外部标识提供者部分的屏幕截图](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. 在 **配置外部标识提供者** 部分中执行以下步骤：
+
+    ![下载和上传元数据部分的屏幕截图](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. 在 **服务提供商元数据** 部分，找到 **AWS SSO SAML 元数据**，然后选择 **下载元数据文件** 以下载元数据文件并将其保存在计算机上，然后使用此元数据文件上传至 Azure 门户上。
+
+    b. 复制 **AWS SSO Sign-in URL** 值，并将此值粘贴到 Azure 门户上 **“基本 SAML 配置”部分** 的 **登录 URL** 文本框中。
+
+    c. 在“标识提供者元数据”部分，选择“浏览”以上传从 Azure 门户下载的元数据文件。 
+
+    d. 选择“下一步: 复查”。
+
+8. 在文本框中，键入 **ACCEPT** 更改标识源。
+
+    ![确认配置的屏幕截图](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. 单击 **更改标识源**。
 
 ### <a name="create-aws-single-sign-on-test-user"></a>创建 AWS Single Sign-on 测试用户
 
@@ -196,7 +224,7 @@ ms.locfileid: "101658628"
 10. 选择“完成”。
 
 > [!NOTE]
-> AWS Single Sign-on 还支持自动用户预配，在[此处](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial)可以找到有关如何配置自动用户预配的更多详细信息。
+> AWS Single Sign-on 还支持自动用户预配，在[此处](./aws-single-sign-on-provisioning-tutorial.md)可以找到有关如何配置自动用户预配的更多详细信息。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -212,11 +240,9 @@ ms.locfileid: "101658628"
 
 * 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 AWS Single Sign-on。 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“AWS Single Sign-on”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 AWS Single Sign-on。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“AWS Single Sign-on”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 AWS Single Sign-on。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 AWS Single Sign-on 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 AWS Single Sign-on 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

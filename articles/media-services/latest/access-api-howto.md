@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 03/31/2021
 ms.author: inhenkel
-ms.openlocfilehash: 00808c25ac84da852cce6169fb210767ee2b56cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: e45a0eefff3a6a7f7dd37bde3ee3bffaedd93dcd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265875"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166609"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据
 
@@ -37,8 +37,8 @@ ms.locfileid: "89265875"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure 帐户。 如果没有帐户，请从 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)入手。 
-- 一个媒体服务帐户。 有关详细信息，请参阅[利用 Azure 门户创建 Azure 媒体服务帐户](create-account-howto.md)。
+- 一个 Azure 帐户。 如果没有帐户，请从 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)入手。
+- 一个媒体服务帐户。 有关详细信息，请参阅[利用 Azure 门户创建 Azure 媒体服务帐户](account-create-how-to.md)。
 
 ## <a name="portal"></a>[Portal](#tab/portal/)
 
@@ -47,7 +47,7 @@ ms.locfileid: "89265875"
 通过“API 访问”页面，可选择要用来连接 API 的身份验证方法。 该页面还提供了连接到 API 所需的值。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择媒体服务帐户。
-2. 选择左侧导航栏上的“API 访问(新)”边栏选项卡。
+2. 选择左侧导航栏上的“API 访问”边栏选项卡。
 3. 在“连接到媒体服务 API”下，选择要连接到的媒体服务 API 版本（该服务的最新版本是 V3）。
 
 ### <a name="service-principal-authentication--recommended"></a>服务主体身份验证（推荐）

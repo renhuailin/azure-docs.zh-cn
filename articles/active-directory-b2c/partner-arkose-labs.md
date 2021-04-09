@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579784"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中配置 Arkose Labs
 
@@ -81,13 +81,13 @@ Arkose Labs 集成包括以下组件：
 
 5. 选择 **创建**
 
-详细了解[自定义属性](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow)。
+详细了解[自定义属性](./user-flow-custom-attributes.md?pivots=b2c-user-flow)。
 
 ### <a name="part-2---create-a-user-flow"></a>第 2 部分 - 创建用户流
 
 用户流可用于 **注册** 和 **登录**，或者只用于 **注册**。 Arkose Labs 用户流只在注册过程中才会显示。
 
-1. 请参阅有关创建用户流的[说明](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)。 如果使用现有的用户流，该用户流必须是“建议(下一代预览版)”版本类型。
+1. 请参阅有关创建用户流的[说明](./tutorial-create-user-flows.md)。 如果使用现有的用户流，该用户流必须是“建议(下一代预览版)”版本类型。
 
 2. 在用户流设置中，转到“用户属性”并选择“ArkoseSessionToken”声明。 
 
@@ -109,7 +109,7 @@ Arkose Labs 集成包括以下组件：
 
 1. 修改 [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) 文件，使 `<ARKOSE_PUBLIC_KEY>` 与你为客户端验证生成的、用于为帐户加载 Arkose Labs 脚本的值相匹配。
 
-2. 将 HTML 页面托管在已启用跨源资源共享 (CORS) 的 Web 终结点上。 [创建 Azure Blob 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)并[配置 CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
+2. 将 HTML 页面托管在已启用跨源资源共享 (CORS) 的 Web 终结点上。 [创建 Azure Blob 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)并[配置 CORS](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
 
   >[!NOTE]
   >如果你有自己的自定义 HTML，请将 `<script>` 元素复制并粘贴到 HTML 页面上。
@@ -132,7 +132,7 @@ Arkose Labs 集成包括以下组件：
 
    ![显示页面布局的插图](media/partner-arkose-labs/page-layouts.png)
 
-4. 在用户流中，转到“属性”并选择“启用 JavaScript”强制页面布局（预览版）。  请阅读[此文](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow)了解详细信息。
+4. 在用户流中，转到“属性”并选择“启用 JavaScript”强制页面布局（预览版）。  请阅读[此文](./javascript-and-page-layout.md?pivots=b2c-user-flow)了解详细信息。
 
 ### <a name="part-4---create-and-deploy-your-api"></a>第 4 部分 - 创建并部署 API
 
@@ -157,7 +157,7 @@ Arkose Labs 集成包括以下组件：
 
 此示例使用 [HTTP 基本身份验证](https://tools.ietf.org/html/rfc7617)来保护 Web API 终结点。
 
-用户名和密码以环境变量的形式存储，而不是存储库的一部分。 有关详细信息，请参阅 [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) 文件。
+用户名和密码以环境变量的形式存储，而不是存储库的一部分。 有关详细信息，请参阅 [local.settings.json](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) 文件。
 
 1. 在根文件夹中创建 local.settings.json 文件
 
@@ -186,15 +186,15 @@ Arkose Labs 集成包括以下组件：
 
 #### <a name="deploy-the-application-to-the-web"></a>将应用程序部署到 Web
 
-1. 遵循[此指南](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04)中所述的步骤将 Azure Functions 部署到云中。 复制 Azure Functions 的终结点 Web URL。
+1. 遵循[此指南](/azure/javascript/tutorial-vscode-serverless-node-04)中所述的步骤将 Azure Functions 部署到云中。 复制 Azure Functions 的终结点 Web URL。
 
-2. 部署后，选择“上传设置”选项。 环境变量将上传到应用服务的[应用程序设置](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure)。 还可以[通过 Azure 门户](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)配置或管理这些应用程序设置。
+2. 部署后，选择“上传设置”选项。 环境变量将上传到应用服务的[应用程序设置](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure)。 还可以[通过 Azure 门户](../azure-functions/functions-how-to-use-azure-function-app-settings.md)配置或管理这些应用程序设置。
 
-请参阅[此文](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files)详细了解 Azure Functions 的 Visual Studio Code 开发。
+请参阅[此文](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files)详细了解 Azure Functions 的 Visual Studio Code 开发。
 
 #### <a name="configure-and-enable-the-api-connector"></a>配置并启用 API 连接器
 
-[创建 API 连接器](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector)并为用户流启用该连接器。 API 连接器配置应如下所示：
+[创建 API 连接器](./add-api-connector.md)并为用户流启用该连接器。 API 连接器配置应如下所示：
 
 ![展示如何配置 API 连接器的插图](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ Arkose Labs 集成包括以下组件：
 
 - Azure AD B2C 注册用户流的[示例代码](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose)
 
-- [Azure AD B2C 中的自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)

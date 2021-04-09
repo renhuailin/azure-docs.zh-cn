@@ -9,18 +9,23 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920765"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463351"
 ---
-# <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 IoT Edge 模块
+# <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>教程：使用 Windows 容器开发 IoT Edge 模块
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 使用 Visual Studio 开发代码并将其部署到运行 IoT Edge 的 Windows 设备。
 
-在快速入门中，使用 Windows 虚拟机创建了 IoT Edge 设备，并部署了来自 Azure 市场的预构建模块。 本教程详细介绍如何才能开发自己的代码并将其部署到 IoT Edge 设备。 本教程是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。
+>[!NOTE]
+>IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。 请考虑使用或移动至 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 以在 Windows 设备上运行 IoT Edge。
+
+本教程详细介绍如何才能开发自己的代码并将其部署到 IoT Edge 设备。 本教程是学习其他教程的有用先决条件，其他教程将更详细地介绍特定编程语言或 Azure 服务。
 
 本教程使用 **将 C# 模块部署到 Windows 设备** 的示例。 之所以选择了此示例，原因在于它是最常见的开发方案。 如果你希望使用不同的语言进行开发，或者计划将 Azure 服务作为模块来部署，本教程还有助于了解开发工具。 了解开发概念后，即可选择首选语言或 Azure 服务来深入了解详细信息。
 
@@ -44,8 +49,8 @@ ms.locfileid: "96920765"
 
 Windows 上的 Azure IoT Edge 设备：
 
-* 我们建议不要在开发计算机上运行 IoT Edge，而应使用单独的设备。 开发计算机和 IoT Edge 设备之间的这一区分可更准确地反映真实部署方案，并有助于区分不同的概念。
-* 如果没有第二台可用的设备，请按照快速入门文章的说明在 Azure 中使用 [Windows 虚拟机](quickstart.md)创建 IoT Edge 设备。
+* [使用 Windows 容器安装和管理 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
+* 我们建议不要在开发计算机上运行 IoT Edge，而应尽可能改用单独的设备。 开发计算机和 IoT Edge 设备之间的这一区分可更准确地反映真实部署方案，并有助于区分不同的概念。
 
 云资源：
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 11/18/2020
-ms.openlocfilehash: 862d33e523562511796999d82b67d2b4b11efaf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609917"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -36,21 +36,21 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 
 ### <a name="backup-storage-redundancy"></a>备份存储冗余
 
-默认情况下，SQL 数据库和 SQL 托管实例将数据存储在复制到[配对区域](../../best-practices-availability-paired-regions.md)的异地冗余[存储 blob](../../storage/common/storage-redundancy.md)中。 这有助于防止影响主区域备份存储的中断，并且你可在发生灾难时将服务器还原到其他区域。 
+默认情况下，SQL 数据库和 SQL 托管实例将数据存储在复制到[配对区域](../../best-practices-availability-paired-regions.md)的异地冗余[存储 Blob](../../storage/common/storage-redundancy.md) 中。 这有助于防止影响主区域备份存储的中断，并且你可在发生灾难时将服务器还原到其他区域。 
 
-配置备份存储冗余的选项可让你灵活地在 SQL 托管实例或 SQL 数据库的本地冗余、区域冗余或异地冗余存储 blob 之间进行选择。 若要确保数据保持在部署托管实例或 SQL 数据库的同一区域内，可以更改默认的异地冗余备份存储冗余，并为备份配置本地冗余或区域冗余存储 blob。 Azure 存储冗余机制会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 配置的备份存储冗余同时应用于短期备份保留设置和长期保留备份，前者用于时间点还原 (PITR)，后者用于长期备份 (LTR)。 
+配置备份存储冗余的选项提供了在 SQL 托管实例或 SQL 数据库的本地冗余、区域冗余或异地冗余存储 blob 之间进行选择的灵活性。 若要确保数据位于部署托管实例或 SQL 数据库的同一区域中，可以更改默认的异地冗余备份存储冗余，并为备份配置本地冗余或区域冗余存储 blob。 Azure 存储冗余机制会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 配置的备份存储冗余同时应用于短期备份保留设置和长期保留备份，前者用于时间点还原 (PITR)，后者用于长期备份 (LTR)。 
 
-对于 SQL 数据库，可以在创建数据库时配置备份存储冗余，也可以针对现有数据库进行更新。对现有数据库所做的更改仅适用于将来的备份。 更新现有数据库的备份存储冗余后，最多可能需要48小时才能应用所做的更改。 请注意，在将数据库更新为使用本地或区域冗余存储时，将立即禁用异地还原。 
+对于 SQL 数据库，可以在创建数据库时配置备份存储冗余，也可以针对现有数据库更新备份存储冗余；对现有数据库所做的更改仅适用于将来的备份。 更新现有数据库的备份存储冗余后，最多可能需要 48 小时才能应用所做的更改。 请注意，在将数据库更新为使用本地或区域冗余存储时，将立即禁用异地还原。 
 
 
 > [!IMPORTANT]
 > 请在托管实例创建过程中配置备份存储冗余，因为预配资源后无法再更改存储冗余。 
 
 > [!IMPORTANT]
-> 区域冗余存储目前仅在 [特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)中可用。 
+> 区域冗余存储目前仅在[特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)中可用。 
 
 > [!NOTE]
-> 适用于 Azure SQL 数据库的可配置备份存储冗余目前在巴西南部公共预览版中提供，并且仅在东南亚 Azure 区域提供。 此功能在超大规模层中尚不可用。 
+> Azure SQL 数据库的可配置备份存储冗余目前在巴西南部提供公共预览版，且仅在 Azure 东南亚地区正式发布。 此功能在超大规模层中尚不可用。 
 
 ### <a name="backup-usage"></a>备份使用情况
 
@@ -136,13 +136,16 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 对于 SQL 数据库 SQL 托管实例，可以配置完整备份的长期保留 (LTR)，使其在 Azure Blob 存储中最长保存 10 年。 配置启用 LTR 策略后，每周完整备份将自动复制到不同的存储容器。 为了满足不同的合规性要求，可为每周、每月和/或每年完整备份选择不同的保留期。 存储消耗量取决于所选的频率和 LTR 备份的保留期。 可以使用 [LTR 定价计算器](https://azure.microsoft.com/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
 
 > [!IMPORTANT]
-> 更新现有 Azure SQL 数据库的备份存储冗余，只适用于为数据库执行的未来备份。 数据库的所有现有 LTR 备份都将继续驻留在现有的存储 blob 中，新的备份将存储在请求的存储 blob 类型上。 
+> 更新现有 Azure SQL 数据库的备份存储冗余，只适用于为数据库执行的未来备份。 数据库的所有现有 LTR 备份都将继续驻留在现有存储 blob 中，新备份将存储在请求的存储 blob 类型上。 
 
 有关 LTR 的详细信息，请参阅[长期备份保留](long-term-retention-overview.md)。
 
-## <a name="storage-costs"></a>存储费用
+## <a name="backup-storage-costs"></a>备份存储成本
 
 备份存储的价格取决于购买模型（DTU 或 vCore）、选择的备份存储冗余选项以及区域。 备份存储按每月使用的 GB 数计费，有关定价的信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页和 [Azure SQL 托管实例定价](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)页。
+
+> [!NOTE]
+> Azure 发票仅显示已使用的超额备份存储，而不显示整个备份存储消耗量。 例如，在假设场景中，如果已预配 4 TB 的数据存储，则会获得 4 TB 的可用备份存储空间。 如果使用的备份存储空间总数为 5.8 TB，Azure 发票将仅显示 1.8 TB，因为只对使用的超额备份存储收费。
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -180,24 +183,24 @@ SQL 数据库和 SQL 托管实例按累积值形式计算所有备份文件的�
 
 备份存储冗余按以下方式影响备份成本：
 - 本地冗余价格 = x
-- 区域冗余价格 = 1.25 x
+- 区域冗余价格 = 1.25x
 - 异地冗余价格 = 2x
 
 有关备份存储定价的详细信息，请访问 [Azure SQL 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)和 [Azure SQL 托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
 > [!IMPORTANT]
-> 适用于 SQL 托管实例的可配置备份存储冗余适用于所有 Azure 区域，目前仅适用于 SQL 数据库的东南亚 Azure 区域。 对于托管实例，只能在创建托管实例的过程中指定。 预配资源后，不能更改备份存储冗余选项。
+> SQL 托管实例的可配置备份存储冗余适用于所有 Azure 区域，目前在东南亚 Azure 区域仅对 SQL 数据库可用。 对于托管实例，只能在创建托管实例的过程中指定。 预配资源后，不能更改备份存储冗余选项。
 
 ### <a name="monitor-costs"></a>监视成本
 
-要了解备份存储成本，请在 Azure 门户中的 " **成本管理 + 计费** " 下，选择 " **成本管理**"，然后选择 " **成本分析**"。 选择所需的订阅作为 **作用域**，然后筛选所需的时间段和服务。
+若要了解备份存储成本，请转至 Azure 门户中的“成本管理 + 计费”，选择“成本管理”，然后选择“成本分析” 。 选择所需的订阅作为“范围”，然后筛选所需的时间段和服务。
 
-为 " **服务名称**" 添加筛选器，然后在下拉列表中选择 " **sql 数据库** "。 使用 " **计量子类别** " 筛选器选择服务的帐单计数器。 对于单一数据库或弹性数据库池，请选择 " **单一/弹性池 PITR 备份存储**"。 对于托管实例，请选择 " **MI PITR 备份存储**"。 **存储** 和 **计算** 子类别可能也会给您带来兴趣，但它们并不与备份存储成本相关联。
+为“服务名称”添加筛选器，然后选择下拉列表中的“sql 数据库”。 使用“计量子类别”筛选器为你的服务选择计费计数器。 对于单一数据库或弹性数据库池，请选择“单一/弹性池 PITR 备份存储”。 对于托管实例，请选择“mi PITR 备份存储”。 “存储”和“计算”子类别可能也会引起你的兴趣，但它们实际上与备份存储不相关。
 
 ![备份存储成本分析](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
   >[!NOTE]
-  > 计量仅对当前正在使用的计数器可见。 如果某个计数器不可用，则可能当前未使用该类别。 例如，对于未部署托管实例的客户，将不会显示托管实例计数器。 同样，不使用存储的资源也不会显示存储计数器。 
+  > 计量仅对当前正在使用的计数器可见。 如果某个计数器不可用，则可能当前未使用该类别。 例如，对于未部署托管实例的客户，将不会显示托管实例计数器。 同样，对于不消耗存储的资源，存储计数器也不可见。 
 
 ## <a name="encrypted-backups"></a>加密备份
 
@@ -229,7 +232,7 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>使用 Azure 门户更改 PITR 备份保留期
 
-若要通过使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到具有要更改保持期的数据库的服务器或托管实例。 在左窗格中选择 " **备份** "，然后选择 " **保留策略** " 选项卡。选择要更改其 PITR 备份保留期的数据库 () 。 然后从操作栏中选择 " **配置保留** "。
+若要通过使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到具有要更改保持期的数据库的服务器或托管实例。 在左窗格中选择“备份”，然后选择“保留策略”选项卡。选择想要为其更改 PITR 备份保留期的数据库。 然后，从操作栏中选择“配置保留期”。
 
 
 
@@ -369,16 +372,16 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ## <a name="configure-backup-storage-redundancy"></a>配置备份存储冗余
 
 > [!NOTE]
-> 只能在创建托管实例过程期间指定 SQL 托管实例的备份的可配置存储冗余。 预配资源以后，不能更改备份存储冗余选项。 对于 SQL 数据库，此功能的公共预览版目前在巴西南部提供，并在东南亚 Azure 区域正式发布。 
+> SQL 托管实例备份的可配置存储冗余只能在创建托管实例过程中指定。 预配资源以后，不能更改备份存储冗余选项。 对于 SQL 数据库，此功能的公共预览版目前在巴西南部提供，并在东南亚 Azure 区域正式发布。 
 
-只能在创建实例期间设置托管实例的备份存储冗余。 对于 SQL 数据库，可以在创建数据库时设置，也可以为现有数据库进行更新。 默认值为 "异地冗余存储"。 有关本地冗余、区域冗余和异地冗余备份存储之间的定价差异，请访问 [托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+只能在创建实例期间设置托管实例的备份存储冗余。 对于 SQL 数据库，可以在创建数据库时设置，也可以为现有数据库更新备份存储冗余。 默认值为异地冗余存储。 有关本地冗余、区域冗余和异地冗余备份存储的定价差异，请访问[托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>使用 Azure 门户配置备份存储冗余
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
 
-在 Azure 门户中，可以在 " **创建 SQL 数据库** " 边栏选项卡上配置备份存储冗余。 "备份存储冗余" 部分下提供了相应的选项。 
-![打开 "创建 SQL 数据库" 边栏选项卡](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
+在 Azure 门户中，可以在“创建 SQL 数据库”边栏选项卡上配置备份存储冗余。 “备份存储冗余”部分下提供了相应选项。 
+![打开“创建 SQL 数据库”边栏选项卡](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
 
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
 
@@ -394,7 +397,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
 
-若要在创建新数据库时配置备份存储冗余，可以指定-BackupStoageRedundancy 参数。 可能的值为异地、区域和本地。 默认情况下，所有 SQL 数据库均使用异地冗余存储进行备份。 如果使用本地或区域冗余备份存储创建了数据库，则会禁用异地还原。 
+若要在创建新数据库时配置备份存储冗余，可以指定 -BackupStoageRedundancy 参数。 可能的值为异地、区域和本地。 默认情况下，所有 SQL 数据库均使用异地冗余存储进行备份。 如果使用本地或区域冗余备份存储创建数据库，则会禁用异地还原。 
 
 ```powershell
 # Create a new database with geo-redundant backup storage.  
@@ -403,18 +406,18 @@ New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -D
 
 有关详细信息，请访问 [AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)。
 
-若要更新现有数据库的备份存储冗余，可以使用-BackupStorageRedundancy 参数。 可能的值为异地、区域和本地。
-请注意，将对数据库应用所做的更改可能需要长达48小时。 从异地冗余备份存储切换到本地或区域冗余存储将禁用异地还原。 
+若要更新现有数据库的备份存储冗余，可以使用 -BackupStorageRedundancy 参数。 可能的值为异地、区域和本地。
+请注意，在数据库上应用更改可能需要 48 小时。 从异地冗余备份存储切换到本地或区域冗余存储将禁用异地还原。 
 
 ```powershell
 # Change the backup storage redundancy for Database01 to zone-redundant. 
 Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -BackupStorageRedundancy Zone
 ```
 
-有关详细信息，请访问 [AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
+有关详细信息，请访问 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)
 
 > [!NOTE]
-> 若要将-BackupStorageRedundancy 参数与数据库还原、数据库复制或创建辅助操作一起使用，请使用 Azure PowerShell 版本 Az .Sql 2.11.0。 
+> 若要将 -BackupStorageRedundancy 参数与数据库还原、数据库复制或创建辅助操作一起使用，请使用 Azure PowerShell 版本 Az.Sql 2.11.0。 
 
 
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
@@ -431,11 +434,11 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>使用 Azure Policy 强制实施备份存储冗余
 
-如果数据驻留要求需要将所有数据保留在单个 Azure 区域中，则可能要使用 Azure 策略为 SQL 数据库或托管实例强制实施区域冗余或本地冗余备份。 Azure Policy 是一项服务，可用于创建、分配和管理将规则应用于 Azure 资源的策略。 Azure Policy 可帮助你确保这些资源始终符合公司标准和服务级别协议。 有关详细信息，请参阅 [Azure Policy 概述](../../governance/policy/overview.md)。 
+如果根据数据驻留要求，你需要将所有数据保留在单个 Azure 区域中，你可能希望使用 Azure Policy 为 SQL 数据库或托管实例强制实施区域冗余或本地冗余备份。 Azure Policy 是一项服务，可用于创建、分配和管理将规则应用于 Azure 资源的策略。 Azure Policy 可帮助你确保这些资源始终符合公司标准和服务级别协议。 有关详细信息，请参阅 [Azure Policy 概述](../../governance/policy/overview.md)。 
 
 ### <a name="built-in-backup-storage-redundancy-policies"></a>内置备份存储冗余策略 
 
-添加了以下新的内置策略，可在订阅或资源组级别分配该策略，阻止创建新的数据库 () 或实例)  (异地冗余备份存储。 
+添加了以下新的内置策略，你可以在订阅或资源组级别分配这些策略，以阻止创建具有异地冗余备份存储的新数据库或实例。 
 
 [SQL 数据库应避免使用 GRS 备份冗余](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
 
@@ -443,10 +446,10 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 
 [此处](./policy-reference.md)提供了 SQL 数据库和托管实例内置策略定义的完整列表。
 
-若要在组织级别强制实施数据驻留要求，可以将这些策略分配到订阅。 在订阅级别分配这些数据后，给定订阅中的用户将无法通过 Azure 门户或 Azure PowerShell 创建具有异地冗余备份存储的数据库或托管实例。 
+若要在组织级别强制实施数据驻留要求，可以将这些策略分配到订阅。 在订阅级别分配这些策略后，指定订阅中的用户将无法通过 Azure 门户或 Azure PowerShell 创建具有异地冗余备份存储的数据库或托管实例。 
 
 > [!IMPORTANT]
-> 通过 T-sql 创建数据库时，不会强制实施 Azure 策略。 若要在使用 T-sql 创建数据库时强制数据驻留，请 [在 CREATE database 语句中使用 "LOCAL" 或 "ZONE" 作为 BACKUP_STORAGE_REDUNDANCY 参数的输入](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups)。
+> 通过 T-SQL 创建数据库时，不会强制实施 Azure 策略。 若要在使用 T-SQL 创建数据库时强制数据驻留，请[使用“LOCAL”或“ZONE”作为 CREATE DATABASE 语句中 BACKUP_STORAGE_REDUNDANCY 参数的输入](/sql/t-sql/statements/create-database-transact-sql#create-database-using-zone-redundancy-for-backups)。
 
 了解如何使用 [Azure 门户](../../governance/policy/assign-policy-portal.md)或 [ Azure PowerShell](../../governance/policy/assign-policy-powershell.md) 分配策略
 
@@ -458,4 +461,5 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 - 获取有关如何[使用 PowerShell 将数据库还原到某个时间点](scripts/restore-database-powershell.md)的详细信息。
 - 有关如何使用 Azure 门户配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 Azure 门户管理长期备份保留](long-term-backup-retention-configure.md)。
 - 有关如何使用 PowerShell 配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 PowerShell 管理长期备份保留](long-term-backup-retention-configure.md)。
-- 若要了解如何优化备份存储的保留期和 Azure SQL 托管实例的成本，请参阅 [托管实例的微调备份存储成本](https://aka.ms/mi-backup-tuning)。
+- 若要详细了解有关 Azure SQL 托管实例上的备份存储消耗量，请参阅[托管实例上的备份存储消耗量说明](https://aka.ms/mi-backup-explained)。
+- 若要了解如何优化 Azure SQL 托管实例的备份存储保留和成本，请参阅[优化托管实例的备份存储成本](https://aka.ms/mi-backup-tuning)。

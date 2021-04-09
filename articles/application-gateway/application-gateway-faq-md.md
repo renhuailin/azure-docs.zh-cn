@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 90c20c1f463cf5143460510b9a409ad5ed3ba9f7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 83779dcd319614ae15de6b7e3e4e3abfd9599089
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576122"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102619148"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -376,7 +376,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 4.  上传新的 PFX 证书，并加密，然后单击“保存”。
 5.  访问网站并验证站点是否按预期方式工作。有关详细信息，请查看 [此处](./renew-certificates.md) 的文档。
 
-如果要在应用程序网关侦听器中从 Azure KeyVault 引用证书，建议执行以下步骤来进行快速更改-
+如果要在应用程序网关侦听器中从 Azure KeyVault 引用证书，建议执行以下步骤进行快速更改 -
 
 1.  在 [Azure 门户](https://portal.azure.com/)中，导航到已与应用程序网关关联的 Azure Key Vault 设置
 2.  在存储区中添加/导入重新颁发的证书。 有关操作方法的详细信息，请参阅[此处](../key-vault/certificates/quick-create-portal.md)的文档。
@@ -470,9 +470,9 @@ AGIC 会尝试自动将路由表资源关联到应用程序网关子网，但 AG
 
 由于当前的平台限制，如果你在应用程序网关 v2（Standard_v2、WAF_v2）子网上有 NSG，并且在其上启用了 NSG 流日志，则会看到不确定的行为。此方案目前不受支持。
 
-### <a name="does-application-gateway-store-customer-data"></a>应用程序网关是否存储客户数据？
+### <a name="where-does-application-gateway-store-customer-data"></a>应用程序网关将客户数据存储在何处？
 
-否，应用程序网关不会存储客户数据。
+应用程序网关不会将客户数据移动或存储到部署了该防火墙的区域之外。
 
 ## <a name="next-steps"></a>后续步骤
 

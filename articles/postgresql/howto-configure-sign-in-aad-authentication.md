@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure Active Directory - Azure Database for PostgreSQL - 单一服务器
 description: 了解有关如何设置 Azure Active Directory (AAD) 以通过 Azure Database for PostgreSQL - 单一服务器进行身份验证的信息
-author: lfittl
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 729879bb472786165b21a47a7baf058294a4db1f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87171645"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961517"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>使用 PostgreSQL 通过 Azure Active Directory 进行身份验证
 

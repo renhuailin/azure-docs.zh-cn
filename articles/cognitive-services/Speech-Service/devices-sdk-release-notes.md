@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: af66f2ec56551a5177cd9323d216e9bf4b0c41be
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 1b2418b248e995b0f64eec82ccb477b15583c81e
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021841"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562325"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
 以下部分列出了最新版本中的更改。
+
+## <a name="speech-devices-sdk-1150"></a>语音设备 SDK 1.15.0：
+
+- 已升级到新的 Microsoft 音频堆栈 (MAS)，并改进了语音波束赋形和降噪。
+- 根据目标，将二进制文件大小减小到 70%。
+- 支持[二进制版本](https://aka.ms/sdsdk-download-APAudio)的 [Azure Percept Audio](https://docs.microsoft.com/azure/azure-percept/overview-azure-percept-audio)。
+- 将[语音 SDK](./speech-sdk.md) 组件更新到了 1.15.0 版。 有关详细信息，请参阅其[发行说明](./releasenotes.md)。
 
 ## <a name="speech-devices-sdk-1110"></a>语音设备 SDK 1.11.0：
 
@@ -80,10 +87,10 @@ ms.locfileid: "95021841"
 
 **重大更改**
 
-- [安装关键字](./custom-keyword-basics.md) 已简化，它现在是应用程序的一部分，无需在设备上单独安装。
-- 关键字识别已更改，并且支持两个事件。
-  - `RecognizingKeyword,` 指示语音结果包含 (未验证的) 关键字文本。
-  - `RecognizedKeyword`，指示关键字识别已完成识别给定的关键字。
+- 简化了[关键字安装](./custom-keyword-basics.md)，它现在是应用的一部分，无需在设备上单独安装。
+- 关键字识别已更改，支持两个事件。
+  - `RecognizingKeyword,` 指示语音结果包含（未验证的）关键字文本。
+  - `RecognizedKeyword`，指示关键字识别已完成识别给定关键字的过程。
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>语音设备 SDK 1.1.0：2018 年 11 月版本
 
@@ -100,7 +107,7 @@ ms.locfileid: "95021841"
 **重大更改**
 
 - 该版本中推出了大量重大更改。 有关 API 的详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
-- KWS 模型文件与语音设备 SDK 1.0.1 不兼容。 将新的关键字文件写入设备后，会删除现有的关键字文件。
+- KWS 模型文件与语音设备 SDK 1.0.1 不兼容。 将新的关键字文件写入设备后，将删除现有关键字文件。
 
 ## <a name="speech-devices-sdk-050-2018-aug-release"></a>语音设备 SDK 0.5.0：2018 年 8 月版本
 

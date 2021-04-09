@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201050"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167747"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>教程：使用 Azure Front Door 和 Azure Web 应用程序防火墙 (WAF) 快速缩放和保护 Web 应用程序
 
@@ -140,7 +140,7 @@ Web 应用的自定义域名是客户用来引用应用程序的域名。 例如
 
 ## <a name="lock-down-your-web-application"></a>锁定 Web 应用程序
 
-建议你确保只有 Azure Front Door 边缘可以与 Web 应用程序通信。 这样做将确保没有人可以绕过 Azure Front Door 保护直接访问应用程序。 若要实现此锁定，请参阅[如何实现将后端访问锁定为仅限于 Azure Front Door？](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)。
+建议你确保只有 Azure Front Door 边缘可以与 Web 应用程序通信。 这样做将确保没有人可以绕过 Azure Front Door 保护直接访问应用程序。 若要实现此锁定，请参阅[如何实现将后端访问锁定为仅限于 Azure Front Door？](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

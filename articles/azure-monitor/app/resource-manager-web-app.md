@@ -8,10 +8,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 08/06/2020
 ms.openlocfilehash: 17602083b5712e5e693cf2b1f09664efd92bfe09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100597421"
 ---
 # <a name="resource-manager-template-samples-for-creating-azure-app-services-web-apps-with-application-insights-monitoring"></a>用于创建具有 Application Insights 监视的 Azure 应用服务 Web 应用的资源管理器模板示例

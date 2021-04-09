@@ -3,12 +3,12 @@ title: 个人数据
 description: 了解如何管理与 Azure 资源管理器操作相关联的个人数据。
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f616fa58c53a7f666978bd1db60d10a9266e342
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97693692"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934200"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>管理与 Azure 资源管理器相关联的个人数据
 
@@ -24,13 +24,13 @@ ms.locfileid: "97693692"
 
 若要在历史记录中列出 **部署**，请使用：
 
-* [按资源组列表](/rest/api/resources/deployments/listbyresourcegroup)
+* [按资源组列表](/rest/api/resources/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
 * [az deployment group list](/cli/azure/deployment/group#az_deployment_group_list)
 
 若要从历史记录中删除 **部署**，请使用：
 
-* [删除](/rest/api/resources/deployments/delete)
+* [删除](/rest/api/resources/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
 * [az deployment group delete](/cli/azure/deployment/group#az_deployment_group_delete)
 
@@ -40,13 +40,13 @@ ms.locfileid: "97693692"
 
 若要列出 **资源组**，请使用：
 
-* [列表](/rest/api/resources/resourcegroups/list)
+* [列表](/rest/api/resources/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [az group list](/cli/azure/group#az-group-list)
 
 若要删除 **资源组**，请使用：
 
-* [删除](/rest/api/resources/resourcegroups/delete)
+* [删除](/rest/api/resources/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
@@ -56,13 +56,13 @@ ms.locfileid: "97693692"
 
 若要列出 **标记**，请使用：
 
-* [列表](/rest/api/resources/tags/list)
+* [列表](/rest/api/resources/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [az tag list](/cli/azure/tag#az-tag-list)
 
 若要删除 **标记**，请使用：
 
-* [删除](/rest/api/resources/tags/delete)
+* [删除](/rest/api/resources/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [az tag delete](/cli/azure/tag#az-tag-delete)
 

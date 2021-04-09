@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
 ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505930"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
@@ -36,7 +36,7 @@ ms.locfileid: "102505930"
 - Azure Database for MySQL（版本：8.0.15）
 - MySQL C API Connector - libmysqlclient（版本：6.1.11）
 
-| 文件系统        | 描述                                                                                                               | 大小(GB)             | “所有者”  | 组  | 存储                    |
+| 文件系统        | 说明                                                                                                               | 大小(GB)             | “所有者”  | 组  | 存储                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | 用于安装 SAP BOBI 实例、默认 Tomcat Web 应用和数据库驱动程序的文件系统（如有必要） | SAP 大小调整准则 | bl1adm | sapsys | 托管高级磁盘 - SSD |
 | /usr/sap/frsinput  | 装载目录适用于将用作输入文件存储库目录的所有 BOBI 主机上的共享文件  | 业务需求         | bl1adm | sapsys | Azure NetApp 文件         |
