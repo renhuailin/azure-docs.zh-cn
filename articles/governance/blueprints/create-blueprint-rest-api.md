@@ -3,12 +3,12 @@ title: 快速入门：使用 REST API 创建蓝图
 description: 在本快速入门中，通过 REST API 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558969"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入门：使用 REST API 定义和分配 Azure 蓝图
 
@@ -329,7 +329,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 - `{YourMG}` - 替换为管理组的 ID
 - `{subscriptionId}` - 替换为订阅 ID
 
-1. 在目标订阅上，向 Azure 蓝图服务主体提供“所有者”角色。 AppId 是静态的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`)，但服务主体 ID 根据租户各有不同。 可以使用以下 REST API 请求租户的详细信息。 它可使用具有不同授权的 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md)。
+1. 在目标订阅上，向 Azure 蓝图服务主体提供“所有者”角色。 AppId 是静态的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`)，但服务主体 ID 根据租户各有不同。 可以使用以下 REST API 请求租户的详细信息。 它可使用具有不同授权的 [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist)。
 
    - REST API URI
 
@@ -337,7 +337,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) 来收集 objectId，以供自己的用户、组或服务主体用于请求正文中  。
+1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) 来收集 objectId，以供自己的用户、组或服务主体用于请求正文中  。
 
    - REST API URI
 

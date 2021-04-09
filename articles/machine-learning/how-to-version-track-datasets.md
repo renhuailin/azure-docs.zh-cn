@@ -12,10 +12,10 @@ ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520534"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>对 Azure 机器学习数据集进行版本控制和跟踪

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge 的 Windows 脚本 | Microsoft Docs
+title: 使用 Windows 容器的 Azure IoT Edge 脚本 | Microsoft Docs
 description: 用于在 Windows 设备上安装、卸载或更新的 IoT Edge PowerShell 脚本的参考信息
 author: kgremban
 manager: philmea
@@ -8,14 +8,17 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+monikerRange: =iotedge-2018-06
+ms.openlocfilehash: a919238e4a62ae8954e101cb21a2fd4943191f6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489518"
 ---
-# <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows 上 IoT Edge 的 PowerShell 脚本
+# <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>使用 Windows 容器实现用于 IoT Edge 的 PowerShell 脚本
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 了解用于在 Windows 设备上安装、更新或卸载 IoT Edge 的 PowerShell 脚本。
 
@@ -103,4 +106,4 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 
 在以下文章中了解如何使用这些命令：
 
-* [安装或卸载 Windows Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)
+* [安装或卸载适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)

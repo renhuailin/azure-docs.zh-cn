@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 534a7cd8c9a40a807d05ef40b084a7c73c0a7710
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100378462"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Magento 复制数据
@@ -78,7 +78,7 @@ Magento 链接的服务支持以下属性：
 
 要从 Magento 复制数据，请将数据集的 type 属性设置为 MagentoObject  。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MagentoObject  | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -108,7 +108,7 @@ Magento 链接的服务支持以下属性：
 
 要从 Magento 复制数据，请将复制活动中的源类型设置为 MagentoSource  。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：MagentoSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Customers"`。 | 否（如果指定了数据集中的“tableName”） |

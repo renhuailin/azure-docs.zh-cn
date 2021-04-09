@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 0720eb01920e39a9bee27e4d00d97acba55b0ad5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101661420"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>诊断多区域环境中 Azure Cosmos SDK 的可用性并对其进行故障排除
@@ -43,17 +43,17 @@ ms.locfileid: "101661420"
 | 多个写入区域 | 主要区域  | 主要区域  |
 
 > [!NOTE]
-> 主要区域指的是 [Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域。
-> 如果指定为区域首选项的值与任何现有 Azure 区域都不匹配，则将忽略这些值。 如果它们与某个现有区域匹配，但未将该帐户复制到该区域，则该客户端将连接到下一个匹配或与主要区域匹配的首选区域。
+> 主要区域是指 [Azure Cosmos 帐户区域列表](distribute-data-globally.md)中的第一个区域。
+> 如果指定为区域首选项的值与任何现有 Azure 区域都不匹配，则将忽略这些值。 如果它们与某个现有区域匹配，但未将帐户复制到该区域，则客户端将连接到与之匹配的下一个首选区域或将其连接到主要区域。
 
 > [!WARNING]
-> 此文档中所述的故障转移和可用性逻辑可在客户端配置上禁用，除非用户应用程序要处理可用性错误本身，否则不建议这样做。 这可以通过以下方式实现：
+> 本文档中所述的故障转移和可用性逻辑可在客户端配置上禁用，除非用户应用程序要自行处理可用性错误，否则不建议这样做。 可以通过以下方式来实现此目的：
 >
-> * 将 .NET V2 SDK 中的 [EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) 属性设置为 false。
-> * 将 .NET V3 SDK 中的 [LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) 属性设置为 true。
-> * 将 Java V4 SDK 中的 [endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) 方法设置为 false。
+> * 将 .NET V2 SDK 中的 [ConnectionPolicy.EnableEndpointRediscovery](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.enableendpointdiscovery) 属性设置为 false。
+> * 将 .NET V3 SDK 中的 [CosmosClientOptions.LimitToEndpoint](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.limittoendpoint) 属性设置为 true。
+> * 将 Java V4 SDK 中的 [CosmosClientBuilder.endpointDiscoveryEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.endpointdiscoveryenabled) 方法设置为 false。
 > * 将 Python SDK 中的 [CosmosClient.enable_endpoint_discovery](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) 参数设置为 false。
-> * 将 JS SDK 中的 [CosmosClientOptions. ConnectionPolicy. 为 enableendpointdiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) 参数设置为 false。
+> * 将 JS SDK 中的 [CosmosClientOptions.ConnectionPolicy.enableEndpointDiscovery](/javascript/api/@azure/cosmos/connectionpolicy#enableEndpointDiscovery) 参数设置为 false。
 
 通常情况下，SDK 客户端将连接到首选区域（如果设置了区域首选项）或主要区域（如果未设置首选项），并且操作将限于该区域，除非出现以下任何情况。
 
@@ -69,7 +69,7 @@ ms.locfileid: "101661420"
 
 ## <a name="removing-a-region-from-the-account"></a><a id="remove-region"></a>从帐户中删除区域
 
-从 Azure Cosmos 帐户删除区域时，任何主动使用该帐户的 SDK 客户端都将通过后端响应代码检测到区域删除。 然后，客户端将区域终结点标记为不可用。 客户端会重试当前操作，所有将来的操作将按照优先顺序永久路由到下一个区域。 如果首选项列表仅有一个条目 (或为空) 但该帐户还有其他可用区域，则会路由到帐户列表中的下一个区域。
+从 Azure Cosmos 帐户删除区域时，任何主动使用该帐户的 SDK 客户端都将通过后端响应代码检测到区域删除。 然后，客户端将区域终结点标记为不可用。 客户端会重试当前操作，所有将来的操作将按照优先顺序永久路由到下一个区域。 如果首选项列表只有一个条目（或为空），但帐户还有其他可用区域，则会路由到帐户列表中的下一个区域。
 
 ## <a name="adding-a-region-to-an-account"></a>将区域添加到帐户
 
@@ -93,9 +93,9 @@ Azure Cosmos SDK 客户端每隔 5 分钟读取一次帐户配置，并刷新其
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP 协议上的暂时性连接问题
 
-在 Azure Cosmos SDK 客户端配置为使用 TCP 协议的情况下，对于给定的请求，可能会出现网络状况暂时影响与特定终结点之间的通信的情况。 这些临时网络条件可能会显示为 TCP 超时和服务不可用， (HTTP 503) 错误。 在呈现错误之前，客户端会在同一终结点上以本地方式重试请求一秒钟。
+在 Azure Cosmos SDK 客户端配置为使用 TCP 协议的情况下，对于给定的请求，可能会出现网络状况暂时影响与特定终结点之间的通信的情况。 这些临时网络条件可能会显示为 TCP 超时和服务不可用 (HTTP 503) 错误。 在显示错误的几秒钟内，客户端将在同一终结点上本地重试请求。
 
-如果用户已配置了具有多个区域的首选区域列表，而 Azure Cosmos 帐户是多个写入区域或单个写入区域，并且操作是一个读取请求，则该客户端将检测本地故障，然后从首选项列表中的下一个区域重试单一操作。
+如果用户配置了具有多个区域的首选区域列表，Azure Cosmos 帐户是多个写入区域或单个写入区域，并且操作是一个读取请求，则客户端将检测本地失败，并在首选项列表的下一个区域中重试该单个操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
 ms.openlocfilehash: d063aec3b093f00640d909a6ce3c2cde6d2d2420
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547418"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展 3.0 监视指标和日志
@@ -816,7 +816,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="屏幕截图显示 Azure 存储资源管理器。":::
+:::image type="content" source="./media/diagnostics-linux/stg_explorer.png" alt-text="显示 Azure 存储资源管理器的屏幕截图。":::
 
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。

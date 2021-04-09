@@ -9,10 +9,10 @@ ms.date: 03/02/2021
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 941fe8929b75fdebf187186ca7078b0ae1dd261c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101658514"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>更改 Azure Cosmos DB 的 API for MongoDB 中的流
@@ -21,7 +21,7 @@ ms.locfileid: "101658514"
 可通过更改流 API 在 Azure Cosmos DB 的 API for MongoDB 中获取[更改源](change-feed.md)支持。 通过使用更改流 API，你的应用程序可以获取对集合或对单个分片中的项的更改。 以后，可以根据结果采取进一步的措施。 对集合中的项所做的更改将按照其修改时间的顺序进行捕获，并按分片键保证排序顺序。
 
 > [!NOTE]
-> 若要使用更改流，请为服务器版本3.6 或更高版本的 MongoDB 帐户创建 Azure Cosmos DB 的 API。 如果对早期版本运行更改流示例，可能会看到 *无法识别的管道阶段名称： $changeStream* 错误。
+> 若要使用更改流，请使用 3.6 版或更高版本服务器创建 Azure Cosmos DB 的 API for MongoDB 帐户。 如果针对早期版本运行更改流示例，可能会出现“无法识别的管道阶段名称: $changeStream”错误。
 
 ## <a name="examples"></a>示例
 
