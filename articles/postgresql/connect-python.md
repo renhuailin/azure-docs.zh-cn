@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c589f3f0913609640ac14534c170c741c16a084
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048164"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -36,7 +36,7 @@ ms.locfileid: "95998934"
   | 配置服务终结点 | 公用 | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | 配置专用链接 | Private | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [Python](https://www.python.org/downloads/) 2.7.9+ 或 3.4+。
+- [Python](https://www.python.org/downloads/) 2.7 或 3.6+。
 
 - 最新 [pip](https://pip.pypa.io/en/stable/installing/) 包安装程序。
 - 在终端或命令提示符窗口中使用 `pip install psycopg2` 安装 [psycopg2](https://pypi.python.org/pypi/psycopg2/)。 有关详细信息，请参阅[如何安装 `psycopg2`](http://initd.org/psycopg/docs/install.html)。

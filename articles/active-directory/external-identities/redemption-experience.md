@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df867059a7d4020952f71ca8d663a644ee2428fd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 4cd0febe5ffbc1b17718043d5fc97b804f87cc46
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199622"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199727"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -27,20 +27,20 @@ ms.locfileid: "102199622"
    > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
    > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
 
-## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过公共终结点兑换和登录
+## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过常用终结点进行的兑换和登录
 
-例如，来宾用户可以通过公共终结点 (URL) 登录到多租户或 Microsoft 第一方应用 `https://myapps.microsoft.com` 。 以前，公共 URL 会将来宾用户重定向到其主租户，而不是资源租户进行身份验证，因此，需要特定于租户的链接 (例如 `https://myapps.microsoft.com/?tenantid=<tenant id>`) 。 现在，来宾用户可以跳到应用程序的通用 URL，选择 " **登录" 选项**，然后选择 " **登录到组织**"。 然后，用户键入组织的名称。
+来宾用户现可通过 `https://myapps.microsoft.com` 等常用终结点 (URL) 登录到多租户或 Microsoft 第一方应用。 以前，常用 URL 会将来宾用户重定向到其主租户（而不是资源租户）进行身份验证，因此需要特定于租户的链接（例如 `https://myapps.microsoft.com/?tenantid=<tenant id>`）。 现在，来宾用户可以访问应用程序的常用 URL，选择“登录选项”，然后选择“登录组织” 。 然后，用户需要键入组织的名称。
 
-![公共终结点登录](media/redemption-experience/common-endpoint-flow-small.png)
+![常用终结点登录](media/redemption-experience/common-endpoint-flow-small.png)
 
-然后，将用户重定向到你的租户终结点，用户可以使用其电子邮件地址登录，或者选择已配置的标识提供者。
+然后，用户重定向到租户终结点，用户可在其中使用其电子邮件地址登录或选择已配置的标识提供者。
 
 ## <a name="redemption-through-a-direct-link"></a>通过直接链接兑换
 
-作为邀请电子邮件或应用程序公用 URL 的替代方法，你可以为来宾授予指向你的应用或门户的直接链接。 首先需要通过 [Azure 门户](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录。 然后，可以使用[将应用程序部署到用户的可自定义方式](../manage-apps/end-user-experiences.md)（包括直接登录链接）。 当来宾使用直接链接而不是邀请电子邮件时，仍将指导他们完成首次同意体验。
+作为邀请电子邮件或应用程序的常用 URL 的替代方法，你可以为来宾提供指向你的应用或门户的直接链接。 首先需要通过 [Azure 门户](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md) 将来宾用户添加到目录。 然后，可以使用[将应用程序部署到用户的可自定义方式](../manage-apps/end-user-experiences.md)（包括直接登录链接）。 当来宾使用直接链接而不是邀请电子邮件时，仍将指导他们完成首次同意体验。
 
 > [!NOTE]
-> 直接链接特定于租户。 换句话说，它包含租户 ID 或已验证的域，以便在你的租户中对来宾进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
+> 直接链接特定于租户。 换句话说，它包含租户 ID 或已验证的域，以便可以在共享应用所在的租户中对来宾进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
  > - 应用访问面板：`https://myapps.microsoft.com/?tenantid=<tenant id>`
  > - 已验证域的应用访问面板：`https://myapps.microsoft.com/<;verified domain>`
  > - Azure 门户：`https://portal.azure.com/<tenant id>`
@@ -73,7 +73,7 @@ ms.locfileid: "102199622"
 
 3. 如果管理员已启用 [Google 联合](./google-federation.md)，Azure AD 会检查用户的域后缀是 gmail.com 还是 googlemail.com，并将用户重定向到 Google。
 
-4. 兑换过程会检查用户是否具有现有的个人 [Microsoft 帐户 (MSA) ](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 用于实时 (JIT) 兑换次数，但不适用于邀请电子邮件链接兑换。 如果用户已有一个 MSA，则他们将使用现有 MSA 登录。
+4. 兑换过程将检查用户是否具有适用于即时 (JIT) 兑换（而不是适用于邀请电子邮件链接兑换）的现有个人 [Microsoft 帐户 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 如果用户已有现有 MSA，则用户将使用其现有的 MSA 登录。
 
 5. 标识用户的主目录后，用户将发送到相应的标识提供程序进行登录。  
 

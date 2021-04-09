@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 855765648d68756598f2942e0c994fa939bcbda0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 679df881e928825496a03b2fef7c9374d61593f7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695662"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199990"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池访问外部存储
 
-本文档介绍用户如何从无服务器 SQL 池的 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
+本文介绍用户如何从无服务器 SQL 池的 Azure 存储中存储的文件读取数据。 用户具有以下用于访问存储的选项：
 
 - [OPENROWSET](develop-openrowset.md) 函数，可对 Azure 存储中的文件进行即席查询。
 - [外部表](develop-tables-external-tables.md)，它是基于一组外部文件生成的预定义数据结构。

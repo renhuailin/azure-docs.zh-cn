@@ -1,23 +1,24 @@
 ---
 title: Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 description: 使用 Log Analytics 数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。
+ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: f0bbe02576323342376ad155878d575c6403cf70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048805"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615578"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
 
 ## <a name="overview"></a>概述
-为 Log Analytics 工作区配置数据导出后，任何发送到工作区中所选表的新数据都将自动以每小时的追加 blob 或事件中心以近乎实时的形式导出到你的存储帐户。
+为 Log Analytics 工作区配置数据导出后，发送到工作区中所选表的任何新数据都将以每小时追加 Blob 的方式自动导出到你的存储帐户，或准实时导出到你的事件中心。
 
 ![数据导出概述](media/logs-data-export/data-export-overview.png)
 
@@ -27,7 +28,7 @@ ms.locfileid: "102048805"
 ## <a name="other-export-options"></a>其他导出选项
 Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数据。 针对特定场景导出数据的其他选项包括：
 
-- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 尽管此方法受 [日志查询限制的限制](../service-limits.md#log-analytics-workspaces)，请参阅 [使用逻辑应用将数据从 Log Analytics 工作区存档到 Azure 存储](logs-export-logic-app.md)。
+- 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)，请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](logs-export-logic-app.md)。
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
 
@@ -37,17 +38,17 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - CLI 和 REST 中的 ```--export-all-tables``` 选项不受支持，将被删除。 你应在导出规则中显式提供表的列表。
 - 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分中指定的那些。 例如，目前不支持自定义日志表。
 - 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
-- 如果数据导出规则包含不存在的表，则会失败并出现错误 ```Table <tableName> does not exist in the workspace``` 。
+- 如果数据导出规则包含不存在的表，操作会失败并出现错误 ```Table <tableName> does not exist in the workspace```。
 - Log Analytics 工作区可以位于除以下区域外的任何区域：
   - Azure 政府区域
   - 日本西部
   - 巴西东南部
   - 挪威东部
   - 阿拉伯联合酋长国北部
-- 你可以在工作区中创建两个导出规则--在中，可以是一个到事件中心的规则，一个规则到存储帐户。
+- 可以在工作区中创建两条导出规则，一条指示导出到事件中心，一条指示导出到存储帐户。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
 - 对于存储帐户，要导出的表的名称不能超过 60 个字符，而对于事件中心，不能超过 47 个字符。 名称较长的表将不会被导出。
-- Azure Data Lake Storage 的追加 blob 支持现已在[公共预览版](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)中提供限制
+- Azure Data Lake Storage 的追加 blob 支持现以[有限的公共预览版](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/)形式提供
 
 ## <a name="data-completeness"></a>数据完整性
 如果目标不可用，数据导出会继续重新尝试发送数据，最多持续 30 分钟。 如果 30 分钟后仍不可用，数据将被放弃，直到目标变为可用。
@@ -58,7 +59,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="export-destinations"></a>导出目标
 
 ### <a name="storage-account"></a>存储帐户
-当数据到达时，会将数据发送到存储帐户，并将其存储在每小时追加 blob 中 Azure Monitor。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
+数据会在其到达 Azure Monitor 时被发送到存储帐户并存储在每小时追加的 Blob 中。 “数据导出配置”为存储帐户中的每个表创建一个容器，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的容器中 。
 
 存储帐户 Blob 路径为 WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json。 由于追加 Blob 在存储中的写入限制为 50K，如果追加的数量很大，则导出的 Blob 的数量可能会增加。 在这种情况下，Blob 的命名模式将为 PT1H_#.json，其中 # 是增量 Blob 计数。
 
@@ -69,13 +70,13 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
 
 > [!NOTE]
-> 现已在所有 Azure 区域中的预览版中提供 Azure Data Lake 存储的 "追加 blob" 支持。 创建导出规则到 Azure Data Lake 存储之前，请先[注册到有限的公共预览版](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u)。 如果没有此注册，导出将不起作用。
+> 目前在所有 Azure 区域中以预览版形式提供对 Azure Data Lake 存储的追加 blob 支持。 创建指向 Azure Data Lake 存储的导出规则之前，请先[注册有限公共预览版](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u)。 如果没有进行此注册，导出将不起作用。
 
 ### <a name="event-hub"></a>事件中心
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
 
 > [!IMPORTANT]
-> [每个命名空间支持的事件中心数为 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出10个以上的表，请提供自己的事件中心名称，将所有表导出到该事件中心。 
+> [每个命名空间支持的事件中心数为 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers)。 如果导出 10 个以上的表，请提供你自己的事件中心名称，将所有表导出到该事件中心。
 
 注意事项：
 1. “基本”事件中心 SKU 支持的事件大小[限制](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)更低，工作区中的某些日志可能会超过该限制而被删除。 建议使用“标准”或“专用”事件中心作为导出目标。
@@ -113,10 +114,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 [![存储帐户防火墙和虚拟网络](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
-
 ### <a name="create-or-update-data-export-rule"></a>创建或更新数据导出规则
-数据导出规则定义要为一组表导出到单个目标的数据。 可为每个目标创建一个规则。
+数据导出规则定义导出数据的表和目标。 当前可为每个目标创建一个规则。
 
+导出规则应该包含你在你的工作区中拥有的表。 运行此查询可获取工作区中可用表的列表。
+
+```kusto
+find where TimeGenerated > ago(24h) | distinct Type
+```
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -127,12 +132,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-使用以下 CLI 命令查看工作区中的表。 它可帮助复制所需的表并将其包含在数据导出规则中。
-
-```azurecli
-az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
-```
 
 使用以下命令通过 CLI 创建有关导出到存储帐户的数据导出规则。
 
@@ -602,7 +601,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | BlockchainProxyLog |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
-| ConfigurationData | 部分支持–某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| ConfigurationData | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | ContainerImageInventory |  |
 | ContainerInventory |  |
 | ContainerLog |  |
@@ -622,13 +621,13 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DnsEvents |  |
 | DnsInventory |  |
 | Dynamics365Activity |  |
-| 事件 | 部分支持–此表的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| 事件 | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
 | ExchangeAssessmentRecommendation |  |
 | FailedIngestion |  |
 | FunctionAppLogs |  |
 | 检测信号 |  |
 | HuntingBookmark |  |
-| InsightsMetrics | 部分支持–某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| InsightsMetrics | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | IntuneAuditLogs |  |
 | IntuneDevices |  |
 | IntuneOperationalLogs |  |
@@ -646,9 +645,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | MicrosoftHealthcareApisAuditLogs |  |
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
-| OfficeActivity | 部分支持-通过 webhook 从 O365 到 LA 的部分数据引入。 当前导出中缺少此部分。 |
-| Operation | 部分支持–某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
-| 性能 | 部分支持–当前仅支持 windows perf 数据。 当前导出中缺少 Linux perf 数据。 |
+| OfficeActivity | 部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
+| Operation | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| 性能 | 部分支持 – 当前仅支持 windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
 | PowerBIDatasetsTenant |  |
 | PowerBIDatasetsWorkspace |  |
 | PowerBIDatasetsWorkspacePreview |  |
@@ -658,7 +657,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分支持–此表的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| SecurityEvent | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -683,16 +682,16 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| Syslog | 部分支持–此表的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
+| Syslog | 部分支持 - 此表中的某些数据是通过存储帐户引入的。 当前导出中缺少此部分。 |
 | ThreatIntelligenceIndicator |  |
-| 更新 | 部分支持–某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| 更新 | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | UpdateRunProgress |  |
 | UpdateSummary |  |
 | 使用情况 |  |
 | Watchlist |  |
 | WindowsEvent |  |
 | WindowsFirewall |  |
-| WireData | 部分支持–某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| WireData | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | WVDCheckpoints |  |
 | WVDConnections |  |
 | WVDErrors |  |

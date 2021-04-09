@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/09/2021
+ms.date: 03/09/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: cb7bdeb379ee753424d9c975a8c030b0f7890552
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722273"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598960"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -33,7 +33,7 @@ ms.locfileid: "101722273"
 
 此功能根据服务在句子和文档级别找到的最高置信度分数来提供情绪标签（例如“消极”、“中立”和“积极”）。 此功能还会为每个文档和文档中的句子返回介于 0 和 1 之间的置信度分数以表示积极、中立和消极情绪。 你还可以[使用容器](how-tos/text-analytics-how-to-install-containers.md)在本地运行该服务。
 
-观点挖掘是情绪分析的一项功能，在 v3.1 预览版中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
+观点挖掘是情绪分析的一项功能，在 v3.1 预览版中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些字（例如产品或服务的属性）的观点。
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 

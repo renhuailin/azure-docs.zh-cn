@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 3ffd739b12bdda577c3bc302635472768160f50f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 0bf08c45e82dc6f36d4e179e95e1b58e655b14db
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103224361"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 React SPA 中登录并获取访问令牌
 
@@ -55,11 +55,11 @@ ms.locfileid: "102122657"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”  。
+> 1. 搜索并选择“Azure Active Directory”。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
-> 1. 选择“注册”  。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
+> 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
 > 1. 将“重定向 URI”值设置为 `http://localhost:3000/`。 这是将在本地计算机上侦听的默认端口 NodeJS。 在成功对用户进行身份验证后，我们会将身份验证响应返回到此 URl。 
@@ -119,12 +119,18 @@ ms.locfileid: "102122657"
 > 修改 `msalConfig` 部分中的值，如下所述：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
+>
+>    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。
 > - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 `https://login.microsoftonline.com/`。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”。 例如，`contoso.microsoft.com`。
+>
+>    若要查找“目录(租户) ID”的值，请转到 Azure 门户中应用注册的“概述”页 。
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为“`organizations`”。
 >   - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。 本快速入门中使用 `common`。
 >   - 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为“`consumers`”。
+>
+>    若要查找“支持的帐户类型”的值，请转到 Azure 门户中应用注册的“概述”页 。
 > - `Enter_the_Redirect_Uri_Here` 为 `http://localhost:3000/`。
 >
 > 如果使用的是主要（全球）Azure 云，则 authConfig 中的 `authority` 值应类似于：
@@ -133,9 +139,6 @@ ms.locfileid: "102122657"
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用注册的“概览”页。
-
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
 > 我们已经为项目配置了应用属性的值。

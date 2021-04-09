@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc
-ms.openlocfilehash: 6e8effee91eed73193319238c2ad2f6eaf6d0473
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 71066fc2e2f87405455a059fe23c20277c4b09fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211271"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726373"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>教程：使用 Azure Database for PostgreSQL 灵活服务器在 AKS 上部署 Django 应用
 
@@ -133,9 +133,9 @@ az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
     └───models.py
     └───forms.py
     ├───templates
-        . . . . . . .
+          . . . . . . .
     ├───static
-        . . . . . . .
+         . . . . . . .
 └───my-django-project
     └───settings.py
     └───urls.py
@@ -378,7 +378,7 @@ Quit the server with CONTROL-C.
 
 ## <a name="clean-up-the-resources"></a>清理资源
 
-若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，可以使用 [az group delete](/cli/azure/group&preserve-view=true#az_group_delete) 命令删除资源组、容器服务及所有相关资源。
+若要避免 Azure 费用，应清除不需要的资源。  如果不再需要群集，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令删除资源组、容器服务及所有相关资源。
 
 ```azurecli-interactive
 az group delete --name django-project --yes --no-wait

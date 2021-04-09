@@ -4,10 +4,10 @@ description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: b4609d54c1c3c33a654dd58a3bceaca4974fda15
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584217"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: 8444ae08aa2c25c20723b2f8c571422af3b24bc8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 47feddb88fd7ddae1f8be54709019b4c339d177d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736672"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599164"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
 
@@ -190,7 +190,7 @@ Power BI Desktop 需要时间来发出必需的 HTTP 请求。 对于表中的�
 > [!NOTE]
 > 为何使用提取的关键短语而不是每个评论的完整文本来生成词云？ 关键短语提供的是客户评论中的重要词汇，而不仅仅是最常见词汇。  另外，生成的云中的单词大小调整不会因某个词在相对少数评论中的频繁使用而扭曲。
 
-如果尚未安装词云自定义视觉对象，请安装它。 在工作区右侧的“可视化效果”面板中，单击三点形式的省略号 ( **...** )，然后选择“从存储导入”。 然后搜索“云”并单击词云视觉对象旁边的“添加”按钮。 Power BI 会安装词云视觉对象并会让你知道它已成功安装。
+如果尚未安装词云自定义视觉对象，请安装它。 在工作区右侧的“可视化效果”面板中，单击三点形式的省略号 ( **...** )，然后选择 **从市场导入**。 如果“云”这个词不在列表中显示的可视化效果工具中，则可以搜索“云”，并单击词云视觉对象旁边的 **添加** 按钮。 Power BI 会安装词云视觉对象并会让你知道它已成功安装。
 
 ![[添加自定义视觉对象]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,7 +200,7 @@ Power BI Desktop 需要时间来发出必需的 HTTP 请求。 对于表中的�
 
 此时会在工作区中显示新的报表。 将 `keyphrases` 字段从“字段”面板拖至“可视化效果”面板中的“类别”字段。 词云会显示在报表中。
 
-现在，请切换到“可视化效果”面板的“格式”页面。 在“非索引字”类别中启用“默认非索引字”，以便从云中消除短的常用词，例如“of”。 
+现在，请切换到“可视化效果”面板的“格式”页面。 在“非索引字”类别中启用“默认非索引字”，以便从云中消除短的常用词，例如“of”。 不过，由于我们要可视化关键短语，因此它们可能不包含非索引字。
 
 ![[激活默认非索引字]](../media/tutorials/power-bi/default-stop-words.png)
 
@@ -232,8 +232,7 @@ Power BI Desktop 需要时间来发出必需的 HTTP 请求。 对于表中的�
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    sentiment   = jsonresp[documents]{0}[confidenceScores]
-in  sentiment
+    sentiment   = jsonresp[documents]{0}[detectedLanguage][confidenceScore] in  sentiment
 ```
 
 下面是两个版本的语言检测函数。 第一个返回 ISO 语言代码（例如，表示英语的 `en`），而第二个则返回“友好”名称（例如 `English`）。 可以看到，这两个版本仅正文的最后一行有差异。
@@ -249,8 +248,7 @@ in  sentiment
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[iso6391Name]
-in  language
+    language    = jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 ```fsharp
 // Returns the name (for example, 'English') of the language in which the text is written
@@ -263,8 +261,7 @@ in  language
     headers     = [#"Ocp-Apim-Subscription-Key" = apikey],
     bytesresp   = Web.Contents(endpoint, [Headers=headers, Content=bytesbody]),
     jsonresp    = Json.Document(bytesresp),
-    language    = jsonresp[documents]{0}[detectedLanguages]{0}[name]
-in  language
+    language    jsonresp [documents]{0}[detectedLanguage] [iso6391Name] in language 
 ```
 
 最后，下面是此前已提供的关键短语函数的变体，它返回的短语是列表对象，而不是单个字符串（包含逗号分隔的短语）。 

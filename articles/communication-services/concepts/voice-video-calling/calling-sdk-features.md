@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e154e43f9e9378d6cccd23e2e5892f2a8ccf9a1e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489270"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598875"
 ---
 # <a name="calling-client-library-overview"></a>呼叫客户端库概述
 
@@ -86,7 +86,7 @@ ms.locfileid: "102489270"
 | Windows***                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu/Linux                     |  ✔️    | ❌     | ❌             |
 
-*支持 Safari 版本 13.1+。 
+*支持 Safari 版本 13.1+，但 Safari 不支持一对一呼叫。 
 
 **Safari 14+/macOS 11+ 需要传出视频支持。 
 
@@ -120,8 +120,8 @@ WebRTC API（如 `getUserMedia`）要求通过 HTTPS 处理调用这些 API 的�
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|**# 个可同时发送的传出数据流** |1 个视频 + 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享|
-|**# 个可同时呈现的传入数据流** |1 个视频 + 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
+|**# 个可同时发送的传出数据流** |1 个视频或 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享|
+|**# 个可同时呈现的传入数据流** |1 个视频或 1 个屏幕共享| 6 个视频 + 1 个屏幕共享 |
 
 
 ## <a name="next-steps"></a>后续步骤

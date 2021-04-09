@@ -1,26 +1,16 @@
 ---
-title: 安全模块和设备孪生
-description: 了解安全模块孪生的概念，以及如何在 Defender for IoT 中使用它们。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: Defender-IoT-micro-agent 和设备孪生
+description: 了解 Defender-IoT-micro-agent 孪生体的概念，以及如何在 Defender for IoT 中使用它们。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/24/2019
-ms.author: mlottner
-ms.openlocfilehash: feb84a1261e37600c68d8e372162033d4021f564
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.openlocfilehash: 1ed6faf03d168ed7a2a2f07733cb7e238d234915
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522914"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779165"
 ---
-# <a name="security-module"></a>安全模块
+# <a name="defender-iot-micro-agent"></a>Defender-IoT-micro-agent
 
 本文介绍 Defender for IoT 如何使用设备孪生和模块。
 
@@ -32,15 +22,15 @@ ms.locfileid: "100522914"
 
 详细了解 Azure IoT 中心[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)的概念。
 
-## <a name="security-module-twins"></a>安全模块孪生
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-micro-agent 孪生体
 
-Defender for IoT 为服务中的每个设备维护一个安全模块孪生。
-该安全模块孪生保存与解决方案中每个特定设备的设备安全相关的所有信息。
-设备安全属性在一个专用的安全模块孪生中进行维护，以实现更安全的通信并启用需要更少资源的更新和维护。
+Defender for IoT 为服务中每个设备维护一个 Defender-IoT-micro-agent 孪生体。
+该 Defender-IoT-micro-agent 孪生体为解决方案中的每个特定设备保存与设备安全性相关的所有信息。
+设备安全属性在一个专用的 Defender-IoT-micro-agent 孪生体中进行维护，以实现更安全的通信并启用需要更少资源的更新和维护。
 
-请参阅[创建安全模块孪生](quickstart-create-security-twin.md)和[配置安全代理](how-to-agent-configuration.md)，了解如何创建、自定义和配置孪生。 请参阅[了解模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)，详细了解 IoT 中心模块孪生的概念。
+请参阅[创建 Defender-IoT-micro-agent 孪生体](quickstart-create-security-twin.md)和[配置安全代理](how-to-agent-configuration.md)，了解如何创建、自定义和配置孪生。 请参阅[了解模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)，详细了解 IoT 中心模块孪生的概念。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>请参阅
 
 - [Defender for IoT 概述](overview.md)
 - [部署安全代理](how-to-deploy-agent.md)

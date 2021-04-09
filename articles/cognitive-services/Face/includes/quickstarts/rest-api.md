@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 5523d89548ba08dfc5a43f5c21b5a12a5e5955c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1a360a19da8006a8ab6d918560f1b1d566fdd66d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510634"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104911"
 ---
 开始使用人脸 REST API 进行人脸识别。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -32,7 +32,7 @@ ms.locfileid: "102510634"
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
-* [PowerShell 6.0 及以上版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)，或类似的命令行应用程序。
+* [PowerShell 6.0 及以上版本](/powershell/scripting/install/installing-powershell-core-on-windows)，或类似的命令行应用程序。
 
 
 ## <a name="detect-faces-in-an-image"></a>在图像中检测人脸

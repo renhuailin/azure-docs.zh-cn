@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928649"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864357"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>快速入门：使用 ARM 模板创建认知服务资源
 
@@ -137,9 +137,10 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
-* [对 Azure 认知服务的请求进行身份验证](authentication.md)
-* [什么是 Azure 认知服务？](./what-are-cognitive-services.md)
-* [自然语言支持](language-support.md)
-* [Docker 容器支持](cognitive-services-container-support.md)
+* 有关如何安全地使用认知服务的说明，请参阅 **[对 Azure 认知服务的请求进行身份验证](authentication.md)** 。
+* 请参阅 **[什么是 Azure 认知服务？](./what-are-cognitive-services.md)** ，以获取认知服务中不同类别的列表。
+* 若要查看认知服务支持的自然语言列表，请参阅 **[自然语言支持](language-support.md)** 。
+* 请参阅 **[使用认知服务作为容器](cognitive-services-container-support.md)** 以了解如何使用本地认知服务。
+* 请参阅 **[计划和管理认知服务的成本](plan-manage-costs.md)** ，以估计使用认知服务的成本。

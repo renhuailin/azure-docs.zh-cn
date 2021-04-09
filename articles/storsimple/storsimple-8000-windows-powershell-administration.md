@@ -6,18 +6,18 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.openlocfilehash: 3292f337a39e2adb7dc5e78f12785ead8759f5d1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808027"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611940"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
 ## <a name="overview"></a>概述
 
-Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure StorSimple 设备的命令行接口。 顾名思义，该命令行接口是内置于某个受约束运行空间的一个基于 Windows PowerShell 的命令行接口。 对于命令行，从用户的角度看，所谓限制的运行空间就好像是受限制的 Windows PowerShell 版本。 虽然维护 Windows PowerShell 的某些基本功能，但此接口具有用于管理 Microsoft Azure StorSimple 设备的其他专用 cmdlet。
+Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure StorSimple 设备的命令行接口。 顾名思义，该命令行接口是内置于某个受约束运行空间的一个基于 Windows PowerShell 的命令行接口。 对于命令行，从用户的角度看，所谓限制的运行空间就好像是受限制的 Windows PowerShell 版本。 此命令行接口在保持 Windows PowerShell 的某些基本功能的同时，还提供附加的专用 cmdlet，它们都是专门针对管理 Microsoft Azure StorSimple 设备而设计的。
 
 本文介绍 Windows PowerShell for StorSimple 功能，其中包括如何连接到此命令行接口；本文还包含一些指向使用此命令行接口可以执行的循序渐进步骤或工作流的链接。 这些工作流包括：如何注册设备，配置设备上的网络接口，安装要求设备处于维护模式下的更新，更改设备状态，以及解决可能会遇到的任何问题。
 
@@ -29,7 +29,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 > [!NOTE]
 > * 使用 Windows PowerShell for StorSimple cmdlet，可以从某个串行控制台或通过 Windows PowerShell 远程处理以远程方式管理 StorSimple 设备。 有关可以在此命令行接口中使用的各个 cmdlet 的详细信息，请参阅 [Windows PowerShell for StorSimple 的 cmdlet 参考](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true)。
-> * Azure PowerShell StorSimple cmdlet 是一个不同的 cmdlet 集合，可让你从命令行实现 StorSimple 服务级任务和迁移任务的自动化。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure)。
+> * Azure PowerShell StorSimple cmdlet 是一个不同的 cmdlet 集合，可让你从命令行实现 StorSimple 服务级任务和迁移任务的自动化。 有关适用于 StorSimple 的 Azure Powershell cmdlet 的详细信息，请参阅 [Azure StorSimple cmdlet 参考](/powershell/module/servicemanagement/azure.service/#azure)。
 
 
 可以使用以下方法之一访问 Windows PowerShell for StorSimple：
@@ -48,7 +48,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 #### <a name="to-configure-putty"></a>配置 PuTTY 的步骤
 
 1. 在 PuTTY“**重新配置**”对话框中，在“**类别**”窗格内，选择“**键盘**”。
-2. 请确保在启动新会话) 时，以下选项 (默认设置。
+2. 请确保选中以下选项（这些是你启动新会话时的默认设置）。
    
    | 键盘项 | Select |
    | --- | --- |
@@ -89,15 +89,15 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 可以从以下设置中选择：
 
-1. **使用完全访问权限登录。**
-   此选项允许你将具有适当凭据的 (连接) 到本地控制器上的 **SSAdminConsole** 运行空间。 （本地控制器是你当前正在通过 StorSimple 设备的串行控制台访问的控制器。）此选项还可以用于让 Microsoft 支持部门访问不受限制的运行空间（某个支持会话）以解决任何可能存在的设备问题。 在使用选项 1 登录之后，可以通过运行某个特定的 cmdlet 让 Microsoft 支持部门的工程师访问不受限制的运行空间。 有关详细信息，请参阅[启动支持会话](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
+1. 使用完整访问权限登录。
+   使用此选项，可以（使用适当的凭据）连接到本地控制器上的 SSAdminConsole 运行空间。 （本地控制器是你当前正在通过 StorSimple 设备的串行控制台访问的控制器。）此选项还可以用于让 Microsoft 支持部门访问不受限制的运行空间（某个支持会话）以解决任何可能存在的设备问题。 在使用选项 1 登录之后，可以通过运行某个特定的 cmdlet 让 Microsoft 支持部门的工程师访问不受限制的运行空间。 有关详细信息，请参阅[启动支持会话](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
    
-2. **使用完全访问权限登录到对等控制器。**
-   此选项与选项1相同，不同之处在于，你可以将具有正确凭据的 (连接) 对等控制器上的 **SSAdminConsole** 运行空间。 因为 StorSimple 设备是带有采用主动-被动配置的两台控制器的一台高可用性设备，所以对等方指的是正在通过串行控制台访问的设备中的另一台控制器。
+2. 使用完整访问权限登录到对等控制器。
+   此选项与选项 1 相同，唯一差异是你可以（使用适当的凭据）连接到对等控制器上的 SSAdminConsole 运行空间。 因为 StorSimple 设备是带有采用主动-被动配置的两台控制器的一台高可用性设备，所以对等方指的是正在通过串行控制台访问的设备中的另一台控制器。
    与选项 1 相似，此选项也可以用于让 Microsoft 支持部门访问对等控制器上不受限制的运行空间。
 
-3. **使用受限访问权限进行连接。**
-   此选项用于在受限模式下访问 Windows PowerShell 界面。 不会提示输入访问凭据。 与选项 1 和选项 2 相比，此选项连接到一个受限制更多的运行空间。  *无法* 在此运行空间中执行的某些任务通过选项1提供：
+3. 使用有限权限进行连接。
+   此选项用于在受限模式下访问 Windows PowerShell 界面。 不会提示输入访问凭据。 与选项 1 和选项 2 相比，此选项连接到一个受限制更多的运行空间。  通过选项 1 可以执行但无法在此运行空间中执行的任务包括：
    
    * 重置为出厂设置
    * 更改密码
@@ -108,8 +108,8 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
      > [!NOTE]
      > 如果忘记了设备管理员密码并且无法通过选项 1 或选项 2 进行连接，那么这是首选选项。
 
-4. **更改语言。**
-   此选项可用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语。
+4. 更改语言。
+   此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>使用 Windows PowerShell for StorSimple 远程连接到 StorSimple
 
@@ -128,10 +128,10 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 ## <a name="connection-security-considerations"></a>连接安全注意事项
 
-在决定如何连接到用于 StorSimple 的 Windows PowerShell 时，请考虑以下因素：
+在决定连接到 Windows PowerShell for StorSimple 的方式时，请考虑以下因素：
 
 * 直接连接到设备串行控制台是安全的，但通过网络交换机连接到串行控制台并不安全。 通过网络交换机连接到设备串行控制台时，请警惕安全风险。
-* 同通过网络上的串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 尽管 HTTP 会话不是最安全的连接方法，但在受信任的网络上是可接受的。
+* 同通过网络上的串行控制台进行连接相比，通过 HTTP 会话进行连接可能具有更高的安全性。 虽然 HTTP 会话不是最安全的连接方法，但在受信任的网络上是可接受的。
 * 通过 HTTPS 会话进行连接是最安全的选项（建议使用）。
 
 ## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>使用 Windows PowerShell for StorSimple 管理 StorSimple 设备
@@ -155,7 +155,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新系统上的帮助信息。
 
-在此界面中获取帮助类似于在 Windows PowerShell 中获取帮助，大多数与帮助相关的 cmdlet 都适用。 可以联机找到针对 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
+在此界面获取帮助与在 Windows PowerShell 中获取帮助很相似，大多数与帮助相关的 cmdlet 都将正常工作。 可以联机找到针对 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 <!--The following is a brief description of the types of Help for this Windows PowerShell interface, including how to update the Help. - OK to remove? Transition not needed.-->
 
@@ -173,7 +173,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 1. 在选中“**以管理员身份运行**”选项的情况下启动 Windows PowerShell。
 2. 在命令提示符处，键入：`Update-Help`
 3. 将安装更新的帮助文件。
-4. 安装帮助文件后，键入： `Get-Help Get-Command` 以显示可用的 cmdlet 列表。
+4. 安装帮助文件以后，请键入 `Get-Help Get-Command` 以显示有可用帮助信息的 cmdlet 列表。
 
 > [!NOTE]
 > 若要获取在运行空间中所有可用的 cmdlet 的列表，请登录到相应的菜单选项并运行 `Get-Command` cmdlet。

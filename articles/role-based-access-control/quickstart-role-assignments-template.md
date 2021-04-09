@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 6e8f194cd85a3c381bdabf206777a99dce3c29b6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100559267"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>快速入门：使用 ARM 模板分配 Azure 角色
@@ -47,7 +47,7 @@ ms.locfileid: "100559267"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 确定与 Azure 订阅关联的电子邮件地址。 或确定目录中其他用户的电子邮件地址。
 

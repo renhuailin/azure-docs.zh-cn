@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a2a69b5013ab8e1bc4637f21ce484a132d37834
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455706"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709508"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
@@ -172,7 +172,7 @@ User | 可以续订他们拥有的 Microsoft 365 组<br>可以恢复他们拥有
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/azuread/?view=azureadps-2.0-preview#groups)。
+以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#groups)。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

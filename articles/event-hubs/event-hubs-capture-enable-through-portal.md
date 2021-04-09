@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 门户捕获通过 Azure 事件中�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653945"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件

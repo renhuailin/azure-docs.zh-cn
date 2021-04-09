@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 8083b9edd49f65f29fe9c9b2cfa30edfacf89507
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614881"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558221"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -86,7 +86,7 @@ ms.locfileid: "102614881"
 --- | --- | --- | ---
 **将 SAN 策略配置为“全部联机”**<br/><br/> 此操作确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。<br/><br/> 早期版本的操作系统需要手动配置。 | 大多数情况下会自动设置。 | 手动配置。
 **安装 Hyper-V 来宾集成** | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)。
-**启用 Azure 串行控制台**。<br/><br/>在 Azure VM 上[启用控制台](../virtual-machines/troubleshooting/serial-console-windows.md)，来帮助进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。 | 需要手动启用 | 需要手动启用 | 需要手动启用
+**启用 Azure 串行控制台**。<br/><br/>在 Azure VM 上[启用控制台](/troubleshoot/azure/virtual-machines/serial-console-windows)，来帮助进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。 | 需要手动启用 | 需要手动启用 | 需要手动启用
 **在迁移后进行连接**<br/><br/> 若要在迁移后进行连接，请在迁移之前执行一些步骤。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。
 
 
@@ -126,7 +126,7 @@ ms.locfileid: "102614881"
 **Action** | **详细信息** | **Linux 版本**
 --- | --- | ---
 **安装 Hyper-V Linux Integration Services** | 重新生成 Linux init 映像，使之包含所需的 Hyper-V 驱动程序。 重新生成 init 映像可以确保 VM 在 Azure 中启动。 | 默认情况下，大多数最新版本的 Linux 分发版已包含此服务。<br/><br/> 如果不包含，除以上所示版本之外的所有版本，都需要手动安装。
-**启用 Azure 串行控制台日志记录** | 启用控制台日志记录有助于进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。<br/><br/> 遵照[这些说明](../virtual-machines/troubleshooting/serial-console-linux.md)启用此功能。
+**启用 Azure 串行控制台日志记录** | 启用控制台日志记录有助于进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。<br/><br/> 遵照[这些说明](/troubleshoot/azure/virtual-machines/serial-console-linux)启用此功能。
 **更新设备映射文件** | 更新包含设备名称到卷的关联的设备映射文件，以使用永久设备标识符。 | 除以上所示版本之外的所有版本，都需要手动安装。 （仅适用于基于代理的 VMware 场景）
 **更新 fstab 条目** |  更新条目以使用永久卷标识符。    | 除以上所示版本之外的所有版本，都需要手动更新。
 **删除 udev 规则** | 删除基于 MAC 地址等属性保留接口名称的所有 udev 规则。 | 除以上所示版本之外的所有版本，都需要手动删除。
@@ -148,7 +148,7 @@ ms.locfileid: "102614881"
 
 详细了解[在 Azure 上运行 Linux VM](../virtual-machines/linux/create-upload-generic.md) 所要执行的步骤，并获取适用于某些热门 Linux 发行版的说明。
 
-查看[必需包](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 安装 Linux VM 代理。
+查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 安装 Linux VM 代理。
 
 ## <a name="check-azure-vm-requirements"></a>检查 Azure VM 要求
 
@@ -187,7 +187,7 @@ Azure VM 是在迁移到 Azure 的过程中创建的。 迁移后，必须能够
 
 1. 若要通过 Internet 连接到 VM，请将公共 IP 地址分配到该 VM。 对 Azure VM 使用的公共 IP 地址必须与用于本地计算机的公共 IP 地址不同。 [了解详细信息](../virtual-network/virtual-network-public-ip-address.md)。
 2. 检查 VM 上的网络安全组 (NSG) 规则是否允许与 RDP 或 SSH 端口建立传入连接。
-3. 在[启动诊断](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine)中查看 VM。
+3. 在[启动诊断](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine)中查看 VM。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -200,4 +200,4 @@ Azure VM 是在迁移到 Azure 的过程中创建的。 迁移后，必须能够
 
 - **VMware VM**：验证 VMware VM 的 [迁移要求和支持](migrate-support-matrix-vmware-migration.md)。
 - **Hyper-V VM**：验证 Hyper-V VM 的 [迁移要求和支持](migrate-support-matrix-hyper-v-migration.md)。
-- **物理机**：验证本地物理机和其他虚拟化服务器的 [迁移要求和支持](migrate-support-matrix-physical-migration.md)。 
+- **物理机**：验证本地物理机和其他虚拟化服务器的 [迁移要求和支持](migrate-support-matrix-physical-migration.md)。

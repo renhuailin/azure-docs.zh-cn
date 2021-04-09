@@ -10,19 +10,19 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2af82734fb9e1571242eec016f36f691411a8f2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8986ef895c5766d363261ef263851ee96d9c0da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727665"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
 
 
 本文介绍如何使用主要 Azure 机器学习 SDK 中的 [`tensorboard` 包](/python/api/azureml-tensorboard/)，在 TensorBoard 中查看试验运行和指标。 检查试验运行后，可以更好地优化和重新训练机器学习模型。
 
-[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) 是一套 Web 应用程序，用于检查和了解试验的结构与性能。
+[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard) 是一套 Web 应用程序，用于检查和了解试验的结构与性能。
 
 如何在 Azure 机器学习试验中启动 TensorBoard 取决于试验类型：
 + 如果试验（例如 PyTorch、Chainer 和 TensorFlow 试验）原生可以输出可供 TensorBoard 使用的日志文件，则你可以从试验的运行历史记录[直接启动 TensorBoard](#launch-tensorboard)。 
