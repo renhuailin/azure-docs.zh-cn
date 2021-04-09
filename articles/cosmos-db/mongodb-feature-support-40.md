@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102485395"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>MongoDB 的 Azure Cosmos DB API（4.0 版服务器）：支持的功能和语法
@@ -364,7 +364,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | Array | 是 |
 | Binary Data | 是 | 
 | ObjectId | 是 |
-| Boolean | 是 |
+| 布尔 | 是 |
 | Date | 是 |
 | Null | 是 |
 | 32 位整数 (int) | 是 |
@@ -374,7 +374,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | MaxKey | 是 |
 | Decimal128 | 是 | 
 | Regular Expression | 是 |
-| Javascript | 是 |
+| JavaScript | 是 |
 | JavaScript（带范围）| 是 |
 | Undefined | 是 |
 

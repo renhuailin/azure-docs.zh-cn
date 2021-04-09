@@ -13,16 +13,16 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 357ea903ed4bbc87717dfefc1c542722f5bd40c0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448398"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580039"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 SAML 标识提供者设置注册和登录
 
-Azure Active Directory B2C (Azure AD B2C) 支持使用 SAML 2.0 标识提供者进行联合身份验证。 本文介绍如何使用 SAML 标识提供者用户帐户登录，从而允许用户使用其现有的社交或企业标识（例如 [ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce-saml.md)）登录。
+Azure Active Directory B2C (Azure AD B2C) 支持使用 SAML 2.0 标识提供者进行联合身份验证。 本文介绍如何使用 SAML 标识提供者用户帐户登录，从而允许用户使用其现有的社交或企业标识（例如 [ADFS](./identity-provider-adfs.md) 和 [Salesforce](identity-provider-salesforce-saml.md)）登录。
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -205,9 +205,16 @@ OutputClaims 元素包含 SAML 标识提供者返回的声明列表。 将策略
 https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
 ```
 
+使用[自定义域](custom-domain.md)时，请使用以下格式：
+
+```
+https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/metadata?idptp=<your-technical-profile>
+```
+
 请替换以下值：
 
-- 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
+- 将 your-tenant-name 替换为租户的名称，例如 your-tenant.onmicrosoft.com。
+- 将 your-domain-name 替换为你的自定义域名，例如 login.contoso.com。
 - 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
 - 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
 
@@ -220,7 +227,7 @@ https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 在“策略”下，选择“Identity Experience Framework”
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，选择你[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
 

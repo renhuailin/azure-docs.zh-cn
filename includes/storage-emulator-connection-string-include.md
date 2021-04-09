@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/28/2020
 ms.author: tamram
 ms.openlocfilehash: a9d7f4f77d91abc88ea348e71a3d9c471b26a273
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103622077"
 ---
 模拟器支持单一固定的帐户和众所周知的用于共享密钥身份验证的身份验证密钥。 此帐户和密钥是允许用于模拟器的唯一共享密钥凭据。 它们分别是：

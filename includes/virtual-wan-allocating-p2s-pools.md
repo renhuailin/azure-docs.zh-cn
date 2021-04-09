@@ -9,10 +9,10 @@ ms.date: 01/12/2021
 ms.author: wellee
 ms.custom: include file
 ms.openlocfilehash: 67a996dbe1eb7090ea5f9ee9f0880698f4ba74a3
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919055"
 ---
 本部分介绍分配客户端地址空间的指南和要求，其中所选的虚拟 WAN 中心的点到站点 VPN 网关缩放单元大于或等于 40。

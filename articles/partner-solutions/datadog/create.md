@@ -8,10 +8,10 @@ author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
 ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101747332"
 ---
 # <a name="quickstart-get-started-with-datadog"></a>快速入门：Datadog 入门
@@ -121,9 +121,9 @@ ms.locfileid: "101747332"
 
 可将两种类型的日志从 Azure 发送到 Datadog。
 
-1. **订阅级日志** - 提供在[控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)对你的资源执行的操作的见解。 还包括有关服务运行状况事件的更新。 使用活动日志来确定任何写入操作（PUT、POST、DELETE）的内容、操作者和操作时间。 每个 Azure 订阅都具有单个活动日志。
+1. **订阅级日志** - 提供在 [控制平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)对你的资源执行的操作的见解。 还包括有关服务运行状况事件的更新。 使用活动日志来确定任何写入操作（PUT、POST、DELETE）的内容、操作者和操作时间。 每个 Azure 订阅都具有单个活动日志。
 
-1. **Azure 资源日志** - 提供在[数据平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)对 Azure 资源执行的操作的见解。 例如，从密钥保管库获取机密就是一个数据平面操作。 向数据库发出请求也是一个数据平面操作。 资源日志的内容因 Azure 服务和资源类型而异。
+1. **Azure 资源日志** - 提供在 [数据平面](../../azure-resource-manager/management/control-plane-and-data-plane.md)对 Azure 资源执行的操作的见解。 例如，从密钥保管库获取机密就是一个数据平面操作。 向数据库发出请求也是一个数据平面操作。 资源日志的内容因 Azure 服务和资源类型而异。
 
 若要将订阅级日志发送到 Datadog，请选择“发送订阅活动日志”。 如果不选中此选项，则不会将任何订阅级日志发送到 Datadog。
 
