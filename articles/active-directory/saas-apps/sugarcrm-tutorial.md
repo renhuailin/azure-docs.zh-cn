@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: jeedes
 ms.openlocfilehash: 8c0bbebf9fdc9e8027b947beb037dde47b26b67b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101644819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sugar CRM 集成
@@ -26,7 +26,7 @@ ms.locfileid: "101644819"
 * 让用户使用其 Azure AD 帐户自动登录到 Sugar CRM。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -92,7 +92,7 @@ ms.locfileid: "101644819"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Sugar CRM 客户端支持团队](https://support.sugarcrm.com/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "101644819"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -112,7 +112,7 @@ ms.locfileid: "101644819"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 B.Simon 访问 Sugar CRM 的权限，允许其使用 Azure 单一登录。
 
@@ -124,13 +124,13 @@ ms.locfileid: "101644819"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-sugar-crm-sso"></a>配置 Sugar CRM SSO
+## <a name=&quot;configure-sugar-crm-sso&quot;></a>配置 Sugar CRM SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Sugar CRM 公司站点。
 
 1. 转到“管理员”。 
 
-    ![管理员](./media/sugarcrm-tutorial/ic795888.png "管理员")
+    ![管理员](./media/sugarcrm-tutorial/ic795888.png &quot;管理员")
 
 1. 在“管理”  部分中，单击“密码管理”  。
 

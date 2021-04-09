@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97671989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>教程：Azure Active Directory 与 Comeet Recruiting Software 的集成
@@ -103,7 +103,7 @@ ms.locfileid: "97671989"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Comeet Recruiting Software 客户端支持团队](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -141,7 +141,7 @@ ms.locfileid: "97671989"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -169,7 +169,7 @@ ms.locfileid: "97671989"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -184,7 +184,7 @@ ms.locfileid: "97671989"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

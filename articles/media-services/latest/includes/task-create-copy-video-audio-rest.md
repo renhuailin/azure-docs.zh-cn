@@ -6,15 +6,15 @@ ms.date: 11/19/2020
 ms.author: inhenkel
 ms.custom: CLI
 ms.openlocfilehash: c01f57e2cfc9cd4351a39292258c554412eca555
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94974788"
 ---
 <!--Create a basic audio transform REST-->
 
-以下 Azure REST 命令允许你将视频和音频从一个位置复制到另一个位置，而无需进行进一步编码。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 通过设置为转换指定名称 `transformName` 。
+使用以下 Azure REST 命令可将视频和音频从一个位置复制到另一个位置，而无需进一步编码。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 通过设置 `transformName` 为转换命名。
 
 ```REST
 
