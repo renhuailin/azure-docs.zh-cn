@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
 ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99499989"
 ---
-文本分析的 NER 功能返回以下常规 (非标识) 实体类别。 例如，将请求发送到 `/entities/recognition/general` 终结点时。
+文本分析的 NER 功能返回以下常规（非标识）实体类别。 例如，将请求发送到 `/entities/recognition/general` 终结点时。
 
 
 | 类别 | 说明                          |
@@ -26,18 +26,18 @@ ms.locfileid: "99499989"
 | [位置](#category-location)    | 自然地标和人造地标、结构、地理特征和地缘政治实体 |
 | 组织  | 公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。  |
 | [事件](#category-event)  | 历史事件、社会事件和自然发生的事件。 |
-| [产品](#category-product) | 各种类别的物理对象。 |
+| [Product](#category-product) | 各种类别的物理对象。 |
 | [Skill](#category-skill) | 能力、技能或专长。  |
 | [Address](#category-address) | 完整的邮寄地址。  |
 | [电话号码](#category-phonenumber) | 电话号码。 |
 | [Email](#category-email) | 电子邮件地址。 |
 | [URL](#category-url) | 指向网站的 URL。 |
-| [LIP](#category-ip) | 网络 IP 地址。 |
+| [IP](#category-ip) | 网络 IP 地址。 |
 | [DateTime](#category-datetime) | 某天的日期和时间。 |
-| [数量](#category-quantity) | 数值度量值和单位。 |
+| [数量](#category-quantity) | 数值度量和单位。 |
 
 
-### <a name="category-person"></a>类别： Person
+### <a name="category-person"></a>类别：人员
 
 此类别包含以下实体：
 
@@ -62,7 +62,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-persontype"></a>类别： PersonType
+### <a name="category-persontype"></a>类别：PersonType
 
 此类别包含以下实体：
 
@@ -77,7 +77,7 @@ ms.locfileid: "99499989"
     :::column span="2":::
         **详细信息**
 
-        人员持有的作业类型或角色
+        某人的工作类型或角色
       
     :::column-end:::
     :::column span="2":::
@@ -102,7 +102,7 @@ ms.locfileid: "99499989"
     :::column span="2":::
         **详细信息**
 
-        自然和人工特征点、结构、地理特征和地缘政治实体。
+        自然地标和人造地标、结构、地理特征和地缘政治实体。
       
     :::column-end:::
     :::column span="2":::
@@ -113,9 +113,9 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -197,9 +197,9 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -256,7 +256,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-event"></a>Category：事件
+### <a name="category-event"></a>类别：事件
 
 此类别包含以下实体：
 
@@ -276,14 +276,14 @@ ms.locfileid: "99499989"
     :::column span="2":::
       **支持的文档语言**
 
-      `en`、 `es` 、 `fr` 、 `de` 、 `it` 、 `zh-hans` 、 `ja` 、 `ko` `pt-pt` 和 `pt-br`  
+      `en`、`es`、`fr`、`de`、`it`、`zh-hans`、`ja`、`ko`、`pt-pt` 和 `pt-br`  
       
    :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -348,7 +348,7 @@ ms.locfileid: "99499989"
     :::column span="":::
         **实体**
 
-        产品
+        Product
 
     :::column-end:::
     :::column span="2":::
@@ -366,9 +366,9 @@ ms.locfileid: "99499989"
 :::row-end:::
 
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -429,7 +429,7 @@ ms.locfileid: "99499989"
     :::column span="2":::
         **详细信息**
 
-        完整的邮件地址。
+        完整邮寄地址。
       
     :::column-end:::
     :::column span="2":::
@@ -440,7 +440,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-phonenumber"></a>类别： PhoneNumber
+### <a name="category-phonenumber"></a>类别：PhoneNumber
 
 此类别包含以下实体：
 
@@ -490,7 +490,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-url"></a>类别： URL
+### <a name="category-url"></a>类别：URL
 
 此类别包含以下实体：
 
@@ -498,7 +498,7 @@ ms.locfileid: "99499989"
     :::column span="":::
         **实体**
 
-        代码
+        URL
 
     :::column-end:::
     :::column span="2":::
@@ -515,7 +515,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-ip"></a>类别： IP
+### <a name="category-ip"></a>类别：IP
 
 此类别包含以下实体：
 
@@ -540,7 +540,7 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-datetime"></a>Category： DateTime
+### <a name="category-datetime"></a>类别：DateTime
 
 此类别包含以下实体：
 
@@ -565,17 +565,17 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-此类别中的实体可以具有以下子类别
+此类别中的实体可以有以下子类别
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
         **实体子类别**
 
-        Date
+        日期
 
     :::column-end:::
     :::column span="2":::
@@ -599,7 +599,7 @@ ms.locfileid: "99499989"
     :::column-end:::
     :::column span="2":::
 
-        当天的时间。
+        一天中的时间。
       
     :::column-end:::
     :::column span="2":::
@@ -702,15 +702,15 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
-此类别中的实体可以具有以下子类别。
+此类别中的实体可以有以下子类别。
 
 :::row:::
     :::column span="":::
         **实体子类别**
 
-        数字
+        Number
 
     :::column-end:::
     :::column span="2":::
@@ -744,7 +744,7 @@ ms.locfileid: "99499989"
 :::row-end:::
 :::row:::
     :::column span="":::
-        序数
+        序号
 
     :::column-end:::
     :::column span="2":::
@@ -781,7 +781,7 @@ ms.locfileid: "99499989"
     :::column-end:::
     :::column span="2":::
 
-        成员国
+        货币
       
     :::column-end:::
     :::column span="2":::
