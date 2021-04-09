@@ -10,10 +10,10 @@ ms.workload: identity
 ms.date: 10/08/2020
 ms.author: rolyon
 ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100555919"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>了解 Azure RBAC 的范围
@@ -32,7 +32,7 @@ ms.locfileid: "100555919"
 
 ## <a name="scope-format"></a>范围格式
 
-如果使用命令行分配角色，则需要指定作用域。 对于命令行工具，范围是一个可能会很长的字符串，用于标识角色分配的确切范围。 在 Azure 门户中，此范围通常作为 *资源 ID* 列出。
+如果使用命令行分配角色，则需要指定范围。 对于命令行工具，范围是一个可能会很长的字符串，用于标识角色分配的确切范围。 在 Azure 门户中，此范围通常作为 *资源 ID* 列出。
 
 范围由一系列标识符组成，标识符之间用斜杠 (/) 字符分隔。 可以将此字符串视为表示以下层次结构，其中没有占位符的文本 (`{}`) 是固定标识符：
 

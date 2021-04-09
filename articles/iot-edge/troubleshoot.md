@@ -8,14 +8,16 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d46ad8238faa42ca657b18b3997407d91a224537
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045915"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489451"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 如果在环境中运行 Azure IoT Edge 时遇到问题，请将本文作为指南进行故障排除和诊断。
 
@@ -42,7 +44,7 @@ iotedge check
 
 故障排除工具将运行多个检查，这些检查分为以下三个类别：
 
-* *配置检查* 将检查可能阻止 IoT Edge 设备连接到云的详细信息，包括配置文件和容器引擎的问题。
+* “配置检查”将检查妨碍 IoT Edge 设备连接到云的详细情况，包括配置文件和容器引擎出现的问题。
 * “连接性检查”将验证 IoT Edge 运行时能否访问主机设备上的端口，以及所有 IoT Edge 组件能否连接到 IoT 中心。 如果 IoT Edge 设备位于代理后面，则这组检查将返回错误。
 * “生产准备情况检查”将寻找建议的生产最佳做法，例如设备证书颁发机构 (CA) 颁发证书的状态以及模块日志文件配置。
 
@@ -83,7 +85,7 @@ iotedge support-bundle --since 6h
 
 可通过[监视 edgeAgent 模块孪生](./how-to-monitor-module-twins.md)验证设备上是否安装了 IoT Edge。
 
-若要获取最新的 edgeAgent 模块，请从 [Azure Cloud Shell](https://shell.azure.com/)运行以下命令：
+若要获取最新的 edgeAgent 模块孪生，请从 [Azure Cloud Shell](https://shell.azure.com/) 运行以下命令：
 
    ```azurecli-interactive
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
@@ -132,7 +134,7 @@ iotedge support-bundle --since 6h
      Environment=IOTEDGE_LOG=edgelet=debug
      ```
 
-  3. 重新启动 IoT Edge 安全守护程序：
+  3. 重启 IoT Edge 安全守护程序：
 
      ```bash
      sudo systemctl cat iotedge.service
@@ -157,16 +159,16 @@ iotedge support-bundle --since 6h
    sudo iotedge system logs -- -f
    ```
 
-* 启用调试级日志以查看更详细的 IoT Edge 系统服务日志：
+* 启用调试级别日志以查看更详细的 IoT Edge 系统服务日志：
 
-  1. 启用调试级日志。
+  1. 启用调试级别日志。
 
      ```bash
      sudo iotedge system set-log-level debug
      sudo iotedge system restart
      ```
 
-  1. 调试后切换回默认的信息级日志。
+  1. 在调试后切换回默认的信息级别日志。
 
      ```bash
      sudo iotedge system set-log-level info
@@ -269,13 +271,13 @@ iotedge logs <container name>
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-可以通过 IoT Edge 中心查看消息，并从运行时容器中收集详细日志中的见解。 若要在这些容器上启用详细日志，请 `RuntimeLogLevel` 在部署清单中设置环境变量。
+查看通过 IoT Edge 中心的消息，并通过来自运行时容器的详细日志收集见解。 若要在这些容器上启用详细日志，请在部署清单中设置 `RuntimeLogLevel` 环境变量。
 
-若要查看通过 IoT Edge 中心的消息，请将 `RuntimeLogLevel` edgeHub 模块的环境变量设置为 `debug` 。
+若要查看通过 IoT Edge 中心的消息，请将 edgeHub 模块的 `RuntimeLogLevel` 环境变量设置为 `debug`。
 
-EdgeHub 和 edgeAgent 模块都具有此运行时日志环境变量，默认值设置为 `info` 。 此环境变量可采用以下值：
+edgeHub 和 edgeAgent 模块都具有此运行时日志环境变量，默认值设置为 `info`。 此环境变量可采用以下值：
 
-* 出现
+* fatal
 * error
 * warning
 * info
@@ -285,7 +287,7 @@ EdgeHub 和 edgeAgent 模块都具有此运行时日志环境变量，默认值�
 <!-- end 1.2 -->
 :::moniker-end
 
-你还可以检查正在 IoT 中心和 IoT 设备之间发送的消息。 使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
+还可以检查在 IoT 中心与 IoT 设备之间发送的消息。 使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
 
 ## <a name="restart-containers"></a>重启容器
 

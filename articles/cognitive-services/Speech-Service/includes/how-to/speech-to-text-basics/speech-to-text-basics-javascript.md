@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180034"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104988310"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -62,11 +62,7 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-file"></a>从文件识别 
 
-若要在 Node.js 中从音频文件中识别语音，必须使用使用推送流的替代设计模式，因为 JavaScript `File` 对象不能在 Node.js 运行时中使用。 下面的代码：
-
-* 使用 `createPushStream()` 创建推送流
-* 通过创建读取流打开 `.wav` 文件，并将其写入推送流
-* 使用推送流创建音频配置
+要从音频文件识别语音，请使用 `fromWavFileInput()` 创建一个接受 `Buffer` 对象的 `AudioConfig`。 然后初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)，传递 `audioConfig` 和 `speechConfig`。
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>从内存中流识别
+
+对于许多用例，你的音频数据可能来自 Blob 存储，或者已经作为 [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) 或类似的原始数据结构存在于内存中。 下面的代码：
+
+* 使用 `createPushStream()` 创建推送流。
+* 出于演示目的，请使用 `fs.createReadStream` 读取 `.wav` 文件，但如果你已经在 `ArrayBuffer` 中拥有音频数据，则可以直接跳过此步骤，将内容写入输入流。
+* 使用推送流创建音频配置。
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 使用推送流作为输入假定音频数据是原始 PCM，例如，跳过任何标头。

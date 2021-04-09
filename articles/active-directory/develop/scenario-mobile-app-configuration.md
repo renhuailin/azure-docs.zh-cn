@@ -12,26 +12,22 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1187c768a54dd04d25b6de0e6785ebb81a7dfc24
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.openlocfilehash: 6f13d789cd63bb568bb8940ce614ebdb2dbcdb83
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584425"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199751"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
 创建应用程序后，可以了解如何使用应用注册参数配置代码。 将移动应用程序装入其创建框架时存在一定的复杂性。
 
-## <a name="find-msal-support-for-mobile-apps"></a>查找移动应用的 MSAL 支持
+## <a name="microsoft-libraries-supporting-mobile-apps"></a>支持移动应用的 Microsoft 库
 
-以下 Microsoft 身份验证库 (MSAL) 类型支持移动应用。
+以下 Microsoft 库支持移动应用：
 
-MSAL | 说明
------------- | ----------
-![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 用于开发可移植的应用程序。 MSAL.NET 支持在以下平台中生成移动应用程序：通用 Windows 平台 (UWP)、Xamarin.iOS 和 Xamarin.Android。
-![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | 用于通过 Objective-C 或 Swift 开发本机 iOS 应用程序。
-![MSAL.Android](media/sample-v2-code/logo_android.png) <br/> MSAL.Android | 用于在 Java for Android 中开发本机 Android 应用程序。
+[!INCLUDE [active-directory-develop-libraries-mobile](../../../includes/active-directory-develop-libraries-mobile.md)]
 
 ## <a name="instantiate-the-application"></a>实例化应用程序
 
@@ -82,7 +78,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
 
 ##### <a name="specify-the-parent-ui-window-or-activity"></a>指定父 UI、窗口或活动
 
-在 Android 上，在执行交互式身份验证之前传递父活动。 在 iOS 上，使用 broker 时 `ViewController` 。 在 UWP 上，可以相同的方式传入父窗口。 请在获取令牌时将其传入。 但在创建应用程序时，还可以指定一个回调作为返回 `UIParent` 的委托。
+在 Android 上，在执行交互式身份验证之前传递父活动。 在 iOS 上使用代理时，传入 `ViewController`。 在 UWP 上，可以相同的方式传入父窗口。 请在获取令牌时将其传入。 但在创建应用程序时，还可以指定一个回调作为返回 `UIParent` 的委托。
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -130,7 +126,7 @@ var pca = PublicClientApplicationBuilder
 如果使用 Xamarin.Android，请执行以下任务：
 
 - [确保身份验证流的交互部分结束后控制返回到 MSAL](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
-- [更新 Android 清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
+- [更新 Android 清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)
 - [使用嵌入式 Web 视图（可选）](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
 - [根据需要进行故障排除](msal-net-xamarin-android-considerations.md#troubleshooting)
 
@@ -170,7 +166,7 @@ var pca = PublicClientApplicationBuilder
 
 ### <a name="enable-brokered-authentication-for-xamarin-ios"></a>为 Xamarin iOS 启用中介身份验证
 
-按照本部分中的步骤操作，使你的 Xamarin iOS 应用与 [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) 的应用进行交流。
+遵循本部分中的步骤，使 Xamarin.iOS 应用能够与 [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) 应用通信。
 
 #### <a name="step-1-enable-broker-support"></a>步骤 1：启用中介支持
 

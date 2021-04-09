@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 96118a840c57932ae8e99b084766bf12493d9f7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652677"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104956037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>教程：Azure Active Directory 与 SolarWinds Service Desk（以前称为 Samanage）集成
 
@@ -90,7 +90,7 @@ ms.locfileid: "101652677"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户 
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -102,7 +102,7 @@ ms.locfileid: "101652677"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 SolarWinds 的权限，使其能够使用 Azure 单一登录。
 
@@ -114,15 +114,15 @@ ms.locfileid: "101652677"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-<a name="configure-solarwinds-single-sign-on"></a>
+<a name=&quot;configure-solarwinds-single-sign-on&quot;></a>
 
-## <a name="configure-solarwinds-sso"></a>配置 SolarWinds SSO
+## <a name=&quot;configure-solarwinds-sso&quot;></a>配置 SolarWinds SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 SolarWinds 公司站点。
 
 2. 在左侧导航窗格中，单击“仪表板”  并选择“设置”  。
    
-    ![仪表板](./media/samanage-tutorial/tutorial-samanage-1.png "仪表板")
+    ![仪表板](./media/samanage-tutorial/tutorial-samanage-1.png &quot;仪表板")
 
 3. 单击“单一登录”  。
    
@@ -184,8 +184,8 @@ ms.locfileid: "101652677"
 
 * 直接转到 SolarWinds 登录 URL，并从中启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SolarWinds”磁贴时，会重定向到 SolarWinds 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“SolarWinds”磁贴时，会重定向到 SolarWinds 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 SolarWinds 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 SolarWinds 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

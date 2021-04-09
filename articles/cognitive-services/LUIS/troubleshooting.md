@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.openlocfilehash: b5e25e9ed25ced96d38994928bcb6275ce79420f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787530"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612790"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -286,7 +286,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>使用 Bot Framework 在本地计算机上进行调试时解决问题。
 
-若要了解有关本地调试机器人的详细信息，请参阅[调试机器人](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)。
+若要了解有关本地调试机器人的详细信息，请参阅[调试机器人](/azure/bot-service/bot-service-debug-bot)。
 
 ## <a name="integrating-luis"></a>集成 LUIS
 

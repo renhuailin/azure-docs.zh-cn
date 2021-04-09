@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733294"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ node ServiceClient.js "{your service connection string}"
 
 ![屏幕截图显示了后端应用程序的输出，并突出显示了它如何发送更新。](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>接收状态信息
+## <a name="receive-state-information&quot;></a>接收状态信息
 
 后端应用程序从设备接收报告属性形式的状态信息。 设备会设置报告属性，并将其发送到中心。 后端应用程序可以从中心内存储的设备孪生读取报告属性的当前值。
 
-### <a name="send-reported-properties-from-a-device"></a>从设备发送报告属性
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>从设备发送报告属性
 
 可以补丁的形式发送对报告属性值所做的更新。 以下片段演示了模拟设备发送的补丁的模板。 模拟设备先更新补丁中的字段，然后将补丁发送到中心：
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 模拟设备使用以下函数将包含报告属性的补丁发送到中心：
 

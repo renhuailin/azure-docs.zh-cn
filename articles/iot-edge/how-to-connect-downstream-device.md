@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046119"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199630"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 本文提供有关在下游设备与 IoT Edge 透明网关之间建立受信任连接的说明。 在透明网关方案中，一个或多个设备可以通过与 IoT 中心保持连接的单个网关设备传递其消息。
 
@@ -44,7 +46,19 @@ ms.locfileid: "102046119"
 
 ## <a name="prepare-a-downstream-device"></a>准备下游设备
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 下游设备可以是包含通过 Azure IoT 中心云服务创建的标识的任何应用程序或平台。 在许多情况下，这些应用程序使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。 但是，另一个 IoT Edge 设备不能位于 IoT Edge 网关的下游。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+下游设备可以是包含通过 Azure IoT 中心云服务创建的标识的任何应用程序或平台。 在许多情况下，这些应用程序使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游设备甚至可以是 IoT Edge 网关设备本身上运行的应用程序。
+
+本文提供将 IoT 设备连接为下游设备的步骤。 如果有 IoT Edge 设备作为下游设备，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md)。
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >已向 IoT 中心注册的 IoT 设备可以使用[模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)在单个设备上隔离不同的进程、硬件或函数。 IoT Edge 网关支持使用对称密钥身份验证的下游模块连接，但不支持 X.509 证书身份验证。
@@ -61,7 +75,7 @@ ms.locfileid: "102046119"
 
 ## <a name="tls-and-certificate-fundamentals"></a>TLS 和证书基础知识
 
-将下游设备安全连接到 IoT Edge 所存在的难题就如同通过 Internet 进行其他任何客户端/服务器安全通信。 客户端和服务器使用 [传输层安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)安全地通过 internet 进行通信。 TLS 是使用标准 [公钥基础结构生成的， (PKI) ](https://en.wikipedia.org/wiki/Public_key_infrastructure) 构造称为证书。 TLS 是一种相当复杂的规范，阐述了与保护两个终结点相关的各种主题。 本部分汇总了将设备安全连接到 IoT Edge 网关的相关概念。
+将下游设备安全连接到 IoT Edge 所存在的难题就如同通过 Internet 进行其他任何客户端/服务器安全通信。 客户端和服务器使用[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) 通过 Internet 安全通信。 TLS 是使用称作“证书”的标准[公钥基础结构 (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) 构造生成的。 TLS 是一种相当复杂的规范，阐述了与保护两个终结点相关的各种主题。 本部分汇总了将设备安全连接到 IoT Edge 网关的相关概念。
 
 当客户端连接到某个服务器时，该服务器将出示称作“服务器证书链”的证书链。 证书链通常包含根证书颁发机构 (CA) 证书、一个或多个中间 CA 证书，以及服务器证书本身。 客户端通过以加密方式验证整个服务器证书链来与服务器建立信任。 客户端对服务器证书链进行的这种验证称作“服务器链验证”。 客户端将在一个称作“所有权证明”的过程中对服务器提出质询，以证明与服务器证书关联的私钥的所有权。 服务器链验证和所有权证明的组合称作“服务器身份验证”。 若要验证服务器证书链，客户端需要使用创建（或发出）服务器证书时所用的根 CA 证书的副本。 一般情况下，在连接到网站时，浏览器中会预配置常用的 CA 证书，使客户端能够顺利完成验证过程。
 

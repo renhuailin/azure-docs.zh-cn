@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a3e646f44978e8897c22d579639efcef0fcd2205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045966"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489556"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 还列出了在部署 IoT Edge 解决方案时可能遇到的常见问题的步骤。 如需了解如何从 IoT Edge 设备查找日志和错误，请参阅[对 IoT Edge 设备进行故障排除](troubleshoot.md)。
 
@@ -262,7 +264,7 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
    sudo nano /etc/aziot/config.toml
    ```
 
-6. 将的值替换 `hostname` 为你的 DNS 名称。
+6. 将 `hostname` 的值替换为你的 DNS 名称。
 
 7. 保存并关闭该文件，然后将更改应用到 IoT Edge。
 
@@ -379,7 +381,7 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 **根本原因：**
 
-网关后 IoT Edge 设备将从配置文件的字段中指定的父 IoT Edge 设备获取其模块映像 `parent_hostname` 。 `Could not perform HTTP request` 错误表示子设备无法通过 HTTP 到访问父设备。
+网关后面的 IoT Edge 设备将从父 IoT Edge 设备（在配置文件的 `parent_hostname` 字段中指定）获取其模块映像。 `Could not perform HTTP request` 错误表示子设备无法通过 HTTP 到访问父设备。
 
 **解决方法：**
 

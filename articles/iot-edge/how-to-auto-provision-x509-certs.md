@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f4b33b0156f1a5e27f71509cad637684a0332413
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 44ea6546eb2099165071fd493ec8f890820c0688
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046153"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199835"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 借助 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml)，可以使用 X.509 证书自动预配 IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[预配](../iot-dps/about-iot-dps.md#provisioning-process)概述。
 
@@ -59,7 +61,7 @@ ms.locfileid: "102046153"
 
 :::moniker-end
 
-### <a name="use-test-certificates-optional"></a> (可选) 使用测试证书
+### <a name="use-test-certificates-optional"></a>使用测试证书（可选）
 
 如果你没有可用于创建新标识证书的证书颁发机构，但想要尝试此方案，可以使用 Azure IoT Edge Git 存储库中包含的脚本来生成测试证书。 这些证书仅用于开发测试，不得在生产环境中使用。
 
@@ -121,7 +123,7 @@ Windows:
       }
       ```
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分来设置 IoT Edge 设备。
 
@@ -206,7 +208,7 @@ Windows:
       }
       ```
 
-1. 选择“保存”  。
+1. 选择“保存” 。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到下一部分来设置 IoT Edge 设备。
 
@@ -240,7 +242,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    sudo nano /etc/iotedge/config.yaml
    ```
 
-1. 找到该文件的预配配置部分。 取消注释 x.509 证书预配的行，并确保注释掉任何其他预配行。
+1. 找到该文件的预配配置部分。 取消注释 DPS X.509 证书预配的行，并确保注释掉任何其他预配行。
 
    `provisioning:` 行前面应无空格，并且嵌套项应该缩进两个空格。
 
@@ -266,11 +268,11 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. （可选） `registration_id` 为设备提供。 否则，请让该行被注释掉，以将设备注册为带有标识证书的 CN 名称。
+1. （可选）为设备提供一个 `registration_id`。 否则，请将该行注释掉，以使用标识证书的 CN 名称注册设备。
 
-1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
+1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
-1. 保存并关闭 yaml 文件。
+1. 保存并关闭 config.yaml 文件。
 
 1. 重启 IoT Edge 运行时，使之拾取你在设备上所做的所有配置更改。
 
@@ -284,7 +286,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-1. 根据 IoT Edge 安装中提供的模板文件创建设备的配置文件。
+1. 基于在安装 IoT Edge 的过程中提供的模板文件为你的设备创建配置文件。
 
    ```bash
    sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
@@ -296,7 +298,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    sudo nano /etc/aziot/config.toml
    ```
 
-1. 查找文件的 " **预配** " 部分。 通过 x.509 证书取消注释用于 DPS 预配的行，并确保注释掉任何其他预配行。
+1. 找到文件的 **Provisioning** 节。 取消注释使用 X.509 证书进行 DPS 预配的行，并确保注释掉任何其他预配行。
 
    ```toml
    # DPS provisioning with X.509 certificate
@@ -316,13 +318,13 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. 将 `id_scope`、`identity_cert` 和 `identity_pk` 的值更新为你的 DPS 和设备信息。
 
-   标识证书值可以作为文件 URI 提供，也可以使用 EST 或本地证书颁发机构进行动态颁发。 基于你选择使用的格式仅取消注释一行。
+   标识证书值可以作为文件 URI 提供，也可以通过 EST 或本地证书颁发机构进行动态颁发。 根据你选择使用的格式，仅取消注释一行。
 
-   标识私钥值可以作为文件 URI 或 PKCS # 11 URI 提供。 基于你选择使用的格式仅取消注释一行。
+   标识私钥值可以作为文件 URI 或 PKCS#11 URI 提供。 根据你选择使用的格式，仅取消注释一行。
 
-   如果使用任何 PKCS # 11 Uri，请在配置文件中找到 **pkcs # 11** 部分，并提供有关 PKCS # 11 配置的信息。
+   如果使用任何 PKCS#11 URI，请在配置文件中找到 PKCS#11 节，并提供有关 PKCS#11 配置的信息。
 
-1. （可选） `registration_id` 为设备提供。 否则，请让该行被注释掉，以将设备注册为标识证书的公用名。
+1. （可选）为设备提供一个 `registration_id`。 否则，请将该行注释掉，以使用标识证书的公用名称注册设备。
 
 1. 保存并关闭该文件。
 
@@ -353,7 +355,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    ```
 
    >[!TIP]
-   >配置文件将证书和密钥信息存储为文件 Uri。 但是，Initialize-IoTEdge 命令将为你处理此格式设置步骤，因此，可以提供证书和密钥文件在设备上的绝对路径。
+   >配置文件以文件 URI 的形式存储证书和密钥信息。 但是，Initialize-IoTEdge 命令将为你处理此格式设置步骤，因此，可以提供证书和密钥文件在设备上的绝对路径。
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

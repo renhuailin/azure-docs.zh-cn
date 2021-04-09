@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731914"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
@@ -26,7 +26,7 @@ ms.locfileid: "98731914"
 * 让用户使用其 Azure AD 帐户自动登录到 Greenhouse。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -146,7 +146,7 @@ ms.locfileid: "98731914"
     >[!NOTE]
     >或者，也可以单击“选择文件”选项上传“联合元数据 XML”文件。  
 
-### <a name="create-greenhouse-test-user"></a>创建一个 Greenhouse 测试用户
+### <a name="create-greenhouse-test-user&quot;></a>创建一个 Greenhouse 测试用户
 
 要使 Azure AD 用户能够登录 Greenhouse，必须将其预配到 Greenhouse。 对于 Greenhouse，需要手动执行预配。
 
@@ -159,7 +159,7 @@ ms.locfileid: "98731914"
 
 2. 请转到“配置”>“用户”>“新用户”
    
-    ![用户](./media/greenhouse-tutorial/create-user-1.png "用户")
+    ![用户](./media/greenhouse-tutorial/create-user-1.png &quot;用户")
 
 4. 在 **“添加新用户”** 部分中，执行以下步骤：
    
