@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 资源管理器模板，将应用程序和
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97930831"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>将应用程序和服务作为 Azure 资源管理器资源进行管理

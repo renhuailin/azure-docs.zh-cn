@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 0de65c4546f5e87377b119370ee629f5a365b24e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 98b40218d168133193410174bcc158ab8698c381
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650520"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103225381"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入门：使用 Azure CLI 生成你的第一个静态站点
 
@@ -104,8 +104,13 @@ cd my-first-static-web-app
     ```
 
     ---
+    
+    > [!IMPORTANT]
+    > 传递给 `s` 参数的 URL 不得包含后缀 `.git`。
 
-    - `<RESOURCE_GROUP_NAME>`：将此值替换为现有的 Azure 资源组名称。
+    - `<RESOURCE_GROUP_NAME>`：将此值替换为现有 [Azure 资源组名称](../azure-resource-manager/management/manage-resources-cli.md)。
+
+      - 若要详细了解如何列出资源组，请参阅 [az group](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_list) 文档。
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`：将此值替换为你的 GitHub 用户名。
 

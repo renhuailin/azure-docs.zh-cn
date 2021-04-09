@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/06/2018
+ms.date: 3/12/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 633885bb1062edac8226c073768ffdeba84fcb55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.openlocfilehash: 9adc4c92e3e637b9d3e18249b5de00782a94baab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012625"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232879"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
 了解如何通过管理 .NET SDK 设置和运行使用 .NET 版流分析 API 的分析作业。 设置项目、创建输入和输出源、转换，以及开始和停止作业。 就分析作业来说，可以从 Blob 存储或事件中心流式传输数据。
@@ -29,7 +29,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 * 安装 Visual Studio 2019 或 2015。
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 以下示例是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅 [安装和配置 Azure PowerShell](/powershell/azure/)；  
+* 在订阅中创建 Azure 资源组。 以下示例是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/)；  
 
    ```powershell
    # Log in to your Azure account
@@ -207,6 +207,12 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    // Test the connection to the input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
+TestConnection 调用的结果是一个 ResourceTestResult 对象，其中包含两个属性：
+
+- status：它可以是以下字符串之一：["TestNotAttempted", "TestSucceeded", "TestFailed"]
+- error：它属于 ErrorResponse 类型，其中包含以下属性：
+   - code：string 类型的必需属性。 该值是测试时收到的标准 System.Net.HttpStatusCode。
+   - message：表示错误的 string 类型的必需属性。 
 
 ## <a name="create-a-stream-analytics-output-target"></a>创建流分析输出目标
 创建输出目标类似于创建流分析输入源。 像输入源一样，输出目标将绑定到特定作业。 要将同一输出目标用于不同的作业，必须再次调用该方法并指定不同的作业名称。
@@ -284,7 +290,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    ```
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请参阅[ Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 现已学习了使用 .NET SDK 创建和运行分析作业的基础知识。 要了解更多信息，请参阅下列文章：

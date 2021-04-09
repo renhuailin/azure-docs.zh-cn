@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 03/12/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592309"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225412"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释 Azure Monitor 中的 Azure AD 登录日志架构
 
@@ -143,29 +143,31 @@ ms.locfileid: "100592309"
 
 ## <a name="field-descriptions"></a>字段说明
 
-| 字段名称 | 说明 |
-|------------|-------------|
-| 时间 | 日期和时间 (UTC)。 |
-| ResourceId | 此值未映射，可以放心地忽略此字段。  |
-| OperationName | 对于登录，此值始终为“登录活动”。 |
-| OperationVersion | 客户端请求的 REST API 版本。 |
-| Category | 对于登录，此值始终为“登录”。 | 
-| TenantId | 与日志关联的租户 GUID。 |
-| ResultType | 登录操作的结果，可以是“成功”或“失败” 。 | 
-| ResultSignature | 包含登录操作的错误代码（如果有）。 |
-| ResultDescription | 提供登录操作的错误说明。 |
+| 字段名称 | 密钥 | 说明 |
+| --- | --- | --- | 
+| 时间 |  - | 日期和时间 (UTC)。 |
+| ResourceId | - | 此值未映射，可以放心地忽略此字段。  |
+| OperationName | - | 对于登录，此值始终为“登录活动”。 |
+| OperationVersion | - | 客户端请求的 REST API 版本。 |
+| Category | - | 对于登录，此值始终为“登录”。 | 
+| TenantId | - | 与日志关联的租户 GUID。 |
+| ResultType | - | 登录操作的结果，可以是“成功”或“失败” 。 | 
+| ResultSignature | - | 包含登录操作的错误代码（如果有）。 |
+| ResultDescription | 空值或空白 | 提供登录操作的错误说明。 |
 | riskDetail | riskDetail | 提供特定风险用户、风险登录或风险检测状态背后的“原因”。 可能的值有：`none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue`。 值 `none` 表示到目前为止尚未对用户或登录执行任何操作。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值 `hidden`。 |
 | riskEventTypes | riskEventTypes | 与登录相关的风险检测类型。 可能的值有：`unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic` 和 `unknownFutureValue`。 |
+| authProcessingDetails | Azure AD 应用身份验证库 | 包含系列、库和平台信息，格式为：“Family: ADAL Library: ADAL.JS 1.0.0 Platform: JS” |
+| authProcessingDetails | IsCAEToken | 值为 True 或 False |
 | riskLevelAggregated | riskLevel | 聚合风险级别。 可能的值有：`none`、`low`、`medium`、`high`、`hidden` 和 `unknownFutureValue`。 值 `hidden` 表示用户或登录未启用 Azure AD 标识保护。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 所有其他客户将返回 `hidden`。 |
 | riskLevelDuringSignIn | riskLevel | 登录过程中的风险级别。 可能的值有：`none`、`low`、`medium`、`high`、`hidden` 和 `unknownFutureValue`。 值 `hidden` 表示用户或登录未启用 Azure AD 标识保护。 **注意：** 此属性的详细信息仅适用于 Azure AD Premium P2 客户。 所有其他客户将返回 `hidden`。 |
 | riskState | riskState | 风险用户、风险登录或风险检测的报告状态。 可能的值有：`none`、`confirmedSafe`、`remediated`、`dismissed`、`atRisk`、`confirmedCompromised`、`unknownFutureValue`。 |
-| DurationMs |  此值未映射，可以放心地忽略此字段。 |
-| CallerIpAddress | 发出请求的客户端的 IP 地址。 | 
-| CorrelationId | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
-| 标识 | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
-| Level | 提供消息的类型。 对于审核，它始终是“信息”。 |
-| 位置 | 提供登录活动的位置。 |
-| 属性 | 列出与登录关联的所有属性。有关详细信息，请参阅 [Microsoft Graph API 参考](/graph/api/resources/signin?view=graph-rest-beta)。 为提高可读性，此架构使用登录资源中的相同属性名。
+| DurationMs | - | 此值未映射，可以放心地忽略此字段。 |
+| CallerIpAddress | - | 发出请求的客户端的 IP 地址。 | 
+| CorrelationId | - | 客户端所传递的可选 GUID。 此值可帮助将客户端操作与服务器端操作关联，并且在跟踪跨服务的日志时非常有用。 |
+| 标识 | - | 发出请求时提供的令牌中的标识。 可以是用户帐户、系统帐户或服务主体。 |
+| Level | - | 提供消息的类型。 对于审核，它始终是“信息”。 |
+| 位置 | - | 提供登录活动的位置。 |
+| 属性 | - | 列出与登录关联的所有属性。|
 
 ## <a name="next-steps"></a>后续步骤
 

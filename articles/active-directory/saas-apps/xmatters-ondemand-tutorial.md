@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: jeedes
 ms.openlocfilehash: 762bd1c536df0ca307149ba7c201f08f5bdfded5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>教程：Azure Active Directory 与 xMatters OnDemand 集成
@@ -110,7 +110,7 @@ ms.locfileid: "98735585"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -122,7 +122,7 @@ ms.locfileid: "98735585"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分将通过授予 B.Simon 访问 xMatters OnDemand 的权限，允许其使用 Azure 单一登录。
 
@@ -135,13 +135,13 @@ ms.locfileid: "98735585"
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
 
-## <a name="configure-xmatters-ondemand-sso"></a>配置 xMatters OnDemand SSO
+## <a name=&quot;configure-xmatters-ondemand-sso&quot;></a>配置 xMatters OnDemand SSO
 
 1. 在其他 Web 浏览器窗口中，以管理员身份登录到 XMatters OnDemand 公司站点。
 
 2. 单击“管理员”，然后单击“公司详细信息” 。
 
-    ![“管理员”页面](./media/xmatters-ondemand-tutorial/admin.png "管理员")
+    ![“管理员”页面](./media/xmatters-ondemand-tutorial/admin.png &quot;管理员")
 
 3. 在“SAML 配置”  页上，执行以下步骤：
 
