@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 7386cfaaf410614c6eeee19669f8f769ad691c1f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99213718"
 ---
 若要创建 Visual Studio 项目以用于通用 Windows 平台 (UWP) 开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，设置音频捕获，然后安装语音 SDK。
@@ -100,7 +100,7 @@ ms.locfileid: "99213718"
 
 1. 在搜索结果旁的“包状态”窗格中，选择“helloworld”项目。
 
-1. 选择“安装”。
+1. 选择“安装”  。
 
 1. 在“预览更改”  对话框中，选择“确定”  。
 

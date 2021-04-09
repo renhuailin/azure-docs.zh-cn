@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
 ms.openlocfilehash: 13d4bb94d3efb574895df6cfdf240cdeec77e539
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99070171"
 ---
 使用 Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) cmdlet 在上一步骤的资源组中创建 Key Vault。 需要提供某些信息：
