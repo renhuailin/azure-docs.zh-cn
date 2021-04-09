@@ -8,10 +8,10 @@ ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 1776c756df23be9c1f29382ff223d367ffc5cc5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99500417"
 ---
 可以通过以下几种方法添加、更新和删除函数应用设置：

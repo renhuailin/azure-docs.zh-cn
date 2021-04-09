@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
 ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493781"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。 本文档使用可以使用 [系列数据集](sql-query-getting-started.md#upload-sample-data)重新创建的示例。
+Azure Cosmos DB SQL API 的一个重要功能是创建数组和对象。 本文档使用可以通过[家庭数据集](sql-query-getting-started.md#upload-sample-data)重新创建的示例。
 
 下面是此数据集中的一个示例项：
 
@@ -202,7 +202,7 @@ FROM child IN Families.children
 > [!NOTE]
 > 使用 IN 关键字进行迭代时，不能筛选或投射数组外部的任何属性。 应改用 [JOIN](sql-query-join.md)。
 
-有关其他示例，请阅读 [有关在 Azure Cosmos DB 中使用数组的博客文章](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/)。
+有关其他示例，请阅读[有关在 Azure Cosmos DB 中使用数组的博客文章](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/)。
 
 ## <a name="next-steps"></a>后续步骤
 
