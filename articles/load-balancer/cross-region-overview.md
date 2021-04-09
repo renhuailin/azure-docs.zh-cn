@@ -1,7 +1,7 @@
 ---
-title: '跨区域负载均衡器 (预览) '
+title: 跨区域负载均衡器（预览版）
 titleSuffix: Azure Load Balancer
-description: Azure 负载均衡器的跨区域负载均衡器层的概述。
+description: Azure 负载均衡器的跨区域负载均衡器层概述。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,39 +13,39 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176716"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103225619"
 ---
-# <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器 (预览) 
+# <a name="cross-region-load-balancer-preview"></a>跨区域负载均衡器（预览版）
 
-Azure 负载均衡器将到达负载均衡器前端的入站流量分配到后端池实例。
+Azure 负载均衡器将抵达负载均衡器前端的入站流量分配到后端池实例。
 
-Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA 方案，例如：
+Azure 标准负载均衡器支持跨区域负载均衡，从而可以实现如下所述的异地冗余 HA 方案：
 
-* 来自多个区域的传入流量。
-* [即时全局故障转移](#regional-redundancy) 到下一个最佳区域部署。
-* 将跨区域的负载分布到最接近的 Azure 区域，且 [延迟非常低](#ultra-low-latency)。
-* 能够在单个终结点后 [扩展/缩减](#ability-to-scale-updown-behind-a-single-endpoint) 。
+* 源自多个区域的传入流量。
+* [即时全局故障转移](#regional-redundancy)到下一个最佳区域部署。
+* 将负载跨区域分配到[延迟超低](#ultra-low-latency)的最近 Azure 区域。
+* 可在单个终结点后面进行[纵向扩展/缩减](#ability-to-scale-updown-behind-a-single-endpoint)。
 * [静态 IP](#static-ip)
 * [客户端 IP 保留](#client-ip-preservation)
-* 在无学习曲线的[现有负载均衡器解决方案上构建](#build-cross-region-solution-on-existing-azure-load-balancer)
+* 无需接受培训即可[在现有负载均衡器的基础上构建解决方案](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> 跨区域负载均衡器目前处于预览阶段。
+> 跨区域负载均衡器目前以预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-跨区域负载均衡提供与区域标准负载均衡器相同的高性能和低延迟的优点。 
+跨区域负载均衡提供与区域标准负载均衡器相同的高性能、低延迟优势。 
 
-跨区域负载均衡器的前端 IP 配置是静态的，在 [大多数 Azure 区域](#participating-regions)中公布。
+跨区域负载均衡器的前端 IP 配置是静态的，将播发到[大多数 Azure 区域](#participating-regions)。
 
-:::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="跨区域负载均衡器关系图。" border="true":::
+:::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="跨区域负载均衡器示意图。" border="true":::
 
 > [!NOTE]
-> 跨区域负载均衡器的负载均衡规则的后端端口应与区域标准负载均衡器上的负载均衡规则/入站 nat 规则的前端端口匹配。 
+> 跨区域负载均衡器上负载均衡规则的后端端口应与区域标准负载均衡器上负载均衡规则/入站 NAT 规则的前端端口相匹配。 
 
 ### <a name="regional-redundancy"></a>区域冗余
 
@@ -53,50 +53,50 @@ Azure 标准负载均衡器支持跨区域负载均衡，支持异地冗余 HA �
 
 如果一个区域出现故障，则会将流量路由到下一个最近的正常运行的区域负载均衡器。  
 
-跨区域负载均衡器的运行状况探测每隔20秒收集有关可用性的信息。 如果一个区域负载均衡器将其可用性降到0，则跨区域负载均衡器将检测到失败。 然后，区域负载均衡器会脱离旋转。 
+跨区域负载均衡器的运行状况探测每隔 20 秒收集有关可用性的信息。 如果一个区域负载均衡器的可用性降到了 0，跨区域负载均衡器将检测到故障。 然后，会将区域负载均衡器取出轮换列表。 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="全局区域流量视图图示。" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="全局区域流量视图的示意图。" border="true":::
 
-### <a name="ultra-low-latency"></a>超高延迟
+### <a name="ultra-low-latency"></a>超低延迟
 
-邻近感应负载平衡算法基于用户和区域部署的地理位置。 
+地理邻近性负载均衡算法基于用户和区域部署的地理位置。 
 
-从客户端启动的流量将进入最近的参与区域，并通过 Microsoft 全球网络主干到达最近的区域部署。 
+从客户端启动的流量将进入最近的参与区域，并通过 Microsoft 全球主干网络进入最近的区域部署。 
 
-例如，你有一个跨区域负载均衡器，其中包含 Azure 区域中的标准负载均衡器：
+例如，你有一个跨区域负载均衡器，并在 Azure 区域中有一个标准负载均衡器：
 
 * 美国西部
 * 北欧
 
-如果流从西雅图开始，流量将进入美国西部。 此区域是西雅图的最近参与区域。 流量被路由到最近的区域负载均衡器，这是美国西部。
+如果流是从西雅图启动的，则流量将进入美国西部。 此区域是距离西雅图最近的参与区域。 流量将路由到位于美国西部的最近区域负载均衡器。
 
-Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出路由决策。 
+Azure 跨区域负载均衡器使用地理邻近性负载均衡算法来做出路由决策。 
 
-区域负载均衡器的已配置负载分配模式用于在多个区域负载均衡器用于地域邻近性时做出最终路由决策。
+使用多个区域负载均衡器计算地理邻近性时，将使用配置的区域负载均衡器负载分配模式来做出最终路由决策。
 
 有关详细信息，请参阅[配置 Azure 负载均衡器的分配模式](./load-balancer-distribution-mode.md)。
 
 
-### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>能够在单个终结点后扩展/缩减
+### <a name="ability-to-scale-updown-behind-a-single-endpoint"></a>可在单个终结点后面进行纵向扩展/缩减
 
 向客户公开跨区域负载均衡器的全局终结点时，可以在全局终结点后面添加或删除区域部署，而不会发生中断。 
 
 <!---To learn about how to add or remove a regional deployment from the backend, read more [here](TODO: Insert CLI doc here).--->
 
 ### <a name="static-ip"></a>静态 IP
-跨区域负载均衡器附带了静态公共 IP，可确保 IP 地址保持不变。 若要了解有关静态 IP 的详细信息，请参阅 [此处](../virtual-network/public-ip-addresses.md#allocation-method)
+跨区域负载均衡器附带静态公共 IP，这可以确保 IP 地址保持不变。 若要详细了解静态 IP，请参阅[此文](../virtual-network/public-ip-addresses.md#allocation-method)
 
 ### <a name="client-ip-preservation"></a>客户端 IP 保留
-跨区域负载均衡器是第4层直通网络负载均衡器。 此传递将保留数据包的原始 IP。  原始 IP 可用于在虚拟机上运行的代码。 此保存使你可以应用特定于 IP 地址的逻辑。
+跨区域负载均衡器是第 4 层直通网络负载均衡器。 此直通模式保留数据包的原始 IP。  原始 IP 可用于虚拟机上运行的代码。 这种 IP 保留可让你应用特定于 IP 地址的逻辑。
 
-## <a name="build-cross-region-solution-on-existing-azure-load-balancer"></a>在现有的 Azure 负载均衡器上构建跨区域解决方案
+## <a name="build-cross-region-solution-on-existing-azure-load-balancer"></a>在现有 Azure 负载均衡器上构建跨区域解决方案
 跨区域负载均衡器的后端池包含一个或多个区域负载均衡器。 
 
-将现有的负载均衡器部署添加到跨区域负载均衡器，以实现高度可用的跨区域部署。
+将现有负载均衡器部署添加到跨区域负载均衡器可以实现高可用性的跨区域部署。
 
-**Home 区域** 是部署跨区域负载均衡器的位置。 此区域不影响流量的路由方式。 如果家庭区域出现故障，则通信流不受影响。
+**宿主区域** 是全局层的跨区域负载均衡器或公共 IP 地址的部署位置。 此区域不影响流量的路由方式。 如果宿主区域出现故障，流量流不受影响。
 
-### <a name="home-regions"></a>家庭区域
+### <a name="home-regions"></a>宿主区域
 * 美国东部 2
 * 美国西部
 * 西欧
@@ -106,11 +106,11 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 * 东亚
 
 > [!NOTE]
-> 你只能在上述8个区域之一中部署你的跨区域负载均衡器。
+> 只能在上述 7 个区域中某个区域的全局层中部署跨区域负载均衡器或公共 IP。
 
-**参与区域** 是负载均衡器的全局公共 IP 可用的位置。 
+**参与区域** 是可以使用负载均衡器全局公共 IP 的位置。 
 
-用户启动的流量将通过 Microsoft core 网络传递到最近的参与区域。 
+用户启动的流量将通过 Microsoft 核心网络传递到最近的参与区域。 
 
 跨区域负载均衡器将流量路由到相应的区域负载均衡器。
 
@@ -135,22 +135,22 @@ Azure 跨区域负载均衡器使用异地邻近性负载平衡算法来做出�
 
 ## <a name="limitations"></a>限制
 
-* 跨区域前端 IP 配置仅是公共的。 当前不支持内部前端。
+* 跨区域前端 IP 配置仅限公共配置。 目前不支持内部前端。
 
-* 无法将私有或内部负载均衡器添加到跨区域负载均衡器的后端池 
+* 无法将专用或内部负载均衡器添加到跨区域负载均衡器的后端池 
 
 * 不支持跨区域 IPv6 前端 IP 配置。 
 
-* 当前无法配置运行状况探测。 默认运行状况探测每隔20秒自动收集有关区域负载均衡器的可用性信息。 
+* 目前无法配置运行状况探测。 默认的运行状况探测每隔 20 秒自动收集有关区域负载均衡器的可用性信息。 
 
-* 与 Azure Kubernetes Service (AKS) 的集成当前不可用。 使用在后端部署了 AKS 群集的标准负载均衡器部署跨区域负载均衡器时，将会发生连接断开。
+* 目前无法与 Azure Kubernetes 服务 (AKS) 集成。 如果在后端中部署了 AKS 群集的情况下将跨区域负载均衡器与标准负载均衡器一起部署，连接将会断开。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
-跨区域负载均衡器共享标准负载均衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 。
+跨区域负载均衡器的 [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) 与标准负载均衡器相同。
 
  
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [教程：使用 Azure 门户](tutorial-cross-region-portal.md) 创建跨区域负载均衡器以创建跨区域负载均衡器。
-- 请参阅 [创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md) 以创建标准区域负载均衡器。
+- 参阅[教程：使用 Azure 门户创建跨区域负载均衡器](tutorial-cross-region-portal.md)来创建跨区域负载均衡器。
+- 参阅[创建公共标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)来创建标准区域负载均衡器。
 - 详细了解 [Azure 负载均衡器](load-balancer-overview.md)。

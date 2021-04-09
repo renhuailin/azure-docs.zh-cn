@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy copy 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: c676b92fd07c6e444aa22f25c48fdb1b1957ca7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879150"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103493758"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -31,6 +31,7 @@ ms.locfileid: "98879150"
   - Azure 文件存储 (SAS) -> Azure 文件存储 (SAS)
   - Azure 文件存储 (SAS) -> Azure Blob（SAS 或 OAuth 身份验证）
   - Amazon Web Services (AWS) S3（访问密钥）-> Azure 块 Blob（SAS 或 OAuth 身份验证）
+  - Google Cloud Storage（服务帐户密钥）-> Azure 块 Blob（SAS 或 OAuth 身份验证）[预览]
 
 有关详细信息，请参阅本文的示例部分。
 
@@ -108,13 +109,13 @@ azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[cont
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-将文件和目录上传到 Azure 存储帐户，并在 blob 上设置查询字符串编码标记。 
+将文件和目录上传到 Azure 存储帐户，并在 Blob 上设置查询字符串编码标记。 
 
-- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+- 若要设置标记 {key = "bla bla", val = "foo"} 和 {key = "bla bla 2", val = "bar"}，请使用以下语法：`azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
     
-- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+- 键和值是 URL 编码的，键值对之间用与符号（“&”）分隔
 
-- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
+- 在 Blob 上设置标记时，SAS 中还有其他权限（“t”表示标记），如果没有这些权限，服务将返回授权错误。
 
 使用 OAuth 身份验证下载单个文件。 如果尚未登录到 AzCopy，请在运行以下命令之前运行 `azcopy login` 命令。
 
@@ -222,19 +223,49 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-将文件和目录传输到 Azure 存储帐户，并在 blob 上设置给定的查询字符串编码标记。 
+将文件和目录传输到 Azure 存储帐户，并在 Blob 上设置给定查询字符串编码标记。 
 
-- 若要设置标记 {key = "空行空行"，val = "foo"} 和 {key = "空行空行 2"，val = "bar"}，请使用以下语法： `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+- 若要设置标记 {key = "bla bla", val = "foo"} 和 {key = "bla bla 2", val = "bar"}，请使用以下语法：`azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
         
-- 键和值是 URL 编码的，键值对由与号 ( "&" 分隔 ) 
+- 键和值是 URL 编码的，键值对之间用与符号（“&”）分隔
     
-- 在 blob 上设置标记时，SAS 中的标记) 有其他 ( 权限，而不会有该服务向后提供授权错误。
+- 在 Blob 上设置标记时，SAS 中还有其他权限（“t”表示标记），如果没有这些权限，服务将返回授权错误。
+
+使用服务帐户密钥和 SAS 令牌将的单个对象从 Google Cloud Storage 复制到 Blob 存储。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS。
+  
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
+```
+
+使用服务帐户密钥和 SAS 令牌将整个目录从 Google Cloud Storage 复制到 Blob 存储。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS。
+ 
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
+```
+
+使用服务帐户密钥和 SAS 令牌将整个 Bucket 从 Google Cloud Storage 复制到 Blob 存储。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS。
+
+```azcopy 
+azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+使用服务帐户密钥和 SAS 令牌将所有 Bucket 从 Google Cloud Storage 复制到 Blob 存储。 首先，为 GCS 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<project-id>
+
+```azcopy
+  - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
+
+通过使用目标的服务帐户密钥和 SAS 令牌，使用 Google Cloud Storage 中 Bucket 名称中的通配符 (*) 复制 Bucket 的子集。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<project-id>。
+ 
+```azcopy
+azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
+```
 
 ## <a name="options"></a>选项
 
 **--backup** - 激活 Windows 用于上传的 SeBackupPrivilege 或用于下载的 SeRestorePrivilege，以允许 AzCopy 查看和读取所有文件（无论其文件系统权限如何），并恢复所有权限。 要求运行 AzCopy 的帐户已经具有这些权限（例如，拥有管理员权限，或者是 `Backup Operators` 组的成员）。 此标志激活帐户已经具有的权限。
 
-**--blob-标记** 字符串在 Blob 上设置标记，以便对存储帐户中的数据进行分类。
+**--blob-tags** 字符串   在 Blob 上设置标记以对存储帐户中的数据进行分类。
 
 **--blob-type** 字符串  定义目标中的 Blob 类型。 此选项用于上传 Blob 以及在帐户之间进行复制（默认值为 `Detect`）。 有效值包括 `Detect`、 `BlockBlob`、 `PageBlob`和 `AppendBlob`。 在帐户之间复制时，使用值 `Detect` 会导致 AzCopy 使用源 Blob 的类型来确定目标 Blob 的类型。 上传文件时，`Detect` 会根据文件扩展名确定文件是 VHD 文件还是 VHDX 文件。 如果文件是 VHD 或 VHDX 文件，则 AzCopy 会将该文件视为页 Blob。 （默认值为“Detect”）
 
@@ -244,7 +275,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--cache-control** 字符串 - 设置 cache-control 标头。 下载时返回。
 
-**--check-length** - 传输后检查目标上的文件长度。 如果源与目标之间不匹配，则将传输标记为失败。 （默认值为 `true`）。
+**--check-length** - 传输后检查目标上的文件长度。 如果源与目标之间不匹配，则将传输标记为失败。 （默认值为 `true`）
 
 **--check-md5** 字符串 - 指定下载时验证 MD5 哈希的严格程度。 仅在下载时可用。 可用选项：`NoCheck`、`LogOnly`、`FailIfDifferent``FailIfDifferentOrMissing`。 （默认值为 `FailIfDifferent`）。
 
@@ -284,7 +315,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--include-pattern** 字符串 - 复制时仅包括这些文件。 此选项支持通配符 (*)。 使用 `;` 分隔文件。
 
-**--版本列表** 字符串指定一个文件，其中每个版本 ID 都在单独的行上列出。 确保源必须指向单个 blob，并且使用此标志在文件中指定的所有版本 Id 必须仅属于源 blob。 AzCopy 将下载提供的目标文件夹中的指定版本。 有关详细信息，请参阅 [下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
+**--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 AzCopy 会将指定的版本下载到提供的目标文件夹中。 有关详细信息，请参阅[下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
 
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：INFO（所有请求/响应）、WARNING（响应缓慢）、ERROR（仅限失败的请求）和 NONE（无输出日志）。 （默认值为 `INFO`）。 
 
@@ -298,7 +329,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--preserve-last-modified-time** - 仅当目标为文件系统时才可用。
 
-**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）。
+**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）
 
 **--preserve-smb-info** - 默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 
@@ -322,7 +353,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--output-type** 字符串   命令输出的格式。 选项包括：text、json。 默认值为 `text`。 （默认值为“text”）
 
---trusted-microsoft-suffixes 字符串指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认为 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
+--trusted-microsoft-suffixes 字符串指定可向其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认为 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此处列出的任何内容都会添加到默认值。 为安全起见，应只在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
 
 ## <a name="see-also"></a>另请参阅
 

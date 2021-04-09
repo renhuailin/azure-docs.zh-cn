@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c7948230164258aa785f3dd6c1f487c51ece9333
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487179"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726356"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
@@ -29,7 +29,7 @@ ms.locfileid: "102487179"
 若要获取有关证书生存期事件的通知，需要添加证书联系人。 证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。
 
 ### <a name="steps-to-set-certificate-notifications"></a>证书通知的设置步骤：
-首先，将证书联系人添加到密钥保管库中。 可使用 Azure 门户或 PowerShell cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) 进行添加。
+首先，将证书联系人添加到密钥保管库中。 可使用 Azure 门户或 PowerShell cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) 进行添加。
 
 其次，配置希望收到证书过期通知的时间。 若要配置证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)。
 
@@ -41,9 +41,9 @@ ms.locfileid: "102487179"
   如果你将证书策略设置为手动续订（仅限电子邮件），系统会在你需要续订证书时发送通知。  
 
 在 Key Vault 中，有三种类别的证书：
--   通过集成证书颁发机构 (CA)（如 DigiCert 或 GlobalSign）创建的证书
--   通过非集成 CA 创建的证书
--   自签名证书
+-    通过集成证书颁发机构 (CA)（如 DigiCert 或 GlobalSign）创建的证书
+-    通过非集成 CA 创建的证书
+-    自签名证书
 
 ## <a name="renew-an-integrated-ca-certificate"></a>续订集成 CA 证书 
 Azure Key Vault 处理由受信任的 Microsoft 证书颁发机构 DigiCert 和 GlobalSign 颁发的证书的端到端维护。 了解如何[将受信任的 CA 与 Key Vault 集成](./how-to-integrate-certificate-authority.md)。
@@ -89,5 +89,5 @@ Azure Key Vault 还处理自签名证书的自动续订。 若要详细了解如
 是的，在自动续订后复制标记。
 
 ## <a name="next-steps"></a>后续步骤
-*   [将 Key Vault 与 DigiCert 证书颁发机构集成](how-to-integrate-certificate-authority.md)
-*   [教程：配置 Key Vault 中的证书自动轮换](tutorial-rotate-certificates.md)
+*    [将 Key Vault 与 DigiCert 证书颁发机构集成](how-to-integrate-certificate-authority.md)
+*    [教程：配置 Key Vault 中的证书自动轮换](tutorial-rotate-certificates.md)

@@ -2,18 +2,18 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6df6aec06fadaacc6b1d08ed9ee33b72c5971359
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369469"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932754"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
-作为管理员，你可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 该锁将覆盖用户可能拥有的任何权限。
+作为管理员，你可以锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 该锁优先于用户可能拥有的任何权限。
 
 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为 **删除** 和 **只读**。
 
@@ -32,7 +32,11 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 锁会阻止需要向 Azure 资源管理器 API 发出 POST 请求的任何操作。 被锁阻止的一些常见操作的示例包括：
 
-* **存储帐户** 的只读锁定会阻止用户列出帐户密钥。 Azure 存储 [列表密钥](/rest/api/storagerp/storageaccounts/listkeys) 操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问权限。 如果为存储帐户配置了只读锁定，则没有帐户密钥的用户必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁定还会阻止分配作用域为存储帐户或 (blob 容器或队列) 的数据容器的 Azure RBAC 角色。
+* 存储帐户上的只读锁阻止用户列出帐户密钥。 Azure 存储[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问。 如果为存储帐户配置了只读锁，没有帐户密钥的用户就必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁还阻止分配存储帐户或数据容器（blob 容器或队列）范围内的 Azure RBAC 角色。
+
+* 存储帐户上的无法删除锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除，而不会保护存储帐户中的 Blob、队列、表或文件数据。 
+
+* 存储帐户上的只读锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除或修改，而不会保护存储帐户中的 Blob、队列、表或文件数据。 
 
 * **应用服务** 资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
 
@@ -320,7 +324,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-可以使用 [管理锁的 REST API](/rest/api/resources/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
+可以使用 [管理锁的 REST API](/rest/api/resources/managementlocks/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
 

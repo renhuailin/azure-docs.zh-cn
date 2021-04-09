@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和
 ms.topic: conceptual
 ms.date: 05/02/2020
 ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589800"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源

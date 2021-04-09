@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b94cb6d6302cd92816fe25f6e672b1ce3bb9398d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791991"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103494506"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
-AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和存储桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
+AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文介绍如何使用 AzCopy 将对象、目录和桶从 Amazon Web Services (AWS) S3 复制到 Azure Blob 存储。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>选择如何提供授权凭据
 
@@ -70,7 +70,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 >
 > 也可以使用虚拟托管样式的 URL（例如：`http://bucket.s3.amazonaws.com`）。 
 >
-> 若要详细了解桶的虚拟托管，请参阅 [桶的虚拟托管]](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
+> 若要详细了解 Bucket 的虚拟托管，请参阅 [Bucket 的虚拟托管](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)。
 
 ### <a name="copy-a-directory"></a>复制目录
 
@@ -103,7 +103,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
-| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>复制所有区域中的所有桶
 
@@ -113,7 +113,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>复制特定 S3 区域中的所有桶
 
@@ -123,7 +123,7 @@ AzCopy 使用[从 URL 放置块](/rest/api/storageservices/put-block-from-url) A
 |--------|-----------|
 | **语法** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **示例**（分层命名空间）| `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>处理对象命名规则的差异
 
@@ -168,7 +168,5 @@ AzCopy 执行以下步骤：
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 
 - [传输数据](storage-use-azcopy-v10.md#transfer-data)
-
-- [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
 
 - [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)

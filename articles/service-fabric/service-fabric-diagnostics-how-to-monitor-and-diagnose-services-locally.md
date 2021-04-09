@@ -1,16 +1,14 @@
 ---
 title: 在 Windows 中调试 Azure Service Fabric 应用
 description: 了解如何监视和诊断本地开发计算机上使用 Microsoft Azure Service Fabric 编写的服务。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a2502c24ef233c286872e2c265dcfdae6883f8ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86247415"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628826"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]
@@ -37,7 +35,7 @@ Service Fabric 发出 ETW 事件以帮助应用程序开发人员了解平台中
    
    ![Visual Studio 诊断事件查看器](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
-## <a name="add-your-own-custom-traces-to-the-application-code"></a>将自己的自定义跟踪添加到应用程序代码
+## <a name="add-your-own-custom-traces-to-the-application-code&quot;></a>将自己的自定义跟踪添加到应用程序代码
 Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示如何添加自定义应用程序代码 ETW 跟踪（与来自 Service Fabric 的系统跟踪一起显示在 Visual Studio ETW 查看器中）。 此方法的优点是元数据会自动添加到跟踪中，并已配置了 Visual Studio 诊断事件查看器来显示它们。
 
 对于从 **服务模板**（无状态或有状态）创建的项目，只要搜索 `RunAsync` 实现即可：
@@ -47,8 +45,8 @@ Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示�
 
 对于从 **Actor 模板**（无状态或有状态）创建的项目：
 
-1. 打开 **"ProjectName".cs** 文件，其中，*ProjectName* 是为 Visual Studio 项目选择的名称。  
-2. 在 *DoWorkAsync* 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
+1. 打开 **&quot;ProjectName&quot;.cs** 文件，其中，*ProjectName* 是为 Visual Studio 项目选择的名称。  
+2. 在 *DoWorkAsync* 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, &quot;Doing Work");`。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
 3. 在文件 **ActorEventSource.cs** 中，可找到 `ActorEventSource.ActorMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
 
 将自定义 ETW 跟踪添加到服务代码之后，可以再次生成、部署和运行应用程序以在诊断事件查看器中查看事件。 如果使用 **F5** 调试应用程序，则会自动打开诊断事件查看器。

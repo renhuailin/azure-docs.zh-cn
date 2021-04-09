@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1423e8aaf4b50db94cda0b935a7b1658249893e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97755899"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726339"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>教程：构建 Blazor Server 聊天应用
 
@@ -361,7 +361,7 @@ ms.locfileid: "97755899"
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-   目前为止，Blazor 应用正在使用本地 SignalR，在部署到 Azure 应用服务时，建议使用 [Azure SignalR 服务](/aspnet/core/signalr/scale?view=aspnetcore-3.1#azure-signalr-service)，该服务允许将 Blazor Server 应用扩展为大量的并发 SignalR 连接。 此外，SignalR 服务的全球覆盖和高性能数据中心可帮助显著减少由于地理位置造成的延迟。
+   目前为止，Blazor 应用正在使用本地 SignalR，在部署到 Azure 应用服务时，建议使用 [Azure SignalR 服务](/aspnet/core/signalr/scale#azure-signalr-service)，该服务允许将 Blazor Server 应用扩展为大量的并发 SignalR 连接。 此外，SignalR 服务的全球覆盖和高性能数据中心可帮助显著减少由于地理位置造成的延迟。
 
 > [!IMPORTANT]
 > 在 Blazor Server 应用中，UI 状态是在服务器端进行维护，这意味着在这种情况下需要确保服务器粘性。 如果只有一个应用服务器，则服务器粘性可得到确保，这是设计使然。 但如果有多个应用服务器，则客户端协商和连接可能会转到不同服务器，并导致 Blazor 应用出现 UI 错误。 因此，需要在 `appsettings.json` 中实现服务器粘性，如下所示：
@@ -385,7 +385,7 @@ ms.locfileid: "97755899"
 
    服务依赖项将执行以下操作，确保应用在 Azure 上时自动切换到 Azure SignalR 服务。
 
-   * 更新 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 以使用 Azure SignalR 服务。
+   * 更新 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) 以使用 Azure SignalR 服务。
    * 添加 Azure SignalR 服务 NuGet 包引用。
    * 更新配置文件属性以保存依赖项设置。
    * 根据你的选择，配置机密存储。
@@ -423,10 +423,10 @@ ms.locfileid: "97755899"
    }
    ```
 
-1. 在 `appsetting.json` 中或使用[机密管理器](/aspnet/core/security/app-secrets?tabs=visual-studio&view=aspnetcore-3.1#secret-manager)工具配置 Azure SignalR 服务 `ConnectionString`
+1. 在 `appsetting.json` 中或使用[机密管理器](/aspnet/core/security/app-secrets?tabs=visual-studio#secret-manager)工具配置 Azure SignalR 服务 `ConnectionString`
 
 > [!NOTE]
-> 可以对 SignalR SDK 使用 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration?view=aspnetcore-3.1) 来替换步骤 2。
+> 可以对 SignalR SDK 使用 [`HostingStartupAssembly`](/aspnet/core/fundamentals/host/platform-specific-configuration) 来替换步骤 2。
 > 
 > 1. 添加配置以启用 `appsetting.json` 中的 Azure SignalR 服务
 >    ```js
