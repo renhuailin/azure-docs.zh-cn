@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: 096d16bb2c7249ec99f37fbee9d8ffc8f0e45db2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73135d95a56dc03790b3b7368a276ebfc99275fd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050760"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025061"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>收集 Windows 事件跟踪 (ETW) 事件以在 Azure Monitor 日志中进行分析
 
@@ -71,7 +71,7 @@ Get-NetEventProvider -ShowInstalled | Select-Object Name, Guid
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>步骤 4：配置 Log Analytics 存储帐户集合
 
-遵循[这些说明](https://docs.microsoft.com/azure/azure-monitor/essentials/diagnostics-extension-logs#collect-logs-from-azure-storage)，从 Azure 存储收集日志。 配置完成后，ETWEvent 表下的 Log Analytics 中应会出现 ETW 事件数据。
+遵循[这些说明](./diagnostics-extension-logs.md#collect-logs-from-azure-storage)，从 Azure 存储收集日志。 配置完成后，ETWEvent 表下的 Log Analytics 中应会出现 ETW 事件数据。
 
 ## <a name="next-steps"></a>后续步骤
 - 使用[自定义字段](../logs/custom-fields.md)在 ETW 事件中创建结构

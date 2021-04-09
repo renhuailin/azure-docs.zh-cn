@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15aead5c9f93205baac28e8b93a88015c9689e3a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928794"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625307"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>快速入门：使用 SSMS 将数据库还原到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "96928794"
   - [配置从本地到 SQL 托管实例的点到站点连接](point-to-site-p2s-configure.md)。
 
 > [!NOTE]
-> 有关使用 Azure Blob 存储与[共享访问签名 (SAS) 密钥](../../storage/common/storage-sas-overview.md)备份和还原 SQL Server 数据库的详细信息，请参阅[将 SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)。
+> 有关使用 Azure Blob 存储与[共享访问签名 (SAS) 密钥](../../storage/common/storage-sas-overview.md)备份和还原 SQL Server 数据库的详细信息，请参阅[将 SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)。
 
 ## <a name="restore-from-a-backup-file"></a>从备份文件还原
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
 ms.openlocfilehash: b943be684d84e1e193d9318e9f1c6423dcd38795
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648911"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教程：将 JFrog Artifactory 与 Azure Active Directory 集成
@@ -26,7 +26,7 @@ ms.locfileid: "101648911"
 * 让用户使用其 Azure AD 帐户自动登录到 JFrog Artifactory。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

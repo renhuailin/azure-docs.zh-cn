@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db63d763da8cfe13a07cab15f7f18ad6e2e73eb7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100597136"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026285"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 
@@ -38,7 +38,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
 - 下载并安装 [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger)。
 - 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../app/asp-net.md)。 
 - [从应用程序发送遥测数据](../app/usage-overview.md#send-telemetry-from-your-app)，添加自定义事件/页面视图
-- 发送[用户上下文](../app/usage-send-user-context.md)，跟踪用户在一段时间内执行的操作及充分利用使用情况功能。
+- 发送[用户上下文](./usage-overview.md)，跟踪用户在一段时间内执行的操作及充分利用使用情况功能。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
@@ -165,4 +165,3 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
 
 > [!div class="nextstepaction"]
 > [创建自定义仪表板](./tutorial-app-dashboards.md)
-

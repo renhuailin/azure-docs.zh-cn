@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98844a7dab673fb98dcdb639fbc48c0f6035fbba
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942932"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865105"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>快速入门：使用 HBase Shell 在 Azure HDInsight 中查询 Apache HBase
 
@@ -29,11 +29,11 @@ ms.locfileid: "98942932"
 
 对于大多数人而言，数据以表格形式显示：
 
-![HDInsight Apache HBase 表格数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png" alt-text="HDInsight Apache HBase 表格数据" border="true":::
 
 在 HBase（[Cloud BigTable](https://cloud.google.com/bigtable/) 的一种实现）中，相同的数据看起来类似于：
 
-![HDInsight Apache HBase BigTable 数据](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png" alt-text="HDInsight Apache HBase BigTable 数据" border="true":::
 
 可以使用 SSH 连接到 HBase 群集，然后使用 Apache HBase Shell 来创建 HBase 表以及插入和查询数据。
 
@@ -112,7 +112,7 @@ ms.locfileid: "98942932"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
+完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用高于存储空间费用数倍，因此在不使用群集时将其删除可以节省费用。
 
 若要删除群集，请参阅[使用浏览器、PowerShell 或 Azure CLI 删除 HDInsight 群集](../hdinsight-delete-cluster.md)。
 

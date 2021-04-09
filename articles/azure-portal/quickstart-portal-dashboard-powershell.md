@@ -3,13 +3,13 @@ title: 使用 PowerShell 创建 Azure 门户仪表板
 description: 了解如何使用 Azure PowerShell 在 Azure 门户中创建仪表板。
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/25/2021
+ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745728"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557430"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>快速入门：使用 PowerShell 创建 Azure 门户仪表板
 
@@ -23,7 +23,7 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 尽管 Az.Portal PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 从 Az PowerShell 模块单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
+> 尽管 **Az.Portal** PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 从 Az PowerShell 模块单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Portal
@@ -104,7 +104,7 @@ VM 部署现在将开始进行，通常需要几分钟才能完成。 部署完�
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
 
-$myPortalDashboardTemplatePath = "$env:TEMP\portal-dashboard-template-testvm.json"
+$myPortalDashboardTemplatePath = "$HOME\portal-dashboard-template-testvm.json"
 
 Invoke-WebRequest -Uri $myPortalDashboardTemplateUrl -OutFile $myPortalDashboardTemplatePath -UseBasicParsing
 ```
@@ -146,19 +146,7 @@ New-AzPortalDashboard @DashboardParams
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-验证是否可以在 Azure 门户中查看有关 VM 的数据。
-
-1. 在 Azure 门户中，选择“仪表板”。
-
-   ![Azure 门户导航到仪表板](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. 在仪表板页面上，选择“简单的 VM 仪表板”。
-
-   ![导航到“简单的 VM 仪表板”](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. 查看仪表板。 你可以看到某些内容是静态的，但也有一些图表显示 VM 的性能。
-
-   ![查看简单的 VM 仪表板](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -170,6 +158,7 @@ Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroupName
+Remove-Item -Path "$HOME\portal-dashboard-template-testvm.json"
 ```
 
 ## <a name="next-steps"></a>后续步骤

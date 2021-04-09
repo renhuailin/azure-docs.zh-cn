@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518158"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200530"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
@@ -44,7 +44,7 @@ ms.locfileid: "100518158"
 >
 > * 基本内部负载均衡器 (ILB) SKU 后面的虚拟机 (VM)
 > * Redis 缓存（使用基本 ILB SKU）
-> * 应用程序网关（使用基本 ILB SKU）
+> * 应用程序网关 v1（使用基本 ILB SKU）
 > * 虚拟机规模集（使用基本 ILB SKU）
 > * Azure Service Fabric 群集（使用基本 ILB SKU）
 > * SQL Server Always-on（使用基本 ILB SKU）

@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
 ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497956"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471995"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>使用资源运行状况排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,11 +61,11 @@ ms.locfileid: "96497956"
 
 ### <a name="downtime-reasons"></a>停机原因
 
-如果数据库遇到停机，将执行分析来确定原因。 在适当的情况下，资源运行状况的“运行状况历史记录”部分会报告停机原因。 停机原因通常在发生某个事件后的 30 分钟内发布。
+如果数据库遇到停机，将执行分析来确定原因。 在适当的情况下，资源运行状况的“运行状况历史记录”部分会报告停机原因。 停机原因通常在发生某个事件后的 45 分钟内发布。
 
 #### <a name="planned-maintenance"></a>计划内维护
 
-Azure 基础结构定期执行计划内维护–数据中心内硬件或软件组件的升级。 在数据库接受维护期间，Azure SQL 可以终止某些现有连接并拒绝新连接。 在计划内维护期间出现的登录失败通常是暂时性的，[重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)可以帮助减轻影响。 如果持续遇到登录错误，请与支持人员联系。
+Azure 基础结构定期执行计划内维护 - 升级数据中心内的硬件或软件组件。 在数据库接受维护期间，Azure SQL 可以终止某些现有连接并拒绝新连接。 在计划内维护期间出现的登录失败通常是暂时性的，[重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)可以帮助减轻影响。 如果持续遇到登录错误，请与支持人员联系。
 
 #### <a name="reconfiguration"></a>重新配置
 
@@ -75,6 +75,6 @@ Azure 基础结构定期执行计划内维护–数据中心内硬件或软件�
 
 - 详细了解[针对暂时性错误的重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。
 - [排查、诊断和预防 SQL 连接错误](troubleshoot-common-connectivity-issues.md)。
-- 详细了解如何 [配置资源运行状况警报](../../service-health/resource-health-alert-arm-template-guide.md)。
+- 详细了解如何[配置资源运行状况警报](../../service-health/resource-health-alert-arm-template-guide.md)。
 - 获取[资源运行状况](../../application-gateway/resource-health-overview.md)的概述。
 - 查看[资源运行状况常见问题解答](../../service-health/resource-health-faq.md)。

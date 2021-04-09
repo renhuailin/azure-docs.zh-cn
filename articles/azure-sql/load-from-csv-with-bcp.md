@@ -1,5 +1,5 @@
 ---
-title: 将数据从 CSV 文件加载到 (bcp) 的数据库
+title: 将数据从 CSV 文件载入数据库 (bcp)
 description: 对于较小的数据，请使用 bcp 将数据导入到 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d2d501206dcb1fc6b9bb545f9dcf4d5c61af994e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: MT
+ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777871"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103472234"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库或 SQL 托管实例（平面文件）
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "92777871"
 * 已安装 bcp 命令行实用工具
 * 已安装 sqlcmd 命令行实用工具
 
-可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用程序。
+可以从 [Microsoft sqlcmd 文档][https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ]下载 bcp 和 sqlcmd 实用工具。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
 

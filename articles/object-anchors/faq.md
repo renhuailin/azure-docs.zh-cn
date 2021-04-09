@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101747491"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047569"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>有关 Azure Object Anchors 的常见问题解答
 
@@ -78,7 +78,7 @@ A：模型文件大小应小于 150 MB。
  1. 执行目视校准以获取准确的渲染。
  2. 确保房间有丰富的视觉纹理和良好采光。
  3. 如果可以，请保持对象静止，远离杂物。
- 4. （可选）在 HoloLens 设备上清除[空间映射](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping)缓存。
+ 4. （可选）在 HoloLens 设备上清除[空间映射](/windows/mixed-reality/spatial-mapping)缓存。
  5. 绕着对象走一圈进行扫描。 确保观测到对象的大部分。
  6. 设置一个足以覆盖对象的搜索区域。
  7. 检测期间，对象应保持静止。

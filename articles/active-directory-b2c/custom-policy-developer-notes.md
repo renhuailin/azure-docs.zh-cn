@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095793"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557269"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -37,14 +37,14 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ## <a name="responsibilities-of-custom-policy-feature-set-developers"></a>自定义策略功能集开发人员的责任
 
-手动策略配置授予对 Azure AD B2C 基础平台的较低访问级别，因此要求创建唯一的信任框架。 自定义标识提供者、信任关系、与外部服务的集成以及分步工作流的多个可能的发展需要有一种方法来设计和配置。
+手动策略配置授予对 Azure AD B2C 基础平台的较低访问级别，因此要求创建唯一的信任框架。 自定义标识提供者、信任关系、与外部服务的集成以及分步工作流的诸多可能组合方式要求在设计和配置方面采用有条理的方法。
 
 使用自定义策略功能集的开发人员应遵守以下指导原则：
 
 - 熟悉自定义策略和密钥/机密管理的配置语言。 有关详细信息，请参阅 [TrustFrameworkPolicy](trustframeworkpolicy.md)。
 - 取得方案和自定义集成的所有权。 阐述自己的工作并告知实时站点组织。
 - 执行有序的方案测试。
-- 遵循软件开发和暂存最佳实践。 建议至少使用一个开发和测试环境。
+- 遵循软件开发和暂存最佳做法。 建议至少使用一个开发和测试环境。
 - 随时了解与之集成的标识提供程序和服务的新进展。 例如，跟踪机密的更改情况以及对服务的计划内和计划外更改。
 - 设置主动监控，监控生产环境的响应能力。 有关与 Application Insights 集成的详细信息，请参阅 [Azure Active Directory B2C：收集日志](analytics-with-application-insights.md)。
 - 在 Azure 订阅中保留最新的联系电子邮件地址，并快速回复 Microsoft 活动站点团队的电子邮件。
@@ -58,7 +58,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ## <a name="features-by-stage-and-known-issues"></a>按阶段的功能和已知问题
 
-自定义策略功能在不断开发。 下表是功能和组件可用性的索引。
+自定义策略功能正在持续地进行开发。 下表是功能和组件可用性的索引。
 
 
 ### <a name="protocols-and-authorization-flows"></a>协议和授权流
@@ -68,7 +68,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 | [OAuth2 授权代码](authorization-code-flow.md) |  |  | X |  |
 | 具有 PKCE 的 OAuth2 授权代码 |  |  | X | [公共客户端和单页应用程序](authorization-code-flow.md)  |
 | [OAuth2 隐式流](implicit-flow-single-page-application.md) |  |  | X |  |
-| [OAuth2 资源所有者密码凭据](ropc-custom.md) |  | X |  |  |
+| [OAuth2 资源所有者密码凭据](add-ropc-policy.md) |  | X |  |  |
 | [OIDC 连接](openid-connect.md) |  |  | X |  |
 | [SAML2](saml-service-provider.md)  |  |  |X  | POST 和重定向绑定。 |
 | OAuth1 |  |  |  | 不支持。 |

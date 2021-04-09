@@ -6,17 +6,17 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.date: 03/22/2021
+ms.openlocfilehash: fbbdaeb796dfa23906c8010a54af14eff6df0b97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517121"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026634"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>管理 IoT 中心的公用网络访问
 
-若要仅允许访问 [VNet 中 IoT 中心的专用终结点](virtual-network-support.md)，请禁用公共网络访问。 为此，请使用 Azure 门户或 `publicNetworkAccess` API。 
+若要[仅允许专用终结点访问 VNet 中的 IoT 中心](virtual-network-support.md)，请禁用公用网络访问。 为此，请使用 Azure 门户或 `publicNetworkAccess` API。 
 
 ## <a name="turn-off-public-network-access-using-azure-portal"></a>使用 Azure 门户禁用公用网络访问
 
@@ -28,13 +28,17 @@ ms.locfileid: "100517121"
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="显示在 Azure 门户中的何处禁用公用网络访问的图像" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-若要启用公共网络访问权限，请选择 " **所有网络**"，然后选择 " **保存**"。
+若要启用公用网络访问，请选择“所有网络”，然后选择“保存” 。
+
+## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>禁用公共网络访问后访问 IoT 中心
+
+禁用公共网络访问后，只能[使用 Azure 专用链接通过其 VNet 专用终结点](virtual-network-support.md)访问 IoT 中心。 此限制包括通过 Azure 门户进行访问，因为对 IoT 中心服务的 API 调用是使用你的浏览器和凭据直接进行的。
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>禁用公共网络访问后的 IoT 中心终结点、IP 地址和端口
 
-IoT 中心是一种多租户的平台即服务 (PaaS) ，因此不同的客户共用相同的计算、网络和存储硬件资源池。 IoT 中心的主机名映射到一个公共终结点，该终结点具有通过 internet 通过公共方式路由的 IP 地址。 不同的客户将共享此 IoT 中心公共终结点，广域网和本地网络中的 IoT 设备均可对其进行访问。 
+IoT 中心是一种多租户平台即服务 (PaaS)，因此不同的客户共用相同的计算、网络和存储硬件资源池。 IoT 中心的主机名会映射到一个公共终结点，该终结点具有可通过 Internet 以公开方式路由的 IP 地址。 不同的客户将共享此 IoT 中心公共终结点，广域网和本地网络中的 IoT 设备均可对其进行访问。 
 
-对特定 IoT 中心资源强制禁用公共网络访问可确保隔离。 为了使服务对使用公用路径的其他客户资源保持活动状态，其公共终结点仍可解析，IP 地址可发现，端口仍保持打开状态。 这不是导致问题的原因，因为 Microsoft 集成了多个安全层以确保租户之间完全隔离。 若要了解详细信息，请参阅 [Azure 公有云中的隔离](../security/fundamentals/isolation-choices.md#tenant-level-isolation)。
+强制禁用对特定 IoT 中心资源的公共网络访问，以确保隔离。 为了使服务对其他使用公共路径的客户资源保持活动状态，其公共终结点需保持可解析状态，IP 地址需保持可发现状态，端口需保持打开状态。 不必为此担忧，因为 Microsoft 集成了多层安全保护，可确保租户间完全隔离。 若要了解详细信息，请参阅 [Azure 公有云中的隔离](../security/fundamentals/isolation-choices.md#tenant-level-isolation)。
 
 ## <a name="ip-filter"></a>筛选器 
 

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 71a3b38da6a63824a42f64052bf16a5fe0e25483
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102525408"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
@@ -69,7 +69,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 ## <a name="test-your-user-flow"></a>测试用户流
 
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 使用本地帐户或社交帐户登录。 然后选择你的居住地所在国家/地区，以及与未成年人相仿的出生日期。 
 1. 重复该测试，并选择一个与成年人相仿的出生日期。  

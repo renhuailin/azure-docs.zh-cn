@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 86e79302716fa502d8562dd563b0a5c5fb220a67
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102547539"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络连接存储 (NAS) 迁移到混合云部署
@@ -152,7 +152,7 @@ RoboCopy 移动文件的速度可能比同步到云和本地分层的速度快�
 
 云分层卷中的可用空间策略作用于可能有多个服务器终结点从中同步的卷级别。 如果你忘记了调整哪怕一个服务器终结点上的可用空间，同步也将继续应用最严格的规则，并尝试将可用磁盘空间保留为 99%，从而使本地缓存无法按预期运行。 除非你的目标是为仅包含极少访问的存档数据的卷提供命名空间，并且要将剩余的存储空间预留给其他方案。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 最可能遇到的问题是在 Windows Server 端运行 RoboCopy 命令失败并出现“卷已满”消息。 云分层每小时进行一次，以从本地 Windows Server 磁盘撤出已同步的内容。 其目标是使卷上的可用空间达到 99%。
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f6e932cb6a6086e4cea6f474f296ca086e48c75e
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 5089a289e617aa8c2ec153320763647fc8afac9e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448449"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489030"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -56,6 +56,8 @@ ms.locfileid: "102448449"
     ```
 
     例如，`https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`。
+
+    如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-domain-name` 替换为你的自定义域，将 `your-tenant-name` 替换为租户的名称。
 
 1. 选择“注册”。 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 1. 依次选择“证书和机密”、“新建客户端机密”。 
@@ -189,7 +191,7 @@ ms.locfileid: "102448449"
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，选择你[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“通用 AAD”以使用 Azure AD 帐户登录。
 

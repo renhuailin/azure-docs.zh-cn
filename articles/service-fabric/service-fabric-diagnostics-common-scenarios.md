@@ -4,10 +4,10 @@ description: 了解对 Azure Service Fabric 应用程序中常见监视和诊断
 ms.topic: article
 ms.date: 02/25/2019
 ms.openlocfilehash: 3083348948ce97ae9d99098896878d79081a15f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100580482"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>使用 Service Fabric 诊断常见情况
