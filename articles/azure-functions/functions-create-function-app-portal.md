@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 门户创建第一个可无服务器执行
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 6ca187181d68d7924f97ebfac08e81dec77251e9
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732169"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492096"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
@@ -17,7 +17,7 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
 [!INCLUDE [functions-in-portal-editing-note](../../includes/functions-in-portal-editing-note.md)] 
 
-建议你在 [本地开发函数](functions-develop-local.md) 并发布到 Azure 中的函数应用。  
+相反，我们建议[在本地开发函数](functions-develop-local.md)，然后发布到 Azure 中的函数应用。  
 通过以下链接之一开始使用所选的本地开发环境和语言：
 
 | Visual Studio Code | 终端/命令提示符 | Visual Studio |
@@ -42,13 +42,11 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
 1. 从“Functions”窗口的左侧菜单中选择“Functions”，然后从顶部菜单中选择“添加”。 
  
-1. 在“新建函数”窗口中，选择“Http 触发器”。
+1. 在“添加函数”窗口中，选择“Http 触发器”模板 。
 
     ![选择 HTTP 触发器函数](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. 在“新建函数”窗口中，接受新函数的默认名称，或输入新名称。 
-
-1. 从“授权级别”下拉列表中选择“匿名”，然后选择“创建函数”。
+1. 在“模板详细信息”下，为“新建函数”使用 `HttpExample`，从[授权级别](functions-bindings-http-webhook-trigger.md#authorization-keys)下拉列表中选择“匿名”，然后选择“添加”    。
 
     Azure 会创建该 HTTP 触发器函数。 现在，可以通过发送 HTTP 请求来运行新函数了。
 

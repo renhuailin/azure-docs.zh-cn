@@ -4,10 +4,10 @@ description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2170440b7b47861b75801b8dbd334686b4cabc8b
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98985608"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵

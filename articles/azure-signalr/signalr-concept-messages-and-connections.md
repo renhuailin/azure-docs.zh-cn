@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 9d0e94cf2318db777bb44c15037f73531cd969fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 3c4d28addac0ecfc9605678582562550a1c96b8d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593319"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103491939"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接
 
@@ -48,9 +48,16 @@ Azure SignalR 服务对消息大小不施加限制。
 
 Azure SignalR 服务有服务器连接和客户端连接。 默认情况下，每个应用程序服务器启动时每个中心有五个初始连接，每个客户端有一个客户端连接。
 
-Azure 门户中显示的连接计数包括服务器连接和客户端连接。
-
 例如，假设你有 2 个应用程序服务器，并在代码中定义了 5 个中心。 服务器连接计数是 50：2 个应用服务器 * 5 个中心 * 每个中心的 5 个连接。
+
+Azure 门户中显示的连接计数包括服务器连接、客户端连接、诊断连接和实时跟踪连接。 连接类型在以下列表中定义：
+
+- **服务器连接**：连接 Azure SignalR 服务和应用服务器。
+- **客户端连接**：连接 Azure SignalR 服务和客户端应用。
+- **诊断连接**：一种特殊的客户端连接，可生成更详细的日志，这可能会影响性能。 此类客户端旨在进行故障排除。
+- **实时跟踪连接**：连接到实时跟踪终结点，并接收 Azure SignalR 服务的实时跟踪。 
+ 
+请注意，实时跟踪连接不算作客户端连接或服务器连接。 
 
 ASP.NET SignalR 在计算服务器连接数方面有所不同。 除了定义的中心以外，它还包括一个默认的中心。 默认情况下，每个应用程序服务器需要 5 个额外的初始服务器连接。 默认中心的初始连接计数与其他中心保持一致。
 

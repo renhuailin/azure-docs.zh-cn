@@ -12,21 +12,23 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 709b986cc06aada45a0f541142b89fc3537f8ba8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046085"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199142"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关（预览版）
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 本文说明了如何在 IoT Edge 网关和下游 IoT Edge 设备之间建立信任连接。
 
 >[!NOTE]
 >此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
 >
->本文反映 IoT Edge 版本1.2 的最新预览版本。 确保设备运行的是版本 [1.2.0](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 或更高版本。 有关在设备上获取最新预览版本的步骤，请参阅 [安装适用于 Linux (版本1.2 的 Azure IoT Edge) ](how-to-install-iot-edge.md) 或 [将 IoT Edge 更新到1.2 版](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)。
+>本文反映 IoT Edge 版本 1.2 的最新预览版。 请确保设备运行的是版本 [1.2.0-rc4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 或更高版本。 有关在设备上获取最新预览版的步骤，请参阅[安装适用于 Linux 的 Azure IoT Edge（版本 1.2）](how-to-install-iot-edge.md)或[将 IoT Edge 更新到版本 1.2](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)。
 
 在网关方案中，IoT Edge 设备既可以是网关，也可以是下游设备。 可以将多个 IoT Edge 网关分层，以创建设备的层次结构。 下游设备（或子设备）可以通过其网关设备（或父设备）进行身份验证以及发送或接收消息。
 
@@ -123,7 +125,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
 使用以下步骤在设备上配置 IoT Edge。
 
-请确保用户 **iotedge** 对包含证书和密钥的目录具有读取权限。
+请确保用户“iotedge”对保存证书和密钥的目录拥有读取权限。
 
 1. 在此 IoT Edge 设备上安装根 CA 证书。
 
@@ -146,9 +148,9 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
    ```
 
    >[!TIP]
-   >如果设备上不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建。
+   >如果设备上尚不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建一个。
 
-1. 在配置文件中查找 " **主机名** " 部分。 取消注释包含参数的行 `hostname` ，并将值更新为完全限定的域名 (FQDN) 或 IoT Edge 设备的 IP 地址。
+1. 在该配置文件中找到 Hostname 节。 将包含 `hostname` 参数的行取消注释，并将值更新为 IoT Edge 设备的完全限定的域名 (FQDN) 或 IP 地址。
 
    此参数的值是下游设备用于连接到该网关的值。 hostname 默认使用计算机名称，但若要连接下游设备，则需使用 FQDN 或 IP 地址。
 
@@ -156,20 +158,20 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
 
    与网关层次结构中的 hostname 模式保持一致。 请使用 FQDN 或 IP 地址，但不能同时使用这二者。
 
-1. *如果此设备是子设备*，请找到 " **父主机名** " 部分。 取消注释并将 `parent_hostname` 参数更新为父设备的 FQDN 或 IP 地址，并将所提供的内容与父设备的配置文件中的主机名匹配。
+1. 如果此设备是子设备，请找到“Parent hostname”节。 将 `parent_hostname` 参数取消注释并更新为父设备的 FQDN 或 IP 地址，使之与父设备的配置文件中作为主机名提供的内容匹配。
 
-1. 找到 **信任捆绑证书** 部分。 取消注释并将 `trust_bundle_cert` 参数替换为设备上的根 CA 证书的文件 URI。
+1. 找到“Trust bundle cert”节。 将 `trust_bundle_cert` 参数取消注释并更新为设备上根 CA 证书的文件 URI。
 
 1. 当此功能为公共预览版时，需要将 IoT Edge 设备配置为在启动时使用 IoT Edge 代理的公共预览版。
 
-   找到默认的 " **边缘代理** " 部分，将 "映像" 值更新为 "公共预览" 图像：
+   找到“Default Edge Agent”节，将映像值更新为公共预览版映像：
 
    ```toml
    [agent.config]
    image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
    ```
 
-1. 在配置文件中查找 " **边缘 CA 证书** " 部分。 取消对此部分中的行的注释，并提供 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。
+1. 在配置文件中到“Edge CA certificate”节。 将此节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
 
    ```toml
    [edge_ca]
@@ -177,7 +179,7 @@ Azure CLI 的 [azure-iot](/cli/azure/ext/azure-iot) 扩展提供管理 IoT 资�
    pk = "file:///<path>/<device CA key>"
    ```
 
-1. 保存 (`Ctrl+O`) 并关闭 (`Ctrl+X` 配置文件) 。
+1. 保存 (`Ctrl+O`) 并关闭 (`Ctrl+X`) 该配置文件。
 
 1. 如果以前使用过 IoT Edge 的任何其他证书，请删除以下两个目录中的文件，以确保新证书得到应用：
 
@@ -357,7 +359,7 @@ API 代理模块只能路由到一个注册表模块，每个注册表模块只�
 
 IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个运行时组件。 需确保任何下游 IoT Edge 设备可以在启动时访问 edgeAgent 模块映像，然后可以访问部署并启动其余的模块映像。
 
-当你进入 IoT Edge 设备上的配置文件以提供其身份验证信息、证书和父主机名时，还会更新 edgeAgent 容器映像。
+在进入 IoT Edge 设备上的配置文件以提供设备的身份验证信息、证书和父主机名时，也请更新 edgeAgent 容器映像。
 
 如果顶级网关设备配置为处理容器映像请求，请将 `mcr.microsoft.com` 替换为父主机名和 API 代理侦听端口。 在部署清单中，可以将 `$upstream` 用作快捷方式，但这需要 edgeHub 模块来处理路由，而该模块此时尚未启动。 例如：
 
@@ -370,7 +372,7 @@ type = "docker"
 image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
 ```
 
-如果你使用的是本地容器注册表，或在设备上手动提供容器映像，请相应地更新配置文件。
+如果使用本地容器注册表，或在设备上手动提供容器映像，请相应地更新配置文件。
 
 #### <a name="configure-runtime-and-deploy-proxy-module"></a>配置运行时和部署代理模块
 

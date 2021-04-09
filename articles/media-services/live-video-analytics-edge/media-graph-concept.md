@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97401094"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557660"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -74,7 +74,7 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="iot-hub-message-source"></a>IoT 中心消息源 
 
-与其他 [IoT Edge 模块](../../iot-edge/iot-edge-glossary.md#iot-edge-module)一样，IoT Edge 上的实时视频分析模块可通过 [IoT Edge 中心](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)接收消息。 这些消息可能发送自其他模块或在 Edge 设备上运行的应用，或者发送自云。 此类消息会传递（路由）到模块上[已命名的输出](../../iot-edge/module-composition.md#sink)。 IoT 中心消息源节点使此类消息能够到达媒体图。 这些消息或信号随后可以在媒体图内部使用，通常用于激活信号门（请参阅下面的[信号门](#signal-gate-processor)）。 
+与其他 [IoT Edge 模块](../../iot-fundamentals/iot-glossary.md#iot-edge)一样，IoT Edge 上的实时视频分析模块可通过 [IoT Edge 中心](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)接收消息。 这些消息可能发送自其他模块或在 Edge 设备上运行的应用，或者发送自云。 此类消息会传递（路由）到模块上[已命名的输出](../../iot-edge/module-composition.md#sink)。 IoT 中心消息源节点使此类消息能够到达媒体图。 这些消息或信号随后可以在媒体图内部使用，通常用于激活信号门（请参阅下面的[信号门](#signal-gate-processor)）。 
 
 例如，你可以有一个在门打开时生成消息的 IoT Edge 模块。 来自该模块的消息可以路由到 IoT Edge 中心，然后可以从该中心路由到媒体图的 IoT 中心消息源。 在媒体图中，IoT 中心消息源可以将事件传递给信号门处理器，该处理器随后可以打开从 RTSP 源到文件的视频录制。 
 

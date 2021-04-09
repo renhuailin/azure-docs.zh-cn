@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
 ms.openlocfilehash: 7f175d82b650871437a506ea4513f0ae28360f68
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99833025"
 ---
 # <a name="create-a-connection-monitor-by-using-powershell"></a>使用 PowerShell 创建连接监视器
 
 > [!IMPORTANT]
-> 自2021年7月1日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在 (经典) 的连接监视器中添加新的连接监视器。 你可以继续使用在2021年7月1日之前创建的测试和连接监视器。 若要最大程度地减少对当前工作负荷的服务中断，请在2024年2月29日之前，将 [测试从网络性能监视器 ](migrate-to-connection-monitor-from-network-performance-monitor.md) 或  [从连接监视器迁移 (经典) ](migrate-to-connection-monitor-from-connection-monitor-classic.md) 升级到 Azure 网络观察程序中的新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典版）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](migrate-to-connection-monitor-from-network-performance-monitor.md)或[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 
 了解如何使用 Azure 网络观察程序的连接监视器功能来监视资源之间的通信。

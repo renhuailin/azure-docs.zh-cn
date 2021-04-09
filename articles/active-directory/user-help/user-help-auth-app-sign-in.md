@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3a9e4c8f3dd9e4cf291388bc102ae9a73d8de6dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.openlocfilehash: 0fd0aa19d52adb4bf06c9d21d4182e27497a531b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471761"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -51,11 +51,14 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 打开 Microsoft Authenticator 应用，转到工作或学校帐户，然后启用手机登录。
 
-- **点击 "帐户" 磁贴时** ，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
-- **如果你已经使用了应用进行双重验证** ，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
-- 如果在应用的“帐户”屏幕上找不到工作或学校帐户，则意味着尚未将其添加到应用。  按照 [添加工作或学校帐户帮助](user-help-auth-app-add-work-school-account.md)中的步骤操作，添加工作或学校帐户。
+- 点击帐户磁贴时，会看到帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
+- 如果已将该应用用于双重验证，则可以点击帐户磁贴来查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
+- 如果在应用的“帐户”屏幕上找不到工作或学校帐户，则意味着尚未将其添加到应用。  请按照[添加工作或学校帐户帮助](user-help-auth-app-add-work-school-account.md)一文中的步骤添加工作或学校帐户。
 
-打开手机登录后，只能使用 Microsoft Authenticator 应用登录。 下面介绍如何操作：
+> [!NOTE]
+> Microsoft 不支持在 iOS 上的 Authenticator 中使用设备注册和基于证书的身份验证的组合， 而是要求用户必须在登录前通过 Authenticator 设置来手动注册设备。
+
+启用手机登录以后，你只能使用 Microsoft Authenticator 应用登录。 方法如下：
 
 1. 登录到工作或学校帐户。
 
@@ -82,8 +85,8 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 打开 Microsoft Authenticator 应用，转到工作或学校帐户，然后启用手机登录。
 
-- **点击 "帐户" 磁贴时** ，会看到该帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
-- **如果已将应用用于双因素验证** ，则可以点击 "帐户" 磁贴以查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
+- 点击帐户磁贴时，会看到帐户的全屏视图。 如果看到“已启用手机登录”，则表示已完全设置，无需密码即可登录。 如果看到“启用手机登录”，请点击它以启用手机登录。
+- 如果已将该应用用于双重验证，则可以点击帐户磁贴来查看帐户的全屏视图。 然后点击“启用手机登录”以启用手机登录。
 - 如果在应用的“帐户”屏幕上找不到帐户，则意味着尚未将其添加到应用。  请按照[添加 Microsoft 个人帐户](user-help-auth-app-add-personal-ms-account.md)一文中的步骤添加 Microsoft 个人帐户。
 
 ### <a name="sign-in-to-your-account-using-phone-sign-in"></a>使用手机登录登录到帐户
@@ -96,7 +99,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>使用针对帐户的双重验证进行登录
 
-标准双因素验证方法要求您在要登录到的设备中输入用户名和密码，然后选择 Microsoft Authenticator 应用程序是否收到通知，或者是否要从验证器应用程序复制验证代码。 在 Android 设备上，可以在 " **帐户** " 屏幕上找到验证代码。 在 iOS 设备上，可以 **在帐户的 "屏幕"** 或 "全屏" 视图中找到这些验证代码，具体取决于帐户类型。 在将帐户添加到 Microsoft Authenticator 应用时，为你的帐户启用双重验证。
+标准的双重验证方法要求你在要登录的设备中输入用户名和密码，然后选择是由 Microsoft Authenticator 应用接收通知，还是由你从 Authenticator 应用复制验证码。 可以在 Android 设备的“帐户”屏幕上找到这些验证码。 可以在 iOS 设备的“帐户”屏幕或帐户的全屏视图上找到这些验证码，具体取决于帐户类型。 将帐户添加到 Microsoft Authenticator 应用时，将为帐户启用双重验证。
 
 >[!Note]
 >如果在 Microsoft Authenticator 应用的“帐户”屏幕上看不到工作或学校帐户或个人帐户，则意味着尚未将帐户添加到 Microsoft Authenticator 应用。 若要添加帐户，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)或[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)。

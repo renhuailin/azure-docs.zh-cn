@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 51c4a873ca0f4d8c3013e77399f0f9b948875fb6
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520704"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102610478"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>使用 kubectl 在 Azure Stack Edge Pro 设备上运行具有 PersistentVolume 的 Kubernetes 有状态应用程序
 
@@ -21,7 +21,7 @@ ms.locfileid: "102520704"
 
 本文介绍如何使用 PersistentVolume (PV) 和部署在 Kubernetes 中部署单实例有状态应用程序。 部署使用现有 Kubernetes 群集上的 `kubectl` 命令并部署 MySQL 应用程序。 
 
-此过程适用于已查看 [Azure Stack Edge Pro 设备上的 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md)一文且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)概念的用户。
+此过程适用于已查看 [Azure Stack Edge Pro 设备上的 Kubernetes 存储](azure-stack-edge-gpu-kubernetes-storage.md)一文且熟悉 [Kubernetes 存储](https://kubernetes.io/docs/concepts/storage/)概念的用户。 
 
 Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并能够以此处详述的适用于 MySQL 的类似方式部署这些容器。 有关详细信息，请参阅 [Azure SQL Edge](../azure-sql-edge/overview.md)。
 
@@ -39,9 +39,9 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并能够以此处�
 ### <a name="for-client-accessing-the-device"></a>对于访问设备的客户端
 
 - 你有一个将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
-    - 客户端运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版本的 Windows PowerShell，请转到[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
+    - 客户端在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版 Windows PowerShell，请参阅[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
     
-    - 也可以使用任何其他安装了[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)的客户端。 本文介绍使用 Windows 客户端时的过程。 
+    - 也可使用任何其他客户端，只要安装了[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)即可。 本文介绍使用 Windows 客户端时的过程。 
     
     - 你已完成[在 Azure Stack Edge Pro 设备上访问 Kubernetes 群集](azure-stack-edge-gpu-create-kubernetes-cluster.md)中所述的过程。 你已：
       - 通过 `New-HcsKubernetesNamespace` 命令创建 `userns1` 命名空间。 
@@ -62,7 +62,8 @@ Azure Stack Edge Pro 还支持运行 Azure SQL Edge 容器，并能够以此处�
 若要静态预配 PV，需要在设备上创建共享。 按照以下步骤针对 SMB 共享预配 PV。 
 
 > [!NOTE]
-> 本操作指南文章中使用的特定示例不适用于 NFS 共享。 通常情况下，可以在包含非数据库应用程序的 Azure Stack Edge 设备上预配 NFS 共享。
+> - 本操作指南文章中使用的特定示例不适用于 NFS 共享。 通常情况下，可以在包含非数据库应用程序的 Azure Stack Edge 设备上预配 NFS 共享。
+> - 若要部署使用存储卷来提供永久性存储的有状态应用程序，我们建议使用 `StatefulSet` 此示例使用仅包含一个副本的 `Deployment`，适用于开发和测试。 
 
 1. 选择是要创建 Edge 共享还是 Edge 本地共享。 按照[添加共享](azure-stack-edge-manage-shares.md#add-a-share)中的说明创建共享。 请确保选中“将该共享用于 Edge 计算”复选框。
 

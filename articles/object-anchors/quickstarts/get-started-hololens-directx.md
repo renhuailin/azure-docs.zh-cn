@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 8a02bb7c70df4fed55c354638fe6662b85e6c164
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b5db9f3766bdd7d754f49403665a371f9d10afd7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047603"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "102049610"
 * 安装了以下内容的 Windows 计算机：
   * <a href="https://git-scm.com" target="_blank">用于 Windows 的 Git</a>
   * 包含“通用 Windows 平台开发”工作负荷和“Windows 10 SDK (10.0.18362.0 或更高版本)”组件的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>
-* 已启用[开发人员模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio#enabling-developer-mode)的最新 HoloLens 2 设备。
+* 已启用[开发人员模式](/windows/mixed-reality/using-visual-studio#enabling-developer-mode)的最新 HoloLens 2 设备。
   * 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 
 ## <a name="open-the-sample-project"></a>打开示例项目

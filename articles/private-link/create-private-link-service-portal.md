@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
 ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98746401"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用链接服务
@@ -110,7 +110,7 @@ ms.locfileid: "98746401"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -124,7 +124,7 @@ ms.locfileid: "98746401"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     

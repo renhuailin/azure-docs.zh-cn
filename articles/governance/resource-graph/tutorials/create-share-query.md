@@ -4,10 +4,10 @@ description: 在本教程中，你会在 Azure 门户中创建 Resource Graph �
 ms.date: 01/27/2021
 ms.topic: tutorial
 ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98916673"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询

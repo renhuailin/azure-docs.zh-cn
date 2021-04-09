@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 资源管理器模板分配 Azure 角色-Azure RBAC
+title: 使用 Azure 资源管理器模板分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 Azure 资源管理器模板和 Azure 基于角色的访问控制 (Azure RBAC) 授予用户、组、服务主体或托管标识对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
 ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556026"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板分配 Azure 角色
@@ -83,7 +83,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ### <a name="resource-group-scope-without-parameters"></a>资源组范围（不包含参数）
 
-以下模板显示了分配角色的基本方法。 某些值在模板中指定。 以下模板演示：
+以下模板显示了分配角色的基本方式。 某些值在模板中指定。 以下模板演示：
 
 -  如何将[读者](built-in-roles.md#reader)角色分配给资源组范围内的用户、组或应用程序
 
@@ -210,7 +210,7 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>资源范围
 
-如果需要在资源级别分配角色，请将 `scope` 角色分配上的属性设置为资源的名称。
+如果需要在资源级别分配角色，请将角色分配的 `scope` 属性设置为资源的名称。
 
 以下模板演示：
 

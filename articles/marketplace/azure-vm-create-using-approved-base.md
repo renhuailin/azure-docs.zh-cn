@@ -1,57 +1,57 @@
 ---
-title: '在 Azure Marketplace 中创建 Azure 虚拟机产品/服务 (VM) '
-description: 了解如何从批准的基准创建 (VM) 产品/服务的虚拟机。
+title: 利用经过批准的基础映像创建 Azure 虚拟机 (VM) 产品/服务 - Azure 市场
+description: 了解如何利用经过批准的基础映像创建虚拟机 (VM) 产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 01/06/2021
-ms.openlocfilehash: 9164c1e2542024a02bf4868658d0f29728f32c7b
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.openlocfilehash: 94d21cb82290e59ebb003969a566c1bfc877713e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200449"
 ---
-# <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>如何使用已批准的基准创建虚拟机
+# <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>如何使用经过批准的基础映像创建虚拟机
 
-本文介绍如何使用 Azure 创建 (VM) 的虚拟机，该虚拟机包含预配置的经认可的操作系统。 如果这与你的解决方案不兼容，则可以使用已批准的操作系统 [创建和配置本地 VM](azure-vm-create-using-own-image.md) ，并根据 [准备 WINDOWS VHD 或 VHDX 以便上传到 Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)中所述，对其进行配置和准备以便上传。
+本文介绍如何使用 Azure 来创建一个包含预配置的经过认可的操作系统的虚拟机 (VM)。 如果此内容与你的解决方案不兼容，则可以使用经过批准的操作系统来[创建并配置本地 VM](azure-vm-create-using-own-image.md)。
 
 > [!NOTE]
-> 在开始此过程之前，请查看 Azure VM 产品/服务的 [技术要求](marketplace-virtual-machines.md#technical-requirements) ，包括虚拟硬盘 (VHD) 要求。
+> 在开始此过程之前，请先查看 Azure VM 产品/服务的[技术要求](marketplace-virtual-machines.md#technical-requirements)，包括虚拟硬盘 (VHD) 要求。
 
-## <a name="select-an-approved-base-image"></a>选择已批准的基本映像
+## <a name="select-an-approved-base-image"></a>选择经过批准的基础映像
 
-选择以下 Windows 或 Linux 映像之一作为基础。
+请选择下面的 Windows 或 Linux 映像之一作为基础映像。
 
 ### <a name="windows"></a>Windows
 
 - [Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)
-- SQL Server [2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ws2019?tab=Overview)、 [2014](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2?tab=Overview)、 [2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2012sp4-ws2012r2?tab=Overview)
+- SQL Server [2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2019-ws2019?tab=Overview)、[2014](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2?tab=Overview)、[2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2012sp4-ws2012r2?tab=Overview)
 
 ### <a name="linux"></a>Linux
 
 Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参阅 [Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)。
 
-## <a name="create-vm-on-the-azure-portal"></a>在 Azure 门户上创建 VM
+## <a name="create-vm-on-the-azure-portal"></a>在 Azure 门户中创建 VM
 
 1. 登录 [Azure 门户](https://ms.portal.azure.com/)。
 2. 选择“虚拟机”。
-3. 选择 " **+ 添加** " 以打开 " **创建虚拟机** " 屏幕。
-4. 从下拉列表中选择图像，或选择 " **浏览所有公用和专用映像** "，搜索或浏览所有可用的虚拟机映像。
-5. 若要创建 **第2代** VM，请在 " **高级** " 选项卡中选择 " **第2代** " 选项。
+3. 选择“+ 添加”以打开“创建虚拟机”屏幕 。
+4. 从下拉列表中选择映像，或选择“浏览所有公共和专用映像”，以搜索或浏览所有可用的虚拟机映像。
+5. 若要创建 Gen 2 VM，请转到“高级”选项卡并选择“Gen 2”选项  。
 
-    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="选择 &quot;第1代&quot; 或 &quot;第2代&quot;。":::
+    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="选择 Gen 1 或 Gen 2。":::
 
 6. 选择要部署的 VM 的大小。
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="为所选映像选择建议的 VM 大小。":::
 
 7. 提供创建 VM 所需的其他详细信息。
-8. 选择“查看 + 创建”可查看选择。 显示 " **验证通过** " 消息后，选择 "  **创建**"。
+8. 选择“查看 + 创建”可查看选择。 在出现“已通过验证”消息时，选择“创建” 。
 
-Azure 随即开始预配所指定的虚拟机。 选择左侧菜单中的 " **虚拟机** " 选项卡跟踪其进度。 创建后，虚拟机的状态将更改为 " **正在运行**"。
+Azure 随即开始预配所指定的虚拟机。 请通过选择左侧菜单中的“虚拟机”选项卡来跟踪预配进度。 在创建之后，虚拟机的状态会更改为“正在运行”。
 
 ## <a name="configure-the-vm"></a>配置 VM
 
@@ -59,7 +59,7 @@ Azure 随即开始预配所指定的虚拟机。 选择左侧菜单中的 " **�
 
 ### <a name="connect-to-your-vm"></a>连接到 VM
 
-请参阅以下文档以连接到 [Windows](../virtual-machines/windows/connect-logon.md) 或 [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) VM。
+请参阅以下文档，了解如何连接到 [Windows](../virtual-machines/windows/connect-logon.md) 或 [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) VM。
 
 ### <a name="install-the-most-current-updates"></a>安装最新的更新
 
@@ -77,6 +77,6 @@ Azure 随即开始预配所指定的虚拟机。 选择左侧菜单中的 " **�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 建议下一步： [测试 VM 映像](azure-vm-image-test.md) 以确保它满足 Azure Marketplace 发布要求。 该地址为可选。
-- 如果不测试 VM 映像，请继续 [生成 SAS URI](azure-vm-get-sas-uri.md)。
-- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure Marketplace 的 VM 常见问题解答](azure-vm-create-faq.md)。
+- 建议的后续步骤：[测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 此为可选项。
+- 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)来发布映像。
+- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure 市场的 VM 常见问题解答](azure-vm-create-faq.md)。

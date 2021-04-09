@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498891"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048861"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>如何在认知搜索中配置 SharePoint Online 索引（预览版）
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-有关详细信息，请参阅[创建索引 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index)。
+有关详细信息，请参阅[创建索引 (REST API)](/rest/api/searchservice/create-index)。
 
 ### <a name="step-5-create-an-indexer"></a>步骤 5：创建索引器
 索引器将数据源与目标搜索索引关联，并提供自动执行数据刷新的计划。 创建索引和数据源后，就可创建索引器了！
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-有关索引器状态的详细信息，可查看[获取索引器状态](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+有关索引器状态的详细信息，可查看[获取索引器状态](/rest/api/searchservice/get-indexer-status)。
 
 ## <a name="updating-the-data-source"></a>更新数据源
 如果数据源对象没有更新，则索引器可按计划运行，无需任何用户交互。 不过，每次更新 Azure 认知搜索数据源对象时，你都需要再次登录，这样索引器才会运行。 例如，如果更改数据源查询，则需要使用 `https://microsoft.com/devicelogin` 和新的代码再次登录。
@@ -241,7 +241,7 @@ api-key: [admin key]
     api-key: [admin key]
     ```
 
-    若要详细了解索引器运行请求，可查看[运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer)。
+    若要详细了解索引器运行请求，可查看[运行索引器](/rest/api/searchservice/run-indexer)。
 
 1.  检查索引器状态。 如果最后一次索引器运行出现错误，指示要前往 `https://microsoft.com/devicelogin`，请前往该页面并提供新代码。 
 
@@ -251,7 +251,7 @@ api-key: [admin key]
     api-key: [admin key]
     ```
 
-    有关索引器状态的详细信息，可查看[获取索引器状态](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+    有关索引器状态的详细信息，可查看[获取索引器状态](/rest/api/searchservice/get-indexer-status)。
 
 1.  登录
 
@@ -359,7 +359,7 @@ api-key: [admin key]
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure 认知搜索会限制索引的文档的大小。 这些限制记录在 [Azure 认知搜索中的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)中。 文档太大会被默认视为错误。 不过，如果将配置参数 `indexStorageMetadataOnlyForOversizedDocuments` 设为 true，则仍可索引过大文档的存储元数据：
+Azure 认知搜索会限制索引的文档的大小。 这些限制记录在 [Azure 认知搜索中的服务限制](./search-limits-quotas-capacity.md)中。 文档太大会被默认视为错误。 不过，如果将配置参数 `indexStorageMetadataOnlyForOversizedDocuments` 设为 true，则仍可索引过大文档的存储元数据：
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }

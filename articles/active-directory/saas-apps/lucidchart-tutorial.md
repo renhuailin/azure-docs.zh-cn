@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
 ms.openlocfilehash: 5d5b07e761d5ed38cb2083054708265189bdd72f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101651565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>教程：Azure Active Directory 与 Lucidchart 的单一登录 (SSO) 集成
@@ -88,7 +88,7 @@ ms.locfileid: "101651565"
     ![复制配置 URL](common/copy-configuration-urls.png)
 
     
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -100,7 +100,7 @@ ms.locfileid: "101651565"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Lucidchart 的权限，允许其使用 Azure 单一登录。
 
@@ -112,13 +112,13 @@ ms.locfileid: "101651565"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-lucidchart-sso"></a>配置 Lucidchart SSO
+## <a name=&quot;configure-lucidchart-sso&quot;></a>配置 Lucidchart SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Lucidchart 公司站点。
 
 2. 在顶部菜单中，单击 **“团队”**。
 
-    ![团队](./media/lucidchart-tutorial/ic791190.png "组")
+    ![团队](./media/lucidchart-tutorial/ic791190.png &quot;组")
 
 3. 单击“应用程序”\>“管理 SAML”。
 
