@@ -9,18 +9,18 @@ ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557324"
 ---
 REST API 中的 [Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)（获取终结点运行状况）提供终结点的运行状况以及上一个已知错误，以确定终结点不正常的原因。 下表列出了最常见的错误。
 
 |上一个已知错误|说明/发生时间|可能的缓解操作|
 |-----|-----|-----|
-|暂时性|出现暂时性错误，IoT 中心将重试该操作。|观察 [路由资源日志](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
-|InternalError|将消息传递到终结点时出错。|这是一个内部异常，还会观察 [路由资源日志](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
+|暂时性|出现暂时性错误，IoT 中心将重试该操作。|观察[路由资源日志](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
+|InternalError|将消息传递到终结点时出错。|这是一个内部异常，但也应查看[路由资源日志](../articles/iot-hub/monitor-iot-hub-reference.md#routes)。|
 |未授权|IoT 中心无权向指定终结点发送消息。|验证该终结点的连接字符串是否为最新。 如果已更改，请考虑在 IoT 中心上更新。 如果终结点使用托管标识，请检查 IoT 中心主体是否对目标具有所需的权限。|
 |已中止|将消息写入到终结点时，将中止 IoT 中心。|查看受影响的终结点的中止限制。 修改终结点的配置以纵向扩展（如果需要）。|
 |超时|操作超时。|请重试操作即可。|

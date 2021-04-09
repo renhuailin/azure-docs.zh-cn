@@ -9,17 +9,17 @@ ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516982"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>可以使用群集来做什么？
 
-对于事件中心群集，可以引入和流式传输多少取决于不同的因素，例如，你的发生器、消费者、你引入和处理的速度等。 
+对于事件中心群集，可以引入和流式传输的数据量取决于各种因素，例如生成者、使用者、引入和处理速率等。 
 
-下表显示了我们在测试过程中获得的基准测试结果：
+下表显示了我们在测试期间实现的基准结果：
 
 | 有效负载形状 | 接收方 | 入口带宽| 入口消息 | 出口带宽 | 出口消息 | TU 总数 | 每个 CU 的 TU 数 |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
@@ -35,11 +35,11 @@ ms.locfileid: "92516982"
 
 ### <a name="can-i-scale-updown-my-cluster"></a>是否可以纵向扩展/纵向缩减群集？
 
-创建后，群集将按最少 4 个小时的使用量计费。 在自助服务体验的预览版本中，你可以向事件中心团队提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)，以增加或缩减**Technical**  >  **Quota**  >  **专用群集**，使群集扩大或缩小。 完成纵向缩减群集的请求最多可能需要 7 天。 
+创建后，群集将按最少 4 个小时的使用量计费。 在自助服务体验的预览版中，你可以在“技术” > “配额” > “请求纵向扩展或纵向缩减专用群集”下向事件中心团队提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)，以纵向扩展或缩减群集  。 完成纵向缩减群集的请求最多可能需要 7 天。 
 
 ### <a name="how-does-geo-dr-work-with-my-cluster"></a>异地灾难恢复如何与群集配合工作？
 
-可以将专用层群集下的命名空间与专用层群集下的另一个命名空间进行异地配对。 我们不鼓励在标准产品中将专用命名空间与命名空间配对，因为吞吐量限制不兼容并导致错误。 
+可以将专用层群集下的命名空间与专用层群集下的另一个命名空间进行异地配对。 不鼓励将专用层命名空间与标准产品/服务中的命名空间配对，因为吞吐量限制不兼容并会导致错误。 
 
 ### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>是否可以迁移标准命名空间，以使其属于专用层群集？
 目前，我们不支持将事件中心数据从标准命名空间迁移到专用命名空间的自动迁移过程。 

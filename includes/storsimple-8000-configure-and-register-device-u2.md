@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557010"
 ---
 #### <a name="to-configure-and-register-the-device"></a>配置和注册设备
 
 1. 访问 StorSimple 设备串行控制台上的 Windows PowerShell 接口。 有关说明，请参阅 [使用 PuTTY 连接到设备串行控制台](#use-putty-to-connect-to-the-device-serial-console) 。 **请务必严格遵照该步骤，否则将无法访问控制台。**
 
-2. 在打开的会话中，按一次 **enter** 以获取命令提示符。
+2. 在打开的会话中，按一次 **Enter** 以启动命令提示符。
 
-3. 系统会提示选择要为设备设置的语言。 指定语言，然后按 **enter**。
+3. 系统会提示选择要为设备设置的语言。 指定语言，并按 **Enter**。
 
 4. 在显示的串行控制台菜单中，选择选项 1“以完全访问权限登录”。
      完成步骤 5-12 以配置设备的最低要求的网络设置。 **需要在该设备的主动控制器上执行这些配置步骤。**  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到主动控制器，请断开连接，并连接到主动控制器。

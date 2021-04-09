@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95555619"
 ---
 在 Azure Active Directory (Azure AD) 中，术语应用预配是指在用户需要访问的云 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 应用程序中自动创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 常见方案包括将 Azure AD 用户预配到 [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) 等应用程序中。

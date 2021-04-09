@@ -13,10 +13,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94887257"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
@@ -137,7 +137,7 @@ Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使�
       * 在工具栏上选择“上传证书”  。
       * 选择“文件”图标，然后选择证书文件。
       * 输入证书的密码。
-      * 选择“确定”  。
+      * 选择“确定”。
       * 在“Windows Phone (MPNS)”页上选择“保存”。  
 
 有关详细信息，请参阅[通过通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。
