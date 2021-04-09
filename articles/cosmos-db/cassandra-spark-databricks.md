@@ -9,16 +9,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100516560"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>从 Azure Databricks 访问 Azure Cosmos DB Cassandra API 数据
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-本文详细介绍了如何在 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks)上的 Spark 中使用 Azure Cosmos DB Cassandra API。
+本文详细介绍如何在 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 上通过 Spark 使用 Azure Cosmos DB Cassandra API。
 
 ## <a name="prerequisites"></a>先决条件
 

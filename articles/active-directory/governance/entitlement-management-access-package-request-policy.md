@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560482"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的请求设置
 
@@ -85,7 +85,7 @@ ms.locfileid: "102426954"
 
 1. 选择以下选项之一：
 
-    |  |  |
+    |  | 说明 |
     | --- | --- |
     | **特定用户和组** | 如果只希望目录中的指定用户和组可以请求此访问包，请选择此选项。 |
     | **所有成员（不包括来宾）** | 如果希望目录中的所有成员用户都可以请求此访问包，请选择此选项。 此选项不包括你可能已邀请到目录中的任何来宾用户。 |
@@ -122,7 +122,7 @@ ms.locfileid: "102426954"
 
 1. 选择以下选项之一：
 
-    |  |  |
+    |  | 说明 |
     | --- | --- |
     | **特定的已连接的组织** | 如果要从管理员之前添加的组织列表中选择，请选择此选项。 来自选定组织的所有用户都可以请求此访问包。 |
     | **所有配置的已连接组织** | 如果所有配置的已连接组织中的用户都可以请求此访问包，请选择此选项。 只有配置的已连接的组织中的用户才能请求对所有已配置组织的用户显示的访问包。 |

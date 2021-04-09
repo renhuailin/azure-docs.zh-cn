@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2ff07995cab2da6e53600be9bf60b30d1896cc9d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 40fa1bc776c5cd457e57cf170f629b6cf92800fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636814"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585989"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>什么是 Azure Stack Edge Pro R？
 
@@ -78,6 +78,8 @@ Azure Stack Edge Pro R 解决方案包括 Azure Stack Edge 资源、Azure Stack 
 - **设备可用性** - 有关 Azure Stack Edge Pro R 设备可供使用的所有国家/地区的列表，请转到 [Azure Stack Edge Pro R 定价](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)的“Azure Stack Edge Pro R”选项卡中的“可用性”部分。
 
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro R 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
+
+Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)。 Azure Stack Edge 服务不依赖于特定的 Azure 区域，因此可以灵活应对区域范围的服务中断和区域范围的服务中断。
 
 ## <a name="next-steps"></a>后续步骤
 

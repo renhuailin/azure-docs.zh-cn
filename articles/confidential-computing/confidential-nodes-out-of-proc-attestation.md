@@ -2,16 +2,17 @@
 title: Azure 上 Intel SGX 引用帮助程序 Daemonset 的进程外证明支持（预览版）
 description: 用于在 SGX 应用程序进程之外生成引用的 DaemonSet。 本文介绍如何为容器内运行的机密工作负载提供进程外证明辅助。
 ms.service: container-service
+ms.subservice: confidential-computing
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0ebeb96557b7e20d123577c0ab9c8fc392abbfba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553249"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932619"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>具有 SGX 引用帮助程序守护程序集的平台软件管理（预览版）
 

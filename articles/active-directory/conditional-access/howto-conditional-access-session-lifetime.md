@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558179"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
@@ -65,16 +65,16 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 
 示例 1：
 
-- 在 00:00，一个用户登录到其已建立 Azure AD 联接的 Windows 10 设备，并开始处理存储在 SharePoint Online 上的文档。
-- 该用户在其设备上持续一小时处理同一文档。
-- 在 01:00，系统根据管理员配置的条件访问策略中的登录频率要求，提示该用户重新登录。
+- 在 00:00，用户登录到已加入 Windows 10 Azure AD 的设备，并开始处理 SharePoint Online 上存储的文档。
+- 用户继续在其设备上处理同一文档一个小时。
+- 在 01:00，系统根据管理员配置的条件访问策略中的登录频率要求，提示用户再次登录。
 
 示例 2：
 
 - 在 00:00，一个用户登录到其已建立 Azure AD 联接的 Windows 10 设备，并开始处理存储在 SharePoint Online 上的文档。
 - 在 00:30，该用户锁定设备，起身休息一会儿。
 - 在 00:45，该用户结束休息并返回，然后解锁设备。
-- 在 01:45，系统根据管理员配置的条件访问策略中的登录频率要求，提示该用户重新登录，因为上次登录时间为 00:45。
+- 在 01:45，系统会根据管理员配置的条件访问策略中的登录频率要求，提示用户再次登录，因为上次登录发生在 00:45。
 
 ## <a name="persistence-of-browsing-sessions"></a>浏览会话的持久性
 
