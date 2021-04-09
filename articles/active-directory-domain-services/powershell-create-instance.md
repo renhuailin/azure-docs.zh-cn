@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 02/04/2021
+ms.date: 03/10/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e79bbb2ac6febb39fec27aa6ac3c82ff58f81122
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8056e95b731b1818e10d7415cb813d6aba0ec7fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575816"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149061"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 
@@ -39,6 +39,13 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     * 确保使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 登录到 Azure AD 租户。
 * 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。
 * 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。
+
+  > [!IMPORTANT]
+  > 尽管 Az.ADDomainServices PowerShell 模块为预览版，但必须使用 `Install-Module` cmdlet 单独安装它。
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.ADDomainServices
+  ```
 
 ## <a name="create-required-azure-ad-resources"></a>创建所需的 Azure AD 资源
 
@@ -93,13 +100,13 @@ Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjec
 
 首先，使用 [Register-AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
 
-```powershell
+```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
 接下来，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 以下示例中，资源组名为 myResourceGroup，在 westus 区域中创建。  使用自己的名称和所需区域：
 
-```powershell
+```azurepowershell-interactive
 $ResourceGroupName = "myResourceGroup"
 $AzureLocation = "westus"
 
@@ -113,7 +120,7 @@ New-AzResourceGroup `
 
 使用 [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] cmdlet 创建子网，然后使用 [New-AzVirtualNetwork][New-AzVirtualNetwork] cmdlet 创建虚拟网络。
 
-```powershell
+```azurepowershell-interactive
 $VnetName = "myVnet"
 
 # Create the dedicated subnet for Azure AD Domain Services.
@@ -142,7 +149,7 @@ Azure AD DS 需要使用网络安全组来保护托管域所需的端口，阻�
 
 以下 PowerShell cmdlet 使用 [New-AzNetworkSecurityRuleConfig][New-AzNetworkSecurityRuleConfig] 创建规则，然后使用 [New-AzNetworkSecurityGroup][New-AzNetworkSecurityGroup] 创建网络安全组。 然后，使用 [Set-AzVirtualNetworkSubnetConfig][Set-AzVirtualNetworkSubnetConfig] cmdlet 将网络安全组和规则与虚拟网络子网相关联。
 
-```powershell
+```azurepowershell-interactive
 $NSGName = "aaddsNSG"
 
 # Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
@@ -196,17 +203,24 @@ $vnet | Set-AzVirtualNetwork
 
 对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 有关详细信息和区域可用性，请参阅[Azure 中的可用性区域是什么？][availability-zones]。
 
-```powershell
+```azurepowershell-interactive
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "aaddscontoso.com"
 
 # Enable Azure AD Domain Services for the directory.
-New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -ApiVersion "2017-06-01" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -Force -Verbose
+$replicaSetParams = @{
+  Location = $AzureLocation
+  SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
+}
+$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+
+$domainServiceParams = @{
+  Name = $ManagedDomainName
+  ResourceGroupName = $ResourceGroupName
+  DomainName = $ManagedDomainName
+  ReplicaSet = $replicaSet
+}
+New-AzADDomainService @domainServiceParams
 ```
 
 创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，托管域的“概览”页会显示整个部署阶段的当前状态。
@@ -224,7 +238,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > [!NOTE]
 > 只有 Azure AD 租户的全局管理员才能启用 Azure AD DS。 此外，该管理员需要在 Azure 订阅中至少拥有“参与者”特权。
 
-```powershell
+```azurepowershell-interactive
 # Change the following values to match your deployment.
 $AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
@@ -292,7 +306,7 @@ $Vnet=New-AzVirtualNetwork `
   -Name $VnetName `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $AaddsSubnet,$WorkloadSubnet
-  
+
 $NSGName = "aaddsNSG"
 
 # Create a rule to allow inbound TCP port 3389 traffic from Microsoft secure access workstations for troubleshooting
@@ -336,12 +350,19 @@ Set-AzVirtualNetworkSubnetConfig -Name $SubnetName `
 $vnet | Set-AzVirtualNetwork
 
 # Enable Azure AD Domain Services for the directory.
-New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -ApiVersion "2017-06-01" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; `
-    "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -Force -Verbose
+$replicaSetParams = @{
+  Location = $AzureLocation
+  SubnetId = "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"
+}
+$replicaSet = New-AzADDomainServiceReplicaSetObject @replicaSetParams
+
+$domainServiceParams = @{
+  Name = $ManagedDomainName
+  ResourceGroupName = $ResourceGroupName
+  DomainName = $ManagedDomainName
+  ReplicaSet = $replicaSet
+}
+New-AzADDomainService @domainServiceParams
 ```
 
 创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，托管域的“概览”页会显示整个部署阶段的当前状态。

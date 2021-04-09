@@ -2,13 +2,13 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: fd9f8c9fff60ea9f7c24eb5d6f35542a197fe366
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/15/2021
+ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734012"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471006"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -30,7 +30,7 @@ ms.locfileid: "101734012"
 > 术语“软限制”和“硬限制”通常非正式地用于描述当前可调整的限制（软限制）和最大限制（硬限制）。 如果某个限制不可调整，则不会有软限制，只有硬限制。
 >
 
-[免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p) 不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将 [Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级为即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md)和[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
 某些限制在区域级别进行管理。
 
@@ -176,7 +176,7 @@ ms.locfileid: "101734012"
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="azure-quantum-limits"></a>Azure 量程限制
+## <a name="azure-quantum-limits"></a>Azure Quantum 限制
 
 [!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
@@ -232,7 +232,7 @@ ms.locfileid: "101734012"
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
 
-## <a name="data-share-limits"></a>数据共享限制
+## <a name="data-share-limits"></a>Data Share 限制
 
 [!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
@@ -243,7 +243,7 @@ ms.locfileid: "101734012"
 ## <a name="digital-twins-limits"></a>数字孪生限制
 
 > [!NOTE]
-> 此服务的某些区域具有可调整的限制，而其他区域则不具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可 *调整* 的值为 *Yes*。
+> 此服务的限制在某些区域可调整，而其他区域则不可。 下表的“可调整？”列中进行了相关描述。 当限制可调整时，“可调整？”的值为“是” 。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -324,9 +324,9 @@ ms.locfileid: "101734012"
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
-## <a name="purview-limits"></a>监控范围限制
+## <a name="purview-limits"></a>Purview 限制
 
-可以在[Azure 监控范围配额页](../../purview/how-to-manage-quotas.md)中找到 azure 监控范围配额的最新值
+在 [Azure Purview 配额页](../../purview/how-to-manage-quotas.md)中可找到 Azure Purview 配额的最新值
 
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 
@@ -368,8 +368,8 @@ ms.locfileid: "101734012"
 
 有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
-## <a name="azure-files-and-azure-file-sync"></a>Azure 文件和 Azure 文件同步
-若要详细了解 Azure 文件和文件同步的限制，请参阅 [Azure 文件可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
+## <a name="azure-files-and-azure-file-sync"></a>Azure 文件存储和 Azure 文件同步
+若要详细了解 Azure 文件存储和文件同步的限制，请参阅 [Azure 文件存储的可伸缩性和性能目标](../../storage/files/storage-files-scale-targets.md)。
 
 ## <a name="storage-limits"></a>存储限制
 
@@ -403,7 +403,7 @@ ms.locfileid: "101734012"
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域每个订阅的磁盘加密集限制为1000。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
+每个区域、每个订阅有 1000 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 

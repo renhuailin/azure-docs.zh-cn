@@ -4,10 +4,10 @@ description: 自动配置 Azure 诊断，通过管道将数据发送到 Applicat
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100583833"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights

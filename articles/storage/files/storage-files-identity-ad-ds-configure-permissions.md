@@ -1,31 +1,31 @@
 ---
-title: 控制用户可以在文件级别执行的操作-Azure 文件共享
-description: 了解如何为本地 AD DS 身份验证配置 Windows Acl 权限到 Azure 文件共享。 允许你利用粒度访问控制。
+title: 控制用户可以在文件级别执行的操作 - Azure 文件共享
+description: 了解如何配置 Windows ACL 权限以向 Azure 文件共享进行本地 AD DS 身份验证。 允许利用粒度访问控制。
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 02b8d72ab88f9eca2e1fac4858c14826dae57dbe
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
-ms.translationtype: MT
+ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629166"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470760"
 ---
-# <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级权限 
+# <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级别权限 
 
-在开始本文之前，请确保已完成上一篇文章， [将共享级别权限分配给某个标识](storage-files-identity-ad-ds-assign-permissions.md) ，以确保你的共享级权限已就位。
+在开始本文之前，请确保已完成上一篇文章：[向标识分配共享级别权限](storage-files-identity-ad-ds-assign-permissions.md)，以确保共享级别权限已就位。
 
-使用 Azure RBAC 分配共享级权限后，必须在根、目录或文件级别配置适当的 Windows Acl，才能利用粒度访问控制。 将 Azure RBAC 共享级权限视为用于确定用户是否可以访问共享的高级身份确认。 虽然 Windows Acl 以更精细的级别运行，以确定用户可以在目录或文件级别执行哪些操作。 当用户尝试访问文件/目录时，会强制执行共享级和文件/目录级别的权限，因此，如果其中一个文件/目录之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读/写访问权限，但只读取共享级别，则只能读取该文件。 同样，如果反转了它，并且用户对共享级别具有读/写访问权限，但只读取文件级别，则它们仍可以仅读取文件。
+使用 Azure RBAC 分配共享级别权限后，必须在根、目录或文件级别配置适当的 Windows ACL 才能利用粒度访问控制。 将 Azure RBAC 共享级别权限视为确定用户是否可以访问共享的高级网关守卫。 而 Windows ACL 则更精细地运行，确定用户可以在目录或文件级别执行的操作。 当用户尝试访问文件/目录时，会强制执行共享级别和文件/目录级别权限，因此，如果两者之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读取/写入访问权限，但在共享级别只具有读取权限，则该用户只能读取该文件。 反过来也是这样，如果用户在共享级别具有读取/写入访问权限，但在文件级别只具有读取权限，则该用户仍然只能读取文件。
 
 ## <a name="azure-rbac-permissions"></a>Azure RBAC 权限
 
 下表包含与此配置相关的 Azure RBAC 权限：
 
 
-| 内置角色  | NTFS 权限  | 结果访问  |
+| 内置角色  | NTFS 权限  | 得到的访问权限  |
 |---------|---------|---------|
 |存储文件数据 SMB 共享读取者 | 完全控制、修改、读取、写入、执行 | 读取并执行  |
 |     |   读取 |     读取  |
@@ -44,11 +44,11 @@ ms.locfileid: "94629166"
 
 ## <a name="supported-permissions"></a>支持的权限
 
-Azure 文件支持完整的基本和高级 Windows Acl 集。 你可以通过装入并使用 Windows 文件资源管理器、运行 Windows [icacls](/windows-server/administration/windows-commands/icacls) 命令或 [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) 命令来查看和配置 Azure 文件共享中的目录和文件的 Windows acl。 
+Azure 文件存储支持全套基本和高级 Windows ACL。 可以通过装载共享，然后使用 Windows 文件资源管理器、运行 Windows [icacls](/windows-server/administration/windows-commands/icacls) 命令或 [Set-ACL](/powershell/module/microsoft.powershell.security/set-acl) 命令，查看并配置 Azure 文件共享中目录和文件的 Windows ACL。 
 
-若要使用超级用户权限配置 Acl，必须使用已加入域的 VM 中的存储帐户密钥装载共享。 按照下一部分中的说明从命令提示符装载 Azure 文件共享并配置 Windows Acl。
+若要使用超级用户权限配置 ACL，必须使用存储帐户密钥从已加入域的 VM 装载共享。 请按照下一节中的说明操作，从命令提示符装载 Azure 文件共享，并配置 Windows ACL。
 
-文件共享的根目录中包含以下权限：
+文件共享的根目录包含以下权限：
 
 - BUILTIN\Administrators:(OI)(CI)(F)
 - BUILTIN\Users:(RX)
@@ -61,16 +61,16 @@ Azure 文件支持完整的基本和高级 Windows Acl 集。 你可以通过装
 |用户|定义|
 |---|---|
 |BUILTIN\Administrators|作为本地 AD DS 环境的域管理员的所有用户。
-|BUILTIN\Users|AD 中的内置安全组。 默认情况下，它包括 NT AUTHORITY\Authenticated 用户。 对于传统的文件服务器，你可以为每个服务器配置成员身份定义。 对于 Azure 文件，没有托管服务器，因此 BUILTIN\Users 包含与 NT AUTHORITY\Authenticated 用户相同的用户集。|
-|NT AUTHORITY\SYSTEM|文件服务器的操作系统的服务帐户。 此类服务帐户在 Azure 文件上下文中不适用。 它包含在根目录中，以与 Windows 文件服务器体验混合方案一致。|
-|NT AUTHORITY\Authenticated 用户|AD 中可获取有效 Kerberos 令牌的所有用户。|
-|CREATOR OWNER|每个对象（目录或文件）都具有该对象的所有者。 如果已为该对象分配 Acl "创建者所有者"，则作为此对象所有者的用户具有对 ACL 定义的对象的权限。|
+|BUILTIN\Users|AD 中的内置安全组。 默认情况下，它包括 NT AUTHORITY\Authenticated Users。 对于传统的文件服务器，可以为每个服务器配置成员身份定义。 对于 Azure 文件存储，没有托管服务器，因此 BUILTIN\Users 包含与 NT AUTHORITY\Authenticated Users 相同的用户组。|
+|NT AUTHORITY\SYSTEM|文件服务器操作系统的服务帐户。 此类服务帐户在 Azure 文件存储上下文中不适用。 它包含在根目录中，以便在混合方案中与 Windows 文件服务器体验保持一致。|
+|NT AUTHORITY\Authenticated Users|AD 中可获取有效 Kerberos 令牌的所有用户。|
+|CREATOR OWNER|每个对象（目录或文件）都具有对应的所有者。 如果在该对象上有分配给“CREATOR OWNE”的 ACL，则作为此对象所有者的用户具有对 ACL 定义的对象的权限。|
 
 
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>从命令提示符装载文件共享
 
-使用 Windows `net use` 命令装载 Azure 文件共享。 请记住，将以下示例中的占位符值替换为自己的值。 有关装载文件共享的详细信息，请参阅 [将 Azure 文件共享用于 Windows](storage-how-to-use-files-windows.md)。 
+使用 Windows `net use` 命令装载 Azure 文件共享。 请务必将下面示例中的占位符值替换为你自己的值。 有关装载文件共享的详细信息，请参阅 [将 Azure 文件共享与 Windows 配合使用](storage-how-to-use-files-windows.md)。 
 
 ```
 $connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
@@ -85,28 +85,15 @@ else
 
 ```
 
-如果在连接到 Azure 文件时遇到问题，请参阅在 [Windows 上为 Azure 文件安装错误发布的疑难解答工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了有关在阻止端口445时解决方案的 [指南](./storage-files-faq.md#on-premises-access) 。 
+如果连接到 Azure 文件存储时遇到问题，请查看[我们在 Windows 上发布的 Azure 文件存储装载错误排查工具](https://azure.microsoft.com/blog/new-troubleshooting-diagnostics-for-azure-files-mounting-errors-on-windows/)。 我们还提供了[指南](./storage-files-faq.md#on-premises-access)来解决端口 445 被阻止时的情况。 
 
-## <a name="configure-windows-acls"></a>配置 Windows Acl
+## <a name="configure-windows-acls"></a>配置 Windows ACL
 
-当你的文件共享已装载到存储帐户密钥后，你必须配置 Windows Acl (也称为 NTFS 权限) 。 可以使用 Windows 文件资源管理器或 icacls 配置 Windows Acl。
+使用存储帐户密钥装载文件共享后，必须配置 Windows ACL（也称为 NTFS 权限）。 可以使用 Windows 文件资源管理器或 icacls 配置 Windows ACL。
 
-如果在配置了 Windows Dacl 的本地文件服务器中有目录或文件，并针对 AD DS 标识配置了这些目录或文件，则可以将其复制到 Azure 文件，使用 AzCopy 和[Azure](https://github.com/Azure/azure-storage-azcopy/releases) 如果通过 Azure 文件同步将目录和文件分层到 Azure 文件，则会以本机格式执行并保存 Acl。
+如果在针对 AD DS 标识配置了 Windows DACL 的本地文件服务器中有目录或文件，则可以使用传统文件复制工具（如 Robocopy 或 [Azure AzCopy v 10.4+](https://github.com/Azure/azure-storage-azcopy/releases)）将其复制到 Azure 文件存储以保留 ACL。 如果通过 Azure 文件同步将目录和文件分层到 Azure 文件存储，则会以本机格式移动并保留 ACL。
 
-### <a name="configure-windows-acls-with-windows-file-explorer"></a>通过 Windows 文件资源管理器配置 Windows Acl
-
-使用 Windows 文件资源管理器向文件共享下的所有目录和文件（包括根目录）授予完全权限。
-
-1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择 " **属性** "。
-1. 选择“安全”选项卡。
-1. 选择 " **编辑"。** 更改权限。
-1. 您可以更改现有用户的权限，也可以选择 " **添加 ...** " 向新用户授予权限。
-1. 在添加新用户的提示窗口中，在 " **输入要选择的对象名称** " 框中输入要向其授予权限的目标用户名，然后选择 " **检查名称** " 以查找目标用户的完整 UPN 名称。
-1.    选择“确定”  。
-1.    在 " **安全** " 选项卡中，选择要授予新用户的所有权限。
-1.    选择“应用”。
-
-### <a name="configure-windows-acls-with-icacls"></a>通过 icacls 配置 Windows Acl
+### <a name="configure-windows-acls-with-icacls"></a>使用 icacls 配置 Windows ACL
 
 使用以下 Windows 命令为文件共享（包括根目录）下的所有目录和文件授予完全权限。 请务必将示例中的占位符值替换为你自己的值。
 
@@ -114,10 +101,24 @@ else
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-若要详细了解如何使用 icacls 来设置 Windows Acl 和不同类型的支持权限，请参阅 [icacls 的命令行参考](/windows-server/administration/windows-commands/icacls)。
+若要详细了解如何使用 icacls 设置 Windows ACL，以及各种受支持的权限，请参阅 [icacls 的命令行参考](/windows-server/administration/windows-commands/icacls)。
+
+### <a name="configure-windows-acls-with-windows-file-explorer"></a>使用 Windows 文件资源管理器配置 Windows ACL
+
+使用 Windows 文件资源管理器为文件共享（包括根目录）下的所有目录和文件授予完全权限。 如果无法在 Windows 文件资源管理器中正确加载 AD 域信息，这可能是由于本地 AD 环境中的信任配置引起的。 客户端计算机无法访问为 Azure 文件存储身份验证注册的 AD 域控制器。 在这种情况下，请使用 icacls 配置 Windows ACL。
+
+1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择“属性”。
+1. 选择“安全”选项卡。
+1. 选择“编辑...” 更改权限。
+1. 可以更改现有用户的权限，也可以选择“添加...”向新用户授予权限。
+1. 在添加新用户的提示窗口中，在“输入要选择的对象名称”框中输入要向其授予权限的目标用户名，然后选择“检查名称”以查找目标用户的完整 UPN 名称 。
+1.    选择“确定”。
+1.    在“安全性”选项卡中，选择要授予新用户的所有权限。
+1.    选择“应用”。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-启用并配置此功能后，请继续学习下一篇文章，从已加入域的 VM 中装载 Azure 文件共享。
+启用并配置此功能后，请继续阅读下一篇文章，从已加入域的 VM 装载 Azure 文件共享。
 
-[第四部分：从已加入域的 VM 装载文件共享](storage-files-identity-ad-ds-mount-file-share.md)
+[第 4 部分：从加入域的 VM 装载文件共享](storage-files-identity-ad-ds-mount-file-share.md)

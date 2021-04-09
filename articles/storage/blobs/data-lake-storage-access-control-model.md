@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439283"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制模型
@@ -75,33 +75,33 @@ Azure RBAC 使用角色分配向[安全主体](../../role-based-access-control/o
 
 |    操作             | 分配的 Azure 角色               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
-| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |  
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
+| Read Data.txt            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |  
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `R--`  |
-| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+| Append to Data.txt       |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `--X`     | `-W-`  |
 |                          |   None                           | `--X`    | `--X`    | `--X`     | `RW-`  |
-| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+| Delete Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
+| Create Data.txt          |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
 |                          |   存储 Blob 数据读取者       | `--X`    | `--X`    | `-WX`     | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `-WX`     | 不适用    |
-| List /                   |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
-|                          |   None                           | `R-X`    | 不适用      | 空值       | 不适用    |
-| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
+| List /                   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
+|                          |   None                           | `R-X`    | 不适用      | 不可用       | 不适用    |
+| List /Oregon/            |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `R-X`    | 不适用       | 不适用    |
-| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据参与者  | 不适用      | 空值      | 空值       | 不适用    |
-|                          |   存储 Blob 数据读取者       | 不适用      | 空值      | 空值       | 不可用    |
+| List /Oregon/Portland/   |   存储 Blob 数据所有者        | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据参与者  | 不适用      | 不可用      | 不可用       | 不适用    |
+|                          |   存储 Blob 数据读取者       | 不可用      | 不可用      | 不可用       | 不可用    |
 |                          |   None                           | `--X`    | `--X`    | `R-X`     | 不适用    |
 
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
 ms.openlocfilehash: b33db1b766d99aeb8d0a08f6396b5384948f118e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jll-tririga"></a>教程：Azure Active Directory 与 JLL TRIRIGA 的单一登录 (SSO) 集成
@@ -26,7 +26,7 @@ ms.locfileid: "98736863"
 * 让用户使用其 Azure AD 帐户自动登录到 JLL TRIRIGA。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -95,7 +95,7 @@ ms.locfileid: "98736863"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [JLL TRIRIGA 客户端支持团队](https://www.us.jll.com/contact-us)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 

@@ -5,19 +5,19 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 03/15/2021
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ad0c532c2ac80fd8a3bb3e68431ff7fc274d73e0
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 97d80e999ac61a2c2f8f561dc19213419014beb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98792283"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103470996"
 ---
 | 资源 | 限制 |
 | --- | --- |
-| 每个 Azure Active Directory 租户的订阅数 | 无限制 |
+| [与 Azure Active Directory 租户关联](../articles/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)的订阅数 | 无限制 |
 | 每个订阅的[协同管理员数](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) |无限制 |
 | 每个订阅的[资源组数](../articles/azure-resource-manager/management/overview.md) |980 |
 | Azure 资源管理器 API 请求大小 |4,194,304 字节 |

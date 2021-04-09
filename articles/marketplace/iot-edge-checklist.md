@@ -1,27 +1,27 @@
 ---
-title: Azure Marketplace 中的 IoT Edge 模块提供的预认证清单
-description: 了解有关在 Azure Marketplace 中发布 IoT Edge 模块产品/服务的特定认证要求。
+title: Azure 市场中 IoT Edge 模块产品/服务的预认证清单
+description: 了解在 Azure 市场中发布 IoT Edge 模块产品/服务的特定认证要求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: 4782e6c0ed866c467051fc1811a60df0010a3db1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744372"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102608251"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge 模块的预认证清单
 
 > [!NOTE]
-> 我们强烈建议发布者查看此核对清单并验证模块功能，然后再提交证明。 这将减少更改和 resubmissions 的需求，从而加速你的认证过程。
+> 我们强烈建议发布者先查看此清单并验证模块功能，然后再提交材料进行认证。 这可减少更改和重新提交的需求，从而加快认证过程。
 
 ## <a name="validation-of-image"></a>验证映像
 
-边缘模块映像准备好进行提交后，请执行以下步骤，以确保映像按 Microsoft 期望的方式工作。
+准备好提交 Edge 模块映像后，请执行以下步骤，以确保映像按 Microsoft 期望的方式工作。
 
 ### <a name="steps-to-perform-in-the-azure-portal"></a>要在 Azure 门户中执行的步骤
 
@@ -29,18 +29,18 @@ ms.locfileid: "101744372"
 1. 创建资源组。
 1. 创建 IoT 中心。
 1. 创建 IoT Edge 设备。
-1. 复制连接字符串，并将其保存在记事本中。
-1. 选择 "设置 **边缘设备上的模块**"。
-1. 添加最新版本的映像所在的 ACR 详细信息。
-1. 选择 " **添加 IoT Edge 模块** ，并提供：
-    - 模块设置中的图像 URI
-    - 环境变量 (与合作伙伴中心添加的环境变量) 
-    - 容器创建选项 (与合作伙伴中心添加的选项相同) 
-    - 模块克隆设置 (与合作伙伴中心添加的内容相同) 
-1. 添加路由 (与合作伙伴中心) 中添加的内容相同。
-1. 选择“查看 + 创建”。
+1. 复制连接字符串并将其保存在记事本中。
+1. 选择设置“创建的 Edge 设备上的模块”。
+1. 添加最新版本映像所在的 ACR 的详细信息。
+1. 选择“添加 IoT Edge 模块”并提供：
+    - 模块设置中的映像 URI
+    - 环境变量（与合作伙伴中心添加的环境变量相同）
+    - 容器创建选项（与合作伙伴中心添加的此选项相同）
+    - 模块孪生设置（与合作伙伴中心添加的此设置相同）
+1. 添加路由（与合作伙伴中心添加的路由相同）。
+1. 选择“查看 + 创建”  。
 
-边缘模块部署在 Azure 上创建的边缘设备上。
+Edge 模块部署在 Azure 中创建的 Edge 设备上。
 
 ### <a name="steps-to-perform-on-the-device"></a>要在设备上执行的步骤
 
@@ -48,18 +48,18 @@ ms.locfileid: "101744372"
 
 认证团队使用以下硬件在不同体系结构上验证映像：
 
-- 对于 X64 映像，其配置大小为运行 Ubuntu Server 18.04/Ubuntu Server 16.04 的标准 D2s v3 的 Azure VM。
-- 对于 Azure 资源管理器32映像，Raspberry Pi 3 模型 B。
-- 对于 Azure 资源管理器64映像，NVIDIA Jetson Nano 4Gb。
+- 对于 X64 映像，配置大小与运行 Ubuntu Server 18.04/Ubuntu Server 16.04 的标准 D2s v3 相同的 Azure VM。
+- 对于 Azure 资源管理器 32 映像，Raspberry Pi 3 模型 B。
+- 对于 Azure 资源管理器 64 映像，NVIDIA Jetson Nano 4Gb。
 
 #### <a name="steps"></a>步骤
 
 1. 确保可通过 Putty 访问创建的设备/VM。
-1. 将 [IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge) 下载到设备上。
-1. 将步骤5中复制的连接字符串更新为 yaml 文件。
-1. 重新启动边缘模块 `sudo systemctl restart iotedge` 。
-1. 检查是否已将模块部署到设备上， `sudo iotedge list` 它应处于 "正在运行" 状态。
-1. 确保使用部署的模块的日志 `sudo iotedge logs “Module Name“ -f` 没有任何错误。 如果有已知错误，请在提交产品/服务之前，在合作伙伴中心 **说明中对** 此进行说明。
+1. 将 [IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge)下载到设备上。
+1. 将在步骤 5 中复制的连接字符串更新到 yaml 文件。
+1. 重启 Edge 模块 `sudo systemctl restart iotedge`。
+1. 使用 `sudo iotedge list` 检查是否已在设备上部署模块，该模块应处于“正在运行”状态。
+1. 确保使用 `sudo iotedge logs “Module Name“ -f` 部署的模块的日志没有任何错误。 如果有已知错误，请在合作伙伴中心“审阅者注意事项”中进行描述，然后再提交产品/服务。
 
 ## <a name="metadata-validation"></a>元数据验证
 
@@ -67,16 +67,17 @@ ms.locfileid: "101744372"
 
 - 合作伙伴中心和 Azure 容器注册表中均列出了最新标记。
 - 产品/服务描述中添加了最低硬件要求。
-- Azure 容器注册表用户名和密码会更新并添加到合作伙伴中心。
-- 所需的每个 **属性** 的准确性（ *如果适用）*。
-- 所需的 **环境变量** 的准确性（ *如果适用）*。
-- 所需的 **创建选项** 的准确性（ *如果适用）*。
-- 存在潜在客户管理连接字符串。
+- Azure 容器注册表用户名和密码已更新，并已添加到合作伙伴中心。
+- 所需“孪生属性”的准确度（如果适用）。
+- 所需“环境变量”的准确度（如果适用）。
+- 所需“创建选项”的准确度（如果适用）。
+- 存在“潜在顾客管理”连接字符串。
 - 存在隐私策略
-- 使用条款存在
+- 存在使用条款
+- 从 [Azure IoT 设备目录](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible)添加支持的 IoT Edge 设备链接 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [从商业应用商店部署模块](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [在合作伙伴中心发布边缘模块](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [从商业市场部署模块](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
+- [在合作伙伴中心发布 Edge 模块](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
 - [部署 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  

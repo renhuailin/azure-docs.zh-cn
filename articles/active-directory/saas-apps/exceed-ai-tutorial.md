@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
 ms.openlocfilehash: 5db18b36464e51d8832e0879e55cfe6f0f73eab5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104597787"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exceedai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Exceed.ai 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "104597787"
 * 让用户使用其 Azure AD 帐户自动登录到 Exceed.ai。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98725435"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>确定外部访问的安全状况 
@@ -85,7 +85,7 @@ IT 管理的访问目标不同于委托的访问目标。
 
 4. [使用组以确保安全性](4-secure-access-groups.md)
 
-5. [过渡到 Azure AD B2B](5-secure-access-b2b.md)
+5. [转换到 Azure AD B2B](5-secure-access-b2b.md)
 
 6. [通过权利管理实现安全访问](6-secure-access-entitlement-managment.md)
 

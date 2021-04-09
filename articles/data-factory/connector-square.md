@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: ac10e42d338e0ddd44cb3c07709645a69653808d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100384786"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Square 复制数据
@@ -43,7 +43,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Square 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Square** | 是 |
 | connectionProperties | 定义如何连接到 Square 的一组属性。 | 是 |
@@ -102,7 +102,7 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 
 要从 Square 复制数据，请将数据集的 type 属性设置为“SquareObject”  。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SquareObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -132,10 +132,10 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 
 要从 Square 复制数据，请将复制活动中的源类型设置为“SquareSource”  。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SquareSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Business"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Business"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -169,7 +169,7 @@ Square 支持两种类型的访问令牌：个人和 OAuth 。
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

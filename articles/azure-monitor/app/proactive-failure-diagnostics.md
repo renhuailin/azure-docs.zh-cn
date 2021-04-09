@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: 0f4de3aaba4acf86df37048134089326196e87ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100587534"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
@@ -425,11 +425,11 @@ ms.locfileid: "100587534"
 
 *那么，你是否正在查看我的应用程序数据？*
 
-* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
+* 否。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](./data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 不是。 发送请求数据的每个应用程序都有智能检测警报规则。
+* 否。 发送请求数据的每个应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 

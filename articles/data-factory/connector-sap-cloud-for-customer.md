@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: 4590129b8d0d7a63ef4291a023ea4d980c89368c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386639"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597311"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
 
@@ -21,13 +21,13 @@ ms.locfileid: "100386639"
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 SAP Cloud for Customer (C4C) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[关于使用 Azure 数据工厂进行 SAP 数据集成的白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 SAP Cloud for Customer 连接器：
 
-- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可将数据从 SAP Cloud for Customer 复制到任何受支持的接收器数据存储，或者将数据从任何受支持的源数据存储复制到 SAP Cloud for Customer。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -44,7 +44,7 @@ ms.locfileid: "100386639"
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
@@ -81,7 +81,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
 | path | 指定 SAP C4C OData 实体的路径。 |是 |
@@ -113,7 +113,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
 | query | 指定用于读取数据的自定义 OData 查询。 | 否 |
@@ -157,11 +157,12 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
-| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不是。 默认值为“Insert”。 |
-| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 不是。 默认值为 10。 |
+| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 否。 默认值为“Insert”。 |
+| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 否。 默认值为 10。 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
 
 **示例：**
 
@@ -220,7 +221,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

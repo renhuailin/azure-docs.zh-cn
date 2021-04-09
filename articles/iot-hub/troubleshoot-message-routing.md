@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 29127a9dff42c0f733e3721d1ea5fea7350e774e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
-ms.translationtype: MT
+ms.openlocfilehash: 3abff5645775d724042acba3ee2461c7cad771a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547345"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149658"
 ---
 # <a name="troubleshooting-message-routing"></a>消息路由故障排除
 
@@ -20,7 +20,7 @@ ms.locfileid: "92547345"
 
 ## <a name="monitoring-message-routing"></a>监视消息路由
 
-建议你监视 [与消息路由和终结点相关的 IoT 中心度量值](monitor-iot-hub-reference.md#routing-metrics) ，以便为你概述发送的消息。 还可以创建诊断设置，以便将 [IoT 中心资源日志中的 **路由**](monitor-iot-hub-reference.md#routes)的操作发送到 Azure Monitor 日志、事件中心或 Azure 存储进行自定义处理。 若要了解有关使用指标、资源日志和诊断设置的详细信息，请参阅 [监视 IoT 中心](monitor-iot-hub.md)。 有关教程，请参阅 [使用 IoT 中心设置和使用指标和资源日志](tutorial-use-metrics-and-diags.md)。
+建议监视[与消息路由和终结点相关的 IoT 中心指标](monitor-iot-hub-reference.md#routing-metrics)，以便对发送的消息有个大致了解。 还可以创建一个诊断设置，以便 [将 IoT 中心资源日志中 **路由**](monitor-iot-hub-reference.md#routes)的操作发送到 Azure Monitor 日志、事件中心或 Azure 存储以进行自定义处理。 若要详细了解如何使用指标、资源日志和诊断设置，请参阅[监视 IoT 中心](monitor-iot-hub.md)。 有关教程，请参阅[通过 IoT 中心设置和使用指标和资源日志](tutorial-use-metrics-and-diags.md)。
 
 如果要维护与任何路由上的查询不匹配的消息，建议同时启用[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)。 这些路由可以在[内置终结点](iot-hub-devguide-messages-read-builtin.md)中保留至配置的保留天数。
 
@@ -37,11 +37,11 @@ ms.locfileid: "92547345"
 
 #### <a name="the-routing-metrics-for-this-endpoint"></a>此终结点的路由指标
 
-与 [路由相关的所有 IoT 中心指标](monitor-iot-hub-reference.md#routing-metrics) 都带有 *路由* 前缀。 你可以组合来自多项指标的信息来确定问题的根本原因。 例如，使用指标“路由传递尝试数”来确定当消息与任何路由上的查询不匹配并且已禁用回退路由时传递到终结点或已删除的消息数。 检查“路由延迟”指标来观察消息传递的延迟是否稳定或增加。 延迟的增加可能表示特定终结点有问题，建议检查[终结点的运行状况](#the-health-of-the-endpoint)。 这些路由指标还具有[维度](monitor-iot-hub-reference.md#metric-dimensions)，这些维度提供有关指标的详细信息，如终结点类型、特定终结点名称和消息未传递的原因。
+所有与路由相关的 [IoT 中心指标](monitor-iot-hub-reference.md#routing-metrics)都以“Routing”作为前缀。 你可以组合来自多项指标的信息来确定问题的根本原因。 例如，使用指标“路由传递尝试数”来确定当消息与任何路由上的查询不匹配并且已禁用回退路由时传递到终结点或已删除的消息数。 检查“路由延迟”指标来观察消息传递的延迟是否稳定或增加。 延迟的增加可能表示特定终结点有问题，建议检查[终结点的运行状况](#the-health-of-the-endpoint)。 这些路由指标还具有[维度](monitor-iot-hub-reference.md#metric-dimensions)，这些维度提供有关指标的详细信息，如终结点类型、特定终结点名称和消息未传递的原因。
 
 #### <a name="the-resource-logs-for-any-operational-issues"></a>任何操作问题的资源日志
 
-查看 [**路由** 资源日志](monitor-iot-hub-reference.md#routes) 以获取有关路由和终结点 [操作](#operation-names) 的详细信息，或者标识错误和相关 [错误代码](#common-error-codes) ，以进一步了解问题。 例如，日志中的操作名称“RouteEvaluationError”指示由于消息格式的问题，无法计算路由。 使用为特定的[操作名称](#operation-names)提供的提示来缓解此问题。 将某个事件记录为一个错误时，日志还提供计算失败原因的详细信息。 例如，如果操作名称为 **EndpointUnhealthy** ，则 [错误代码](#common-error-codes) 为403004，表示终结点空间不足。
+观察[“路由”诊断日志](monitor-iot-hub-reference.md#routes)，获取有关路由和终结点[操作](#operation-names)的详细信息，或者确定错误和相关的[错误代码](#common-error-codes)以进一步了解问题。 例如，日志中的操作名称“RouteEvaluationError”指示由于消息格式的问题，无法计算路由。 使用为特定的[操作名称](#operation-names)提供的提示来缓解此问题。 将某个事件记录为一个错误时，日志还提供计算失败原因的详细信息。 例如，如果操作名称是“EndpointUnhealthy”，则[错误代码](#common-error-codes) 403004 指示终结点空间不足。
 
 #### <a name="the-health-of-the-endpoint"></a>终结点的运行状况
 
@@ -68,7 +68,7 @@ ms.locfileid: "92547345"
 
 ## <a name="routes-resource-logs"></a>路由资源日志
 
-下面是 [路由资源日志](monitor-iot-hub-reference.md#routes)中记录的操作名称和错误代码。
+下面是[路由资源日志](monitor-iot-hub-reference.md#routes)中记录的操作名称和错误代码。
 
 <a id="diagnostics-operation-names"></a>
 ### <a name="operation-names"></a>操作名称
@@ -82,4 +82,4 @@ ms.locfileid: "92547345"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持** 。
+如果需要更多帮助，可以通过 [Microsoft Q&A 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
