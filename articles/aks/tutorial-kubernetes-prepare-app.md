@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc
 ms.openlocfilehash: 349bf90ea0b344d5232c885358814f39fba4c19f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98251942"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序

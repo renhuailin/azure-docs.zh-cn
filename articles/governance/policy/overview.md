@@ -4,10 +4,10 @@ description: Azure Policy 是 Azure 中的一项服务，用于创建、分配�
 ms.date: 01/14/2021
 ms.topic: overview
 ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98220722"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041835"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199162"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -31,7 +31,7 @@ ms.locfileid: "102041835"
 >仅 x86_x64 平台（64 位）支持 OpenSSL 1.1.0，任何平台均不支持早于 1.x 版本的 OpenSSL。
 
 >[!NOTE]
->不支持在容器中运行 Log Analytics Linux 代理。 如果需要监视容器，请利用适用于 Docker 主机的 [容器监视解决方案](../containers/containers.md) 或 Kubernetes 的 [容器见解](../containers/container-insights-overview.md) 。
+>不支持在容器中运行 Log Analytics Linux 代理。 如果需要监视容器，请对 Docker 主机使用[容器监视解决方案](../containers/containers.md)，对 Kubernetes 使用[容器见解](../containers/container-insights-overview.md)。
 
 从 2018 年 8 月之后发布的版本开始，我们对支持模型进行了以下更改：  
 
@@ -41,7 +41,7 @@ ms.locfileid: "102041835"
 * 超出制造商终止支持日期的版本不受支持。
 * 仅支持 VM 映像；不支持容器，即使是从正式发行版发布者的映像派生的容器。
 * 不支持新版本的 AMI。  
-* 默认仅支持运行 SSL 1.x 的版本。
+* 默认情况下，仅支持运行 OpenSSL 1.x 的版本。
 
 >[!NOTE]
 >如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
@@ -127,7 +127,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供程序。 仅当检测到 Docker �
 
 ## <a name="install-the-agent-using-wrapper-script"></a>使用包装器脚本来安装代理
 
-以下步骤使用适用于 Linux 计算机（可直接或通过代理服务器进行通信以下载在 GitHub 上托管的代理并安装代理）的包装脚本，为 Azure 和 Azure 政府云中的 Log Analytics 配置代理的安装程序。  
+以下步骤使用适用于 Linux 计算机的包装器脚本为 Azure 和 Azure 政府云中的 Log Analytics 配置代理的安装，这些计算机可直接通信或通过代理服务器通信，以下载托管在 GitHub 上的代理并安装该代理。  
 
 如果 Linux 计算机需要通过代理服务器与 Log Analytics 通信，可以通过包含 `-p [protocol://][user:password@]proxyhost[:port]` 在命令行中指定此配置。 *protocol* 属性接受 `http` 或 `https`，*proxyhost* 属性接受代理服务器的完全限定域名或 IP 地址。 
 
@@ -195,7 +195,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供程序。 仅当检测到 Docker �
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-4. 若要将 Linux 计算机配置为连接到 Azure 政府云中的 Log Analytics 工作区，请运行以下命令，以提供前面复制的工作区 ID 和主密钥。
+4. 若要配置 Linux 计算机以连接至 Azure 政府云中的 Log Analytics 工作区，请运行以下命令，并提供先前复制的工作区 ID 和主密钥。
 
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us

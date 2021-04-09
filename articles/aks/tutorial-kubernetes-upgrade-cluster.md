@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98251329"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
@@ -23,7 +23,7 @@ ms.locfileid: "98251329"
 > * 升级 Kubernetes 节点
 > * 验证升级是否成功
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 

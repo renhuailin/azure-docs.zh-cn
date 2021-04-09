@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
 ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104580362"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>安装并配置 xrdp 以在 Ubuntu 上使用远程桌面
@@ -110,7 +110,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 如果本地 RDP 客户端使用网络级别身份验证 (NLA)，则可能需要禁用该连接设置。 XRDP 目前不支持 NLA。 还可以考虑其他支持 NLA 的替代 RDP 解决方案，例如 [FreeRDP](https://www.freerdp.com)。
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 如果无法使用远程桌面客户端连接到 Linux VM，请在 Linux VM上使用 `netstat` 验证 VM 是否正在侦听 RDP 连接，如下所示：
 
 ```bash

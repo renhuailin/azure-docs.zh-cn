@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
 ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97962799"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP NetWeaver 的集成
@@ -189,13 +189,13 @@ ms.locfileid: "97962799"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-    1. 在“名称”  字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-    1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+    1. 在“名称”字段中，输入 `B.Simon`。  
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

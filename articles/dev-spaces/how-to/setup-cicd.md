@@ -9,10 +9,10 @@ manager: gwallace
 description: 了解如何将 Azure DevOps 与 Azure Dev Spaces 配合使用来设置持续集成/持续部署
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: 142f01a04066b919a81e1ad1ea95efa31f51f6ca
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102548727"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces

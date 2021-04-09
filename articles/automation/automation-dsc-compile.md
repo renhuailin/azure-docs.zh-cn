@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98896336"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>在 Azure Automation State Configuration 中编译 DSC 配置
@@ -184,7 +184,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 Azure Automation State Configuration 和 Runbook 中的资产引用是相同的。 有关详细信息，请参阅以下主题：
 
-- [Certificates](./shared-resources/certificates.md)
+- [证书](./shared-resources/certificates.md)
 - [连接](automation-connections.md)
 - [凭据](./shared-resources/credentials.md)
 - [变量](./shared-resources/variables.md)
