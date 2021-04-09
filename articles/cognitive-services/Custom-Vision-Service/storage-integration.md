@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 2afac0e25c394c9bf265daf1fe3ded3d763a7c61
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fd4ad1443f466a78abfc569d5f52f6bdeff2d5be
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048878"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成用于通知和备份的 Azure 存储
 
@@ -29,7 +29,7 @@ ms.locfileid: "102508497"
 
 - Azure 中的一个自定义视觉资源。 如果你没有此资源，请转到 Azure 门户并[创建一个新的自定义视觉资源](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。 此功能目前不支持认知服务资源（一体式密钥）。
 - 一个带有 Blob 容器的 Azure 存储帐户。 如需有关此步骤的帮助，请参阅 [Azure 存储实验室练习 1](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1)。
-* [PowerShell 6.0 或更高版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)，或者类似的命令行应用程序。
+* [PowerShell 6.0 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)，或者类似的命令行应用程序。
 
 ## <a name="set-up-azure-storage-integration"></a>设置 Azure 存储集成
 

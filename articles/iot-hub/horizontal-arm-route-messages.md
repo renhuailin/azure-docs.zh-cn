@@ -9,10 +9,10 @@ ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
 ms.openlocfilehash: fc8ddba2ec9b7bc9f1c2db8673ab805810afe17e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99981283"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure IoT 中心和存储帐户

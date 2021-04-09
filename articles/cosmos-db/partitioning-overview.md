@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
-ms.translationtype: MT
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772461"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -36,13 +36,13 @@ Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用�
 
 容器是通过在物理分区之间分配数据和吞吐量来进行缩放的。 在内部，一个或多个逻辑分区映射到一个物理分区。 通常，较小的容器会有许多逻辑分区，但这些容器只需要一个物理分区。 与逻辑分区不同，物理分区是系统的内部实现，并且全部由 Azure Cosmos DB 管理。
 
-容器中的物理分区数取决于下列各项：
+容器中的物理分区数依赖于以下各项：
 
 * 预配的吞吐量（每个单独的物理分区最多可以提供每秒 10,000 个请求单位的吞吐量）
 * 总数据存储量（每个单独的物理分区最多可以存储 50GB 数据）。
 
 > [!NOTE]
-> 物理分区是系统的内部实现，它们由 Azure Cosmos DB 完全管理。 开发你的解决方案时，请不要将重点放在物理分区上，因为你不能对其进行控制。 而应重点关注您的分区键。 如果选择在逻辑分区间平均分配吞吐量消耗的分区键，将会确保物理分区间的吞吐量消耗保持均衡。
+> 物理分区是系统的内部实现，并且全部由 Azure Cosmos DB 管理。 开发解决方案时，请不要将重点放在物理分区上，因为你无法对其进行控制。 而应重点关注分区键。 如果选择在逻辑分区间平均分配吞吐量消耗的分区键，将会确保物理分区间的吞吐量消耗保持均衡。
 
 容器中物理分区的总数是没有限制的。 随着预配的吞吐量或数据量规模的增长，Azure Cosmos DB 将会通过拆分现有物理分区来自动创建新物理分区。 物理分区拆分不影响应用程序可用性。 物理分区拆分后，单个逻辑分区内的所有数据仍将存储在同一个物理分区中。 物理分区拆分只是创建逻辑分区到物理分区的新映射。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用�
 
 :::image type="content" source="./media/partitioning-overview/view-partitions-zoomed-out.png" alt-text="查看物理分区数" lightbox="./media/partitioning-overview/view-partitions-zoomed-in.png" ::: 
 
-在上面的屏幕截图中，容器具有 `/foodGroup` 作为分区键。 图中三个条形中的每一个都表示一个物理分区。 在此图中，分区键范围与物理分区相同。 选定的物理分区包含前3个最重要的逻辑分区： `Beef Products` 、 `Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies` 。
+在上面的屏幕截图中，容器具有 `/foodGroup` 作为分区键。 图中三个条形中的每一个都表示一个物理分区。 在此图中，分区键范围与物理分区相同。 选定的物理分区包含前 3 个最重要的逻辑分区：`Beef Products`、`Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies`。
 
 如果预配每秒 18,000 个请求单位 (RU/s) 的吞吐量，则三个物理分区中的每一个都可以利用总预配吞吐量的 1/3。 在选定的物理分区中，逻辑分区键 `Beef Products`、`Vegetable and Vegetable Products` 和 `Soups, Sauces, and Gravies` 可以共同利用为物理分区预配的每秒 6,000 个 RU。 由于预配的吞吐量是在容器的物理分区间平均分配的，因此，请务必通过[选择正确的逻辑分区键](#choose-partitionkey)来选择平均分配吞吐量消耗的分区键。 
 
@@ -64,13 +64,11 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 
 只允许针对单个逻辑分区中的项执行事务（在存储过程或触发器中）。
 
-可以详细了解 [Azure Cosmos DB 如何管理分区](partitioning-overview.md)。 （生成或运行应用程序不需要了解内部详细信息，添加到这里只是为了方便那些好奇的读者。）
-
 ## <a name="replica-sets"></a>副本集
 
 每个物理分区都包含一组副本（也称为[副本集](global-dist-under-the-hood.md)）。 每个副本集都托管数据库引擎的一个实例。 副本集使物理分区中存储的数据具有持久性、高可用性和一致性。 构成物理分区的每个副本均继承该分区的存储配额。 物理分区的所有副本共同支持分配给物理分区的吞吐量。 Azure Cosmos DB 自动管理副本集。
 
-通常，较小的容器只需要单个物理分区，但它们仍将至少具有4个副本。
+通常，较小的容器只需要一个物理分区，但这些容器仍将至少具有 4 个副本。
 
 下图显示了逻辑分区如何映射到全局分配的物理分区：
 

@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737314"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>设置用于 Azure 自定义提供程序的 Azure Functions
@@ -27,13 +27,13 @@ ms.locfileid: "98737314"
 
 若要安装 Azure 表存储绑定，请执行以下操作：
 
-1. 转到用于 HttpTrigger 的“集成”选项卡。 
-1. 选择“+ 新建输入”。 
-1. 选择“Azure 表存储”。 
+1. 转到用于 HttpTrigger 的“集成”选项卡。
+1. 选择“+ 新建输入”。
+1. 选择“Azure 表存储”。
 1. 安装 Microsoft.Azure.WebJobs.Extensions.Storage 扩展（如果尚未安装）。
-1. 在“表参数名称”框中，输入 tableStorage。  
-1. 在“表名称”框中，输入 myCustomResources。  
-1. 选择“保存”，保存更新的输入参数。 
+1. 在“表参数名称”框中，输入 tableStorage。
+1. 在“表名称”框中，输入 myCustomResources。
+1. 选择“保存”，保存更新的输入参数。
 
 ![显示表绑定的自定义提供程序概览](./media/create-custom-provider/azure-functions-table-bindings.png)
 
@@ -41,8 +41,8 @@ ms.locfileid: "98737314"
 
 若要设置 Azure 函数，使之包含自定义提供程序 RESTful 请求方法，请执行以下操作：
 
-1. 转到用于 HttpTrigger 的“集成”选项卡。 
-1. 在“选定 HTTP 方法”下，选择 **GET**、**POST**、**DELETE** 和 **PUT**。 
+1. 转到用于 HttpTrigger 的“集成”选项卡。
+1. 在“选定 HTTP 方法”下，选择 **GET**、**POST**、**DELETE** 和 **PUT**。
 
 ![显示 HTTP 方法的自定义提供程序概览](./media/create-custom-provider/azure-functions-http-methods.png)
 
@@ -79,4 +79,4 @@ ms.locfileid: "98737314"
 
 本教程介绍如何设置 Azure 函数应用，将其用作 Azure 自定义提供程序终结点。
 
-若要了解如何创作 RESTful 自定义提供程序，请参阅[教程：创作 RESTful 自定义提供程序终结点](./tutorial-custom-providers-function-authoring.md)。
+若要了解如何创作 RESTful 自定义提供程序终结点，请参阅[教程：创作 RESTful 自定义提供程序终结点](./tutorial-custom-providers-function-authoring.md)。

@@ -3,12 +3,12 @@ title: Azure Service Fabric 中的定期备份和还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 42097b50277e78b3f0e8f5e61a2bf70cc08dbc02
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927984"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198711"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
 > [!div class="op_single_selector"]
@@ -48,14 +48,14 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-cluster-creation-via-arm.md)，了解如何获取或创建 X.509 证书。
 * 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
 * 创建 Azure 存储帐户，用于存储应用程序备份。
-* 安装 ServiceFabric 模块 (预览) 进行配置调用。
+* 安装 Microsoft.ServiceFabric.Powershell.Http 模块（预览版）进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
 > [!NOTE]
-> 如果 PowerShellGet 版本低于1.6.0，则需要更新以添加对 *-AllowPrerelease* 标志的支持：
+> 如果 PowerShellGet 版本低于 1.6.0，则需要进行更新以添加对 -AllowPrerelease 标志的支持：
 >
 > `Install-Module -Name PowerShellGet -Force`
 
@@ -77,9 +77,9 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
-首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可以使用 [示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) ，也可以创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
+首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
 
-1. 检查 `apiversion` 是否已将资源的设置为 **`2018-02-01`** `Microsoft.ServiceFabric/clusters` ，如果没有，请更新它，如以下代码片段所示：
+1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新：
 
     ```json
     {
@@ -215,6 +215,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ``` 
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+请确保已启用 Service Fabric Explorer 的[高级模式](service-fabric-visualizing-your-cluster.md#backup-and-restore) 
 
 1. 选择应用程序，然后访问操作。 单击“启用/更新应用程序备份”。
 

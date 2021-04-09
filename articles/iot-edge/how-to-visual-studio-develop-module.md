@@ -8,14 +8,16 @@ ms.author: kgremban
 ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2ae6d46198d979f91de5bf31d389f75961b4ab88
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: MT
+ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437161"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103196929"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 可以将业务逻辑转变为用于 Azure IoT Edge 的模块。 本文介绍如何使用 Visual Studio 2019 作为主要工具来开发和调试模块。
 
@@ -98,7 +100,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![创建新项目](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器的外观类似于 **_\<registry name\>_ azurecr.io**。 仅替换字符串中的 **localhost： 5000** 部分，使最终结果如 **\<*registry name*\> azurecr.io/ _\<your module name\>_**。 默认模块名称为“IotEdgeModule1” 
+1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器如下所示：\<registry name\>.azurecr.io。 仅替换字符串的 localhost:5000 部分，使最终结果类似于 \<*registry name*\>.azurecr.io/\<your module name\> 。 默认模块名称为“IotEdgeModule1” 
 
    ![添加应用程序和模块](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -162,7 +164,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 1. 按 Ctrl + F5 或单击“停止”按钮以停止调试  。
 
-## <a name="build-and-debug-iot-edge-solution-with-multiple-modules"></a>构建并调试具有多个模块的 IoT Edge 解决方案
+## <a name="build-and-debug-iot-edge-solution-with-multiple-modules&quot;></a>构建并调试具有多个模块的 IoT Edge 解决方案
 
 开发完单个模块之后，需要运行并调试具有多个模块的整个解决方案。
 
@@ -171,9 +173,9 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 1. 打开文件 `deployment.template.json`，会看到 IotEdgeModule2 已添加到 **modules** 节中。 将 routes 部分替换为以下内容  。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
 
     ```json
-        "routes": {
-          "IotEdgeModule1ToIoTHub": "FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIotEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
+        &quot;routes&quot;: {
+          &quot;IotEdgeModule1ToIoTHub&quot;: &quot;FROM /messages/modules/IotEdgeModule1/outputs/* INTO $upstream&quot;,
+          &quot;sensorToIotEdgeModule1&quot;: &quot;FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule1/inputs/input1\")",
           "IotEdgeModule2ToIoTHub": "FROM /messages/modules/IotEdgeModule2/outputs/* INTO $upstream",
           "sensorToIotEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IotEdgeModule2/inputs/input1\")"
         },

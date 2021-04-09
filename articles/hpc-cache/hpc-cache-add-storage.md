@@ -1,144 +1,147 @@
 ---
 title: 将存储添加到 Azure HPC 缓存
-description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 NFS 系统或 Azure Blob 容器用于长期文件存储
+description: 如何定义存储目标，使 Azure HPC 缓存能够使用本地 NFS 系统或 Azure Blob 容器来长期存储文件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: b4df5863cc746490f13685a8d412232217af3bc8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772716"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
-*存储目标* 是可通过 Azure HPC 缓存访问的文件的后端存储。 你可以添加 NFS 存储 (，例如本地硬件系统) ，或将数据存储在 Azure Blob 中。
+*存储目标* 是适用于通过 Azure HPC 缓存访问的文件的后端存储。 可以添加 NFS 存储（例如本地硬件系统），也可以将数据存储在 Azure Blob 中。
 
-最多可为一个缓存定义十个不同的存储目标。 缓存在一个聚合命名空间中显示所有存储目标。
+最多可为一个缓存定义 20 个不同的存储目标。 缓存在一个聚合命名空间中提供所有存储目标。
 
-添加存储目标后，会单独配置命名空间路径。 通常情况下，NFS 存储目标最多可以有10个命名空间路径，或更多为一些大配置。 有关详细信息，请参阅 [NFS 命名空间路径](add-namespace-paths.md#nfs-namespace-paths) 。
+命名空间路径是在添加存储目标后单独配置的。 一般情况下，一个 NFS 存储目标最多可以有 10 个命名空间路径，对于某些大型配置，其命名空间路径可以更多。 有关详细信息，请阅读 [NFS 命名空间路径](add-namespace-paths.md#nfs-namespace-paths)。
 
-请记住，必须可以从缓存的虚拟网络中访问存储导出。 对于本地硬件存储，你可能需要设置一个 DNS 服务器，该服务器可以解析用于 NFS 存储访问的主机名。 在 [DNS 访问](hpc-cache-prerequisites.md#dns-access)中了解详细信息。
+请记住，存储导出必须可供从缓存的虚拟网络访问。 对于本地硬件存储，可能需要设置一个 DNS 服务器，该服务器可以解析用于访问 NFS 存储的主机名。 请阅读 [DNS 访问](hpc-cache-prerequisites.md#dns-access)了解详细信息。
 
-创建缓存后，添加存储目标。 按照以下过程操作：
+创建缓存后添加存储目标。 请遵循以下过程：
 
 1. [创建缓存](hpc-cache-create.md)
-1. 在本文中定义存储目标 (信息) 
-1. 为[聚合命名空间](hpc-cache-namespace.md)[创建面向客户端的路径](add-namespace-paths.md) () 
+1. 定义存储目标（本文介绍的信息）
+1. [创建面向客户端的路径](add-namespace-paths.md)（用于[聚合命名空间](hpc-cache-namespace.md)）
 
-添加存储目标的过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
+添加存储目标的过程根据存储目标使用的存储类型而略有不同。 下面介绍了每种方法的详细信息。
 
-单击下面的图像，观看有关创建缓存并从 Azure 门户添加存储目标的 [视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) 。
+单击下图观看有关在 Azure 门户中创建缓存和添加存储目标的[视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
 
-[![视频缩略图： Azure HPC 缓存：安装程序 (单击以访问视频页面) ](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![视频缩略图：Azure HPC 缓存：设置（单击此项可访问视频页）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>添加新的 Azure Blob 存储目标
 
-新的 Blob 存储目标需要空的 Blob 容器或使用 Azure HPC 缓存云文件系统格式的数据进行填充的容器。 详细了解如何在 [将数据移入 Azure blob 存储](hpc-cache-ingest.md)中预加载 Blob 容器。
+新的 Blob 存储目标需要一个空的 Blob 容器，或者以 Azure HPC 缓存云文件系统格式的数据填充的容器。 在[将数据移到 Azure Blob 存储](hpc-cache-ingest.md)中详细了解如何预加载 Blob 容器。
 
-"Azure 门户 **添加存储目标** " 页包括在添加新的 Blob 容器之前创建新的 Blob 容器的选项。
-
-### <a name="portal"></a>[门户](#tab/azure-portal)
-
-在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 " **存储目标** "。
-
-![设置 > 存储目标 "页的屏幕截图，表中有两个现有的存储目标，并在表上方的" + 添加存储目标 "按钮周围突出显示](media/add-storage-target-button.png)
-
-" **存储目标** " 页将列出所有现有目标，并提供一个用于添加新目标的链接。
-
-单击 " **添加存储目标** " 按钮。
-
-!["添加存储目标" 页的屏幕截图，其中填充了新的 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
-
-要定义 Azure Blob 容器，请输入此信息。
-
-* **存储目标名称** -设置在 Azure HPC 缓存中标识此存储目标的名称。
-* **目标类型** -选择 " **Blob**"。
-* **存储帐户** -选择要使用的帐户。
-
-  如 [添加访问角色](#add-the-access-control-roles-to-your-account)中所述，你将需要授权缓存实例访问存储帐户。
-
-  有关可使用的存储帐户类型的信息，请参阅 [Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)。
-
-* **存储容器** -选择此目标的 Blob 容器，或单击 " **新建**"。
-
-  ![用于为新容器指定名称和访问级别 (专用) 的对话框屏幕截图](media/add-blob-new-container.png)
-
-完成后，单击 **"确定"** 以添加存储目标。
+Azure 门户中的“添加存储目标”页提供了用于创建新的 Blob 容器，然后紧接着添加该容器的选项。
 
 > [!NOTE]
-> 如果你的存储帐户防火墙设置为仅限 "所选网络" 的访问权限，请使用 [有关 Blob 存储帐户防火墙设置](hpc-cache-blob-firewall-fix.md)的解决方法中所述的临时解决方法。
+> 对于已装载 NFS 的 Blob 存储，请使用 [ADLS-NFS 存储目标](#)类型。
 
-### <a name="add-the-access-control-roles-to-your-account"></a>向你的帐户添加访问控制角色
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/index.yml) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+在 Azure 门户中打开你的缓存实例，然后单击左侧边栏中的“存储目标”。
 
-存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色 [存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor) 和 [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 。
+![“设置”>“存储目标”页的屏幕截图，其中的表格列出了两个现有的存储目标，表格上方突出显示了“+ 添加存储目标”按钮](media/add-storage-target-button.png)
 
-可以提前完成此操作，也可以通过单击页面上添加 Blob 存储目标的链接来完成此操作。 请记住，将角色设置传播到 Azure 环境可能需要长达五分钟，因此，在创建存储目标之前，请等待几分钟，然后再添加角色。
+“存储目标”页将列出所有现有目标，并提供用于添加新目标的链接。
+
+单击“添加存储目标”按钮。
+
+![“添加存储目标”页的屏幕截图，其中填充了新 Azure Blob 存储目标的信息](media/hpc-cache-add-blob.png)
+
+若要定义 Azure Blob 容器，请输入以下信息。
+
+* **存储目标名称** - 设置一个用于在 Azure HPC 缓存中标识此存储目标的名称。
+* **目标类型** - 选择“Blob”。
+* **存储帐户** - 选择要使用的帐户。
+
+  需要根据[添加访问角色](#add-the-access-control-roles-to-your-account)中所述，授权缓存实例访问存储帐户。
+
+  有关可以使用的存储帐户类型的信息，请参阅 [Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)。
+
+* **存储容器** - 选择此目标的 Blob 容器，或单击“新建”。
+
+  ![用于指定新容器的名称和访问级别（专用）的对话框屏幕截图](media/add-blob-new-container.png)
+
+完成后，单击“确定”以添加该存储目标。
+
+> [!NOTE]
+> 如果你的存储帐户防火墙设置为仅限通过“选定网络”进行访问，请使用[解决 Blob 存储帐户防火墙设置问题](hpc-cache-blob-firewall-fix.md)中所述的临时解决方法。
+
+### <a name="add-the-access-control-roles-to-your-account"></a>将访问控制角色添加到帐户
+
+Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/index.yml) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+
+存储帐户所有者必须为用户“HPC 缓存资源提供者”显式添加角色“[存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor)”和“[存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)”。
+
+可以提前执行此操作，也可以通过单击添加 Blob 存储目标时所在页面上的链接来执行此操作。 请记住，在整个 Azure 环境中传播角色设置最长可能需要五分钟，因此，在添加角色之后，请先等待几分钟再创建存储目标。
 
 添加 Azure 角色的步骤：
 
-1. 打开存储帐户 **("IAM)** " 页上的 "访问控制"。  (" **添加存储目标** " 页中的链接会自动打开所选帐户的此页。 ) 
+1. 打开存储帐户的“访问控制(IAM)”页。 （单击“添加存储目标”页中的链接会自动打开选定帐户的此 IAM 页。）
 
-1. 单击 **+** 页面顶部的，然后选择 " **添加角色分配**"。
+1. 单击页面顶部的 **+** 并选择“添加角色分配”。
 
-1. 从列表中选择 "存储帐户参与者" 角色。
+1. 在列表中选择角色“存储帐户参与者”。
 
-1. 在 " **分配给** " 字段中，保留 ( "Azure AD 用户、组或服务主体" ) 所选的默认值。  
+1. 在“将访问权限分配给”字段中，保留选定的默认值（“Azure AD 用户、组或服务主体”）。  
 
-1. 在 **选择** 字段中，搜索 "hpc"。  此字符串应匹配一个名为 "HPC 缓存资源提供程序" 的服务主体。 单击该主体将其选中。
+1. 在“选择”字段中搜索“hpc”。  此字符串应该匹配一个名为“HPC 缓存资源提供者”的服务主体。 单击该主体将其选中。
 
    > [!NOTE]
-   > 如果搜索 "hpc" 不起作用，请尝试使用字符串 "storagecache"。 在 GA) 之前参与预览 (的用户可能需要使用服务主体的旧名称。
+   > 如果搜索“hpc”不起作用，请尝试改用字符串“storagecache”。 参与过预览版（正式版发布之前）的用户可能需要使用服务主体的旧名称。
 
-1. 单击底部的 " **保存** " 按钮。
+1. 单击底部的“保存”按钮。
 
-1. 重复此过程以分配角色 "存储 Blob 数据参与者"。  
+1. 重复此过程以分配角色“存储 Blob 数据参与者”。  
 
-![添加角色分配 GUI 的屏幕截图](media/hpc-cache-add-role.png)
+![“添加角色分配”GUI 的屏幕截图](media/hpc-cache-add-role.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ### <a name="prerequisite-storage-account-access"></a>先决条件：存储帐户访问权限
 
-[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
+[设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)
 
-添加 blob 存储目标之前，请检查缓存是否具有正确的角色以访问存储帐户，以及防火墙设置是否允许创建存储目标。
+在添加 Blob 存储目标之前，请检查缓存是否具有可访问存储帐户的正确角色，以及防火墙设置是否允许创建存储目标。
 
-Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/index.yml) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/index.yml) 来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
 
-存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色 [存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor) 和 [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 。
+存储帐户所有者必须为用户“HPC 缓存资源提供者”显式添加角色“[存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor)”和“[存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)”。
 
-如果缓存没有这些角色，则存储目标创建会失败。
+如果缓存没有这些角色，创建存储目标将会失败。
 
-角色设置可能需要长达五分钟的时间才能通过 Azure 环境传播，因此，在创建存储目标之前，请等待几分钟，然后再添加角色。
+在整个 Azure 环境中传播角色设置最长可能需要五分钟，因此，在添加角色之后，请先等待几分钟再创建存储目标。
 
-有关详细说明， [请参阅添加或删除使用 Azure CLI 的 Azure 角色分配](../role-based-access-control/role-assignments-cli.md) 。
+有关详细说明，请阅读[使用 Azure CLI 添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-cli.md)。
 
-同时检查存储帐户的防火墙设置。 如果防火墙设置为仅允许 "所选网络" 访问，则存储目标创建可能会失败。 使用 [有关 Blob 存储帐户防火墙设置](hpc-cache-blob-firewall-fix.md)的解决方法中所述的解决方法。
+另外请检查存储帐户的防火墙设置。 如果防火墙设置为仅限通过“选定网络”进行访问，则创建存储目标可能会失败。 请使用[解决 Blob 存储帐户防火墙设置问题](hpc-cache-blob-firewall-fix.md)中所述的解决方法。
 
-### <a name="add-a-blob-storage-target-with-azure-cli"></a>添加 blob 存储目标 Azure CLI
+### <a name="add-a-blob-storage-target-with-azure-cli"></a>使用 Azure CLI 添加 Blob 存储目标
 
-使用 [az hpc-缓存 blob-存储添加](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) 接口定义 Azure blob 存储目标。
+使用 [az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) 接口定义 Azure Blob 存储目标。
 
 > [!NOTE]
-> Azure CLI 命令当前要求您在添加存储目标时创建命名空间路径。 这不同于与 Azure 门户接口一起使用的进程。
+> Azure CLI 命令目前要求在添加存储目标时创建命名空间路径。 这与 Azure 门户界面中使用的过程不同。
 
-除了标准资源组和缓存名称参数，还必须为存储目标提供以下选项：
+除了标准的资源组和缓存名称参数以外，还必须提供存储目标的以下选项：
 
-* ``--name`` -设置在 Azure HPC 缓存中标识此存储目标的名称。
+* ``--name`` - 设置一个用于在 Azure HPC 缓存中标识此存储目标的名称。
 
-* ``--storage-account``-帐户标识符，格式为：/subscriptions/*<subscription_id>*/resourceGroups/*<storage_resource_group><**account_name>*
+* ``--storage-account`` - 采用以下格式的帐户标识符：/subscriptions/ *<subscription_id>* /resourceGroups/ *<storage_resource_group>* /providers/Microsoft.Storage/storageAccounts/ *<account_name>*
 
-  有关可使用的存储帐户类型的信息，请参阅 [Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)。
+  有关可以使用的存储帐户类型的信息，请参阅 [Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)。
 
-* ``--container-name`` -指定要用于此存储目标的容器的名称。
+* ``--container-name`` - 指定用于此存储目标的容器的名称。
 
-* ``--virtual-namespace-path`` -为此存储目标设置面向客户端的文件路径。 将路径用引号引起来。 请参阅 [计划聚合命名空间](hpc-cache-namespace.md) ，了解有关虚拟命名空间功能的详细信息。
+* ``--virtual-namespace-path`` - 设置此存储目标的面向客户端的文件路径。 请将路径括在引号中。 若要详细了解虚拟命名空间功能，请阅读[规划聚合命名空间](hpc-cache-namespace.md)。
 
 示例命令：
 
@@ -153,105 +156,107 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>添加新的 NFS 存储目标
 
-NFS 存储目标具有不同于 Blob 存储目标的设置。 使用情况模型设置有助于缓存有效地缓存此存储系统中的数据。
+NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置可帮助缓存有效地在此存储系统中缓存数据。
 
-![定义了 NFS 目标的 "添加存储目标" 页的屏幕截图](media/add-nfs-target.png)
-
-> [!NOTE]
-> 在创建 NFS 存储目标之前，请确保可从 Azure HPC 缓存访问存储系统并满足权限要求。 如果缓存无法访问存储系统，则存储目标创建将会失败。 有关详细信息，请阅读 [NFS 存储要求](hpc-cache-prerequisites.md#nfs-storage-requirements) 和 [排查 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md) 。
-
-### <a name="choose-a-usage-model"></a>选择使用模型
-<!-- referenced from GUI - update aka.ms link if you change this heading -->
-
-创建指向 NFS 存储系统的存储目标时，需要为该目标选择使用模型。 此模型确定如何缓存数据。
-
-利用内置的使用模型，你可以选择如何平衡快速响应和获取过时数据的风险。 如果要优化文件读取速度，你可能不介意是否对照后端文件检查缓存中的文件。 另一方面，如果想要确保文件始终是最新的远程存储，请选择经常检查的模型。
-
-有三个选项：
-
-* **读取繁重的罕见写入** -如果想要加快对静态文件或很少更改的文件的读取访问权限，请使用此选项。
-
-  此选项将缓存客户端读取的文件，但会立即将写入操作传递到后端存储。 存储在缓存中的文件不会自动与 NFS 存储卷上的文件进行比较。  (阅读下面关于后端验证的说明，了解详细信息。 ) 
-
-  如果存在可能会在存储系统上直接修改文件而无需先将文件写入缓存的风险，请不要使用此选项。 如果发生这种情况，则文件的缓存版本将与后端文件不同步。
-
-* **写入次数超过 15%** -此选项可提高读写性能。 使用此选项时，所有客户端都必须通过 Azure HPC 缓存访问文件，而不是直接安装后端存储。 缓存的文件将包含不会存储在后端的最新更改。
-
-  在此使用模式下，仅每隔八小时对后端存储上的文件都检查缓存中的文件。 假定该文件的缓存版本是更高版本。 缓存中已修改的文件将在后端存储系统中写入一小时后写入后端存储系统，而无其他更改。
-
-* **客户端向 NFS 目标写入会绕过缓存** -如果工作流中的任何客户端都将数据直接写入存储系统，而不先写入缓存，或者如果要优化数据一致性，请选择此选项。 将缓存客户端请求的文件，但对客户端中的这些文件所做的任何更改都会立即传递回后端存储系统。
-
-  使用此使用模式时，将经常对照后端版本检查缓存中的文件以获取更新。 此验证允许在缓存之外更改文件，同时保持数据一致性。
-
-下表总结了使用模型的差异：
-
-| 使用模型                   | 缓存模式 | 后端验证 | 最大写回延迟 |
-|-------------------------------|--------------|-----------------------|--------------------------|
-| 读取繁重的罕见写入 | 读取         | 从不                 | 无                     |
-| 超过15% 写入       | 读取/写入   | 8 小时               | 1 小时                   |
-| 客户端绕过缓存      | 读取         | 30 秒            | 无                     |
+![定义 NFS 目标后的“添加存储目标”页的屏幕截图](media/add-nfs-target.png)
 
 > [!NOTE]
-> **后端验证** 值显示缓存何时会自动将其文件与远程存储中的源文件进行比较。 但是，可以通过执行包含 readdirplus 请求的目录操作来强制 Azure HPC 缓存比较文件。 Readdirplus 是标准 NFS API (也称为扩展读取) ，它将返回目录元数据，从而使缓存比较并更新文件。
+> 在创建 NFS 存储目标之前，请确保存储系统可供从 Azure HPC 缓存访问，并满足权限要求。 如果缓存无法访问存储系统，则创建存储目标将会失败。 有关详细信息，请阅读 [NFS 存储要求](hpc-cache-prerequisites.md#nfs-storage-requirements)及[排查 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)。
+
+### <a name="choose-a-usage-model"></a>选择使用情况模型
+<!-- referenced from GUI by aka.ms link -->
+
+创建使用 NFS 来访问其存储系统的存储目标时，需要为该目标选择使用情况模型。 此模型确定数据的缓存方式。
+
+有关所有这些设置的更多详细信息，请阅读[了解使用情况模型](cache-usage-models.md)。
+
+内置使用情况模型可让你选择如何在快速响应与所获数据过时的风险之间实现平衡。 如果你想要优化文件读取速度，那么你可能不会在意是否根据后端文件检查缓存中的文件。 另一方面，若要确保你的文件始终与远程存储中的文件一样保持最新状态，请选择一个频繁执行检查的模型。
+
+以下三个选项涵盖了大多数情形：
+
+* **读取量大，写入量少** - 加速对静态或极少更改的文件的读取访问。
+
+  此选项缓存客户端读取的文件，但立即将客户端写入内容传递到后端存储。 不会自动将缓存中存储的文件与 NFS 存储卷上的文件进行比较。
+
+  如果存在可能会未首先将文件写入缓存便直接在存储系统上修改该文件的风险，请不要使用此选项。 如果发生这种情况，该文件的缓存版本将与后端文件失去同步。
+
+* **写入率超过 15%** - 此选项既可提高读取性能，也可提高写入性能。
+
+  客户端读取和客户端写入内容都将缓存。 假设缓存中的文件比后端存储系统上的文件更新。 只会每隔 8 小时根据后端存储上的文件自动检查缓存的文件。 缓存中已修改的文件在缓存中保留 20 分钟且未进一步发生更改后，将写入后端存储系统。
+
+  如有任何客户端直接装载后端存储卷，请不要使用此选项，因为这样存在存储卷中文件过时的风险。
+
+* **客户端写入 NFS 目标并绕过缓存** - 如果工作流中的任何客户端不首先将数据写入缓存便将其直接写入存储系统，或者如果你要优化数据一致性，请选择此选项。
+
+  客户端请求的文件将会缓存，但从客户端对这些文件所做的任何更改将立即传递到后端存储系统。 将频繁根据后端版本检查缓存中的文件以了解内容更新。 如果文件是直接在存储系统上更改的而不是通过缓存更改的，这种验证可以保持数据一致性。
+
+有关其他选项的详细信息，请阅读[了解使用情况模型](cache-usage-models.md)。
+
+下表汇总了所有用法模式之间的差异：
+
+[!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
+
+> [!NOTE]
+> “后端验证”值显示缓存何时自动将其文件与远程存储中的源文件进行比较。 但是，可以通过在后端存储系统上发送一个包含 readdirplus 操作的客户端请求来触发比较。 readdirplus 是一个标准的 NFS API（也称为扩展读取），它会返回目录元数据，从而使得缓存比较并更新文件。
 
 ### <a name="create-an-nfs-storage-target"></a>创建 NFS 存储目标
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-在 Azure 门户中，打开缓存实例，并单击左侧边栏中的 " **存储目标** "。
+在 Azure 门户中打开你的缓存实例，然后单击左侧边栏中的“存储目标”。
 
-![设置 > 存储目标 "页的屏幕截图，表中有两个现有的存储目标，并在表上方的" + 添加存储目标 "按钮周围突出显示](media/add-storage-target-button.png)
+![“设置”>“存储目标”页的屏幕截图，其中的表格列出了两个现有的存储目标，表格上方突出显示了“+ 添加存储目标”按钮](media/add-storage-target-button.png)
 
-" **存储目标** " 页将列出所有现有目标，并提供一个用于添加新目标的链接。
+“存储目标”页将列出所有现有目标，并提供用于添加新目标的链接。
 
-单击 " **添加存储目标** " 按钮。
+单击“添加存储目标”按钮。
 
-![定义了 NFS 目标的 "添加存储目标" 页的屏幕截图](media/add-nfs-target.png)
+![定义 NFS 目标后的“添加存储目标”页的屏幕截图](media/add-nfs-target.png)
 
 为支持 NFS 的存储目标提供以下信息：
 
-* **存储目标名称** -设置在 Azure HPC 缓存中标识此存储目标的名称。
+* **存储目标名称** - 设置一个用于在 Azure HPC 缓存中标识此存储目标的名称。
 
-* **目标类型** -选择 " **NFS**"。
+* **目标类型** - 选择“NFS”。
 
-* **主机名** -输入 NFS 存储系统的 IP 地址或完全限定的域名。 仅当缓存有权访问可解析名称的 DNS 服务器时，才 (使用域名 ) 
+* **主机名** - 输入 NFS 存储系统的 IP 地址或完全限定的域名。 （仅当缓存能够访问可解析名称的 DNS 服务器时，才使用域名。）
 
-* **使用情况模型** -选择一个基于工作流的数据缓存配置文件，如 [选择上述使用情况模型](#choose-a-usage-model) 中所述。
+* **使用情况模型** - 按照前面的[选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
 
-完成后，单击 **"确定"** 以添加存储目标。
+完成后，单击“确定”以添加该存储目标。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
+[设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)
 
-使用 Azure CLI 命令 [az hpc-cache nfs-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) 来创建存储目标。
+使用 Azure CLI 命令 [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) 创建存储目标。
 
 > [!NOTE]
-> Azure CLI 命令当前要求您在添加存储目标时创建命名空间路径。 这不同于与 Azure 门户接口一起使用的进程。
+> Azure CLI 命令目前要求在添加存储目标时创建命名空间路径。 这与 Azure 门户界面中使用的过程不同。
 
-除缓存名称和缓存资源组外，还提供以下值：
+除了缓存名称和缓存资源组以外，再提供以下值：
 
-* ``--name`` -设置在 Azure HPC 缓存中标识此存储目标的名称。
-* ``--nfs3-target`` -你的 NFS 存储系统的 IP 地址。  (如果你的缓存有权访问可解析该名称的 DNS 服务器，则可以在此处使用完全限定的域名。 ) 
-* ``--nfs3-usage-model`` -数据缓存配置文件之一，请参阅上面的 [选择使用情况模型](#choose-a-usage-model)中所述。
+* ``--name`` - 设置一个用于在 Azure HPC 缓存中标识此存储目标的名称。
+* ``--nfs3-target`` - NFS 存储系统的 IP 地址。 （如果缓存能够访问可解析名称的 DNS 服务器，则在此处可以使用完全限定的域名。）
+* ``--nfs3-usage-model`` - 如前面的[选择使用情况模型](#choose-a-usage-model)中所述的数据缓存配置文件之一。
 
-  使用命令 [az hpc-cache 用量-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)验证使用模型的名称。
+  使用命令 [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list) 验证使用情况模型的名称。
 
-* ``--junction`` -接合参数使用存储系统上的导出路径链接面向客户端的虚拟文件路径。
+* ``--junction`` - 该接合参数将面向客户端的虚拟文件路径链接到存储系统上的导出路径。
 
-  NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个存储系统上的不同导出或子目录。 在一个存储目标上创建一个存储系统的所有路径。
+  一个 NFS 存储目标可以有多条虚拟路径，前提是每个路径代表同一存储系统上的不同导出或子目录。 在一个存储目标上创建一个存储系统的所有路径。
 
-  你可以随时在存储目标上 [添加和编辑命名空间路径](add-namespace-paths.md) 。
+  可以随时在存储目标上[添加和编辑命名空间路径](add-namespace-paths.md)。
 
-  ``--junction``参数使用以下值：
+  ``--junction`` 参数使用以下值：
 
-  * ``namespace-path`` -面向客户端的虚拟文件路径
-  * ``nfs-export`` -与面向客户端的路径关联的存储系统导出
-  * ``target-path`` (可选) -导出的子目录（如果需要）
+  * ``namespace-path`` - 面向客户端的虚拟文件路径
+  * ``nfs-export`` - 与面向客户端的路径关联的存储系统导出
+  * ``target-path``（可选）- 导出的子目录（如果需要）
 
   示例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
-  阅读 [配置聚合命名空间](hpc-cache-namespace.md) ，了解有关虚拟命名空间功能的详细信息。
+  若要详细了解虚拟命名空间功能，请阅读[配置聚合命名空间](hpc-cache-namespace.md)。
 
 示例命令：
 
@@ -292,29 +297,66 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ---
 
+## <a name="add-a-new-adls-nfs-storage-target-preview"></a>添加新的 ADLS-NFS 存储目标（预览版）
+
+ADLS-NFS 存储目标使用支持网络文件系统 (NFS) 3.0 协议的 Azure Blob 容器。
+
+> [!NOTE]
+> Azure Blob 存储的 NFS 3.0 协议支持目前以公共预览版提供。 其可用性受限，目前的功能可能与正式版的功能有所不同。 请不要在生产系统中使用预览版技术。
+>
+> 有关最新信息，请阅读 [NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
+
+ADLS-NFS 存储目标与 Blob 存储目标和 NFS 存储目标之间具有一些相似之处。 例如：
+
+* 与 Blob 存储目标一样，需要向 Azure HPC 缓存授予[访问你的存储帐户](#add-the-access-control-roles-to-your-account)的权限。
+* 与 NFS 存储目标一样，需要设置缓存[使用情况模型](#choose-a-usage-model)。
+* 由于支持 NFS 的 Blob 容器采用 NFS 兼容的层次结构，因此你无需使用缓存来引入数据，并且这些容器可供其他 NFS 系统读取。 可以在 ADLS-NFS 容器中预加载数据，再将数据添加到用作存储目标的 HPC 缓存，然后从 HPC 缓存外部访问这些数据。 将标准 Blob 容器用作 HPC 缓存存储目标时，将以专用格式写入数据，只能从 Azure HPC 缓存兼容的其他产品访问这些数据。
+
+必须先创建一个支持 NFS 的存储帐户才能创建 ADLS-NFS 存储目标。 请按照 [Azure HPC 缓存的先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)中的提示以及[使用已装载 NFS 的 Blob 存储](../storage/blobs/network-file-system-protocol-support-how-to.md)中的说明进行操作。 设置存储帐户后，可以在创建存储目标时创建新容器。
+
+若要创建 ADLS-NFS 存储目标，请在 Azure 门户中打开“添加存储目标”页。 （其他方法正在开发中。）
+
+![定义 ADLS-NFS 目标后的“添加存储目标”页的屏幕截图](media/add-adls-target.png)
+
+输入以下信息。
+
+* **存储目标名称** - 设置一个用于在 Azure HPC 缓存中标识此存储目标的名称。
+* **目标类型** - 选择“ADLS-NFS”。
+* **存储帐户** - 选择要使用的帐户。 如果你的支持 NFS 的存储帐户未出现在列表中，请检查它是否符合先决条件，以及缓存是否可以访问它。
+
+  需要根据[添加访问角色](#add-the-access-control-roles-to-your-account)中所述，授权缓存实例访问存储帐户。
+
+* **存储容器** - 为此目标选择支持 NFS 的 Blob 容器，或单击“新建”。
+
+* **使用情况模型** - 按照前面的[选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
+
+完成后，单击“确定”以添加该存储目标。
+
+<!-- **** -->
+
 ## <a name="view-storage-targets"></a>查看存储目标
 
-你可以使用 Azure 门户或 Azure CLI 来显示已为缓存定义的存储目标。
+可以使用 Azure 门户或 Azure CLI 显示已为缓存定义的存储目标。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-在 Azure 门户中，打开缓存实例，并单击左侧边栏上 "设置" 标题下的 " **存储目标**"。 "存储目标" 页列出了用于添加或删除它们的所有现有目标和控件。
+在 Azure 门户中打开你的缓存实例，然后单击左侧边栏上“设置”标题下的“存储目标”。 “存储目标”页列出了所有现有目标，以及用于添加或删除目标的控件。
 
-单击存储目标的名称以打开其详细信息页。
+单击某个存储目标的名称可打开其详细信息页。
 
-有关详细信息，请参阅 [编辑存储目标](hpc-cache-edit-storage.md) 。
+有关详细信息，请阅读[编辑存储目标](hpc-cache-edit-storage.md)。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[设置 AZURE HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)。
+[设置适用于 Azure HPC 缓存的 Azure CLI](./az-cli-prerequisites.md)
 
-使用 [az hpc-缓存存储-目标列表](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 选项来显示缓存的现有存储目标。 提供缓存名称和资源组 (，除非已将其全局设置) 。
+使用 [az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 选项显示缓存的现有存储目标。 提供缓存名称和资源组（除非已全局设置）。
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-使用 [az hpc-缓存存储-目标显示](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 来查看有关特定存储目标的详细信息。  (按名称指定存储目标。 ) 
+使用 [az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) 查看有关特定存储目标的详细信息。 （按名称指定存储目标。）
 
 示例：
 
@@ -350,10 +392,10 @@ $
 
 ## <a name="next-steps"></a>后续步骤
 
-创建存储目标后，请继续执行这些任务以使缓存可供使用：
+创建存储目标后，请继续执行以下任务来使缓存随时可供使用：
 
 * [设置聚合命名空间](add-namespace-paths.md)
 * [装载 Azure HPC 缓存](hpc-cache-mount.md)
-* [将数据移动到 Azure Blob 存储](hpc-cache-ingest.md)
+* [将数据移到 Azure Blob 存储](hpc-cache-ingest.md)
 
-如果需要更新任何设置，可以 [编辑存储目标](hpc-cache-edit-storage.md)。
+如果需要更新任何设置，可以[编辑存储目标](hpc-cache-edit-storage.md)。

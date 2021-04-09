@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440388"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594166"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -118,6 +118,7 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
   - [使用 Java 进行连接和查询](connect-query-java.md)
   - [使用 Python 进行连接和查询](connect-query-python.md)
   - [使用 Ruby 进行连接和查询](connect-query-ruby.md)
+  - [在 linux 上安装适用于 linux 用户的 sqlcmd 和 bcp SQL Server 命令行工具](/sql/linux/sql-server-linux-setup-tools)。请尝试使用 [Sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility) 连接到 Azure SQL 数据库或 Azure SQL 托管实例。
 - 重试逻辑代码示例：
   - [使用 ADO.NET 进行弹性连接][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [使用 PHP 进行弹性连接][step-4-connect-resiliently-to-sql-with-php-p42h]

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 8b3036f09e41b20bc3c190f06842acd817fcece6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100380944"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google AdWords 复制数据
@@ -43,7 +43,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Google AdWords 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**GoogleAdWords** | 是 |
 | clientCustomerID | 需提取其报表数据的 AdWords 帐户的客户端客户 ID。  | 是 |
@@ -99,7 +99,7 @@ Google AdWords 链接服务支持以下属性：
 
 若要从 Google AdWords 复制数据，请将数据集的 type 属性设置为 **GoogleAdWordsObject**。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**GoogleAdWordsObject** | 是 |
 | tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -130,10 +130,10 @@ Google AdWords 链接服务支持以下属性：
 
 若要从 Google AdWords 复制数据，请将复制活动中的源类型设置为“GoogleAdWordsSource”  。 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**GoogleAdWordsSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -167,7 +167,7 @@ Google AdWords 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

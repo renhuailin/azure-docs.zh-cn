@@ -1,61 +1,61 @@
 ---
-title: Connected Machine Windows 代理概述
-description: 本文详细概述了可用的支持 Azure Arc 的服务器代理，它支持监视混合环境中托管的虚拟机。
-ms.date: 02/18/2021
+title: Connected Machine 代理概述
+description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651087"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470483"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-agent"></a>支持 Azure Arc 的服务器代理概述
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
-通过启用了 Azure Arc 的服务器连接的计算机代理，你可以管理在公司网络或其他云提供商的 Azure 外部托管的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
+借助已启用 Azure Arc 的服务器 Connected Machine 代理，可以管理企业网络或其他云提供商中托管在 Azure 外部的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
 >[!NOTE]
->从2020年9月版中启用了 Azure Arc 的服务器的通用版开始，Azure 连接的计算机代理的所有预发行版本 (代理，版本低于 1.0) 将于 **2021 年2月2日****弃用**。  此时间范围允许你升级到版本1.0 或更高版本，然后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
+>自 2020 年 9 月正式发行已启用 Azure Arc 的服务器开始，所有预发行版本的 Azure Connected Machine 代理（版本低于 1.0 的代理）将在 2021 年 2 月 2 日前弃用 。  在这段期限内，你可以升级到版本 1.0 或更高版本，这段期限后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
-Azure 连接的计算机代理包包含多个逻辑组件，这些组件捆绑在一起。
+Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
-* 混合实例元数据服务 (HIMDS) 管理与 Azure 的连接和连接的计算机的 Azure 标识。
+* Hybrid Instance Metadata Service (HIMDS) 管理 Azure 的连接和已连接的计算机的 Azure 标识。
 
-* 来宾配置代理提供 In-Guest 策略和来宾配置功能，如评估计算机是否符合所需的策略。
+* Guest Configuration 代理提供来宾内策略和来宾配置功能，例如评估计算机是否符合所需的策略。
 
-    [对于断开连接的计算机](../../governance/policy/concepts/guest-configuration.md)，请注意以下行为：
+    对于已断开连接的计算机，请注意 Azure Policy [Guest Configuration](../../governance/policy/concepts/guest-configuration.md) 的以下行为：
 
-    * 以断开连接的计算机为目标的来宾配置策略分配不受影响。
-    * 来宾分配在本地存储14天。 在14天内，如果连接的计算机代理重新连接到服务，则重新应用策略分配。
-    * 分配将在14天后删除，14天后不会重新分配到计算机。
+    * 以断开连接的计算机为目标的 Guest Configuration 策略分配不受影响。
+    * 来宾分配在本地存储 14 天。 在 14 天的期限内，如果 Connected Machine 代理重新连接到服务，则重新应用策略分配。
+    * 分配的策略将在 14 天后删除，并且在 14 天期限后不会重新分配到计算机。
 
-* 扩展代理管理 VM 扩展，包括安装、卸载和升级。 将从 Azure 下载扩展并将其复制到 `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` Windows 上的文件夹，并将其复制到 `/opt/GC_Ext/downloads` 。 在 Windows 上，扩展安装到以下路径 `%SystemDrive%\Packages\Plugins\<extension>` ，在 Linux 上安装了扩展 `/var/lib/waagent/<extension>` 。
+* Extension 代理管理 VM 扩展，包括安装、卸载和升级。 扩展从 Azure 下载并复制到 `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` 文件夹（适用于 Windows），或者 `/opt/GC_Ext/downloads` 文件夹（适用于 Linux）。 在 Windows 上，扩展安装到以下路径：`%SystemDrive%\Packages\Plugins\<extension>`在 Linux 上，扩展安装到以下路径：`/var/lib/waagent/<extension>`。
 
 ## <a name="instance-metadata"></a>实例元数据
 
-在连接的计算机代理注册启用了 Arc 的服务器后，将收集有关已连接计算机的元数据信息。 尤其是在下列情况下：
+在 Connected Machine 代理向启用了 Arc 的服务器注册后，将收集有关已连接计算机的元数据信息。 具体而言：
 
 * 操作系统名称、类型和版本
 * 计算机名称
 * 计算机完全限定域名 (FQDN)
 * Connected Machine 代理版本
-*  (FQDN Active Directory 和 DNS 完全限定的域名) 
-* UUID (BIOS ID) 
-* 连接的计算机代理检测信号
+* Active Directory 和 DNS 完全限定的域名 (FQDN)
+* UUID (BIOS ID)
+* Connected Machine 代理程序检测信号
 * Connected Machine 代理版本
 * 托管标识的公钥
-* 策略符合性状态和详细信息 (如果使用 Azure 策略来宾配置策略) 
+* 策略合规性状态和详细信息（如果使用 Azure Policy Guest Configuration 策略）
 
-Azure 发出的代理请求以下元数据信息：
+代理向 Azure 请求以下元数据信息：
 
-* 资源位置 (区域) 
+* 资源位置（区域）
 * 虚拟机 ID
 * 标记
 * Azure Active Directory 托管标识证书
-* 来宾配置策略分配
-* 扩展请求-安装、更新和删除。
+* Guest Configuration 策略分配
+* 扩展请求 - 安装、更新和删除。
 
 ## <a name="download-agents"></a>下载代理
 
@@ -71,14 +71,14 @@ Azure 发出的代理请求以下元数据信息：
 
 ### <a name="supported-environments"></a>支持的环境
 
-启用 Arc 的服务器支持在 Azure *外部* 托管的任何物理服务器和虚拟机上安装连接的计算机代理。 这包括在 VMware、Azure Stack HCI 和其他云环境等平台上运行的虚拟机。 启用 Arc 的服务器不支持在运行于 Azure 中的虚拟机上安装代理，也不支持在 Azure Stack 集线器或 Azure Stack 边缘上运行的虚拟机，因为它们已作为 Azure Vm 建模。
+已启用 Arc 的服务器支持在 Azure 外部托管的任何物理服务器和虚拟机上安装 Connected Machine 代理。 其中包括在 VMware、Azure Stack HCI 和其他云环境等平台上运行的虚拟机。 已启用 Arc 的服务器不支持在 Azure 中运行的虚拟机上安装代理，也不支持在 Azure Stack Hub 或 Azure Stack Edge 上运行的虚拟机上安装代理，因为它们已作为 Azure VM 建模。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
 Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统：
 
-- Windows Server 2008 R2、Windows Server 2012 R2 及更高版本 (包括服务器核心) 
-- Ubuntu 16.04 和 18.04 LTS (x64) 
+- Windows Server 2008 R2、Windows Server 2012 R2 和更高版本（包括 Server Core）
+- Ubuntu 16.04 和 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
@@ -90,17 +90,19 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="required-permissions"></a>所需的权限
 
-* 若要将计算机加入，你必须是 **Azure Connected Machine 加入** 角色的成员。
+* 若要加入计算机，你需要是资源组中“Azure Connected Machine 加入”或[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色的成员。
 
-* 若要读取、修改和删除计算机，你是 **Azure 连接的计算机资源管理员** 角色的成员。 
+* 若要读取、修改和删除计算机，你需是资源组中“Azure Connected Machine 资源管理员”角色的成员。
+
+* 若要在使用“生成脚本”方法时从下拉列表中选择资源组，你至少需要是该资源组的[读者](../../role-based-access-control/built-in-roles.md#reader)角色的成员。
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
-在将计算机配置为启用 Azure Arc 的服务器之前，请查看 Azure 资源管理器 [订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 和 [资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以规划要连接的计算机的数量。
+在为计算机配置已启用 Azure Arc 的服务器之前，应查看 Azure 资源管理器[订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以规划要连接的计算机数。
 
-支持 Azure Arc 的服务器在一个资源组中支持多达5000的计算机实例。
+已启用 Azure Arc 的服务器在一个资源组中支持多达 5,000 个计算机实例。
 
-### <a name="transport-layer-security-12-protocol"></a>传输层安全性1.2 协议
+### <a name="transport-layer-security-12-protocol"></a>传输层安全性 1.2 协议
 
 为了确保传输到 Azure 的数据的安全性，我们强烈建议你将计算机配置为使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。
 
@@ -111,13 +113,13 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="networking-configuration"></a>网络配置
 
-适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器进行连接以通过 Internet 进行通信，则请查看以下各项以了解网络配置要求。
+适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器建立连接，以便通过 Internet 进行通信，请查看下文以了解网络配置要求。
 
 > [!NOTE]
-> 启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md) 作为已连接计算机代理的代理。
+> 已启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)作为 Connected Machine 代理的代理。
 >
 
-如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则需要允许访问以下服务标记和 Url。
+如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则还需要允许访问以下服务标记和 URL。
 
 服务标记：
 
@@ -138,16 +140,16 @@ URL：
 |`*.his.arc.azure.com`|混合标识服务|
 |`www.office.com`|Office 365|
 
- (版本0.11 和更低版本) 的预览代理也需要访问以下 Url：
+预览版代理（版本 0.11 和更低版本）还要求访问以下 URL：
 
 | 代理资源 | 说明 |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|来宾配置|
 |`*-agentservice-prod-1.azure-automation.net`|来宾配置|
 
-有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 JSON 文件中的此信息是对应于每个服务标记的 IP 范围的当前时间点列表。 IP 地址可能会更改。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
+有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 JSON 文件中的这个信息是与每个服务标记对应的 IP 地址的当前实时列表。 IP 地址可能会变化。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
 
-有关详细信息，请参阅 [服务标记概述](../../virtual-network/service-tags-overview.md)。
+有关详细信息，请查看[服务标记概述](../../virtual-network/service-tags-overview.md)。
 
 ### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
@@ -182,7 +184,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 可以根据要求使用不同的方法，将混合环境中的计算机直接连接到 Azure。 下表详细介绍了每种方法，让你确定最适合组织的方法。
 
 > [!IMPORTANT]
-> 无法在 Azure Windows 虚拟机上安装连接的计算机代理。 如果尝试，安装将检测到此情况并回滚。
+> Azure Windows 虚拟机上无法安装 Connected Machine 代理。 如果尝试此操作，安装过程将检测到此情况并回滚。
 
 | 方法 | 说明 |
 |--------|-------------|
@@ -190,7 +192,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 | 大规模 | 遵循[使用服务主体连接计算机](onboard-service-principal.md)中的步骤，为多台计算机安装并配置代理。<br> 此方法创建一个服务主体来以非交互方式连接计算机。|
 | 大规模 | 按照[使用 Windows PowerShell DSC](onboard-dsc.md) 方法为多台计算机安装和配置代理。<br> 此方法使用服务主体以非交互方式将计算机与 PowerShell DSC 连接。 |
 
-## <a name="connected-machine-agent-technical-overview"></a>连接的计算机代理技术概述
+## <a name="connected-machine-agent-technical-overview"></a>Connected Machine 代理技术概述
 
 ### <a name="windows-agent-installation-details"></a>Windows 代理安装详细信息
 
@@ -200,7 +202,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 * 通过从命令外壳运行 Windows Installer 包 `AzureConnectedMachineAgent.msi` 来手动进行安装。
 * 从 PowerShell 会话中使用脚本化方法。
 
-安装适用于 Windows 的连接的计算机代理后，将应用以下系统范围内的配置更改。
+安装适用于 Windows 的 Connected Machine 代理后，将应用下列系统范围的配置更改。
 
 * 安装期间将创建以下安装文件夹。
 
@@ -210,17 +212,17 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含获取的令牌。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理配置文件 `agentconfig.json`，该文件记录其在服务中的注册信息。|
-    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含来宾配置代理文件的安装路径。 |
-    |%ProgramData%\GuestConfig |包含应用于 Azure) 策略的 (。|
-    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 将从 Azure 下载扩展，并在此处复制。|
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含 Guest Configuration 代理文件的安装路径。 |
+    |%ProgramData%\GuestConfig |包含 Azure 中（应用的）策略。|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 扩展从 Azure 下载，并在此处复制。|
 
 * 安装代理期间，将在目标计算机上创建以下 Windows 服务。
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合实例元数据服务 |himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
-    |GCArcService |来宾配置 Arc 服务 |gc_service |监视计算机所需的状态配置。|
-    |ExtensionService |来宾配置扩展服务 | gc_service |安装以计算机为目标的所需扩展。|
+    |himds |Azure 混合实例元数据服务 |himds |此服务实现 Azure Instance Metadata Service (IMDS)，以管理 Azure 的连接和已连接计算机的 Azure 标识。|
+    |GCArcService |Guest Configuration Arc Service |gc_service |监视计算机所需的状态配置。|
+    |ExtensionService |Guest Configuration Extension Service | gc_service |安装以计算机为目标的所需扩展。|
 
 * 安装代理期间，将创建以下环境变量。
 
@@ -235,10 +237,10 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |记录代理 (HIMDS) 服务的详细信息以及与 Azure 的交互。|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |当使用 verbose (-v) 参数时，包含 azcmagent 工具命令的输出。|
-    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |记录 DSC 服务活动的详细信息，<br> 尤其是 HIMDS 服务和 Azure 策略之间的连接。|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |记录 DSC 服务活动的详细信息，<br> 特别是 HIMDS 服务与 Azure Policy 之间的连接。|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
-    |%ProgramData%\GuestConfig\ ext_mgr_logs|记录有关扩展代理组件的详细信息。|
-    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|记录安装的扩展中的详细信息。|
+    |%ProgramData%\GuestConfig\ext_mgr_logs|记录有关 Extension 代理组件的详细信息。|
+    |%ProgramData%\GuestConfig\extension_logs\<Extension>|记录已安装扩展中的详细信息。|
 
 * 将创建本地安全组“混合代理扩展应用程序”。
 
@@ -252,7 +254,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 适用于 Linux 的 Connected Machine 代理以 Microsoft [包存储库](https://packages.microsoft.com/)中分发版的首选包格式（.RPM 或 .DEB）提供。 可以使用 shell 脚本捆绑包 [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) 安装和配置该代理。
 
-安装适用于 Linux 的连接计算机代理后，将应用以下系统范围内的配置更改。
+安装适用于 Linux 的 Connected Machine 代理后，将应用下列系统范围的配置更改。
 
 * 安装期间将创建以下安装文件夹。
 
@@ -260,19 +262,19 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |-------|------------|
     |/var/opt/azcmagent/ |包含代理支持文件的默认安装路径。|
     |/opt/azcmagent/ |
-    |/opt/GC_Ext | 包含来宾配置代理文件的安装路径。|
+    |/opt/GC_Ext | 包含 Guest Configuration 代理文件的安装路径。|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |包含获取的令牌。|
-    |/var/lib/GuestConfig |包含应用于 Azure) 策略的 (。|
-    |/opt/GC_Ext/downloads|将从 Azure 下载扩展，并在此处复制。|
+    |/var/lib/GuestConfig |包含 Azure 中（应用的）策略。|
+    |/opt/GC_Ext/downloads|扩展从 Azure 下载，并在此处复制。|
 
 * 安装代理期间，将在目标计算机上创建以下守护程序。
 
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 连接的计算机代理服务 |himds |此服务 (IMDS) 实现 Azure 实例元数据服务，以管理到 Azure 和连接的计算机的 Azure 标识的连接。|
-    |gcad. 服务 |GC Arc 服务 |gc_linux_service |监视计算机所需的状态配置。 |
-    |extd。服务 |扩展服务 |gc_linux_service | 安装以计算机为目标的所需扩展。|
+    |himdsd.service |Azure Connected Machine Agent Service |himds |此服务实现 Azure Instance Metadata Service (IMDS)，以管理 Azure 的连接和已连接计算机的 Azure 标识。|
+    |gcad.servce |GC Arc Service |gc_linux_service |监视计算机所需的状态配置。 |
+    |extd.service |Extension Service |gc_linux_service | 安装以计算机为目标的所需扩展。|
 
 * 有几个日志文件可用于故障排除。 下表对它们进行了说明。
 
@@ -282,8 +284,8 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |/var/opt/azcmagent/log/azcmagent.log |当使用 verbose (-v) 参数时，包含 azcmagent 工具命令的输出。|
     |/opt/logs/dsc.log |记录 DSC 服务活动的详细信息，<br> 特别是 himds 服务与 Azure Policy 之间的连接。|
     |/opt/logs/dsc.telemetry.txt |记录有关 DSC 服务遥测和详细日志记录的详细信息。|
-    |/var/lib/GuestConfig/ext_mgr_logs |记录有关扩展代理组件的详细信息。|
-    |/var/lib/GuestConfig/extension_logs|记录安装的扩展中的详细信息。|
+    |/var/lib/GuestConfig/ext_mgr_logs |记录有关 Extension 代理组件的详细信息。|
+    |/var/lib/GuestConfig/extension_logs|记录已安装扩展中的详细信息。|
 
 * 安装代理期间，将创建以下环境变量。 这些变量在 `/lib/systemd/system.conf.d/azcmagent.conf` 中设置。
 
@@ -299,6 +301,6 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始评估启用了 Azure Arc 的服务器，请按照将 [混合计算机连接到 azure 中的 Azure 门户](onboard-portal.md)一文。
+* 若要开始评估已启用 Azure Arc 的服务器，请阅读[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文。
 
-* 有关疑难解答信息，请参阅 [连接计算机代理疑难解答指南](troubleshoot-agent-onboard.md)。
+* 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。

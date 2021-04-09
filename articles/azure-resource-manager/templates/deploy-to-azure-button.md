@@ -2,13 +2,13 @@
 title: “部署到 Azure”按钮
 description: 使用此按钮从 GitHub 存储库部署 Azure 资源管理器模板。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: e25d49571347bb5ed27dbd52bb60c68cbeb4360d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028737"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543766"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按钮从 GitHub 存储库部署模板
 
@@ -76,7 +76,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 你已具有该链接的完整 URL。
 
-通常，将模板托管在公共存储库中。 如果使用专用存储库，则必须包含一个令牌来访问模板的原始内容。 GitHub 生成的令牌仅在短时间内有效。 需要经常更新链接。
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 如果使用[包含 Azure Repos 的 Git](/azure/devops/repos/git/) 而不是 GitHub 存储库，那么仍可使用“部署到 Azure”按钮。 请确保存储库是公共的。 使用[项操作](/rest/api/azure/devops/git/items/get)获取模板。 请求应采用以下格式：
 

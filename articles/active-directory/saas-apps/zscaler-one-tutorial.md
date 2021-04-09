@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 3f825e247aff5c8fc53eb8610f33bd8e0b7fce3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>教程：Azure Active Directory 与 Zscaler One 的集成
@@ -189,14 +189,14 @@ ms.locfileid: "98735613"
 
     b. 单击“激活”  。
 
-## <a name="configuring-proxy-settings"></a>配置代理设置
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中配置代理设置
+## <a name="configuring-proxy-settings&quot;></a>配置代理设置
+### <a name=&quot;to-configure-the-proxy-settings-in-internet-explorer&quot;></a>在 Internet Explorer 中配置代理设置
 
 1. 启动 **Internet Explorer**。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。      
 
-    ![Internet 选项](./media/zscaler-one-tutorial/ic769492.png "Internet 选项")
+    ![Internet 选项](./media/zscaler-one-tutorial/ic769492.png &quot;Internet 选项")
 
 3. 单击“连接”  选项卡。   
 

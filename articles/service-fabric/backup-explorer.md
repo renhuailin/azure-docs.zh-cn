@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: atsenthi
-ms.openlocfilehash: 1da70c37c8a6ed93e7abe1b5d329e808c592e43a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a0131960d356e4862d1379c308e240e19e76205c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86034822"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048062"
 ---
 # <a name="read-and-update-a-reliable-collections-backup-by-using-backup-explorer"></a>通过使用备份资源管理器读取和更新可靠集合备份
 
@@ -45,4 +45,4 @@ ms.locfileid: "86034822"
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 [Azure Service Fabric 有状态服务中的可靠集合](service-fabric-reliable-services-reliable-collections.md)。
-* 查看 [Service Fabric 最佳做法](service-fabric-best-practices-overview.md)。
+* 查看 [Service Fabric 最佳做法](./service-fabric-best-practices-security.md)。

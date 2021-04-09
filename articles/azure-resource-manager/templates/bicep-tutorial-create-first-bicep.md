@@ -2,16 +2,16 @@
 title: 教程 - 创建和部署 Azure 资源管理器 Bicep 文件
 description: 创建用于部署 Azure 资源的第一个 Bicep 文件。 本教程介绍 Bicep 文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632571"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594268"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>教程：创建和部署第一个 Azure 资源管理器 Bicep 文件
 
@@ -31,11 +31,11 @@ ms.locfileid: "102632571"
 
 ### <a name="editor"></a>编辑器
 
-若要创建 Bicep 文件，需要一个很好的编辑器。 我们建议使用装有 Bicep 扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[快速入门：使用 Visual Studio Code 创建 Bicep 文件](quickstart-create-bicep-use-visual-studio-code.md)。
+若要创建 Bicep 文件，需要一个很好的编辑器。 我们建议使用装有 Bicep 扩展的 Visual Studio Code。 如果需要安装这些工具，请参阅[配置 Bicep 开发环境](./bicep-install.md#development-environment)。
 
 ### <a name="command-line-deployment"></a>命令行部署
 
-还需要使用最新的 Azure PowerShell 或最新的 Azure CLI 来部署 Bicep 文件。 有关安装说明，请参阅：
+您可以使用 Azure CLI 或 Azure PowerShell 来部署 Bicep 文件。 对于 Azure CLI，需要 2.20.0 或更高版本；对于 Azure PowerShell，需要 5.6.0 或更高版本。 有关安装说明，请参阅：
 
 - [安装 Azure PowerShell](/powershell/azure/install-az-ps)
 - [在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)
@@ -218,7 +218,7 @@ az deployment group create \
 
 如果就此停止学习，请删除该资源组。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
 2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
 4. 在顶部菜单中选择“删除资源组”。

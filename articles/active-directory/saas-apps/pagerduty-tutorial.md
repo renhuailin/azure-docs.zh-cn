@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/18/2021
 ms.author: jeedes
 ms.openlocfilehash: 9a3117b64c516120f8556b7b63b24e5ef906f973
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101648554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>教程：Azure Active Directory 与 PagerDuty 的单一登录 (SSO) 集成
@@ -26,7 +26,7 @@ ms.locfileid: "101648554"
 * 让用户可使用其 Azure AD 帐户自动登录到 PagerDuty。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -87,7 +87,7 @@ ms.locfileid: "101648554"
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [PagerDuty 客户端支持团队](https://www.pagerduty.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "101648554"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -107,7 +107,7 @@ ms.locfileid: "101648554"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 PagerDuty 的权限，允许其使用 Azure 单一登录。
 
@@ -119,13 +119,13 @@ ms.locfileid: "101648554"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-pagerduty-sso"></a>配置 PagerDuty SSO
+## <a name=&quot;configure-pagerduty-sso&quot;></a>配置 PagerDuty SSO
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Pagerduty 公司站点。
 
 2. 在顶部菜单中，单击“帐户设置”。 
 
-    ![帐户设置](./media/pagerduty-tutorial/ic778535.png "帐户设置")
+    ![帐户设置](./media/pagerduty-tutorial/ic778535.png &quot;帐户设置")
 
 3. 单击“单一登录”  。
 

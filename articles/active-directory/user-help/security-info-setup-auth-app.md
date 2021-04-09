@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e383896e50ccf06ef6d1b5caaeb0ef36ece2ce3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348290"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103197474"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>将 Microsoft Authenticator 应用设置为验证方法
 
@@ -46,10 +46,10 @@ ms.locfileid: "96348290"
 
 根据组织的设置，有时可以使用验证器应用作为安全信息方法之一。 不一定要使用 Microsoft Authenticator 应用，可在设置过程中选择其他应用。 但是，本文使用 Microsoft Authenticator 应用。
 
->[!Important]
-> 如果在5个不同的设备或5个硬件令牌上设置 Microsoft Authenticator 应用，则不能设置第6个设备，可能会看到以下错误消息。
+> [!IMPORTANT]
+> 如果在五台不同设备上设置了 Microsoft Authenticator 应用或使用了五个硬件令牌，则你无法设置第六个，并且可能会看到以下错误消息：
 > 
-> **由于已有5个验证器应用或硬件令牌，因此无法设置 Microsoft Authenticator。请与管理员联系，以删除一个验证器应用或硬件令牌。**
+> 无法安装 Microsoft Authenticator，因为你已经有五个验证器应用或硬件令牌。请与管理员联系，删除其中一个验证器应用或硬件令牌。
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>设置 Microsoft Authenticator 应用
 
@@ -57,7 +57,7 @@ ms.locfileid: "96348290"
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 
-2. 在左侧导航窗格中或通过“安全信息”块中的链接选择“安全信息”，然后从“安全信息”页中选择“添加方法”   。
+2. 选择左侧菜单中的“安全信息”，或使用“安全信息”窗格中的链接 。 如果已注册，则系统将提示进行双重验证。 然后，选择“安全信息”窗格中的“添加方法” 。
 
     ![“安全信息”页，其中突出显示了“添加方法”选项](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "96348290"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 
