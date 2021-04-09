@@ -3,12 +3,12 @@ title: 在单独的 Azure Service Fabric 中进行定期备份/还原
 description: 使用独立 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d4abf1cd4561a40aaafa5c01865eb12882884422
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927952"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198704"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>在独立 Service Fabric 中定期备份和还原
 > [!div class="op_single_selector"]
@@ -47,14 +47,14 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-windows-cluster-x509-security.md)，了解如何获取或创建一个自签名的 X.509 证书。
 
 * 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本来生成应用程序。
-* 安装 ServiceFabric 模块 (预览) 进行配置调用。
+* 安装 Microsoft.ServiceFabric.PowerShell.Http 模块（预览版）以进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
 > [!NOTE]
-> 如果 PowerShellGet 版本低于1.6.0，则需要更新以添加对 *-AllowPrerelease* 标志的支持：
+> 如果 PowerShellGet 版本低于 1.6.0，则需要进行更新以添加对 -AllowPrerelease 标志的支持：
 >
 > `Install-Module -Name PowerShellGet -Force`
 
@@ -103,6 +103,10 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
             "parameters":  [{
                 "name": "SecretEncryptionCertThumbprint",
                 "value": "[Thumbprint]"
+            },
+            {
+                "name": "SecretEncryptionCertX509StoreName",
+                "value": "My"
             }]
         }
         ...

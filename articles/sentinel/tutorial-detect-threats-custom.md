@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453914"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042792"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>教程：创建自定义分析规则以检测威胁
 
@@ -64,7 +64,7 @@ ms.locfileid: "102453914"
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="配置查询规则逻辑和设置" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- 下面提供了另一个查询示例，此查询将在 [Azure 活动](../azure-monitor/platform/activity-log.md)中创建的资源数异常时发出警报。
+- 下面提供了另一个查询示例，此查询将在 [Azure 活动](../azure-monitor/essentials/activity-log.md)中创建的资源数异常时发出警报。
 
     ```kusto
     AzureActivity

@@ -13,12 +13,12 @@ ms.date: 02/15/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: f0a9298b6d8ee011052a20dc34d314adbc5a0b1e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199614"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -27,9 +27,9 @@ ms.locfileid: "101646395"
 ## <a name="application-registration"></a>应用程序注册
 为了将标识和访问管理功能委托给 Azure AD，应用程序必须使用 Azure AD [租户](developer-glossary.md#tenant)进行注册。 将应用程序注册到 Azure AD 时，需要创建应用程序的标识配置，使其能够与 Azure AD 集成。 在 [Azure 门户][AZURE-Portal]中注册应用时，可以选择单租户（只能在自己的租户中访问）或多租户（可在其他租户中访问），也可以选择设置重定向 URI（将访问令牌发送到的位置）。
 
-有关注册应用程序的分步说明，请参阅 [应用注册快速入门](quickstart-register-app.md)。
+有关注册应用的分步说明，请参阅[应用注册快速入门](quickstart-register-app.md)。
 
-完成应用注册后，可以在 [应用程序对象](#application-object) (全局唯一实例，) 该应用程序位于你的主租户或目录中。  而且你的应用拥有全局唯一 ID（应用或客户端 ID）。  然后，在门户中，你便可以添加机密或证书和作用域以使应用正常工作，在登录对话框中自定义应用的品牌等等。
+完成应用注册后，你将拥有应用（[应用程序对象](#application-object)）的全局唯一实例，该实例存在于你的主租户或目录中。  而且你的应用拥有全局唯一 ID（应用或客户端 ID）。  然后，在门户中，你便可以添加机密或证书和作用域以使应用正常工作，在登录对话框中自定义应用的品牌等等。
 
 如果在门户中注册应用程序，会在主租户中自动创建应用程序对象以及服务主体对象。  如果使用 Microsoft Graph API 注册/创建应用程序，则通过一个单独步骤创建服务主体对象。
 
@@ -63,11 +63,10 @@ Microsoft Graph [ServicePrincipal 实体][MS-Graph-Sp-Entity]定义服务主体�
 
 应用程序对象用作模板，常见属性和默认属性从其中 *派生*，以便在创建相应服务主体对象时使用。 因此，应用程序对象与软件应用程序存在 1 对 1 关系，而与其对应的服务主体对象存在 1 对多关系。
 
-必须在将使用应用程序的每个租户中创建服务主体，让它能够建立用于登录和/或访问受租户保护的资源的标识。 单租户应用程序只有一个服务主体（在其宿主租户中），在应用程序注册期间创建并被允许使用。 多租户 Web 应用程序/API 还会在租户中的某个用户已同意使用它的每个租户中创建服务主体。
+必须在将使用应用程序的每个租户中创建服务主体，让它能够建立用于登录和/或访问受租户保护的资源的标识。 单租户应用程序只有一个服务主体（在其宿主租户中），在应用程序注册期间创建并被允许使用。 多租户应用程序还会在租户中的某个用户已同意使用它的每个租户中创建服务主体。
 
-你对应用程序对象所做的任何更改（包括删除）都将反映在应用程序的主租户中的服务主体对象中，仅 (向其注册) 的租户。 对于多租户应用程序，在通过[应用程序访问面板](https://myapps.microsoft.com)删除该访问权限并重新授予访问权限之前，对应用程序对象所做的更改不会反映在任何使用者租户的服务主体对象中。
-
-默认情况下，本机应用程序注册为多租户应用程序。
+### <a name="consequences-of-modifying-and-deleting-applications"></a>修改和删除应用程序的后果
+对应用程序对象所做的任何更改也只反映在该对象在应用程序宿主租户（其注册所在的租户）的服务主体对象中。 这意味着，删除应用程序对象也会删除其主租户服务主体对象。  但是，还原该应用程序对象不会还原其相应的服务主体。 对于多租户应用程序，在通过[应用程序访问面板](https://myapps.microsoft.com)删除该访问权限并重新授予访问权限之前，对应用程序对象所做的更改不会反映在任何使用者租户的服务主体对象中。
 
 ## <a name="example"></a>示例
 

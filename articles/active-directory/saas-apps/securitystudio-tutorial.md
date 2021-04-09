@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: jeedes
 ms.openlocfilehash: 633e2b6e8a7402ce94045fe290b4e08af73b124e
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951396"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-securitystudio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SecurityStudio 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "104951396"
 * 让用户使用其 Azure AD 帐户自动登录到 SecurityStudio。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

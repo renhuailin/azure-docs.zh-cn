@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: d900ffa4481ba2b6deb21a8325f3f8def8084f84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101714725"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
@@ -31,7 +31,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 > 存储分析指标可用于 Azure Blob 存储、Azure 队列存储、Azure 表存储以及 Azure 文件。
 > 存储分析指标现在是经典指标。 建议你使用 [Azure Monitor 中的存储指标](../blobs/monitor-blob-storage.md)，而不是存储分析指标。
 
-## <a name="transaction-metrics"></a>事务指标  
+## <a name="transaction-metrics"></a>事务度量值  
  对于每个存储服务和请求的 API 操作，将按小时或分钟为间隔记录一组可靠的数据，其中包括入口和出口、可用性、错误和分类请求百分比。 有关事务详细信息的完整列表，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
  事务数据在服务级别和 API 操作级别记录。 在服务级别，汇总所有请求的 API 操作的统计信息将每小时写入一次表实体，即使未向服务发出请求也是如此。 在 API 操作级别，仅当在该小时内请求操作时才将统计信息写入实体。  

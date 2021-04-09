@@ -10,10 +10,10 @@ ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102453659"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能

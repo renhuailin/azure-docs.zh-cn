@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612824"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。
@@ -21,9 +21,6 @@ ms.locfileid: "101718975"
 
 1. 将 IP 分配方法由动态更改为静态。
 2. 运行 PowerShell 脚本以完成升级和流量迁移。
-
-> [!IMPORTANT]
-> 脚本当前正在进行维护。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅 [此处](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli) 的说明。
 
 ## <a name="upgrade-overview"></a>升级概述
 
@@ -101,7 +98,7 @@ ms.locfileid: "101718975"
     **示例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>为出站连接创建出站规则

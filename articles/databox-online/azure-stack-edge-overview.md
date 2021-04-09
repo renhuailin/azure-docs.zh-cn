@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455741"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585938"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>什么是 Azure Stack Edge Pro with FPGA？
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-Azure Stack Edge Pro with FPGA 是具有网络数据传输功能的支持 AI 的边缘计算设备。 本文概述了 Azure Stack Edge Pro with FPGA 解决方案、其优势、重要功能以及可以部署此设备的场景。
+Azure Stack Edge Pro with FPGA 是具有网络数据传输功能的支持 AI 的边缘计算设备。 本文概述 Azure Stack Edge Pro with FPGA 解决方案、其优势、重要功能和部署方案。
 
-Azure Stack Edge Pro with FPGA 是一种硬件即服务解决方案。 Microsoft 为客户提供了一个具有内置现场可编程门阵列 (FPGA) 的云托管设备，该设备可加速 AI 推理并具有存储网关的所有功能。 
+Azure Stack Edge Pro with FPGA 是一种硬件即服务解决方案。 Microsoft 为客户提供了一个具有内置现场可编程门阵列 (FPGA) 的云托管设备，该设备可加速 AI 推理并具有存储网关的所有功能。
+
+Azure Data Box Edge 更名为 Azure Stack Edge。
 
 ## <a name="use-cases"></a>用例
 
@@ -36,7 +38,7 @@ Azure Stack Edge Pro with FPGA 是一种硬件即服务解决方案。 Microsoft
     - 用于优化存储和带宽，或用于进一步分析的子集数据。
     - 分析和应对 IoT 事件。 
 
-- 通过网络将数据传输到 Azure - 使用 Azure Stack Edge Pro 可以既快速又轻松地将数据传输到 Azure，以实现其他计算和分析或用于存档。 
+- **通过网络将数据传输到 Azure** - 使用 Azure Stack Edge Pro 可以既快速又轻松地将数据传输到 Azure，以实现其他计算和分析或用于存档。 
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -53,20 +55,22 @@ Azure Stack Edge Pro 具有以下功能：
 |支持的协议     | 支持用于数据引入的标准 SMB 和 NFS 协议。 <br> 有关受支持版本的详细信息，请参阅 [Azure Stack Edge Pro 系统要求](azure-stack-edge-system-requirements.md)。|
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
-|宽带限制| 中止以限制在高峰时段使用带宽。|
+|带宽限制| 中止以限制在高峰时段使用带宽。|
 |ExpressRoute | 通过 ExpressRoute 增加了安全性。 使用对等互连配置，从本地设备到云存储终结点的流量将通过 ExpressRoute 传输。 有关详细信息，请参阅 [ExpressRoute 概述](../expressroute/expressroute-introduction.md)。
 
 ## <a name="components"></a>组件
 
 Azure Stack Edge Pro 解决方案包括 Azure Stack Edge 资源、Azure Stack Edge Pro 物理设备和本地 Web UI。
 
-* Azure Stack Edge Pro 物理设备 - Microsoft 提供的 1U 机架安装式服务器，可配置为将数据发送到 Azure。
+* **Azure Stack Edge Pro 物理设备**：Microsoft 提供的 1U 机架安装式服务器，可配置为将数据发送到 Azure。
     
-* Azure Stack Edge 资源 - Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Azure Stack Edge Pro 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、查看和管理设备与警报，以及管理共享。  
+* **Azure Stack Edge 资源**：Azure 门户中的一种资源，使用该资源可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Azure Stack Edge Pro 设备。 使用 Azure Stack Edge 资源可以创建和管理资源、管理共享，以及查看和管理设备与警报。
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   由于 Azure Stack Edge Pro 的生命周期即将结束，我们不再接受 Azure Stack Edge Pro 设备的新订单。 如果你是新客户，我们建议先了解如何为工作负载使用 Azure Stack Edge Pro - GPU 设备。 有关详细信息，请参阅[什么是 Azure Stack Edge Pro with GPU](azure-stack-edge-gpu-overview.md)。 有关订购 Azure Stack Edge Pro with GPU 设备的信息，请参阅[为 Azure Stack Edge Pro - GPU 创建新资源](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)。
 
-    有关详细信息，请转到[为 Azure Stack Edge Pro 设备创建订单](azure-stack-edge-deploy-prep.md#create-a-new-resource)。
+   如果你是现有客户并需要更换或重置现有的 Azure Stack Edge Pro 设备，仍可创建新的 Azure Stack Edge Pro 资源。 有关说明，请参阅[为 Azure Stack Edge Pro 设备创建订单](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device)。
 
 * Azure Stack Edge Pro 本地 Web UI - 使用本地 Web UI 可以运行诊断、关闭和重启 Azure Stack Edge Pro 设备、查看复制日志，并联系 Microsoft 支持部门以提出服务请求。
 
@@ -81,6 +85,8 @@ Azure Stack Edge Pro 解决方案包括 Azure Stack Edge 资源、Azure Stack Ed
 - **资源可用性** - 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅 [可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 Azure Stack Edge Pro 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](../azure-government/documentation-government-welcome.md)。
     
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 存储帐户存储 Azure Stack Edge Pro 数据的区域应靠近设备所在位置，以便获得最佳性能。 远离设备的存储帐户会导致长时间的延迟和性能下降。
+
+Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请参阅 [Azure 中的区域和可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)。 Azure Stack Edge 服务不依赖于特定的 Azure 区域，因此可以灵活应对区域范围的服务中断和区域范围的服务中断。
 
 ## <a name="next-steps"></a>后续步骤
 

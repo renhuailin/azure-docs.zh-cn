@@ -4,10 +4,10 @@ description: 本教程介绍如何横向扩展 Service Fabric 托管群集的节
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.openlocfilehash: 769bcb339b2cc1419c7a3d92d0f08130029a9f95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785425"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>教程：横向扩展 Service Fabric 托管群集（预览版）

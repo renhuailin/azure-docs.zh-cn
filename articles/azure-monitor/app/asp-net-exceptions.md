@@ -4,12 +4,12 @@ description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 926516075c7d43e6e800403a69ff3ab8f1233fcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88936497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726985"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](./app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -215,7 +215,7 @@ public class GoodController : ApiController
 ### <a name="prior-versions-support"></a>以前版本支持
 如果使用 Application Insights Web SDK 2.5（及更低版本）的 MVC 4（及更低版本），请参照以下示例跟踪异常。
 
-如果 [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) 配置为 `Off`，[HTTP 模块](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85))将可以收集异常。 但是，如果它是 `RemoteOnly`（默认值）或 `On`，异常将清除，并且 Application Insights 无法自动收集它。 可通过重写 [System.Web.Mvc.HandleErrorAttribute 类](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)并应用重写类来修复该问题，如下面针对不同的 MVC 版本所示（[GitHub 源](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)）：
+如果 [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) 配置为 `Off`，[HTTP 模块](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85))将可以收集异常。 但是，如果它是 `RemoteOnly`（默认值）或 `On`，异常将清除，并且 Application Insights 无法自动收集它。 可通过重写 [System.Web.Mvc.HandleErrorAttribute 类](/dotnet/api/system.web.mvc.handleerrorattribute)并应用重写类来修复该问题，如下面针对不同的 MVC 版本所示（[GitHub 源](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)）：
 
 ```csharp
     using System;

@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: fe8f6705fdce1a692dd8a969cfc4b3b21d2d2a11
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.openlocfilehash: 3a15ddc62c19d74871de33003d46ec2fc5437f51
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072099"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584680"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -107,7 +107,7 @@ ms.locfileid: "98072099"
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
-> - [HybridNetwork](#microsofthybridnetwork)
+> - [Microsoft.HybridNetwork](#microsofthybridnetwork)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
@@ -197,7 +197,7 @@ ms.locfileid: "98072099"
 > - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
-> - [WorkloadBuilder](#microsoftworkloadbuilder)
+> - [Microsoft.WorkloadBuilder](#microsoftworkloadbuilder)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
@@ -342,7 +342,7 @@ ms.locfileid: "98072099"
 > [!IMPORTANT]
 > Runbook 必须与自动化帐户存在于同一资源组中。
 >
-> 有关信息，请参阅 [将 Azure Automation 帐户移到另一个订阅](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
+> 有关信息，请参阅[将 Azure 自动化帐户移到另一个订阅](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)。
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -850,7 +850,7 @@ ms.locfileid: "98072099"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | 是 | 是 |
+> | flexibleServers | 否 | 否 |
 > | servers | 是 | 是 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
@@ -858,7 +858,7 @@ ms.locfileid: "98072099"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | 是 | 是 |
+> | flexibleServers | 否 | 否 |
 > | servergroups | 否 | 否 |
 > | servers | 是 | 是 |
 > | serversv2 | 是 | 是 |
@@ -1069,7 +1069,7 @@ ms.locfileid: "98072099"
 > | ------------- | ----------- | ---------- |
 > | datamanagers | 是 | 是 |
 
-## <a name="microsofthybridnetwork"></a>HybridNetwork
+## <a name="microsofthybridnetwork"></a>Microsoft.HybridNetwork
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -2034,7 +2034,7 @@ ms.locfileid: "98072099"
 > | ------------- | ----------- | ---------- |
 > | deviceservices | 否 | 否 |
 
-## <a name="microsoftworkloadbuilder"></a>WorkloadBuilder
+## <a name="microsoftworkloadbuilder"></a>Microsoft.WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |

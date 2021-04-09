@@ -2,19 +2,20 @@
 title: 使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 description: 如何使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
 ms.date: 09/15/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.custom: cosmos-db
+ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671278"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627568"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 
@@ -28,6 +29,10 @@ ms.locfileid: "101671278"
 * Synapse Apache Spark 还支持将 Azure Cosmos DB 作为源和接收器的 Spark 结构化流。 
 
 以下各节将演练上述功能的语法。 Azure Synapse Analytics 工作区中的笔势旨在提供一种简单现成的入门体验。 右键单击 Synapse 工作区的“数据”选项卡中的 Azure Cosmos DB 容器时，可以显示这些笔势。 借助笔势，可以快速生成代码，并根据需要对其进行定制。 笔势还适用于只需单击一下即可发现数据的功能。
+
+> [!IMPORTANT]
+> 应注意分析架构中可能会导致数据加载操作出现意外行为的某些约束。
+> 例如，只有事务架构中的前 1000 个属性才能在分析架构中使用，无法使用含空格的属性等等。如果遇到某些意外结果，请查看[分析存储架构约束](../../cosmos-db/analytical-store-introduction.md#schema-constraints)以了解更多详细信息。
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>查询 Azure Cosmos DB 分析存储
 

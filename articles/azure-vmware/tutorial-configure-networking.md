@@ -4,10 +4,10 @@ description: 了解如何在 Azure 中创建和配置在部署私有云时所需
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103494340"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
@@ -98,7 +98,7 @@ Azure VMware 解决方案私有云需要一个 Azure 虚拟网络。 由于 Azur
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你将了解：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/20/2021
 ms.author: jeedes
 ms.openlocfilehash: a71dac55c860348f31ce8da27ab050a6c71a5c68
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101653006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
@@ -96,7 +96,7 @@ ms.locfileid: "101653006"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -108,7 +108,7 @@ ms.locfileid: "101653006"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 本部分将通过授予 B.Simon 访问 Canvas 的权限，允许其使用 Azure 单一登录。
 
@@ -120,13 +120,13 @@ ms.locfileid: "101653006"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-### <a name="configure-canvas-sso"></a>配置 Canvas SSO
+### <a name=&quot;configure-canvas-sso&quot;></a>配置 Canvas SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Canvas 公司站点。
 
 2. 转到“课程” **\>“托管帐户”\>** “Microsoft”。
 
-    ![画布](./media/canvas-lms-tutorial/ic775990.png "画布")
+    ![画布](./media/canvas-lms-tutorial/ic775990.png &quot;画布")
 
 3. 在左侧导航窗格中，选择“身份验证”，并单击“添加新 SAML 配置”。  
 
