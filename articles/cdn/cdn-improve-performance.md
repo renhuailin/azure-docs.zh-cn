@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7c84d8129e1d0d88601495dec41883077784bb71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728189"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601536"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -27,7 +27,7 @@ ms.locfileid: "101728189"
 有两种方法可启用文件压缩：
 
 - 在源服务器上启用压缩。 在此示例中，Azure CDN 传递压缩文件，将这些文件传递给发出请求的客户端。
-- 直接在 CDN POP 服务器上启用压缩 (在 *动态) 上压缩* 。 在这种情况下，CDN 会压缩文件并将其提供给最终用户，即使源服务器未压缩文件也是如此。
+- 直接在 CDN POP 服务器上启用压缩（“快速压缩”）。 在这种情况下，CDN 会压缩文件并将其提供给最终用户，即使源服务器未压缩文件也是如此。
 
 > [!IMPORTANT]
 > Azure CDN 配置更改可能需要一段时间，才能在整个网络中传播： 
@@ -53,20 +53,16 @@ ms.locfileid: "101728189"
     CDN 终结点页面会打开。
 2. 选择“压缩”。
 
-    ![屏幕截图显示在门户菜单中选择了压缩的端点。](./media/cdn-file-compression/cdn-compress-select-std.png)
+    ![屏幕截图显示了门户菜单中选择了“压缩”的终结点。](./media/cdn-file-compression/cdn-compress-select-std.png)
 
     此时将打开“压缩”页。
 3. 选择“启用”以启用压缩。
 
-    ![屏幕截图显示了如何启用压缩。](./media/cdn-file-compression/cdn-compress-standard.png)
+    ![屏幕截图显示了启用压缩。](./media/cdn-file-compression/cdn-compress-standard.png)
 4. 使用默认 MIME 类型，或通过添加或删除 MIME 类型来修改列表。
 
    > [!TIP]
    > 建议不要对压缩格式应用压缩（虽然可以执行此操作）。 压缩格式示例有 ZIP、MP3、MP4 或 JPG。
-   > 
-
-   > [!NOTE]
-   > Microsoft 提供的 Azure CDN 标准版暂不支持修改 MIME 类型的默认列表。
    > 
 
 5. 进行更改后，请选择“保存”。
@@ -76,7 +72,7 @@ ms.locfileid: "101728189"
 > 本部分仅适用于 **来自 Verizon 的高级 Azure CDN** 配置文件。
 > 
 
-1. 从 "CDN 配置文件" 页中，选择 " **管理**"。
+1. 从“CDN 配置文件”页中，选择“管理”。
 
     ![CDN 管理选择](./media/cdn-file-compression/cdn-manage-btn.png)
 
@@ -101,7 +97,7 @@ ms.locfileid: "101728189"
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Microsoft 的 Azure CDN 标准版配置文件
 
 对于“Microsoft 提供的 Azure CDN 标准版”配置文件，只有符合条件的文件才能进行压缩。 要符合压缩条件，文件必须：
-- 是已 [配置为压缩](#enabling-compression)的 MIME 类型。
+- 为已[配置为压缩](#enabling-compression)的 MIME 类型。
 - 大于 1 KB
 - 小于 8 MB
 
@@ -113,7 +109,7 @@ ms.locfileid: "101728189"
 
 如果对资产的请求指定了 gzip 压缩并且请求导致缓存未命中，则 Azure CDN 将直接在 POP 服务器上对资产执行 gzip 压缩。 此后，将从缓存提供压缩的文件。
 
-如果源使用分块传输编码 (CTE) 将压缩的数据发送到 CDN POP，则不支持大于8MB 的响应大小。 
+如果源使用分块传输编码 (CTE) 将压缩的数据发送到 CDN POP，则不支持大于 8 MB 的响应大小。 
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Verizon 的 Azure CDN 配置文件
 
@@ -141,7 +137,7 @@ ms.locfileid: "101728189"
 这些表描述每种方案的 Azure CDN 压缩行为：
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>已禁用压缩或文件不适合压缩
-| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | &nbsp; &nbsp; &nbsp; &nbsp; 说明 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 注意&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | 压缩 |压缩 |压缩 | |
 | 压缩 |未压缩 |未压缩 | |
@@ -153,10 +149,10 @@ ms.locfileid: "101728189"
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已启用压缩且文件适合压缩
 | 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 说明 |
 | --- | --- | --- | --- |
-| 压缩 |压缩 |压缩 |在支持的格式之间进行 CDN 转码。 <br/>**来自 Microsoft 的 Azure CDN** 不支持在格式之间进行转换，而是从源中提取数据，并单独压缩和缓存格式。 |
+| 压缩 |压缩 |压缩 |在支持的格式之间进行 CDN 转码。 <br/>Microsoft 推出的 Azure CDN 不支持在格式之间进行转码，而是从源中提取数据，并针对格式分别进行压缩和缓存。 |
 | 压缩 |未压缩 |压缩 |CDN 执行压缩。 |
 | 压缩 |未缓存 |压缩 |如果源返回未压缩文件，CDN 将执行压缩。 <br/>来自 Verizon 的 Azure CDN 将传递第一个请求上的未压缩文件，然后压缩并缓存文件以供后续请求使用。 <br/>永远不会压缩带 `Cache-Control: no-cache` 标头的文件。 |
-| 未压缩 |压缩 |未压缩 |CDN 执行解压缩。 <br/>**来自 Microsoft 的 Azure CDN** 不支持解压缩，而是从源提取数据并为未压缩的客户端单独进行缓存。 |
+| 未压缩 |压缩 |未压缩 |CDN 执行解压缩。 <br/>Microsoft 推出的 Azure CDN 不支持解压缩，而是从源中提取数据，并针对解压缩的客户端单独进行缓存。 |
 | 未压缩 |未压缩 |未压缩 | |
 | 未压缩 |未缓存 |未压缩 | |
 

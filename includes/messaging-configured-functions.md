@@ -9,10 +9,10 @@ ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98900784"
 ---
 Azure Functions 允许创建基于预生成的入口点的仅配置复制任务。 [Azure Functions 的基于配置的复制示例](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)说明如何在你自己的代码中利用[预生成的帮助程序](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)，或者完全避免处理代码，而只使用配置。

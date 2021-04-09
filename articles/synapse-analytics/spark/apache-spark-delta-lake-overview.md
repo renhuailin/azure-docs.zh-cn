@@ -12,10 +12,10 @@ ms.author: euang
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 1e0dfd597e7f445eeba6cef332d8ea12b27dc3a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101676315"
 ---
 # <a name="linux-foundation-delta-lake-overview"></a>Linux Foundation Delta Lake 概述
@@ -566,11 +566,11 @@ deltaTable.history.show(false)
 
 |版本|          timestamp|userId|userName|operation|                                                operationParameters| 作业 (job)|笔记本|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|---------|-------------------------------------------------------------------|----|--------|---------|-----------|--------------|-------------|
-|      4|2020-04-25 00:36:27|  null|    null|    MERGE|                       [predicate -> (oldData.`ID` = newData.`ID`)]|null|    Null|     null|          3|          null|        false|
-|      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predicate -> ["((`ID` % CAST(2 AS BIGINT)) = CAST(0 AS BIGINT))"]]|null|    Null|     null|          2|          null|        false|
-|      2|2020-04-25 00:35:51|  null|    null|   UPDATE| [predicate -> ((ID#744L % cast(2 as bigint)) = cast(0 as bigint))]|null|    Null|     Null|          1|          null|        false|
-|      1|2020-04-25 00:35:05|  null|    null|    WRITE|                             [mode -> Overwrite, partitionBy -> []]|null|    Null|     null|          0|          Null|        false|
-|      0|2020-04-25 00:34:34|  null|    null|    WRITE|                         [mode -> ErrorIfExists, partitionBy -> []]|Null|    Null|     Null|       Null|          null|         true|
+|      4|2020-04-25 00:36:27|  null|    null|    MERGE|                       [predicate -> (oldData.`ID` = newData.`ID`)]|null|    null|     null|          3|          null|        false|
+|      3|2020-04-25 00:36:08|  null|    null|   DELETE|[predicate -> ["((`ID` % CAST(2 AS BIGINT)) = CAST(0 AS BIGINT))"]]|null|    null|     null|          2|          null|        false|
+|      2|2020-04-25 00:35:51|  null|    null|   UPDATE| [predicate -> ((ID#744L % cast(2 as bigint)) = cast(0 as bigint))]|null|    null|     Null|          1|          null|        false|
+|      1|2020-04-25 00:35:05|  null|    null|    WRITE|                             [mode -> Overwrite, partitionBy -> []]|null|    null|     null|          0|          Null|        false|
+|      0|2020-04-25 00:34:34|  null|    null|    WRITE|                         [mode -> ErrorIfExists, partitionBy -> []]|null|    null|     null|       null|          null|         true|
 
 在这里，你可看到对上述代码片段所作的全部修改。
 
@@ -905,12 +905,12 @@ spark.sql(s"DESCRIBE HISTORY delta.`$deltaTablePath`").show()
 
 |版本|          timestamp|userId|userName|       operation| operationParameters| 作业 (job)|笔记本|clusterId|readVersion|isolationLevel|isBlindAppend|
 |-------|-------------------|------|--------|----------------|--------------------|----|--------|---------|-----------|--------------|-------------|
-|      5|2020-04-25 00:37:09|  null|    null|STREAMING UPDATE|[outputMode -> Ap...|null|    Null|     null|          4|          null|         true|
-|      4|2020-04-25 00:36:27|  null|    null|           MERGE|[predicate -> (ol...|null|    Null|     null|          3|          null|        false|
-|      3|2020-04-25 00:36:08|  null|    null|          DELETE|[predicate -> ["(...|null|    Null|     null|          2|          null|        false|
-|      2|2020-04-25 00:35:51|  null|    null|          UPDATE|[predicate -> ((i...|null|    Null|     Null|          1|          null|        false|
-|      1|2020-04-25 00:35:05|  null|    null|           WRITE|[mode -> Overwrit...|null|    Null|     null|          0|          Null|        false|
-|      0|2020-04-25 00:34:34|  null|    null|           WRITE|[mode -> ErrorIfE...|null|    Null|     Null|       Null|          null|         true|
+|      5|2020-04-25 00:37:09|  null|    null|STREAMING UPDATE|[outputMode -> Ap...|null|    null|     null|          4|          null|         true|
+|      4|2020-04-25 00:36:27|  null|    null|           MERGE|[predicate -> (ol...|null|    null|     null|          3|          null|        false|
+|      3|2020-04-25 00:36:08|  null|    null|          DELETE|[predicate -> ["(...|null|    null|     null|          2|          null|        false|
+|      2|2020-04-25 00:35:51|  null|    null|          UPDATE|[predicate -> ((i...|null|    null|     Null|          1|          null|        false|
+|      1|2020-04-25 00:35:05|  null|    null|           WRITE|[mode -> Overwrit...|null|    null|     null|          0|          Null|        false|
+|      0|2020-04-25 00:34:34|  null|    null|           WRITE|[mode -> ErrorIfE...|null|    null|     null|       null|          null|         true|
 
 :::zone pivot = "programming-language-python"
 

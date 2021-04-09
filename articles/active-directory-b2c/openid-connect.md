@@ -7,20 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.openlocfilehash: 87415fc98bbcc9331ae4ff6282a65c85b570042d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509795"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579767"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
 OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 通过使用 OpenID Connect 的 Azure Active Directory B2C (Azure AD B2C) 实现，可以将 Web 应用程序中的注册、登录和其他标识管理体验转移到 Azure Active Directory (Azure AD) 中。 本指南演示如何使用与语言无关的方式执行此操作。 介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
+
+> [!NOTE]
+> 大多数开源身份验证库会为应用程序获取并验证 JWT 令牌。 我们建议浏览这些选项，而不是实现自己的代码。 有关详细信息，请参阅 [Microsoft 身份验证库 (MSAL) 概述](../active-directory/develop/msal-overview.md)和 [Microsoft 标识 Web 身份验证库](../active-directory/develop/microsoft-identity-web.md)。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 *授权* 协议，将其用作 *身份验证* 协议。 使用此身份验证协议可以执行单一登录。 它引入了 ID 令牌的概念，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。
 
@@ -45,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如：`b2c_1_sign_in`、`b2c_1_sign_up` 或 `b2c_1_edit_profile`。 |
@@ -57,6 +60,9 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri | 否 | 应用程序的 `redirect_uri` 参数，应用程序可在此发送及接收身份验证响应。 它必须完全匹配在 Azure 门户中注册的其中一个 `redirect_uri` 参数，但必须经过 URL 编码。 |
 | response_mode | 否 | 将生成的授权代码发回到应用程序所用的方法。 这可以是 `query`、`form_post` 或 `fragment`。  建议使用 `form_post` 响应模式以获得最佳安全性。 |
 | state | 否 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 随机生成的唯一值通常用于防止跨站点请求伪造攻击。 该状态也用于在身份验证请求出现之前，在应用程序中编码用户的状态信息，例如用户之前所在的页面。 |
+| login_hint | 否| 可用于预先填充登录页面的“登录名”字段。 有关详细信息，请参阅[预填充登录名](direct-signin.md#prepopulate-the-sign-in-name)。  |
+| domain_hint | 否| 向 Azure AD B2C 提供有关应该用于登录的社交标识提供者的提示。 如果包含了有效的值，用户将直接转到标识提供者登录页面。  有关详细信息，请参阅[将登录重定向到社交服务提供商](direct-signin.md#redirect-sign-in-to-a-social-provider)。 |
+| 自定义参数 | 否| 可用于[自定义策略](custom-policy-overview.md)的自定义参数。 例如，[动态自定义页面内容 URI](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri) 或[键值声明解析程序](claim-resolver-overview.md#oauth2-key-value-parameters)。 |
 
 此时，要求用户完成工作流。 用户可能需要输入其用户名和密码、用社交标识登录，或注册目录。 可能还可任何其他若干步骤，具体取决于如何定义用户流。
 
@@ -94,7 +100,10 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>验证 ID 令牌
 
-仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 根据应用程序的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。 有许多开放源代码库可用于验证 JWT，具体取决于首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。
+仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 根据应用程序的要求验证 ID 令牌的签名和令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。 
+
+> [!NOTE]
+> 大多数开源身份验证库会为应用程序验证 JWT 令牌。 我们建议浏览这些选项，而不是实现自己的验证逻辑。 有关详细信息，请参阅 [Microsoft 身份验证库 (MSAL) 概述](../active-directory/develop/msal-overview.md)和 [Microsoft 标识 Web 身份验证库](../active-directory/develop/microsoft-identity-web.md)。
 
 Azure AD B2C 具有 OpenID Connect 元数据终结点，允许应用程序在运行时获取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 用户流的元数据文档位于：
 
@@ -126,7 +135,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 - 确保用户拥有正确的授权/权限。
 - 确保执行了一定强度的身份验证，例如 Azure AD 多重身份验证。
 
-验证 ID 令牌后，可以开始与用户的会话。 在应用程序中，可以使用 ID 令牌中的声明来获取用户的相关信息。 此信息的用途包括显示、记录和授权。
+验证 ID 令牌后，便可以开始与用户的会话。 在应用程序中，可以使用 ID 令牌中的声明来获取用户的相关信息。 此信息的用途包括显示、记录和授权。
 
 ## <a name="get-a-token"></a>获取令牌
 
@@ -144,7 +153,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 用于获取授权代码的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
@@ -213,7 +222,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 用于获取原始刷新令牌的用户流。 无法在此请求中使用不同的用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文中。 |
@@ -270,7 +279,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| 参数 | 必须 | 说明 |
+| 参数 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | {tenant} | 是 | Azure AD B2C 租户的名称 |
 | {policy} | 是 | 想要用于从应用程序中注销用户的用户流。 |
@@ -283,7 +292,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 注销后，用户将重定向到 `post_logout_redirect_uri` 参数中指定的 URI，而不管为应用程序指定的回复 URL 为何。 但是，如果传递了有效的 `id_token_hint` 并启用了“注销请求中需要 ID 令牌”，则在执行重定向之前，Azure AD B2C 将验证 `post_logout_redirect_uri` 的值是否与应用程序的某个已配置重定向 URI 相匹配。 如果没有为应用程序配置匹配的回复 URL，则会显示一条错误消息，而用户不会重定向。
 
-若要在注销请求中设置所需的 ID 令牌，请参阅 [在 Azure Active Directory B2C 中配置会话行为](session-behavior.md#secure-your-logout-redirect)。
+若要在注销请求中设置所需的 ID 令牌，请参阅[在 Azure Active Directory B2C 中配置会话行为](session-behavior.md#secure-your-logout-redirect)。
 
 ## <a name="next-steps"></a>后续步骤
 

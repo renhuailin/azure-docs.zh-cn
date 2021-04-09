@@ -13,26 +13,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
-ms.translationtype: MT
+ms.openlocfilehash: 185638d683699403c304603d968cfe84e32a55b5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319774"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574554"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory 登录活动报告 - 预览版
 
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录** -有关用户、应用程序和托管资源登录到 Azure AD 并访问资源的信息。
+    - **登录** - 有关用户、应用程序和受管理资源何时登录到 Azure AD 并访问资源的信息。
     - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
-    - 有**风险的登录**-有[风险的登录](../identity-protection/overview-identity-protection.md)是指不是用户帐户合法所有者的登录尝试。
+    - **风险登录** - [风险登录](../identity-protection/overview-identity-protection.md)指示由非用户帐户合法所有者的人进行的登录尝试。
     - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
 
 Azure Active Directory 中的经典登录报告概述了交互式用户登录的情况。此外，你现在可以访问另外三个目前处于预览状态的登录报告：
@@ -102,7 +102,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 
 
-## <a name="user-sign-ins"></a>用户登录
+## <a name="user-sign-ins&quot;></a>用户登录
 
 登录边栏选项卡中的每个选项卡都显示下面的默认列。 某些选项卡有其他列：
 
@@ -120,12 +120,17 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 
 
-### <a name="interactive-user-sign-ins"></a>交互式用户登录
+### <a name=&quot;interactive-user-sign-ins&quot;></a>交互式用户登录
 
 
 交互式用户登录是指这样一种登录：用户向 Azure AD 提供身份验证因素，或者直接与 Azure AD 或帮助程序应用（如 Microsoft Authenticator 应用）交互。 用户提供的因素包括：密码、对 MFA 质询的响应、生物因素，或者用户提供给 Azure AD 或帮助程序应用的 QR 码。
 
-此报告还包括与 Azure AD 联合的标识提供者提供的联合登录。  
+> [!NOTE]
+> 此报告还包括与 Azure AD 联合的标识提供者提供的联合登录。  
+
+
+
+注意：交互式用户登录报告过去常常包含来自 Microsoft Exchange 客户端的一些非交互式登录。 尽管这些登录是非交互式登录，但为了增加可见性，它们包含在交互式用户登录报告中。 非交互式用户登录报告于 2020 年 11 月进入公共预览版后，这些非交互式登录事件日志已移至非交互式用户登录报告以提高准确性。 
 
 
 **报告大小：** 小 <br> 
@@ -150,7 +155,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 单击工具栏中的“列”即可自定义列表视图。 
 
-![交互式用户登录列](./media/concept-all-sign-ins/columns-interactive.png "交互式用户登录列")
+![交互式用户登录列](./media/concept-all-sign-ins/columns-interactive.png &quot;交互式用户登录列")
 
 
 
@@ -226,7 +231,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 
 
-## <a name="service-principal-sign-ins"></a>服务主体登录
+## <a name="service-principal-sign-ins&quot;></a>服务主体登录
 
 与交互式和非交互式用户登录不同，服务主体登录不是涉及用户的登录， 而是由任何非用户帐户（例如应用或服务主体）执行的登录（托管标识登录除外，此类登录仅包含在托管标识登录报告中）。 在此类登录中，应用或服务提供自己的凭据（例如证书或应用机密）对资源进行身份验证或访问。
 
@@ -259,7 +264,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 不能自定义此报告中显示的字段。
 
-![禁用的列](./media/concept-all-sign-ins/disabled-columns.png "禁用的列")
+![禁用的列](./media/concept-all-sign-ins/disabled-columns.png &quot;禁用的列")
 
 为了便于理解服务主体登录日志中的数据，服务主体登录事件进行了分组。 相同条件下同一实体的登录将聚合到单个行中。 可以展开该行来查看所有不同的登录及其不同的时间戳。 当以下数据匹配时，会在服务主体报告中对登录进行聚合：
 
@@ -327,7 +332,7 @@ Azure 资源托管标识登录是资源执行的登录，这些资源的机密�
 
 通过设置筛选器，可以缩小返回的登录数据的范围。 Azure AD 提供了一系列可以设置的其他筛选器。 设置筛选器时，应始终特别注意已配置的日期范围筛选器。 正确的日期范围筛选器可确保 Azure AD 仅返回你真正关心的数据。     
 
-**日期**范围筛选器用于为返回的数据定义时间范围。
+**日期** 范围筛选器用于为返回的数据定义时间范围。
 可能的值包括：
 
 - 一个月

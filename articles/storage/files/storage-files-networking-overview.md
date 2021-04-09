@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: cec386b798b843a5badc9d52d9c71bd7df54b59a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563329"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103601927"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过两种方式连接到 Azure 文件共享：
@@ -25,6 +25,15 @@ ms.locfileid: "90563329"
 Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。 
 
 在阅读本概念指南之前，我们建议先阅读[规划 Azure 文件存储部署](storage-files-planning.md)。
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jd49W33DxkQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        此视频是有关如何通过五个简单步骤将 Azure 文件共享直接安全地公开给信息工作者和应用的指南和演示。 以下部分提供的链接和其他上下文适用于视频中引用的文档。
+   :::column-end:::
+:::row-end:::
 
 ## <a name="accessing-your-azure-file-shares"></a>访问 Azure 文件共享
 在存储帐户中部署 Azure 文件共享时，可以通过该存储帐户的公共终结点立即访问该文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 
@@ -137,7 +146,7 @@ IP4Address : 52.239.194.40
 
 可通过两种方法来仅限虚拟网络访问存储帐户：
 - 为存储帐户创建一个或多个专用终结点，并限制对公共终结点的所有访问。 这可以确保只有源自所需虚拟网络内部的流量才能访问存储帐户中的 Azure 文件共享。
-- 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。** 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
+- 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
 
 > [!NOTE]
 > NFS 共享无法通过公共 IP 地址访问存储帐户的公共终结点，只能使用虚拟网络访问存储帐户的公共终结点。 NFS 共享还可以使用专用终结点来访问存储帐户。

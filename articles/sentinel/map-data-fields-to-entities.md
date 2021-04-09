@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: cb91d269f6b166510db54637d17d776e71137408
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102456144"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>将数据字段映射到 Azure Sentinel 中的实体 
@@ -41,7 +41,7 @@ ms.locfileid: "102456144"
 
 1. 从 Azure Sentinel 导航菜单中选择“分析”。
 
-1. 选择计划的查询规则并单击“编辑”。 或单击屏幕顶部的“创建 &#10132; 计划的查询规则”，创建一个新规则。
+1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”&#10132;“计划的查询规则”，创建一个新规则。
 
 1. 单击“设置规则逻辑”选项卡。
 
@@ -75,5 +75,5 @@ ms.locfileid: "102456144"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将数据字段映射到 Azure Sentinel 分析规则中的实体。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 获取有关[计划的查询分析规则](tutorial-detect-threats-custom.md)的完整图片。
-- 详细了解 [Azure Sentinel 中的实体](entities-in-azure-sentinel.md)。
+- 全面了解[计划的查询分析规则](tutorial-detect-threats-custom.md)。
+- 有关详细信息，请参阅 [Azure Sentinel 中的实体](entities-in-azure-sentinel.md)。

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 03/10/2021
 ms.author: justinha
-ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.openlocfilehash: 5473ef46751d64fdbbf1d52f39c66f49d707e615
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631381"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中有关用户帐户、密码和管理的管理概念
 
@@ -80,7 +80,7 @@ Azure AD DS 包括一个默认的密码策略，该策略定义了帐户锁定�
 
 | SKU 名称   | 最大对象计数 | 备份频率 | 最大出站林信任数量 |
 |------------|----------------------|------------------|----|
-| 标准   | 无限制            | 每 7 天     | 0  |
+| 标准   | 无限制            | 每 5 天     | 0  |
 | Enterprise | 无限制            | 每 3 天     | 5  |
 | 高级    | 无限制            | 每日            | 10 |
 

@@ -2,20 +2,20 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: danieldoolabh
-manager: nimag
+author: lakshmans
+manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 09/03/2020
+ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
-ms.author: dadoolab
-ms.openlocfilehash: a24d9531b7b2d2d2f31eec275da7db7e48b9c74a
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.author: lakshmans
+ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615814"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103621939"
 ---
 通过使用通信服务 Python 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
 
@@ -51,8 +51,6 @@ mkdir sms-quickstart && cd sms-quickstart
 
 ```python
 import os
-from azure.communication.sms import PhoneNumber
-from azure.communication.sms import SendSmsOptions
 from azure.communication.sms import SmsClient
 
 try:
@@ -76,8 +74,8 @@ pip install azure-communication-sms --pre
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| SmsClient | 所有短信功能都需要此类。 使用订阅信息对其进行实例化，然后使用它发送短信。 |
-| SendSmsOptions | 此类提供用于配置传送报告的选项。 如果 enable_delivery_report 设置为 True，则在传送成功时将发出一个事件 |
+| SmsClient | 所有短信功能都需要此类。 使用订阅信息对其进行实例化，然后使用它发送短信。                                                                                                                 |
+| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -92,24 +90,47 @@ connection_string = os.getenv('COMMUNICATION_SERVICES_CONNECTION_STRING')
 sms_client = SmsClient.from_connection_string(connection_string)
 ```
 
-## <a name="send-an-sms-message"></a>发送短信
+## <a name="send-a-11-sms-message"></a>发送 1:1 短信
 
-通过调用 Send 方法发送短信。 将此代码添加到 send-sms.py 中的 `try` 块的末尾：
+若要将短信发送给单个收件人，请使用单个收件人电话号码从 SmsClient 调用 ```send``` 方法。 你还可以传入可选参数，一个目的是指定是否应启用传送报告，另一个目的是设置自定义标记。 将此代码添加到 send-sms.py 中的 `try` 块的末尾：
 
 ```python
 
 # calling send() with sms values
-sms_response = sms_client.send(
-        from_phone_number=PhoneNumber("<leased-phone-number>"),
-        to_phone_numbers=[PhoneNumber("<to-phone-number>")],
-        message="Hello World via SMS",
-        send_sms_options=SendSmsOptions(enable_delivery_report=True)) # optional property
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to="<to-phone-number>,
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
 
 ```
 
-应将 `<leased-phone-number>` 替换为与通信服务关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 
+应将 `<from-phone-number>` 替换为与通信服务关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。 
 
-`send_sms_options` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
+## <a name="send-a-1n-sms-message"></a>发送 1:N 短信
+
+若要将短信发送给收件人列表，请使用收件人电话号码列表从 SmsClient 调用 ```send``` 方法。 你还可以传入可选参数，一个目的是指定是否应启用传送报告，另一个目的是设置自定义标记。 将此代码添加到 send-sms.py 中的 `try` 块的末尾：
+
+```python
+
+# calling send() with sms values
+sms_responses = sms_client.send(
+    from_="<from-phone-number>",
+    to=["<to-phone-number-1>", "<to-phone-number-2>"],
+    message="Hello World via SMS",
+    enable_delivery_report=True, # optional property
+    tag="custom-tag") # optional property
+
+```
+
+应将 `<from-phone-number>` 替换为与通信服务关联的启用了短信的电话号码，将 `<to-phone-number-1>` 和 `<to-phone-number-2>` 替换为要向其发送消息的电话号码。 
+
+## <a name="optional-parameters"></a>可选参数
+
+`enable_delivery_report` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
+
+`tag` 参数是一个可选参数，可用于配置自定义标记。
 
 ## <a name="run-the-code"></a>运行代码
 

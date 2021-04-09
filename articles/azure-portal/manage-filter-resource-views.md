@@ -2,13 +2,13 @@
 title: 查看和筛选 Azure 资源信息
 description: 筛选信息并使用不同的视图来更好地了解你的 Azure 资源。
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738627"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771628"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>查看和筛选 Azure 资源信息
 
@@ -48,7 +48,7 @@ ms.locfileid: "101738627"
 
 1. 选择“管理视图”，然后选择“浏览所有视图”。
 
-1. 在 **“所有资源”的已保存视图** 窗格中，选择该视图，然后选择“删除”图标 ![“删除视图”图标](media/manage-filter-resource-views/icon-delete.png)。
+1. 在 **已保存视图** 窗格中，选择该视图，然后选择 **删除** 图标![删除视图图标](media/manage-filter-resource-views/icon-delete.png)。
 
 ## <a name="export-information-from-a-view"></a>从视图导出信息
 

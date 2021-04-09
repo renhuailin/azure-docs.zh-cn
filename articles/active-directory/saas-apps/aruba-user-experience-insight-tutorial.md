@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 144e121b140e47ebda62530354943d5d27cce094
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735364"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aruba-user-experience-insight"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Aruba User Experience Insight 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "98735364"
 * 让用户使用其 Azure AD 帐户自动登录到 Aruba User Experience Insight。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

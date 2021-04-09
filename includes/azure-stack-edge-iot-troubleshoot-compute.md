@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 02/05/2021
-ms.openlocfilehash: ad981264a99bd48e27f745a789ebe857b7f17d80
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/02/2021
+ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750073"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103621969"
 ---
 使用 IoT Edge 代理运行时响应解决与计算相关的错误。 下面是可能的响应的列表：
 
@@ -22,14 +22,47 @@ ms.locfileid: "101750073"
 
 有关详细信息，请参阅 [IoT Edge 代理](../articles/iot-edge/iot-edge-runtime.md?preserve-view=true&view=iotedge-2018-06#iot-edge-agent)。
 
-以下错误与 Azure Stack Edge Pro 上的 IoT Edge 服务相关<!--/ Data Box Gateway--> 快速获取答案。
+以下错误与 Azure Stack Edge Pro 设备上的 IoT Edge 服务相关。
 
-### <a name="compute-modules-have-unknown-status-and-cant-be-used"></a>计算模块具有未知状态，无法使用
+### <a name="compute-modules-have-unknown-status-and-cant-be-used"></a>计算模块显示“未知”状态且无法使用
 
 #### <a name="error-description"></a>错误说明
 
-设备上的所有模块显示未知状态，不能使用。 "未知" 状态将在重新启动后保持。<!--Original Support ticket relates to trying to deploy a container app on a Hub. Based on the work item, I assume the error description should not be that specific, and that the error applies to Azure Stack Edge Devices, which is the focus of this troubleshooting.-->
+设备上的所有模块显示“未知”状态且无法使用。 “未知”状态在重启后仍然存在。<!--Original Support ticket relates to trying to deploy a container app on a Hub. Based on the work item, I assume the error description should not be that specific, and that the error applies to Azure Stack Edge Devices, which is the focus of this troubleshooting.-->
 
 #### <a name="suggested-solution"></a>建议的解决方案
 
-删除 IoT Edge 服务，然后 (s) 重新部署模块。 有关详细信息，请参阅 [Remove IoT Edge service](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)。
+删除 IoT Edge 服务，然后重新部署模块。 有关详细信息，请参阅[删除 IoT Edge 服务](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)。
+
+
+### <a name="modules-show-as-running-but-are-not-working"></a>模块显示为正在运行，但不起作用
+
+#### <a name="error-description"></a>错误说明
+
+模块的运行时状态显示为正在运行，但未显示预期结果。 
+
+出现这种情况的原因可能是，模块路由配置出问题而不工作，或 `edgehub` 没有按预期路由消息。 可检查 `edgehub` 日志。 如果发现有一些错误（如未能连接到 IoT 中心服务），则最常见的原因是连接问题。 连接问题可能是由于 IoT 中心服务用作通信默认端口的 AMPQ 端口被阻止，或者 Web 代理服务器阻止了这些消息。
+
+#### <a name="suggested-solution"></a>建议的解决方案
+
+执行以下步骤：
+1. 若要解决此错误，请转到设备的 IoT 中心资源，然后选择你的 Edge 设备。 
+1. 转到“设置模块”>“运行时设置”。 
+1. 添加 `Upstream protocol` 环境变量并为其分配值 `AMQPWS`。 在此情况下配置的消息经端口 443 通过 Websocket 发送。
+
+### <a name="modules-show-as-running-but-do-not-have-an-ip-assigned"></a>模块显示为正在运行，但未分配 IP
+
+#### <a name="error-description"></a>错误说明
+
+模块的运行时状态显示为正在运行，但容器化应用未分配 IP。 
+
+这种情况是因为你为 Kubernetes 外部服务 IP 提供的 IP 范围不足。 你需要扩展此范围，确保已部署的每个容器或 VM 均已覆盖。
+
+#### <a name="suggested-solution"></a>建议的解决方案
+
+在设备的本地 Web UI 中，执行以下步骤：
+1. 转到“计算”页。 选择要为其启用计算网络的端口。 
+1. 为“Kubernetes 外部服务 IP”输入静态的连续 IP 范围。 `edgehub` 服务需要 1 个 IP。 此外，每个 IoT Edge 模块以及要部署的每个 VM 都需要一个 IP。 
+1. 选择“应用”。 更改的 IP 范围应立即生效。
+
+有关详细信息，请参阅[更改容器的外部服务 IP](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers)。
