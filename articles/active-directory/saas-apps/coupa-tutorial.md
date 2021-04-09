@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
 ms.openlocfilehash: d6a686b38c9b67ed8b1a7801c2a6ba95ef29558c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>教程：Azure Active Directory 与 Coupa 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "101652974"
 * 让用户使用其 Azure AD 帐户自动登录到 Coupa。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -104,7 +104,7 @@ ms.locfileid: "101652974"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -116,7 +116,7 @@ ms.locfileid: "101652974"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分，将通过授予 B.Simon 访问 Coupa 的权限，使其能够使用 Azure 单一登录。
 
@@ -128,13 +128,13 @@ ms.locfileid: "101652974"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-coupa-sso"></a>配置 Coupa SSO
+## <a name=&quot;configure-coupa-sso&quot;></a>配置 Coupa SSO
 
 1. 以管理员身份登录到 Coupa 公司站点。
 
 2. 转到“设置”\>“安全控制”。
 
-    ![安全控制](./media/coupa-tutorial/setup.png "安全控制")
+    ![安全控制](./media/coupa-tutorial/setup.png &quot;安全控制")
 
 3. 在 **“使用 Coupa 凭据登录”** 部分中，执行以下步骤：
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429256"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102617992"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure 证明 
 
@@ -78,10 +78,10 @@ Azure 证明的[业务连续性和灾难恢复](../best-practices-availability-p
 在正常情况下，部署在两个区域的群集会独立运行。 如果某个区域出现故障或中断，则会发生以下情况：
 
 - Azure 证明 BCDR 将提供无缝故障转移，客户无需执行任何额外的步骤即可恢复
-- 该区域的 [Azure 流量管理器](../traffic-manager/index.yml)将检测运行状况探测是否已降级，并将终结点切换到配对区域
+- 该区域的 [Azure 流量管理器](../traffic-manager/index.yml)会检测运行状况探测是否已降级，并会将终结点切换到配对区域
 - 现有连接将不起作用，并将收到内部服务器错误或遇到超时问题
-- 所有控制平面操作都将被阻止。 客户将无法在主要区域中创建证明提供程序和更新策略
-- 所有数据平面操作（包括证明调用）都将继续在主要区域运行
+- 所有控制平面操作都将被阻止。 客户将无法在主要区域中创建证明提供程序
+- 所有数据平面操作（包括证明调用和策略配置）将由次要区域提供服务。 客户可以继续使用与主要区域对应的原始 URI 进行数据平面操作
 
 ## <a name="next-steps"></a>后续步骤
 - 了解 [Azure 证明基本概念](basic-concepts.md)

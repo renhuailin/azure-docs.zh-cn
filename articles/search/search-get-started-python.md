@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/29/2021
+ms.date: 03/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 8b9c4792fa6dbdc70f657ce3c5f1757473a22fda
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071624"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225211"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>快速入门：使用 Jupyter Notebook 通过 Python 创建 Azure 认知搜索索引
 
@@ -44,9 +44,9 @@ ms.locfileid: "99071624"
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    ![获取 HTTP 终结点和访问密钥](media/search-get-started-rest/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
@@ -271,9 +271,9 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-此步骤说明如何使用[搜索文档 (REST)](/rest/api/searchservice/search-documents) 查询索引。
+此步骤说明如何使用 [search.client 类](/python/api/azure-search-documents/azure.search.documents.searchclient)的 search 方法来查询索引。
 
-1. 对于此操作，请使用 search_client。 此查询执行空搜索 (`search=*`)，返回任意文档的未排名列表 (search score = 1.0)。 由于没有条件，因此所有文档都包含在结果中。 此查询仅输出每个文档中的两个字段。 它还会添加 `include_total_count=True` 以获取结果中所有文档 (4) 的计数。
+1. 下面的步骤执行空搜索 (`search=*`)，返回任意文档的未排名列表（搜索分数 = 1.0）。 由于没有条件，因此所有文档都包含在结果中。 此查询仅输出每个文档中的两个字段。 它还会添加 `include_total_count=True` 以获取结果中所有文档 (4) 的计数。
 
     ```python
     results =  search_client.search(search_text="*", include_total_count=True)
@@ -348,7 +348,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="clean-up"></a>清理
 
-使用自己的订阅时，最好在项目结束时确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 

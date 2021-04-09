@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101182"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047773"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 
@@ -76,7 +76,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](/azure/monitoring-and-diagnostics/) 提供 azure [)  (订阅](../../azure-monitor/essentials/platform-logs-overview.md) 中的可视化、查询、路由、警报、自动缩放和自动化功能，以及每个 Azure 资源 ([资源日志](../../azure-monitor/essentials/platform-logs-overview.md)) 的数据。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
+[Azure Monitor](/azure/monitoring-and-diagnostics/) 对来自 Azure 订阅（[活动日志](../../azure-monitor/essentials/platform-logs-overview.md)）和每个单独的 Azure 资源（[资源日志](../../azure-monitor/essentials/platform-logs-overview.md)）的数据提供可视化效果、查询、路由、警报、自动缩放和自动化功能。 可以使用 Azure Monitor 对 Azure 日志中生成的与安全相关的事件发出警报。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
@@ -86,7 +86,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 ### <a name="azure-advisor"></a>Azure 顾问
 
-[Azure 顾问](../../advisor/advisor-overview.md)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它建议解决方案帮助提高资源的 [性能](../../advisor/advisor-performance-recommendations.md)、 [安全性](../../advisor/advisor-security-recommendations.md)和 [可靠性](../../advisor/advisor-high-availability-recommendations.md) ，同时寻找机会 [减少总体 Azure 支出](../../advisor/advisor-cost-recommendations.md)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](../../security-center/security-center-introduction.md)执行的安全分析。
+[Azure 顾问](../../advisor/advisor-overview.md)是一种个性化的云顾问，可帮助优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它会推荐解决方案来帮助提高资源的[性能](../../advisor/advisor-performance-recommendations.md)、[安全性](../../advisor/advisor-security-recommendations.md)和[可靠性](../../advisor/advisor-high-availability-recommendations.md)，同时寻找机会[减少总体 Azure 支出](../../advisor/advisor-cost-recommendations.md)。 Azure 顾问提供安全建议，可显著提高在 Azure 中部署的解决方案的总体安全状况。 这些建议来自于 [Azure 安全中心](../../security-center/security-center-introduction.md)执行的安全分析。
 
 ## <a name="applications"></a>应用程序
 
@@ -98,7 +98,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 
 ### <a name="penetration-testing"></a>渗透测试
 
-我们不会对你的应用程序进行 [渗透测试](./pen-testing.md) ，但我们知道你需要并且需要在你自己的应用程序上执行测试。 这是好事，因为改进自己的应用程序的安全性可以加强整个 Azure 生态系统的安全性。 尽管通知 Microsoft 笔测试活动不再是必需的，但客户仍须遵守 [Microsoft 云渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement)。
+我们不会为你执行应用程序的[渗透测试](./pen-testing.md)，但我们确实理解你希望并且需要对自己的应用程序执行渗透测试。 这是好事，因为改进自己的应用程序的安全性可以加强整个 Azure 生态系统的安全性。 虽然执行渗透测试活动时无需再通知 Microsoft，但客户仍必须遵守 [Microsoft 云渗透测试参与规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement)。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 
@@ -113,7 +113,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 由于[应用服务环境](../../app-service/environment/app-service-app-service-environment-intro.md)提供部署到 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)的隔离运行时环境，因此开发人员能够创建分层安全体系结构，针对每个应用层提供不同级别的网络访问权限。 常见的需求之一是要隐藏对 API 后端的常规 Internet 访问，而只允许由上游 Web 应用调用 API。 可以在包含应用服务环境的 Azure 虚拟网络子网上使用[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)，限制对 API 应用程序的公共访问。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web 服务器诊断和应用程序诊断
-[应用服务 web 应用](../../app-service/troubleshoot-diagnostic-logs.md) 提供了诊断功能，可用于从 web 服务器和 web 应用程序记录信息。 这些诊断功能按逻辑分为 Web 服务器诊断和应用程序诊断。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
+[应用服务 Web 应用](../../app-service/troubleshoot-diagnostic-logs.md)为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 这些诊断功能按逻辑分为 Web 服务器诊断和应用程序诊断。 Web 服务器包括诊断和排查站点和应用程序这两大改进方面。
 
 第一个新特点是有关应用程序池、工作进程、站点、应用程序域和运行请求的实时状态信息。 第二个新特点是在整个请求和响应过程中跟踪请求的详细跟踪事件。
 
@@ -123,7 +123,7 @@ Application Insights 可创建图表和表格来显示多种信息，例如，�
 本部分提供了关于 Azure 存储安全中主要特性的其他信息以及有关这些功能的摘要信息。
 
 ### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 基于角色的访问控制 (Azure RBAC)
-可以使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 Azure 角色分配给特定范围内的组和应用程序来授予的。 可以使用[Azure 内置角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可以通过 Azure RBAC 控制使用 [azure 资源管理器](../../storage/blobs/security-recommendations.md#data-protection) 模型对存储帐户的存储密钥的访问权限。
+可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需知原则](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全原则限制访问权限。 这些访问权限是通过将相应的 Azure 角色分配给特定范围内的组和应用程序来授予的。 可以使用[Azure 内置角色](../../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。 可以通过 Azure RBAC 来控制对使用 [Azure 资源管理器](../../storage/blobs/security-recommendations.md#data-protection)模型的存储帐户的存储密钥的访问权限。
 
 ### <a name="shared-access-signature"></a>共享访问签名
 [共享访问签名 (SAS)](../../storage/common/storage-sas-overview.md) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
@@ -170,7 +170,7 @@ Azure 存储服务现支持 CORS，因此，为服务设置 CORS 规则后，便
 
 #### <a name="network-security-groups"></a>网络安全组
 
-[ (NSG) 的网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md#security)是一种基本的有状态数据包筛选防火墙，它使你能够基于5元组控制访问。 NSG 不提供应用程序层检查或经过身份验证的访问控制。 它们可用于控制在 Azure 虚拟网络中的子网之间移动的流量以及控制 Azure 虚拟网络和 Internet 之间的流量。
+[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md#security) 是基本监控状态数据包筛选防火墙，利用它可以基于某个 5 元组来控制访问。 NSG 不提供应用程序层检查或经过身份验证的访问控制。 它们可用于控制在 Azure 虚拟网络中的子网之间移动的流量以及控制 Azure 虚拟网络和 Internet 之间的流量。
 
 #### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
 
@@ -201,6 +201,14 @@ Azure 网络支持各种安全远程访问方案。 其中包括：
 - [通过专用 WAN 链接将本地网络连接到 Azure 虚拟网络](../../expressroute/expressroute-introduction.md)
 
 - [相互连接 Azure 虚拟网络](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+### <a name="azure-private-link"></a>Azure 专用链接
+
+使用 [Azure 专用链接](https://azure.microsoft.com/services/private-link/)，可通过[专用终结点](../../private-link/private-endpoint-overview.md)来秘密访问虚拟网络中的 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的由客户拥有的服务/合作伙伴服务。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。 从虚拟网络发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。
+
+使用[专用终结点](../../private-link/private-endpoint-overview.md)可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 Azure 专用终结点使用你的 VNet 中的专用 IP 地址将你秘密且安全地连接到由 Azure 专用链接提供支持的服务，有效地将服务引入到你的 VNet 中。 不再需要为了使用 Azure 上的服务而向公共 Internet 公开你的虚拟网络。 
+
+你还可以在虚拟网络中创建自己的专用链接服务。 [Azure 专用链接服务](../../private-link/private-link-service-overview.md)是对你自己的服务（由 Azure 专用链接提供支持）的引用。 可以为在 Azure 标准负载均衡器后面运行的服务启用专用链接访问，使该服务的使用者能够从他们自己的虚拟网络以私密方式访问该服务。 你的客户可在他们的虚拟网络中创建专用终结点，并将此终结点映射到此服务。 不再需要为了在 Azure 上呈现服务而向公共 Internet 公开服务。 
 
 ### <a name="vpn-gateway"></a>VPN 网关
 
@@ -332,7 +340,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 - [基于令牌的身份验证](../../active-directory/develop/authentication-vs-authorization.md)启用通过 Azure Active Directory 进行身份验证。
 
-- [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/built-in-roles.md) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 你可以根据组织的业务模型自定义 Azure RBAC 并降低风险。
+- [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/built-in-roles.md) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 Azure RBAC。
 
 - [集成标识管理（混合标识）](../../active-directory/hybrid/plan-hybrid-identity-design-considerations-overview.md)能够保持对用户在内部数据中心和云平台中的访问控制，并为所有资源的身份验证和授权创建单个用户标识。
 
@@ -341,7 +349,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 | 免费/常用功能     | 基本功能    |高级 P1 功能 |高级 P2 功能 | Azure Active Directory Join – 仅适用于 Windows 10 的相关功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [目录对象](../../active-directory/fundamentals/active-directory-whatis.md)，    [用户/组管理 (添加/更新/删除) /基于用户的预配、设备注册](../../active-directory/fundamentals/active-directory-whatis.md)、  [单一 Sign-On (SSO) ](../../active-directory/fundamentals/active-directory-whatis.md)、     [云用户的自助密码更改](../../active-directory/fundamentals/active-directory-whatis.md)、     [连接 (同步引擎，可将本地目录扩展到 Azure Active Directory) ](../../active-directory/fundamentals/active-directory-whatis.md)、     [安全/使用情况报告](../../active-directory/fundamentals/active-directory-whatis.md)       |  [基于组的访问管理/预配](../../active-directory/fundamentals/active-directory-whatis.md)， [云用户的自助服务密码重置](../../active-directory/fundamentals/active-directory-whatis.md)，  [公司品牌 (登录页/访问面板自定义) ](../../active-directory/fundamentals/active-directory-whatis.md)，    [应用程序代理](../../active-directory/fundamentals/active-directory-whatis.md)，    [SLA 99.9%](../../active-directory/fundamentals/active-directory-whatis.md) |  [自助组和应用管理/自助应用程序添加件/动态组](../../active-directory/fundamentals/active-directory-whatis.md)，   [自助密码重置/更改/解锁，具有本地写回](../../active-directory/fundamentals/active-directory-whatis.md)、    [多重身份验证 (云和本地 (MFA server) ) ](../../active-directory/fundamentals/active-directory-whatis.md)， [MIM CAL + MIM server](../../active-directory/fundamentals/active-directory-whatis.md)，     [Cloud App Discovery](../../active-directory/fundamentals/active-directory-whatis.md)，  [连接运行状况](../../active-directory/fundamentals/active-directory-whatis.md)，   [组帐户的自动密码滚动更新](../../active-directory/fundamentals/active-directory-whatis.md)|   [标识保护](../../active-directory/identity-protection/overview-identity-protection.md)，  [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [将设备加入到 Azure AD，桌面 SSO，Microsoft Passport 用于 Azure AD，管理员 BitLocker 恢复](../../active-directory/fundamentals/active-directory-whatis.md)，    [MDM 自动注册，Self-Service BitLocker 恢复，通过 Azure AD Join 附加到 Windows 10 设备的其他本地管理员](../../active-directory/fundamentals/active-directory-whatis.md)|
+|   [Directory 对象](../../active-directory/fundamentals/active-directory-whatis.md)，[用户/组管理（添加/更新/删除）/基于用户的预配，设备注册](../../active-directory/fundamentals/active-directory-whatis.md)，[单一登录 (SSO)](../../active-directory/fundamentals/active-directory-whatis.md)，[云用户的自助式密码更改](../../active-directory/fundamentals/active-directory-whatis.md)，[Connect（将本地目录扩展到 Azure Active Directory 的同步引擎）](../../active-directory/fundamentals/active-directory-whatis.md)，[安全性/使用情况报告](../../active-directory/fundamentals/active-directory-whatis.md)       |  [基于组的访问管理/预配](../../active-directory/fundamentals/active-directory-whatis.md)，[云用户的自助式密码重置](../../active-directory/fundamentals/active-directory-whatis.md)，[公司品牌（登录页/访问面板自定义）](../../active-directory/fundamentals/active-directory-whatis.md)，[应用程序代理](../../active-directory/fundamentals/active-directory-whatis.md)，[SLA 99.9%](../../active-directory/fundamentals/active-directory-whatis.md) |  [自助组和应用管理/自助应用程序添加件/动态组](../../active-directory/fundamentals/active-directory-whatis.md)，[通过本地回写实现自助式密码重置/更改/解锁](../../active-directory/fundamentals/active-directory-whatis.md)，[多重身份验证（云和本地（MFA 服务器））](../../active-directory/fundamentals/active-directory-whatis.md)，[MIM CAL + MIM 服务器](../../active-directory/fundamentals/active-directory-whatis.md)，[Cloud App Discovery](../../active-directory/fundamentals/active-directory-whatis.md)，[Connect Health](../../active-directory/fundamentals/active-directory-whatis.md)，[组帐户的自动式密码变换](../../active-directory/fundamentals/active-directory-whatis.md)|   [标识保护](../../active-directory/identity-protection/overview-identity-protection.md)、[Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   [将设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator BitLocker 恢复](../../active-directory/fundamentals/active-directory-whatis.md)，[MDM 自动注册，BitLocker 自助式恢复，通过 Azure AD 联接将其他本地管理员加入 Windows 10 设备](../../active-directory/fundamentals/active-directory-whatis.md)|
 
 - [Cloud App Discovery](/cloud-app-security/set-up-cloud-discovery) 是 Azure Active Directory 的一项高级功能，能够识别组织中的人员所使用的云应用程序。
 
@@ -353,7 +361,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 - [Azure Active Directory B2B 协作](../../active-directory/external-identities/what-is-b2b.md)是一种安全的合作伙伴集成解决方案，可让合作伙伴使用其自行管理的标识有选择性地访问企业应用程序和数据，为跨公司合作关系提供支持。
 
-- [Azure Active Directory 联接](../../active-directory/devices/overview.md) 使你能够将云功能扩展到 Windows 10 设备以进行集中式管理。 它使用户可以通过 Azure Active Directory 连接到企业或组织云，并简化对应用和资源的访问。
+- [加入 Azure Active Directory](../../active-directory/devices/overview.md) 可以将云功能扩展到 Windows 10 设备进行集中管理。 它使用户可以通过 Azure Active Directory 连接到企业或组织云，并简化对应用和资源的访问。
 
 - [Azure Active Directory 应用程序代理](../../active-directory/manage-apps/application-proxy.md)为本地托管的 Web 应用程序提供 SSO 和安全远程访问。
 

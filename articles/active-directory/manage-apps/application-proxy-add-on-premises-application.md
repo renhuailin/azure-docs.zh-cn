@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 6a7f50268a09ae451b1e9dda2ca354ded31efb68
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100095165"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200755"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -67,11 +67,11 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > 可以通过 PowerShell 使用以下命令设置密钥。
 > ```
 > Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\' -Name EnableDefaultHTTP2 -Value 0
->
+> ```
 
 #### <a name="recommendations-for-the-connector-server"></a>有关连接器服务器的建议
 
-1. 将连接器服务器实物定位在靠近应用程序服务器的位置，以优化连接器与应用程序之间的性能。 有关详细信息，请参阅[网络拓扑注意事项](application-proxy-network-topology.md)。
+1. 将连接器服务器实物定位在靠近应用程序服务器的位置，以优化连接器与应用程序之间的性能。 有关详细信息，请参阅[使用 Azure Active Directory 应用程序代理优化通信流](application-proxy-network-topology.md)。
 1. 连接器服务器和 Web 应用程序服务器应属于同一个 Active Directory 域，或者跨信任域。 若要配合 Windows 集成身份验证 (IWA) 和 Kerberos 约束委派 (KCD) 使用单一登录 (SSO)，这些服务器必须位于同一个域或信任域中。 如果连接器服务器和 Web 应用程序服务器处于不同的 Active Directory 域，则你需要使用基于资源的委派进行单一登录。 有关详细信息，请参阅[用于使用应用程序代理进行单一登录的 KCD](application-proxy-configure-single-sign-on-with-kcd.md)。
 
 > [!WARNING]
@@ -115,10 +115,10 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 为 **出站** 流量打开以下端口：
 
-   | 端口号 | 用途 |
-   | --- | --- |
-   | 80 | 验证 TLS/SSL 证书的同时下载证书吊销列表 (CRL) |
-   | 443 | 与应用程序代理服务进行所有出站通信 |
+| 端口号 | 用途 |
+| ----------- | ------------------------------------------------------------ |
+| 80          | 验证 TLS/SSL 证书的同时下载证书吊销列表 (CRL) |
+| 443         | 与应用程序代理服务进行所有出站通信 |
 
 如果防火墙根据发起方用户实施流量控制，另请针对来自作为网络服务运行的 Windows 服务的流量打开端口 80 和 443。
 
@@ -127,11 +127,11 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 允许访问以下 URL：
 
 | 代码 | 端口 | 用途 |
-| --- | --- | --- |
-| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net | 443/HTTPS | 连接器与应用程序代理云服务之间的通信 |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP |连接器使用这些 URL 来验证证书。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |在注册过程中，连接器将使用这些 URL。 |
-| ctldl.windowsupdate.com | 80/HTTP |在注册过程中，连接器将使用此 URL。 |
+| ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| &ast;.msappproxy.net<br>&ast;.servicebus.windows.net         | 443/HTTPS | 连接器与应用程序代理云服务之间的通信 |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP   | 连接器使用这些 URL 来验证证书。        |
+| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS | 在注册过程中，连接器将使用这些 URL。 |
+| ctldl.windowsupdate.com                                      | 80/HTTP   | 在注册过程中，连接器将使用此 URL。 |
 
 如果防火墙或代理允许根据域后缀配置访问规则，可允许连接到 &ast;.msappproxy.net、&ast;.servicebus.windows.net 和其他 URL。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。
 
@@ -157,6 +157,7 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 1. 阅读“服务条款”。 准备就绪后，选择“接受条款并下载”  。
 1. 在窗口底部，选择“运行”以安装连接器  。 此时会打开安装向导。
 1. 遵照向导中的说明安装服务。 当系统提示将连接器注册到 Azure AD 租户使用的应用程序代理时，请提供应用程序管理员凭据。
+   
     - 在 Internet Explorer (IE) 中，如果“IE 增强的安全配置”设置为“打开”，则可能不会显示注册屏幕。 若要访问，请按照错误消息中的说明进行操作。 确保“Internet Explorer 增强的安全性配置”设置为“关”   。
 
 ### <a name="general-remarks"></a>一般备注
@@ -164,6 +165,8 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 如果以前安装了连接器，请重新安装以获取最新版本。 要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理：版本发布历史记录](application-proxy-release-version-history.md)。
 
 如果选择对本地应用程序使用多个 Windows 服务器，则需要在每个服务器上安装并注册连接器。 可将连接器组织成连接器组。 有关详细信息，请参阅[连接器组](application-proxy-connector-groups.md)。
+
+如果已在不同区域安装了连接器，可以通过选择距离最近的应用程序代理云服务区域来优化流量，以便与每个连接器组配合使用，详见[使用 Azure Active Directory 应用程序代理优化通信流](application-proxy-network-topology.md)
 
 如果你的组织使用代理服务器连接到 Internet，则需要为应用程序代理配置代理服务器。  有关详细信息，请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。 
 
@@ -208,20 +211,20 @@ Azure AD 应用程序代理终结点的公共 DNS 记录是链接的指向 A 记
 4. 选择“添加本地应用程序”按钮，该按钮显示在“本地应用程序”部分的中间位置 。 或者，可以在页面顶部选择“创建自己的应用程序”，然后选择“配置应用程序代理以安全地远程访问本地应用程序” 。
 5. 在“添加自己的本地应用程序”部分中，提供有关应用程序的以下信息  ：
 
-    | 字段 | 说明 |
-    | :---- | :---------- |
+    | 字段  | 说明 |
+    | :--------------------- | :----------------------------------------------------------- |
     | **名称** | 要显示在“我的应用”和 Azure 门户中的应用程序名称。 |
     | **内部 URL** | 用于从专用网络内部访问应用程序的 URL。 可以提供后端服务器上要发布的特定路径，而服务器的其余部分则不发布。 通过这种方式，可以在同一服务器上将不同站点发布为不同应用，并为每个站点提供其自己的名称和访问规则。<br><br>如果发布路径，请确保它包含应用程序的所有必要映像、脚本和样式表。 例如，如果应用位于 https:\//yourapp/app 并使用位于 https:\//yourapp/media 的映像，则应将 https:\//yourapp/ 发布为路径。 此内部 URL 不一定是用户看到的登陆页面。 有关详细信息，请参阅[为发布的应用设置自定义主页](application-proxy-configure-custom-home-page.md)。 |
-    | **外部 URL** | 用户从网络外部访问应用时使用的地址。 如果不想使用默认的应用程序代理域，请参阅 [Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。|
+    | **外部 URL** | 用户从网络外部访问应用时使用的地址。 如果不想使用默认的应用程序代理域，请参阅 [Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。 |
     | **预身份验证** | 应用程序代理在向用户授予应用程序访问权限之前如何验证用户。<br><br>**Azure Active Directory** - 应用程序代理重定向用户，让其使用 Azure AD 登录；这会验证他们对目录和应用程序的权限。 建议将此选项保留为默认值，以便可以利用条件性访问和多重身份验证等 Azure AD 安全功能。 必须在 **Azure Active Directory** 中使用 Microsoft 云应用程序安全性来监视应用程序。<br><br>直通 - 用户无需对 Azure AD 进行身份验证即可访问应用程序  。 仍可在后端设置身份验证要求。 |
-    | **连接器组** | 连接器处理对应用程序的远程访问，借助连接器组可按区域、网络或用途组织连接器和应用。 如果尚未创建任何连接器组，应用将分配到“默认”  。<br><br>如果应用程序使用 WebSocket 进行连接，组中的所有连接器必须为 1.5.612.0 或更高版本。|
+    | **连接器组** | 连接器处理对应用程序的远程访问，借助连接器组可按区域、网络或用途组织连接器和应用。 如果尚未创建任何连接器组，应用将分配到“默认”  。<br><br>如果应用程序使用 WebSocket 进行连接，组中的所有连接器必须为 1.5.612.0 或更高版本。 |
 
 6. 根据需要配置 **其他设置**。 对于大多数应用程序，应保留这些设置的默认状态。 
 
     | 字段 | 说明 |
-    | :---- | :---------- |
+    | :------------------------------ | :----------------------------------------------------------- |
     | **后端应用程序超时** | 仅当应用程序身份验证和连接速度较慢时，才将此值设置为“长”  。 默认情况下，后端应用程序超时的长度为 85 秒。 设置为 long 时，后端超时将增加到 180 秒。 |
-    | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。|
+    | **使用仅限 HTTP 的 Cookie** | 将此值设置为“是”，使应用程序代理 Cookie 在 HTTP 响应标头中包含 HTTPOnly 标志。 如果使用远程桌面服务，请将此值设置为“否”。 |
     | **使用安全 Cookie**| 将此值设置为“是”可通过安全通道（例如加密的 HTTPS 请求）传输 Cookie。
     | **使用永久性 Cookie**| 始终将此值设置为“否”  。 仅对无法在进程之间共享 cookie 的应用程序使用此设置。 有关 Cookie 设置的详细信息，请参阅[用于在 Azure Active Directory 中访问本地应用程序的 Cookie 设置](./application-proxy-configure-cookie-settings.md)。
     | **转换标头中的 URL** | 除非应用程序要求在身份验证请求中包含原始主机标头，否则请将此值保留为“是”  。 |

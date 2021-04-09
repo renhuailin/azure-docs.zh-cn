@@ -1,79 +1,79 @@
 ---
-title: Azure Marketplace 中的 AppSource Dynamics 365 财务和运营优惠的功能验证。
-description: 如何在 Azure Marketplace 中对 Dynamics 365 财务和运营提供功能进行验证。
+title: Azure 市场中 AppSource Dynamics 365 财务和运营产品/服务的功能验证。
+description: 如何对 Azure 市场中的 Dynamics 365 财务和运营产品/服务进行功能验证。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.openlocfilehash: 9be90cdac742a581c6346f923f44e769c8a70f76
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131235"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613623"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 财务和运营功能验证
 
-若要完成 [合作伙伴中心](https://partner.microsoft.com/dashboard/home)的第一次发布，适用于 Dynamics 365 财务和运营的产品/服务需要两次功能验证：
+若要在[合作伙伴中心](https://partner.microsoft.com/dashboard/home)完成首次发布，Dynamics 365 财务和运营的产品/服务需要两个功能验证：
 
-- 上传显示基本功能的 Dynamics 365 环境演示视频。
-- 提供演示解决方案 [生命周期服务](https://lcs.dynamics.com/) (lc) 环境的屏幕截图。
+- 上传 Dynamics 365 环境的演示视频，其中展示了基本功能。
+- 当前的屏幕截图显示了解决方案的[生命周期服务](https://lcs.dynamics.com/) (LCS) 环境。
 
 > [!NOTE]
-> 后续的重新认证发布不需要演示。 若要了解详细信息，请参阅 [AppSource 策略文档](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)。
+> 后续的重新认证发布不需要演示。 若要了解更多信息，请参阅 [AppSource Policy 文档](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops)。
 
 ## <a name="how-to-validate"></a>如何验证
 
-功能验证有两个选项：
+功能验证有两种选项：
 
-- 在太平洋标准时间 (PST) 营业时间举行30分钟电话会议，以演示和记录 [LCS](https://lcs.dynamics.com/) 环境和解决方案，或
-- 在合作伙伴中心，请参阅 [商业市场](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)  >  **概述** ，并在产品/服务的补充内容选项卡上上传演示视频 URL 和 LCS 屏幕截图。
+- 在办公时间（太平洋标准时间 (PST)）与我们举行 30 分钟的电话会议，以演示和记录 [LCS](https://lcs.dynamics.com/) 环境和解决方案，或者
+- 在合作伙伴中心，转到[商业市场](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) > “概述”，然后在产品/服务的“补充内容”选项卡中上传演示视频 URL 和 LCS 屏幕截图。
 
-Microsoft 认证团队将查看视频和文件，然后批准解决方案或有关后续步骤的电子邮件。
+Microsoft 认证团队会审查视频和文件，然后批准解决方案或通过电子邮件向你发送有关后续步骤的信息。
 
-### <a name="option-1-30-minute-conference-call"></a>选项 1:30-分钟电话会议
+### <a name="option-1-30-minute-conference-call"></a>选项 1：30 分钟的电话会议
 
-若要计划最终评审呼叫，请在 [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) 太平洋时间上午8点到下午5点之间与产品/服务的名称以及一些可能的时间段联系。
+若要安排终审电话会议，请与 [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com) 联系，告知你的产品/服务名称以及上午 8 点至下午 5 点之间的合适时段（太平洋时间）。
 
-### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>选项2：上传演示视频和 LCS 屏幕截图
+### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>选项 2：上传演示视频和 LCS 屏幕截图
 
-1. 录制视频并将地址上传到所选的托管站点。 请遵循这些指导：
+1. 录制视频并将地址上传到你选择的托管站点。 请遵循这些指导：
 
-    - 由 Microsoft 认证团队查看。
-    - 长度少于20分钟。
-    - 最多包含三个核心功能，即 Dynamics 365 环境中的解决方案。
+    - 可由 Microsoft 认证团队审查。
+    - 不到 20 分钟。
+    - 最多包含 Dynamics 365 环境中的解决方案的三个核心功能。
 
     > [!NOTE]
-    > 如果符合准则，可以使用现有的营销视频。
+    > 如果符合相关准则，则可以使用现有的推广视频。
 
-2. 采用与要发布的产品/服务匹配的 [LCS](https://lcs.dynamics.com/) 环境的以下屏幕截图。 为了使认证团队阅读文本，它们必须清楚。 将屏幕快照另存为 JPG 文件。 你可以 [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) 向你的 LCS 环境提供权限，以便我们可以验证设置，而不是提供屏幕截图。
+2. 截取与要发布的产品/服务或解决方案相匹配的 [LCS](https://lcs.dynamics.com/) 环境的以下屏幕截图。 截图必须足够清晰，确保认证团队能够阅读其中的文本。 将屏幕截图另存为 JPG 文件。 可以提供对 LCS 环境的 [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) 权限，以便我们验证设置，而不是提供屏幕截图。
 
-    1. 请参阅 **LCS**  >  **业务流程建模** 器  >  **项目库** 。 拍摄所有过程步骤的屏幕截图。 包括 **关系图** 和 **查看** 的列，如下所示：
+    1. 转到“LCS” > “业务流程建模器” > “项目库”  。 截取所有流程步骤的屏幕截图。 包括“图”和“已审查”列，如下所示 ：
 
-       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示 &quot;项目库&quot; 窗口。":::
+       :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="显示项目库窗口。":::
 
-      2. 请参阅 **LCS**  >  **解决方案管理**  >  **测试解决方案包** 。 获取包含这些示例中所示的程序包概述和内容的屏幕截图：
+      2. 转到“LCS” > “解决方案管理” > “测试解决方案包”  。 截取包括包概述和以下示例中所示内容的屏幕截图：
 
-    | 字段 | 映像 <img src="" width="400px">|
+    | 字段 | 映像 |
     | --- | --- |
-    | 包概述 | [![显示 "包概述" 窗口的屏幕截图。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
-    | <ul><li>解决方案审批者</li></ul> | [![包概述屏幕](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
-    | 包的内容<ul><li>型号</li><li>软件可部署包</li></ul> | [![包内容屏幕1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
-    | <ul><li>GER 配置</li><li>数据库备份</li></ul><br>**GER 配置** 节中不需要项目。 | [![包内容屏幕2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
-    | <ul><li>Power BI 报表模型</li><li>BPM 项目</li></ul><br>**Power BI** 部分中不需要项目。 | [![包内容屏幕3](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
-    | <ul><li>处理数据包</li><li>解决方案许可协议和隐私策略</li></ul><br>**GER 配置** 和 **Power BI 报表模型** 节对于财务和操作产品/服务是可选的。 | [![包内容屏幕4](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
+    | 包概述 | [![屏幕截图显示了“包概述”窗口。](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | <ul><li>解决方案审批者</li></ul> | [![“包概述”屏幕截图](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
+    | 包的内容<ul><li>建模</li><li>软件可部署包</li></ul> | [![包内容屏幕 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
+    | <ul><li>GER 配置</li><li>数据库备份</li></ul><br>“GER 配置”部分中不需要项目。 | [![包内容屏幕 2](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |
+    | <ul><li>Power BI 报表模型</li><li>BPM 项目</li></ul><br>“Power BI 部分”中不需要项目。 | [![包内容屏幕 3](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
+    | <ul><li>处理数据包</li><li>解决方案许可协议和隐私策略</li></ul><br>财务和运营产品/服务中可以加入“GER 配置”部分和“Power BI 报表模型”部分 。 | [![包内容屏幕 4](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    若要了解有关 LCS 门户每个部分的详细信息，请参阅 [Lcs 用户指南](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)。
+    若要详细了解 LCS 门户的每个部分，请参阅 [LCS 用户指南](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide)。
 
 3. 上传到合作伙伴中心。
 
-    1. 创建包含演示视频地址和屏幕截图的文本文档，或将屏幕快照另存为单独的 JPG 文件。
-    2. 将文本和任何 JPG 文件添加到 "合作伙伴中心" 的 " [商用 Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) " 中的 .zip 文件中，并在其 **补充内容** 选项卡上。
+    1. 创建包含演示视频地址和屏幕截图的文本文档，或将屏幕截图另存为单独的 JPG 文件。
+    2. 在合作伙伴中心的[商业市场](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)中的“财务和运营”产品/服务的“补充内容”选项卡上，将文本和任何 JPG 文件添加到 .zip 文件。
 
     [![显示项目库窗口](media/dynamics-365-finance-operations/supplemental-content.png)](media/dynamics-365-finance-operations/supplemental-content.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何创建产品/服务，请参阅： [创建适用于操作的 Dynamics 365](./partner-center-portal/create-new-operations-offer.md)。
+若要了解如何创建产品/服务，请参阅[创建 Dynamics 365 for Operations 产品/服务](./partner-center-portal/create-new-operations-offer.md)。

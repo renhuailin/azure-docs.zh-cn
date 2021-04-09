@@ -4,15 +4,15 @@ description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 02/17/2021
+ms.date: 03/10/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 46a029a3b803428d6250b74059190f66183be452
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 60566b95447c1b69fb257435f45a11524ac5d8b2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651453"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102617331"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -101,18 +101,16 @@ ms.locfileid: "100651453"
 
 1. 在“资源组”下，选择要在其中创建虚拟机的资源组。 此资源组可以与用于主机池的资源组不同。
 
-2. 选择要在其中创建虚拟机的“虚拟机位置”。 该区域可以与你为主机池选择的区域相同或不同。
+2. 然后，提供一个名称前缀来为设置过程创建的虚拟机命名。 该后缀是 `-` 加上从 0 开始的数字。
 
-3. 接下来，选择要使用的“虚拟机大小”。 可以按原样保留默认大小，也可以选择“更改大小”来更改大小。 如果选择“更改大小”，请在显示的窗口中选择适合你的工作负载的虚拟机大小。
+3. 选择要在其中创建虚拟机的“虚拟机位置”。 该区域可以与你为主机池选择的区域相同或不同。
+   
+4. 接下来，选择最符合需求的可用性选项。 若要详细了解哪个选项适合你，请参阅 [Azure 中虚拟机的可用性选项](../virtual-machines/availability.md)和[常见问题解答](faq.md#which-availability-option-is-best-for-me)。
+   
+   > [!div class="mx-imgBorder"]
+   > [可用性区域下拉菜单的屏幕截图，其中突出显示了“可用性区域”选项。](media/availability-zone.png)
 
-4. 在“VM 数量”下，提供要为主机池创建的 VM 数量。
-
-    >[!NOTE]
-    >在设置主机池时，设置过程最多可以创建 400 个 VM，每个 VM 设置过程将在资源组中创建四个对象。 由于创建过程不会检查订阅配额，因此请确保输入的 VM 数量在资源组和订阅的 Azure VM 与 API 限制范围内。 创建完主机池后，可以添加更多的 VM。
-
-5. 然后，提供一个名称前缀来为设置过程创建的虚拟机命名。 该后缀是 `-` 加上从 0 开始的数字。
-
-6. 接下来，选择需要用来创建虚拟机的映像。 可以选择“库”或“存储 Blob” 。
+5. 接下来，选择需要用来创建虚拟机的映像。 可以选择“库”或“存储 Blob” 。
 
     - 如果选择了“库”，请从下拉菜单中选择一个建议的映像：
 
@@ -122,23 +120,30 @@ ms.locfileid: "100651453"
       - Windows 10 企业版多会话版本 2004
       - Windows 10 企业版多会话版本 2004 + Microsoft 365 应用
 
-     如果未看到所需的映像，请选择“浏览所有映像和磁盘”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。 确保所选的映像是[受支持的 OS 映像](overview.md#supported-virtual-machine-os-images)之一。
+      如果未看到所需的映像，请选择“查看所有映像”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。 确保所选的映像是[受支持的 OS 映像](overview.md#supported-virtual-machine-os-images)之一。
 
-     > [!div class="mx-imgBorder"]
-     > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
+      > [!div class="mx-imgBorder"]
+      > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
 
-     还可以转到“我的项”并选择已上传的自定义映像。
+      还可以转到“我的项”并选择已上传的自定义映像。
 
-     > [!div class="mx-imgBorder"]
-     > ![“我的项”选项卡的屏幕截图。](media/my-items.png)
+      > [!div class="mx-imgBorder"]
+      > ![“我的项”选项卡的屏幕截图。](media/my-items.png)
 
-    - 如果选择“存储 Blob”，则可以利用你自己的、通过 Hyper-V 生成的映像或 Azure VM 上的映像。 只需输入该映像在存储 Blob 中的位置作为 URI 即可。
+    - 如果选择“存储 Blob”，则可以使用你自己的、通过 Hyper-V 生成的映像或 Azure VM 上的映像。 只需输入该映像在存储 Blob 中的位置作为 URI 即可。
+   
+   映像的位置独立于可用性选项，但映像的区域复原能力决定了该映像是否可在可用性区域中使用。 如果在创建映像时选择可用性区域，请确保使用的是已启用区域复原能力的库中的映像。 若要详细了解应使用哪个区域复原能力选项，请参阅[常见问题解答](faq.md#which-availability-option-is-best-for-me)。
 
-7. 选择希望 VM 使用的 OS 磁盘类型：“标准 SSD”、“高级 SSD”或“标准 HDD”。
+6. 然后，选择要使用的“虚拟机大小”。 可以按原样保留默认大小，也可以选择“更改大小”来更改大小。 如果选择“更改大小”，请在显示的窗口中选择适合你的工作负载的虚拟机大小。
 
-8. 在“网络和安全”下，选择要在其中放置所创建的虚拟机的“虚拟网络”和“子网” 。 请确保该虚拟网络可以连接到域控制器，因为你需要将该虚拟网络中的虚拟机加入域。 所选虚拟网络的 DNS 服务器应配置为使用域控制器的 IP。
+7. 在“VM 数量”下，提供要为主机池创建的 VM 数量。
 
-9. 接下来，选择是否要为虚拟机使用公共 IP。 建议选择“否”，因为专用 IP 更安全。
+    >[!NOTE]
+    >在设置主机池时，设置过程最多可以创建 400 个 VM，每个 VM 设置过程将在资源组中创建四个对象。 由于创建过程不会检查订阅配额，因此请确保输入的 VM 数量在资源组和订阅的 Azure VM 与 API 限制范围内。 创建完主机池后，可以添加更多的 VM。
+
+8. 选择希望 VM 使用的 OS 磁盘类型：“标准 SSD”、“高级 SSD”或“标准 HDD”。
+
+9. 在“网络和安全”下，选择要在其中放置所创建的虚拟机的“虚拟网络”和“子网” 。 请确保该虚拟网络可以连接到域控制器，因为你需要将该虚拟网络中的虚拟机加入域。 所选虚拟网络的 DNS 服务器应配置为使用域控制器的 IP。
 
 10. 选择所需的安全组类型：“基本”、“高级”或“无”  。
 
@@ -154,9 +159,9 @@ ms.locfileid: "100651453"
 
 11. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 可以选择添加要将虚拟机加入其中的特定组织单位。 如果你选择“否”，VM 将加入到与“AD 域加入 UPN”的后缀相匹配的域 。
 
-  - 指定 OU 时，请确保使用完整路径（可分辨名称）且不带引号。
+    - 指定 OU 时，请确保使用不带引号的完整路径（可分辨名称）。
 
-12. 在“管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。 此帐户不能启用多重身份验证 (MFA)。 加入 Azure Active Directory 域服务 (Azure AD DS) 域时，帐户必须是 Azure AD DC 管理员组的成员，并且帐户密码必须在 Azure AD DS 中有效。
+12. 在“域管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。 此帐户不能启用多重身份验证 (MFA)。 加入 Azure Active Directory 域服务 (Azure AD DS) 域时，帐户必须是 Azure AD DC 管理员组的成员，并且帐户密码必须在 Azure AD DS 中有效。
 
 13. 在完成时选择“下一步:工作区 >”。
 

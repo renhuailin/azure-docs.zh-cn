@@ -4,15 +4,16 @@ description: AKS 上的机密计算节点
 services: virtual-machines
 author: agowdamsft
 ms.service: container-service
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 2/08/2021
 ms.author: amgowda
-ms.openlocfilehash: 9205513c4eb7e377fee0c5d18577d76a82476cf2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 203185d9f6def2204906b8722f1969b14eee8787
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553385"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933145"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service"></a>Azure Kubernetes 服务上的机密计算节点
 
