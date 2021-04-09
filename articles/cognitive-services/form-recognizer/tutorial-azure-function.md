@@ -2,19 +2,19 @@
 title: 教程：使用 Azure 函数处理存储的文档
 titleSuffix: Azure Cognitive Services
 description: 本指南介绍如何使用 Azure 函数来触发对已上传到 Azure Blob 存储容器的文档的处理。
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/28/2020
-ms.author: pafarley
-ms.openlocfilehash: ee91a9e881ee5e8707feb862162b4272e3552d5f
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 03/19/2021
+ms.author: lajanuar
+ms.openlocfilehash: bf455d9401593b5c09fa295e492368a2a5bee240
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102714867"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105048686"
 ---
 # <a name="tutorial-use-an-azure-function-to-process-stored-documents"></a>教程：使用 Azure 函数处理存储的文档
 
@@ -23,7 +23,7 @@ ms.locfileid: "102714867"
 > [!div class="mx-imgBorder"]
 > ![Azure 服务工作流示意图](./media/tutorial-azure-function/workflow-diagram.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 存储帐户
@@ -40,9 +40,9 @@ ms.locfileid: "102714867"
 * 要分析的本地 PDF 文档。 可以下载并使用此[示例文档](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/sample-layout.pdf)。
 * 已安装 [Python 3.8.x](https://www.python.org/downloads/)。
 * 已安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
-* 已安装 [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#install-the-azure-functions-core-tools)。
+* 已安装 [Azure Functions Core Tools](../../azure-functions/functions-run-local.md?tabs=windows%2ccsharp%2cbash#install-the-azure-functions-core-tools)。
 * 已安装带有以下扩展的 Visual Studio Code：
-  * [Azure Functions 扩展](https://docs.microsoft.com/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
+  * [Azure Functions 扩展](/azure/developer/python/tutorial-vs-code-serverless-python-01#visual-studio-code-python-and-the-azure-functions-extension)
   * [Python 扩展](https://code.visualstudio.com/docs/python/python-tutorial#_install-visual-studio-code-and-the-python-extension)
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
@@ -150,7 +150,7 @@ def main(myblob: func.InputStream):
 # This is the call to the Form Recognizer endpoint
     endpoint = r"Your Form Recognizer Endpoint"
     apim_key = "Your Form Recognizer Key"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.2/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.3/Layout/analyze"
     source = myblob.read()
 
     headers = {

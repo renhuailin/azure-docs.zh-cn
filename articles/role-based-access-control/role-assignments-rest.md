@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 分配 Azure 角色-Azure RBAC
+title: 使用 REST API 分配 Azure 角色 - Azure RBAC
 description: 了解如何使用 REST API 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: na
@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: d012173adb5e238282e107b832ed9c6895237e48
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556071"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>使用 REST API 分配 Azure 角色
@@ -29,7 +29,7 @@ ms.locfileid: "100556071"
 
 ## <a name="assign-an-azure-role"></a>分配 Azure 角色
 
-若要分配角色，请使用 [角色分配-创建](/rest/api/authorization/roleassignments/create) REST API，并指定安全主体、角色定义和作用域。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
+若要分配角色，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
 1. 使用[角色定义 - List](/rest/api/authorization/roledefinitions/list) REST API 或参阅[内置角色](built-in-roles.md)，获取你想要分配的角色定义的标识符。
 

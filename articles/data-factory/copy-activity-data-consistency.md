@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: b71657f67c1b9c623d6d48f33b986ac43533cca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100373010"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>复制活动中的数据一致性验证
@@ -67,7 +67,7 @@ ms.locfileid: "100373010"
 } 
 ```
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | 如果将此属性设置为 true，则在复制二进制文件时，复制活动将检查从源存储复制到目标存储的每个二进制文件的文件大小、lastModifiedDate 和 MD5 校验和，以确保源存储和目标存储之间的数据一致性。 复制表格数据时，复制活动将检查作业完成后的总行计数，以确保从源中读取的行数与复制到目标的行数和跳过的不兼容行数之和相同。 请注意，启用此选项会影响复制性能。  | True<br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过不一致的文件。 <br/> -True：要通过跳过不一致的文件来复制其余文件。<br/> -False：找到不一致的文件后要中止复制活动。<br/>请注意，只有在你复制二进制文件并将 validateDataConsistency 设置为 True 时，此属性才有效。  | True<br/>False（默认值） | 否
@@ -121,11 +121,11 @@ InconsistentData 的值：
 
 列 | 说明 
 -------- | -----------  
-Timestamp | ADF 跳过不一致文件时的时间戳。
+时间戳 | ADF 跳过不一致文件时的时间戳。
 Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
 OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
-Message | 说明为何要跳过文件的详细信息。
+消息 | 说明为何要跳过文件的详细信息。
 
 日志文件的示例如下所示： 
 ```

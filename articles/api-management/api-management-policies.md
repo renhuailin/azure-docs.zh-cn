@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 02/17/2021
 ms.author: apimpm
-ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
-ms.translationtype: MT
+ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107583"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562342"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
@@ -78,9 +78,15 @@ ms.locfileid: "92107583"
     -   [重写 URL](api-management-transformation-policies.md#RewriteURL) - 将请求 URL 从其公用格式转换为 Web 服务所需的格式。
     -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。
 - [Dapr 集成策略](api-management-dapr-policies.md)
-    - 向[服务发送请求](api-management-dapr-policies.md#invoke)-使用 Dapr 运行时找到 Dapr 微服务并可靠地与之通信。
-    -  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub) -使用 Dapr 运行时将消息发布到发布/订阅主题。
-    -  [触发器输出绑定](api-management-dapr-policies.md#bind) -使用 Dapr 运行时通过输出绑定调用外部系统。
+    - [向服务发送请求](api-management-dapr-policies.md#invoke) - 使用 Dapr 运行时查找 Dapr 微服务并与之进行可靠的通信。
+    -  [将消息发送到发布/订阅主题](api-management-dapr-policies.md#pubsub) - 使用 Dapr 运行时将消息发布到某个发布/订阅主题。
+    -  [触发输出绑定](api-management-dapr-policies.md#bind) - 使用 Dapr 运行时通过输出绑定调用外部系统。
+- [验证策略](validation-policies.md)
+    - [验证内容](validation-policies.md#validate-content) - 根据 API 架构验证请求或响应正文的大小或 JSON 架构。
+. 
+    - [验证参数](validation-policies.md#validate-parameters) - 根据 API 架构验证请求标头、查询或路径参数。
+    - [验证标头](validation-policies.md#validate-headers) - 根据 API 架构验证响应标头。
+    - [验证状态代码](validation-policies.md#validate-status-code) - 根据 API 架构验证响应中的 HTTP 状态代码。
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅：

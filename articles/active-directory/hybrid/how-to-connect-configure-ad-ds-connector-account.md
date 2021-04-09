@@ -13,10 +13,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96349933"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
@@ -149,7 +149,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>配置 MS-DS-Consistency-Guid 权限 
-若要在将 ms-Ds 一致性 Guid 属性用作源锚点时设置 AD DS 连接器帐户的权限 (也称为 "让 Azure 为我管理源锚点" 选项) ，请运行： 
+若要在使用 ms-Ds-Consistency-Guid 属性作为源定位点（也就是“让 Azure 为我管理源定位点”选项）时为 AD DS 连接器帐户设置权限，请运行： 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 

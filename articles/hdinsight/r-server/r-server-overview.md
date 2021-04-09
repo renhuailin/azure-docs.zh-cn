@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943927"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
@@ -69,7 +69,7 @@ HDFS 文件系统的默认存储可以是 Azure 存储帐户或 Azure Data Lake 
 
 可以在创建群集期间启用对附加 Blob 和 Data Lake Store 的访问。 此功能不受限于使用的主存储选项。  要了解有关使用多个存储帐户的详细信息，请参阅[适用于 HDInsight 上的 ML Services 的 Azure 存储选项](./r-server-storage.md)一文。
 
-也可以将 Azure 文件存储用作边缘节点上的存储选项。 使用 Azure 文件存储可以在 Linux 文件系统中启用 Azure 存储中创建的文件共享。 有关详细信息，请参阅[适用于 HDInsight 上的 ML 服务的 Azure 存储选项](r-server-storage.md)。
+也可以将 Azure 文件服务用作边缘节点上的存储选项。 使用 Azure 文件存储可以在 Linux 文件系统中启用 Azure 存储中创建的文件共享。 有关详细信息，请参阅[适用于 HDInsight 上的 ML 服务的 Azure 存储选项](r-server-storage.md)。
 
 ## <a name="access-ml-services-edge-node"></a>访问 ML Services 边缘节点
 
@@ -93,7 +93,7 @@ R 脚本可以使用 8000 多个开源 R 包中的任何一个。 你还可以�
 
 ### <a name="score-on-premises"></a>本地评分
 
-若要在创建模型后进行本地评分，请使用 R 来序列化模型，将其下载，将其反序列化，然后使用它来为新数据评分。 可以使用前面“在 HDInsight 中评分”中所述的方法，或使用 [Web 服务](/machine-learning-server/operationalize/concept-what-are-web-services)对新数据进行评分。
+若要在创建模型后进行本地评分，请使用 R 来序列化模型，将其下载，将其反序列化，然后使用它来为新数据评分。 可以使用前面在 HDInsight 中评分所述的方法，或使用 [Web 服务](/machine-learning-server/operationalize/concept-what-are-web-services)对新数据进行评分。
 
 ## <a name="maintain-the-cluster"></a>维护群集
 
@@ -117,7 +117,7 @@ hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"
 
 ### <a name="scale-your-cluster"></a>缩放群集
 
-可以通过门户扩展或缩减现有的 HDInsight 上的 ML Services 群集。 通过纵向扩展，可以获得更多的容量来完成更大的处理任务。 可以在群集空闲时缩减其容量。 有关如何缩放群集的说明，请参阅[管理 HDInsight 群集](../hdinsight-administer-use-portal-linux.md)。
+可以通过门户纵向扩展或缩减现有的 HDInsight 上的 ML Services 群集。 通过纵向扩展，可以获得更多的容量来完成更大的处理任务。 可以在群集空闲时缩减其容量。 有关如何缩放群集的说明，请参阅[管理 HDInsight 群集](../hdinsight-administer-use-portal-linux.md)。
 
 ### <a name="maintain-the-system"></a>维护系统
 
@@ -129,7 +129,7 @@ hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"
 
 HDInsight 群集的 Linux 边缘节点是基于 R 的分析的登录区域。 最新版本的 HDInsight 在边缘节点上提供 RStudio Server 的基于浏览器的 IDE。 对于开发和执行而言，RStudio Server 的工作效率高于 R 控制台。
 
-桌面 IDE 可以通过远程 MapReduce 或 Spark 计算上下文访问群集。 选项包括：Microsoft 的[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio，以及 Walware 的基于 Eclipse 的 StatET。
+桌面 IDE 可以通过远程 MapReduce 或 Spark 计算上下文访问群集。 选项包括 Microsoft 的[针对 Visual Studio 的 R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio 和 Walware 的基于 Eclipse 的 StatET。
 
 通过在命令提示符下键入 R 来访问边缘节点上的 R 控制台。  使用控制台界面时，可以方便地在文本编辑器中开发 R 脚本。 然后，根据需要将脚本的部分剪切并粘贴到 R 控制台。
 

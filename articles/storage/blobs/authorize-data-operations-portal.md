@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 319bbdd7809e224ca608fdac06d4b304c2052e86
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100391535"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102613234"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对 blob 数据的访问权限
 
@@ -39,7 +39,7 @@ ms.locfileid: "100391535"
 尝试在 Azure 门户中访问 Blob 数据时，门户首先会检查你是否拥有一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问 blob 数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
 
 > [!IMPORTANT]
-> 当使用 Azure 资源管理器 **ReadOnly** 锁锁定存储帐户时，不允许该存储帐户执行 [列表键](/rest/api/storagerp/storageaccounts/listkeys) 操作。 **列出密钥** 是一项 POST 操作，并且为该帐户配置了 **ReadOnly** 锁后，将阻止所有 POST 操作。 出于此原因，当使用 **ReadOnly** 锁锁定帐户时，用户必须使用 Azure AD 凭据来访问门户中的 blob 数据。 有关使用 Azure AD 访问门户中的 blob 数据的信息，请参阅 [使用您的 Azure AD 帐户](#use-your-azure-ad-account)。
+> 在使用 Azure 资源管理器 ReadOnly 锁锁定了某个存储帐户时，不允许为该存储帐户执行[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作。 列出密钥是 POST 操作，并且在为该帐户配置了 ReadOnly 锁时，所有 POST 操作都会被阻止 。 因此，当帐户被 ReadOnly 锁锁定时，用户必须使用 Azure AD 凭据访问门户中的 blob 数据。 若要了解如此使用 Azure AD 访问门户中的 blob 数据，请参阅[使用 Azure AD 帐户](#use-your-azure-ad-account)。
 
 > [!NOTE]
 > 经典订阅管理员角色“服务管理员”和“共同管理员”具有 Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色的等效权限。 “所有者”角色包含所有操作，其中包括 **Microsoft.Storage/storageAccounts/listkeys/action**，因此，拥有其中一种管理角色的用户也可以使用帐户密钥访问 Blob 数据。 有关详细信息，请参阅[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
@@ -62,13 +62,13 @@ ms.locfileid: "100391535"
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 若要详细了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
 > [!IMPORTANT]
-> Azure 门户中存储资源管理器的预览版本不支持使用 Azure AD 凭据来查看和修改 blob 数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
+> Azure 门户中存储资源管理器的预览版不支持使用 Azure AD 凭据来查看和修改 blob 数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>在 Azure 门户中导航到 Blob
 
-若要在门户中查看 Blob 数据，请导航到存储帐户的“概述”，然后单击“Blob”对应的链接。  或者，可以在菜单中导航到“Blob 服务”部分。
+若要在门户中查看 Blob 数据，请导航到存储帐户的“概述”，然后单击“Blob”对应的链接。  或者，可以在菜单中导航到“容器”部分。
 
-:::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="显示如何在 Azure 门户中导航到 Blob 数据的屏幕截图":::
+:::image type="content" source="media/authorize-data-operations-portal/blob-access-portal.png" alt-text="显示如何在 Azure 门户中导航到 Blob 数据的屏幕截图":::
 
 ## <a name="determine-the-current-authentication-method"></a>确定当前的身份验证方法
 

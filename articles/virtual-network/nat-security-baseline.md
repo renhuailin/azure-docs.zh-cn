@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 887648526c8da5fc829abe48911fd6785c3d856f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 501d5b17358501f17d17e8884ceec0bcbbb2ab1c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612399"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>虚拟网络 NAT 的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用到 Microsoft 虚拟网络 NAT。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
+此安全基线将 [Azure 安全基准版本 1.0](../security/benchmarks/overview-v1.md) 中的指南应用于 Microsoft 虚拟网络 NAT。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
 内容按“安全控制”分组，这些控制根据适用于虚拟网络 NAT 的 Azure 安全基准和相关指南进行定义。 不适用于虚拟网络 NAT 的控制已排除在外。
 
  
@@ -218,7 +218,7 @@ ms.locfileid: "100576610"
 
 **指导**：使用 Azure DevOps 安全地存储和管理代码，例如自定义 Azure Policy 定义、Azure 资源管理器模板和 Desired State Configuration 脚本。 若要访问在 Azure DevOps 中管理的资源，可以向特定用户、内置安全组或 Azure Active Directory (Azure AD)（如果与 Azure DevOps 集成）中定义的组或 Active Directory（如果与 TFS 集成）授予或拒绝授予权限。 
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow) 
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
