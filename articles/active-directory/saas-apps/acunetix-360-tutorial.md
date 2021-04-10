@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: jeedes
 ms.openlocfilehash: 480d68205c1f49397fa33bee3155be318f2e7c70
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104607154"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acunetix-360"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Acunetix 360 的集成

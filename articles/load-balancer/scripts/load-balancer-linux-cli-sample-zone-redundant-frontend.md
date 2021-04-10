@@ -3,7 +3,6 @@ title: 跨可用性区域对 VM 进行负载均衡 - Azure CLI - Azure 负载均
 description: 此 Azure CLI 脚本示例演示如何跨可用性区域对传入 VM 的流量进行负载均衡
 documentationcenter: load-balancer
 author: asudbring
-Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region.
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9f47d79be186dd44e26f78eaf70bbedaca969d66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e30c90152151dc51f74fb889b16c92208b1edf3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94696470"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056039"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI 脚本示例：跨可用性区域对 VM 进行负载均衡
 
@@ -169,7 +168,7 @@ az group delete --name myResourceGroup
 | [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
 | [az network lb create](/cli/azure/network/lb#az-network-lb-create) | 创建 Azure 负载均衡器。 |
 | [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
-| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 HTTP 流量在到达负载均衡器时，会路由到已负载均衡的集中包括的 VM 的端口 80。 |
+| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，为端口 80 创建一个规则。 HTTP 流量在到达负载均衡器时，会路由到已负载均衡的集中包括的 VM 的端口 80。 |
 | [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | 创建负载均衡器网络地址转换 (NAT) 规则。  NAT 规则将负载均衡器的端口映射到 VM 上的端口。 在本示例中，将为发往负载均衡器集中的每个 VM 的 SSH 流量创建 NAT 规则。  |
 | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) | 创建网络安全组 (NSG)，这是 Internet 和虚拟机之间的安全边界。 |
 | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 创建 NSG 规则以允许入站流量。 在此示例中，将为 SSH 流量打开端口 22。 |

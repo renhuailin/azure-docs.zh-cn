@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: f6f1ed1a3e09397a720dfd4d842b79cd88aa738d
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877259"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud 中的 Application Insights Java 进程内代理（预览版）

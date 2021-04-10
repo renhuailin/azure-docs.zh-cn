@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941376"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871599"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教程：使用 ODBC 和 PowerShell 查询 Apache Hive
 
@@ -42,7 +42,7 @@ ms.locfileid: "98941376"
 
 1. 从 Windows 中导航到“开始” > “Windows 管理工具” > “ODBC 数据源(32 位)/(64 位)。  此时将打开“ODBC 数据源管理员”窗口。
 
-    ![ODBC 数据源管理器](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "使用ODBC 数据源管理器配置 DSN")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="ODBC 数据源管理器" border="true":::
 
 1. 在”用户 DSN”选项卡中，选择“添加”，打开“创建新数据源”窗口  。
 
@@ -68,7 +68,7 @@ ms.locfileid: "98941376"
    |  每块提取的行数 |提取大量记录时，可能需要调整此参数以确保最佳性能。 |
    |  默认字符串列长度、二进制列长度、十进制列小数位数 |数据类型长度和精度可能会影响返回数据的方式。 由于精度损失和截断，这些语句可能会导致返回不正确的信息。 |
 
-    ![高级 DSN 配置选项](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "高级 DSN 配置选项")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="高级 DSN 配置选项" border="true":::
 
 1. 选择“测试”以测试数据源。 如果数据源配置正确，测试结果会显示“成功”。  
 

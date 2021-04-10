@@ -1,17 +1,17 @@
 ---
 title: 自动增长存储 - Azure 门户 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中配置存储的自动增长
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/29/2019
-ms.openlocfilehash: d49047e9b3a65da90f4a5ac9e4b3cb1e32bd59a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20c1d598cdb8bc68a3f2348547569a8f2719858c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489976"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551384"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中自动增长存储
 本文介绍如何将 Azure Database for PostgreSQL 服务器存储配置为在不影响工作负荷的情况下增长。

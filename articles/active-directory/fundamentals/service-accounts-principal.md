@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587842"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604696"
 ---
 # <a name="securing-service-principals"></a>保护服务主体
 
@@ -96,6 +96,7 @@ ApplicationID 代表全局应用程序，对于租户的所有应用程序实例
 若要评估服务主体的安全性，请确保评估特权和凭据存储。
 
 使用以下信息缓解潜在挑战。
+
 |挑战 | 缓解措施|
 | - | - |
 | 检测同意多租户应用程序的用户，并检测对多租户应用的非法同意授权 | 运行以下 PowerShell 以找到多租户应用。<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>禁用用户同意。 <br>允许用户同意来自经过验证的发布者具有所选权限（推荐） <br> 使用条件访问来阻止来自不受信任位置的服务主体。 在用户上下文下配置它们，并且应使用其令牌来触发服务主体。|

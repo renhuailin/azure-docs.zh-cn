@@ -1,17 +1,17 @@
 ---
 title: 管理虚拟网络 - Azure 门户 - Azure Database for MySQL 灵活服务器
 description: 使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理虚拟网络
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4906ce9f562910f0a087cd25167457ec1fb301ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90933390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109982"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理虚拟网络
 

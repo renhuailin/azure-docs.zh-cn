@@ -3,12 +3,12 @@ title: 部署 ISO 27001 ASE/SQL 工作负荷蓝图示例
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627477"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669638"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 
@@ -133,7 +133,7 @@ ms.locfileid: "99627477"
 |Azure SQL 数据库资源组|资源组|名称|**已锁定** - 将 **组织名称** 与 `-workload-azsql-rg` 相连接可使资源组名称保持唯一。|
 |Azure SQL 数据库资源组|资源组|位置|**已锁定** - 使用蓝图参数。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员用户名|Azure SQL 服务器的用户名。 必须与 **Key Vault 模板** 中的相同属性值相匹配。 默认值为 _sql-admin-user_。|
-|Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv"，并将 `{subscriptionId}` 替换为你的订阅 ID，将 `{orgName}` 替换为“组织名称”蓝图参数。|
+|Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 资源 ID)|Key Vault 的资源 ID。 请使用 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv"，并将 `{subscriptionId}` 替换为您的订阅 ID，将 `{orgName}` 替换为 **组织名称** 蓝图参数。|
 |Azure SQL 数据库模板|资源管理器模板|Azure SQL Server 管理员密码(Key Vault 机密名称)|SQL Server 管理员的用户名。必须与 **Key Vault 模板** 中的“Azure SQL Server 管理员用户名”属性值相匹配。|
 |Azure SQL 数据库模板|资源管理器模板|日志保留期(以天为单位)|日志保留期（以天为单位）。 默认值为 _365_。|
 |Azure SQL 数据库模板|资源管理器模板|AAD 管理员对象 ID|分配为 Active Directory 管理员的用户的 AAD 对象 ID。无默认值，且不能留空。 若要在 Azure 门户中查找此值，请在“服务”下搜索并选择“用户”。 使用“名称”框筛选帐户名，并选择该帐户。 在“用户配置文件”页上，选择“对象 ID”旁边的“单击以复制”图标。|

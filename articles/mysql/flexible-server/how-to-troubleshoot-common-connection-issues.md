@@ -2,17 +2,17 @@
 title: 排查连接问题 - Azure Database for MySQL - 灵活服务器
 description: 了解如何排查 Azure Database for MySQL 灵活服务器的连接问题。
 keywords: mysql 连接,连接字符串,连接问题,永久性错误,连接错误
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: b328da01cd3b2ecb3eb5f183296eab808de27399
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90933384"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109975"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>排查 Azure Database for MySQL 灵活服务器的连接问题
 

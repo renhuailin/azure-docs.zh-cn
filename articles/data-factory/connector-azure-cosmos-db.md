@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 2a084683d99117697657ba8900fcd6534b4a3e95
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: d42f30ebd72dca81255ddc02a9440db19979536d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379941"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104608056"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
 
@@ -58,7 +58,7 @@ ms.locfileid: "100379941"
 
 Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -114,7 +114,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
 Azure Cosmos DB (SQL API) 数据集支持以下属性： 
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文档集合的名称。 |是 |
@@ -150,13 +150,13 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbSqlApiSource**。 |是 |
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
 | preferredRegions | 从 Cosmos DB 检索数据时要连接到的区域的首选列表。 | 否 |
 | pageSize | 查询结果的每页文档数。 默认值为“-1”，表示使用服务端动态页大小，最大为 1000。 | 否 |
-| detectDatetime | 是否从文档中的字符串值检测日期时间。 允许的值是：true（默认）、false。 | 否 |
+| detectDatetime | 是否从文档中的字符串值中检测日期时间。 允许的值是：true（默认）、false。 | 否 |
 
 如果使用“DocumentDbCollectionSource”类型的源，则仍按原样提供支持以实现后向兼容性。 建议今后使用新模型，新模型提供了更丰富的功能来从 Cosmos DB 复制数据。
 
@@ -203,12 +203,14 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
 | disableMetricsCollection | 数据工厂收集指标（如 Cosmos DB RU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
+
 
 >[!TIP]
 >若要按原样导入 JSON 文档，请参阅[导入或导出 JSON 文档](#import-and-export-json-documents)部分；若要从表格形数据复制，请参阅[从关系数据库迁移到 Cosmos DB](#migrate-from-relational-database-to-cosmos-db)。
@@ -292,16 +294,16 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 * 无：不会对集合执行任何操作。
 * 重新创建：将删除集合并重新创建集合
 
-**批大小**：一个整数，表示每个批处理中 Cosmos DB 集合中写入的对象数。 通常，从默认的批大小开始便已足够。 若要进一步优化此值，请注意：
+**批大小**：一个整数，表示每个批中有多少对象被写入 Cosmos DB 集合。 通常，从默认批大小开始就足够了。 若要进一步调整此值，请注意：
 
-- Cosmos DB 将单个请求的大小限制为 2MB。 公式为 "请求大小 = 单文档大小 * 批大小"。 如果遇到错误，指出 "请求太大"，请减小 "批大小" 值。
-- 批大小越大，就可以获得更好的吞吐量，同时请确保分配足够的 ru 来提供工作负荷。
+- Cosmos DB 将单个请求的大小限制为 2MB。 公式为“请求大小 = 单个文档大小 * 写入批大小”。 若出现“请求太大”错误，请减少批大小值。
+- 批大小越大，ADF 可以实现的吞吐量就越好，同时请确保分配足够的 RU 来授权工作负载。
 
-**分区键：** 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
+**分区键：** 输入表示集合的分区键的字符串。 示例： ```/movies/title```
 
 吞吐量：为每次执行此数据流时要应用于 CosmosDB 集合的 RU 数设置一个可选值。 最小值为 400。
 
-**写入吞吐量预算：** 一个整数，表示要分配给此数据流写操作的 ru，超出分配给集合的总吞吐量。
+**写入吞吐量预算：** 一个整数，表示要分配给该集合的总吞吐量中要为此数据流写入操作分配的 RU。
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 

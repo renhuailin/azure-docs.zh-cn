@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546562"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657580"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for PostgreSQL 灵活服务器和应用服务 Web 应用
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546562"
 
 本教程介绍如何在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中创建 Azure 应用服务 Web 应用和 Azure Database for PostgreSQL 灵活服务器（预览版）。
 
-在本教程中，你将执行以下操作：
+在本教程中，将了解如何：
 >[!div class="checklist"]
 > * 在虚拟网络中创建 PostgreSQL 灵活服务器
+> * 创建要委派给应用服务的子网
 > * 创建 Web 应用
 > * 将 Web 应用添加到虚拟网络
 > * 从 Web 应用连接到 Postgres 
@@ -44,7 +45,7 @@ az login
 如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中 。
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>在新的虚拟网络中创建 PostgreSQL 灵活服务器
@@ -68,14 +69,21 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>为应用服务终结点创建子网
+现在，我们需要有委托给应用服务 Web 应用终结点的子网。 运行以下命令，在创建数据库服务器的同一虚拟网络中创建一个新的子网。 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+请在此命令后面记下虚拟网络名称和子网名称，以便在创建 web 应用后为其添加 VNET 集成规则。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
-在本部分中，你将在应用服务应用中创建应用主机，将此应用连接到 Postgres 数据库，然后将代码部署到该主机。 在终端中，请确保你位于应用程序代码的存储库根路径。
+在本部分中，你将在应用服务应用中创建应用主机，将此应用连接到 Postgres 数据库，然后将代码部署到该主机。 在终端中，请确保你位于应用程序代码的存储库根路径。 注意基本计划不支持 VNET 集成。 请使用“标准”或“高级”。 
 
 使用 az webapp up 命令创建应用服务应用（主机进程）
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 此命令将执行以下操作，可能需要花几分钟的时间：
 
 - 创建资源组（如果尚不存在）。 （在此命令中，你将使用之前在其中创建数据库的同一资源组。）
-- 在基本定价层 (B1) 中创建应用服务计划 ```testappserviceplan```（如果不存在）。 --plan 和--sku 是可选的。
 - 创建应用服务应用（如果不存在）。
 - 为应用启用默认日志记录（如果尚未启用）。
 - 在启用了生成自动化的情况下，使用 ZIP 部署上传存储库。
@@ -94,7 +101,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 使用 az webapp vnet-integration 命令向 webapp 添加区域虚拟网络集成。 将 <vnet-name> 和 <subnet-name> 替换为灵活服务器使用的虚拟网络和子网名称。
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>配置环境变量以连接数据库

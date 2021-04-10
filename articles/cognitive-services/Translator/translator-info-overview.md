@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 02/15/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, 文本翻译, 机器翻译, 翻译服务
-ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727968"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657716"
 ---
 # <a name="what-is-the-translator-service"></a>什么是 Translator 服务？
 
-Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过该服务可添加 [90 种语言和方言](./language-support.md)的多语言用户体验。 可以在任何操作系统的任何硬件平台上使用该服务进行文本转换。
+Translator 是一种基于云的机器翻译服务，是用于构建智能应用的 [Azure 认知服务](../../index.yml?panel=ai&pivot=products)系列认知 API 的一部分。 “翻译”可以轻松地集成到应用程序、网站、工具和解决方案中。 通过它，您可以在 [90 种语言和方言](./language-support.md)中添加多语言用户体验，并且可以用任何操作系统进行文本翻译。
+
+本文档包含以下文章类型：  
+
+* [**快速入门**](quickstart-translator.md)介绍了入门说明，指导您完成向服务发出请求。  
+* [**操作指南**](translator-how-to-signup.md)包含以更具体的方式或自定义方式使用服务的说明。  
+* [**概念**](character-counts.md)对服务的功能和特性进行了深入说明。  
+* [**教程**](tutorial-wpf-translation-csharp.md)是较长的指南，演示如何在更广泛的业务解决方案中使用该服务作为组件。  
+
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
@@ -45,11 +53,9 @@ NMT 模型是该 API 的核心，对最终用户不可见。 唯一明显的区�
 
 ## <a name="improve-translations-with-custom-translator"></a>通过自定义翻译器改进翻译
 
- 自定义翻译器是翻译服务的扩展，可以与“翻译”配合用于自定义神经翻译系统，并改进特定术语和样式的翻译。
+ [自定义翻译器](customization.md)是翻译服务的扩展，可以用于自定义神经翻译系统，并改进特定术语和样式的翻译。
 
 使用自定义翻译器，可以构建翻译系统来处理自己的业务或行业中使用的术语。 可以使用类别参数通过常规“翻译”服务将自定义翻译系统轻松集成到现有应用程序、工作流、网站和设备中。
-
-详细了解[自定义翻译器](customization.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

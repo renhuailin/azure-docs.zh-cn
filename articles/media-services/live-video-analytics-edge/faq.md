@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析常见问题解答 - Azure
 description: 本文解答了有关 IoT Edge 上的实时视频分析的常见问题。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702243"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275951"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>IoT Edge 上的实时视频分析常见问题解答
 
@@ -57,7 +57,7 @@ ms.locfileid: "101702243"
 
 是否可以使用流式处理技术（例如 HLS 或 DASH）播放从边缘录制到 Azure 媒体服务的资产？
 
-是的。 可以像处理 Azure 媒体服务中的任何其他资产一样，对录制的资产进行流式处理。 若要流式处理内容，必须已创建流式处理终结点，并使其处于正在运行状态。 通过使用标准流式处理定位器创建过程，你可以访问 Apple HTTP Live Streaming (HLS) 或通过 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）清单，以便将其流式传输到任何支持的播放器框架。 若要详细了解如何创建和发布 HLS 或 DASH 清单，请参阅[动态打包](../latest/dynamic-packaging-overview.md)。
+是的。 可以像处理 Azure 媒体服务中的任何其他资产一样，对录制的资产进行流式处理。 若要流式处理内容，必须已创建流式处理终结点，并使其处于正在运行状态。 通过使用标准流式处理定位器创建过程，你可以访问 Apple HTTP Live Streaming (HLS) 或通过 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）清单，以便将其流式传输到任何支持的播放器框架。 若要详细了解如何创建和发布 HLS 或 DASH 清单，请参阅[动态打包](../latest/encode-dynamic-packaging-concept.md)。
 
 **是否可以在存档资产上使用媒体服务的标准内容保护和 DRM 功能？**
 
@@ -69,7 +69,7 @@ ms.locfileid: "101702243"
 
 建议用于测试的播放器包括：
 
-* [Azure Media Player](../latest/use-azure-media-player.md)
+* [Azure Media Player](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
@@ -129,7 +129,7 @@ ms.locfileid: "101702243"
    
 使用 gRPC 协议： 
 
-* 在使用实时视频分析模块 1.0 的情况下，当使用常规用途远程过程调用 (gRPC) 协议时，那样做的唯一方法是让 gRPC 服务器通过不同的端口公开不同的 AI 模型。 在[此代码示例](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)中，单个端口 (44000) 公开了所有 yolo 模型。 理论上，可以重写 yolo gRPC 服务器，在端口 44000 上公开一些模型，在端口 45000 上公开另外一些模型。 
+* 在使用实时视频分析模块 1.0 的情况下，当使用常规用途远程过程调用 (gRPC) 协议时，那样做的唯一方法是让 gRPC 服务器通过不同的端口公开不同的 AI 模型。 在[此代码示例](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)中，单个端口 (44000) 公开了所有 yolo 模型。 理论上，可以重写 yolo gRPC 服务器，在端口 44000 上公开一些模型，在端口 45000 上公开另外一些模型。 
 
 * 在使用实时视频分析模块 2.0 的情况下，新属性会添加到 gRPC 扩展节点。 此属性 (extensionConfiguration) 是可用作 gRPC 协定的一部分的可选字符串。 在单个推理服务器中打包多个 AI 模型时，无需为每个 AI 模型公开一个节点。 对于图实例，你可以作为扩展提供者来定义如何通过使用 extensionConfiguration 属性来选择不同的 AI 模型。 在执行期间，实时视频分析会将此字符串传递给推理服务器，而推理服务器则可以使用它来调用所需的 AI 模型。 
 

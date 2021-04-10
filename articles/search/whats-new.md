@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 36f10bebfc42ae5e9e75206392e8a5f8ccef563a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694591"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600422"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -23,9 +23,10 @@ ms.locfileid: "101694591"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [语义搜索](semantic-search-overview.md) | 与查询相关的功能集合，只需很少的工作量便可提高搜索结果的相关性。 只需略微更改搜索请求，即可对现有索引试用这些功能。</br></br>[语义查询](semantic-how-to-query-request.md)是一种新的查询类型，它利用自然语言处理方面的改进功能来提高排名，以及理解查询意图以提供答案、标题和语义要点。</br></br>[语义排名和响应（回答、标题和突出显示）](semantic-how-to-query-response.md)涉及用于评估结果的模型，以及模型将结构添加到响应的能力。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 和[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
+| [语义搜索](semantic-search-overview.md) | 与查询相关的功能集合，这些功能只需很少的工作量便可大大提高搜索结果的相关性。 </br></br>[语义排名](semantic-ranking.md)使用单词和内容背后的语义含义来计算相关性分数。 </br></br>[语义标题](semantic-how-to-query-request.md)是文档中最能概括文档的相关段落，其中突出显示了最重要的术语或短语。 </br></br>[语义答案](semantic-answers.md)是从搜索文档中提取的关键段落，这些段落被表述为对看似问题的查询的直接回答。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 和[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
 | [检查查询词的拼写](speller-how-to-add.md) | 在查询词到达搜索引擎之前，你可检查其是否存在拼写错误。 `speller` 选项适用于任何查询类型（简单、完整或语义查询）。 |  公共预览版，仅限 REST，api-version=2020-06-30-Preview|
 | [SharePoint Online 索引器](search-howto-index-sharepoint-online.md) | 此索引器可将你连接到 SharePoint Online 网站，这样你即可索引文档库中的内容。 | 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
+| [Normalizers](search-normalizers.md) | Normalizers 提供简单的文本处理，例如大小写调整、删除重音、asciifolding 等，而无需经历整个分析链。| 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
 
 ## <a name="february-2021"></a>2021 年 2 月
 

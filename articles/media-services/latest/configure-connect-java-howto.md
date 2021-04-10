@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06923d7c198edc324d85b726cf91694d8cf7e1ca
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94748159"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961347"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
 
@@ -37,7 +37,7 @@ ms.locfileid: "94748159"
    - Apache Maven
    - Java 扩展包
 - 请确保设置 `JAVA_HOME` 和 `PATH` 环境变量。
-- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称。
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。
 - 按照[访问 API](./access-api-howto.md) 主题中的步骤进行操作。 记下订阅 ID、应用程序 ID（客户端 ID）、身份验证密钥（机密）和租户 ID，以便在后面的步骤中使用。
 
 另请参阅：

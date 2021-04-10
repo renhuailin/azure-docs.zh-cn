@@ -1,19 +1,19 @@
 ---
 title: 如何通过 PHP 使用队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列存储服务创建和删除队列，以及插入、获取和删除消息。 示例用 PHP 编写。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 01/11/2018
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 69369d81892a10c390aa31a2c46f79fdfa41206d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d559fd52cffe893b3f7d61842982fdc2ecd0a48
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592018"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275917"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
 

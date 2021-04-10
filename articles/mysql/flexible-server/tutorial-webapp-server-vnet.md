@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 9/21/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3e334eda46e5e67a0fc0755f5e02a0724d34a4b4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534050"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657631"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for MySQL 灵活服务器（预览版）和应用服务 Web 应用
 
@@ -21,6 +21,14 @@ ms.locfileid: "92534050"
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 本教程介绍如何在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中创建 Azure 应用服务 Web 应用和 MySQL 灵活服务器（预览版）。
+
+在本教程中，将了解如何：
+>[!div class="checklist"]
+> * 在虚拟网络中创建 MySQL 灵活服务器
+> * 创建要委托给应用服务的子网
+> * 创建 Web 应用
+> * 将 Web 应用添加到虚拟网络
+> * 从 Web 应用连接到 Postgres 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +45,7 @@ az login
 如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中 。
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>创建 Azure Database for MySQL 灵活服务器
@@ -46,7 +54,7 @@ az account set --subscription <subscription id>
 ```azurecli
 az mysql flexible-server create --resource-group myresourcegroup --location westus2
 ```
-此命令将执行以下操作，可能需要花几分钟的时间：
+复制新创建的虚拟网络的连接字符串和名称。 此命令将执行以下操作，可能需要花几分钟的时间：
 
 - 创建资源组（如果尚不存在）。
 - 生成服务器名称（如果未提供）。
@@ -57,6 +65,14 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 > [!NOTE]
 > 记下你的密码，如果未提供密码，系统将为你生成一个。 如果忘记密码，则必须使用 ``` az mysql flexible-server update``` 命令重置密码
 
+## <a name="create-subnet-for-app-service-endpoint"></a>为应用服务终结点创建子网
+现在，我们需要有委托给应用服务 Web 应用终结点的子网。 运行以下命令，在创建数据库服务器的同一虚拟网络中创建一个新的子网。 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+请在此命令后面记下虚拟网络名称和子网名称，以便在创建 web 应用后为其添加 VNET 集成规则。 
+
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
 在本节中，你将在应用服务应用中创建应用主机，并将此应用连接到 MySQL 数据库。 在终端中，请确保你位于应用程序代码的存储库根路径。
@@ -64,12 +80,13 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 使用 az webapp up 命令创建应用服务应用（主机进程）
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
 > - 对于 --location 参数，请使用与上一节中数据库相同的位置。
 > - 请将 &lt;app-name> 替换为在整个 Azure 中唯一的名称（服务器终结点为 https://\<app-name>.azurewebsites.net）。 <app-name> 允许的字符包括“A-Z”、“0-9”和“-”。 良好的模式是结合使用公司名称和应用标识符。
+> - 应用服务基本层不支持 VNET 集成。 请使用“标准”或“高级”。 
 
 此命令将执行以下操作，可能需要花几分钟的时间：
 
@@ -84,7 +101,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 使用 az webapp vnet-integration 命令向 webapp 添加区域虚拟网络集成。 将 &lt;vnet-name> 和 &lt;subnet-name> 替换为灵活服务器使用的虚拟网络和子网名称 。
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>配置环境变量以连接数据库

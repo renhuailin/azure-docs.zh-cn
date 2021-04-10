@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786071"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -26,7 +26,6 @@ ms.locfileid: "102439623"
 > 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
 
-
 ## <a name="march-2021"></a>2021 年 3 月
 
 3 月的更新包括：
@@ -35,14 +34,17 @@ ms.locfileid: "102439623"
 - [SQL 漏洞评估现在包含“禁用规则”体验（预览）](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [集成到安全中心的 Azure Monitor 工作簿以及提供的三个模板](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [法规合规性仪表板现在包含 Azure 审核报告（预览）](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [可以在 Azure Resource Graph 中通过“在 ARG 中浏览”查看建议数据](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [更新部署工作流自动化的的策略](#updates-to-the-policies-for-deploying-workflow-automation)
+- [两条旧版建议不再将数据直接写入 Azure 活动日志](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [建议页面功能增强](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>集成到安全中心的 Azure 防火墙管理
 
 打开 Azure 安全中心时，首先显示的是概述页面。 
 
-此交互式仪表板提供查看混合云工作负载的安全状况的统一视图。 此外，它还显示安全警报、覆盖范围信息等等。
+此交互式仪表板提供了混合云工作负载安全状况的统一视图。 此外，它还显示安全警报、覆盖范围信息等等。
 
 在帮助你通过中心体验查看安全状态的过程中，我们已将 Azure 防火墙管理器集成到此仪表板中。 你现在可以检查所有网络的防火墙覆盖状态，并从安全中心开始集中管理 Azure 防火墙策略。
 
@@ -92,6 +94,17 @@ ms.locfileid: "102439623"
 
 
 
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>可以在 Azure Resource Graph 中通过“在 ARG 中浏览”查看建议数据
+
+建议详细信息页现在包含“在 ARG 中浏览”工具栏按钮。 请使用此按钮来打开 Azure Resource Graph 查询，并浏览、导出和共享建议的数据。
+
+使用 Azure Resource Graph (ARG)，可以通过可靠的筛选、分组和排序功能，快速访问你的云环境中的资源信息。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。
+
+详细了解 [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)。
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="在 Azure Resource Graph 中浏览建议数据。":::
+
+
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>对部署工作流自动化的的策略的更新
 
 自动执行组织的监视和事件响应流程可以显著缩短调查和缓解安全事件所需的时间。
@@ -114,6 +127,35 @@ ms.locfileid: "102439623"
 
 了解如何[自动响应安全中心触发器](workflow-automation.md)。
 
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>两条旧版建议不再将数据直接写入 Azure 活动日志 
+
+安全中心将几乎所有安全建议的数据传递到 Azure 顾问，后者又将数据写入 [Azure 活动日志](../azure-monitor/essentials/activity-log.md)。
+
+对于其中两条建议，数据将同时直接写入 Azure 活动日志。 通过这项更改，安全中心会停止将这些旧版安全建议的数据直接写入活动日志。 而我们要将数据导出到 Azure 顾问，就像我们针对所有其他建议所做的那样。
+
+这两条旧版建议为：
+- 应在计算机上解决 Endpoint Protection 运行状况问题
+- 应该修复计算机上安全配置中的漏洞
+
+如果你一直是在活动日志的“TaskDiscovery 类型的建议”类别中访问这两条建议的信息，现在不再可以这样操作。
+
+
+### <a name="recommendations-page-enhancements"></a>建议页面功能增强 
+
+我们发布了改进版本的建议列表，以便直观地显示更多信息。
+
+此页面现在显示：
+
+1. 每个安全控制措施的最高分数和当前分数。
+1. 图标（代替标记），如“快速修复”和“预览” 。
+1. 一个新列，显示与每条建议相关的[策略计划](security-policy-concept.md)，在禁用“按控制措施分组”时显示。
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure 安全中心的建议页的功能增强 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Azure 安全中心的建议“平面”列表的功能增强 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+可在 [Azure 安全中心内的安全建议](security-center-recommendations.md)中了解详细信息。
 
 
 ## <a name="february-2021"></a>2021 年 2 月

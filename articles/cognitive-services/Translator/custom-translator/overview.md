@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890707"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657155"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
@@ -24,13 +24,20 @@ ms.locfileid: "98890707"
 
 自定义翻译支持三十多种语言，可以直接映射到适用于 NMT 的语言。 如需完整的列表，请参阅 [Microsoft Translator 语言](../language-support.md#customization)。
 
+本文档包含以下文章类型：
+
+* [**快速入门**](quickstart-build-deploy-custom-model.md)介绍了入门说明，指导您完成向服务发出请求。  
+* [**操作指南**](how-to-create-project.md)包含以更具体的方式或自定义方式使用功能的说明。  
+* [**概念**](workspace-and-project.md)对功能的特性进行了深入说明。  
+
+
 ## <a name="features"></a>功能
 
-自定义翻译提供不同的功能，用于生成自定义翻译系统，然后即可对其进行访问。
+自定义翻译工具提供不同的功能，用于生成自定义翻译系统，稍后即可对其进行访问。
 
-|Feature  |说明  |
+|功能  |说明  |
 |---------|---------|
-|[利用神经机器翻译技术](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  利用自定义翻译提供的神经机器翻译 (NMT) 来改进翻译。       |
+|[应用神经机器翻译技术](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  应用自定义翻译工具提供的神经机器翻译 (NMT) 来改进翻译。       |
 |[生成了解业务术语的系统](what-are-parallel-documents.md)     |  使用并行文档自定义并生成翻译系统，该系统了解在你自己的业务和行业中使用的术语。       |
 |[使用字典来生成模型](what-is-dictionary.md)     |   如果没有训练数据集，可以只使用字典数据训练一个模型。       |
 |[与他人协作](how-to-manage-settings.md#share-your-workspace)     |   将工作与他人共享，与团队协作。     |
@@ -52,7 +59,7 @@ Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://www
 
 使用安全的[自定义翻译](https://portal.customtranslator.azure.ai)门户时，用户可以通过一个直观的用户界面来上传训练数据、训练系统和测试系统，并将其部署到生产环境。 然后，系统会在数小时内（实际时间取决于训练数据大小）可供大规模使用。
 
-[自定义翻译](https://portal.customtranslator.azure.ai)也可通过[专用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/)（目前为预览版）以编程方式进行访问。 有了该 API，用户就可以通过自己的应用或 Web 服务定期对训练的创建和更新进行管理。
+[自定义翻译](https://portal.customtranslator.azure.ai)也可通过[专用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/)（目前为预览版）以编程方式进行访问。 通过该 API，用户可以通过自己的应用或 Web 服务对训练的创建或更新进行管理。
 
 使用自定义模型来翻译内容时，其价格取决于用户的文本翻译 API 定价层。 如需定价层详细信息，请参阅认知服务[文本翻译 API 定价网页](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
 

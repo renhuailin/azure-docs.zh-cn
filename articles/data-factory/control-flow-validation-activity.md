@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 2c5208f754e66f92cf5019fdad3026decac88284
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785948"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动
@@ -56,7 +56,7 @@ ms.locfileid: "104785948"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | “Validation”活动的名称 | String | 是 |
 type | 必须设置为“验证”  。 | String | 是 |

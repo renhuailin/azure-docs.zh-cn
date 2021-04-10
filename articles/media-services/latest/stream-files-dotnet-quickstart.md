@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7c35e079a6f4bf6c40992debace60e10631a8ba
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98898183"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962034"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -36,7 +36,7 @@ ms.locfileid: "98898183"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- [创建媒体服务帐户](./create-account-howto.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
+- [创建媒体服务帐户](./account-create-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
 - 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
