@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937237"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -60,7 +60,7 @@ Azure Monitor 可从[各种源](monitor-reference.md)收集数据。 这涉及�
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
-在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](essentials/platform-logs-overview.md)记录创建或修改资源的时间。 [指标](data-platform.md)告知资源的性能如何，以及该资源消耗的资源。 
+在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](essentials/platform-logs-overview.md)记录创建或修改资源的时间。 [指标](essentials/data-platform-metrics.md)告知资源的性能如何，以及该资源消耗的资源。 
 
 [启用诊断](essentials/platform-logs-overview.md)，将正在收集的数据扩展到资源的内部操作中。  [添加代理](agents/agents-overview.md)来计算资源，以收集其来宾操作系统中的遥测数据。 
 
@@ -144,7 +144,7 @@ Azure Monitor 中的警报规则使用[操作组](alerts/action-groups.md)，其
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-* [指标和日志](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics)，以了解由 Azure Monitor 收集的数据。
+* [指标和日志](./data-platform.md#metrics)，以了解由 Azure Monitor 收集的数据。
 * [数据源](agents/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [日志查询](logs/log-query-overview.md)，以便分析所收集的数据。
 * 用于监视云应用程序和服务的[最佳做法](/azure/architecture/best-practices/monitoring)。

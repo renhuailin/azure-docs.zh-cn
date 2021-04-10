@@ -2,19 +2,21 @@
 title: 创建 Bicep 文件 - Visual Studio Code
 description: 使用 Visual Studio Code 和适用于 Bicep 文件的 Bicep 扩展来部署 Azure 资源
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504144"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612871"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Bicep 文件
 
 Visual Studio Code 的 Bicep 扩展提供语言支持和资源自动完成功能。 这些工具可帮助创建和验证 [Bicep](./bicep-overview.md) 文件。 在本快速入门中，你将使用该扩展从头开始创建 Bicep 文件。 这样做时，你会体验到扩展功能，例如验证和完成。
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 若要完成本快速入门，需要使用装有 [Bicep 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)的 [Visual Studio Code](https://code.visualstudio.com/)。 此外，需要安装最新 [Azure CLI](/cli/azure/) 或最新 [Azure PowerShell 模块](/powershell/azure/new-azureps-module-az)并完成身份验证。
 

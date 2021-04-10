@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103492211"
 ---
 # <a name="ui-framework-capabilities"></a>UI 框架功能
@@ -71,7 +71,7 @@ ms.locfileid: "103492211"
 
 | 组件类型            | 主题     | 布局                                                              | 数据模型 |
 |---------------------------|------------|---------------------------------------------------------------------|-------------|
-| 复合组件       |     不适用    | 不适用                                                                 |     不适用     |
+| 复合组件       |     不适用    | 空值                                                                 |     不适用     |
 | 基本组件            |     不适用    | 可使用外部样式修改组件的布局         |     不适用     |
 
 

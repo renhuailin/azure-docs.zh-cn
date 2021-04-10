@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4e4892c01775b472cd8cdcf0f35b920d7e5e86
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906813"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055669"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>教程：批量邀请 Azure AD B2B 协作用户
 
@@ -39,9 +39,9 @@ ms.locfileid: "87906813"
 
 下载的 CSV 模板中的行如下所示：
 
-- **版本号**：包含版本号的第一行必须包含在上传 CSV 中。
-- **列标题**：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Email address to invite [inviteeEmail] Required`。 某些较旧版本的模板可能会略有不同。
-- **示例行**：我们已经在模板中包含了一行示例，展示了每个列的可接受值。 你必须删除示例行并将其替换为你自己的项。
+- **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Email address to invite [inviteeEmail] Required`。 某些较旧版本的模板可能会略有不同。
+- **示例行**：我们已经在模板中包含了一行示例，说明每列的值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
 
@@ -56,23 +56,27 @@ ms.locfileid: "87906813"
 
 ## <a name="invite-guest-users-in-bulk"></a>批量邀请来宾用户
 
-1. 使用组织中的用户管理员的帐户登录到 Azure 门户。
+1. 使用组织中的全局管理员帐户登录到 Azure 门户。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 在“管理”下，选择“用户” > “批量邀请”。  
+3. 在“管理”下，选择“所有用户”。
+4. 选择“批量操作” > “邀请”。
+
+    ![“批量邀请”按钮](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. 在“批量邀请用户”页上，选择“下载”以获取一个包含邀请属性的有效 .csv 模板。
 
-    ![批量邀请的下载按钮](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![下载 CSV 文件](media/tutorial-bulk-invite/download-button.png)
 
-5. 打开 .csv 模板，为每个来宾用户添加一行。 必需的值为：
+1. 打开 .csv 模板，为每个来宾用户添加一行。 必需的值为：
 
    * **要邀请的电子邮件地址** - 会收到邀请的用户
 
-   * **重定向 url** - 一个 URL，受邀请的用户在接受邀请后会被系统定向到该 URL
+   * **重定向 URL** - 一个 URL，受邀请的用户在接受邀请后会被系统定向到该 URL。 如果要将用户转发到“我的应用”页面，则必须将此值更改为 https://myapps.microsoft.com 或 https://myapplications.microsoft.com 。
 
     ![CSV 文件的示例，其中已输入来宾用户](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
    > [!NOTE]
-   > 请勿在**自定义的邀请消息**中使用逗号，因为这样会妨碍系统对消息成功进行分析。
+   > 请勿在 **自定义的邀请消息** 中使用逗号，因为这样会妨碍系统对消息成功进行分析。
 
 6. 保存文件。
 7. 在“批量邀请用户”页中，在“上传 csv 文件”下，浏览找到该文件。 选择该 .csv 文件后，对其的验证就会开始。 

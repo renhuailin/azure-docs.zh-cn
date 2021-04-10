@@ -1,19 +1,19 @@
 ---
 title: 快速入门：使用 Python 进行连接 - Azure Database for PostgreSQL 灵活服务器
 description: 本快速入门提供了多个 Python 代码示例，你可以使用它们来连接到 Azure Database for PostgreSQL 灵活服务器并查询其中的数据。
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 948972c1d47e550395a280e62c0491800e716663
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90944048"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550636"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 灵活服务器并查询其中的数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "90944048"
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * Azure Database for PostgreSQL 灵活服务器。 若要创建灵活服务器，请参阅[使用 Azure 门户创建 Azure Database for PostgreSQL 灵活服务器](./quickstart-create-server-portal.md)。
-* [Python](https://www.python.org/downloads/) 2.7.9+ 或 3.4+。
+* [Python](https://www.python.org/downloads/) 2.7 或 3.6+。
 * 最新 [pip](https://pip.pypa.io/en/stable/installing/) 包安装程序。
 
 ## <a name="preparing-your-client-workstation"></a>准备客户端工作站

@@ -4,12 +4,12 @@ description: 介绍如何使用 GitHub Actions 部署资源管理器模板（ARM
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 243316b32d5b0cf62f03ae77d8a9fb919743ace1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471922"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 模板
 
@@ -43,7 +43,7 @@ ms.locfileid: "102172824"
 如果没有资源组，请创建一个。
 
 ```azurecli-interactive
-    az group create -n {MyResourceGroup}
+    az group create -n {MyResourceGroup} -l {location}
 ```
 
 请将 `myApp` 占位符替换为应用程序的名称。
@@ -160,4 +160,4 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 > [创建第一个 ARM 模板](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
-> [了解模块：使用 GitHub 操作自动部署 ARM 模板](/learn/modules/deploy-templates-command-line-github-actions/)
+> [Learn 模块：使用 GitHub Actions 自动部署 ARM 模板](/learn/modules/deploy-templates-command-line-github-actions/)

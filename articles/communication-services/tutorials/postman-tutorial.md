@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492602"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>教程：使用 Postman 签署和发出请求
@@ -86,7 +86,7 @@ const dateStr = new Date().toUTCString();
 pm.request.headers.upsert({key:'Date', value: dateStr});
 ```
 
-接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装它们：
+接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装或请求它们：
 
 ```JavaScript
 // Hash the request body using SHA256 and encode it as Base64
@@ -186,7 +186,7 @@ pm.request.headers.upsert({
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman 中的加号按钮。":::
 
-这会在 Postman 中打开一个用于创建请求的新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](https://docs.microsoft.com/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
+这会在 Postman 中为请求创建一个新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](https://docs.microsoft.com/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
 
 首先将请求类型设置为 `POST`，并在请求 URL 字段中输入 `{{endpoint}}/sms?api-version=2021-03-07`。 此 URL 使用我们前面创建的 `endpoint` 变量自动将请求发送到 ACS 资源。
 

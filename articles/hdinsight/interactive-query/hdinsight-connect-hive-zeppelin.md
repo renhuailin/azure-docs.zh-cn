@@ -1,16 +1,16 @@
 ---
-title: 快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中运行 Apache Hive 查询
+title: 快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中运行 Apache Hive
 description: 本快速入门介绍如何使用 Apache Zeppelin 运行 Apache Hive 查询。
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941069"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869763"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中执行 Apache Hive 查询
 
@@ -20,7 +20,7 @@ ms.locfileid: "98941069"
 
 ## <a name="prerequisites"></a>先决条件
 
-一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。  请确保选择“交互式查询”群集类型。 
+一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。  请确保选择“交互式查询”群集类型。
 
 ## <a name="create-an-apache-zeppelin-note"></a>创建 Apache Zeppelin 笔记
 
@@ -28,16 +28,16 @@ ms.locfileid: "98941069"
 
 2. 输入群集登录用户名和密码。 在 Zeppelin 页中，可以创建新笔记，也可以打开现有笔记。 **HiveSample** 包含一些示例 Hive 查询。  
 
-    ![HDInsight 交互式查询 zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="HDInsight 交互式查询 zeppelin" border="true":::
 
-3. 选择“创建新笔记”。 
+3. 选择“创建新笔记”。
 
-4. 在“创建新笔记”对话框中，键入或选择以下值： 
+4. 在“创建新笔记”对话框中，键入或选择以下值：
 
     - 笔记名称：输入笔记的名称。
-    - 默认解释器：从下拉列表中选择“jdbc”。 
+    - 默认解释器：从下拉列表中选择“jdbc”。
 
-5. 选择“创建笔记”  。
+5. 选择“创建笔记”。
 
 6. 在代码部分输入以下 Hive 查询，然后按 **Shift + Enter**：
 
@@ -46,7 +46,7 @@ ms.locfileid: "98941069"
     show tables
     ```
 
-    ![HDInsight 交互式查询 zeppelin 运行查询](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="HDInsight 交互式查询 zeppelin 运行查询" border="true":::
 
     第一行中的 **%jdbc(hive)** 语句告诉笔记本使用 Hive JDBC 解释程序。
 

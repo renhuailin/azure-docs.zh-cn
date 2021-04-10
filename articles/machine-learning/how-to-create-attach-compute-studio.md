@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: MT
+ms.openlocfilehash: 4194c71823e1affde1dcae47fd7e64668b57c0cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149352"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
@@ -147,7 +147,7 @@ ms.locfileid: "97031022"
 
 1. 输入计算目标的名称。 
 1. 选择要附加的计算类型。 并非所有计算类型都可以从 Azure 机器学习工作室附加。 目前，可为训练附加的计算类型包括：
-    * 远程 VM
+    * Azure 虚拟机（用于附加 Data Science Virtual Machine）
     * Azure Databricks（在机器学习管道中使用）
     * Azure Data Lake Analytics（在机器学习管道中使用）
     * Azure HDInsight

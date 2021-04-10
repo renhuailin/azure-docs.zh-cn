@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Azure 实时视频分析将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1a4d423108ddb18af4f8478c9bac60672d6062
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101702311"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279810"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
 
@@ -426,7 +426,7 @@ applicationProperties 中的 subject 部分引用图形中的资产接收器节�
 1. 在打开的向导中，接受默认选项，然后选择“添加”。 有关详细信息，请参阅[视频播放](video-playback-concept.md)。
 
     > [!TIP]
-    > 请确保[流式处理终结点正在运行](../latest/streaming-endpoint-concept.md)。
+    > 请确保[流式处理终结点正在运行](../latest/stream-streaming-endpoint-concept.md)。
 1. 播放器应加载视频。 选择“播放”观看该视频。
 
 > [!NOTE]

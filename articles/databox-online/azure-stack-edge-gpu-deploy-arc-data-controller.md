@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 3ff07c773a2976a296d13510a3ddd7b41217aaa2
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437615"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567536"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署 Azure 数据服务
 
@@ -87,7 +87,7 @@ Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服
 
 1. 配置文件应位于本地计算机上用户配置文件的 `.kube` 文件夹中。 将该文件复制到用户配置文件的该文件夹中。
 
-    ![客户端上的配置文件位置](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![客户端上的配置文件位置](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 1. 向用户授予对创建的命名空间的访问权限。 类型： 
 
     `Grant-HcsKubernetesNamespaceAccess -Namespace <Name of namespace> -UserName <User name>`
@@ -344,4 +344,4 @@ kubectl delete ns <Name of your namespace>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure Stack Edge Pro 上部署无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [在 Azure Stack Edge Pro 上部署无状态应用程序](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。
