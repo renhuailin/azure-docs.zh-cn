@@ -1,17 +1,17 @@
 ---
 title: 自动增长存储 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户允许 Azure Database for MySQL 的存储自动增长
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 9355c2b2c780b6ccd63100e576850fe5566db3cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5242ef7d5d2eb9fb3aca2138ad525199c8a6afee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998594"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109941"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 门户自动增长 Azure Database for MySQL 的存储
 本文介绍如何将 Azure Database for MySQL 服务器存储配置为在不影响工作负荷的情况下增长。

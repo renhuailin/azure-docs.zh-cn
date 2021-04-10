@@ -1,18 +1,18 @@
 ---
 title: Azure 安全中心的内置策略定义
 description: 列出 Azure 安全中心的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d6afafef2bb09855fb50f67fcc1054043fa725ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 82fd5a9a0bdf9a37535796af8f72c2c4238cdc9c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596481"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089540"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure 安全中心的 Azure Policy 内置定义
 

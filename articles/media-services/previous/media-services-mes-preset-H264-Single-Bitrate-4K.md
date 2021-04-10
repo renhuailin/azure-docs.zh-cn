@@ -1,7 +1,7 @@
 ---
 title: H264 单比特率 4K Media Encoder Standard 预设 - Azure | Microsoft 文档
-description: 本文概述了 Media Encoder Standard“H264 单比特率 4K”任务预设。
-author: Juliako
+description: 本文概述了 Media Encoder Standard H264 单比特率 4K 任务预设。
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 7e2a2d6f96d4e9c789dd13ae377e219bd943ae24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 62984c938a3db67550b36c731e7a5a27de5df7ad
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261863"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012847"
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 单比特率 4K
 

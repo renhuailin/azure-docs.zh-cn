@@ -9,10 +9,10 @@ ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: ae298562b5d3306cf6c20b4c2fb7b378ba99c986
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561613"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
@@ -237,7 +237,7 @@ Azure VM 可能会处于多种电源状态之一。
 | 电源状态 | 说明
 |----|----|
 | 正在启动 | 正在启动虚拟机。 |
-| 运行 | 虚拟机正在运行。 |
+| 正在运行 | 虚拟机正在运行。 |
 | 正在停止 | 正在停止虚拟机。 |
 | 已停止 | VM 已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | VM 正解除分配。 |

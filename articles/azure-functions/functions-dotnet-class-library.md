@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102563874"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>使用 Azure Functions 开发 C# 类库函数

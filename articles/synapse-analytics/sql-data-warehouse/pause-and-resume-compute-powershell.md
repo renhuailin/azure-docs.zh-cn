@@ -1,33 +1,33 @@
 ---
-title: 快速入门：通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
-description: 可以使用 Azure PowerShell 暂停和恢复 Synapse SQL 池（数据仓库）。 计算资源。
+title: 快速入门：使用 Azure PowerShell 暂停和恢复专用 SQL 池（以前称为 SQL DW）中的计算
+description: 可以使用 Azure PowerShell 来暂停和恢复专用的 SQL 池（以前称为 SQL DW）。 计算资源。
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 03/20/2019
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74c30a843ef5edd54c7cd19f3fd49acfe782f488
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121033"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602173"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入门：通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 暂停和恢复专用 SQL 池（以前称为 SQL DW）中的计算
 
-可以使用 Azure PowerShell 暂停和恢复 Synapse SQL 池（数据仓库）计算资源。
+可以使用 Azure PowerShell 来暂停和恢复专用的 SQL 池（以前称为 SQL DW）计算资源。
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="before-you-begin"></a>开始之前
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本快速入门假设已有一个可以暂停和恢复的 SQL 池。 如果需要创建一个 SQL 池，可以参考 [创建和连接 - 门户](create-data-warehouse-portal.md)创建名为 **mySampleDataWarehouse** 的 SQL 池。
+本快速入门假设已有一个可以暂停和恢复的专用 SQL 池（以前称为 SQL DW）。 如果需要创建专用 SQL 池，可以参考 [创建和连接 - 门户](create-data-warehouse-portal.md)创建名为 **mySampleDataWarehouse** 的专用 SQL 池（以前称为 SQL DW）。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -49,19 +49,19 @@ Get-AzSubscription
 Set-AzContext -SubscriptionName "MySubscription"
 ```
 
-## <a name="look-up-sql-pool-information"></a>查找 SQL 池信息
+## <a name="look-up-dedicated-sql-pool-formerly-sql-dw-information"></a>查找专用 SQL 池（以前称为 SQL DW）信息
 
-查找计划暂停和恢复的 SQL 池的数据库名称、服务器名称和资源组。
+查找你打算暂停和恢复的专用 SQL 池（以前称为 SQL DW）的数据库名称、服务器名称和资源组。
 
-按照以下步骤查找 SQL 池的位置信息：
+遵循以下步骤找到专用 SQL 池（以前称为 SQL DW）的位置信息：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。
 1. 从“Azure Synapse Analytics (以前称为 SQL DW)”页中选择 **mySampleDataWarehouse**。 此时将打开 SQL 池。
 
     ![服务器名称和资源组](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-1. 记下 SQL 池名称，即数据库名称。 同时记下服务器名称和资源组。
+1. 记下专用 SQL 池（以前称为 SQL DW）的名称，即数据库名称。 同时记下服务器名称和资源组。
 1. 在 PowerShell cmdlet 中请仅使用服务器名称的第一个组成部分。 在上图中，完整的服务器名称为 sqlpoolservername.database.windows.net。 我们在 PowerShell cmdlet 中使用 **sqlpoolservername** 作为服务器名称。
 
 ## <a name="pause-compute"></a>暂停计算
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
-–ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
+–ServerName "sqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
 以下示例将数据库检索到 $database 对象中。 然后，它通过管道将该对象传递给 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 结果存储在对象 resultDatabase 中。 最后一个命令显示结果。
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>检查 SQL 池操作的状态
 
-若要检查 SQL 池的状态，请使用 [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。
+若要检查专用 SQL 池（以前称为 SQL DW）的状态，请使用 [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -115,7 +115,7 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="clean-up-resources"></a>清理资源
 
-针对 SQL 池的数据仓库单元数和存储的数据收费。 这些计算和存储资源是分开计费的。
+我们会根据数据仓库单位数和存储专用 SQL 池（以前称为 SQL DW）的数据向你收取费用。 这些计算和存储资源是分开计费的。
 
 - 要将数据保存在存储中，请暂停计算。
 - 若要避免将来产生费用，可以删除该 SQL 池。
@@ -136,4 +136,4 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](./load-data-from-azure-blob-storage-using-copy.md)一文。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。
+若要详细了解 SQL 池，请继续学习[将数据载入专用 SQL 池（以前称为 SQL DW）](./load-data-from-azure-blob-storage-using-copy.md)一文。 有关管理计算功能的其他信息，请参阅[管理计算概述](sql-data-warehouse-manage-compute-overview.md)一文。

@@ -3,12 +3,12 @@ title: Azure 事件网格事件架构
 description: 介绍所有事件都存在的属性和架构。  事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ff7b41a45cf467074e18a50be398b2a3c9866a4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86105874"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732153"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -78,16 +78,17 @@ ms.locfileid: "86105874"
 | 属性 | 类型 | 必需 | 说明 |
 | -------- | ---- | -------- | ----------- |
 | 主题 | string | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果不包含，事件网格将标记到事件上。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 是 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 是 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 是 | 事件的唯一标识符。 |
+| subject | string | 是 | 事件主题的发布者定义路径。 |
+| eventType | string | 是 | 此事件源的一个注册事件类型。 |
+| EventTime | string | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 是 | 事件的唯一标识符。 |
 | data | object | 否 | 特定于资源提供程序的事件数据。 |
 | dataVersion | string | 否，但将使用空值进行标记。 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 不是必需的，但如果包含，则必须与事件网格架构 `metadataVersion` 完全匹配（目前仅为 `1`）。 如果不包含，事件网格将标记到事件上。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 若要了解数据对象中的属性，请参阅事件源：
 
+* [Azure Policy](./event-schema-policy.md)
 * [Azure 订阅（管理操作）](event-schema-subscriptions.md)
 * [容器注册表](event-schema-container-registry.md)
 * [Blob 存储](event-schema-blob-storage.md)

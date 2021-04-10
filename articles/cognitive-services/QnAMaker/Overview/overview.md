@@ -7,18 +7,20 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低代码聊天机器人, 多回合对话
-ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919555"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869202"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
 QnA Maker 是一种基于云的自然语言处理 (NLP) 服务，它可以基于数据创建自然对话层。 使用该服务可以基于自定义的信息知识库 (KB)，针对任何输入查找最适当的回答。
 
 QnA Maker 通常用于生成对话式客户端应用程序，其中包括社交媒体应用程序、聊天机器人和支持语音的桌面应用程序。
+
+QnA Maker 不会存储客户数据。 所有客户数据（问题答案和聊天日志）都存储在客户部署了从属服务实例的区域中。 有关从属服务的详细信息，请参阅[此处](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1)。
 
 ## <a name="when-to-use-qna-maker"></a>何时使用 QnA Maker
 

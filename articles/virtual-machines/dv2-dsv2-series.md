@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: a3dee22a1ee793641e48be6edb1b33a00219217e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102560304"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列

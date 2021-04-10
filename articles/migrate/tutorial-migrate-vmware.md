@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702192"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604536"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -111,7 +111,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
     > 如果要为一组虚拟机选择其他可用性选项，请转到步骤 1，在开始为一组虚拟机执行复制后，通过选择其他可用性选项来重复这些步骤。
 
 
- ![VM 计算设置](./media/tutorial-migrate-vmware/compute-settings.png)
+
 
 12. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
    
@@ -189,7 +189,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
 ## <a name="complete-the-migration"></a>完成迁移
 
 1. 完成迁移后，右键单击该 VM 并选择“停止复制”。 这会停止本地计算机的复制，并清理 VM 的复制状态信息。
-2. 如果计算机具有 Linux OS，请在迁移的计算机上安装 Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) 代理。 在迁移期间，我们会自动为 Windows VM 安装 VM 代理。
+2. 在迁移期间，我们会自动为 Windows VM 和 Linux VM 安装 VM 代理。 如果迁移的计算机有 Linux 操作系统，请检查该计算机上的 Azure VM Linux 代理[要求](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)，以确保 Linux VM 代理安装正确完成。 
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。
@@ -202,6 +202,8 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
 - 为提高恢复能力，请执行以下操作：
     - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
+- 为提高性能：
+    - 默认情况下，创建的数据磁盘的主机缓存设置为“无”。 查看数据磁盘缓存并根据工作负载需求进行调整。 [了解详细信息](../virtual-machines/premium-storage-performance.md#disk-caching)。  
 - 为提高安全性，请执行以下操作：
     - 使用 [Azure 安全中心 - 适时管理](../security-center/security-center-just-in-time.md)锁定和限制入站流量访问。
     - 使用[网络安全组](../virtual-network/network-security-groups-overview.md)限制流入管理终结点的网络流量。

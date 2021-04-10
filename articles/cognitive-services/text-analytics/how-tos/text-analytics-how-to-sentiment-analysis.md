@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673047"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599115"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
-文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。 
+文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些字（例如产品或服务的属性）的观点。 
 
 API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析。
 
@@ -49,9 +49,9 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-观点挖掘是情绪分析的一项功能，从版本 3.1 的预览版开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些方面（例如产品或服务的属性）的观点。
+观点挖掘是情绪分析的一项功能，从版本 3.1 的预览版开始提供。 此功能在自然语言处理 (NLP) 中也称为基于特性的情绪分析，它更加精细地描述了对文本中某些产品或服务属性的观点。 API 将观点作为目标（名词或动词）和评估（形容词）。
 
-例如，如果客户评论某家酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的各个方面及其相关的观点和情绪。 情绪分析可能只报告消极情绪。
+例如，如果客户评论某家酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的目标（方面）及其相关的评估（观点）和情绪。 情绪分析可能只报告消极情绪。
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="观点挖掘示例图" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求。 
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 [情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 > [!NOTE]
 > 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 **情绪分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **观点挖掘**
 
 若要获取观点挖掘结果，必须包含 `opinionMining=true` 参数。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 默认情况下，此参数设置为 `false`。 
 
@@ -142,7 +142,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理偏移](../concepts/text-offsets.md)。
 
-#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>情绪分析和观点挖掘示例响应
 
@@ -151,97 +151,99 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 情绪分析 v3.1 可以返回情绪分析和观点挖掘的响应对象。
   
-情绪分析为整个文档以及其中的每个句子返回情绪标签和置信度分数。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 一个文档可以有多个句子，每个文档或句子的置信度分数合计为 1。
+情绪分析为整个文档以及其中的每个句子返回情绪标签和置信度分数。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 一个文档可以有多个句子，每个文档或句子的置信度分数合计为 1。 assessments 
 
-观点挖掘将查找文本中的各个方面及其相关的观点和情绪。 在下面的回复中，“餐厅的食物很好，并且服务员很友好”这句话包括两个方面：食物和服务员  。 每个方面的 `relations` 属性都包含一个 `ref` 值，其中包含对相关 `documents`、`sentences` 和 `opinions` 对象的 URI 引用。
+观点挖掘将查找文本中的目标（名词或动词）及其相关的评估（形容词）。 在下面的回复中，*餐厅的食物很好，并且服务员很友好* 这句话包括两个目标：*食物* 和 *服务员*。 每个目标的`relations`属性都包含一个`ref`值，其中包含对相关的`documents`、`sentences`和`assessments`对象的 URI 引用。
+
+API 返回观点作为目标（名词或动词）和评估（形容词）。
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

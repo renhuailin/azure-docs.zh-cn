@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: c1d4c9be1f76e62be3c17d4dec22479db003b77a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608251"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562692"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge 模块的预认证清单
 
@@ -38,7 +38,7 @@ ms.locfileid: "102608251"
     - 容器创建选项（与合作伙伴中心添加的此选项相同）
     - 模块孪生设置（与合作伙伴中心添加的此设置相同）
 1. 添加路由（与合作伙伴中心添加的路由相同）。
-1. 选择“查看 + 创建”  。
+1. 选择“查看 + 创建”。
 
 Edge 模块部署在 Azure 中创建的 Edge 设备上。
 
@@ -55,7 +55,7 @@ Edge 模块部署在 Azure 中创建的 Edge 设备上。
 #### <a name="steps"></a>步骤
 
 1. 确保可通过 Putty 访问创建的设备/VM。
-1. 将 [IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge)下载到设备上。
+1. 将 [IoT Edge 运行时](../iot-edge/how-to-install-iot-edge.md)下载到设备上。
 1. 将在步骤 5 中复制的连接字符串更新到 yaml 文件。
 1. 重启 Edge 模块 `sudo systemctl restart iotedge`。
 1. 使用 `sudo iotedge list` 检查是否已在设备上部署模块，该模块应处于“正在运行”状态。
@@ -78,6 +78,6 @@ Edge 模块部署在 Azure 中创建的 Edge 设备上。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [从商业市场部署模块](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [在合作伙伴中心发布 Edge 模块](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [部署 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [从商业市场部署模块](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [在合作伙伴中心发布 Edge 模块](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [部署 IoT Edge 模块](../iot-edge/quickstart-linux.md)

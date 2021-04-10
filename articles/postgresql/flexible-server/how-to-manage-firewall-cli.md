@@ -1,19 +1,19 @@
 ---
 title: 管理防火墙规则 - Azure CLI - Azure Database for PostgreSQL 灵活服务器
 description: 使用 Azure CLI 命令行在 Azure Database for PostgreSQL 灵活服务器中创建和管理防火墙规则。
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 36249694c5a4de8a738853892f827c6d9e1e4aff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 843ad39d1c09d7c5a2fb7e9b536e300edf58d8e5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489466"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551115"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 灵活服务器防火墙规则
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: 42dac9edc91d7cb935e8c20398c4d31343b358e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102559675"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>适用于 Windows 的 AMD GPU 驱动程序扩展
@@ -71,7 +71,7 @@ ms.locfileid: "102559675"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
+| publisher | Microsoft.HpcCompute | 字符串 |
 | type | AmdGpuDriverWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 
@@ -136,7 +136,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户以及使用 Azure PowerShell 和 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令。
 

@@ -8,10 +8,10 @@ ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 144b2f23e40f315441c3de2482ae8aeffe77ec75
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583448"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 DataBox 通过 Azure 文件同步从网络连接存储 (NAS) 迁移到混合云部署
@@ -30,7 +30,7 @@ Azure 文件同步适用于直接连接存储 (DAS) 位置，它不支持同步�
 
 ## <a name="migration-goals"></a>迁移目标
 
-目标是将 NAS 应用程序上的共享移动到 Windows Server。 然后，利用 Azure 文件同步来实现混合云部署。 在执行这种迁移时，需要保证生产数据的完整性以及迁移期间的可用性。 后者要求将停机时间保持在最低限度，以便刚好适应或仅略微超过常规维护时段。
+目标是将 NAS 应用程序上的共享移动到 Windows Server。 然后，利用 Azure 文件同步来实现混合云部署。 在执行这种迁移时，需要保证生产数据的完整性以及迁移期间的可用性。 要满足后一项要求，需将停机时间尽量缩短，使之不会超过或者只略微超过例行维护时段。
 
 ## <a name="migration-overview"></a>迁移概述
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/16/2021
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 506799f94676be007cf94320e3958bd305ce85f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573449"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732918"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -66,7 +66,7 @@ Azure 防火墙管理器具有以下功能：
 
 此功能仅在安全虚拟中心部署中可用。
 
-可使用第三方提供程序对分支到 Internet (B2I) 流量进行筛选，同时使用 Azure 防火墙对分支到 VNet (B2V)、VNet 到 VNet (V2V) 以及 VNet 到 Internet (V2I) 流量进行筛选。 只要 B2V 或 V2V 无需 Azure 防火墙，还可以使用第三方提供程序对 V2I 流量进行筛选。 
+可使用第三方提供程序对分支到 Internet (B2I) 流量进行筛选，同时使用 Azure 防火墙对分支到 VNet (B2V)、VNet 到 VNet (V2V) 以及 VNet 到 Internet (V2I) 流量进行筛选。 
 
 ## <a name="region-availability"></a>上市区域
 

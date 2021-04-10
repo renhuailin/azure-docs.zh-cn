@@ -4,16 +4,18 @@ description: 快速入门：了解如何使用 Azure CLI 在 Azure 门户中创�
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745649"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613173"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 门户仪表板
 
-Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。
+Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 本文重点介绍使用 Azure CLI 创建仪表板的过程。
+仪表板会显示虚拟机 (VM) 的性能以及一些静态信息和链接。
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-验证是否可以从 Azure 门户中查看有关虚拟机的数据。
-
-1. 在 Azure 门户中，选择“仪表板”。
-
-   ![Azure 门户导航到仪表板](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. 在仪表板页面上，选择“简单的 VM 仪表板”。
-
-   ![导航到“简单的 VM 仪表板”](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. 查看仪表板。 你可以看到某些内容是静态的，但也有一些图表显示 VM 的性能。
-
-   ![查看简单的 VM 仪表板](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

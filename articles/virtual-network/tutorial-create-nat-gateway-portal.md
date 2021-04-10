@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 82b5892b027627871e5492e3c6cd3776a923632b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102553436"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>教程：使用 Azure 门户创建 NAT 网关
@@ -51,7 +51,7 @@ ms.locfileid: "102553436"
     | 资源组   | 选择“新建”。 </br> 输入“myResourceGroupNAT”。 </br> 选择“确定”。 |
     | **实例详细信息** |                                                                 |
     | 名称             | 输入“myVNet”                                    |
-    | 区域           | 选择“(欧洲)欧洲西部” |
+    | 区域           | 选择“(欧洲)西欧” |
 
 5. 选择“IP 地址”选项卡  ，或选择页面底部的“下一步:  IP 地址”按钮。
 

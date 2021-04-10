@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自动化数据处理, 文档处理, 自动化数据输入, 表单处理
-ms.openlocfilehash: fdd482a6b0d6ca53d99cd17076ccd9a3545f7879
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467269"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872245"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -26,7 +26,16 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 
 表单识别器由自定义文档处理模型、预生成的发票、收据、身份证和名片模型以及布局模型组成。 可以使用 REST API 或客户端库 SDK 调用表单识别器模型，以降低复杂性，并将该模型集成到工作流或应用程序中。
 
-表单识别器包括下列服务：
+本文档包含以下文章类型：  
+
+* [**快速入门**](quickstarts/client-library.md)介绍了入门说明，指导你完成向服务发出请求。  
+* [**操作指南**](build-training-data-set.md)包含以更具体的方式或自定义方式使用服务的说明。  
+* [**概念**](concept-layout.md)对服务的功能和特性进行了深入说明。  
+* [**教程**](tutorial-bulk-processing.md)是较长的指南，演示如何在更广泛的业务解决方案中使用该服务作为组件。  
+
+## <a name="form-recognizer-features"></a>表单识别器功能
+
+利用表单识别器，可以通过以下功能轻松提取和分析表单数据：
 
 * **[布局 API](#layout-api)** - 从文档中提取文本、选择标记和表结构及其边界框坐标。
 * **[自定义模型](#custom-models)** - 从表单中提取文本、键/值对、选择标记和表数据。 这些模型都是用你自己的数据训练的，因此是针对你的表单量身定制的。
@@ -38,11 +47,10 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
   * [名片](./concept-business-cards.md)
   * [身份证 (ID)](./concept-identification-cards.md)
 
-## <a name="try-it-out"></a>试试看
 
-若要试用表单识别器服务，请转到联机 UI 工具示例：
-<!-- markdownlint-disable MD025 -->
-<!-- markdownlint-disable MD024 -->
+## <a name="get-started"></a>入门
+
+使用示例表单识别器工具可以试用布局模型、预生成模型，并训练文档的自定义模型。 若要试用表单识别器服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥 。
 
 ### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
 
@@ -55,8 +63,45 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 > [尝试使用表单识别器](https://fott.azurewebsites.net/)
 
 ---
+遵循[客户端库/REST API 快速入门](./quickstarts/client-library.md)开始从文档中提取数据。 我们建议你在学习该技术时使用免费服务。 请记住，每月的免费页数限于 500。
 
-若要试用表单识别器服务，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。
+还可以使用 REST 示例 (GitHub) 开始执行以下操作 - 
+
+* 从文档中提取文本、选择标记和表结构
+  * [提取布局数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
+* 训练自定义模型并提取表单数据
+  * [在没有标签的情况下进行训练 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+  * [在有标签的情况下进行训练 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
+* 从发票提取数据
+  * [提取发票数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
+* 从销售收据提取数据
+  * [提取收据数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
+* 从名片提取数据
+  * [提取名片数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
+
+### <a name="review-the-rest-apis"></a>查看 REST API
+
+使用以下 API 训练模型并提取表单中的结构化数据。
+
+|名称 |说明 |
+|---|---|
+| **分析布局** | 分析作为流传入的文档，以从该文档中提取文本、选择标记、表和结构 |
+| **训练自定义模型**| 使用相同类型的 5 个表单对新模型进行训练，以便分析你的表单。 将 _useLabelFile_ 参数设置为 `true`，以便使用手动标记的数据进行训练。 |
+| **分析表单** |使用自定义模型分析作为流传入的表单，以从该表单中提取文本、键/值对和表。  |
+| **分析发票** | 分析发票，以提取关键信息、表和其他发票文本。|
+| **分析收据** | 分析回执文档，以提取关键信息和其他回执文本。|
+| **分析身份证** | 分析身份证文档，以提取关键信息和其他身份证文本。|
+| **分析名片** | 分析名片以提取关键信息和文本。|
+
+### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
+
+请浏览 [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
+
+### <a name="v20"></a>[v2.0](#tab/v2-0)
+
+请浏览 [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
+
+---
 
 ## <a name="layout-api"></a>布局 API
 
@@ -113,61 +158,6 @@ Azure 表单识别器是一种认知服务，可让你使用机器学习技术�
 通过名片模型，你可以从英语名片中提取人员姓名、职务、地址、电子邮件、公司和电话号码等信息。 有关详细信息，请参阅[名片](./concept-business-cards.md)概念指南。
 
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="名片示例" lightbox="./media/overview-business-card.jpg":::
-
-## <a name="get-started"></a>入门
-
-使用示例表单识别器工具可以试用布局模型、预生成模型，并训练文档的自定义模型：  
-
-### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
-
-> [!div class="nextstepaction"]
-> [尝试使用表单识别器](https://fott-preview.azurewebsites.net/)
-
-### <a name="v20"></a>[v2.0](#tab/v2-0)
-
-> [!div class="nextstepaction"]
-> [尝试使用表单识别器](https://fott.azurewebsites.net/)
-
----
-遵循[客户端库/REST API 快速入门](./quickstarts/client-library.md)开始从文档中提取数据。 我们建议你在学习该技术时使用免费服务。 请记住，每月的免费页数限于 500。
-
-还可以使用 REST 示例 (GitHub) 开始执行以下操作 - 
-
-* 从文档中提取文本、选择标记和表结构
-  * [提取布局数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
-* 训练自定义模型并提取表单数据
-  * [在没有标签的情况下进行训练 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
-  * [在有标签的情况下进行训练 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
-* 从发票提取数据
-  * [提取发票数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
-* 从销售收据提取数据
-  * [提取收据数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
-* 从名片提取数据
-  * [提取名片数据 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
-
-### <a name="review-the-rest-apis"></a>查看 REST API
-
-使用以下 API 训练模型并提取表单中的结构化数据。
-
-|名称 |说明 |
-|---|---|
-| **分析布局** | 分析作为流传入的文档，以从该文档中提取文本、选择标记、表和结构 |
-| **训练自定义模型**| 使用相同类型的 5 个表单对新模型进行训练，以便分析你的表单。 将 _useLabelFile_ 参数设置为 `true`，以便使用手动标记的数据进行训练。 |
-| **分析表单** |使用自定义模型分析作为流传入的表单，以从该表单中提取文本、键/值对和表。  |
-| **分析发票** | 分析发票，以提取关键信息、表和其他发票文本。|
-| **分析收据** | 分析回执文档，以提取关键信息和其他回执文本。|
-| **分析身份证** | 分析身份证文档，以提取关键信息和其他身份证文本。|
-| **分析名片** | 分析名片以提取关键信息和文本。|
-
-### <a name="v21-preview"></a>[v2.1 预览版](#tab/v2-1)
-
-请浏览 [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
-
-### <a name="v20"></a>[v2.0](#tab/v2-0)
-
-请浏览 [REST API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
-
----
 
 ## <a name="input-requirements"></a>输入要求
 
