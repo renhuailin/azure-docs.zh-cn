@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: ca8b9a511de1b71e5d03b8aac7631fc8f524500f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177930"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418957"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -25,7 +25,7 @@ AKS 托管的 Azure AD 集成设计用来简化 Azure AD 集成体验，用户�
 ## <a name="limitations"></a>限制 
 
 * 无法禁用 AKS 托管的 Azure AD 集成
-* 不支持将 AKS 托管 Azure AD 集成群集改为旧 AAD
+* 不支持将 AKS 托管的 Azure AD 集成式群集更改为旧版 AAD
 * AKS 托管的 Azure AD 集成不支持未启用 Kubernetes RBAC 的群集
 * 不支持更改与 AKS 托管的 Azure AD 集成关联的 Azure AD 租户
 
@@ -36,7 +36,7 @@ AKS 托管的 Azure AD 集成设计用来简化 Azure AD 集成体验，用户�
 * 如果使用的是 [helm](https://github.com/helm/helm)，则最低版本为 helm 3.3。
 
 > [!Important]
-> 你必须使用最低版本为 1.18.1 的 Kubectl，或者使用 kubelogin。 如果未使用正确的版本，你会遇到身份验证问题。
+> 你必须使用最低版本为 1.18.1 的 Kubectl，或者使用 kubelogin。 Kubernetes 和 kubectl 的次版本之间的差不应超过 1 个版本。 如果未使用正确的版本，你会遇到身份验证问题。
 
 若要安装 kubectl 和 kubelogin，请使用以下命令：
 
@@ -188,31 +188,31 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 有一些当前无法通过 kubectl 执行的非交互式方案，例如持续集成管道。 你可以使用 [`kubelogin`](https://github.com/Azure/kubelogin) 通过非交互式服务主体登录来访问群集。
 
-## <a name="use-conditional-access-with-azure-ad-and-aks"></a>使用 Azure AD 和 AKS 的条件性访问
+## <a name="use-conditional-access-with-azure-ad-and-aks"></a>通过 Azure AD 和 AKS 使用条件访问
 
-将 Azure AD 与 AKS 群集集成时，还可以使用 [条件性访问][aad-conditional-access] 来控制对群集的访问权限。
+将 Azure AD 与 AKS 群集集成后，还可以使用[条件访问][aad-conditional-access]来控制对群集的访问。
 
 > [!NOTE]
-> Azure AD 条件访问是 Azure AD Premium 功能。
+> Azure AD 条件访问是一项 Azure AD 高级版功能。
 
 若要创建用于 AKS 的示例条件访问策略，请完成以下步骤：
 
-1. 在 Azure 门户顶部，搜索并选择 "Azure Active Directory"。
-1. 在左侧 Azure Active Directory 的菜单中，选择 " *企业应用程序*"。
-1. 在左侧的 "企业应用程序" 菜单中，选择 " *条件访问*"。
-1. 在左侧的条件性访问菜单中，选择 " *策略* "，然后选择 " *新建策略*"。
+1. 从 Azure 门户的顶部，搜索并选择“Azure Active Directory”。
+1. 在左侧的 Azure Active Directory 菜单中，选择“企业应用程序”。
+1. 在左侧的“企业应用程序”菜单中，选择“条件访问”。
+1. 在左侧的“条件访问”菜单中，选择“策略”，然后选择“新建策略”。
     :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="添加条件访问策略":::
-1. 输入策略的名称，例如 *aks*。
-1. 依次选择 " *用户和组*"、" *包括* 选择 *用户和组*"。 选择要应用策略的用户和组。 对于此示例，请选择具有群集的管理访问权限的同一个 Azure AD 组。
+1. 为策略输入一个名称，例如“aks-policy”。
+1. 选择“用户和组”，然后在“包括”下选择“选择用户和组”。 选择要应用策略的用户和组。 对于此示例，请选择对你的群集具有管理访问权限的同一个 Azure AD 组。
     :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="选择要应用条件访问策略的用户或组":::
-1. 依次选择 " *云应用" 或 "操作*"、" *包括* 选择 *应用*"。 搜索 " *Azure Kubernetes 服务* "，并选择 " *AZURE Kubernetes 服务 AAD 服务器*"。
-    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="选择用于应用条件性访问策略的 Azure Kubernetes Service AD 服务器":::
-1. 在“访问控制”  下，选择“授予”  。 选择 " *授予访问权限* " *，然后将 "要求设备标记为符合*"。
-    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="选择此设置以仅允许符合条件的设备的条件访问策略":::
-1. 在 " *启用策略*" 下，依次选择 *"打开" 和 "* *创建*"。
-    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="启用条件性访问策略":::
+1. 选择“云应用或操作”，然后在“包括”下选择“选择应用”。 搜索“Azure Kubernetes 服务”，然后选择“Azure Kubernetes 服务 AAD 服务器”。
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="选择用于应用条件访问策略的 Azure Kubernetes 服务 AD 服务器":::
+1. 在“访问控制”  下，选择“授予”  。 选择“授予访问权限”，然后选择“需要标记为兼容的设备”。
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="选择此设置将仅允许符合条件访问策略的设备":::
+1. 在“启用策略”下，选择“开”，然后选择“创建”  。
+    :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="启用条件访问策略":::
 
-获取用户凭据以访问群集，例如：
+获取用于访问群集的用户凭据，例如：
 
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
@@ -226,43 +226,43 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 kubectl get nodes
 ```
 
-请按照说明进行操作以重新登录。 请注意，会出现一条错误消息，指出已成功登录，但管理员要求设备请求访问 Azure AD 权限才能访问资源。
+再次按照说明进行登录。 请注意，一条错误消息会指明你已成功登录，但若要访问资源，你的管理员要求请求访问的设备受 Azure AD 管理。
 
-在 Azure 门户中，导航到 Azure Active Directory，选择 "*活动*" 下的 "*企业应用程序*"，选择 "*登录*"。请注意顶部有一个 *状态* 为 "*失败*" 的项，以及 "*成功*" 的 *条件性访问*。 选择该条目，然后选择 "*详细信息*" 中的 "*条件访问*"。 请注意，你的条件访问策略已列出。
+在 Azure 门户中，导航到 Azure Active Directory，选择“企业应用程序”，然后在“活动”下选择“登录”。请注意，顶部有一个条目，其中的“状态”为“失败”，“条件访问”为“成功”。    选择该条目，然后在“详细信息”中选择“条件访问”。  请注意，你的条件访问策略已列出。
 
-:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="由于条件访问策略，登录条目失败":::
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="由于条件访问策略而失败的登录条目":::
 
-## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>使用 Azure AD 和 AKS 配置实时群集访问
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>使用 Azure AD 和 AKS 配置即时群集访问
 
-群集访问控制的另一个选项是将 Privileged Identity Management (PIM) 用于实时请求。
+用于群集访问控制的另一个选项是对即时请求使用 Privileged Identity Management (PIM)。
 
 >[!NOTE]
-> PIM 是需要高级 P2 SKU 的 Azure AD Premium 功能。 有关 Azure AD Sku 的详细信息，请参阅 [定价指南][aad-pricing]。
+> PIM 是一个需要 Premium P2 SKU 的 Azure AD Premium 功能。 有关 Azure AD SKU 的详细信息，请参阅[定价指南][aad-pricing]。
 
-若要使用 AKS 托管 Azure AD 集成将实时访问请求与 AKS 群集集成，请完成以下步骤：
+若要使用 AKS 托管的 Azure AD 集成将即时访问请求与 AKS 群集集成，请完成以下步骤：
 
-1. 在 Azure 门户顶部，搜索并选择 "Azure Active Directory"。
-1. 记下租户 ID （ `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="在 web 浏览器中称为的其他说明），将显示 Azure Active Directory 的 Azure 门户屏幕，其中突出显示了租户的 ID。":::
-1. 在左侧 Azure Active Directory 的菜单中，在 " *管理* " 下选择 " *组* "，然后选择 " *新建组*"。
-    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="显示 &quot;新建组&quot; 选项突出显示的 &quot;Azure 门户 Active Directory 组&quot; 屏幕。":::
-1. 请确保已选中 "组类型 *"，并* 输入组名称，如 " *myJITGroup*"。 在 " *Azure AD 角色可以分配给此组 (预览")* 中，选择 *"是"*。 最后，选择“创建”。
-    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="显示 Azure 门户的新组创建屏幕。":::
-1. 你将返回到 " *组* " 页。 选择新创建的组，并记下对象 ID，将这些说明的其余部分称为 `<object-id>` 。
-    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="显示刚刚创建的组的 Azure 门户屏幕，突出显示对象 Id":::
-1. 使用 `<tenant-id>` 前面的和值，通过 AKS 管理的 Azure AD 集成部署 AKS 群集 `<object-id>` ：
+1. 从 Azure 门户的顶部，搜索并选择“Azure Active Directory”。
+1. 记下租户 ID（在本文余下的说明中称为 `<tenant-id>`）:::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="在 Web 浏览器中显示 Azure Active Directory 的 Azure 门户屏幕，其中突出显示了租户的 ID。":::
+1. 在左侧的 Azure Active Directory 菜单中的“管理”下，依次选择“组”、“新建组”。  
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="显示 Azure 门户中的 Active Directory“组”屏幕，其中突出显示了“新建组”选项。":::
+1. 确保已选择“安全性”组类型，输入组的名称，例如 *myJITGroup*。 在“可将 Azure AD 角色分配到此组(预览版)”下，选择“是”。  最后，选择“创建”。
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="显示 Azure 门户中创建新组的屏幕。":::
+1. 你将返回到“组”页。 选择新建的组，并记下“对象 ID”（在本文余下的说明中称为 `<object-id>`）。
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="显示 Azure 门户中刚刚创建的组的屏幕，其中突出显示了“对象 ID”":::
+1. 使用前面记下的 `<tenant-id>` 和 `<object-id>` 值通过 AKS 托管的 Azure AD 集成部署 AKS 群集：
     ```azurecli-interactive
     az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
     ```
-1. 返回 Azure 门户，在左侧 *活动* 的菜单中，选择 " *特权访问 (预览")* 并选择 " *启用特权访问*"。
-    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户的特权访问 (预览 &quot;) 页面，突出显示&quot; 启用特权访问 &quot;":::
-1. 选择 " *添加分配* " 开始授予访问权限。
-    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用后 Azure 门户的特权访问 (预览) 屏幕。&quot;添加分配&quot; 选项已突出显示。":::
-1. 选择 *成员* 的角色，并选择要向其授予群集访问权限的用户和组。 组管理员可随时修改这些分配。准备好继续时，选择 " *下一步*"。
-    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="将显示 Azure 门户的 &quot;添加分配成员身份&quot; 屏幕，并选择要添加为成员的示例用户。选项 &quot;下一步&quot; 已突出显示。":::
-1. 选择 *活动* 的分配类型、所需的持续时间，并提供理由。 准备好继续时，选择 " *分配*"。 有关分配类型的详细信息，请参阅 [Privileged Identity Management 中的为特权访问组 (预览) 分配资格][aad-assignments]。
-    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="将显示 Azure 门户的 &quot;添加分配&quot; 设置屏幕。选择了 &quot;活动&quot; 分配类型，并提供了一个示例理由。&quot;Assign&quot; 选项已突出显示。":::
+1. 返回 Azure 门户，在左侧的“活动”菜单中，依次选择“特权访问(预览版)”、“启用特权访问”。  
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户中的“特权访问(预览版)”页，其中突出显示了“启用特权访问”":::
+1. 选择“添加分配”开始授予访问权限。
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用特权访问后 Azure 门户中的“特权访问(预览版)”屏幕。其中突出显示了“添加分配”选项。":::
+1. 选择成员的角色，然后选择要向其授予群集访问权限的用户和组。 组管理员随时可以修改这些分配。准备好继续操作时，选择“下一步”。
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="显示 Azure 门户中的“添加分配”>“成员身份”屏幕，并选择了一个要添加为成员的示例用户。突出显示了“下一步”选项。":::
+1. 选择“活动”分配类型和所需的持续时间，并提供理由。 准备好继续操作时，选择“分配”。 有关分配类型的详细信息，请参阅[在 Privileged Identity Management 中为特权访问组分配资格（预览版）][aad-assignments]。
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="显示 Azure 门户中的“添加分配”>“设置”屏幕。已选择“活动”分配类型，并给出了示例理由。突出显示了“分配”选项。":::
 
-完成分配后，请通过访问群集来验证实时访问是否正常工作。 例如：
+完成分配后，通过访问群集来验证是否可以正常进行即时访问。 例如：
 
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
@@ -276,7 +276,7 @@ kubectl get nodes
 kubectl get nodes
 ```
 
-请注意身份验证要求，然后按照步骤进行身份验证。 如果成功，应会看到类似于下面的输出：
+请注意身份验证要求，并按照步骤完成身份验证。 如果成功，应会看到类似于下面的输出：
 
 ```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
@@ -294,15 +294,15 @@ aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
 ```
 
-请确保安全组的管理员为你的帐户提供了一个 *活动* 分配。
+请确保安全组的管理员为你的帐户提供了“活动”分配。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [适用于 Kubernetes 授权的 AZURE RBAC 集成][azure-rbac-integration]
+* 了解[用于 Kubernetes 授权的 Azure RBAC 集成][azure-rbac-integration]
 * 了解 [Azure AD 与 Kubernetes RBAC 的集成][azure-ad-rbac]。
 * 使用 [kubelogin](https://github.com/Azure/kubelogin) 来访问 kubectl 中未提供的 Azure 身份验证功能。
 * 详细了解 [AKS 和 Kubernetes 标识概念][aks-concepts-identity]。
-* 使用 [Azure 资源管理器 (ARM) 模板 ][aks-arm-template] 来创建启用 AKS Azure AD 管理的群集。
+* 使用 [Azure 资源管理器 (ARM) 模板][aks-arm-template]创建已启用 AKS 托管 Azure AD 的群集。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

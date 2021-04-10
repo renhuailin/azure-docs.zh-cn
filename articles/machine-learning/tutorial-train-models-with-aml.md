@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 3191987ea2d110487321beb0b11428f446f2b7a6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503872"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588658"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 
@@ -91,6 +91,9 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ws = Workspace.from_config()
 print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
+
+>[!NOTE]
+> 首次运行以下代码时，系统可能会要求你向工作区进行身份验证。 按照屏幕上的说明进行操作。
 
 ### <a name="create-an-experiment"></a>创建试验
 

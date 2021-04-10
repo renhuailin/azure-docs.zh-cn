@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 3766f29f26a6b2ffeb385cffc971b1ac7a1556cb
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182570"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634696"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
@@ -475,7 +475,7 @@ Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动�
 6 月的更新包括以下内容：
 
 - [安全分数 API（预览）](#secure-score-api-preview)
-- [ (Azure、其他云和本地)  (预览版的 SQL 计算机的高级数据安全) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview)
+- [SQL 计算机（Azure、其他云和本地）的高级数据安全（预览）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview)
 - [将 Log Analytics 代理部署到 Azure Arc 计算机的两条新建议（预览）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [大规模创建连续导出和工作流自动化配置的新策略](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
 - [使用 NSG 保护非面向 Internet 的虚拟机的新建议](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
@@ -493,7 +493,7 @@ Azure 存储的威胁防护可检测 Azure 存储帐户上的潜在有害活动�
 
 
 
-### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview"></a> (Azure、其他云和本地)  (预览版的 SQL 计算机的高级数据安全) 
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-premises-preview"></a>SQL 计算机（Azure、其他云和本地）的高级数据安全（预览）
 
 Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure 中、其他云环境，甚至本地计算机上的 SQL Server。 这会扩展 Azure 原生 SQL Server 的保护，以完全支持混合环境。
 
@@ -759,7 +759,7 @@ Azure 安全中心免费层中针对标识和访问的安全建议现已正式�
 
 详细了解[标识和访问建议](recommendations-reference.md#recs-identityandaccess)。
 
-详细了解[监视标识和访问](security-center-identity-access.md)。
+详细了解[管理订阅上的多重身份验证 (MFA) 实施](security-center-identity-access.md)。
 
 
 
@@ -869,7 +869,7 @@ Azure 安全中心的安全功能分数增强版现提供预览版。 在此版�
 ## <a name="november-2019"></a>2019 年 11 月
 
 11 月的更新包括：
- - [北美区域中的 Azure Key Vault 威胁防护 (预览) ](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [针对北美区域 Azure Key Vault 的威胁防护（预览版）](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
  - [针对 Azure 存储的威胁防护包括恶意软件信誉屏蔽](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
  - [使用逻辑应用实现工作流自动化（预览版）](#workflow-automation-with-logic-apps-preview)
  - [批量资源快速修复功能已推出正式版](#quick-fix-for-bulk-resources-generally-available)
@@ -950,7 +950,7 @@ Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有�
 
 ### <a name="virtual-machine-vulnerability-assessment-preview"></a>虚拟机漏洞评估（预览版）
 
-安装在虚拟机中的应用程序可能经常出现漏洞，导致虚拟机遭到入侵。 我们将宣布安全中心标准层包含虚拟机的内置漏洞评估，无额外费用。 由 Qualys 提供支持的漏洞评估公共预览版可让你持续扫描虚拟机上安装的所有应用程序以找出有漏洞的应用程序，并在安全中心门户体验中显示扫描结果。 安全中心负责处理所有部署操作，不需要用户额外付出精力。 接下来，我们计划提供漏洞评估选项来支持客户实现其独特的业务需求。
+安装在虚拟机中的应用程序可能经常出现漏洞，导致虚拟机遭到入侵。 我们宣布，安全中心标准层包含针对虚拟机的内置漏洞评估，且不收取额外的费用。 由 Qualys 提供支持的漏洞评估公共预览版可让你持续扫描虚拟机上安装的所有应用程序以找出有漏洞的应用程序，并在安全中心门户体验中显示扫描结果。 安全中心负责处理所有部署操作，不需要用户额外付出精力。 接下来，我们计划提供漏洞评估选项来支持客户实现其独特的业务需求。
 
 [详细了解针对 Azure 虚拟机的漏洞评估](deploy-vulnerability-assessment-vm.md)。
 

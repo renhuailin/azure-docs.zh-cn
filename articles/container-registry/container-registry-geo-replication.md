@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: MT
+ms.openlocfilehash: 4e82be0e81e5e8c0182e061a0fba0f880bd45cc6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632384"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -22,6 +22,7 @@ ms.locfileid: "97705160"
 * 通过近网络注册表访问提高区域部署的性能和可靠性
 * 通过从容器主机所在区域或邻近区域的本地复制注册表中拉取映像层来降低数据传输成本
 * 跨多个区域对注册表进行单一管理
+* 发生区域性中断时的注册表复原能力
 
 > [!NOTE]
 > 如果需要在多个 Azure 容器注册表中维护容器映像的副本，则 Azure 容器注册表还支持[映像导入](container-registry-import-images.md)。 例如，在 DevOps 工作流中，可以将映像从开发注册表导入到生产注册表中，不需要使用 Docker 命令。
@@ -59,8 +60,9 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 * 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
 * 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制独一无二的层，从而减少跨区域的数据传输。 
 * 配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
+* 提供高度可用的注册表，该注册表可在发生区域性中断时复原。
 
-Azure 容器注册表还支持 [可用性区域](zone-redundancy.md) ，以便在 azure 区域中创建具有弹性和高可用性的 azure 容器注册表。 在某个区域内冗余的可用性区域和跨多个区域的异地复制的组合，增强了注册表的可靠性和性能。
+Azure 容器注册表还支持[可用性区域](zone-redundancy.md)，以便在 Azure 区域中创建可复原和高度可用的 Azure 容器注册表。 某个区域内用于冗余的可用性区域和跨多个区域的异地复制合并在一起，可增强注册表的可靠性和性能。
 
 ## <a name="configure-geo-replication"></a>配置异地复制
 
@@ -134,7 +136,7 @@ az acr replication delete --name eastus --registry myregistry
 
 若要对针对异地复制注册表的操作进行故障排除，可能需要暂时禁止流量管理器路由到一个或多个副本。 从 Azure CLI 版本 2.8 开始，你可以在创建或更新复制区域时配置 `--region-endpoint-enabled` 选项（预览）。 将副本的 `--region-endpoint-enabled` 选项设置为 `false` 时，流量管理器不再将 docker 推送或拉取请求路由到该区域。 默认情况下，允许路由到所有副本，并且无论启用还是禁用路由，都将在所有副本间实现数据同步。
 
-若要禁止路由到现有副本，请先运行 [az acr replication list][az-acr-replication-list] 以列出注册表中的副本。 然后，运行 [az acr replication update][az-acr-replication-update] 并为特定副本设置 `--region-endpoint-enabled false`。 例如，若要在 *myregistry* 中配置 *westus* 复制的设置：
+若要禁止路由到现有副本，请先运行 [az acr replication list][az-acr-replication-list] 以列出注册表中的副本。 然后，运行 [az acr replication update][az-acr-replication-update] 并为特定副本设置 `--region-endpoint-enabled false`。 例如，若要在 myregistry 中配置 westus 副本的设置，请执行以下操作  ：
 
 ```azurecli
 # Show names of existing replications

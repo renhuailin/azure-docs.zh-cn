@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 24baa0dc7444f632040ddaf9fcc2266f9e4ccae5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: e64253aa79cfaeb2655bb091d038dc7c98b198bd
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036134"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419399"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "102036134"
 
 ## <a name="build-2020"></a>Build 2020
 
-* **我错过了 Microsoft Build 2020 的演示文稿。演示文稿是否可供查看？**
+* **我错过了你在 Microsoft Build 2020 上的演讲，可以观看演讲的录制视频吗？**
 
   是的，请[随时观看](https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "102036134"
 
 * **是否可以在 ARM 模板中创建订阅？**
 
-  是的，有关详细信息，请参阅 [以编程方式创建具有最新 api 的 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)。
+  可以，有关详细信息，请参阅[使用最新的 API 以编程方式创建 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)。
 
 * **如何在部署模板之前对其进行测试？**
 
@@ -88,7 +88,7 @@ ms.locfileid: "102036134"
 
 * **我听说你正在研究一种新的模板语言。在哪里可以找到有关它的详细信息？**
 
-  若要了解有关新语言的信息，请参阅 [什么是 Bicep (Preview) ？](bicep-overview.md)。
+  要了解有关新语言的信息，请参阅[什么是 Bicep（预览版）？](bicep-overview.md)。
 
 * **是否有支持在 YAML 中创建模板的计划？**
 
@@ -100,7 +100,7 @@ ms.locfileid: "102036134"
 
 * **是否会提供将我的 JSON 模板转换为新模板语言的工具？**
 
-  是的。 请参阅 [将 JSON 反编译为 Bicep](compare-template-syntax.md#decompile-json-to-bicep)。
+  是的。 请参阅[在 JSON 和 Bicep 之间转换 ARM 模板](bicep-decompile.md)。
 
 ## <a name="template-specs"></a>模板规格
 
@@ -128,9 +128,9 @@ ms.locfileid: "102036134"
 
 * **是否仍可使用自定义脚本扩展和 Desired State Configuration (DSC)？**
 
-  这些选项仍可用且未发生更改。 部署脚本旨在执行与 VM 来宾无关的操作。 如果需要在 VM 中的主机操作系统上运行脚本，则自定义脚本扩展和/或 DSC 将是更好的选择。 但部署脚本具有一些优势，例如可设置超时持续时间。
+  这些选项仍可用且未发生更改。 部署脚本旨在执行与 VM 来宾无关的操作。 如果需要在 VM 中的主机操作系统上运行脚本，客户脚本扩展和/或 DSC 将是更好的选择。 但部署脚本具有一些优势，例如可设置超时持续时间。
 
-* **Azure 政府版是否支持部署脚本？**
+* **Azure 政府中是否支持部署脚本？**
 
   支持，你可以使用 US Gov 亚利桑那州和 US Gov 弗吉尼亚州中的部署脚本。
 

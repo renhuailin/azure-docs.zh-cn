@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 554730919d4226c07e099d5e457cd0fd20dbad30
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510806"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103464950"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -1140,174 +1140,168 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-我收到错误 `400 Bad Request, Required metadata header not specified`。这是什么意思呢？
+- 我收到错误 `400 Bad Request, Required metadata header not specified`。 这是什么意思呢？
+  - IMDS 需要在请求中传递标头 `Metadata: true`。 将该标头传入 REST 调用将允许访问 IMDS。
 
-IMDS 需要在请求中传递标头 `Metadata: true`。 将该标头传入 REST 调用将允许访问 IMDS。
+- 为什么我无法获取我的 VM 的计算信息？
+  - 当前 IMDS 仅支持 Azure 资源管理器创建的实例。
 
-**为什么我无法获取我的 VM 的计算信息？**
+- 我一段时间以前通过 Azure 资源管理器创建了 VM。 为什么我无法看到计算元数据信息？
+  - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
 
-当前 IMDS 仅支持 Azure 资源管理器创建的实例。
+- 为什么我看不到为新版本填充的任何数据？
+  - 如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
 
-前段时间，我通过 Azure 资源管理器创建了 VM。为什么我看不到计算元数据信息？
+- 我为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone`？
+  - 请重试请求。 有关详细信息，请参阅[临时故障处理](/azure/architecture/best-practices/transient-faults)。 如果问题持续存在，请在 Azure 门户中为 VM 创建支持问题。
 
-如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+- 这是否适用于虚拟机规模集实例？
+  - 是的，IMDS 适用于虚拟机规模集实例。
 
-为什么我看不到为新版本填充的任何数据？
+- 我在虚拟机规模集中更新了我的标记，但与单实例 VM 不同，这些标记未出现在实例中。 我哪里出错了吗？
+  - 目前，虚拟机规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
 
-如果在 2016 年 9 月之后创建了 VM，请添加[标记](../articles/azure-resource-manager/management/tag-resources.md)以开始查看计算元数据。 如果在 2016 年 9 月之前创建了 VM，请在 VM 实例中添加或删除扩展或数据磁盘以刷新元数据。
+- 为什么在 `instance/compute` 详细信息中看不到 VM 的 SKU 信息？
+  - 对于通过 Azure 市场创建的自定义映像，Azure 平台不会保留自定义映像的 SKU 信息以及从自定义映像创建的任何 VM 的详细信息。 这是由设计决定的，因此所述信息不会出现在 VM 的 `instance/compute` 详细信息中。
 
-我为什么会收到错误 `500 Internal Server Error` 或 `410 Resource Gone`？
+- 为什么调用服务时请求超时？
+  - 必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
 
-请重试请求。 有关详细信息，请参阅[临时故障处理](/azure/architecture/best-practices/transient-faults)。 如果问题持续存在，请在 Azure 门户中为 VM 创建支持问题。
+    ### <a name="windows"></a>[Windows](#tab/windows/)
 
-这是否适用于虚拟机规模集实例？
+    1. 转储本地路由表并查找 IMDS 条目。 例如：
+        ```console
+        > route print
+        IPv4 Route Table
+        ===========================================================================
+        Active Routes:
+        Network Destination        Netmask          Gateway       Interface  Metric
+                0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+        127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+            168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+        169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+        ... (continues) ...
+        ```
+    1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `172.16.69.7`）。
+    1. 转储接口配置并查找与路由表中引用的接口相对应的接口，注明 MAC（物理）地址。
+        ```console
+        > ipconfig /all
+        ... (continues) ...
+        Ethernet adapter Ethernet:
 
-是的，IMDS 适用于虚拟机规模集实例。
+        Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+        Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+        Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+        DHCP Enabled. . . . . . . . . . . : Yes
+        Autoconfiguration Enabled . . . . : Yes
+        Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+        IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        ... (continues) ...
+        ```
+    1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: wintest767 True 00-0D-3A-E5-1C-C0
+        ```
+    1. 如果它们不匹配，请更新路由表，以使主 NIC 和 IP 成为目标。
 
-我在虚拟机规模集中更新了我的标记（与单实例 VM 不同），这些标记未出现在实例中。这是怎么回事？
+    ### <a name="linux"></a>[Linux](#tab/linux/)
 
-目前，虚拟机规模集的标记仅在重启、重置映像或更改实例的磁盘时向 VM 显示。
+    1. 使用诸如 `netstat -r` 等命令转储本地路由表，并查找 IMDS 条目（例如）：
+        ```console
+        ~$ netstat -r
+        Kernel IP routing table
+        Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+        default         _gateway        0.0.0.0         UG        0 0          0 eth0
+        168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
+        169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
+        172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
+        ```
+    1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
+    1. 转储路由表中相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
+        ```console
+        ~$ cat /etc/netplan/50-cloud-init.yaml
+        network:
+        ethernets:
+            eth0:
+                dhcp4: true
+                dhcp4-overrides:
+                    route-metric: 100
+                dhcp6: false
+                match:
+                    macaddress: 00:0d:3a:e4:c7:2e
+                set-name: eth0
+        version: 2
+        ```
+    1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
+    1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
+        ```powershell
+        $ResourceGroup = '<Resource_Group>'
+        $VmName = '<VM_Name>'
+        $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+        foreach($NicName in $NicNames)
+        {
+            $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+            Write-Host $NicName, $Nic.primary, $Nic.macAddress
+        }
+        # Output: ipexample606 True 00-0D-3A-E4-C7-2E
+        ```
+    1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
 
-为什么调用服务时请求超时？
+    ---
 
-必须从分配给 VM 的主要网卡的主 IP 地址进行元数据调用。 此外，如果你更改了路由，则 VM 的本地路由表中必须存在 169.254.169.254/32 地址的路由。
+- Windows Server 中的故障转移群集
+  - 使用故障转移群集查询 IMDS 时，有时需要向路由表添加路由。 下面介绍如何操作：
 
-#### <a name="windows"></a>[Windows](#tab/windows/)
+    1. 使用管理员特权打开命令提示符。
 
-1. 转储本地路由表并查找 IMDS 条目。 例如：
-    ```console
-    > route print
+    1. 运行以下命令，并记下 IPv4 路由表中网络目标 (`0.0.0.0`) 接口的地址。
+
+    ```bat
+    route print
+    ```
+
+    > [!NOTE]
+    > 以下示例输出来自启用了故障转移群集的 Windows Server VM。 为简单起见，输出仅包含 IPv4 路由表。
+
+    ```
     IPv4 Route Table
     ===========================================================================
     Active Routes:
     Network Destination        Netmask          Gateway       Interface  Metric
-              0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+            0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
+            10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
+            10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
+            10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
             127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
             127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-      127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-        168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
-      169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
-    ... (continues) ...
+    127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+        169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
+        169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
+    169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
+            224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+            224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+    255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
+    255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
     ```
-1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `172.16.69.7`）。
-1. 转储接口配置并查找与路由表中引用的接口相对应的接口，注明 MAC（物理）地址。
-    ```console
-    > ipconfig /all
-    ... (continues) ...
-    Ethernet adapter Ethernet:
 
-       Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
-       Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
-       Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
-       DHCP Enabled. . . . . . . . . . . : Yes
-       Autoconfiguration Enabled . . . . : Yes
-       Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
-       IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
-       Subnet Mask . . . . . . . . . . . : 255.255.255.0
-    ... (continues) ...
+    运行以下命令并使用网络目标 (`0.0.0.0`) 接口的地址，在此示例中为 `10.0.1.10`。
+
+    ```bat
+    route add 169.254.169.254/32 10.0.1.10 metric 1 -p
     ```
-1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: wintest767 True 00-0D-3A-E5-1C-C0
-    ```
-1. 如果它们不匹配，请更新路由表，以使主 NIC 和 IP 成为目标。
-
-#### <a name="linux"></a>[Linux](#tab/linux/)
-
- 1. 使用诸如 `netstat -r` 等命令转储本地路由表，并查找 IMDS 条目（例如）：
-    ```console
-    ~$ netstat -r
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
-    default         _gateway        0.0.0.0         UG        0 0          0 eth0
-    168.63.129.16   _gateway        255.255.255.255 UGH       0 0          0 eth0
-    169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
-    172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
-    ```
-1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
-1. 转储路由表中相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
-    ```console
-    ~$ cat /etc/netplan/50-cloud-init.yaml
-    network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            dhcp4-overrides:
-                route-metric: 100
-            dhcp6: false
-            match:
-                macaddress: 00:0d:3a:e4:c7:2e
-            set-name: eth0
-    version: 2
-    ```
-1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
-1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或通过 Azure CLI 查找它来找到主 NIC 和 IP。 请记下专用 IP（如果使用 CLI，还要记下 MAC 地址）。 下面是一个 PowerShell CLI 示例：
-    ```powershell
-    $ResourceGroup = '<Resource_Group>'
-    $VmName = '<VM_Name>'
-    $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
-    foreach($NicName in $NicNames)
-    {
-        $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
-        Write-Host $NicName, $Nic.primary, $Nic.macAddress
-    }
-    # Output: ipexample606 True 00-0D-3A-E4-C7-2E
-    ```
-1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
-
----
-
-**Windows Server 中的故障转移群集**
-
-使用故障转移群集查询 IMDS 时，有时需要向路由表添加路由。 下面介绍如何操作：
-
-1. 使用管理员特权打开命令提示符。
-
-1. 运行以下命令，并记下 IPv4 路由表中网络目标 (`0.0.0.0`) 接口的地址。
-
-```bat
-route print
-```
-
-> [!NOTE]
-> 以下示例输出来自启用了故障转移群集的 Windows Server VM。 为简单起见，输出仅包含 IPv4 路由表。
-
-```
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-运行以下命令并使用网络目标 (`0.0.0.0`) 接口的地址，在此示例中为 `10.0.1.10`。
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
 
 ## <a name="support"></a>支持
 
@@ -1315,12 +1309,12 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 ## <a name="product-feedback"></a>产品反馈
 
-你可以访问以下网址，在“虚拟机”>“实例元数据服务”下向我们的用户反馈渠道提供产品反馈和想法： https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627
+你可以访问[此处](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627)，在“虚拟机”>“实例元数据服务”下向我们的用户反馈渠道提供产品反馈和想法
 
 ## <a name="next-steps"></a>后续步骤
 
-[获取 VM 的访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
+- [获取 VM 的访问令牌](../articles/active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
 
-[Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)
+- [Linux 计划事件](../articles/virtual-machines/linux/scheduled-events.md)
 
-[Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)
+- [Windows 计划事件](../articles/virtual-machines/windows/scheduled-events.md)

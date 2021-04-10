@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 660fbf7cc4dd28c800d8f49fd5d990c99f97c4c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1276a242efb1917a0c4a24aa73c3e0d11f81e158
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442989"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559156"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上运行 Azure Stack Edge Pro FPGA 设备中的现有 IoT Edge 模块
 
@@ -248,4 +248,4 @@ Azure Stack Edge Pro FPGA 设备上的 IoT Edge 实现与 Azure Stack Edge Pro G
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[配置 GPU 以使用模块](azure-stack-edge-j-series-configure-gpu-modules.md)。
+- 详细了解如何[配置 GPU 以使用模块](./azure-stack-edge-gpu-configure-gpu-modules.md)。

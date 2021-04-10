@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4747c958b5e592458c14bbf4244953564c252678
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e6ed6bc8ba426a981b7a2390e7d00d9c3b1e785
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790117"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643449"
 ---
 # <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 
@@ -71,8 +71,8 @@ Azure Key Vault 可能受软件保护，或在 Azure Key Vault 高级层中由�
 
 作为 Azure 中的安全存储，Key Vault 已用于简化如下方案：
 -  [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)
--  SQL 服务器和 Azure SQL 数据库中的[始终加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)和[透明数据加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)功能
-- [Azure 应用服务]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate)。 
+-  SQL 服务器和 Azure SQL 数据库中的[始终加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine)和[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption)功能
+- [Azure 应用服务](/azure/app-service/configure-ssl-certificate)。
 
 Key Vault 本身可以与存储帐户、事件中心和 Log Analytics 集成。
 

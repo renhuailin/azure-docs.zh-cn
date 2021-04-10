@@ -1,9 +1,9 @@
 ---
 title: 媒体服务操作 REST API 概述 | Microsoft 文档
-description: 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、直播频道和其他资源。 本文提供了 Azure 媒体服务 v2 REST API 概述。
+description: 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源。 本文概述了 Azure 媒体服务 v2 REST API。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696221"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010042"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "98696221"
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源  。 有关详细信息，请参阅 [Media Services Operations REST API reference](/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
+媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源。 有关详细信息，请参阅 [Media Services Operations REST API reference](/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 
 媒体服务提供了接受 JSON 或 atom+pub XML 格式的 REST API。 媒体服务 REST API 需要每个客户端连接到媒体服务时必须发送的特定 HTTP 标头，以及一组可选标头。 以下部分介绍你在创建请求和接收来自媒体服务的响应时可以使用的标头和 HTTP 谓词。
 
@@ -65,9 +65,9 @@ ms.locfileid: "98696221"
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
-| x-ms-version |Decimal |2.17（或最新版本）|
-| DataServiceVersion |Decimal |3.0 |
-| MaxDataServiceVersion |Decimal |3.0 |
+| x-ms-version |小数 |2.17（或最新版本）|
+| DataServiceVersion |小数 |3.0 |
+| MaxDataServiceVersion |小数 |3.0 |
 
 > [!NOTE]
 > 由于媒体服务使用 OData 公开其 REST API，因此所有请求中均应包括 DataServiceVersion 和 MaxDataServiceVersion 标头，但如果未包括这些标头，则当前媒体服务会假定使用的 DataServiceVersion 值为 3.0。
@@ -78,8 +78,8 @@ ms.locfileid: "98696221"
 
 | 标头 | 类型 | 值 |
 | --- | --- | --- |
-| Date |RFC 1123 日期 |请求的时间戳 |
-| Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
+| 日期 |RFC 1123 日期 |请求的时间戳 |
+| 接受 |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
 | Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 编码（如果适用）。 注意：对于大型资源，媒体服务可能会忽略此标头并返回未经压缩的数据。 |
 | Accept-Language |“en”、“es”等。 |指定响应的首选语言。 |
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
@@ -95,8 +95,8 @@ ms.locfileid: "98696221"
 | request-id |String |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
 | Date |RFC 1123 日期 |处理请求的日期/时间。 |
-| Content-Type |不定 |响应正文的内容类型。 |
-| Content-Encoding |不定 |Gzip 或 deflate（视情况而定）。 |
+| Content-Type |多种多样 |响应正文的内容类型。 |
+| Content-Encoding |多种多样 |Gzip 或 deflate（视情况而定）。 |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>媒体服务支持的标准 HTTP 谓词
 下面是在提出 HTTP 请求时可以使用的 HTTP 谓词的完整列表：

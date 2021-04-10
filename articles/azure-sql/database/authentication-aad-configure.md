@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643418"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -115,7 +115,7 @@ SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组�
 
     更改管理员的过程可能需要几分钟时间。 然后，新管理员将出现在“Active Directory 管理员”框中。
 
-在为 SQL 托管实例预配 Azure AD 管理员之后，即可开始使用 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 语法创建 Azure AD 服务器主体（登录名）。 有关详细信息，请参阅 [SQL 托管实例概述](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)。
+在为 SQL 托管实例预配 Azure AD 管理员之后，即可开始使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语法创建 Azure AD 服务器主体（登录名）。 有关详细信息，请参阅 [SQL 托管实例概述](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)。
 
 > [!TIP]
 > 之后如需删除管理员，请在“Active Directory 管理员”页顶部，选择“删除管理员”，然后选择“保存”。
@@ -345,8 +345,8 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 - .NET Framework 4.6 或更高版本（在 [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) 上提供）。
 - 适用于 SQL Server 的 Azure Active Directory 身份验证库 (*ADAL.DLL*)。 下面是下载链接，用于安装包含 *ADAL.DLL* 库的最新 SSMS、ODBC 和 OLE DB 驱动程序。
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 可以通过以下操作来满足这些要求：
 
@@ -357,7 +357,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>创建映射到 Azure AD 标识的包含的用户
 
-由于 SQL 托管实例支持 Azure AD 服务器主体（登录名），因此不需要使用包含的数据库用户。 通过 Azure AD 服务器主体（登录名）可以从 Azure AD 用户、组或应用程序创建登录名。 这意味着可以通过使用 Azure AD 服务器登录名（而不是包含的数据库用户）对 SQL 托管实例进行身份验证。 有关详细信息，请参阅 [SQL 托管实例概述](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)。 有关创建 Azure AD 服务器主体（登录名）的语法，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>。
+由于 SQL 托管实例支持 Azure AD 服务器主体（登录名），因此不需要使用包含的数据库用户。 通过 Azure AD 服务器主体（登录名）可以从 Azure AD 用户、组或应用程序创建登录名。 这意味着可以通过使用 Azure AD 服务器登录名（而不是包含的数据库用户）对 SQL 托管实例进行身份验证。 有关详细信息，请参阅 [SQL 托管实例概述](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)。 有关创建 Azure AD 服务器主体（登录名）的语法，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)。
 
 但是，将 Azure Active Directory 身份验证与 SQL 数据库和 Azure Synapse 结合使用时，需要使用基于 Azure AD 标识的包含的数据库用户。 包含的数据库用户在 master 数据库中没有登录名，且映射到与数据库关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。
 

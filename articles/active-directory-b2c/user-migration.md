@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010161"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
@@ -43,14 +43,14 @@ ms.locfileid: "98661147"
 - 密码是以单向加密格式存储的（例如，使用哈希函数）。
 - 旧式标识提供者以你无法访问的方式存储了密码。 例如，标识提供者通过调用 Web 服务来验证凭据。
 
-无缝迁移流仍需要迁移用户帐户，但随后使用 [自定义策略](custom-policy-get-started.md) 来查询 [REST API](custom-policy-rest-api-intro.md) (创建) ，以便在首次登录时设置每个用户的密码。
+无缝迁移流仍需将用户帐户预迁移，但随后需使用[自定义策略](custom-policy-get-started.md)来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
 
 因此，无缝迁移流包括两个阶段：预迁移和设置凭据。 
 
 ### <a name="phase-1-pre-migration"></a>阶段 1：预迁移
 
 1. 迁移应用程序读取旧标识提供者中的用户帐户。
-1. 迁移应用程序在 Azure AD B2C 目录中创建相应的用户帐户，但不设置密码。 
+1. 迁移应用程序在 Azure AD B2C 目录中创建相应的用户帐户，但设置生成的随机密码。
 
 ### <a name="phase-2-set-credentials"></a>阶段 2：设置凭据
 
@@ -90,7 +90,7 @@ ms.locfileid: "98661147"
 
 在启动迁移过程之前，请借机清理目录。
 
-- 确定要存储在 Azure AD B2C 中的用户属性集，仅迁移所需的属性。 如有必要，您可以创建 [自定义属性](user-flow-custom-attributes.md) 以存储有关用户的更多数据。
+- 确定要存储在 Azure AD B2C 中的用户属性集，仅迁移所需的属性。 如有需要，可以创建[自定义属性](user-flow-custom-attributes.md)来存储有关用户的更多数据。
 - 如果从包含多个身份验证源的环境迁移（例如，每个应用程序具有自身的用户目录），请迁移到 Azure AD B2C 中的统一帐户。
 - 如果多个应用程序具有不同的用户名，可以使用标识集合将其全部存储在 Azure AD B2C 用户帐户中。 对于密码，请让用户选择密码，并在目录中设置该密码。 例如，使用无缝迁移时，只应在 Azure AD B2C 帐户中存储所选的密码。
 - 在迁移之前删除未使用的用户帐户，或者不迁移已过时的帐户。

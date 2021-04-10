@@ -2,23 +2,22 @@
 title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: f9d49d7ff8109364c9fc1eee4388b30ccc1a61b6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/17/2021
+ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733648"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584629"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
-在本文中，我们将为你提供规划过程，该过程用于标识并收集在部署过程中使用的数据。 规划部署时，请务必记录收集的信息，方便在部署过程中参考。
+本文提供用于识别和收集要在部署期间使用的信息的规划过程。 规划部署时，请务必记录收集的信息，方便在部署过程中参考。
 
-本快速入门中的过程会生成一个用于创建虚拟机 (VM) 并进行迁移的生产就绪环境。 
+执行本快速入门中所述的步骤可以获得一个用于创建虚拟机 (VM) 和实现迁移的生产就绪式环境。 
 
 >[!IMPORTANT]
 >在创建 Azure VMware 解决方案资源之前，请按照[如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)一文中的说明提交支持票证来分配主机。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的主机。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的主机，你会经历相同的过程。 
-
 
 ## <a name="subscription"></a>订阅
 
@@ -46,39 +45,44 @@ ms.locfileid: "101733648"
 
 确定在部署 Azure VMware 解决方案时要使用的主机大小。  有关完整列表，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#hosts)文档。
 
-## <a name="number-of-hosts"></a>主机数
+## <a name="number-of-clusters-and-hosts"></a>群集和主机的数目
 
-定义要部署到 Azure VMware 解决方案私有云的主机数。  最小主机数为 3 个，每个群集最多为 16 个。  有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
+你执行的第一个 Azure VMware 解决方案部署将包含具有一个群集的私有云。 对于部署，你需要定义要部署到第一个群集的主机数。
 
-如果你的需要超出初始部署数目，以后可以随时扩展群集。
+>[!NOTE]
+>每个群集的最小主机数目为 3 个，最大数目为 16 个。 每个私有云的最大群集数目为 4 个。 
 
-## <a name="ip-address-segment"></a>IP 地址段
+有关详细信息，请参阅 [Azure VMware 解决方案私有云和群集](concepts-private-clouds-clusters.md#clusters)文档。
 
-规划部署的第一步是规划 IP 分段。  Azure VMware 解决方案引入你提供的一个 /22 网络。 然后将其划分为较小的段，并将这些 IP 段用于 vCenter、VMware HCX、NSX-T 和 vMotion。
+>[!TIP]
+>如果你的需要超出初始部署数目，以后可以随时扩展群集和添加其他群集。
 
-Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azure 虚拟网络。 大多数情况下，它通过 ExpressRoute Global Reach 连接到你的数据中心。 
+## <a name="ip-address-segment-for-private-cloud-management"></a>用于私有云管理的 IP 地址段
 
-通常情况下，Azure VMware 解决方案、你现有的 Azure 环境和本地环境都会交换路由。 这种情况下，在此步骤中定义的 /22 CIDR 网络地址块不应与本地或 Azure 中已有的任何地址块重叠。
+规划部署的第一步是规划 IP 分段。 Azure VMware 解决方案需要 /22 CIDR 网络。 此地址空间将分割成多个更小的网段（子网）并用于 Azure VMware 解决方案管理段，包括 vCenter、VMware HCX、NSX-T 和 vMotion 功能。 下面的可视化效果突出显示了此网段的使用位置。
+
+此 /22 CIDR 网络地址块不应与本地或 Azure 中的任何现有网段重叠。
 
 **示例：** 10.0.0.0/22
 
-有关详细信息，请参阅[网络规划清单](tutorial-network-checklist.md#routing-and-subnet-considerations)。
+若要详细了解针对每种私有云的 /22 CIDR 网络的拆分方式，请参阅[网络规划清单](tutorial-network-checklist.md#routing-and-subnet-considerations)。
 
 :::image type="content" source="media/pre-deployment/management-vmotion-vsan-network-ip-diagram.png" alt-text="标识 - IP 地址段" border="false":::  
 
 ## <a name="ip-address-segment-for-virtual-machine-workloads"></a>虚拟机工作负荷的 IP 地址段
 
-标识一个 IP 段，以便在私有云中创建你的第一个网络（NSX 段）。  换句话说，你需要在 Azure VMware 解决方案上创建一个网段，以便可以将 VM 部署到 Azure VMware 解决方案。   
+与任何 VMware 环境一样，虚拟机必须连接到网段。 在 Azure VMware 解决方案中，有两种类型的段，L2 扩展段（稍后介绍）和 NSX-T 网段。 随着 Azure VMware 解决方案的生产部署的扩展，通常会组合使用本地 L2 扩展段和本地 NSX-T 网段。 若要规划初始部署，请在 Azure VMware 解决方案中确定一个网段（IP 网络）。 此网络不得与本地或 Azure 其余部分中的任何网段重叠，并且不得位于前面定义的 /22 网段内。
 
-即使仅计划扩展 L2 网络，也要创建一个可以验证环境的网段。
+此网段主要用于在初始部署期间进行测试。
 
-请记住，创建的所有 IP 段在 Azure 和本地占用空间中必须是独一无二的。  
-
+>[!NOTE]
+>部署期间不需要此（这些）网络。 它们在部署后步骤中创建。
+  
 **示例：** 10.0.4.0/24
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="标识 - 虚拟机工作负荷的 IP 地址段" border="false":::     
 
-## <a name="optional-extend-networks"></a>（可选）扩展网络
+## <a name="optional-extend-your-networks"></a>（可选）扩展网络
 
 你可以将网段从本地扩展到 Azure VMware 解决方案。如果你这样做，请立即标识这些网络。  
 
@@ -87,9 +91,12 @@ Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azu
 - 如果你计划从本地扩展网络，则这些网络必须连接到本地 VMware 环境中的 [vSphere 分布式交换机 (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html)。  
 - 如果你要扩展的网络位于 [vSphere 标准交换机](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)上，则无法对其进行扩展。
 
-## <a name="attach-virtual-network-to-azure-vmware-solution"></a>将虚拟网络附加到 Azure VMware 解决方案
+>[!NOTE]
+>这些网络在配置的最后一个步骤进行扩展，而不是在部署期间。
 
-在此步骤中，你将确定一个用于连接 Azure VMware 解决方案 ExpressRoute 线路的 ExpressRoute 虚拟网络网关和支持性 Azure 虚拟网络。  ExpressRoute 线路有助于连接到 Azure VMware 解决方案私有云，以及从该私有云连接到其他 Azure 服务、Azure 资源和本地环境。
+## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>将 Azure 虚拟网络连接到 Azure VMware 解决方案
+
+为了提供与 Azure VMware 解决方案的连接，需要构建从 Azure VMware 解决方案私有云到 ExpressRoute 虚拟网络网关的 ExpressRoute。
 
 可使用现有的 ExpressRoute 虚拟网络网关，也可新建一个 。
 
@@ -97,17 +104,17 @@ Azure VMware 解决方案通过内部 ExpressRoute 线路连接到 Microsoft Azu
 
 ### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>使用现有的 ExpressRoute 虚拟网络网关
 
-如果使用现有的 ExpressRoute 虚拟网络网关，则会在部署私有云后建立 Azure VMware 解决方案 ExpressRoute 线路。 在这种情况下，请将“虚拟网络”字段留空。  
+如果计划使用现有的 ExpressRoute 虚拟网络网关，则会在部署后步骤中建立 Azure VMware 解决方案 ExpressRoute 线路。 在这种情况下，请将“虚拟网络”字段留空。
 
-记下你将使用的 ExpressRoute 虚拟网络网关，并继续到下一步。
+一般建议使用现有 ExpressRoute 虚拟网络网关。 出于规划目的，请记下你将使用的 ExpressRoute 虚拟网络网关，并继续到下一步。
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>创建新的 ExpressRoute 虚拟网络网关
 
 创建新的 ExpressRoute 虚拟网络网关时，可使用现有的 Azure 虚拟网络，也可创建新网络。  
 
 - 对于现有的 Azure 虚拟网络：
-   1. 验证确保虚拟网络中预先不存在 ExpressRoute 虚拟网络网关。 
-   1. 从“虚拟网络”列表中选择现有的 Azure 虚拟网络。
+   1. 识别预先不存在 ExpressRoute 虚拟网络网关的 Azure 虚拟网络。
+   2. 在部署前，请在 Azure 虚拟网络中创建一个 [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet)。
 
 - 对于新的 Azure 虚拟网络，可提前创建，也可在部署期间创建。 选择“虚拟网络”列表下的“新建”链接 。
 

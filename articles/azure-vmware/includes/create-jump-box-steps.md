@@ -2,13 +2,13 @@
 title: 创建 Azure VMware 解决方案跳转盒
 description: 创建 Azure VMware 解决方案跳转盒的步骤。
 ms.topic: include
-ms.date: 09/28/2020
-ms.openlocfilehash: 5d5a5d82cf6e70e7ad55bcfa10c7f85372131c87
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 03/13/2021
+ms.openlocfilehash: f746e11763e1df1686f3134960dea167bf1c9908
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578405"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462233"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-access-private-cloud.md -->
 
@@ -33,9 +33,8 @@ ms.locfileid: "91578405"
    | **用户名** | 输入用于登录到 VM 的用户名。 |
    | **密码** | 输入用于登录到 VM 的密码。 |
    | **确认密码** | 输入用于登录到 VM 的密码。 |
-   | **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../../security-center/security-center-just-in-time.md#jit-configure)，以便仅在需要访问 VM 时才控制对 VM 的访问。  |
+   | **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../../security-center/security-center-just-in-time.md#jit-configure)，以便仅在需要访问 VM 时才控制对 VM 的访问。 或者，如果你想从 Internet 安全地访问跳转盒服务器而不公开任何网络端口，则可以使用 [Azure Bastion](../../bastion/tutorial-create-host-portal.md)。  |
 
 
 1. 验证通过后，选择“创建”启动虚拟机创建过程。
 
-   :::image type="content" source="../media/tutorial-access-private-cloud/ss11-review-create-wjb01.png" alt-text="为跳转盒添加新的 Windows 10 VM。" border="true":::

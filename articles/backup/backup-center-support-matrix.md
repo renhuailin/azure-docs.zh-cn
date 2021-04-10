@@ -4,10 +4,10 @@ description: 本文汇总了备份中心支持的每种工作负载类型的方�
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102504501"
 ---
 # <a name="support-matrix-for-backup-center"></a>备份中心的支持矩阵

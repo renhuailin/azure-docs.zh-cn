@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions
 ms.openlocfilehash: ef9e3689f5846ddfc66c47a15967a18fc6550d35
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102504246"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
@@ -99,7 +99,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 
 **Azure 网络插件**：使用 Azure 网络插件时，无法从 clusterCIDR 中具有不属于 AKS 群集的 IP 的 VM 访问“externalTrafficPolicy=Local”的内部 LoadBalancer 服务。
 
-**Kubernetes 服务地址范围**：该参数是 Kubernetes 分配给群集中的内部[服务][services]的一组虚拟 IP。 可以使用任何专用地址范围，只要其符合以下要求即可：
+**Kubernetes 服务地址范围**：该参数是 Kubernetes 分配给群集中的内部 [服务][services]的一组虚拟 IP。 可以使用任何专用地址范围，只要其符合以下要求即可：
 
 * 不得在群集的虚拟网络 IP 地址范围内
 * 不得与群集虚拟网络对等互连的任何其他虚拟网络重叠
