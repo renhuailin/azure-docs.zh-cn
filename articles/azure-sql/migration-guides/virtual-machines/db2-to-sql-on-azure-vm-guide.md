@@ -1,6 +1,6 @@
 ---
-title: DB2 到 Azure VM 上的 SQL Server（迁移指南）
-description: 请按照本指南的说明将 DB2 服务器迁移到 Azure VM 上的 SQL Server。
+title: DB2 到 Azure VM 上的 SQL Server：迁移指南
+description: 本指南介绍如何使用适用于 DB2 的 SQL Server 迁移助手将 DB2 数据库迁移到 Azure VM 上的 SQL Server。
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c3f3af6a1c114d6587992f79e95dcc0c1ccb41e6
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
-ms.translationtype: MT
+ms.openlocfilehash: aadfd2d96e2ed610ee1e3eaaec9276212e912b0d
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797470"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562223"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>迁移指南：DB2 到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -144,8 +144,6 @@ ms.locfileid: "98797470"
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
-   > [!NOTE]
-   > 为帮助开发和运行迁移后验证测试，请考虑使用合作伙伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 提供的数据质量解决方案。 
 
 ## <a name="migration-assets"></a>迁移资产 
 
@@ -169,5 +167,4 @@ ms.locfileid: "98797470"
 有关其他迁移指南，请参阅[数据库迁移](https://datamigration.microsoft.com/)。 
 
 有关视频内容，请参阅：
-- [如何使用数据库迁移指南](https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/)
 - [迁移历程概述](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)

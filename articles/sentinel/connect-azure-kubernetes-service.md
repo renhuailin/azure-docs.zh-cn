@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
 ms.openlocfilehash: c3a4593aa92acededf9784974b2a1e2dd3cfb319
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102507171"
 ---
 # <a name="connect-azure-kubernetes-service-diagnostics-logs"></a>连接 Azure Kubernetes 服务诊断日志

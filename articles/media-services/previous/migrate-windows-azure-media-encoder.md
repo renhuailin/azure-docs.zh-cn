@@ -1,9 +1,9 @@
 ---
 title: 从 Windows Azure 媒体编码器迁移到 Media Encoder Standard | Microsoft Docs
-description: 本主题讨论如何从 Windows Azure 媒体编码器迁移到 Media Encoder Standard 媒体处理器。
+description: 本主题介绍如何从 Windows Azure 媒体编码器迁移到 Media Encoder Standard 媒体处理器。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9125639ab5b563a8db7cfa5730bd9673f383071c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 0a80d25145162c81ef999f8af1015cd590d5a090
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529241"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103011113"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>从 Windows Azure 媒体编码器迁移到 Media Encoder Standard
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文介绍了从旧 Windows Azure 媒体编码器 (WAME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+本文讨论了从旧版 Windows Azure 媒体编码器 (WAME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
-使用 WAME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 WAME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
+使用 WAME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 WAME，以及一个等效的 [系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>迁移到 Media Encoder Standard
 

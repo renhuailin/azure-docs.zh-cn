@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566398"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>将工作负荷从 Azure Stack Edge Pro FPGA 迁移到 Azure Stack Edge Pro GPU
 
@@ -173,7 +173,7 @@ Edge 本地共享中的数据保留在设备上。 通过 Azure 门户在源设�
 
 1. [在设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)。
 1. 在目标设备上添加所有本地共享。 请参阅[添加本地共享](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)中的详细步骤。
-1. 在源设备上访问 SMB 共享将使用 IP 地址，而在目标设备上，将使用设备名称。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 SMB 共享](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)。 若要在目标设备上连接到 NFS 共享，需要使用与该设备关联的新 IP 地址。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 NFS 共享](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)。 
+1. 在源设备上访问 SMB 共享将使用 IP 地址，而在目标设备上，将使用设备名称。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 SMB 共享](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-smb-share)。 若要在目标设备上连接到 NFS 共享，需要使用与该设备关联的新 IP 地址。 请参阅[连接到 Azure Stack Edge Pro GPU 上的 NFS 共享](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-nfs-share)。 
 
     如果通过 SMB 或 NFS 将共享数据复制到了某台中间服务器，可将该中间服务器中的数据复制到目标设备上的共享。 如果源设备和目标设备都已联机，则还可以直接从源设备复制数据。
 

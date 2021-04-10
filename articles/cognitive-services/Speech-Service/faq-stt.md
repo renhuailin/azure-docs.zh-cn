@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: 1ebba3231a7b3a86b98bcc14d1257412d1557ff3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: bcb4408df08f3854b067c8b805b78433a3d5075c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738185"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491242"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "101738185"
 
 **问：基线模型和自定义语音转文本模型之间有什么区别？**
 
-**答**：基线模型已使用 Microsoft 拥有的数据定型，并且已部署在云中。 你可以使用自定义模型来调整模型，以便更好地适应具有特定环境噪音或语言的具体环境。 工厂、汽车或嘈杂的街道需要适应的声学模型。 生物学、物理学、放射学、产品名称和自定义首字母缩略词等主题需要适应的语言模型。 如果您训练某个自定义模型，则应首先使用相关文本来改善对特殊术语和短语的识别。
+**答**：基线模型已使用 Microsoft 拥有的数据定型，并且已部署在云中。 你可以使用自定义模型来调整模型，以便更好地适应具有特定环境噪音或语言的具体环境。 工厂、汽车或嘈杂的街道需要适应的声学模型。 生物学、物理学、放射学、产品名称和自定义首字母缩略词等主题需要适应的语言模型。 如果要训练一个自定义模型，应先从相关文本开始，以改进对特殊术语和短语的识别。
 
 **问：如果想要使用基线模型，从何处开始？**
 
@@ -57,7 +57,7 @@ ms.locfileid: "101738185"
 
 **问：** 为什么会有不同的基础模型？
 
-**答**：你可以从语音服务的多个基础模型中进行选择。 每个模型名称都包含添加它的日期。 开始训练自定义模型时，请使用最新模型以获取最佳准确度。 当有新模型可用时，较旧的基础模型在一段时间内仍可供使用。 你可以继续使用所使用的模型，直到它被停用（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。 仍建议切换到最新的基础模型，以提高准确度。
+**答**：你可以从语音服务的多个基础模型中进行选择。 每个模型名称都包含添加它的日期。 开始训练自定义模型时，请使用最新模型以获取最佳准确度。 当有新模型可用时，较旧的基础模型在一段时间内仍可供使用。 可以继续使用所使用的模型，直到它被停用（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。 仍建议切换到最新的基础模型，以提高准确度。
 
 **问：能否更新现有模型（模型堆叠）？**
 
@@ -71,11 +71,11 @@ ms.locfileid: "101738185"
 
 如果你已调整并部署了某个模型，该部署会保持原样。 你可以解除已部署的模型，使用较新版本的基础模型重新调整，并重新部署以提高准确度。
 
-基础模型和自定义模型在一段时间后都会停用（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。
+基础模型和自定义模型在一段时间后都会停用（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。
 
 **问：能否下载模型并在本地运行？**
 
-**答**：你可以在 [Docker 容器](speech-container-howto.md?tabs=cstt)中本地运行自定义模型。
+答：你可以在 [Docker 容器](speech-container-howto.md?tabs=cstt)中本地运行自定义模型。
 
 **问：** 是否可以将数据集、模型和部署复制或移动到另一个区域或订阅？
 
@@ -136,13 +136,13 @@ ms.locfileid: "101738185"
 
 **问：** 使用音频数据训练一个自定义模型需要多长时间？
 
-**答**：使用音频数据训练模型可能是一个漫长的过程。 创建自定义模型可能需要几天时间，具体取决于数据量。 如果它无法在一周内完成，则服务可能会中止训练操作并将该模型报告为失败。
+答：使用音频数据训练模型可能是一个漫长的过程。 创建自定义模型可能需要几天时间，具体取决于数据量。 如果它无法在一周内完成，则服务可能会中止训练操作并将该模型报告为失败。
 
-使用专用硬件可用于培训的 [区域](custom-speech-overview.md#set-up-your-azure-account) 之一。 语音服务将使用最多20小时的音频，在这些区域中进行训练。 在其他区域中，最多只能使用8个小时。
+使用其中有用于训练的专用硬件的[区域](custom-speech-overview.md#set-up-your-azure-account)之一。 在这些地区，语音服务将使用长达 20 小时的音频进行训练。 而在其他区域中，最多只会使用 8 小时的音频。
 
-通常情况下，服务在具有专用硬件的区域中每天处理大约10小时的音频数据。 它在其他区域每天只能处理大约1小时的音频数据。 你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将已完全训练好的模型复制到另一个区域。 仅使用文本进行训练速度要快得多，通常在几分钟内就可完成。
+通常情况下，该服务在具有专用硬件的区域每天处理大约 10 小时的音频数据。 在其他区域，它每天只能处理大约 1 小时的音频数据。 你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将已完全训练好的模型复制到另一个区域。 仅使用文本进行训练速度要快得多，通常在几分钟内就可完成。
 
-某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。
+某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
 ## <a name="accuracy-testing"></a>精确度测试
 
@@ -168,17 +168,17 @@ ms.locfileid: "101738185"
 
 **答**：上传字词列表会将字词添加到词汇中，但不会告知系统这些字词的通常用法。 通过提供完整或部分话语（用户很可能会说事物的句子或短语），语言模型可以学习这些新字词及其用法。 自定义语言模型不仅适用于向系统中添加新字词，还适用于调整应用程序已知字词的概率。 提供完整话语可帮助系统更好地学习。
 
-## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>与 Microsoft 365 数据自定义语音的租户模型 () 
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>租户模型（使用 Microsoft 365 数据的自定义语音识别）
 
-**问：租户模型中包含哪些信息，如何创建？**
+问：租户模型中包含哪些信息，它是如何创建的？
 
-**答：** 租户模型是使用 [公用组](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) 电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。
+答：租户模型是使用[公用组](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)电子邮件和文档生成的，贵组织中的任何人都可以看到该模型。
 
-**问：租户模型改进了哪些语音体验？**
+问：租户模型改进了哪些语音体验？
 
-**答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递一个用户 Azure AD 标记，指示企业的成员身份。
+答：启用、创建并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别；还会传递一个用户 Azure AD 标记，指示企业的成员身份。
 
-为语音服务应用程序创建租户模型时，不会更改内置于 Microsoft 365 中的语音体验，如听写和 PowerPoint 字幕。
+为语音服务应用程序创建租户模型时，不会改变内置于 Microsoft 365 中的语音体验，如听写和 PowerPoint 字幕。
 
 ## <a name="next-steps"></a>后续步骤
 

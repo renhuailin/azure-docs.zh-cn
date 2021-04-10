@@ -6,15 +6,15 @@ ms.author: maquaran
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 09/21/2020
+ms.date: 03/15/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1c178f57a31e02b3dac712a5425db226720200c5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548063"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563600"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -112,7 +112,7 @@ ms.locfileid: "96548063"
         private const string AuthorizationKey = "<your-account-key>";
         private const string DatabaseName = "bulk-tutorial";
         private const string ContainerName = "items";
-        private const int ItemsToInsert = 300000;
+        private const int AmountToInsert = 300000;
 
         static async Task Main(string[] args)
         {
@@ -150,14 +150,11 @@ ms.locfileid: "96548063"
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
 
-使用 `System.Text.Json` 类读取项并将其序列化为流实例。 由于自动生成的数据的性质，因此需要将数据序列化为流。 还可以直接使用项实例，但通过将其转换为流，可以利用 CosmosClient 中流 API 的性能。 通常，只要知道分区键，就可以直接使用数据。 
-
-
-若要将数据转换为流实例，请在 `Main` 方法中，在创建容器后直接添加以下代码：
+使用帮助程序函数初始化要使用的文档列表：
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
 
-接下来，使用数据流创建并发任务并填充任务列表以将项插入到容器中。 若要执行此操作，请将以下代码添加到 `Program` 类：
+接下来，使用文档列表创建并发任务并填充任务列表以将项插入到容器中。 若要执行此操作，请将以下代码添加到 `Program` 类：
 
 [!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
 

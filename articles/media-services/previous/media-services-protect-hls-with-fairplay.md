@@ -3,7 +3,7 @@ title: 使用 Microsoft PlayReady 或 Apple FairPlay 保护 HLS 内容 | Microso
 description: 本主题概括介绍并演示了如何使用 Azure 媒体服务通过 Apple FairPlay 动态加密 HTTP 实时传送视频流 (HLS) 内容。 它还演示了如何使用媒体服务许可证传送服务将 FairPlay 许可证传送到客户端。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,29 +11,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695131"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055138"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
 
 * **AES-128 信封明文密钥**
 
-    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
+    整个区块使用 **AES-128 CBC** 模式进行加密。 iOS 和 OS X 播放器本身支持解密流。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-playready-license-template-overview.md)。
 * **Apple FairPlay**
 
     各视频和音频示例都使用 **AES-128 CBC** 模式进行加密。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
@@ -146,7 +146,7 @@ ms.locfileid: "98695131"
 * 如果资产仅应用了一种加密，则无需在 URL 中指定加密类型。
 * 加密类型不区分大小写。
 * 可以指定以下加密类型：  
-  * **cenc**：通用加密 (PlayReady 或 Widevine) 
+  * **cenc**：通用加密（PlayReady 或 Widevine）
   * **cbcs-aapl**：FairPlay
   * **cbc**：AES 信封加密
 

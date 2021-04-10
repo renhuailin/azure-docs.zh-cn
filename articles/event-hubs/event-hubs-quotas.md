@@ -2,13 +2,13 @@
 title: 配额和限制 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了 Azure 事件中心的限制和配额。 例如，每个订阅的命名空间数、每个命名空间的事件中心数。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: f07176d01dd2444f3def93d4295ef898cca61561
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: 9e32b8e7e43e8396c1606c80dd27c68563cdbf03
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86512378"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107057"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure 事件中心的配额和限制
 

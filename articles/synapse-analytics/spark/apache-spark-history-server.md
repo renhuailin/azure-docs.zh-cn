@@ -10,10 +10,10 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 4471fed7b423fe05147db30afe57f6c845fe640e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670693"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
@@ -42,11 +42,11 @@ Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序
 
     ![打开 Spark History Server。](./media/apache-spark-history-server/open-spark-history-server.png)
 
-### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>从数据节点打开 Spark History Server Web UI
+### <a name="open-the-spark-history-server-web-ui-from-data-node&quot;></a>从数据节点打开 Spark History Server Web UI
 
 1. 在 Azure Synapse Studio 笔记本中，从作业执行输出单元或笔记本文档底部的状态面板中选择“Spark History Server”。 选择“会话详细信息”。
 
-   ![启动 Spark History Server 1](./media/apache-spark-history-server/launch-history-server2.png "启动 Spark History Server")
+   ![启动 Spark History Server 1](./media/apache-spark-history-server/launch-history-server2.png &quot;启动 Spark History Server")
 
 2. 从滑出面板中选择“Spark History Server”。
 

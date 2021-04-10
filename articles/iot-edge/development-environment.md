@@ -8,14 +8,16 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
-ms.translationtype: MT
+ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103487694"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge 将现有的业务逻辑移到 Edge 上运行的设备。 若要准备将应用程序和工作负载作为 [IoT Edge 模块](iot-edge-modules.md)运行，则需要将其生成为容器。 本文提供有关如何配置开发环境的指导，以便可以成功创建 IoT Edge 解决方案。 设置好开发环境后，即可了解如何[开发自己的 IoT Edge 模块](module-development.md)。
 
@@ -120,6 +122,6 @@ IoT Edge 设备容器是一个完整的 IoT Edge 设备，可以在任何带有�
 有关详细信息、指南和示例，请参阅以下页面：
 
 * [向 Azure IoT Edge 进行持续集成和持续部署](how-to-continuous-integration-continuous-deployment.md)
-* [使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道](how-to-devops-starter.md)
+* [使用 Azure DevOps 入门版为 IoT Edge 创建 CI/CD 管道](how-to-devops-starter.md)
 * [Azure IoT Edge Jenkins 插件](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub 存储库](https://github.com/toolboc/IoTEdge-DevOps)

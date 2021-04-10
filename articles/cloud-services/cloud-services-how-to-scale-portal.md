@@ -3,17 +3,18 @@ title: 在门户中自动缩放云服务（经典）| Microsoft Docs
 description: 了解如何使用门户在 Azure 中为云服务（经典）角色配置自动缩放规则。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: autoscale
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ddf0f97e78ebc6f1eb8eade0d1842c912d167155
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99980824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935936"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>如何在门户中为云服务（经典）配置自动缩放
 

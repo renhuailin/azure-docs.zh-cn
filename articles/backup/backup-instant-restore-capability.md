@@ -4,12 +4,12 @@ description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
-ms.translationtype: MT
+ms.openlocfilehash: 3448b162c17dec2ab5b7637a3527d1c470bd415c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014442"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102618570"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -52,7 +52,7 @@ ms.locfileid: "96014442"
 
 ## <a name="cost-impact"></a>成本影响
 
-增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照存储在指定资源组中的还原点集合资源中，并且这些快照本身不会直接显示。
+增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照将存储在指定资源组的还原点集合资源中，并且快照本身不直接可见。
 
 >[!NOTE]
 > 就每周策略来说，快照保留期固定为 5 天。
@@ -112,13 +112,19 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 ### <a name="why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy"></a>为何我即使在备份策略中设置了保留期，我的快照也仍然存在？
 
-如果恢复点包含快照并且它是可用的最新恢复点，则它会一直保留到下一次成功备份为止。 这取决于指定的“垃圾回收”(GC) 策略。 它要求至少始终存在一个最新的恢复点，以防所有后续备份由于 VM 中出现问题而失败。 正常情况下，在恢复点过期后，将在最多 24 小时内进行清理。
+如果恢复点包含快照并且它是可用的最新恢复点，则它会一直保留到下一次成功备份为止。 这取决于指定的“垃圾回收”(GC) 策略。 它要求至少始终存在一个最新的恢复点，以防所有后续备份由于 VM 中出现问题而失败。 正常情况下，在恢复点过期后，将在最多 24 小时内进行清理。 在极少数情况下，可能会根据垃圾回收器 (GC) 上较重的负载产生一个或两个额外的快照。
+
+### <a name="why-do-i-see-more-snapshots-than-my-retention-policy"></a>我为什么会看到比保留策略更多的快照？
+
+在将保留策略设置为“1”的场景中，可以找到两个快照。 这要求至少始终存在一个最新的恢复点，以防所有后续备份由于 VM 中出现问题而失败。 这可能导致存在两个快照。<br></br>因此，如果策略设置为“n”个快照，那么有时可能会发现“n+1”个快照。 此外，如果垃圾回收延迟，甚至还可以找到“n+1+2”个快照。 在以下情况下，可能偶尔会发生这种情况：
+- 清理快照，这些快照的保留期已过。
+- 后端中的垃圾回收器 (GC) 负载过重。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 是否可以禁用它？
 
 为所有人启用了即时还原功能，不能禁用它。 可以将快照保留期缩短到最少一天。
 
-### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>在传输过程中重启 VM 是否安全 (这可能需要很长时间) ？ 将重启 VM 中断或降低传输速度？
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>在传输过程中重启 VM 是否安全（传输过程可能需要数小时）？ 重启 VM 是否会中断传输或减慢传输速度？
 
-是的，它是安全的，并且对数据传输速度绝对不会有任何影响。
+安全，并且对数据传输速度绝对不会有任何影响。
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 77edac14ef13901725eed656835e1a937d4f4ddf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
-ms.translationtype: MT
+ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360813"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103472205"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -46,7 +46,7 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 
 一个解决方案是增加 RAM 以适应内存中的数据帧。 建议将计算大小和处理能力设置为包含 2 倍大小的 RAM。 因此，如果数据帧为 10 GB，请使用至少具有 20 GB RAM 的计算目标，以确保可以将数据帧恰当地置于内存中并对其进行处理。 
 
-对于多个虚拟 CPU (vCPU)，请记住，所设置的分区应拟合计算机上的每个 vCPU 所能拥有的 RAM 容量。 也就是说，如果具有 16 GB 的 RAM 4 个 vcpu，则需要每个 vCPU 大约 2 GB 的 dataframes。
+对于多个虚拟 CPU (vCPU)，请记住，所设置的分区应拟合计算机上的每个 vCPU 所能拥有的 RAM 容量。 也就是说，如果具有 16 GB RAM 4 个 vCPU，则每个 vCPU 需要大约 2 GB 的数据帧。
 
 ### <a name="local-vs-remote"></a>本地与远程
 
@@ -86,8 +86,6 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 如果偏好 `Spark` | `PySpark`
 适用于小于 1 GB 的数据 | 在本地或对远程 Azure 机器学习计算实例执行 `Pandas`
 适用于大于 10 GB 的数据| 使用 `Ray`、`Dask` 或 `Spark` 移动到群集
-
-可以使用 [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) 包在 Azure ML 计算群集上创建 `Dask` 群集。 或者，可以在计算实例上以本地方式运行 `Dask`。
 
 ## <a name="next-steps"></a>后续步骤
 

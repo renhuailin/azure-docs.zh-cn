@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 03/16/2021
-ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.date: 03/26/2021
+ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043336"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936268"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
@@ -24,12 +24,13 @@ ms.locfileid: "105043336"
 
 - Azure 中存在 FHIR 终结点。 
 
-   若要部署 Azure API for FHIR (托管服务) ，可以使用 [Azure 门户](fhir-paas-portal-quickstart.md)、 [PowerShell](fhir-paas-powershell-quickstart.md)或 [Azure CLI](fhir-paas-cli-quickstart.md)。
+  若要部署 Azure API for FHIR (托管服务) ，可以使用 [Azure 门户](fhir-paas-portal-quickstart.md)、 [PowerShell](fhir-paas-powershell-quickstart.md)或 [Azure CLI](fhir-paas-cli-quickstart.md)。
+
 - 用于访问 FHIR 服务的已注册 [机密客户端应用程序](register-confidential-azure-ad-client-app.md) 。
 - 你已授予对机密客户端应用程序的权限，例如 "FHIR 数据参与者"，用于访问 FHIR 服务。 有关详细信息，请参阅 [配置 FHIR 的 AZURE RBAC](./configure-azure-rbac.md)。
 - 已安装 Postman。 
     
-    有关 Postman 的详细信息，请参阅 [Postman 入门](https://www.getpostman.com)。
+  有关 Postman 的详细信息，请参阅 [Postman 入门](https://www.getpostman.com)。
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR 服务器和身份验证详细信息
 
@@ -62,6 +63,8 @@ ms.locfileid: "105043336"
 ![身份验证失败](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>获取访问令牌
+选择“获取新的访问令牌”。
+
 若要获取有效的访问令牌，请选择 "**授权**"，然后从 "**类型**" 下拉菜单中选择 " **OAuth 2.0** "。
 
 ![设置 OAuth 2.0](media/tutorial-postman/postman-select-oauth2.png)
@@ -76,13 +79,13 @@ ms.locfileid: "105043336"
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
 | 令牌名称            | MYTOKEN                                                                                                         | 选择的名称          |
 | 授权类型            | 授权代码                                                                                              |                            |
-| 回调 URL          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
+| 回调 URL          | `https://www.getpostman.com/oauth2/callback`                                                                    |                            |
 | 身份验证 URL              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` 是 Azure API for FHIR 的 `https://MYACCOUNT.azurehealthcareapis.com` |
-| 访问令牌 URL      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
-| 客户端 ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | 应用程序 ID             |
-| 客户端机密         | `XXXXXXXX`                                                                                                        | 机密客户端密钥          |
-| 范围 | `<Leave Blank>` |
-| 状态                |  `1234`                                                                                                           |                            |
+| 访问令牌 URL      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                    |                            |
+| 客户端 ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | 应用程序 ID             |
+| 客户端机密         | `XXXXXXXX`                                                                                                      | 机密客户端密钥          |
+| 范围 | `<Leave Blank>` | 不使用范围;因此，它可以保留为空。  
+| 状态                 | `1234`     | [State](https://learning.postman.com/docs/sending-requests/authorization/) 是防止跨站点请求伪造的不透明值。 它是可选的，可以采用任意值，如 "1234"。                           |
 | 客户端身份验证 | 在正文中发送客户端凭据                                                                                 |                 
 
 选择要通过 Azure Active Directory Authentication flow 指导的 **请求令牌** ，并将令牌返回到 Postman。 如果身份验证失败，请参阅 Postman 控制台了解更多详细信息。 **注意**：在功能区上，选择 " **视图**"，然后选择 " **显示 Postman 控制台**"。 Postman 控制台的键盘快捷方式是 **Alt-Ctrl + C**。
@@ -133,7 +136,7 @@ ms.locfileid: "105043336"
 
 ![显示患者已成功创建的屏幕截图。](media/tutorial-postman/postman-patient-created.png)
 
-如果重复患者搜索，现在应会看到患者记录：
+如果重复患者搜索，现在应会看到患者记录。
 
 ![已创建患者](media/tutorial-postman/postman-patient-found.png)
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 034b0400190cadd750e7420ab37800783afa050c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104783415"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
@@ -311,7 +311,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
     1. 为 **sourceBlobContainer** 参数输入 **adftutorial/dummy/input**。 请确保 adftutorial 容器中不存在 dummy 文件夹。
     2. 为 **sinkBlobContainer** 参数输入 **adftutorial/dummy/output**。
     3. 输入 **接收方** 的 **电子邮件地址**。
-    4. 单击“完成”  。
+    4. 单击“完成”。
 
 ## <a name="monitor-the-failed-pipeline-run"></a>监视失败的管道运行
 

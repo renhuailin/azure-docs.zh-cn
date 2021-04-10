@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 19ae5dc24e0a08548f4914114c9c0a6be65f4f0b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096097"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642503"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -24,7 +24,7 @@ ms.locfileid: "101096097"
 
 消息路由使你能够以自动、可缩放以及可靠的方式将消息从设备发送到云服务。 消息路由可用于： 
 
-* 向内置终结点和自定义终结点 **发送设备遥测消息以及事件**，即设备生命周期事件、设备克隆更改事件和数字克隆更改事件。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解 IoT 即插即用设备发送的事件，请参阅 [了解 iot 即插即用数字孪生](../iot-pnp/concepts-digital-twin.md)。
+* **发送设备遥测消息以及事件**（即设备生命周期事件、设备孪生更改事件和数字孪生更改事件）到内置终结点和自定义终结点。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解从 IoT 即插即用设备发送的事件，请参阅[了解 IoT 即插即用数字孪生体](../iot-pnp/concepts-digital-twin.md)。
 
 * **在将数据路由到各个终结点之前对数据进行筛选**，筛选方法是通过应用丰富的查询。 消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 深入了解如何使用[消息路由中的查询](iot-hub-devguide-routing-query-syntax.md)。
 
@@ -38,7 +38,7 @@ IoT 中心有一个默认的内置终结点（消息/事件），此终结点与
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
-如果你的自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，为你的 IoT 中心提供对特定终结点（ [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、 [azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) 和 [azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)）的访问权限。 这适用于使用 [托管服务标识](./virtual-network-support.md)的 IoT 中心的选择区域。
+如果自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，让 IoT 中心可以访问特定终结点 - [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、[Azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)和 [Azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)。 这适用于使用[托管服务标识](./virtual-network-support.md)的 IoT 中心的选定区域。
 
 IoT 中心目前支持以下终结点：
 
@@ -71,7 +71,7 @@ IoT 中心将在消息达到特定大小或在经过一定的时间后，对消�
 
 你可以使用任何文件命名约定，但必须使用所有列出的令牌。 如果没有要写入的数据，IoT 中心会写入到一个空 blob。
 
-我们建议列出 blob 或文件，然后循环访问它们，以确保在未进行有关分区的任何假设的情况下读取所有 blob 或文件。 在 [Microsoft 发起的故障转移](iot-hub-ha-dr.md#microsoft-initiated-failover)或 IoT 中心[手动故障转移](iot-hub-ha-dr.md#manual-failover)期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 请将以下示例作为指南来查看。
+我们建议列出 blob 或文件，然后循环访问它们，以确保在未进行有关分区的任何假设的情况下读取所有 blob 或文件。 在 [Microsoft 发起的故障转移](iot-hub-ha-dr.md#microsoft-initiated-failover)或 IoT 中心[手动故障转移](iot-hub-ha-dr.md#manual-failover)期间，分区范围可能发生变化。 可以使用 [List Blobs API](/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path) 枚举文件列表。 请将以下示例作为指南来查看。
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)
@@ -126,13 +126,13 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测以外，消息路由还启用发送设备克隆更改事件、设备生命周期事件和数字克隆更改事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为 **数字克隆更改事件** ，IoT 中心会在每次设置或更改数字克隆 [属性](../iot-pnp/iot-plug-and-play-glossary.md) 时发送消息 [，在基础](../iot-pnp/iot-plug-and-play-glossary.md) 设备克隆发生更改事件时发送消息。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生体更改事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，在 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)过程中，开发人员可以创建将数据源设置为“数字孪生体更改事件”的路由，并且 IoT 中心在设置或更改数字孪生体属性、更换数字孪生体或发生基础设备孪生更改事件时会发送消息。
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
 
 ## <a name="testing-routes"></a>测试路由
 
-在创建新路由或编辑现有路由时，应通过示例消息来测试路由查询。 可以测试单个路由或一次测试所有路由，并且在测试期间，不会有消息被路由到终结点。 Azure 门户、Azure 资源管理器、Azure PowerShell 和 Azure CLI 可用于测试。 结果有助于确定示例消息是否与查询匹配、消息是否与查询不匹配，或测试无法运行，因为示例消息或查询语法不正确。 若要了解详细信息，请参阅[测试路由](/rest/api/iothub/iothubresource/testroute)和[测试所有路由](/rest/api/iothub/iothubresource/testallroutes)。
+在创建新路由或编辑现有路由时，应通过示例消息来测试路由查询。 可以测试单个路由或一次测试所有路由，并且在测试期间，不会有消息被路由到终结点。 可以使用 Azure 门户、Azure 资源管理器、Azure PowerShell 和 Azure CLI 来进行测试。 测试结果有助于确定示例消息是否与查询相匹配，或者测试是否因为示例消息或查询语法错误而无法运行。 若要了解详细信息，请参阅[测试路由](/rest/api/iothub/iothubresource/testroute)和[测试所有路由](/rest/api/iothub/iothubresource/testallroutes)。
 
 ## <a name="ordering-guarantees-with-at-least-once-delivery"></a>排序保证至少传送一次
 
@@ -144,7 +144,7 @@ IoT 中心消息路由可保证按顺序至少将消息传送到终结点一次�
 
 使用内置终结点路由设备到云遥测消息时，在创建第一个路由后，端到端延迟略微增大。
 
-大多数情况下，延迟的平均增加时间小于500毫秒。 可以使用路由：消息/事件的消息延迟或 d2c.endpoints.latency.builtIn.events IoT 中心指标来监视延迟 。 在创建第一个路由后创建或删除任何路由不会影响端到端延迟。
+在大多数情况下，延迟的平均增量小于 500 毫秒。 可以使用路由：消息/事件的消息延迟或 d2c.endpoints.latency.builtIn.events IoT 中心指标来监视延迟 。 在创建第一个路由后创建或删除任何路由不会影响端到端延迟。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
