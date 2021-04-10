@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
 ms.openlocfilehash: e34664bd81023da7a50b8ff4645c670146ef2554
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98731930"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortiweb-web-application-firewall"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FortiWeb Web 应用防火墙的集成
@@ -45,7 +45,7 @@ ms.locfileid: "98731930"
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“FortiWeb Web 应用防火墙” 。
 1. 从结果面板中选择“FortiWeb Web 应用防火墙”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
@@ -74,11 +74,11 @@ ms.locfileid: "98731930"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://www.<CUSTOMER_DOMAIN>.com`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.<CUSTOMER_DOMAIN>.com/<FORTIWEB_NAME>/saml.sso/SAML2/POST`
 
     c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.<CUSTOMER_DOMAIN>.com` 
 

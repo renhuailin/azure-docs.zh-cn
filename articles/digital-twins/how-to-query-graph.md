@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433210"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462671"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
@@ -36,8 +36,10 @@ ms.locfileid: "102433210"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> 使用元数据字段 `$dtId` 查询数字孪生体的 ID。
+如以上查询所示，将使用元数据字段 `$dtId` 查询数字孪生体的 ID。
+
+>[!TIP]
+> 如果使用 Cloud Shell 针对以 `$` 开头的元数据字段运行查询时，应使用反撇号将 `$` 转义，让 Cloud Shell 知道它不是变量，应将其作为查询文本中的文本来使用。
 
 还可以根据是否定义了某个属性来获取孪生。 以下查询可获取定义了 Location 属性的孪生：
 

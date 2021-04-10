@@ -4,10 +4,10 @@ description: 了解如何为 Azure 开发测试实验室中的实验室指定自
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102502189"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>将项目存储库添加到开发测试实验室中的实验室

@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102557329"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
@@ -340,12 +340,12 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | 命令 | 支持 |
 |---------|---------|
 | Double | 是 |
-| 字符串 | 是 |
+| String | 是 |
 | 对象 | 是 |
 | Array | 是 |
 | Binary Data | 是 | 
 | ObjectId | 是 |
-| Boolean | 是 |
+| 布尔 | 是 |
 | Date | 是 |
 | Null | 是 |
 | 32 位整数 (int) | 是 |
@@ -355,7 +355,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 | MaxKey | 是 |
 | Decimal128 | 是 | 
 | Regular Expression | 是 |
-| Javascript | 是 |
+| JavaScript | 是 |
 | JavaScript（带范围）| 是 |
 | Undefined | 是 |
 

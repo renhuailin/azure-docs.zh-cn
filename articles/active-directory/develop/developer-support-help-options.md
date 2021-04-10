@@ -1,96 +1,105 @@
 ---
-title: Azure AD 应用开发人员的支持和帮助选项
-description: 了解在创建与 Microsoft 标识（Azure Active Directory 和 Microsoft 帐户）集成的应用程序时，如何获取所遇到的开发相关问题的帮助和支持
+title: Microsoft 标识平台开发人员的支持和帮助选项 | Azure
+description: 了解如何在生成与 Azure Active Directory (Azure AD) 和 Microsoft 标识平台的其他组件相集成的标识和访问管理 (IAM) 解决方案时获取帮助并找到问题的答案。
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: ecbb7ec503011d78c2f83a76cea921e1cf438ac1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215096"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579036"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
-如果是刚刚开始与 Azure Active Directory (Azure AD)、Microsoft 标识或 Microsoft 图形 API 集成，或者是正在应用程序中实现新功能，有时需要从社区获得帮助，或了解开发人员可用的支持选项。 可以通过本文了解这些选项，其中包括：
+如果你在解决我们的文档中未涉及的问题时需要答案或帮助，可能需要与专家联系以获得帮助。 下面是在开发与 Microsoft 标识平台集成的应用程序时，用于获取问题答案的几个建议。
 
-> [!div class="checklist"]
-> * 如何通过搜索来确定是问题尚未由社区做出解答，还是你尝试实现的功能已存在现有文档
-> * 在某些情况下，我们只想使用自己的支持工具来帮助调试特定的问题
-> * 如果你找不到所需的答案，你可能想要提问 *&*
-> * 如果发现某个身份验证库出现问题，请提出 *GitHub* 问题
-> * 最后，如果需要与某人交流，可以提出支持请求
+## <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
-## <a name="search"></a>搜索
+<div class='icon is-large'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
+</div>
 
-如果你有与开发相关的问题，则可以在文档、 [GitHub 示例](https://github.com/azure-samples)或 [Microsoft Q 答案&](/answers/products/) 问题中找到答案。
+浏览 [Azure 支持选项的范围并选择最适合的计划](https://azure.microsoft.com/support/plans)，无论你是刚刚开始使用云的开发人员，还是部署业务关键型战略应用程序的大型组织。 Azure 客户可在 Azure 门户中创建和管理支持请求。
 
-### <a name="scoped-search"></a>限定范围的搜索
+- 如果你已有 Azure 支持计划，请[在此处提出支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
+- 如果你不是 Azure 客户，则可以使用[面向企业的 Microsoft 支持](https://support.serviceshub.microsoft.com/supportforbusiness)创建支持请求。
 
-为了更快地获得结果，请通过在常用的搜索引擎中使用以下查询，将搜索范围限定为 [Microsoft Q&](https://docs.microsoft.com/answers/products/) 文档和代码示例：
+## <a name="post-a-question-to-microsoft-qa"></a>在 Microsoft Q&A 上发布问题
 
-为了更快地获得结果，请通过在常用的搜索引擎中使用以下查询，将搜索范围限定为 [Microsoft Q&](/answers/products/)文档和代码示例：
+<div class='icon is-large'>
+    <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
+</div>             
 
+直接从 Microsoft 工程师、Azure 最有价值专家 (MVP) 和我们的专家社区成员那里获得标识应用开发问题的解答。
 
-```
-{Your Search Terms} (site:http://www.docs.microsoft.com/answers/products/ OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
-```
+[Microsoft Q&A](/answers/products/) 是 Azure 建议的社区支持来源。
 
-其中， *{Your Search Terms}* 对应于搜索关键字。
+如果通过搜索 Microsoft Q&A 找不到问题的解答，可以提交新问题。 当你提出[高质量的问题](/answers/articles/24951/how-to-write-a-quality-question.html)时，请使用以下标记之一：
 
-## <a name="use-the-development-support-tools"></a>使用开发支持工具
-
-| 工具  | 说明  |
-|---------|---------|
-| [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
-| [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
-
-## <a name="post-a-question-to-microsoft-qa"></a>将问题发布到 Microsoft Q&
-
-[Microsoft Q&](/answers/products/) 是与开发相关的问题的首选渠道。 在这里，开发人员社区成员和 Microsoft 团队成员可直接助你解决问题。
-
-如果通过搜索找不到问题的答案，请将新问题提交给 [Microsoft Q&](/answers/products/) 。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
-
-|组件/区域  | Tags |
-|---------|---------|
-| ADAL 库 | [[adal]](/answers/topics/azure-ad-adal-deprecation.html) |
-| MSAL 库     | [[msal]](/answers/topics/azure-ad-msal.html) |
-| OWIN 中间件  | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
-| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](/answers/topics/azure-ad-b2c.html) |
-| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[azure--graph]](/answers/topics/azure-ad-graph.html) |
-| 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
-
-下面的 [Microsoft Q&](/answers/products/) 文章包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
-
-* [如何正确提问](/answers/articles/24951/how-to-write-a-quality-question.html)
-* [How to create a minimal, complete, and verifiable example](/answers/articles/24907/how-to-write-a-quality-answer.html)（如何创建最小、完整且可验证的示例）
+| 组件/区域| Tags  |
+|------------|---------------------------|
+| Active Directory 身份验证库 (ADAL)                              | [[adal]](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft 身份验证库 (MSAL)                                     | [[msal]](/answers/topics/azure-ad-msal.html)                            |
+| 适用于 .NET 的开放式 Web 接口 (OWIN) 中间件                               | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B / 外部标识](../external-identities/what-is-b2b.md) | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft 图形 API](https://developer.microsoft.com/graph/)               | [[azure-ad-graph]](/answers/topics/azure-ad-graph.html)                 |
+| 所有其他身份验证和授权问题                            | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
-如果发现了与库相关的 Bug 或问题，请在 GitHub 存储库中提出问题。 由于我们的库是开源的，因此也可提交拉取请求。
+<div class='icon is-large'>
+    <img alt='GitHub-image' src='./media/common/github.svg'>
+</div>
 
-有关库及其 GitHub 存储库的列表，请参阅以下内容：
+如果需要有关以下 Microsoft 身份验证库 (MSAL) 的帮助，请在 GitHub 上的存储库中提出一个问题。
 
-* [Azure Active Directory 身份验证库 (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [Microsoft 身份验证库 (MSAL)](reference-v2-libraries.md) 库和 GitHub 存储库
+| MSAL 库 | GitHub 问题 URL|
+| --- | --- |
+| 适用于 Android 的 MSAL | https://github.com/AzureAD/microsoft-authentication-library-for-android/issues |
+| MSAL Angular | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| 适用于 iOS 和 MacOS 的 MSAL| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
+| MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
+| MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+|MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
+| MSAL Node | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
+| MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
+| MSAL React  | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
 
-## <a name="open-a-support-request"></a>提出支持请求
+## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 反馈中提交反馈
 
-如果需要与某人交流，可以提出支持请求。 Azure 客户可以使用多个支持选项。 若要比较计划，请参阅[此页](https://azure.microsoft.com/support/plans/)。 开发人员支持也适用于 Azure 客户。 有关如何购买开发人员支持计划的信息，请参阅[此页](https://azure.microsoft.com/support/plans/developer/)。
+<div class='icon is-large'>
+    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
+</div>
 
-* 如果已有 Azure 支持计划，请[在此处提出支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+若要请求新功能，请在 Azure 反馈中发布请求。 分享看法，使 Microsoft 标识平台能够为你开发的应用程序发挥更大的作用。
 
-* 如果你不是 Azure 客户，也可以通过[我们的商业支持](https://support.serviceshub.microsoft.com/supportforbusiness)向 Microsoft 提出支持请求。
+| 服务                       | Azure 反馈 URL |
+|-------------------------------|---------------|
+| Azure Active Directory | https://feedback.azure.com/forums/169401-azure-active-directory |
+| Azure Active Directory - 开发人员体验             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=164757 |
+| Azure Active Directory - 身份验证             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167256 |
 
-还可以尝试通过[虚拟代理](https://support.microsoft.com/contactus/?ws=support)获取支持或提出问题。
+## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+- [Azure 更新](https://azure.microsoft.com/updates/?category=identity)：了解重要产品更新、路线图和公告。
+
+- [文档中的新增内容](./whats-new-docs.md)：了解 Microsoft 标识平台文档中的新增内容。
+
+- [Azure Active Directory 标识博客](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity)：获取有关 Azure AD 的新闻和信息。
+
+- [技术社区](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/)：分享经验、与专家互动并向其求教。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jingwang
 ms.openlocfilehash: 33e521d418c219be8eb85b79a0e07d999edb1b08
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374263"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>使用 Azure 数据工厂从 Presto 复制数据
@@ -39,7 +39,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Presto 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Presto  | 是 |
 | host | Presto 服务器的 IP 地址或主机名。 （例如 192.168.222.160）  | 是 |
@@ -86,10 +86,10 @@ Presto 链接服务支持以下属性：
 
 要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”  。 支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：PrestoObject  | 是 |
-| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -118,7 +118,7 @@ Presto 链接服务支持以下属性：
 
 要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”  。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：PrestoSource  | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

@@ -1,18 +1,18 @@
 ---
-title: 教程 - 创建和部署 Azure VMware 解决方案私有云
+title: 教程 - 部署 Azure VMware 解决方案私有云
 description: 了解如何创建和部署 Azure VMware 解决方案私有云
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: 2afd88bca05a9bcab309faff373bedf6a22e9f4b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725388"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462161"
 ---
-# <a name="tutorial-create-an-azure-vmware-solution-private-cloud"></a>教程：创建 Azure VMware 解决方案私有云
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>教程：部署 Azure VMware 解决方案私有云
 
-本教程将介绍如何创建和部署 Azure VMware 解决方案私有云。 最精简的初始部署包括三个主机。 可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。 
+使用 Azure VMware 解决方案，可以在 Azure 中部署 vSphere 群集。 最精简的初始部署是三个主机。 可以逐个添加更多的主机，每个群集最多可以包含 16 个主机。
 
 由于在启动时 Azure VMware 解决方案不允许使用本地 vCenter 管理私有云，因此需要进行额外配置。 本教程将介绍这些过程和相关先决条件。
 
@@ -48,7 +48,7 @@ ms.locfileid: "101725388"
 
 #### <a name="create-a-resource-group"></a>创建资源组
 
-使用 `[az group create](/cli/azure/group)` 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 

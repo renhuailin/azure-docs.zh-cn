@@ -10,18 +10,20 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 402b61bb0845532d601e9f5dcaaf55eacce685d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d6a95dae91ef3e6aa7d39cf8af51c355a87ea73a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959367"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462722"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发和部署 Python IoT Edge 模块
 
-使用 Visual Studio Code 开发 Python 代码并将其部署到运行 Azure IoT Edge 的 Linux 设备。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 本教程介绍如何执行下列操作：
+使用 Visual Studio Code 开发 Python 代码并将其部署到运行 Azure IoT Edge 的设备。
+
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -36,19 +38,21 @@ ms.locfileid: "94959367"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用 **Visual Studio Code** 以 **Python** 开发模块，以及如何将其部署到 **Linux 设备**。 IoT Edge 不支持 Windows 设备的 Python 模块。
+本教程演示如何在 Visual Studio Code 中使用 Python 开发模块，以及如何将其部署到 IoT Edge 设备。
 
-使用下表了解用于开发 Python 模块并将其部署到 Linux 的选项：
+IoT Edge 不支持使用 Windows 容器的 Python 模块。
+
+通过下表了解使用 Linux 容器开发和部署 Python 模块的选项：
 
 | Python | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![将 VS Code 用于 Linux AMD64 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![将 VS Code 用于 Linux ARM32 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 
-在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
+在开始学习本教程之前，应已完成介绍如何设置用于开发 Linux 容器的开发环境的上一教程：[使用 Linux 容器开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个运行 Azure IoT Edge 的设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。

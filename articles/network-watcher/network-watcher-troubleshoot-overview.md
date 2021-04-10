@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98569974"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对网关和连接进行故障排除的功能。 可通过门户、PowerShell、Azure CLI 或 REST API 调用该功能。 调用后，网络观察程序将对网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。 诊断完成后，将返回结果。
 
-![屏幕截图显示网络观察程序第 P N 诊断。][2]
+![屏幕截图显示了网络观察程序 VPN 诊断。][2]
 
 ## <a name="results"></a>结果
 
@@ -105,7 +105,7 @@ ms.locfileid: "98569974"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅 [通过 .net 开始使用 Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-quickstart-blobs-dotnet.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
@@ -209,8 +209,8 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>注意事项 
-* 每个订阅一次只能运行一个故障排除操作。 若要运行其他故障排除操作，请等待前一个操作完成。 在上一个操作未完成的情况下触发更多操作将导致后续操作失败。 
-* CLI Bug：如果使用 Azure CLI 运行命令，则 VPN 网关和存储帐户必须位于同一资源组中。 具有不同资源组中的资源的客户可以改为使用 PowerShell 或 Azure 门户。  
+* 每个订阅一次只能运行一个故障排除操作。 若要运行其他故障排除操作，请等待前一个操作完成。 在上一个操作未完成的情况下触发更多操作会导致后续操作失败。 
+* CLI Bug：如果使用 Azure CLI 运行命令，则 VPN 网关和存储帐户必须位于同一资源组中。 具有不同资源组中资源的客户可以改为使用 PowerShell 或 Azure 门户。  
 
 
 ## <a name="next-steps"></a>后续步骤
