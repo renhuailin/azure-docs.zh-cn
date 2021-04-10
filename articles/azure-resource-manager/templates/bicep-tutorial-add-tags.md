@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
 ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102632590"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>教程 - 在 Azure 资源管理器 Bicep 文件中添加标记

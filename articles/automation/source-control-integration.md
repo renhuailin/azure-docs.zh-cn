@@ -3,14 +3,14 @@ title: 使用 Azure 自动化中的源代码管理集成
 description: 本文介绍如何将 Azure 自动化源代码管理与其他存储库同步。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/12/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
-ms.translationtype: MT
+ms.openlocfilehash: 281da27ce95649e85dae5d0795bb743f21fdb578
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050764"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631738"
 ---
 # <a name="use-source-control-integration"></a>使用源代码管理集成
 
@@ -30,7 +30,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
 * 一个[运行方式帐户](automation-security-overview.md#run-as-accounts)
-* 自动化帐户中[最新的 Azure 模块](automation-update-azure-modules.md)包括 `Az.Accounts` 模块（相当于 `AzureRM.Profile` 的 Az 模块）
+* 必须将 [`AzureRM.Profile` 模块](/powershell/module/azurerm.profile/)导入到自动化帐户中。 请注意，等效的 Az 模块 (`Az.Accounts`) 不适用于自动化源代码控制。
 
 > [!NOTE]
 > 源代码管理同步作业以自动化帐户用户身份运行，并且按与其他自动化作业相同的费率计费。
@@ -53,7 +53,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 4. 在“源代码管理摘要”页上，使用字段填写下面定义的源代码管理属性。 完成后单击“保存”。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |源代码管理名称     | 源代码管理的友好名称。 该名称只能包含字母和数字。        |
     |源代码管理类型     | 源代码管理机制的类型。 可用选项包括：</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |
@@ -209,4 +209,4 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 ## <a name="next-steps"></a>后续步骤
 
 * 若要在 Azure 自动化中集成源代码管理，请参阅 [Azure 自动化：Azure 自动化中的源代码管理集成](https://azure.microsoft.com/blog/azure-automation-source-control-13/)。  
-* 若要将 runbook 源代码管理与 Visual Studio Codespaces 集成，请参阅 [Azure Automation：使用 Visual Studio 集成 Runbook 源代码管理 Codespaces](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。
+* 若要使用 Visual Studio Codespaces 集成 Runbook 源代码管理，请参阅 [Azure 自动化：使用 Visual Studio Codespaces 集成 Runbook 源代码管理](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)。

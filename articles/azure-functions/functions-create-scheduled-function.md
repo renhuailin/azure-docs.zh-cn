@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98035183"
 ---
 # <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>在 Azure 门户中创建按计划运行的函数
@@ -49,7 +49,7 @@ ms.locfileid: "98035183"
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
     | **名称** | 默认 | 定义计时器触发的函数的名称。 |
-    | **“计划”** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#ncrontab-expressions)，计划函数每分钟运行一次。 |
+    | **计划** | 0 \*/1 \* \* \* \* | 六字段 [CRON 表达式](functions-bindings-timer.md#ncrontab-expressions)，计划函数每分钟运行一次。 |
 
 ## <a name="test-the-function"></a>测试函数
 

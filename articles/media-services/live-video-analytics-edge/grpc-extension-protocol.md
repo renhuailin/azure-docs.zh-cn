@@ -3,16 +3,16 @@ title: gRPC 扩展协议 - Azure
 description: 在本文中，你将学习如何使用 gRPC 扩展协议在实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8d153b472e54b221b60a2b584043ffaf68e8ff82
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455850"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565803"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC 扩展协议
 
-使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)扩展媒体图处理功能。 如果使用 gRPC 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过基于 gRPC 的高性能结构化协议进行的。
+使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](./media-graph-extension-concept.md)扩展媒体图处理功能。 如果使用 gRPC 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过基于 gRPC 的高性能结构化协议进行的。
 
 在本文中，你将学习如何使用 gRPC 扩展协议在实时视频分析模块与 AI 或 CV 自定义扩展之间发送消息。
 
@@ -25,7 +25,7 @@ gRPC 会话是通过 TCP/TLS 端口从 gRPC 客户端到 gRPC 服务器的单一
 
 在单个会话中：客户端通过 gRPC 流会话将媒体流描述符（后跟视频帧）作为 [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) 消息发送到服务器。 服务器验证流描述符、分析视频帧，并将推理结果作为 protobuf 消息返回。 
 
-强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
+强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](./inference-metadata-schema.md)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
 
 ![gRPC 扩展协定](./media/grpc-extension-protocol/grpc.png)
 

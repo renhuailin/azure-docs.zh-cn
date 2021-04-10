@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 46297f7f0f648c8bebc887a9093e25dfea99f695
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561494"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102636178"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>应用程序管理的 Azure Active Directory PowerShell 示例
 
@@ -31,5 +31,5 @@ ms.locfileid: "102561494"
 |**应用程序管理脚本**||
 | [导出机密和证书（应用注册）](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | 导出 Azure Active Directory 租户中应用注册的机密和证书。 |
 | [导出机密和证书（企业应用）](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | 导出 Azure Active Directory 租户中企业应用的机密和证书。 |
-| [导出即将过期的机密和证书](scripts/powershell-export-apps-with-expriring-secrets.md) | 导出 Azure Active Directory 租户中具有即将过期的机密和证书的应用。 |
-| [导出要求的日期后即将过期的机密和证书](scripts/powershell-export-apps-with-secrets-beyond-required.md) | 导出其机密和证书在 Azure Active Directory 租户中超出所需日期的应用。 |
+| [导出即将过期的机密和证书](scripts/powershell-export-apps-with-expriring-secrets.md) | 在 Azure Active Directory 租户中导出包含即将过期的机密和证书的应用注册及其所有者。 |
+| [导出要求的日期后即将过期的机密和证书](scripts/powershell-export-apps-with-secrets-beyond-required.md) | 导出其机密和证书在 Azure Active Directory 租户中超出所需日期的应用注册。 这将使用非交互式 Client_Credentials OAuth 流。 |

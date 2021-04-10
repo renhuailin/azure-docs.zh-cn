@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
 ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102633149"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>教程：将函数添加到 Azure 资源管理器 Bicep 文件

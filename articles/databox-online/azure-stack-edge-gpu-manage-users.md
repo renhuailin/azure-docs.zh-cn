@@ -1,0 +1,85 @@
+---
+title: Azure Stack Edge Pro GPU 管理用户 | Microsoft Docs
+description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro GPU 上的用户。
+services: databox
+author: alkohli
+ms.service: databox
+ms.subservice: edge
+ms.topic: how-to
+ms.date: 02/21/2021
+ms.author: alkohli
+ms.openlocfilehash: 5aeb4f2d7152120ea92a8df76f980eb3baed6e50
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636906"
+---
+# <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的用户
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+
+本文介绍如何管理 Azure Stack Edge Pro 上的用户。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
+
+在本文中，学习如何：
+
+> [!div class="checklist"]
+> * 添加用户
+> * 修改用户
+> * 删除用户
+
+## <a name="about-users"></a>关于用户
+
+用户可以是只读的，也可以是全权的。 只读用户只能查看共享数据。 全权用户可以读取共享数据、向这些共享写入数据，以及修改或删除共享数据。
+
+ - **全权用户** - 拥有完全访问权限的本地用户。
+ - **只读用户** - 拥有只读访问权限的本地用户。 这些用户与允许只读操作的共享相关联。
+
+在创建共享期间创建用户时，首先会定义用户权限。 可以使用文件资源管理器对它们进行修改。
+
+
+## <a name="add-a-user"></a>添加用户
+
+在 Azure 门户中执行以下步骤可以添加用户。
+
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“用户”。 选择命令栏上的“+ 添加用户”。
+
+    ![选择“添加用户”](media/azure-stack-edge-gpu-manage-users/add-user-1.png)
+
+2. 指定要添加的用户的用户名和密码。 确认密码，然后选择“添加”。
+
+    ![指定用户名和密码](media/azure-stack-edge-gpu-manage-users/add-user-2.png)
+
+    > [!IMPORTANT] 
+    > 以下用户由系统保留，不应使用：Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
+
+3. 用户创建过程开始和完成后，会显示通知。 创建用户后，在命令栏中选择“刷新”可查看更新的用户列表。
+
+
+## <a name="modify-user"></a>修改用户
+
+创建用户后，可以更改与该用户关联的密码。 从用户列表中进行选择。 输入并确认新密码。 保存更改。
+
+![修改用户](media/azure-stack-edge-gpu-manage-users/modify-user-1.png)
+
+
+## <a name="delete-a-user"></a>删除用户
+
+在 Azure 门户中执行以下步骤可以删除用户。
+
+
+1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“用户”。
+
+    ![选择要删除的用户](media/azure-stack-edge-gpu-manage-users/delete-user-1.png)
+
+2. 从用户列表中选择一个用户，然后选择“删除”。 出现提示时，确认删除。
+
+    ![选择要删除的用户 2](media/azure-stack-edge-gpu-manage-users/delete-user-2.png)
+
+用户列表将会更新，以反映该用户已删除。
+
+![更新的用户列表](media/azure-stack-edge-gpu-manage-users/delete-user-4.png)
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何[管理带宽](azure-stack-edge-gpu-manage-bandwidth-schedules.md)。

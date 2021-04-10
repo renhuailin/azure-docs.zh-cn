@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215946"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565565"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -26,7 +26,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -61,7 +61,7 @@ az vmss extension set \
 
 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 使用软件保护将加密密钥存储在 Azure 密钥保管库中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。
 
-定义自己的唯一 keyvault_name。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略。
+定义自己的唯一 keyvault_name。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
 
-定义自己的唯一 keyvault_name。 然后，通过 [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略。
+定义自己的唯一 keyvault_name。 然后，通过 [az keyvault update](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>启用加密功能
 
-若要加密规模集中的 VM 实例，请先使用 [az keyvault show](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-show) 获取有关 Key Vault 资源 ID 的信息。 然后，通过 [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) 使用这些变量启动加密过程：
+若要加密规模集中的 VM 实例，请先使用 [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) 获取有关 Key Vault 资源 ID 的信息。 然后，通过 [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) 使用这些变量启动加密过程：
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

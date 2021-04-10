@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520330"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102634751"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
+# <a name="start-monitor-and-track-runs"></a>启动、监视和跟踪运行 
 
 [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)、[机器学习 CLI](reference-azure-machine-learning-cli.md) 和 [Azure 机器学习工作室](https://ml.azure.com)提供多种方法用于监视、组织和管理训练运行与试验运行。
 
 本文演示以下任务的示例：
 
 * 监视运行性能。
+* 通过电子邮件通知监视运行状态。
+* 标记和查找运行。
+* 添加运行说明。 
+* 运行搜索。 
 * 取消运行或使其失败。
 * 创建子运行。
-* 标记和查找运行。
+ 
 
 > [!TIP]
 > 如果要了解如何监视 Azure 机器学习服务及关联的 Azure 服务，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
@@ -50,7 +54,8 @@ ms.locfileid: "102520330"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](/cli/azure/) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) 和 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
+
 
 ## <a name="monitor-run-performance"></a>监视运行性能
 
@@ -96,7 +101,7 @@ ms.locfileid: "102520330"
     
         此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
     
-        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach)。
+        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)。
     
     2. 若要启动运行，请使用以下命令。 使用此命令时，请为 -c 参数指定 runconfig 文件的名称（如果查看的是文件系统，此名称为 \*.runconfig 前面的文本）。
     
@@ -111,7 +116,7 @@ ms.locfileid: "102520330"
         >
         > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)。
     
-        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)。
+        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)。
 
     # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ ms.locfileid: "102520330"
     
         此命令返回一个 JSON 文档，其中列出了有关此试验的运行的信息。
     
-        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)。
+        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)。
     
     * 若要查看有关特定运行的信息，请使用以下命令。 请将 `runid` 替换为运行的 ID：
     
@@ -172,7 +177,7 @@ ms.locfileid: "102520330"
     
         此命令返回一个 JSON 文档，其中列出了有关运行的信息。
     
-        有关详细信息，请参阅 [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show)。
+        有关详细信息，请参阅 [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)。
     
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
@@ -192,6 +197,29 @@ ms.locfileid: "102520330"
     1. 要查看运行日志，请选择特定的运行，在“输出 + 日志”选项卡中，可以找到运行的诊断和错误日志。
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>通过电子邮件通知监视运行状态
+
+1. 在 [Azure 门户](https://ms.portal.azure.com/)的左侧导航栏中，选择“监视”选项卡。 
+
+1. 选择“诊断设置”，然后选择“+ 添加诊断设置。
+
+    ![电子邮件通知诊断设置屏幕截图](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. 在“诊断设置”的 
+    1. “类别详细信息”下，选择“AmlRunStatusChangedEvent”。 
+    1. 在“目标详细信息”中，选择“发送到 Log Analytics 工作区”，并指定“订阅”和“Log Analytics 工作区”。 
+
+    > [!NOTE]
+    > Azure Log Analytics 工作区是一种不同于 Azure 机器学习服务工作区的 Azure 资源类型。 如果该列表中没有选项，则可以[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)。 
+    
+    ![保存电子邮件通知的位置](./media/how-to-manage-runs/log-location.png)
+
+1. 在“日志”选项卡中，添加“新的警报规则”。 
+
+    ![新建警报规则](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. 请参阅[如何使用 Azure Monitor 创建和管理日志警报](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)。
 
 ## <a name="run-description"></a>运行说明 
 
@@ -253,7 +281,7 @@ ms.locfileid: "102520330"
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update)。
+    有关详细信息，请参阅 [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)。
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ ms.locfileid: "102520330"
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)。
+    有关查询 Azure CLI 结果的详细信息，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)。
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
-    1. 导航到“所有运行”列表。
+    若要搜索特定运行，请导航到“所有运行”列表。 可以使用以下两个选项：
     
-    1. 使用搜索栏来筛选运行的元数据，如标记、说明、试验名称和提交者名称。 标记筛选器还可用于筛选标记。 
+    1. 使用“添加筛选器”按钮，选择标记上的筛选器按分配给运行的标记筛选运行。 <br><br>
+    OR
     
-    ---
-
-
+    1. 使用搜索栏通过搜索运行的元数据（如标记、说明、试验名称和提交者名称）快速查找运行。 
+    
 ## <a name="cancel-or-fail-runs"></a>取消运行或使其失败
 
 如果发现错误，或者完成运行花费的时间太长，可以取消该运行。
@@ -331,7 +359,7 @@ print(local_run.get_status())
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-有关详细信息，请参阅 [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel)。
+有关详细信息，请参阅 [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

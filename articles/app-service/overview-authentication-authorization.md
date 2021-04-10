@@ -6,27 +6,24 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b95b1e96dc26fb72338518fc969c69b035d5f68
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: MT
+ms.openlocfilehash: 83758f63b7e60d08a31f1da9da4a6eec6ba7d4a4
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095230"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632061"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
-Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
+Azure 应用服务提供内置的身份验证和授权支持（有时称为简易身份验证）。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
 
-安全身份验证和授权需要深入了解安全性，包括联合身份验证、加密、 [JSON web 令牌 (JWT) ](https://wikipedia.org/wiki/JSON_Web_Token) 管理、 [授予类型](https://oauth.net/2/grant-types/)，等等。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
+安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
 > 你并非必须使用此功能进行身份验证和授权。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
 >
 > 应用服务托管的 ASP.NET Core 2.1 及更高版本已针对此中断性变更进行了修补，并且会相应地处理 Chrome 80 和更低版本的浏览器。 此外，我们还在整个 2020 年 1 月在应用服务实例上部署了 ASP.NET Framework 4.7.2 的同一修补程序。 有关详细信息，请参阅 [Azure 应用服务 SameSite Cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
-
-> [!NOTE]
-> “身份验证/授权”功能有时也称为“简单身份验证/授权”。
 
 > [!NOTE]
 > 启用此功能会导致对应用程序的所有非安全 HTTP 请求自动重定向到 HTTPS，而不管[强制实施 HTTPS](configure-ssl-bindings.md#enforce-https) 所需的应用服务配置设置如何。 如果需要，可以通过[身份验证/授权设置配置文件](app-service-authentication-how-to.md#configuration-file-reference)中的 `requireHttps` 设置禁用此功能，但需注意确保不通过非安全 HTTP 连接传输安全令牌。
@@ -52,7 +49,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ### <a name="on-containers"></a>在容器上
 
-身份验证和授权模块在独立于应用程序代码的单独容器中运行。 使用所谓的 [代表模式](/azure/architecture/patterns/ambassador)，它与传入流量交互，以执行与 Windows 相同的功能。 由于它不在进程内运行，因此不能与特定的语言框架直接集成;但是，应用需要的相关信息通过使用请求标头（如下所述）进行传递。
+身份验证和授权模块在独立于应用程序代码的单独容器中运行。 使用所谓的[代表模式](/azure/architecture/patterns/ambassador)，它与传入的流量交互，以执行与在 Windows 上所执行的类似功能。 由于它不在进程内运行，因此不能与特定的语言框架直接集成；但是，应用所需的相关信息通过使用请求标头进行传递，如下所述。
 
 ### <a name="userapplication-claims"></a>用户/应用程序声明
 
@@ -85,7 +82,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="identity-providers"></a>标识提供者
 
-应用服务使用 [联合标识](https://en.wikipedia.org/wiki/Federated_identity)，其中第三方标识提供者为你管理用户标识和身份验证流。 默认提供五个标识提供者： 
+应用服务使用[联合标识](https://en.wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供五个标识提供者： 
 
 | 提供程序 | 登录终结点 |
 | - | - |
@@ -152,7 +149,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="more-resources"></a>更多资源
 
-* [教程：在访问 Azure 存储和 Microsoft Graph 的 web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
+* [教程：在访问 Azure 存储和 Microsoft Graph 的 Web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
 * [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)  
 * [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](./tutorial-auth-aad.md?pivots=platform-linux%3fpivots%3dplatform-linux)  
 * [在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)
@@ -167,7 +164,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 * [How to configure your app to use Microsoft Account login][MSA]
 * [如何将应用配置为使用 Twitter 登录][Twitter]
 * [如何将应用配置为使用 OpenID Connect 提供程序（预览版）进行登录][OIDC]
-* [如何将应用配置为使用 Apple (预览版的登录) ][Apple]
+* [如何将应用配置为使用“Apple 登录”（预览版）][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

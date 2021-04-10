@@ -3,16 +3,16 @@ title: HTTP 扩展协议 - Azure
 description: 在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: c3a9b5b70467479fdb9b1473a1f6738eaa8a7e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54b25894c60a39de9c0ec00cdc4982f691bf1ee3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455884"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565735"
 ---
 # <a name="http-extension-protocol"></a>HTTP 扩展协议
 
-使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)扩展媒体图处理功能。 如果使用 HTTP 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过 HTTP 进行的
+使用 IoT Edge 上的实时视频分析，可以通过[图形扩展节点](./media-graph-extension-concept.md)扩展媒体图处理功能。 如果使用 HTTP 扩展处理器作为扩展节点，则实时视频分析模块与 AI 或 CV 模块之间的通信是通过 HTTP 进行的
 
 在本文中，你将学习如何使用 HTTP 扩展协议在实时视频分析模块与 AI 或 CV 模块之间发送消息。 
 
@@ -87,11 +87,11 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
+强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](./inference-metadata-schema.md)定义的预建立架构。 这可以更好地确保与其他组件的互操作性，以及与未来可能添加到实时视频分析模块的功能的互操作性。
 
 如果你的模块返回的响应的内容类型不是“application/json”，则实时视频分析会将消息编码为 base 64 内容，并将其序列化为不透明的 JSON 有效负载。
 
-如果你的模块返回的响应的内容类型为“application/json”，但 JSON 架构不遵循下面列出的推理元数据架构，则将通过管道转发消息有效负载，但互操作性会降低。 有关推理元数据架构的详细信息和最新信息，请参阅[此处](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)。
+如果你的模块返回的响应的内容类型为“application/json”，但 JSON 架构不遵循下面列出的推理元数据架构，则将通过管道转发消息有效负载，但互操作性会降低。 有关推理元数据架构的详细信息和最新信息，请参阅[此处](./inference-metadata-schema.md)。
 
 > [!NOTE]
 > 如果你的模块未生成任何结果，则它应返回响应正文为空的 HTTP 204 状态代码（无内容）。 实时视频分析会将此内容视为空结果，不会在整个管道中转发该事件。

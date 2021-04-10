@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
 ms.openlocfilehash: 178767847757660163515ec286eba48e1050f506
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931890"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight：Java 示例
@@ -20,14 +20,14 @@ ms.locfileid: "98931890"
 > * [Python 示例](hdinsight-sdk-python-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-dotnet-samples.md)-->
 
-本文将提供：
+本文提供以下内容：
 
 * 有关群集创建任务的示例链接。
 * 有关其他管理任务的参考内容链接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [用于 Java 的 Azure HDInsight SDK](/java/api/overview/azure/hdinsight#sdk-installation)
 

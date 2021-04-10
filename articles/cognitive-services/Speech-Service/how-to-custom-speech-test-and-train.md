@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103232488"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
@@ -68,7 +68,7 @@ ms.locfileid: "103232488"
 
 ## <a name="upload-data"></a>上传数据
 
-若要上传数据，请导航到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
+若要上传数据，请导航到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
 
 ![屏幕截图，突出显示了语音门户中的“音频上传”选项。](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -145,7 +145,7 @@ speech03.wav    the lazy dog was not amused
 
 听录内容应经过文本规范化，以便可由系统处理。 但是，将数据上传到 Speech Studio 之前，必须完成一些重要的规范化操作。 有关在准备听录内容时可用的适当语言，请参阅[如何创建人为标记的听录内容](how-to-custom-speech-human-labeled-transcriptions.md)
 
-收集音频文件和相应的听录内容后，请先将其打包成单个 .zip 文件，然后再上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
+收集音频文件和相应的听录内容后，请先将其打包成单个 .zip 文件，然后再上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
 
 > [!div class="mx-imgBorder"]
 > ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -163,7 +163,7 @@ speech03.wav    the lazy dog was not amused
 | 句子（言语） | 在识别句子上下文中的产品名称或行业特定的词汇时，可以提高准确度。 |
 | 发音 | 改善不常见字词、缩写词或其他未定义发音的单词的发音。 |
 
-可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 所有内容均可打包成单个 zip 文件并上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio </a>。
+可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 所有内容均可打包成单个 zip 文件并上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。
 
 使用相关文本进行的训练通常在几分钟内完成。
 

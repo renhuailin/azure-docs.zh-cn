@@ -1,32 +1,32 @@
 ---
-title: 在 Azure Cosmos DB 中优化请求的成本
-description: 本文介绍如何在 Azure Cosmos DB 上发出请求时优化成本。
+title: 优化 Azure Cosmos DB 中的请求成本
+description: 本文介绍了在 Azure Cosmos DB 上发出请求时如何优化成本。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 36ecef007e10f9a090dbabc8b5a91fd473930141
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097492"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102633846"
 ---
-# <a name="optimize-request-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 的请求成本
+# <a name="optimize-request-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的请求成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-本文介绍如何将读取和写入请求转换为 [请求单位](request-units.md) ，以及如何优化这些请求的费用。 读取操作包括点读取和查询。 写入操作包括插入、替换、删除和更新插入项。
+本文介绍了如何将读取和写入请求转换为[请求单位](request-units.md)，以及如何优化这些请求的成本。 读取操作包括点读取和查询。 写入操作包括插入、替换、删除和更新插入项。
 
-Azure Cosmos DB 提供了一组丰富的数据库操作，这些操作可对容器中的项进行操作。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 无需考虑和管理硬件资源，你可以将请求单位 (RU) 为执行各种数据库操作以处理请求所需的资源的单个度量值。
+Azure Cosmos DB 提供了对容器中的项进行操作的一组丰富的数据库操作。 与这些操作关联的成本取决于完成操作所需的 CPU、IO 和内存。 可以考虑将请求单位 (RU) 视为执行各种数据库操作来处理请求时所需的资源的单一度量值，而无需考虑和管理硬件资源。
 
-## <a name="measuring-the-ru-charge-of-a-request"></a>衡量请求的 RU 费用
+## <a name="measuring-the-ru-charge-of-a-request"></a>度量请求的 RU 费用
 
-务必要测量请求的 RU 费用，以了解其实际成本，并评估优化的有效性。 你可以通过使用 Azure 门户或检查从 Azure Cosmos DB 中的某个 Sdk 发送回的响应来提取此成本。 有关如何实现的详细说明，请参阅 [查找 Azure Cosmos DB 中的请求单位费用](find-request-unit-charge.md) 。
+请务必度量请求的 RU 费用，以了解其实际成本，并评估你的优化的效率。 你可以通过以下方式获取此成本：使用 Azure 门户，或者通过某个 SDK 检查 Azure Cosmos DB 发回的响应。 有关如何实现此目的的详细说明，请参阅[在 Azure Cosmos DB 中查找请求单位费用](find-request-unit-charge.md)。
 
 ## <a name="reading-data-point-reads-and-queries"></a>读取数据：点读取和查询
 
-Azure Cosmos DB 中的读取操作通常按以下方式按从最快/最高效到较慢/最有效的 RU 消耗进行排序：  
+Azure Cosmos DB 中的读取操作通常按 RU 消耗从最快/效率最高到较慢/效率较低进行排序，如下所示：  
 
 * 点读取（对单个项 ID 和分区键进行键/值查找）。
 * 单个分区键内具有筛选器子句的查询。
@@ -35,18 +35,18 @@ Azure Cosmos DB 中的读取操作通常按以下方式按从最快/最高效到
 
 ### <a name="role-of-the-consistency-level"></a>一致性级别的角色
 
-使用 " **强** " 或 " **有限过期** " [一致性级别](consistency-levels.md)时，任何读取操作的 RU 开销 (点读取或查询) 会加倍。
+当使用 **强** 或 **有限过期**[一致性级别](consistency-levels.md)时，任何读取操作（点读取或查询）的 RU 开销都会加倍。
 
 ### <a name="point-reads"></a>点读取
 
-影响某个 (点的 RU 费用的唯一因素（) 所使用的一致性级别除外）是检索到的项的大小。 下表显示大小为 1 KB、100 KB 的项的点读取的 RU 开销。
+影响点读取的 RU 费用的唯一因素（除了使用的一致性级别外）是所检索项的大小。 下表显示了大小为 1 KB 和 100 KB 的项的点读取 RU 成本。
 
 | **项大小** | **一次点读取成本** |
 | --- | --- |
 | 1 KB | 1 RU |
 | 100 KB | 10 RU |
 
-由于 point 读取 (项 ID 上的键/值查找) 是最有效的读取类型，因此应确保项 ID 具有有意义的值，以便可以在可能的情况下，使用一个点读取 (而不是查询) 来提取项。
+因为点读取（基于项 ID 的键/值查找）是最有效的读取类型，因此你应确保项 ID 具有有意义的值，以便可以在可能的情况下使用点读取（而非查询）来提取项。
 
 ### <a name="queries"></a>查询
 
@@ -54,9 +54,9 @@ Azure Cosmos DB 中的读取操作通常按以下方式按从最快/最高效到
 
 在某些情况下，可能会在查询的分页执行中看到 200 个和 429 个响应序列以及变量请求单位，这是因为查询将根据可用的 RU 尽可能快地运行。 可能会看到查询执行在服务器和客户端之间分成多个页面/往返。 例如，10,000 个项可以作为多个页面返回，每个页面根据对该页面执行的计算收费。 对这些页面求和时，应获得与整个查询相同的 RU 数。
 
-#### <a name="metrics-for-troubleshooting-queries"></a>查询故障排除指标
+#### <a name="metrics-for-troubleshooting-queries"></a>用于对查询进行故障排除的指标
 
-查询所使用的性能和吞吐量 (包括用户定义函数) 主要取决于函数体。 若要确定在 UDF 中花费多少时间来处理查询执行以及使用的 ru 数，最简单的方法是启用查询度量值。 如果使用的是 .NET SDK，则以下是 SDK 返回的示例查询指标：
+查询（包括用户定义的函数）的性能和消耗的吞吐量主要取决于函数主体。 查找 UDF 中的查询执行花费的时间和使用的 RU 数量的最简单方法是启用查询指标。 如果使用的是 .NET SDK，则以下是 SDK 返回的示例查询指标：
 
 ```bash
 Retrieved Document Count                 :               1              
@@ -94,27 +94,27 @@ Total Query Execution Time               :   �
 
    查询的复杂性会影响操作使用的请求单位 (RU)数量。 谓词数、谓词性质、UDF 数目以及源数据集的大小。 所有这些因素都会影响查询操作的成本。 
 
-Azure Cosmos DB 通过使用预配的吞吐量模型，在吞吐量和延迟方面提供可预测的性能。 预配的吞吐量以每秒[请求单位](request-units.md)或 RU/秒表示。 请求单位 (RU) 是对计算 CPU、内存、IO 等资源的逻辑抽象，这是执行请求所必需的。 预留的预配吞吐量 (RU) 专用于容器或数据库，以提供可预测的吞吐量和延迟。 预配置吞吐量使 Azure Cosmos DB 能够以任何规模提供可预测且一致的性能，保证低延迟和高可用性。 请求单位表示规范化货币，简化了对应用程序需要多少资源的推理。
+通过使用预配置的吞吐量模型，Azure Cosmos DB 在吞吐量和延迟方面提供可预测的性能。 预配的吞吐量以每秒[请求单位](request-units.md)或 RU/秒表示。 请求单位 (RU) 是对计算 CPU、内存、IO 等资源的逻辑抽象，这是执行请求所必需的。 预留的预配吞吐量 (RU) 专用于容器或数据库，以提供可预测的吞吐量和延迟。 预配置吞吐量使 Azure Cosmos DB 能够以任何规模提供可预测且一致的性能，保证低延迟和高可用性。 请求单位表示规范化货币，简化了对应用程序需要多少资源的推理。
 
 请求标头中返回的请求费用表示给定查询的费用。 例如，如果查询返回 1000 个 1 KB 项，则操作成本为 1000。 因此在一秒内，服务器在对后续请求进行速率限制之前，只接受两个此类请求。 有关详细信息，请参阅[请求单位](request-units.md)一文和请求单位计算器。
 
 ## <a name="writing-data"></a>写入数据
 
-写入项的 RU 费用取决于：
+写入某个项的 RU 成本取决于：
 
 - 项大小。
-- [索引策略](index-policy.md)所涵盖并需要建立索引的属性的数目。
+- [索引编制策略](index-policy.md)涵盖的需要编制索引的属性的数量。
 
-使用小于5个属性的 1 KB 项插入索引5个 ru 的成本。 将项开销替换为插入同一项所需的电量的两倍。
+插入一个没有索引的 1 KB 项大约需要 5.5 RU。 替换某个项的成本是插入同一项所需费用的两倍。
 
 ### <a name="optimizing-writes"></a>优化写入
 
-优化编写操作的 RU 成本的最佳方式是将您的项目和索引的属性数目。
+优化写入操作的 RU 成本的最佳方式是合理设置要编制索引的项和属性数。
 
-- 在 Azure Cosmos DB 中存储非常大的项会产生较高的 RU 费用，并可将其视为反模式。 特别是，不要存储不需要查询的二进制内容或大块文本。 最佳做法是将此类数据放入 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md) ，并将引用存储 (或链接) 到写入 Azure Cosmos DB 的项中的 Blob。
-- 优化索引策略以便仅为查询筛选的属性编制索引，可以在写操作所使用的 ru 中产生巨大的差异。 在创建新容器时，默认的索引策略将为每个属性和在项目中找到的每个属性进行索引。 虽然这是开发活动的一个很好的默认设置，但强烈建议您在投入生产环境时或在工作负荷开始接收大量流量时，重新评估并 [自定义索引策略](how-to-manage-indexing-policy.md) 。
+- 在 Azure Cosmos DB 中存储非常大的项会产生较高的 RU 费用，可将其视为反面模式。 特别要注意的是，不要存储不需要查询的二进制内容或大块文本。 最佳做法是将此类数据置于 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中，并将指向该 blob 的引用（或链接）存储在要写入到 Azure Cosmos DB 的项中。
+- 优化索引编制策略以仅为你的查询筛选的属性编制索引可能会对写入操作消耗的 RU 产生巨大影响。 在创建新容器时，默认的索引编制策略会为在你的项中找到的每个属性编制索引。 虽然这是适用于开发活动的一个良好的默认设置，但我们强烈建议你在转到生产环境时或在工作负荷开始收到大量流量时，重新评估并[自定义索引编制策略](how-to-manage-indexing-policy.md)。
 
-当执行批量数据引入时，还建议使用 [Azure Cosmos DB 批量执行器库](bulk-executor-overview.md) ，因为它旨在优化此类操作的 RU 消耗。 另外，还可以使用在同一个库上构建的 [Azure 数据工厂](../data-factory/introduction.md) 。
+当执行数据的批量引入时，我们还建议你使用 [Azure Cosmos DB 批量执行工具库](bulk-executor-overview.md)，因为它旨在优化此类操作的 RU 消耗。 另外，你还可以使用基于这个相同的库构建的 [Azure 数据工厂](../data-factory/introduction.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -125,4 +125,4 @@ Azure Cosmos DB 通过使用预配的吞吐量模型，在吞吐量和延迟方�
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解[优化多区域 Azure Cosmos 帐户的成本](optimize-cost-regions.md)
-* 详细了解 [Azure Cosmos DB 保留的容量](cosmos-db-reserved-capacity.md)
+* 详细了解 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)

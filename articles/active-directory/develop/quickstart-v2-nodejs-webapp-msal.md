@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 5ca8c41dc1e6a05975227555abd91f5d6725285a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: d6be9753cbcb2a6be9836b27f82f1b60068570b8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092177"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103224973"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 Node Web 应用中让用户登录并获取访问令牌
 
@@ -48,6 +48,15 @@ ms.locfileid: "101092177"
 > 1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在“管理”下，选择“证书和机密” > “新建客户端机密”  。  将说明留空并保留默认过期时间，然后选择“添加”。
 > 1. 记下“客户端密码”的值以供稍后使用 。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-the-application-in-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
+> 要使此快速入门的代码示例正常运行，需要创建一个客户端密码，并将答复 URL 添加为 **http://localhost:3000/redirect** 。
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [执行此更改]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![已配置](media/quickstart-v2-windows-desktop/green-check.png) 应用程序已使用这些属性进行配置。
 
 #### <a name="step-2-download-the-project"></a>步骤 2：下载项目
 
@@ -91,16 +100,17 @@ ms.locfileid: "101092177"
 > 修改 `config` 部分中的值，如下所述：
 >
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
+>
+>    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。
 > - `Enter_the_Client_Secret_Here` 是注册的应用程序的“客户端密码”的值 。
+>
+>    若要检索客户端密码或生成新的客户端密码，请在“管理”下选择“证书和机密”。
 >
 > 默认 `authority` 值表示主要（全局）Azure 云：
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
 > ```
->
-> > [!TIP]
-> > 若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用注册的“概览”页面 。 转到“证书和机密”下，以检索或生成新的客户端密码 。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行

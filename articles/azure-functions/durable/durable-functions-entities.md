@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c898444659c2ce071163e9ab774a4534f8c51a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723667"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632044"
 ---
 # <a name="entity-functions"></a>实体函数
 
@@ -18,7 +18,7 @@ ms.locfileid: "101723667"
 实体提供了一种横向扩展应用程序的方式，即，将工作分散到多个实体，而每个实体具有适度大小的状态。
 
 > [!NOTE]
-> 实体函数和相关功能仅在 Durable Functions 2.0 及更高版本中可用。 它们当前在 .NET 和 JavaScript 中受支持。
+> 实体函数和相关功能仅在 [Durable Functions 2.0](durable-functions-versions.md#migrate-from-1x-to-2x) 及更高版本中可用。 它们目前在 .NET、JavaScript 和 Python 中受支持。
 
 ## <a name="general-concepts"></a>一般概念
 
@@ -189,7 +189,6 @@ def entity_function(context: df.DurableEntityContext):
     elif operation == "get":
         context.set_result(current_value)
     context.set_state(current_value)
-
 
 
 main = df.Entity.create(entity_function)

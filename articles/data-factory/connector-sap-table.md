@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2021
-ms.openlocfilehash: 63509262b8a75eebaffc34eca9861fe6748ff969
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/12/2021
+ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048448"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232386"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -66,7 +66,7 @@ ms.locfileid: "102048448"
 - 在数据工厂 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
 
   - 使用远程函数调用 (RFC) 目标的授权。
-  - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。 可以在大多数授权对象上引用 SAP 说明40089。 基础 NCo 连接器需要某些 Rfc，例如 RFC_FUNCTION_SEARCH。 
+  - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。 有关多数授权对象，请参阅“SAP 说明 40089”。 基础 NCo 连接器需要某些 RFC，例如 RFC_FUNCTION_SEARCH。 
 
 ## <a name="get-started"></a>入门
 
@@ -78,7 +78,7 @@ ms.locfileid: "102048448"
 
 SAP BW Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
 | `server` | SAP 实例所在的服务器的名称。<br/>用于连接到 SAP 应用程序服务器。 | 否 |
@@ -186,7 +186,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从/向 SAP BW Open Hub 链接服务复制数据。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
@@ -218,7 +218,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 支持使用以下属性从 SAP 表复制数据：
 
-| 属性                         | 说明                                                  | 必选 |
+| 属性                         | 说明                                                  | 必须 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要检索的行数。                              | 否       |
@@ -238,6 +238,10 @@ SAP BW Open Hub 链接服务支持以下属性：
 >以 `partitionOption` 和 `partitionOnInt` 为例，每个分区中的行数的计算公式为：(处于 `partitionUpperBound` 与 `partitionLowerBound` 之间的总行数)/`maxPartitionsNumber`。<br/>
 <br/>
 >若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
+
+
+>[!TIP]
+> 默认情况下，Azure 数据工厂端已为此 SAP 表连接器启用 `BASXML`。
 
 在 `rfcTableOptions` 中，可以使用以下常用 SAP 查询运算符来筛选行：
 
@@ -293,55 +297,55 @@ SAP BW Open Hub 链接服务支持以下属性：
 
 ## <a name="join-sap-tables"></a>联接 SAP 表
 
-当前，SAP 表连接器仅支持一个具有默认函数模块的表。 若要获取多个表的联接数据，可以按照以下步骤利用 SAP 表连接器中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性：
+SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获取多个表的联接数据，可以按照以下步骤利用 SAP 表连接器中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性。
 
-- [编写自定义函数模块](#create-custom-function-module)，该模块可以将查询作为选项，并应用自己的逻辑来检索数据。
-- 对于 "自定义函数模块"，请输入自定义函数模块的名称。
-- 对于 "RFC 表选项"，请指定要作为选项送进函数模块的表联接语句，如 " `<TABLE1>` `<TABLE2>` COLUMN0 上的内部联接"。
+- [编写自定义函数模块](#create-custom-function-module)，该模块可将查询作为 OPTIONS，并应用你自己的逻辑来检索数据。
+- 对于“自定义函数模块”，请输入自定义函数模块的名称。
+- 对于“RFC 表选项”，请指定要作为 OPTIONS 提供给函数模块的表联接语句，例如“`<TABLE1>` INNER JOIN `<TABLE2>` ON COLUMN0”。
 
 下面是一个示例：
 
-![Sap 表联接](./media/connector-sap-table/sap-table-join.png) 
+![SAP 表联接](./media/connector-sap-table/sap-table-join.png) 
 
 >[!TIP]
->你还可以考虑将联接的数据聚合在视图中，这受 SAP 表连接器支持。
->你还可以尝试提取相关表以加入 Azure (例如，Azure 存储空间、Azure SQL 数据库) ，然后使用数据流继续进一步的联接或筛选器。
+>还可考虑将联接数据聚合在 VIEW 中，这受 SAP 表连接器支持。
+>还可尝试将相关的表提取并载入到 Azure 上（例如，Azure 存储和 Azure SQL 数据库），然后使用数据流进行进一步联接或筛选。
 
 ## <a name="create-custom-function-module"></a>创建自定义函数模块
 
-对于 SAP 表，当前我们支持复制源中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性，这允许你利用自己的逻辑并处理数据。
+对于 SAP 表，我们目前支持复制源中的 [customRfcReadTableFunctionModule](#copy-activity-properties) 属性，这允许你利用自己的逻辑和流程数据。
 
-作为快速指导，以下是 "自定义函数模块" 入门的一些要求：
+作为快速入门指南，以下是开始使用“自定义函数模块”的一些要求：
 
 - 定义：
 
     ![定义](./media/connector-sap-table/custom-function-module-definition.png) 
 
-- 将数据导出到以下表之一：
+- 将数据导出到下表之一：
 
-    ![导出表1](./media/connector-sap-table/export-table-1.png) 
+    ![导出表 1](./media/connector-sap-table/export-table-1.png) 
 
-    ![导出表2](./media/connector-sap-table/export-table-2.png)
+    ![导出表 2](./media/connector-sap-table/export-table-2.png)
  
-下面是有关 SAP 表连接器如何与自定义函数模块一起使用的说明：
+以下是有关 SAP 表连接器如何与自定义函数模块一起工作的说明：
 
-1. 通过 SAP NCO 建立与 SAP 服务器的连接。
+1. 通过 SAP NCO 与 SAP 服务器建立连接。
 
-1. 调用 "自定义函数模块"，并将参数设置如下：
+1. 调用“自定义函数模块”，并将参数设置如下：
 
-    - QUERY_TABLE：在 ADF SAP 表数据集中设置的表名称; 
-    - 分隔符：在 ADF SAP 表源中设置的分隔符; 
-    - ROWCOUNT/Option/Fields：在 ADF 表源中设置的行计数/聚合选项/字段。
+    - QUERY_TABLE：在 ADF SAP 表数据集中设置的表名称； 
+    - 分隔符：在 ADF SAP 表源中设置的分隔符； 
+    - 行计数/选项/字段：在 ADF 表源中设置的行计数/聚合选项/字段。
 
 1. 获取结果并按以下方式分析数据：
 
-    1. 分析 "字段" 表中的值以获取架构。
+    1. 分析字段表中的值以获取架构。
 
         ![分析字段中的值](./media/connector-sap-table/parse-values.png)
 
-    1. 获取输出表的值，以查看包含这些值的表。
+    1. 获取输出表中的值，以查看哪个表包含这些值。
 
-        ![在输出表中获取值](./media/connector-sap-table/get-values.png)
+        ![获取输出表中的值](./media/connector-sap-table/get-values.png)
 
     1. 获取 OUT_TABLE 中的值，分析数据，然后将其写入接收器。
 

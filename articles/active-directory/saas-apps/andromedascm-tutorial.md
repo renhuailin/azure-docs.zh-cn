@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 678bb46efb19f3451566306ddbbe372c631c717e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
@@ -77,7 +77,7 @@ ms.locfileid: "98736032"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
@@ -126,7 +126,7 @@ ms.locfileid: "98736032"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -145,7 +145,7 @@ ms.locfileid: "98736032"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

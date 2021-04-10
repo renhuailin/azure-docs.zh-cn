@@ -12,10 +12,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3a388ade2b44260bfa21e22866d85a46e482bc97
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102499945"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件

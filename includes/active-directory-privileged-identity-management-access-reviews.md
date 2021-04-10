@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: active-directory
-author: barclayn
+author: ajburnle
 ms.service: active-directory
 ms.topic: include
 ms.date: 12/07/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 0b1606e4506e7a1781426632d1f22221f7028b88
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 9c91eb6cfa18c5302a83347f671e4552befcf3e2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193773"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623575"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
@@ -38,6 +38,7 @@ ms.locfileid: "102193773"
     > [!NOTE]
     > - 此处选择的角色包括[永久和符合条件的角色](../articles/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)。
     > - 选择多个角色会创建多个访问评审。 例如，选择五个角色会创建五个单独的访问评审。
+    > - 对于分配了组的角色，将在访问评审中审查与所审阅角色关联的每个组的访问权限。
 
     如果创建 Azure AD 角色的访问评审，下面显示了审阅成员身份列表的示例。
 
@@ -52,8 +53,8 @@ ms.locfileid: "102193773"
     ![所选用户或成员（自我）的审阅者列表](./media/active-directory-privileged-identity-management-access-reviews/reviewers.png)
 
     - 所选用户 - 如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
-    - 成员(自我) - 使用此选项可让用户评审其自己的角色分配。
-    - **经理** –使用此选项可让用户的经理查看其角色分配。 选择 "管理器" 后，还可以选择指定回退审阅者。 当用户未在目录中指定任何管理员时，系统会要求后备审阅者评审用户。
+    - 成员(自我) - 使用此选项可让用户评审其自己的角色分配。 如果选择了此选项，则分配给该角色的组不会成为评审的一部分。
+    - 管理员 - 使用此选项可让用户的管理员查看其角色分配。 选择“管理员”后，还可以选择指定一个后备审阅者。 当用户未在目录中指定任何管理员时，系统会要求后备审阅者评审用户。 如果选择了一个组，则后备审阅者将审阅分配给该角色的组。 
 
 ### <a name="upon-completion-settings"></a>完成后的设置
 
