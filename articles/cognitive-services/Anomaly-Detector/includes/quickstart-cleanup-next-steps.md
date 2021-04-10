@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/19/2019
 ms.author: mbullwin
-ms.openlocfilehash: fcf46e46d540826c6affdf9acb15c1cfe2783e71
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fb43cf302603dc4703262b595c8da522bd574cc6
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018425"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105582896"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与资源组相关联的任何其他资源。
 
-* [门户](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>后续步骤
@@ -33,4 +33,4 @@ ms.locfileid: "92018425"
 教程：
 
 * [使用 Power BI 将异常成批可视化](../tutorials/batch-anomaly-detection-powerbi.md)
-* [使用 Azure Databricks 针对流数据进行异常情况检测](../tutorials/anomaly-detection-streaming-databricks.md)
+* [使用 Azure Databricks 针对流数据进行异常情况检测](../overview.md)

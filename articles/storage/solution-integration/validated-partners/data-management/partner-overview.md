@@ -1,32 +1,39 @@
 ---
-title: 存储数据管理、管理和迁移合作伙伴
-titleSuffix: Azure Blob Storage
-description: Microsoft 合作伙伴列表，其中构建了用于数据管理、管理和迁移 Azure 存储的客户解决方案
-keywords: 存储、Blob、数据管理
+title: 存储数据治理、管理和迁移合作伙伴
+titleSuffix: Azure Storage
+description: Microsoft 合作伙伴公司的列表，这些公司通过 Azure 存储为数据治理、管理和迁移构建了客户解决方案
 author: beber-msft
 ms.author: beber
-ms.date: 12/11/2020
-ms.topic: article
+ms.date: 03/15/2021
+ms.topic: conceptual
 ms.service: storage
-ms.openlocfilehash: 1bab546aebd5b78cabe82ad4714fb03b924c9b6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.subservice: partner
+ms.openlocfilehash: 82ba49beb74fbc7b6f9d976d123fd9465d585d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744520"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103561611"
 ---
-# <a name="azure-storage-data-governance-management-and-migration-partners"></a>Azure 存储数据管理、管理和迁移合作伙伴
+# <a name="azure-storage-data-governance-management-and-migration-partners"></a>Azure 存储数据治理、管理和迁移合作伙伴
 
-本文重点介绍与 Azure 存储集成的 Microsoft 合作伙伴公司，以改善客户的整体数据管理功能。 这些合作伙伴解决方案可以支持存储评估和报告、与平台无关的迁移、复制、云分层或数据管理。
+本文重点介绍与 Azure 存储集成的 Microsoft 合作伙伴公司，这些公司可提高你的整体数据管理能力。 这些合作伙伴解决方案可支持存储评估和报告、与平台无关的迁移、复制、云分层或数据治理。
 
-## <a name="verified-data-governance-management-and-migration-partners"></a>经验证的数据管理、管理和迁移合作伙伴
-| 合作伙伴 | 说明 | 网站/产品链接 |
+## <a name="verified-partners"></a>已验证的合作伙伴
+
+| Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
-|![Commvault 公司徽标](./media/commvault-logo.jpg) |**Commvault**<br>使用 Commvault 的 Microsoft 基础结构优化、保护、迁移数据并为其编制索引。 通过 Commvault 完整的数据保护，以 Microsoft 中心和以 Azure 为中心的数据管理解决方案来控制数据。 Commvault 提供管理、迁移、访问和恢复数据所需的工具，而无论数据位于何处，同时降低成本和风险。 Microsoft 信任 Commvault 来管理和保护其中一些最重要的数据和工作负荷，也可以这样做。 |[合作伙伴页](https://www.commvault.com/complete-data-protection)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
-|![数据动态公司徽标](./media/datadyn-logo.png) |**数据动态**<br>数据动态是企业解决方案的领先提供商，用于管理混合和多云环境的非结构化数据。 我们统一的非结构化数据管理平台使用分析和自动化功能，帮助你智能地将数据从 (SMB、NFS 或 S3 对象) 的异类存储环境移到 Azure 中。  请确保在正确的位置正确使用正确的数据，以优化你的存储基础结构。 该平台提供了无缝集成、企业级和性能，使混合和多云环境的数据实现高效管理。  用例包括：智能云迁移、灾难恢复、存档、备份和基础结构优化和数据管理。 |[合作伙伴页面](https://www.datadynamicsinc.com/ms-azure-partner/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_2-preview?tab=Overview&flightCodes=18994ad6-20dc-4bdb-ae27-e7ef3263fa9e)|
-![Datadobi 公司徽标](./media/datadob-logo.png) |**Datadobi**<br> Datadobi 受到世界上最大的公司和公共部门机构的信任，以优化其非结构化存储环境。 DobiMigrate 是企业级软件，可在 Microsoft Azure 的情况下安全、快速、轻松、经济高效地获取文件和对象数据。 通过快速高效地过渡到 Azure，在整个过程中体验到大幅节省空间。 不要说到 "耗时的迁移任务"，而是专注于值添加的活动。 在云中实现存储成本节约或运行工作负荷。 降低存储管理和成本开销。 增加存储空间，无需 CAPEX 投资。|[合作伙伴页](https://datadobi.com/partners/microsoft/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)|
-![Informatica 公司徽标](./media/informatica-logo.png) |**Informatica**<br>Informatica 的企业级云本机数据管理平台可自动执行和加速 Azure 上企业数据的发现、交付、质量和管理。 利用我们的 AI 功能的元数据驱动的数据集成、数据质量和调控功能，你可以将分析现代化，并加速迁移到数据仓库或 Microsoft Azure 上的 data lake|[合作伙伴页](https://www.informatica.com/azure)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|
-|![Komprise 公司徽标](./media/komprise-logo.png) |**Komprise**<br>Komprise 使企业能够在不同的接收器间实现空前的可见性，以管理文件和对象数据并节省成本。 Komprise 智能数据管理软件使企业能够跨云一致地分析、移动和管理数据。<br>Komprise 使企业能够分析任何 NAS 和对象存储中的数据增长，以确定节省70% 的成本。 通过 Komprise，可将冷数据存档到 Microsoft Azure，并运行数据迁移、透明数据存档，以及将数据复制到 Azure 文件和 Azure Blob。 获专利的 Komprise 透明移动技术使文件无需更改用户访问权限即可存档。 全局搜索和标记可为 AI、大数据和 ML 应用程序启用虚拟数据 lake。 |[合作伙伴页面](https://www.komprise.com/partners/microsoft-azure/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview) |
-## <a name="next-steps"></a>后续步骤
-若要深入了解一些其他合作伙伴，请参阅 [分析和大数据合作伙伴](..\analytics\partner-overview.md)、 [存档、备份和 BCDR 合作伙伴](..\backup-archive-disaster-recovery\partner-overview.md)、 [容器解决方案合作伙伴](..\container-solutions\partner-overview.md)以及 [主要和辅助存储伙伴](..\primary-secondary-storage\partner-overview.md)。
+|![Commvault 公司徽标](./media/commvault-logo.jpg) |***Commvault**<br>通过将 Microsoft 基础结构和 Commvault 结合使用，对数据进行优化、保护、迁移和编制索引。 通过 Commvault Complete Data Protection（即以 Microsoft 为中心和以 Azure 为中心的数据管理解决方案）来控制数据。 Commvault 提供管理、迁移、访问和还原数据所需的工具，而无论数据驻留在何处，同时降低成本和风险。|[合作伙伴页面](https://www.commvault.com/complete-data-protection)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/commvault.commvault)|
+|![Data Dynamics 公司徽标](./media/datadyn-logo.png) |**Data Dynamics**<br>Data Dynamics 提供企业解决方案来管理混合和多云环境的非结构化数据。 其 Unified Unstructured Data Management Platform 使用分析和自动化帮助你智能并有效地将数据从异源存储环境（SMB、NFS 或 S3 Object）移动到 Azure 中。 该平台提供无缝集成、企业级缩放和性能，支持混合和多云环境的数据的高效管理。 用例包括：智能云迁移、灾难恢复、存档、备份、基础结构优化和数据管理。 |[合作伙伴页面](https://www.datadynamicsinc.com/ms-azure-partner/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadynamicsinc1581991927942.vm_2-preview?tab=Overview&flightCodes=18994ad6-20dc-4bdb-ae27-e7ef3263fa9e)|
+![Datadobi 公司徽标](./media/datadob-logo.png) |**Datadobi**<br> Datadobi 可以优化非结构化存储环境。 DobiMigrate 是企业级软件，使你的文件和对象数据能够安全、快速、轻松且经济高效地移动到 Azure。 专注于增值活动，而不是耗时的迁移任务。 增加存储占用，而无需 CAPEX 投资。|[合作伙伴页面](https://datadobi.com/partners/microsoft/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=Overview)|
+![Informatica 公司徽标](./media/informatica-logo.png) |**Informatica**<br>Informatica 的企业级缩放、云原生数据管理平台自动执行并加速对 Azure 上的企业数据的发现、交付、质检和治理。 通过由 AI 支持的元数据驱动数据集成以及数据质检和治理功能，你可以实现分析的现代化，并加速向 Azure 上的数据仓库或数据湖的迁移。|[合作伙伴页面](https://www.informatica.com/azure)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|
+|![Komprise 公司徽标](./media/komprise-logo.png) |**Komprise**<br>Komprise 实现了跨孤岛的可见性，以管理文件和对象数据，并节省成本。 Komprise Intelligent Data Management 软件让你能够跨云一致地分析、移动和管理数据。<br><br>Komprise 帮助你跨任何网络连接存储 (NAS) 和对象存储分析数据增长，以节省大量成本。 你还可以将冷数据存档到 Azure，并运行向 Azure 文件存储及 Blob 存储的数据迁移、透明数据存档和数据复制。 通过已获取专利的 Komprise Transparent Move Technology，你可以在不更改用户访问的情况下存档文件。 全局搜索和标记为 AI、大数据和机器学习应用程序启用虚拟数据湖。 |[合作伙伴页面](https://www.komprise.com/partners/microsoft-azure/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management?tab=Overview) |
 
+## <a name="next-steps"></a>后续步骤
+
+若要详细了解其他一些合作伙伴，请参阅：
+
+- [分析和大数据合作伙伴](..\analytics\partner-overview.md)
+- [存档、备份和 BCDR 合作伙伴](..\backup-archive-disaster-recovery\partner-overview.md)
+- [容器解决方案合作伙伴](..\container-solutions\partner-overview.md)
+- [主存储和辅助存储合作伙伴](..\primary-secondary-storage\partner-overview.md)
