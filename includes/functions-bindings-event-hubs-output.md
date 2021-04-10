@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: dadd86521a7b6c20dab2ed036555b798b869344c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510804"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623204"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
@@ -245,12 +245,12 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为“eventHub”。 |
+|type  | 不适用 | 必须设置为“eventHub”。 |
 |**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
 |**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。 <br><br>如果使用 [5.x 版或更高版本的扩展](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)，而不是连接字符串，则可以提供对用于定义连接的配置节的引用。 请参阅[连接](../articles/azure-functions/functions-reference.md#connections)。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -258,11 +258,39 @@ Python 不支持特性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
+### <a name="default"></a>默认
+
+可以将以下参数类型用于事件中心的输出绑定：
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+
 可以使用 `out string paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+
+### <a name="additional-types"></a>其他类型 
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
+### <a name="default"></a>默认
+
+可以将以下参数类型用于事件中心的输出绑定：
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+
 可以使用 `out string paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+
+### <a name="additional-types"></a>其他类型 
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

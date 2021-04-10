@@ -1,66 +1,52 @@
 ---
-title: 认知服务：文档中的新增功能
-description: 2021年1月1日（年1月31日2021）认知服务文档的新增功能。
+title: 认知服务：文档中的新增内容
+description: 2020 年 2 月 1 日 - 2020 年 2 月 28 日认知服务文档中的新增内容。
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 02/08/2021
-ms.openlocfilehash: 1cea159e6939463352102d7d3ff3dafbdea71b5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/08/2021
+ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710307"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102631364"
 ---
-# <a name="cognitive-services-docs-whats-new-for-january-1-2021---january-31-2021"></a>认知服务文档：2021年1月1日新增功能-年1月 2021 31 日
+# <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>认知服务文档：2021 年 2 月 1 日 - 2021 年 2 月 28 日的新增内容
 
-欢迎使用2021年1月1日到年1月 2021 31 日的认知服务文档中的新增功能。 本文列出了 7 月份对文档进行的一些重大更改。
+欢迎阅读 2021 年 2 月 1 日 - 2021 年 2 月 28 日认知服务文档中的新增内容。 本文列出了 7 月份对文档进行的一些重大更改。
 
 ## <a name="cognitive-services"></a>认知服务
 
-**更新的文章**
+### <a name="new-articles"></a>新文章
 
-- [规划和管理 Azure 认知服务的成本](plan-manage-costs.md)
-- [Azure 认知服务容器](cognitive-services-container-support.md)
+- [用于 Azure 认知服务的 Azure Policy 合规性控制措施](security-controls-policy.md)
+
+## <a name="containers"></a>容器
+
+### <a name="new-articles"></a>新文章
+
+- [Azure 认知服务容器常见问题解答 (FAQ)](/azure/cognitive-services/containers/container-faq)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>表单识别器
 
-**新文章**
+### <a name="updated-articles"></a>更新的文章
 
-- [教程：使用 Azure 数据工厂从数据中批量提取信息](./form-recognizer/tutorial-bulk-processing.md)
-
-**更新的文章**
-
-- [什么是表单识别器？](./form-recognizer/overview.md)
-
-## <a name="immersive-reader"></a>沉浸式阅读器
-
-**更新的文章**
-
-- [创建沉浸式读者资源并配置 Azure Active Directory 身份验证](./immersive-reader/how-to-create-immersive-reader.md)
-
-## <a name="personalizer"></a>个性化体验创建服务
-
-**更新的文章**
-
-- [特征是指有关操作和上下文的信息](./personalizer/concepts-features.md)
+- [部署示例标记工具](/azure/cognitive-services/form-recognizer/deploy-label-tool)
+- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview)
+- [使用示例标记工具通过标签来训练表单识别器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
 
 ## <a name="text-analytics"></a>文本分析
 
-**更新的文章**
+### <a name="updated-articles"></a>更新的文章
 
-- [文本分析 API v3 语言支持](./text-analytics/language-support.md)
-- [迁移到文本分析 API 版本 3.x](./text-analytics/migration-guide.md)
-- [文本分析 API 中有哪些新功能？](./text-analytics/whats-new.md)
-
-## <a name="community-contributors"></a>社区参与者
-
-在此期间，以下人员参与认知服务文档。 谢谢！ 了解如何通过以下 " [新增功能" 登录页](index.yml)中的 "获取内容" 下的链接进行参与。
-
-- [AnweshGangula](https://github.com/AnweshGangula) -Anwesh Gangula (1) 
-- [cdglasz](https://github.com/cdglasz) -Christopher Glasz (1) 
-- [huybuidac](https://github.com/huybuidac) -l Dac Huy (1) 
+- [文本分析 API v3 语言支持](/azure/cognitive-services/text-analytics/language-support)
+- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

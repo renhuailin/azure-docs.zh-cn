@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: 20a22d11973f5bb01e2c1345538d5d94ce311dc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 07a7daf6363f0e528f84635ed6713ac462f89ca5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562845"
 ---
 # <a name="tutorial-analyze-live-video-by-using-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™DL Streamer Edge AI 扩展来分析实时视频 
 
@@ -66,7 +66,7 @@ ms.locfileid: "103465753"
 
 OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析服务（VA 服务）的微服务，它为使用 OpenVINO™ DL Streamer 构建的视频分析管道提供服务。 开发人员可将已解码的视频帧发送到 AI 扩展模块，该模块执行检测、分类或跟踪并返回结果。 AI 扩展模块会公开与视频分析平台（如 Microsoft IoT Edge 上的实时视频分析）兼容的 gRPC API。 
 
-为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 在本教程中，推理请求会发送到 [Intel OpenVINO™ DL Streamer Edge AI 扩展](https://aka.ms/lva-intel-openvino-dl-streamer)，这是一个 Edge 模块，旨在与 IoT Edge 上的实时视频分析搭配使用。 
+为了构建复杂、高性能的实时视频分析解决方案，IoT Edge 模块上的实时视频分析应与功能强大的推理引擎配合使用，以利用边缘的规模。 在本教程中，推理请求会发送到 [Intel OpenVINO™ DL Streamer Edge AI 扩展]()，这是一个 Edge 模块，旨在与 IoT Edge 上的实时视频分析搭配使用。 
 
 在此推理服务器的初始版本中，你可以访问以下[模型](https://github.com/intel/video-analytics-serving/tree/master/samples/lva_ai_extension#edge-ai-extension-module-options)：
 
@@ -254,7 +254,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
 {
-  "sdp": "SDP:\nv=0\r\no=- 1612432131600584 1 IN IP4 172.18.0.6\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/homes_00425.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.08.19\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-214.166\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/homes_00425.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=64001F;sprop-parameter-sets=Z2QAH6zZQFAFuwFsgAAAAwCAAAAeB4wYyw==,aOvhEsiw\r\na=control:track1\r\n"
+  "sdp&quot;: &quot;SDP:\nv=0\r\no=- 1612432131600584 1 IN IP4 172.18.0.6\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/homes_00425.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.08.19\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-214.166\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/homes_00425.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=64001F;sprop-parameter-sets=Z2QAH6zZQFAFuwFsgAAAAwCAAAAeB4wYyw==,aOvhEsiw\r\na=control:track1\r\n"
 }
 ```
 
@@ -304,7 +304,7 @@ gRPC 扩展处理器节点从 Intel OpenVINO™ DL Streamer Edge AI 扩展接收
           "w": 0.48403296,
           "h": 0.94352424
         },
-        "id": "1"
+        "id&quot;: &quot;1"
       }
     }
 }

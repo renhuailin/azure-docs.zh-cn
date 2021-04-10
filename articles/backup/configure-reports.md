@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102509349"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562318"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -148,7 +148,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 * 按时间段呈现的策略遵守情况：使用此视图，可以确定有多少个项在某一天中至少有一次成功备份，有多少个项在当天没有成功备份。 可以单击某一行，查看在所选日期内触发的所有备份作业的详细信息。 请注意，如果将时间范围增加到一个较大的值（例如，过去 60 天），网格将以周视图呈现，并显示在某一周内每天至少有一次成功备份的所有项的计数。 同样，对于更大的时间范围，还可以选择每月视图。
 
-对于每周备份的项，此网格有助于确定在某一周内至少有一次成功备份的所有项。 对于更大的时间范围（例如，过去 120 天），网格将以每月视图呈现，并显示某个月内每周至少有一次成功备份的所有项的计数。 有关每日、每周和每月视图的详细信息，请参阅[备份报告中使用的约定](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)。
+对于每周备份的项，此网格有助于确定在某一周内至少有一次成功备份的所有项。 对于更大的时间范围（例如，过去 120 天），网格将以每月视图呈现，并显示某个月内每周至少有一次成功备份的所有项的计数。 有关每日、每周和每月视图的详细信息，请参阅[备份报告中使用的约定](#conventions-used-in-backup-reports)。
 
 ![按时间段呈现的策略遵守情况](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 备份报告使用 [Azure Monitor 日志上的系统函数](backup-reports-system-functions.md)。 这些函数可以对 LA 中原始 Azure 备份表中的数据进行操作，并返回格式化数据，帮助你利用简单的查询轻松检索所有与备份相关的实体的信息。 
 
-要使用备份报告作为基础来创建你自己的报告工作簿，可以导航到“备份报告”，单击报告顶部的“编辑”，然后查看/编辑报告中使用的查询。 请参阅 [Azure 工作簿文档](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview)，详细了解如何创建自定义报告。 
+要使用备份报告作为基础来创建你自己的报告工作簿，可以导航到“备份报告”，单击报告顶部的“编辑”，然后查看/编辑报告中使用的查询。 请参阅 [Azure 工作簿文档](../azure-monitor/visualize/workbooks-overview.md)，详细了解如何创建自定义报告。 
 
 ## <a name="export-to-excel"></a>导出到 Excel
 

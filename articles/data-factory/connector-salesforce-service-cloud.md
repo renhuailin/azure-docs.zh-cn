@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: 4075552e2070eba653fba54c7db1d021016644c7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 6a712ad1924fd73926ff0e62a7d1b9684eb5b1d9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369758"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583088"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 
@@ -59,7 +59,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 Salesforce 链接服务支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为 **SalesforceServiceCloud**。 |是 |
 | environmentUrl | 指定 Salesforce Service Cloud 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
@@ -135,7 +135,7 @@ Salesforce 链接服务支持以下属性。
 
 支持使用以下属性从/向 Salesforce Service Cloud 复制数据。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceServiceCloudObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -164,7 +164,7 @@ Salesforce 链接服务支持以下属性。
 }
 ```
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | Salesforce Service Cloud 中的表名称。 | 否（如果指定了活动源中的“query”） |
@@ -177,7 +177,7 @@ Salesforce 链接服务支持以下属性。
 
 从 Salesforce Service Cloud 复制数据时，复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceServiceCloudSource**。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce Service Cloud 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
@@ -224,13 +224,14 @@ Salesforce 链接服务支持以下属性。
 
 向 Salesforce Service Cloud 复制数据时，复制活动的 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceServiceCloudSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce Service Cloud 对象中定义为“外部 ID 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce Service Cloud 的数据行计数。 | 否（默认值为5,000） |
 | ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
 
 **示例：**
 

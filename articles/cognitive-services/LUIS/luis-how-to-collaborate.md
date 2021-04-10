@@ -12,10 +12,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/21/2021
 ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101095198"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
@@ -37,7 +37,7 @@ ms.locfileid: "101095198"
 
     找到用户的电子邮件以后，请选择该帐户，然后选择“保存”。
 
-    如果使用此角色分配时遇到问题，请查看 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md) 和 [azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
+    如果无法进行此角色分配，请查看[分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)和 [Azure 访问控制故障排除](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)。
 
 ## <a name="view-the-app-as-a-contributor"></a>以参与者身份查看应用
 

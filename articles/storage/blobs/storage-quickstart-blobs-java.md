@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: b5c34cea5d8222a246462bfadde66fd8a5ddbec7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99054697"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
@@ -112,7 +112,7 @@ ms.locfileid: "99054697"
    cd blob-quickstart-v12
    ```
 
-1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录。 将在这里创建和存储 blob 数据文件。
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录 。 将在这里创建和存储 blob 数据文件。
 
     ```console
     mkdir data

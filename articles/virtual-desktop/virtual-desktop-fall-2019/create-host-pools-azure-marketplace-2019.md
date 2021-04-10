@@ -3,15 +3,15 @@ title: 使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池 - Azu
 description: 如何使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008587"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121874"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池
 
@@ -80,10 +80,10 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 接受默认设置，或自定义虚拟机的数量和大小。
 
     >[!NOTE]
-    >如果要查找的特定虚拟机大小未出现在大小选择器中，那是因为我们尚未将其加入到 Azure 市场工具中。 若要请求某种大小，请在 [Windows 虚拟桌面 UserVoice 论坛](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中创建请求或投票赞成现有请求。
+    >如果要查找的特定虚拟机大小未出现在大小选择器中，那是因为我们尚未将其加入到 Azure 市场工具中。
 
-1. 输入虚拟机名称的前缀。 例如，如果输入 *prefix*，则虚拟机的名称将是 **prefix-0**、**prefix-1**，依此类推。
-1. 在完成时选择“下一步:  虚拟机设置”。
+2. 输入虚拟机名称的前缀。 例如，如果输入 *prefix*，则虚拟机的名称将是 **prefix-0**、**prefix-1**，依此类推。
+3. 在完成时选择“下一步:  虚拟机设置”。
 
 ### <a name="virtual-machine-settings"></a>虚拟机设置
 

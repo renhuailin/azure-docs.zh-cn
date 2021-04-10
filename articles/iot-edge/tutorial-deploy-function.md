@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103464099"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
-可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 使用的模拟 IoT Edge 设备是在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 快速入门的“在模拟设备上部署 Azure IoT Edge”中创建的。 本教程介绍如何执行下列操作：
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 Azure IoT Edge 设备。 本教程将引导你在模拟的 IoT Edge 设备上创建和部署用于筛选传感器数据的 Azure 函数。 请使用在快速入门中创建的模拟 IoT Edge 设备。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -38,10 +40,10 @@ ms.locfileid: "96621240"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
+在开始学习本教程之前，应已完成介绍如何设置用于开发 Linux 容器的开发环境的上一教程：[使用 Linux 容器开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个运行 Azure IoT Edge 的设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
@@ -65,7 +67,7 @@ ms.locfileid: "96621240"
 
 3. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **FunctionSolution**），或者接受默认名称。 |
@@ -75,7 +77,7 @@ ms.locfileid: "96621240"
 
    ![提供 Docker 映像存储库](./media/tutorial-deploy-function/repository.png)
 
-### <a name="add-your-registry-credentials"></a>添加注册表凭据
+### <a name="add-your-registry-credentials&quot;></a>添加注册表凭据
 
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。
 
@@ -85,7 +87,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
 3. 保存此文件。
 
-### <a name="select-your-target-architecture"></a>选择目标体系结构
+### <a name=&quot;select-your-target-architecture&quot;></a>选择目标体系结构
 
 目前，Visual Studio Code 可以开发适用于 Linux AMD64 和 Linux ARM32v7 设备的 C 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64。
 
@@ -93,7 +95,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。
 
-### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
+### <a name=&quot;update-the-module-with-custom-code&quot;></a>使用自定义代码更新模块
 
 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。
 
@@ -118,7 +120,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
    {
        public static class CSharpFunction
        {
-           [FunctionName("CSharpFunction")]
+           [FunctionName(&quot;CSharpFunction")]
            public static async Task FilterMessageAndSendMessage(
                [EdgeHubTrigger("input1")] Message messageReceived,
                [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 03/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57826fcff03e79d5617c7eb69aac7d535d3c86f7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: MT
+ms.openlocfilehash: 35178ecc9bc736bbaca3adc932022b15cc2fc956
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915702"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632078"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -56,7 +56,7 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
 1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
-   1. 在“包括”下选择“目录角色(预览)”，   然后至少选择以下角色：
+   1. 在“包括”下，选择“目录角色”并选择内置角色，例如： 
       * 身份验证管理员
       * 计费管理员
       * 条件访问管理员
@@ -69,12 +69,11 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
       * 用户管理员
    
       > [!WARNING]
-      > 条件访问策略不支持为用户分配[范围为管理单元](../roles/admin-units-assign-roles.md)的目录角色或范围直接为对象的目录角色（例如通过[自定义角色](../roles/custom-create.md)）。
+      > 条件访问策略支持内置角色。 不会为其他角色类型（包括[管理单元范围](../roles/admin-units-assign-roles.md)或[自定义角色](../roles/custom-create.md)）强制实施条件访问策略。
 
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”。
 1. 在“云应用或操作” > “包含”下方，选择“所有云应用” ，然后选择“完成”。
-1. 在“条件” > “客户端应用”下，切换“配置”为”是”，在“选择将应用此策略的客户端应用”下，选中所有默认值，然后选择“完成”     。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。

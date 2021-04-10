@@ -4,10 +4,10 @@ description: 加拿大联邦 PBMM 蓝图示例的部署步骤，包括蓝图项�
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: ec7b0f4bd049b8cb2ead9301ac9ddb76ae727cca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594792"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
@@ -42,7 +42,7 @@ ms.locfileid: "100594792"
 
 ## <a name="publish-the-sample-copy"></a>发布示例副本
 
-现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。  可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
+现已在环境中创建蓝图示例的副本。 该副本在创建后处于“草稿”模式，必须先将其 **发布**，然后才能分配和部署它。 可根据环境和需求自定义蓝图示例的副本，但这种修改可能会使该副本偏离标准。
 
 1. 选择“所有服务”，然后在左窗格中搜索并选择“策略”。  在“策略”页上选择“蓝图”。 
 

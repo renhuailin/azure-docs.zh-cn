@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: cf5b24bb55f278d9d33916d2d54d3ee5a169c3e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8e35342bd704f662d41f676f58e2cc14b54f29a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023378"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -49,7 +49,7 @@ ms.locfileid: "103224395"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”。
+> 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
@@ -112,7 +112,7 @@ ms.locfileid: "103224395"
 > - `Enter_the_Application_Id_Here` 是已注册应用程序的应用程序（客户端）ID。
 >
 >    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用的“概述”页 。
-> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 `https://login.microsoftonline.com` 。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](./authentication-national-cloud.md)。
+> - `Enter_the_Cloud_Instance_Id_Here` 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 `https://login.microsoftonline.com/` 。 对于 **国家** 云（例如“中国”云），请参阅 [国家云](./authentication-national-cloud.md)。
 > - `Enter_the_Tenant_info_here` 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，contoso.microsoft.com`contoso.microsoft.com`）。
 >
@@ -121,7 +121,7 @@ ms.locfileid: "103224395"
 >    - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为“`consumers`”。
 >
 >    若要查找“支持的帐户类型”的值，请转到 Azure 门户中应用注册的“概述”页 。
->
+> - `Enter_the_Redirect_Uri_Here` 为 `http://localhost:3000/`。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
@@ -147,7 +147,7 @@ ms.locfileid: "103224395"
 > [!div renderon="docs"]
 >
 > 其中：
-> - \<Enter_the_Graph_Endpoint_Here> 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com`。 有关详细信息，请参阅[国家云部署](/graph/deployments)
+> - \<Enter_the_Graph_Endpoint_Here> 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com/`。 有关详细信息，请参阅[国家云部署](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 
@@ -177,8 +177,8 @@ MSAL 库会将登录用户，并请求用于访问受 Microsoft 标识平台保�
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
-> [!TIP]
-> 可将上述版本替换为 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)中列出的最新发布版本。
+
+可将上述版本替换为 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)中列出的最新发布版本。
 
 另外，如果已安装 Node.js，则可通过 Node.js 包管理器 (npm) 下载最新版本：
 
@@ -207,13 +207,13 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Where  | 说明 |
-> |---------|---------|
-> |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
-> |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.microsoftonline.com/common`。 |
-> |`redirectUri`     | 应用程序注册配置的答复/redirectUri。 在本例中为 `http://localhost:3000/`。 |
-> |`cacheLocation`  | （可选）针对身份验证状态设置浏览器存储。 默认为 sessionStorage。   |
-> |`storeAuthStateInCookie`  | （可选）用于存储身份验证请求状态的库，验证浏览器 Cookie 中的身份验证流时需要该状态。 此 Cookie 是针对 IE 和 Edge 浏览器设置的，目的是缓解某些[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 |
+|Where  | 说明 |
+|---------|---------|
+|`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
+|`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.microsoftonline.com/common`。 |
+|`redirectUri`     | 应用程序注册配置的答复/redirectUri。 在本例中为 `http://localhost:3000/`。 |
+|`cacheLocation`  | （可选）针对身份验证状态设置浏览器存储。 默认为 sessionStorage。   |
+|`storeAuthStateInCookie`  | （可选）用于存储身份验证请求状态的库，验证浏览器 Cookie 中的身份验证流时需要该状态。 此 Cookie 是针对 IE 和 Edge 浏览器设置的，目的是缓解某些[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 |
 
 有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。
 
@@ -235,12 +235,11 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Where  | 说明 |
-> |---------|---------|
-> | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
+|Where  | 说明 |
+|---------|---------|
+| `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
-> [!TIP]
-> 另外，你可能希望使用 `loginRedirect` 方法将当前页重定向到登录页，而不是显示弹出窗口。
+另外，你可能希望使用 `loginRedirect` 方法将当前页重定向到登录页，而不是显示弹出窗口。
 
 ### <a name="request-tokens"></a>请求令牌
 
@@ -265,9 +264,9 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Where  | 说明 |
-> |---------|---------|
-> | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
+|Where  | 说明 |
+|---------|---------|
+| `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 

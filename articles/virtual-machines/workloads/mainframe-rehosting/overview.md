@@ -10,12 +10,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.openlocfilehash: 7e4b41497a0ed49ab0b39ab2c93c0142fce6416e
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 1baba0afc08c6a4df63c38cafe9231411ecf8f1f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048844"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>在 Azure 虚拟机上重新托管大型机
 
@@ -118,7 +118,7 @@ Azure 提供基于承诺使用量的服务级别协议 (SLA)。 默认的可用�
 
 - [有关大型机主题的白皮书](mainframe-white-papers.md)
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [故障排除](../../troubleshooting/index.yml)
+- [故障排除](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [揭秘大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

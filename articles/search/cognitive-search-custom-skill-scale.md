@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103422087"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641134"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>有效地横向扩展自定义技能
 
@@ -26,7 +26,7 @@ ms.locfileid: "103422087"
 
 + 查看[自定义技能接口](cognitive-search-custom-skill-interface.md)，其中介绍了自定义技能应该实现的输入/输出接口。
 
-+ 设置环境 你可以从[此端到端教程](/python/tutorial-vs-code-serverless-python-01)着手，以使用 Visual Studio Code 和 Python 扩展设置无服务器 Azure 函数。
++ 设置环境 你可以从[此端到端教程](/azure/azure-functions/create-first-function-vs-code-python)着手，以使用 Visual Studio Code 和 Python 扩展设置无服务器 Azure 函数。
 
 ## <a name="skillset-configuration"></a>技能集配置
 
@@ -42,7 +42,7 @@ ms.locfileid: "103422087"
 
 3. 将 `timeout` 设置为技能足以做出有效响应的值。
 
-4. 在 `indexer` 定义中，将 [`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) 设置为应从数据源读取并同时扩充的文档数。
+4. 在 `indexer` 定义中，将 [`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) 设置为应从数据源读取并同时扩充的文档数。
 
 ### <a name="considerations"></a>注意事项
 
@@ -106,5 +106,5 @@ ms.locfileid: "103422087"
 
 + [强大技能：自定义技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
 + [将自定义技能添加到 AI 扩充管道](cognitive-search-custom-skill-interface.md)
-+ [添加 Azure 机器学习技能](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [使用调试会话测试更改](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [添加 Azure 机器学习技能](./cognitive-search-aml-skill.md)
++ [使用调试会话测试更改](./cognitive-search-debug-session.md)

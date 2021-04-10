@@ -9,25 +9,22 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008444"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
 可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](../../azure-functions/functions-overview.md) 和其他平台即服务 (PaaS) 服务。 如果你不需要 Web 服务器来呈现内容，Azure 存储静态网站托管是一个不错的选择。
 
-[应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/) 是 Azure 存储静态网站托管的一种很好的替代方法，也适用于不需要 Web 服务器呈现内容的情况。 应用服务静态 Web 应用提供完全托管的持续集成和持续交付 (从 GitHub 源到全局部署的 CI/CD) 工作流。
+[应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/)是 Azure 存储静态网站托管的绝佳替代方案，也适用于不需要 Web 服务器呈现内容的案例。 应用服务静态 Web 应用提供了从 GitHub 源到全局部署的完全托管的持续集成和持续交付 (CI/CD) 工作流。
 
 如果需要 Web 服务器来呈现内容，可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
-> [!NOTE]
-> 确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
 
 ## <a name="setting-up-a-static-website"></a>设置静态网站
 
@@ -109,7 +106,7 @@ ms.locfileid: "96007335"
 
 ## <a name="multi-region-website-hosting"></a>多区域网站托管
 
-如果你计划在多个地理位置托管一个网站，我们建议你使用 [内容分发网络](../../cdn/index.yml) 进行区域缓存。 如果要在每个区域中提供不同的内容，请使用 [Azure 前门](../../frontdoor/index.yml) 。 它还提供故障转移功能。 如果你计划使用自定义域，则不建议使用[Azure 流量管理器](../../traffic-manager/index.yml)。 由于 Azure 存储验证自定义域名的方式，可能会出现问题。
+如果你计划在多个地理位置托管一个网站，建议你使用[内容分发网络](../../cdn/index.yml)进行区域缓存。 如果要在每个区域提供不同的内容，请使用 [Azure Front Door](../../frontdoor/index.yml)。 此外，它还提供故障转移功能。 如果计划使用自定义域，则不建议使用 [Azure 流量管理器](../../traffic-manager/index.yml)。 考虑到 Azure 存储验证自定义域名的方式，可能会出现问题。
 
 
 ## <a name="pricing"></a>定价
