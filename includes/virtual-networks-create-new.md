@@ -9,10 +9,10 @@ ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
 ms.openlocfilehash: e1d4d29f8edca87ec1cca0ffced7b3e1bca90717
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99808489"
 ---
 ## <a name="create-the-virtual-network-and-subnet"></a>创建虚拟网络和子网
@@ -53,4 +53,4 @@ ms.locfileid: "99808489"
 
 8. 选择“查看 + 创建”  选项卡，或选择“查看 + 创建”  按钮。
 
-9. 选择“创建”  。
+9. 选择“创建”。

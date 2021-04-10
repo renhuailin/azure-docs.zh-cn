@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: f81e76e32bc0a50b945c54cdfcac0575540484bc
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102502427"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建公共 IP 地址

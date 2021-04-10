@@ -8,10 +8,10 @@ ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: ed7020a58f3f15403108934bcc3fab644bd1b627
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99584459"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>将大量随机数据以并行方式上传到 Azure 存储
@@ -162,7 +162,7 @@ private static async Task UploadFilesAsync()
 ```
 除设置线程和连接限制设置外，还需将 [UploadFromStreamAsync ](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) 方法的 [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) 配置为使用并行，并禁用 MD5 哈希验证。 文件以 100 mb 的块上传，此配置提高了性能，但如果网络性能不佳，可能成本高昂，因为如果出现失败，会重试整个 100 mb 的块。
 
-|properties|“值”|说明|
+|properties|值|说明|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| 上传时，此设置将 blob 分为多个块。 为获得最佳性能，此值应为内核数的 8 倍。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| 该属性禁用对上传内容的 MD5 哈希检查。 禁用 MD5 验证可加快传输速度。 但是不能确认传输文件的有效性或完整性。   |

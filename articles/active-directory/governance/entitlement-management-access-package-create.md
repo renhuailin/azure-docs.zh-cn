@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.openlocfilehash: e3df08272b352ee789c9879b1118105c435cffbd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103011079"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建新访问包
 
@@ -108,7 +108,7 @@ ms.locfileid: "96903524"
 1. 单击“下一步”  。
 
 >[!NOTE]
->可以将动态组添加到目录和访问包。 但是，在访问包中管理动态组资源时，将只能选择所有者角色。
+>可以将动态组添加到目录和访问包。 但是，在管理访问包中的动态组资源时，只能选择“所有者”角色。
 
 ## <a name="requests"></a>请求
 
@@ -128,7 +128,7 @@ ms.locfileid: "96903524"
 
 1. 查看访问包的设置
 
-    ![访问包-启用策略设置](./media/entitlement-management-access-package-create/review-create.png)
+    ![访问包 - 启用策略设置](./media/entitlement-management-access-package-create/review-create.png)
 
 1. 单击“创建”以创建访问包。
 
@@ -149,3 +149,4 @@ ms.locfileid: "96903524"
 - [共享链接以请求访问包](entitlement-management-access-package-settings.md)
 - [更改访问包的资源角色](entitlement-management-access-package-resources.md)
 - [直接将用户分配到访问包](entitlement-management-access-package-assignments.md)
+- [为访问包创建访问评审](entitlement-management-access-reviews-create.md)

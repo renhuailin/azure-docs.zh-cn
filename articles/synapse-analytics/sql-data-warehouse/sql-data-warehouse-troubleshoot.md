@@ -12,10 +12,10 @@ ms.author: gaursa
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 949a89dd4e84bdb44ad15eaff9ca160fdd21b395
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104602122"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）进行故障排除

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 03/08/2021
-ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/17/2021
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565973"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service/Microsoft Dataverse) 或 Dynamics CRM 复制数据
 
@@ -323,6 +323,7 @@ Dynamics 链接服务支持以下属性。
 | alternateKeyName | 在实体上定义的用于执行更新插入的备用密钥名称。 | 否。 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否。 默认值为 10。 |
 | ignoreNullValues | 在执行写入操作期间是否忽略输入数据中的 NULL 值（键字段除外）。<br/><br/>有效值为 **TRUE** 和 **FALSE**：<ul><li>**TRUE**：执行更新插入或更新操作时，保持目标对象中的数据不变。 插入在执行插入操作时定义的默认值。</li><li>**FALSE**：执行更新插入或更新操作时，将目标对象中的数据更新为 NULL 值。 执行插入操作时插入 NULL 值。</li></ul> | 否。 默认值为 **FALSE**。 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
 
 >[!NOTE]
 >接收器“writeBatchSize”和 Dynamics 接收器的复制活动“[parallelCopies](copy-activity-performance-features.md#parallel-copy)” 的默认值都是 10。 因此，默认情况下会将 100 条记录并发提交到 Dynamics。
@@ -369,7 +370,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从 Dynamics 视图检索数据，需要获取视图已保存的查询，并使用该查询来获取数据。
 
-有两个实体用于存储不同类型的视图：“已保存的查询”存储系统视图，而“用户查询”存储用户视图。 若要获取这些视图的信息，请参阅下面的 FetchXML 查询，并将“TARGETENTITY”替换为 `savedquery` 或 `userquery`。 每个实体类型都有更多可用属性，你可根据需要向查询添加它们。 详细了解 [savedquery 实体](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/savedquery)和 [userquery 实体](https://docs.microsoft.com/dynamics365/customer-engagement/web-api/userquery)。
+有两个实体用于存储不同类型的视图：“已保存的查询”存储系统视图，而“用户查询”存储用户视图。 若要获取这些视图的信息，请参阅下面的 FetchXML 查询，并将“TARGETENTITY”替换为 `savedquery` 或 `userquery`。 每个实体类型都有更多可用属性，你可根据需要向查询添加它们。 详细了解 [savedquery 实体](/dynamics365/customer-engagement/web-api/savedquery)和 [userquery 实体](/dynamics365/customer-engagement/web-api/userquery)。
 
 ```xml
 <fetch top="5000" >

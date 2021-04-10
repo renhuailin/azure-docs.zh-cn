@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684587"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023922"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -350,7 +350,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - 如果 singlePlacementGroup 为 true，则可将其修改为 false。 但是，如果 singlePlacementGroup 为 false，则 **不可** 将其修改为 true。
 - **subnet** - 修改规模集的子网的前提是，原始子网和新子网在同一虚拟网络中。
-- imageReferenceSku - 可以为已认可的 [Linux 发行版](../virtual-machines/linux/endorsed-distros.md)、Windows 服务器/客户端映像以及无[计划信息](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)的映像更新映像参考 SKU。 
+- imageReferenceSku - 可以为已认可的 [Linux 发行版](../virtual-machines/linux/endorsed-distros.md)、Windows 服务器/客户端映像以及无[计划信息](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information)的映像更新映像参考 SKU。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>需要解除分配才能更改的属性
 某些属性只有在规模集中的 VM 已解除分配的情况下，才能更改为特定值。 这些属性包括：
@@ -417,7 +417,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="update-the-load-balancer-for-your-scale-set"></a>更新规模集的负载均衡器
 假设在规模集带有 Azure 负载均衡器的情况下，需要将 Azure 负载均衡器替换为 Azure 应用程序网关。 规模集的负载均衡器和应用程序网关属性是列表的一部分，因此可以使用以下命令来删除或添加列表元素，而不必直接修改属性：
 
-- Azure Powershell：
+- Azure PowerShell：
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss

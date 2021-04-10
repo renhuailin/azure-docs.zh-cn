@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
 ms.openlocfilehash: 41f6db8cf2454c224addac525e9d039954a95712
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104601493"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教程：将 Dropbox Business 与 Azure Active Directory 集成
@@ -26,7 +26,7 @@ ms.locfileid: "104601493"
 * 让用户使用其 Azure AD 帐户自动登录到 Dropbox Business。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

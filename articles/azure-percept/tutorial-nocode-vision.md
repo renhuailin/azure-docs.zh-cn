@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097901"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023123"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>在 Azure Percept Studio 中创建无代码视觉解决方案
 
@@ -106,7 +106,7 @@ ms.locfileid: "102097901"
 
 1. 在“自定义视觉”页面的左侧，单击“标记”下的“未标记”，查看你刚才在上一步中收集的图像  。 选择一个或多个未标记的图像。
 
-1. 在“图像详细信息”窗口中，单击图像来开始标记。 如果选择“对象检测”作为项目类型，则还必须在要标记的特定对象周围绘制一个[边界框](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images)。 根据需要调整边界框。 键入对象标记，然后单击 + 来应用标记。 例如，如果你要创建一个视觉解决方案，使其在货架需要补货时通知你，那么需要向空货架图像添加“空货架”标记，向满货架图像添加“满货架”标记。 对所有未标记的图像重复此操作。
+1. 在“图像详细信息”窗口中，单击图像来开始标记。 如果选择“对象检测”作为项目类型，则还必须在要标记的特定对象周围绘制一个[边界框](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images)。 根据需要调整边界框。 键入对象标记，然后单击 + 来应用标记。 例如，如果你要创建一个视觉解决方案，使其在货架需要补货时通知你，那么需要向空货架图像添加“空货架”标记，向满货架图像添加“满货架”标记。 对所有未标记的图像重复此操作。
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="自定义视觉中的图像标记屏幕。":::
 
@@ -116,7 +116,7 @@ ms.locfileid: "102097901"
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="突出显示了“训练”按钮的训练图像选项。":::
 
-1. 训练完成后，屏幕将显示模型的性能。 若要详细了解如何评估这些结果，请查看[模型评估文档](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector)。 训练后，你可能还希望针对其他图像[测试模型](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model)并根据需要重新训练。 每次训练模型时，模型都会另存为新的迭代。 若要详细了解如何提高模型性能，请查看[自定义视觉文档](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
+1. 训练完成后，屏幕将显示模型的性能。 若要详细了解如何评估这些结果，请查看[模型评估文档](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector)。 训练后，你可能还希望针对其他图像[测试模型](../cognitive-services/custom-vision-service/test-your-model.md)并根据需要重新训练。 每次训练模型时，模型都会另存为新的迭代。 若要详细了解如何提高模型性能，请查看[自定义视觉文档](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)。
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="模型训练结果。":::
 
@@ -143,7 +143,7 @@ ms.locfileid: "102097901"
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>通过设置重新训练来改善模型
 
-在对模型进行训练并将其部署到设备后，可以通过设置重新训练参数来捕获更多训练数据，从而提高模型的性能。 此功能可让你基于概率范围捕获图像，从而改善经过训练的模型的性能。 例如，可以将设备设置为仅在概率较低时捕获训练图像。 下面是有关如何添加更多图像以及如何平衡训练数据的一些[附加指导](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)。
+在对模型进行训练并将其部署到设备后，可以通过设置重新训练参数来捕获更多训练数据，从而提高模型的性能。 此功能可让你基于概率范围捕获图像，从而改善经过训练的模型的性能。 例如，可以将设备设置为仅在概率较低时捕获训练图像。 下面是有关如何添加更多图像以及如何平衡训练数据的一些[附加指导](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)。
 
 1. 若要设置重新训练，请返回到“项目”，然后返回到“项目摘要”
 1. 在“图像捕获”选项卡中，选择“自动图像捕获”和“设置重新训练”。
@@ -161,6 +161,16 @@ ms.locfileid: "102097901"
 1. 单击“所有资源”。
 1. 单击在本教程中创建的资源旁边的复选框。 资源类型将作为“认知服务”列出。
 1. 单击屏幕顶部附近的“删除”图标。
+
+## <a name="video-walkthrough"></a>视频演练
+
+有关上述步骤的直观演练，请参阅以下视频：
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
+
+</br>
 
 ## <a name="next-steps"></a>后续步骤
 

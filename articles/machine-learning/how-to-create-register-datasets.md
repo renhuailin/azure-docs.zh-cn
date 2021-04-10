@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 81779d942b31f940d579de623ecb39c35d3a8b14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103417631"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642144"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -52,7 +52,7 @@ ms.locfileid: "103417631"
     * 使用自己的 Jupyter 笔记本，按照[这些说明](/python/api/overview/azure/ml/install)自行安装 SDK。
 
 > [!NOTE]
-> 某些数据集类依赖于 [azureml-dataprep](/python/api/azureml-dataprep/) 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。 如果使用的是不受支持的发行版，请按照[此指南](/dotnet/core/install/linux)安装 .NET Core 2.1 以继续操作。 
+> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。 如果使用的是不受支持的发行版，请按照[此指南](/dotnet/core/install/linux)安装 .NET Core 2.1 以继续操作。 
 
 ## <a name="compute-size-guidance"></a>计算大小指南
 

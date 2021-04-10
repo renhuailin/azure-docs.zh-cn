@@ -9,14 +9,16 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8e64233ce1d59512e38ce6c366eba889392c4623
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8da5c24265a43eaaf1ecfe80649b6f4fea588b3f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736485"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103464050"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更高效。 此功能非常适用于处理大量数据的服务，例如计算机视觉模型。 [自定义视觉服务](../cognitive-services/custom-vision-service/overview.md)用于生成自定义图像分类器并将其作为容器部署到设备。 将这两项服务一起使用可以对图像或视频流进行分析，不需先将所有数据从站点转移出来。 自定义视觉提供一个可以将图像与训练的模型进行比较的分类器，以便生成见解。
 
@@ -42,10 +44,10 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 >[!TIP]
 >本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。
 
-在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件：
+在开始学习本教程之前，应已完成介绍如何设置用于开发 Linux 容器的环境的上一教程：[使用 Linux 容器开发 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
+* 一个运行 Azure IoT Edge 的设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
@@ -72,7 +74,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 4. 使用以下值来创建项目：
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 名称 | 为项目提供一个名称，例如 **EdgeTreeClassifier**。 |
    | 说明 | 可选项目说明。 |
@@ -146,7 +148,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **CustomVisionSolution**），或者接受默认名称。 |
@@ -214,7 +216,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 1. 在同一 Visual Studio Code 窗口中，使用命令面板运行 **Azure IoT Edge:** Add IoT Edge Module”。 在命令面板中提供新模块所需的以下信息： 
 
-   | Prompt | Value | 
+   | Prompt | 值 | 
    | ------ | ----- |
    | 选择部署模板文件 | 选择 CustomVisionSolution 文件夹中的 deployment.template.json 文件。 |
    | 选择模块模板 | 选择“Python 模块” |

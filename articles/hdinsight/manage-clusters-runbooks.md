@@ -5,14 +5,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944041"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864782"
 ---
-# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>教程：通过 Azure 自动化创建 Azure HDInsight 群集
+# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>教程：使用 Azure 自动化创建 Azure HDInsight 群集
 
 使用 Azure 自动化可创建在云中运行的脚本，并按需或按计划管理 Azure 资源。 本文介绍如何通过创建 PowerShell runbook 来创建和删除 Azure HDInsight 群集。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98944041"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 现有的 [Azure 自动化帐户](../automation/automation-quickstart-create-account.md)。
 * 现有的 [Azure 存储帐户](../storage/common/storage-account-create.md)，它将用作群集存储。
@@ -34,28 +34,28 @@ ms.locfileid: "98944041"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择 Azure 自动化帐户。
-1. 在“共享资源”下选择“模块库”。  
-1. 在框中键入 AzureRM.Profile，并按 Enter 进行搜索  。 选择可用的搜索结果。
-1. 在 AzureRM.profile 屏幕上，选择“导入”   。 选中“更新 Azure 模块”对应的框，然后选择“确定”  。
+1. 在“共享资源”下选择“模块库”。 
+1. 在框中键入 AzureRM.Profile，并按 Enter 进行搜索。 选择可用的搜索结果。
+1. 在 AzureRM.profile 屏幕上，选择“导入”。 选中“更新 Azure 模块”对应的框，然后选择“确定”。
 
-    ![导入 AzureRM.profile 模块](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="导入 AzureRM.profile 模块" border="false":::
 
-1. 返回到模块库，方法是：在“共享资源”下选择“模块库”。  
-1. 键入 HDInsight。  选择 AzureRM.HDInsight  。
+1. 返回到模块库，方法是：在“共享资源”下选择“模块库”。
+1. 键入 HDInsight。 选择 AzureRM.HDInsight。
 
-    ![浏览 HDInsight 模块](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="浏览 HDInsight 模块" border="true":::
 
-1. 在 AzureRM.HDInsight 面板上，依次选择“导入”和“确定”    。
+1. 在 AzureRM.HDInsight 面板上，依次选择“导入”和“确定”。
 
-    ![导入 AzureRM.HDInsight 模块](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="导入 AzureRM.HDInsight 模块" border="true":::
 
 ## <a name="create-credentials"></a>创建凭据
 
-1. 在“共享资源”下，选择“凭据”   。
-1. 选择“添加凭据”  。
-1. 在“新凭据”面板上输入所需的信息  。 此凭据用于存储群集密码，你将使用它来登录 Ambari。
+1. 在“共享资源”下，选择“凭据”。
+1. 选择“添加凭据”。
+1. 在“新凭据”面板上输入所需的信息。 此凭据用于存储群集密码，你将使用它来登录 Ambari。
 
-    | properties | 值 |
+    | 属性 | 值 |
     | --- | --- |
     | 名称 | `cluster-password` |
     | 用户名 | `admin` |
@@ -65,20 +65,20 @@ ms.locfileid: "98944041"
 1. 选择“创建”  。
 1. 对新凭据 `ssh-password` 重复相同的过程，并使用用户名 `sshuser` 和所选的密码。 选择“创建”  。 此凭据用于存储群集的 SSH 密码。
 
-    ![创建凭据](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="create credential" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>创建 runbook 以创建群集
 
 1. 在“过程自动化”下，选择“Runbook”。  
 1. 选择“创建 Runbook”  。
-1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-create`  。 在“Runbook 类型”下拉列表中，选择 Powershell   。
+1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-create`。 在“Runbook 类型”下拉列表中，选择 Powershell。
 1. 选择“创建”  。
 
-    ![创建 runbook](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="create runbook" border="true":::
 
-1. 在“编辑 PowerShell Runbook”屏幕上输入以下代码，然后选择“发布”   ：
+1. 在“编辑 PowerShell Runbook”屏幕上输入以下代码，然后选择“发布”：
 
-    ![发布 runbook](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="publish runbook" border="true":::
 
     ```powershell
     Param
@@ -127,9 +127,9 @@ ms.locfileid: "98944041"
 
 1. 在“过程自动化”下，选择“Runbook”。  
 1. 选择“创建 Runbook”  。
-1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-delete`  。 在“Runbook 类型”下拉列表中，选择 Powershell   。
+1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-delete`。 在“Runbook 类型”下拉列表中，选择 Powershell。
 1. 选择“创建”  。
-1. 在“编辑 PowerShell Runbook”屏幕上输入以下代码，然后选择“发布”   ：
+1. 在“编辑 PowerShell Runbook”屏幕上输入以下代码，然后选择“发布”：
 
     ```powershell
     Param
@@ -149,20 +149,20 @@ ms.locfileid: "98944041"
 
 ### <a name="create-a-cluster"></a>创建群集
 
-1. 查看自动化帐户的 Runbook 列表，方法是：在“流程自动化”下选择 Runbook。  
+1. 查看自动化帐户的 Runbook 列表，方法是：在“流程自动化”下选择 Runbook。
 1. 选择 `hdinsight-cluster-create`，或创建群集创建 runbook 时使用的名称。
-1. 选择“开始”，立即执行 runbook  。 你还可以安排 runbook 定期运行。 请参阅[在 Azure 自动化中安排运行 Runbook](../automation/shared-resources/schedules.md)
-1. 输入脚本所需的参数，然后选择“确定”  。 这会创建一个新的 HDInsight 群集，该群集具有你在 CLUSTERNAME 参数中指定的名称  。
+1. 选择“开始”，立即执行 runbook。 你还可以安排 runbook 定期运行。 请参阅[在 Azure 自动化中安排运行 Runbook](../automation/shared-resources/schedules.md)
+1. 输入脚本所需的参数，然后选择“确定”。 这会创建一个新的 HDInsight 群集，该群集具有你在 CLUSTERNAME 参数中指定的名称。
 
-    ![执行创建群集 runbook](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="执行创建群集 runbook" border="true":::
 
 ### <a name="delete-a-cluster"></a>删除群集
 
-通过选择创建的 `hdinsight-cluster-delete` runbook 删除群集。 选择“开始”，输入 CLUSTERNAME 参数，然后选择“确定”    。
+通过选择创建的 `hdinsight-cluster-delete` runbook 删除群集。 选择“开始”，输入 CLUSTERNAME 参数，然后选择“确定”。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要，请删除创建的 Azure 自动化帐户以避免意外的费用。 要执行此操作，请导航到 Azure 门户，选择创建了 Azure 自动化帐户的资源组，选择自动化帐户，然后选择“删除”  "。
+如果不再需要，请删除创建的 Azure 自动化帐户以避免意外的费用。 要执行此操作，请导航到 Azure 门户，选择创建了 Azure 自动化帐户的资源组，选择自动化帐户，然后选择“删除”"。
 
 ## <a name="next-steps"></a>后续步骤
 

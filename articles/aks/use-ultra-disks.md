@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/10/2020
 ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102502563"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>使用 Azure Kubernetes 服务上的 Azure 超级磁盘（预览）

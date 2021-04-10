@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6eb91734afac81e103cebea48865793fa687ad71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024823"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -63,5 +63,4 @@ ms.locfileid: "100583359"
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
     - [工作簿](../visualize/workbooks-overview.md)
-    - [添加用户上下文](usage-send-user-context.md)
-
+    - [添加用户上下文](./usage-overview.md)

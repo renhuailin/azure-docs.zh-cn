@@ -5,16 +5,15 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
-ms.subservice: powershell
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 021719751d1f1cc93d1ad841429c2e025a902c8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 05aa5e2ae70df7b517ad1d8cc592141bed66b7ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89078888"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935731"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建基本的虚拟机规模集
 此脚本创建运行 Windows Server 2016 的虚拟机规模集。 运行脚本后，可通过 RDP 访问 VM 实例。

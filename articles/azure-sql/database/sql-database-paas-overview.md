@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65710ae40a971d214068f0e2686f78fb994a967e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451420"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601374"
 ---
 # <a name="what-is-azure-sql-database"></a>什么是 Azure SQL 数据库？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,6 +32,9 @@ Azure SQL 数据库是基于 [Microsoft SQL Server 数据库引擎](/sql/sql-ser
 
 如果你不熟悉 Azure SQL 数据库，请观看我们深度讲解的 [Azure SQL 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的“Azure SQL 数据库概述”视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
+
+> [!TIP]
+> 如何完善 Azure SQL？ [参与调查](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)。
 
 ## <a name="deployment-models"></a>部署模型
 

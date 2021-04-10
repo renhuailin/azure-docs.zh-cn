@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091102"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579461"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -113,13 +113,13 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - ServiceNow
 - Workday 到 Active Directory/Workday 到 Azure Active Directory
 - SuccessFactors 到 Azure Active Directory Active Directory/SuccessFactors
-- Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
+- Azure Active Directory（支持 [Azure AD 图形 API 默认属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）。 了解有关[创建扩展](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user)和[已知限制](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)的详细信息。 
 - 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用
 - 对于到 Workday 或 SuccessFactors 的 Azure Active Directory 写回，支持更新受支持的属性（XPATH 和 JSONPath）的元数据，但不支持添加默认架构所含范围之外的新的 Workday 或 SuccessFactors 属性
 
 
 > [!NOTE]
-> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 默认情况下，编辑受支持的属性列表的功能处于锁定状态，但客户可以通过导航到以下 URL 来启用该功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 然后，可以导航到应用程序以查看属性列表，如[上文](#editing-the-list-of-supported-attributes)所述。 
+> 建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表，或者在 Azure 门户 UI 中未自动显示源属性的情况下编辑。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 默认情况下，编辑受支持的属性列表的功能处于锁定状态，但客户可以通过导航到以下 URL 来启用该功能： https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true 。 然后，可以导航到应用程序以查看属性列表，如[上文](#editing-the-list-of-supported-attributes)所述。 
 
 编辑受支持属性的列表时，将提供以下属性：
 

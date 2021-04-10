@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185863"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025214"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音转文本的自动语言检测
 
@@ -30,7 +30,7 @@ ms.locfileid: "98185863"
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用语言 SDK 进行自动语言检测
 
-自动语言检测目前存在每次检测仅限四种语言的服务端限制。 在构造 `AudoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
+自动语言检测目前存在每次检测仅限四种语言的服务端限制。 在构造 `AutoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
 
 > [!TIP]
 > 还可以指定一个自定义模型，供执行语音转文本操作时使用。 有关详细信息，请参阅[使用自定义模型来自动检测语言](#use-a-custom-model-for-automatic-language-detection)。

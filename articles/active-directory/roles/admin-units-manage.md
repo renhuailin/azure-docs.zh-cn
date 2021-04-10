@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 0706fad1e5340625c32eab691ac3e4d58eeafc9f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012085"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
@@ -27,7 +27,7 @@ ms.locfileid: "100574156"
 
 ## <a name="get-started"></a>入门
 
-1. 若要通过 [图形资源管理器](https://aka.ms/ge)从以下说明运行查询，请执行以下操作：
+1. 若要通过 [Graph 资源管理器](https://aka.ms/ge)使用以下指令运行查询，请执行以下操作：
 
     a. 在 Azure 门户中，转到 Azure AD。 
     
@@ -58,7 +58,7 @@ ms.locfileid: "100574156"
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-尝试运行以下命令之前，请安装 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) ：
+在尝试运行以下命令之前，请安装 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)：
 
 ```powershell
 Connect-AzureAD
@@ -69,10 +69,15 @@ New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "W
 
 ### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
+请求
+
 ```http
-Http Request
 POST /administrativeUnits
-Request body
+```
+
+正文
+
+```http
 {
   "displayName": "North America Operations",
   "description": "North America Operations administration"
@@ -94,18 +99,23 @@ Request body
 ### <a name="use-powershell"></a>使用 PowerShell
 
 ```powershell
-$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
+$adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $adminUnitObj.ObjectId
 ```
 
 可以根据特定环境的需要修改用引号引起来的值。
 
 ### <a name="use-the-graph-api"></a>使用 Graph API
 
+请求
+
 ```http
-HTTP request
-DELETE /administrativeUnits/{Admin id}
-Request body
+DELETE /administrativeUnits/{admin-unit-id}
+```
+
+正文
+
+```http
 {}
 ```
 

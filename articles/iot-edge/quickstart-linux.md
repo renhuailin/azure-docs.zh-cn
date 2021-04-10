@@ -4,21 +4,23 @@ description: 本快速入门介绍如何在 Linux 上创建 IoT Edge 设备，�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/02/2020
+ms.date: 03/12/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920796"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463439"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
-本快速入门通过将容器化代码部署到虚拟 Linux IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建安装了 IoT Edge 服务的测试计算机，然后在完成后将其删除。
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
+本快速入门通过将容器化代码部署到虚拟 Linux IoT Edge 设备来测试 Azure IoT Edge。 IoT Edge 允许你远程管理设备上的代码，这样你就可以将更多工作负荷发送到 Edge。 对于本快速入门，我们建议使用 Azure 虚拟机作为 IoT Edge 设备，这样可以快速创建测试计算机，并且可以在完成后将其删除。
 
 此快速入门介绍如何：
 
@@ -41,7 +43,7 @@ ms.locfileid: "96920796"
 
 云资源：
 
-- 一个资源组，用于管理在本快速入门中使用的所有资源。 在本快速入门和后续教程中，我们使用示例资源组名称 IoTEdgeResources。
+* 一个资源组，用于管理在本快速入门中使用的所有资源。 在本快速入门和后续教程中，我们使用示例资源组名称 IoTEdgeResources。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -103,6 +105,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 本部分使用 Azure 资源管理器模板来创建新的虚拟机，并在其上安装 IoT Edge 运行时。 如果要改为使用自己的 Linux 设备，则可以按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的安装步骤进行操作，然后返回本快速入门。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 使用以下 CLI 命令基于预生成的 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) 模板创建 IoT Edge 设备。
 
 * 对于 bash 或 Cloud Shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 Cloud Shell 窗口中：
@@ -113,8 +118,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
    --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
-   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
    --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -131,6 +135,42 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+使用以下 CLI 命令基于预生成的 [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy/tree/1.2.0-rc4) 模板创建 IoT Edge 设备。
+
+* 对于 bash 或 Cloud Shell 用户，请将以下命令复制到文本编辑器中，将占位符文本替换为自己的信息，然后将其复制到 bash 或 Cloud Shell 窗口中：
+
+   ```azurecli-interactive
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+* 对于 PowerShell 用户，请将以下命令复制到 PowerShell 窗口中，然后将占位符文本替换为自己的信息：
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://raw.githubusercontent.com/Azure/iotedge-vm-deploy/1.2.0-rc4/edgeDeploy.json" `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+:::moniker-end
+<!-- end 1.2 -->
 
 此模板采用以下参数：
 
@@ -158,6 +198,9 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
 
 连接到虚拟机后，验证是否已在 IoT Edge 设备上成功安装并配置运行时。
 
+<!--1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. 查看 IoT Edge 安全守护程序是否正作为系统服务运行。
 
    ```bash
@@ -182,6 +225,35 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 �
    ```
 
    ![查看设备上的一个模块](./media/quickstart-linux/iotedge-list-1.png)
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 检查 IoT Edge 是否正在运行。 如果 IoT Edge 正在运行，以下命令应该会返回“正常”状态，否则就会提供任何服务错误。
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+   >[!TIP]
+   >需要提升权限才能运行 `iotedge` 命令。 安装 IoT Edge 运行时后从计算机中注销并第一次重新登录后，你的权限将自动更新。 在此之前，请在命令前使用 `sudo`。
+
+2. 若需排查服务问题，请检索服务日志。
+
+   ```bash
+   sudo iotedge system logs
+   ```
+
+3. 查看在 IoT Edge 设备上运行的所有模块。 由于此服务是第一次运行，因此只会看到 **edgeAgent** 模块在运行。 edgeAgent 模块会默认运行，用于安装并启动部署到设备的任何其他模块。
+
+   ```bash
+   sudo iotedge list
+   ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 
@@ -192,6 +264,31 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 ![关系图 - 将模块从云部署到设备](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+由于 IoT Edge 版本 1.2 为公共预览版，因此还需要执行额外的步骤，以将运行时模块也更新为它们的公共预览版。
+
+1. 从设备详细信息页上，再次选择“设置模块”。
+
+1. 选择“运行时设置”。
+
+1. 对 IoT Edge 中心和 IoT Edge 代理这两个模块的“映像”字段都进行更新，以使用版本标记 1.2.0-rc4。 例如：
+
+   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
+   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
+
+1. 模拟温度传感器模块应该仍列在模块部分中。 对于公共预览版，无需对该模块进行任何更改。
+
+1. 选择“查看 + 创建”。
+
+1. 选择“创建”  。
+
+1. 在设备详细信息页上，可以选择“$edgeAgent”或“$edgeHub”，此时会看到模块详细信息反映了映像的公共预览版 。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
@@ -205,7 +302,15 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
    sudo iotedge list
    ```
 
-   ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2.png)
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+   ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2-version-201806.png)
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+   ![查看设备上的三个模块](./media/quickstart-linux/iotedge-list-2-version-202011.png)
+:::moniker-end
 
 查看从温度传感器模块发送的消息：
 
@@ -232,7 +337,7 @@ IoT Edge 设备现在已配置好。 它可以运行云部署型模块了。
 删除 **IoTEdgeResources** 组。 可能需要花费几分钟来删除资源组。
 
 ```azurecli-interactive
-az group delete --name IoTEdgeResources
+az group delete --name IoTEdgeResources --yes
 ```
 
 可以通过查看资源组列表来确认已删除该资源组。

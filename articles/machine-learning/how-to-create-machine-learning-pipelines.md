@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618196"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642265"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-中间数据（或步骤的输出）由 [PipelineData](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) 对象表示。 `output_data1` 生成为步骤的输出。 还可以调用 `register_on_complete` 将此数据注册为数据集。 如果在一个步骤中创建一个 `OutputFileDatasetConfig` 并将其作为另一个步骤的输入，这种步骤之间的数据依赖关系将在管道中创建一个隐式的执行顺序。
+中间数据（或步骤的输出）由 [PipelineData](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) 对象表示。 `output_data1` 生成为步骤的输出。 还可以调用 `register_on_complete` 将此数据注册为数据集。 如果在一个步骤中创建一个 `OutputFileDatasetConfig` 并将其作为另一个步骤的输入，这种步骤之间的数据依赖关系将在管道中创建一个隐式的执行顺序。
 
 `OutputFileDatasetConfig` 对象返回目录，并且默认将输出写入工作区的默认数据存储。
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>使用数据集 
 
-从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 可以将输出写入 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)、[DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)，如果要将数据写入特定数据存储，请使用 [OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig)。 
+从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集可以用作任何管道步骤的输入。 可以将输出写入 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)、[DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep)，如果要将数据写入特定数据存储，请使用 [OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig)。 
 
 > [!IMPORTANT]
 > 仅 Azure Blob、Azure 文件共享、ADLS Gen 1 和 Gen 2数据存储支持使用 `OutputFileDatasetConfig` 将输出数据写回到数据存储。 
@@ -330,14 +330,14 @@ pipeline_run1.wait_for_completion()
 
 有关详细信息，请参阅 [Experiment 类](/python/api/azureml-core/azureml.core.experiment.experiment)参考。
 
-## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>对推理时更改的参数使用管道参数
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time&quot;></a>对推理时更改的参数使用管道参数
 
 有时，管道内单个步骤的自变量与开发和训练时段相关：例如训练率和动量或数据或配置文件的路径等。 但是，在部署模型时，需要动态传递用于推理的自变量（即生成的模型要响应的查询！）。 应将这些类型的自变量设置为管道参数。 若要在 Python 中执行此操作，请使用 `azureml.pipeline.core.PipelineParameter` 类，如下面的代码片段所示：
 
 ```python
 from azureml.pipeline.core import PipelineParameter
 
-pipeline_param = PipelineParameter(name="pipeline_arg", default_value="default_val")
+pipeline_param = PipelineParameter(name=&quot;pipeline_arg&quot;, default_value=&quot;default_val")
 train_step = PythonScriptStep(script_name="train.py",
                             arguments=["--param1", pipeline_param],
                             target=compute_target,
