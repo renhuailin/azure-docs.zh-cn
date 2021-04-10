@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44bcc27f877f6b2a547c51ecd3848214719cb085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502529"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643662"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -263,7 +263,7 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 
 [在此 Jupyter 笔记本示例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)了解如何转换为 ONNX 格式。 了解 [ONNX 支持的算法](how-to-configure-auto-train.md#select-your-experiment-type)。
 
-ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)。 
+ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

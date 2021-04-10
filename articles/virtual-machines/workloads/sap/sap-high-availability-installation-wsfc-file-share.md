@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5fa4cba67e279f66c090c8cb30eadf099f3c998
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: a3759bbe92a2de8515c7d812637acd88070f8d46
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103490902"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -211,12 +211,14 @@ ms.locfileid: "101673558"
 
 需要以下来自 SAP 的可执行文件和 DLL：
 * SAP 软件预配管理器 (SWPM) 安装工具版本 SPS25 或更高版本。
-* SAP 内核7.49 或更高版本
+* SAP 内核 7.49 或更高版本
 
 > [!IMPORTANT]
-> 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。
+> 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。  
+>   
+> [!IMPORTANT]
+> 安装必须满足以下要求：必须将 SAP ASCS/SCS 实例和 SOFS 共享部署在不同群集中。    
 >
-
 
 我们不会介绍数据库管理系统 (DBMS) 安装，因为安装因使用的 DBMS 而异。 但是，本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 此类功能包括：适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
@@ -231,13 +233,13 @@ ms.locfileid: "101673558"
 
 在 SOFS 群集上创建以下卷和文件共享：
 
-* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`SOFS 群集共享卷上的 SAP GLOBALHOST 文件结构 (CSV) 
+* SOFS 群集共享卷 (CSV) 上的 SAP GLOBALHOST 文件 `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` 结构
 
 * SAPMNT 文件共享
 
 * 通过对以下项的完全控制，在 SAPMNT 文件共享和文件夹上设置安全性：
-    * \<DOMAIN>\ SAP_ \<SID> _GlobalAdmin 用户组
-    * SAP ASCS/SCS 群集节点计算机对象 \<DOMAIN> \ClusterNode1 $ 和 \<DOMAIN> \ClusterNode2 $
+    * \<DOMAIN>\SAP_\<SID>_GlobalAdmin 用户组
+    * SAP ASCS/SCS 群集节点计算机对象 \<DOMAIN>>\ClusterNode1$ 和 \<DOMAIN>>\ClusterNode2$
 
 若要创建具有镜像还原功能的 CSV 卷，请在某个 SOFS 群集节点上执行以下 PowerShell cmdlet：
 
@@ -299,7 +301,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或 **Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  的 **第一个群集节点**。
+**\<Product>**  >  **\<DBMS>**  > “安装” > “应用程序服务器 ABAP”（或 **Java**）>“高可用性系统”> >  **“ASCS/SCS 实例”**  >  **“第一个群集节点”** 。
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
@@ -309,22 +311,22 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<Product>** > **\<DBMS>** > **安装**  > **应用程序服务器 ABAP** (或 **Java**) >**高可用性系统**  >  **ASCS/SCS 实例**  >  **附加群集节点**。
+**\<Product>**  >  **\<DBMS>**  > “安装” > “应用程序服务器 ABAP”（或 **Java**）>“高可用性系统”> >  **“ASCS/SCS 实例”**  >  **“其他群集节点”** 。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
-更新 SAP ASCS/SCS 实例配置文件 \<SID> _ASCS/scs \<Nr>_ 中的参数 \<Host> 。
+更新 SAP ASCS/SCS 实例配置文件 \<SID>ASCS/SCS\<Nr>\<Host> 中的参数。
 
 
 | 参数名称 | 参数值 |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | true |
+| enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-`enque/encni/set_so_keepalive`仅当使用 ENSA1 时，才需要参数。  
-重新启动 SAP ASCS/SCS 实例。 `KeepAlive`在两个 SAP ASCS/scs 群集节点上设置参数时，请按照说明[在 sap ASCS/scs 实例的群集节点上设置注册表项][high-availability-guide]。 
+仅当使用 ENSA1 时才需要参数 `enque/encni/set_so_keepalive`。  
+重启 SAP ASCS/SCS 实例。 按照[在 SAP ASCS/SCS 实例的群集节点上设置注册表项][high-availability-guide]的说明，在两个 SAP ASCS/SCS 群集节点上设置 `KeepAlive` 参数。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 

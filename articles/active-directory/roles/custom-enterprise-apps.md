@@ -1,5 +1,5 @@
 ---
-title: 企业应用访问分配的自定义角色权限 - Azure Active Directory | Microsoft Docs
+title: 创建自定义角色以在 Azure Active Directory 中管理企业应用
 description: 在 Azure Active Directory 中为企业应用访问创建和分配自定义 Azure AD 角色
 services: active-directory
 author: rolyon
@@ -13,14 +13,14 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 1a76e2d37e9dcdd285a8608fdbfd715bfb834eb8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741139"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103467742"
 ---
-# <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>分配自定义角色以在 Azure Active Directory 中管理企业应用
+# <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>创建自定义角色以在 Azure Active Directory 中管理企业应用
 
 本文介绍如何创建一个在 Azure Active Directory (Azure AD) 中有权限管理用户和组的企业应用分配的自定义角色。 有关角色分配的元素，以及子类型、权限和属性集等术语的含义，请参阅[自定义角色概述](custom-overview.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "98741139"
 >[!NOTE]
 > 自定义角色是在组织范围级别创建和管理的，只在组织的“概述”页中提供。
 
-1. 在组织中以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 使用组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 依次选择“Azure Active Directory”、“角色和管理员”和“新建自定义角色”  。
 
     ![在 Azure AD 中，从角色列表添加新的自定义角色](./media/custom-enterprise-apps/new-custom-role.png)
@@ -64,7 +64,7 @@ ms.locfileid: "98741139"
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 门户将角色分配给用户
 
-1. 登录到具有特权角色管理员角色权限的 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 使用特权角色管理员角色权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 依次选择“Azure Active Directory”、“角色和管理员” 。
 1. 选择“授予权限以管理用户和组分配”角色。
 
@@ -89,18 +89,16 @@ ms.locfileid: "98741139"
 首先，安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 然后使用以下命令导入 Azure AD PowerShell 预览版模块：
 
 ```powershell
-PowerShell
-import-module azureadpreview
+Import-Module -Name AzureADPreview
 ```
 
 若要验证该模块是否可供使用，请将以下命令返回的版本与此处列出的版本之一进行匹配：
 
 ```powershell
-PowerShell
-get-module azureadpreview
+Get-Module -Name AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
+  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
 ```
 
 ### <a name="create-a-custom-role"></a>创建自定义角色

@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102563928"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>在 Azure 门户中通过 Azure 逻辑应用预览版创建有状态和无状态工作流
@@ -138,7 +138,7 @@ ms.locfileid: "102563928"
 
    ![屏幕截图显示了逻辑应用资源菜单，其中“工作流”处于选中状态，并且工具栏上的“添加”也处于选中状态。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-add-blank-workflow.png)
 
-1. 在“新建工作流”窗格打开后，为工作流提供一个名称，并选择 [ **“有状态”** 或 **“无状态”** ](logic-apps-overview-preview.md#stateful-stateless)工作流类型。 完成操作后，选择“创建”。
+1. 在“新建工作流”窗格打开后，为工作流提供一个名称，并选择 [ **“有状态”** 或 **“无状态”**](logic-apps-overview-preview.md#stateful-stateless)工作流类型。 完成操作后，选择“创建”。
 
    此示例将添加一个名为 `Fabrikam-Stateful-Workflow` 的空白有状态工作流。 默认情况下，工作流处于启用状态，但在你添加触发器和操作之前，它不会执行任何操作。
 
@@ -191,7 +191,7 @@ ms.locfileid: "102563928"
 
 ### <a name="add-the-office-365-outlook-action"></a>添加 Office 365 Outlook 操作
 
-1. 在设计器上，在你已添加的触发器下选择“新建步骤”。
+1. 在设计器上，在你已添加的触发器下，选择“新建步骤”。
 
    设计器上将显示“选择操作”提示，并且“添加操作”窗格将重新打开，以便你可以选择下一个操作。
 
@@ -335,7 +335,7 @@ ms.locfileid: "102563928"
    | **Aborted** | 由于外部问题（例如，系统中断或 Azure 订阅过期），运行已停止或未完成。 |
    | 已取消 | 运行已触发并已启动，但收到了取消请求。 |
    | **已失败** | 运行中的至少一个操作失败。 工作流中未设置后续操作来处理失败。 |
-   | **正在运行** | 运行已被触发并正在进行，但如果运行由于[操作限制](logic-apps-limits-and-config.md)或[当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而被限制，也可能会显示此状态。 <p><p>**提示**：如果你设置了[诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
+   | **正在运行** | 运行已被触发并正在进行，但如果运行由于[操作限制](logic-apps-limits-and-config.md)或[当前定价计划](https://azure.microsoft.com/pricing/details/logic-apps/)而被限制，也可能会显示此状态。 <p><p>**提示**：如果你设置了 [诊断日志记录](monitor-logic-apps-log-analytics.md)，则可以获取发生的任何限制事件的相关信息。 |
    | 成功 | 运行已成功。 如果有任何操作失败，工作流中的后续操作已处理了该失败。 |
    | **已超时** | 运行超时，因为当前持续时间超出了运行持续时间限制，该限制由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制。 运行持续时间是使用运行开始时间和在该开始时间有效的运行持续时间限制来计算的。 <p><p>**注意**：如果运行的持续时间还超出了当前的运行历史记录保留期限制（该限制也由 [ **“运行历史记录保留期(天)”** 设置](logic-apps-limits-and-config.md#run-duration-retention-limits)控制），则每日清理作业会将该运行从运行历史记录中清除。 无论运行是超时还是完成，始终都将使用运行的开始时间和当前保留期限制来计算保留期。 因此，如果你减小进行中的某个运行的持续时间限制，则该运行将超时。但是，运行将保留或从运行历史记录中清除，具体取决于运行持续时间是否超出了保留期限制。 |
    | **正在等待** | 运行尚未启动或已暂停，例如，由于前一个工作流实例仍在运行。 |
@@ -402,7 +402,7 @@ ms.locfileid: "102563928"
 
 1. 在 Azure 门户中，找到你的已部署逻辑应用。
 
-1. 在逻辑应用菜单上的“设置”下，选择“Application Insights” 。
+1. 在逻辑应用菜单上，在“设置”下，选择“Application Insights” 。
 
 1. 如果未启用 Application Insights，请在“Application Insights”窗格上选择“启用 Application Insights”。 在窗格更新后，选择底部的“应用”。
 

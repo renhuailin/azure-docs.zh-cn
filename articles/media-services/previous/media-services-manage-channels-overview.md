@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure 媒体服务实时传送视频流概述 | Microsoft Docs
-description: 本文概述了使用 Microsoft Azure 媒体服务的实时流式处理。
+description: 本文概述如何使用 Microsoft Azure 媒体服务实时传送视频流。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 195333f5f06145a1dfa84f0de2c5984190e3d7ca
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695698"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103014819"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 

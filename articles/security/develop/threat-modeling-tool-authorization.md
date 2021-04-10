@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 38b147a85a26fd1e0be4f5dc6b63ae4c1331d348
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101094000"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
@@ -237,7 +237,7 @@ WHERE userID=:id < - session var
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)  |
+| **参考**              | [分配 Azure 角色以管理对 Azure 订阅资源的访问](../../role-based-access-control/role-assignments-portal.md)  |
 | **步骤** | Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 进行细致的访问管理。 使用 Azure RBAC，可以仅授予用户执行其作业所需的访问次数。|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>使用 Service Fabric RBAC 限制客户端对群集操作的访问权限

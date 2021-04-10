@@ -1,6 +1,6 @@
 ---
 title: 如何使用用于 .NET 的 Azure 媒体服务 SDK 创建媒体处理器 | Microsoft Docs
-description: 了解如何创建一个媒体处理器组件来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
+description: 了解如何创建一个媒体处理器组件用来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3215eef337ca1c9a84f2f4d917dbea8ea2e090f0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: MT
+ms.openlocfilehash: 6ce2a28ff9b34373cc716ea397927ef160bd1097
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103013340"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何：获取媒体处理器实例
 
@@ -43,7 +43,7 @@ ms.locfileid: "93346683"
 
 ## <a name="get-media-processor"></a>获取媒体处理器
 
-以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 _context 的模块级变量引用服务器上下文，如[如何：  以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)一节所述。
+以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 **_context** 的模块级变量来引用 [如何：以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)部分中描述的服务器上下文。
 
 ```csharp
 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)

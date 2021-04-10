@@ -4,10 +4,10 @@ description: 在本教程中，你将了解如何使用 Azure IoT Edge 上的 Az
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: ea98b4c8981be9fffe7911e4c8402a8f522976f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101702311"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教程：将基于事件的视频录制到云中并从云中播放
@@ -298,7 +298,7 @@ ms.locfileid: "101702311"
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
 {
   "body": {
-    "sdp": "SDP:\nv=0\r\no=- 1586450538111534 1 IN IP4 XXX.XX.XX.XX\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/camera-300s.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.03.06\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-300.000\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/camera-300s.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=4D0029;sprop-parameter-sets=XXXXXXXXXXXXXXXXXXXXXX\r\na=control:track1\r\n"
+    "sdp&quot;: &quot;SDP:\nv=0\r\no=- 1586450538111534 1 IN IP4 XXX.XX.XX.XX\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/camera-300s.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.03.06\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-300.000\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/camera-300s.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=4D0029;sprop-parameter-sets=XXXXXXXXXXXXXXXXXXXXXX\r\na=control:track1\r\n"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
@@ -329,7 +329,7 @@ ms.locfileid: "101702311"
     "count": 2
   },
   "applicationProperties": {
-    "eventTime": "2020-05-17T17:53:44.062Z"
+    "eventTime&quot;: &quot;2020-05-17T17:53:44.062Z"
   }
 }
 ```
@@ -347,14 +347,14 @@ applicationProperties 部分包含事件时间。 这是 objectCounter 模块观
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAssetFromEVR-LVAEdge-20200517T175346Z"
+    "outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200517T175346Z"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
     "eventTime": " 2020-05-17T17:53:46.132Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```
@@ -370,14 +370,14 @@ applicationProperties 中的 subject 部分引用图形中的资产接收器节�
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAssetFromEVR-LVAEdge-20200517T175346Z"
+    "outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200517T175346Z"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingAvailable",
     "eventTime": "2020-05-17T17:54:15.808Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```
@@ -393,14 +393,14 @@ applicationProperties 中的 subject 部分引用图形中的资产接收器节�
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAssetFromEVR-LVAEdge-20200517T175346Z"
+    "outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200517T175346Z"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingStopped",
     "eventTime": "2020-05-17T17:54:15.040Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```

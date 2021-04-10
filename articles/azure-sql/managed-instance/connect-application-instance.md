@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
-ms.date: 11/09/2018
-ms.openlocfilehash: 3106ec1a45b307207624e5cd077a222acccc83d1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 02/25/2021
+ms.openlocfilehash: ca61f2163f1a66e87317274bab789db7944a4536
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692821"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065202"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>将应用程序连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -137,7 +137,7 @@ ms.locfileid: "101692821"
 
 - 如果使用虚拟网络对等互连，请确保已按照相关说明来设置[允许网关传输并使用远程网关](#connect-from-on-premises)。
 
-- 如果使用虚拟网络对等互连连接 Azure 应用服务托管应用程序，而且 SQL 托管实例虚拟网络具有公共 IP 地址范围，请确保你的托管应用程序设置允许出站流量路由到公共 IP 网络。 按照 [区域虚拟网络集成](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的说明进行操作。
+- 如果使用虚拟网络对等互连连接 Azure 应用服务托管应用程序，而且 SQL 托管实例虚拟网络具有公共 IP 地址范围，请确保你的托管应用程序设置允许出站流量路由到公共 IP 网络。 按照[区域虚拟网络集成](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的说明进行操作。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>所需的驱动程序和工具版本
 

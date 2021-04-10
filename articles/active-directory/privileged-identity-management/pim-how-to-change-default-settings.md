@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708477"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567027"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -64,14 +64,14 @@ ms.locfileid: "97708477"
 
 可以选择其中一个合格的  分配持续时间选项：
 
-| | |
+| | 说明 |
 | --- | --- |
 | **允许永久的合格分配** | 全局管理员和特权角色管理员可以分配永久的合格分配。 |
 | **使合格分配在以下时间后过期** | 全局管理员和特权角色管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
 
 并且，可以选择其中一个活动分配持续时间选项：
 
-| | |
+| | 说明 |
 | --- | --- |
 | **允许永久的活动分配** | 全局管理员和特权角色管理员可以分配永久的活动分配。 |
 | **使活动分配在以下时间后过期** | 全局管理员和特权角色管理员可以要求所有活动分配都具有指定的开始和结束日期。 |

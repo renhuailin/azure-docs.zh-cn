@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182751"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>将 Azure SQL 托管实例中的数据库还原到之前的某个时间点
@@ -56,7 +56,7 @@ SQL 托管实例的时间点还原具有以下限制：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 2. 转到你的 SQL 托管实例，选择要还原的数据库。
 3. 在数据库页上选择“还原”：
 

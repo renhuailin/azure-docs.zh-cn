@@ -5,16 +5,16 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: availability
+ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ff67ac4be32142848a12185199d63db5a14e6c34
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b43502e771415c0ca62d821c697516fae16e35ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934523"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>适用于 Azure 虚拟机规模集的自动实例修复
 

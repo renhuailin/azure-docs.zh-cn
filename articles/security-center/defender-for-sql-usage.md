@@ -1,6 +1,6 @@
 ---
-title: 如何设置适用于 SQL 的 Azure Defender
-description: 了解如何启用 Azure 安全中心的可选 Azure Defender SQL 计划
+title: 如何设置 Azure Defender for SQL
+description: 了解如何启用 Azure 安全中心的可选 Azure Defender for SQL 计划
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b82f0ca0624fcbd64f1c23f87f8f21f96d8e4d4c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
-ms.translationtype: MT
+ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
+ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100570"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103465457"
 ---
-# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>为计算机上的 SQL server 启用 Azure Defender 
+# <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
 
-此 Azure Defender 计划可检测异常活动，指示对访问或利用数据库的异常和潜在有害尝试。
+此 Azure Defender 计划会检测异常活动，这些活动表示异常和可能有害的数据库访问或攻击尝试。
 
 出现可疑的数据库活动、潜在漏洞，或者 SQL 注入攻击以及异常的数据库访问和查询模式时，你会看到警报。
 
@@ -31,71 +31,71 @@ ms.locfileid: "102100570"
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
-|定价：|**计算机上适用于 SQL server 的 Azure Defender** 按 [安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)计费|
-|受保护的 SQL 版本：|Azure SQL Server (Microsoft 支持涵盖的所有版本) |
+|定价：|计算机上的 Azure Defender for SQL 服务器按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
+|受保护的 SQL 版本：|Azure SQL Server（Microsoft 支持涵盖的所有版本）|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
 |||
 
-## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>为计算机上的 SQL server 设置 Azure Defender
+## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>设置计算机上的 Azure Defender for SQL 服务器
 
 若要启用此计划：
 
-[步骤1。在 SQL server 的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
+[步骤 1。在 SQL 服务器的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-[步骤2。在安全中心的 "定价和设置" 页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[步骤 2.在安全中心的“定价和设置”页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
 
-### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL server 的主机上预配 Log Analytics 代理：
+### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL 服务器的主机上预配 Log Analytics 代理：
 
-- **在 AZURE vm 上 SQL Server** -如果 SQL 计算机托管在 azure vm 上，则可以 [启用自动预配 Log Analytics 代理 <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)。 或者，你可以按照手动过程来加入 [你的 Azure Stack vm](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
-- **SQL Server 在 Azure arc 上** -如果你的 SQL Server 由启用了 [Azure arc](../azure-arc/index.yml) 的服务器管理，则可以使用安全中心建议部署 Log Analytics 代理 "Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上 (预览版) "。 或者，可以遵循 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中所述的安装方法。
+- **Azure VM 上的 SQL Server** - 如果 SQL 计算机托管在 Azure VM 上，则可以[启用 Log Analytics 代理的自动预配<a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)。 或者，可以按照手动过程来[加入 Azure Stack Hub VM](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)。
+- **Azure Arc 上的 SQL Server** - 如果 SQL Server 由启用了 [Azure Arc](../azure-arc/index.yml) 的服务器管理，则可以使用安全中心建议“Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览版）”部署 Log Analytics 代理。 或者，可以遵循 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中所述的安装方法进行操作。
 
-- **SQL Server 本地** -如果你的 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，则有两个选项可用于将其连接到 azure：
+- **本地 SQL Server** - 如果 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，可使用两个选项将其连接到 Azure：
     
-    - **部署 Azure Arc** -可以将任何 Windows 计算机连接到安全中心。 但是，Azure Arc 在 *所有* Azure 环境中提供更深入的集成。 如果设置了 Azure Arc，你会在门户中看到 " **SQL Server – Azure Arc** " 页，并且安全警报将显示在该页面上的 "专用 **安全** " 选项卡上。 因此，第一个和推荐的选项是 [在主机上设置 Azure arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) 并按照上面的 **azure arc 上 SQL Server** 的说明进行操作。
+    - **部署 Azure Arc** - 可将任何 Windows 计算机连接到安全中心。 但是，Azure Arc 在所有 Azure 环境中提供更深入的集成。 如果设置了 Azure Arc，可在门户中看到“SQL Server - Azure Arc”页，并且安全警报将显示在该页面的专用“安全”选项卡上 。 因此，首个推荐的选项是[在主机上设置 Azure Arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) 并按照上面“Azure Arc 上的 SQL Server”的说明进行操作。
         
-    - **不使用 azure Arc 连接 windows 计算机** -如果你选择在不使用 azure arc 的情况下连接在 windows 计算机上运行的 SQL Server，请按照 [将 windows 计算机连接到 Azure Monitor](../azure-monitor/agents/agent-windows.md)中的说明进行操作。
+    - **连接不带 Azure Arc 的 Windows 计算机** - 如果选择在不使用 Azure Arc 的情况下连接在 Windows 计算机上运行的 SQL Server，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/agents/agent-windows.md) 中的说明进行操作。
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的 "定价和设置" 页中启用可选计划：
+### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2. 在安全中心的“定价和设置”页中启用可选计划：
 
-1. 在安全中心的菜单中，打开 " **定价 & 设置** " 页。
+1. 从安全中心的菜单中，打开“定价和设置”页。
 
-    - 如果使用的是 **Azure 安全中心的默认工作区** (名为 "形式 defaultworkspace-[订阅 ID]-[region]" ) ，请选择相关 **订阅**。
+    - 如果使用的是“Azure 安全中心的默认工作区（名为“defaultworkspace-[your subscription ID]-[region]”），请选择相关订阅 。
 
-    - 如果使用 **非默认工作区**，请选择相关 **工作区** (在筛选器中输入工作区的名称（如有必要）) ：
+    - 如果使用的是非默认工作区，请选择相关工作区（如有必要，在筛选器中输入工作区的名称） ：
 
         ![按标题查找非默认工作区](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. 为 "**计算机上的 SQL server** 计划" 设置 **选项。** 
+1. 将“计算机上的 Azure Defender for SQL 服务器”计划的选项设置为“开” 。 
 
     :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="具有可选计划的安全中心定价页":::
 
-    将在连接到所选工作区的所有 SQL server 上启用该计划。 第一次重新启动 SQL Server 实例后，保护将处于完全活动状态。
+    将在连接到所选工作区的所有 SQL 服务器上启用该计划。 首次重启 SQL Server 实例后，保护将处于完全激活状态。
 
     >[!TIP] 
     > 若要新建工作区，请按照[创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)中的说明进行操作。
 
 
-1. 还可以配置安全警报的电子邮件通知。 
-    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅 [设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
+1. （可选）配置安全警报的电子邮件通知。 
+    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅[设置安全警报的电子邮件通知](security-center-provide-security-contact-details.md)。
 
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender for SQL 警报
-警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发 [警报引用页面](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
+警报是因访问或攻击 SQL 计算机的异常且可能有害的尝试而生成的。 这些事件可触发[警报参考页面](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
 
 ## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
 
-在安全中心的 "警报" 页、资源的 "安全性" 选项卡、" [Azure defender" 仪表板](azure-defender-dashboard.md)中，或通过警报电子邮件中的直接链接，可以使用 Azure DEFENDER for SQL 警报。
+可以在安全中心的警报页、资源的安全选项卡、[Azure Defender 仪表板](azure-defender-dashboard.md)或通过警报电子邮件中的直接链接获取 Azure Defender for SQL 警报。
 
-1. 若要查看警报，请从安全中心的菜单中选择 " **安全警报** "，然后选择一个警报。
+1. 若要查看警报，请从安全中心的菜单中选择“安全警报”，然后选择一个警报。
 
 1. 警报各自独立，每个警报都包含详细的修正步骤和调查信息。 可以使用其他 Azure 安全中心和 Azure Sentinel 功能进一步调查，从而更深入地了解：
 
-    * 启用 SQL Server 的审核功能以进一步调查。 如果你是 Azure Sentinel 用户，则可以将 SQL 审核日志从 Windows 安全日志事件上传到 Sentinel，并享受内容丰富的调查体验。 [了解 SQL Server 审核的详细信息](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15)。
+    * 启用 SQL Server 的审核功能以进一步调查。 如果你是 Azure Sentinel 用户，则可以将 SQL 审核日志从 Windows 安全日志事件上传到 Sentinel，并享受内容丰富的调查体验。 [了解有关 SQL Server 审核的详细信息](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15)。
     * 若要改善安全状况，请采纳每个警报中针对主机的安全中心建议。 这将降低未来攻击的风险。 
 
-    [详细了解如何管理和响应警报](security-center-managing-and-responding-alerts.md)。
+    [了解有关管理和响应警报的详细信息](security-center-managing-and-responding-alerts.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

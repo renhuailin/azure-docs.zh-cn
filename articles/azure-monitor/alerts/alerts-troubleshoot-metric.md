@@ -4,13 +4,13 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/21/2021
-ms.openlocfilehash: 2bd82d18d6647e47d9838702af45cff68f2bc6cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/15/2021
+ms.openlocfilehash: f14142632f6ded9f598d6e94fd1e91ec17f6d0a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037857"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103466491"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -65,19 +65,19 @@ ms.locfileid: "102037857"
 5. 如果在触发该警报时已存在对同一条件进行监视的已触发警报（尚未解决），则请检查是否已将警报规则的已配置 autoMitigate 属性设置为“false”（此属性只能通过 REST/PowerShell/CLI 进行配置，因此请检查用来部署警报规则的脚本）。 在这种情况下，警报规则不会自动解析触发的警报，并且在再次触发警报之前不需要解析触发的警报。
 
 
-## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到用于对虚拟机来宾指标发出警报的指标
+## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到警报所针对的指标 - 虚拟机来宾指标
 
-若要在虚拟机的来宾操作系统度量值上发出警报 (例如：内存、磁盘空间) ，请确保已安装了将此数据收集到 Azure Monitor 指标所需的代理：
+若要对虚拟机的来宾操作系统指标发出警报（例如：内存、磁盘空间），请确保已安装所需的代理将此数据收集到 Azure Monitor 指标：
 - [对于 Windows VM](../essentials/collect-custom-metrics-guestos-resource-manager-vm.md)
 - [对于 Linux VM](../essentials/collect-custom-metrics-linux-telegraf.md)
 
-有关从虚拟机的来宾操作系统收集数据的详细信息，请参阅 [此处](../vm/monitor-vm-azure.md#guest-operating-system)。
+有关从虚拟机的来宾操作系统收集数据的详细信息，请参阅[此处](../vm/monitor-vm-azure.md#guest-operating-system)。
 
 > [!NOTE] 
 > 如果将来宾指标配置为发送到 Log Analytics 工作区中，则这些指标将显示在 Log Analytics 工作区资源下，并且只会在创建用于监视数据的警报规则后才开始显示数据。 为此，按照步骤[配置日志的指标警报](./alerts-metric-logs.md#configuring-metric-alert-for-logs)。
 
 > [!NOTE] 
-> 指标警报当前不支持监视多个具有单个警报规则的虚拟机的来宾指标。 您可以使用 [日志警报规则](./alerts-unified-log.md)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在工作区上创建日志警报规则。
+> 指标警报当前不支持用单个警报规则监视多个虚拟机的来宾指标。 可以使用[日志警报规则](./alerts-unified-log.md)来实现此目的。 为此，请确保将来宾指标收集到 Log Analytics 工作区，并在该工作区上创建日志警报规则。
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>找不到警报所针对的指标
 
@@ -111,11 +111,11 @@ ms.locfileid: "102037857"
 > [!NOTE] 
 > 将指标警报规则设为无状态会妨碍已触发警报的解决，因此即使在不再满足条件后，触发的警报也会在 30 天的保留期内保持已触发状态。
 
-## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>定义尚未发出的自定义指标的警报规则
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>在尚未发出的自定义指标上定义警报规则
 
-创建指标警报规则时，将根据 [指标定义 API](/rest/api/monitor/metricdefinitions/list) 验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，在创建 (时使用资源管理器模板) 将发出自定义指标的 Application Insights 资源，以及用于监视该指标的警报规则。
+创建指标警报规则时，将根据[指标定义 API](/rest/api/monitor/metricdefinitions/list) 验证指标名称，以确保其存在。 在某些情况下，你甚至希望在自定义指标发出之前就创建警报规则。 例如，在创建（使用资源管理器模板）将发出自定义指标的 Application Insights 资源及其用于监视该指标的警报规则时。
 
-若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用 *skipMetricValidation* 参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在资源管理器模板中使用此参数。 有关详细信息，请参阅 [创建指标警报规则的完整资源管理器模板示例](./alerts-metric-create-templates.md)。
+若要避免在尝试验证自定义指标的定义时部署失败，可以在警报规则的“条件”部分使用 skipMetricValidation 参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在资源管理器模板中使用此参数。 有关详细信息，请参阅[创建指标警报规则的完整资源管理器模板示例](./alerts-metric-create-templates.md)。
 
 ```json
 "criteria": {
@@ -138,11 +138,9 @@ ms.locfileid: "102037857"
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 Azure 资源管理器模板
 
 导出指标警报规则的资源管理器模板有助于了解其 JSON 语法和属性，并可用于自动执行后续部署。
-1. 在门户中导航到“资源组”部分，然后选择包含该规则的资源组。
-2. 在“概述”部分，选中“显示隐藏的类型”复选框。
-3. 在“类型”筛选器中，选择 microsoft.insights/metricalerts。
-4. 选择相关警报规则以查看其详细信息。
-5. 在“设置”下，选择“导出模板”。 
+1. 在 Azure 门户中，打开警报规则以查看其详细信息。
+2. 单击 **“属性”**。
+3. 在“自动化”下，选择“导出模板”。
 
 ## <a name="metric-alert-rules-quota-too-small"></a>指标警报规则配额太小
 
@@ -262,9 +260,9 @@ ms.locfileid: "102037857"
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>设置预警规则的周期和频率
 
 建议选择大于评估频率的聚合粒度（周期），以降低在以下情况下错过对已添加的时序进行首次评估的可能性 ：
--   监视多个维度的指标警报规则–添加新维度值组合时
--   监视多个资源的指标警报规则-将新资源添加到作用域时
--   用于监视不连续 (稀疏指标) 的指标的指标警报规则–在超过24小时的时间段内发出指标时，未发出此指标
+-   监视多个维度的指标警报规则 - 添加新维度值组合时
+-   监视多个资源的指标警报规则 - 新资源添加到范围时
+-   监视未连续发出的指标（稀疏指标）的指标警报规则 - 指标在超过 24 小时的时间段内未发出时
 
 ## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>动态阈值边界似乎不适用于数据
 

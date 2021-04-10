@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: c282e6890d56fe047b319f72e05cdc97de76cfcf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.date: 03/11/2021
+ms.openlocfilehash: efc1438fdc539af278ebff1f292c5fa0a91b7b91
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038180"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103016094"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -36,6 +36,7 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Automation/automationAccounts | 是| 否 | [自动化帐户](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | 否 | 否 | [Azure VMware 解决方案](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | 是 | 否 | [Batch 帐户](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft.BotService/botServices | 是 | 否 | [机器人服务](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft.Cache/Redis | 是 | 是 | [用于 Redis 的 Azure 缓存](../essentials/metrics-supported.md#microsoftcacheredis) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | 否 | 否 | [经典云服务](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | 否 | 否 | [经典虚拟机](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
@@ -45,6 +46,8 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | [存储帐户（经典）- 队列](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
 |Microsoft.ClassicStorage/storageAccounts/tableServices | 是 | 否 | [存储帐户（经典）- 表](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft.CognitiveServices/accounts | 是 | 否 | [认知服务](../essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft.Compute/cloudServices | 是 | 否 |  [云服务](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
+|Microsoft.Compute/cloudServices/roles | 是 | 否 |  [云服务角色](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | 是 | 是<sup>1</sup> | [虚拟机](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | 是 | 否 |[虚拟机规模集](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft.ContainerInstance/containerGroups | 是| 否 | [容器组](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
@@ -56,9 +59,10 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.DataShare/accounts | 是 | 否 | [数据共享](../essentials/metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft.DBforMariaDB/servers | 否 | 否 | [DB for MariaDB](../essentials/metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | 否 | 否 |[适用于 MySQL 的 DB](../essentials/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | [DB for PostgreSQL（灵活服务器）](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft.DBforPostgreSQL/serverGroupsv2 | 是 | 否 | DB for PostgreSQL（超大规模） |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [适用于 PostgreSQL 的 DB](../essentials/metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [DB for PostgreSQL V2](../essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | [DB for PostgreSQL（灵活服务器）](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft.Devices/IotHubs | 是 | 否 |[IoT 中心](../essentials/metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| 是 | 否 | [设备预配服务](../essentials/metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft.DigitalTwins/digitalTwinsInstances | 是 | 否 | [数字孪生](../essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
@@ -75,6 +79,8 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Logic/integrationServiceEnvironments | 是 | 否 |[集成服务环境](../essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | 否 | 否 |[逻辑应用](../essentials/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces | 是 | 否 | [机器学习](../essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.MachineLearningServices/workspaces/onlineEndpoints | 是 | 否 | 机器学习 - 终结点 |
+|Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments | 是 | 否 | 机器学习 - 终结点部署 |
 |Microsoft.Maps/accounts | 是 | 否 | [Maps 帐户](../essentials/metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft.Media/mediaservices | 否 | 否 | [媒体服务](../essentials/metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft.Media/mediaservices/streamingEndpoints | 是 | 否 | [媒体服务流式处理终结点](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |

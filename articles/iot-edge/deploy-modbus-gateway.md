@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 0388520903e208b3225375d5cee81e8321740a1b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/16/2021
 ms.locfileid: "103487728"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
@@ -35,7 +35,7 @@ ms.locfileid: "103487728"
 
 ## <a name="prepare-a-modbus-container"></a>准备 Modbus 容器
 
-若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 可以通过 Azure 市场 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) 或映像 URI `mcr.microsoft.com/azureiotedge/modbus:1.0` 访问模块。
+若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 可以通过 Azure 市场 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) 或映像 URI `mcr.microsoft.com/azureiotedge/modbus:1.0` 访问该模块。
 
 如果需要创建自己的模块并根据环境对其自定义，可以使用 GitHub 上的开源 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 按照该项目中的指南创建自己的容器映像。 若要创建容器映像，请参阅[在 Visual Studio 中开发 C# 模块](./how-to-visual-studio-develop-module.md)或[在 Visual Studio Code 中开发模块](how-to-vs-code-develop-module.md)。 这些文章说明了如何创建新模块并将容器映像发布到注册表。
 
@@ -56,7 +56,7 @@ ms.locfileid: "103487728"
    3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”。
    4. 查看部署清单并选择“创建”。
 
-5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡。自动填充模块孪生所需属性的必需 JSON。
+5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡。模块孪生所需属性的必需 JSON 会自动填充。
 
 6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址。
 
@@ -68,15 +68,15 @@ ms.locfileid: "103487728"
 
 ## <a name="view-data"></a>查看数据
 
-查看通过 Modbus 模块发送过来的数据：
+通过 Modbus 模块查看传入的数据：
 
 ```cmd/sh
 iotedge logs modbus
 ```
 
-也可使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看设备正在发送的遥测数据。
+也可使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看设备正发送的遥测数据。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何让 IoT Edge 设备充当网关，请参阅[创建充当透明网关的 IoT Edge 设备](./how-to-create-transparent-gateway.md)。
+* 若要详细了解 IoT Edge 设备如何充当网关，请参阅[创建充当透明网关的 IoT Edge 设备](./how-to-create-transparent-gateway.md)。
 * 有关 IoT Edge 模块工作原理的详细信息，请参阅[了解 Azure IoT Edge 模块](iot-edge-modules.md)。

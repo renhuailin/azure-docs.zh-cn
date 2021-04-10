@@ -12,10 +12,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 keywords: 自定义视觉
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 5eb910ed4f7c15a4755dd8f494771a56c4c64230
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102184199"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>快速入门：使用自定义视觉客户端库创建对象检测项目

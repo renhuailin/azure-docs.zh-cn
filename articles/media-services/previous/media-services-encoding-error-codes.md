@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 7e6848fb49dd63fa67a639d09754a28dd5953a32
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103013476"
 ---
 # <a name="encoding-error-codes"></a>编码错误代码
@@ -29,7 +29,7 @@ ms.locfileid: "103013476"
 
 | ErrorDetail.Code | 出错的可能原因 |
 | --- | --- |
-| 未知 |执行任务期间发生未知的错误 |
+| Unknown |执行任务期间发生未知的错误 |
 | ErrorDownloadingInputAssetMalformedContent |涵盖下载输入资产时出错（例如，错误的文件名称、文件长度为零、格式不正确，等等）的错误类别。 |
 | ErrorDownloadingInputAssetServiceFailure |涵盖服务端问题（例如，下载时发生网络或存储错误）的错误类别。 |
 | ErrorParsingConfiguration |任务 \<see cref="MediaTask.PrivateData"/>（配置）无效的错误类别，例如，配置不是有效的系统预设或包含无效的 XML。 |

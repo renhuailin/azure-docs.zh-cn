@@ -1,9 +1,9 @@
 ---
 title: 使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs
-description: 本文演示如何通过 .NET SDK 管理流式处理终结点。
+description: 本文演示如何使用 .NET SDK 管理流式处理终结点。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -13,15 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: faf9acc6e91b43e2dd82589127f8697c666d86e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 5c84e7c753e6d1eb1d357320857e4c159cc13cfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250517"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103013748"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点
 

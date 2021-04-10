@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 70905d23b61ee9fee319bae41aeb421d808fa4d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606712"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566738"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -87,21 +87,6 @@ ms.locfileid: "104606712"
 
 
 1. 复制“存储帐户名称”和“key1”框中的值，然后将其粘贴到记事本或其他编辑器中，在教程的后面部分使用。 
-
-#### <a name="create-the-adftutorial-container"></a>创建 adftutorial 容器
-此部分在 Blob 存储中创建名为 **adftutorial** 的 Blob 容器。
-
-1. 在“存储帐户”窗口中切换到“概览”，然后选择“Blob”。
-
-1. 在“Blob”窗口中，选择“+ 容器”。
-
-1. 在“新建容器”窗口中的“名称”下输入“adftutorial”，然后选择“确定”。   
-
-1. 在容器列表中选择“adftutorial”。
-
-
-1. 让 **adftutorial** 的“容器”窗口保持打开状态。 在教程结束时使用它来验证输出。 数据工厂自动在该容器中创建输出文件夹，因此不需要你来创建。
-
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 

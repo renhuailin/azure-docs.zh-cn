@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: f4f5156870ec5119c71a0acc77786c71ab8b7e62
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104783041"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
@@ -35,7 +35,7 @@ ms.locfileid: "104783041"
 > 
 > 本教程中的管道只有一个活动，其类型为：HDInsightHive。 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
