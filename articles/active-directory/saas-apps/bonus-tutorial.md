@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教程：Azure Active Directory 与 Bonusly 集成
@@ -124,13 +124,13 @@ ms.locfileid: "101689090"
 
     c. 注销 URL
 
-### <a name="configure-bonusly-single-sign-on"></a>配置 Bonusly 单一登录
+### <a name="configure-bonusly-single-sign-on&quot;></a>配置 Bonusly 单一登录
 
 1. 在另一个浏览器窗口中，登录到 **Bonusly** 租户。
 
 1. 在顶部工具栏中，单击“设置”，并选择“集成和应用”。  
 
-    ![“Bonusly 社交”部分](./media/bonus-tutorial/ic773686.png "Bonusly")
+    ![“Bonusly 社交”部分](./media/bonus-tutorial/ic773686.png &quot;Bonusly")
 1. 在“单一登录”下选择“SAML”。  
 
 1. 在“SAML”对话框页上执行以下步骤： 
@@ -197,7 +197,7 @@ ms.locfileid: "101689090"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-bonusly-test-user"></a>创建 Bonusly 测试用户
+### <a name="create-bonusly-test-user&quot;></a>创建 Bonusly 测试用户
 
 为了使 Azure AD 用户能够登录 Bonusly，必须将其预配到 Bonusly 中。 就 Bonusly 来说，预配任务需要手动完成。
 
@@ -210,7 +210,7 @@ ms.locfileid: "101689090"
 
 1. 单击“设置”  。
 
-    ![设置](./media/bonus-tutorial/ic781041.png "设置")
+    ![设置](./media/bonus-tutorial/ic781041.png &quot;设置")
 
 1. 单击“用户和奖金”  选项卡。
 

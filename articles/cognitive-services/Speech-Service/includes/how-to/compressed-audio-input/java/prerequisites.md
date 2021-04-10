@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81422160"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103417688"
 ---
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 但是，需要使用适用于 Android 的预生成二进制文件。 若要下载预生成库，请参阅[为 Android 开发安装](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 
-需要 `libgstreamer_android.so`。 请确保 GStreamer 插件已在 `libgstreamer_android.so` 中链接。
+需要 `libgstreamer_android.so`。 请确保已在 `libgstreamer_android.so` 中链接所有 GStreamer 插件（来自下面的 Android.mk 文件）。 将最新的语音 SDK（1.16.0 及更高版本）与 gstreamer 版本 1.18.3 配合使用时，还需要从 android ndk 演示 `libc++_shared.so`。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -31,7 +31,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := dummy
 LOCAL_SHARED_LIBRARIES := gstreamer_android
-LOCAL_LDLIBS := -llog
 include $(BUILD_SHARED_LIBRARY)
 
 ifndef GSTREAMER_ROOT_ANDROID
@@ -62,10 +61,12 @@ endif
 
 GSTREAMER_NDK_BUILD_PATH  := $(GSTREAMER_ROOT)/share/gst-android/ndk-build/
 include $(GSTREAMER_NDK_BUILD_PATH)/plugins.mk
-GSTREAMER_PLUGINS         :=  coreelements app audioconvert mpg123 \
-    audioresample audioparsers ogg \
-    opusparse opus wavparse alaw mulaw flac
-GSTREAMER_EXTRA_LIBS      := -liconv
+GSTREAMER_PLUGINS         :=  $(GSTREAMER_PLUGINS_CORE) \ 
+                              $(GSTREAMER_PLUGINS_CODECS) \ 
+                              $(GSTREAMER_PLUGINS_PLAYBACK) \
+                              $(GSTREAMER_PLUGINS_CODECS_GPL) \
+                              $(GSTREAMER_PLUGINS_CODECS_RESTRICTED)
+GSTREAMER_EXTRA_LIBS      := -liconv -lgstbase-1.0 -lGLESv2 -lEGL
 include $(GSTREAMER_NDK_BUILD_PATH)/gstreamer-1.0.mk
 ```
 

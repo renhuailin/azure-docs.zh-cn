@@ -9,10 +9,10 @@ ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98624331"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>创建与 Azure Data Lake Storage Gen2 配合使用的存储帐户

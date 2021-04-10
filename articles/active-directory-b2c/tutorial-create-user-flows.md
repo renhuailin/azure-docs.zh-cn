@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557136"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781290"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -25,8 +25,9 @@ ms.locfileid: "100557136"
 
 > [!div class="checklist"]
 > * 创建注册和登录用户流
+> * 启用自助式密码重置
 > * 创建配置文件编辑用户流
-> * 创建密码重置用户流
+
 
 本教程介绍如何使用 Azure 门户创建一些建议的用户流。 若要了解如何在应用程序中设置资源所有者密码凭据 (ROPC) 流，请参阅[在 Azure AD B2C 中配置资源所有者密码凭据流](add-ropc-policy.md)。
 
@@ -63,7 +64,7 @@ ms.locfileid: "100557136"
 
 1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
 1. 对于“标识提供者”，请选择“电子邮件注册”。
-1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
+1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击 **“确定”** 。
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -85,6 +86,24 @@ ms.locfileid: "100557136"
 > [!NOTE]
 > “运行用户流”体验当前与使用授权代码流的 SPA 回复 URL 类型不兼容。 若要将“运行用户流”体验与这些类型的应用结合使用，请注册类型为“Web”的回复 URL，并启用隐式流，如[此处](tutorial-register-spa.md)所述。
 
+## <a name="enable-self-service-password-reset"></a>启用自助式密码重置
+
+为注册或登录用户流启用[自助式密码重置](add-password-reset-policy.md)：
+
+1. 选择创建的注册或登录用户流。
+1. 在左侧菜单的 **设置** 下，选择 **属性**。
+1. 在 **密码复杂性** 下，选择 **自助式密码重置**。
+1. 选择“保存”。
+
+### <a name="test-the-user-flow"></a>测试用户流
+
+1. 选择已创建的用户流以打开其概览页，然后选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”。
+1. 在注册或登录页上，选择 **忘记密码？** 。
+1. 验证之前创建的帐户的电子邮件地址，然后选择 **继续**。
+1. 现在可以更改用户的密码。 更改密码，然后选择“继续”。 令牌将返回到 `https://jwt.ms` 并显示出来。
+
 ## <a name="create-a-profile-editing-user-flow"></a>创建配置文件编辑用户流
 
 如果希望用户能够在你的应用程序中编辑其个人资料，请使用个人资料编辑用户流。
@@ -103,26 +122,6 @@ ms.locfileid: "100557136"
 1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击“运行用户流”，然后使用前面创建的帐户登录。
 1. 现在，你可以更改用户的显示名称和职务。 单击 **“继续”** 。 令牌将返回到 `https://jwt.ms` 并显示出来。
-
-## <a name="create-a-password-reset-user-flow"></a>创建密码重置用户流
-
-若要允许应用程序用户重置其密码，请使用密码重置用户流。
-
-1. 在 Azure AD B2C 租户概述菜单中，选择“用户流”，然后选择“新建用户流”。
-1. 在“创建用户流”页面上，选择“密码重置”用户流 。 
-1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
-1. 输入该用户流的 **名称**。 例如 *passwordreset1*。
-1. 对于“标识提供者”，请启用“使用电子邮件地址重置密码”。
-2. 在“应用程序声明”下单击“显示更多”，并选择你希望在发回到应用程序的授权令牌中返回的声明。 例如，选择“用户的对象 ID”。
-3. 单击 **“确定”** 。
-4. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
-
-### <a name="test-the-user-flow"></a>测试用户流
-
-1. 选择已创建的用户流以打开其概览页，然后选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击“运行用户流”，验证之前创建的帐户的电子邮件地址，然后选择“继续”。
-1. 现在可以更改用户的密码。 更改密码，然后选择“继续”。 令牌将返回到 `https://jwt.ms` 并显示出来。
 
 ## <a name="next-steps"></a>后续步骤
 

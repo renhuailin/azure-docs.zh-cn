@@ -7,7 +7,6 @@ documentationcenter: network-watcher
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -17,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d5cd9c5d7f4a14a9a93e6984a8ef7367e5cbafc4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98014495"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055087"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教程：使用 Azure 门户诊断虚拟机网络路由问题
 
@@ -113,7 +112,7 @@ Azure 自动创建到默认目标的路由。 可以创建自定义路由来覆�
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
-2. 选择“删除资源组”  。
+2. 选择“删除资源组”。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤

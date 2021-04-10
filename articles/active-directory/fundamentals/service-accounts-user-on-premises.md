@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e484bdda33142024f2067649eaa67042fe7776f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100416973"
 ---
 # <a name="securing-user-based-service-accounts-in-active-directory"></a>在 Active Directory 中保护基于用户的服务帐户
@@ -125,7 +125,7 @@ Microsoft 不建议客户将本地用户帐户用作服务帐户。 对于使用
 
 * [保护组托管服务帐户](service-accounts-group-managed.md)
 
-* [保护独立的托管服务帐户](service-accounts-standalone-managed.md)
+* [保护独立托管服务帐户](service-accounts-standalone-managed.md)
 
 * [保护计算机帐户](service-accounts-computer.md)
 

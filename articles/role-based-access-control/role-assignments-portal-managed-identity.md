@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 角色分配给托管标识 (预览版) -Azure RBAC
-description: 了解如何分配 Azure 角色，方法是从托管标识开始，然后使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 中选择作用域和角色。
+title: 将 Azure 角色分配给托管标识（预览）- Azure RBAC
+description: 了解如何从托管标识开始分配 Azure 角色，然后使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 选择范围和角色。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 57c8c00a64996bc6223fbe7e514db9db38ccdcc2
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100556851"
 ---
-# <a name="assign-azure-roles-to-a-managed-identity-preview"></a> (预览将 Azure 角色分配给托管标识) 
+# <a name="assign-azure-roles-to-a-managed-identity-preview"></a>将 Azure 角色分配给托管标识（预览）
 
-可以按照 [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)中所述，使用 "**访问控制 (IAM)** " 页将角色分配给托管标识。 在使用访问控制 (IAM) 页时，先从范围开始，然后选择托管标识和角色。 本文介绍一种为托管标识分配角色的替代方法。 使用这些步骤时，先从托管标识开始，然后选择范围和角色。
+可以使用访问控制 (IAM) 页向托管标识分配角色，如[使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)中所述。 在使用访问控制 (IAM) 页时，先从范围开始，然后选择托管标识和角色。 本文介绍了为托管标识分配角色的替代方法。 使用这些步骤时，先从托管标识开始，然后选择范围和角色。
 
 > [!IMPORTANT]
-> 使用这些备用步骤将角色分配给托管标识目前为预览版。
+> 使用这些替代步骤为托管标识分配角色的功能目前以预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 

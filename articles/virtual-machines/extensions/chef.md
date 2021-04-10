@@ -9,10 +9,10 @@ author: amjads1
 ms.collection: linux
 ms.date: 09/21/2018
 ms.openlocfilehash: e316bf9763dd7c2cbbab21992086eac52d108912
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102554779"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
@@ -74,14 +74,14 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 | 名称 | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
-| settings/runlist | `recipe[mycookbook::default]` | string | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
+| settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
 
 ### <a name="protected-settings"></a>受保护的设置
 
 | 名称 | 示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
 
 <!--
 ### Linux-specific settings

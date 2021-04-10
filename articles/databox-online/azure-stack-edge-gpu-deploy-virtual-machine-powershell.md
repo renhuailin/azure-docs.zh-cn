@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439810"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568318"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> 使用 Azure 资源管理器，只能创建本地存储帐户，例如本地冗余存储（标准或高级）。 若要创建分层存储帐户，请参阅[教程：使用具有 GPU 的 Azure Stack Edge Pro 通过存储帐户传输数据](azure-stack-edge-j-series-deploy-add-storage-accounts.md)。
+> 使用 Azure 资源管理器，只能创建本地存储帐户，例如本地冗余存储（标准或高级）。 若要创建分层存储帐户，请参阅[教程：使用具有 GPU 的 Azure Stack Edge Pro 通过存储帐户传输数据](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)。
 
 下面是一些示例输出：
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>将 blob URI 添加到主机文件
 
-在[通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) 的“步骤 5：修改主机文件以进行终结点名称解析”中，你已经向用于连接到 Azure Blob 存储的客户端的主机文件中添加了 Blob URI。 此条目用于添加 blob URI：
+在[通过 Azure PowerShell 在 Azure Stack Edge 设备上部署 VM](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) 的“步骤 5：修改主机文件以进行终结点名称解析”中，你已经向用于连接到 Azure Blob 存储的客户端的主机文件中添加了 Blob URI。 此条目用于添加 blob URI：
 
 \<Azure consistent network services VIP \> \<storage name\>.blob.\<appliance name\>.\<dnsdomain\>
 

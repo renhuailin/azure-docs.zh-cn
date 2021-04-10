@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1443ab37beb28706227159c53d336384216d8387
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989166"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582437"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure Key Vault 中设置和检索机密
 
@@ -39,7 +39,7 @@ ms.locfileid: "99989166"
 
 只需再执行几个步骤即可向保管库添加机密。 此密码可供应用程序使用。 此密码将名为 **ExamplePassword**，将在其中存储的值为 **hVFkk965BuUv**。
 
-键入以下命令，在 Key Vault 中创建名为 **ExamplePassword** 的机密，用于存储的值将为 **hVFkk965BuUv**：
+使用以下 Azure CLI [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) 命令在密钥保管库中创建一个名为 **ExamplePassword** 的机密，该机密将存储值 **hVFkk965BuUv**：
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -64,5 +64,6 @@ az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyv
 在本快速入门中，你创建了 Key Vault 并在其中存储了一个机密。 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
+- 了解如何[在密钥保管库中存储多行机密](multiline-secrets.md)
 - 请参阅 [Azure CLI az keyvault 命令](/cli/azure/keyvault)参考
 - 请参阅 [Key Vault 安全性概述](../general/security-overview.md)

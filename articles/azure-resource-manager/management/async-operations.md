@@ -4,12 +4,12 @@ description: 介绍如何在 Azure 中跟踪异步操作。 它显示用于获�
 ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f5823bc8f6c0d5b334a638d4ad350eb2f9ef2b28
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88723446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932737"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
 
@@ -123,7 +123,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示了将资源部署到 Azure 时，如何确定[部署操作](/rest/api/resources/deployments/createorupdate)的状态。 初始请求采用以下格式：
+此示例演示了将资源部署到 Azure 时，如何确定[部署操作](/rest/api/resources/resources/deployments/createorupdate)的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT

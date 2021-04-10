@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 16a899b7f0e40c2eee91d1dd445f0992572a9dda
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103418158"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件存储
@@ -73,7 +73,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到存储帐户。
+2. 导航到自己的存储帐户。
 
 3. 在“监视”部分，单击“诊断设置(预览)”。
 

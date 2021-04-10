@@ -16,10 +16,10 @@ ms.date: 3/10/2021
 ms.author: inhenkel
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: 12732171f774e6ce010f722cde4a27bb298275b9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103007917"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>更改存储访问密钥后更新媒体服务

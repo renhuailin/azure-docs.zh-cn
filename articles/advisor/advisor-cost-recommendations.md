@@ -4,10 +4,10 @@ description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 09/27/2020
 ms.openlocfilehash: 346b790c6970abc8670661e1ec180662957af47d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102503368"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本

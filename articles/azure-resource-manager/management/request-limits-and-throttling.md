@@ -4,12 +4,12 @@ description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563120"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024619"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
@@ -58,7 +58,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ### <a name="compute-throttling"></a>计算限制
 
-有关计算操作的限制的信息，请参阅[排查 API 限制错误 - 计算](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)。
+有关计算操作的限制的信息，请参阅[排查 API 限制错误 - 计算](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors)。
 
 若要检查虚拟机规模集中的虚拟机实例，请使用[虚拟机规模集操作](/rest/api/compute/virtualmachinescalesetvms)。 例如，使用[虚拟机规模集 VM - 列出](/rest/api/compute/virtualmachinescalesetvms/list)和相应的参数来检查虚拟机实例的电源状态。 此 API 可减少请求数。
 
@@ -98,7 +98,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 | x-ms-ratelimit-remaining-tenant-resource-requests |划归到租户的剩余资源类型请求数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 Resource Manager 将累加此值而不是租户读取/写入数。 |
 | x-ms-ratelimit-remaining-tenant-resource-entities-read |划归到租户的剩余资源类型集合请求数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 |
 
-资源提供程序还可以返回包含剩余请求数相关信息的响应标头。 有关“计算”资源提供程序返回的响应标头的信息，请参阅[调用速率参考性响应标头](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers)。
+资源提供程序还可以返回包含剩余请求数相关信息的响应标头。 有关“计算”资源提供程序返回的响应标头的信息，请参阅[调用速率参考性响应标头](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers)。
 
 ## <a name="retrieving-the-header-values"></a>检索标头值
 
