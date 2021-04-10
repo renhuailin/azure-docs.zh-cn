@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 342b9c9aae0a523ac770ba78f298c4ba91c434e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972406"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798742"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "95972406"
 
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。
-- [Python 3.5+](https://www.python.org/downloads/)，包括 [pip](https://pip.pypa.io/en/stable/installing/) 程序包安装程序。
+- [Python 3.6+](https://www.python.org/downloads/)，包括 [pip](https://pip.pypa.io/en/stable/installing/) 程序包安装程序。
 - [适用于 Gremlin 的 Python 驱动程序](https://github.com/apache/tinkerpop/tree/master/gremlin-python)。
 - [Git](https://git-scm.com/downloads)。
 
@@ -187,11 +187,11 @@ ms.locfileid: "95972406"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    键|值|说明
+    key|value|注释
     ----|----|----
     pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|female| 
+    gender|女| 
     tech | Java | 
 
     > [!NOTE]
@@ -205,11 +205,11 @@ ms.locfileid: "95972406"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    键|值|说明
+    key|value|注释
     ----|----|----
     pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|male| 
+    gender|男| 
     school|MIT| 
 
 10. 选择“确定”。 

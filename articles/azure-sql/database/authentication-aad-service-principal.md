@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/11/2021
-ms.openlocfilehash: 15cc935457f76fb1d2fe4e8d699db831ebacc357
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 68267cdedd2f0b64549791866e8750cf42928ab4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181745"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201239"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服务主体
 
@@ -52,7 +52,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
 
 为了能够以 Azure AD 应用程序身份在 SQL 数据库和 Azure Synapse 中创建 Azure AD 对象，需要进行以下设置：
 
-1. 分配服务器标识。 分配的服务器标识表示 (MSI) 的托管系统标识。 目前，Azure SQL 的服务器标识不支持 (UMI) 的用户托管标识。
+1. 分配服务器标识。 分配的服务器标识代表托管服务标识 (MSI)。 目前，Azure SQL 的服务器标识不支持用户托管标识 (UMI)。
     - 对于新的 Azure SQL 逻辑服务器，请执行以下 PowerShell 命令：
     
     ```powershell
@@ -83,7 +83,7 @@ SQL 数据库和 Azure Synapse 现在支持以 Azure AD 应用程序身份运行
 >
 > 如果使用服务主体设置或取消设置 Azure AD 管理员，则应用程序还必须具有 Azure AD 中的 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限。 有关[设置 Azure AD 管理员所需的权限](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)以及代表 Azure AD 应用程序创建 Azure AD 用户所需的分步说明的信息，请参阅[教程：使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)。
 >
-> 在 **公共预览版** 中，你可以将 **目录读取** 者角色分配到 Azure AD 中的组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要 **全局管理员** 或 **特权角色管理员** 授予 **目录读者** 角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
+> 在“公共预览”中，可以在 Azure AD 中将“目录读取者”角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要全局管理员或特权角色管理员来授予目录读取者角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>公共预览版的故障排除和限制
 

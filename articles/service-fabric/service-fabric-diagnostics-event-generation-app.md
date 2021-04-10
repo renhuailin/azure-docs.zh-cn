@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 应用程序级监视
 description: 了解用于监视和诊断 Azure Service Fabric 群集的应用程序和服务级别的事件和日志。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: a1df5d033701195f4fe5f6b7174f3883b84393ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a60eef008afae4185acc266c74c4fb0ce694d560
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98791267"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627483"
 ---
 # <a name="application-logging"></a>应用程序日志记录
 

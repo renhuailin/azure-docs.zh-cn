@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612892"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108348"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -311,7 +311,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 需将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制该连接字符串。 或者，可以在 Azure CLI 中运行以下命令。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 在主计算机上打开 `/etc/iotedge/config.yaml` 进行编辑。 请将 `ADD DEVICE CONNECTION STRING HERE` 替换为连接字符串。 保存并关闭该文件。 运行此命令以重启主计算机上的 IoT Edge 服务。
@@ -334,7 +334,7 @@ sudo systemctl restart iotedge
 
 为 VM 命名，选择“(美国)美国西部 2”作为区域。 请务必将 `Availability Options` 设置为“无需基础结构冗余”。 参阅下图完成配置，并参阅后续步骤找到正确的 VM 大小。 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="虚拟机配置详细信息。" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="虚拟机配置详细信息。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 若要查找 VM 大小，请选择“查看所有大小”，然后查看“非高级存储 VM 大小”的列表，如下所示。
 
@@ -473,7 +473,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 需将 IoT Edge 设备连接到 Azure IoT 中心。 需要从前面创建的 IoT Edge 设备中复制该连接字符串。 或者，可以在 Azure CLI 中运行以下命令。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 在 VM 上，打开 `/etc/iotedge/config.yaml` 进行编辑。 请将 `ADD DEVICE CONNECTION STRING HERE` 替换为连接字符串。 保存并关闭该文件。 运行此命令以重启 VM 上的 IoT Edge 服务。
@@ -542,10 +542,6 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>配置空间分析执行的操作
 
 需使用[空间分析操作](spatial-analysis-operations.md)将容器配置为使用连接的相机、配置操作，等等。 对于配置的每个相机设备，空间分析的操作会生成发送到 Azure IoT 中心实例的 JSON 消息输出流。
-
-## <a name="redeploy-or-delete-the-deployment"></a>重新部署或删除部署
-
-如果需要更新部署，需确保以前的部署已部署成功，或者需要删除未完成的 IoT Edge 设备部署。 否则，这些部署将会继续，使系统处于错误状态。 可以使用 Azure 门户或 [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows)。
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
 

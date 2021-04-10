@@ -1,6 +1,6 @@
 ---
 title: DB2 到 SQL 托管实例：迁移指南
-description: 按照此指南将 DB2 数据库迁移到 Azure SQL 托管实例。
+description: 本指南介绍如何使用适用于 DB2 的 SQL Server 迁移助手将 DB2 数据库迁移到 Azure SQL 托管实例。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,27 +10,27 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.openlocfilehash: 9ad838b8c5f54d3ecdd5c8ce56b197cdb6cec1ba
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359177"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563855"
 ---
-# <a name="migration-guide-db2-to-sql-managed-instance"></a>迁移指南： DB2 到 SQL 托管实例
+# <a name="migration-guide-db2-to-sql-managed-instance"></a>迁移指南：DB2 到 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
-本指南介绍如何使用用于 DB2 的 SQL Server 迁移助手将 DB2 数据库迁移到 Azure SQL 托管实例。 
+本指南介绍如何使用适用于 DB2 的 SQL Server 迁移助手将 DB2 数据库迁移到 Azure SQL 托管实例。 
 
-对于其他方案，请参阅 [数据库迁移指南](https://datamigration.microsoft.com/)。
+有关其他方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要将 DB2 数据库迁移到 SQL 托管实例，需要：
+要将 DB2 数据库迁移到 SQL 托管实例，需要以下条件：
 
 - 验证源环境是否受支持。
 - 下载 [DB2 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/download/details.aspx?id=54254)。
-- 目标 [AZURE SQL 托管实例](../../database/single-database-create-quickstart.md)。
+- 一个目标 [Azure SQL 托管实例](../../database/single-database-create-quickstart.md)。
 
 
 ## <a name="pre-migration"></a>预迁移
@@ -45,7 +45,7 @@ ms.locfileid: "97359177"
 
 1. 打开 DB2 SQL Server 迁移助手 (SSMA)。 
 1. 选择“文件”，然后选择“新建项目”。 
-1. 提供项目名称和项目的保存位置，然后从下拉菜单中选择 "Azure SQL 托管实例作为迁移目标。 选择“确定”。 
+1. 提供项目名称和项目的保存位置，然后从下拉列表中选择 Azure SQL 托管实例作为迁移目标。 选择“确定”。 
 
    :::image type="content" source="media/db2-to-managed-instance-guide/new-project.png" alt-text="提供项目详细信息，然后选择“确定”以保存。":::
 
@@ -83,9 +83,9 @@ ms.locfileid: "97359177"
 要转换架构，请执行以下步骤：
 
 1. （可选）向语句中添加动态或临时查询。 右键单击节点，然后选择“添加语句”。 
-1. 选择 " **连接到 AZURE SQL 数据库**"。 
+1. 选择“连接到 Azure SQL 数据库”。 
     1. 输入连接详细信息以连接到 Azure SQL 托管实例。  
-    1. 从下拉项中选择目标数据库。 
+    1. 从下拉菜单选择目标数据库。 
     1. 选择“连接”  。 
 
    :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-sql-managed-instance.png" alt-text="填写详细信息以连接到 SQL Server":::
@@ -108,7 +108,7 @@ ms.locfileid: "97359177"
 
 要发布架构并迁移数据，请执行以下步骤：
 
-1. 发布架构：在 **AZURE SQL 托管实例元数据资源管理器** 中，右键单击 "**数据库**" 节点中的数据库，然后选择 "**与数据库同步**"。
+1. 发布架构：右键单击“Azure SQL 托管实例元数据资源管理器”中的“数据库”节点中的数据库，然后选择“与数据库同步”  。
 
    :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="右键单击数据库，然后选择“与数据库同步”":::
 
@@ -143,16 +143,13 @@ ms.locfileid: "97359177"
 1. 运行验证测试：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
-   > [!NOTE]
-   > 为帮助开发和运行迁移后验证测试，请考虑使用合作伙伴 [QuerySurge](https://www.querysurge.com/company/partners/microsoft) 提供的数据质量解决方案。 
-
 
 ## <a name="leverage-advanced-features"></a>利用高级功能 
 
-请确保利用 Azure SQL 托管实例提供的基于云的高级功能，例如 [内置的高可用性](../../database/high-availability-sla.md)、 [威胁检测](../../database/azure-defender-for-sql.md)、 [监视和优化工作负荷](../../database/monitor-tune-overview.md)。 
+请确保充分利用 Azure SQL 托管实例提供的基于云的高级功能，例如[内置高可用性](../../database/high-availability-sla.md)、[威胁检测](../../database/azure-defender-for-sql.md)以及[监视和优化工作负载](../../database/monitor-tune-overview.md)。 
 
 
-某些 SQL Server 功能只有在 [数据库兼容性级别](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) 更改为最新兼容级别 (150) 时才可用。 
+只有将[数据库兼容性级别](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)更改为最新的兼容性级别 (150) 后，某些 SQL Server 功能才可用。 
 
 ## <a name="migration-assets"></a>迁移资产 
 
@@ -170,16 +167,16 @@ ms.locfileid: "97359177"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关可用于帮助你完成各种数据库和数据迁移方案以及专业任务的 Microsoft 和第三方服务和工具的矩阵，请参阅 [数据迁移的服务和工具](../../../dms/dms-tools-matrix.md)。
+- 有关在执行各种数据库和数据迁移方案及专门任务时可为你提供帮助的 Microsoft 与第三方服务和工具的矩阵，请参阅[数据迁移服务和工具](../../../dms/dms-tools-matrix.md)。
 
-- 若要了解有关 Azure SQL 托管实例的详细信息，请参阅：
-   - [SQL 托管实例概述](../../managed-instance/sql-managed-instance-paas-overview.md)
+- 若要详细了解 Azure SQL 托管实例，请参阅：
+   - [SQL 托管实例的概述](../../managed-instance/sql-managed-instance-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- 若要了解有关云迁移的框架和采用周期的详细信息，请参阅
+- 有关云迁移的框架和采用周期的详细信息，请参阅
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
-   -  [成本调整和大小调整工作负荷迁移到 Azure 的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- 若要评估应用程序访问层，请参阅 [数据访问迁移工具包 (预览) ](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
-- 有关如何执行数据访问层 A/B 测试的详细信息，请参阅 [数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。
+- 若要评估应用程序访问层，请参阅 [Data Access Migration Toolkit（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)
+- 若要详细了解如何执行数据访问层 A/B 测试，请参阅[数据库实验助手](/sql/dea/database-experimentation-assistant-overview)。

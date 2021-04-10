@@ -2,20 +2,20 @@
 title: 快速入门：连接到 Azure Synapse Link for Azure Cosmos DB
 description: 如何通过 Synapse Link 将 Azure Cosmos DB 连接到 Synapse 工作区
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.subservice: synapse-link
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: ddeac8477246ae2b5d2f07e495d4721f9508afed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7d77431f5caa1a2ac67428326dcd6d4ce75a4a93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864918"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625834"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>快速入门：连接到 Azure Synapse Link for Azure Cosmos DB
 
