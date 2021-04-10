@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.openlocfilehash: a920abacb0df030f7d38aed11e04a693cfa352a6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlueJeans for Azure AD 集成
@@ -144,13 +144,13 @@ ms.locfileid: "101686564"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>配置 BlueJeans for Azure AD SSO
+## <a name="configure-bluejeans-for-azure-ad-sso&quot;></a>配置 BlueJeans for Azure AD SSO
 
 1. 在其他 Web 浏览器窗口中，以管理员身份登录 BlueJeans for Azure AD 公司站点。
 
 2. 依次转到“管理”\>“组设置”\>“安全”。
 
-    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“组设置”和“安全”。](./media/bluejeans-tutorial/ic785868.png "管理员")
+    ![屏幕截图显示浏览器窗口的一部分，其中“管理”选项卡处于选中状态，并选中了“组设置”和“安全”。](./media/bluejeans-tutorial/ic785868.png &quot;管理员")
 
 3. 在“安全”部分中，执行以下步骤：
 

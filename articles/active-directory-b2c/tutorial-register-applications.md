@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918206"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579631"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册 Web 应用
 
@@ -62,7 +62,7 @@ ms.locfileid: "98918206"
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 选择“应用程序(旧版)”，然后选择“添加” 。
 1. 输入应用程序的名称。 例如，“webapp1”。
@@ -80,7 +80,7 @@ ms.locfileid: "98918206"
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 
-对于 Web 应用程序，需要创建应用程序机密。 应用程序将使用此机密来交换访问令牌的授权代码。
+对于 Web 应用程序，需要创建应用程序机密。 客户端密码也称为应用程序密码。 应用程序将使用此密码来交换访问令牌的授权代码。
 
 #### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ ms.locfileid: "98918206"
 1. 选择“新建客户端机密”。
 1. 在“说明”框中输入客户端机密的说明。 例如，*clientsecret1*。
 1. 在“过期时间”下，选择机密持续生效的时间，然后选择“添加”。
-1. 记下机密的“值”。 在应用程序的代码中将此值用作应用程序机密。
+1. 记录密码的 **值**，以便在客户端应用程序代码中使用。 退出此页面后，此机密值永不再显示。 在应用程序的代码中将此值用作应用程序机密。
 
 #### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ ms.locfileid: "98918206"
 1. 选择“保存”以查看密钥。 记下“应用密钥”值。 在应用程序的代码中将此值用作应用程序机密。
 
 * * *
+
+> [!NOTE]
+> 出于安全考虑，您可以定期滚动更新应用程序密码，或在紧急情况下立即滚动更新。 任何与 Azure AD B2C 集成的应用程序都应准备好处理密码滚动更新事件，而不管滚动更新可能发生的频率如何。 可以设置两个应用程序密码，使应用程序能够在应用程序密码轮换事件期间继续使用旧密码。 若要添加另一个客户端密码，请重复本部分中的步骤。 
 
 ## <a name="enable-id-token-implicit-grant"></a>启用 ID 令牌隐式授权
 

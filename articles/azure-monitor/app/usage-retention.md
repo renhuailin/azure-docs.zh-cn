@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100583377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025605"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
 
@@ -36,7 +36,7 @@ ms.locfileid: "100583377"
 
 用户可将鼠标悬停在留存情况工具的单元格上，以访问分析按钮和解释单元格含义的工具提示。 “分析”按钮可让用户使用预填充的查询来生成“分析”工具，以便从单元格生成用户。 
 
-## <a name="use-business-events-to-track-retention"></a>使用业务事件跟踪留存情况
+## <a name="use-business-events-to-track-retention&quot;></a>使用业务事件跟踪留存情况
 
 若要获得最有用的留存情况分析，请对表示重要业务活动的事件进行度量。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "100583377"
 一种较好的做法是编写表示关键业务操作的自定义事件，并使用这些事件进行留存情况分析。 要捕获游戏结果，需要编写一行代码来向 Application Insights 发送一个自定义事件。 如果采用网页代码或 Node.JS 编写该事件，则它类似于以下内容：
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 如果采用 ASP.NET 服务器代码，则如下所示：
@@ -64,5 +64,4 @@ ms.locfileid: "100583377"
     - [漏斗图](usage-funnels.md)
     - [用户流](usage-flows.md)
     - [工作簿](../visualize/workbooks-overview.md)
-    - [添加用户上下文](usage-send-user-context.md)
-
+    - [添加用户上下文](./usage-overview.md)

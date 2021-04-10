@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 4b12c1f24f389634004de3d487a693bc588a7241
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374348"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
@@ -57,7 +57,7 @@ Netezza 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`。 下表介绍了更多可以设置的属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | SecurityLevel | 驱动程序用于连接到数据存储的安全级别。 驱动程序支持使用 SSL 3 进行单向身份验证的 SSL 连接。 <br>示例：`SecurityLevel=preferredSecured`。 支持的值是：<br/>- **仅限未受保护** (**onlyUnSecured)** ：该驱动程序不使用 SSL。<br/>- **首选未受保护 (preferredUnSecured)（默认）** ：如果该服务器提供选择，则驱动程序不使用 SSL。 <br/>- **首选受保护 (preferredSecured)** ：如果服务器提供选择，则驱动程序使用 SSL。 <br/>- **仅限受保护 (onlySecured)** ：除非有 SSL 连接，否则驱动程序不会连接。 | 否 |
 | CaCertFile | 服务器使用的 SSL 证书的完整路径。 示例： `CaCertFile=<cert path>;`| 是，如果启用了 SSL |

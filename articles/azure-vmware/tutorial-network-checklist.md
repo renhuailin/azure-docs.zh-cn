@@ -2,13 +2,13 @@
 title: 教程 - 网络规划清单
 description: 了解 Azure VMware 解决方案中网络连接和网络端口的网络要求。
 ms.topic: tutorial
-ms.date: 01/27/2021
-ms.openlocfilehash: f493443da617f5f76771e5d1b2b3b190b37f9b5d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.date: 03/13/2021
+ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103462059"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
@@ -89,13 +89,12 @@ Azure VMware 解决方案私有云要求至少对子网使用 CIDR 网络地址�
 
 使用内置于 NSX 的 DHCP 服务，或使用私有云中的本地 DHCP 服务器，而不要通过 WAN 将广播 DHCP 流量路由回本地。
 
+有关更多详细信息，请参阅[为 NSX-T 网段提供 DHCP 服务](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment)一文。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了部署 Azure VMware 解决方案私有云的注意事项和要求。 
-
-
-正确设置网络后，请继续学习下一篇教程以创建 Azure VMware 解决方案私有云。
+本教程介绍了部署 Azure VMware 解决方案私有云的注意事项和要求。 正确设置网络后，请继续学习下一篇教程以创建 Azure VMware 解决方案私有云。
 
 > [!div class="nextstepaction"]
 > [创建 Azure VMware 解决方案私有云](tutorial-create-private-cloud.md)

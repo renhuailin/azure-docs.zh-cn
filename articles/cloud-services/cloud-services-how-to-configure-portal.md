@@ -3,17 +3,18 @@ title: 如何配置云服务（经典）| Microsoft Docs
 description: 了解如何在 Azure 中配置云服务。 了解如何更新云服务配置以及配置对角色实例的远程访问。 这些示例使用 Azure 门户。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: adb2066b12a57630a7615d1bc2a8989f022b0de7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743417"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935953"
 ---
 # <a name="how-to-configure-and-azure-cloud-service-classic"></a>如何配置 Azure 云服务（经典）
 

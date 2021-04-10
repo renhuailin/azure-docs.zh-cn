@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 02d1bd9d204d88ba90218b1254c66ac0da80be85
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d77016fdf94de4fdd574b0d4cbd22d6b0b8490
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87323496"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024738"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 是否对 [Application Insights 中的用户行为分析工具](usage-overview.md)：[用户、会话、事件](usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](usage-flows.md)、[保留期](usage-retention.md)或队列存在疑问？ 请参考下面的解答。
@@ -23,7 +23,7 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](./data-m
 
 如果正在监视 Web 应用，则最简单的解决方案是向应用添加 [Application Insights JavaScript SDK](./javascript.md)，并确保已在想要监视的每一页上加载脚本代码片段。 JavaScript SDK 自动生成匿名用户和会话 ID，然后在从应用发送这些 ID 后使用这些 ID 填充遥测事件。
 
-如果正在监视 Web 服务（无用户界面），根据服务的唯一用户和会话概念，[创建遥测初始值设定项用于填充匿名用户 ID 和会话 ID 属性](usage-send-user-context.md)。
+如果正在监视 Web 服务（无用户界面），根据服务的唯一用户和会话概念，[创建遥测初始值设定项用于填充匿名用户 ID 和会话 ID 属性](./usage-overview.md)。
 
 如果应用正在发送[已经过身份验证的用户 ID](./api-custom-events-metrics.md#authenticated-users)，则可以在“用户”工具中基于经过身份验证的用户 ID 进行计数。 在“显示”下拉菜单中，选择“已经过身份验证的用户”。
 
@@ -50,4 +50,3 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](./data-m
 
 ## <a name="get-help"></a>获取帮助
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6abed66a5fbd9987e5a8a677dde7b4a77589e907
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96011517"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065035"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教程：将自定义域添加到 Front Door
+
 本教程介绍如何将自定义域添加到 Front Door。 使用 Azure Front Door 进行应用程序交付时，如果希望自己的域名在最终用户请求中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
 
 创建 Front Door 后，URL 中会包含默认前端主机（`azurefd.net` 的子域），以便在默认情况下从后端交付 Front Door 内容（例如 https:\//contoso-frontend.azurefd.net/activeusers.htm）。 为方便起见，Azure Front Door 提供了用于将自定义域与默认主机相关联的选项。 通过此选项，可在 URL 中使用自定义域而不是 Front Door 拥有的域名来交付内容（例如 https:\//www.contoso.com/photo.png）。 
