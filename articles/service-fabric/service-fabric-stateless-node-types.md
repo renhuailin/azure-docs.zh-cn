@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563770"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>使用纯无状态节点类型部署 Azure Service Fabric 群集（预览版）
 关于 Service Fabric 节点类型，有一个固有的假设，即在某个时间点，有状态服务可能会被放置到节点上。 无状态节点类型放宽了对节点类型的这种假设，因此允许节点类型使用其他功能，例如更快的横向扩展操作、支持在“青铜”持续性级别下自动升级 OS，以及在一个虚拟机规模集中扩展到 100 多个节点。
@@ -75,6 +75,10 @@ ms.locfileid: "98680597"
 * 在规模集的 upgradePolicy 中，应将“模式”设置为“滚动升级”  。
 * 设置为滚动升级模式时，需要配置应用程序运行状况扩展或运行状况探测。 按照以下建议，使用无状态节点类型的默认配置来配置运行状况探测。 将应用程序部署到节点类型后，可以更改运行状况探测/运行状况扩展端口，以监视应用程序运行状况。
 
+>[!NOTE]
+> 如果某个无状态节点类型由跨多个区域的虚拟机规模集提供支持，则平台容错域计数必须更新为 5。 有关详细信息，请参阅此[模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)。
+> 
+> platformFaultDomainCount:5
 ```json
 {
     "apiVersion": "2018-10-01",
@@ -254,7 +258,7 @@ ms.locfileid: "98680597"
 资源完成部署后，你就可以开始禁用要从原始群集中删除的节点类型中的节点。
 
 >[!NOTE]
-> 使用带有青铜持久性的无状态 nodetypes 的自动缩放时，在缩小操作后，不会自动清理节点状态。 为了在自动缩放期间清理 NodeState 节点，建议使用 [Service Fabric 自动缩放助手](https://github.com/Azure/service-fabric-autoscale-helper) 。
+> 对具有青铜级持久性的无状态节点类型使用自动缩放时，在执行纵向缩减操作后，节点状态不会自动清除。 若要在自动缩放期间清除已关闭节点的节点状态，建议使用 [Service Fabric 自动缩放帮助程序](https://github.com/Azure/service-fabric-autoscale-helper)。
 
 ## <a name="next-steps"></a>后续步骤 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

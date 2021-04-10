@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中的文件共享对 WSFC 上的群集 SAP ASCS/SCS 进行分类 |Microsoft Docs
+title: 使用 Azure 中的文件共享在 WSFC 上群集化 SAP ASCS/SCS | Microsoft Docs
 description: 了解如何使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 03/15/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608401858c0119d281ab6ff46156fc7bdccd9d84
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675340"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496195"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
@@ -70,10 +70,10 @@ SAP 开发了可以取代群集共享磁盘的新方法和新方案，用于将 
 
 * SAP 中心服务（具有自身的文件结构以及消息和排队进程）与 SAP 全局主机文件相互独立。
 * SAP 中心服务在 SAP ASCS/SCS 实例下运行。
-* SAP ASCS/SCS 实例已群集化，可通过使用 \<ASCS/SCS virtual host name\> 虚拟主机名进行访问。
-* Sap 全局文件放置在 SMB 文件共享上，并使用 \<SAP global host\> 主机名： \\ \\ &lt; sap global host &gt; \sapmnt \\ &lt; SID &gt; \SYS \. .。
+* SAP ASCS/SCS 实例已群集化，可以通过 \<ASCS/SCS virtual host name\> 虚拟主机名来访问。
+* SAP 全局文件放置在 SMB 文件共享中，可使用 \<SAP global host\> 主机名: \\\\&lt;SAP 全局主机&gt;\sapmnt\\&lt;SID&gt;\SYS\. 进行访问。
 * SAP ASCS/SCS 实例安装在两个群集节点的本地磁盘上。
-* \<ASCS/SCS virtual host name\>网络名称与 &lt; SAP 全局主机不同 &gt; 。
+* \<ASCS/SCS virtual host name\> 网络名称不同于 &lt;SAP 全局主机&gt;。
 
 ![图 2：采用 SMB 文件共享的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8004]
 
@@ -137,20 +137,24 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 * 若要获得良好的 VM 间网络性能以顺利进行存储空间直通磁盘同步，请使用至少能够提供“高”网络带宽的 VM 类型。
     有关详细信息，请参阅 [DSv2 系列][dv2-series]和 [DS 系列][ds-series]规格。
 * 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息，请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
-* 不需要为横向扩展文件共享网络名称（例如）配置 Azure 内部负载均衡器 \<SAP global host\> 。 对于 \<ASCS/SCS virtual host name\> SAP ASCS/SCS 实例或 DBMS，此操作可实现。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP global host\> 使用所有群集节点的本地 IP 地址。
+* 不需要针对横向扩展文件共享网络名称（例如 \<SAP global host\>）来配置 Azure 内部负载均衡器。 此操作针对 SAP ASCS/SCS 实例的 \<ASCS/SCS virtual host name\>，或者针对 DBMS。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP global host\> 将本地 IP 地址用于所有群集节点。
 
 
 > [!IMPORTANT]
-> 不能重命名指向的 SAPMNT 文件共享 \<SAP global host\> 。 SAP 仅支持共享名“sapmnt”。
+> 不能重命名指向 \<SAP global host\> 的 SAPMNT 文件共享。 SAP 仅支持共享名“sapmnt”。
 >
 > 有关详细信息，请参阅 [SAP 说明 2492395 - 是否可以更改共享名 sapmnt？][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>在两个群集中配置 SAP ASCS/SCS 实例和横向扩展文件共享
 
-可以在一个群集中部署 SAP ASCS/SCS 实例，其中包含自己的 SAP \<SID\> 群集角色。 这种情况下，请在另一群集中配置横向扩展文件共享，分配另一群集角色。
+必须在单独的群集中部署 SAP ASCS/SCS 实例，分配它们自己的 SAP \<SID\> 群集角色。 这种情况下，请在另一群集中配置横向扩展文件共享，分配另一群集角色。
+
 
 > [!IMPORTANT]
->在本方案中，SAP ASCS/SCS 实例配置为使用 UNC 路径 \\\\&lt;SAP 全局主机&gt;\sapmnt\\&lt;SID&gt;\SYS\. 来访问 SAP 全局主机
+> 安装必须满足以下要求：必须将 SAP ASCS/SCS 实例和 SOFS 共享部署在不同群集中。    
+>
+> [!IMPORTANT] 
+> 在本方案中，SAP ASCS/SCS 实例配置为使用 UNC 路径 \\\\&lt;SAP 全局主机&gt;\sapmnt\\&lt;SID&gt;\SYS\. 来访问 SAP 全局主机
 >
 
 ![图 5：在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享][sap-ha-guide-figure-8007]
@@ -158,7 +162,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 **图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享
 
 > [!IMPORTANT]
-> 在 Azure 云中，用于 SAP 和横向扩展文件共享的每个群集都必须部署在其自己的 Azure 可用性集中或跨 Azure 可用性区域。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 此技术支持可用性区域部署。
+> 在 Azure 云中，每个用于 SAP 和横向扩展文件共享的群集都必须部署在自己的 Azure 可用性集或 Azure 可用性区域中。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 该技术支持可用性区域部署。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>将 SIOS DataKeeper 用作群集共享磁盘的通用文件共享

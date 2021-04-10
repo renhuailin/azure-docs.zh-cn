@@ -4,10 +4,10 @@ description: 使用 Azure 门户中的仪表板作为模板以编程方式创建
 ms.topic: how-to
 ms.date: 12/4/2020
 ms.openlocfilehash: bd56dc1c729c5aa7a77e79aa3af3366166fdcfea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095170"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板

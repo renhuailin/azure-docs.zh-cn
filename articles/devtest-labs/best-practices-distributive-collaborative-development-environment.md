@@ -4,10 +4,10 @@ description: 提供有关设置分布式协作开发环境以开发“开发测�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: caf4bd13f2ec9c45db392a027db269b492cbd802
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102550070"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>有关 Azure 开发测试实验室资源的分布式协作开发的最佳做法

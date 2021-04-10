@@ -3,14 +3,14 @@ title: 渲染功能
 description: 标准 Azure Batch 功能用于运行渲染工作负荷与应用。 Batch 包含用于支持渲染工作负荷的特定功能。
 author: mscurrell
 ms.author: markscu
-ms.date: 02/01/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.openlocfilehash: a2e2cfb71999bd5ab83591448342d4bac1dabdd5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429796"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496331"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -18,15 +18,18 @@ ms.locfileid: "99429796"
 
 有关 Batch 概念的概述，包括池、作业和任务，请参阅[此文](./batch-service-workflow-features.md)。
 
-## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>使用自定义 VM 映像和标准应用程序授权的批处理池
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>使用自定义 VM 映像和标准应用程序许可的 Batch 池
 
-与其他工作负荷和应用程序类型一样，可以使用所需的渲染应用程序和插件创建自定义 VM 映像。自定义 VM 映像位于 [共享映像库](../virtual-machines/shared-image-galleries.md) 中， [可用于创建批处理池](batch-sig-images.md)。
+与其他工作负荷和其他类型的应用程序一样，可以使用所需的渲染应用程序和插件创建自定义 VM 映像。自定义 VM 映像位于[共享映像库](../virtual-machines/shared-image-galleries.md)中并且[可用于创建 Batch 池](batch-sig-images.md)。
 
 任务命令行字符串将需要引用创建自定义 VM 映像时使用的应用程序和路径。
 
-大多数呈现应用程序都需要从许可证服务器获取的许可证。 如果存在现有的本地许可证服务器，则池和许可证服务器都需要位于同一 [虚拟网络](../virtual-network/virtual-networks-overview.md)中。 还可以在 Azure VM 上运行许可证服务器，将 Batch 池和许可证服务器 VM 置于同一虚拟网络中。
+大多数渲染应用程序都需要从许可证服务器获取的许可证。 如果存在现有的本地许可证服务器，则池和许可证服务器都需要位于同一[虚拟网络](../virtual-network/virtual-networks-overview.md)上。 还可以在 Azure VM 上运行许可证服务器，将 Batch 池和许可证服务器 VM 置于同一虚拟网络中。
 
-## <a name="batch-pools-using-rendering-vm-images"></a>使用呈现 VM 映像的批处理池
+## <a name="batch-pools-using-rendering-vm-images"></a>使用渲染 VM 映像的 Batch 池
+
+> [!IMPORTANT]
+> 渲染 VM 映像和即用即付许可[已弃用，将于 2024 年 2 月 29 日停用](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 若要使用 Batch 进行渲染，[应使用自定义 VM 映像和标准应用程序许可。](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 ### <a name="rendering-application-installation"></a>渲染应用程序安装
 
@@ -72,7 +75,7 @@ ms.locfileid: "99429796"
 |---------|---------|---------|
 |Autodesk 3ds Max 2021|3dsmaxcmdio.exe|3DSMAX_2021_EXEC|
 |Autodesk Maya 2020|render.exe|MAYA_2020_EXEC|
-|Chaos Group V-Ray Standalone|vray.exe|VRAY_4 VRAY_4.10.03_EXEC|
+|Chaos Group V-Ray Standalone|vray.exe|VRAY_4.10.03_EXEC|
 |Arnold 2020 命令行|kick.exe|ARNOLD_2020_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 

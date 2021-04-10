@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522047"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561934"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure
 
@@ -145,6 +145,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
     有关详细信息，请参阅 [AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 文档。
 
+    若要从 `AutoMLRun` 部署已注册的模型，建议通过 [Azure 机器学习工作室中的一键式部署按钮](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)来执行此操作。 
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
 可以通过提供模型的本地路径来注册模型。 可以提供文件夹或单个文件的路径。 可以使用此方法来注册使用 Azure 机器学习训练并下载的模型。 也可以使用此方法来注册在 Azure 机器学习之外训练的模型。
@@ -368,6 +369,7 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [在 Azure 机器学习工作室中运行自动化 ML 的一键式部署](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

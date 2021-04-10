@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
-ms.date: 02/26/2019
-ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.date: 03/24/2021
+ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471995"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107782"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>使用资源运行状况排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,5 +76,5 @@ Azure 基础结构定期执行计划内维护 - 升级数据中心内的硬件�
 - 详细了解[针对暂时性错误的重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。
 - [排查、诊断和预防 SQL 连接错误](troubleshoot-common-connectivity-issues.md)。
 - 详细了解如何[配置资源运行状况警报](../../service-health/resource-health-alert-arm-template-guide.md)。
-- 获取[资源运行状况](../../application-gateway/resource-health-overview.md)的概述。
+- 获取[资源运行状况](../../service-health/resource-health-overview.md)的概述。
 - 查看[资源运行状况常见问题解答](../../service-health/resource-health-faq.md)。

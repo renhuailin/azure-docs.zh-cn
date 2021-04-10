@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 ADP Globalview 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成（已弃用）| Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 ADP Globalview 之间配置单一登录（已弃用）。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,91 +9,89 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: c11dd5ae3bc312cfea1a047c2db4396ba2cb50da
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 08b1294436ead372234104008a48ca23e56de389
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309036"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589304"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview-deprecated"></a>Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成（已弃用）
 
-本教程介绍如何将 ADP Globalview 与 Azure Active Directory (Azure AD) 集成。 将 ADP Globalview 与 Azure AD 集成后，可以：
+本教程介绍如何将 ADP Globalview（已弃用）与 Azure Active Directory (Azure AD) 集成。 将 ADP Globalview（已弃用）与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 ADP Globalview。
-* 让用户使用其 Azure AD 帐户自动登录到 ADP Globalview。
+* 在 Azure AD 中控制谁有权访问 ADP Globalview（已弃用）。
+* 让用户使用其 Azure AD 帐户自动登录到 ADP Globalview（已弃用）。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 ADP Globalview 单一登录 (SSO) 的订阅。
+* 已启用 ADP Globalview（已弃用）单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* ADP Globalview 支持 **IDP** 发起的 SSO
+* ADP Globalview（已弃用）支持 **IDP** 发起的 SSO。
 
-## <a name="adding-adp-globalview-from-the-gallery"></a>从库中添加 ADP Globalview
+## <a name="adding-adp-globalview-deprecated-from-the-gallery"></a>从库中添加 ADP Globalview（已弃用）
 
-若要配置 ADP Globalview 与 Azure AD 的集成，需要将库中的 ADP Globalview 添加到托管的 SaaS 应用列表。
+要配置 ADP GlobalView（已弃用）与 Azure AD 的集成，需要将库中的 ADP GlobalView（已弃用）添加到托管的 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”  部分的搜索框中，键入 **ADP Globalview**。
-1. 从结果面板中选择“ADP Globalview”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **ADP Globalview**（已弃用）。
+1. 从结果面板中选择“ADP Globalview”（已弃用），然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adp-globalview"></a>配置和测试 ADP Globalview 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-adp-globalview-deprecated"></a>配置和测试 ADP Globalview（已弃用）的 Azure AD 单一登录
 
-使用名为 **B.Simon** 的测试用户配置和测试 ADP Globalview 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 ADP Globalview 相关用户之间建立链接关系。
+使用名为 **B.Simon** 的测试用户配置和测试 ADP Globalview（已弃用）的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 ADP Globalview（已弃用）相关用户之间建立链接关系。
 
-若要配置和测试 ADP Globalview 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 ADP Globalview（已弃用）的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 ADP Globalview SSO](#configure-adp-globalview-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 ADP Globalview 测试用户](#create-adp-globalview-test-user)** - 在 ADP Globalview 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[配置 ADP Globalview（已弃用）SSO](#configure-adp-globalview-deprecated-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 ADP Globalview（已弃用）测试用户](#create-adp-globalview-deprecated-test-user)** - 在 ADP Globalview（已弃用）中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“ADP Globalview”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 Azure 门户的“ADP Globalview”（已弃用）应用程序集成页上，找到“管理”部分，选择“单一登录”。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
     
-    在“标识符”文本框中，使用以下模式键入 URL： 
+    在“标识符”文本框中，使用以下模式之一键入 URL：
 
-    ```https
-    https://<subdomain>.globalview.adp.com/federate
-    https://<subdomain>.globalview.adp.com/federate2
-    ```
-
+    | 标识符 |
+    | ----------- |
+    | `https://<subdomain>.globalview.adp.com/federate` |
+    | `https://<subdomain>.globalview.adp.com/federate2` |
+    |
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [ADP Globalview 客户端支持团队](https://www.adp.com/contact-us/overview.aspx)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际标识符更新此值。 请联系 [ADP Globalview（已弃用）客户端支持团队](https://www.adp.com/contact-us/overview.aspx)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 ADP Globalview”部分中，根据要求复制相应的 URL  。
+1. 在“设置 ADP Globalview（已弃用）”部分中，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -101,52 +99,43 @@ ms.locfileid: "92309036"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过授予 B.Simon 访问 ADP Globalview 的权限，允许其使用 Azure 单一登录。
+在本部分中，将通过授予 B.Simon 访问 ADP Globalview（已弃用）的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序列表”中，选择“ADP Globalview”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在“应用程序列表”中，选择“ADP Globalview（已弃用）”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-   ![“用户和组”链接](common/users-groups-blade.png)
+## <a name="configure-adp-globalview-deprecated-sso"></a>配置 ADP Globalview（已弃用）SSO
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+若要在 **ADP Globalview（已弃用）** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [ADP Globalview（已弃用）支持团队](https://www.adp.com/contact-us/overview.aspx)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-    ![“添加用户”链接](common/add-assign-user.png)
+### <a name="create-adp-globalview-deprecated-test-user"></a>创建 ADP Globalview（已弃用）测试用户
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+在本部分中，你将在 ADP Globalview（已弃用）中创建名为 B.Simon 的用户。 请与 [ADP GlobalView（已弃用）支持团队](https://www.adp.com/contact-us/overview.aspx)合作，添加 ADP GlobalView（已弃用）平台中的用户。 使用单一登录前，必须先创建并激活用户。
 
-## <a name="configure-adp-globalview-sso"></a>配置 ADP Globalview SSO
+## <a name="test-sso"></a>测试 SSO
 
-若要在 **ADP Globalview** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [ADP Globalview 支持团队](https://www.adp.com/contact-us/overview.aspx)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 
-### <a name="create-adp-globalview-test-user"></a>创建 ADP Globalview 测试用户
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 ADP Globalview（已弃用）
 
-在本部分中，你将在 ADP Globalview 中创建名为 B.Simon 的用户。 在  [ADP Globalview 支持团队](https://www.adp.com/contact-us/overview.aspx)的配合下，将用户添加到 ADP Globalview 平台。 使用单一登录前，必须先创建并激活用户。
+* 你可使用 Microsoft 的“我的应用”。 在访问面板中单击“ADP Globalview（已弃用）”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview（已弃用）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+## <a name="next-steps"></a>后续步骤
 
-在访问面板中单击“ADP Globalview”磁贴时，应会自动登录到设置了 SSO 的 ADP Globalview。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
-
-## <a name="additional-resources"></a>其他资源
-
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
-
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
-
-- [通过 Azure AD 试用 ADP Globalview](https://aad.portal.azure.com/)
+配置 ADP Globalview（已弃用）后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

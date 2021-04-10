@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 696faaecd2227c9b9ef74f20763e36661991ff67
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: c6f7182fe058bacb1236ff10dfc1553d23a7e1f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438977"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645254"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备问题 
 
@@ -144,9 +144,9 @@ ms.locfileid: "102438977"
 |------------|-----------------|
 |常规问题|<li>[验证 Edge 设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证客户端是否已正确配置](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment：发送请求时出错。<br>位置：line:1 char:1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|此错误表示无法访问 Azure Stack Edge Pro 设备或配置不正确。 验证是否正确配置了 Edge 设备和客户端。 有关指南，请参阅此表中的“常规问题”行。|
-|服务返回了错误。 查看 InnerException 了解详情：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。 |   出现此错误的原因可能是一个或多个自带证书步骤未正确执行。 可以在[此处](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)找到指南。 |
+|服务返回了错误。 查看 InnerException 了解详情：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。 |   出现此错误的原因可能是一个或多个自带证书步骤未正确执行。 可以在[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)找到指南。 |
 |操作返回了无效状态代码“ServiceUnavailable” <br> 响应状态代码不指明成功：503（服务不可用）。 | 此错误可能是由以下任何一种状况导致的。<li>ArmStsPool 处于停止状态。</li><li>Azure 资源管理器/安全令牌服务网站均已关闭。</li><li>Azure 资源管理器群集资源已关闭。</li><br>注意：重新启动设备可能会解决这个问题，但你应收集支持包，以便进一步调试。|
-|AADSTS50126：用户名或密码无效。<br>跟踪 ID：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相关 ID：1b9752c4-8cbf-4304-a714-8a16527410f4<br>时间戳：2019-11-15 09:21:57Z：远程服务器返回了错误：(400) 错误的请求。<br>位置：line:1 char:1 |此错误可能是由以下任何一种状况导致的。<li>对于无效的用户名和密码，请按照[此处](./azure-stack-edge-j-series-set-azure-resource-manager-password.md)的步骤操作，然后使用正确的密码来验证客户是否从 Azure 门户更改了密码。<li>对于无效的租户 ID，租户 ID 是固定 GUID，应设置为 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126：用户名或密码无效。<br>跟踪 ID：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相关 ID：1b9752c4-8cbf-4304-a714-8a16527410f4<br>时间戳：2019-11-15 09:21:57Z：远程服务器返回了错误：(400) 错误的请求。<br>位置：line:1 char:1 |此错误可能是由以下任何一种状况导致的。<li>对于无效的用户名和密码，请按照[此处](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)的步骤操作，然后使用正确的密码来验证客户是否从 Azure 门户更改了密码。<li>对于无效的租户 ID，租户 ID 是固定 GUID，应设置为 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |connect-AzureRmAccount：AADSTS90056：资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。<br>跟踪 ID：e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>相关 ID：75c8ef5a-830e-48b5-b039-595a96488ff9 时间戳：2019-11-18 07:00:51Z：远程服务器返回了错误：(400) 错误 |`Add-AzureRmEnvironment` 命令中使用的资源终结点不正确。|
 |无法从云中获取终结点。<br>请确保已连接网络。 错误详细信息：HTTPSConnectionPool(host='management.dbg-of4k6suvm.microsoftdatabox.com', port=30005)：超过了最大重试次数，URL：/metadata/endpoints?api-version=2015-01-01 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),)) |此错误主要出现在 Mac/Linux 环境中，原因如下：<li>未将 PEM 格式证书添加到 Python 证书存储中。</li> |
 
@@ -154,7 +154,7 @@ ms.locfileid: "102438977"
 
 1. 从本地 UI 验证是否已正确配置设备网络。
 
-2. 验证是否已为所有终结点更新证书，如[此处](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)所述。
+2. 验证是否已为所有终结点更新证书，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)所述。
 
 3. 从本地 UI 的“设备”页获取 Azure 资源管理器管理和登录终结点。
 
@@ -163,18 +163,18 @@ ms.locfileid: "102438977"
 
 ### <a name="verify-the-client-is-configured-properly"></a>验证是否已正确配置客户端
 
-1. 验证是否安装了正确的 PowerShell 版本，如[此处](azure-stack-edge-j-series-connect-resource-manager.md#step-3-install-powershell-on-the-client)所述。
+1. 验证是否安装了正确的 PowerShell 版本，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client)所述。
 
-2. 验证是否安装了正确的 PowerShell 模块，如[此处](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)所述。
+2. 验证是否安装了正确的 PowerShell 模块，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)所述。
 
 3. 验证是否可访问 Azure 资源管理器和登录终结点。 可以尝试对终结点执行 ping 操作。 例如：
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
    
-   如果均无法访问，请按[此处](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)所述添加 DNS / 主机文件条目。
+   如果均无法访问，请按[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)所述添加 DNS / 主机文件条目。
    
-4. 验证是否已按[此处](azure-stack-edge-j-series-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)所述安装客户端证书。
+4. 验证是否已按[此处](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)所述安装客户端证书。
 
 5. 如果客户使用的是 PowerShell，则应启用调试首选项以查看详细消息，方法是运行以下 PowerShell 命令。 
 

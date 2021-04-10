@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: b962d66349bbed112114c010e8d185ba16c74c8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 67110a2a2bd7f34c735edd126cfc655f45247fc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443074"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560227"
 ---
 # <a name="kubernetes-workload-management-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro 设备上的 Kubernetes 工作负载管理
 
@@ -83,7 +83,7 @@ ms.locfileid: "102443074"
 
 若要通过 kubectl 在本地部署应用，请参阅：
 
-- [通过 kubectl 在 Azure Stack Edge Pro 上部署无状态应用程序](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [通过 kubectl 在 Azure Stack Edge Pro 上部署无状态应用程序](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。
 
 若要通过 IoT Edge 部署应用，请参阅：
 

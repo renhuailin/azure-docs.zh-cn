@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: c8f76c74c951de77d5d5c213be3698ec2b175ead
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 139970bb043c745d63f2ef795ae1c8aef4bda0fa
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596767"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108092"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。
+使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encode-concept.md)。
 
 本教程介绍如何使用 REST 通过 Azure 媒体服务基于 URL 对文件进行编码并流式传输视频。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "104596767"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建媒体服务帐户](./create-account-howto.md)。
+- [创建媒体服务帐户](./account-create-how-to.md)。
 
     请务必记住用于资源组名称和媒体服务帐户名称的值
 
@@ -186,7 +186,7 @@ ms.locfileid: "104596767"
 
 对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交 **作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为 **转换**。 有关详细信息，请参阅[转换和作业](./transforms-jobs-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
 
-创建新实例时，需要指定希望生成的输出内容[转换](/rest/api/media/transforms)。 所需参数是 TransformOutput 对象。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
+创建新实例时，需要指定希望生成的输出内容[转换](/rest/api/media/transforms)。 所需参数是 TransformOutput 对象。 每个 TransformOutput 包含一个预设 。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput 。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](encode-autogen-bitrate-ladder.md)。
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 
 
@@ -413,4 +413,4 @@ az group delete --name amsResourceGroup
 现已介绍如何上传、编码和流式传输视频，请参阅以下文章： 
 
 > [!div class="nextstepaction"]
-> [分析视频](analyze-videos-tutorial-with-api.md)
+> [分析视频](analyze-videos-tutorial.md)

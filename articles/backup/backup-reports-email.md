@@ -3,12 +3,12 @@ title: 通过电子邮件发送 Azure 备份报告
 description: 创建自动化任务以通过电子邮件接收定期报告
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510357"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561332"
 ---
 # <a name="email-azure-backup-reports"></a>通过电子邮件发送 Azure 备份报告
 
@@ -30,7 +30,7 @@ ms.locfileid: "102510357"
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>授权到 Azure Monitor 日志和 Office 365 的连接
 
-逻辑应用使用 [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) 连接器查询 LA 工作区，使用 [Office365 Outlook](https://docs.microsoft.com/connectors/office365connector/) 连接器发送电子邮件。 需要对这两个连接器执行一次性授权。 
+逻辑应用使用 [azuremonitorlogs](/connectors/azuremonitorlogs/) 连接器查询 LA 工作区，使用 [Office365 Outlook](/connectors/office365connector/) 连接器发送电子邮件。 需要对这两个连接器执行一次性授权。 
  
 若要执行授权，请按照以下步骤进行操作：
 
@@ -79,4 +79,4 @@ ms.locfileid: "102510357"
 如果问题持续出现，请联系 Microsoft 支持部门。
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解备份报告](https://docs.microsoft.com/azure/backup/configure-reports)
+[详细了解备份报告](./configure-reports.md)

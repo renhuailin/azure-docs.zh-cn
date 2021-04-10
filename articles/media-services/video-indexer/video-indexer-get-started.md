@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 01/25/2021
 ms.author: juliako
-ms.openlocfilehash: 5b38c731db141052e6700472020cd60b6a4d13a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 76862800e88b41a70449cff4a4ffad072c755272
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98797807"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108034"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
@@ -36,7 +36,7 @@ ms.locfileid: "98797807"
 
 ### <a name="supported-file-formats-for-video-indexer"></a>视频索引器支持的文件格式
 
-有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
+有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/encode-media-encoder-standard-formats-reference.md)一文。
 
 ### <a name="upload-a-video"></a>上传视频
 

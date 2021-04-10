@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: 093b962bb9f42b660fb8cc5c0584ec67ebc87e48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5ef39118d16d47aeb46294658adf616515547ea6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98789156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729518"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>教程：使用 Azure PowerShell 保护虚拟中心
 
@@ -31,7 +31,7 @@ ms.locfileid: "98789156"
 
 - PowerShell 7
 
-   本教程要求在 PowerShell 7 上本地运行 Azure PowerShell。 若要安装 PowerShell 7，请参阅[从 Windows PowerShell 5.1 迁移到 PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7)。
+   本教程要求在 PowerShell 7 上本地运行 Azure PowerShell。 若要安装 PowerShell 7，请参阅[从 Windows PowerShell 5.1 迁移到 PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7&preserve-view=true)。
 - Az.Network 版本 3.2.0
 
     如果已有 Az.Network 版本 3.4.0 或更高版本，则需要降级才能使用本教程中的某些命令。 可以通过命令 `Get-InstalledModule -Name Az.Network` 查看 Az. Network 模块的版本。 若要卸载 Az.Network 模块，请运行 `Uninstall-Module -name az.network`。 若要安装 Az.Network 3.2.0 模块，请运行 `Install-Module az.network -RequiredVersion 3.2.0 -force`。

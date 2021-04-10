@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services 中支持的数据源 | Microsoft Docs
-description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数据模型所支持的数据源和连接器。
+description: 介绍 Azure Analysis Services 中表格 1200 及更高版本数据模型支持的数据源和连接器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 03f4d151fc948e4c060989a7d101ad91aecdecb6
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.openlocfilehash: b51ceb97d607f3082e1e7cc4c94083c9215b2db8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731473"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -20,9 +20,9 @@ ms.locfileid: "99981487"
 
 ## <a name="azure-data-sources"></a>Azure 数据源
 
-|数据源  |内存中  |直接连接  |注释 |
+|数据源  |内存中  |DirectQuery  |说明 |
 |---------|---------|---------|---------|
-|Azure SQL 数据库      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
+|Azure SQL Database      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL DW)      |   是      |   是       |<sup>[2](#azprovider)</sup>|
 |Azure Blob 存储      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
 |Azure 表存储     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
@@ -36,7 +36,7 @@ ms.locfileid: "99981487"
 注意：
 
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
-<a name="azprovider">2</a> -在表格1200和更高版本模型中指定为 *提供程序* 数据源时，内存中和 DirectQuery 模型都需要 Microsoft OLE DB 驱动程序 SQL Server MSOLEDBSQL (推荐的) 或 .NET Framework 的数据提供程序。  
+<a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，内存中模型和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）或 .NET Framework Data Provider for SQL Server。  
 <a name="azsqlmanaged">3</a> - 支持 Azure SQL 托管实例。 由于 SQL 托管实例在具有专用 IP 地址的 Azure VNet 中运行，因此必须在该实例上启用公共终结点。 如果未启用，则需要[本地数据网关](analysis-services-gateway.md)。  
 <a name="databricks">4</a> - 目前不支持使用 Spark 连接器的 Azure Databricks。  
 <a name="gen2">5</a> - 目前不支持 ADLS Gen2 连接器，但是，Azure Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。
@@ -121,9 +121,9 @@ ms.locfileid: "99981487"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于1400和更高兼容级别的表格模型，使用 *内存中* 模式，Azure SQL 数据库、azure Synapse、Dynamics 365 和 SharePoint List 支持 OAuth 凭据。 若要生成有效的令牌，请使用 Power Query 设置凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 
+对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 若要生成有效的令牌，请使用 Power Query 设置凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 
 > [!NOTE]
-> 通过网关访问的数据源不支持托管令牌刷新。 例如，可以通过网关访问一个或多个混合查询数据源，并/或 [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) 属性设置为 **true**。 
+> 通过网关访问的数据源不支持托管令牌刷新。 例如，通过网关访问一个或多个混合查询数据源，和/或 [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) 属性设置为 true。 
 
 OAuth 凭据不支持直接查询模式。
 

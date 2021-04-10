@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 03/15/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 77a1c02c1ec59778521104e57f3bf3de8e52fa44
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 74f5565ba9dfa48dabfe56c25e3ef30a8caafe14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177353"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563277"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -35,7 +35,7 @@ ms.locfileid: "102177353"
 * 在 Windows 系统上[下载最新的 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 该工具的最新版本包含安全更新，允许对 BitLocker 密钥使用外部保护程序并更新了解锁模式功能。
 
   * 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
-* 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队 `adbops@microsoft.com` 。
+* 具有 FedEx/DHL 帐户。 如果想使用 FedEx/DHL 以外的承运商，请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系。
   * 该帐户必须是有余额的有效帐户，且有退货功能。
   * 生成导出作业的跟踪号。
   * 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -60,15 +60,15 @@ ms.locfileid: "102177353"
 
    * 如果已将数据添加到由 WAImportExport 工具加密的驱动器，请使用以下命令解锁该驱动器：
 
-        `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
+        `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
 
-5. 使用管理权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
+5. 使用管理员权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
 
     `cd C:\WaImportExportV1`
 6. 若要获取驱动器的 BitLocker 密钥，请运行以下命令：
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. 若要准备磁盘，请运行以下命令。 **根据数据大小，磁盘准备可能需要几个小时才能完成。**
+7. 若要准备磁盘，请运行以下命令。 磁盘准备过程可能需要几小时到几天，具体取决于数据大小。
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,14 +86,14 @@ ms.locfileid: "102177353"
     |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 `manage-bde -protectors -get D:` 的输出      |
     |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
-    |/blobtype:     |此选项指定要将数据导入到的 Blob 的类型。 对于块 blob，blob 类型为， `BlockBlob` 页 blob 是 `PageBlob` 。         |
-    |/skipwrite:     | 指定没有需要复制的新数据，磁盘上的现有数据将准备就绪。          |
+    |/blobtype:     |此选项指定要将数据导入到的 Blob 的类型。 对于块 Blob，Blob 类型为 `BlockBlob`；对于页 Blob，该项为 `PageBlob`。         |
+    |/skipwrite:     | 此选项指定不需要复制任何新数据，但要准备磁盘上的现有数据。          |
     |/enablecontentmd5:     |启用此选项时，将确保计算 MD5 并将其设置为每个 blob 上的 `Content-md5` 属性。 仅当希望在将数据上传到 Azure 后使用 `Content-md5` 字段时，才使用此选项。 <br> 此选项不影响数据完整性检查（默认情况下会进行）。 此设置确实会增加将数据上传到云所需的时间。          |
 8. 为需要寄送的每个磁盘重复前面的步骤。 每次运行该命令行时，都会使用所提供的名称创建一个日志文件。
 
     > [!IMPORTANT]
-    > * 与日志文件一起，还会在工具所在的同一文件夹中创建一个 `<Journal file name>_DriveInfo_<Drive serial ID>.xml` 文件。 如果日志文件太大，则在创建作业时，将使用 .xml 文件来代替日志文件。
-   > * 门户允许的日志文件的最大大小为 2 MB。 如果日志文件超出该限制，将返回错误。
+    > * 与日志文件一起，还会在工具所在的同一文件夹中创建一个 `<Journal file name>_DriveInfo_<Drive serial ID>.xml` 文件。 如果日志文件过大，在创建作业时会使用该 .xml 文件来代替日志文件。
+   > * 门户允许的日志文件的最大大小为 2 MB。 如果日志文件超出该限制，就会返回错误。
 
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 
@@ -102,18 +102,18 @@ ms.locfileid: "102177353"
 在 Azure 门户中执行以下步骤来创建导入作业。
 
 1. 登录到 https://portal.azure.com/ 。
-2. 搜索 **导入/导出作业**。
+2. 搜索“导入/导出作业”。
 
    ![搜索导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
 3. 选择“+ 新建”  。
 
-   ![选择 "新建" 创建新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
+   ![选择“新建”以创建一个新的 ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. 在“基本信息”中：
 
    1. 选择一个订阅。
-   1. 选择一个资源组，或选择 " **新建** " 并创建一个新的资源组。
+   1. 选择一个资源组，或选择“新建”，创建新资源组。
    1. 输入导入作业的描述性名称。 可使用此名称来跟踪作业进度。
       * 此名称只能包含小写字母、数字和连字符。
       * 此名称必须以字母开头，并且不得包含空格。
@@ -122,24 +122,24 @@ ms.locfileid: "102177353"
 
     ![创建导入作业 - 步骤 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
 
-    选择 " **下一步：作业详细信息" >** 继续。
+    选择“下一步: 作业详细信息 >”以继续。
 
 5. 在“作业详细信息”中：
 
    1. 上传你在前面的[步骤 1：准备驱动器](#step-1-prepare-the-drives)中创建的日志文件。 如果使用了 `waimportexport.exe version1`，请为你准备的每个驱动器上传一个文件。 如果日志文件大小超过了 2 MB，则可以使用随日志文件创建的 `<Journal file name>_DriveInfo_<Drive serial ID>.xml`。
-   1. 选择订单的目标 Azure 区域。
-   1. 选择用于导入的存储帐户。
+   1. 选择该订单的目标 Azure 区域。
+   1. 为该导入选择存储帐户。
       
       放置位置会根据选定存储帐户所属的区域自动进行填充。
-   1. 如果不想保存详细日志，请 **在 "waimportexport" blob 容器选项中清除 "保存详细日志** "。
+   1. 如果不想保存详细日志，请清除“在 'waimportexport' Blob 容器中保存详细日志”选项。
 
    ![创建导入作业 - 步骤 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-   选择 **下一步：送货 >** 继续。
+   选择“下一步: 寄送 >”以继续。
 
-6. **装运**：
+6. 在“寄送”中：
 
-   1. 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队联系， `adbops@microsoft.com`  并提供有关计划使用的电信公司的信息。
+   1. 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的承运商，请从下拉列表中选择现有的选项。 请通过 `adbops@microsoft.com` 与 Azure Data Box 运营团队联系，提供计划使用的承运商的信息。
    1. 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
    1.  提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
@@ -152,7 +152,7 @@ ms.locfileid: "102177353"
 
 7. 在订单摘要中：
 
-   1. 查看 **条款**，然后选择 "我确认提供的所有信息都正确，并同意条款和条件"。 然后，将执行验证。
+   1. 请检查“条款”，然后选择“我确认提供的所有信息均正确无误，并同意上述条款和条件。” 然后会执行验证。
    1. 在摘要中复查提供的作业信息。 记下作业名称和 Azure 数据中心送货地址，以便将将磁盘寄回 Azure。 稍后将在发货标签中使用此信息。
    1. 选择“创建”。
 
@@ -335,7 +335,7 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-3-optional-configure-customer-managed-key"></a>步骤 3（可选）：配置客户管理的密钥
 
-如果要使用 Microsoft 托管密钥保护驱动器的 BitLocker 密钥，请跳过此步骤并转到下一步。 若要配置你自己的密钥来保护 BitLocker 密钥，请按照在 [Azure 门户中的 "为 Azure 导入/导出配置客户托管 Azure Key Vault 密钥](storage-import-export-encryption-key-portal.md)" 中的说明进行操作。
+如果要使用 Microsoft 托管密钥保护驱动器的 BitLocker 密钥，请跳过此步骤并转到下一步。 若要配置自己的密钥以保护 BitLocker 密钥，请按照[在 Azure 门户中使用用于 Azure 导入/导出的 Azure 密钥保管库配置客户管理的密钥](storage-import-export-encryption-key-portal.md)中的说明进行操作。
 
 ## <a name="step-4-ship-the-drives"></a>步骤 4：寄送驱动器
 

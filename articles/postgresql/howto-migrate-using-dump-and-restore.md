@@ -4,14 +4,15 @@ description: 介绍了如何在 Azure Database for PostgreSQL - 单一服务器�
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
+ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4fe15d1bd23f36b7289c54bedf575ae4760600e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 16166183b56b371fe8338894f83dbacf2e659c53
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710798"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563549"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -52,12 +53,12 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user-nam
 
 在此示例中，将数据从转储文件 **testdb.dump** 还原到目标服务器 **mydemoserver.postgres.database.azure.com** 上的数据库 **mypgsqldb**。
 
-下面是有关如何将此 **pg_restore** 用于 **单一服务器**的示例：
+下面举例说明了如何将此 pg_restore 用于单一服务器：
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
-下面是有关如何将此 **pg_restore** 用于 **灵活的服务器**的示例：
+下面举例说明了如何将此 pg_restore 用于灵活服务器：
 
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin --dbname=mypgsqldb testdb.dump
@@ -86,11 +87,11 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 使用 -Fc 和 -j *#* 交换机进行并行还原。 *#* 是目标服务器上的内核数。 你还可以尝试将 *#* 设置为目标服务器内核数的两倍，以查看产生的影响。 例如：
 
-下面是有关如何将此 **pg_restore** 用于 **单一服务器**的示例：
+下面举例说明了如何将此 pg_restore 用于单一服务器：
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
 ```
-下面是有关如何将此 **pg_restore** 用于 **灵活的服务器**的示例：
+下面举例说明了如何将此 pg_restore 用于灵活服务器：
 ```bash
  pg_restore -h my-target-server.postgres.database.azure.com -U azure-postgres-username@my-target-server -Fc -j 4 -d my-target-databasename Z:\Data\Backups\my-database-backup.dump
  ```

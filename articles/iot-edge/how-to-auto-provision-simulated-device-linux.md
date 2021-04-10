@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175510"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166592"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 本文介绍如何使用受信任的平台模块 (TPM) 在 Linux IoT Edge 设备上测试自动预配。 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[预配](../iot-dps/about-iot-dps.md#provisioning-process)概述。
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> 目前，IoT Edge 版本 1.2 不支持使用 TPM 身份验证的自动预配。
+:::moniker-end
 
 任务如下：
 
@@ -27,7 +34,7 @@ ms.locfileid: "102175510"
 1. 安装 IoT Edge 运行时并将设备连接到 IoT 中心。
 
 > [!TIP]
-> 本文介绍了如何使用 TPM 模拟器测试 DPS 预配，但其中的大部分内容都适用于物理 TPM 硬件，例如 [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board)（一款 Azure IoT 认证设备）。
+> 本文介绍了如何使用 TPM 模拟器测试 DPS 预配，但其中的大部分内容都适用于物理 TPM 硬件，例如 [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e)（一款 Azure IoT 认证设备）。
 >
 > 如果使用的是物理设备，则可以跳至本文的[从物理设备中检索预配信息](#retrieve-provisioning-information-from-a-physical-device)部分。
 
@@ -209,7 +216,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    # dynamic_reprovisioning: false
    ```
 
-   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
+   （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
 1. 将 `scope_id` 和 `registration_id` 的值更新为你的 DPS 和设备信息。
 

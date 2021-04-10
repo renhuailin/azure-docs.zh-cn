@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: MT
+ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922287"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562053"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -63,7 +63,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | 灾难恢复 | [Azure 异地冗余备份](automated-backups-overview.md) |
 | 读取缩放 | [使用只读副本对只读的查询工作负荷进行负载均衡（预览版）](read-scale-out.md) |
 | ETL（OLTP 到 OLAP） | [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)或 [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| 从 SQL Server 迁移到 Azure SQL Database。 但是，可以在迁移完成后使用 SQL 数据同步，以确保源和目标保持同步。  | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
+| 从 SQL Server 迁移到 Azure SQL 数据库。 但是，可以在迁移完成后使用 SQL 数据同步，以确保源和目标保持同步。  | [Azure 数据库迁移服务](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 ## <a name="how-it-works"></a>工作原理
@@ -81,13 +81,13 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 | **优点** | - 主动-主动支持<br/>- 在本地和 Azure SQL 数据库之间双向同步 | - 更低的延迟<br/>- 事务一致性<br/>- 迁移后重用现有拓扑 <br/>\- Azure SQL 托管实例支持 |
 | **缺点** | - 无事务一致性<br/>- 更高的性能影响 | - 无法从 Azure SQL 数据库发布 <br/>- 维护成本高 |
 
-## <a name="private-link-for-data-sync-preview"></a>数据同步 (预览的专用链接) 
-使用新的私有链接 (预览版) 功能，你可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的 [一般要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements) 。 
+## <a name="private-link-for-data-sync-preview"></a>数据同步的专用链接（预览版）
+使用新的专用链接（预览版）功能，可以选择服务托管的专用终结点，以便在数据同步过程中在同步服务与成员/中心数据库之间建立安全连接。 服务托管的专用终结点是特定虚拟网络和子网中的专用 IP 地址。 在数据同步中，服务托管的专用终结点由 Microsoft 创建，并且由数据同步服务专门用于给定的同步操作。 在设置专用链接之前，请阅读功能的[常规要求](sql-data-sync-data-sql-server-sql-database.md#general-requirements)。 
 
 ![数据同步的专用链接](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
 > [!NOTE]
-> 在同步组部署过程中或使用 PowerShell 时，必须在 Azure 门户的 " **专用终结点连接** " 页中手动批准服务托管的专用终结点。
+> 你必须在同步组部署期间或通过使用 PowerShell 在 Azure 门户的专用终结点连接页中手动批准服务管理的专用终结点。
 
 ## <a name="get-started"></a>入门 
 
@@ -101,6 +101,9 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 - [使用 PowerShell 在 Azure SQL 数据库中的多个数据库之间同步](scripts/sql-data-sync-sync-data-between-sql-databases.md)
 - [使用 PowerShell 在 Azure SQL 数据库中的数据库和 SQL Server 实例中的数据库之间同步](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
+### <a name="set-up-data-sync-with-rest-api"></a>使用 REST API 设置数据同步
+- [使用 REST API 在 Azure SQL 数据库中的多个数据库之间进行同步](scripts/sql-data-sync-sync-data-between-sql-databases-rest-api.md)
+
 ### <a name="review-the-best-practices-for-data-sync"></a>查看数据同步最佳做法
 
 - [Azure SQL 数据同步最佳实践](sql-data-sync-best-practices.md)
@@ -113,7 +116,7 @@ SQL 数据同步使用中心辐射型拓扑来同步数据。 将同步组中的
 
 ### <a name="eventual-consistency"></a>最终一致性
 
-由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Microsoft 保证最终做出的所有更改，并且数据同步不会导致数据丢失。
+由于 SQL 数据同步是基于触发器的服务，因此无法保证事务一致性。 Microsoft 保证所有的更改最终都会进行，并且数据同步不会导致数据丢失。
 
 ### <a name="performance-impact"></a>性能影响
 
@@ -134,7 +137,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 - 必须同时为同步成员和中心启用快照隔离。 有关详细信息，请参阅 [SQL Server 中的快照隔离](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)。
 
-- 若要将专用链接与数据同步结合使用，成员和中心数据库都必须托管在 Azure (相同或不同的区域) 在同一云类型中 (例如，在公有云中或同时在政府云) 中。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册网络资源提供程序。 最后，必须在同步配置期间，在 "Azure 门户" 或 "通过 PowerShell" 的 "专用终结点连接" 部分中手动批准 "数据同步" 专用链接。 有关如何批准专用链接的详细信息，请参阅 [Set up SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
+- 若要将专用链接与数据同步配合使用，成员和中心数据库都必须托管在 Azure 中（相同或不同的区域），且必须托管在相同的云类型中（例如，都在公有云中或都在政府云中）。 此外，若要使用专用链接，必须为托管中心服务器和成员服务器的订阅注册 Microsoft.Network 资源提供程序。 最后，在同步配置期间，必须在 Azure 门户的“专用终结点连接”部分（或通过 PowerShell）手动批准数据同步的专用链接。 有关如何批准专用链接的详细信息，请参阅[设置 SQL 数据同步](./sql-data-sync-sql-server-configure.md)。批准服务托管的专用终结点后，同步服务和成员/中心数据库之间的所有通信都将通过专用链接进行。 可以更新现有同步组以启用此功能。
 
 ### <a name="general-limitations"></a>一般限制
 
@@ -143,7 +146,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。
 - 使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
-- 表名不能包含可打印字符：！ "# $%" ( ) * +-space
+- 表名不能包含可打印字符：! " # $ % ' ( ) * + - 空格
 - 不支持 Azure Active Directory 身份验证。
 - 如果存在名称相同但架构不同的表（例如，dbo.customers 和 sales.customers），则只能将其中一个表添加到同步中。
 - 不支持具有用户定义数据类型的列
@@ -183,15 +186,15 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 > [!NOTE]
 > 如果使用专用链接，则这些网络要求不适用。 
 
-在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL server 的设置中必须具有以下配置 `Firewalls and virtual networks` ：
+在建立同步组后，数据同步服务需要连接到中心数据库。 建立同步组时，Azure SQL Server 的 `Firewalls and virtual networks` 设置必须具有以下配置：
 
- * *拒绝公共网络访问* 必须设置为 *Off*。
- * "*允许 Azure 服务和资源访问此服务器*" 必须设置为 *"是"*，或者必须为 [数据同步服务使用的 ip 地址](network-access-controls-overview.md#data-sync)创建 ip 规则。
+ * “拒绝公用网络访问”必须设置为“关”。
+ * “允许 Azure 服务和资源访问此服务器”必须设置为“是”，否则必须为[数据同步服务使用的 IP 地址](network-access-controls-overview.md#data-sync)创建 IP 规则 。
 
-创建并设置了同步组后，你可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的 [防火墙 IP 规则](firewall-configure.md) 或 [专用终结点](private-endpoint-overview.md) 来允许代理访问中心服务器。
+创建并预配同步组后，可以禁用这些设置。 同步代理将直接连接到中心数据库，你可以使用服务器的[防火墙 IP 规则](firewall-configure.md)或[专用终结点](private-endpoint-overview.md)允许代理访问中心服务器。
 
 > [!NOTE]
-> 如果更改同步组的架构设置，你将需要允许数据同步服务再次访问服务器，以便可以重新预配中心数据库。
+> 如果更改同步组架构设置，则将需要允许数据同步服务再次访问服务器，以便可以重新预配中心数据库。
 
 ## <a name="faq-about-sql-data-sync"></a>SQL 数据同步常见问题解答
 
@@ -250,7 +253,7 @@ SQL 数据同步在所有区域中都可用。
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>是否可以使用数据同步来同步通过自带数据库 (BYOD) 功能从 Dynamics 365 导出的数据？
 
-利用 Dynamics 365，自带数据库功能，管理员可以将应用程序中的数据实体导出到各自 Microsoft Azure 的 SQL 数据库。 如果使用“增量推送”（不支持完全推送）导出数据，并且“在目标数据库中启用触发器”设置为“是”，则可以使用数据同步来将这些数据同步到其他数据库中  。
+利用 Dynamics 365 自带数据库功能，管理员可以将数据实体从应用程序导出到其自己的 Microsoft Azure SQL 数据库中。 如果使用“增量推送”（不支持完全推送）导出数据，并且“在目标数据库中启用触发器”设置为“是”，则可以使用数据同步来将这些数据同步到其他数据库中  。
 
 ## <a name="next-steps"></a>后续步骤
 

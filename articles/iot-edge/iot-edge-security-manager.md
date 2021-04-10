@@ -9,16 +9,18 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d50ff37c3d29ae8e9e25d8759ef3c55787a58047
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
-ms.translationtype: MT
+ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042994"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103492551"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
-Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 安全管理器是增强安全性的重点，并为原始设备制造商 (OEM) 提供技术集成点。
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
+Azure IoT Edge 安全管理器是一种界限明确的安全内核，用于通过抽象化安全硅硬件来保护 IoT Edge 设备及其所有组件。 安全管理器是增强安全性的重点，为原始设备制造商 (OEM) 提供技术集成点。
 
 ![Azure IoT Edge 安全管理器](media/edge-security-manager/iot-edge-security-manager.png)
 
@@ -79,11 +81,11 @@ IoT Edge 安全守护程序可充分利用任何可用硬件信任根技术来�
 
 #### <a name="management-api"></a>管理 API
 
-IoT Edge 安全守护程序提供了管理 API，在创建/启动/停止/删除 IoT Edge 模块时，IoT Edge 代理会调用该 API。 安全守护程序存储所有活动模块的“注册”。 这些注册将模块的标识映射到该模块的某些属性。 例如，这些模块属性包括在容器中运行的进程的进程标识符 (pid) 和 docker 容器内容的哈希值。
+IoT Edge 安全守护程序提供了管理 API，在创建/启动/停止/删除 IoT Edge 模块时，IoT Edge 代理会调用该 API。 安全守护程序存储所有活动模块的“注册”。 这些注册将模块的标识映射到该模块的某些属性。 例如，这些模块属性包括容器中运行的进程的进程标识符 (pid) 和 docker 容器内容的哈希值。
 
-这些属性由工作负荷 API（如下所述）使用，以验证调用方是否有权执行操作。
+工作负荷 API 使用这些属性（如下所述）来验证调用方是否有权执行某一操作。
 
-管理 API 是一个特权 API，仅可从 IoT Edge 代理进行调用。  由于 IoT Edge 安全守护程序会引导并启动 IoT Edge 代理，因此它将验证 IoT Edge 代理是否未被篡改，然后可以为 IoT Edge 代理创建隐式注册。 工作负载 API 使用的相同证明过程也会将管理 API 的访问权限限制为仅供 IoT Edge 代理使用。
+管理 API 是一个特权 API，仅可从 IoT Edge 代理进行调用。  IoT Edge 安全守护程序启动后，它会启动 IoT Edge 代理并验证 IoT Edge 代理是否未被篡改，然后就可以为 IoT Edge 代理创建隐式注册。 工作负载 API 使用的相同证明过程也会将管理 API 的访问权限限制为仅供 IoT Edge 代理使用。
 
 #### <a name="container-api"></a>容器 API
 
@@ -105,7 +107,7 @@ IoT Edge 安全守护程序的安装和更新通过操作系统的程序包管�
 
 #### <a name="versioning"></a>版本控制
 
-IoT Edge 运行时可跟踪和报告 IoT Edge 安全守护程序的版本。 该版本报告为 IoT Edge 代理模块报告的属性的 runtime.platform.version 特性  。
+IoT Edge 运行时可跟踪和报告 IoT Edge 安全守护程序的版本。 该版本报告为 IoT Edge 代理模块报告的属性的 runtime.platform.version 特性。
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>硬件安全模块平台抽象层 (HSM PAL)
 

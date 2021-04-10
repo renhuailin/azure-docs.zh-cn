@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390634"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614405"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
-> [!IMPORTANT]
-> 从 2019 年 4 月 30 日起，修补业务流程应用程序版本 1.2.* 不再受支持。 请务必升级到最新版本。 不支持在不替换 OS 磁盘的情况下，"Windows 更新" 应用操作系统修补程序的 VM 升级。 
+## <a name="automatic-os-image-upgrades"></a>自动 OS 映像升级
 
-> [!NOTE]
-> 若要在 [虚拟机规模集上进行自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) ，最佳做法是保持操作系统在 Azure 中进行修补。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高的持久性。 在具有持续性层铜牌的节点类型上，不支持这种情况，在这种情况下，请使用修补业务流程应用程序。
+[在虚拟机规模集上执行自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)是在 Azure 中修补操作系统的最佳做法。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高持续性级别。
+
+虚拟机规模集自动 OS 映像升级的要求
+-   Service Fabric [持久性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) 为 Silver 或 Gold，而不是 Bronze。
+-   根据规模集模型定义，Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
+-   根据规模集模型定义，Service Fabric 群集与 Service Fabric 扩展的持久性级别应相同。
+- 虚拟规模集不需要额外的运行状况探测，也不需要使用应用程序运行状况扩展。
+
+请确保 Service Fabric 群集与 Service Fabric 扩展上的持久性设置匹配，因为不匹配将导致升级错误。 可以通过[此页](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)上概述的指导原则来修改持久性级别。
+
+在青铜级持续性下，无法进行自动 OS 映像升级。 虽然不推荐将[补丁协调应用程序](#patch-orchestration-application )（仅适用于非 Azure 托管群集）用于白银或更高持续性级别，但对于 Service Fabric 升级域，只能通过它自动执行 Windows 更新。
+
+> [!IMPORTANT]
+> 虚拟机内升级，其中，Azure Service Fabric 不支持在未更换 OS 磁盘的情况下应用“Windows 更新”操作系统修补程序。
+
+要在操作系统上正确启用已禁用的 Windows 更新功能，需要两个步骤。
+
+1. 启用自动 OS 映像升级，禁用 Windows 更新 ARM 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. 更新规模集模型：此配置更改后，需要对所有计算机重新映像以更新规模集模型，使所做的更改生效。
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+有关更多说明，请参阅[虚拟机规模集的自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
+
+## <a name="patch-orchestration-application"></a>修补业务流程应用程序
+
+> [!IMPORTANT]
+> 从 2019 年 4 月 30 日起，修补业务流程应用程序版本 1.2.* 不再受支持。 请务必升级到最新版本。
 
 修补业务流程应用程序 (POA) 是围绕 Azure Service Fabric 修复管理器服务的包装器，可为非 Azure 托管群集启用基于配置的 OS 修补计划。 非 Azure 托管群集不需要 POA，但需要按更新域计划修补程序安装，以便在不停机的情况下修补 Service Fabric 群集主机。
 
@@ -143,7 +202,7 @@ POA 要求在群集上启用修复管理器服务。
 
 ### <a name="configure-windows-updates-for-all-nodes"></a>为所有节点配置 Windows 更新
 
-自动 Windows 更新可能导致失去可用性，因为多个群集节点可能同时重启。 POA 默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略进行管理，我们建议将 Windows 更新策略设置为 "下载之前通知"。
+自动 Windows 更新可能导致失去可用性，因为多个群集节点可能同时重启。 POA 默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略管理，建议将 Windows 更新策略显式设置为“下载之前发出通知”。
 
 ## <a name="download-the-application-package"></a>下载应用程序包
 
@@ -294,9 +353,9 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    在 POA 1.4.0 和更高版本中，可以使用“WUOperationStatus-\<NodeName>”属性查看 NodeAgentService 上的运行状况事件，以便查找更新的状态。 下图中的突出显示部分显示了节点 *poanode_0* 和 *poanode_2* 上的 Windows 更新状态：
 
-   [![屏幕截图显示 poanode_0 突出显示 Windows 更新操作状态的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![屏幕截图展示了 Windows 更新操作状态控制台窗口，其中突出显示了“poanode_0”。](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![屏幕截图显示 poanode_1 突出显示 Windows 更新操作状态的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![屏幕截图展示了 Windows 更新操作状态控制台窗口，其中突出显示了“poanode_1”。](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    也可以使用 PowerShell 获取详细信息。 为此，请连接到群集并使用 [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) 提取修复任务的状态。 
    
@@ -326,7 +385,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 1. 在 POA 1.4.0 和更高版本中，当节点更新尝试完成后，将在 NodeAgentService 上发布一个包含属性“WUOperationStatus-[NodeName]”的事件，以通知下一次要在何时开始尝试下载并安装 Windows 更新。 下图显示了此信息：
 
-     [![屏幕截图显示 NodeAgentService 操作状态 Windows 更新的控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![屏幕截图展示了包含 NodeAgentService 的 Windows 更新操作状态控制台窗口。](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>诊断日志
 

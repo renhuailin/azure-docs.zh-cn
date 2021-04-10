@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 3/5/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 014140b9b9832bab3de4f71c0b5f164b564b3fe5
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212716"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644910"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -87,7 +87,7 @@ SQL 托管实例包含自动备份，因此用户可以创建完整数据库 `CO
 
 ### <a name="auditing"></a>审核
 
-Microsoft Azure SQL 和 SQL Server 中的审核之间的主要区别在于：
+在审核方面，Microsoft Azure SQL 和 SQL Server 的主要差异是：
 
 - 在 SQL 托管实例中，审核在服务器级别执行。 在 Azure Blob 存储中存储 `.xel` 日志文件。
 - 在 Azure SQL 数据库中，审核在数据库级别执行。 在 Azure Blob 存储中存储 `.xel` 日志文件。
@@ -139,7 +139,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="logins-and-users"></a>登录名和用户
 
 - 支持使用 `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY` 和 `FROM SID` 创建的 SQL 登录名。 请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql)。
-- 支持使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）。 这些登录名是在服务器级别创建的。
+- 支持使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语法或 [CREATE USER FROM LOGIN [Azure AD 登录名]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语法创建的 Azure Active Directory (Azure AD) 服务器主体（登录名）。 这些登录名是在服务器级别创建的。
 
     SQL 托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
 
@@ -306,8 +306,8 @@ WITH PRIVATE KEY (<private_key_options>)
   - 尚不支持警报。
   - 不支持代理。
 - 不支持 EventLog。
-- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 如果用户不是直接映射的，例如，属于具有创建、修改或执行 SQL 代理作业权限的 Azure AD 组的用户，将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
-- 不支持 master/target (MSX/TSX) 作业的多服务器管理功能。
+- 用户必须直接映射到 Azure AD 服务器主体（登录名），才能创建、修改或执行 SQL 代理作业。 未直接映射的用户（例如，属于有权创建、修改或执行 SQL 代理作业的 Azure AD 组的用户）将无法有效地执行这些操作。 这是由于托管实例模拟和 [EXECUTE AS 限制](#logins-and-users)的缘故。
+- 不支持主/目标 (MSX/TSX) 作业的多服务器管理功能。
 
 有关 SQL Server 代理的信息，请参阅 [SQL Server 代理](/sql/ssms/agent/sql-server-agent)。
 
@@ -369,7 +369,7 @@ Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通�
 
 ### <a name="external-libraries"></a>外部库
 
-在有限的公共预览版中支持数据库中的 R 和 Python 外部库。 请参阅 [AZURE SQL 托管实例 (预览) 中的机器学习服务 ](machine-learning-services-overview.md)。
+有限公共预览版支持数据库内 R 和 Python 外部库。 请参阅 [Azure SQL 托管实例（预览版）中的机器学习服务](machine-learning-services-overview.md)。
 
 ### <a name="filestream-and-filetable"></a>文件流和文件表
 
@@ -394,9 +394,9 @@ Azure SQL 托管实例当前不支持本地或 Azure 虚拟机中的 MSDTC 通�
 
 SQL 托管实例中的链接服务器支持有限数量的目标：
 
-- 支持的目标为 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和专用池，以及 SQL Server 实例。 
+- 支持的目标包括 SQL 托管实例、SQL 数据库、Azure Synapse SQL [无服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)和专用池，以及 SQL Server 实例。 
 - 分布式可写事务仅在托管实例之间可用。 有关详细信息，请参阅[分布式事务](../database/elastic-transactions-overview.md)。 但是，MS DTC 不受支持。
-- 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法，或使用 [azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
+- 不支持的目标为文件、Analysis Services 和其他 RDBMS。 尝试使用 `BULK INSERT` 或 `OPENROWSET` 作为文件导入的替代方法从 Azure Blob 存储中进行本机 CSV 导入，或尝试使用 [Azure Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)加载文件。
 
 操作： 
 
@@ -404,11 +404,11 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 - 支持使用 `sp_dropserver` 删除链接服务器。 请参阅 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 请参阅 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
-- 不能使用链接服务器从网络共享读取文件（Excel、CSV）。 尝试使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)， [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) ，从 AZURE Blob 存储读取 CSV 文件，或 [在 Synapse ANALYTICS 中引用无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)。 在[SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)上跟踪此请求|
+- 不能使用链接服务器从网络共享读取文件（Excel、CSV）。 尝试使用从 Azure Blob 存储读取 CSV 文件的 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)、[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)，或使用[引用 Synapse Analytics 中的无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)。 在 [SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)中跟踪此请求|
 
 ### <a name="polybase"></a>PolyBase
 
-唯一可用的外部源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 您可以使用 [外部表引用 Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) 作为直接从 Azure 存储空间读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 或 SQL Server 来读取 Azure 存储数据。
+唯一可用的外部源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 可以使用[引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)作为直接从 Azure 存储进行读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)，也可以使用 SQL Server 来读取 Azure 存储数据。
 有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
@@ -466,13 +466,15 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 
 ### <a name="service-broker"></a>服务代理
 
-不支持跨实例 Service Broker：
+仅在 Azure SQL 托管实例之间支持跨实例 Service Broker 消息交换：
 
-- `sys.routes`：作为先决条件，必须从 sys.routes 中选择地址。 该地址必须在每个路由的本地。 请参阅 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql)。
-- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与除 `LOCAL` 以外的 `ADDRESS` 配合使用。 请参阅 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql)。
-- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与除 `LOCAL` 以外的 `ADDRESS` 配合使用。 请参阅 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql)。 
+- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与另一个 SQL 托管实例的 `LOCAL` 或 DNS 名称之外的 `ADDRESS` 配合使用。
+- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与另一个 SQL 托管实例的 `LOCAL` 或 DNS 名称之外的 `ADDRESS` 配合使用。
 
-Service broker 默认处于启用状态，并且无法禁用。 不支持下列 ALTER database 选项：
+支持传输安全性，不支持对话安全性：
+- 不支持 `CREATE REMOTE SERVICE BINDING`。
+
+Service Broker 默认处于启用状态，并且无法禁用。 不支持以下 ALTER DATABASE 选项：
 - `ENABLE_BROKER`
 - `DISABLE_BROKER`
 
@@ -489,7 +491,7 @@ Service broker 默认处于启用状态，并且无法禁用。 不支持下列 
   - `scan for startup procs`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- `Extended stored procedures` 不受支持，并且这包括 `sp_addextendedproc` 和 `sp_dropextendedproc` 。 此功能不受支持，因为它位于 SQL Server 的弃用路径中。 有关更多详细信息，请参阅 [扩展存储过程](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)。
+- 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 此功能不受支持，因为它位于 SQL Server 的弃用路径中。 请参阅[扩展存储过程](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)了解详细信息。
 - 不支持 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 请参阅 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
 ### <a name="system-functions-and-variables"></a>系统函数和变量
@@ -498,7 +500,7 @@ Service broker 默认处于启用状态，并且无法禁用。 不支持下列 
 
 - `SERVERPROPERTY('EngineEdition')` 返回值 8。 此属性唯一标识 SQL 托管实例。 请参阅 [SERVERPROPERTY](/sql/t-sql/functions/serverproperty-transact-sql)。
 - `SERVERPROPERTY('InstanceName')` 返回 NULL，因为 SQL Server 存在的实例概念并不适用于 SQL 托管实例。 请参阅 [SERVERPROPERTY('InstanceName')](/sql/t-sql/functions/serverproperty-transact-sql)。
-- `@@SERVERNAME` 返回完整 DNS "可连接" 名称，例如，my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql)。 
+- `@@SERVERNAME` 返回完整的 DNS“可连接”名称，例如 my-managed-instance.wcus17662feb9ce98.database.windows.net。 请参阅 [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql)。 
 - `SYS.SERVERS` 返回完整的 DNS“可连接”名称，例如，为属性“name”和“data_source”返回 `myinstance.domain.database.windows.net`。 请参阅 [SYS.SERVERS](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql)。
 - `@@SERVICENAME` 返回 NULL，因为 SQL Server 存在的服务概念并不适用于 SQL 托管实例。 请参阅 [@@SERVICENAME](/sql/t-sql/functions/servicename-transact-sql)。
 - 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql)。 
@@ -523,7 +525,7 @@ Service broker 默认处于启用状态，并且无法禁用。 不支持下列 
 ### <a name="tempdb"></a>TEMPDB
 - 在“常规用途”层级上，`tempdb` 的最大文件大小不能超过 24 GB 每核心。 在“业务关键”层级上，最大 `tempdb` 大小根据 SQL 托管实例存储大小受到限制。 在“常规用途”层级上，`Tempdb` 日志文件大小限制为 120 GB。 如果某些查询需要在 `tempdb` 中为每个核心提供 24 GB 以上的空间，或者生成 120 GB 以上的日志数据，则这些查询可能会返回错误。
 - `Tempdb` 始终拆分为 12 个数据文件：1 个主要数据文件（也称为主文件）和 11 个非主要数据文件。 无法更改文件结构，并且无法将新文件添加到 `tempdb`。 
-- 不支持[内存优化的 `tempdb` 元数据](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata)（一种新的 SQL Server 2019 内存中数据库功能）。
+- 不支持[内存优化的 `tempdb` 元数据](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata)（一种新的 SQL Server 2019 内存中数据库功能）。
 - 重启或故障转移后，无法在 `tempdb` 中自动创建在模型数据库中已创建的对象，因为 `tempdb` 不能从模型数据库中获取其初始对象列表。 每次重启或故障转移后，必须在 `tempdb` 中手动创建对象。
 
 ### <a name="msdb"></a>MSDB
@@ -532,13 +534,13 @@ SQL 托管实例中的以下 MSDB 架构必须由其相应的预定义角色拥�
 
 - 常规角色
   - TargetServersRole
-- [固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail 角色](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
+- [DatabaseMail 角色](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile)：
   - DatabaseMailUserRole
-- [集成服务角色](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
+- [集成服务角色](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true)：
   - msdb
   - db_ssisltduser
   - db_ssisoperator

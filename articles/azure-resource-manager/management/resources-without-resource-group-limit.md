@@ -3,12 +3,12 @@ title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034928"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563107"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -30,7 +30,7 @@ ms.locfileid: "98034928"
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-默认情况下，限于800实例。 可以通过联系支持人员来提高该限制。
+* botServices - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -58,7 +58,7 @@ ms.locfileid: "98034928"
 * registries/tasks
 * registries/webhooks
 
-## <a name="microsoftd365customerinsights"></a>D365CustomerInsights
+## <a name="microsoftd365customerinsights"></a>Microsoft.D365CustomerInsights
 
 * instances
 
@@ -80,7 +80,6 @@ ms.locfileid: "98034928"
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* 实验室/virtualMachines-默认情况下，限于800实例。 
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -107,8 +106,8 @@ ms.locfileid: "98034928"
 
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
-* 计算机-最多支持5000实例
-* 扩展-支持不限数量的 VM 扩展实例
+* 计算机 - 最多支持 5,000 个实例
+* 扩展 - 支持的 VM 扩展实例数没有限制
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -128,7 +127,7 @@ ms.locfileid: "98034928"
 * netAppAccounts
 * netAppAccounts/capacityPools
 * netAppAccounts/capacityPools/volumes
-* netAppAccounts/capacityPools/卷集/mountTargets
+* netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -194,13 +193,13 @@ ms.locfileid: "98034928"
 
 * namespaces
 
-## <a name="microsoftsingularity"></a>奇点
+## <a name="microsoftsingularity"></a>Microsoft.Singularity
 
 * accounts
-* 帐户/accountQuotaPolicies
-* 帐户/groupPolicies
-* 帐户/作业
-* 帐户/storageContainers
+* accounts/accountQuotaPolicies
+* accounts/groupPolicies
+* accounts/jobs
+* accounts/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

@@ -1,9 +1,9 @@
 ---
 title: 使用 Azure 媒体服务 REST API 创建筛选器 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 REST API 创建动态清单来实现此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务 REST API 将创建动态清单来存档此选择性流式传输。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f7d23daf-7cd2-49c7-a195-ab902912ab3c
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewr: cenkdin
-ms.openlocfilehash: 2b0271edbbd119e1d60f30cc149ba7772fd0cfa9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: b9286260d0fead11c7f55eff213c8ad0241a8cba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730212"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008783"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器
 
