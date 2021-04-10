@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+ms.openlocfilehash: 2645c3f183e2217dff28a96c9c0d376eb82a6476
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186186"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573126"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -45,7 +45,7 @@ ms.locfileid: "98186186"
 > [!NOTE]
 > 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
+#### <a name="windows-server-2019-and-client-base-images"></a>Windows Server 2019 和客户端基础映像
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)：`1809`、`10.0.17763.1040` 或更新版本
 * [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)：`ltsc2019`、`1809`、`10.0.17763.1040` 或更新版本
@@ -55,9 +55,12 @@ ms.locfileid: "98186186"
 
 使用符合要求的最小映像。 对于 Linux，可以使用 *runtime-alpine* .NET Core 映像，从 .NET Core 2.1 版本开始就已支持此映像。 对于 Windows，如果使用完整的 .NET Framework，则需要使用 Windows Server Core 映像（仅限运行时的映像，例如 *4.7.2-windowsservercore-ltsc2016*）。 仅限运行时的映像较小，但不支持需要 .NET SDK 的工作负荷。
 
+> [!NOTE]
+> ACI 无法从不符合 OCI 的注册表拉取映像。
+
 ### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>哪些类型的容器注册表与 ACI 兼容？
 
-ACI 支持从 ACR 和其他第三方容器注册表（如 DockerHub）进行图像提取。 ACI 还支持从本地注册表进行的图像提取，只要它们是 OCR 兼容的，并且具有公开给 internet 的终结点。
+ACI 支持从 ACR 和其他第三方容器注册表（如 DockerHub）拉取映像。 ACI 支持从 ACR 和其他第三方 OCI 兼容容器注册表（如 DockerHub）拉取映像，而这些注册表具有向 Internet 公开的终结点。
 
 ## <a name="availability-and-quotas"></a>可用性和配额
 

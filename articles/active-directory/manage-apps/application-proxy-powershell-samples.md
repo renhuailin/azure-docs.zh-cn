@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566645"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709474"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD 应用程序代理的 Azure AD PowerShell 示例
 
@@ -32,7 +32,7 @@ ms.locfileid: "102566645"
 | [列出所有应用程序代理应用的基本信息](scripts/powershell-get-all-app-proxy-apps-basic.md) | 列出有关目录中所有应用程序代理应用的基本信息（AppId、DisplayName、ObjId）。 |
 | [列出所有应用程序代理应用的扩展信息](scripts/powershell-get-all-app-proxy-apps-extended.md) | 列出有关目录中所有应用程序代理应用的扩展信息（AppId、DisplayName、ExternalUrl、InternalUrl、ExternalAuthenticationType）。  |
 | [按连接器组列出所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | 列出有关目录中所有应用程序代理应用以及应用被分配到哪个连接器组的信息。 |
-| [获取具有令牌生存期策略的所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目录中具有令牌生存期策略的所有应用程序代理应用及其详细信息。 此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)。 |
+| [获取具有令牌生存期策略的所有应用程序代理应用](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | 列出目录中具有令牌生存期策略的所有应用程序代理应用及其详细信息。 此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)。 |
 |连接器组||
 | [获取目录中的所有连接器组和连接器](scripts/powershell-get-all-connectors.md) | 列出目录中的所有连接器组和连接器。 |
 | [将分配到某连接器组的所有应用移动到另一个连接器组](scripts/powershell-move-all-apps-to-connector-group.md) | 将当前分配到某连接器组的所有应用程序移动到另一个连接器组。 |

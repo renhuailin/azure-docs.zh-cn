@@ -6,10 +6,10 @@ ms.date: 01/25/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
 ms.openlocfilehash: da7c0ea670b4c4201930ce5d0f01e7bd9d9835e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100581050"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
@@ -51,7 +51,7 @@ ms.locfileid: "100581050"
 
 操作系统检查将验证混合 Runbook 辅助角色是否正在运行以下操作系统之一。
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。         |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |

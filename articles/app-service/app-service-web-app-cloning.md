@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: e3ae342e7cbd8a9c2e126de7666d07f0664be407
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815379"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573636"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure App Service 应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "88815379"
 标准、高级、高级 V2 和独立应用服务计划支持应用克隆。 新功能使用与应用服务备份功能相同的限制，具体请参阅[在 Azure 应用服务中备份应用](manage-backup.md)。
 
 ## <a name="cloning-an-existing-app"></a>克隆现有应用
-方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到位于美国中北部区域的新应用。 结合 `-SourceWebApp` 选项使用 Azure 资源管理器版本的 PowerShell cmdlet 来创建新的应用，即可实现此目的。
+场景：用户想要将位于美国中南部区域的现有应用内容克隆到位于美国中北部区域的新应用。 结合 `-SourceWebApp` 选项使用 Azure 资源管理器版本的 PowerShell cmdlet 来创建新的应用，即可实现此目的。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
 
@@ -35,7 +35,7 @@ $srcapp = Get-AzWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-
 New-AzAppServicePlan -Location "North Central US" -ResourceGroupName DestinationAzureResourceGroup -Name DestinationAppServicePlan -Tier Standard
 ```
 
-使用 `New-AzWebApp` 命令，可在美国中北部区域创建新应用，并将其绑定到现有的应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
+使用 `New-AzWebApp` 命令，可在美国中北部区域内创建新的应用，并将其绑定到现有应用服务计划。 此外，还可以使用相同的资源组作为源应用，或定义新的资源组，如以下命令所示：
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
@@ -54,7 +54,7 @@ $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-weba
 ```
 
 ## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>将现有应用克隆到应用服务环境
-方案： "美国中南部" 区域中的现有应用，你想要将内容克隆到现有应用服务环境 (ASE) 的新应用。
+场景：用户想要将位于美国中南部区域的现有应用内容克隆到现有应用服务环境 (ASE) 中的新应用。
 
 如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取源应用的信息（在本例中，该应用名为 `source-webapp`）：
 
@@ -108,7 +108,7 @@ $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
 > [!NOTE]
-> 如果收到一条错误消息，指出 "流量管理器主机名上的 SSL 验证失败"，则建议你在执行克隆操作时使用-IgnoreCustomHostNames 属性，或使用门户。
+> 如果收到一条错误消息显示“对流量管理器主机名的 SSL 验证失败”，则建议在执行克隆操作时使用 -IgnoreCustomHostNames 属性，或者使用门户。
 
 ## <a name="current-restrictions"></a>当前限制
 下面是应用克隆的已知限制：
@@ -123,6 +123,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * 不会克隆数据库内容
 * 如果克隆到不同的缩放单元，出站 IP 地址会更改
 * 不适用于 Linux 应用
+* 托管标识未克隆
 
 ### <a name="references"></a>参考
 * [应用服务克隆](app-service-web-app-cloning.md)

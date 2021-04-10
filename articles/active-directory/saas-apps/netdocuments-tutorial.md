@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.author: jeedes
 ms.openlocfilehash: 48ba2810c0aaf304042580cdf6579df54fd9ccd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101645661"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NetDocuments 集成
@@ -26,7 +26,7 @@ ms.locfileid: "101645661"
 * 让用户使用其 Azure AD 帐户自动登录到 NetDocuments。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -120,7 +120,7 @@ ms.locfileid: "101645661"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -132,7 +132,7 @@ ms.locfileid: "101645661"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 NetDocuments 的权限，允许其使用 Azure 单一登录。
 
@@ -144,7 +144,7 @@ ms.locfileid: "101645661"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-netdocuments-sso"></a>配置 NetDocuments 单一登录
+## <a name=&quot;configure-netdocuments-sso&quot;></a>配置 NetDocuments 单一登录
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 NetDocuments 公司站点。
 
@@ -152,7 +152,7 @@ ms.locfileid: "101645661"
 
 3. 选择“安全中心”  。
    
-    ![存储库](./media/netdocuments-tutorial/security-center.png "安全中心")
+    ![存储库](./media/netdocuments-tutorial/security-center.png &quot;安全中心")
 
 4. 选择“高级身份验证”  。
     

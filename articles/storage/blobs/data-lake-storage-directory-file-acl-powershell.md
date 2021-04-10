@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 管理数据： Azure Data Lake Storage Gen2
-description: 使用 PowerShell cmdlet 管理已启用分层命名空间的存储帐户中的目录和文件。
+title: 使用 PowerShell 管理数据：Azure Data Lake Storage Gen2
+description: 使用 PowerShell cmdlet 在启用了分层命名空间的存储帐户中管理目录和文件。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,26 +10,26 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe7ad949d7301a035eb17d2b4d8d678dfb2e0546
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 552d53ff0257105ff61397e281504c5270512319
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650182"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573857"
 ---
 # <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录和文件
 
-本文介绍如何使用 PowerShell 在具有分层命名空间的存储帐户中创建和管理目录和文件。
+本文介绍了如何使用 PowerShell 在具有分层命名空间的存储帐户中创建和管理目录与文件。
 
-若要了解如何获取、设置和更新访问控制列表 (ACL) 目录和文件，请参阅 [使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 acl](data-lake-storage-acl-powershell.md)。
+若要了解如何获取、设置和更新目录与文件的访问控制列表 (ACL)，请参阅[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-powershell.md)。
 
-[参考](/powershell/module/Az.Storage/)  | [Gen1 到 Gen2 的映射](#gen1-gen2-map)  | [提供反馈](https://github.com/Azure/azure-powershell/issues)
+[参考](/powershell/module/Az.Storage/) | [Gen1 到 Gen2 的映射](#gen1-gen2-map) | [提供反馈](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
 - 已安装 .NET Framework 4.7.2 或更高版本。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "100650182"
 
 选择希望命令如何获取存储帐户的授权。 
 
-### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>选项1：使用 Azure Active Directory (Azure AD 获取授权) 
+### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>选项 1：使用 Azure Active Directory (Azure AD) 获取授权
 
 如果使用此方法，系统可确保用户帐户具有适当的 Azure 基于角色的访问控制 (Azure RBAC) 分配和 ACL 权限。
 
@@ -157,7 +157,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $dirname2 = "my-directory-2/my-subdirectory/"
-Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname1 -DestFileSystem $filesystemName -DestPath $dirname2
+Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -DestFileSystem $filesystemName -DestPath $dirname2
 ```
 
 ## <a name="delete-a-directory"></a>删除目录
@@ -276,18 +276,18 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 到 Gen2 的映射
 
-下表显示了用于 Data Lake Storage Gen1 映射到 Data Lake Storage Gen2 的 cmdlet 的 cmdlet。
+下表显示了用于 Data Lake Storage Gen1 的 cmdlet 如何映射到用于 Data Lake Storage Gen2 的 cmdlet。
 
-|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 备注 |
+|Data Lake Storage Gen1 cmdlet| Data Lake Storage Gen2 cmdlet| 说明 |
 |--------|---------|-----|
-|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|默认情况下，Get-AzDataLakeGen2ChildItem cmdlet 仅列出第一级子项。 -递归参数以递归方式列出子项目。 |
-|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item cmdlet 的输出项具有以下属性： Acl、所有者、组和权限。|
+|Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|默认情况下，Get-AzDataLakeGen2ChildItem cmdlet 仅列出第一级子项。 -Recurse 参数以递归方式列出子项。 |
+|Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item cmdlet 的输出项具有以下属性：Acl、Owner、Group、Permission。|
 |Get-AzDataLakeStoreItemContent|Get-AzDataLakeGen2FileContent|Get-AzDataLakeGen2FileContent cmdlet 将文件内容下载到本地文件。|
 |Move-AzDataLakeStoreItem|Move-AzDataLakeGen2Item||
-|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|此 cmdlet 将从本地文件上传新文件内容。|
+|New-AzDataLakeStoreItem|New-AzDataLakeGen2Item|此 cmdlet 从本地文件上传新文件内容。|
 |Remove-AzDataLakeStoreItem|Remove-AzDataLakeGen2Item||
-|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Update-AzDataLakeGen2Item cmdlet 仅更新单个项，而不是以递归方式更新。 如果要以递归方式进行更新，请使用 Get-AzDataLakeStoreChildItem cmdlet 将项列出，然后将管道序列到 Update-AzDataLakeGen2Item cmdlet。|
-|Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|如果项不存在，则 Get-AzDataLakeGen2Item cmdlet 将报告错误。|
+|Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Update-AzDataLakeGen2Item cmdlet 仅更新单个项，而不是以递归方式进行更新。 若要以递归方式进行更新，请使用 Get-AzDataLakeStoreChildItem 列出项，然后通过管道将这些项发送到 Update-AzDataLakeGen2Item cmdlet。|
+|Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|如果该项不存在，Get-AzDataLakeGen2Item cmdlet 会报告错误。|
 
 ## <a name="see-also"></a>另请参阅
 

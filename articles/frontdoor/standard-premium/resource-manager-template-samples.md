@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/05/2021
-ms.openlocfilehash: 393c15761c16dbf04d2af48fe13c0bc41b2e15b1
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/16/2021
+ms.openlocfilehash: 241c4c713890af0db8fce74b0817b5bdcf9a1403
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510317"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573789"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>用于 Azure Front Door 的 Azure 资源管理器模板
 
@@ -34,4 +34,8 @@ ms.locfileid: "102510317"
 |**存储**| **说明** |
 | [存储静态网站](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-storage-static-website) | 创建具有公共终结点的 Azure 存储帐户和静态网站以及 Front Door 配置文件。  |
 | [具有专用链接的存储 blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-storage-blobs-private-link) | 创建具有专用终结点的 Azure 存储帐户和 blob 容器以及 Front Door 配置文件。  |
+|**应用程序网关**| **说明** |
+| [应用程序网关](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-application-gateway-public) | 创建应用程序网关和 Front Door 配置文件。 |
+|**虚拟机**| **说明** |
+| [具有专用链接服务的虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-vm-private-link) | 创建虚拟机和专用链接服务以及 Front Door 配置文件。 |
 | | |

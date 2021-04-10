@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: jingwang
 ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100381760"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
@@ -317,8 +317,8 @@ Teradata 链接服务支持以下属性：
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
+| Char |字符串 |
+| Clob |字符串 |
 | Date |DateTime |
 | Decimal |小数 |
 | Double |Double |
@@ -346,10 +346,10 @@ Teradata 链接服务支持以下属性：
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
-| VarChar |String |
+| VarChar |字符串 |
 | VarGraphic |不支持。 在源查询中应用显式强制转换。 |
 | Xml |不支持。 在源查询中应用显式强制转换。 |
 

@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
-ms.translationtype: MT
+ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535189"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103572802"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 身份验证基础知识
 
@@ -120,7 +120,7 @@ Azure Active Directory 角色分配授予对密钥保管库执行管理平面操
 若要详细了解 Key Vault 的 Azure RBAC，请参阅以下文档：
 
 * Key Vault 的 Azure RBAC [链接](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* 适用于 Key Vault 角色的 Azure RBAC [链接](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
+* Key Vault 角色的 Azure RBAC [链接](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>配置 Key Vault 防火墙
 
