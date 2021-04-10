@@ -1,42 +1,40 @@
 ---
-title: Azure 门户-通过 SSE 托管磁盘启用客户管理的密钥
-description: 通过 Azure 门户在托管磁盘上启用客户管理的密钥。
+title: Azure 门户 - 使用 SSE 启用客户管理的密钥 - 托管磁盘
+description: 通过 Azure 门户为托管磁盘启用客户管理的密钥。
 author: roygara
 ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: 7fbcf37620f9d6edfb0f312c2eb09ef2d7994232
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499384"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731627"
 ---
-# <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 门户对托管磁盘的客户托管密钥启用服务器端加密
+# <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 门户为托管磁盘启用使用客户管理的密钥的服务器端加密
 
-Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关包含客户托管密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的 **客户托管密钥** 部分：
+Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念性信息，请参阅磁盘加密文章的 **客户管理的密钥** 部分：
 
-- 对于 Linux： [客户托管的密钥](./disk-encryption.md#customer-managed-keys)
-- 对于 Windows： [客户托管的密钥](./disk-encryption.md#customer-managed-keys)
+- 对于 Linux：[客户管理的密钥](./disk-encryption.md#customer-managed-keys)
+- 对于 Windows：[客户管理的密钥](./disk-encryption.md#customer-managed-keys)
 
 ## <a name="restrictions"></a>限制
 
 目前，客户托管密钥具有以下限制：
 
 - 如果为磁盘启用了此功能，则无法禁用它。
-    如果需要解决此操作，必须将所有数据复制到完全不同的托管磁盘，而不使用客户管理的密钥：
+    如果需要解决此问题，必须将所有数据复制到一个完全不同的托管磁盘（未使用客户管理的密钥）：
 
-    - 对于 Linux： [复制托管磁盘](./linux/disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)
+    - 对于 Linux：[复制托管磁盘](./linux/disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)
 
-    - 对于 Windows： [复制托管磁盘](./windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)
+    - 对于 Windows：[复制托管磁盘](./windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)
 
-- 仅支持2048位、3072位和4096位大小的 [软件和 HSM RSA 密钥](../key-vault/keys/about-keys.md) ，无其他密钥或大小。
-    - [HSM](../key-vault/keys/hsm-protected-keys.md) 密钥需要 Azure 密钥保管库的 **高级** 层。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-以下部分介绍如何为托管磁盘启用和使用客户托管的密钥：
+以下部分介绍如何为托管磁盘启用客户管理的密钥以及如何使用这种密钥：
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](../../includes/virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
@@ -46,12 +44,12 @@ Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时�
 VM 部署过程与标准部署过程类似，唯一的差别在于，你需要将 VM 部署到与其他资源相同的区域中，并选择使用客户托管密钥。
 
 1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
-1. 在 " **基本** " 边栏选项卡中，选择与磁盘加密集相同的区域，并 Azure Key Vault。
-1. 根据需要，在 " **基本** " 边栏选项卡中填写其他值。
+1. 在“基本信息”边栏选项卡上，选择与磁盘加密集和 Azure Key Vault 相同的区域。
+1. 根据需要，在“基本信息”边栏选项卡上填写其他值。
 
     ![VM 创建体验的屏幕截图，其中突出显示了区域值。](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-vm-region.png)
 
-1. 在 " **磁盘** " 边栏选项卡上，选择 " **静态加密"，并使用客户管理的密钥**。
+1. 在“磁盘”边栏选项卡上，选择“使用客户管理的密钥进行静态加密” 。
 1. 在“磁盘加密集”下拉列表中选择磁盘加密集。
 1. 根据需要进行剩余选择。
 
@@ -65,7 +63,7 @@ VM 部署过程与标准部署过程类似，唯一的差别在于，你需要�
 1. 导航到与磁盘加密集位于同一区域中的 VM。
 1. 打开 VM 并选择“停止”。
 
-    ![示例 VM 的主覆盖屏幕截图，其中突出显示了 "停止" 按钮。](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
+    ![示例 VM 的主覆盖的屏幕截图，其中突出显示了“停止”按钮。](media/virtual-machines-disk-encryption-portal/server-side-encryption-stop-vm-to-encrypt-disk-fix.png)
 
 1. VM 停止后，选择“磁盘”，然后选择要加密的磁盘。
 

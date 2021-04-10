@@ -3,7 +3,7 @@ title: 使用本地编码器实时传送视频流以创建多比特率流 - Azur
 description: 本主题介绍如何设置接收来自本地编码器的多比特率实时流的频道。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 746fe9132dcb06678e2a0a975c8eed0aba6c3fad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 316372f091833519f0479d07355d2845c82743b6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103014836"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用从本地编码器接收多比特率实时流的频道
 
@@ -75,7 +75,7 @@ ms.locfileid: "89269618"
 6. 发布与节目关联的资产。   
 
     >[!NOTE]
-    >创建 Azure 媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+    >创建 Azure 媒体服务帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。  要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 7. 在准备好开始流式传输和存档时，启动节目。
 

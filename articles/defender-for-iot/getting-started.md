@@ -4,10 +4,10 @@ description: 在本快速入门中，你将了解 Defender for IoT 部署的基�
 ms.topic: quickstart
 ms.date: 2/18/2021
 ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784486"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门

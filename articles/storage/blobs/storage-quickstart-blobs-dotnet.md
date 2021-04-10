@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106711"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -164,7 +164,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 ### <a name="download-blobs"></a>下载 Blob
 
-通过调用 [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOADED”，这样你就可以在本地文件系统中看到这两个文件。
+通过调用 [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOADED”，这样你就可以在本地文件系统中看到这两个文件。
 
 将此代码添加到 `Main` 方法的末尾：
 

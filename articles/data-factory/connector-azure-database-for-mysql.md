@@ -1,24 +1,24 @@
 ---
-title: 向/从 Azure Database for MySQL 复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，向/从 Azure Database for MySQL 复制数据。
+title: 复制和转换 Azure Database for MySQL 中的数据
+description: 了解如何使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据。
 ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/25/2019
-ms.openlocfilehash: 4b6cc13343a7ca7af1bba84ed84d2ce5c8387b1f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.openlocfilehash: 4d13f6f435a21b467cae1b8e14211a001792787f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381369"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012596"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Database for MySQL 复制数据
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure Database for MySQL 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure Database for MySQL 复制数据，以及如何使用数据流转换 Azure Database for MySQL 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 此连接器专用于 [Azure Database for MySQL 服务](../mysql/overview.md)。 若要从位于本地或云中的通用 MySQL 数据库复制数据，请使用 [MySQL 连接器](connector-mysql.md)。
 
@@ -27,11 +27,8 @@ ms.locfileid: "100381369"
 以下活动支持此 Azure Database for MySQL 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-
-可将数据从 Azure Database for MySQL 复制到任何支持的接收器数据存储。 或者，可将数据从任何支持的源数据存储复制到 Azure Database for MySQL。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
-
-Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -43,7 +40,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Azure Database for MySQL 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureMySql** | 是 |
 | connectionString | 指定连接到 Azure Database for MySQL 实例所需的连接信息。 <br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -51,7 +48,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | 说明 | 选项 | 必须 |
+| 属性 | 说明 | 选项 | 必选 |
 |:--- |:--- |:--- |:--- |
 | SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 TLS 加密和验证。 例如 `SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
@@ -106,7 +103,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 要从 Azure Database for MySQL 复制数据，请将数据集的 type 属性设置为 **AzureMySqlTable**。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureMySqlTable** | 是 |
 | tableName | MySQL 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -137,10 +134,10 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 若要从 Azure Database for MySQL 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AzureMySqlSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 | queryCommandTimeout | 查询请求超时前的等待时间。默认值为 120 分钟 (02:00:00) | 否 |
 
 **示例：**
@@ -179,7 +176,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 将数据复制到 Azure Database for MySQL 时，复制活动的 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**AzureMySqlSink** | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for MySQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |
@@ -219,7 +216,64 @@ Azure Database for MySQL 链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在映射数据流中转换数据时，可以从 Azure Database for MySQL 读取表以及将数据写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。 你可以选择使用 Azure Database for MySQL 数据集或[内联数据集](data-flow-source.md#inline-datasets)作为源和接收器类型。
+
+### <a name="source-transformation"></a>源转换
+
+下表列出了 Azure Database for MySQL 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 表 | 如果你选择“表”作为输入，则数据流会从数据集中指定的表提取所有数据。 | 否 | - |（仅适用于内联数据集）<br>tableName |
+| 查询 | 如果你选择“查询”作为输入，请指定一个用来从源提取数据的 SQL 查询，这将替代在数据集中指定的任何表。 使用查询是一个好方法，它可以减少用于测试或查找的行数。<br><br>不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中的一个 UDF，它返回你可以在数据流中使用的表。<br>查询示例：`select * from mytable where customerId > 1000 and customerId < 2000` 或 `select * from "MyTable"`。| 否 | 字符串 | query |
+| 批大小 | 指定批大小，以将大型数据分成多个批。 | 否 | Integer | batchSize |
+| 隔离级别 | 选择下列隔离级别之一：<br>- 读取已提交的内容<br>- 读取未提交的内容（默认）<br>- 可重复的读取<br>- 可序列化<br>- 无（忽略隔离级别） | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>NONE</small> |isolationLevel |
+
+#### <a name="azure-database-for-mysql-source-script-example"></a>Azure Database for MySQL 源脚本示例
+
+使用 Azure Database for MySQL 作为源类型时，关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzureMySQLSource
+```
+
+### <a name="sink-transformation"></a>接收器转换
+
+下表列出了 Azure Database for MySQL 接收器支持的属性。 可以在“接收器选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定数据库目标上允许哪些操作。 默认设置为仅允许插入。<br>若要更新、更新插入或删除行，需要进行[“更改行”转换](data-flow-alter-row.md)才能标记这些操作的行。 | 是 | `true` 或 `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| 键列 | 对于更新、更新插入和删除操作，必须设置键列来确定要更改的行。<br>后续的更新、更新插入和删除将使用你选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 | 否 | Array | 密钥 |
+| 跳过写入键列 | 如果你不希望将值写入到键列，请选择“跳过写入键列”。 | 否 | `true` 或 `false` | skipKeyWrites |
+| 表操作 |确定在写入之前是否从目标表重新创建或删除所有行。<br>- **无**：不会对表进行任何操作。<br>- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。<br>- 截断：将删除目标表中的所有行。 | 否 | `true` 或 `false` | recreate<br/>truncate |
+| 批大小 | 指定每批中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
+| 预处理和后处理 SQL 脚本 | 指定在将数据写入接收器数据库之前（预处理）和之后（后处理）会执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-mysql-sink-script-example"></a>Azure Database for MySQL 接收器脚本示例
+
+使用 Azure Database for MySQL 作为接收器类型时，关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureMySQLSink
+```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 

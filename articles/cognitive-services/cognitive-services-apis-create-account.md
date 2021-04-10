@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 69c83e9172a8369b7ff31116ee4db74fc33d86bb
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472130"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868216"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建认知服务资源
 
@@ -39,12 +39,10 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 
 此时，多服务资源允许访问以下认知服务：
 
-* 计算机视觉
-* 内容审查器
-* 人脸
-* 语言理解 (LUIS)
-* 文本分析
-* 转换器
+* **视觉** - 计算机视觉、自定义视觉、表单识别器、人脸
+* **语音** - 语音
+* **语言** - 语言理解 (LUIS) 、文本分析、翻译器
+* **决策** - 个性化体验创建服务、内容审查器
 
 ### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
@@ -53,9 +51,10 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 | 影像                      | 语音                  | 语言                          | 决策             |
 |-----------------------------|-------------------------|-----------------------------------|----------------------|
 | [计算机视觉](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [语音服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [沉浸式阅读器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [异常检测器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
-| [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [说话人识别](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
+| [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [人脸](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [墨迹识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [指标顾问](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| [表单识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [指标顾问](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| | | [翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
 
@@ -72,9 +71,10 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
 | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
-![多服务资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+<!--![Multi-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen-multi.png" alt-text="“创建多服务资源”屏幕":::
 
-选择“创建”。
+阅读并接受条件（适用于您），然后选择 **评审 + 创建**。
 
 ### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
@@ -86,9 +86,10 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
 | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
-![单服务资源创建屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
+<!--![Single-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen.png" alt-text="单服务资源创建屏幕":::
 
-选择“创建”。
+选择 **下一步：虚拟网络**，并选择要允许访问资源的网络访问类型，然后选择 **评审 + 创建**。
 
 ---
 
@@ -116,8 +117,8 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的基于云的服务�
 
 ## <a name="see-also"></a>另请参阅
 
-* [对 Azure 认知服务的请求进行身份验证](authentication.md)
-* [什么是 Azure 认知服务？](./what-are-cognitive-services.md)
-* [使用 Azure 管理客户端库创建新资源](.\cognitive-services-apis-create-account-client-library.md)
-* [自然语言支持](language-support.md)
-* [Docker 容器支持](cognitive-services-container-support.md)
+* 有关如何安全地使用认知服务的说明，请参阅 **[对 Azure 认知服务的请求进行身份验证](authentication.md)** 。
+* 请参阅 **[什么是 Azure 认知服务？](./what-are-cognitive-services.md)** ，以获取认知服务中不同类别的列表。
+* 若要查看认知服务支持的自然语言列表，请参阅 **[自然语言支持](language-support.md)** 。
+* 请参阅 **[使用认知服务作为容器](cognitive-services-container-support.md)** 以了解如何使用本地认知服务。
+* 请参阅 **[计划和管理认知服务的成本](plan-manage-costs.md)** ，以估计使用认知服务的成本。

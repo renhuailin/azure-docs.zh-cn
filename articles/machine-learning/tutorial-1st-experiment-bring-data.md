@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ecabfde624ba6d3393bbf6d5480b83dbb5303c5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522353"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604548"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教程：使用你自己的数据（第 4 部分，共 4 部分）
 
@@ -39,7 +39,12 @@ ms.locfileid: "102522353"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成本系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
+需要数据和在上一教程中创建的 pytorch 环境的更新版本。  请确保已完成以下步骤：
+
+1. [创建训练脚本](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [创建新的 Python 环境](tutorial-1st-experiment-sdk-train.md#environment)
+1. [本地测试](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [更新 Conda 环境文件](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>调整训练脚本
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [我调整了训练脚本](?success=adjust-training-script#test-locally) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ optimizer = optim.SGD(
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text="目录结构中显示了 .azureml、data 和 src 子目录":::
 
+1. 退出当前环境。
 
-如果在上一教程中未在本地运行 `train.py`，将不会有 `data/` 目录。 在此示例中，请在 `train.py` 脚本中在 `download=True` 的情况下在本地运行 `torchvision.datasets.CIFAR10` 方法。
+    ```bash
+    conda deactivate
 
-此外，若要在本地运行，请确保退出教程环境并激活新的 Conda 环境：
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-若要在本地运行修改后的训练脚本，请调用：
+1. 最后，在本地运行已修改的训练脚本。
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 可以通过传入数据的本地路径来避免下载 CIFAR10 数据集。 对于“学习速率”和“动量”超参数，你也可以使用不同的值进行试验，而无需在训练脚本中对这些超参数进行硬编码 。
 

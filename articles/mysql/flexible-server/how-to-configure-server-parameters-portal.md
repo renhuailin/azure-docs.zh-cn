@@ -1,17 +1,17 @@
 ---
 title: 配置服务器参数 - Azure 门户 - Azure Database for MySQL 灵活服务器
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中配置 MySQL 服务器参数。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 618862e12bd62fbe37ef5e621c89babd7942c04b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94489550"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106949"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for MySQL 灵活服务器中配置服务器参数
 

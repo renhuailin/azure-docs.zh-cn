@@ -1,7 +1,7 @@
 ---
 title: 使用 REST 管理媒体服务实体 | Microsoft Docs
-description: 本文演示如何使用 REST API 管理媒体服务实体。
-author: juliako
+description: 本文将演示如何使用 REST API 管理媒体服务实体。
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 95124f101b1f14a70dabedd7d44077c5c1b6e99c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2821c4c2b13edaf5dfb34664c4b9f78ab56d98a7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264209"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103015550"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>使用 REST 管理媒体服务实体
 

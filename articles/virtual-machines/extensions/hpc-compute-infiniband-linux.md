@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.openlocfilehash: 1219f5befb4de81850681a53c10f03dc81249d53
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102559725"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>适用于 Linux 的 InfiniBand 驱动程序扩展
@@ -74,7 +74,7 @@ ms.locfileid: "102559725"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
+| publisher | Microsoft.HpcCompute | 字符串 |
 | type | InfiniBandDriverLinux | string |
 | typeHandlerVersion | 1.1 | int |
 
@@ -151,7 +151,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户以及使用 Azure PowerShell 和 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令。
 

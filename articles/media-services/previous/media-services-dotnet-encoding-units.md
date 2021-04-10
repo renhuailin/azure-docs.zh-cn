@@ -1,9 +1,9 @@
 ---
 title: 通过添加编码单元缩放媒体处理 - Azure | Microsoft 文档
-description: 本文演示如何使用 Azure 媒体服务 .NET 添加编码单元。
+description: 本文演示如何通过 Azure 媒体服务 .NET 添加编码单元。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 33f7625a-966a-4f06-bc09-bccd6e2a42b5
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: milangada
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d5e6305de1852dad3a08c110cb2fc5a58a31049
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.openlocfilehash: 6feb28858271f11bef0933a352f86d7545ee5bd3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96009173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103014054"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>如何使用 .NET SDK 缩放编码
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [门户](media-services-portal-scale-media-processing.md)
+> * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [REST](/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)

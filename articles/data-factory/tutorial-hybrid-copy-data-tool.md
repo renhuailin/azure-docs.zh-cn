@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: aa6c7dd786a90abadb43a13eaa73a78a2a61bd0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43097b520297ff17350620faff3da884dcbd2073
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719281"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606712"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -113,9 +113,9 @@ ms.locfileid: "101719281"
 
    数据工厂的名称必须全局唯一。 如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
-   ![新建数据工厂名称](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "101719281"
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 
-     ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 1. 选择“创作和监视”，在单独的选项卡中启动数据工厂用户界面。
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>使用“复制数据”工具创建管道

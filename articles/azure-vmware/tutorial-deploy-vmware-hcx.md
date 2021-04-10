@@ -2,13 +2,13 @@
 title: 教程 - 部署和配置 VMware HCX
 description: 了解如何为 Azure VMware 解决方案私有云部署和配置 VMware HCX 解决方案。
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869083"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署和配置 VMware HCX
 
@@ -183,7 +183,7 @@ Azure VMware 解决方案中已预先部署 VMware HCX 高级连接器。 它最
 
 1. 在“基础结构”下，选择“站点配对”，然后选择“连接到远程站点”选项（在屏幕中间）  。 
 
-1. 输入之前记下的 Azure VMware 解决方案 HCX 云管理器 URL 或 IP 地址 `https://x.x.x.9`、Azure VMware 解决方案 cloudadmin@vsphere.local 用户名以及密码。 然后选择“连接”  。
+1. 输入之前记下的 Azure VMware 解决方案 HCX 云管理器 URL 或 IP 地址 `https://x.x.x.9`、Azure VMware 解决方案 cloudadmin\@vsphere.local 用户名以及密码。 然后选择“连接”  。
 
    > [!NOTE]
    > 若要成功建立站点对，请执行以下操作：
@@ -265,7 +265,7 @@ VMware HCX 连接器会（自动）部署虚拟设备的子集，这需要多个
 1. 从“选择用于网络扩展的分布式交换机”中，选择要迁移到第 2 层扩展网络上的 Azure VMware 解决方案的虚拟机所在的交换机。 然后选择“继续”。 
 
    > [!NOTE]
-   > 如果不迁移第 2 层扩展网络上的虚拟机，可跳过此步骤。
+   > 如果不迁移第 2 层 (L2) 扩展网络上的虚拟机，可跳过此步骤。
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="显示选择的分布式虚拟网络和“继续”按钮的屏幕截图。" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,3 +376,4 @@ VMware HCX 连接器会（自动）部署虚拟设备的子集，这需要多个
 * [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [使用 VMware HCX 迁移虚拟机](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX 所需的端口](https://ports.vmware.com/home/VMware-HCX)
+* [在批准许可证密钥之前设置 HCX 代理服务器](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: b5dd06c148c53517214b47b39f083c99d0f37e0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712192"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103465491"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
@@ -75,24 +75,24 @@ ms.locfileid: "101712192"
 
     在这里，根据要加入的计算机类型，在下方选择相关过程：
 
-    - [加入 Azure Stack VM](#onboard-your-azure-stack-vms)
+    - [加入 Azure Stack Hub VM](#onboard-your-azure-stack-hub-vms)
     - [加入 Linux 计算机](#onboard-your-linux-machines)
     - [加入 Windows 计算机](#onboard-your-windows-machines)
 
-### <a name="onboard-your-azure-stack-vms"></a>加入 Azure Stack VM
+### <a name="onboard-your-azure-stack-hub-vms"></a>加入 Azure Stack Hub VM
 
-若要添加 Azure Stack VM，需要“代理管理”页上的信息，并在 Azure Stack 上运行的虚拟机上配置“Azure Monitor、更新和配置管理”虚拟机扩展。
+若要添加 Azure Stack Hub VM，你需要“代理管理”页上的信息，并在虚拟机（在 Azure Stack Hub 实例上运行）上配置“Azure Monitor、更新和配置管理”虚拟机扩展。
 
 1. 从“代理管理”页上，将工作区 ID和主密钥复制到记事本中。
-1. 登录到“Azure Stack”门户，然后打开“虚拟机”页。
+1. 登录到“Azure Stack Hub”门户，然后打开“虚拟机”页。
 1. 选择要使用安全中心保护的虚拟机。
     >[!TIP]
-    > 有关如何在 Azure Stack 上创建虚拟机的信息，请参阅[适用于 Windows 虚拟机的此快速入门](/azure-stack/user/azure-stack-quick-windows-portal)，或[适用于 Linux 虚拟机的此快速入门](/azure-stack/user/azure-stack-quick-linux-portal)。
+    > 若要了解如何在 Azure Stack Hub 上创建虚拟机，请参阅[此适用于 Windows 虚拟机的快速入门](/azure-stack/user/azure-stack-quick-windows-portal)或[此适用于 Linux 虚拟机的快速入门](/azure-stack/user/azure-stack-quick-linux-portal)。
 1. 选择“扩展”。 此时将显示此虚拟机上安装的虚拟机扩展列表。
 1. 选择“添加”选项卡。“新建资源”菜单会显示可用虚拟机扩展的列表。
 1. 选择“Azure 监视、更新和配置管理”扩展，然后选择“创建”。  此时会打开“安装扩展”配置页。
     >[!NOTE]
-    > 如果在市场中没有看到“Azure Monitor、更新和配置管理”扩展，请联系 Azure Stack 操作员以将其列出  。
+    > 如果在市场中没有看到“Azure Monitor、更新和配置管理”扩展，请联系 Azure Stack Hub 操作员，让该操作员将其列出。
 1. 在“安装扩展”配置页上，粘贴在前面步骤中复制到记事本的“工作区 ID” 和“工作区密钥(主密钥)”  。
 1. 完成配置后，选择“确定”。 扩展的状态将显示为“预配成功”。 最长可能需要经过一小时，该虚拟机才会显示在安全中心中。
 

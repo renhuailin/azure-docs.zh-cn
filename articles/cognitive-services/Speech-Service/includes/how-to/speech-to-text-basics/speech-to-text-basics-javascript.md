@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104988310"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729760"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -26,7 +26,7 @@ ms.locfileid: "104988310"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-你需要先安装适用于 Node.js 的语音 SDK，然后才能执行其他操作。 如果只是需要用于安装的包名称，请运行 `npm install microsoft-cognitiveservices-speech-sdk`。 有关引导式安装说明，请参阅[入门](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript)一文。
+你需要先安装适用于 Node.js 的语音 SDK，然后才能执行其他操作。 如果只是需要用于安装的包名称，请运行 `npm install microsoft-cognitiveservices-speech-sdk`。 有关引导式安装说明，请参阅[入门](../../../quickstarts/setup-platform.md?pivots=programming-language-javascript&tabs=dotnet%2clinux%2cjre%2cnodejs)一文。
 
 使用以下 `require` 语句导入 SDK。
 
@@ -62,7 +62,7 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-file"></a>从文件识别 
 
-要从音频文件识别语音，请使用 `fromWavFileInput()` 创建一个接受 `Buffer` 对象的 `AudioConfig`。 然后初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest)，传递 `audioConfig` 和 `speechConfig`。
+要从音频文件识别语音，请使用 `fromWavFileInput()` 创建一个接受 `Buffer` 对象的 `AudioConfig`。 然后初始化 [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer)，传递 `audioConfig` 和 `speechConfig`。
 
 ```javascript
 const fs = require('fs');

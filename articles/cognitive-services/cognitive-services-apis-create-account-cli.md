@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure CLI 创建认知服务资源
 titleSuffix: Azure Cognitive Services
-description: 通过使用 Azure 命令行接口创建和订阅资源，开始使用 Azure 认知服务。
+description: 通过使用 Azure 命令行界面创建和订阅资源，开始使用 Azure 认知服务。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050063"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868165"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -99,16 +99,6 @@ az group create \
 | 表单识别器            | `FormRecognizer`          |
 | 墨迹识别器             | `InkRecognizer`           |
 
-### <a name="search"></a>搜索
-
-| 服务            | 种类                  |
-|--------------------|-----------------------|
-| 必应自动建议   | `Bing.Autosuggest.v7` |
-| 必应自定义搜索 | `Bing.CustomSearch`   |
-| 必应实体搜索 | `Bing.EntitySearch`   |
-| 必应搜索        | `Bing.Search.v7`      |
-| 必应拼写检查   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>语音
 
 | 服务            | 种类                 |
@@ -181,7 +171,7 @@ az login
 定价层（以及你收到的账单金额）基于你使用身份验证信息发送的事务数。 每个定价层指定：
 * 每秒允许的最大事务数 (TPS)。
 * 在定价层中启用的服务功能。
-* 预定义事务量的成本。 超过此金额将产生[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中为服务指定的额外费用。
+* 预定义数目的事务的成本。 超过此金额将产生[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)中为服务指定的额外费用。
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用情况
 
@@ -206,7 +196,8 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>另请参阅
 
-* [对 Azure 认知服务的请求进行身份验证](authentication.md)
-* [什么是 Azure 认知服务？](./what-are-cognitive-services.md)
-* [自然语言支持](language-support.md)
-* [Docker 容器支持](cognitive-services-container-support.md)
+* 有关如何安全地使用认知服务的说明，请参阅 **[对 Azure 认知服务的请求进行身份验证](authentication.md)** 。
+* 请参阅 **[什么是 Azure 认知服务？](./what-are-cognitive-services.md)** ，以获取认知服务中不同类别的列表。
+* 若要查看认知服务支持的自然语言列表，请参阅 **[自然语言支持](language-support.md)** 。
+* 请参阅 **[使用认知服务作为容器](cognitive-services-container-support.md)** 以了解如何使用本地认知服务。
+* 请参阅 **[计划和管理认知服务的成本](plan-manage-costs.md)** ，以估计使用认知服务的成本。
