@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: cc0028a8c7d6d15277c3789118b13b80ed4306ea
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 1ec4e26e266a1777857fe0e890b093f60a3597f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100596633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612518"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 
@@ -50,10 +50,10 @@ ms.locfileid: "100596633"
      尽管在门户中创建虚拟网络时只能定义一个地址范围，但可以在虚拟网络创建之后向地址空间添加更多地址范围。 若要了解如何将地址范围添加到现有的虚拟网络，请参阅[添加或删除地址范围](#add-or-remove-an-address-range)。
 
      > [!WARNING]
-     > 如果虚拟网络的地址范围与另一个虚拟网络或本地网络重叠，那么这两个网络不能连接。 定义地址范围之前，请考虑将来是否会想要将此虚拟网络连接到其他虚拟网络或本地网络。 Microsoft 建议使用组织拥有的专用地址空间或公用地址空间配置虚拟网络地址范围。
+     > 如果虚拟网络的地址范围与另一个虚拟网络或本地网络重叠，那么这两个网络不能连接。 定义地址范围之前，请考虑将来是否会想要将此虚拟网络连接到其他虚拟网络或本地网络。 Microsoft 建议使用组织拥有的专用地址空间或公共地址空间配置虚拟网络地址范围。
      >
 
-     - **子网名称**：子网名称在虚拟网络中必须唯一。 子网创建后，无法更改子网名称。 创建虚拟网络时，门户需要定义一个子网，即使虚拟网络不需要包含任何子网。 在创建虚拟网络时，只能在门户中定义一个子网。 虚拟网络创建后，可在将来向虚拟网络添加更多子网。 若要将子网添加到虚拟网络，请参阅[管理子网](virtual-network-manage-subnet.md)。 可以使用 Azure CLI 或 PowerShell 创建具有多个子网的虚拟网络。
+     - **子网名称**：子网名称在虚拟网络中必须唯一。 子网创建后，无法更改子网名称。 创建虚拟网络时，门户需要定义一个子网，即使虚拟网络不需要包含任何子网。 在创建虚拟网络时，可以在门户中定义一个或多个子网。 虚拟网络创建后，可在将来向虚拟网络添加更多子网。 若要将子网添加到虚拟网络，请参阅[管理子网](virtual-network-manage-subnet.md)。 可以使用 Azure CLI 或 PowerShell 创建具有多个子网的虚拟网络。
 
        >[!TIP]
        >有时，管理员会创建不同的子网来筛选或控制子网之间的流量路由。 在定义子网之前，请考虑一下需要如何筛选和路由子网之间的流量。 若要详细了解如何筛选子网之间的流量，请参阅[网络安全组](./network-security-groups-overview.md)。 Azure 自动在子网之间路由流量，但你可以替代 Azure 的默认路由。 若要详细了解有关 Azures 默认子网流量路由，请参阅[路由概述](virtual-networks-udr-overview.md)。

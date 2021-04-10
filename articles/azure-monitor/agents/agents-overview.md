@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551464"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026166"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "102551464"
 | | Azure Monitor 代理（预览版） | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|
 | **支持的环境** | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc)  | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
-| **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
+| **代理要求**  | 无 | None | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | 事件日志<br>性能 | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<br>基于文件的日志<br>IIS 日志<br>见解和解决方案<br>其他服务 | 过程依赖项<br>网络连接指标 |
 | **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | 指标资源管理器 | VM 见解<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM 见解<br>服务映射 |
@@ -44,7 +44,7 @@ ms.locfileid: "102551464"
 | | Azure Monitor 代理（预览版） | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|:---|
 | **支持的环境** | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc) | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
-| **代理要求**  | 无 | 无 | 无 | 无 | 需要 Log Analytics 代理 |
+| **代理要求**  | 无 | None | None | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | Syslog<br>性能 | Syslog<br>性能 | 性能 | Syslog<br>性能| 过程依赖项<br>网络连接指标 |
 | **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | | 指标资源管理器 | VM 见解<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM 见解<br>服务映射 |
@@ -97,7 +97,7 @@ Log Analytics 代理的限制包括：
 - 将数据发送到 Azure 存储进行存档，或使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之类的工具对其进行分析。
 - 将数据发送到 [Azure Monitor 指标](../essentials/data-platform-metrics.md)，以便使用[指标资源管理器](../essentials/metrics-getting-started.md)对其进行分析，并利用准实时[指标警报](../alerts/alerts-metric-overview.md)和[自动缩放](../autoscale/autoscale-overview.md)之类的功能（仅限 Windows）。
 - 使用 [Azure 事件中心](./diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
-- 收集[启动诊断](../../virtual-machines/troubleshooting/boot-diagnostics.md)数据，调查 VM 启动问题。
+- 收集[启动诊断](/troubleshoot/azure/virtual-machines/boot-diagnostics)数据，调查 VM 启动问题。
 
 Azure 诊断扩展的限制包括：
 

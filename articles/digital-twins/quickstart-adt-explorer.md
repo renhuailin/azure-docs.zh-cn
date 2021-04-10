@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434193"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574571"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>快速入门 - 使用 Azure Digital Twins Explorer 探索示例 Azure 数字孪生方案
 
@@ -93,13 +93,15 @@ ms.locfileid: "102434193"
 
 1. 输入之前在[设置 Azure 数字孪生实例](#set-up-an-azure-digital-twins-instance)部分中收集的 Azure 数字孪生实例 URL，格式为 https://{instance host name}。
 
->[!NOTE]
-> 可随时重新访问或编辑此信息，方法是选择相同图标以再次打开“登录”框。 它将保留你传入的值。
-
 > [!TIP]
 > 如果在连接时显示 `SignalRService.subscribe` 错误消息，请确保 Azure 数字孪生 URL 以“https://”开头。
+>
+> 如果出现身份验证错误，则可能要检查 **环境变量**，以确保其中包含的所有凭据对 Azure 数字孪生有效。 `DefaultAzureCredential` 会尝试按照[特定顺序](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)针对凭据类型进行身份验证，并首先计算环境变量。
 
 如果你看到来自 Microsoft 的“权限已请求”弹出窗口，请向此应用程序授予同意并接受以继续。
+
+>[!NOTE]
+> 可随时重新访问或编辑此信息，方法是选择相同图标以再次打开“登录”框。 它将保留你传入的值。
 
 ## <a name="add-the-sample-data"></a>添加示例数据
 

@@ -11,14 +11,16 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 431c116fee22da27ed0487fc6d2fe3644575491f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: f7f05fb84ff6cbe320e8f479912bdcdefdc41021
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046017"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201654"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 本文详细说明如何将 IoT Edge 设备配置为充当透明网关，供其他设备用来与 IoT 中心通信。 本文使用术语 *IoT Edge 网关* 来指代配置为透明网关的 IoT Edge 设备。 有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](./iot-edge-as-gateway.md)。
 
@@ -26,7 +28,7 @@ ms.locfileid: "102046017"
 ::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
->在 IoT Edge 版本1.1 及更低版本中，IoT Edge 设备不能成为 IoT Edge 网关的下游。
+>在 IoT Edge 版本 1.1 及更低版本中，IoT Edge 设备不能作为 IoT Edge 网关的下游。
 >
 >下游设备不能使用文件上传。
 
@@ -79,7 +81,7 @@ ms.locfileid: "102046017"
 
 ![网关证书设置](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-根 CA 证书和设备 CA 证书 (其私钥) 需要在 IoT Edge 网关设备上提供，并在 IoT Edge 配置文件中进行配置。 请记住，在这种情况下，“根 CA 证书”表示此 IoT Edge 方案的最顶层证书颁发机构。 网关设备 CA 证书和下游设备证书需要汇总到同一根 CA 证书。
+根 CA 证书和设备 CA 证书（带有私钥）需要在 IoT Edge 网关设备上提供，并在 IoT Edge 配置文件中进行配置。 请记住，在这种情况下，“根 CA 证书”表示此 IoT Edge 方案的最顶层证书颁发机构。 网关设备 CA 证书和下游设备证书需要汇总到同一根 CA 证书。
 
 >[!TIP]
 >在 IoT Edge 设备上安装根 CA 证书和设备 CA 证书的过程也在[管理 IoT Edge 设备上的证书](how-to-manage-device-certificates.md)中进行了更详细的介绍。
@@ -92,7 +94,7 @@ ms.locfileid: "102046017"
 
 对于生产方案，你应该通过自己的证书颁发机构生成这些文件。 对于开发和测试方案，可以使用演示证书。
 
-如果没有自己的证书颁发机构，并且想要使用演示证书，请按照创建演示证书中的说明来 [测试 IoT Edge 设备功能](how-to-create-test-certificates.md) ，以创建文件。 在该页上，需要执行以下步骤：
+如果没有自己的证书颁发机构，并且想要使用演示证书，请按照[创建演示证书来测试 IoT Edge 设备功能](how-to-create-test-certificates.md)中的说明来创建文件。 在该页上，需要执行以下步骤：
 
    1. 首先在设备上设置生成证书的脚本。
    2. 创建根 CA 证书。 在完成这些说明后，你将有一个根 CA 证书文件：
@@ -101,7 +103,7 @@ ms.locfileid: "102046017"
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` 和
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-如果在其他计算机上创建了证书，请将它们复制到 IoT Edge 设备上，然后继续执行后续步骤。
+如果在另一计算机上创建了这些证书，请将它们复制到 IoT Edge 设备，然后继续后续步骤。
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -129,23 +131,23 @@ ms.locfileid: "102046017"
 <!--1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-1. 在 IoT Edge 设备上，打开配置文件： `/etc/aziot/config.toml`
+1. 在 IoT Edge 设备上，打开配置文件：`/etc/aziot/config.toml`
 
    >[!TIP]
-   >如果设备上尚不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建。
+   >如果设备上尚不存在配置文件，则使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建一个。
 
-1. 查找 `trust_bundle_cert` 参数。 取消注释此行，并向设备上的根 CA 证书文件提供文件 URI。
+1. 查找 `trust_bundle_cert` 参数。 取消注释此行，并为设备上的根 CA 证书文件提供文件 URI。
 
-1. 查找 `[edge_ca]` 文件的部分。 取消注释此部分中的三行，并将证书和密钥文件的文件 Uri 作为以下属性的值提供：
-   * **cert**：设备 CA 证书
-   * **pk**：设备 CA 私钥
+1. 找到文件的 `[edge_ca]` 节。 取消注释此部分中的三行，并将证书和密钥文件的文件 URI 作为以下属性的值提供：
+   * cert：设备 CA 证书
+   * pk：设备 CA 私钥
 
 1. 保存并关闭该文件。
 
-1. 重启 IoT Edge。
+1. 单击“应用”以应用更改。
 
    ```bash
-   sudo iotedge system restart
+   sudo iotedge config apply
    ```
 
 :::moniker-end

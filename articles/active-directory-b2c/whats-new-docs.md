@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 00be0a18984f1ad3eacf86a2cf3477d8b0d9065f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454611"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557864"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C：新增功能
 
@@ -73,7 +73,7 @@ ms.locfileid: "102454611"
 
 ### <a name="new-articles"></a>新文章
 
-- [在 Azure Active Directory B2C 中创建用户流](create-user-flow.md)
+- [在 Azure Active Directory B2C 中创建用户流](add-sign-up-and-sign-in-policy.md)
 - [为用户流设置电话注册和登录（预览）](phone-authentication-user-flows.md)
 
 ### <a name="updated-articles"></a>更新的文章
@@ -114,7 +114,7 @@ ms.locfileid: "102454611"
 ### <a name="updated-articles"></a>更新的文章
 - [将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com](b2clogin.md)
 - [在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件](openid-connect-technical-profile.md)
-- [在 Azure AD B2C 中通过自定义策略设置手机注册和登录](phone-authentication.md)
+- [在 Azure AD B2C 中通过自定义策略设置手机注册和登录](phone-authentication-user-flows.md)
 
 
 ## <a name="august-2020"></a>2020 年 8 月

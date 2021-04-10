@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600796"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609269"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure 认知搜索中的查询
 
@@ -77,7 +77,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="autocomplete-and-suggested-queries"></a>自动完成和建议的查询
 
-[自动完成或建议的结果](search-autocomplete-tutorial.md)是 `search` 的替代方案，它们基于键入时搜索体验中的部分字符串输入（每个字符之后）来触发连续查询请求。 可以同时使用 `autocomplete` 和 `suggestions` 参数，也可以单独使用它们，如[此教程](tutorial-csharp-type-ahead-and-suggestions.md)中所述，但不能将它们用于 `search`  。 已完成的搜索词和建议的查询都派生自索引内容。 引擎永远不会返回索引中不存在的字符串或建议。 有关详细信息，请参阅[自动完成 (REST API)](/rest/api/searchservice/autocomplete) 和[建议 (REST API)](/rest/api/searchservice/suggestions)。
+[自动完成或建议的结果](search-add-autocomplete-suggestions.md)是 `search` 的替代方案，它们基于键入时搜索体验中的部分字符串输入（每个字符之后）来触发连续查询请求。 可以同时使用 `autocomplete` 和 `suggestions` 参数，也可以单独使用它们，如[此教程](tutorial-csharp-type-ahead-and-suggestions.md)中所述，但不能将它们用于 `search`  。 已完成的搜索词和建议的查询都派生自索引内容。 引擎永远不会返回索引中不存在的字符串或建议。 有关详细信息，请参阅[自动完成 (REST API)](/rest/api/searchservice/autocomplete) 和[建议 (REST API)](/rest/api/searchservice/suggestions)。
 
 ## <a name="filter-search"></a>筛选器搜索
 

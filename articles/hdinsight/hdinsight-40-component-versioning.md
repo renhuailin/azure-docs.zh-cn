@@ -1,24 +1,25 @@
 ---
-title: Apache Hadoop 组件和版本-Azure HDInsight 4。0
+title: Apache Hadoop 组件和版本 - Azure HDInsight 4.0
 description: 了解 Azure HDInsight 4.0 中的 Apache Hadoop 组件和版本。
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: deshriva
+author: deshriva
+ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 2baa210a293c0351c079ba545fc46d51f4fd7251
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 0283779e10ac3e6070e9fd73d186af35972cad22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744337"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582878"
 ---
 # <a name="hdinsight-40-component-versions"></a>HDInsight 4.0 组件版本
 
-本文介绍 Azure HDInsight 4.0 中 Apache Hadoop 的环境组件和版本。
+本文介绍了 Azure HDInsight 4.0 中的 Apache Hadoop 环境组件和版本。
 
-## <a name="apache-components-available-with-hdinsight-version-40"></a>HDInsight 版本4.0 中提供的 Apache 组件
+## <a name="apache-components-available-with-hdinsight-version-40"></a>随 HDInsight 版本 4.0 提供的 Apache 组件
 
-下表列出了与 HDInsight 4.0 相关联的 OSS 组件版本。
+下表列出了与 HDInsight 4.0 关联的 OSS 组件版本。
 
 | 组件              | HDInsight 4.0 |
 |------------------------|---------------|
@@ -28,7 +29,7 @@ ms.locfileid: "101744337"
 | Apache Hive            | 3.1.0         |
 | Apache Ranger          | 1.1.0         |
 | Apache HBase           | 2.1.6         |
-| Apache Sqoop           | 1.4.7         |
+| Apache Sqoop           | 1.5.0         |
 | Apache Oozie           | 4.3.1         |
 | Apache Zookeeper       | 3.4.6         |
 | Apache Phoenix         | 5             |
@@ -40,7 +41,7 @@ ms.locfileid: "101744337"
 | Mono                   | 4.2.1         |
 
 
-此表列出了已停用的某些 HDInsight 4.0 群集类型。
+此表列出了某些已停用的某些 HDInsight 4.0 群集类型。
 
 | 群集类型                    | 框架版本 | 支持到期日期      | 停用日期 |
 |---------------------------------|-------------------|------------------------------|-----------------|

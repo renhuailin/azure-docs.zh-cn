@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/24/2021
+ms.date: 03/15/2021
 ms.author: alexeyo
-ms.openlocfilehash: f6c7ec3f66d0ab9186645654adf3c062c241e5d0
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 78e40250710c133cbed53c05137971247663b0df
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449843"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103564416"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -27,6 +27,7 @@ ms.locfileid: "102449843"
 在下表中，没有“可调”行的参数对于所有价格层都不能进行调整。
 
 #### <a name="online-transcription"></a>联机听录
+用于 [语音 SDK](speech-sdk.md) 和/或[适用于短音频的语音转文本 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio)。
 
 | Quota | 免费 (F0)<sup>1</sup> | 标准 (S0) |
 |--|--|--|
@@ -74,7 +75,7 @@ ms.locfileid: "102449843"
 | **Websocket 特定配额** |  |  |
 |每轮已生成的最大音频长度 | 10 分钟 | 10 分钟 |
 |每轮的最大 SSML 消息大小 |64 KB |64 KB |
-| REST API 限制 | 每分钟 20 个请求 | 每 5 秒 25 个请求 |
+| REST API 限制 | 每分钟 20 个请求 | 每分钟 300 个请求 |
 
 
 <sup>3</sup> 有关免费 (F0) 定价层，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)上的每月限额。<br/>

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 9b2466bbe061dc147d020104b13da197840fe40a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 07a959d4e8ba41652ba4e31ad59cf852659a5926
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030777"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199771"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
 
@@ -27,7 +27,7 @@ ms.locfileid: "102030777"
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
 | 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别。 |
 
-
+还可以使用 [REST API](/rest/api/loganalytics/savedsearches/createorupdate) 或 [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightssavedsearch)创建函数。
 
 
 ## <a name="use-a-function"></a>使用函数

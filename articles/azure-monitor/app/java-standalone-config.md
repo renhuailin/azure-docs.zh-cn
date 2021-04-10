@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: e58d69634712a9cc640ba9e4785a7bf1effaf88c
+ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201747"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103224650"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -61,7 +61,7 @@ ms.locfileid: "102201747"
 }
 ```
 
-还可以使用环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 设置连接字符串。
+也可以使用环境变量 `APPLICATIONINSIGHTS_CONNECTION_STRING` 来设置连接字符串（如果也在 json 配置中指定连接字符串，那么将会优先使用这种方式）。
 
 如果未设置连接字符串，则将禁用 Java 代理。
 
@@ -81,7 +81,7 @@ ms.locfileid: "102201747"
 
 如果你未设置云角色名称，系统会使用 Application Insights 资源的名称在应用程序映射上标记该组件。
 
-还可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_NAME` 设置云角色名称。
+也可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_NAME` 来设置云角色名称（如果也在 json 配置中指定云角色名称，那么将会优先使用这种方式）。
 
 ## <a name="cloud-role-instance"></a>云角色实例
 
@@ -98,7 +98,7 @@ ms.locfileid: "102201747"
 }
 ```
 
-还可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_INSTANCE` 设置云角色实例。
+也可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_INSTANCE` 来设置云角色实例（如果也在 json 配置中指定云角色实例，那么将会优先使用这种方式）。
 
 ## <a name="sampling"></a>采样
 
@@ -117,7 +117,7 @@ ms.locfileid: "102201747"
 }
 ```
 
-还可以使用环境变量 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 设置采样百分比。
+也可以使用环境变量 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` 来设置采样率百分比（如果也在 json 配置中指定采样率百分比，那么将会优先使用这种方式）。
 
 > [!NOTE]
 > 对于采样百分比，请选择一个接近于 100/N 的百分比，其中 N 是整数。 当前采样不支持其他值。
@@ -150,9 +150,6 @@ ms.locfileid: "102201747"
 `attribute` 是要收集的 JMX MBean 内部的属性名称。
 
 支持数值和布尔 JMX 指标值。 False 表示布尔 JMX 指标映射到 `0`，true 表示映射到 `1`。
-
-[//]: # "注意：此处未记录 APPLICATIONINSIGHTS_JMX_METRICS"
-[//]: # "env var 中嵌入的 json 是比较凌乱的，应仅在无代码附加方案中进行记录"
 
 ## <a name="custom-dimensions"></a>自定义维度
 
@@ -187,9 +184,11 @@ ms.locfileid: "102201747"
 
 系统自动检测 Log4j、Logback 和 java.util.logging，并自动收集通过这些记录框架执行的日志记录。
 
-仅在日志记录首先满足记录框架的配置阈值，并且还满足 Application Insights 的配置阈值时，才捕获日志记录。
+日志记录首先要符合为日志记录框架配置的级别，其次还要符合为 Application Insights 配置的级别，只有在这种情况下才会捕获日志记录。
 
-默认 Application Insights 阈值为 `INFO`。 若要更改此级别，请执行以下代码：
+例如，如果将日志记录框架配置为从包 `com.example` 记录 `WARN`（和更高版本），并将 Application Insights 配置为捕获 `INFO`（和更高版本），则 Application Insights 将只从包 `com.example` 捕获 `WARN`（和更高版本）。
+
+为 Application Insights 配置的默认级别为 `INFO`。 若要更改此级别，请执行以下代码：
 
 ```json
 {
@@ -201,7 +200,7 @@ ms.locfileid: "102201747"
 }
 ```
 
-还可以使用环境变量 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` 设置阈值。
+也可以使用环境变量 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` 来设置级别（如果也在 json 配置中指定级别，那么将会优先使用这种方式）。
 
 下面介绍了你可以在 `applicationinsights.json` 文件中指定的有效 `level` 值，以及这些值如何对应于不同记录框架中的日志记录级别：
 
@@ -219,7 +218,7 @@ ms.locfileid: "102201747"
 | ALL               | ALL    | ALL     | ALL     |
 
 > [!NOTE]
-> 如果异常对象传递到记录器，则日志消息 (和异常对象详细信息) 将显示在表中的 Azure 门户， `exceptions` 而不是 `traces` 表下。
+> 如果将异常对象传递到记录器，则日志消息（和异常对象详细信息）会显示在 Azure 门户中的 `exceptions` 表（而不是 `traces` 表）下。
 
 ## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>自动收集的 Micrometer 指标（包括 Spring Boot Actuator 指标）
 
@@ -284,7 +283,7 @@ ms.locfileid: "102201747"
 ```
 
 > [!NOTE]
-> 不能降低此检测信号的频率，因为检测信号数据也用于跟踪 Application Insights 使用情况。
+> 不可将间隔增加到超过 15 分钟，因为检测信号数据也用于跟踪 Application Insights 使用情况。
 
 ## <a name="http-proxy"></a>HTTP 代理
 
@@ -300,6 +299,30 @@ ms.locfileid: "102201747"
 ```
 
 Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.proxyPort`（如果已设置）。
+
+## <a name="metric-interval"></a>指标间隔
+
+此功能为预览版。
+
+默认情况下，每 60 秒捕获一次指标。
+
+从版本 3.0.3-BETA 开始，可以更改此间隔：
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+该设置适用于所有这些指标：
+
+* 默认性能计数器，例如 CPU 和内存
+* 默认自定义指标，例如垃圾回收计时
+* 已配置的 JMX 指标（[见上](#jmx-metrics)）
+* Micrometer 指标（[见上](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics)）
+
 
 [//]: # "请注意，在 OpenTelemetry API 达到 1.0 之前，OpenTelemetry 支持以个人预览版提供"
 
@@ -349,7 +372,7 @@ Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.p
 
 `maxHistory` 是保留的滚动更新日志文件的数目（除当前日志文件外）。
 
-从版本 3.0.2 开始，还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 设置自我诊断 `level`。
+从版本 3.0.2 开始，还可以使用环境变量 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 来设置自诊断 `level`（如果也在 json 配置中指定自诊断 `level`，那么将会优先使用这种方式）。
 
 ## <a name="an-example"></a>示例
 
@@ -360,7 +383,7 @@ Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.p
 {
   "connectionString": "InstrumentationKey=...",
   "role": {
-    "name": "my cloud role name"
+    "name&quot;: &quot;my cloud role name"
   },
   "sampling": {
     "percentage": 100
@@ -371,7 +394,7 @@ Application Insights Java 3.0 还沿用全局 `-Dhttps.proxyHost` 和 `-Dhttps.p
   },
   "instrumentation": {
     "logging": {
-      "level": "INFO"
+      "level&quot;: &quot;INFO"
     },
     "micrometer": {
       "enabled": true

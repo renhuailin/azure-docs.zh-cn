@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 Acl
-description: 使用 Azure CLI 管理具有分层命名空间的存储帐户中 (ACL) 的访问控制列表。
+title: 使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 ACL
+description: 使用 Azure CLI 管理具有分层命名空间的存储帐户中的访问控制列表 (ACL)。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,34 +10,34 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9814dc06e7e570a923ba3ea5b3b0df7ade99bb28
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 5ec7d2b243a5eadab2d22dea14ebeac8eabb1722
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653996"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563158"
 ---
-# <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 [Azure Command-Line 接口 (CLI) ](/cli/azure/) 获取、设置和更新目录和文件的访问控制列表。
+本文介绍如何使用 [Azure 命令行界面 (CLI)](/cli/azure/) 来获取、设置和更新目录和文件的访问控制列表。
 
-ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父目录的现有子项目上以递归方式添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。
+ACL 继承已可用于在父目录下创建的新子项。 但是，你还可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。
 
-[参考](/cli/azure/storage/fs/access)  | [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
+[参考](/cli/azure/storage/fs/access) | [示例](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md) | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-- 已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
+- 一个已启用分层命名空间的存储帐户。 按[这些](create-data-lake-storage-account.md)说明创建一个。
 
-- Azure CLI 版本 `2.6.0` 或更高版本。
+- Azure CLI 版本 `2.14.0` 或更高版本。
 
 - 以下安全权限之一：
 
-  - 预配的 Azure Active Directory (Azure AD 在目标容器、父资源组或订阅的作用域中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色的) [安全主体](../../role-based-access-control/overview.md#security-principal)。  
+  - 一个预配的 Azure Active Directory (Azure AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器、父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
 
-  - 你打算将 ACL 设置应用到的目标容器或目录的拥有用户。 若要以递归方式设置 Acl，这包括目标容器或目录中的所有子项。
+  - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
   
   - 存储帐户密钥。
 
@@ -76,9 +76,9 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
    将 `<subscription-id>` 占位符值替换为你的订阅 ID。
 
 > [!NOTE]
-> 本文中所述的示例演示了) 授权 Azure AD Azure Active Directory (。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
+> 本文中提供的示例演示 Azure Active Directory (Azure AD) 授权操作。 若要详细了解身份验证方法，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](./authorize-data-operations-cli.md)。
 
-## <a name="get-acls"></a>获取 Acl
+## <a name="get-acls"></a>获取 ACL
 
 使用 `az storage fs access show` 命令获取目录的 ACL。
 
@@ -102,9 +102,9 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 在本示例中，负责人用户具有读取、写入和执行权限。 负责人组仅具有读取和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
-## <a name="set-acls"></a>设置 Acl
+## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的 [更新 acl](#update-acls) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
 
 如果选择设置 ACL，则必须为责任用户添加一个条目，为责任组添加一个条目，为所有其他用户添加一个条目。 若要详细了解责任用户、责任组和所有其他用户，请参阅[用户和标识](data-lake-storage-access-control.md#users-and-identities)。
 
@@ -137,6 +137,9 @@ az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-d
 az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> 若要设置特定组或用户的 ACL，请使用其各自的对象 ID。 例如 `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 或 `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。
+
 下图显示了设置文件 ACL 后的输出。
 
 ![获取 ACL 输出 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
@@ -145,7 +148,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 ### <a name="set-acls-recursively"></a>以递归方式设置 ACL
 
-使用 [az storage fs access set-recursive](/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) 命令以递归方式设置 acl。
+使用 [az storage fs access set-recursive](/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) 命令以递归方式设置 ACL。
 
 此示例设置名为 `my-parent-directory` 的目录的 ACL。 这些条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
@@ -158,14 +161,14 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 ## <a name="update-acls"></a>更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新 ACL，请参阅本文的 [设置 acl](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的[设置 ACL](#set-acls) 部分。
 
 若要更新 ACL，请创建包含要更新的 ACL 条目的一个新的 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
 
 本节介绍如何完成下列操作：
 
 - 更新 ACL
-- 以递归方式更新 Acl
+- 以递归方式更新 ACL
 
 ### <a name="update-an-acl"></a>更新 ACL
 
@@ -185,6 +188,9 @@ az storage fs access set --permissions rwxrwxrwx -p my-directory -f my-file-syst
 az storage fs access set --permissions rwxrwxrwx -p my-directory/upload.txt -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
+> [!NOTE]
+> 若要更新特定组或用户的 ACL，请使用其各自的对象 ID。 例如 `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 或 `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。
+
 另外，还可以通过将 `--owner` 或 `group` 参数设置为用户的实体 ID 或用户主体名称 (UPN)，更新目录或文件的负责人用户和组。
 
 下面的示例更改目录所有者。
@@ -200,9 +206,9 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ```
 
-### <a name="update-acls-recursively"></a>以递归方式更新 Acl
+### <a name="update-acls-recursively"></a>以递归方式更新 ACL
 
-使用  [az storage fs access update-recursive](/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) 命令以递归方式更新 acl。
+使用 [az storage fs access update-recursive](/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) 命令以递归方式更新 ACL。
 
 此示例以写入权限更新某个 ACL 条目。
 
@@ -230,7 +236,7 @@ az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 ## <a name="recover-from-failures"></a>从故障中恢复
 
-递归修改 Acl 时，可能会遇到运行时错误或权限错误。 对于运行时错误，请从头开始重启此过程。 如果安全主体没有足够的权限修改要修改的目录层次结构中的目录或文件的 ACL，则会出现权限错误。 请解决权限问题，然后选择通过使用继续标记从故障点继续执行此过程，或者从头重启此过程。 如果希望从头开始重启，则无需使用继续标记。 你可以重新应用 ACL 条目，而不会产生任何负面影响。
+以递归方式修改 ACL 时，可能会遇到运行时或权限错误。 对于运行时错误，请从头开始重启此过程。 如果安全主体没有足够的权限修改要修改的目录层次结构中的目录或文件的 ACL，则会出现权限错误。 请解决权限问题，然后选择通过使用继续标记从故障点继续执行此过程，或者从头重启此过程。 如果希望从头开始重启，则无需使用继续标记。 你可以重新应用 ACL 条目，而不会产生任何负面影响。
 
 发生故障时，你可以通过将 `--continue-on-failure` 参数设置为 `false` 来返回一个延续令牌。 解决错误后，你可以从故障点继续执行该过程，方法是：再次运行命令，然后将 `--continuation` 参数设置为该延续令牌，
 
