@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01eb0ce83efa54366e027d35d9c3c3bbf86eff7b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95487361"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384232"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -80,7 +80,7 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 **问：是否实施了任何限制？**
 
-**答**：是的，我们实施了限制。  我们预计你不会在典型应用程序开发和测试中达到这些限制。 对于生产部署，我们已准备好支持客户的大规模要求。 请[联系我们](mailto:azuremrs@microsoft.com)以进行讨论。 
+**答**：是的，我们实施了限制。  我们预计你不会在典型应用程序开发和测试中达到这些限制。 对于生产部署，我们已准备好支持客户的大规模要求。 请[联系我们](mailto:azuremrscontact@microsoft.com)以进行讨论。
 
 **问：Azure 空间定位点在哪些区域可用？**
 

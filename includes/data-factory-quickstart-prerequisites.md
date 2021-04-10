@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013341"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612461"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,7 +59,8 @@ ms.locfileid: "96013341"
 2. 在 \<Account name> - “容器”页的工具栏中，选择“容器” 。
 3. 在“新建容器”  对话框中，输入 **adftutorial** 作为名称，然后选择“确定”  。 \<Account name> - “容器”页已更新为在容器列表中包含“adftutorial” 。
 
-   ![容器列表](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="容器列表":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>为 Blob 容器添加输入文件夹和文件
 
@@ -82,9 +83,10 @@ Jane, Doe
 3. 在“上传 Blob”页中，选择“文件”框，然后浏览到 emp.txt 文件并进行选择    。
 4. 展开“高级”标题  。 此页现在显示如下内容：
 
-   ![选择“高级...”链接](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="选择“高级...”链接":::
+
 5. 在“上传到文件夹”框中，输入“输入”   。
-6. 选择“上传”按钮  。 应该会在列表中看到 **emp.txt** 文件和上传状态。
+6. 选择“上传”按钮。 应该会在列表中看到 **emp.txt** 文件和上传状态。
 7. 选择“关闭”图标 (X) 以关闭“上传 Blob”页面    。
 
 让“adftutorial”容器页面保持打开状态  。 在本快速入门结束时可以使用它来验证输出。

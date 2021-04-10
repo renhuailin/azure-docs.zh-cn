@@ -1,24 +1,14 @@
 ---
 title: 快速入门：创建安全模块孪生
 description: 在本快速入门中，了解如何创建适用于 IoT 的 Defender 模块孪生以用于 Azure Defender for IoT。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 1/21/2021
-ms.author: shhazam
-ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 27447f00546ab0d01a33b286f4bb1fbc810c260b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449690"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384555"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生
 
@@ -26,7 +16,7 @@ ms.locfileid: "102449690"
 
 ## <a name="prerequisites"></a>先决条件
 
-无
+- 无
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>了解 azureiotsecurity 模块孪生
 
@@ -39,9 +29,9 @@ Defender for IoT 可与现有的 IoT 设备管理平台完全集成，使你能�
 
 适用于 IoT 的 Defender 利用模块孪生机制，并为每个设备维护一个名为 azureiotsecurity 的安全模块孪生。
 
-该安全模块孪生保存每个设备的所有设备安全性相关信息。
+Defender-IoT-micro-agent 孪生体为每台设备保存与设备安全性相关的所有信息。
 
-若要充分利用 Defender for IoT 功能，需要对服务中的每台设备创建、配置和使用这些安全模块孪生。
+若要充分利用 Defender for IoT 功能，需要对服务中的每台设备创建、配置和使用此 Defender-IoT-micro-agent 孪生体。
 
 ## <a name="create-azureiotsecurity-module-twin"></a>创建 azureiotsecurity 模块孪生
 
