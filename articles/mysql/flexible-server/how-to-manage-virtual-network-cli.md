@@ -1,17 +1,17 @@
 ---
 title: 管理虚拟网络 - Azure CLI - Azure Database for MySQL 灵活服务器
 description: 使用 Azure CLI 为 Azure Database for MySQL 灵活服务器创建和管理虚拟网络
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e60f9010b8fbfb3766aea6b5cffa1e7c001c6eca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109464"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106728"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 灵活服务器创建和管理虚拟网络
 

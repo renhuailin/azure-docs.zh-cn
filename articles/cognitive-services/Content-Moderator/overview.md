@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 内容审查器, azure 内容审查器, 联机审查器, 内容筛选软件, 内容审查服务, 内容审查
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560367"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867264"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560367"
 Azure 内容审查器是一种 AI 服务，可用于处理可能的冒犯性、危险或不可取内容。 它包括由 AI 提供支持的内容审核服务（用于扫描文本、图像和视频以及自动应用内容标记），以及审阅工具（面向一组人工审阅者的在线审查器环境）。
 
 你可能想在应用中内置内容筛选软件，以符合法规或维护用户的预期环境。
+
+本文档包含以下文章类型：  
+
+* [**快速入门**](client-libraries.md)介绍了入门说明，指导您完成向服务发出请求。  
+* [**操作指南**](try-text-api.md)包含以更具体的方式或自定义方式使用服务的说明。  
+* [**概念**](text-moderation-api.md)对服务的功能和特性进行了深入说明。  
+* [**教程**](ecommerce-retail-catalog-moderation.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。  
 
 ## <a name="where-its-used"></a>使用场合
 

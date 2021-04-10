@@ -1,24 +1,14 @@
 ---
 title: 基线和自定义检查
 description: 了解 Azure Defender for IoT 基线的概念。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/07/2019
-ms.author: mlottner
-ms.openlocfilehash: 04fe87cd69efc4c064b8fbdc596a5f9e187abbb1
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102234"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779352"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender for IoT 基线和自定义检查
 
@@ -42,7 +32,7 @@ ms.locfileid: "100102234"
 
 1. 将“基线自定义检查”文件上传到设备。
 
-1. 将基线属性添加到安全模块，然后单击“保存”。
+1. 将基线属性添加到 Defender-IoT-micro-agent，并单击“保存”。
 
 ### <a name="baseline-custom-check-file-example"></a>基线自定义检查文件示例
 

@@ -4,10 +4,10 @@ description: 本文介绍如何登录和激活传感器控制台。
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 2fdfa0dd7048bf39ae5b53a729aef578054b30ac
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779182"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器

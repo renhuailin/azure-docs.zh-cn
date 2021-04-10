@@ -7,11 +7,11 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102612824"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
@@ -21,6 +21,9 @@ ms.locfileid: "102612824"
 
 1. 将 IP 分配方法由动态更改为静态。
 2. 运行 PowerShell 脚本以完成升级和流量迁移。
+
+> [!IMPORTANT]
+> 该脚本目前正在维护中。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅[此处](../virtual-network/virtual-network-public-ip-address-upgrade.md)的说明。
 
 ## <a name="upgrade-overview"></a>升级概述
 

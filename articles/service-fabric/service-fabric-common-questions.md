@@ -4,12 +4,12 @@ description: 有关 Service Fabric 的常见问题解答，包括功能、用例
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 4e03ccf432852a5fc9ee700ba0e39dfe2e64fcc9
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 95463865c52ee501ceca22cae60d19a089236fd1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102456090"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048674"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -189,4 +189,4 @@ Azure Service Fabric 资源提供程序不会将客户数据移动或存储到�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)
+了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](./service-fabric-best-practices-security.md)

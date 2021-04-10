@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200929"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105761"
 ---
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Azure Stack Edge 资源，然后转到“概览”。  设备应为“联机”状态。 转到“云存储空间网关”>“存储帐户”。
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200929"
 
     ![添加存储帐户 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    可以通过[使用 Azure 资源管理器连接到设备本地 API ](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)来获取访问密钥。 
+    可以通过[使用 Azure 资源管理器连接到设备本地 API ](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)来获取访问密钥。

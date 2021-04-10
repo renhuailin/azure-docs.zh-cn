@@ -4,12 +4,12 @@ description: 本文介绍了如何将 SendGrid 与 Apache Ambari 配合使用来
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946972"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867196"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知
 
@@ -33,15 +33,15 @@ ms.locfileid: "98946972"
 
 1. 从“概述”页中，选择“管理”  ，以转到你的帐户的 SendGrid 网页。
 
-    ![Azure 门户中的 SendGrid 概述](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="Azure 门户中的 SendGrid 概述":::
 
 1. 在左侧菜单中，导航到你的帐户名称，然后导航到“帐户详细信息”  。
 
-    ![SendGrid 仪表板导航](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="SendGrid 仪表板导航":::
 
 1. 在“帐户详细信息”  页上，记下“用户名”  。
 
-    ![SendGrid 帐户详细信息](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid 帐户详细信息":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>配置 Ambari 电子邮件通知
 
@@ -51,7 +51,7 @@ ms.locfileid: "98946972"
 
 1. 从“管理警报通知”  窗口中，选择 **+** 图标。
 
-    ![屏幕截图显示了“管理警报通知”对话框。](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="屏幕截图显示了“管理警报通知”对话框。":::
 
 1. 在“创建警报通知”  对话框中，提供以下信息：
 
@@ -72,7 +72,7 @@ ms.locfileid: "98946972"
     |密码确认|重新输入密码。|
     |启动 TLS|选中此复选框|
 
-    ![屏幕截图显示了“创建警报通知”对话框。](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="屏幕截图显示了“创建警报通知”对话框。":::
 
     选择“保存”。  你将返回到“管理警报通知”  窗口。
 

@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: quickstart
 ms.service: virtual-machine-scale-sets
-ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 0408341eff483de71d76a24a933ece4cbdc2b947
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ed0932e82751a5ded4bfc9d234bfcd16fa5b9e0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535274"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935441"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -35,7 +34,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 在搜索框中，键入“负载均衡器”。 在搜索结果中的“市场”下，选取“负载均衡器” 。
 1. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息 ：
 
-    | 设置                 | “值”   |
+    | 设置                 | 值   |
     | ---| ---|
     | 订阅  | 选择订阅。    |    
     | 资源组 | 选择“新建”并在文本框中键入 myVMSSResourceGroup。|

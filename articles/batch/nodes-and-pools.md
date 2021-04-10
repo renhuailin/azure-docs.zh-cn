@@ -2,13 +2,13 @@
 title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.date: 03/11/2021
+ms.openlocfilehash: 7d4c2d45849deb011498efe4c8a1ae91724b9acd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183652"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563889"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -65,7 +65,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 Batch 中提供了两种类型的池配置。
 
 > [!IMPORTANT]
-> 应使用“虚拟机配置”而不是“云服务配置”来配置池。 “虚拟机配置”池支持所有 Batch 功能，并且正在添加新功能。 “云服务配置”池不支持所有功能，也没有计划任何新功能。
+> 虽然目前可以使用任一配置创建池，但应使用虚拟机配置而不是云服务配置来配置新池。 虚拟机配置池将支持所有当前和新的 Batch 功能。 云服务配置池不支持所有功能，也没有计划任何新功能。 [在 2024 年 2 月 29 日之后](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)，你将无法创建新的“CloudServiceConfiguration”池或将新节点添加到现有池。
 
 ### <a name="virtual-machine-configuration"></a>虚拟机配置
 
@@ -76,13 +76,13 @@ Batch 中提供了两种类型的池配置。
 ### <a name="cloud-services-configuration"></a>云服务配置
 
 > [!WARNING]
-> 不推荐使用云服务配置池。 请改用虚拟机配置池。
+> 云服务配置池[已被弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)。 请改用虚拟机配置池。 有关详细信息，请参阅[将 Batch 池配置从云服务迁移到虚拟机](batch-pool-cloud-service-to-virtual-machine-configuration.md)。
 
 云服务配置指定池由 Azure 云服务节点组成。 云服务只提供 Windows 计算节点。
 
 [Azure 来宾 OS 版本和 SDK 兼容性对照表](../cloud-services/cloud-services-guestos-update-matrix.md)中列出了适用于云服务配置池的操作系统，[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)中列出了可用的计算节点大小。 创建包含云服务节点的池时，需要指定节点大小及其 OS 系列（用于确定哪些版本的 .NET 随 OS 一起安装）。 将云服务部署到 Azure 的速度比部署运行 Windows 的虚拟机更快。 如果需要 Windows 计算节点池，可能会发现云服务具有部署时间上的性能优势。
 
-与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅 [云服务概述](../cloud-services/cloud-services-choose-me.md)）。 对于 OS 版本，建议指定 `Latest (*)`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 OS 版本并安装新的 OS 映像。 所有正在运行的任务将会中断并重新排队。
+与云服务中的辅助角色一样，你可指定 OS 版本。 对于 OS 版本，建议指定 `Latest (*)`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 OS 版本并安装新的 OS 映像。 所有正在运行的任务将会中断并重新排队。
 
 ### <a name="node-agent-skus"></a>节点代理 SKU
 
@@ -208,3 +208,4 @@ Batch 中提供了两种类型的池配置。
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[作业和任务](jobs-and-tasks.md)。
+- 了解如何[在池和节点后台操作中检测和避免失败](batch-pool-node-error-checking.md)。

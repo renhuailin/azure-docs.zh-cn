@@ -3,14 +3,14 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 71fe2d342f928c9d50a3fcf3f5367c21d7fba2ff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100591049"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614898"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -20,7 +20,7 @@ ms.locfileid: "100591049"
 
 | 入门 | 概念| 指导式学习 |
 | -- | -- | -- | 
-| <ul><li>[使用 Visual Studio Code 的 Node.js 函数](./create-first-function-vs-code-node.md)</li><li>[使用终端/命令提示符的 Node.js 函数](./create-first-function-cli-node.md)</li><li>[ 使用 Azure 门户Node.js 函数](functions-create-function-app-portal.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Node.js 函数](./create-first-function-vs-code-node.md)</li><li>[使用终端/命令提示符的 Node.js 函数](./create-first-function-cli-node.md)</li><li>[使用 Azure 门户的 Node.js 函数](functions-create-function-app-portal.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[TypeScript 函数](#typescript)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[创建无服务器应用程序](/learn/paths/create-serverless-applications/)</li><li>[将 Node.js 和 Express API 重构到无服务器 API](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 函数基础知识
 
@@ -507,20 +507,20 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 | Functions 版本 | Node 版本 (Windows) | Node 版本 (Linux) |
 |---|---| --- |
+| 3.x（建议） | `~14`（推荐）<br/>`~12`<br/>`~10` | `node|14`（推荐）<br/>`node|12`<br/>`node|10` |
+| 2.x  | `~12`<br/>`~10`<br/>`~8` | `node|10`<br/>`node|8`  |
 | 1.x | 6.11.2（运行时锁定） | 不适用 |
-| 2.x  | `~8`<br/>`~10`（推荐）<br/>`~12` | `node|8`<br/>`node|10`（推荐）  |
-| 3.x | `~10`<br/>`~12`（推荐）<br/>`~14`（预览版）  | `node|10`<br/>`node|12`（推荐）<br/>`node|14`（预览版） |
 
 可以通过从任何函数中记录 `process.version` 来查看运行时使用的当前版本。
 
 ### <a name="setting-the-node-version"></a>设置 Node 版本
 
-对于 Windows 函数应用，通过将 `WEBSITE_NODE_DEFAULT_VERSION` [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为受支持的 LTS 版本（例如 `~12`）来针对 Azure 中的版本进行操作。
+对于 Windows 函数应用，通过将 `WEBSITE_NODE_DEFAULT_VERSION` [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为受支持的 LTS 版本（例如 `~14`）来针对 Azure 中的版本进行操作。
 
 对于 Linux 函数应用，请运行以下 Azure CLI 命令更新 Node 版本。
 
 ```bash
-az functionapp config set --linux-fx-version "node|12" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
+az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
 
 ## <a name="dependency-management"></a>依赖项管理
@@ -597,6 +597,23 @@ module.exports = async function (context, myTimer) {
 
     context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
     context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
+};
+```
+
+## <a name="ecmascript-modules-preview"></a><a name="ecmascript-modules"></a>ECMAScript 模块（预览）
+
+> [!NOTE]
+> 由于 ECMAScript 模块当前在 Node.js 14 标记为“试验”，因此在 Node.js 14 Azure Functions 中可将其作为预览功能提供。 在 Node.js 14 对 ECMAScript 模块的支持变为“稳定”之前，可能会对其 API 或行为进行更改。
+
+[ECMAScript 模块](https://nodejs.org/docs/latest-v14.x/api/esm.html#esm_modules_ecmascript_modules)（ES 模块）是 Node.js 的新官方标准模块系统。 到目前为止，本文中的代码示例使用 CommonJS 语法。 在 Node.js 14 中运行 Azure Functions 时，可以选择使用 ES 模块语法编写函数。
+
+若要在函数中使用 ES 模块，请将其文件名更改为使用 `.mjs` 扩展名。 下面的 index.mjs 文件示例是一个 HTTP 触发函数，它使用 ES 模块语法导入 `uuid` 库并返回值。
+
+```js
+import { v4 as uuidv4 } from 'uuid';
+
+export default async function (context, req) {
+    context.res.body = uuidv4();
 };
 ```
 

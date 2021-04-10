@@ -17,12 +17,12 @@ ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: MT
+ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881933"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103466246"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -44,7 +44,7 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 
 - **AD DS 企业管理员帐户**：可以选择使用此帐户创建上面的“AD DS 连接器帐户”。
 
-- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD。  可以在 azure 门户中查看全局管理员帐户。  请参阅 [查看角色](../../active-directory/roles/manage-roles-portal.md#view-all-roles)。
+- Azure AD 全局管理员帐户：用于创建 Azure AD 连接器帐户和配置 Azure AD。  可以在 Azure 门户中查看全局管理员帐户。  请参阅[列出 Azure AD 角色分配](../../active-directory/roles/view-assignments.md)。
 
 - SQL SA 帐户（可选）：用于使用完整版 SQL Server 时创建 ADSync 数据库。  此 SQL Server 对 Azure AD Connect 安装而言可能是本地或远程的。  此帐户可能是企业管理员的帐户。  现在，可以由 SQL 管理员在带外进行数据库预配，然后由具有数据库所有者权限的 Azure AD Connect 管理员完成安装。  有关详细信息，请参阅[使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 
@@ -149,7 +149,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/tutorial-enable-sspr-writeback.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
-| 组写回 |允许你将 **Microsoft 365 组** 写回到安装有 Exchange 的林。|
+| 组写回 |允许你将 Microsoft 365 组写回到已安装 Exchange 的林中。|
 
 ## <a name="upgrade"></a>升级
 从 Azure AD Connect 的一个版本升级到新版本时，需要拥有以下权限：
@@ -268,4 +268,4 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 |安装后 | [验证安装并分配许可证](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

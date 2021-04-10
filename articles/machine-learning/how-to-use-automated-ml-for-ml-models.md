@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: a91a4f3a2e686c8d502093dc41520df32b313209
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562716"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "102520621"
 
 ## <a name="get-started"></a>入门
 
-1. 登录到 https://ml.azure.com 处的 Azure 机器学习。 
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)。 
 
 1. 选择订阅和工作区。 
 
@@ -80,7 +80,7 @@ ms.locfileid: "102520621"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“**下一步**”。
+        选择“**下一页**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。  在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。 
             
@@ -88,7 +88,7 @@ ms.locfileid: "102520621"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
-        选择“**下一步**”。
+        选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体上，选择“新建”，然后输入“Tutorial-automl-deploy”作为实验名称  。
@@ -113,7 +113,7 @@ ms.locfileid: "102520621"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
-    选择“**下一步**”。
+    选择“**下一页**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
@@ -189,7 +189,7 @@ ms.locfileid: "102520621"
 若要获取特定模型的说明，请执行以下操作： 
 
 1. 在“模型”选项卡上，选择要使用的模型。 
-1. 选择“说明模型”按钮，并提供可用于生成说明的计算力。
+1. 选择“说明模型”按钮，并提供可用于生成说明的计算。
 1. 检查“子运行”选项卡的状态。 
 1. 完成后，导航到“说明(预览)”选项卡，其中包含说明仪表板。 
 
@@ -198,6 +198,11 @@ ms.locfileid: "102520621"
 ## <a name="deploy-your-model"></a>部署模型
 
 获得最佳模型后，可将其部署为 Web 服务以根据新数据进行预测。
+
+>[!TIP]
+> 如果希望使用 Python SDK 部署通过 `automl` 包生成的模型，则必须向工作区[注册模型](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1)。 
+>
+> 注册模型后，可在工作室中通过选择左侧窗格中的“模型”找到它。 打开模型后，可以选择屏幕顶部的“部署”按钮，然后按照“部署模型”部分的“步骤 2”中所述的说明进行操作。
 
 自动化 ML 可帮助你在不编写任何代码的情况下部署模型：
 
