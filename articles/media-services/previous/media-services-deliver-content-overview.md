@@ -2,20 +2,20 @@
 title: 向客户传送内容
 description: 本主题概述使用 Azure 媒体服务传送内容所涉及的操作。
 services: media-services
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
-ms.openlocfilehash: 363bb5389eda8336d04b1ff457f8246e89a042d8
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 1ad89345a2779766fde4559758e61dff92023741
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103016604"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 
@@ -32,7 +32,7 @@ ms.locfileid: "92014377"
     * 平滑流式处理。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 
 本文概述重要的内容传送概念。
 
@@ -84,29 +84,29 @@ ms.locfileid: "92014377"
 > 也可通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，AMS 目前不支持对自定义域使用 TLS。  
 > 
 
-如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含 "origin.mediaservices.windows.net" 的流式处理 Url (旧格式) 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
+如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
 
 ## <a name="streaming-url-formats"></a><a name="URLs"></a>流式处理 URL 格式
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd-csf) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) V4 格式
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=m3u8-aapl)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3 格式
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) 格式带有仅音频筛选器
 默认情况下，仅音频轨道已包括在 HLS 清单中。 这是针对手机网络进行 Apple 应用商店认证所必需的。 在这种情况下，如果客户端没有足够的带宽或者通过 2G 连接进行连接，则播放轨道会切换成仅音频。 这有助于让内容保持流式传输而无需缓冲，但没有视频内容。 在某些情况下，相对于仅播放音频而言，用户更愿意选择缓冲播放视频。 如果希望删除仅音频轨道，可在 URL 中添加 **audio-only=false** 。
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3，仅限音频) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 有关详细信息，请参阅 [Dynamic Manifest Composition support and HLS output additional features](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)（动态清单组合支持和其他 HSL 输出功能）。
 
@@ -115,7 +115,7 @@ http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 示例：
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>平滑流式处理 2.0 清单（旧清单）
 默认情况下，平滑流式处理清单格式包含重复标记（r 标记）。 但是，一些播放器不支持 r 标记。 使用这些播放器的客户端可以使用禁用 r 标记的格式：
@@ -147,10 +147,10 @@ http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb2
 
 ## <a name="streaming-endpoints"></a>流式处理终结点
 
-流式处理终结点表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以直接将内容分发给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 有两种类型的流式处理终结点，**标准**和**高级**。 有关详细信息，请参阅： [流式处理终结点概述](media-services-streaming-endpoints-overview.md)。
+流式处理终结点表示一个流服务，该服务可以直接将内容分发给客户端播放器应用程序，也可以直接将内容分发给内容分发网络 (CDN) 以进一步分发。 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 有两种类型的流式处理终结点，**标准** 和 **高级**。 有关详细信息，请参阅： [流式处理终结点概述](media-services-streaming-endpoints-overview.md)。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
+>创建 AMS 帐户后，会将一个处于“已停止”状态的 **默认** 流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 
 
 ## <a name="known-issues"></a>已知问题
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>更改为平滑流式处理清单版本

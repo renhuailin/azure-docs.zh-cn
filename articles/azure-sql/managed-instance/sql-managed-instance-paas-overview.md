@@ -10,13 +10,13 @@ ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 83f38797e406ff7e62503f59ef979b9ce4f07f97
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 01/14/2021
+ms.openlocfilehash: 5d49a5b57ff4b59005461f2bb13451822723b039
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917930"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644979"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,6 +35,9 @@ Azure SQL 托管实例是一种智能、可缩放的云数据库服务；它将�
 
 Azure SQL 托管实例面向想要以最少的迁移工作量，将大量应用从本地或 IaaS、自我构建的或 ISV 提供的环境迁移到完全托管的 PaaS 云环境的客户。 使用完全自动化的 [Azure 数据迁移服务](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客户可将其现有的 SQL Server 实例直接迁移到 SQL 托管实例，从而实现与 SQL Server 的兼容，并通过本机 VNet 支持实现客户实例的完全隔离。 若要详细了解迁移选项和工具，请参阅[迁移概述：SQL Server 到 Azure SQL 托管实例](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md)。</br> 借助软件保障，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 托管实例的折扣价格。 SQL 托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。
 
+> [!TIP]
+> 如何完善 Azure SQL？ [参与调查](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)。
+
 ## <a name="key-features-and-capabilities"></a>主要特性和功能
 
 SQL 托管实例结合了 Azure SQL 数据库和 SQL Server 数据库引擎提供的最佳功能。
@@ -46,7 +49,7 @@ SQL 托管实例结合了 Azure SQL 数据库和 SQL Server 数据库引擎提�
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](../database/high-availability-sla.md) <br>使用[自动备份](../database/automated-backups-overview.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](/sql/t-sql/statements/backup-transact-sql?preserve-view=true&view=azuresqldb-mi-current) <br>[数据库时间点还原](../database/recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性和符合性** | **Management**|
-|隔离的环境（[VNet 集成](connectivity-architecture-overview.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 身份验证](../database/authentication-aad-overview.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>  <br>遵循与 Azure SQL 数据库相同的合规性标准 <br>[SQL 审核](auditing-configure.md) <br>[高级威胁防护](threat-detection-configure.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
+|隔离的环境（[VNet 集成](connectivity-architecture-overview.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 身份验证](../database/authentication-aad-overview.md)、单一登录支持 <br> [Azure AD 服务器主体（登录名）](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) <br>遵循与 Azure SQL 数据库相同的合规性标准 <br>[SQL 审核](auditing-configure.md) <br>[高级威胁防护](threat-detection-configure.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
 > Azure SQL 托管实例已通过了多项合规性标准认证。 有关详细信息，请参阅 [Microsoft Azure 合规性产品](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)，从中找出 SQL 托管实例符合性认证的最新列表（列在“SQL 数据库”下）。
@@ -76,8 +79,8 @@ SQL 托管实例[基于 vCore 的购买模型](../database/service-tiers-vcore.m
 
 在 vCore 模型中，可在以下两代硬件中进行选择。
 
-- Gen4 逻辑 CPU 基于 Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器，采用附加 SSD 和物理核心（每个核心 7 GB RAM），计算大小为 8 到 24 个 vCore。
-- Gen5 逻辑 CPU 基于 Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL (Cascade Lake) 2.5 GHz 处理器，采用快速 NVMe SSD 和超线程逻辑核心，计算大小为 4 到 80 个核心。
+- Gen4 逻辑 CPU 基于 Intel&reg; E5-2673 v3 (Haswell) 2.4-GHz 处理器，附加 SSD，采用物理核心（每个核心 7 GB RAM），计算大小为 8 到 24 个 vCore。
+- Gen5 逻辑 CPU 基于 Intel&reg; E5-2673 v4 (Broadwell) 2.3 GHz、Intel&reg; SP-8160 (Skylake) 和 Intel&reg; 8272CL (Cascade Lake) 2.5 GHz 处理器，采用快速 NVMe SSD 和超线程逻辑核心，计算大小为 4 到 80 个核心。
 
 若要详细了解两代硬件之间的区别，请参阅 [SQL 托管实例资源限制](resource-limits.md#hardware-generation-characteristics)。
 
@@ -158,7 +161,7 @@ Azure SQL 托管实例提供一组可用于保护数据的高级安全功能。
 
 SQL 托管实例支持传统的 SQL Server 数据库引擎登录名以及与 Azure AD 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本。 使用 Azure AD 服务器主体（登录名）可将 Azure AD 租户中的用户和组指定为真正的实例范围的主体，能够执行任何实体级操作，包括在同一托管实例内执行跨数据库查询。
 
-引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：**FROM EXTERNAL PROVIDER**。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为 SQL 托管实例预配 Azure Active Directory 管理员](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)一文。
+引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：**FROM EXTERNAL PROVIDER**。 有关该语法的详细信息，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)，并查看[为 SQL 托管实例预配 Azure Active Directory 管理员](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)一文。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 

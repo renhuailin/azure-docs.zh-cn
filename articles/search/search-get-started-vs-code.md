@@ -1,5 +1,5 @@
 ---
-title: 快速入门：Visual Studio Code 入门
+title: 快速入门：通过 Visual Studio Code 开始使用 Azure 认知搜索
 titleSuffix: Azure Cognitive Search
 description: 了解如何安装和使用 Azure 认知搜索提供的 Visual Studio Code 扩展。
 author: dereklegenzoff
@@ -7,21 +7,19 @@ manager: luisca
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: 7a613dd6cba55831b02a60f833088b6c34bfc4a7
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 03/10/2021
+ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103015839"
 ---
-# <a name="get-started-with-visual-studio-code-and-azure-cognitive-search"></a>Visual Studio Code 和 Azure 认知搜索入门
+# <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>通过 Visual Studio Code 开始使用 Azure 认知搜索
 
-本文介绍如何使用 [Azure 认知搜索 REST API](/rest/api/searchservice) 和用于发送和接收请求的 API 客户端以交互方式构建 REST API 请求。 在编写任何代码之前，可以使用 API 客户端按照这些说明发送请求和查看响应。
+本文介绍如何使用 [Azure 认知搜索 REST API](/rest/api/searchservice) 和 [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch) 以交互方式构建 REST API 请求。 借助[适用于 Azure 认知搜索的 Visual Studio Code 扩展（预览版）](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)和这些说明，你可以在编写任何代码之前发送请求和查看响应。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-本文使用适用于 Azure 认知搜索 REST API 的 Visual Studio Code 扩展（预览版）。
 
 > [!IMPORTANT] 
 > 此功能目前处于公开预览状态。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
@@ -35,18 +33,6 @@ ms.locfileid: "98122683"
 + [适用于 Visual Studio Code（预览版）的 Azure 认知搜索](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
 
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
-
-## <a name="copy-a-key-and-url"></a>复制密钥和 URL
-
-REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
-
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
-
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
-
-![获取 HTTP 终结点和访问密钥](media/search-get-started-rest/get-url-key.png "获取 HTTP 终结点和访问密钥")
-
-所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ## <a name="install-the-extension"></a>安装扩展
 

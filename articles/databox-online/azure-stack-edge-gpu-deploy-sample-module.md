@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: af44912edf3ce98ceb71bd34388543f7652c2181
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438193"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568454"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署支持 GPU 的 IoT 模块
 
@@ -166,4 +166,4 @@ ms.locfileid: "102438193"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[配置 GPU 以使用模块](azure-stack-edge-j-series-configure-gpu-modules.md)。
+- 详细了解如何[配置 GPU 以使用模块](./azure-stack-edge-gpu-configure-gpu-modules.md)。

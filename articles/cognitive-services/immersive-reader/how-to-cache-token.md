@@ -6,16 +6,16 @@ author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/14/2020
 ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: fd92de3bc5f306cd5ebbcd80b9f1d92af3a9e45d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
-ms.translationtype: MT
+ms.openlocfilehash: e79ae3914e32038e2823fb37e3eee658c95e0003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633309"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608761"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>如何缓存身份验证令牌
 
@@ -23,7 +23,7 @@ ms.locfileid: "92633309"
 
 ## <a name="using-aspnet"></a>使用 ASP.NET
 
-导入 **System.identitymodel** NuGet 包，该软件包用于获取令牌。 接下来，使用以下代码获取，并 `AuthenticationResult` 使用在 [创建沉浸式读者资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
+导入 Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 包，该包用于获取令牌。 接下来，使用以下代码获取 `AuthenticationResult`，并使用在[创建沉浸式阅读器资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -35,11 +35,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult`对象具有属性， `AccessToken` 该属性是使用 SDK 启动沉浸式读取器时将使用的实际标记。 它还包含一个 `ExpiresOn` 属性，该属性指示令牌将过期的时间。 在启动沉浸式阅读器之前，可以检查令牌是否已过期，并仅在其已过期的情况下获取新令牌。
+`AuthenticationResult` 对象具有 `AccessToken` 属性，该属性是在使用 SDK 启动沉浸式阅读器时将使用的实际令牌。 它还具有 `ExpiresOn` 属性，该属性表示令牌的过期时间。 在启动沉浸式阅读器之前，可以检查令牌是否已过期，并仅在过期后获取新令牌。
 
 ## <a name="using-nodejs"></a>使用 Node.JS
 
-将 [**请求**](https://www.npmjs.com/package/request) npm 包添加到项目。 使用以下代码获取令牌，并使用在 [创建沉浸式读者资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
+将 [request](https://www.npmjs.com/package/request) npm 包添加到项目。 使用以下代码获取令牌，并使用在[创建沉浸式阅读器资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -65,7 +65,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-`expires_on`属性是令牌过期的日期和时间，表示为自1970年1月1日起的秒数。 使用此值来确定令牌是否已过期，然后再尝试获取新令牌。
+`expires_on` 属性是令牌过期的日期和时间，表示为自 1970 年 1 月 1 日 UTC 起的秒数。 使用此值来确定令牌是否已过期，然后再尝试获取新令牌。
 
 ```javascript
 async function getToken() {

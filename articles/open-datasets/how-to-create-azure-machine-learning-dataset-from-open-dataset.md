@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: dd1440cd7bda8d40a81290cd9f633264b9641dc5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1ed37ebd798f7ebef59ea48ce7e2084b331d2bba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502546"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065406"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>根据 Azure 开放数据集创建 Azure 机器学习数据集
 
@@ -54,7 +54,7 @@ Azure 开放数据集是精选的公共数据集，可用于添加方案特定�
     * 使用自己的 Python 环境，按照[这些说明](/python/api/overview/azure/ml/install)自行安装 SDK。
 
 > [!NOTE]
-> 某些数据集类依赖于 [azureml-dataprep](/python/api/azureml-dataprep/) 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。
+> 某些数据集类依赖于 azureml-dataprep 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。
 
 ## <a name="create-datasets-with-the-sdk"></a>使用 SDK 创建数据集
 

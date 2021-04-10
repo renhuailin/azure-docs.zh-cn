@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/20/2021
+ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3b95b92f2b76e669b4e207163f76f8cec2d3244
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100582619"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731677"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -85,6 +85,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |加拿大中部     |     S8v2、S9v2   |    1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
+|美国东部     |     S8v2、S9v2   |    1    |
 |美国东部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
 |美国东部 2     |     S8v2、S9v2   |    1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |

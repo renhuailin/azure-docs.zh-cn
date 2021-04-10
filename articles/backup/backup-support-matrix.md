@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564460"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -40,7 +40,7 @@ Azure 备份使用恢复服务保管库来协调和管理以下工作负荷类�
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
 **区域冗余存储 (ZRS)** | 在“英国南部(UKS)”和“东南亚(SEA)”区域提供。
-**终结点** | 请参阅[此部分](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start)，了解为恢复服务保管库创建专用终结点的要求。  
+**终结点** | 请参阅[此部分](./private-endpoints.md#before-you-start)，了解为恢复服务保管库创建专用终结点的要求。  
 
 ## <a name="on-premises-backup-support"></a>本地备份支持
 

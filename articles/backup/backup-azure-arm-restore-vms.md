@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure 门户还原 VM
-description: 使用 Azure 门户（包括跨区域还原功能）从恢复点还原 Azure 虚拟机。
+description: 使用 Azure 门户（包括“跨区域还原”功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c15b2dc39202c6f8386031bcf055688aa2d279df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568743"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -17,14 +17,14 @@ ms.locfileid: "101722681"
 
 ## <a name="restore-options"></a>还原选项
 
-Azure 备份提供多种方法来还原 VM。
+Azure 备份提供了几种用来还原 VM 的方法。
 
 **还原选项** | **详细信息**
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以指定 VM 的名称，选择要将此 VM 放入到的资源组和虚拟网络 (VNet)，以及为已还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。<br><br>如果由于 Azure VM SKU 在指定的 Azure 区域中不可用，或者由于任何其他问题，VM 还原失败，则 Azure 备份仍将还原指定资源组中的磁盘。
 **还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可选择手动删除它们。 <br/><br/>不加密的托管 Vm 支持 Replace 现有的，包括 [使用自定义映像创建](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm。 对于经典 Vm 和非托管 Vm，不支持此方法。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于包含链接资源的 VM（例如[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)或 [Key Vault](../key-vault/general/overview.md)），还支持替换现有磁盘。
-**跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 在备份期间，不会将快照复制到次要区域。 仅复制存储在保管库中的数据。 因此，次要区域还原只是 [保管库层](about-azure-vm-restore.md#concepts) 还原。 次要区域的还原时间与主要区域的保管库还原时间几乎相同。  <br><br> 此功能适用于以下选项：<br> <li> [创建 VM](#create-a-vm) <br> <li> [还原磁盘](#restore-disks) <br><br> 当前不支持[替换现有磁盘](#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可由备份管理员和应用管理员执行。
+**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份会在替换磁盘之前获取现有 VM 的快照，并将其存储在指定的暂存位置。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 快照将复制到保管库，并根据保留策略进行保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可选择手动删除它们。 <br/><br/>对于未加密的托管 VM（包括[使用自定义映像创建的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM），支持替换现有磁盘。 对于经典 VM 和非托管 VM，不支持此方法。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 对于包含链接资源的 VM（例如[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)或 [Key Vault](../key-vault/general/overview.md)），还支持替换现有磁盘。
+**跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 在备份期间，不会将快照复制到次要区域。 仅会复制存储在保管库中的数据。 因此，次要区域还原只是[保管库层](about-azure-vm-restore.md#concepts)还原。 次要区域的还原时间与主要区域的保管库层还原时间几乎相同。  <br><br> 此功能适用于以下选项：<br> <li> [创建 VM](#create-a-vm) <br> <li> [还原磁盘](#restore-disks) <br><br> 当前不支持[替换现有磁盘](#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可由备份管理员和应用管理员执行。
 
 > [!NOTE]
 > 还可以恢复 Azure VM 上的特定文件和文件夹。 [了解详细信息](backup-azure-restore-files-from-vm.md)。
@@ -138,19 +138,19 @@ Azure 备份提供多种方法来还原 VM。
 
 作为[还原选项](#restore-options)之一，跨区域还原 (CRR) 允许你在某个次要区域（Azure 配对区域）中还原 Azure VM。
 
-若要开始使用该功能，请阅读 " [开始之前" 部分](./backup-create-rs-vault.md#set-cross-region-restore)。
+要开始使用此功能，请阅读[“开始之前”部分](./backup-create-rs-vault.md#set-cross-region-restore)。
 
-若要查看是否启用了 CRR，请按照 [配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作。
+若要查看是否启用了 CRR，请按照[配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作。
 
 ### <a name="view-backup-items-in-secondary-region"></a>查看次要区域中的备份项
 
 如果启用了 CRR，则可以查看次要区域中的备份项。
 
-1. 从门户中转到 "**恢复服务保管库**  >  **备份项**"。
-1. 选择 **次要区域** ，查看次要区域中的项目。
+1. 在门户中，转到“恢复服务保管库” > “备份项”。 
+1. 选择“次要区域”以查看次要区域中的项。
 
 >[!NOTE]
->只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将辅助区域数据还原到次要区域。
+>只有支持 CRR 功能的备份管理类型才会显示在列表中。 目前，只允许将次要区域数据还原到次要区域。
 
 ![次要区域中的虚拟机](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 
@@ -158,9 +158,9 @@ Azure 备份提供多种方法来还原 VM。
 
 ### <a name="restore-in-secondary-region"></a>在次要区域中进行还原
 
-次要区域还原用户体验将类似于主要区域还原用户体验。 在 "还原配置" 窗格中配置详细信息以配置还原时，系统将提示您仅提供辅助区域参数。
+次要区域还原用户体验将类似于主要区域还原用户体验。 在“还原配置”窗格中配置详细信息以配置还原时，系统会提示你仅提供次要区域参数。
 
-目前，从主要区域开始，辅助区域 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为12个小时，即使 [读取访问异地冗余存储 (GRS) ](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为15分钟。
+目前，从主要区域到次要区域的 [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) 最多为 12 个小时，即使[读取访问异地冗余存储 (GRS)](../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) 复制为 15 分钟。
 
 ![选择要还原的 VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
@@ -175,20 +175,20 @@ Azure 备份提供多种方法来还原 VM。
 
 >[!NOTE]
 >
->- 触发还原并在数据传输阶段中，无法取消还原作业。
->- 跨区域还原功能将 (客户管理的密钥) 启用的 Azure Vm 恢复，这些虚拟机不会在启用了 CMK 的恢复服务保管库中备份为辅助区域中启用了 CMK 的 Vm。
->- 在次要区域中恢复所需的 Azure 角色与主要区域中的角色相同。
+>- 在触发还原后并处于数据传输阶段时，无法取消还原作业。
+>- “跨区域还原”功能会将启用了 CMK（客户管理的密钥）的 Azure VM（这些虚拟机未在启用了 CMK 的恢复服务保管库中备份）还原为次要区域中未启用 CMK 的 VM。
+>- 在次要区域中进行恢复所需的 Azure 角色与在主要区域中所需的角色相同。
 
-可在同一区域的任何[可用性区域](../availability-zones/az-overview.md)中还原[Azure 区域固定 vm](../virtual-machines/windows/create-portal-availability-zone.md) 。
+[Azure 区域固定的 VM](../virtual-machines/windows/create-portal-availability-zone.md) 可以在同一区域的任何[可用性区域](../availability-zones/az-overview.md)中还原。
 
-在还原过程中，你将看到 "**可用性区域**" 选项。 你将首先看到你的默认区域。 若要选择不同的区域，请选择所选区域的编号。 如果固定的区域不可用，则无法将数据还原到另一个区域，因为备份的数据未 zonally 复制。
+在还原过程中，你会看到“可用性区域”选项。 你会先看到默认区域。 若要选择不同的区域，请选择所选区域的编号。 如果固定区域不可用，则无法将数据还原到另一个区域，因为备份数据没有按区域复制。 可用性区域中的还原只能从保管库层中的恢复点进行。
 
 ![选择可用性区域](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>监视次要区域还原作业
 
 1. 在门户中，转到“恢复服务保管库” > “备份作业” 
-1. 选择 **次要区域** ，查看次要区域中的项目。
+1. 选择“次要区域”以查看次要区域中的项。
 
     ![筛选的备份作业](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
 
@@ -200,18 +200,18 @@ Azure 备份提供多种方法来还原 VM。
 
 ## <a name="restore-vms-with-special-configurations"></a>采用特殊配置还原 VM
 
-在许多常见情况下，你可能需要还原 Vm。
+在许多常见情况下，可能需要还原 VM。
 
 **方案** | **指南**
 --- | ---
 **通过混合使用权益还原 VM** | 如果 Windows VM 使用[混合使用权益 (HUB) 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘，并使用提供的模板（将“许可证类型”设置为“Windows_Server”）或 PowerShell 创建新的 VM。   也可以在创建 VM 后应用此设置。
-**在发生 Azure 数据中心灾难期间还原 VM** | 如果保管库使用 GRS 并且 VM 的主数据中心出现故障，Azure 备份支持将已备份的 VM 还原到配对的数据中心。 在配对的数据中心选择一个存储帐户，然后像平时一样进行还原。 Azure 备份使用配对区域中的计算服务来创建已还原的 VM。 [详细了解](/azure/architecture/resiliency/recovery-loss-azure-region)数据中心复原能力。<br><br> 如果保管库使用 GRS，则可以选择新功能 " [跨区域还原](#cross-region-restore)"。 这使你可以在完全或部分中断方案中还原到第二个区域，甚至在根本没有中断的情况下还原。
+**在发生 Azure 数据中心灾难期间还原 VM** | 如果保管库使用 GRS 并且 VM 的主数据中心出现故障，Azure 备份支持将已备份的 VM 还原到配对的数据中心。 在配对的数据中心选择一个存储帐户，然后像平时一样进行还原。 Azure 备份使用配对区域中的计算服务来创建已还原的 VM。 [详细了解](/azure/architecture/resiliency/recovery-loss-azure-region)数据中心复原能力。<br><br> 如果保管库使用 GRS，则你可以选择新功能[跨区域还原](#cross-region-restore)。 这使你可以在完全或部分中断的情况下还原到次要区域，甚至在根本没有中断的情况下进行还原。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项会将 VHD 复制到指定的存储帐户，然后，你可以根据配置，使用[内部](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md)或[外部](../load-balancer/quickstart-load-balancer-standard-public-powershell.md)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md) 或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)创建 VM。
 **NIC/子网上的网络安全组 (NSG)** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-**区域固定的 VM** | 如果备份使用 Azure 备份) 固定到区域 (的 Azure VM，则可以将其在固定的区域中还原。 [了解详细信息](../availability-zones/az-overview.md)
+**区域固定的 VM** | 如果备份固定到某个区域的 Azure VM（使用 Azure 备份），则可以将其还原到它所固定到的区域。 [了解详细信息](../availability-zones/az-overview.md)
 **还原任何可用性集中的 VM** | 从门户还原 VM 时，没有选择可用性集的选项。 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
-**还原特殊 Vm，如 SQL Vm** | 如果要使用 Azure VM 备份来备份 SQL VM，然后使用 "还原 VM" 选项或在还原磁盘后创建 VM，则必须向 SQL 提供程序注册新创建的 VM [，如下所述。](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) 这会将还原的 VM 转换为 SQL VM。
+**还原特殊 VM，例如 SQL VM** | 如果要使用 Azure VM 备份来备份 SQL VM，然后使用“还原 VM”选项或在还原磁盘后创建 VM，则必须向 SQL 提供程序注册新创建的 VM，如[此处](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash)所述。 这会将还原的 VM 转换为 SQL VM。
 
 ### <a name="restore-domain-controller-vms"></a>还原域控制器 VM
 
@@ -244,15 +244,15 @@ Azure 备份提供多种方法来还原 VM。
 
 ## <a name="post-restore-steps"></a>还原后的步骤
 
-还原 VM 后，需要注意以下几点：
+还原 VM 之后，还需要注意一些事项：
 
 - 将安装备份配置期间存在的扩展，但不会启用这些扩展。 如果出现问题，请重新安装这些扩展。
 - 如果备份的 VM 使用了静态 IP 地址，则还原的 VM 将使用动态 IP 地址，以避免冲突。 可[将静态 IP 地址添加到还原的 VM](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)。
 - 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
-- 如果使用基于 cloud-init 的 Linux 分发版（例如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/troubleshooting/reset-password.md)。 我们建议在这些分发版中使用 SSH 密钥，这样，在还原后就无需重置密码。
+- 如果使用基于 cloud-init 的 Linux 分发版（例如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](/troubleshoot/azure/virtual-machines/reset-password)。 我们建议在这些分发版中使用 SSH 密钥，这样，在还原后就无需重置密码。
 - 如果在还原后因 VM 与域控制器的关系遭到破坏而无法访问 VM，请执行以下步骤来启动 VM：
   - 将 OS 磁盘作为数据磁盘附加到恢复的 VM。
-  - 如果发现 Azure 代理无响应，请按此[链接](../virtual-machines/troubleshooting/install-vm-agent-offline.md)的要求手动安装 VM 代理。
+  - 如果发现 Azure 代理无响应，请按此[链接](/troubleshoot/azure/virtual-machines/install-vm-agent-offline)的要求手动安装 VM 代理。
   - 在 VM 上启用串行控制台访问，以便通过命令行访问 VM
 
   ```cmd

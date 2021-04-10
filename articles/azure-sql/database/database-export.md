@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 866500e9cd9e3fe6aac6a5bfded0dbb21ab137fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 14854f839d6dfe3c8a08a4a1453fd78e389fe8d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614235"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568726"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -106,7 +106,7 @@ $exportStatus
 ```
 ## <a name="cancel-the-export-request"></a>取消导出请求
 
-使用[数据库操作 - 取消 API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
+使用[数据库操作 - 取消 API](/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
 
 ```cmd
 Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId

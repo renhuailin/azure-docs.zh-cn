@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103224312"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562760"
 ---
 # <a name="train-model-module"></a>“定型模型”模块
 
@@ -71,7 +71,7 @@ ms.locfileid: "103224312"
 
 模型可解释性为理解 ML 模型并以人类可以理解的方式呈现决策基础提供了可能性。
 
-培训模型模块目前支持[使用可解释性包来解释 ML 模型](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)。 支持以下内置算法：
+培训模型模块目前支持[使用可解释性包来解释 ML 模型](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)。 支持以下内置算法：
 
 - 线性回归
 - 神经网络回归
@@ -87,7 +87,7 @@ ms.locfileid: "103224312"
 
 ![显示“模型说明”图表的屏幕截图](./media/module/train-model-explanations-tab.gif)
 
-若要了解有关在 Azure 机器学习中使用模型说明的详细信息，请参阅关于[解释 ML 模型](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)的操作说明文章。
+若要了解有关在 Azure 机器学习中使用模型说明的详细信息，请参阅关于[解释 ML 模型](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)的操作说明文章。
 
 ## <a name="results"></a>结果
 
@@ -101,4 +101,4 @@ ms.locfileid: "103224312"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

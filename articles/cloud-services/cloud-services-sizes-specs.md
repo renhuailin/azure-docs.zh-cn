@@ -1,5 +1,5 @@
 ---
-title: " (经典) 的 Azure 云服务的虚拟机大小 |Microsoft Docs"
+title: Azure 云服务（经典）的虚拟机大小 | Microsoft Docs
 description: 列出 Azure 云服务 Web 角色和辅助角色的不同虚拟机大小（及 ID）。
 ms.topic: article
 ms.service: cloud-services
@@ -8,17 +8,17 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: a31c9c4747ccc72f0552ebe2f8daf85ef5fba8a3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103015295"
 ---
-# <a name="sizes-for-cloud-services-classic"></a>云服务的大小 (经典) 
+# <a name="sizes-for-cloud-services-classic"></a>云服务（经典）的大小
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
 
@@ -63,7 +63,7 @@ Azure 上有多个标准大小可供选择。 其中某些大小的注意事项�
 | [A8-A11](#a-series) |225* |
 | [A v2](#av2-series) |100 |
 | [D](#d-series) |160 |
-| [D v2](#dv2-series) |160 - 190* |
+| [D v2](#dv2-series) |210 - 250* |
 | [D v3](#dv3-series) |160 - 190* |
 | [E v3](#ev3-series) |160 - 190* |
 | [G](#g-series) |180 - 240* |

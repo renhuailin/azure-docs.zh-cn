@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: 125f2be205760618ab6ffa3175f719f5e91e8c05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695791"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012252"
 ---
 # <a name="media-services-regional-availability"></a>媒体服务区域可用性
 
@@ -30,9 +30,9 @@ ms.locfileid: "98695791"
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-AMS 在世界各地的多个区域中运行，使你可以灵活地选择在何处构建你的应用程序。 本文概述 Microsoft Azure 媒体服务功能和服务区域可用性。
+AMS 在全球多个区域中运行，让你可以灵活选择构建应用程序的位置。 本文概述 Microsoft Azure 媒体服务功能和服务区域可用性。
 
-有关整个 Azure 全球基础结构的详细信息，请参阅 [azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。
+有关整个 Azure 全球基础结构的详细信息，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
 
 ## <a name="ams-accounts"></a>AMS 帐户
 
@@ -49,7 +49,7 @@ AMS 在世界各地的多个区域中运行，使你可以灵活地选择在何�
 
 ## <a name="live-encoding"></a>实时编码
 
-在以下地区可用：德国、巴西南部、印度西部、印度南部和印度中部。
+在以下区域之外的所有区域可用：德国、巴西南部、印度西部、印度南部和印度中部。
 
 ## <a name="encoding-media-processors"></a>编码媒体处理器
 
@@ -86,7 +86,7 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 |AES-128 密钥|GA|全部|
 |Fairplay|GA|全部|
 |PlayReady|GA|全部|
-|Widevine|GA|除德国、联邦政府和中国以外的所有情况。
+|Widevine|GA|德国、美国联邦政府和中国除外。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。

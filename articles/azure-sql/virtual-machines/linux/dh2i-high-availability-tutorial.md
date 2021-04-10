@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568525"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>教程 - 使用在基于 Linux 的 Azure 虚拟机上运行的 DH2i DxEnterprise 设置三节点 Always On 可用性组
 
@@ -39,22 +39,22 @@ ms.locfileid: "102219279"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在 Azure 中创建四台 VM。 请遵循[快速入门：在 Azure 门户中创建 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)一文，创建基于 Linux 的虚拟机。 同样，要创建基于 Windows 的虚拟机，请遵循[快速入门：在 Azure 门户中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)一文。
-- 在将构成群集的所有基于 Linux 的 VM 上安装 .NET 3.1。 根据选择的 Linux 操作系统，按照[此处](https://docs.microsoft.com/dotnet/core/install/linux)所述的说明进行操作。
+- 在 Azure 中创建四台 VM。 请遵循[快速入门：在 Azure 门户中创建 Linux 虚拟机](../../../virtual-machines/linux/quick-create-portal.md)一文，创建基于 Linux 的虚拟机。 同样，要创建基于 Windows 的虚拟机，请遵循[快速入门：在 Azure 门户中创建 Windows 虚拟机](../../../virtual-machines/windows/quick-create-portal.md)一文。
+- 在将构成群集的所有基于 Linux 的 VM 上安装 .NET 3.1。 根据选择的 Linux 操作系统，按照[此处](/dotnet/core/install/linux)所述的说明进行操作。
 - 需要启用了可用性组管理功能的有效 DxEnterprise 许可证。 有关详细信息，请参阅 [DxEnterprise 免费试用版](https://dh2i.com/trial/)，了解如何获取免费试用版。
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>在所有将构成可用性组的 Azure VM 上安装 SQL Server
 
-在本教程中，我们将设置一个运行可用性组的基于 Linux 的三节点群集。 根据选择的 Linux 平台，遵循[在 Linux 上安装 SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install) 文档。 我们还建议你为本教程安装 [SQL Server 工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)。
+在本教程中，我们将设置一个运行可用性组的基于 Linux 的三节点群集。 根据选择的 Linux 平台，遵循[在 Linux 上安装 SQL Server](/sql/linux/sql-server-linux-overview#install) 文档。 我们还建议你为本教程安装 [SQL Server 工具](/sql/linux/sql-server-linux-setup-tools)。
  
 > [!NOTE]
-> 确保所选的 Linux 操作系统是 [DH2i DxEnterprise（请参阅“最低系统要求”部分）](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf)和 [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms) 均支持的通用发行版。
+> 确保所选的 Linux 操作系统是 [DH2i DxEnterprise（请参阅“最低系统要求”部分）](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf)和 [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms) 均支持的通用发行版。
 >
 > 在此示例中，我们使用 DH2i DxEnterprise 和 Microsoft SQL Server 均支持的 Ubuntu 18.04。
 
 在本教程中，我们不会在 Windows VM 上安装 SQL Server，因为该节点不会成为群集的一部分，并且仅用于使用 DxAdmin 管理群集。
 
-完成此步骤后，应在要加入可用性组的所有三个基于 Linux 的 VM 上都安装 SQL Server 和 [SQL Server 工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)（可选）。
+完成此步骤后，应在要加入可用性组的所有三个基于 Linux 的 VM 上都安装 SQL Server 和 [SQL Server 工具](/sql/linux/sql-server-linux-setup-tools)（可选）。
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>在所有 VM 上安装 DxEnterprise 并配置群集
 
@@ -84,7 +84,7 @@ ms.locfileid: "102219279"
 完成此步骤后，应在 Linux VM 上创建了 DxEnterprise 群集，并在 Windows 客户端计算机上安装了 DxAdmin 客户端。 
 
 > [!NOTE]
-> 你还可以创建一个三节点群集，其中一个节点被添加为“仅配置模式”，如[此处](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes)所述，以启用自动故障转移。 
+> 你还可以创建一个三节点群集，其中一个节点被添加为“仅配置模式”，如[此处](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes)所述，以启用自动故障转移。 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>创建虚拟主机以提供故障转移支持和高可用性
 
@@ -100,7 +100,7 @@ ms.locfileid: "102219279"
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>为侦听器创建内部 Azure 负载均衡器（可选）
 
-在此可选步骤中，你可以创建和配置 Azure 负载均衡器，其中保留可用性组侦听程序的 IP 地址。 有关 Azure 负载均衡器的详细信息，请参阅 [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 若要使用 DxAdmin 配置 Azure 负载均衡器和可用性组侦听程序，请遵循 DxEnterprise [Azure负载均衡器快速入门指南](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)。
+在此可选步骤中，你可以创建和配置 Azure 负载均衡器，其中保留可用性组侦听程序的 IP 地址。 有关 Azure 负载均衡器的详细信息，请参阅 [Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)。 若要使用 DxAdmin 配置 Azure 负载均衡器和可用性组侦听程序，请遵循 DxEnterprise [Azure负载均衡器快速入门指南](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)。
 
 完成此步骤后，应创建了一个可用性组侦听程序，并将其映射到了内部 Azure 负载均衡器。
 
@@ -121,7 +121,7 @@ ms.locfileid: "102219279"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Linux 上的可用性组](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview)
-- [快速入门：在 Azure 门户中创建 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [快速入门：在 Azure 门户中创建 Windows 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [Linux 上的 SQL Server 2019 支持的平台](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- 详细了解 [Linux 上的可用性组](/sql/linux/sql-server-linux-availability-group-overview)
+- [快速入门：在 Azure 门户中创建 Linux 虚拟机](../../../virtual-machines/linux/quick-create-portal.md)
+- [快速入门：在 Azure 门户中创建 Windows 虚拟机](../../../virtual-machines/windows/quick-create-portal.md)
+- [Linux 上的 SQL Server 2019 支持的平台](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
