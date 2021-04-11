@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5f692292d6b7dffad0d94b96d6ad25931ddd7f9a
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 279812222d5f48599131d2131e3c9e69fc806e54
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632624"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091907"
 ---
 ## <a name="azure-security-benchmark"></a>Azure 安全基准
 
@@ -205,7 +205,7 @@ ms.locfileid: "102632624"
 |审核日志 |1208.09aa3System.1 - 09.aa |对于管理活动、系统和应用程序启动/关闭/错误、文件更改和安全策略更改，保留审核日志。 |[应启用服务总线中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8d36e2f-389b-4ee4-898d-21aeb69a0f45) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Bus/ServiceBus_AuditDiagnosticLog_Audit.json) |
 |审核日志 |1210.09aa3System.3 - 09.aa |记录在组织内外对涵盖的信息进行的所有披露，包括披露类型、事件的日期/时间、收件人和发件人。 |[审核诊断设置](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7f89b1eb-583c-429a-8828-af049802c1d9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DiagnosticSettingsForTypes_Audit.json) |
 |审核日志 |1210.09aa3System.3 - 09.aa |记录在组织内外对涵盖的信息进行的所有披露，包括披露类型、事件的日期/时间、收件人和发件人。 |[应启用 Data Lake Analytics 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc95c74d9-38fe-4f0d-af86-0c7d626a315c) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Lake/DataLakeAnalytics_AuditDiagnosticLog_Audit.json) |
-|审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Azure Key Vault 管理的 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
+|审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Azure Key Vault 托管 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
 |审核日志 |1211.09aa3System.4 - 09.aa |组织每九十 (90) 天对记录的所涵盖信息的每次提取进行一次验证，以确认数据是否已删除或仍需使用。 |[应启用 Key Vault 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |监视系统使用情况 |1120.09ab3System.9 - 09.ab |至少每季度监视并审查一次与信息系统的未授权远程连接，如果发现未经授权的连接，则将采取相应措施。 |[Azure Monitor 应从所有区域收集活动日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |监视系统使用情况 |1212.09ab1System.1 - 09.ab |满足与监视授权访问和未授权访问尝试有关的所有适用法律要求。 |[Azure Monitor 日志配置文件应收集“写入”、“删除”和“操作”类别的日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a4e592a-6a6e-44a5-9814-e36264ca96e7) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllCategories.json) |

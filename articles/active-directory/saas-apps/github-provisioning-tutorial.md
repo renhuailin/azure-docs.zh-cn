@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9699c564476e116654f700c32dd47b7f6d5b81
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359256"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504560"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 GitHub 和取消其预配所需在 GitHub 和 Azure 中执行的步骤。
+
+> [!NOTE]
+> Azure AD 预配集成依赖于可供 [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) 客户在 [GitHub 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用的 [GitHub SCIM API](https://developer.github.com/v3/scim/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +36,7 @@ ms.locfileid: "94359256"
 * 仅在组织级别启用 SSO 时，才支持单个组织的 SCIM 预配
 
 > [!NOTE]
-> Azure AD 预配集成依赖于可供 [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) 客户在 [GitHub 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用的 [GitHub SCIM API](https://developer.github.com/v3/scim/)。
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="assigning-users-to-github"></a>将用户分配到 GitHub
 

@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: bae12b5ad7ce6c079161f42e1d6fe3e6c08e3f4b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2908f9c3cb39debed4f5a1bea38d15ccf6a22822
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727526"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059949"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-r-device"></a>教程：激活 Azure Stack Edge Pro R 设备
 
@@ -108,4 +107,4 @@ ms.locfileid: "101727526"
 若要了解如何使用 Azure Stack Edge Pro R 设备传输数据，请参阅：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Stack Edge Pro R 传输数据](./azure-stack-edge-j-series-deploy-add-shares.md)
+> [使用 Azure Stack Edge Pro R 传输数据](./azure-stack-edge-gpu-deploy-add-shares.md)

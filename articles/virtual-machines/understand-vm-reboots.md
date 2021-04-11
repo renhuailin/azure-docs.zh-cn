@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510362"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607467"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -34,7 +34,7 @@ ms.locfileid: "102510362"
 
 * 使用[可用性区域](../availability-zones/az-overview.md)防范数据中心故障
 * 在[可用性集](availability-set-overview.md)中配置多个虚拟机以确保冗余
-* 使用[适用于 Linux 的计划事件](/linux/scheduled-events.md)或[适用于 Windows 的计划事件](/windows/scheduled-events.md)来主动响应 VM 影响事件
+* 使用[适用于 Linux 的计划事件](/azure/virtual-machines/linux/scheduled-events)或[适用于 Windows 的计划事件](/azure/virtual-machines/windows/scheduled-events)来主动响应 VM 影响事件
 * 将每个应用程序层配置到不同的可用性集中
 * 将[负载均衡器](../load-balancer/load-balancer-overview.md)与可用性区域或可用性集组合在一起
 

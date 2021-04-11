@@ -3,16 +3,16 @@ title: 快速入门 - 使用 Azure 门户创建流分析作业
 description: 本快速入门介绍如何开始创建流分析作业、配置输入和输出，以及定义查询。
 author: enkrumah
 ms.author: ebnkruma
-ms.date: 06/21/2019
+ms.date: 03/30/2021
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: c585cedce677599528e036525dead13a85c8b102
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b5e6ba551f8f02aa93d157fa39e6b951d977ab8
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98012370"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092375"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
@@ -28,7 +28,7 @@ ms.locfileid: "98012370"
 
 在定义流分析作业之前，应该准备输入数据。 实时传感器数据将引入到 IoT 中心，随后配置为作业输入。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择“创建资源” > “物联网” > “IoT 中心”。
 

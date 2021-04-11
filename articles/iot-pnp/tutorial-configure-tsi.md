@@ -1,18 +1,19 @@
 ---
 title: 教程 - 使用 Azure 时序见解来存储和分析 Azure IoT 即插即用设备遥测
 description: 教程 - 设置时序见解环境并连接 IoT 中心，以便从 IoT 即插即用设备查看和分析遥测。
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 588d680acc8c21c7f4dcf6569e23110f3c33c482
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057365"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504271"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>Tutorial:创建和配置时序见解 Gen2 环境
 
@@ -26,7 +27,7 @@ ms.locfileid: "106057365"
 > * 使用温度控制器和恒温器设备采用的[数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) 示例模型文件。
 
 > [!NOTE]
-> 时序见解和 IoT 即插即用之间的这种集成处于预览状态。 DTDL 设备模型映射到时序见解时序模型的方式可能会改变。 
+> 时序见解和 IoT 即插即用之间的这种集成处于预览状态。 DTDL 设备模型映射到时序见解时序模型的方式可能会改变。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -123,7 +124,7 @@ az tsi event-source iothub create --event-source-name iot-hub-event-source --env
 
 ### <a name="define-your-types"></a>定义类型
 
-可以开始将数据引入到 Azure 时序见解第 2 代，无需预定义模型。 当遥测到达时，时序见解尝试基于时序 ID 属性值自动解析时序实例。 为所有实例分配默认类型。 你需要手动创建一个新类型来正确地对实例进行分类。 
+可以开始将数据引入到 Azure 时序见解第 2 代，无需预定义模型。 当遥测到达时，时序见解尝试基于时序 ID 属性值自动解析时序实例。 为所有实例分配默认类型。 你需要手动创建一个新类型来正确地对实例进行分类。
 
 以下详细信息概述了将设备 DTDL 模型与时序模型类型同步的最简单方法：
 
@@ -139,7 +140,7 @@ az tsi event-source iothub create --event-source-name iot-hub-event-source --env
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents`（数组）| `variables`（对象）  | 请参阅以下示例。
 
 ![显示时序模型类型的 DTDL 的屏幕截图。](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ az tsi event-source iothub create --event-source-name iot-hub-event-source --env
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }
