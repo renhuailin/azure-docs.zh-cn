@@ -3,13 +3,13 @@ title: 使用 Azure 资源管理器模板创建 Azure 门户仪表板
 description: 了解如何使用 Azure 资源管理器模板创建 Azure 门户仪表板。
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745717"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658313"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 门户中创建仪表板
 
@@ -30,9 +30,13 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 
 在本快速入门的下一部分中创建的仪表板需要一台现有 VM。 按照以下步骤创建 VM。
 
-1. 在 Azure 门户中，选择“Cloud Shell”。
+1. 在 Azure 门户中选择“Cloud Shell”。 
 
     ![从 Azure 门户功能区中选择“Cloud Shell”](media/quick-create-template/cloud-shell.png)
+
+1. 在“Cloud Shell”窗口中，选择“PowerShell”。
+
+    ![在终端窗口中选择 PowerShell](media/quick-create-template/powershell.png)
 
 1. 复制以下命令，然后在命令提示符中输入该命令以创建资源组。
 
@@ -85,19 +89,7 @@ Azure 门户中的仪表板可以集中且有组织地呈现你的云资源。 �
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-检查仪表板是否已成功创建，以及是否可以从 VM 中查看数据。
-
-1. 在 Azure 门户中，选择“仪表板”。
-
-    ![Azure 门户导航到仪表板](media/quick-create-template/navigate-to-dashboards.png)
-
-1. 在仪表板页面上，选择“简单的 VM 仪表板”。
-
-    ![导航到“简单的 VM 仪表板”](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. 查看 ARM 模板创建的仪表板。 你可以看到某些内容是静态的，但也有一些图表显示了你在一开始创建的 VM 的性能。
-
-    ![查看简单的 VM 仪表板](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

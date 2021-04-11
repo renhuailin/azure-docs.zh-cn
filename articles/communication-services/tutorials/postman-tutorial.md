@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044288"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>教程：使用 Postman 签署和发出请求
 在本教程中，我们将设置并使用 Postman 通过 HTTP 对 Azure 通信服务 (ACS) 发出请求。 在本教程结束时，你将会成功地使用 ACS 和 Postman 发送短信，并能够使用 Postman 来探索 ACS 中的其他 API。
@@ -68,7 +68,7 @@ Postman 可通过多种方式来组织请求。 在本教程中， 我们将创�
 
 ### <a name="creating-a-pre-request-script"></a>创建请求前脚本
 
-下一步是在 Postman 中创建请求前脚本。 请求前脚本是在 Postman 中每个请求之前运行的脚本，它可以代表你修改或改变请求参数。 我们将使用此脚本来为 HTTP 请求签名，使请求可由 ACS 的服务授权。 有关签名要求的详细信息，可以[阅读有关身份验证的指南](https://docs.microsoft.com/rest/api/communication/authentication)。
+下一步是在 Postman 中创建请求前脚本。 请求前脚本是在 Postman 中每个请求之前运行的脚本，它可以代表你修改或改变请求参数。 我们将使用此脚本来为 HTTP 请求签名，使请求可由 ACS 的服务授权。 有关签名要求的详细信息，可以[阅读有关身份验证的指南](/rest/api/communication/authentication)。
 
 我们将在“集合”中创建此脚本，使它针对集合中的任何请求运行。 为此，请在“集合”选项卡中单击“请求前脚本”子选项卡。
 
@@ -86,7 +86,7 @@ const dateStr = new Date().toUTCString();
 pm.request.headers.upsert({key:'Date', value: dateStr});
 ```
 
-接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装或请求它们：
+接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装它们：
 
 ```JavaScript
 // Hash the request body using SHA256 and encode it as Base64
@@ -186,7 +186,7 @@ pm.request.headers.upsert({
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman 中的加号按钮。":::
 
-这会在 Postman 中为请求创建一个新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](https://docs.microsoft.com/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
+这会在 Postman 中打开一个用于创建请求的新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
 
 首先将请求类型设置为 `POST`，并在请求 URL 字段中输入 `{{endpoint}}/sms?api-version=2021-03-07`。 此 URL 使用我们前面创建的 `endpoint` 变量自动将请求发送到 ACS 资源。
 
@@ -238,8 +238,8 @@ pm.request.headers.upsert({
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [探索 ACS API](https://docs.microsoft.com/rest/api/communication/)
-> [详细了解身份验证](https://docs.microsoft.com/rest/api/communication/authentication)
+> [探索 ACS API](/rest/api/communication/)
+> [详细了解身份验证](/rest/api/communication/authentication)
 > [详细了解 Postman](https://learning.postman.com/)
 
 你可能还需要：

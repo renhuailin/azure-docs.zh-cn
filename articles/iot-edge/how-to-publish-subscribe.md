@@ -10,14 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e4043fd8b7c9571b62cbf65d7398754b27375efd
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
-ms.translationtype: MT
+ms.openlocfilehash: 1a251f5718ee91a90ba9ba0e65c5cc7cb39096bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633965"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937186"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>使用 Azure IoT Edge 发布和订阅
+
+[!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 可以使用 Azure IoT Edge MQTT 中转站发布和订阅消息。 本文介绍如何连接到此代理，如何针对用户定义的主题发布和订阅消息，以及如何使用 IoT 中心消息传送基元。 IoT Edge MQTT 中转站内置于 IoT Edge 中心。 有关详细信息，请参阅 [IoT Edge 中心的中转站功能](iot-edge-runtime.md)。
 
@@ -28,7 +30,7 @@ ms.locfileid: "100633965"
 
 - 含有效订阅的 Azure 帐户
 - [安装了 `azure-iot` CLI 扩展的 Azure CLI](/cli/azure/)。 有关详细信息，请参阅 [Azure Azure CLI 的 Azure IoT 扩展安装步骤](/cli/azure/azure-cli-reference-for-iot)。
-- SKU 的 **IoT 中心** ： F1、S1、S2 或 S3。
+- SKU 的 IoT 中心（F1、S1、S2 或 S3）。
 - 拥有版本 1.2 或更高版本的 IoT Edge 设备。 由于 IoT Edge MQTT 中转站当前处于公共预览状态，请在 edgeHub 容器上将以下环境变量设置为 true 以启用 MQTT 中转站：
 
    | “属性” | “值” |
@@ -428,9 +430,9 @@ IoT Edge MQTT 桥通过 JSON 结构进行配置，JSON 结构通过其孪生体�
                 },
                 {
                     "direction": "out",
-                    "topic": "",
-                    "inPrefix": "/local/telemetry",
-                    "outPrefix": "/remote/messages"
+                    "topic": "#",
+                    "inPrefix": "/local/telemetry/",
+                    "outPrefix": "/remote/messages/"
                 }
             ]
         }]
@@ -438,7 +440,7 @@ IoT Edge MQTT 桥通过 JSON 结构进行配置，JSON 结构通过其孪生体�
 }
 ```
 关于 IoT Edge 中心 MQTT 桥的其他说明：
-- 使用 MQTT broker 时，MQTT 协议将自动用作上游协议，并在嵌套配置中使用 IoT Edge （例如，使用指定的） `parent_hostname` 。 若要了解有关上游协议的详细信息，请参阅[云通信](iot-edge-runtime.md#cloud-communication)。 若要了解有关嵌套配置的详细信息，请参阅 [将下游 IoT Edge 设备连接到 Azure IoT Edge 的网关](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
+- 当使用 MQTT 中转站并且 IoT Edge 在嵌套配置（例如指定了 `parent_hostname`）中使用时，MQTT 协议将自动用作上游协议。 若要了解有关上游协议的详细信息，请参阅[云通信](iot-edge-runtime.md#cloud-communication)。 若要详细了解配套配置，请参阅[将下游 IoT Edge 设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)。
 
 ## <a name="next-steps"></a>后续步骤
 

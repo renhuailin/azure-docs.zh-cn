@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783381"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566653"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>如何在 Azure 数据工厂中使用参数、表达式和函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "104783381"
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure 数据工厂 UI 和参数
 
-如果你不熟悉 ADF 用户界面中的 Azure 数据工厂参数用法，请查看[使用参数的链接服务的数据工厂 UI](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui)和[使用参数的元数据驱动管道的数据工厂 UI](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui)，以获取直观说明。
+如果你不熟悉 ADF 用户界面中的 Azure 数据工厂参数用法，请查看[使用参数的链接服务的数据工厂 UI](./parameterize-linked-services.md#data-factory-ui)和[使用参数的元数据驱动管道的数据工厂 UI](./how-to-use-trigger-parameterization.md#data-factory-ui)，以获取直观说明。
 
 ## <a name="parameter-and-expression-concepts"></a>参数和表达式概念 
 
@@ -75,7 +75,7 @@ ms.locfileid: "104783381"
 
 ### <a name="dynamic-content-editor"></a>动态内容编辑器
 
-完成编辑后，动态内容编辑器会自动转义内容中的字符。 例如，内容编辑器中的以下内容是包含两个表达式函数的字符串内插。 
+完成编辑后，动态内容编辑器会自动转义内容中的字符。 例如，内容编辑器中的以下内容是具有两个表达式函数的字符串内插。 
 
 ```json
 { 
@@ -313,11 +313,11 @@ ms.locfileid: "104783381"
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>使用参数的映射数据流管道详情 
 
-请遵循[使用参数的映射数据流](https://docs.microsoft.com/azure/data-factory/parameters-data-flow)中的说明操作，了解有关如何在数据流中使用参数的全面示例。
+请遵循[使用参数的映射数据流](./parameters-data-flow.md)中的说明操作，了解有关如何在数据流中使用参数的全面示例。
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>使用参数的元数据驱动管道详情
 
-请按照[使用参数的元数据驱动管道](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization)中的说明操作，详细了解如何使用参数设计元数据驱动管道。 这是热门的参数用例。
+请按照[使用参数的元数据驱动管道](./how-to-use-trigger-parameterization.md)中的说明操作，详细了解如何使用参数设计元数据驱动管道。 这是热门的参数用例。
 
 
 ## <a name="next-steps"></a>后续步骤

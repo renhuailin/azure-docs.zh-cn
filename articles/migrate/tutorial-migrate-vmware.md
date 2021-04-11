@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604536"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567112"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -91,7 +91,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
     - 通过平台管理的密钥和客户管理的密钥进行双重加密
 
    > [!NOTE]
-   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](https://go.microsoft.com/fwlink/?linkid=2151800)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
+   > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
   
 10. 在“Azure 混合权益”中：
 
@@ -189,7 +189,7 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
 ## <a name="complete-the-migration"></a>完成迁移
 
 1. 完成迁移后，右键单击该 VM 并选择“停止复制”。 这会停止本地计算机的复制，并清理 VM 的复制状态信息。
-2. 在迁移期间，我们会自动为 Windows VM 和 Linux VM 安装 VM 代理。 如果迁移的计算机有 Linux 操作系统，请检查该计算机上的 Azure VM Linux 代理[要求](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)，以确保 Linux VM 代理安装正确完成。 
+2. 在迁移期间，我们会自动为 Windows VM 和 Linux VM 安装 VM 代理。 如果迁移的计算机有 Linux 操作系统，请检查该计算机上的 Azure VM Linux 代理[要求](../virtual-machines/extensions/agent-linux.md#requirements)，以确保 Linux VM 代理安装正确完成。 
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。

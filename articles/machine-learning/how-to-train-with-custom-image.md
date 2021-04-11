@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521164"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889155"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像训练模型
 
@@ -106,7 +106,7 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 > Azure 机器学习仅支持提供以下软件的 Docker 映像：
 > * Ubuntu 16.04 或更高版本。
 > * Conda 4.5.# 或更高版本。
-> * Python 3.5+。
+> * Python 3.6+。
 
 若要详细了解如何创建和管理 Azure 机器学习环境，请参阅[创建和使用软件环境](how-to-use-environments.md)。 
 

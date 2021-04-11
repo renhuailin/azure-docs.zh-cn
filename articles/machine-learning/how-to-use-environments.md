@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 038e1394c68df63221d99b87449e5502ae62fadc
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 10491733d7473932a3eeb0e93dabe74a71d99fc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521027"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889036"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -126,7 +126,7 @@ myenv.docker.base_image_registry="your_registry_location"
 > Azure 机器学习仅支持提供以下软件的 Docker 映像：
 > * Ubuntu 16.04 或更高版本。
 > * Conda 4.5.# 或更高版本。
-> * Python 3.5+。
+> * Python 3.6+。
 
 #### <a name="use-your-own-dockerfile"></a>使用你自己的 Dockerfile 
 

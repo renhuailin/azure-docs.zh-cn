@@ -1,18 +1,18 @@
 ---
 title: 支持的版本 - Azure Database for PostgreSQL - 单一服务器
 description: 介绍 Azure Database for PostgreSQL 中支持的 Postgres 主版本和次要版本 - 单一服务器。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b372c9d8be31ab6f51d737cd00c692ac9242e4db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100518447"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605266"
 ---
 # <a name="supported-postgresql-major-versions"></a>支持的 PostgreSQL 主版本
 

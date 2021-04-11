@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: daeea48758a9f08e7eedbfcaddcde3815f5c1e16
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729093"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>导出其机密和证书超出所需日期的应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "103149675"
 
 | 命令 | 说明 |
 |---|---|
-| [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | 将 HTTP 和 HTTPS 请求发送到网页或 Web 服务。 它将分析响应并返回链接、图像和其他重要 HTML 元素的集合。 |
+| [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1&preserve-view=true) | 将 HTTP 和 HTTPS 请求发送到网页或 Web 服务。 它将分析响应并返回链接、图像和其他重要 HTML 元素的集合。 |
 
 ## <a name="next-steps"></a>后续步骤
 

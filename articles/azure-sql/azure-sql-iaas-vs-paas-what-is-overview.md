@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f267b4909817e89444883403bef6662771332ad
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550872"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592177"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -32,11 +32,11 @@ Azure SQL 是基于熟悉的 SQL Server 引擎构建的，因此你可轻松迁�
 
 了解每款产品如何契合 Microsoft 的 Azure SQL 数据平台，以与适合你业务需求的选项相符。 无论你是优先考虑成本节省还是精简管理，本文都会帮助你确定哪种方法能够满足你最重视的业务要求。
 
-
 如果你不熟悉 Azure SQL，请观看我们深度讲解的 [Azure SQL 视频系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的“什么是 Azure SQL”视频：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/What-is-Azure-SQL-3-of-61/player]
 
-
+> [!TIP]
+> 如何完善 Azure SQL？ [参与调查](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456)。
 
 ## <a name="overview"></a>概述
 

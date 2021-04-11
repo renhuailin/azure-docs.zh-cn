@@ -5,13 +5,13 @@ author: jseb225
 ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/16/2020
-ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: MT
+ms.date: 01/15/2021
+ms.openlocfilehash: 1ee1411aba7724d76ed8626de9b8b038d02339dc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574248"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
@@ -24,7 +24,7 @@ ms.locfileid: "98013934"
 
 流分析中机器学习工作室（经典）函数的用法与流分析查询语言中常规函数调用的用法类似。 但在幕后，这些函数调用实际上是工作室（经典）Web 服务请求。
 
-可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高工作室（经典）Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅 [Azure 机器学习工作室（经典）Web 服务](../machine-learning/classic/consume-web-services.md)。 流分析中对工作室（经典）的支持为预览版。
+可以通过在同一个 Web 服务 API 调用中“批处理”多个行来提高工作室（经典）Web 服务请求的吞吐量。 这种分组称为微型批。 有关详细信息，请参阅 [Azure 机器学习工作室（经典）Web 服务](../machine-learning/classic/consume-web-services.md)。 流分析支持工作室（经典）。
 
 ## <a name="configure-a-stream-analytics-job-with-studio-classic-functions"></a>配置采用工作室（经典）函数的流分析作业
 
@@ -47,11 +47,11 @@ ms.locfileid: "98013934"
 
 如果应用程序每秒生成 200,000 个事件，并且批大小为 1000，则造成的 Web 服务延迟为 200 毫秒。 这种速率意味着，每个连接在每秒内可向工作室（经典）Web 服务发出 5 个请求。 通过 20 个连接，流分析作业可在 200 毫秒内处理 20,000 个事件，在 1 秒内可处理 100,000 个事件。
 
-若要每秒处理 200,000 个事件，流分析作业需要 40 个并发连接，也就是 12 个 SU。 下图说明了从流分析作业到工作室 (经典) web 服务终结点的请求–每6个 SUs 最多可以有20个与 Studio (经典) web 服务的并发连接。
+若要每秒处理 200,000 个事件，流分析作业需要 40 个并发连接，也就是 12 个 SU。 下图显示了从流分析作业到工作室（经典）Web 服务终结点的请求：每 6 个 SU 最多有 20 个到工作室（经典）Web 服务的并发连接。
 
 ![缩放采用工作室（经典）函数的流分析 - 两作业示例](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "缩放采用工作室（经典）函数的流分析 - 两作业示例")
 
-一般情况下，“B”代表批大小、“L”代表批大小为 B 时的 Web 服务延迟（以毫秒为单位），“N”个 SU 的流分析作业的吞吐量为 ：
+一般情况下，“B”代表批大小、“L”代表批大小为 B 时的 Web 服务延迟（以毫秒为单位），“N”个 SU 的流分析作业的吞吐量为：
 
 ![缩放采用工作室（经典）函数的流分析 - 公式](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "缩放采用工作室（经典）函数的流分析 - 公式")
 
@@ -62,7 +62,7 @@ ms.locfileid: "98013934"
 ## <a name="example--sentiment-analysis"></a>示例 – 情绪分析
 以下示例包含具有情绪分析工作室（经典）函数的流分析作业，如[流分析机器学习工作室（经典）集成教程](stream-analytics-machine-learning-integration-tutorial.md)所述。
 
-查询是简单的已完全分区的查询，后跟 sentiment 函数，如以下示例所示：
+查询是简单的、已完全分区的查询，后跟 **情绪** 函数，如以下示例所示：
 
 ```SQL
     WITH subquery AS (
