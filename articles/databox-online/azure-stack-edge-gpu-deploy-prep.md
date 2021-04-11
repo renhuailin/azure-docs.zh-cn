@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036038"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065695"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -47,8 +46,8 @@ ms.locfileid: "102036038"
 |**[6.配置 Azure Stack Edge Pro 的安全设置](azure-stack-edge-gpu-deploy-configure-certificates.md)** |为设备配置证书。 可使用设备生成的证书，或者使用自己的证书。   |
 |**[7.激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |使用从服务中获取的激活密钥来激活设备。 现已准备好在设备设置 SMB 或 NFS 共享或通过 REST 进行连接。 |
 |**[8.配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)** |配置设备上的计算角色。 还会创建 Kubernetes 群集。 |
-|**[9A.使用 Edge 共享传输数据](azure-stack-edge-j-series-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
-|**[9B.使用 Edge 存储帐户传输数据](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |添加存储帐户，并通过 REST API 连接到 blob 存储。 |
+|**[9A.使用 Edge 共享传输数据](./azure-stack-edge-gpu-deploy-add-shares.md)** |添加共享，并通过 SMB 或 NFS 连接到共享。 |
+|**[9B.使用 Edge 存储帐户传输数据](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |添加存储帐户，并通过 REST API 连接到 blob 存储。 |
 
 
 现在可以开始收集 Azure Stack Edge Pro 设备软件配置的相关信息。
@@ -125,14 +124,14 @@ ms.locfileid: "102036038"
 
 6. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
-    |设置  |“值”  |
+    |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
 7. 输入或选择以下“实例详细信息”。
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
     |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|

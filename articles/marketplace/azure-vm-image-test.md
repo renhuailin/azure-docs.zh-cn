@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 9ffba221625c57332cd695125651d92adc11cf60
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200378"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558289"
 ---
 # <a name="test-a-virtual-machine-image"></a>测试虚拟机映像
 
@@ -28,7 +28,7 @@ ms.locfileid: "103200378"
 1. 单击“查看 + 创建”。 通过验证后，单击“创建”
 
 > [!NOTE]
-> 如果需要从 VHD 文件创建 VM，请按照以下文章中的说明操作：[准备 Azure 资源管理器模板](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#prepare-an-azure-resource-manager-template)或[使用 PowerShell 部署 Azure VM](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#deploy-an-azure-vm-using-powershell)。
+> 如果需要从 VHD 文件创建 VM，请按照以下文章中的说明操作：[准备 Azure 资源管理器模板](#connect-the-certification-tool-to-a-vm-image)或[使用 PowerShell 部署 Azure VM](#how-to-use-powershell-to-consume-the-self-test-api)。
 
 本文介绍如何在商业市场中测试和提交虚拟机 (VM) 映像，以确保它满足最新的 Azure 市场发布要求。
 

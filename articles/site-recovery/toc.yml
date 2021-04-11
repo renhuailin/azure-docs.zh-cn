@@ -216,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: 设置 Azure VM 迁移到 Azure 后的灾难恢复
               href: azure-to-azure-replicate-after-migration.md
-            - name: 区域到区域灾难恢复
+        - name: 区域到区域灾难恢复
+          items:
+            - name: 在区域内的区间启用复制
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理
           items:

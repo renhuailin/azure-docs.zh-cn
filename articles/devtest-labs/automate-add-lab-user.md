@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中自动添加实验室用户 | Microsoft
 description: 本文介绍如何使用 Azure 资源管理器模板、PowerShell 和 CLI 自动将用户添加到 Azure 开发测试实验室中的实验室。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727699"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>自动将实验室用户添加到 Azure 开发测试实验室中的实验室
 通过 Azure 开发测试实验室，可以使用 Azure 门户快速创建自助服务开发测试环境。 但是，如果你有多个团队和多个开发测试实验室实例，则自动执行创建过程可以节省时间。 使用 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/Environments)，可以创建实验室、实验室 VM、自定义映像、公式，并自动添加用户。 本文专门介绍如何将用户添加到开发测试实验室实例。
@@ -115,13 +115,13 @@ $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ### <a name="principal-id"></a>主体 ID
 主体 ID 是要作为实验室用户添加到实验室的 Active Directory 用户、组或服务主体的对象 ID。 模板使用 `ObjectId` 作为参数。
 
-可以通过使用 [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0)、[Get-AzureRMADGroup 或 [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell cmdlet 获取 ObjectId。 这些 cmdlet 返回单个 Active Directory 对象或对象列表，这些对象具有 ID 属性，它是所需的对象 ID。 以下示例演示如何获取公司中单个用户的对象 ID。
+可以通过使用 [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0&preserve-view=true)、[Get-AzureRMADGroup 或 [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0&preserve-view=true) PowerShell cmdlet 获取 ObjectId。 这些 cmdlet 返回单个 Active Directory 对象或对象列表，这些对象具有 ID 属性，它是所需的对象 ID。 以下示例演示如何获取公司中单个用户的对象 ID。
 
 ```powershell
-$userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
+$userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 ```
 
-还可以使用 Azure Active Directory PowerShell cmdlet，包括 [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) 和 [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)。
+还可以使用 Azure Active Directory PowerShell cmdlet，包括 [Get-MsolUser](/powershell/module/msonline/get-msoluser?preserve-view=true&view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?preserve-view=true&view=azureadps-1.0) 和 [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?preserve-view=true&view=azureadps-1.0)。
 
 ### <a name="scope"></a>范围
 范围指定应应用角色分配的资源或资源组。 对于资源，范围的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 模板使用 `subscription().subscriptionId` 函数填充 `subscription-id` 部分，并使用 `resourceGroup().name` 模板函数填充 `resource-group-name` 部分。 使用这些函数意味着要向其分配角色的实验室必须存在于当前订阅，以及对其进行模板部署的同一资源组中。 最后一个部分 `resource-name` 是实验室的名称。 此值是通过此示例中的模板参数接收的。 
@@ -153,7 +153,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 }
 ```
 
-然后，使用 [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell cmdlet 部署资源管理器模板。 以下示例命令将用户、组或服务主体分配给实验室的“开发测试实验室用户”角色。
+然后，使用 [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) PowerShell cmdlet 部署资源管理器模板。 以下示例命令将用户、组或服务主体分配给实验室的“开发测试实验室用户”角色。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
@@ -168,7 +168,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 ```
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-如简介中所述，创建新的 Azure 角色分配，以便将用户添加到实验室的“开发测试实验室用户”角色。 在 PowerShell 中，可以使用 [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) cmdlet 来执行此操作。 此 cmdlet 具有多个可选参数，以实现灵活性。 可以将 `ObjectId`、`SigninName` 或 `ServicePrincipalName` 指定为要对其授予权限的对象。  
+如简介中所述，创建新的 Azure 角色分配，以便将用户添加到实验室的“开发测试实验室用户”角色。 在 PowerShell 中，可以使用 [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) cmdlet 来执行此操作。 此 cmdlet 具有多个可选参数，以实现灵活性。 可以将 `ObjectId`、`SigninName` 或 `ServicePrincipalName` 指定为要对其授予权限的对象。  
 
 下面是将用户添加到指定实验室中的“开发测试实验室用户”角色的示例 Azure PowerShell 命令。
 
@@ -186,7 +186,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 以下 Azure CLI 示例演示如何将用户添加到指定实验室的“开发测试实验室用户”角色。  
 
 ```azurecli
-az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
+az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type "Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
 ## <a name="next-steps"></a>后续步骤

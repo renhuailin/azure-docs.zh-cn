@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
 ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591384"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>关于监视 Azure 时序见解数据的参考
@@ -28,7 +28,7 @@ ms.locfileid: "100591384"
 
 ### <a name="ingress"></a>流入量
  
-|指标|指标显示名称|单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |IngressReceivedBytes|入口收到的字节数|字节|总计|从事件源读取的字节数的计数|
 |IngressReceivedInvalidMessages|入口收到的无效消息数|计数|总计|从事件源中读取的无效消息的计数|
@@ -40,7 +40,7 @@ ms.locfileid: "100591384"
 
 ### <a name="storage"></a>存储
 
-|指标|指标显示名称|单位|聚合类型|说明|
+|指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |WarmStorageMaxProperties|暖存储最大属性数|计数|最大值|S1/S2 SKU 环境允许使用的最大属性数，以及 PAYG SKU 暖存储允许的最大属性数|
 |WarmStorageUsedProperties|暖存储已用属性数 |计数|最大值|S1/S2 SKU 环境已使用的属性数，以及 PAYG SKU 暖存储已使用的属性数|

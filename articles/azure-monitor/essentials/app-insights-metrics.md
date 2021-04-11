@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583456"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
@@ -78,7 +78,7 @@ availabilityResults
 
 |度量单位|支持的聚合|支持的维度|
 |---|---|---|---|---|---|
-|计数|计数|运行位置、测试名称、测试结果|
+|计数|Count|运行位置、测试名称、测试结果|
 
 ```Kusto
 availabilityResults
@@ -193,7 +193,7 @@ browserTimings
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|无|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|None|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -208,7 +208,7 @@ exceptions
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|无|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|None|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 dependencies
@@ -223,7 +223,7 @@ dependencies
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|云角色名称、云角色实例、设备类型|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|云角色名称、云角色实例、设备类型|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions
@@ -237,7 +237,7 @@ exceptions
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|云角色实例、云角色名称、实际或综合流量、请求性能、响应代码|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|云角色实例、云角色名称、实际或综合流量、请求性能、响应代码|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 requests
@@ -252,7 +252,7 @@ requests
 
 |度量单位|支持的聚合|预先聚合的维度|说明|
 |---|---|---|---|
-|计数|计数|云角色名称、云角色实例|基于日志的版本使用 **Sum** 聚合|
+|Count|Count|云角色名称、云角色实例|基于日志的版本使用 **Sum** 聚合|
 
 ```Kusto
 exceptions

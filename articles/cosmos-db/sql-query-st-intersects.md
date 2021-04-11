@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c123446c7d7f654f0e3ace6c9d92983558509c75
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100559955"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
@@ -56,7 +56,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从 [地理空间索引](index-policy.md#spatial-indexes) 中受益，但包含聚合的查询除外。
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中获益（包含聚合的查询除外）。
 
 ## <a name="next-steps"></a>后续步骤
 

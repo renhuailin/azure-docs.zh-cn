@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215334"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463504"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -36,7 +36,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 下表显示使用 Azure 数据库迁移服务时支持的迁移方案。
 
 > [!NOTE]
-> 如果在用户界面中列出了如下所示的方案，请联系 [请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com) 别名获取其他信息。
+> 如果下面列出的支持方案未出现在用户界面中，请联系[咨询 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名获取详细信息。
 
 > [!IMPORTANT]
 > 若要在个人预览版中查看 Azure 数据库迁移服务当前支持的所有方案，请参阅 [DMS 预览站点](https://aka.ms/dms-preview)。
@@ -60,7 +60,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 |   | RDS MySQL | X |   |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
-| **Azure DB for PostgreSQL-超大规模 (Citus)** | PostgreSQL | X |
+| **Azure DB for PostgreSQL - 超大规模 (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>联机（连续同步）迁移支持
@@ -69,11 +69,11 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 | 目标  | Source | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | X | GA |
-|   | RDS SQL | X | GA |
+| **Azure SQL DB** | SQL Server | X |  |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | X | GA |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -83,12 +83,12 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL - 单一服务器 | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | 公开预览版 (在5月 1 2021 日后弃用)  |
-| **Azure DB for PostgreSQL-超大规模 (Citus)** | PostgreSQL | ✔ | GA |
+|   | Oracle | ✔ | 公开预览版（将于 2021 年 5 月 1 日后弃用） |
+| **Azure DB for PostgreSQL - 超大规模 (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
 > [!IMPORTANT]
-> 目前处于预览) 阶段的 "Oracle 到 Azure Database for PostgreSQL" 迁移方案 (在5月 1 2021 日之后将不再可用。 我们将继续通过备用工具提供支持 (例如 Ora2pg) ，并为 Oracle 到 PostgreSQL 迁移提供最佳迁移体验。 有关迁移的最佳实践，请参阅 [Oracle to Azure Database for PostgreSQL 迁移指南] (https://aka.ms/OracletoPGguide) 。
+> 2021 年 5 月 1 日后，“Oracle 到 Azure Database for PostgreSQL”迁移方案（当前为预览版）将不再可用。 我们将继续通过替代工具（例如 Ora2pg）提供支持，并为 Oracle 到 PostgreSQL 的迁移提供最佳迁移体验。 有关迁移的最佳做法，请参阅 [Oracle 到 Azure Database for PostgreSQL 迁移指南](https://aka.ms/OracletoPGguide)。
 
 
 ## <a name="next-steps"></a>后续步骤

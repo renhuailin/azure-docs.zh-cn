@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
 ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101708945"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
@@ -45,12 +45,12 @@ ms.locfileid: "101708945"
 2. 在“常用”列表中选择“Windows Server 2016 Datacenter”  。
 3. 输入虚拟机的以下值：
 
-    - **订阅** - 选择自己的订阅。
+    - 订阅 - 选择自己的订阅。
     - **资源组**，选择“新建”  ，然后键入“myResourceGroupAG”。 
     - **虚拟机名称**：*myVM1*
     - **区域**： *（美国）美国东部*
     - **用户名**：键入用户名
-    - **密码**：键入密码
+    - 密码：键入密码
 
 
 4. 选择“下一步:磁盘”  。
@@ -67,7 +67,7 @@ ms.locfileid: "101708945"
 
 8. 确保在“子网”下，选择了“myBackendSubnet”作为子网，然后选择“下一步: 管理”。
 9. 选择“禁用”以禁用启动诊断。
-10. 选择“查看 + 创建”，检查摘要页上的设置，然后选择“创建”。 
+10. 选择“查看 + 创建”，检查摘要页上的设置，然后选择“创建”。
 11. 再创建两个虚拟机 *myVM2* 和 *myVM3*，然后将其置于 *MyVNet* 虚拟网络和 *myBackendSubnet* 子网。
 
 ### <a name="install-iis"></a>安装 IIS
@@ -79,7 +79,7 @@ ms.locfileid: "101708945"
 2. 运行以下命令以在虚拟机上安装 IIS： 
 
     ```azurepowershell
-         $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+         $publicSettings = @{ "fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 
         Set-AzVMExtension `
          -ResourceGroupName myResourceGroupAG `
@@ -131,7 +131,7 @@ ms.locfileid: "101708945"
 
 1. 在“后端”选项卡上，选择“添加后端池” 。
 
-2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池：
+2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
     - **名称**：输入“myBackendPool”作为后端池的名称。
 3. 在“目标”类型下，从下拉列表中选择“虚拟机” 。
@@ -151,7 +151,7 @@ ms.locfileid: "101708945"
 
 2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
 
-3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，键入侦听器的以下值 ：
+3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，键入侦听器的以下值：
 
     - **侦听器名称**：输入“myListener”作为侦听器名称。
     - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP  。

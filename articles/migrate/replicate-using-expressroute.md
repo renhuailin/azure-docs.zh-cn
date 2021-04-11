@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448764"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558612"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>使用 Azure Migrate: 服务器迁移通过 ExpressRoute 复制数据
 
-在本文中，你将了解如何配置 [Azure Migrate: 服务器迁移](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool)，以便在将服务器迁移到 Azure 时通过 ExpressRoute 线路复制数据。
+在本文中，你将了解如何配置 [Azure Migrate: 服务器迁移](./migrate-services-overview.md#azure-migrate-server-migration-tool)，以便在将服务器迁移到 Azure 时通过 ExpressRoute 线路复制数据。
 
 ## <a name="understand-azure-expressroute-circuits"></a>了解 Azure ExpressRoute 线路
-ExpressRoute (ER) 线路通过连接提供商将本地基础结构连接到 Microsoft。 ExpressRoute 线路可以配置为使用专用对等互连和/或 Microsoft 对等互连。 查看有关 [ExpressRoute 线路和对等互连](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)的文章，详细了解 ExpressRoute 提供的各种对等互连选项。
+ExpressRoute (ER) 线路通过连接提供商将本地基础结构连接到 Microsoft。 ExpressRoute 线路可以配置为使用专用对等互连和/或 Microsoft 对等互连。 查看有关 [ExpressRoute 线路和对等互连](../expressroute/expressroute-circuit-peerings.md#peeringcompare)的文章，详细了解 ExpressRoute 提供的各种对等互连选项。
 
 Azure Migrate 的服务器迁移工具可帮助你将本地服务器和其他云中的服务器迁移到 Azure 虚拟机。 此工具的工作原理是设置正在进行的复制流，将要迁移的服务器中的数据复制到 Azure 订阅的托管磁盘。 准备好迁移服务器时，将使用 Azure 中的复制数据来迁移服务器。
 
@@ -104,7 +104,7 @@ Azure Migrate 的服务器迁移工具可帮助你将本地服务器和其他云
     > [!Note]
     > 虚拟网络必须包含 ExpressRoute 网关终结点，或者必须通过 ExpressRoute 网关连接到虚拟网络。 
 
-    在“专用 DNS 集成”部分，选择“是”，然后与专用 DNS 区域集成。 选择“是”会自动将 DNS 区域链接到选定的虚拟网络，并添加对新 IP 进行 DNS 解析所需的 DNS 记录，以及为专用终结点创建的完全限定的域名。 详细了解[专用 DNS 区域](https://docs.microsoft.com/azure/dns/private-dns-overview)。
+    在“专用 DNS 集成”部分，选择“是”，然后与专用 DNS 区域集成。 选择“是”会自动将 DNS 区域链接到选定的虚拟网络，并添加对新 IP 进行 DNS 解析所需的 DNS 记录，以及为专用终结点创建的完全限定的域名。 详细了解[专用 DNS 区域](../dns/private-dns-overview.md)。
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Azure Migrate 的服务器迁移工具可帮助你将本地服务器和其他云
     b. 在“添加记录集”页中，为完全限定的域名和专用 IP 添加一个条目，作为“A”类型的记录。
 
 > [!Important]
-> 可能需要其他 DNS 设置，以便从源环境解析存储帐户专用终结点的专用 IP 地址。 [回顾本文](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder)，了解所需的 DNS 配置。
+> 可能需要其他 DNS 设置，以便从源环境解析存储帐户专用终结点的专用 IP 地址。 [回顾本文](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)，了解所需的 DNS 配置。
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>使用具有 Microsoft 对等互连的 ExpressRoute 线路复制数据
 
 可以使用 Microsoft 对等互连或现有公共对等互连域（不建议用于新的 ExpressRoute 连接），通过 ExpressRoute 线路路由复制流量，如下图所示。
 ![replicationwithmicrosoftpeering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-即使在通过 Microsoft 对等互连线路传输复制数据的情况下，仍需要从本地站点建立 Internet 连接，才能与 Azure Migrate 服务（控制平面）进行其他通信。 有些其他 URL 无法通过 ExpressRoute 访问，复制设备 / Hyper-V 主机需要访问这些 URL 来协调复制过程。 你可以根据迁移方案、[VMware 无代理迁移](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls)或[基于代理的迁移](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance)来查看 URL 要求。  
+即使在通过 Microsoft 对等互连线路传输复制数据的情况下，仍需要从本地站点建立 Internet 连接，才能与 Azure Migrate 服务（控制平面）进行其他通信。 有些其他 URL 无法通过 ExpressRoute 访问，复制设备 / Hyper-V 主机需要访问这些 URL 来协调复制过程。 你可以根据迁移方案、[VMware 无代理迁移](./migrate-appliance.md#public-cloud-urls)或[基于代理的迁移](./migrate-replication-appliance.md)来查看 URL 要求。  
 
 如果你在本地站点上使用代理并想要将 ExpressRoute 用于复制流量，则需要在本地设备上为相关 URL 配置代理跳过。 
 
@@ -172,7 +172,7 @@ Azure Migrate 的服务器迁移工具可帮助你将本地服务器和其他云
 
 照以下步骤在配置服务器和处理服务器上配置代理跳过列表：
 
-1. [下载 PsExec 工具](https://docs.microsoft.com/sysinternals/downloads/psexec)来访问系统用户上下文。
+1. [下载 PsExec 工具](/sysinternals/downloads/psexec)来访问系统用户上下文。
 2. 通过运行以下命令行在系统用户上下文中打开 Internet Explorer：psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 3. 在 IE 中添加代理设置。
 4. 在绕过列表中，添加 Azure 存储 URL.*.blob.core.windows.net。  
@@ -185,10 +185,10 @@ Azure Migrate 的服务器迁移工具可帮助你将本地服务器和其他云
 - 目标 Azure 区域的区域 BGP 团体（迁移区域）
 - Azure Active Directory 的 BGP (12076:5060)
 
-详细了解[路由筛选器](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal)以及 [ExpressRoute 的 BGP 社区](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)列表。 
+详细了解[路由筛选器](../expressroute/how-to-routefilter-portal.md)以及 [ExpressRoute 的 BGP 社区](../expressroute/expressroute-routing.md#bgp)列表。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [ExpressRoute 线路](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)。
-- 详细了解 [ExpressRoute 路由域](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)。
-- 详细了解[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+- 详细了解 [ExpressRoute 线路](../expressroute/expressroute-circuit-peerings.md)。
+- 详细了解 [ExpressRoute 路由域](../expressroute/expressroute-circuit-peerings.md#peeringcompare)。
+- 详细了解[专用终结点](../private-link/private-endpoint-overview.md)。
