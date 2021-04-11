@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934685"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284421"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册机密客户端应用程序
 
@@ -25,11 +25,11 @@ ms.locfileid: "105934685"
 
 ## <a name="register-a-new-application"></a>注册新应用程序
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”  。
+1. 在[Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。
 
-1. 选择 **“应用注册”**。 
+1. 选择“应用注册” 。 
 
-    ![Azure 门户。 新应用注册。](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure 门户。新应用注册。":::
 
 1. 选择“新注册”。
 
@@ -39,7 +39,7 @@ ms.locfileid: "105934685"
 
 1.  (可选) 提供 **重定向 URI**。 稍后可以更改这些详细信息，但如果你知道应用程序的回复 URL，请立即输入。
 
-    ![新的机密客户端应用注册。](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="新的机密客户端应用注册。":::
 
 1. 选择“注册”。
 
@@ -49,7 +49,7 @@ ms.locfileid: "105934685"
 
 1. 选择“API 权限”。
 
-    ![机密客户端。 API 权限](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="机密客户端。API 权限。":::
 
 1. 选择“添加权限”。
 
@@ -70,11 +70,11 @@ ms.locfileid: "105934685"
 
 1. 依次选择“证书和机密”、“新建客户端机密”。  
 
-    ![机密客户端。 应用程序密码](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="机密客户端。应用程序机密。":::
 
-1. 为客户端密码输入“说明”。 选择 "过期 (1 年、2年或永不) ，然后单击" **添加**"。
+1. 为客户端密码输入“说明”。 选择 " **过期** " 下拉菜单选择过期时间框架，然后单击 " **添加**"。
 
-   ![添加客户端密码](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="添加客户端密码。":::
 
 1. 创建客户端密码字符串后，复制其 **值** 和 **ID**，并将其存储在所选的安全位置。
 

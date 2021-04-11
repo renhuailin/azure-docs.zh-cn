@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 8f1b5eabe235d107b48dc7b2db5b6d4b1188a3fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3beba1db82cc2a618ba7544228975c953b01acd9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99833960"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064896"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序
 

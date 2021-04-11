@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/10/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 6204be2ff52b8aac89b93ac09337b1560255e11d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633710"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491876"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -26,10 +26,38 @@ ms.locfileid: "102633710"
 
 ## <a name="planned-changes"></a>计划的更改
 
-- [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
-- [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)
-- [弃用 11 种 Azure Defender 警报](#deprecation-of-11-azure-defender-alerts)
+| 计划的更改                                                                                                                                                        | 预计更改日期 |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| [21 条建议在不同安全控制之间进行了调动](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
+| [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 年 4 月                |
+| [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 4 月                |
+| [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 季度                   |
+|                                                                                                                                                                       |                           |
+
+
+### <a name="21-recommendations-moving-between-security-controls"></a>21 条建议在不同安全控制之间进行了调动 
+
+**预计更改日期：** 2021 年 4 月
+
+以下建议将被移动到其他的安全控制。 安全控制是相关安全建议的逻辑组，反映了你易受攻击的攻击面。 这一调动确保了每个建议都处于最适当的控制之下，以满足其目标。 
+
+请在安全控件及其建议中了解每个安全控件中的建议。
+
+|建议 |更改和影响  |
+|---------|---------|
+|应对 SQL Server 启用漏洞评估<br>应对 SQL 托管实例启用漏洞评估<br>应立即修正 SQL 数据库的漏洞<br>应修正 VM 中的 SQL 数据库漏洞     |从“修正漏洞”（得 6 分）<br>变为“修正安全配置“（得 4 分）。<br>根据你的环境，这些建议会减少对评分的影响。|
+|应该为你的订阅分配了多个所有者<br>自动化帐户变量应进行加密<br> IoT 设备 - 经审核的进程已停止发送事件<br> IoT 设备 - 操作系统基线验证失败<br> IoT 设备 - 需要进行 TLS 加密套件升级<br> IoT 设备 - 打开设备上的端口<br> IoT 设备 - 在其中一个链中找到了宽容防火墙策略<br> IoT 设备 - 在输入链中找到了宽容防火墙规则<br> IoT 设备 - 在输出链中找到了宽容防火墙规则<br>应启用 IoT 中心的诊断日志<br> IoT 设备 - 代理正在发送未充分利用的消息<br>IoT 设备 - 默认 IP 筛选策略应为“拒绝”<br>IoT 设备 - IP 筛选器规则为“大范围 IP”<br>IoT 设备 - 应调整代理消息间隔和大小<br>IoT 设备 - 完全相同的身份验证凭据<br>IoT 设备 - 经审核的进程停止发送事件<br>IoT 设备 - 应修复操作系统 (OS) 基线配置|移到 **实施安全最佳做法**。<br>如果某条建议移到“实施安全最佳做法”控制（不得分），则这条建议不再影响安全分数。|
+|||
+
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用
+
+**预计更改日期：** 2021 年 4 月
+
+以下两项建议将被弃用：
+
+- **应为你的云服务角色更新 OS 版本** - 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
+- **Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本** - 这项建议的评估覆盖面并不像我们所希望的那样广泛。 这项建议的当前版本最终将替换为增强版本，以更好地与客户的安全需求相匹配。
 
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>将发布来自 AWS 的正式版 (GA) 建议
@@ -48,56 +76,12 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 当这些功能为正式版并对 AWS 资源运行评估时，结果将影响所有多云资源与混合云资源的合计安全分数。 
 
 
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>“应用系统更新”安全控制中的两项建议将被弃用 
-
-**预计更改日期：** 2021 年 3 月
-
-以下两项建议计划在 2021 年 2 月弃用：
-
-- **应重启计算机来应用系统更新**。 这可能会对安全功能分数造成轻微影响。
-- **应在计算机上安装监视代理**。 此建议仅与本地计算机相关，其中某些逻辑将转移到另一条建议“应在计算机上解决 Log Analytics 代理运行状况问题”。 这可能会对安全功能分数造成轻微影响。
-
-建议检查连续导出和工作流自动化配置，以查看这些建议是否包括在其中。 此外，任何仪表板或其他可能使用它们的监视工具都应该相应地进行更新。
-
-有关这些建议的详细信息，请参阅[安全建议参考页面](recommendations-reference.md)。
-
 
 ### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL 数据分类建议的增强
 
 **预计更改日期：** 2021 年第 2 季度
 
 “应用数据分类”安全控制中的“应对 SQL 数据库中的敏感数据进行分类”建议将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此，建议的 ID 也会更改（当前 ID 为 b0df6f56-862d-4730-8597-38c0fd4ebd59）。
-
-
-### <a name="deprecation-of-11-azure-defender-alerts"></a>弃用 11 种 Azure Defender 警报
-
-**预计更改日期：** 2021 年 3 月
-
-在下个月，我们将弃用下列 11 种 Azure Defender 警报。
-
-- 新警报将取代下面两种警报并扩大覆盖范围：
-
-    | AlertType                | AlertDisplayName                                                         |
-    |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | 预览版 - 检测到 MicroBurst 工具包“Get-AzureDomainInfo”函数运行 |
-    | ARM_MicroBurstRunbook    | 预览版 - 检测到 MicroBurst 工具包“Get-AzurePasswords”函数运行  |
-    |                          |                                                                          |
-
-- 下面 9 种警报与已弃用的 Azure Active Directory 标识保护连接器相关：
-
-    | AlertType           | AlertDisplayName              |
-    |---------------------|-------------------------------|
-    | UnfamiliarLocation  | 不熟悉的登录属性 |
-    | AnonymousLogin      | 匿名 IP 地址          |
-    | InfectedDeviceLogin | 受恶意软件感染的 IP 地址     |
-    | ImpossibleTravel    | 异常位置登录               |
-    | MaliciousIP         | 恶意 IP 地址          |
-    | LeakedCredentials   | 凭据泄露            |
-    | PasswordSpray       | 密码喷射                |
-    | LeakedCredentials   | Azure AD 威胁智能  |
-    | AADAI               | Azure AD AI                   |
-    |                     |                               |
- 
 
 
 

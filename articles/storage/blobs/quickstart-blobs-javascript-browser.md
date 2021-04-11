@@ -1,19 +1,19 @@
 ---
 title: 快速入门：浏览器中的 Azure Blob 存储库 v12 - JavaScript
 description: 本快速入门介绍了如何在浏览器中使用适用于 JavaScript 的 Azure Blob 存储客户端库版本 12。 你将在 Blob 存储中创建容器和对象。 接下来，了解如何列出容器中的所有 Blob。 最后，了解如何删除 Blob 和容器。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001892"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278484"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

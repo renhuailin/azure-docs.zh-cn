@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 488de7114d80e6a88cc619ba3b42f867c985ea11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c7925c1bc397e15d8b6e0f2f21d5e9147109b83
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99833909"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064845"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入门：将模拟设备添加到 IoT Central 应用程序
 
@@ -76,7 +76,7 @@ ms.locfileid: "99833909"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | 日期   |
+    | 最后维修日期 | 无          | Date   |
     | 客户名称     | 无          | 字符串 |
 
 1. 选择“保存”以保存更改：
