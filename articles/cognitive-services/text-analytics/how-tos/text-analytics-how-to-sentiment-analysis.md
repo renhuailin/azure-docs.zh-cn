@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599115"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276988"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
-文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些字（例如产品或服务的属性）的观点。 
+文本分析 API 的情绪分析功能提供了两种方法来检测积极和消极情绪。 如果发送情绪分析请求，API 会在句子和文档级别返回情绪标签（如“消极”、“中性”和“积极”）和置信度分数。 还可使用情绪分析终结点发送观点挖掘请求，它精细地描述了对文本中某些字（例如产品或服务的属性）的观点。
 
 API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析。
 
@@ -151,7 +151,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 情绪分析 v3.1 可以返回情绪分析和观点挖掘的响应对象。
   
-情绪分析为整个文档以及其中的每个句子返回情绪标签和置信度分数。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 一个文档可以有多个句子，每个文档或句子的置信度分数合计为 1。 assessments 
+情绪分析为整个文档以及其中的每个句子返回情绪标签和置信度分数。 分数越接近于 1 表示标签分类的置信度越高，分数越低表示置信度越低。 一个文档可以有多个句子，每个文档或句子的置信度分数合计为 1。
 
 观点挖掘将查找文本中的目标（名词或动词）及其相关的评估（形容词）。 在下面的回复中，*餐厅的食物很好，并且服务员很友好* 这句话包括两个目标：*食物* 和 *服务员*。 每个目标的`relations`属性都包含一个`ref`值，其中包含对相关的`documents`、`sentences`和`assessments`对象的 URI 引用。
 

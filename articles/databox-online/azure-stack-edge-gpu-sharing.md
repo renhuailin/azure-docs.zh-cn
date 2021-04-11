@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6683e39cfa3601b1ae1fbbe02e69e4dc0a54e8e7
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564570"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645238"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 GPU 共享
 
-图形处理单元 (GPU) 是旨在加速图形渲染的专用处理器。 GPU 可以同时处理许多数据片段，使这些片段能够用于机器学习、视频编辑和游戏应用程序。 除了用于常规用途计算的 CPU 以外，Azure Stack Edge Pro GPU 设备还可以包含一个或两个 Nvidia Tesla T4 GPU 用于运行计算密集型工作负载，例如硬件加速推理。 有关详细信息，请参阅 [Nvidia 的 Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/)。
+图形处理单元 (GPU) 是旨在加速图形渲染的专用处理器。 GPU 可以同时处理许多数据片段，使这些片段能够用于机器学习、视频编辑和游戏应用程序。 除了用于常规用途计算的 CPU 以外，Azure Stack Edge Pro GPU 设备还可以包含一个或两个 Nvidia Tesla T4 GPU 用于运行计算密集型工作负载，例如硬件加速推理。 有关详细信息，请参阅 [Nvidia 的 Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/)。
 
 
 ## <a name="about-gpu-sharing"></a>关于 GPU 共享

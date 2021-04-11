@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013493"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645008"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 
@@ -42,7 +42,8 @@ Microsoft Azure 媒体服务即将推出 **媒体编码器高级工作流** 媒�
 
 **媒体编码器高级工作流** 的编码任务需要一个名为“Workflow”文件的单独配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
 
-也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件。 该文件夹还包含这些文件的相关说明。
+也可以从[此处](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+)获取默认的工作流文件。 该文件夹还包含这些文件的相关说明。
 
 需要将工作流文件作为资产上传到媒体服务帐户，并且应将此资产传递给编码任务。
 

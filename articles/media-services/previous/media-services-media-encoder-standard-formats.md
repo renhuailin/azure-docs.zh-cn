@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: 7aada042254a2794602002614df51646be90c7cd
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 9055c4c1af14c9ecc8fbdeb621c30ac6ebe5afc4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103013136"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108779"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
@@ -27,7 +27,7 @@ ms.locfileid: "103013136"
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
 > * [第 2 版](media-services-media-encoder-standard-formats.md)
-> * [第 3 版](../latest/media-encoder-standard-formats.md)
+> * [第 3 版](../latest/encode-media-encoder-standard-formats-reference.md)
 
 本文档包含最常见的导入和导出文件格式的列表，可以将这些格式与 Media Encoder Standard 配合使用。
 

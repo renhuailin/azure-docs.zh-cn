@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518698"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067429"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>将数据移入 ML 管道和在 ML 管道之间移动数据的步骤 (Python)
 
@@ -28,7 +28,7 @@ ms.locfileid: "102518698"
 - 将 `Dataset` 数据拆分为子集，例如训练子集和验证子集
 - 创建 `OutputFileDatasetConfig` 对象来将数据传输到下一管道步骤
 - 使用 `OutputFileDatasetConfig` 对象作为管道步骤的输入
-- 基于 `OutputFileDatasetConfig` 创建要持久保存的新 `Dataset` 对象
+- 基于 `OutputFileDatasetConfig` 创建你要持久保存的新 `Dataset` 对象
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 Azure 不会自动删除用 `OutputFileDatasetConfig` 编写的中间数据。 若要避免大量不需要的数据的存储费用，应执行以下操作之一：
 
 * 当不再需要时，可在管道运行结束时以编程方式删除中间数据
-* 将 blob 存储与中间数据的短期存储策略仪器结合使用（请参阅[通过 Azure Blob 存储访问层自动化来优化成本](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)） 
+* 将 blob 存储与中间数据的短期存储策略仪器结合使用（请参阅[通过 Azure Blob 存储访问层自动化来优化成本](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)） 
 * 定期检查并删除不再需要的数据
 
 有关详细信息，请参阅[计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)。

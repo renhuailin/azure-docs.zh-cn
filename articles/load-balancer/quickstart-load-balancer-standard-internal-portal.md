@@ -6,7 +6,6 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a internal load balancer so that I can load balance internal traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: de179ab2fe1c02b3912262ee57fbb41a23d56164
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f987cd99007f66540fd826a6cd14c6427ea0893
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715426"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056379"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -111,7 +110,7 @@ ms.locfileid: "101715426"
 3. 在“负载均衡器”页上，选择“创建” 。
 4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择在上一步中创建的 CreateIntLBQS-rg。|
@@ -144,7 +143,7 @@ ms.locfileid: "101715426"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -158,7 +157,7 @@ ms.locfileid: "101715426"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
@@ -378,7 +377,7 @@ ms.locfileid: "101715426"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -400,7 +399,7 @@ ms.locfileid: "101715426"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
@@ -413,7 +412,7 @@ ms.locfileid: "101715426"
     | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
 
-3. 选择“确定”  。
+3. 选择“确定” 。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 

@@ -2,18 +2,18 @@
 title: 使用 Azure 存储空间库存计算 blob 计数和大小
 description: 了解如何计算每个容器的 blob 计数和总大小。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: e752d40ce2f237c2ab08bac2e71133cd06ec40e4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636808"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277175"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>使用 Azure 存储空间库存计算每个容器的 blob 计数和总大小
 
@@ -43,7 +43,7 @@ Blob 元数据未包含在此方法中。 Azure Blob 存储库存功能将[列�
 
 ## <a name="create-an-azure-synapse-workspace"></a>创建 Azure Synapse 工作区
 
-接下来，[创建 Azure Synapse 工作区](/azure/synapse-analytics/get-started-create-workspace)，你将在其中执行 SQL 查询来报告库存结果。
+接下来，[创建 Azure Synapse 工作区](../../synapse-analytics/get-started-create-workspace.md)，你将在其中执行 SQL 查询来报告库存结果。
 
 ## <a name="create-the-sql-query"></a>创建 SQL 查询
 
@@ -58,7 +58,7 @@ Blob 元数据未包含在此方法中。 Azure Blob 存储库存功能将[列�
 
 ## <a name="run-the-sql-query"></a>运行 SQL 查询
 
-1. 在 Azure Synapse 工作区中添加以下 SQL 查询以 [读取库存 CSV 文件](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file)。
+1. 在 Azure Synapse 工作区中添加以下 SQL 查询以 [读取库存 CSV 文件](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file)。
 
     对于 `bulk` 参数，请使用要分析的库存报表 CSV 文件的 URL。
 

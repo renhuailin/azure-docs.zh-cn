@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用 JavaScript 新建策略分配
 description: 本快速入门介绍如何使用 JavaScript 创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 09/24/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d42156e68747b66778ea1cf2001d2b4bfc901bb0
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91347879"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090148"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>快速入门：使用 JavaScript 创建策略分配以识别不合规的资源
 
