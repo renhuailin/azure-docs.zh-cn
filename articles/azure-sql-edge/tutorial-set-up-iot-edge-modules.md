@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5d768fdc2540496769883d839cfbb4f009a2000c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422121"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077629"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>设置 IoT Edge 模块和连接
 
@@ -42,12 +42,12 @@ ms.locfileid: "93422121"
 
 4. 在“容器注册表凭据”下，输入以下值：
 
-   _字段_|_值_
-   -------|-------
-   名称|注册表名称
-   地址|登录服务器
-   用户名|用户名
-   密码|密码
+   | _字段_   | _值_       |
+   | -------   | -------       |
+   | 名称      | 注册表名称 |
+   | 地址   | 登录服务器  | 
+   | 用户名 | 用户名      | 
+   | 密码  | 密码      | 
   
 ## <a name="build-push-and-deploy-the-data-generator-module"></a>生成、推送和部署数据生成器模块
 

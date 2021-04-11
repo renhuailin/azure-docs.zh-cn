@@ -4,15 +4,15 @@ description: 本文列出了 Azure 安全中心的安全建议，这些建议可
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801448"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504800"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -58,12 +58,15 @@ ms.locfileid: "104801448"
 
 ## <a name="deprecated-recommendations"></a>弃用的建议
 
-|建议|说明及相关策略|严重性|已启用快速修复？（[了解详细信息](security-center-remediate-recommendations.md#quick-fix-remediation)）|资源类型|
-|----|----|----|----|----|
-|应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|N|应用服务|
-|应强化 IaaS NSG 上 Web 应用的规则|如果运行 Web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 Web 应用程序端口而言过于宽松，应强化该安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|N|虚拟机|
-|应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中型|N|计算资源（容器）|
-|安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备|安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备。|低|N|IoT 设备|
+|建议|说明及相关策略|严重性|
+|----|----|----|
+|应限制对应用服务的访问|通过更改网络配置来限制对应用服务的访问，以拒绝来自过大范围的入站流量。<br>（相关策略：[预览]：应限制对应用服务的访问）|高|
+|应强化 IaaS NSG 上 Web 应用的规则|如果运行 Web 应用程序的虚拟机的网络安全组 (NSG) 所包含的 NSG 规则对于 Web 应用程序端口而言过于宽松，应强化该安全组。<br>（相关策略：应该强化 IaaS 上 Web 应用程序的 NSG 规则）|高|
+|应定义 Pod 安全策略，通过删除不必要的应用程序特权来减少攻击途径。|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便 pod 只能访问其有权访问的资源。<br>（相关策略：[预览]：应在 Kubernetes 服务上定义 Pod 安全策略）|中型|
+|安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备|安装适用于 IoT 的 Azure 安全中心安全模块，以更深入地了解 IoT 设备。|低|
+|应重启计算机来应用系统更新|重启计算机以应用系统更新并保护计算机免受漏洞攻击。 （相关策略：应在计算机上安装系统更新）|中型|
+| 应在计算机上安装监视代理|此操作在所选虚拟机上安装监视代理。 选择代理要向其报告的工作区。 （无相关策略）|高|
+||||
 
 ## <a name="next-steps"></a>后续步骤
 

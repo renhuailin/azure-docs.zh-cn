@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dc084da6ef7f26b9e434acf8985c7077f5eaffe2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95992931"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078360"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并管理贸易合作伙伴协议
 
@@ -57,17 +57,16 @@ ms.locfileid: "95992931"
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <*agreement-name*> | 协议的名称 |
-   | **协议类型** | 是 | **AS2**、**X12** 或 **EDIFACT** | 协议 (agreement) 的协议 (protocol) 类型。 创建协议 (agreement) 文件时，该文件中的内容必须与协议 (agreement) 类型匹配。 | |  
+   | **协议类型** | 是 | **AS2**、**X12** 或 **EDIFACT** | 协议 (agreement) 的协议 (protocol) 类型。 创建协议 (agreement) 文件时，该文件中的内容必须与协议 (agreement) 类型匹配。 |
    | **主机合作伙伴** | 是 | <*host-partner-name*> | 主机合作伙伴代表指定协议的组织 |
    | **主机标识** | 是 | <*host-partner-identifier*> | 主机合作伙伴的标识符 |
    | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
    | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
    | **接收设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何从协议中的来宾合作伙伴处接收所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
    | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何向协议中的来宾合作伙伴发送所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
-   |||||
 
    > [!IMPORTANT]
    > 协议的解决方案取决于是否匹配在合作伙伴和传入消息中定义的这些项：

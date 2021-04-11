@@ -1,18 +1,18 @@
 ---
 title: 快速入门：Azure Blob 存储客户端库 - Ruby
 description: 在Azure Blob 存储中创建存储帐户和容器。 使用适用于 Ruby 的存储客户端库创建、下载 Blob 并列出容器中的 Blob。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96b47afb11a0105e8f6d6b58e8862994493389f4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96781090"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277970"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>快速入门：适用于 Ruby 的 Azure Blob 存储客户端库
 

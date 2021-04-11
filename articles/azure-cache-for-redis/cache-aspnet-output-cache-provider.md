@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ea409163a6ce28f65799163bd3217d47569751
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993404"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220583"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 输出缓存提供程序
 
@@ -65,7 +65,7 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 | *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。<br/><br/>使用这些属性提供连接字符串。 *settingsClassName* 应是程序集限定的类名，其中包含 *settingsMethodName* 指定的方法。<br/><br/>*settingsMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **string**。 此方法返回实际的连接字符串。 |
 | *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *n/a* | 只能通过 web.config 或 AppSettings 指定这些属性。<br/><br/>使用这些属性可以通过提供会话状态/输出缓存的日志以及 StackExchange.Redis 的日志，来调试应用程序。 *loggingClassName* 应是程序集限定的类名，其中包含 *loggingMethodName* 指定的方法。<br/><br/>*loggingMethodName* 指定的方法应是 public、static 和 void（不采用任何参数），其返回类型为 **System.IO.TextWriter**。 |
 | *applicationName* | string | 当前进程的模块名称，或“/” | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>要在 Redis 缓存中使用的应用名称前缀。 客户可以使用相同的 Redis 缓存来实现不同的目的。 为了确保会话密钥不冲突，可以使用应用程序名称作为 Redis 缓存的前缀。 |
-| *throwOnError* | boolean | 是 | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>出错时是否引发异常。<br/><br/>有关 *throwOnError* 的详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [有关 *throwOnError* 的说明](#notes-on-throwonerror)。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
+| *throwOnError* | boolean | 是 | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>出错时是否引发异常。<br/><br/>有关 *throwOnError* 的详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [有关 *throwOnError* 的说明](#notes-on-throwonerror)。 |
 | *retryTimeoutInMilliseconds* | 正整数 | 5000 | 仅限 SessionStateProvider<br/>只能通过 web.config 或 AppSettings 指定此属性。<br/><br/>操作失败时要重试多长时间。 如果此值小于 *operationTimeoutInMilliseconds*，则提供程序不会重试。<br/><br/>有关 *retryTimeoutInMilliseconds* 的详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [有关 *retryTimeoutInMilliseconds* 的说明](#notes-on-retrytimeoutinmilliseconds)。 |
 | *redisSerializerType* | string | *n/a* | 指定某个类的程序集限定类型名称，该类实现 Microsoft.Web.Redis. ISerializer，且包含用于序列化和反序列化值的自定义逻辑。 有关详细信息，请参阅 [属性说明](#attribute-notes)部分中的 [关于 *redisSerializerType*](#about-redisserializertype)。 |
 

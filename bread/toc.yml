@@ -248,6 +248,9 @@
         - name: Azure Maps
           tocHref: /azure/azure-maps/
           topicHref: /azure/azure-maps/
+        - name: Azure 认证设备
+          tocHref: /azure/certification/
+          topicHref: /azure/certification/
     - name: 资源管理器
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
@@ -647,6 +650,8 @@
       tocHref: /azure/networking/
       topicHref: /azure/networking/
       items:
+        - name: 基础
+          tocHref: /azure/networking/fundamentals
         - name: 应用程序网关
           tocHref: /azure/application-gateway/
           topicHref: /azure/application-gateway/

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182013"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077187"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 移动应用程序集成
 
@@ -132,13 +132,11 @@ Workday 应用不支持以下功能：
 
 | 方案 | 键值对 |
 |----------------------------------------------------------------------------------------   |-----------|
-| 自动为以下应用填充“租户”和“Web 地址”字段：<br>● Android 上的 Workday（为工作配置文件启用 Android 时）。<br>● iPad 和 iPhone 上的 Workday。     | 使用以下值来配置租户： <br>● 配置键 = `UserGroupCode`<br>● 值类型 = 字符串 <br>●   配置值 = 租户名称。 示例：`gms`<br>使用以下值来配置 Web 地址：<br>● 配置键 = `AppServiceHost`<br>●   值类型 = 字符串<br>●    配置值 = 租户的基 URL。 示例： `https://www.myworkday.com`                                |   |
+| 自动为以下应用填充“租户”和“Web 地址”字段：<br>● Android 上的 Workday（为工作配置文件启用 Android 时）。<br>● iPad 和 iPhone 上的 Workday。     | 使用以下值来配置租户： <br>● 配置键 = `UserGroupCode`<br>● 值类型 = 字符串 <br>●   配置值 = 租户名称。 示例：`gms`<br>使用以下值来配置 Web 地址：<br>● 配置键 = `AppServiceHost`<br>●   值类型 = 字符串<br>●    配置值 = 租户的基 URL。 示例： `https://www.myworkday.com`                                | 
 | 在 iPad 和 iPhone 上为 Workday 禁用以下操作：<br>●    剪切、复制和粘贴<br>●   打印                       | 在这些键上将值（布尔值）设置为 `False` 以禁用功能：<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | 在 Android 上禁用 Workday 的屏幕截图功能。 |将 `AllowScreenshots` 键上的值（布尔值）设置为 `False` 以禁用功能。|
 | 为用户禁用建议的更新。|将 `AllowSuggestedUpdates` 键上的值（布尔值）设置为 `False` 以禁用功能。|
 |自定义应用商店 URL，以将移动用户定向到所选的应用商店。|使用以下值更改应用商店的 URL：<br>● 配置键 = `AppUpdateURL`<br>● 值类型 = 字符串<br> ●   配置值 = 应用商店 URL|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>iOS 配置策略
 
