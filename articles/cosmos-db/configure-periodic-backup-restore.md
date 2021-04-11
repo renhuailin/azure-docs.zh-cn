@@ -8,10 +8,10 @@ ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102565817"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>为 Azure Cosmos DB 帐户配置定期备份

@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: aaa68dba0bbd1f3f5ffb5480a2bdb0a48ae85656
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
-ms.translationtype: MT
+ms.openlocfilehash: e888b43ea5641f1943a096f045747d547c52fcfa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986050"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609747"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -60,9 +60,9 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 
 **部署** | **支持** | **详细信息**
 --- | --- | ---
-**本地部署** | 物理服务器<br/><br/>Hyper-V VM<br/><br/> VMware VM | 有关更多详细信息，请参阅[保护矩阵](backup-mabs-protection-matrix.md)。 
+**本地部署** | 物理服务器，但不在物理群集中。<br/><br/>Hyper-V VM。 可以在独立虚拟机监控程序或群集上将 MABS 部署为来宾计算机。 不能将它部署在群集或独立虚拟机监控程序的节点上。 Azure 备份服务器设计为在专用的单一用途服务器上运行。<br/><br/> 作为 VMware 环境中的 Windows 虚拟机。 | 本地 MABS 服务器无法保护基于 Azure 的工作负载。 <br><br> 有关详细信息，请参阅[保护矩阵](backup-mabs-protection-matrix.md)。
 **部署为 Azure Stack VM** | 仅限 MABS | 不能使用 DPM 来备份 Azure Stack VM。
-**部署为 Azure VM** | 保护 Azure VM，以及这些 VM 上运行的工作负荷。 | Azure 中运行的 DPM/MABS 无法备份本地计算机。
+**部署为 Azure VM** | 保护 Azure VM，以及这些 VM 上运行的工作负荷。 | Azure 中运行的 DPM/MABS 无法备份本地计算机。 它只能保护在 Azure IaaS VM 中运行的工作负载。
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>支持的 MABS 和 DPM 操作系统
 
@@ -88,6 +88,9 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 **MABS 升级** | 可以直接安装 MABS v3，或者从 MABS v2 升级到 MABS v3。 [了解详细信息](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **移动 MABS** | 如果使用的是 MBS，则支持在保留存储的同时将 MABS 移到新服务器。<br/><br/> 新服务器必须与原始服务器同名。 若要保留相同的存储池，并使用同一个 MABS 数据库来存储数据恢复点，则不能更改服务器名称。<br/><br/> 之所以需要备份 MABS 数据库，是因为需要还原它。
 
+>[!NOTE]
+>不支持重命名 DPM/MABS 服务器。
+
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack 上的 MABS 支持
 
 可以在 Azure Stack VM 上部署 MABS，以便可以从单个位置管理 Azure Stack Vm 和工作负荷的备份。
@@ -111,7 +114,7 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 ### <a name="url-access"></a>URL 访问
 
-DPM 服务器/MABS 服务器需要访问以下 Url 和 IP 地址：
+DPM 服务器/MABS 服务器需要访问以下 URL 和 IP 地址：
 
 * URL
   * `www.msftncsi.com`
@@ -168,11 +171,19 @@ DPM 服务器/MABS 服务器需要访问以下 Url 和 IP 地址：
 |要求 |详细信息 |
 |---------|---------|
 |Domain    | DPM/MABS 服务器应位于 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 和 Windows Server 2012 域中。        |
-|域信任   |  只要在单独的林之间建立了林级别双向信任，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   在具有与 DPM/MABS 服务器域的双向信任关系的林中，DPM/MABS 可以跨域保护服务器和工作站。 若要保护工作组或不受信任域中的计算机，请参阅[备份和还原工作组和不受信任的域中的工作负荷](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。  |
+|域信任   |  只要在单独的林之间建立了林级别双向信任，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   在具有与 DPM/MABS 服务器域的双向信任关系的林中，DPM/MABS 可以跨域保护服务器和工作站。 若要保护工作组或不受信任域中的计算机，请参阅[备份和还原工作组和不受信任的域中的工作负荷](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains)。 <br><br> 要备份 Hyper-V 服务器群集，它们必须位于与 MABS 服务器相同的域中或位于受信任的域或子域中。 可以通过对单台服务器使用 NTLM 或证书身份验证，或是仅对群集使用证书身份验证，来备份不受信任的域或工作负荷中的服务器和群集。  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS 存储支持
 
 备份到 DPM/MABS 的数据存储在本地磁盘存储中。
+
+USB 或可移动驱动器不受支持。
+
+DPM/MABS 卷不支持 NTFS 压缩。
+
+只有在将磁盘添加到存储池之后，才能启用 BitLocker。 在添加 BitLocker 之前不要启用它。
+
+不支持在 DPM 存储池中使用网络连接存储 (NAS)。
 
 **存储** | **详细信息**
 --- | ---
@@ -199,6 +210,38 @@ DPM 服务器/MABS 服务器需要访问以下 Url 和 IP 地址：
 
 - DPM/MABS 备份的群集工作负荷应与 DPM/MABS 位于同一域中，或者在子域/受信任的域中。
 - 可以使用 NTLM/证书身份验证在不受信任的域或工作组中备份数据。
+
+## <a name="deduplicated-volumes-support"></a>删除了重复数据的卷支持
+
+>[!NOTE]
+> 针对 MABS 的重复数据删除支持取决于操作系统支持。
+
+### <a name="for-ntfs-volumes"></a>对于 NTFS 卷
+
+| 受保护服务器的操作系统  | MABS 服务器的操作系统  | MABS 版本  | 重复数据删除支持 |
+| ------------------------------------------ | ------------------------------------- | ------------------ | -------------------- |
+| Windows Server 2019                       | Windows Server 2019                  | MABS v3            | Y                    |
+| Windows Server 2016                       | Windows Server 2019                  | MABS v3            | 是*                   |
+| Windows Server 2012 R2                    | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2012                       | Windows Server 2019                  | MABS v3            | N                    |
+| Windows Server 2019                       | Windows Server 2016                  | MABS v3            | Y**                  |
+| Windows Server 2016                       | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012 R2                    | Windows Server 2016                  | MABS v3            | Y                    |
+| Windows Server 2012                       | Windows Server 2016                  | MABS v3            | Y                    |
+
+- \* 当使用在 WS 2019 上运行的 MABS v3 保护 WS 2016 NTFS 已去重卷时，恢复可能会受到影响。 我们有一个以非去重方式进行恢复的修补程序。 如果 MABS v3 UR1 上需要此修补程序，请联系 MABS 支持。
+- \** 当使用在 WS 2016 上运行的 MABS v3 保护 WS 2019 NTFS 已去重卷时，备份和还原都将为非去重数据。 这意味着备份将比原始 NTFS 已去重卷占用 MABS 服务器上更多的空间。
+
+问题：如果将受保护的服务器操作系统从 Windows Server 2016 升级到 Windows Server 2019，则由于去重逻辑的更改，NTFS 已去重卷的备份会受到影响。
+
+解决方法：如果 MABS v3 UR1 需要此修补程序，请联系 MABS 支持。
+
+### <a name="for-refs-volumes"></a>对于 ReFS 卷
+
+>[!NOTE]
+> 我们发现去重 ReFS 卷的备份存在一些问题。 我们正在努力解决它们；一旦有修补程序可用，我们将立即更新此部分。 在此之前，我们将从 MABS v3 中移除对去重 ReFS 卷的备份的支持。
+>
+> MABS v3 UR1 和更高版本继续支持保护和还原正常 ReFS 卷。
 
 ## <a name="next-steps"></a>后续步骤
 

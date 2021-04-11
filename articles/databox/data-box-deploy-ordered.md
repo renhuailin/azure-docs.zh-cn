@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522387"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067135"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -239,7 +239,7 @@ PS C:\Windows\System32>
 
 6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
 
-    |设置  |“值”  |
+    |设置  |值  |
     |---------|---------|
     |订阅      | 系统会根据前面所做的选择自动填充此订阅。|
     |资源组    | 之前选择的资源组。 |
@@ -790,7 +790,7 @@ PS C:\WINDOWS\system32>
    |resource-group [必填]| 与要删除的订单关联的资源组的名称。 资源组是可以统一管理或部署的资源的逻辑容器。 | "myresourcegroup"|
    |名称[必填]| 要删除的订单的名称。 | "mydataboxorder"|
    |原因[必填]| 取消订单的原因。 | “我输入了错误信息，需要取消订单。” |
-   |是| 不提示确认。 | --yes (-y)| --yes -y |
+   |是| 不提示确认。 | --yes (-y)| 
    |debug| 在详细日志记录中包含调试信息 | --debug |
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
@@ -827,7 +827,7 @@ PS C:\WINDOWS\system32>
    |resource-group [必填]| 与要删除的订单关联的资源组的名称。 资源组是可以统一管理或部署的资源的逻辑容器。 | "myresourcegroup"|
    |名称[必填]| 要删除的订单的名称。 | "mydataboxorder"|
    |订阅| Azure 订阅的名称或 ID (GUID)。 | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
-   |是| 不提示确认。 | --yes (-y)| --yes -y |
+   |是| 不提示确认。 | --yes (-y)|
    |debug| 在详细日志记录中包含调试信息 | --debug |
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |

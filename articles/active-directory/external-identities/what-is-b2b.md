@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 231d3ab81c2376aa8a2a4bf182e1b5e9799e51d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649285"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669774"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作是外部标识的
 
 ## <a name="integrate-with-identity-providers"></a>与标识提供者集成
 
-Azure AD 支持外部标识提供者，如 Facebook、Microsoft 帐户、Google 或企业标识提供者。 可以设置与标识提供者的联合，这样外部用户就能使用现有的社交或企业帐户登录，而不用专门为应用新建一个帐户。 详细了解外部标识的标识提供者。
+Azure AD 支持外部标识提供者，如 Facebook、Microsoft 帐户、Google 或企业标识提供者。 可以设置与标识提供者的联合，这样外部用户就能使用现有的社交或企业帐户登录，而不用专门为应用新建一个帐户。 了解[外部标识的标识提供者](identity-providers.md)的详细信息。
 
 ![显示“标识提供者”页的屏幕截图](media/what-is-b2b/identity-providers.png)
 

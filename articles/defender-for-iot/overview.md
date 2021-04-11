@@ -4,10 +4,10 @@ description: 详细了解 Defender for IoT 功能和服务，并了解 Defender 
 ms.topic: overview
 ms.date: 12/09/2020
 ms.openlocfilehash: 15772ee21587ed2bc010e31174af6daac71dfc12
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786832"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>欢迎使用 Azure Defender for IoT

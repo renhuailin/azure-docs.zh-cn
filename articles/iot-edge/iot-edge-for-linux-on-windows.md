@@ -10,20 +10,22 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 9d6bb9da67f66f46e5c72d5d64b8b6c111c98e08
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103492568"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>什么是 Azure IoT Edge for Linux on Windows（预览版）
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge for Linux on Windows 允许你在 Windows IoT 部署中将容器化 Linux 工作负荷与 Windows 应用程序一起运行。 依赖 Windows IoT 为其边缘设备提供支持的企业现在可以利用在 Linux 中构建的云原生分析解决方案。
 
 IoT Edge for Linux on Windows 的工作方式是在 Windows 设备上运行 Linux 虚拟机。 Linux 虚拟机预先安装了 IoT Edge 运行时。 部署到该设备的任何 IoT Edge 模块都在虚拟机中运行。 同时，Windows 主机设备上运行的 Windows 应用程序可以与 Linux 虚拟机中运行的模块进行通信。
 
-立即[开始](how-to-install-iot-edge-on-windows.md)预览。
+立即[开始使用](how-to-install-iot-edge-on-windows.md)预览版。
 
 >[!NOTE]
 >请考虑参加我们的[产品调查](https://aka.ms/AzEFLOW-Registration)，帮助我们根据你的 IoT Edge 背景和目标来改进 Azure IoT Edge for Linux on Windows。 你还可以使用此调查注册获取将来的 Azure IoT Edge for Linux on Windows 公告。
@@ -52,13 +54,11 @@ IoT Edge for Linux on Windows 着重于 Linux 和 Windows 组件之间的互操�
 
 IoT Edge for Linux on Windows 目前为[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 安装和管理过程可能不同于正式版功能的相应过程。
 
-目前，IoT Edge for Linux on Windows 使用 Windows Admin Center 的 Windows 预览体验成员预览版。 若要详细了解 Windows 预览体验成员计划以及注册方法，请参阅[什么是 Windows 预览体验成员计划？](https://insider.windows.com/about-windows-insider-program)。
-
 ## <a name="support"></a>支持
 
 使用 IoT Edge 支持和反馈通道，获取有关 IoT Edge for Linux on Windows 的帮助。
 
-**报告 bug** –可在 IoT Edge 开源项目的 " [问题" 页](https://github.com/azure/iotedge/issues) 上报告 bug。 
+**报告 bug** - 可以在 IoT Edge 开源项目的[问题页](https://github.com/azure/iotedge/issues)上报告 bug。 与 Azure IoT Edge for Linux on Windows 相关的 bug 可以在 [iotedge-eflow 问题页](https://github.com/azure/iotedge-eflow/issues)上报告。
 
 **Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 

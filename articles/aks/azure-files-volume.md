@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文�
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: MT
+ms.openlocfilehash: 4e009c5de2e24c1b0bd94fb4c11b0c52a3bc378d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246955"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102609067"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -18,7 +18,7 @@ ms.locfileid: "98246955"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -67,7 +67,8 @@ Kubernetes 需要使用凭据访问上一步骤中创建的文件共享。 这�
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
-## <a name="mount-the-file-share-as-a-volume"></a>将文件共享装载为卷
+## <a name="mount-file-share-as-an-inline-volume"></a>装载文件共享作为内联卷
+> 注意：从 1.18.15、1.19.7、1.20.2、1.21.0 开始，内联 `azureFile` 卷中的机密命名空间只能设置为 `default` 命名空间，以指定不同的机密命名空间，请改用下面的永久卷示例。
 
 若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
@@ -131,9 +132,10 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>装载选项
+## <a name="mount-file-share-as-an-persistent-volume"></a>将文件共享装载为永久性卷
+ - 装载选项
 
-对于 Kubernetes 版本 1.9.1 及更高版本，fileMode 和 dirMode 的默认值为 0755。 如果使用 Kubernetes 版本为 1.8.5 或更高版本的群集并静态创建永久性卷对象，则需要在 PersistentVolume 对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 1.15 及更高版本，fileMode 和 dirMode 的默认值为 0777。 下面的示例在 PersistentVolume 对象上设置 0755：
 
 ```yaml
 apiVersion: v1
@@ -147,18 +149,17 @@ spec:
     - ReadWriteMany
   azureFile:
     secretName: azure-secret
+    secretNamespace: default
     shareName: aksshare
     readOnly: false
   mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
+  - dir_mode=0755
+  - file_mode=0755
   - uid=1000
   - gid=1000
   - mfsymlinks
   - nobrl
 ```
-
-如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 *runAsUser* 值设置为 *0*。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
 
 若要更新装载选项，请创建包含 PersistentVolume 的 azurefile-mount-options-pv.yaml 文件。 例如：
 

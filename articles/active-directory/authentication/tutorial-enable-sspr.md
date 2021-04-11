@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198483"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887761"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -134,10 +134,26 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 
 如果你不再想要使用本教程中配置的 SSPR 功能，请使用以下步骤将 SSPR 状态设置为“无”：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，然后从左侧菜单中选择“密码重置”。
 1. 在“属性”页中的“已启用自助式密码重置”选项下，选择“无”。
 1. 若要应用 SSPR 更改，请选择“保存”。
+
+## <a name="faqs"></a>常见问题
+
+本部分介绍管理员和最终用户尝试 SSPR 的常见问题：
+
+- 为什么联合用户在看到 **已重置你的密码** 之后最多等待 2 分钟后，才可以使用从本地同步的密码？
+
+  对于已同步其密码的联合用户，密码的颁发机构来源为本地。 因此，SSPR 仅更新本地密码。 每 2 分钟计划一次密码哈希同步回 Azure AD。
+
+- 预先填充 SSPR 数据（如电话和电子邮件）的新建用户访问 SSPR 注册页时，**不要失去对帐户的访问权限！** 显示为页面的标题。 为什么预先填充 SSPR 数据的其他用户看不到该消息？
+
+  看到此消息的用户 **不要失去对帐户的访问权限！** 是为租户配置的 SSPR/合并注册组的成员。 看不到此消息的用户 **不要失去对帐户的访问权限！** 不是 SSPR/合并注册组的一部分。
+
+- 当某些用户进行 SSPR 过程并重置其密码时，为什么看不到密码强度指示器？
+
+  看不到弱/强密码强度的用户已启用同步密码写回。 由于 SSPR 无法确定客户本地环境的密码策略，因此无法验证密码强弱。 
 
 ## <a name="next-steps"></a>后续步骤
 

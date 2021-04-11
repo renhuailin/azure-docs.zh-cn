@@ -5,19 +5,19 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197828"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103492755"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-全局参数是整个数据工厂的常量，可以由任何表达式中的管道使用。 当多个管道具有相同的参数名称和值时，这些全局参数会很有用。 使用持续集成和部署过程 (CI/CD) 提升数据工厂时，可以在每个环境中重写这些参数。 
+全局参数是整个数据工厂的常量，可以由任何表达式中的管道使用。 当多个管道具有相同的参数名称和值时，这些全局参数会很有用。 使用持续集成和部署过程 (CI/CD) 提升数据工厂时，可以在每个环境中替代这些参数。 
 
 ## <a name="creating-global-parameters"></a>创建全局参数
 
@@ -35,44 +35,47 @@ ms.locfileid: "102197828"
 
 ## <a name="using-global-parameters-in-a-pipeline"></a>在管道中使用全局参数
 
-全局参数可用于任何[管道表达式](control-flow-expression-language-functions.md)。 如果管道引用其他资源（如数据集或数据流），则可以通过该资源的参数向下传递全局参数值。 全局参数以 `pipeline().globalParameters.<parameterName>` 形式进行引用。
+全局参数可用于任何[管道表达式](control-flow-expression-language-functions.md)。 如果某个管道正在引用其他资源（如数据集或数据流），则可以通过该资源的参数向下传递全局参数值。 全局参数以 `pipeline().globalParameters.<parameterName>` 形式进行引用。
 
 ![使用全局参数](media/author-global-parameters/expression-global-parameters.png)
 
 ## <a name="global-parameters-in-cicd"></a><a name="cicd"></a> CI/CD 中的全局参数
 
-可以通过两种方法在持续集成和部署解决方案中集成全局参数：
+可以通过两种方式在持续集成和部署解决方案中集成全局参数：
 
 * 在 ARM 模板中包含全局参数
 * 通过 PowerShell 脚本部署全局参数
 
-对于大多数用例，建议在 ARM 模板中包含全局参数。 这将与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案进行本机集成。默认情况下，全局参数将作为 ARM 模板参数添加到环境中。 你可以从 **管理** 中心启用 ARM 模板中的全局参数。
+对于大多数用例，建议在 ARM 模板中包含全局参数。 这会原生与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案集成。默认情况下，全局参数将作为 ARM 模板参数添加，因为它们经常根据不同的环境而变化。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
 
 > [!NOTE]
-> **ARM 模板** 配置中包含的仅在 "Git 模式" 下提供。 当前它在 "实时模式" 或 "数据工厂" 模式下处于禁用状态。
+> 只能在“Git 模式”下使用“包含在 ARM 模板中”配置。 目前，在“实时模式”或“数据工厂”模式下会禁用此配置。 
 
-![在 ARM 模板中包含](media/author-global-parameters/include-arm-template.png)
+> [!WARNING]
+>不能在参数名称中使用“-”。 否则将收到错误代码 "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}"。 但可以在参数名称中使用“_”。
 
-将全局参数添加到 ARM 模板会添加一个工厂级别设置，该设置将覆盖其他工厂级别设置，如其他环境中的客户托管密钥或 git 配置。 如果在提升的环境（如 UAT 或生产）中启用了这些设置，则最好在下面突出显示的步骤中通过 PowerShell 脚本部署全局参数。
+![包含在 ARM 模板中](media/author-global-parameters/include-arm-template.png)
+
+将全局参数添加到 ARM 模板会添加一个工厂级设置，该设置将替代其他工厂级设置，例如客户管理的密钥，或其他环境中的 Git 配置。 如果在提升的环境（如 UAT 或 PROD）中启用这些设置，则最好在下面突出显示的步骤中通过 PowerShell 脚本部署全局参数。
 
 ### <a name="deploying-using-powershell"></a>使用 PowerShell 进行部署
 
-以下步骤概述了如何通过 PowerShell 部署全局参数。 当目标工厂具有工厂级别的设置（如客户托管的密钥）时，这非常有用。
+以下步骤概述如何通过 PowerShell 部署全局参数。 当目标工厂具有工厂级设置（如客户管理的密钥）时，此方法非常有用。
 
-发布工厂或导出带有全局参数的 ARM 模板时，会创建一个名为 " *globalParameters* " 的文件夹，其中包含一个名为 *"your-factory-name_GlobalParameters.js"* 的文件。 此文件是一个 JSON 对象，其中包含已发布工厂中的每个全局参数类型和值。
+发布工厂或导出包含全局参数的 ARM 模板时，会创建一个名为 *globalParameters* 的文件夹，其中包含名为 *your-factory-name_GlobalParameters.json* 的文件。 此文件是一个 JSON 对象，其中包含已发布的工厂中的每个全局参数类型和值。
 
 ![发布全局参数](media/author-global-parameters/global-parameters-adf-publish.png)
 
-如果要部署到新的环境（如测试或生产），则建议创建此全局参数文件的副本，并覆盖相应的特定于环境的值。 重新发布原始全局参数文件时，将会覆盖该文件，但其他环境的副本将保持不变。
+如果要部署到新的环境（如 TEST 或 PROD），则建议创建此全局参数文件的副本，并覆盖相应的特定于环境的值。 重新发布时，将覆盖原始全局参数文件，但用于其他环境的副本将保持不变。
 
-例如，如果你有一个名为 "ADF-DEV" 的工厂，并且有一个名为 "环境" 且值为 "DEV" 的类型字符串的全局参数，则当你发布时，将生成一个名为 *ADF-DEV_GlobalParameters.js* 的文件。 如果部署到名为 "ADF_TEST" 的测试工厂，请创建 JSON 文件的副本 (例如，在) 上命名为 ADF-TEST_GlobalParameters.js，并将参数值替换为特定于环境的值。 参数 "环境" 现在可能具有值 "test"。 
+例如，如果你有一个名为“ADF-DEV”的工厂，以及一个名为“environment”、值为“dev”的字符串类型的全局参数，则在发布时，将生成名为 *ADF-DEV_GlobalParameters.json* 的文件。 如果部署到名为“ADF_TEST”的测试工厂，请创建 JSON 文件（例如，名为 ADF-TEST_GlobalParameters.json 的文件）的副本，并将参数值替换为特定于环境的值。 参数“environment”现在可能具有值“test”。 
 
 ![部署全局参数](media/author-global-parameters/powershell-task.png)
 
-使用以下 PowerShell 脚本将全局参数提升到其他环境。 在 ARM 模板部署之前添加 Azure PowerShell DevOps 任务。 在 DevOps 任务中，必须指定新参数文件、目标资源组和目标数据工厂的位置。
+使用以下 PowerShell 脚本将全局参数提升到其他环境。 在进行 ARM 模板部署之前添加一个 Azure PowerShell DevOps 任务。 在该 DevOps 任务中，必须指定新参数文件、目标资源组和目标数据工厂的位置。
 
 > [!NOTE]
-> 若要使用 PowerShell 部署全局参数，必须至少使用 Az module 的4.4.0 版本。
+> 若要使用 PowerShell 部署全局参数，必须至少使用 Az 模块版本 4.4.0。
 
 ```powershell
 param
@@ -108,5 +111,5 @@ Set-AzDataFactoryV2 -InputObject $dataFactory -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Azure 数据工厂的 [持续集成和部署过程](continuous-integration-deployment.md)
+* 了解 Azure 数据工厂的[持续集成和部署过程](continuous-integration-deployment.md)
 * 了解如何使用[控制流表达式语言](control-flow-expression-language-functions.md)

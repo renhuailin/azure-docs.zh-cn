@@ -1,17 +1,17 @@
 ---
 title: 监视 - Azure Database for MySQL - 灵活服务器
 description: 本文介绍了用于对 Azure Database for MySQL 灵活服务器进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: c2883a2ddba9a322c09a318aa9f232de5f4704b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100595154"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110468"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>利用内置的指标监视 Azure Database for MySQL 灵活服务器
 

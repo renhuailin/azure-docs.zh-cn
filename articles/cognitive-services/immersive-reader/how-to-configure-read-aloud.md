@@ -1,28 +1,28 @@
 ---
 title: 配置大声朗读
 titleSuffix: Azure Cognitive Services
-description: 本文将向您介绍如何配置各种选项，以便大声读出。
+description: 本文将向你介绍如何配置各种选项以进行大声朗读。
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
 ms.subservice: immersive-reader
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: metang
-ms.openlocfilehash: 648227521e5e4e8feecd864d3e572a4758e551ca
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
-ms.translationtype: MT
+ms.openlocfilehash: 8b45fe07b4bd42059199197bc5b99f20f6b2a8cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608710"
 ---
 # <a name="how-to-configure-read-aloud"></a>如何配置大声朗读
 
-本文演示了如何在沉浸式阅读器中配置各种选项来朗读。
+本文演示如何在沉浸式阅读器中配置各种选项以进行大声朗读。
 
-## <a name="automatically-start-read-aloud"></a>自动开始朗读
+## <a name="automatically-start-read-aloud"></a>自动开始大声朗读
 
-`options`参数包含可用于配置大声朗读的所有标志。 设置 `autoplay` 为 `true` 可在启动沉浸式阅读器后自动开始朗读。
+`options` 参数包含可用于配置大声朗读的所有标志。 将 `autoplay` 设置为 `true` 以在启动沉浸式阅读器后自动开始大声朗读。
 
 ```typescript
 const options = {
@@ -35,11 +35,11 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 ```
 
 > [!NOTE]
-> 由于浏览器限制，不支持在 Safari 中播放自动播放。
+> 由于浏览器限制，Safari 中不支持自动播放。
 
 ## <a name="configure-the-voice"></a>配置语音
 
-设置 `voice` 为 `male` 或 `female` 。 并非所有语言都支持这两种语音。 有关详细信息，请参阅 [语言支持](./language-support.md) 页。
+将 `voice` 设置为 `male` 或 `female`。 并非所有语言都支持这两种语音。 有关详细信息，请参阅[语言支持](./language-support.md)页。
 
 ```typescript
 const options = {
@@ -51,7 +51,7 @@ const options = {
 
 ## <a name="configure-playback-speed"></a>配置播放速度
 
-设置 `speed` 为介于 `0.5` (50% ) 和 `2.5` (250% ) （含）之间的数字。 此范围外的值将限制为0.5 或2.5。
+将 `speed` 设置为介于 `0.5` (50%) 和 `2.5` (250%)（含限值）之间的数字。 超出此范围的值将限制为 0.5 或 2.5。
 
 ```typescript
 const options = {
