@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179259"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770965"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
 
-技能组是一项基于 AI 的功能，它使用深度学习模型从大型的无差别文本或图像文件提取信息和结构，使内容可编制索引并可在 Azure 认知搜索中搜索。 
+本快速入门演示了门户中的技能组合支持，介绍如何使用光学字符识别（OCR）和实体识别从图像和应用程序文件创建可搜索的文本内容。
 
-在本快速入门中，你将合并 Azure 云中的服务和数据以创建技能集。 一切准备就绪后，可在 Azure 门户中运行“导入数据”向导，以将这些数据提取到一起。 最终结果是一个可在门户（[搜索资源管理器](search-explorer.md)）中查询的可搜索索引，其中填充了 AI 处理功能创建的数据。
+为了做好准备，要创建几个资源，并上传示例图像和应用程序内容文件。 一切准备就绪后，可在 Azure 门户中运行“导入数据”向导，以将这些数据提取到一起。 最终结果是一个可在门户（[搜索资源管理器](search-explorer.md)）中查询的可搜索索引，其中填充了 AI 处理功能创建的数据。
+
+想要从代码开始吗？ 请参阅[教程：使用 REST 和 AI 从 Azure blob 生成可搜索的内容](cognitive-search-tutorial-blob.md)或[教程：使用 .NET 和 AI 从 Azure blob 生成可搜索的内容](cognitive-search-tutorial-blob-dotnet.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +46,7 @@ ms.locfileid: "98179259"
 
    + 选择 Azure 认知搜索所在的同一区域，以避免带宽费用。 
 
-   + 如果你希望以后在另一篇演练中试用知识存储功能，请选择 StorageV2（常规用途 V2）帐户类型。 否则请选择任意类型。
+   + 选择StorageV2（常规用途 V2）。
 
 1. 打开 Blob 服务页并创建一个容器。 可以使用默认的公共访问级别。 
 

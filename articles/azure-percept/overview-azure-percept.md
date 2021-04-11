@@ -1,18 +1,18 @@
 ---
 title: Azure Percept 概述
 description: 了解 Azure Percept 平台的详细信息
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953580"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567655"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept 简介
 
@@ -28,21 +28,21 @@ Azure Percept 是一系列硬件、软件和服务，旨在使用 IoT 和 AI 在
 
 Azure Percept 的主要组件包括：
 
-1. [Azure Percept DK。](./overview-azure-percept-dk.md)
+- [Azure Percept DK。](./overview-azure-percept-dk.md)
 
     - 一种足够灵活的开发工具包，可支持面向设备构建者、解决方案构建者和客户的多种原型制作方案。
 
         > [!div class="nextstepaction"]
         > [立即购买](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-1. 可加速边缘 AI 模型和解决方案开发的服务和工作流。
+- 可加速边缘 AI 模型和解决方案开发的服务和工作流。
 
     - 可从 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 访问的开发工作流和预生成模型。
     - 模型开发服务。
     - 可缩放的设备管理服务。
     - 端对端安全。
 
-1. AI 硬件参考设计和认证计划。
+- AI 硬件参考设计和认证计划。
 
     - 为硬件开发人员的生态系统提供模式和最佳做法，以开发可轻松与 Azure AI 和 IoT 服务集成的边缘 AI 硬件。
 

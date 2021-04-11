@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209554"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951736"
 ---
 # <a name="managed-hsm-role-management"></a>托管 HSM 角色管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "102209554"
 若要使用本文中的 Azure CLI 命令，必须准备好以下各项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* Azure CLI 版本 2.21.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 * 订阅中的托管 HSM。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>创建新的角色定义
+
+托管 HSM 具有几个内置（预定义）角色，适用于大多数常见使用方案。 您可以定义自己的角色，其中包含允许角色执行的特定操作的列表。 然后，您可以将此角色分配给主体，以向其授予对指定操作的权限。 
+
+对使用 JSON 字符串的名为 **我的自定义角色** 的角色使用 `az keyvault role definition create` 命令。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+对名为 **my-custom-role-definition.jso** 的文件中的角色使用 `az keyvault role definition create` 命令，文件中含有角色定义的 JASON 字符串。 请参看上述示例。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>显示角色定义的详细信息
+
+使用 `az keyvault role definition show` 命令查看使用名称 (GUID) 的特定角色定义的详细信息。
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>更新自定义角色定义
+
+使用 `az keyvault role definition update` 命令来更新使用 JSON 字符串的名为 **我的自定义角色** 的角色。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>删除自定义角色定义
+
+使用 `az keyvault role definition delete` 命令查看使用名称 (GUID) 的特定角色定义的详细信息。 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> 无法删除内置角色。 删除自定义角色后，所有使用该自定义角色的角色分配都将失效。
+
 
 ## <a name="next-steps"></a>后续步骤
 

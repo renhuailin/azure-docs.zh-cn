@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 947a958b7cce6909332ebdb1832be168bfdd0bde
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018949"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801802"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "98018949"
     * 不具有 Azure 有效订阅：
         * [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，为期 30 天的测试环境。
         * [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator) 
-- [Python 2.7 或 3.5.3+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
+- [Python 2.7 或 3.6+](https://www.python.org/downloads/)，以及 `PATH` 中的 `python` 可执行文件。
 - [Visual Studio Code](https://code.visualstudio.com/)。
 - [适用于 Visual Studio Code 的 Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
 - [Git](https://www.git-scm.com/downloads)。 

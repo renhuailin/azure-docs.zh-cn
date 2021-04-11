@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 6cbfa01788f1897264b4197798aa5879cf724db3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98745711"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770948"
 ---
-# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
+# <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 .NET 和 AI 从 Azure Blob 生成可搜索的内容
 
 如果在 Azure Blob 存储中有非结构化文本或图像，则可使用 [AI 扩充管道](cognitive-search-concept-intro.md)提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 
 

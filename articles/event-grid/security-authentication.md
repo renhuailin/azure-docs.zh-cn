@@ -3,12 +3,12 @@ title: 对目标为事件处理程序的事件传递进行身份验证（Azure �
 description: 本文介绍在 Azure 事件网格中通过不同方式对目标为事件处理程序的传递进行身份验证。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 98d7a4a0dee6c355ec340668bef7d8b306f97496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7a105c36b7c924e35c295edc43107353d738d5b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98633114"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968129"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
 本文介绍如何对目标为事件处理程序的事件传递进行身份验证。 本文还介绍如何使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
@@ -40,7 +40,7 @@ ms.locfileid: "98633114"
 若要详细了解如何将事件传递到 Webhook，请参阅 [Webhook 事件传递](webhook-event-delivery.md)
 
 > [!IMPORTANT]
-Azure 事件网格只支持 HTTPS Webhook 终结点。 
+> Azure 事件网格只支持 HTTPS Webhook 终结点。 
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 验证终结点
 如果熟悉事件网格，你可能会了解用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用防护语义](webhook-event-delivery.md)。 若要了解有关详细信息，请参阅[适用于事件传递的 HTTP 1.1 Webhook - 版本 1.0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)。 使用 CloudEvents 架构进行输出时，事件网格将使用 CloudEvents v1.0 滥用防护取代事件网格验证事件机制。 有关详细信息，请参阅[将 CloudEvents v1.0 架构与事件网格配合使用](cloudevents-schema.md)。 

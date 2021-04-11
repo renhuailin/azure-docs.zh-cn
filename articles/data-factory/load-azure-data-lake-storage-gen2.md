@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 4e2bbe6f0c3b9ff1ffd913365ce21e534208123b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 075778e2650d3b1f67447078eb6cb130849bbb35
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699719"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593725"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据加载到 Azure Data Lake Storage Gen2 中
 
@@ -53,7 +53,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
-   ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 
    选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序。
 

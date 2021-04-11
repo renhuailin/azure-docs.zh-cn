@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2922e9620f558e072cfc1264f7e661efd11a90fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf236396f080af9676f211c42178ddda6a794420
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437002"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568335"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>通过模板在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -110,7 +110,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> 只有本地冗余存储（Standard_LRS 或 Premium_LRS）等本地存储帐户可以通过 Azure 资源管理器进行创建。 若要创建分层存储帐户，请参阅[在 Azure Stack Edge Pro 上添加、连接存储帐户](azure-stack-edge-j-series-deploy-add-storage-accounts.md)中的步骤。
+> 只有本地冗余存储（Standard_LRS 或 Premium_LRS）等本地存储帐户可以通过 Azure 资源管理器进行创建。 若要创建分层存储帐户，请参阅[在 Azure Stack Edge Pro 上添加、连接存储帐户](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)中的步骤。
 
 下面显示了示例输出。
 

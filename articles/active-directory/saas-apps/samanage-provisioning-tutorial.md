@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181471"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802295"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>教程：为 SolarWinds Service Desk（以前称为 Samanage）配置自动用户预配
 
@@ -58,7 +58,10 @@ ms.locfileid: "96181471"
 * 具有专业版包的 [SolarWinds Service Desk 租户](https://www.samanage.com/pricing/)。
 * SolarWinds Service Desk 中具有管理员权限的用户帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+> [!Note]
+> 导入角色时，不应在 Azure Active Directory 中手动编辑角色。
+
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 SolarWinds Service Desk 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
@@ -69,11 +72,11 @@ ms.locfileid: "96181471"
 
 ## <a name="step-3-add-solarwinds-service-desk-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 SolarWinds Service Desk
 
-从 Azure AD 应用程序库添加 SolarWinds Service Desk，开始管理到 SolarWinds Service Desk 的预配。 如果以前为 SSO 设置过 SolarWinds Service Desk，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 SolarWinds Service Desk，开始管理到 SolarWinds Service Desk 的预配。 如果以前为 SSO 设置过 SolarWinds Service Desk，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
 * 将用户和组分配到 SolarWinds Service Desk 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 

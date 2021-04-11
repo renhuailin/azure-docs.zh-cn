@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: 读者, 语言学习者, 显示图片, 提高阅读能力, 阅读内容, 翻译
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631233"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801564"
 ---
 # <a name="what-is-immersive-reader"></a>什么是沉浸式阅读器？
 
 [沉浸式阅读器](https://www.onenote.com/learningtools)是一款经过广泛设计的工具，它实现了可靠的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 通过沉浸式阅读器客户端库，你可利用 Microsoft Word 和 Microsoft OneNote 中所用的相同技术来改进 Web 应用程序。 
+
+本文档包含以下类型的文章：  
+
+* **[快速入门](quickstarts/client-libraries.md)** 介绍了入门说明，指导您完成向服务发出请求。
+* **[操作指南](how-to-create-immersive-reader.md)** 包含以更具体的方式或自定义方式使用服务的说明。
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>使用沉浸式阅读器提升阅读辅助功能 
 
@@ -72,10 +77,3 @@ ms.locfileid: "92631233"
 可在 C#、JavaScript、Java (Android)、Kotlin (Android) 和 Swift (iOS) 中使用沉浸式阅读器客户端库。 通过以下方式入门：
 
 * [快速入门：使用沉浸式阅读器客户端库](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>后续步骤
-
-开始使用沉浸式阅读器：
-
-* 阅读[沉浸式阅读器客户端库参考](./reference.md)
-* 了解 [GitHub 上的沉浸式阅读器客户端库](https://github.com/microsoft/immersive-reader-sdk)

@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501084"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044137"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>复制和移动“自定义视觉”项目
 
@@ -31,7 +31,7 @@ ms.locfileid: "102501084"
 - 两个 Azure“自定义视觉”资源。 如果你没有这些资源，请转到 Azure 门户并[创建一个新的“自定义视觉”资源](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。
 - “自定义视觉”资源的训练密钥和终结点 URL。 可以在 Azure 门户上资源的“概述”选项卡中找到这些值。
 - 一个已创建的“自定义视觉”项目。 有关如何执行此操作的说明，请参阅[生成分类器](./getting-started-build-a-classifier.md)。
-* [PowerShell 6.0 或更高版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)，或者类似的命令行实用工具。
+* [PowerShell 6.0 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)，或者类似的命令行实用工具。
 
 ## <a name="process-overview"></a>过程概述
 

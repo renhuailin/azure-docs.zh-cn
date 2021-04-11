@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用适用于 .NET 的 Azure 存储 v11 来管理队列
 description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库创建队列并在其中添加消息。 接下来，介绍如何在队列中读取和处理消息。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10ab1c487095fe1587a3c665d8a06e0d5cbab7e0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588193"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275883"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列
 

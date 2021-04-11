@@ -1,14 +1,14 @@
 ---
 title: 高级查询示例
 description: 使用 Azure Resource Graph 运行一些高级查询，包括使用列、列出使用的标记以及使用正则表达式匹配资源。
-ms.date: 01/27/2021
+ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5a87d63e597622ae5c0d8c8f48bc37281d4fd530
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560343"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104949849"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 
@@ -28,7 +28,6 @@ ms.locfileid: "99560343"
 - [列出虚拟机上安装的所有扩展](#join-vmextension)
 - [在资源组中查找具有特定标记的存储帐户](#join-findstoragetag)
 - [将两个查询的结果合并为单个结果](#unionresults)
-- [使用 DisplayNames 包括租户和订阅名称](#displaynames)
 - [按电源状态扩展属性汇总虚拟机](#vm-powerstate)
 - [不合规来宾配置分配计数](#count-gcnoncompliant)
 - [查询来宾配置分配报表的详细信息](#query-gcreports)
@@ -559,26 +558,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com</a>
 - Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.us</a>
 - Azure 中国世纪互联门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn</a>
-
----
-
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>使用 DisplayNames 包括租户和订阅名称
-
-此查询使用 Include 参数和选项 DisplayNames 将 subscriptionDisplayName 和 tenantDisplayName 添加到结果中 。 此参数仅可用于 Azure CLI 和 Azure PowerShell。
-
-```azurecli-interactive
-az graph query -q "limit 1" --include displayNames
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "limit 1" -Include DisplayNames
-```
-
-获取订阅名称的替代方法是使用 `join` 运算符并连接到 **ResourceContainers** 表和 `Microsoft.Resources/subscriptions` 类型。 `join` 在 Azure CLI、Azure PowerShell、门户和所有受支持的 SDK 中都可以工作。 有关示例，请参阅[示例 - 带订阅名称的密钥保管库](#join)。
-
-> [!NOTE]
-> 如果查询未使用 **project** 指定返回的属性，则 **subscriptionDisplayName** 和 **tenantDisplayName** 将自动包括在结果中。
-> 如果查询确实使用了 **project**，则每个 _DisplayName_ 字段必须显式包含在 **project** 中，否则它们将不会在结果中返回，即使使用了 **Include** 参数也是如此。 **Include** 参数对 [表](../concepts/query-language.md#resource-graph-tables)不起作用。
 
 ---
 

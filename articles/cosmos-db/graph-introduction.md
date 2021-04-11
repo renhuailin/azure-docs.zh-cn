@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/22/2021
 ms.author: chrande
-ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547269"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801683"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 简介
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,11 +26,14 @@ ms.locfileid: "100547269"
 Azure Cosmos DB 的 Gremlin API 将强大的图形数据库算法与高度可扩展的托管基础结构相结合，为缺乏灵活性和关系型方法的大多数常见数据问题提供独特、灵活的解决方案。
 
 > [!NOTE]
-> [无服务器容量模式](serverless.md)现在在 Azure Cosmos DB 的 Gremlin API 上可用。
+> Azure Cosmos DB Graph 引擎紧密遵循 Apache TinkerPop 规范。 但是，特定于 Azure Cosmos DB 的实现详细信息有一些差异。 Apache TinkerPop 支持的某些功能在 Azure Cosmos DB 中不可用，若要了解有关不支持的功能的详细信息，请参阅 [Apache TinkerPop 的兼容性](gremlin-support.md)文章。
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB 的 Gremlin API 的功能
- 
+
 Azure Cosmos DB 是一个完全托管的图形数据库，提供全局分发、存储和吞吐量弹性缩放、自动索引编制与查询、可优化的一致性级别，并支持 TinkerPop 标准。
+
+> [!NOTE]
+> [无服务器容量模式](serverless.md)现在在 Azure Cosmos DB 的 Gremlin API 上可用。
 
 以下是 Azure Cosmos DB Gremlin API 提供的差异化功能：
 

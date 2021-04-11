@@ -4,12 +4,12 @@ description: 了解刚才在 Visual Studio 中创建的应用程序项目。  �
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97760429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044373"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
 已创建 Azure Service Fabric 应用程序。 本文包含许多资源、你可能感兴趣的更多信息以及可能的[后续步骤](#next-steps)。
@@ -59,7 +59,7 @@ Service Fabric 应用程序由不同的服务组成，其中每个服务执行�
 与其他平台一样，Service Fabric 应用程序通常将经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 [本文](service-fabric-application-lifecycle.md)提供了有关 API 的概述，并且介绍了在 Service Fabric 应用程序生命周期的各个阶段，它们如何被不同角色所使用。
 
 ## <a name="learn-about-best-practices"></a>了解最佳做法
-Service Fabric 有许多介绍[最佳做法](./service-fabric-best-practices-overview.md)的文章。 利用此信息来帮助确保群集和应用程序尽可能正常地运行。
+Service Fabric 有许多介绍[最佳做法](./service-fabric-best-practices-security.md)的文章。 利用此信息来帮助确保群集和应用程序尽可能正常地运行。
 涵盖的主题包括：
 * [安全性](./service-fabric-best-practices-security.md)
 * [网络](./service-fabric-best-practices-networking.md)

@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b83905280faf4486d2febfbd81514e1d85273ad5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216490"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950750"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
 > [!IMPORTANT]
-> 机密存储 CSI 驱动程序是一个开源项目，Azure 技术支持部门不为其提供支持。 请通过页面底部的 github 链接报告关于 CSI 驱动程序 Key Vault 集成的所有反馈和问题。 此工具可供用户自行安装到群集中并从我们的社区收集反馈。
+> 机密存储 CSI 驱动程序是一个开源项目，Azure 技术支持部门不为其提供支持。 请在 CSI 驱动程序 [github](https://github.com/kubernetes-sigs/secrets-store-csi-driver) 上报告关于 CSI 驱动程序 Key Vault 集成的所有反馈和问题。 此工具可供用户自行安装到群集中并从我们的社区收集反馈。
 
-在本教程中，你将使用机密存储容器存储接口 (CSI) 驱动程序从 Azure 密钥保管库访问和检索机密，以便将机密装载到 Kubernetes Pod。
+在本教程中，您将使用机密存储容器存储接口 (CSI) 驱动程序从 Azure 密钥保管库访问和检索机密，以便将机密以卷的形式装载到 Kubernetes Pod。
 
 在本教程中，你将了解如何执行以下操作：
 

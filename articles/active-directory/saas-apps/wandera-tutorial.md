@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181384"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951787"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>教程：将 Wandera RADAR Admin 与 Azure Active Directory 集成
 
@@ -73,7 +73,7 @@ ms.locfileid: "96181384"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Wandera RADAR Admin”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -82,7 +82,8 @@ ms.locfileid: "96181384"
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://radar.wandera.com/saml/acs/<tenant id>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Wandera RADAR Admin客户端支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Wandera RADAR Admin客户端支持团队](https://www.wandera.com/about-wandera/contact/#supportsection)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。 小心将上面 URL 的 <tenant id> 部分替换为 Wandera 帐户内 **设置** > **管理** > **单一登录** 页中显示的租户 ID。
+
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 

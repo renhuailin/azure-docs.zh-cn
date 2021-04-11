@@ -1,7 +1,7 @@
 ---
 title: 自定义应用 SAML 令牌声明
 titleSuffix: Microsoft identity platform
-description: 了解如何自定义 Microsoft 标识平台在企业应用程序的 SAML 令牌中颁发的声明。
+description: 了解如何为企业应用程序自定义 SAML 令牌中由 Microsoft 标识平台颁发的声明。
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 05447f41ca891adfe14533a74dfedf153e3c5773
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102693"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103600941"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
-如今，Microsoft 标识平台支持与大多数企业应用程序 (SSO) 的单一登录，包括 Azure AD 应用库中预先集成的应用程序以及自定义应用程序。 当用户使用 SAML 2.0 协议通过 Microsoft 标识平台向应用程序进行身份验证时，Microsoft 标识平台通过 HTTP POST) 将令牌发送到应用程序 (。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户已知的“声明”的信息片段。
+目前，Microsoft 标识平台支持使用大多数企业应用程序（包括 Azure AD 应用库中预集成的两个应用程序以及自定义应用程序）进行单一登录 (SSO)。 当用户使用 SAML 2.0 协议通过 Microsoft 标识平台向应用程序进行身份验证时，Microsoft 标识平台会将令牌发送到该应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户已知的“声明”的信息片段。
 
 “声明”是标识提供者在为某个用户颁发的令牌中陈述的有关该用户的信息。 在 [SAML 令牌](https://en.wikipedia.org/wiki/SAML_2.0)中，此数据通常包含在 SAML 属性语句中。 用户的唯一 ID（也称为名称标识符）通常显示在 SAML 主题中。
 
-默认情况下，Microsoft 标识平台向应用程序颁发 SAML 令牌，其中包含一个声明，其中包含 `NameIdentifier` 用户用户名的值 (也称为用户主体名称) 在 Azure AD 中，后者可以唯一地标识用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
+默认情况下，Microsoft 标识平台会向应用程序颁发一个包含 `NameIdentifier` 声明的 SAML 令牌，该声明的值为用户在 Azure AD 中的用户名（也称为用户主体名称），可以唯一标识该用户。 SAML 令牌还含有其他声明，其中包含用户的电子邮件地址、名字和姓氏。
 
 若要查看或编辑 SAML 令牌中颁发给应用程序的声明，请在 Azure 门户中打开应用程序。 然后打开“用户属性和声明”部分。
 
@@ -48,18 +48,18 @@ ms.locfileid: "100102693"
 
 ### <a name="nameid-format"></a>NameID 格式
 
-如果 SAML 请求包含具有特定格式的元素 NameIDPolicy，则 Microsoft 标识平台将遵循请求中的格式。
+如果 SAML 请求中包含具有特定格式的元素 NameIDPolicy，则 Microsoft 标识平台会接受请求中的格式。
 
-如果 SAML 请求不包含用于 NameIDPolicy 的元素，则 Microsoft 标识平台将使用您指定的格式发出 NameID。 如果未指定任何格式，则 Microsoft 标识平台将使用与所选声明源关联的默认源格式。
+如果 SAML 请求中不包含用于 NameIDPolicy 的元素，则 Microsoft 标识平台会使用你指定的格式来颁发 NameID。 如果未指定格式，Microsoft 标识平台会使用与所选声明源关联的默认源格式。
 
 从 **选择名称标识符格式** 下拉列表中，可以选择以下一个选项。
 
 | NameID 格式 | 说明 |
 |---------------|-------------|
 | **Default** | Microsoft 标识平台将使用默认的源格式。 |
-| **Persistent** | Microsoft 标识平台将使用永久性格式作为 NameID 格式。 |
+| **Persistent** | Microsoft 标识平台将使用 Persistent 作为 NameID 格式。 |
 | **EmailAddress** | Microsoft 标识平台将使用 EmailAddress 作为 NameID 格式。 |
-| **Unspecified** | Microsoft 标识平台将使用未指定的作为 NameID 格式。 |
+| **Unspecified** | Microsoft 标识平台将使用 Unspecified 作为 NameID 格式。 |
 
 还支持临时 NameID，但在下拉列表中不可用，并且不能在 Azure 端进行配置。 若要了解有关 NameIDPolicy 属性的详细信息，请参阅 [单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "100102693"
 |------|-------------|
 | 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称 (UPN) |
-| onpremisessamaccount | 已从本地 Azure AD 同步的 SAM 帐户名 |
+| onpremisessamaccountname | 已从本地 Azure AD 同步的 SAM 帐户名 |
 | objectid | Azure AD 中用户的 objectID |
 | employeeid | 用户的员工 ID |
 | 目录扩展 | 目录扩展[使用 Azure AD Connect 同步从本地 Active Directory 同步](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
@@ -85,11 +85,11 @@ ms.locfileid: "100102693"
 1. 单击要修改的必选声明。
 1. 在“源属性”中按组织输入不带引号的常量值，并单击“保存”。 
 
-    ![Azure 门户中 & 声明部分的组织属性](./media/active-directory-saml-claims-customization/organization-attribute.png)
+    ![Azure 门户中的“组织属性和声明”部分](./media/active-directory-saml-claims-customization/organization-attribute.png)
 
 1. 常量值显示如下。
 
-    ![编辑 Azure 门户中 & 声明 "部分的属性](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
+    ![Azure 门户中的“编辑属性和声明”部分](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特定声明 - 转换
 
@@ -126,14 +126,14 @@ ms.locfileid: "100102693"
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
 | **Join()** | 通过联接两个属性来创建新的值。 或者，可以在两个属性之间使用分隔符。 对于 NameID 声明转换，联接仅限已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
-| **ToLowercase ( # B1** | 将所选属性的字符转换为小写字符。 |
-| **ToUppercase ( # B1** | 将所选属性的字符转换为大写字符。 |
+| ToLowercase() | 将所选属性的字符转换为小写字符。 |
+| ToUppercase() | 将所选属性的字符转换为大写字符。 |
 | **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的电子邮件地址（如果包含域 @contoso.com），否则就需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.email<br/>*值*: "@contoso.com"<br/>参数 2(输出)：user.email<br/>参数 3（如果没有匹配项，则为输出）：user.userprincipalname |
 | **EndWith()** | 如果输入以指定值结束，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果员工 ID 以 000 结束），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.employeeid<br/>*值*：000<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
 | **StartWith()** | 如果输入以指定值开始，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的员工 ID （如果国家/地区以“美国”开始），否则就需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.country<br/>*值*：美国<br/>参数 2(输出)：user.employeeid<br/>参数 3（如果没有匹配项，则为输出）：user.extensionattribute1 |
 | **Extract() - 匹配后** | 匹配指定值后返回的子字符串。<br/>例如，如果输入的值为“Finance_BSimon”，匹配值为“Finance_”，则声明的输出为“BSimon”。 |
 | **Extract() - 匹配前** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为“BSimon_US”，匹配值为“_US”，则声明的输出为“BSimon”。 |
-| **Extract() - 匹配之间** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为 "Finance_BSimon_US"，则第一个匹配值为 "财务 \_ "，第二个匹配值为 " \_ US"，则声明的输出为 "BSimon"。 |
+| **Extract() - 匹配之间** | 在匹配指定值前返回的子字符串。<br/>例如，如果输入的值为“Finance_BSimon_US”，第一个匹配值为“Finance\_”，第二个匹配值为“\_US”，则声明的输出为“BSimon”。 |
 | **ExtractAlpha() - 前缀** | 返回字符串的前缀字母部分。<br/>例如，如果输入的值为“BSimon_123”，则它将返回“BSimon”。 |
 | **ExtractAlpha() - 后缀** | 返回字符串的后缀字母部分。<br/>例如，如果输入的值为“123_Simon”，则它将返回“Simon”。 |
 | **ExtractNumeric() - 前缀** | 返回字符串的前缀数字部分。<br/>例如，如果输入的值为“123_BSimon”，则它将返回“123”。 |
@@ -161,14 +161,14 @@ ms.locfileid: "100102693"
 
 1. 在 **管理声明** 中，展开”声明条件”。
 2. 选择用户类型。
-3. 选择用户所属的组。 在给定应用程序的所有声明中，最多可以选择50个唯一组。 
+3. 选择用户所属的组。 在某个给定应用程序的所有声明中，最多可以选择 50 个独一无二的组。 
 4. 选择声明可检索其值的 **源**。 可以从“源属性”下拉列表中选择一个用户属性，或者在用户属性作为声明发出之前对其应用转换。
 
-添加条件的顺序很重要。 Azure AD 将按从上到下的顺序评估条件，以确定要在声明中发出的值。 与表达式匹配的最后一个值将在声明中发出。
+添加条件的顺序很重要。 Azure AD 将按从上到下的顺序评估条件，以确定要在声明中发出的值。 与表达式匹配的最后一个值会在声明中发出。
 
-例如，Britta Simon 是 Contoso 租户中的来宾用户。 她属于另一个也使用 Azure AD 的组织。 对于 Fabrikam 应用程序的以下配置，当 Britta 尝试登录到 Fabrikam 时，Microsoft 标识平台将按以下方式计算条件。
+例如，Britta Simon 是 Contoso 租户中的来宾用户。 她属于另一个也使用 Azure AD 的组织。 基于以下对 Fabrikam 应用程序的配置，如果 Britta 尝试登录到 Fabrikam，Microsoft 标识平台将按如下方式评估条件。
 
-首先，Microsoft 标识平台验证 Britta 的用户类型是否为 `All guests` 。 由于，此值为 true，因此 Microsoft 标识平台会将声明的源分配给 `user.extensionattribute1` 。 其次，Microsoft 标识平台验证 Britta 的用户类型是否为 `AAD guests` ，因为这也是 true，因此 microsoft 标识平台会将声明的源分配给 `user.mail` 。 最后，使用值 `user.mail` 为 Britta 发出声明。
+首先，Microsoft 标识平台会验证 Britta 的用户类型是否为“`All guests`”。 因为确实如此，所以 Microsoft 标识平台会将声明的源分配到 `user.extensionattribute1`。 其次，Microsoft 标识平台会验证 Britta 的用户类型是否为“`AAD guests`”，因为也确实如此，所以 Microsoft 标识平台会将声明的源分配到 `user.mail`。 最后，使用值 `user.mail` 为 Britta 发出声明。
 
 ![声明条件配置](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 
