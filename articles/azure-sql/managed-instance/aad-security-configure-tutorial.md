@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788615"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639841"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 托管实例中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
 
     ![SSMS 对象资源管理器中“结果”选项卡的屏幕截图，其中显示了新添加的登录名的名称、principal_id、sid、类型和 type_desc。](./media/aad-security-configure-tutorial/native-login.png)
 
-有关详细信息，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
+有关详细信息，请参阅 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)。
 
 ## <a name="grant-permissions-to-create-logins"></a>授予用于创建登录名的权限
 
@@ -182,7 +182,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
     GO
     ```
 
-1. 使用 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 语法在托管实例中创建数据库。 在下一部分，此数据库将用于测试用户登录名。
+1. 使用 [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语法在托管实例中创建数据库。 在下一部分，此数据库将用于测试用户登录名。
     1. 在“对象资源管理器”中右键服务器，然后选择“新建查询”。 
     1. 在查询窗口中，使用以下语法创建名为 **MyMITestDB** 的数据库。
 
@@ -264,7 +264,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
     > [!IMPORTANT]
     > 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
 
-    有关详细信息，请参阅 [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)。
+    有关详细信息，请参阅 [CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true)。
 
 1. 在新查询窗口中，使用以下 T-SQL 命令创建测试表：
 

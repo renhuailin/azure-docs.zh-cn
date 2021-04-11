@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102631364"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046617"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>认知服务文档：2021 年 2 月 1 日 - 2021 年 2 月 28 日的新增内容
 
@@ -28,25 +28,25 @@ ms.locfileid: "102631364"
 
 ### <a name="new-articles"></a>新文章
 
-- [Azure 认知服务容器常见问题解答 (FAQ)](/azure/cognitive-services/containers/container-faq)
+- [Azure 认知服务容器常见问题解答 (FAQ)](./containers/container-faq.yml)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags)
+- [Azure 认知服务容器映像标记和发行说明](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>表单识别器
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [部署示例标记工具](/azure/cognitive-services/form-recognizer/deploy-label-tool)
-- [什么是表单识别器？](/azure/cognitive-services/form-recognizer/overview)
-- [使用示例标记工具通过标签来训练表单识别器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [部署示例标记工具](./form-recognizer/deploy-label-tool.md)
+- [什么是表单识别器？](./form-recognizer/overview.md)
+- [使用示例标记工具通过标签来训练表单识别器模型](./form-recognizer/quickstarts/label-tool.md)
 
 ## <a name="text-analytics"></a>文本分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [文本分析 API v3 语言支持](/azure/cognitive-services/text-analytics/language-support)
-- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [文本分析 API v3 语言支持](./text-analytics/language-support.md)
+- [如何调用文本分析 REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

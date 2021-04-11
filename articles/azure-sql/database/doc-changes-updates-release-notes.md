@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634832"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640090"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,12 +61,12 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 | 功能 | 详细信息 |
 | ---| --- |
-| <a href="/azure/azure-sql/database/elastic-transactions-overview">分布式事务</a> | 跨托管实例的分布式事务。 |
-| <a href="/azure/sql-database/sql-database-instance-pools">实例池</a> | 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。 |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">实例级 Azure AD 服务器主体（登录名）</a> | 使用 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 语句创建实例级登录名。 |
+| [分布式事务](/azure/azure-sql/database/elastic-transactions-overview) | 跨托管实例的分布式事务。 |
+| [实例池](/azure/sql-database/sql-database-instance-pools) | 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。 |
+| [实例级 Azure AD 服务器主体（登录名）](/sql/t-sql/statements/create-login-transact-sql) | 使用 [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语句创建实例级登录名。 |
 | [事务复制](../managed-instance/replication-transactional-overview.md) | 将表中的更改复制到 SQL 托管实例、SQL 数据库或 SQL Server 中的其他数据库。 或当 SQL 托管实例或 SQL Server 的其他实例中某些行发生更改时更新表。 若要了解信息，请参阅[在 Azure SQL 托管实例中配置复制](../managed-instance/replication-between-two-instances-configure-tutorial.md)。 |
 | 威胁检测 |若要了解信息，请参阅[在 Azure SQL 托管实例中配置威胁检测](../managed-instance/threat-detection-configure.md)。|
-| 长期备份保留 | 若要了解信息，请参阅[在 Azure SQL 托管实例中配置长期备份保留](../managed-instance/long-term-backup-retention-configure.md)（当前为功能有限的公共预览版）。 | 
+| 长期备份保留 | 若要了解信息，请参阅[在 Azure SQL 托管实例中配置长期备份保留](../managed-instance/long-term-backup-retention-configure.md)（当前为功能有限的公共预览版）。 |
 
 ---
 
@@ -243,9 +243,9 @@ SQL Server 和 SQL 托管实例[不允许用户删除不为空的文件](/sql/re
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor
 
-[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 功能可便于限制分配给用户工作负载的资源。在故障转移或用户启动的服务层更改（例如，更改 vCore 数上限或实例存储大小上限）后，此功能可能会对某些用户工作负载进行错误的分类。
+[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 功能可让你限制分配给用户工作负荷的资源。在故障转移或者完成用户发起的服务层级更改（例如，更改最大 vCore 数或最大实例存储大小）后，Resource Governor 可能会错误地分类某些用户工作负荷。
 
-解决方法：如果正在使用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，请定期运行 `ALTER RESOURCE GOVERNOR RECONFIGURE`，或作为在实例启动时执行 SQL 任务的 SQL 代理作业的一部分运行。
+解决方法：如果使用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，请定期运行 `ALTER RESOURCE GOVERNOR RECONFIGURE`，或者在完成 SQL 代理作业（该作业在实例启动时执行 SQL 任务）的过程中运行此命令。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>升级服务层级后必须重新初始化跨数据库 Service Broker 对话
 

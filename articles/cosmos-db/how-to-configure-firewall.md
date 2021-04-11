@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a7796b70d4d32e7023fbc88086a737dd76ae7723
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: b94b30851a5206c2183d999a3c024351cf415c90
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122708"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568233"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -104,11 +104,11 @@ ms.locfileid: "102122708"
 
 从 Internet 上的计算机访问 Azure Cosmos DB 帐户时，必须将客户端 IP 地址或计算机的 IP 地址范围添加到帐户 IP 地址的允许列表中。
 
-### <a name="add-outbound-rules-to-the-firewall"></a>向防火墙添加出站规则
+### <a name="add-outbound-rules-to-the-firewall"></a>将出站规则添加到防火墙
 
-若要访问要添加到防火墙设置中的出站 IP 范围的当前列表，请参阅 [下载 AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。
+若要访问要添加到防火墙设置的当前出站 IP 范围的列表，请参阅[下载 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)。
 
-若要自动执行此列表，请参阅 [使用服务标记发现 API (公共预览版) ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)。
+若要自动执行此列表，请参阅[使用服务标记发现 API（公共预览版）](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)。
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用资源管理器模板配置 IP 防火墙
 

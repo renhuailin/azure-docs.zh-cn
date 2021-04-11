@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798708"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108751"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云同步 
 
@@ -39,7 +39,7 @@ ms.locfileid: "104798708"
 以下是完成本教程所需的先决条件
 - 装有 Azure AD Connect sync 1.4.32.0 或更高版本的测试环境
 - 处于同步范围内的且可用于试运行的 OU 或组。 我们建议从少量的对象开始。
-- 运行 Windows Server 2012 R2 或更高版本的服务器，用于托管预配代理。  此服务器不能是 Azure AD Connect 服务器。
+- 运行 Windows Server 2012 R2 或更高版本的服务器，用于托管预配代理。
 - Azure AD Connect 同步的源定位点应是 objectGuid 或 ms-ds-consistencyGUID
 
 ## <a name="update-azure-ad-connect"></a>更新 Azure AD Connect

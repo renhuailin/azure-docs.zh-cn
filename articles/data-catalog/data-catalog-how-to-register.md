@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: fe132c5f80e138ef47db758ad42c04b8e854ca00
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104674795"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>在 Azure 数据目录中注册数据源
@@ -77,7 +77,7 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 
 重新注册已注册的数据源将执行合并“upsert”操作：更新现有对象，并且创建新对象。 保留用户通过数据目录门户提供的所有元数据。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 在数据目录中注册数据源会将结构化元数据和描述性元数据从数据源复制到目录服务，因此发现和理解数据源更简单。 注册数据源后，可通过使用数据目录门户批注、管理和发现该数据源。
 
 ## <a name="next-steps"></a>后续步骤

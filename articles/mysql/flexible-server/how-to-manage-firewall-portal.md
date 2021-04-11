@@ -1,17 +1,17 @@
 ---
 title: 管理防火墙规则 - Azure 门户 - Azure Database for MySQL 灵活服务器
 description: 使用 Azure 门户创建和管理 Azure Database for MySQL 灵活服务器防火墙规则
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 132319575147c2ff1075881b1f1faec8bc5029f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b26ce91b005fc7bd4d5b89ccf5306dc03a040b0f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90934767"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106744"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 灵活服务器防火墙规则
 

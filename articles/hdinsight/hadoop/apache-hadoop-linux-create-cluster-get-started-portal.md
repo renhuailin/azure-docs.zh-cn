@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 92520be7e9d2bb83cb61856fe3df38487445ad9a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946596"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863881"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -31,52 +31,52 @@ ms.locfileid: "98946596"
 
 1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![创建资源 HDInsight 群集](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "创建资源 HDInsight 群集")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png" alt-text="创建资源 HDInsight 群集" border="true":::
 
 1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
 
 1. 在“基本信息”选项卡中提供以下信息： 
 
-    |properties  |说明  |
-    |---------|---------|
-    |订阅    |  从下拉列表中选择用于此群集的 Azure 订阅。 |
-    |资源组     | 从下拉列表中选择现有资源组，或选择“新建”  。|
-    |群集名称   | 输入任何全局唯一的名称。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
-    |区域    | 从下拉列表中，选择在其中创建群集的区域。  选择的位置与你越靠近，性能就越好。 |
-    |群集类型| 选择“选择群集类型”  。 然后选择 **Hadoop** 作为群集类型。|
-    |版本|从下拉列表中，选择一个 **版本**。 如果不知道要选择哪个版本，请使用默认版本。|
-    |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
-    |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
-    |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
+   |属性  |说明  |
+   |---------|---------|
+   |订阅    |  从下拉列表中选择用于此群集的 Azure 订阅。 |
+   |资源组     | 从下拉列表中选择现有资源组，或选择“新建”  。|
+   |群集名称   | 输入任何全局唯一的名称。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
+   |区域    | 从下拉列表中，选择在其中创建群集的区域。  选择的位置与你越靠近，性能就越好。 |
+   |群集类型| 选择“选择群集类型”  。 然后选择 **Hadoop** 作为群集类型。|
+   |版本|从下拉列表中，选择一个 **版本**。 如果不知道要选择哪个版本，请使用默认版本。|
+   |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
+   |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”。  可以提供其他名称作为 SSH 用户名。 |
+   |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-    ![HDInsight Linux 入门 - 提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png "提供用于创建 HDInsight 群集的基本值")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png" alt-text="HDInsight Linux 入门 - 提供群集基本值" border="true":::
 
-    选择页面底部的“下一步:  存储 >>”以前进到存储设置。
+   选择页面底部的“下一步:  存储 >>”以前进到存储设置。
 
 1. 在“存储”  选项卡中，提供以下值：
 
-    |properties  |说明  |
-    |---------|---------|
-    |主存储类型|使用默认值“Azure 存储”。 |
-    |选择方法|使用默认值“从列表中选择”。 |
-    |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
-    |容器|使用自动填充的值。|
+   |属性  |说明  |
+   |---------|---------|
+   |主存储类型|使用默认值“Azure 存储”。 |
+   |选择方法|使用默认值“从列表中选择”。 |
+   |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
+   |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png" alt-text="HDInsight Linux 入门 - 提供群集存储值" border="true":::
 
-    每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)、一个 [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md) 或一个 [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) 依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+   每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)、一个 [Azure Data Lake Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md) 或一个 [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) 依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
-    选择“查看 + 创建”  选项卡。
+   选择“查看 + 创建”  选项卡。
 
 1. 在“查看 + 创建”  选项卡中，验证你在前面的步骤中选择的值。
 
-    ![HDInsight Linux 入门 - 群集摘要](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png "HDInsight Linux 入门 - 群集摘要")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight Linux 入门 - 群集摘要" border="true":::
 
 1. 选择“创建”  。 创建群集大约需要 20 分钟时间。
 
-    创建群集后，Azure 门户中会显示群集概述页。
+   创建群集后，Azure 门户中会显示群集概述页。
 
-    ![HDInsight Linux 入门 - 群集设置](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png "HDInsight 群集属性")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-settings-overview.png" alt-text="HDInsight Linux 入门 - 群集设置" border="true":::
 
 ## <a name="run-apache-hive-queries"></a>运行 Apache Hive 查询
 
@@ -87,37 +87,37 @@ ms.locfileid: "98946596"
 
 1. 若要打开 Ambari，请从之前的屏幕截图中，选择“群集仪表板”  。  还可以浏览到 `https://ClusterName.azurehdinsight.net`，其中的 `ClusterName` 是你在上一部分中创建的群集。
 
-    ![HDInsight Linux 入门 - 群集仪表板](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux 入门 - 群集仪表板")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png" alt-text="HDInsight Linux 入门 - 群集仪表板" border="true":::
 
 2. 输入在创建群集时指定的 Hadoop 用户名和密码。 默认的用户名为 **admin**。
 
 3. 打开“Hive 视图”，如以下屏幕截图中所示： 
 
-    ![从 Ambari 中选择 Hive 视图](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive 查看器菜单")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png" alt-text="从 Ambari 中选择 Hive 视图" border="true":::
 
 4. 在“查询”  选项卡中，将以下 HiveQL 语句粘贴到工作表中：
 
-    ```sql
-    SHOW TABLES;
-    ```
+   ```sql
+   SHOW TABLES;
+   ```
 
-    ![HDInsight Hive 视图查询编辑器](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive 视图查询编辑器")
+    :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png" alt-text="HDInsight Hive 视图查询编辑器" border="true":::
 
-5. 选择“执行”  。 “结果”  选项卡将显示在“查询”  选项卡下面，并显示有关作业的信息。 
+5. 选择“执行”  。 “结果”  选项卡将显示在“查询”  选项卡下面，并显示有关作业的信息。
 
-    完成查询后，“查询”  选项卡将显示操作结果。 应会看到一个名为 **hivesampletable** 的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
+   完成查询后，“查询”  选项卡将显示操作结果。 应会看到一个名为 **hivesampletable** 的表。 所有 HDInsight 群集都随附了此示例 Hive 表。
 
-    ![HDInsight Apache Hive 视图结果](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight Apache Hive 视图结果")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png" alt-text="HDInsight Apache Hive 视图结果" border="true":::
 
 6. 重复步骤 4 和 5，运行以下查询：
 
-    ```sql
-    SELECT * FROM hivesampletable;
-    ```
+   ```sql
+   SELECT * FROM hivesampletable;
+   ```
 
 7. 还可以保存查询的结果。 选择右侧的菜单按钮，并指定是要将结果下载为 CSV 文件，还是要将其存储到与群集关联的存储帐户。
 
-    ![保存 Apache Hive 查询的结果](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "保存 Apache Hive 查询的结果")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png" alt-text="保存 Apache Hive 查询的结果" border="true":::
 
 完成 Hive 作业后，可以[将结果导出到 Azure SQL 数据库或 SQL Server 数据库](apache-hadoop-use-sqoop-mac-linux.md)，还可以[使用 Excel 将结果可视化](apache-hadoop-connect-excel-power-query.md)。 有关在 HDInsight 中使用 Hive 的详细信息，请参阅[将 Apache Hive 和 HiveQL 与 HDInsight 中的 Apache Hadoop 配合使用以分析示例 Apache log4j 文件](hdinsight-use-hive.md)。
 
@@ -132,7 +132,7 @@ ms.locfileid: "98946596"
 
 1. 返回到包含 Azure 门户的浏览器选项卡。 你应该在群集概览页上。 如果仅希望删除群集但保留默认的存储帐户，请选择“删除”  。
 
-    ![Azure HDInsight 删除群集](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "删除 Azure HDInsight 群集")
+   :::image type="content" source="./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png" alt-text="Azure HDInsight 删除群集" border="true":::
 
 2. 如果希望删除群集和默认存储帐户，请选择资源组名称（之前的屏幕截图中已突出显示），打开资源组页。
 
