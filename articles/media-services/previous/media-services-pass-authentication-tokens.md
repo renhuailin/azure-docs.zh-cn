@@ -3,25 +3,23 @@ title: 将身份验证令牌传递到 Azure 媒体服务 | Microsoft Docs
 description: 了解如何将身份验证令牌从客户端发送到 Azure 媒体服务密钥传送服务
 services: media-services
 keywords: 内容保护, DRM, 令牌身份验证
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2021
+ms.date: 03/22/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba4daec8ef5f2cc1da3a211113e7236dfd22803d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1fe692e1eb20956f339c9b861f50163cee9c5063
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564647"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解客户端如何将令牌传递到 Azure 媒体服务密钥传送服务
 
@@ -33,7 +31,7 @@ ms.locfileid: "103008228"
 
 - 通过 HTTP 授权标头。
     > [!NOTE]
-    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
+    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
 
 - 通过使用“token=tokenvalue”添加一个 URL 查询参数。  
     > [!NOTE]

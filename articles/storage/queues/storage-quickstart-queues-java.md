@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure 队列存储客户端库 v12 - Java
 description: 介绍如何使用适用于 Java 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 还将介绍如何删除队列。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/01/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79b10e8281fe8189b490fe97dfe896179c8e64fc
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588209"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275866"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 

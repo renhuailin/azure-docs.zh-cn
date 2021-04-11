@@ -3,7 +3,7 @@ title: 通过 Azure AD 身份验证使用 REST 访问 Azure 媒体服务 API | M
 description: 了解如何通过 Azure Active Directory 身份验证使用 REST 访问 Azure 媒体服务 API。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: a2b4e7bf03ebb1fbc197b78287cb50b3f421d713
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103017301"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
 
@@ -49,7 +49,7 @@ ms.locfileid: "98694724"
 > [!IMPORTANT]
 > 目前，媒体服务支持 Azure 访问控制服务身份验证模型。 不过，访问控制身份验证将于 2018 年 6 月 1 日弃用。 建议尽快迁移到 Azure AD 身份验证模型。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
@@ -110,7 +110,7 @@ ms.locfileid: "98694724"
    1. 单击“管理应用程序”按钮（请注意，客户端 ID 信息位于“应用程序 ID”的下方）。 
    2. 按“密钥”。
     
-       ![屏幕截图显示了所选的 "管理应用程序" 按钮，中间窗格中突出显示了 "应用程序 I D"，在右窗格中选择了 "键"。](./media/connect-with-rest/manage-app.png)
+       ![屏幕截图显示所选的“管理应用程序”按钮，中间窗格突出显示“应用程序 ID”，右窗格中选择了“密钥”。](./media/connect-with-rest/manage-app.png)
    3. 填写“说明”和“到期时间”，然后按“保存”以生成应用密钥（客户端密码）    。
     
        按下“保存”按钮后将显示密钥值  。 在退出此边栏选项卡之前复制此密钥值。

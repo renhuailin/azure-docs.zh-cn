@@ -2,14 +2,14 @@
 title: Azure 中的无服务器容器
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 03/22/2021
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c445687db7a154b6fc86e962d2c2340ad6297431
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88121657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799065"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -21,10 +21,7 @@ ms.locfileid: "88121657"
 
 与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
 
-从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
-
-> [!NOTE]
-> 目前无法将映像从本地注册表部署到 Azure 容器实例。
+从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 请访问[常见问题解答](container-instances-faq.md)，了解 ACI 支持哪些注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
 
 ## <a name="container-access"></a>容器访问
 
@@ -43,7 +40,7 @@ ms.locfileid: "88121657"
 
 ### <a name="customer-data"></a>客户数据
 
-ACI 服务存储确保容器组按预期运行所需的最少客户数据。 将客户数据存储到一个区域目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下[地域](https://azure.microsoft.com/global-infrastructure/geographies/)。 若要了解详细信息，请与 Azure 支持人员联系。
+ACI 服务存储确保容器组按预期运行所需的最少客户数据。 将客户数据存储到一个区域的功能目前仅适用于亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部区域（圣保罗州）。 对于其他所有区域，客户数据存储在以下[地域](https://azure.microsoft.com/global-infrastructure/geographies/)。 若要了解详细信息，请与 Azure 支持人员联系。
 
 ## <a name="custom-sizes"></a>自定义大小
 
@@ -68,9 +65,6 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
 对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
-
-> [!NOTE]
-> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

@@ -10,12 +10,12 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 12ee827f297729682b0a5e1b1808afe312c657a4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 847e100dfaa922c359b321f17d77d2d0c67afc9b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499061"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802856"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>通过 Python 开始使用 Azure 表存储和 Azure Cosmos DB 表 API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -41,9 +41,9 @@ Azure 表存储和 Azure Cosmos DB 是用于在云中存储结构化 NoSQL 数�
 
 若要成功完成此示例，需要以下项：
 
-* [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5 或 3.6
+* [Python](https://www.python.org/downloads/) 2.7 或 3.6+。
 * [用于 Python 的 Azure Cosmos DB 表 SDK](https://pypi.python.org/pypi/azure-cosmosdb-table/)。 此 SDK 同时与 Azure 表存储和 Azure Cosmos DB 表 API 连接。
-* [Azure 存储帐户](../storage/common/storage-account-create.md)或 [Azure Cosmos DB 帐户](https://azure.microsoft.com/try/cosmosdb/)
+* [Azure 存储帐户](../storage/common/storage-account-create.md)或 [Azure Cosmos DB 帐户](https://azure.microsoft.com/try/cosmosdb/)。
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 

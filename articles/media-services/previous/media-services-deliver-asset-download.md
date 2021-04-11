@@ -3,7 +3,7 @@ title: 将媒体服务资产下载到计算机 - Azure | Microsoft 文档
 description: 了解如何将资产下载到计算机。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8908a1dd-3ffb-4f18-955d-4c8e2d82fc5d
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5ad40feacdccc847ed66caed3d586db2490b0b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 60f91e97a9bce1427b4ed8d251fe297d9eb7d969
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103016655"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>如何：通过下载传送资产
 

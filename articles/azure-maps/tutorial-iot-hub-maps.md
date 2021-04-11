@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98678266"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168444"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -282,7 +282,7 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 若要获取 Azure 认证的 IoT 设备列表，请访问：
 
-* [Azure 认证的设备](https://catalog.azureiotsolutions.com/)
+* [Azure 认证的设备](https://devicecatalog.azure.com/)
 
 ## <a name="clean-up-resources"></a>清理资源
 

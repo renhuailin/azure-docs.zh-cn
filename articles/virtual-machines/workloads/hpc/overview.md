@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 07/29/2020
+ms.date: 03/18/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666889"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720587"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>在支持 InfiniBand 的 H 系列和 N 系列 VM 上进行高性能计算
 
@@ -32,19 +32,19 @@ Azure 的支持 InfiniBand 的 H 系列和 N 系列 VM 旨在为各种实际 HPC
 
 ### <a name="message-passing-interface"></a>消息传递接口
 
-支持 SR-IOV 的 H 系列和 N 系列几乎支持所有 MPI 库和版本。 部分受支持的最常用 MPI 库如下：Intel MPI、OpenMPI、MPICH、MVAPICH2、平台 MPI 以及所有远程直接内存访问 (RDMA) 谓词。
+支持 SR-IOV 的 H 系列和 N 系列几乎支持所有 MPI 库和版本。 部分最常用的 MPI 库为： Intel MPI、OpenMPI、HPC-X、MVAPICH2、MPICH、平台 MPI。 支持所有远程直接内存访问（RDMA）谓词。
 请参阅[设置 MPI](setup-mpi.md)，详细了解如何安装各种受支持的 MPI 库及其最佳配置。
 
 ## <a name="get-started"></a>入门
 
 第一步是基于 VM 规范和 [RDMA 功能](../../sizes-hpc.md#rdma-capable-instances)选择对工作负载最佳的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM 类型。
 其次，通过启用 InfiniBand 来配置 VM。 可通过各种方法实现此目的，包括使用内嵌驱动程序的优化 VM 映像；有关详细信息，请参阅[针对 Linux 进行优化](configure.md)和[启用 InfiniBand](enable-infiniband.md)。
-第三，对于分布式节点工作负载，选择和配置 MPI 至关重要。 有关详细信息，请参阅[设置 MPI](setup-mpi.md)。
-第四，为了提高性能和可伸缩性，请按照特定于 VM 系列的指导（如 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)）对工作负载进行优化配置。
+第三，对于分布式节点工作负载，适当地选择和配置 MPI 至关重要。 有关详细信息，请参阅[设置 MPI](setup-mpi.md)。
+第四，为了提高性能和可伸缩性，请按照特定于 VM 系列的指导（如 [HBv3 系列概述](hbv3-series-overview.md)和 [HC 系列概述](hc-series-overview.md)）对工作负载进行优化配置。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[配置和优化](configure.md)支持 InfiniBand 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM。
-- 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
-- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 查看 [HBv3 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

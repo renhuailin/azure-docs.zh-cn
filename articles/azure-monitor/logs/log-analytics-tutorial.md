@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041138"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799286"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics 教程
 Log Analytics 是 Azure 门户中的工具，用于根据 Azure Monitor 日志收集的数据编辑和运行日志查询，并交互式分析其结果。 可以使用 Log Analytics 查询来检索符合特定条件的记录、确定趋势、分析模式，并提供对数据的各种见解。 
@@ -72,7 +72,7 @@ Log Analytics 是 Azure 门户中的工具，用于根据 Azure Monitor 日志�
 ## <a name="time-range"></a>时间范围
 Log Analytics 工作区中的所有表都有一个名为 TimeGenerated 的列，这是创建记录的时间。 所有查询都具有时间范围，该范围将结果限制为具有该范围内 TimeGenerated 值的记录。 时间范围可以在查询中设置，也可以在屏幕顶部的选择器中设置。
 
-默认情况下，查询将返回最近 24 小时的记录。 选择“时间范围”下拉列表，并将其更改为“7 天” 。 再次单击“运行”以返回结果。 可以看到返回了结果，但是显示了一条消息，指出我们没有看到所有结果。 这是因为 Log Analytics 最多可以返回 10,000 条记录，而我们的查询返回的记录数多于此值。 
+默认情况下，查询将返回最近 24 小时的记录。 选择“时间范围”下拉列表，并将其更改为“7 天” 。 再次单击“运行”以返回结果。 可以看到返回了结果，但是显示了一条消息，指出我们没有看到所有结果。 这是因为日志分析最多可以返回 30,000 条记录，而我们的查询返回的记录数多于此值。 
 
 [![时间范围](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

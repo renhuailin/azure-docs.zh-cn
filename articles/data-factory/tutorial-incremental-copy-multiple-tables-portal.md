@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606680"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
@@ -253,7 +253,7 @@ END
 8. 单击“创建”。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
-   ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
 
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
@@ -291,7 +291,7 @@ END
 
 1. 在“连接”窗口中从“Integration Runtime”选项卡切换到“链接服务”选项卡，然后单击“+ 新建”。   
 
-   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
+    :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="新建链接服务。":::
 1. 在“新建链接服务”窗口中，选择“SQL Server”，然后单击“继续”。   
 
 1. 在“新建链接服务”窗口中执行以下步骤：
@@ -301,7 +301,7 @@ END
     1. 对于“服务器名称”，请输入装有 SQL Server 数据库的计算机的名称。
     1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。 已按照先决条件创建一个表并将数据插入到此数据库中。 
     1. 对于“身份验证类型”，请选择需要用于连接到数据库的 **身份验证的类型**。 
-    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
+    1. 至于“用户名”，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 示例为 `mydomain\\myuser`。
     1. 至于“密码”，请输入用户的 **密码**。 
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。
@@ -473,7 +473,7 @@ END
     1. 选择“导入参数”。 
     1. 指定以下参数值： 
 
-        | 名称 | 类型 | Value | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

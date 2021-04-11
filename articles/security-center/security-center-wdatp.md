@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: memildin
-ms.openlocfilehash: 17e54dfc5c369a8cbb35db50ff2cbab131d34c2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453761"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168172"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -38,7 +38,7 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 | 发布状态：                  | 正式发布 (GA)                                                                                                                                                                                                                                                                                      |
 | 定价：                        | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
 | 支持的平台：            |  • 运行 Windows 的 Azure 计算机<br> • 运行 Windows 的 Azure Arc 计算机|
-| 支持的 Windows 版本：  |  • 正式发布版 (GA) - 在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> • 预览版 - 在 Windows Server 2019、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md) 和 [Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.md)（前身为“企业版虚拟桌面”(EVD)）上检测|
+| 支持的 Windows 版本：  |  • 正式发布版 (GA) - 在 Windows Server 2016、2012 R2 和 2008 R2 SP1 上检测<br> • 预览版 - 在 Windows Server 2019、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md) 和 [Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为“企业版虚拟桌面”(EVD)）上检测|
 | 不支持的操作系统：  |  • Windows 10（EVD 或 WVD 除外）<br> • Linux|
 | 所需角色和权限： | 启用/禁用集成：“安全管理员”或“所有者” <br>查看安全中心内的 MDATP 警报：“安全读取者”、“读取者”、“资源组参与者”、“资源组所有者”、“安全管理员”、“订阅所有者”或“订阅参与者”      |
 | 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov                                                        |
@@ -74,7 +74,7 @@ Microsoft Defender for Endpoint 提供：
 1. 确认计算机满足 Defender for Endpoint 的必需要求：
 
     - 对于所有版本的 Windows：
-        - 配置[配置设备代理和 Internet 连接设置](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述的网络设置
+        - 配置[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述的网络设置
         - 如果要将 Defender to Endpoint 部署到本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
     - 此外，对于 Windows Server 2019 计算机，请确认这些计算机正在运行有效代理，并且具有 MicrosoftMonitoringAgent 扩展
 

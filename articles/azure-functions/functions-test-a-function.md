@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98674144"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639867"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -41,7 +41,7 @@ ms.locfileid: "98674144"
 3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为“MyTimerTrigger”。
 4. 在解决方案中[创建 xUnit 测试应用](https://xunit.net/docs/getting-started/netcore/cmdline)并将其命名为“Functions.Tests”。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
-6. [从 Functions.Tests 应用引用 Functions 应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
+6. [从 Functions.Tests 应用引用 Functions 应用](/visualstudio/ide/managing-references-in-a-project)。
 
 ### <a name="create-test-classes"></a>创建测试类
 

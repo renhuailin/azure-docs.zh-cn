@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: da8007a651b62430055f263f082fabf2aa4bf610
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171537"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574282"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -29,19 +29,19 @@ ms.locfileid: "102171537"
 > - 从虚拟网络内部的资源访问工作室。
 > - 了解工作室如何影响存储安全性。
 
-本文是由五部分组成的系列文章的第五部分，指导你如何保护 Azure 机器学习工作流。 强烈建议您通读前面的部分来设置虚拟网络环境。
+本文是由五部分组成的系列文章的第五部分，指导你如何保护 Azure 机器学习工作流。 强烈建议你通读前面的部分，以设置虚拟网络环境。
 
 请参阅本系列中的其他文章：
 
-[1. VNet 概述](how-to-network-security-overview.md)  >  [2。保护工作区](how-to-secure-workspace-vnet.md)  >  [3。保护定型环境](how-to-secure-training-vnet.md)  >  [4。保护推断环境](how-to-secure-inferencing-vnet.md)  >  **5。启用 studio 功能**
+[1.VNet 概述](how-to-network-security-overview.md) > [2.保护工作区](how-to-secure-workspace-vnet.md) > [3.保护训练环境](how-to-secure-training-vnet.md) > [4.保护推理环境](how-to-secure-inferencing-vnet.md) > **5.启用工作室功能**
 
 
 > [!IMPORTANT]
-> 如果你的工作区位于 __主权云中__，例如 azure 政府版或 Azure 中国世纪互联，则集成笔记本 _不_ 支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)部分。
+> 如果工作区位于主权云（如 Azure 政府或 Azure 中国世纪互联）中，则集成笔记本不支持使用虚拟网络中的存储空间。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook)部分。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 阅读 [网络安全概述](how-to-network-security-overview.md) ，了解常见的虚拟网络方案和体系结构。
++ 阅读[网络安全概述](how-to-network-security-overview.md)，了解常见的虚拟网络方案和体系结构。
 
 + 要使用的预先存在的虚拟网络和子网。
 
@@ -138,7 +138,7 @@ Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存�
 
 ### <a name="azure-data-lake-storage-gen1-access-control"></a>Azure Data Lake Storage Gen1 访问控制
 
-Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可以像其他任何安全原则一样，将工作区管理的标识访问权限分配给资源。 有关详细信息，请参阅 [Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
+Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可以向工作区托管标识分配对资源的访问权限，就像向任何其他安全主体分配访问权限一样。 有关详细信息，请参阅 [Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
 
 ### <a name="azure-sql-database-contained-user"></a>Azure SQL 数据库包含用户
 
@@ -160,9 +160,11 @@ Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是5部分虚拟网络系列中的第五部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+虚拟网络系列文章由五部分构成，本文是第五部分。 若要了解如何保护虚拟网络，请参阅其余文章：
 
-* [第1部分：虚拟网络概述](how-to-network-security-overview.md)
+* [第 1 部分：虚拟网络概述](how-to-network-security-overview.md)
 * [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
+
+另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。
