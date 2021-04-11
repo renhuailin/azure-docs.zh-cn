@@ -1,5 +1,5 @@
 ---
-title: 带媒体服务 v3 的信号描述性音频曲目
+title: 使用媒体服务 v3 指示描述性音频轨道
 description: 按照本教程中的步骤，使用媒体服务 v3 上传文件、编码视频、添加描述性音频轨道和流式传输内容。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3d029f23a094646d20dd6ae8cb6560aeef4aed54
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954506"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277396"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
 
@@ -29,9 +29,9 @@ ms.locfileid: "98954506"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建媒体服务帐户](./create-account-howto.md)。
+- [创建媒体服务帐户](./account-create-how-to.md)。
 - 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
-- 参阅[动态打包](dynamic-packaging-overview.md)。
+- 参阅[动态打包](encode-dynamic-packaging-concept.md)。
 - 参阅[上传、编码和流式传输视频](stream-files-tutorial-with-api.md)教程。
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>创建输入资产并将本地文件上传到该资产 
@@ -64,7 +64,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>创建转换和一个对上传的文件进行编码的作业
 
-对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交 **作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为 **转换**。 有关详细信息，请参阅[转换和作业](./transforms-jobs-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
+对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交 **作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为 **转换**。 有关详细信息，请参阅[转换和作业](./transform-jobs-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
 
 以下示例创建一个转换（如果不存在）。
 
@@ -80,7 +80,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 
 作业通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”   。
 
-有关详细信息，请参阅[处理事件网格事件](reacting-to-media-services-events.md)。
+有关详细信息，请参阅[处理事件网格事件](monitoring/reacting-to-media-services-events.md)。
 
 ## <a name="upload-the-audio-only-mp4-file"></a>上传仅含音频的 MP4 文件
 
@@ -245,4 +245,4 @@ Azure Media Player 可用于测试，但不可在生产环境中使用。
 
 ## <a name="next-steps"></a>后续步骤
 
-[分析视频](analyze-videos-tutorial-with-api.md)
+[分析视频](analyze-videos-tutorial.md)

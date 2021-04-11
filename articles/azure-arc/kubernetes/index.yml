@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: e9acbb8206985fbc9edebba8d4183ca1a97736f7
-  ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+  ms.openlocfilehash: fbad5cafb22960a56a4ba76e2dc331c399193ddc
+  ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102121654"
+  ms.lasthandoff: 04/06/2021
+  ms.locfileid: "106443183"
 landingContent:
 - title: 关于已启用 Azure Arc 的 Kubernetes
   linkLists:
@@ -56,6 +56,8 @@ landingContent:
       url: use-gitops-with-helm.md
     - text: 通过 Azure Policy 强制使用 GitOps
       url: use-azure-policy.md
+    - text: 在群集上部署扩展
+      url: extensions.md
     - text: 部署 Azure IoT Edge 工作负载
       url: deploy-azure-iot-edge-workloads.md
 - title: 概念证明

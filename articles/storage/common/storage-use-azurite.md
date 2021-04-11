@@ -1,19 +1,19 @@
 ---
 title: 使用 Azurite 模拟器进行本地 Azure 存储开发
 description: Azurite 开源模拟器提供一个免费的本地环境，用于测试 Azure 存储应用程序。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a921de0d976b9c92ca7978feb7caf69484ba9379
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490775"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277119"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
 

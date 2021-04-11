@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 27c0c211b9844a34b0cb43dcd05037ba4a548f3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e244c93fbe809c52eff1c42c284ce2e8389bbcc4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636817"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553577"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>连接到 Azure Stack Edge Pro 设备上的 Azure 资源管理器
 
@@ -34,7 +34,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 下表总结了设备上公开的各种终结点、支持的协议以及用于访问这些终结点的端口。 在本文中，你会发现对这些终结点的引用。
 
-| # | 端点 | 支持的协议 | 使用的端口 | 用于 |
+| # | 端点 | 支持的协议 | 使用的端口 | 用途 |
 | --- | --- | --- | --- | --- |
 | 1. | Azure 资源管理器 | https | 443 | 连接到 Azure 资源管理器以实现自动化 |
 | 2. | 安全令牌服务 | https | 443 | 通过访问和刷新令牌进行身份验证 |
@@ -45,7 +45,7 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
 
 在使用 Azure 资源管理器连接到设备的本地 API 的过程中，需要执行以下步骤：
 
-| 步骤编号 | 你将在此位置执行步骤... | .. 。 |
+| 步骤编号 | 将执行的步骤 | .. 执行位置 |
 | --- | --- | --- |
 | 1. | [部署 Azure Stack Edge Pro 设备](#step-1-configure-azure-stack-edge-pro-device) | 本地 Web UI |
 | 2. | [创建和安装证书](#step-2-create-and-install-certificates) | Windows 客户端/本地 Web UI |
@@ -103,13 +103,13 @@ Azure 资源管理器提供一致的管理层来调用 Azure Stack Edge Pro 设�
     |---------|---------|---------|---------|
     |Azure 资源管理器|`management.<Device name>.<Dns Domain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`|`management.mydevice1.microsoftdatabox.com` |
     |Blob 存储|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
-    |两个终结点的多个 SAN 单一证书|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
+    |两个终结点的多 SAN 单一证书|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
 有关证书的详细信息，请转到如何[管理证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 ### <a name="upload-certificates-on-the-device"></a>在设备上上传证书
 
-在上一步骤中创建的证书将存储在客户端的“个人”存储中。 这些证书需要在你的客户端上导出为合适的格式文件，然后才能上传到设备。
+在上一步骤中创建的证书将存储在客户端的“个人”存储中。 这些证书需要在客户端上导出为合适的格式文件，然后才能上传到设备。
 
 1. 根证书必须导出为 DER 格式的文件，文件扩展名为 .cer。 有关详细步骤，请参阅[将证书导出为 .cer 格式的文件](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format)。
 
@@ -140,7 +140,7 @@ Windows 客户端必须满足以下先决条件：
 
     如果版本已过时，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)。
 
-    如果没有 PowerShell 5.0，请按照[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true) 中所述进行操作。
+    如果没有 PowerShell 5.0，请按照[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true) 中所述进行操作。\'
 
     下面显示了示例输出。
 
@@ -284,7 +284,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
 检查在用于连接到 Azure 一致 VIP 的客户端上是否解析了终结点名称。
 
-1. 可以使用 ping.exe 命令行实用工具来检查是否解析了终结点名称。 给定 IP 地址后，ping 命令将返回所跟踪的计算机的 TCP/IP 主机名。
+1. 可以使用 ping.exe 命令行实用工具来检查是否解析了终结点名称。 给定 IP 地址后，ping 命令将返回所跟踪的计算机的 TCP/IP 主机名。\'
 
     如下例所示，将 `-a` 开关添加到命令行。 如果主机名是可返回的，则还会在回复中返回此可能有价值的信息。
 
@@ -341,9 +341,9 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
 
         1. 若要登录，请键入以下命令。 此实例中的租户 ID 采用硬编码 - c0257de7-538f-415c-993a-1b87a031879d。 使用以下用户名和密码。
 
-            - 用户名 - EdgeArmUser
+            - **用户名** - EdgeArmUser
 
-            - 密码 - [设置 Azure 资源管理器的密码](azure-stack-edge-gpu-set-azure-resource-manager-password.md)，然后使用此密码登录。 
+            - **密码** - [设置 Azure 资源管理器的密码](azure-stack-edge-gpu-set-azure-resource-manager-password.md)，然后使用此密码登录。 
 
             ```powershell
             PS C:\windows\system32> $pass = ConvertTo-SecureString "<Your password>" -AsPlainText -Force;
@@ -360,7 +360,7 @@ Binary     1.48.204.0 AzureInformationProtection          {Clear-RMSAuthenticati
         
             另一种登录方式是使用 `login-AzureRmAccount` cmdlet。 
             
-            `login-AzureRMAccount -EnvironmentName <Environment Name>` -TenantId c0257de7-538f-415c-993a-1b87a031879d 
+            `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d` 
 
             下面是该命令的示例输出。 
          

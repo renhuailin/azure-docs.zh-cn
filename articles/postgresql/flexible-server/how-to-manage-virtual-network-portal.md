@@ -1,17 +1,17 @@
 ---
 title: 管理虚拟网络 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
 description: 使用 Azure 门户为 Azure Database for PostgreSQL 灵活服务器创建和管理虚拟网络
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8a3c983a60dc542cf83f9e818b7f9c1f20265b49
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732762"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552353"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户为 Azure Database for PostgreSQL 灵活服务器创建和管理虚拟网络
 
@@ -34,11 +34,11 @@ Azure Database for PostgreSQL 灵活服务器支持两种类型的互斥网络�
     > 虚拟网络和子网应与你的灵活服务器位于同一区域和订阅中。
 
 -  [将子网委派](../../virtual-network/manage-subnet-delegation.md#delegate-a-subnet-to-an-azure-service)给 Microsoft.DBforPostgreSQL/flexibleServers。 该委派意味着只有 Azure Database for PostgreSQL 灵活服务器才能使用该子网。 不能在委派子网中使用其他 Azure 资源类型。
--  为 `Microsoft.Storage` 委托给灵活服务器的子网添加到服务终结点。 这是通过执行以下步骤来完成的：
-     1. 请参阅虚拟网络页。
+-  将 `Microsoft.Storage` 添加到委派给灵活服务器的子网的服务终结点。 为此，请执行下列步骤：
+     1. 转到虚拟网络页。
      2. 选择计划在其中部署灵活服务器的 VNET。
      3. 选择委派给灵活服务器的子网。
-     4. 在 "拉出" 屏幕上的 " **服务终结点**" 下， `Microsoft.storage` 从下拉窗口中进行选择。
+     4. 在拉出屏幕上的“服务终结点”下，从下拉列表中选择 `Microsoft.storage`。
      5. 保存更改。
 
 

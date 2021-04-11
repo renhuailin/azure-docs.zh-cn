@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5e220759a46ad9098f81a9534fa64145adade2b5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ddd3941c3001ba5c12a06d9f8710e2fc6328433
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104613118"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059849"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教程：准备部署 Azure Stack Edge Pro R
 
@@ -109,7 +108,7 @@ ms.locfileid: "104613118"
 
 6. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
     
-    |设置  |“值”  |
+    |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此订阅。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |

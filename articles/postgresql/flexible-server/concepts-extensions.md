@@ -1,17 +1,17 @@
 ---
 title: 扩展 - Azure Database for PostgreSQL 灵活服务器
 description: 了解 Azure Database for PostgreSQL 灵活服务器中可用的 Postgres 扩展
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/17/2021
+ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454578"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608453"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的 PostgreSQL 扩展
 
@@ -53,7 +53,6 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | 在较低级别检查数据库页的内容|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | 检查共享缓冲区缓存|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL 的作业计划程序|
 > |[pg_freespacemap](https://www.postgresql.org/docs/12/pgfreespacemap.html)               | 1.2             | 检查可用空间映射 (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/12/pgprewarm.html)                   | 1.2             | prewarm 关系数据|
 > |[pg_stat_statements](https://www.postgresql.org/docs/12/pgstatstatements.html)           | 1.7             | 跟踪已执行的所有 SQL 语句的执行统计信息|
@@ -103,7 +102,6 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | 在较低级别检查数据库页的内容|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | 检查共享缓冲区缓存|
-> |[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36)                        | 1.2             | PostgreSQL 的作业计划程序|
 > |[pg_freespacemap](https://www.postgresql.org/docs/11/pgfreespacemap.html)               | 1.2             | 检查可用空间映射 (FSM)|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | prewarm 关系数据|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | 跟踪已执行的所有 SQL 语句的执行统计信息|
@@ -128,31 +126,9 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
-[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 发送服务器需要允许到接收服务器的出站连接。 接收服务器需要允许来自发送服务器的连接。
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 灵活服务器支持任何 PostgreSQL 服务器的传入和传出连接。 发送服务器需要允许到接收服务器的出站连接。 同样，接收服务器需要允许来自发送服务器的连接。 
 
 如果计划使用这两个扩展，建议使用 [VNet 集成](concepts-networking.md)部署服务器。 默认情况下，VNet 集成支持在 VNET 中的服务器之间建立连接。 还可以选择使用 [VNet 网络安全组](../../virtual-network/manage-network-security-group.md)来自定义访问权限。
-
-## <a name="pg_cron"></a>pg_cron
-
-[pg_cron](https://github.com/citusdata/pg_cron/tree/b6e7dc9627515bf00e2086f168b3faa660e5fd36) 是一项简单的、基于 cron 的 PostgreSQL 作业计划程序，作为扩展在数据库内运行。 pg_cron 扩展可用于在 PostgreSQL 数据库中运行计划性维护任务。 例如，可以定期运行表清空作业或删除旧的数据作业。
-
-`pg_cron` 可以并行运行多个作业，但是一次最多只能运行一个作业实例。 如果第二次运行应在第一次运行完成之前开始，则第二次运行将排队，并在第一次运行完成后立即开始。 这样可以确保作业完全按计划的次数运行，并且不会与自己并发运行。
-
-下面是一些示例：
-
-在星期六凌晨 3:30 (GMT) 删除旧数据
-```
-SELECT cron.schedule('30 3 * * 6', $$DELETE FROM events WHERE event_time < now() - interval '1 week'$$);
-```
-在每天上午 10:00 (GMT) 运行清空作业
-```
-SELECT cron.schedule('0 10 * * *', 'VACUUM');
-```
-
-取消 pg_cron 中计划的所有任务
-```
-SELECT cron.unschedule(jobid) FROM cron.job;
-```
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

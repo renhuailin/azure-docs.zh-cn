@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 896b4db433164471f41aa09791ede5d677028bfb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e5573634edf29698e7b118487fb2ec4e22e8eec
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896607"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169430"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>教程：创建 PowerShell Runbook
 
@@ -138,7 +138,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
@@ -170,7 +170,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
@@ -202,7 +202,7 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    while(!($connectionResult) -and ($logonAttempt -le 10))
@@ -237,7 +237,7 @@ Runbook 当前会启动已在 Runbook 中硬编码的虚拟机。 如果在启�
     [string]$ResourceGroupName
    )
    # Ensures you do not inherit an AzContext in your runbook
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
    while(!($connectionResult) -and ($logonAttempt -le 10))

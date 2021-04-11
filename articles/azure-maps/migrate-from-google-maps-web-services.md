@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "100386843"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076382"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
@@ -46,11 +46,11 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 | 地理编码               | [搜索](/rest/api/maps/search)                                   |                         
 | 地点搜索           | [搜索](/rest/api/maps/search)                                   |                         
 | 地点自动完成      | [搜索](/rest/api/maps/search)                                   |                         
-| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            
-| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  
+| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。  |        
+| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。         |         
 | 静态地图              | [Render](/rest/api/maps/render/getmapimage)                       |                         
 | 时区               | [时区](/rest/api/maps/timezone)                              |                         
-| Elevation               | [高程（预览版）](/rest/api/maps/elevation)                   |                         |
+| Elevation               | [高程（预览版）](/rest/api/maps/elevation)                   | 
 
 以下服务 API 目前在 Azure Maps 中不可用：
 

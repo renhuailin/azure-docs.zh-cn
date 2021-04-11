@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033293"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074584"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
 平台日志提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 它们是自动生成的，虽然你需要配置某些平台日志，以便将其转发到一个或多个目标进行保留。 本文概述了平台日志，其中包括它们提供什么信息，以及如何配置它们以方便收集和分析。
@@ -45,8 +45,8 @@ ms.locfileid: "102033293"
 
 | 目标 | 说明 |
 |:---|:---|
-| Log Analytics 工作区 | 一起分析所有 Azure 资源的日志，并利用提供给 [Azure Monitor 日志](../logs/data-platform-logs.md)的所有功能，包括[日志查询](../logs/log-query-overview.md)和[日志警报](../alerts/alerts-log.md)。 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。 |  |
-| 事件中心 | 向 Azure 外部发送平台日志数据，例如，向第三方 SIEM 或自定义遥测平台发送。
+| Log Analytics 工作区 | 一起分析所有 Azure 资源的日志，并利用提供给 [Azure Monitor 日志](../logs/data-platform-logs.md)的所有功能，包括[日志查询](../logs/log-query-overview.md)和[日志警报](../alerts/alerts-log.md)。 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。 | 
+| 事件中心 | 向 Azure 外部发送平台日志数据，例如，向第三方 SIEM 或自定义遥测平台发送。 |
 | Azure 存储 | 将日志存档供审核或备份。 |
 
 - 若要详细了解如何为活动日志或资源日志创建诊断设置，请参阅[创建诊断设置以将平台日志和指标发送到不同目标](../essentials/diagnostic-settings.md)。 
