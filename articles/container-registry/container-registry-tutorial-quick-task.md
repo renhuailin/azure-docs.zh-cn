@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任�
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 384c7bebea8ed8120a1bc8134e4189e5e7bcb8db
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96030317"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060272"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -170,7 +170,7 @@ ACR 任务默认将成功生成的映像自动推送到注册表，这样即可�
 
 所有生产方案都应使用[服务主体][service-principal-auth]访问 Azure 容器注册表。 使用服务主体可以提供对容器映像的基于角色的访问控制。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
-#### <a name="create-a-key-vault"></a>创建 key vault
+#### <a name="create-a-key-vault"></a>创建密钥保管库
 
 如果 [Azure Key Vault](../key-vault/index.yml) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 

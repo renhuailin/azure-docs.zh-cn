@@ -1,7 +1,7 @@
 ---
 title: 快速入门：在 Azure 中创建 Linux SQL Server VM
 description: 本教程介绍如何在 Azure 门户中创建 Linux SQL Server 2017 虚拟机。
-services: virtual-machines-linux
+services: virtual-machines-sql
 author: MashaMSFT
 ms.date: 10/22/2019
 tags: azure-service-management
@@ -10,12 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 492d4a799f35d7fee4f500b48cbb31d2a9c5957f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790145"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449998"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "92790145"
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> 创建安装了 SQL Server 的 Linux VM
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 在左窗格中，选择“创建资源”。
 

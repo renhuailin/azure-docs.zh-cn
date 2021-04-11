@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96015190"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077462"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成
 
@@ -79,7 +79,6 @@ ms.locfileid: "96015190"
 |----------|-------------|
 | 预期的 TA1 | 向交换发送方返回技术确认 (TA1)。 |
 | 预期的 FA | 向交换发送方返回功能确认 (FA)。 <p>对于“FA 版本”属性，根据架构版本，选择 997 或 999 确认。 <p>若要在功能确认中为接受的事务集生成 AK2 循环，请选择“包括 AK2/IK2 循环”。 |
-||||
 
 <a name="inbound-schemas"></a>
 

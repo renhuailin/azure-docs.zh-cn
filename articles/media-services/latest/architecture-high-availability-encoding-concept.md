@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106970"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277872"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>媒体服务和视频点播 (VOD) 的高可用性
 
@@ -61,7 +61,7 @@ Azure 体系结构文档中有一个名为 [Geodes](/azure/architecture/patterns
 
 * [创建](./account-create-how-to.md)两个（或更多）Azure 媒体服务帐户。 这两个帐户必须位于不同的区域。 有关详细信息，请参阅[部署 Azure 媒体服务服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。
 * 将媒体上传到计划在其中提交作业的同一区域。 有关如何开始编码的详细信息，请参阅[从 HTTPS URL 创建作业输入](./job-input-from-http-how-to.md)或[从本地文件创建作业输入](./job-input-from-local-file-how-to.md)。
-* 如果随后需要将[作业](./transforms-jobs-concept.md)重新提交到另一个区域，你可以使用 `JobInputHttp` 或 `Copy-Blob` 将数据从源资产容器复制到备用区域中的资产容器。
+* 如果随后需要将[作业](./transform-jobs-concept.md)重新提交到另一个区域，你可以使用 `JobInputHttp` 或 `Copy-Blob` 将数据从源资产容器复制到备用区域中的资产容器。
 
 ### <a name="monitoring"></a>监视
 
@@ -72,10 +72,10 @@ Azure 体系结构文档中有一个名为 [Geodes](/azure/architecture/patterns
 
     更多相关信息：
 
-    * 请参阅[音频分析示例](./transforms-jobs-concept.md)，该示例展示了如何使用 Azure 事件网格监视作业，包括添加回退以防止 Azure 事件网格消息因某种原因而延迟。
+    * 请参阅[音频分析示例](./transform-jobs-concept.md)，该示例展示了如何使用 Azure 事件网格监视作业，包括添加回退以防止 Azure 事件网格消息因某种原因而延迟。
     * 查看[媒体服务事件的 Azure 事件网格架构](./media-services-event-schemas.md)。
 
-* 当你创建[作业](./transforms-jobs-concept.md)时：
+* 当你创建[作业](./transform-jobs-concept.md)时：
     * 从当前使用的帐户的列表中随机选择一个帐户（此列表通常包含两个帐户，但如果检测到问题，它可能只包含一个帐户）。 如果列表为空，则引发警报，以便操作员能够进行调查。
     * 创建记录以跟踪每个正在进行的作业以及所使用的区域/帐户。
 * 当 `JobStateChange` 处理程序收到作业已达到计划状态的通知时，请记录其进入计划状态的时间以及所使用的区域/帐户。

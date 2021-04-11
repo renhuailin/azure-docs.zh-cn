@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: d958d93731f38b4b553bca94f48c740c1b75cfd5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99089336"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449830"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player 插件库 #
 
@@ -35,7 +35,7 @@ ms.locfileid: "99089336"
 | 诊断输出                  | [演示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/diagnosticslogger/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-diagnostic-logger-plugin)                     | 此插件输出播放器的一组诊断。若要观看操作演示，请转到演示链接并打开 JavaScript 控制台。 |
 | 轻松访问                      | | | |
 | 放大                             | [演示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/zoom/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-zoom-plugin)                     | 此插件在播放器屏幕上显示一个可拖动的比例尺，允许观看者放大你的内容 |
-| 实时字幕                       | [Azure 博客文章](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/)、[SubPly 文章](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | 不适用 | 有关详细信息，请参阅相关文章。 为 Azure Media Player 的实时字幕生成插件设计了端到端工作流，请单击最左侧的链接以转到 SubPly 的站点，了解有关该解决方案的详细信息 |
+| 实时字幕                       | [Azure 博客文章](https://azure.microsoft.com/blog/live-real-time-captions-with-azure-media-services-and-player/)、[SubPly 文章](http://www.subply.com/en/Products/AzureLiveCaptions.htm) | 空值 | 有关详细信息，请参阅相关文章。 为 Azure Media Player 的实时字幕生成插件设计了端到端工作流，请单击最左侧的链接以转到 SubPly 的站点，了解有关该解决方案的详细信息 |
 | 热键                            | <strike>[演示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html)</strike>                        | <strike>[GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-hot-keys-plugin)</strike>                     | 有了此热键插件，观看者可以通过通用的插件组合来控制播放器的各个方面，例如，F 表示全屏，M 表示静音，箭头键用于进度条控制。 *注意：* 此插件已集成到 AMP 中，但你可以随意将其作为资源使用 |
 | 社交                              | | | |
 | 共享                               | [演示](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/share/example.html)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-social-share-plugin)                     | 此插件向播放器的控制栏添加了一个分享按钮，方便观看者通过 Facebook、Twitter 或 Linkedin 与好友分享观看的视频。 |

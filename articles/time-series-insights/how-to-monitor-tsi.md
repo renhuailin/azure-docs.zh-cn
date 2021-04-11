@@ -2,7 +2,7 @@
 title: 监视时序见解 | Microsoft Docs
 description: 监视时序见解的可用性、性能和操作。
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: a46ddeddfcefcd4d6e7f87747fe36cfc6ec82e35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737556"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504917"
 ---
 # <a name="monitoring-time-series-insights"></a>监视时序见解
 
@@ -44,7 +44,7 @@ ms.locfileid: "101737556"
 
 ## <a name="monitoring-data-from-azure-time-series-insights"></a>监视来自 Azure 时序见解的数据
 
-Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源相同。 
+Azure 时序见解收集的监视数据的类型与 [Azure 资源的监视数据](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源相同。
 
 请参阅 [Azure 时序见解监视数据引用](how-to-monitor-tsi-reference.md)来获取可以收集的日志和指标的详细参考信息。
 

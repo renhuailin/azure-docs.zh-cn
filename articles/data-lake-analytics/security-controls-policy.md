@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Analytics 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Data Lake Analytics 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-lake-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a6f077f3fcfeb0bde73c14142262915571502425
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ae87f45e800f826797aa5f43514f1948ee91f35c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590581"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094536"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics 的 Azure Policy 法规遵从性控制措施
 
