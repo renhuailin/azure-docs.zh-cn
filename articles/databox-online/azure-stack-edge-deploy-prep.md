@@ -6,21 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 03/16/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: 0e0d7808e449a6e4f3e341cd40acdc220e65c0ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761710"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068211"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教程：准备部署 Azure Stack Edge Pro  
 
-本文是完整部署 Azure Stack Edge Pro 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。
+本文是完整部署 Azure Stack Edge Pro 时必读的部署教程系列的第一篇教程。 本教程介绍如何准备 Azure 门户，以便部署 Azure Stack Edge 资源。 
 
-需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。
+需要有管理员权限才能完成安装和配置过程。 门户准备只需不到 10 分钟的时间。  
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -84,71 +83,67 @@ ms.locfileid: "98761710"
 
 * 若要使 Azure Stack Edge Pro 正常运行，请做好以下准备：
 
-  * 使用至少 10 Mbps 的下载带宽以确保设备更新。
+  * 使用至少 10 Mbps 的下载带宽以确保设备保持更新。
   * 使用至少 20 Mbps 的专用上传和下载带宽传输文件。
 
-## <a name="create-a-new-resource"></a>创建新资源
+## <a name="create-new-resource-for-existing-device"></a>为现有设备创建新资源
 
-如果现有的 Azure Stack Edge 资源可以管理物理设备，请跳过此步骤，转到[获取激活密钥](#get-the-activation-key)。
+如果你是现有的 Azure Stack Edge Pro 客户并需要更换或重置现有的设备，请使用以下过程创建新资源。
 
-若要创建 Azure Stack Edge 资源，请在 Azure 门户中执行以下步骤。
+如果你是新客户，我们建议先了解如何为工作负载使用 Azure Stack Edge Pro - GPU 设备。 有关详细信息，请参阅[什么是 Azure Stack Edge Pro with GPU](azure-stack-edge-gpu-overview.md)。 有关订购 Azure Stack Edge Pro with GPU 设备的信息，请参阅[为 Azure Stack Edge Pro - GPU 创建新资源](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)。
 
-1. 使用 Microsoft Azure 凭据通过 
+若要为现有设备创建新的 Azure Stack Edge Pro 资源，请在 Azure 门户中执行以下步骤。
+
+1. 使用 Microsoft Azure 凭据通过
 
     - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](../azure-government/documentation-government-get-started-connect-with-portal.md)。
 
-2. 在左窗格中，选择“+ 创建资源”。 搜索并选择“Azure Stack Edge/Data Box Gateway”。 选择“创建”。
-3. 选取要用于 Azure Stack Edge Pro 设备的订阅。 选择要部署 Azure Stack Edge 资源的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
+1. 选择“+ 创建资源”。  搜索并选择“Azure Stack Edge”。 然后选择“创建”。
 
-    选择离要部署设备的地理区域最近的位置。 该区域只存储用于设备管理的元数据。 实际数据可以存储在任何存储帐户中。
+1. 选择 Azure Stack Edge Pro 设备的订阅，并在“寄送地址”中选择要将该设备寄送到的国家/地区。
+
+   ![选择设备的订阅以及寄送到的国家/地区](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-01.png)
+
+
+1. 在显示的设备类型列表中，选择“Azure Stack Edge Pro - FPGA”。 然后选取“选择”  。 
+
+   仅当存在现有的设备时，才会显示“Azure Stack Edge Pro - FPGA”设备类型。 如果需要订购新设备，请参阅[为 Azure Stack Edge Pro - GPU 创建新资源](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)。
+
+   ![搜索 Azure Stack Edge 服务](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-02.png)
+
+1. 在“基本信息”选项卡上：
+
+   1. 输入或选择以下项目详细信息。
     
-    在“Azure Stack Edge Pro”选项中，选择“创建” 。
+       |设置  |值  |
+       |---------|---------|
+       |订阅    |系统会根据前面所做的选择自动填充此值。 订阅将链接到你的计费帐户。 |
+       |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
-    ![搜索 Azure Stack Edge 服务](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
+   1. 输入或选择以下“实例详细信息”。
 
-3. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。
-    
-    |设置  |Value  |
-    |---------|---------|
-    |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
-    |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
+       |设置  |值  |
+       |---------|---------|
+       |名称   | 用于标识资源的友好名称。<br>名称可具有 2 到 50 个字符，包括字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
+       |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
-4. 输入或选择以下“实例详细信息”。
+   1. 选择“查看 + 创建”。
 
-    |设置  |值  |
-    |---------|---------|
-    |名称   | 用于标识资源的友好名称。<br>名称可具有 2 到 50 个字符，包括字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
-    |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
+    ![项目和实例详细信息](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-03.png)
 
-    ![项目和实例详细信息](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
+1. 在“查看 + 创建”选项卡上，查看“使用条款”、“定价详细信息”和资源的详细信息。   然后选择“创建”。
 
-5. 在完成时选择“下一步:送货地址”。
+    ![查看 Azure Stack Edge 资源详细信息和隐私条款](media/azure-stack-edge-deploy-prep/create-fpga-existing-resource-04.png)
 
-    - 如果你已有一个设备，请选择与“我有 Azure Stack Edge 设备”对应的组合框。
-    - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
+1. 创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
-    ![新设备的送货地址](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
+   ![转到 Azure Stack Edge 资源](media/azure-stack-edge-deploy-prep/data-box-edge-resource-01.png)
 
-6. 在完成时选择“下一步:查看 + 创建”。
+在你下单以后，Microsoft 会审核该订单并通过电子邮件联系你，核对配送详细信息。
 
-7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
+![关于审核 Azure Stack Edge Pro 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource-02.png)
 
-    ![查看 Azure Stack Edge 资源详细信息和隐私条款](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
-
-8. 选择“创建”。
-
-   创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
-
-   ![转到 Azure Stack Edge 资源](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
-
-在你下单以后，Microsoft 会审核订单并通过电子邮件联系你，核对配送详细信息。
-
-![关于审核 Azure Stack Edge Pro 订单的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
-
-
-> [!NOTE]
-> 如果要一次创建多个订单或克隆现有订单，可以使用 [Azure 示例中的脚本](https://github.com/Azure-Samples/azure-stack-edge-order)。 有关详细信息，请参阅自述文件。
 
 ## <a name="get-the-activation-key"></a>获取激活密钥
 
@@ -156,7 +151,7 @@ ms.locfileid: "98761710"
 
 1. 转到创建的资源，然后选择“概述”。 你将看到一个通知，指示你的订单正在处理中。
 
-    ![选择“概述”](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![选择“概述”](media/azure-stack-edge-deploy-prep/data-box-edge-select-device-setup.png)
 
 2. 订单处理完毕并且设备就绪后，“概述”将更新。 接受默认的 Azure Key Vault 名称或输入新名称。 选择“生成激活密钥”。 选择复制图标复制密钥并将其保存供日后使用。
 

@@ -4,7 +4,6 @@ description: 本快速入门文章介绍如何使用 Azure 门户创建流量管
 services: traffic-manager
 author: duongau
 manager: twooley
-Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
-ms.openlocfilehash: 45489d3500a4a744f2aeb34dc21122d180797133
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1a26becbc7ffaddc09dc06c5dff12f83deaa9ee2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92101288"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067208"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流量管理器配置文件
 
@@ -31,13 +30,13 @@ ms.locfileid: "92101288"
 
 本快速入门需要两个部署在两个不同的 Azure 区域（美国东部和西欧）的 Web 应用程序实例。   每个都可以充当流量管理器的主终结点和故障转移终结点。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在屏幕的左上方，选择“创建资源”。 搜索“Web 应用”，然后选择“创建” 。
 
 1. 在“创建 Web 应用”中，在“基本信息”选项卡中键入或选择以下值：  
 
-    | 设置                 | Value |
+    | 设置                 | 值 |
     | ---                     | --- |
     | 订阅            | 选择订阅。 |    
     | 资源组          | 选择“新建”，然后在文本框中输入“myResourceGroupTM1”。|
@@ -64,7 +63,7 @@ ms.locfileid: "92101288"
 1. 在屏幕的左上方，选择“创建资源”。 然后搜索“流量管理器配置文件”，然后选择“创建” 。
 1. 在“创建流量管理器配置文件”中，输入或选择以下设置： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | --------| ----- |
     | 名称 | 为流量管理器配置文件输入唯一名称。|
     | 路由方法 | 选择“优先级”。 |
@@ -86,7 +85,7 @@ ms.locfileid: "92101288"
 
 1. 输入或选择以下设置：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ------|
     | 类型 | 选择“Azure 终结点”。  |
     | 名称 | 输入 *myPrimaryEndpoint*。 |
@@ -99,7 +98,7 @@ ms.locfileid: "92101288"
 1. 选择“确定”  。
 1. 若要为第二个 Azure 区域创建故障转移终结点，请使用以下设置重复步骤 3 和 4：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ------|
     | 类型 | 选择“Azure 终结点”。  |
     | 名称 | 输入 *myFailoverEndpoint*。 |
