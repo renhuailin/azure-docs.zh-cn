@@ -1,30 +1,20 @@
 ---
 title: 安全代理身份验证方法
 description: 了解在使用 Defender for IoT 服务时可用的不同身份验证方法。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: bd4d89d8664dae2421ff7f268b3710b5a906427b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784605"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法
 
 本文介绍了可与 AzureIoTSecurity 代理一起用来向 IoT 中心进行身份验证的不同身份验证方法。
 
-加入 IoT 中心内 Defender for IoT 的每个设备都需要一个安全模块。 要对设备进行身份验证，Defender for IoT 可以使用以下两种方法之一。 请选择最适合于现有 IoT 解决方案的方法。
+加入 IoT 中心内 Defender for IoT 的每个设备都需要一个 Defender-IoT-micro-agent。 要对设备进行身份验证，Defender for IoT 可以使用以下两种方法之一。 请选择最适合于现有 IoT 解决方案的方法。
 
 - SecurityModule 选项
 - Device 选项
@@ -33,12 +23,12 @@ ms.locfileid: "102449163"
 
 Defender for IoT AzureIoTSecurity 代理用来执行身份验证的两种方法如下：
 
-- SecurityModule 身份验证模式<br>
-将使用独立于设备标识的安全模块标识对代理进行身份验证。
-如果希望安全代理通过安全模块使用专用身份验证方法（仅限对称密钥），请使用此身份验证类型。
+- **Defender-IoT-micro-agent** 身份验证模式<br>
+将使用独立于设备标识的 Defender-IoT-micro-agent 标识对代理进行身份验证。
+如果希望安全代理通过 Defender-IoT-micro-agent 使用专用身份验证方法（仅限对称密钥），请使用此身份验证类型。
 
 - Device 身份验证模式<br>
-在此方法中，安全代理首先用设备标识进行身份验证。 初始身份验证完成后，Defender for IoT 代理会将 REST API 与设备的身份验证数据配合使用来执行对 IoT 中心的 REST 调用。 然后，Defender for IoT 代理将从 IoT 中心请求安全模块身份验证方法和数据。 在最后一步中，Defender for IoT 代理将针对 Defender for IoT 模块执行身份验证。
+在此方法中，安全代理首先用设备标识进行身份验证。 初始身份验证完成后，Defender for IoT 代理会将 REST API 与设备的身份验证数据配合使用来执行对 IoT 中心的 REST 调用。 然后，Defender for IoT 代理将从 IoT 中心请求 Defender-IoT-micro-agent 身份验证方法和数据。 在最后一步中，Defender for IoT 代理将针对 Defender for IoT 模块执行身份验证。
 
 如果希望安全代理重新使用现有设备身份验证方法（自签名证书或对称密钥），请使用此身份验证类型。
 

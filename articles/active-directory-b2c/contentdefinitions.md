@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/26/2020
+ms.date: 02/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: MT
+ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108971"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489315"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "97108971"
 
 **ContentDefinition** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。  |
 
@@ -82,7 +82,7 @@ ms.locfileid: "97108971"
 | 页面标识符 | 说明 |
 | ----- | ----------- |
 | `globalexception` | 遇到异常或错误时显示错误页面。 |
-| `providerselection`、`idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
+| `providerselection`, `idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
@@ -115,49 +115,53 @@ ms.locfileid: "97108971"
 
 | 旧 DataUri 值 | 新 DataUri 值 |
 | ----------------- | ----------------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
-以下示例显示了内容定义标识符以及对应的包含页面协定的 DataUri： 
+以下示例显示了内容定义标识符以及对应的包含最新页面版本的 DataUri： 
 
 ```xml
-<ContentDefinitions>
-  <ContentDefinition Id="api.error">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.idpselections">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.idpselections.signup">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.signuporsignin">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.selfasserted">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.selfasserted.profileupdate">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.localaccountsignup">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.localaccountpasswordreset">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
-  </ContentDefinition>
-  <ContentDefinition Id="api.phonefactor">
-    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
-  </ContentDefinition>
-</ContentDefinitions>
+<!-- 
+<BuildingBlocks> -->
+  <ContentDefinitions>
+    <ContentDefinition Id="api.error">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.idpselections">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.idpselections.signup">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.signuporsignin">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.selfasserted">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.selfasserted.profileupdate">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.localaccountsignup">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.localaccountpasswordreset">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+    </ContentDefinition>
+    <ContentDefinition Id="api.phonefactor">
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.2</DataUri>
+    </ContentDefinition>
+  </ContentDefinitions>
+<!-- 
+</BuildingBlocks> -->
 ```
 
 ### <a name="metadata"></a>元数据
@@ -166,7 +170,7 @@ ms.locfileid: "97108971"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 与内容定义相关的元数据。 |
+| 项目 | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
@@ -226,13 +230,13 @@ ms.locfileid: "97108971"
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **错误页面** - 遇到异常或错误时显示错误页面。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **标识提供者选项页面** - 列出可供用户在登录期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
 | **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **注册时的标识提供者选项** - 列出可供用户在注册期间选择的标识提供者。 选项通常是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
-| **api.localaccountpasswordreset** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘记了密码页面** - 显示一个窗体，用户必须填写该窗体才能发起密码重置。 |
-| **api.localaccountsignin** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本地帐户登录页面** - 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 该窗体可以包含文本输入框和密码输入框。 |
-| **api.localaccountsignup** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本地帐户注册页面** - 显示一个窗体，用于注册基于电子邮件地址或用户名的本地帐户。 该窗体可以包含各种输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |
+| **api.localaccountpasswordreset** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘记了密码页面** - 显示一个窗体，用户必须填写该窗体才能发起密码重置。 |
+| **api.localaccountsignin** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本地帐户登录页面** - 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 该窗体可以包含文本输入框和密码输入框。 |
+| **api.localaccountsignup** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本地帐户注册页面** - 显示一个窗体，用于注册基于电子邮件地址或用户名的本地帐户。 该窗体可以包含各种输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **多重身份验证页面** - 在注册或登录期间使用短信或语音来验证电话号码。 |
-| **api.selfasserted** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **社交帐户注册页面** - 显示一个窗体，用户在使用社交标识提供者的现有帐户注册时必须填写此窗体。 除了密码输入字段之外，此页面类似于前面的社交帐户注册页面。 |
-| **api.selfasserted.profileupdate** | [updateprofile](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **个人资料更新页面** - 显示用户在更新其个人资料时可以访问的窗体。 除了密码输入字段之外，此页面类似于社交帐户注册页面。 |
-| **api.signuporsignin** | [统一的 cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **统一注册或登录页面** - 处理用户注册和登录过程。 用户可以使用企业标识提供者、社交标识提供者（例如 Facebook 或 Google+）或本地帐户。 |
+| **api.selfasserted** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **社交帐户注册页面** - 显示一个窗体，用户在使用社交标识提供者的现有帐户注册时必须填写此窗体。 除了密码输入字段之外，此页面类似于前面的社交帐户注册页面。 |
+| **api.selfasserted.profileupdate** | [updateprofile.cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **个人资料更新页面** - 显示用户在更新其个人资料时可以访问的窗体。 除了密码输入字段之外，此页面类似于社交帐户注册页面。 |
+| **api.signuporsignin** | [unified.cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **统一注册或登录页面** - 处理用户注册和登录过程。 用户可以使用企业标识提供者、社交标识提供者（例如 Facebook 或 Google+）或本地帐户。 |
 
 ## <a name="next-steps"></a>后续步骤
 

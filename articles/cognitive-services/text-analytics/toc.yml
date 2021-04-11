@@ -5,10 +5,38 @@
   items:
     - name: 什么是文本分析 API？
       href: overview.md
-    - name: 示例用户方案
-      href: text-analytics-user-scenarios.md
+    - name: 语言支持
+      href: language-support.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 新增功能
       href: whats-new.md
+    - name: 文本分析常见问题解答
+      href: text-analytics-resource-faq.md
+- name: 文本分析快速入门
+  href: quickstarts/client-libraries-rest-api.md
+- name: 示例
+  items:
+    - name: v3.0
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
+    - name: v3.1-preview
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
 - name: 负责使用 AI
   items:
     - name: 透明度说明
@@ -28,11 +56,50 @@
     - name: 集成和负责使用
       href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
       displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
-- name: 快速入门
-  expanded: true
+- name: 操作指南
   items:
-    - name: 使用客户端库和 REST API
-      href: quickstarts/client-libraries-rest-api.md
+    - name: 调用文本分析 API
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: 语言检测
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: 情绪分析和观点挖掘
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: 关键短语提取
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: 命名实体识别和 PII
+      href: How-tos/text-analytics-how-to-entity-linking.md
+      displayName: 'NER, Named entity recognition, PII, redaction'
+    - name: 运行状况文本分析
+      href: How-tos/text-analytics-for-health.md
+    - name: 部署文本分析
+      items:
+        - name: 容器
+          items:
+            - name: 安装和运行容器
+              href: how-tos/text-analytics-how-to-install-containers.md
+            - name: 配置容器
+              href: text-analytics-resource-container-config.md
+            - name: 使用容器实例
+              maintainContext: true
+              href: ../containers/azure-container-instance-recipe.md
+            - name: 使用 Kubernetes 服务 (AKS)
+              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+            - name: 认知服务容器文档
+              href: ../containers/index.yml
+    - name: 迁移到 API 的版本 3
+      href: migration-guide.md
+- name: 概念
+  items:
+    - name: 示例用户方案
+      href: text-analytics-user-scenarios.md
+    - name: 命名实体类型
+      href: named-entity-types.md
+    - name: Unicode 编码和文本偏移
+      href: concepts/text-offsets.md
+    - name: 数据限制
+      href: concepts/data-limits.md
+    - name: 模型版本控制
+      href: concepts/model-versioning.md
 - name: 教程
   items:
     - name: 集成 Power BI 以分析客户反馈
@@ -47,53 +114,8 @@
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md
     - name: 使用 Power Automate 在 Excel 中提取信息
       href: tutorials/extract-excel-information.md
-- name: 概念
-  items:
-    - name: 命名实体类型
-      href: named-entity-types.md
-    - name: 语言支持
-      href: language-support.md
-    - name: 文本偏移量
-      href: concepts/text-offsets.md
-    - name: 数据限制
-      href: concepts/data-limits.md
-    - name: 模型版本控制
-      href: concepts/model-versioning.md
-- name: 操作指南
-  items:
-    - name: 调用文本分析 API
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: 语言检测
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: 情绪分析和观点挖掘
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: 关键短语提取
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: 命名实体识别
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: 运行状况文本分析
-      href: How-tos/text-analytics-for-health.md
-    - name: 使用容器
-      items:
-        - name: 安装和运行容器
-          href: how-tos/text-analytics-how-to-install-containers.md
-        - name: 配置容器
-          href: text-analytics-resource-container-config.md
-        - name: 使用容器实例
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: 使用 Kubernetes 服务 (AKS)
-          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-        - name: 认知服务容器文档
-          href: ../containers/index.yml
-    - name: 迁移到 API 的版本 3
-      href: migration-guide.md
 - name: 参考
   items:
-    - name: CLI 参考
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: PowerShell 参考
-      href: /powershell/module/azurerm.cognitiveservices/
     - name: 文本分析 API
       items:
         - name: v3.1.preview.3
@@ -104,6 +126,16 @@
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: SDK
       items:
+        - name: v3.1-preview
+          items:
+            - name: .NET
+              href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview
+            - name: Python
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview
+            - name: Java
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview
+            - name: Node.js
+              href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview
         - name: v3.0
           items:
             - name: .NET
@@ -126,16 +158,16 @@
               href: /javascript/api/@azure/cognitiveservices-textanalytics/
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
+    - name: CLI 参考
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell 参考
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源
   items:
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 外部和社区内容
       href: text-analytics-resource-external-community.md
-    - name: 常见问题解答
-      href: text-analytics-resource-faq.md
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 合规性

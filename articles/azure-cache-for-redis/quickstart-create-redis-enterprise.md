@@ -7,16 +7,16 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 63daa7cda2f10448e9a0f8e250412137dc2af892
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8b450ddff0952777652a957ba2ed554a4bc6497d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563891"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584816"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>快速入门：创建 Redis Enterprise 缓存
 
-Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [Redis Enterprise](https://redislabs.com/redis-enterprise/)。 此功能目前以预览版的形式提供。 此预览版中有两个新层：
+Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [Redis Enterprise](https://redislabs.com/redis-enterprise/)。 这些新的层级为：
 * 企业层，它在虚拟机上使用易失存储器 (DRAM) 存储数据
 * Enterprise Flash，使用易失存储器和非易失存储器（NVMe 或 SSD）存储数据。
 
@@ -25,7 +25,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
 在开始之前，你需要一个 Azure 订阅。 如果没有帐户，请创建一个[帐户](https://azure.microsoft.com/)。 有关详细信息，请参阅[企业层的特殊注意事项](cache-overview.md#special-considerations-for-enterprise-tiers)。
 
 ## <a name="create-a-cache"></a>创建缓存
-1. 若要创建缓存，请使用预览版邀请中的链接登录到 Azure 门户，然后选择“创建资源”。
+1. 若要创建缓存，请登录到 **Azure 门户** 并选择“创建资源”  。
 
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
    
@@ -38,7 +38,7 @@ Azure Cache for Redis 企业层在 Azure 上提供了完全集成和托管的 [R
    | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
    | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
    | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名将为 \<DNS name>.<Azure region>.redisenterprise.cache.azure.net。 | 
-   | **位置** | 单击下拉箭头并选择一个位置。 | 在预览期间，企业层在有限的 Azure 区域可用。 |
+   | **位置** | 单击下拉箭头并选择一个位置。 | 企业层在所选 Azure 区域中可用。 |
    | **缓存类型** | 下拉并选择 Enterprise 或 Enterprise Flash 层和大小 。 |  此层决定可用于缓存的大小、性能和功能。 |
    
    :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="企业层“基本”选项卡":::

@@ -8,24 +8,26 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3212493963805de3c8845ec494d87fc92d72998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 9ff154eee6c6174a8f1a3aa7bea37ef62273bb1a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76760107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489496"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Azure IoT Edge 的安全标准
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge 可以解决将数据和分析结果转移到智能边缘所带来的风险。 IoT Edge 安全标准可以平衡不同部署方案的灵活性，同时提供所有 Azure 服务预期会提供的保护。
 
 IoT Edge 在不同的硬件品牌和型号上运行，支持多种操作系统，并且适用于各种部署方案。 IoT Edge 是一个可扩展的安全框架，它基于针对规模设计的有充分根据的原则，而不是为特定的场景提供具体解决方案。 部署方案的风险取决于许多因素，包括：
 
 * 解决方案所有权
-* 部署地域
+* 部署地理位置
 * 数据敏感度
 * 隐私
-* 应用程序垂直
+* 垂直应用程序
 * 法规要求
 
 本文提供 IoT Edge 安全框架的概述。 有关详细信息，请参阅[保护智能边缘](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)。
@@ -38,7 +40,7 @@ IoT Edge 在不同的硬件品牌和型号上运行，支持多种操作系统�
 
 部署 IoT 解决方案时，你需要知道的是：只能让受信任的执行组件、设备和模块访问你的解决方案。 基于证书的身份验证是 Azure IoT Edge 平台身份验证的主要机制。 此机制源于 Internet 工程任务组 (IETF) 用于管理公钥基础结构 (PKiX) 的一套标准。
 
-与 Azure IoT Edge 设备交互的所有设备、模块和执行组件都应具有唯一的证书标识。 本指南适用于是物理交互还是通过网络连接进行交互。 不是每个方案或组件都可适用于基于证书的身份验证，因为安全框架的扩展性提供了安全的备用方法。
+与 Azure IoT Edge 设备交互的所有设备、模块和执行组件都应具有唯一的证书标识。 无论交互是物理交互还是通过网络连接进行的交互，本指南均适用。 不是每个方案或组件都可适用于基于证书的身份验证，因为安全框架的扩展性提供了安全的备用方法。
 
 有关详细信息，请参阅 [Azure IoT Edge 证书使用](iot-edge-certs.md)。
 

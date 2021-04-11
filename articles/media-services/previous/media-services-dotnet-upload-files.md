@@ -1,9 +1,9 @@
 ---
 title: 使用 .NET 将文件上传到媒体服务帐户 | Microsoft Docs
-description: 了解如何通过使用 .NET 创建和上传资产将媒体内容引入媒体服务。
+description: 了解如何使用 .NET 通过创建和上传资产来将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c9c86380-9395-4db8-acea-507c52066f73
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: ee9bcc6861245ce40c43570126445a3613cd2744
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695588"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103013697"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户
 
@@ -37,7 +37,7 @@ ms.locfileid: "98695588"
 
 请注意以下事项：
  
- * 为流式处理 (内容生成 Url 时，媒体服务将使用 IAssetFile.Name 属性的值，例如 http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters。 ) ，则不允许使用百分号编码。 **Name** 属性的值不能含有任何以下 [百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
+ * 生成流式处理内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下 [百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。
 * 名称长度不应超过 260 个字符。
 * 在媒体服务中进行处理时，系统支持的最大文件大小存在限制。 有关文件大小限制的详细信息，请参阅[此文](media-services-quotas-and-limitations.md)。
 * 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。

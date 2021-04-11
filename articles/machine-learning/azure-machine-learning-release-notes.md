@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521197"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103471746"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -26,7 +26,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>适用于 Python v1.24.0 的 Azure 机器学习 SDK
-+ **新功能**
++ **Bug 修复与改进**
   + **azureml-automl-core**
     + 从 `azureml.automl.core.shared` 中删除了后向兼容的导入。 可以通过从 `azureml.automl.runtime.shared` 导入来解决 `azureml.automl.core.shared` 命名空间中找不到模块的错误。
   + **azureml-contrib-automl-dnn-vision**
@@ -59,8 +59,8 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
   + [本机终端 (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal)。 用户现在可以访问集成终端，并可以通过集成终端访问 Git 操作。
   + [笔记本片段（预览版）](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 常见的 Azure ML 代码摘录现在随时可用。 导航到可通过工具栏访问的代码片段面板，或按 Ctrl + 空格键激活代码内代码片段菜单。  
   + [键盘快捷方式](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys)。 使用 Jupyter 中提供的键盘快捷方式进行完整的奇偶校验。 
-  + 指示单元参数。 指示用户笔记本中的单元是参数单元，可以通过计算实例上的 [Papermill](https://github.com/nteract/papermill) 运行参数化的笔记本。
-  + 终端和内核会话管理器：用户将能够管理计算机上运行的所有内核和终端会话。
+  + 指示单元参数。 指示用户笔记本中的哪些单元是参数单元，可以通过计算实例上的 [Papermill](https://github.com/nteract/papermill) 运行参数化笔记本。
+  + 终端和内核会话管理器：用户将能够管理其计算机上运行的所有内核和终端会话。
   + “共享”按钮。 用户现在可以通过右键单击文件和使用“共享”按钮在笔记本文件资源管理器中共享任何文件。
 
 
@@ -75,7 +75,7 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 ## <a name="2021-02-16"></a>2021-02-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1230"></a>适用于 Python v1.23.0 的 Azure 机器学习 SDK
-+ **新功能**
++ **Bug 修复与改进**
   + **azureml-core**
     + [试验功能] 添加对将 Synapse 工作区作为链接服务链接到 AML 的支持
     + [试验功能] 添加对将 Synapse Spark 池作为计算附加到 AML 中的支持

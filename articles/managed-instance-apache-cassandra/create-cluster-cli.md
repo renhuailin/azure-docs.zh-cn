@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.openlocfilehash: b719310a331044df363efcc6b79be323faf49247
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424693"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562097"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>快速入门：使用 Azure CLI 创建 Azure Managed Instance for Apache Cassandra 群集（预览版）
 
@@ -26,12 +26,12 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* 本文需要 Azure CLI 2.12.1 或更高版本。 如果你使用的是 Azure Cloud Shell，则表示已安装最新版本。
-
-* 与自承载环境或本地环境连接的 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 若要详细了解如何将本地环境连接到 Azure，请参阅[将本地网络连接到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) 一文。
+* 与自承载环境或本地环境连接的 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 若要详细了解如何将本地环境连接到 Azure，请参阅[将本地网络连接到 Azure](/azure/architecture/reference-architectures/hybrid-networking/) 一文。
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+> [!IMPORTANT]
+> 本文需要 Azure CLI 2.17.1 或更高版本。 如果你使用的是 Azure Cloud Shell，则表示已安装最新版本。
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>创建托管实例群集
 
@@ -56,15 +56,18 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
    ```
 
    > [!NOTE]
-   > 上一命令中的 `assignee` 和 `role` 值分别是固定的服务主体和角色标识符。
+   > 上一命令中的 `assignee` 和 `role` 值是固定值，请完全按照命令中的说明输入这些值。 如果不这样做，则会在创建群集时出错。 如果在执行此命令时遇到任何错误，则你可能没有运行此命令的权限，请与管理员联系以获取权限。
 
-1. 接下来，在新创建的虚拟网络中创建群集。 运行以下命令，并确保将在上一个命令中检索到的 `Resource ID` 值用作 `delegatedManagementSubnetId` 变量的值：
+1. 接下来，使用 [az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) 命令在新创建的虚拟网络中创建群集。 运行以下命令，`delegatedManagementSubnetId` 变量的值：
+
+   > [!NOTE]
+   > 你将在下面提供的 `delegatedManagementSubnetId` 变量的值与你在上面的命令中提供的 `--scope` 的值完全相同：
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
    clusterName='<Cluster_Name>'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource_ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
    initialCassandraAdminPassword='myPassword'
     
    az managed-cassandra cluster create \
@@ -76,30 +79,28 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
       --debug
    ```
 
-1. 最后，创建一个数据中心供群集使用，该中心包含 3 个节点：
+1. 最后，使用 [az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) 命令为群集创建一个数据中心，其中包含三个节点：
 
    ```azurecli-interactive
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId='<Resource_ID>'
     
    az managed-cassandra datacenter create \
       --resource-group $resourceGroupName \
       --cluster-name $clusterName \
       --data-center-name $dataCenterName \
       --data-center-location $dataCenterLocation \
-      --delegated-subnet-id $delegatedSubnetId \
+      --delegated-subnet-id $delegatedManagementSubnetId \
       --node-count 3 
    ```
 
-1. 创建数据中心后，如果想要纵向扩展或缩减数据中心内的节点，请运行以下命令。 将 `node-count` 参数的值更改为所需的值：
+1. 创建数据中心后，如果想要纵向扩展或缩减数据中心内的节点，请运行 [az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) 命令。 将 `node-count` 参数的值更改为所需的值：
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
    clusterName='<Cluster Name>'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource_ID>'
     
    az managed-cassandra datacenter update \
       --resource-group $resourceGroupName \
@@ -131,6 +132,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>疑难解答
+
+如果在将权限应用到虚拟网络时遇到错误，如 *无法在e5007d2c-4b13-4a74-9b6a-605d99f03501”的图形数据库中找到用户或服务主体*，则可以在 Azure 门户中手动应用相同的权限。 要在门户中应用权限，请访问现有虚拟网络的“访问控制 (IAM)”窗格，并将“Azure Cosmos DB”的角色分配添加到“网络管理员”角色。 如果搜索“Azure Cosmos DB”时出现两个条目，请同时添加这两个条目，如下图所示： 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="应用权限" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB 角色分配仅用于部署目的。 Azure Managed Instanced for Apache Cassandra 对于 Azure Cosmos DB 不存在后端依赖关系。  
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640833"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
 
@@ -35,9 +35,9 @@ ms.locfileid: "104889104"
 
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md?tabs=python)。
 
-* [在 Azure 门户中创建 Synapse 工作区](/synapse-analytics/quickstart-create-workspace.md)。
+* [在 Azure 门户中创建 Synapse 工作区](/azure/synapse-analytics/quickstart-create-workspace)。
 
-* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+* [使用 Azure 门户、Web 工具或 Synapse Studio 创建 Apache Spark 池](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)
 
 * 安装 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)
 
@@ -100,7 +100,7 @@ linked_service.unregister()
 执行以下步骤，通过 Azure 机器学习工作室将机器学习工作区链接到 Synapse 工作区： 
 
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
-1. 在左窗格的“管理”部分中选择“链接服务” 。
+1. 在左窗格的“管理”部分中选择“链接服务”。
 1. 选择“添加集成”。
 1. 在“链接工作区”窗体上，填充字段
 

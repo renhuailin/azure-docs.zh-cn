@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 8e0b94a46e96dd8ba16040e16b421520eb67de19
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583466"
 ---
 # <a name="programmatic-access-paradigm"></a>编程式访问范例
@@ -247,7 +247,7 @@ ms.locfileid: "102583466"
 | `StartTime` | 报表执行开始时的 UTC 时间，格式如下：yyyy-MM-ddTHH:mm:ssZ |
 | `ReportStatus` | 报表执行的状态。 可能的值为 **Paused**、**Active** 和 **Inactive**。 |
 | `RecurrenceInterval` | 创建报表期间提供的重复间隔 |
-| `RecurrenceCount` | 创建报表期间提供的重复次数 |
+| `RecurrenceCount` | 在报表创建期间提供的定期执行计数 |
 | `CallbackUrl` | 在请求中提供的回调 URL |
 | `Format` | 报表文件的格式。 可能的值为 CSV 或 TSV。 |
 | `TotalCount` | 值数组中的数据集数目 |

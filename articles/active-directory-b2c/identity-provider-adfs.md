@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3082c249b04b5efc71187dd03515bc8c875b7c2f
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448585"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489162"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 AD FS 作为 SAML 标识提供者
 
@@ -156,9 +156,16 @@ ms.locfileid: "102448585"
 https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
+使用[自定义域](custom-domain.md)时，请使用以下格式：
+
+```
+https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
+```
+
 请替换以下值：
 
-- 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
+- 将 your-tenant-name 替换为租户的名称，例如 your-tenant.onmicrosoft.com。
+- 将 your-domain-name 替换为你的自定义域名，例如 login.contoso.com。
 - 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
 - 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
 
@@ -197,7 +204,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 在“策略”下，选择“Identity Experience Framework”
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，选择你[之前注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“Contoso AD FS”以使用 Contoso AD FS 标识提供者登录。
 

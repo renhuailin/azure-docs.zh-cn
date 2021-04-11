@@ -1,25 +1,14 @@
 ---
 title: 安装和部署 Linux C# 代理
 description: 了解如何在 Linux 上安装和部署 Defender for IoT 基于 C# 的安全代理
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: ec26cd0b66b6d08d8bd686d8f3e5ad8011df10b1
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c84a70928be13212b56636ad1fbb9baaadd0e7d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449758"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784197"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>部署 Linux 版 Defender for IoT 基于 C# 的安全代理
 
@@ -38,7 +27,7 @@ ms.locfileid: "102449758"
 
 1. 若要部署安全代理，需要在安装计算机上拥有本地管理员权限。
 
-1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
+1. 为设备[创建 Defender-IoT-micro-agent](quickstart-create-security-twin.md)。
 
 ## <a name="installation"></a>安装
 
