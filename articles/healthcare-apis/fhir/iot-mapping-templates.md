@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 581afbb5cec166f0ef5048b6ecc89f8ff95fd794
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: e43b5068544927ba4d04c86b16d3a15510c32bed
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017957"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448466"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>适用于 FHIR 的 Azure IoT 连接器（预览版）映射模版
 本文详细介绍了如何使用映射模板为快速医疗保健互操作性资源配置 Azure IoT 连接器 (FHIR&#174;) *。
@@ -133,7 +133,7 @@ JsonPathContentTemplate 允许使用 JSON 路径从事件中心消息中匹配�
 {
     "typeName": "bloodpressure",
     "typeMatchExpression": "$..[?(@systolic && @diastolic)]",
-    "deviceIdExpression": "$.deviceid",
+    "deviceIdExpression": "$.deviceId",
     "timestampExpression": "$.endDate",
     "values": [
         {
@@ -444,7 +444,7 @@ IotCentralJsonPathContentTemplate 也不需要 DeviceIdExpression 和 TimestampE
 |**代码 []。编写**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)代码。
 |**代码 []。主板**|用于 [编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的系统。
 |**代码 []。显示**|[编码](http://hl7.org/fhir/datatypes-definitions.html#coding)的显示。
-|值|要在观察中提取并表示的值。 有关详细信息，请参阅 [值类型模板](#valuetypes)。
+|**值**|要在观察中提取并表示的值。 有关详细信息，请参阅 [值类型模板](#valuetypes)。
 |**组件**|*可选：* 要在观察上创建的一个或多个组件。
 |**组件 []。条码**|要应用于组件的一个或多个 [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
 |**组件 []。负值**|要在组件中提取并表示的值。 有关详细信息，请参阅 [值类型模板](#valuetypes)。

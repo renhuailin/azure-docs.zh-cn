@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d75986880075f6eb07aa31b9322bdae15535802
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437598"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567519"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -74,7 +74,7 @@ ms.locfileid: "102437598"
     
     ![注册 Kubernetes 资源提供程序 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-还可以通过 `az cli` 注册资源提供程序。 有关详细信息，请参阅[为已启用 Azure Arc 的 Kubernetes 注册两个提供程序](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
+还可以通过 `az cli` 注册资源提供程序。 有关详细信息，请参阅[为已启用 Azure Arc 的 Kubernetes 注册两个提供程序](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)
 
 ## <a name="create-service-principal-assign-role"></a>创建服务主体并分配角色
 
@@ -150,7 +150,7 @@ ms.locfileid: "102437598"
     以下是示例：
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
         [10.128.44.240]: PS>
     ```
     
@@ -226,7 +226,7 @@ ms.locfileid: "102437598"
 
 
 > [!NOTE]
-> 默认情况下，从 Git 存储库中删除资源 `yamls` 时，不会从 Kubernetes 群集中删除相应的资源。 需要在 Arc OperatorParams 中设置 `--sync-garbage-collection`，这样，当你从 git 存储库中删除资源时，就能够删除资源。 有关详细信息，请参阅[删除配置](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)
+> 默认情况下，从 Git 存储库中删除资源 `yamls` 时，不会从 Kubernetes 群集中删除相应的资源。 需要在 Arc OperatorParams 中设置 `--sync-garbage-collection`，这样，当你从 git 存储库中删除资源时，就能够删除资源。 有关详细信息，请参阅[删除配置](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)
 
 ## <a name="next-steps"></a>后续步骤
 

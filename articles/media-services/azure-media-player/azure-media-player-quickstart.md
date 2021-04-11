@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956054"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448621"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player 快速入门
 Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服务帐户中的媒体内容的基本播放。 本部分展示了基本步骤，未提供详细信息。 后面的部分介绍了有关如何安装和配置 Azure Media Player 的具体信息。  只需要将以下包括项添加到文档的 `<head>`：
@@ -22,7 +22,7 @@ Azure Media Player 易于设置。 只需几分钟便可实现 Azure 媒体服�
 ```
 
 > [!IMPORTANT]
->  不应当在生产中使用`latest`版本，因为此版本可能会根据需要进行更改。 请将 `latest` 替换为 Azure Media Player 的某个版本；例如将 `latest` 替换为 `1.0.0`。 可以从[此处](azure-media-player-changelog.md)查询 Azure Media Player 版本。
+>  不应当在生产中使用`latest`版本，因为此版本可能会根据需要进行更改。 请将 `latest` 替换为 Azure Media Player 的某个版本；例如将 `latest` 替换为 `1.0.0`。 可以从[此处](https://amp.azure.net/libs/amp/latest/docs/changelog.html)查询 Azure Media Player 版本。
 
 ## <a name="use-the-video-element"></a>使用视频元素
 

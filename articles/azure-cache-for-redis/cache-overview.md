@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49a697e6c3a6a6c931f2bb9c545647e2d6f1322d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652159"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056651"
 ---
 # <a name="about-azure-cache-for-redis"></a>关于用于 Redis 的 Azure 缓存
 Azure Cache for Redis 基于 [Redis](https://redis.io/) 软件提供内存中数据存储。 Redis 极大地提高了在后端数据存储上使用的应用程序的性能和可伸缩性。 它将经常访问的数据保留在可快速读写的服务器内存中，从而能够处理大量应用程序请求。 Redis 为新式应用程序带来了关键的低延迟、高吞吐量数据存储解决方案。

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 09/29/2020
+ms.date: 03/19/2021
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370179"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802159"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -42,7 +42,7 @@ Privileged Identity Management 提供基于时间和基于审批的角色激活�
 - 强制要求在激活任何角色时执行 **多重身份验证**
 - 使用 **理由** 来了解用户激活角色的原因
 - 激活特权角色时获取 **通知**
-- 开展 **访问评审** ，以确保用户仍然需要角色
+- 开展 **访问评审**，以确保用户仍然需要角色
 - 下载 **审核历史记录** 进行内部或外部审核
 
 ## <a name="what-can-i-do-with-it"></a>它的作用是什么？
@@ -92,8 +92,8 @@ Privileged Identity Management 支持以下方案：
 | 已激活 | 状态 | 具有符合条件的角色分配、已执行激活角色的操作且现在处于活动状态的用户。  激活后，用户即可使用该角色，使用期限是预先配置的，过期之后需重新激活。 |
 | 永久符合条件 | Duration | 使用户始终有资格激活该角色的角色分配。 |
 | 永久活动 | Duration | 使用户无需执行任何操作，始终可以使用该角色的角色分配。 |
-| 在过期之前符合条件 | Duration | 使用户在指定的开始和结束日期范围内有资格激活该角色的角色分配。 |
-| 在过期之前处于活动状态 | Duration | 使用户无需执行任何操作，可在指定的开始和结束日期范围内使用该角色的角色分配。 |
+| 限时符合条件 | 持续时间 | 通过这种角色分配方式，用户只有在开始和结束日期范围内才有资格激活角色。 |
+| 限时处于活动状态 | 持续时间 | 通过这种角色分配方式，用户只能在开始和结束日期范围内使用角色。 |
 | 实时 (JIT) 访问 |  | 一种访问模式。在此模式下，用户会收到执行特权任务的临时权限，防止恶意用户或未授权用户在权限过期后获得访问权限。 只有在用户需要的情况下，才会授予访问权限。 |
 | 最低访问权限原则 |  | 一种建议的安全做法，仅为每个用户提供所需的最低权限，以便完成有权执行的任务。 此做法会尽量减少全局管理员的数目，并使用适合特定方案的特定管理员角色。 |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 1af1593074363673ff2e3f8bc804998ddd63d432
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564418"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801921"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure 虚拟机的受信任启动（预览版）
 
@@ -38,9 +38,8 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 
 ## <a name="public-preview-limitations"></a>公共预览版限制
 
-**大小支持**：除以下系列之外的所有[第 2 代](generation-2.md) VM 大小：
+**大小支持**：除以下系列之外的所有 [第 2 代](generation-2.md) VM 大小：
 
-- HBv3 
 - Lsv2 系列 
 - M 系列 
 - Mv2 系列 
@@ -56,6 +55,7 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 - Windows Server 2016
 - Windows 10 专业版
 - Windows 10 企业版
+- Windows 10 Enterprise 多会话
 
 **区域**： 
 - 美国中南部
@@ -74,7 +74,7 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 
 ## <a name="secure-boot"></a>安全启动
 
-受信任启动的根本作用是使 VM 安全启动。 此模式在平台固件中实现，可以防止安装基于恶意软件的 Rootkit 和 Bootkit。 安全启动旨在确保只有已签名的操作系统和驱动程序能够启动。 它为 VM 上的软件堆栈建立“信任根”。 启用安全启动后，所有 OS 启动组件（启动加载程序、内核、内核驱动程序）都必须由受信任的发布者签名。 Windows 和某些 Linux 发行版都支持安全启动。 如果安全启动无法对受信任发布者签名的映像进行身份验证，则不允许启动 VM。 有关详细信息，请参阅[安全启动](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)。
+受信任启动的根本作用是使 VM 安全启动。 此模式在平台固件中实现，可以防止安装基于恶意软件的 Rootkit 和 Bootkit。 安全启动旨在确保只有已签名的操作系统和驱动程序能够启动。 它为 VM 上的软件堆栈建立“信任根”。 启用安全启动后，所有 OS 启动组件（启动加载程序、内核、内核驱动程序）都必须由受信任的发布者签名。 Windows 和某些 Linux 发行版都支持安全启动。 如果安全启动无法对受信任发布者签名的映像进行身份验证，则不允许启动 VM。 有关详细信息，请参阅[安全启动](/windows-hardware/design/device-experiences/oem-secure-boot)。
 
 ## <a name="vtpm"></a>vTPM
 
@@ -88,7 +88,7 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 
 HVCI 是功能强大的系统缓解机制，可以防范在 Windows 内核模式进程中注入和执行恶意代码或未经验证的代码。 在运行内核模式驱动程序和二进制文件之前，HVCI 会对其进行检查，防止未签名的文件载入内存中。 这可以确保在允许加载此类可执行代码之后，无法对其进行修改。 有关 VBS 和 HVCI 的详细信息，请参阅[基于虚拟化的安全性 (VBS) 和虚拟机监控程序强制实施的代码完整性 (HVCI)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571)。
 
-可以结合受信任启动和 VBS 启用 Windows Defender Credential Guard。 此功能可以隔离和保护机密，确保只有特权系统软件能够访问这些机密。 它有助于防止未经授权访问机密，以及遭到凭据盗窃攻击，例如哈希传递 (PtH) 攻击。 有关详细信息，请参阅 [Credential Guard](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard)。
+可以结合受信任启动和 VBS 启用 Windows Defender Credential Guard。 此功能可以隔离和保护机密，确保只有特权系统软件能够访问这些机密。 它有助于防止未经授权访问机密，以及遭到凭据盗窃攻击，例如哈希传递 (PtH) 攻击。 有关详细信息，请参阅 [Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)。
 
 
 ## <a name="security-center-integration"></a>安全中心集成
@@ -135,7 +135,7 @@ HVCI 是功能强大的系统缓解机制，可以防范在 Windows 内核模式
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>检测到完整性错误时会发生什么情况？
 
-Azure 虚拟机的受信任启动将受到监视，以识别高级威胁。 如果检测到此类威胁，将触发警报。 警报仅在 Azure 安全中心的[标准层](/azure/security-center/security-center-pricing)中提供。
+Azure 虚拟机的受信任启动将受到监视，以识别高级威胁。 如果检测到此类威胁，将触发警报。 警报仅在 Azure 安全中心的[标准层](../security-center/security-center-pricing.md)中提供。
 Azure 安全中心定期执行证明。 如果证明失败，将触发中等严重性警报。 受信任启动证明可能出于以下原因而失败： 
 - 证明的信息（包括受信任计算基础 (TCB) 的日志）与受信任基线（例如是否启用了安全启动）相背离。 这可能表示加载了不受信任的模块，并且 OS 可能已遭入侵。
 - 无法验证证明引述是否源自被证明 VM 的 vTPM。 这可能表示存在恶意软件，它可能正在截获发送到 TPM 的流量。 

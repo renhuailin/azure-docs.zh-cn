@@ -5,14 +5,18 @@
   items:
     - name: 什么是指标顾问？
       href: overview.md
+    - name: 定价
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 新增功能
       href: whats-new.md
-- name: 快速入门
+- name: 指标顾问快速入门
   items:
-    - name: 使用 Web 门户
+    - name: Web 门户
       href: quickstarts/web-portal.md
-    - name: 使用 REST API 或客户端库
+    - name: REST API 和客户端库
       href: quickstarts/rest-api-and-client-library.md
+- name: 示例
+  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
 - name: 操作指南
   items:
     - name: 载入数据
@@ -31,13 +35,13 @@
       href: how-tos/anomaly-feedback.md
     - name: 生成指标图
       href: how-tos/metrics-graph.md
+- name: 概念
+  items:
+    - name: 指标顾问主要术语
+      href: glossary.md
 - name: 参考
   items:
-    - name: 术语表
-      href: glossary.md
-    - name: 常见问题解答
-      href: faq.md
-    - name: 指标顾问 API
+    - name: 指标顾问 REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI 参考
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -45,12 +49,10 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源
   items:
+    - name: 区域支持
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: 定价
-      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

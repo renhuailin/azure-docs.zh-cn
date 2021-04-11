@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 744d302afd21e6521fb17bf7bef6e68d21fb8372
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639386"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流
 
@@ -45,7 +45,7 @@ ms.locfileid: "103011147"
 创建工作流文件后，可将其作为资产上传，然后用于对媒体文件编码。 有关如何使用 **.NET** 通过 **媒体编码器高级工作流** 编码的信息，请参阅 [使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改现有工作流
-可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。
+可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从[此处](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。
 
 以下视频演示如何使用设计器。
 

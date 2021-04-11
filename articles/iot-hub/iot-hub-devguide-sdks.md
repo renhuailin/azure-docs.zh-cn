@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: d35535c87ca20bfc573995bf15f79bc149619776
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1a94bdfd03d4e48495601b5c494204ac1ad50378
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611583"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168325"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
@@ -41,7 +41,7 @@ ms.locfileid: "102611583"
 
 可以在 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)中找到支持的 SDK 平台。
 
-有关与特定硬件设备的 SDK 兼容性的详细信息，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)或个体存储库。
+有关与特定硬件设备的 SDK 兼容性的详细信息，请参阅 [Azure IoT 认证设备目录](https://devicecatalog.azure.com/)或个体存储库。
 
 ## <a name="azure-iot-hub-device-sdks"></a>Azure IoT 中心设备 SDK
 

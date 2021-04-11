@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625193"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889581"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 
@@ -219,7 +219,7 @@ IoT 中心为几种操作类别发出资源日志；但是，若要查看这些�
 
 1. 首先，配置触发警报的条件。
 
-    1. 在“条件”下方，选择“选择条件” 。 在“配置信号逻辑”窗格中，在搜索框中键入“遥测”，然后选择“发送的遥测消息数” 。
+    1. 在 **条件** 下，选择 **添加条件**。 在“配置信号逻辑”窗格中，在搜索框中键入“遥测”，然后选择“发送的遥测消息数” 。
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="显示选择指标的屏幕截图。":::
 
@@ -245,7 +245,7 @@ IoT 中心为几种操作类别发出资源日志；但是，若要查看这些�
 
 1. 现在，配置警报的操作。
 
-    1. 返回“创建警报规则”窗格，在“操作”下，选择“选择操作组”  。 在“选择要附加到此警报规则的操作组”窗格上，选择“创建操作组” 。
+    1. 返回 **创建警报规则** 窗格，在 **操作** 下，选择 **添加操作组**。 在“选择要附加到此警报规则的操作组”窗格上，选择“创建操作组” 。
 
     1. 在“创建操作组”窗格上的“基本信息”选项卡下，为操作组指定一个名称和一个显示名称 。
 
@@ -313,7 +313,7 @@ IoT 中心为几种操作类别发出资源日志；但是，若要查看这些�
 
 ## <a name="run-the-simulated-device-app"></a>运行模拟设备应用
 
-在[设置资源](#set-up-resources)部分，你注册了一个设备标识，用于模拟使用 IoT 设备。 在本部分，下载一个 .NET 控制台应用（用于模拟向 IoT 中心发送设备到云消息的设备），将其配置为将这些消息发送到 IoT 中心，然后运行它。 
+在[设置资源](#set-up-resources)部分，你注册了一个设备标识，用于模拟使用 IoT 设备。 在本部分，下载一个 .NET 控制台应用（用于模拟向 IoT 中心发送设备到云消息的设备），将其配置为将这些消息发送到 IoT 中心，然后运行它。
 
 > [!IMPORTANT]
 >

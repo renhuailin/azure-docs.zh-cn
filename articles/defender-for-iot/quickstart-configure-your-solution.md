@@ -1,24 +1,14 @@
 ---
 title: 快速入门：将 Azure 资源添加到 IoT 解决方案
 description: 在本快速入门中，了解如何使用 Azure Defender for IoT 配置端到端 IoT 解决方案。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: Shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/25/2021
-ms.author: shhazam
-ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 6a90e8c3007f7b3448fd3f1b6e4fa46ba861081b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449707"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384574"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>快速入门：配置你的 Azure Defender for IoT 解决方案
 
@@ -26,7 +16,7 @@ ms.locfileid: "102449707"
 
 ## <a name="prerequisites"></a>先决条件
 
-无
+- 无
 
 ## <a name="what-is-defender-for-iot"></a>什么是 Defender for IoT？
 
@@ -60,7 +50,7 @@ Defender for IoT 现在可以监视新添加的资源组，并将相关的安全
 
 ## <a name="next-steps"></a>后续步骤
 
-请转到下一篇文章了解如何创建安全模块...
+转到下一篇文章，了解如何创建 Defender-IoT-micro-agent...
 
 > [!div class="nextstepaction"]
-> [创建安全模块](quickstart-create-security-twin.md)
+> [创建 Defender-IoT-micro-agent](quickstart-create-security-twin.md)

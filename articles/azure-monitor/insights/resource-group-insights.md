@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704321"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567396"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
 
@@ -43,7 +43,7 @@ ms.locfileid: "101704321"
 
 资源组见解页提供一些可帮助诊断问题的其他工具
 
-   |         |          |
+   | 工具 | 说明 |
    | ---------------- |:-----|
    | [**警报**](../alerts/alerts-overview.md)      |  查看、创建和管理警报。 |
    | [**指标**](../data-platform.md) | 可视化并浏览基于指标的数据。    |

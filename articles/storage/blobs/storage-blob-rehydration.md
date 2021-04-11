@@ -2,19 +2,19 @@
 title: 从存档层解冻 Blob 数据
 description: 从存档存储中解冻 Blob，以便可以访问 Blob 数据。 将存档的 Blob 复制到联机层。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 2f0ddca9cbd7d85909b1d86e68b92fa1d847476d
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: aaea21dca5304a7a75b24bd7f974712db38d1815
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225075"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276767"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
