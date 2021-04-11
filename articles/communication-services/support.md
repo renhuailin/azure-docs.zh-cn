@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 204a7ff77b4dd32ef62e1a06c66d50d7b30fcfc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e403fb8bcd25d1274eda287bc62465bacdb9b613
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496127"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045461"
 ---
 # <a name="help-and-support-options-for-azure-communication-services"></a>Azure 通信服务的帮助和支持选项
 
@@ -24,9 +24,9 @@ ms.locfileid: "103496127"
 
 ## <a name="post-a-question-to-microsoft-qa"></a>在 Microsoft Q&A 上发布问题
 
-对于你可能遇到的有关 Azure 通信服务的产品或技术方面的问题，若要获得来自 Microsoft 工程师、Azure 最有价值专家 (MVP) 或我们社区的快速可靠的解答，请在 [Microsoft Q&A](https://docs.microsoft.com/answers/products/azure) 上与我们联系。 
+对于你可能遇到的有关 Azure 通信服务的产品或技术方面的问题，若要获得来自 Microsoft 工程师、Azure 最有价值专家 (MVP) 或我们社区的快速可靠的解答，请在 [Microsoft Q&A](/answers/products/azure) 上与我们联系。 
 
-如果通过搜索找不到问题的解答，可以向 Microsoft Q&A 提交新问题。 在创建问题时，请确保使用 [Azure 通信服务标记](https://docs.microsoft.com/answers/topics/azure-communication-services.html)。
+如果通过搜索找不到问题的解答，可以向 Microsoft Q&A 提交新问题。 在创建问题时，请确保使用 [Azure 通信服务标记](/answers/topics/azure-communication-services.html)。
 
 ## <a name="post-a-question-on-stack-overflow"></a>在 Stack Overflow 上提问
 

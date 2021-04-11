@@ -4,12 +4,12 @@ description: 教程 - 了解如何使用企业安全性套餐为 Azure HDInsight
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 552998de23bebd98f56ba28eb6ad581689e52e41
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: bab3df857dfdac3ca3b9193bda1caea0040a4cbb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933692"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866975"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "98933692"
 
 2. 使用 Azure Active Directory (AD) 管理员凭据登录。 Azure AD 管理员凭据与 HDInsight 群集凭据或 Linux HDInsight 节点 SSH 凭据不同。
 
-   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger 管理 UI" border="true":::
 
 ## <a name="create-domain-users"></a>创建域用户
 
@@ -61,7 +61,7 @@ ms.locfileid: "98933692"
    * “*”表示字符出现零次或多次。
    * “?”表示单个字符。
 
-   ![Apache Ranger 管理 UI 创建策略 1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png" alt-text="Apache Ranger 管理 UI 创建策略 1" border="true":::
 
    如果“选择用户”中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
@@ -76,7 +76,7 @@ ms.locfileid: "98933692"
    |选择用户  |  marketing_user1 |
    |权限  | 发布、使用、创建 |
 
-   ![Apache Ranger 管理 UI 创建策略 2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png" alt-text="Apache Ranger 管理 UI 创建策略 2" border="true":::  
 
 6. 选择“添加”以保存策略。
 
@@ -177,7 +177,7 @@ ms.locfileid: "98933692"
 
 8. 从 Ranger UI 查看审核访问事件。
 
-   ![Ranger UI 策略审核访问事件 ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png" alt-text="Ranger UI 策略审核访问事件" border="true":::
    
 ## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>使用控制台生成并使用 ESP Kafka 中的主题
 
@@ -218,7 +218,7 @@ ms.locfileid: "98933692"
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 1. 选择“服务”下的“HDInsight 群集” 。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
 1. 单击 **“删除”** 。 单击 **“是”** 。
 
 ## <a name="troubleshooting"></a>疑难解答

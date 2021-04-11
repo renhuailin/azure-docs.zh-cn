@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "95999155"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 iQualify LMS 的集成，需要以下项：
 
@@ -41,7 +41,7 @@ ms.locfileid: "95999155"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* iQualify LMS 支持 SP 和 IDP 发起的 SSO 
+* iQualify LMS 支持 SP 和 IDP 发起的 SSO
 * iQualify LMS 支持 **恰时** 用户预配
 
 ## <a name="adding-iqualify-lms-from-the-gallery"></a>从库中添加 iQualify LMS
@@ -62,13 +62,13 @@ ms.locfileid: "95999155"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“iQualify LMS”，在结果面板中选择“iQualify LMS”，然后单击“添加”按钮添加该应用程序    。
+4. 在搜索框中，键入“iQualify LMS”，在结果面板中选择“iQualify LMS”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 iQualify LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，我们基于名为“Britta Simon”的测试用户为 iQualify LMS 配置和测试 Azure AD 单一登录。 
+在本部分中，我们基于名为“Britta Simon”的测试用户为 iQualify LMS 配置和测试 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 iQualify LMS 相关用户之间建立关联。
 
 若要配置和测试 iQualify LMS 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -86,46 +86,43 @@ ms.locfileid: "95999155"
 
 要为 iQualify LMS 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 iQualify LMS 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 iQualify LMS 应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接](common/select-sso.png)
+   ![配置单一登录链接](common/select-sso.png)
 
 2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
 
-    ![单一登录选择模式](common/select-saml-option.png)
+   ![单一登录选择模式](common/select-saml-option.png)
 
 3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
 
-    ![编辑基本 SAML 配置](common/edit-urls.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
 4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![屏幕截图显示“基本 SAML 配置”，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+   ![显示“基本 SAML 配置”的屏幕截图，可在其中输入“标识符”、“回复 URL”，并选择“保存”。](common/idp-intiated.png)
+   
+   1. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： 
-    | |
-    |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/`|
-    | 测试环境：`https://<yourorg>.iqualify.io`|
+      * 生产环境：`https://<yourorg>.iqualify.com/`
+      * 测试环境：`https://<yourorg>.iqualify.io`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
-    | |
-    |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | 测试环境：`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+      * 生产环境：`https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * 测试环境：`https://<yourorg>.iqualify.io/auth/saml2/callback`
 
-    ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： 
-    | |
-    |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/login` |
-    | 测试环境：`https://<yourorg>.iqualify.io/login` |
+   ![屏幕截图显示“设置其他 URL”，可在其中输入“登录 URL”。](common/metadata-upload-additional-signon.png)
 
-    > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [iQualify LMS 客户端支持团队](https://www.iqualify.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+   在“登录 URL”文本框中，使用以下模式键入 URL： 
+
+      * 生产环境：`https://<yourorg>.iqualify.com/login`
+      * 测试环境：`https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [iQualify LMS 客户端支持团队](https://www.iqualify.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 6. iQualify LMS 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标打开“用户属性”对话框。  
 
@@ -156,7 +153,7 @@ ms.locfileid: "95999155"
 
     f. 单击“确定” 
 
-    g. 单击“保存”  。
+    g. 单击“ **保存**”。
 
     > [!Note]
     > **person_id** 属性是 **可选** 的
@@ -165,7 +162,7 @@ ms.locfileid: "95999155"
 
     ![证书下载链接](common/certificatebase64.png)
 
-9. 在“设置 iQualify LMS”部分，根据要求复制相应的 URL  。
+9. 在“设置 iQualify LMS”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -179,33 +176,33 @@ ms.locfileid: "95999155"
 
 1. 打开一个新的浏览器窗口，并以管理员身份登录到 iQualify 环境。
 
-1. 登录后，单击右上角的头像，然后单击“帐户设置” 
+1. 登录后，单击右上角的头像，然后单击“帐户设置”
 
     ![帐户设置](./media/iqualify-tutorial/setting1.png)
 
-1. 在帐户设置区域，单击左侧的功能区菜单，然后单击“集成” 
+1. 在帐户设置区域，单击左侧的功能区菜单，然后单击“集成”
 
     ![集成](./media/iqualify-tutorial/setting2.png)
 
-1. 在“集成”下，单击“SAML”  图标。
+1. 在“集成”下，单击“SAML”图标。
 
     ![SAML 图标](./media/iqualify-tutorial/setting3.png)
 
-1. 在“SAML 身份验证设置”对话框中，执行以下步骤： 
+1. 在“SAML 身份验证设置”对话框中，执行以下步骤：
 
     ![SAML 身份验证设置](./media/iqualify-tutorial/setting4.png)
 
-    a. 在“SAML 单一登录服务 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“登录 URL”值   。
+    a. 在“SAML 单一登录服务 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“登录 URL”值。
 
-    b. 在“SAML 注销 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“注销 URL”值   。
+    b. 在“SAML 注销 URL”框中，粘贴从 Azure AD 应用程序配置窗口复制的“注销 URL”值。
 
-    c. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“公共证书”框中  。
+    c. 在记事本中打开下载的证书文件，复制其内容，然后将其粘贴到“公共证书”框中。
 
-    d. 在“登录按钮标签”中输入要在登录页上显示的按钮的名称  。
+    d. 在“登录按钮标签”中输入要在登录页上显示的按钮的名称。
 
     e. 单击“保存”  。
 
-    f. 单击“更新”  。
+    f. 单击“更新”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -215,7 +212,7 @@ ms.locfileid: "95999155"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -230,17 +227,17 @@ ms.locfileid: "95999155"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 iQualify LMS 的权限，允许该用户使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“iQualify LMS”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“iQualify LMS”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“iQualify LMS”  。
+2. 在应用程序列表中，选择“iQualify LMS”。
 
     ![应用程序列表中的 iQualify LMS 链接](common/all-applications.png)
 
@@ -270,7 +267,7 @@ ms.locfileid: "95999155"
 
    ![登录页面](./media/iqualify-tutorial/login.png) 
 
-单击“使用 Azure AD 登录”按钮，应会自动登录到 iQualify LMS 应用程序  。
+单击“使用 Azure AD 登录”按钮，应会自动登录到 iQualify LMS 应用程序。
 
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。 
 

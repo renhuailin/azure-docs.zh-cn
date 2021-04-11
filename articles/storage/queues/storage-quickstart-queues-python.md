@@ -1,19 +1,19 @@
 ---
 title: 快速入门：Azure 队列存储客户端库 v12 - Python
 description: 介绍如何使用适用于 Python 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 另外还介绍如何删除队列。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-python
-ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1881af372c1f4e1c5cbb4ea7be0ede4c96bbf4ee
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585490"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276138"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure 队列存储客户端库 v12
 
@@ -26,7 +26,7 @@ ms.locfileid: "97585490"
 - 查看队列中的消息
 - 更新队列中的消息
 - 从队列接收消息
-- 删除队列中的消息
+- 从队列中删除消息
 - 删除队列
 
 其他资源：
@@ -40,7 +40,7 @@ ms.locfileid: "97585490"
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
-- 适用于你的操作系统的 [Python](https://www.python.org/downloads/) - 2.7、3.5 或更高版本
+- 适用于你的操作系统的 [Python](https://www.python.org/downloads/) - 2.7 或 3.6+
 
 ## <a name="setting-up"></a>设置
 

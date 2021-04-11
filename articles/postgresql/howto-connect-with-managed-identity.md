@@ -1,18 +1,18 @@
 ---
 title: 使用托管标识进行连接 - Azure Database for PostgreSQL - 单一服务器
 description: 了解如何使用托管标识进行连接和身份验证，以便进行 Azure Database for PostgreSQL 身份验证
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b0d6b083228ddab9d958bf3480b592f7ee0d892d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d59b449a2dbf2ed3b1177db6e543de4c34a8ecb1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092632"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604152"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>使用托管标识连接到 Azure Database for PostgreSQL
 

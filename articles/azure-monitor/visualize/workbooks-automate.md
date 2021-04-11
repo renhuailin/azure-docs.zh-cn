@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100608504"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109741"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
@@ -99,19 +99,19 @@ ms.locfileid: "100608504"
 
 ### <a name="galleries"></a>库
 
-| 库                                        | 资源类型                                      | 工作簿类型 |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Azure Monitor 中的工作簿                     | `Azure Monitor`                                    | `workbook`    |
-| Azure Monitor 中的 VM Insights                   | `Azure Monitor`                                    | `vm-insights` |
-| Log Analytics 工作区中的工作簿           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Application Insights 中的工作簿              | `microsoft.insights/component`                     | `workbook`    |
-| Application Insights 中的故障排除指南 | `microsoft.insights/component`                     | `tsg`         |
-| Application Insights 中的使用情况                  | `microsoft.insights/component`                     | `usage`       |
-| Kubernetes 服务中的工作簿                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| 资源组中的工作簿                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Azure Active Directory 中的工作簿            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| 虚拟机中的 VM Insights                | `microsoft.compute/virtualmachines`                | `insights`    |
-| 虚拟机规模集中的 VM Insights      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| 库                                        | 资源类型                                       | 工作簿类型 |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Azure Monitor 中的工作簿                     | `Azure Monitor`                                     | `workbook`    |
+| Azure Monitor 中的 VM Insights                   | `Azure Monitor`                                     | `vm-insights` |
+| Log Analytics 工作区中的工作簿           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Application Insights 中的工作簿              | `microsoft.insights/components`                     | `workbook`    |
+| Application Insights 中的故障排除指南 | `microsoft.insights/components`                     | `tsg`         |
+| Application Insights 中的使用情况                  | `microsoft.insights/components`                     | `usage`       |
+| Kubernetes 服务中的工作簿                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| 资源组中的工作簿                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Azure Active Directory 中的工作簿            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| 虚拟机中的 VM Insights                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| 虚拟机规模集中的 VM Insights      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>用于部署工作簿实例的 Azure 资源管理器模板
 

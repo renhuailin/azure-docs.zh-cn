@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07c004fa5f03c53ed0778613a0c16a0ba2aff11f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935671"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869491"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>教程：在 Azure HDInsight 的 Spark 计算上下文中使用 R
 
@@ -28,9 +28,9 @@ ms.locfileid: "98935671"
 > * 使用复合 XDF 文件
 > * 将 XDF 转换为 CSV
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure HDInsight 机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。  
+* Azure HDInsight 机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。
 
 ## <a name="connect-to-rstudio-server"></a>连接到 RStudio Server
 
@@ -44,7 +44,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 ## <a name="download-the-sample-data-to-local-storage"></a>将示例数据下载到本地存储
 
-“2012 年航班准时性数据集”由 12 个逗号分隔的文件组成，这些文件包含 2012 年美国所有商务航班的抵达和出发详细信息。  此数据集很大，包含 600 万条以上的观测结果。
+“2012 年航班准时性数据集”由 12 个逗号分隔的文件组成，这些文件包含 2012 年美国所有商务航班的抵达和出发详细信息。 此数据集很大，包含 600 万条以上的观测结果。
 
 1. 初始化几个环境变量。 在 RStudio Server 控制台中输入以下代码：
 
@@ -54,9 +54,9 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-1. 在右窗格中选择“环境”选项卡。  变量显示在“值”下面。 
+1. 在右窗格中选择“环境”选项卡。变量显示在“值”下面。
 
-    ![HDInsight R studio Web 控制台](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
+    :::image type="content" source="./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png" alt-text="HDInsight R studio Web 控制台" border="true":::
 
 1. 创建本地目录并下载示例数据。 在 RStudio 中输入以下代码：
 
@@ -222,14 +222,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
     ---
-    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -328,7 +328,7 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 
 使用 `RxSpark` 计算上下文时，`createFileSet` 默认为 `TRUE`，`rowsPerOutFile` 不起作用。 因此，若要创建单个 CSV 或自定义每个文件的行数，请在 `local` 计算上下文中执行 `rxDataStep`（数据仍可在 HDFS 中）。
 
-## <a name="final-steps"></a>最后的步骤
+## <a name="final-steps"></a>最终步骤
 
 1. 清理数据。 在 RStudio 中输入以下代码：
 

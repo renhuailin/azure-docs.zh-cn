@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329647"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106072865"
 ---
 >[!NOTE]
 >对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
@@ -28,7 +28,7 @@ ms.locfileid: "91329647"
 | 每个频道的停止状态节目数 |50|
 | 每个频道的运行状态节目数 |3|
 | 每个媒体服务帐户的流式处理端点数（已停止或正在运行）|2|
-| 每个流式处理终结点的流式处理单位数 |10 个 |
+| 每个流式处理终结点的流式处理单位数 |10 |
 | 存储帐户 | 100<sup>5</sup>（已修复） |
 | 策略 | 1,000,000<sup>6</sup> |
 | 文件大小| 在某些情况下，支持在媒体服务中处理的最大文件大小存在限制。<sup>7</sup> |
@@ -41,7 +41,7 @@ ms.locfileid: "91329647"
 
 <sup>3</sup>发出列出作业实体的请求时，每个请求最多返回 1,000 个作业。 如果需要跟踪所有已提交的作业，可以使用 top 或 skip，如 [OData 系统查询选项](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))中所述。
 
-<sup>4</sup>定位符不用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。 有关详细信息，请参阅[使用 Azure 媒体服务保护内容](../articles/media-services/previous/media-services-content-protection-overview.md)。
+<sup>4</sup>定位符不用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。 有关详细信息，请参阅[使用 Azure 媒体服务保护内容](../articles/media-services/latest/drm-content-protection-concept.md)。
 
 <sup>5</sup>存储帐户必须来自同一 Azure 订阅。
 

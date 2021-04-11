@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 792f4f81d84b61f0f78c53e62168921221b4f330
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503158"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959664"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3 - 进行设置，以迁移到 V3 REST API 或客户端 SDK
 
@@ -45,7 +45,7 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 
 在 Azure 门户中，按照有关[设置环境](how-to-set-azure-subscription.md?tabs=portal)的快速入门步骤进行操作。 选择 API 访问和服务主体身份验证，来生成用于此测试帐户的新的 Azure AD 应用程序 ID 和机密。
 
-[创建媒体服务帐户](create-account-howto.md?tabs=portal)。
+[创建媒体服务帐户](account-create-how-to.md?tabs=portal)。
 [获取用于访问媒体服务 API 的凭据](access-api-howto.md?tabs=portal)。
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>下载所选的客户端 SDK 并设置环境
@@ -143,7 +143,3 @@ class Program
 下载 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) SDK。
 
 ---
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

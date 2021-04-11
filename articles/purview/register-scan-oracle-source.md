@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 3ae81a9c05f0c88a52db6409bf870ee0427f09db
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 76aadd667691e12c61e0e5e13c13ca0241a9f0ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101696041"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045495"
 ---
 # <a name="register-and-scan-oracle-source-preview"></a>注册并扫描 Oracle 源（预览版）
 
@@ -25,13 +25,13 @@ Oracle 源支持完全扫描（用于从 Oracle 数据库中提取元数据）�
 ## <a name="prerequisites"></a>先决条件
 
 1.  设置最新的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)。
-    有关详细信息，请参阅[创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。
+    有关详细信息，请参阅[创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
 
 2.  确保在安装了自承载集成运行时的虚拟机上安装 [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)。
 
 3.  确保在自承载集成运行时计算机上安装了“Visual C++ 可再发行程序包 2012 更新 4”。 如果尚未安装它，请在[此处](https://www.microsoft.com/download/details.aspx?id=30679)下载它。
 
-4.  你必须在运行自承载集成运行时的虚拟机上手动下载名为“oracle.jdbc.driver.OracleDriver”的 Oracle JDBC 驱动程序。
+4.  在运行自承载集成运行时的虚拟机上，你必须从[此处](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)手动下载 Oracle JDBC 驱动程序。
 
     > [!Note] 
     > VM 中的所有帐户均应可以访问该驱动程序。 请不要在用户帐户中安装它。
@@ -105,7 +105,7 @@ Oracle 源支持完全扫描（用于从 Oracle 数据库中提取元数据）�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](https://docs.microsoft.com/azure/purview/manage-integration-runtimes)所述的步骤来创建自承载集成运行时。
+1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](./manage-integration-runtimes.md)所述的步骤来创建自承载集成运行时。
 
 2.  导航到“源”。
 

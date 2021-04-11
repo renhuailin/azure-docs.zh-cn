@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: 本教程介绍如何通过推送刷新动态更新 .NET Core 应用的配置数据
 services: azure-app-configuration
 documentationcenter: ''
-author: abarora
+author: GrantMeStrength
 manager: zhenlan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
-ms.author: abarora
-ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: jken
+ms.openlocfilehash: f330e69d37ac36e2a374e81fbffc6235c86feedd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625713"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Tutorial:在 .NET Core 应用中通过推送刷新使用动态配置
 
