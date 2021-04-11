@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 004c5a6c0c2c4dcfcf13134bd5a5143ba647048f
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500982"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078904"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -199,9 +199,9 @@ ms.locfileid: "102500982"
 | MonthlyRetentionDaysOfTheWeek_s |文本 ||选择进行每月保留的日期（星期几） |
 | MonthlyRetentionWeeksOfTheMonth_s |文本 ||配置每月保留时的当月时间（第几周），例如第一周、最后一周 |
 | YearlyRetentionDuration_s |十进制数 ||所配置备份的总保留时间（按年算） |
-| YearlyRetentionTimes_s |文本 ||配置每年保留时的日期和时间 |
-| YearlyRetentionMonthsOfTheYear_s |文本 ||选择进行每年保留的月份 |
-| YearlyRetentionFormat_s |文本 ||每年保留的配置类型，例如基于日期的每日、基于周次的每周 | |
+| YearlyRetentionTimes_s |文本 | | 配置每年保留时的日期和时间 |
+| YearlyRetentionMonthsOfTheYear_s |文本 | | 选择进行每年保留的月份 |
+| YearlyRetentionFormat_s |文本 ||每年保留的配置类型，例如基于日期的每日、基于周次的每周 |
 | YearlyRetentionDaysOfTheMonth_s |文本 ||选择进行每年保留的日期 |
 | SynchronisationFrequencyPerDay_s |整数 |v2|一天中同步 SC DPM 和 MABS 文件备份的次数 |
 | DiffBackupFormat_s |文本 |v2|Azure VM 备份中 SQL 差异备份的格式 |

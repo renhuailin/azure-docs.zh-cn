@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121603"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076286"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -37,12 +37,12 @@ ms.locfileid: "102121603"
 本教程假设读者熟悉 Azure DevOps、Azure Repos 和管道以及 Azure CLI。
 
 * 登录到 [Azure DevOps Services](https://dev.azure.com/)。
-* 完成[上一篇教程](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)，了解如何为 CI/CD 环境部署 GitOps。
-* 了解此功能的[优势和体系结构](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations)。
+* 完成[上一篇教程](./tutorial-use-gitops-connected-cluster.md)，了解如何为 CI/CD 环境部署 GitOps。
+* 了解此功能的[优势和体系结构](./conceptual-configurations.md)。
 * 验证是否具有：
-  * 一个 [已连接且已启用 Azure Arc 的 Kubernetes 群集](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster)，名为 **arc-cicd-cluster**。
-  * 一个使用 [AKS 集成](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration)或[非 AKS 群集身份验证](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes)的已连接 Azure 容器注册表 (ACR)。
-  * 对 [Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) 和 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started) 的“生成管理员”与“项目管理员”权限。
+  * 一个 [已连接且已启用 Azure Arc 的 Kubernetes 群集](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster)，名为 **arc-cicd-cluster**。
+  * 一个使用 [AKS 集成](../../aks/cluster-container-registry-integration.md)或[非 AKS 群集身份验证](../../container-registry/container-registry-auth-kubernetes.md)的已连接 Azure 容器注册表 (ACR)。
+  * 对 [Azure Repos](/azure/devops/repos/get-started/what-is-repos) 和 [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started) 的“生成管理员”与“项目管理员”权限。
 * 安装以下版本 >= 1.0.0 的已启用 Azure Arc 的 Kubernetes CLI 扩展：
 
   ```azurecli
@@ -58,7 +58,7 @@ ms.locfileid: "102121603"
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>将应用程序存储库和 GitOps 存储库导入 Azure Repos
 
-将[应用程序存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo)和 [GitOps 存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo)导入 Azure Repos。 对于本教程，请使用以下示例存储库：
+将[应用程序存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo)和 [GitOps 存储库](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo)导入 Azure Repos。 对于本教程，请使用以下示例存储库：
 
 * **arc-cicd-demo-src** 应用程序存储库
    * URL： https://github.com/Azure/arc-cicd-demo-src
@@ -67,7 +67,7 @@ ms.locfileid: "102121603"
    * URL： https://github.com/Azure/arc-cicd-demo-gitops
    * 充当容装 Azure 投票应用的群集资源的基础。
 
-详细了解如何[导入 Git 存储库](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository)。
+详细了解如何[导入 Git 存储库](/azure/devops/repos/git/import-git-repository)。
 
 >[!NOTE]
 > 为应用程序和 GitOps 导入并使用两个独立的存储库能够提高安全性和简易性。 可以分别优化应用程序和 GitOps 存储库的权限与可见性。
@@ -86,7 +86,7 @@ ms.locfileid: "102121603"
 CI/CD 工作流将在清单目录中填充额外的清单，以部署应用。
 
 
-1. 与 Azure Repos 中新导入的 **arc-cicd-demo-gitops** 存储库[建立新的 GitOps 连接](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)。
+1. 与 Azure Repos 中新导入的 **arc-cicd-demo-gitops** 存储库 [建立新的 GitOps 连接](./tutorial-use-gitops-connected-cluster.md)。
 
    ```azurecli
    az k8sconfiguration create \
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>创建环境变量组
 
 ### <a name="app-repo-variable-group"></a>应用存储库变量组
-[创建](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups)名为 **az-vote-app-dev** 的变量组。 设置以下值：
+[创建](/azure/devops/pipelines/library/variable-groups)名为 **az-vote-app-dev** 的变量组。 设置以下值：
 
 | 变量 | 值 |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | GitOps 存储库的 Git 连接字符串 |
-| PAT | 具有读/写源权限的[已创建 PAT 令牌](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat)。 请保存该令牌，供稍后在创建 `stage` 变量组时使用。 |
+| PAT | 具有读/写源权限的[已创建 PAT 令牌](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat)。 请保存该令牌，供稍后在创建 `stage` 变量组时使用。 |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> 将 PAT 标记为机密类型。 在应用程序中，考虑从 [Azure 密钥保管库](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)链接机密。
+> 将 PAT 标记为机密类型。 在应用程序中，考虑从 [Azure 密钥保管库](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)链接机密。
 >
 ### <a name="stage-environment-variable-group"></a>暂存环境变量组
 
@@ -255,7 +255,7 @@ CI 管道：
 1. 提供审批者和可选消息。
 1. 再次选择“创建”以完成添加手动审批检查。
 
-有关更多详细信息，请参阅[定义审批和检查](https://docs.microsoft.com/azure/devops/pipelines/process/approvals)教程。
+有关更多详细信息，请参阅[定义审批和检查](/azure/devops/pipelines/process/approvals)教程。
 
 下一次 CD 管道运行时，该管道将在创建 GitOps PR 后暂停。 验证更改是否已正确同步并通过了基本的功能检查。 批准管道中的检查，使更改流向下一环境。
 
@@ -291,7 +291,7 @@ Lint 分析期间出现的错误包括：
 管道运行完成后，即可保证应用程序代码以及要部署该代码的模板的质量。 现在可以批准并完成 PR。 CI 将再次运行，重新生成模板和清单，然后触发 CD 管道。
 
 > [!TIP]
-> 在真实环境中，请记得设置分支策略，以确保 PR 通过质量检查。 有关详细信息，请参阅[设置分支策略](https://docs.microsoft.com/azure/devops/repos/git/branch-policies)一文。
+> 在真实环境中，请记得设置分支策略，以确保 PR 通过质量检查。 有关详细信息，请参阅[设置分支策略](/azure/devops/repos/git/branch-policies)一文。
 
 ## <a name="cd-process-approvals"></a>CD 过程审批
 
@@ -338,4 +338,4 @@ Lint 分析期间出现的错误包括：
 请转到我们的概念文章，详细了解使用已启用 Azure Arc 的 Kubernetes 进行的 GitOps 和配置。
 
 > [!div class="nextstepaction"]
-> [使用 GitOps 的 CI/CD 工作流 - 已启用 Azure Arc 的 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [使用 GitOps 的 CI/CD 工作流 - 已启用 Azure Arc 的 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)

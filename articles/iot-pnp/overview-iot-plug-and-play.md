@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594563"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079006"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
@@ -68,7 +68,7 @@ IoT 中心 - 一项充当消息中心的托管式云服务，用于在 IoT 应�
 
 ## <a name="device-certification"></a>设备认证
 
-[IoT 即插即用认证计划](howto-certify-device.md)验证设备是否符合 IoT 即插即用认证要求。 可将已验证的设备添加到公共 [Azure IoT 认证设备目录](https://aka.ms/devicecatalog)。
+[IoT 即插即用认证计划](../certification/program-requirements-pnp.md)验证设备是否符合 IoT 即插即用认证要求。 可将已验证的设备添加到公共 [Azure IoT 认证设备目录](https://aka.ms/devicecatalog)。
 
 ## <a name="next-steps"></a>后续步骤
 

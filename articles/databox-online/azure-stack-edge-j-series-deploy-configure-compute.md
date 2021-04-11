@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1dcf429ddc697dfbfdac721cb8de137b9382b234
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935443"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058776"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>教程：使用 Azure Stack Edge Pro 转换数据
 
@@ -116,9 +115,9 @@ ms.locfileid: "97935443"
 
 ## <a name="add-a-module"></a>添加模块
 
-可以添加自定义的或预生成的模块。 此 Edge 设备上不存在自定义模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge Pro 设备开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)。
+可以添加自定义的或预生成的模块。 此 Edge 设备上不存在自定义模块。 若要了解如何创建自定义模块，请访问[为 Azure Stack Edge Pro 设备开发 C# 模块](./azure-stack-edge-gpu-create-iot-edge-module.md)。
 
-在此部分中，我们将向[为 Azure Stack Edge Pro 开发 C# 模块](azure-stack-edge-j-series-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
+在此部分中，我们将向[为 Azure Stack Edge Pro 开发 C# 模块](./azure-stack-edge-gpu-create-iot-edge-module.md)中创建的 IoT Edge 设备添加一个自定义模块。 此自定义模块从 Edge 设备上的 Edge 本地共享提取文件，并将其移到设备上的 Edge（云）共享。 然后，云共享将文件推送到与该云共享相关联的 Azure 存储帐户。
 
 1. 转到“Edge 计算”>“开始”。 在“添加模块”磁贴上，选择“简单”作为方案类型。   选择 **添加** 。
 2. 在“配置和添加模块”边栏选项卡中输入以下值： 

@@ -3,17 +3,16 @@ title: 关于 Azure VPN 网关设计
 description: 了解如何设计用于连接到 Azure 虚拟网络的 VPN 网关拓扑。
 services: vpn-gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 61732f66aef58f5a9edcb9e095782e19e8aaffdd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 99b8cdbb1528caefd30fb11c9702dff1e817c0ab
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91397209"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061802"
 ---
 # <a name="vpn-gateway-design"></a>VPN 网关设计
 
