@@ -3,38 +3,28 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是人脸服务？
+    - name: 人脸服务概述
       href: Overview.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: 新增功能
       href: releasenotes.md
-- name: 快速入门
-  items:
-    - name: 使用客户端库或 REST API
-      href: Quickstarts/client-libraries.md
-- name: 教程
-  items:
-    - name: 使用客户端 SDK
-      items:
-        - name: C#
-          href: Tutorials/FaceAPIinCSharpTutorial.md
-- name: 概念
-  items:
-    - name: 人脸检测
-      href: concepts/face-detection.md
-    - name: 人脸识别
-      href: concepts/face-recognition.md
+- name: 人脸快速入门
+  href: Quickstarts/client-libraries.md
+- name: 示例
+  href: /samples/browse/?products=azure&term=face
 - name: 操作指南
   items:
-    - name: 检测人脸
+    - name: 检测和分析人脸
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: 指定人脸识别模型版本
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: 指定人脸检测模型版本
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: 向组中添加人脸
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: 使用 HeadPose 属性
       href: Face-API-How-to-Topics/how-to-use-headpose.md
-    - name: 指定人脸识别模型
-      href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: 指定人脸检测模型
-      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: 使用人脸服务时减少延迟
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: 使用大规模使用的功能
@@ -43,8 +33,12 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: 迁移人脸数据
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: 使用容器
+    - name: 使用人脸容器
       items:
+        - name: 认知服务容器文档
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+        - name: 容器概述
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
         - name: 安装和运行容器
           href: face-how-to-install-containers.md
         - name: 配置容器
@@ -52,49 +46,47 @@
         - name: 使用容器实例
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: 认知服务容器文档
-          href: ../containers/index.yml
-- name: 场景深入介绍
+- name: 概念
   items:
-    - name: 人脸注册
+    - name: 人脸检测
+      href: concepts/face-detection.md
+    - name: 人脸识别
+      href: concepts/face-recognition.md
+- name: 教程
+  items:
+    - name: 创建人脸检测器应用
+      href: Tutorials/FaceAPIinCSharpTutorial.md
+    - name: 向人脸服务添加用户
       items:
-        - name: 概述
+        - name: 有关添加用户的最佳做法
           href: enrollment-overview.md
-        - name: 操作指南
-          items:
-            - name: 使用 React 构建注册应用
-              href: build-enrollment-app.md
+        - name: 构建 React 应用来添加用户
+          href: build-enrollment-app.md
 - name: 参考
   items:
-    - name: 人脸 API
+    - name: 人脸 Rest API
       href: APIReference.md
-    - name: SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-face
+    - name: Python
+      href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: 资源
   items:
+    - name: 区域支持
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Learn 模块
+      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: 示例
-      items:
-        - name: 人脸示例
-          href: /samples/browse/?products=azure&term=face
-    - name: 定价和限制
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密
       href: encrypt-data-at-rest.md
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

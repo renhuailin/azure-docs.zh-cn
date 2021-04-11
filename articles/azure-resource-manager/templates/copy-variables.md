@@ -3,12 +3,12 @@ title: 定义变量的多个实例
 description: 在创建变量时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e1f6dfeb7b701b09ad1a9505d5dbcfddf2cd6b0b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905887"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385695"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 模板中的变量迭代
 
@@ -40,10 +40,10 @@ count 不能超过 800。
 
 count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
 
-* Azure PowerShell 2.6 或更高版本
-* Azure CLI 2.0.74 或更高版本
-* REST API 版本 2019-05-10 或更高版本
-* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
+- Azure PowerShell 2.6 或更高版本
+- Azure CLI 2.0.74 或更高版本
+- REST API 版本 2019-05-10 或更高版本
+- [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
 
 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
@@ -53,30 +53,30 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-     },
-    "variables": {
-        "copy": [
-            {
-                "name": "stringArray",
-                "count": "[parameters('itemCount')]",
-                "input": "[concat('item', copyIndex('stringArray', 1))]"
-            }
-        ]
-    },
-    "resources": [],
-    "outputs": {
-        "arrayResult": {
-            "type": "array",
-            "value": "[variables('stringArray')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "stringArray",
+        "count": "[parameters('itemCount')]",
+        "input": "[concat('item', copyIndex('stringArray', 1))]"
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "arrayResult": {
+      "type": "array",
+      "value": "[variables('stringArray')]"
+    }
+  }
 }
 ```
 
@@ -84,11 +84,11 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 [
-    "item1",
-    "item2",
-    "item3",
-    "item4",
-    "item5"
+  "item1",
+  "item2",
+  "item3",
+  "item4",
+  "item5"
 ]
 ```
 
@@ -96,34 +96,34 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-    },
-    "variables": {
-        "copy": [
-            {
-                "name": "objectArray",
-                "count": "[parameters('itemCount')]",
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('objectArray', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('objectArray')]"
-                }
-            }
-        ]
-    },
-    "resources": [],
-    "outputs": {
-        "arrayResult": {
-            "type": "array",
-            "value": "[variables('objectArray')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "objectArray",
+        "count": "[parameters('itemCount')]",
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('objectArray', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('objectArray')]"
+        }
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "arrayResult": {
+      "type": "array",
+      "value": "[variables('objectArray')]"
+    }
+  }
 }
 ```
 
@@ -131,31 +131,31 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 [
-    {
-        "name": "myDataDisk1",
-        "diskSizeGB": "1",
-        "diskIndex": 0
-    },
-    {
-        "name": "myDataDisk2",
-        "diskSizeGB": "1",
-        "diskIndex": 1
-    },
-    {
-        "name": "myDataDisk3",
-        "diskSizeGB": "1",
-        "diskIndex": 2
-    },
-    {
-        "name": "myDataDisk4",
-        "diskSizeGB": "1",
-        "diskIndex": 3
-    },
-    {
-        "name": "myDataDisk5",
-        "diskSizeGB": "1",
-        "diskIndex": 4
-    }
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
 ]
 ```
 
@@ -167,37 +167,37 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "itemCount": {
-            "type": "int",
-            "defaultValue": 5
-        }
-    },
-    "variables": {
-        "topLevelObject": {
-            "sampleProperty": "sampleValue",
-            "copy": [
-                {
-                    "name": "disks",
-                    "count": "[parameters('itemCount')]",
-                    "input": {
-                        "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                        "diskSizeGB": "1",
-                        "diskIndex": "[copyIndex('disks')]"
-                    }
-                }
-            ]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "objectResult": {
-            "type": "object",
-            "value": "[variables('topLevelObject')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "itemCount": {
+      "type": "int",
+      "defaultValue": 5
     }
+  },
+  "variables": {
+    "topLevelObject": {
+      "sampleProperty": "sampleValue",
+      "copy": [
+        {
+          "name": "disks",
+          "count": "[parameters('itemCount')]",
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
+          }
+        }
+      ]
+    }
+  },
+  "resources": [],
+  "outputs": {
+    "objectResult": {
+      "type": "object",
+      "value": "[variables('topLevelObject')]"
+    }
+  }
 }
 ```
 
@@ -205,34 +205,34 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ```json
 {
-    "sampleProperty": "sampleValue",
-    "disks": [
-        {
-            "name": "myDataDisk1",
-            "diskSizeGB": "1",
-            "diskIndex": 0
-        },
-        {
-            "name": "myDataDisk2",
-            "diskSizeGB": "1",
-            "diskIndex": 1
-        },
-        {
-            "name": "myDataDisk3",
-            "diskSizeGB": "1",
-            "diskIndex": 2
-        },
-        {
-            "name": "myDataDisk4",
-            "diskSizeGB": "1",
-            "diskIndex": 3
-        },
-        {
-            "name": "myDataDisk5",
-            "diskSizeGB": "1",
-            "diskIndex": 4
-        }
-    ]
+  "sampleProperty": "sampleValue",
+  "disks": [
+    {
+      "name": "myDataDisk1",
+      "diskSizeGB": "1",
+      "diskIndex": 0
+    },
+    {
+      "name": "myDataDisk2",
+      "diskSizeGB": "1",
+      "diskIndex": 1
+    },
+    {
+      "name": "myDataDisk3",
+      "diskSizeGB": "1",
+      "diskIndex": 2
+    },
+    {
+      "name": "myDataDisk4",
+      "diskSizeGB": "1",
+      "diskIndex": 3
+    },
+    {
+      "name": "myDataDisk5",
+      "diskSizeGB": "1",
+      "diskIndex": 4
+    }
+  ]
 }
 ```
 
@@ -321,10 +321,10 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关 copy 元素的其他用法，请参阅：
-  * [ARM 模板中的资源迭代](copy-resources.md)
-  * [ARM 模板中的属性迭代](copy-properties.md)
-  * [ARM 模板中的输出迭代](copy-outputs.md)
-* 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
-* 若要了解如何部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
+- 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+- 有关 copy 元素的其他用法，请参阅：
+  - [ARM 模板中的资源迭代](copy-resources.md)
+  - [ARM 模板中的属性迭代](copy-properties.md)
+  - [ARM 模板中的输出迭代](copy-outputs.md)
+- 若要了解模板的各个部分，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+- 若要了解如何部署模板，请参阅[使用 ARM 模板和 Azure PowerShell 来部署资源](deploy-powershell.md)。
