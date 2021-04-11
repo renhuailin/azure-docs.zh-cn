@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591922"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120106"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
@@ -514,7 +514,7 @@ ms.locfileid: "104591922"
 | `encoderPort` | string | 此流的来源编码器的端口。 |
 | `resultCode` | string | 拒绝连接的原因。 下表中列出了结果代码。 |
 
-可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
+可在[实时事件错误代码](../media-services/latest/live-event-error-codes-reference.md)中找到错误结果代码。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ ms.locfileid: "104591922"
 | `encoderPort` | string | 此流的来源编码器的端口。 |
 | `resultCode` | string | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
 
-可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
+可在[实时事件错误代码](../media-services/latest/live-event-error-codes-reference.md)中找到错误结果代码。
 
 正常断开连接结果代码为：
 
@@ -1118,4 +1118,4 @@ ms.locfileid: "104591922"
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [实时事件错误代码](../media-services/latest/live-event-error-codes.md)
+- [实时事件错误代码](../media-services/latest/live-event-error-codes-reference.md)
