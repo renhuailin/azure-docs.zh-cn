@@ -1,17 +1,17 @@
 ---
 title: 计算和存储选项 - Azure Database for PostgreSQL 灵活服务器
 description: 本文介绍 Azure Database for PostgreSQL 灵活服务器中的计算和存储选项。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: b76b6ff788d3d7f44db33af96944d528282f0ac7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 93a439c814b6bac630c5231f46d7a022a131687c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712209"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608164"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的计算和存储选项
 
@@ -121,7 +121,7 @@ ms.locfileid: "101712209"
 当使用 \* 进行标记时，IOPS 受所选 VM 类型限制。 否则，IOPS 受所选存储大小限制。
 
 >[!NOTE]
-> 由于磁盘级别的突发，你可能会在指标中看到更高的 IOPS。 有关更多详细信息，请参阅 [文档](https://docs.microsoft.com/azure/virtual-machines/disk-bursting#disk-level-bursting) 。 
+> 由于磁盘级别突发，你可能会在指标中看到更高的 IOPS。 有关更多详细信息，请参阅[文档](../../virtual-machines/disk-bursting.md#disk-level-bursting)。 
 
 ### <a name="maximum-io-bandwidth-mibsec-for-your-configuration"></a>配置的最大 I/O 带宽（MiB/秒）
 
@@ -154,7 +154,7 @@ ms.locfileid: "101712209"
 
 当达到存储限制时，服务器将开始返回错误并防止任何进一步的修改。 这也可能导致其他操作活动（如备份和 WAL 存档）出现问题。
 
-若要避免这种情况，当存储使用量达到95% 时，或者如果可用容量小于 5 GiB，则服务器自动切换到 **只读模式**。
+为了避免出现这样情况，当存储使用率达到 95% 或可用容量小于 5 GiB 时，服务器会自动切换为只读模式。
 
 建议主动监视正在使用的磁盘空间，并在任何存储不足的情况发生之前增加磁盘大小。 可以设置警报，在服务器存储接近磁盘不足的情况时通知你，从而避免任何磁盘耗尽问题。 有关详细信息，请参阅有关[如何设置警报](howto-alert-on-metrics.md)的文档。
 
