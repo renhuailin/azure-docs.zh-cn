@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 02/19/2021
 ms.author: thweiss
 ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101656510"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!NOTE]
-> 在 Azure Cosmos DB [分析存储](analytical-store-introduction.md) 中使用客户托管的密钥目前需要对你的帐户进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以获取详细信息。
+> 当前，将客户管理的密钥用于 Azure Cosmos DB [分析存储](analytical-store-introduction.md)时，需要在帐户上进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以了解详细信息。
 
 存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务管理的密钥）进行无缝加密。 还可以选择使用你自己托管的密钥（客户托管密钥）来添加另一个加密层。
 
@@ -295,9 +295,9 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 
 此功能目前仅适用于新帐户。
 
-### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>是否可以结合使用客户托管密钥和 Azure Cosmos DB [分析存储](analytical-store-introduction.md)？
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>能否将客户管理的密钥与 Azure Cosmos DB [分析存储](analytical-store-introduction.md)结合使用？
 
-是，但目前需要对你的帐户进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以获取详细信息。
+能，但目前需要对你的帐户进行其他配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以了解详细信息。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>是否有计划支持比帐户级别密钥更精细的粒度？
 

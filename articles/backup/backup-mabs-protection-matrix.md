@@ -3,12 +3,12 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609764"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561264"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -127,7 +127,7 @@ Azure 备份服务器可以保护 MABS 服务器所在的同一个域中以及�
   * 文件服务器
   * Hyper-V
 
-  这些工作负荷可以在单台服务器上或群集配置中运行。 要保护不在受信任的域中的工作负荷，请参阅[在工作组和不受信任的域中准备计算机](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm)，了解支持的对象以及需要的身份验证的准确详细信息。
+  这些工作负荷可以在单台服务器上或群集配置中运行。 要保护不在受信任的域中的工作负荷，请参阅[在工作组和不受信任的域中准备计算机](/system-center/dpm/prepare-environment-for-dpm)，了解支持的对象以及需要的身份验证的准确详细信息。
 
 ## <a name="unsupported-data-types"></a>不支持的数据类型
 

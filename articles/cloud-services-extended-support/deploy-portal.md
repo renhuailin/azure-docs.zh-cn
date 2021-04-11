@@ -8,19 +8,15 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9c1abe1323bc095fe4dfbfc559ef7e159d1f7532
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 306294cc654e46dbe8af80b25cb9c709071fad20
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880669"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166320"
 ---
 # <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户部署 Azure 云服务（外延支持）
 本教程介绍如何使用 Azure 门户创建云服务（外延支持）部署。 
-
-> [!IMPORTANT]
-> 云服务（外延支持）目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>在开始之前
 

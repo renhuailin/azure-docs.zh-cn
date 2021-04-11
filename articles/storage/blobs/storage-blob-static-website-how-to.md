@@ -8,21 +8,18 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a90251097f2b4cced5b30f5d6eea03b6ca0b1c61
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
-ms.translationtype: MT
+ms.openlocfilehash: 2ba0e836f1be97681d677158f5cb81c5b033e915
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664743"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008495"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
-可以直接从 Azure 存储 GPv2 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 若要了解详细信息，请参阅 [Azure 存储中的静态网站托管](storage-blob-static-website.md)。
+可以直接从[常规用途 v2](../common/storage-account-create.md) 或 [ BlockBlobStorage](storage-blob-create-account-block-blob.md) 帐户中的容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 若要了解详细信息，请参阅 [Azure 存储中的静态网站托管](storage-blob-static-website.md)。
 
 本文介绍如何使用 Azure 门户、Azure CLI 或 PowerShell 启用静态网站托管。
-
-> [!NOTE]
-> 确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
 
 ## <a name="enable-static-website-hosting"></a>启用静态网站托管
 

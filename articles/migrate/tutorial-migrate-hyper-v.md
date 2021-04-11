@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878166"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604570"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -135,12 +135,7 @@ ms.locfileid: "98878166"
 ## <a name="provision-for-the-first-time"></a>首次预配
 
 如果这是你要在 Azure Migrate 项目中复制的第一个 VM，则 Azure Migrate:服务器迁移会自动在该项目所在的资源组中预配这些资源。
-
-- **服务总线**：“Azure Migrate:服务器迁移使用服务总线将复制业务流程消息发送到设备。
-- **网关存储帐户**：“Azure Migrate:服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
-- **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在[准备 Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) 以进行 Hyper-V VM 评估和迁移时，应该已设置密钥保管库访问存储帐户所需的权限。 
-
+- **缓存存储帐户**：安装在 Hyper-V 主机上的 Azure Site Recovery 提供程序软件将为复制配置的 VM 的复制数据上传到订阅中的存储帐户（称为缓存存储帐户，或日志存储帐户）。 然后，Azure Migrate 服务会将已上传的复制数据从存储帐户复制到与 VM 相对应的副本托管磁盘。 为 VM 配置复制时需要指定缓存存储帐户，在项目中首次配置复制时，Azure Migrate 门户会自动为 Azure Migrate 项目创建一个缓存存储帐户。
 
 ## <a name="track-and-monitor"></a>跟踪和监视
 

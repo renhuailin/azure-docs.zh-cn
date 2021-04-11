@@ -10,10 +10,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555271"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>使用 Azure AD 对 Windows VM 进行 Azure 磁盘加密（以前版本）
@@ -64,7 +64,7 @@ ms.locfileid: "102555271"
 | subnetName | VM NIC 所属的 VNet 中子网的名称。 |
 | AADClientID | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端 ID。 |
 | AADClientSecret | 有权将机密写入 Key Vault 的 Azure AD 应用程序的客户端机密。 |
-| keyVaultURL | BitLocker 密钥应上传到的 Key Vault 的 URL。 可使用 `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` cmdlet 或 Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` 获取该 URL。 |
+| keyVaultURL | BitLocker 密钥应上传到的 Key Vault 的 URL。 可使用 `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` cmdlet 或 Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` 获取该 URL。 |
 | keyEncryptionKeyURL | 用于加密生成的 BitLocker 密钥的密钥加密密钥的 URL（可选）。 </br> </br>KeyEncryptionKeyURL 是可选参数。 可使用自己的 KEK 在 Key Vault 中进一步保护数据加密密钥（密码）。 |
 | keyVaultResourceGroup | Key Vault 的资源组。 |
 | vmName | 要对其执行加密操作的 VM 的名称。 |

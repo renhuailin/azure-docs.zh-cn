@@ -8,10 +8,10 @@ ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: 765f4f358d593cd5fcc021fbf4ec2276c422c4d8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555119"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
@@ -103,7 +103,7 @@ ms.locfileid: "102555119"
 
 - 可移动地图来查看确切的位置。
 - 可缩放到具体的位置。
-- 热度地图有一个补充性的网格，它显示特定位置的客户计数、订单计数和规范化使用时间的详细信息。
+- 热度地图有一个补充性的网格，可显示特定位置的客户计数、订单计数和规范化使用时间的详细信息。
 - 可在网格中搜索和选择一个国家/地区，放大地图找到该位置。 选择地图上的“主页”按钮可还原为原始视图。
 
 ### <a name="usage-details-table"></a>使用情况详细信息表

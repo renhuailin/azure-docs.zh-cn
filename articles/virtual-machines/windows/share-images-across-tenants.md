@@ -10,10 +10,10 @@ ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: e78cb29551bf7eb3f713edb755464eb7696106e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102556122"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>使用 PowerShell 在 Azure 租户之间共享库 VM 映像

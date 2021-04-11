@@ -3,7 +3,7 @@ title: 通过 Azure Active Directory 身份验证访问 Azure 媒体服务 API |
 description: 了解使用 Azure Active Directory (Azure AD) 验证对 Azure 媒体服务 API 的访问的相关概念和步骤。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 3688f0f9266844ce584f3f2d2e1a7c39ed3e4f70
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694527"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103009005"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API 
 
@@ -81,7 +81,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
    * 媒体服务资源 URI。 
 
-       对于同一 Azure 环境中的媒体服务帐户，此 URI 是相同的 (例如，https： \/ /rest.media.azure.net) 。
+       如果媒体服务帐户位于同一 Azure 环境中，此 URI 相同（例如，https:\//rest.media.azure.net）。
 
    * 媒体服务（本机）应用程序客户端 ID。
    * 媒体服务（本机）应用程序重定向 URI。
@@ -123,7 +123,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
        可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名之上。
    * 媒体服务资源 URI。 
 
-       对于位于同一 Azure 环境中的媒体服务帐户，此 URI 是相同的 (例如，https： \/ /rest.media.azure.net) 。
+       如果媒体服务帐户位于同一 Azure 环境中，此 URI 相同（例如，https:\//rest.media.azure.net）。
 
    * REST 媒体服务的资源 URI。
 

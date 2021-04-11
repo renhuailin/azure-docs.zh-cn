@@ -9,10 +9,10 @@ ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
 ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555646"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Rust 应用程序连接到 Azure Cosmos DB MongoDB API

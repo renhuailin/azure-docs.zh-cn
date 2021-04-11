@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455376"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107549"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 
@@ -29,7 +29,7 @@ ms.locfileid: "102455376"
 
 ## <a name="prerequisites"></a>先决条件
 
-- [创建媒体服务帐户](./create-account-howto.md)。 请务必记住资源组名称和媒体服务帐户名称
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称
 - 安装用于 .NET 开发的工具。 本文中的步骤演示如何使用 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 你也可以使用 Visual Studio Code，具体请参阅[使用 C#](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用其他代码编辑器。
 
 > [!IMPORTANT]
@@ -237,14 +237,14 @@ namespace ConsoleApp1
 
 - [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
 - [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
-- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
-- [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
-- [使用 AES-128 动态加密和密钥传递服务 - .NET](protect-with-aes128.md)
-- [使用 DRM 动态加密和许可证传送服务 - .NET](protect-with-drm.md)
-- [从现有策略获取签名密钥 - .NET](get-content-key-policy-dotnet-howto.md)
-- [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [对自定义转换进行编码 - .NET](encode-custom-presets-how-to.md)
+- [使用 AES-128 动态加密和密钥传递服务 - .NET](drm-playready-license-template-concept.md)
+- [使用 DRM 动态加密和许可证传送服务 - .NET](drm-protect-with-drm-tutorial.md)
+- [从现有策略获取签名密钥 - .NET](drm-get-content-key-policy-dotnet-how-to.md)
+- [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-how-to.md)
 - [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>另请参阅

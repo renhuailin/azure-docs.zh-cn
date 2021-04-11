@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/19/2021
 ms.author: jeedes
 ms.openlocfilehash: 7165fb1c8a3bf608ac1f754168ba40647b954b10
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583762"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortisase-sia"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FortiSASE SIA 的集成

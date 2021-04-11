@@ -1,9 +1,9 @@
 ---
 title: Azure 媒体服务遥测 | Microsoft Docs
-description: 本文提供 Microsoft Azure 媒体服务遥测的概述。
+description: 本文概述 Microsoft Azure 媒体服务遥测。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 4bf9a96d7ffc3b939abe8cfb889c5bd49fee09cc
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b17b5901248056f6000710fa25d2ea1e9df2e2a5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103009078"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
 
@@ -75,10 +75,10 @@ ms.locfileid: "98694579"
 
 遥测数据汇总存储在表“TelemetryMetrics20160321”中，其中“20160321”是创建表的日期。 遥测系统为每个新日期（基于 00:00 UTC）单独创建一个表。 该表用于存储重复值，如给定时间范围内的引入比特率、发送的字节数等。 
 
-properties|值|示例/说明
+属性|值|示例/说明
 ---|---|---
 PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帐户 ID 包括在分区键中，可简化将多个媒体服务帐户写入同一存储帐户的工作流。
-RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
+RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[本文](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)。 
 时间戳|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
 类型|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
 名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
@@ -96,7 +96,7 @@ ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 
 **流式处理终结点**
 
-properties|值|示例
+属性|值|示例
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
@@ -115,7 +115,7 @@ E2ELatency|平均端到端延迟|250
 
 **实时频道**
 
-properties|值|示例/说明
+属性|值|示例/说明
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
@@ -140,7 +140,7 @@ UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bp
 
 **实时存档**
 
-properties|值|示例/说明
+属性|值|示例/说明
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199

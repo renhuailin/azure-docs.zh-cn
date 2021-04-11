@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 65f383b37b6fb5c89fb987f179d7900eb667d76e
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 88dc0760f320a99b0cbc99b7637dc34dd11dfecc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438278"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103465440"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -51,7 +51,7 @@ Azure 安全中心支持基于不同类型的混合环境的虚拟机和服务�
 
 此外，云服务中运行的虚拟机也受支持。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
 
-还支持对驻留在 Azure Stack 中的 VM 进行保护。 若要详细了解安全中心与 Azure Stack 的集成，请参阅[将 Azure Stack 虚拟机加入安全中心](quickstart-onboard-machines.md)。 
+还支持对驻留在 Azure Stack Hub 中的 VM 进行保护。 若要详细了解安全中心与 Azure Stack Hub 的集成，请参阅[将 Azure Stack Hub 虚拟机加入安全中心](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)。 
 
 ## <a name="next-steps"></a>后续步骤
 

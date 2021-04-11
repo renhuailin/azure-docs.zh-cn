@@ -5,16 +5,16 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: maintenance-control
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: b4c705e65b5b8c4f9e34dc5ff1474e87da5bee02
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3b07e3e6aed599e82a21a5fc25345e78fb245992
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209776"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933417"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -81,7 +81,7 @@ Azure 定期执行更新，以提高虚拟机 (VM) 的主机基础结构的可�
 
 现在，“自助维护”列将显示在虚拟机规模集的列表中  。 每个虚拟机规模集可以具有以下自助维护列的值之一：
 
-| Value | 描述 |
+| Value | 说明 |
 |-------|-------------|
 | 是 | 虚拟机规模集中至少有一个 VM 处于自助时段。 你可以在此自助时段随时启动维护。 | 
 | 否 | 受影响的虚拟机规模集中的自助时段中没有任何 VM。 | 

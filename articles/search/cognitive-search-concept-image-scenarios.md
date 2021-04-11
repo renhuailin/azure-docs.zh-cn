@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56ec893de159f4c8a90c5a229ccf7669856fb066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020212"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103419585"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
 
@@ -63,9 +63,9 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 
 | 图像成员       | 说明                             |
 |--------------------|-----------------------------------------|
-| data               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
+| 数据               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
 | width              | 规范化图像的宽度（以像素为单位）。 |
-| height             | 规范化图像的高度（以像素为单位）。 |
+| 高度             | 规范化图像的高度（以像素为单位）。 |
 | originalWidth      | 图像在规范化之前的原始宽度。 |
 | originalHeight      | 图像在规范化之前的原始高度。 |
 | rotationFromOriginal |  在创建规范化图像过程中进行的逆时针旋转（以度为单位）。 值的范围为 0 度到 360 度。 此步骤从图像读取由照相机或扫描仪生成的元数据。 通常为 90 度的倍数。 |
@@ -88,7 +88,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 ]
 ```
 
-## <a name="image-related-skills"></a>图像相关技术
+## <a name="image-related-skills"></a>图像相关技能
 
 有两项内置的认知技术以图像为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
 
@@ -110,7 +110,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 1. 运行 OCR 技术，使用 `"/document/normalized_images"` 作为输入
 1. 将这些图像的文本表示形式与从文件提取的原始文本合并。 可以使用[文本合并](cognitive-search-skill-textmerger.md)技术将两个文本区块合并成单个大型字符串。
 
-以下示例技术集会创建的 merged_text  字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
+以下示例技术集会创建的 merged_text 字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
 
 #### <a name="request-body-syntax"></a>请求正文语法
 ```json
@@ -213,11 +213,83 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
             return original;
         }
 ```
+## <a name="passing-images-to-custom-skills"></a>将图像传递到自定义技能
+
+对于需要自定义技能来处理图像的情况，可以将图像传递到自定义技能，并使其返回文本或图像。 [Python 示例](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)图像处理演示了工作流。 以下技能组来自该示例。
+
+以下技能组接受（在文档破解时获取的）规范化图像，并输出图像的切片。
+
+#### <a name="sample-skillset"></a>示例技能组
+```json
+{
+  "description": "Extract text from images and merge with content text to produce merged_text",
+  "skills":
+  [
+    {
+          "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+          "name": "ImageSkill",
+          "description": "Segment Images",
+          "context": "/document/normalized_images/*",
+          "uri": "https://your.custom.skill.url",
+          "httpMethod": "POST",
+          "timeout": "PT30S",
+          "batchSize": 100,
+          "degreeOfParallelism": 1,
+          "inputs": [
+            {
+              "name": "image",
+              "source": "/document/normalized_images/*"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "slices",
+              "targetName": "slices"
+            }
+          ],
+          "httpHeaders": {}
+        }
+  ]
+}
+```
+
+#### <a name="custom-skill"></a>自定义技能
+
+自定义技能本身在技能组的外部。 在本例中，是 Python 代码首先循环使用自定义技能格式的一批请求记录，然后将 base64 编码的字符串转换为图像。
+
+```python
+# deserialize the request, for each item in the batch
+for value in values:
+  data = value['data']
+  base64String = data["image"]["data"]
+  base64Bytes = base64String.encode('utf-8')
+  inputBytes = base64.b64decode(base64Bytes)
+  # Use numpy to convert the string to an image
+  jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
+  # you now have an image to work with
+```
+同样，若要返回图像，则在 `$type` 属性为 `file` 的 JSON 对象内返回 base64 编码的字符串。
+
+```python
+def base64EncodeImage(image):
+    is_success, im_buf_arr = cv2.imencode(".jpg", image)
+    byte_im = im_buf_arr.tobytes()
+    base64Bytes = base64.b64encode(byte_im)
+    base64String = base64Bytes.decode('utf-8')
+    return base64String
+
+ base64String = base64EncodeImage(jpg_as_np)
+ result = { 
+  "$type": "file", 
+  "data": base64String 
+}
+```
 
 ## <a name="see-also"></a>另请参阅
 + [创建索引器 (REST)](/rest/api/searchservice/create-indexer)
-+ [图像分析技能](cognitive-search-skill-image-analysis.md)
++ [图像分析技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)
++ [如何将图像传递到自定义技能](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)

@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.openlocfilehash: e7cee47e90e6484a4258ba82e47af03725c41d34
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102559284"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>针对商业市场中的免费或试用版 SaaS 套餐构建登录页
@@ -69,7 +69,7 @@ Microsoft 提供了多个示例应用，可实现一个启用了 Azure AD 登录
 
 作为 [OpenID connect](../active-directory/develop/v2-protocols-oidc.md) 流的一部分，在将用户发送到登录页时，Azure AD 会在请求中添加一个 [ID 令牌](../active-directory/develop/id-tokens.md)。 该令牌包含激活过程中可能用到的多条基本信息，包括下表中显示的信息。
 
-| “值” | 说明 |
+| 值 | 说明 |
 | ------------ | ------------- |
 | aud | 此令牌的目标受众。 在本例中，它应与应用程序 ID 匹配并经过验证。 |
 | preferred_username | 进行访问的用户的主用户名。 可以是电子邮件地址、电话号码或其他标识符。 |

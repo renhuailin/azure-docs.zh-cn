@@ -1,5 +1,5 @@
 ---
-title: 将品牌添加到组织的登录页面-Azure AD
+title: 将品牌添加到组织的登录页面 - Azure AD
 description: 有关如何将组织的品牌添加到 Azure Active Directory 登录页面的说明。
 services: active-directory
 author: ajburnle
@@ -13,18 +13,18 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996655"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103008768"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
-使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 当用户登录到组织的基于 web 的应用（如 Microsoft 365）时，将显示登录页，该应用使用 Azure AD 作为标识提供者。
+使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Microsoft 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
 
 >[!NOTE]
->添加自定义品牌要求您拥有 Azure Active Directory Premium 1 或 Premium 2 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>Azure AD Premium 版本适用于中国的全球 Azure Active Directory 的客户。 中国世纪互联运营的 Azure 服务当前不支持 Azure AD Premium 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+>添加自定义品牌要求具有 Azure Active Directory Premium 1 或 Premium 2 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD Premium 版本。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
 可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 `https://outlook.com/contoso.com`），或者在传递域变量时显示（例如 `https://passwordreset.microsoftonline.com/?whr=contoso.com`）。
@@ -32,7 +32,7 @@ ms.locfileid: "95996655"
 用户访问 www\.office.com 等站点时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。 用户登录后，品牌可能需要 15 分钟或更长时间才能出现。 
 
 > [!NOTE]
-> 所有品牌元素都是可选的。 例如，如果您指定一个没有背景图像的横幅徽标，则登录页将使用目标站点中的默认背景图像显示您的徽标 (例如 Microsoft 365) 。<br><br>此外，登录页品牌不会传输到 Microsoft 个人帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
+> 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Microsoft 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
 
 ### <a name="to-customize-your-branding"></a>自定义品牌
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
@@ -50,29 +50,29 @@ ms.locfileid: "95996655"
 
         ![配置公司品牌页面，其中常规设置已完成](media/customize-branding/configure-company-branding-general-settings.png)
 
-        - **语言.** 语言自动设置为默认语言，无法更改。
+        - **语言。** 语言自动设置为默认语言，无法更改。
         
-        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 此图像将锚定到浏览器的中心，并将缩放到可查看空间的大小。 不能选择大于1920x1080 像素大小或文件大小超过 300 KB 的图像。
+        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 图像将固定在浏览器中心，并缩放为可查看空间的大小。 不能选择尺寸超过 1920x1080 像素或文件大小超过 300 KB 的图像。
         
-            建议在没有强主题焦点的情况下使用图像，例如，屏幕中心出现一个不透明的白色框，并且可能会根据可查看空间的尺寸覆盖图像的任何部分。
+            建议使用没有强主题焦点的图像，例如，屏幕中心出现一个不透明的白色框，该框可能会根据可查看空间的尺寸覆盖图像的任何部分。
 
         - **横幅徽标。** 用户在“我的应用”门户页面上输入用户名后，选择要显示在登录页面上的徽标的 .png 或 .jpg 版本。
             
-            图像不能高于 60 像素或宽于 280 像素。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
+            图像不能高于 60 像素，也不能宽于 280 像素，而文件则不应大于 10KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。 
 
         - **用户名提示。** 键入提示文本，如果用户忘记用户名将会显示此提示文本。 此文本必须是 Unicode，不带链接或代码，且不能超过 64 个字符。 如果访客登录到应用，我们建议不添加此提示。
 
-        - **登录页文本和格式设置。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须是 Unicode 且不能超过1024个字符。
+        - **登录页面文本和格式设置。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须为 Unicode，并且不能超过 1024 个字符。
 
-           你可以自定义输入的登录页文本。 若要开始新段落，请使用 enter 键两次。 还可以更改文本格式，使其包含粗体、斜体、下划线或可单击的链接。 使用以下语法将格式添加到文本： 
+           可以自定义输入的登录页文本。 若要开始新段落，请使用两次 Enter 键。 还可以更改文本格式以包括粗体、斜体、下划线或可单击的链接。 使用以下语法向文本添加格式： 
 
-          > Hyperlink ```[text](link)``` 
+          > 超链接：```[text](link)``` 
           
-          > 粗体： ``` **text** ``` 或 ``` __text__ ``` 
+          > 粗体：``` **text** ``` 或 ``` __text__ ``` 
           
-          > 斜体： ``` *text* ``` 或 ``` _text_ ``` 
+          > 斜体：``` *text* ``` 或 ``` _text_ ``` 
           
-          > 划线 ``` ++text++ ``` 
+          > 下划线：``` ++text++ ``` 
 
     - **高级设置**
             
@@ -80,15 +80,15 @@ ms.locfileid: "95996655"
 
         - **登录页背景色。** 指定在低带宽连接的情况下替代背景图像显示的十六进制颜色（例如，白色为 #FFFFFF）。 我们建议使用横幅徽标的主颜色或组织的颜色。
 
-        - **方形徽标图像。** 选择要在新的 Windows 10 企业版设备的设置过程中向用户显示的 png (首选) 或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( /windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
+        - **方形徽标图像。** 选择要在新 Windows 10 企业版设备的安装过程中向用户显示的组织徽标的 .png（首选）或 .jpg 图像。 此图像仅用于 Windows 身份验证，并且仅显示在使用 [Windows Autopilot]( /windows/deployment/windows-autopilot/windows-10-autopilot) 进行部署的租户上；或者在其他 Windows 10 体验中用于密码输入页面。 在某些情况下，它也可能出现在“同意”对话框中。
         
-            图像的大小不能大于240x240 像素像素，并且文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
+            图像大小不能超过 240 x 240 像素，并且其中的文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     
-        - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果徽标在白色、深蓝和黑色背景上看起来很好，则不需要添加此图像。 
+        - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果徽标在白色、深蓝色和黑色背景上看起来不错，则无需添加此图像。 
         
-        - **显示保持登录状态的选项。** 你可以选择让用户保持登录到 Azure AD，直到显式注销。如果选择 " **否**"，则隐藏此选项，用户必须在每次关闭并重新打开浏览器时登录。
+        - **显示保持登录状态的选项。** 你可以选择让用户保持一直登录到 Azure AD 的状态，直到明确注销。如果选择“否”，则此选项将被隐藏，用户每次关闭并重新打开浏览器时必须登录。
 
-            此功能只能用于默认署名对象，而不能用于任何特定于语言的对象。 若要详细了解如何配置选项并对其进行故障排除，请参阅 [为 Azure AD 帐户配置 "保持登录状态？" 提示](keep-me-signed-in.md)
+            此功能仅适用于默认品牌对象，不适用于任何特定于语言的对象。 要详细了解如何配置保持登录选项并排查相关问题，请参阅[为 Azure AD 帐户配置“保持登录状态?”](keep-me-signed-in.md)
         
             >[!NOTE]
             >SharePoint Online 和 Office 2010 的某些功能取决于用户能否选择保持登录状态。 如果将此选项设置为“否”，用户会在登录时可能看到其他意外的提示。
@@ -113,7 +113,7 @@ ms.locfileid: "95996655"
 
 3. 在“配置公司品牌”页面上，根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加、删除或更改任何信息。
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
    最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
@@ -130,11 +130,11 @@ ms.locfileid: "95996655"
 
 3. 在“配置公司品牌”页面上，选择语言（例如法语），然后根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加已翻译的信息。
 
-4. 选择“保存”。
+4. 选择“保存”。 
 
     “Contoso - 公司品牌”页面更新以显示新的法语配置。
 
-    ![Contoso-公司品牌页面，其中显示了新语言配置](media/customize-branding/company-branding-french-config.png)
+    ![“Contoso - 公司品牌”页面，其中显示新语言配置](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>将自定义品牌添加到页面
 通过使用文本 `?whr=yourdomainname` 修改 URL 的结尾，将自定义品牌添加到页面。 此修改适用于多个页面，包括多重身份验证 (MFA) 设置页面、自助服务密码重置 (SSPR) 设置页面和登录页面。
@@ -142,7 +142,7 @@ ms.locfileid: "95996655"
 **示例：**
 
 **原始 URL：** https://aka.ms/MFASetup<br>
-**自定义 URL：**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
+**自定义 URL：** `https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
 
 **原始 URL：** https://aka.ms/SSPR<br>
-**自定义 URL：**`https://passwordreset.microsoftonline.com/?whr=contoso.com`
+**自定义 URL：** `https://passwordreset.microsoftonline.com/?whr=contoso.com`
