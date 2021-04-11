@@ -1,17 +1,17 @@
 ---
 title: 配置和访问日志 - 灵活服务器 - Azure Database for PostgreSQL
 description: 如何访问 Azure Database for PostgreSQL 灵活服务器的数据库日志
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59a2ddcc68a7c5a3b6fa3a3b315f4294d1625204
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590584"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607399"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>配置和访问 Azure Database for PostgreSQL 灵活服务器中的日志
 

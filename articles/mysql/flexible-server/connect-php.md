@@ -1,18 +1,18 @@
 ---
 title: 快速入门：使用 PHP 进行连接 - Azure Database for MySQL 灵活服务器
 description: 本快速入门提供了多个 PHP 代码示例，你可以使用它们来连接到 Azure Database for MySQL 灵活服务器并查询其中的数据。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545100"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109601"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 PHP 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
 

@@ -4,12 +4,12 @@ description: 在本快速入门中，使用 Batch .NET 客户端库通过 C# 应
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88921641"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168240"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
@@ -108,7 +108,7 @@ stderr:
 
 ### <a name="preliminaries"></a>初步操作
 
-为了与存储帐户交互，应用使用用于 .NET 的 Azure 存储客户端库。 它使用 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 创建帐户引用，并据此创建 [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)。
+为了与存储帐户交互，应用使用用于 .NET 的 Azure 存储客户端库。 它使用 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) 创建帐户引用，并据此创建 [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)。
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

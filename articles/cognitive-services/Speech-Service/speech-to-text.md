@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: 5e593202a8cd68dfc4a92f991d573b4b06051b36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3450d39729096bfc3077f51e2069f8f102e571a5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102434300"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449386"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
@@ -26,7 +26,12 @@ ms.locfileid: "102434300"
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
 
-通过使用其他参考文本作为输入，语音转文本服务还支持[发音评估](rest-speech-to-text.md#pronunciation-assessment-parameters)功能（用于评估语音发音），并向说话人提供有关语音准确性和流畅度的反馈。 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。 教师可以使用此功能来实时评估多个说话人的发音。 此功能目前支持美国英语，并与专家进行的语音评估高度相关。
+本文档包含以下文章类型：
+
+* **快速入门** 介绍了入门说明，指导您完成向服务发出请求。
+* **操作指南** 包含以更具体的方式或自定义方式使用服务的说明。
+* **概念** 对服务的功能和特性进行了深入说明。
+* **教程** 是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 > [!NOTE]
 > 必应语音已于 2019 年 10 月 15 日停止使用。 如果你的应用程序、工具或产品使用了必应语音 API，请参阅我们创建的指南来帮助你迁移到语音服务。

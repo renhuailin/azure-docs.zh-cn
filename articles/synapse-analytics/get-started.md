@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 03/18/2021
+ms.openlocfilehash: 0153797445e2a3f55baa53e49c06ee5c82e3bebe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445066"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606219"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics 入门
 
@@ -24,9 +24,9 @@ ms.locfileid: "96445066"
 按照如下所示的顺序执行步骤，你将浏览诸多功能并了解如何运用其核心功能。
 
 * [第 1 步 - 创建并设置 Synapse 工作区](get-started-create-workspace.md)
-* [第 2 步 - 使用专用 SQL 池进行分析](get-started-analyze-sql-pool.md)
+* [第 2 步 - 使用无服务器 SQL 池进行分析](get-started-analyze-sql-on-demand.md)
 * [第 3 步 - 使用 Apache Spark 进行分析](get-started-analyze-spark.md)
-* [第 4 步 - 使用无服务器 SQL 池进行分析](get-started-analyze-sql-on-demand.md)
+* [第 4 步 - 使用专用 SQL 池进行分析](get-started-analyze-sql-pool.md)
 * [第 5 步 - 分析存储帐户中的数据](get-started-analyze-storage.md)
 * [第 6 步 - 通过管道进行编排](get-started-pipelines.md)
 * [第 7 步 - 使用 Power BI 可视化数据](get-started-visualize-power-bi.md)

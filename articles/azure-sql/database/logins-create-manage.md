@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452431"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639474"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>向数据库授予对 Azure SQL 数据库、SQL 托管实例和 Azure Synapse Analytics 的访问权限
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ ms.locfileid: "96452431"
 
   - 在 master 数据库中再创建一个 SQL 登录名。
   - 使用 [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql) 语句将登录名添加到 [sysadmin 固定服务器角色](/sql/relational-databases/security/authentication-access/server-level-roles)。 此登录名拥有完全管理权限。
-  - 或者，使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 语法创建 [Azure AD 登录名](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
+  - 或者，使用 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语法创建 [Azure AD 登录名](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 
 - **在 SQL 数据库中，创建具有有限管理权限的 SQL 登录名**
 
@@ -122,9 +122,9 @@ ms.locfileid: "96452431"
 
 有关演示如何创建登录名和用户的示例，请参阅：
 
-- [创建 Azure SQL 数据库的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [创建 Azure SQL 托管实例的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [创建 Azure Synapse 的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [创建 Azure SQL 数据库的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [创建 Azure SQL 托管实例的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [创建 Azure Synapse 的登录名](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [创建用户](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [创建 Azure AD 包含的用户](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
@@ -142,7 +142,7 @@ ms.locfileid: "96452431"
   - 若要将用户添加到固定数据库角色：
 
     - 在 Azure SQL 数据库中使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) 语句。 有关示例，请参阅 [ALTER ROLE 示例](/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - 在 Azure Synapse 中，请使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句。 有关示例，请参阅 [sp_addrolemember 示例](/sql/t-sql/statements/alter-role-transact-sql)。
+    - 在 Azure Synapse 中，请使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 语句。 有关示例，请参阅 [sp_addrolemember 示例](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples)。
 
 - **自定义数据库角色**
 

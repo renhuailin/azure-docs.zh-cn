@@ -3,14 +3,14 @@ title: Azure 自动化数据安全性
 description: 本文介绍 Azure 自动化如何保护你的隐私并保护数据。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2bdf25ef24f1fbf4aaf4dec154ea6af3421b915a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050811"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954667"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
@@ -22,11 +22,11 @@ ms.locfileid: "102050811"
 
 * Webhook 调用
 
-* 混合 Runbook 辅助角色，包括由更新管理和更改跟踪和清单管理的计算机。
+* 混合 Runbook 辅助角色，其包括由更新管理以及更改跟踪和清单管理的计算机。
 
 * DSC 节点
 
-我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
+我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**。 除非必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
 
 有关适用于 Windows 和 Linux 的 Log Analytics 代理（混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅 [Log Analytics 代理概述 - TLS 1.2](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "102050811"
 
 ## <a name="data-retention"></a>数据保留
 
-在删除 Azure 自动化中的某个资源时，该资源在被永久删除之前将保留若干天以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。 保留策略应用于所有用户并且当前无法自定义。 但是，如果需要将数据保留更长时间，则可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+在你删除 Azure 自动化中的某个资源时，该资源在被永久移除之前会保留多日以供审核。 在此期间，无法查看或使用该资源。 此策略也适用于属于已删除的自动化帐户的资源。 保留策略应用于所有用户并且当前无法自定义。 但是，如果需要将数据保留更长时间，则可以[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
 
 下表汇总了各种资源的保留策略。
 
@@ -54,9 +54,9 @@ ms.locfileid: "102050811"
 | 模块 |在模块被用户删除 30 天后或者在包含该模块的帐户被用户删除 30 天后将其永久删除。 |
 | 节点配置/MOF 文件 |生成新节点配置 30 天后，将永久删除旧节点配置。 |
 | 节点报告 |在生成该节点的新报告 90 天后永久删除节点报告。 |
-| Runbook |在用户删除资源30天后，或在用户删除保存资源<sup>1</sup>的帐户后的30天后，将永久删除 runbook。 |
+| Runbook |在用户删除 Runbook 30 天后，或者在用户删除包含该资源的帐户 30 天后，系统会永久移除该资源<sup>1</sup>。 |
 
-<sup>1</sup>可以通过将 Azure 支持事件与 Microsoft Azure 支持结合使用来恢复30天内的 runbook。 请参阅 [Azure 支持站点](/support/options) 并选择 " **提交支持请求**"。
+<sup>1</sup>通过 Microsoft Azure 支持提交 Azure 支持事件，可在 30 天内还原 runbook。 转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“提交支持请求”。
 
 ## <a name="data-backup"></a>数据备份
 
@@ -68,7 +68,7 @@ ms.locfileid: "102050811"
 
 ### <a name="integration-modules"></a>集成模块
 
-无法从 Azure 自动化导出集成模块。 必须使它们在自动化帐户外部可用。
+你无法从 Azure 自动化导出集成模块，这些模块必须从自动化帐户外部提供。
 
 ### <a name="assets"></a>资产
 
@@ -84,7 +84,10 @@ ms.locfileid: "102050811"
 
 异地复制在 Azure 自动化帐户中是标准的。 设置帐户时需选择主要区域。 内部自动化异地复制服务会自动将次要区域分配给帐户。 该服务随后会将帐户数据从主要区域连续备份到次要区域。 主要区域和次要区域的完整列表位于[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
-自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域丢失（这种情况很少见），Microsoft 将尝试恢复它。 公司在无法恢复主要数据的情况下，会使用自动故障转移并通过 Azure 订阅将相关情况告知你。
+自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可使用此备份。 如果主要区域丢失（这种情况很少见），Microsoft 将尝试恢复它。
+
+> [!NOTE]
+> Azure 自动化将客户数据存储在客户选择的区域中。 出于 BCDR 目的，对于除巴西南部和东南亚的所有区域，Azure 自动化数据存储在不同区域（Azure 配对区域）中。 仅对于巴西地域的巴西南部（圣保罗州）和亚太地域的东南亚区域（新加坡），我们才将 Azure 自动化数据存储在相同区域，以适应这些区域的数据驻留要求。
 
 如果出现区域故障，外部客户无法直接访问自动异地复制服务。 如果要在区域故障期间维护自动化配置和 runbook：
 

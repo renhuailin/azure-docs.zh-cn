@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 62723f5c833ca89618a6d9e0781539a13efba4f3
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959664"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279674"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>步骤 3 - 进行设置，以迁移到 V3 REST API 或客户端 SDK
 
@@ -43,7 +43,7 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>创建新的媒体服务帐户进行测试
 
-在 Azure 门户中，按照有关[设置环境](how-to-set-azure-subscription.md?tabs=portal)的快速入门步骤进行操作。 选择 API 访问和服务主体身份验证，来生成用于此测试帐户的新的 Azure AD 应用程序 ID 和机密。
+在 Azure 门户中，按照有关[设置环境](setup-azure-subscription-how-to.md?tabs=portal)的快速入门步骤进行操作。 选择 API 访问和服务主体身份验证，来生成用于此测试帐户的新的 Azure AD 应用程序 ID 和机密。
 
 [创建媒体服务帐户](account-create-how-to.md?tabs=portal)。
 [获取用于访问媒体服务 API 的凭据](access-api-howto.md?tabs=portal)。
@@ -66,7 +66,7 @@ V3 API 基于 Azure 资源管理 (ARM)。 它使用 Azure Active Directory (Azur
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-使用 [Postman](./media-rest-apis-with-postman.md) 进行媒体服务 v3 REST API 调用。
+使用 [Postman](./setup-postman-rest-how-to.md) 进行媒体服务 v3 REST API 调用。
 请阅读 [REST API 参考页面](/rest/api/media/)。
 
 应在 Postman 集合中使用 2020-05-01 版本字符串。

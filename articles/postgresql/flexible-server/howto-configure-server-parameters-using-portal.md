@@ -1,17 +1,17 @@
 ---
 title: 配置服务器参数 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
 description: 本文介绍如何通过 Azure 门户在 Azure Database for PostgreSQL 灵活服务器中配置 Postgres 参数。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4f945c2c7fffb143bdb8324a330775fb072b25c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 29d85cc33dc55f3819bba6898a265c46b7e7ef85
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90934205"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607433"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---flexible-server-via-the-azure-portal"></a>通过 Azure 门户在 Azure Database for PostgreSQL 灵活服务器中配置服务器参数 
 

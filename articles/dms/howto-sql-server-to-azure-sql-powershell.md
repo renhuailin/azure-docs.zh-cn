@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 3152fe0bf77b73e593ac61efb5f386827bdc96ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643719"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -151,7 +151,7 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>创建源和目标的凭据参数
 
-可以将连接安全凭据作为 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 对象创建。
+可以将连接安全凭据作为 [PSCredential](/dotnet/api/system.management.automation.pscredential) 对象创建。
 
 以下示例显示了如何为源和目标连接创建 PSCredential 对象，将密码作为字符串变量 $sourcePassword 和 $targetPassword 提供。
 
@@ -195,8 +195,8 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 * TaskName。 要创建的任务的名称。 
 * *SourceConnection*。 表示源 SQL Server 连接的 AzDmsConnInfo 对象。
 * *TargetConnection*。 表示目标 Azure SQL 数据库连接的 AzDmsConnInfo 对象。
-* SourceCred。 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 对象，用于连接到源服务器。
-* TargetCred。 [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) 对象，用于连接到目标服务器。
+* SourceCred。 [PSCredential](/dotnet/api/system.management.automation.pscredential) 对象，用于连接到源服务器。
+* TargetCred。 [PSCredential](/dotnet/api/system.management.automation.pscredential) 对象，用于连接到目标服务器。
 * SelectedDatabase。 表示源和目标数据库映射的 AzDataMigrationSelectedDB 对象。
 * *SchemaValidation*。 （可选，开关参数）迁移后，在源和目标之间执行架构信息比较。
 * *DataIntegrityValidation*。 （可选，开关参数）迁移后，在源和目标之间执行基于校验和的数据完整性验证。
