@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bec221f762213fa8576ccef30e9b6a27aa708f01
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944146"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103494489"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -101,13 +101,17 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 对标识授权或获取 SAS 令牌后，即可开始传输数据。
 
+> [!NOTE]
+> 存储帐户的[需要安全传输](storage-require-secure-transfer.md)设置决定了与存储帐户的连接是否通过传输层安全 (TLS) 进行安全保护。 默认情况下，此设置处于启用状态。   
+
 若要查找示例命令，请参阅以下文章中的任何一篇。
 
 | 服务 | 文章 |
 |--------|-----------|
-|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[下载 Azure Blob 存储中的 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
+|Azure Blob 存储 |[将文件上传到 Azure Blob 存储](storage-use-azcopy-blobs-upload.md)<br><br>[从 Azure Blob 存储下载 Blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 存储帐户之间复制 Blob](storage-use-azcopy-blobs-copy.md)<br><br>[与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)|
 |Azure 文件 |[使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)|
-|Amazon S3|[使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)|
+|Amazon S3|[将数据从 Amazon S3 复制到 Azure 存储](storage-use-azcopy-s3.md)|
+|Google Cloud Storage|[将数据从 Google Cloud Storage 复制到 Azure 存储（预览版）](storage-use-azcopy-google-cloud.md)|
 |Azure Stack 存储|[使用 AzCopy 和 Azure Stack 存储传输数据](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>在脚本中使用

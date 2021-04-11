@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bca2158f448f74ba596114fce5d1631249124a92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367599"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606729"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -98,7 +98,7 @@ ms.locfileid: "100367599"
 
 1. 在“链接服务”页上，选择“+ 新建”以创建新的链接服务。
 
-   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="新建链接服务。":::
 1. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。 
 1. 在“新建链接服务(Azure SQL 数据库)”窗口中执行以下步骤： 
 

@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
 ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102508225"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
@@ -119,7 +119,7 @@ ms.locfileid: "102508225"
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 |Min| 列的最小值。 对于没有固有顺序（例如布尔值）的特征类型，将显示空白条目。
 |Max| 列的最大值。 
-|计数| 列中缺失和未缺失条目的总数。
+|Count| 列中缺失和未缺失条目的总数。
 |非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 |分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 |平均值| 列的算术中间值或平均值。

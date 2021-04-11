@@ -1,22 +1,22 @@
 ---
-title: '适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) '
-description: Azure Database for PostgreSQL-超大规模 (Citus) 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指南和资源。
+title: 适用于 Azure Database for PostgreSQL - 超大规模 (Citus) 的 Azure 安全基线
+description: Azure Database for PostgreSQL - 超大规模 (Citus) 安全基线为实现 Azure 安全基准中指定的安全建议提供过程指导和资源。
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 19935037e98bbc7ce9c4152b034b664d802a8f3a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588271"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102607979"
 ---
-# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模 (Citus) 
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL - 超大规模 (Citus) 的 Azure 安全基线
 
-适用于 Azure Database for PostgreSQL (Citus) 的 Azure 安全基线包含的建议可帮助你提高部署的安全状况。
+适用于 Azure Database for PostgreSQL - 超大规模 (Citus) 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
 此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
@@ -28,9 +28,9 @@ ms.locfileid: "100588271"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
-**指南**：在指定哪些计算机具有权限之前，Azure Database for PostgreSQL 服务器防火墙阻止对超大规模 (Citus) 协调器节点的所有访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
+**指导**：在指定哪些计算机拥有权限之前，Azure Database for PostgreSQL 服务器防火墙会阻止所有对超大规模 (Citus) 协调器节点的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。 要配置防火墙，请创建防火墙规则，以指定可接受的 IP 地址的范围。 可以在服务器级别创建防火墙规则。
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置防火墙规则) ](./concepts-hyperscale-firewall-rules.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中配置防火墙规则](./concepts-hyperscale-firewall-rules.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -38,7 +38,7 @@ ms.locfileid: "100588271"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：通过 Azure Policy 为与 Azure Database for PostgreSQL 实例关联的网络设置和网络资源定义和实现标准安全配置。 使用 "Microsoft 网络" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Database for PostgreSQL 实例的网络配置。
+**指南**：通过 Azure Policy 为与 Azure Database for PostgreSQL 实例关联的网络设置和网络资源定义和实现标准安全配置。 使用“Microsoft.Network”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Database for PostgreSQL 实例的网络配置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -58,11 +58,11 @@ ms.locfileid: "100588271"
 
 **指导**：对于控制平面审核日志记录，请启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 Azure 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-此外，通过 Azure Monitor 引入日志来聚合由超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
+此外，通过 Azure Monitor 引入日志来聚合超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
 
 - [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
-- [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
+- [超大规模 (Citus) 中的指标](./concepts-hyperscale-monitoring.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -72,13 +72,13 @@ ms.locfileid: "100588271"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：超大规模 (Citus) 为服务器组中的每个节点提供度量值。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
+**指导**：超大规模 (Citus) 为服务器组中的每个节点提供指标。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
 
-对于控制平面审核日志记录，启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、Azure 事件中心或 Azure 存储帐户以进行存档。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 Azure 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
+对于控制平面审核日志记录，请启用 Azure 活动日志诊断设置，并将日志发送到 Log Aalytics 工作区、Azure 事件中心或 Azure 存储帐户进行存档。 使用 Azure 活动日志数据，可以确定在控制平面级别针对 Azure 资源执行的任何写入操作（PUT、POST、DELETE）的“操作内容、操作人员和操作时间”。
 
-此外，通过 Azure Monitor 引入日志来聚合由超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
+此外，通过 Azure Monitor 引入日志来聚合超大规模 (Citus) 生成的安全数据。 在 Azure Monitor 中，使用 Log Analytics 工作区来查询和执行分析，并使用存储帐户进行长期/存档存储。 或者，可以启用数据并将其加入 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
 
-- [超大规模中的指标 (Citus) ](./concepts-hyperscale-monitoring.md)
+- [超大规模 (Citus) 中的指标](./concepts-hyperscale-monitoring.md)
 
 - [如何启用 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
@@ -90,7 +90,7 @@ ms.locfileid: "100588271"
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
-**指南**：在 Azure Monitor 中，对于用于保存超大规模 (Citus) 日志的 Log Analytics 工作区，请根据组织的符合性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
+**指导**：在 Azure Monitor 中，对于用于保存超大规模 (Citus) 日志的 Log Analytics 工作区，根据组织的合规性法规设置保留期。 使用 Azure 存储帐户进行长期/存档存储。
 
 - [如何为 Log Analytics 工作区设置日志保留参数](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
@@ -102,7 +102,7 @@ ms.locfileid: "100588271"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：分析和监视超大规模 (Citus) 实例中的日志，以了解异常行为。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
+**指导**：分析和监视超大规模 (Citus) 实例的日志中是否存在异常行为。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -116,11 +116,11 @@ ms.locfileid: "100588271"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
-**指南**：你可以为超大规模 (Citus) 启用诊断设置，并将日志发送到 Log Analytics 工作区。 你可以根据 Azure 服务的监视指标来配置和接收警报。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
+**指导**：为超大规模 (Citus) 启用诊断设置，并将日志发送到 Log Analytics 工作区。 可根据监视指标配置和接收 Azure 服务的警报。 使用 Azure Monitor 的 Log Analytics 检查日志并对日志数据执行查询。 或者，可以启用将数据加入 Azure Sentinel 或第三方 SIEM 的功能。
 
 将 Log Analytics 工作区加入 Azure Sentinel，因为它提供了安全业务流程自动化响应 (SOAR) 解决方案。 这样便可以创建 playbook（自动解决方案）并用于修正安全问题。
 
-- [超大规模中的指标 (Citus) ](./howto-hyperscale-alert-on-metric.md)
+- [超大规模 (Citus) 中的指标](./howto-hyperscale-alert-on-metric.md)
 
 - [如何配置 Azure 活动日志的诊断设置](../azure-monitor/essentials/activity-log.md)
 
@@ -136,11 +136,11 @@ ms.locfileid: "100588271"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：维护对控制平面具有管理访问权限的用户帐户的清单 (例如 Azure 门户) 超大规模 (Citus) 实例。 此外，还可以在数据库自身) 超大规模 (Citus) 实例的情况下，维护有权访问数据平面的管理帐户的清单 (。
+**指导**：维护对你的超大规模 (Citus) 实例的控制平面（例如 Azure 门户）拥有管理访问权限的用户帐户清单。 此外，还需维护对超大规模 (Citus) 实例的数据平面（在数据库本身内）拥有访问权限的管理帐户的清单。
 
-超大规模 (Citus) 不支持内置的基于角色的访问控制，但你可以基于特定的资源提供程序操作来创建自定义角色。
+超大规模 (Citus) 不支持基于角色的内置访问控制，但可以基于特定的资源提供程序操作来创建自定义角色。
 
-此外，PostgreSQL 引擎使用角色来控制对数据库对象的访问，新创建的超大规模 (Citus) 服务器组附带了几个预定义的角色。 若要修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
+此外，PostgreSQL 引擎使用角色来控制对数据库对象的访问，新创建的超大规模 (Citus) 服务器组附带了几个预定义的角色。 若要修改用户特权，请在 PgAdmin 或 psql 等工具中使用标准 PostgreSQL 命令。
 
 - [了解 Azure 订阅的自定义角色](../role-based-access-control/custom-roles.md) 
 
@@ -148,9 +148,9 @@ ms.locfileid: "100588271"
 
 - [了解 Azure Database for PostgreSQL 的访问管理](./concepts-security.md#access-management)
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](./howto-hyperscale-create-users.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中创建用户](./howto-hyperscale-create-users.md)
 
-- [如何使用 psql 连接到 PostgreSQL-超大规模 (Citus) ](./quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)
+- [如何使用 psql 连接到 PostgreSQL - 超大规模 (Citus)](./quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql)
 
 
 **Azure 安全中心监视**：不适用
@@ -167,11 +167,11 @@ ms.locfileid: "100588271"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：创建用于访问超大规模 (Citus) 实例的专用管理帐户时使用的标准操作过程。 用于管理 Azure 资源的管理员帐户与 Azure Active Directory 相关联，还存在于用于管理数据库访问权限的超大规模 (Citus) 服务器组中的本地服务器管理员帐户。 使用 Azure 安全中心的标识和访问管理来监视 Azure Active Directory 中的管理帐户数。
+**指导**：围绕可用于访问超大规模 (Citus) 实例的专用管理帐户的使用，创建标准操作过程。 用于管理 Azure 资源的管理员帐户与 Azure Active Directory 相关联，另有本地服务器管理员帐户存在于超大规模 (Citus) 服务器组中用于管理数据库访问权限。 使用 Azure 安全中心标识和访问管理来监视 Azure Active Directory 中管理帐户的数量。
 
 - [了解 Azure 安全中心标识和访问](../security-center/security-center-identity-access.md) 
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus) 中创建用户 ](./howto-hyperscale-create-users.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中创建用户](./howto-hyperscale-create-users.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -179,7 +179,7 @@ ms.locfileid: "100588271"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：若要访问 Azure 门户，请启用 Azure Active Directory 多重身份验证 (MFA) 并遵循 Azure 安全中心的标识和访问管理建议。
+**指导**：若要访问 Azure 门户，请启用 Azure Active Directory 多重身份验证 (MFA)，并遵循 Azure 安全中心标识和访问管理的建议。
 
 - [如何在 Azure 中启用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -203,7 +203,7 @@ ms.locfileid: "100588271"
 
 **责任**：客户
 
-### <a name="37-alert-on-account-login-behavior-deviation"></a>3.7：帐户登录行为偏差的警报
+### <a name="37-alert-on-account-login-behavior-deviation"></a>3.7：对帐户登录行为偏差发出警报
 
 **指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
@@ -230,11 +230,11 @@ ms.locfileid: "100588271"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为中心身份验证和授权系统管理 PostgreSQL 资源。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指导**：使用 Azure Active Directory (AD) 作为中心身份验证和授权系统来管理 PostgreSQL 资源。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
-超大规模 (Citus) 服务器组内的用户无法直接与 Azure Active Directory 帐户关联。 若要修改数据库对象访问权限的用户权限，请在 PgAdmin 或 psql 等工具中使用标准 PostgreSQL 命令。
+超大规模 (Citus) 服务器组内的用户无法直接与 Azure Active Directory 帐户关联。 若要修改数据库对象访问权限的用户特权，请在 PgAdmin 或 psql 等工具中使用标准 PostgreSQL 命令。
 
-- [修改用户角色的权限](./howto-hyperscale-create-users.md#how-to-modify-privileges-for-user-role)
+- [修改用户角色的特权](./howto-hyperscale-create-users.md#how-to-modify-privileges-for-user-role)
 
 - [如何创建和配置 AAD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
@@ -246,9 +246,9 @@ ms.locfileid: "100588271"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
-**指南**：查看和协调有权访问本地数据库的两个用户的访问权限，并通过 Azure Active Directory 来管理 PostgreSQL 资源。
+**指导**：查看和协调有权访问本地数据库以及通过 Azure Active Directory 来管理 PostgreSQL 资源的用户的权限。
 
-对于具有管理数据库 Azure 资源的访问权限的用户，请查看 Azure Active Directory (AD) 日志，以帮助发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问可用于访问超大规模 (Citus) 和角色分配的企业应用程序。 应定期（例如每 90 天一次）评审用户访问权限，以确保正确用户持续拥有访问权限。
+对于有权管理数据库 Azure 资源的用户，可查看 Azure Active Directory (AD) 日志以帮助发现陈旧帐户。 此外，使用 Azure 标识访问评审可高效地管理组成员身份、对可用于访问超大规模 (Citus) 的企业应用程序的访问权限，以及角色分配。 应定期（例如每 90 天一次）评审用户访问权限，以确保正确用户持续拥有访问权限。
 
 - [评审 PostgreSQL 用户和分配的角色](https://www.postgresql.org/docs/current/database-roles.html)
 
@@ -262,7 +262,7 @@ ms.locfileid: "100588271"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
-**指南**：在 AZURE ACTIVE DIRECTORY (AD) 内，你可以访问 Azure AD 登录活动、审核和风险事件日志源，从而允许你与任何 SIEM/监视工具集成。 
+**指导**：在 Azure Active Directory (AD) 内，你有权访问 Azure AD 登录活动、审核和风险事件日志源，因此可以与任何 SIEM/监视工具集成。 
 
 可以通过为 Azure Active Directory 用户帐户创建诊断设置，并将审核日志和登录日志发送到 Log Analytics 工作区，来简化此过程。 你可以在 Log Analytics 工作区中配置所需的警报。 
 
@@ -275,7 +275,7 @@ ms.locfileid: "100588271"
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 Azure Active Directory 的标识保护和风险检测功能来配置自动响应 AZURE ACTIVE DIRECTORY (AD) 级别上检测到的可疑操作。 可以通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
+**指导**：使用 Azure Active Directory 的标识保护和风险检测功能在 Azure Active Directory (AD) 级别配置对检测到的可疑操作的自动响应。 可以通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
 
 还可以将日志引入 Azure Sentinel 中以便进一步调查。
 
@@ -291,7 +291,7 @@ ms.locfileid: "100588271"
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
 
-**指南**：当前不可用;对于超大规模 (Citus) ，尚不支持客户密码箱。
+**指导**：目前不适用；超大规模 (Citus) 尚不支持客户密码箱。
 
 - [支持客户密码箱的服务列表](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
@@ -305,7 +305,7 @@ ms.locfileid: "100588271"
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记来帮助跟踪超大规模 (Citus) 实例或存储或处理敏感信息的相关资源。
+**指导**：使用标记可帮助跟踪存储或处理敏感信息的超大规模 (Citus) 实例或相关资源。
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -315,15 +315,15 @@ ms.locfileid: "100588271"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
+**指导**：为开发、测试和生产实施单独的订阅和/或管理组。 结合使用管理角色和防火墙规则，以隔离和限制对 Azure Database for PostgreSQL 实例的网络访问。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
 - [如何创建管理组](../governance/management-groups/create-management-group-portal.md)
 
-- [了解 Azure Database for PostgreSQL-超大规模 (Citus 中的防火墙规则) ](./concepts-hyperscale-firewall-rules.md)
+- [了解 Azure Database for PostgreSQL - 超大规模 (Citus) 中的防火墙规则](./concepts-hyperscale-firewall-rules.md)
 
-- [了解超大规模中的角色 (Citus) ](./howto-hyperscale-create-users.md)
+- [了解超大规模 (Citus) 中的角色](./howto-hyperscale-create-users.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -331,13 +331,13 @@ ms.locfileid: "100588271"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：连接到超大规模 (Citus) 协调器节点的客户端应用程序需要 (TLS) 1.2 的传输层安全性。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，这有助于防止“中间人”攻击。
+**指导**：将客户端应用程序连接到超大规模 (Citus) 协调器节点需要传输层安全性 (TLS) 1.2。 通过在数据库服务器与客户端应用程序之间强制实施 TLS 连接，可以加密服务器与应用程序之间的数据流，这有助于防止“中间人”攻击。
 
-对于通过 Azure 门户预配的所有 Azure Database for PostgreSQL 服务器，默认情况下会启用 TLS 连接的强制。
+对于通过 Azure 门户预配的所有 Azure Database for PostgreSQL 服务器，默认会强制实施 TLS 连接。
 
-在某些情况下，第三方应用程序需要从受信任的证书颁发机构生成的本地证书文件 (CA) 证书文件 ( .cer) 以安全地连接。
+在某些情况下，第三方应用程序需要具备从受信任的证书颁发机构 (CA) 证书文件 (.cer) 生成的本地证书文件才能实现安全连接。
 
-- [如何在 Azure Database for PostgreSQL-超大规模 (Citus 中配置 TLS) ](./concepts-hyperscale-ssl-connection-security.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中配置 TLS](./concepts-hyperscale-ssl-connection-security.md)
 
 - [需要证书验证才可启用 TLS 连接性的应用程序](./concepts-hyperscale-ssl-connection-security.md)
 
@@ -349,9 +349,9 @@ ms.locfileid: "100588271"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来控制对超大规模 (Citus) 控制平面的访问 (例如 Azure 门户) 。 Azure RBAC 不影响数据库中的用户权限。
+**指导**：使用 Azure 基于角色的访问控制 (Azure RBAC) 控制对超大规模 (Citus) 控制平面（如 Azure 门户）的访问。 Azure RBAC 不影响数据库中的用户权限。
 
-若要在数据库级别修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
+若要在数据库级别修改用户特权，请在 PgAdmin 或 psql 等工具中使用标准 PostgreSQL 命令。
 
 - [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -365,9 +365,9 @@ ms.locfileid: "100588271"
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
 **指导**：  
-至少一天一次，Azure Database for PostgreSQL 超大规模 (Citus) 获取数据文件和数据库事务日志的快照备份。 利用备份，你可以将服务器还原到保留期内的任何时间点。  (当前所有群集的保留期为35天。 ) 使用 AES 256 位加密对所有备份进行加密。 PostgreSQL 超大规模 (Citus) 产品/服务使用 Microsoft 托管的密钥进行加密。
+Azure Database for PostgreSQL 超大规模 (Citus) 拍摄数据文件和数据库事务日志的快照备份，至少一天一次。 可以通过这些备份将服务器还原到保留期中的任意时间点。 （对于所有群集，目前保持期为 35 天。）所有备份都使用 AES 256 位加密进行加密。 PostgreSQL 超大规模 (Citus) 产品/服务使用 Microsoft 管理的密钥进行加密。
 
-- [了解 Azure PostgreSQL 的加密-超大规模 (Citus) 备份](./concepts-hyperscale-backup.md)
+- [了解 Azure PostgreSQL - 超大规模 (Citus) 备份的加密](./concepts-hyperscale-backup.md)
 
 
 
@@ -377,7 +377,7 @@ ms.locfileid: "100588271"
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
-**指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以便为超大规模 (Citus) 和其他关键或相关资源的生产实例进行更改时创建警报。
+**指导**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建在超大规模 (Citus) 的生产实例和其他关键资源或相关资源发生更改时发出的警报。
 
 - [如何针对 Azure 活动日志事件创建警报](../azure-monitor/alerts/alerts-activity-log.md)
 
@@ -391,7 +391,7 @@ ms.locfileid: "100588271"
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：运行自动漏洞扫描工具
 
-**指南**：当前不可用;Azure 安全中心尚不支持 Azure Database for PostgreSQL-超大规模 (Citus) 的漏洞评估。
+**指导**：当前不可用；Azure 安全中心尚不支持 Azure Database for PostgreSQL - 超大规模 (Citus) 的漏洞评估。
 
 - [Azure 安全中心内 Azure PaaS 服务的功能覆盖范围](../security-center/features-paas.md)
 
@@ -405,7 +405,7 @@ ms.locfileid: "100588271"
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动化资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅 () 中的超大规模 (Citus) 实例) 。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 可查询和发现订阅中的所有资源（包括超大规模 (Citus) 实例）。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 - [如何使用 Azure Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
@@ -419,7 +419,7 @@ ms.locfileid: "100588271"
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
-**指南**：将标记应用于超大规模 (Citus) 实例和其他相关资源，这些资源提供了元数据以逻辑方式将它们组织到分类。
+**指导**：将标记应用于超大规模 (Citus) 实例和其他相关资源，从而将元数据按逻辑组织到分类中。
 
 - [如何创建和使用标记](../azure-resource-manager/management/tag-resources.md)
 
@@ -429,7 +429,7 @@ ms.locfileid: "100588271"
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪超大规模 (Citus) 实例和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指导**：使用标记、管理组和单独订阅（若适用）来整理和跟踪超大规模 (Citus) 实例及相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -494,7 +494,7 @@ ms.locfileid: "100588271"
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
-指南：使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。 这可以防止在高安全环境中创建和更改资源，如超大规模的实例 (Citus) 包含敏感信息。
+指南：使用 Azure 条件访问可通过为“Microsoft Azure 管理”应用配置“阻止访问”，来限制用户与 Azure 资源管理器进行交互的能力。 这可以防止在高安全环境中创建和更改资源，如包含敏感信息的超大规模 (Citus) 实例。
 
 - [如何配置条件访问以阻止访问 Azure 资源管理器](../role-based-access-control/conditional-access-azure-management.md)
 
@@ -508,7 +508,7 @@ ms.locfileid: "100588271"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现超大规模 (Citus) 实例与 Azure 策略的标准安全配置。 使用 Azure 策略创建自定义策略，以便审核或强制实施 Azure Database for PostgreSQL 实例的网络配置。
+**指导**：通过 Azure Policy 为超大规模 (Citus) 实例定义和实现标准安全配置。 使用 Azure Policy 创建自定义策略，审核或强制实施 Azure Database for PostgreSQL 实例的网络配置。
 
 此外，Azure 资源管理器能够以 JavaScript 对象表示法 (JSON) 导出模板，应该对其进行检查，以确保配置满足/超过组织的安全要求。 
 
@@ -542,11 +542,11 @@ ms.locfileid: "100588271"
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：如果将自定义 Azure 策略定义用于超大规模 (Citus) 实例和相关资源，请使用 Azure Repos 安全地存储和管理代码。
+**指导**：如果对超大规模 (Citus) 实例和相关资源使用自定义 Azure Policy 定义，请使用 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文档](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+- [Azure Repos 文档](/azure/devops/repos/index)
 
 **Azure 安全中心监视**：不适用
 
@@ -570,7 +570,7 @@ ms.locfileid: "100588271"
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
-**指南**：使用“Microsoft.DBforPostgreSQL”命名空间中的 Azure Policy 别名创建自定义策略，以审核和强制执行系统配置，并针对其发出警报。 使用 Azure 策略 [audit]、[拒绝] 和 [部署（如果不存在））自动强制实施 Azure Database for PostgreSQL 实例和相关资源的配置。
+**指南**：使用“Microsoft.DBforPostgreSQL”命名空间中的 Azure Policy 别名创建自定义策略，以审核和强制执行系统配置，并针对其发出警报。 使用 Azure Policy [审核]、[拒绝] 和 [不存在时部署] 从而为 Azure Database for PostgreSQL 实例和相关资源自动强制实施配置。
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -580,7 +580,7 @@ ms.locfileid: "100588271"
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
-**指南**： Azure Database for PostgreSQL (Citus) 目前不直接支持托管标识。 创建 Azure Database for PostgreSQL 服务器时，必须为管理员用户提供凭据。 你可以在 Azure 门户界面中创建其他用户角色。
+**指导**：Azure Database for PostgreSQL - 超大规模 (Citus) 目前不直接支持托管标识。 创建 Azure Database for PostgreSQL 服务器时，必须为管理员用户提供凭据。 可以在 Azure 门户界面中创建其他用户角色。
 
 - [创建 Azure Database for PostgreSQL - 超大规模 (Citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
@@ -607,7 +607,7 @@ ms.locfileid: "100588271"
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件，例如，超大规模 (Citus) --但是，它不会在客户内容上运行。
+**指导**：Microsoft 反恶意软件已在支持 Azure 服务（例如，超大规模 (Citus)）的基础主机上启用，但它不会针对客户内容运行。
 
 预扫描要上传到非计算 Azure 资源的任何内容，例如应用服务、Data Lake Storage、Blob 存储、Azure Database for PostgreSQL 等。Microsoft 无法访问这些实例中的数据。
 
@@ -621,9 +621,9 @@ ms.locfileid: "100588271"
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
-**指南**： Azure Database for PostgreSQL-超大规模 (Citus) 会自动创建每个节点的备份，并将其存储在本地冗余存储中。 备份可用于将超大规模 (Citus) 群集还原到指定时间。
+**指导**：Azure Database for PostgreSQL - 超大规模 (Citus) 自动创建每个节点的备份，并将其存储在本地冗余存储中。 备份可用于将超大规模 (Citus) 群集还原到指定时间。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中进行备份和还原](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：是
 
@@ -631,11 +631,11 @@ ms.locfileid: "100588271"
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
-**指南**：至少一天，Azure Database for PostgreSQL 会对数据文件和数据库事务日志进行快照备份。 利用备份，你可以将服务器还原到保留期内的任何时间点。 对于所有群集，保持期目前为35天。 所有备份都使用 AES 256 位加密进行加密。
+**指导**：Azure Database for PostgreSQL 拍摄数据文件和数据库事务日志的快照备份，至少一天一次。 可以通过这些备份将服务器还原到保留期中的任意时间点。 对于所有群集，目前保持期为 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-在支持可用性区域的 Azure 区域中，备份快照存储在三个可用性区域中。 只要至少有一个可用性区域处于联机状态，超大规模 (Citus) 群集就是可恢复的。
+在支持可用性区域的 Azure 区域中，备份快照存储在三个可用性区域中。 只要至少有一个可用性区域处于联机状态，超大规模 (Citus) 群集就是可还原的。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中进行备份和还原](./concepts-hyperscale-backup.md)
 
 
 **Azure 安全中心监视**：是
@@ -644,11 +644,11 @@ ms.locfileid: "100588271"
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
-**指南**：在 Azure Database for PostgreSQL 中，还原超大规模 (Citus) 群集将从原始节点的备份创建新群集。 你可以将群集还原到过去35天内的任何时间点。 还原过程会在与原始群集相同的 Azure 区域、订阅和资源组中创建新群集。 新群集配置与原始群集配置相同：相同数量的节点、Vcore 数、存储大小和用户角色。
+**指导**：在 Azure Database for PostgreSQL 中，还原超大规模 (Citus) 群集将从原始节点备份中创建新群集。 可以将群集还原到最近 35 天内的任何时间点。 还原过程在与原始群集相同的 Azure 区域、订阅和资源组中创建新群集。 新群集配置与原始群集配置相同：相同的节点数、vCore 数、存储大小和用户角色。
 
-不会从原始服务器组中保留防火墙设置和 PostgreSQL 服务器参数;它们将重置为默认值。 防火墙将阻止所有连接。 还原后需要手动调整这些设置。
+不会从原始服务器组中保留防火墙设置和 PostgreSQL 服务器参数；它们将重置为默认值。 防火墙将阻止所有连接。 还原后需要手动调整这些设置。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中进行备份和还原](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：是
 
@@ -656,9 +656,9 @@ ms.locfileid: "100588271"
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：无法还原已删除的超大规模 (Citus) 群集。 如果删除群集，则属于该群集的所有节点都将被删除且无法恢复。 若要保护群集资源后从意外删除或意外更改中进行部署，管理员可以利用管理锁。
+**指导**：无法还原已删除的超大规模 (Citus) 群集。 如果删除群集，则将删除属于该群集的所有节点且它们不可恢复。 为了防止群集资源在部署后遭意外删除或意外更改，管理员可以利用管理锁。
 
-- [如何备份和还原 Azure Database for PostgreSQL-超大规模 (Citus) ](./concepts-hyperscale-backup.md)
+- [如何在 Azure Database for PostgreSQL - 超大规模 (Citus) 中进行备份和还原](./concepts-hyperscale-backup.md)
 
 **Azure 安全中心监视**：目前不可用
 

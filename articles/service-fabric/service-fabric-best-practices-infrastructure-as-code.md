@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric 基础结构即代码最佳做法
-description: 以基础结构即代码方式管理 Azure Service Fabric 的最佳做法和设计注意事项。
+description: 用于管理 Azure Service Fabric 基础结构即代码的最佳做法和设计注意事项。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: MT
+ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705500"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102611974"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -91,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虚拟机操作系统自动升级配置 
-升级虚拟机是用户启动的操作，建议使用[虚拟机规模集操作系统自动升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)进行 Azure Service Fabric 群集主机修补程序管理；修补业务流程应用程序是替代解决方案，适用于在 Azure 外部托管的情况。虽然 POA 可以在 Azure 中使用，但考虑到在 Azure 中托管 POA 的开销，通常会首选虚拟机操作系统自动升级而不是 POA。 下面是计算虚拟机规模集资源管理器模板属性，用于启用 OS 自动升级：
+升级虚拟机是用户启动的操作，建议使用[虚拟机规模集操作系统自动升级](service-fabric-patch-orchestration-application.md)进行 Azure Service Fabric 群集主机修补程序管理；修补业务流程应用程序是替代解决方案，适用于在 Azure 外部托管的情况。虽然 POA 可以在 Azure 中使用，但考虑到在 Azure 中托管 POA 的开销，通常会首选虚拟机操作系统自动升级而不是 POA。 下面是计算虚拟机规模集资源管理器模板属性，用于启用 OS 自动升级：
 
 ```json
 "upgradePolicy": {
@@ -104,7 +104,7 @@ microservices_sfpkg.close()
 ```
 使用带 Service Fabric 的 OS 自动升级时，将推出新的 OS 映像（每次一个更新域），以维持 Service Fabric 中运行的服务的高可用性。 若要利用 Service Fabric 中的自动 OS 升级，必须将群集配置为使用银级持久性层或更高层级。
 
-确保将以下注册表项设置为 false，以防止 windows 主机启动不协调更新： HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+确保将以下注册表项设置为 false，以防止 Windows 主机启动不协调的更新：HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
 
 下面是计算虚拟机规模集资源管理器模板属性，用于将 WindowsUpdate 注册表项设置为 false：
 ```json

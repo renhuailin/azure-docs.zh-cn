@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure Red Hat OpenShift 版本 4 或更高
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506406"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>配置 Azure Red Hat OpenShift v4.x 的容器见解

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585419"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641978"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
 在我们与当前和未来 Azure 客户的讨论中，我们经常被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
 
-了解以下信息有助于评估云服务提供程序选项。 因此，我们提供此列表帮助你入门。
+了解以下信息有助于评估云服务提供商选项。 因此，我们提供此列表帮助你入门。
 
 随着时间的推移，此列表会进行更改，并且会不断变大，就像 Azure 一样。 请务必时时查看此页面，了解安全相关服务和技术的最新内容。
 
@@ -59,8 +59,8 @@ ms.locfileid: "100585419"
 | [Azure&nbsp;SQL&nbsp;防火墙](../../azure-sql/database/firewall-configure.md)|一项网络访问控制功能，对针对数据库的网络攻击进行防护。 |
 |[Azure&nbsp;SQL&nbsp;单元格&nbsp;级别加密](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| 一种提供粒度级别加密的数据库安全技术。  |
 | [Azure&nbsp;SQL&nbsp;连接加密](../../azure-sql/database/logins-create-manage.md)|为了确保安全性，SQL 数据库会进行访问控制，即：使用防火墙规则来限制通过 IP 地址进行的连接，使用身份验证机制来要求用户证明其身份，并使用授权机制来限制用户执行特定操作和访问特定数据。 |
-| [Azure SQL 始终加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|保护 Azure SQL 数据库或 SQL Server 数据库中存储的敏感数据，如信用卡号或国民身份证号（例如，美国社会安全号码）。  |
-| [Azure&nbsp;SQL&nbsp;透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| 一种加密整个数据库存储的数据库安全功能。 |
+| [Azure SQL 始终加密](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|保护 Azure SQL 数据库或 SQL Server 数据库中存储的敏感数据，如信用卡号或国民身份证号（例如，美国社会安全号码）。  |
+| [Azure&nbsp;SQL&nbsp;透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| 一种加密整个数据库存储的数据库安全功能。 |
 | [Azure SQL 数据库审核](../../azure-sql/database/auditing-overview.md)|一种跟踪数据库事件并将事件写入 Azure 存储帐户中的审核日志的数据库审核功能。  |
 
 

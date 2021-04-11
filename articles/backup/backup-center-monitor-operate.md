@@ -4,10 +4,10 @@ description: 本文介绍如何使用备份中心大规模监视和操作备份
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506104"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>使用备份中心监视和操作备份

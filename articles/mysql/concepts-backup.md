@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: 883b76929ac3310dd3089ecb088a4691adbb4ca1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492805"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010348"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -59,7 +59,7 @@ Azure Database for MySQL 对数据文件和事务日志进行备份。 可以通
 
 #### <a name="long-term-retention"></a>长期保留
 
-目前尚不支持长期保留35天的备份。 你可以选择使用 mysqldump 来执行备份并将其存储起来进行长期保留。 我们的支持团队针对发表介绍如何实现此 [目的的分步](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 指导。
+此服务目前暂不对长期保留备份（超出 35 天）提供原生支持。 可以选择使用 mysqldump 来进行备份并存储备份，以便进行长期保留。 我们的支持团队已通过博客发布实现此操作的[分步指南文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157)来共享如何此目标。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -86,10 +86,20 @@ Azure Database for MySQL 最高可以提供 100% 的已预配服务器存储作�
 - **时间点还原** 可通过任一备份冗余选项使用，并利用完整备份和事务日志备份的组合在原始服务器所在区域中创建一个新服务器。
 - **异地还原** 仅在你为服务器配置了异地冗余存储时可用，它允许你利用最近进行的备份将服务器还原到其他区域。
 
-估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
+服务器的恢复预计时间取决于以下几个因素：
+* 数据库的大小
+* 所涉及的事务日志数
+* 需要重新播放以恢复到还原点的活动数量
+* 还原到不同区域时的网络带宽
+* 目标区域中正在处理的并行还原请求数
+* 数据库的表中是否存在主键。 为了加快恢复速度，请考虑为数据库中的所有表添加主键。 若要检查表是否具有主键，可以使用以下查询：
+```sql
+select tab.table_schema as database_name, tab.table_name from information_schema.tables tab left join information_schema.table_constraints tco on tab.table_schema = tco.table_schema and tab.table_name = tco.table_name and tco.constraint_type = 'PRIMARY KEY' where tco.constraint_type is null and tab.table_schema not in('mysql', 'information_schema', 'performance_schema', 'sys') and tab.table_type = 'BASE TABLE' order by tab.table_schema, tab.table_name;
+```
+对于较大或非常活跃的数据库，还原可能要花费几个小时。 如果某个区域出现长时间的服务中断，则灾难恢复可能会发起大量的异地还原请求。 存在很多请求时，单个数据库的恢复时间可能会增加。 大部分数据库还原操作可在 12 小时内完成。
 
 > [!IMPORTANT]
-> 删除的服务器只能在删除备份后的 **五天** 内还原。 只能从托管服务器的 Azure 订阅访问和还原数据库备份。 若要还原已删除的服务器，请参阅 [记录的步骤](howto-restore-dropped-server.md)。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
+> 删除的服务器只能在删除备份后的五天内还原。 只能从托管服务器的 Azure 订阅访问和还原数据库备份。 若要还原已删除的服务器，请参阅[所述步骤](howto-restore-dropped-server.md)。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 

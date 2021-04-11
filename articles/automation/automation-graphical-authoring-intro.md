@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501222"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167390"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>在 Azure 自动化中创作图形 Runbook
 
@@ -254,7 +254,7 @@ Runbook 通过定义一个或多个输入参数来接受输入。 用户在 Runb
 
 按下表中的属性定义每个输入参数：
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 |:--- |:--- |
 | 名称 | 必需。 参数的名称。 此名称在 Runbook 中必须是唯一的。 它必须以字母开头，且只能包含字母、数字和下划线字符。 此名称不得包含空格。 |
 | 说明 |可选。 有关输入参数用途的说明。 |
@@ -328,19 +328,19 @@ Runbook 可以在更复杂的表达式中使用活动输出，如下所示。 �
 例如，以下条件确定活动 `Get-AzureVM` 中的虚拟机目前是否已停止。
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 以下条件确定同一虚拟机是否处于除“已停止”以外的其他任何状态。
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 可以使用[逻辑运算符](/powershell/module/microsoft.powershell.core/about/about_logical_operators)（如 `-and` 或 `-or`）在 Runbook 中联接多个条件。 例如，以下条件检查上一示例中的虚拟机是处于“已停止”状态，还是处于“正在停止”状态。
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>使用哈希表

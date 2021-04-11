@@ -2,25 +2,25 @@
 title: 教程 - 访问私有云
 description: 了解如何访问 Azure VMware 解决方案私有云
 ms.topic: tutorial
-ms.date: 02/22/2021
-ms.openlocfilehash: 456767a9edd78a70a0aba45c7b44a2150a2217a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/13/2021
+ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044997"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103494387"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>教程：访问 Azure VMware 解决方案私有云
 
-Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 需要通过一个跳转盒对本地 vCenter 实例执行额外的设置和连接。 
+Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需要通过跳转盒连接到 Azure VMware 解决方案 vCenter 实例。 
 
-在本教程中，我们会在[上一教程](tutorial-configure-networking.md)所创建的资源组中创建一个跳转盒，并登录到 vCenter。 跳转盒是你创建的虚拟网络上的 Windows 虚拟机 (VM)。  它允许访问 vCenter 和 NSX 管理器。 
+在本教程中，我们会在[上一教程](tutorial-configure-networking.md)所创建的资源组中创建一个跳转盒，并登录到 Azure VMware 解决方案 vCenter。 此跳转盒是所创建的同一虚拟网络上的 Windows 虚拟机 (VM)。  它同时提供对 vCenter 和 NSX 管理器的访问。 
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 创建用于连接到 vCenter 的 Windows 虚拟机
-> * 从虚拟机登录到 vCenter
+> * 创建用于访问 Azure VMware 解决方案 vCenter 的 Windows 虚拟机
+> * 从此虚拟机登录到 vCenter
 
 ## <a name="create-a-new-windows-virtual-machine"></a>创建新的 Windows 虚拟机
 
@@ -33,9 +33,6 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 需要
 1. 在 Azure 门户中，选择你的私有云，然后选择“管理” > “标识”。 
 
    此时会显示私有云 vCenter 和 NSX-T Manager 的 URL 和用户凭据。
-
-   >[!TIP]
-   >选择“生成新密码”来生成新的 vCenter 和 NSX-T 密码。
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 

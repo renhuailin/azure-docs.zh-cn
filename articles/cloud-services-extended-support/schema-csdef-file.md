@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: d9bf1b54f1bfeebacbb406a50c8496817857204c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102507562"
 ---
 # <a name="azure-cloud-services-extended-support-definition-schema-csdef-file"></a>Azure 云服务（外延支持）定义架构（csdef 文件）
@@ -70,6 +70,6 @@ ms.locfileid: "102507562"
 | schemaVersion           | 可选。 指定服务定义架构的版本。 如果并行安装多个版本的 SDK，架构版本允许 Visual Studio 选择正确的 SDK 工具用于架构验证。|
 | upgradeDomainCount      | 可选。 指定在其中分配了此服务中的角色的升级域的数目。 在部署服务时会将角色实例分配到升级域。 有关详细信息，请参阅[更新云服务角色或部署](sample-update-cloud-service.md)和[管理虚拟机的可用性](../virtual-machines/availability.md)。最多可指定 20 个升级域。 如果未指定，则升级域的默认数目为 5 个。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [Azure 云服务（外延支持）配置架构（cscfg 文件）](schema-cscfg-file.md)。

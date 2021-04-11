@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf3d8fd1566f3d71541aab7648680063e85079bf
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505573"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121823"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）故障排除
 
@@ -152,8 +152,6 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 3. 在具有管理员权限的命令控制台中，运行 `iisreset /start` 命令以启动 IIS。
 4. 尝试浏览到你的应用。
 5. 在应用加载后，请返回到 PerfView，然后选择“停止收集”。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

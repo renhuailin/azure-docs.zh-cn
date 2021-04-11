@@ -4,12 +4,12 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: fdc898c02cfd20ecfdd72dece4fb1e92d803dbb0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386894"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614813"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -42,7 +42,7 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 | 属性    | 值 | 类型 | 注释|
 |---|---|---|---|
-| 类型  | 绑定的名称。<br><br>例如，`queueTrigger`。 | string | |
+| type  | 绑定名称。<br><br>例如，`queueTrigger`。 | string | |
 | direction | `in`, `out`  | string | 表示绑定是用于接收数据到函数中或是从函数发送数据。 |
 | name | 函数标识符。<br><br>例如，`myQueue`。 | string | 将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
@@ -95,50 +95,52 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 ## <a name="connections"></a>连接
 
-函数项目通过名称从其配置提供程序引用连接信息。 它不直接接受连接详细信息，从而允许跨环境更改它们。 例如，触发器定义可能包括 `connection` 属性。 这可能引用连接字符串，但不能直接在中设置连接字符串 `function.json` 。 相反，应将设置 `connection` 为包含连接字符串的环境变量的名称。
+函数项目从其配置提供程序按名称引用连接信息。 它不直接接受连接详细信息，而是允许跨环境对其进行更改。 例如，触发器定义可能包括 `connection` 属性。 这可能是指连接字符串，但不能直接在 `function.json` 中设置连接字符串。 相反，应将 `connection` 设置为包含连接字符串的环境变量的名称。
 
-默认配置提供程序使用环境变量。 在 Azure Functions 服务中运行时，或[在本地开发时，](functions-run-local.md#local-settings-file) [应用程序设置](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)可能会设置这些设置。
+默认配置提供程序使用环境变量。 在 Azure Functions 服务中运行时，可以通过[应用程序设置](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)进行设置，而在本地开发时，可以通过[本地设置文件](functions-run-local.md#local-settings-file)进行设置。
 
 ### <a name="connection-values"></a>连接值
 
-当连接名称解析为单个精确值时，运行时将值标识为 _连接字符串_，通常包括一个机密。 连接字符串的详细信息由你要连接到的服务定义。
+当连接名称解析为单个精确值时，运行时会将值标识为通常包含机密的连接字符串。 连接字符串的详细信息由你要连接到的服务定义。
 
-不过，连接名称还可以引用多个配置项目的集合。 可以通过使用以双下划线结尾的共享前缀将环境变量视为集合 `__` 。 然后，可以通过将连接名称设置为此前缀来引用该组。
+不过，连接名称还可以引用多个配置项目的集合。 可以通过使用以双下划线 `__` 结尾的共享前缀将环境变量视为集合。 然后，可以通过将连接名称设置为此前缀来引用该组。
 
-例如， `connection` Azure Blob 触发器定义的属性可能是 `Storage1` 。 只要没有配置单个字符串值 `Storage1` 作为其名称，就会将用于 `Storage1__serviceUri` 连接的 `serviceUri` 属性。 每个服务的连接属性都是不同的。 请参阅使用连接的扩展的文档。
+例如，Azure Blob 触发器定义的 `connection` 属性可能是 `Storage1`。 只要没有名称配置为 `Storage1` 的单个字符串值，`Storage1__serviceUri` 就会用于连接的 `serviceUri` 属性。 每个服务的连接属性各不相同。 请参阅相关文档，了解使用连接的扩展。
 
 ### <a name="configure-an-identity-based-connection"></a>配置基于标识的连接
 
-Azure Functions 中的某些连接配置为使用标识而不是机密。 支持取决于使用连接的扩展。 在某些情况下，即使连接到的服务支持基于标识的连接，函数中仍可能需要连接字符串。
+Azure Functions 中的某些连接配置为使用标识而不是机密。 支持取决于使用连接的扩展。 在某些情况下，即使连接到的服务支持基于标识的连接，Functions 中仍可能需要连接字符串。
 
 > [!IMPORTANT]
-> 即使绑定扩展支持基于标识的连接，也可能不支持在消耗计划中使用该配置。 请参阅下表中的支持表。
+> 即使绑定扩展支持基于标识的连接，消耗计划中可能仍不支持该配置。 请参阅下面的支持表。
 
 以下触发器和绑定扩展支持基于标识的连接：
 
-| 扩展名称 | 扩展版本                                                                                     | 在消耗计划中支持基于标识的连接 |
+| 扩展名称 | 扩展版本                                                                                     | 在消耗计划中受支持 |
 |----------------|-------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Azure Blob     | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | 否                                    |
 | Azure 队列    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | 否                                    |
+| Azure 事件中心    | [版本 5.0.0-beta1 或更高版本](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | 否                                    |
 
 > [!NOTE]
-> 对于用于核心行为的函数运行时所使用的存储连接，尚不支持基于标识的连接。 这意味着 `AzureWebJobsStorage` 设置必须为连接字符串。
+> 对于 Functions 运行时用于核心行为的存储连接，尚不支持基于标识的连接。 这意味着 `AzureWebJobsStorage` 设置必须为连接字符串。
 
 #### <a name="connection-properties"></a>连接属性
 
 Azure 服务的基于标识的连接接受以下属性：
 
-| properties    | 环境变量 | 是否必需 | 说明 |
+| 属性    | 扩展所需 | 环境变量 | 说明 |
 |---|---|---|---|
-| 服务 URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | 是 | 要连接到的服务的数据平面 URI。 |
+| 服务 URI | Azure Blob，Azure 队列 | `<CONNECTION_NAME_PREFIX>__serviceUri` |  要连接到的服务的数据平面 URI。 |
+| 完全限定的命名空间 | 事件中心 | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全限定的事件中心命名空间。 |
 
-给定的连接类型可能支持其他选项。 请参阅建立连接的组件的文档。
+给定的连接类型可能支持其他选项。 请参阅相关文档，了解用于建立连接的组件。
 
-在 Azure Functions 服务中托管时，基于标识的连接将使用 [托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。 默认情况下，使用系统分配的标识。 当在其他上下文（如本地开发）中运行时，将使用开发人员标识，尽管可以使用替代连接参数对其进行自定义。
+在 Azure Functions 服务中托管时，基于标识的连接将使用[托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。 默认情况下，使用系统分配的标识。 在其他上下文（如本地开发）中运行时，将改用开发人员标识，尽管可以使用其他连接参数对其进行自定义。
 
 ##### <a name="local-development"></a>本地开发
 
-在本地运行时，上述配置会告知运行时使用你的本地开发人员标识。 连接将尝试从以下位置获取令牌，顺序如下：
+在本地运行时，上述配置会告知运行时使用本地开发人员标识。 连接将尝试从以下位置获取令牌，顺序如下：
 
 - Microsoft 应用程序之间共享的本地缓存
 - Visual Studio 中的当前用户上下文
@@ -147,26 +149,38 @@ Azure 服务的基于标识的连接接受以下属性：
 
 如果这些选项都不成功，则会出现错误。
 
-在某些情况下，你可能希望指定使用不同的标识。 你可以添加指向备用标识的连接的配置属性。
+在某些情况下，你可能希望指定使用其他标识。 可以添加指向其他标识的连接的配置属性。
 
 > [!NOTE]
 > 在 Azure Functions 服务中托管时，不支持以下配置选项。
 
-若要使用具有客户端 ID 和机密的 Azure Active Directory 服务主体进行连接，请使用以下属性定义连接：
+若要在 Azure Active Directory 服务主体中使用客户端 ID 和机密进行连接，除了上面的[连接属性](#connection-properties)之外，还需要使用以下属性定义连接：
 
-| properties    | 环境变量 | 是否必需 | 说明 |
-|---|---|---|---|
-| 服务 URI | `<CONNECTION_NAME_PREFIX>__serviceUri` | 是 | 要连接到的服务的数据平面 URI。 |
-| 租户 ID | `<CONNECTION_NAME_PREFIX>__tenantId` | 是 | Azure Active Directory 租户 (目录) ID。 |
-| 客户端 ID | `<CONNECTION_NAME_PREFIX>__clientId` | 是 |  客户端 (应用程序在租户中注册的应用) ID。 |
-| 客户端机密 | `<CONNECTION_NAME_PREFIX>__clientSecret` | 是 | 为应用注册生成的客户端密码。 |
+| 属性    | 环境变量 | 说明 |
+|---|---|---|
+| 租户 ID | `<CONNECTION_NAME_PREFIX>__tenantId` | Azure Active Directory 租户（目录）ID。 |
+| 客户端 ID | `<CONNECTION_NAME_PREFIX>__clientId` |  租户中应用注册的客户端（应用程序）ID。 |
+| 客户端机密 | `<CONNECTION_NAME_PREFIX>__clientSecret` | 为应用注册生成的客户端密码。 |
+
+与 Azure Blob 基于标识的连接所需的 `local.settings.json` 属性示例： 
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
 
 #### <a name="grant-permission-to-the-identity"></a>向标识授予权限
 
 无论使用何种标识，都必须具有执行所需操作的权限。 这通常是通过在 Azure RBAC 中分配角色或在访问策略中指定标识来完成的，具体取决于要连接到的服务。 请参阅每个服务的相关文档，了解需要哪些权限以及如何设置这些权限。
 
 > [!IMPORTANT]
-> 某些权限可能由不是所有上下文都需要的服务公开。 如果可能，请遵守 **最低权限原则**，仅授予标识所需的权限。 例如，如果应用只需从 blob 读取数据，请使用 [存储 Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) 角色，因为 [存储 blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner) 包含对读取操作的过多权限。
+> 某些权限可能由并非所有上下文都需要的服务公开。 尽可能遵循最低权限原则，仅授予标识所需的权限。 例如，如果应用只需从 Blob 读取数据，请使用[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色，因为[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)包含过多的读取操作权限。
 
 
 ## <a name="reporting-issues"></a>报告问题

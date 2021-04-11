@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务输出元数据架构
-description: 本文概述了 Azure 媒体服务 v3 输出元数据架构。
+description: 本文概述 Azure 媒体服务 v3 输出元数据架构。
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a27db81866760bff56c900a908162f356c01a66
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.openlocfilehash: f26905366949c2c198e52f78bc7adb734cbb7f90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612450"
 ---
 # <a name="output-metadata"></a>输出元数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "98895197"
 
 编码作业的 AssetFile 条目集合。  
 
-| “属性” | 说明 |
+| 名称 | 说明 |
 | --- | --- |
 | **源** |为生成此 AssetFile 而处理的输入/源媒体文件集合。<br />示例： `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | VideoTracks|每个物理 AssetFile 都可包含交错成适当容器格式的零个或多个视频轨道。 <br />请参阅 [VideoTracks](#videotracks)。 |
@@ -51,16 +51,16 @@ ms.locfileid: "98895197"
 
 | “属性” | 说明 |
 | --- | --- |
-| Id <br /> 必须 |此视频轨道的从零开始的索引。 **注意：**  此 **Id** 不一定是在 TrackID 文件中使用的。 <br /><br />示例： `"Id": 1`|
-| FourCC<br />必须 | ffmpeg 报告的视频编解码器 FourCC 代码。  <br /><br />示例： `"FourCC": "avc1"`|
-| **Profile** |H264 配置文件（仅适用于 H264 编解码器）。  <br /><br />示例： `"Profile": "High"` |
+| Id <br /> 必须 |此视频轨道的从零开始的索引。**注意：** 此 **Id** 不一定是 MP4 文件中使用的 TrackID。 <br /><br />示例： `"Id": 1`|
+| FourCC<br />必须 | ffmpeg 报告的视频编解码器 FourCC 代码。  <br /><br />示例： `"FourCC": "avc1" | "hev1" | "hvc1"`|
+| **Profile** |H264 配置文件（仅适用于 H264 编解码器）  <br /><br />示例： `"Profile": "High"` |
 | **级别** |H264 级别（仅适用于 H264 编解码器）。  <br /><br />示例： `"Level": "3.2"`|
 | Width<br />必须 |以像素为单位的编码视频宽度。  <br /><br />示例： `"Width": "1280"`|
 | Height<br />必须 |以像素为单位的编码视频高度。  <br /><br />示例： `"Height": "720"`|
 | DisplayAspectRatioNumerator<br />必须|视频显示纵横比分子。  <br /><br />示例： `"DisplayAspectRatioNumerator": 16.0`|
 | DisplayAspectRatioDenominator<br />必须 |视频显示纵横比分母。  <br /><br />示例： `"DisplayAspectRatioDenominator": 9.0`|
 | Framerate<br />必须 |采用 .3f 格式的测量的视频帧速率。  <br /><br />示例： `"Framerate": 29.970`|
-| Bitrate<br />必须 |从 AssetFile 计算的平均视频比特率（比特/秒）。 仅针对基本流有效负载计数，不包含打包开销。  <br /><br />示例： `"Bitrate": 3551567`|
+| Bitrate<br />必须 |由 AssetFile 计算所得的平均视频比特率（比特/秒）。 仅针对基本流有效负载计数，不包含打包开销。  <br /><br />示例： `"Bitrate": 3551567`|
 | TargetBitrate<br />必须 |通过编码预设请求的此视频轨道的目标平均比特率（比特/秒）。 <br /><br />示例： `"TargetBitrate": 3520000` |
 
 ## <a name="audiotracks"></a>AudioTracks 

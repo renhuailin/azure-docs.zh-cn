@@ -1,7 +1,7 @@
 ---
-title: 配置读取 OCR 容器-计算机视觉
+title: 配置读取 OCR 容器 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在计算机视觉中配置读取 OCR 容器的必需和可选设置。
+description: 本文介绍如何在计算机视觉中配置读取 OCR 容器的必需设置和可选设置。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 0539f37fe15f68d8bfd47bf426333f9d5c67c37d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
-ms.translationtype: MT
+ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006860"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611889"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
 
-使用命令参数配置计算机视觉读取 OCR 容器的运行时环境 `docker run` 。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+可以使用 `docker run` 命令参数配置计算机视觉读取 OCR 容器的运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -29,16 +29,18 @@ ms.locfileid: "96006860"
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](computer-vision-how-to-install-containers.md)。
 
-容器还具有下列容器特定的配置设置：
+此容器还具有以下特定于容器的配置设置：
 
-|必需|设置|目的|
+|必须|设置|目的|
 |--|--|--|
-|否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（小时）。 默认值为 48 小时。 设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1` ，则系统将在进程后的1小时内清除识别结果。 如果为 `resultExpirationPeriod=0` ，则在检索结果后系统将清除识别结果。|
-|否|缓存： Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则 *需要* 缓存。|
-|否|队列： RabbitMQ|仅限 v2.0 容器。 为调度任务启用 RabbitMQ。 在负载平衡器后面放置多个读取容器时，此设置很有用。|
-|否|队列： Azure： QueueVisibilityTimeoutInMilliseconds | 仅限 v3. x 容器。 在另一个工作线程处理消息时，该消息不可见的时间。 |
-|否|存储：:D ocumentStore：： MongoDB|仅限 v2.0 容器。 为永久的结果存储启用 MongoDB。 |
-|否|存储： ObjectStore： AzureBlob： ConnectionString| 仅限 v3. x 容器。 Azure blob 存储连接字符串。 |
+|否|ReadEngineConfig:ResultExpirationPeriod| 仅限 v2.0 容器。 结果过期时间（以小时为单位）。 默认值为 48 小时。 该设置指定系统应清除识别结果的时间。 例如，如果为 `resultExpirationPeriod=1`，则系统将在进程后的 1 小时内清除识别结果。 如果为 `resultExpirationPeriod=0`，则系统会在检索到识别结果后清除结果。|
+|否|Cache:Redis| 仅限 v2.0 容器。 启用 Redis 存储以存储结果。 如果将多个读取容器放置在负载均衡器后面，则需要缓存。|
+|否|Queue:RabbitMQ|仅限 v2.0 容器。 启用 RabbitMQ 以调度任务。 在负载均衡器后面放置多个读取容器时，此设置很有用。|
+|否|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | 仅限 v3.x 容器。 在另一个工作线程处理消息时，该消息不可见的时长。 |
+|否|Storage::DocumentStore::MongoDB|仅限 v2.0 容器。 启用 MongoDB 以实现永久结果存储。 |
+|否|Storage:ObjectStore:AzureBlob:ConnectionString| 仅限 v3.x 容器。 Azure Blob 存储连接字符串。 |
+|否|Storage:TimeToLiveInDays| 仅限 v3.x 容器。 结果过期时间（以天为单位）。 该设置指定系统应清除识别结果的时间。 默认值为 2 天（48 小时），这意味着，不能保证成功检索超过该时间段的任何结果。 |
+|否|Task:MaxRunningTimeSpanInMinutes| 仅限 v3.x 容器。 单个请求的最长运行时间。 默认值为 60 分钟。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
@@ -120,7 +122,7 @@ ms.locfileid: "96006860"
 下面是读取容器 Docker 示例。
 
 
-# <a name="version-32-preview"></a>[版本 3.2-预览版](#tab/version-3-2)
+# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
 
 ### <a name="basic-example"></a>基本示例
 
@@ -144,7 +146,7 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-20-preview"></a>[版本 2.0-预览版](#tab/version-2)
+# <a name="version-20-preview"></a>[版本 2.0-preview](#tab/version-2)
 
 ### <a name="basic-example"></a>基本示例
 
