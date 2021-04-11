@@ -1,14 +1,14 @@
 ---
 title: 澳大利亚政府 ISM PROTECTED 蓝图示例控制措施
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 01/21/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: df143a871db3d871fe6354eab23b7ca6dc012b78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ecb6a912d0b1f319022f6b7deff68e1495dccbca
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679991"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386443"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射
 
