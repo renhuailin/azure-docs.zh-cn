@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bbfb54d6ba7483e96633bdf05bb580e5517d216
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99258433"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277736"
 ---
 # <a name="managed-identities"></a>托管标识
 
@@ -47,8 +47,8 @@ ms.locfileid: "99258433"
 
 这些教程包括上述两种场景。
 
-- [使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](tutorial-byok-portal.md)
-- [将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](tutorial-byok-postman.md)。
+- [使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](security-customer-managed-keys-portal-tutorial.md)
+- [将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](security-customer-managed-keys-rest-postman-tutorial.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

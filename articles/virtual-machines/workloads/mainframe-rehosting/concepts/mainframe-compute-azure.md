@@ -6,12 +6,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines
-ms.openlocfilehash: 32f259f20e0e24b4d5346c598e23fdc2df48dee6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 84682514d83de9d6a613581d68301efe33cd44ee
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954388"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>将大型机计算转移到 Azure
 

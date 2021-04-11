@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609252"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>将 Azure Monitor 与 Azure Synapse Analytics 工作区配合使用
 
@@ -171,7 +171,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 1. 为设置指定名称，选择“发送到 Log Analytics”，然后从“Log Analytics 工作区”中选择一个工作区。
 
     > [!NOTE]
-    > 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Azure 诊断日志参考](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column)。
+    > 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Azure 诊断日志参考](/azure/azure-monitor/reference/tables/azurediagnostics)。
 
 1. 选择“保存”。
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2021
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489542"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220209"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 
@@ -50,14 +50,6 @@ az login
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
-
-## <a name="install-the-machine-learning-extension"></a>安装机器学习扩展
-
-若要安装机器学习扩展，请使用以下命令：
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
 
 ## <a name="create-a-workspace"></a>创建工作区
 

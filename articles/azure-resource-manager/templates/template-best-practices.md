@@ -3,12 +3,12 @@ title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板（ARM 模板）的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257991"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219937"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
@@ -160,7 +160,7 @@ ms.locfileid: "99257991"
 
 请勿对 API 版本使用参数。 资源的属性和值可能因 API 版本而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 如果传入的 API 版本与模板中的属性不匹配，则部署会失败。
 
-请勿对 API 版本使用变量。 特别是，不要使用 [providers 函数](template-functions-resource.md#providers)在部署期间动态获取 API 版本。 动态检索到的 API 版本可能与模板中的属性不匹配。
+请勿对 API 版本使用变量。 
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
