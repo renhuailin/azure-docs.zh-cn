@@ -2,7 +2,7 @@
 title: 关于监视 Azure 时序见解数据的参考 | Microsoft Docs
 description: 关于监视 Azure 时序见解的参考文档。
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591384"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504577"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>关于监视 Azure 时序见解数据的参考
 
@@ -23,11 +23,12 @@ ms.locfileid: "100591384"
 
 ## <a name="metrics"></a>指标
 
-本部分列出了为 Azure 时序见解自动收集的所有平台指标。 有关所有 Azure Monitor 支持指标（包括 Azure 时序见解）的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。 这些指标的资源提供程序是 [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) 和 [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments)。
+本部分列出了为 Azure 时序见解自动收集的所有平台指标。 有关所有 Azure Monitor 支持指标（包括 Azure 时序见解）的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/essentials/metrics-supported.md)。
+这些指标的资源提供程序是 [Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) 和 [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments)。
 
 
 ### <a name="ingress"></a>流入量
- 
+
 |指标|指标显示名称|计价单位|聚合类型|说明|
 |---|---|---|---|---|
 |IngressReceivedBytes|入口收到的字节数|字节|总计|从事件源读取的字节数的计数|
