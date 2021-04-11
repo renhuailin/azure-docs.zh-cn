@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 存储在云中上传图像数据 | Microsoft Docs
 description: 结合使用 Azure Blob 存储和 Web 应用将应用数据存储到存储帐户。 本教程会创建一个 Web 应用，用于存储和显示 Azure 存储中的图像。
-author: mhopkins-msft
+author: twooley
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 06/24/2020
-ms.author: mhopkins
+ms.author: twooley
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b50aadfa16ed95bacb5247187c15489a1b017d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f751b93a7d298763da5a37a54f400d6fc56a58e3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98676568"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277957"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -395,7 +395,7 @@ module.exports = router;
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
 
 验证图像是否显示在该容器中。
 
@@ -405,7 +405,7 @@ module.exports = router;
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
 
 使用文件选取器选择文件，然后选择“上传”。
 

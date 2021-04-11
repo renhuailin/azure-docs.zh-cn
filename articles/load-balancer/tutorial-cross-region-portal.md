@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576911"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221120"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户创建跨区域 Azure 负载均衡器
 
@@ -105,34 +105,6 @@ ms.locfileid: "104576911"
 8. 选择 **添加** 。
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="向后端池添加区域负载均衡器" border="true":::
-
-## <a name="create-a-health-probe"></a>创建运行状况探测器
-
-在本部分中，你将创建一个运行状况探测来创建负载均衡规则：
-
-* 命名为“myHealthProbe”。
-* 协议为“TCP”。
-* 时间间隔为 5 秒。
-* 两次故障的不正常阈值。
-
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer-CR”  。
-
-2. 在“设置”下，选择“运行状况探测”。
-
-3. 使用以下值配置运行状况探测：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 **myHealthProbe**。 |
-    | 协议 | 选择“TCP”。 |
-    | 端口 | 输入 **80**。 |
-    | 时间间隔 | 输入“5”。 |
-    | 不正常阈值 | 输入 **2**。 |
-
-4. 选择“确定”。
-
-    > [!NOTE]
-    > 跨区域负载均衡器具有内置的运行状况探测。 此探测是使负载均衡规则创建起作用的占位符。  有关详细信息，请参阅[跨区域负载均衡器的限制](cross-region-overview.md#limitations)。
 
 ## <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 

@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467011"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505376"
 ---
 # <a name="form-recognizer-layout-service"></a>表单识别器布局服务
 
-Azure 表单识别器可以使用其布局服务从文档中提取文本、表、选定标记和结构信息。 通过布局 API，客户能够以各种格式获取文档，并返回文档的结构化数据表示形式。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/concept-recognizing-text.md) 功能与深度学习模型，能够提取文本、表、选定标记和文档结构。 
+Azure 表单识别器可以使用其布局服务从文档中提取文本、表、选定标记和结构信息。 通过布局 API，客户能够以各种格式获取文档，并返回文档的结构化数据表示形式。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与深度学习模型，能够提取文本、表、选定标记和文档结构。 
 
 ## <a name="what-does-the-layout-service-do"></a>布局服务有什么作用？
 
@@ -32,7 +32,7 @@ Azure 表单识别器可以使用其布局服务从文档中提取文本、表�
 若要试用表单识别器布局服务，请转到联机 UI 工具示例：
 
 > [!div class="nextstepaction"]
-> [表单 OCR 测试工具 (FOTT)](https://fott-preview.azurewebsites.net)
+> [尝试使用表单识别器](https://fott-preview.azurewebsites.net)
 
 若要试用表单识别器布局 API，你将需要一个 Azure 订阅（[免费创建一个](https://azure.microsoft.com/free/cognitive-services)）和一个[表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)终结点和密钥。 
 
@@ -48,7 +48,7 @@ Azure 表单识别器可以使用其布局服务从文档中提取文本、表�
 
 |响应标头| 结果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>自然读取顺序输出（仅限拉丁语）
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109316"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490091"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>基于编码方案的迁移指南
 
@@ -103,7 +103,7 @@ v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>索引器 v1 音频听录到新 AudioAnalyzer“基本模式”
 
-对于在 v2 API 中使用索引器 v1 处理器的客户，需要创建一个转换，以在提交作业之前以[基本模式](how-to-create-basic-audio-transform.md)调用新的 `AudioAnalyzer`。
+对于在 v2 API 中使用索引器 v1 处理器的客户，需要创建一个转换，以在提交作业之前以[基本模式](transform-create-basic-audio-how-to.md)调用新的 `AudioAnalyzer`。
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>编码、转换和作业概念、教程以及操作方法指南
 
@@ -127,18 +127,18 @@ v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级
 
 - [从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)
 - [从本地文件创建作业输入](job-input-from-local-file-how-to.md)
-- [创建基本音频转换](how-to-create-basic-audio-transform.md)
+- [创建基本音频转换](transform-create-basic-audio-how-to.md)
 - （使用 .NET）
-  - [如何对自定义转换进行编码 - .NET](encode-custom-presets-how-to.md)
-  - [如何使用 Media Encoder Standard 创建覆盖](how-to-create-overlay.md)
-  - [如何使用编码器标准版通过 .NET 来生成缩略图](media-services-generate-thumbnails-dotnet.md)
+  - [如何对自定义转换进行编码 - .NET](transform-custom-presets-how-to.md)
+  - [如何使用 Media Encoder Standard 创建覆盖](transform-create-overlay-how-to.md)
+  - [如何使用编码器标准版通过 .NET 来生成缩略图](transform-generate-thumbnails-dotnet-how-to.md)
 - 使用 Azure CLI
-  - [如何对自定义转换进行编码 - Azure CLI](encode-custom-preset-cli-how-to.md)
+  - [如何对自定义转换进行编码 - Azure CLI](transform-custom-preset-cli-how-to.md)
 - 使用 REST
-  - [如何对自定义转换进行编码 - REST](encode-custom-preset-rest-how-to.md)
-  - [如何使用 Encoder Standard 通过 REST 来生成缩略图](media-services-generate-thumbnails-rest.md)
-- [使用媒体服务编码时对视频进行子剪辑 - .NET](subclip-video-dotnet-howto.md)
-- [使用媒体服务编码时对视频进行子剪辑 - REST](subclip-video-rest-howto.md)
+  - [如何对自定义转换进行编码 - REST](transform-custom-preset-rest-how-to.md)
+  - [如何使用 Encoder Standard 通过 REST 来生成缩略图](transform-generate-thumbnails-rest-how-to.md)
+- [使用媒体服务编码时对视频进行子剪辑 - .NET](transform-subclip-video-dotnet-how-to.md)
+- [使用媒体服务编码时对视频进行子剪辑 - REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>示例
 
