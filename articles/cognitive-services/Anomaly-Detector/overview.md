@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572084"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278858"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
 
@@ -28,6 +28,12 @@ ms.locfileid: "100572084"
 ![检测服务请求中的模式更改](./media/anomaly_detection2.png)
 
 使用异常检测器不需要以前在机器学习方面有任何经验，你可以使用 RESTful API 轻松地将服务集成到应用程序和进程中。
+
+本文档包含以下类型的文章：
+* [快速入门](./Quickstarts/client-libraries.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
+* [操作指南](./how-to/identify-anomalies.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [概念性文章](./concepts/anomaly-detection-best-practices.md)对服务的功能和特性进行了深入说明。
+* [教程](./tutorials/batch-anomaly-detection-powerbi.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
 
 ## <a name="features"></a>功能
 

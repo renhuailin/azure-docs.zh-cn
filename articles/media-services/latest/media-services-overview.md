@@ -2,7 +2,7 @@
 title:Azure 媒体服务 v3 概述:Azure 媒体服务说明:Azure 媒体服务 v3 的概述，其中包含指向快速入门、教程和代码示例的链接。
 services: media-services documentationcenter: na author:IngridAtMicrosoft manager: femila editor: '' tags: '' keywords: azure media services, stream, broadcast, live, offline
 
-ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm: multiple ms.workload: media ms.date:08/31/2020 ms.author: inhenkel ms.custom: mvc
+ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm: multiple ms.workload: media ms.date: 3/10/2021 ms.author: inhenkel ms.custom: mvc
 #<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>客户意向:作为开发人员或内容提供商，我希望编码、流式传输（按需或实时）和分析媒体内容，使我的客户能够在各种浏览器和设备上查看内容，通过记录的内容获得有价值的见解。
 ---
 
@@ -13,9 +13,6 @@ ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm
 Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用开发人员、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。
 
 媒体服务 v3 SDK 基于[媒体服务 v3 OpenAPI 规范 (Swagger)](https://aka.ms/ams-v3-rest-sdk)。
-
-> [!NOTE]
-> 目前，可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、查看（而不是管理）v3 [资产](assets-concept.md)、[获取有关访问 API 的信息](./access-api-howto.md)。 对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](/rest/api/media/)、[CLI](/cli/azure/ams) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -67,8 +64,8 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * [对远程文件和流视频进行编码 - REST](stream-files-tutorial-with-rest.md)
 * [对上传的文件和流视频进行编码 - .NET](stream-files-tutorial-with-api.md)
 * [实时流 - .NET](stream-live-tutorial-with-api.md)
-* [分析视频 - .NET](analyze-videos-tutorial-with-api.md)
-* [AES-128 动态加密 - .NET](protect-with-aes128.md)
+* [分析视频 - .NET](analyze-videos-tutorial.md)
+* [AES-128 动态加密 - .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>示例
 
@@ -78,12 +75,12 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 操作指南包含演示如何完成某项任务的代码示例。 在本部分中，你将看到许多示例。 下面是其中几个示例：
 
-* [创建帐户 - CLI](./create-account-howto.md)
+* [创建帐户 - CLI](./account-create-how-to.md)
 * [访问 API - CLI](./access-api-howto.md)
 * [在将 HTTPS 作为作业输入的情况下进行编码 - .NET](job-input-from-http-how-to.md)  
-* [监视事件 - 门户](monitor-events-portal-how-to.md)
-* [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 
-* [如何对自定义转换进行编码 - CLI](custom-preset-cli-howto.md)
+* [监视事件 - 门户](monitoring/monitor-events-portal-how-to.md)
+* [通过多重 DRM 进行动态加密 - .NET](drm-protect-with-drm-tutorial.md) 
+* [如何对自定义转换进行编码 - CLI](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

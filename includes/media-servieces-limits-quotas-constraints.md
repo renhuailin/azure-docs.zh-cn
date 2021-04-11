@@ -4,21 +4,21 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
-ms.translationtype: MT
+ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95561312"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125744"
 ---
 > [!NOTE]
-> 对于不固定的资源，请开具支持票证，要求增加配额。 请勿尝试通过创建更多 Azure 媒体服务帐户的方式来提高配额限制。
+> 对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
 
 ### <a name="account-limits"></a>帐户限制
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 单个订阅中的媒体服务帐户数 | 100 (固定)  |
+| 单个订阅中的媒体服务帐户数 | 100（固定） |
 
 ### <a name="asset-limits"></a>资产限制
 
@@ -53,7 +53,7 @@ ms.locfileid: "95561312"
 | 每个作业的作业输入数 | 50（固定）|
 | 每个作业的作业输出数 | 20（固定） |
 | 每个媒体服务帐户的转换数 | 100（固定）|
-| 转换某个转换中的输出 | 20（固定） |
+| 每个转换中的转换输出数 | 20（固定） |
 | 每个作业输入的文件数|10（固定）|
 
 <sup>3</sup> 此数字包括排队的、完成的、活动的和取消的作业。 不包括已删除的作业。 
@@ -66,9 +66,9 @@ ms.locfileid: "95561312"
 | --- | --- |
 | 每个媒体服务帐户的直播活动数 <sup>(4)</sup> |5|
 | 每个直播活动的实时输出 |3 <sup>(5)</sup> |
-| 最长实时输出持续时间 | [DVR 窗口的大小](../articles/media-services/latest/live-event-cloud-dvr.md) |
+| 最长实时输出持续时间 | [DVR 窗口的大小](../articles/media-services/latest/live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](../articles/media-services/latest/live-event-types-comparison.md)。
+<sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](../articles/media-services/latest/live-event-types-comparison-reference.md)。
 
 <sup>5</sup> 实时输出在创建时启动，在删除后停止。
 
@@ -83,7 +83,7 @@ ms.locfileid: "95561312"
 
 <sup>6</sup> 使用自定义[流式处理策略](/rest/api/media/streamingpolicies)时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于流定位器。 不应为每个流式处理定位符创建新的流式处理策略。
 
-<sup>7</sup> 流定位器不适用于管理每个用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。
+<sup>7</sup> 流式处理定位符不适用于管理按用户的访问控制。 要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。
 
 ### <a name="protection-limits"></a>保护限制
 

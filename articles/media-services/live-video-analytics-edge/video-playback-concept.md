@@ -3,12 +3,12 @@ title: 视频播放 - Azure
 description: 占位符
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87042967"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063366"
 ---
 # <a name="video-playback"></a>视频播放 
 
@@ -28,7 +28,7 @@ ms.locfileid: "87042967"
 
 ## <a name="streaming-policy"></a>流式处理策略 
 
-Azure 媒体服务为你提供了多种方法来保护视频流，如[使用媒体服务动态加密保护内容](../latest/content-protection-overview.md)一文中所述。 内容保护的选项大致包括：
+Azure 媒体服务为你提供了多种方法来保护视频流，如[使用媒体服务动态加密保护内容](../latest/drm-content-protection-concept.md)一文中所述。 内容保护的选项大致包括：
 
 * 明文流式处理 - 流式处理期间不应用加密。
 * 使用高级加密标准 (AES-128) - 并实现一种方法，将仅用于解密视频的密钥传递给经过身份验证的观看者。
