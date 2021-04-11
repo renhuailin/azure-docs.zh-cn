@@ -6,16 +6,16 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
-author: MightyPen
-ms.author: genemi
+author: rothja
+ms.author: jroth
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67d20a4f0f5d2dae769429c9c476899ea8099c43
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92671171"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551675"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 中设计关系数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

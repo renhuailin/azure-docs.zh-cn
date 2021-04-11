@@ -3,21 +3,21 @@ title: Azure Durable Functions 单元测试
 description: 了解如何进行 Durable Functions 单元测试。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
-ms.translationtype: MT
+ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601350"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076626"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
 单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下部分介绍如何对三种函数类型执行单元测试 - 业务流程客户端、业务流程协调程序和活动函数。
 
 > [!NOTE]
-> 本文提供了针对 Durable Functions 1.x 的 Durable Functions 应用的单元测试指南。 它尚未更新，以考虑到 Durable Functions 2.x 中引入的更改。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 本文提供了针对 Durable Functions 2.x 的 Durable Functions 应用的单元测试指南。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 学习本文中的示例需要了解以下概念和框架：
 
@@ -31,20 +31,17 @@ ms.locfileid: "96601350"
 
 ## <a name="base-classes-for-mocking"></a>用于模拟的基类
 
-通过 Durable Functions 1.x 中的三个抽象类来支持模拟：
+通过以下接口支持模拟：
 
-* `DurableOrchestrationClientBase`
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient)、[IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentityclient) 和 [IDurableClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableclient)
 
-* `DurableOrchestrationContextBase`
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
-* `DurableActivityContextBase`
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
+  
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
-这些类是定义业务流程客户端、业务流程协调程序和活动方法的 `DurableOrchestrationClient`、`DurableOrchestrationContext` 和 `DurableActivityContext` 的基类。 模拟将会设置基类方法的预期行为，使单元测试能够验证业务逻辑。 可以通过一个两步工作流对业务流程客户端和业务流程协调程序中的业务逻辑进行单元测试：
-
-1. 定义业务流程客户端和业务流程协调程序函数签名时，使用基类而不是具体的实现。
-2. 在单元测试中模拟基类的行为，并验证业务逻辑。
-
-在以下段落中，可以找到有关对使用业务流程客户端绑定和业务流程协调程序触发器绑定的函数进行测试的更多详细信息。
+这些接口可用于 Durable Functions 支持的各种触发器和绑定。 执行 Azure Functions 时，函数运行时将运行包含这些接口的具体实现的函数代码。 对于单元测试，可以传递这些接口的模拟版本来测试业务逻辑。
 
 ## <a name="unit-testing-trigger-functions"></a>对触发器函数进行单元测试
 
@@ -52,71 +49,77 @@ ms.locfileid: "96601350"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此，单元测试将模拟某些 `DurableOrchestrationClientBase` 方法，以确保行为可预测。
+单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此，单元测试将模拟某些 `IDurableClient` 方法，以确保行为可预测。
 
-首先，需要模拟基类 `DurableOrchestrationClientBase`。 该模拟可以是实现 `DurableOrchestrationClientBase` 的新类。 但是，使用 [moq](https://github.com/moq/moq4) 之类的模拟框架可以简化过程：
+首先，使用模拟框架（在此示例中即为 [moq](https://github.com/moq/moq4)）来模拟 `IDurableClient`：
 
 ```csharp
-    // Mock DurableOrchestrationClientBase
-    var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
+// Mock IDurableClient
+var durableClientMock = new Mock<IDurableClient>();
 ```
+
+> [!NOTE]
+> 尽管可以通过直接将接口实现为类来模拟接口，但模拟框架从各方面简化了该过程。 例如，如果在多个次要版本中向接口添加了新的方法，则 moq 不需要任何代码更改，这与具体的实现不同。
 
 然后，模拟 `StartNewAsync` 方法来返回已知的实例 ID。
 
 ```csharp
-    // Mock StartNewAsync method
-    durableOrchestrationClientBaseMock.
-        Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
-        ReturnsAsync(instanceId);
+// Mock StartNewAsync method
+durableClientMock.
+    Setup(x => x.StartNewAsync(functionName, It.IsAny<object>())).
+    ReturnsAsync(instanceId);
 ```
 
 接下来模拟 `CreateCheckStatusResponse`，以便始终返回空白的 HTTP 200 响应。
 
 ```csharp
-    // Mock CreateCheckStatusResponse method
-    durableOrchestrationClientBaseMock
-        .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId))
-        .Returns(new HttpResponseMessage
+// Mock CreateCheckStatusResponse method
+durableClientMock
+    // Notice that even though the HttpStart function does not call IDurableClient.CreateCheckStatusResponse() 
+    // with the optional parameter returnInternalServerErrorOnFailure, moq requires the method to be set up
+    // with each of the optional parameters provided. Simply use It.IsAny<> for each optional parameter
+    .Setup(x => x.CreateCheckStatusResponse(It.IsAny<HttpRequestMessage>(), instanceId, returnInternalServerErrorOnFailure: It.IsAny<bool>())
+    .Returns(new HttpResponseMessage
+    {
+        StatusCode = HttpStatusCode.OK,
+        Content = new StringContent(string.Empty),
+        Headers =
         {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(string.Empty),
-            Headers =
-            {
-                RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
-            }
-        });
+            RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
+        }
+    });
 ```
 
 另外还要模拟 `ILogger`：
 
 ```csharp
-    // Mock ILogger
-    var loggerMock = new Mock<ILogger>();
+// Mock ILogger
+var loggerMock = new Mock<ILogger>();
 ```  
 
 现在，从单元测试调用 `Run` 方法：
 
 ```csharp
-    // Call Orchestration trigger function
-    var result = await HttpStart.Run(
-        new HttpRequestMessage()
-        {
-            Content = new StringContent("{}", Encoding.UTF8, "application/json"),
-            RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
-        },
-        durableOrchestrationClientBaseMock.Object,
-        functionName,
-        loggerMock.Object);
+// Call Orchestration trigger function
+var result = await HttpStart.Run(
+    new HttpRequestMessage()
+    {
+        Content = new StringContent("{}", Encoding.UTF8, "application/json"),
+        RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
+    },
+    durableClientMock.Object,
+    functionName,
+    loggerMock.Object);
  ```
 
  最后一步是将输出与预期值进行比较：
 
 ```csharp
-    // Validate that output is not null
-    Assert.NotNull(result.Headers.RetryAfter);
+// Validate that output is not null
+Assert.NotNull(result.Headers.RetryAfter);
 
-    // Validate output's Retry-After header value
-    Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
+// Validate output's Retry-After header value
+Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
 合并所有步骤后，单元测试将获得以下代码：
@@ -134,30 +137,30 @@ ms.locfileid: "96601350"
 单元测试代码首先会创建模拟：
 
 ```csharp
-    var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
+var durableOrchestrationContextMock = new Mock<IDurableOrchestrationContext>();
 ```
 
 然后模拟活动方法调用：
 
 ```csharp
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
-    durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Seattle")).ReturnsAsync("Hello Seattle!");
+durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
 接下来，单元测试调用 `HelloSequence.Run` 方法：
 
 ```csharp
-    var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
+var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
 最后验证输出：
 
 ```csharp
-    Assert.Equal(3, result.Count);
-    Assert.Equal("Hello Tokyo!", result[0]);
-    Assert.Equal("Hello Seattle!", result[1]);
-    Assert.Equal("Hello London!", result[2]);
+Assert.Equal(3, result.Count);
+Assert.Equal("Hello Tokyo!", result[0]);
+Assert.Equal("Hello Seattle!", result[1]);
+Assert.Equal("Hello London!", result[2]);
 ```
 
 合并所有步骤后，单元测试将获得以下代码：
@@ -172,7 +175,7 @@ ms.locfileid: "96601350"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-另外，单元测试将验证输出格式。 单元测试可以直接使用参数类型，也可以模拟 `DurableActivityContextBase` 类：
+另外，单元测试将验证输出格式。 单元测试可以直接使用参数类型，也可以模拟 `IDurableActivityContext` 类：
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

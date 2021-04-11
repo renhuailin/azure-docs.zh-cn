@@ -3,19 +3,19 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109617"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046311"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
 生产群集部署的规划和准备非常重要。  需要考虑到许多因素。  本文将引导你完成准备群集部署的步骤。
 
 ## <a name="read-the-best-practices-information"></a>阅读最佳做法信息
-若要成功管理 Azure Service Fabric 应用程序和群集，我们强烈建议你执行某些操作，以优化生产环境的可靠性。  有关详细信息，请参阅 [Azure Service Fabric 应用程序和群集最佳做法](service-fabric-best-practices-overview.md)。
+若要成功管理 Azure Service Fabric 应用程序和群集，我们强烈建议你执行某些操作，以优化生产环境的可靠性。  有关详细信息，请参阅 [Azure Service Fabric 应用程序和群集最佳做法](./service-fabric-best-practices-security.md)。
 
 ## <a name="select-the-os-for-the-cluster"></a>选择群集的 OS
 使用 Service Fabric 可在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。  在部署群集之前，必须选择 OS：Windows 或 Linux。  群集中的每个节点（虚拟机）运行相同的 OS，不能在同一群集中混用 Windows 和 Linux VM。
@@ -117,7 +117,7 @@ ms.locfileid: "97109617"
 应用程序和群集是否准备好接收生产流量？ 在将群集部署到生产环境之前，请运行整个[生产就绪性核对清单](service-fabric-production-readiness-checklist.md)。 通过检查此核对清单中的各个项，使应用程序和群集保持平稳运行。 我们强烈建议在转移到生产环境之前检查所有这些项。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建运行 Windows 的 Service Fabric 群集](service-fabric-best-practices-overview.md)
+* [创建运行 Windows 的 Service Fabric 群集](./service-fabric-best-practices-security.md)
 * [创建运行 Linux 的 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: fda59cc041cc540b95ababa6d56df6e69b0a8970
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b1391f81c571879534258c289436d2d086b84bef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045937"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中设置应用程序开发人员控制的分发 (ADCD)
 
@@ -191,7 +191,7 @@ ms.locfileid: "104956156"
 
 - [大型机迁移：虚构和事实](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上的 IBM DB2 pureScale](ibm-db2-purescale-azure.md)
-- [故障排除](../../../troubleshooting/index.yml)
+- [故障排除](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [揭秘大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

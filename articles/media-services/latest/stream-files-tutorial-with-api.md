@@ -2,7 +2,7 @@
 title:使用媒体服务 v3 进行上传、编码和流式传输:Azure 媒体服务说明:介绍如何使用 Azure 媒体服务 v3 上载文件、对视频编码和流式传输内容的教程。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date:08/31/2020 ms.author: inhenkel
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 03/17/2021 ms.author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
@@ -113,7 +113,7 @@ CreateInputAsset 函数创建新的输入[资产](/rest/api/media/assets)并将�
 
 此作业需要一些时间才能完成，完成时可发出通知。 以下代码示例显示如何轮询服务以获取[作业](/rest/api/media/jobs)状态。 对于生产应用程序，由于可能出现延迟，并不建议将轮询作为最佳做法。 如果在帐户上过度使用轮询，轮询会受到限制。 开发者应改用事件网格。
 
-事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
+事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](monitoring/job-state-events-cli-how-to.md)。
 
 **作业** 通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消” 。
 

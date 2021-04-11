@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: jeedes
-ms.openlocfilehash: eaa57e27f8cdd09c5c8ca6ecad8a213da6105727
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 5c68453f7f7d638877683920a17022cf3d29bdc5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597800"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>教程：将 Expensify 与 Azure Active Directory 集成
 
@@ -145,8 +145,8 @@ ms.locfileid: "102486211"
 
 * 直接转到 Expensify 登录 URL，从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Expensify 磁贴时，会重定向到 Expensify 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Expensify 磁贴时，会重定向到 Expensify 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Expensify 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+配置 Expensify 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

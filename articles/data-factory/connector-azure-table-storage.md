@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/20/2020
-ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: 5674d656385d356f596f96cd7851d2cc05839761
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383766"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597393"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
 
@@ -49,7 +49,7 @@ ms.locfileid: "100383766"
 
 可以使用帐户密钥创建 Azure 存储链接服务。 该链接服务将存储的全局访问权限提供给数据工厂。 支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -118,7 +118,7 @@ ms.locfileid: "100383766"
 
 若要使用共享访问签名身份验证，需支持以下属性。
 
-| properties | 说明 | 必选 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -189,7 +189,7 @@ ms.locfileid: "100383766"
 
 要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable**。 支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **AzureTable**。 |是 |
 | tableName |链接服务引用的表存储数据库实例中表的名称。 |是 |
@@ -229,7 +229,7 @@ ms.locfileid: "100383766"
 
 要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”。 复制活动的 **source** 节支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzureTableSource**。 |是 |
 | azureTableSourceQuery |使用自定义表存储查询读取数据。<br/>源查询是 Azure 表存储支持的 `$filter` 查询选项中的直接映射，可从[此文档](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)了解更多语法，并查看以下 [azureTableSourceQuery 示例部分](#azuretablesourcequery-examples)中的示例。 |否 |
@@ -258,7 +258,7 @@ ms.locfileid: "100383766"
 
 若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”。 复制活动 **sink** 节支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
@@ -267,6 +267,7 @@ ms.locfileid: "100383766"
 | azureTableInsertType |将数据插入 Azure 表的模式。 此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>允许的值为 **merge**（默认值）和 **replace**。 <br/><br> 此设置在行级别而不是表级别进行应用。 并且两个选项都不会删除输入中不存在的输出表中的行。 若要了解合并和替换设置的工作原理，请参阅[插入或合并实体](/rest/api/storageservices/Insert-Or-Merge-Entity)和[插入或替换实体](/rest/api/storageservices/Insert-Or-Replace-Entity)。 |否 |
 | writeBatchSize |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 integer（行数）。 |否（默认值为 10,000） |
 | writeBatchTimeout |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。<br/>允许的值为 timespan。 例如“00:20:00”（20 分钟）。 |否（默认值为 90 秒，即存储客户端的默认超时） |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
 
 **示例：**
 
@@ -342,7 +343,7 @@ ms.locfileid: "100383766"
 
 ## <a name="lookup-activity-properties"></a>“查找”活动属性
 
-若要详细了解这些属性，请查看[“查找”活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

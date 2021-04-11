@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2cecf2038190adcf12d376715a5fbf261cf758e0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217459"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962622"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教程：使用 Linux 上的 Azure 应用服务和 Azure Cosmos DB 生成 Java Spring Boot Web 应用
 
@@ -185,7 +185,7 @@ bash-3.2$ mvn package spring-boot:run
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.11.0</version>
+        <version>1.13.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 输出包含部署的应用程序的 URL（在本示例中为 `https://spring-todo-app.azurewebsites.net`）。 可将此 URL 复制到 Web 浏览器，或者在终端窗口中运行以下命令，以加载应用。
 
 ```bash
-curl https://spring-todo-app.azurewebsites.net
+explorer https://spring-todo-app.azurewebsites.net
 ```
 
 在地址栏中，应会看到正在使用远程 URL 运行的应用：

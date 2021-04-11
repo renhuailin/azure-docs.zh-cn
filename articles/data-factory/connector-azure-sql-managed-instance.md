@@ -6,19 +6,19 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 5c2023ffa4446760c85b07659f13e421e62e6020
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: eae085a73e8f43813aa3f02fa910c7931f10f36c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383783"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597404"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure SQL 托管实例，并使用数据流转换 Azure SQL 托管实例中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述如何使用 Azure 数据工厂中的“复制活动”功能从 Azure SQL 托管实例复制数据或将数据复制到其中，并使用“数据流”转换 Azure SQL 托管实例中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -61,7 +61,7 @@ SQL 托管实例链接服务支持以下属性：
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下使用数据工厂的云环境。 | 否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 如果托管实例有公共终结点且允许 Azure 数据工厂进行访问，则可使用自承载集成运行时或 Azure Integration Runtime。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
@@ -227,7 +227,7 @@ SQL 托管实例链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
-| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -273,7 +273,7 @@ SQL 托管实例链接服务支持以下属性：
 | partitionOptions | 指定用于从 SQL MI 加载数据的数据分区选项。 <br>允许值包括：None（默认值）、PhysicalPartitionsOfTable 和 DynamicRange  。<br>启用分区选项（即该选项不为 `None`）时，用于从 SQL MI 并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | 在 `partitionSettings` 下： | | |
-| partitionColumnName | 指定源列的名称，其 **类型为 integer 或 date/datetime** ， (`int` 、、、、、、 `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` 或 `datetimeoffset`) ，范围分区将使用该名称进行并行复制。 如果未指定，系统会自动检测表的索引或主键并将其用作分区列。<br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfDynamicRangePartitionCondition `。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
+| partitionColumnName | 以整数类型、日期类型或日期/时间类型（`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2` 或 `datetimeoffset`）指定源列的名称，范围分区将使用它进行并行复制。 如果未指定，系统会自动检测表的索引或主键并将其用作分区列。<br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfDynamicRangePartitionCondition `。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 | partitionUpperBound | 分区范围拆分的分区列的最大值。 此值用于决定分区步幅，不用于筛选表中的行。 将对表或查询结果中的所有行进行分区和复制。 如果未指定，复制活动会自动检测该值。  <br>当分区选项是 `DynamicRange` 时适用。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 | partitionLowerBound | 分区范围拆分的分区列的最小值。 此值用于决定分区步幅，不用于筛选表中的行。 将对表或查询结果中的所有行进行分区和复制。 如果未指定，复制活动会自动检测该值。<br>当分区选项是 `DynamicRange` 时适用。 有关示例，请参阅[从 SQL 数据库进行并行复制](#parallel-copy-from-sql-mi)部分。 | 否 |
 
@@ -387,6 +387,7 @@ GO
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
 | writeBatchSize |每批要插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。  |否 |
 | writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值是指时间跨度。 例如，“00:30:00”表示 30 分钟。 |否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的数目上限。 仅当要限制并发连接数目时指定一个值。| 否 |
 
 **示例 1：追加数据**
 
@@ -485,7 +486,7 @@ GO
 3. 如果使用 Azure Integration Runtime 复制数据，则可设置较大的“[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units)”(>4) 以利用更多计算资源。 检查此处适用的方案。
 4. “[复制并行度](copy-activity-performance-features.md#parallel-copy)”可控制分区数量，将此数字设置得太大有时会损害性能，建议将此数字设置按以下公式计算的值：（DIU 或自承载 IR 节点数）*（2 到 4）。
 
-示例：从包含物理分区的大型表进行完整加载
+**示例：从包含物理分区的大型表进行完整加载**
 
 ```json
 "source": {
@@ -709,7 +710,7 @@ IncomingStream sink(allowSchemaDrift: true,
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |
@@ -761,7 +762,7 @@ IncomingStream sink(allowSchemaDrift: true,
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - 若要使用“数据工厂托管标识身份验证”，请执行以下操作： 
+    - 如果在 Azure 虚拟机上运行自承载集成运行时，则可以对 Azure VM 的标识使用“托管标识身份验证”： 
 
         1. 按照相同的[先决条件](#managed-identity)为托管标识创建数据库用户，并在数据库中授予适当的角色。
         2. 在链接服务中，如下所示指定 ODBC 连接字符串，并选择“匿名”身份验证，因为连接字符串本身指示 `Authentication=ActiveDirectoryMsi`。

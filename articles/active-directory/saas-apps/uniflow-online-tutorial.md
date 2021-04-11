@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
 ms.openlocfilehash: 9fdcd8a82b901e00e28f0ddd89ba53d9a2e3fbae
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "104952666"
 * 让用户使用其 Azure AD 帐户登录到 uniFLOW Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

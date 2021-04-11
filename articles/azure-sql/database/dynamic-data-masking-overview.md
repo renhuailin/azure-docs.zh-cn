@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918071"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551639"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ### <a name="data-masking-policies"></a>数据掩码策略
 
-- [创建或更新](/rest/api/sql/datamaskingpolicies/createorupdate)：创建或更新数据库的数据掩码策略。
-- [获取](/rest/api/sql/datamaskingpolicies/get)：获取数据库的数据掩码策略。 
+- [创建或更新](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate)：创建或更新数据库的数据掩码策略。
+- [获取](/rest/api/sql/2014-04-01/datamaskingpolicies/get)：获取数据库的数据掩码策略。 
 
 ### <a name="data-masking-rules"></a>数据掩码规则
 
-- [创建或更新](/rest/api/sql/datamaskingrules/createorupdate)：创建或更新数据库的数据掩码规则。
-- [按数据库列出](/rest/api/sql/datamaskingrules/listbydatabase)：获取数据库的数据掩码规则列表。
+- [创建或更新](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate)：创建或更新数据库的数据掩码规则。
+- [按数据库列出](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase)：获取数据库的数据掩码规则列表。
 
 ## <a name="permissions"></a>权限
 

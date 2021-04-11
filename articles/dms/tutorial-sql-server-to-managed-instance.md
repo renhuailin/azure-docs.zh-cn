@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 6db1b6b17f1ed2c21588cb23880c89a49cf835ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2dfcb4ade9da76d5ec4883e9f4b5b3cb3e0c8682
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101094798"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076830"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 托管实例
 
@@ -154,7 +154,7 @@ ms.locfileid: "101094798"
 
    ![源详细信息](media/tutorial-sql-server-to-managed-instance/dms-source-details1.png)
 
-3. 选择“保存”  。
+3. 选择“保存” 。
 
 4. 在“选择源数据库”屏幕上，选择用于迁移的“Adventureworks2012”数据库 。
 
@@ -163,7 +163,7 @@ ms.locfileid: "101094798"
     > [!IMPORTANT]
     > 如果使用 SQL Server Integration Services (SSIS)，则 DMS 目前不支持将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 SQL 托管实例。 但是，你可以在 Azure 数据工厂 (ADF) 中预配 SSIS 并将 SSIS 项目/包重新部署到由 SQL 托管实例托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
 
-5. 选择“保存”  。
+5. 选择“保存” 。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
@@ -173,7 +173,7 @@ ms.locfileid: "101094798"
 
     ![选择目标](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -181,7 +181,7 @@ ms.locfileid: "101094798"
 
     ![选择源数据库](media/tutorial-sql-server-to-managed-instance/select-source-databases.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="select-logins"></a>选择登录名
 
@@ -192,13 +192,13 @@ ms.locfileid: "101094798"
 
     ![选择登录名](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="configure-migration-settings"></a>配置迁移设置
 
 1. 在“配置迁移设置”屏幕上，提供以下详细信息：
 
-    | | |
+    | 参数 | 说明 |
     |--------|---------|
     |**选择源备份选项** | 如果已经有一个完整备份文件供 DMS 用于数据库迁移，请选择选项“我将提供最新备份文件”。 如果希望 DMS 先进行源数据库完整备份，然后用它来进行迁移，请选择选项“我将让 Azure 数据库迁移服务创建备份文件”。 |
     |**网络位置共享** | 可让 Azure 数据库迁移服务备份源数据库的本地 SMB 网络共享。 运行源 SQL Server 实例的服务帐户必须在此网络共享中拥有写入特权。 在网络共享中提供服务器的 FQDN 或 IP 地址，例如“'\\\servername.domainname.com\backupfolder”或“\\\IP address\backupfolder”。|
@@ -209,7 +209,7 @@ ms.locfileid: "101094798"
 
     ![配置迁移设置](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 
-2. 选择“保存”  。
+2. 选择“保存” 。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 
@@ -221,7 +221,7 @@ ms.locfileid: "101094798"
 
     ![迁移项目摘要](media/tutorial-sql-server-to-managed-instance/dms-project-summary2.png)
 
-4. 选择“保存”  。
+4. 选择“保存” 。
 
 ## <a name="run-the-migration"></a>运行迁移
 

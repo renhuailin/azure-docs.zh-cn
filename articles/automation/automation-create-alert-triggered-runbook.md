@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0483b171ee65ac55d65261140738bc5c1838873f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ea7979ad4a401d317ec126b7abfe354690475235
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953096"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>使用警报触发 Azure 自动化 Runbook
 
-可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以通过使用 [操作组](../azure-monitor/platform/action-groups.md) 来调用 Azure 自动化 runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
+可以使用 [Azure Monitor](../azure-monitor/overview.md) 来监视 Azure 中大多数服务的基本级别指标和日志。 可以使用[操作组](../azure-monitor/alerts/action-groups.md)调用 Azure 自动化 Runbook，以便基于警报自动执行任务。 本文介绍如何使用警报来配置和运行 Runbook。
 
 ## <a name="alert-types"></a>警报类型
 

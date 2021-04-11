@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 6d31bd0911b5cf765215e6a482a39b2458c4ba0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e00332eca076b55a884682240ef26ea3a4546d1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696039"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046056"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source-preview"></a>注册并扫描 SAP S/4HANA 源（预览版）
 
@@ -25,7 +25,7 @@ SAP S/4HANA 源支持完全扫描（用于从 SAP S/4HANA 实例中提取元数�
 ## <a name="prerequisites"></a>先决条件
 
 1.  设置最新的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)。
-    有关详细信息，请参阅[创建和配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。
+    有关详细信息，请参阅[创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
 
 2.  确保在安装了自承载集成运行时的虚拟机上安装 [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)。
 
@@ -78,7 +78,7 @@ SAP S/4HANA 源支持完全扫描（用于从 SAP S/4HANA 实例中提取元数�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](https://docs.microsoft.com/azure/purview/manage-integration-runtimes)所述的步骤来创建自承载集成运行时。
+1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请使用[此处](./manage-integration-runtimes.md)所述的步骤来创建自承载集成运行时。
 
 2.  导航到“源”。
 
