@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 3cbeb1dbd207eec7f58465a24f33808bf2e7c7c0
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 54738ebe45792bea70067383aaeeca99667f753f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867604"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068313"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
@@ -216,7 +216,7 @@ ms.locfileid: "104867604"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 

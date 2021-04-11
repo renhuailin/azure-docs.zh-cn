@@ -1,19 +1,19 @@
 ---
 title: 快速入门：创建服务器 - Azure CLI - Azure Database for PostgreSQL - 单一服务器
 description: 在本快速入门指南中，你将使用 Azure CLI 创建 Azure Database for PostgreSQL 服务器。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1d7b6cd6d61be6df66d215613222c12a0f2c9c5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659448"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606702"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL 服务器
 

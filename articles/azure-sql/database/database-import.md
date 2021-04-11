@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: d59f08fc061bace55a7cd3d774380046055828ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2412d3d2851d1b4d251b50ff3068b7dcafcccee8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618604"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642047"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库或 Azure SQL 托管实例中的数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "102618604"
 
 1. 选择存储帐户和 BACPAC 文件的容器，然后选择要从中导入的 BACPAC 文件。
 
-1. 指定新数据库大小（通常与源数据库相同）并提供目标 SQL Server 凭据。 有关 Azure SQL 数据库中新数据库的可能值列表，请参阅[创建数据库](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)。
+1. 指定新数据库大小（通常与源数据库相同）并提供目标 SQL Server 凭据。 有关 Azure SQL 数据库中新数据库的可能值列表，请参阅[创建数据库](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)。
 
    ![数据库 import2](./media/database-import/sql-server-import-database-settings.png)
 
@@ -89,7 +89,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)当前不支持使用 Azure PowerShell 从 BACPAC 文件将数据库迁移到实例数据库。 若要导入 SQL 托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
-> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 其结果是某些请求可能会失败，并显示“磁盘空间不足”错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
+> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现“磁盘空间不足”错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -147,7 +147,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="cancel-the-import-request"></a>取消导入请求
 
-使用[数据库操作 - 取消 API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
+使用[数据库操作 - 取消 API](/rest/api/sql/databaseoperations/cancel) 或 Powershell [Stop-AzSqlDatabaseActivity 命令](/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)，此处是 Powershell 命令的示例。
 
 ```cmd
 Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId

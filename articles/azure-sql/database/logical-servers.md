@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09e8ef85b6df48b6b442351135d4ae4ed55e9b45
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96445381"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641073"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什么是 Azure SQL 数据库和 Azure Synapse Analytics 中的逻辑 SQL server？
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -147,10 +147,10 @@ SQL 数据库和 Azure Synapse 中的服务器：
 
 | 命令 | 说明 |
 | --- | --- |
-|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | 在 Azure SQL 数据库中新建数据库。 必须连接到 master 数据库才能新建数据库。|
-|[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | 在 Azure Synapse 中新建数据仓库数据库。 必须连接到 master 数据库才能新建数据库。|
-| [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改数据库或弹性池。 |
-|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|在 Azure Synapse 中修改数据仓库数据库。|
+|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true) | 在 Azure SQL 数据库中新建数据库。 必须连接到 master 数据库才能新建数据库。|
+|[CREATE DATABASE (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 在 Azure Synapse 中新建数据仓库数据库。 必须连接到 master 数据库才能新建数据库。|
+| [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |修改数据库或弹性池。 |
+|[ALTER DATABASE (Azure Synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true&tabs=sqlpool)|在 Azure Synapse 中修改数据仓库数据库。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
 |[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回数据库的版本（服务层）、服务目标（定价层）和弹性池名称（如果有）。 如果登录到服务器的 master 数据库，将返回有关所有数据库的信息。 对于 Azure Synapse，需要连接到 master 数据库。|
 |[sys.dm_db_resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗。 即使数据库中没有活动，也会每隔 15 秒返回一行数据。|

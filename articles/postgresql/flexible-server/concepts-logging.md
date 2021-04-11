@@ -1,17 +1,17 @@
 ---
 title: 日志 - Azure Database for PostgreSQL - 灵活服务器
 description: 介绍 Azure Database for PostgreSQL 灵活服务器中的日志记录配置、存储和分析
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 852bce26e348c817b609d5ff837641741afe4461
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e09c01fcfb9c4725ac169151e85c8b030d8bb18c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90934757"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606379"
 ---
 # <a name="logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的日志
 
