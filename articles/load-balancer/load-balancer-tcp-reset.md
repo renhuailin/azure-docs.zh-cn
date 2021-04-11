@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696738"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448842"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>负载均衡器 TCP 重置和空闲超时
 
@@ -58,7 +58,6 @@ TCP 保持连接状态适用于电池续航时间不受限制的情况。 不建
 ## <a name="limitations"></a>限制
 
 - TCP 重置仅在 TCP 连接处于已建立状态时发送。
-- 对于配置了 HA 端口的内部负载均衡器，不会发送 TCP 重置。
 - TCP 空闲超时不影响 UDP 协议的负载均衡规则。
 
 ## <a name="next-steps"></a>后续步骤

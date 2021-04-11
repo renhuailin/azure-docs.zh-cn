@@ -1,5 +1,5 @@
 ---
-title: 带 Azure DevOps 的 CI/CD 管道入门-Azure IoT Edge |Microsoft Docs
+title: 使用 Azure DevOps 入门版创建 CI/CD 管道 - Azure IoT Edge | Microsoft Docs
 description: 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选的 Azure IoT Edge 应用。
 author: kgremban
 ms.author: kgremban
@@ -7,14 +7,16 @@ ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 933ddfb5fa5d58231e954dfd54bcc069b53dfe56
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8a23041a714089c447ab35ee05aae0de0c9c33d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721478"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201153"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 IoT Edge 创建 CI/CD 管道
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>使用 Azure DevOps 入门版为 IoT Edge 创建 CI/CD 管道
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 使用 DevOps Projects 为 IoT Edge 应用程序配置持续集成 (CI) 和持续交付 (CD)。 DevOps Starter 可以简化 Azure Pipelines 中生成和发布管道的初始配置。
 
@@ -26,19 +28,19 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 
-1. 在左窗格中，选择 " **创建资源**"，然后搜索 **DevOps Starter**。  
+1. 在左窗格中选择“创建资源”，然后搜索“DevOps 入门版”。   
 
 1. 选择“创建”。
 
-1. 默认情况下，使用 GitHub 设置 DevOps Starter。 若要利用本操作方法中的功能，请切换 DevOps 初学者，使用 Azure DevOps 进行设置。 按照 "在 **此处更改设置** " 链接。
+1. 默认情况下，使用 GitHub 设置 DevOps 入门版。 若要利用本操作方法中的功能，请切换 DevOps 入门版，以使用 Azure DevOps 进行设置。 按照“在此处更改设置”链接中的步骤进行操作。
 
-   ![在此处选择 "更改设置"，从 GitHub 切换到 Azure DevOps](./media/how-to-devops-starter/create-with-github-change-settings.png)
+   ![选择“在此处更改设置”，从 GitHub 切换到 Azure DevOps](./media/how-to-devops-starter/create-with-github-change-settings.png)
 
-1. 在右侧窗格中，选择 " **Azure DevOps** " 磁贴，并选择 " **完成**"。
+1. 在右侧窗格中，选择“Azure DevOps”磁贴，并选择“完成”。
 
-   ![选择 "Azure DevOps" 设置你的 DevOps Starter](./media/how-to-devops-starter/select-azure-devops.png)
+   ![选择“Azure DevOps”以设置 DevOps 入门版](./media/how-to-devops-starter/select-azure-devops.png)
 
-   现在应会看到 DevOps 初学者正在设置 Azure DevOps。
+   现在应看到正在使用 Azure DevOps 设置 DevOps 入门版。
 
 ## <a name="create-a-new-application-pipeline"></a>新建应用程序管道
 
@@ -66,21 +68,21 @@ DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azu
 
    5. 接受默认位置，或选择接近你的位置。
 
-   6. 选择 " **其他设置** "，为 DevOps Starter 创建的 Azure 资源进行配置。
+   6. 选择“其他设置”，以配置 DevOps 入门版代表你创建的 Azure 资源。
 
    7. 选择“完成”结束项目创建。
 
-   ![名称并创建项目](media/how-to-devops-starter/create-project.png)
+   ![名称和创建项目](media/how-to-devops-starter/create-project.png)
 
 几分钟后，DevOps Starter 仪表板会显示在 Azure 门户中。 选择项目名称以查看进度。 可能需要刷新页面。 首先会在 Azure DevOps 组织的存储库中设置示例 IoT Edge 应用程序，然后执行生成并将应用程序部署到 IoT Edge 设备。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
 
-   ![查看 Azure 门户中的项目](./media/how-to-devops-starter/portal.png)
+   ![在 Azure 门户中查看项目](./media/how-to-devops-starter/portal.png)
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
 
-DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部分中，查看存储库并对应用程序进行代码更改。
+DevOps 入门版在 Azure Repos 中为项目创建了 Git 存储库。 在本部分中，查看存储库并对应用程序进行代码更改。
 
-1. 若要导航到为项目创建的存储库，请在项目仪表板的菜单中选择“存储库”。 此链接将打开新项目的浏览器选项卡和 Azure DevOps 存储库。
+1. 若要导航到为项目创建的存储库，请在项目仪表板的菜单中选择“存储库”。 此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 存储库。
 
    ![查看 Azure Repos 中生成的存储库](./media/how-to-devops-starter/view-repositories.png)
 
@@ -95,13 +97,13 @@ DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部�
 
 ## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
 
-在前面的部分中，Azure DevOps Starter 自动为你的 IoT Edge 应用程序配置了完整的 CI/CD 管道。 现在，根据需要探索和自定义管道。 按照以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
+在上述部分中，Azure DevOps 入门版自动为 IoT Edge 应用程序配置了完整的 CI/CD 管道。 现在，根据需要探索和自定义管道。 按照以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
 
 1. 若要查看 DevOps 项目中的生成管道，请在项目仪表板的菜单中选择“生成管道”。 此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 生成管道。
 
    ![查看 Azure Pipelines 中的生成管道](./media/how-to-devops-starter/view-build-pipelines.png)
 
-2. 打开自动生成的生成管道，然后选择右上方的 " **编辑** "。
+2. 打开自动生成的生成管道，然后选择右上角的“编辑”。
 
     ![编辑生成管道](media/how-to-devops-starter/click-edit-button.png)
 
@@ -111,7 +113,7 @@ DevOps Starter 在 Azure Repos 中为项目创建了 Git 存储库。 在本部�
 
    ![编辑管道详细信息](./media/how-to-devops-starter/edit-build-pipeline.png)
 
-5. 选择“保存和队列”，然后选择“保存” 。 对于注释，它是可选的。
+5. 选择“保存和队列”，然后选择“保存” 。 可以选择对其进行注释。
 
 6. 从生成管道菜单中选择“触发器”。 DevOps Starter 将自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。  可以选择在 CI 过程中包括或排除分库。
 

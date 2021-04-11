@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96015122"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670084"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity Android 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "96015122"
 
 若要完成本快速入门，请确保具备以下项：
 
-- 已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a>（包括 Android Build Support、Android SDK & NDK Tools 和 OpenJDK 模块）的 Windows 或 macOS 计算机  。
+- 已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a>（包括 **Android 版本支持**、**Android SDK 和 NDK 工具** 以及 **OpenJDK** 模块）的 Windows 或 macOS 计算机。 使用 ASA SDK 版本 2.9 或更高版本的 **Unity 2020 LTS**（采用 [Unity XR 插件框架](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)）或使用 ASA SDK 版本 2.8 或更早版本的 **Unity 2019 LTS**。
   - 如果在 Windows 上运行，则还需要 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
   - 如果在 macOS 上运行，请通过 HomeBrew 安装 Git。 在终端的一行中输入以下命令：`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 然后，运行 `brew install git` 和 `brew install git-lfs`。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">支持开发人员</a>和 <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 功能</a>的 Android 设备。

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5e52fab081a94ad58e91c629f4092ae889d38e7a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102560916"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562736"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -30,12 +30,12 @@ ms.locfileid: "102560916"
 
 1. 在搜索中键入“虚拟机”。
 1. 在“服务”下，选择“虚拟机” 。
-1. 在“虚拟机”页上，选择“添加”   。 
-1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择 **新建** 资源组。 对于名称，请键入 *myResourceGroup*。 
+1. 在“虚拟机”页中，选择“添加”，然后选择“虚拟机”  。 
+1. 在“基本信息”标签页中的“项目详细信息”下，确保选择了正确的订阅，然后选择“新建资源组”。 对于名称，请键入 *myResourceGroup*。 
 
     ![“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”下，键入“myVM ”为“虚拟机名称”，选择“美国东部”作为“区域”，选择“Windows Server 2019 数据中心”作为“映像”        。 保留其他默认值。
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“区域”选择“美国东部”。 对于“映像”，请选择“Windows Server 2019 Datacenter”；对于“大小”，请选择“Standard_DS1_v2”。 保留其他默认值。
 
     ![“实例详细信息”部分的屏幕截图，可在其中提供虚拟机的名称并选择其区域、映像和大小](./media/quick-create-portal/instance-details.png)
 
@@ -51,20 +51,25 @@ ms.locfileid: "102560916"
 
     ![显示页面底部的“审阅并创建”按钮的屏幕截图](./media/quick-create-portal/review-create.png)
 
+1. 运行验证之后，请选择页面底部的“创建”按钮。
+
+1. 在部署完成之后，选择“转到资源”。
+
+    ![屏幕截图，显示了下一步：转到资源](./media/quick-create-portal/next-steps.png)
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
 创建与虚拟机的远程桌面连接。 这些说明指明了如何从 Windows 计算机连接到 VM。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-1. 选择虚拟机概述页上的“连接”按钮。 
+1. 在虚拟机的概述页上，选择“连接”按钮，然后选择“RDP” 。 
 
     ![显示“连接”按钮位置的虚拟机概述页屏幕截图](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口 3389 进行连接，然后单击“下载 RDP 文件” 。
+2. 在“使用 RDP 进行连接”页面中，保留默认选项，以使用 IP 地址通过端口 3389 进行连接，然后单击“下载 RDP 文件” 。
 
 2. 打开下载的 RDP 文件，然后在出现提示时单击“连接”。 
 
-3. 在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 以 **localhost**\\*username* 的形式键入用户名，输入为虚拟机创建的密码，然后单击“确定”。
+3. 在“Windows 安全性”窗口中，依次选择“更多选择”、“使用其他帐户”。 以“localhost\\username”的形式键入用户名，输入为虚拟机创建的密码，然后单击“确定”。
 
 4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”以创建连接。 
 
@@ -81,7 +86,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>查看 IIS 欢迎页
 
-在门户中选择 VM，在 VM 的概述中，使用 IP 地址右侧的“单击以复制”按钮复制该地址，并将其粘贴到浏览器选项卡中。此时会打开默认的 IIS 欢迎页，如下所示：
+在门户中选择 VM，并在 VM 的概述中将鼠标指针悬停在 IP 地址上，以显示“复制到剪贴板”。 复制 IP 地址并粘贴到浏览器选项卡。此时会打开默认的 IIS 欢迎页，如下所示：
 
 ![浏览器中的 IIS 默认站点的屏幕截图](./media/quick-create-powershell/default-iis-website.png)
 
@@ -89,11 +94,11 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 当不再需要时，可以删除资源组、虚拟机和所有相关资源。 
 
-选择虚拟机的资源组，然后选择“删除”  。 确认资源组名称，以完成资源删除。
+转到虚拟机的资源组，然后选择“删除资源组”。 确认资源组名称，以完成资源删除。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要深入了解 Azure 虚拟机，请继续学习 Windows VM 教程。
+在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了基本的 Web 服务器。 若要深入了解 Azure 虚拟机，请继续学习 Windows VM 教程。
 
 > [!div class="nextstepaction"]
 > [Azure Windows 虚拟机教程](./tutorial-manage-vm.md)

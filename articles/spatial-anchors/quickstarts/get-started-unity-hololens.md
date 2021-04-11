@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b99c2efcb746a056adc76fdc161c8d8a8e2799e1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022626"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670114"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用
 
@@ -31,9 +31,9 @@ ms.locfileid: "96022626"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程需要：
+若要完成本快速入门教程，需先执行以下操作：
 
-- 需要一台已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> 以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 Visual Studio 安装必须包括“通用 Windows 平台开发”  工作负载和 **Windows 10 SDK（10.0.18362.0 或更高版本）** 组件。 还必须安装 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+- 需要一台已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> 以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 使用 ASA SDK 版本 2.9 或更高版本的 **Unity 2020 LTS**（采用 [Unity XR 插件框架](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)）或使用 ASA SDK 版本 2.8 或更早版本的 **Unity 2019 LTS**。 Visual Studio 安装必须包括“通用 Windows 平台开发”  工作负载和 **Windows 10 SDK（10.0.18362.0 或更高版本）** 组件。 还必须安装 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 需要一台启用了[开发者模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020) 必须安装在设备上。 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 - 在应用上，需要启用“SpatialPerception”功能  。 此设置在“生成设置” > “播放机设置” > “发布设置” > “功能”中     。
 - 在应用上，需要通过“Windows 混合现实 SDK”启用“支持的虚拟现实”   。 此设置在“生成设置” > “播放机设置” > “XR 设置”中    。

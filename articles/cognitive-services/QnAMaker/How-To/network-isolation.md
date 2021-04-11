@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043353"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>网络隔离的建议设置
 
@@ -60,7 +60,7 @@ ms.locfileid: "103467538"
 
 如果 QnA Maker 应用服务被限制为使用某个应用服务环境，请使用相同的 VNet 创建到认知搜索实例的专用终结点连接。 在 VNet 中创建新 DNS 条目，以将认知搜索终结点映射到认知搜索专用终结点 IP 地址。 
 
-如果没有为 QnAMaker 应用服务使用应用服务环境，请先创建新的 VNet 资源，然后创建与认知搜索实例的专用终结点连接。 在这种情况下，需要将 QnA Maker 应用服务[与 VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)，以便连接到认知搜索实例。 
+如果没有为 QnAMaker 应用服务使用应用服务环境，请先创建新的 VNet 资源，然后创建与认知搜索实例的专用终结点连接。 在这种情况下，需要将 QnA Maker 应用服务[与 VNet 集成](../../../app-service/web-sites-integrate-with-vnet.md)，以便连接到认知搜索实例。 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 

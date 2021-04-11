@@ -3,18 +3,18 @@ title: 快速入门：使用 Python 创建 Azure 数据工厂
 description: 使用数据工厂将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372359"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889410"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -34,7 +34,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 * 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* [Python 3.4+](https://www.python.org/downloads/)。
+* [Python 3.6+](https://www.python.org/downloads/)。
 
 * [Azure 存储帐户](../storage/common/storage-account-create.md)。
 
@@ -66,7 +66,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
     pip install azure-mgmt-datafactory
     ```
 
-    [用于数据工厂的 Python SDK](https://github.com/Azure/azure-sdk-for-python) 支持 Python 2.7、3.3、3.4、3.5、3.6 和 3.7。
+    [用于数据工厂的 Python SDK](https://github.com/Azure/azure-sdk-for-python) 支持 Python 2.7 和 3.6+。
 
 4. 要为 Azure 标识身份验证安装 Python 包，请运行以下命令：
 

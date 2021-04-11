@@ -1,14 +1,14 @@
 ---
 title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
-ms.date: 01/19/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 03968b3aa3eaf8f32019cfc5e9e2430c71419f62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038129"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103016077"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -126,9 +126,9 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 > [!NOTE]
 >
 > 建议选择大于评估频率的聚合粒度（周期），以降低在以下情况下错过对已添加的时序进行首次评估的可能性 ：
-> - 监视多个维度的指标警报规则–添加新维度值组合时
-> - 监视多个资源的指标警报规则-将新资源添加到作用域时
-> - 用于监视不连续 (稀疏指标) 的指标的指标警报规则–在超过24小时的时间段内发出指标时，未发出此指标
+> - 监视多个维度的指标警报规则 - 添加新维度值组合时
+> - 监视多个资源的指标警报规则 - 新资源添加到范围时
+> - 监视未连续发出的指标（稀疏指标）的指标警报规则 - 指标在超过 24 小时的时间段内未发出时
 
 
 
@@ -140,7 +140,7 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 | 服务 | 公共 Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 虚拟机<sup>1</sup>  | **是** | **是** | 否 |
+| 虚拟机<sup>1</sup>  | **是** | **是** | **是** |
 | SQL 服务器数据库 | **是** | **是** | **是** |
 | SQL 服务器弹性池 | **是** | **是** | **是** |
 | NetApp 文件容量池 | **是** | **是** | **是** |

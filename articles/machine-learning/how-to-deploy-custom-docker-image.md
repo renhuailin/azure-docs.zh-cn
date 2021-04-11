@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 440723167ded15933ba46a3a58f9a873496bd6a7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: fb6d9a1a1ad341763c205a11b7a6a9acafda1ac4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889733"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 
@@ -72,7 +72,7 @@ ms.locfileid: "102609356"
 Azure 机器学习仅支持提供以下软件的 Docker 映像：
 * Ubuntu 16.04 或更高版本。
 * Conda 4.5.# 或更高版本。
-* Python 3.5+。
+* Python 3.6+。
 
 若要使用数据集，请安装 libfuse-dev 包。 另外，请确保安装你可能需要的所有用户空间包。
 

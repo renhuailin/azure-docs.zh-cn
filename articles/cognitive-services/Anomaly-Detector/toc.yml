@@ -3,77 +3,70 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是异常检测器 API？
+    - name: 什么是异常检测器？
       href: overview.md
-- name: 快速入门
-  expanded: true
+    - name: 定价和限制
+      href: 'https://aka.ms/adpricing'
+- name: 异常检测器快速入门
+  href: ./quickstarts/client-libraries.md
+- name: 示例
   items:
-    - name: 客户端库
-      items:
-        - name: 异常探测器客户端库
-          href: ./quickstarts/client-libraries.md
-- name: 教程
-  items:
-    - name: 使用 Power BI 将异常成批可视化
-      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: 互动演示
+      href: 'https://aka.ms/adDemo'
+    - name: Jupyter 笔记本
+      href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
+    - name: Azure 示例
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
 - name: 操作指南
   items:
     - name: 识别数据中的异常
       href: how-to/identify-anomalies.md
-    - name: 部署到 IoT Edge
-      href: how-to/deploy-anomaly-detection-on-iot-edge.md
-    - name: 使用容器
+    - name: 部署异常检测器
       items:
-        - name: 安装和运行容器
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-          href: anomaly-detector-container-howto.md
-        - name: 配置容器
-          href: anomaly-detector-container-configuration.md
-          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
-        - name: 使用容器实例
-          href: how-to/deploy-anomaly-detection-on-container-instances.md
-        - name: 认知服务容器文档
-          href: ../containers/index.yml
+        - name: 部署到 IoT Edge
+          href: how-to/deploy-anomaly-detection-on-iot-edge.md
+        - name: 容器
+          items:
+            - name: 认知服务容器文档
+              href: 'https://docs.microsoft.com/azure/cognitive-services/containers/'
+            - name: 安装和运行容器
+              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+              href: anomaly-detector-container-howto.md
+            - name: 配置容器
+              href: anomaly-detector-container-configuration.md
+              displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+            - name: 使用容器实例
+              href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
     - name: 异常检测器 API 最佳做法
       href: concepts/anomaly-detection-best-practices.md
+    - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
+      href: 'https://arxiv.org/abs/1906.03821'
+- name: 教程
+  items:
+    - name: 使用 Power BI 将异常成批可视化
+      href: tutorials/batch-anomaly-detection-powerbi.md
 - name: 参考
   items:
-    - name: REST API 参考
+    - name: 异常检测器 REST API
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
-    - name: SDK
-      items:
-        - name: .NET
-          href: 'https://aka.ms/anomaly-detector-dotnet-ref'
-        - name: Go
-          href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
-        - name: Python
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
-        - name: Node.js
-          href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
-    - name: 技术博客
-      items:
-        - name: Azure 异常检测器 API 简介
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
-        - name: SR-CNN 算法概述
-          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
-    - name: 演示
-      items:
-        - name: 互动演示
-          href: 'https://aka.ms/adDemo'
-        - name: 在 Jupyter Notebook 上
-          href: 'https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook'
-    - name: KDD 2019 中有关 SR-CNN 的白皮书
-      href: 'https://arxiv.org/abs/1906.03821'
+    - name: .NET
+      href: 'https://aka.ms/anomaly-detector-dotnet-ref'
+    - name: Go
+      href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
+    - name: Python
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
+    - name: Node.js
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
 - name: 资源
   items:
-    - name: 支持和帮助选项
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
-    - name: 定价
-      href: 'https://aka.ms/adpricing'
-    - name: 区域可用性
+    - name: 区域支持
       href: 'https://aka.ms/adregion'
+    - name: Learn 模块
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
+    - name: 支持和帮助
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: 用户生成的内容
       href: user-generated-content.md
     - name: 加入 Microsoft Teams 中的异常检测器顾问组
@@ -82,3 +75,11 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: 技术博客
+      items:
+        - name: Azure 异常检测器 API 简介
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: SR-CNN 算法概述
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
