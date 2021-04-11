@@ -16,12 +16,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bd58f18959df3aa290083f907be8ab703366a7c6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: MT
+ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360095"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102615595"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "97360095"
 | SQL Server 版本 | 工作负载 |
 |-----|-----|
 | Web | 小型网站 |
-| 标准 | 中小型工作负荷 |
+| Standard | 中小型工作负荷 |
 | Enterprise | 大型或任务关键型工作负荷|
 
 可按两种方法为这些版本的 SQL Server 许可付费：“按使用情况付费”或“自带许可证 (BYOL)”。 
@@ -76,7 +76,7 @@ ms.locfileid: "97360095"
 
 - **生存期或规模未知的工作负荷**。 例如，某应用可能在几个月内无需使用，或可能需要提高/降低计算能力（具体取决于需求）。
 
-若要使用其中一种即用即付映像创建运行 SQL Server 2017 的 Azure VM，请参阅以下链接：
+要使用上述某个即用即付映像创建运行 SQL Server 2017 的 Azure VM，请参阅以下链接：
 
 | 平台 | 许可的映像 |
 |---|---|
@@ -97,10 +97,7 @@ ms.locfileid: "97360095"
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> 自带许可证 (BYOL)
 
-“通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可的费用，前提是已通过批量许可计划获得许可证和软件保障。
-
-> [!IMPORTANT]
-> BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户可以通过部署即用即付映像，然后启用 [Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)来自带许可证。
+“通过许可移动性使用自己的 SQL Server 许可证”（也称为 **BYOL**）是指在 Azure VM 中使用带软件保障的现有 SQL Server 批量许可证。 使用 BYOL 的 SQL Server VM 仅收取 VM 运行费用，而不收取 SQL Server 许可费用，前提是已通过批量许可计划或云解决方案提供商 (CSP) 获得许可及软件保障。
 
 > [!NOTE]
 > BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux VM 上的 SQL Server 常见问题解答](../linux/frequently-asked-questions-faq.md)中的准则。
@@ -168,7 +165,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/cost-management-billing-overview.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于 [Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
+有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/cost-management-billing-overview.md)。 有关最新的 Azure 虚拟机定价（包括 SQL Server），请参阅适用于 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的 Azure 虚拟机定价页。
 
 有关 Azure 虚拟机上的 SQL Server 的概述，请参阅以下文章：
 

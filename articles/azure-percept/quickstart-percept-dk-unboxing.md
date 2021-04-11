@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 02/16/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 40751401760d877fe3feab39f3fea1f2fbeee54b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efa255ba38f7e00785335bf458ecc0ed91da646b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664183"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608174"
 ---
 # <a name="quickstart-unbox-and-assemble-your-azure-percept-dk-components"></a>快速入门：将 Azure Percept DK 组件拆箱并进行组装
 
@@ -32,7 +32,7 @@ ms.locfileid: "101664183"
 1. 连接 devkit 组件。
 
     > [!NOTE]
-    > 电源适配器端口位于载板的右侧。 其余端口（2x USB-A、1x USB-C、1x HDMI 和 1x Ethernet）和重置按钮位于载板的左侧。
+    > 电源适配器端口位于载板的右侧。 其余端口（2 个 USB-A、1 个 USB-C、1 个 HDMI 和 1 个以太网）和复位按钮位于载板左侧。
 
     1. 手动将两个 Wi-Fi 天线固定到载板上。
 
@@ -44,11 +44,17 @@ ms.locfileid: "101664183"
 
     1. 将电源适配器/电缆连接到载板和墙壁插座。 若要将电源线连接器完全固定到载板，请使用 P7 螺丝刀（不包括在 devkit 中）拧紧连接器螺钉。
 
-    1. 将电源线插入墙壁插座后，设备将自动接通电源。 载板左侧的重置按钮将亮起。 请给设备一些启动时间。
+    1. 将电源线插入墙壁插座后，设备将自动接通电源。 载板左侧的电源按钮将亮起。 请给设备一些启动时间。
 
         > [!NOTE]
-        > 重置按钮用于关闭或重置连接到电源插座的设备。 停电时，设备将自动重置并重新启动。
+        > 电源按钮用于关闭或重启连接到电源插座的设备。 如果停电，设备将自动重新启动。
+
+有关 devkit 程序集的直观演示，请参阅以下视频的 0:00 到 0:50：
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/-dmcE2aQkDE]
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你的 devkit 已连接并接通电源，请参阅 Azure Percept DK 安装体验演练以完成设备设置。 通过设置体验，你可以将 devkit 连接到 Wi-Fi 网络，设置 SSH 登录名，创建 IoT 中心，并将 devkit 预配到 Azure 帐户。 完成设备设置后，即可开始创建原型。
+现在，你的 devkit 已连接并接通电源，请参阅 [Azure Percept DK 安装体验演练](./quickstart-percept-dk-set-up.md)以完成设备设置。 通过设置体验，你可以将 devkit 连接到 Wi-Fi 网络，设置 SSH 登录名，创建 IoT 中心，并将 devkit 预配到 Azure 帐户。 完成设备设置后，即可开始创建原型。

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 9576730d9c4f8d4d237dce9ce8f207ea14b04f45
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: d91c88da1416071b5eee2a8eb10e3029086839e9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471603"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561774"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>在 ML 训练运行中启用日志记录
 
@@ -41,7 +41,7 @@ Azure 机器学习 Python SDK 允许使用默认的 Python 日志记录包和特
 
 ### <a name="logging-run-metrics"></a>运行指标日志记录 
 
-使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的[服务限制](https://docs.microsoft.com/azure/machine-learning/resource-limits-quotas-capacity#metrics)。 
+使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的[服务限制](./resource-limits-quotas-capacity.md#metrics)。 
 
 |记录的值|示例代码| 门户中的格式|
 |----|----|----|

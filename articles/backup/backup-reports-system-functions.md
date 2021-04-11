@@ -3,34 +3,34 @@ title: Azure Monitor 日志上的系统函数
 description: 使用系统函数在 Azure Monitor 日志上编写自定义查询
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564902"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Azure Monitor 日志上的系统函数
 
 Azure 备份提供了一组函数，这些函数称为系统函数或解决方案函数，默认情况下，可以在 Log Analytics (LA) 工作区中使用这些函数。
  
-这些函数可以对 LA 中[原始 Azure 备份表](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)中的数据进行操作，并返回格式化数据，帮助你利用简单的查询轻松检索所有与备份相关的实体的信息。 用户可以将参数传递给这些函数，以筛选这些函数返回的数据。 
+这些函数可以对 LA 中[原始 Azure 备份表](./backup-azure-reports-data-model.md)中的数据进行操作，并返回格式化数据，帮助你利用简单的查询轻松检索所有与备份相关的实体的信息。 用户可以将参数传递给这些函数，以筛选这些函数返回的数据。 
 
 建议使用系统函数在 LA 工作区中查询备份数据以创建自定义报告，因为这些函数提供了许多好处，如以下部分中所述。
 
 ## <a name="benefits-of-using-system-functions"></a>使用系统函数的优点
 
-* 简化查询过程：使用函数有助于减少查询过程中所需的联接数。 默认情况下，函数返回“平展”架构，该架构包含与被查询实体（备份实例、作业、保管库等）相关的所有信息。 例如，如果需要获得按备份项名称及其关联容器筛选的成功备份作业的列表，直接调用 _AzureBackup_getJobs() 函数即可为你提供每个作业的所有此信息。 另一方面，直接查询原始表需要在 [AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) 和 [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) 表之间执行多个联接。
+* 简化查询过程：使用函数有助于减少查询过程中所需的联接数。 默认情况下，函数返回“平展”架构，该架构包含与被查询实体（备份实例、作业、保管库等）相关的所有信息。 例如，如果需要获得按备份项名称及其关联容器筛选的成功备份作业的列表，直接调用 _AzureBackup_getJobs() 函数即可为你提供每个作业的所有此信息。 另一方面，直接查询原始表需要在 [AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) 和 [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) 表之间执行多个联接。
 
-* 实现从旧诊断事件的顺畅转换：使用系统函数有助于实现从[旧诊断事件](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)（AzureDiagnostics 模式下的 AzureBackupReport）到[特定于资源的事件](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)的顺畅转换。 Azure 备份提供的所有系统函数都允许你指定一个参数，该参数允许你选择函数应仅从特定于资源的表中查询数据，还是可以同时从旧表和特定于资源的表中查询数据（包含重复数据删除记录）。
+* 实现从旧诊断事件的顺畅转换：使用系统函数有助于实现从[旧诊断事件](./backup-azure-diagnostic-events.md#legacy-event)（AzureDiagnostics 模式下的 AzureBackupReport）到[特定于资源的事件](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users)的顺畅转换。 Azure 备份提供的所有系统函数都允许你指定一个参数，该参数允许你选择函数应仅从特定于资源的表中查询数据，还是可以同时从旧表和特定于资源的表中查询数据（包含重复数据删除记录）。
     * 如果已成功迁移到特定于资源的表，则可以选择在函数进行查询时排除旧表。
     * 如果当前正在进行迁移，且在旧表中包含一些需要进行分析的数据，则可以选择包含旧表。 转换完成后，如果不再需要旧表中的数据，只需在查询时更新传递给函数的参数值，即可排除旧表。
-    * 如果仍旧只使用旧表，那么在选择通过同一参数包含旧表时，这些函数仍然有效。 但是，建议尽早[切换到特定于资源的表](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace)。
+    * 如果仍旧只使用旧表，那么在选择通过同一参数包含旧表时，这些函数仍然有效。 但是，建议尽早[切换到特定于资源的表](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace)。
 
 * 减少自定义查询中断的可能性：如果 Azure 备份通过引入对基础 LA 表架构的改进以适应未来的报告场景，则函数的定义也将随之更新，以考虑架构的更改。 因此，如果使用系统函数创建自定义查询，即使表的基础架构发生更改，查询也不会中断。
 
 > [!NOTE]
-> 系统函数由 Microsoft 提供维护，且用户无法编辑其定义。 如果需要可编辑的函数，可以在 LA 中创建[保存的函数](https://docs.microsoft.com/azure/azure-monitor/logs/functions)。
+> 系统函数由 Microsoft 提供维护，且用户无法编辑其定义。 如果需要可编辑的函数，可以在 LA 中创建[保存的函数](../azure-monitor/logs/functions.md)。
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Azure 备份提供的系统函数的类型
 
@@ -390,4 +390,4 @@ Azure 备份提供了一组函数，这些函数称为系统函数或解决方�
     ````
 
 ## <a name="next-steps"></a>后续步骤
-[详细了解备份报告](https://docs.microsoft.com/azure/backup/configure-reports)
+[详细了解备份报告](./configure-reports.md)

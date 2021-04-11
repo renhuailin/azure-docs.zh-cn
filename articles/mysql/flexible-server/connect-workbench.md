@@ -1,18 +1,18 @@
 ---
 title: 快速入门：连接 - MySQL Workbench - Azure Database for MySQL 灵活服务器
 description: 本快速入门分步介绍如何使用 MySQL Workbench 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据。
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: d604ca8c8979ec98b990f8002ce29d0df92ac2af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dae75cf7c4d28e16dd2144067bb15ed343e5cd1
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90944068"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551979"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>快速入门：使用 MySQL Workbench 连接到 Azure Database for MySQL 灵活服务器（预览版）并查询其中的数据
 

@@ -1,17 +1,17 @@
 ---
 title: 访问慢查询日志 - Azure 门户 - Azure Database for MySQL
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MySQL 中的慢查询日志。
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/13/2020
-ms.openlocfilehash: 5ad4ffa99a7af592e3e93e53673d254956807c40
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: MT
+ms.date: 3/15/2021
+ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541617"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496212"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
 
@@ -34,11 +34,13 @@ ms.locfileid: "94541617"
 
 5. 打开“slow_query_log”  的开关  。
 
-6. 使用 log_output  选择要将日志输出到的位置。 若要将日志同时发送到本地存储和 Azure Monitor 诊断日志，请选择“File”  。 
+6. 使用 log_output  选择要将日志输出到的位置。 若要将日志同时发送到本地存储和 Azure Monitor 诊断日志，请选择“File”  。
 
-7. 更改所需的任何其他参数。 
+7. 请考虑设置“long_query_time”，它表示将在慢速查询日志文件中收集的查询的查询时间阈值，long_query_time 的最小值和默认值分别为 0 和 10。
 
-8. 选择“保存”  。 
+8. 调整其他参数（例如 log_slow_admin_statements）来记录管理语句。 默认情况下，不会记录管理语句，也不会记录不使用索引进行查找的查询。 
+
+9. 选择“保存”  。 
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="显示慢查询日志参数和“保存”的屏幕截图。":::
 
@@ -70,17 +72,17 @@ ms.locfileid: "94541617"
 
    :::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="“诊断设置”选项的屏幕截图":::
 
-1. 提供诊断设置名称。
+2. 提供诊断设置名称。
 
-1. 指定向哪些数据接收器（存储帐户、事件中心或 Log Analytics 工作区）发送慢查询日志。
+3. 指定向哪些数据接收器（存储帐户、事件中心或 Log Analytics 工作区）发送慢查询日志。
 
-1. 选择 **MySqlSlowLogs** 作为日志类型。
+4. 选择 **MySqlSlowLogs** 作为日志类型。
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="“诊断设置配置”选项的屏幕截图":::
 
-1. 配置可以通过管道向其传送慢查询日志的数据接收器后，选择“保存”。 
+5. 配置可以通过管道向其传送慢查询日志的数据接收器后，选择“保存”。 
 :::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="“诊断设置配置”选项的屏幕截图，其中突出显示了“保存”":::
 
-1. 可以通过在配置的数据接收器中浏览慢查询日志来对其进行访问。 最多需要等待 10 分钟的时间，这些日志就会出现。
+6. 可以通过在配置的数据接收器中浏览慢查询日志来对其进行访问。 最多需要等待 10 分钟的时间，这些日志就会出现。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要了解如何以编程方式下载慢查询日志，请参阅[在 CLI 中访问慢查询日志](howto-configure-server-logs-in-cli.md)。

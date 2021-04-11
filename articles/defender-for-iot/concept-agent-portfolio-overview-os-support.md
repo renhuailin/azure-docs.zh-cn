@@ -4,10 +4,10 @@ description: Azure Defender for IoT 基于设备类型提供一系列的代理�
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.openlocfilehash: 6c65ad33439002bd651c4c926b6452868f6137ba
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784758"
 ---
 # <a name="agent-portfolio-overview-and-os-support-preview"></a>代理组合概述和操作系统支持（预览）

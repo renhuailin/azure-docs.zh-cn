@@ -9,21 +9,23 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: e5b1950935e6279995b44c2e07931519e82359d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040628"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103490987"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 使用证书的方式
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)运行时模块的身份和合法性。 这些验证可实现运行时、模块和 IoT 设备之间的 TLS（传输层安全性）安全连接。 与 IoT 中心本身一样，IoT Edge 需要来自 IoT 下游（或叶）设备和 IoT Edge 模块的安全加密连接。 为了建立安全的 TLS 连接，IoT Edge 中心模块为连接客户端提供服务器证书链，以便它们验证其身份。
 
 >[!NOTE]
 >本文讨论了用于保护 IoT Edge 设备上不同组件之间的连接或 IoT Edge 设备与任何叶设备之间的连接的证书。 还可以使用一些证书向 IoT 中心验证 IoT Edge 设备。 这些身份验证证书是不同的，本文不对其进行讨论。 有关使用证书对设备进行身份验证的详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
 
-本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。 尽管脚本不同 (PowerShell 与 bash) ，但 Linux 和 Windows 之间的概念是相同的。
+本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。 虽然脚本不同（PowerShell 与 bash），但 Linux 和 Windows 之间的概念是相同的。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 证书
 
@@ -71,7 +73,7 @@ IoT Edge 首次启动时，[IoT Edge 安全管理器](iot-edge-security-manager.
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge 中心服务器证书
 
-IoT Edge 中心服务器证书是向设备和模块提供的实际证书，用于在建立 IoT Edge 所需的 TLS 连接期间进行身份验证。 此证书提供完整的签名证书链，用于将其生成到叶 IoT 设备必须信任的根 CA 证书。 当 IoT Edge 生成时，此 IoT Edge 中心证书的公用名 (CN) 在转换为小写后，将设置为配置文件中的 "主机名" 属性。 此配置是与 IoT Edge 混淆的常见根源。
+IoT Edge 中心服务器证书是向设备和模块提供的实际证书，用于在建立 IoT Edge 所需的 TLS 连接期间进行身份验证。 此证书提供完整的签名证书链，用于将其生成到叶 IoT 设备必须信任的根 CA 证书。 由 IoT Edge 生成时，此 IoT Edge 中心证书的公用名 (CN) 在转换为小写后将设置为配置文件中的“hostname”属性。 此配置是与 IoT Edge 混淆的常见根源。
 
 ## <a name="production-implications"></a>生产影响
 
@@ -81,19 +83,19 @@ IoT Edge 中心服务器证书是向设备和模块提供的实际证书，用�
 
 * 对于任何基于证书的流程，在推出 IoT Edge 设备的整个过程中，应保护和监视根 CA 证书和所有中间 CA 证书。 IoT Edge 设备制造商应制定可靠的流程来正确存储和使用其中间证书。 此外，设备 CA 证书应存储在设备上尽可能安全的存储中，最好是硬件安全模块。
 
-* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接的客户端设备和模块。 设备 CA 证书的公用名 (CN) **不得** 与将在 IoT Edge 设备上的配置文件中使用的 "主机名" 相同。 客户端用于连接到 IoT Edge 的名称（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令使用的名称）“不得”与设备 CA 证书中使用的公用名相同。 此限制是因为 IoT Edge 中心提供其整个证书链以供客户端验证。 若 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会进入验证循环，证书将失效。
+* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接的客户端设备和模块。 设备 CA 证书的公用名 (CN) 不得与将在 IoT Edge 设备上配置文件中使用的“主机名”相同。 客户端用于连接到 IoT Edge 的名称（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令使用的名称）“不得”与设备 CA 证书中使用的公用名相同。 此限制是因为 IoT Edge 中心提供其整个证书链以供客户端验证。 若 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会进入验证循环，证书将失效。
 
 * 由于 IoT Edge 安全守护程序使用设备 CA 证书生成最终的 IoT Edge 证书，因此它本身必须是签名证书，这意味着它具有证书签名功能。 将“V3 基本约束 CA:True”应用于设备 CA 证书可自动设置所需的密钥用法属性。
 
 >[!Tip]
-> 如果在开发/测试方案中使用我们的 "方便性脚本 (" 已完成将 IoT Edge 设置为透明网关，请参阅下一部分) ，并在创建设备 CA 证书时使用相同的主机名，就像在配置文件中的主机名一样，你可能想知道它的工作原理。 为了简化开发人员体验，便利脚本在传递给脚本的名称末尾追加“.ca”。 例如，如果在配置文件中的脚本和主机名中使用了 "mygateway" 作为设备名称，则在将其用作设备 CA 证书的 CN 之前，会将前者转换为 mygateway.ca。
+> 若已使用我们的“便利脚本”（参阅下一节）在开发/测试方案中将 IoT Edge 设置为透明网关，并在创建设备 CA 证书时使用与配置文件中的主机名相同的主机名，你可能想知道它的工作原理。 为了简化开发人员体验，便利脚本在传递给脚本的名称末尾追加“.ca”。 因此，若使用“mygateway”作为脚本中的设备名称和配置文件中的主机名，则在用作设备 CA 证书的 CN 之前，前者将转换为 mygateway.ca。
 
 ## <a name="devtest-implications"></a>开发/测试影响
 
-为简化开发和测试方案，Microsoft 提供了一组[便利脚本](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)，用于在透明网关方案中生成适用于 IoT Edge 的非生产证书。 有关脚本工作方式的示例，请参阅[创建演示证书以测试 IoT Edge 设备功能](how-to-create-test-certificates.md)。
+为简化开发和测试方案，Microsoft 提供了一组[便利脚本](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)，用于在透明网关方案中生成适用于 IoT Edge 的非生产证书。 有关脚本工作方式的示例，请参阅[创建演示证书以测试 IoT Edge 设备功能](how-to-create-test-certificates.md)。
 
 >[!Tip]
-> 要通过 IoT Edge 连接设备 IoT“叶”设备和使用 IoT 设备 SDK 的应用程序，必须将可选的 GatewayHostName 参数添加到设备连接字符串的末尾。 当边缘中心服务器证书生成时，它基于配置文件中的主机名的小写形式，因此，要匹配的名称和 TLS 证书验证成功，应以小写形式输入 GatewayHostName 参数。
+> 要通过 IoT Edge 连接设备 IoT“叶”设备和使用 IoT 设备 SDK 的应用程序，必须将可选的 GatewayHostName 参数添加到设备连接字符串的末尾。 生成 Edge 中心服务器证书时，该证书基于配置文件中主机名的小写版本，因此，为使要匹配的名称和 TLS 证书验证成功，应以小写形式输入 GatewayHostName 参数。
 
 ## <a name="example-of-iot-edge-certificate-hierarchy"></a>IoT Edge 证书层次结构示例
 
@@ -108,7 +110,7 @@ IoT Edge 中心服务器证书是向设备和模块提供的实际证书，用�
 | 中间 CA 证书 | 仅限 Azure IoT 中心中间证书测试                                                                 |
 | 设备 CA 证书       | iotgateway.ca（将“iotgateway”作为 <网关主机名> 传递给便利脚本）   |
 | 工作负载 CA 证书     | iotedge workload ca                                                                                       |
-| IoT Edge 中心服务器证书 | iotedgegw (匹配配置文件中的 "hostname")                                             |
+| IoT Edge 中心服务器证书 | iotedgegw.local（与配置文件中的“主机名”匹配）                                            |
 
 ## <a name="next-steps"></a>后续步骤
 

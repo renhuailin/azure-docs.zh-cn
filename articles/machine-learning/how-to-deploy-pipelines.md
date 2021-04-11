@@ -12,10 +12,10 @@ ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
 ms.openlocfilehash: efedb21a1ec1ed53a8c6bfadf337d23a89c04383
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520170"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>发布和跟踪机器学习管道
@@ -350,13 +350,13 @@ response = requests.post(rest_endpoint,
 
 1. 选择要运行的特定管道，使用或查看管道终结点的先前运行的结果。
 
-## <a name="disable-a-published-pipeline"></a>禁用已发布的管道
+## <a name="disable-a-published-pipeline&quot;></a>禁用已发布的管道
 
 若要在已发布管道的列表中隐藏某个管道，请在工作室或 SDK 中禁用它：
 
 ```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
-p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
+p = PublishedPipeline.get(ws, id=&quot;068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 

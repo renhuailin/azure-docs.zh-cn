@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703675"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587638"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -167,6 +167,18 @@ hdbuserstore list
 
 >[!NOTE]
 > 请确保 `/usr/sap/{SID}/home/.hdb/` 下有一组唯一的 SSFS 文件。 此路径中应只有一个文件夹。
+
+下面概述了完成预注册脚本运行所需的步骤。
+
+|谁  |从  |运行内容  |注释  |
+|---------|---------|---------|---------|
+|```<sid>```adm (OS)     |  HANA OS       |   阅读教程并下载预注册脚本      |   阅读[上述先决条件](#prerequisites)    从[此处](https://aka.ms/scriptforpermsonhana)下载预注册脚本  |
+|```<sid>```adm (OS) 和 SYSTEM 用户 (HANA)    |      HANA OS   |   运行 hdbuserstore Set 命令      |   例如，hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **注意：**  请确保使用主机名，而不是 IP 地址或 FQDN      |
+|```<sid>```adm (OS)    |   HANA OS      |  运行 hdbuserstore List 命令       |   检查结果是否包含默认存储，如下所示：```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Root (OS)     |   HANA OS        |    运行 Azure 备份 HANA 预注册脚本      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```adm (OS)    |  HANA OS       |   运行 hdbuserstore List 命令      |    检查结果是否包含新行，如下所示：```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+成功运行预注册脚本并进行验证后，可以继续检查[连接要求](#set-up-network-connectivity)，并从恢复服务保管库[配置备份](#discover-the-databases)
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

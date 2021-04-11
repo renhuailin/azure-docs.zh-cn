@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804864"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102617176"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 > [!IMPORTANT]
-> 虚拟网络分流预览版当前在所有 Azure 区域都处于暂候状态。 你可以通过电子邮件 <azurevnettap@microsoft.com> 向我们发送你的订阅 ID，我们会通知你未来的预览版更新。 在这种情况下，可以使用基于代理的解决方案或 NVA 解决方案，这些解决方案通过[Azure Marketplace 产品](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)中提供的[数据包代理合作伙伴解决方案](#virtual-network-tap-partner-solutions)提供点击/网络可见性功能。
+> 虚拟网络 TAP 预览版目前在所有 Azure 区域中均处于暂候状态。 可以通过电子邮件 <azurevnettap@microsoft.com> 向我们发送你的订阅 ID，我们会就未来的预览版更新通知你。 在此期间，可以使用基于代理的解决方案或 NVA 解决方案，这些解决方案通过 [Azure 市场产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances%3Ball&search=Network%20Traffic&filters=partners)中提供的[数据包代理合作伙伴解决方案](#virtual-network-tap-partner-solutions)提供 TAP/网络可见性功能。
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 下图显示虚拟网络 TAP 的工作原理。 可以在[网络接口](virtual-network-network-interface.md)（连接到虚拟网络中部署的虚拟机）上添加 TAP 配置。 目标是与受监视网络接口或[对等虚拟](virtual-network-peering-overview.md)网络位于同一虚拟网络中的虚拟网络 IP 地址。 虚拟网络 TAP 的收集器解决方案可以部署在 Azure 内部负载均衡器后面，以实现高可用性。
@@ -64,6 +64,7 @@ ms.locfileid: "99804864"
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/marketplace-azure)
+- [Noname Security](https://nonamesecurity.com/)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® 平台](https://www.rsa.com/content/dam/en/solution-brief/rsa-netwitness-platform-overview-for-federal-agencies.pdf)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)

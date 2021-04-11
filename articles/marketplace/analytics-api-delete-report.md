@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 7c39f8bc0db44f1d8aa885969ca09d90b0dcd332
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583471"
 ---
 # <a name="delete-report-api"></a>删除报表 API
@@ -50,7 +50,7 @@ ms.locfileid: "102583471"
 
 **响应**
 
-响应有效负载的结构如下所示：
+响应有效负载的结构如下：
 
 响应代码：200、400、401、403、404、500
 
@@ -88,16 +88,16 @@ ms.locfileid: "102583471"
 | ------------ | ------------- |
 | `ReportId` | 已删除报表的唯一 UUID |
 | `ReportName` | 在创建过程中为报表指定的名称 |
-| `Description` | 创建报表期间提供的说明 |
-| `QueryId` | 创建报表时传递的查询 ID |
+| `Description` | 在报表创建过程中给出的说明 |
+| `QueryId` | 在创建报表时传递的查询 ID |
 | `Query` | 将为此报表执行的查询文本 |
 | `User` | 用于创建报表的用户 ID |
 | `CreatedTime` | 创建报表的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
 | `ModifiedTime` | 上次修改报表的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
 | `StartTime` | 开始执行报表的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
 | `ReportStatus` | 报表执行的状态。 可能的值为 Paused、Active 和 Inactive。 |
-| `RecurrenceInterval` | 创建报表期间提供的重复间隔 |
-| `RecurrenceCount` | 创建报表期间提供的重复次数 |
+| `RecurrenceInterval` | 在报表创建期间提供的定期执行间隔 |
+| `RecurrenceCount` | 在报表创建期间提供的定期执行计数 |
 | `CallbackUrl` | 请求中提供的回叫 URL |
 | `Format` | 报表文件的格式 |
 |||

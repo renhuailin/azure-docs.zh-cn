@@ -9,10 +9,10 @@ ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
 ms.openlocfilehash: b2f551257fb6869d5dec47014be3a8522b61b9fa
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506627"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>调整 Azure Front Door 的 Web 应用程序防火墙 (WAF)
