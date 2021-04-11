@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 人脸识别, 人脸识别软件, 人脸分析, 人脸匹配, 人脸识别应用, 按图像搜索人脸, 人脸识别搜索
-ms.openlocfilehash: 600ca48cc19ee8723b423e484ec96736a55ae7fc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e159ead12179f86406fd7df22475229298f95ee8
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532250"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285461"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
 
@@ -28,6 +28,12 @@ ms.locfileid: "95532250"
 Azure 人脸服务提供用于检测、识别和分析图像中人脸的 AI 算法。 人脸识别软件在许多不同场景中都很重要，其中包括安全、自然用户界面、图像内容分析和管理、移动应用和机器人。
 
 人脸服务提供多种不同的人脸分析功能，以下部分一一概述了这些功能。
+
+本文档包含以下类型的文章：
+* [快速入门](./Quickstarts/client-libraries.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
+* [操作指南](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [概念性文章](./concepts/face-detection.md)对服务的功能和特性进行了深入说明。
+* [教程](./Tutorials/FaceAPIinCSharpTutorial.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
 
 ## <a name="face-detection"></a>人脸检测
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2ec7c8fe312787d153c76b0b0194354e1717db7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 758a2fc607217f38306f8d50273c580daf523982
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016706"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492688"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设
 
@@ -269,10 +269,10 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-- [如何使用 CLI 对自定义转换进行编码](../latest/custom-preset-cli-howto.md)
-- [使用媒体服务 v3 进行编码](../latest/encoding-concept.md)
+- [如何使用 CLI 对自定义转换进行编码](../latest/transform-custom-preset-cli-how-to.md)
+- [使用媒体服务 v3 进行编码](../latest/encode-concept.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
