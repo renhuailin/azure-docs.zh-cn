@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498857"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563481"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 
@@ -396,9 +396,29 @@ run = experiment.submit(automl_config, show_output=True)
 > 自动化 ML 使用的算法本身具有随机性，这可能会导致建议的模型最终指标分数（如准确度）出现细微差异。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
 
 ## <a name="register-and-deploy-models"></a>注册和部署模型
+可以注册模型，以便以后使用。 
 
-有关如何下载或注册模型以便部署到 Web 服务的详细信息，请参阅[如何部署模型以及在何处部署模型](how-to-deploy-and-where.md)。
+若要从自动化 ML 运行注册模型，请使用 [`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) 方法。 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+有关如何创建部署配置以及将注册模型部署到 Web 服务的详细信息，请参阅[如何部署模型以及在何处部署模型](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration)。
+
+> [!TIP]
+> 对于已注册的模型，可通过 [Azure 机器学习工作室](https://ml.azure.com)获取一键式部署。 请参阅[如何从工作室部署已注册的模型](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)。 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>模型可解释性

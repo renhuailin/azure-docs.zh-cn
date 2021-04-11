@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 08/21/2019
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: adb0e12b81701acbdb33018f055bfe8fda2efc52
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 2adbefff2a0154268157c7d1735d83e70aa92ee8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563583"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什么是 Data Box Gateway？
 
@@ -87,7 +87,7 @@ Data Box Gateway 解决方案包括 Data Box Gateway 资源、Data Box Gateway �
 
 ## <a name="region-availability"></a>上市区域
 
-将数据传输到的 Data Box Gateway 物理设备、Azure 资源和目标存储帐户不一定非要位于同一区域。
+将数据传输到其中的 Data Box Gateway 设备、Azure 资源和目标存储帐户不必都位于同一区域。
 
 - 资源可用性 - 有关 Azure Data Box Gateway 资源可用的所有区域的列表，请转到[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](../azure-government/documentation-government-welcome.md)。
 

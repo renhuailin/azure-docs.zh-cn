@@ -1,80 +1,42 @@
 ---
-title: '启动和停止 Azure Kubernetes 服务 (AKS) '
+title: 启动和停止 Azure Kubernetes 服务 (AKS)
 description: 了解如何停止或启动 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 94edf35cc16d4967449af15797f6ecccba60be4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 87d51f9c1d084faf79c7ec1cf1255a6fb3c8245d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181085"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103201007"
 ---
-# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止并启动 Azure Kubernetes 服务 (AKS) 群集 (预览) 
+# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>停止和启动 Azure Kubernetes 服务 (AKS) 群集
 
-AKS 工作负荷可能不需要连续运行，例如仅在工作时间使用的开发群集。 这会导致 Azure Kubernetes Service (AKS) 群集可能处于空闲状态的时间，而不是系统组件的运行。 可以通过将[所有 `User` 节点池缩放到0来](scale-cluster.md#scale-user-node-pools-to-0)降低群集占用量，但当群集运行时，仍需要[ `System` 池](use-system-pools.md)来运行系统组件。 若要在这段时间内进一步优化成本，可以完全关闭群集)  (停止。 此操作将完全停止控制平面和代理节点，使你可以节省所有计算成本，同时还可以在重新启动时保持存储的所有对象和群集状态。 然后，你可以选择在周末之后离开的位置，或仅在运行 batch 作业时才运行群集。
+AKS 工作负载可能不需要连续运行，例如仅在工作时间使用的开发群集。 这会导致 Azure Kubernetes 服务 (AKS) 群集可能处于空闲状态，运行的时间不超过系统组件的运行时间。 可以通过将[所有 `User` 节点池缩放为 0](scale-cluster.md#scale-user-node-pools-to-0) 来减少群集内存占用量，但当该群集运行时，仍需要 [`System` 池](use-system-pools.md)来运行系统组件。 若要在这段时间内进一步优化成本，可以完全关闭（停止）群集。 此操作将完全停止控制平面和代理节点，使你可以节省所有计算成本，同时维护所有存储的对象和群集状态，以备再次启动时使用。 然后，你可以在周末结束后继续工作，或仅在运行批处理作业时才运行群集。
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-
 ### <a name="limitations"></a>限制
 
-使用群集启动/停止功能时，以下限制适用：
+使用群集启动/停止功能时，存在以下限制：
 
 - 只有虚拟机规模集支持的群集才支持此功能。
-- 已停止的 AKS 群集的群集状态将保留最多12个月。 如果群集停止了12个月以上，则无法恢复群集状态。 有关详细信息，请参阅 [AKS 支持策略](support-policies.md)。
-- 预览期间，在尝试停止群集之前，需要停止群集自动缩放程序 (CA) 。
+- 已停止的 AKS 群集的群集状态将最多保留 12 个月。 如果群集停止超过 12 个月，则无法恢复群集状态。 有关详细信息，请参阅 [AKS 支持策略](support-policies.md)。
 - 只能启动或删除已停止的 AKS 群集。 若要执行任何操作（例如缩放或升级），请先启动群集。
-
-### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI 
-
-还需要 *aks-preview* Azure CLI 扩展版本0.4.64 或更高版本。 使用 [az extension add][az-extension-add]命令安装 *aks-preview* Azure CLI 扩展。 或使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
-### <a name="register-the-startstoppreview-preview-feature"></a>注册 `StartStopPreview` 预览功能
-
-要使用启动/停止群集功能，必须 `StartStopPreview` 在订阅上启用功能标志。
-
-`StartStopPreview`使用[az feature register][az-feature-register]命令注册功能标志，如以下示例中所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
-```
-
-状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，请使用 [az provider register][az-provider-register]命令刷新 *ContainerService* 资源提供程序的注册：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ## <a name="stop-an-aks-cluster"></a>停止 AKS 群集
 
-可以使用 `az aks stop` 命令停止正在运行的 AKS 群集的节点和控制平面。 以下示例停止名为 *myAKSCluster* 的群集：
+可以使用 `az aks stop` 命令停止正在运行的 AKS 群集的节点和控制平面。 以下示例停止名为 myAKSCluster 的群集：
 
 ```azurecli-interactive
 az aks stop --name myAKSCluster --resource-group myResourceGroup
 ```
 
-你可以使用 [az aks show][az-aks-show] 命令来验证群集停止的时间，并在 `powerState` `Stopped` 以下输出中确认显示内容：
+可以使用 [az aks show][az-aks-show] 命令并确认 `powerState` 显示为 `Stopped` 来验证群集停止的时间，如以下输出所示：
 
 ```json
 {
@@ -90,22 +52,21 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 }
 ```
 
-如果表明 `provisioningState` `Stopping` 群集尚未完全停止。
+如果 `provisioningState` 显示为 `Stopping`，则表明群集尚未完全停止。
 
 > [!IMPORTANT]
-> 如果使用的是 [Pod 中断预算](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) ，停止操作可能需要较长时间才能完成。
-
+> 如果使用的是 [Pod 中断预算](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)，停止操作可能需要更长的时间，因为排出过程将花费更多的时间才能完成。
 
 ## <a name="start-an-aks-cluster"></a>启动 AKS 群集
 
-可以使用 `az aks start` 命令启动已停止的 AKS 群集的节点和控制平面。 重新启动群集，其中包含上一个控制面状态和代理节点数。  
-以下示例启动名为 *myAKSCluster* 的群集：
+可以使用 `az aks start` 命令启动已停止的 AKS 群集的节点和控制平面。 使用先前的控制平面状态和代理节点数重启群集。  
+以下示例启动名为 myAKSCluster 的群集：
 
 ```azurecli-interactive
 az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
-可以使用 [az aks show][az-aks-show] 命令来验证群集的启动时间，并 `powerState` `Running` 在以下输出中确认显示内容：
+可以使用 [az aks show][az-aks-show] 命令并确认 `powerState` 显示为 `Running` 来验证群集启动的时间，如以下输出所示：
 
 ```json
 {
@@ -121,13 +82,12 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 }
 ```
 
-如果表明 `provisioningState` `Starting` 你的群集尚未完全启动。
-
+如果 `provisioningState` 显示为 `Starting`，则表明群集尚未完全启动。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何将 `User` 池缩放为0，请参阅 [ `User` 将池缩放为 0](scale-cluster.md#scale-user-node-pools-to-0)。
-- 若要了解如何使用点实例节省成本，请参阅 [将专色节点池添加到 AKS](spot-node-pool.md)。
+- 若要了解如何将 `User` 池缩放为 0，请参阅[将 `User` 池缩放为 0](scale-cluster.md#scale-user-node-pools-to-0)。
+- 若要了解如何使用现成 VM 实例节省成本，请参阅[将现成节点池添加到 AKS](spot-node-pool.md)。
 - 若要了解有关 AKS 支持策略的详细信息，请参阅 [AKS 支持策略](support-policies.md)。
 
 <!-- LINKS - external -->

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102517865"
 ---
 # <a name="cloud-sync-troubleshooting"></a>云同步故障排除

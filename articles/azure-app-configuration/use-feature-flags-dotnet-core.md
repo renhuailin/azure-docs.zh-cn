@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d54e1ff07b250b5595d2f8aee5f022bd2359721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729501"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -218,7 +218,7 @@ config.AddAzureAppConfiguration(options =>
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>使用依赖项注入访问 IFeatureManager 
 
-对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
+对于某些操作（例如，手动检查功能标志值），需要获取 [IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?preserve-view=true&view=azure-dotnet-preview) 的实例。 在 ASP.NET Core MVC 中，可以通过依赖项注入访问功能管理器 `IFeatureManager`。 在下面的示例中，`IFeatureManager` 类型的参数将添加到控制器的构造函数的签名中。 运行时在调用构造函数时会自动解析引用并提供接口的一个实例。 如果你使用的应用程序模板中的控制器在构造函数中已有一个或多个依赖项注入参数（例如 `ILogger`），则只需添加 `IFeatureManager` 作为附加参数：
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     
@@ -322,7 +322,7 @@ public IActionResult Index()
 }
 ```
 
-当由于控制功能标志状态为“关”而阻止了 MVC 控制器或操作时，将调用已注册的 [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?view=azure-dotnet-preview) 接口。 默认的 `IDisabledFeaturesHandler` 接口向客户端返回 404 状态代码，但不返回响应正文。
+当由于控制功能标志状态为“关”而阻止了 MVC 控制器或操作时，将调用已注册的 [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?preserve-view=true&view=azure-dotnet-preview) 接口。 默认的 `IDisabledFeaturesHandler` 接口向客户端返回 404 状态代码，但不返回响应正文。
 
 ## <a name="mvc-views"></a>MVC 视图
 

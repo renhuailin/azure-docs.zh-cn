@@ -10,24 +10,32 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209400"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588012"
 ---
-# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池分析数据
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>使用无服务器 SQL 池分析数据
 
 在本教程中，你将了解如何通过无服务器 SQL 池使用 Spark 数据库中的数据对数据进行分析。 
 
+## <a name="the-built-in-serverless-sql-pool"></a>内置无服务器 SQL 池
+
+通过无服务器 SQL 池，你可以使用 SQL，而无需预留容量。 无服务器 SQL 池的计费是基于运行查询所处理的数据量，而不是运行查询所使用的节点数。
+
+每个工作区都具有名为“内置”的预配置无服务器 SQL 池。 
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>使用无服务器 SQL 池分析 Blob 存储中的纽约市出租车数据
 
-1. 在“链接”下的“数据”中心中，右键单击“Azure Blob 存储”>“示例数据集”>“nyc_tlc_yellow”和“新建 SQL 脚本”，然后选择“选择前 100 行”    
-1. 这将会使用以下代码创建新 SQL 脚本：
+在本部分中，将使用无服务器 SQL 池来分析 Azure Blob 存储帐户中的纽约出租车数据。
+
+1. 在 Synapse Studio 中，转到“开发”中心
+1. 创建一个新的 SQL 脚本。
+1. 将以下代码粘贴到脚本中。
 
     ```
-    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -38,25 +46,7 @@ ms.locfileid: "98209400"
     ```
 1. 单击“**运行**”
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>使用无服务器 SQL 池分析 Spark 数据库中的纽约市出租车数据
-
-Spark 数据库中的表会自动显示，且无服务器 SQL 池可以查询这些表。
-
-1. 在 Synapse Studio 中，转到“开发”中心，然后新建 SQL 脚本。
-1. 将“连接到”设置为“内置”无服务器 SQL 池 。
-1. 将以下文本粘贴到脚本中，然后运行该脚本。
-
-    ```sql
-    SELECT *
-    FROM nyctaxi.dbo.passengercountstats
-    ```
-
-    > [!NOTE]
-    > 第一次运行使用无服务器 SQL 池的查询时，无服务器 SQL 池需要大约 10 秒的时间来收集运行查询所需的 SQL 资源。 后续查询的速度要快得多。
-  
-
-
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [分析存储中的数据](get-started-analyze-storage.md)
+> [使用无服务器 Spark 池分析数据](get-started-analyze-spark.md)

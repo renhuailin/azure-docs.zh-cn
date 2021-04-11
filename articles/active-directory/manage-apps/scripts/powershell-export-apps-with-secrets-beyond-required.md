@@ -11,20 +11,18 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 3572f481cc2cbcb1df73b33eb2543e32256ad9fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 9c0e5508830343561833785fbce31f547a8a7428
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583230"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149675"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>导出其机密和证书超出所需日期的应用
 
-此 PowerShell 脚本示例会在将目录中指定应用要求的日期后过期的所有应用机密和证书导出到 CSV 文件。
+此 PowerShell 脚本示例以非交互方式将目录中指定应用所需的期限后过期的所有应用注册机密和证书导出到 CSV 文件。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
-
-此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -32,13 +30,14 @@ ms.locfileid: "102583230"
 
 ## <a name="script-explanation"></a>脚本说明
 
+此脚本以非交互方式工作。 使用此脚本的管理员需要使用自己的应用 ID、应用程序机密、租户名称、应用凭据到期期限以及用于导出 CSV 的路径来更改“#PARAMETERS TO CHANGE”节中的值。
+此脚本使用 [Client_Credential Oauth 流](../../develop/v2-oauth2-client-creds-grant-flow.md)。函数“RefreshToken”将基于管理员修改的参数值来生成访问令牌。
+
 “Add-Member”命令负责在 CSV 文件中创建列。
-如果希望导出为非交互式，则可以在 PowerShell 中使用 CSV 文件路径直接修改“$Path”变量。
 
 | 命令 | 说明 |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | 从目录中检索应用程序。 |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | 从目录中检索应用程序的所有者。 |
+| [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.1) | 将 HTTP 和 HTTPS 请求发送到网页或 Web 服务。 它将分析响应并返回链接、图像和其他重要 HTML 元素的集合。 |
 
 ## <a name="next-steps"></a>后续步骤
 

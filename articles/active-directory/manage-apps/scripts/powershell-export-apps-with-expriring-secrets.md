@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 7123c87d8883d9ac309797255152611fb9fb81d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149692"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>导出具有即将过期的机密和证书的应用
 
-此 PowerShell 脚本示例从 CSV 文件的目录中导出指定应用的所有具有即将过期的机密和证书的应用。
+此 PowerShell 脚本示例从目录中将包含指定应用的即将过期机密、证书及其所有者的所有应用注册信息导出到一个 CSV 文件中。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,7 +32,10 @@ ms.locfileid: "102583211"
 
 ## <a name="script-explanation"></a>脚本说明
 
+此脚本无需修改即可直接使用。 系统会询问管理员到期日期，以及他们是否希望看到已过期的机密或证书。
+
 “Add-Member”命令负责在 CSV 文件中创建列。
+“New-Object”命令创建一个对象，用于 CSV 文件导出内容中的列。
 如果希望导出为非交互式，则可以在 PowerShell 中使用 CSV 文件路径直接修改“$Path”变量。
 
 | 命令 | 说明 |

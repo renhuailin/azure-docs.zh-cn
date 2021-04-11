@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: b66c768011c05e1105f1351ebe4ed7c3c9700b70
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 28aac830326d60161f54d7ad5fa03326c1d66462
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519157"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563668"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>对 Python 中的自动化 ML 试验进行故障排除
 
@@ -129,7 +129,7 @@ ms.locfileid: "102519157"
 
 ## `jwt.exceptions.DecodeError`
 
-提取错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
+确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。
 
 对于不高于 1.17.0 的 SDK 版本，安装可能会导致 PyJWT 的版本不受支持。 检查自动 ml conda 环境中的 PyJWT 版本是否是受支持的版本。 即 PyJWT 版本低于 2.0.0。
 
@@ -153,7 +153,7 @@ ms.locfileid: "102519157"
 
 ## <a name="forecasting-r2-score-is-always-zero"></a>预测 R2 评分始终为零
 
- 如果提供的训练数据的时序包含的值与上一个 `n_cv_splits` + `forecasting_horizon` 数据点相同，则会出现此问题。
+ 如果提供的训练数据的时间序列包含的值与上一个 `n_cv_splits` + `forecasting_horizon` 数据点相同，则会出现此问题。
 
 如果该模式在你的时序中是预期的，可将主要指标切换为“规范化均方根误差”。
 
@@ -166,6 +166,10 @@ ms.locfileid: "102519157"
   1. 下载模型包
   1. 将包解压缩
   1. 使用解压缩资产进行部署
+
+## <a name="azure-functions-application"></a>Azure Functions 应用程序
+  
+  自动化 ML 当前不支持 Azure Functions 应用程序。 
 
 ## <a name="sample-notebook-failures"></a>示例笔记本失败
 

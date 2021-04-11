@@ -8,14 +8,16 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4cade6a740bffc33695c40663609df38ba6e7a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: e5c85d2c3049ea8718d0a9e0e574c13d0d99394c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044895"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200277"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 所有 IoT Edge 设备使用证书在运行时与设备上运行的任何模块之间创建安全连接。 充当网关的 IoT Edge 设备也使用相同的证书连接到其下游设备。
 
@@ -114,15 +116,15 @@ ms.locfileid: "102044895"
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-1. 打开 IoT Edge 安全守护程序配置文件： `/etc/aziot/config.toml`
+1. 打开 IoT Edge 安全守护程序配置文件：`/etc/aziot/config.toml`
 
-1. 查找 `trust_bundle_cert` 文件开头的参数。 取消注释此行，并向设备上的根 CA 证书提供文件 URI。
+1. 在该文件的开头找到 `trust_bundle_cert` 参数。 取消注释此行，并为设备上的根 CA 证书提供文件 URI。
 
    ```toml
    trust_bundle_cert = "file:///<path>/<root CA cert>"
    ```
 
-1. 查找 `[edge_ca]` toml 文件中的部分。 取消对此部分中的行的注释，并提供 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。
+1. 在 config.toml 文件中找到 `[edge_ca]` 节。 将此节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
 
    ```toml
    [edge_ca]
@@ -130,7 +132,7 @@ ms.locfileid: "102044895"
    pk = "file:///<path>/<device CA key>"
    ```
 
-1. 请确保用户 **iotedge** 对包含证书的目录具有读取权限。
+1. 请确保用户“iotedge”对保存证书的目录拥有读取权限。
 
 1. 如果以前在设备上使用过 IoT Edge 的任何其他证书，请在启动或重启 IoT Edge 之前删除以下两个目录中的文件：
 
@@ -153,14 +155,14 @@ ms.locfileid: "102044895"
 
 有关 IoT Edge 设备上不同证书的功能的详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-对于这两个自动生成的证书，你可以选择在配置文件中设置 **auto_generated_ca_lifetime_days** 标志，以配置证书生存期的天数。
+对于这两个自动生成的证书，可以选择在配置文件中设置 auto_generated_ca_lifetime_days 标志，以配置证书生存期的天数。
 
 >[!NOTE]
 >IoT Edge 安全管理器还会创建第三个自动生成的证书：IoT Edge 中心服务器证书。 此证书的生存期始终为 90 天，但过期之前会自动续订。 auto_generated_ca_lifetime_days 值不会影响此证书。
 
-在指定天数后过期后，必须重新启动 IoT Edge 以重新生成设备 CA 证书。 设备 CA 证书不会自动续订。
+如果在指定的天数后到期，则必须重启 IoT Edge 以重新生成设备 CA 证书。 设备 CA 证书不会自动续订。
 
-1. 若要将证书过期配置为默认值90天以外的时间，请将值以天为单位，将配置文件的 " **证书** " 部分添加到其中。
+1. 若要将证书到期时间配置为默认的 90 天以外的时间，请在配置文件的 certificates 节中添加所需值（以天为单位）。
 
    ```yaml
    certificates:
@@ -173,9 +175,9 @@ ms.locfileid: "102044895"
    > [!NOTE]
    > 目前存在一个 libiothsm 限制，会阻止使用在 2038 年 1 月 1 日或之后到期的证书。
 
-1. 删除该文件夹的内容 `hsm` 以删除任何以前生成的证书。
+1. 删除 `hsm` 文件夹的内容以删除所有以前生成的证书。
 
-   Windows： `C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys` Linux： `/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
+   Windows：`C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`；Linux：`/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
 1. 重启 IoT Edge 服务。
 

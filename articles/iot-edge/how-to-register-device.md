@@ -1,6 +1,6 @@
 ---
-title: 注册新设备-Azure IoT Edge |Microsoft Docs
-description: 在 IoT 中心注册单个 IoT Edge 设备，以便使用对称密钥或 x.509 证书进行手动预配
+title: 注册新设备 - Azure IoT Edge | Microsoft Docs
+description: 在 IoT 中心注册单个 IoT Edge 设备，以便使用对称密钥或 X.509 证书进行手动预配
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -9,40 +9,42 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: 97faf5eff7187bbabe23bbcab60514eef4acc063
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.openlocfilehash: d75f184a324a9d418b0af2e3cf5790205af0fa42
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633844"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200720"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>在 IoT 中心注册 IoT Edge 设备
 
-本文提供在 IoT 中心注册新 IoT Edge 设备的步骤。
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
+
+本文提供了在 IoT 中心注册新的 IoT Edge 设备的步骤。
 
 连接到 IoT 中心的每个设备都有一个设备 ID，用于跟踪云到设备或设备到云的通信。 可以使用设备连接信息来配置设备，这些信息包括 IoT 中心主机名、设备 ID 以及设备用于向 IoT 中心进行身份验证的信息。
 
-本文中的步骤逐步讲解称为 "手动设置" 的过程，在此过程中，会将单个设备连接到其 IoT 中心。 对于手动预配，可以通过两种方式来验证 IoT Edge 设备：
+本文中的步骤演示了一个名为“手动预配”的过程。在手动预配过程中，你可以将单个设备连接到其 IoT 中心。 对于手动预配，可以通过两种方式来验证 IoT Edge 设备：
 
 * **对称密钥**：在 IoT 中心创建新的设备标识时，该服务会创建两个密钥。 将其中一个密钥置于设备上，并在进行身份验证时将该密钥提供给 IoT 中心。
 
   此身份验证方法更容易上手，但不够安全。
 
-* **X.509 自签名**：创建两个 X.509 标识证书并将其置于设备上。 在 IoT 中心创建新的设备标识时，需要提供两个证书的指纹。 当设备向 IoT 中心进行身份验证时，它将提供一个证书，IoT 中心将验证证书是否与其指纹相匹配。
+* **X.509 自签名**：创建两个 X.509 标识证书并将其置于设备上。 在 IoT 中心创建新的设备标识时，需要提供两个证书的指纹。 设备在向 IoT 中心进行身份验证时会提供一个证书，IoT 中心会验证该证书是否与其指纹匹配。
 
   此身份验证方法更安全，建议用于生产场景。
 
-本文介绍这两种身份验证方法。
+本文介绍了这两种身份验证方法。
 
-如果有多个设备要设置，并且不想手动设置每个设备，请使用以下文章之一来了解 IoT Edge 如何与 IoT 中心设备预配服务一起使用：
+如果你有许多设备要设置，但不想手动预配每个设备，请参阅以下文章之一，了解 IoT Edge 如何与 IoT 中心设备预配服务协同工作：
 
-* [使用 x.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)
+* [使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)
 * [使用 TPM 创建和预配 IoT Edge 设备](how-to-auto-provision-simulated-device-linux.md)
 * [使用对称密钥创建和预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 
@@ -59,13 +61,13 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 ---
 
-## <a name="option-1-register-with-symmetric-keys"></a>选项1：注册对称密钥
+## <a name="option-1-register-with-symmetric-keys"></a>选项 1：使用对称密钥进行注册
 
 可以根据自己的喜好使用若干工具在 IoT 中心注册新的 IoT Edge 设备并检索其连接字符串。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-在 Azure 门户的 IoT 中心，IoT Edge 设备与未启用边缘的 IoT 设备分开创建和管理。
+在 Azure 门户你的 IoT 中心内，IoT Edge 设备的创建和管理独立于不支持 Edge 的 IoT 设备。
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
@@ -85,7 +87,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 ### <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-可使用适用于 Visual Studio Code 的 Azure IoT 扩展来执行与 IoT 中心相关的操作。 要使这些操作正常工作，需要登录到 Azure 帐户，并选择中心。
+可使用适用于 Visual Studio Code 的 Azure IoT 扩展来执行与 IoT 中心相关的操作。 为了使这些操作顺利执行，你需要登录到 Azure 帐户并选择你的中心。
 
 1. 在 Visual Studio Code 中打开“资源管理器”视图。
 1. 在资源管理器底部，展开“Azure IoT 中心”部分  。
@@ -98,9 +100,9 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 1. 选择 Azure 订阅。
 1. 选择 IoT 中心。
 
-### <a name="register-a-new-device-with-visual-studio-code"></a>使用 Visual Studio Code 注册新设备
+### <a name="register-a-new-device-with-visual-studio-code"></a>将新设备注册到 Visual Studio Code
 
-1. 在 Visual Studio Code 资源管理器中，展开 " **Azure IoT 中心** " 部分。
+1. 在 Visual Studio Code 资源管理器中，展开“Azure IoT 中心”部分。
 1. 单击“Azure IoT 中心”部分标题中的“...”   。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
 1. 选择“创建 IoT Edge 设备”  。
 1. 在打开的文本框中提供设备 ID。
@@ -117,7 +119,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 此命令包括三个参数：
 
-* `--device-id` 或 `-d` ：提供 IoT 中心内唯一的描述性名称。
+* `--device-id` 或 `-d`：提供在 IoT 中心独一无二的描述性名称。
 * `--hub-name` 或 `-n`：提供 IoT 中心的名称。
 * `--edge-enabled` 或 `--ee`：声明该设备是 IoT Edge 设备。
 
@@ -125,23 +127,23 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 ---
 
-现在，已在 IoT 中心内注册了设备，接下来要检索用于完成 IoT Edge 运行时安装和设置的连接字符串。 按照本文后面的步骤 [查看已注册的设备并检索连接字符串](#view-registered-devices-and-retrieve-connection-strings)。
+现在，你已在 IoT 中心注册了设备，接下来请检索用于完成 IoT Edge 运行时安装和预配的连接字符串。 按照本文后面的步骤[查看已注册的设备并检索连接字符串](#view-registered-devices-and-retrieve-connection-strings)。
 
-## <a name="option-2-register-with-x509-certificates"></a>选项2：注册到 x.509 证书
+## <a name="option-2-register-with-x509-certificates"></a>选项 2：使用 X.509 证书进行注册
 
-手动设置 x.509 证书需要 IoT Edge 版本1.0.10 或更高版本。
+使用 X.509 证书进行手动预配需要 IoT Edge 1.0.10 或更高版本。
 
-对于 x.509 证书身份验证，每个设备的身份验证信息以从设备标识证书获取的 *指纹* 形式提供。 在注册设备时，会向 IoT 中心提供这些指纹，以便服务在连接时能够识别设备。
+对于 X.509 证书身份验证，每个设备的身份验证信息采用从设备标识证书获取的指纹的形式提供。 在注册设备时，会向 IoT 中心提供这些指纹，以便服务在连接时能够识别设备。
 
 ### <a name="create-certificates-and-thumbprints"></a>创建证书和指纹
 
-使用 x.509 证书预配 IoT Edge 设备时，将使用所谓的 *设备标识证书*。 此证书仅用于预配 IoT Edge 设备，并使用 Azure IoT 中心对设备进行身份验证。 它是不对其他证书进行签名的叶证书。 设备标识证书独立于证书颁发机构 (CA) 证书，IoT Edge 设备将其提供给模块或下游设备进行验证。 有关如何在 IoT Edge 设备中使用 CA 证书的详细信息，请参阅 [了解 Azure IoT Edge 使用证书的方式](iot-edge-certs.md)。
+使用 X.509 证书预配 IoT Edge 设备时，你将使用所谓的“设备标识证书”。 此证书仅用于预配 IoT Edge 设备，以及通过 Azure IoT 中心对设备进行身份验证。 它是不能对其他证书进行签名的叶证书。 设备标识证书不同于 IoT Edge 设备提供给模块或下游设备进行验证的证书颁发机构 (CA) 证书。 若要详细了解如何在 IoT Edge 设备中使用 CA 证书，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
 若要使用 X.509 进行手动预配，需要以下文件：
 
-* 两个设备标识证书，它们在 .cer 或 pem 格式中具有匹配的私钥证书。
+* 两个设备标识证书，它们需要具有 .cer 或 .pem 格式的匹配私钥证书。
 
-  其中一组证书/密钥文件提供给 IoT Edge 运行时。 创建设备标识证书时，请将证书公用名 (CN) 设置为你希望设备在 IoT 中心中具有的设备 ID。
+  其中一组证书/密钥文件提供给 IoT Edge 运行时。 创建设备标识证书时，请将证书公用名 (CN) 设置为你希望该设备在 IoT 中心具有的设备 ID。
 
 * 从两个设备标识证书获取的指纹。
 
@@ -161,7 +163,7 @@ openssl x509 -in <certificate filename>.pem -text -fingerprint
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-在 Azure 门户的 IoT 中心，IoT Edge 设备与未启用边缘的 IoT 设备分开创建和管理。
+在 Azure 门户你的 IoT 中心内，IoT Edge 设备的创建和管理独立于不支持 Edge 的 IoT 设备。
 
 1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
@@ -179,7 +181,7 @@ openssl x509 -in <certificate filename>.pem -text -fingerprint
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-目前，适用于 Visual Studio Code 的 Azure IoT 扩展不支持通过 x.509 证书进行设备注册。
+目前，适用于 Visual Studio Code 的 Azure IoT 扩展不支持使用 X.509 证书进行设备注册。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,18 +202,18 @@ openssl x509 -in <certificate filename>.pem -text -fingerprint
 
 ---
 
-现在，已在 IoT 中心内注册了设备，接下来可以在设备上安装和设置 IoT Edge 运行时。 IoT Edge 使用 x.509 证书进行身份验证的设备不使用连接字符串，因此你可以继续下一步：
+现在，你已在 IoT 中心注册了设备，可以在设备上安装和预配 IoT Edge 运行时了。 使用 X.509 证书进行身份验证的 IoT Edge 设备不使用连接字符串，因此你可以继续执行下一步骤：
 
 * [安装或卸载适用于 Linux 的 Azure IoT Edge](how-to-install-iot-edge.md)
-* [安装或卸载 Windows Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)
+* [安装或卸载适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)
 
 ## <a name="view-registered-devices-and-retrieve-connection-strings"></a>查看已注册的设备并检索连接字符串
 
-使用对称密钥身份验证的设备需要其连接字符串才能完成 IoT Edge 运行时的安装和设置。
+使用对称密钥身份验证的设备需要使用其连接字符串来完成 IoT Edge 运行时的安装和预配。
 
-使用 x.509 证书身份验证的设备不需要连接字符串。 相反，这些设备需要其 IoT 中心名称、其设备名称及其证书文件才能完成 IoT Edge 运行时的安装和设置。
+使用 X.509 证书身份验证的设备不需要使用连接字符串， 只需要使用其 IoT 中心名称、其设备名称以及其证书文件来完成 IoT Edge 运行时的安装和预配。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 所有连接到 IoT 中心并已启用 Edge 的设备都列在 **IoT Edge** 页上。
 
@@ -219,7 +221,7 @@ openssl x509 -in <certificate filename>.pem -text -fingerprint
 
 如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。
 
-使用对称密钥进行身份验证的设备具有其连接字符串，可以在门户中进行复制。
+使用对称密钥进行身份验证的设备有自己的连接字符串，可以在门户中复制这些连接字符串。
 
 1. 在门户的 **IoT Edge** 页中，单击 IoT Edge 设备列表中的设备 ID。
 2. 复制“主连接字符串”或“辅助连接字符串”的值   。
@@ -264,17 +266,17 @@ Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连
    ```
 
 >[!TIP]
->此 `connection-string show` 命令是在 Azure IoT 扩展的0.9.8 版本中引入的，它替换了不推荐使用的 `show-connection-string` 命令。 如果在运行此命令时遇到错误，请确保将扩展版本更新为0.9.8 或更高版本。 有关详细信息和最新更新，请参阅 [Azure CLI Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
+>`connection-string show` 命令是在 Azure IoT 扩展的 0.9.8 版本中引入的，替换弃用的 `show-connection-string` 命令。 如果在运行此命令时遇到错误，请确保将扩展版本更新为 0.9.8 或更高版本。 有关详细信息以及最新的更新，请参阅[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 `device-id` 参数的值区分大小写。
 
-复制要在设备上使用的连接字符串时，请不要在连接字符串的两侧加上引号。
+复制要在设备上使用的连接字符串时，请不要包括围绕连接字符串的引号。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已在 IoT 中心内注册了设备，接下来可以在设备上安装和设置 IoT Edge 运行时。
+现在，你已在 IoT 中心注册了设备，可以在设备上安装和预配 IoT Edge 运行时了。
 
 * [安装或卸载适用于 Linux 的 Azure IoT Edge](how-to-install-iot-edge.md)
-* [安装或卸载 Windows Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)
+* [安装或卸载适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)

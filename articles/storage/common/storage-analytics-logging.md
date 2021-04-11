@@ -9,28 +9,28 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f1d254eecc41ebef690b4fc9f8294bee5a368ae4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200766"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
-存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。
+存储分析记录成功和失败的存储服务请求的详细信息。 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 这意味着，大多数请求将生成日志记录，但不保证存储分析日志的完整性和及时性。 
 
 > [!NOTE]
-> 建议在 Azure Monitor 中使用 Azure 存储日志，而不是存储分析日志。 Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版启用 blob 的日志 (包括 Azure Data Lake Storage Gen2) 、文件、队列和表。 若要了解详细信息，请参阅以下文章：
+> 建议你使用 Azure Monitor 中的 Azure 存储日志，而不是存储分析日志。 Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 若要了解详细信息，请参阅以下任一文章：
 >
 > - [监视 Azure Blob 存储](../blobs/monitor-blob-storage.md)
-> - [监视 Azure 文件](../files/storage-files-monitoring.md)
+> - [监视 Azure 文件存储](../files/storage-files-monitoring.md)
 > - [监视 Azure 队列存储](../queues/monitor-queue-storage.md)
 > - [监视 Azure 表存储](../tables/monitor-table-storage.md)
 
- 默认未对存储帐户启用存储分析日志记录。 你可以在 [Azure 门户](https://portal.azure.com/) 或使用 PowerShell 或 Azure CLI 中启用它。 有关分步指南，请参阅 [启用和管理 (经典) Azure 存储分析日志 ](manage-storage-analytics-logs.md)。 
+ 默认未对存储帐户启用存储分析日志记录。 可以在 [Azure 门户](https://portal.azure.com/)中启用它，也可以使用 PowerShell 或 Azure CLI 启用它。 有关分步指南，请参阅[启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)。 
 
-还可以通过 REST API 或客户端库以编程方式启用存储分析日志。 使用[获取 Blob 服务属性](/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。 若要查看使用 .NET 启用存储分析日志的示例，请参阅 [启用日志](manage-storage-analytics-logs.md)
+还可以通过 REST API 或客户端库以编程方式启用存储分析日志。 使用[获取 Blob 服务属性](/rest/api/storageservices/Blob-Service-REST-API)、[获取队列服务属性](/rest/api/storageservices/Get-Queue-Service-Properties)和[获取表服务属性](/rest/api/storageservices/Get-Table-Service-Properties)操作为每个服务启用存储分析。 若要查看使用 .NET 启用存储分析日志的示例，请参阅[启用日志](manage-storage-analytics-logs.md)
 
  仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 
@@ -97,7 +97,7 @@ ms.locfileid: "100570024"
 
  下表说明了日志名称中的每个属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如，`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -121,7 +121,7 @@ ms.locfileid: "100570024"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3：`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 形式。 例如： `2011-07-31T18:21:46Z`|
@@ -138,7 +138,7 @@ ms.locfileid: "100570024"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [启用和管理 (经典) Azure 存储分析日志 ](manage-storage-analytics-logs.md)
+* [启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)
 * [Storage Analytics Log Format](/rest/api/storageservices/storage-analytics-log-format)（存储分析日志格式）
 * [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
 * [存储分析指标（经典）](storage-analytics-metrics.md)

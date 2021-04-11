@@ -1,31 +1,31 @@
 ---
-title: 在 Azure 中将函数用作 Azure 事件网格事件的事件处理程序
-description: 描述如何使用在中创建的函数以及作为事件网格事件的事件处理程序由 Azure Functions 承载的函数。
+title: 将 Azure 中的函数用作 Azure 事件网格事件的事件处理程序
+description: 介绍如何将在 Azure Functions 中创建并托管的函数用作事件网格事件的事件处理程序。
 ms.topic: conceptual
-ms.date: 09/18/2020
-ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.date: 03/15/2021
+ms.openlocfilehash: f547b09fe7e62eb3fa9e02bd17298a936350f871
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496535"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>将函数用作事件网格事件的事件处理程序
 
 事件处理程序是发送事件的位置。 处理程序将通过一个操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure Functions 就是其中之一。 
 
 
-若要在 Azure 中使用函数作为事件的处理程序，请遵循以下方法之一： 
+若要使用 Azure 中的函数作为事件的处理程序，请遵循以下一种方法： 
 
--   使用[事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。  将“Azure 函数”指定为“终结点类型” 。 然后，指定函数应用和将处理事件的函数。 
+-   使用[事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。  将“Azure 函数”指定为“终结点类型” 。 然后，指定将处理事件的函数应用和函数。 
 -   使用 [HTTP 触发器](../azure-functions/functions-bindings-http-webhook.md)。  将“Web Hook”指定为“终结点类型” 。 然后，指定将处理事件的函数的 URL。 
 
 建议使用第一种方法（事件网格触发器），因为它与第二种方法相比具有以下优势：
 -   事件网格会自动验证事件网格触发器。 使用通用 HTTP 触发器时，必须自行实现[验证响应](webhook-event-delivery.md)。
--   事件网格根据函数处理事件的感知速率自动调整事件传递到事件网格事件触发的函数的速率。 这一速率匹配功能设置传递错误，这些错误不能处理事件，因为函数的事件处理速率可能会随时间而改变。 若要在高吞吐量下提高效率，请在事件订阅上启用批处理。 有关详细信息，请参阅[启用批处理](#enable-batching)。
+-   事件网格根据函数处理事件的感知速率自动调整事件传递到事件网格事件触发的函数的速率。 这种速率匹配功能可避免由于函数无法处理事件而导致的传递错误，因为函数的事件处理速率可能会随时间而改变。 若要在高吞吐量下提高效率，请在事件订阅上启用批处理。 有关详细信息，请参阅[启用批处理](#enable-batching)。
 
     > [!NOTE]
-    > 目前，在 **CloudEvents** 架构中传递事件时，不能为函数应用使用事件网格触发器。 应转而使用 HTTP 触发器。
+    > 目前，在以 CloudEvents 架构传递事件时，无法对函数应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
 ## <a name="tutorials"></a>教程
 
@@ -79,6 +79,9 @@ ms.locfileid: "98632506"
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 可以使用 [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription)  或 [Update-AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) cmdlet，通过以下参数配置与批处理相关的设置：`-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes`。
+
+> [!NOTE]
+> 当你使用事件网格触发器时，事件网格服务会提取目标 Azure 函数的客户端密码，并使用该密码将事件传递给 Azure 函数。 如果使用 Azure Active Directory 应用程序保护 Azure 函数，则必须采用通用的 Webhook 方法并使用 HTTP 触发器。
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
-ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11c83a6ec364865eb3478112c9f33add22a5c09d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643262"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 - [使用 Azure 门户故障转移到异地复制的辅助服务器](active-geo-replication-configure-portal.md)
 - [使用 PowerShell 故障转移到辅助服务器](scripts/setup-geodr-and-failover-database-powershell.md)
-- [使用 Transact-SQL (T-SQL) 故障转移到辅助服务器](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+- [使用 Transact-SQL (T-SQL) 故障转移到辅助服务器](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>使用异地还原进行恢复
 
@@ -90,7 +90,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 ### <a name="update-connection-strings"></a>更新连接字符串
 
-因为恢复的数据库将位于不同的服务器中，所以必须更新应用程序的连接字符串以指向该服务器。
+因为恢复的数据库将位于不同的服务器中，所以必须更新应用程序的连接字符串，使之指向该服务器。
 
 若要深入了解如何更改连接字符串，请参阅[连接库](connect-query-content-reference-guide.md#libraries)的相应开发语言。
 

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 43a8600a288a9797edcd326a1cb5dbcc8688d61f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 1d54429d901ca6caeadabfa7580e7270ceabcf45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834119"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612888"
 ---
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序针对 Node.js 编写，包含在用于 Node.js 的 Azure IoT 中心设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -60,7 +60,7 @@ npm install
 
 azure-iot-sdk-node\device\samples\pnp 文件夹包含 IoT 即插即用温度控制器设备的示例代码。
 
-pnpTemperatureController.js 文件中的代码实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-pnp/concepts-components.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
+pnpTemperatureController.js 文件中的代码实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-pnp/concepts-modeling-guide.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
 
 在所选的代码编辑器中打开 pnpTemperatureController.js 文件。 示例代码演示如何执行以下操作：
 

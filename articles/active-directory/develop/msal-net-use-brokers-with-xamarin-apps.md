@@ -1,7 +1,7 @@
 ---
 title: 将中介与 Xamarin、iOS 和 Android 配合使用 | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何设置可使用 Microsoft Authenticator 的 Xamarin iOS 应用程序和适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 。 还了解如何从适用于 .NET () ADAL.NET 的 Azure AD 身份验证库迁移到用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 。
+description: 了解如何设置可使用 Microsoft Authenticator 以及适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 的 Xamarin iOS 应用程序。 此外，了解如何从适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 迁移到适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET)。
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
-ms.translationtype: MT
+ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103985"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199575"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -36,7 +36,7 @@ ms.locfileid: "100103985"
 
 ## <a name="brokered-authentication-for-ios"></a>适用于 iOS 的中介身份验证
 
-使用以下步骤使你的 Xamarin iOS 应用与 [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) 的应用进行通信。 如果面向的是 iOS 13，请考虑阅读 [Apple 的重大 API 更改](./msal-net-xamarin-ios-considerations.md)。
+使用以下步骤来使 Xamarin.iOS 应用能够与 [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) 应用通信。 如果面向的是 iOS 13，请考虑阅读 [Apple 的重大 API 更改](./msal-net-xamarin-ios-considerations.md)。
 
 ### <a name="step-1-enable-broker-support"></a>步骤 1：启用中介支持
 
@@ -91,7 +91,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 ### <a name="step-4-set-uiviewcontroller"></a>步骤 4：设置 UIViewController()
 
-仍在 *AppDelegate.cs* 文件中，设置对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
+仍然是在 AppDelegate.cs 文件中，请设置一个对象窗口。 对于 Xamarin iOS，通常不需要设置对象窗口，但若要发送和接收中介的响应，则需要一个对象窗口。
 
 若要设置对象窗口：
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>步骤 4：向应用注册中添加重定向 URI
 
-MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成这种往返过程，请使用 [Azure 门户](https://portal.azure.com)注册应用程序的 **重定向 URI** 。
+MSAL 使用 URL 调用中介，然后返回到你的应用。 若要完成该往返过程，请使用 [Azure 门户](https://portal.azure.com)为应用注册一个重定向 URI。
 
 应用程序的重定向 URI 的格式依赖于用于对 APK 进行签名的证书。 例如：
 
@@ -326,6 +326,8 @@ URI 的最后一部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是签署 APK 时使用�
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
+有关配置应用程序以实现系统浏览器和 Android 11 支持的详细信息，请参阅[更新 Android 系统浏览器支持清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)。
+
 替代方法是将 MSAL 配置为回退到嵌入的浏览器（不依赖于重定向 URI）：
 
 ```csharp
@@ -338,28 +340,28 @@ URI 的最后一部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是签署 APK 时使用�
 
 - **重定向 URI** - 在 [Azure 门户](https://portal.azure.com/)中将重定向 URI 添加到应用程序注册。 重定向 URI 缺失或不正确是开发人员遇到的常见问题。
 - **中介版本** - 安装所需的中介应用最低版本。 这两个应用都可用于 Android 上的中介身份验证。
-  - [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) (版本5.0.4689.0 或更高版本) 
-  - [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) (版本6.2001.0140 或更高版本) 。
+  - [Intune 公司门户](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)（5.0.4689.0 或更高版本）
+  - [Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator)（6.2001.0140 或更高版本）。
 - **中介优先级** - 当安装了多个代理时，MSAL 会与设备上安装的第一个代理通信。
 
     示例：如果你首先安装 Microsoft Authenticator，然后安装 Intune 公司门户，则代理身份验证只会发生在 Microsoft Authenticator 上。
 - **日志** - 如果你遇到中介身份验证的问题，查看中介的日志可能有助于你诊断原因。
-  - 查看 Microsoft Authenticator 日志：
+  - 获取 Microsoft Authenticator 日志：
 
     1. 选择应用右上角的菜单按钮。
-    1. 选择“帮助” > “发送日志” > “查看日志”。  
-    1. 选择“全部复制”，将中介日志复制到设备的剪贴板上。
+    1. 选择“发送反馈” > “遇到了问题?” 。
+    1. 在“你想要做什么?”下，选择一个选项并添加描述。
+    1. 若要发送日志，请选择该应用右上角的箭头。
 
-    用这些日志进行调试的最佳方式是通过电子邮件将它们发送给你自己，然后在开发计算机上查看它们。 你可能会发现，在你的计算机上分析日志比在设备本身上分析日志更容易。 你还可以使用 Android 上的测试编辑器将日志另存为文本文件，然后使用 USB 电缆将该文件复制到计算机上。
+    发送日志之后，会出现一个对话框，显示事件 ID。 记录该事件 ID，并在请求帮助时将其包含在内。
 
-  - 查看 Intune 公司门户日志：
+  - 获取 Intune 公司门户日志：
 
-    1. 选择应用左上角的菜单按钮
-    1. 选择“设置” > “诊断数据” 
-    1. 选择“复制日志”，将中介日志复制到设备的 SD 卡上。
-    1. 使用 USB 电缆将设备连接到计算机，以便在开发计算机上查看日志。
+    1. 选择应用左上角的菜单按钮。
+    1. 选择“帮助” > “电子邮件支持” 。
+    1. 若要发送日志，请选择“仅上传日志”。
 
-    有了日志后，可以通过相关 ID 在其中搜索你的身份验证尝试。 相关 ID 附加到每个身份验证请求。 若要查找 Microsoft 标识平台身份验证终结点返回的错误，请搜索 `AADSTS`。
+    发送日志之后，会出现一个对话框，显示事件 ID。 记录该事件 ID，并在请求帮助时将其包含在内。
 
 ## <a name="next-steps"></a>后续步骤
 

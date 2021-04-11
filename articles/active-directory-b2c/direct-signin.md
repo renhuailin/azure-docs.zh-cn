@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b2342ed978204284bee4d2be0f1c983aa10ade36
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: MT
+ms.openlocfilehash: 35e8efa269ab72477b06e86824d368d0a3dced03
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585031"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103197324"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置直接登录
 
@@ -57,7 +57,7 @@ ms.locfileid: "97585031"
 
 如果已将应用程序的登录旅程配置为包括社交帐户（如 Facebook、LinkedIn 或 Google），则可以指定 `domain_hint` 参数。 此查询参数向 Azure AD B2C 提供有关应该用于登录的社交标识提供者的提示。 例如，如果应用程序指定 `domain_hint=facebook.com`，则登录会直接转到 Facebook 登录页。
 
-![在 URL 中突出显示 domain_hint 查询参数时注册登录页](./media/direct-signin/domain-hint.png)
+![URL 中突出显示了有 domain_hint 查询参数的注册登录页](./media/direct-signin/domain-hint.png)
 
 ::: zone pivot="b2c-user-flow"
 
@@ -73,13 +73,13 @@ ms.locfileid: "97585031"
 - twitter.com
 - wechat.com
 - weibo.com 
-- 有关 [通用 OpenID connect](identity-provider-generic-openid-connect.md)，请参阅 [域提示](identity-provider-generic-openid-connect.md#response-mode)。
+- 有关 [通用 OpenID Connect](identity-provider-generic-openid-connect.md)，请参阅[域提示](identity-provider-generic-openid-connect.md#response-mode)。
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-若要支持 domain hing 参数，可以使用 any 的 XML 元素来配置域名 `<Domain>domain name</Domain>` `<ClaimsProvider>` 。
+若要支持域提示参数，可以使用任意 `<ClaimsProvider>` 的 `<Domain>domain name</Domain>` XML 元素配置域名。
 
 ```xml
 <ClaimsProvider>

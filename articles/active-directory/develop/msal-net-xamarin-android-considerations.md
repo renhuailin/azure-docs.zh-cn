@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android 代码配置和故障排除 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用的注意事项。
+description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时的注意事项。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.openlocfilehash: 11642480ac817b50d102e396b8ab5e200948a615
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063427"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199563"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android 与 MSAL.NET 配合使用时的配置要求和故障排除提示
 
-使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，需要在代码中进行几项配置更改。 以下部分介绍了所要求的修改，之后的[故障排除](#troubleshooting)部分用于帮助避免一些最常见的问题。
+在将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 配合使用时，需要在代码中完成一些配置更改。 以下部分介绍了所要求的修改，之后的[故障排除](#troubleshooting)部分用于帮助避免一些最常见的问题。
 
 ## <a name="set-the-parent-activity"></a>设置父活动
 
@@ -74,26 +74,26 @@ protected override void OnActivityResult(int requestCode,
 }
 ```
 
-## <a name="update-the-android-manifest"></a>更新 Android 清单
+## <a name="update-the-android-manifest-for-system-webview-support"></a>更新 Android 清单以获取系统 Web 视图支持 
 
-*AndroidManifest.xml* 文件应包含以下值：
+若要支持系统 Web 视图，*AndroidManifest.xml* 文件应包含以下值：
 
-```XML
-  <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
-  <activity
-        android:name="microsoft.identity.client.BrowserTabActivity">
-     <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="msauth"
-                android:host="Enter_the_Package_Name"
-                android:path="/Enter_the_Signature_Hash" />
-     </intent-filter>
-  </activity>
+```xml
+<activity android:name="microsoft.identity.client.BrowserTabActivity" android:configChanges="orientation|screenSize">
+  <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="msal{Client Id}" android:host="auth" />
+  </intent-filter>
+</activity>
 ```
 
-将 `android:host=` 值替换为在 Azure 门户中注册的包名称。 将 `android:path=` 值替换为在 Azure 门户中注册的密钥哈希。 不应该对签名哈希进行 URL 编码。  确保前导正斜杠 (`/`) 出现在签名哈希的开头。
+`android:scheme` 值是从应用程序门户中配置的重定向 URI 创建的。 例如，如果你的重定向 URI 是 `msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842://auth`，则清单中的 `android:scheme` 条目将类似于以下示例：
+
+```xml
+<data android:scheme="msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842" android:host="auth" />
+```
 
 或者，[在代码中创建活动](/xamarin/android/platform/android-manifest#the-basics)，而不要手动编辑 *AndroidManifest.xml*。 若要在代码中创建活动，请先创建一个包含 `Activity` 属性和 `IntentFilter` 属性的类。
 
@@ -110,9 +110,107 @@ protected override void OnActivityResult(int requestCode,
   }
 ```
 
+### <a name="use-system-webview-in-brokered-authentication"></a>在中转身份验证中使用系统 Web 视图
+
+在将应用程序配置为使用中转身份验证并且设备上未安装中介时，若要将系统 Web 视图用作交互式身份验证的回退机制，请启用 MSAL，以使用中介的重定向 URI 捕获身份验证响应。 当 MSAL 检测到中介不可用时，它会尝试使用设备上的默认系统 Web 视图进行身份验证。 使用此默认项时，MSAL 将会失败，因为重定向 URI 已配置为使用中介，而系统 Web 视图不知道如何使用中介返回到 MSAL。 若要解决此问题，请使用前面配置的中介重定向 URI 创建一个意向筛选器。 如以下示例所示，通过修改应用程序的清单来添加该意向筛选器：
+
+```xml
+<!--Intent filter to capture System WebView or Authenticator calling back to our app after sign-in-->
+<activity
+      android:name="microsoft.identity.client.BrowserTabActivity">
+    <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash" />
+    </intent-filter>
+</activity>
+```
+
+将 `android:host=` 值替换为在 Azure 门户中注册的包名称。 将 `android:path=` 值替换为在 Azure 门户中注册的密钥哈希。 不应该对签名哈希进行 URL 编码。  确保前导正斜杠 (`/`) 出现在签名哈希的开头。
+
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin.Forms 4.3.x 清单
 
 Xamarin.Forms 4.3.x 会生成可在 *AndroidManifest.xml* 中将 `package` 属性设置为 `com.companyname.{appName}` 的代码。 如果使用 `DataScheme` 作为 `msal{client_id}`，则可能需要更改该值，使之与 `MainActivity.cs` 命名空间的值匹配。
+
+## <a name="android-11-support"></a>Android 11 支持
+
+若要在 Android 11 中使用系统浏览器和中转身份验证，必须先声明这些包，使它们对应用可见。 面向 Android 10 (API 29) 及更低版本的应用可在任意给定时间查询 OS 以获取设备上可用的包列表。 为了支持隐私和安全保护，Android 11 降低了包的可见性，只会显示默认的 OS 包列表，以及应用的 *AndroidManifest.xml* 文件中指定的 OS 包。 
+
+要使应用程序能够使用系统浏览器和中介进行身份验证，请将以下节添加到 *AndroidManifest.xml*：
+
+```xml
+<!-- Required for API Level 30 to make sure the app can detect browsers and other apps where communication is needed.-->
+<!--https://developer.android.com/training/basics/intents/package-visibility-use-cases-->
+<queries>
+  <package android:name="com.azure.authenticator" />
+  <package android:name="{Package Name}" />
+  <package android:name="com.microsoft.windowsintune.companyportal" />
+  <!-- Required for API Level 30 to make sure the app detect browsers
+      (that don't support custom tabs) -->
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="https" />
+  </intent>
+  <!-- Required for API Level 30 to make sure the app can detect browsers that support custom tabs -->
+  <!-- https://developers.google.com/web/updates/2020/07/custom-tabs-android-11#detecting_browsers_that_support_custom_tabs -->
+  <intent>
+    <action android:name="android.support.customtabs.action.CustomTabsService" />
+  </intent>
+</queries>
+``` 
+
+请将 `{Package Name}` 替换为应用程序包名称。 
+
+更新的清单（现在包含对系统浏览器和中转身份验证的支持）应类似于以下示例：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.XamarinDev">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application android:theme="@android:style/Theme.NoTitleBar">
+        <activity android:name="microsoft.identity.client.BrowserTabActivity" android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msal4a1aa1d5-c567-49d0-ad0b-cd957a47f842" android:host="auth" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="msauth" android:host="com.companyname.XamarinDev" android:path="/Fc4l/5I4mMvLnF+l+XopDuQ2gEM=" />
+            </intent-filter>
+        </activity>
+    </application>
+    <!-- Required for API Level 30 to make sure we can detect browsers and other apps we want to
+     be able to talk to.-->
+    <!--https://developer.android.com/training/basics/intents/package-visibility-use-cases-->
+    <queries>
+        <package android:name="com.azure.authenticator" />
+        <package android:name="com.companyname.xamarindev" />
+        <package android:name="com.microsoft.windowsintune.companyportal" />
+        <!-- Required for API Level 30 to make sure we can detect browsers
+        (that don't support custom tabs) -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- Required for API Level 30 to make sure we can detect browsers that support custom tabs -->
+        <!-- https://developers.google.com/web/updates/2020/07/custom-tabs-android-11#detecting_browsers_that_support_custom_tabs -->
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+</manifest>
+```
 
 ## <a name="use-the-embedded-web-view-optional"></a>使用嵌入式 Web 视图（可选）
 
@@ -162,7 +260,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 | 示例 | 平台 | 说明 |
 | ------ | -------- | ----------- |
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | 一个简单的 Xamarin 应用程序，演示如何使用 MSAL 通过 Azure AD 2.0 端点对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还展示了如何访问 Microsoft Graph 并显示了生成的令牌。 <br>![身份验证流示意图](media/msal-net-xamarin-android-considerations/topology.png) |
+|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin.iOS、Android、UWP | 一个简单的 Xamarin.Forms 应用，展示了如何使用 MSAL 通过 Azure AD 2.0 终结点对 Microsoft 个人帐户和 Azure AD 进行身份验证。 该应用还展示了如何访问 Microsoft Graph 并显示了生成的令牌。 <br>![身份验证流示意图](media/msal-net-xamarin-android-considerations/topology.png) |
 
 <!-- REF LINKS -->
 [PublicClientApplication]: /dotnet/api/microsoft.identity.client.publicclientapplication

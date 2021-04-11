@@ -7,26 +7,26 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 05/14/2020
+ms.date: 03/10/2021
 tags: connectors
-ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: a07eb6e592c68794f0e4038a7cf9a42bd396b47a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85609497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103495226"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
 
-IBM MQ 连接器会发送和检索存储在 IBM MQ 服务器本地或 Azure 中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文是使用 MQ 连接器的初学者指南。 可以首先浏览队列中的单个消息，然后尝试其他操作。
+MQ 连接器会发送和检索存储在 MQ 服务器（本地或 Azure）中的消息。 此连接器包括要在 TCP/IP 网络上与远程 IBM MQ 服务器计算机通信的 Microsoft MQ 客户端。 本文是使用 MQ 连接器的初学者指南。 可以首先浏览队列中的单个消息，然后尝试其他操作。
 
-IBM MQ 连接器包含以下操作，但不提供触发器：
+MQ 连接器包含以下操作，但不提供触发器：
 
-- 浏览单条消息，而不从 IBM MQ 服务器中删除该消息。
-- 浏览一批消息，而不从 IBM MQ 服务器中删除这些消息。
-- 接收单条消息，并从 IBM MQ 服务器中删除该消息。
-- 接收一批消息，并从 IBM MQ 服务器中删除这些消息。
-- 将单条消息发送到 IBM MQ 服务器。
+- 浏览单条消息，但不从 MQ 服务器中删除这条消息。
+- 浏览一批消息，但不从 MQ 服务器中删除这些消息。
+- 接收单条消息，并从 MQ 服务器中删除这条消息。
+- 接收一批消息，并从 MQ 服务器中删除这些消息。
+- 将单条消息发送到 MQ 服务器。
 
 下面是官方支持的 IBM WebSphere MQ 版本：
 
@@ -37,15 +37,20 @@ IBM MQ 连接器包含以下操作，但不提供触发器：
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果使用本地 MQ 服务器，则在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 安装本地数据网关的服务器还必须安装 .NET Framework 4.6，才能使 MQ 连接器正常运行。
+* 如果使用本地 MQ 服务器，需要在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
-  安装完网关以后，还必须在 Azure 中为本地数据网关创建资源。 有关详细信息，请参阅[设置数据网关连接](../logic-apps/logic-apps-gateway-connection.md)。
+  > [!NOTE]
+  > 如果 MQ 服务器公开可用，或在 Azure 中可用，则不必使用数据网关。
 
-  如果 MQ 服务器公开可用，或在 Azure 中可用，则不必使用数据网关。
+  * 要使 MQ 连接器正常工作，安装本地数据网关的服务器还需要安装 .NET Framework 4.6。
+  
+  * 安装本地数据网关后，还需要[为 MQ 连接器用于访问本地 MQ 服务器的本地数据网关创建 Azure 网关资源](../logic-apps/logic-apps-gateway-connection.md)。
 
-* 要在其中添加 MQ 操作的逻辑应用。 此逻辑应用必须使用与本地数据网关连接相同的位置，并且必须已经有一个用于启动工作流的触发器。
+* 要在其中使用 MQ 连接器的逻辑应用。 MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用[定期触发器](../connectors/connectors-native-recurrence.md)。 如果你不熟悉逻辑应用，请尝试[创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-  MQ 连接器没有任何触发器，因此必须先将触发器添加到逻辑应用。 例如，可以使用定期触发器。 如果你不熟悉逻辑应用，请尝试[创建第一个逻辑应用的快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+## <a name="limitations"></a>限制
+
+MQ 连接器不支持或不使用消息的 Format 字段，也不执行任何字符集转换。 连接器仅将出现在消息字段中的所有数据放入 JSON 消息中，然后将其发送出去。
 
 <a name="create-connection"></a>
 
@@ -61,13 +66,13 @@ IBM MQ 连接器包含以下操作，但不提供触发器：
 
    * 对于“服务器”，可以输入 MQ 服务器名称，或输入后跟冒号和端口号的 IP 地址。
 
-   * 若要使用安全套接字层 (SSL)，请选择“启用 SSL?”。
+   * 若要使用传输层安全性 (TLS) 或安全套接字层 (SSL)，请选择“启用 SSL?”。
 
      MQ 连接器目前仅支持服务器身份验证，不支持客户端身份验证。 有关详细信息，请参阅[连接和身份验证问题](#connection-problems)。
 
 1. 在“网关”部分执行以下步骤：
 
-   1. 从“订阅”列表中，选择与 Azure 网关资源关联的 Azure 订阅。
+   1. 在“订阅”列表中，请选择与 Azure 网关资源关联的 Azure 订阅。
 
    1. 从“连接网关”列表中选择要使用的 Azure 网关资源。
 
@@ -185,7 +190,7 @@ IBM MQ 连接器包含以下操作，但不提供触发器：
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关在连接器的 Swagger 说明中描述的操作和限制的技术详细信息，请查看连接器的[参考页](/connectors/mq/)。
+有关连接器的 Swagger 文件中所述的操作和限制等技术详细信息，请查看[连接器的参考页](/connectors/mq/)。
 
 ## <a name="next-steps"></a>后续步骤
 

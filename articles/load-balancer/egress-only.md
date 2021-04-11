@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a96e6b567c04f2e0561a0a754e854a0e2b1ad6b0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94694987"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076252"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>仅出站的负载均衡器配置
 
@@ -278,7 +278,7 @@ ms.locfileid: "94694987"
     | 前端 IP 地址 | 选择“LoadBalancerFrontEnd”。|
     | 空闲超时（分钟） | 将滑块移动到 15 分钟。|
     | TCP 重置 | 选择“启用”。|
-    | 后端池 | 选择“myPublicBackendPool”。| |
+    | 后端池 | 选择“myPublicBackendPool”。|
     | 端口分配 -> 端口分配 | 选择“使用默认出站端口数” |
 
 4. 选择“添加”   。

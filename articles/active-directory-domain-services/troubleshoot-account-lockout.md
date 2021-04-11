@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
-ms.translationtype: MT
+ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618767"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103198956"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>使用 Azure Active Directory 域服务托管域对帐户锁定问题进行故障排除
 
@@ -83,6 +83,23 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
+
+**注意**
+
+你可能会发现在 4776 和 4740 事件上，“源工作站: ”的详细信息为空。 这是因为通过其他一些设备登录网络时发生了密码错误。
+例如：如果你有 RADIUS 服务器，它可以将身份验证转发到 AAD DS。 为了确认是否为 DC 后端启用 RDP，需要配置 netlogon 日志。
+
+03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: 已从(通过 LOB11-RADIUS)进入 contoso\Nagappan.Veerappan 的传递网络登录 
+
+03/04 19:07:29 [LOGON] [10752] contoso: SamLogon: 从(通过 LOB11-RADIUS)进行的 contoso\Nagappan.Veerappan 传递网络登录返回 0xC000006A
+
+03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: 已从(通过 LOB11-RADIUS)进入 contoso\Nagappan.Veerappan 的传递网络登录 
+
+03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: 从(通过 LOB11-RADIUS)进行的 contoso\Nagappan.Veerappan 传递网络登录返回 0xC000006A
+
+请允许通过 RDP 连接到 NSG 中的 DC，再连接到后端，以便配置诊断捕获（即 netlogon） https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules 。如果已修改默认 NSG，请按照 PSlet 方式启用 https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop
+
+在任何服务器上启用 Netlogon 登录 https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service
 
 ## <a name="next-steps"></a>后续步骤
 

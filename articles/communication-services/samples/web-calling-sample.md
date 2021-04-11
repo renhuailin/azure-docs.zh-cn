@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: aadecd3c57f5a145efd43058a5113205d7517c0b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486397"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496229"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
@@ -88,12 +88,12 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 - 熟悉如何[使用呼叫客户端库](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 了解有关[呼叫工作原理](../concepts/voice-video-calling/about-call-types.md)的详细信息
-- 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例
 
 ## <a name="additional-reading"></a>其他阅读材料
 
-- [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
+- [示例](./overview.md) - 在示例概述页上查找更多示例。
 - [Redux](https://redux.js.org/) - 客户端状态管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft 支持的 UI 库
 - [React](https://reactjs.org/) - 用于构建用户界面的库

@@ -2,14 +2,14 @@
 title: 快速入门：使用 Azure Monitor Application Insights 监视网站
 description: 本快速入门介绍如何使用 Azure Monitor Application Insights 设置客户端/浏览器端网站监视。
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488573"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654883"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入门：开始使用 Azure Monitor Application Insights 监视你的网站
 
@@ -26,7 +26,7 @@ ms.locfileid: "102488573"
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，不管是在本地运行还是在云中运行。 使用以下步骤查看此数据：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 选择“创建资源” > “管理工具” > “Application Insights”。
 
    > [!NOTE]
@@ -60,9 +60,9 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="configure-application-insights-sdk"></a>配置 Application Insights SDK
 
-1. 选择“概览” > “概要”，然后复制应用程序的“检测密钥”。
+1. 选择 “概述”，然后复制应用程序的 **连接字符串**。 在此示例中，我们只需要连接字符串 `InstrumentationKey=00000000-0000-0000-0000-000000000000;` 的“Instrumentation key”部分。
 
-   ![“新建 Application Insights 资源”窗体](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="包含检测密钥和连接字符串的概述页的屏幕截图。":::
 
 1. 将以下脚本添加到 ``hello_world.html`` 文件中的结束标记 ``</head>`` 之前：
 
@@ -76,7 +76,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
     > [!NOTE]
     > 当前代码片段（上面列出的）为版本“5”，该版本在代码片段中编码为 sv:"#"，[可在 GitHub 上找到当前版本和配置详细信息](https://go.microsoft.com/fwlink/?linkid=2156318)。
-   
+
 1. 编辑 ``hello_world.html``，添加检测密钥。
 
 1. 在本地浏览器会话中打开 ``hello_world.html``。 此操作创建单个页面视图。 可以刷新浏览器，生成多个测试性的页面视图。
@@ -95,7 +95,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
    概览页上的四个默认图表局限于服务器端应用程序数据。 由于我们要检测客户端/浏览器端与 JavaScript SDK 的交互，因此该特定视图不会应用，除非我们也安装了服务器端 SDK。
 
-1. 选择“Analytics”![“应用程序映射”图标](media/website-monitoring/006.png)。  此操作将打开“Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
+1. 选择“日志”。   此操作将打开“Logs”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 若要查看与客户端浏览器请求相关的数据，请运行以下查询：
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
     | render timechart
     ```
 
-   ![一段时间内用户请求的分析图](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="一段时间内用户请求日志分析分析图的屏幕截图。":::
 
-1. 返回到“概览”页。 在“调查”标题下选择“浏览器”，然后选择“性能”  。  此时会显示与网站性能相关的指标。 有一个用于分析网站中故障和异常的相应视图。 可以选择“示例”来访问[端到端事务详细信息](./transaction-diagnostics.md)。
+1. 返回到“概览”页。 在“调查”标题下，选择“性能”，然后选择“浏览器”选项卡。此时会显示与网站性能相关的指标。 有一个用于分析网站中故障和异常的相应视图。 可以选择“示例”来访问[端到端事务详细信息](./transaction-diagnostics.md)。
 
-   ![“服务器指标”图](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="含览器指标图形的“性能”选项卡的屏幕截图。":::
 
-1. 在 Application Insights 主菜单的“使用情况”标题下选择“[用户](./usage-segmentation.md)”，开始探索[用户行为分析工具](./usage-overview.md) 。 由于我们是在单台计算机中进行测试，因此只会看到一个用户的数据。 对于实时网站，用户的分布可能如下所示：
-
-     ![用户图](./media/website-monitoring/usage-users.png)
+1. 在 Application Insights 主菜单的“使用情况”标题下选择“[用户](./usage-segmentation.md)”，开始探索[用户行为分析工具](./usage-overview.md) 。 由于我们是在单台计算机中进行测试，因此只会看到一个用户的数据。
 
 1. 对于包含多个页面的复杂网站，可以使用[用户流](./usage-flows.md)工具跟踪访客在浏览网站各个部分时采用的路径。
-
-   ![用户流可视化](./media/website-monitoring/user-flows.png)
 
 若要了解更多用于监视网站的高级配置，请参阅 [JavaScript SDK API 参考](./javascript.md)。
 

@@ -3,7 +3,7 @@ title: 从 Azure 媒体编码器迁移到 Media Encoder Standard | Microsoft Doc
 description: 本主题介绍如何从 Azure 媒体编码器迁移到 Media Encoder Standard 媒体处理器。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,23 +11,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32eab0f729280ad25f45853e05ea982b60a6d9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 4f528cea9b475c0158524ad9b46623a78df5761d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259330"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103016196"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>从 Azure 媒体编码器迁移到 Media Encoder Standard
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文介绍了从旧 Azure 媒体编码器 (AME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+本文讨论从旧版 Azure 媒体编码器 (AME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
-使用 AME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 AME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
+使用 AME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 AME，以及一个等效的 [系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
 
 ## <a name="migrating-to-media-encoder-standard"></a>迁移到 Media Encoder Standard
 
@@ -78,4 +78,4 @@ ITask task = job.Tasks.AddNew("My encoding task",
 ## <a name="next-steps"></a>后续步骤
 
 * [旧组件](legacy-components.md)
-* [定价页](https://azure.microsoft.com/pricing/details/media-services/#encoding)
+* [定价页面](https://azure.microsoft.com/pricing/details/media-services/#encoding)

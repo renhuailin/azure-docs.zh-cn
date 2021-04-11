@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 4d429b7136158723fa6110975326217c5540bc2e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200906"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -42,8 +42,8 @@ Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建
 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 > [!NOTE]
-> 本文使用 Bash 语法作为本教程中的命令。
-> 如果使用 Azure Cloud Shell，请确保将 Cloud Shell 窗口左上角的下拉列表设置为 **Bash**。
+> 本文使用 Bash 语法作为本教程的命令。
+> 如果使用 Azure Cloud Shell，请确保将 Cloud Shell 窗口左上角的下拉列表设置为 Bash。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -69,32 +69,35 @@ az group create --name myResourceGroup --location eastus
 
 若要运行支持 Windows Server 容器的节点池的 AKS 群集，群集需要采用使用 [Azure CNI][azure-cni-about]（高级）网络插件的网络策略。 有关帮助计划所需子网范围和网络注意事项的更多详细信息，请参阅[配置 Azure CNI 网络][use-advanced-networking]。 使用 [az aks create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 此命令将创建必要的网络资源（如果这些资源不存在）。
 
-* 集群配置了两个节点
-* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据，并且必须满足 [Windows Server 密码要求][windows-server-password] 。
-* 节点池使用 `VirtualMachineScaleSets`
+* 群集配置了两个节点。
+* Windows-admin-password 和 windows-admin-username 参数为群集上创建的任何 Windows Server 容器设置管理员凭据，并且必须满足 `--windows-admin-password`[Windows Server 密码要求][windows-server-password]`--windows-admin-username`。 如果不指定 windows-admin-password 参数，系统将提示你提供一个值。
+* 节点池使用 `VirtualMachineScaleSets`。
 
 > [!NOTE]
 > 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
 
-提供自己的安全 PASSWORD_WIN（请注意，本文中的命令是输入到 BASH shell 中）：
+创建一个用户名，用作群集上 Windows Server 容器的管理员凭据。 以下命令提示你输入一个用户名，并将其设置为 WINDOWS_USERNAME 以供在之后的命令中使用（请记住，本文中的命令输入到 BASH shell 中）。
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+创建你的群集，确保指定了 `--windows-admin-username` 参数。 下面的示例命令使用你在前一个命令中设置的 WINDOWS_USERNAME 中的值创建群集。 也可以直接在参数中提供不同的用户名，而不是使用 WINDOWS_USERNAME。 以下命令还将提示你为群集上 Windows Server 容器的管理员凭据创建密码。 或者，你可以使用 windows-admin-password 参数，并在此处指定你自己的值。
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> 如果出现密码验证错误，请验证 *windows-admin-password* 参数是否符合 [Windows Server 密码要求][windows-server-password]。 如果密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
+> 如果出现密码验证错误，请验证设置的密码是否符合 [Windows Server 密码要求][windows-server-password]。 如果密码符合要求，请尝试在另一个区域中创建资源组。 然后尝试创建包含新资源组的群集。
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，预配群集所需的时间可能不止几分钟。 在这种情况下，最多需要 10 分钟。
 
