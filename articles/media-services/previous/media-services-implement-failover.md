@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure 媒体服务实现故障转移流式处理 | Microsoft Docs
-description: 本文说明如何使用 Azure 媒体服务实现故障转移流式处理方案。
+title: 使用 Azure 媒体服务实现故障转移流式处理 | Microsoft 文档
+description: 本文介绍如何使用 Azure 媒体服务实现故障转移流式处理方案。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,21 +11,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657254"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063978"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒体服务 v2 实现故障转移流式处理
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容分发网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
+本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容分发网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
 1. 在“数据中心 A”中设置一个媒体服务帐户。
 2. 将一个夹层文件上传到源资产中。
@@ -34,7 +34,7 @@ ms.locfileid: "97657254"
 5. 从上一步骤中创建的只读共享访问签名定位符获取源资产的容器名称。 在存储帐户之间复制 Blob 时必须使用此名称（本主题稍后会介绍。）
 6. 为通过编码任务创建的资产创建源定位器。 
 
-然后，如果要处理故障转移，请执行以下操作：
+然后，要处理故障转移，请执行以下操作：
 
 1. 在“数据中心 B”中设置一个媒体服务帐户。
 2. 在目标媒体服务帐户中创建一个目标空资产。
@@ -51,7 +51,7 @@ ms.locfileid: "97657254"
 
 * 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。 应该使用 CreateFileInfos 媒体服务 REST API 来实现此目的。 
 * 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥不同）。 
-* 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态  。
+* 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,11 +64,11 @@ ms.locfileid: "97657254"
 
 在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
-1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入  HandleRedundancyForOnDemandStreaming 作为名称，然后单击“确定”。 
-2. 在与  HandleRedundancyForOnDemandStreaming.csproj 项目文件相同的级别创建  SupportFiles 文件夹。 在  SupportFiles 文件夹下创建  OutputFiles 和  MP4Files 文件夹。 将一个 .mp4 文件复制到  MP4Files 文件夹。 （本示例使用 **ignite.mp4** 文件。） 
-3. 使用  NuGet 添加对媒体服务相关 DLL 的引用。 在  Visual Studio 主菜单中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”。    在控制台窗口中键入  Install-Package windowsazure.mediaservices，并按 Enter。
+1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，并单击“确定”。
+2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （在此示例中，使用 ignite.mp4 文件。） 
+3. 使用 NuGet 添加对媒体服务相关 DLL 的引用。 在 Visual Studio 主菜单中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”。   在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，并按 Enter。
 4. 添加此项目所需的其他引用：System.Runtime.Serialization 和 System.Web。
-5. 将默认添加到  Programs.cs 文件中的  using 语句替换为以下语句：
+5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
 
 ```csharp
 using System;
@@ -208,10 +208,10 @@ using System.Runtime.Serialization.Json;
         }
     }
     ```
-3. 以下方法定义是从 Main 调用的。 有关每种方法的详细信息，请参阅注释。
+3. 以下方法定义是从 Main 调用的。 有关每个方法的详细信息，请参见注释。
 
     >[!NOTE]
-    >不同媒体服务策略的策略数限制为 1,000,000 个（例如，Locator 策略或 ContentKeyAuthorizationPolicy 就是如此）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上传策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
+    >不同媒体服务策略的策略数限制为 1,000,000 个（例如，对于 Locator 策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上传策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
 
     ```csharp
     public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
@@ -751,9 +751,9 @@ using System.Runtime.Serialization.Json;
     
 ## <a name="content-protection"></a>内容保护
 
-本主题中的示例演示了清晰的流式处理。 如果要执行受保护的流式处理，需要设置一些其他项目，需要使用相同的 **AssetDeliveryPolicy**、相同的 **ContentKeyAuthorizationPolicy** 或外部密钥服务器 URL，并且需要复制使用同一标识符的内容密钥。
+本主题中的示例演示了如何清除流式处理。 如果要执行受保护的流式处理，需要设置其他一些功能，需要使用相同的 AssetDeliveryPolicy、相同的 ContentKeyAuthorizationPolicy 或外部密钥服务器 URL，并且需要复制具有相同标识符的内容密钥。
 
-有关内容保护的详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
+有关内容保护的详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-playready-license-template-overview.md)。
 
 ## <a name="see-also"></a>另请参阅
 

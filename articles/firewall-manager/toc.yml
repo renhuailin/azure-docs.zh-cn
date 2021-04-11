@@ -51,6 +51,8 @@
   items:
     - name: 部署安全合作伙伴提供程序
       href: deploy-trusted-security-partner.md
+    - name: 保护专用终结点
+      href: private-link-inspection-secure-virtual-hub.md
     - name: 迁移到防火墙策略 - PowerShell
       href: migrate-to-policy.md
     - name: DNS 设置

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 31d22be5ee5480878633b9742837e3f5d6119043
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508310"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078938"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 | 技术 | 示例体系结构 |
 | --- | --- |
 | **可用性组** |在同一区域的 Azure VM 中运行的可用性副本提供高可用性。 需要配置域控制器 VM，因为 Windows 故障转移群集需要 Active Directory 域。<br/><br/> 为了实现更高的冗余性和可用性，可以按照[可用性组概述](availability-group-overview.md)中的说明，将 Azure VM 部署在不同的[可用性区域](../../../availability-zones/az-overview.md)中。 如果已在可用性区域中部署可用性组中的 SQL Server VM，则将 [Azure 标准负载均衡器](../../../load-balancer/load-balancer-overview.md)用于侦听器，如 [Azure SQL VM CLI](./availability-group-az-commandline-configure.md) 和 [Azure 快速入门模板](availability-group-quickstart-template-configure.md)文章中所述。<br/> ![示意图中在“WSFC 群集”（由“主要副本”、“次要副本”和“文件共享见证”组成）上方显示了“域控制器”。](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](./availability-group-quickstart-template-configure.md)。 |
-| **故障转移群集实例** |SQL Server VM 支持故障转移群集实例。 由于 FCI 功能需要共享存储，因此，可以在 Azure VM 上的 SQL Server 中使用五个解决方案： <br/><br/> - 对于 Windows Server 2019，使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 共享托管磁盘是一种允许同时将托管磁盘附加到多个虚拟机的 Azure 产品。 群集中的 VM 可以根据群集应用程序通过 SCSI 永久预留 (SCSI PR) 选择的预留在附加的磁盘中进行读取或写入。 SCSI PR 是一种行业标准的存储解决方案，可供在本地存储区域网络 (SAN) 上运行的应用程序使用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。 <br/><br/>- 对于 Windows Server 2016 及更高版本，使用[存储空间直通\( S2D\)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 提供基于软件的虚拟 SAN。<br/><br/>- 对于 Windows Server 2012 及更高版本，使用[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)。 高级文件共享由 SSD 提供支持，延迟稳定且较低，完全支持用于 FCI。<br/><br/>- 对于群集功能，使用合作伙伴解决方案支持的存储。 有关使用 SIOS DataKeeper 的具体示例，请参阅博客文章：[故障转移群集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>- 对于经由 Azure ExpressRoute 的远程 iSCSI 目标，使用共享块存储。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于 Microsoft 合作伙伴提供的共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>||
+| **故障转移群集实例** |SQL Server VM 支持故障转移群集实例。 由于 FCI 功能需要共享存储，因此，可以在 Azure VM 上的 SQL Server 中使用五个解决方案： <br/><br/> - 对于 Windows Server 2019，使用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 共享托管磁盘是一种允许同时将托管磁盘附加到多个虚拟机的 Azure 产品。 群集中的 VM 可以根据群集应用程序通过 SCSI 永久预留 (SCSI PR) 选择的预留在附加的磁盘中进行读取或写入。 SCSI PR 是一种行业标准的存储解决方案，可供在本地存储区域网络 (SAN) 上运行的应用程序使用。 在托管磁盘上启用 SCSI PR，可以将这些应用程序按原样迁移到 Azure。 <br/><br/>- 对于 Windows Server 2016 及更高版本，使用[存储空间直通\( S2D\)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 提供基于软件的虚拟 SAN。<br/><br/>- 对于 Windows Server 2012 及更高版本，使用[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)。 高级文件共享由 SSD 提供支持，延迟稳定且较低，完全支持用于 FCI。<br/><br/>- 对于群集功能，使用合作伙伴解决方案支持的存储。 有关使用 SIOS DataKeeper 的具体示例，请参阅博客文章：[故障转移群集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>- 对于经由 Azure ExpressRoute 的远程 iSCSI 目标，使用共享块存储。 例如，NetApp 专用存储 (NPS) 使用 Equinix 通过 ExpressRoute 向 Azuer VM 公开 iSCSI 目标。<br/><br/>对于 Microsoft 合作伙伴提供的共享存储和数据复制解决方案，如有任何关于在故障转移时访问数据的问题，请联系供应商。<br/><br/>|
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>仅限 Azure：灾难恢复解决方案
 可将可用性组、数据库镜像或备份和还原与存储 Blob 配合使用，为 Azure 中的 SQL Server 数据库提供灾难恢复解决方案。

@@ -1,14 +1,14 @@
 ---
 title: IRS 1075 蓝图示例控件
 description: IRS 1075 蓝图示例的控制映射。 将每个控件都映射到一个或多个有助于评估的 Azure 策略定义。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 08ce69d13f201e6f0bd1d649ebfe3bbf5c38f927
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c3024b970762f7e295ad2d190e4f1cdec3ac5de
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98045217"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386561"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例的控制映射
 

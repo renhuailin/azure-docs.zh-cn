@@ -5,7 +5,6 @@ services: network-watcher
 documentationcenter: na
 author: damendo
 tags: azure-resource-manager
-Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 385d43e46cd3f9465c0fbf9a02eeae356f48fac4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 76d57990fcdd82bfe382fa2fb4ab75fb037caf4f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966524"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063911"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -29,7 +28,7 @@ ms.locfileid: "94966524"
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
-> - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 在本教程中，你将了解如何执行以下操作：
 
@@ -54,12 +53,12 @@ ms.locfileid: "94966524"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
-    |资源组| 选择“新建”，并输入 myResourceGroup |
+    |资源组| 选择“新建”，并输入 myResourceGroup|
     |位置| 选择“美国东部”|
 
-4. 选择 VM 的大小，然后选择“选择”。
+4. 选择 VM 的大小，然后选择“选择”  。
 5. 保留“设置”下的所有默认设置，然后选择“确定”。 
-6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署  。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
+6. 在“摘要”中的“创建”下，选择“创建”以启动 VM 部署    。 部署 VM 需要几分钟时间。 在继续余下的步骤之前，请等待 VM 完成部署。
 
 创建 VM 需要几分钟时间。 在创建完 VM 之前，请勿继续执行剩余的步骤。 门户在创建 VM 的同时，还会创建名为 **myVm-nsg** 的网络安全组并将其关联到 VM 的网络接口。
 
