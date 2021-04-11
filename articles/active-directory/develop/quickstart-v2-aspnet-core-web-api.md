@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: da53d6bad790e6b204fa2a2b045e7bfdd83e0cc9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 30593c51f17b99989409ddd22c9c1caa28468039
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720825"
 ---
-# <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
+# <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>快速入门：使用 Microsoft 标识平台保护 ASP.NET Core Web API
 
-在本快速入门中，我们将下载一个 ASP.NET Core Web API 代码示例并查看其代码，该代码将对资源的访问权限限制为仅授权帐户。 该示例支持对任何 Azure Active Directory (Azure AD) 组织中的个人 Microsoft 帐户和帐户进行授权。
+在本快速入门中，我们将下载一个 ASP.NET Core Web API 代码示例并查看其对资源的访问权限限制为仅授权帐户的方式。 该示例支持对任何 Azure Active Directory (Azure AD) 组织中的个人 Microsoft 帐户和帐户进行授权。
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>先决条件
@@ -36,12 +36,12 @@ ms.locfileid: "100102523"
 > 首先，在 Azure AD 租户中注册 Web API，并通过执行以下步骤来添加范围：
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
-> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
+> 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
 > 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
-> 1. 输入应用程序的名称（例如 `AspNetCoreWebApi-Quickstart`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
+> 1. 对于“名称”，请输入应用程序名称。 例如，输入 **AspNetCoreWebApi-Quickstart**。 应用的用户会看到此名称，你稍后可对其进行更改。
 > 1. 选择“注册”  。
-> 1. 在“管理”下，选择“公开 API” > “添加范围”  。 通过选择“保存并继续”来接受默认的应用程序 ID URI，然后输入以下信息 ：
+> 1. 在“管理”下，选择“公开 API” > “添加范围”  。 针对 **应用程序 ID URI**，通过选择 **保存并继续** 来接受默认，然后输入以下信息：
 >    - **范围名称**：`access_as_user`
 >    - **谁能同意？** ：管理员和用户
 >    - **管理员许可显示名称**：`Access AspNetCoreWebApi-Quickstart`
@@ -56,25 +56,30 @@ ms.locfileid: "100102523"
 > [!div renderon="docs"]
 > 从 GitHub [下载 ASP.NET Core 解决方案](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip)。
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div renderon="docs"]
 > ## <a name="step-3-configure-the-aspnet-core-project"></a>步骤 3：配置 ASP.NET Core 项目
 >
 > 在此步骤中，将示例代码配置为使用之前创建的应用注册。
 >
-> 1. 将 .zip 存档提取到驱动器根附近的文件夹中。 例如，提取到 C:\Azure-Samples。
+> 1. 将 .zip 存档提取到驱动器根附近的文件夹中。 例如，解压到 C:\Azure-Samples。
+>
+>    建议将存档解压到驱动器根附近的目录中，以避免在 Windows 上出现路径长度限制导致的错误。
+>
 > 1. 在代码编辑器的 webapi 文件夹中打开解决方案。
-> 1. 打开 appsettings.json 文件，并修改以下内容：
+> 1. 打开 appsettings.json 文件，并修改以下代码：
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here",
 >    "TenantId": "Enter_the_Tenant_Info_Here"
 >    ```
 >
->    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的“应用程序(客户端) ID”。 可以在应用的“概览”页中找到“应用程序(客户端) ID”。
+>    - 将 `Enter_the_Application_Id_here` 替换为在 Azure 门户中注册的应用程序的应用程序（客户端）ID。 可以在应用的“概述”页上找到应用程序（客户端）ID。
 >    - 将 `Enter_the_Tenant_Info_Here` 替换为以下其中一项：
->       - 如果应用程序支持“仅限此组织目录中的帐户”，请将此值替换为“目录(租户) ID”(GUID) 或“租户名称”（例如 `contoso.onmicrosoft.com`）  。 你可以在应用的”概述”页上找到“目录(租户) ID” 。
->       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
->       - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值保留为 `common`
+>       - 如果应用程序支持“仅限此组织目录中的帐户”，请将此值替换为目录（租户）ID（GUID）或租户名称（例如，`contoso.onmicrosoft.com`）。 你可以在应用的“概述”页上找到目录（租户）ID。
+>       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`。
+>       - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值保留为 `common`。
 >
 > 在此快速入门中，请不要更改 appsettings.json 文件中的任何其他值。
 
@@ -84,7 +89,7 @@ Web API 从客户端应用程序接收令牌，Web API 中的代码验证该令�
 
 ### <a name="startup-class"></a>Startup 类
 
-Microsoft.AspNetCore.Authentication 中间件使用托管进程初始化时执行的 `Startup` 类。 在其 `ConfigureServices` 方法中，调用了 Microsoft.Identity.Web 提供的 `AddMicrosoftIdentityWebApi` 扩展方法。
+*Microsoft.AspNetCore.Authentication* 中间件使用托管进程启动时执行的 `Startup` 类。 在其 `ConfigureServices` 方法中，调用了 Microsoft.Identity.Web 提供的 `AddMicrosoftIdentityWebApi` 扩展方法。
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -107,7 +112,7 @@ Microsoft.AspNetCore.Authentication 中间件使用托管进程初始化时执�
 `Configure()` 方法包含两个重要的方法 `app.UseAuthentication()` 和 `app.UseAuthorization()`，这些方法实现了命名功能：
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+// The runtime calls this method. Use this method to configure the HTTP request pipeline.
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     // more code
@@ -117,9 +122,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-### <a name="protect-a-controller-a-controllers-method-or-a-razor-page"></a>保护控制器、控制器的方法或 Razor 页
+### <a name="protecting-a-controller-a-controllers-method-or-a-razor-page"></a>保护控制器、控制器的方法或 Razor 页
 
-可以使用 `[Authorize]` 属性保护控制器或控制器方法。 此属性通过仅允许经过身份验证的用户，来限制对控制器或方法的访问，这意味着如果用户未经身份验证，则可以启动身份验证质询来访问控制器。
+可以使用 `[Authorize]` 属性保护控制器或控制器方法。 此属性只允许经过身份验证的用户，从而限制对控制器或方法的访问。 如果用户尚未通过身份验证，可以启动身份验证质询来访问控制器。
 
 ```csharp
 namespace webapi.Controllers
@@ -130,9 +135,9 @@ namespace webapi.Controllers
     public class WeatherForecastController : ControllerBase
 ```
 
-### <a name="validate-the-scope-in-the-controller"></a>验证控制器中的范围
+### <a name="validation-of-scope-in-the-controller"></a>验证控制器中的范围
 
-然后，API 中的代码通过使用 `HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);` 来验证令牌中是否涵盖了所需范围
+API 中的代码通过使用 `HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);` 来验证令牌中是否涵盖了所需范围：
 
 ```csharp
 namespace webapi.Controllers
@@ -142,7 +147,7 @@ namespace webapi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        // The Web API will only accept tokens 1) for users, and 2) having the "access_as_user" scope for this API
+        // The web API will only accept tokens 1) for users, and 2) having the "access_as_user" scope for this API
         static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
 
         [HttpGet]
@@ -162,9 +167,9 @@ namespace webapi.Controllers
 
 包含此 ASP.NET Core Web API 代码示例的 GitHub 存储库包含说明和更多代码示例，这些示例向你展示如何：
 
-- 向新的 ASP.NET Core Web API 添加身份验证
-- 从桌面应用程序调用 Web API
-- 调用下游 API，如 Microsoft Graph 和其他 Microsoft API
+- 向新的 ASP.NET Core Web API 添加身份验证。
+- 从桌面应用程序调用 Web API。
+- 调用下游 API，如 Microsoft Graph 和其他 Microsoft API。
 
 > [!div class="nextstepaction"]
 > [GitHub 上的 ASP.NET Core Web API 教程](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)

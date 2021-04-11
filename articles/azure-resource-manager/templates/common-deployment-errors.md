@@ -4,12 +4,12 @@ description: 说明如何解决使用 Azure Resource Manager 将资源部署到 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564341"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -23,7 +23,7 @@ ms.locfileid: "104888849"
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循存储帐户的命名限制。 | [解析存储帐户名称](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 查看可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)和[排查分配失败问题](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)、[Windows 预配和分配问题](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows)和[排查分配失败问题](/troubleshoot/azure/virtual-machines/allocation-failure)|
 | AnotherOperationInProgress | 等待并发操作完成。 | |
 | AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 请检查帐户所属的角色，及其与部署范围相对应的访问权限。<br><br>所需的资源提供程序未注册时，可能会收到此错误。 | [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 请检查内部状态消息，获取故障排除帮助。 | [模板引用](/azure/templates/)和[支持的位置](resource-location.md) |

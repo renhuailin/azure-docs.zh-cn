@@ -2,15 +2,15 @@
 title: 配置 Linux Python 应用
 description: 了解如何使用 Azure 门户和 Azure CLI 配置运行 Web 应用的 Python 容器。
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 094755ed6c018b3ac82d6f62a43f17e2536bbd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709081"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953504"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -114,7 +114,7 @@ ms.locfileid: "101709081"
 
 1. **应用启动**：查看后文中的 [容器启动过程](#container-startup-process)部分，了解应用服务如何尝试运行应用。 默认情况下，应用服务使用 Gunicorn Web 服务器，该服务器必须能够找到应用对象或 wsgi.py 文件夹。 如有必要，可以[自定义启动命令](#customize-startup-command)。
 
-1. **持续部署**：设置持续部署，如 [持续部署到 Azure 应用服务](deploy-continuous-deployment.md)（如果使用 Azure Pipelines 或 Kudu 部署），或 [使用 GitHub Actions 部署到应用服务](deploy-github-actions.md)（如果使用 GitHub 操作）中所述。
+1. **持续部署**：设置持续部署，如 [持续部署到 Azure 应用服务](deploy-continuous-deployment.md)（如果使用 Azure Pipelines 或 Kudu 部署），或 [使用 GitHub Actions 部署到应用服务](./deploy-continuous-deployment.md)（如果使用 GitHub 操作）中所述。
 
 1. **自定义操作**：若要在托管应用的应用服务容器内执行操作（例如 Django 数据库迁移），可以 [通过 SSH 连接到容器](configure-linux-open-ssh-session.md)。 有关运行 Django 数据库迁移的示例，请参阅[教程：使用 PostgreSQL 部署 Django Web 应用 - 运行数据库迁移](tutorial-python-postgresql-app.md#43-run-django-database-migrations)。
     - 使用持续部署时，可以使用生成后命令执行这些操作，如前面的[自定义生成自动化](#customize-build-automation)所述。
@@ -373,6 +373,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 - [应用未显示 -“服务不可用”消息](#service-unavailable)
 - [找不到 setup.py 或 requirements.txt](#could-not-find-setuppy-or-requirementstxt)
 - [启动时出现 ModuleNotFoundError](#modulenotfounderror-when-app-starts)
+- [数据库已锁定](#database-is-locked)
 - [在 SSH 会话中键入密码时，密码不显示](#other-issues)
 - [SSH 会话中的命令似乎已被截断](#other-issues)
 - [静态资产未在 Django 应用中显示](#other-issues)
@@ -409,6 +410,14 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 #### <a name="modulenotfounderror-when-app-starts"></a>应用启动时出现 ModuleNotFoundError
 
 如果看到类似于 `ModuleNotFoundError: No module named 'example'` 的错误，则意味着在应用程序启动时，Python 找不到一个或多个模块。 使用代码来部署虚拟环境时最常发生这种情况。 虚拟环境不是可移植的，因此不应使用应用程序代码来部署虚拟环境， 而应利用 Oryx 来创建虚拟环境，然后创建应用设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将其设置为 `1`，通过这种方法在 Web 应用上安装包。 这样就会强制 Oryx 安装你的包（无论何时部署到应用服务）。 有关详细信息，请参阅[这篇有关虚拟环境可移植性的文章](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)。
+
+### <a name="database-is-locked"></a>数据库已锁定
+
+尝试使用 Django 应用运行数据库迁移时，可能会看到“sqlite3. OperationalError: 数据库已锁定。" 此错误表示你的应用程序正在使用默认情况下配置了 Django 的 SQLite 数据库，而没有使用云数据库（如 PostgreSQL for Azure）。
+
+检查应用的 *settings.py* 文件中的 `DATABASES` 变量，以确保应用使用的是云数据库，而不是 SQLite。
+
+如果在[教程：使用 PostgreSQL 部署 Django web 应用](tutorial-python-postgresql-app.md)中的示例遇到此错误，请检查是否已完成[配置环境变量以连接数据库](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)中的步骤。
 
 #### <a name="other-issues"></a>其他问题
 

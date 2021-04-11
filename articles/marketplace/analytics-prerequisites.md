@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3b109048be4a94990c26e31aa5bc2ad36fdd0211
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583430"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563814"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>以编程方式访问分析数据的先决条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "102583430"
 
 ## <a name="create-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-普通用户凭据不能用于以编程方式访问商业市场分析数据。 需要创建 Azure Active Directory (Azure AD) 应用程序，以及用于访问分析 API 的机密。 若要了解如何创建 Azure AD 应用程序和机密，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。
+普通用户凭据不能用于以编程方式访问商业市场分析数据。 需要创建 Azure Active Directory (Azure AD) 应用程序，以及用于访问分析 API 的机密。 若要了解如何创建 Azure AD 应用程序和机密，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 
 ## <a name="associate-the-azure-ad-application-to-the-partner-center-tenant"></a>将 Azure AD 应用程序关联到合作伙伴中心租户
 
@@ -41,7 +41,7 @@ ms.locfileid: "102583430"
 
 ## <a name="generate-an-azure-ad-token"></a>生成 Azure AD 令牌
 
-需要使用应用程序（客户端）ID 生成 Azure AD 令牌。 此 ID 有助于唯一地标识 Microsoft 标识平台中的客户端应用程序以及上一步中的客户端密码。 有关生成 Azure AD 令牌的步骤，请参阅[使用客户端凭据（共享机密或证书）进行服务到服务调用](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow)。
+需要使用应用程序（客户端）ID 生成 Azure AD 令牌。 此 ID 有助于唯一地标识 Microsoft 标识平台中的客户端应用程序以及上一步中的客户端密码。 有关生成 Azure AD 令牌的步骤，请参阅[使用客户端凭据（共享机密或证书）进行服务到服务调用](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)。
 
 > [!NOTE]
 > 令牌的有效期为 1 小时。

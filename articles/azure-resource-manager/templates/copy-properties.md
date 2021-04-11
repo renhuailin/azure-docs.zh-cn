@@ -4,10 +4,10 @@ description: 在资源上创建属性时，可以使用 Azure 资源管理器模
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 1bee4fb672fc0794d5372a4af60b1270105f1755
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104889002"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代

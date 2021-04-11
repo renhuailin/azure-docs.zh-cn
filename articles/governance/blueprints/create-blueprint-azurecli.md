@@ -3,12 +3,12 @@ title: 快速入门：使用 Azure CLI 创建蓝图
 description: 在本快速入门中，通过 Azure CLI 使用 Azure 蓝图创建、定义和部署项目。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98920234"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563661"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入门：使用 Azure CLI 定义和分配 Azure 蓝图
 
@@ -311,7 +311,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
 
 使用 Azure CLI 发布蓝图后，即可将其分配给订阅。 将你创建的蓝图分配给管理组层次结构下的一个订阅。 如果蓝图保存到某个订阅，则只能将其分配给该订阅。 blueprint-name 参数指定要分配的蓝图。 若要提供名称、位置、标识、锁定和蓝图参数，请在 `az blueprint assignment create` 命令上使用匹配的 Azure CLI 参数，或在 parameters JSON 文件中提供这些参数。
 
-1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) 来收集 objectId，以供自己的用户、组或服务主体用于参数中  。
+1. 通过将蓝图部署分配到订阅，运行它。 由于“参与者”和“所有者”参数要求主体的 objectId 数组被授予角色分配，使用 [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) 来收集 objectId，以供自己的用户、组或服务主体用于参数中  。
 
    - JSON 文件 - blueprintAssignment.json
 

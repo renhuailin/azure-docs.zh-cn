@@ -2,15 +2,15 @@
 title: 教程 - 将模块添加到 Azure 资源管理器 Bicep 文件
 description: 使用模块来封装原始资源声明的复杂细节。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633132"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568760"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>教程：将模块添加到 Azure 资源管理器 Bicep 文件
 
@@ -128,4 +128,4 @@ az deployment group create \
 下一个教程系列将详细介绍如何部署模板。
 
 > [!div class="nextstepaction"]
-> [添加模块](./bicep-tutorial-add-modules.md)
+> [部署本地模板](./deployment-tutorial-local-template.md)

@@ -3,12 +3,12 @@ title: 存档层支持（预览版）
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609846"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563967"
 ---
 # <a name="archive-tier-support-preview"></a>存档层支持（预览版）
 
@@ -46,7 +46,7 @@ ms.locfileid: "102609846"
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure。
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure。
 1. 登录到订阅：
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 对于存档中的恢复点，Azure 备份提供了集成的还原方法。
 
-集成还原是一个两步过程。 第一步是解除冻结存储在存档中的恢复点，并将其临时存储在保管库标准层中，持续时间（也称为解除冻结持续时间）介于 10 到 30 天之间。 默认值为 15 天。 解除冻结有两个不同的优先级：标准和高优先级。 了解有关[解除冻结优先级](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier)的详细信息。
+集成还原是一个两步过程。 第一步是解除冻结存储在存档中的恢复点，并将其临时存储在保管库标准层中，持续时间（也称为解除冻结持续时间）介于 10 到 30 天之间。 默认值为 15 天。 解除冻结有两个不同的优先级：标准和高优先级。 了解有关[解除冻结优先级](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)的详细信息。
 
 >[!NOTE]
 >

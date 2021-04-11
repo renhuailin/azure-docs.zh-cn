@@ -4,15 +4,15 @@ description: 本文列出了 Azure 安全中心的安全建议，这些建议可
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 02/16/2021
+ms.date: 03/22/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801448"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -28,9 +28,17 @@ ms.locfileid: "102100400"
 > 如果建议的描述中显示“无相关策略”，通常是因为该建议依赖于另一个建议及其策略。 例如，建议“应修正 Endpoint Protection 运行状况失败...”依赖于建议“应安装 Endpoint Protection 解决方案...”，后者检查 Endpoint Protection 解决方案是否已安装。 基础建议 _确实_ 具有一个策略。
 > 将策略限制为仅限基础建议可简化策略管理。
 
+## <a name="appservices-recommendations"></a><a name='recs-appservices'></a>AppServices 建议
+
+[!INCLUDE [asc-recs-appservices](../../includes/asc-recs-appservices.md)]
+
 ## <a name="compute-recommendations"></a><a name='recs-compute'></a>计算建议
 
 [!INCLUDE [asc-recs-compute](../../includes/asc-recs-compute.md)]
+
+## <a name="container-recommendations"></a><a name='recs-container'></a>容器建议
+
+[!INCLUDE [asc-recs-container](../../includes/asc-recs-container.md)]
 
 ## <a name="data-recommendations"></a><a name='recs-data'></a>数据建议
 
@@ -39,6 +47,10 @@ ms.locfileid: "102100400"
 ## <a name="identityandaccess-recommendations"></a><a name='recs-identityandaccess'></a>IdentityAndAccess 建议
 
 [!INCLUDE [asc-recs-identityandaccess](../../includes/asc-recs-identityandaccess.md)]
+
+## <a name="iot-recommendations"></a><a name='recs-iot'></a>IoT 建议
+
+[!INCLUDE [asc-recs-iot](../../includes/asc-recs-iot.md)]
 
 ## <a name="networking-recommendations"></a><a name='recs-networking'></a>网络建议
 

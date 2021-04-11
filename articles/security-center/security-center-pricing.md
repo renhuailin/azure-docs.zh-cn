@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/08/2021
-ms.openlocfilehash: d45dae8b0b3725555bd83a05032339671a9595be
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454358"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889444"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
@@ -48,6 +48,8 @@ Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，
 - [如果 Log Analytics 代理向多个工作区报告，是否需要重复付费？](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [如果 Log Analytics 代理向多个工作区报告，是否所有工作区上均提供 500-MB 的免费数据引入？](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [500 MB 免费数据引入量是针对整个工作区计算还是严格按每台计算机计算得出的？](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [每日 500 MB 数据限额中包含哪些数据类型？](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>如何跟踪我的组织中谁已在安全中心启用 Azure Defender 更改？
 Azure 订阅可能具有多个管理员，这些管理员有权更改定价设置。 若要找到做出更改的用户，请使用 Azure 活动日志。
@@ -114,6 +116,24 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 对于连接到工作区的每台计算机，你每天都可免费引入 500 MB 的数据。 专用于直接由 Azure 安全中心收集的安全数据类型。
 
 此数据在所有节点中按每日费率平摊。 因此，即使某些计算机发送 100 MB 的数据，另一些发送 800 MB 的数据，只要总量不超过免费限额（[计算机数量] x 500 MB），我们就不会对你额外收费。
+
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>每日 500 MB 数据限额中包含哪些数据类型？
+
+安全中心的账单与 Log Analytics 账单密切相关。 安全中心根据以下[安全数据类型](/azure/azure-monitor/reference/tables/tables-category.md#security)子集提供 500 MB/节点/天分配额：
+- WindowsEvent
+- SecurityAlert
+- SecurityBaseline
+- SecurityBaselineSummary
+- SecurityDetection
+- SecurityEvent
+- WindowsFirewall
+- MaliciousIPCommunication
+- LinuxAuditLog
+- SysmonEvent
+- ProtectionStatus
+- 当工作区上未在运行更新管理解决方案或者启用了解决方案目标设定时，将更新 UpdateSummary 数据类型
+
+如果工作区位于旧版按节点定价层中，则将合并安全中心和 Log Analytics 分配，并将其共同应用于所有可计费的引入数据。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了安全中心的定价选项。 如需查看相关材料，请参阅：

@@ -6,7 +6,6 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 634f09c7862f6e3e2f147094503f5a574476ef91
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7c19c4963ad8c378e1282180800fd839e20edfdd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034381"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056328"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
@@ -54,7 +53,7 @@ ms.locfileid: "102034381"
 3. 在“负载均衡器”页上，选择“创建” 。
 4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中输入“CreatePubLBQS-rg” 。|
@@ -89,7 +88,7 @@ ms.locfileid: "102034381"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -103,7 +102,7 @@ ms.locfileid: "102034381"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
@@ -220,7 +219,7 @@ ms.locfileid: "102034381"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -244,7 +243,7 @@ ms.locfileid: "102034381"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | myVNet |
@@ -263,7 +262,7 @@ ms.locfileid: "102034381"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **Monitoring** |  |
     | 启动诊断 | 选择“关闭” |
@@ -287,7 +286,7 @@ ms.locfileid: "102034381"
 
 ### <a name="create-outbound-rule"></a>创建出站规则
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“出站规则”、“添加”。
 
@@ -342,7 +341,7 @@ ms.locfileid: "102034381"
 3. 在“负载均衡器”页上，选择“创建” 。
 4. 在“创建负载均衡器”页中，输入或选择以下信息： 
 
-    | 设置                 | “值”                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入“CreatePubLBQS-rg” 。|
@@ -426,7 +425,7 @@ ms.locfileid: "102034381"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
@@ -446,7 +445,7 @@ ms.locfileid: "102034381"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
@@ -459,7 +458,7 @@ ms.locfileid: "102034381"
     | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
 
-3. 选择“确定”  。
+3. 选择“确定” 。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -512,7 +511,7 @@ ms.locfileid: "102034381"
    
 2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-    | 设置 | “值”                                          |
+    | 设置 | 值                                          |
     |-----------------------|----------------------------------|
     | **项目详细信息** |  |
     | 订阅 | 选择 Azure 订阅 |
@@ -534,7 +533,7 @@ ms.locfileid: "102034381"
   
 4. 在“网络”选项卡中，选择或输入：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     |-|-|
     | **网络接口** |  |
     | 虚拟网络 | 选择 myVNet |
@@ -549,7 +548,7 @@ ms.locfileid: "102034381"
 
 6. 在“管理”选项卡中，选择或输入：
     
-    | 设置 | “值” |
+    | 设置 | 值 |
     |---|---|
     | **Monitoring** | |
     | 启动诊断 | 选择“关闭” |
