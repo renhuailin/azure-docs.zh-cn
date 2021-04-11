@@ -7,7 +7,6 @@ author: KumudD
 manager: mtillman
 editor: ''
 tags: azure-resource-manager
-Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
-ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 22494d292077f4b6018a4512b45b5fe2caa9c8ee
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368227"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057195"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -49,7 +48,7 @@ ms.locfileid: "97368227"
 2. 选择“网络”，然后选择“虚拟网络” 。
 3. 单击“+ 添加”，然后输入以下信息： 
 
-   |设置|Value|
+   |设置|值|
    |----|----|
    |订阅| 选择订阅|
    |资源组 | 选择“新建”，并输入 myResourceGroup|
@@ -190,7 +189,7 @@ ms.locfileid: "97368227"
     |存储帐户名称| 输入在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。|
     |位置| 选择“(US)美国东部” |
     |性能|标准|
-    |帐户类型| StorageV2（常规用途 v2）|
+    |帐户种类| StorageV2（常规用途 v2）|
     |复制| 本地冗余存储 (LRS)|
 
 5. 选择“创建 + 查看”，并在验证检查通过后单击“创建” 。 
@@ -349,7 +348,7 @@ ms.locfileid: "97368227"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
-2. 选择“删除资源组”  。
+2. 选择“删除资源组”。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤

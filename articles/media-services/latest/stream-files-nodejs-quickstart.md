@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212750"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109180"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>如何使用 Node.js 对视频文件进行编码和流式传输
 
@@ -58,7 +58,7 @@ ms.locfileid: "102212750"
 
 该示例执行以下操作：
 
-1. 使用[内容感知编码预设](./content-aware-encoding.md)创建转换。 首先检查指定的转换是否存在。
+1. 使用[内容感知编码预设](./encode-content-aware-concept.md)创建转换。 首先检查指定的转换是否存在。
 1. 创建一个输出资产，编码作业将其用于包含输出 
 1. （可选）使用存储 Blob SDK 上传本地文件
 1. 创建基于 HTTPS URL 或上传文件的作业输入
@@ -71,7 +71,7 @@ ms.locfileid: "102212750"
 
 ## <a name="run-the-sample"></a>运行示例
 
-1. 应用程序下载编码文件。 创建想要输出文件位于的文件夹，并更新 [index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) 文件中 outputFolder 变量的值。 默认情况下，它设置为“Temp”。
+1. 应用程序下载编码文件。 创建想要输出文件位于的文件夹，并更新 [index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) 文件中 outputFolder 变量的值。 默认情况下，它设置为“Temp”。
 1. 打开“命令提示符”，浏览到示例的目录。
 1. 将目录更改为 AMSv3Samples 文件夹。
 

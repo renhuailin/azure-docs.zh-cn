@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598399"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109316"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>基于编码方案的迁移指南
 
@@ -41,7 +41,7 @@ ms.locfileid: "104598399"
 
 单击下面的图像查看大图。
 
-[![V2 的编码工作流](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
+[![V2 编码工作流](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. 设置
     1. 创建资产或使用现有资产。 如果使用新资产，请将内容上传到该资产。 如果使用现有资源，则应该对资产中已存在的文件进行编码。
@@ -91,7 +91,7 @@ ms.locfileid: "104598399"
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>高级编码器到 v3 标准编码器或基于合作伙伴的解决方案
 
-v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级编码器进行 HEVC 编码，则应迁移到支持 HEVC 编码的新 v3 [标准编码器](media-encoder-standard-formats.md)。
+v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级编码器进行 HEVC 编码，则应迁移到支持 HEVC 编码的新 v3 [标准编码器](encode-media-encoder-standard-formats-reference.md)。
 
 如果需要高级编码器的高级工作流功能，建议你开始使用来自 [Imagine Communications](https://imaginecommunications.com)、[Telestream](https://www.telestream.net) 或 [Bitmovin](https://bitmovin.com) 的 Azure 高级编码合作伙伴解决方案。
 
@@ -109,14 +109,14 @@ v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级
 
 ### <a name="concepts"></a>概念
 
-- [使用媒体服务编码视频和音频](encoding-concept.md)
-- [标准编码器格式和编解码器](media-encoder-standard-formats.md)
-- [使用自动生成的比特率阶梯进行编码](autogen-bitrate-ladder.md)
-- [使用内容感知编码预设来查找给定分辨率的最佳比特率值](content-aware-encoding.md)
+- [使用媒体服务编码视频和音频](encode-concept.md)
+- [标准编码器格式和编解码器](encode-media-encoder-standard-formats-reference.md)
+- [使用自动生成的比特率阶梯进行编码](encode-autogen-bitrate-ladder.md)
+- [使用内容感知编码预设来查找给定分辨率的最佳比特率值](encode-content-aware-concept.md)
 - [媒体保留单位](concept-media-reserved-units.md)
 - [输入元数据](input-metadata-schema.md)
 - [输出元数据](output-metadata-schema.md)
-- [媒体服务 v3 中的动态打包：音频编解码器](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [媒体服务 v3 中的动态打包：音频编解码器](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>教程
 
@@ -129,13 +129,13 @@ v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级
 - [从本地文件创建作业输入](job-input-from-local-file-how-to.md)
 - [创建基本音频转换](how-to-create-basic-audio-transform.md)
 - （使用 .NET）
-  - [如何对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
+  - [如何对自定义转换进行编码 - .NET](encode-custom-presets-how-to.md)
   - [如何使用 Media Encoder Standard 创建覆盖](how-to-create-overlay.md)
   - [如何使用编码器标准版通过 .NET 来生成缩略图](media-services-generate-thumbnails-dotnet.md)
 - 使用 Azure CLI
-  - [如何对自定义转换进行编码 - Azure CLI](custom-preset-cli-howto.md)
+  - [如何对自定义转换进行编码 - Azure CLI](encode-custom-preset-cli-how-to.md)
 - 使用 REST
-  - [如何对自定义转换进行编码 - REST](custom-preset-rest-howto.md)
+  - [如何对自定义转换进行编码 - REST](encode-custom-preset-rest-how-to.md)
   - [如何使用 Encoder Standard 通过 REST 来生成缩略图](media-services-generate-thumbnails-rest.md)
 - [使用媒体服务编码时对视频进行子剪辑 - .NET](subclip-video-dotnet-howto.md)
 - [使用媒体服务编码时对视频进行子剪辑 - REST](subclip-video-rest-howto.md)
@@ -143,7 +143,3 @@ v2 API 不再支持高级编码器。 如果以前使用基于工作流的高级
 ## <a name="samples"></a>示例
 
 还可[将代码示例中的 V2 和 V3 代码进行比较](migrate-v-2-v-3-migration-samples.md)。
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
