@@ -1,6 +1,6 @@
 ---
 title: 将数据移动到 SQL Server 虚拟机 - Team Data Science Process
-description: 将数据从平面文件或本地 SQL Server 移到 Azure VM SQL Server。
+description: 将数据从平面文件或本地 SQL Server 移到 Azure 虚拟机上的 SQL Server。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c80a90b07e25942e751d52cafa47f6e3e94852ab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93320332"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
@@ -41,10 +41,10 @@ ms.locfileid: "93320332"
 ## <a name="prerequisites"></a><a name="prereqs"></a>先决条件
 本教程假设你拥有：
 
-* 一个 **Azure 订阅** 。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个 **Azure 存储帐户** 。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
-* 在 **Azure 虚拟机上置备了 SQL Server** 。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](../data-science-virtual-machine/overview.md)。
-* 已在本地安装和配置 **Azure PowerShell** 。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
+* 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+* 在 **Azure 虚拟机上置备了 SQL Server**。 有关说明，请参阅[将 Azure SQL Server 虚拟机设置为用于高级分析的 IPython Notebook 服务器](../data-science-virtual-machine/overview.md)。
+* 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>将数据从平面文件源移动到 Azure VM 上的 SQL Server
 如果数据位于平面文件中（以行/列格式排列），则可以通过以下方法将它移到 Azure 上的 SQL Server 虚拟机：
@@ -54,7 +54,7 @@ ms.locfileid: "93320332"
 3. [SQL Server 中的图形内置实用程序（导入/导出、SSIS）](#sql-builtin-utilities)
 
 ### <a name="command-line-bulk-copy-utility-bcp"></a><a name="insert-tables-bcp"></a>命令行大容量复制实用程序 (BCP)
-BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移动的最快方法之一。 它适用于 Azure SQL Server VM 上本地 SQL Server、SQL Azure 和)  (的所有三个 SQL Server 变体。
+BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移动的最快方法之一。 它可跨三个 SQL Server 变体（本地 SQL Server、SQL Azure 以及 Azure 上的 SQL Server 虚拟机）运行。
 
 > [!NOTE]
 > **对于 BCP 我的数据应在哪里？**  
@@ -75,14 +75,14 @@ BCP 是随 SQL Server 一起安装的命令行实用程序，并且是数据移�
     )
     ```
 
-1. 通过在安装了 bcp 的计算机的命令行中发出以下命令，生成描述该表的架构的格式化文件。
+1. 通过从已安装 bcp 的计算机的命令行执行以下命令，生成介绍表架构的格式文件。
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 1. 使用 bcp 命令将数据插入数据库，当 SQL Server 安装在同一台计算机上时，该命令应该从命令行运行：
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
-> **优化 BCP 插入** ，请参阅以下文章 [优化批量导入的指南](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105))来优化此类插入。
+> **优化 BCP 插入**，请参阅以下文章 [优化批量导入的指南](/previous-versions/sql/sql-server-2008-r2/ms177445(v=sql.105))来优化此类插入。
 >
 >
 
@@ -157,7 +157,7 @@ Set-ExecutionPolicy Restricted #reset the execution policy
     ```
 
 ### <a name="built-in-utilities-in-sql-server"></a><a name="sql-builtin-utilities"></a>SQL Server 中的内置实用程序
-你可以使用 SQL Server Integration Services (SSIS) 将数据从平面文件导入到 Azure 上的 SQL Server VM 中。
+可使用 SQL Server Integration Services (SSIS) 将数据从平面文件导入到 Azure 上的 SQL Server VM。
 SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成服务 (SSIS) 与 Studio 环境](/sql/integration-services/integration-services-ssis-development-and-management-tools)：
 
 * 有关 SQL Server Data Tools 的详细信息，请参阅 [Microsoft SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)  
@@ -179,7 +179,7 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>导出到平面文件
 可以使用各种方法从本地 SQL Server 批量导出数据（如[批量导入和导出数据 (SQL Server)](/sql/relational-databases/import-export/bulk-import-and-export-of-data-sql-server) 主题中所述）。 本文档将举例说明“大容量复制程序 (BCP)”。 一旦数据导出到平面文件，就可以使用批量导入将其导入到另一个 SQL Server。
 
-1. 使用 bcp 实用工具将数据从本地 SQL Server 导出到文件，如下所示
+1. 使用 bcp 实用程序将数据从本地 SQL Server 导出到文件，如下所示
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 使用步骤 1 中导出的表架构的 `create database` 和 `create table` 在 Azure 上的 SQL Server 虚拟机上创建数据库和表。

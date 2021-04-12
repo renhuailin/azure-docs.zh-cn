@@ -10,16 +10,18 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455053"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868640"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 
 本文介绍如何使用 Azure Synapse Analytics 提供支持的 Apache Spark 池作为 Azure 机器学习管道中数据准备步骤的计算目标。 你将了解单个管道如何使用适用于特定步骤的计算资源，例如数据准备或训练。 你将了解 Spark 步骤的数据准备情况，以及如何将数据传递到下一步。 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +35,7 @@ ms.locfileid: "102455053"
 
 在 Azure Synapse Analytics 工作区中创建和管理 Apache Spark 池。 若要将 Apache Spark 池与 Azure 机器学习工作区集成，必须[链接到 Azure Synapse Analytics 工作区](how-to-link-synapse-ml-workspaces.md)。 
 
-可以使用“链接服务”页通过 Azure 机器学习工作室 UI 附加 Apache Spark 池。 还可以通过“计算”页使用“附加计算”选项来执行此操作 。
+可以使用“链接服务”页通过 Azure 机器学习工作室 UI 附加 Apache Spark 池。 还可以通过“计算”页使用“附加计算”选项来执行此操作。
 
 还可通过 SDK（如下详述）或通过 ARM 模板（请参阅此 [ARM 模板示例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)）附加 Apache Spark 池。 
 
@@ -90,6 +92,8 @@ synapse_compute.wait_for_completion()
 创建配置后，需要创建一个机器学习 `ComputeTarget`，此操作可通过传入 `Workspace`、`ComputeTargetAttachConfiguration` 和在机器学习工作区内引用计算的名称来完成。 对 `ComputeTarget.attach()` 的调用是异步的，因此在调用完成之前，示例将无法使用。
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>创建一个使用链接 Apache Spark 池的 `SynapseSparkStep`
+
+[Apache Spark 池上的 Spark 作业](https://github.com/azure/machinelearningnotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)示例笔记定义了一个简单的机器学习管道。 首先，此笔记本定义一个数据准备步骤，该步骤由上一步中定义的 `synapse_compute` 提供支持。 然后，此笔记本定义一个训练步骤，该步骤由最适合用于训练的计算目标提供支持。 该示例笔记本使用 Titanic 生存数据库来演示数据输入和输出;它实际上不会清理数据或生成预测模型。 由于此示例不进行实际的训练，因此训练步骤使用基于 CPU 的廉价计算资源。
 
 数据流通过 `DatasetConsumptionConfig` 对象传递到机器学习管道，这些对象可以容纳表格数据或文件集。 数据通常来自工作区数据存储中 blob 存储中的文件。 下面的代码演示了一些用于创建机器学习管道输入的典型代码：
 

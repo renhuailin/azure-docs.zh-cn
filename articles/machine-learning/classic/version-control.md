@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：应用程序生命周期管理-Azure
+title: 机器学习工作室（经典）：应用程序生命周期管理 - Azure
 description: 在 Azure 机器学习工作室（经典版）中应用应用程序生命周期管理最佳做法
 services: machine-learning
 ms.service: machine-learning
@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
 ms.openlocfilehash: 82d6f1fd250621ec34015970e1339ccfbd134675
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518396"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的应用程序生命周期管理

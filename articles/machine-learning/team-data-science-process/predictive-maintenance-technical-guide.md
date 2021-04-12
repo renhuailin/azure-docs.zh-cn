@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93321991"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空航天预测性维护的解决方案模板的技术指南
@@ -64,7 +64,7 @@ ms.locfileid: "93321991"
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定飞机引擎（根据收到的输入数据）的剩余使用寿命 (RUL)。 
 
 ## <a name="data-publishing"></a>数据发布
-### <a name="azure-sql-database"></a>Azure SQL 数据库
+### <a name="azure-sql-database"></a>Azure SQL Database
 使用 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储在 [Power BI](https://powerbi.microsoft.com) 仪表板中使用的 Azure 机器学习收到的预测数据。
 
 ## <a name="data-consumption"></a>数据使用
@@ -142,7 +142,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 启动数据生成器后，管道将开始冻结，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
 
 * 某个流分析作业会将原始传入数据写入 Blob 存储。 如果在成功部署解决方案的屏幕中单击解决方案的“Blob 存储”组件，然后在右窗格中单击“打开”，则会转到 [Azure 门户](https://portal.azure.com/)。 进入门户后，单击“Blob”。 在随后出现的面板中，可以看到容器列表。 单击“maintenancesadata”。 随后出现的面板中有 **rawdata** 文件夹。 在 rawdata 文件夹内，可以看到名为 hour=17、hour=18 等的文件夹。 存在这些文件夹表明原始数据正在计算机上生成并存储在 Blob 存储中。 应会在这些文件夹中看到具有有限 MB 大小的 csv 文件。
-* 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中，找到 "SQL 数据库" :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: 并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”。
+* 管道的最后一个步骤是将数据（例如机器学习的预测数据）写入 SQL 数据库。 最多可能需要 3 个小时，数据才会出现在 SQL 数据库中。 监视 SQL 数据库中有多少数据的方法之一是使用 [Azure 门户](https://portal.azure.com/)。 在左侧面板中找到“SQL 数据库”:::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: 并单击它。 然后查找自己的数据库 **pmaintenancedb** 并单击它。 在下一页的底部，单击“管理”。
    
     ![管理图标](./media/predictive-maintenance-technical-guide/icon-manage.png)
    

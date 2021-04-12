@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2d589d6c3394556499daf033c4c1d528a214b0e3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93319306"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
@@ -49,7 +49,7 @@ ms.locfileid: "93319306"
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（IPython Notebook 服务器）
 1. 创建运行 IPython Notebook 的 Azure 虚拟机。
 1. 将数据上传到 Azure 存储容器。
-1. 在 IPython 笔记本中预处理和清理数据，访问 Azure 存储容器中的数据。
+1. 访问 Azure 存储容器中的数据，预处理并清理 IPython Notebook 中的数据。
 1. 将数据转换为已清除的表格格式。
 1. 将已转换的数据保存在 Azure blob 中。
 1. 登录到 [Azure 机器学习工作室](https://studio.azureml.net/)。
@@ -77,7 +77,7 @@ ms.locfileid: "93319306"
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
 1. 创建运行 SQL Server + IPython Notebook 的 Azure 虚拟机。
 1. 将数据上传到 Azure 存储容器。
-1. 使用 IPython 笔记本预处理和清理 Azure 存储容器中的数据。
+1. 使用 IPython Notebook 预处理并清理 Azure 存储容器中的数据。
 1. 将数据转换为已清除的表格格式（如果需要）。
 1. 将数据保存到本地 VM 文件（IPython Notebook 正在 VM 上运行，本地驱动器是指 VM 驱动器）。
 1. 将数据加载到在 Azure VM 上运行的 SQL Server 数据库。

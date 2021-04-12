@@ -12,18 +12,18 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96002215"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
 
-有关演示如何处理更大数据集的演练，请参阅 [团队数据科学过程-在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)。
+有关介绍如何处理大型数据集的演练，请参阅 [Team Data Science Process - 使用 Azure HDInsight Hadoop 群集处理 1 TB 数据集](hive-criteo-walkthrough.md)。
 
-还可以使用 IPython 笔记本完成使用 1 TB 数据集的演练中介绍的任务。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
+也可以通过 IPython Notebook 来完成使用 1 TB 数据集的演练中介绍的任务。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
 
 ## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC 出租车行程数据集介绍
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录会包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照编号（出租车的唯一 ID）。 数据涵盖 2013 年的所有行程，并在每个月的以下两个数据集中提供：
@@ -117,23 +117,23 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
-* ***\<path_to_data_folder>** _ 目录 (，以及计算机上包含解压缩数据文件的路径) 。  
-_ * **\<storage account name of Hadoop cluster>** _ 与 HDInsight 群集关联的存储帐户。
-_ * **\<default container of Hadoop cluster>** _ 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
-_ * **\<storage account key>** _ 群集使用的存储帐户的密钥。
+* ***\<path_to_data_folder>*** 计算机上包含解压缩数据文件的目录（及路径）。  
+* ***\<storage account name of Hadoop cluster>*** 与 HDInsight 群集关联的存储帐户。
+* ***\<default container of Hadoop cluster>*** 群集使用的默认容器。 默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
+* ***\<storage account key>*** 群集使用的存储帐户密钥。
 
 在命令提示符或 Windows PowerShell 窗口中，运行以下两个 AzCopy 命令。
 
-此命令将行程数据上传到 Hadoop 群集的默认容器中的 _*_nyctaxitripraw_*_ 目录。
+此命令将行程数据上传到 Hadoop 群集的默认容器中的 ***nyctaxitripraw*** 目录。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 ```
 
-此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw** _ 目录。
+此命令将费用数据上传到 Hadoop 群集的默认容器中的 ***nyctaxifareraw*** 目录。
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 ```
 
 现在，数据应在 Blob 存储中，并且可以在 HDInsight 群集中使用。
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-这两个命令会将本演练中所需的所有 "hql" 文件下载到头节点中的本地目录 ***C：\temp&#92;** _。
+这两个命令会将本演练中需要的所有“.hql”文件下载到头节点中的本地目录 C:\temp&#92;。
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
 > [!NOTE]
@@ -182,7 +182,7 @@ cd %hive_home%\bin
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-下面是 _ *C:\temp\sample \_ hive \_ create \_ db \_ 和 \_ tables** 文件的内容，用于创建 hive 数据库 **nyctaxidb** 以及表 **行程** 和 **费用**。
+下面是 C:\temp\sample\_hive\_create\_db\_and\_tables.hql 文件的内容，用于创建 Hive 数据库 nyctaxidb 以及表“行程”和“费用”   。
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -820,7 +820,7 @@ hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
 下面是有关[导入数据][import-data]模块的一些详细信息和要输入的参数：
 
-**HCatalog 服务器 URI**：如果群集名称为 **abc123**，则使用： https： \/ /abc123.azurehdinsight.net。
+**HCatalog 服务器 URI**：如果群集名为 abc123，则使用：https:\//abc123.azurehdinsight.net。
 
 **Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 

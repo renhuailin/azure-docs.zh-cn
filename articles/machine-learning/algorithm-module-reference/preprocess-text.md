@@ -1,7 +1,7 @@
 ---
 title: 预处理文本：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "预处理文本" 模块来清理和简化文本。
+description: 了解如何使用 Azure 机器学习设计器中的“预处理文本”模块来清理和简化文本。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/16/2020
 ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94659269"
 ---
 # <a name="preprocess-text"></a>预处理文本
@@ -53,7 +53,7 @@ ms.locfileid: "94659269"
 
     此模块使用三个管道字符 `|||` 系列来表示语句终止符。
 
-1. 使用正则表达式执行可选的“查找替换”操作。 正则表达式将首先在所有其他内置选项之前处理。
+1. 使用正则表达式执行可选的“查找替换”操作。 正则表达式将先于所有其他内置选项进行处理。
 
     * **自定义正则表达式**：定义要搜索的文本。
     * **自定义替换字符串**：定义单个替换值。
@@ -64,7 +64,7 @@ ms.locfileid: "94659269"
 
 1. 还可以从已处理的输出文本中删除以下类型的字符或字符序列：
 
-    * **删除数字**：选择此选项可以删除指定语言中的所有数字字符。 标识性数字与域和语言相关。 如果数字字符是已知单词的组成部分，可能不会删除该数字。 在 [技术说明](#technical-notes)中了解详细信息。
+    * **删除数字**：选择此选项可以删除指定语言中的所有数字字符。 标识性数字与域和语言相关。 如果数字字符是已知单词的组成部分，可能不会删除该数字。 阅读[技术说明](#technical-notes)了解详细信息。
     
     * **删除特殊字符**：使用此选项可以删除任何非字母数字的特殊字符。
     
@@ -87,21 +87,21 @@ ms.locfileid: "94659269"
 
 ## <a name="technical-notes"></a>技术说明
 
-Studio 中的 " **预处理文本** " 模块 (经典) 和设计器都使用不同的语言模型。 设计器使用来自 [spaCy](https://spacy.io/models/en)的多任务 CNN 定型模型。 不同的模型会给出不同的标记器和词性标记，这会产生不同的结果。
+Studio（经典版）中的预处理文本模块和设计器使用的语言模型不同。 设计器使用 [spaCy](https://spacy.io/models/en) 中的多任务 CNN 定型模型。 不同模型提供不同的分词器和词性标记器，会产生不同的结果。
 
 以下是一些示例：
 
 | 配置 | 输出结果 |
 | --- | --- |
-|选中所有选项后 </br> 解释： </br> 对于类似于 "WC.EXE-3 3test 4test" 中 "3test" 的情况，设计器将删除整个单词 "3test"，因为在此上下文中，语音标记部分将此标记 "3test" 指定为数字，并根据语音部分将其删除。| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="选中所有选项后" border="True"::: |
-|仅限 `Removing number` 选定 </br> 解释： </br> 对于类似于 "3test"、"4-EC" 的情况，设计器标记器剂量不会拆分这些事例，并将它们视为整个令牌。 因此，它不会删除这些词中的数字。| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="仅选择了 &quot;删除数字&quot;" border="True"::: |
+|选择全部选项 </br> 解释： </br> 对于 "WC-3 3test 4test" 中的 "3test" 这样的情况，设计器会删除整个单词 "3test"，因为在此上下文中，词性标记器会将此标记 "3test" 指定为数字标记，根据相应词性，模块会将其删除。| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="选择全部选项" border="True"::: |
+|仅选择 `Removing number` </br> 解释： </br> 对于类似于 "3test"、"4-EC" 这样的情况，设计器分词器不会拆分这些词，而是将其视为完整标记。 因此不会删除这些词中的数字。| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="仅选择“删除数字”" border="True"::: |
 
 还可以使用正则表达式输出自定义结果：
 
 | 配置 | 输出结果 |
 | --- | --- |
-|选中所有选项后 </br> 自定义正则表达式： `(\s+)*(-|\d+)(\s+)*` </br> 自定义替换字符串： `\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-all-options-selected.png" alt-text="选择了所有选项和正则表达式" border="True"::: |
-|仅限 `Removing number` 选定 </br> 自定义正则表达式： `(\s+)*(-|\d+)(\s+)*` </br> 自定义替换字符串： `\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-removing-numbers-selected.png" alt-text="删除选定数字和正则表达式" border="True"::: |
+|选择全部选项 </br> 自定义正则表达式：`(\s+)*(-|\d+)(\s+)*` </br> 自定义替换字符串：`\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-all-options-selected.png" alt-text="选择所有选项和正则表达式" border="True"::: |
+|仅选择 `Removing number` </br> 自定义正则表达式：`(\s+)*(-|\d+)(\s+)*` </br> 自定义替换字符串：`\1 \2 \3`| :::image type="content" source="./media/module/preprocess-text-regular-expression-removing-numbers-selected.png" alt-text="选择“删除数字”和正则表达式" border="True"::: |
 
 
 ## <a name="next-steps"></a>后续步骤

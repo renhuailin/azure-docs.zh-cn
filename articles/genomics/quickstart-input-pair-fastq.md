@@ -1,7 +1,7 @@
 ---
 title: 使用 FASTQ 文件输入提交工作流
 titleSuffix: Microsoft Genomics
-description: 本文演示如何将工作流提交到 Microsoft 基因组学服务（如果输入文件是单个 FASTQ 文件对）。
+description: 本文演示了在输入文件为一对 FASTQ 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,18 +10,18 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 3806b165e5abb661e53c6a315650d025fd42e17f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "72248544"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>使用 Microsoft 基因组学中的 FASTQ 文件输入提交工作流
 
-本文演示如何将工作流提交到 Microsoft 基因组学服务（如果输入文件是单个 FASTQ 文件对）。 本主题假设你已安装并运行 `msgen` 客户端，且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
+本文演示了在输入文件为一对 FASTQ 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 本主题假设你已安装并运行 `msgen` 客户端，且熟悉如何使用 Azure 存储。 如果你已成功使用所提供的示例数据提交工作流，即可开始学习本教程。 
 
 ## <a name="set-up-upload-your-fastq-files-to-azure-storage"></a>设置：将 FASTQ 文件上传到 Azure 存储
-假设你有两个文件：*reads_1.fq.gz* 和 *reads_2.fq.gz* 并已将其上传到 Azure 中的存储帐户 *myaccount*，其形式为 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads_1<span></span>.fq<span></span>.gz<span></span>** 和 **https://<span></span>myaccount.blob.core.<span></span>windows<span></span>.net/<span></span>inputs/<span></span>reads_2.fq<span></span>.gz<span></span>**。 你有 API URL 和访问密钥。 你希望将输出置于 **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** 中。
+假设你有两个文件：*reads_1.fq.gz* 和 *reads_2.fq.gz* 并已将其上传到 Azure 中的存储帐户 *myaccount*，其形式为 **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/inputs/reads_1 <span></span>.fq <span></span>.gz <span></span>** 和 **https://<span></span>myaccount.blob.core.<span></span>windows <span></span>.net/<span></span>inputs/<span></span>reads_2.fq <span></span>.gz <span></span>**。 你有 API URL 和访问密钥。 你希望将输出置于 **https://<span></span>myaccount.blob.core <span></span>.windows <span></span>.net <span></span>/outputs <span></span>** 中。
 
 
 ## <a name="submit-your-job-to-the-msgen-client"></a>将作业提交到 `msgen` 客户端 
@@ -82,4 +82,4 @@ output_storage_account_container: outputs
 提交 `config.txt` 文件时可以使用此调用：`msgen submit -f config.txt`
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将一对 FASTQ 文件上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅 [常见问题解答](frequently-asked-questions-genomics.md)。 
+本文介绍了如何将一对 FASTQ 文件上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。 

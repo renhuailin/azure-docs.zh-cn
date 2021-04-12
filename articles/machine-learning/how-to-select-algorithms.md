@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93308239"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何选择 Azure 机器学习的算法
@@ -30,7 +30,7 @@ ms.locfileid: "93308239"
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>业务方案和机器学习算法速查表
 
-[Azure 机器学习算法速查表](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)可帮助你解决首要考虑因素： **要将数据用于何种用途** ？ 在机器学习算法速查表中，查找想要执行的任务，然后找到适用于预测分析解决方案的 [Azure 机器学习设计器](./concept-designer.md?WT.mc_id=docs-article-lazzeri)算法。 
+[Azure 机器学习算法速查表](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)可帮助你解决首要考虑因素：**要将数据用于何种用途**？ 在机器学习算法速查表中，查找想要执行的任务，然后找到适用于预测分析解决方案的 [Azure 机器学习设计器](./concept-designer.md?WT.mc_id=docs-article-lazzeri)算法。 
 
 机器学习设计器提供全面的算法阵容，例如[多类决策林](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri)、[推荐系统](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri)、[神经网络回归](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri)、[多类神经网络](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)和 [K 平均值聚类](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri)。 每种算法旨在用于解决一种不同类型的机器学习问题。 有关完整列表，以及有关每种算法的工作原理与如何优化参数以优化算法的文档，请参阅[机器学习设计器算法和模块参考](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri)。
 
@@ -123,11 +123,11 @@ ms.locfileid: "93308239"
 
 ![非线性类边界](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-**_非线性类边界_* _：线性分类算法 _Relying 会导致低准确性。 *
+***非线性类边界** _：_依赖于线性分类算法会导致较低的准确性。*
 
 ![非线性趋势数据](./media/how-to-select-algorithms/nonlinear-trend.png)
 
-***非线性趋势** 为的数据： _Using 线性回归方法会生成比所需的更大的错误。 *
+非线性趋势数据*：使用线性回归方法会生成比必要的更大的错误。
 
 ## <a name="number-of-parameters"></a>参数数目
 

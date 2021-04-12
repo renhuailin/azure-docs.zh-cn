@@ -1,5 +1,5 @@
 ---
-title: 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集-团队数据科学流程
+title: 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集 - Team Data Science Process
 description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用大型 (1 TB) 公开可用数据集的模型
 services: machine-learning
 author: marktab
@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e66bd0a4e56f63185d8361355d6cf8e0e29bc30b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93305930"
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>操作中的团队数据科学过程-使用 1 TB 数据集上的 Azure HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
 本演练演示如何利用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)在端到端方案中使用 Team Data Science Process 来存储、浏览并描绘工程师数据特征，从其中一个公用 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集下载示例数据。 其中使用了 Azure 机器学习在这些数据上构建二进制分类模型。 此外，还演示如何将这些模型之一发布为 Web 服务。
 
@@ -45,16 +45,16 @@ Criteo 数据是一个单击预测数据集，包含 370 GB 的 gzip 压缩 TSV 
 
 在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
 
-**定义** : *点击率(CTR)：* 此指标是数据的点击数的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
+**定义**:*点击率(CTR)：* 此指标是数据的点击数的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
 
-1. **二元分类** ：预测用户是否单击了添加：
+1. **二元分类**：预测用户是否单击了添加：
 
    * 分类 0：无点击
    * 分类 1：单击
-2. **回归** ：预测来自用户功能的广告点击概率。
+2. **回归**：预测来自用户功能的广告点击概率。
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
 > [!NOTE]
@@ -90,7 +90,7 @@ Criteo 数据是一个单击预测数据集，包含 370 GB 的 gzip 压缩 TSV 
 ## <a name="log-in-to-the-cluster-headnode"></a><a name="login"></a>登录到群集头节点
 若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到“配置”选项卡，双击页面底部的“连接”图标，并在出现提示时输入远程访问凭据，从而转到群集的头节点。
 
-典型的第一次群集头节点登录如下所示：
+以下是首次登录到群集头节点的典型示例：
 
 ![登录到群集](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
@@ -99,7 +99,7 @@ Criteo 数据是一个单击预测数据集，包含 370 GB 的 gzip 压缩 TSV 
 现在设置并准备开始第一部分的演练：使用 Hive 进行数据挖掘，并为 Azure 机器学习准备数据。
 
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>创建 Hive 数据库和表
-若要为 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 * *_Hadoop 命令行_* _，并通过输入命令输入 Hive 目录
+要为我们的 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 ***Hadoop 命令行***，并通过输入命令输入 Hive 目录
 
 ```console
 cd %hive_home%\bin
@@ -118,7 +118,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
 以下代码创建一个数据库“criteo”，并生成 4 个表：
 
-_ 一个 *表，用于生成* 在每天 \_ 00 到 day 20 日生成的计数。 \_
+* 一个用于生成在第\_00 天至第\_20 天构建的计数的表，
 * 一个用于在第\_21 天构建的定型数据集的表，以及
 * 两个分别用于在第\_22 天和第\_23 天构建的测试数据集的表。
 
@@ -169,7 +169,7 @@ STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.wi
   ```
 
      现在，在 REPL 命令行中，剪切并粘贴查询以执行它。
-* **将查询保存到文件并执行命令** ：第二种方法是将查询保存到“.hql”文件 ( [sample_hive_create_criteo_database_and_tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令来执行查询：
+* **将查询保存到文件并执行命令**：第二种方法是将查询保存到“.hql”文件 ([sample_hive_create_criteo_database_and_tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql))，并发出以下命令来执行查询：
 
   ```console
   hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
@@ -469,7 +469,7 @@ Time taken: 300.02 seconds
 
 有此结果，我们准备使用取样缩小训练和测试数据集在 Azure 机器学习中构建模型。
 
-在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 在下一节中，将在下一节中讨论计数表。
+在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 下一小节将更详细地讨论计数表。
 
 ## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>关于计数表的简要讨论
 正如我们所看到的，有几个分类变量具有高的维度。 在演练中，我们提出了一种名为[使用计数学习](/archive/blogs/machinelearning/big-learning-made-easy-with-counts)的有效的技术，以高效、可靠的方式对这些变量进行编码。 有关此技术的详细信息，请参阅提供的链接。
@@ -502,13 +502,13 @@ Time taken: 300.02 seconds
 
 1. 为“数据源”选择“Hive 查询”
 2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI** ：如果群集是 "abc"，则只需执行以下操作： https： \/ /abc.azurehdinsight.net
-4. **Hadoop 用户帐户名称** ：调试群集时选择的用户名。 （不是远程访问用户名！）
-5. **Hadoop 用户帐户密码** ：调试群集时选择的用户名的密码。 （不是远程访问密码！）
-6. **输出数据的位置** ：选择“Azure”
-7. **Azure 存储帐户名称** ：与群集关联的存储帐户
-8. **Azure 存储帐户密钥** ：与群集关联的存储帐户的密钥。
-9. **Azure 容器名称** ：如果群集名称为“abc”，则通常只是简单的“abc”。
+3. **Hcatalog 服务器 URI**：如果群集是“abc”，则其简化形式为：https:\//abc.azurehdinsight.net
+4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
+5. **Hadoop 用户帐户密码**：调试群集时选择的用户名的密码。 （不是远程访问密码！）
+6. **输出数据的位置**：选择“Azure”
+7. **Azure 存储帐户名称**：与群集关联的存储帐户
+8. **Azure 存储帐户密钥**：与群集关联的存储帐户的密钥。
+9. **Azure 容器名称**：如果群集名称为“abc”，则通常只是简单的“abc”。
 
 “导入数据”完成获取数据后（会在模块上看到绿色对勾），（使用选择的名称）将此数据另存为数据集。 将显示为：
 
@@ -530,7 +530,7 @@ Time taken: 300.02 seconds
 
 ![机器学习实验](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-现在，检查一下此试验的关键组件。 首先将已保存的训练和测试数据集拖到试验画布上。
+现在，检查一下此试验的关键组件。 首先将保存的训练和测试数据集拖到试验画布上。
 
 #### <a name="clean-missing-data"></a>清理缺失数据
 “清除缺失数据”模块执行其名称所表示的功能：按用户指定的方式清除缺失的数据。 看一下此模块，我们看到：

@@ -1,5 +1,5 @@
 ---
-title: 拆分数据：模块引用
+title: 拆分数据：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习中使用“拆分数据”模块将一个数据集拆分为两个非重复集。
 services: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a4c93b12ad654e54a7f3c7ee0e75507d5cb45e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90907819"
 ---
 # <a name="split-data-module"></a>“拆分数据”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用“拆分数据”模块可将一个数据集分割成两个不同的集。
 

@@ -1,7 +1,7 @@
 ---
 title: 包模型
 titleSuffix: Azure Machine Learning
-description: 打包模型。 可以将模型打包为 docker 映像，然后就可以下载，也可以创建 Dockerfile 并使用它来生成映像。
+description: 打包模型。 可以将模型打包为 Docker 映像（之后可以下载），也可以创建 Dockerfile 并使用它来生成映像。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93312633"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>如何使用 Docker 打包注册的模型

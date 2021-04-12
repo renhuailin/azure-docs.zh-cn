@@ -1,5 +1,5 @@
 ---
-title: 手动输入数据：模块引用
+title: 手动输入数据：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的“手动输入数据”模块通过键入值来创建小型数据集。 该数据集可以有多个列。
 services: machine-learning
@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 3bff9a91f06649487560faef3ab554b2a3d56af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90908070"
 ---
 # <a name="enter-data-manually-module"></a>“手动输入数据”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
-使用**手动输入数据**模块，可以通过键入值来创建小型数据集。 该数据集可以有多个列。
+使用 **手动输入数据** 模块，可以通过键入值来创建小型数据集。 该数据集可以有多个列。
   
 此模块可用于以下方案：  
   
@@ -30,7 +30,7 @@ ms.locfileid: "90908070"
 
 ## <a name="create-a-dataset"></a>创建数据集 
   
-1. 将[手动输入数据](./enter-data-manually.md)模块添加到管道。 可以在 Azure 机器学习的**数据输入和输出**类别中找到此模块。 
+1. 将[手动输入数据](./enter-data-manually.md)模块添加到管道。 可以在 Azure 机器学习的 **数据输入和输出** 类别中找到此模块。 
   
 1. 对于“DataFormat”  ，选择以下选项之一。 这些选项决定了应该如何分析你提供的数据。 每种格式的要求差别很大，因此请务必阅读相关主题。  
   

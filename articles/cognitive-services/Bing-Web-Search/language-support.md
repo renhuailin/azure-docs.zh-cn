@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 必应 Web 搜索 API
 titleSuffix: Azure Cognitive Services
-description: 必应 Web 搜索 API 支持的自然语言、国家和地区的列表。
+description: 必应 Web 搜索 API 支持的自然语言、国家/地区和区域列表。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96340265"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>必应 Web 搜索 API 的语言和区域支持
@@ -26,7 +26,7 @@ ms.locfileid: "96340265"
 
 必应 Web 搜索 API 支持超过 36 个国家或地区，其中很多具有多种语言。 使用查询指定国家或地区有助于根据对该国家或地区的兴趣来优化搜索结果。 结果可能包含指向必应的链接，这些链接可能会根据指定的国家/地区或语言本地化必应用户体验。
 
-可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区时，必须指定一个或多个带有[ `Accept-Language` 标头](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)的语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
+可以使用 `cc` 查询参数指定国家或地区。 指定国家或地区后，必须使用[`Accept-Language` 标头](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一个或多个语言代码。 使用[市场表](#markets)获取每个市场支持的语言列表。
 
 或者，可以使用 `mkt` 查询参数和市场表中的代码指定市场。 指定市场的同时指定国家或地区和首选语言。 可以显式使用 `setLang` 查询参数设置语言。
 
@@ -113,7 +113,7 @@ ms.locfileid: "96340265"
 |台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|
 
 ## <a name="next-steps"></a>后续步骤

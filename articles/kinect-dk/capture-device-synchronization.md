@@ -8,15 +8,15 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 内部, 外部, 同步, 菊花链, 相位偏移
 ms.openlocfilehash: ce0c72d3d708d5696a9775b3885f278f0c23cac1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102034297"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>捕获 Azure Kinect 设备同步
 
-Azure Kinect 硬件可以调整彩色和深度图像的捕获时间。 同一设备上的相机之间的调整属于 **内部同步**。 跨多个连接设备的捕获时间调整属于 **外部同步**。 麦克风阵列与颜色和深度相机无关。
+Azure Kinect 硬件可以调整彩色和深度图像的捕获时间。 同一设备上的相机之间的调整属于 **内部同步**。 跨多个连接设备的捕获时间调整属于 **外部同步**。 麦克风阵列的工作独立于颜色和深度相机。
 
 ## <a name="device-internal-synchronization"></a>设备内部同步
 

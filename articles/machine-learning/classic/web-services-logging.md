@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：启用 web 服务日志记录-Azure
+title: 机器学习工作室（经典）：启用 Web 服务日志记录 - Azure
 description: 了解如何为机器学习工作室（经典版）Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
 services: machine-learning
 author: likebupt
@@ -10,10 +10,10 @@ ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
 ms.openlocfilehash: c9ce9b7b0d739301e76abd43b265fe28195ed302
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518277"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习工作室（经典版）Web 服务启用日志记录

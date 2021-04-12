@@ -1,5 +1,5 @@
 ---
-title: " (预览中缓解机器学习模型中的 unfairness) "
+title: 缓解机器学习模型（预览版）中的不公平性
 titleSuffix: Azure Machine Learning
 description: 了解机器学习模型中的公平性以及 Fairlearn Python 包如何帮助你构建更公平的模型。
 services: machine-learning
@@ -11,15 +11,15 @@ author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
 ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101659675"
 ---
-# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a> (预览中缓解机器学习模型中的 unfairness) 
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>缓解机器学习模型（预览版）中的不公平性
 
-了解机器学习和 [Fairlearn](https://fairlearn.github.io/) 的开源 Python 包如何帮助你在机器学习模型中缓解 unfairness 问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
+了解机器学习中的公平性以及 [Fairlearn](https://fairlearn.github.io/) 开源 Python 包如何帮助你缓解机器学习模型中的不公平性问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
 
 Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[操作方法](how-to-machine-learning-fairness-aml.md)和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以便在有关 Azure 机器学习的训练期间启用 AI 系统的公平性评估。
 
@@ -29,7 +29,7 @@ Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/in
 >[!NOTE]
 > 公平性是一个社会性的技术难题。 公平性的许多方面（例如公正和正当程序）没有通过量化的公平性指标进行捕获。 另外，许多量化的公平性指标无法同时得到满足。 Fairlearn 开源包的目标是使人类能够评估不同的影响和缓解策略。 最终，由构建人工智能和机器学习模型的人类用户负责根据其应用场景进行权衡。
 
-人工智能和机器学习系统可能会表现出不公平的行为。 定义不公平行为的一种方法是按其损害或对人的影响来定义。 人工智能系统可以造成许多类型的损害。 有关详细信息，请参阅 [Kate Crawford 的 NeurIPS 2017 主题](https://www.youtube.com/watch?v=fMym_BKWQzk) 。
+人工智能和机器学习系统可能会表现出不公平的行为。 定义不公平行为的一种方法是按其损害或对人的影响来定义。 人工智能系统可以造成许多类型的损害。 有关详细信息，请参阅 [Kate Crawford 的 NeurIPS 2017 主题](https://www.youtube.com/watch?v=fMym_BKWQzk)。
 
 人工智能造成的两种常见损害是：
 
@@ -41,7 +41,7 @@ Fairlearn 开源包[用户指南](https://fairlearn.github.io/main/user_guide/in
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>通过 Fairlearn 进行公平性评估和缓解
 
-Fairlearn 是一个开源 Python 包，它使机器学习系统开发人员能够评估其系统的公平并降低 unfairness。
+Fairlearn 是一个开源 Python 包，它使机器学习系统开发者能够评估其系统的公平性并缓解不公平性。
 
 Fairlearn 开源包有两个组件：
 
@@ -80,7 +80,7 @@ Fairlearn 开源包有两个组件：
 Fairlearn 开源包包括了各种不公平性缓解算法。 这些算法支持对预测器行为的一组约束（称为 **奇偶校验约束** 或条件）。 奇偶校验约束要求预测器行为的某些方面在敏感特征所定义的群体（例如不同的种族）之间具有可比性。 Fairlearn 开源包中的缓解算法使用此类奇偶校验约束来缓解所观察到的公平性问题。
 
 >[!NOTE]
-> 缓解模型中的不公平性意味着降低不公平性，但这种技术上的缓解无法完全消除此不公平性。  Fairlearn 开源包中的不公平性缓解算法可提供建议的缓解策略，以帮助减少机器学习模型中的不公平性，但它们并不是用来完全消除不公平性的解决方案。  对于每个特定开发人员的机器学习模型，还应考虑其他奇偶校验约束或条件。 使用 Azure 机器学习的开发人员必须自行确定，缓解措施是否充分消除其机器学习模型的预期使用和部署中的任何不公平性。  
+> 缓解模型中的不公平性意味着降低不公平性，但这种技术上的缓解无法完全消除此不公平性。  Fairlearn 开源包中的不公平性缓解算法可提供建议的缓解策略，以帮助减少机器学习模型中的不公平性，但它们并不是用来完全消除不公平性的解决方案。  每个特定开发人员的机器学习模型可能还有其他应考虑的奇偶校验约束或条件。 使用 Azure 机器学习的开发人员必须自行确定，缓解措施是否充分消除其机器学习模型的预期使用和部署中的任何不公平性。  
 
 Fairlearn 开源包支持下列类型的奇偶校验约束： 
 

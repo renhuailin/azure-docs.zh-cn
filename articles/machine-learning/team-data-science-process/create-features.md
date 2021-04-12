@@ -1,5 +1,5 @@
 ---
-title: 机器学习-团队数据科学过程中的特征工程
+title: 机器学习中的特征工程 - Team Data Science Process
 description: 了解特征工程及其在机器学习数据增强过程中的作用。
 services: machine-learning
 author: marktab
@@ -12,10 +12,10 @@ ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
 ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98610431"
 ---
 # <a name="feature-engineering-in-machine-learning"></a>机器学习中的特征工程

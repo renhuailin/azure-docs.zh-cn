@@ -1,7 +1,7 @@
 ---
 title: 在设计器中执行 Python 脚本
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "执行 Python 脚本" 模型来运行使用 Python 编写的自定义操作。
+description: 了解如何使用 Azure 机器学习设计器中的“执行 Python 脚本”模型来运行使用 Python 编写的自定义操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,10 +11,10 @@ ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer, devx-track-python
 ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94556227"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中运行 Python 代码

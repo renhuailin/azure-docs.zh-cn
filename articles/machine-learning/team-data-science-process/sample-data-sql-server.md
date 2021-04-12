@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7ac1fc5688dad3406041f36ff858e6fd27c7272f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93321863"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
@@ -129,7 +129,7 @@ data_frame = pd.read_sql('''select column1, column2... from <table_name> tablesa
 ![blob 读取器][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>运行中的团队数据科学过程示例
-若要逐步了解团队数据科学使用公共数据集处理 a 的示例，请参阅 [操作中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
+有关使用公用数据集的 Team Data Science Process 的演练示例，请参阅[运行中的 Team Data Science Process：使用 SQL Server](sql-walkthrough.md)。
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

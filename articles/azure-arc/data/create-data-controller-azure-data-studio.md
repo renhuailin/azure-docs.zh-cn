@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.openlocfilehash: f2d44cc769e9673eeb75828126f806d2b2308a17
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103573874"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>在 Azure Data Studio 中创建数据控制器
@@ -57,7 +57,7 @@ ms.locfileid: "103573874"
 
     数据控制器和命名空间名称将用于在 Kubernetes 群集中创建自定义资源，因此它们必须符合 [Kubernetes 命名约定](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names)。
     
-    如果该命名空间已经存在，那么将在命名空间不包含其他 Kubernetes 对象（Pod 等）的情况下使用它。如果该命名空间不存在，则将尝试创建它。  在 Kubernetes 群集中创建命名空间需要 Kubernetes 群集管理员权限。  如果你没有 Kubernetes 群集管理员权限，请让 Kubernetes 群集管理员执行[使用 Kubernetes 原生工具创建数据控制器](./create-data-controller-using-kubernetes-native-tools.md)一文中的前几个步骤；在你完成此向导之前，Kubernetes 管理员需要执行这些步骤。
+    如果命名空间已存在，则在命名空间还不包含其他 Kubernetes 对象（pod 等）的情况下，将使用该命名空间。如果命名空间不存在，则会尝试创建命名空间。  在 Kubernetes 群集中创建命名空间需要 Kubernetes 群集管理员权限。  如果你没有 Kubernetes 群集管理员权限，请让 Kubernetes 群集管理员执行[使用 Kubernetes 原生工具创建数据控制器](./create-data-controller-using-kubernetes-native-tools.md)一文中的前几个步骤；在你完成此向导之前，Kubernetes 管理员需要执行这些步骤。
 
 
 12. 选择将在其中部署数据控制器的存储类。 

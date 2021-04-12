@@ -7,10 +7,10 @@ ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 29952353b8c3452d95bcced163fafa81fe158f64
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99593395"
 ---
 # <a name="entities"></a>实体
@@ -21,7 +21,7 @@ ms.locfileid: "99593395"
 
 实体具有由位置、旋转和比例定义的转换。 实体本身没有任何可观测的功能。 而行为是通过附加到实体的组件添加的。 例如，附加 [CutPlaneComponent](../overview/features/cut-planes.md) 将在实体位置创建裁切平面。
 
-实体本身的最重要方面是层次结构和产生的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，同时移动、旋转和缩放所有这些实体。 此外，实体的 `enabled` 状态可用于关闭层次结构中完整子关系图的可见性和对光线转换的响应。
+实体本身的最重要方面是层次结构和产生的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，同时移动、旋转和缩放所有这些实体。 此外，实体的 `enabled` 状态可用于关闭层次结构中完整子关系图的可见性和对光线投射的响应。
 
 实体由其父级唯一拥有，这意味着，当父级被 `Entity.Destroy()` 销毁时，其子级和所有连接的[组件](components.md)也会被销毁。 因此，从场景中删除模型（由 `RenderingSession.Connection.LoadModelAsync()` 或其 SAS 变体 `RenderingSession.Connection.LoadModelFromSasAsync()` 返回）可以通过在模型的根节点上调用 `Destroy` 来实现。
 
@@ -130,10 +130,10 @@ entity->QueryMetadataAsync([](Status status, ApiHandle<ObjectMetadata> metaData)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 实体类](/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C # RenderingConnection CreateEntity ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createentity)
-* [C + + 实体类](/cpp/api/remote-rendering/entity)
-* [C + + RenderingConnection：： CreateEntity ( # B1 ](/cpp/api/remote-rendering/renderingconnection#createentity)
+* [C# Entity class](/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RenderingConnection.CreateEntity()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createentity)
+* [C++ Entity class](/cpp/api/remote-rendering/entity)
+* [C++ RenderingConnection::CreateEntity()](/cpp/api/remote-rendering/renderingconnection#createentity)
 
 ## <a name="next-steps"></a>后续步骤
 

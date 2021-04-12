@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96006723"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
@@ -101,7 +101,7 @@ hive -e "<hive query>" > <local path in the head node>
 
 在下面的示例中，Hive 查询的输出将写入到目录 `C:\apps\temp` 中的文件 `hivequeryoutput.txt` 中。
 
-![屏幕截图在 Hadoop 命令行窗口中显示 Hive 查询的输出。](./media/move-hive-tables/output-hive-results-1.png)
+![屏幕截图显示 Hadoop 命令行窗口中的 Hive 查询输出。](./media/move-hive-tables/output-hive-results-1.png)
 
 **将 Hive 查询结果输出到 Azure blob**
 
@@ -113,7 +113,7 @@ insert overwrite directory wasb:///<directory within the default container> <sel
 
 在下面的示例中，Hive 查询的输出将写入到一个 blob 目录 `queryoutputdir`，该目录位于 Hadoop 群集的默认容器中。 此处，只需提供目录名称，无需提供 blob 名称。 如果同时提供目录名称和 blob 名称，会引发错误，例如：`wasb:///queryoutputdir/queryoutput.txt`。
 
-![屏幕截图在 Hadoop 命令行窗口中显示上一条命令。](./media/move-hive-tables/output-hive-results-2.png)
+![屏幕截图显示 Hadoop 命令行窗口中的上一条命令。](./media/move-hive-tables/output-hive-results-2.png)
 
 如果使用 Azure 存储资源管理器打开 Hadoop 群集的默认容器，则可以看到 Hive 查询的输出，如下图中所示。 可以应用筛选器（红色框中突出显示的），以此来仅检索名称中具有指定字母的 blob。
 
@@ -151,7 +151,7 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 * **\<table name\>** ：要在指定数据库中创建的表的名称。 若要使用默认数据库，则可以通过 *\<table name\>* 直接引用表，无需 \<database name\>。
 * **\<field separator\>** ：在要上传到 Hive 表的数据文件中分隔字段的分隔符。
 * **\<line separator\>** ：在数据文件中分隔行的分隔符。
-* **\<storage location\>**：保存 Hive 表的数据的 Azure 存储位置。 如果不指定 *LOCATION \<storage location\>* ，则数据库和表将默认存储在 Hive 群集默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为“wasb:///\<directory 1>/”或“wasb:///\<directory 1>/\<directory 2>/”等。执行查询后，相对目录会创建在默认容器中。
+* **\<storage location\>** ：要将 Hive 表的数据保存到的 Azure 存储位置。 如果不指定 *LOCATION \<storage location\>* ，则数据库和表将默认存储在 Hive 群集默认容器的 *hive/warehouse/* 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为“wasb:///\<directory 1>/”或“wasb:///\<directory 1>/\<directory 2>/”等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table 查询的 **末尾处** 添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>将数据加载到 Hive 表

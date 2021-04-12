@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：创建 web 服务终结点-Azure
+title: 机器学习工作室（经典）：创建 Web 服务终结点 - Azure
 description: 在 Azure 机器学习工作室中创建 Web 服务终结点（经典）。 Web 服务中的每个终结点都是独立处理、限制和托管的。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
 ms.openlocfilehash: 36eb6a67aa2a8da80894c27937994afd4f263ecd
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517104"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点

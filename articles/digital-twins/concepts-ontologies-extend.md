@@ -1,93 +1,93 @@
 ---
-title: 扩展本体论
+title: 扩展 ontology
 titleSuffix: Azure Digital Twins
-description: 了解扩展 ontology 的原因和策略
+description: 了解扩展本体的原因和策略
 author: baanders
 ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100561288"
 ---
-# <a name="extending-ontologies"></a>扩展本体论 
+# <a name="extending-ontologies"></a>扩展 ontology 
 
-行业标准 [ontology](concepts-ontologies.md)（例如， [DTDL 的 RealEstateCore ontology for smart 大楼](https://github.com/Azure/opendigitaltwins-building)）是开始构建 IoT 解决方案的好办法。 行业本体论提供了一组丰富的基本接口，这些接口专为你的域设计，并设计为可在 Azure IoT 服务（如 Azure 数字孪生）中使用。 
+行业标准[本体](concepts-ontologies.md)（例如[用于智能建筑的基于 DTDL 的 RealEstateCore 本体](https://github.com/Azure/opendigitaltwins-building)）非常适用于作为构建 IoT 解决方案的起点。 行业本体提供了一组丰富的基接口，这些接口专为域设计，并设计为可在 Azure IoT 服务（如 Azure 数字孪生）中开箱即用。 
 
-但是，您的解决方案可能有业界 ontology 未涵盖的特定需求。 例如，你可能想要将数字孪生链接到存储在单独系统中的3D 模型。 在这种情况下，你可以扩展其中的一个本体论来添加你自己的功能，同时保留原始 ontology 的所有优势。
+但是，行业本体可能未涵盖解决方案的特定需求。 例如，可能需要将数字孪生体链接到存储在独立系统中的 3D 模型。 在这种情况下，可以扩展其中一个本体来添加自己的功能，同时保留原始本体的所有优势。
 
-本文使用基于 DTDL 的 [RealEstateCore](https://www.realestatecore.io/) ontology 作为使用新的 DTDL 属性扩展本体论的示例。 但是，此处所述的技术是通用的，可以应用于基于 DTDL 的 ontology 的任何部分，其中包含任何 DTDL 功能 (遥测、属性、关系、组件或命令) 。 
+本文以基于 DTDL 的 [RealEstateCore](https://www.realestatecore.io/) 本体为基础示例，介绍使用新的 DTDL 属性扩展本体。 但是，此处所述的技术是通用的，可以结合任何 DTDL 功能（遥测、属性、关系、组件或命令）应用于基于 DTDL 的本体的任何部分。 
 
 ## <a name="realestatecore-space-hierarchy"></a>RealEstateCore 空间层次结构 
 
-在基于 DTDL 的 RealEstateCore ontology 中，空间层次结构用于定义各种类型的空间：房间、建筑物、区域等。该层次结构从每个模型中进行扩展以定义各种房间、建筑物和区域。 
+在基于 DTDL 的 RealEstateCore 本体中，空间层次结构可用于定义各种空间：房间、建筑物、区域等。空间层次结构从每个这样的模型中扩展，从而定义各种房间、建筑物和区域。 
 
 层次结构的一部分如下图所示。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="说明 RealEstateCore 空间层次结构一部分的流程图。在顶级，有一个名为 Space 的元素;它通过 &quot;扩展&quot; 箭头向下移动到房间;房间通过两个 &quot;扩展&quot; 箭头连接到 ConferenceRoom 和 Office。"::: 
+:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="流程图演示部分 RealEstateCore 空间层次结构。位于顶层的元素称为“空间”；它由一个“扩展”箭头连接到下一层“房间”；“房间”由“扩展”箭头连接到下一层“会议室”和“办公室”。"::: 
 
-有关 RealEstateCore ontology 的详细信息，请参阅 [*概念：采用行业标准本体论*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)。
+有关 RealEstateCore 本体的详细信息，请参阅[概念：采用行业标准本体](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)。
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>扩展 RealEstateCore 空间层次结构 
 
-有时，您的解决方案具有业界 ontology 未涵盖的特定需求。 在这种情况下，扩展层次结构使您可以继续使用行业 ontology，并根据需要进行自定义。 
+有时，行业本体未涵盖具有特定需求的解决方案。 在这种情况下，扩展层次结构便于继续使用行业本体，并根据需要进行自定义。 
 
-本文介绍两种不同的情况，在这种情况下，扩展 ontology 的层次结构很有用： 
+本文介绍了两种不同的扩展本体层次结构的实用案例： 
 
-* 为不在行业 ontology 中的概念添加新的接口。 
-* 将附加属性 (或关系、组件、遥测或命令) 添加到现有接口。
+* 为不在行业本体中的概念添加新的接口。 
+* 将附加属性（或关系、组件、遥测或命令）添加到现有接口。
 
 ### <a name="add-new-interfaces-for-new-concepts"></a>为新概念添加新接口 
 
-在这种情况下，你想要为你的解决方案所需的概念添加接口，但这不是在行业 ontology 中提供的。 例如，如果你的解决方案具有在基于 DTDL 的 RealEstateCore ontology 中未表示的其他类型的聊天室，则可以通过直接从 RealEstateCore 接口扩展来添加它们。 
+在此案例中，你想要为解决方案所需的概念添加接口，但行业本体中未提供这些接口。 例如，如果解决方案中存在基于 DTDL 的 RealEstateCore 本体中未表示的其他房间类型，则可以通过直接从 RealEstateCore 接口扩展来添加它们。 
 
-下面的示例演示了一个解决方案，该解决方案需要表示 RealEstateCore ontology 中不存在的 "焦点房间"。 焦点房间是一小部分，旨在让人们一次将精力集中在一个任务上。 
+下面的示例演示了一个解决方案，该解决方案需要表示 RealEstateCore 本体中不提供的“专注室”。 专注室是专为人们每次数小时专注一个任务而设计的一个小空间。 
 
-若要使用这一新概念扩展行业 ontology，请创建新的接口，该接口从行业 ontology 中的接口进行 [扩展](concepts-models.md#model-inheritance) 。 
+若要使用此新概念扩展行业本体，请从行业本体中的接口[扩展](concepts-models.md#model-inheritance)，创建新的接口。 
 
-添加焦点房间界面后，扩展的层次结构将显示新的房间类型。 
+添加专注室接口后，扩展的层次结构将显示新的房间类型。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="说明上述 RealEstateCore 空间层次结构的流程图，其中包含新的添加。在 ConferenceRoom 和 Office 的底层，有一个名为 FocusRoom 的新元素 (也通过房间中的 &quot;扩展&quot; 箭头进行连接) "::: 
+:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="以上流程图演示了 RealEstateCore 空间层次结构，其中包含新的添加内容。底层元素“会议室”和“办公室”旁，出现了称为“专注室”的新元素（同样由“扩展”箭头从“房间”连接）"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>将其他功能添加到现有接口 
+### <a name="add-additional-capabilities-to-existing-interfaces"></a>将附加功能添加到现有接口 
 
-在这种情况下，你想要将更多属性 (或关系、组件、遥测或命令) 添加到行业 ontology 中的接口。
+在此案例中，你想要将更多属性（或关系、组件、遥测或命令）添加到行业本体中的接口。
 
-在本部分中，你将看到两个示例： 
-* 如果要构建的解决方案显示已在现有系统中使用的3D 绘图，你可能想要将每个数字源与其3D 绘图 (按 ID) ，以便在解决方案显示有关空间的信息时，它还可以从现有系统检索3D 绘图。 
-* 如果你的解决方案需要跟踪会议室的联机/脱机状态，则可能需要跟踪会议室状态，以便在显示或查询中使用。 
+在本部分中，将看到两个示例： 
+* 如果要构建的解决方案显示现有系统中已有的 3D 空间绘图，可能想要将每对数字孪生体与其 3D 绘图关联（按 ID），以便在解决方案显示有关空间的信息时，它还可以从现有系统检索 3D 绘图。 
+* 如果解决方案需要跟踪会议室的联机/脱机状态，则可能需要跟踪会议室状态，以便在显示或查询中使用。 
 
-这两个示例都可以使用新属性实现：一个 `drawingId` 属性，该属性将三维绘图与数字克隆相关联，并使用 "online" 属性来指示会议室是否处于联机状态。 
+这两个示例都可以使用新属性实现：`drawingId` 属性和 "online" 属性，前者将 3D 绘图与数字孪生体关联，后者指示会议室是否处于联机状态。 
 
-通常情况下，你不希望直接修改行业 ontology，因为你希望能够在未来的解决方案中将更新合并到解决方案中 (这会覆盖你的添加) 。 相反，可以在自己的接口层次结构中进行这种类型的添加，该层次结构从基于 DTDL 的 RealEstateCore ontology 进行扩展。 你创建的每个接口都将使用多个接口继承从扩展接口层次结构扩展其父 RealEstateCore 接口及其父接口。 利用此方法，您可以使用行业 ontology，并将添加到一起。 
+通常，用户希望能够在未来的解决方案中将更新合并到本体中，因此不想要直接修改行业本体（这会覆盖添加内容）。 取而代之，可以从基于 DTDL 的 RealEstateCore 本体扩展自己的接口层次结构以在其中进行这种类型的添加。 所创建的每个接口都将使用多个接口继承，以从扩展的接口层次结构扩展其父 RealEstateCore 接口及其父接口。 利用此方法，可以将行业本体和添加内容结合使用。 
 
-若要扩展行业 ontology，请创建自己的接口，该接口从行业 ontology 中的接口进行扩展，并将新功能添加到扩展接口。 对于要扩展的每个接口，创建一个新接口。 扩展接口以 DTDL 编写 (参见本文档后面的 DTDL for Extended 接口部分，) 。 
+若要扩展行业本体，请通过从行业本体中的接口扩展来创建自己的接口，并为它们添加新功能。 为每个要扩展的接口创建一个新接口。 扩展接口以 DTDL 编写（参阅本文档后面“扩展接口的 DTDL”部分）。 
 
-扩展了如上所示的层次结构部分后，扩展层次结构如下图所示。 此时，扩展的空间接口将添加 `drawingId` 一个属性，该属性将包含一个将数字整数与三维绘图关联的 ID。 此外，ConferenceRoom 接口将添加一个 "online" 属性，该属性将包含会议室的联机状态。 通过继承，ConferenceRoom 接口包含 RealEstateCore ConferenceRoom 接口中的所有功能，以及来自扩展空间接口的所有功能。 
+扩展如上所示的层次结构部分后，扩展层次结构如下图所示。 此时，扩展的“空间”接口添加 `drawingId` 属性，该属性包含将数字孪生体与 3D 绘图关联的 ID。 此外，“会议室”接口添加 "online" 属性，该属性包含会议室的联机状态。 通过继承，“会议室”接口包含 RealEstateCore“会议室”接口中的所有功能以及扩展“空间”接口中的所有功能。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="说明上述扩展 RealEstateCore 空间层次结构的流程图，并提供更多新内容。房间现在与 Space 元素共享其级别，后者将与 &quot;扩展&quot; 箭头向下连接到 ConferenceRoom 和 Office 旁边的新房间元素。 新元素通过更多的 &quot;扩展&quot; 关系连接到现有的 ontology。"::: 
+:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="以上流程图演示了扩展的 RealEstateCore 空间层次结构，其中包含更多新的添加内容。现在，“房间”与“空间”元素同级，且通过一个“扩展”箭头与下一级“会议室”和“办公室”旁的新“房间”元素相连。这些新元素通过更多“扩展”关系连接到现有本体。"::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>使用扩展空间层次结构 
 
-使用扩展空间层次结构创建数字孪生时，每个数字克隆的模型将是从扩展空间层次结构中 (，而不是原始行业 ontology) ，它将包括行业 ontology 中的所有功能和通过接口继承的扩展接口。
+使用扩展空间层次结构创建数字孪生体时，每对数字孪生体的模型均来自扩展空间层次结构（而不是原始行业本体），且包括行业本体以及扩展接口中通过接口继承而获得的所有功能。
 
-每个数字克隆的模型将是扩展层次结构中的一个接口，如下图所示。 
+每对数字孪生体的模型将是扩展层次结构中的一个接口，如下图所示。 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="扩展的 RealEstateCore 空间层次结构的摘录，其中包括空间 (顶层) 、一个房间 (中间级别) 和 ConferenceRoom、Office 和 FocusRoom (低级别) 。模型名称连接到每个元素 (例如，房间连接到名为 Room101) 的模型。"::: 
+:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="扩展 RealEstateCore 空间层次结构摘录，其中包括“空间”（顶层）、“房间”（中间层）以及“会议室”、“办公室”和“专注室”（底层）。模型名连接到每个元素（例如，“房间”连接到一个称为“房间101”的模型）。"::: 
 
-使用 (运算符) 的模型 ID 查询数字孪生时 `IS_OF_MODEL` ，应使用扩展层次结构中的模型 id。 例如，`SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`。 
+使用模型 ID（`IS_OF_MODEL` 运算符）查询数字孪生体时，应使用扩展层次结构中的模型 ID。 例如，`SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')`。 
 
-## <a name="contributing-back-to-the-original-ontology"></a>参与到原始 ontology 
+## <a name="contributing-back-to-the-original-ontology"></a>回馈到原始本体 
 
-在某些情况下，你将以广泛适用于 ontology 大多数用户的方式扩展行业 ontology。 在这种情况下，应考虑将扩展发布回原始 ontology。 每个 ontology 都有不同的处理过程，因此请查看 ontology 的 GitHub 存储库以获取贡献详细信息。 
+在某些情况下，需要采取广泛适用于本体大多数用户的方式扩展行业本体。 在这种情况下，应考虑将扩展回馈到原始本体。 每个本体都具有不同的回馈过程，因此请查看本体的 GitHub 存储库以详细了解回馈。 
 
 ## <a name="dtdl-for-new-interfaces"></a>新接口的 DTDL 
 
-直接从行业 ontology 扩展的新接口的 DTDL 将如下所示。 
+直接从行业本体扩展的新接口的 DTDL 如下所示。 
 
 ```json
 {
@@ -100,7 +100,7 @@ ms.locfileid: "100561288"
 
 ## <a name="dtdl-for-extended-interfaces"></a>扩展接口的 DTDL 
 
-扩展接口的 DTDL （限于上述部分）将如下所示。 
+扩展接口的 DTDL（限于上述部分）如下所示。 
 
 ```json
 [
@@ -162,4 +162,4 @@ ms.locfileid: "100561288"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续使用基于本体论开发模型的路径： [*在模型开发路径中使用 ontology 策略*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)。
+继续了解基于本体的模型开发路径：[在模型开发路径中使用本体策略](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)。

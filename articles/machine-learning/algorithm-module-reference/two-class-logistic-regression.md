@@ -1,7 +1,7 @@
 ---
 title: 双类逻辑回归：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习中使用 Two-Class 逻辑回归模块来创建二进制分类器。
+description: 了解如何使用 Azure 机器学习中的“双类逻辑回归”模块创建二元分类器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96012640"
 ---
 # <a name="two-class-logistic-regression-module"></a>双类逻辑回归模块

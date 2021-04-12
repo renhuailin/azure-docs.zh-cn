@@ -1,7 +1,7 @@
 ---
 title: 初始化图像转换
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的初始化图像转换模块来初始化图像转换。
+description: 了解如何使用 Azure 机器学习设计器中的“初始化图像转换”模块来初始化图像转换。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: fc0eb196ed24e413c35d64f0571ff29dc3725032
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421271"
 ---
 # <a name="init-image-transformation"></a>初始化图像转换

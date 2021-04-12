@@ -1,7 +1,7 @@
 ---
 title: 添加行：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "添加行" 模块连接两个数据集。
+description: 了解如何使用 Azure 机器学习设计器中的“添加行”模块连接两个数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 2c2a74ee88e7161ab8dd1701ef4d105df67c0938
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421934"
 ---
 # <a name="add-rows-module"></a>“添加行”模块

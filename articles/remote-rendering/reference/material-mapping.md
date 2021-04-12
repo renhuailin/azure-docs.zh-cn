@@ -1,26 +1,26 @@
 ---
 title: 模型格式的材料映射
-description: 描述从模型源格式到 .PBR 材料的默认转换
+description: 介绍从模型源格式到 PBR 材料的默认转换过程
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96024038"
 ---
 # <a name="material-mapping-for-model-formats"></a>模型格式的材料映射
 
-将源资产[转换为模型](../how-tos/conversion/model-conversion.md)时，转换器将为每个[网格](../concepts/meshes.md)创建[材料](../concepts/materials.md)。 可以 [覆盖](../how-tos/conversion/override-materials.md)创建材料的方式。 但默认情况下，转换将创建 [.pbr 物料](../overview/features/pbr-materials.md)。 由于每个源文件格式（如 FBX）使用自己的约定来定义材料，因此必须将这些约定映射到 Azure 远程呈现的 .PBR 材料参数。 
+将源资产[转换为模型](../how-tos/conversion/model-conversion.md)时，转换器将为每个[网格](../concepts/meshes.md)创建[材料](../concepts/materials.md)。 材料的创建方式是可以[替代的](../how-tos/conversion/override-materials.md)。 但是转换过程默认创建 [PBR 材料](../overview/features/pbr-materials.md)。 由于每个源文件格式（如 FBX）使用自己的约定来定义材料，因此必须将这些约定映射到 Azure 远程渲染的 PBR 材料参数。 
 
-本文列出了用于将材料从源资产转换为运行时材料的准确映射。
+本文列出了用于将材料从源资产转换为运行时材料的确切映射。
 
 ## <a name="gltf"></a>glTF
 
-除了 *EmissiveFactor* 和 *EmissiveTexture* 以外，Azure 远程呈现中几乎还支持 glTF 2.0 规范中的所有内容。
+除了 EmissiveFactor 和 EmissiveTexture以外，Azure 远程渲染几乎支持 glTF 2.0 规范中的所有映射。
 
 下表显示了映射：
 
@@ -30,100 +30,100 @@ ms.locfileid: "96024038"
 |   baseColorTexture  |   albedoMap                |
 |   metallicFactor    |   metalness                |
 |   metallicTexture   |   metalnessMap             |
-|   roughnessFactor   |   程度                |
+|   roughnessFactor   |   roughness                |
 |   roughnessTexture  |   roughnessMap             |
-|   occlusionFactor   |   封闭                |
+|   occlusionFactor   |   occlusion                |
 |   occlusionTexture  |   occlusionMap             |
 |   normalTexture     |   normalMap                |
 |   alphaCutoff       |   alphaClipThreshold       |
-|   alphaMode  |   alphaClipEnabled = false，isTransparent = false |
-|   alphaMode    |   alphaClipEnabled = true，isTransparent = false  |
-|   alphaMode   |   isTransparent = true     |
+|   alphaMode.OPAQUE  |   alphaClipEnabled = false，isTransparent = false |
+|   alphaMode.MASK    |   alphaClipEnabled = true，isTransparent = false  |
+|   alphaMode.BLEND   |   isTransparent = true     |
 |   doubleSided       |   isDoubleSided            |
 |   emissiveFactor    |   -                        |
 |   emissiveTexture   |   -                        |
 
-GlTF 中的每个纹理都可以具有 `texCoord` 值，这在 Azure 远程呈现材料中也受支持。
+glTF 中的每个纹理都包含 `texCoord` 值，也支持用于 Azure 远程渲染材料。
 
 ### <a name="embedded-textures"></a>嵌入的纹理
 
-支持嵌入在 *\* bin* 或 *\* glb* 文件中的纹理。
+支持 \*.bin 或 \*.glb 文件中嵌入的纹理。
 
 ### <a name="supported-gltf-extension"></a>支持的 glTF 扩展
 
-除了基本功能集之外，Azure 远程呈现还支持以下 glTF 扩展：
+除了基础特征集之外，Azure 远程渲染还支持以下 glTF 扩展：
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md)：对应于 [颜色材料](../overview/features/color-materials.md)。 对于 *放射* 资料，建议使用此扩展。
-* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)：可以提供漫射反射度的纹理，而不是金属粗糙度的纹理。 Azure 远程呈现实现直接遵循扩展中的转换公式。
+* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md)：对应于[颜色材料](../overview/features/color-materials.md)。 对于放射材料，建议使用此扩展。
+* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)：可以提供 diffuse-specular-glossiness 纹理，与 metallic-roughness 纹理相反。 Azure 远程渲染实现直接遵循此扩展中的转换公式。
 
 ## <a name="fbx"></a>FBX
 
-FBX 格式为关闭-源和 FBX 材料通常不与 .PBR 材料兼容。 FBX 使用包含许多唯一参数和属性的表面的复杂说明，而 **不是所有这些说明都由 Azure 远程呈现管道使用**。
+FBX 格式采用封闭源代码，因此 FBX 材料通常与 PBR 材料不兼容。 FBX 使用包含很多唯一参数和属性的复杂表面描述，但仅有部分可以用于 Azure 远程渲染管道。
 
 > [!IMPORTANT]
-> Azure 远程呈现模型转换管道仅支持 **FBX 2011 和更高版本**。
+> Azure 远程渲染模型转换管道仅支持 FBX 2011 及以上版本。
 
-FBX 格式定义了用于材料的保守方法，但官方 FBX 规范中只有两种类型：
+FBX 格式定义了用于材料的传统方法，官方 FBX 规范中只提供两种类型：
 
-* *朗伯* -不常用于过去一段时间，但仍支持在转换时转换为冯氏。
-* *冯氏* -几乎所有材料和大多数内容工具都使用此类型。
+* *Lambert* - 已经很长时间不常使用，但在转换到 Phong 的转换期间仍提供对它的支持。
+* *Phong* - 几乎所有材料和大多数内容工具都使用此类型。
 
-冯氏模型更为准确，它用作 FBX 材料的 *唯一* 模型。 下面将被称为 *FBX 材料*。
+Phong 模型更为精准，它用作 FBX 材料的唯一模型。 下面的 FBX 材料将参考此模型。
 
-> Maya 为 FBX 使用两个自定义扩展插件，为类型的 .PBR 和 Stingray 类型定义自定义属性。 这些详细信息未包含在 FBX 规范中，因此当前不受 Azure 远程呈现支持。
+> Maya 通过定义 PBR 的自定义属性和材料的 Stingray 类型，将两个自定义扩展用于 FBX。 这些详细信息未包含在 FBX 规范中，因此当前不受 Azure 远程渲染支持。
 
-FBX 材料使用 SpecularLevel 概念，因此，若要从漫射纹理转换为 albedo 地图，我们需要计算其他参数以将它们从漫射中减去。
+FBX 材料使用 Diffuse-Specular-SpecularLevel 概念，因此，若要从漫射纹理转换到反照率图，我们需要考虑其他参数并将它们从漫射中去除。
 
-> FBX 中的所有颜色和纹理都在 sRGB 空间中 (也称为伽玛空间) 但 Azure 远程呈现在可视化期间与线性空间一起使用，并且在框架结束时会将所有内容转换回 sRGB 空间。 Azure 远程呈现资产管道将所有内容转换为线性空间，以将其作为准备好的数据发送到呈现器。
+> FBX 中的所有颜色和纹理都在 sRGB 空间中（也称为 Gamma 空间），但 Azure 远程渲染在可视化期间使用线性空间，并在帧结束时将所有内容转换回 sRGB 空间。 Azure 远程渲染资产管道将所有内容转换到线性空间，并将其作为准备好的数据发送到渲染器。
 
-此表显示了如何将纹理从 FBX 材料映射到 Azure 远程渲染材料。 其中一些部分不会直接使用，而是与参与公式的其他纹理组合在一起 (例如，漫射纹理) ：
+此表显示了如何将纹理从 FBX 材料映射到 Azure 远程渲染材料。 其中一些纹理不会直接使用，而是与公式中的其他纹理组合使用（例如漫射纹理）：
 
 | FBX | Azure 远程渲染 |
 |:-----|:----|
-| AmbientColor | 封闭映射   |
-| DiffuseColor | *用于 Albedo、Metalness* |
-| TransparentColor | *用于 Albedo 的 alpha 通道* |
-| TransparencyFactor | *用于 Albedo 的 alpha 通道* |
-| 不透明度 | *用于 Albedo 的 alpha 通道* |
-| SpecularColor | *用于 Albedo、Metalness、粗糙度* |
-| SpecularFactor| *用于 Albedo、Metalness、粗糙度* |
-| ShininessExponent | *用于 Albedo、Metalness、粗糙度* |
+| AmbientColor | 遮蔽图   |
+| DiffuseColor | 用于反照率、金属度 |
+| TransparentColor | 用于反照率的 alpha 通道 |
+| TransparencyFactor | 用于反照率的 alpha 通道 |
+| 不透明度 | 用于反照率的 alpha 通道 |
+| SpecularColor | 用于反照率、金属度、粗糙度 |
+| SpecularFactor| 用于反照率、金属度、粗糙度 |
+| ShininessExponent | 用于反照率、金属度、粗糙度 |
 | NormalMap | NormalMap |
-| 平滑 | *转换为 NormalMap* |
+| Bump | 转换为 NormalMap |
 | EmissiveColor | - |
 | EmissiveFactor | - |
 | ReflectionColor | - |
 | DisplacementColor | - |
 
-上面的映射是材料转换中最复杂的部分，因为有许多假设需要进行。 下面将讨论这些假设。
+以上映射是材料转换中最复杂的部分，因为需要进行很多假定。 下面将介绍这些假定情况。
 
-下面使用了一些定义：
+使用下面一些定义：
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`。红色∗ 0.2125 +  `Specular` 。绿色∗ 0.7154 + `Specular` 。Blue ∗0.0721
-* `DiffuseBrightness` = 0.299 * `Diffuse` 。红色<sup>2</sup> + 0.587 * `Diffuse` 。绿色<sup>2</sup> + 0.114 * `Diffuse` 。蓝<sup>2</sup>
-* `SpecularBrightness` = 0.299 * `Specular` 。红色<sup>2</sup> + 0.587 * `Specular` 。绿色<sup>2</sup> + 0.114 * `Specular` 。蓝<sup>2</sup>
-* `SpecularStrength` = 最大 (`Specular` 。红色， `Specular` 。绿色， `Specular` 。蓝) 
+* `SpecularIntensity` = `Specular`.Red ∗ 0.2125 +  `Specular`.Green ∗ 0.7154 + `Specular`.Blue ∗ 0.0721
+* `DiffuseBrightness` = 0.299 * `Diffuse`.Red<sup>2</sup> + 0.587 * `Diffuse`.Green<sup>2</sup> + 0.114 * `Diffuse`.Blue<sup>2</sup>
+* `SpecularBrightness` = 0.299 * `Specular`.Red<sup>2</sup> + 0.587 * `Specular`.Green<sup>2</sup> + 0.114 * `Specular`.Blue<sup>2</sup>
+* `SpecularStrength` = max(`Specular`.Red, `Specular`.Green, `Specular`.Blue)
 
-可从 [此处](https://en.wikipedia.org/wiki/Luma_(video))获取 SpecularIntensity 公式。
-亮度公式在此 [规范](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)中进行了介绍。
+请从[此处](https://en.wikipedia.org/wiki/Luma_(video))获取 SpecularIntensity 公式。
+有关亮度公式的说明，请参阅此[规范](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)。
 
 ### <a name="roughness"></a>粗糙度
 
-`Roughness` 是 `Specular` `ShininessExponent` 使用 [此公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)计算得出的。 该公式是冯氏反射指数中的粗糙度的近似值：
+在[公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)中使用 `Specular` 和 `ShininessExponent` 计算得出 `Roughness`。 该公式使用 Phong 反射指数计算得出粗糙度的近似值：
 
 ```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
-### <a name="metalness"></a>Metalness
+### <a name="metalness"></a>金属度
 
-`Metalness` 从 `Diffuse` glTF 规范计算，并 `Specular` 使用此 [公式](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)。
+在 [glTF 规范提供的公式](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)中使用 `Diffuse` 和 `Specular` 计算得出 `Metalness`。
 
-这里的思路是解决公式： Ax<sup>2</sup> + Bx + C = 0。
-基本上，dielectric 的表面以反光的形式反映了约4% 的光线，而其余表面则为漫射。 金属表面以漫射方式反映没有任何灯光，但以镜面方式呈现。
-此公式具有几个缺点，因为没有办法区分光面纸和光滑表面。 在大多数情况下，图面都具有金属属性，因此光滑的塑料/橡胶面看起来可能不正常。
+此处思路在于求解方程：Ax<sup>2</sup> + Bx + C = 0。
+大体上，非传导性表面以反射方式反射约 4% 的光线，而其余光线则以漫射方式反射。 金属表面不会以漫射方式反射光线，而是全部以反射方式反射光线。
+此公式有一些缺点，它无法区分有光泽的塑料表面和有光泽的金属表面。 假定大多数情况下表面具有金属属性，结果，有光泽的塑料/橡胶表面看起来可能并不正常。
 
 ```cpp
 dielectricSpecularReflectance = 0.04
@@ -137,12 +137,12 @@ value = (-B + squareRoot) / (2 * A)
 Metalness = clamp(value, 0.0, 1.0);
 ```
 
-### <a name="albedo"></a>Albedo
+### <a name="albedo"></a>反照率
 
-`Albedo` 是从 `Diffuse` 、 `Specular` 和计算的 `Metalness` 。
+使用 `Diffuse`、`Specular` 和 `Metalness` 计算得出 `Albedo`。
 
-如 "Metalness" 一节中所述，dielectric 的表面反映了约4% 的光线。  
-这里的思路是 `Dielectric` `Metal` 使用 `Metalness` 值作为系数，以线性方式在和颜色之间进行插入。 如果 metalness 为 `0.0` ，则根据反光，如果镜面为高) ，则它将为暗色 (; 否则，如果不) 存在反射，则不会更改 (。 如果 metalness 是一个较大的值，则漫射色将会消失，以支持反射颜色。
+如“金属度”部分中所述，非传导性表面反射约 4% 的光线。  
+此处思路是使用 `Metalness` 值作为因子，以线性方式在 `Dielectric` 和 `Metal` 颜色之间进行内插。 如果金属度为 `0.0`，则根据反射情况，要么是暗色（当反射值很大时），要么漫射不会变化（当没有反射时）。 如果金属度的值很大，则漫射颜色将会消失，反射颜色会加重。
 
 ```cpp
 dielectricSpecularReflectance = 0.04
@@ -154,26 +154,26 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB` 已由以上公式计算，但 alpha 通道需要其他计算。 FBX 格式与透明度无关，有多种方法可以定义它。 不同的内容工具使用不同的方法。 这里的思路是将它们统一为一个公式。 但如果不是以常见方式创建的，则它会使某些资产错误地显示为透明。
+已根据以上公式计算得出 `AlbedoRGB`，但 alpha 通道还需要进行其他计算。 FBX 格式对透明度没有明确规定，有多种方法可以定义它。 不同的内容工具使用不同的方法。 此处思路是将它们统一为一个公式。 但如果不是以常见方式创建资产，则此公式会将它们错误地显示为透明。
 
-此计算从 `TransparentColor` 、 `TransparencyFactor` 、 `Opacity` ：
+使用 `TransparentColor`、`TransparencyFactor`、`Opacity` 进行计算。
 
-如果 `Opacity` 定义了，则直接使用： `AlbedoAlpha`  =  `Opacity` else  
-如果 `TransparencyColor` 定义了，则 `AlbedoAlpha` = 1.0- ( # B1 `TransparentColor` 。红色 + `TransparentColor` 。绿色 + `TransparentColor` 。蓝) /3.0) else  
-如果 `TransparencyFactor` 为，则 `AlbedoAlpha` = 1.0- `TransparencyFactor`
+如果定义了 `Opacity`，则直接使用它：`AlbedoAlpha`  =  `Opacity` else  
+如果定义了 `TransparencyColor`，则 `AlbedoAlpha` = 1.0 - ((`TransparentColor`.Red + `TransparentColor`.Green + `TransparentColor`.Blue) / 3.0) else  
+如果 `TransparencyFactor`，则 `AlbedoAlpha` = 1.0 - `TransparencyFactor`
 
-最终 `Albedo` 颜色具有四个通道，并将 `AlbedoRGB` 与组合在一起 `AlbedoAlpha` 。
+最终 `Albedo` 颜色具有四个通道，并将 `AlbedoRGB` 与 `AlbedoAlpha` 组合在一起。
 
-### <a name="summary"></a>总结
+### <a name="summary"></a>摘要
 
-这里汇总了， `Albedo` `Diffuse` 如果接近于零，则会非常接近原始 `Specular` 。 否则，表面看起来像是一个金属面，因而会丢失漫射色。 如果 `ShininessExponent` 足够大且非常明亮，则图面看起来更精美并更具反射 `Specular` 。 否则，表面看起来会很粗糙，几乎不会反映出环境。
+总之，如果 `Specular` 接近于零，则 `Albedo` 将非常接近于原始的 `Diffuse`。 否则，表面将类似于金属表面，且失去漫射颜色。 如果 `ShininessExponent` 足够大且 `Specular` 很明亮，则表面更类似于抛光且反射光。 否则，表面将会很粗糙，且几乎不反射环境中的光线。
 
 ### <a name="known-issues"></a>已知问题
 
-* 当前公式不适用于简单的彩色几何。 如果 `Specular` 非常明亮，则所有几何都将成为没有任何颜色的反射金属表面。 此处的解决方法是 `Specular` 从原始中降低到30%，或者使用转换设置 [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)。
-* 最近向 `Maya` 和 `3DS Max` 内容创建工具中添加了 .pbr 材料。 它们使用自定义的用户定义的黑盒属性将其传递到 FBX。 Azure 远程呈现不会读取这些附加属性，因为没有记录这些属性并且格式为关闭源。
+* 当前公式不适用于简单的彩色几何图形。 如果 `Specular` 足够明亮，则所有几何图形都将成为没有任何颜色的反光金属表面。 解决方法是将 `Specular` 从原始值调低到 30%，或者使用转换设置 [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)。
+* `Maya` 和 `3DS Max` 内容创建工具中最近添加了 PBR 材料。 它们使用用户定义的自定义黑盒属性将其传递到 FBX。 Azure 远程渲染不会读取这些附加属性，因为没有记录这些属性且其格式采用封闭源代码。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [模型转换](../how-tos/conversion/model-conversion.md)
-* [在模型转换过程中覆盖材料](../how-tos/conversion/override-materials.md)
+* [在模型转换期间替代材料](../how-tos/conversion/override-materials.md)

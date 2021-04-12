@@ -1,7 +1,7 @@
 ---
 title: 在设计器中转换数据
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中导入和转换数据，以创建自己的数据集。
+description: 了解如何在 Azure 机器学习设计器中导入和转换数据以创建自己的数据集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,10 +11,10 @@ ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101661046"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中转换数据
@@ -52,7 +52,7 @@ ms.locfileid: "101661046"
 
 1. 将“Adult Census Income Binary classification”数据集拖放到画布上。
 
-1. 右键单击 "**成人人口收入** 数据集" 模块，并选择 "**可视化**  >  **数据集输出**"
+1. 右键单击“Adult Census Income”数据集模块，并选择“可视化” > “数据集输出”
 
 1. 使用数据预览窗口浏览数据集。 请特别注意“native-country”列值。
 

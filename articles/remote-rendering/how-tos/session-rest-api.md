@@ -1,32 +1,32 @@
 ---
 title: 会话管理 REST API
-description: 描述如何管理会话
+description: 介绍如何管理会话
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 414dc161d7cba2e89d15c47b8da5abdfb7cb3338
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 4323884b2dee3eeccfe71ec7817d92467450e88e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712158"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950019"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用会话管理 REST API
 
-若要使用 Azure 远程呈现功能，需要创建一个 *会话*。 每个会话对应于要在 Azure 中分配的、客户端设备可以连接到的服务器。 当设备连接时，服务器将呈现请求的数据，并将结果作为视频流提供。 在会话创建过程中，您选择了要在哪 [种服务器](../reference/vm-sizes.md) 上运行，这会确定定价。 会话不再需要，应停止。 如果未手动停止，它将在会话的 *租约时间* 到期时自动关闭。
+要使用 Azure 远程渲染功能，需要创建一个会话。 每个会话对应 Azure 中要分配的一个服务器，客户端设备可以连接到该服务器。 当设备连接时，服务器将渲染请求的数据，并以视频流形式提供结果。 在创建会话的过程中，选择要运行的[服务器种类](../reference/vm-sizes.md)，它们决定价格。 不再需要会话后，应将其停止。 如果未手动停止，它将在会话的租用时间到期后自动关闭。
 
 ## <a name="rest-api-reference"></a>REST API 参考
 
-可在 [此处](/rest/api/mixedreality/2021-01-01preview/remoterendering) 找到 REST API 引用，并在 [此处](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)找到 swagger 定义。
-我们在 "*脚本*" 文件夹（称为 *RenderingSession.ps1*）中的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，它演示了如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)。
-我们还提供适用于 [.net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/mixedreality/Azure.MixedReality.RemoteRendering)、Java 和 Python 的 sdk。
+REST API 参考文件位于[此处](/rest/api/mixedreality/2021-01-01preview/remoterendering)，而 swagger 定义位于[此处](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mixedreality/data-plane/Microsoft.MixedReality)。
+我们在 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)的“Scripts”文件夹中提供了一个名为“RenderingSession.ps1”的 PowerShell 脚本，该脚本演示了我们服务的用法。 该脚本及其配置如下所述：[示例 PowerShell 脚本](../samples/powershell-example-scripts.md)。
+我们还提供适用于 [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/remoterendering/Azure.MixedReality.RemoteRendering/README.md) 和 [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/remoterendering/azure-mixedreality-remoterendering/README.md) 的 SDK。
 
 > [!IMPORTANT]
-> 延迟是使用远程呈现时的一个重要因素。 为了获得最佳体验，请在最接近你的区域中创建会话。 可以使用 [Azure 延迟测试](https://www.azurespeed.com/Azure/Latency) 来确定离您最近的区域。
+> 延迟是使用远程渲染时的一个重要因素。 为了获得最佳体验，请在离你最近的区域创建会话。 可以使用 [Azure 延迟测试](https://www.azurespeed.com/Azure/Latency)来确定离你最近的区域。
 
 > [!IMPORTANT]
-> 要使客户端设备能够连接到呈现会话，需要使用 ARR 运行时 SDK。 这些 Sdk 在 [.net](/dotnet/api/microsoft.azure.remoterendering?view=remoterendering) 和 [c + +](/cpp/api/remote-rendering/)中可用。 除了连接到服务以外，这些 Sdk 还可用于启动和停止会话。
+> 要将客户端设备连接到渲染会话，需要使用 ARR 运行时 SDK。 这些 SDK 可用于 [.NET](/dotnet/api/microsoft.azure.remoterendering) 和 [C++](/cpp/api/remote-rendering/)。 除连接到服务之外，这些 SDK 还可用来启动和停止会话。
 
 ## <a name="next-steps"></a>后续步骤
 

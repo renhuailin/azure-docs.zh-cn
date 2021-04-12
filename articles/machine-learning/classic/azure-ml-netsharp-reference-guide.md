@@ -1,5 +1,5 @@
 ---
-title: 'ML Studio (经典) ： Net # 自定义神经网络-Azure'
+title: 机器学习工作室（经典）：Net# 自定义神经网络 - Azure
 description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室（经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519246"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>有关机器学习工作室（经典）的 Net# 神经网络规范语言的指南
@@ -266,9 +266,9 @@ hidden P1 [5, 12, 12]
 
 响应规范化捆绑支持所有卷积属性，除了 **Sharing**、**MapCount** 和 **Weights**。
 
-+ 如果内核包含与 ***x** _ 相同的映射，则规范化方案称为 _ * 同一映射规范化 * *。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
++ 如果内核包含与 ***x** _ 相同的映射中的神经元，则规范化方案称为 _*相同映射规范化**。 若要定义相同映射规范化，那么 **InputShape** 中的第一个坐标必须具有值 1.
 
-+ 如果内核包含与 ***x** _ 相同的空间位置中的神经元，但神经元在其他映射中，则规范化方案称为 _ * 跨映射规范化 * *。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
++ 如果内核包含与 ***x** _ 相同的空间位置中的神经元，但是神经元位于其他映射中，则规范化方案称为 _*跨映射规范化**。 这种类型的响应规范化可实现一种横向抑制，其灵感来源于从真实神经元中发现的类型，可创建不同映射上计算的神经元输出之间的大激活级别的竞争。 若要定义跨映射规范化，第一个坐标必须是大于 1 且不大于映射数的正整数，其他坐标则必须具有值 1.
 
 因为响应规范化捆绑应用源节点值的预定义函数以确定目标节点值，所以它们不具有可训练状态（权重或偏差）。
 

@@ -1,7 +1,7 @@
 ---
 title: 分析模型内存和 CPU 使用率
 titleSuffix: Azure Machine Learning
-description: 了解如何在部署前分析模型。 分析确定了模型的内存和 CPU 使用率。
+description: 了解如何在部署前分析模型。 分析可确定模型的内存和 CPU 使用率。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -13,10 +13,10 @@ zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
 ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93320393"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>分析模型，确定资源利用率
@@ -29,7 +29,7 @@ ms.locfileid: "93320393"
 
 ## <a name="limitations"></a>限制
 
-* 当工作区的 Azure 容器注册表 (ACR) 位于虚拟网络后面时，分析将不起作用。
+* 当工作区的 Azure 容器注册表 (ACR) 位于虚拟网络之后时，分析将不起作用。
 
 ## <a name="run-the-profiler"></a>运行探查器
 
@@ -44,7 +44,7 @@ ms.locfileid: "93320393"
 > 目前，我们仅支持分析预期其请求数据为字符串的服务，例如：字符串序列化 json、文本、字符串序列化图像等。数据集的每一行的内容（字符串）都会放入 HTTP 请求的正文中，然后会被发送到可以对评分模型进行封装的服务。
 
 > [!IMPORTANT]
-> 我们仅支持对 ChinaEast2 和 USGovArizona 区域中的2个 Cpu 进行分析。
+> 我们仅支持在 ChinaEast2 和 USGovArizona 区域中对最多 2 个 CPU 进行分析。
 
 下面是一个示例，说明了如何构造用于分析服务的输入数据集，该服务预期其传入请求数据包含序列化 json。 在此示例中，我们创建了一个数据集，该数据集基于 100 个请求数据内容相同的实例。 在实际方案中，建议使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
 

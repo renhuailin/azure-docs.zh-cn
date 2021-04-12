@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ： Azure AI 库-Azure
+title: 机器学习工作室（经典）：Azure AI 库 - Azure
 description: 在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519841"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
@@ -202,6 +202,6 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 我们希望库能由用户驱动并能为用户所用。 使用右侧的笑脸告诉我们你喜欢或不喜欢库。  
 
-![使用反馈窗口可以发送笑脸、发送哭脸或输入文本。 有一个 "提交" 按钮。](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![使用反馈窗口发送笑脸、皱眉表情或输入文本。 完成后单击“提交”按钮。](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[将我转到库 >>](https://gallery.azure.ai)**

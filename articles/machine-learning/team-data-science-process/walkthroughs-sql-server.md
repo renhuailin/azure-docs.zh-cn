@@ -1,6 +1,6 @@
 ---
 title: 使用 R、Python 和 T-SQL 分析 SQL Server - Team Data Science Process
-description: 在 SQL Server 中演练使用 R、Python 和 T-sql 进行预测分析的示例。
+description: 演练在 SQL Server 中使用 R、Python 和 T-SQL 进行预测分析的示例。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a8789050257b8bc67649233760baefe7e2ee9adf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93320146"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-sql SQL Server 数据科学演练
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-SQL 的 SQL Server 数据科学演练
 
 这些演练使用 SQL Server、SQL Server R Services 和 SQL Server Python Services 进行预测分析。 R 和 Python 代码部署在存储过程中。 它们遵循 Team Data Science Process 中所述的步骤。 有关 Team Data Science Process 的概述，请参阅[数据科学过程](overview.md)。 
 
@@ -27,12 +27,12 @@ ms.locfileid: "93320146"
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>在 SQL Server 中使用 Python 和 SQL 查询预测出租车小费 
 
-[使用 SQL Server](sql-walkthrough.md)演练显示了如何生成和部署机器学习分类和回归模型。  所用数据是公开提供的纽约市出租车行程和费用数据集。
+[使用 SQL Server](sql-walkthrough.md) 演练展示如何生成和部署机器学习分类以及回归模型。  所用数据是公开提供的纽约市出租车行程和费用数据集。
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>在 SQL Server 中使用 Microsoft R 预测出租车小费 
 
-[使用 SQL Server R Services](/sql/machine-learning/tutorials/walkthrough-data-science-end-to-end-walkthrough)演练演示如何生成 R 模型并将其部署到 SQL Server。 本演练旨在向 R 开发人员介绍 R Services（数据库内）。
+[使用 SQL Server R Services](/sql/machine-learning/tutorials/walkthrough-data-science-end-to-end-walkthrough) 演练演示如何生成 R 模型并将其部署到 SQL Server。 本演练旨在向 R 开发人员介绍 R Services（数据库内）。
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>在 SQL Server 中通过 T-SQL 或存储过程使用 R 预测出租车小费

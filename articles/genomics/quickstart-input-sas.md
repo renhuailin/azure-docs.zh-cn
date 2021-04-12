@@ -1,7 +1,7 @@
 ---
-title: 使用共享访问签名的工作流
+title: 共享访问签名使用工作流
 titleSuffix: Microsoft Genomics
-description: 本文演示如何使用共享访问签名 (SAS) （而不是存储帐户密钥）将工作流提交到 Microsoft 基因组学服务。
+description: 本文演示了如何使用共享访问签名 (SAS) 而非存储帐户密钥将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: 82f5e8b4a0c06517381857f0d914bcb65ba41d35
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93394605"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
-本文演示如何使用 config.txt 文件将工作流提交到 Microsoft 基因组学服务，该文件包含 (SAS) 而不是存储帐户密钥的 [共享访问签名 ](../storage/common/storage-sas-overview.md) 。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
+本文演示了如何使用 config.txt 文件将工作流提交到 Microsoft 基因组学服务，该文件包含[共享访问签名 (SAS)](../storage/common/storage-sas-overview.md) 而不是存储帐户密钥。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
 
-本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
+本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果你已成功使用所提供的示例数据提交工作流，即可开始学习本教程。 
 
 ## <a name="what-is-a-sas"></a>什么是 SAS？
 [共享访问签名 (SAS)](../storage/common/storage-sas-overview.md) 用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
@@ -66,7 +66,7 @@ ms.locfileid: "93394605"
 ## <a name="add-the-sas-to-the-configtxt-file"></a>将 SAS 添加到 config.txt 文件
 若要使用 SAS 查询字符串通过 Microsoft 基因组学服务运行工作流，请编辑 config.txt 文件，从其中删除密钥。 然后，将 SAS 查询字符串（以 `?` 开头）追加到输出容器名称，如下所示。 
 
-![基因组学 SAS config](./media/quickstart-input-sas/genomics-sas-config.png "基因组学 SAS config")
+![基因组学 SAS 配置文件](./media/quickstart-input-sas/genomics-sas-config.png "基因组学 SAS 配置文件")
 
 使用 Microsoft 基因组学 Python 客户端通过以下命令提交工作流，将相应的 SAS 查询字符串追加到每个输入 Blob 名称：
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>如果将输入文件名称添加到 config.txt 文件
 也可将配对端读取文件的名称直接添加到 config.txt 文件，并追加 SAS 查询令牌，如下所示：
 
-![基因组学 SAS config blobname](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "基因组学 SAS config blobname")
+![基因组学 SAS 配置文件 Blob 名称](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "基因组学 SAS 配置文件 Blob 名称")
 
 在此示例中，请使用 Microsoft 基因组学 Python 客户端通过以下命令提交工作流，省略 `-b1` 和 `-b2` 命令：
 

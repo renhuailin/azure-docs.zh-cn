@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92205313"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
@@ -18,8 +18,8 @@ ms.locfileid: "92205313"
 
 ## <a name="settings-file"></a>“设置”文件
 
-如果 `<modelName>.ConversionSettings.json` 在输入模型旁边的输入容器中找到一个名为的文件 `<modelName>.<ext>` ，则该文件将用于为模型转换过程提供其他配置。
-例如， `box.ConversionSettings.json` 在转换时使用 `box.gltf` 。
+如果在输入模型 `<modelName>.<ext>` 旁边的输入容器中找到名为 `<modelName>.ConversionSettings.json` 的文件，则该文件将用于为模型转换过程提供额外配置。
+例如，在转换 `box.gltf` 时会使用 `box.ConversionSettings.json`。
 
 该文件的内容应满足以下 json 架构：
 
@@ -60,7 +60,7 @@ ms.locfileid: "92205313"
 }
 ```
 
-示例文件 `box.ConversionSettings.json` 可能是：
+`box.ConversionSettings.json` 文件的一个示例可能是：
 
 ```json
 {
@@ -73,27 +73,27 @@ ms.locfileid: "92205313"
 ### <a name="geometry-parameters"></a>几何参数
 
 * `scaling` - 此参数统一缩放模型。 缩放可用于增大或缩小模型，例如用于在桌面上显示建筑模型。
-如果模型是在 "米" 之外的单位中定义的，则缩放也很重要，因为呈现引擎需要计量。
+当模型以米之外的单位定义时，缩放也很重要，因为呈现引擎预期的单位为米。
 例如，如果模型是以厘米定义的，则应用比例 0.01 应会以正确的大小呈现模型。
 一些源数据格式（例如 .fbx）提供单位缩放提示，在这种情况下，转换会将模型隐式缩放为以米为单位。 将在缩放参数的基础上应用源格式提供的隐式缩放。
 最终缩放因子应用于场景图形节点的几何顶点和局部转换。 根实体转换的缩放比例保持不变。
 
 * `recenterToOrigin` - 指出应对模型进行转换，使其边界框以原点为中心。
-如果从源模型置换了源模型，则浮点精度问题可能导致呈现项目。
-在这种情况下，可以对模型进行居中。
+如果源模型离原点较远，则浮点精度问题可能导致呈现噪点。
+在这种情况下，将模型居中可以解决问题。
 
 * `opaqueMaterialDefaultSidedness` - 呈现引擎假定不透明材料是双面的。
-如果该假设不是特定模型的 true，则应将此参数设置为 "SingleSided"。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
+如果特定模型不符合该假定，则应将此参数设置为 "SingleSided"。 有关详细信息，请参阅 [:::no-loc text="single sided":::呈现](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="material-de-duplication"></a>材料去重
 
 * `deduplicateMaterials` - 此参数可允许或禁止对共享相同属性和纹理的材料进行自动去重。 在进行材料覆盖后进行去重。 默认启用。
 
-* 即使在重复数据删除后，模型的材料超过65535，该服务也会尝试合并具有相似属性的材料。 作为最后一种方法，超过该限制的任何材料将替换为红色错误材料。
+* 如果去重后，模型的材料还超过 65,535 个，则该服务会尝试合并具有相似属性的材料。 超过该限制的所有材料将替换为红色错误材料，这是最终手段。
 
-![Image 显示了两个由68921彩色三角形组成的多维数据集。](media/mat-dedup.png?raw=true)
+![图片显示了两个由 68,921 个彩色三角形组成的多维数据集。](media/mat-dedup.png?raw=true)
 
-两个彩色三角形为68921的多维数据集。 Left：消除68921颜色材料的重复数据。 Right：消除了64000颜色材料后的重复数据。 限制为65535。  (参阅 [限制](../../reference/limits.md)。 ) 
+两个由 68,921 个彩色三角形组成的多维数据集。 左侧：去重前具有 68,921 个颜色材料。 右侧：去重后具有 64,000 个颜色材料。 材料数量限制为 65,535 个。 （请参阅[限制](../../reference/limits.md)。）
 
 ### <a name="color-space-parameters"></a>颜色空间参数
 
@@ -101,7 +101,7 @@ ms.locfileid: "92205313"
 如果模型是使用伽玛空间定义的，则应将这些选项设置为 true。
 
 * `gammaToLinearMaterial` - 将材料颜色从伽玛空间转换为线性空间
-* `gammaToLinearVertex` -将 :::no-loc text="vertex"::: 颜色从伽玛空间转换为线性空间
+* `gammaToLinearVertex` - 将 :::no-loc text="vertex"::: 颜色从伽玛空间转换为线性空间
 
 > [!NOTE]
 > 对于 FBX 文件，这些设置默认设置为 `true`。 对于所有其他文件类型，默认值为 `false`。
@@ -110,10 +110,10 @@ ms.locfileid: "92205313"
 
 * `sceneGraphMode` - 定义如何转换源文件中的场景图：
   * `dynamic`（默认值）：文件中的所有对象都作为 API 中的[实体](../../concepts/entities.md)公开，并可独立转换。 运行时的节点层次结构与源文件中的结构相同。
-  * `static`：所有对象都在 API 中公开，但无法独立进行转换。
+  * `static`：所有对象都在 API 中公开，但无法独立转换。
   * `none`：场景图折叠为一个对象。
 
-每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 `dynamic`仅当需要单独移动部件（例如，对于 "爆炸视图" 动画）时使用模式。
+每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 仅当需要单独移动部件时（例如在“爆炸视图”动画中）使用 `dynamic` 模式。
 
 `static` 模式将导出整个场景图，但此图内的部件相对于其根部件具有恒定的转换。 但是，仍可移动、旋转或缩放对象的根节点，而不产生显著的性能开销。 而且，[空间查询](../../overview/features/spatial-queries.md)将返回各个部件，并且可以通过[状态重写](../../overview/features/override-hierarchical-state.md)来修改每个部件。 在此模式下，每个对象的运行时开销可忽略不计。 它非常适用于仍需要按对象检查但不需要按对象转换的大型场景。
 
@@ -140,16 +140,16 @@ ms.locfileid: "92205313"
 
 ### <a name="node-meta-data"></a>节点元数据
 
-* `metadataKeys` -用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确的密钥或通配符。 通配符的格式为 "ABC *"，并与以 "ABC" 开头的任何密钥匹配。 支持的元数据值类型为 `bool` 、、 `int` `float` 和 `string` 。
+* `metadataKeys` - 用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确键或通配符键。 通配符键的格式为 "ABC*"，可与任何以 "ABC" 开头的键匹配。 支持的元数据值类型为 `bool`、`int`、`float` 和 `string`。
 
-    对于 GLTF 文件，此数据来自 [节点上的额外对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自中的 `Properties70` 数据 `Model nodes` 。 有关更多详细信息，请参阅你的3D 资产工具的文档。
+    对于 GLTF 文件，此数据来自[节点上的 extras 对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自 `Properties70` 上的 `Model nodes` 数据。 有关更多详细信息，请参阅 3D 资产工具的文档。
 
-### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: 形式
+### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex"::: 格式
 
-可以调整 :::no-loc text="vertex"::: 网格的格式，以节省内存的交易精度。 占用内存较低，可以加载更大的模型或获得更好的性能。 但是，根据具体数据，格式错误可能会显著影响呈现质量。
+可以调整网格的 :::no-loc text="vertex"::: 格式，损失精度以节省内存。 占用内存较低，可以加载更大的模型或获得更好的性能。 但是，根据具体数据，格式错误可能会显著影响呈现质量。
 
 > [!CAUTION]
-> 更改 :::no-loc text="vertex"::: 格式应该是最后一种手段，当模型无法再装入内存时，或在优化以实现最佳性能时。 更改很容易引入呈现噪点，包括明显和细微的噪点。 除非你知道应该注意什么，否则不应更改默认值。
+> 更改 :::no-loc text="vertex"::: 格式应该是一种最终手段，用于内存不足以处理模型时，或进行优化以实现最佳性能时。 更改很容易引入呈现噪点，包括明显和细微的噪点。 除非你知道应该注意什么，否则不应更改默认值。
 
 可以进行以下调整：
 
@@ -176,7 +176,7 @@ ms.locfileid: "92205313"
 
 通过将组件强制为 `NONE`，可以保证输出网格没有各自的流。
 
-#### <a name="component-formats-per-no-loc-textvertex-stream"></a>每个流的组件格式 :::no-loc text="vertex":::
+#### <a name="component-formats-per-no-loc-textvertex-stream"></a>每个 :::no-loc text="vertex"::: 流的组件格式
 
 允许对各自的组件使用以下格式：
 
@@ -195,7 +195,7 @@ ms.locfileid: "92205313"
 
 各种格式的内存占用量如下：
 
-| 格式 | 说明 | 字节/ :::no-loc text="vertex"::: |
+| 格式 | 说明 | 每 :::no-loc text="vertex"::: 的字节数 |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -214,56 +214,56 @@ ms.locfileid: "92205313"
 
 #### <a name="example"></a>示例
 
-假设你有一个摄影测量模型，其纹理中融入了照明。 呈现模型所需的全部都是 :::no-loc text="vertex"::: 位置和纹理坐标。
+假设你有一个摄影测量模型，其纹理中融入了照明。 要呈现该模型，只需要 :::no-loc text="vertex"::: 位置和纹理坐标。
 
-默认情况下，转换器必须假设你在某个时间会想在模型上使用 PBR 材料，因此它将为你生成 `normal`、`tangent` 和 `binormal` 数据。 因此，每个顶点的内存使用量为 `position`（12 字节）+ `texcoord0`（8 字节）+ `normal`（4 字节）+ `tangent`（4 字节）+ `binormal`（4 字节）= 32 字节。 此类更大的模型可能很多数百万 :::no-loc text="vertices"::: ，因此可能会占用多 gb 内存。 如此大量的数据会影响性能，甚至可能耗尽内存。
+默认情况下，转换器必须假设你在某个时间会想在模型上使用 PBR 材料，因此它将为你生成 `normal`、`tangent` 和 `binormal` 数据。 因此，每个顶点的内存使用量为 `position`（12 字节）+ `texcoord0`（8 字节）+ `normal`（4 字节）+ `tangent`（4 字节）+ `binormal`（4 字节）= 32 字节。 这种类型的大型模型很容易拥有数百万个 :::no-loc text="vertices":::，导致模型可能占用数 GB 的内存。 如此大量的数据会影响性能，甚至可能耗尽内存。
 
-知道您在模型上从不需要动态照明，并且知道所有纹理坐标都在范围内 `[0; 1]` ，则可以将 `normal` 、 `tangent` 、和设置 `binormal` 为 `NONE` `texcoord0` 半精度 (`16_16_FLOAT`) ，从而每个仅生成16个字节 :::no-loc text="vertex"::: 。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
+如果知道永远不需要对模型进行动态照明，并且知道所有纹理坐标都在 `[0; 1]` 范围内，就可以将 `normal`、`tangent` 和 `binormal` 设置为 `NONE`，并将 `texcoord0` 设置为半精度 (`16_16_FLOAT`)，从而使每个 :::no-loc text="vertex"::: 仅占用 16 个字节。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
 
 ## <a name="memory-optimizations"></a>内存优化
 
-已加载内容的内存消耗可能会成为呈现系统的瓶颈。 如果内存负载太大，则可能会危及呈现性能或导致模型不会完全加载。 此段落讨论了一些用于降低内存占用量的重要策略。
+已加载内容对内存的消耗可能会成为呈现系统的瓶颈。 如果内存负载过大，则可能影响呈现性能或导致模型完全不加载。 本段落讨论了一些用于降低内存占用量的重要策略。
 
 ### <a name="instancing"></a>实例化
 
-实例化是一种概念，其中网格用于具有不同空间转换的部分，而不是每个引用其自己唯一几何图形的部分。 实例化对内存占用量有重大影响。
-实例化示例用例是体系结构模型中的一种或椅子。
+与引用自身唯一几何图形的部件相反，实例化概念是指具有不同空间转换的部件会重用网格。 实例化对内存占用量有重大影响。
+实例化示例用例可以是引擎模型中的螺丝，也可以是体系结构模型中的椅子。
 
 > [!NOTE]
-> 实例化可以 (的内存消耗提高，从而) 明显地加载时间，但对渲染性能方面的改进是不重要的。
+> 实例化可以显著降低内存消耗（因此缩短加载时间），但对渲染性能的提升作用微乎其微。
 
-如果在源文件中相应地标记了部件，转换服务将考虑实例化。 但是，转换不执行网格数据的其他深入分析来识别可重复使用的部分。 因此，内容创建工具及其导出管道是正确的实例化设置的决定性条件。
+如果源文件中已相应标记了部件，则转换服务不会遵循实例化。 但是，转换不会对网格数据进行其他深入分析来识别可重用的部件。 因此，内容创建工具及其导出管道是正确进行实例化设置的决定性条件。
 
-测试在转换过程中是否保留实例化信息的简单方法是查看 [输出统计](get-information.md#example-info-file)信息，尤其是 `numMeshPartsInstanced` 成员。 如果的值大于 `numMeshPartsInstanced` 零，则表示网格在各个实例之间共享。
+测试转换过程中是否保留了实例化信息的一种简单方法是查看[输出统计信息](get-information.md#example-info-file)，具体来说是 `numMeshPartsInstanced` 成员。 如果 `numMeshPartsInstanced` 的值大于零，则表示多个实例共享网格。
 
-#### <a name="example-instancing-setup-in-3ds-max"></a>示例：3ds 中的实例化设置最大值
+#### <a name="example-instancing-setup-in-3ds-max"></a>示例：3DS Max 中的实例化设置
 
-[Autodesk 3Ds Max](https://www.autodesk.de/products/3ds-max) 具有不同的对象克隆模式 **`Copy`** ， **`Instance`** **`Reference`** 这种模式的行为与导出文件中的实例化的行为不同 `.fbx` 。
+[Autodesk 3DS Max](https://www.autodesk.de/products/3ds-max) 提供不同的对象克隆模式，分别为 **`Copy`** 、 **`Instance`** 和 **`Reference`** ，这些模式在 `.fbx` 导出文件中的实例化行为有所不同。
 
-![最大3ds 克隆](./media/3dsmax-clone-object.png)
+![在 3ds Max 中克隆](./media/3dsmax-clone-object.png)
 
-* **`Copy`** ：在此模式下，将克隆网格，因此不会使用 (`numMeshPartsInstanced` = 0) 的实例。
-* **`Instance`** ：这两个对象共享同一网格，因此 (`numMeshPartsInstanced` = 1) 使用实例化。
-* **`Reference`** ：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，而不使用实例 (`numMeshPartsInstanced` = 0) 。
+* **`Copy`** ：在此模式下，将克隆网格，因此不会使用实例化 (`numMeshPartsInstanced` = 0)。
+* **`Instance`** ：两个对象共享同一个网格，因此会使用实例化 (`numMeshPartsInstanced` = 1)。
+* **`Reference`** ：可将不同修饰符应用于几何图形，因此导出程序选择传统方法，而不使用实例化 (`numMeshPartsInstanced` = 0)。
 
 
 ### <a name="depth-based-composition-mode"></a>基于深度的组合模式
 
-如果需要考虑内存问题，请使用 [基于深度的组合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)配置呈现器。 在此模式下，GPU 负载分布于多个 Gpu。
+如果内存占用量较大，请使用[基于深度的组合模式](../../concepts/rendering-modes.md#depthbasedcomposition-mode)配置呈现器。 在此模式下，GPU 有效负载分布于多个 GPU。
 
 ### <a name="decrease-vertex-size"></a>减小顶点大小
 
-如 " [组件格式更改的最佳实践](configure-model-conversion.md#best-practices-for-component-format-changes) " 一节中所述，调整顶点格式可以减少内存占用量。 但是，此选项应该是最后的手段。
+如[组件格式更改的最佳做法](configure-model-conversion.md#best-practices-for-component-format-changes)一节所述，调整顶点格式可以减少内存占用量。 但是，此选项应该是最终手段。
 
 ### <a name="texture-sizes"></a>纹理大小
 
-根据方案的类型，纹理数据量可能超出网格数据所用的内存量。 Photogrammetry 模型是候选。
-转换配置不提供自动缩减纹理的方式。 如有必要，纹理缩放必须作为客户端预处理步骤完成。 不过，转换步骤会选取合适的 [纹理压缩格式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
+根据方案的类型，纹理数据量可能超出网格数据所用的内存量。 摄影测量模型是候选项。
+转换配置不支持自动纵向缩减纹理。 如有必要，必须在客户端预处理步骤中完成纹理缩放。 但是，转换步骤会选取合适的[纹理压缩格式](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)：
 
-* `BC1` 对于不透明颜色纹理
-* `BC7` 对于带有 alpha 通道的源颜色纹理
+* `BC1` 表示不透明颜色纹理
+* `BC7` 表示带有 alpha 通道的源颜色纹理
 
-由于 `BC7` 与相比，格式具有内存占用空间的两倍 `BC1` ，因此请务必确保输入纹理不会不必要地提供 alpha 通道。
+`BC7` 格式的内存占用量是 `BC1` 的两倍，因此请务必确保输入纹理不会提供多余的 alpha 通道。
 
 ## <a name="typical-use-cases"></a>典型用例
 
@@ -277,7 +277,7 @@ ms.locfileid: "92205313"
 
 * 如果需要移动部件，这通常还意味着需要支持打光或其他[空间查询](../../overview/features/spatial-queries.md)，以便在一开始就选中这些部件。 另一方面，如果不打算移动部件，则很有可能也不需要它参与空间查询，因此可以关闭 `generateCollisionMesh` 标志。 此开关对转换时间、加载时间以及运行时的每帧更新成本有重大影响。
 
-* 如果应用程序不使用[剪切平面](../../overview/features/cut-planes.md)，则应关闭 `opaqueMaterialDefaultSidedness` 标志。 性能提升通常为 20%-30%。 剪切平面仍可使用，但在查看对象的内部部件时看不到背面，这与人的直觉相悖。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
+* 如果应用程序不使用[剪切平面](../../overview/features/cut-planes.md)，则应关闭 `opaqueMaterialDefaultSidedness` 标志。 性能提升通常为 20%-30%。 剪切平面仍可使用，但在查看对象的内部部件时看不到背面，这与人的直觉相悖。 有关详细信息，请参阅 [:::no-loc text="single sided":::呈现](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="use-case-photogrammetry-models"></a>用例：摄影测量模型
 
@@ -298,10 +298,10 @@ ms.locfileid: "92205313"
 
 ## <a name="deprecated-features"></a>已弃用的功能
 
-仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
-请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。
+仍支持使用非特定于模型的文件名 `conversionSettings.json` 来提供设置，但该功能已弃用。
+请改用特定于模型的文件名 `<modelName>.ConversionSettings.json`。
 
-`material-override`仍支持使用设置来标识转换设置文件中的[材料覆盖文件](override-materials.md)，但不推荐使用。 请改用特定于模型的文件名 `<modelName>.MaterialOverrides.json` 。
+仍支持使用 `material-override` 设置来标识转换设置文件中的[材料替代文件](override-materials.md)，但该功能已弃用。 请改用特定于模型的文件名 `<modelName>.MaterialOverrides.json`。
 
 ## <a name="next-steps"></a>后续步骤
 

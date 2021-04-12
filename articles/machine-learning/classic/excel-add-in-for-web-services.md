@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：用于 web 服务的 Excel 外接程序-Azure
+title: 机器学习工作室（经典）：用于 Web 服务的 Excel 外接程序 - Azure
 description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: 45d9e494b9f885cfa0680bec595aefcd4074d41e
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519994"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>适用于 Azure 机器学习工作室（经典）Web 服务的 Excel 加载项

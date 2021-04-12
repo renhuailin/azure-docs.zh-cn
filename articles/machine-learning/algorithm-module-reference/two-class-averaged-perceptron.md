@@ -1,7 +1,7 @@
 ---
 title: 双类平均感知器：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何在设计器中使用 Two-Class 平均感知器模块来创建二进制分类器。
+description: 了解如何使用设计器中的“双类平均感知器”模块来创建二进制分类器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421135"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>双类平均感知器模块
@@ -36,9 +36,9 @@ ms.locfileid: "93421135"
 
 2.  通过设置“创建训练程序模式”选项，指定所希望的模型训练方式。  
   
-    -   **单个参数** ：如果知道自己想要如何配置模型，请提供一组特定的值作为参数。
+    -   **单个参数**：如果知道自己想要如何配置模型，请提供一组特定的值作为参数。
 
-    -   **参数范围** ：如果不确定最佳参数并想要运行参数整理，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)将循环访问所提供设置的所有可能组合，以确定产生最佳结果的超参数。  
+    -   **参数范围**：如果不确定最佳参数并想要运行参数整理，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)将循环访问所提供设置的所有可能组合，以确定产生最佳结果的超参数。  
   
 3.  对于“学习速率”，请指定一个值作为“学习速率”。 学习速率值控制每次对模型进行测试和纠正时用于随机梯度下降法的梯度的大小。
   

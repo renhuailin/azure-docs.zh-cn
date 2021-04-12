@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：优化算法-Azure
+title: 机器学习工作室（经典）：优化算法 - Azure
 description: 说明如何为 Azure 机器学习工作室（经典）中的算法选择最佳参数集。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +10,13 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519297"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>选择参数以在机器学习 Studio (经典中优化算法) 
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>选择参数优化机器学习工作室（经典）中的算法
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 

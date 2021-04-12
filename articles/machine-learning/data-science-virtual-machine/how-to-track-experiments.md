@@ -9,10 +9,10 @@ ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 3795d531c5c4c543587ab817c05cd1cfeea6be06
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518532"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>在 Azure 机器学习中跟踪试验和部署模型
@@ -25,21 +25,21 @@ ms.locfileid: "100518532"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 需要 [预配 Azure 机器学习工作区](../how-to-manage-workspace.md#create-a-workspace)
+* 需要[预配 Azure 机器学习工作区](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>创建新的 Notebook
 
-Azure 机器学习和 MLFlow SDK 已预安装在 Data Science VM 上，并可在 azureml_py36_\* conda 环境中访问。 在 JupyterLab 中，单击 "启动程序"，并选择以下内核：
+Azure 机器学习和 MLFlow SDK 已预安装在 Data Science VM 上，并可在 azureml_py36_\* conda 环境中访问。 在 Jupyterlab 中，单击启动器，并选择以下内核：
 
 ![内核选择](./media/how-to-track-experiments/experiment-tracking-1.png)
 
 ## <a name="set-up-the-workspace"></a>设置工作区
 
-转到 [Azure 门户](https://portal.azure.com)并选择作为先决条件的一部分预配的工作区。 你将看到 __下载 config.js__ (参阅下文) -下载配置并确保它存储在 DSVM 上的工作目录中。
+转到 [Azure 门户](https://portal.azure.com)并选择作为先决条件的一部分预配的工作区。 你将看到“下载 config.json”（请参阅下文）- 下载此配置并确保其已存储在 DSVM 上的工作目录中。
 
 ![获取配置文件](./media/how-to-track-experiments/experiment-tracking-2.png)
 
-Config 包含工作区名称、订阅等信息，这意味着不需要对这些参数进行硬编码。
+配置包含工作区名称、订阅等信息，这意味着你无需对这些参数进行硬编码。
 
 ## <a name="track-dsvm-runs"></a>跟踪 DSVM 运行
 
@@ -122,11 +122,11 @@ with mlflow.start_run():
 
 ![MSE](./media/how-to-track-experiments/mlflow-experiments-2.png)
 
-如果单击运行，则会在 __输出 + 日志__ 中看到其他详细信息和 pickle 模型。
+如果单击运行，则会在“输出+日志”中看到其他详细信息和 pickled 模型
 
 ## <a name="deploy-model-in-azure-machine-learning"></a>在 Azure 机器学习中部署模型
 
-本部分概述了如何将 DSVM 上训练的模型部署到 Azure 机器学习。
+本部分概述如何将 DSVM 上训练的模型部署到 Azure 机器学习。
 
 ### <a name="step-1-create-inference-compute"></a>步骤 1：创建推理计算
 
@@ -150,7 +150,7 @@ with mlflow.start_run():
 
 ### <a name="step-2-deploy-no-code-inference-service"></a>步骤 2：部署无代码推理服务
 
-使用在代码中注册模型时 `register_model` ，我们将该框架指定为 spark-sklearn。 Azure 机器学习不支持以下框架的代码部署：
+使用 `register_model` 在代码中注册模型时，我们将框架指定为 sklearn。 Azure 机器学习不支持以下框架的代码部署：
 
 * scikit-learn
 * Tensorflow SaveModel 格式
@@ -172,7 +172,7 @@ with mlflow.start_run():
 
 ### <a name="step-3-consume"></a>步骤 3：使用
 
-如果模型已成功部署，你应该看到以下 (若要访问此页面，请单击左侧菜单中的 "终结点" > 然后单击已部署的服务) 的名称：
+成功部署模型后，你应看到以下内容（若要转到此页，请单击左侧菜单中的“终结点”> 然后单击已部署服务的名称）：
 
 ![使用模型](./media/how-to-track-experiments/mlflow-experiments-8.png)
 

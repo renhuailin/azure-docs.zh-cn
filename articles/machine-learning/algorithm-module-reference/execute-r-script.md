@@ -1,7 +1,7 @@
 ---
-title: 执行 R 脚本：模块引用
+title: 执行 R 脚本：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "执行 R 脚本" 模块来运行自定义 R 代码。
+description: 了解如何在 Azure 机器学习设计器中使用“执行 R 脚本”模块来运行自定义 R 代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
 ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98118995"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
@@ -49,12 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 若要安装其他 R 包，请使用 `install.packages()` 方法。 包是针对每一个“执行 R 脚本”模块分别安装的。 它们不在其他“执行 R 脚本”模块之间共享。
 
 > [!NOTE]
-> **不** 建议从脚本捆绑包安装 R 包。 建议直接在脚本编辑器中安装包。
+> 建议不要从脚本包安装 R 包。 建议直接在脚本编辑器中安装包。
 > 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
 
 > [!WARNING]
-> Excute R 脚本模块不支持安装需要本机编译的包，如 `qdap` 需要 JAVA 和需要 `drc` c + + 的包的包。 这是因为此模块是在预安装的环境中使用非管理员权限执行的。
-> 不要安装预构建于 Windows 上的包，因为设计器模块是在 Ubuntu 上运行的。 若要检查是否在 windows 上预先生成了包，可以使用 [CRAN](https://cran.r-project.org/) 并搜索包，根据 OS 下载一个二进制文件，然后选中 " **生成：** **说明** 文件中的部分"。 下面是一个示例： :::image type="content" source="media/module/r-package-description.png" alt-text="R 包说明" lightbox="media/module/r-package-page.png":::
+> “执行 R 脚本”模块不支持安装需要本机编译的包，例如，`qdap` 包需要 JAVA，`drc` 包需要 C++。 这是因为，此模块是在具有非管理员权限的预安装环境中执行的。
+> 不要安装在 Windows 上/针对 Windows 预建的包，因为设计器模块在 Ubuntu 上运行。 若要检查一个包是否是在 windows 上预建的包，可以转到 [CRAN](https://cran.r-project.org/) 并搜索该包，根据 OS 下载一个二进制文件，然后检查 DESCRIPTION 文件中的“Built:”部分。 下面是一个示例：:::image type="content" source="media/module/r-package-description.png" alt-text="R 包说明" lightbox="media/module/r-package-page.png":::
 
 此示例演示如何安装 Zoo：
 ```R
@@ -85,7 +85,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="access-to-registered-dataset"></a>访问已注册的数据集
 
-可以参考以下示例代码，访问工作区中 [已注册的数据集](../how-to-create-register-datasets.md) ：
+可以参阅以下示例代码，在工作区中访问[已注册的数据集](../how-to-create-register-datasets.md)：
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -147,7 +147,7 @@ azureml_main <- function(dataframe1, dataframe2){
 1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本。
 
     > [!NOTE]
-    > 编写脚本时请小心谨慎。 确保没有语法错误，例如，使用未声明的变量或未导入的模块或函数。 请特别注意本文结尾处的预安装包列表。 若要使用未列出的包，请通过脚本安装它们。 例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
+    > 编写脚本时请小心谨慎。 确保没有语法错误，例如，使用未声明的变量或未导入的模块或函数。 请特别注意本文结尾处的预安装包列表。 若要使用未列出的包，请通过脚本安装它们。 例如 `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`。
     
     为了帮助你入门，“R 脚本”文本框中预填充了可编辑或替换的代码示例。
     
@@ -185,7 +185,7 @@ azureml_main <- function(dataframe1, dataframe2){
     > [!NOTE]
     > 现有 R 代码可能需要稍做更改才能在设计器管道中运行。 例如，以 CSV 格式提供的输入数据应显式转换为数据集，然后才能在代码中使用。 R 语言中使用的数据和列类型与在设计器中使用的数据和列类型在某些方面也有所不同。
 
-1. 如果你的脚本大于 16 KB，请使用 **脚本捆绑** 端口来避免错误，如 *命令行数超过16597个字符的限制*。 
+1. 如果脚本大于 16 KB，请使用“脚本绑定”端口以避免错误，如“命令行超过 16597 个字符的限制”。 
     
     1. 将脚本和其他自定义资源捆绑到一个 zip 文件中。
     1. 将 zip 文件作为“文件数据集”上传到工作室。 
@@ -334,7 +334,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 添加“执行 R 脚本”模块的第二个实例，并将其连接到以前模块的输出端口。
 
-1. 在 " **R 脚本** " 文本框中键入以下代码，以 `A` 从输入数据表提取对象。 
+1. 在“R 脚本”文本框中键入以下代码，从输入数据表中提取对象 `A`。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){

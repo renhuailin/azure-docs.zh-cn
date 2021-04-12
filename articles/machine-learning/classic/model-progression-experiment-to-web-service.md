@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：模型如何成为 web 服务-Azure
+title: 机器学习工作室（经典）：模型如何变为 Web 服务 - Azure
 description: 关于 Azure 机器学习工作室（经典）模型从开发试验逐步演变为 Web 服务的机制的概述。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
 ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518617"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习工作室（经典）模型如何从试验逐步演变为 Web 服务
@@ -29,7 +29,7 @@ Azure 机器学习工作室（经典）提供交互式画布，使你能开发�
 * 评估结果
 * 输出最终值
 
-如果你对实验感到满意，则可以将其部署为 ***经典 Azure 机器学习 web 服务** _ 或 _ 新的 *_Azure 机器学习 web 服务_**，使用户能够向其发送新数据并接收返回的结果。
+一旦你对试验感到满意，则可以将其部署为经典 Azure 机器学习 Web 服务或新的 Azure 机器学习 Web 服务，以便用户可以向其发送新的数据，并接收返回的结果。
 
 在本文中，我们提供了有关机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 
@@ -51,7 +51,7 @@ Azure 机器学习工作室（经典）提供交互式画布，使你能开发�
 训练实验是在机器学习工作室（经典）中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，你将选择一个已训练的模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅[在 Azure 机器学习工作室（经典）中为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
 
 ### <a name="the-predictive-experiment"></a>预测性实验
-在训练实验中具有定型模型后，单击 " **设置 Web 服务** "，并选择 "机器学习 Studio 中的 **预测性 Web 服务** (经典) " 以启动将训练实验转换为 **_预测实验_** 的过程。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
+在训练实验中具有已训练的模型后，在机器学习工作室（经典）中单击“设置 Web 服务”，然后选择“预测性 Web 服务”，以启动将训练实验转换为预测性实验的过程  。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
 
 会通过以下步骤完成该转换：
 

@@ -12,10 +12,10 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: d8b1c2a5384e479e39d169d368554f16c300a33e
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98954540"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
@@ -38,9 +38,9 @@ ms.locfileid: "98954540"
 
 用于演示本地部署的示例笔记本包含在计算实例中。 使用以下步骤加载笔记本，并将模型部署为 VM 上的 Web 服务：
 
-1. 在 [Azure 机器学习 studio](https://ml.azure.com)中，选择 "笔记本"，然后在 "示例笔记本" 下选择 "how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local"。 将此笔记本克隆到您的用户文件夹。
+1. 在 [Azure 机器学习工作室](https://ml.azure.com)中，选择“笔记本”，然后在“示例笔记本”下选择 "how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb"。 将此笔记本克隆到用户文件夹。
 
-1. 查找步骤1中克隆的笔记本，选择或创建计算实例以运行笔记本。
+1. 查找步骤 1 中克隆的笔记本，选择或创建计算实例以运行该笔记本。
 
     ![笔记本上运行的本地服务的屏幕截图](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 

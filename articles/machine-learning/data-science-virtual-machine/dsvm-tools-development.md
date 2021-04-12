@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: cecc195b8b97ffd9b25cf12898726352ddd698a9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519433"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 上的开发工具
@@ -44,7 +44,7 @@ Data Science Virtual Machine (DSVM) 在高效集成开发环境 (IDE) 中捆绑�
 | 如何使用和运行它      | Windows 上的桌面快捷方式 (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`)、Linux 上的桌面快捷方式或终端 (`code`)    |
 | DSVM 上的相关工具      |     Visual Studio、RStudio、Juno  |
 
-## <a name="rstudio-desktop"></a>RStudio 桌面
+## <a name="rstudio-desktop"></a>RStudio Desktop
 
 | 类别 | 值 |
 | ------------- | ------------- |

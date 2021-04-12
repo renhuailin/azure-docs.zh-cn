@@ -1,23 +1,23 @@
 ---
 title: 区域
-description: 列出 Azure 远程呈现的可用区域
+description: 列出 Azure 远程渲染的可用区域
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.custom: references_regions
 ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96571107"
 ---
 # <a name="regions"></a>区域
 
-此页列出了可用于 Azure 远程呈现的当前可用区域。 为了获得最佳结果，请始终使用距离你的物理位置最近的区域。
+此页列出了可用于 Azure 远程渲染的当前可用区域。 为了获得最佳结果，请始终使用距离用户物理位置最近的区域。
 
-| “属性” | 区域 | URL |
+| 名称 | 区域 | URL |
 |-----------|:-----------|:-----------|
 | 澳大利亚东部 | australiaeast | `https://remoterendering.australiaeast.mixedreality.azure.com` |
 | 美国东部 | eastus | `https://remoterendering.eastus.mixedreality.azure.com` |

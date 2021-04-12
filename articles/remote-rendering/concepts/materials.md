@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4406e3875bd2d56a33bcc9a94a24ad874fecf8da
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99592171"
 ---
 # <a name="materials"></a>材料
@@ -84,14 +84,14 @@ void SetMaterialColorToGreen(ApiHandle<Material> material)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # 材料类](/dotnet/api/microsoft.azure.remoterendering.material)
-* [C # ColorMaterial 类](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [C # PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C # RenderingConnection CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
-* [C + + 材料类](/cpp/api/remote-rendering/material)
-* [C + + ColorMaterial 类](/cpp/api/remote-rendering/colormaterial)
-* [C + + PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
-* [C + + RenderingConnection：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/renderingconnection#creatematerial)
+* [C# Material 类](/dotnet/api/microsoft.azure.remoterendering.material)
+* [C# ColorMaterial 类](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [C# PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RenderingConnection.CreateMaterial()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
+* [C++ Material 类](/cpp/api/remote-rendering/material)
+* [C++ ColorMaterial 类](/cpp/api/remote-rendering/colormaterial)
+* [C++ PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RenderingConnection::CreateMaterial()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

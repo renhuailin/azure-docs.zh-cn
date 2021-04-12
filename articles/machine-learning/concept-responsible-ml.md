@@ -1,7 +1,7 @@
 ---
 title: 什么是负责机器学习（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解什么是机器学习，以及如何将其与 Azure 机器学习配合使用来了解模型、保护数据和控制模型生命周期。
+description: 了解什么是负责任的机器学习，以及如何将其与 Azure 机器学习配合使用来了解模型、保护数据和控制模型生命周期。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: luquinta
 author: luisquintanilla
 ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: f849968c16d2c3d8940a71da0e0cda536882d9c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: aeff928c14bd61a374f8b2610f35c0347a7cfc39
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692056"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062414"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>什么是负责机器学习？ （预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "101692056"
 
 难以解释的系统或非透明盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
 
-若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 InterpretML 包支持多种 interpretability 技术，如 SHapley 加法说明 (SHAP) 、模拟说明和排列功能重要性 (PFI) 。  [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
+若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 InterpretML 包支持多种可解释性技术，如 SHapley Additive exPlanations (SHAP)、mimic explainer 和 permutation feature importance (PFI)。  [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>提高机器学习模型中的公平性
 

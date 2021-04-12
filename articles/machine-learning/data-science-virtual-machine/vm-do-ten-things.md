@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101657394"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
@@ -24,7 +24,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 本文介绍如何使用 DSVM 执行数据科学任务，以及如何与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
-- 使用 Jupyter Notebook 在浏览器中使用 Python 2、Python 3 和 Microsoft R 来试验你的数据。 (Microsoft R 是设计为性能的企业就绪版本。 ) 
+- 使用 Jupyter Notebook 在浏览器中借助 Python 2、Python 3 和 Microsoft R 试验数据。（Microsoft R 是面向企业的高性能 R 版本。）
 - 使用 Microsoft Machine Learning Server 和 Python 在 DSVM 上本地探索数据和开发模型。
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。
@@ -49,7 +49,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
-Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 你可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R (开源和 Microsoft R Server) 。
+Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
 
 若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。  在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
@@ -200,7 +200,7 @@ AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.ne
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>读取 Azure blob 中的数据：Python ODBC
 
-可以使用 BlobService 库直接从 Jupyter Notebook 中的 blob 或 Python 程序中读取数据。
+在 Jupyter Notebook 或 Python 程序中，可以使用 BlobService 库直接读取 blob 中的数据。
 
 首先，导入所需的包：
 
@@ -304,7 +304,7 @@ in
 可动态缩放 DSVM 以满足项目需求。 如果晚上或周末不需要使用 VM ，可从 [Azure 门户](https://portal.azure.com)关闭 VM。
 
 > [!NOTE]
-> 如果使用 VM 操作系统中的关机按钮，将产生计算费用。 应改为使用 Azure 门户或 Cloud Shell 来释放你的 DSVM。
+> 如果使用 VM 操作系统中的关机按钮，将产生计算费用。 应改为使用 Azure 门户或 Cloud Shell 来释放 DSVM。
 > 
 > 
 

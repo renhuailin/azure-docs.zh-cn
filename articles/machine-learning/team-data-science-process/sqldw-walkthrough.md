@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93316002"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
@@ -24,7 +24,7 @@ ms.locfileid: "93316002"
 该过程遵循[团队数据科学过程 (TDSP)](./index.yml) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 Azure Synapse Analytics，以及如何使用 Azure Synapse Analytics 或 IPython Notebook 来浏览要建模的数据和工程特征。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 出租车行程数据集
-NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括拾取和下车位置和时间、匿名黑客 () 驾照号码和 medallion (出租车的唯一 ID) 号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. **trip_data.csv** 文件包含行程的详细信息，例如乘客编号、上车和下车时间、行程持续时间和行程距离。 下面是一些示例记录：
 
@@ -63,8 +63,8 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
-1. **二元分类** ：预测是否为某个行程支付了小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例 。
-2. **多类分类** ：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
+1. **二元分类**：预测是否为某个行程支付了小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例 。
+2. **多类分类**：预测为行程支付的小费的范围。 我们将 *tip\_amount* 划分五个分类收纳组或类别：
 
 `Class 0 : tip_amount = $0`
 
@@ -76,7 +76,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 
 `Class 4 : tip_amount > $20`
 
-3. **回归任务** ：预测为行程支付的小费金额。
+3. **回归任务**：预测为行程支付的小费金额。
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>设置 Azure 数据科学环境进行高级分析
 要设置 Azure 数据科学环境，请遵循以下步骤。
@@ -84,16 +84,16 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 
 **创建自己的 Azure Blob 存储帐户**
 
 * 设置自己的 Azure Blob 存储时，请为 Azure Blob 存储选择一个位于 **美国中南部** 或尽可能靠近美国中南部的地理位置，NYC 出租车数据存储在美国中南部。 将使用 AzCopy 将数据从公共 blob 存储容器复制到自己的存储中的某个容器。 Azure Blob 存储越接近美国中南部，完成此任务（步骤 4）的速度将越快。
-* 若要创建自己的 Azure 存储帐户，请按照 [关于 Azure 存储帐户](../../storage/common/storage-account-create.md)中所述的步骤进行操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
+* 若要创建自己的 Azure 存储帐户，请按照[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)中概述的步骤操作。 请务必记下以下存储帐户凭据的值，因为在此演练中稍后将需要它们。
 
   * **存储帐户名称**
   * **存储帐户密钥**
-  * **容器名称** （希望在 Azure Blob 存储中存储数据的容器的名称）
+  * **容器名称**（希望在 Azure Blob 存储中存储数据的容器的名称）
 
 **预配 Azure Synapse Analytics 实例。**
 按照[在 Azure 门户中创建和查询 Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) 中的文档预配 Azure Synapse Analytics 实例。 请务必记下以下 Azure Synapse Analytics 凭据，稍后的步骤中会使用它们。
 
-* **服务器名称** ：\<server Name>.database.windows.net
+* **服务器名称**：\<server Name>.database.windows.net
 * **SQLDW（数据库）名称**
 * **用户名**
 * **密码**
@@ -123,7 +123,7 @@ END CATCH;
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
 
 > [!NOTE]
-> 如果 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，可能需要 **以管理员身份运行** 。
+> 如果 *DestDir* 目录需要管理员权限才能创建或向其中写入数据，那么在执行下面的 PowerShell 脚本时，可能需要 **以管理员身份运行**。
 >
 >
 
@@ -135,7 +135,7 @@ $wc.DownloadFile($source, $ps1_dest)
 .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 ```
 
-在成功执行之后，当前工作目录会更改为 *-DestDir* 。 应该能够看到类似下面的屏幕︰
+在成功执行之后，当前工作目录会更改为 *-DestDir*。 应该能够看到类似下面的屏幕︰
 
 ![当前工作目录更改][19]
 
@@ -154,7 +154,7 @@ $wc.DownloadFile($source, $ps1_dest)
 
 此 **PowerShell 脚本** 文件完成以下任务︰
 
-* **下载并安装 AzCopy** （如果 AzCopy 尚未安装）
+* **下载并安装 AzCopy**（如果 AzCopy 尚未安装）
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -191,7 +191,7 @@ $wc.DownloadFile($source, $ps1_dest)
   Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
   ```
 
-* 通过以下命令 **使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从专用 blob 存储帐户载入 Azure Synapse Analytics** 。
+* 通过以下命令 **使用 Polybase（通过执行 LoadDataToSQLDW.sql）将数据从专用 blob 存储帐户载入 Azure Synapse Analytics**。
 
   * 创建架构
 
@@ -363,7 +363,7 @@ $wc.DownloadFile($source, $ps1_dest)
 将必须决定有重复的源和目标文件时该怎么办。
 
 > [!NOTE]
-> 如果专用 blob 存储帐户中已经有要从公共 blob 存储复制到专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果不希望覆盖它们，请在提示时输入 **n** 。 如果希望覆盖它们 **全部** ，请在提示时输入 **a** 。 也可以输入 **y** 单独覆盖.csv 文件。
+> 如果专用 blob 存储帐户中已经有要从公共 blob 存储复制到专用 blob 存储帐户的 .csv 文件，那么 AzCopy 将询问你是否要将其覆盖。 如果不希望覆盖它们，请在提示时输入 **n**。 如果希望覆盖它们 **全部**，请在提示时输入 **a**。 也可以输入 **y** 单独覆盖.csv 文件。
 >
 >
 
@@ -609,7 +609,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据
-下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped** ，多类分类标签 **tip\_class** ，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到 [Azure 机器学习 Studio (经典) ](https://studio.azureml.net) [导入][数据模块，] 以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到 [Azure 机器学习工作室（经典）](https://studio.azureml.net)的[导入数据] [import-data] 模块中，以便从 Azure 中的 SQL 数据库实例直接引入数据。 此查询将排除具有不正确（0，0）坐标的记录。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -759,7 +759,7 @@ print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.sha
 检索到的行数和列数 = (1000, 21)。
 
 ### <a name="descriptive-statistics"></a>描述性统计信息
-现在可浏览抽样数据。 首先查看 **trip\_distance** （或选择指定的任何其他字段）的一些描述性统计信息。
+现在可浏览抽样数据。 首先查看 **trip\_distance**（或选择指定的任何其他字段）的一些描述性统计信息。
 
 ```sql
 df1['trip_distance'].describe()
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>在 Azure 机器学习中构建模型
 我们现已准备好在 [Azure 机器学习](https://studio.azureml.net) 中进行建模和模型部署。 数据已可用于之前识别的任意预测问题，即：
 
-1. **二元分类** ：预测某个行程是否支付小费。
-2. **多类分类** ：根据以前定义的类，预测小费支付范围。
-3. **回归任务** ：预测为行程支付的小费金额。
+1. **二元分类**：预测某个行程是否支付小费。
+2. **多类分类**：根据以前定义的类，预测小费支付范围。
+3. **回归任务**：预测为行程支付的小费金额。
 
 若要开始建模练习，请登录到 **Azure 机器学习（经典版）** 工作区。 如果尚未创建机器学习工作区，请参阅[创建 Azure 机器学习工作室（经典版）工作区](../classic/create-workspace.md)。
 
@@ -949,7 +949,7 @@ pd.read_sql(query,conn)
 
 典型的训练实验由以下步骤组成：
 
-1. “ **新建 +** ”实验。
+1. “**新建 +** ”实验。
 2. 将数据导入 Azure 机器学习工作室（经典版）。
 3. 根据需要预处理、转换和操作数据。
 4. 根据需要生成功能。
@@ -965,10 +965,10 @@ pd.read_sql(query,conn)
 1. 使用“数据输入和输出”部分中可用的[导入数据][import-data]模块，将数据导入 Azure 机器学习工作室（经典）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
 
     ![Azure ML 导入数据][17]
-2. 在“ **属性** ”面板中，选择“ **Azure SQL 数据库** ”作为 **数据源** 。
-3. 在“ **数据库服务器名称** ”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
-4. 在相应字段中输入 **数据库名称** 。
-5. 在“服务器用户帐户名”中输入 *SQL 用户名* ，在“服务器用户帐户密码”中输入 *密码* 。
+2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为 **数据源**。
+3. 在“**数据库服务器名称**”字段中输入数据库 DNS 名称。 格式：`tcp:<your_virtual_machine_DNS_name>,1433`
+4. 在相应字段中输入 **数据库名称**。
+5. 在“服务器用户帐户名”中输入 *SQL 用户名*，在“服务器用户帐户密码”中输入 *密码*。
 7. 在“数据库查询”编辑文本区域中，粘贴提取必要数据库字段（包括任何计算字段，例如标签）的查询，并对数据向下采样至所需样本大小。
 
 下图是二元分类实验直接从 Azure Synapse Analytics 数据库读取数据的一个示例（请记住，将表名称 nyctaxi_trip 和 nyctaxi_fare 替换为你在演练中使用的架构名称和表名称）。 可以针对多类分类和回归问题构建类似实验。
@@ -976,7 +976,7 @@ pd.read_sql(query,conn)
 ![Azure ML 训练][10]
 
 > [!IMPORTANT]
-> 在上一部分中提供的建模数据提取和采样查询示例中， **这三个建模练习的所有标签都包括在此查询中** 。 每个建模练习的一个重要（必需）步骤是 **排除** 其他两个问题不需要的标签，以及任何其他的 **目标泄漏** 。 例如，使用二元分类时，使用标签 **tipped** 并排除字段 **tip\_class** 、 **tip\_amount** 和 **total\_amount** 。 后者是目标泄漏，因为它们指示支付的小费。
+> 在上一部分中提供的建模数据提取和采样查询示例中，**这三个建模练习的所有标签都包括在此查询中**。 每个建模练习的一个重要（必需）步骤是 **排除** 其他两个问题不需要的标签，以及任何其他的 **目标泄漏**。 例如，使用二元分类时，使用标签 **tipped** 并排除字段 **tip\_class**、**tip\_amount** 和 **total\_amount**。 后者是目标泄漏，因为它们指示支付的小费。
 >
 > 为了排除任何不需要的列或目标泄漏，可以使用[选择数据集中的列][select-columns]模块或[编辑元数据][edit-metadata]。 有关详细信息，请参阅[选择数据集中的列][select-columns]和[编辑元数据][edit-metadata]参考页。
 >
@@ -990,19 +990,19 @@ pd.read_sql(query,conn)
 1. 创建评分实验。
 2. 部署 Web 服务。
 
-若要从 **已完成** 的训练实验中创建评分实验，请单击下方操作栏中的“ **创建评分实验** ”。
+若要从 **已完成** 的训练实验中创建评分实验，请单击下方操作栏中的“**创建评分实验**”。
 
 ![Azure 评分][18]
 
 Azure 机器学习将尝试根据训练实验的组件创建评分实验。 特别是，它将：
 
 1. 保存训练的模型，并删除模型训练模块。
-2. 标识逻辑 **输入端口** ，以表示预期输入数据架构。
-3. 标识逻辑 **输出端口** ，以表示预期 Web 服务输出架构。
+2. 标识逻辑 **输入端口**，以表示预期输入数据架构。
+3. 标识逻辑 **输出端口**，以表示预期 Web 服务输出架构。
 
 创建评分实验后，请检查结果并根据需要进行调整。 典型调整方式为：将输入数据集或查询替换为排除标签字段的数据集或查询，因为调用服务时，这些标签字段不会映射到架构。 如果将输入数据集和/或查询大小减少到几个记录，刚好能够表示输入架构，这也是一个非常好的做法。 对于输出端口，通常会使用[选择数据集中的列][select-columns]模块在输出中排除所有输入字段，仅包括“评分标签”和“评分概率”。
 
-下图提供评分实验示例。 准备部署时，请单击下方操作栏中的“ **发布 WEB 服务** ”按钮。
+下图提供评分实验示例。 准备部署时，请单击下方操作栏中的“**发布 WEB 服务**”按钮。
 
 ![Azure ML 发布][11]
 

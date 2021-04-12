@@ -1,20 +1,20 @@
 ---
 title: 导出数据：模块参考
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设计器中的 "导出数据" 模块将结果和中间数据保存到 Azure 机器学习之外。
+description: 使用 Azure 机器学习设计器中的“导出数据”模块，可将结果和中间数据保存到 Azure 机器学习之外。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421305"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656900"
 ---
 # <a name="export-data-module"></a>导出数据模块
 
@@ -51,7 +51,10 @@ ms.locfileid: "93421305"
 
     如果选中了此复选框，系统将再次执行模块以再生成输出。
 
-1. 在数据存储中定义数据所在的路径。 此路径是相对路径。 不允许使用空路径或 URL 路径。
+1. 在数据存储中定义数据所在的路径。 该路径是相对路径。以 `data/testoutput` 为例，它表示“导出数据”的输入数据将导出到你在该模块“输出设置”中设定的数据存储的 `data/testoutput` 中。
+
+    > [!NOTE]
+    > 不允许使用空路径或 URL 路径。
 
 
 1. 对于“文件格式”，请选择数据的存储格式。

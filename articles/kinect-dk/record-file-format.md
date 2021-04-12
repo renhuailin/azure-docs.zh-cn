@@ -8,15 +8,15 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
 ms.openlocfilehash: f4fa14b0841cb76b2ba191310ecbca312d29f805
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97654585"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>使用 Azure Kinect 传感器 SDK 录制文件格式
 
-为了记录传感器数据，使用了 Matroska (. .mkv) 容器格式，这允许使用各种编解码器存储多个曲目。 录制文件包含用于存储颜色、深度、IR 图像和 IMU 的轨道。
+若要录制传感器数据，需使用 Matroska (.mkv) 容器格式，以便可以使用多种编解码器存储多个轨道。 录制文件包含用于存储颜色、深度、IR 图像和 IMU 的轨道。
 
 在 [Matroska 网站](https://www.matroska.org/index.html)上可以找到 .mkv 容器格式的大致详细信息。
 
