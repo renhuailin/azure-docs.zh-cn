@@ -5,14 +5,14 @@ keywords: Azure, artificial intelligence, ai, natural language processing, nlp, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790861"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278943"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -23,6 +23,13 @@ ms.locfileid: "98790861"
 LUIS 的客户端应用程序可以是任何传统的应用程序，只要其能够以自然语言与用户通信并完成任务即可。 这些客户端应用程序包括社交媒体应用、AI 聊天机器人以及支持语音的桌面应用程序。
 
 ![3 个客户端应用程序使用认知服务语言理解 (LUIS) 的概念图](./media/luis-overview/luis-entry-point.png "3 个客户端应用程序使用认知服务语言理解 (LUIS) 的概念图")
+
+本文档包含以下文章类型：  
+
+* [**快速入门**](luis-get-started-create-app.md)介绍了入门说明，指导您完成向服务发出请求。  
+* [**操作指南**](luis-how-to-start-new-app.md)包含以更具体的方式或自定义方式使用服务的说明。  
+* [**概念**](artificial-intelligence.md)对服务的功能和特性进行了深入说明。  
+* [**教程**](tutorial-intents-only.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。  
 
 ## <a name="use-luis-in-a-chat-bot"></a>在聊天机器人中使用 LUIS
 
@@ -139,8 +146,6 @@ LUIS 提供文本分析的功能，作为现有 LUIS 资源的一部分。 此�
 
 * 服务和文档的[新增内容](whats-new.md "新增功能")
 * 使用[意图](luis-concept-intent.md "意向")和[实体](luis-concept-entity-types.md "实体")[计划应用](luis-how-plan-your-app.md "规划应用")。
-* [查询预测终结点](luis-get-started-get-intent-from-browser.md "查询预测终结点")。
-* 面向 LUIS 的[开发人员资源](developer-reference-resource.md "开发人员资源")。
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

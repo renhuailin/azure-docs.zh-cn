@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107549"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492522"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
-- [对自定义转换进行编码 - .NET](encode-custom-presets-how-to.md)
+- [对自定义转换进行编码 - .NET](transform-custom-presets-how-to.md)
 - [使用 AES-128 动态加密和密钥传递服务 - .NET](drm-playready-license-template-concept.md)
 - [使用 DRM 动态加密和许可证传送服务 - .NET](drm-protect-with-drm-tutorial.md)
 - [从现有策略获取签名密钥 - .NET](drm-get-content-key-policy-dotnet-how-to.md)
