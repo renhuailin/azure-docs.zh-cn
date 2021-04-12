@@ -3,7 +3,7 @@ title: 使用 Azure 媒体包装器完成静态打包任务 | Microsoft Docs
 description: 本主题说明了通过 Azure 媒体包装器完成的各种任务。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dc0a6ddba110a171baadab650304e8f772f6db2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.openlocfilehash: fa7bc6b979869a06ba7441ae33a47f82aea0704c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98694548"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063961"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
 
@@ -34,7 +34,7 @@ ms.locfileid: "98694548"
 
 为通过 Internet 传送数字视频，必须压缩媒体。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。 视频经过编码后即可放入不同的文件容器中。 将编码后的媒体放入容器这一过程称为打包。 以 MP4 文件为例，可以使用 Azure 媒体包装器将其转换为平滑流式处理或 HLS 内容。 
 
-媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 通过动态打包，你只需创建包含一组自适应比特率或平滑流式处理文件的资产。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
+媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 使用动态打包，只需创建一个包含一组自适应比特率 MP4 或平滑流式处理文件的资产即可。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 > [!NOTE]
 > 建议使用[动态打包](media-services-dynamic-packaging-overview.md)。
@@ -84,7 +84,7 @@ ms.locfileid: "98694548"
     </smil>
 ```
 
-获得自适应比特率设置后，可以利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅 [动态打包](media-services-dynamic-packaging-overview.md)。
+设置自适应比特率 MP4 后，便可以利用动态打包功能。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
 
 以下代码示例使用 Azure 媒体服务 .NET SDK 扩展。  请确保更新代码，以指向输入 MP4 文件和 .ism 文件所在的文件夹， 并指向 MediaPackager_ValidateTask.xml 文件所在的位置。 此 XML 文件的定义请参见 [Azure 媒体包装器的任务预设](/previous-versions/azure/reference/hh973635(v=azure.100))一文。
 
@@ -715,12 +715,12 @@ ms.locfileid: "98694548"
 ```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>通过静态加密使用 AES-128 来保护 HLSv3
-如果要使用 AES-128 加密 HLS，可以选择使用动态加密（推荐选项）或静态加密（如本部分所述）。 如果决定使用动态加密，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
+如果要使用 AES-128 加密 HLS，可以选择使用动态加密（推荐选项）或静态加密（如本部分所述）。 如果决定使用动态加密，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-playready-license-template-overview.md)。
 
 > [!NOTE]
 > 要将内容转换为 HLS，必须先将内容转换/编码为平滑流。
 > 此外，对于使用 AES 加密的 HLS，请确保在 MediaPackager_SmoothToHLS.xml 文件中设置以下属性：将加密属性设置为 true，将密钥值和 keyuri 值设置为指向身份验证\授权服务器。
-> 媒体服务创建密钥文件并将其放置在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
+> 媒体服务会创建密钥文件，并将其放置在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
 > 
 > 
 

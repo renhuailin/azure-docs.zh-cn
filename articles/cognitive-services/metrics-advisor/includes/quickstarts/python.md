@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2ea2e24049a2ff57e284894bc13c44d617f3c661
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b6bea3fdc47bfbb74c18161a400d59453540b14d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445800"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081009"
 ---
 [参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html) | [库源代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/README.md) | [包 (PiPy)](https://pypi.org/project/azure-ai-metricsadvisor/) | [示例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/metricsadvisor/azure-ai-metricsadvisor/samples/README.md)
 
@@ -70,7 +70,7 @@ service_endpoint = "<paste-your-metrics-advisor-endpoint-here>"
 |名称|说明|
 |---|---|
 | [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorClient) | 用途： <br> - 列出事件 <br> - 列出事件的根本原因 <br> - 检索原始时序数据和由服务丰富的时序数据。 <br> - 列出警报 <br> - 添加反馈以优化模型 |
-| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况检测配置 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  | |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.html#azure.ai.metricsadvisor.MetricsAdvisorAdministrationClient) | 允许你： <br> - 管理数据馈送 <br> - 创建、配置、检索、列出和删除异常情况检测配置 <br> - 创建、配置、检索、列出和删除异常情况警报配置 <br> - 管理挂钩  |
 | [DataFeed](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeed#azure.ai.metricsadvisor.models.DataFeed)| 指标顾问从数据源中引入的内容。`DataFeed` 包含以下行： <br> - 时间戳 <br> - 零维度或多个维度 <br> - 一个或多个度量值  |
 | [DataFeedMetric](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-metricsadvisor/latest/azure.ai.metricsadvisor.models.html?highlight=datafeedmetric#azure.ai.metricsadvisor.models.DataFeedMetric) | `DataFeedMetric` 是用于监视和评估特定业务流程状态的可计量度量值。 它可以是划分为多个维度的多个时序值的组合。 例如，Web 运行状况指标可能包含用户数和 en-us 市场的维度  。 |
 

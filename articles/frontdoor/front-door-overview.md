@@ -2,24 +2,23 @@
 title: Azure Front Door | Microsoft Docs
 description: 本文提供 Azure Front Door 的概述。
 services: frontdoor
-documentationcenter: ''
 author: duongau
-editor: ''
 ms.service: frontdoor
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2020
+ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: e9d719a29bc9a4b3e0428913e5bc1a91bec16623
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 0ba34b298fad21656a63c813057ed0c69db6c7f1
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183159"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064879"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
+
+> [!IMPORTANT]
+> 本文档适用于 Azure Front Door。 正在查找有关 Azure Front Door 标准版/高级版（预览版）的信息？ 请查看[此处](standard-premium/overview.md)。
 
 Azure Front Door 是可缩放的全局入口点，它使用 Microsoft 全球边缘网络来创建快速、安全且可大规模缩放的 Web 应用程序。 使用 Front Door，可将全球使用者应用程序和企业应用程序转换为可靠、高性能且个性化的新型应用程序，其内容可以通过 Azure 向全球受众提供。
 

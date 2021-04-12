@@ -3,12 +3,12 @@ title: 视频播放 - Azure
 description: 占位符
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: be42b39c167798e4e288c77dbd48a8734eb71fdf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063366"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278586"
 ---
 # <a name="video-playback"></a>视频播放 
 
@@ -24,7 +24,7 @@ ms.locfileid: "106063366"
 
 ## <a name="streaming-endpoint"></a>流式处理终结点 
 
-你可以使用 Azure 媒体服务通过行业标准的基于 HTTP 的媒体流式处理协议（例如 HTTP Live Streaming (HLS) 和 MPEG-DASH）将资产[流式传输](terminology.md#streaming)到视频播放器。 媒体从录制内容到流式处理格式的这种转换由[流式处理终结点](../latest/streaming-endpoint-concept.md)处理，这是你需要在 Azure 媒体服务帐户中提供的资源。
+你可以使用 Azure 媒体服务通过行业标准的基于 HTTP 的媒体流式处理协议（例如 HTTP Live Streaming (HLS) 和 MPEG-DASH）将资产[流式传输](terminology.md#streaming)到视频播放器。 媒体从录制内容到流式处理格式的这种转换由[流式处理终结点](../latest/stream-streaming-endpoint-concept.md)处理，这是你需要在 Azure 媒体服务帐户中提供的资源。
 
 ## <a name="streaming-policy"></a>流式处理策略 
 
@@ -34,11 +34,11 @@ Azure 媒体服务为你提供了多种方法来保护视频流，如[使用媒�
 * 使用高级加密标准 (AES-128) - 并实现一种方法，将仅用于解密视频的密钥传递给经过身份验证的观看者。
 * 使用数字版权管理 (DRM) 系统 - 控制实施这些策略的设备对视频的使用、修改和交付。
 
-若要实现内容保护，你可以在媒体服务帐户中定义并创建[流式处理策略](../latest/streaming-policy-concept.md)，并将其用于流式处理所有资产（假设所有流都具有相同的安全性要求）。 你也可以使用任何预定义的策略（例如 Predefined_ClearStreamingOnly）。
+若要实现内容保护，你可以在媒体服务帐户中定义并创建[流式处理策略](../latest/stream-streaming-policy-concept.md)，并将其用于流式处理所有资产（假设所有流都具有相同的安全性要求）。 你也可以使用任何预定义的策略（例如 Predefined_ClearStreamingOnly）。
 
 ## <a name="streaming-locator"></a>流式处理定位符  
 
-在媒体服务帐户中启动流式处理终结点并定义流式处理策略后，可以继续通过 HLS 或 DASH 协议从资产中流式传输录制的媒体。 Web 播放器和移动应用需要指向该 HLS 或 DASH 流的 URL。 你可以使用[流式处理定位符](../latest/streaming-locators-concept.md)生成此 URL。 如本文中所述以及[创建流式处理定位符并生成 URL](../latest/create-streaming-locator-build-url.md) 示例中显示，流式处理 URL 由流式处理终结点、流式处理策略和流式处理定位符组成。
+在媒体服务帐户中启动流式处理终结点并定义流式处理策略后，可以继续通过 HLS 或 DASH 协议从资产中流式传输录制的媒体。 Web 播放器和移动应用需要指向该 HLS 或 DASH 流的 URL。 你可以使用[流式处理定位符](../latest/stream-streaming-locators-concept.md)生成此 URL。 如本文中所述以及[创建流式处理定位符并生成 URL](../latest/create-streaming-locator-build-url.md) 示例中显示，流式处理 URL 由流式处理终结点、流式处理策略和流式处理定位符组成。
 
 ## <a name="content-recorded-using-file-sink"></a>使用文件接收器记录的内容  
 
