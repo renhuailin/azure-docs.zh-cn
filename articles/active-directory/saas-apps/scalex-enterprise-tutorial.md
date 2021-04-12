@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fecb7381786c36b077d329f68ca48ab10f65a984
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92895048"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642957"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ScaleX Enterprise 集成
 
@@ -87,7 +87,7 @@ ms.locfileid: "92895048"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://platform.rescale.com/saml2/<company id>/sso/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ScaleX Enterprise 客户端支持团队](https://info.rescale.com/contact_sales)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [ScaleX Enterprise 客户端支持团队](https://about.rescale.com/contactus.html)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. ScaleX Enterprise 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **emailaddress** 通过 **user.mail** 进行映射。 ScaleX Enterprise 应用程序要求通过 user.userprincipalname 对 emailaddress 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射    。
 

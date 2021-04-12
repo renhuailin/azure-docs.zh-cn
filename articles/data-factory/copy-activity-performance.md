@@ -1,18 +1,23 @@
 ---
 title: 复制活动性能和可伸缩性指南
 description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
+services: data-factory
+documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
 ms.service: data-factory
+ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
-ms.openlocfilehash: 1c166b99243e5a6ee576100b8470aa38b9535c7a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387659"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102616071"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
@@ -48,8 +53,8 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 
 通过此体系结构，可开发能最大程度地提高环境数据移动吞吐量的管道。 这些管道充分利用以下资源：
 
-* 网络带宽
-* 每秒存储输入/输出操作数 (IOPS) 和带宽
+* 源数据存储与目标数据存储之间的网络带宽
+* 源或目标数据存储每秒输入/输出操作数 (IOPS) 和带宽
 
 这种充分利用意味着你可通过测量以下资源可用的最小吞吐量来估计总体吞吐量：
 
@@ -57,7 +62,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构。
 * 目标数据存储
 * 源数据存储与目标数据存储之间的网络带宽
 
-下表计算了复制持续时间。 持续时间取决于环境的数据大小和带宽限制。
+下表计算了复制持续时间。 持续时间取决于环境的数据大小和网络/数据存储带宽限制。
 
 &nbsp;
 

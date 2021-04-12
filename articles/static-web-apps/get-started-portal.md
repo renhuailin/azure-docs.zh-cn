@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: b19c37a45131e3689fdc9726d186f220ab5ba9fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103149522"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>快速入门：在 Azure 门户中构建你的第一个静态站点
 
@@ -117,7 +117,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 1. 在顶部搜索栏中搜索“my-first-web-static-app”
 1. 选择应用名称
 1. 选择“删除”按钮
-1. 选择“是”以确认删除操作
+1. 选择“是”以确认删除操作（此操作的完成可能需要一些时间）
 
 ## <a name="next-steps"></a>后续步骤
 

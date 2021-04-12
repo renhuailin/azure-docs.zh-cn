@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 62a0bd19f6b10bbe6561f5587ed85d4d1e5880b3
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877270"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966820"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud 服务的安全控制
 
@@ -34,7 +34,7 @@ ms.locfileid: "104877270"
 
 | 安全控制 | Yes/No | 注释 | 文档 |
 |:-------------|:-------|:-------------------------------|:----------------------|
-| 服务标记 | 是 | 使用“AzureSpringCloud”服务标记定义[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)上的出站网络访问控制，以允许到 Azure Spring Cloud 应用程序的流量。<br><br>*注意：* 目前，只有 2020/07/14 之后创建的新 Azure Spring Cloud 服务实例支持“AzureSpringCloud”服务标记。 | [服务标记](../virtual-network/service-tags-overview.md) |
+| 服务标记 | 是 | 使用“AzureSpringCloud”服务标记定义[网络安全组](../virtual-network/network-security-groups-overview.md#security-rules)或 [Azure 防火墙](../firewall/service-tags.md)上的出站网络访问控制，以允许到 Azure Spring Cloud 应用程序的流量。 | [服务标记](../virtual-network/service-tags-overview.md) |
 
 ## <a name="next-steps"></a>后续步骤
 

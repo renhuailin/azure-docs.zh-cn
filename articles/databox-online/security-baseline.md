@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335056260ddea0c15db761df109e69333ef474f3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452367"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641386"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>适用于 Azure Stack Edge 的 Azure 安全基线
 
@@ -38,7 +38,7 @@ ms.locfileid: "102452367"
 
 访问所引用的链接可获得更多信息。
  
-- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](azure-stack-edge-j-series-configure-tls-settings.md)
+- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [快速入门 - 开始使用 Azure Stack Edge Pro with GPU](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ ms.locfileid: "102452367"
 
 - [通过 Azure PowerShell 脚本为 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 配置 Azure VPN](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](azure-stack-edge-j-series-configure-tls-settings.md)
+- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [教程：为 Azure Stack Edge Pro R 配置证书](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ ms.locfileid: "102452367"
 
 - [通过 Azure PowerShell 脚本为 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 配置 Azure VPN](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](azure-stack-edge-j-series-configure-tls-settings.md)
+- [在访问 Azure Stack Edge Pro GPU 设备的 Windows 客户端上配置 TLS 1.2](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [教程：为 Azure Stack Edge Pro R 配置证书](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Azure Stack Edge Pro 设备是一种本地设备，它在本地处理数据，�
 
 **指导**：只有经授权的用户（例如“EdgeArmUser”）才能通过本地 Azure 资源管理器访问 Azure Stack Edge 设备 API。 只能在 Azure 门户中管理用户帐户密码。 
 
-- [设置 Azure 资源管理器密码](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [设置 Azure 资源管理器密码](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure 安全中心监视**：目前不可用
 

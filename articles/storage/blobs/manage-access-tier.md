@@ -1,19 +1,19 @@
 ---
 title: 管理 Azure 存储帐户中 blob 的访问层
 description: 了解如何更改 GPv2 或 Blob 存储帐户中 Blob 的层
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 183593022c934eaf52ffe18649c23e8deced34d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd46f5b5a8847150bd56c1daeaac470f9afd2d19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98166478"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278535"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>管理 Azure 存储帐户中 blob 的访问层
 
@@ -25,7 +25,7 @@ ms.locfileid: "98166478"
 
 # <a name="portal"></a>[门户](#tab/portal)
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 

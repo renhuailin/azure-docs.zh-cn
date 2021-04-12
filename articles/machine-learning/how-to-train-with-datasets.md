@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521773"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640128"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -38,7 +38,7 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 * [已安装适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)，其中包含 `azureml-datasets` 包。
 
 > [!Note]
-> 某些数据集类依赖于 [azureml-dataprep](/python/api/azureml-dataprep/) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>在机器学习训练脚本中使用数据集
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 Acl
-description: 使用 PowerShell cmdlet 管理启用了分层命名空间 (HNS) 的存储帐户中 (ACL) 的访问控制列表。
+title: 使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 ACL
+description: 使用 PowerShell cmdlet 在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,20 +10,20 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b606e69baec8d159a6a3fa7373500176260ef0d7
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: dd522355d30564d84fec15bdc57c7397c1e6cfe4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654063"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "104702535"
 ---
-# <a name="use-powershell-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 Acl
+# <a name="use-powershell-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 PowerShell 获取、设置和更新目录和文件的访问控制列表。 
+本文介绍如何使用 PowerShell 来获取、设置和更新目录和文件的访问控制列表。 
 
-ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父目录的现有子项目上以递归方式添加、更新和删除 Acl，而不必为每个子项目单独进行这些更改。 
+ACL 继承已可用于在父目录下创建的新子项。 但是你也可以为父目录的现有子项以递归方式添加、更新和删除 ACL，而不必为每个子项单独进行这些更改。 
 
-[参考](/powershell/module/Az.Storage/)  | [递归 ACL 示例](https://recursiveaclpr.blob.core.windows.net/privatedrop/samplePS.ps1?sv=2019-02-02&st=2020-08-24T17%3A04%3A44Z&se=2021-08-25T17%3A04%3A00Z&sr=b&sp=r&sig=dNNKS%2BZcp%2F1gl6yOx6QLZ6OpmXkN88ZjBeBtym1Mejo%3D)  | [提供反馈](https://github.com/Azure/azure-powershell/issues)
+[参考](/powershell/module/Az.Storage/) | [递归 ACL 示例](https://recursiveaclpr.blob.core.windows.net/privatedrop/samplePS.ps1?sv=2019-02-02&st=2020-08-24T17%3A04%3A44Z&se=2021-08-25T17%3A04%3A00Z&sr=b&sp=r&sig=dNNKS%2BZcp%2F1gl6yOx6QLZ6OpmXkN88ZjBeBtym1Mejo%3D) | [提供反馈](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 
   - 一个预配的 Azure Active Directory (AD) [安全主体](../../role-based-access-control/overview.md#security-principal)，它在目标容器父资源组或订阅范围中分配有[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色。  
 
-  - 你打算将 ACL 设置应用到的目标容器或目录的拥有用户。 若要以递归方式设置 Acl，这包括目标容器或目录中的所有子项。
+  - 计划将 ACL 设置应用到的目标容器或目录的拥有用户。 为了以递归方式设置 ACL，这包括目标容器或目录中的所有子项。
   
   - 存储帐户密钥。
 
@@ -66,7 +66,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>选项 1：使用 Azure Active Directory (AD) 获取授权
 
 > [!NOTE]
-> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改它们的影响，请参阅  [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
+> 若要使用 Azure Active Directory (Azure AD) 来授予访问权限，请确保已为安全主体分配了[存储 Blob 数据所有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要详细了解如何应用 ACL 权限以及更改这些权限所带来的影响，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](./data-lake-storage-access-control-model.md)。
 
 如果使用此方法，系统可确保用户帐户具有适当的 Azure 基于角色的访问控制 (Azure RBAC) 分配和 ACL 权限。
 
@@ -96,7 +96,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但你还可以在父
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
 ```
 
-## <a name="get-acls"></a>获取 Acl
+## <a name="get-acls"></a>获取 ACL
 
 使用 `Get-AzDataLakeGen2Item` cmdlet 获取目录或文件的 ACL。
 
@@ -131,9 +131,9 @@ $file.ACL
 
 在本示例中，负责人用户具有读取、写入和执行权限。 负责人组仅具有读取和执行权限。 有关访问控制列表的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 
-## <a name="set-acls"></a>设置 Acl
+## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的 [更新 acl](#update-acls) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
 
 如果选择设置 ACL，则必须为责任用户添加一个条目，为责任组添加一个条目，为所有其他用户添加一个条目。 若要详细了解责任用户、责任组和所有其他用户，请参阅[用户和标识](data-lake-storage-access-control.md#users-and-identities)。
 
@@ -172,7 +172,7 @@ $dir.ACL
 ```
 
 > [!NOTE]
-> 如果要设置 **默认** ACL 条目，请在运行 **Set-AzDataLakeGen2ItemAclObject** 命令时使用 **-DefaultScope** 参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+> 如果要设置 **默认** ACL 条目，请在运行 **Set-AzDataLakeGen2ItemAclObject** 命令时使用 **-DefaultScope** 参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。 
 
 此示例针对所有者用户、所有者组或其他用户的 **文件** 设置 ACL，然后将 ACL 输出到控制台。
 
@@ -188,7 +188,7 @@ $file.ACL
 ```
 
 > [!NOTE]
-> 如果要设置 **默认** ACL 条目，请在运行 **Set-AzDataLakeGen2ItemAclObject** 命令时使用 **-DefaultScope** 参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+> 若要设置特定组或用户的 ACL，请使用其相应的对象 ID。 例如 `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 或 `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。
 
 下图显示了设置文件 ACL 后的输出。
 
@@ -198,7 +198,7 @@ $file.ACL
 
 ### <a name="set-acls-recursively"></a>以递归方式设置 ACL
 
-使用 **AzDataLakeGen2AclRecursive** cmdlet 以递归方式设置 acl。
+使用 Set-AzDataLakeGen2AclRecursive cmdlet 以递归方式设置 ACL。
 
 此示例设置名为 `my-parent-directory` 的目录的 ACL。 这些条目为所有者用户提供读取、写入和执行权限，仅为负责人组授予读取和执行权限，不为所有其他用户提供任何访问权限。 此示例中的最后一个 ACL 条目为对象 ID 为“xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx”的特定用户提供读取和执行权限。
 
@@ -223,14 +223,14 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 
 ## <a name="update-acls"></a>更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新 ACL，请参阅本文的 [设置 acl](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的 [设置 ACL](#set-acls) 部分。
 
 若要更新 ACL，请创建包含要更新的 ACL 条目的一个新的 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
 
 本节介绍如何完成下列操作：
 
 - 更新 ACL
-- 以递归方式更新 Acl
+- 以递归方式更新 ACL
 
 ### <a name="update-an-acl"></a>更新 ACL
 
@@ -249,9 +249,9 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 > [!NOTE]
 > 如果要更新 **默认** ACL 条目，请在运行 **Set-AzDataLakeGen2ItemAclObject** 命令时使用 **-DefaultScope** 参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`。
 
-### <a name="update-acls-recursively"></a>以递归方式更新 Acl
+### <a name="update-acls-recursively"></a>以递归方式更新 ACL
 
-使用  **AzDataLakeGen2AclRecursive** cmdlet 以递归方式更新 acl。
+使用 Update-AzDataLakeGen2AclRecursive cmdlet 以递归方式更新 ACL。
 
 此示例以写入权限更新某个 ACL 条目。
 
@@ -267,7 +267,7 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 ```
 
 > [!NOTE]
-> 如果要更新 **默认** ACL 条目，请在运行 **Set-AzDataLakeGen2ItemAclObject** 命令时使用 **-DefaultScope** 参数。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`。
+> 若要设置特定组或用户的 ACL，请使用其相应的对象 ID。 例如 `group:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 或 `user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。
 
 若要查看通过指定批大小以递归方式成批更新 ACL 的示例，请查看 [Update-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/update-azdatalakegen2aclrecursive) 参考文章。
 
@@ -323,7 +323,7 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 
 ## <a name="recover-from-failures"></a>从故障中恢复
 
-递归修改 Acl 时，可能会遇到运行时错误或权限错误。 
+以递归方式修改 ACL 时，可能会遇到运行时错误或权限错误。 
 
 对于运行时错误，请从头开始重启此过程。 如果安全主体没有足够的权限修改要修改的目录层次结构中的目录或文件的 ACL，则会出现权限错误。 请解决权限问题，然后选择通过使用继续标记从故障点继续执行此过程，或者从头重启此过程。 如果希望从头开始重启，则无需使用继续标记。 你可以重新应用 ACL 条目，而不会产生任何负面影响。
 

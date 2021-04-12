@@ -1,18 +1,18 @@
 ---
 title: Azure 快速入门 - 使用 PHP 在对象存储中创建 blob | Microsoft Docs
 description: 快速了解如何使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象。 在 Azure Blob 存储的容器中上传、下载和列出块 blob。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af35927abfa491891dffe2c2397d6daf8c1ccde2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 400982b1cacd6ccd409559679376edcfc886ed5c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95543112"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280048"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
