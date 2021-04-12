@@ -1,7 +1,7 @@
 ---
 title: 将元数据与 GenerateAnswer API 配合使用 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 使你可以将元数据以键/值对的形式添加到问题/答案对。 你可以将结果筛选为用户查询，并存储可在后续对话中使用的其他信息。
+description: 通过 QnA Maker，可将键值对形式的元数据添加到问/答对。 可以筛选用户查询的结果，以及存储可用于后续对话的其他信息。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,44 +9,32 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 9d2100dbc2c5f24742a949778a1b7450bf303c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051899"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232199"
 ---
-# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
+# <a name="get-an-answer-with-the-generateanswer-api"></a>使用 GenerateAnswer API 获取答案
 
-若要获取用户问题的预测答案，请使用 GenerateAnswer API。 发布知识库时，可以在 " **发布** " 页上查看有关如何使用此 API 的信息。 你还可以配置 API 来基于元数据标记筛选答案，并通过测试查询字符串参数来测试终结点中的知识库。
-
-QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加元数据。 然后，你可以使用此信息对用户查询的结果进行筛选，以及存储可在后续对话中使用的其他信息。 有关详细信息，请参阅[知识库](../index.yml)。
-
-<a name="qna-entity"></a>
-
-## <a name="store-questions-and-answers-with-a-qna-entity"></a>用 QnA 实体存储问题和答案
-
-务必了解 QnA Maker 如何存储问题和答案数据。 下图显示了一个 QnA 实体：
-
-![QnA 实体的插图](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
-
-每个 QnA 实体都有一个唯一的永久 ID。 您可以使用该 ID 来更新特定的 QnA 实体。
+若要获取用户问题的预测答案，请使用 GenerateAnswer API。 发布知识库时，可以在“发布”页上查看有关如何使用此 API 的信息。 还可以将 API 配置为基于元数据标记筛选答案，并使用测试查询字符串参数测试终结点中的知识库。
 
 <a name="generateanswer-api"></a>
 
-## <a name="get-answer-predictions-with-the-generateanswer-api"></a>通过 GenerateAnswer API 获取答案预测
+## <a name="get-answer-predictions-with-the-generateanswer-api"></a>使用 GenerateAnswer API 获取答案预测
 
-在机器人或应用程序中使用 [GENERATEANSWER API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) 可以通过用户问题查询知识库，以便从问题和答案对中获得最佳匹配。
+使用机器人或应用程序中的 [GenerateAnswer API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)，能以某个用户问题对知识库进行查询，从问答对中获取匹配度最高的结果。
 
 <a name="generateanswer-endpoint"></a>
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>发布以获取 GenerateAnswer 终结点
 
-从 [QnA Maker 门户](https://www.qnamaker.ai)或使用 [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)发布知识库后，可以获取 GenerateAnswer 终结点的详细信息。
+发布知识库后，从 [QnA Maker 门户](https://www.qnamaker.ai)或使用 [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 都可以获取 GenerateAnswer 终结点的详细信息。
 
 获取终结点详细信息：
 1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
-1. 在 **知识库** 中，选择 " **查看** 知识库" 代码。
+1. 在“我的知识库”中，选择知识库的“查看代码”。
     ![我的知识库的屏幕截图](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
 
@@ -56,7 +44,7 @@ QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加�
 
     # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-    ![托管的终结点详细信息的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
+    ![终结点详细信息托管的屏幕截图](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
 
     ---
 
@@ -71,16 +59,16 @@ QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加�
 POST 请求使用：
 
 * 必需的 [URI 参数](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* 必需的标头属性， `Authorization` 用于安全性
-* 必需的 [正文属性](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
+* 必需的标头属性 `Authorization`（出于安全性）
+* 必需的[正文属性](/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
 
-GenerateAnswer URL 具有以下格式：
+GenerateAnswer URL 采用以下格式：
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住，使用带有尾随空格的字符串的值设置的 HTTP 标头属性， `Authorization` `EndpointKey` 然后在 " **设置** " 页上找到终结点键。
+请记住，使用字符串 `EndpointKey` 的值和尾随空格，以及在“设置”页上找到的终结点密钥设置 `Authorization` 的 HTTP 标头属性。
 
 示例 JSON 正文如下所示：
 
@@ -100,15 +88,15 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-了解有关 [rankerType](../concepts/best-practices.md#choosing-ranker-type)的详细信息。
+了解有关 [rankerType](../concepts/best-practices.md#choosing-ranker-type) 的详细信息。
 
-以前的 JSON 只请求30% 或高于阈值分数的答案。
+以前的 JSON 仅请求阈值分数不低于 30% 的答案。
 
 <a name="generateanswer-response"></a>
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer 响应属性
 
-[响应](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是一个 JSON 对象，其中包括显示答案所需的所有信息，以及下一次打开会话（如果可用）。
+[响应](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是一个 JSON 对象，其中包括显示答案所需的所有信息，以及对话中的下一轮次（如果可用）。
 
 ```json
 {
@@ -132,11 +120,26 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 }
 ```
 
-之前的 JSON 响应，分数为38.5%。
+之前的 JSON 响应以评分为 38.5% 的答案做出响应。
 
-## <a name="use-qna-maker-with-a-bot-in-c"></a>将 QnA Maker 与 C 中的机器人配合使用#
+## <a name="match-questions-only-by-text"></a>仅按文本匹配问题
 
-机器人框架使用 [GETANSWER API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)提供对 QnA Maker 的属性的访问权限：
+默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，则在 GenerateAnswer 请求的 POST 正文中使用 `RankerType=QuestionOnly` 来获取答案。
+
+可以使用 `isTest=false` 搜索已发布的知识库，或使用 `isTest=true` 搜索测试知识库。
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
+}
+
+```
+## <a name="use-qna-maker-with-a-bot-in-c"></a>在 C# 中将 QnA Maker 与机器人配合使用
+
+机器人框架使用 [getAnswer API](/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__) 提供对 QnA Maker 的属性的访问权限：
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -151,11 +154,11 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-以前的 JSON 只请求30% 或高于阈值分数的答案。
+以前的 JSON 仅请求阈值分数不低于 30% 的答案。
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>将 QnA Maker 与机器人一起使用 Node.js
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>在 Node.js 中将 QnA Maker 与机器人配合使用
 
-机器人框架使用 [GETANSWER API](/javascript/api/botbuilder-ai/qnamaker?preserve-view=true&view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)提供对 QnA Maker 的属性的访问权限：
+机器人框架使用 [getAnswer API](/javascript/api/botbuilder-ai/qnamaker?preserve-view=true&view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) 提供对 QnA Maker 的属性的访问权限：
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -169,115 +172,17 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-以前的 JSON 只请求30% 或高于阈值分数的答案。
+以前的 JSON 仅请求阈值分数不低于 30% 的答案。
 
-<a name="metadata-example"></a>
+## <a name="get-precise-answers-with-generateanswer-api"></a>使用 GenerateAnswer API 获取精确答案
 
-## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用元数据筛选自定义元数据标记的答案
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-通过添加元数据，可以按这些元数据标记筛选答案。 从 " **视图选项** " 菜单添加 "元数据" 列。 通过选择元数据图标来添加元数据对，将元数据添加到知识库中 **+** 。 此对包含一个键和一个值。
+我们仅提供 QnA Maker 托管版本中的精确答案功能。
 
-![添加元数据的屏幕截图](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-<a name="filter-results-with-strictfilters-for-metadata-tags"></a>
-
-## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>使用元数据标记的 strictFilters 来筛选结果
-
-请考虑用户问题 "此宾馆何时关闭？"，其中，该意向适用于餐馆 "Paradise"。
-
-由于只有餐馆 "Paradise" 需要结果，因此可以对元数据 "餐馆 Name" 在 GenerateAnswer 调用中设置筛选器。 下面的示例演示了这一点：
-
-```json
-{
-    "question": "When does this hotel close?",
-    "top": 1,
-    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
-}
-```
-
-### <a name="logical-and-by-default"></a>逻辑与默认值
-
-若要在查询中组合多个元数据筛选器，请将其他元数据筛选器添加到属性的数组 `strictFilters` 。 默认情况下，这些值按逻辑组合 (和) 。 逻辑组合要求所有筛选器都与 QnA 对匹配，以便在答案中返回该对。
-
-这等效于将 `strictFiltersCompoundOperationType` 属性与的值一起使用 `AND` 。
-
-### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>逻辑或使用 strictFiltersCompoundOperationType 属性
-
-合并多个元数据筛选器时，如果只关心一个或某些筛选器匹配，请使用 `strictFiltersCompoundOperationType` 值为的属性 `OR` 。
-
-这允许您的知识库在任何筛选器匹配但不返回没有元数据的答案时返回答案。
-
-```json
-{
-    "question": "When do facilities in this hotel close?",
-    "top": 1,
-    "strictFilters": [
-      { "name": "type","value": "restaurant"},
-      { "name": "type", "value": "bar"},
-      { "name": "type", "value": "poolbar"}
-    ],
-    "strictFiltersCompoundOperationType": "OR"
-}
-```
-
-### <a name="metadata-examples-in-quickstarts"></a>快速入门中的元数据示例
-
-有关元数据的详细信息，请参阅 QnA Maker 门户中的元数据：
-* [创作 - 将元数据添加到 QnA 对](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
-* [查询预测 - 按元数据筛选应答](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
-
-<a name="keep-context"></a>
-
-## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用问题和答案结果来保留会话上下文
-
-对 GenerateAnswer 的响应包含匹配的问题和答案对的相应元数据信息。 你可以在客户端应用程序中使用此信息来存储以前会话的上下文，以便在以后的会话中使用。
-
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-## <a name="match-questions-only-by-text"></a>仅匹配问题，按文本
-
-默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请 `RankerType=QuestionOnly` 在 GenerateAnswer 请求的 POST 正文中使用。
-
-可以 `isTest=false` 使用在测试 kb 中搜索已发布的 kb、使用或 `isTest=true` 。
-
-```json
-{
-  "question": "Hi",
-  "top": 30,
-  "isTest": true,
-  "RankerType":"QuestionOnly"
-}
-```
-
-## <a name="return-precise-answers"></a>返回准确的答案
-
-### <a name="generate-answer-api"></a>生成答案 API 
-
-使用 QnA Maker 托管资源时，用户可以启用 [准确的答案](../reference-precise-answering.md) 。 AnswerSpanRequest 参数必须针对相同的进行更新。
+使用 QnA Maker 托管资源时，用户可以启用[精确答案](../reference-precise-answering.md)。 answerSpanRequest 参数必须进行相同的更新。
 
 ```json
 {
@@ -300,16 +205,18 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 ### <a name="bot-settings"></a>机器人设置
 
-如果要为机器人服务配置确切的应答设置，请导航到机器人的应用服务资源。 然后，必须通过添加以下设置来更新配置。
+如果要为机器人服务配置精确答案设置，请导航到机器人的应用服务资源。 然后，必须通过添加以下设置来更新配置。
 
 - EnablePreciseAnswer
 - DisplayPreciseAnswerOnly
 
 |显示器配置|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
 |:--|--|--|
-|仅精确答案|true|true|
-|仅限长应答|false|false|
+|仅限精确答案|true|true|
+|仅限长答案|false|false|
 |长答案和精确答案|true|false|
+
+---
 
 ## <a name="common-http-errors"></a>常见 HTTP 错误
 
@@ -325,7 +232,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="next-steps"></a>后续步骤
 
-" **发布** " 页还提供了使用 Postman 或卷曲 [生成答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) 的信息。
+“发布”页还提供了使用 Postman 或 cURL [生成答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)的信息。
 
 > [!div class="nextstepaction"]
 > [获取有关知识库的分析](../how-to/get-analytics-knowledge-base.md)

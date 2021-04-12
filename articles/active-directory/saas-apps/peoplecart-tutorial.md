@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 4c15beecb2e0fdddc06c331092e3822555aedcb3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92515549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>教程：Azure Active Directory 与 Peoplecart 的集成
@@ -41,7 +41,7 @@ ms.locfileid: "92515549"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Peoplecart 支持 SP 发起的 SSO 
+* Peoplecart 支持 SP 发起的 SSO
 
 ## <a name="adding-peoplecart-from-the-gallery"></a>从库中添加 Peoplecart
 
@@ -61,13 +61,13 @@ ms.locfileid: "92515549"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Peoplecart”，在结果面板中选择“Peoplecart”，然后单击“添加”按钮添加该应用程序。   
+4. 在搜索框中，键入“Peoplecart”，在结果面板中选择“Peoplecart”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 Peoplecart](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Peoplecart 的 Azure AD 单一登录。 
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Peoplecart 的 Azure AD 单一登录。
 若要使单一登录有效，需要在 Azure AD 用户与 Peoplecart 相关用户之间建立链接关系。
 
 若要配置和测试 Peoplecart 的 Azure AD 单一登录，需要完成以下构建基块：
@@ -85,7 +85,7 @@ ms.locfileid: "92515549"
 
 若要配置 Peoplecart 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 **Peoplecart** 应用程序集成页上，选择“单一登录”。 
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Peoplecart** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -97,11 +97,11 @@ ms.locfileid: "92515549"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     ![Peoplecart 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.peoplecart.com/SignIn.aspx`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.peoplecart.com/SignIn.aspx` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenantname>.peoplecart.com`
 
@@ -112,7 +112,7 @@ ms.locfileid: "92515549"
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Peoplecart”部分，根据要求复制相应 URL  。
+6. 在“设置 Peoplecart”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92515549"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -149,17 +149,17 @@ ms.locfileid: "92515549"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 Britta Simon 访问 Peoplecart 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Peoplecart”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Peoplecart”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“Peoplecart”。 
+2. 在应用程序列表中，选择“Peoplecart”。
 
     ![应用程序列表中的 Peoplecart 链接](common/all-applications.png)
 

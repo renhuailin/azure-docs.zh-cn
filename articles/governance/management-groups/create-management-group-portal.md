@@ -3,12 +3,12 @@ title: 使用门户创建管理组
 description: 本快速入门使用 Azure 门户创建管理组，将资源整理到资源层次结构中。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592426"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024674"
 ---
 # <a name="quickstart-create-a-management-group"></a>快速入门：创建管理组
 
@@ -32,7 +32,7 @@ ms.locfileid: "99592426"
 
 1. 选择“添加管理组”。
 
-   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="显示子管理组和订阅的“管理组”页的屏幕截图。":::
 
 1. 选择“新建”，然后填写管理组 ID 字段。
 

@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94566514"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
@@ -97,7 +97,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|功能  |说明  |
+|Feature  |说明  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|

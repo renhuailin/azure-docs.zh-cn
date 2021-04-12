@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: a7868d702ff3f1190d7f51e4ad7316508d453015
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454518"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
@@ -136,13 +136,13 @@ ms.locfileid: "92454518"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-druva-sso"></a>配置 Druva SSO
+## <a name="configure-druva-sso&quot;></a>配置 Druva SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Druva 公司站点。
 
 1. 单击左上角的 Druva 徽标，然后单击“Druva 云设置”  。
 
-    ![设置](./media/druva-tutorial/ic795091.png "设置")
+    ![设置](./media/druva-tutorial/ic795091.png &quot;设置")
 
 1. 在“单一登录”选项卡上，单击“编辑”   。
 

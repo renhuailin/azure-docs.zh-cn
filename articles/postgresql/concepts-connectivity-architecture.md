@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: f7463b6234c03a9ed79f1c4a9fb310db7067a428
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200015"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043557"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
 本文介绍 Azure Database for PostgreSQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for PostgreSQL 数据库实例。
@@ -36,11 +36,11 @@ ms.locfileid: "103200015"
 下表列出了所有数据区域的 Azure Database for PostgreSQL 网关的网关 IP 地址。 下表中保留了每个区域的网关 IP 地址的最新信息。 在下表中，列表示以下内容：
 
 * **网关 IP 地址：** 此列列出最新一代硬件上承载的网关的当前 IP 地址。 如果要预配新服务器，建议你打开客户端防火墙，以允许此列中列出的 IP 地址的出站流量。
-* **网关 IP 地址（即将停用）：** 此列列出当前将要停用的旧一代硬件上承载的网关的 IP 地址。 如果要预配新服务器，则可以忽略这些 IP 地址。 如果已有服务器，请继续保留这些 IP 地址的防火墙出站规则，因为我们尚未停用这些 IP 地址。 如果删除这些 IP 地址的防火墙规则，可能会出现连接错误。 你应在收到停用通知后立即主动将“网关 IP 地址”列中列出的新 IP 地址添加到出站防火墙规则中。 这将确保当服务器迁移到最新的网关硬件时，不会中断与服务器的连接。
-* **网关 IP 地址（已停用）：** 此列会列出已停用且不再运行的网关环的 IP 地址。 可以安全地从出站防火墙规则中删除这些 IP 地址。 
+* **网关 IP 地址(即将停用)：** 此列列出当前将要停用的旧一代硬件上承载的网关的 IP 地址。 如果要预配新服务器，则可以忽略这些 IP 地址。 如果已有服务器，请继续为这些 IP 地址保留防火墙的出站规则，因为我们尚未停用这些 IP 地址。 如果删除这些 IP 地址的防火墙规则，可能会出现连接错误。 但是，你应该在收到停用通知后立即主动将“网关 IP 地址”列中列出的新 IP 地址添加到出站防火墙规则中。 这将确保当服务器迁移到最新的网关硬件时，不会中断与服务器的连接。
+* **网关 IP 地址(已停用)：** 此列会列出已停用且不再运行的网关环的 IP 地址。 可以安全地从出站防火墙规则中删除这些 IP 地址。 
 
 
-| 区域名称 | **网关 IP 地址** |**网关 IP 地址（即将停用）** | **网关 IP 地址（已停用）** |
+| 区域名称 | **网关 IP 地址** |**网关 IP 地址(即将停用)** | **网关 IP 地址(已停用)** |
 |:----------------|:-------------------------|:-------------------------------------------|:------------------------------------------|
 | 澳大利亚中部| 20.36.105.0  | | |
 | 澳大利亚中部 2     | 20.36.113.0  | | |
@@ -91,27 +91,27 @@ ms.locfileid: "103200015"
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="what-you-need-to-know-about-this-planned-maintenance"></a>你需要了解有关此计划内维护的哪些信息？
-这只是一项 DNS 更改，因此它对客户端是透明的。 在 DNS 服务器中更改 FQDN 的 IP 地址时，本地 DNS 缓存将在 5 分钟内刷新，并且这由操作系统自动完成。 本地 DNS 刷新后，所有新连接将会连接到新 IP 地址，所有现有连接将会一直连接到旧 IP 地址而不会中断，直到旧 IP 地址完全停用。 旧 IP 地址大约需要三到四周才能停用。因此，它应该对客户端应用程序没有影响。
+这仅是 DNS 更改，此更改使该功能对客户端透明。 在 DNS 服务器中更改 FQDN 的 IP 地址时，本地 DNS 缓存会在 5 分钟内刷新，由操作系统自动完成。 本地 DNS 刷新后，所有新连接将会连接到新 IP 地址，所有现有连接将会一直连接到旧 IP 地址而不会中断，直到旧 IP 地址完全停用。 旧 IP 地址大约需要三到四周才能停用。因此，它应该对客户端应用程序没有影响。
 
 ### <a name="what-are-we-decommissioning"></a>我们将会停用什么？
-仅网关节点将被停用。 当用户连接到其服务器时，连接的第一站是网关节点，然后连接会被转发到服务器。 我们将要停用旧的网关环（不是运行服务器的租户环），请参阅[连接体系结构](#connectivity-architecture)以获得更多说明。
+仅网关节点会被停用。 当用户连接到其服务器时，连接的第一站是网关节点，然后连接会被转发到服务器。 我们将要停用旧的网关环（不是运行服务器的租户环），请参阅[连接体系结构](#connectivity-architecture)以获得更多说明。
 
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>如何验证你的连接是将连接到旧网关节点还是新网关节点？
-Ping 服务器的 FQDN，例如 ``ping xxx.postgres.database.azure.com``。 如果返回的 IP 地址是上面文档中“网关 IP 地址（即将停用）”下列出的 IP 之一，则表明你的连接将通过旧网关。 与此相反，如果返回的 IP 地址是“网关 IP 地址”下列出的 IP 之一，则表明你的连接将通过新网关。
+Ping 服务器的 FQDN，例如 ``ping xxx.postgres.database.azure.com``。 如果返回的 IP 地址是上面文档中“网关 IP 地址(即将停用)”下列出的 IP 之一，则表明你的连接会通过旧网关。 与此相反，如果返回的 IP 地址是“网关 IP 地址”下列出的 IP 之一，则表明你的连接会通过新网关。
 
-你也可以通过客户端应用程序使用端口 3306 对数据库服务器执行 [PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) 或 TCPPing 进行测试，并确保返回的 IP 地址不是即将停用的 IP 地址之一
+你也可以通过客户端应用程序使用端口 3306 对数据库服务器执行 [PSPing](/sysinternals/downloads/psping) 或 TCPPing 进行测试，并确保返回的 IP 地址不是即将停用的 IP 地址之一
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>我如何知道维护何时结束？旧 IP 地址停用后，我是否还会收到另一个通知？
-你将收到一封电子邮件，通知你我们将何时开始维护工作。 维护最多可能需要一个月的时间，具体取决于我们在各个区域迁移所需的服务器数量。 请准备客户端以使用 FQDN 或上表中的新 IP 地址连接到数据库服务器。 
+你会收到一封电子邮件，通知你我们会何时开始维护工作。 维护最多可能需要一个月的时间，具体取决于我们需要在各个区域迁移的服务器数量。 请准备客户端以使用 FQDN 或上表中的新 IP 地址连接到数据库服务器。 
 
 ### <a name="what-do-i-do-if-my-client-applications-are-still-connecting-to-old-gateway-server-"></a>如果客户端应用程序仍连接到旧的网关服务器，我该怎么办？
-这表明应用程序是使用静态 IP 地址而不是 FQDN 连接到服务器的。 请查看连接字符串和连接池设置、AKS 设置，甚至查看源代码。
+这表明应用程序是使用静态 IP 地址而不是 FQDN 连接到服务器。 查看连接字符串和连接池设置、AKS 设置，甚至查看源代码。
 
 ### <a name="is-there-any-impact-for-my-application-connections"></a>对应用程序连接是否有任何影响？
-此维护只是一项 DNS 更改，因此它对客户端是透明的。 在客户端中刷新了 DNS 缓存（由操作系统自动完成）后，所有新连接将连接到新 IP 地址，而所有现有连接仍将正常工作，直到旧 IP 地址完全停用为止（通常为数周之后）。 在这种情况下不需要重试逻辑，但如果应用程序配置了重试逻辑，这也不错。 请使用 FQDN 连接数据库服务器，或在应用程序连接字符串中列出新的“网关 IP 地址”。
-此维护操作不会删除现有连接。 它只会使新的连接请求发送到新的网关环。
+此维护只是一项 DNS 更改，因此它对客户端是透明的。 在客户端中刷新了 DNS 缓存（由操作系统自动完成）后，所有新连接都会连接到新 IP 地址，而所有现有连接仍会正常工作，直到旧 IP 地址完全停用为止（通常为数周之后）。 这种情况下不需要重试逻辑，但让应用程序配置重试逻辑不会有坏处。 请使用 FQDN 连接数据库服务器或在应用程序连接字符串中列出新的“网关 IP 地址”。
+此维护操作不会删除现有连接。 它只会将新的连接请求发送到新的网关环。
 
-### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>能否请求在特定时段进行维护？ 
+### <a name="can-i-request-for-a-specific-time-window-for-the-maintenance"></a>能否请求特定时段进行维护？ 
 由于迁移应该是透明的，并且不会对客户的连接造成影响，因此我们预计大多数用户都不会遇到问题。 请主动检查应用程序，并确保使用 FQDN 连接到数据库服务器，或在应用程序连接字符串中列出新的“网关 IP 地址”。
 
 ### <a name="i-am-using-private-link-will-my-connections-get-affected"></a>我使用的是专用链接，我的连接会受到影响吗？

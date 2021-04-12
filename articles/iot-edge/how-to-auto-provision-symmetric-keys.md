@@ -9,18 +9,20 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 73d1d873df58c672e9db6b9e4e17ed58e1a6397e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: eb5cbc2f2db0ba9f92a637c7e9a905d2f746880a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200843"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
+
 可以使用[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备，就像预配未启用 Edge 的设备一样。 如果你不熟悉自动预配过程，请在继续操作之前查看[预配](../iot-dps/about-iot-dps.md#provisioning-process)概述。
 
-本文介绍如何在 IoT Edge 设备上使用对称密钥证明创建设备预配服务个人或组注册，步骤如下：
+本文介绍如何通过以下步骤，在 IoT Edge 设备上使用对称密钥证明创建设备预配服务的个人或组注册：
 
 * 创建 IoT 中心设备预配服务 (DPS) 的实例。
 * 为设备创建注册。
@@ -105,7 +107,7 @@ ms.locfileid: "102046187"
 > [!NOTE]
 > 仅当使用组注册时，才需要此部分。
 
-每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥来计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
+每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含注册的主密钥或辅助密钥。
 
@@ -169,7 +171,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 * 从 DPS 注册复制的 **主密钥**
 
 > [!TIP]
-> 对于组注册，需要每个设备的 [派生密钥](#derive-a-device-key) ，而不是 DPS 注册主键。
+> 对于组注册，需要每个设备的[派生密钥](#derive-a-device-key)，而不是 DPS 注册主密钥。
 
 ### <a name="linux-device"></a>Linux 设备
 
@@ -201,7 +203,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. 将 `scope_id`、`registration_id` 和 `symmetric_key` 的值更新为你的 DPS 和设备信息。
 
-1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行配置设备的重新设置行为。 如果在启动时将设备设置为重新设置，它将始终首先尝试使用 DPS 进行预配，然后回退到预配备份（如果失败）。 如果设备设置为动态重新设置，则在检测到重新设置事件时，IoT Edge 将重新启动并重新设置。 有关详细信息，请参阅 [IoT 中心设备重新设置概念](../iot-dps/concepts-device-reprovision.md)。
+1. （可选）使用 `always_reprovision_on_startup` 或 `dynamic_reprovisioning` 行来配置设备的重新预配行为。 如果设备设置为在启动时重新预配，它将始终尝试先使用 DPS 进行预配，如果失败，则回退到预配备份。 如果设备设置为动态重新预配自身，则 IoT Edge 将重启，并在检测到重新预配事件时重新预配。 有关详细信息，请参阅 [IoT 中心设备重新预配概念](../iot-dps/concepts-device-reprovision.md)。
 
 1. 重启 IoT Edge 运行时，使之拾取你在设备上所做的所有配置更改。
 
@@ -215,7 +217,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-1. 根据 IoT Edge 安装中提供的模板文件创建设备的配置文件。
+1. 基于在安装 IoT Edge 的过程中提供的模板文件为你的设备创建配置文件。
 
    ```bash
    sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
@@ -227,7 +229,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    sudo nano /etc/aziot/config.toml
    ```
 
-1. 查找文件的 " **预配** " 部分。 取消注释包含对称密钥的 DPS 预配的行，并确保注释掉任何其他预配行。
+1. 找到文件的 **Provisioning** 节。 取消注释 DPS 对称密钥预配的行，并确保注释掉任何其他预配行。
 
    ```toml
    # DPS provisioning with symmetric key
@@ -245,11 +247,11 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 1. 将 `id_scope`、`registration_id` 和 `symmetric_key` 的值更新为你的 DPS 和设备信息。
 
-   对称密钥参数可以接受内联键、文件 URI 或 PKCS # 11 URI 的值。 根据所使用的格式，取消注释一条对称密钥行。
+   对称密钥参数可以接受内联密钥、文件 URI 或 PKCS#11 URI 的值。 根据所使用的格式，取消注释一条对称密钥行。
 
-   如果使用任何 PKCS # 11 Uri，请在配置文件中找到 **pkcs # 11** 部分，并提供有关 PKCS # 11 配置的信息。
+   如果使用任何 PKCS#11 URI，请在配置文件中找到 PKCS#11 节，并提供有关 PKCS#11 配置的信息。
 
-1. 保存并关闭 toml 文件。
+1. 保存并关闭 config.toml 文件。
 
 1. 应用对 IoT Edge 所做的配置更改。
 

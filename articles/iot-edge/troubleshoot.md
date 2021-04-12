@@ -4,16 +4,16 @@ description: 通过本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 56eff095cca1b24678f742e4c3ce8dfb1aaea2dd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489451"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275577"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -30,6 +30,8 @@ ms.locfileid: "103489451"
 
 可以运行 `check` 命令（如下所示），也可以包括 `--help` 标志，以便查看选项的完整列表：
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 在 Linux 上：
 
 ```bash
@@ -41,6 +43,19 @@ sudo iotedge check
 ```powershell
 iotedge check
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 故障排除工具将运行多个检查，这些检查分为以下三个类别：
 
@@ -58,6 +73,9 @@ IoT Edge 检查工具使用容器运行其诊断。 容器映像 (`mcr.microsoft
 
 运行带 `--since` 标志的 `support-bundle` 命令，指定要从过去获取日志的时间。 例如，`6h` 会获取过去 6 小时的日志，`6d` 会获取过去 6 天的日志，`6m` 会获取过去 6 分钟的日志，依此类推。 包括 `--help` 标志即可查看选项的完整列表。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 在 Linux 上：
 
 ```bash
@@ -69,6 +87,19 @@ sudo iotedge support-bundle --since 6h
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 还可以对设备使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)调用，将 support-bundle 命令的输出上传到 Azure Blob 存储。
 
@@ -102,10 +133,9 @@ iotedge support-bundle --since 6h
 
 [IoT Edge 安全管理器](iot-edge-security-manager.md) 负责在启动时初始化 IoT Edge 系统和预配设备等操作。 如果 IoT Edge 未启动，则安全管理器日志可能会提供有用的信息。
 
-在 Linux 上：
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+在 Linux 上：
 
 * 查看 IoT Edge 安全管理器的状态：
 
@@ -141,42 +171,6 @@ iotedge support-bundle --since 6h
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* 查看 IoT Edge 系统服务的状态：
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* 查看 IoT Edge 系统服务的日志：
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* 启用调试级别日志以查看更详细的 IoT Edge 系统服务日志：
-
-  1. 启用调试级别日志。
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. 在调试后切换回默认的信息级别日志。
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 在 Windows 上：
 
@@ -211,6 +205,43 @@ iotedge support-bundle --since 6h
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* 查看 IoT Edge 系统服务的状态：
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* 查看 IoT Edge 系统服务的日志：
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* 启用调试级别日志以查看更详细的 IoT Edge 系统服务日志：
+
+  1. 启用调试级别日志。
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. 调试后切换回默认的信息级别日志。
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>检查容器日志是否有问题
 
@@ -271,7 +302,7 @@ iotedge logs <container name>
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-查看通过 IoT Edge 中心的消息，并通过来自运行时容器的详细日志收集见解。 若要在这些容器上启用详细日志，请在部署清单中设置 `RuntimeLogLevel` 环境变量。
+可查看通过 IoT Edge 中心的消息，并收集来自运行时容器的详细日志的见解。 若要在这些容器上启用详细日志，请设置部署清单中的 `RuntimeLogLevel` 环境变量。
 
 若要查看通过 IoT Edge 中心的消息，请将 edgeHub 模块的 `RuntimeLogLevel` 环境变量设置为 `debug`。
 
