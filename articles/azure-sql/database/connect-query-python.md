@@ -12,14 +12,15 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/19/2020
-ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f21e11e33d3ddf1489dba3419766a8adaa878d5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703955"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103491956"
 ---
 # <a name="quickstart-use-python-to-query-a-database"></a>快速入门：使用 Python 查询数据库
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 在本快速入门中，你将使用 Python 连接到 Azure SQL 数据库、Azure SQL 托管实例或 Synapse SQL 数据库，并使用 T-SQL 语句来查询数据。
@@ -35,28 +36,16 @@ ms.locfileid: "97703955"
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 和相关软件
+    
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+    |**操作**|**macOS**|**Ubuntu**|**Windows**|
+    |----------|-----------|------------|---------|
+    |安装用于 SQL Server 的 ODBC 驱动程序、SQLCMD 和 Python 驱动程序|执行[在 macOS 上使用 SQL Server 创建 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 1.2、1.3 和 2.1  。 这也会安装 Homebrew 和 Python。       |[配置用于 pyodbc Python 开发的环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)|[配置用于 pyodbc Python 开发的环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。|
+    |安装 Python 和其他所需的包|    |使用 `sudo apt-get install python python-pip gcc g++ build-essential`。|    |
+    |更多信息|[macOS 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)  |[Linux 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|[Linux 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)|
 
-  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用 [在 macOS 上创建使用 SQL Server 的 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 **1.2**、**1.3** 和 **2.1**。
 
-  有关更多信息，请参阅 [macOS 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
-
-  若要安装 Python 和其他所需的包，请使用 `sudo apt-get install python python-pip gcc g++ build-essential`。
-
-  若要安装 ODBC 驱动程序、SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请参阅[配置 pyodbc Python 开发环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux)。
-
-  有关更多信息，请参阅 [Linux 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
-
-  # <a name="windows"></a>[Windows](#tab/windows)
-
-  若要安装 Python、ODBC 驱动程序、SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请参阅[配置 pyodbc Python 开发环境](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
-
-  有关更多信息，请参阅 [Microsoft ODBC 驱动程序](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server)。
-
----
 若要进一步了解 Python 和 Azure SQL 数据库中的数据库，请参阅[适用于 Python 的 Azure SQL 数据库库](/python/api/overview/azure/sql)、[pyodbc 存储库](https://github.com/mkleehammer/pyodbc/wiki/)和 [pyodbc 示例](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)。
 
 ## <a name="create-code-to-query-your-database"></a>创建用于查询数据库的代码 

@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
 ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102178060"
 ---
 在此步骤中，你将创建[逻辑 SQL 服务器](../database/logical-servers.md)和使用 AdventureWorksLT 示例数据的[单一数据库](../database/single-database-overview.md)。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
@@ -28,7 +28,7 @@ ms.locfileid: "102178060"
    ![添加到 Azure SQL](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. 在“选择 SQL 部署选项”页上，选择“SQL 数据库”磁贴，其中“单一数据库”位于“资源类型”下 。 可以通过选择“显示详细信息”来查看有关不同数据库的更多信息。
-1. 选择“创建”  。
+1. 选择“创建”。
 
    ![创建单一数据库](./media/sql-database-create-single-database/create-single-database.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "102178060"
    - 密码：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
    - 位置：单击下拉箭头并选择一个位置，例如“(美国)美国东部”。
 
-   选择“确定”  。
+   选择“确定”。
 
    ![新建服务器](./media/sql-database-create-single-database/new-server.png)
 
@@ -149,7 +149,7 @@ az sql db create \
 
 前面的代码使用以下 Azure CLI 命令：
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az account set](/cli/azure/account#az-account-set) | 将订阅设置为当前的活动订阅。 |
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
@@ -237,7 +237,7 @@ az sql db create \
 
 前面的代码使用以下 PowerShell 命令：
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管数据库和弹性池的服务器。 |

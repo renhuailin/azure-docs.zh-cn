@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 71f8635d1cd96a6436cfc902622bf18bc608a143
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601995"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867179"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -39,11 +39,11 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[计算机视觉](./computer-vision/index.yml "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级认知算法。|
-|[自定义视觉服务](./custom-vision-service/overview.md "自定义影像服务")|通过自定义视觉服务可以生成自定义图像分类器。|
-|[人脸](./face/index.yml "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。|
-|[表单识别器](./form-recognizer/index.yml "表单识别器")|表单识别器从表单文档中识别并提取键值对和表数据；然后输出结构化数据，包括原始文件中的关系。|
-|[视频索引器](../media-services/video-indexer/video-indexer-overview.md "视频索引器")|使用视频索引器从视频中提取见解。|
+|[计算机视觉](./computer-vision/index.yml "计算机视觉")|使用计算机视觉服务，你可以访问用于处理图像并返回信息的高级认知算法。 请参阅[计算机视觉快速入门](./computer-vision/quickstarts-sdk/client-library.md)，了解如何开始服务。|
+|[自定义视觉服务](./custom-vision-service/index.yml "自定义影像服务")|自定义视觉可用于生成、部署和改进您自己的图像分类器。 图像分类器是一种 AI 服务，它可以根据图像的视觉特征为图像应用标签。 |
+|[人脸](./face/index.yml "人脸")| 使用人脸服务可访问高级人脸算法，从而实现人脸属性检测和识别。 请参阅[人脸快速入门](./face/quickstarts/client-libraries.md)，了解如何开始服务。|
+|[表单识别器](./form-recognizer/index.yml "表单识别器")|表单识别器从表单文档中识别并提取键值对和表数据；然后输出结构化数据，包括原始文件中的关系。 请参阅[表单识别器快速入门](./form-recognizer/quickstarts/client-library.md)开始操作。|
+|[视频索引器](../media-services/video-indexer/video-indexer-overview.md "视频索引器")|使用视频索引器从视频中提取见解。 请参阅[视频索引器快速入门](/media-services/video-indexer/video-indexer-get-started.md)开始操作。|
 
 ## <a name="speech-apis"></a>语音 API
 
@@ -59,20 +59,20 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[语言理解 LUIS](./luis/index.yml "语言理解")|语言理解服务 (LUIS) 使应用程序可以理解用户以自己的语言表达的内容。|
-|[QnA Maker](./qnamaker/index.yml "QnA Maker")|通过 QnA Maker，可以从半结构化内容生成问答服务。|
-|[文本分析](./text-analytics/index.yml "文本分析")| 文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。|
+|[语言理解 LUIS](./luis/index.yml "语言理解")|语言理解 (LUIS) 是一种基于云的对话式 AI 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。 请参阅[人脸快速入门](./luis/get-started-portal-build-app.md)，了解如何开始服务。|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|通过 QnA Maker，可以从半结构化内容生成问答服务。 请参阅 [QnA Maker 快速入门](./qnamaker/quickstarts/create-publish-knowledge-base.md)，了解如何开始服务。|
+|[文本分析](./text-analytics/index.yml "文本分析")| 文本分析提供对原始文本的自然语言处理，用于情绪分析、关键短语提取和语言检测。 请参阅[文本分析快速入门](./text-analytics/quickstarts/client-libraries-rest-api.md) ，了解如何开始服务。|
 |[翻译](./translator/index.yml "转换器")|“翻译”近乎实时地提供基于机器的文本翻译。|
-| [沉浸式阅读器](./immersive-reader/index.yml "沉浸式阅读器") | 沉浸式阅读器为你的应用程序增加了屏幕阅读和理解功能。 |
+| [沉浸式阅读器](./immersive-reader/index.yml "沉浸式阅读器") | 沉浸式阅读器为你的应用程序增加了屏幕阅读和理解功能。 请参阅[沉浸式阅读器快速入门](./immersive-reader/quickstarts/client-libraries.md) ，了解如何开始服务。 |
 
 ## <a name="decision-apis"></a>决策 API
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[异常检测器](./anomaly-detector/index.yml "异常检测器") |使用异常检测器可以监视并检测时序数据中的异常。|
-|[内容审查器](./content-moderator/overview.md "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。|
-|[指标顾问](./metrics-advisor/index.yml)（预览版） | 指标顾问提供可自定的多变量时序数据义异常情况检测，并提供一个功能齐全的 Web 门户来帮助使用该服务。|
-|[个性化体验创建服务](./personalizer/index.yml "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。|
+|[异常检测器](./anomaly-detector/index.yml "异常检测器") |使用异常检测器可以监视并检测时序数据中的异常。 请参阅[异常探测器快速入门](./anomaly-detector/quickstarts/client-libraries.md)，了解如何开始服务|
+|[内容审查器](./content-moderator/overview.md "内容审查器")|内容审查器监视可能的冒犯性、不可取和危险内容。 请参阅[内容审查器快速入门](./content-moderator/client-libraries.md)，了解如何开始服务。|
+|[指标顾问](./metrics-advisor/index.yml)（预览版） | 指标顾问提供可自定的多变量时序数据义异常情况检测，并提供一个功能齐全的 Web 门户来帮助使用该服务。 请参阅[指标顾问快速入门](./metrics-advisor/quickstarts/rest-api-and-client-library.md)，了解如何开始服务。 |
+|[个性化体验创建服务](./personalizer/index.yml "个性化体验创建服务")|个性化体验创建服务可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。 请参阅[个性化体验创建服务快速入门](./personalizer/quickstart-personalizer-sdk.md)，了解如何开始服务。|
 
 ## <a name="search-apis"></a>搜索 API
 
@@ -92,7 +92,16 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 |[必应当地企业搜索](/azure/cognitive-services/bing-local-business-search/ "必应当地企业搜索")| 必应当地企业搜索 API 使应用程序可以基于搜索查询查找有关当地企业的联系人和位置信息。|
 |[必应拼写检查](/azure/cognitive-services/bing-spell-check/ "必应拼写检查")|使用必应拼写检查，可执行上下文语法和拼写检查。|
 
-## <a name="development-options"></a>开发选项 
+## <a name="get-started-with-cognitive-services"></a>认知服务入门
+
+首先，让我们使用以下方法，通过实操性快速入门创建认知服务资源：
+
+* [Azure 门户](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure 门户")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK 客户端库](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure 资源管理器 (ARM) 模板](./create-account-resource-manager-template.md?tabs=portal "Azure 资源管理器 (ARM) 模板")
+
+## <a name="using-cognitive-services-in-different-development-environments"></a>在不同的开发环境中使用认知服务
 
 通过 Azure 和认知服务，可以访问若干开发选项，例如：
 
@@ -102,15 +111,6 @@ Azure 认知服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 * Apache Spark、Azure Databricks、Azure Synapse Analytics 以及适用于大数据场景的 Azure Kubernetes 服务等工具。 
 
 若要了解详细信息，请参阅[认知服务开发选项](./cognitive-services-development-options.md)。
-
-## <a name="learn-with-the-quickstarts"></a>通过快速入门学习
-
-首先，让我们使用以下方法，通过实操性快速入门创建认知服务资源：
-
-* [Azure 门户](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure 门户")
-* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
-* [Azure SDK 客户端库](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
-* [Azure 资源管理器 (ARM) 模板](./create-account-resource-manager-template.md?tabs=portal "Azure 资源管理器 (ARM) 模板")
 
 <!--
 ## Subscription management
@@ -128,7 +128,7 @@ Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Dir
 
 ## <a name="containers-for-cognitive-services"></a>认知服务的容器
 
- 认知服务提供用于在 Azure 云或本地部署的容器。 详细了解[认知服务容器](cognitive-services-container-support.md "认知服务容器")。
+ Azure 认知服务提供了多个 Docker 容器，可让你在本地使用 Azure 中提供的相同 API。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 详细了解[认知服务容器](cognitive-services-container-support.md "认知服务容器")。
 
 ## <a name="regional-availability"></a>区域可用性
 
@@ -154,3 +154,4 @@ Azure 认知服务提供了分层的安全模型，包括通过 Azure Active Dir
 
 * [创建认知服务帐户](cognitive-services-apis-create-account.md "创建认知服务帐户")
 * [认知服务文档中的新增内容](whats-new-docs.md "认知服务文档中的新增内容")
+* [计划和管理认知服务的成本](plan-manage-costs.md)

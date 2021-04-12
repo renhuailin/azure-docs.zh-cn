@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: 4da93503c32e380adb82028e7c5e11dddb247d6f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 166fb94f5a3aea505c0d20df861b8bc4de9ad8aa
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373362"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491106"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>训练和部署自定义语音识别模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "100373362"
 
 训练模型的第一步是上传训练数据。 请参阅[准备和测试数据](./how-to-custom-speech-test-and-train.md)以获取分步说明，了解如何准备人为标记的听录内容和相关文本（言语和发音）。 上传训练数据以后，请按以下说明开始训练模型：
 
-1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。 如果计划使用音频和人标记的脚本数据集来训练模型，请在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中选择一个语音订阅。
+1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。 如果计划使用音频和人为标记的听录内容数据集来训练模型，请在[具有专用硬件的区域](custom-speech-overview.md#set-up-your-azure-account)选择一个语音订阅进行训练。
 2. 转到“语音转文本” > “自定义语音识别” >  [项目名称]  > “训练”   。
 3. 选择“训练模型”。
 4. 为训练提供“名称”和“描述” 。
@@ -43,15 +43,15 @@ ms.locfileid: "100373362"
 6. 在“选择训练数据”页中，选择一个或多个要用于训练的相关文本数据集或音频和人为标记的听录内容数据集。
 
 > [!NOTE]
-> 训练新模型时，请从相关文本开始;使用音频和人为标记的脚本训练可能需要更长 **的时间， (多达 [几天](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)**) 。
+> 在训练新模型时，请从相关文本开始；使用音频和人为标记的听录内容进行训练所需的时间可能会长得多（长达[数天](how-to-custom-speech-evaluate-data.md#add-audio-with-human-labeled-transcripts)）。
 
 > [!NOTE]
-> 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持音频数据定型的基本模型的列表，请参阅 [语言支持](language-support.md#speech-to-text) 。
+> 并非所有基本模型都支持通过音频训练。 如果基本模型不支持该训练，语音服务将仅使用脚本中的文本，而忽略音频。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
 > [!NOTE]
-> 如果更改了用于定型的基本模型，并在定型数据集中具有音频，请 *始终* 检查新选择的基本模型是否 [支持音频数据定型](language-support.md#speech-to-text)。 如果以前使用的基本模型不支持对音频数据进行定型，而定型数据集包含音频，则新基础模型的定型时间将会 **大幅** 增加，并且可能会轻松地从几个小时到几天及更长时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则更是如此。
+> 如果要更改用于训练的基础模型，并且你的训练数据集内有音频，请务必检查新选择的基础模型是否[支持使用音频数据进行训练](language-support.md#speech-to-text)。 如果以前使用的基础模型不支持使用音频数据进行训练，而训练数据集包含音频，则新的基础模型的训练时间将会 **大幅** 增加，并且可能会轻易地从几个小时增加到几天及更长时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，则更是如此。
 >
-> 如果你面对上述段落中所述的问题，则可以通过减少数据集中的音频量或完全删除该数据并仅留下文本，来快速缩短定型时间。 如果你的语音服务订阅 **不** 在 [具有专用硬件](custom-speech-overview.md#set-up-your-azure-account) 培训的区域中，则强烈建议使用后一种方法。
+> 如果你面临以上段落中所述的问题，则可以通过减少数据集内的音频量或完全删除音频并仅留下文本，来快速缩短训练时间。 如果语音服务订阅所在区域没有[专用于训练的硬件](custom-speech-overview.md#set-up-your-azure-account)，我们强烈建议你完全删除音频并仅留下文本。
 
 7. 完成训练后，可以对新训练的模型执行准确度测试。 此步骤是可选的。
 8. 选择“创建”，生成自定义模型。
@@ -61,7 +61,7 @@ ms.locfileid: "100373362"
 请参阅[操作说明](how-to-custom-speech-evaluate-data.md)，了解如何评估和提高自定义语音识别模型准确度。 如果选择测试准确度，则选择的声学数据集必须不同于你对自己的模型使用的数据集，这样才能获得真正有意义的模型性能。
 
 > [!NOTE]
-> 基础模型和自定义模型最多都只能使用到某个特定日期（请参阅[模型生命周期](custom-speech-overview.md#model-lifecycle)）。 Speech Studio 在每个模型和终结点的“过期时间”列中显示此日期。 在该日期之后，对终结点或对批量听录的请求可能会失败或回退到基础模型。
+> 基础模型和自定义模型最多都只能使用到某个特定日期（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。 Speech Studio 在每个模型和终结点的“过期时间”列中显示此日期。 在该日期之后，对终结点或对批量听录的请求可能会失败或回退到基础模型。
 >
 > 请使用当时最新的基础模型来重新训练你的模型，以受益于准确度的提高，并避免模型过期。
 

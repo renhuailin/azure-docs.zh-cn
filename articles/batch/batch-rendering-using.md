@@ -3,16 +3,19 @@ title: 使用渲染功能
 description: 如何使用 Azure Batch 渲染功能。 尝试使用 Batch Explorer 应用程序，可以直接使用，也可以从客户端应用程序插件调用。
 author: mscurrell
 ms.author: markscu
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.openlocfilehash: dc3d2cc53b478b1ec955d8f4b3717b0407772849
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429779"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496620"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
+
+> [!IMPORTANT]
+> 渲染 VM 映像和即用即付许可[已弃用，将于 2024 年 2 月 29 日停用](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 若要使用 Batch 进行渲染，[应使用自定义 VM 映像和标准应用程序许可。](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)
 
 可通过多种方式来使用 Azure Batch 渲染：
 

@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644843"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443759"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署适用于 FHIR 的 Azure IoT 连接器（预览版）
 
@@ -50,7 +50,7 @@ ms.locfileid: "105644843"
 
 [![创建 IoT 连接器](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg#lightbox)
 
-|设置|值|说明 |
+|设置|Value|说明 |
 |---|---|---|
 |连接器名称|唯一的名称|输入一个名称以标识适用于 FHIR 的 Azure IoT 连接器。此名称在 Azure API for FHIR 资源中应是唯一的。 名称只能包含小写字母、数字和连字符 (-)。 它必须以字母或数字开头和结尾，且长度必须介于 3-24 个字符之间。|
 |解决方法类型|查找或创建|如果 Azure API for FHIR 中有一个用于创建[设备](https://www.hl7.org/fhir/device.html)和[患者](https://www.hl7.org/fhir/patient.html) FHIR 资源的带外进程，请选择“查找”。 创建[观察](https://www.hl7.org/fhir/observation.html) FHIR 资源时，适用于 FHIR 的 Azure IoT 连接器将使用对这些资源的引用来显示设备数据。 如果希望适用于 FHIR 的 Azure IoT 连接器使用设备数据中显示的相应标识符值在 Azure API for FHIR 中创建基本的设备和患者资源，请选择“创建”。|
@@ -171,6 +171,11 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>使用适用于 FHIR 的 Azure IoT 连接器（预览版）连接 IoT 数据
 
 部署 IoT Central 应用程序后，两个现成的模拟设备将开始生成遥测。 在本教程中，我们将通过适用于 FHIR 的 Azure IoT 连接器将遥测从 Smart Vitals Patch 模拟器引入 FHIR。 若要将 IoT 数据导出到适用于 FHIR 的 Azure IoT 连接器，需要[在 IoT Central 内设置连续数据导出](../../iot-central/core/howto-export-data.md)。 首先，需要创建与目标的连接，然后创建一个数据导出作业来持续运行： 
+
+> [!NOTE]
+> 你将需要选择 " **数据导出** " 和 " **数据导出" (旧)** 在此部分的 IoT Central 应用设置中。
+
+[![数据导出设置 IoT Central](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 创建新目标：
 - 请在 " **目标** " 选项卡上，创建一个新的目标。

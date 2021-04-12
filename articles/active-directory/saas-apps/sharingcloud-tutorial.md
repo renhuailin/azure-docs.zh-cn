@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
 ms.openlocfilehash: f663a81a86aae2fe11611aa1d6ab19f89ebcf6d1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104950036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharingcloud"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 SharingCloud 的集成
@@ -26,7 +26,7 @@ ms.locfileid: "104950036"
 * 让用户使用其 Azure AD 帐户自动登录到 SharingCloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
