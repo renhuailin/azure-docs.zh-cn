@@ -1,15 +1,15 @@
 ---
 title: 已启用 Azure Arc 的服务器的内置策略定义
 description: 列出已启用 Azure Arc 的服务器（预览版）的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3447c2e28fa52afff8e39b4e6417c3c863c18c23
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 890981e8d1b0d6f8eb09df87b095f60035a1682f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591124"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095657"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>已启用 Azure Arc 的服务器的 Azure Policy 内置定义
 

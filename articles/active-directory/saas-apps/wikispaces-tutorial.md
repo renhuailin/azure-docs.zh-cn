@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>教程：Azure Active Directory 与 Wikispaces 集成
@@ -101,7 +101,7 @@ ms.locfileid: "96302739"
 
     ![Wikispaces 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.wikispaces.net`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.wikispaces.net` 
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://session.wikispaces.net/<instancename>`
 
@@ -134,7 +134,7 @@ ms.locfileid: "96302739"
 
     ![“用户和组”以及“所有用户”链接](common/users.png)
 
-2. 选择屏幕顶部的“新建用户”  。
+2. 选择屏幕顶部的“新建用户”。
 
     ![“新建用户”按钮](common/new-user.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "96302739"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -176,17 +176,17 @@ ms.locfileid: "96302739"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-wikispaces-test-user"></a>创建 Wikispaces 测试用户
+### <a name="create-wikispaces-test-user&quot;></a>创建 Wikispaces 测试用户
 
 为使 Azure AD 用户能够登录到 Wikispaces，必须将用户预配到 Wikispaces 中。 对于 Wikispaces，需要手动执行预配。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>若要预配用户帐户，请执行以下步骤：
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>若要预配用户帐户，请执行以下步骤：
 
 1. 以管理员身份登录到 **Wikispaces** 公司站点。
 
 2. 转到“成员”  。
    
-    ![成员](./media/wikispaces-tutorial/ic787193.png "成员")
+    ![成员](./media/wikispaces-tutorial/ic787193.png &quot;成员")
 
 3. 单击“邀请他人”  。
    

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/12/2020
+ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1996024d163a4bf7cfa741110038bb8db5b883e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728018"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102632726"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BeyondTrust Remote Support 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "98728018"
 1. 在“从库中添加”部分的搜索框中，键入“BeyondTrust Remote Support”   。
 1. 从结果面板中选择“BeyondTrust Remote Support”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-beyondtrust-remote-support"></a>配置和测试 BeyondTrust Remote Support 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-beyondtrust-remote-support"></a>配置和测试 BeyondTrust Remote Support 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置和测试 BeyondTrust Remote Support 的 Azure AD SSO  。 若要正常使用 SSO，需要在 Azure AD 用户与 BeyondTrust Remote Support 中的相关用户之间建立链接关系。
 
@@ -76,14 +76,14 @@ ms.locfileid: "98728018"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml`。
+    a. 在“标识符”框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com`
-
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
+    
+    c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<HOSTNAME>.bomgar.com/saml`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 本教程后面的步骤中将介绍这些值。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 本教程后面的步骤中将介绍这些值。
 
 1. BeyondTrust Remote Support 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -167,6 +167,10 @@ ms.locfileid: "98728018"
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>创建 BeyondTrust Remote Support 测试用户
 
+在本部分，我们将在 BeyondTrust Remote Support 中创建名为 Britta Simon 的用户。 BeyondTrust Remote Support 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果某个用户尚不存在于 BeyondTrust Remote Support 中，将会在对其进行身份验证后新建该用户。
+
+按照以下过程操作，这是配置 BeyondTrust Remote Support 所必需的。
+
 我们将在此处配置用户预配设置。 本部分中使用的值将从 Azure 门户的“用户属性和声明”部分中引用  。 我们将其配置为创建时已导入的默认值，但是，可以根据需要自定义该值。
 
 ![屏幕截图显示“用户预配设置”，可在其中配置用户值。](./media/bomgarremotesupport-tutorial/user-attribute.png)
@@ -174,7 +178,7 @@ ms.locfileid: "98728018"
 > [!NOTE]
 > 该实现不需要组和电子邮件属性。 如果使用 Azure AD 组并将其分配给 BeyondTrust Remote Support 组策略以获取权限，则需要通过 Azure 门户中的属性来引用该组的对象 ID，并将其置于“可用组”部分中。 完成此任务后，可将对象 ID/AD 组分配给组策略以获得权限。
 
-![屏幕截图显示“IT”部分，其中包含“成员身份类型”、“源”、“类型”和“对象 ID”。](./media/bomgarremotesupport-tutorial/config-user2.png)
+![屏幕截图显示“IT”部分，其中包含“成员身份类型”、“源”、“类型”和“对象 ID”。](./media/bomgarremotesupport-tutorial/config-user-2.png)
 
 ![屏幕截图显示组策略的“基本设置”页。](./media/bomgarremotesupport-tutorial/group-policy.png)
 

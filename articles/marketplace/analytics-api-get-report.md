@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 3383af447f40ea984bce9cbc956f22ee6c5af200
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583444"
 ---
 # <a name="get-report-api"></a>获取报表 API
@@ -96,8 +96,8 @@ ms.locfileid: "102583444"
 | `CreatedTime` | 创建报表的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
 | `ModifiedTime` | 上次修改报表的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
 | `StartTime` | 执行将开始的时间。 时间格式为 yyyy-MM-ddTHH:mm:ssZ |
-| `ReportStatus` | 报表执行的状态。 可能的值为 Paused、Active 和 Inactive。 |
-| `RecurrenceInterval` | 创建报表期间提供的重复间隔 |
-| `RecurrenceCount` | 创建报表期间提供的重复次数 |
+| `ReportStatus` | 报表执行的状态。 可能的值为“已暂停”、“活动”和“非活动”。 |
+| `RecurrenceInterval` | 在报表创建期间提供的定期执行间隔 |
+| `RecurrenceCount` | 在报表创建期间提供的定期执行计数 |
 | `CallbackUrl` | 请求中提供的回叫 URL |
 | `Format` | 报表文件的格式 |

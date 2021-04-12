@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735571"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教程：Azure Active Directory 与 Zscaler Beta 的集成
@@ -190,14 +190,14 @@ ms.locfileid: "98735571"
 
     b. 选择“激活”  。
 
-## <a name="configure-proxy-settings"></a>配置代理设置
+## <a name="configure-proxy-settings&quot;></a>配置代理设置
 若要在 Internet Explorer 中配置代理设置，请执行以下步骤。
 
 1. 启动 **Internet Explorer**。
 
 2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。 
     
-     ![“Internet 选项”对话框](./media/zscaler-beta-tutorial/ic769492.png "Internet 选项")
+     ![“Internet 选项”对话框](./media/zscaler-beta-tutorial/ic769492.png &quot;Internet 选项")
 
 3. 选择“连接”选项卡。 
   

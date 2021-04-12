@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 23aac2c94ffd909ca132cbc481998b9eda317156
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583424"
 ---
 # <a name="get-all-datasets-api"></a>获取所有数据集 API
@@ -51,7 +51,7 @@ ms.locfileid: "102583424"
 
 **响应**
 
-响应有效负载的结构如下所示：
+响应有效负载的结构如下：
 
 响应代码：200、400、401、403、404、500
 

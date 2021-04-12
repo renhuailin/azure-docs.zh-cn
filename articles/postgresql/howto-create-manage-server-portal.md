@@ -1,17 +1,17 @@
 ---
 title: 管理 Azure Database for PostgreSQL - Azure 门户
 description: 了解如何在 Azure 门户中管理 Azure Database for PostgreSQL 服务器。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b581ac137a4172ab70e4fb3fb2a75e268115c06
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91704508"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604118"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for PostgreSQL 服务器
 

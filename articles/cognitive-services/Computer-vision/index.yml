@@ -1,4 +1,4 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: 计算机视觉文档
 summary: 使用基于云的计算机视觉 API，开发人员可以访问用于处理图像并返回信息的高级算法。 通过上传图像或指定图像 URL，Microsoft 计算机视觉算法可以基于输入和用户选择以不同方式分析可视内容。 使用快速入门、教程和示例，了解如何以不同的方式分析可视内容。
 metadata:
@@ -7,186 +7,129 @@ metadata:
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.topic: landing-page
+  ms.topic: hub-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 09/22/2020
-  ms.openlocfilehash: 940a34cfbf4281649737f0cf3fed7b490a9938a7
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508888"
-landingContent:
-- title: 关于计算机视觉
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是计算机视觉？
+  ms.date: 03/31/2021
+highlightedContent:
+  items:
+    - title: 关于计算机视觉
+      itemType: overview
       url: overview.md
-  - linkListType: whats-new
-    links:
-    - text: 新增功能
+    - title: 计算机视觉有哪些新增功能？
+      itemType: whats-new
       url: whats-new.md
-  - linkListType: video
-    links:
-    - text: 使用视觉 API 在应用中注入智能
-      url: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-put-intelligence-into-your-business-apps/
-- title: 光学字符识别 (OCR)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 光学字符识别 (OCR)
-      url: concept-recognizing-text.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: 使用 Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: 使用 Go SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: 使用 REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: 在图像中检测对象
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 对象检测
-      url: concept-object-detection.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: 使用 Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: 使用 Go SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: 使用 REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: 将内容标记应用于图像
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 内容标记
-      url: concept-tagging-images.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: 使用 Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: 使用 Go SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-    - text: 使用 REST API
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-rest-api
-- title: 使用读取容器
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 安装和运行容器
-      url: computer-vision-how-to-install-containers.md
-  - linkListType: how-to-guide
-    links:
-    - text: 配置容器
-      url: computer-vision-resource-container-config.md
-  - linkListType: deploy
-    links:
-    - text: 使用容器实例
-      url: ../containers/azure-container-instance-recipe.md
-    - text: 与 Kubernetes 和 Jenkins 配合使用
-      url: deploy-computer-vision-on-premises.md
-- title: 使用空间分析容器
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 空间分析概述
-      url: intro-to-spatial-analysis-public-preview.md
-    - text: 安装和运行容器
-      url: spatial-analysis-container.md
-    - text: 配置操作
-      url: spatial-analysis-operations.md
-  - linkListType: deploy
-    links:
-    - text: 部署人员计数应用
-      url: spatial-analysis-web-app.md
-  - linkListType: concept
-    links:
-    - text: 区域和线条放置
-      url: spatial-analysis-zone-line-placement.md
-    - text: 相机放置
-      url: spatial-analysis-camera-placement.md
-    - text: 日志记录和故障排除
-      url: spatial-analysis-logging.md
-- title: 检测图像中的人脸
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 人脸检测
-      url: concept-detecting-faces.md
-  - linkListType: quickstart
-    links:
-    - text: 使用 .NET SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-csharp
-    - text: 使用 Python SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-python
-    - text: 使用 Java SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-java
-    - text: 使用 Node SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
-    - text: 使用 Go SDK
-      url: quickstarts-sdk/client-library.md?pivots=programming-language-go
-- title: 负责使用 AI
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 空间分析的透明度注释
-      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-  - linkListType: concept
-    links:
-    - text: AI 部署中负责任的使用
-      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-    - text: 数据、隐私和安全性
-      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-- title: 参考
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 计算机视觉 API v3.2 预览版
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
-    - text: 计算机视觉 API v3.1
-      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
-    - text: 计算机视觉 API v2.1
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
-    - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision
-    - text: Python SDK
-      url: /python/api/overview/azure/cognitiveservices/computervision
-    - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/computervision
-    - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-computervision/
-    - text: Go SDK
-      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
-    - text: Azure PowerShell
-      url: /powershell/module/az.cognitiveservices/#cognitive_services
-    - text: Azure 命令行界面 (CLI)
-      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
-- title: 帮助和反馈
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 支持和帮助选项
-      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
+    - title: 语言支持
+      itemType: reference
+      url: language-support.md
+conceptualContent:
+  items:
+    - title: 光学字符识别
+      links:
+        - itemType: overview
+          text: 关于 OCR
+          url: overview-ocr.md
+        - itemType: quickstart
+          text: OCR 入门
+          url: quickstarts-sdk/client-library.md
+        - itemType: how-to-guide
+          text: 调用读取 API
+          url: Vision-API-How-to-Topics/call-read-api.md
+        - itemType: deploy
+          text: 使用读取 OCR 容器
+          url: computer-vision-how-to-install-containers.md
+        - itemType: reference
+          text: CPP API 参考
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+      footerLink:
+        text: 更多
+        url: index-ocr.yml
+    - title: 图像分析
+      links:
+        - itemType: overview
+          text: 关于图像分析
+          url: overview-image-analysis.md
+        - itemType: quickstart
+          text: 图像分析入门
+          url: quickstarts-sdk/image-analysis-client-library.md
+        - itemType: concept
+          text: 内容标记
+          url: concept-tagging-images.md
+        - itemType: concept
+          text: 图像说明
+          url: concept-describing-images.md
+        - itemType: concept
+          text: 人脸检测
+          url: concept-detecting-faces.md
+        - itemType: tutorial
+          text: 生成图像的元数据
+          url: Tutorials/storage-lab-tutorial.md
+        - itemType: reference
+          text: 图像分析 API 参考
+          url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+      footerLink:
+        text: 更多
+        url: index-image-analysis.yml
+    - title: 空间分析
+      links:
+        - itemType: overview
+          text: 关于空间分析
+          url: intro-to-spatial-analysis-public-preview.md
+        - itemType: quickstart
+          text: 空间分析入门
+          url: spatial-analysis-container.md
+        - itemType: how-to-guide
+          text: 配置空间分析操作
+          url: spatial-analysis-operations.md
+        - itemType: concept
+          text: 区域和线条放置
+          url: spatial-analysis-zone-line-placement.md
+        - itemType: concept
+          text: 相机放置
+          url: spatial-analysis-camera-placement.md
+        - itemType: concept
+          text: 日志记录和故障排除
+          url: spatial-analysis-logging.md
+      footerLink:
+        text: 更多
+        url: index-spatial-analysis.yml
+tools:
+  title: 软件开发工具包 (SDK)
+  summary: 通过你喜欢的编程语言开始使用计算机视觉 SDK。
+  items:
+    - title: C#
+      imageSrc: media/index/logo_Csharp.svg
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+    - title: Node.js
+      imageSrc: media/index/logo_nodejs.svg
+      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+    - title: Python
+      imageSrc: media/index/logo_python.svg
+      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+    - title: Go
+      imageSrc: media/index/logo_go.svg
+      url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision'
+    - title: Java
+      imageSrc: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+      url: /java/api/com.microsoft.cognitiveservices.speech
+additionalContent:
+  sections:
+    - items:
+        - title: REST API
+          links:
+            - text: 光学字符识别 (OCR)
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005'
+            - text: 图像分析
+              url: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - title: 资源
+          links:
+            - text: 定价
+              url: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
+            - text: 区域
+              url: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+            - text: 了解
+              url: /learn/paths/explore-computer-vision-microsoft-azure/
+        - title: 支持
+          links:
+            - text: 支持和帮助选项
+              url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

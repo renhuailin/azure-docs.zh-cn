@@ -2,14 +2,14 @@
 title: 监视任何网站的可用性和响应能力 | Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 03/10/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 0ea44aad43a3dd6f11656a45dc7d0e619187fc22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101729022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103012558"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
 
@@ -28,7 +28,7 @@ ms.locfileid: "101729022"
 **对于每个 Application Insights 资源，最多可以创建 100 个可用性测试。**
 
 > [!IMPORTANT]
-> [URL ping 测试](#create-a-url-ping-test)和[多步骤 web 测试](availability-multistep.md)都依赖公共 internet DNS 基础结构来解析已测试终结点的域名。 这意味着，如果你使用专用 DNS，则必须确保你的测试的每个域名也可由公共域名服务器解析，如果不可能，你可以改用 [自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) 。
+> [URL ping 测试](#create-a-url-ping-test)和[多步骤 Web 测试](availability-multistep.md)都依赖公共 Internet DNS 基础结构来解析已测试终结点的域名。 这意味着，如果你使用专用 DNS，则必须确保测试的每个域名也可由公共域名服务器解析，如果不可能，则可以改用[自定义跟踪可用性测试](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -74,40 +74,40 @@ ms.locfileid: "101729022"
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。|
 
-### <a name="location-population-tags"></a>位置人口标记
+### <a name="location-population-tags"></a>位置填充标记
 
 使用 Azure 资源管理器部署可用性 URL ping 测试时，可以将以下填充标记用于地理位置属性。
 
 #### <a name="azure-gov"></a>Azure Gov
 
-| 显示名称   | 总体名称     |
+| 显示名称   | 填充名称     |
 |----------------|---------------------|
-| USGov Virginia | usgov-va-bc-op-nt-azr        |
-| USGov Arizona  | usgov-phx-bc-op-nt-azr       |
-| USGov Texas    | usgov-bc-op-nt-azr        |
-| USDoD 东部     | usgov-ddeast-bc-op-nt-azr    |
-| USDoD 中部  | usgov-ddcentral-bc-op-nt-azr |
+| USGov Virginia | usgov-va-azr        |
+| US Gov 亚利桑那州  | usgov-phx-azr       |
+| US Gov 德克萨斯州    | usgov-tx-azr        |
+| USDoD 东部     | usgov-ddeast-azr    |
+| USDoD 中部  | usgov-ddcentral-azr |
 
 #### <a name="azure"></a>Azure
 
-| 显示名称                           | 总体名称   |
+| 显示名称                           | 填充名称   |
 |----------------------------------------|-------------------|
-| 澳大利亚东部                         | emea-au-syd  |
-| Brazil South                           | latam-gru-边缘 |
-| 美国中部                             | 美国 mia-边缘    |
-| 东亚                              | apac-hkn-bc-op-nt-azr   |
-| 美国东部                                | us-va-圣 bc-op-nt-azr     |
-| 法国南部 (以前的华北)  | emea-ch-zrh  |
-| 法国中部                         | emea-pra-边缘  |
-| Japan East                             | apac-jp-kaw-ft-85h  |
-| 北欧                           | emea-db3-bc-op-nt-azr   |
-| 美国中北部                       | us-ch1-bc-op-nt-azr     |
-| 美国中南部                       | us-sn1-bc-op-nt-azr     |
-| 东南亚                         | apac-sin-bc-op-nt-azr   |
-| 英国西部                                | emea-停止-边缘  |
-| 西欧                            | emea-nl-bc-op-nt-azr   |
-| 美国西部                                | us-sjc-dp1-bc-op-nt-azr     |
-| 英国南部                               | emea-ru-  |
+| 澳大利亚东部                         | emea-au-syd-edge  |
+| 巴西南部                           | latam-br-gru-edge |
+| Central US                             | us-fl-mia-edge    |
+| 东亚                              | apac-hk-hkn-azr   |
+| 美国东部                                | us-va-ash-azr     |
+| 法国南部（以前为法国中部） | emea-ch-zrh-edge  |
+| 法国中部                         | emea-fr-pra-edge  |
+| 日本东部                             | apac-jp-kaw-edge  |
+| 北欧                           | emea-gb-db3-azr   |
+| 美国中北部                       | us-il-ch1-azr     |
+| 美国中南部                       | us-tx-sn1-azr     |
+| 东南亚                         | apac-sg-sin-azr   |
+| 英国西部                                | emea-se-sto-edge  |
+| 西欧                            | emea-nl-ams-azr   |
+| 美国西部                                | us-ca-sjc-azr     |
+| 英国南部                               | emea-ru-msa-edge  |
 
 ## <a name="see-your-availability-test-results"></a>查看可用性测试结果
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dfeb99fdbd5cf2b0784982b385d46c3a16901ec8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92520925"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567281"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>教程：Azure Active Directory 与 Mozy Enterprise 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "92520925"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<tenantname>.Mozyenterprise.com`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Mozy Enterprise 客户端支持团队](https://support.mozy.com/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Mozy Enterprise 客户端支持团队](https://www.safenames.net/about-us/contact-us)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载 **证书(Base64)** 并将其保存在计算机上。
 
@@ -120,13 +120,13 @@ ms.locfileid: "92520925"
 
     c. 注销 URL
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>配置 Mozy Enterprise 单一登录
+### <a name="configure-mozy-enterprise-single-sign-on&quot;></a>配置 Mozy Enterprise 单一登录
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Mozy Enterprise 公司站点。
 
 2. 在“配置”部分中，单击“身份验证策略”。  
    
-    ![屏幕截图显示从“配置”选择了“身份验证策略”。](./media/mozy-enterprise-tutorial/ic777314.png "身份验证策略")
+    ![屏幕截图显示从“配置”选择了“身份验证策略”。](./media/mozy-enterprise-tutorial/ic777314.png &quot;身份验证策略")
 
 3. 在“身份验证策略”  部分中，执行以下步骤：
    
@@ -199,7 +199,7 @@ ms.locfileid: "92520925"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
-### <a name="create-mozy-enterprise-test-user"></a>创建 Mozy Enterprise 测试用户
+### <a name="create-mozy-enterprise-test-user&quot;></a>创建 Mozy Enterprise 测试用户
 
 为了使 Azure AD 用户能够登录到 Mozy Enterprise，必须将其预配到 Mozy Enterprise 中。 对于 Mozy Enterprise，需要手动执行预配。
 
@@ -212,7 +212,7 @@ ms.locfileid: "92520925"
 
 2. 单击“用户”，并单击“添加新用户”。  
    
-    ![用户](./media/mozy-enterprise-tutorial/ic777317.png "用户")
+    ![用户](./media/mozy-enterprise-tutorial/ic777317.png &quot;用户")
    
     >[!NOTE]
     >只有当在“身份验证策略”下选择了“Mozy”作为提供程序时才会显示“添加新用户”选项。    如果配置了 SAML 身份验证，则当用户首次通过单一登录进行登录时会自动添加用户。

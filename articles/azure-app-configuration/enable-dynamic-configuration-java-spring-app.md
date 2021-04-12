@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636532"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625511"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>教程：在 Java Spring 应用中使用动态配置
 
@@ -89,6 +89,7 @@ public void myConfigurationRefreshCheck() {
     ```
 
 1. 若要测试动态配置，请打开与应用程序关联的 Azure 应用程序配置门户。 选择“配置资源管理器”，并更新所显示的密钥的值，例如：
+
     | 键 | 值 |
     |---|---|
     | application/config.message | Hello - Updated |

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fa251b80f8e44f48de565685a0841f57f48620f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4bfbd83f3f3910e1231bcce4043d9b59ccc512db
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724959"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606644"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -114,10 +114,10 @@ ms.locfileid: "101724959"
 
    数据工厂的名称必须全局唯一。 如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
-   ![新建数据工厂名称](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
 
 1. 选择要在其中创建数据工厂的 Azure **订阅**。
-1. 对于“资源组”，请执行以下步骤之一：
+1. 对于“资源组”，请执行以下步骤之一： 
 
    - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
@@ -126,11 +126,11 @@ ms.locfileid: "101724959"
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 1. 在“版本”下选择“V2”。 
 1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 
-    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
 1. 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI。
 
 
@@ -194,9 +194,9 @@ ms.locfileid: "101724959"
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 

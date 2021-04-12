@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433533"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590613"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>在 Azure 中连接函数应用以处理数据
 
@@ -63,7 +63,7 @@ ms.locfileid: "102433533"
 * [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-接下来，在 Visual Studio 解决方案资源管理器中，打开包含示例代码的 Function1.cs 文件，并将这些包的以下 `using` 语句添加到函数。 
+接下来，在 Visual Studio 解决方案资源管理器中，打开包含示例代码的 Function1.cs 文件，并将这些包的以下 `using` 语句添加到函数。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -97,6 +97,20 @@ ms.locfileid: "102433533"
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
+### <a name="verify-function-publish"></a>验证函数发布
+
+1. 在 [Azure 门户](https://portal.azure.com/)使用你的凭据登录。
+2. 在窗口顶部的搜索栏中，搜索函数应用名称。
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="在 Azure 门户中搜索函数应用的名称。" lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. 在打开的“函数应用”页中，选择左侧菜单选项中的“函数”。 如果成功发布函数，则会在列表中看到函数名称。
+请注意，你可能需要等待几分钟或刷新页面，然后才能看到在已发布函数列表中列出的函数。
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="查看 Azure 门户中的已发布函数。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+要使函数应用能够访问 Azure 数字孪生，它需要具有系统托管标识并且该标识具有访问 Azure 数字孪生实例的权限。 你接下来要设置此内容。
+
 ## <a name="set-up-security-access-for-the-function-app"></a>为函数应用设置安全访问
 
 可以使用 Azure CLI 或 Azure 门户设置函数应用的安全性访问。 针对你的首选项，按照以下步骤操作。
@@ -104,12 +118,14 @@ ms.locfileid: "102433533"
 # <a name="cli"></a>[CLI](#tab/cli)
 
 可以在 [Azure Cloud Shell](https://shell.azure.com) 或[本地 Azure CLI 安装](/cli/azure/install-azure-cli)中运行这些命令。
+可以使用函数应用的系统托管标识向其分配 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。 这将授予实例中的执行数据平面活动的函数应用权限。 然后，通过设置环境变量使函数可以访问 Azure 数字孪生实例的 URL。
 
 ### <a name="assign-access-role"></a>分配访问角色
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 前面示例中的函数主干要求将持有者令牌传递给它，以便能够使用 Azure 数字孪生进行身份验证。 为确保传递此持有者令牌，需要为函数应用设置[托管服务标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 权限以访问 Azure 数字孪生。 每个函数应用只需设置一次。
 
-可以使用函数应用的系统托管标识向其分配 Azure 数字孪生实例的“Azure 数字孪生数据所有者”角色。 这将授予实例中的执行数据平面活动的函数应用权限。 然后，通过设置环境变量使函数可以访问 Azure 数字孪生实例的 URL。
 
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 principalId 字段。
 
@@ -149,13 +165,15 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 ### <a name="assign-access-role"></a>分配访问角色
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 通过使用系统分配的托管标识，Azure 资源无需在代码中存储凭据即可对云服务（如 Azure Key Vault）进行身份验证。 启用该标识后，可以通过 Azure 基于角色的访问控制授予所有必要的权限。 此类托管标识的生命周期与此资源的生命周期关联。 此外，每个资源只能具有一个系统分配的托管标识。
 
 1. 在 [Azure 门户](https://portal.azure.com/)的搜索栏中，键入函数应用的名称以搜索函数应用。 选择结果中的应用。 
 
     :::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure 门户的屏幕截图：正在门户搜索栏中搜索函数应用的名称，并突出显示了搜索结果。":::
 
-1. 在函数应用页的左侧导航栏中，选择“标识”以使用函数的托管标识。 在“系统分配”页上，验证“状态”是否设置为“开启”（如果尚未，请立即设置并保存更改） 。
+1. 在函数应用页的左侧导航栏中，选择“标识”以使用函数的托管标识。 在“系统分配”页上，验证“状态”是否设置为“开启”（如果尚未设置，请立即设置并保存更改）。
 
     :::image type="content" source="media/how-to-create-azure-function/verify-system-managed-identity.png" alt-text="Azure 门户的屏幕截图：在函数应用的“标识”页中，“状态”选项设置为“开启”。" lightbox="media/how-to-create-azure-function/verify-system-managed-identity.png":::
 

@@ -3,12 +3,12 @@ title: 使用 Python 向/从 Azure 事件中心发送/接收事件（最新版�
 description: 本文演练如何创建一个可使用最新 azure/event-hubs 包向/从 Azure 事件中心发送/接收事件的 Python 应用程序。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: f05f546f19a7944c049b97ba18065159db6fab67
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ea2270888830327506df5f43c18f8e798f61cc00
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605558"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802771"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>使用 Python (azure-eventhub) 向/从事件中心发送/接收事件
 本快速入门介绍如何使用 azure-eventhub Python 包向事件中心发送事件以及从事件中心接收事件。
@@ -19,7 +19,7 @@ ms.locfileid: "97605558"
 若要完成本快速入门，需要具备以下先决条件：
 
 - Microsoft Azure 订阅。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
-- Python 2.7、3.5 或更高版本，装有 PIP 且已更新。
+- Python 2.7、3.6 或更高版本，装有 PIP 且已更新。
 - 事件中心的 Python 包。 
 
     若要安装该包，请在包路径中包含 Python 的命令提示符中运行以下命令：

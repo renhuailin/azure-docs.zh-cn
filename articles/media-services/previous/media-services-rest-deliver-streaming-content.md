@@ -1,7 +1,7 @@
 ---
 title: 使用 REST 发布 Azure 媒体服务内容
-description: 了解如何创建用于生成流 URL 的定位符。 代码使用 REST API。
-author: Juliako
+description: 了解如何创建用于生成流式处理 URL 的定位符。 代码使用 REST API。
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 438a816ca28b9414557e64591d9ece2dbb173370
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: b8733d499b2396160a73906f16a69291cf0b9d71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256865"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103015414"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容
 
@@ -28,15 +28,15 @@ ms.locfileid: "89256865"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
-> * [门户](media-services-portal-publish.md)
+> * [Portal](media-services-portal-publish.md)
 > 
 > 
 
-可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。 [对资产进行编码](media-services-rest-encode-asset.md)一文说明了如何编码成自适应比特率 MP4 集。 如果内容已加密，则在创建定位符之前配置资产传送策略（如[此文](media-services-rest-configure-asset-delivery-policy.md)中所述）。 
+可通过创建 OnDemand 流式处理定位符并生成流式处理 URL，来流式处理自适应比特率 MP4 集。 [对资产进行编码](media-services-rest-encode-asset.md)一文说明了如何编码成自适应比特率 MP4 集。 如果内容已加密，则在创建定位符之前配置资产传送策略（如[此文](media-services-rest-configure-asset-delivery-policy.md)中所述）。 
 
 也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。  
 
-本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还会演示如何生成渐进式下载 URL。
+本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 此外，还将示范如何生成渐进式下载 URL。
 
 [以下](#types)部分显示了其值会在 REST 调用中使用的枚举类型。   
 
@@ -54,11 +54,11 @@ ms.locfileid: "89256865"
 ## <a name="create-an-ondemand-streaming-locator"></a>创建 OnDemand 流式处理定位符
 要创建 OnDemand 流式处理定位符并获取 URL，需要执行以下操作：
 
-1. 如果内容已加密，则定义访问策略。
+1. 如果内容已加密，请定义访问策略。
 2. 创建 OnDemand 流式处理定位符。
-3. 如果想要流式处理，请获取资产中的流式处理清单文件 (.ism)。 
+3. 如果计划进行流式处理，请获取资产中的流式处理清单文件 (.ism)。 
    
-   如果想要渐进式下载，请获取资产中的 MP4 文件名。 
+   若计划进行渐进式下载，请获取资产中的 MP4 文件名。 
 4. 生成清单文件或 MP4 文件的 URL。 
 5. 无法使用包含写入或删除权限的 AccessPolicy 创建流式处理定位符。
 
@@ -148,7 +148,7 @@ Date: Wed, 18 Feb 2015 06:58:37 GMT
 ```
 
 ### <a name="build-streaming-urls"></a>生成流 URL
-使用创建定位符后返回的**路径**值生成平滑流式处理、HLS 和 MPEG DASH URL。 
+使用创建定位符后返回的 **路径** 值生成平滑流式处理、HLS 和 MPEG DASH URL。 
 
 平滑流式处理：**路径** + 清单文件名 +“/manifest”
 
@@ -171,7 +171,7 @@ DASH：**路径** + 清单文件名 +“/manifest(format=mpd-time-csf)”
 
 
 ### <a name="build-progressive-download-urls"></a>生成渐进式下载 URL
-使用创建定位符后返回的**路径**值生成渐进式下载 URL。   
+使用创建定位符后返回的 **路径** 值生成渐进式下载 URL。   
 
 URL：**路径** + 资产文件 mp4 名称
 

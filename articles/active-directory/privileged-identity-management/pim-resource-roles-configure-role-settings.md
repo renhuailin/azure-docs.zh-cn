@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ded81389fae5954c0e488f634945b4f1c1fe4c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40779e4517b610e52e41caacc46fc613b72023e5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96009035"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567129"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure 资源角色设置
 
@@ -32,7 +32,7 @@ ms.locfileid: "96009035"
 
 1. 使用具有[特权角色管理员](../roles/permissions-reference.md#privileged-role-administrator)角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。
+1. 打开“Azure AD Privileged Identity Management”。 
 
 1. 选择“Azure 资源”  。
 
@@ -78,14 +78,14 @@ ms.locfileid: "96009035"
 
 可以选择其中一个合格的  分配持续时间选项：
 
-| | |
+| | 说明 |
 | --- | --- |
 | **允许永久的合格分配** | 资源管理员可以分配永久的合格分配。 |
 | **使合格分配在以下时间后过期** | 资源管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
 
 并且，可以选择其中一个活动  分配持续时间选项：
 
-| | |
+| | 说明 |
 | --- | --- |
 | **允许永久的活动分配** | 资源管理员可以分配永久的活动分配。 |
 | **使活动分配在以下时间后过期** | 资源管理员可以要求所有活动分配都具有指定的开始和结束日期。 |
