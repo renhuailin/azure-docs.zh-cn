@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/29/2016
 ms.openlocfilehash: 8cc8a0b5ae0a83a152168b14a2c5577f8f7b48ab
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102564792"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除

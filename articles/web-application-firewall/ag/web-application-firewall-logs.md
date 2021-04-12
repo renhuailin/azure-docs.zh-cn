@@ -1,22 +1,22 @@
 ---
 title: 监视 Azure Web 应用程序防火墙的日志
-description: 了解如何启用和管理日志以及 Azure Web 应用程序防火墙
+description: 了解如何启用和管理 Azure Web 应用程序防火墙的日志
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 262987b5d5cdccec967193d855b17c5c74e16575
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.openlocfilehash: 116c12900f015c849c9492ed67bc11d116286c43
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563386"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611923"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的资源日志
 
-可以使用日志监视 Web 应用程序防火墙资源。 可以保存性能、访问权限和其他数据，也可以从资源中使用数据进行监视。
+可以使用日志监视 Web 应用程序防火墙资源。 可从资源保存或使用性能、访问及其他数据，以便进行监视。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -24,19 +24,19 @@ ms.locfileid: "94563386"
 
 可在 Azure 中使用不同类型的日志来对应用程序网关进行管理和故障排除。 可通过门户访问其中部分日志。 可从 Azure Blob 存储提取所有日志并在 [Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)、Excel 和 Power BI 等各种工具中查看。 可从以下列表了解有关不同类型日志的详细信息：
 
-* **活动日志** ：可以使用 [azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md) 查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
-* **访问资源日志** ：可以使用此日志来查看应用程序网关访问模式并分析重要信息。 这包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每300秒收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
-* **性能资源日志** ：可以使用此日志来查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。
-* **防火墙资源日志** ：可以使用此日志来查看通过使用 web 应用程序防火墙配置的应用程序网关的检测或阻止模式记录的请求。
+* **活动日志**：可使用 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)查看提交到 Azure 订阅的所有操作及其状态。 默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
+* **访问资源日志**：可以使用此日志查看应用程序网关访问模式并分析重要信息。 此日志包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。 应用程序网关实例由 instanceId 属性标识。
+* **性能资源日志**：可使用此日志查看应用程序网关实例的执行情况。 此日志会捕获每个实例的性能信息，包括服务的总请求数、吞吐量（以字节为单位）、失败请求计数、正常和不正常的后端实例计数。 每隔 60 秒会收集一次性能日志。 性能日志仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。
+* **防火墙资源日志**：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
 
 > [!NOTE]
 > 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要更好地了解两种模型，请参阅[了解 Resource Manager 部署和经典部署](../../azure-resource-manager/management/deployment-models.md)一文。
 
 可通过三种方式存储日志：
 
-* **存储帐户** ：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
-* **事件中心** ：若要集成其他安全信息和事件管理 (SIEM) 工具以获取资源警报，事件中心是很好的选择。
-* **Azure Monitor 日志** ：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
+* **存储帐户**：如果日志存储时间较长并且希望能根据需要随时查看，则最好使用存储帐户。
+* **事件中心**：若要集成其他安全信息和事件管理 (SIEM) 工具以获取资源警报，事件中心是很好的选择。
+* **Azure Monitor 日志**：Azure Monitor 日志最适合用于应用程序常规实时监视或查看趋势。
 
 ### <a name="enable-logging-through-powershell"></a>通过 PowerShell 启用日志记录
 
@@ -73,7 +73,7 @@ ms.locfileid: "94563386"
 
    ![启用诊断][1]
 
-3. " **诊断设置** " 页提供了资源日志的设置。 本示例使用 Log Analytics 存储日志。 你还可以使用事件中心和存储帐户来保存资源日志。
+3. “诊断设置”页提供用于资源日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存资源日志。
 
    ![启动配置过程][2]
 
@@ -94,7 +94,7 @@ ms.locfileid: "94563386"
 |clientPort     | 请求的起始端口。       |
 |httpMethod     | 请求所用的 HTTP 方法。       |
 |requestUri     | 所收到请求的 URI。        |
-|RequestQuery     | **Server-Routed** ：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID** ：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS** ：应用程序网关接收从后端的 HTTP 响应代码。       |
+|RequestQuery     | **Server-Routed**：请求已发送至后端池实例。</br>**X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 </br>**SERVER-STATUS**：应用程序网关接收从后端的 HTTP 响应代码。       |
 |UserAgent     | HTTP 请求标头中的用户代理。        |
 |httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
 |httpVersion     | 请求的 HTTP 版本。        |
@@ -146,7 +146,7 @@ ms.locfileid: "94563386"
 |timeTaken| 处理请求并发送响应所需的时长（以毫秒为单位）。 此时长按特定的时间间隔（从应用程序网关接收第一个 HTTP 请求字节到完成响应发送操作所需的时间）来计算。 必须注意，“所用时间”字段通常包括请求和响应数据包在网络上传输的时间。 |
 |sslEnabled| 与后端池的通信是否使用了 TLS。 有效值为 on 和 off。|
 |sslCipher| 用于 TLS 通信的密码套件（如果已启用 TLS）。|
-|sslProtocol| 如果) 启用了 TLS，则使用 TLS 协议 (。|
+|sslProtocol| 使用的 TLS 协议（如果已启用 TLS）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
 |serverResponseLatency| 后端服务器的响应延迟。|
@@ -232,7 +232,7 @@ ms.locfileid: "94563386"
 |ruleSetVersion     | 所使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
 |message     | 触发事件的用户友好消息。 详细信息部分提供了更多详细信息。        |
-|action     |  针对请求执行的操作。 可用值为“阻止”和“允许”。      |
+|action     |  针对请求执行的操作。 可用值为“已阻止”或“已允许”（对于自定义规则），“匹配”（当规则匹配请求的一部分时）和“已检测”和“已阻止”（两者均用于强制规则，具体取决于 WAF 是处于检测模式还是防护模式）。      |
 |site     | 为其生成日志的站点。 目前仅列出 Global，因为规则是全局性的。|
 |详细信息     | 触发事件的详细信息。        |
 |details.message     | 规则的说明。        |
@@ -242,7 +242,7 @@ ms.locfileid: "94563386"
 |hostname   | 应用程序网关的主机名或 IP 地址。    |
 |transactionId  | 给定事务的唯一 ID，它有助于对同一请求中发生的多个违反规则的情况进行分组。   |
 |policyId   | 与应用程序网关、侦听器或路径关联的防火墙策略的唯一 ID。   |
-|policyScope    | 策略值的位置可以是 "全局"、"侦听器" 或 "位置"。   |
+|policyScope    | 策略的位置 - 值可以是“Global”、“Listener”或“Location”。   |
 |policyScopeName   | 应用策略的对象的名称。    |
 
 ```json
@@ -284,8 +284,8 @@ ms.locfileid: "94563386"
 
 可使用以下任意方法查看和分析活动日志数据：
 
-* **Azure 工具** ：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
-* **Power BI** ：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](/power-bi/service-template-apps-overview)，可以分析数据。
+* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用 [Power BI 模板应用](/power-bi/service-template-apps-overview)，可以分析数据。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>查看并分析访问、性能和防火墙日志
 

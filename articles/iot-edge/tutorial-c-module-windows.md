@@ -9,18 +9,23 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f346e1b737075fa79dc1146152125a6c5a3ec1a
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8f019c8f3c560fdfdc0c8e5992389c253c9b0d74
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704669"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463368"
 ---
-# <a name="tutorial-develop-c-iot-edge-modules-for-windows-devices"></a>教程：开发适用于 Windows 设备的 C IoT Edge 模块
+# <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>教程：使用 Windows 容器开发 C IoT Edge 模块
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 本文介绍如何使用 Visual Studio 开发 C 代码并将其部署到运行 Azure IoT Edge 的 Windows 设备。
 
-可以使用 Azure IoT Edge 模块来部署直接在 IoT Edge 设备中实现业务逻辑的代码。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。 
+>[!NOTE]
+>IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。 请考虑使用或移动至 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 以在 Windows 设备上运行 IoT Edge。
+
+可以使用 Azure IoT Edge 模块来部署直接在 IoT Edge 设备中实现业务逻辑的代码。 本教程详细介绍如何创建并部署用于筛选传感器数据的 IoT Edge 模块。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -37,18 +42,18 @@ ms.locfileid: "97704669"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程演示如何使用 Visual Studio 2019 并采用 C 开发模块，以及如何将其部署到 Windows 设备。 若要开发适用于 Linux 设备的模块，请转到[开发适用于 Linux 设备的 C IoT Edge 模块](tutorial-csharp-module.md)。
+本教程演示如何使用 Visual Studio 2019 并采用 C 开发模块，以及如何将其部署到 Windows 设备。 如果要使用 Linux 容器开发模块，请改为参阅[使用 Linux 容器开发 C IoT Edge 模块](tutorial-csharp-module.md)。
 
-若要了解用于开发 C 模块并将其部署到 Windows 设备的选项，请参阅下表：
+若要了解使用 Windows 容器开发和部署 C 模块的选项，请参阅下表：
 
 | C | Visual&nbsp;Studio&nbsp;Code | Visual Studio 2017&nbsp;和&nbsp;2019 |
 | -- | ------------------ | :------------------: |
 | Windows AMD64 |  | ![在 Visual Studio 中开发 WinAMD64 的 C 模块](./media/tutorial-c-module/green-check.png) |
 
-在开始本教程之前，请按照[开发适用于 Windows 设备的 IoT Edge 模块](tutorial-develop-for-windows.md)教程中的说明设置开发环境。 完成后，你的环境将包含以下先决条件：
+在开始学习本教程之前，请按照[使用 Windows 容器开发 IoT Edge 模块](tutorial-develop-for-windows.md)教程中的说明设置开发环境。 完成后，你的环境会包含以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个[运行 Azure IoT Edge 的 Windows 设备](quickstart.md)。
+* 一个[运行 Azure IoT Edge 的 Windows 设备](how-to-install-iot-edge-windows-on-windows.md)。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Edge Tools](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) 扩展的 [Visual Studio 2019](/visualstudio/install/install-visual-studio)。
 * 配置为运行 Windows 容器的 [Docker Desktop](https://docs.docker.com/docker-for-windows/install/)。
@@ -131,7 +136,7 @@ ms.locfileid: "97704669"
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
-默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将消息转发到 IoT 中心之前，在边缘处理消息。 更新模块，以便分析每条消息中的温度数据，并且只有在温度超过特定阈值时才将消息发送到 IoT 中心。
+默认模块代码在输入队列上接收消息，并通过输出队列传递消息。 让我们添加一些额外的代码，以便模块在将消息转发到 IoT 中心之前，在边缘处理消息。 更新模块，以便模块分析每条消息中的温度数据，只有在温度超过特定阈值时才将消息发送到 IoT 中心。
 
 1. 在此场景中，来自传感器的数据采用 JSON 格式。 若要筛选 JSON 格式的消息，请导入用于 C 的 JSON 库。本教程使用 Parson。
 
@@ -181,7 +186,7 @@ ms.locfileid: "97704669"
 
    else 语句中的新代码行将一个新属性添加到消息，用于将消息标记为警报。 此代码将所有消息标记为警报，因为仅当报告了较高的温度时，我们要添加的功能才会向 IoT 中心发送消息。
 
-1. 找到 `InputQueue1Callback` 函数，并将整个函数替换为以下代码。 此函数实现实际的消息传送筛选器。 收到消息后，它会检查报告的温度是否超过阈值。 如果温度超出阈值，函数便会通过其输出队列转发消息。 如果温度未超出阈值，函数将忽略该消息。
+1. 找到 `InputQueue1Callback` 函数，并将整个函数替换为以下代码。 此函数实现实际的消息传送筛选器。 收到消息后，它会检查报告的温度是否超过阈值。 如果温度超出阈值，函数便会通过其输出队列转发消息。 如果温度未超出阈值，函数会忽略该消息。
 
     ```c
     static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
@@ -316,7 +321,7 @@ ms.locfileid: "97704669"
    }
    ```
 
-   ![显示要添加到部署模板的模块孪生的屏幕截图。](./media/tutorial-c-module-windows/module-twin.png)
+   ![屏幕截图，显示正在添加到部署模板的模块孪生。](./media/tutorial-c-module-windows/module-twin.png)
 
 1. 保存 *deployment.template.json* 文件。
 
@@ -336,13 +341,13 @@ ms.locfileid: "97704669"
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   你可能会收到一条安全警告，建议使用 `--password-stdin`。 虽然建议将其作为生产方案的最佳做法，但这不在本教程的讨论范围内。 有关详细信息，请参阅 [docker login 参考](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)。
+   你可能会收到一条建议使用 `--password-stdin` 的安全警告。 虽然建议将其作为生产方案的最佳做法，但这不在本教程的讨论范围内。 有关详细信息，请参阅 [docker login 参考](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)。
 
 ### <a name="build-and-push"></a>生成并推送
 
 开发计算机现在可以访问容器注册表，IoT Edge 设备也将拥有相应访问权限。 现在可将项目代码转换为容器映像。
 
-1. 在 Visual Studio 解决方案资源管理器中，右键单击要生成的项目名称。 默认名称是 AzureIotEdgeApp1。 对于本教程，我们选择名称 CTutorialApp ，由于你要构建 Windows 模块，因此扩展名应为 Windows.Amd64 。
+1. 在 Visual Studio 解决方案资源管理器中，右键单击要生成的项目的名称。 默认名称是 AzureIotEdgeApp1。 对于本教程，我们选择名称 CTutorialApp ，由于你要构建 Windows 模块，因此扩展名应为 Windows.Amd64 。
 
 1. 选择“生成并推送 IoT Edge 模块”。
 
@@ -379,7 +384,7 @@ ms.locfileid: "97704669"
 
 1. 在“操作”列表中，选择“开始监视内置事件终结点”。 
 
-1. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为 IoT Edge 设备必须接收其新部署并启动所有模块。 对 CModule 代码所做的更改必须等到计算机温度达到 25 度后才能发送消息。 该代码还会将消息类型“警报”添加到达到该温度阈值的任何消息。
+1. 查看抵达 IoT 中心的消息。 消息可能需要在一段时间后才会抵达，因为 IoT Edge 设备必须接收其新部署并启动所有模块。 对 CModule 代码所做的更改必须等到计算机温度达到 25 度，然后才能发送消息。 此代码还会将消息类型“警报”添加到指示已达到该温度阈值的任何消息。
 
    ![显示抵达 IoT 中心的消息的“输出”窗口的屏幕截图。](./media/tutorial-c-module-windows/view-d2c-message.png)
 

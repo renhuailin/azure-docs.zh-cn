@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-csharp
 ms.openlocfilehash: b0bdb3c09aead812e1c16f4d0d17aae58e141809
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99626787"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>教程：创建、调试、部署和升级多服务 Service Fabric 网格应用
@@ -194,7 +194,7 @@ public class ToDoList
 
 在“引用管理器”中，选中“模型”对应的复选框，然后单击“确定”。   
 
-### <a name="add-a-data-context"></a>添加数据上下文
+### <a name="add-a-data-context&quot;></a>添加数据上下文
 
 接下来创建一个数据上下文，用于协调为数据模型中的数据提供服务的活动。
 
@@ -206,7 +206,7 @@ public class ToDoList
 ```csharp
 public static class DataContext
 {
-    public static Model.ToDoList ToDoList { get; } = new Model.ToDoList("Azure learning List");
+    public static Model.ToDoList ToDoList { get; } = new Model.ToDoList(&quot;Azure learning List");
 
     static DataContext()
     {

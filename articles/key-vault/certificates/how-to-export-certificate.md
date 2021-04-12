@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3e5bcda0fb03af0637a309b4dbfd248b54f1a0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 116bafe2e26ca3af5b4ed68373d20e1e787502b7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587196"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729195"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>从 Azure Key Vault 中导出证书
 
@@ -102,7 +102,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 这条命令将导出包含私钥在内的整个证书链（即，与导入的证书链相同）。 证书受密码保护。
-有关 Get-AzKeyVaultCertificate 命令和参数的详细信息，请参阅 [Get-AzKeyVaultCertificate - 示例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)。
+有关 Get-AzKeyVaultCertificate 命令和参数的详细信息，请参阅 [Get-AzKeyVaultCertificate - 示例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate)。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 

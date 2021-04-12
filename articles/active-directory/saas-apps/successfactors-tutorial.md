@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
 ms.openlocfilehash: a903eb6000cdd5212ad358cae4952e27a4719070
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98725255"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SuccessFactors 集成
@@ -75,7 +75,7 @@ ms.locfileid: "98725255"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
     a. 在“登录 URL”文本框中，使用以下一种模式键入 URL：
 
