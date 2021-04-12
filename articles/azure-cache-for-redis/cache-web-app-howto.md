@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 19c54ad62e45ecf6e31b46d0291f61dca8e8d9b3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121127"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722457"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
 
@@ -29,29 +29,29 @@ ms.locfileid: "102121127"
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 打开 Visual Studio，然后选择“文件” >“新建” > “项目”。
+1. 打开 Visual Studio，然后选择“文件” > “新建” > “项目”。  
 
-2. 在“新建项目”对话框中执行以下步骤：
+2. 在“创建新项目”对话框中执行以下步骤：
 
     ![创建项目](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. 在“模板”列表中展开“Visual C#”节点。 
+    a. 在搜索框中，输入 _C# ASP.NET Web 应用程序_。
 
-    b. 选择“云”。
+    b. 选择“ASP.NET Web 应用程序(.NET Framework)”。
 
-    c. 选择“ASP.NET Web 应用程序”。
+    c. 选择“下一步”。
 
-    d. 验证是否已选择“.NET Framework 4.5.2”或更高版本。
+3. 在“项目名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
 
-    e. 在“名称”框中，为项目提供一个名称。 在此示例中，我们使用了 **ContosoTeamStats**。
+4. 验证是否已选择“.NET Framework 4.6.1”或更高版本。
 
-    f. 选择“确定” 。
+5. 选择“创建”  。
    
-3. 选择“MVC”作为项目类型。
+6. 选择“MVC”作为项目类型。
 
-4. 对于“身份验证”设置，请确保指定“不进行身份验证”。  默认的“身份验证”设置可能因 Visual Studio 版本而异。 若要对其进行更改，请选择“更改身份验证”，然后选择“不进行身份验证”。 
+7. 对于“身份验证”设置，请确保指定“不进行身份验证”。  默认的“身份验证”设置可能因 Visual Studio 版本而异。 若要对其进行更改，请选择“更改身份验证”，然后选择“不进行身份验证”。 
 
-5. 选择“确定”以创建项目。
+8. 选择“创建”来创建项目。
 
 ## <a name="create-a-cache"></a>创建缓存
 
@@ -125,21 +125,24 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
 1. 在“解决方案资源管理器”中展开“Controllers”文件夹，然后打开“HomeController.cs”文件。 
 
-2. 在文件的顶部添加以下两个 `using` 语句，以支持缓存客户端和应用设置。
+2. 在文件的顶部，添加以下 `using` 语句。
 
     ```csharp
-    using System.Configuration;
     using StackExchange.Redis;
+    using System.Configuration;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading;
     ```
 
-3. 将以下方法添加到 `HomeController` 类，使之支持针对新缓存运行某些命令的新 `RedisCache` 操作。
+3. 将以下成员添加到 `HomeController` 类，使之支持针对新缓存运行某些命令的新 `RedisCache` 操作。
 
     ```csharp
     public ActionResult RedisCache()
     {
         ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
-            
-        IDatabase cache = Connection.GetDatabase();
+
+        IDatabase cache = GetDatabase();
 
         // Perform cache operations using the cache object...
 
@@ -159,15 +162,15 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
         ViewBag.command4Result = cache.StringGet("Message").ToString();
 
         // Get the client list, useful to see if connection list is growing...
+        // Note that this requires allowAdmin=true in the connection string
         ViewBag.command5 = "CLIENT LIST";
         StringBuilder sb = new StringBuilder();
-
-        var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
-        var server = Connection.GetServer(endpoint.Host, endpoint.Port);
-        var clients = server.ClientList();
+        var endpoint = (System.Net.DnsEndPoint)GetEndPoints()[0];
+        IServer server = GetServer(endpoint.Host, endpoint.Port);
+        ClientInfo[] clients = server.ClientList();
 
         sb.AppendLine("Cache response :");
-        foreach (var client in clients)
+        foreach (ClientInfo client in clients)
         {
             sb.AppendLine(client.Raw);
         }
@@ -176,12 +179,26 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
         return View();
     }
-                
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-        return ConnectionMultiplexer.Connect(cacheConnection);
-    });
+
+    private static long lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
+    private static DateTimeOffset firstErrorTime = DateTimeOffset.MinValue;
+    private static DateTimeOffset previousErrorTime = DateTimeOffset.MinValue;
+
+    private static readonly object reconnectLock = new object();
+
+    // In general, let StackExchange.Redis handle most reconnects,
+    // so limit the frequency of how often ForceReconnect() will
+    // actually reconnect.
+    public static TimeSpan ReconnectMinFrequency => TimeSpan.FromSeconds(60);
+
+    // If errors continue for longer than the below threshold, then the
+    // multiplexer seems to not be reconnecting, so ForceReconnect() will
+    // re-create the multiplexer.
+    public static TimeSpan ReconnectErrorThreshold => TimeSpan.FromSeconds(30);
+
+    public static int RetryMaxAttempts => 5;
+
+    private static Lazy<ConnectionMultiplexer> lazyConnection = CreateConnection();
 
     public static ConnectionMultiplexer Connection
     {
@@ -191,6 +208,132 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
         }
     }
 
+    private static Lazy<ConnectionMultiplexer> CreateConnection()
+    {
+        return new Lazy<ConnectionMultiplexer>(() =>
+        {
+            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+            return ConnectionMultiplexer.Connect(cacheConnection);
+        });
+    }
+
+    private static void CloseConnection(Lazy<ConnectionMultiplexer> oldConnection)
+    {
+        if (oldConnection == null)
+            return;
+
+        try
+        {
+            oldConnection.Value.Close();
+        }
+        catch (Exception)
+        {
+            // Example error condition: if accessing oldConnection.Value causes a connection attempt and that fails.
+        }
+    }
+
+    /// <summary>
+    /// Force a new ConnectionMultiplexer to be created.
+    /// NOTES:
+    ///     1. Users of the ConnectionMultiplexer MUST handle ObjectDisposedExceptions, which can now happen as a result of calling ForceReconnect().
+    ///     2. Don't call ForceReconnect for Timeouts, just for RedisConnectionExceptions or SocketExceptions.
+    ///     3. Call this method every time you see a connection exception. The code will:
+    ///         a. wait to reconnect for at least the "ReconnectErrorThreshold" time of repeated errors before actually reconnecting
+    ///         b. not reconnect more frequently than configured in "ReconnectMinFrequency"
+    /// </summary>
+    public static void ForceReconnect()
+    {
+        var utcNow = DateTimeOffset.UtcNow;
+        long previousTicks = Interlocked.Read(ref lastReconnectTicks);
+        var previousReconnectTime = new DateTimeOffset(previousTicks, TimeSpan.Zero);
+        TimeSpan elapsedSinceLastReconnect = utcNow - previousReconnectTime;
+
+        // If multiple threads call ForceReconnect at the same time, we only want to honor one of them.
+        if (elapsedSinceLastReconnect < ReconnectMinFrequency)
+            return;
+
+        lock (reconnectLock)
+        {
+            utcNow = DateTimeOffset.UtcNow;
+            elapsedSinceLastReconnect = utcNow - previousReconnectTime;
+
+            if (firstErrorTime == DateTimeOffset.MinValue)
+            {
+                // We haven't seen an error since last reconnect, so set initial values.
+                firstErrorTime = utcNow;
+                previousErrorTime = utcNow;
+                return;
+            }
+
+            if (elapsedSinceLastReconnect < ReconnectMinFrequency)
+                return; // Some other thread made it through the check and the lock, so nothing to do.
+
+            TimeSpan elapsedSinceFirstError = utcNow - firstErrorTime;
+            TimeSpan elapsedSinceMostRecentError = utcNow - previousErrorTime;
+
+            bool shouldReconnect =
+                elapsedSinceFirstError >= ReconnectErrorThreshold // Make sure we gave the multiplexer enough time to reconnect on its own if it could.
+                && elapsedSinceMostRecentError <= ReconnectErrorThreshold; // Make sure we aren't working on stale data (e.g. if there was a gap in errors, don't reconnect yet).
+
+            // Update the previousErrorTime timestamp to be now (e.g. this reconnect request).
+            previousErrorTime = utcNow;
+
+            if (!shouldReconnect)
+                return;
+
+            firstErrorTime = DateTimeOffset.MinValue;
+            previousErrorTime = DateTimeOffset.MinValue;
+
+            Lazy<ConnectionMultiplexer> oldConnection = lazyConnection;
+            CloseConnection(oldConnection);
+            lazyConnection = CreateConnection();
+            Interlocked.Exchange(ref lastReconnectTicks, utcNow.UtcTicks);
+        }
+    }
+
+    // In real applications, consider using a framework such as
+    // Polly to make it easier to customize the retry approach.
+    private static T BasicRetry<T>(Func<T> func)
+    {
+        int reconnectRetry = 0;
+        int disposedRetry = 0;
+
+        while (true)
+        {
+            try
+            {
+                return func();
+            }
+            catch (Exception ex) when (ex is RedisConnectionException || ex is SocketException)
+            {
+                reconnectRetry++;
+                if (reconnectRetry > RetryMaxAttempts)
+                    throw;
+                ForceReconnect();
+            }
+            catch (ObjectDisposedException)
+            {
+                disposedRetry++;
+                if (disposedRetry > RetryMaxAttempts)
+                    throw;
+            }
+        }
+    }
+
+    public static IDatabase GetDatabase()
+    {
+        return BasicRetry(() => Connection.GetDatabase());
+    }
+
+    public static System.Net.EndPoint[] GetEndPoints()
+    {
+        return BasicRetry(() => Connection.GetEndPoints());
+    }
+
+    public static IServer GetServer(string host, int port)
+    {
+        return BasicRetry(() => Connection.GetServer(host, port));
+    }
     ```
 
 4. 在 **解决方案资源管理器** 中，展开“视图” > “共享”文件夹。  然后打开 *_Layout.cshtml* 文件。

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175022"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048096"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>注册并扫描 Teradata 源（预览版）
 
@@ -25,7 +25,7 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 ## <a name="prerequisites"></a>先决条件
 
 1.  设置最新的[自承载集成运行时](https://www.microsoft.com/download/details.aspx?id=39717)。
-    有关详细信息，请参阅[创建并配置自承载集成运行时](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。
+    有关详细信息，请参阅[创建并配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
 
 2.  确保在安装了自承载集成运行时的虚拟机上安装 [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)。
 
@@ -70,7 +70,7 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 
 若要创建并运行新扫描，请执行以下操作：
 
-1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](https://docs.microsoft.com/azure/purview/manage-integration-runtimes)介绍的步骤来设置自承载集成运行时
+1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
 2.  导航到源
 
@@ -90,7 +90,7 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
     -   在“用户名”输入字段中提供用于连接到数据库服务器的用户名
     -   将数据库服务器密码存储在密钥中。
 
-        若要进一步了解凭据，请参阅[此处](https://docs.microsoft.com/azure/purview/manage-credentials)的链接
+        若要进一步了解凭据，请参阅[此处](./manage-credentials.md)的链接
 
 6.  **架构**：列出要导入的架构的子集，以分号分隔的列表形式表示。 例如，schema1; schema2。 如果该列表为空，则会导入所有用户架构。 默认情况下，所有系统架构（例如 SysAdmin）和对象都将被忽略。 当列表为空时，将导入所有可用的架构。
 

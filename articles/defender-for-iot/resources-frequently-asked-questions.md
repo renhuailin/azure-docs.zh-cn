@@ -1,24 +1,14 @@
 ---
 title: Defender for IoT 常见问题解答
 description: 查找有关 Azure Defender for IoT 功能和服务的最常见问题的解答。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: MT
+ms.date: 03/02/2021
+ms.openlocfilehash: 0ce8ded3eea344d72679e0f8b805f45b00279b58
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247459"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778587"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender for IoT 常见问题解答
 
@@ -57,23 +47,17 @@ Azure Defender for IoT 传感器连接到 SPAN 端口或网络 TAP ，并立即�
 
 ## <a name="how-does-defender-for-iot-compare-to-the-competition"></a>Defender for IoT 与竞争对手相比如何？
 
-其他解决方案提供了一组允许客户创建自己的解决方案的功能，而 Defender for IoT 提供了独特的端到端 IoT 安全性解决方案，可全面查看所有相关 Azure 资源的安全性。 Azure 可实现快速部署并与 IoT 中心模块孪生完整集成，以便与现有设备管理工具轻松集成。
+Azure Defender for IoT 可跨所有 IoT/OT 设备提供全面的安全性。 对于最终用户组织，Azure Defender for IoT 提供无代理网络层安全性，可快速部署、使用各种专用的 OT 设备和旧版 Windows 系统，以及与 Azure Sentinel 和其他 SOC 工具互操作。 它可以部署在本地或与 Azure连接的环境中。 对于 IoT 设备生成器，Azure Defender for IoT 提供轻型代理，以将设备层安全性嵌入到新的 IoT/OT 计划中。
 
+## <a name="do-i-have-to-be-an-azure-customer"></a>是否必须成为 Azure 客户？
 
-## <a name="do-i-have-to-be-an-azure-iot-customer"></a>是否必须成为 Azure IoT 客户？
+否，对于 Azure Defender for IoT 的无代理版本，无需成为 Azure 客户。 但是，如果你想要将警报发送到 Azure Sentinel；预配网络传感器，并从云中监视其运行状况；从自动软件和威胁情报更新中获益，你将需要通过 Azure IoT 中心将传感器连接到 Azure。
 
-是的。 对于云连接的部署，Azure Defender for IoT 依赖于 Azure IoT 连接和基础结构。
+对于基于代理的 Azure Defender for IoT 版本，你必须是 Azure 客户。
+
 ## <a name="can-i-create-my-own-alerts"></a>我是否可以创建自己的警报？
 
-是的。 可以对预先确定的行为集（例如 IP 地址和开放端口）设置自定义警报。 请参阅[创建自定义警报](quickstart-create-custom-alerts.md)以详细了解自定义警报以及如何创建它们。
-
-## <a name="where-can-i-see-logs-can-i-customize-logs"></a>可以在何处查看日志？ 是否可以自定义日志？
-
-- 使用连接的 Log Analytics 工作区查看警报和建议。 在该工作区中配置存储大小和持续时间。
-
-- 安全代理中的原始数据也可以存储在 Log Analytics 帐户中。 更改此选项的配置之前，请考虑大小、持续时间、存储要求和关联成本。
-
-
+是的，你可以基于多个参数（包括 IP/MAC 地址、协议类型、类、服务、函数、命令等）以及有效负载中包含的自定义标记的值创建自定义警报。  请参阅[创建自定义警报](quickstart-create-custom-alerts.md)，详细了解自定义警报以及如何创建它们。
 
 ## <a name="what-happens-when-the-internet-connection-stops-working"></a>Internet 连接停止工作时会发生什么情况？
 
@@ -84,6 +68,6 @@ Azure Defender for IoT 传感器连接到 SPAN 端口或网络 TAP ，并立即�
 若要详细了解如何开始使用 Defender for IoT，请参阅以下文章：
 
 - 阅读 Defender for IoT [概述](overview.md)
-- 验证 [系统先决条件](quickstart-system-prerequisites.md)
-- 了解有关如何开始将[Defender 用于 IoT 的](getting-started.md)详细信息
+- 验证[系统先决条件](quickstart-system-prerequisites.md)
+- 详细了解有关如何[开始使用 Defender for IoT](getting-started.md)
 - 了解 [Defender for IoT 安全警报](concept-security-alerts.md)

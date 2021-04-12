@@ -1,30 +1,21 @@
 ---
-title: Azure RTO 安全模块 API
-description: Azure RTOS 安全模块的参考 API。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
+title: 适用于 Azure RTOS 的 Defender-IoT-micro-agent API
+description: 适用于 Azure RTOS 的 Defender-IoT-micro-agent 的参考 API。
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: cec28f9290808836ec2dfd334b23fe8c76df03fc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: e7000a7e6d8ba332432f1ececa12bd9543e9e4a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120056"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779386"
 ---
-# <a name="security-module-for-azure-rtos-api"></a>Azure RTO 安全模块 API 
+# <a name="defender-iot-micro-agent-for-azure-rtos-api-preview"></a>适用于 Azure RTOS 的 Defender-IoT-micro-agent API（预览版）
 
-此 API 仅适用于 Azure RTOS 安全模块。 有关其他资源，请参阅 [Azure RTOS 安全模块 GitHub 资源](https://github.com/azure-rtos/azure-iot-preview/releases)。 
+此 API 专门用于适用于 Azure RTOS 的 Defender-IoT-micro-agent。 有关其他资源，请参阅 [适用于 Azure RTOS 的 Defender-IoT-micro-agent GitHub 资源](https://github.com/azure-rtos/azure-iot-preview/releases)。 
 
-## <a name="enable-security-module-for-azure-rtos"></a>启用 Azure RTOS 安全模块
+## <a name="enable-defender-iot-micro-agent-for-azure-rtos"></a>启用适用于 Azure RTOS 的 Defender-IoT-micro-agent
 
 **nx_azure_iot_security_module_enable**
 
@@ -36,7 +27,7 @@ UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>说明
 
-此例程会启用 Azure IoT 安全模块子系统。 内部状态机管理安全事件的收集并将其发送到 Azure IoT 中心。 仅需要一个 NX_AZURE_IOT_SECURITY_MODULE 实例即可管理数据收集。
+此例程会启用适用于 Azure RTOS 的 Defender-IoT-micro-agent 子系统。 内部状态机管理安全事件的收集并将其发送到 Azure IoT 中心。 仅需要一个 NX_AZURE_IOT_SECURITY_MODULE 实例即可管理数据收集。
 
 ### <a name="parameters"></a>参数
 
@@ -56,7 +47,7 @@ UINT nx_azure_iot_security_module_enable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 线程
 
-## <a name="disable-azure-iot-security-module"></a>禁用 Azure IoT 安全模块
+## <a name="disable-azure-iot-defender-iot-micro-agent"></a>禁用适用于 Azure RTOS 的 Defender-IoT-micro-agent
 
 nx_azure_iot_security_module_disable
 
@@ -69,7 +60,7 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ### <a name="description"></a>说明
 
-此例程会禁用 Azure IoT 安全模块子系统。
+此例程会禁用适用于 Azure RTOS 的 Defender-IoT-micro-agent 子系统。
 
 ### <a name="parameters"></a>参数
 
@@ -92,6 +83,6 @@ UINT nx_azure_iot_security_module_disable(NX_AZURE_IOT *nx_azure_iot_ptr);
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何开始使用 Azure RTOS 安全模块，请参阅以下文章：
+若要详细了解如何开始使用 Azure RTOS Defender-IoT-micro-agent，请参阅以下文章：
 
-- 查看 Defender for IoT RTOS 安全模块[概述](iot-security-azure-rtos.md)。
+- 查看 Defender for IoT RTOS Defender-IoT-micro-agent [概述](iot-security-azure-rtos.md)。

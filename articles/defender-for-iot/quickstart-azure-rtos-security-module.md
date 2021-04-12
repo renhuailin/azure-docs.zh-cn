@@ -1,28 +1,19 @@
 ---
-title: 快速入门：配置并启用 Azure RTOS 安全模块
-description: 在本快速入门中，你将了解如何在 Azure IoT 中心为 Azure RTOS 服务加入和启用安全模块。
+title: 快速入门：为 Azure RTOS 配置和启用 Defender-IoT-micro-agent
+description: 了解如何在 Azure IoT 中心为 Azure RTOS 服务加入和启用 Defender-IoT-micro-agent。
 services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: db0fc0be3cd10bc57a46cb5a056ca5e057ae255a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447293"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781154"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>快速入门：Azure RTOS 安全模块 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>快速入门：适用于 Azure RTOS 的 Defender-IoT-micro-agent（预览版）
 
-本文介绍了入门的先决条件，并说明了如何在 IoT 中心为 Azure RTOS 服务启用安全模块。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
+本文介绍了入门的先决条件，并说明了如何在 IoT 中心为 Azure RTOS 服务启用 Defender-IoT-micro-agent。 如果当前没有 IoT 中心，请参阅[使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)以开始操作。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -32,7 +23,7 @@ ms.locfileid: "102447293"
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-从 [Azure RTOS 安全模块 GitHub 资源](https://github.com/azure-rtos/azure-iot-preview/releases)下载、编译和运行你选择的特定看板和工具（IAR、semi's IDE 或 PC）的其中一个 .zip 文件。
+从[适用于 Azure RTOS 的 Defender-IoT-micro-agent GitHub 资源](https://github.com/azure-rtos/azure-iot-preview/releases)下载、编译和运行你选择的特定版块和工具（IAR、semi 的 IDE 或 PC）的其中一个 .zip 文件。
 
 ### <a name="azure-resources"></a>Azure 资源
 
@@ -52,11 +43,11 @@ ms.locfileid: "102447293"
 
 连接凭据来自用户应用程序配置 HOST_NAME、DEVICE_ID 和 DEVICE_SYMMETRIC_KEY  。
 
-Azure RTOS 安全模块根据 MQTT 协议使用 Azure IoT 中间件连接。
+适用于 Azure RTOS 的 Defender-IoT-micro-agent 根据 MQTT 协议使用 Azure IoT 中间件连接。
 
 ## <a name="next-steps"></a>后续步骤
 
 转到下一篇文章，完成配置和自定义解决方案的操作。
 
 > [!div class="nextstepaction"]
-> [配置 Azure RTOS 安全模块](how-to-azure-rtos-security-module.md)
+> [配置和自定义适用于 Azure RTOS 的 Defender-IoT-micro-agent（预览版）](how-to-azure-rtos-security-module.md)

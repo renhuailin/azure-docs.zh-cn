@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826546"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103419280"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -107,7 +107,7 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 以最终用户身份向应用程序授予许可时，应用程序可以访问你的电子邮件地址或你的用户名，具体取决于标识提供程序。 提供此信息后，应用程序的所有者可决定如何管理个人身份信息。
 
-最终用户需要联系各个 web 应用的管理员，以从他们的系统中吊销此信息。
+最终用户需要联系各个 Web 应用的管理员，才能从他们的系统中撤消此信息。
 
 若要从 Azure 静态 Web 应用平台中删除个人身份信息，并阻止平台提供有关将来请求的此信息，请使用 URL 提交请求：
 
@@ -145,19 +145,18 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 如果选择支持多个提供程序，则需要向网站上的每个提供程序提供特定于提供程序的链接。
 
-可以使用[路由规则](routes.md)将默认提供程序映射到类似于 /login 的友好路由。
+可以使用[路由规则](./configuration.md#routes)将默认提供程序映射到类似于 /login 的友好路由。
 
 ```json
 {
   "route": "/login",
-  "serve": "/.auth/login/github"
+  "redirect": "/.auth/login/github"
 }
 ```
 
 ### <a name="post-login-redirect"></a>登录后重定向
 
 如果希望用户登录后返回到特定页面，请在 `post_login_redirect_uri` 查询字符串参数中提供 URL。
-
 
 ## <a name="logout"></a>Logout
 
@@ -167,12 +166,12 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 <a href="/.auth/logout">Log out</a>
 ```
 
-可以使用[路由规则](routes.md)映射类似于 /logout 的友好路由。
+可以使用[路由规则](./configuration.md#routes)映射类似于 /logout 的友好路由。
 
 ```json
 {
   "route": "/logout",
-  "serve": "/.auth/logout"
+  "redirect": "/.auth/logout"
 }
 ```
 
@@ -195,7 +194,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 ## <a name="restrictions"></a>限制
 
-有关一般限制和限制，请参阅 [配额一文](quotas.md) 。
+有关一般限制和局限性，请参阅[有关配额的文章](quotas.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

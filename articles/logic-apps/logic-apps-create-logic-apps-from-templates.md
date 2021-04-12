@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593098"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
@@ -44,7 +44,7 @@ ms.locfileid: "100593098"
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 设置 | “值” | 说明 | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **名称** | your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
@@ -97,9 +97,9 @@ ms.locfileid: "100593098"
    > [!NOTE] 
    > 许多模板包括已预先安装了所需属性的连接器。 不过，某些模板仍然要求提供值，才能正确部署逻辑应用。 如果在完成缺失的属性字段前部署应用，会收到错误消息。 
 
-## <a name="update-logic-apps-with-templates"></a>使用模板更新逻辑应用
+## <a name="update-logic-apps-with-templates&quot;></a>使用模板更新逻辑应用
 
-1. 在 [Azure 门户](https://portal.azure.com "Azure 门户")的逻辑应用设计器中，找到并打开你的逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com &quot;Azure 门户")的逻辑应用设计器中，找到并打开你的逻辑应用。
 
 2. 在设计器工具栏上，选择“模板”。 此操作会放弃所有未保存更改，因此，会出现警告消息，以便确认是否继续。 若确认执行请求，请选择“确定”。 例如：
 

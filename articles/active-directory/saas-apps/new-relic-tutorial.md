@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/02/2021
 ms.author: jeedes
 ms.openlocfilehash: a2c149bfdf79102779abf7544fed9fb78796a50e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101649938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>教程：Azure Active Directory 与 New Relic by Account 的单一登录 (SSO) 集成
@@ -89,7 +89,7 @@ ms.locfileid: "101649938"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -101,7 +101,7 @@ ms.locfileid: "101649938"
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，你将通过授予 B.Simon 访问 New Relic by Account 的权限，使其能够使用 Azure 单一登录。
 
@@ -113,13 +113,13 @@ ms.locfileid: "101649938"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
-## <a name="configure-new-relic-by-account-sso"></a>配置 New Relic by Account SSO
+## <a name=&quot;configure-new-relic-by-account-sso&quot;></a>配置 New Relic by Account SSO
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 New Relic by Account  公司站点。
 
 2. 在顶部菜单中，单击“帐户设置”。 
    
-    ![屏幕截图显示“欢迎”页面，其中选择了“帐户设置”。](./media/new-relic-tutorial/settings.png "帐户设置")
+    ![屏幕截图显示“欢迎”页面，其中选择了“帐户设置”。](./media/new-relic-tutorial/settings.png &quot;帐户设置")
 
 3. 单击“安全性和身份验证”选项卡，并单击“单一登录”选项卡。  
    

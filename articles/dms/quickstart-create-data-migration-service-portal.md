@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.openlocfilehash: 6232c842514c10a5440e574621ca74e2f4867d86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8a500104a0273b9e131815c4dc832bd33729cd51
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99981599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566585"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -90,6 +90,6 @@ ms.locfileid: "99981599"
 ## <a name="next-steps"></a>后续步骤
 
 * [将 SQL Server 脱机迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)
-* [将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)
+* [将 SQL Server 联机迁移到 Azure SQL 数据库](./tutorial-sql-server-to-azure-sql.md)
 * [将 SQL Server 脱机迁移到 Azure SQL 托管实例](tutorial-sql-server-to-managed-instance.md)
 * [将 SQL Server 联机迁移到 Azure SQL 托管实例](tutorial-sql-server-managed-instance-online.md)

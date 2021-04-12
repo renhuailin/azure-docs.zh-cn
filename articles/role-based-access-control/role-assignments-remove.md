@@ -1,6 +1,6 @@
 ---
-title: 删除 Azure 角色分配-Azure RBAC
-description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 删除用户、组、服务主体或托管标识对 Azure 资源的访问权限。
+title: 删除 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 为用户、组、服务主体或托管标识删除对 Azure 资源的访问权限。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -10,21 +10,21 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.openlocfilehash: 7a3e4853d6dffa7eb2c5cf80846f6f1bd6beba03
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100561282"
 ---
 # <a name="remove-azure-role-assignments"></a>删除 Azure 角色分配
 
-[Azure 基于角色的访问控制 (Azure RBAC)](../../articles/role-based-access-control/overview.md) 是用于管理 Azure 资源访问权限的授权系统。 若要删除对 Azure 资源的访问权限，请删除角色分配。 本文介绍如何使用 Azure 门户、Azure PowerShell、Azure CLI 和 REST API 删除角色分配。
+[Azure 基于角色的访问控制 (Azure RBAC)](../../articles/role-based-access-control/overview.md) 是用于管理 Azure 资源访问权限的授权系统。 若要从 Azure 资源删除访问权限，请删除角色分配。 本文介绍如何使用 Azure 门户、Azure PowerShell、Azure CLI 和 REST API 删除角色分配。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要删除角色分配，必须具备：
+若要删除角色分配，必须拥有以下权限：
 
-- `Microsoft.Authorization/roleAssignments/delete`权限，如 "[用户访问管理员](../../articles/role-based-access-control/built-in-roles.md#user-access-administrator)" 或 "[所有者](../../articles/role-based-access-control/built-in-roles.md#owner)"
+- `Microsoft.Authorization/roleAssignments/delete` 权限，例如[用户访问管理员](../../articles/role-based-access-control/built-in-roles.md#user-access-administrator)或[所有者](../../articles/role-based-access-control/built-in-roles.md#owner)
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -48,7 +48,7 @@ ms.locfileid: "100561282"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-在 Azure PowerShell 中，将使用 [AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)删除角色分配。
+在 Azure PowerShell 中，使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 删除角色分配。
 
 以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配：
 
@@ -78,7 +78,7 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com `
 
 ## <a name="azure-cli"></a>Azure CLI
 
-在 Azure CLI 中，将使用 [az role 赋值 delete](/cli/azure/role/assignment#az_role_assignment_delete)删除角色分配。
+在 Azure CLI 中，使用 [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) 删除角色分配。
 
 以下示例在 *pharma-sales* 资源组上从 *patlong\@contoso.com* 用户删除“虚拟机参与者”角色分配：
 
@@ -106,7 +106,7 @@ az role assignment delete --assignee "alain@example.com" \
 
 ## <a name="rest-api"></a>REST API
 
-在 REST API 中，通过使用 [角色分配-Delete](/rest/api/authorization/roleassignments/delete)删除角色分配。
+在 REST API 中，使用[角色分配 - 删除](/rest/api/authorization/roleassignments/delete)删除角色分配。
 
 1. 获取角色分配标识符 (GUID)。 首次创建角色分配时将返回此标识符，也可以通过列出角色分配来获取它。
 
@@ -155,7 +155,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/mi
 
 ## <a name="arm-template"></a>ARM 模板
 
-无法使用 Azure 资源管理器模板 (ARM 模板) 删除角色分配。 若要删除角色分配，必须使用其他工具，如 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。
+无法使用 Azure 资源管理器模板（ARM 模板）删除角色分配。 若要删除角色分配，必须使用其他工具，如 Azure 门户、Azure PowerShell、Azure CLI 或 REST API。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 29384457f946eff5708c319e14161d670adf6ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98729867"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563831"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clever 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98729867"
 * 让用户使用其 Azure AD 帐户自动登录到 Clever。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -118,7 +118,7 @@ ms.locfileid: "98729867"
 
 ## <a name="configure-clever-sso"></a>配置 Clever SSO
 
-按照[链接](https://support.clever.com/hc/articles/205889768-Single-Sign-On-SSO-Log-in-with-Office-365-Azure-)中提供的说明在 Clever 端配置单一登录。
+按照[链接](https://support.clever.com/hc/s/articles/205889768)中提供的说明在 Clever 端配置单一登录。
 
 ### <a name="create-clever-test-user"></a>创建 Clever 测试用户
 
