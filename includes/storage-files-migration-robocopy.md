@@ -1,18 +1,19 @@
 ---
-title: 将文件夹结构映射到 Azure 文件同步拓扑
-description: 将现有文件和文件夹结构映射到 Azure 文件共享，以与 Azure 文件同步一起使用。跨迁移文档共享的通用文本块。
+title: include 文件
+description: include 文件
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: cde85e245c8cc6ae8c55b24270f125bacc111737
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.custom: include file
+ms.openlocfilehash: 6158964c04a689ed421f216c2910f47d7a39e2be
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547538"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081020"
 ---
 ```console
 Robocopy /MT:16 /NP /NFL /NDL /B /MIR /IT /COPY:DATSO /COPY:DATSO /DCOPY:DAT /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 

@@ -28,14 +28,14 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 以下项目是完成本教程所需具备的条件：
 
 - 安装 Visual Studio Code 或 Visual Studio。
-- [创建媒体服务帐户](./create-account-howto.md)。<br/>请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
+- [创建媒体服务帐户](./account-create-how-to.md)。<br/>请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
 - 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。 
 - 一个用于广播事件的相机或设备（例如便携式计算机）。
-- 使用 RTMP 协议对照相机流进行编码并将其发送到媒体服务实时流服务的本地软件编码器，请参阅[推荐的本地实时编码器](recommended-on-premises-live-encoders.md)。 流必须为 **RTMP** 或“平滑流式处理”  格式。  
+- 使用 RTMP 协议对照相机流进行编码并将其发送到媒体服务实时流服务的本地软件编码器，请参阅[推荐的本地实时编码器](encode-recommended-on-premises-live-encoders.md)。 流必须为 **RTMP** 或“平滑流式处理”  格式。  
 - 对于本示例，建议从软件编码器（如免费的 [Open Broadcast Software OBS Studio](https://obsproject.com/download)）开始，以便于上手。 
 
 > [!TIP]
-> 确保在继续操作之前查看[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。 
+> 确保在继续操作之前查看[使用媒体服务 v3 的实时传送视频流](stream-live-streaming-concept.md)。 
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
@@ -70,15 +70,15 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 
 ### <a name="create-a-live-event"></a>创建直播活动
 
-本部分介绍如何创建 **直通** 类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的其他可用类型的详细信息，请参阅[实时事件类型](live-events-outputs-concept.md#live-event-types)。 除了直通，还可以使用实时转码直播活动进行 720P 或 1080P 自适应比特率云编码。 
+本部分介绍如何创建 **直通** 类型的实时事件（LiveEventEncodingType 设置为 None）。 有关实时事件的其他可用类型的详细信息，请参阅[实时事件类型](live-event-outputs-concept.md#live-event-types)。 除了直通，还可以使用实时转码直播活动进行 720P 或 1080P 自适应比特率云编码。 
  
 可能需要在创建直播活动时指定的一些事项包括：
 
 * 直播活动的引入协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行直播活动或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，请为每个流式处理协议创建单独的直播活动。  
 * 对引入和预览的 IP 限制。 可定义允许向该直播活动引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有四个数字或 CIDR 地址范围的 IpV4 地址。
-* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则直播活动会在创建后启动。 这意味着，只要直播活动开始运行，就会开始计费。 必须显式对直播活动资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
+* 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则直播活动会在创建后启动。 这意味着，只要直播活动开始运行，就会开始计费。 必须显式对直播活动资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing-concept.md)。
 此外还有备用模式，可用于以较低成本“已分配”状态启动直播活动，使其更快地移动到“正在运行”状态。 对于需要快速向流式处理器分发通道的热池等情况，这非常有用。
-* 要使引入 URL 具有预测性且易于在基于硬件的实时编码器中维护，请将“useStaticHostname”属性设置为 true。 有关详细信息，请参阅[实时事件引入 URL](live-events-outputs-concept.md#live-event-ingest-urls)。
+* 要使引入 URL 具有预测性且易于在基于硬件的实时编码器中维护，请将“useStaticHostname”属性设置为 true。 有关详细信息，请参阅[实时事件引入 URL](live-event-outputs-concept.md#live-event-ingest-urls)。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Live/LiveEventWithDVR/Program.cs#CreateLiveEvent)]
 
@@ -128,7 +128,7 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 #### <a name="create-a-streaming-locator"></a>创建流定位符
 
 > [!NOTE]
-> 创建媒体服务帐户后，一个处于“已停止”  状态的“默认”  流式处理终结点会添加到帐户。 若要开始流式传输内容并利用[动态打包](dynamic-packaging-overview.md)和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态  。
+> 创建媒体服务帐户后，一个处于“已停止”  状态的“默认”  流式处理终结点会添加到帐户。 若要开始流式传输内容并利用[动态打包](encode-dynamic-packaging-concept.md)和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态  。
 
 如果已使用流定位符发布了资产，则直播活动（长达 DVR 窗口长度）将继续可见，直到流定位符过期或被删除（以先发生为准）。 通过这种方式，可以使虚拟“磁带”录制可供观众进行实时和点播观看。 录制完成后（当实时输出被删除时），同一 URL 可用于观看直播活动、DVR 窗口或点播资产。
 
