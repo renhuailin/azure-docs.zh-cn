@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: 920f7912a1289fe92618d893b94943784e4a9a3a
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520721"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 的启用了 Arc 的 Kubernetes 群集上部署具有 Redis 的 PHP `Guestbook` 无状态应用程序
@@ -51,7 +51,7 @@ ms.locfileid: "102520721"
 
 1. 你有一个将用于访问 Azure Stack Edge Pro 设备的 Windows 客户端系统。
   
-    - 客户端运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版 Windows PowerShell，请转到[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
+    - 客户端在运行 Windows PowerShell 5.0 或更高版本。 若要下载最新版 Windows PowerShell，请参阅[安装 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell)。
     
     - 也可使用任何其他客户端，只要安装了[受支持的操作系统](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)即可。 本文介绍使用 Windows 客户端时的过程。 
     

@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66b004a0371b76f82d525972feefab9c89efb2d
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3fad2c683890776908afbfbf15ee91d46d564783
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98742040"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103466756"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
@@ -60,7 +60,7 @@ Azure AD 内置和自定义角色的运作思路类似于 [Azure 基于角色的
 - 角色定义
 - 资源范围
 
-可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](custom-create.md)。 还可以[查看自定义角色的分配](custom-view-assignments.md#view-the-assignments-of-a-role)。
+可以使用 Azure 门户、Azure AD PowerShell 或图形 API 创建[角色分配](custom-create.md)。 还可以[列出角色分配](view-assignments.md)。
 
 下图显示了角色分配的示例。 在此示例中，在 Contoso Widget Builder 应用注册范围为 Chris Green 分配了“应用注册管理员”自定义角色。 此分配仅授予 Chris 对此特定应用注册的“应用注册管理员”角色权限。
 
@@ -77,7 +77,7 @@ Azure AD 内置和自定义角色的运作思路类似于 [Azure 基于角色的
 - Microsoft 创建的内置角色（无法更改）。
 - 由组织创建和管理的自定义角色。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 
 范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，如果要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
 
@@ -89,4 +89,4 @@ Azure AD 内置和自定义角色的运作思路类似于 [Azure 基于角色的
 
 - [了解 Azure AD 角色](concept-understand-roles.md)
 - 使用 [Azure 门户、Azure AD PowerShell 或图形 API](custom-create.md) 创建自定义角色分配
-- [查看自定义角色的分配](custom-view-assignments.md)
+- [列出角色分配](view-assignments.md)

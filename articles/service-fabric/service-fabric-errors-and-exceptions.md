@@ -1,16 +1,14 @@
 ---
 title: 引发的常见 FabricClient 异常
 description: 描述在执行应用程序和群集管理操作时，FabricClient API 可能会引发的常见异常和错误。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: gwallace
-ms.openlocfilehash: 7f3c3e072a3a2e4f7723f84b2c70ba0d0ddb9d03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2b5418729855ce366512d9718e22124e5cd837a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86258845"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627704"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>使用 FabricClient API 时常见的异常和错误
 借助 [FabricClient](/dotnet/api/system.fabric.fabricclient) API，群集和应用程序管理员可以对 Service Fabric 应用程序、服务或群集执行管理任务。 例如，部署、升级和删除应用程序、检查群集的运行状况或测试服务。 应用程序开发人员和群集管理员可以使用 FabricClient API 来开发用于管理 Service Fabric 群集和应用程序的工具。

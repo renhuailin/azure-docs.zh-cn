@@ -4,15 +4,15 @@ description: 本文介绍如何排查 Azure VM 上的更改问题。
 services: automation
 ms.subservice: change-inventory-management
 keywords: 更改, 跟踪, 更改跟踪, 清单, 自动化
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587933"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775794"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>排查 Azure VM 上的更改问题
 
@@ -95,7 +95,7 @@ ConfigurationChange
 
 1. 在“添加要进行更改跟踪的 Windows 注册表”页面上，输入要跟踪的项的信息，然后单击“保存”。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 确定是否应用了设置        |
     |项名称     | 要跟踪的文件的友好名称        |
@@ -108,7 +108,7 @@ ConfigurationChange
 
 1. 在“添加要进行更改跟踪的 Windows 文件”页面上，输入要跟踪的文件或目录的信息，然后单击“保存”。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 确定是否应用了设置        |
     |项名称     | 要跟踪的文件的友好名称        |
@@ -123,7 +123,7 @@ ConfigurationChange
 
 1. 在“添加要进行更改跟踪的 Linux 文件”页面上，输入要跟踪的文件或目录的信息，然后单击“保存”。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 确定是否应用了设置        |
     |项名称     | 要跟踪的文件的友好名称        |
@@ -212,11 +212,11 @@ ConfigurationChange
 
 16. 对于“详细信息”，选择“编辑详细信息” 。
 
-    ![添加操作组](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="使用情况和预估成本。" lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. 在“电子邮件/短信/推送/语音”窗格中，输入名称，选中“电子邮件”复选框，然后输入有效的电子邮件地址。 完成后，在窗格中单击“确定”，然后在“添加操作组”页上单击“确定” 。
+17. 在“电子邮件/短信/推送/语音”窗格中，输入名称，选中“电子邮件”复选框，然后输入有效的电子邮件地址。  完成后，在窗格中单击“确定”，然后在“添加操作组”页上单击“确定”  。
 
-18. 若要自定义警报电子邮件的主题，请选择“自定义操作”。 
+18. 若要自定义警报电子邮件的主题，请选择“自定义操作”。
 
 19. 对于“创建规则”，选择“电子邮件主题”，然后选择“创建警报规则”。 此警报会指出更新部署成功的时间以及哪些计算机是该更新部署运行的一部分。 下图是 W3SVC 服务停止时收到的示例电子邮件。
 

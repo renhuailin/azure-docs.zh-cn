@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
 ms.openlocfilehash: 32c331b10fcc73b5449588595370f8f69ef9893c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104872041"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中创建端到端的数据管道以派生销售见解
@@ -256,7 +256,7 @@ cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 1. 在“HDInsight Interactive Query”对话框中执行以下操作：
     1. 在“服务器”文本框中，以 `https://LLAPCLUSTERNAME.azurehdinsight.net` 格式输入 LLAP 群集的名称。
     1. 在“数据库”文本框中，输入 `default`。
-    1. 选择“确定”  。
+    1. 选择“确定” 。
 
 1. 在“AzureHive”对话框中执行以下操作：
     1. 在“用户名”文本框中，输入 `admin`。

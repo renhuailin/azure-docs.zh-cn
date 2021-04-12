@@ -12,10 +12,10 @@ ms.date: 02/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl
 ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520500"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
@@ -108,7 +108,7 @@ compute_target = ws.compute_targets[compute_name]
 
 ### <a name="configure-the-training-run"></a>配置训练运行
 
-AutoMLStep 在作业提交期间自动配置其依赖项。 通过创建和配置 `RunConfiguration` 对象来设置运行时上下文。 在此处设置计算目标。
+AutoMLStep 在作业提交期间自动配置其依赖项。 通过创建和配置 `RunConfiguration` 对象来设置运行时上下文。 这里我们设置了计算目标。
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -220,7 +220,7 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值是写入 CSV 文件的文件路径。 
+`prepped_data_path` 对象的类型为 `OutputFileDatasetConfig`，它指向一个目录。  请注意，它是在 `arguments` 参数中指定的。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值是写入 CSV 文件的目录路径。 
 
 ## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 

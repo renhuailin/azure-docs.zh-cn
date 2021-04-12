@@ -4,10 +4,10 @@ description: 在本快速入门中，你将使用 REST API 创建管理组，将
 ms.date: 02/05/2021
 ms.topic: quickstart
 ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99592494"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>快速入门：使用 REST API 创建管理组
