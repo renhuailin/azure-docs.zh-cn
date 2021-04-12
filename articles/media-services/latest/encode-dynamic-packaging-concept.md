@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: ba50fbd28ac5d5f66533eec76b51dfb3b8c0cf5d
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121228"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492301"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
@@ -22,7 +22,7 @@ ms.locfileid: "106121228"
 
 Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。
 
-在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)（源）表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点的标准功能。
+在媒体服务中，[流式处理终结点](stream-streaming-endpoint-concept.md)（源）表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点的标准功能。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>准备源文件供传输
 
@@ -33,7 +33,7 @@ Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件
 > [!TIP]
 > 获取 MP4 和流式处理配置文件的一种方式是[使用媒体服务对夹层文件进行编码](#encode-to-adaptive-bitrate-mp4s)。 
 
-要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
+要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](stream-streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
 
 因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
@@ -81,14 +81,14 @@ Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件
 1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。
 
     如果已经有编码文件，只是想要复制并流式传输文件，请使用：[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API。 将创建一个带有流式处理清单（.ism 文件）的新 MP4 文件。
-1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建[流式处理定位符](streaming-locators-concept.md)进行发布。
+1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建[流式处理定位符](stream-streaming-locators-concept.md)进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 流式处理终结点将负责为所有这些不同格式提供正确的清单和请求。
     
 下图显示了使用动态打包进行按需流式处理的工作流。
 
 ![使用动态打包进行按需流式处理的工作流关系图](./media/encode-dynamic-packaging-concept/media-services-dynamic-packaging.svg)
 
-上图中显示了下载路径，这只是为了向你展示可通过流式处理终结点（源）（在流式处理定位符上指定可下载的[流式处理策略](streaming-policy-concept.md)）直接下载 MP4 文件。<br/>动态包生成工具不会更改文件。 如果希望绕过流式处理终结点（来源）功能，则可以选择使用 Azure blob 存储 API 直接访问 MP4 以便进行渐进式下载。 
+上图中显示了下载路径，这只是为了向你展示可通过流式处理终结点（源）（在流式处理定位符上指定可下载的[流式处理策略](stream-streaming-policy-concept.md)）直接下载 MP4 文件。<br/>动态包生成工具不会更改文件。 如果希望绕过流式处理终结点（来源）功能，则可以选择使用 Azure blob 存储 API 直接访问 MP4 以便进行渐进式下载。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>编码为自适应比特率 MP4
 
@@ -96,7 +96,7 @@ Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件
 
 * [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)。
 * [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)。
-* [构建自定义预设，以确定特定方案或设备要求](encode-custom-presets-how-to.md)。
+* [构建自定义预设，以确定特定方案或设备要求](transform-custom-presets-how-to.md)。
 
 请参阅标准编码器[格式和编解码器](encode-media-encoder-standard-formats-reference.md)的列表。
 

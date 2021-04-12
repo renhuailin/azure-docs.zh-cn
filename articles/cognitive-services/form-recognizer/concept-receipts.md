@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467351"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285291"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>表单识别器预生成收据模型
 
-Azure 表单识别器可以使用其预生成的收据模型分析和提取销售收据中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/concept-recognizing-text.md) 功能与深度学习模型，可从英文书写的收据中提取重要信息。
+Azure 表单识别器可以使用其预生成的收据模型分析和提取销售收据中的信息。 它结合了强大的[光学字符识别 (OCR)](../computer-vision/overview-ocr.md) 功能与深度学习模型，可从英文书写的收据中提取重要信息。
 
 ## <a name="understanding-receipts"></a>了解收据
 
@@ -44,15 +44,15 @@ Azure 表单识别器可以使用其预生成的收据模型分析和提取销�
 | MerchantAddress | 字符串 | 列出的商家地址 | 123 Main St Redmond WA 98052 |  |
 | TransactionDate | date | 开具收据的日期 | 2019 年 6 月 6 日 | 2019-06-26  |
 | TransactionTime | time | 开具收据的时间 | 下午 4:49 | 16:49:00  |
-| 总计 | number | 全部交易收据总额 | 14.34 美元 | 14.34 |
-| 小计 | number | 收据小计，通常在纳税前 | 12.34 美元 | 12.34 |
-| 税款 | number | 收据上的税金，通常为销售税或等价税款 | $2.00 | 2.00 |
-| 提示 | number | 买家提供的小费 | 1\.00 美元 | 1.00 |
+| 总计 | 数字 | 全部交易收据总额 | 14.34 美元 | 14.34 |
+| 小计 | 数字 | 收据小计，通常在纳税前 | 12.34 美元 | 12.34 |
+| 税款 | 数字 | 收据上的税金，通常为销售税或等价税款 | $2.00 | 2.00 |
+| 提示 | 数字 | 买家提供的小费 | 1\.00 美元 | 1.00 |
 | 项 | 对象数组 | 提取的行项，其中包含名称、数量、单价和提取的总价格 | |
 | 名称 | 字符串 | 项名称 | Surface Pro 6 | |
-| 数量 | number | 每个项的数量 | 1 | |
-| 价格 | number | 每个项单位的单独价格 | 999.00 美元 | 999.00 |
-| 总价 | number | 行项总价 | 999.00 美元 | 999.00 |
+| 数量 | 数字 | 每个项的数量 | 1 | |
+| 价格 | 数字 | 每个项单位的单独价格 | 999.00 美元 | 999.00 |
+| 总价 | 数字 | 行项总价 | 999.00 美元 | 999.00 |
 
 ### <a name="additional-features"></a>其他功能
 

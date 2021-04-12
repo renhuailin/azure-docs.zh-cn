@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503601"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062499"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -98,30 +98,30 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 请查看下表，了解有关支持的系列和限制的详细信息。
 
-| **支持的 VM 系列**  | **限制** |
-|------------|------------|
-| D | 无。 |
-| DDSv4 | 无。 |
-| Dv2 | 无。 |  
-| Dv3 | 无。|
-| DSv2 | 无。 | 
-| DSv3 | 无。|
-| EAv4 | 无。 |
-| Ev3 | 无。 |
-| FSv2 | 无。 | 
-| H | 无。 |
-| HB | 需要审批。 |
-| HBv2 | 需要审批。 |  
-| HCS | 需要审批。 |  
-| M | 需要审批。 |
-| NC | 无。 |  
-| NC 促销 | 无。 |
-| NCsv2 | 需要审批。 |
-| NCsv3 | 需要审批。 |  
-| NDs | 需要审批。 |
-| NDv2 | 需要审批。 |
-| NV | 无。 |
-| NVv3 | 需要审批。 | 
+| **支持的 VM 系列**  | **限制** | **类别** | **支持的服务** |
+|------------|------------|------------|------------|
+| D | 无。 | 常规用途 | 计算群集和实例 |
+| DDSv4 | 无。 | 常规用途 | 计算群集和实例 |
+| Dv2 | 无。 | 常规用途 | 计算群集和实例 |
+| Dv3 | 无。| 常规用途 | 计算群集和实例 |
+| DSv2 | 无。 | 常规用途 | 计算群集和实例 |
+| DSv3 | 无。| 常规用途 | 计算群集和实例 |
+| EAv4 | 无。 | 内存优化 | 计算群集和实例 |
+| Ev3 | 无。 | 内存优化 | 计算群集和实例 |
+| FSv2 | 无。 | 计算优化 | 计算群集和实例 |
+| H | 无。 | 高性能计算 | 计算群集和实例 |
+| HB | 需要审批。 | 高性能计算 | 计算群集和实例 |
+| HBv2 | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| HCS | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| M | 需要审批。 | 内存优化 | 计算群集和实例 |
+| NC | 无。 |  GPU | 计算群集和实例 |
+| NC 促销 | 无。 | GPU | 计算群集和实例 |
+| NCsv2 | 需要审批。 | GPU | 计算群集和实例 |
+| NCsv3 | 需要审批。 | GPU | 计算群集和实例 |  
+| NDs | 需要审批。 | GPU | 计算群集和实例 | 
+| NDv2 | 需要审批。 | GPU | 计算群集和实例 | 
+| NV | 无。 | GPU | 计算群集和实例 | 
+| NVv3 | 需要审批。 | GPU | 计算群集和实例 | 
 
 
 虽然 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 若要检查 VM 系列是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。

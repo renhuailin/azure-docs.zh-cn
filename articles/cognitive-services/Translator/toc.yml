@@ -1,17 +1,19 @@
 - name: 翻译器服务文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
-    - name: 什么是翻译器？
-      href: translator-info-overview.md
     - name: 语言支持
       href: language-support.md
     - name: 定价和限制
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
+- name: 文本翻译
+  expanded: true
+  items:
+    - name: 什么是翻译器？
+      href: translator-info-overview.md
     - name: 翻译工具常见问题解答
       href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: 文本翻译
-  items:
     - name: 快速入门
       href: quickstart-translator.md
     - name: 示例
@@ -84,10 +86,10 @@
   items:
     - name: 自定义翻译是什么？
       href: custom-translator/overview.md
-    - name: 快速入门
-      href: custom-translator/quickstart-build-deploy-custom-model.md
     - name: 常见问题解答
       href: custom-translator/faq.md
+    - name: 快速入门
+      href: custom-translator/quickstart-build-deploy-custom-model.md
     - name: 操作指南
       items:
         - name: 创建一个项目
@@ -112,7 +114,7 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: 概念
       items:
-        - name: 术语
+        - name: 关键术语
           href: custom-translator/terminology.md
         - name: 自定义和改进文本翻译
           href: customization.md
@@ -132,8 +134,6 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分数
           href: custom-translator/what-is-bleu-score.md
-        - name: 加密
-          href: encrypt-data-at-rest.md
 - name: 文档翻译
   items:
     - name: 什么是文档翻译？
@@ -146,8 +146,6 @@
           href: document-translation/create-sas-tokens.md
     - name: 参考
       items:
-        - name: 文档翻译 REST API
-          href: /rest/api/cognitiveservices/translator/documenttranslation
         - name: 获取文档格式
           href: document-translation/reference/get-document-formats.md
         - name: 获取术语表格式
@@ -164,11 +162,15 @@
           href: document-translation/reference/get-operations.md
         - name: 取消操作
           href: document-translation/reference/cancel-operation.md
-- name: 翻译器资源
+- name: 资源
   items:
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: 合规性
       href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
+    - name: 加密
+      href: encrypt-data-at-rest.md
     - name: GitHub 上的代码示例
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: 隐私和 Cookie
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'
