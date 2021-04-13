@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cc3f9623f3b09c14e0e478252768890e4de3acad
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88263174"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025452"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics 中的新增功能
 
@@ -39,7 +39,7 @@ Azure Data Lake U-SQL 运行时（包括编译器、优化器和作业管理器�
 
 以下版本是当前的默认运行时版本。
 
-- release-20200124live_adl_16283022_2
+- **release_20200707_scope_2b8d563_usql**
 
 若要了解如何排查 SQL 运行时故障，请参阅[排查 U-SQL 运行时故障](runtime-troubleshoot.md)。
 

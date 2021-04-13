@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
 ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96853492"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>使用评审工具来审查视频
@@ -26,7 +26,7 @@ ms.locfileid: "96853492"
 在仪表板上，选择视频内容类型中的任意评审队列。 这将启动评审并打开视频内容审查页面。
 
 > [!div class="mx-imgBorder"]
-> ![在内容审查器 (Preview) 上，滑块将突出显示并设置为4个评论。 "全部模糊" 和 "黑白" 和 "白色" 开关均已设置。](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![在内容审查器（预览版）上，滑块将突出显示并设置为 4 个评审。 “全部模糊”和“黑白”开关都已突出显示且已设置。](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>Review count
 
@@ -55,7 +55,7 @@ ms.locfileid: "96853492"
 * 选择“历史记录”选项卡可查看评审历史记录，例如创建时间和修改情况。
 
 > [!div class="mx-imgBorder"]
-> ![将突出显示右窗格，并选择 "注释" 选项卡。 有一个标记为 "添加注释" 的测试区域。](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![突出显示了右窗格，并选择了“注释”选项卡。 有一个标记为“添加注释”的测试区域。](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>应用审查标记
 
@@ -66,7 +66,7 @@ ms.locfileid: "96853492"
 使用“批量标记”工具栏，可以一次向多个选定的视频添加标记。 选择一个或多个视频，然后选择要应用的标记，并单击“提交”。 
 
 > [!div class="mx-imgBorder"]
-> !["+" 按钮在 "批量标记" 窗格中突出显示。](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![+ 按钮在“批量标记”窗格中突出显示。](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>关键帧标记
@@ -77,7 +77,7 @@ ms.locfileid: "96853492"
 > 如果服务无法提取关键帧，则关键帧磁贴窗格会显示“没有可用的帧”，并且选择关键帧的选项会灰显。在这种情况下，你只能将标记应用于整个视频（使用“视频标记 +”按钮）。
 
 > [!div class="mx-imgBorder"]
-> ![磁贴窗格、视频播放器、关键帧标记窗格和视频标记窗格都显示出来。 将突出显示 "关键帧标记 +" 和 "视频标记 +" 按钮。](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![磁贴窗格、视频播放器、关键帧标记窗格和视频标记窗格均已显示。 突出显示了“关键帧标记 +”和“视频标记 +”按钮。](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>暂停评审
 
@@ -86,7 +86,7 @@ ms.locfileid: "96853492"
 你可以通过单击屏幕顶部的“暂停”按钮来观看暂停的视频。 “暂停”窗格显示在右侧。 从这里，你可以选择多个暂停的评审，并将其释放回队列，或设置其过期时间。 在经过预先配置的时长后，暂停的评审会释放回队列。 选择“保存”将从当前选定的过期时间开始倒计时。
 
 > [!div class="mx-imgBorder"]
-> ![在 "视频" 窗格上，突出显示 "保留" 按钮。 在窗格底部，将突出显示 "保留时间" 组合框以及 "发布" 和 "保存" 按钮。](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![在视频窗格上，突出显示了“保留”按钮。 在窗格底部，突出显示了“保留时间”组合框，以及“发布”和“保存”按钮。](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>提交评审
 

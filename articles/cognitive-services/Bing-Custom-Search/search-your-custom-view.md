@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: 07b0dd68e39f555171e5606b71cd1eec92a4035c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353334"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>从门户调用必应自定义搜索实例
@@ -29,14 +29,14 @@ ms.locfileid: "96353334"
 ![必应自定义搜索门户的屏幕截图](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>创建搜索查询 
 
-登录到必应自定义搜索 [门户](https://customsearch.ai)后，选择搜索实例，并单击 " **生产** " 选项卡。在 " **终结点**" 下，选择 API 终结点， (例如 Web API) 。 你的订阅决定了显示哪些终结点。
+登录到必应自定义搜索[门户](https://customsearch.ai)后，选择你的搜索实例并单击“生产”选项卡。在“终结点”下，选择一个 API 终结点（例如，Web API）。 你的订阅决定了显示哪些终结点。
 
-若要创建搜索查询，请为终结点输入参数值。 请注意，门户中显示的参数可能会根据你选择的终结点而更改。 有关详细信息，请参阅 [自定义搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) 。 若要更改搜索实例使用的订阅，请添加相应的订阅密钥，并更新相应的市场和/或语言参数。
+若要创建搜索查询，请为终结点输入参数值。 请注意，门户中显示的参数可能会根据你选择的终结点而更改。 有关详细信息，请参阅[自定义搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)。 若要更改搜索实例使用的订阅，添加相应的订阅密钥，并更新相应的市场和/或语言参数。
 
 一些重要参数如下所述：
 
 
-|参数  |描述  |
+|参数  |说明  |
 |---------|---------|
 |查询     | 要搜索的搜索词。 仅适用于 Web 终结点、图像终结点、视频终结点和自动建议终结点 |
 |自定义配置 ID | 所选自定义搜索实例的配置 ID。 该字段是只读字段。 |
@@ -45,9 +45,9 @@ ms.locfileid: "96353334"
 
 单击“其他参数”可显示以下参数：  
 
-|参数  |描述  |
+|参数  |说明  |
 |---------|---------|
-|安全搜索     | 用于筛选成人内容网页的筛选器。 仅适用于 Web 终结点、图像终结点、视频终结点和托管 UI 终结点。 请注意，必应自定义视频搜索仅支持两个值： `moderate` 和 `strict` 。        |
+|安全搜索     | 用于筛选成人内容网页的筛选器。 仅适用于 Web 终结点、图像终结点、视频终结点和托管 UI 终结点。 请注意，必应自定义视频搜索仅支持两个值：`moderate` 和 `strict`。        |
 |用户界面语言    | 用于用户界面字符串的语言。 例如，如果你在托管 UI 中启用图像和视频，“图像”和“视频”选项卡使用指定的语言。        |
 |计数     | 要在响应中返回的搜索结果数。 仅适用于 Web 终结点、图像终结点和视频终结点。         |
 |Offset    | 返回结果前要跳过的搜索结果数。 仅适用于 Web 终结点、图像终结点和视频终结点。        |
@@ -56,7 +56,7 @@ ms.locfileid: "96353334"
 
 ## <a name="change-your-bing-custom-search-subscription"></a>更改必应自定义搜索订阅
 
-你可以更改与必应自定义搜索实例关联的订阅而无需创建新的实例。 若要为新订阅发送 API 调用并向其收费，请在 Azure 门户中创建新的必应自定义搜索资源。 在 API 请求中使用新的订阅密钥，同时使用实例的自定义配置 ID。
+可更改与必应自定义搜索实例关联的订阅，而无需创建新的实例。 若要针对新订阅发送 API 调用并收取调用费用，在 Azure 门户中创建一个新的必应自定义搜索资源。 使用 API 请求中的新订阅密钥，以及实例的自定义配置 ID。
 
 ## <a name="next-steps"></a>后续步骤
 

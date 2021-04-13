@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/09/2020
 ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94376836"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure 机器学习设计器算法和模块参考
@@ -45,7 +45,7 @@ ms.locfileid: "94376836"
 | --- |--- | --- |
 | 回归 | 预测值。 | [提升决策树回归](boosted-decision-tree-regression.md) <br/> [决策林回归](decision-forest-regression.md) <br/> [快速林分位回归](fast-forest-quantile-regression.md)  <br/> [线性回归](linear-regression.md)  <br/> [神经网络回归](neural-network-regression.md)  <br/> [泊松回归](poisson-regression.md)  <br/>|
 | 群集 | 将数据分到一组。| [K 均值聚类分析](k-means-clustering.md)
-| 分类 | 预测类。  从二进制（双类）或多类算法中进行选择。| [多类提升决策树](multiclass-boosted-decision-tree.md) <br/> [多类决策林](multiclass-decision-forest.md) <br/> [多类逻辑回归](multiclass-logistic-regression.md)  <br/> [多类神经网络](multiclass-neural-network.md) <br/> [“一对多”多类](one-vs-all-multiclass.md) <br/> [One 多类](one-vs-one-multiclass.md) <br/>[双类平均感知器](two-class-averaged-perceptron.md) <br/>  [双类提升决策树](two-class-boosted-decision-tree.md)  <br/> [双类决策林](two-class-decision-forest.md) <br/>  [双类逻辑回归](two-class-logistic-regression.md) <br/> [双类神经网络](two-class-neural-network.md) <br/> [双类支持向量机](two-class-support-vector-machine.md) | 
+| 分类 | 预测类。  从二进制（双类）或多类算法中进行选择。| [多类提升决策树](multiclass-boosted-decision-tree.md) <br/> [多类决策林](multiclass-decision-forest.md) <br/> [多类逻辑回归](multiclass-logistic-regression.md)  <br/> [多类神经网络](multiclass-neural-network.md) <br/> [“一对多”多类](one-vs-all-multiclass.md) <br/> [“一对一个多类](one-vs-one-multiclass.md) <br/>[双类平均感知器](two-class-averaged-perceptron.md) <br/>  [双类提升决策树](two-class-boosted-decision-tree.md)  <br/> [双类决策林](two-class-decision-forest.md) <br/>  [双类逻辑回归](two-class-logistic-regression.md) <br/> [双类神经网络](two-class-neural-network.md) <br/> [双类支持向量机](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>用于构建和评估模型的模块
 

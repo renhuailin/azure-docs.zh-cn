@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96905190"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>内容审核审阅、工作流和作业
@@ -26,7 +26,7 @@ ms.locfileid: "96905190"
 在审阅中，内容已上传到审阅工具。 可以通过在仪表板上的“审阅”选项卡下单击其内容类型来查看它。 在“审阅”屏幕上，你可以更改已应用的标签，并根据需要应用自己的自定义标签。 当你提交审阅时，系统会将结果发送到指定的回调终结点，并从站点中删除内容。
 
 > [!div class="mx-imgBorder"]
-> !["审阅" 下拉菜单将突出显示。 其中显示了这些内容类型：图像、文本和视频。](./Review-Tool-user-Guide/images/review-tab.png)
+> ![突出显示“审阅”下拉菜单。 其中显示了这些内容类型：图像、文本和视频。](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>管理审阅
 
@@ -40,9 +40,9 @@ ms.locfileid: "96905190"
 使用“搜索”工具栏可以按各种类别（如审阅状态、标记、内容类型、子团队、已分配的用户和创建/修改日期）对审阅进行排序。
 
 > [!div class="mx-imgBorder"]
-> ![将显示 "搜索" 工具栏。 它有多个用于输入搜索条件的组合框，如审阅状态和标记。](./Review-Tool-user-Guide/images/review-search.png)
+> ![显示“搜索”工具栏。 它有多个用于输入搜索条件的组合框，例如“审阅状态”和“标记”。](./Review-Tool-user-Guide/images/review-search.png)
 
-若要开始创建评论，请参阅 [查看工具指南](./review-tool-user-guide/review-moderated-images.md) ，或参阅 [API 控制台指南](./try-review-api-review.md) 了解如何以编程方式执行此操作。
+若要开始创建审阅，请参阅[审阅工具指南](./review-tool-user-guide/review-moderated-images.md)；若要了解如何以编程方式创建审阅，请参阅 [API 控制台指南](./try-review-api-review.md)。
 
 ## <a name="workflows"></a>工作流
 
@@ -80,13 +80,13 @@ ms.locfileid: "96905190"
 }
 ```
 
-若要开始创建和使用工作流，请参阅 [查看工具指南](./review-tool-user-guide/workflows.md) ，或参阅 [API 控制台指南](./try-review-api-workflow.md) 以了解如何以编程方式执行此操作。
+若要开始创建和使用工作流，请参阅[审阅工具指南](./review-tool-user-guide/workflows.md)；若要了解如何以编程方式创建审阅，请参阅 [API 控制台指南](./try-review-api-workflow.md)。
 
 ## <a name="jobs"></a>作业
 
 审核作业充当内容审核、工作流和审阅功能的一种包装器。 该作业使用内容审查器图像审核 API 或文本审核 API 扫描内容，然后根据指定的工作流对其进行检查。 根据工作流的结果，它可能会也可能不会在[审阅工具](./review-tool-user-guide/human-in-the-loop.md)中为内容创建审阅。 审阅和工作流可以通过其各自的 API 创建和配置，而作业 API 允许获取整个流程的详细报告（可以将其发送到指定的回调终结点）。
 
-请参阅 [API 控制台指南](./try-review-api-job.md) ，开始使用作业。
+若要开始使用作业，请参阅 [API 控制台指南](./try-review-api-job.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

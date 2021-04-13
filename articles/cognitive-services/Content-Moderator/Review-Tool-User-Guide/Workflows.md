@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
 ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96904136"
 ---
 # <a name="define-and-use-moderation-workflows"></a>定义和使用审查工作流
@@ -83,4 +83,4 @@ ms.locfileid: "96904136"
 
 ## <a name="next-steps"></a>后续步骤
 
-本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审查工作流。 接下来，请参阅 [API 控制台指南](../try-review-api-workflow.md) 以了解如何以编程方式创建工作流。
+本指南介绍了如何从内容审查器[审阅工具](https://contentmoderator.cognitive.microsoft.com)设置和使用审查工作流。 接下来，请参阅 [API 控制台指南](../try-review-api-workflow.md)，了解如何以编程方式创建工作流。

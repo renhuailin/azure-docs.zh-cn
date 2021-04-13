@@ -7,17 +7,17 @@ ms.date: 02/04/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9679be03c69090a0c11d007cfc542bae70bd3cbc
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99592188"
 ---
 # <a name="components"></a>组件
 
 Azure 远程渲染使用[实体组件系统](https://en.wikipedia.org/wiki/Entity_component_system)模式。 [实体](entities.md)代表对象的位置和层次结构组合，而组件则负责实现行为。
 
-最常使用的组件类型是 [:::no-loc text="mesh components":::](meshes.md) ，它将网格添加到呈现管道中。 同样，[光线组件](../overview/features/lights.md)用于添加光线，而[剖切面组件](../overview/features/cut-planes.md)用于切开网格。
+最常用的组件类型是[:::no-loc text="mesh components":::](meshes.md)，该类组件用于将网格添加到渲染管道。 同样，[光线组件](../overview/features/lights.md)用于添加光线，而[剖切面组件](../overview/features/cut-planes.md)用于切开网格。
 
 所有这些组件都使用它们所附着的实体的转换（位置、旋转、缩放）作为它们的参考点。
 
@@ -63,12 +63,12 @@ Unity 集成具有其他扩展函数，用于与组件进行交互。 请参阅 
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # ComponentBase](/dotnet/api/microsoft.azure.remoterendering.componentbase)
-* [C # RenderingConnection CreateComponent ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createcomponent)
-* [C # FindComponentOfType ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
-* [C + + ComponentBase](/cpp/api/remote-rendering/componentbase)
-* [C + + RenderingConnection：： CreateComponent ( # B1 ](/cpp/api/remote-rendering/renderingconnection#createcomponent)
-* [C + + Entity：： FindComponentOfType ( # B1 ](/cpp/api/remote-rendering/entity#findcomponentoftype)
+* [C# ComponentBase](/dotnet/api/microsoft.azure.remoterendering.componentbase)
+* [C# RenderingConnection.CreateComponent()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.createcomponent)
+* [C# Entity.FindComponentOfType()](/dotnet/api/microsoft.azure.remoterendering.entity.findcomponentoftype)
+* [C++ ComponentBase](/cpp/api/remote-rendering/componentbase)
+* [C++ RenderingConnection::CreateComponent()](/cpp/api/remote-rendering/renderingconnection#createcomponent)
+* [C++ Entity::FindComponentOfType()](/cpp/api/remote-rendering/entity#findcomponentoftype)
 
 ## <a name="next-steps"></a>后续步骤
 

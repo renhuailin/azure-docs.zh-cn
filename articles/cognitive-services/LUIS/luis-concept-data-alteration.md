@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 621a41f743b751a8c24bf6f6ad8497fb5c79775c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95026004"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
-LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括 [修复拼写](luis-tutorial-bing-spellcheck.md)和修复预生成的 [datetimeV2](luis-reference-prebuilt-datetimev2.md)的时区问题。
+LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法包括[修复拼写](luis-tutorial-bing-spellcheck.md)，以及修复预生成 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 的时区问题。
 
 ## <a name="correct-spelling-errors-in-utterance"></a>更正陈述中的拼写错误
 
 
 ### <a name="v3-runtime"></a>V3 运行时
 
-在将查询文本发送到 LUIS 之前，预处理文本的拼写更正。 使用带有正确拼写的示例最谈话，以确保获得正确的预测。
+在将言语发送给 LUIS 之前，请先对文本进行预处理以进行拼写更正。 使用正确拼写的示例言语，以确保获得正确的预测。
 
-将文本发送到 LUIS 之前，请使用 [必应拼写检查](../bing-spell-check/overview.md) 更正文本。
+将文本发送到 LUIS 之前，请使用[必应拼写检查](../bing-spell-check/overview.md)更正文本。
 
 ### <a name="prior-to-v3-runtime"></a>在 V3 运行时之前
 

@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: aahi
 ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955036"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>有关文本分析 API 的常见问题解答 (FAQ)
 
- 查找有关与 Azure 认知服务中文本分析 API 相关的概念、代码和方案的常见问题的解答。
+ 查找与 Azure 认知服务中文本分析 API 有关的概念、代码和方案相关的常见问题解答。
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>文本分析能否识别嘲讽？
 
@@ -51,11 +51,11 @@ ms.locfileid: "97955036"
 
 ### <a name="is-text-analytics-service-zone-resilient"></a>文本分析服务区域是否可复原？
 
-是。 默认情况下，文本分析服务是区域复原的。
+是。 默认情况下，文本分析服务可在区域内复原。
 
-### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>如何实现将文本分析服务配置为区域复原？
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>如何将文本分析服务配置为可在区域内复原？
 
-客户无需配置即可启用区域复原能力。 默认情况下，文本分析资源的区域复原功能可用，并由服务自身管理。
+客户无需配置即可启用区域复原能力。 文本分析资源默认提供区域内复原能力，由服务自身进行管理。
 
 ## <a name="next-steps"></a>后续步骤
 

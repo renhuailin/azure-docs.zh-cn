@@ -1,7 +1,7 @@
 ---
 title: 训练 PyTorch 模型
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设计器中的 "定型 Pytorch 模型" 模块来从头开始定型模型，或对现有模型进行微调。
+description: 使用 Azure 机器学习设计器中的“训练 Pytorch 模型”模块，可以从头开始训练模型或微调现有模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 2d88069f33995bdbe9dd479afe9a4e72ab9939b6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93420659"
 ---
 # <a name="train-pytorch-model"></a>训练 PyTorch 模型
@@ -49,7 +49,7 @@ ms.locfileid: "93420659"
 
 8.  对于“耐性”，请指定在验证损失不连续减少时提前停止训练的时期数。 默认为 3。
 
-9.  提交管道。 如果数据集的大小较大，将需要一段时间，并建议使用 GPU 计算。
+9.  提交管道。 如果数据集较大，这将需要一段时间，建议使用 GPU 计算。
 
 ## <a name="results"></a>结果
 

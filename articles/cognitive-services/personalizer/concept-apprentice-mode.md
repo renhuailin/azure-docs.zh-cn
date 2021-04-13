@@ -1,97 +1,97 @@
 ---
-title: Apprentice 模式-Personalizer
-description: 了解如何使用 apprentice 模式，在不更改任何代码的情况下获取模型的信心。
+title: 学徒模式 - 个性化体验创建服务
+description: 了解如何使用学徒模式，在不更改任何代码的情况下获得对模型的信心。
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 531917d9c48915f71354b4cd35747ecd9d33a6f8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100385024"
 ---
-# <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用 Apprentice 模式训练 Personalizer，而不影响现有应用程序
+# <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用学徒模式在不影响现有应用程序的情况下训练个性化体验创建服务
 
-由于 **实际** 强化学习的性质，Personalizer 模型只能在生产环境中定型。 部署新用例时，Personalizer 模型不会有效地执行，因为模型需要花费时间才能充分定型。  **Apprentice 模式** 是一种学习行为，可简化这种情况，并使您能够在模型中获得信心，而不需要开发人员更改任何代码。
+由于个性化体验创建服务模型的 **现实世界** 强化学习性质，只能在生产环境中对其进行训练。 部署新用例时，个性化体验创建服务模型的表现并不高效，因为充分训练该模型需要一段时间。  **学徒模式** 是可以改善这种局面的一种学习行为，在此模式下，开发人员无需更改任何代码，就能获得对模型的信心。
 
 [!INCLUDE [Important Blue Box - Apprentice mode pricing tier](./includes/important-apprentice-mode.md)]
 
-## <a name="what-is-apprentice-mode"></a>什么是 Apprentice 模式？
+## <a name="what-is-apprentice-mode"></a>什么是学徒模式？
 
-与 apprentice 从主节点学习的方式类似，体验也更好;Apprentice 模式是一 _种_ 允许 Personalizer 通过观察从现有应用程序逻辑获得的结果来了解的行为。
+好比徒弟从师傅那里学艺，经验越多就学得越好；学徒模式是一种行为，可让个性化体验创建服务通过观察从现有应用程序逻辑获得的结果来进行学习。
 
-Personalizer 火车 by 模拟与应用程序相同的输出。 随着事件的流动，Personalizer 可以与现有的应用程序 _保持同步_ ，而不会影响现有的逻辑和结果。 指标（可从 Azure 门户和 API 获取）可帮助你了解模型学习时的性能。
+个性化体验创建服务通过模拟与应用程序相同的输出进行训练。 随着更多事件的流动，个性化体验创建服务可以赶上现有应用程序的进度，且不会影响现有的逻辑和结果。 Azure 门户和 API 提供的指标可帮助你了解模型在学习时的性能。
 
-在 Personalizer 学习并获得一定程度的理解后，开发人员可以将行为从 "Apprentice 模式" 更改为 "联机" 模式。 此时，Personalizer 开始影响排名 API 中的操作。
+在个性化体验创建服务不断学习并达到一定程度的理解能力后，开发人员可将行为从学徒模式更改为联机模式。 此时，个性化体验创建服务将开始影响排名 API 中的操作。
 
-## <a name="purpose-of-apprentice-mode"></a>Apprentice 模式的用途
+## <a name="purpose-of-apprentice-mode"></a>学徒模式的用途
 
-Apprentice 模式为你提供了 Personalizer 服务及其机器学习功能的信任，并向确信提供了服务发送的信息。
+学徒模式可使你对个性化体验创建服务服务及其机器学习功能感到可信，并可确保为服务发送可从中习得知识的信息 - 而不会产生有风险的联机流量。
 
-使用 Apprentice 模式的两个主要原因是：
+使用学徒模式的两个主要原因是：
 
-* 缓解 **冷启动**： Apprentice 模式可帮助管理和评估 "新" 模型的学习时间的成本-当它没有返回最佳操作，并且未实现约60-80% 的令人满意的有效性级别时。
-* **验证操作和上下文功能**：在操作和上下文中发送的功能可能不足或不准确-太少、过多、不正确或因太少而无法定型 Personalizer 来获得理想的有效性率。 使用 [功能评估](concept-feature-evaluation.md) 查找并修复功能问题。
+* 缓解 **冷启动**：学徒模式可帮助管理和评估“新”模型在学习时（未返回最佳操作，且未实现令人满意的大约 60-80% 的有效性级别时）产生的成本。
+* **验证操作和上下文特征**：在操作和上下文中发送的特征可能不足或不准确 - 过少、过多、不正确，或者对于训练个性化体验创建服务而言过于具体，导致无法获得理想的有效率。 使用[特征评估](concept-feature-evaluation.md)可以查找和修复特征存在的问题。
 
-## <a name="when-should-you-use-apprentice-mode"></a>何时应使用 Apprentice 模式？
+## <a name="when-should-you-use-apprentice-mode"></a>何时应使用学徒模式？
 
-使用 Apprentice 模式培训 Personalizer，通过以下方案提高其有效性，同时使用户体验不受 Personalizer 影响：
+对于以下场景，可以使用学徒模式来训练个性化体验创建服务，这样既可以改善个性化体验创建服务的有效性，还可以避免个性化体验创建服务对用户体验造成影响：
 
-* 你要在新用例中实现 Personalizer。
-* 您已显著更改了在上下文或操作中发送的功能。
-* 在计算回报时，你会发生显著变化。
+* 你要在新用例中实施个性化体验创建服务。
+* 你对在上下文或操作中发送的特征做了重大更改。
+* 你对计算奖励的时间和方式做了重大更改。
 
-Apprentice 模式并非一种有效的方式来测量 Personalizer 对奖励评分的影响。 若要测量 Personalizer 为每个排名调用选择最佳可能操作的方式，请使用 [脱机评估](concepts-offline-evaluation.md)。
+通过学徒模式并不能有效衡量个性化体验创建服务对奖励分数的影响。 若要衡量个性化体验创建服务对为每个排名调用选择最佳可能操作发挥的效力，请使用[脱机评估](concepts-offline-evaluation.md)。
 
-## <a name="who-should-use-apprentice-mode"></a>谁应该使用 Apprentice 模式？
+## <a name="who-should-use-apprentice-mode"></a>谁应该使用学徒模式？
 
-Apprentice 模式适用于开发人员、数据科学家和业务决策者：
+开发人员、数据科学家和业务决策者适合使用学徒模式：
 
-* **开发人员** 可以使用 Apprentice 模式来确保在应用程序中正确使用排名和奖励 api，并确保从应用程序发送到 Personalizer 的功能不包含错误或不相关的功能，例如时间戳或 UserID 元素。
+* **开发人员** 可以使用学徒模式来确保在应用程序中正确使用排名和奖励 API，并确保从应用程序发送到个性化体验创建服务的特征不包含 bug 或不相关的特征，例如时间戳或 UserID 元素。
 
-* **数据科学家** 可以使用 Apprentice 模式来验证这些功能是否有效地用于训练 Personalizer 模型，因为奖励等待时间不太长或短。
+* **数据科学家** 可以使用学徒模式来验证特征是否对于训练个性化体验创建服务模型有效，以及奖励等待时间是否过长或过短。
 
-* **业务决策者** 可以使用 Apprentice 模式来评估 Personalizer 与现有业务逻辑相比 (提高结果的可能性) 。 这样，他们就可以做出明智的决策，影响用户体验，其中真实收入和用户满意度面临着实质性的影响。
+* **业务决策者** 可以使用学徒模式来评估个性化体验创建服务相比现有业务逻辑在改善结果（即奖励）方面的潜力。 这样，他们就可以做出明智的决策来改善用户体验，确保利害攸关的实际收入和用户满意度不会受到负面影响。
 
-## <a name="comparing-behaviors---apprentice-mode-and-online-mode"></a>比较行为-Apprentice 模式和联机模式
+## <a name="comparing-behaviors---apprentice-mode-and-online-mode"></a>行为比较 - 学徒模式和联机模式
 
-在 Apprentice 模式下学习在以下方面不同于联机模式。
+学徒模式和联机模式下的学习存在以下差别。
 
 |区域|学徒模式|“联机” 模式|
 |--|--|--|
-|对用户体验的影响|你可以使用现有的用户行为来定型 Personalizer，方法是让其观察 (不会影响 **默认操作** 的) 以及获得的奖励。 这意味着用户的体验和业务结果不受影响。|显示从排名调用返回的顶部操作以影响用户行为。|
-|学习速度|在 Apprentice 模式下，Personalizer 的学习速度会比在联机模式下学习时更慢。 Apprentice 模式只能通过观察你的 **默认操作** 获得的奖励来了解，这会限制学习速度，因为无法执行任何浏览。|更快地学习，因为它可以利用当前模型并探索新的趋势。|
-|学习有效性 "上限"|Personalizer 可以大致接近、极少匹配，并且永远不会超过基础业务逻辑的性能 (通过每个排名调用) 的 **默认操作** 实现的回报总量。 此近似天花板通过浏览减少。 例如，在20% 的浏览中，apprentice 模式的性能将超过80%，而60% 是一个合理的目标，将毕业到联机模式。|Personalizer 应超过应用程序基准，一段时间后，您应该执行脱机计算和功能评估，以继续对模型进行改进。 |
-|RewardActionId 的排名 API 值|用户的体验不受影响，因为 _rewardActionId_ 始终是在排名请求中发送的第一个操作。 换句话说，排名 API 在 Apprentice 模式下不会对应用程序显示任何内容。 在应用程序中奖励 Api 不应更改它在一种模式和另一种模式之间使用奖励 API 的方式。|Personalizer 为应用程序选择的 _rewardActionId_ 将更改用户的体验。 |
-|评估|Personalizer 比较了默认业务逻辑获得的奖励总数，并且在该时间点处于联机模式时，将获得奖励合计 Personalizer。 此资源的 Azure 门户中提供了比较|通过运行 [脱机评估](concepts-offline-evaluation.md)来评估 Personalizer 的有效性，这使你可以将 Personalizer 的总回报与应用程序基准的潜在回报进行比较。|
+|对用户体验的影响|可以使用现有的用户行为来训练个性化体验创建服务：让个性化体验创建服务观察（不是影响）你一贯的 **默认操作** 及其获得的奖励。 这意味着，用户的体验及其在体验中获得的业务成果不受影响。|显示排名调用返回的会影响用户行为的首个操作。|
+|学习速度|个性化体验创建服务在学徒模式下的学习速度比在联机模式下要慢。 学徒模式只能通过观察你的 **默认操作** 获得的奖励进行学习，这会限制学习速度，因为无法执行探索。|学习速度更快，因为此模式可以利用当前模型并探索新趋势。|
+|学习有效性“上限”|个性化体验创建服务可以接近、在极少情况下可以达到但永远不会超过基础业务逻辑的性能（每个排名调用的 **默认操作** 实现的奖励总数）。 通过探索可以降低此近似值上限。 例如，以 20% 的性能进行探索时，学徒模式的性能基本上不可能超过 80%，60% 是一个合理的目标，达到此目标即可提升到联机模式。|个性化体验创建服务应该超过应用程序基线，如果它有一段时间处于停滞状态，则你应该执行脱机计算和特征评估以持续改进模型。 |
+|rewardActionId 的排名 API 值|用户的体验不受影响，因为 _rewardActionId_ 始终是在排名请求中发送的第一个操作。 换句话说，在学徒模式下，排名 API 不会执行任何对应用程序可见的操作。 应用程序中的奖励 API 不应改变应用程序在两种不同模式之间使用奖励 API 的方式。|个性化体验创建服务为应用程序选择的 _rewardActionId_ 将改变用户的体验。 |
+|评估|个性化体验创建服务会不断地将默认业务逻辑获得的奖励总数，与个性化体验创建服务处于联机模式时在该时间点获得的奖励总数进行比较。 Azure 门户中提供了该资源的比较|通过运行[脱机评估](concepts-offline-evaluation.md)来评估个性化体验创建服务的有效性，这可以将个性化体验创建服务实现的奖励总数与应用程序基线的潜在奖励进行比较。|
 
-有关 apprentice 模式有效性的说明：
+有关学徒模式有效性的说明：
 
-* Personalizer 在 Apprentice 模式下的有效性极少达到应用程序基线的 100%;并且永远不会超过它。
-* 最佳做法是不尝试获得100% 的实现;但60% –80% 的范围应根据用例进行定向。
+* 处于学徒模式的个性化体验创建服务的有效性极少接近应用程序基线的 100%；永远不会超过此基线。
+* 最佳做法是不要试图达到 100%，而是应该根据用例将 60% – 80% 的有效性范围定为目标。
 
-## <a name="using-apprentice-mode-to-train-with-historical-data"></a>使用 Apprentice 模式训练历史数据
+## <a name="using-apprentice-mode-to-train-with-historical-data"></a>结合历史数据使用学徒模式进行训练
 
-如果有大量的历史数据，需要使用训练 Personalizer，可以使用 Apprentice 模式通过 Personalizer 重播数据。
+如果你有大量的历史数据并想要使用它们来训练个性化体验创建服务，则你可以使用学徒模式通过个性化体验创建服务重放数据。
 
-在 Apprentice 模式下设置 Personalizer，并创建一个脚本，该脚本使用历史数据中的操作和上下文功能调用排名。 根据此数据中的记录计算，调用奖励 API。 你将需要大约50000个历史事件来查看一些结果，但建议使用500000来更好地信任结果。
+在学徒模式下设置个性化体验创建服务，并创建一个脚本，用于结合历史数据中的操作和上下文特征调用“排名”。 根据此数据中记录的计算结果调用奖励 API。 需要大约 50,000 个历史事件才能看到一些结果，但建议使用 500,000 个历史事件以提高结果的置信度。
 
-当从历史数据中定型时，建议在上下文和操作 (功能中发送的数据、在用于排名请求的 JSON 中的布局以及此定型数据集中的奖励计算) ，与现有应用程序中提供的数据 (功能和计算) 的计算结果相匹配。
+基于历史数据训练时，建议使发送的数据（上下文和操作的特征、这些特征在用于排名请求的 JSON 中的布局，以及此训练数据集中的奖励计算结果）与现有应用程序提供的数据（特征以及奖励计算结果）相匹配。
 
-脱机和嘈杂的数据往往更不完整，并且格式不相同。 尽管可以从历史数据进行定型，但这样做可能不会有任何结论，而且并不是 Personalizer 学习情况的良好预测性，尤其是在过去的数据和现有应用程序之间的功能不同的情况下。
+脱机和事后数据往往更不完整、干扰更多，而且格式也不尽相同。 尽管可以基于历史数据进行训练，但这种做法的结果可能不是结论性的，而且不能很好地预测个性化体验创建服务的学习表现如何，尤其是既往数据与现有应用程序之间的特征有差异时。
 
-通常，对于 Personalizer，与使用历史数据进行定型相比，将行为更改为 Apprentice 模式并从现有应用程序中进行学习是一个具有有效模型的更有效路径，具有较少的劳动、数据工程和清理工作。
+通常，与使用历史数据进行训练相比，将个性化体验创建服务的行为更改为学徒模式并从现有应用程序学习是生成有效模型，同时减少精力、数据工程和清理工作量的更有效途径。
 
-## <a name="using-apprentice-mode-versus-ab-tests"></a>使用 Apprentice 模式与/B 测试
+## <a name="using-apprentice-mode-versus-ab-tests"></a>学徒模式与 A/B 测试的比较
 
-仅当验证并在联机模式下学习后，才能对 Personalizer 处理执行 A/B 测试。 在 Apprentice 模式下，仅使用 **默认操作** ，这意味着所有用户都可以有效地看到控制体验。
+只有在验证个性化体验创建服务之后并且它在联机模式下学习时，对个性化体验创建服务处理执行 A/B 测试才有作用。 在学徒模式下只使用 **默认操作**，这意味着所有用户都会实际看到控制体验。
 
-即使 Personalizer 只是 _处理_，验证数据是否适合培训 Personalizer 时也存在同样的挑战。 可以改用 Apprentice 模式，使用100% 的流量，并让所有用户 (不受影响的) 体验。
+即使个性化体验创建服务只是 _处理方式_，但在验证数据是否适合用于训练个性化体验创建服务时也存在同样的挑战。 可以改用学徒模式，这样，100% 的流量以及所有用户都可以获得（不受影响的）控制体验。
 
-使用 Personalizer 并联机学习使用案例后，可以使用 A/B 试验进行控制队列，并比较比用于回报的信号更复杂的结果。 A/B 测试可以回答的示例问题是： `In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
+使用个性化体验创建服务和联机学习模式建立用例后，可以使用 A/B 试验对可能比用于奖励的信号更复杂的结果执行受控的同期群和科学比较。 A/B 测试可以解答的一个示例问题是：`In a retail website, Personalizer optimizes a layout and gets more users to _check out_ earlier, but does this reduce total revenue per transaction?`
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [活动和非活动事件](concept-active-inactive-events.md)
+* 了解[活动事件和非活动事件](concept-active-inactive-events.md)

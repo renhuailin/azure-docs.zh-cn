@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 56093204516e156d670097c22b4edab42db54bde
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895605"
 ---
 # <a name="view-document-details"></a>查看文档详细信息
@@ -22,7 +22,7 @@ ms.locfileid: "98895605"
 
 单击单个文档可查看文档详细信息页。 文档详细信息页显示从文档提取的语句的列表。
 
-- 默认情况下，在下拉列表字段中选择 "并排" 源和目标语言，但您可以切换到查看源或目标语言的句子。
+- 默认情况下，下拉字段中会选中“并行”源和目标语言，但可以切换为以源或目标语言查看语句。
 - 默认情况下，每页显示 20 个语句。 可以使用分页控件在页面之间进行浏览。
 
 ![文档详细信息](media/how-to/how-to-view-document-details.png)

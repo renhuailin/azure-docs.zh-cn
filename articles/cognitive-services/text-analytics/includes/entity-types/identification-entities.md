@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: a376b050d79709885e3542d330bb6b1eea48d046
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750853"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599286"
 ---
 ### <a name="financial-account-identification"></a>财务帐户标识
 
 此实体类别包括标识的财务信息和正式形式。
 
-#### <a name="category-aba-routing-number"></a>类别： ABA 路由号
+#### <a name="category-aba-routing-number"></a>类别：ABA 路由号码
 
 此类别包含以下实体：
 
@@ -35,11 +35,20 @@ ms.locfileid: "101750853"
         **详细信息**
 
         美国银行家协会 (ABA) 转账路由号码。
+
+        若要获得此实体类别，请将 `ABARoutingNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ABARoutingNumber`，也会在 API 响应中返回。
       
     :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
-#### <a name="category-swift-code"></a>类别： SWIFT 代码
+
+#### <a name="category-swift-code"></a>类别：SWIFT 代码
 
 此类别包含以下实体：
 
@@ -54,8 +63,16 @@ ms.locfileid: "101750853"
         **详细信息**
 
         付款说明信息中的 SWIFT 代码。
+
+        若要获得此实体类别，请将 `SWIFTCode` 添加到 `pii-categories` 参数中。 如果检测到 `SWIFTCode`，也会在 API 响应中返回。
       
     :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="category-credit-card"></a>类别：信用卡
@@ -73,11 +90,19 @@ ms.locfileid: "101750853"
         **详细信息**
 
         信用卡卡号。 
-      
+
+        若要获得此实体类别，请将 `CreditCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CreditCardNumber`，也会在 API 响应中返回。
+
     :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`, `ja`, `zh-hans`, `ja`, `ko`
+      
+   :::column-end:::
 :::row-end:::
 
-#### <a name="category-international-banking-account-number-iban"></a>类别：国际银行帐号 (IBAN)  
+#### <a name="category-international-banking-account-number-iban"></a>类别：国际银行帐号 (IBAN) 
 
 此类别包含以下实体：
 
@@ -92,8 +117,16 @@ ms.locfileid: "101750853"
         **详细信息**
 
         付款说明信息中的 IBAN 代码。
+
+        若要获得此实体类别，请将 `InternationlBankingAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `InternationlBankingAccountNumber`，也会在 API 响应中返回。
       
     :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="government-and-countryregion-specific-identification"></a>政府和国家/地区特定的标识
@@ -114,6 +147,18 @@ ms.locfileid: "101750853"
         阿根廷国民身份证 (DNI) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ARNationalIdentityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ARNationalIdentityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -123,24 +168,55 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        奥地利标识卡
+        奥地利身份证
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ATIdentityCard` 添加到 `pii-categories` 参数中。 如果检测到 `ATIdentityCard`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        奥地利纳税标识号
+        奥地利税务标识号
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `ATTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ATTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        奥地利增值增值税 (VAT) 号
+        奥地利增值税 (VAT) 号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ATValueAddedTaxNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ATValueAddedTaxNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -154,15 +230,35 @@ ms.locfileid: "101750853"
         澳大利亚银行帐号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
 
+        若要获得此实体类别，请将 `AUDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        澳大利亚业务数字
+        澳大利亚企业编号
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `AUBusinessNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUBusinessNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -170,7 +266,16 @@ ms.locfileid: "101750853"
         澳大利亚公司编号
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `AUCompanyNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUCompanyNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -178,6 +283,16 @@ ms.locfileid: "101750853"
         澳大利亚驾照  
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `AUDriversLicense` 添加到 `pii-categories` 参数中。 如果检测到 `AUDriversLicense`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -185,30 +300,50 @@ ms.locfileid: "101750853"
         澳大利亚医疗帐号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `AUMedicalAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `AUMedicalAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        澳大利亚登记卡号码
+        澳大利亚护照号码
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `ATPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ATPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        澳大利亚登记卡号码
+        澳大利亚税务档案号
 
     :::column-end:::
+    :::column span="2":::
 
-:::row-end:::
-:::row:::
+        若要获得此实体类别，请将 `ATTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ATTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
     :::column span="":::
 
-        澳大利亚税金文件编号
-
-    :::column-end:::
-
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -218,17 +353,38 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        比利时国号
+        比利时国民身份证号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `BENationalNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BENationalNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        比利时值加税 (VAT) 号
+        比利时增值税 (VAT) 号码
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `BEValueAddedTaxNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BEValueAddedTaxNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -238,17 +394,40 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        巴西法定实体编号 (CNPJ) 
+        巴西法人号码 (CNPJ)
+
+        
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `BRLegalEntityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BRLegalEntityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        巴西 CPF 号
+        巴西 CPF 号码
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `BRCPFNumber` 添加到 `pii-categories` 参数中。 如果检测到 `BRCPFNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -256,6 +435,16 @@ ms.locfileid: "101750853"
         巴西国民身份证 (RG)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `BRNationalIDRG` 添加到 `pii-categories` 参数中。 如果检测到 `BRNationalIDRG`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="canada"></a>加拿大
@@ -267,28 +456,74 @@ ms.locfileid: "101750853"
         加拿大银行帐号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
 
+        若要获得此实体类别，请将 `CABankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CABankAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        加拿大驾照号码
+        加拿大驾照编号
 
     :::column-end:::
+
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `CADriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CADriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        加拿大运行状况服务编号
+        加拿大医疗服务号码
 
+        
     :::column-end:::
+
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `CAHealthServiceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CAHealthServiceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        加拿大 passport 号码
+        加拿大护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `CAPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CAPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -296,14 +531,33 @@ ms.locfileid: "101750853"
         加拿大个人健康标识号 (PHIN)
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `CAPersonalHealthIdentification` 添加到 `pii-categories` 参数中。 如果检测到 `CAPersonalHealthIdentification`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        加拿大社会保险电话号码
+        加拿大社会保险号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `CASocialInsuranceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CASocialInsuranceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `fr`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="chile"></a>智利 
@@ -312,9 +566,21 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        智利标识卡号
+        智利身份证号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `CLIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CLIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="china"></a>中国
@@ -323,9 +589,21 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        中国居民标识卡 (PRC) 号
+        中国居民身份证 (PRC) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `CNResidentIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CNResidentIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -335,37 +613,106 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        欧盟借记卡号
+        欧盟借记卡号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `EUDebitCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUDebitCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        欧盟驱动程序的许可证编号
+        欧盟驾照编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        欧盟国家识别号
+        欧盟 GPU 坐标
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUGPSCoordinates` 添加到 `pii-categories` 参数中。 如果检测到 `EUGPSCoordinates`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        欧盟 passport 号码
+        欧盟国民身份证号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUNationalIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUNationalIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        欧盟社会保障号 (SSN) 或等效 ID
+        欧盟护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+
+        欧盟社会安全号码 (SSN) 或等效 ID
+
+    :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUSocialSecurityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -373,13 +720,16 @@ ms.locfileid: "101750853"
         欧盟纳税标识号 (TIN)
 
     :::column-end:::
-:::row-end:::
-:::row:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `EUTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `EUTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
     :::column span="":::
 
-        欧盟 GPS 坐标
-
-    :::column-end:::
+      `en`, `es`, `fr`, `de`, `it`, `pt-pt` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="france"></a>法国
@@ -388,30 +738,72 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        法国驾照号码
+        法国驾照编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `FRDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        法国健康保险编号
+        法国医疗保险号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRHealthInsuranceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRHealthInsuranceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        法国国内 ID 卡 (CNI) 
+        法国国民身份证号码 (CNI)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `FRNationalID`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        法国 passport 号码
+        法国护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -419,20 +811,50 @@ ms.locfileid: "101750853"
         法国社会安全号码 (INSEE)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRSocialSecurityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        法国纳税标识号 (Numéro SPI) 
+        法国税务标识号 (Numéro SPI)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        法国增值销售税 (VAT) 号
+        法国增值税 (VAT) 号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `FRValueAddedTaxNumber` 添加到 `pii-categories` 参数中。 如果检测到 `FRValueAddedTaxNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr` 
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="germany"></a>德国
@@ -444,6 +866,18 @@ ms.locfileid: "101750853"
         德国驾照编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `DEDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -451,13 +885,33 @@ ms.locfileid: "101750853"
         德国身份证号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `DEIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        德国登记卡号码
+        德国护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `DEPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de` 
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -465,6 +919,16 @@ ms.locfileid: "101750853"
         德国税务标识号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `DETaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DETaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -472,6 +936,17 @@ ms.locfileid: "101750853"
         德国增值税号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `DEValueAddedNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DEValueAddedNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hong-kong"></a>香港特别行政区
@@ -483,6 +958,18 @@ ms.locfileid: "101750853"
         香港特别行政区身份证 (HKID) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `HKIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HKIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="hungary"></a>匈牙利
@@ -491,9 +978,21 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-        匈牙利个人识别码
+        匈牙利个人身份编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `HUPersonalIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HUPersonalIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -501,6 +1000,16 @@ ms.locfileid: "101750853"
         匈牙利税务标识号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `HUTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HUTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -508,6 +1017,16 @@ ms.locfileid: "101750853"
         匈牙利增值税号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `HUValueAddedNumber` 添加到 `pii-categories` 参数中。 如果检测到 `HUValueAddedNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="india"></a>印度
@@ -519,6 +1038,18 @@ ms.locfileid: "101750853"
         印度永久帐号 (PAN)
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `INPermanentAccount` 添加到 `pii-categories` 参数中。 如果检测到 `INPermanentAccount`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -526,6 +1057,17 @@ ms.locfileid: "101750853"
         印度唯一身份 (Aadhaar) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `INUniqueIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `INUniqueIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -538,6 +1080,19 @@ ms.locfileid: "101750853"
         印度尼西亚身份证 (KTP) 号码
 
     :::column-end:::
+    :::column span="2":::
+
+        **详细信息**
+
+        若要获得此实体类别，请将 `IDIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IDIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="ireland"></a>爱尔兰
@@ -549,6 +1104,36 @@ ms.locfileid: "101750853"
         爱尔兰个人公共服务 (PPS) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `IEPersonalPublicServiceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="":::
+ 
+        爱尔兰个人公共服务 (PPS) 号码 v2
+
+    :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `IEPersonalPublicServiceNumberV2` 添加到 `pii-categories` 参数中。 如果检测到 `IEPersonalPublicServiceNumberV2`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="israel"></a>以色列
@@ -560,6 +1145,18 @@ ms.locfileid: "101750853"
         以色列国民身份证
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ILNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `ILNationalID`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -567,6 +1164,16 @@ ms.locfileid: "101750853"
         以色列银行帐号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ILBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ILBankAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="italy"></a>意大利
@@ -578,6 +1185,18 @@ ms.locfileid: "101750853"
         意大利驾照编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ITDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ITDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -585,6 +1204,16 @@ ms.locfileid: "101750853"
         意大利会计代码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ITFiscalCode` 添加到 `pii-categories` 参数中。 如果检测到 `ITFiscalCode`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -592,6 +1221,16 @@ ms.locfileid: "101750853"
         意大利增值税号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ITValueAddedTaxNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ITValueAddedTaxNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -604,7 +1243,18 @@ ms.locfileid: "101750853"
         日本银行帐号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
 
+        若要获得此实体类别，请将 `JPBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPBankAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -612,20 +1262,50 @@ ms.locfileid: "101750853"
         日本驾照编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        日本 "我的数字" (个人) 
+        日本“个人编号”
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPMyNumberPersonal` 添加到 `pii-categories` 参数中。 如果检测到 `JPMyNumberPersonal`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        日本 "我的数字" (公司) 
+        日本“公司编号”
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPMyNumberCorporate` 添加到 `pii-categories` 参数中。 如果检测到 `JPMyNumberCorporate`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -633,13 +1313,33 @@ ms.locfileid: "101750853"
         日本居民注册号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ITValueAddedTaxNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ITValueAddedTaxNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+     `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        日本居住卡号
+        日本居住证号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPResidenceCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPResidenceCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -647,6 +1347,16 @@ ms.locfileid: "101750853"
         日本社会保险号码 (SIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPSocialInsuranceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPSocialInsuranceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -654,6 +1364,16 @@ ms.locfileid: "101750853"
         日本护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `JPPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `JPPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `ja`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="luxembourg"></a>卢森堡
@@ -662,16 +1382,38 @@ ms.locfileid: "101750853"
     :::column span="":::
         **实体**
 
-         (自然人员的卢森堡国识别号) 
+        卢森堡国民身份证号码（自然人）
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `LUNationalIdentificationNumberNatural` 添加到 `pii-categories` 参数中。 如果检测到 `LUNationalIdentificationNumberNatural`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        卢森堡国识别码 (非自然人员) 
+        卢森堡国民身份证号码（非自然人）
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `LUNationalIdentificationNumberNonNatural` 添加到 `pii-categories` 参数中。 如果检测到 `LUNationalIdentificationNumberNonNatural`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `fr`, `de`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="malta"></a>马耳他
@@ -683,6 +1425,18 @@ ms.locfileid: "101750853"
         马耳他身份证号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `MTIdentityCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `MTIdentityCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -690,6 +1444,16 @@ ms.locfileid: "101750853"
         马耳他税务标识号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `MTTaxIDNumber` 添加到 `pii-categories` 参数中。 如果检测到 `MTTaxIDNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -702,6 +1466,18 @@ ms.locfileid: "101750853"
         新西兰银行帐号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `NZBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZBankAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -709,6 +1485,16 @@ ms.locfileid: "101750853"
         新西兰驾照编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `NZDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -716,6 +1502,16 @@ ms.locfileid: "101750853"
         新西兰内陆收入编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `NZInlandRevenueNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZInlandRevenueNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -723,6 +1519,16 @@ ms.locfileid: "101750853"
         新西兰卫生部编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `NZMinistryOfHealthNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZMinistryOfHealthNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -730,6 +1536,16 @@ ms.locfileid: "101750853"
        新西兰社会福利号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `NZSocialWelfareNumber` 添加到 `pii-categories` 参数中。 如果检测到 `NZSocialWelfareNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -742,6 +1558,18 @@ ms.locfileid: "101750853"
         菲律宾统一多用途标识号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `PHUnifiedMultiPurposeIDNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PHUnifiedMultiPurposeIDNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="portugal"></a>葡萄牙 
@@ -753,6 +1581,18 @@ ms.locfileid: "101750853"
         葡萄牙公民卡编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `PTCitizenCardNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTCitizenCardNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -760,6 +1600,16 @@ ms.locfileid: "101750853"
        葡萄牙税务标识号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `PTTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `pt-pt`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="singapore"></a>新加坡
@@ -771,6 +1621,18 @@ ms.locfileid: "101750853"
         新加坡国家注册身份证 (NRIC) 号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `PTTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PTTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `zh-hans`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -783,6 +1645,18 @@ ms.locfileid: "101750853"
         南非身份证号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ZAIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ZAIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -795,6 +1669,18 @@ ms.locfileid: "101750853"
         韩国居民注册号码
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `KRResidentRegistrationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `KRResidentRegistrationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `ko`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="spain"></a>西班牙
@@ -806,6 +1692,18 @@ ms.locfileid: "101750853"
         西班牙 DNI
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `ESDNI` 添加到 `pii-categories` 参数中。 如果检测到 `ESDNI`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -813,6 +1711,16 @@ ms.locfileid: "101750853"
         西班牙社会安全号码 (SSN)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ESSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ESSocialSecurityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -820,6 +1728,16 @@ ms.locfileid: "101750853"
         西班牙税务标识号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `ESTaxIdentificationNumber` 添加到 `pii-categories` 参数中。 如果检测到 `ESTaxIdentificationNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `es`
+      
+   :::column-end:::
 :::row-end:::
  
 #### <a name="switzerland"></a>瑞士
@@ -831,10 +1749,22 @@ ms.locfileid: "101750853"
         瑞士社会安全号码 AHV
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `CHSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `CHSocialSecurityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `fr`, `de`, `it`
+      
+   :::column-end:::
 :::row-end:::
 
 
-#### <a name="taiwan"></a>台湾 
+#### <a name="taiwan"></a>中国台湾 
 
 :::row:::
     :::column span="":::
@@ -843,6 +1773,18 @@ ms.locfileid: "101750853"
         台湾国民身份证
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `TWNationalID` 添加到 `pii-categories` 参数中。 如果检测到 `TWNationalID`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -850,6 +1792,16 @@ ms.locfileid: "101750853"
        台湾居民证 (ARC/TARC)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `TWResidentCertificate` 添加到 `pii-categories` 参数中。 如果检测到 `TWResidentCertificate`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -857,6 +1809,16 @@ ms.locfileid: "101750853"
         台湾护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `TWPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `TWPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="united-kingdom"></a>英国
@@ -868,6 +1830,19 @@ ms.locfileid: "101750853"
         英国 驾照编号
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `UKDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+    :::column-end:::
+    
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -875,6 +1850,16 @@ ms.locfileid: "101750853"
        英国 选举名册编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `UKNationalInsuranceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKNationalInsuranceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -882,6 +1867,16 @@ ms.locfileid: "101750853"
        英国 国家医疗服务 (NHS) 号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `UKNationalHealthNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKNationalHealthNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -889,6 +1884,16 @@ ms.locfileid: "101750853"
        英国 国家保险号码 (NINO)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `UKNationalInsuranceNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKNationalInsuranceNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -896,7 +1901,16 @@ ms.locfileid: "101750853"
        英国 或美国护照号码
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `USUKPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USUKPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -904,7 +1918,16 @@ ms.locfileid: "101750853"
        英国 唯一纳税人参考编号
 
     :::column-end:::
+    :::column span="2":::
 
+        若要获得此实体类别，请将 `UKUniqueTaxpayerNumber` 添加到 `pii-categories` 参数中。 如果检测到 `UKUniqueTaxpayerNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 
 
@@ -917,6 +1940,18 @@ ms.locfileid: "101750853"
         美国社会安全号码 (SSN)
 
     :::column-end:::
+    :::column span="2":::
+        **详细信息**
+
+        若要获得此实体类别，请将 `USSocialSecurityNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USSocialSecurityNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -924,6 +1959,16 @@ ms.locfileid: "101750853"
        美国驾照编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `USDriversLicenseNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USDriversLicenseNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -931,6 +1976,16 @@ ms.locfileid: "101750853"
        美国或英国 护照号码
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `USUKPassportNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USUKPassportNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -938,6 +1993,16 @@ ms.locfileid: "101750853"
        美国个人纳税人标识号 (ITIN)
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `USIndividualTaxpayerIdentification` 添加到 `pii-categories` 参数中。 如果检测到 `USIndividualTaxpayerIdentification`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -945,6 +2010,16 @@ ms.locfileid: "101750853"
        美国禁毒署 (DEA) 编号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `DrugEnforcementAgencyNumber` 添加到 `pii-categories` 参数中。 如果检测到 `DrugEnforcementAgencyNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -952,4 +2027,14 @@ ms.locfileid: "101750853"
        美国银行帐号
 
     :::column-end:::
+    :::column span="2":::
+
+        若要获得此实体类别，请将 `USBankAccountNumber` 添加到 `pii-categories` 参数中。 如果检测到 `USBankAccountNumber`，也会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="":::
+
+      `en`
+      
+   :::column-end:::
 :::row-end:::

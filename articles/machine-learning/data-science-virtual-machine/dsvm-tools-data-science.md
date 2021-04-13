@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104888951"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上的机器学习和数据科学工具
 Azure Data Science Virtual Machine (DSVM) 拥有丰富的用于机器学习的工具和库，这些工具和库以 Python、R 和 Julia 等热门语言提供。
@@ -99,7 +99,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规机器学习库      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
-| 如何使用或运行它      | 作为 Python 库（2.7 和 3.5）、R 程序包和 on path 命令行工具（`C:\dsvm\tools\xgboost\bin\xgboost.exe` 适用于 Windows，`/dsvm/tools/xgboost/xgboost` 适用于 Linux）运行    |
+| 如何使用或运行它      | 作为 Python 库（2.7 和 3.6+）、R 程序包，以及 on-path 命令行工具（`C:\dsvm\tools\xgboost\bin\xgboost.exe` 适用于 Windows，`/dsvm/tools/xgboost/xgboost` 适用于 Linux）    |
 | 指向示例的链接      | 虚拟机上包含了示例，在 Linux 上位于 `/dsvm/tools/xgboost/demo` 中，在 Windows 上位于 `C:\dsvm\tools\xgboost\demo` 中。   |
 | 相关工具      | LightGBM、MXNet   |
 

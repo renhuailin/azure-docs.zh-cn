@@ -11,41 +11,41 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 02/01/2021
 ms.openlocfilehash: ad05dd59c925242baf5c2b0e36c1f51bc4fec5d4
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575372"
 ---
 # <a name="overview-of-computer-vision-spatial-analysis"></a>计算机视觉空间分析概述
 
-计算机视觉空间分析是 Azure 认知服务计算机视觉的一项新功能，通过了解人员在给定领域的变动和状态，帮助组织最大限度地提高其物理空间的价值。 它允许从 CCTV 或监视摄像机中引入视频，运行 AI 操作以从视频流中提取见解，并生成由其他系统使用的事件。 使用摄像流输入时，AI 操作可以执行一些操作，例如，计算输入空间的人员数，或度量与人脸掩码和社会 distancing 准则的符合性。
+计算机视觉空间分析是 Azure 认知服务计算机视觉的一项新功能，通过了解人员在特定区域的动向和状态，帮助组织实现物理空间的价值最大化。 通过该功能可从 CCTV 或监视摄像头引入视频，运行 AI 操作从视频流中提取见解，并可生成事件供其他系统使用。 根据摄像头的流输入内容，AI 操作可以执行一些任务，例如统计进入空间的人数，或衡量人们有无遵守佩戴口罩和社交距离的准则。
 
-## <a name="the-basics-of-spatial-analysis"></a>空间分析的基础知识
+## <a name="the-basics-of-spatial-analysis"></a>空间分析基础知识
 
-如今，空间分析的核心操作都是在引入视频的管道上构建的，它在视频中检测人员，随着时间的推移跟踪用户，并在用户与感兴趣的区域交互时生成事件。
+如今，空间分析的核心操作都是基于引入视频的管道构建的，它可检测视频中的人员，跟踪人员随时间变化的动向，并在用户与感兴趣区域交互时生成事件。
 
 ## <a name="spatial-analysis-terms"></a>空间分析术语
 
 | 术语 | 定义 |
 |------|------------|
-| 人员检测 | 此组件回答的问题是 "此图像中的人在哪里"？ 它在图像中找到人，并传递一个范围框，指示每个用户的位置和人员跟踪组件。 |
-| 人员跟踪 | 当人们在照相机的前方四处移动时，此组件会随着时间的推移连接人员检测。 它使用临时逻辑来了解人们通常如何移动，并使用有关用户整体外观的基本信息来实现此目的。 它不跟踪跨多个照相机的人。 如果某个人将相机中的视图的字段作为大约一分钟的时间，然后重新进入相机视图，系统会将此视为一个新用户。 跟踪不能跨相机唯一地标识个人。 它不使用面部识别或 gait 跟踪。 |
-| 面部掩码检测 | 此组件检测人脸在相机视图中的位置，并确定是否存在面部掩码。 为此，AI 操作会扫描视频中的图像;检测到人脸时，该服务在人脸周围提供一个边界框。 使用对象检测功能，它确定边界框中是否存在人脸掩码。 面部面具检测不涉及到不同人脸、预测或分类面部特性或执行面部识别。 |
-| 感兴趣区域 | 这是配置过程中在输入视频中定义的区域或行。 当某个人与视频的区域交互时，系统将生成一个事件。 例如，对于 PersonCrossingLine 操作，会在视频中定义一行。 当某个人越过该行时，将生成一个事件。 |
-| 事件 | 事件是空间分析的主输出。 每个操作都会定期 (ex 发出特定事件。 每分钟一次) 或发生特定的触发器。 此事件包括有关输入视频中发生的内容的信息，但不包括任何图像或视频。 例如，PeopleCount 操作可以在每次更改用户计数 (触发器时，每分钟) 或每 (定期) 发出包含更新计数的事件。 |
+| 人员检测 | 此组件回答的问题是“这张图像中的人在哪里”？ 它会找到图像中的人员并向人员跟踪组件传递一个范围框，指示每个人的位置。 |
+| 人员跟踪 | 当人们在摄像头前方四处移动时，此组件会随时间推移连接人员检测。 它使用人们通常如何移动的临时逻辑以及人们这样做的总体状况基本信息来实现这一点。 它不会跨多个摄像头来跟踪人员。 如果有人离开摄像头的视野时长超过约一分钟，然后重新进入摄像头视野，则系统会将其视为新用户。 人员跟踪不能跨摄像头唯一地识别个人。 它不会使用面部识别或步态跟踪。 |
+| 口罩检测 | 该组件在摄像头视野内检测人脸的位置，并识别有无口罩。 为此，AI 操作会扫描视频中的图像，在检测到人脸时，服务会围绕脸部提供一个范围框。 使用对象检测功能，识别范围框中有无口罩。 口罩检测不涉及区分人脸不同、预测或分类人脸特性或执行面部识别。 |
+| 感兴趣区域 | 这是配置过程中在输入视频中定义的一个区域或一条线。 当有人与视频中的该区域交互时，系统将生成一个事件。 例如，对于 PersonCrossingLine 操作，系统会在视频中定义一条线。 当有人越过该线时，系统将生成一个事件。 |
+| 事件 | 事件是空间分析的主要输出。 每个操作都会定期（例如每分钟一次） 或在触发特定条件时发出特定事件。 事件包括输入视频中发生的情况，但不包括任何图像或视频。 例如，PeopleCount 操作可在每次人数有变化（触发器）时发出一个包含更新计数的事件，或每分钟发送一次（定期）。 |
 
-## <a name="responsible-use-of-spatial-analysis-technology"></a>使用空间分析技术的责任
+## <a name="responsible-use-of-spatial-analysis-technology"></a>合理使用空间分析技术
 
-若要了解如何使用空间分析技术，请参阅 [透明度注释](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)。 Microsoft 的透明度注释旨在帮助你了解 AI 技术的工作原理、系统所有者可做出的影响系统性能和行为的选项，以及考虑整个系统（包括技术、人员和环境）的重要性。
+要了解如何合理使用空间分析技术，请参阅[透明声明](/legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)。 Microsoft 的透明声明旨在帮助你了解 AI 技术的工作原理、系统所有者可通过哪些选择来影响系统性能和行为，以及保持系统全局观（包括技术、人员和环境）的重要性。
 
-## <a name="spatial-analysis-gating-for-public-preview"></a>公共预览版的空间分析门
+## <a name="spatial-analysis-gating-for-public-preview"></a>空间分析公共预览版限制
 
-若要确保空间分析用于设计它的方案，我们将通过应用程序流程向客户提供此技术。 若要获取对空间分析的访问权限，需要首先填写我们的在线进气窗体。 [在此处开始应用程序](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u)。
+为确保空间分析的使用符合其设计方案，我们将通过应用程序进程向客户提供这种技术。 要获取空间分析的访问权限，首先需要填写我们的在线登记表。 [在此开始申请](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u)。
 
-对空间分析公开预览版的访问权限取决于 Microsoft 唯一的决定，它取决于我们的资格标准、审核流程和可用性，可在此封闭预览版中支持有限数量的客户。 在公共预览版中，我们正在寻找与 Microsoft 有重大关系的客户，对我们在建议用例上与我们合作，并与我们的责任 AI 承诺保持联系。
+空间分析公共预览版访问权限由 Microsoft 全权决定，决定因素包括我们的资格标准、审批程序以及控制预览期间支持限定客户数量的能力。 在公共预览版中，我们要寻找的是与 Microsoft 关系密切、有意就建议用例以及有利于践行我们 AI 责任承诺的其他方案与我们合作的客户。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [空间分析容器入门](spatial-analysis-container.md)
+> [开始使用空间分析容器](spatial-analysis-container.md)

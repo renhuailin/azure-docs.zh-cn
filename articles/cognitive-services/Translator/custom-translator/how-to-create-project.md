@@ -1,7 +1,7 @@
 ---
-title: 如何创建项目-自定义转换器
+title: 如何创建项目 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在 Azure 认知服务自定义转换器中创建和管理项目。
+description: 本文介绍如何在 Azure 认知服务自定义翻译器中创建和管理项目。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 9e3aa52323f44e6c1407fe2a542e40ee06370043
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895792"
 ---
 # <a name="create-a-project"></a>创建一个项目
@@ -52,7 +52,7 @@ ms.locfileid: "98895792"
 
 选择某个项目后，会在项目页上看到以下信息：
 
-- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 在文本翻译 API 中使用 CategoryID 可以获取自定义译文。 若要复制，请单击 "复制" 图标。
+- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 在文本翻译 API 中使用 CategoryID 可以获取自定义译文。 若要复制，请单击复制图标。
 
 - 训练按钮：使用此按钮可以开始[训练模型](how-to-train-model.md)。
 

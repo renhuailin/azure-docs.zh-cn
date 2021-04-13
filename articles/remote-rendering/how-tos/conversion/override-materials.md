@@ -1,29 +1,29 @@
 ---
 title: 在模型转换期间替代材料
-description: 介绍转换时重写工作流的材料
+description: 介绍转换期间的材料替代工作流
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91576636"
 ---
 # <a name="override-materials-during-model-conversion"></a>在模型转换期间替代材料
 
-源模型中的材料设置用于定义呈现器使用的 [.pbr 材料](../../overview/features/pbr-materials.md) 。
-有时 [默认转换](../../reference/material-mapping.md) 不会提供所需的结果，需要进行更改。
-转换模型以供在 Azure 远程呈现中使用时，可以提供一个材料覆盖文件，以自定义每个材料如何进行材料转换。
-如果 `<modelName>.MaterialOverrides.json` 在输入模型旁边的输入容器中找到一个名为的文件 `<modelName>.<ext>` ，则该文件将用作材料覆盖文件。
+源模型中的材料设置用于定义渲染器所使用的 [PBR 材料](../../overview/features/pbr-materials.md)。
+有时[默认转换](../../reference/material-mapping.md)提供不了所需的结果，需要进行更改。
+为便于在 Azure 远程渲染中使用而对模型进行转换时，可以提供材料替代文件，从而自定义每种材料的材料转换方式。
+如果在输入容器的输入模型 `<modelName>.<ext>` 旁边找到一个名为 `<modelName>.MaterialOverrides.json` 的文件，则该文件将用作材料替代文件。
 
 ## <a name="the-override-file-used-during-conversion"></a>转换期间使用的替代文件
 
-举个简单的例子，假设方框模型有一个称为 "默认" 的材料。
-此外，假设它的 albedo 颜色需要调整为在 ARR 中使用。
-在这种情况下， `box.MaterialOverrides.json` 可以创建文件，如下所示：
+举个简单的例子，假设方框模型只含一个称为“默认”的材料。
+此外，假设需要调整它的反照率颜色以供在 ARR 中使用。
+在这种情况下，可以创建一个 `box.MaterialOverrides.json` 文件，如下所示：
 
 ```json
 [
@@ -39,13 +39,13 @@ ms.locfileid: "91576636"
 ]
 ```
 
-`box.MaterialOverrides.json`文件放置在旁边的输入容器中 `box.fbx` ，该容器指示转换服务应用新设置。
+将 `box.MaterialOverrides.json` 文件放在输入容器的 `box.fbx` 旁边，指示转换服务应用新的设置。
 
 ### <a name="color-materials"></a>颜色材料
 
-[颜色材料](../../overview/features/color-materials.md)模型描述了与光照无关的持续着色的图面。
-例如，颜色材料适用于 Photogrammetry 算法创建的资产。
-在 "材料覆盖文件" 中，通过将设置为，可以将材料声明为颜色材料 `unlit` `true` 。
+[颜色材料](../../overview/features/color-materials.md)模型介绍了无照明情况下持续着色的表面。
+例如，颜色材料适用于摄影测量算法创建的资产。
+在材料替代文件中，通过将 `unlit` 设置为 `true`，可以将材料声明为颜色材料。
 
 ```json
 [
@@ -62,9 +62,9 @@ ms.locfileid: "91576636"
 
 ### <a name="ignore-specific-texture-maps"></a>忽略特定纹理映射
 
-有时，您可能希望转换过程忽略特定纹理映射。 这种情况可能是由一个工具生成的，该工具生成的是由呈现器无法正确理解的特殊映射。 例如，用于定义不透明度的 "OpacityMap" 或 "NormalMap" 存储为 "BumpMap" 的模型。  (在后一种情况下，你希望忽略 "NormalMap"，这将导致转换器使用 "BumpMap" 作为 "NormalMap"。 ) 
+有时可能需要转换过程忽略特定纹理映射。 当借助某种工具生成模型，且该工具生成渲染器无法正确理解的特定映射时，这种情况就可能发生。 例如，用于定义不透明度以外属性的 "OpacityMap"，或其中 "NormalMap" 已存储为 "BumpMap" 的模型。 （对于后一种情况，需要忽略 "NormalMap"，因为它会导致转换器将 "BumpMap" 用作 "NormalMap"。）
 
-原则很简单。 只需添加一个名为的属性 `ignoreTextureMaps` ，并添加要忽略的纹理映射：
+原理很简单。 只需添加一个名为 `ignoreTextureMaps` 的属性，并添加要忽略的纹理映射：
 
 ```json
 [
@@ -77,12 +77,12 @@ ms.locfileid: "91576636"
 
 有关可忽略的纹理映射的完整列表，请参阅下面的 JSON 架构。
 
-### <a name="applying-the-same-overrides-to-multiple-materials"></a>将相同的替代应用于多个材料
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>将相同替代应用于多种材料
 
-默认情况下，当材料覆盖文件的名称与材料名称完全匹配时，将应用该条目。
-由于相同的替代应该适用于多个材料，因此，您可以根据需要提供一个正则表达式作为条目名称。
-该字段 `nameMatching` 具有默认值 `exact` ，但它可以设置为，以表明该 `regex` 条目应应用于每个匹配的材料。
-所使用的语法与用于 JavaScript 的语法相同。 下面的示例演示了一个替代，适用于名称如 "Material2"、"Material01" 和 "Material999" 的材料。
+默认情况下，当材料替代文件中的条目名与材料名完全匹配时，将应用该条目。
+由于经常需要将相同替代应用于多种材料，因此，可以根据需要提供一个正则表达式作为条目名。
+字段 `nameMatching` 具有默认值 `exact`，但可以设置为 `regex`，以表明该条目会应用于每种匹配的材料。
+所使用的语法与用于 JavaScript 的语法相同。 下面的示例演示了应用于材料名如 "Material2"、"Material01" 和 "Material999" 的一个替代。
 
 ```json
 [
@@ -99,17 +99,17 @@ ms.locfileid: "91576636"
 ]
 ```
 
-在材料覆盖文件中，最多只有一个条目适用于单个材料。
-如果存在精确匹配 (即缺少 `nameMatching` 或等于 `exact` 材料名称) ，则选择该条目。
-否则，将选择文件中与材料名称匹配的第一个 regex 条目。
+在材料替代文件中，一个条目最多只能应用于一种材料。
+如果材料名得以精确匹配（例如 `nameMatching` 无或结果为 `exact`），则选择该条目。
+否则，将选择文件中与材料名匹配的第一个 regex 条目。
 
-### <a name="getting-information-about-which-entries-applied"></a>获取有关应用了哪些项的信息
+### <a name="getting-information-about-which-entries-applied"></a>获取有关应用条目的信息
 
-写入到输出容器的 [信息文件](get-information.md#information-about-a-converted-model-the-info-file) 将提供有关所提供的替代数以及已重写的材料数的信息。
+写入到输出容器的[信息文件](get-information.md#information-about-a-converted-model-the-info-file)提供了有关所提供的替代数以及已替代的材料数的信息。
 
 ## <a name="json-schema"></a>JSON 架构
 
-此处提供了材料文件的完整 JSON 架构。 除了 `unlit` 和之外 `ignoreTextureMaps` ，"可用" 属性还是 " [颜色材料](../../overview/features/color-materials.md) " 和 " [.pbr" 材料](../../overview/features/pbr-materials.md) 模型各部分中描述的属性的子集。
+此处提供了材料文件的完整 JSON 架构。 除了 `unlit` 和 `ignoreTextureMaps` 之外，可用属性均为[颜色材料](../../overview/features/color-materials.md)和 [PBR材料](../../overview/features/pbr-materials.md)模型部分中描述的属性的子集。
 
 ```json
 {

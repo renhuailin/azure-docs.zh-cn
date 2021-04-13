@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98762714"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本
@@ -28,9 +28,9 @@ ms.locfileid: "98762714"
 
 若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
-1. 在“我的应用”页面上选择应用名称以访问应用  。
+1. 在“我的应用”页面上选择应用名称以访问应用。
 
-1. 在应用中，在顶部的面板中选择“训练”。 
+1. 在应用中，在顶部的面板中选择“训练”。
 
 1. 训练完成后，浏览器顶部会显示一条通知。
 
@@ -40,13 +40,13 @@ ms.locfileid: "98762714"
 
 ## <a name="train-with-all-data"></a>使用所有数据进行训练
 
-训练使用一小部分负采样。 可以使用门户或 API 来使用所有可用的数据。 
+训练使用一小部分负采样。 可以使用所有可用的数据，而不是使用门户或 API。 
 
 ### <a name="using-the-luis-portal"></a>使用 LUIS 门户
 
-登录到 [LUIS 门户](https://www.luis.ai/) 并单击你的应用程序。 在屏幕顶部选择 " **管理** "，然后选择 " **设置** " 并启用或禁用 " **使用确定性培训** " 选项。 禁用后，训练将使用所有可用的数据。
+登录到 [LUIS 门户](https://www.luis.ai/) 并单击应用。 选择屏幕顶部的“管理”，然后选择“设置”并启用或禁用“使用确定性训练”选项。 禁用后，训练将使用所有可用的数据。
 
-![用于启用或禁用非确定性定型的按钮](./media/non-determinstic-training.png)
+![用于启用或禁用非确定性训练的按钮](./media/non-determinstic-training.png)
 
 ### <a name="using-the-version-settings-api"></a>使用版本设置 API
 

@@ -7,10 +7,10 @@ ms.date: 06/15/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f6d79f41843069fe6cafe1fa1358ac6c1aab12e6
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99591729"
 ---
 # <a name="debug-rendering"></a>调试渲染
@@ -77,7 +77,7 @@ void EnableDebugRenderingEffects(ApiHandle<RenderingSession> session, bool highl
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C + + RenderingConnection：:D ebugRenderingSettings ( # B1 ](/cpp/api/remote-rendering/renderingconnection#debugrenderingsettings)
+* [C++ RenderingConnection::DebugRenderingSettings()](/cpp/api/remote-rendering/renderingconnection#debugrenderingsettings)
 
 ## <a name="next-steps"></a>后续步骤
 

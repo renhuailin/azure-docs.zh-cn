@@ -1,7 +1,7 @@
 ---
 title: 如何上传文档 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 文档上传功能 (两个文档上传并行文档，其中一个是原点，另一个是转换) 到服务中。
+description: 文档上传功能可将并行文档（两个文档，其中一个是原始文档，另一个是翻译）上传到该服务中。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 83cce31d3eee9b5cca7b54e996e41a270fec0030
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98896388"
 ---
 # <a name="upload-a-document"></a>上传文档

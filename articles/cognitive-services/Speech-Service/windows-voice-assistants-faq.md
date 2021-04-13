@@ -1,5 +1,5 @@
 ---
-title: Windows 语音助手-常见问题
+title: Windows 上的语音助理 - 常见问题解答
 titleSuffix: Azure Cognitive Services
 description: Windows 语音代理开发期间经常遇到的常见问题。
 services: cognitive-services
@@ -11,47 +11,47 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "84456993"
 ---
 # <a name="samples-and-faqs"></a>示例和常见问题解答
 
-## <a name="the-uwp-voice-assistant-sample"></a>UWP 声音助手示例
+## <a name="the-uwp-voice-assistant-sample"></a>UWP 语音助理示例
 
-UWP 语音助手示例是 Windows 上的语音助手，适用于
+UWP 语音助理示例是 Windows 上的语音助理，用于
 
-- 演示如何使用 Windows ConversationalAgent Api
-- 显示 Windows 上语音代理的最佳实践
-- 为你的 MVP 代理应用程序提供可适应的应用和可重用组件
-- 显示如何将直接线路语音与机器人框架或自定义命令结合使用，以实现端到端语音代理体验
+- 演示如何使用 Windows ConversationalAgent API
+- 显示 Windows 上语音代理的最佳做法
+- 为你的 MVP 代理应用程序提供适应性强的应用和可重用组件
+- 显示如何将 Direct Line Speech 以及 Bot Framework 或自定义命令与 Windows ConversationalAgent API 结合使用，以实现端到端的语音代理体验
 
-随示例应用一起提供的文档通过正确清理的先决条件，演练语音激活和代理管理的代码路径。
+随示例应用一起提供的文档将演练语音激活和代理管理的代码路径，包括从启动的先决条件到正确清理的完整内容。
 
 > [!div class="nextstepaction"]
 > [访问 UWP 示例的 GitHub 存储库](https://aka.ms/MVA/sample)
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="how-do-i-contact-microsoft-for-resources-like-limited-access-feature-tokens-and-keyword-model-files"></a>如何实现与 Microsoft 联系以获取有限的访问功能令牌和关键字模型文件等资源吗？
+### <a name="how-do-i-contact-microsoft-for-resources-like-limited-access-feature-tokens-and-keyword-model-files"></a>如何与 Microsoft 联系以获取有限的访问功能令牌和关键字模型文件等资源？
 
 联系 winvoiceassistants@microsoft.com 以请求这些资源。
 
-### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>我的应用程序在通过语音激活时显示在一个小窗口中。 如何从 compact 视图转换到完整应用程序窗口？
+### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>在通过语音激活我的应用时，它会显示在一个小窗口中。 如何从精简视图转换为完整的应用程序窗口？
 
-当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读 [语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) ，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
+首次通过语音激活应用程序时，应用程序会在精简视图中启动。 请阅读[语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)，获取有关 Windows 上的语音助理的不同视图以及在这些视图之间转换的指导。
 
-若要将精简视图转换为完整应用视图，请使用 appView API `TryEnterViewModeAsync` ：
+若要从精简视图转换到完整应用视图，请使用 appView API `TryEnterViewModeAsync`：
 
 `var appView = ApplicationView.GetForCurrentView();
  await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);`
 
-### <a name="why-are-voice-assistant-features-on-windows-only-enabled-for-uwp-applications"></a>为什么 Windows 上的语音助手功能只能为 UWP 应用程序启用？
+### <a name="why-are-voice-assistant-features-on-windows-only-enabled-for-uwp-applications"></a>为什么只为 UWP 应用程序启用 Windows 上的语音助理功能？
 
-由于与语音激活等功能相关的隐私风险，因此，UWP 平台的功能是必需的，以便 Windows 上的语音助手功能足够安全。
+考虑到语音激活等功能相关的隐私风险，UWP 平台的功能是必需的，这些功能可确保 Windows 上的语音助理功能足够安全。
 
-### <a name="the-uwp-voice-assistant-sample-uses-direct-line-speech-do-i-have-to-use-direct-line-speech-for-my-voice-assistant-on-windows"></a>UWP 语音助手示例使用了直接行语音。 我是否必须在 Windows 上为语音助手使用直接行语音？
+### <a name="the-uwp-voice-assistant-sample-uses-direct-line-speech-do-i-have-to-use-direct-line-speech-for-my-voice-assistant-on-windows"></a>UWP 语音助理示例使用 Direct Line Speech。 我必须为 Windows 上的语音助理使用 Direct Line Speech 吗？
 
-UWP 示例应用程序是使用直行语音和语音服务 SDK 开发的，演示了如何使用带有 Windows 会话代理功能的对话服务。 但是，可以使用任何服务进行本地和云关键字验证、语音到文本转换、bot 对话框和文本到语音转换。
+UWP 示例应用程序是使用 Direct Line Speech 和语音服务 SDK 开发的，用于演示如何使用带有 Windows 对话代理功能的对话服务。 但是，你可使用任何服务进行本地和云关键字验证、语音转文本、机器人对话和文本转语音。

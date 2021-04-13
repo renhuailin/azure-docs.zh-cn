@@ -1,7 +1,7 @@
 ---
-title: 如何配置异常探测器 API 的容器
+title: 如何为异常检测器 API 配置容器
 titleSuffix: Azure Cognitive Services
-description: 使用命令参数配置异常探测器 API 容器运行时环境 `docker run` 。 此容器有多个必需设置，以及一些可选设置。
+description: 异常检测器 API 容器运行时环境是使用 `docker run` 命令参数配置的。 此容器有多个必需设置，以及一些可选设置。
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363708"
 ---
 # <a name="configure-anomaly-detector-containers"></a>配置异常检测器容器
 
-使用命令参数配置 **异常探测器** 容器运行时环境 `docker run` 。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+异常检测器容器运行时环境是使用 `docker run` 命令参数配置的。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
 此容器具有以下配置设置：
 
-|必需|设置|用途|
+|必须|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|用于跟踪账单信息。|
 |否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](/azure/application-insights) 遥测支持。|
@@ -33,7 +33,7 @@ ms.locfileid: "94363708"
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
 |否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |否|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -41,11 +41,11 @@ ms.locfileid: "94363708"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，并且值必须是为配置设置指定的 _异常探测器_ 资源的有效密钥 [`Billing`](#billing-configuration-setting) 。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的异常检测器资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户： **异常探测器的** 资源管理， **密钥** 下
+* Azure 门户：异常检测器的资源管理，位于“密钥”下 
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -53,11 +53,11 @@ ms.locfileid: "94363708"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-此 `Billing` 设置指定 Azure 上的 _异常探测器_ 资源的终结点 URI，该 URI 用于计量容器的计费信息。 您必须为此配置设置指定一个值，并且该值必须是 Azure 上 _异常探测器_ 资源的有效终结点 URI。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的异常检测器资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上异常检测器资源的有效终结点 URI。
 
 可以在以下位置找到此设置：
 
-* Azure 门户： **异常探测器的** 概述，已标记 `Endpoint`
+* Azure 门户：“异常检测器的概述”标记为 `Endpoint`
 
 |必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
@@ -84,23 +84,23 @@ ms.locfileid: "94363708"
 
 使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
 
-异常探测器容器不使用输入或输出装入来存储定型或服务数据。 
+异常检测器容器不使用输入或输出装载来存储训练或服务数据。 
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](anomaly-detector-container-howto.md#the-host-computer)的装载位置。 
 
 |可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | String | 异常探测器容器不使用此。|
+|不允许| `Input` | String | 异常检测器容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例 
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](anomaly-detector-container-howto.md#stop-the-container)它。
 
-* **行继续** 符：以下部分中的 Docker 命令使用反斜杠 `\` 作为 bash shell 的行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
-* **参数顺序** ：除非很熟悉 Docker 容器，否则不要更改参数顺序。
+* 行继续符：以下各部分中的 Docker 命令使用反斜杠 (`\`) 作为 bash shell 行继续符。 根据主机操作系统的要求替换或删除字符。 例如，Windows 的行继续符是插入符号 `^`。 将反斜杠替换为插入符号。 
+* **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
-将值替换为方括号， `{}` 并将替换为你自己的值：
+将括号 `{}` 中的值替换为你自己的值：
 
 | 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
@@ -111,11 +111,11 @@ ms.locfileid: "94363708"
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](anomaly-detector-container-howto.md#billing)。
-> ApiKey 值是 "Azure 异常检测器资源密钥" 页中的 **密钥** 。 
+> ApiKey 值是 Azure 异常检测器“资源密钥”页中提供的“密钥”。 
 
-## <a name="anomaly-detector-container-docker-examples"></a>异常探测器容器 Docker 示例
+## <a name="anomaly-detector-container-docker-examples"></a>异常检测器容器 Docker 示例
 
-以下 Docker 示例适用于异常探测器容器。 
+以下 Docker 示例适用于异常检测器容器。 
 
 ### <a name="basic-example"></a>基本示例 
 
@@ -139,5 +139,5 @@ ms.locfileid: "94363708"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将异常探测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
-* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [向 Azure 容器实例中部署异常检测器容器](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [详细了解异常检测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

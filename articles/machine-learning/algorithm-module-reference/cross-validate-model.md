@@ -1,7 +1,7 @@
 ---
 title: 交叉验证模型：模块参考
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设计器中的 "交叉验证模型" 模块来交叉验证分类或回归模型的参数估算值。
+description: 使用 Azure 机器学习设计器中的“交叉验证模型”模块，交叉验证分类或回归模型的参数估算值。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421339"
 ---
 # <a name="cross-validate-model"></a>交叉验证模型
@@ -109,9 +109,9 @@ ms.locfileid: "93421339"
 
 根据要评估的模型类型，该模块还会包含每个折的以下指标： 
 
-+ **分类模型** ：精准率、召回率、F 评分、AUC、准确度  
++ **分类模型**：精准率、召回率、F 评分、AUC、准确度  
 
-+ **回归模型** ：平均绝对误差、平均根方根误差、相对绝对误差、相对平方误差和决定系数。
++ **回归模型**：平均绝对误差、平均根方根误差、相对绝对误差、相对平方误差和决定系数。
 
 
 ## <a name="technical-notes"></a>技术说明  

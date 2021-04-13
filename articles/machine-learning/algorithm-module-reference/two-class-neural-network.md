@@ -1,7 +1,7 @@
 ---
 title: 双类神经网络：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习中使用 Two-Class 神经网络模块来创建二进制分类器。
+description: 了解如何使用 Azure 机器学习中的“双类神经网络”模块创建二元分类器。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93421152"
 ---
 # <a name="two-class-neural-network-module"></a>“双类神经网络”模块
@@ -42,13 +42,13 @@ ms.locfileid: "93421152"
   
 2.  通过设置“创建训练程序模式”选项，指定要如何对模型进行训练。  
   
-    -   **单个参数** ：如果已知如何配置模型，请选择此选项。
+    -   **单个参数**：如果已知如何配置模型，请选择此选项。
 
-    -   **参数范围** ：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。  
+    -   **参数范围**：如果不确定最佳参数，可以使用 [优化模型超参数](tune-model-hyperparameters.md)模块来找到最佳参数。 你提供某个值范围，然后训练程序就会循环访问多个设置组合，以确定可产生最佳结果的值组合。  
 
 3.  对于“隐藏层规范”，请选择要创建的网络体系结构的类型。  
   
-    -   **完全连接的情况** ：使用为双类神经网络定义的默认神经网络体系结构，如下所述：
+    -   **完全连接的情况**：使用为双类神经网络定义的默认神经网络体系结构，如下所述：
   
         -   有一个隐藏层。
   
@@ -78,7 +78,7 @@ ms.locfileid: "93421152"
 
     + 如果将“创建训练程序模式”设置为“单个参数”，请连接带标记的数据集和[训练模型](train-model.md)模块 。  
   
-    + 如果将“创建训练程序模式”设置为“参数范围”，则连接标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)来训练模型 。  
+    + 如果将“创建训练程序模式”设置为“参数范围”，请连接带标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)来训练模型 。  
   
     > [!NOTE]
     > 
@@ -86,7 +86,7 @@ ms.locfileid: "93421152"
     > 
     > 如果将一组参数值传递给[优化模型超参数](tune-model-hyperparameters.md)模块，则当它期望每个参数有一系列设置时，它会忽略这些值，并为学习器使用默认值。  
     > 
-    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个扫描过程中都会使用你指定的单个值，即使其他参数的一系列值发生了更改。  
+    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个整理过程中都会使用你指定的单个值，即使其他参数的值发生一系列更改。  
   
 14. 提交管道。
 

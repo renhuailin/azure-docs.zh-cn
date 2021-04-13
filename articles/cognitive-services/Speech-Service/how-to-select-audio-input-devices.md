@@ -12,10 +12,10 @@ ms.date: 07/05/2019
 ms.author: chlandsi
 ms.custom: devx-track-js
 ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95026601"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用语音 SDK 选择音频输入设备

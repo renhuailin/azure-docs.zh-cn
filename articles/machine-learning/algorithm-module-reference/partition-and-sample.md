@@ -1,5 +1,5 @@
 ---
-title: 分区和示例：模块引用
+title: 分区和采样：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的“分区和采样”模块对数据集进行采样或由数据集创建分区。
 services: machine-learning
@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: a1f0a0dff4eb8a1aad0cd5e142959a636827a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90898492"
 ---
 # <a name="partition-and-sample-module"></a>“分区和采样”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用“分区和采样”模块可对数据集进行采样或由数据集创建分区。
 

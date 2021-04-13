@@ -12,10 +12,10 @@ ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
 ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102210812"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
@@ -154,7 +154,7 @@ ms.locfileid: "102210812"
 ## <a name="use-interactive-authentication"></a>使用交互式身份验证
 
 > [!IMPORTANT]
-> 交互式身份验证使用浏览器并需要 Cookie（包括第三方 Cookie）。 如果已禁用 Cookie，则可能会收到“我们无法为你登录”之类的错误。 如果已启用 [Azure AD 多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)，则也可能发生此错误。
+> 交互式身份验证使用浏览器并需要 Cookie（包括第三方 Cookie）。 如果已禁用 Cookie，则可能会收到“我们无法为你登录”之类的错误。 如果已启用 [Azure AD 多重身份验证](../active-directory/authentication/concept-mfa-howitworks.md)，则也可能出现此错误。
 
 文档和样本中的大多数示例都使用交互式身份验证。 例如，当使用 SDK 时，有两个函数调用会自动提示你使用基于 UI 的身份验证流：
 

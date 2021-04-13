@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
 ms.openlocfilehash: 124145059c825dee1dd52298688a47a807058551
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102182088"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与 Kubernetes 和 Helm 配合使用
@@ -105,7 +105,7 @@ read:
 > [!IMPORTANT]
 > - 如果未提供 `billing` 和 `apikey` 值，服务将在 15 分钟后过期。 同样，验证也会因服务不可用而失败。
 > 
-> - 如果将多个读取容器部署在负载平衡器之后（例如，在 "Docker Compose" 或 "Kubernetes" 下），则必须具有外部缓存。 由于处理容器和 GET 请求容器可能不相同，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅 [Configure 计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
+> - 如果要将多个“读取”容器部署在负载平衡器之后（例如，在 Docker Compose 或 Kubernetes 下面），则必须具有外部缓存。 由于进行处理的容器和 GET 请求容器可能不是同一个容器，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅[配置计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
 >
 
 在 read 目录下创建 templates 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 `deployment.yaml` 文件将充当 Helm 模板。
@@ -249,18 +249,18 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 ## <a name="deploy-multiple-v3-containers-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上部署多个 v3 容器
 
-从容器的 v3 开始，可以在任务和页级别并行使用容器。
+从 v3 容器开始，可以在任务和页面级并行使用容器。
 
-按照设计，每个 v3 容器都具有一个调度程序和一个识别辅助角色。 调度程序负责将多页任务拆分为多个单页子任务。 识别辅助角色针对识别单个页面文档进行了优化。 若要实现页面级别并行，请在负载均衡器后面部署多个 v3 容器，并让容器共享一个通用存储和队列。 
+经设计，每个 v3 容器都有一个调度程序和一个识别工作线程。 调度程序负责将多页任务拆分为多个单页子任务。 识别工作线程为识别单个页面文档进行了优化。 若要实现页面级并行，请在负载均衡器后面部署多个 v3 容器，并让容器共用一个通用存储和队列。 
 
 > [!NOTE] 
 > 目前仅支持 Azure 存储和 Azure 队列。 
 
-接收请求的容器可以将任务拆分为单一页面子任务，并将其添加到通用队列。 不太繁忙的容器中的任何识别工作人员都可以使用队列中的单页子任务，执行识别，然后将结果上传到存储。 根据所部署的容器的数量，吞吐量可以高达 `n` 倍。
+接收请求的容器可以将任务拆分为单页子任务，并将它们添加到通用队列中。 不太繁忙的容器中的任何识别工作线程都可以使用队列中的单页子任务，执行识别，并将结果上传到存储。 吞吐量可以提高 `n` 倍，具体取决于所部署的容器的数量。
 
-V3 容器公开路径下的活动探测 API `/ContainerLiveness` 。 使用以下部署示例为 Kubernetes 配置活动探测。 
+v3 容器在 `/ContainerLiveness` 路径下公开运行情况探测 API。 使用以下部署示例为 Kubernetes 配置运行情况探测。 
 
-将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。 将 `# {AZURE_STORAGE_CONNECTION_STRING}` 注释替换为 Azure 存储连接字符串。 配置 `replicas` 为你需要的数字， `3` 在以下示例中设置为。
+将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。 将 `# {AZURE_STORAGE_CONNECTION_STRING}` 注释替换为 Azure 存储连接字符串。 将 `replicas` 配置为你需要的数字，以下示例中将其设置为 `3`。
 
 ```yaml
 apiVersion: apps/v1
@@ -329,13 +329,13 @@ deployment.apps/read created
 service/azure-cognitive-service-read created
 ```
 
-Kubernetes 部署可能需要几分钟才能完成。 若要确认是否正确部署了 pod 和服务，请执行以下命令：
+Kubernetes 部署可能需要几分钟才能完成。 若要确认 Pod 和服务是否都已正确部署并可用，请执行以下命令：
 
 ```console
 kubectl get all
 ```
 
-应会看到类似于以下内容的控制台输出：
+应该会看到类似以下的控制台输出：
 
 ```console
 kubectl get all

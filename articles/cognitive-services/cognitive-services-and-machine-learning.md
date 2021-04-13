@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 7946bc23f766eaf99860fa764ee7b542036b5109
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710458"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075774"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -27,7 +27,6 @@ ms.locfileid: "101710458"
 |[搜索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|将必应搜索 API 添加到应用中，并利用单一 API 调用梳理数十亿网页、图像、视频和新闻的能力。|
 |[语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|将语音转换为文本，将文本转换为自然语音。 从一种语言翻译成另一种语言，并启用说话人验证和识别。|
 |[影像](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|识别和确定你的图片、视频和数字墨迹内容，为它们添加描述文字和编制索引，并审查这些内容。|
-||||
 
 在以下情况时使用认知服务：
 
@@ -101,13 +100,13 @@ ms.locfileid: "101710458"
 |[语言理解 (LUIS)](./LUIS/what-is-luis.md)||x||
 |[个性化体验创建服务](./personalizer/what-is-personalizer.md)|x*|x*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[发言人识别器](./speech-service/speaker-recognition-overview.md)||x||
+|[说话人识别器](./speech-service/speaker-recognition-overview.md)||x||
 |[语音文本转语音 (TTS)](speech-service/text-to-speech.md)|x|x||
 |[语音语音转文本 (STT)](speech-service/speech-to-text.md)|x|x||
 |[语音翻译](speech-service/speech-translation.md)|x|||
 |[文本分析](./text-analytics/overview.md)|x|||
 |[翻译](./translator/translator-info-overview.md)|x|||
-|[翻译人员-自定义转换器](./translator/custom-translator/overview.md)||x||
+|[翻译器 - 自定义翻译器](./translator/custom-translator/overview.md)||x||
 
 *个性化体验创建服务仅需要服务（在实时运行中）收集的训练数据来评估策略和数据。 个性化体验创建服务不需要大型历史数据集即可进行前期或批量训练。 
 
@@ -115,9 +114,9 @@ ms.locfileid: "101710458"
  
 这些服务可在任何可进行 REST API 或 SDK 调用的应用程序中使用。 应用程序的示例包括网站、机器人、虚拟或混合现实、桌面和移动应用程序。 
 
-## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure 认知搜索与认知服务之间的关系是什么？
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Azure 认知搜索与认知服务有何关联？
 
-[Azure 认知搜索](../search/search-what-is-azure-search.md) 是一种单独的云搜索服务，可选择使用认知服务将图像和自然语言处理添加到索引工作负荷。 认知服务在 Azure 认知搜索中通过包装单个 Api 的 [内置技能](../search/cognitive-search-predefined-skills.md) 公开。 您可以使用免费资源来执行演练，但计划为更大的卷创建和附加 [收费资源](../search/cognitive-search-attach-cognitive-services.md) 。
+[Azure 认知搜索](../search/search-what-is-azure-search.md)是一种单独的云搜索服务，可选择使用认知服务将图像和自然语言处理添加到索引工作负荷中。 认知服务通过包装单个 API 的[内置技能](../search/cognitive-search-predefined-skills.md)在 Azure 认知搜索中公开。 你可以使用免费资源进行演练，但计划为较大的卷创建并附加一个[可计费资源](../search/cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="how-can-you-use-cognitive-services"></a>如何使用认知服务？
 
@@ -127,7 +126,7 @@ ms.locfileid: "101710458"
 
 |认知服务|模型信息|
 |--|--|
-|[自定义视觉](./custom-vision-service/overview.md)|适用于 Android 的 Tensorflow[导出](./custom-vision-service/export-model-python.md)，CoreML for IOS11，ONNX FOR Windows ML|
+|[自定义视觉](./custom-vision-service/overview.md)|[导出](./custom-vision-service/export-model-python.md)用于 Android 的 Tensorflow、用于 iOS11 的 CoreML、用于 Windows ML 的 ONNX|
 
 ## <a name="learn-more"></a>了解详细信息
 

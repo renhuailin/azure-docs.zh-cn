@@ -1,5 +1,5 @@
 ---
-title: 机器学习算法备忘单-设计器
+title: 机器学习算法备忘单 - 设计器
 titleSuffix: Azure Machine Learning
 description: 可打印的机器学习算法备忘单可帮助在 Azure 机器学习设计器中为预测模型选择正确的算法。
 services: machine-learning
@@ -11,17 +11,17 @@ ms.author: lazzeri
 ms.date: 03/05/2020
 adobe-target: true
 ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100367050"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
 “Azure 机器学习算法备忘单”可帮助你从设计器为预测分析模型选择正确的算法。
 
-Azure 机器学习具有一个大型算法库，来自 ***分类** _、 _*_推荐器系统_*_、 _*_群集_*_、 _*_异常检测_*_、 _*_回归_*_ 和 _ *_文本分析_** 系列。 每一类算法都可用于解决一种类型的机器学习问题。
+Azure 机器学习有一个大型算法库，包括“分类”、“推荐系统”、“聚类分析”、“异常检测”、“回归” 和“文本分析” 系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
 有关其他指南，请参阅[如何选择算法](how-to-select-algorithms.md)
 

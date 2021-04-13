@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：解释模型结果-Azure
+title: ML 工作室（经典）：解释模型结果 - Azure
 description: 如何为使用并可视化评分模型输出的算法选择最佳的参数集。
 services: machine-learning
 ms.service: machine-learning
@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
 ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100516118"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中解释模型结果

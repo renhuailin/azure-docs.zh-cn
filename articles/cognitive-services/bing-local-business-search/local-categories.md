@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 19b769d1fff431f95c20e607c17747f2ff483d2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96487178"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>必应当地企业搜索 API 的搜索类别
@@ -43,15 +43,15 @@ ms.locfileid: "96487178"
 
 ### <a name="eat-drink"></a>Eat Drink
 
-> BreweriesAndBrewPubs、CocktailLounges、AfricanRestaurants、AmericanRestaurants、Bagels、BarbecueRestaurants、Taverns、SportsBars、条形、BarsGrillsAndPubs、BuffetRestaurants |BelgianRestaurants、BritishRestaurants、CafeRestaurants、CaribbeanRestaurants、ChineseRestaurants、CoffeeAndTea、Delicatessens、DeliveryService、Diners、DiscountStores、环形、FastFood、FrenchRestaurants、FrozenYogurt、GermanRestaurants、Supermarkets、GreekRestaurants、Grocers、HawaiianRestaurants、HungarianRestaurants、IceCreamAndFrozenDesserts、IndianRestaurants、ItalianRestaurants、JapaneseRestaurants、想像力、、KoreanRestaurants、LiquorStores、MexicanRestaurants、MiddleEasternRestaurants、PolishRestaurants、PortugueseRestaurants、Pretzels、RussianAndUkrainianRestaurants、三明治、SeafoodRestaurants、SpanishRestaurants、SteakHouseRestaurants、SushiRestaurants、要点在于、ThaiRestaurants、TurkishRestaurants、VegetarianAndVeganRestaurants、VietnameseRestaurants、
+> BreweriesAndBrewPubs, CocktailLounges, AfricanRestaurants, AmericanRestaurants, Bagels, BarbecueRestaurants, Taverns, SportsBars, Bars, BarsGrillsAndPubs, BuffetRestaurants| BelgianRestaurants, BritishRestaurants, CafeRestaurants, CaribbeanRestaurants, ChineseRestaurants, CoffeeAndTea, Delicatessens, DeliveryService, Diners, DiscountStores, Donuts, FastFood, FrenchRestaurants, FrozenYogurt, GermanRestaurants, Supermarkets, GreekRestaurants, Grocers, HawaiianRestaurants, HungarianRestaurants, IceCreamAndFrozenDesserts, IndianRestaurants, ItalianRestaurants, JapaneseRestaurants, Juices, KoreanRestaurants, LiquorStores, MexicanRestaurants, MiddleEasternRestaurants, Pizza, PolishRestaurants, PortugueseRestaurants, Pretzels, Restaurants, RussianAndUkrainianRestaurants, Sandwiches, SeafoodRestaurants, SpanishRestaurants, SteakHouseRestaurants, SushiRestaurants, TakeAway, ThaiRestaurants, TurkishRestaurants, VegetarianAndVeganRestaurants, VietnameseRestaurants
 
 ### <a name="see-do"></a>See Do
 
-> AmusementParks、Attractions、Carnivals、Casinos、LandmarksAndHistoricalSites、MiniatureGolfCourses、MovieTheaters、博物馆、公园、SightseeingTours、TouristInformation、Zoos
+> AmusementParks, Attractions, Carnivals, Casinos, LandmarksAndHistoricalSites, MiniatureGolfCourses, MovieTheaters, Museums, Parks, SightseeingTours, TouristInformation, Zoos
 
 ### <a name="shop"></a>商店
 
-> AntiqueStores、书店、CDAndRecordStores、ChildrensClothingStores、CigarAndTobaccoShops、ComicBookStores、DepartmentStores、DiscountStores、FleaMarketsAndBazaars、FurnitureStores、HomeImprovementStores、JewelryAndWatchesStores、KitchenwareStores、LiquorStores、MallsAndShoppingCenters、MensClothingStores、MusicStores、OutletStores、PetShops、PetSupplyStores、SchoolAndOfficeSupplyStores、ShoeStores、SportingGoodsStores、ToyAndGameStores、VitaminAndSupplementStores、WomensClothingStores
+> AntiqueStores, Bookstores, CDAndRecordStores, ChildrensClothingStores, CigarAndTobaccoShops, ComicBookStores, DepartmentStores, DiscountStores, FleaMarketsAndBazaars, FurnitureStores, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, MensClothingStores, MusicStores, OutletStores, PetShops, PetSupplyStores, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, VitaminAndSupplementStores, WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>Examples of Local Categories search

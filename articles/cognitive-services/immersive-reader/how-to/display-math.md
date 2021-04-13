@@ -1,7 +1,7 @@
 ---
-title: 在沉浸式阅读器中显示公式
+title: 在沉浸式阅读器中显示数学内容
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在沉浸式阅读器中显示数学。
+description: 本文将演示如何在沉浸式阅读器中显示数学内容。
 author: nitinme
 manager: guillasi
 ms.service: cognitive-services
@@ -11,21 +11,21 @@ ms.date: 01/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
 ms.openlocfilehash: 75b748604e8faa502970ac71e3fec4fae2774c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91334508"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>如何在沉浸式阅读器中显示数学
+# <a name="how-to-display-math-in-the-immersive-reader"></a>如何在沉浸式阅读器中显示数学内容
 
-沉浸式读者可以在数学标记语言 ([MathML](https://developer.mozilla.org/docs/Web/MathML)) 的形式提供时显示数学标记。
-MIME 类型可通过沉浸式读取器 [区块](../reference.md#chunk)进行设置。 有关详细信息，请参阅 [支持的 MIME 类型](../reference.md#supported-mime-types) 。
+沉浸式阅读器可以在以数学标记语言 ([MathML](https://developer.mozilla.org/docs/Web/MathML)) 的形式提供时显示数学内容。
+可以通过沉浸式阅读器[区块](../reference.md#chunk)设置 MIME 类型。 有关详细信息，请参阅[支持的 MIME 类型](../reference.md#supported-mime-types)。
 
-## <a name="send-math-to-the-immersive-reader"></a>向沉浸式读者发送数学
-为了向沉浸式读者发送数学，请提供包含 MathML 的区块，并将 MIME 类型设置为 ```application/mathml+xml``` ;
+## <a name="send-math-to-the-immersive-reader"></a>向沉浸式阅读器发送数学内容
+为了向沉浸式阅读器发送数学内容，请提供包含 MathML 的区块，并将 MIME 类型设置为 ```application/mathml+xml```；
 
-例如，如果内容为以下内容：
+例如，如果内容如下：
 
 ```html
 <div id='ir-content'>
@@ -54,7 +54,7 @@ MIME 类型可通过沉浸式读取器 [区块](../reference.md#chunk)进行设�
 </div>
 ```
 
-然后，你可以使用以下 JavaScript 显示你的内容。
+则可以使用以下 JavaScript 显示你的内容。
 
 ```javascript
 const data = {
@@ -68,9 +68,9 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-启动沉浸式读者时，应会看到：
+启动沉浸式阅读器时，应会看到：
 
-![沉浸式阅读器中的数学](../media/how-tos/1-math.png)
+![沉浸式阅读器中的数学内容](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>后续步骤
 

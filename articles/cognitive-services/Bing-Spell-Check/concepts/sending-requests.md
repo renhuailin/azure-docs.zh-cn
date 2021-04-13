@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: 761cc3908b677b129e85be442b7a593a38a367f9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96341557"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>将请求发送到必应拼写检查 API
@@ -38,16 +38,16 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
   
 请求必须指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey) 请求头。 尽管是可选的，但仍建议还指定以下请求头。 这些标头有助于必应拼写检查 API 返回更准确的结果：  
   
--   [用户代理](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
 -   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
--   [X-搜索-位置](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
 有关所有请求头和响应头的列表，请参阅[头](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers)。
 
 当使用 JavaScript 调用必应拼写检查 API 时，浏览器内置的安全功能可能会阻止你访问这些标头的值。
 
-若要解决此问题，可以通过 CORS 代理发出必应拼写检查 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，该标头筛选响应标头并使它们可供 JavaScript 使用。
+若要解决此问题，可以通过 CORS 代理发出必应拼写检查 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头会筛选响应标头并使其可供 JavaScript 访问。
 
 可以轻松安装 CORS 代理，使[教程应用](../tutorials/spellcheck.md)可以访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
@@ -55,7 +55,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
 npm install -g cors-proxy-server
 ```
 
-接下来，将 HTML 文件中的必应拼写检查 API 终结点更改为： \
+接下来，在 HTML 文件中将必应拼写检查 API 终结点更改为：\
 `http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/`
 
 最后，运行下面的命令，启动 CORS 代理：

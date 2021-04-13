@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：创建工作区-Azure
+title: ML 工作室（经典）：创建工作区 - Azure
 description: 若要使用 Azure 机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 9caac94c90aa18f8661ab46a0ae72d49500f39cb
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100520538"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>创建并共享机器学习工作室（经典）工作区

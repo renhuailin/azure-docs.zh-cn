@@ -1,93 +1,93 @@
 ---
 title: 数字孪生和孪生图
 titleSuffix: Azure Digital Twins
-description: 了解数字克隆的概念，以及它们之间的关系是如何制作图形的。
+description: 了解数字孪生体的概念，以及它们的关系如何成图。
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99576542"
 ---
-# <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生及其克隆图形
+# <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生体及其孪生图
 
-在 Azure 数字孪生解决方案中，环境中的实体由 **数字孪生** 表示。 数字克隆是一个自定义 [模型](concepts-models.md)的实例。 它可以通过 **关系** 连接到其他数字孪生以形成一个克隆 **图形**：此双子图形是整个环境的表示形式。
+在 Azure 数字孪生解决方案中，环境中的实体是由 **数字孪生体** 表示的。 数字孪生体是你自定义的[模型](concepts-models.md)之一的实例。 可以通过 **关系** 将其连接到其他数字孪生体以形成 **孪生图**：此孪生图是整个环境的表示形式。
 
 > [!TIP]
-> "Azure 数字孪生" 是指作为一个整体的 Azure 服务。 "数字双子 (s) " 或仅 " () " 的 "克隆" 指的是服务实例中的各个不同的节点。
+> “Azure 数字孪生”是指作为一个整体的此 Azure 服务。 “数字孪生体”或“孪生体”是指此服务的实例中的单个孪生节点。
 
 ## <a name="digital-twins"></a>数字孪生
 
-你需要将 *模型* 上传到服务，然后才能在 Azure 数字孪生实例中创建数字输出。 模型描述了一组属性、遥测消息和特定的非特定克隆可以具有的关系，等等。 有关在模型中定义的信息类型，请参阅 [*概念：自定义模型*](concepts-models.md)。
+你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅[概念：自定义模型](concepts-models.md)。
 
-创建和上载模型后，客户端应用可以创建类型的实例;这是一种数字克隆。 例如，在创建 *楼层* 模型后，可以创建一个或多个使用此 (类型的数字孪生，例如名为 *GroundFloor* 的 *楼层* 类型，另一个称为 *Floor2*，依此类推。 ) 。
+创建并上传模型后，客户端应用可以创建该类型的实例；这是一个数字孪生体。 例如，在创建“Floor”的模型后，你可以创建使用此类型的一个或多个数字孪生体（例如，“Floor”类型的一个孪生体称为“GroundFloor”，另一个称为“Floor2”，等等）。
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
-## <a name="relationships-a-graph-of-digital-twins"></a>关系：数字孪生图形
+## <a name="relationships-a-graph-of-digital-twins"></a>关系：数字孪生体的图
 
-孪生通过其关系连接到一个克隆图形中。 克隆可以具有的关系定义为其模型的一部分。  
+孪生体通过其关系连接成为孪生图。 孪生体可以具有的关系定义为其模型的一部分。  
 
-例如，模型 *楼层* 可能定义一个 *contains* 关系，该关系面向孪生的类型 *空间*。 借助此定义，Azure 数字孪生将允许你创建 *包含* 从任何 *楼层* 到任何 *空间* 的源的关系， (包括) *空间* 子类型的孪生。 
+例如，模型“Floor”可以定义对“Room”类型的孪生体的“包含”关系 。 有了此定义，你就可以通过 Azure 数字孪生创建从任何“Floor”孪生体到任何“Room”孪生体（包括属于“Room”子类型的孪生体）的“包含”关系。    
 
-此过程的结果是一组节点 (数字孪生) 通过边缘 (它们在关系图中的关系) 连接的。
+此过程的结果是一组节点（数字孪生体），它们通过图中的边（它们的关系）连接在一起。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
-## <a name="create-with-the-apis"></a>通过 Api 创建
+## <a name="create-with-the-apis"></a>使用 API 进行创建
 
-此部分显示从客户端应用程序创建数字孪生和关系的外观。 它包含使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins)的 .net 代码示例，以提供有关每个概念中的内容的其他上下文。
+本部分显示了从客户端应用程序创建数字孪生体和关系时的情况。 它包含利用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 的 .NET 代码示例，目的是提供在这些概念的每一个内发生的情况的其他上下文。
 
 ### <a name="create-digital-twins"></a>创建数字孪生
 
-下面是使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 来实例化类型 *空间* 的克隆的客户端代码的代码段。
+下面是客户端代码的一个片段，它使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 来实例化“Room”类型的一个孪生体。
 
-您可以在创建克隆的属性时对其进行初始化，也可以在以后进行设置。 若要创建具有已初始化属性的克隆，请创建一个提供必要初始化值的 JSON 文档。
+你可以在创建孪生体时对其属性进行初始化，也可以稍后设置这些属性。 若要创建具有已初始化属性的孪生体，请创建一个提供必要初始化值的 JSON 文档。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
-你还可以使用名为的帮助器类 `BasicDigitalTwin` ，以更直接的方式将属性字段存储在 "双子" 对象中，作为使用字典的替代方法。 有关帮助器类及其用法示例的详细信息，请参阅 how *to： Manage 数码孪生* 中的 [*创建数字*](how-to-manage-twin.md#create-a-digital-twin)大距离部分。
+你还可以使用名为 `BasicDigitalTwin` 的帮助程序类更直接地将属性字段存储在“孪生体”对象中，这是一种替代字典的方法。 有关帮助程序类及其用法示例的详细信息，请参阅“操作说明：管理数字孪生体”中的[创建数字孪生体](how-to-manage-twin.md#create-a-digital-twin)部分。
 
 >[!NOTE]
->虽然对克隆属性进行处理是可选的，因此不必对其进行初始化，而是在创建克隆时 **，需要设置** 克隆上的所有 [组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
+>虽然孪生体属性被视为可选属性，因此不需要初始化，但在创建孪生体时，需要设置孪生体上的所有[组件](concepts-models.md#elements-of-a-model)。 它们可以是空对象，但组件本身必须存在。
 
 ### <a name="create-relationships"></a>创建关系
 
-下面是一些客户端代码示例，它使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 从一个数字克隆 (从 "源" 双子) 到 ("目标" 中的 "目标" 对等) 的数字克隆。
+下面是一些示例客户端代码，这些代码使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 构建从一个数字孪生体（“源”孪生体）到另一个数字孪生体（“目标”孪生体）的关系。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
-## <a name="json-representations-of-graph-elements"></a>Graph 元素的 JSON 表示形式
+## <a name="json-representations-of-graph-elements"></a>图形元素的 JSON 表示形式
 
-数字克隆数据和关系数据均以 JSON 格式存储。 这意味着，当你在 Azure 数字孪生实例中 [查询双子图形](how-to-query-graph.md) 时，结果将是已创建的数字孪生和关系的 JSON 表示形式。
+数字孪生体数据和关系数据均以 JSON 格式存储。 这意味着，当你在 Azure 数字孪生实例中[查询孪生图](how-to-query-graph.md)时，结果将是你已创建的数字孪生体和关系的 JSON 表示形式。
 
-### <a name="digital-twin-json-format"></a>数字输出 JSON 格式
+### <a name="digital-twin-json-format"></a>数字孪生体 JSON 格式
 
-当表示为 JSON 对象时，数字克隆将显示以下字段：
+当表示为 JSON 对象时，数字孪生体会显示以下字段：
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
-| `$dtId` | 一个用户提供的字符串，表示数字硬编码的 ID |
-| `$etag` | Web 服务器分配的标准 HTTP 字段 |
-| `$conformance` | 包含此数字克隆的一致性状态的枚举 (*相容*、 *不相容*、 *未知*)  |
-| `{propertyName}` | JSON 中的属性的值 (`string` 、数字类型或对象)  |
-| `$relationships` | 关系集合的路径的 URL。 如果数字双子没有传出关系边缘，则不存在此字段。 |
-| `$metadata.$model` | 可有可无表示此数字输出的模型接口 ID |
-| `$metadata.{propertyName}.desiredValue` | [仅用于可写属性]指定属性的所需值。 |
-| `$metadata.{propertyName}.desiredVersion` | [仅用于可写属性]所需值的版本 |
-| `$metadata.{propertyName}.ackVersion` | 实现数字克隆的设备应用确认的版本 |
-| `$metadata.{propertyName}.ackCode` | [仅用于可写属性] `ack` 实现数字克隆的设备应用返回的代码 |
-| `$metadata.{propertyName}.ackDescription` | [仅用于可写属性] `ack` 实现数字克隆的设备应用返回的说明 |
-| `{componentName}` | 一个 JSON 对象，包含组件的属性值和元数据，类似于根对象的属性值和元数据。 即使组件没有属性，此对象也存在。 |
-| `{componentName}.{propertyName}` | JSON 中的组件属性的值 (`string` 、数字类型或对象)  |
+| `$dtId` | 用户提供的字符串，表示数字孪生体的 ID |
+| `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
+| `$conformance` | 包含此数字孪生体的一致性状态的枚举（conformant、non-conformant、unknown） |
+| `{propertyName}` | 属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
+| `$relationships` | 关系集合的路径的 URL。 如果数字孪生体没有传出的关系边，则此字段不存在。 |
+| `$metadata.$model` | [可选] 将此数字孪生体特征化的模型接口的 ID |
+| `$metadata.{propertyName}.desiredValue` | [仅适用于可写属性] 指定的属性的所需值 |
+| `$metadata.{propertyName}.desiredVersion` | [仅适用于可写属性] 所需值的版本 |
+| `$metadata.{propertyName}.ackVersion` | 实现数字孪生体的设备应用认可的版本 |
+| `$metadata.{propertyName}.ackCode` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 代码 |
+| `$metadata.{propertyName}.ackDescription` | [仅适用于可写属性] 实现数字孪生体的设备应用返回的 `ack` 说明 |
+| `{componentName}` | 一个 JSON 对象，包含组件的属性值和元数据，类似于根对象的那些属性值和元数据。 即使组件没有属性，此对象也存在。 |
+| `{componentName}.{propertyName}` | 组件的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 | `{componentName}.$metadata` | 组件的元数据信息，类似于根级别 `$metadata` |
 
-下面是一个 JSON 对象格式的数字克隆示例：
+下面是一个格式化为 JSON 对象的数字孪生体的示例：
 
 ```json
 {
@@ -135,18 +135,18 @@ ms.locfileid: "99576542"
 
 ### <a name="relationship-json-format"></a>关系 JSON 格式
 
-当表示为 JSON 对象时，来自数字克隆的关系将显示以下字段：
+当表示为 JSON 对象时，数字孪生体中的关系会显示以下字段：
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
-| `$relationshipId` | 一个用户提供的表示此关系的 ID 的字符串。 此字符串在源数字克隆的上下文中是唯一的，这也意味着 `sourceId`  +  `relationshipId` 在 Azure 数字孪生实例的上下文中是唯一的。 |
-| `$etag` | Web 服务器分配的标准 HTTP 字段 |
-| `$sourceId` | 源数字克隆的 ID |
-| `$targetId` | 目标数字克隆的 ID |
+| `$relationshipId` | 用户提供的字符串，表示此关系的 ID。 此字符串在源数字孪生体的上下文中是唯一的，这也意味着 `sourceId` + `relationshipId` 在 Azure 数字孪生实例的上下文中是唯一的。 |
+| `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
+| `$sourceId` | 源数字孪生体的 ID |
+| `$targetId` | 目标数字孪生体的 ID |
 | `$relationshipName` | 关系的名称 |
-| `{propertyName}` | 可有可无此关系的属性的值，以 JSON (`string` 、数字类型或对象)  |
+| `{propertyName}` | [可选] 此关系的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 
-下面是格式为 JSON 对象的关系的示例：
+下面是一个格式化为 JSON 对象的关系的示例：
 
 ```json
 {
@@ -161,9 +161,9 @@ ms.locfileid: "99576542"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何通过 Azure 数字克隆 Api 管理图形元素：
-* [*操作说明：管理数字孪生*](how-to-manage-twin.md)
-* [*如何：管理包含关系的双子图形*](how-to-manage-graph.md)
+请参阅如何通过 Azure 数字孪生 API 管理图形元素：
+* [操作指南：管理数字孪生体](how-to-manage-twin.md)
+* [操作指南：使用关系管理孪生图](how-to-manage-graph.md)
 
-或者，有关查询 Azure 数字孪生克隆图形的信息，请参阅：
-* [*概念：查询语言*](concepts-query-language.md)
+或者，了解如何查询 Azure 数字孪生的孪生图来获取相关信息：
+* [概念：查询语言](concepts-query-language.md)

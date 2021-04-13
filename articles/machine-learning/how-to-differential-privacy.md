@@ -1,7 +1,7 @@
 ---
-title: '差异隐私 SmartNoise (preview) '
+title: 差异隐私操作方法 - SmartNoise（预览版）
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 SmartNoise 开放源代码库将差异保密最佳实践应用到 Azure 机器学习模型。
+description: 了解如何使用 SmartNoise 开放源代码库将差异隐私最佳做法应用于 Azure 机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,17 +12,17 @@ author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
 ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98681398"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
-了解如何使用 SmartNoise Python 开源库将差异保密最佳实践应用到 Azure 机器学习模型。
+了解如何使用 SmartNoise Python 开放源代码库将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 
-差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解 [差分隐私的工作原理](./concept-differential-privacy.md)。
+差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差异隐私的工作原理](./concept-differential-privacy.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -145,7 +145,7 @@ Privacy usage: approximate {
 
 | 统计信息    | 机制 | 实用程序  |
 | ------------- |------------|------------|
-| 计数         | 高斯   | 强制转换       |
+| Count         | 高斯   | 强制转换       |
 | 直方图     | 几何  | 钳位   |
 | 平均值          | 拉普拉斯    | 数字化   |
 | 分位数     |            | 筛选器     |

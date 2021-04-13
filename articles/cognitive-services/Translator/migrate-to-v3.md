@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98896827"
 ---
 # <a name="translator-v2-to-v3-migration"></a>将 Translator V2 迁移到 V3
 
 > [!NOTE]
-> V2 已于 2018 年 4 月 30 日弃用。 请将应用程序迁移到 V3，以便利用 V3 中专门提供的新功能。 V2 将于5月 24 2021 日停用。 
+> V2 已于 2018 年 4 月 30 日弃用。 请将应用程序迁移到 V3，以便利用 V3 中专门提供的新功能。 V2 将于 2021 年 5 月 24 日停用。 
 
 Microsoft Translator 团队已发布 Translator 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
@@ -125,7 +125,7 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 * 可用于调用已使用自定义翻译器（预览版，新的 Translator NMT 自定义功能）自定义的神经网络翻译系统。 
 * 不提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。
 
-如果使用的是 api.cognitive.microsofttranslator.com 终结点，则使用的是版本3的转换器。
+如果使用 api.cognitive.microsofttranslator.com 终结点，则使用的是 Translator 版本 3。
 
 **Translator 版本 2**
 * 不满足所有 ISO 20001、20018 和 SOC 3 认证要求。 

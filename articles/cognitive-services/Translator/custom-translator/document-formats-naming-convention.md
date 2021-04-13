@@ -1,7 +1,7 @@
 ---
 title: 文档格式和命名约定 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 本指南介绍自定义翻译中的文档格式和命名约定。 此概念有助于更好地管理文档名称并避免命名冲突。
+description: 本指南介绍自定义翻译中的文档格式和命名约定。 这些概念可帮助你更好地管理文档名称，避免发生命名冲突。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 9598d3c1d339d1c37b02892cc83164acae447434
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895843"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
@@ -31,13 +31,13 @@ ms.locfileid: "98895843"
 | Microsoft Word    | .DOCX        | Microsoft Word 文档                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat 可移植文档                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML 文档                                                                                                                                                                                                                                                                  |
-| 文本文件         | .TXT         | UTF-16 或 UTF-8 编码的文本文件。 文件名不得包含日语字符。                                                                                                                                                                                        |
+| 文本文件         | .TXT         | UTF-16 或 UTF-8 编码的文本文件。 文件名不能包含日语字符。                                                                                                                                                                                        |
 | 对齐的文本文件 | .ALIGN       | `.ALIGN` 是一个特殊的扩展名，如果你知道文档对中的句子已完美对齐，则可以使用此扩展名。 如果提供 `.ALIGN` 文件，自定义翻译不会对齐句子。 |
 | Excel 文件        | .XLSX        | Excel 文件（2013 或更高版本）。 电子表格的第一行应是语言代码。                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>字典格式
 
-对于字典，自定义转换器支持定型集支持的所有文件格式。 如果使用的是 Excel 字典，则电子表格的第一行/行应为语言代码。
+对于字典，自定义翻译器支持训练集所支持的所有文件格式。 如果使用 Excel 字典，电子表格的第一行是语言代码。
 
 ## <a name="zip-file-formats"></a>Zip 文件格式
 

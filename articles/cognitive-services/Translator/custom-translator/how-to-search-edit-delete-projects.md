@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 308ca25d35011c67ded7300177149cd590462952
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98896437"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜索、编辑和删除项目
@@ -28,7 +28,7 @@ ms.locfileid: "98896437"
 
     ![搜索项目](media/how-to/how-to-search-project.png)
 
-2. 可以按以下字段的任何 (或所有) 进行筛选：项目名称、源语言、目标语言、类别和项目的可用性。
+2. 可以根据下列任意（或所有）字段进行筛选：项目名称、源语言、类别和项目可用性。
 
 3. 单击“应用”。
 
@@ -38,21 +38,21 @@ ms.locfileid: "98896437"
 
 ## <a name="edit-a-project"></a>编辑项目
 
-自定义转换器使你能够编辑项目的名称和描述。 其他项目元数据（如类别、源语言和目标语言）不可用于编辑。 下面的步骤介绍如何编辑项目。
+使用自定义翻译器，可以编辑项目的名称和说明。 其他项目元数据（例如类别、源语言、目标语言）不可编辑。 以下步骤介绍了如何编辑项目。
 
 1. 单击将鼠标指针悬停在项目上时出现的铅笔图标。
 
     ![编辑项目](media/how-to/how-to-edit-project.png)
 
-2. 在对话框中，您可以修改项目名称、项目说明、类别说明以及项目标签（如果没有部署模型）。 创建项目后，不能修改类别或语言对。
+2. 在对话框中，可以修改项目名称、项目说明、类别说明和项目标签（如果没有部署模型）。 创建项目后，不能修改类别或语言对。
 
     ![“编辑项目”对话框](media/how-to/how-to-edit-project-dialog.png)
 
-3. 单击 "保存" 按钮。
+3. 单击“保存”按钮。
 
 ## <a name="delete-a-project"></a>删除项目
 
-不再需要某个项目时可以将其删除。 使项目没有处于活动状态的模型，例如已部署、已提交培训、数据处理、部署等，否则删除操作将失败。 以下步骤介绍了如何删除项目。
+不再需要某个项目时可以将其删除。 使项目中没有处于活动状态的模型，例如已部署、已提交训练、数据处理、部署等状态，否则删除操作将失败。 以下步骤介绍了如何删除项目。
 
 1. 将鼠标指针悬停在任何项目记录上，并单击垃圾桶图标。
 

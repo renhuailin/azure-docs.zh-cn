@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624534"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889750"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -161,9 +161,9 @@ az role definition update --role-definition update_def.json --subscription <sub-
 > [!NOTE]
 > 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。
 
-## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用适用于可重复性的 Azure 资源管理器模板
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用 Azure 资源管理器模板实现可重复性
 
-如果预计需要重新创建复杂的角色分配，Azure 资源管理器模板可能会很大。 " [201-计算机-了解依赖关系-角色分配" 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) 显示了如何在源代码中指定角色分配以供重用。 
+如果预计需要重新创建复杂的角色分配，则使用 Azure 资源管理器模板可能会很有帮助。 [201-machine-learning-dependencies-role-assignment 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)显示了如何在源代码中指定角色分配以供重用。 
 
 ## <a name="common-scenarios"></a>常见方案
 
@@ -203,8 +203,8 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | 删除试验 | `Microsoft.MachineLearningServices/workspaces/experiments/delete` |
 | 获取运行以及相关的数据和元数据，获取指定运行的指定指标的所有值的列表，列出运行的项目 | `Microsoft.MachineLearningServices/workspaces/experiments/runs/read` |
 | 在试验中新建运行，删除运行，还原已删除的运行，记录当前运行下的指标，为运行设置标签，删除运行上的标签，记录运行所使用的参数（键值对），记录运行的一批指标、参数和标签，更新运行状态 | `Microsoft.MachineLearningServices/workspaces/experiments/runs/write` |
-| 按名称获取注册的模型，提取注册表中所有已注册的模型的列表，搜索已注册的模型，为每个请求阶段搜索最新的版本模型，获取已注册的模型的版本，搜索模型版本，获取用于存储模型版本项目的 URI，并按实验 id 搜索运行。 | `Microsoft.MachineLearningServices/workspaces/models/read` |
-| 创建新的已注册模型，更新已注册的模型名称/说明，重命名现有的已注册模型，创建新版本的模型，更新模型版本的说明，将已注册的模型转换为一个阶段 | `Microsoft.MachineLearningServices/workspaces/models/write` |
+| 按名称获取已注册的模型，获取注册表中所有已注册模型的列表，搜索每个请求阶段的已注册模型、最新版模型，获取已注册模型的版本，搜索模型版本，获取 URI（其中存储了模型版本的项目），按试验 ID 搜索运行 | `Microsoft.MachineLearningServices/workspaces/models/read` |
+| 创建新的已注册模型，更新已注册模型的名称/说明，重命名现有的已注册模型，创建新版本的模型，更新模型版本的说明，将已注册模型转换到其中一个阶段 | `Microsoft.MachineLearningServices/workspaces/models/write` |
 | 删除已注册模型及其所有版本，删除已注册模型的特定版本 | `Microsoft.MachineLearningServices/workspaces/models/delete` |
 
 <a id="customroles"></a>
@@ -464,7 +464,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 - 针对同一 Azure Active Directory 用户的两个角色分配具有冲突的 Actions/NotActions 部分时，如果操作在某个角色的 NotActions 中列出，但也在另一个角色中作为 Actions 列出，则此类操作可能不会生效。 若要详细了解 Azure 如何分析角色分配，请参阅 [Azure RBAC 如何确定用户是否有权访问资源](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
 
 - 若要在 VNet 中部署计算资源，需要显式拥有以下操作的权限：
-    - VNet 资源上的 `Microsoft.Network/virtualNetworks/join/action`。
+    - VNet 资源上的 `Microsoft.Network/virtualNetworks/*/read`。
     - 子网资源上的 `Microsoft.Network/virtualNetworks/subnet/join/action`。
     
     若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)。

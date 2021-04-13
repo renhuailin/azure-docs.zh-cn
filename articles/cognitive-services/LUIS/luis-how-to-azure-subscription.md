@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99988150"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
@@ -48,7 +48,7 @@ LUIS 允许三类 Azure 资源和一类非 Azure 资源：
 Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 若要更改资源的所有权，可以执行以下操作之一：
-* 转让订阅的 [所有权](../../cost-management-billing/manage/billing-subscription-transfer.md) 。
+* 转让订阅的[所有权](../../cost-management-billing/manage/billing-subscription-transfer.md)。
 * 将 LUIS 应用导出为文件，然后在其他订阅上导入该应用。 可以从 LUIS 门户中的“我的应用”页面进行导出。
 
 ## <a name="resource-limits"></a>资源限制
@@ -216,7 +216,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 ## <a name="assign-a-resource-to-an-app"></a>将资源分配给应用
 
 >[!NOTE]
->如果你没有 Azure 订阅，将无法分配或创建新资源。 需要创建 [Azure 免费帐户](https://azure.microsoft.com/en-us/free/) ，然后返回到 LUIS 从门户创建新的资源。
+>如果你没有 Azure 订阅，将无法分配或创建新资源。 你需要创建一个 [Azure 免费帐户](https://azure.microsoft.com/en-us/free/)，然后返回到 LUIS，以便从门户创建新资源。
 
 可以使用此过程创建创作或预测资源，或将其分配给应用程序： 
 
@@ -232,9 +232,9 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 
 ### <a name="assign-a-query-prediction-runtime-resource-without-using-the-luis-portal"></a>在不使用 LUIS 门户的情况下分配查询预测运行时资源
 
-对于 CI/CD 管道等自动过程，可能需要自动将 LUIS 运行时资源分配到 LUIS 应用。 为此，请完成以下步骤：
+对于 CI/CD 管道等自动化进程，可能需要将 LUIS 运行时资源自动分配给 LUIS 应用。 为此，请完成以下步骤：
 
-1. 从此 [网站](https://resources.azure.com/api/token?plaintext=true)获取 Azure 资源管理器令牌。 此令牌将会过期，因此立即使用它。 该请求将返回 Azure 资源管理器令牌。
+1. 从此[网站](https://resources.azure.com/api/token?plaintext=true)获取 Azure 资源管理器令牌。 此令牌即将过期，请立即使用。 该请求将返回 Azure 资源管理器令牌。
 
     ```azurecli
     az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
@@ -242,30 +242,30 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
     
     ![显示用于请求 Azure 资源管理器令牌的网站的屏幕截图。](./media/luis-manage-keys/get-arm-token.png)
 
-1. 使用令牌跨订阅请求 LUIS 运行时资源。 使用用户帐户有权访问的 [GET LUIS Azure 帐户 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)。
+1. 使用令牌跨订阅请求 LUIS 运行时资源。 使用从用户帐户有权访问的[获取 LUIS Azure 帐户 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)。
 
     此 POST API 需要以下值：
 
     |标头|Value|
     |--|--|
-    |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 标记值的前面必须是单词 `Bearer` 和空格。|
+    |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
 
-    API 将返回一个 JSON 对象的数组，这些对象表示你的 LUIS 订阅。 返回的值包括订阅 ID、资源组和资源名称，返回为 `AccountName` 。 在数组中查找要分配给 LUIS 应用的 LUIS 资源的项。
+    API 返回 JSON 对象的数组，这些对象表示 LUIS 订阅。 返回的值包括订阅 ID、资源组和资源名称，返回为 `AccountName`。 在要将 LUIS 资源分配给 LUIS 应用的数组中查找一个项。
 
-1. 使用将 [LUIS Azure 帐户分配给应用程序](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API，将令牌分配给 LUIS 资源。
+1. 使用[将 LUIS Azure 帐户分配给应用程序](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API，将令牌分配给 LUIS 资源。
 
     此 POST API 需要以下值：
 
     |类型|设置|Value|
     |--|--|--|
-    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 标记值的前面必须是单词 `Bearer` 和空格。|
+    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 单词 `Bearer` 和空格前面必须是令牌值。|
     |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
     |标头|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。
     |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
-    此 API 成功后，将返回 `201 - created status` 。
+    此 API 成功时，将返回 `201 - created status`。
 
 ## <a name="unassign-a-resource"></a>取消分配资源
 

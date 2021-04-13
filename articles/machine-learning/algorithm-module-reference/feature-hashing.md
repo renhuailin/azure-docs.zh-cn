@@ -1,7 +1,7 @@
 ---
 title: “特征哈希处理”模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "特征哈希" 模块来特征文本数据。
+description: 了解如何使用 Azure 机器学习设计器中的“特征哈希”模块将文本数据特性化。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93420778"
 ---
 # <a name="feature-hashing-module-reference"></a>“特征哈希处理”模块参考

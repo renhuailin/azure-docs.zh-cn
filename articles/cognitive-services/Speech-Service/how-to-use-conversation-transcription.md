@@ -1,7 +1,7 @@
 ---
-title: 实时对话对话快速入门-语音服务
+title: 实时对话听录快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何通过语音 SDK 使用实时对话。 利用会话会话，你可以通过将音频流式传输到语音服务来转录会议和其他对话。
+description: 了解如何通过语音 SDK 使用实时对话听录。 通过对话听录可以听录会议和其他对话（能够将音频流式传输到语音服务来添加、删除和标识多个参与者）。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
 ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100368466"
 ---
-# <a name="get-started-with-real-time-conversation-transcription"></a>实时对话脚本入门
+# <a name="get-started-with-real-time-conversation-transcription"></a>开始使用实时对话听录
 
-通过语音 SDK 的 **ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 首先使用 REST API 为每个参与者创建语音签名，然后将语音签名与 SDK 结合使用来转录会话。 有关详细信息，请参阅会话脚本 [概述](conversation-transcription.md) 。
+语音 SDK 的 ConversationTranscriber API 可以听录会议和其他对话（使用 `PullStream` 或 `PushStream` 将音频流式传输到语音服务来添加、删除和标识多个参与者）。 首先使用 REST API 为每个参与者创建声音签名，然后结合使用声音签名和 SDK 来听录对话。 有关详细信息，请参阅对话听录[概述](conversation-transcription.md)。
 
 ## <a name="limitations"></a>限制
 
-* 仅可用于以下订阅区域： `centralus` 、 `eastasia` 、 `eastus` 、 `westeurope`
-* 需要7个 mic 循环多麦克风阵列。 麦克风阵列应满足 [我们的规范](./speech-devices-sdk-microphone.md)。
-* [语音设备 SDK](speech-devices-sdk.md)提供了合适的设备和演示会话脚本的示例应用。
+* 仅在以下订阅区域中可用：`centralus``eastasia`、`eastus`、`westeurope`
+* 需要一个具有 7 个麦克风的循环多麦克风阵列。 麦克风阵列应满足[我们的规格](./speech-devices-sdk-microphone.md)。
+* [语音设备 SDK](speech-devices-sdk.md) 提供多个设备和一个演示对话听录的示例应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,6 +43,6 @@ ms.locfileid: "100368466"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [异步会话](how-to-async-conversation-transcription.md) 
->  脚本[ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java) 
-> [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+> [异步对话听录](how-to-async-conversation-transcription.md)
+> [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
+> [Azure Kinect Dev Kit 示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)

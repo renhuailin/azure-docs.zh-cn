@@ -1,7 +1,7 @@
 ---
 title: 将必应自动推荐 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
-description: 标识你需要更新以使用版本7的必应自动建议应用程序部分。
+description: 介绍需要更新为使用版本 7 的“必应自动建议”应用程序部分。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 531da145e699eecb76366cd73a151b7170a6ed2f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96353419"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>自动推荐 API 升级指南
@@ -24,13 +24,13 @@ ms.locfileid: "96353419"
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
 > 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-此升级指南介绍了必应自动推荐 API 的版本 5 与版本 7 之间的更改。 使用本指南可帮助将应用程序更新为使用版本7。
+此升级指南介绍了必应自动推荐 API 的版本 5 与版本 7 之间的更改。 使用此指南帮助你将应用程序更新为使用版本 7。
 
 ## <a name="breaking-changes"></a>中断性变更
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如，https： \/ /api.cognitive.microsoft.com/bing/ \* \* 7.0 * */Suggestions。
+- 终结点的版本号已从 v5 更改为 v7。 例如，https:\//api.cognitive.microsoft.com/bing/\*\***v7.0/Suggestions。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -42,10 +42,10 @@ ms.locfileid: "96353419"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误为 HttpNotAllowed，则 HTTP 状态代码为410。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，HTTP 状态代码为 410。
 |RateLimitExceeded||只要超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额，必应就会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，必应返回 HTTP 状态代码 429；如果超过 QPM，必应返回 HTTP 状态代码 403。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已遭禁用或到期，就会发生此类错误。 <br/><br/>如果错误是 InsufficientAuthorization，HTTP 状态代码为 403。

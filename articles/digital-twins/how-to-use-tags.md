@@ -1,97 +1,97 @@
 ---
-title: 向数字孪生添加标记
+title: 向数字孪生体添加标记
 titleSuffix: Azure Digital Twins
-description: 请参阅如何在数字孪生上实现标记
+description: 了解如何在数字孪生体中实施标记
 author: baanders
 ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 70bf46de072a97eca810dda60a5331df14172ed6
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100555161"
 ---
-# <a name="add-tags-to-digital-twins"></a>向数字孪生添加标记 
+# <a name="add-tags-to-digital-twins"></a>向数字孪生体添加标记 
 
-您可以使用标记的概念进一步识别和分类您的数字孪生。 特别是，用户可能希望在其 Azure 数字孪生实例中复制现有系统中的标记，例如 [Needle-in-the-haystack 标记](https://project-haystack.org/doc/TagModel)。 
+你可以使用标记概念进一步识别你的数字孪生体并对其进行归类。 特别是，用户可能希望在其 Azure 数字孪生实例中复制现有系统中的标记，例如 [Haystack 标记](https://project-haystack.org/doc/TagModel)。 
 
-本文档介绍可用于实现数字孪生上的标记的模式。
+本文档介绍了可用于在数字孪生体中实施标记的模式。
 
-首先将标记作为属性添加到描述数字克隆的 [模型](concepts-models.md) 中。 然后，在根据模型创建的克隆上，将设置该属性。 之后，可以在 [查询](concepts-query-language.md) 中使用标记来识别和筛选孪生。
+首先将标记作为属性添加到描述数字孪生体的[模型](concepts-models.md)中。 然后，在基于模型创建孪生体时，在孪生体上设置该属性。 之后，可以在[查询](concepts-query-language.md)中使用标记来标识和筛选孪生体。
 
-## <a name="marker-tags"></a>标记标记 
+## <a name="marker-tags"></a>记号标记 
 
-**标记标记** 是一个简单的字符串，用于标记或分类数字输出，如 "blue" 或 "red"。 此字符串是标记的名称，标记标记没有有意义的值—标记只有在其存在 (或缺少) 时才有意义。 
+**记号标记** 是一个简单字符串，用来对数字孪生体进行标记或归类，例如“blue”或“red”。 此字符串是标记的名称，记号标记没有有意义的值 — 标记的重要性仅体现在它的存在（或缺失）。 
 
-### <a name="add-marker-tags-to-model"></a>向模型添加标记标记 
+### <a name="add-marker-tags-to-model"></a>向模型中添加记号标记 
 
-标记标记作为从到的 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 映射建模 `string` `boolean` 。 省略了布尔值 `mapValue` ，因为标记的存在都是重要的。 
+记号标记建模为从 `string` 到 `boolean` 的 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 映射。 布尔值 `mapValue` 会被忽略，因为此标记只要存在就够了。 
 
-下面是将标记标记实现为属性的非整数模型摘录：
+下面是将记号标记作为属性实现的一个孪生体模型的摘录：
 
 :::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
-### <a name="add-marker-tags-to-digital-twins"></a>向数字孪生添加标记标记
+### <a name="add-marker-tags-to-digital-twins"></a>向数字孪生体中添加记号标记
 
-如果该 `tags` 属性是数字克隆模型的一部分，则可以通过设置此属性的值来设置数字克隆中的标记标记。 
+在 `tags` 属性成为数字孪生体的模型的一部分后，你可以通过设置此属性的值在数字孪生体中设置记号标记。 
 
-下面是一个示例，用于填充 `tags` 三个孪生的标记：
+下面的示例为三个孪生体填充记号 `tags`：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
-### <a name="query-with-marker-tags"></a>带有标记标记的查询
+### <a name="query-with-marker-tags"></a>使用记号标记进行查询
 
-向数字孪生添加标记后，可以使用标记在查询中筛选孪生。 
+将记号添加到数字孪生体后，可以在查询中使用标记来筛选孪生体。 
 
-下面是一个查询，用于获取已标记为 "red" 的所有孪生： 
+下面的查询获取已标记为“red”的所有孪生体： 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
-您还可以将标记与更复杂的查询组合在一起。 下面是一个查询，用于获取所有舍入的孪生（而非红色）： 
+还可以对标记进行组合以实现更复杂的查询。 下面的查询获取所有是圆形但不是红色的孪生体： 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>值标记 
 
-**值标记** 是一个键/值对，用于为每个标记赋值，如 `"color": "blue"` 或 `"color": "red"` 。 一旦创建了值标记，它也可以通过忽略标记的值，用作标记标记。 
+**值标记** 是一个键值对，用于为每个标记赋值，例如 `"color": "blue"` 或 `"color": "red"`。 在创建值标记后，还可以通过忽略标记的值将其用作记号标记。 
 
-### <a name="add-value-tags-to-model"></a>向模型添加值标记 
+### <a name="add-value-tags-to-model"></a>向模型中添加值标记 
 
-值标记作为从到的 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 映射建模 `string` `string` 。 和都非常 `mapKey` `mapValue` 重要。 
+值标记建模为从 `string` 到 `string` 的 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 映射。 `mapKey` 和 `mapValue` 都很重要。 
 
-下面是从实现值标记作为属性的非整数模型摘录：
+下面是将值标记作为属性实现的一个孪生体模型的摘录：
 
 :::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
-### <a name="add-value-tags-to-digital-twins"></a>向数字孪生添加值标记
+### <a name="add-value-tags-to-digital-twins"></a>向数字孪生体中添加值标记
 
-与标记标记一样，您可以通过在模型中设置此属性的值，在数字克隆中设置值标记 `tags` 。 若要将值标记用作标记标记，可以将 `tagValue` 字段设置为空字符串值 (`""`) 。 
+与记号标记一样，你可以通过在模型中设置此 `tags` 属性的值，在数字孪生体中设置值标记。 若要将值标记用作记号标记，可以将 `tagValue` 字段设置为空字符串值 (`""`)。 
 
-下面是一个填充三个孪生的值的示例 `tags` ：
+下面的示例为三个孪生体填充 `tags` 值：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
-请注意 `red` ， `purple` 在此示例中，和用作标记标记。
+注意，在此示例中，`red` 和 `purple` 用作记号标记。
 
-### <a name="query-with-value-tags"></a>查询值标记
+### <a name="query-with-value-tags"></a>使用值标记进行查询
 
-与标记标记一样，可以使用值标记来筛选查询中的孪生。 你还可以将值标记和标记标记一起使用。
+与记号标记一样，你可以在查询中使用值标记来筛选孪生体。 还可以将值标记和记号标记一起使用。
 
-在上面的示例中，正用作标记 `red` 标记。 请记住，这是一个查询，用于获取已标记为 "red" 的所有孪生： 
+在上面的示例中，`red` 用作记号标记。 请记住，下面的查询获取已标记为“red”的所有孪生体： 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
-下面是一个查询，用于获取) 的小型 (值标记，而不是红色的所有实体： 
+下面的查询获取所有小型（值标记）且非红色的实体： 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何设计和管理数字克隆模型：
-* [*操作说明：管理 DTDL 模型*](how-to-manage-model.md)
+详细了解如何设计和管理数字孪生体模型：
+* [操作指南：管理 DTDL 模型](how-to-manage-model.md)
 
-阅读有关查询克隆图形的详细信息：
-* [*操作方法：查询双子图形*](how-to-query-graph.md)
+详细了解如何查询孪生图：
+* [操作指南：查询孪生图](how-to-query-graph.md)

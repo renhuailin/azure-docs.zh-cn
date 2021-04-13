@@ -1,7 +1,7 @@
 ---
 title: 不雅内容筛选 - Translator
 titleSuffix: Azure Cognitive Services
-description: 在 Azure 认知服务 Translator 中，使用不雅内容筛选来确定在你的文本中翻译的不雅内容级别。
+description: 使用不雅内容筛选来确定在 Azure 认知服务 Translator 的文本中翻译的不雅程度。
 services: cognitive-services
 author: laujan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.openlocfilehash: 9f389d669e69dbfa6ec6d4d0b4716d2367443f17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896793"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>使用 Translator 添加不雅内容筛选
@@ -29,7 +29,7 @@ Translate() 方法采用“options”参数，该参数包含新元素“Profani
 |ProfanityAction 值 | 操作 | 示例：源 - 日语 | 示例：目标 - 英语|
 | :---|:---|:---|:---|
 | NoAction | 默认。 与不设置此选项等效。 不雅内容从源传递到目标。 | 彼は変態です。 | He is a jerk. |
-| Marked | 将不雅词语括在 XML 标记 \<profanity> ... \</profanity> 中。 | 彼は変態です。 | 他是一个\<profanity>笨蛋\</profanity>。 |
+| Marked | 将不雅词语括在 XML 标记中，例如 \<profanity> ... \</profanity>。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
 | Deleted | 将不雅词语从输出中删除且不替换。 | 彼は。 | 他是一个。 |
 
 ## <a name="next-steps"></a>后续步骤

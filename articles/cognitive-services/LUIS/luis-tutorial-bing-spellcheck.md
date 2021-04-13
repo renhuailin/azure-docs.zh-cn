@@ -1,5 +1,5 @@
 ---
-title: 更正拼写错误的单词-LUIS
+title: 更正拼写错误的单词 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
@@ -10,17 +10,17 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
 ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101731028"
 ---
-# <a name="correct-misspelled-words-with-bing-resource"></a>更正包含必应资源的拼写错误的单词
+# <a name="correct-misspelled-words-with-bing-resource"></a>使用必应资源更正拼写错误的单词
 
-V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-check/overview)。 通过在请求的标头中包含必应搜索资源的键，向应用程序添加拼写检查。 如果已拥有必应资源，可以使用现有 Bing 资源，或 [创建新](https://portal.azure.com/#create/Microsoft.BingSearch) 资源来使用此功能。 
+V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-check/overview)。 在请求的标头中将密钥添加到必应搜索资源，来将拼写检查添加到应用程序中。 可以使用现有必应资源（如果已经有一个自己的必应资源），或者[创建一个新的](https://portal.azure.com/#create/Microsoft.BingSearch)必应资源来使用此功能。 
 
-拼写错误的查询的预测输出示例：
+有关拼写错误的查询的预测输出示例：
 
 ```json
 {
@@ -45,7 +45,7 @@ V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-che
 
 ## <a name="create-bing-search-resource"></a>创建必应搜索资源
 
-若要在 Azure 门户中创建必应搜索资源，请按照以下说明操作：
+若要在 Azure 门户中创建必应搜索资源，请按照以下说明：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -60,30 +60,30 @@ V3 预测 API 现支持[必应拼写检查 API](/bing/search-apis/bing-spell-che
 
 5. 在下一个面板中，输入服务设置。 等待服务创建过程完成。
 
-6. 创建资源后，请切换到左侧的 " **密钥" 和 "终结点** " 边栏选项卡。 
+6. 创建资源后，转到左侧的“密钥和终结点”边栏选项卡。 
 
-7. 复制一个要添加到预测请求标头的键。 只需要两个密钥中的一个。
+7. 将其中一个要添加的密钥复制到预测请求的标头中。 只需要两个密钥中的一个即可。
 
 <!--
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="enable-spell-check-from-ui"></a>通过 UI 启用拼写检查 
-可以使用 [Luis 门户](https://www.luis.ai)为示例查询启用拼写检查。 在屏幕顶部选择 " **管理** "，并在左侧导航栏中选择 " **Azure 资源** "。 将预测资源关联到应用程序后，可以从页面底部选择 " **更改查询参数** "，并将资源键粘贴到 " **启用拼写检查** " 字段中。
+## <a name="enable-spell-check-from-ui"></a>从 UI 启用拼写检查 
+可以使用 [Luis 门户](https://www.luis.ai)为示例查询启用拼写检查。 在屏幕的顶部选择“管理”，在左侧导航栏中选择“Azure 资源”。 将预测资源关联到应用程序后，可以从页面底部选择“更改查询参数”，然后在“启用拼写检查”字段中粘贴资源密钥。
     
    > [!div class="mx-imgBorder"]
    > ![启用拼写检查](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
 
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>将密钥添加到终结点 URL
-对于要对其应用拼写更正的每个查询，终结点查询需要在查询标头参数中传递必应拼写检查资源键。 可使用调用 LUIS 的聊天机器人或直接调用 LUIS 终结点 API。 无论调用终结点的方式如何，每个调用都必须在标头的请求中包含所需的信息，以便正确更正拼写更正。 必须将值与有关（ **必应）** 设置为键值。
+对于每个要应用拼写更正的查询，终结点查询需要具有在查询标头参数中传递的必应拼写资源密钥。 可使用调用 LUIS 的聊天机器人或直接调用 LUIS 终结点 API。 无论如何调用终结点，每个调用都必须包含标头请求中拼写更正所需的信息，以确保正常工作。 必须使用 mkt-bing-spell-check-key 将值设置为密钥值。
 
-|标头键|标头值|
+|标头密钥|标头值|
 |--|--|
-|`mkt-bing-spell-check-key`|在资源的 " **密钥" 和 "终结点** " 边栏选项卡中找到密钥|
+|`mkt-bing-spell-check-key`|资源的“密钥和终结点”标头选项卡中找到的密钥|
 
 ## <a name="send-misspelled-utterance-to-luis"></a>将拼写错误的表述发送到 LUIS
-1. 在将发送的预测查询中添加一个拼写错误的查询文本，例如 "mountainn 的距离是多少？"。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。
+1. 在你将发送（例如，“这座山有多远？”）的预测查询中添加拼写错误的言语。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。
 
 2. LUIS 对 `How far is the mountain?` 的响应是一个 JSON 结果。 如果必应拼写检查 API v7 检测到拼写错误，LUIS 应用的 JSON 响应中的 `query` 字段包含原始查询，而 `alteredQuery` 字段包含更正后发送到 LUIS 的查询。
 
@@ -101,12 +101,12 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼写错误
 
-如果不想使用必应搜索 API v7 服务，则需要添加正确且不正确的拼写。
+如果不想使用必应搜索 API v7 服务，需要添加正确和错误的拼写。
 
-两种解决方案是：
+两个解决方案如下：
 
-* 标签示例最谈话，其中包含所有不同的拼写，以便 LUIS 可以了解正确的拼写和打字错误。 使用此选项比使用拼写检查器需要更多标记操作。
-* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。
+* 标签示例言语拥有所有不同拼写，这样 LUIS 可以学习正确的拼写和错误的拼写。 使用此选项比使用拼写检查器需要更多标记操作。
+* 创建一个包含词语的所有差异的短语列表。 通过该解决办法，不需要在示例言语中标记词语差异。
 
 
 > [!div class="nextstepaction"]

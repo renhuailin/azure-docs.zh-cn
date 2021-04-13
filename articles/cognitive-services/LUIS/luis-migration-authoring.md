@@ -12,10 +12,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98787631"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
@@ -135,7 +135,7 @@ ms.locfileid: "98787631"
 ## <a name="troubleshooting-the-migration-process"></a>排查迁移过程的问题
 
 如果在下拉列表中找不到你的 Azure 订阅：
-* 请确保你有一个有效的 Azure 订阅，且该订阅有权创建认知服务资源。 转到 [Azure 门户](https://ms.portal.azure.com)并检查订阅状态。 如果没有，请 [创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。
+* 请确保你有一个有效的 Azure 订阅，且该订阅有权创建认知服务资源。 转到 [Azure 门户](https://ms.portal.azure.com)并检查订阅状态。 如果没有帐户，请[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。
 * 确保你是在与有效订阅关联的正确租户中。 可通过以下方式切换租户：选择屏幕右上方包含你的姓名首字母的头像。
 
   > [!div class="mx-imgBorder"]

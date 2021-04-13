@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/10/2020
 ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98680156"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
@@ -50,7 +50,7 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 ## <a name="location-of-active-learning"></a>主动学习的位置
 
-若要启用 [活动学习](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)，在已发布的 LUIS 终结点上收到的用户的已记录最谈话存储在以下 Azure 地理区域中：
+为了启用[主动学习](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning)，在已发布的 LUIS 终结点收到的用户记录的话语将存储在以下 Azure 地理区域中：
 
 * [欧洲](#europe)
 * [澳大利亚](#australia)
@@ -63,33 +63,33 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 ### <a name="europe"></a>欧洲
 
-欧洲创作 (也称为编程 Api) 资源托管在 Azure 欧洲地区，支持将终结点部署到以下 Azure 地域：
+欧洲创作（也称为编程 API）资源托管在 Azure 欧洲地理区域，支持将终结点部署到以下 Azure 地理区域：
 
 * 欧洲
 * 法国
 * 英国
 
-部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 欧洲地区，以便进行主动学习。
+部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的话语将存储在 Azure 的欧洲地理区域中，以便进行主动学习。
 
 ### <a name="australia"></a>澳大利亚
 
-澳大利亚创作 (也称为编程 Api) 资源托管在 Azure 澳大利亚地区，并支持将终结点部署到以下 Azure 地域：
+澳大利亚创作（也称为编程 API）资源托管在 Azure 澳大利亚地理区域，支持将终结点部署到以下 Azure 地理区域：
 
 * 澳大利亚
 
-部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 的澳大利亚地区，以便进行主动学习。
+部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的话语将存储在 Azure 的澳大利亚地理区域中，以便进行主动学习。
 
 ### <a name="united-states"></a>美国
 
-美国创作 (也称为编程 Api) 资源托管在 Azure 的美国地域中，并支持将终结点部署到以下 Azure 地域：
+美国创作（也称为编程 API）资源托管在 Azure 美国地理区域，支持将终结点部署到以下 Azure 地理区域：
 
-* 欧洲或澳大利亚的创作区域不支持 Azure 地理位置
+* 欧洲或澳大利亚创作区域不支持的 Azure 地理区域
 
-部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 美国地理位置，以便进行主动学习。 
+部署到这些 Azure 地理区域时，终结点从应用的最终用户收到的言语将存储在 Azure 的美国地理区域中，以便进行主动学习。 
 
 ## <a name="disable-active-learning"></a>禁用主动学习
 
-若要禁用活动学习，请参阅 [禁用活动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+若要禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 
 ## <a name="next-steps"></a>后续步骤

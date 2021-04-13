@@ -1,7 +1,7 @@
 ---
-title: 在 Kubernetes 和 Helm 中使用语音服务容器
+title: 将语音服务容器与 Kubernetes 和 Helm 配合使用
 titleSuffix: Azure Cognitive Services
-description: 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像，我们将创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。
+description: 我们将使用 Kubernetes 和 Helm 定义语音转文本和文本转语音容器映像，以此创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: aahi
 ms.openlocfilehash: 78ac9ae4aa8611f50caa94c84d3e6c95e58fc91c
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102200727"
 ---
-# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>在 Kubernetes 和 Helm 中使用语音服务容器
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>将语音服务容器与 Kubernetes 和 Helm 配合使用
 
-在本地管理语音容器的一种做法是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像，我们将创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。 最后，我们将了解如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息，请参阅 [安装和运行语音服务容器](speech-container-howto.md)。
+在本地管理语音容器的一种做法是使用 Kubernetes 和 Helm。 我们将使用 Kubernetes 和 Helm 定义语音转文本和文本转语音容器映像，以此创建一个 Kubernetes 包。 此包将部署到本地 Kubernetes 群集。 最后，我们将了解如何测试已部署的服务和各种配置选项。 有关在不使用 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息，请参阅[安装和运行语音服务容器](speech-container-howto.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,12 +35,12 @@ ms.locfileid: "102200727"
 
 ## <a name="the-recommended-host-computer-configuration"></a>建议的主机配置
 
-参考 [语音服务容器主机][speech-container-host-computer] 的详细信息。 此 Helm 图表根据用户指定的解码（并发请求）数自动计算 CPU 和内存要求。 此外，它还会根据音频/文本输入优化是否配置为 `enabled` 来进行调整。 默认情况下，Helm 图表假设指定了两个并发请求并禁用了优化。
+有关详细信息，请参考[语音服务容器主机][speech-container-host-computer]。 此 Helm 图表根据用户指定的解码（并发请求）数自动计算 CPU 和内存要求。 此外，它还会根据音频/文本输入优化是否配置为 `enabled` 来进行调整。 默认情况下，Helm 图表假设指定了两个并发请求并禁用了优化。
 
 | 服务 | CPU/容器 | 内存/容器 |
 |--|--|--|
-| **语音转文本** | 一个解码器至少需要1150个 millicores。 如果已 `optimizedForAudioFile` 启用，则需要 1950 millicores。  (默认值：两个解码器)  | 要求： 2 GB<br>限制： 4 GB |
-| **文本转语音** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需： 1 GB<br> 限制： 2 GB |
+| **语音转文本** | 一个解码器至少需要 1,150 个毫核心。 如果已启用 `optimizedForAudioFile`，则需要 1,950 个毫核心。 （默认值：两个解码器） | 必需：2 GB<br>限制：4 GB |
+| **文本转语音** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需：1 GB<br> 限制：2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
@@ -100,7 +100,7 @@ Helm 图表包含要从 `mcr.microsoft.com` 容器注册表提取的 Docker 映�
 
 > [Helm 图表][helm-charts]是描述一组相关 Kubernetes 资源的文件集合。 单个图表既可用于部署简单的资源（例如 Memcached Pod），也可用于部署复杂的资源（例如，包含 HTTP 服务器、数据库、缓存等的完整 Web 应用堆栈）。
 
-提供的 *Helm 图表* 从容器注册表中提取语音服务的 docker 图像，包括文本到语音和语音到文本服务 `mcr.microsoft.com` 。
+提供的 Helm 图表将从 `mcr.microsoft.com` 容器注册表中提取语音服务（文本转语音和语音转文本服务）的 Docker 映像。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
 
@@ -189,7 +189,7 @@ horizontalpodautoscaler.autoscaling/text-to-speech-autoscaler   Deployment/text-
 
 ### <a name="verify-helm-deployment-with-helm-tests"></a>通过 Helm 测试验证 Helm 部署
 
-安装的 Helm 图表定义了 Helm 测试以方便验证。 这些测试将验证服务就绪性。 若要验证 **语音到文本** 和 **文本到语音转换** 服务，请执行 [Helm test][helm-test] 命令。
+安装的 Helm 图表定义了 Helm 测试以方便验证。 这些测试将验证服务就绪性。 为了验证语音转文本和文本转语音服务，我们将执行 [Helm test][helm-test] 命令 。
 
 ```console
 helm test onprem-speech

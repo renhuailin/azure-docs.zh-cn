@@ -10,36 +10,36 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94376634"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
 向机器人中添加聊天内容可使其更健谈而有趣。 使用 QnA Maker 中的聊天功能，可以轻松地将预填充的一组最常用的聊天内容添加到知识库 (KB) 中。 这可以用作你的机器人的个性化内容的起点，并节省从头开始编写它们的时间和成本。
 
-此数据集具有大约100的 chit 方案-在多个角色（如专业、友好和 Witty）的语音中聊天。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。
+此数据集有大约 100 个场景的聊天内容，使用多种角色（如专业、友好、有趣）的口音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。
 
-下面是一些不同个性的示例。 你可以看到所有的个性 [数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) 以及个性的详细信息。
+不同个性的一些示例如下。 你可以查看所有个性化[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)以及个性化详细信息。
 
-对于的用户查询 `When is your birthday?` ，每个用户都有一个有样式的响应：
+对于 `When is your birthday?` 的用户查询，每个个性都有一个风格的响应：
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |个性|示例|
 |--|--|
-|Professional|年龄并不真正适用于我。|
-|友好|我真的没有时间了。|
-|Witty|我是免费的。|
-|关心|我没有年龄。|
-|热情|我是 bot，所以没有时间。|
+|Professional|年龄这一概念不适用于我。|
+|友好|我没有确切的年龄。|
+|有趣|我没有年龄哦。|
+|体贴|我没有年龄。|
+|热情|我是机器人，所以我没有年龄。|
 ||
 
 
 ## <a name="language-support"></a>语言支持
 
-Chit-支持以下语言的聊天数据集：
+聊天数据集支持以下语言：
 
 |语言|
 |--|
@@ -49,7 +49,7 @@ Chit-支持以下语言的聊天数据集：
 |德国|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |葡萄牙语|
 |西班牙语|
 
@@ -60,13 +60,13 @@ Chit-支持以下语言的聊天数据集：
 ## <a name="add-chit-chat-to-an-existing-kb"></a>向现有 KB 添加聊天内容
 选择 KB，导航到“设置”页。 有一个链接，指向所有采用相应 **.tsv** 格式的聊天内容数据集。 下载所需个性，然后将其作为文件源上传。 请确保在下载和上传文件时不编辑格式或元数据。
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (稳定版本) ](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 ![向现有 KB 添加聊天内容](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker managed (预览版) ](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-![添加 chit-聊天到现有知识库预览版](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+![向现有 KB 预览版添加聊天](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
 
 ---
 
@@ -75,10 +75,10 @@ Chit-支持以下语言的聊天数据集：
 
 ![编辑聊天内容 QnA](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
-若要查看元数据，请在工具栏中选择 " **查看选项** "，然后选择 " **显示元数据** "。
+若要查看元数据，请在工具栏中选择“视图选项”，然后选择“显示元数据” 。
 
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>添加其他的聊天内容问题和解答
-可以添加不在预定义数据集中的新 chit/聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保 ranker 了解这是 chit 聊天，请添加元数据键/值对 "社论： chitchat"，如下图所示：
+可以添加新的不在预定义数据集中的聊天 QnA 对。 确保不复制聊天内容集中已涵盖的 QnA 对。 添加任何新的聊天内容 QnA 时，它会添加到“编辑”源。 若要确保排名程序理解这是聊天内容，请添加元数据键/值对“编辑: 聊天内容”，如下图所示：
 
 :::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="添加聊天内容 QnA" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
@@ -92,6 +92,6 @@ Chit-支持以下语言的聊天数据集：
 > [!div class="nextstepaction"]
 > [导入知识库](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [QnA Maker 概述](../Overview/overview.md)

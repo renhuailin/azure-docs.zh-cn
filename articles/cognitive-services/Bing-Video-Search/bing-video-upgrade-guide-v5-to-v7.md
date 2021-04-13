@@ -1,7 +1,7 @@
 ---
 title: 将必应视频搜索 API v5 升级到 v7
 titleSuffix: Azure Cognitive Services
-description: 标识你需要更新以使用版本7的必应视频搜索应用程序部分。
+description: 发现需要更新为使用版本 7 的必应视频搜索应用程序部分。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: e47691c82d43a35a7235eb5c3fd3cf7bca081aee
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96351906"
 ---
 # <a name="video-search-api-upgrade-guide"></a>视频搜索 API 升级指南
@@ -30,7 +30,7 @@ ms.locfileid: "96351906"
 
 ### <a name="endpoints"></a>终结点
 
-- 终结点的版本号已从 v5 更改为 v7。 例如 `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`。
+- 终结点的版本号已从 v5 更改为 v7。 例如，`https://api.cognitive.microsoft.com/bing/v7.0/videos/search`。
 
 ### <a name="error-response-objects-and-error-codes"></a>错误响应对象和错误代码
 
@@ -43,7 +43,7 @@ ms.locfileid: "96351906"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，响应就会包含这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。

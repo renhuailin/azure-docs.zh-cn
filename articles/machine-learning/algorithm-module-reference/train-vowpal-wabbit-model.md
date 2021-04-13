@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
-ms.translationtype: MT
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657648"
 ---
 # <a name="train-vowpal-wabbit-model"></a>训练 Vowpal Wabbit 模型
 本文介绍如何在 Azure 机器学习设计器中使用“训练 Vowpal Wabbit 模型”模块，以通过 Vowpal Wabbit 创建一个机器学习模型。  
@@ -87,10 +87,17 @@ Vowpal Wabbit 通过向现有模型中添加新数据来支持增量训练。 �
 2. 将以前已训练的模型连接到模块的“预训练 Vowpal Wabbit 模型”输入端口。
 3. 将新的训练数据连接到模块的“训练数据”输入端口。
 4. 在“训练 Vowpal Wabbit 模型”的参数窗格中，指定新的训练数据的格式，如果输入的数据集是一个目录，也要指定训练数据文件名。
-5. 如果需要将相应的文件保存在运行记录中，请选择 **输出可读模型文件** 并 **输出反转的哈希文件** 选项。
+5. 如果需要在运行记录中保存对应的文件，请选择“输出可读模型文件”和“输出反向哈希文件”选项 。
 
 6. 提交管道。  
 7. 选择该模块并选择右窗格中“输出 + 日志”选项卡下的“注册数据集”，以在 Azure 机器学习工作区中保留更新后的模型 。  如果你不指定新名称，则更新后的模型将覆盖现有的已保存模型。
+
+## <a name="results"></a>结果
+
++ 若要从模型生成分数，请使用[对 Vowpal Wabbit 模型评分](score-vowpal-wabbit-model.md)。
+
+> [!NOTE]
+> 如果需要在设计器中部署训练的模型，请确保将 [评分 Vowpal Wabbit 模型](score-vowpal-wabbit-model.md)（而不是“评分模型”）连接到推理管道中 [Web 服务输出模块](web-service-input-output.md) 的输入端口。
 
 ## <a name="technical-notes"></a>技术说明
 

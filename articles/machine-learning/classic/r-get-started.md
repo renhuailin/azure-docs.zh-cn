@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: c619b51f9323477bda4f1ec99aeeb1bfa01028fc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517733"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
@@ -49,7 +49,7 @@ ms.locfileid: "100517733"
 
 在机器学习工作室（经典版）中，R 脚本在[执行 R 脚本][execute-r-script]模块中运行。 此处显示了机器学习工作室（经典版）中的[执行 R 脚本][execute-r-script]模块的一个示例。
 
- ![显示 R 编程语言的屏幕截图：在机器学习 Studio 中选择的 "执行 R 脚本" 模块 (经典) "。](./media/r-quickstart/fig1.png)
+ ![此屏幕截图显示了 R 编程语言：机器学习工作室（经典）中选择的“执行 R 脚本”模块。](./media/r-quickstart/fig1.png)
 
 上图显示了使用[执行 R 脚本][execute-r-script]模块的机器学习工作室（经典版）环境的主要部分：
 
@@ -121,9 +121,9 @@ maml.mapOutputPort("data.set")
 
 RStudio 是广泛使用的针对 R 语言的 IDE。我们会使用 RStudio 编辑、测试和调试本指南中使用的一些 R 代码。 测试并准备好 R 代码后，可以将代码从 RStudio 编辑器剪切并粘贴到机器学习工作室（经典版）的[执行 R 脚本][execute-r-script]模块中。
 
-如果还没有在台式计算机上安装 R 编程语言，请立即安装。 可以从 [Comprehensive R Archive Network (CRAN)](https://www.r-project.org/) 免费下载开放源代码 R 语言。 下载适用于 Windows、macOS 和 Linux/UNIX。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
+如果还没有在台式计算机上安装 R 编程语言，请立即安装。 可以从 [Comprehensive R Archive Network (CRAN)](https://www.r-project.org/) 免费下载开放源代码 R 语言。 提供了适用于 Windows、macOS 和 Linux/UNIX 的下载内容。 请选择附近的网站镜像，并按照下载说明进行操作。 此外，CRAN 包含大量有用的分析和数据操作包。
 
-如果你是 RStudio 新手，应下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/)中找到适用于 Windows、MacOS 和 LINUX/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。
+如果你是 RStudio 新手，应下载并安装桌面版。 可以在 [RStudio](http://www.rstudio.com/products/RStudio/) 中找到适用于 Windows、macOS 和 Linux/UNIX 的 RStudio 下载内容。 按照提供的说明在台式计算机上安装 RStudio。
 
 [使用 RStudio IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio) 中提供了 RStudio 的教程介绍。
 
@@ -1159,7 +1159,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 
 ## Compute and plot the residuals
 residuals <- cadairydata$Milk.Prod - predict2
-plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
+plot(cadairytrain$Time, residuals[1:216], xlab = "Time&quot;, ylab =&quot;Residuals of Seasonal Model")
 ```
 
 残差图如此处所示。

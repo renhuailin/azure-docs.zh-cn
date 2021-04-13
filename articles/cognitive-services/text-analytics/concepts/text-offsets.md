@@ -12,15 +12,15 @@ ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
 ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98932375"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>文本分析 API 输出中的文本偏移量
 
-多语言和表情符号支持将使用多个 [码位](https://wikipedia.org/wiki/Code_point) 来表示单个显示字符（称为字形）的 Unicode 编码。 例如，🌷 和 👍 之类的表情符号可以使用几个字符将形状与其他字符组合起来，以提供视觉对象特性（例如肤色）。 同样，印地语文字 `अनुच्छेद` 将编码为五个字母和三个组合标记。
+多语言和表情符号支持已导致 Unicode 编码，该编码使用多个[码位](https://wikipedia.org/wiki/Code_point)来表示单个显示的字符（称为字形）。 例如，🌷 和 👍 之类的表情符号可以使用几个字符将形状与其他字符组合起来，以提供视觉对象特性（例如肤色）。 同样，印地语文字 `अनुच्छेद` 将编码为五个字母和三个组合标记。
 
 由于可能的多语言和表情符号编码的长度不同，文本分析 API 可能会在响应中返回偏移量。
 

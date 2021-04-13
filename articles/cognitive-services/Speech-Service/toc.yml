@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: 资源
       items:
-        - name: 标准语音支持
-          href: language-support.md#standard-voices
         - name: 神经语音支持
           href: language-support.md#neural-voices
         - name: 区域支持
@@ -249,7 +247,7 @@
     - name: 意图识别概述
       href: intent-recognition.md
     - name: 意向识别快速入门
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: 操作指南
       items:
         - name: 使用 LUIS、C# 识别语音意向
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: 启用专用终结点
       href: speech-services-private-link.md
+    - name: 启用 VNet 服务终结点
+      href: speech-service-vnet-service-endpoint.md
     - name: 为 Linux 配置 OpenSSL
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

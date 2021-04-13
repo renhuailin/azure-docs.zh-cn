@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
 ms.openlocfilehash: aec553b473e0fb2688224e8a8d027f7e9f3a6025
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101716612"
 ---
 # <a name="disclosure-design-patterns"></a>披露设计模式
@@ -184,7 +184,7 @@ ms.locfileid: "101716612"
 
 可通过对数字助理能够执行的操作设置准确期望来隐式实现披露。 提供示例命令，以便用户可以了解如何与数字助理交互，并提供上下文帮助，以在体验的早期阶段了解有关合成语音的详细信息。
 
-![对可创建的会话默认响应的示例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![可创建的默认对话响应的示例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>对话透明度
 

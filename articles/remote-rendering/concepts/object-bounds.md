@@ -7,10 +7,10 @@ ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df04b767035dffb62fde89d1e74b808d62fcc943
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594478"
 ---
 # <a name="object-bounds"></a>对象边界
@@ -19,7 +19,7 @@ ms.locfileid: "99594478"
 
 ## <a name="querying-object-bounds"></a>查询对象边界
 
-可以直接从网格资源查询 [网格](meshes.md) 的本地轴对齐边界框。 可以使用实体的转换将这些边界转换为实体的局部空间或世界空间。
+可以直接从网格资源中查询[网格](meshes.md)的局部轴对齐边界框。 可以使用实体的转换将这些边界转换为实体的局部空间或世界空间。
 
 可以通过这种方式计算整个对象层次结构的边界，但这需要遍历层次结构，查询每个网格的边界，并手动组合它们。 此操作既繁琐又低效。
 
@@ -63,8 +63,8 @@ void GetBounds(ApiHandle<Entity> entity)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # QueryLocalBoundsAsync](/dotnet/api/microsoft.azure.remoterendering.entity.querylocalboundsasync)
-* [C + + Entity：： QueryLocalBoundsAsync](/cpp/api/remote-rendering/entity#querylocalboundsasync)
+* [C# Entity.QueryLocalBoundsAsync](/dotnet/api/microsoft.azure.remoterendering.entity.querylocalboundsasync)
+* [C++ Entity::QueryLocalBoundsAsync](/cpp/api/remote-rendering/entity#querylocalboundsasync)
 
 ## <a name="next-steps"></a>后续步骤
 

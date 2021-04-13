@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0b3959ba3ec80f3113ea0358db550c86f1f276b1
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99430303"
 ---
 # <a name="use-coarse-relocalization-without-an-anchor-session"></a>在没有定位点会话的情况下使用粗略重新局部化
 
-可在不附加到 Azure 空间锚点会话的情况下使用 [relocalization](../concepts/coarse-reloc.md) 功能中包含的传感器指纹提供程序对象。
-以下代码段显示了如何访问传感器提供程序以获取设备位置的估计值：
+传感器指纹提供程序对象是[粗略重新定位](../concepts/coarse-reloc.md)功能的一部分，无需附加到 Azure 空间定位点即可使用。
+以下代码片段显示了如何访问传感器提供程序以获取设备位置的估计值：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -149,7 +149,7 @@ sensorProvider.Stop();
 
 ### <a name="next-steps"></a>后续步骤
 
-本文介绍如何使用粗 relocalization API 来估算设备位置。 若要了解有关粗略重新局部化的详细信息，请继续学习下一指南。
+本文展示了如何使用粗略重新定位 API 来估计设备位置。 若要了解有关粗略重新局部化的详细信息，请继续学习下一指南。
 
 > [!div class="nextstepaction"]
 > [粗略重新局部化](../concepts/coarse-reloc.md)

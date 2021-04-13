@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91541401"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
@@ -82,13 +82,13 @@ ms.locfileid: "91541401"
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
-分析页面并不指示何时使用 [模式](luis-concept-patterns.md) 或 [短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。
+分析页不会指示何时使用[模式](luis-concept-patterns.md)还是[短语列表](luis-concept-feature.md)。 如果确实添加了模式和短语列表，这可能有助于解决错误或不明确的预测，但无助于解决数据不平衡问题。
 
 ### <a name="review-data-imbalance"></a>检查数据不平衡问题
 
 请从此问题着手 - 它可能是其他问题的根本原因。
 
-**数据不平衡**意向列表显示需要添加更多言语才能纠正数据不平衡问题的意向。
+**数据不平衡** 意向列表显示需要添加更多言语才能纠正数据不平衡问题的意向。
 
 **要解决此问题**：
 
@@ -97,12 +97,12 @@ ms.locfileid: "91541401"
 除非仪表板上有相关建议，否则不要将言语添加到 None 意向。
 
 > [!Tip]
-> 使用该页上的第三个部分 - 包含“言语(数目)”设置的“每个意向的言语”可以快速直观地了解哪些意向需要更多的言语。********
+> 使用该页上的第三个部分 - 包含“言语(数目)”设置的“每个意向的言语”可以快速直观地了解哪些意向需要更多的言语。
     ![使用“言语(数目)”查找存在数据不平衡的意向。](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>检查错误的预测
 
-**错误的预测**意向列表显示包含言语的意向，这些言语用作特定意向的示例，但已针对不同的意向做了预测。
+**错误的预测** 意向列表显示包含言语的意向，这些言语用作特定意向的示例，但已针对不同的意向做了预测。
 
 **要解决此问题**：
 
@@ -111,9 +111,9 @@ ms.locfileid: "91541401"
 
 ### <a name="review-unclear-predictions"></a>检查不明确的预测
 
-**不明确的预测**意向列表显示包含言语的意向，这些言语的预测评分与它们最靠近的其他言语没有足够大的差异，以致于在使用[负采样](luis-how-to-train.md#train-with-all-data)的情况下，下一次训练时这些言语的第一个意向可能会发生变化。
+**不明确的预测** 意向列表显示包含言语的意向，这些言语的预测评分与它们最靠近的其他言语没有足够大的差异，以致于在使用 [负采样](luis-how-to-train.md#train-with-all-data)的情况下，下一次训练时这些言语的第一个意向可能会发生变化。
 
-**若要解决此问题**，请执行以下方法：
+**若要修复此问题**：
 
 * 编辑言语，使之与该意向更为相关，然后重新训练。
 * 如果言语过于接近，请合并意向，然后重新训练。
@@ -128,13 +128,13 @@ ms.locfileid: "91541401"
 
 以下图表显示了一个很不平衡的应用，其中包含许多要修复的问题。
 
-![屏幕截图显示了每个意向的预测，并显示了几个不明确或没有正确预测](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![屏幕截图显示了每个意向的预测结果，其中有几个不清楚或不正确的预测结果。](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 将鼠标悬停在每个意向的条块上可以获取有关该意向的信息。
 
-![屏幕截图显示每个意向的预测，并显示不明确或错误预测结果的详细信息。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![屏幕截图显示了每个意向的预测结果，以及不清楚或不正确的预测结果的详细信息。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-使用“排序依据”功能可按问题类型排列意向，以便可以专注于处理存在该问题的最严重意向。****
+使用“排序依据”功能可按问题类型排列意向，以便可以专注于处理存在该问题的最严重意向。
 
 ## <a name="intents-with-errors"></a>有错误的意向
 
@@ -152,7 +152,7 @@ ms.locfileid: "91541401"
 
 使用筛选器可以查找存在特定问题的意向：
 
-|筛选|建议的百分比|目的|
+|筛选器|建议的百分比|目的|
 |--|--|--|
 |问题最严重的意向|-|**从此处着手** - 修复此意向中的言语比其他修复方法更能改善应用。|
 |正确的预测低于|60%|这是选定意向中正确的、但置信度评分低于阈值的言语的百分比。 |
@@ -161,7 +161,7 @@ ms.locfileid: "91541401"
 
 ### <a name="correct-prediction-threshold"></a>正确的预测阈值
 
-你的有把握预测的置信度评分是什么？ 在应用开发的初期，目标可能是 60%。 使用“正确的预测低于”和百分比 60% 查找选定意向中需要修复的所有言语。****
+你的有把握预测的置信度评分是什么？ 在应用开发的初期，目标可能是 60%。 使用“正确的预测低于”和百分比 60% 查找选定意向中需要修复的所有言语。
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>不明确或错误的预测阈值
 

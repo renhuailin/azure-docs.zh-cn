@@ -6,17 +6,17 @@ ms.date: 03/09/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 51b919c97a15946f57211cf8fe12d7c5efe435bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934628"
 ---
 ## <a name="upload-the-audio"></a>上传音频
 
-在执行异步脚本之前，需要使用 Microsoft 认知语音客户端 SDK (版本1.13.0 或更高版本) 发送音频到会话脚本服务。
+在执行异步听录之前，需要使用 Microsoft 认知语音客户端 SDK（版本 1.13.0 或更高版本）将音频发送到对话听录服务。
 
-此示例代码演示如何为仅限异步模式创建会话 transcriber。 为了将音频流式传输到 transcriber，可以 [通过语音 SDK 实时添加从转录对话](../../../../how-to-use-conversation-transcription.md)派生的音频流代码。 
+此示例代码演示如何为仅异步模式创建对话转录器。 若要将音频流式传输到转录器，可以添加[通过语音 SDK 实时转录对话](../../../../how-to-use-conversation-transcription.md)中派生的音频流代码。 
 
 ```csharp
 async Task CompleteContinuousRecognition(ConversationTranscriber recognizer, string conversationId)
@@ -94,7 +94,7 @@ async Task UploadAudio()
 }
 ```
 
-如果需要实时 _加上_ 异步，注释和取消注释相应的代码行，如下所示：
+如果需要实现实时及异步效果，请注释和取消注释相应的代码行，如下所示：
 
 ```csharp
 // Set the property for asynchronous transcription
@@ -104,13 +104,13 @@ async Task UploadAudio()
 speechConfig.SetServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>获取脚本结果
+## <a name="get-transcription-results"></a>获取听录结果
 
-通过 NuGet 安装 **cognitiveservices account 1.13.0 或更高版本** 。
+通过 NuGet 安装 Microsoft.CognitiveServices.Speech.Remoteconversation 1.13.0 版或更高版本。
 
-### <a name="sample-transcription-code"></a>示例脚本代码
+### <a name="sample-transcription-code"></a>示例听录代码
 
-获得之后 `conversationId` ，在客户端应用程序中创建远程对话脚本客户端 **RemoteConversationTranscriptionClient** ，以查询异步脚本的状态。 创建  **RemoteConversationTranscriptionOperation** 的对象，以获取长时间运行的 [操作](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt) 对象。 你可以检查操作的状态，或者等待它完成。 
+具有 `conversationId` 之后，在客户端应用程序中创建远程对话听录客户端 RemoteConversationTranscriptionClient，以查询异步听录的状态。 创建 RemoteConversationTranscriptionOperation 的对象，以获取长时间运行的[操作](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/core/Azure.Core#consuming-long-running-operations-using-operationt)对象。 你可以检查操作的状态，也可以等待操作完成。 
 
 ```csharp
 // Create the speech config

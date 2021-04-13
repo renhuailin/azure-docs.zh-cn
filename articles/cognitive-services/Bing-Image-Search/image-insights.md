@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: 9dffc16a1d1171343fa10fce10fddba2a12c2167
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96348239"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
@@ -379,7 +379,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>查找视觉类似的产品  
 
-若要查找包含与在原始图像中找到的产品外观相似的产品的图像，请将 " [模块](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested) " 查询参数设置为 "SimilarProducts"。  
+若要查找包含在视觉上与原始图像中找到的产品相似的产品的图像，请将[模块](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)查询参数设置为 SimilarProducts。  
 
 以下请求演示如何获取视觉类似产品的图像。 此请求使用 [insightsToken](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查询参数来标识在前面的一个请求中返回的原始图像。 若要提高相关性，则应包括用户的查询字符串。  
 

@@ -1,5 +1,5 @@
 ---
-title: 设计器中的日志度量值
+title: 设计器中的日志指标
 titleSuffix: Azure Machine Learning
 description: 监视 Azure ML 设计器试验。 使用“执行 Python 脚本”模块启用日志记录，并在工作室中查看记录的结果。
 services: machine-learning
@@ -12,10 +12,10 @@ ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
 ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98065246"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>在 Azure 机器学习设计器管道中启用日志记录
@@ -81,4 +81,4 @@ ms.locfileid: "98065246"
 
 * 若要了解如何对设计器管道进行故障排除，请参阅[对 ML 管道进行调试和故障排除](how-to-debug-pipelines.md#azure-machine-learning-designer)。
 * 若要了解如何使用 Python SDK 在 SDK 创作体验中记录指标，请参阅[在 Azure ML 训练运行中启用日志记录](how-to-track-experiments.md)。
-* 了解如何在设计器中使用 " [执行 Python 脚本](./algorithm-module-reference/execute-python-script.md) "。
+* 了解如何在设计器中使用[执行 Python 脚本](./algorithm-module-reference/execute-python-script.md)。

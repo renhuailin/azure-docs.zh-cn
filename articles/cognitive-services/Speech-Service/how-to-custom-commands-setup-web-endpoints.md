@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98602149"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
@@ -79,7 +79,7 @@ ms.locfileid: "98602149"
     在“简单编辑器”中，输入 `{SubjectDevice} is {OnOff}`。
 
    > [!div class="mx-imgBorder"]
-   > ![显示 "成功时-执行操作" 屏幕的屏幕截图。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![显示“成功时 - 要执行的操作”屏幕的屏幕截图。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 设置 | 建议的值 | 说明 |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ ms.locfileid: "98602149"
 - 成功时响应\
 保存、训练并测试
    > [!div class="mx-imgBorder"]
-   > ![显示成功响应的屏幕截图。](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![显示“成功时”响应的屏幕截图。](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - 失败时响应\
 删除其中一个查询参数，保存，重新训练并测试
    > [!div class="mx-imgBorder"]
@@ -205,5 +205,5 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [以远程技能导出自定义命令应用程序](./how-to-custom-commands-integrate-remote-skills.md)
+> [导出自定义命令应用程序作为远程技能](./how-to-custom-commands-integrate-remote-skills.md)
 

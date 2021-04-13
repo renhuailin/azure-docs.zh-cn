@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 0b5f081dc8c0bc203ccafde4a513371d11e36879
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91538341"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的维度预生成实体
@@ -21,7 +21,7 @@ ms.locfileid: "91538341"
 
 ## <a name="types-of-dimension"></a>维度类型
 
-维度通过 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub 存储库进行管理。
+维度托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub 存储库中。
 
 ## <a name="resolution-for-dimension-entity"></a>维度实体的解析
 

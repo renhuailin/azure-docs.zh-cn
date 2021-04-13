@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, 传感器, 查看器, 可视化, 深度, rgb, 颜色, imu, 音频, 麦克风, 点云
 ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92166099"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect 查看器
@@ -40,13 +40,13 @@ Azure Kinect 查看器是[开源的](https://github.com/microsoft/Azure-Kinect-S
 
 ### <a name="use-the-viewer-with-live-data"></a>结合实时数据使用查看器
 
-1. 在“打开设备”部分，选择设备的“序列号”将其打开。   如果该设备未列出，请选择“刷新”。 
-2. 选择“打开设备”按钮。 
-3. 选择“启动”，开始使用默认设置流式传输数据。 
+1. 在“打开设备”部分，选择设备的“序列号”将其打开。 如果该设备未列出，请选择“刷新”。
+2. 选择“打开设备”按钮。
+3. 选择“启动”，开始使用默认设置流式传输数据。
 
 ### <a name="use-the-viewer-with-recorded-data"></a>结合录制的数据使用查看器
 
-在“打开录制内容”部分，导航到录制的文件并将其选中。 
+在“打开录制内容”部分，导航到录制的文件并将其选中。
 
 ## <a name="check-device-firmware-version"></a>检查设备固件版本
 
@@ -60,8 +60,8 @@ Azure Kinect 查看器是[开源的](https://github.com/microsoft/Azure-Kinect-S
 
 深度相机查看器将显示两个窗口：
 
-* 一个窗口的名称为“有效亮度”，即，显示 IR 亮度的灰度图像。 
-* 另一个窗口的名称为“深度”，以不同的颜色表示深度数据。 
+* 一个窗口的名称为“有效亮度”，即，显示 IR 亮度的灰度图像。
+* 另一个窗口的名称为“深度”，以不同的颜色表示深度数据。
 
 将鼠标悬停在深度窗口中的像素上可以查看深度传感器的值，如下所示。
 
@@ -104,7 +104,7 @@ IMU 窗口包含两个组件：加速度传感器和陀螺仪。
 ## <a name="synchronization-control"></a>同步控制
 
 配置多设备同步时，可以使用查看器将设备配置为独立（默认）、主控或从属模式。
-更改配置或插入/移除同步线缆时，请选择“刷新”进行更新。 
+更改配置或插入/移除同步线缆时，请选择“刷新”进行更新。
 
 ![外部同步控制](./media/how-to-guides/sync-control.png)
 

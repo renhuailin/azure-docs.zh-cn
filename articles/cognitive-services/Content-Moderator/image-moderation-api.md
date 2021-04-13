@@ -1,7 +1,7 @@
 ---
 title: 图像审查 - 内容审查器
 titleSuffix: Azure Cognitive Services
-description: 使用内容审查器的计算机辅助图像审核和用户-循环查看工具来对成人和猥亵内容进行中等图像。
+description: 使用内容审查器的机器辅助图像审查和人工循环评审工具来调整具有成人和猥亵内容的图像。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85800989"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
-使用内容审查器的计算机辅助图像裁决和 [查看工具](Review-Tool-User-Guide/human-in-the-loop.md) 来对成人和猥亵内容使用中等图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
+使用内容审查器的机器辅助图像审查和[评审工具](Review-Tool-User-Guide/human-in-the-loop.md)来调整具有成人和猥亵内容的图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>评估成人和猥亵内容
 
-**评估**操作返回 0 到 1 之间的置信度分数。 它还返回等于 true 或 false 的布尔数据。 这些值可预测图像是否包含潜在的成人或猥亵内容。 使用图像（文件或 URL）调用 API 时，返回的响应包含以下信息：
+**评估** 操作返回 0 到 1 之间的置信度分数。 它还返回等于 true 或 false 的布尔数据。 这些值可预测图像是否包含潜在的成人或猥亵内容。 使用图像（文件或 URL）调用 API 时，返回的响应包含以下信息：
 
 ```json
 "ImageModeration": {
@@ -110,7 +110,7 @@ ms.locfileid: "85800989"
 可以将令人反感的图像添加到阻止内容的自定义列表中，而不是多次审核同一图像。 这样，内容审核系统就会将传入图像与自定义列表进行比较，并停止任何进一步处理。
 
 > [!NOTE]
-> 最多只能使用 5 个图像列表  ，每个列表中的图像数不得超过 10,000 张  。
+> 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
 >
 
 内容审查器提供了完整的[图像列表管理 API](try-image-list-api.md)，其中包含用于管理自定义图像列表的操作。 从[图像列表 API 控制台](try-image-list-api.md)开始，使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像列表 .NET 快速入门](image-lists-quickstart-dotnet.md)。
@@ -147,10 +147,10 @@ ms.locfileid: "85800989"
 
 ## <a name="review-tool"></a>审阅工具
 
-对于更微妙的情况，请使用内容审查器 [审阅工具](Review-Tool-User-Guide/human-in-the-loop.md) 及其 API，为你的人员审查人员查看审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
+对于更微妙的情况，请使用内容审查器[评审工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在人工审查方的评审中显示审查结果和内容。 他们检查机器分配的标记并确认其最终决定。
 
 ![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 另请参阅 [评审、工作流和作业](./review-api.md) ，了解如何设置人为审阅。
+试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 另请参阅[审阅、工作流和作业](./review-api.md)，了解如何设置人工审阅。

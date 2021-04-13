@@ -7,23 +7,23 @@ ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a399565d62b20f62b72257bcb9f3beb2c910ac98
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594055"
 ---
 # <a name="z-fighting-mitigation"></a>Z 冲突缓解
 
-当两个曲面重叠时，不好确定哪个曲面应当渲染在另一个曲面顶部。 甚至每个像素的结果都是不同的，这会导致与相机视图相关的项目。 因此，当相机或网格移动时，这些模式会明显闪烁。 这种现象称为 z 冲突。 对于 AR 和 VR 应用程序，此问题进一步加剧，因为头戴式设备总是自然而然地移动。 为了防止观看者出现不适，Azure 远程渲染中提供了 z 冲突缓解功能。
+当两个曲面重叠时，不好确定哪个曲面应当渲染在另一个曲面顶部。 结果甚至因像素而异，因此会产生与相机视图相关的伪影。 因此，当相机或网格移动时，这些模式会明显闪烁。 这种现象称为 z 冲突。 对于 AR 和 VR 应用程序，此问题进一步加剧，因为头戴式设备总是自然而然地移动。 为了防止观看者出现不适，Azure 远程渲染中提供了 z 冲突缓解功能。
 
 ## <a name="z-fighting-mitigation-modes"></a>z 冲突缓解模式
 
 |情形                        | 结果                               |
 |---------------------------------|:-------------------------------------|
 |常规 z 冲突               |![红色和绿色四边形之间没有确定性的优先级](./media/zfighting-0.png)|
-|已启用 Z 冲突缓解    |![红色四个优先顺序](./media/zfighting-1.png)|
-|已启用棋盘格突出显示|![棋盘模式的红色和绿色四核切换首选项](./media/zfighting-2.png)|
+|已启用 Z 冲突缓解    |![红色四边形具有优先权](./media/zfighting-1.png)|
+|已启用棋盘格突出显示|![棋盘格图案中的红色和绿色四边形切换优先权](./media/zfighting-2.png)|
 
 以下代码启用 z 冲突缓解：
 
@@ -78,8 +78,8 @@ void EnableZFightingMitigation(ApiHandle<RenderingSession> session, bool highlig
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RenderingConnection ZFightingMitigationSettings 属性](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.zfightingmitigationsettings)
-* [C + + RenderingConnection：： ZFightingMitigationSettings ( # B1 ](/cpp/api/remote-rendering/renderingconnection#zfightingmitigationsettings)
+* [C# RenderingConnection.ZFightingMitigationSettings 属性](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.zfightingmitigationsettings)
+* [C++ RenderingConnection::ZFightingMitigationSettings()](/cpp/api/remote-rendering/renderingconnection#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>后续步骤
 

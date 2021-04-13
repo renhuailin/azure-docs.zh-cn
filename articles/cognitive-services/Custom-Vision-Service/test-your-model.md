@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100097528"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>使用自定义影像服务测试和重新训练模型
@@ -35,7 +35,7 @@ ms.locfileid: "100097528"
 
 现可将此测试图像添加到模型，然后重新训练模型。
 
-## <a name="use-the-predicted-image-for-training"></a>使用预测图像进行定型
+## <a name="use-the-predicted-image-for-training"></a>使用预测图像进行训练
 
 要使用之前提交的图像进行训练，请执行以下步骤：
 

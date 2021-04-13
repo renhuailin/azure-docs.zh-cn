@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
 ms.openlocfilehash: a2005ca7b32136ff0032d27e04035c46b2e4e904
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100595364"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
-本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 继续之前，必须有一个 Azure 帐户，其中至少有一个认知服务（如 [必应 Web 搜索](./bing-web-search/overview.md)、 [语音服务](./speech-service/overview.md)或 [LUIS](./luis/what-is-luis.md)）的订阅。
+本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 在继续之前，你必须拥有至少订阅了一个认知服务（例如[必应 Web 搜索](./bing-web-search/overview.md)、[语音服务](./speech-service/overview.md)或 [LUIS](./luis/what-is-luis.md)）的 Azure 帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "100595364"
 > [!NOTE]
 > 若要使用 PowerShell 或 Azure CLI 启用此功能，请参考[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)中提供的说明。
 
-1. 导航到 Azure 门户。 然后找到并选择某个认知服务资源。 例如，你要必应 Web 搜索的订阅。   
+1. 导航到 Azure 门户。 然后找到并选择某个认知服务资源。 例如，订阅了必应 Web 搜索。   
 2. 接下来，在左侧导航菜单中找到“监视”，然后选择“诊断设置”。   此屏幕包含以前为此资源创建的所有诊断设置。
 3. 如果你想要使用以前创建的某个资源，现在可以选择它。 否则，请选择“+ 添加诊断设置”。 
 4. 输入设置名称。 依次选择“存档到存储帐户”、“发送到 Log Analytics”。  
@@ -113,7 +113,7 @@ by bin(TimeGenerated, 10s), OperationName
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅 Azure 诊断日志 Microsoft Azure 的 [指标概述](../azure-monitor/data-platform.md) 和 [azure 诊断日志文章概述](../azure-monitor/essentials/platform-logs-overview.md) 。
+* 若要了解如何启用日志记录，以及各种 Azure 服务支持的指标和日志类别，请参阅文章 [Microsoft Azure 中的指标概述](../azure-monitor/data-platform.md)和 [Azure 诊断日志概述](../azure-monitor/essentials/platform-logs-overview.md)。
 * 阅读以下文章，了解事件中心：
   * [什么是 Azure 事件中心？](../event-hubs/event-hubs-about.md)
   * [事件中心入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

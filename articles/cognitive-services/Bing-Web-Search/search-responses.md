@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94380974"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
@@ -25,7 +25,7 @@ ms.locfileid: "94380974"
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
 > 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-在发送必应 Web 搜索搜索请求时，它将 [`SearchResponse`](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 在响应正文中返回一个对象。 针对必应确定与查询相关的每个应答，该对象包含一个字段。 本示例演示当必应返回所有应答时的响应对象：
+向必应 Web 搜索发送搜索请求时，它会在响应正文中返回一个 [`SearchResponse`](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 对象。 针对必应确定与查询相关的每个应答，该对象包含一个字段。 本示例演示当必应返回所有应答时的响应对象：
 
 ```json
 {
@@ -43,7 +43,7 @@ ms.locfileid: "94380974"
 }, ...
 ```
 
-通常，必应 Web 搜索返回一部分应答。 例如，如果查询字词为 *航海 dinghies* ，则响应可能包括 `webPages` 、 `images` 和 `rankingResponse` 。 除非使用了 [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
+通常，必应 Web 搜索返回一部分应答。 例如，如果查询字词是 *sailing dinghies*，则响应可能包含 `webPages`、`images` 和 `rankingResponse`。 除非使用了 [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -301,7 +301,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |-|减法|
 |/|部门|
 |*|乘法|
-|^|电源|
+|^|强力|
 |!|阶乘|
 |.|小数|
 |()|优先级分组|
@@ -337,7 +337,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 `timeZone` 应答提供位置的名称、指定位置的当前 UTC 日期和时间，以及 UTC 时差。 如果位置边界处于多个时区内，则该应答包含该边界内所有时区的当前 UTC 日期和时间。 例如，由于佛罗里达州跨两个时区，因此该应答包含这两个时区的本地日期和时间。  
 
-如果查询请求省/市/自治区或国家/地区的时间，必应确定该位置的地理边界内的主要城市，并将其返回到 `primaryCityTime` 字段中。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
+如果查询请求某个州/省或国家/地区的时间，必应会确定位置地理边界内的主要城市，并在 `primaryCityTime` 字段中返回该城市。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
 
 下面显示了返回 `timeZone` 应答的示例查询。
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion 应答
 
-如果必应判断用户的意图可能搜索不同的内容，则响应中会包含 [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) 对象。 例如，如果用户搜索 *carlos pen* ，必应会判断该用户的意图可能是搜索 Carlos Pena（基于以往其他用户的搜索来判断），而不是 *carlos pen* 。 下面显示了示例拼写响应。
+如果必应判断用户的意图可能搜索不同的内容，则响应中会包含 [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) 对象。 例如，如果用户搜索 *carlos pen*，必应会判断该用户的意图可能是搜索 Carlos Pena（基于以往其他用户的搜索来判断），而不是 *carlos pen*。 下面显示了示例拼写响应。
 
 ```json
 "spellSuggestions": {
@@ -436,7 +436,7 @@ Query: What time is it in the U.S.
 }, ...
 ```
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 来自必应 Web 搜索 API 的响应可能包含以下标头：
 
@@ -450,7 +450,7 @@ Query: What time is it in the U.S.
 
 不过，通过 JavaScript 调用必应 Web 搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些响应头的值。
 
-若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，该标头筛选响应标头并使它们可供 JavaScript 使用。
+若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应包含 `Access-Control-Expose-Headers` 标头，该标头会筛选响应标头并使其可供 JavaScript 访问。
 
 CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
@@ -458,7 +458,7 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-sea
 npm install -g cors-proxy-server
 ```
 
-接下来，将 HTML 文件中的必应 Web 搜索 API 终结点更改为： \
+接下来，将 HTML 文件中的必应 Web 搜索 API 终结点更改为 \
 `http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最后，运行下面的命令，启动 CORS 代理：
@@ -485,6 +485,6 @@ cors-proxy-server
 
 * 查看[请求限制](throttling-requests.md)文档。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 * [必应 Web 搜索 API 参考](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

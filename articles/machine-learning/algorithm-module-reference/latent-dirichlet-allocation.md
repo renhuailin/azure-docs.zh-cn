@@ -10,15 +10,15 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90907851"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>“隐性 Dirichlet 分配”模块
 
-本文介绍如何使用 Azure 机器学习设计器中的潜在 Dirichlet 分配模块将其他未分类文本分组到类别中。 
+本文介绍了如何使用 Azure 机器学习设计器中的“隐性 Dirichlet 分配”模块将未通过其他方式分类的文本分组到各个类别中。 
 
 隐性 Dirichlet 分配 (LDA) 经常在自然语言处理中用来查找相似的文本。 另一个常见术语是“主题建模”。
 
@@ -30,7 +30,7 @@ ms.locfileid: "90907851"
 
 + 一个转换，你可以将其保存并重新应用于用作输入的新文本
 
-此模块使用 scikit-learn 库。 有关 scikit-learn 的详细信息，请参阅  [GitHub 存储库](https://github.com/scikit-learn/scikit-learn)，其中包括有关算法的教程和说明。
+此模块使用 scikit-learn 库。 有关 scikit-learn 的详细信息，请参阅 [GitHub 存储库](https://github.com/scikit-learn/scikit-learn)（包括有关算法的教程和说明）。
 
 ## <a name="more-about-latent-dirichlet-allocation"></a>有关隐性 Dirichlet 分配的更多信息
 
@@ -54,7 +54,7 @@ LDA 通常不是一种分类方法。 但它使用生成法，因此你不需要
 
 3. 对于“目标列”，请选择包含要分析的文本的一个或多个列。
 
-    你可以选择多个列，但它们必须是**字符串**数据类型。
+    你可以选择多个列，但它们必须是 **字符串** 数据类型。
 
     因为 LDA 基于文本创建一个大型的特征矩阵，所以你通常只分析单个文本列。
 
@@ -75,7 +75,7 @@ LDA 通常不是一种分类方法。 但它使用生成法，因此你不需要
     + 特征主题矩阵中的值将表示为一个概率，即 `P(word|topic)`。
 
     > [!NOTE] 
-    > 在 Azure 机器学习设计器中，scikit-learn 库不再支持版本0.19 的非规范化 *doc_topic_distr* 输出。 在此模块中，“规范化”参数只能应用于“特征主题矩阵”输出。 转换后的数据集输出始终是规范化的。
+    > 在 Azure 机器学习设计器中，从版本 0.19 开始，scikit-learn 库不再支持非规范化的 doc_topic_distr 输出。 在此模块中，“规范化”参数只能应用于“特征主题矩阵”输出。 转换后的数据集输出始终是规范化的。
 
 7. 如果希望设置以下高级参数，请选择“显示所有选项”选项，然后将其设置为“是”。
 

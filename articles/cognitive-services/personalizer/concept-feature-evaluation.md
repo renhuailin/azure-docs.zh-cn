@@ -1,7 +1,7 @@
 ---
-title: 功能评估-Personalizer
+title: 特征评估 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
-description: 在 Azure 门户中运行 Personalizer 资源的评估时，Personalizer 提供有关上下文和操作的哪些功能影响模型的信息。
+description: 当你通过 Azure 门户在个性化体验创建服务资源中运行评估时，个性化体验创建服务会提供关于上下文和操作的哪些特征会影响模型的信息。
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
@@ -9,75 +9,75 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: c0e47a2943cf8c934d201f76aefc41868adf0b25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "87127717"
 ---
 # <a name="feature-evaluation"></a>功能评估
 
-在 [Azure 门户](https://portal.azure.com)中运行 Personalizer 资源的评估时，Personalizer 提供有关上下文和操作的哪些功能影响模型的信息。 
+当你通过 [Azure 门户](https://portal.azure.com)在个性化体验创建服务资源中运行评估时，个性化体验创建服务会提供关于上下文和操作的哪些特征会影响模型的信息。 
 
-这可用于：
+这可以用于以下目的：
 
-* 想象一下可以使用的其他功能，从哪些功能在模型中更重要。
-* 查看哪些功能并不重要，并可能将其删除或进一步分析可能影响使用的内容。
-* 向编辑或特选团队提供有关要引入到目录的新内容或产品的指导。
-* 排查将功能发送到 Personalizer 时出现的常见问题和错误。
+* 设想你可以使用的其他特征，在了解模型中哪些特征更重要的过程中获得灵感。
+* 查看哪些特征不重要，在可能的情况下将其删除，或进一步分析可能是什么因素在影响使用。
+* 为编辑或策展团队提供关于值得纳入目录的新内容或产品的指导。
+* 排查将特征发送到个性化体验创建服务时出现的常见问题和错误。
 
-更重要的功能在模型中的权重更强。 由于这些功能的权重更强，因此当 Personalizer 获得更高的回报时，它们往往存在。
+特征越重要，在模型中所占的权重就越高。 因为这些特征具有更高的权重，所以它们往往会在个性化体验创建服务获得的奖励评分较高的情况下出现。
 
-## <a name="getting-feature-importance-evaluation"></a>正在获取功能重要性评估
+## <a name="getting-feature-importance-evaluation"></a>获取特征重要性评估
 
-若要查看功能重要性结果，必须运行评估。 该评估基于在评估期间观察到的功能名称，创建可读的特征标签。
+若要查看特征重要性结果，必须运行评估。 评估会基于评估期间观察到的特征名称创建可人工阅读的特征标签。
 
-有关功能重要性的结果信息表示当前的 Personalizer 联机模式。 评估会分析在评估期结束时保存的模型的功能重要性，在评估过程中，通过当前的联机学习策略进行评估。 
+生成的有关特征重要性的信息表示当前的个性化体验创建服务联机模型。 评估会分析在评估期结束时保存的模型的特征重要性，该模型使用当前的联机学习策略完成了在评估期间进行的所有训练。 
 
-功能重要性结果并不表示在评估过程中测试或创建的其他策略和模型。  评估期结束后，评估将不包括发送到 Personalizer 的功能。
+特征重要性结果不代表在评估期间测试或创建的其他策略和模型。  评估不会包括在评估期结束后发送给个性化体验创建服务的特征。
 
-## <a name="how-to-interpret-the-feature-importance-evaluation"></a>如何解释功能重要性评估
+## <a name="how-to-interpret-the-feature-importance-evaluation"></a>如何解释特征重要性评估
 
-Personalizer 通过创建具有相似重要性的功能的 "组" 来计算功能。 可以说，一个组的重要性高于其他组，但在组中，功能的排序按字母顺序排列。
+个性化体验创建服务通过创建重要性相似的特征“组”来评估特征。 我们可以说一个组总体上比其他组更重要，但是在组内，特征是按字母顺序排列的。
 
-有关每个功能的信息包括：
+有关每个特征的信息包括：
 
-* 此功能是否来自上下文或操作。
-* 功能键和值。
+* 此特征来自 Context 还是来自 Action。
+* 特征键和值。
 
-例如，冰淇淋商店订购应用可能会看到 "Context.subname：热"，这是一项非常重要的功能。
+例如，冰淇淋店订购应用可能会将“Context.Weather:Hot”视为非常重要的特征。
 
-Personalizer 显示了功能的关联，这些功能在共同共同产生了更高的回报。
+个性化体验创建服务会显示特征之间的相关性，这些特征在一起考虑的时候获得的奖励分数会更高。
 
-例如，你可能会看到 "Context.subname：*带有**操作的热*： menuitem： IceCream" 和 "context.subname： WarmTea：
+例如，你可能会看到“Context.Weather:Hot”与“Action.MenuItem:IceCream”，以及“Context.Weather:Cold”与“Action.MenuItem:WarmTea”：
 
-## <a name="actions-you-can-take-based-on-feature-evaluation"></a>基于功能评估可以执行的操作
+## <a name="actions-you-can-take-based-on-feature-evaluation"></a>你可以基于特征评估采取的操作
 
-### <a name="imagine-additional-features-you-could-use"></a>假设你可以使用其他功能
+### <a name="imagine-additional-features-you-could-use"></a>设想你可以使用的其他特征
 
-从模型中的更重要功能获得灵感。 例如，如果在视频移动应用中看到 "MobileBattery： Low"，则可能会认为连接类型可能还会使客户选择在另一个视频剪辑上显示一个视频剪辑，然后将有关连接类型和带宽的功能添加到应用中。
+从模型中的较重要特征获得灵感。 例如，如果你在视频移动应用中看到“Context.MobileBattery:Low”，你可能会想到连接类型还可以让客户选择优先看某个视频剪辑，然后你就会在应用中添加有关连接类型和带宽的特征。
 
-### <a name="see-what-features-are-not-important"></a>查看哪些功能不重要
+### <a name="see-what-features-are-not-important"></a>查看哪些特征不重要
 
-可能删除不重要的功能，或进一步分析可能会影响使用的内容。 出于许多原因，功能可能会排名低。 其中一项操作可能是真正，而不会影响用户的行为。 但这也可能意味着该功能对用户并不明显。 
+在可能的情况下删除不重要的特征，或进一步分析可能是什么因素在影响使用。 特征排名较低的原因可能有很多。 其中一个原因是该特征确实不会影响用户行为。 但这也可能意味着此特征没有明确显示给用户。 
 
-例如，视频网站可能会看到 "VideoResolution = 4k" 是一项低重要性的功能，相反用户研究。 原因在于，应用程序甚至不会提及或显示视频分辨率，因此用户不会基于它更改行为。
+例如，视频网站可能会认为“Action.VideoResolution=4k”是一项重要性较低的特征，但这与用户调查相矛盾。 原因可能是应用程序甚至没有提及或显示视频分辨率，因此用户不会根据它改变自己的行为。
 
-### <a name="provide-guidance-to-editorial-or-curation-teams"></a>向社论团队或特选团队提供指导
+### <a name="provide-guidance-to-editorial-or-curation-teams"></a>为编辑或策展团队提供指导
 
-提供有关要引入到目录的新内容或产品的指导。 Personalizer 是一种用于扩大人见解和团队的工具。 实现此操作的一种方法是向编辑组提供有关驱动行为的产品、文章或内容的信息。 例如，视频应用程序方案可能会显示一个名为 "VideoEntities： true" 的重要功能，提示编辑团队引入更多的猫视频。
+提供关于值得纳入目录的新内容或产品的指导。 作为一个工具，个性化体验创建服务旨在增强人类洞察力和协作。 它用于实现此目标的一种方法是向编辑组说明产品、物品或内容的哪些方面会影响用户行为。 例如，视频应用程序场景可能显示有一个重要的特征叫做“Action.VideoEntities.Cat:true”，提示编辑团队引入更多的猫视频。
 
 ### <a name="troubleshoot-common-problems-and-mistakes"></a>排查常见问题和错误
 
-可以通过更改应用程序代码来解决常见的问题和错误，使其不会将不适当或格式不正确的功能发送给 Personalizer。 
+可以通过更改应用程序代码来修复常见的问题和错误，以防止将不适当的或格式错误的特征发送给个性化体验创建服务。 
 
-发送功能时的常见错误包括：
+发送特征时的常见错误包括：
 
-* )  (PII 发送个人身份信息。 特定于单个 (（如姓名、电话号码、信用卡号码、IP 地址) 的 PII 不应与 Personalizer 一起使用。 如果你的应用程序需要跟踪用户，请使用非识别 UUID 或其他某个 UserID 号。 在大多数情况下，这也是一个问题。
-* 由于用户数量很大，每个用户的交互不太可能与所有人口交互进行权衡，因此，即使非 PII) 的情况下发送用户 (Id 也可能会增加比模型值更多的干扰。
-* 以精确时间戳而不是特征化时间值的形式发送日期-时间字段。 具有等功能（如 Context.subname. Day = 星期一或 "Context.subname" = "13"）更有用。 每个的功能值最多为7或24。 但 "Context.subname"： "1985 年-04-12T23：20： 50.52 Z" 很精确，因为它永远不会再次出现。
+* 发送了个人身份信息 (PII)。 特定于个人的 PII（例如姓名、电话号码、信用卡号、IP 地址）不应当用于个性化体验创建服务。 如果你的应用程序需要跟踪用户，请使用不表明身份的 UUID 或某个其他的 UserID 编号。 在大多数情况下，这也是一个问题。
+* 在存在大量用户的情况下，单个用户的交互不太可能比所有用户的交互更重要，因此，发送用户 ID（即使不是 PII）给模型带来的可能更多的是干扰而不是价值。
+* 发送日期-时间字段时采用了精确的时间戳而不是特征化的时间值。 提供 Context.TimeStamp.Day=Monday 或 "Context.TimeStamp.Hour"="13" 之类的特征更有用。 每一个最多有 7 个或 24 个特征值。 但 "Context.TimeStamp":"1985-04-12T23:20:50.52Z" 太精确，对我们没什么用处，因为它不会再次出现。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Personalizer 的 [可伸缩性和性能](concepts-scalability-performance.md) 。
+了解个性化体验创建服务的[可伸缩性和性能](concepts-scalability-performance.md)。
 

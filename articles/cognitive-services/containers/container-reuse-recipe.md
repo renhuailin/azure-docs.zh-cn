@@ -1,7 +1,7 @@
 ---
 title: Docker 容器的配方
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用部分或全部配置设置生成、测试和存储容器，以便进行部署和重复使用。
+description: 了解如何生成、测试和存储包含一部分或所有配置设置的容器，以便进行部署和重复使用。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 2226e4e7c5df60a4a601408da04a1f2e67c4dc4f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80875072"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067769"
 ---
 # <a name="create-containers-for-reuse"></a>创建要重复使用的容器
 
-使用这些容器配方来创建可重用的认知服务容器。 可以用部分或全部配置设置来构建容器，以便在容器启动时 _不_ 需要它们。
+使用这些容器配方来创建可重用的认知服务容器。 可以生成包含一部分或所有配置设置的容器，使容器在启动时不需要获取这些设置。
 
 创建此新容器层（包含设置）并在本地对其进行测试后，可将容器存储在容器注册表中。 容器启动时，它只需获取当前未存储在容器中的设置。 专用注册表容器提供用于传入这些设置的配置空间。
 
@@ -151,7 +151,7 @@ docker run --rm <your-image-name>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建和使用 Azure 容器实例](azure-container-instance-recipe.md)
+> [创建并使用 Azure 容器实例](azure-container-instance-recipe.md)
 
 <!--
 ## Store input and output configuration settings

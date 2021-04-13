@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348613"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>将来自不同数据源的数据馈送添加到指标顾问
@@ -61,7 +61,7 @@ ms.locfileid: "96348613"
 
     2. 将生成的应用程序 ID 复制到指标顾问中的“应用程序 ID”字段。 
     
-    有关详细信息，请参阅 [Azure 机器人服务文档](/azure/bot-service/bot-service-resources-app-insights-keys#application-id) 。
+    有关详细信息，请参阅 [Azure 机器人服务文档](/azure/bot-service/bot-service-resources-app-insights-keys#application-id)。
 
 * **API 密钥**：浏览器外的应用程序使用 API 密钥访问此资源。 若要获取 API 密钥，请执行以下操作：
 
@@ -133,7 +133,7 @@ ms.locfileid: "96348613"
 
 ## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure 数据资源管理器(Kusto)</span>
 
-* **连接字符串**：指标顾问支持使用 Azure AD 应用程序身份验证访问 Azure 数据资源管理器(Kusto)。 你将需要创建并注册一个 Azure AD 应用程序，然后授权其访问 Azure 数据资源管理器数据库。 若要获取连接字符串，请参阅 [Azure 数据资源管理器](/azure/data-explorer/provision-azure-ad-app) 文档。
+* **连接字符串**：指标顾问支持使用 Azure AD 应用程序身份验证访问 Azure 数据资源管理器(Kusto)。 你将需要创建并注册一个 Azure AD 应用程序，然后授权其访问 Azure 数据资源管理器数据库。 若要获取连接字符串，请参阅 [Azure 数据资源管理器](/azure/data-explorer/provision-azure-ad-app)文档。
 
 * **查询**：请参阅 [Kusto 查询语言](/azure/data-explorer/kusto/query)，了解如何获取数据并将其表述为多维时序数据。 可在查询中使用 `@StartTime` 和 `@EndTime` 变量。 它们应格式化为：`yyyy-MM-dd HH:mm:ss`。
 

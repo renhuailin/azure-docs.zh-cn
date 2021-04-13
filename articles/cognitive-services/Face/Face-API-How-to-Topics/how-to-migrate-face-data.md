@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c8d3c5b10c670e7aa4f1fd00f47ef47e772416cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ea2a127ffbf966b024322ab5a908466dec1cc8a9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935628"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -42,7 +42,7 @@ ms.locfileid: "101706854"
 
 ## <a name="create-face-clients"></a>创建人脸客户端
 
-在 *Program.cs* 的 **Main** 方法中，创建两个 [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
+在 *Program.cs* 的 **Main** 方法中，创建两个 [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域的人脸订阅作为源，使用美国西部订阅作为目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -176,7 +176,7 @@ await DisplayPersonGroup(FaceClientEastAsia, personGroupId);
 await IdentifyInPersonGroup(FaceClientEastAsia, personGroupId);
 
 await DisplayPersonGroup(FaceClientWestUS, newPersonGroupId);
-// No need to retrain the person group before identification,
+// No need to retrain the PersonGroup before identification,
 // training results are copied by snapshot as well.
 await IdentifyInPersonGroup(FaceClientWestUS, newPersonGroupId);
 ```
@@ -187,7 +187,7 @@ await IdentifyInPersonGroup(FaceClientWestUS, newPersonGroupId);
 private static async Task DisplayPersonGroup(IFaceClient client, string personGroupId)
 {
     var personGroup = await client.PersonGroup.GetAsync(personGroupId);
-    Console.WriteLine("Person Group:");
+    Console.WriteLine("PersonGroup:");
     Console.WriteLine(JsonConvert.SerializeObject(personGroup));
 
     // List persons.

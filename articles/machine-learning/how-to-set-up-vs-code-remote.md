@@ -1,7 +1,7 @@
 ---
 title: 连接到 Visual Studio Code 中的计算实例（预览）
 titleSuffix: Azure Machine Learning
-description: 了解如何连接到 Visual Studio Code 中的 Azure 机器学习计算实例，以运行交互式 Jupyter Notebook 和远程开发工作负荷。
+description: 了解如何在 Visual Studio Code 中连接到 Azure 机器学习计算实例以运行交互式 Jupyter Notebook 和远程开发工作负荷。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 11/16/2020
-ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070093"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065974"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>连接到 Visual Studio Code 中的 Azure 机器学习计算实例（预览）
 
@@ -58,7 +58,7 @@ ms.locfileid: "98070093"
 > [!IMPORTANT]
 > 必须运行一个单元才能建立连接。
 
-此时，你可以继续运行 Jupyter Notebook 中的单元格。
+此时，你可继续在 Jupyter Notebook 中运行单元。
 
 > [!TIP]
 > 也可使用包含类似 Jupyter 的代码单元的 Python 脚本文件 (.py)。 有关详细信息，请参阅 [Visual Studio Code Python 交互文档](https://code.visualstudio.com/docs/python/jupyter-support-py)。

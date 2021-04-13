@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：管理 web 服务-Azure
+title: ML 工作室（经典）：管理 Web 服务 - Azure
 description: 使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101094309"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务
@@ -44,7 +44,7 @@ ms.locfileid: "101094309"
 
 有关创建工作区的详细信息，请参阅[创建和共享 Azure 机器学习工作室（经典）工作区](create-workspace.md)。
 
-有关设置访问权限的详细信息，请参阅 [使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+有关设置访问权限的详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 
 ## <a name="manage-new-web-services"></a>管理新的 Web 服务

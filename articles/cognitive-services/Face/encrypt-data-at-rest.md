@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: a46253e586aaf90a85bc10e2c62ab6eb238f2ead
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100650807"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>人脸服务静态数据的加密
 
-人脸服务在保存到云时，会自动加密数据。 人脸服务加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。
+人脸服务在将数据保存到云时会自动加密数据。 人脸服务加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
@@ -29,6 +29,6 @@ ms.locfileid: "100650807"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关支持 CMK 的服务的完整列表，请参阅 [认知服务的客户托管密钥](../encryption/cognitive-services-encryption-keys-portal.md)
+* 有关支持 CMK 的服务的完整列表，请参阅[认知服务的客户管理的密钥](../encryption/cognitive-services-encryption-keys-portal.md)
 * [什么是 Azure Key Vault？](../../key-vault/general/overview.md)
 * [认知服务客户管理的密钥请求表单](https://aka.ms/cogsvc-cmk)

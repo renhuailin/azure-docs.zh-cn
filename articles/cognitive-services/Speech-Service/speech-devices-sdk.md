@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
 ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95015267"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
@@ -29,9 +29,9 @@ ms.locfileid: "95015267"
 
 语音设备 SDK 使用[语音 SDK](speech-sdk.md)。 将我们的高级音频处理算法与设备的麦克风阵列配合使用，将音频发送到[语音服务](overview.md)。 它通过噪声抑制、回声消除、波束赋形和混响消减来提供准确的远场[语音识别](speech-to-text.md)。
 
-你还可以使用语音设备 SDK 来构建具有你自己的 [自定义关键字](./custom-keyword-basics.md)的环境设备。 自定义关键字提供了一个提示，用于启动用户交互，这对你的品牌是唯一的。
+你还可以使用语音设备 SDK 来构建具有你自己的[自定义关键字](./custom-keyword-basics.md)的环境设备。 自定义关键字提供一个启动用户交互的提示，该提示是品牌特有的。
 
-语音设备 SDK 启用各种语音支持方案，如 [语音助手](./voice-assistants.md)、驱动器到订购系统、 [对话](./conversation-transcription.md)脚本和智能扬声器。 可以使用文本回复用户、用默认或[自定义语音](./how-to-custom-voice-create-voice.md)回答用户、提供搜索结果以及[翻译](speech-translation.md)为其他语言等。 我们期待看到你的成果！
+该语音设备 SDK 支持多种启用语音的方案，例如[语音助理](./voice-assistants.md)、免下车点单系统、[对话听录](./conversation-transcription.md)和智能扬声器。 可以使用文本回复用户、用默认或[自定义语音](./how-to-custom-voice-create-voice.md)回答用户、提供搜索结果以及[翻译](speech-translation.md)为其他语言等。 我们期待看到你的成果！
 
 ## <a name="get-the-speech-devices-sdk"></a>获取语音设备 SDK
 

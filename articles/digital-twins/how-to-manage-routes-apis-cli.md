@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433295"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779964"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生（API 和 CLI）中管理终结点和路由
 
@@ -237,6 +237,9 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 * 生命周期事件，在创建或删除孪生体或关系时触发
 
 可以通过向事件路由中添加一个终结点筛选器来限制要发送的事件。
+
+>[!NOTE]
+> 筛选器区分大小写，并需要与有效负载大小写匹配（与模型大小写不一定匹配）。
 
 若要添加筛选器，可以针对 https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31 使用一个 PUT 请求，正文如下：
 

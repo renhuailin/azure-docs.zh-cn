@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
 ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98786785"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
@@ -69,7 +69,7 @@ ms.locfileid: "98786785"
 
 ### <a name="voice-assistants"></a>语音助手
 
-[语音 SDK](speech-sdk.md)通过以下区域中的 [直接线路语音](./direct-line-speech.md)支持 **语音助手** 功能：
+[语音 SDK](speech-sdk.md) 在以下区域通过 [Direct Line Speech](./direct-line-speech.md) 支持“语音助理”功能：
 
 | 全球区域 | 区域           | 区域标识符    |
 | ------------- | ---------------- | -------------------- |
@@ -87,7 +87,7 @@ ms.locfileid: "98786785"
 
 ### <a name="speaker-recognition"></a>说话人识别
 
-演讲者识别目前仅适用于该 `westus` 区域。
+说话人识别功能目前仅在 `westus` 区域提供。
 
 ## <a name="rest-apis"></a>REST API
 

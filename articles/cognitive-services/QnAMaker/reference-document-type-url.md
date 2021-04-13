@@ -1,20 +1,20 @@
 ---
-title: 导入 QnA Maker 支持 Url 类型
-description: 了解如何使用 Url 类型来导入和创建 QnA 对。
+title: 支持进行导入的 URL 类型 - QnA Maker
+description: 了解如何使用 URL 的类型来导入和创建 QnA 对。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: 8bf50c1ea81cdf5246c47646d1a55926fe7d58d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91776691"
 ---
-# <a name="urls-supported-for-importing-documents"></a>导入文档时支持的 Url
+# <a name="urls-supported-for-importing-documents"></a>支持用于导入文档的 URL
 
-了解如何使用 Url 类型来导入和创建 QnA 对。
+了解如何使用 URL 的类型来导入和创建 QnA 对。
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
@@ -22,7 +22,7 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
 * 纯文本常见问题解答页
 * 带链接的常见问题解答页
-* 主题主页的常见问题页面
+* 带主题主页的常见问题解答页
 
 ### <a name="plain-faq-pages"></a>纯文本常见问题解答页
 
@@ -42,11 +42,11 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
  ![知识库的部分链接常见问题解答页示例](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>父主题页面链接到子应答页面
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>与子答案页面链接的父主题页面
 
-这种类型的 FAQ 有一个主题页面，其中每个主题都链接到不同页面上相应的一组问题和答案。 QnA Maker 对所有链接页面进行爬网，以 & 答案来提取相应的问题。
+此类型的常见问题解答有一个主题页面，其中每个主题都链接到不同页面上相应的一组问题和答案。 QnA Maker 会抓取所有链接的页以提取相应的问题与答案。
 
-下面是主题页面的示例，其中包含指向不同页面中的 FAQ 部分的链接。
+下面是主题页面的示例，其中包含指向不同页面中常见问题解答部分的链接。
 
  ![知识库的深层链接常见问题解答页示例](./media/qnamaker-concepts-datasources/topics-faq.png)
 

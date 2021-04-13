@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
 ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99989070"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
@@ -59,7 +59,7 @@ Azure 认知服务提供了分层的安全模型。 借助此模型，可保护�
 
 
 > [!NOTE]
-> 如果使用的是 LUIS 或 Speech Services， **CognitiveServicesManagement** 标记只允许使用 SDK 或 REST API 来使用该服务。 若要从虚拟网络访问和使用 LUIS 门户和/或 Speech Studio，你将需要使用以下标记：  
+> 如果使用的是 LUIS 或语音服务，CognitiveServicesManagement 标记只允许通过 SDK 或 REST API 使用服务。 若要从虚拟网络访问和使用 LUIS 门户和/或 Speech Studio，需要使用以下标记：  
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor.Frontend**
 > * **AzureResourceManager** 
@@ -169,7 +169,7 @@ Azure 认知服务提供了分层的安全模型。 借助此模型，可保护�
 
 ### <a name="required-permissions"></a>所需的权限
 
-若要向认知服务资源应用虚拟网络规则，用户必须对要添加的子网拥有适当的权限。 所需的权限是默认 *参与者* 角色或 *认知服务参与者* 角色。 所需权限还可以添加到自定义角色定义中。
+若要向认知服务资源应用虚拟网络规则，用户必须对要添加的子网拥有适当的权限。 所需的权限是默认的“参与者”角色，或“认知服务参与者”角色 。 所需权限还可以添加到自定义角色定义中。
 
 认知服务资源和获得访问权限的虚拟网络可以位于不同的订阅中，包括属于不同 Azure AD 租户的订阅。
 
@@ -347,7 +347,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予从本地网络访问认知服务资源的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行公共对等互连或 Microsoft 对等互连，需要标识 NAT IP 地址。 在进行公共对等互连时，每条 ExpressRoute 线路默认使用两个 NAT IP 地址。 当流量进入 Microsoft Azure 网络主干时，每个都应用于 Azure 服务流量。 在进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
+如果在本地使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 进行公共对等互连或 Microsoft 对等互连，需要标识 NAT IP 地址。 在进行公共对等互连时，每条 ExpressRoute 线路默认使用两个 NAT IP 地址。 当流量进入 Azure 网络主干网时，每个地址都适用于 Microsoft Azure 服务流量。 在进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -491,7 +491,7 @@ IP 网络规则仅适用于 **公共 Internet** IP 地址。 IP 规则不允许�
 
 专用终结点是用于 [VNet](../virtual-network/virtual-networks-overview.md) 中的 Azure 资源的特殊网络接口。 通过为认知服务资源创建专用终结点可在 VNet 中的客户端和资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与认知服务服务之间的连接使用安全的专用链接。
 
-VNet 中的应用程序可以使用通过其他方式连接时所用的相同连接字符串和授权机制，通过专用终结点无缝地连接到服务。 语音服务例外，需要单独的终结点。 请参阅 [语音服务专用终结点](#private-endpoints-with-the-speech-services)上的部分。 专用终结点可以与认知服务资源支持的所有协议（包括 REST）一起使用。
+VNet 中的应用程序可以使用通过其他方式连接时所用的相同连接字符串和授权机制，通过专用终结点无缝地连接到服务。 语音服务例外，它需要单独的终结点。 请参阅[带语音服务的专用终结点](#private-endpoints-with-the-speech-services)部分。 专用终结点可以与认知服务资源支持的所有协议（包括 REST）一起使用。
 
 可以在使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 子网中的客户端可以使用专用终结点连接到某个认知服务资源，同时使用服务终结点访问其他存储帐户。
 
@@ -509,13 +509,13 @@ VNet 中的应用程序可以使用通过其他方式连接时所用的相同连
 
 ### <a name="connecting-to-private-endpoints"></a>连接到专用终结点
 
-使用专用终结点的 VNet 上的客户端应该为认知服务资源使用与连接到公共终结点的客户端相同的连接字符串。 语音服务例外，需要单独的终结点。 请参阅 [语音服务专用终结点](#private-endpoints-with-the-speech-services)上的部分。 我们依赖于 DNS 解析，通过专用链接自动将连接从 VNet 路由到认知服务资源。 
+使用专用终结点的 VNet 上的客户端应该为认知服务资源使用与连接到公共终结点的客户端相同的连接字符串。 语音服务例外，它需要单独的终结点。 请参阅[带语音服务的专用终结点](#private-endpoints-with-the-speech-services)部分。 我们依赖于 DNS 解析，通过专用链接自动将连接从 VNet 路由到认知服务资源。 
 
 默认情况下，我们会创建一个附加到 VNet 的[专用 DNS 区域](../dns/private-dns-overview.md)，并带有专用终结点的必要更新。 但是，如果使用自己的 DNS 服务器，则可能需要对 DNS 配置进行其他更改。 下面关于 [DNS 更改](#dns-changes-for-private-endpoints)的部分描述了专用终结点所需的更新。
 
-### <a name="private-endpoints-with-the-speech-services"></a>带有语音服务的专用终结点
+### <a name="private-endpoints-with-the-speech-services"></a>带语音服务的专用终结点
 
-请参阅将 [语音服务与 Azure 私有链接提供的专用终结点配合使用](Speech-Service/speech-services-private-link.md)。
+请参阅[将语音服务与 Azure 专用链接提供的专用终结点结合使用](Speech-Service/speech-services-private-link.md)。
 
 ### <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 

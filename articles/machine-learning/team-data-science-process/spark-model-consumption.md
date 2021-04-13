@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027437"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774484"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 
@@ -266,7 +266,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>使用特征数组创建 RDD 对象以输入到模型中
 本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其进行独热编码，以便它可用于训练和测试 MLlib 逻辑回归和基于树的模型。 索引数据存储在[弹性分布式数据集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 对象中。 这些 RDD 是 Spark 中的基本抽象。 RDD 对象表示可与 Spark 并行处理的不可变、已分区的元素集合。
 
-它还包含显示如何使用 MLlib 提供的 `StandardScalar` 缩放数据的代码，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的机器学习模型的流行算法。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 用于将特征缩放到单位方差。 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 
+它还包含显示如何使用 MLlib 提供的 `StandardScalar` 缩放数据的代码，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的机器学习模型的流行算法。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.tree.RandomForest.html#pyspark.mllib.tree.RandomForest
+) 用于将特征缩放到单位方差。 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 
 
 ```python
 # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
@@ -545,7 +546,7 @@ BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
 
 可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 要执行此操作，将 Python 脚本从  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器** 或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 **_wasb:///example/python/ConsumeGBNYCReg.py_**。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 
@@ -599,14 +600,14 @@ conn.close()
 
 还可以将此 Python 代码添加到 [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) 以触发一个 Spark 作业提交，该作业提交基于各种事件（如计时器、创建或 blob 更新）为 blob 评分。 
 
-如果首选无代码客户端体验，请使用 [Azure 逻辑应用](https://azure.microsoft.com/documentation/services/app-service/logic/)通过在**逻辑应用设计器**上定义一个 HTTP 操作并设置其参数来调用 Spark 批处理评分。 
+如果首选无代码客户端体验，请使用 [Azure 逻辑应用](https://azure.microsoft.com/documentation/services/app-service/logic/)通过在 **逻辑应用设计器** 上定义一个 HTTP 操作并设置其参数来调用 Spark 批处理评分。 
 
 * 从 Azure 门户，通过依次选择“+新建” -> “Web + 移动” -> “逻辑应用”创建新的逻辑应用。 
-* 若要显示**逻辑应用设计器**，请输入逻辑应用和应用服务计划的名称。
+* 若要显示 **逻辑应用设计器**，请输入逻辑应用和应用服务计划的名称。
 * 选择某个 HTTP 操作并输入下图中显示的参数：
 
 ![逻辑应用设计器](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>下一步操作
-**交叉验证和超参数扫描**：参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
+**交叉验证和超参数扫描**：参阅 [使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
 

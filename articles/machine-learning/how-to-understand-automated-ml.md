@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773107"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -91,6 +91,8 @@ weighted_accuracy|加权准确性是指每个样本按属于同一类别的样�
 自动化 ML 不区分二元分类指标与多类指标。 不管数据集有两个类还是两个以上的类，都会报告相同的验证指标。 但是，某些指标旨在用于多类分类。 正如你所期望的那样，这些指标在应用于二元分类数据集时不会将任何类视为 `true` 类。 明确用于多类的指标以 `micro`、`macro` 或 `weighted` 为后缀。 示例包括 `average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC`。
 
 例如，多类平均召回率（`micro`、`macro` 或 `weighted`）不按 `tp / (tp + fn)` 计算召回率，而是对二进制分类数据集的两个类进行平均。 这相当于分别计算 `true` 类和 `false` 类的召回率，然后取二者的平均值。
+
+自动化 ML 不会计算二进制指标（即二进制分类数据集的指标）。 但是，可以使用自动 ML 为该特定运行生成的[混淆矩阵](#confusion-matrix)手动计算这些指标。 例如，可以使用 2x2 混淆矩阵图中显示的真正值和假正值来计算精度，即 `tp / (tp + fp)`。
 
 ## <a name="confusion-matrix"></a>混淆矩阵
 

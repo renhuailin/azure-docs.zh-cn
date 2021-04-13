@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94363317"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
 对 Azure 认知服务的每个请求都必须包含身份验证标头。 此标头传递订阅密钥或访问令牌，用于验证服务或服务组订阅。 本文介绍三种对请求进行身份验证的方法以及每种方法的要求。
 
-* 使用 [单个服务](#authenticate-with-a-single-service-subscription-key) 或 [多服务](#authenticate-with-a-multi-service-subscription-key) 订阅密钥进行身份验证
+* 使用[单服务](#authenticate-with-a-single-service-subscription-key)或[多服务](#authenticate-with-a-multi-service-subscription-key)订阅密钥进行身份验证
 * 使用[令牌](#authenticate-with-an-authentication-token)进行身份验证
-* [ (AAD) Azure Active Directory](#authenticate-with-azure-active-directory)进行身份验证
+* 使用 [Azure Active Directory (AAD)](#authenticate-with-azure-active-directory) 进行身份验证
 
 ## <a name="prerequisites"></a>先决条件
 
 在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果还没有帐户，我们会提供指南，可在几分钟内完成设置：[创建 Azure 认知服务帐户](cognitive-services-apis-create-account.md)。
 
-[创建帐户](https://azure.microsoft.com/free/cognitive-services/)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
+[创建帐户](https://azure.microsoft.com/free/cognitive-services/)后，可以从 [Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
 
 ## <a name="authentication-headers"></a>身份验证标头
 
@@ -71,7 +71,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 订阅密钥在每个请求中作为 `Ocp-Apim-Subscription-Key` 标头提供。
 
-[![针对认知服务的多服务订阅密钥演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![认知服务的多服务订阅密钥演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>支持的区域
 

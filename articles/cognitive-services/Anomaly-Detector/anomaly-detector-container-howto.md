@@ -1,5 +1,5 @@
 ---
-title: 为异常探测器 API 安装并运行 Docker 容器
+title: 安装并运行异常检测器 API 的 Docker 容器
 titleSuffix: Azure Cognitive Services
 description: 使用异常探测器 API 算法，通过 Docker 容器查找本地数据中的异常。
 services: cognitive-services
@@ -13,39 +13,39 @@ ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地、Docker、容器、流式处理、算法
 ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97862315"
 ---
-# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>为异常探测器 API 安装并运行 Docker 容器 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>安装并运行异常检测器 API 的 Docker 容器 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-容器使你可以使用你自己的环境中的异常探测器 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装和运行异常探测器容器。
+通过容器可以在自己的环境中使用异常检测器 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装以及运行异常检测器容器。
 
-异常探测器提供单个 Docker 容器，可用于在本地使用 API。 使用容器可以执行以下操作：
-* 对数据使用异常探测器的算法
-* 监视流式处理数据，并在实时发生异常时对其进行检测。
+异常检测器提供单个 Docker 容器以在本地使用 API。 容器用途：
+* 针对数据使用异常检测器的算法
+* 监视流数据，并在实时发生异常时对其进行检测。
 * 以批的形式检测整个数据集中的异常。 
-* 以批处理方式检测数据集中的趋势更改点。
-* 调整异常情况检测算法的敏感度，以更好地适应数据。
+* 以批的形式检测数据集中的走向更改点。
+* 调整异常情况检测算法的敏感程度，以更好地适应你的数据。
 
 有关 API 的详细信息，请参阅：
-* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [详细了解异常检测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-使用异常探测器容器之前，必须满足以下先决条件：
+使用异常检测器容器之前，必须满足以下先决条件：
 
 |必须|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。|
-|异常探测器资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure _异常探测器_ 资源。 这两个值都可用于 Azure 门户的 **异常探测器** "概述" 和 "密钥" 页，并且是启动容器所必需的。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
+|异常检测器资源 |若要使用这些容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure 异常检测器资源。 这两个值都可以从 Azure 门户中的异常检测器“概述”和“密钥”页获取；必须获取这两个值才能启动该容器。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -57,12 +57,12 @@ ms.locfileid: "97862315"
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
-下表描述了为异常探测器容器分配的最低和推荐的 CPU 内核和内存。
+下表显示了为每个异常检测器容器分配的最小和建议的 CPU 核心数和内存。
 
-| 每秒的 QPS (查询)  | 最小值 | 建议 |
+| QPS（每秒查询次数） | 最小值 | 建议 |
 |-----------|---------|-------------|
-| 10 QPS | 4核，1 GB 内存 | 8核 2 GB 内存 |
-| 20 QPS | 8核，2 GB 内存 | 16核 4 GB 内存 |
+| 10 QPS | 4 个内核，1 GB 内存 | 8 个内核，2 GB 内存 |
+| 20 QPS | 8 个内核，2 GB 内存 | 16 个内核，4 GB 内存 |
 
 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
@@ -74,14 +74,14 @@ ms.locfileid: "97862315"
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 认知-服务-异常探测器 | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
+| cognitive-services-anomaly-detector | `mcr.microsoft.com/azure-cognitive-services/decision/anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
 -->
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-anomaly-detector-container"></a>针对异常探测器容器的 Docker 拉取
+### <a name="docker-pull-for-the-anomaly-detector-container"></a>适用于异常检测器容器的 Docker pull
 
 ```Docker
 docker pull mcr.microsoft.com/azure-cognitive-services/anomaly-detector:latest
@@ -110,7 +110,7 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像运行异常探测器容器
+* 从容器映像运行异常检测器容器
 * 分配一个 CPU 核心和 4 GB 内存
 * 公开 TCP 端口 5000，并为容器分配伪 TTY
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
@@ -122,7 +122,7 @@ ApiKey={API_KEY}
 
 若要运行多个公开端口的容器，请确保在运行每个容器时使用不同的端口。 例如，在端口 5000 上运行第一个容器，在端口 5001 上运行第二个容器。
 
-请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 可以在主机上同时运行异常探测器容器和 LUIS 容器，也可以运行多个异常探测器容器。
+请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 可以在 HOST 上同时运行异常检测器和 LUIS 容器，也可以运行多个异常检测器容器。
 
 在端口 5000 上运行第一个容器。
 
@@ -169,7 +169,7 @@ ApiKey={API_KEY}
 
 ## <a name="billing"></a>计费
 
-异常探测器容器使用 Azure 帐户上的 _异常探测器_ 资源将计费信息发送到 azure。
+异常检测器容器使用 Azure 帐户上的异常检测器资源将帐单信息发送到 Azure。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -177,19 +177,19 @@ ApiKey={API_KEY}
 
 ## <a name="summary"></a>摘要
 
-本文介绍了用于下载、安装和运行异常探测器容器的概念和工作流。 综上所述：
+本文介绍了与下载、安装和运行表单异常检测器容器相关的概念与工作流。 综上所述：
 
-* 异常探测器提供了一个适用于 Docker 的 Linux 容器，可通过批处理与流式处理、预期的范围推理和敏感度优化来封装异常检测。
+* 异常检测器为 Docker、以批形式和流形式封装的异常检测、预期的范围推理和敏感度优化提供了一个 Linux 容器。
 * 从专用于容器的专用 Azure 容器注册表下载容器映像。
 * 容器映像在 Docker 中运行。
-* 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用异常探测器容器中的操作。
+* 可使用 REST API 或 SDK 通过指定容器的主机 URI 来调用异常检测器容器中的操作。
 * 必须在实例化容器时指定账单信息。
 
 > [!IMPORTANT]
-> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会发送客户数据 (例如，要分析) Microsoft 的时序数据。
+> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如，正在分析的时间序列数据）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[配置容器](anomaly-detector-container-configuration.md)了解配置设置
-* [将异常探测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
-* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* [向 Azure 容器实例中部署异常检测器容器](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [详细了解异常检测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

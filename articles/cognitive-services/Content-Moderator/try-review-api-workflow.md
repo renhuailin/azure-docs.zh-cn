@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 79749533d636f4b73ff3bef6b12d9e842ac485ea
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96905134"
 ---
-# <a name="define-and-use-moderation-workflows-api-console"></a> (API 控制台定义和使用审核工作流) 
+# <a name="define-and-use-moderation-workflows-api-console"></a>定义和使用审查工作流（API 控制台）
 
 工作流是基于云的自定义筛选器，可用于更有效地处理内容。 工作流可以连接到多种服务，以通过不同的方式筛选内容，然后采取相应操作。 本指南演示如何通过 API 控制台使用工作流 REST API 来创建和使用工作流。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 
@@ -27,7 +27,7 @@ ms.locfileid: "96905134"
 
 ## <a name="create-a-workflow"></a>创建工作流
 
-若要创建或更新工作流，请在 " **[工作流-创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 引用" 页上，选择用于关键区域的按钮。 你可以在 "[审阅" 工具](https://contentmoderator.cognitive.microsoft.com/)的 "**凭据**" 页上的终结点 URL 中找到你的区域。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
+若要创建或更新工作流，请转到[工作流 - 创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) API 参考页，然后选择对应于密钥区域的按钮。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com/)的“凭据”页上的终结点 URL 中找到你的区域。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
 
 ![“工作流 - 创建或更新”页上的区域选择](images/test-drive-region.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "96905134"
 
 - **team**：设置 [审阅工具](https://contentmoderator.cognitive.microsoft.com/)帐户时创建的团队 ID（位于审阅工具的“凭据”屏幕的“ID”字段中）。
 - **workflowname**：要添加的新工作流的名称（如果要更新现有工作流，则为现有名称）。
-- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在 "[查看" 工具](https://contentmoderator.cognitive.microsoft.com)的 "**设置**" 选项卡上找到此项。
+- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)的“设置”选项卡上找到此密钥。
 
 ![“工作流 - 创建或更新”控制台查询参数和请求头](images/workflow-console-parameters.PNG)
 
@@ -102,7 +102,7 @@ ms.locfileid: "96905134"
 
 ![“获取”查询参数和请求头](images/workflow-get-default.PNG)
 
-选择“发送”。 如果操作成功，则 **响应状态** 为 `200 OK` ，并且 " **响应内容** " 框显示 JSON 格式的工作流，如以下示例所示：
+选择“发送”。 如果操作成功，“响应状态”为 `200 OK`，且“响应内容”框以 JSON 格式显示工作流，如以下示例所示 ：
 
 ```json
 {

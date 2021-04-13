@@ -7,23 +7,23 @@ ms.date: 02/12/2010
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7149d7ac2625eb60a1d0d22253b93b68a99475de
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99592086"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 进行身份验证
 
-在本部分中，我们将介绍如何使用 API 进行身份验证和会话管理。
+在本部分，我们将介绍如何使用 API 进行身份验证和会话管理。
 
 > [!CAUTION]
-> 本章所述的函数在内部发出对服务器的 REST 调用。 对于所有 REST 调用，通常情况下，发送这些命令会导致服务器中止并返回故障。 `SessionGeneralContext.HttpResponseCode`在本例中，成员的值为 429 ( "请求太多" ) 。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
+> 本章所述的函数在服务器内部发出 REST 调用。 对于所有 REST 调用，过于频繁地发送这些命令会导致服务器中止，最终返回失败。 在本例中，`SessionGeneralContext.HttpResponseCode` 成员的值是 429（“请求过多”）。 根据经验法则，后续调用之间应有 5-10 秒的延迟。
 
 
 ## <a name="sessionconfiguration"></a>SessionConfiguration
 
-SessionConfiguration 用于设置 SDK 中实例的身份验证信息 ```RemoteRenderingClient``` 。
+SessionConfiguration 用于设置 SDK 中 ```RemoteRenderingClient``` 实例的身份验证信息。
 
 重要字段包括：
 
@@ -72,13 +72,13 @@ struct SessionConfiguration
 
 每个打开/创建的 ```RenderingSession``` 都会保留对创建它的前端的引用。 要彻底关闭，必须先解除分配所有会话，然后才能解除分配前端。
 
-若要解除分配会话，则必须显式调用 Azure 上的服务器 `RenderingSession.StopAsync` 。
+解除分配会话不会停止 Azure 上的 服务器，必须显式调用 `RenderingSession.StopAsync`。
 
 创建会话并将其状态标记为就绪后，便可以使用 `RenderingSession.ConnectAsync` 连接到远程渲染运行时。
 
 ### <a name="threading"></a>线程
 
-所有 RenderingSession 和 RemoteRenderingClient 异步调用都在后台线程中完成，而不是在主应用程序线程中完成。
+所有 RenderingSession 和 RemoteRenderingClient 异步调用都在后台线程而不是主应用程序线程中完成。
 
 ### <a name="conversion-apis"></a>转换 API
 
@@ -156,7 +156,7 @@ void GetConversionStatus(ApiHandle<RemoteRenderingClient> client, std::string as
 
 有关会话管理的详细信息，请参阅[会话管理 REST API](session-rest-api.md)。
 
-可以在服务上动态创建呈现会话，也可以将现有的会话 ID "打开" 到 RenderingSession 对象中。
+可以在服务上动态创建渲染会话，也可以在 RenderingSession 对象中“打开”已有的会话 ID。
 
 #### <a name="create-rendering-session"></a>创建渲染会话
 

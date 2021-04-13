@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: 6d93b6d024fc966f3b260602f4798a2d77669a35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96501152"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>必应视觉搜索 API 的语言和区域支持
@@ -122,5 +122,5 @@ ms.locfileid: "96501152"
 |台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
-|美国|英语|en-US|
+|美国|英语|zh-CN|
 |美国|西班牙语|es-US|

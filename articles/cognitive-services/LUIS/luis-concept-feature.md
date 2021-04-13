@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: da85abdff3d1022659f2d4e83fd14c5ae6003fc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546051"
 ---
 # <a name="machine-learning-features"></a>机器学习特征
@@ -160,9 +160,9 @@ ms.locfileid: "100546051"
 
 ### <a name="required-feature-using-prebuilt-entities"></a>使用预生成实体的所需特征
 
-城市、省/市/自治区和国家/地区等预生成实体通常是一组封闭列表，这意味着它们不会随着时间的推移而变化。 这些实体可能具有相关的建议特征，可以将这些特征标记为“所需”。 但是，`isRequired` 标志仅与分配给它的实体相关，不会影响层次结构。 如果未找到预生成子实体功能，这不会影响父实体的检测和返回。
+预生成实体（如城市、省/市/自治区和国家/地区）通常是一组封闭列表，这意味着它们不会随着时间的推移而变化。 这些实体可能具有相关的建议特征，可以将这些特征标记为“所需”。 但是，`isRequired` 标志只与分配给它的实体相关，不影响层次结构。 如果未找到预生成的子实体特征，则不会影响父实体的检测和返回。
 
-以必需功能为例，请考虑需要检测地址。 你可能考虑街道编号是必填项。 这允许用户输入“1 Microsoft Way”或“One Microsoft Way”，对于街道编号子实体，两者都解析为数字“1”。 有关详细信息，请参阅[预生成实体](luis-reference-prebuilt-entities.md)一文。
+作为必需特征的一个示例，请考虑要检测地址。 你可以考虑将街道号码作为一项要求。 这将允许用户输入“1 Microsoft Way”或“One Microsoft Way”，并且两者都将解析为街道号码子实体的数字“1”。 有关详细信息，请参阅[预生成实体](luis-reference-prebuilt-entities.md)一文。
 
 ### <a name="required-feature-using-list-entities"></a>使用列表实体的所需特征
 

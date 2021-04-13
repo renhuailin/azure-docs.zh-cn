@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99593902"
 ---
 # <a name="graphics-binding"></a>图形绑定
@@ -121,10 +121,10 @@ if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 
 #### <a name="render-remote-image"></a>渲染远程图像
 
-在每个帧开始时，需要将远程帧呈现到后台缓冲区。 这是通过调用来完成的 `BlitRemoteFrame` ，这会将这两种眼睛的颜色和深度信息都填充到当前绑定的呈现器目标。 因此，在将完整后台缓冲区绑定为呈现器目标后，这一点很重要。
+在每个帧开始时，需要将远程帧渲染到后台缓冲区中。 可通过调用 `BlitRemoteFrame` 来完成此操作，这会将双眼的颜色和深度信息填充到当前绑定的渲染目标。 因此，在将完整的后台缓冲区绑定为渲染目标之后执行此操作非常重要。
 
 > [!WARNING]
-> 远程映像被 array.blit 到后台缓冲区中后，应使用单通道立体声呈现技术呈现本地内容，例如，使用 **SV_RenderTargetArrayIndex**。 使用其他立体声呈现技术（例如，在单独的刀路中呈现每个眼睛）可能会导致严重的性能下降或图形项目，应避免使用。
+> 在将远程图像以调用 blit 参数的方式渲染到后台缓冲区之后，应该使用单通道立体渲染技术（例如使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。 其他立体渲染技术（例如，在单独的通道中渲染每只眼睛）可能会导致严重的性能下降或图形伪影，应避免使用。
 
 ```cs
 RenderingSession currentSession = ...;
@@ -142,22 +142,22 @@ wmrBinding->BlitRemoteFrame();
 
 `GraphicsApiType.SimD3D11` 是模拟绑定，如果选择，它将创建 `GraphicsBindingSimD3d11` 图形绑定。 此界面用于模拟头部运动，例如，在桌面应用程序中，以及渲染单视场图像时。
 
-若要实现模拟绑定，必须了解本地相机与远程帧之间的差异（如 [相机](../overview/features/camera.md) 页面上所述）。
+若要实现模拟绑定，必须了解本地相机与远程帧之间的差异（如[相机](../overview/features/camera.md)页面所述）。
 
-需要两个照相机：
+需要两个相机：
 
-* **本地照相机**：此照相机表示由应用程序逻辑驱动的当前相机位置。
-* **代理照相机**：此相机与服务器发送的当前 *远程帧* 匹配。 因为客户端请求帧的时间与到达该帧的时间之间存在延迟，所以 *远程帧* 始终是本地相机移动后的一位。
+* **本地相机**：此相机表示由应用程序逻辑驱动的当前相机位置。
+* **代理相机**：此相机与服务器发送的当前远程帧匹配。 由于在客户端请求某个帧与该帧到达之间有一个时间延迟，因此在移动上远程帧总是比本地相机慢一点。
 
-此处的基本方法是使用代理相机将远程映像和本地内容呈现到离屏目标。 然后，代理映像将 reprojected 到本地相机空间，该空间将在 [后期阶段 reprojection](../overview/features/late-stage-reprojection.md)进一步解释。
+此处的基本方法是使用代理相机将远程图像和本地内容渲染成一个屏幕外目标。 然后，代理图像会重新投影到本地相机空间，[后期重投影](../overview/features/late-stage-reprojection.md)中进一步介绍了此内容。
 
-`GraphicsApiType.SimD3D11` 还支持 stereoscopic 呈现，需要在以下设置调用期间启用此功能 `InitSimulation` 。 设置过程要稍微复杂一点，其工作方式如下：
+`GraphicsApiType.SimD3D11` 还支持立体渲染，在下面进行 `InitSimulation` 设置调用期间需要启用此功能。 设置过程要稍微复杂一点，其工作方式如下：
 
 #### <a name="create-proxy-render-target"></a>设置代理渲染目标
 
 需要使用 `GraphicsBindingSimD3d11.Update` 函数提供的代理照相机数据，将远程和本地内容渲染到名为“代理”的屏幕外颜色/深度渲染目标。
 
-代理必须匹配后台缓冲区的分辨率，并且应为 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 在呈现 stereoscopic 的情况下，如果使用的是颜色代理纹理和，则深度代理纹理需要有两个数组层而不是一个。 会话准备就绪后，需要先调用 `GraphicsBindingSimD3d11.InitSimulation` 才可连接到该会话：
+代理必须与后台缓冲区的分辨率匹配，并且应当采用 DXGI_FORMAT_R8G8B8A8_UNORM 或 DXGI_FORMAT_B8G8R8A8_UNORM 格式。 在进行立体渲染的情况下，颜色代理纹理和深度代理纹理（如果使用深度）都需要有两个阵列层而不是一个。 会话准备就绪后，需要先调用 `GraphicsBindingSimD3d11.InitSimulation` 才可连接到该会话：
 
 ```cs
 RenderingSession currentSession = ...;
@@ -253,7 +253,7 @@ else
 
 #### <a name="simulation-update-structures"></a>模拟更新结构
 
-每个帧都需要 **输入与本地** 相机相对应的相机参数的范围，并返回一组与下一个可用帧相机相对应的相机参数。 这两个集 `SimulationUpdateParameters` 分别在和结构中捕获 `SimulationUpdateResult` ：
+对于每一帧，上一部分的“渲染循环更新”要求你输入与本地相机对应的相机参数范围，并返回与下一可用帧的相机对应的相机参数集。 这两个集分别在 `SimulationUpdateParameters` 和 `SimulationUpdateResult` 结构中捕获：
 
 ```cs
 public struct SimulationUpdateParameters
@@ -277,17 +277,17 @@ public struct SimulationUpdateResult
 
 | 成员 | 说明 |
 |--------|-------------|
-| FrameId | 连续帧标识符。 对于 SimulationUpdateParameters 输入是必需的，需要为每个新帧持续递增。 如果尚无帧数据可用，则将在 SimulationUpdateResult 中为0。 |
-| ViewTransform | 帧的相机视图变换矩阵的左-右-立体声对。 对于 monoscopic 呈现，只有 `Left` 成员有效。 |
-| FieldOfView | [视图约定的 OpenXR 字段](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)中的帧摄像机字段的左右-立体声对。 对于 monoscopic 呈现，只有 `Left` 成员有效。 |
-| System.windows.media.media3d.projectioncamera.nearplanedistance | 用于当前远程帧的投影矩阵的近飞机距离。 |
-| System.windows.media.media3d.projectioncamera.farplanedistance | 当前远程帧的投影矩阵使用的远距离。 |
+| FrameId | 连续帧标识符。 是 SimulationUpdateParameters 输入所需，并且需要针对每个新帧连续递增。 如果尚无帧数据可用，则在 SimulationUpdateResult 中为 0。 |
+| ViewTransform | 帧的相机视图变换矩阵的“左-右-立体”对。 对于单像渲染，只有 `Left` 成员有效。 |
+| FieldOfView | [OpenXR 视野约定](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)中帧相机的视野的“左-右-立体”对。 对于单像渲染，只有 `Left` 成员有效。 |
+| NearPlaneDistance | 用于当前远程帧的投影矩阵的近平面距离。 |
+| FarPlaneDistance | 用于当前远程帧的投影矩阵的远平面距离。 |
 
-立体声对 `ViewTransform` ，并 `FieldOfView` 允许在启用 stereoscopic 呈现的情况下设置两个眼睛相机值。 否则， `Right` 将忽略成员。 正如您所看到的，在没有指定投影矩阵的情况下，只有照相机的转换是作为纯4x4 变换矩阵传递的。 实际的矩阵由 Azure 远程呈现使用指定的视图字段以及 [CAMERASETTINGS API](../overview/features/camera.md)上的当前近平面和最远平面集进行计算。
+立体对 `ViewTransform` 和 `FieldOfView` 允许在启用立体渲染的情况下设置两个 eye-camera 值。 否则，将忽略 `Right` 成员。 如你所见，仅以普通 4x4 变换矩阵的形式传递了相机的变换，而没有指定投影矩阵。 实际矩阵由 Azure 远程渲染使用指定的视野以及在 [CameraSettings API](../overview/features/camera.md) 上设置的当前近平面和远平面在内部计算。
 
-由于可以根据需要在运行时更改 [CameraSettings](../overview/features/camera.md) 的接近平面和远端平面，并且该服务以异步方式应用这些设置，因此，每个 SimulationUpdateResult 还会在呈现相应的帧期间使用特定的近平面和远平面。 您可以使用这些平面值调整投影矩阵，以便呈现本地对象，以匹配远程帧渲染。
+由于你可以在运行时根据需要在 [CameraSettings](../overview/features/camera.md) 上更改近平面和远平面，并且服务将以异步方式应用这些设置，因此每个 SimulationUpdateResult 还包含在渲染相应帧期间使用的特定近平面和远平面。 你可以使用那些平面值来调整投影矩阵，以便渲染与远程帧渲染匹配的本地对象。
 
-最后，尽管 **模拟更新** 调用需要 OpenXR 约定中的字段视图，但出于标准化和算法安全原因，你可以使用以下结构填充示例中所示的转换函数：
+最后，尽管 **模拟更新** 调用需要 OpenXR 约定中的视野，但出于标准化和算法安全原因，你可以使用以下结构填充示例中所示的转换函数：
 
 ```cs
 public SimulationUpdateParameters CreateSimulationUpdateParameters(int frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
@@ -359,18 +359,18 @@ void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& r
 }
 ```
 
-这些转换函数允许在视图字段规范和纯4x4 透视投影矩阵之间快速切换，具体取决于您的本地呈现需求。 这些转换函数包含验证逻辑，在未设置有效结果的情况下将返回错误，以防输入投影矩阵或输入字段无效。
+这些转换函数允许在视野规范和普通 4x4 透视投影矩阵之间快速切换，具体取决于你对本地渲染的需求。 这些转换函数包含验证逻辑，在输入投影矩阵或输入视野无效的情况下会返回错误，不设置有效结果。
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RemoteManagerStatic StartupRemoteRendering ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
-* [C # GraphicsBinding 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbinding)
-* [C # GraphicsBindingWmrD3d11 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingwmrd3d11)
-* [C # GraphicsBindingSimD3d11 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11)
-* [C + + RemoteRenderingInitialization 结构](/cpp/api/remote-rendering/remoterenderinginitialization)
-* [C + + GraphicsBinding 类](/cpp/api/remote-rendering/graphicsbinding)
-* [C + + GraphicsBindingWmrD3d11 类](/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
-* [C + + GraphicsBindingSimD3d11 类](/cpp/api/remote-rendering/graphicsbindingsimd3d11)
+* [C# RemoteManagerStatic.StartupRemoteRendering()](/dotnet/api/microsoft.azure.remoterendering.remotemanagerstatic.startupremoterendering)
+* [C# GraphicsBinding 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbinding)
+* [C# GraphicsBindingWmrD3d11 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingwmrd3d11)
+* [C# GraphicsBindingSimD3d11 类](/dotnet/api/microsoft.azure.remoterendering.graphicsbindingsimd3d11)
+* [C++ RemoteRenderingInitialization 结构](/cpp/api/remote-rendering/remoterenderinginitialization)
+* [C++ GraphicsBinding 类](/cpp/api/remote-rendering/graphicsbinding)
+* [C++ GraphicsBindingWmrD3d11 类](/cpp/api/remote-rendering/graphicsbindingwmrd3d11)
+* [C++ GraphicsBindingSimD3d11 类](/cpp/api/remote-rendering/graphicsbindingsimd3d11)
 
 ## <a name="next-steps"></a>后续步骤
 

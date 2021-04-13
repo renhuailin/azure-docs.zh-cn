@@ -1,43 +1,43 @@
 ---
-title: Azure 远程呈现支持选项
-description: 列出如何获取 Azure 远程呈现支持的方法
+title: Azure 远程渲染支持选项
+description: 列出如何获取 Azure 远程渲染支持的方法
 author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 1a05216fd44a64c037561662009987615f5657a8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92207166"
 ---
-# <a name="azure-remote-rendering-support-options"></a>Azure 远程呈现支持选项
+# <a name="azure-remote-rendering-support-options"></a>Azure 远程渲染支持选项
 
-## <a name="open-a-tech-support-ticket"></a>打开技术支持票证
+## <a name="open-a-tech-support-ticket"></a>开具技术支持票证
 
-若要在 Azure 远程呈现的 Azure 门户中打开技术支持票证：
+若要在 Azure 门户中针对 Azure 远程渲染开具技术支持票证，请执行以下操作：
 
 1. 打开 [Azure 门户](https://ms.portal.azure.com)
 
-1. 从菜单栏中选择问号图标，然后单击 " **帮助 + 支持**"。
+1. 从菜单栏中选择问号图标，然后单击“帮助 + 支持”。
 
-    ![Azure 门户帮助和支持](media/portal-help.png)
+    ![Azure 门户帮助与支持](media/portal-help.png)
 
 1. 选择“新建支持请求”。
 
-    ![Azure 门户新的支持请求](media/portal-new-request.png)
+    ![Azure 门户的“新建支持请求”](media/portal-new-request.png)
 
 1. 填写字段：
 
-    * **问题类型**： `Technical`
-    * **服务**： `Remote Rendering`
+    * **问题类型**：`Technical`
+    * **服务**：`Remote Rendering`
 
-    ![Azure 门户支持票证字段](media/portal-request.png)
+    ![Azure 门户的支持票证字段](media/portal-request.png)
 
-1. 单击页面底部的 " **下一步：解决方案** "。
+1. 单击页面底部的“下一步: 解决方案”。
 
-1. 尽可能详细地填写以下窗体。
+1. 尽可能准确、详细地填写以下表单。
 
 1. 查看并提交支持请求。
 
@@ -47,11 +47,11 @@ ms.locfileid: "92207166"
 
 ## <a name="provide-documentation-feedback"></a>提供文档反馈
 
-在每篇文档的底部，你可以打开 GitHub 问题以提供该页的反馈。
+在每篇文档的底部，都可以提交一个 GitHub 问题以提供对该页的反馈。
 
 ## <a name="provide-product-feedback"></a>提供产品反馈
 
-若要提供反馈，请共享有关 Azure 远程呈现的观点或建议，或者对他人提交的想法进行投票，请访问 [Azure 远程呈现反馈论坛](https://feedback.azure.com/forums/928696-azure-remote-rendering)。
+若要提供反馈、分享有关 Azure 远程渲染的观点或建议，或者对他人已提交的观点进行投票，请访问 [Azure 远程渲染反馈论坛](https://feedback.azure.com/forums/928696-azure-remote-rendering)。
 
 
 ## <a name="microsoft-qa"></a>Microsoft 问答

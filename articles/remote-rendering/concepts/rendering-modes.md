@@ -1,57 +1,57 @@
 ---
 title: 渲染模式
-description: 描述不同的服务器端呈现模式
+description: 描述不同的服务器端渲染模式
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2cf1872bcdd7b1bda74046198f5fc32be1069913
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594495"
 ---
 # <a name="rendering-modes"></a>渲染模式
 
-远程呈现提供两种主要的操作模式： **TileBasedComposition** 模式和 **DepthBasedComposition** 模式。 这些模式决定了如何在服务器上的多个 Gpu 之间分布工作负荷。 此模式必须在连接时指定，并且在运行时无法更改。
+远程渲染提供两种主要操作模式：**TileBasedComposition** 模式和 **DepthBasedComposition** 模式。 这些模式决定了如何在服务器上的多个 GPU 之间分布工作负荷。 模式必须在连接时指定，在运行时无法更改。
 
-这两种模式都具有优势，但也具有固有的功能限制，因此选择最适合的模式是使用方案特定的。
+这两种模式不仅有优点，也存在固有的功能限制，因此，如何选取最适合的模式取决于具体用例。
 
 ## <a name="modes"></a>模式
 
-现在更详细地讨论了这两种模式。
+现在我们更详细地介绍这两种模式。
 
-### <a name="tilebasedcomposition-mode"></a>\ "TileBasedComposition" 模式
+### <a name="tilebasedcomposition-mode"></a>“TileBasedComposition”模式
 
-在 **TileBasedComposition** 模式下，每个涉及的 GPU 都将) 屏幕上的特定 subrectangles (图块。 主 GPU 在将磁贴作为视频帧发送到客户端之前，从磁贴中编写最终映像。 相应地，所有 Gpu 都需要有一组相同的资源用于呈现，因此，已加载的资产需要容纳到一个 GPU 的内存中。
+在 TileBasedComposition 模式下，每个涉及的 GPU 都会在屏幕上渲染特定的子矩形（图块）。 主 GPU 根据图块组合出最终图像，然后将最终图像作为视频帧发送到客户端。 相应地，所有 GPU 都需要使用同一组资源进行渲染，因此，已加载的资产需要能够容纳到一个 GPU 的内存中。
 
-在此模式下，呈现质量比在 **DepthBasedComposition** 模式下稍微好些，因为 MSAA 可对每个 GPU 使用整套几何。 以下屏幕截图显示了这两种边缘的抗锯齿操作：
+这种模式下的渲染质量会略好于 DepthBasedComposition 模式，因为 MSAA 可以为每个 GPU 处理整组几何图形。 下面的屏幕截图显示了抗锯齿对于两种边缘都可以同样正确地工作：
 
 ![TileBasedComposition 中的 MSAA](./media/service-render-mode-quality.png)
 
-此外，在此模式下，每个部分都可以切换到透明材料，或通过 [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)切换到 **查看** 模式。
+此外，在这种模式下，每个部分都可以切换到透明材料，或通过 [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) 切换到透明模式
 
-### <a name="depthbasedcomposition-mode"></a>\ "DepthBasedComposition" 模式
+### <a name="depthbasedcomposition-mode"></a>“DepthBasedComposition”模式
 
-在 **DepthBasedComposition** 模式下，每个涉及的 GPU 都以全屏分辨率呈现，而只呈现网格的一部分。 主 GPU 上的最终映像组合会注意到部分按照其深度信息正确地进行了合并。 通常情况下，内存负载分布在 Gpu 上，因此允许呈现无法装入单个 GPU 内存的模型。
+在 DepthBasedComposition 模式下，每个涉及的 GPU 都以全屏分辨率进行渲染，但只是渲染一部分网格。 主 GPU 上的最终图像构成会进行相应的处理，确保各部分根据其深度信息正确合并。 通常，内存有效负载是分布在 GPU 中的，因此允许渲染模型不容纳在一个 GPU 的内存中。
 
-每个一个 GPU 都使用 MSAA 来消除本地内容。 但是，来自不同 Gpu 的边缘之间可能存在固有的别名。 通过后处理最终映像，但 MSAA 质量仍比在 **TileBasedComposition** 模式下更糟，这种效果会得到缓解。
+每个单一的 GPU 都会使用 MSAA 对本地内容进行抗锯齿处理。 但是，在不同的的 GPU 中的边缘之间，可能会存在固有的锯齿现象。 通过对最终图像进行后处理，这种影响会得到削弱，但 MSAA 质量仍比在 TileBasedComposition 模式下要差。
 
-下图演示了 MSAA 项目： ![ DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
+下图展示了 MSAA 项目：![DepthBasedComposition 中的 MSAA](./media/service-render-mode-balanced.png)
 
-消除锯齿在 sculpture 和窗帘之间正常工作，因为这两个部分都呈现在同一 GPU 上。 另一方面，窗帘和墙壁之间的边缘会显示一些别名，因为这两个部分是由不同 Gpu 组成的。
+抗锯齿在雕像和窗帘之间的效果是正常的，因为这两个部分都在同一 GPU 上渲染。 另一方面，窗帘和墙壁之间的边缘会出现一些锯齿，因为这两个部分是由不同的 GPU 完成构图的。
 
-此模式的最大限制是，几何图形部分不能动态切换为透明材料，也不能对 [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)使用 "**查看**" 模式。 不过，其他状态覆盖功能 (轮廓、颜色色调 ) 确实有效。 此外，在转换时标记为透明的材料在此模式下可以正常工作。
+此模式的最大限制是，几何图形部分无法动态切换为透明材料，透明模式也对 [HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md) 不起作用。 不过，其他状态替代功能（轮廓、颜色色调等）确实有效。 另外，在此模式下，在转换时标记为透明的材料确实可以正常工作。
 
 ### <a name="performance"></a>性能
 
-这两种模式的性能特征根据用例的不同而不同，因此很难或提供一般建议。 如果你不受上述限制 (内存或透明度/) 的限制，则建议尝试这两种模式并使用各种相机位置来监视性能。
+这两种模式的性能特征都会因用例而异，很难分析出或提供一般性的建议。 如果上述限制（内存或透明度/透明）对你没有约束，建议对两种模式都进行试验，并使用不同的摄像机位来监视性能。
 
-## <a name="setting-the-render-mode"></a>设置呈现模式
+## <a name="setting-the-render-mode"></a>设置渲染模式
 
-远程呈现服务器上使用的呈现模式是通过在期间指定的 `RenderingSession.ConnectAsync` `RendererInitOptions` 。
+远程渲染服务器上使用的渲染模式是在 `RenderingSession.ConnectAsync` 期间通过 `RendererInitOptions` 指定的。
 
 ```cs
 async void ExampleConnect(RenderingSession session)
@@ -74,10 +74,10 @@ async void ExampleConnect(RenderingSession session)
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RenderingSession ConnectAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingsession.connectasync)
-* [C # RendererInitOptions 结构](/dotnet/api/microsoft.azure.remoterendering.rendererinitoptions)
-* [C + + RenderingSession：： ConnectToConnectAsyncRuntime ( # B1 ](/cpp/api/remote-rendering/renderingsession#connectasync)
-* [C + + RendererInitOptions 结构](/cpp/api/remote-rendering/rendererinitoptions)
+* [C# RenderingSession.ConnectAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingsession.connectasync)
+* [C# RendererInitOptions 结构](/dotnet/api/microsoft.azure.remoterendering.rendererinitoptions)
+* [C++ RenderingSession::ConnectToConnectAsyncRuntime()](/cpp/api/remote-rendering/renderingsession#connectasync)
+* [C++ RendererInitOptions 结构](/cpp/api/remote-rendering/rendererinitoptions)
 
 ## <a name="next-steps"></a>后续步骤
 

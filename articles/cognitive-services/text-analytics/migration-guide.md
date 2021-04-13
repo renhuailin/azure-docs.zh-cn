@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/22/2021
 ms.author: aahi
 ms.openlocfilehash: 416ef4ceddbb43e9f1606d44a66ffd5295cee4e6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101699889"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>迁移到文本分析 API 版本 3.x
@@ -46,7 +46,7 @@ ms.locfileid: "101699889"
 
 ### <a name="feature-changes"></a>功能更改
 
-在 2.1 版中，文本分析 API 为命名实体识别 (NER) 和实体链接使用一个终结点。 版本 3 提供了扩展的命名实体检测，对 NER 和实体链接请求使用不同的终结点。 从第 3.1-NER 开始，还可以检测个人 `pii` 和健康 `phi` 信息。 
+在 2.1 版中，文本分析 API 为命名实体识别 (NER) 和实体链接使用一个终结点。 版本 3 提供了扩展的命名实体检测，对 NER 和实体链接请求使用不同的终结点。 从 v3.1-preview.1 开始，NER 还可以检测个人 `pii` 信息和运行状况 `phi` 信息。 
 
 ### <a name="steps-to-migrate"></a>迁移步骤
 
@@ -71,9 +71,9 @@ NER
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-#### <a name="version-21-entity-categories"></a>版本2.1 实体类别
+#### <a name="version-21-entity-categories"></a>版本 2.1 实体类别
 
-下表列出了为 NER 2.1 返回的实体类别。
+下表列出了为 NER v2.1 返回的实体类别。
 
 | 类别   | 说明                          |
 |------------|--------------------------------------|
@@ -82,7 +82,7 @@ NER
 |组织 | 公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。 |
 | PhoneNumber | 电话号码（仅限美国和欧洲电话号码）。 |
 | 电子邮件 | 电子邮件地址。 |
-| 代码 | 指向网站的 URL。 |
+| URL | 指向网站的 URL。 |
 | IP | 网络 IP 地址。 |
 | DateTime | 某天的日期和时间。| 
 | Date | 日历日期。 |
@@ -104,7 +104,7 @@ NER
 
 ### <a name="feature-changes"></a>功能更改 
 
-V3 中的语言检测功能输出已发生更改。 JSON 响应将包含 `ConfidenceScore` 而不是 `score` 。 V3 还只能  `detectedLanguage` 为每个文档返回特性中的一种语言。
+语言检测功能输出已在 v3 中发生更改。 JSON 响应将包含 `ConfidenceScore`，而不是 `score`。 V3 还仅为每个文档返回 `detectedLanguage` 属性中的一种语言。
 
 ### <a name="steps-to-migrate"></a>迁移步骤
 

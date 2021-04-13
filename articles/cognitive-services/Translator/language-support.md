@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
 ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101738134"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
-使用转换器转换为任何90文本翻译语言和方言。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准。当神经系统可用时，你可以在使用 V3 版翻译器时将神经机器翻译用作默认设置。
+使用 Translator 可以在 90 多种文本翻译语言和方言之间互译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准。当神经系统可用时，你可以在使用 V3 版翻译器时将神经机器翻译用作默认设置。
 
-你还可以结合使用转换器与自定义转换器来构建神经翻译系统，以了解你自己的业务和行业中使用的术语，并使用 Microsoft Speech Service 将语音翻译添加到应用中。
+你还可以将翻译器与自定义翻译器结合使用，构建可理解你自己的业务和行业中使用的术语的神经翻译系统，并将翻译器与 Microsoft 语音服务结合使用，将语音翻译添加到应用中。
 
 [详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
@@ -310,7 +310,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="customization"></a>自定义
 
-以下语言可供使用 [自定义转换器](https://aka.ms/CustomTranslator)的自定义或从英语进行自定义。
+可使用[自定义翻译器](https://aka.ms/CustomTranslator)将以下语言自定义为翻译成英语或从英语翻译成相应语言。
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -355,7 +355,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西) | `pt` |
+| 葡萄牙语（巴西） | `pt` |
 | 旁遮普语|`pa`|
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |

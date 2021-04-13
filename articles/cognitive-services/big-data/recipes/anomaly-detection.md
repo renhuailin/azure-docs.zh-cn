@@ -1,7 +1,7 @@
 ---
-title: 食谱：针对大数据的认知维护和认知服务
+title: 操作方法：使用大数据认知服务执行预测性维护
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何通过认知服务进行大数据的分布式异常检测
+description: 本快速入门介绍如何使用大数据认知服务执行分布式异常检测
 services: cognitive-services
 author: mhamilton723
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: MT
+ms.openlocfilehash: 5a583d74ae0bf421a7a863a65442d250489a2f8f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366275"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775385"
 ---
-# <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>食谱：针对大数据的认知维护和认知服务
+# <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>操作方法：使用大数据认知服务执行预测性维护
 
-此食谱显示了如何将 Azure Synapse Analytics 和认知 Apache Spark 服务用于 IoT 设备的预测性维护。 接下来，我们将介绍 [CosmosDB 和 Synapse 链接](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 示例。 为简单起见，在这种情况下，我们将从 CSV 文件直接读取数据，而不是通过 CosmosDB 和 Synapse 链接获取流数据。 强烈建议您查找 Synapse 链接示例。
+本操作方法介绍如何使用 Apache Spark 中的 Azure Synapse Analytics 和认知服务对 IoT 设备执行预测性维护。 接下来，我们将随着 [CosmosDB 和 Synapse Link](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 示例执行操作。 为简单起见，对于此操作方法，我们将直接从 CSV 文件读取数据，而不再通过 CosmosDB 和 Synapse Link 获取流式数据。 强烈建议你仔细查看 Synapse Link 示例。
 
 ## <a name="hypothetical-scenario"></a>假设方案
 
-假想方案是一种电源植物，其中 IoT 设备监视 [流涡轮机](https://en.wikipedia.org/wiki/Steam_turbine)。 IoTSignals 集合每分钟 (RPM) 和 Megawatts () MW 每个。 分析来自流涡轮机的信号，检测到异常信号。
+假设方案是在发电厂，其中 IoT 设备用来监视[汽轮机](https://en.wikipedia.org/wiki/Steam_turbine)。 IoTSignals 集合包含每个涡轮的每分钟转速 (RPM) 和兆瓦功率 (MW)。 我们要分析来自汽轮机的信号，并检测异常信号。
 
-数据中的离群值可能是随机的。 在这些情况下，RPM 值将会出现，而 MW 的输出将会关闭，以实现线路保护。 其思路是查看同时变化的数据，但具有不同的信号。
+数据可能随机出现异常。 在这些情况下，RPM 值将会升高，而 MW 输出将会下降，以保护电路。 目的是查看相同时间针对不同信号的数据变化情况。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-* 使用[无服务器 Apache Spark 池](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)配置的[Azure Synapse 工作区](../../../synapse-analytics/quickstart-create-workspace.md)
+* [Azure Synapse 工作区](../../../synapse-analytics/quickstart-create-workspace.md)配备[无服务器 Apache Spark 池](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
 ## <a name="setup"></a>设置
 
 ### <a name="create-an-anomaly-detector-resource"></a>创建异常检测器资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](../../cognitive-services-apis-create-account.md) 或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md)为转换器创建资源。 也可执行以下操作：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](../../cognitive-services-apis-create-account.md)或 [Azure CLI](../../cognitive-services-apis-create-account-cli.md) 创建翻译资源。 也可执行以下操作：
 
-- 查看  [Azure 门户](https://portal.azure.com/)中的现有资源。
+- 查看 [Azure 门户](https://portal.azure.com/)中的现有资源。
 
-记下该资源的终结点和密钥，你将在本指南中需要它。
+记下该资源的终结点和密钥，在本指南中将需要它。
 
 ## <a name="enter-your-service-keys"></a>输入服务密钥
 
@@ -55,17 +55,17 @@ assert (service_key is not None)
 assert (location is not None)
 ```
 
-## <a name="read-data-into-a-dataframe"></a>将数据读入数据帧
+## <a name="read-data-into-a-dataframe"></a>将数据读取到 DataFrame
 
-接下来，让我们将 IoTSignals 文件读取到数据帧中。 在 Synapse 工作区中打开一个新笔记本，并从该文件创建一个数据帧。
+接下来，让我们将 IoTSignals 文件读取到 DataFrame。 在 Synapse 工作区中打开一个新笔记本，并在该文件中创建一个 DataFrame。
 
 ```python
-df_device_info = spark.read.csv("wasbs://publicwasb@mmlspark.blob.core.windows.net/iot/IoTSignals.csv", header=True, inferSchema=True)
+df_signals = spark.read.csv("wasbs://publicwasb@mmlspark.blob.core.windows.net/iot/IoTSignals.csv", header=True, inferSchema=True)
 ```
 
-### <a name="run-anomaly-detection-using-cognitive-services-on-spark"></a>在 Spark 上使用认知服务运行异常情况检测
+### <a name="run-anomaly-detection-using-cognitive-services-on-spark"></a>使用 Spark 中的认知服务运行异常检测
 
-目标是查找来自 IoT 设备的信号输出异常值的实例，以便我们可以看到发生错误的时间，并进行预测性维护。 为此，让我们在 Spark 上使用异常探测器：
+目的是查找 IoT 设备信号输出异常值的实例，以便我们可以了解哪种情况下会出错，并执行预测性维护。 为此，让我们使用 Spark 上的异常检测器：
 
 ```python
 from pyspark.sql.functions import col, struct
@@ -90,24 +90,24 @@ df_anomaly = (df_signals
 df_anomaly.createOrReplaceTempView('df_anomaly')
 ```
 
-让我们看一下数据：
+我们来看看数据。
 
 ```python
 df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 ```
 
-此单元格应生成如下所示的结果：
+此单元格生成的结果应如下所示：
 
 | timestamp           |   值 | deviceId   | isAnomaly   |
 |:--------------------|--------:|:-----------|:------------|
-| 2020-05-01 18:33:51 |    3174 | 开发-7      | 错误       |
-| 2020-05-01 18:33:52 |    2976 | 开发-7      | 错误       |
-| 2020-05-01 18:33:53 |    2714 | 开发-7      | 错误       |
+| 2020-05-01 18:33:51 |    3174 | dev-7      | False       |
+| 2020-05-01 18:33:52 |    2976 | dev-7      | False       |
+| 2020-05-01 18:33:53 |    2714 | dev-7      | False       |
 
 
- ## <a name="visualize-anomalies-for-one-of-the-devices"></a>可视化某个设备的异常
+ ## <a name="visualize-anomalies-for-one-of-the-devices"></a>直观显示其中一个设备的异常
 
-IoTSignals.csv 包含来自多个 IoT 设备的信号。 我们将重点放在特定设备上，并直观显示设备的异常输出。
+IoTSignals.csv 包含来自多个 IoT 设备的信号。 我们将重点关注某个特定设备，并直观显示该设备的异常输出。
 
 ```python
 df_anomaly_single_device = spark.sql("""
@@ -125,7 +125,7 @@ order by timestamp
 limit 200""")
 ```
 
-现在，我们已经创建了一个表示特定设备的异常的数据帧，可以可视化这些异常：
+现在，我们已创建了表示特定设备异常的数据帧，可以直观显示这些异常：
 
 ```python
 import matplotlib.pyplot as plt
@@ -145,10 +145,10 @@ plt.title('RPM Anomalies with Confidence Intervals')
 plt.show()
 ```
 
-如果成功，您的输出将如下所示：
+如果运行成功，输出将如下所示：
 
-![异常探测器绘图](../media/anomaly-output.png)
+![异常检测器演示](../media/anomaly-output.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何通过 Azure 认知服务、Azure Synapse Analytics 和 Azure CosmosDB 进行大规模预测性维护。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples)上的完整示例。
+了解如何通过 Azure 认知服务、Azure Synapse Analytics 和 Azure CosmosDB 执行大规模预测性维护。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 上的完整示例。

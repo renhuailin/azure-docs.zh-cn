@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/21/2021
 ms.custom: references_regions
 ms.openlocfilehash: 8b43fc472f3247a93414a0b18d9098c6dfb94917
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98681601"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
@@ -25,9 +25,9 @@ LUIS 门户支持 LUIS 创作区域。 若要将 LUIS 应用发布到多个区�
 
 [!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
 
-LUIS 有一个可以使用的门户，而不考虑区域 [www.luis.ai](https://www.luis.ai)。 你仍必须在同一区域中创作和发布。
+LUIS 有一个门户，[www.luis.ai](https://www.luis.ai)，可在任何地区使用。 仍必须在同一区域中创建和发布应用。
 
-创作区域具有 [配对的故障转移区域](../../best-practices-availability-paired-regions.md)
+创作的区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)
 
 <a name="regions-and-azure-resources"></a>
 
@@ -45,7 +45,7 @@ LUIS 有一个可以使用的门户，而不考虑区域 [www.luis.ai](https://w
 创作区域中的应用仅可发布到对应的发布区域。 如果应用目前位于错误的创作区域中，请导出应用，然后将其导入发布区域对应的正确创作区域。
 
 > [!NOTE]
-> 现在可以将在上创建的 LUIS 应用 https://www.luis.ai 发布到包括 [欧洲](#publishing-to-europe) 和 [澳大利亚](#publishing-to-australia) 地区的所有终结点。
+> https://www.luis.ai 上创建的 LUIS 应用现可发布到除[欧洲](#publishing-to-europe)和[澳大利亚](#publishing-to-australia)区域之外的所有终结点。
 
 ## <a name="publishing-to-europe"></a>发布到欧洲
 
@@ -69,13 +69,13 @@ LUIS 有一个可以使用的门户，而不考虑区域 [www.luis.ai](https://w
 | 非洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 南非北部<br>`southafricanorth` |  `https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 印度中部<br>`centralindia` |  `https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 东亚<br>`eastasia`     |  `https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| Japan East<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 日本东部<br>`japaneast`     |   `https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 日本西部<br>`japanwest`     |   `https://japanwest.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 韩国中部<br>`koreacentral`     |   `https://koreacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| Southeast Asia<br>`southeastasia`     |   `https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 北阿拉伯联合酋长国<br>`northuae`     |   `https://northuae.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 东南亚<br>`southeastasia`     |   `https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 亚洲 | `westus`<br>[www.luis.ai][www.luis.ai]| 阿联酋北部<br>`northuae`     |   `https://northuae.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 加拿大中部<br>`canadacentral`     |   `https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 美国中部<br>`centralus`     |   `https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | Central US<br>`centralus`     |   `https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 美国东部<br>`eastus`      |  `https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 | `westus`<br>[www.luis.ai][www.luis.ai] | 美国东部 2<br>`eastus2`     |  `https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 | `westus`<br>[www.luis.ai][www.luis.ai] | 美国中北部<br>`northcentralus`  |  `https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
@@ -83,7 +83,7 @@ LUIS 有一个可以使用的门户，而不考虑区域 [www.luis.ai](https://w
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 美国中西部<br>`westcentralus`    |  `https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 | `westus`<br>[www.luis.ai][www.luis.ai] | 美国西部<br>`westus`  |   `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 | 北美 |`westus`<br>[www.luis.ai][www.luis.ai] | 美国西部 2<br>`westus2`    |  `https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
-| 南美洲 | `westus`<br>[www.luis.ai][www.luis.ai] | Brazil South<br>`brazilsouth`    |  `https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
+| 南美洲 | `westus`<br>[www.luis.ai][www.luis.ai] | 巴西南部<br>`brazilsouth`    |  `https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY` |
 
 ## <a name="endpoints"></a>终结点
 
@@ -91,7 +91,7 @@ LUIS 有一个可以使用的门户，而不考虑区域 [www.luis.ai](https://w
 
 ## <a name="failover-regions"></a>故障转移区域
 
-每个区域都有一个要故障转移到的次要区域。 欧洲内的进行故障转移，并且澳大利亚在澳大利亚内发生故障。
+每个区域都有一个要故障转移到的次要区域。 欧洲在欧洲内部故障转移，澳大利亚在澳大利亚内部故障转移。
 
 创作区域具有[配对故障转移区域](../../best-practices-availability-paired-regions.md)。
 

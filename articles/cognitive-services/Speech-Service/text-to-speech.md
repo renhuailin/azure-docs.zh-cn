@@ -12,21 +12,21 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: MT
+ms.openlocfilehash: 653f9fcd9d3d8d6347d961603acc6eb481ee7f41
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599531"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869168"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-在本概述中，你将了解文本转语音服务的优势和功能，该服务使你的应用程序、工具或设备可以将文本转换为类似于人的合成语音。 从标准和神经语音中选择，或创建产品或品牌特有的自定义语音。 75多个标准语音在45多种语言和区域设置中提供，5个神经声音在选择的语言和区域设置中可用。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+在本概述中，你将了解文本转语音服务的优势和功能，该服务使你的应用程序、工具或设备可以将文本转换为类似于人的合成语音。 从标准和神经语音中选择，或创建产品或品牌特有的自定义语音。 75 种以上的标准语音已在 45 种以上的语言和区域设置中提供，5 种神经语音已在一组精选的语言和区域设置中提供。 有关支持的语音、语言和区域设置的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 > [!NOTE]
-> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api 或自定义语音，我们已创建了可帮助你迁移到语音服务的指南。
+> 必应语音已于 2019 年 10 月 15 日停止使用。 如果你的应用程序、工具或产品是使用必应语音 API 或自定义语音，请按照我们制作的指南迁移到语音服务。
 > - [从必应语音迁移到语音服务](how-to-migrate-from-bing-speech.md)
 
 ## <a name="core-features"></a>核心功能
@@ -39,7 +39,12 @@ ms.locfileid: "98599531"
 
 * 神经语音 - 深层神经网络用于克服有关口语中的重读和语调的传统语音合成限制。 韵律预测和语音合成以同步方式执行，使输出听起来更流畅且自然。 使用神经语音可使得与聊天机器人和语音助手的交流更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 神经语音可以生成类人的自然韵律和清晰的字词发音，当你在与 AI 系统交互时，它可以显著减轻听力疲劳。 有关神经语音的完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
-* 使用 SSML 语音合成标记语言 (SSML) 使用 ssml 样式调整说话样式，它是一种基于 XML 的标记语言，用于自定义语音到文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅 [如何](speech-synthesis-markup.md) 调整讲述样式。
+* 使用 SSML 调整说话风格 - 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，用于自定义语音转文本输出。 使用 SSML，你可以调整音调、添加暂停、改进发音、提高或降低语速、增加或减少音量，以及将多个语音赋予单个文档。 请参阅[操作说明](speech-synthesis-markup.md)调整说话风格。
+
+* 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。
+
+> [!NOTE]
+> 视素目前暂时只适用于美国西部 (`westus`) 区域的 `en-US-AriaNeural` 语音，在 2021 年 4 月底之后，将会适用于所有 `en-US` 语音。
 
 ## <a name="get-started"></a>入门
 

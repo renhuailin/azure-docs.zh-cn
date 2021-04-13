@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 43a8004b6cdfe2e074304569b83360101784a87e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175662"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567995"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
 下面列出了 DSVM 上的深度学习框架。
@@ -27,7 +27,7 @@ ms.locfileid: "102175662"
 | 支持的版本 | |
 | 支持的 DSVM 版本      | Ubuntu 16.04    |
 | 如何在 DSVM 上配置/安装它？  | Caffe 在 `/opt/caffe` 中安装。   示例位于 `/opt/caffe/examples` 中。|
-| 运行方式      | 使用 X2Go 登录 VM，然后启动新终端并输入以下内容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>系统将打开显示示例笔记本的新浏览器窗口。 二进制文件安装在 /opt/caffe/build/install/bin 中。<br/><br/>已安装的 Caffe 版本需要使用 Python 2.7，不会使用默认激活的 Python 3.5。 要切换到 Python 2.7，请运行 `source activate root` 以切换到 Anaconda 环境。|    
+| 运行方式      | 使用 X2Go 登录 VM，然后启动新终端并输入以下内容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>系统将打开显示示例笔记本的新浏览器窗口。 二进制文件安装在 /opt/caffe/build/install/bin 中。<br/><br/>已安装的 Caffe 版本需要 Python 2.7，不会使用默认激活的 Python 3.6。 要切换到 Python 2.7，请运行 `source activate root` 以切换到 Anaconda 环境。|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
@@ -115,7 +115,7 @@ ms.locfileid: "102175662"
 
 | 类别 | 值 |
 | ------------- | ------------- |
-| 支持的版本 | 1.2.0 (Ubuntu 16.04) ，1.7.1 (Ubuntu 18.04，Windows 2019)  |
+| 支持的版本 | 1.2.0 (Ubuntu 16.04)、1.7.1（Ubuntu 18.04、Windows 2019） |
 | 支持的 DSVM 版本      | Windows Server 2019<br>Ubuntu 18.04<br> Ubuntu 16.04 |
 | 如何在 DSVM 上配置/安装它？  | 在 py37_pytorch conda 环境下的 [Python 3.7](dsvm-tools-languages.md#python-linux-edition) 中安装。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：进行连接，然后打开 PyTorch 目录获取示例。  |
@@ -129,14 +129,14 @@ ms.locfileid: "102175662"
 | 如何在 DSVM 上配置/安装它？  | 在 [Linux](dsvm-tools-languages.md#python-linux-edition) 上安装于 Python 3.5 中，在 [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。 <br/> * Jupyter：连接到 [Jupyter](provision-vm.md) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开 TensorFlow 目录获取示例。   |
 
-## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/tfx/guide/serving)
 
 | 类别 | 值 |
 | ------------- | ------------- |
 | 支持的版本 | 1.12 |
 | 支持的 DSVM 版本      | Ubuntu 16.04 |
 | 如何在 DSVM 上配置/安装它？  | 在终端提供了 tensorflow_model_server。 |
-| 运行方式      |  可以[联机](https://www.tensorflow.org/serving/)获取示例。   |
+| 运行方式      |  可以[联机](https://www.tensorflow.org/tfx/guide/serving)获取示例。   |
 
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)

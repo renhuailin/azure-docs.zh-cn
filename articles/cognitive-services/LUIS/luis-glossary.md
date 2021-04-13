@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
 ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98786938"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
@@ -112,7 +112,7 @@ LUIS [创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)�
 
 ## <a name="domain"></a>Domain
 
-在 LUIS 上下文中，域是一个知识领域。 你的域特定于你的方案。 不同的域使用在该域的上下文中具有意义的特定语言和术语。 例如，如果您正在构建一个用于播放音乐的应用程序，则您的应用程序将具有特定于音乐的术语和语言–如 "song、曲目、唱片集、歌词、b 方、艺术家" 等词。 有关域的示例，请参阅[预生成域](#prebuilt-domain)。
+在 LUIS 上下文中，域是一个知识领域。 你的域特定于你的方案。 不同的域使用在该域的上下文中具有意义的特定语言和术语。 例如，如果你正在构建一个用于播放音乐的应用程序，则该应用程序将具有特定于音乐的术语和语言 - 例如“歌曲、曲目、唱片集、歌词、b 面、艺术家”。 有关域的示例，请参阅[预生成域](#prebuilt-domain)。
 
 ## <a name="endpoint"></a>终结点
 

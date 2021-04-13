@@ -1,100 +1,100 @@
 ---
 title: PBR 材料
-description: 描述 .PBR 材料类型。
+description: 介绍 PBR 材料类型。
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99591933"
 ---
 # <a name="pbr-materials"></a>PBR 材料
 
-*.Pbr 材料* 是 Azure 远程呈现中支持的 [材料类型](../../concepts/materials.md) 之一。 它们用于应该接收真实照明的 [网格](../../concepts/meshes.md) 。
+PBR 材料是 Azure 远程渲染支持的[材料类型](../../concepts/materials.md)之一。 它们用于应该接收真实照明的[网格](../../concepts/meshes.md)。
 
-.PBR 代表 **P** hysically **B** ased **R** endering，表示材料以物理上的方式描述图面的视觉对象属性，这样，在所有照明条件下均可获得实际的结果。 大多数新式游戏引擎和内容创建工具都支持 .PBR 材料，因为它们被视为实时渲染的现实世界方案的最佳近似值。
+PBR 是 **P** hysically **B** ased **R** endering（基于物理学的渲染）的缩写，表示材料以物理上合理的方式描述表面的视觉属性，这样，在所有照明条件下均可获得逼真的效果。 大多数新式游戏引擎和内容创建工具都支持 PBR 材料，因为这些材料被认为最接近真实场景，因此最适合用于实时渲染。
 
-![ARR 呈现的 Helmet glTF 示例模型](media/helmet.png)
+![ARR 渲染的 Helmet glTF 示例模型](media/helmet.png)
 
-但 .PBR 材料并不是通用的解决方案。 有一些材料反映颜色的不同，具体取决于查看角度。 例如，某些结构或汽车会进行绘制。 标准 .PBR 模型不会处理这些类型的材料，Azure 远程呈现目前不支持这些类型的材料。 这包括 .PBR 扩展， *如 (多* 层) 和 (为汽车) 绘制的 *Coat* 。
+不过，PBR 材料并非通用解决方案。 有些材料会根据视角以不同的方式反映颜色。 例如，在某些结构或汽车喷漆场景中。 此类材料不由标准 PBR 模型处理，目前不受 Azure 远程渲染的支持。 这包括 PBR 的扩展，例如薄膜（多层表面）和透明涂层（用于汽车喷漆）。 
 
-## <a name="common-material-properties"></a>常用材料属性
+## <a name="common-material-properties"></a>通用材料属性
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 *:::no-loc text="vertex "::: 颜色*）相乘。 如果对材料启用了 *透明度* ，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如 *albedoMap* 或 :::no-loc text="vertex "::: 颜色）叠加。 如果对材料启用了透明度，则可以使用 alpha 通道调整不透明度，`1` 表示完全不透明，`0` 则表示完全透明。 默认值为白色。
 
   > [!NOTE]
-  > 当某个 .PBR 材料完全透明（如完全透明的玻璃部分）时，它仍会反映该环境。 类似于 sun 的亮点仍在反射中可见。 这不同于 [颜色材料](color-materials.md)。
+  > 当某个 PBR 材料完全透明（类似于一片完全透明的玻璃）时，它仍会反映环境。 类似于太阳的亮点仍在反射中可见。 [彩色材料](color-materials.md)则与此不同。
 
-* **albedoMap：** 每像素 albedo 值的 [2d 纹理](../../concepts/textures.md) 。
+* **albedoMap：** 与每个像素反照率值对应的 [2D 纹理](../../concepts/textures.md)。
 
-* **alphaClipEnabled** 和 **AlphaClipThreshold：** 如果 *alphaClipEnabled* 为 true，则不会绘制 albedo alpha 值小于 *alphaClipThreshold* 的所有像素。 即使不启用透明度，也可以使用 Alpha 剪辑，因而速度要快得多。 不过，Alpha 剪裁材料的呈现速度仍比完全不透明材料慢。 默认情况下，alpha 剪辑处于禁用状态。
+* **alphaClipEnabled** 和 **alphaClipThreshold：** 如果 *alphaClipEnabled* 为 true，则不会绘制反照率 alpha 值小于 *alphaClipThreshold* 的所有像素。 即使不启用透明度，也可以使用 alpha 裁剪，并且渲染速度更快。 但是 alpha 剪裁材料的渲染速度仍比完全不透明材料要慢。 默认已禁用 alpha 剪裁。
 
-* **textureCoordinateScale** 和 **textureCoordinateOffset：** 将刻度与 UV 纹理坐标相乘，并向其添加偏移量。 可用于拉伸和移动纹理。 默认小数位数为1，1) ，偏移量为 (0，0)  (。
+* **textureCoordinateScale** 和 **textureCoordinateOffset：** 将缩放叠加到 UV 纹理坐标，并向其添加偏移量。 可用于拉伸和移动纹理。 默认缩放为 (1, 1)，默认偏移量为 (0, 0)。
 
-* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到 *albedoColor* 和 *albedoMap* 中。 默认情况下， *useVertexColor* 处于禁用状态。
+* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则会将网格的 :::no-loc text="vertex"::: 颜色叠加到 *albedoColor* 和 *albedoMap* 中。 默认已禁用 *useVertexColor*。
 
-* **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 对于 .PBR 材料，也可以为背面正确计算。 默认情况下，此选项处于禁用状态。 另请参阅[ :::no-loc text="Single-sided"::: 呈现](single-sided-rendering.md)。
+* **isDoubleSided：** 如果将双面性设置为 true，则即使相机正对背景面，也会渲染使用此材料的三角形。 对于 PBR 材料，还会正确计算背面的照明。 默认已禁用此选项。 另请参阅[:::no-loc text="Single-sided"::: 渲染](single-sided-rendering.md)。
 
-* **TransparencyWritesDepth：** 如果对材料设置了 TransparencyWritesDepth 标志，而材料是透明的，则使用此材料的对象也会对最终的深度缓冲区产生影响。 请参阅下一节中的 "不 *透明* " 部分。 如果用例需要更变得合理的 [延迟阶段 reprojection](late-stage-reprojection.md) 完全透明的场景，则建议启用此功能。 对于混合的不透明/透明场景，此设置可能会引入可能 reprojection 行为或 reprojection 项目。 出于此原因，一般用例的默认设置和推荐设置是禁用此标志。 书写的深度值取自离相机最近的对象的每像素深度层。
+* **TransparencyWritesDepth：** 如果对材料设置了 TransparencyWritesDepth 标志，且材料是透明的，则使用此材料的对象也会纳入到最终深度缓冲区。 请参阅下一部分中的 PBR 材料标志 *transparent*。 如果用例中需要为完全透明的场景采用更加真实的[后期重投影](late-stage-reprojection.md)，则建议启用此功能。 对于不透明/透明的混合场景，此设置可能会引入不太真实的投影行为或投影项目。 出于此原因，对于一般用例，默认推荐设置是禁用此标志。 写入的深度值取自离相机最近的对象的每像素深度层。
 
-* **FresnelEffect：** 此材料标志启用对各自材料的加法 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 。 此效果的外观由以下所述的其他菲涅尔衰减参数控制。 
+* **FresnelEffect：** 此材料标志为对应材料启用附加的[菲涅尔透镜效果](../../overview/features/fresnel-effect.md)。 此效果的外观由以下介绍的其他菲涅尔透镜参数控制。 
 
-* **FresnelEffectColor：** 此材料使用的菲涅尔衰减颜色。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减照射 (的基本颜色，请参阅 [菲涅尔衰减效果](../../overview/features/fresnel-effect.md) 以获取完整说明) 。 目前只有 rgb 通道值非常重要，并且 alpha 值将被忽略。
+* **FresnelEffectColor：** 材料使用的菲涅尔透镜颜色。 仅在为材料设置了菲涅尔透镜效果位时，它才变得重要（请参阅上述属性）。 此属性控制菲涅尔透镜光照的基础颜色（请参阅[菲涅尔透镜效果](../../overview/features/fresnel-effect.md)以获取完整说明）。 目前仅 rgb 通道值是重要值，忽略 alpha 值。
 
-* **FresnelEffectExponent：** 此材料使用的菲涅尔衰减指数。 仅当已对此材料设置了菲涅尔衰减效果位时，才 (参阅上面) 。 此属性控制菲涅尔衰减的照射的传播。 最小值0.01 导致整个对象分布。 最大值10.0 限制仅显示最 gracing 边缘。
+* **FresnelEffectExponent：** 用于材料的菲涅尔透镜指数。 仅在为材料设置了菲涅尔透镜效果位时，它才变得重要（请参阅上述属性）。 此属性控制菲涅尔透镜光照的传播。 最小值 0.01 将使光照遍布整个对象。 最大值 10.0 会将光照限制为仅最亮的边缘可见。
 
-## <a name="pbr-material-properties"></a>.PBR 材料属性
+## <a name="pbr-material-properties"></a>PBR 材料属性
 
-以物理方式呈现的核心概念是使用 *BaseColor*、 *Metalness* 和 *粗糙度* 属性来模拟各种真实的资料。 有关 .PBR 的详细说明超出了本文的范围。 有关 .PBR 的详细信息，请参阅 [其他来源](http://www.pbr-book.org)。 以下属性特定于 .PBR 材料：
+基于物理学的渲染的核心概念是使用 *BaseColor*、*Metalness* 和 *Roughness* 属性来仿真各种真实材料。 本文不会详细介绍 PBR。 有关 PBR 的详细信息，请参阅[其他资源](http://www.pbr-book.org)。 以下属性特定于 PBR 材料：
 
-* **baseColor：** 在 .PBR 材料中， *albedo 颜色* 称为 *基准颜色*。 在 Azure 远程呈现中， *albedo 颜色* 属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
+* **baseColor：** 在 PBR 材料中，albedo 颜色称为基础颜色。  在 Azure 远程渲染中，albedo 颜色属性已通过通用材料属性提供，因此没有其他基础颜色属性。
 
-* **粗糙度** 和 **roughnessMap：** 粗糙度定义图面的大致程度或平滑程度。 粗糙面使光源的显示方向大于平滑曲面，这使反射模糊而不是清晰。 值范围从 `0.0` 到 `1.0` 。 当 `roughness` 等于时 `0.0` ，反射将会清晰。 当 `roughness` 等于时 `0.5` ，反射将变得模糊。
+* **roughness** 和 **roughnessMap：** Roughness 定义表面的粗糙或光滑程度。 与光滑表面相比，粗糙表面可朝更多方向散射光线，使反射变得更模糊而不是更清晰。 值的范围为 `0.0` 到 `1.0`。 当 `roughness` 等于 `0.0` 时，反射将变得清晰。 当 `roughness` 等于 `0.5` 时，反射将变得模糊。
 
-  如果同时提供了粗糙度值和粗糙度映射，最终值将为这两个值的乘积。
+  如果同时提供了粗糙度值和粗糙度贴图，最终的值将是这两个值的积。
 
-* **metalness** 和 **metalnessMap：** 在物理学中，此属性对应于 surface 是导电还是 dielectric。 导电材料具有不同的反射属性，它们往往在无 albedo 颜色的情况下反射。 在 .PBR 材料中，此属性会影响表面反映周围环境的程度。 值的范围从 `0.0` 到 `1.0` 。 当 metalness 为时 `0.0` ，albedo 颜色会完全可见，而材料看起来像塑料或 ceramics。 当 metalness 为时 `0.5` ，它看起来像是着色的金属。 当 metalness 为时 `1.0` ，表面几乎完全丢失了其 albedo 颜色，只反映了周围面。 例如，如果 `metalness` 为 `1.0` ，并且为，则 `roughness` `0.0` 表面看起来像真实的镜像。
+* **metalness** 和 **metalnessMap：** 在物理学中，此属性对应于表面是导电性还是介电性的。 导电材料具有不同的反射属性，它们往往是在无 albedo 颜色的情况下具有反射性。 在 PBR 材料中，此属性会影响表面反映周围环境的程度。 值的范围为 `0.0` 到 `1.0`。 当 metalness 为 `0.0` 时，albedo 颜色将完全可见，材料看起来像是塑料或陶瓷。 当 metalness 为 `0.5` 时，材料看起来像是喷了漆的金属。 当 metalness 为 `1.0` 时，表面将几乎完全失去其 albedo 颜色，只反映周围环境。 例如，如果 `metalness` 为 `1.0`，且 `roughness` 为 `0.0`，则表面看起来像是真实的镜子。
 
-  如果同时提供了 metalness 值和 metalness 映射，最终值将是这两个值的乘积。
+  如果同时提供了金属度值和金属度贴图，最终的值将是这两个值的积。
 
-  ![用不同的 metalness 和粗糙度值渲染的球](./media/metalness-roughness.png)
+  ![使用不同金属度和粗糙度值渲染的球体](./media/metalness-roughness.png)
 
-  在上图中，右下角的球看起来像一种真实的金属材料，左下角看起来就像 ceramic 或塑料。 Albedo 颜色还会根据物理属性进行更改。 随着粗糙度的增加，材料丢失反射清晰度。
+  在上图中，右下角的球体看起来像是真实的金属材料，左下角的球体看起来像是陶瓷或塑料。 albedo 颜色还会根据物理属性而变化。 随着粗糙度的增加，材料将失去反射清晰度。
 
-* **normalMap：** 若要模拟精细的详细信息，可以提供 [普通地图](https://en.wikipedia.org/wiki/Normal_mapping) 。
+* **normalMap：** 若要精细地模拟细节，可以提供[法线图](https://en.wikipedia.org/wiki/Normal_mapping)。
 
-* **occlusionMap** 和 **aoScale：** 通过向封闭像素区域添加阴影， [环境封闭](https://en.wikipedia.org/wiki/Ambient_occlusion) 使对象 crevices 看起来更逼真。 封闭值的范围 `0.0` 为到 `1.0` ，其中， `0.0` 表示暗度 (封闭像素) ， `1.0` 表示无 occlusions。 如果二维纹理作为封闭图提供，则将启用该效果， *aoScale* 将作为乘数。
+* **occlusionMap** 和 **aoScale：** [环境遮蔽](https://en.wikipedia.org/wiki/Ambient_occlusion)可在遮挡的区域中添加阴影，使存在裂隙的对象看起来更逼真。 遮蔽值的范围为 `0.0` 到 `1.0`，其中，`0.0` 表示黑暗（遮挡），`1.0` 表示无遮挡物。 如果提供 2D 纹理作为遮蔽贴图，则会启用该效果，*aoScale* 将充当乘数。
 
-  ![在环境封闭的情况下呈现的对象](./media/boom-box-ao2.gif)
+  ![在启用和不启用环境遮蔽的情况下渲染的对象](./media/boom-box-ao2.gif)
 
-* **透明：** 对于 .PBR 材料，只有一个透明度设置：已启用或未启用。 不透明度由 albedo 颜色的 alpha 通道定义。 启用后，调用更复杂的呈现管道来绘制半透明的图面。 Azure 远程呈现实现了真正的 [顺序独立透明度](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT) 。
+* **transparent：** 对于 PBR 材料，只有一种透明度设置：是否启用透明度。 不透明度由 albedo 颜色的 alpha 通道定义的。 启用后，调用更复杂的渲染管道来绘制半透明表面。 Azure 远程渲染实现真正的[顺序独立透明度](https://en.wikipedia.org/wiki/Order-independent_transparency) (OIT)。
 
-  透明的几何呈现成本高昂。 如果在表面上只需要孔洞，例如，对于树的叶，最好改为使用 alpha 剪辑。
+  渲染透明几何体的资源开销很大。 如果只需在表面上绘制小孔（例如绘制树叶），则最好是改用 alpha 裁剪。
 
-  ![显示在上图中从零到完全透明通知的球体 ](./media/transparency.png) ，最右侧的球体完全透明，但反射仍可见。
+  ![使用零透明度到完全透明度渲染的球体](./media/transparency.png) 在上图中可以看到，最右侧的球体是完全透明的，但反射仍然可见。
 
   > [!IMPORTANT]
-  > 如果在运行时应将任何材料从不透明切换到透明，则呈现器必须使用 *TileBasedComposition* [呈现模式](../../concepts/rendering-modes.md)。 此限制不适用于转换为透明材料开头的材料。
+  > 如果在运行时应将任何材料从不透明切换为透明，则渲染器必须使用 *TileBasedComposition* [渲染模式](../../concepts/rendering-modes.md)。 此项限制不适用于一开始就转换为透明材料的材料。
 
 ## <a name="technical-details"></a>技术详细信息
 
-Azure 远程呈现使用带有 GGX 的 NDF、Schlick 菲涅尔衰减和 GGX Smith 相关可见术语的 Cook-Torrance 微面 BRDF 和朗伯漫射术语。 此模型是目前事实上的行业标准。 有关更深入的详细信息，请参阅此文章： [基于物理的呈现-可 Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure 远程渲染使用了 Cook-Torrance 微面 BRDF、GGX NDF、Schlick Fresnel 和 GGX Smith 相关可见性术语以及 Lambert 漫射术语。 目前，此模型是事实上的行业标准。 有关更深入的详细信息，请参阅以下文章：[基于物理学的渲染 - Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
- Azure 远程呈现中使用的 *Metalness* .pbr 模型的替代方法是 *反射-光泽* 性 .pbr 模型。 此模型可以表示一系列更广泛的材料。 不过，它的成本更高，通常不适用于实时事例。
-并非始终可以从 *反射-光泽* 转换为 *Metalness* ，因为存在无法转换为 *(BaseColor，Metalness)* 的 *(扩散、镜面)* 值对。 其他方向的转换更为简单且更精确，因为所有 *(BaseColor，Metalness)* 对都对应于定义良好的 *(漫射、镜面)* 对。
+ 可以在 Azure 远程渲染中使用“镜面反射-光泽度”PBR 模型来替代“金属度-粗糙度”PBR 模型。  此模型能够表示各种不同的材料。 不过，它的开销更大，且通常不适用于实时案例。
+并非始终可以从“镜面反射-光泽度”转换为“金属度-粗糙度”，因为某些 *(Diffuse, Specular)* 值对无法转换为 *(BaseColor, Metalness)* 。  其他方向的转换更简单且更精确，因为所有 *(BaseColor, Metalness)* 对都对应于妥善定义的 *(Diffuse, Specular)* 对。
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C # RenderingConnection CreateMaterial ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
-* [C + + PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
-* [C + + RenderingConnection：： CreateMaterial ( # B1 ](/cpp/api/remote-rendering/renderingconnection#creatematerial)
+* [C# PbrMaterial 类](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RenderingConnection.CreateMaterial()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.creatematerial)
+* [C++ PbrMaterial 类](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RenderingConnection::CreateMaterial()](/cpp/api/remote-rendering/renderingconnection#creatematerial)
 
 ## <a name="next-steps"></a>后续步骤
 

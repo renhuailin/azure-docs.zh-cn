@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: f6a1bc652125990a7daf3414895f34b95c544912
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "83590548"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
-文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。 还提供了多个 [示例 docker 运行命令](how-tos/text-analytics-how-to-install-containers.md#run-the-container-with-docker-run) 。
+文本分析为每个容器提供一个通用配置框架，以便可以轻松配置和管理容器的存储、日志记录、遥测和安全性设置。 还提供了多个[示例 docker 运行命令](how-tos/text-analytics-how-to-install-containers.md#run-the-container-with-docker-run)。
 
 ## <a name="configuration-settings"></a>配置设置
 
@@ -31,11 +31,11 @@ ms.locfileid: "83590548"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的_文本分析_资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的 _文本分析_ 资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**文本分析**"资源管理" 下的 "**密钥**"
+* Azure 门户：“密钥”下的文本分析资源管理
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,11 +43,11 @@ ms.locfileid: "83590548"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-此 `Billing` 设置指定 Azure 上用于计量容器的计费信息的 _文本分析_ 资源的终结点 URI。 您必须为此配置设置指定一个值，并且该值必须是 Azure 上的 __文本分析_ 资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上的 _文本分析_ 资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户： **文本分析** 概述，已标记 `Endpoint`
+* Azure 门户：文本分析概述，标记为 `Endpoint`
 
 |必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
@@ -75,7 +75,7 @@ ms.locfileid: "83590548"
 
 文本分析容器不使用输入或输出装载来存储训练或服务数据。 
 
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机装载位置权限之间发生冲突， [主机计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置可能无法访问。 
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
 |可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|

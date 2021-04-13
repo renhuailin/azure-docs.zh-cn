@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 22db0006e6abb38439a2db46584559dcd9ce3f3a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101722358"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>准备用于创建自定义语音的数据
@@ -24,12 +24,12 @@ ms.locfileid: "101722358"
 在训练自己的“文本转语音”语音模型之前，需要创建音频录制内容和关联的文本听录内容。 在此页上，我们将查看数据类型及其使用方式和管理方式。
 
 > [!NOTE]
-> 如果要训练某一神经声音，则必须指定一个 voice 人才配置文件，其中包含一条语音许可文件，该文件提供了一种确认使用其语音数据训练自定义语音模型的语音许可文件。 准备录制脚本时，请确保包含下面的句子。 
+> 如果要训练神经语音，必须指定配音员个人资料，其中包含配音员提供的语音同意文件，确认使用他/她的语音数据来训练一个自定义语音模型。 准备录制脚本时，请确保包含以下句子。 
 
-> "I [陈述你的名字] 知道，你的语音记录将由 [状态公司名称] 用来创建和使用我的语音合成版本。"
-此句子将用于验证定型数据是否由发出许可的同一人来完成。 在此处阅读有关 [语音人才验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 的详细信息。
+> “我[说出你的名字和姓氏]知道，[说出公司名称]将使用我的声音录音来创建和使用我的声音的合成版本。”
+这句话将用于验证训练数据是否由作出同意的同一人完成。 在此处详细了解[配音员验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
-> 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
+> 自定义神经语音只能在有限的访问权限下使用。 请确保你了解[负责任的 AI 原则](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)和[在此处应用访问权限](https://aka.ms/customneural)。 
 
 ## <a name="data-types"></a>数据类型
 
@@ -48,13 +48,13 @@ ms.locfileid: "101722358"
 文件应按类型分组成数据集，并作为 zip 文件上传。 每个数据集只能包含一种数据类型。
 
 > [!NOTE]
-> 每个订阅可以导入的数据集的最大数目为10个免费订阅 (F0) 用户，500为标准订阅 (S0) 用户。
+> 每个订阅允许导入的数据集的最大数目为 10 个（对于免费订阅 (F0) 用户）和 500 个（对于标准订阅 (S0) 用户）.zip 文件。
 
 ## <a name="individual-utterances--matching-transcript"></a>单个言语 + 匹配的脚本
 
 可通过两种方式准备单个言语和匹配脚本的录制内容。 先编写脚本，然后让语音专家朗读该脚本；或者使用公开提供的音频，然后将其转录成文本。 如果是后一种情况，请编辑音频文件中的不流畅之处，例如“嗯”之类的无意义声音、口吃音、喃喃自语或错读音。
 
-若要生成良好的语音模型，请在具有高质量麦克风的静房间中创建录制。 必须确保使用一致的音量、语速、语调以及有表现力的语音方式。
+若要生成好的语音模型，请在安静的房间中使用优质麦克风创建录制内容。 必须确保使用一致的音量、语速、语调以及有表现力的语音方式。
 
 > [!TIP]
 > 若要创建生产用的语音，建议使用专业录音棚和语音专家。 有关详细信息，请参阅[如何录制自定义语音的语音示例](record-custom-voice-samples.md)。
@@ -65,7 +65,7 @@ ms.locfileid: "101722358"
 
 准备音频时，请遵循这些指导原则。
 
-| 属性 | Value |
+| 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | RIFF (.wav)，分组成 .zip 文件 |
 | 采样率 | 至少 16,000 Hz |
@@ -82,7 +82,7 @@ ms.locfileid: "101722358"
 
 听录文件是一个纯文本文件。 请遵循以下指导原则准备听录内容。
 
-| 属性 | Value |
+| 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | 纯文本 (.txt) |
 | 编码格式 | ANSI/ASCII、UTF-8、UTF-8-BOM、UTF-16-LE 或 UTF-16-BE。 对于 zh-CN，不支持 ANSI/ASCII 和 UTF-8 编码。 |
@@ -109,7 +109,7 @@ ms.locfileid: "101722358"
 
 准备要分段的音频时，请遵循这些指导原则。
 
-| 属性 | Value |
+| 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | RIFF (.wav)，在 PCM 中或 .mp3 中的采样率至少为 16 khz 16 位，比特率至少为 256 KBps，分组成 .zip 文件 |
 | 文件名 | 支持 ASCII 和 Unicode 字符。 不允许重复的名称。 |
@@ -123,7 +123,7 @@ ms.locfileid: "101722358"
 
 必须根据此表中所列的规范准备脚本。 每个音频文件必须与某个脚本匹配。
 
-| 属性 | Value |
+| 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | 纯文本 (.txt)，分组成 .zip |
 | 文件名 | 使用与匹配的音频文件相同的名称 |
@@ -144,7 +144,7 @@ ms.locfileid: "101722358"
 > [!NOTE]
 > 长音频分段服务将利用语音转文本的批量听录功能，该功能仅支持标准订阅 (S0) 用户。
 
-| 属性 | Value |
+| 属性 | 值 |
 | -------- | ----- |
 | 文件格式 | RIFF (.wav)，在 PCM 中或 .mp3 中的采样率至少为 16 khz 16 位，比特率至少为 256 KBps，分组成 .zip 文件 |
 | 文件名 | 支持 ASCII 和 Unicode 字符。 不允许重复的名称。 |

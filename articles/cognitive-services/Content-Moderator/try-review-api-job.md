@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 924c21037a464770fac13c9b45ddcf261ff5a058
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96905125"
 ---
-# <a name="define-and-use-moderation-jobs-api-console"></a> (API 控制台定义和使用审核作业) 
+# <a name="define-and-use-moderation-jobs-api-console"></a>定义和使用审核作业（API 控制台）
 
 审核作业充当内容审核、工作流和审阅功能的一种包装器。 本指南演示如何使用作业 REST API 来启动和检查内容审核作业。 了解 API 的结构后，可以轻松将这些调用移植到任何与 REST 兼容的平台。
 
@@ -28,7 +28,7 @@ ms.locfileid: "96905125"
 
 ## <a name="create-a-job"></a>创建作业
 
-若要创建审核作业，请打开 " [作业-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) API 参考" 页，然后选择订阅区域的按钮。 你可以在 "[审阅" 工具](https://contentmoderator.cognitive.microsoft.com/)的 "**凭据**" 页上的终结点 URL 中找到你的区域。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
+若要创建审核作业，请转到“[作业 - 创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)”API 参考页，并选择所属订阅区域的按钮。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com/)的“凭据”页上的终结点 URL 中找到你的区域。 这将启动 API 控制台，你可以在其中轻松构造和运行 REST API 调用。
 
 ![“作业 - 创建”页区域选择](images/test-drive-job-1.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "96905125"
 - **ContentId**：自定义标识符字符串。 此字符串将传递给 API，并通过回调返回。 它在关联内部标识符或元数据与审查作业结果时十分有用。
 - **Workflowname**：之前创建的工作流的名称（对于默认工作流，为“default”）。
 - **CallbackEndpoint**：（可选）完成审阅时用于接收回调信息的 URL。
-- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在 "[查看" 工具](https://contentmoderator.cognitive.microsoft.com)的 "**设置**" 选项卡上找到此项。
+- **Ocp-Apim-Subscription-Key**：内容审查器密钥。 可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)的“设置”选项卡上找到此密钥。
 
 ### <a name="fill-in-the-request-body"></a>填写请求正文
 
-REST 调用的正文包含“ContentValue”字段。 如果要审查文本，请粘贴原始文本内容; 如果要审查图像或视频，请输入图像或视频 URL。 可使用以下示例图像 URL：[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+REST 调用的正文包含“ContentValue”字段。 如果要审核文本，请粘贴原始文本内容；如果要审核图像或视频，请输入图像或视频 URL。 可使用以下示例图像 URL：[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![“作业 - 创建”控制台上的“查询参数”、“请求头”和“请求正文”框](images/job-api-console-inputs.PNG)
 
@@ -115,7 +115,7 @@ REST 调用的正文包含“ContentValue”字段。 如果要审查文本，�
 
 ### <a name="examine-the-new-reviews"></a>检查新审阅
 
-如果内容作业导致创建审阅，则可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)中进行查看。 选择“审阅” > “图像”/“文本”/“视频”（取决于使用的内容）。 此时应显示内容，并可供人工审阅。 在人审查人员检查自动分配的标记和预测数据并提交最终审核决定之后，作业 API 会将所有此信息提交到指定的回调终结点。
+如果内容作业导致创建审阅，则可以在[审阅工具](https://contentmoderator.cognitive.microsoft.com)中进行查看。 选择“审阅” > “图像”/“文本”/“视频”（取决于使用的内容）。 此时应显示内容，并可供人工审阅。 人工审查方会审阅自动分配的标记和预测数据，并提交最终审核决定。此后，作业 API 会将所有此类信息都提交到指定的回调终结点。
 
 ## <a name="next-steps"></a>后续步骤
 

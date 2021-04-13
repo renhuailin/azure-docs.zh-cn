@@ -1,7 +1,7 @@
 ---
 title: 数据引入和自动化
 titleSuffix: Azure Machine Learning
-description: 了解可用于训练机器学习模型的数据引入选项的优点和缺点。
+description: 了解可用数据引入选项的优势和劣势，以训练机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python, data4ml
 ms.openlocfilehash: a096375e32e3d8a6760da88fe5ec86a70d364aff
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98872089"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure 机器学习工作流的数据引入选项

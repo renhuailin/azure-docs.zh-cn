@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: 2bc2c1361c7d2f73ff8a67e906a6db725f669d52
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895401"
 ---
 # <a name="request-limits-for-translator"></a>翻译器的请求限制
@@ -54,7 +54,7 @@ ms.locfileid: "98895401"
 
 [多服务订阅](./reference/v3-0-reference.md#authentication)的限制与 S1 层相同。
 
-这些限制仅限于 Microsoft 的标准翻译模型。 使用自定义转换器的自定义翻译模型的每秒限制为1800个字符。
+这些限制仅限于 Microsoft 的标准翻译模型。 使用自定义翻译器的自定义翻译模型将速率限制为每秒 1,800 个字符。
 
 ## <a name="latency"></a>延迟
 

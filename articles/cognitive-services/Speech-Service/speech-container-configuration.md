@@ -1,7 +1,7 @@
 ---
 title: 配置语音容器
 titleSuffix: Azure Cognitive Services
-description: 语音服务为每个容器提供一个通用的配置框架，以便你可以轻松地配置和管理容器的存储、日志记录和遥测以及安全设置。
+description: 语音服务为每个容器提供通用配置框架，以便你能够轻松地配置和管理容器的存储、日志记录和遥测以及安全设置。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: e65bb7c7d8fc04baec6b50a53519e689e748fbe1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96012163"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
-语音容器使客户能够构建一个经过优化的语音应用程序体系结构，以利用强大的云功能和边缘位置。 现在，我们支持的五个语音容器为： **语音到文本**、 **自定义语音到文本**、 **文本到语音** 转换、 **神经文本到语音转换** 和 **自定义文本到语音转换**。
+语音容器使客户能够构建一个经过优化的语音应用程序体系结构，以利用强大的云功能和边缘位置。 现在，我们支持的五个语音容器为：语音转文本、自定义语音转文本、文本转语音、神经文本转语音和自定义文本转语音    。
 
 **语音** 容器运行时环境使用 `docker run` 命令参数进行配置。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。
 
@@ -36,7 +36,7 @@ ms.locfileid: "96012163"
 
 可以在以下位置找到此设置：
 
-- Azure 门户：**语音的** 资源管理，在 "**密钥**" 下
+- Azure 门户：语音的资源管理，位于“密钥”下 
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -48,7 +48,7 @@ ms.locfileid: "96012163"
 
 可以在以下位置找到此设置：
 
-- Azure 门户： **语音** 概述、标签 `Endpoint`
+- Azure 门户：语音的概述，标记为 `Endpoint`
 
 | 必须 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
@@ -74,26 +74,26 @@ ms.locfileid: "96012163"
 
 使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
 
-标准语音容器不使用输入或输出装入来存储定型或服务数据。 但是，自定义语音容器依赖于卷装入。
+标准语音容器不使用输入或输出装载来存储训练或服务数据。 但是，自定义语音容器依赖于卷装入。
 
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机装载位置权限之间发生冲突， [主机计算机](speech-container-howto.md#the-host-computer)的装载位置可能无法访问。
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#the-host-computer)的装载位置。
 
 | 可选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
-| 不允许 | `Input` | String | 标准语音容器不使用此功能。 自定义语音容器使用 [卷装入](#volume-mount-settings)。                                                                                    |
+| 不允许 | `Input` | String | 标准语音容器不使用此值。 自定义语音容器使用[卷装载](#volume-mount-settings)。                                                                                    |
 | 可选 | `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
-## <a name="volume-mount-settings"></a>卷装入设置
+## <a name="volume-mount-settings"></a>卷装载设置
 
-自定义语音容器使用 [卷装入](https://docs.docker.com/storage/volumes/) 来持久保存自定义模型。 可以通过将 `-v` (或 `--volume`) 选项添加到 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令来指定卷装入。
+自定义语音容器使用[卷装载](https://docs.docker.com/storage/volumes/)来持久保存自定义模型。 可以通过将 `-v`（或 `--volume`）选项添加到 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令来指定卷装载。
 
-首次将新模型引入为自定义语音容器 docker run 命令的一部分时，将下载自定义模型。 `ModelId`对于自定义语音容器，相同的顺序运行将使用先前下载的模型。 如果未提供卷装入，则不能持久保存自定义模型。
+首次将新模型引入作为自定义语音容器 docker run 命令的一部分时，将下载自定义模型。 对于自定义语音容器，同一 `ModelId` 的顺序运行将使用先前下载的模型。 如果未提供卷装载，则不能持久保存自定义模型。
 
-卷装入设置由三个分色 `:` 字段组成：
+卷装载设置包含三个冒号 `:` 分隔的字段：
 
-1. 第一个字段是主计算机上的卷的名称，例如 _C:\input_。
-2. 第二个字段是容器中的目录，例如 _/usr/local/models_。
-3. 第三个字段 (可选) 是以逗号分隔的选项列表。有关详细信息，请参阅 [使用卷](https://docs.docker.com/storage/volumes/)。
+1. 第一个字段是主机上的卷名，例如 C:\input。
+2. 第二个字段是容器中的目录，例如 /usr/local/models。
+3. 第三个字段（可选）是以逗号分隔的选项列表。有关详细信息，请参阅[使用卷](https://docs.docker.com/storage/volumes/)。
 
 ### <a name="volume-mount-example"></a>卷装载示例
 
@@ -101,17 +101,17 @@ ms.locfileid: "96012163"
 -v C:\input:/usr/local/models
 ```
 
-此命令将主机 _C:\input_ 目录装载到容器 _/usr/local/models_ 目录中。
+此命令将主机 C:\input 目录装载到容器 /usr/local/models 目录 。
 
 > [!IMPORTANT]
-> 卷装入设置仅适用于 **自定义语音到文本** 的和 **自定义的文本到语音转换** 容器。 **语音到文本**、**神经文本到语音** 转换和 **文本到语音** 转换容器不使用卷装入。
+> 卷装载设置仅适用于自定义语音转文本和自定义文本转语音容器 。 语音转文本、神经文本转语音和文本转语音容器不使用卷装载  。
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。 运行后，容器将继续运行，直到[停止](speech-container-howto.md#stop-the-container)它。
 
 - **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。
-- **参数顺序**：除非你熟悉 Docker 容器，否则不要更改参数的顺序。
+- 参数顺序：除非熟悉 Docker 容器，否则请勿更改参数的顺序。
 
 将 {_argument_name_} 替换为为你自己的值：
 
@@ -132,7 +132,7 @@ ms.locfileid: "96012163"
 
 ## <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
-### <a name="basic-example-for-speech-to-text"></a>语音到文本的基本示例
+### <a name="basic-example-for-speech-to-text"></a>语音转文本的基本示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -142,7 +142,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-speech-to-text"></a>语音到文本的日志记录示例
+### <a name="logging-example-for-speech-to-text"></a>语音转文本的日志记录示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -155,7 +155,7 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
 
-### <a name="basic-example-for-custom-speech-to-text"></a>自定义语音到文本的基本示例
+### <a name="basic-example-for-custom-speech-to-text"></a>自定义语音转文本的基本示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -167,7 +167,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-custom-speech-to-text"></a>自定义语音到文本的日志记录示例
+### <a name="logging-example-for-custom-speech-to-text"></a>自定义语音转文本的日志记录示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -182,7 +182,7 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="text-to-speech"></a>[文本转语音](#tab/tss)
 
-### <a name="basic-example-for-text-to-speech"></a>文本到语音转换的基本示例
+### <a name="basic-example-for-text-to-speech"></a>文本转语音的基本示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -192,7 +192,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-text-to-speech"></a>文本到语音转换的日志记录示例
+### <a name="logging-example-for-text-to-speech"></a>文本转语音的日志记录示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -203,9 +203,9 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[自定义文本转语音](#tab/ctts)
 
-### <a name="basic-example-for-custom-text-to-speech"></a>自定义文本到语音转换的基本示例
+### <a name="basic-example-for-custom-text-to-speech"></a>自定义文本转语音的基本示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -217,7 +217,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-custom-text-to-speech"></a>自定义文本到语音功能的日志记录示例
+### <a name="logging-example-for-custom-text-to-speech"></a>自定义文本转语音的日志记录示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -232,7 +232,7 @@ Logging:Console:LogLevel:Default=Information
 
 ## <a name="neural-text-to-speech"></a>[神经文本转语音](#tab/ntts)
 
-### <a name="basic-example-for-neural-text-to-speech"></a>神经文本到语音转换的基本示例
+### <a name="basic-example-for-neural-text-to-speech"></a>神经文本转语音的基本示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \
@@ -242,7 +242,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-### <a name="logging-example-for-neural-text-to-speech"></a>神经文本到语音转换的日志记录示例
+### <a name="logging-example-for-neural-text-to-speech"></a>神经文本转语音的日志记录示例
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 12g --cpus 6 \

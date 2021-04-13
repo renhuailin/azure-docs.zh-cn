@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.author: nitinme
 author: nitinme
 ms.openlocfilehash: aeb84fca47dbf2922f17a3e8931e3158f9ee2cca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101706769"
 ---
 # <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
@@ -25,7 +25,7 @@ ms.locfileid: "101706769"
 ## <a name="access-the-portal"></a>访问门户
 
 
-1. 若要开始使用 LUIS，请转到 [LUIS 门户](https://www.luis.ai)。 如果你还没有订阅，系统将提示你创建一个 [免费帐户](https://azure.microsoft.com//free/cognitive-services/) 并返回到门户。
+1. 若要开始使用 LUIS，请转到 [LUIS 门户](https://www.luis.ai)。 如果你还没有订阅，系统会提示你创建[免费帐户](https://azure.microsoft.com//free/cognitive-services/)并返回门户。
 2. 刷新页面，使其更新为新创建的订阅
 3. 从下拉列表中选择你的订阅
 
@@ -47,7 +47,7 @@ ms.locfileid: "101706769"
     * **租户名称** - 与 Azure 订阅关联的租户。 无法从现有窗口切换租户。 可通过以下方式切换租户：关闭此窗口，并选择屏幕右上角包含你的姓名首字母的头像。 选择顶部的“选择其他创作资源”以重新打开窗口。
     * **Azure 资源组名称** - 你在订阅中选择的自定义资源组名称。 使用资源组可将 Azure 资源分组，以便进行访问和管理。 如果订阅中目前没有资源组，则不允许在 LUIS 门户中创建资源组。 请转到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup)来创建一个资源组，然后转到 LUIS 以继续完成登录过程。
     * **Azure 资源名称** - 你选择的自定义名称，用作创作事务的 URL 的一部分。 资源名称只能包含字母数字字符、`-`，且不能以 `-` 开头或结尾。 如果名称中包含任何其他符号，则资源创建会失败。
-    * **位置** -选择在 LUIS 当前支持的 [三个创作位置](./luis-reference-regions.md) 之一中创建应用程序，包括：美国西部、西欧和澳大利亚东部
+    * **位置** - 选择在 LUIS 当前支持的[三个创作位置](./luis-reference-regions.md)之一创作应用程序，这些位置包括：美国西部、西欧和澳大利亚东部
     * **定价层** - 默认选择 F0 创作定价层，这是推荐选项。 若需要额外的安全层，可从 Azure 门户创建[客户托管密钥](./encrypt-data-at-rest.md#customer-managed-keys-for-language-understanding)。
 8. 现在，你已成功登录到 LUIS。 现在可以开始创建应用程序。
 

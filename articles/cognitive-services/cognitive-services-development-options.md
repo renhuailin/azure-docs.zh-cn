@@ -9,10 +9,10 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98873563"
 ---
 # <a name="cognitive-services-development-options"></a>认知服务开发选项
@@ -60,12 +60,12 @@ Azure 提供了各种类型的工具，这些工具适用于不同类型的用�
 
 借助适用于大数据的认知服务，可以将不断改进的智能模型直接嵌入 Apache Spark&trade; 和 SQL 计算中。 这些工具将开发人员从低级网络细节中解放出来，使他们可以专注于创建智能的分布式应用程序。 适用于大数据的认知服务支持以下平台和连接器： Azure Databricks、Azure Synapse、Azure Kubernetes 服务和数据连接器。
 
-* **目标用户 ()**：数据科学家和数据工程师
-* **优势**：适用于大数据的 Azure 认知服务使用户可以使用 Apache Spark 通过认知服务通道 tb 的数据 &trade; 。 可以轻松地通过任何数据存储创建大规模的智能应用程序。
+* **目标用户**：数据科学家和数据工程师
+* **优点**：适用于大数据的 Azure 认知服务让用户可以使用 Apache Spark 通过认知服务传输 TB 级数据&trade;。 可以轻松借助任何数据存储创建大规模的智能应用程序。
 * **UI**：不适用 - 仅限代码
 * **订阅**：Azure 帐户 + 认知服务资源
 
-如果要了解有关认知服务的大数据的详细信息，请参阅 [概述](./big-data/cognitive-services-for-big-data.md)。 如果你已准备好开始构建，请尝试我们的 [Python](./big-data/samples-python.md) 或 [Scala](./big-data/samples-scala.md) 示例。
+如果要了解有关认知服务大数据的详细信息，请参阅[概述](./big-data/cognitive-services-for-big-data.md)。 如果你已准备好开始构建，请尝试我们的 [Python](./big-data/samples-python.md) 或 [Scala](./big-data/samples-scala.md) 示例。
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Azure Functions 和 Azure 服务 Web 作业
 
@@ -128,10 +128,10 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 | 影像 | 表单识别器 | [示例标记工具](https://fott-preview.azurewebsites.net/) | [快速入门](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | 决策 | 内容审查器 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入门](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 决策 | 指标顾问 | https://metricsadvisor.azurewebsites.net/  | [快速入门](./metrics-advisor/quickstarts/web-portal.md) |
-| 决策 | 个性化体验创建服务 | 在 Personalizer 资源下的 Azure 门户中提供 UI。 | [快速入门](./personalizer/quickstart-personalizer-sdk.md) |
+| 决策 | 个性化体验创建服务 | Azure 门户的个性化体验创建服务中提供 UI。 | [快速入门](./personalizer/quickstart-personalizer-sdk.md) |
 | 语言 | 语言理解 (LUIS) | https://www.luis.ai/ | |
 | 语言 | QnA Maker | https://www.qnamaker.ai/ | [快速入门](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
-| 语言 | 翻译人员/自定义转换器 | https://portal.customtranslator.azure.ai/ | [快速入门](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| 语言 | 翻译/自定义翻译工具 | https://portal.customtranslator.azure.ai/ | [快速入门](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
 | 语音 | 自定义命令 | https://speech.microsoft.com/ | [快速入门](./speech-service/custom-commands.md) |
 | 语音 | 自定义语音识别 | https://speech.microsoft.com/ | [快速入门](./speech-service/custom-speech-overview.md) |
 | 语音 | 自定义语音 | https://speech.microsoft.com/ | [快速入门](./speech-service/how-to-custom-voice.md) |  

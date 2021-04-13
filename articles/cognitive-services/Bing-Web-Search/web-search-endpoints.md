@@ -1,7 +1,7 @@
 ---
 title: Web 搜索终结点
 titleSuffix: Azure Cognitive Services
-description: 若要获取 web 搜索结果，请将 `GET` 请求发送到以下终结点。 标头和 URL 参数定义了更多规范。
+description: 若要获取 Web 搜索结果，请向以下终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: c882e3e4d0cd6ba594a700f4fd53c14103a8d1d1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "94381246"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
@@ -26,7 +26,7 @@ ms.locfileid: "94381246"
 
 “Web 搜索 API”返回网页、新闻、图像、视频和[实体](../bing-entities-search/overview.md)。 实体包含有关人员、地点或主题的摘要信息。
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 
 若要使用必应 API 获取 Web 搜索结果，请向以下终结点发送 `GET` 请求。 标头和 URL 参数定义了更多规范。
 

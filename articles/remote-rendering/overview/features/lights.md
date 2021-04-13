@@ -6,80 +6,80 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92206843"
 ---
 # <a name="scene-lighting"></a>场景照明
 
-默认情况下，远程呈现的对象将使用 [天空](sky.md)亮起。 对于大多数应用程序，这已经足够，但您可以将更多的光源添加到场景中。
+默认情况下，远程渲染的对象将使用[天空光](sky.md)照明。 对于大多数应用程序而言，这已经足够了，但你可以将更多的光源添加到场景中。
 
 > [!IMPORTANT]
-> 只有 [.pbr 材料](pbr-materials.md) 受光源的影响。 [颜色材料](color-materials.md) 始终显示为非常明亮。
+> 只有 [PBR 材料](pbr-materials.md)会受光源影响。 [有色材料](color-materials.md)总是全亮度显示。
 
 > [!NOTE]
-> 当前不支持强制转换阴影。 Azure 远程呈现经过优化，可呈现大量几何，如有必要，利用多个 Gpu。 在这种情况下，用于影子转换的传统方法并不能正常工作。
+> 当前不支持投射阴影。 Azure 远程渲染经过优化，可渲染大量几何体，必要时可使用多个 GPU。 在这种情况下，用于投影的传统方法效果不佳。
 
-## <a name="common-light-component-properties"></a>常见轻型组件属性
+## <a name="common-light-component-properties"></a>常用的光组件属性
 
-所有光源类型都派生自抽象基类 `LightComponent` 并共享这些属性：
+所有光类型都派生自抽象基类 `LightComponent` 并且都具有以下属性：
 
-* **颜色：**[伽玛空间](https://en.wikipedia.org/wiki/SRGB)中的光的颜色。 忽略 Alpha。
+* **Color：** [伽马空间](https://en.wikipedia.org/wiki/SRGB)中光的颜色。 将忽略阿尔法。
 
-* **亮度：** 光的亮度。 对于点光和投射光，强度还可定义光线的光线。
+* **Intensity：** 光的亮度。 对于点光和投射光，强度还定义光照射的距离。
 
 ## <a name="point-light"></a>点光
 
-在 Azure 远程呈现中，不仅 `PointLightComponent` 可以从单一点发出光，还可以从小球或小型电子管发出光，以模拟较轻的光源。
+在 Azure 远程渲染中，`PointLightComponent` 不仅可以从单个点发出光，还可以从小球或小管道发出光，以模拟较柔和的光源。
 
 ### <a name="pointlightcomponent-properties"></a>PointLightComponent 属性
 
-* **Radius：** 默认半径为零，在这种情况下，光用作点光。 如果半径大于零，则它将充当球面光源，这将更改反射高光的外观。
+* **Radius：** 默认半径为零，在这种情况下，光充当点光。 如果半径大于零，它将充当球形光源，从而更改镜面高光的外观。
 
-* **长度：** 如果 `Length` 和 `Radius` 都非零，则光源将作为电子管光。 这可用于模拟霓虹灯电子管。
+* **Length：** 如果 `Length` 和 `Radius` 都不是零，则光将充当管光。 这可用来模拟霓虹管。
 
-* **AttenuationCutoff：** 如果左到 (0，则) 的衰减仅依赖于它的 `Intensity` 。 不过，你可以提供自定义的最小/最大距离，将光线强度缩小到0。 此功能可用于对特定光源强制执行较小的影响范围。
+* **AttenuationCutoff：** 如果位于 (0,0) 的左侧，则光的衰减仅取决于其 `Intensity`。 但是，你可以提供自定义的最小/最大距离，让光的强度在该距离内线性缩减为 0。 此功能可用于强迫特定的光影响较小的范围。
 
-* **ProjectedCubemap：** 如果设置为有效的 [立方体贴图](../../concepts/textures.md)，纹理会投影到光源的周围几何。 立方体贴图的颜色是用光的颜色进行调制。
+* **ProjectedCubemap：** 如果设置为有效的[立方图](../../concepts/textures.md)，则纹理将投射到光的周围几何体上。 立方图的颜色通过光的颜色进行调制。
 
-## <a name="spot-light"></a>污点
+## <a name="spot-light"></a>投射光
 
-与 `SpotLightComponent` 类似， `PointLightComponent` 但光源被约束为圆锥的形状。 圆锥的方向由 *所有者实体的负 z 轴*定义。
+`SpotLightComponent` 类似于 `PointLightComponent`，但光被约束成圆锥体的形状。 圆锥体的方向由所有者实体的负 z 轴定义。
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent 属性
 
-* **Radius：** 与相同 `PointLightComponent` 。
+* **Radius：** 与用于 `PointLightComponent` 的值相同。
 
-* **SpotAngleDeg：** 此间隔定义圆锥的内部和外部角度，以度为单位。 内径内的所有内容都以完全亮度来亮起。 衰减适用于产生类似于 penumbra 效果的外部角度。
+* **SpotAngleDeg：** 此间隔定义圆锥体的内角和外角（以度为单位）。 内角中的一切都以全亮度照亮。 将沿生成半影状效果的外角应用衰减。
 
-* **FalloffExponent：** 定义在内部和外部锥角之间过渡的急剧度。 值越大，转换越清晰。 默认值为1.0 将导致线性转换。
+* **FalloffExponent：** 定义内锥角与外锥角之间的衰减过渡锐度。 值越高，过渡越尖锐。 默认值为 1.0，会导致线性过渡。
 
-* **AttenuationCutoff：** 与相同 `PointLightComponent` 。
+* **AttenuationCutoff：** 与用于 `PointLightComponent` 的值相同。
 
-* **Projected2dTexture：** 如果设置为有效的 [2d 纹理](../../concepts/textures.md)，则会将图像投影到光线在其上工作的几何。 纹理的颜色与光源颜色一起进行了调制。
+* **Projected2dTexture：** 如果设置为有效的 [2D 纹理](../../concepts/textures.md)，则图像会投射到光照射的几何体上。 纹理的颜色通过光的颜色进行调制。
 
 ## <a name="directional-light"></a>定向光
 
-`DirectionalLightComponent`模拟无限远的光源。 光将进入 *所有者实体的负 z 轴*方向。 忽略实体的位置。
+`DirectionalLightComponent` 模拟无限远的光源。 光照向所有者实体的负 z 轴方向。 实体的位置会被忽略。
 
 没有其他属性。
 
 ## <a name="performance-considerations"></a>性能注意事项
 
-光源对渲染性能有重大影响。 请谨慎使用，仅在应用程序需要时使用。 任何静态全局照明条件（包括静态方向组件）都可以通过 [自定义天空纹理](sky.md)来实现，无需额外的呈现开销。
+光源对渲染性能有明显的影响。 请谨慎使用它们，仅在应用程序需要时使用。 任何静态全局照明条件（包括静态方向分量）都可以通过[自定义天空纹理](sky.md)实现，不需要额外的渲染成本。
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # LightComponentBase 类](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
-* [C # PointLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
-* [C # SpotLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
-* [C # DirectionalLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
-* [C + + LightComponentBase 类](/cpp/api/remote-rendering/lightcomponentbase)
-* [C + + PointLightComponent 类](/cpp/api/remote-rendering/pointlightcomponent)
-* [C + + SpotLightComponent 类](/cpp/api/remote-rendering/spotlightcomponent)
-* [C + + DirectionalLightComponent 类](/cpp/api/remote-rendering/directionallightcomponent)
+* [C# LightComponentBase 类](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [C# PointLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [C# SpotLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [C# DirectionalLightComponent 类](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [C++ LightComponentBase 类](/cpp/api/remote-rendering/lightcomponentbase)
+* [C++ PointLightComponent 类](/cpp/api/remote-rendering/pointlightcomponent)
+* [C++ SpotLightComponent 类](/cpp/api/remote-rendering/spotlightcomponent)
+* [C++ DirectionalLightComponent 类](/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>后续步骤
 

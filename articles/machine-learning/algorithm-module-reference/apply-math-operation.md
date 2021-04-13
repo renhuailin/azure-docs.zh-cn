@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 3b2925a532d722598ccf16c001c9e2591aed1f2b
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99584984"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
@@ -95,7 +95,7 @@ ms.locfileid: "99584984"
 -   Equals(Col2_Col1)，表示针对 Col1 测试了 Col2。  
 -   Equals(Col2_$10)，表示将列 2 与常数 10 比较。  
 
-即使使用 **就地** 选项，也不会删除或更改源数据;原始数据集中的列仍可用于设计器中。 若要查看原始数据，可以连接“添加列”模块，并将其联接到“应用数学运算”的输出[](add-columns.md)。  
+即使使用“Inplace”选项，也不会删除或更改源数据；原始数据集中的列仍可在设计器中使用。 若要查看原始数据，可以连接“添加列”模块，并将其联接到“应用数学运算”的输出[](add-columns.md)。  
     
 ## <a name="basic-math-operations"></a>基本数学运算 
 
@@ -170,11 +170,11 @@ ms.locfileid: "99584984"
 
 ### <a name="log10"></a>Log10
 
-返回所选列的以10为底的对数值。  
+返回所选列的以 10 为底的对数值。  
 
 ### <a name="log2"></a>Log2
 
-返回所选列的以2为底的对数值。  
+返回所选列的以 2 为底的对数值。  
 
 ### <a name="nthroot"></a>NthRoot
 返回值的指定次根。  
@@ -249,11 +249,11 @@ ms.locfileid: "99584984"
 
 包括基本算术运算：加法和减法、除法和乘法。  由于大多数运算都是二进制，需要两个数字，因此需要首先选择运算，然后选择要在第一个和第二个自变量中使用的列或数字。
 
-相除的顺序如下： 
-- 减 (Arg1_Arg2) = Arg1-Arg 2
-- 除以 (Arg1_Arg2) = Arg1/Arg 2
+除法和减法的顺序如下： 
+- Subtract(Arg1_Arg2) = Arg1 - Arg 2
+- Divide(Arg1_Arg2) =  Arg1 / Arg 2
 
-下表显示了一些示例
+下表展示了一些示例
 操作|Num1|Num2|结果列|结果值|
 ----|----|----|----|----
 |加法|1|5|Add(Num2_Num1)| 6|
@@ -303,7 +303,7 @@ Azure 机器学习设计器支持各种舍入运算。 对于许多运算，必�
 
 ### <a name="mod"></a>Mod
 
-返回“列集”中的值的小数部分（指定精度）  。  
+以指定精度返回“列集”中的值的小数部分。  
 
 ### <a name="quotient"></a>商
 

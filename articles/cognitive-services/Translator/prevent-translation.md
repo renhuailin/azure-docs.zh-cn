@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.openlocfilehash: e89ff3f4c1f54d9e137d3dd51e325b908c826b03
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98897470"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>如何使用翻译器防止翻译内容
@@ -55,7 +55,7 @@ ms.locfileid: "98897470"
 
 4. 不要将字符串传递到翻译器进行翻译。
 
-5. 自定义转换器： [在自定义转换器中使用字典](custom-translator/what-is-dictionary.md) ，以规定短语的翻译的概率为100%。
+5. 自定义翻译器：使用[自定义翻译器中的词典](custom-translator/what-is-dictionary.md)以 100% 的概率给出短语翻译。
 
 
 ## <a name="next-steps"></a>后续步骤

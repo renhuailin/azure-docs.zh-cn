@@ -8,15 +8,15 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 检索, 传感器, 相机, sdk, 深度, rgb, 图像, 颜色, 捕获, 分辨率, 缓冲区
 ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "87538908"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>检索 Azure Kinect 图像数据
 
-本页提供有关如何通过 Azure Kinect 检索图像的详细信息。 本文演示如何捕获和访问设备颜色和深度之间的协调图像。 若要访问图像，必须先打开并配置设备，然后可以捕获图像。
+本页提供有关如何通过 Azure Kinect 检索图像的详细信息。 本文演示如何捕获和访问在设备的色彩和深度之间协调的图像。 若要访问图像，必须先打开并配置设备，然后可以捕获图像。
 在配置和捕获图像之前，必须[找到并打开设备](find-then-open-device.md)。
 
 你还可以参考 [SDK 流示例](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming)，其中演示了如何使用本文所述的函数。
@@ -35,7 +35,7 @@ ms.locfileid: "87538908"
 
 Kinect 设备上提供的两个相机支持多种模式、分辨率和输出格式。 有关完整列表，请参考 Azure Kinect 开发工具包[硬件规格](hardware-specification.md)。
 
-流配置是使用 [`k4a_device_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 结构中的值设置的。
+流配置是由 [`k4a_device_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 结构中的值设置的。
 
 ```C
 k4a_device_configuration_t config = K4A_DEVICE_CONFIG_INIT_DISABLE_ALL;
@@ -51,9 +51,9 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_start_cameras(device, &config))
 }
 ```
 
-相机启动后，它们将不断捕获数据，直到已调用 [`k4a_device_stop_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8) 或设备关闭。
+相机启动后便不断捕获数据，直到调用 [`k4a_device_stop_cameras()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga4fa0e0a011a7105309ad97f081a5d6b8.html#ga4fa0e0a011a7105309ad97f081a5d6b8) 或设备关闭。
 
-## <a name="stabilization"></a>稳定化
+## <a name="stabilization"></a>稳定
 
 使用多设备同步功能启动设备时，我们强烈建议使用固定的曝光设置。
 如果设置手动曝光，最多可能需要在设备上拍摄 8 次，图像和帧速率就会才能稳定。 如果使用自动曝光，最多可能需要拍摄 20 次，图像和帧速率才能稳定。
@@ -62,7 +62,7 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_start_cameras(device, &config))
 
 图像是以关联的方式从设备捕获的。 捕获的每个图像包含深度图像、IR 图像、彩色图像或图像的组合。
 
-默认情况下，API 只会在收到流模式请求的所有图像后才返回捕获。 可以通过清除 [`k4a_device_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 的 [`synchronized_images_only`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t_a8208974f05d89fc1362c6a0900bdef4d.html#a8208974f05d89fc1362c6a0900bdef4d) 参数，将 API 配置为在深度图像和彩色图像可用后，立即返回仅包含这些图像的部分捕获。
+默认情况下，API 只会在收到流模式请求的所有图像后才返回捕获。 可以通过清除 [`k4a_device_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 的 [`synchronized_images_only`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t_a8208974f05d89fc1362c6a0900bdef4d.html#a8208974f05d89fc1362c6a0900bdef4d) 参数，将 API 配置为在深度图像或彩色图像可用后，立即返回仅包含这些图像的部分捕获。
 
 ```C
 // Capture a depth frame
@@ -84,7 +84,7 @@ case K4A_WAIT_RESULT_FAILED:
 
 ## <a name="get-an-image-from-the-capture"></a>从捕获中获取图像
 
-若要检索捕获的图像，请针对每个图像类型调用相应的函数。 可取值为：
+若要检索捕获的图像，请针对每个图像类型调用相应的函数。 下列其中一项：
 
 - [`k4a_capture_get_color_image()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga683e440b5f22215a2de58d7fa140488c.html#ga683e440b5f22215a2de58d7fa140488c)
 - [`k4a_capture_get_depth_image()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafa03513da96bf6b8c254fc11a04ee6d6.html#gafa03513da96bf6b8c254fc11a04ee6d6)

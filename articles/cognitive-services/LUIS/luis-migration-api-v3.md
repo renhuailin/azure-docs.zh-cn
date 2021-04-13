@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98624297"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
@@ -60,7 +60,7 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 
 ### <a name="bing-spell-check"></a>必应拼写检查
 
-V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼写更正。 如果在使用 V3 API 时需要拼写更正，请让客户端应用程序调用 [必应拼写检查](../bing-spell-check/overview.md) api，并将文本发送到 LUIS api 之前，将文本更改为正确的拼写。
+此 API 在 V3 预测终结点中不受支持，请继续使用 V2 API 预测终结点进行拼写更正。 如果在使用 V3 API 时需要拼写更正，请让客户端应用程序调用[必应拼写检查](../bing-spell-check/overview.md) API，并在将文本发送到 LUIS API 之前，将文本更改为正确的拼写。
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework 和 Azure 机器人服务客户端应用程序
 

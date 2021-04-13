@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 988a1332d03bf2c9563ab0576f7a20ee6b0615aa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96342050"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>使用必应图像搜索 API 从 Web 获取图像
@@ -36,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-使用用于 url 编码搜索词的 [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 查询参数。 例如，如果输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+将 [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) 查询参数用于采用 URL 编码的搜索词。 例如，如果输入 *sailing dinghies*，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 > [!IMPORTANT]
 > * 所有请求必须从服务器发出，不得从客户端发出。
@@ -57,14 +57,14 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 
  默认情况下，图像搜索 API 返回与查询相关的所有图像。 若要筛选必应返回的图像（例如，只返回背景透明的图像或特定大小的图像），请使用以下查询参数：
 
-* [方位](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)—按纵横比筛选图像 (例如，) 的标准或宽屏幕图像。
-* [颜色](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)—按基准颜色或黑色和白色筛选图像。
-* [新鲜度](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)-按 age 筛选图像 (例如，过去一周内 Bing 发现的图像) 。
-* [高度](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、 [宽度](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)-按宽度和高度筛选图像。
-* [imageContent](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)—按内容筛选图像 (例如，仅显示人脸) 的图像。
-* [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)-按类型 (例如，按类型对图像进行筛选) 。
-* [许可证](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)-按与站点关联的许可证类型筛选映像。
-* [大小](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)—按大小（如小图像，最大为200x200 大小像素）对图像进行筛选。
+* [aspect](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect)：按纵横比筛选图像（例如，标准图像或宽屏图像）。
+* [color](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color)：按主色或黑白色筛选图像。
+* [freshness](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness)：按时间筛选图像（例如，必应在过去一周发现的图像）。
+* [height](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height)、[width](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width)：按高度和宽度筛选图像。
+* [imageContent](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent)：按内容筛选图像（例如，只显示人脸的图像）。
+* [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype)：按类型筛选图像（例如，剪贴画、动态 GIF 或透明背景图像）。
+* [license](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license)：按与站点关联的许可证类型筛选图像。
+* [size](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size)：按大小筛选图像（例如，最大尺寸为 200x200 像素的小图像）。
 
 若要从特定的域获取图像，请使用 [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) 查询运算符。
 

@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
 ms.openlocfilehash: c1ff099dd6dffe06e9707ff23fffd57ae753ab64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99499989"
 ---
-文本分析的 NER 功能返回以下常规（非标识）实体类别。 例如，将请求发送到 `/entities/recognition/general` 终结点时。
+文本分析的 NER 特性返回以下常规（非标识）实体类别。 例如，向 `/entities/recognition/general` 终结点发送请求时。
 
 
 | 类别 | 说明                          |
@@ -26,7 +26,7 @@ ms.locfileid: "99499989"
 | [位置](#category-location)    | 自然地标和人造地标、结构、地理特征和地缘政治实体 |
 | 组织  | 公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。  |
 | [事件](#category-event)  | 历史事件、社会事件和自然发生的事件。 |
-| [Product](#category-product) | 各种类别的物理对象。 |
+| [产品](#category-product) | 各种类别的物理对象。 |
 | [Skill](#category-skill) | 能力、技能或专长。  |
 | [Address](#category-address) | 完整的邮寄地址。  |
 | [电话号码](#category-phonenumber) | 电话号码。 |
@@ -115,7 +115,7 @@ ms.locfileid: "99499989"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -199,7 +199,7 @@ ms.locfileid: "99499989"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -283,7 +283,7 @@ ms.locfileid: "99499989"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -348,7 +348,7 @@ ms.locfileid: "99499989"
     :::column span="":::
         **实体**
 
-        Product
+        产品
 
     :::column-end:::
     :::column span="2":::
@@ -368,7 +368,7 @@ ms.locfileid: "99499989"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -429,7 +429,7 @@ ms.locfileid: "99499989"
     :::column span="2":::
         **详细信息**
 
-        完整邮寄地址。
+        完整的通讯地址。
       
     :::column-end:::
     :::column span="2":::
@@ -565,11 +565,11 @@ ms.locfileid: "99499989"
    :::column-end:::
 :::row-end:::
 
-此类别中的实体可以有以下子类别
+此类别中的实体可以具有以下子类别
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::
@@ -599,7 +599,7 @@ ms.locfileid: "99499989"
     :::column-end:::
     :::column span="2":::
 
-        一天中的时间。
+        当日时间。
       
     :::column-end:::
     :::column span="2":::
@@ -704,7 +704,7 @@ ms.locfileid: "99499989"
 
 #### <a name="subcategories"></a>子类别
 
-此类别中的实体可以有以下子类别。
+此类别中的实体可以具有以下子类别。
 
 :::row:::
     :::column span="":::

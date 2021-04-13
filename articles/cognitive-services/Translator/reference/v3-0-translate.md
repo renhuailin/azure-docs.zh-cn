@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/06/2020
 ms.author: lajanuar
 ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895435"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
@@ -59,11 +59,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>  
   <tr>
     <td>textType</td>
-    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）或 <code>html</code>上获取。</td>
+    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）或 <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从使用 <a href="../customization.md">自定义转换器</a>生成的自定义系统获取翻译。 将自定义转换器 <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a> 中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义翻译器<a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -466,7 +466,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 若要接收比对信息，请在查询字符串中指定 `includeAlignment=true`。
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true&quot; -H &quot;Ocp-Apim-Subscription-Key: <client-secret>&quot; -H &quot;Content-Type: application/json; charset=UTF-8&quot; -d &quot;[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 响应为：
@@ -551,4 +551,4 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 ]
 ```
 
-不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 [详细了解自定义转换器](../customization.md)。
+不管使用 `textType=text` 还是使用 `textType=html`，此功能都以相同的方式工作。 应尽量少使用此功能。 对翻译进行自定义时，一个合适且要好得多的方法是使用自定义翻译工具。 自定义翻译工具能够充分利用上下文和统计概率。 如果你必须或者有能力创建在上下文中显示你的工作或短语的训练数据，则会得到好得多的结果。 [详细了解自定义翻译工具](../customization.md)。

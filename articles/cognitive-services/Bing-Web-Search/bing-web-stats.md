@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 02fea02cca5950ef8467377a866e9a765af9e2e1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96349548"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
@@ -25,12 +25,12 @@ ms.locfileid: "96349548"
 > 使用认知服务进行预配的必应搜索 API 将在未来三年或在企业协议结束前（以先发生者为准）得到支持。
 > 有关迁移说明，请参阅[必应搜索服务](/bing/search-apis/bing-web-search/create-bing-search-service-resource)。
 
-必应统计信息为必应搜索 API 提供分析。 这些分析包括调用量、顶级查询字符串、地理分布等。 可以通过导航到 Azure 资源并单击 "**启用必应统计信息**"，在 [Azure 门户](https://ms.portal.azure.com)中启用必应统计信息。
+必应统计信息为必应搜索 API 提供分析。 这些分析包括调用量、最常用的查询字符串、地理分布等等。 可导航到 Azure 资源并单击“启用必应统计信息”，在 [Azure 门户](https://ms.portal.azure.com)中启用必应统计信息。
 
 > [!IMPORTANT]
-> * 必应统计信息不适用于免费定价层上的资源 `F0` 。
+> * 必应统计信息不适用于免费 `F0` 定价层上的资源。
 > * 无法使用通过必应统计信息仪表板提供的任何数据来创建要分发到第三方的应用程序。
-> * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅 [定价](https://aka.ms/bingstatisticspricing) 。
+> * 启用必应统计信息会略微增加订阅费用。 有关详细信息，请参阅[定价](https://aka.ms/bingstatisticspricing)。
 
 
 下图显示了每个必应搜索 API 终结点的可用分析。
@@ -39,7 +39,7 @@ ms.locfileid: "96349548"
 
 ## <a name="access-your-analytics"></a>访问分析
 
-必应更新分析数据每24小时一次，并保留最多13个月的历史记录，可从 [分析仪表板](https://bingapistatistics.com)进行访问。 请确保使用与用于注册必应统计信息 (MSA) 相同的 Microsoft 帐户来登录。
+必应每 24 小时更新一次分析数据，并保留历史记录最长 13 个月，可从[分析仪表板](https://bingapistatistics.com)访问这些历史记录。 确保使用注册必应统计信息时所用的同一 Microsoft 帐户 (MSA) 登录。
 
 > [!NOTE]  
 > * 最长可能需要在 24 小时后，指标才会显示在仪表板上。 仪表板显示上次更新数据的日期和时间。  
@@ -47,20 +47,20 @@ ms.locfileid: "96349548"
 
 ## <a name="filter-the-data"></a>筛选数据
 
-默认情况下，图表和图形会显示您有权访问的所有指标和数据。 选择资源、市场、终结点和所需的报告时段，可以筛选图表和图形中显示的数据。 您可以更改以下筛选器：
+默认情况下，图表和图形显示你有权访问的所有指标和数据。 选择资源、市场、终结点和所需的报告时段，可以筛选图表和图形中显示的数据。 可以更改以下筛选：
 
 - **资源 ID**：用于标识 Azure 订阅的唯一资源 ID。 如果你订阅了多个必应搜索 API 层，则该列表包含多个 ID。 默认已选中所有资源。  
   
-- **市场**：结果的来源市场。 例如，en-us (美国英语) 默认已选中所有市场。 `en-WW`如果呼叫未指定市场，必应使用市场，必应使用市场，必应使用市场。  
+- **市场**：结果的来源市场。 例如，en-us (美国英语) 默认已选中所有市场。 `en-WW` 市场是当调用未指定市场并且必应无法确定用户的市场时，必应使用的市场。  
   
 - **终结点**：必应搜索 API 终结点。 该列表包含为其购买了付费订阅的所有终结点。 默认已选中所有终结点。  
 
 - **时间范围**：报告时段。 可以指定：
-  - **全部**：最多包含13个月的数据  
-  - **过去24小时**：包括最近24小时内的分析  
-  - **过去一周**：包含过去7天的分析  
-  - 上 **个月**：包含过去30天的分析  
-  - **自定义日期范围**：包括指定日期范围内的分析（如果可用）  
+  - **全部**：包含最多 13 个月的数据  
+  - **过去 24 小时**：包含过去 24 小时的分析  
+  - **过去一周**：包含过去 7 天的分析  
+  - **过去一个月**：包含过去 30 天的分析  
+  - **自定义日期范围**：包含指定日期范围的分析（如果可用）  
 
 ## <a name="charts-and-graphs"></a>图表和图形
 
@@ -91,15 +91,15 @@ For example, if you don't include the User-Agent header in your calls, the dashb
   > [!NOTE]  
   > 可以抑制一些查询字词，以删除电子邮件、电话号码、SSN 等机密信息。
 
-- **地理分布**：搜索结果源自的市场。 例如， `en-us` (美国) 。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
+- **地理分布**：搜索结果的来源市场。 例如 `en-us`（英语，美国）。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
 
 - **响应代码分布**：在报告时段发出的所有调用的 HTTP 状态代码。
 
-- **调用来源分布**：用户使用的浏览器类型。 例如 Microsoft Edge、Chrome、Safari 和 FireFox。 从浏览器外进行的调用 (如 bot、Postman 或从控制台应用程序中使用卷) 会在库中进行分组。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
+- **调用来源分布**：用户使用的浏览器类型。 例如 Microsoft Edge、Chrome、Safari 和 FireFox。 从浏览器外部（例如机器人、Postman）发出的调用，或在控制台应用中使用 curl 发出的调用，将分组到“库”下面。 来源是使用请求的 User-Agent 标头值确定的。 如果请求不包含 User-Agent 标头，则必应会尝试从其他信号派生来源。  
 
 - **安全搜索分布**：安全搜索值的分布。 例如 off、moderate 或 strict。 `safeSearch` 查询参数包含该值（如果已指定）。 否则，必应使用默认值 moderate。  
 
-- **请求的分发答案**：在查询参数中请求的 Web 搜索 API 答案 `responseFilter` 。  
+- **请求的回答分布**：在 `responseFilter` 查询参数中请求的 Web 搜索 API 回答。  
 
 - **返回的回答分布**：Web 搜索 API 在响应中返回的回答。
 

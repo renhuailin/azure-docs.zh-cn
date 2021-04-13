@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5a088d5918a957036b905db9136f9b16e5f0527e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93307154"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>使用高级分析处理 Azure Blob 数据
@@ -24,7 +24,7 @@ ms.locfileid: "93307154"
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
 若要浏览和操作数据集，必须将数据集从 blob 源下载到本地文件，该本地文件随后可加载到 Pandas 数据帧中。 下面是此过程的所需步骤：
 
-1. 从 Azure blob 下载数据，其中包含使用 Blob 服务的以下示例 Python 代码。 使用特定值替代下方代码中的变量： 
+1. 通过 Blob 服务使用下方示例 Python 代码从 Azure blob 下载数据。 使用特定值替代下方代码中的变量： 
    
     ```python
     from azure.storage.blob import BlobService

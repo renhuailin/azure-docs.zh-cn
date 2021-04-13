@@ -7,10 +7,10 @@ ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c664df586c260b3e16f64c071190055dbaeccd24
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594038"
 ---
 # <a name="spatial-queries"></a>空间查询
@@ -116,8 +116,8 @@ TODO : Add an API to make that possible.
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RenderingConnection RayCastQueryAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.raycastqueryasync)
-* [C + + RenderingConnection：： RayCastQueryAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#raycastqueryasync)
+* [C# RenderingConnection.RayCastQueryAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.raycastqueryasync)
+* [C++ RenderingConnection::RayCastQueryAsync()](/cpp/api/remote-rendering/renderingconnection#raycastqueryasync)
 
 ## <a name="next-steps"></a>后续步骤
 

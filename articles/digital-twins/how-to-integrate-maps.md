@@ -1,7 +1,7 @@
 ---
 title: 与 Azure Maps 集成
 titleSuffix: Azure Digital Twins
-description: 请参阅如何使用 Azure Functions 创建一个函数，该函数可使用孪生和 Azure 数字通知来更新 Azure Maps 的室内地图。
+description: 了解如何使用 Azure Functions 创建一个函数，该函数可使用孪生图和 Azure 数字孪生通知来更新 Azure Maps 室内地图。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 1/19/2021
@@ -9,52 +9,52 @@ ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
 ms.openlocfilehash: 990a0ee73bd91ccb748c948b5fcf0e6124d84a03
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201424"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
-本文逐步讲解使用 Azure 数字孪生数据更新 *室内地图* 上显示的信息所需的步骤， [Azure Maps](../azure-maps/about-azure-maps.md)。 Azure 数字孪生存储 IoT 设备关系的图形，并将遥测数据路由到不同的终结点，使其成为更新地图上信息覆盖的完美服务。
+本文展示了通过 [Azure Maps](../azure-maps/about-azure-maps.md) 使用 Azure 数字孪生数据更新室内地图上显示的信息时需要执行的步骤。 Azure 数字孪生存储 IoT 设备关系图，并将遥测数据路由到不同的终结点，这使它成为用于更新地图上的信息覆盖的完美服务。
 
-本操作说明将涉及：
+本操作说明将涵盖以下内容：
 
-1. 配置 Azure 数字孪生实例，以将克隆更新事件发送到 [Azure Functions](../azure-functions/functions-overview.md)中的函数。
-2. 创建用于更新 Azure Maps 室内地图功能的函数 stateset。
-3. 如何在 Azure 数字孪生图中存储地图 ID 和功能 stateset ID。
+1. 配置你的 Azure 数字孪生实例，以将孪生体更新事件发送到 [Azure Functions](../azure-functions/functions-overview.md) 中的函数。
+2. 创建一个函数来更新 Azure Maps 室内地图特征状态集。
+3. 如何在 Azure 数字孪生图中存储地图 ID 和特征状态集 ID。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-* 遵循 Azure 数字孪生 [*教程：连接端到端解决方案*](./tutorial-end-to-end.md)。
-    * 将使用其他终结点和路由扩展此克隆。 您还将从该教程向函数应用程序添加另一个函数。 
-* 按照 Azure Maps [*教程操作：使用 Azure Maps Creator 创建室内地图*](../azure-maps/tutorial-creator-indoor-maps.md) ，使用 *stateset 功能* 创建 Azure Maps 室内地图。
-    * [功能 statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 是 (状态) 分配给数据集功能（如房间或设备）的动态属性的集合。 在上述 Azure Maps 教程中，功能 stateset 存储将在地图上显示的房间状态。
-    * 你将需要 *STATESET ID* 和 Azure Maps *订阅密钥*。
+* 按照 Azure 数字孪生的[教程：连接端到端解决方案](./tutorial-end-to-end.md)进行操作。
+    * 你将使用额外的终结点和路由扩展此孪生体。 你还将向你在该教程中创建的函数应用添加另一个函数。 
+* 按照 Azure Maps 的[教程：使用 Azure Maps Creator 创建室内地图](../azure-maps/tutorial-creator-indoor-maps.md)创建具有某个特征状态集的 Azure Maps 室内地图。 
+    * [特征状态集](../azure-maps/creator-indoor-maps.md#feature-statesets)是分配给数据集特征（例如房间或设备）的动态属性（状态）的集合。 在上述 Azure Maps 教程中，特征状态集存储会在地图上显示的房间状态。
+    * 你需要特征状态集 ID 和 Azure Maps 订阅密钥。
 
 ### <a name="topology"></a>拓扑
 
-下图演示了在本教程中，室内映射集成元素的位置适用于更大的端到端 Azure 数字孪生方案。
+下图展示了本教程中的室内地图集成元素在更大的端到端 Azure 数字孪生方案中的相应位置。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="在端到端方案中显示 Azure 服务的视图，突出显示室内地图集成块" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-maps/maps-integration-topology.png" alt-text="端到端方案中的 Azure 服务的视图，其中突出显示了室内地图集成块" lightbox="media/how-to-integrate-maps/maps-integration-topology.png":::
 
-## <a name="create-a-function-to-update-a-map-when-twins-update"></a>创建一个函数以便在孪生更新时更新映射
+## <a name="create-a-function-to-update-a-map-when-twins-update"></a>创建一个用于在孪生体更新时更新地图的函数
 
-首先，你将在 Azure 数字孪生中创建一个路由，以便将所有克隆的更新事件转发到事件网格主题。 然后，将使用函数读取这些更新消息，并更新 Azure Maps 中的功能 stateset。 
+首先，你将在 Azure 数字孪生中创建一个路由，以便将所有孪生体更新事件转发到事件网格主题。 然后，你将使用一个函数读取这些更新消息，更新 Azure Maps 中的特征状态集。 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>对孪生体更新通知创建路由和筛选器
 
-每当更新了克隆的状态时，Azure 数字孪生实例就可以发出双子次更新事件。 Azure 数字孪生 [*教程：连接上面链接的端到端解决方案*](./tutorial-end-to-end.md) 演练，其中使用温度计来更新附加到房间克隆的温度属性。 你将通过订阅更新孪生的通知并使用该信息更新映射来扩展该解决方案。
+每当孪生体的状态更新时，Azure 数字孪生实例就可以发出孪生体更新事件。 上面链接的 Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.md)展示了以下方案：使用温度计来更新附加到房间的孪生体的温度属性。 你将扩展该解决方案，方法是：订阅孪生体的更新通知，并使用该信息来更新地图。
 
-此模式直接从房间逻辑上读取，而不是 IoT 设备，这使你可以灵活地更改温度的基础数据源，而无需更新映射逻辑。 例如，可以添加多个温度计或设置此空间以与其他房间共享温度计，无需更新映射逻辑。
+此模式直接从房间孪生体读取数据，而不是从 IoT 设备读取数据，这样你就能灵活地更改温度的基础数据源，而无需更新映射逻辑。 例如，你可以添加多个温度计或将此房间设置为与另一个房间共用一个温度计，所有这些都不需要更新你的地图逻辑。
 
-1. 创建事件网格主题，该主题将从你的 Azure 数字孪生实例接收事件。
+1. 创建一个事件网格主题，用于接收来自 Azure 数字孪生实例的事件。
     ```azurecli-interactive
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
 
-2. 创建终结点，将事件网格主题链接到 Azure 数字孪生。
+2. 创建一个终结点，用于将事件网格主题关联到 Azure 数字孪生。
     ```azurecli-interactive
     az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
     ```
@@ -70,48 +70,48 @@ ms.locfileid: "102201424"
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-a-function-to-update-maps"></a>创建用于更新映射的函数
+## <a name="create-a-function-to-update-maps"></a>创建一个函数来更新地图
 
-从端到端教程 ([*教程：连接端到端解决方案*](./tutorial-end-to-end.md)) ，在函数应用中创建一个 **事件网格触发的函数**。 此函数将解包这些通知，并将更新发送到 Azure Maps 功能 stateset，以更新一个房间的温度。
+你将在端到端教程（[教程：连接端到端解决方案](./tutorial-end-to-end.md)）的函数应用中创建一个事件网格触发的函数。 此函数会解压这些通知并将更新发送到 Azure Maps 特征状态集，以更新一个房间的温度。
 
-有关参考信息，请参阅以下文档： [*Azure Functions 的 Azure 事件网格触发器*](../azure-functions/functions-bindings-event-grid-trigger.md)。
+有关参考信息，请参阅以下文档：[Azure Functions 的 Azure 事件网格触发器](../azure-functions/functions-bindings-event-grid-trigger.md)。
 
-将函数代码替换为以下代码。 它仅筛选孪生空间的更新、读取更新的温度，并将该信息发送到 Azure Maps。
+将函数代码替换为以下代码。 它将仅筛选出空间孪生体的更新，读取更新的温度，并将该信息发送到 Azure Maps。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateMaps.cs":::
 
-需要在 function app 中设置两个环境变量。 其中一项是你的 [Azure Maps 主要订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，一个是你 [AZURE MAPS 的 stateset ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
+你需要在函数应用中设置两个环境变量。 其中一个是你的 [Azure Maps 主订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，另一个是你的 [Azure Maps 状态集 ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <your-App-Service-(function-app)-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
 az functionapp config appsettings set --name <your-App-Service-(function-app)-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
-### <a name="view-live-updates-on-your-map"></a>查看地图上的实时更新
+### <a name="view-live-updates-on-your-map"></a>在地图上查看实时更新
 
-若要查看现场更新温度，请遵循以下步骤：
+若要查看实时更新的温度，请执行以下步骤：
 
-1. 通过运行 Azure 数字孪生教程中的 **devicesimulator.exe** 项目，开始发送模拟 IoT 数据 [*：连接端到端解决方案*](tutorial-end-to-end.md)。 有关此操作的说明，请在 [*配置和运行模拟*](././tutorial-end-to-end.md#configure-and-run-the-simulation) 部分。
-2. 使用 [" **Azure Maps 室内** " 模块](../azure-maps/how-to-use-indoor-module.md) 呈现在 Azure Maps 创建者中创建的室内地图。
-    1. 复制该示例中的 HTML：使用室内地图教程的 [*室内地图模块*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) 部分 [*：将 Azure Maps 室内地图模块*](../azure-maps/how-to-use-indoor-module.md) 用于本地文件。
-    1. 将本地 HTML 文件中的 *订阅密钥*、 *tilesetId* 和 *statesetID*  替换为你的值。
+1. 通过运行 Azure 数字孪生 [教程：连接端到端解决方案](tutorial-end-to-end.md)中的 **DeviceSimulator** 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅[配置并运行模拟](././tutorial-end-to-end.md#configure-and-run-the-simulation)部分。
+2. 使用 [Azure Maps Indoor 模块](../azure-maps/how-to-use-indoor-module.md)呈现你在 Azure Maps Creator 中创建的室内地图。
+    1. 将室内地图[教程：使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分中的 HTML 复制到一个本地文件。 
+    1. 将本地 HTML 文件中的订阅密钥、tilesetId 和 statesetID 替换为你的值。
     1. 在浏览器中打开该文件。
 
-这两个示例都发送兼容范围内的温度，因此，每隔30秒就会在地图上看到房间121更新的颜色。
+两个样本发送的温度在一个兼容的范围内，所以你应该看到 121 房间的颜色在地图上大约每 30 秒更新一次。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="显示房间121彩色橙色的办公地图":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="一幅办公室地图，其中的 121 房间显示为橙色":::
 
-## <a name="store-your-maps-information-in-azure-digital-twins"></a>在 Azure 数字孪生中存储地图信息
+## <a name="store-your-maps-information-in-azure-digital-twins"></a>将地图信息存储在 Azure 数字孪生中
 
-现在，你已经有了更新地图信息的硬编码解决方案，可以使用 Azure 数字孪生图来存储更新室内地图所需的所有信息。 这包括每个地图和位置的 stateset ID、maps 订阅 ID 和功能 ID。 
+现在，你已经有了用来更新地图信息的硬编码解决方案，可以使用 Azure 数字孪生图来存储更新室内地图所需的所有信息了。 这将包括每个地图和位置的相应状态集 ID、地图订阅 ID 和特征 ID。 
 
-此特定示例的解决方案涉及更新每个顶级空间，使其具有一个 stateset ID 和 maps 订阅 ID 属性，并将每个空间更新为具有功能 ID。 在初始化克隆图形时，需要设置这些值一次，然后在每个未完成的更新事件中查询这些值。
+此特定示例的解决方案将涉及的内容包括：更新每个顶级空间以使其具有状态集 ID 和地图订阅 ID 属性，以及更新每个房间以使其具有特征 ID。 你需要在初始化孪生图时将这些值设置一次，然后就可以针对每个孪生体更新事件查询这些值。
 
-根据拓扑的配置，您可以将这三个属性存储在不同的级别，这与映射的粒度相关。
+你可以根据拓扑配置将这三个属性存储在与地图的粒度相关的不同级别。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何管理、升级和检索孪生图中的信息，请参阅以下参考资料：
+若要了解管理、升级孪生图和从中检索信息的详情，请查看以下参考内容：
 
-* [*操作说明：管理数字孪生*](./how-to-manage-twin.md)
-* [*操作方法：查询双子图形*](./how-to-query-graph.md)
+* [操作指南：管理数字孪生体](./how-to-manage-twin.md)
+* [操作指南：查询孪生图](./how-to-query-graph.md)

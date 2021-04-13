@@ -1,5 +1,5 @@
 ---
-title: 将搜索请求发送到必应视频搜索 API
+title: 向必应视频搜索 API 发送搜索请求
 titleSuffix: Azure Cognitive Services
 description: 本文介绍了发送到必应视频搜索 API 的请求的参数和属性，以及它返回的 JSON 响应对象。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: 78a3c3c2936bfcaf58ea9e46bd3d6a610cdfe436
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96341489"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>向必应视频搜索 API 发送搜索请求
@@ -51,10 +51,10 @@ https://api.cognitive.microsoft.com/bing/v7.0/videos/search
   
 请求必须指定 [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey) 请求头。 尽管可视需要添加，但仍建议还指定以下请求头：  
   
--   [用户代理](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
 -   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
--   [X-搜索-位置](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。  
 

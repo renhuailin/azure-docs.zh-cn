@@ -1,7 +1,7 @@
 ---
 title: 使用必应自动建议 API 来建议搜索词
 titleSuffix: Azure Cognitive Services
-description: 本文介绍使用必应自动推荐 API 建议查询术语的概念，以及查询长度对相关性的影响。
+description: 本文介绍使用必应自动建议 API 提供查询术语建议的相关概念，以及查询长度对相关性的影响。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: be7686c4d8a676d2a1d85516d2e4aa6abe3f3bfd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96353402"
 ---
 # <a name="suggesting-query-terms"></a>建议查询词

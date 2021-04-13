@@ -1,7 +1,7 @@
 ---
 title: 共享自定义搜索 - 必应自定义搜索
 titleSuffix: Azure Cognitive Services
-description: 通过将实例与团队成员共享来轻松实现对实例的协作编辑和测试。
+description: 与团队成员共享实例，即可轻松实现对实例的协作编辑和测试。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6141bd67681df757536792981d47756a20ed33db
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96353317"
 ---
 # <a name="share-your-custom-search-instance"></a>共享自定义搜索实例
@@ -26,7 +26,7 @@ ms.locfileid: "96353317"
 
 与团队成员共享实例，即可轻松实现对实例的协作编辑和测试。 仅使用电子邮件地址即可与任何人共享实例。 若要共享实例：
 
-- 登录到 [自定义搜索](https://customsearch.ai)
+- 登录[自定义搜索](https://customsearch.ai)
 - 选择自定义搜索实例
 - 单击设置图标（显示为一个齿轮）。 
 - 在“共享实例”下，输入共享对象的电子邮件地址，然后单击“共享”。 

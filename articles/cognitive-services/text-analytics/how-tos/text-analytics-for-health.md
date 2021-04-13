@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
-ms.translationtype: MT
+ms.openlocfilehash: 80a943d235783852f57832363b5af8048f010575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537790"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104599420"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
 
@@ -24,16 +24,16 @@ ms.locfileid: "99537790"
 > 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 Microsoft 不保证健康状况文本分析或提供的与该功能相关的任何材料足够充分用于任何医疗目的，或者满足任何人的健康或医疗要求。 
 
 
-用于运行状况的文本分析是文本分析 API 服务的一项功能，它可从非结构化文本（如医生的说明、解雇汇总、临床文档和电子健康记录）中提取和标记相关的医疗信息。  使用此服务有两种方法： 
+健康状况文本分析是文本分析 API 服务的一项功能，它可以从非结构化文本（例如医生的备注、出院摘要、临床文档和电子健康记录）中提取和标记相关医疗信息。  可以使用两种方法来利用这项服务： 
 
-* [基于 web 的 API (异步) ](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
-* [ (同步的 Docker 容器) ](#hosted-asynchronous-web-api-response)   
+* [基于 Web 的 API（异步）](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [Docker 容器（同步）](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
 ## <a name="features"></a>功能
 
-用于运行状况文本分析 (NER) 、关系提取、实体求反和实体链接，以在非结构化临床和生物医学文本中发现见解。
+健康状况文本分析对英语文本执行命名实体识别 (NER)、关系提取、实体否定和实体链接，以发现非结构化临床和生物医学文本中的见解。
 
 ### <a name="named-entity-recognition"></a>[命名实体识别](#tab/ner)
 
@@ -44,7 +44,7 @@ ms.locfileid: "99537790"
 
 ### <a name="relation-extraction"></a>[关系提取](#tab/relation-extraction)
 
-关系提取标识文本中提及的概念之间有意义的联系。 例如，通过将疾病名称与时间关联来查找“疾病时间”关系。 
+关系提取标识文本中提及的概念之间有意义的联系。 例如，通过将条件名称与时间或缩写与完整描述相关联，可找到“条件的时间”关系。  
 
 > [!div class="mx-imgBorder"]
 > ![健康状况 RE](../media/ta-for-health/health-relation-extraction.png)
@@ -52,48 +52,52 @@ ms.locfileid: "99537790"
 
 ### <a name="entity-linking"></a>[实体链接](#tab/entity-linking)
 
-实体链接将文本中提及的命名实体与预定义概念数据库中找到的概念相关联来消除不同实体的歧义。 例如，统一医学语言系统 (UMLS)。
+实体链接将文本中提及的命名实体与预定义概念数据库（包括统一医学语言系统 (UMLS)）中找到的概念相关联来消除不同实体的歧义。 医学概念也被指定为首选命名，作为一种规范化的附加形式。
 
 > [!div class="mx-imgBorder"]
 > ![健康状况 EL](../media/ta-for-health/health-entity-linking.png)
 
 健康状况文本分析支持链接到统一医学语言系统 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) 元词表知识源中的健康状况和生物医学词汇。
 
-### <a name="negation-detection"></a>[否定检测](#tab/negation-detection) 
+### <a name="assertion-detection"></a>[断言检测](#tab/assertion-detection) 
 
-医学内容的意义受到修饰语（如否定）的高度影响，这在误诊时可能有重大影响。 健康状况文本分析支持对文本中提到的不同实体进行否定检测。 
+医学内容的含义受到修饰词的高度影响，例如负面或有条件的断言，如果被歪曲，这些断言可能会产生至关重要的影响。 健康状况文本分析支持对文本中的实体进行三类断言检测： 
+
+* 确定性
+* conditional
+* 关联
 
 > [!div class="mx-imgBorder"]
-> ![健康状况 NEG](../media/ta-for-health/health-negation.png)
+> ![健康状况 NEG](../media/ta-for-health/assertions.png)
 
 ---
 
-请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。 有关置信度的详细信息，请参阅 [文本分析透明度注释](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
+请参阅运行状况文本分析返回的[实体类别](../named-entity-types.md?tabs=health)，获取支持的实体的完整列表。 有关置信度分数的信息，请参阅[文本分析透明度备注](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ### <a name="supported-languages-and-regions"></a>支持的语言和区域
 
 健康状况文本分析仅支持英语文档。 
 
-运行状况托管 web API 的文本分析目前仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。
+健康状况文本分析托管 Web API 目前仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。
 
 ## <a name="request-access-to-the-public-preview"></a>请求访问公共预览版
 
-填写并提交 [认知服务请求表单](https://aka.ms/csgate) ，请求访问运行状况公共预览版文本分析。 不会向你收取文本分析的健康状况。 
+填写并提交[认知服务请求表单](https://aka.ms/csgate)，请求访问健康状况文本分析公共预览版。 不会对健康状况文本分析的使用而收费。 
 
-通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交该表单后，Azure 认知服务团队将会对其进行评审，并通过一种决定向你发送电子邮件。
+通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队将对其进行审核，并通过电子邮件向你告知决定。
 
 > [!IMPORTANT]
 > * 在此表单上，必须使用与 Azure 订阅 ID 关联的电子邮件地址。
-> * 你使用的 Azure 资源必须使用已批准的 Azure 订阅 ID 创建。 
+> * 使用的 Azure 资源必须通过批准的 Azure 订阅 ID 创建。 
 > * 请检查你的电子邮件（“收件箱”和“垃圾邮件”文件夹）以获取来自 Microsoft 的应用程序状态更新。
 
 ## <a name="using-the-docker-container"></a>使用 Docker 容器 
 
-若要在自己的环境中运行运行状况容器的文本分析，请按照以下 [说明下载并安装该容器](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)。
+若要在自己的环境中运行健康状况文本分析，请[按照说明下载并安装该容器](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)。
 
 ## <a name="using-the-client-library"></a>使用客户端库
 
-文本分析客户端库的最新预发行版使你能够使用客户端对象调用运行状况文本分析。 请参阅参考文档，并查看 GitHub 上的示例：
+文本分析客户端库的最新预发行版本让你能够使用客户端对象调用健康状况文本分析。 请参阅参考文档，并查看 GitHub 上的示例：
 * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
 * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
 * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
@@ -104,20 +108,20 @@ ms.locfileid: "99537790"
 
 ### <a name="preparation"></a>准备工作
 
-当你为其提供较小的要处理的文本量时，文本分析 for health 会生成更高质量的结果。 这与一些其他文本分析功能（如关键短语提取）相反，在较大的文本块上执行效果更佳。 若要从这些操作获得最佳结果，请考虑相应地重构输入。
+当为健康状况文本分析提供较少的文本时，会得到更高质量的结果。 这与一些其他文本分析功能（例如关键短语提取）相反，关键短语提取在处理较大的文本块时效果更佳。 若要从这些操作中获得最佳结果，请考虑相应地重构输入。
 
 必须拥有以下格式的 JSON 文档：ID、文本和语言 
 
 每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。
 
-### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 web API 构造 API 请求
+### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 Web API 构造 API 请求
 
-对于容器和托管 web API，必须创建 POST 请求。 你可以 [使用 Postman](text-analytics-how-to-call-api.md)中的 [文本分析 "运行状况托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)" 中的、一种卷命令或 **API 测试控制台** 来快速构建 POST 请求并将其发送到所需区域中的托管 web API。 
+对于容器和托管 Web API，必须创建 POST 请求。 可以[使用 Postman](text-analytics-how-to-call-api.md)、cURL 命令或[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)中的 API 测试控制台快速构造 POST 请求，并将其发送到所需区域中的托管 Web API。 
 
 > [!NOTE]
-> 异步 `/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部2、美国东部2、美国中部、北欧和西欧。  若要向这些终结点发出成功请求，请确保已在其中一个区域中创建资源。
+> 异步 `/analyze` 和 `/health` 终结点仅在以下区域提供：美国西部 2、美国东部 2、美国中部、欧洲北部和欧洲西部。  若要成功地向这些终结点发出请求，请确保已在其中一个区域中创建资源。
 
-下面是附加到运行状况 API 请求的 POST 正文的文本分析的 JSON 文件的示例：
+以下是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
 
 ```json
 example.json
@@ -133,24 +137,24 @@ example.json
 }
 ```
 
-### <a name="hosted-asynchronous-web-api-response"></a>托管的异步 web API 响应 
+### <a name="hosted-asynchronous-web-api-response"></a>托管的异步 Web API 响应 
 
-由于此 POST 请求用于提交异步操作的作业，因此响应对象中没有任何文本。  但是，您需要响应标头中的操作位置键的值，以发出 GET 请求来检查作业的状态和输出。  下面是 POST 请求的响应标头中操作位置键的值的示例：
+由于此 POST 请求用于提交异步操作的作业，因此响应对象中没有任何文本。  但是，需要响应标头中操作位置键的值，才能发出 GET 请求来检查作业和输出的状态。  下面是 POST 请求的响应标头中操作位置键的值的示例：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/entities/health/jobs/<jobID>`
 
-若要检查作业状态，请在 POST 响应的操作位置键标头的值中向 URL 发出 GET 请求。  以下状态用于反映作业的状态： `NotStarted` 、 `running` 、、、、 `succeeded` `failed` `rejected` `cancelling` 和 `cancelled` 。  
+若要检查作业状态，请在 POST 响应的操作位置键标头的值中向 URL 发出 GET 请求。  以下状态用于反映作业的状态：`NotStarted`、`running``succeeded``failed``rejected``cancelling` 和 `cancelled`。  
 
-你可以使用或状态取消与 `NotStarted` `running` GET 请求相同的 URL 的删除 HTTP 调用来取消作业。  有关删除调用的详细信息，请 [参阅运行状况托管 API 参考文本分析](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)。
+你可以通过对与 GET 请求相同的 URL 的 DELETE HTTP 调用来取消状态为 `NotStarted` 或 `running` 的作业。  有关 DELETE 调用的详细信息，请参阅[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/CancelHealthJob)。
 
-下面是 GET 请求响应的示例。  请注意，输出可用于检索，直到 `expirationDateTime` 从创建作业开始 (24 小时后) 传递输出后的时间。
+以下是 GET 请求的响应示例。  在 `expirationDateTime`（创建作业 24 小时后）已过之前，输出可供检索；在此时间之后，输出将被清除。
 
 ```json
 {
-    "jobId": "b672c6f5-7c0d-4783-ba8c-4d0c47213454",
-    "lastUpdateDateTime": "2020-11-18T01:45:00Z",
-    "createdDateTime": "2020-11-18T01:44:55Z",
-    "expirationDateTime": "2020-11-19T01:44:55Z",
+    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
+    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
+    "createdDateTime": "2021-03-11T05:42:32Z",
+    "expirationDateTime": "2021-03-12T05:42:32Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -163,8 +167,7 @@ example.json
                         "length": 5,
                         "text": "100mg",
                         "category": "Dosage",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 31,
@@ -172,15 +175,35 @@ example.json
                         "text": "remdesivir",
                         "category": "MedicationName",
                         "confidenceScore": 1.0,
-                        "isNegated": false,
+                        "name": "remdesivir",
                         "links": [
                             {
                                 "dataSource": "UMLS",
                                 "id": "C4726677"
                             },
                             {
+                                "dataSource": "DRUGBANK",
+                                "id": "DB14761"
+                            },
+                            {
+                                "dataSource": "GS",
+                                "id": "6192"
+                            },
+                            {
+                                "dataSource": "MEDCIN",
+                                "id": "398132"
+                            },
+                            {
+                                "dataSource": "MMSL",
+                                "id": "d09540"
+                            },
+                            {
                                 "dataSource": "MSH",
                                 "id": "C000606551"
+                            },
+                            {
+                                "dataSource": "MTHSPL",
+                                "id": "3QKI37EEHE"
                             },
                             {
                                 "dataSource": "NCI",
@@ -189,6 +212,22 @@ example.json
                             {
                                 "dataSource": "NCI_FDA",
                                 "id": "3QKI37EEHE"
+                            },
+                            {
+                                "dataSource": "NDDF",
+                                "id": "018308"
+                            },
+                            {
+                                "dataSource": "RXNORM",
+                                "id": "2284718"
+                            },
+                            {
+                                "dataSource": "SNOMEDCT_US",
+                                "id": "870592005"
+                            },
+                            {
+                                "dataSource": "VANDF",
+                                "id": "4039395"
                             }
                         ]
                     },
@@ -197,57 +236,62 @@ example.json
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0,
-                        "isNegated": false
-                    },
-                    {
-                        "offset": 56,
-                        "length": 4,
-                        "text": "over",
-                        "category": "Time",
-                        "confidenceScore": 0.87,
-                        "isNegated": false
+                        "confidenceScore": 1.0
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.99,
-                        "isNegated": false
+                        "confidenceScore": 0.94
                     }
                 ],
                 "relations": [
                     {
                         "relationType": "DosageOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/0",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
                     },
                     {
                         "relationType": "RouteOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/2",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
                     },
                     {
                         "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/3",
-                        "target": "#/results/documents/0/entities/1"
-                    },
-                    {
-                        "relationType": "TimeOfMedication",
-                        "bidirectional": false,
-                        "source": "#/results/documents/0/entities/4",
-                        "target": "#/results/documents/0/entities/1"
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/3",
+                                "role": "Time"
+                            }
+                        ]
                     }
                 ],
                 "warnings": []
             }
         ],
         "errors": [],
-        "modelVersion": "2020-09-03"
+        "modelVersion": "2021-03-01"
     }
 }
 ```
@@ -255,7 +299,7 @@ example.json
 
 ### <a name="structure-the-api-request-for-the-container"></a>为容器构造 API 请求
 
-你可以 [使用以下 Postman](text-analytics-how-to-call-api.md) 或示例卷请求将查询提交到部署的容器，并将该变量替换为 `serverURL` 适当的值。  请注意，容器的 URL 中的 API 版本不同于托管 API。
+可以[使用 Postman](text-analytics-how-to-call-api.md) 或下面的 cURL 请求示例向部署的容器提交查询，以适当的值替换 `serverURL` 变量。  请注意，容器的 URL 中的 API 版本不同于托管 API。
 
 ```bash
 curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
@@ -285,7 +329,7 @@ example.json
 
 ### <a name="container-response-body"></a>容器响应正文
 
-下面的 JSON 是容器化同步调用中的运行状况 API 响应正文的文本分析示例：
+以下 JSON 是来自容器化同步调用的健康状况文本分析 API 响应正文的示例：
 
 ```json
 {
@@ -294,30 +338,47 @@ example.json
             "id": "1",
             "entities": [
                 {
-                    "id": "0",
                     "offset": 25,
                     "length": 5,
                     "text": "100mg",
                     "category": "Dosage",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "1",
                     "offset": 31,
                     "length": 10,
                     "text": "remdesivir",
                     "category": "MedicationName",
                     "confidenceScore": 1.0,
-                    "isNegated": false,
+                    "name": "remdesivir",
                     "links": [
                         {
                             "dataSource": "UMLS",
                             "id": "C4726677"
                         },
                         {
+                            "dataSource": "DRUGBANK",
+                            "id": "DB14761"
+                        },
+                        {
+                            "dataSource": "GS",
+                            "id": "6192"
+                        },
+                        {
+                            "dataSource": "MEDCIN",
+                            "id": "398132"
+                        },
+                        {
+                            "dataSource": "MMSL",
+                            "id": "d09540"
+                        },
+                        {
                             "dataSource": "MSH",
                             "id": "C000606551"
+                        },
+                        {
+                            "dataSource": "MTHSPL",
+                            "id": "3QKI37EEHE"
                         },
                         {
                             "dataSource": "NCI",
@@ -326,115 +387,215 @@ example.json
                         {
                             "dataSource": "NCI_FDA",
                             "id": "3QKI37EEHE"
+                        },
+                        {
+                            "dataSource": "NDDF",
+                            "id": "018308"
+                        },
+                        {
+                            "dataSource": "RXNORM",
+                            "id": "2284718"
+                        },
+                        {
+                            "dataSource": "SNOMEDCT_US",
+                            "id": "870592005"
+                        },
+                        {
+                            "dataSource": "VANDF",
+                            "id": "4039395"
                         }
                     ]
                 },
                 {
-                    "id": "2",
                     "offset": 42,
                     "length": 13,
                     "text": "intravenously",
                     "category": "MedicationRoute",
-                    "confidenceScore": 1.0,
-                    "isNegated": false
+                    "confidenceScore": 1.0
                 },
                 {
-                    "id": "3",
-                    "offset": 56,
-                    "length": 4,
-                    "text": "over",
-                    "category": "Time",
-                    "confidenceScore": 0.87,
-                    "isNegated": false
-                },
-                {
-                    "id": "4",
                     "offset": 73,
                     "length": 7,
                     "text": "120 min",
                     "category": "Time",
-                    "confidenceScore": 0.99,
-                    "isNegated": false
+                    "confidenceScore": 0.94
                 }
             ],
             "relations": [
                 {
                     "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/0",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/0",
+                            "role": "Dosage"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        }
+                    ]
                 },
                 {
                     "relationType": "RouteOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/2",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/2",
+                            "role": "Route"
+                        }
+                    ]
                 },
                 {
                     "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/3",
-                    "target": "#/documents/0/entities/1"
-                },
-                {
-                    "relationType": "TimeOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/0/entities/4",
-                    "target": "#/documents/0/entities/1"
+                    "entities": [
+                        {
+                            "ref": "#/documents/0/entities/1",
+                            "role": "Medication"
+                        },
+                        {
+                            "ref": "#/documents/0/entities/3",
+                            "role": "Time"
+                        }
+                    ]
                 }
-            ]
+            ],
+            "warnings": []
         }
     ],
     "errors": [],
-    "modelVersion": "2020-09-03"
+    "modelVersion": "2021-03-01"
 }
 ```
 
-### <a name="negation-detection-output"></a>否定检测输出
+### <a name="assertion-output"></a>断言输出
 
-在某些情况下，使用否定检测时，单个否定词语一次可以处理多个词语。 已识别的实体在 JSON 输出中用标记的布尔值表示 `isNegated` ，例如：
+健康状况文本分析返回断言修饰符，这些修饰符是分配给医学概念的信息属性，能够提供对文本中概念上下文更深入的理解。 这些修饰符分为三个类别，每个类别侧重于不同的方面，并包含一组互斥的值。 每个类别仅为每个实体指定一个值。 每个类别最常见的值是默认值。 服务的输出响应仅包含不同于默认值的断言修饰符。
+
+**CERTAINTY** - 提供有关概念存在的信息（存在与不存在），以及文本与其存在（明确与可能）有关的信息。
+*   **Positive** [默认值]：概念存在或已发生。
+* **Negative**：概念目前尚不存在或者从未发生过。
+* **Positive_Possible**：概念可能存在，但存在一些不确定性。
+* **Negative_Possible**：概念可能不存在，但存在一些不确定性。
+* **Neutral_Possible**：概念可能存在，也可能不存在，没有偏向任何一方的倾向。
+
+**CONDITIONALITY** - 提供有关概念的存在是否依赖于特定条件的信息。 
+*   **None** [默认值]：概念是事实，而不是假设，并且不依赖于特定情况。
+*   **Hypothetica**：概念可能正在形成，或者会在将来发生。
+*   **Conditional**：概念存在或仅在某些条件下出现。
+
+**ASSOCIATION** - 描述概念是否与文本的主体或其他人相关联。
+*   **Subject** [默认值]：概念与文本的主体（通常为患者）相关联。
+*   **Someone_Else**：概念与不是文本主体的人员关联。
+
+
+断言检测将否定的实体表示为确定性类别的负值，例如：
 
 ```json
 {
-  "id": "2",
-  "offset": 90,
-  "length": 10,
-  "text": "chest pain",
-  "category": "SymptomOrSign",
-  "score": 0.9972,
-  "isNegated": true,
-  "links": [
-    {
-      "dataSource": "UMLS",
-      "id": "C0008031"
-    },
-    {
-      "dataSource": "CHV",
-      "id": "0000023593"
-    },
+                        "offset": 381,
+                        "length": 3,
+                        "text": "SOB",
+                        "category": "SymptomOrSign",
+                        "confidenceScore": 0.98,
+                        "assertion": {
+                            "certainty": "negative"
+                        },
+                        "name": "Dyspnea",
+                        "links": [
+                            {
+                                "dataSource": "UMLS",
+                                "id": "C0013404"
+                            },
+                            {
+                                "dataSource": "AOD",
+                                "id": "0000005442"
+                            },
     ...
 ```
 
 ### <a name="relation-extraction-output"></a>关系提取输出
 
-关系提取输出包含对关系的源的 URI 引用及其目标 。 将具有 `ENTITY` 关系角色的实体分配给 `target` 字段。 将具有 `ATTRIBUTE` 关系角色的实体分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true`。 
+健康状况文本分析可识别不同概念之间的关系，包括属性和实体之间的关系（例如正文结构的方向、药物的剂量）和实体之间的关系（例如缩写检测）。
+
+**ABBREVIATION**
+
+**DIRECTION_OF_BODY_STRUCTURE**
+
+**DIRECTION_OF_CONDITION**
+
+**DIRECTION_OF_EXAMINATION**
+
+**DIRECTION_OF_TREATMENT**
+
+**DOSAGE_OF_MEDICATION**
+
+**FORM_OF_MEDICATION**
+
+**FREQUENCY_OF_MEDICATION**
+
+**FREQUENCY_OF_TREATMENT**
+
+**QUALIFIER_OF_CONDITION**
+
+**RELATION_OF_EXAMINATION**
+
+**ROUTE_OF_MEDICATION** 
+
+**TIME_OF_CONDITION**
+
+**TIME_OF_EVENT**
+
+**TIME_OF_EXAMINATION**
+
+**TIME_OF_MEDICATION**
+
+**TIME_OF_TREATMENT**
+
+**UNIT_OF_CONDITION**
+
+**UNIT_OF_EXAMINATION**
+
+**VALUE_OF_CONDITION**  
+
+**VALUE_OF_EXAMINATION**
+
+> [!NOTE]
+> * 引用 CONDITION 的关系可以指 DIAGNOSIS 实体类型，也可以指 SYMPTOM_OR_SIGN 实体类型。
+> * 引用 MEDICATION 的关系可以指 MEDICATION_NAME 实体类型，也可以指 MEDICATION_CLASS 实体类型。
+> * 引用 TIME 的关系可以指 TIME 实体类型，也可以指 DATE 实体类型。
+
+关系提取输出包含关系类型的实体的 URI 引用和分配的角色。 例如：
 
 ```json
-"relations": [
-                {
-                    "relationType": "DosageOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/0",
-                    "target": "#/documents/1/entities/1"
-                },
-                {
-                    "relationType": "FrequencyOfMedication",
-                    "bidirectional": false,
-                    "source": "#/documents/1/entities/2",
-                    "target": "#/documents/1/entities/1"
-                }
-            ]
-  },
+                "relations": [
+                    {
+                        "relationType": "DosageOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/0",
+                                "role": "Dosage"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            }
+                        ]
+                    },
+                    {
+                        "relationType": "RouteOfMedication",
+                        "entities": [
+                            {
+                                "ref": "#/results/documents/0/entities/1",
+                                "role": "Medication"
+                            },
+                            {
+                                "ref": "#/results/documents/0/entities/2",
+                                "role": "Route"
+                            }
+                        ]
 ...
 ]
 ```

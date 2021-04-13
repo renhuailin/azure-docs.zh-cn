@@ -1,7 +1,7 @@
 ---
-title: 使用必应视频搜索 API 搜索视频
+title: 使用必应视频搜索 API 来搜索视频
 titleSuffix: Azure Cognitive Services
-description: 必应视频搜索 APIfinds 并返回 web 上的相关视频，它提供了多种功能，可用于 web 上的智能和集中视频检索。
+description: 必应视频搜索 API 用于从网上查找并返回相关的视频，但它还提供了一些在网络上进行智能化、集中化视频检索的功能。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96351923"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用必应视频搜索 API 来搜索视频
@@ -125,10 +125,10 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 默认情况下，视频搜索 API 返回与查询相关的所有视频。 如果只需免费视频或者时长不到五分钟的视频，请使用以下筛选器查询参数：
 
-- [定价](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash;按定价 (筛选视频例如，免费或需要为) 付费的视频
-- [解决方法](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash;按解决方案筛选视频 (例如，使用720p 或更高分辨率的视频) 
-- [videoLength](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash;按视频长度筛选视频 (例如，长度不到五分钟的视频) 
-- [新鲜度](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash;按 age 筛选视频 (例如，过去一周内必应发现的视频) 
+- [pricing](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;按定价来筛选视频（例如，免费的视频或必须付费的视频）
+- [resolution](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;按分辨率来筛选视频（例如，分辨率为 720p 或更高的视频）
+- [videoLength](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;按视频长度来筛选视频（例如，长度不到五分钟的视频）
+- [freshness](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;按时间来筛选视频（例如，必应在过去一周发现的视频）
 
 若要从特定域获取视频，请在查询字符串中包含 [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) 查询运算符。
 

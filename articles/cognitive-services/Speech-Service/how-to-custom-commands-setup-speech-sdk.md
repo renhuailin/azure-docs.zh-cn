@@ -12,26 +12,26 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026021"
 ---
-# <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 来与客户端应用程序集成
+# <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
 
-本文介绍如何从 UWP 应用程序中运行的语音 SDK 向已发布的自定义命令应用程序发出请求。 若要与自定义命令应用程序建立连接，需要：
+本文介绍如何从 UWP 应用程序中运行的语音 SDK 向已发布的自定义命令应用程序发出请求。 为了建立与自定义命令应用程序的连接，需要：
 
-- 发布一个自定义命令应用程序，并获取应用程序标识符（应用 ID）
-- 使用语音 SDK 创建一个通用 Windows 平台 (UWP) 客户端应用，以便能够与自定义命令应用程序通信
+- 发布自定义命令应用程序，并获取应用程序标识符（应用 ID）
+- 使用语音 SDK 创建一个通用 Windows 平台 (UWP) 客户端应用，以便你能够与自定义命令应用程序通信
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-需要创建一个自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以遵循快速入门来创建一个：
+若要完成本文，需要自定义命令应用程序。 如果尚未创建自定义命令应用程序，则可以按照以下快速入门中的说明执行此操作：
 > [!div class = "checklist"]
 > * [创建自定义命令应用程序](quickstart-custom-commands-application.md)
 
-此外还需要：
+还需要：
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 或更高版本。 本指南基于 Visual Studio 2019。
 > * 语音服务的 Azure 订阅密钥。 [免费获取一个](overview.md#try-the-speech-service-for-free)或在 [Azure 门户](https://portal.azure.com)上创建它
@@ -39,19 +39,19 @@ ms.locfileid: "95026021"
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤 1：发布自定义命令应用程序
 
-1. 打开先前创建的自定义命令应用程序
+1. 打开之前创建的自定义命令应用程序
 1. 转到“设置”，选择“LUIS 资源” 
-1. 如果未分配“预测资源”，请选择一个查询预测密钥或新建一个密钥
+1. 如果未分配“预测资源”，请选择一个查询预测密钥或创建一个新的查询预测密钥
 
-    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参考[创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)
+    在发布应用程序之前，始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅[创建 LUIS 资源](../luis/luis-how-to-azure-subscription.md)
 
-1. 回过头来编辑命令，选择“发布”
+1. 返回到编辑命令，选择“发布”
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-commands/setup-speech-sdk-publish-application.png)
 
-1. 复制发布通知中的应用 ID，供稍后使用
-1. 复制语音资源密钥，供稍后使用
+1. 从发布通知中复制应用 ID 供以后使用
+1. 复制语音资源密钥供以后使用
 
 ## <a name="step-2-create-a-visual-studio-project"></a>步骤 2：创建 Visual Studio 项目
 
@@ -59,13 +59,13 @@ ms.locfileid: "95026021"
 
 ## <a name="step-3-add-sample-code"></a>步骤 3：添加示例代码
 
-此步骤添加用于定义应用程序用户界面的 XAML 代码，并添加 C# 代码隐藏实现。
+在此步骤中，添加定义应用程序用户界面的 XAML 代码，并添加 C# 代码隐藏实现。
 
 ### <a name="xaml-code"></a>XAML 代码
 
-通过添加 XAML 代码来创建应用程序的用户界面。
+通过添加 XAML 代码创建应用程序的用户界面。
 
-1. 在“解决方案资源管理器”中打开 `MainPage.xaml`。
+1. 在“解决方案资源管理器”中打开 `MainPage.xaml`
 
 1. 在设计器的 XAML 视图中，将整个内容替换为以下代码片段：
 
@@ -118,9 +118,9 @@ ms.locfileid: "95026021"
 
 ### <a name="c-code-behind-source"></a>C# 代码隐藏源
 
-添加代码隐藏源，使应用程序按预期方式工作。 代码隐藏源包括：
+添加代码隐藏源，以便应用程序按预期工作。 代码隐藏源包括：
 
-- `Speech` 和 `Speech.Dialog` 命名空间必需的 `using` 语句
+- `Speech` 和 `Speech.Dialog` 命名空间的所需 `using` 语句
 - 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问
 - 基本的 UI 帮助程序，用于在应用程序中提供消息和错误
 - 初始化代码路径的登陆点，稍后将填充
@@ -129,7 +129,7 @@ ms.locfileid: "95026021"
 
 按如下所示添加代码隐藏源：
 
-1. 在“解决方案资源管理器”中，打开代码隐藏源文件 `MainPage.xaml.cs`（已分组到 `MainPage.xaml` 下）。
+1. 在“解决方案资源管理器”中，打开代码隐藏源文件 `MainPage.xaml.cs`（归入 `MainPage.xaml`）
 
 1. 将该文件的内容替换为以下代码： 
 
@@ -298,12 +298,12 @@ ms.locfileid: "95026021"
    }
    ```
     > [!NOTE]
-    > 如果看到错误：“类型 'Object' 是在一个未引用的程序集中定义的”
-    > 1. 为解决方案指定正确的客户端。
+    > 如果看到错误：“类型‘对象’在未被引用的程序集中定义”
+    > 1. 右键单击解决方案。
     > 1. 选择“管理解决方案的 NuGet 包”，然后选择“更新”  
-    > 1. 如果在更新列表中看到“Microsoft.NETCore.UniversalWindowsPlatform”，请将“Microsoft.NETCore.UniversalWindowsPlatform”更新到最新版本 
+    > 1. 如果在更新列表中看到 Microsoft.NETCore.UniversalWindowsPlatform，将 Microsoft.NETCore.UniversalWindowsPlatform 更新为最新版本 
 
-1. 将以下代码添加到 `InitializeDialogServiceConnector` 的方法主体。
+1. 将以下代码添加到 `InitializeDialogServiceConnector` 的方法主体
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -318,7 +318,7 @@ ms.locfileid: "95026021"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 将字符串 `YourApplicationId`、`YourSpeechSubscriptionKey` 和 `YourServiceRegion` 分别替换为你自己的应用、语音订阅和[区域](regions.md)值。
+1. 将字符串 `YourApplicationId`、`YourSpeechSubscriptionKey` 和 `YourServiceRegion` 分别替换为自己的应用、语音订阅和[区域](regions.md)值
 
 1. 将以下代码片段追加到 `InitializeDialogServiceConnector` 的方法主体的末尾
 
@@ -402,7 +402,7 @@ ms.locfileid: "95026021"
    }
    ```
 
-1. 在菜单栏中，选择“文件” > “全部保存”以保存所做的更改 
+1. 在菜单栏中，选择“文件” > “全部保存”以保存所做的更改
 
 ## <a name="try-it-out"></a>试试看
 
@@ -421,4 +421,4 @@ ms.locfileid: "95026021"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何：将活动发送到客户端应用程序（预览）](./how-to-custom-commands-send-activity-to-client.md)
+> [操作说明：向客户端应用程序发送活动（预览版）](./how-to-custom-commands-send-activity-to-client.md)

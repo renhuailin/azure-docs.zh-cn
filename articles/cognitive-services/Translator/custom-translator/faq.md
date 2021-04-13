@@ -1,7 +1,7 @@
 ---
-title: 常见问题-自定义转换器
+title: 常见问题解答 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
-description: 本文包含有关 Azure 认知服务自定义转换器的常见问题的解答。
+description: 本文包含有关 Azure 认知服务自定义翻译器的常见问题解答。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,13 +10,13 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: reference
 ms.openlocfilehash: 001314817b0c18a8023258d01bcfb02eaaffe79b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895826"
 ---
-# <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
+# <a name="custom-translator-frequently-asked-questions"></a>自定义翻译器的常见问题解答
 
 本文包含有关[自定义翻译](https://portal.customtranslator.azure.ai)的常见问题解答。
 
@@ -49,7 +49,7 @@ ms.locfileid: "98895826"
 
 如果提取的句子数与具有相同基本名称的两个文件不匹配，自定义翻译仍会针对 `.align` 文件运行句子对齐程序。
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我尝试上传我的 TMX，但显示 "文档处理失败"
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我已尝试上传 TMX，但出现“文档处理失败”消息
 
 
 请确保 TMX 符合 <https://www.gala-global.org/tmx-14b> 中的 TMX 1.4b 规范。

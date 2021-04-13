@@ -1,5 +1,5 @@
 ---
-title: ML Studio (经典) ：通过 Azure 资源管理器部署工作区-Azure
+title: ML 工作室（经典）：使用 Azure 资源管理器部署工作区 - Azure
 description: 如何使用 Azure 资源管理器模板为 Azure 机器学习工作室（经典）部署工作区
 services: machine-learning
 ms.service: machine-learning
@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
 ms.openlocfilehash: ee0bee4857d410781561e6f7f6a7eae0509d1138
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100520028"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室（经典）工作区

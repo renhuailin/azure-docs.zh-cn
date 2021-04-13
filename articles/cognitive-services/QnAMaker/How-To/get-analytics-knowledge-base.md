@@ -1,5 +1,5 @@
 ---
-title: 有关知识库的分析-QnA Maker
+title: 知识库分析 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 如果你在创建 QnA Maker 服务期间已启用了 App Insights，则 QnA Maker 会存储所有聊天日志和其他遥测数据。 运行示例查询来从 App Insights 获取聊天日志。
 services: cognitive-services
@@ -10,23 +10,23 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96352416"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>获取有关知识库的分析
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-如果在 [创建 QnA Maker 服务](./set-up-qnamaker-service-azure.md)期间启用了 Application Insights，QnA Maker 将存储所有聊天日志和其他遥测。 运行示例查询，从 Application Insights 获取聊天日志。
+如果你在[创建 QnA Maker 服务](./set-up-qnamaker-service-azure.md)期间已启用了 Application Insights，则 QnA Maker 会存储所有聊天日志和其他遥测数据。 运行示例查询来从 Application Insights 获取聊天日志。
 
-1. 中转到 Application Insights 资源。
+1. 转到 Application Insights 资源。
 
     ![选择你的 Application Insights 资源](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. 选择 " **日志 (分析")**。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
+2. 选择“Log Analytics”。 此时将打开一个新窗口，可以在其中查询 QnA Maker 遥测数据。
 
 3. 粘贴以下查询并运行它。
 
@@ -46,17 +46,17 @@ ms.locfileid: "96352416"
 
     选择“运行”以运行查询。
 
-    [![运行查询，确定用户的问题、解答和评分](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
+    [![运行查询以确定用户的问题、答案和得分](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-QnA Maker 托管 (预览版) 使用 Azure 诊断日志记录来存储遥测数据和聊天日志。 按照以下步骤运行示例查询，以获取 QnA Maker 知识库的使用情况分析。
+QnA Maker 托管（预览版本）使用 Azure 诊断日志记录来存储遥测数据和聊天日志。 请按照以下步骤运行示例查询，获取有关 QnA Maker 知识库使用情况的分析。
 
-1. 为 QnA Maker 托管 (预览版) 服务[启用诊断日志记录](../../diagnostic-logging.md)。
+1. 为 QnA Maker 托管（预览版本）服务[启用诊断日志记录](../../diagnostic-logging.md)。
 
-2. 在上一步中，选择 " **跟踪** "， **并选择 "审核"、"RequestResponse" 和 "** 用于日志记录"
+2. 在上一步中，为日志记录选择“审核”、“RequestResponse”、“AllMetrics”和“跟踪” 
 
-    ![在 QnA Maker managed (预览版中启用跟踪日志记录) ](../media/qnamaker-how-to-analytics-kb/qnamaker-v2-enable-trace-logging.png)
+    ![在 QnA Maker 托管（预览版本）中启用跟踪日志记录](../media/qnamaker-how-to-analytics-kb/qnamaker-v2-enable-trace-logging.png)
 
 ---
 
@@ -113,7 +113,7 @@ requests
 | summarize count() by performanceBucket, KbId
 ```
 
-### <a name="unanswered-questions"></a>未答复的问题
+### <a name="unanswered-questions"></a>未回答的问题
 
 ```kusto
 // Unanswered questions
@@ -134,7 +134,7 @@ traces | extend id = operation_ParentId
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-### <a name="all-qna-chat-log"></a>所有 QnA chat 日志
+### <a name="all-qna-chat-log"></a>所有 QnA 聊天日志
 
 ```kusto
 // All QnA Traffic
@@ -185,7 +185,7 @@ AzureDiagnostics
 | render barchart
 ```
 
-### <a name="unanswered-questions"></a>未答复的问题
+### <a name="unanswered-questions"></a>未回答的问题
 
 ```kusto
 // All unanswered questions
@@ -205,4 +205,4 @@ AzureDiagnostics
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [选择 capactiy](./improve-knowledge-base.md)
+> [选择容量](./improve-knowledge-base.md)

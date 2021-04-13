@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "87132732"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
@@ -29,15 +29,15 @@ ms.locfileid: "87132732"
 
 * 应用程序提供从备选项列表中显示一段内容的机会。
 * 应用程序提供有关每个备选项和用户上下文的信息。
-* 应用程序计算奖励评分。__
+* 应用程序计算奖励评分。
 
 与某些强化学习方法不同，个性化体验创建服务不需要模拟即可正常运行。 其学习算法旨对外界做出反应（而不是控制它），并使用理解功能从每个数据点学习信息，这是一种权衡创建时间与成本的独特机会，即使性能欠佳，也不会带来遗憾（可能奖励的丢失）。
 
 ## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>个性化体验创建服务使用哪种类型的强化学习算法？
 
-最新版本的个性化体验创建服务使用**上下文赌博机**，该强化学习方法限定为在给定上下文中的离散操作之间做出决策或选择。
+最新版本的个性化体验创建服务使用 **上下文赌博机**，该强化学习方法限定为在给定上下文中的离散操作之间做出决策或选择。
 
-决策内存（在给定上下文后，训练的模型将捕获可能最佳的决策）使用一组线性模型。__ 这些方法反复展示了业务成果并且是经过证实的方法，一部分原因是它们可以极快地从真实世界中学习信息，而无需多次通过训练，另一部分原因是它们可为监督式学习模型和深度神经网络模型提供补充。
+决策内存（在给定上下文后，训练的模型将捕获可能最佳的决策）使用一组线性模型。 这些方法反复展示了业务成果并且是经过证实的方法，一部分原因是它们可以极快地从真实世界中学习信息，而无需多次通过训练，另一部分原因是它们可为监督式学习模型和深度神经网络模型提供补充。
 
 探索/利用流量分配是遵循针对探索设置的百分比随机发生的，用于探索的默认算法是 Epsilon-Greedy。
 
@@ -62,7 +62,7 @@ John 还曾经编写了几篇教程来阐述联合预测 (ICML 2015)、上下文
 * [Making Contextual Decisions with Low Technical Debt](https://arxiv.org/abs/1606.03966)（做出上下文决策并降低技术债务）
 * [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的化简方法）
 * [Efficient Contextual Bandits in Non-stationary Worlds](https://arxiv.org/abs/1708.01799)（非固定世界中的有效上下文赌博机）
-* [残留损失预测：强化：无增量反馈的学习](https://openreview.net/pdf?id=HJNMYceCW)
+* [残余损失预测：使用非增量反馈进行强化学习](https://openreview.net/pdf?id=HJNMYceCW)
 * [Mapping Instructions and Visual Observations to Actions with Reinforcement Learning](https://arxiv.org/abs/1704.08795)（使用强化学习将指令和可视观测结果映射到操作）
 * [Learning to Search Better Than Your Teacher](https://arxiv.org/abs/1502.02206)（学会如何比老师更好地进行搜索）
 

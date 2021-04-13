@@ -1,7 +1,7 @@
 ---
 title: 监视机器学习 Web 服务终结点以及从中收集数据
 titleSuffix: Azure Machine Learning
-description: 了解如何从部署到 Azure Kubernetes Service 中的 web 服务终结点的模型收集数据 (AKS) 或 (ACI) 的 Azure 容器实例。
+description: 本文介绍如何从部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中 Web 服务终结点的模型收集数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,10 +11,10 @@ ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: 2740a86c5ff68e851d592533b48dc8ee60d817ee
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98070792"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
@@ -33,7 +33,7 @@ ms.locfileid: "98070792"
  
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅-试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* Azure 订阅 - 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 已安装 Azure 机器学习工作区、一个包含脚本的本地目录以及用于 Python 的 Azure 机器学习 SDK。 若要了解详细信息，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
@@ -141,14 +141,14 @@ ms.locfileid: "98070792"
 
 还可以从 Azure 机器学习工作室启用 Azure Application Insights。 当你准备好将模型部署为 Web 服务时，请使用以下步骤启用 Application Insights：
 
-1. 登录到 studio https://ml.azure.com 。
+1. 从 https://ml.azure.com 登录到工作室。
 1. 转到“模型”并选择要部署的模型。
 1. 选择“+部署”。
 1. 填充“部署模型”窗体。
 1. 展开“高级”菜单。
 
     ![“部署”窗体](./media/how-to-enable-app-insights/deploy-form.png)
-1. 选择 " **启用 Application Insights 诊断和数据收集**"。
+1. 选择“启用 Application Insights 诊断和数据收集”。
 
     ![启用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 
@@ -169,7 +169,7 @@ service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
 ```
 
-如果有多个租户，则可能需要先添加下面的身份验证代码 `ws = Workspace.from_config()`
+如果有多个租户，则可能需要在 `ws = Workspace.from_config()` 之前添加以下身份验证代码
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -185,7 +185,7 @@ Azure Application Insights 将服务日志存储在与 Azure 机器学习工作�
 1. 选择已部署的服务。
 1. 选择“Application Insights url”链接。
 
-    [![定位 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
+    [![定位 Application Insights URL](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
 1. 在 Application Insights 中，从“概述”选项卡或“监视”部分选择“日志” 。
 

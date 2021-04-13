@@ -1,7 +1,7 @@
 ---
-title: 表单识别器静态数据的服务加密
+title: 表单识别器服务静态数据加密
 titleSuffix: Azure Cognitive Services
-description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍窗体识别器的静态数据加密，以及如何启用和管理 CMK。
+description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍表单识别器的静态数据加密，以及如何启用和管理 CMK。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 7a8b331c1295ed19afa64e95318bfa14414e6d9f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100524389"
 ---
-# <a name="form-recognizer-encryption-of-data-at-rest"></a>格式识别静态数据的加密
+# <a name="form-recognizer-encryption-of-data-at-rest"></a>表单识别器静态数据加密
 
-将数据保存到云时，Azure 表单识别器会自动加密数据。 表单识别器加密可保护你的数据，以帮助你满足组织的安全性和符合性承诺。
+Azure 表单识别器在将数据保存到云时会自动对其进行加密。 表单识别器加密可保护数据，并帮助你履行组织的安全性和合规性承诺。
 
 [!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
 > [!IMPORTANT]
-> 仅限11月 11 2020 日之后创建的客户托管密钥是可用的资源。 若要将 CMK 与窗体识别器结合使用，需要创建新的窗体识别器资源。 创建资源后，可以使用 Azure Key Vault 来设置托管标识。
+> 客户管理的密钥只适用于在 2020 年 5 月 11 日以后创建的资源。 若要将 CMK 与表单识别器结合使用，需要创建新的表单识别器资源。 在创建资源后，可以使用 Azure Key Vault 来设置托管标识。
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-* [表单识别器 Customer-Managed 密钥请求表单](https://aka.ms/cogsvc-cmk)
+* [表单识别器客户管理的密钥请求表单](https://aka.ms/cogsvc-cmk)
 * [详细了解 Azure 密钥保管库](../../key-vault/general/overview.md)

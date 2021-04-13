@@ -1,7 +1,7 @@
 ---
 title: 选择列转换：模块参考
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习设计器中的 "选择列" 转换模块来执行 select 转换。
+description: 了解如何使用 Azure 机器学习设计器中的“选择列转换”模块来执行某个选择转换。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: f03840e55366d7f105ca4b57bd60061c82833e72
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "93420710"
 ---
 # <a name="select-columns-transform"></a>选择列转换

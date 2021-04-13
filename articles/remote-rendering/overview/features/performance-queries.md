@@ -7,10 +7,10 @@ ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 30b8104a9596f0b32f731c507b513b204f5d1acd
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594089"
 ---
 # <a name="server-side-performance-queries"></a>服务器端性能查询
@@ -19,7 +19,7 @@ ms.locfileid: "99594089"
 
 对渲染性能影响最大的是模型输入数据。 可按[配置模型转换](../../how-tos/conversion/configure-model-conversion.md)中描述的方式调整输入数据。
 
-客户端应用程序性能也可能成为瓶颈。 若要深入分析客户端性能，建议采用 [:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md) 。
+客户端应用程序性能也可能成为瓶颈。 若要深入分析客户端性能，建议进行[:::no-loc text="performance trace":::](../../how-tos/performance-tracing.md)。
 
 ## <a name="clientserver-timeline"></a>客户端/服务器时间线
 
@@ -71,13 +71,13 @@ void QueryFrameData(ApiHandle<RenderingSession> session)
 | VideoFramesReceived | 最后一秒内从服务器接收的帧数。 |
 | VideoFrameReusedCount | 最近一秒在设备上多次使用的已接收帧数。 如果值不是零，则表示由于网络抖动或服务器渲染时间过长，必须重新使用和重新投影帧。 |
 | VideoFramesSkipped | 在最后一秒被解码但由于新帧到达而未显示的已接收帧数。 如果值不是零，则表示网络抖动导致多个帧延迟，然后以突发形式一起到达客户端设备。 |
-| VideoFramesDiscarded | 与 **VideoFramesSkipped** 非常相似，但被丢弃的原因是，帧延迟，甚至不能再与任何挂起的姿势关联。 如果发生这种放弃，则会出现严重的网络争用情况。|
-| VideoFrameMinDelta | 在最后一秒内到达的两个连续帧之间的最短时间。 此范围与 VideoFrameMaxDelta 一起提供了由网络或视频编解码器引起的抖动的指示。 |
-| VideoFrameMaxDelta | 在最后一秒内到达的两个连续帧之间的最长时间。 此范围与 VideoFrameMinDelta 一起提供了由网络或视频编解码器引起的抖动的指示。 |
+| VideoFramesDiscarded | 与 VideoFramesSkipped 非常相似，但是被丢弃的原因是帧到达时间太晚，以至于它甚至不能与任何挂起的姿态相关联。 如果发生这种丢弃情况，则会出现严重的网络争用。|
+| VideoFrameMinDelta | 在最后一秒内到达的两个连续帧之间的最短时间。 与 VideoFrameMaxDelta 一起使用时，此范围可指示由网络或视频编解码器引起的抖动。 |
+| VideoFrameMaxDelta | 在最后一秒内到达的两个连续帧之间的最长时间。 与 VideoFrameMinDelta 一起使用时，此范围可指示由网络或视频编解码器引起的抖动。 |
 
 所有延迟值的总和通常远大于 60 Hz 下的可用帧时间。 这很正常，因为多个帧并行传输，而新帧请求按所需的帧速率启动，如图中所示。 然而，如果延迟太大，就会影响[后期阶段的重新投影](../../overview/features/late-stage-reprojection.md)的质量，并可能降低整体体验。
 
-`VideoFramesReceived`、`VideoFrameReusedCount` 和 `VideoFramesDiscarded` 可用于测量网络和服务器的性能。 低 `VideoFramesReceived` 值和较高值的组合 `VideoFrameReusedCount` 可能表明网络拥塞或服务器性能不佳。 `VideoFramesDiscarded` 值高也表示网络拥塞。
+`VideoFramesReceived`、`VideoFrameReusedCount` 和 `VideoFramesDiscarded` 可用于测量网络和服务器的性能。 低 `VideoFramesReceived` 值和高 `VideoFrameReusedCount` 值的组合可能指示网络拥塞或服务器性能不佳。 `VideoFramesDiscarded` 值高也表示网络拥塞。
 
 最后，`TimeSinceLastPresent``VideoFrameMinDelta` 和 `VideoFrameMaxDelta` 给出了传入视频帧和本地当前调用之间有差异这一概念。 差异大表示帧速率不稳定。
 
@@ -169,8 +169,8 @@ void Update()
 
 ## <a name="api-documentation"></a>API 文档
 
-* [C # RenderingConnection QueryServerPerformanceAssessmentAsync ( # B1 ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.queryserverperformanceassessmentasync)
-* [C + + RenderingConnection：： QueryServerPerformanceAssessmentAsync ( # B1 ](/cpp/api/remote-rendering/renderingconnection#queryserverperformanceassessmentasync)
+* [C# RenderingConnection.QueryServerPerformanceAssessmentAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.queryserverperformanceassessmentasync)
+* [C++ RenderingConnection::QueryServerPerformanceAssessmentAsync()](/cpp/api/remote-rendering/renderingconnection#queryserverperformanceassessmentasync)
 
 ## <a name="next-steps"></a>后续步骤
 

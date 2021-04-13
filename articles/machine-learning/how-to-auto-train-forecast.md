@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503498"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802907"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 
@@ -132,7 +132,7 @@ automl_config = AutoMLConfig(task='forecasting',
 ----|----|---
 Prophet（预览版）|Prophet 最适合用于受季节影响大且包含多个季节历史数据的时序。 若要利用此模型，请使用 `pip install fbprophet` 在本地安装它。 | 准确、快速、可靠地反应时序中的离群值、缺失数据和巨大变化。
 Auto-ARIMA（预览版）|自动回归集成移动平均 (ARIMA) 在数据处于静态时性能最佳。 这意味着其统计属性（例如平均值和方差）在整个集中保持不变。 例如，如果你掷一枚硬币，那么无论是今天掷、明天掷还是明年掷，正面朝上的可能性都是 50%。| 适用于单变量系列，这是因为使用过去的值来预测未来的值。
-ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处理最苛刻的预测任务，从而捕获数据中的非线性本地和全局趋势以及时序之间的关系。|可利用数据中的复杂趋势并轻松扩展到最大型的数据集。
+ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处理最苛刻的预测任务。 它捕获数据中的非线性的本地和全局趋势以及时序之间的关系。|可利用数据中的复杂趋势并轻松扩展到最大型的数据集。
 
 ### <a name="configuration-settings"></a>配置设置
 
@@ -146,11 +146,12 @@ ForecastTCN（预览版）| ForecastTCN 是一种神经网络模型，旨在处�
 |`forecast_horizon`|定义要预测的未来的时段数。 范围以时序频率为单位。 单位基于预测器应预测出的训练数据的时间间隔，例如每月、每周。|✓|
 |`enable_dnn`|[启用预测 DNN]()。||
 |`time_series_id_column_names`|列名，用于唯一标识多行数据中具有相同时间戳的时序。 如果未定义时序标识符，则假定该数据集为一个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
-|`freq`| 时序数据集频率。 此参数表示事件预计发生的时间段，例如每日、每周、每年等。频率必须是 [pandas 偏移别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。||
+|`freq`| 时序数据集频率。 此参数表示事件预计发生的时间段，例如每日、每周、每年等。频率必须是 [pandas 偏移别名](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)。 详细了解[频率].(#frequency--target-data-aggregation)||
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
 |`feature_lags`| 当设置了 `target_lags` 并且 `feature_lags` 设置为 `auto` 时，要滞后的功能将由自动化 ML 自动确定。 启用功能滞后有助于提高准确性。 默认情况下会禁用功能滞后。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 详细了解[目标滚动窗口聚合](#target-rolling-window-aggregation)。||
-|`short_series_handling_config`| 启用“短时序处理”，以避免在训练期间由于数据不足而失败。 在默认情况下，“短时序处理”设置为 `auto`。 详细了解[短时序处理](#short-series-handling)。|
+|`short_series_handling_config`| 启用“短时序处理”，以避免在训练期间由于数据不足而失败。 在默认情况下，“短时序处理”设置为 `auto`。 详细了解[短时序处理](#short-series-handling)。||
+|`target_aggregation_function`| 此函数将用于根据 `freq` 参数指定的频率聚合时序目标列。 必须设置 `freq` 参数才能使用 `target_aggregation_function`。 默认为 `None`；对于大多数场景，使用 `sum` 就足够了。<br> 详细了解[目标列聚合](#frequency--target-data-aggregation)。 
 
 
 以下代码 
@@ -174,7 +175,7 @@ forecasting_parameters = ForecastingParameters(time_column_name='day_datetime',
                                               
 ```
 
-然后，将这些 `forecasting_parameters` 传入到标准 `AutoMLConfig` 对象中，同时还会传入 `forecasting` 任务类型、主要指标、退出标准和训练数据。 
+然后，将这些 `forecasting_parameters` 传入到标准 `AutoMLConfig` 对象中，同时还传入 `forecasting` 任务类型、主要指标、退出条件和训练数据。 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -258,12 +259,36 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 
 有其他可用于预测任务的可选配置，例如，启用深度学习和指定目标滚动窗口聚合。 
 
+### <a name="frequency--target-data-aggregation"></a>频率和目标数据聚合
+
+利用频率参数 `freq` 来避免由不规则数据（即不遵循固定频率的数据，例如，每小时或每天的数据）导致的故障。 
+
+对于高度不规则的数据或不同的业务需求，用户可以选择设置所需的预测频率 `freq` 并指定 `target_aggregation_function`，以便聚合时序的目标列。 在 `AutoMLConfig` 对象中利用这两个设置有助于节省一些进行数据准备的时间。 
+
+使用 `target_aggregation_function` 参数时，
+* 目标列值将基于指定的运算进行聚合。 通常，`sum` 适用于大多数方案。
+
+* 数据中的数值预测器列会按总和、平均值、最小值和最大值进行聚合。 因此，自动 ML 会生成以聚合函数名称为后缀的新列，并应用所选的聚合运算。 
+
+* 对于分类预测器列，数据会按模式（窗口中最醒目的类别）进行聚合。
+
+* 日期预测器列会按最小值、最大值和模式进行聚合。 
+
+目标列值支持的聚合运算包括：
+
+|函数 | description
+|---|---
+|`sum`| 求目标值的总和
+|`mean`| 求目标值的平均值
+|`min`| 求目标的最小值  
+|`max`| 求目标的最大值  
+
 ### <a name="enable-deep-learning"></a>启用深度学习
 
 > [!NOTE]
 > DNN 对自动机器学习的预测支持目前为 **预览版**，不支持本地运行。
 
-你还可以通过深层神经网络 (DNN) 利用深度学习来改进模型的分数。 通过自动化 ML 的深度学习，可预测单变量和多变量时序数据。
+还可以通过深度神经网络 (DNN) 应用深度学习来提高模型的分数。 通过自动化 ML 的深度学习，可预测单变量和多变量时序数据。
 
 深度学习模型具有三个固有功能：
 1. 可以从任意输入到输出映射进行学习
@@ -286,7 +311,7 @@ automl_config = AutoMLConfig(task='forecasting',
 查看[饮料制造预测笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)，获取使用 DNN 的详细代码示例。
 
 ### <a name="target-rolling-window-aggregation"></a>目标滚动窗口聚合
-通常，目标的最新值是预测程序能具有的最佳信息。  通过目标滚动窗口聚合，可将数据值的滚动聚合添加为特征。 通过生成和使用这些附加特征作为额外的上下文数据，可帮助提高训练模型的准确性。
+通常，目标的最新值是预测程序能具有的最佳信息。  通过目标滚动窗口聚合，可将数据值的滚动聚合添加为特征。 通过生成和使用这些特征作为额外的上下文数据，帮助提高训练模型的准确性。
 
 例如，假设你想要预测能源需求。 你可能希望添加一项滚动窗口（3 天）特征来解释供暖空间的热变化。 在此示例中，通过在 `AutoMLConfig` 构造函数中设置 `target_rolling_window_size= 3` 来创建此窗口。 
 
@@ -294,7 +319,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 ![目标滚动窗口](./media/how-to-auto-train-forecast/target-roll.svg)
 
-请查看使用[目标滚动窗口聚合特征](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 代码示例。
+请查看应用[目标滚动窗口聚合特征](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)的 Python 代码示例。
 
 ### <a name="short-series-handling"></a>短时序处理
 
@@ -349,7 +374,7 @@ best_run, fitted_model = local_run.get_output()
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_pipeline.forecast(
+label_fcst, data_trans = fitted_model.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
@@ -373,7 +398,7 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.predict(test_data)` 以预测未来值。
+重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.forecast(test_data)` 以预测未来值。
 
 > [!NOTE]
 > 启用了 `target_lags` 和/或 `target_rolling_window_size` 后，使用自动化 ML 进行预测时不支持样本中预测。

@@ -1,5 +1,5 @@
 ---
-title: 通过 pandas 了解 Azure Blob 存储中的数据-团队数据科学流程
+title: 使用 pandas 浏览 Azure Blob 存储中的数据 - Team Data Science Process
 description: 如何使用 pandas Python 包浏览存储在 Azure blob 容器中的数据。
 services: machine-learning
 author: marktab
@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98805676"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>在 Azure Blob 存储中通过 pandas 浏览数据
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure Blob 存储中的数据
 
 本文介绍如何使用 [pandas](https://pandas.pydata.org/) Python 包浏览存储在 Azure blob 容器中的数据。
 

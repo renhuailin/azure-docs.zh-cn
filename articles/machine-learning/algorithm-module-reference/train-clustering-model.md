@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898175"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654724"
 ---
 # <a name="train-clustering-model"></a>训练聚类模型
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器中的一个模块。
 
 使用此模块来训练聚类分析模型。
 
@@ -33,7 +33,7 @@ ms.locfileid: "90898175"
   
 2. 添加 [K-Means 聚类分析](k-means-clustering.md)模块，或另一个可创建兼容的聚类分析模型的自定义模块，并设置聚类分析模型的参数。  
     
-3.  将训练数据集附加到**训练聚类分析模型**的右侧输入。
+3.  将训练数据集附加到 **训练聚类分析模型** 的右侧输入。
   
 5.  在“列集”中，从数据集选择用于构建群集的列。 确保选择可以生成良好特征的列：例如，避免使用有唯一值的 ID 或其他列，或者所有值都相同的列。
 
@@ -52,6 +52,9 @@ ms.locfileid: "90898175"
 + 若要保存已训练模型的快照，请选择“训练模型”模块右侧面板中的“输出”选项卡。 选择“注册数据集”图标将模型保存为可重用模块。
 
 + 若要从模型生成分数，请使用[将数据分配到群集](assign-data-to-clusters.md)。
+
+> [!NOTE]
+> 如果需要在设计器中部署训练的模型，请确保将 [将数据分配到群集](assign-data-to-clusters.md)（而不是“评分模型”）连接到推理管道中 [Web 服务输出模块](web-service-input-output.md)的输入端口。
 
 ## <a name="next-steps"></a>后续步骤
 

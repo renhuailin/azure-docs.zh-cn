@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 内容审查器 API
 titleSuffix: Azure Cognitive Services
-description: 这是 Azure 认知服务内容审查器 API 支持的自然语言列表。
+description: 本文是 Azure 认知服务内容审查器 API 支持的自然语言列表。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "84310302"
 ---
 # <a name="language-support-for-content-moderator-api"></a>内容审查器 API 的语言支持
 
 > [!NOTE]
-> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的 **分类** 响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于不雅用语**** 检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
+> 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 
 | 语言检测 | 不雅内容   | OCR    | 自动更正     |
@@ -35,13 +35,13 @@ ms.locfileid: "84310302"
 | 卡里亚文 | 阿萨姆语 | 荷兰语                     | 法语 |
 | 中文(简体) | 阿塞拜疆语 | 英语  | 希腊语(现代) |
 | 中文(繁体) | 孟加拉语 - 孟加拉国 | 芬兰语  | 意大利语 |
-| 教会斯拉夫语 | 孟加拉语 - 印度 | 法语     | 韩语 |
+| 教会斯拉夫语 | 孟加拉语 - 印度 | 法语     | 朝鲜语 |
 | 科普特语 | 巴斯克语 | 德语                      | 挪威语 |
 | 捷克语 |  白俄罗斯语 | 希腊语(现代)         | 波兰语 |
 | 迪维希语 | 波斯尼亚语 - 西里尔文 | 匈牙利语      | 葡萄牙语 |
 | 荷兰语 | 波斯尼亚语 - 拉丁语 | 意大利语             | 罗马尼亚语 |
-| 英语 (克里奥尔语)  | 布列塔尼语[非地缘政治] | 日语  | 俄语 |
-| 波斯语 | 保加利亚语 | 韩语                        | 斯洛伐克语 |
+| 英语(克里奥尔语) | 布列塔尼语[非地缘政治] | 日语  | 俄语 |
+| 波斯语 | 保加利亚语 | 朝鲜语                        | 斯洛伐克语 |
 | 法语 | 加泰罗尼亚语 | 挪威语                        | 西班牙语 |
 | 德语 | 中库尔德语 | 波兰语        | 土耳其语 |
 | 希腊语 | 切罗基语 | 葡萄牙语 | |
@@ -83,7 +83,7 @@ ms.locfileid: "84310302"
 | 塞海蒂语 | 卢旺达语 | | |
 | 叙利亚语 | 斯瓦希里语 | | |
 | 塔班瓦语 | 孔卡尼语 | | |
-| 德宏傣文 | 韩语 | | |
+| 德宏傣文 | 朝鲜语 | | |
 | 塔马奇克语 | 柯尔克孜语 | | |
 | 土耳其语 | 老挝语 | | |
 | 乌加里特文 | 拉脱维亚语 | | |

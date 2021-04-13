@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486652"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773039"
 ---
 # <a name="get-started-with-document-translation-preview"></a>文档翻译（预览版）入门
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486652"
 ## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
-> 一般情况下，当你在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥或单服务订阅密钥。 但是，文档翻译目前仅在翻译器（单服务）资源中受支持，而 **未** 包含在认知服务（多服务）资源中。
+>
+> 1. 一般情况下，当你在 Azure 门户中创建认知服务资源时，可以选择创建多服务订阅密钥或单服务订阅密钥。 但是，文档翻译目前仅在翻译器（单服务）资源中受支持，而 **未** 包含在认知服务（多服务）资源中。
+> 2. 文档翻译目前在“S1 标准服务计划”中提供。 请参阅[认知服务定价 - 翻译器](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)。
+>
 
 若要开始，需要：
 
@@ -29,8 +32,6 @@ ms.locfileid: "102486652"
 * 一个 [**翻译器**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)服务资源（**并非** 认知服务资源）。
 
 * 一个 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。
-
-* 一个已填写的 [**文档翻译（预览版）表单**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u)，使 Azure 订阅能够使用新的文档翻译功能。
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>获取自定义域名和订阅密钥
 

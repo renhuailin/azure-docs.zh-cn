@@ -1,5 +1,5 @@
 ---
-title: 询问问题数据能否应答 ML Studio (经典) -Azure
+title: 询问问题数据能否应答 - ML 工作室（经典）- Azure
 description: 通过学习“适合初学者的数据科学”视频 3，了解如何将棘手的数据科学问题公式化。 包括分类和回归问题的比较。
 services: machine-learning
 ms.service: machine-learning
@@ -9,10 +9,10 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
 ms.openlocfilehash: 2ff440801db7ba8c5bfc1785fc7a399a1d773b73
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517019"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
@@ -27,23 +27,23 @@ ms.locfileid: "100517019"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”  对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒） 
-* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒） 
-* 视频 3：提出数据方面的可解答问题
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒） 
-* 视频 5：[复制他人的工作以执行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒） 
+* 视频 1：[数据科学可解答的 5 个问题（5 分 14 秒）](data-science-for-beginners-the-5-questions-data-science-answers.md) 
+* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
+* 视频 3：提出可用数据回答的问题
+* 视频 4：[使用简单的模型预测答案（7 分 42 秒）](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) 
+* 视频 5：[复制他人的工作以研究数据科学（3 分 18 秒）](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) 
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出数据方面的可解答问题
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出可用数据回答的问题
 欢迎观看“适合初学者的数据科学”系列中的第二个视频。  
 
 此视频中提供了一些提示，可制定问题以便用数据解答。
 
-如果先前观看了本系列以下两个视频，再观看本视频可能会更有收获：“数据科学可解答的 5 个问题”和“数据是否可用于数据科学？”
+如果先观看了本系列中的前两个视频：“5 个数据科学可以解答的问题”和“数据是否可用于数据科学？”，可能会从此视频中了解更多的内容。
 
 ## <a name="ask-a-sharp-question"></a>提出尖锐问题
-我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。 
+我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。
 
 模糊问题不必用名称或数字来回答。 必须是清晰具体的问题。
 
@@ -69,9 +69,9 @@ ms.locfileid: "100517019"
 ## <a name="reformulate-your-question"></a>重新制定问题
 有时可以改写问题，获得更有用的答案。
 
-问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法  。
+问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法。
 
-问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法  。
+问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法。
 
 若要了解如何转换这些问题，让我们来看看这个问题：“读者最感兴趣的是哪个新闻故事？” 这要求从多种可能性中预测某个单一选择 - 换句话说，“这是 A 还是 B 或 C 或 D？” - 这将使用分类算法。
 

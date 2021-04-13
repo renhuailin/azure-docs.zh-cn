@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.openlocfilehash: 31885eba16d59e2e48a08f84c56271b84e6c565f
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98790912"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
@@ -67,7 +67,7 @@ ms.locfileid: "98790912"
 
 ## <a name="disable-required-features"></a>禁用所需的功能
 
-此切换按钮可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 默认设置是在预测过程中按需应用该功能。 如果子实体的功能不是必需的，则选择此开关可以查看预测的情况。
+此切换按钮可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 默认设置是在预测过程中按需应用该功能。 选择此切换按钮可查看不需要该子实体功能时的预测结果。
 
 ### <a name="when-to-disable-required-features"></a>何时禁用所需的功能
 

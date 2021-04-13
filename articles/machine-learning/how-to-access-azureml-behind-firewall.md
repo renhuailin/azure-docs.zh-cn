@@ -12,15 +12,15 @@ ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: 295228e9eaa3529b05055869bd46f9aefc938a6f
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102212767"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
-本文介绍如何将 Azure 防火墙配置为控制对 Azure 机器学习工作区和公共 internet 的访问。 若要了解有关保护 Azure 机器学习的详细信息，请参阅 [企业安全性 Azure 机器学习](concept-enterprise-security.md)。
+本文介绍如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。 若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。
 
 > [!WARNING]
 > 只有在代码优先体验中才支持访问防火墙后面的数据存储。 不支持使用 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)访问防火墙后的数据。 若要使用工作室处理专用网络上的数据存储，必须首先[设置虚拟网络](../virtual-network/quick-create-portal.md)，然后[授予工作室访问存储在虚拟网络内部的数据的权限](how-to-enable-studio-virtual-network.md)。
@@ -33,15 +33,15 @@ ms.locfileid: "102212767"
 
 如果使用“计算实例”或“计算群集”Azure 机器学习，请为包含 Azure 机器学习资源的子网添加[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 。 此路由将流量从 `BatchNodeManagement` 和 `AzureMachineLearning` 资源的 IP 地址强制发送到计算实例和计算群集的公共 IP。
 
-借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 另外，请添加 Azure 机器学习服务的 IP 地址，因为访问计算实例需要此地址。 为 Azure 机器学习服务添加 IP 时，必须为 __主要和辅助__ Azure 区域添加 ip。 主要区域是工作区所在的区域。
+借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务的 IP 地址，因为这是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
 
-若要查找次要区域，请参阅 [使用 Azure 配对区域确保业务连续性 & 灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于美国东部2，则次要区域是美国中部。 
+若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
 
 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
 * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
-* 使用 [Azure CLI](/cli/azure/install-azure-cli) 下载信息。 下面的示例将下载 IP 地址信息，并筛选出美国东部2区域的信息 (主要) 和美国中部区域 (辅助) ：
+* 使用 [Azure CLI](/cli/azure/install-azure-cli) 下载信息。 下面的示例下载 IP 地址信息，并筛选出“美国东部 2”区域（主要）和“美国中部”区域（次要）的信息：
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
 ms.openlocfilehash: 6a73c238cde7fbddfb7aa4c7153b5de5b442e9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87284197"
 ---
 ## <a name="upload-the-audio"></a>上传音频
 
-在执行异步脚本之前，需要使用 Microsoft 认知语音客户端 SDK (版本1.8.0 或更高版本) 发送音频到会话脚本服务。
+在执行异步听录之前，需要使用 Microsoft 认知语音客户端 SDK（版本 1.8.0 或更高版本）将音频发送到对话听录服务。
 
-此示例代码演示如何为仅限异步模式创建会话 transcriber。 若要将音频流式传输到 transcriber，需要 [通过语音 SDK 实时添加从转录对话](../../../../how-to-use-conversation-transcription.md)派生的音频流代码。 请参阅该主题的 " **限制** " 部分，查看支持的平台和语言 api。
+此示例代码演示如何为仅异步模式创建对话转录器。 若要将音频流式传输到转录器，需要添加从[通过语音 SDK 实时转录对话](../../../../how-to-use-conversation-transcription.md)中派生的音频流代码。 请参阅该主题的“限制”部分，查看受支持的平台和语言 API。
 
 ```java
 // Create the speech config object
@@ -83,7 +83,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-如果需要实时 _加上_ 异步，注释和取消注释相应的代码行，如下所示：
+如果需要实现实时及异步效果，请注释和取消注释相应的代码行，如下所示：
 
 ```java
 // Set the property for asynchronous transcription
@@ -93,15 +93,15 @@ Future<?> future = transcriber.startTranscribingAsync();
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>获取脚本结果
+## <a name="get-transcription-results"></a>获取听录结果
 
-对于此处所示的代码，你需要 **远程会话版本 1.8.0**，该版本仅在 Windows 和 Linux 上的 Java (1.8.0 或) 更高版本中受支持。 
+对于此处所示的代码，你需要远程对话版本 1.8.0，该版本仅支持用于 Windows 和 Linux 上的 Java（1.8.0 或更高版本）。 
 
-### <a name="obtaining-the-async-conversation-client-sdk"></a>获取 async 会话客户端 SDK
+### <a name="obtaining-the-async-conversation-client-sdk"></a>获取异步对话客户端 SDK
 
-可以通过按如下所示编辑 pom.xml 文件来获取 **远程对话** 。
+可以通过按如下所示编辑 pom.xml 文件来获取远程对话。
 
-1. 在文件末尾的结束标记之前， `</project>` 创建一个元素，该 `repositories` 元素具有对语音 SDK 的 Maven 存储库的引用：
+1. 在文件末尾，在结束标记 `</project>` 前面，创建一个 `repositories` 元素，使其中包含对语音 SDK 的 Maven 存储库的引用：
 
    ```xml
    <repositories>
@@ -113,7 +113,7 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
    </repositories>
    ```
 
-2. 另外添加一个 `dependencies` 元素，并将 remoteconversation 1.8.0 作为依赖项：
+2. 同时添加一个 `dependencies` 元素，其中，remoteconversation-client-sdk 1.8.0 是一个依赖项：
 
    ```xml
    <dependencies>
@@ -127,9 +127,9 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 3. 保存更改
 
-### <a name="sample-transcription-code"></a>示例脚本代码
+### <a name="sample-transcription-code"></a>示例听录代码
 
-获得之后 `conversationId` ，在客户端应用程序中创建远程对话脚本客户端 **RemoteConversationTranscriptionClient** ，以查询异步脚本的状态。 使用**RemoteConversationTranscriptionClient**中的**GetTranscriptionOperation**方法获取[PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java)对象。 PollerFlux 对象将包含有关远程操作状态 **RemoteConversationTranscriptionOperation** 和最终结果 **RemoteConversationTranscriptionResult**的信息。 操作完成后，通过对[SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)调用**GetFinalResult**来获取**RemoteConversationTranscriptionResult** 。 在此代码中，我们只是将结果内容打印到系统输出。
+具有 `conversationId` 之后，在客户端应用程序中创建远程对话听录客户端 RemoteConversationTranscriptionClient，以查询异步听录的状态。 使用 RemoteConversationTranscriptionClient 中的 getTranscriptionOperation 方法获取 [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) 对象 。 PollerFlux 对象将包含有关远程操作状态 RemoteConversationTranscriptionOperation 和最终结果 RemoteConversationTranscriptionResult 的信息 。 操作完成后，通过在 [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java) 上调用 getFinalResult 来获取 RemoteConversationTransmissionResult 。 在此代码中，我们仅将结果内容打印到系统输出。
 
 ```java
 // Create the speech config object

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96349514"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>从必应 Web 搜索 API v5 升级到 v7
@@ -44,7 +44,7 @@ ms.locfileid: "96349514"
 
 - 已将 v5 错误代码替换为以下可取的 `code` 和 `subCode` 值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|只要出现任何子代码条件，必应就会返回 ServerError。 如果 HTTP 状态代码为 500，则响应将包括这些错误。
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果错误是 HttpNotAllowed，则 HTTP 状态代码为 410。
@@ -86,7 +86,7 @@ InsufficientScope|InsufficientAuthorization
 
 - 添加 [answerCount](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) 查询参数。 使用此参数指定希望响应包含的答案数。 答案根据排名进行选择。 例如，如果将此参数设置为三 (3)，则响应将包括排名前三位的答案。  
 
-- 添加 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像提升为响应，可以将 "升级" 设置为 " *视频"、"图像*"。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为2并且 `promote` 设置为 *视频、图像*，则响应可能包含网页、新闻、视频和图像。
+- 添加 [promote](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) 查询参数。 使用此参数和 `answerCount` 可以显式包含一个或多个答案类型，无论其排名如何。 例如，要将视频和图像升级到响应中，你需要将升级设置为“视频、图片”。 要升级的答案列表不计入 `answerCount` 限制。 例如，如果 `answerCount` 为 2 且 `promote` 设置为“视频，图像”，则响应可能包括网页、新闻、视频和图片。
 
 ### <a name="object-changes"></a>对象变化
 

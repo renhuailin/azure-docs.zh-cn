@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 97167485dae155670f0eb83fc3ef9cb658952251
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749900"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599288"
 ---
 > [!NOTE]
 > 若要检测受保护的运行状况信息 (PHI)，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
@@ -29,17 +29,17 @@ ms.locfileid: "101749900"
 | [Person](#category-person)      |  人员姓名。  |
 | [PersonType](#category-persontype) | 某人的工作类型或角色。 |
 | [电话号码](#category-phonenumber) |电话号码（仅限美国和欧洲电话号码）。 |
-| [组织](#category-organization) |  公司、组、政府机构和其他组织。  |
+| 组织 |  公司、团体、政府机构和其他组织。  |
 | [Address](#category-address) | 完整的邮寄地址。  |
-| [电子邮件](#category-email) | 电子邮件地址。   |
+| [Email](#category-email) | 电子邮件地址。   |
 | [URL](#category-url) | 指向网站的 URL。  |
-| [LIP](#category-ip) | 网络 IP 地址。  |
+| [IP](#category-ip) | 网络 IP 地址。  |
 | [DateTime](#category-datetime) | 某天的日期和时间。 | 
 | [数量](#category-quantity) | 数字和数量。  |
 | [Azure 信息](#azure-information) | 可识别的 Azure 信息，如身份验证信息。  |
 | [标识](#identification) | 金融和国家/地区特定的标识。  |
 
-### <a name="category-person"></a>类别： Person
+### <a name="category-person"></a>类别：Person
 
 此类别包含以下实体：
 
@@ -53,12 +53,21 @@ ms.locfileid: "101749900"
     :::column span="2":::
         **详细信息**
 
-        人员姓名。 也随 `domain=phi` 一起返回。
+        人员姓名。 
+
+        若要获得此实体类别，请将 `Person` 添加到 `pii-categories` 参数中。 如果检测到 `Person`，会在 API 响应中返回。
       
     :::column-end:::
+    
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
 :::row-end:::
 
-### <a name="category-persontype"></a>类别： PersonType
+### <a name="category-persontype"></a>类别：PersonType
 
 此类别包含以下实体：
 
@@ -74,11 +83,20 @@ ms.locfileid: "101749900"
         **详细信息**
 
         某人的工作类型或角色。
+
+        若要获得此实体类别，请将 `PersonType` 添加到 `pii-categories` 参数中。 如果检测到 `PersonType`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
-### <a name="category-phonenumber"></a>类别： PhoneNumber
+### <a name="category-phonenumber"></a>类别：PhoneNumber
 
 此类别包含以下实体：
 
@@ -93,12 +111,22 @@ ms.locfileid: "101749900"
         **详细信息**
 
         电话号码（仅限美国和欧洲电话号码）。 也随 `domain=phi` 一起返回。
+
+        若要获得此实体类别，请将 `PhoneNumber` 添加到 `pii-categories` 参数中。 如果检测到 `PhoneNumber`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+
 :::row-end:::
 
 
-### <a name="category-organization"></a>类别：组织
+### <a name="category-organization"></a>类别：Organization
 
 此类别包含以下实体：
 
@@ -113,11 +141,21 @@ ms.locfileid: "101749900"
         **详细信息**
 
         公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。
+
+        若要获得此实体类别，请将 `Organization` 添加到 `pii-categories` 参数中。 如果检测到 `Organization`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
 此类别中的实体可以具有以下子类别。
 
@@ -125,15 +163,25 @@ ms.locfileid: "101749900"
     :::column span="":::
         **实体子类别**
 
-        医疗
+        医疗    
 
     :::column-end:::
     :::column span="2":::
         **详细信息**
 
         医疗公司和团体。
+
+        若要获得此实体类别，请将 `OrganizationMedical` 添加到 `pii-categories` 参数中。 如果检测到 `OrganizationMedical`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -144,8 +192,17 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         证券交易所集团。 
+
+        若要获得此实体类别，请将 `OrganizationStockExchange` 添加到 `pii-categories` 参数中。 如果检测到 `OrganizationStockExchange`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -156,13 +213,21 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         与体育相关的组织。
+
+        若要获得此实体类别，请将 `OrganizationSports` 添加到 `pii-categories` 参数中。 如果检测到 `OrganizationSports`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
 
 :::row-end:::
 
 
-### <a name="category-address"></a>类别：地址
+### <a name="category-address"></a>类别：Address
 
 此类别包含以下实体：
 
@@ -176,12 +241,22 @@ ms.locfileid: "101749900"
     :::column span="2":::
         **详细信息**
 
-        完整的邮件地址。
+        完整的通讯地址。
+
+        若要获得此实体类别，请将 `Address` 添加到 `pii-categories` 参数中。 如果检测到 `Address`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
-### <a name="category-email"></a>类别：电子邮件
+### <a name="category-email"></a>类别：Email
 
 此类别包含以下实体：
 
@@ -197,10 +272,19 @@ ms.locfileid: "101749900"
 
         电子邮件地址。
       
+        若要获得此实体类别，请将 `Email` 添加到 `pii-categories` 参数中。 如果检测到 `Email`，会在 API 响应中返回。
+
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
     :::column-end:::
 :::row-end:::
 
-### <a name="category-url"></a>类别： URL
+
+### <a name="category-url"></a>类别：URL
 
 此类别包含以下实体：
 
@@ -208,18 +292,28 @@ ms.locfileid: "101749900"
     :::column span="":::
         **实体**
 
-        代码
+        URL
 
     :::column-end:::
     :::column span="2":::
         **详细信息**
 
         指向网站的 URL。 
+
+        若要获得此实体类别，请将 `URL` 添加到 `pii-categories` 参数中。 如果检测到 `URL`，会在 API 响应中返回。
       
     :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
-### <a name="category-ip"></a>类别： IP
+### <a name="category-ip"></a>类别：IP
 
 此类别包含以下实体：
 
@@ -234,11 +328,20 @@ ms.locfileid: "101749900"
         **详细信息**
 
         网络 IP 地址。 
+
+        若要获得此实体类别，请将 `IP` 添加到 `pii-categories` 参数中。 如果检测到 `IP`，会在 API 响应中返回。
+      
+    :::column-end:::
+
+    :::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
 
-### <a name="category-datetime"></a>Category： DateTime
+### <a name="category-datetime"></a>类别：DateTime
 
 此类别包含以下实体：
 
@@ -253,11 +356,19 @@ ms.locfileid: "101749900"
         **详细信息**
 
         某天的日期和时间。 
+
+        若要获得此实体类别，请将 `DateTime` 添加到 `pii-categories` 参数中。 如果检测到 `DateTime`，会在 API 响应中返回。
       
     :::column-end:::
+:::column span="":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
 此类别中的实体可以具有以下子类别。
 
@@ -265,18 +376,26 @@ ms.locfileid: "101749900"
     :::column span="":::
         **实体子类别**
 
-        Date
+        日期
 
     :::column-end:::
     :::column span="2":::
         **详细信息**
 
         日历日期。
+
+        若要获得此实体类别，请将 `Date` 添加到 `pii-categories` 参数中。 如果检测到 `Date`，会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+      
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
       
     :::column-end:::
 :::row-end:::
 
-### <a name="category-quantity"></a>类别：数量
+### <a name="category-quantity"></a>类别：Quantity
 
 此类别包含以下实体：
 
@@ -291,11 +410,19 @@ ms.locfileid: "101749900"
         **详细信息**
 
         数字和数量。
+
+        若要获得此实体类别，请将 `Quantity` 添加到 `pii-categories` 参数中。 如果检测到 `Quantity`，会在 API 响应中返回。
+      
+    :::column-end:::
+    :::column span="2":::
+      **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
 
-#### <a name="subcategories"></a>类别
+#### <a name="subcategories"></a>子类别
 
 此类别中的实体可以具有以下子类别。
 
@@ -310,8 +437,16 @@ ms.locfileid: "101749900"
         **详细信息**
 
         年龄。
+
+        若要获得此实体类别，请将 `Age` 添加到 `pii-categories` 参数中。 如果检测到 `Age`，会在 API 响应中返回。
       
     :::column-end:::
+    :::column span="2":::
+        **支持的文档语言**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="azure-information"></a>Azure 信息
@@ -329,33 +464,36 @@ ms.locfileid: "101749900"
         **详细信息**
 
         Azure Cosmos DB 服务器的授权密钥。   
+
+        若要获得此实体类别，请将 `AzureDocumentDBAuthKey` 添加到 `pii-categories` 参数中。 如果检测到 `AzureDocumentDBAuthKey`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+      **支持的文档语言**
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        Azure IAAS 数据库连接字符串和 Azure SQL 连接字符串
+        Azure IAAS 数据库连接字符串和 Azure SQL 连接字符串。
+        
 
     :::column-end:::
     :::column span="2":::
 
         Azure 基础结构即服务 (IaaS) 数据库的连接字符串和 SQL 连接字符串。
+
+        若要获得此实体类别，请将 `AzureIAASDatabaseConnectionAndSQLString` 添加到 `pii-categories` 参数中。 如果检测到 `AzureIAASDatabaseConnectionAndSQLString`，会在 API 响应中返回。
       
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column span="":::
 
-        Azure SQL 连接字符串
+      `en` 
 
     :::column-end:::
-    :::column span="2":::
-
-        Azure SQL 数据库中的数据库的连接字符串。
-      
-    :::column-end:::
-
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -367,6 +505,13 @@ ms.locfileid: "101749900"
 
         Azure IoT 的连接字符串。 
       
+        若要获得此实体类别，请将 `AzureIoTConnectionString` 添加到 `pii-categories` 参数中。 如果检测到 `AzureIoTConnectionString`，会在 API 响应中返回。
+
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -378,7 +523,14 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         Azure 发布设置的密码。
+
+        若要获得此实体类别，请将 `AzurePublishSettingPassword` 添加到 `pii-categories` 参数中。 如果检测到 `AzurePublishSettingPassword`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -390,7 +542,14 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         Redis 缓存的连接字符串。
+
+        若要获得此实体类别，请将 `AzureRedisCacheString` 添加到 `pii-categories` 参数中。 如果检测到 `AzureRedisCacheString`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -402,7 +561,14 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         Azure 软件即服务 (SaaS) 的连接字符串。
+
+        若要获得此实体类别，请将 `AzureSAS` 添加到 `pii-categories` 参数中。 如果检测到 `AzureSAS`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -414,7 +580,14 @@ ms.locfileid: "101749900"
     :::column span="2":::
 
         Azure 服务总线的连接字符串。
+
+        若要获得此实体类别，请将 `AzureServiceBusString` 添加到 `pii-categories` 参数中。 如果检测到 `AzureServiceBusString`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -425,8 +598,15 @@ ms.locfileid: "101749900"
     :::column-end:::
     :::column span="2":::
 
-       Azure 存储帐户的帐户密钥。 
+        Azure 存储帐户的帐户密钥。 
+
+        若要获得此实体类别，请将 `AzureStorageAccountKey` 添加到 `pii-categories` 参数中。 如果检测到 `AzureStorageAccountKey`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -437,8 +617,15 @@ ms.locfileid: "101749900"
     :::column-end:::
     :::column span="2":::
 
-       Azure 存储帐户的通用帐户密钥。
+        Azure 存储帐户的通用帐户密钥。
+
+        若要获得此实体类别，请将 `AzureStorageAccountGeneric` 添加到 `pii-categories` 参数中。 如果检测到 `AzureStorageAccountGeneric`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -449,8 +636,15 @@ ms.locfileid: "101749900"
     :::column-end:::
     :::column span="2":::
 
-       运行 SQL Server 的计算机的连接字符串。
+        运行 SQL Server 的计算机的连接字符串。
+
+        若要获得此实体类别，请将 `SQLServerConnectionString` 添加到 `pii-categories` 参数中。 如果检测到 `SQLServerConnectionString`，会在 API 响应中返回。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 

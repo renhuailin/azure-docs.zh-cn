@@ -10,17 +10,17 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 11f39aa480e3ba6508bf730c61891e80ea689e8b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895945"
 ---
 # <a name="view-model-details"></a>查看模型详细信息
 
 项目下的“模型”选项卡显示该项目中的所有模型。 为该项目训练的所有模型列在此选项卡中。
 
-对于项目中的每个模型，将显示这些详细信息。
+对于项目中的每个模型，将显示以下详细信息。
 
 1. 模型名称：显示给定模型的模型名称。
 
@@ -50,7 +50,7 @@ ms.locfileid: "98895945"
 
 3. BLEU 评分：显示模型的 BLEU（双语评估辅助）评分，指示翻译系统的质量。 此评分告知翻译系统在此次训练后提供的翻译，与测试数据集中的参考句子之间的近似程度。 如果训练成功完成，则会显示 BLEU 评分。 如果训练未完成/失败，则不会显示任何 BLEU 评分。
 
-4. 定型句子计数：显示用作定型集的句子总数。
+4. 训练句子计数：显示用作训练集的句子总数。
 
 5. 优化句子计数：显示用作优化集的句子总数。
 

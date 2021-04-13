@@ -1,7 +1,7 @@
 ---
 title: 迁移 Microsoft Translator Hub 工作区和项目 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何将中心工作区和项目迁移到 Azure 认知服务自定义转换器。
+description: 本文介绍如何将 Hub 工作区和项目迁移到 Azure 认知服务自定义翻译器。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 05/26/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98895702"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
@@ -21,13 +21,13 @@ ms.locfileid: "98895702"
 可轻松地将 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 工作区和项目迁移到自定义翻译器。 从 Microsoft Hub 启动迁移，具体方式是选择一个工作区或项目，然后在自定义翻译器中选择一个工作区，并选择想要迁移的训练。 迁移开始后，将迁移所选的训练设置及所有相关文档。 将训练已部署的模型，并且可在训练完成后自动部署它们。
 
 这些操作在迁移时执行：
-* 所有文档和项目定义的名称都将通过添加 "hub_" 作为名称的前缀来传输。 自动生成的测试和优化数据将命名为 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
+* 所有文档和项目定义在迁移时将在名称上附加“hub_”前缀。 自动生成的测试和优化数据将命名为 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
 * 进行迁移时，将自动使用 Hub 训练文档训练处于已部署状态的训练。 订阅无需为此训练付费。 如果为迁移选择了自动部署，则训练完成后将自动部署已训练的模型。 将收取常规托管费用。
 * 如果迁移的训练未处于已部署状态，则会将它们置于迁移的草稿状态。 在此状态下，可以选择使用已迁移的定义训练模型，但需为常规训练费用付费。
-* 在任何时候，都可以在 "MT 中心的 Bleu 评分" 标题中的模型的 TrainingDetails 页中找到从中心定型迁移的 BLEU 分数。
+* 随时可以在模型的 TrainingDetails 页面的“MT Hub 中的 Bleu 分数”标题中查看从 Hub 训练迁移的 BLEU 分数。
 
 > [!Note] 
-> 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的 [最小值](./sentence-alignment.md#suggested-minimum-number-of-sentences)更少的培训。
+> 要使训练成功，自定义翻译器至少需要 10,000 个独特的摘录句子。 自定义翻译器不能执行少于[建议的最少数目](./sentence-alignment.md#suggested-minimum-number-of-sentences)的训练。
 
 ## <a name="find-custom-translator-workspace-id"></a>查找自定义翻译器工作区 ID
 
@@ -55,7 +55,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 3. 单击相应项目的“迁移”链接。
 
-    ![突出显示所选项目的 "迁移" 按钮的屏幕截图。](media/how-to/how-to-migrate-from-hub.png)
+    ![屏幕截图突出显示所选项目的“迁移”按钮。](media/how-to/how-to-migrate-from-hub.png)
 
 4. 点击“迁移”链接后，将显示一个窗体，可以在其中执行下列操作：
    * 指定要迁移到的自定义翻译器上的工作区
@@ -76,7 +76,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 3. 在“设置”页上单击“将工作区数据迁移到自定义翻译”。
 
-    ![突出显示将工作区数据迁移到自定义转换器选项的屏幕截图。](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![屏幕截图突出显示“将工作区数据迁移到自定义翻译器”选项。](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. 在下一页上，选择以下两个选项之一：
 
@@ -92,7 +92,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="migration-history"></a>迁移历史记录
 
-从中心请求工作区/项目迁移后，可在 "自定义转换器设置" 页中找到迁移历史记录。
+请求从 Hub 迁移工作区/项目后，在自定义翻译器的“设置”页中可以看到迁移历史记录。
 
 若要查看迁移历史记录，请执行以下步骤：
 
@@ -119,10 +119,10 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 如需有关项目、训练和文档的更详细迁移报告，可以选择以 CSV 格式导出详细信息。
 
 ## <a name="implementation-notes"></a>实现说明
-* 在自定义转换程序中尚不可用的语言对的系统将仅可用于访问数据或通过自定义转换器取消部署。 这些项目将在 "项目" 页上标记为 "不可用"。 由于我们通过自定义转换器启用了新的语言对，因此这些项目将变为活动状态以进行定型和部署。 
+* 如果系统具有在自定义翻译器中尚不可用的语言对，则只能通过自定义翻译器来访问其数据或将其取消部署。 这些项目将在“项目”页上标记为“不可用”。 如果我们为自定义翻译器启用新的语言对，这些项目将变为活动状态，并可进行训练和部署。 
 * 将项目从 Hub 迁移到自定义翻译器不会对 Hub 训练或项目产生任何影响。 迁移期间，我们不会从 Hub 删除项目或文档，并且不会取消部署模型。
 * 每个项目只可迁移一次。 如需重复执行对某个项目的迁移，请与我们联系。
-* 自定义转换器支持 NMT 语言对和英语。 [查看支持的语言的完整列表](../language-support.md#customization)。 Hub 无需基准模型，因此它支持数千种语言。 可以迁移不受支持的语言对，但我们将仅执行对文档和项目定义的迁移。 我们无法训练新模型。 此外，这些文档和项目将显示为非活动状态，以指示它们当前不可用。 若添加了对这些项目和/或文档的支持，它们将变为活动且可训练状态。
+* 自定义翻译器支持与英语互相翻译的 NMT 语言对。 [查看支持的语言完整列表](../language-support.md#customization)。 Hub 无需基准模型，因此它支持数千种语言。 可以迁移不受支持的语言对，但我们将仅执行对文档和项目定义的迁移。 我们无法训练新模型。 此外，这些文档和项目将显示为非活动状态，以指示它们当前不可用。 若添加了对这些项目和/或文档的支持，它们将变为活动且可训练状态。
 * 自定义翻译器当前不支持单语训练数据。 与不受支持的语言对一样，可以迁移单语文档，但在支持单语数据前，它们将显示为非活动状态。
 * 自定义翻译器需要具备 1 万个并行句子，才能执行训练。 Microsoft Hub 可以针对小型数据集执行训练。 若要迁移的训练不符合此要求，则不会对它执行训练。
 
@@ -130,7 +130,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 此表比较了 Microsoft Translator Hub 和自定义翻译器之间的功能。
 
-| Feature | 集线器 | 自定义翻译 |
+| 功能 | 集线器 | 自定义翻译 |
 | ------- | :-: | :---------------: |
 | 自定义功能状态    | 正式版    | 正式版 |
 | 文本 API 版本    | V2     | V3  |
@@ -141,9 +141,9 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="new-languages"></a>新语言
 
-如果你是致力于创建新的翻译语言系统的社区或组织，请访问以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 获取详细信息。
+如果你是致力于为翻译器创建新的语言系统的社区或组织，请联系 [custommt@microsoft.com](mailto:custommt@microsoft.com) 获取更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为模型定型](how-to-train-model.md)。
-- 开始通过 [转换器 V3](../reference/v3-0-translate.md?tabs=curl)使用已部署的自定义翻译模型。
+- [训练模型](how-to-train-model.md)。
+- 通过[翻译器 V3](../reference/v3-0-translate.md?tabs=curl) 开始使用已部署的自定义翻译模型。

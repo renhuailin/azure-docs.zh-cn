@@ -1,22 +1,22 @@
 ---
-title: 设置 QnA Maker 服务-QnA Maker
+title: 设置 QnA Maker 服务 - QnA Maker
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: b6ab131c0fa81609b956de53f2b15d445e8979dd
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102219261"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 
-创建资源之前，了解以下概念非常有用：
+创建资源之前，对以下概念有深入的理解非常有帮助：
 
 * [QnA Maker 资源](../Concepts/azure-resources.md)
 * [创作和发布密钥](../Concepts/azure-resources.md#keys-in-qna-maker)
@@ -25,73 +25,73 @@ ms.locfileid: "102219261"
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
-此过程创建管理知识库内容所需的 Azure 资源。 完成这些步骤后，可以在 "**密钥**" 页上找到 Azure 门户资源的 _订阅_ 密钥。
+此过程创建管理知识库内容所需的 Azure 资源。 完成这些步骤后，可以在 Azure 门户中资源的“密钥”页面上找到订阅密钥。
 
-1. 登录到 Azure 门户并 [创建 QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) 资源。
+1. 登录 Azure 门户并[创建 QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) 资源。
 
-1. 阅读条款和条件后，选择 " **创建** "：
+1. 阅读条款和条件后，选择“创建”：
 
     ![新建 QnA Maker 服务](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
-1. 在 **QnA Maker** 中，选择适当的层和区域：
+1. 在 QnA Maker 中，选择适当的层和区域：
 
     ![新建 QnA Maker 服务 - 定价层和区域](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
-    * 在 " **名称** " 字段中，输入唯一的名称来标识此 QnA Maker 服务。 此名称还标识您的知识库将与之关联的 QnA Maker 终结点。
-    * 选择将在其下部署 QnA Maker 资源的 **订阅** 。
-    * 为 QnA Maker 管理服务 (门户和管理 Api) 选择 **定价层** 。 查看 [有关 SKU 定价的更多详细信息](https://aka.ms/qnamaker-pricing)。
-    *  (建议) 创建新的资源组，或使用现有 **资源组** 部署此 QnA Maker 资源。 QnA Maker 创建多个 Azure 资源。 创建用于保存这些资源的资源组时，可以通过资源组名称轻松查找、管理和删除这些资源。
-    * 选择 **资源组位置**。
-    * 选择 "搜索" Azure 认知搜索服务的 **定价层** 。 如果 "免费层" 选项不可用 (显示灰显) ，这意味着你已通过订阅部署了免费服务。 在这种情况下，你将需要从 "基本" 层开始。 请参阅 [Azure 认知搜索定价详细信息](https://azure.microsoft.com/pricing/details/search/)。
-    * 选择要在其中部署 Azure 认知搜索索引的 **搜索位置** 。 对客户数据的存储位置的限制有助于确定为 Azure 认知搜索选择的位置。
-    * 在 " **应用名称** " 字段中，输入 Azure App Service 实例的名称。
-    * 默认情况下，应用服务默认为标准 (S1) 层。 可以在创建后更改该计划。 了解有关 [应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)的详细信息。
-    * 选择将在其中部署应用服务的 **网站位置** 。
+    * 在“名称”字段中，输入一个唯一的名称来标识此 QnA Maker 服务。 此名称还会标识知识库将关联到的 QnA Maker 终结点。
+    * 选择将部署 QnA Maker 资源的订阅。
+    * 为 QnA Maker 管理服务（门户和管理 API）选择定价层。 查看[有关 SKU 定价的更多详细信息](https://aka.ms/qnamaker-pricing)。
+    * 创建新的资源组（推荐），或使用现有的资源组来在其中部署此 QnA Maker 资源。 QnA Maker 会创建多个 Azure 资源。 创建用于保存这些资源的资源组时，可以通过资源组名称轻松查找、管理和删除这些资源。
+    * 选择一个“资源组位置”。
+    * 选择 Azure 认知搜索服务的“搜索定价层”。 如果“免费层”选项不可用（以灰色显示），这意味着你已通过订阅部署了免费的服务。 在这种情况下，需要从“基本”层开始操作。 请参阅 [Azure 认知搜索定价详细信](https://azure.microsoft.com/pricing/details/search/)。
+    * 选择要部署 Azure 认知搜索索引的搜索位置。 对必须存储客户数据的位置进行限制有助于确定为 Azure 认知搜索选择的位置。
+    * 在“应用名称”字段中，输入 Azure 应用服务实例的名称。
+    * 默认情况下，应用服务默认使用标准 (S1) 层。 可以在创建后更改该计划。 详细了解[服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+    * 选择将部署应用服务的“网站位置”。
 
         > [!NOTE]
-        > **搜索位置** 可能不同于 **网站位置**。
+        > “搜索位置”可以与“网站位置”不同 。
 
-    * 选择是否要启用 **Application Insights**。 如果启用了 **Application Insights**，则 QnA Maker 会收集有关流量、聊天日志和错误的遥测数据。
-    * 选择将在其中部署 Application Insights 资源的 **App insights 位置** 。
+    * 选择是否要启用 Application Insights。 如果启用了 **Application Insights**，则 QnA Maker 会收集有关流量、聊天日志和错误的遥测数据。
+    * 选择将部署 Application Insights 资源的 App insights 位置。
     * 为了节省成本，可以[共享](configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource)为 QnA Maker 创建的某些 Azure 资源，但不是所有。
 
-1. 验证所有字段后，选择 " **创建**"。 此过程可能需要几分钟才能完成。
+1. 验证所有字段后，请选择“创建”。 此过程可能需要几分钟才能完成。
 
-1. 部署完成后，你将看到在订阅中创建的以下资源：
+1. 部署完成后，会在订阅中看到创建的以下资源：
 
    ![新建 QnA Maker 服务资源](../media/qnamaker-how-to-setup-service/resources-created.png)
 
-    具有 _认知服务_ 类型的资源具有您的 _订阅_ 密钥。
+    具有“认知服务”类型的资源具有订阅密钥 。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
-此过程创建管理知识库内容所需的 Azure 资源。 完成这些步骤后，可以在 "**密钥**" 页上找到 Azure 门户资源的 *订阅* 密钥。
+此过程创建管理知识库内容所需的 Azure 资源。 完成这些步骤后，可以在 Azure 门户中资源的“密钥”页面上找到订阅密钥。
 
-1. 登录到 Azure 门户并 [创建 QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) 资源。
+1. 登录 Azure 门户并[创建 QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) 资源。
 
-1. 阅读条款和条件后，选择 " **创建** "：
+1. 阅读条款和条件后，选择“创建”：
 
     ![新建 QnA Maker 服务](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
-1. 在 **QnA Maker** 中，选中 "托管 (预览版") 复选框，然后选择相应的层和区域：
+1. 在 QnA Maker中，选中“托管(预览版)”复选框，然后选择适当的层和区域：
 
-    ![创建新的 QnA Maker 托管服务-定价层和区域](../media/qnamaker-how-to-setup-service/enter-qnamaker-v2-info.png)
+    ![新建 QnA Maker 托管服务 - 定价层和区域](../media/qnamaker-how-to-setup-service/enter-qnamaker-v2-info.png)
 
-    * 选择将在其下部署 QnA Maker 资源的 **订阅** 。
-    *  (建议) 创建新的资源组，或使用现有的 **资源组** 来部署此 QnA Maker 托管 (预览) 资源。 QnA Maker 托管 (预览版) 会创建几个 Azure 资源。 创建用于保存这些资源的资源组时，可以通过资源组名称轻松查找、管理和删除这些资源。
-    * 在 " **名称** " 字段中，输入唯一的名称来标识此 QnA Maker 管理的 (预览版) 服务。 
-    * 选择要在其中部署 QnA Maker 管理 (预览版) 服务的 **位置** 。 管理 Api 和服务终结点将托管在此位置。 
-    * 选择 QnA Maker 托管 (预览版) 服务 (免费) 预览版 "的 **定价层** 。 查看 [有关 SKU 定价的更多详细信息](https://aka.ms/qnamaker-pricing)。
-    * 选择要在其中部署 Azure 认知搜索索引的 **搜索位置** 。 对客户数据的存储位置的限制有助于确定为 Azure 认知搜索选择的位置。
-    * 选择 "搜索" Azure 认知搜索服务的 **定价层** 。 如果 "免费层" 选项不可用 (显示灰显) ，这意味着你已通过订阅部署了免费服务。 在这种情况下，你将需要从 "基本" 层开始。 请参阅 [Azure 认知搜索定价详细信息](https://azure.microsoft.com/pricing/details/search/)。
+    * 选择将部署 QnA Maker 资源的订阅。
+    * 创建新的资源组（推荐），或使用现有的资源组来在其中部署此 QnA Maker 托管（预览版）资源。 QnA Maker 托管（预览版）会创建几个 Azure 资源。 创建用于保存这些资源的资源组时，可以通过资源组名称轻松查找、管理和删除这些资源。
+    * 在“名称”字段中，输入一个唯一的名称来标识此 QnA Maker 托管（预览版）服务。 
+    * 选择要在其中部署 QnA Maker 托管（预览版）服务的位置。 管理 API 和服务终结点将托管在此位置。 
+    * 为 QnA Maker 托管（预览版）服务（免费预览）选择定价层。 查看[有关 SKU 定价的更多详细信息](https://aka.ms/qnamaker-pricing)。
+    * 选择要部署 Azure 认知搜索索引的搜索位置。 对必须存储客户数据的位置进行限制有助于确定为 Azure 认知搜索选择的位置。
+    * 选择 Azure 认知搜索服务的“搜索定价层”。 如果“免费层”选项不可用（以灰色显示），这意味着你已通过订阅部署了免费的服务。 在这种情况下，需要从“基本”层开始操作。 请参阅 [Azure 认知搜索定价详细信](https://azure.microsoft.com/pricing/details/search/)。
 
-1. 验证所有字段后，选择 " **查看 + 创建**"。 此过程可能需要几分钟才能完成。
+1. 验证所有字段后，请选择“评审 + 创建”。 此过程可能需要几分钟才能完成。
 
-1. 部署完成后，你将看到在订阅中创建的以下资源：
+1. 部署完成后，会在订阅中看到创建的以下资源：
 
-    ![资源已创建新 QnA Maker 管理 (预览版) 服务](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+    ![创建了 QnA Maker 托管（预览版）服务的资源](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
 
-    具有 _认知服务_ 类型的资源具有您的 _订阅_ 密钥。
+    具有“认知服务”类型的资源具有订阅密钥 。
 
 ---
 
@@ -101,7 +101,7 @@ ms.locfileid: "102219261"
 
 ### <a name="upgrade-qna-maker-sku"></a>升级 QnA Maker SKU
 
-如果你想要在你的知识库中获得更多问题和答案，请将 QnA Maker 服务定价层升级。
+想要在知识库中获得超出当前层能力范围的更多问题和解答，请升级 QnA Maker 服务定价层。
 
 升级 QnA Maker 管理 SKU：
 
@@ -115,31 +115,31 @@ ms.locfileid: "102219261"
     
 ### <a name="upgrade-app-service"></a>升级应用服务
 
-当您的知识库需要提供客户端应用程序的更多请求时，请升级您的应用服务定价层。
+当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
 
-你可以 [纵向扩展](../../../app-service/manage-scale-up.md) 或横向扩展应用服务。
+你可以[纵向扩展](../../../app-service/manage-scale-up.md)或横向扩展应用服务。
 
-中转到 Azure 门户中的 "应用服务" 资源，并根据需要选择 " **纵向扩展** " 或 " **横向扩展** " 选项。
+转到 Azure 门户中的应用服务资源，并根据需要选择“纵向扩展”或“横向扩展”选项 。
 
-![QnA Maker 应用服务规模](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+![QnA Maker 应用服务缩放](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
 ### <a name="upgrade-the-azure-cognitive-search-service"></a>升级 Azure 认知搜索服务
 
 如果计划拥有许多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
+目前，不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
 
-1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
+1. 在 Azure 门户中创建新的 Azure 搜索资源，然后选择所需的 SKU。
 
     ![QnA Maker Azure 搜索资源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
 1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅[备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
-1. 还原数据后，请切换到新的 Azure 搜索资源，选择 " **密钥**"，并记下 **名称** 和 **管理密钥**：
+1. 还原数据后，转到新的 Azure 搜索资源，选择“密钥”，并记下“名称”和“管理密钥”  ：
 
     ![QnA Maker Azure 搜索密钥](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-1. 若要将新的 Azure 搜索资源链接到 QnA Maker 堆栈，请中转到 QnA Maker 应用服务实例。
+1. 若要将新的 Azure 搜索资源链接到 QnA Maker 堆栈，请转到 QnA Maker 应用服务实例。
 
     ![QnA Maker 应用服务实例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "102219261"
 
 如果未使用 QnA maker 资源，则应删除所有资源。 如果不删除未使用的资源，则在创建免费搜索资源时，知识库将停止工作。
 
-免费搜索资源在90天后将被删除，而无需接收 API 调用。
+免费搜索资源在 90 天后将被删除，而不会收到 API 调用。
     
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 
@@ -163,21 +163,21 @@ ms.locfileid: "102219261"
 
 如果计划拥有许多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
+目前，不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
 
-1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
+1. 在 Azure 门户中创建新的 Azure 搜索资源，然后选择所需的 SKU。
 
     ![QnA Maker Azure 搜索资源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
 1. 将索引从原始 Azure 搜索资源还原到新资源。 请参阅[备份还原示例代码](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
-1. 若要将新的 Azure 搜索资源链接到 QnA Maker 管理的 (预览版) 服务，请参阅以下主题。
+1. 若要将新的 Azure 搜索资源链接到 QnA Maker 托管（预览版）服务，请参阅以下主题。
 
 ### <a name="inactivity-policy-for-free-search-resources"></a>免费搜索资源的非活动策略
 
 如果未使用 QnA maker 资源，则应删除所有资源。 如果不删除未使用的资源，则在创建免费搜索资源时，知识库将停止工作。
 
-免费搜索资源在90天后将被删除，而无需接收 API 调用。
+免费搜索资源在 90 天后将被删除，而不会收到 API 调用。
 
 ---
 
@@ -187,7 +187,7 @@ ms.locfileid: "102219261"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [应用服务](../../../app-service/index.yml) 和 [搜索服务](../../../search/index.yml)的详细信息。
+详细了解[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)。
 
 > [!div class="nextstepaction"]
-> [了解如何与他人创作](../index.yml)
+> [如何与他人一起创作](../index.yml)

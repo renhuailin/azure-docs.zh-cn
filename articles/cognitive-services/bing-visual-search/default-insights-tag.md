@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: b44b77445192aec68e2be803978ab3aad64906d6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96486991"
 ---
 # <a name="default-insights-tag"></a>默认见解标记
@@ -105,7 +105,7 @@ ms.locfileid: "96486991"
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding 见解
 
-PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个对象列表 `Image` ，该 `hostPageUrl` 字段包含包含图像的网页的 URL。 有关示例用法，请参阅 [PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
+PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是一个 `Image` 对象列表，`hostPageUrl` 字段包含包括图像的网页的 URL。 有关示例用法，请参阅 [PagesIncluding 见解示例](./bing-insights-usage.md#pagesincluding-insight-example)。
 
 ```json
       {
@@ -144,7 +144,7 @@ PagesIncluding 见解提供了包含此图像的网页列表。 它实际上是�
 
 ## <a name="shoppingsources-insight"></a>ShoppingSources 见解
 
-ShoppingSources 见解提供了一个网站列表，用户可以在这些网站中购买图像中显示的商品。 产品/服务列表包括用户可在其中购买项目的网页的 URL、商品的价格以及评级或查看详细信息。 有关示例用法，请参阅 [ShoppingSources 示例](./bing-insights-usage.md#shoppingsources-insight-example)。
+ShoppingSources 见解提供了一个网站列表，用户可以在这些网站中购买图像中显示的商品。 产品/服务列表包括用户可以在其中购买商品的网页的 URL、商品的价格以及评级或评论详细信息。 有关示例用法，请参阅 [ShoppingSources 示例](./bing-insights-usage.md#shoppingsources-insight-example)。
 
 ```json
       {
@@ -173,7 +173,7 @@ ShoppingSources 见解提供了一个网站列表，用户可以在这些网站�
 
 ## <a name="moresizes-insight"></a>MoreSizes 见解
 
-MoreSizes 见解可识别 Internet 上的 Bing)  (大或更小的图像大小， (参见 `availableSizesCount` 现场) ：
+MoreSizes 见解标识必应在 Internet 上找到的图像的大小（更大或较小）的数目（请参阅 `availableSizesCount` 字段）：
 
 ```json
       {
@@ -248,7 +248,7 @@ VisualSearch 见解提供了与原始图像在视觉上相似的图像列表（�
 
 ## <a name="recipes-insight"></a>Recipes 见解
 
-Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 有关示例用法，请参阅 [食谱见解示例](./bing-insights-usage.md#recipes-insight-example)。
+Recipes 见解提供了一个网页列表，这些网页中包含用于制作图像中显示的食物的配方。 有关示例用法，请参阅 [Recipes 见解示例](./bing-insights-usage.md#recipes-insight-example)。
 
 ```json
       {
@@ -283,7 +283,7 @@ Recipes 见解提供了一个网页列表，这些网页中包含用于制作图
 
 ## <a name="imagebyid-insight"></a>ImageById 见解
 
-ImageById 见解提供一个 `Image` 图像的对象，该对象是你请求以下内容的见解：
+ImageById 见解提供了你请求其见解的图像的 `Image` 对象：
 
 ```json
       {
@@ -405,7 +405,7 @@ RelatedSearches 见解提供了其他人（基于其他用户的搜索词）进�
 
 ## <a name="documentlevelsuggestions-insight"></a>DocumentLevelSuggestions 见解
 
-DocumentLevelSuggestions 见解提供基于图像内容的建议搜索词列表：
+DocumentLevelSuggestions 见解提供了基于图像内容建议的搜索词列表：
 
 ```json
       {
@@ -428,7 +428,7 @@ DocumentLevelSuggestions 见解提供基于图像内容的建议搜索词列表�
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 [bing insights 使用情况示例](bing-insights-usage.md) ，了解必应如何显示视觉对象见解。
+请参阅[必应见解用法示例](bing-insights-usage.md)了解必应可如何显示视觉见解。
 
 若要快速了解如何使用第一个请求，请参阅快速入门：
 

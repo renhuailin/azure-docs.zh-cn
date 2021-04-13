@@ -1,15 +1,15 @@
 ---
 title: Azure 安全基准 v1 的法规合规性详细信息
 description: Azure 安全基准 v1 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 03/05/2021
+ms.date: 03/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: eff4c214622945063697274c7ed0324a1c43a5c8
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: cd63c657821fe15a8dade3535db5612a219a8a1c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437376"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090012"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Azure 安全基准 v1 法规合规性内置计划的详细信息
 
@@ -62,7 +62,7 @@ ms.locfileid: "102437376"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应启用网络观察程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 |auditIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+|[应启用网络观察程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
 ### <a name="protect-critical-web-applications"></a>保护关键的 Web 应用程序
 
@@ -95,7 +95,7 @@ ms.locfileid: "102437376"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应启用网络观察程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 |auditIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+|[应启用网络观察程序](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 使用方案级别监视可以诊断端到端网络级别视图的问题。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>使用自动化工具监视网络资源配置并检测更改
 
@@ -165,7 +165,7 @@ ms.locfileid: "102437376"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[SQL Server 应配置 90 天或更长时间的审核保留期](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |SQL Server 应配置有 90 天或更长时间的审核保留期。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|[对存储帐户目标进行审核的 SQL Server 应配置至少 90 天的保留期](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |为便于调查事件，建议将 SQL Server 审核数据在存储帐户目标中的数据保留期设置为至少 90 天。 确认你遵守所运营区域的必要保留规则。 为了符合监管标准，有时需要这样做。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>启用针对异常活动的警报
 
@@ -332,7 +332,7 @@ ms.locfileid: "102437376"
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[应在虚拟机规模集上安装系统更新](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc3f317a7-a95c-4547-b7e7-11017ebdf2fe) |审核是否缺少系统安全更新和关键更新，为了确保 Windows 和 Linux 虚拟机规模集的安全，应安装这些更新。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingSystemUpdates_Audit.json) |
-|[应在计算机上安装系统更新](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86b3d65f-7626-441e-b690-81a8b71cff60) |建议通过 Azure 安全中心监视服务器上缺失的安全系统更新 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_MissingSystemUpdates_Audit.json) |
+|[应在计算机上安装系统更新](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86b3d65f-7626-441e-b690-81a8b71cff60) |建议通过 Azure 安全中心监视服务器上缺失的安全系统更新 |AuditIfNotExists、Disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_MissingSystemUpdates_Audit.json) |
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>部署第三方软件修补程序自动化管理解决方案
 
@@ -345,9 +345,9 @@ ms.locfileid: "102437376"
 |[确保用作 Web 应用一部分的“Java 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |我们定期发布适用于 Java 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 Java 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
 |[确保用作 API 应用一部分的“PHP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |我们定期发布适用于 PHP 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 API 应用的最新 PHP 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
 |[确保用作 WEB 应用一部分的“PHP 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |我们定期发布适用于 PHP 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 PHP 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
-|[确保用作 API 应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 API 应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[确保用作函数应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用函数应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[确保用作 Web 应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[确保用作 API 应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 API 应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[确保用作函数应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用函数应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[确保用作 Web 应用一部分的“Python 版本”是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |我们定期发布适用于 Python 软件的更高版本来解决安全漏洞或包含更多功能。 建议使用 Web 应用的最新 Python 版本，以充分利用最新版本的安全修复（如果有）和/或新功能。 目前，此策略仅适用于 Linux Web 应用。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 |[Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |将 Kubernetes 服务群集升级到更高 Kubernetes 版本，以抵御当前 Kubernetes 版本中的已知漏洞。 Kubernetes 版本 1.11.9+、1.12.7+、1.13.5+ 和 1.14.0+ 中已修补漏洞 CVE-2019-9946 |Audit、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>使用风险评分流程确定所发现漏洞的修正优先级

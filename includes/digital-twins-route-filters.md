@@ -1,51 +1,51 @@
 ---
 author: baanders
-description: Azure 数字孪生路由筛选器选项的包含文件
+description: Azure 数字孪生路由筛选器选项的 include 文件
 ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
 ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98859706"
 ---
 | 筛选器名称 | 说明 | 筛选器文本架构 | 支持的值 | 
 | --- | --- | --- | --- |
-| True/False | 允许创建不带筛选的路由，或禁用路由，以便不发送事件 | `<true/false>` | `true` = 启用无筛选的路由 <br> `false` = 已禁用路由 |
-| 类型 | 通过数字克隆实例流动的[事件类型](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 下面是可能的事件类型值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
-| Source | Azure 数字孪生实例的名称 | `source = '<hostname>'`| 下面是可能的主机名值： <br> **对于通知**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **对于遥测**： `<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
-| 主题 | 上述事件源上下文中事件的说明 | `subject = '<subject>'` | 下面是可能的主题值： <br>**对于通知**：使用者为 `<twinid>` <br> 或主题的 URI 格式，由多个部件或 Id 唯一标识：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**：主体是组件路径 (如果遥测数据是从克隆的组件发出的) （如） `comp1.comp2` 。 如果未从组件发出遥测数据，则其 "使用者" 字段为空。 |
-| 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是克隆或发出遥测数据的组件的模型 ID。 例如： `dtmi:example:com:floor4;2` <br>**(创建/删除) 的通知**：在的通知正文中可以访问数据架构 `$body.$metadata.$model` 。 <br>**(更新) 的通知**：可在通知正文中访问数据架构，网址为： `$body.modelId`|
+| True/False | 允许创建无筛选的路由，或禁用路由，这样就不会发送事件 | `<true/false>` | `true` = 启用无筛选的路由 <br> `false` = 禁用路由 |
+| 类型 | 流经数字孪生体实例的[事件类型](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 以下是可能的事件类型值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| 源 | Azure 数字孪生实例的名称 | `source = '<hostname>'`| 以下是可能的主机名值： <br> **用于通知**：`<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net` <br> **用于遥测**：`<yourDigitalTwinInstance>.api.<yourRegion>.digitaltwins.azure.net/<twinId>`|
+| Subject | 上述事件源上下文中事件的说明 | `subject = '<subject>'` | 以下是可能的使用者值： <br>**对于通知**：使用者为 `<twinid>` <br> 或使用者的 URI 格式（由多个部件或 ID 唯一标识）：<br>`<twinid>/relationships/<relationshipid>`<br> **对于遥测**：使用者是组件路径（如果遥测是从一个孪生体组件发出的），例如 `comp1.comp2`。 如果遥测不是从组件发出的，则其使用者字段为空。 |
+| 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是孪生体或发出遥测的组件的模型 ID。 例如： `dtmi:example:com:floor4;2` <br>**对于通知（创建/删除）** ：可以通过 `$body.$metadata.$model` 访问通知正文中的数据架构。 <br>**对于通知（更新）** ：可以通过 `$body.modelId` 访问通知正文中的数据架构|
 | 内容类型 | 数据值的内容类型 | `datacontenttype = '<contentType>'` | 内容类型为 `application/json` |
-| 规范版本 | 你使用的事件架构的版本 | `specversion = '<version>'` | 版本必须为 `1.0` 。 这表示 CloudEvents 架构版本1。0 |
-| 通知正文 | 引用通知字段中的任何属性 `data` | `$body.<property>` | 有关通知的示例，请参阅 [*操作方法：了解事件数据*](../articles/digital-twins/how-to-interpret-event-data.md) 。 可以使用引用此字段中的任何属性 `data``$body`
+| 规范版本 | 所使用的事件架构的版本 | `specversion = '<version>'` | 版本必须为 `1.0`。 这指示 CloudEvents 架构版本 1.0 |
+| 通知正文 | 引用通知的 `data` 字段中的任何属性 | `$body.<property>` | 有关通知的示例，请参阅[如何：了解事件数据](../articles/digital-twins/how-to-interpret-event-data.md)。 `data` 字段中的任何属性都可以使用 `$body` 进行引用
 
-支持将以下数据类型作为对上述数据的引用返回的值：
+以下数据类型可以用作对上述数据进行引用后返回的值：
 
 | 数据类型 | 示例 |
 |-|-|-|
 |**字符串**| `STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')` <br> `CONTAINS(subject, '<twinID>')`|
-|**Integer**|`$body.errorCode > 200`|
+|**整数**|`$body.errorCode > 200`|
 |**双精度**|`$body.temperature <= 5.5`|
-|**型**|`$body.poweredOn = true`|
+|**Bool**|`$body.poweredOn = true`|
 |**Null**|`$body.prop != null`|
 
 定义路由筛选器时支持以下运算符：
 
 |系列|运算符|示例|
 |-|-|-|
-|逻辑|AND、OR ( ) |`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
-|比较|<、<=、>、>=、=、！ =|`$body.temperature <= 5.5`
+|逻辑|AND、OR、( )|`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
+|比较|<、<=、>、>=、=、!=|`$body.temperature <= 5.5`
 
 定义路由筛选器时支持以下函数：
 
 |函数|说明|示例|
 |--|--|--|
-|STARTS_WITH (x、y) |如果值以字符串开头，则返回 true `x` `y` 。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
-|ENDS_WITH (x、y)  | 如果值以字符串结尾，则返回 true `x` `y` 。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|
-|CONTAINS(x,y)| 如果值包含字符串，则返回 true `x` `y` 。|`CONTAINS(subject, '<twinID>')`|
+|STARTS_WITH(x,y)|如果值 `x` 以字符串 `y` 开头，则返回 true。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
+|ENDS_WITH(x,y) | 如果值 `x` 以字符串 `y` 结尾，则返回 true。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|
+|CONTAINS(x,y)| 如果值 `x` 包含字符串 `y`，则返回 true。|`CONTAINS(subject, '<twinID>')`|
 
-实现或更新筛选器时，更改可能需要几分钟才会反映在数据管道中。
+实现或更新筛选器时，更改可能需要几分钟时间才能在数据管道中反映出来。

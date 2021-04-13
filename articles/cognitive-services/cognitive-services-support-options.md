@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736842"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720179"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务的支持和帮助选项
 
@@ -29,6 +29,7 @@ ms.locfileid: "101736842"
 
 * [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [适用于美国政府的 Azure 门户](https://portal.azure.us)
+
 
 ## <a name="post-a-question-on-microsoft-qa"></a>在 Microsoft 问答上发布问题
 
@@ -63,7 +64,7 @@ ms.locfileid: "101736842"
 
 * [异常检测器](/answers/topics/azure-anomaly-detector.html) 
 * [内容审查器](/answers/topics/azure-content-moderator.html)
-* [指标顾问 (预览) ]()
+* [指标顾问（预览版）]()
 * [个性化体验创建服务](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
@@ -102,7 +103,7 @@ ms.locfileid: "101736842"
 
 * [异常检测器](https://stackoverflow.com/search?q=azure+anomaly+detector) 
 * [内容审查器](https://stackoverflow.com/search?q=azure+content+moderator)
-* [指标顾问 (预览) ](https://stackoverflow.com/search?q=azure+metrics+advisor)
+* [指标顾问（预览版）](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [个性化体验创建服务](https://stackoverflow.com/search?q=azure+personalizer)
 
 ## <a name="submit-feedback-on-user-voice"></a>在 User Voice 上提交反馈
@@ -139,7 +140,7 @@ ms.locfileid: "101736842"
 
 * [异常检测器](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746) 
 * [内容审查器](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
-* [指标顾问 (预览) ](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
+* [指标顾问（预览版）](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 * [个性化体验创建服务](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395746)
 
 ## <a name="stay-informed"></a>随时获取最新信息
@@ -147,9 +148,9 @@ ms.locfileid: "101736842"
 在 Azure 博客中随时了解新版本的功能或新闻，这可以帮助你了解编程错误、服务 bug 与认知服务中尚未提供的功能之间的差异。
 
 * 在 [Azure 更新](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services)中详细了解产品更新、路线图和公告。
-* 查看最近[在文档中的新内容中](whats-new-docs.md)添加或更新了哪些认知服务文章？
+* 查看 [Docs 中的新增内容](whats-new-docs.md)中最近添加或更新的认知服务文章。
 * 有关认知服务的新闻在 [Azure 博客](https://azure.microsoft.com/blog/topics/cognitive-services/)中共享。
-* 在有关认知服务的[Reddit 上加入会话](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)。
+* [加入 Reddit 上有关认知服务的对话](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)。
 
 ## <a name="next-steps"></a>后续步骤
 

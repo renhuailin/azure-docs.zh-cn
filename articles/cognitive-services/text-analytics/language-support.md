@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 9e257209060396fbf45a4a24c38bc6950acb5168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736604"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387020"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -28,6 +28,7 @@ ms.locfileid: "101736604"
 | 英语               |     `en`      |     ✓      |         2019-10-01         |                    |
 | 法语                |     `fr`      |     ✓      |         2019-10-01         |                    |
 | 德语                |     `de`      |     ✓      |         2019-10-01         |                    |
+| Hindi                 |    `hi`       |     ✓      |         2020-04-01         |                    |
 | 意大利语               |     `it`      |     ✓      |         2019-10-01         |                    |
 | 日语              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | 韩语                |     `ko`      |    ✓      |         2019-10-01         |                    |
@@ -47,7 +48,7 @@ ms.locfileid: "101736604"
 #### <a name="named-entity-recognition-ner"></a>[命名实体识别 (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * 对于标记为 * 的语言，仅返回 "Person"、"Location" 和 "组织" 实体。
+> * 对于标记为 * 的语言，仅返回“Person”、“Location”和“Organization”实体。
 
 | 语言               | 语言代码 | v3 支持 | 从 v3 模型版本开始： |       注释        |
 |:-----------------------|:-------------:|:----------:|:-------------------------------:|:------------------:|
@@ -144,7 +145,7 @@ ms.locfileid: "101736604"
 |中文|`zh`|✓|    |
 |简体中文|`zh_chs`|✓|    |
 |中文(繁体)|`zh_cht`|✓|    |
-|科西嘉语|`co`|✓|2021-01-05|
+|柯西嘉语|`co`|✓|2021-01-05|
 |克罗地亚语|`hr`|✓|    |
 |捷克语|`cs`|✓|    |
 |丹麦语|`da`|✓|    |
@@ -179,7 +180,7 @@ ms.locfileid: "101736604"
 |卡纳达语|`kn`|✓|    |
 |哈萨克语|`kk`|✓|2020-09-01|
 |卢旺达语|`rw`|✓|2021-01-05|
-|吉尔吉斯|`ky`|✓|2021-01-05|
+|吉尔吉斯语|`ky`|✓|2021-01-05|
 |韩语|`ko`|✓|    |
 |库尔德语|`ku`|✓|    |
 |老挝语|`lo`|✓|    |
@@ -199,7 +200,7 @@ ms.locfileid: "101736604"
 |挪威语|`no`|✓|    |
 |挪威语（尼诺斯克语）|`nn`|✓|    |
 |奥里雅语|`or`|✓|    |
-|Pasht|`ps`|✓|    |
+|普什图语|`ps`|✓|    |
 |波斯语|`fa`|✓|    |
 |波兰语|`pl`|✓|    |
 |葡萄牙语|`pt`|✓|    |

@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98569838"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>将代码从 REST API 的 v2.0 迁移到 v3.0
@@ -24,49 +24,49 @@ ms.locfileid: "98569838"
 
 ## <a name="forward-compatibility"></a>向前兼容性
 
-还可以在位于同一标识下的 v3 API 中找到 v2 中的所有实体。 如果结果的架构已更改（例如听录），则 API 的 v3 版本中 GET 操作的结果将使用 v3 架构。 API v2 版本中 GET 操作的结果使用相同的 v2 架构。 V3 上新创建的实体 **不**   能用于来自 v2 api 的响应。 
+在 v3 API 中的相同标识下也可以找到来自 v2 的所有实体。 如果结果的架构已更改（例如听录），则 API 的 v3 版本中 GET 操作的结果将使用 v3 架构。 API v2 版本中 GET 操作的结果使用相同的 v2 架构。 在 v2 API 的响应中无法 ****  使用 v3 上新创建的实体。 
 
 ## <a name="migration-steps"></a>迁移步骤
 
-这是你在准备迁移时需要注意的项目的摘要列表。 详细信息可在单独的链接中找到。 根据当前使用的 API，此处未列出的所有步骤可能适用。 只有少量更改需要在调用代码中进行重大更改。 大多数更改只需要更改项目名称。 
+准备迁移时需要注意的项目摘要列表如下。 详细信息可在单独的链接中找到。 根据当前使用的 API，此处列出的所有步骤并非都适用。 只有少量更改需要在调用代码中进行重大更改。 大多数更改只需要更改项目名称。 
 
-常规更改： 
+一般更改： 
 
 1. [更改主机名](#host-name-changes)
 
-1. [在客户端代码中将属性 id 重命名为 self](#identity-of-an-entity) 
+1. [在客户端代码中将属性 ID 重命名为 self](#identity-of-an-entity) 
 
-1. [更改代码以循环访问实体集合](#working-with-collections-of-entities)
+1. [更改代码以便对实体集合进行迭代](#working-with-collections-of-entities)
 
-1. [将属性名称重命名为客户端代码中的 displayName](#name-of-an-entity)
+1. [在客户端代码中将属性名称重命名为 displayName](#name-of-an-entity)
 
-1. [调整所引用实体的元数据检索](#accessing-referenced-entities)
+1. [调整引用实体的元数据检索方式](#accessing-referenced-entities)
 
-1. 如果使用批处理脚本： 
+1. 如果使用批量听录： 
 
-    * [调整用于创建 batch 转录的代码](#creating-transcriptions) 
+    * [调整用于创建批量听录的代码](#creating-transcriptions) 
 
-    * [为新的脚本结果架构调整代码](#format-of-v3-transcription-results)
+    * [使代码适应新的听录结果架构](#format-of-v3-transcription-results)
 
-    * [调整检索结果的方式的代码](#getting-the-content-of-entities-and-the-results)
+    * [调整结果检索方式的代码](#getting-the-content-of-entities-and-the-results)
 
-1. 如果使用自定义模型训练/测试 Api： 
+1. 如果使用自定义模型训练/测试 API： 
 
-    * [将修改应用于自定义模型定型](#customizing-models)
+    * [将修改应用于自定义模型训练](#customizing-models)
 
     * [更改检索基本模型和自定义模型的方式](#retrieving-base-and-custom-models)
 
-    * [将路径段 accuracytests 重命名为你的客户端代码中的评估](#accuracy-tests)
+    * [在客户端代码中将路径段 accuracytests 重命名为 evaluations](#accuracy-tests)
 
-1. 如果使用终结点 Api：
+1. 如果使用终结点 API：
 
     * [更改检索终结点日志的方式](#retrieving-endpoint-logs)
 
-1. 其他细微变化： 
+1. 其他细微更改： 
 
-    * [在 POST 请求中将所有自定义属性作为 customProperties 而不是属性传递](#using-custom-properties)
+    * [将所有自定义属性作为 customProperties（而不是 POST 请求中的属性）传送](#using-custom-properties)
 
-    * [从响应标头位置而不是操作位置读取位置](#response-headers)
+    * [从响应头 Location（而不是 Operation-Location）读取位置](#response-headers)
 
 ## <a name="breaking-changes"></a>中断性变更
 

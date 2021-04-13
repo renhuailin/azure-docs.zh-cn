@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98946169"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
@@ -111,8 +111,8 @@ LUIS 目前有 2 种类型的终结点：
 
 ## <a name="continuous-integration-tools"></a>持续集成工具
 
-* GitHub： (预览版) [使用 DevOps 实践开发 LUIS 应用](https://github.com/Azure-Samples/LUIS-DevOps-Template)
-* GitHub： [NLU。DevOps](https://github.com/microsoft/NLU.DevOps) 支持持续集成和部署 NLU 服务。
+* GitHub：（预览版）[使用 DevOps 实践开发 LUIS 应用](https://github.com/Azure-Samples/LUIS-DevOps-Template)
+* GitHub：[NLU.DevOps](https://github.com/microsoft/NLU.DevOps) - 支持持续集成和部署 NLU 服务的工具。
 
 ## <a name="bot-framework-tools"></a>Bot Framework 工具
 

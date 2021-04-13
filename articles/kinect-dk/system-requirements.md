@@ -1,22 +1,22 @@
 ---
 title: Azure Kinect 传感器 SDK 系统要求
 description: 了解 Windows 和 Linux 上 Azure Kinect 传感器 SDK 的系统需求。
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: azure, kinect, 系统要求, CPU, GPU, USB, 设置, 安装, 最低, 要求
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79366675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656968"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect 传感器 SDK 系统要求
 
@@ -24,8 +24,8 @@ ms.locfileid: "79366675"
 
 ## <a name="supported-operating-systems-and-architectures"></a>支持的操作系统和体系结构
 
-- Windows 10 2018 年4月 (版本1803，操作系统版本 17134) 版本 (x64) 或更高版本
-- Linux Ubuntu 18.04 (x64) ，其中包含使用 OpenGLv 4.4 或更高版本的 GPU 驱动程序
+- Windows 10 的 2018 年 4 月（版本 1803，操作系统内部版本 17134）发行版 (x64) 或更高版本
+- Linux Ubuntu 18.04 (x64)，其中包含使用 OpenGLv 4.4 或更高版本的 GPU 驱动程序
 
 传感器 SDK 适用于本机 C/C++ Windows 应用程序的 Windows API (Win32)。 该 SDK 目前不适用于 UWP 应用程序。 S 模式的 Windows 10 不支持 Azure Kinect DK。
 
@@ -37,7 +37,7 @@ ms.locfileid: "79366675"
 
 电脑主机的硬件要求取决于在主机电脑上执行的应用程序/算法/传感器帧速率/分辨率。 对 Windows 建议的最低传感器 SDK 配置为：
 
-- 第七个 Gen Intel &reg; CoreTM I3 处理器 (双核 2.4 GHz，含 HD620 GPU 或更快) 
+- 第七代 Intel&reg; CoreTM i3 处理器（双核 2.4 GHz，搭载 HD620 GPU 或更快的 GPU）
 - 4 GB 内存
 - 专用 USB3 端口
 - 支持 OpenGL 4.4 或 DirectX 11.0 的图形驱动程序
@@ -50,9 +50,9 @@ ms.locfileid: "79366675"
 
 人体跟踪电脑主机的要求比一般电脑主机的要求更高。 对 Windows 建议的最低人体跟踪 SDK 配置为：
 
-- 第七个 Gen Intel &reg; CoreTM I5 处理器 (四核 2.4 GHz 或更快的) 
+- 第七代 Intel&reg; CoreTM i5 处理器（四核 2.4 GHz 或更快）
 - 4 GB 内存
-- NVIDIA GEFORCE GTX 1070 或更佳
+- NVIDIA GEFORCE GTX 1050 或同等规格
 - 专用 USB3 端口
 
 建议的最低配置假定 K4A_DEPTH_MODE_NFOV_UNBINNED 深度模式以 30fps 的速度跟踪 5 个人。 根据具体的用例，低端或早期的 CPU 和 NVIDIA GPU 可能也适用。

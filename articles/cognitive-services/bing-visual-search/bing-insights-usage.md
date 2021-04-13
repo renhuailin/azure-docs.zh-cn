@@ -1,7 +1,7 @@
 ---
 title: 必应见解的示例 - 必应视觉搜索
 titleSuffix: Azure Cognitive Services
-description: 本文包含必应视觉搜索如何在 Bing.com 上使用和显示图像见解的示例。
+description: 本文包含有关必应视觉搜索可能如何使用以及如何在 Bing.com 上显示图像见解的示例。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: e0a3bdc7e68301c067b7e1ca80a3e708522e0df1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96493349"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
@@ -28,29 +28,29 @@ ms.locfileid: "96493349"
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding 见解示例
 
-下面显示了指向第一个网页的链接，并使用户可以展开和折叠包含该图像的其他网页的列表：
+下面显示指向第一个网页的链接，并允许用户展开和折叠包含图像的其他网页列表：
 
 ![包含扩展页面](./media/pages-including.PNG)
 
 ## <a name="shoppingsources-insight-example"></a>ShoppingSources 见解示例
 
-下面显示了必应如何显示图像中显示的产品的购物源：
+下面介绍了必应如何显示图像中产品的购物源：
 
 ![购物源](./media/shopping-sources.PNG)
 
 ## <a name="visualsearch-insight-example"></a>VisualSearch 见解示例
 
-下面显示了必应如何显示外观相似的图像 (参阅示例) 中的 **相关图像** ：
+下面介绍了必应如何显示视觉上相似的图像（请参阅示例中的相关图像）：
 
 ![视觉上相似的图像](./media/similar-images.PNG)
 
 ## <a name="recipes-insight-example"></a>Recipes 见解示例
 
-以下介绍了必应如何为图像中的食物显示食谱。 该示例允许用户了解食谱可用：
+以下介绍了必应如何为图像中的食物显示食谱。 此示例使用户可以知道有可用的食谱：
 
 ![包含食谱和页面](./media/recipes-pages-including.PNG)
 
- 并提供在用户展开列表时指向食谱的链接：
+ 当用户展开列表时，提供指向食谱的链接：
 
 ![包含展开的食谱页面](./media/expanded-recipes-pages-including.PNG)
 
@@ -62,7 +62,7 @@ ms.locfileid: "96493349"
 
 ## <a name="entity-insight-example"></a>Entity 见解示例
 
-以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接，则会将该用户转到实体的 Bing.com 搜索结果页：
+以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接，将针对实体转到 Bing.com 搜索结果页面：
 
 ![图像中显示的实体](./media/entity.PNG)
 
@@ -74,13 +74,13 @@ ms.locfileid: "96493349"
 
 ## <a name="bounding-boxes-and-hot-spots"></a>边框和热点
 
-非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果图像是一个高品质的图像，则结果可能会包含图像中显示的附件)  (和边界框，如钱包、饰品、scarfs 等。 下面的示例演示了图像中显示的太阳镜的热点矩形：
+非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果图像是一个高级时装图像，结果可能包含图像中配饰（如钱包、珠宝、围巾等）的标记（和边界框）。 下面的示例显示图像中太阳镜的热点矩形：
 
 ![边框和热点](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始处理第一个请求，请参阅快速入门：
+若要了解如何使用第一个请求，请参阅快速入门：
 
 * [C#](quickstarts/csharp.md)
 

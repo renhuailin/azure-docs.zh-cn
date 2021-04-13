@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002254"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>文本转语音（子图：charts/textToSpeech）
@@ -23,7 +23,7 @@ ms.locfileid: "96002254"
 
 |参数|说明|默认|
 | -- | -- | -- |
-| `enabled` | **文本到语音** 服务是否已启用。 | `false` |
+| `enabled` | 是否启用了文本转语音服务。 | `false` |
 | `numberOfConcurrentRequest` | **文本转语音** 服务的并发请求数。 此图表基于该值自动计算 CPU 和内存资源。 | `2` |
 | `optimizeForTurboMode`| 服务是否需要针对通过文本文件输入的文本进行优化。 如果为 `true`，此图表将为服务分配更多的 CPU 资源。 | `false` |
 | `image.registry`| **文本转语音** docker 映像注册表。 | `containerpreview.azurecr.io` |

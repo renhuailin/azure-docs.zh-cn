@@ -1,58 +1,58 @@
 ---
-title: 管理模型和学习设置-Personalizer
-description: 可以在自己的源代码管理系统中导出机器学习的模型和学习设置，以便进行备份。
+title: 管理模型和学习设置 - 个性化体验创建服务
+description: 机器学习模型和学习设置可以导出到自己的源代码管理系统中进行备份。
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97797241"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和学习设置
 
-可以在自己的源代码管理系统中导出机器学习的模型和学习设置，以便进行备份。
+机器学习模型和学习设置可以导出到自己的源代码管理系统中进行备份。
 
 ## <a name="export-the-personalizer-model"></a>导出个性化体验创建服务模型
 
-从 "资源管理" 的 " **模型和学习设置**" 部分中，查看 "模型创建" 和 "上次更新日期" 并导出当前模型。 可以使用 Azure 门户或个性化体验创建服务 API 导出模型文件以进行存档。
+在“模型和学习设置”的“资源管理”部分，查看模型创建日期和上次更新日期，然后导出当前模型。 可以使用 Azure 门户或个性化体验创建服务 API 导出模型文件以进行存档。
 
 ![导出当前个性化体验创建服务模型](media/settings/export-current-personalizer-model.png)
 
 ## <a name="clear-data-for-your-learning-loop"></a>清除学习循环的数据
 
-1. 在 Azure 门户的 Personalizer 资源的 " **模型和学习设置** " 页上，选择 " **清除数据**"。
-1. 为了清除所有数据，并将学习循环重置为原始状态，请选择 "所有3个复选框"。
+1. 在 Azure 门户中，找到你的个性化体验创建服务资源，在“模型和学习设置”页面上选择“清除数据”。
+1. 为了清除所有数据，并将学习循环重置为原始状态，请选择所有 3 个复选框。
 
-    ![在 Azure 门户中，清除 Personalizer 资源中的数据。](./media/settings/clear-data-from-personalizer-resource.png)
+    ![在 Azure 门户中，清除个性化体验创建服务资源中的数据。](./media/settings/clear-data-from-personalizer-resource.png)
 
     |值|目的|
     |--|--|
-    |记录个性化和奖励数据。|此日志记录数据用于脱机评估。 如果要重置资源，请清除数据。|
-    |重置 Personalizer 模型。|此模型将在每次重新训练时进行更改。 此训练频率在 **配置** 页上的 "**上载模型频率**" 中指定。 |
-    |将学习策略设置为默认值。|如果在脱机评估过程中更改了学习策略，则会将其重置为原始学习策略。|
+    |已记录的个性化设置和奖励数据。|这些日志记录数据用于脱机评估。 如果要重置资源，可清除数据。|
+    |重置个性化体验创建服务模型。|此模型在每次重新训练时都会更改。 训练频率在“配置”页上的“上传模型频率”中指定。 |
+    |将学习策略设置为默认值。|如果在脱机评估过程中更改了学习策略，则此设置会将其重置为原始学习策略。|
 
-1. 选择 " **清除所选数据** " 以开始清除过程。 状态在 Azure 通知的右上方导航中报告。
+1. 选择“清除所选数据”以开始清除过程。 右上方导航的 Azure 通知中会报告状态。
 
-## <a name="import-a-new-learning-policy"></a>导入新的学习策略
+## <a name="import-a-new-learning-policy"></a>导入新学习策略
 
-[学习策略](concept-active-learning.md#understand-learning-policy-settings)设置确定模型定型的 _超参数_。 执行 [脱机评估](how-to-offline-evaluation.md) 以查找新的学习策略。
+[学习策略](concept-active-learning.md#understand-learning-policy-settings)设置决定模型训练的超参数。 执行[脱机评估](how-to-offline-evaluation.md)可查找新的学习策略。
 
-1. 打开 [Azure 门户](https://portal.azure.com)，然后选择 Personalizer 资源。
-1. 选择 "**资源管理**" 部分中的 "**模型和学习设置**"。
-1. 对于 " **导入学习设置** "，选择你用上面指定的 JSON 格式创建的文件，然后选择 " **上传** " 按钮。
+1. 打开 [Azure 门户](https://portal.azure.com)，选择个性化体验创建服务资源。
+1. 在“资源管理”部分选择“模型和学习设置” 。
+1. 要导入学习设置，请选择你用上面指定的 JSON 格式创建的文件，然后选择“上传”按钮。
 
     等待学习策略上传成功的通知。
 
 ## <a name="export-a-learning-policy"></a>导出学习策略
 
-1. 打开 [Azure 门户](https://portal.azure.com)，然后选择 Personalizer 资源。
-1. 选择 "**资源管理**" 部分中的 "**模型和学习设置**"。
-1. 对于 " **导入学习设置** "，请选择 " **导出学习设置** " 按钮。 这会将该 `json` 文件保存到本地计算机。
+1. 打开 [Azure 门户](https://portal.azure.com)，选择个性化体验创建服务资源。
+1. 在“资源管理”部分选择“模型和学习设置” 。
+1. 要导出学习策略，请选择“导出学习设置” 。 `json` 文件将会保存到本地计算机中。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用脱机评估来分析学习循环](how-to-offline-evaluation.md)
+[使用脱机评估分析学习循环](how-to-offline-evaluation.md)

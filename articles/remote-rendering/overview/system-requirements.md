@@ -1,69 +1,69 @@
 ---
-title: 系统需求
-description: 列出 Azure 远程呈现的系统要求
+title: 系统要求
+description: 列出 Azure 远程渲染的系统要求
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
 ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705154"
 ---
-# <a name="system-requirements"></a>系统需求
+# <a name="system-requirements"></a>系统要求
 
-本章列出了使用 *Azure 远程渲染* (ARR) 的最低系统要求。
+本章列出了使用 Azure 远程渲染 (ARR) 的最低系统要求。
 
-## <a name="development-pc"></a>开发 PC
+## <a name="development-pc"></a>开发电脑
 
-* Windows 10 版本1903或更高版本。
-* 最新图形驱动程序。
-* 可选：如果你想要使用远程呈现内容的本地预览 (例如，在 Unity) 中，则可以选择 " [H265](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)"。
+* Windows 10 版本 1903 或更高版本。
+* 最新的图形驱动程序。
+* 可选：[H265 硬件视频解码器](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)（如果需要使用远程渲染内容的本地预览（例如在 Unity 中这样做））。
 
 > [!IMPORTANT]
-> Windows 更新不会始终提供最新的 GPU 驱动程序，请查看你的 GPU 制造商的网站以了解最新的驱动程序：
+> Windows 更新不会始终提供最新的 GPU 驱动程序，请查看 GPU 制造商网站以获取最新驱动程序：
 >
 > * [AMD 驱动程序](https://www.amd.com/en/support)
 > * [Intel 驱动程序](https://www.intel.com/content/www/us/en/support/detect.html)
 > * [NVIDIA 驱动程序](https://www.nvidia.com/Download/index.aspx)
 
-下表列出了哪些 Gpu 支持 H265 硬件视频解码。
+下表列出了哪些 GPU 支持 H265 硬件视频解码。
 
 | GPU 制造商 | 支持的模型 |
 |-----------|:-----------|
-| NVIDIA | 请查看本页 [底部](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)的 **NVDEC 支持矩阵**。 你的 GPU 在 **4:2:0 8 位** 的列中需要 YES。 |
-| AMD | 具有最低版本6的 AMD [统一视频解码器](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6)的 gpu。 |
-| Intel | Skylake 和更高版本的 Cpu |
+| NVIDIA | 请查看[此页底部](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)的“NVDEC 支持矩阵”。 你的 GPU 要求在“H.265 4:2:0 8 位”列中为“YES”。 |
+| AMD | 具有 AMD 的[统一视频解码器](https://en.wikipedia.org/wiki/Unified_Video_Decoder#UVD_6)（版本最低为 6）的 GPU。 |
+| Intel | Skylake 及更高版本的 CPU |
 
-尽管可能安装了正确的 H265 编解码器，但编解码器 Dll 上的安全属性可能会导致编解码器初始化失败。 [故障排除指南](../resources/troubleshoot.md#h265-codec-not-available)介绍了如何解决此问题的步骤。 仅当在桌面应用程序中使用该服务时，才会出现 DLL 问题，例如，在 Unity 中使用。
+尽管可能已经安装了正确的 H265 编解码器，但编解码器 DLL 上的安全属性可能还是会导致编解码器初始化失败。 [故障排除指南](../resources/troubleshoot.md#h265-codec-not-available)介绍了解决此问题的步骤。 只有在桌面应用程序中（例如在 Unity 中）使用该服务时，才会出现该 DLL 问题。
 
 ## <a name="devices"></a>设备
 
-Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目标设备。 请参阅 " [平台限制](../reference/limits.md#platform-limitations) " 部分。
+Azure 远程渲染目前只支持使用 HoloLens 2 和 Windows 桌面设备作为目标设备。 请参阅[平台限制](../reference/limits.md#platform-limitations)部分。
 
-使用最新的 HEVC 编解码器是非常重要的，因为较新版本的延迟显著改进。 检查设备上安装的版本：
+请务必使用最新的 HEVC 编解码器，因为更新的版本在延迟方面有显著改进。 若要检查在设备上安装的是哪个版本，请执行以下操作：
 
-1. 启动 **Microsoft Store**。
-1. 单击右上方的 **"..."** 按钮。
-1. 选择 " **下载和更新**"。
-1. 在列表中搜索 **设备制造商提供的 HEVC 视频扩展**。 如果未在 "更新" 下列出此项，则已安装最新版本。
-1. 请确保列出的编解码器至少具有版本 **1.0.21821.0**。
-1. 单击 " **获取更新** " 按钮，并等待安装完成。
+1. 启动“Microsoft Store”。
+1. 单击右上的“...”按钮。
+1. 选择“下载和更新”。
+1. 在列表中搜索“设备制造商提供的 HEVC 视频扩展”。 如果更新下未列出此项，则表明已经安装了最新版本。
+1. 请确保列出的编解码器的版本至少是“1.0.21821.0”。
+1. 单击“获取更新”按钮，等待安装完成。
 
 ## <a name="network"></a>网络
 
-稳定的低延迟网络连接对于良好的用户体验至关重要。
+若要获得良好的用户体验，稳定、低延迟的网络连接至关重要。
 
-有关 [网络要求](../reference/network-requirements.md)，请参阅专用章节。
+请参阅专门介绍[网络要求](../reference/network-requirements.md)的章节。
 
-有关网络问题的疑难解答，请参阅 [故障排除指南](../resources/troubleshoot.md#unstable-holograms)。
+若要排查网络问题，请参阅[故障排除指南](../resources/troubleshoot.md#unstable-holograms)。
 
 ### <a name="network-firewall"></a>网络防火墙
 
-### <a name="sdk-version--0176"></a>SDK 版本 >= 0.1.76
+### <a name="sdk-version--0176"></a>SDK 版本 0.1.76 或更高版本
 
 远程渲染虚拟机使用以下 IP 范围中的共享 IP 地址：
 
@@ -80,38 +80,38 @@ Azure 远程呈现目前仅支持将 **HoloLens 2** 和 Windows 桌面作为目�
 | 西欧      | westeurope     | 20.61.99.112/28   |
 | 美国西部 2        | westus2        | 20.51.9.64/28     |
 
-请确保你的防火墙 (设备、路由器内部等 ) 不会阻止这些 IP 范围和以下端口范围：
+请确保防火墙（设备上的、路由器内部的，等等）未阻止这些 IP 范围和以下端口范围：
 
-| 端口              | 协议  | 允许    |
+| 端口              | 协议  | Allow    |
 |-------------------|---------- |----------|
 | 49152-65534       | TCP/UDP | 传出 |
 
-#### <a name="sdk-version--0176"></a>SDK 版本 < 0.1.76
+#### <a name="sdk-version--0176"></a>SDK 版本低于 0.1.76
 
 确保防火墙（在设备上、路由器内部等）未阻止以下端口：
 
-| 端口              | 协议 | 允许    | 说明 |
+| 端口              | 协议 | Allow    | 说明 |
 |-------------------|----------|----------|-------------|
-| 50051             | TCP      | 传出 | 初始连接 (HTTP 握手)  |
+| 50051             | TCP      | 传出 | 初始连接（HTTP 握手） |
 | 8266              | UDP      | 传出 | 数据传输 |
-| 5000、5433、8443  | TCP      | 传出 | [ArrInspector 工具](../resources/tools/arr-inspector.md)必需的|
+| 5000、5433、8443  | TCP      | 传出 | [ArrInspector 工具](../resources/tools/arr-inspector.md)所需|
 
 
 ## <a name="software"></a>软件
 
 必须安装以下软件：
 
-* 最新版本的 **Visual Studio 2019** [ (下载)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Visual Studio 2019 的最新版本[（下载）](https://visualstudio.microsoft.com/vs/older-downloads/)
 * [适用于混合现实的 Visual Studio tools](/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
   * **使用 C++ 的桌面开发**
   * **通用 Windows 平台 (UWP) 开发**
-* **Windows SDK 10.0.18362.0** [ (下载)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* **GIT** [ (下载)](https://git-scm.com/downloads)
-* 可选：若要在台式计算机上查看服务器中的视频流，需要 **HEVC 视频扩展** [ (Microsoft Store 链接)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。 确保通过检查存储中的更新来安装最新版本。
+* Windows SDK 10.0.18362.0[（下载）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* GIT[（下载）](https://git-scm.com/downloads)
+* 可选：若要在台式电脑上观看来自服务器的视频流，需要有 HEVC 视频扩展[（Microsoft Store 链接）](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。 请通过检查该商店中的更新来确保安装了最新版本。
 
 ## <a name="unity"></a>Unity
 
-若要通过 Unity 进行开发，请安装
+对于使用 Unity 进行的开发，请安装
 
 * Unity 2019.3.1[（下载）](https://unity3d.com/get-unity/download)
 * 在 Unity 中安装以下模块：

@@ -1,40 +1,40 @@
 ---
-title: 导入文档格式准则-QnA Maker
-description: 使用这些指导原则导入文档，以获得最佳内容。
+title: 导入文档格式准则 - QnA Maker
+description: 使用这些文档导入准则获取内容的最佳结果。
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: 15ff2ec296cedc37b086a9ca2d0825fb20b4f05a
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99549535"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>导入的文档和 Url 的格式准则
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>导入的文档和 URL 的格式准则
 
-查看这些格式设置准则，以获得最佳内容。
+查看这些格式设置准则，以获取内容的最佳结果。
 
 ## <a name="formatting-considerations"></a>格式设置注意事项
 
-导入文件或 URL 后，QnA Maker 以 [markdown 格式](https://en.wikipedia.org/wiki/Markdown)转换和存储内容。 转换过程会在文本中添加新行，例如 `\n\n` 。 Markdown 格式的知识有助于理解转换后的内容和管理知识库内容。
+导入文件或 URL 后，QnA Maker 以 [Markdown 格式](https://en.wikipedia.org/wiki/Markdown)转换和存储内容。 转换过程会在文本中添加新行，例如 `\n\n`。 了解 Markdown 格式有助于理解转换后的内容和管理知识库内容。
 
-如果直接在知识库中添加或编辑内容，请使用 **markdown 格式** 创建丰富的文本内容，或者更改答案中已经存在的 markdown 格式内容。 QnA Maker 支持大部分 markdown 格式，以便为内容提供丰富的文本功能。 但是，客户端应用程序（如聊天机器人）可能不支持相同的一组 markdown 格式。 必须测试客户端应用程序的答案显示。
+如果直接在知识库中添加或编辑内容，请使用 Markdown 格式创建丰富的文本内容，或者更改答案中已有的 Markdown 格式内容。 QnA Maker 支持大部分 Markdown 格式，为内容提供了丰富的文本功能。 但客户端应用程序（如聊天机器人）支持的 Markdown 格式集可能有所不同。 应测试客户端应用程序的答案显示，这很重要。
 
-请参阅 [内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表。
+请参阅[内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表。
 
 ## <a name="basic-document-formatting"></a>基本文档格式设置
 
-QnA Maker 根据视觉对象线索标识文件中的部分和子节和关系，如：
+QnA Maker 根据类似以下的视觉线索来确定文件中的节、子节和关系：
 
 * 字体大小
 * 字体样式
-* 方式
+* 编号
 * 颜色
 
 > [!NOTE]
-> 当前不支持从上传的文档提取图像。
+> 目前不支持从上传的文档中提取图像。
 
 ### <a name="product-manuals"></a>产品手册
 
@@ -49,7 +49,7 @@ QnA Maker 根据视觉对象线索标识文件中的部分和子节和关系，�
 
 ### <a name="brochures-guidelines-papers-and-other-files"></a>小册子、指南、论文和其他文件
 
-许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 其中包括：小册子、指导原则、报告、白皮书、科研论文、政策、书籍等。请参阅 [此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
+许多其他类型的文档也可进行处理，以便生成 QA 对，前提是它们有清晰的结构和布局。 其中包括：小册子，指南、报告、白皮书、科学论文、策略、书籍等。请参阅[此处](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的示例。
 
 下面是一个半结构化文档的示例，没有索引：
 
@@ -77,7 +77,7 @@ Answer2
 
 采用结构化 *.txt*、*.tsv* 或 *.xls* 文件形式的 QnA 也可上传到 QnA Maker，以便创建或增强知识库。  它们的内容可以是纯文本，也可以是 RTF 或 HTML 格式。
 
-| 问题  | Answer  | Metadata (1 密钥：1值)  |
+| 问题  | Answer  | 元数据（1 个键：1 个值） |
 |-----------|---------|-------------------------|
 | 问题 1 | 答案 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 |      `Key:Value`           |
@@ -92,11 +92,11 @@ Answer2
 
 #### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 文件中单个答案的替代问题示例
 
-下面是结构化 *的 QnA 文件* 的一个示例，其中有几个替代问题可用于单个答案：
+下面是一个结构化 QnA .xls 文件示例，其中一个答案有多个替代问题：
 
  ![Excel 文件中单个答案的替代问题示例](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-导入文件后，问题和答案对在知识库中显示，如下所示：
+导入文件后，问答对在知识库中显示，如下所示：
 
  ![导入到知识库中的单个答案的替代问题的屏幕截图](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
@@ -104,20 +104,20 @@ Answer2
 
 导入知识库将替换现有知识库的内容。 导入需要包含数据源信息的结构化 .tsv 文件。 这些信息可帮助 QnA Maker 将问答对分组，并将它们归因于特定数据源。
 
-| 问题  | Answer  | 源| Metadata (1 密钥：1值)  |
+| 问题  | Answer  | 源| 元数据（1 个键：1 个值） |
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-### <a name="multi-turn-document-formatting"></a>多转换文档格式
+### <a name="multi-turn-document-formatting"></a>多回合文档格式设置
 
-* 使用标题和子标题来表示层次结构。 例如，可以通过 h1 表示父 QnA 和 h2，以表示应作为 prompt 出现的 QnA。 使用较小的标题尺寸来表示后续层次结构。 不要使用样式、颜色或其他某些机制来表示文档中的结构，QnA Maker 将不会提取多个提示。
-* 标题的第一个字符必须大写。
-* 不要以问号结束标题 `?` 。
+* 使用标题和子标题来表示层次结构。 例如，可以使用 h1 来表示父 QnA，使用 h2 来表示应用作提示的 QnA。 使用较小的标题大小来表示后续层次结构。 不要使用样式、颜色或一些其他机制来表示文档中的结构，QnA Maker 不会提取多回合提示。
+* 标题的第一个字符必须采用大写形式。
+* 不要以问号 `?` 结束标题。
 
-**示例文档**：<br>[Surface Pro (.docx) ](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso (.docx) 权益权益 ](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso (pdf) 权益 ](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
+**示例文档**：<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 
@@ -125,7 +125,7 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
 
 * 纯文本常见问题解答页
 * 带链接的常见问题解答页
-* 主题主页的常见问题页面
+* 带主题主页的常见问题解答页
 
 ### <a name="plain-faq-pages"></a>纯文本常见问题解答页
 
@@ -145,11 +145,11 @@ QnA Maker 可以支持 3 种不同形式的常见问题解答网页：
  ![知识库的部分链接常见问题解答页示例](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>父主题页面链接到子应答页面
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>与子答案页面链接的父主题页面
 
-这种类型的 FAQ 有一个主题页面，其中每个主题都链接到不同页面上相应的一组问题和答案。 QnA Maker 对所有链接页面进行爬网，以 & 答案来提取相应的问题。
+此类型的常见问题解答有一个主题页面，其中每个主题都链接到不同页面上相应的一组问题和答案。 QnA Maker 会抓取所有链接的页以提取相应的问题与答案。
 
-下面是主题页面的示例，其中包含指向不同页面中的 FAQ 部分的链接。
+下面是主题页面的示例，其中包含指向不同页面中常见问题解答部分的链接。
 
  ![知识库的深层链接常见问题解答页示例](./media/qnamaker-concepts-datasources/topics-faq.png)
 
@@ -164,11 +164,11 @@ QnA Maker 可以处理半结构化支持网页，例如，介绍如何执行给�
 
 ## <a name="import-and-export-knowledge-base"></a>导入和导出知识库
 
-通过从 QnA Maker 门户的 "**设置**" 页中导入文件，只能使用从导出的知识库中导入的 **TSV 文件和 XLS 文件**。 在知识库创建期间或从 "**设置**" 页上的 " **+ 添加文件**" 或 " **+ 添加 URL** " 功能中，不能将它们用作数据源。 
+只能通过从 QnA Maker 门户的“设置”页导入文件来使用导出的知识库中的 TSV 和 XLS 文件 。 在知识库创建期间无法将其作为数据源使用，也无法通过“设置”页上的“+ 添加文件”或“+ 添加 URL”功能使用  。 
 
-通过这些 **TSV 和 XLS 文件** 导入知识库时，QnA 对将添加到 "编辑源"，而不是添加到从导出的知识库中提取 qna 的源。 
+通过这些 TSV 和 XLS 文件导入知识库时，会将 QnA 对添加到编辑源中，而不是添加到从导出的知识库中提取 QnA 的源中。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表
+请参阅[内容类型和示例](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)的完整列表

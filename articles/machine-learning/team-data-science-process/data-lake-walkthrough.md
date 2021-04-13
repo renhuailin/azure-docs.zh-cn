@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96021446"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
@@ -34,7 +34,7 @@ ms.locfileid: "96021446"
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) 具有数据科学家所需的所有功能，让他们可以轻松存储任何大小、形状和速度的数据，并且可以以经济高效的方式执行数据处理、高级分析以及具有高扩展性的机器学习建模。   按每个作业付费，只有实际处理数据时才会产生费用。 Azure Data Lake Analytics 包括一种名为 U-SQL 的语言，它将 SQL 的声明性本质与 C# 的表达能力很好地加以结合，借此提供可扩展的分布式查询功能。 它通过读取应用构架、插入自定义逻辑和用户定义函数 (UDF) 使用户能够处理非结构化数据，同时包括了可扩展性以实现大规模精细化控制。 若要深入了解 U-SQL 的设计理念，请参阅 [Visual Studio 博客文章](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-Data Lake Analytics 也是 Cortana 分析套件的重要部分，可与 Azure Synapse Analytics、Power BI 和数据工厂配合使用。 这种组合为你提供了完整的云大数据和高级分析平台。
+Data Lake Analytics 也是 Cortana Analytics 套件的重要部分，可与 Azure Synapse Analytics、Power BI 以及数据工厂协同工作。 这种组合为你提供了完整的云大数据和高级分析平台。
 
 本演练首先介绍了如何安装完成数据科学处理任务所需的先决条件和资源。 然后概述了使用 U-SQL 进行数据处理的步骤，最后介绍了如何将 Python 和 Hive 与 Azure 机器学习工作室（经典版）配合使用以构建和部署预测模型。
 
@@ -82,17 +82,17 @@ Azure 机器学习工作室（经典）用于通过以下两种方法生成和�
 ### <a name="create-an-azure-data-lake-storage"></a>创建 Azure Data Lake Storage
 
 
-从 [Azure 门户](https://portal.azure.com)创建 ADLS。 有关详细信息，请参阅 [使用 Azure 门户创建具有 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。
+从 [Azure 门户](https://portal.azure.com)创建 ADLS。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。 请务必在此处所述的“可选配置”边栏选项卡的“DataSource”边栏选项卡中设置群集 AAD 标识。
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
 ### <a name="create-an-azure-data-lake-analytics-account"></a>创建 Azure Data Lake Analytics 帐户
-从 [Azure 门户](https://portal.azure.com)创建 ADLA 帐户。 有关详细信息，请参阅 [教程：使用 Azure 门户开始使用 Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
+从 [Azure 门户](https://portal.azure.com)创建 ADLA 帐户。 有关详细信息，请参阅[教程：通过 Azure 门户开始使用 Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>创建 Azure Blob 存储帐户
-从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅 [关于 Azure 存储帐户](../../storage/common/storage-account-create.md)中的创建存储帐户部分。
+从 [Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 有关详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-account-create.md)中的“创建存储帐户”部分。
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
@@ -484,7 +484,7 @@ USING Outputters.Csv();
 * 在第二个选项中，使用 Hive 查询直接在 Azure Data Lake 中查询数据。 此选项要求创建新的 HDInsight 群集，或使用现有的 HDInsight 群集，其中 Hive 表指向 Azure Data Lake 存储中的 NY 出租车数据。  以下部分讨论这两个选项。
 
 ## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>选项 1：使用 Python 生成和部署机器学习模型
-若要使用 Python 生成和部署机器学习模型，请在本地计算机上或 Azure 机器学习工作室中创建 Jupyter Notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)上提供的 Jupyter Notebook 包含用于浏览、可视化数据、功能设计、建模和部署的完整代码。 本文只介绍建模和部署。
+若要使用 Python 生成和部署机器学习模型，请在本地计算机上或 Azure 机器学习工作室中创建 Jupyter Notebook。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 中提供的 Jupyter Notebook 包含完整代码，可用于浏览、可视化数据、特征工程、建模和部署。 本文只介绍建模和部署。
 
 ### <a name="import-python-libraries"></a>导入 Python 库
 若要运行示例 Jupyter Notebook 或 Python 脚本文件，需要使用以下 Python 包。 如果使用的是 Azure 机器学习笔记本服务，这些包已经预安装。
@@ -666,7 +666,7 @@ from azureml import services
 Azure 机器学习工作室（经典）可直接从 Azure Data Lake Storage 中读取数据，然后将其用于创建和部署模型。 此方法使用指向 Azure Data Lake Storage 的 Hive 表。 需要为 Hive 表预配单独的 Azure HDInsight 群集。 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>创建 HDInsight Linux 群集
-从 [Azure 门户](https://portal.azure.com)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅 [使用 Azure 门户创建具有 Data Lake Store 的 hdinsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的 **创建具有访问权限的 hdinsight 群集 Azure Data Lake Storage** 部分。
+从 [Azure 门户](https://portal.azure.com)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的“创建具有 Azure Data Lake Storage 访问权限的 HDInsight 群集”部分。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -751,7 +751,7 @@ LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
 ## <a name="summary"></a>摘要
-完成本演练后，你已经创建了一个用于在 Azure Data Lake 中生成可缩放的端到端解决方案的数据科学环境。 此环境用于分析大型公共数据集，可在从数据采集到模型定型，再到将模型部署为 Web 服务的 Data Science Process 的规范步骤中使用。 使用了 U-SQL 处理、浏览和采样数据。 将 Python 和 Hive 与 Azure 机器学习工作室（经典版）配合使用，可生成和部署预测模型。
+完成此演练时，已在 Azure Data Lake 中创建了用于生成可缩放端到端解决方案的数据科学环境。 此环境用于分析大型公共数据集，可在从数据采集到模型定型，再到将模型部署为 Web 服务的 Data Science Process 的规范步骤中使用。 U-SQL 可用于数据的处理、浏览和采样。 将 Python 和 Hive 与 Azure 机器学习工作室（经典版）配合使用，可生成和部署预测模型。
 
 ## <a name="whats-next"></a>后续步骤
 [Team Data Science Process (TDSP)](./index.yml) 的学习路径提供了主题的链接，这些主题描述了高级分析过程中的每个步骤。 [Team Data Science Process 演练](walkthroughs.md)页中详细列举了一系列演练，演示如何在各种预测分析方案中使用资源和服务：

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 6d2ad87f6a8c79f61d62140a1549968cd88d83aa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101722307"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>录制语音样本用于创建自定义语音
@@ -26,12 +26,12 @@ ms.locfileid: "101722307"
 要创建专业的语音录制，需要很多细微而重要的细节。 本指南是一个流程线路图，可帮助你获得良好、一致的结果。
 
 > [!NOTE]
-> 如果要训练某一神经声音，则必须指定一个 voice 人才配置文件，其中包含一条语音许可文件，该文件提供了一种确认使用其语音数据训练自定义语音模型的语音许可文件。 准备录制脚本时，请确保包含下面的句子。 
+> 如果要训练神经语音，你必须指定配音员个人资料，其中包含配音员提供的语音同意文件，确认使用他/她的语音数据来训练一个自定义语音模型。 准备录制脚本时，请确保包含以下句子。 
 
-> "I [陈述你的名字] 知道，你的语音记录将由 [状态公司名称] 用来创建和使用我的语音合成版本。"
-此句子将用于验证定型数据是否由发出许可的同一人来完成。 在此处阅读有关 [语音人才验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 的详细信息。
+> “我[说出你的名字和姓氏]知道，[说出公司名称]将使用我的声音录音来创建和使用我的声音的合成版本。”
+这句话将用于验证训练数据是否由作出同意的那个人完成。 在此处详细了解[配音员验证](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
 
-> 自定义的神经语音可用于受限访问。 请确保了解负责的 [AI 要求](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) ，并在 [此处应用访问权限](https://aka.ms/customneural)。 
+> 自定义神经语音只能在有限的访问权限下使用。 请确保你了解[负责任的 AI 使用原则](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)并[在此处应用访问权限](https://aka.ms/customneural)。 
 
 > [!TIP]
 > 要使录制结果质量最佳，请考虑使用 Microsoft 来开发自定义语音。 Microsoft 在为自己的产品（包括 Cortana 和 Office）制作精良语音方面经验丰富。
@@ -64,7 +64,7 @@ ms.locfileid: "101722307"
 
 相比于其他类型的语音录制，录制自定义语音示例可能更加费事。 大多数配音员每天可录制两到三个小时。 将过程限制为每周三到四次，如果可能的话，中间休息一天。
 
-与配音员合作，制作一个“角色”来定义自定义语音的整体声音和情感基调。 在此过程中，要确定该角色“不带感情”的声音是怎样的声音。 使用自定义的神经语音功能，您可以为使用情感的模型定型。 定义 "讲述样式"，并要求您的语音人才以产生共鸣所需样式的方式读取脚本。  
+与配音员合作，制作一个“角色”来定义自定义语音的整体声音和情感基调。 在此过程中，要确定该角色“不带感情”的声音是怎样的声音。 使用自定义神经语音功能，你可以训练一个带感情说话的模型。 定义“说话风格”，要求你的配音员朗读脚本的方式与你想要的风格相符。  
 
 例如，角色的个性可能是天生乐观。 因此即使是不带感情，“角色”的声音也可能带有乐观情绪。 但是，这种个性特征要一致且细微处理。 按现有的声音朗读听一听，了解你想要什么样的声音。
 
@@ -219,7 +219,7 @@ ms.locfileid: "101722307"
 
 保存前要将每个文件转换成 16 位和 16 kHz 的采样率，如果录制了工作室闲谈，则删除第二个声道。 以 WAV 格式保存每个文件，使用脚本中的语句编号命名文件。
 
-最后，创建脚本，它将每个 WAV 文件与相应语句的文本版本进行关联。 [创建自定义语音](./how-to-custom-voice-create-voice.md) 包含所需格式的详细信息。 可直接从脚本中复制文本。 然后创建 WAV 文件和 文本脚本的 Zip 文件。
+最后，创建脚本，它将每个 WAV 文件与相应语句的文本版本进行关联。 [创建自定义语音](./how-to-custom-voice-create-voice.md)包括所需格式的详细信息。 可直接从脚本中复制文本。 然后创建 WAV 文件和 文本脚本的 Zip 文件。
 
 将原始录音存档在安全的地方，以备日后需要时使用。 同时也要保留脚本和注释。
 

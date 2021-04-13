@@ -12,10 +12,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
 ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100558926"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
@@ -46,10 +46,10 @@ ms.locfileid: "100558926"
 
 该应用将发布到与 LUIS 预测终结点资源关联的所有区域，这些资源在 LUIS 门户中通过“管理” -> [“Azure 资源”](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)页添加。
 
-例如，对于在 [www.luis.ai](https://www.luis.ai)上创建的应用，如果在两个区域 **westus** 和 **eastus** 中创建 luis 资源，并将它们作为资源添加到该应用，则会在这两个区域发布该应用。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
+例如，对于在 [www.luis.ai](https://www.luis.ai) 上创建的应用，如果在两个区域（westus 和 eastus）中创建一个 LUIS 资源，并将它们作为资源添加到应用中，则应用将在这两个区域中发布。 有关 LUIS 区域的详细信息，请参阅[区域](luis-reference-regions.md)。
 
 > [!TIP]
-> 有3种创作区域。 你必须在要向其发布内容的区域中创作。 如果需要将内容发布到所有区域，需要在所有 3 个创作区域中管理创作过程和生成的已定型模型。
+> 有 3 个创作区域。 你必须在要向其发布内容的区域中创作。 如果需要将内容发布到所有区域，需要在所有 3 个创作区域中管理创作过程和生成的已定型模型。
 
 
 ## <a name="configuring-publish-settings"></a>配置发布设置
