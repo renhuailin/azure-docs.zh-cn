@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 语音翻译
-ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954953"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449930"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 本概述介绍语音翻译服务的优势和功能，它可以对音频流进行实时[多语言语音转语音](language-support.md#speech-translation)和语音转文本翻译。 使用语音 SDK，应用程序、工具和设备可以访问所提供的音频的源听录和翻译输出。 检测到语音时，会返回过渡性的听录和翻译结果，最终结果可以转换为合成语音。
+
+本文档包含以下文章类型：
+
+* **快速入门** 介绍了入门说明，指导您完成向服务发出请求。
+* **操作指南** 包含以更具体的方式或自定义方式使用服务的说明。
+* **概念** 对服务的功能和特性进行了深入说明。
+* **教程** 是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 ## <a name="core-features"></a>核心功能
 
