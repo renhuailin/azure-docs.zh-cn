@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: genli
 ms.openlocfilehash: 3df4108907a4e1e65a444faf1049163966b7accf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67172872"
 ---
 ## <a name="scenario"></a>场景
 创建具有单个 NIC 的 VM 并将其连接到虚拟网络。 VM 需要三个不同的专用 IP 地址和两个公共 IP 地址。 IP 地址将分配到以下 IP 配置：
 
-* **IPConfig-1：** 分配一个*静态*专用 IP 地址和一个*静态*公共 IP 地址。
-* **IPConfig-2：** 分配一个*静态*专用 IP 地址和一个*静态*公共 IP 地址。
-* **IPConfig-3：** 分配一个*静态*专用 IP 地址，不分配任何公共 IP 地址。
+* **IPConfig-1：** 分配一个 *静态* 专用 IP 地址和一个 *静态* 公共 IP 地址。
+* **IPConfig-2：** 分配一个 *静态* 专用 IP 地址和一个 *静态* 公共 IP 地址。
+* **IPConfig-3：** 分配一个 *静态* 专用 IP 地址，不分配任何公共 IP 地址。
   
     ![多个 IP 地址](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 

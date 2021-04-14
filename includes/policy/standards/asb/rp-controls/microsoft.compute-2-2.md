@@ -1,0 +1,19 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 03/31/2021
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: 7ecff61cb1e72c8c24c9be1588819219a5792f6c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "107284551"
+---
+|名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
+|---|---|---|---|
+|[审核其 Log Analytics 代理未按预期连接的 Windows 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6265018c-d7e2-432f-a75d-094d5f6f4465) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果未安装代理，或者安装了代理，但 COM 对象 AgentConfigManager.MgmtSvcCfg 返回它已注册到策略参数中指定的 ID 以外的工作区，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsLogAnalyticsAgentConnection_AINE.json) |
+|[应在虚拟机规模集上安装 Log Analytics 代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |此策略审核是否有任何 Windows/Linux 虚拟机规模集未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
+|[应在虚拟机上安装 Log Analytics 代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |此策略审核是否有任何 Windows/Linux 虚拟机未安装 Log Analytics 代理。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |

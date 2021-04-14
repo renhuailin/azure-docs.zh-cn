@@ -4,12 +4,12 @@ description: 本文介绍 Azure 事件中心中的事件处理程序主机，它
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de5d8f0f8bf9f64a473b18a50434cac83e8e38c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622056"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313413"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -199,5 +199,5 @@ Epoch 功能可让用户确保在任意时间点使用者组中只有一个接�
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.yml)
 * [GitHub 上的事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples)

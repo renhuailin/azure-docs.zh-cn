@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure Site Recovery 支持到辅助 VMM 站点的 matrix-Hyper-V 灾难恢复
 description: 汇总了对使用 Azure Site Recovery 将 VMM 云中的 Hyper-V VM 复制到辅助站点的支持。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
-ms.author: raynew
-ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f34d660c4012e192a157dc836574bc1ab25233
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86131160"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579940"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 

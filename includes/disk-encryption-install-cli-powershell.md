@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 4c168738c0396b83412f9ed8c27fe3b2db9918d7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: include file
+ms.openlocfilehash: 3d8cd9891329e86ce47dac6d8d44af529c104b61
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510690"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386770"
 ---
 可以通过 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 启用和管理 Azure 磁盘加密。 为此，必须在本地安装工具并连接到 Azure 订阅。
 
@@ -61,7 +61,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 运行 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) cmdlet 将验证是否选择了正确的订阅。
 
-若要确认已安装 Azure 磁盘加密 cmdlet，请使用 [Get-command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) cmdlet：
+若要确认已安装 Azure 磁盘加密 cmdlet，请使用 [Get-command](/powershell/module/microsoft.powershell.core/get-command) cmdlet：
      
 ```powershell
 Get-command *diskencryption*

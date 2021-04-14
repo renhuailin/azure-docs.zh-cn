@@ -3,12 +3,12 @@ title: 什么是 Azure 事件中心？ - 大数据引入服务 | Microsoft Docs
 description: 了解 Azure 事件中心 - 每秒可引入数百万个事件的大数据流式处理服务。
 ms.topic: overview
 ms.date: 01/13/2021
-ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e89f60e93ec759d852641653ad138d7672cc37
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98195750"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303043"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -92,4 +92,4 @@ Stack 上的事件中心在公共预览期免费。 有关详细信息，请参�
 若要了解有关事件中心的详细信息，请参阅以下文章：
 
 - [事件中心功能概述](event-hubs-features.md)
-- [常见问题解答](event-hubs-faq.md)。
+- [常见问题解答](event-hubs-faq.yml)。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意向识别
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95018695"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210357"
 ---
 # <a name="what-is-intent-recognition"></a>什么是意向识别？
 
@@ -33,7 +33,7 @@ ms.locfileid: "95018695"
 
 ## <a name="get-started"></a>入门
 
-请参阅[快速入门](quickstarts/intent-recognition.md)以开始使用意向识别。
+请参阅[快速入门](get-started-intent-recognition.md)以开始使用意向识别。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -53,6 +53,6 @@ ms.locfileid: "95018695"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 完成意向识别[快速入门](quickstarts/intent-recognition.md)
+* 完成意向识别[快速入门](get-started-intent-recognition.md)
 * [免费获取语音服务订阅密钥](overview.md#try-the-speech-service-for-free)
 * [获取语音 SDK](speech-sdk.md)

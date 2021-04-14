@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a66486d791968f5752b96ed00374f8662b9c30fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580039"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028292"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 SAML 标识提供者设置注册和登录
 
@@ -227,7 +227,7 @@ https://your-domain-name/<your-tenant-name>.onmicrosoft.com/<your-policy>/samlp/
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 在“策略”下，选择“Identity Experience Framework”
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
 

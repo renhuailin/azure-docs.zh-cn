@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67172991"
 ---
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>安装 StorSimple Adapter for SharePoint
@@ -17,7 +17,7 @@ ms.locfileid: "67172991"
 3. 双击安装程序。 将启动 StorSimple Adapter for SharePoint 安装向导。 单击 **“下一步”** 以开始安装。
    
     ![StorSimple Adapter 安装启动页](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
-4. 在 StorSimple Adapter for SharePoint 安装配置页中，选择安装位置、在 StorSimple 设备上键入 DATA 0 网络接口的 IP 地址，并单击“下一步”****。 
+4. 在 StorSimple Adapter for SharePoint 安装配置页中，选择安装位置、在 StorSimple 设备上键入 DATA 0 网络接口的 IP 地址，并单击“下一步”。 
    
     ![StorSimple Adapter 安装配置页](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
 5. 在安装确认页中，单击 **“安装”**。

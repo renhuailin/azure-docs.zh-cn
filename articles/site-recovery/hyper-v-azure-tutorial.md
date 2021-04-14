@@ -1,19 +1,16 @@
 ---
 title: 使用 Azure Site Recovery 设置 Hyper-V 灾难恢复
 description: 了解如何使用 Site Recovery 为本地 Hyper-V VM（不包含 VMM）设置到 Azure 的灾难恢复。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c98728b0da92e198e158cef29e69b2f60818770
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87504222"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580863"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -21,7 +18,7 @@ ms.locfileid: "87504222"
 
 此教程为系列教程中的第三个教程。 本教程演示如何设置本地 Hyper-V VM 到 Azure 的灾难恢复。 本教程适用于不由 Microsoft System Center Virtual Machine Manager (VMM) 托管的 Hyper-V VM。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 选择复制源和目标。

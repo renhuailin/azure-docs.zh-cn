@@ -3,12 +3,18 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是异常检测器？
+    - name: 什么是异常检测器（多变量）？
+      href: overview-multivariate.md
+    - name: 什么是异常检测器（单变量）？
       href: overview.md
     - name: 定价和限制
       href: 'https://aka.ms/adpricing'
 - name: 异常检测器快速入门
-  href: ./quickstarts/client-libraries.md
+  items:
+    - name: 多变量客户端库
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: 单变量客户端库
+      href: ./quickstarts/client-libraries.md
 - name: 示例
   items:
     - name: 互动演示
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
-    - name: 异常检测器 API 最佳做法
+    - name: 异常检测器 API 最佳做法（多变量）
+      href: concepts/best-practices-multivariate.md
+    - name: 异常检测器 API 最佳做法（单变量）
       href: concepts/anomaly-detection-best-practices.md
+    - name: 预测性维护体系结构（多变量）
+      href: concepts/multivariate-architecture.md
+    - name: 多变量故障排除
+      href: concepts/troubleshoot.md
     - name: 谱残差 (SR) 和卷积神经网络 (CNN) 异常检测
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: 通过图注意力网络进行多变量时序异常情况检测
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: 教程
   items:
     - name: 使用 Power BI 将异常成批可视化

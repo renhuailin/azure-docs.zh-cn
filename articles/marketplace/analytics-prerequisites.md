@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 1cdd3dba8203ce9e8daeaa963f1722389d89d19d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563814"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106796"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>以编程方式访问分析数据的先决条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "105563814"
 
 ## <a name="commercial-marketplace-enrollment"></a>商业市场注册
 
-若要以编程方式访问商业市场分析数据，需要在商业市场计划中注册，并拥有一个合作伙伴中心帐户。 若要了解如何操作，请参阅[在合作伙伴中心创建商业市场帐户](./partner-center-portal/create-account.md)。
+若要以编程方式访问商业市场分析数据，需要在商业市场计划中注册，并拥有一个合作伙伴中心帐户。 若要了解如何操作，请参阅[在合作伙伴中心创建商业市场帐户](create-account.md)。
 
 ## <a name="create-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 

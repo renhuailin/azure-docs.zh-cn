@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: f07eb0ab252144d1e0953a1a227dfbadb152c422
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7d503893b1f8814c333e5683343851cc1da2e076
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434428"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043188"
 ---
 :::row:::
     :::column span="3":::
@@ -31,7 +31,7 @@ ms.locfileid: "102434428"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android 向 .NET 开发人员公开了完整的 Android SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 Android 应用。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android </a>
+        Xamarin.Android 向 .NET 开发人员公开了完整的 Android SDK。 使用 C# 或 F# 在 Visual Studio 中生成完全本机的 Android 应用。 有关详细信息，请参阅 <a href="/xamarin/android/" target="_blank">Xamarin.Android </a>
     :::column-end:::
     :::column:::
         <br>

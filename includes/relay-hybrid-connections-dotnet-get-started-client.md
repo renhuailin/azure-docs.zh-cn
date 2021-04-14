@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 2d6836b2bf667e4170e67a95dc1daad72a769eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67173184"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目。
+在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目。
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
-2. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。  
-3. 选择“安装”  即可完成安装。 关闭对话框。
+1. 右键单击新创建的项目，然后选择“管理 NuGet 包”。
+2. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。 
+3. 选择“安装”即可完成安装。 关闭对话框。
 
 ### <a name="write-code-to-send-messages"></a>编写发送消息的代码
 

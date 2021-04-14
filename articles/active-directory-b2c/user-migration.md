@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103010161"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256202"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
@@ -43,7 +43,7 @@ ms.locfileid: "103010161"
 - 密码是以单向加密格式存储的（例如，使用哈希函数）。
 - 旧式标识提供者以你无法访问的方式存储了密码。 例如，标识提供者通过调用 Web 服务来验证凭据。
 
-无缝迁移流仍需将用户帐户预迁移，但随后需使用[自定义策略](custom-policy-get-started.md)来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
+无缝迁移流仍需将用户帐户预迁移，但随后需使用[自定义策略](user-flow-overview.md)来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
 
 因此，无缝迁移流包括两个阶段：预迁移和设置凭据。 
 

@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: ae56e02e89a6f7b5a9adaa587ee4a0521d21f349
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96184332"
 ---
 > [!div class="op_single_selector"]
-> * [门户](../articles/media-services/previous/media-services-portal-vod-get-started.md)
+> * [Portal](../articles/media-services/previous/media-services-portal-vod-get-started.md)
 > * [.NET](../articles/media-services/previous/media-services-dotnet-get-started.md)
 > * [REST API](../articles/media-services/previous/media-services-rest-get-started.md)
 > * [Java](../articles/media-services/previous/media-services-java-how-to-use.md)
