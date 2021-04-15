@@ -2,21 +2,21 @@
 title: PowerShell 示例 - 导出 Azure Active Directory 租户中企业应用的机密和证书。
 description: PowerShell 示例，该示例导出了 Azure Active Directory 租户中指定企业应用的所有机密和证书。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536197ebc5df94447f3937773e0447e47961bd92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102635189"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378595"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>导出企业应用的机密和证书
 此 PowerShell 脚本示例会将指定企业应用的所有机密、证书和所有者从目录导出到 CSV 文件。

@@ -9,22 +9,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495861"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726765"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理 SDK 预配通信服务资源。 利用管理 SDK 和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 该 SDK 中提供的所有功能都可在 Azure 门户中使用。 
 
-通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理客户端库预配通信服务资源。 利用管理客户端库和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。 
-
-
-通过预配第一个通信服务资源来开始使用 Azure 通信服务。 可以通过 [Azure 门户](https://portal.azure.com)或 .NET 管理客户端库预配通信服务资源。 利用管理客户端库和 Azure 门户，可以通过 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)（Azure 的部署和管理服务）创建、配置、更新和删除资源和接口。 客户端库中提供的所有功能都可在 Azure 门户中使用。
 
 > [!WARNING]
 > 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，在公共预览版期间，通信资源无法转移到其他订阅。
@@ -41,25 +37,43 @@ ms.locfileid: "103495861"
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
 
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
+
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>访问连接字符串和服务终结点
 
-连接字符串使通信服务客户端库可以连接到 Azure 并向其进行身份验证。 你可以从 Azure 门户或使用 Azure 资源管理器 API 以编程方式访问通信服务连接字符串和服务终结点。
+通信服务 SDK 可以使用连接字符串连接到 Azure 并向其进行身份验证。 你可以从 Azure 门户或使用 Azure 资源管理器 API 以编程方式访问通信服务连接字符串和服务终结点。
 
-导航到通信服务资源之后，从导航菜单中选择“密钥”并复制“连接字符串”或“终结点”值以供通信服务客户端库使用  。 请注意，你可以访问主密钥和辅助密钥。 在你希望向第三方或过渡环境提供对通信服务资源的临时访问权限的方案中，这可能会十分有用。
+导航到通信服务资源之后，请从导航菜单中选择“密钥”并复制“连接字符串”或“终结点”值供通信服务 SDK 使用  。 请注意，你可以访问主密钥和辅助密钥。 在你希望向第三方或过渡环境提供对通信服务资源的临时访问权限的方案中，这可能会十分有用。
 
 :::image type="content" source="./media/key.png" alt-text="通信服务密钥页的屏幕截图。":::
 
-还可以使用 Azure CLI 访问密钥信息：
+还可以使用 Azure CLI 访问密钥信息（例如，资源组或特定资源的密钥）。 
 
+安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) 并使用以下命令登录。 需要提供凭据才能连接到 Azure 帐户。
+```azurecli
+az login
+```
+
+现在，你可以访问有关资源的重要信息了。
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
 
+如果要选择特定订阅，还可以指定 ```--subscription``` 标志并提供订阅 ID。
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
+```
+
 ## <a name="store-your-connection-string"></a>存储连接字符串
 
-通信服务客户端库使用连接字符串对向通信服务发出的请求进行授权。 可使用多个选项来存储连接字符串：
+通信服务 SDK 使用连接字符串对向通信服务发出的请求进行授权。 可使用多个选项来存储连接字符串：
 
 * 在桌面或设备上运行的应用程序可在 **app.config** 或 **web.config** 文件中存储连接字符串。 将连接字符串添加到这些文件中的 **AppSettings** 节。
 * 在 Azure 应用服务中运行的应用程序可以将连接字符串存储在[应用服务应用程序设置](../../app-service/configure-common.md)中。 在门户中将连接字符串添加到“应用程序设置”选项卡的“连接字符串”部分。

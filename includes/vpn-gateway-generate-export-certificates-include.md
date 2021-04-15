@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: faab8aa124ca2f290938cb6cff0a2f4d072caffd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025937"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073347"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>创建自签名根证书
 
 使用 New-SelfSignedCertificate cmdlet 创建自签名根证书。 有关参数的其他信息，请参阅 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
 
 1. 在运行 Windows 10 或 Windows Server 2016 的计算机上，使用提升的权限打开 Windows PowerShell 控制台。 这些示例在 Azure Cloud Shell“试用”中不起作用。 必须本地运行这些示例。
-1. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、会自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”或“管理用户证书”，即可查看证书。
+1. 使用以下示例创建自签名根证书。 以下示例创建名为“P2SRootCert”、会自动安装在“Certificates-Current User\Personal\Certificates”中的自签名根证书。 打开“certmgr.msc”  或“管理用户证书”  ，即可查看证书。
 
-   使用 `Connect-AzAccount` cmdlet 登录。 然后，运行下面的示例，并进行任何必要的修改。
+   使用 `Connect-AzAccount` cmdlet 登录。 然后，运行以下示例并进行必要的修改。
 
    ```powershell
    $cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
@@ -31,7 +31,7 @@ ms.locfileid: "96025937"
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
 
-1. 将 PowerShell 控制台保持打开状态，然后继续执行后续步骤以生成客户端证书。
+1. 使 PowerShell 控制台保持打开状态，并继续执行后续步骤以生成客户端证书。
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>生成客户端证书
 
@@ -41,7 +41,7 @@ ms.locfileid: "96025937"
 
 这些示例使用 New-SelfSignedCertificate cmdlet 生成有效期为一年的客户端证书。 有关参数的其他信息（例如为客户端证书设置其他有效期），请参阅 [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate)。
 
-### <a name="example-1---powershell-console-session-still-open"></a>示例 1-PowerShell 控制台会话仍处于打开状态
+### <a name="example-1---powershell-console-session-still-open"></a>示例 1 - PowerShell 控制台会话仍处于打开状态
 
 如果创建自签名根证书之后没有关闭 PowerShell 控制台，请使用此示例。 此示例延续上一节的内容，并使用已声明的“$cert”变量。 如果创建自签名根证书后关闭了 PowerShell 控制台，或者要在新的 PowerShell 控制台会话中创建其他客户端证书，请使用[示例 2](#ex2) 中的步骤。
 
@@ -55,7 +55,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2-新的 PowerShell 控制台会话
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2 - 新建 PowerShell 控制台会话
 
 若要创建其他客户端证书，或者不想要使用创建自签名根证书时所用的同一个 PowerShell 会话，请使用以下步骤：
 

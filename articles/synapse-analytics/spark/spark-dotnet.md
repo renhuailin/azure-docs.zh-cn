@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: luquinta
 ms.reviewer: jrasnick
-ms.openlocfilehash: 895d766cc1e70e6a001904770d6f3ef12b6945cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d045c1ec96bb7b31a710a28e30e3d428922b65e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018655"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378544"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用
 
@@ -29,19 +29,10 @@ ms.locfileid: "98018655"
 访问教程，了解如何使用 Azure Synapse Analytics [创建 Synapse Spark 池的 Apache Spark 作业定义](apache-spark-job-definitions.md)。 如果你尚未将应用打包提交到 Azure Synapse，请完成以下步骤。
 
 1. 运行以下命令来发布你的应用。 请确保将 mySparkApp 替换为你的应用的路径。
-
-   **在 Windows 上：**
-
-   ```dotnetcli
-   cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.1 -r win-x64
-   ```
    
-   **在 Linux 上：**
-
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.18.04-x64
    ```
 
 2. 压缩发布文件夹（如 `publish.zip`）的内容，该文件夹是在步骤 1 中创建的。 所有程序集都应位于 ZIP 文件的第一层，并且不应有中间文件夹层。 这意味着，当你解压缩 `publish.zip` 时，所有程序集都将被提取到当前工作目录中。

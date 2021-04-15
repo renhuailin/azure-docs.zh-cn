@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056530"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364305"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建内部负载均衡器
 
@@ -30,9 +30,6 @@ ms.locfileid: "106056530"
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 本快速入门需要 Azure CLI 2.0.28 或更高版本。 如果你使用的是 Azure Cloud Shell，则表示已安装最新版本。
-
->[!NOTE]
->Azure 负载均衡器标准版是建议用于生产工作负载的选项。 本文包含有关 Azure 负载均衡器标准版和 Azure 负载均衡器基本版的信息。 有关 SKU 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -47,7 +44,11 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure 负载均衡器标准版
+---
+# <a name="standard-sku"></a>[**标准 SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 下图显示在本快速入门中创建的资源：
 
@@ -335,7 +336,10 @@ az network bastion create \
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure 负载均衡器基本版
+# <a name="basic-sku"></a>[**基本 SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>对于生产型工作负载，建议使用标准 SKU 负载均衡器。 有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
 
 在本部分，你将创建一个负载均衡器来对虚拟机进行负载均衡。 创建内部负载均衡器时，虚拟网络配置为负载均衡器的网络。 下图显示在本快速入门中创建的资源：
 
@@ -636,7 +640,7 @@ az network bastion create \
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 
 使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建网络接口。 指定下列各项：

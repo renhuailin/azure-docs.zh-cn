@@ -6,15 +6,15 @@ ms.date: 11/19/2020
 ms.author: inhenkel
 ms.custom: REST
 ms.openlocfilehash: def2553ddc71f008c5d2b902d04f587ef8d26889
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95996880"
 ---
 <!--Create a basic audio transform REST-->
 
-以下 Azure REST 命令创建基本音频转换。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 通过设置为转换指定名称 `transformName` 。
+以下 Azure REST 命令创建基本音频转换。 将 `subscriptionID`、`resourceGroup` 和 `accountName` 值替换为当前正在使用的值。 通过设置 `transformName` 为转换命名。
 
 ```REST
 

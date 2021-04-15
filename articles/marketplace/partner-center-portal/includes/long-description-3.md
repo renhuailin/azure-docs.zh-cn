@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
 ms.openlocfilehash: 5197b71db4f46d9908d5539c114d636b9474a870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87317621"
 ---
 使用 HTML 标记设置说明的格式，以使其更具吸引力。 大多数标记都需要打开组件和关闭组件，如下表所示。
@@ -19,7 +19,7 @@ ms.locfileid: "87317621"
 |   要执行此操作  |  用途  |  例如  |  为得到这一结果   |
 | --- | --- | --- | --- |
 |   加粗  |  `<b> & </b>`  |  `<b>`示例`</b>`：免费试用  |  **示例**：免费试用   |
-|   斜体  |  `<i> & </i>`  |  选择`<i>`第一`</i>`行。  |  选择*第一*行。   |
+|   斜体  |  `<i> & </i>`  |  选择`<i>`第一`</i>`行。  |  选择 *第一* 行。   |
 |   新建行  |  `<br>`  |  这是我的第一行。`<br>`这是我的第二行。  |  这是我的第一行。<br>这是我的第二行。  |
 |  段落  |  `<p> & </p>`  |  `<p>`这是我的第一个段落。`</p>`<br>`<p>`这是我的第二个段落。`</p>`   |   <p>这是我的第一个段落。</p><p>这是我的第二个段落。</p>   |
 |   项目符号  |  `<ul> & </ul>, <li> & </li>`  |  `<ul>`<br>`<li>`项目符号项`</li>`<br>`<li>`项目符号项`</li>`<br>`<li>`项目符号项`</li>`<br>`</ul>`  |  • 项目符号项<br>• 项目符号项<br>• 项目符号项   |
