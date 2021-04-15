@@ -9,14 +9,14 @@ ms.date: 07/27/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "67172776"
 ---
-1. 右键单击“命令提示符”  并选择“以管理员身份运行”  ，使用提升的权限打开命令提示符。
-2. 请在命令提示符处运行以下命令：
+1. 右键单击“命令提示符”并选择“以管理员身份运行”，使用提升的权限打开命令提示符。
+2. 在命令提示符处运行以下命令：
 
    ```
    reg add HKLM\SYSTEM\CurrentControlSet\Services\RasMan\PPP\EAP\13 /v TlsVersion /t REG_DWORD /d 0xfc0

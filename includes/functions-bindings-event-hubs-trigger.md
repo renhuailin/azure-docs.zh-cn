@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 32f98eb9b98168bdab270ecff07446c31f8d706d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608898"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729780"
 ---
 使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
@@ -281,14 +281,14 @@ import azure.functions as func
 
 
 def main(event: func.EventHubEvent):
-    logging.info('Function triggered to process a message: ', event.get_body())
-    logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
-    logging.info('  SequenceNumber =', event.sequence_number)
-    logging.info('  Offset =', event.offset)
+    logging.info(f'Function triggered to process a message: {event.get_body().decode()}')
+    logging.info(f'  EnqueuedTimeUtc = {event.enqueued_time}')
+    logging.info(f'  SequenceNumber = {event.sequence_number}')
+    logging.info(f'  Offset = {event.offset}')
 
     # Metadata
     for key in event.metadata:
-        logging.info(f'Metadata: {key} = ', event.metadata[key])
+        logging.info(f'Metadata: {key} = {event.metadata[key]}')
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -353,7 +353,7 @@ Python 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
 |**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
@@ -375,12 +375,12 @@ Python 不支持特性。
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](/dotnet/api/microsoft.azure.eventhubs.eventdata)提供的。
 
 ### <a name="additional-types"></a>其他类型 
-使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](/dotnet/api/microsoft.azure.eventhubs.eventdata)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ Python 不支持特性。
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)提供的。
+* `EventData` - EventData 的默认属性是为 [Microsoft.Azure.EventHubs 命名空间](/dotnet/api/microsoft.azure.eventhubs.eventdata)提供的。
 
 ### <a name="additional-types"></a>其他类型 
-使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
+使用 5.0.0 或更高版本的事件中心扩展的应用使用 [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) 中的 `EventData` 类型，而不是 [Microsoft.Azure.EventHubs 命名空间](/dotnet/api/microsoft.azure.eventhubs.eventdata)中的那个类型。 此版本为了支持以下类型，删除了对旧的 `Body` 类型的支持：
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 

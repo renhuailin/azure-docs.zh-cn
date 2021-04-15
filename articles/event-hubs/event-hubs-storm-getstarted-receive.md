@@ -3,14 +3,14 @@ title: 快速入门：使用 Apache Storm 接收事件 - Azure 事件中心
 description: 快速入门：本文提供有关如何使用 Apache Storm 从 Azure 事件中心接收事件的信息。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b79c2958a10d0193b706c92a28b1792d63c24b82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87087571"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302958"
 ---
-# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入门：用 Apache Storm 从事件中心接收事件
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入门：使用 Apache Storm 从事件中心接收事件
 
 [Apache Storm](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。 本节演示如何使用 Azure 事件中心 Storm Spout 从事件中心接收事件。 使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。 事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
 
@@ -235,7 +235,7 @@ ms.locfileid: "87087571"
 
 * [事件中心概述][Event Hubs overview]
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.yml)
 
 <!-- Links -->
 [Event Hubs overview]: ./event-hubs-about.md
