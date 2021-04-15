@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
 ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102630246"
 ---
 若要在 Azure 中将项目发布到函数应用，请在解决方案资源管理器中右键选择该项目，然后选择“发布”。

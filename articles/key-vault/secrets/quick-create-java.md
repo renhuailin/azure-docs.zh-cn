@@ -2,18 +2,18 @@
 title: 快速入门 - 适用于 Java 的 Azure Key Vault 机密客户端库
 description: 提供适用于 Java 的 Azure Key Vault 机密客户端库的快速入门。
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 95323ec513f1a3d00347da022f7c808b029bd44f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934792"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375978"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 机密客户端库
 适用于 Java 的 Azure Key Vault 机密客户端库入门。 请遵循以下步骤安装包并试用基本任务的示例代码。

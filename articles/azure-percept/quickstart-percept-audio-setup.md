@@ -1,18 +1,17 @@
 ---
-title: Azure Percept 音频入门
+title: 设置 Azure Percept Audio
 description: 了解如何将 Azure Percept 音频设备连接到 Azure Percept DK
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
-ms.date: 02/18/2021
-ms.custom: template-quickstart
-ms.openlocfilehash: 660f03ce248a27a00fdd443964fbdba2fe3adeb0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: fa3dad8cdd38e6db621d8194cc9472430c7c5008
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605784"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept 音频设置
 
@@ -28,17 +27,18 @@ Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行�
 
 ## <a name="connecting-your-devices"></a>连接设备
 
-1. 使用附带的 Micro USB 到 USB Type-A 电缆将 Azure Percept Audio 设备连接到 Azure Percept DK 载板。 将电缆的 Micro USB 端连接到内插板（开发人员），并将 Type-A 端连接到 Percept DK 载板。
-1. （可选）通过音频插孔（标记为“输出线”）将扬声器或耳机连接到 Azure Percept Audio。 这样即可听到语音助理的音频响应。 如果未连接扬声器或耳机，你仍可在演示窗口中查看文本形式的响应。 
+1. 使用附带的 Micro USB 到 USB Type-A 电缆将 Azure Percept Audio 设备连接到 Azure Percept DK 载板。 将电缆的 Micro USB 端连接到音频内插板（开发人员），并将 Type-A 端连接到 Percept DK 载板。
 
-1. 开启 devkit。 内插板上的 LED L02 将更改为闪烁白色，以指示设备已开机且 Audio SoM 正在进行身份验证。
+1. （可选）通过音频插孔（标记为“输出线”）将扬声器或耳机连接到 Azure Percept Audio 设备。 这样即可听到音频响应。
+
+1. 开启 devkit。 音频内插板上的 LED L02 会变为白光闪烁，指示设备已开机且 Audio SoM 正在进行身份验证。
 
 1. 等待身份验证过程完成，最多可能需要 3 分钟。
 
 1. 当你看到以下情况之一时，就可以开始创建原型了：
 
-    - LED L02 将更改为稳定白色。 这表示身份验证已完成，且 devkit 尚未配置关键字。
-    - 所有三个 LED 均变为蓝色。 这表示身份验证已完成，且 devkit 已配置关键字。
+    - LED L02 会变为纯白色：指示身份验证已完成，但 devkit 尚未配置关键字。
+    - 所有三个 LED 都变为蓝色：指示身份验证已完成，且 devkit 已配置关键字。
 
 ## <a name="next-steps"></a>后续步骤
 

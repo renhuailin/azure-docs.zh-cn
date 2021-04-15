@@ -3,17 +3,17 @@ title: ML 工作室（经典）：迁移到 Azure 机器学习 - 执行 R 脚本
 description: 重新生成工作室（经典）执行 R 脚本模块以在 Azure 机器学习上运行。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: ac9ad296029451d624345d8b3bb365d881ba9a84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18d9013b1a5afcf57b54cffc01a15948382210bb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103565551"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311033"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>在工作室（经典）中迁移“执行 R 脚本”模块
 
