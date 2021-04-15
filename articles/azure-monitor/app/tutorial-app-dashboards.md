@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperf-fy21q1
-ms.openlocfilehash: ebe34735a84e44526e6b96821a2a1da090884886
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7bad0b17bb2fed9d9f54cdd44042ec88708f35fd
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383246"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103719"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -59,7 +59,7 @@ ms.locfileid: "106383246"
 5. 找到“Markdown”磁贴，并将其拖动到仪表板中。  该磁贴允许添加 markdown 格式的文本，这对于向仪表板添加描述性文本而言是理想选择。 若要了解详细信息，请参阅[在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容](../../azure-portal/azure-portal-markdown-tile.md)。
 6. 将文本添加到磁贴属性，然后在仪表板画布上调整其大小。
 
-    [![编辑 markdown 磁贴](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+    [![编辑 markdown 磁贴](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/markdown.png#lightbox)
 
 7. 选择屏幕顶部的“完成自定义”以退出自定义模式。
 

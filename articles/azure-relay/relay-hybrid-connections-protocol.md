@@ -3,12 +3,12 @@ title: Azure 中继混合连接协议指南 | Microsoft 文档
 description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976956"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314212"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 
@@ -133,7 +133,7 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 查询字符串参数选项如下所示。
 
-| 参数        | 必需 | 说明
+| 参数        | 必须 | 说明
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | 是      | 对于侦听器角色，该参数必须是 **sb-hc-action=listen**
 | `{path}`         | 是      | 要注册该侦听器的预配置混合连接的 URL 编码命名空间路径。 此表达式追加至固定的 `$hc/` 路径部分。
@@ -193,7 +193,7 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 URL 必须原样使用，用于创建接受套接字，但是要包含以下参数：
 
-| 参数      | 必需 | 说明
+| 参数      | 必须 | 说明
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | 是      | 若要接受套接字，该参数必须为 `sb-hc-action=accept`
 | `{path}`       | 是      | （请参阅下文）
@@ -365,7 +365,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 `request` 中的 `address` URL 必须原样使用，用于建立会合套接字，但要包含以下参数：
 
-| 参数      | 必需 | 说明
+| 参数      | 必须 | 说明
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | 是      | 若要接受套接字，该参数必须为 `sb-hc-action=request`
 
@@ -498,7 +498,7 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [中继常见问题](relay-faq.md)
+* [中继常见问题](relay-faq.yml)
 * [创建命名空间](relay-create-namespace-portal.md)
 * [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)

@@ -2,13 +2,13 @@
 title: Azure VMware 解决方案限制
 description: Azure VMware 解决方案限制。
 ms.topic: include
-ms.date: 03/16/2021
-ms.openlocfilehash: 0e2359d951f5348b69e95ab7fa046981b2b7b32d
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 03/24/2021
+ms.openlocfilehash: 997a5ae96ff30226d055b7b966b128d7ec0ae5bd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622267"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105582537"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md -->
 
@@ -19,7 +19,7 @@ ms.locfileid: "103622267"
 | 每个私有云的群集数 | 12 |
 | 每个群集的最小节点数 | 3 |
 | 每个群集的最大节点数 | 16 |
-| 每个私有云的节点数 | 64 |
+| 每个私有云的节点数 | 96 |
 | 每个私有云的 vCenter 数 | 1  |
 | HCX 站点配对数 | 高级版 3 个，企业版 10 个 |
 | AVS ExpressRoute 最大链接 SDDC 数 | 4 |

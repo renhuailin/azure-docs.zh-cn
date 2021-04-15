@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8263e0805f48976222e66922be8c04e0902101d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7247aa45ae164cd4f2eb5f210e0ec6ec91a0a25f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102201832"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104059"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证（门户）。
 
@@ -75,7 +75,7 @@ ms.locfileid: "102201832"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="实例“概述”页突出显示这些重要的值":::
 
-现已准备好 Azure 数字孪生实例。 接下来，将授予相应的 Azure 用户权限对其进行管理。
+现已准备好 Azure 数字孪生实例。 接下来，你将向适当的 Azure 用户授予权限来管理该实例。
 
 ## <a name="set-up-user-access-permissions"></a>设置用户访问权限
 
@@ -110,9 +110,9 @@ ms.locfileid: "102201832"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure 数字孪生 CLI 命令测试单个 REST API 对实例的调用： 
-* [az dt reference](/cli/azure/ext/azure-iot/dt)
+使用 Azure 数字孪生 CLI 命令在实例上测试各个 REST API 调用： 
+* [az dt reference](/cli/azure/dt)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
-或者，请参阅如何使用验证码将客户端应用程序连接到实例：
+或者，了解如何使用验证码将客户端应用程序连接到实例：
 * [如何：编写应用验证码](how-to-authenticate-client.md)

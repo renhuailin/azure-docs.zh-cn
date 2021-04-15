@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e071692a1c6fe423b048dab884164d9b3c98f1fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613606"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106864"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户转换为合作伙伴中心的常见问题解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "102613606"
 
 | 区域 | 更改 |
 | --- | --- |
-| 帐户 | 无需创建新的合作伙伴中心帐户；你可以使用现有的云合作伙伴门户凭据登录到合作伙伴中心，现在你可在合作伙伴中心管理你的帐户、用户、权限和计费。 发布协议和公司配置文件信息将与付款配置文件信息、用户帐户和权限以及有效产品/服务一起迁移到新的合作伙伴中心帐户。 有关详细信息，请访问[在合作伙伴中心管理商业市场帐户](partner-center-portal/manage-account.md)。 |
+| 帐户 | 无需创建新的合作伙伴中心帐户；你可以使用现有的云合作伙伴门户凭据登录到合作伙伴中心，现在你可在合作伙伴中心管理你的帐户、用户、权限和计费。 发布协议和公司配置文件信息将与付款配置文件信息、用户帐户和权限以及有效产品/服务一起迁移到新的合作伙伴中心帐户。 有关详细信息，请访问[在合作伙伴中心管理商业市场帐户](manage-account.md)。 |
 | 产品/服务发布和产品/服务管理体验 | 我们已将你的产品/服务数据从云合作伙伴门户迁移到合作伙伴中心。 你现在可以在合作伙伴中心访问你的产品/服务，合作伙伴中心提供了改进的用户体验和直观的界面。 了解如何[更新商业市场中的现有产品/服务](partner-center-portal/update-existing-offer.md)。 |
 | 你的产品/服务在商业市场的供应情况 | 无更改。 如果你的产品/服务已在商业市场上线，则会继续保持上线状态。 |
 | 新的购买和部署 | 无更改。 你的客户可以继续购买和部署你的产品/服务，而不会出现任何中断。 |

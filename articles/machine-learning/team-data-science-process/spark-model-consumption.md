@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 659f61734001163ada6fd26caabe2fb007892f61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a8d46b5ff10fdaa62f7747aac654e0b1ca78c42
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774484"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259143"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 
@@ -374,7 +374,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 执行以上单元格所花的时间：19.22 秒
 
 ## <a name="score-a-linear-regression-model"></a>为线性回归模型评分
-我们已使用 [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) 通过随机梯度下降 (SGD) 训练线性回归模型进行优化，以预测支付的小费金额。 
+我们已使用 [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) 通过随机梯度下降 (SGD) 训练线性回归模型进行优化，以预测支付的小费金额。 
 
 本部分中的代码显示如何从 Azure Blob 存储加载线性回归模型、使用缩放变量评分，然后将结果保存回 blob。
 

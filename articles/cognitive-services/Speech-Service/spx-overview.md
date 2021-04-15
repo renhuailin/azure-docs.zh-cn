@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98539771"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106116"
 ---
 # <a name="what-is-the-speech-cli"></a>什么是语音 CLI？
 
@@ -36,7 +36,7 @@ ms.locfileid: "98539771"
 
 * 语音识别 - 将音频文件中的或直接将麦克风语音转换为文本，或转录录制的对话。
 
-* 语音合成 - 将文本文件中输入的文本或直接来自于命令行的输入文本转换为语音。 使用 [SSML 配置](speech-synthesis-markup.md)和[标准语音或神经语音](speech-synthesis-markup.md#standard-neural-and-custom-voices)来自定义语音输出特征。
+* 语音合成 - 将文本文件中输入的文本或直接来自于命令行的输入文本转换为语音。 使用 [SSML 配置](speech-synthesis-markup.md)和[标准语音或神经语音](speech-synthesis-markup.md#neural-and-custom-voices)来自定义语音输出特征。
 
 * 语音翻译 - 将源语言的音频翻译为目标语言的文本或音频。
 

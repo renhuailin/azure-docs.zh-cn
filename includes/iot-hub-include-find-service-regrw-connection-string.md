@@ -9,10 +9,10 @@ ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80756913"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
@@ -21,7 +21,7 @@ ms.locfileid: "80756913"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“资源组”  。 选择中心所在的资源组，然后从资源列表中选择中心。
 
-1. 在中心的左侧窗格中，选择“共享访问策略”  。
+1. 在中心的左侧窗格上，选择“共享访问策略”。
 
 1. 从策略列表上方的顶部菜单中选择“添加”  。
 
@@ -31,7 +31,7 @@ ms.locfileid: "80756913"
 
 1. 从策略列表中选择新策略。
 
-1. 在“共享访问密钥”  下，选择“连接字符串 - 主密钥”  所对应的“复制”图标并保存该值。
+1. 在“共享访问密钥”下，选择“连接字符串 - 主密钥”的复制图标并保存值。
 
     ![显示如何检索连接字符串](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
 

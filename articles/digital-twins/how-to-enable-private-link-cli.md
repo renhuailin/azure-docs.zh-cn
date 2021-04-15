@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102202937"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105708"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>使用专用链接实现专用访问（预览）：Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "102202937"
 
 ## <a name="prerequisites"></a>先决条件
 
-在设置专用终结点之前，需要一个可在其中部署终结点的 [**Azure 虚拟网络 (VNet)** ](../virtual-network/virtual-networks-overview.md)。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
+在设置专用终结点之前，需要一个可在其中部署终结点的 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md)。 如果尚无 VNet，可以按照 Azure 虚拟网络[快速入门](../virtual-network/quick-create-portal.md)中的一种方式进行设置。
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>管理 Azure 数字孪生实例的专用终结点 
 
@@ -53,33 +53,33 @@ az network private-endpoint create --connection-name {private_link_service_conne
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>管理实例上的专用终结点连接
 
-为 Azure 数字孪生实例创建专用终结点后，可以使用 [**az dt network private-endpoint connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) 命令继续管理与实例相关的专用终结点连接。 运算包括：
+为 Azure 数字孪生实例创建专用终结点后，可以使用 [**az dt network private-endpoint connection**](/cli/azure/dt/network/private-endpoint/connection) 命令继续管理与实例相关的专用终结点连接。 运算包括：
 * 显示专用终结点连接
 * 设置专用终结点连接的状态
 * 删除专用终结点连接
 * 列出实例的所有专用终结点连接
 
-有关详细信息和示例，请参阅 [**az dt network private-endpoint** 参考文档](/cli/azure/ext/azure-iot/dt/network/private-endpoint)。
+有关详细信息和示例，请参阅 [**az dt network private-endpoint** 参考文档](/cli/azure/dt/network/private-endpoint)。
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>管理 Azure 数字孪生实例上的其他专用链接信息
 
-你可以通过 [**az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link) 命令获取有关实例专用链接状态的更多信息。 运算包括：
+你可以通过 [**az dt network private-link**](/cli/azure/dt/network/private-link) 命令获取有关实例专用链接状态的更多信息。 运算包括：
 * 列出与 Azure 数字孪生实例关联的专用链接
 * 显示与实例关联的专用链接
 
-有关详细信息和示例，请参阅 [**az dt network private-link** 参考文档](/cli/azure/ext/azure-iot/dt/network/private-link)。
+有关详细信息和示例，请参阅 [**az dt network private-link** 参考文档](/cli/azure/dt/network/private-link)。
 
 ## <a name="disable--enable-public-network-access-flags"></a>禁用/启用公用网络访问标志
 
 可以将 Azure 数字孪生实例配置为拒绝所有公用连接，并仅允许专用终结点连接，以此增强网络安全性。 使用公用网络访问标志完成此操作。 
 
-此策略支持将 API 访问限制为仅使用专用链接连接。 将公用网络访问标志设置为“已禁用”时，所有从公有云对 Azure 数字孪生实例数据平面的 REST API 调用都将返回 `403, Unauthorized`。 或者，如果将策略设置为“已禁用”，并通过专用终结点发出请求，则 API 调用将成功。
+此策略支持将 API 访问限制为仅专用链接连接。 将公用网络访问标志设置为“已禁用”时，所有从公有云对 Azure 数字孪生实例数据平面的 REST API 调用都将返回 `403, Unauthorized`。 或者，如果将策略设置为“已禁用”，并通过专用终结点发出请求，则 API 调用将成功。
 
 本文介绍如何使用 [Azure CLI](/cli/azure/) 或 [ARMClient 命令工具](https://github.com/projectkudu/ARMClient)更新网络标志的值。 有关如何利用 Azure 门户执行此操作的说明，请参阅本文的[门户版本](how-to-enable-private-link-portal.md)。
 
 ### <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-在 Azure CLI 中，可以通过将 `--public-network-access` 参数添加到 `az dt create` 命令来禁用或启用公用网络访问。 尽管此命令也可用于创建新的实例，但你可以使用它来编辑现有实例的属性，方法是向其提供已存在的实例的名称。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)或[设置 Azure 数字孪生实例的常规说明](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)）。
+在 Azure CLI 中，可以通过将 `--public-network-access` 参数添加到 `az dt create` 命令来禁用或启用公用网络访问。 尽管此命令也可用于创建新的实例，但你可以使用它来编辑现有实例的属性，方法是向其提供已存在的实例的名称。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/dt#az_dt_create)或[设置 Azure 数字孪生实例的常规说明](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)）。
 
 若要对 Azure 数字孪生实例禁用公用网络访问，请使用 `--public-network-access` 参数，如下所示：
 
@@ -116,4 +116,4 @@ armclient PATCH /subscriptions/<your-Azure-subscription-ID>/resourceGroups/<yo
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 Azure 专用链接： 
-* [*什么是 Azure 专用链接服务？* ](../private-link/private-link-service-overview.md)
+* [什么是 Azure 专用链接服务？](../private-link/private-link-service-overview.md)

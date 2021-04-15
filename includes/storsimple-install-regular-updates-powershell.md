@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: dc50f94ae9b207961a71480c2fc172e88db79cf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67172983"
 ---
 #### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>通过 Windows PowerShell for StorSimple 安装常规更新
-1. 打开设备串行控制台，并选择选项 1“使用完整访问权限登录”****。 键入密码。 默认密码为 *Password1*。 
+1. 打开设备串行控制台，并选择选项 1“使用完整访问权限登录”。 键入密码。 默认密码为 *Password1*。 
 2. 在命令提示符处，键入：
    
      `Get-HcsUpdateAvailability`

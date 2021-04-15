@@ -3,17 +3,17 @@ title: ML 工作室（经典）：迁移到 Azure 机器学习 - 使用管道终
 description: 在 Azure 机器学习中将管道终结点与客户端应用程序集成。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: bf0624e0667c9fc6998fb28898a3376ca409180d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: fc7e222d400c2ded602e3d26d504896302fff014
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565573"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311781"
 ---
 # <a name="consume-pipeline-endpoints-from-client-applications"></a>使用客户端应用程序中的管道终结点
 

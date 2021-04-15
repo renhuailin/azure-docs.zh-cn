@@ -4,17 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 27a416db3b27ac25ba7a3b1712c76cd1c8fb632e
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 99b3732c1eaaa208e3fbd172c79b2a7125b6d1d1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821530"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103417690"
 ---
-默认音频流格式为 WAV（16 kHz 或 8 kHz，16 位，单声道 PCM）。 除了 WAV/PCM 外，还支持下列使用 GStreamer 的压缩输入格式。
+默认音频流格式为 WAV（16 KHz 或 8 kHz，16 位，单声道 PCM）。 除了 WAV/PCM 外，还可使用 GStreamer 支持下列压缩输入格式。
 
 - MP3
 - OPUS/OGG
 - FLAC
 - wav 容器中的 ALAW
 - wav 容器中的 MULAW
+- 任何（适用于媒体格式未知的情况）

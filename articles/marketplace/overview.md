@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780308"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103398"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>什么是 Microsoft 商业市场？
 
@@ -82,5 +82,5 @@ Azure 客户可通过 [Azure 门户](https://portal.azure.com/)中的“创建�
 ## <a name="next-steps"></a>后续步骤
 
 - 在 Microsoft Learn 中获取 [Microsoft 商业市场简介](/learn/modules/intro-commercial-marketplace/)。
-- 对于想在商业市场进行发布的新 Microsoft 合作伙伴，请参阅[在合作伙伴中心中创建商业市场帐户](partner-center-portal/create-account.md)。
+- 对于想在商业市场进行发布的新 Microsoft 合作伙伴，请参阅[在合作伙伴中心中创建商业市场帐户](create-account.md)。
 - 若要了解有关最新版本和未来版本的详细信息，请加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话。

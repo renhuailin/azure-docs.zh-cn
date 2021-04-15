@@ -3,12 +3,12 @@ title: 快速入门：使用 REST API 创建管理组
 description: 在本快速入门中，你将使用 REST API 创建管理组，将资源整理到资源层次结构中。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: ff1487bf25945c733402ddb74d1e102bea80b4b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26a1c0a8025a00155bcf0498e6dfa89a8a73d983
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592494"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259126"
 ---
 # <a name="quickstart-create-a-management-group-with-rest-api"></a>快速入门：使用 REST API 创建管理组
 
@@ -28,7 +28,7 @@ ms.locfileid: "99592494"
 
 ### <a name="create-in-rest-api"></a>在 REST API 中创建
 
-对于 REST API，请使用[管理组 - 创建或更新](/rest/api/resources/managementgroups/createorupdate)终结点来创建新的管理组。 在本例中，管理组 groupId 为 Contoso。
+对于 REST API，请使用[管理组 - 创建或更新](/rest/api/managementgroups/managementgroups/createorupdate)终结点来创建新的管理组。 在本例中，管理组 groupId 为 Contoso。
 
 - REST API URI
 
@@ -81,7 +81,7 @@ groupId 是要创建的唯一标识符。 此 ID 由其他命令用来引用此�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除上面创建的管理组，请使用[管理组 - 删除](/rest/api/resources/managementgroups/delete)终结点：
+若要删除上面创建的管理组，请使用[管理组 - 删除](/rest/api/managementgroups/managementgroups/delete)终结点：
 
 - REST API URI
 

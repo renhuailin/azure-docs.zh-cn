@@ -3,12 +3,12 @@ title: 专用事件中心概述 - Azure 事件中心 | Microsoft Docs
 description: 本文概述专用 Azure 事件中心，它提供事件中心的单租户部署。
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715609"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310761"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
@@ -52,7 +52,7 @@ ms.locfileid: "101715609"
 | 分区 | 每个事件中心 32 | 每个事件中心 1024 个<br/>每个 CU 2000 个 |
 | 使用者组 | 每个事件中心 20 | 每个 CU 无限制，每个事件中心 1000 |
 | 中转连接 | 包括 1,000 个，最大 5,000 个 | 包括 100000 个，最大 100000 个 |
-| [事件保留](event-hubs-features.md#event-retention) | 7 天，每个 TU 包含 84 GB | 90 天，每个 CU 包含 10 TB |
+| [事件保留期](event-hubs-features.md#event-retention) | 7 天，每个 TU 包含 84 GB | 90 天，每个 CU 包含 10 TB |
 | 捕获 | 按每小时支付 | 已含 |
 
 有关详细的配额和限制，请参阅[事件中心配额和限制](event-hubs-quotas.md)
@@ -71,4 +71,4 @@ ms.locfileid: "101715609"
 
 - [通过 Azure 门户创建事件中心群集](https://aka.ms/eventhubsclusterquickstart) 
 - [专用事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。 还可以联系 Microsoft 销售代表或 Microsoft 支持部门，获取关于专用事件中心容量的其他详细信息。
-- [事件中心常见问题解答](event-hubs-faq.md)中包含了定价信息并解答了一些有关事件中心的常见问题。
+- [事件中心常见问题解答](event-hubs-faq.yml)中包含了定价信息并解答了一些有关事件中心的常见问题。
