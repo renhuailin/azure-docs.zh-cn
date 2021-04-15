@@ -1,18 +1,15 @@
 ---
 title: 监视 Azure Site Recovery 进程服务器
 description: 本文介绍如何监视用于 VMware VM/物理服务器灾难恢复的 Azure Site Recovery 进程服务器
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0dcee641a2de73238557a6a29173f71ee1c4312a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86134734"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580557"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 

@@ -11,28 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90970201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606974"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>什么是 Azure 专用 HSM？
 
 Azure 专用 HSM 是一项 Azure 服务，用于提供 Azure 中的加密密钥存储。 专用 HSM 符合最严格的安全要求。 对于需要 FIPS 140-2 级别 3 验证设备并需对 HSM 设备进行全权控制的客户来说，专用 HSM 是理想的解决方案。 
 
- HSM 设备在全球多个 Azure 区域部署。 可以很容易地将它们预配为一对设备并配置为高可用性。 HSM 设备还可跨区域预配，目的是防范区域级故障转移的情况。 Microsoft 使用 Gemalto 的 [SafeNet Luna 网络 HSM 7（型号：A790）](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)设备提供专用 HSM 服务。 此设备提供最高级别的性能和加密集成选项。 
+ HSM 设备在全球多个 Azure 区域部署。 可以很容易地将它们预配为一对设备并配置为高可用性。 HSM 设备还可跨区域预配，目的是防范区域级故障转移的情况。 Microsoft 通过使用 [Thales Luna 7 HSM（型号：A790）](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)设备提供专用 HSM 服务。 此设备提供最高级别的性能和加密集成选项。 
 
-预配完成后，HSM 设备将直接连接到客户的虚拟网络。 在配置点到站点或站点到站点 VPN 连接时，也可以通过本地应用程序和管理工具访问它们。 客户会从 Gemalto 的支持门户获得配置和管理 HSM 设备所需的软件和文档。
+预配完成后，HSM 设备将直接连接到客户的虚拟网络。 在配置点到站点或站点到站点 VPN 连接时，也可以通过本地应用程序和管理工具访问它们。 客户可从 [Thales 客户支持门户](https://supportportal.thalesgroup.com/csm)获得配置和管理 HSM 设备所需的软件和文档。
 
 ## <a name="why-use-azure-dedicated-hsm"></a>为何使用 Azure 专用 HSM？
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 级别 3 符合性
 
-许多组织有严格的行业规范，规定加密密钥存储必须符合 [FIPS 140-2 级别 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 要求。 Microsoft 的多租户 Azure Key Vault 服务目前只提供 FIPS 140-2 级别 2 认证。 Azure 专用 HSM 可以满足金融服务行业、政府机构和其他必须符合 FIPS 140-2 级别 3 要求的用户的实际需求。
+许多组织都有严格的行业法规，规定必须将加密密钥存储在通过 [FIPS 140-2 级别 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 验证的 HSM 中。 Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM（预览版）](https://docs.microsoft.com/azure/key-vault/managed-hsm)可帮助各个行业（例如，金融服务行业、政府机构等）的客户达到 FIPS 140-2 级别 3 要求。 同时，Microsoft 的多租户 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) 服务目前使用通过 FIPS 140-2 级别 2 验证的 HSM。 
 
 ### <a name="single-tenant-devices"></a>单租户设备
 
@@ -48,7 +48,7 @@ Azure 专用 HSM 是一项 Azure 服务，用于提供 Azure 中的加密密钥�
 
 ### <a name="high-performance"></a>高性能
 
-出于多种原因，Gemalto 设备被选中用于此项服务。 它提供多种加密算法支持、多种受支持的操作系统和广泛的 API 支持。 部署的特定机型提供卓越的性能，对于 RSA-2048 来说，性能可以达到每秒 10,000 次操作的程度。 它支持 10 个分区，这些分区可以用于唯一的应用程序实例。 该设备是低延迟、大容量、高吞吐量的设备。
+出于多种原因，Thales 设备被选中用于此项服务。 它提供多种加密算法支持、多种受支持的操作系统和广泛的 API 支持。 部署的特定机型提供卓越的性能，对于 RSA-2048 来说，性能可以达到每秒 10,000 次操作的程度。 它支持 10 个分区，这些分区可以用于唯一的应用程序实例。 该设备是低延迟、大容量、高吞吐量的设备。
 
 ### <a name="unique-cloud-based-offering"></a>唯一的基于云的产品/服务
 
@@ -72,7 +72,7 @@ Azure 专用 HSM 不适合以下类型的方案：支持通过客户托管密钥
 
 ### <a name="it-depends"></a>视情况而定
 
-Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组合。 例如 FIPS 140-2 级别 3 要求。 此要求很常见，且专用 HSM 目前是满足它的唯一选择。 如果这些强制要求不相关，那么通常可以选择 Azure Key Vault 和专用 HSM。 在做出决定之前评估要求。
+Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组合。 例如 FIPS 140-2 级别 3 要求。 这项要求很常见，Azure 专用 HSM 和新的单租户产品/服务 [Azure Key Vault 托管 HSM（预览版）](https://docs.microsoft.com/azure/key-vault/managed-hsm)是目前满足此要求的唯一选择。 如果这些强制要求与你不相关，你通常可以在 Azure Key Vault 和 Azure 专用 HSM 之间进行选择。 在做出决定之前评估要求。
 
 需要权衡选择的情况包括： 
 
@@ -85,7 +85,7 @@ Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组
 
 这是一项高度专业化的服务。 因此，我们建议你完全理解本文档集中的关键概念，包括定价、支持和服务级别协议。 
 
-[Gemalto 集成指南](https://safenet.gemalto.com/partners/microsoft/)有助于简化将 HSM 配置到现有虚拟网络环境中的过程。 还有一些操作指南可帮助你确定如何设置部署体系结构。
+[Thales 集成指南](https://cpl.thalesgroup.com/partners/overview)有助于简化将 HSM 预配到现有虚拟网络环境中的过程。 还有一些操作指南可帮助你确定如何设置部署体系结构。
 
 * 高可用性
 * 物理安全性

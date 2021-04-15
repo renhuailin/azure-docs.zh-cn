@@ -4,12 +4,12 @@ description: 本文提供了创建 Java 应用程序的演练，该应用程序�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9bbd5d4290261ec96755f02a6179a7cde267d82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607977"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309401"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-eventhubs) 发送/接收事件
 
@@ -421,4 +421,4 @@ com.microsoft.azure.eventprocessorhost.EventProcessorHost 类提供了 2 个构�
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
-- [事件中心常见问题](event-hubs-faq.md)
+- [事件中心常见问题](event-hubs-faq.yml)

@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611644"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>排查 Azure 专用 HSM 服务问题
 
-Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azure 中注册和部署包含基础网络组件的 HSM 设备。 第二个方面是指配置 HSM 设备，做好与给定的工作负载或应用程序配合使用/集成的准备。 尽管 Azure 中的 Thales Luna Network HSM 设备与直接从 Thales 购买的相同，但由于它们是 Azure 中的资源，因此有一些独特的注意事项。 本文介绍了这些注意事项以及所产生的任何故障排除见解或最佳做法，确保关键信息的高可见性和访问权限。 开始使用此服务后，可通过向 Microsoft 或 Thales 发送支持请求直接获取权威信息。 
+Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azure 中注册和部署包含基础网络组件的 HSM 设备。 第二个方面是指配置 HSM 设备，做好与给定的工作负载或应用程序配合使用/集成的准备。 尽管 Azure 中的 [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) 设备与直接从 Thales 购买的相同，但由于它们是 Azure 中的资源，因此有一些独特的注意事项。 本文介绍了这些注意事项以及所产生的任何故障排除见解或最佳做法，确保关键信息的高可见性和访问权限。 开始使用此服务后，可通过向 Microsoft 或 Thales 发送支持请求直接获取权威信息。 
 
 > [!NOTE]
 > 应注意的是，在新部署的 HSM 设备上执行任何配置之前，应使用任何相关的修补程序对其进行更新。 特定的必需修补程序是 Thales 支持门户中的 [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789)，用于解决系统在重启过程中出现的未响应问题。
 
 ## <a name="hsm-registration"></a>HSM 注册
 
-专用 HSM 无法免费使用，因为它在云中提供硬件资源，因此是需要保护的宝贵资源。 因此，我们通过 HSMrequest@microsoft.com 借助电子邮件使用一个加入允许列表的过程。 
+专用 HSM 无法免费使用，因为它在云中提供硬件资源，因此是需要保护的宝贵资源。 因此，我们使用一个加入允许列表的过程，用户可以通过向 HSMrequest@microsoft.com 发送电子邮件来加入。 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>获取对专用 HSM 的访问权限
 
-如果你认为专用 HSM 会满足自己的密钥存储要求，则可向 HSMrequest@microsoft.com 发送电子邮件，请求访问权限。 请概述一下你的应用程序、你想要 HSM 的区域以及想要的 HSM 的数量。 如果你与 Microsoft 代表（例如客户主管或云解决方案架构师）打交道，则请在请求中提及他们。
+首先问问自己，[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) 或 [Azure 托管 HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview) 不能解决哪些用例。 然后，如果你认为只有专用 HSM 才能满足自己的密钥存储要求，则可向 HSMrequest@microsoft.com 发送电子邮件，请求访问权限。 请概述你的应用程序和用例、你想要 HSM 的区域以及想要的 HSM 数量。 如果你与 Microsoft 代表（例如客户主管或云解决方案架构师）打交道，则请在请求中提及他们。
 
 ## <a name="hsm-provisioning"></a>HSM 预配
 
@@ -66,7 +66,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 如果超出每个缩放单元 2 个 HSM 和每个区域 4 个 HSM 的限制，部署可能会失败。 若要避免这种情况，请确保先删除以前失败的部署中的资源，然后再重新部署。 请参照下面的“如何查看 HSM”项来检查资源。 如果你认为需要超出该配额（这主要是作为一种保护措施），请将详细信息通过电子邮件发送给 HSMrequest@microsoft.com。
 
 ### <a name="deployment-failure-based-on-capacity"></a>因容量而导致的部署失败
-如果某个特定的缩放单元或区域已满，即几乎所有的免费 HSM 均已预配，则可能会导致部署失败。 每个缩放单元有 11 个可供客户使用的 HSM，这意味着每个区域有 22 个。 每个缩放单元中还有 3 个备件和 1 个测试设备。 如果你认为自己可能已达到限制，请向 HSMrequest@microsoft.com 发送电子邮件，了解特定缩放单元的填充水平。
+如果某个特定的缩放单元或区域已满，即几乎所有的免费 HSM 均已预配，则可能会导致部署失败。 每个缩放单元有 12 个可供客户使用的 HSM，这意味着每个区域有 24 个。 每个缩放单元中还有 2 个备件和 1 个测试设备。 如果你认为自己可能已达到限制，请向 HSMrequest@microsoft.com 发送电子邮件，了解特定缩放单元的填充水平。
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>在已预配的情况下，如何查看 HSM？
 专用 HSM 是一项已加入允许列表的服务，因此在 Azure 门户中被视为“隐藏类型”。 若要查看 HSM 资源，必须勾选“显示隐藏的类型”复选框，如下所示。 HSM 始终带有 NIC 资源。在使用 SSH 进行连接之前，可以在该资源中找出 HSM 的 IP 地址。
@@ -112,7 +112,7 @@ Shell 管理员密码丢失会导致 HSM 密钥材料丢失。 应提交支持�
 以下各项是配置错误很常见或者有必要强调其影响的情况：
 
 ### <a name="hsm-documentation-and-software"></a>HSM 文档和软件
-Thales SafeNet Luna 7 HSM 设备的软件和文档不由 Microsoft 提供，必须直接从 Thales 下载。 在注册过程中，需要使用收到的 Thales 客户 ID 进行注册。 由 Microsoft 提供的设备的软件版本为 7.2，固件版本为 7.0.3。 Thales 于 2020 年初将文档公开，该文档可在[此处](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)找到。  
+[Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) 设备的软件和文档不由 Microsoft 提供，必须直接从 Thales 下载。 在注册过程中，需要使用收到的 Thales 客户 ID 进行注册。 由 Microsoft 提供的设备的软件版本为 7.2，固件版本为 7.0.3。 Thales 于 2020 年初将文档公开，该文档可在[此处](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)找到。  
 
 ### <a name="hsm-networking-configuration"></a>HSM 网络配置
 
@@ -120,7 +120,7 @@ Thales SafeNet Luna 7 HSM 设备的软件和文档不由 Microsoft 提供，必�
 
 ### <a name="hsm-device-reboot"></a>HSM 设备重启
 
-某些配置更改需要重启 HSM。 Microsoft 在 Azure 中对 HSM 的测试表明，在某些情况下，重启可能会停止响应。 这意味着必须在 Azure 门户中创建支持请求，请求强行重启。考虑到这是一个需要在 Azure 数据中心完成的手动过程，这可能需要长达 48 小时的时间才能完成。  若要避免这种情况，请确保已部署直接从 Thales 获得的重启修补程序。 请参阅 Thales Luna Network HSM 7.2 下载内容中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，获取一个建议用于解决系统在重启过程中出现的未响应问题的修补程序（注意：需要在 Thales 支持门户中注册才能下载）。
+某些配置更改需要重启 HSM。 Microsoft 在 Azure 中对 HSM 的测试表明，在某些情况下，重启可能会停止响应。 这意味着必须在 Azure 门户中创建支持请求，请求强行重启。考虑到这是一个需要在 Azure 数据中心完成的手动过程，这可能需要长达 48 小时的时间才能完成。  若要避免这种情况，请确保已部署直接从 Thales 获得的重启修补程序。 请参阅 Thales Luna 7 HSM 7.2 下载内容中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，获取一个建议用于解决系统在重启过程中出现的未响应问题的补丁（注意：需要在 [Thales 客户支持门户](https://supportportal.thalesgroup.com/csm)中注册才能下载）。
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS 证书不同步
 当证书过期或被配置更新的内容覆盖时，客户端可能会失去与 HSM 的连接。 应该针对每个 HSM 重新应用证书交换客户端配置。

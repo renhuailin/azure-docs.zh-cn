@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7a28757a0a5fabcd2aeac4e772cb39287fff3580
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3f689f24c80bcb49909bd28f077dc12520b4f47e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95563785"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105608"
 ---
 如果无法通过 VPN 连接连接到虚拟机，请查看以下项目：
 
@@ -26,4 +26,4 @@ ms.locfileid: "95563785"
 - 使用“ipconfig”检查分配给以太网适配器的 IPv4 地址，该适配器所在的计算机正是你要从其进行连接的计算机。 如果该 IP 地址位于要连接到的 VNet 的地址范围内，或者位于 VPNClientAddressPool 的地址范围内，则称为地址空间重叠。 当地址空间以这种方式重叠时，网络流量不会抵达 Azure，而是呆在本地网络中。
 - 验证是否在为 VNet 指定 DNS 服务器 IP 地址之后，才生成 VPN 客户端配置包。 如果更新了 DNS 服务器 IP 地址，请生成并安装新的 VPN 客户端配置包。
 
-若要详细了解如何排查 RDP 连接问题，请参阅[排查远程桌面连接到 VM 的问题](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)。
+若要详细了解如何排查 RDP 连接问题，请参阅[排查远程桌面连接到 VM 的问题](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)。

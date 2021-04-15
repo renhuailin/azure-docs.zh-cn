@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80132136"
 ---
 如果用户没有应用标记所需的访问权限，你可以向该用户分配“标记参与者”角色。 有关详细信息，请参阅[教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
@@ -21,13 +21,13 @@ ms.locfileid: "80132136"
 
    ![查看资源或资源组的标记](./media/resource-manager-tag-resources/view-tags.png)
 
-1. 若要添加标记，请选择“单击此处以添加标记”****。
+1. 若要添加标记，请选择“单击此处以添加标记”。
 
 1. 提供名称和值。
 
    ![添加标记](./media/resource-manager-tag-resources/add-tag.png)
 
-1. 根据需要继续添加标记。 完成后，选择“保存”****。
+1. 根据需要继续添加标记。 完成后，选择“保存”。
 
    ![保存标记](./media/resource-manager-tag-resources/save-tags.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "80132136"
 
    ![显示标记](./media/resource-manager-tag-resources/view-new-tags.png)
 
-1. 若要添加或删除标记，请选择“更改”****。
+1. 若要添加或删除标记，请选择“更改”。
 
 1. 若要删除标记，请选择回收站图标。 然后选择“保存”。
 
@@ -47,7 +47,7 @@ ms.locfileid: "80132136"
 
    ![选择多个资源](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. 添加名称和值。 完成后，选择“保存”****。
+1. 添加名称和值。 完成后，选择“保存”。
 
    ![选择“分配”](./media/resource-manager-tag-resources/select-assign.png)
 

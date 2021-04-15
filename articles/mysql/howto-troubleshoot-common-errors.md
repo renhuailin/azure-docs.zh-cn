@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631361"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109788"
 ---
-# <a name="common-errors"></a>常见错误
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>在迁移到 Azure Database for MySQL 服务期间或迁移后通常遇到的错误
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Azure Database for MySQL 是由 MySQL 社区版本提供支持的完全托管的服务。 托管服务环境中的 MySQL 体验可能与在你自己的环境中运行 MySQL 时不同。 在本文中，你将了解用户首次迁移到 Azure Database for MySQL 服务或在该服务上开发时可能遇到的一些常见错误。
 
@@ -48,7 +50,7 @@ BEGIN
 END;
 ```
 
-**解决方法**：要解决此错误，请从门户中的 [服务器参数](howto-server-parameters.md)边栏选项卡将 log_bin_trust_function_creators 设置为 1，执行 DDL 语句或导入架构来创建所需的对象，并在创建后将 log_bin_trust_function_creators parameter 参数恢复到它之前的值。
+**解决方法**：若要解决此错误，请从门户中的[服务器参数](howto-server-parameters.md)边栏选项卡将 log_bin_trust_function_creators 设置为 1，然后执行 DDL 语句或导入架构来创建所需的对象。 你可以继续让服务器的 log_bin_trust_function_creators 设置为 1，避免将来出现此错误。 我们的建议是设置 log_bin_trust_function_creators，因为在 Azure DB for MySQL 服务中，[MySQL 社区文档](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)中重点强调的安全风险最小（因为 bin 日志不会受到任何威胁）。
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>第 101 行出现错误 1227 (42000)：访问被拒绝；需要（至少一项）SUPER 权限才能执行此操作。 操作失败，退出代码为 1
 
@@ -84,6 +86,14 @@ DELIMITER ;
 
 > [!Tip] 
 > 使用 sed 或 perl 修改转储文件或 SQL 脚本以替换 DEFINER= 语句
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>第 18 行出现错误 1227 (42000)：访问被拒绝；需要(至少一项) SUPER 权限才能执行此操作
+
+如果尝试将启用了 GTID 的 MySQL 服务器的转储文件导入到目标 Azure Database for MySQL 服务器，则可能会发生上述错误。 Mysqldump 会将 SET @@SESSION.sql_log_bin=0 语句添加到使用 GTID 的服务器的转储文件中，这样就会在重新加载转储文件时禁用二进制日志记录。
+
+**解决方法**：若要在导入时解决此错误，请删除或注释掉 mysqldump 文件中的以下行，然后再次运行导入以确保导入成功。 
+
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN; SET @@SESSION.SQL_LOG_BIN= 0; SET @@GLOBAL.GTID_PURGED=''; SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>服务器管理员登录名的常见连接错误
 

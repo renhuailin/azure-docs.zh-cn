@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496603"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107124"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 数字孪生图
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496603"
 
 在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具为 [适用于 **Azure CLI** 的 Azure 数字孪生命令集](how-to-use-cli.md)。 
 
-可以使用 CLI 命令执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生，以及创建关系。 还可以参阅 [*az dt* 命令集的参考文档](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)，以查看完整的 CLI 命令集。
+可以使用 CLI 命令执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生，以及创建关系。 还可以参阅 [*az dt* 命令集的参考文档](/cli/azure/dt)，以查看完整的 CLI 命令集。
 
 在本教程中，你将...
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ ms.locfileid: "103496603"
 
 ## <a name="prerequisites"></a>必备条件
 
-若要完成本教程中的步骤，首先需要满足以下先决条件。
+若要完成本教程中的步骤，需要先具备以下先决条件。
 
 如果还没有 Azure 订阅，可以在开始前 **创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** 。
 
@@ -91,7 +91,7 @@ az dt show -n <ADT_instance_name>
     
     在计算机上导航到“Room.json”文件并选择“打开”。 然后针对 Floor.json 重复此步骤。
 
-1. 接下来，按如下所示使用 [**az dt model create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create) 命令将更新的 *Room* 模型上传到 Azure 数字孪生实例。 第二个命令上传另一个模型 *Floor*，在下一部分，还要使用该模型创建不同类型的孪生。
+1. 接下来，按如下所示使用 [**az dt model create**](/cli/azure/dt/model#az_dt_model_create) 命令将更新的 *Room* 模型上传到 Azure 数字孪生实例。 第二个命令上传另一个模型 *Floor*，在下一部分，还要使用该模型创建不同类型的孪生。
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ az dt show -n <ADT_instance_name>
     每个命令的输出将显示有关已成功上传的模型的信息。
 
     >[!TIP]
-    >还可以使用 model create 命令的 `--from-directory` 选项，同时上传一个目录中的所有模型。 有关详细信息，请参阅 [*az dt model create* 的可选参数](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters)。
+    >还可以使用 model create 命令的 `--from-directory` 选项，同时上传一个目录中的所有模型。 有关详细信息，请参阅 [*az dt model create* 的可选参数](/cli/azure/dt/model#az_dt_model_create-optional-parameters)。
 
-1. 按如下所示使用 [**az dt model list**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list) 命令验证是否已创建模型。 此命令将输出已上传到 Azure 数字孪生实例的所有模型的列表及其完整信息。 
+1. 按如下所示使用 [**az dt model list**](/cli/azure/dt/model#az_dt_model_list) 命令验证是否已创建模型。 此命令将输出已上传到 Azure 数字孪生实例的所有模型的列表及其完整信息。 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 现在，一些模型已上传到 Azure 数字孪生实例，你可以根据模型定义创建[数字孪生](concepts-twins-graph.md)。 数字孪生表示业务环境中的实体，这类似于农场中的传感器、大楼中的房间或汽车上的灯。 
 
-若要创建数字孪生，请使用 [**az dt twin create**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create) 命令。 必须引用孪生所基于的模型，并且可以选择定义模型中任何属性的初始值。 在此阶段，无需传递任何关系信息。
+若要创建数字孪生，请使用 [**az dt twin create**](/cli/azure/dt/twin#az_dt_twin_create) 命令。 必须引用孪生所基于的模型，并且可以选择定义模型中任何属性的初始值。 在此阶段，无需传递任何关系信息。
 
 1. 在 Cloud Shell 中运行此代码，以基于前面更新的 *Room* 模型以及另一个模型 *Floor* 创建多个孪生。 回想一下，Room 具有三个属性，因此可以为这些属性提供具有初始值的参数。 （初始化属性值在一般情况下是可选操作，但本教程需要此操作。）
 
@@ -151,7 +151,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
     
     每个命令的输出将显示有关已成功创建的孪生的信息（包括随房间孪生一起初始化的房间孪生属性）。
 
-1. 可按如下所示使用 [**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) 命令验证是否已创建孪生。 所示的查询将查找 Azure 数字孪生实例中的所有数字孪生。
+1. 可按如下所示使用 [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) 命令验证是否已创建孪生。 所示的查询将查找 Azure 数字孪生实例中的所有数字孪生。
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 你可以修改已创建的孪生的属性。 
 
-1. 运行以下 [**az dt twin update**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) 命令，将 *room0* 的 RoomName 从 *Room0* 更改为 *PresidentialSuite*：
+1. 运行以下 [**az dt twin update**](/cli/azure/dt/twin#az_dt_twin_update) 命令，将 *room0* 的 RoomName 从 *Room0* 更改为 *PresidentialSuite*：
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="Cloud Shell 屏幕截图，其中显示了 update 命令的结果，结果中包括 RoomName 的值 PresidentialSuite。" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. 可以通过运行 [**az dt twin show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) 命令查看 *room0* 的信息，来验证更新是否成功：
+1. 可以通过运行 [**az dt twin show**](/cli/azure/dt/twin#az_dt_twin_show) 命令查看 *room0* 的信息，来验证更新是否成功：
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 可由你在两个不同孪生之间创建的关系的类型，是在前面上传的[模型](#model-a-physical-environment-with-dtdl)中定义的。 [*Floor* 的模型定义](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)指定楼层可以有一个名为 *contains* 的关系类型。 因此，可以创建从每个 *Floor* 孪生到它所包含的相应房间的 *contains* 类型的关系。
 
-若要添加关系，请使用 [**az dt twin relationship create**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create) 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。 如果一个关系已定义为具有属性，则还可以在此命令中初始化关系属性。
+若要添加关系，请使用 [**az dt twin relationship create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) 命令。 指定该关系的来源孪生、关系类型，以及该关系要连接到的孪生。 最后，为该关系指定唯一的 ID。 如果一个关系已定义为具有属性，则还可以在此命令中初始化关系属性。
 
 1. 运行以下代码，将来自前面创建的每个 *Floor* 孪生的 *contains* 类型的关系添加到相应的 *Room* 孪生。 关系的名称分别为 *relationship0* 和 *relationship1*。
 
@@ -240,7 +240,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>查询孪生图以回答环境问题
 
-Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 在 Azure CLI 中，这是使用 [**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) 命令来实现的。
+Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query-language.md)孪生图，以解答有关环境的问题。 在 Azure CLI 中，这是使用 [**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) 命令来实现的。
 
 在 Cloud Shell 中运行以下查询可以回答有关示例环境的一些问题。
 
@@ -308,7 +308,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 * **如果你打算继续学习下一篇教程**，在此之前可以保留本教程中设置的资源而不要清除任何内容，并重复使用 Azure 数字孪生实例。
 
-* **如果你要继续使用 Azure 数字孪生实例，但同时想要清除其所有模型、孪生和关系**，可以分别使用 [**az dt twin relationship delete**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete)、[**az dt twin delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete) 和 [**az dt model delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) 命令清除实例中的关系、孪生和模型。
+* **如果你要继续使用 Azure 数字孪生实例，但同时想要清除其所有模型、孪生和关系**，可以分别使用 [**az dt twin relationship delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[**az dt twin delete**](/cli/azure/dt/twin#az_dt_twin_delete) 和 [**az dt model delete**](/cli/azure/dt/model#az_dt_model_delete) 命令清除实例中的关系、孪生和模型。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

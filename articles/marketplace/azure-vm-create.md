@@ -7,18 +7,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: ffc09daa15e742ca2b5b8a2fa9323e33fe317c60
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 1ea8583b33fbe711fcffbf9626236923ecd0df8b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200392"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107221"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>如何在 Azure 市场中创建虚拟机产品/服务
 
 本文介绍如何在 [Azure 市场](https://azuremarketplace.microsoft.com/)中创建 Azure 虚拟机产品/服务。 它介绍基于 Windows 和基于 Linux 的虚拟机（包含操作系统、虚拟硬盘 (VHD) 以及多达 16 个数据磁盘）。
 
-在开始之前，请[在合作伙伴中心创建商业市场帐户](partner-center-portal/create-account.md)。 确保帐户已注册加入商业市场计划。
+在开始之前，请[在合作伙伴中心创建商业市场帐户](create-account.md)。 确保帐户已注册加入商业市场计划。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -58,20 +58,7 @@ ms.locfileid: "103200392"
 
 ## <a name="configure-customer-leads-management"></a>配置潜在客户管理
 
-将产品/服务发布到合作伙伴中心的商业市场时，将其连接到客户关系管理 (CRM) 系统。 这样，只要有人表示有兴趣购买或使用产品，你就会收到客户的联系信息。 如果你要启用体验版（参阅上一部分），则必须连接到 CRM。 否则，连接到 CRM 是可选的选项。
-
-1. 在“潜在客户”下，选择“连接”链接。 
-1. 在“连接详细信息”对话框中，选择潜在顾客目标。
-1. 填写显示的字段。 有关详细步骤，请参阅以下文章：
-
-   - [将你的产品/服务配置为将潜在顾客发送到 Azure 表](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-   - [配置产品/服务以将潜在顾客发送到 Dynamics 365 Customer Engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement)（以前称为 Dynamics CRM Online）
-   - [配置产品/服务以将潜在顾客发送到 HTTPS 终结点](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-   - [配置你的产品/服务以将潜在顾客发送到 Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-   - [配置你的产品/服务以将潜在顾客发送到 Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
-
-1. 若要验证你提供的配置，请选择“验证”链接。
-1. 选择“连接”。
+[!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
 选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“属性”。 
 

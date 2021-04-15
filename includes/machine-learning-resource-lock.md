@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 25e304daf75b60a7d037640d496ed0972581f13a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92204450"
 ---
 Azure 允许你在资源上放置锁，这样这些资源就无法被删除，或者会处于只读状态。 __锁定资源可能会导致意外结果。__ 某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 
