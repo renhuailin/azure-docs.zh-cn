@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f1653158f7a181ad2d61bc726ba7765eab934341
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577244"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107459"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -426,7 +426,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/ext/azure-iot/dt) 来删除要移除的元素。
+* 如果要继续使用本文中设置的 Azure 数字孪生实例，但想要清除其部分或全部模型、孪生和关系，可在 [Azure Cloud Shell](https://shell.azure.com) 窗口中使用 CLI 命令 [az dt](/cli/azure/dt) 来删除要移除的元素。
 
     此选项不会删除在本教程中创建的任何其他 Azure 资源（IoT 中心、Azure Functions 应用等）。 可以使用适用于每种资源类型的 [dt 命令](/cli/azure/reference-index)分别删除这些资源。
 

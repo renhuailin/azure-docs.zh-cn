@@ -9,10 +9,10 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b7c097306ba46d4f0024aecc55994508e2d8a090
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011678"
 ---
 为了在 Azure 文件共享中保护数据以防数据丢失或损坏，所有 Azure 文件共享都在写入每个文件时存储了该文件的多个副本。 可以根据工作负载的要求选择额外的冗余度。 Azure 文件存储目前支持以下数据冗余选项：

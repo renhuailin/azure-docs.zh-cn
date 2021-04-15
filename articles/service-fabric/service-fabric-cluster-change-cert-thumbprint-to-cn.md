@@ -3,12 +3,12 @@ title: 更新群集以使用证书公用名称
 description: 了解如何将 Azure Service Fabric 群集证书从基于指纹的声明转换为公用名。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97900781"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308007"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>将群集证书从基于指纹的声明转换为公用名
 
@@ -45,7 +45,7 @@ Service Fabric 支持以两种方式通过 CN 声明证书：
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>上传证书并将其安装在规模集中
 
-在 Azure 中，用于获取和预配证书的推荐机制涉及 Azure Key Vault 及其工具。 与群集证书声明匹配的证书必须预配到构成群集的虚拟机规模集的每个节点。 有关详细信息，请参阅[虚拟机规模集上的机密](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm)。
+在 Azure 中，用于获取和预配证书的推荐机制涉及 Azure Key Vault 及其工具。 与群集证书声明匹配的证书必须预配到构成群集的虚拟机规模集的每个节点。 有关详细信息，请参阅[虚拟机规模集上的机密](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-securely-ship-a-certificate-to-the-vm-)。
 
 在群集的证书声明中进行更改之前，必须在群集的每个节点类型的虚拟机上安装当前群集证书和目标群集证书。 [证书的旅程](cluster-security-certificate-management.md#the-journey-of-a-certificate)中深入讨论了从证书颁发到预配到 Service Fabric 节点中这一段旅程。
 

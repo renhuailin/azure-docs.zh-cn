@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176614"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608731"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -23,10 +23,13 @@ ms.locfileid: "102176614"
 > [!div class="checklist"]
 >
 > - 为 PySpark (Python) 创建 Apache Spark 作业定义
-> - 为 Spark(Scala) 创建 Apache Spark 作业定义
-> - 为 .NET Spark(C#/F#) 创建 Apache Spark 作业定义
+> - 为 Spark (Scala) 创建 Apache Spark 作业定义
+> - 为 .NET Spark (C#/F#) 创建 Apache Spark 作业定义
+> - 通过导入 JSON 文件创建作业定义
+> - 将 Apache Spark 作业定义文件导出到本地
 > - 以批处理作业形式提交 Apache Spark 作业定义
 > - 将 Apache Spark 作业定义添加到管道
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,6 +39,7 @@ ms.locfileid: "102176614"
 * 无服务器 Apache Spark 池。
 * ADLS Gen2 存储帐户。 你需要是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据参与者。 如果还不是该所有者，则需要手动添加权限。
 * 如果不想使用工作区默认存储，请在 Synapse Studio 中链接所需的 ADLS Gen2 存储帐户。 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>为 PySpark (Python) 创建 Apache Spark 作业定义
 
@@ -160,6 +164,57 @@ ms.locfileid: "102176614"
 
       ![发布 dotnet 定义](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>通过导入 JSON 文件创建 Apache Spark 作业定义
+
+ 可以从 Apache Spark 作业定义资源管理器的“操作”(...) 菜单将现有的本地 JSON 文件导入 Azure Synapse 工作区，以创建新的 Apache Spark 作业定义。
+
+ ![创建导入定义](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Spark 作业定义与 Livy API 完全兼容。 可以在本地 JSON 文件中为其他 Livy 属性 [(Livy Docs - REST API (apache.org)](https://livy.incubator.apache.org/docs/latest/rest-api.html) 添加其他参数。 还可以在配置属性中指定与 Spark 配置相关的参数，如下所示。 然后，可以重新导入 JSON 文件，以便为批处理作业创建新的 Apache Spark 作业定义。 Spark 定义导入的示例 JSON：
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![其他 livy 属性](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>导出现有的 Apache Spark 作业定义文件
+
+ 可以从文件资源管理器的“操作” (...) 菜单将现有的 Apache Spark 作业定义文件导出到本地。 可以进一步更新 JSON 文件以获取其他 Livy 属性，并在必要时将其重新导入以创建新的作业定义。
+
+ ![创建导出定义](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![创建导出定义 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>以批处理作业形式提交 Apache Spark 作业定义
 
 创建 Apache Spark 作业定义后，可将其提交到 Apache Spark 池。 请确保你是所要使用的 ADLS Gen2 文件系统的存储 Blob 数据参与者。 如果还不是该所有者，则需要手动添加权限。
@@ -202,6 +257,7 @@ ms.locfileid: "102176614"
      ![添加到管道 1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![添加到管道 2](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

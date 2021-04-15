@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 891276f7a37bfb2397101388f430a297bdca0a21
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e030e6466570d3fc2abf809ca09d46c9f596b765
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445672"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104052"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 
@@ -28,7 +28,7 @@ ms.locfileid: "102445672"
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
+你需要先安装语音 SDK，然后才能执行任何操作。 根据平台的不同，按照“关于语音 SDK”一文中<a href="/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">获取语音 SDK </a> 部分的说明进行操作。
 
 ## <a name="import-dependencies"></a>导入依赖项
 

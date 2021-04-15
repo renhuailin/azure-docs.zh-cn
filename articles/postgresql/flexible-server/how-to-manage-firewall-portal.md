@@ -1,17 +1,17 @@
 ---
 title: 管理防火墙规则 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
 description: 使用 Azure 门户在 Azure Database for PostgreSQL 灵活服务器中创建和管理防火墙规则
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 35f9164634d906fe36d6b0f3d3ec861652f652dd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 36f282571dc0f3b8f6b9298c23042c955bc59058
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551133"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225744"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户在 Azure Database for PostgreSQL 灵活服务器中创建和管理防火墙规则
 

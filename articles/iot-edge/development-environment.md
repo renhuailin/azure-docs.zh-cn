@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a253ff5fde0667c80be5a5b3af00e74abebdc609
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103487694"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030247"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>为 IoT Edge 准备开发和测试环境
 
@@ -123,5 +123,4 @@ IoT Edge 设备容器是一个完整的 IoT Edge 设备，可以在任何带有�
 
 * [向 Azure IoT Edge 进行持续集成和持续部署](how-to-continuous-integration-continuous-deployment.md)
 * [使用 Azure DevOps 入门版为 IoT Edge 创建 CI/CD 管道](how-to-devops-starter.md)
-* [Azure IoT Edge Jenkins 插件](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub 存储库](https://github.com/toolboc/IoTEdge-DevOps)

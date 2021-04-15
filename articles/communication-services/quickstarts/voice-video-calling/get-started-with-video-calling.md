@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 82f4d9028fa94d4df0ff089fda213d64e13d56ec
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487864"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604424"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>快速入门：在应用中添加 1:1 视频呼叫 (JavaScript)
 
@@ -23,8 +23,8 @@ ms.locfileid: "103487864"
 ## <a name="prerequisites"></a>必备条件
 - 获取具有有效订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/en/) Active LTS 和 Maintenance LTS 版本（8.11.1 和 10.14.1）
-- 创建活动的通信服务资源。 [创建通信服务资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp)。
-- 创建用于实例化呼叫客户端的用户访问令牌。 [了解如何创建和管理用户访问令牌](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens?pivots=programming-language-csharp)。
+- 创建活动的通信服务资源。 [创建通信服务资源](../create-communication-resource.md?pivots=platform-azp&tabs=windows)。
+- 创建用于实例化呼叫客户端的用户访问令牌。 [了解如何创建和管理用户访问令牌](../access-tokens.md?pivots=programming-language-csharp)。
 
 ## <a name="setting-up"></a>设置
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
@@ -33,9 +33,11 @@ ms.locfileid: "103487864"
 mkdir calling-quickstart && cd calling-quickstart
 ```
 ### <a name="install-the-package"></a>安装包
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫 SDK。
 
-本快速入门使用了 Azure 通信呼叫客户端库 `1.0.0.beta-6`。 
+> [!IMPORTANT]
+> 本快速入门使用 Azure 通信服务呼叫 SDK 版本 `1.0.0.beta-10`。 
+
 
 ```console
 npm install @azure/communication-common --save
@@ -105,7 +107,7 @@ npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-d
 在名为 client.js 的项目的根目录中创建一个文件，以包含此快速入门的应用程序逻辑。 添加以下代码以导入呼叫客户端，并获取对 DOM 元素的引用。
 
 ```JavaScript
-import { CallClient, CallAgent, Renderer, LocalVideoStream } from "@azure/communication-calling";
+import { CallClient, CallAgent, VideoStreamRenderer, LocalVideoStream } from "@azure/communication-calling";
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
@@ -124,18 +126,18 @@ let rendererRemote;
 ```
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
+以下类和接口处理 Azure 通信服务呼叫 SDK 的某些主要功能：
 
 | 名称      | 说明 | 
 | :---        |    :----   |
-| CallClient  | CallClient 是呼叫客户端库的主入口点。      |
+| CallClient  | CallClient 是呼叫 SDK 的主入口点。      |
 | CallAgent  | CallAgent 用于启动和管理呼叫。        |
 | DeviceManager | DeviceManager 用于管理媒体设备。    |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现用于实例化 CallAgent 的 CommunicationTokenCredential 接口。        |
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>对客户端进行身份验证并访问 DeviceManager
 
-需将 <USER_ACCESS_TOKEN> 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅用户访问令牌文档。 使用 CallClient 通过 CommunicationUserCredential 初始化一个 CallAgent 实例，该实例使我们能够拨打和接听电话。 若要访问 DeviceManager，必须先创建 callAgent 实例。 然后，可以在 `CallClient` 实例上使用 `getDeviceManager` 方法来获取 `DeviceManager`。
+需将 <USER_ACCESS_TOKEN> 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅用户访问令牌文档。 使用 `CallClient`，通过 `CommunicationUserCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 若要访问 `DeviceManager`，必须先创建 callAgent 实例。 然后，可以在 `CallClient` 实例上使用 `getDeviceManager` 方法来获取 `DeviceManager`。
 
 将以下代码添加到 `client.js`：
 
@@ -154,7 +156,7 @@ init();
 
 添加事件侦听器，以便在单击 `callButton` 时发起呼叫：
 
-首先必须使用 deviceManager getCameraList API 枚举本地相机。 本快速入门将使用集合中的第一个相机。 选择所需的相机后，将在 videoOptions 内部构造一个 LocalVideoStream 实例，并将其作为呼叫方法的 localVideoStream 数组中的项传入。 呼叫接通后，会自动开始将视频流发送给其他参与者。 
+首先，必须使用 deviceManager `getCameraList` API 枚举本地相机。 本快速入门将使用集合中的第一个相机。 选择所需的相机后，就会构造一个 LocalVideoStream 实例，该实例在 `videoOptions` 中作为 localVideoStream 数组中的一个项传递给 call 方法。 呼叫接通后，会自动开始将视频流发送给其他参与者。 
 
 ```JavaScript
 callButton.addEventListener("click", async () => {
@@ -179,47 +181,47 @@ callButton.addEventListener("click", async () => {
     callButton.disabled = true;
 });
 ```  
-若要呈现 `LocalVideoStream`，需要创建 `Renderer` 的新实例，然后使用异步 `createView` 方法创建新的 RendererView 实例。 然后，可以将 `view.target` 附加到任何 UI 元素。 
+若要呈现 `LocalVideoStream`，需要创建 `VideoStreamRenderer` 的新实例，然后使用异步 `createView` 方法创建新的 `VideoStreamRendererView` 实例。 然后，可以将 `view.target` 附加到任何 UI 元素。 
 
 ```JavaScript
 async function localVideoView() {
-    rendererLocal = new Renderer(localVideoStream);
+    rendererLocal = new VideoStreamRenderer(localVideoStream);
     const view = await rendererLocal.createView();
     document.getElementById("myVideo").appendChild(view.target);
 }
 ```
-通过呼叫实例上的 `remoteParticipants` 集合提供所有远程参与者。 需要订阅当前呼叫的远程参与者，并侦听事件 `remoteParticipantsUpdated` 以订阅添加的远程参与者。
+通过呼叫实例上的 `remoteParticipants` 集合提供所有远程参与者。 你需要侦听事件 `remoteParticipantsUpdated`，这样，当有新的远程参与者添加到呼叫中时，系统就会通知你。 你还需要循环访问 `remoteParticipants` 集合来订阅其中的每一项，以便订阅其视频流。 
 
 ```JavaScript
 function subscribeToRemoteParticipantInCall(callInstance) {
-    callInstance.remoteParticipants.forEach( p => {
-        subscribeToRemoteParticipant(p);
-    })
     callInstance.on('remoteParticipantsUpdated', e => {
         e.added.forEach( p => {
-            subscribeToRemoteParticipant(p);
+            subscribeToParticipantVideoStreams(p);
         })
-    });   
+    }); 
+    callInstance.remoteParticipants.forEach( p => {
+        subscribeToParticipantVideoStreams(p);
+    })
 }
 ```
-可以订阅当前呼叫的 `remoteParticipants` 集合，并检查 `videoStreams` 集合以列出每个参与者的流。 还需要订阅 remoteParticipantsUpdated 事件以处理添加的远程参与者。 
+需要订阅 `videoStreamsUpdated` 事件以处理已添加的远程参与者的视频流。 可以在遍历当前呼叫的 `remoteParticipants` 集合时检查 `videoStreams` 集合以列出每个参与者的流。
 
 ```JavaScript
-function subscribeToRemoteParticipant(remoteParticipant) {
-    remoteParticipant.videoStreams.forEach(v => {
-        handleVideoStream(v);
-    });
+function subscribeToParticipantVideoStreams(remoteParticipant) {
     remoteParticipant.on('videoStreamsUpdated', e => {
         e.added.forEach(v => {
             handleVideoStream(v);
         })
+    });
+    remoteParticipant.videoStreams.forEach(v => {
+        handleVideoStream(v);
     });
 }
 ```
 必须订阅 `remoteVideoStream` 事件才能呈现 `isAvailableChanged`。 如果该 `isAvailable` 属性更改为 `true`，则远程参与者正在发送流。 每当远程流的可用性发生变化时，可以选择销毁整个 `Renderer`、特定的 `RendererView`，或将其保留，但这将导致显示空白的视频帧。
 ```JavaScript
 function handleVideoStream(remoteVideoStream) {
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             remoteVideoView(remoteVideoStream);
         } else {
@@ -231,11 +233,11 @@ function handleVideoStream(remoteVideoStream) {
     }
 }
 ```
-若要呈现 `RemoteVideoStream`，需要创建 `Renderer` 的新实例，然后使用异步 `createView` 方法创建新的 `RendererView` 实例。 然后，可以将 `view.target` 附加到任何 UI 元素。 
+若要呈现 `RemoteVideoStream`，需要创建 `VideoStreamRenderer` 的新实例，然后使用异步 `createView` 方法创建新的 `VideoStreamRendererView` 实例。 然后，可以将 `view.target` 附加到任何 UI 元素。 
 
 ```JavaScript
 async function remoteVideoView(remoteVideoStream) {
-    rendererRemote = new Renderer(remoteVideoStream);
+    rendererRemote = new VideoStreamRenderer(remoteVideoStream);
     const view = await rendererRemote.createView();
     document.getElementById("remoteVideo").appendChild(view.target);
 }
@@ -259,7 +261,7 @@ callAgent.on('incomingCall', async e => {
     const addedCall = await e.incomingCall.accept({videoOptions: {localVideoStreams:[localVideoStream]}});
     call = addedCall;
 
-    subscribeToRemoteParticipantInCall(addedCall);   
+    subscribeToRemoteParticipantInCall(addedCall);  
 });
 ```
 ## <a name="end-the-current-call"></a>结束当前呼叫
@@ -330,10 +332,12 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 下载示例应用。
 
 ## <a name="clean-up-resources"></a>清理资源
-如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource?tabs=windows&pivots=platform-azp#clean-up-resources)的详细信息。
+如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](../create-communication-resource.md?pivots=platform-azp&tabs=windows#clean-up-resources)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下文章：
+
 - 查看[网络呼叫示例](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)
-- 了解[呼叫客户端库功能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
+- 了解如何[调用 SDK 功能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)
 - 了解有关[呼叫工作原理](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)的详细信息
+

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add2a4aba1f7664b919e88992b2a1d71e8291b53
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103007925"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226763"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure 媒体服务常见方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "103007925"
 
 [![显示针对 Azure 媒体服务对象数据模型进行开发时的某些最常用对象的关系图。](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
-可在 [此处](https://media.windows.net/API/$metadata?api-version=2.15)查看完整模型。  
+可在 [此处](https://m.eet.com/media/1170326/ms-part1.pdf)查看完整模型。  
 
 ## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>保护存储中的内容并以明文（非加密）形式交付流式处理媒体
 
