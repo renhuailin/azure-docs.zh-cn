@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 38ba5679731b5e52eb06751a625aea9df69c76ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14d9c762702648d25efcbcc7ac85824659e20f05
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643222"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304063"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -355,7 +355,7 @@ ms.locfileid: "105643222"
 
    Azure 资源管理器客户端 ID 是硬编码的。 Azure 资源管理器租户 ID 和 Azure 资源管理器订阅 ID 均存在于你先前运行的 `az login` 命令的输出中。 Azure 资源管理器客户端密码是你设置的 Azure 资源管理器密码。
 
-   有关详细信息，请参阅 [Azure 资源管理器密码](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)。
+   有关详细信息，请参阅 [Azure 资源管理器密码](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)。
 
 5. 将配置文件更改为 2019-03-01 混合版本。 若要更改配置文件版本，请运行以下命令：
 

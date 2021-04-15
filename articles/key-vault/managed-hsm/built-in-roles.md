@@ -8,28 +8,28 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 01e96922d9c0c47eaf4d430e92eafcd9d0964e13
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557218"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>托管 HSM 本地 RBAC 内置角色
 
-托管 HSM 本地 RBAC 具有多个内置角色，可将这些角色分配给用户、服务主体、组和托管标识。 若要允许主体执行某一操作，需要为其分配一个角色，该角色授予其执行该操作的权限。 通过这些角色和操作，你只能管理数据平面操作的权限。 若要管理托管 HSM 资源的控制平面权限（如创建新的托管 HSM 或更新、移动、删除现有的 HSM），必须使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+托管 HSM 本地 RBAC 有几个内置角色。 可以将这些角色分配给用户、服务主体、组和托管标识。 若要允许主体执行某一操作，必须为其分配一个角色，该角色授予其执行该操作的权限。 通过这些角色和操作，你只能管理数据平面操作的权限。 若要管理托管 HSM 资源的控制平面权限，必须使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 控制平面操作的一些示例包括创建新的托管 HSM 或对其进行更新、移动、删除操作。
 
 ## <a name="built-in-roles"></a>内置角色
 
 |角色名称|说明|ID|
 |---|---|---|
-|托管 HSM 管理员| 授予对所有数据操作的完全访问权限。|a290e904-7015-4bba-90c8-60543313cdb4|
-|托管 HSM 加密管理人员| 授予对所有密钥管理和密钥加密操作的完全访问权限|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
-|托管 HSM 加密用户|授予为加密操作创建和使用密钥的权限。 不能永久删除密钥。|21dbd100-6940-42c2-9190-5d6cb909625b|
+|托管 HSM 管理员| 授予执行与安全域、完全备份/还原和角色管理有关的所有操作的权限。 不允许执行任何密钥管理操作。|a290e904-7015-4bba-90c8-60543313cdb4|
+|托管 HSM 加密管理人员|授予执行所有角色管理、清除或恢复已删除密钥以及导出密钥的权限。 不允许执行任何其他的密钥管理操作。|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
+|托管 HSM 加密用户|授予执行除清除或恢复已删除密钥和导出密钥以外的所有密钥管理操作的权限。|21dbd100-6940-42c2-9190-5d6cb909625b|
 |托管 HSM 策略管理员| 授予创建和删除角色分配的权限|4bd23610-cdcf-4971-bdee-bdc562cc28e4|
-|托管 HSM 加密审核者|授予读取（但不使用）密钥的读取权限|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
+|托管 HSM 加密审核者|授予读取（但不使用）密钥属性的读取权限。|2c18b078-7c48-4d3a-af88-5a3a1b3f82b3|
 |托管 HSM 加密服务加密| 授予使用密钥进行服务加密的权限。 |33413926-3206-4cdd-b39a-83574fe37a17|
-|托管 HSM 备份| 授予执行单个密钥或完整 HSM 备份的权限。 |7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
+|托管 HSM 备份| 授予执行单个密钥或完整 HSM 备份的权限。|7b127d3c-77bd-4e3e-bbe0-dbb8971fa7f8|
 
 ## <a name="permitted-operations"></a>允许执行的运算
 > [!NOTE]  
@@ -45,29 +45,32 @@ ms.locfileid: "94445211"
 /securitydomain/upload/read|<center>X</center>||||||
 /securitydomain/transferkey/read|<center>X</center>||||||
 |**密钥管理**|
-|/keys/read/action|<center>X</center>|<center>X</center>|<center>X</center>||<center>X</center>||<center>X</center>|
-|/keys/write/action|<center>X</center>|<center>X</center>|<center>X</center>||||
-|/keys/create|<center>X</center>|<center>X</center>|<center>X</center>||||
-|/keys/delete|<center>X</center>|<center>X</center>|||||
-|/keys/deletedKeys/read/action|<center>X</center>|<center>X</center>|||||
-|/keys/deletedKeys/recover/action|<center>X</center>|<center>X</center>|||||
-|/keys/deletedKeys/delete|<center>X</center>|<center>X</center>|||||<center>X</center>|
-|/keys/backup/action|<center>X</center>|<center>X</center>|<center>X</center>|||<center>X</center>|
-|/keys/restore/action|<center>X</center>|<center>X</center>|||||
-|/keys/export/action|<center>X</center>|<center>X</center>|||||
-|/keys/import/action|<center>X</center>|<center>X</center>|||||
+|/keys/read/action|||<center>X</center>||<center>X</center>||<center>X</center>|
+|/keys/write/action|||<center>X</center>||||
+|/keys/create|||<center>X</center>||||
+|/keys/delete|||<center>X</center>||||
+|/keys/deletedKeys/read/action||<center>X</center>|||||
+|/keys/deletedKeys/recover/action||<center>X</center>|||||
+|/keys/deletedKeys/delete||<center>X</center>|||||<center>X</center>|
+|/keys/backup/action|||<center>X</center>|||<center>X</center>|
+|/keys/restore/action|||<center>X</center>||||
+|/keys/export/action||<center>X</center>|||||
+|/keys/release/action|||<center>X</center>||||
+|/keys/import/action|||<center>X</center>||||
 |**密钥加密操作**|
-|/keys/encrypt/action|<center>X</center>|<center>X</center>|<center>X</center>||||
-|/keys/decrypt/action|<center>X</center>|<center>X</center>|<center>X</center>||||
-|/keys/wrap/action|<center>X</center>|<center>X</center>|<center>X</center>||<center>X</center>||
-|/keys/unwrap/action|<center>X</center>|<center>X</center>|<center>X</center>||<center>X</center>||
-|/keys/sign/action|<center>X</center>|<center>X</center>|<center>X</center>||||
-|/keys/verify/action|<center>X</center>|<center>X</center>|<center>X</center>||||
+|/keys/encrypt/action|||<center>X</center>||||
+|/keys/decrypt/action|||<center>X</center>||||
+|/keys/wrap/action|||<center>X</center>||<center>X</center>||
+|/keys/unwrap/action|||<center>X</center>||<center>X</center>||
+|/keys/sign/action|||<center>X</center>||||
+|/keys/verify/action|||<center>X</center>||||
 |**角色管理**|
-|/roleAssignments/delete/action|<center>X</center>|||<center>X</center>|||
-|/roleAssignments/read/action|<center>X</center>|||<center>X</center>|||
-|/roleAssignments/write/action|<center>X</center>|||<center>X</center>|||
-|/roleDefinitions/read/action|<center>X</center>|||<center>X</center>|||
+|/roleAssignments/read/action|<center>X</center>|<center>X</center>|<center>X</center>|<center>X</center>|||<center>X</center>
+|/roleAssignments/write/action|<center>X</center>|<center>X</center>||<center>X</center>|||
+|/roleAssignments/delete/action|<center>X</center>|<center>X</center>||<center>X</center>|||
+|/roleDefinitions/read/action|<center>X</center>|<center>X</center>|<center>X</center>|<center>X</center>|||<center>X</center>
+|/roleDefinitions/write/action|<center>X</center>|<center>X</center>||<center>X</center>|||
+|/roleDefinitions/delete/action|<center>X</center>|<center>X</center>||<center>X</center>|||
 |**备份/还原管理**|
 |/backup/start/action|<center>X</center>|||||<center>X</center>|
 |/backup/status/action|<center>X</center>|||||<center>X</center>|

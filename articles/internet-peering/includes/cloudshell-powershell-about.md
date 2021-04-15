@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d125471d4a6c68aff12921a8524a91ef75b6c51a
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102532742"
 ---
 若要运行 cmdlet，可以使用 Azure Cloud Shell（一个免费的交互式 shell）。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 选择“复制”以复制代码，并将其粘贴到 Cloud Shell。 然后选择 Enter 运行此代码。 可通过多种方式来启动 Cloud Shell：

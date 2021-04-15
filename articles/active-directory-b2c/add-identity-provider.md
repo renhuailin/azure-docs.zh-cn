@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033990"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257171"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>向 Azure Active Directory B2C 租户添加标识提供者
 
@@ -27,7 +27,7 @@ ms.locfileid: "102033990"
 
 ![使用社交帐户 (Facebook) 进行移动登录的示例](media/add-identity-provider/external-idp.png)
 
-可使用 Azure 门户向[用户流](user-flow-overview.md)添加 Azure Active Directory B2C (Azure AD B2C) 支持的标识提供程序。 还可以将标识提供者添加到[自定义策略](custom-policy-get-started.md)。
+可使用 Azure 门户向[用户流](user-flow-overview.md)添加 Azure Active Directory B2C (Azure AD B2C) 支持的标识提供程序。 还可以将标识提供者添加到[自定义策略](user-flow-overview.md)。
 
 ## <a name="select-an-identity-provider"></a>添加标识提供程序
 

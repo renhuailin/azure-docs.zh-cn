@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 8/12/2020
 ms.author: sngun
 ms.openlocfilehash: 42d1e0f056457ba54e0102a4d23f42a81ebea08d
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
-ms.translationtype: MT
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90068723"
 ---
 **如何收到即将停用的 SDK 的通知？**

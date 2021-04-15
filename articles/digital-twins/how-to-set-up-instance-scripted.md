@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 13f5db52917cd9659438c551ac2f01c477cc1c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef4e1f11018c82d96907518b79cc5737c49b946
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102201288"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104042"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证（已编写脚本）
 
@@ -22,8 +22,8 @@ ms.locfileid: "102201288"
 本文介绍“设置新 Azure 数字孪生实例”的步骤，包括创建实例和设置身份验证。 完成本文操作后，将准备好 Azure 数字孪生实例，可开始对其编程。
 
 本文的此版本通过运行 [**自动部署脚本** 示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)来完成这些步骤，由此可简化过程。 
-* 要查看脚本在后台运行的手动 CLI 步骤，请参阅本文的 CLI 版本：[*操作指南：设置实例和身份验证 (CLI)* ](how-to-set-up-instance-cli.md)。
-* 要查看使用 Azure 门户的手动步骤，请参阅本文的门户版本：[*操作说明：设置实例和身份验证（门户）* ](how-to-set-up-instance-portal.md)。
+* 要查看脚本在后台运行的手动 CLI 步骤，请参阅本文的 CLI 版本：[*操作指南：设置实例和身份验证 (CLI)*](how-to-set-up-instance-cli.md)。
+* 要查看使用 Azure 门户的手动步骤，请参阅本文的门户版本：[*操作说明：设置实例和身份验证（门户）*](how-to-set-up-instance-portal.md)。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 [!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
@@ -122,9 +122,9 @@ ms.locfileid: "102201288"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用以下 Azure 数字孪生 CLI 命令在实例上测试单个 REST API 调用： 
-* [az dt reference](/cli/azure/ext/azure-iot/dt)
+使用 Azure 数字孪生 CLI 命令在实例上测试各个 REST API 调用： 
+* [az dt reference](/cli/azure/dt)
 * [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)
 
-或者，请参阅如何使用验证码将客户端应用程序连接到实例：
+或者，了解如何使用验证码将客户端应用程序连接到实例：
 * [如何：编写应用验证码](how-to-authenticate-client.md)

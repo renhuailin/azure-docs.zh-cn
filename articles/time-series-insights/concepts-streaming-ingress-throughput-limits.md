@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3c938e7fe180e6a9cf08031a2a4565486f3f77a9
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504628"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306511"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>流式引入吞吐量限制
 
@@ -59,7 +59,7 @@ Azure 时序见解第 2 代的流数据引入限制如下所述。
 
 分区是中心内保留的有序事件。 分区计数是在中心创建阶段设置的，且不可更改。
 
-有关事件中心分区的最佳做法，请参阅[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+有关事件中心分区的最佳做法，请参阅[我需要多少分区？](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)
 
 > [!NOTE]
 > 与 Azure 时序见解第 2 代配合使用的大多数 IoT 中心只需要 4 个分区。

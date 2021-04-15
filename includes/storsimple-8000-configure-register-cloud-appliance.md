@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d004de75284011f4ceaaca88fd19e61900824f51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67173010"
 ---
 #### <a name="to-configure-and-register-the-cloud-appliance"></a>配置和注册云设备
 
-1. 在“设备”边栏选项卡中选择并单击你创建的 StorSimple 云设备。****
+1. 在“设备”边栏选项卡中选择并单击你创建的 StorSimple 云设备。
 
     ![设备列表中的 StorSimple 云设备](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-2. 在“配置设备”**** 边栏选项卡中，执行以下步骤：
+2. 在“配置设备”边栏选项卡中，执行以下步骤：
     
-    1. 在提供的空白位置输入“服务数据加密密钥”****。 此密钥是向 StorSimple Device Manager 服务注册第一个物理设备时生成的。
+    1. 在提供的空白位置输入“服务数据加密密钥”。 此密钥是向 StorSimple Device Manager 服务注册第一个物理设备时生成的。
 
-    2. 输入具有指定长度和设置的**设备管理员密码**和**快照管理员**密码。
+    2. 输入具有指定长度和设置的 **设备管理员密码** 和 **快照管理员** 密码。
 
-    3. 单击“确定”**** 以完成云设备的初始配置和注册。
+    3. 单击“确定”以完成云设备的初始配置和注册。
     
         ![StorSimple 云设备配置设备](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
 

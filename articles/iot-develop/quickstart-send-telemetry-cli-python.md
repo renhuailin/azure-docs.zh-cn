@@ -6,13 +6,13 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/11/2021
-ms.openlocfilehash: d73f8eeb7b69440f8db67d0b95b40ed6258ee8e7
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/24/2021
+ms.openlocfilehash: f28ad8f93769bc95c87095a545f608827c319dd3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201781"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106813"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>快速入门：将遥测数据从设备发送到 Azure IoT 中心 (Python)
 
@@ -25,7 +25,7 @@ ms.locfileid: "102201781"
 - Azure CLI。 可以使用 Azure Cloud Shell（即在浏览器中运行的交互式 CLI Shell）运行本快速入门中的所有命令。 如果使用 Cloud Shell，则无需安装任何内容。 如果希望在本地使用 CLI，则本快速入门需要 Azure CLI 2.0.76 版或更高版本。 若要查找版本，请运行 az --version。 若要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 - [Python 3.7+](https://www.python.org/downloads/)。 有关支持的其他 Python 版本，请参阅 [Azure IoT 设备功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
     
-    为了确保你的 Python 版本是最新的，请运行 `python --version`。 如果你同时安装了 Python 2 和 Python 3，而使用的是 Python 3 环境，请使用 `pip3` 安装所有库。 这可以确保将库安装到 Python 3 运行时。
+    为了确保你的 Python 版本是最新的，请运行 `python --version`。 如果你同时安装了 Python 2 和 Python 3，而使用的是 Python 3 环境，请使用 `pip3` 安装所有库。 此命令可确保将库安装到 Python 3 运行时。
     > [!IMPORTANT]
     > 在 Python 安装程序中，选择“将 Python 添加到 PATH”选项。 如果已安装 Python 3.7 或更高版本，请确认你已将 Python 安装文件夹添加到 `PATH` 环境变量。
 
@@ -34,91 +34,83 @@ ms.locfileid: "102201781"
 ## <a name="use-the-python-sdk-to-send-messages"></a>使用 Python SDK 发送消息
 在本部分，你要使用 Python SDK 将消息从模拟设备发送到 IoT 中心。
 
-1. 打开新的终端窗口。 将使用此终端来安装 Python SDK 和处理 Python 示例代码。 现在应该打开了两个终端：刚刚打开的用于操作 Python 的终端，以及在前面部分中用于输入 Azure CLI 命令的 CLI shell。       
+1. 打开新的终端窗口。 将使用此终端来安装 Python SDK 和处理 Python 示例代码。 现在应该打开了两个终端：刚刚打开的用于操作 Python 的终端，以及在前面部分用于输入 Azure CLI 命令的 CLI shell。       
 
 1. 将 [Azure IoT Python SDK 设备示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples)复制到本地计算机：
 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
-
-    导航到“azure-iot-sdk-python/azure-iot-device/samples”目录：
+1. 导航到“azure-iot-sdk-python/azure-iot-device/samples/pnp”目录：
 
     ```console
-    cd azure-iot-sdk-python/azure-iot-device/samples
+    cd azure-iot-sdk-python/azure-iot-device/samples/pnp
     ```
 1. 安装 Azure IoT Python SDK：
 
     ```console
     pip install azure-iot-device
     ```
-1. 将“设备连接字符串”设置为名为 `IOTHUB_DEVICE_CONNECTION_STRING` 的环境变量。 这是在上一部分创建模拟的 Python 设备后获取的字符串。
+1. 设置以下两个环境变量，使模拟设备能够连接到 Azure IoT。
+    * 设置名为 `IOTHUB_DEVICE_CONNECTION_STRING` 的环境变量。 对于变量值，请使用上一部分保存的设备连接字符串。
+    * 设置名为 `IOTHUB_DEVICE_SECURITY_TYPE` 的环境变量。 对于变量，请使用文本字符串值 `connectionString`。
 
     **Windows (cmd)**
 
     ```console
     set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
     ```
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
+    ```
 
     > [!NOTE]
-    > 在 Windows CMD 中，请不要在连接字符串的两边加上引号。
+    > 对于 Windows CMD，每个变量的字符串值的两边没有引号。
 
-    **Linux (bash)**
+    **PowerShell**
+
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    ```
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
+    ```
+
+    **Bash（Linux 或 Windows）**
 
     ```bash
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     ```
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
 
-1. 在打开的 CLI shell 中，运行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) 命令以开始监视模拟 IoT 设备上的事件。  事件消息抵达后，会在终端中输出。
+1. 在打开的 CLI shell 中，运行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) 命令以开始监视模拟 IoT 设备上的事件。  事件消息到达时会在终端中输出。
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-1. 在 Python 终端中，运行安装的示例文件 *simple_send_message.py* 的代码。 此代码访问模拟的 IoT 设备并将消息发送到 IoT 中心。
+1. 在 Python 终端中，运行安装的示例文件 simple_thermostat.py 的代码。 此代码访问模拟的 IoT 设备并将消息发送到 IoT 中心。
 
     若要在终端中运行 Python 示例：
     ```console
-    python ./simple_send_message.py
+    python ./simple_thermostat.py
     ```
+    > [!NOTE]
+    > 此代码示例使用 Azure IoT 即插即用，这使你无需任何手动配置即可将智能设备集成到你的解决方案中。  默认情况下，本文档中的大多数示例都使用 IoT 即插即用。 若要详细了解 IoT PnP 的优点以及使用或不使用它的案例，请参阅[什么是 IoT 即插即用？](../iot-pnp/overview-iot-plug-and-play.md)
 
-    或者，可以在 Python IDE 中运行示例中的 Python 代码：
-    ```python
-    import os
-    import asyncio
-    from azure.iot.device.aio import IoTHubDeviceClient
-
-
-    async def main():
-        # Fetch the connection string from an environment variable
-        conn_str = os.getenv("IOTHUB_DEVICE_CONNECTION_STRING")
-
-        # Create instance of the device client using the authentication provider
-        device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
-
-        # Connect the device client.
-        await device_client.connect()
-
-        # Send a single message
-        print("Sending message...")
-        await device_client.send_message("This is a message that is being sent")
-        print("Message successfully sent!")
-
-        # finally, disconnect
-        await device_client.disconnect()
-
-
-    if __name__ == "__main__":
-        asyncio.run(main())
-    ```
-
-当 Python 代码将消息从设备发送到 IoT 中心时，该消息将显示于正在监视事件的 CLI shell 中：
+ 当 Python 代码将消息从设备发送到 IoT 中心时，该消息将显示于正在监视事件的 CLI shell 中：
 
 ```output
 Starting event monitor, use ctrl-c to stop...
 event:
-origin: <your Device name>
-payload: This is a message that is being sent
+  component: ''
+  interface: dtmi:com:example:Thermostat;1
+  module: ''
+  origin: <your device name>
+  payload:
+    temperature: 35
 ```
 
 设备现已安全建立连接，并在向 Azure IoT 中心发送遥测数据。
@@ -130,7 +122,7 @@ payload: This is a message that is being sent
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。
 
 若要按名称删除资源组，请执行以下操作：
-1. 运行 [az group delete](/cli/azure/group#az-group-delete) 命令。 这会删除你创建的资源组、IoT 中心和设备注册。
+1. 运行 [az group delete](/cli/azure/group#az-group-delete) 命令。 此命令将删除创建的资源组、IoT 中心和设备注册。
 
     ```azurecli
     az group delete --name MyResourceGroup
@@ -146,6 +138,6 @@ payload: This is a message that is being sent
 
 接下来，请通过应用程序示例了解 Azure IoT Python SDK。
 
-- [异步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios)：此目录包含适用于其他 IoT 中心方案的异步 Python 示例。
-- [同步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)：此目录包含与 Python 2.7 配合使用的，或者与适用于 Python 3.5+ 的同步兼容性方案配合使用的 Python 示例
+- [异步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios)：此目录包含适用于更多 IoT 中心方案的异步 Python 示例。
+- [同步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)：此目录包含与 Python 2.7 配合使用的 Python 示例，或者与适用于 Python 3.6+ 的同步兼容性方案配合使用的 Python 示例
 - [IoT Edge 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)：此目录包含有关使用 Edge 模块和下游设备的 Python 示例。

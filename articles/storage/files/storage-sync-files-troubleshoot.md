@@ -4,15 +4,15 @@ description: 排查 Azure 文件同步部署中的常见问题，此服务可用
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 2/1/2021
+ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727597"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366294"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -1053,24 +1053,6 @@ if ($role -eq $null) {
 }
 ```
 ---
-
-### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>如何阻止用户在服务器上创建包含不受支持字符的文件？
-可以使用[文件服务器资源管理器 (FSRM) 文件屏蔽](/windows-server/storage/fsrm/file-screening-management)来阻止在服务器上创建名称中包含不受支持字符的文件。 可能需要使用 PowerShell 完成此操作，因为大多数不受支持的字符不可打印。因此首先需要将其十六进制表示形式强制转换为字符。
-
-首先使用 [New-FsrmFileGroup cmdlet](/powershell/module/fileserverresourcemanager/new-fsrmfilegroup) 创建 FSRM 文件组。 此示例定义了只包含两个不受支持字符的组，但你可以在文件组中包含任意数量的字符。
-
-```powershell
-New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
-```
-
-定义 FSRM 文件组后，可以使用 New-FsrmFileScreen cmdlet 创建 FSRM 文件屏蔽。
-
-```powershell
-New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
-```
-
-> [!Important]  
-> 请注意，只能使用文件屏蔽来阻止创建 Azure 文件同步不支持的字符。如果在其他方案中使用文件屏蔽，同步会持续尝试将 Azure 文件共享中的文件下载到服务器，并且会由于文件屏蔽而受到阻止，导致较高的传出数据。 
 
 ## <a name="cloud-tiering"></a>云分层 
 云分层中存在两个故障路径：

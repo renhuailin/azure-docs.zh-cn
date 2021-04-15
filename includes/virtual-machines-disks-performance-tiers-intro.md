@@ -9,10 +9,10 @@ ms.date: 11/19/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 31a7608fc9c84d3a3629d4eed7e3af56cab5e735
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96016502"
 ---
-Azure 托管磁盘的性能在您创建磁盘时设置为其性能层的形式。 性能层决定了托管磁盘的 IOPS 和吞吐量。 设置磁盘的预配大小时，会自动选择性能层。 性能层可以在部署时或之后更改，而不会更改磁盘大小。 若要了解有关性能层的详细信息，请参阅 [托管磁盘的性能层](../articles/virtual-machines/disks-change-performance.md)。
+创建磁盘时，将以其性能层的形式设置 Azure 托管磁盘的性能。 性能层决定了托管磁盘的 IOPS 和吞吐量。 当你设置磁盘的预配大小时，系统会自动选择性能层。 可以在部署时或之后更改性能层，而无需更改磁盘大小。 要了解有关性能层的详细信息，请参阅[托管磁盘的性能层](../articles/virtual-machines/disks-change-performance.md)。

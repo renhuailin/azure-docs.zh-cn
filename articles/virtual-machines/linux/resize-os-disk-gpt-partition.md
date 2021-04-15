@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552943"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011675"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>调整具有 GPT 分区的 OS 磁盘的大小
 
@@ -400,9 +400,8 @@ user@myvm:~#
 > [!NOTE]
 > 若要使用相同的过程来调整任何其他逻辑卷的大小，请更改步骤 12 中的 LV 名称。
 
+
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE] 
->增加 OS 磁盘大小前，请始终拍摄 VM 的快照。
 
 在 RHEL RAW 中增加 OS 磁盘的大小：
 
@@ -410,120 +409,114 @@ user@myvm:~#
 1. 从门户增加 OS 磁盘的大小。
 1. 启动 VM。
 
-重新启动 VM 后，请执行以下步骤：
+重启 VM 后，完成以下步骤：
 
 1. 通过使用以下命令，以根用户身份访问 VM：
- 
-   ```
-   sudo su
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. 安装 gptfdisk 包，增加 OS 磁盘大小需要此包。
+1. 重启 VM 后，请完成以下步骤：
 
-   ```
-   yum install gdisk -y
-   ```
+   - 安装 cloud-utils-growpart 包以提供 growpart 命令。若要增加 OS 磁盘大小或用于 GPT 磁盘布局的 gdisk 处理程序，必须使用该命令。 大多数市场映像上都预安装了此包。
 
-1.  若要查看磁盘上的所有可用扇区，请运行以下命令：
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. 你会看到表明分区类型的详细信息。 请确保它是 GPT。 标识根分区。 请勿更改或删除启动分区（BIOS 启动分区）和系统分区（EFI 系统分区）。
-
-1. 第一次请使用以下命令启动分区。 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. 现在，你会看到要求提供下一个命令的消息 ('Command: ? for help')。 
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. 你会收到一个警告，指出“Warning！ Secondary header is placed too early on the disk! Do you want to correct this problem? (Y/N):”。 你必须按“Y”
+1. 使用 lsblk-f 命令验证保存根 ( **/** ) 分区的分区和文件系统类型：
 
-   ```
-   Y
-   ```
-
-1. 你应该会看到一条消息，指出已完成最终检查并要求你进行确认。 按“Y”
-
-   ```
-   Y
-   ```
-
-1. 使用 partprobe 命令检查是否一切正常
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. 上述步骤确保将辅助 GPT 标头置于末尾。 接下来，再次使用 gdisk 工具开始重设大小的过程。 使用以下命令。
+1. 若要进行验证，请首先使用 gdisk 列出 sda 磁盘的分区表。 在此示例中，我们看到一个 48 GB 的磁盘，其中包含分区 2，该分区的大小为 29.0 GiB。 该磁盘已在 Azure 门户中从 30 GB 扩展到 48 GB。
 
-   ```
-   gdisk /dev/sda
-   ```
-1. 在命令菜单中，按“p”以查看分区列表。 识别根分区（在步骤中，sda2 被视为根分区）和启动分区（在步骤中，sda3 被视为启动分区） 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. 按“d”以删除分区，并选择分配给启动分区的分区号（在本例中为“3”）
-   ```
-   d
-   3
-   ```
-1. 按“d”以删除分区，并选择分配给启动分区的分区号（在本例中为“2”）
-   ```
-   d
-   2
-   ```
-    ![删除根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. 若要重新创建大小增加的根分区，请按“n”，为根分区输入你之前删除的分区号（本示例为“2”），为“第一个扇区”选择“默认值”，为“最后一个扇区”选择“最后一个扇区值 - 启动大小扇区”（在本例中为 4096，对应于 2MB 启动分区），将十六进制代码指定为“8300”
-   ```
-   n
-   2
-   (Enter default)
-   (Calculateed value of Last sector value - 4096)
-   8300
-   ```
-1. 若要重新创建启动分区，请按“n”，为启动分区输入你之前删除的分区号（本示例为“3”），为“第一个扇区”选择“默认值”，为“最后一个扇区”选择“默认值”，将十六进制代码指定为“EF02”
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. 使用“w”命令写入更改，按“Y”进行确认
-   ```
-   w
-   Y
-   ```
-1. 运行“partprobe”命令来检查磁盘稳定性
-   ```
-   partprobe
-   ```
-1. 重启 VM，根分区大小会增大
-   ```
-   reboot
+1. 使用 growpart 命令扩展根的分区（在本例中为 sda2）。 使用此命令可扩展分区以使用磁盘上的所有连续空间。
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![新的根分区和启动分区](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. 现在，再次使用 gdisk 输出新分区表。  请注意，分区 2 已扩展为 47.0 GiB：
 
-1. 在分区上运行 xfs_growfs 命令以重设其大小
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. 使用 xfs_growfs 扩展分区上的文件系统，此命令适用于标准市场生成的 RedHat 系统：
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
-
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
-
 
 1. 使用 df 命令验证新大小是否已反映出来：
 

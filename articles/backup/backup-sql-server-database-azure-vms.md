@@ -2,13 +2,13 @@
 title: 从保管库备份多个 SQL Server VM
 description: 本文介绍如何使用 Azure 备份从恢复服务保管库备份 Azure 虚拟机上的 SQL Server 数据库
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 798dc81012ad968c3ecc287717240513a08a1349
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105567198"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258463"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>从恢复服务保管库备份多个 SQL Server VM
 
@@ -23,10 +23,6 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 > * 创建并配置保管库。
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
-
->[!NOTE]
->**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除** 现已推出预览版。<br>
->若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c54f935ed05451df5922ff1a3d564c775703700
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490987"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029346"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 使用证书的方式
 
@@ -25,7 +25,7 @@ IoT Edge 证书由模块和下游 IoT 设备用来验证 [IoT Edge 中心](iot-e
 >[!NOTE]
 >本文讨论了用于保护 IoT Edge 设备上不同组件之间的连接或 IoT Edge 设备与任何叶设备之间的连接的证书。 还可以使用一些证书向 IoT 中心验证 IoT Edge 设备。 这些身份验证证书是不同的，本文不对其进行讨论。 有关使用证书对设备进行身份验证的详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
 
-本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。 虽然脚本不同（PowerShell 与 bash），但 Linux 和 Windows 之间的概念是相同的。
+本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 证书
 
