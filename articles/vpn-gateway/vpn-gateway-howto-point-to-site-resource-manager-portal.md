@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1c6dad28ada14151b9a1cca0da490e38972ad54d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b515ed37b5d2c71843cb138240bd2fa77fe2fd8d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379159"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365546"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
 本文介绍如何将运行 Windows、Linux 或 macOS 的单个客户端安全地连接到 Azure VNet。 若要从远程位置连接到 VNet，例如从家里或会议室进行远程通信，则可使用点到站点 VPN。 如果只有一些客户端需要连接到 VNet，也可使用 P2S VPN 来代替站点到站点 VPN。 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）或 IKEv2 创建 VPN 连接。 有关点到站点 VPN 的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
 
-:::image type="content" source="./media\vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="从计算机连接到 Azure VNet - 点到站点连接示意图":::
+:::image type="content" source="./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-diagram.png" alt-text="从计算机连接到 Azure VNet - 点到站点连接示意图":::
 
 有关点到站点 VPN 的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。 若要使用 Azure PowerShell 创建此配置，请参阅[使用 Azure PowerShell 配置点到站点 VPN](vpn-gateway-howto-point-to-site-rm-ps.md)。
 

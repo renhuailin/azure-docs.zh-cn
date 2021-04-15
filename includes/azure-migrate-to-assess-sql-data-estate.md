@@ -4,12 +4,12 @@ ms.service: azure-migrate
 ms.topic: include
 ms.date: 02/22/2021
 ms.author: mathoma
-ms.openlocfilehash: 5ad1c0f4016793230329cc35b12969a8c21db22b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 3638ab779482a57368476e32d66bd0b61b295fe5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488217"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105105352"
 ---
 > [!NOTE]
-> 如果要大规模评估 VMWare 上的整个 SQL Server 数据资产，请使用 [Azure Migrate](/azure/migrate/how-to-create-azure-sql-assessment) 获取 Azure SQL 部署建议、目标规模调整和每月估算。 
+> 如果要大规模评估 VMWare 上的整个 SQL Server 数据资产，请使用 [Azure Migrate](../articles/migrate/how-to-create-azure-sql-assessment.md) 获取 Azure SQL 部署建议、目标规模调整和每月估算。

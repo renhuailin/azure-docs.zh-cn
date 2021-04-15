@@ -3,12 +3,12 @@ title: Azure 中继异常以及解决方法 | Microsoft Docs
 description: Azure 中继异常以及解决这些异常应采取的建议操作的列表。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625142"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313940"
 ---
 # <a name="azure-relay-exceptions"></a>Azure 中继异常
 
@@ -80,7 +80,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
     有时，中继服务在处理请求时可能会遇到延迟。 例如，在流量高峰时段可能会发生这种情况。 如果发生这种情况，可以在延迟后重试操作，直到操作成功为止。 如果多次尝试同一操作后仍然失败，请访问 [Azure 服务状态站点](https://azure.microsoft.com/status/)，看是否有已知的服务中断。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure 中继常见问题](relay-faq.md)
+* [Azure 中继常见问题](relay-faq.yml)
 * [创建中继命名空间](relay-create-namespace-portal.md)
 * [Azure 中继和 .NET 入门](relay-hybrid-connections-dotnet-get-started.md)
 * [Azure 中继和 Node 入门](relay-hybrid-connections-node-get-started.md)

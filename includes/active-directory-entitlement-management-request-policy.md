@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98697963"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105582643"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -27,7 +27,7 @@ ms.locfileid: "98697963"
 
 1. 选择以下选项之一：
 
-    |  |  |
+    |  | 说明 |
     | --- | --- |
     | **特定用户和组** | 如果只希望目录中的指定用户和组可以请求此访问包，请选择此选项。 |
     | **所有成员（不包括来宾）** | 如果希望目录中的所有成员用户都可以请求此访问包，请选择此选项。 此选项不包括你可能已邀请到目录中的任何来宾用户。 |
@@ -62,7 +62,7 @@ ms.locfileid: "98697963"
 
 1. 选择以下选项之一：
 
-    |  |  |
+    |  | 说明 |
     | --- | --- |
     | **特定的已连接的组织** | 如果要从管理员之前添加的组织列表中选择，请选择此选项。 来自选定组织的所有用户都可以请求此访问包。 |
     | **所有已连接的组织** | 如果所有已连接的组织的用户都可以请求此访问包，请选择此选项。 |
