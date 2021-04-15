@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640833"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227341"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>链接 Azure Synapse Analytics 和 Azure 机器学习工作区（预览版）
 
-在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
+在本文中，你将了解如何创建一个链接服务来链接 [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) 工作区和 [Azure 机器学习工作区](concept-workspace.md)。
 
 通过将 Azure 机器学习工作区与 Azure Synapse 工作区链接起来，你可以将 Apache Spark 池附加为专用计算，用于大规模的数据整理，并从相同笔记本进行模型训练。
 

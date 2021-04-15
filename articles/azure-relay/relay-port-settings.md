@@ -3,12 +3,12 @@ title: Azure 中继端口设置 | Microsoft Docs
 description: 本文提供了一个表，该表描述了 Azure 中继的端口值的必需配置。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 97640debe81041ff7e2b082c6a9ac606d6088664
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81551055d967babaac6f12c3a23ce6b1e78afbd5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85314264"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314161"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置
 
@@ -42,4 +42,4 @@ ms.locfileid: "85314264"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 * [什么是 Azure 中继？](relay-what-is-it.md)
-* [中继常见问题](relay-faq.md)
+* [中继常见问题](relay-faq.yml)
