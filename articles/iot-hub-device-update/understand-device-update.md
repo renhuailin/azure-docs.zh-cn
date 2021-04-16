@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232369"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120769"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub（预览版）概述
 
@@ -80,9 +80,9 @@ Device Update 功能可分为三个部分：代理集成、导入和管理。
 
 ### <a name="importing"></a>导入
 
-导入是将更新引入到“设备更新”中的方式，目的是将其部署到设备。 Device Update 支持为每个设备推出一个更新。 这使它非常适合于一次更新整个 OS 分区，或者是描述你要在设备上更新的所有包的 apt 清单的完整映像更新。 若要将更新导入到 Device Update 中，请先创建一个描述更新的导入清单，然后将更新文件和导入清单上传到可访问 Internet 的位置。 之后，你可以使用 Azure 门户或[设备更新导入 REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) 启动更新导入的异步过程。 Device Update 上传文件、处理文件，并使它们可分发到 IoT 设备。
+导入是将更新引入到“设备更新”中的方式，目的是将其部署到设备。 Device Update 支持为每个设备推出一个更新。 这使它非常适合于一次更新整个 OS 分区，或者是描述你要在设备上更新的所有包的 apt 清单的完整映像更新。 若要将更新导入到 Device Update 中，请先创建一个描述更新的导入清单，然后将更新文件和导入清单上传到可访问 Internet 的位置。 之后，你可以使用 Azure 门户或[设备更新 REST API](https://docs.microsoft.com/rest/api/deviceupdate/) 启动更新导入的异步过程。 Device Update 上传文件、处理文件，并使它们可分发到 IoT 设备。
 
-对于敏感内容，请使用共享访问签名 (SAS)（如 Azure Blob 存储的临时 SAS）来保护下载内容。 [详细了解 SAS](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+对于敏感内容，请使用共享访问签名 (SAS)（如 Azure Blob 存储的临时 SAS）来保护下载内容。 [详细了解 SAS](../storage/common/storage-sas-overview.md)
 
 :::image type="content" source="media/understand-device-update/import-update.png" alt-text="Device Update for IoT Hub 导入工作流关系图。" lightbox="media/understand-device-update/import-update.png":::
 
