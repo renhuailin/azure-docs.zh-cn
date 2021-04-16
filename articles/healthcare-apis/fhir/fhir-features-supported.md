@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/30/2021
+ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048413"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530640"
 ---
 # <a name="features"></a>功能
 
@@ -41,8 +41,8 @@ ms.locfileid: "105048413"
 | create                         | 是       | 是       | 是       | 同时支持 POST/PUT                               |
 | 创建 (条件)            | 是       | 是       | 是       | 问题 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | 部分   | 部分   | 部分   | 请参阅下面的搜索部分。                           |
-| 链式搜索                 | 是       | 是       | 部分   | 请参阅下面的注释2。                                   |
-| 反向链接搜索         | 是       | 是       | 部分   | 请参阅下面的注释2。                                   |
+| 链式搜索                 | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
+| 反向链接搜索         | 部分       | 是       | 部分   | 请参阅下面的注释2。                                   |
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批处理                          | 是       | 是       | 是       |                                                     |
 | transaction                    | 否        | 是       | 否        |                                                     |
@@ -146,7 +146,7 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 ## <a name="service-limits"></a>服务限制
 
-* [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 你将需要至少 400 ru 或10个 ru/GB，取两者中较大者。 如果你需要10000个多个 ru，则可以将其放在支持票证中，以增加此项。 可用的最大值为1000000。
+* [**请求单位 (ru)**](../../cosmos-db/concepts-limits.md) -可在门户中为 FHIR 的 Azure API 配置最多10000个 ru。 你将需要至少 400 ru 或 40 ru/GB，取两者中较大者。 如果你需要10000个多个 ru，则可以将其放在支持票证中，以增加此项。 可用的最大值为1000000。
 
 * **并发连接** 和 **实例** -默认情况下，在群集中的两个实例上有5个并发连接 (总计10个并发请求) 。 如果你认为你需要更多的并发请求，请打开支持票证，详细了解你的需求。
 
@@ -160,12 +160,12 @@ FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 | Ru 数 | 资源数/秒 |    最大存储 (GB) *    |
 |----------|---------------|--------|                 
-| 400      | 5-10          |     40   |
-| 1,000    | 100-150       |      100  |
-| 10,000   | 225-400       |      1,000  |
-| 100,000  | 2500-4000   |      10,000  |
+| 400      | 5-10          |     10   |
+| 1,000    | 100-150       |      25  |
+| 10,000   | 225-400       |      250  |
+| 100,000  | 2500-4000   |      2,500  |
 
-注意：根据 Cosmos DB 要求，每 GB 存储要求的最小吞吐量为 10 RU/秒。 有关详细信息，请查看 [Cosmos DB 的服务配额](../../cosmos-db/concepts-limits.md)。
+注意：根据 Cosmos DB 要求，每 GB 存储要求最小吞吐量为 40 RU/秒。 
 
 ## <a name="next-steps"></a>后续步骤
 
