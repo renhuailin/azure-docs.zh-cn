@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e387653d73105911f10bb184f9179e33e22671d4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84200476"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103021716"
 ---
 ---
 | 限制标识符 | 限制 | 注释 |
@@ -15,6 +15,6 @@ ms.locfileid: "84200476"
 | 每个作业的最大函数数目 |60 |每个流分析作业存在 60 个函数的硬性限制。 |
 | 每个作业的最大流单元数 |192 |每个流分析作业存在 192 个流单元的硬性限制。 |
 | 每个区域的最大作业数目 |1,500 |每个地理区域的每个订阅最多可有 1500 个作业。 |
-| 引用数据 blob MB | 300 | 每个参考数据 blob 不能大于 300 MB。 |
+| 引用数据 blob MB | 5 GB | 使用 6 个或更多个 SU 时最大为 5 GB。 |
 | 查询中的最大字符数 | 512000 | Azure 流分析作业查询中存在 512000 个字符的硬性限制。|
 

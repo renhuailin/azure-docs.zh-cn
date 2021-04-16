@@ -10,12 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d75ba091ff634bf613722e3a194407beeeda68fb
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98785999"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967228"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -53,11 +54,17 @@ ms.locfileid: "98785999"
 
     ![显示如何创建资源组的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-现在，你拥有一个密钥保管库和两个存储帐户。 可运行以下命令，在 Azure CLI 中验证此设置：
-
+现在，你拥有一个密钥保管库和两个存储帐户。 可运行以下命令，在 Azure CLI 或 Azure PowerShell 中验证此设置：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzResource -Name 'vaultrotation*' | Format-Table
+```
+---
 
 结果类似于以下输出：
 
@@ -95,7 +102,7 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 1. 在“机密名称”框中，输入要在其中存储访问密钥的机密的名称。
 1. 在“存储库 URL”框中，输入函数代码的 GitHub 位置。 在本教程中，你可以使用 https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git。
 1. 选择“查看 + 创建”。
-1. 选择“创建”  。
+1. 选择“创建”。
 
    ![演示如何创建和部署函数的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -111,49 +118,97 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>将存储帐户访问密钥添加到 Key Vault
 
 首先，设置访问策略，以向用户主体授予“管理机密”权限：
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vaultrotation-kv -PermissionsToSecrets set,delete,get,list
+```
+---
 
 现在，可使用存储帐户访问密钥作为值来创建新的机密。 要使轮换函数可在存储帐户中重新生成密钥，还需要提供要添加到机密的存储帐户资源 ID、机密有效期和密钥 ID。
 
 确定存储帐户资源 ID。 可在 `id` 属性中找到该值。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 列出存储帐户访问密钥，以便可获取密钥值：
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage 
+az storage account keys list -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 将机密和存储帐户资源 ID 添加到过期日期设置为明天、有效期为 60 天的密钥保管库。使用检索到的 `key1Value` 和 `storageAccountResourceId` 的值运行此命令：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key1'
+    ProviderAddress='<storageAccountResourceId>'
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 上述机密会在几分钟内触发 `SecretNearExpiry` 事件。 此事件转而将触发函数来轮换过期时间设置为 60 天的机密。 在该配置中，“SecretNearExpiry”事件将每 30 天（过期前 30 天）触发一次，并且轮换函数将在 key1 与 key2 之间交替轮换。
 
 可检索存储帐户密钥和 Key Vault 机密并对其进行比较，从而验证是否重新生成了访问密钥。
 
 使用此命令获取机密信息：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
+```
+---
 
 请注意，`CredentialId` 已更新为备用 `keyName`，并且 `value` 已重新生成：
 
 ![显示第一个存储帐户的 a z keyvault secret show 命令输出的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 检索访问密钥以比较值：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
+
 请注意，密钥的 `value` 与密钥保管库中的机密相同：
 
 ![显示第一个存储帐户的 a z storage account keys list 命令输出的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-5.png)
@@ -185,36 +240,77 @@ az storage account keys list -n vaultrotationstorage
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>将其他存储帐户访问密钥添加到 Key Vault
 
 确定存储帐户资源 ID。 可在 `id` 属性中找到该值。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 列出存储帐户访问密钥，以便可获取密钥 2 值：
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage2 
+az storage account keys list -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrotation
+```
+---
 
 将机密和存储帐户资源 ID 添加到过期日期设置为明天、有效期为 60 天的密钥保管库。使用检索到的 `key2Value` 和 `storageAccountResourceId` 的值运行此命令：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key2';
+    ProviderAddress='<storageAccountResourceId>';
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey2 -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 使用此命令获取机密信息：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
+```
+---
 
 请注意，`CredentialId` 已更新为备用 `keyName`，并且 `value` 已重新生成：
 
 ![显示第二个存储帐户的 a z keyvault secret show 命令输出的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 检索访问密钥以比较值：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 请注意，密钥的 `value` 与密钥保管库中的机密相同：
 

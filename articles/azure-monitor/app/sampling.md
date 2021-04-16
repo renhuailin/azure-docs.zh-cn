@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589554"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305236"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -184,7 +184,7 @@ public void ConfigureServices(IServiceCollection services)
 如下所示使用 `TelemetryProcessorChainBuilder` 的扩展方法来自定义采样行为。
 
 > [!IMPORTANT]
-> 如果使用此方法配置采样，请确保在调用 `AddApplicationInsightsTelemetry()` 时将 `aiOptions.EnableAdaptiveSampling` 属性设置为 `false`。
+> 如果使用此方法配置采样，请确保在调用 `AddApplicationInsightsTelemetry()` 时将 `aiOptions.EnableAdaptiveSampling` 属性设置为 `false`。 进行此更改后，你需要严格按照以下代码块中的说明操作，以便使用准备好的自定义项重新启用自适应采样。 否则，可能会导致数据引入过量。 始终测试更改后的采样设置，并设置相应的[每日数据上限](pricing.md#set-the-daily-cap)，以帮助控制成本。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

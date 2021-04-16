@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944032"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教程：使用 Azure CLI 在 HDInsight 中创建启用 Apache Kafka REST 代理的群集
@@ -30,7 +30,7 @@ ms.locfileid: "98944032"
 
 * 一个已注册到 Azure AD 的应用程序。 编写的用来与 Kafka REST 代理交互的客户端应用程序将使用此应用程序的 ID 和机密对 Azure 进行身份验证。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)。
 
-* 一个 Azure AD 安全组，其中包含已注册的应用程序作为成员。 此安全组用于控制允许哪些应用程序与 REST 代理交互。 有关创建 Azure AD 组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+* 一个 Azure AD 安全组，其中包含已注册的应用程序作为成员。 此安全组将用于控制允许哪些应用程序与 REST 代理交互。 有关创建 Azure AD 组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 * Azure CLI。 确保至少安装版本 2.0.79。 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "98944032"
     export componentVersion=kafka=2.1
     ```
 
-1. 输入以下命令[创建资源组](/cli/azure/group#az-group-create)：
+1. 输入以下命令来[创建资源组](/cli/azure/group#az-group-create)：
 
     ```azurecli
      az group create \

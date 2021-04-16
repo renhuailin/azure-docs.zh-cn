@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247176"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308102"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客
 
@@ -31,13 +31,13 @@ ms.locfileid: "98247176"
 
     ![登录“我的流”](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. 在“+ 新建”下，选择“即时 - 从空白开始”。
+1. 在“+ 新建”下，选择“+ 即时云端流”。
 
-    ![“我的流”+“自动 - 从空白开始”](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![“我的流”+“自动 - 从空白开始”](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. 命名你的流，然后在“选择触发此流的方式”下，选择“收到 HTTP 请求时”。
 
-    ![生成自动化流窗口“跳过”按钮](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![生成自动化流窗口“跳过”按钮](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. 单击流步骤以将它展开。
 
@@ -137,9 +137,13 @@ ms.locfileid: "98247176"
 ### <a name="connect-to-a-crm-system"></a>连接到 CRM 系统
 
 1. 选择“+新建步骤”。
-1. 通过在显示“搜索连接器和操作”的位置处进行搜索，来选择你所选的 CRM 系统。 在“操作”选项卡上选择该系统以及用于创建新记录的操作。 以下屏幕显示了“创建新记录(Dynamics 365)”作为示例。
+1. 通过在显示“搜索连接器和操作”的位置处进行搜索，来选择你所选的 CRM 系统。 以下屏幕显示了“创建新记录(Common Data Service)”作为示例。
 
     ![新建记录](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. 在“操作”选项卡上选择该操作以创建新记录。
+
+    ![选择“创建新记录”](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. 提供与 CRM 系统关联的组织名称。 从“实体名称”下拉列表中选择“潜在顾客”。 
 

@@ -5,20 +5,19 @@ description: 本教程介绍如何使用 Azure 门户通过路由表路由网络
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2020
+ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7da59e996ec37d3653dbde68c5f56caa9e8261ee
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221912"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061904"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
 
@@ -34,87 +33,107 @@ ms.locfileid: "98221912"
 
 本教程使用 [Azure 门户](https://portal.azure.com)。 你也可使用 [Azure CLI](tutorial-create-route-table-cli.md) 或 [Azure PowerShell](tutorial-create-route-table-powershell.md)。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+## <a name="prerequisites"></a>先决条件
+
+在开始之前，需要一个包含有效订阅的 Azure 帐户。 如果你没有帐户，可以[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="prerequisites"></a>先决条件
+
+- Azure 订阅。
+
+## <a name="sign-in-to-azure"></a>登录 Azure
+
+通过 https://portal.azure.com 登录到 Azure 门户。
+
+## <a name="create-a-virtual-network"></a>创建虚拟网络
+
+1. 在 Azure 门户菜单中，选择“创建资源”。 在 Azure 市场中，选择“网络” > “虚拟网络”，或者在搜索框中搜索“虚拟网络”  。
+
+2. 选择“创建”。
+
+2. 在“创建虚拟网络”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择“新建”，输入 **myResourceGroup** 。 </br> 选择“确定”。 |
+    | 名称 | 输入 myVirtualNetwork。 |
+    | 位置 | 选择“(US)美国东部”。|
+
+3. 选择“IP 地址”选项卡，或选择页面底部的“下一步: IP 地址”按钮。
+
+4. 在“IPv4 地址空间”中，选择现有地址空间，并将其更改为 **10.0.0.0/16**。
+
+4. 选择“+ 添加子网”，然后输入“公共”作为“子网名称”，输入 **10.0.0.0/24** 作为“子网地址范围”。
+
+5. 选择 **添加** 。
+
+6. 选择“+ 添加子网”，然后输入“专用”作为“子网名称”，输入 **10.0.1.0/24** 作为“子网地址范围”。
+
+7. 选择 **添加** 。
+
+8. 选择“+ 添加子网”，然后输入“外围网络”作为“子网名称”，输入 **10.0.2.0/24** 作为“子网地址范围”。
+
+9. 选择 **添加** 。
+
+10. 选择“安全性”选项卡，或者选择“下一步: 安全性”按钮（位于页面底部）。
+
+11. 在“BastionHost”下，选择“启用” 。 输入此信息：
+
+    | 设置            | 值                      |
+    |--------------------|----------------------------|
+    | Bastion 名称 | 输入“myBastionHost” |
+    | AzureBastionSubnet 地址空间 | 输入 **10.0.3.0/24** |
+    | 公共 IP 地址 | 选择“新建”。 </br> 对于“名称”，请输入“myBastionIP” 。 </br> 选择“确定”。 |
+
+12. 选择“查看 + 创建”选项卡，或选择“查看 + 创建”按钮。
+
+13. 选择“创建”。
 
 ## <a name="create-an-nva"></a>创建 NVA
 
-网络虚拟设备 (NVA) 是帮助提供网络功能（例如路由和防火墙优化）的虚拟机。 本教程假设使用 **Windows Server 2016 Datacenter**。 如果需要，可以选择不同的操作系统。
+网络虚拟设备 (NVA) 是帮助提供网络功能（例如路由和防火墙优化）的虚拟机。 本教程假设使用 **Windows Server 2019 Datacenter**。 如果需要，可以选择不同的操作系统。
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单或“主页”中，选择“创建资源”。 
+1. 在门户的左上方，选择“创建资源” > “计算” > “虚拟机”  。 
+   
+2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
-1. 选择“安全性” > “Windows Server 2016 Datacenter”。 
+    | 设置 | 值                                          |
+    |-----------------------|----------------------------------|
+    | **项目详细信息** |  |
+    | 订阅 | 选择 Azure 订阅 |
+    | 资源组 | 选择“myResourceGroup” |
+    | **实例详细信息** |  |
+    | 虚拟机名称 | 输入 **myVMNVA** |
+    | 区域 | 选择“(US)美国东部” |
+    | 可用性选项 | 选择“无需基础结构冗余” |
+    | 映像 | 选择“Windows Server 2019 Datacenter” |
+    | Azure Spot 实例 | 请选择“否” |
+    | 大小 | 选择 VM 大小或采用默认设置 |
+    | **管理员帐户** |  |
+    | 用户名 | 输入用户名 |
+    | 密码 | 输入密码 |
+    | 确认密码 | 重新输入密码 |
+    | **入站端口规则** |    |
+    | 公共入站端口 | 选择“无”。 |
+    |
 
-    ![Windows Server 2016 Datacenter，创建 VM，Azure 门户](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
+3. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+  
+4. 在“网络”选项卡中，选择或输入：
 
-1. 在“创建虚拟机”页中的“基本信息”下，输入或选择以下信息： 
-
-    | 部分 | 设置 | 操作 |
-    | ------- | ------- | ----- |
-    | **项目详细信息** | 订阅 | 选择订阅。 |
-    | | 资源组 | 选择“新建”，输入 *myResourceGroup*，然后选择“确定” 。 |
-    | **实例详细信息** | 虚拟机名称 | 输入 *myVmNva*。 |
-    | | 区域 | 选择“(美国)美国东部”。 |
-    | | 可用性选项 | 选择“无需基础结构冗余”。 |
-    | | 映像 | 选择“Windows Server 2016 Datacenter”。 |
-    | | 大小 | 保留默认值“标准 DS1 v2”。 |
-    | **管理员帐户** | 用户名 | 输入所选用户名。 |
-    | | 密码 | 输入所选的密码，该密码必须至少包含 12 个字符，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。 |
-    | | 确认密码 | 再次输入密码。 |
-    | **入站端口规则** | 公共入站端口 | 选择“无”。 |
-    | **节省资金** | 已有 Windows Server 许可证? | 选取“否”。 |
-
-    ![“基本信息”，创建虚拟机，Azure 门户](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
-
-    然后选择页面底部的“下一步:磁盘 >”。
-
-1. 在“磁盘”下选择符合需求的设置，然后选择“下一步: 网络 >”。
-
-1. 在“网络”下：
-
-    1. 对于“虚拟网络”，请选择“新建”。 
-    
-    1. 在“创建虚拟网络”对话框中的“名称”下，输入 *myVirtualNetwork*。 
-
-    1. 在“地址空间”中，将现有的地址范围替换为 *10.0.0.0/16*。
-
-    1. 在“子网”中，选择“删除”图标删除现有子网，然后输入“子网名称”和“地址范围”的以下组合。    输入有效的名称和范围后，该子网下面会出现一个新的空行。
-
-        | 子网名称 | 地址范围 |
-        | ----------- | ------------- |
-        | *公共* | *10.0.0.0/24* |
-        | 专用 | *10.0.1.0/24* |
-        | *外围网络* | *10.0.2.0/24* |
-
-    1. 选择“确定”退出对话框。
-
-    1. 在“子网”中选择“外围网络(10.0.2.0/24)”。 
-
-    1. 在“公共 IP”中选择“无”，因为此 VM 不会通过 Internet 进行连接。 
-
-    1. **选择“下一步:** 管理 >”。
-
-1. 在“管理”下：
-
-    1. 在“诊断存储帐户”中选择“新建”。 
-    
-    1. 在“创建存储帐户”对话框中，输入或选择以下信息：
-
-        | 设置 | 值 |
-        | ------- | ----- |
-        | 名称 | *mynvastorageaccount* |
-        | 帐户类型 | “存储(常规用途 v1)” |
-        | 性能 | **Standard** |
-        | 复制 | **本地冗余存储 (LRS)** |
-    
-    1. 选择“确定”退出对话框。
-
-    1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将验证配置。
-
-1. 看到“验证通过”消息时，选择“创建” 。
-
-    创建 VM 需要几分钟时间。 等到 Azure 创建完 VM 为止。 “部署正在进行”页会显示部署详细信息。
-
-1. VM 准备就绪后，选择“转到资源”。
+    | 设置 | 值 |
+    |-|-|
+    | **网络接口** |  |
+    | 虚拟网络 | 选择“myVirtualNetwork”。 |
+    | 子网 | 选择“外围网络” |
+    | 公共 IP | 选择“无” |
+    | NIC 网络安全组 | 选择“基本”|
+    | 公共入站端口网络 | 选择“无”。 |
+   
+5. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
+  
+6. 检查设置，然后选择“创建”。
 
 ## <a name="create-a-route-table"></a>创建路由表
 
@@ -124,134 +143,195 @@ ms.locfileid: "98221912"
 
 3. 在“路由表”页中，选择“创建”。
 
-4. 在“创建路由表”中，输入或选择以下信息：
+4. 在“基本信息”选项卡上的“创建路由表”中，输入或选择以下信息 ：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | *myRouteTablePublic* |
-    | 订阅 | 订阅 |
-    | 资源组 | **myResourceGroup** |
-    | 位置 | **（美国）美国东部** |
-    | 虚拟网络网关路由传播 | **已启用** |
+    | **项目详细信息** |   |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择“myResourceGroup”。 |
+    | **实例详细信息** |    |
+    | 区域 | 选择“美国东部”。 |
+    | 名称 | 输入 **myRouteTablePublic**。 |
+    | 传播网关路由 | 请选择“是”。 |
 
-    ![创建路由表，Azure 门户](./media/tutorial-create-route-table-portal/create-route-table.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/create-route-table.png" alt-text="创建路由表，Azure 门户" border="true":::
 
-5. 选择“创建”。
+5. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
 
 ## <a name="create-a-route"></a>创建路由
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理路由表。 搜索并选择“路由表”。
 
-1. 选择路由表的名称 (**myRouteTablePublic**)。
+2. 选择路由表的名称“myRouteTablePublic”。
 
-1. 选择“路由” > “添加”。 
+3. 在“myRouteTablePublic”页中的“设置”部分，选择“路由”  。
 
-    ![创建路由，路由表，Azure 门户](./media/tutorial-create-route-table-portal/add-route.png)
+4. 在“路由”页中，选择“+ 添加”按钮。
 
-1. 在“添加路由”中，输入或选择以下信息：
+5. 在“添加路由”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 路由名称 | *ToPrivateSubnet* |
-    | 地址前缀 | *10.0.1.0/24*（前面创建的“专用”子网的地址范围） |
-    | 下一跃点类型 | **虚拟设备** |
-    | 下一跃点地址 | *10.0.2.4*（“外围网络”子网地址范围内的某个地址） |
+    | 路由名称 | 输入 **ToPrivateSubnet** |
+    | 地址前缀 | 输入 **10.0.1.0/24**（前面创建的“专用”子网的地址范围） |
+    | 下一跃点类型 | 选择“虚拟设备”。 |
+    | 下一跃点地址 | 输入 **10.0.2.4**（“外围网络”子网地址范围内的某个地址） |
 
-1. 选择“确定”。
+6. 选择“确定”。
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>将路由表关联到子网
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理虚拟网络。 搜索并选择“虚拟网络”。
 
-1. 选择虚拟网络的名称 (**myVirtualNetwork**)。
+2. 选择虚拟网络的名称“myVirtualNetwork”。
 
-1. 在虚拟网络的菜单栏中选择“子网”。
+3. 在“myVirtualNetwork”页中的“设置”部分，选择“子网”  。
 
-1. 在虚拟网络的子网列表中选择“公共”。
+4. 在虚拟网络的子网列表中，选择“公共”。
 
-1. 在“路由表”中选择创建的路由表 (**myRouteTablePublic**)，然后选择“保存”以将路由表关联到“公共”子网。 
+5. 在“路由表”中，选择创建的路由表“myRouteTablePublic” 。 
 
-    ![关联路由表，子网列表，虚拟网络，Azure 门户](./media/tutorial-create-route-table-portal/associate-route-table.png)
+6. 选择“保存”，将路由表关联到“公共”子网 。
+
+    :::image type="content" source="./media/tutorial-create-route-table-portal/associate-route-table.png" alt-text="关联路由表，子网列表，虚拟网络，Azure 门户。" border="true":::
 
 ## <a name="turn-on-ip-forwarding"></a>启用 IP 转发
 
-接下来，为新的 NVA 虚拟机 *myVmNva* 启用 IP 转发。 当 Azure 向 *myVmNva* 发送网络流量时，如果流量发往不同的 IP 地址，则 IP 转发会将流量发送到正确的位置。
+接下来，为新的 NVA 虚拟机 **myVMNVA** 启用 IP 转发。 当 Azure 向 **myVMNVA** 发送网络流量时，如果流量发往不同的 IP 地址，则 IP 转发会将流量发送到正确的位置。
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理 VM。 搜索并选择“虚拟机”。
 
-1. 选择 VM 的名称 (**myVmNva**)。
+2. 选择虚拟机的名称“myVMNVA”。
 
-1. 在 NVA 虚拟机的菜单栏中选择“网络”。
+3. 在“myVMNVA”概述页上的“设置”中，选择“网络”  。
 
-1. 选择“myvmnva123”。 这是 Azure 为 VM 创建的网络接口。 Azure 将添加数字来确保接口的名称保持唯一。
+4. 在 **myVMNVA** 的“网络”页中，选择“网络接口”旁边的网络接口 。  该接口的名称以 **myvmnva** 开头。
 
-    ![网络，网络虚拟设备 (NVA) 虚拟机 (VM)，Azure 门户](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/virtual-machine-networking.png" alt-text="网络，网络虚拟设备 (NVA) 虚拟机 (VM)，Azure 门户" border="true":::
 
-1. 在网络接口菜单栏中选择“IP 配置”。
+5. 在网络接口概述页上的“设置”中，选择“IP 配置” 。
 
-1. 在“IP 配置”页中，将“IP 转发”设置为“已启用”，然后选择“保存”。   
+6. 在“IP 配置”页中，将“IP 转发”设置为“已启用”，然后选择“保存”   。
 
-    ![启用 IP 转发，IP 配置，网络接口，网络虚拟设备 (NVA) 虚拟机 (VM)，Azure 门户](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/enable-ip-forwarding.png" alt-text="启用 IP 转发" border="true":::
 
 ## <a name="create-public-and-private-virtual-machines"></a>创建公共和专用虚拟机
 
 在虚拟网络中创建公共 VM 和专用 VM。 稍后，我们将使用这些 VM 来查看 Azure 如何通过 NVA 将“公共”子网流量路由到“专用”子网。 
 
-若要创建公共 VM 和专用 VM，请遵循前面所述的[创建 NVA](#create-an-nva) 的步骤。 无需等待部署完成，也不需要转到 VM 资源。 使用的大多数设置与前面所述相同，但下述设置除外。
-
-在选择“创建”来创建公共或专用 VM 之前，请转到以下两个子部分（[公共 VM](#public-vm) 和[专用 VM](#private-vm)），其中列出了必须修改的值。 在 Azure 部署完这两个 VM 之后，你可以转到下一部分（[通过 NVA 路由流量](#route-traffic-through-an-nva)）。
 
 ### <a name="public-vm"></a>公共 VM
 
-| 选项卡 | 设置 | 值 |
-| --- | ------- | ----- |
-| 基础 | 资源组 | **myResourceGroup** |
-| | 虚拟机名称 | *myVmPublic* |
-| | 公共入站端口 | “允许选定的端口” |
-| | 选择入站端口 | **RDP** |
-| 网络 | 虚拟网络 | **myVirtualNetwork** |
-| | 子网 | “公共(10.0.0.0/24)” |
-| | 公共 IP 地址 | 默认值 |
-| 管理 | 诊断存储帐户 | **mynvastorageaccount** |
+1. 在门户的左上方，选择“创建资源” > “计算” > “虚拟机”  。 
+   
+2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
+
+    | 设置 | 值                                          |
+    |-----------------------|----------------------------------|
+    | **项目详细信息** |  |
+    | 订阅 | 选择 Azure 订阅 |
+    | 资源组 | 选择“myResourceGroup” |
+    | **实例详细信息** |  |
+    | 虚拟机名称 | 输入 **myVMPublic** |
+    | 区域 | 选择“(US)美国东部” |
+    | 可用性选项 | 选择“无需基础结构冗余” |
+    | 映像 | 选择“Windows Server 2019 Datacenter” |
+    | Azure Spot 实例 | 请选择“否” |
+    | 大小 | 选择 VM 大小或采用默认设置 |
+    | **管理员帐户** |  |
+    | 用户名 | 输入用户名 |
+    | 密码 | 输入密码 |
+    | 确认密码 | 重新输入密码 |
+    | **入站端口规则** |    |
+    | 公共入站端口 | 选择“无”。 |
+    |
+
+3. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+  
+4. 在“网络”选项卡中，选择或输入：
+
+    | 设置 | 值 |
+    |-|-|
+    | **网络接口** |  |
+    | 虚拟网络 | 选择“myVirtualNetwork”。 |
+    | 子网 | 选择“公共” |
+    | 公共 IP | 选择“无” |
+    | NIC 网络安全组 | 选择“基本”|
+    | 公共入站端口网络 | 选择“无”。 |
+   
+5. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
+  
+6. 检查设置，然后选择“创建”。
 
 ### <a name="private-vm"></a>专用 VM
 
-| 选项卡 | 设置 | 值 |
-| --- | ------- | ----- |
-| 基础 | 资源组 | **myResourceGroup** |
-| | 虚拟机名称 | *myVmPrivate* |
-| | 公共入站端口 | “允许选定的端口” |
-| | 选择入站端口 | **RDP** |
-| 网络 | 虚拟网络 | **myVirtualNetwork** |
-| | 子网 | “专用(10.0.1.0/24)” |
-| | 公共 IP 地址 | 默认值 |
-| 管理 | 诊断存储帐户 | **mynvastorageaccount** |
+1. 在门户的左上方，选择“创建资源” > “计算” > “虚拟机”  。 
+   
+2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
+
+    | 设置 | 值                                          |
+    |-----------------------|----------------------------------|
+    | **项目详细信息** |  |
+    | 订阅 | 选择 Azure 订阅 |
+    | 资源组 | 选择“myResourceGroup” |
+    | **实例详细信息** |  |
+    | 虚拟机名称 | 输入 **myVMPrivate** |
+    | 区域 | 选择“(US)美国东部” |
+    | 可用性选项 | 选择“无需基础结构冗余” |
+    | 映像 | 选择“Windows Server 2019 Datacenter” |
+    | Azure Spot 实例 | 请选择“否” |
+    | 大小 | 选择 VM 大小或采用默认设置 |
+    | **管理员帐户** |  |
+    | 用户名 | 输入用户名 |
+    | 密码 | 输入密码 |
+    | 确认密码 | 重新输入密码 |
+    | **入站端口规则** |    |
+    | 公共入站端口 | 选择“无”。 |
+    |
+
+3. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+  
+4. 在“网络”选项卡中，选择或输入：
+
+    | 设置 | 值 |
+    |-|-|
+    | **网络接口** |  |
+    | 虚拟网络 | 选择“myVirtualNetwork”。 |
+    | 子网 | 选择“专用” |
+    | 公共 IP | 选择“无” |
+    | NIC 网络安全组 | 选择“基本”|
+    | 公共入站端口网络 | 选择“无”。 |
+   
+5. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
+  
+6. 检查设置，然后选择“创建”。
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
-### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>通过远程桌面登录到 myVmPrivate
+### <a name="sign-in-to-private-vm"></a>登录到专用 VM
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理专用 VM。 搜索并选择“虚拟机”。
 
-1. 选择专用 VM 的名称 (**myVmPrivate**)。
+2. 选择专用虚拟机的名称“myVmPrivate”。
 
-1. 选择 VM 菜单栏中“连接”，以便与专用 VM 建立远程桌面连接。
+3. 在 VM 菜单栏中，选择“连接”，然后选择“堡垒”。
 
-1. 在“使用 RDP 连接”页中，选择“下载 RDP 文件”。  Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+4. 在“连接”页中，选择蓝色的“使用堡垒”按钮。
 
-1. 打开下载的 *.rdp* 文件。 出现提示时，选择“连接”。 选择“更多选项” > “使用其他帐户”，然后输入创建专用 VM 时指定的用户名和密码。 
+5. 在“堡垒”页上，输入以前为虚拟机创建的用户名和密码。
 
-1. 选择“确定”。
+6. 选择“连接”  。
 
-1. 如果在登录过程中看到证书警告，请选择“是”以连接到 VM。
+### <a name="configure-firewall"></a>配置防火墙
 
-### <a name="enable-icmp-through-the-windows-firewall"></a>允许 ICMP 通过 Windows 防火墙
+在稍后的步骤中，我们将使用跟踪路由工具来测试路由。 跟踪路由使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙默认拒绝该协议。 
 
-在稍后的步骤中，我们将使用跟踪路由工具来测试路由。 跟踪路由使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙默认拒绝该协议。 启用通过 Windows 防火墙的 ICMP。
+启用通过 Windows 防火墙的 ICMP。
 
-1. 在 *myVmPrivate* 的远程桌面中，打开 PowerShell。
+1. 在 **myVMPrivate** 的堡垒连接中，使用管理权限打开 PowerShell。
 
-1. 输入以下命令：
+2. 输入以下命令：
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -259,34 +339,40 @@ ms.locfileid: "98221912"
 
     本教程将使用跟踪路由来测试路由。 对于生产环境，我们不建议允许通过 Windows 防火墙的 ICMP。
 
-### <a name="turn-on-ip-forwarding-within-myvmnva"></a>在 myVmNva 中启用 IP 转发
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>在 myVMNVA 中启用 IP 转发
 
-我们已使用 Azure 为 VM 的网络接口[启用了 IP 转发](#turn-on-ip-forwarding)。 VM 的操作系统也必须转发网络流量。 使用以下命令为 *myVmNva* VM 的操作系统启用 IP 转发。
+我们已使用 Azure 为 VM 的网络接口[启用了 IP 转发](#turn-on-ip-forwarding)。 虚拟机的操作系统也必须转发网络流量。 
 
-1. 在 *myVmPrivate* VM 中的命令提示符下，打开远程桌面并连接到 *myVmNva* VM：
+使用这些命令为 **myVMNVA** 启用 IP 转发。
 
-    ```cmd
+1. 在 **myVMPrivate** VM 上的 PowerShell 中，打开远程桌面并连接到 **myVMNVA** VM：
+
+    ```powershell
     mstsc /v:myvmnva
     ```
 
-1. 在 *myVmNva* VM 上的 PowerShell 中输入以下命令，以启用 IP 转发：
+2. 在 **myVMNVA** VM 上的 PowerShell 中，输入以下命令以启用 IP 转发：
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. 重启 *myVmNva* VM：在任务栏中，选择“开始” > “电源”，然后选择“其他(计划内)” > “继续”。   
+3. 重启 **myVMNVA**。
 
-    这也会断开远程桌面会话的连接。
-
-1. 重启 *myVmNva* VM 后，与 *myVmPublic* VM 建立远程桌面会话。 在仍与 *myVmPrivate* VM 保持连接的情况下，打开命令提示符并运行以下命令：
-
-    ```cmd
-    mstsc /v:myVmPublic
+    ```powershell
+    Restart-Computer
     ```
-1. 在 *myVmPublic* 的远程桌面中打开 PowerShell。
 
-1. 输入以下命令，启用通过 Windows 防火墙的 ICMP：
+4. 重启 **myVMNVA** 后，创建与 **myVMPublic** 的远程桌面会话。 
+    
+    在仍与 **myVMPrivate** 保持连接的情况下，打开 PowerShell 并运行以下命令：
+
+    ```powershell
+    mstsc /v:myvmpublic
+    ```
+5. 在 **myVMPublic** 的远程桌面中打开 PowerShell。
+
+6. 输入以下命令，启用通过 Windows 防火墙的 ICMP：
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -294,71 +380,79 @@ ms.locfileid: "98221912"
 
 ## <a name="test-the-routing-of-network-traffic"></a>测试网络流量的路由
 
-首先，让我们测试从 *myVmPublic* VM 到 *myVmPrivate* VM 的网络流量路由。
+首先，让我们测试从 **myVMPublic** 到 **myVMPrivate** 的网络流量路由。
 
-1. 在 *myVmPublic* VM 上的 PowerShell 中，输入以下命令：
+1. 在 **myVMPublic** 上的 PowerShell 中，输入以下命令：
 
     ```powershell
-    tracert myVmPrivate
+    tracert myvmprivate
     ```
 
     响应类似于以下示例：
 
     ```powershell
-    Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
+    Tracing route to myvmprivate.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
 
-    1    <1 ms     *        1 ms  10.0.2.4
-    2     1 ms     1 ms     1 ms  10.0.1.4
+      1     1 ms     *        2 ms  myvmnva.internal.cloudapp.net [10.0.2.4]
+      2     2 ms     1 ms     1 ms  myvmprivate.internal.cloudapp.net [10.0.1.4]
 
     Trace complete.
     ```
 
-    可以看到，第一个跃点连接到 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为路由到 *myVmPrivate* VM 的专用 IP 地址：10.0.1.4。 前面我们已将路由添加到 *myRouteTablePublic* 路由表，并已将它关联到“公共”子网。 因此，Azure 通过 NVA 发送了流量，而不是直接将流量发送到“专用”子网。
+    * 可以看到，第一个跃点连接到 10.0.2.4，即 **myVMNVA** 的专用 IP 地址。 
 
-1. 关闭与 *myVmPublic* VM 建立的远程桌面会话，这样，就会与 *myVmPrivate* VM 保持连接。
+    * 第二个跃点连接到 **myVMPrivate** 的专用 IP 地址：10.0.1.4。 
 
-1. 在 *myVmPrivate* VM 中的命令提示符下，输入以下命令：
+    前面我们已将路由添加到 **myRouteTablePublic** 路由表，并已将它关联到“公共”子网。 Azure 通过 NVA 发送了流量，而不是直接将流量发送到“专用”子网。
 
-    ```cmd
-    tracert myVmPublic
+2. 关闭与 **myVMPublic** 建立的远程桌面会话，这样，就仍会与 **myVMPrivate** 保持连接。
+
+3. 在 **myVMPrivate** 上打开 PowerShell，输入以下命令：
+
+    ```powershell
+    tracert myvmpublic
     ```
 
     此命令测试从 *myVmPrivate* VM 到 *myVmPublic* VM 的网络流量路由。 响应类似于以下示例：
 
     ```cmd
-    Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
+    Tracing route to myvmpublic.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
 
-    1     1 ms     1 ms     1 ms  10.0.0.4
+      1     1 ms     1 ms     1 ms  myvmpublic.internal.cloudapp.net [10.0.0.4]
 
     Trace complete.
     ```
 
-    可以看到，Azure 直接将流量从 *myVmPrivate* VM 路由到了 *myVmPublic* VM。 默认情况下，Azure 直接在子网之间路由流量。
+    可以看到，Azure 直接将流量从 *myVMPrivate* 路由到了 *myVMPublic*。 默认情况下，Azure 直接在子网之间路由流量。
 
-1. 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
+4. 关闭与 **myVMPrivate** 建立的堡垒会话。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要 myResourceGroup 时，请删除该资源组及其包含的所有资源：
+不再需要资源组时，请删除 **myResourceGroup** 及其包含的所有资源：
 
 1. 转到 [Azure 门户](https://portal.azure.com)来管理资源组。 搜索并选择“资源组”。
 
-1. 选择资源组的名称 (**myResourceGroup**)。
+2. 选择资源组的名称“myResourceGroup”。
 
-1. 选择“删除资源组”。
+3. 选择“删除资源组”。
 
-1. 在确认对话框中，在“键入资源组名称”中输入 *myResourceGroup*，然后选择“删除”。  Azure 将删除 *myResourceGroup* 以及绑定到该资源组的所有资源，包括路由表、存储帐户、虚拟网络、VM、网络接口和公共 IP 地址。
+4. 在确认对话框中，在“键入资源组名称”中输入 **myResourceGroup**，然后选择“删除”。  
+
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个路由表并将其关联到了某个子网。 还创建了一个简单 NVA，用于将流量从公共子网路由到专用子网。 现在，可以从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)部署不同的预配置 NVA，其中提供了许多有用的网络功能。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
+在本教程中，你将了解：
 
-尽管可以在一个虚拟网络中部署多个 Azure 资源，但 Azure 无法将某些 PaaS 服务的资源部署到虚拟网络。 可以限制对某些 Azure PaaS 服务的资源的访问，不过，只能对来自虚拟网络子网的流量实施这种限制。 若要了解如何限制对 Azure PaaS 资源的网络访问，请参阅下一篇教程。
+* 创建了一个路由表并将其关联到了某个子网。
+* 创建了一个简单的 NVA，用于将流量从公共子网路由到专用子网。 
 
+可以从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)部署不同的预配置 NVA，其中提供了许多有用的网络功能。 
+
+若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
+
+若要筛选虚拟网络中的网络流量，请参阅：
 > [!div class="nextstepaction"]
-> [限制 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources.md)
-
-> [!NOTE] 
-> Azure 服务是要花钱的。 Azure 成本管理有助于你设置预算并配置警报，使支出保持在控制范围之内。 使用成本管理分析、管理和优化 Azure 成本。 要了解详细信息，请参阅[分析成本快速入门](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+> [教程：使用 Azure 门户通过网络安全组筛选网络流量](tutorial-filter-network-traffic.md)
