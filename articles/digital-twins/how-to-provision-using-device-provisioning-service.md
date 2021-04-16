@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950954"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107289"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -302,7 +302,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration
 
 要触发停用进程，需要从 IoT 中心手动删除设备。
 
-可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete)或 Azure 门户来执行此操作。 在 Azure 门户中按照以下步骤删除设备：
+可以使用 [Azure CLI 命令](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete)或 Azure 门户来执行此操作。 在 Azure 门户中按照以下步骤删除设备：
 
 1. 导航到 IoT 中心，然后在左侧菜单选项中选择“IoT 设备”。 
 2. 你将看到一个设备，带有你在[本文前半部分](#auto-provision-device-using-device-provisioning-service)所选的设备注册 ID。 或者，也可以选择任何其他设备进行删除，只要它在 Azure 数字孪生中有孪生体即可，以便可以验证该孪生体在设备删除后有无自动删除。

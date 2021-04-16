@@ -3,12 +3,12 @@ title: 教程 - 部署 Azure VMware 解决方案私有云
 description: 了解如何创建和部署 Azure VMware 解决方案私有云
 ms.topic: tutorial
 ms.date: 02/22/2021
-ms.openlocfilehash: ed916305cd1a67162f07c24e3bf97766e5389b74
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 89a44ce7e5910609068f72c321971ced2e3646b4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462161"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374839"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>教程：部署 Azure VMware 解决方案私有云
 

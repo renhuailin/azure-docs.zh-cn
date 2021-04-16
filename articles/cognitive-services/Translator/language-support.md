@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101738134"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303519"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -52,8 +52,8 @@ ms.locfileid: "101738134"
 | 中文(繁体) | `zh-Hant` |
 | 克罗地亚语 | `hr` |
 | 捷克语 | `cs` |
-| 达里语 | `prs` |
 | 丹麦语 | `da` |
+| 达里语 | `prs` |
 | 荷兰语 | `nl` |
 | 英语 | `en` |
 | 爱沙尼亚语 | `et` |
@@ -167,7 +167,7 @@ ms.locfileid: "101738134"
 | 意大利语 | `it` |
 | 日语 | `ja` |
 | 克林贡语 | `tlh-Latn` |
-| 朝鲜语 | `ko` |
+| 韩语 | `ko` |
 | 库尔德语(中部) | `ku-Arab` |
 | 拉脱维亚语 | `lv` |
 | 立陶宛语 | `lt` |
@@ -340,6 +340,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 匈牙利语      | `hu`          |
 | 冰岛语 | `is` |
 | 印度尼西亚语|   `id`    |
+| 因纽特语|    `iu`    |
 | 爱尔兰语 | `ga`  |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |

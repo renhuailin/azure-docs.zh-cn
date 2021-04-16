@@ -1,18 +1,15 @@
 ---
 title: 设置使用 Azure Site Recovery 故障转移到辅助站点后的 IP 地址
 description: 介绍如何设置 IP 寻址以在使用 Azure Site Recovery 灾难恢复和故障转移后连接到辅助本地站点中的 VM。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1169748d7dae9990728dff91782a20d42e3c860b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87495937"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580246"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 

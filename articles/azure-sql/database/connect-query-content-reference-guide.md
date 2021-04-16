@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594166"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257409"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL 数据库和 Azure SQL 托管实例连接和查询文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,6 @@ ms.locfileid: "104594166"
 |[PHP](connect-query-php.md)|本快速入门演示如何使用 PHP 创建连接到数据库的程序，并使用 Transact-SQL 语句来查询数据。|
 |[Python](connect-query-python.md)|本快速入门演示如何使用 Python 连接到 Azure SQL 数据库，并使用 Transact-SQL 语句查询数据。 |
 |[Ruby](connect-query-ruby.md)|本快速入门演示如何使用 Ruby 创建连接到数据库的程序，并使用 Transact-SQL 语句查询数据。|
-|[R](connect-query-r.md)|本快速入门演示如何将 R 与 Azure SQL 数据库机器学习服务配合使用来创建连接到 Azure SQL 数据库中数据库的程序并使用 Transact-SQL 语句查询数据。|
 |||
 
 ## <a name="get-server-connection-information"></a>获取服务器连接信息

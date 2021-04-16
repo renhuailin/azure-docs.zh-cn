@@ -1,19 +1,19 @@
 ---
 title: 快速入门：使用 Python 进行连接 - Azure Database for PostgreSQL 灵活服务器
 description: 本快速入门提供了多个 Python 代码示例，你可以使用它们来连接到 Azure Database for PostgreSQL 灵活服务器并查询其中的数据。
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 948972c1d47e550395a280e62c0491800e716663
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 823dd6fc64da2c4900f5a0a35a6cd27a9a2b43ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550636"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227478"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 灵活服务器并查询其中的数据
 

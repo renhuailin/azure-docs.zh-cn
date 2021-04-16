@@ -1,7 +1,7 @@
 ---
 title: 快速入门 - 创建和管理访问令牌
 titleSuffix: An Azure Communication Services quickstart
-description: 了解如何使用 Azure 通信服务标识客户端库管理标识和访问令牌。
+description: 了解如何使用 Azure 通信服务标识 SDK 管理标识和访问令牌。
 author: tomaschladek
 manager: nmurav
 services: azure-communication-services
@@ -10,16 +10,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 921934e581d9b3d32cba644d85987ebb9802f73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e356219d22ee558ce3de5a96d58f24b9e7902d8a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495283"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726611"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>快速入门：创建和管理访问令牌
 
-通过使用通信服务标识客户端库，开始使用 Azure 通信服务。 使用该服务可以创建标识并管理访问令牌。 标识表示 Azure 通信服务（例如，用户或设备）中的应用程序的实体。 访问令牌使聊天和呼叫客户端库能直接对 Azure 通信服务进行身份验证。 建议在服务器端服务上生成访问令牌。 然后，访问令牌用于在客户端设备上初始化通信服务客户端库。
+通过使用通信服务标识 SDK，开始使用 Azure 通信服务。 使用该服务可以创建标识并管理访问令牌。 标识表示 Azure 通信服务（例如，用户或设备）中的应用程序的实体。 访问令牌允许聊天 SDK 和呼叫 SDK 直接向 Azure 通信服务进行身份验证。 建议在服务器端服务上生成访问令牌。 然后，访问令牌用于在客户端设备上初始化通信服务 SDK。
 
 本教程图像中显示的任何价格仅用于演示用途。
 
@@ -44,9 +44,14 @@ ms.locfileid: "103495283"
 ```console
 Azure Communication Services - Access Tokens Quickstart
 
-Created an identity: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
+Created an identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
 
-Issued an access token with 'voip' scope that expires at Fri Nov 27 2020 16:47:05 GMT-0800 (Pacific Standard Time):
+Issued an access token with 'voip' scope that expires at 30/03/21 08:09 09 AM:
+<token signature here>
+
+Created an identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-1ce9-31b4-54b7-a43a0d006a52
+
+Issued an access token with 'voip' scope that expires at 30/03/21 08:09 09 AM:
 <token signature here>
 
 Successfully revoked all access tokens for identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_00000006-19e0-2727-80f5-8b3a0d003502
@@ -67,7 +72,7 @@ Deleted the identity with ID: 8:acs:4ccc92c8-9815-4422-bddc-ceea181dc774_0000000
 > [!div class="checklist"]
 > * 管理标识
 > * 颁发访问令牌
-> * 使用通信服务标识客户端库
+> * 使用通信服务标识 SDK
 
 
 > [!div class="nextstepaction"]

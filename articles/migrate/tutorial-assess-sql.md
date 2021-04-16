@@ -5,20 +5,17 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 9b33890d53f67eee870b42462a65b4a0b7ba9981
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557983"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>教程：评估要迁移到 Azure SQL 的 SQL 实例
 
 在迁移到 Azure 的过程中，将评估本地工作负载，以衡量云的就绪性、确定风险以及估算成本和复杂性。
 本文介绍如何使用“Azure Migrate: 发现和评估”工具来评估准备迁移到 Azure SQL 的已发现 SQL Server 实例数据库。
-
-> [!Note]
-> 目前，对 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估功能以预览版提供。 若要试用此功能，请使用[此链接](https://aka.ms/AzureMigrate/SQL)在澳大利亚东部区域创建一个项目 。 如果在澳大利亚东部已有项目，并且想要尝试此功能，请确保已在门户上完成这些[先决条件](how-to-discover-sql-existing-project.md)。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -35,6 +32,8 @@ ms.locfileid: "102053514"
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 - 在遵循本教程评估要迁移到 Azure SQL 的 SQL Server 实例之前，请确保已[遵循此教程](tutorial-discover-vmware.md)使用 Azure Migrate 设备发现了要评估的 SQL 实例
+- 如果要在现有项目中试用此功能，请确保已完成本文中的[先决条件](how-to-discover-sql-existing-project.md)。
+
 
 ## <a name="run-an-assessment"></a>运行评估
 按如下述运行评估：
@@ -194,4 +193,4 @@ Azure Migrate 根据计算所有被评估 SQL 实例和数据库的评估所需�
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解](concepts-azure-sql-assessment-calculation.md)如何计算 Azure SQL 评估。
-- 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)开始迁移 SQL 实例和数据库。
+- 使用 [Azure 数据库迁移服务](../dms/dms-overview.md)开始迁移 SQL 实例和数据库。

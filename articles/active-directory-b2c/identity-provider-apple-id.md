@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63183eb6a77b3a7aecfb6f3e8a7c9ee7c2544de2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5e4ff93b90c7644c1d1498a14c8b9954041cb34
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543901"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028360"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>使用 Azure Active Directory B2C 设置通过 Apple ID 注册与登录（预览）
 
@@ -103,7 +103,7 @@ ms.locfileid: "105543901"
 1. 在“社交标识提供程序”下，选择“Apple (预览)”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页上，选择“Apple”以使用 Apple ID 登录。
 
@@ -250,7 +250,7 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页上，选择“Apple”以使用 Apple ID 登录。
 
