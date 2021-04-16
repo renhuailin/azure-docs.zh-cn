@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: 3a15ddc62c19d74871de33003d46ec2fc5437f51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: f3832a32f15debd8737aa16b0a9347b435a238c0
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584680"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227443"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
