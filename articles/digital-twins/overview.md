@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 315519472baa672e802855b5ab21b8bae8f51935
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071675"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109843"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -94,7 +94,11 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="service-limits"></a>服务限制
 
-有关 Azure 数字孪生限制的列表，请参阅 [Azure 数字孪生服务限制](reference-service-limits.md)。
+请参阅此处，了解 Azure 数字孪生的服务限制：[Azure 数字孪生服务限制](reference-service-limits.md)。 在使用服务来了解服务的功能和速率限制，以及在必要时可以调整哪些限制时，这一点非常有用。
+
+## <a name="terminology"></a>术语
+
+你可单击此处查看 Azure IoT 服务（包括 Azure 孪生）的常见 IoT 条款及其使用列表：[Azure IoT 词汇表](../iot-fundamentals/iot-glossary.md?toc=/azure/digital-twins/toc.json&bc=/azure/digital-twins/breadcrumb/toc.json)。 当你开始使用 Azure 数字孪生并构建 IoT 解决方案时，这可能是一个实用参考。
 
 ## <a name="next-steps"></a>后续步骤
 

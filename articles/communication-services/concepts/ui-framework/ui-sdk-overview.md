@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 47a32815ded5809edfde856a38c69ec7c6fd6fdf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4ab1a157cdf3ef5017b227cd090379dcab91997e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105931550"
 ---
 # <a name="azure-communication-services-ui-framework"></a>Azure 通信服务 UI 框架
 
@@ -25,11 +25,11 @@ Azure 通信服务 UI 框架使你能够轻松地构建现代通信用户体验�
 - 复合组件 - 这些组件是实现常见通信方案的统包解决方案。 可以向应用程序快速添加视频通话或聊天体验。 复合组件是使用基本组件生成的开源组件。
 - 基本组件 - 这些组件是开源构建基块，可用于生成自定义通信体验。 提供了实现通话和聊天功能的组件，可以将这些组件组合在一起来构建体验。 
 
-这些 UI 客户端库都使用 [Microsoft 的 Fluent 设计语言](https://developer.microsoft.com/fluentui/)和资产。 Fluent UI 为 UI 框架提供了跨 Microsoft 产品进行了大量测试的基础层。
+这些 UI SDK 都使用 [Microsoft 的 Fluent 设计语言](https://developer.microsoft.com/fluentui/)和资产。 Fluent UI 为 UI 框架提供了跨 Microsoft 产品进行了大量测试的基础层。
 
 ## <a name="differentiating-components-and-composites"></a>**区分组件和复合组件**
 
-基本组件在核心 Azure 通信服务客户端库的基础上构建，并实现基本操作，例如初始化核心客户端库、呈现视频，以及提供静音、视频开启/关闭等用户控制。你可以使用这些基本组件，以通过使用预先构建的、可用于生产的通信组件构建你自己的自定义布局体验。
+基本组件在核心 Azure 通信服务 SDK 的基础上构建，并实现基本操作，例如初始化核心 SDK、呈现视频，以及提供静音、视频开启/关闭等用户控制。你可以使用这些基本组件，通过预先构建的、可用于生产的通信组件构建你自己的自定义布局体验 。
 
 :::image type="content" source="../media/ui-framework/component-overview.png" alt-text="UI 框架组件概述":::
 
@@ -39,19 +39,19 @@ Azure 通信服务 UI 框架使你能够轻松地构建现代通信用户体验�
 
 ## <a name="what-ui-framework-is-best-for-my-project"></a>哪些 UI 框架最适合我的项目？
 
-了解这些要求可帮助你选择正确的客户端库：
+了解这些要求有助于你选择正确的 SDK：
 
-- **你需要多少自定义？** Azure 通信核心客户端库没有用户体验，它的设计初衷是让你可以构建任何你想要的用户体验。 UI 框架组件以减少自定义为代价提供 UI 资产。
-- **是否需要会议功能？** 会议系统有几种独特的功能，这些功能当前在核心 Azure 通信服务客户端库中不可用，例如模糊背景和举手。
+- **你需要多少自定义？** Azure 通信核心 SDK 没有用户体验，它的设计初衷是让你可以构建你想要的任何用户体验。 UI 框架组件以减少自定义为代价提供 UI 资产。
+- **是否需要会议功能？** 会议系统有几种独特的功能，这些功能当前在核心 Azure 通信服务 SDK 中不可用，例如模糊背景和举手。
 - **你的目标平台是什么？** 不同平台具有不同功能。
 
 有关可变 UI SDK 中的功能可用性的详细信息，请参阅[此处](ui-sdk-features.md)，但下面汇总了一些重要权衡。
 
-|客户端库/SDK|实施复杂性|    自定义功能|  调用| 聊天| [团队互操作](./../teams-interop.md)
+|SDK/SDK|实施复杂性|   自定义功能|  调用| 聊天| [团队互操作](./../teams-interop.md)
 |---|---|---|---|---|---|---|
 |复合组件|低|低|✔|✔|✕
 |基本组件|中|中|✔|✔|✕
-|核心客户端库|高|高|✔|✔ |✔
+|核心 SDK|高|高|✔|✔ |✔
 
 ## <a name="cost"></a>成本
 
@@ -78,7 +78,7 @@ Azure 通信服务 UI 框架使你能够轻松地构建现代通信用户体验�
 
 复合组件和基本组件使用 Azure 通信服务访问令牌进行初始化。 应通过你所管理的受信任服务从 Azure 通信服务获得访问令牌。 请参阅[快速入门：创建访问令牌](../../quickstarts/access-tokens.md)和[受信任的服务教程](../../tutorials/trusted-service-tutorial.md)来获取详细信息。
 
-这些客户端库还需要它们将要加入的通话或聊天的上下文。 与用户访问令牌类似，此上下文应通过你自己的受信任服务传送到客户端。 以下列表汇总了需要操作的初始化和资源管理功能。
+这些 SDK 还需要它们将要加入的通话或聊天的上下文。 与用户访问令牌类似，此上下文应通过你自己的受信任服务传送到客户端。 以下列表汇总了需要操作的初始化和资源管理功能。
 
 | Contoso 责任                                 | UI 框架责任                         |
 |----------------------------------------------------------|-----------------------------------------------------------------|

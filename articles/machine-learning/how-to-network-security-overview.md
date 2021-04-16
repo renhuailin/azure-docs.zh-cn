@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518665"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573466"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虚拟网络隔离和隐私概述
 
@@ -36,7 +36,6 @@ ms.locfileid: "102518665"
 + [Azure 专用链接](how-to-configure-private-link.md)
 + [网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md)
 + [网络防火墙](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>示例方案
 
 本部分将介绍如何设置一个常见的网络方案来确保 Azure 机器学习与专用 IP 地址的通信安全。
@@ -62,8 +61,8 @@ ms.locfileid: "102518665"
 1. 保护[训练环境](#secure-the-training-environment)。
 1. 保护[推理环境](#secure-the-inferencing-environment)。
 1. 可选：[启用工作室功能](#optional-enable-studio-functionality)。
-1. 配置[防火墙设置](#configure-firewall-settings)
-
+1. 配置[防火墙设置](#configure-firewall-settings)。
+1. 配置 [DNS 名称解析](#custom-dns)。
 ## <a name="secure-the-workspace-and-associated-resources"></a>保护工作区和关联的资源
 
 使用以下步骤确保工作区和关联的资源安全。 这些步骤可使服务在虚拟网络中进行通信。
@@ -186,3 +185,5 @@ ms.locfileid: "102518665"
 * [第 3 部分：保护训练环境](how-to-secure-training-vnet.md)
 * [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
 * [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
+
+另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。

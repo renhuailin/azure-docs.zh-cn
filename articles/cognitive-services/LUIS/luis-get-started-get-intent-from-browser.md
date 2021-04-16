@@ -4,13 +4,13 @@ description: 在本文中，你将在浏览器中使用可用的公共 LUIS 应�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a3bad4ab69f6950f83db9cf1f49cfa4cb7c7b5f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/26/2021
+ms.openlocfilehash: 4542f85ab562e65777fb8570873305523c76aee6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102040118"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276818"
 ---
 # <a name="how-to-query-the-prediction-runtime-with-user-text"></a>如何使用用户文本查询预测运行时
 
@@ -176,4 +176,4 @@ ms.locfileid: "102040118"
 * [自定义子域](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
-> [在 LUIS 门户中创建应用](get-started-portal-build-app.md)
+> [使用客户端库或 REST API](client-libraries-rest-api.md)

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 2eec512af9b139b2707c435fd0c78b7d50ac1b11
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97922cc8693cddcb13350117b6c17c4220f75337
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521044"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227970"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -119,4 +119,4 @@ imgplot = plt.imshow(gray_image)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关完整的训练示例，请参阅[带标签的数据集笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/labeled-datasets/labeled-datasets.ipynb)。
+* 有关完整的训练示例，请参阅[带标签的数据集笔记本](/azure/machine-learning/how-to-use-labeled-dataset)。

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654662"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047161"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>快速入门：将遥测数据从设备发送到 Azure IoT Central (Python)
 
@@ -266,5 +266,5 @@ ms.locfileid: "100654662"
 接下来，请通过应用程序示例了解 Azure IoT Python SDK。
 
 - [异步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios)：此目录包含适用于其他 IoT 中心方案的异步 Python 示例。
-- [同步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)：此目录包含与 Python 2.7 配合使用的，或者与适用于 Python 3.5+ 的同步兼容性方案配合使用的 Python 示例
+- [同步示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)：此目录包含与 Python 2.7 配合使用的 Python 示例，或者与适用于 Python 3.6+ 的同步兼容性方案配合使用的 Python 示例
 - [IoT Edge 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)：此目录包含有关使用 Edge 模块和下游设备的 Python 示例。

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 4a4705647b90d29f47e37b88531f3432c6a2f448
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68fb8cf5458081f96febbac75fd393a80345f60
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434434"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043189"
 ---
 针对 macOS 开发时，有三个语音 SDK 可用。
 
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.Mac 向 .NET 开发人员公开了完整的 macOS SDK，以供其使用 C# 构建本机 Mac 应用程序。 有关详细信息，请参阅 <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac </a>。
+        Xamarin.Mac 向 .NET 开发人员公开了完整的 macOS SDK，以供其使用 C# 构建本机 Mac 应用程序。 有关详细信息，请参阅 <a href="/xamarin/mac/" target="_blank">Xamarin.Mac </a>。
     :::column-end:::
     :::column:::
         <br>

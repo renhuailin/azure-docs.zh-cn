@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8435cab1855e9df871d17ff7fa393b6ab2cf0cb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f07e9dbd574d8a27e6048154c72b9afc24b6ba4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736333"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netskope 管理员控制台的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98736333"
 * 让用户使用其 Azure AD 帐户自动登录到 Netskope 管理员控制台。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,13 +37,12 @@ ms.locfileid: "98736333"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Netskope 管理员控制台支持 SP 和 IDP 发起的 SSO 
+* Netskope 管理员控制台支持 SP 和 IDP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-
-## <a name="adding-netskope-administrator-console-from-the-gallery"></a>从库中添加 Netskope 管理员控制台
+## <a name="add-netskope-administrator-console-from-the-gallery"></a>从库中添加 Netskope 管理员控制台
 
 若要配置 Netskope 管理员控制台与 Azure AD 的集成，需从库中将 Netskope 管理员控制台添加到托管 SaaS 应用程序列表。
 
@@ -142,19 +141,19 @@ ms.locfileid: "98736333"
 
 1. 在左侧导航窗格中单击“设置”选项卡  。
 
-    ![屏幕截图显示在导航窗格中选择了“设置”。](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![屏幕截图显示在导航窗格中选择了“设置”。](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. 单击“管理”选项卡  。
 
-    ![屏幕截图显示从“设置”选择了“管理”。](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![屏幕截图显示从“设置”选择了“管理”。](./media/netskope-cloud-security-tutorial/administration.png)
 
 1. 单击“SSO”选项卡  。
 
-    ![屏幕截图显示在“管理”中选择了“SSO”。](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![屏幕截图显示在“管理”中选择了“SSO”。](./media/netskope-cloud-security-tutorial/tab.png)
 
 1. 在“网络设置”部分中执行以下步骤  ：
     
-    ![屏幕截图显示了“网络设置”，你可以在其中输入所述值。](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![屏幕截图显示了“网络设置”，你可以在其中输入所述值。](./media/netskope-cloud-security-tutorial/network.png)
 
     a. 复制“断言使用者服务 URL”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中    。
 
@@ -162,7 +161,7 @@ ms.locfileid: "98736333"
 
 1. 单击“SSO/SLO设置”部分下的“编辑设置”   。
 
-    ![屏幕截图显示了“SSO/SLO 设置”，你可以在其中选择“编辑设置”。](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![屏幕截图显示了“SSO/SLO 设置”，你可以在其中选择“编辑设置”。](./media/netskope-cloud-security-tutorial/settings.png)
 
 1. 在“设置”弹出窗口中，执行以下步骤  ；
 
@@ -188,11 +187,11 @@ ms.locfileid: "98736333"
 
 1. 在左侧导航窗格中单击“设置”选项卡  。
 
-    ![屏幕截图显示选择了“设置”。](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![屏幕截图显示选择了“设置”。](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. 单击“活动平台”选项卡  。
 
-    ![屏幕截图显示从“设置”选择了活动平台。](./media/netskope-cloud-security-tutorial/user1.png)
+    ![屏幕截图显示从“设置”选择了活动平台。](./media/netskope-cloud-security-tutorial/user-1.png)
 
 1. 单击“用户”选项卡。 
 

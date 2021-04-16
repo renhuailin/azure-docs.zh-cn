@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 3beba1db82cc2a618ba7544228975c953b01acd9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064896"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491023"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序
 
 本文适用于解决方案构建者和设备开发人员。 
 
-本教程介绍如何以设备开发人员的身份将客户端应用程序连接到 Azure IoT Central 应用程序。 该应用程序模拟恒温器设备的行为。 当应用程序连接到 IoT Central 时，它将发送恒温器设备模型的模型 ID。 IoT Central 使用模型 ID 检索设备模型，并创建设备模板。 可以向设备模板添加自定义和视图，使操作员能够与设备进行交互。
+本教程介绍如何以设备开发人员的身份将客户端应用程序连接到 Azure IoT Central 应用程序。 该应用程序模拟恒温控制设备的行为。 当应用程序连接到 IoT Central 时，它将发送恒温控制设备模型的模型 ID。 IoT Central 使用模型 ID 检索设备模型，并创建设备模板。 可以向设备模板添加自定义和视图，使操作员能够与设备进行交互。
 
 本教程介绍如何执行下列操作：
 
@@ -70,7 +70,7 @@ ms.locfileid: "106064896"
 
 :::image type="content" source="media/tutorial-connect-device/raw-data.png" alt-text="原始数据视图":::
 
-在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
+在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示与设备模板中的任何属性或遥测定义不匹配的设备数据。
 
 ## <a name="clean-up-resources"></a>清理资源
 

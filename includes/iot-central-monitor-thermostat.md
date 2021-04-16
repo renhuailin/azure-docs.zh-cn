@@ -8,44 +8,63 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 28f676892967abbd0da63d7a75ea3d164b87ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77fdaf297fff0e145b1dd53908887bc14f9d3f14
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017457"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491026"
 ---
+<!-- All needs updating -->
 Azure IoT Central 应用程序中的操作员可以：
 
-* 在“概述”页上查看设备发送的遥测数据： 
+* 在“概述”页上查看两个恒温组件发送的遥测数据：
 
     :::image type="content" source="media/iot-central-monitor-thermostat/view-telemetry.png" alt-text="查看设备遥测数据":::
 
-* 在“关于”页上查看设备属性： 
+* 在“关于”页上查看设备属性。 此页显示设备信息组件和两个恒温器组件的属性：
 
     :::image type="content" source="media/iot-central-monitor-thermostat/about-properties.png" alt-text="查看设备属性":::
 
 ## <a name="customize-the-device-template"></a>自定义设备模板
 
-作为解决方案开发人员，你可以对 IoT Central 在恒温器设备连接时自动创建的设备模板进行自定义。
+作为解决方案开发人员，你可以对 IoT Central 在温度控制器设备连接时自动创建的设备模板进行自定义。
 
 添加云属性以存储与设备关联的客户名称：
 
-1. 在 IoT Central 应用程序中，导航到“设备模板”页面上的“恒温器”设备模板 。
+1. 在 IoT Central 应用程序中，导航到“设备模板”页面上的“温度控制器”设备模板 。
 
-1. 在“恒温器”设备模板中，选择“云属性”。 
+1. 在“温度控制器”设备模板中，选择“云属性”。 
 
 1. 选择“添加云属性”。 输入自定义名称作为“显示名称”，并选择“字符串”作为“架构”。   再选择“保存”。
 
-若要自定义“获取最高-最低温度报告”命令在 IoT Central 应用程序中的显示方式，请在设备模板中选择“自定义”。  将“获取最高-最低温度报告”替换 为“获取状态报告”。 再选择“保存”。
+若要自定义“获取最高-最低温度报告”命令在 IoT Central 应用程序中的显示方式，请按照以下说明操作：
 
-“恒温器”模型包含“目标温度”可写属性，设备模板包含“客户名称”云属性。   操作员可以使用“创建视图”来编辑以下属性：
+1. 在设备模板中，选择“自定义”。
+
+1. 对于“getMaxMinReport (thermostat1)”，请将“获取最高-最低温度报告” 替换为“获取恒温器 1 状态报告”。
+
+1. 对于“getMaxMinReport (thermostat2)”，请将“获取最高-最低温度报告” 替换为“获取恒温器 2 状态报告”。
+
+1. 选择“保存”。
+
+若要自定义“目标温度”可写属性在 IoT Central 应用程序中的显示方式：
+
+1. 在设备模板中，选择“自定义”。
+
+1. 对于“targetTemperature (thermostat1)”，请将“目标温度”替换为“目标温度 (1)”。 
+
+1. 对于“targetTemperature (thermostat2)”，请将“目标温度”替换为“目标温度 (2)”。 
+
+1. 选择“保存”。
+
+“温度控制器”模型中的恒温器组件包含“目标温度”可写属性，设备模板包含“客户名称”云属性。   操作员可以使用“创建视图”来编辑以下属性：
 
 1. 选择“视图”，然后选择“编辑设备和云数据”磁贴。
 
 1. 输入“属性”作为窗体名称。
 
-1. 选择“目标温度”和“客户名称”属性。  然后选择“添加部分”。
+1. 选择“目标温度 (1)”、“目标温度 (2)”和“客户名称”属性。   然后选择“添加部分”。
 
 1. 保存所做更改。
 
@@ -57,7 +76,7 @@ Azure IoT Central 应用程序中的操作员可以：
 
 从“恒温器”设备模板中，选择“发布”。  在“将此设备模板发布到应用程序”面板中，选择“发布”。
 
-操作员现在可以使用“属性”视图来更新属性值，并在设备命令页上调用名为“获取状态报告”的命令： 
+操作员现在可以使用“属性”视图来更新属性值，并在设备命令页上调用“获取恒温器 1 状态报告”和“获取恒温器 2 状态报告”的命令：  
 
 * 更新“属性”页上的可写属性值： 
 

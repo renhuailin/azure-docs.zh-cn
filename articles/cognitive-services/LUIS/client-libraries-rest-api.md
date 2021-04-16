@@ -2,7 +2,7 @@
 title: 快速入门：语言理解 (LUIS) SDK 客户端库和 REST API
 description: 使用 LUIS SDK 客户端库和 REST API 创建并查询 LUIS 应用。
 ms.topic: quickstart
-ms.date: 12/09/2020
+ms.date: 03/29/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
@@ -11,12 +11,12 @@ author: aahill
 keywords: Azure, 人工智能, ai, 自然语言处理, nlp, LUIS, azure luis, 自然语言理解, ai 聊天机器人, 聊天机器人生成器, 理解自然语言
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: 7ff5844cf9f1bce45df438fc00e24da28c438b05
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941509"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278909"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>快速入门：语言理解 (LUIS) 客户端库和 REST API
 
@@ -61,9 +61,5 @@ ms.locfileid: "96941509"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [什么是语言理解 (LUIS) API？](what-is-luis.md)
-* [新增功能](whats-new.md)
-* [意向](luis-concept-intent.md)、[实体](luis-concept-entity-types.md)、[示例言语](luis-concept-utterance.md)和[预生成实体](luis-reference-prebuilt-entities.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code) 上找到此示例的源代码。
-* 了解自然语言：[自然语言理解 (NLU) 和自然语言处理 (NLP)](artificial-intelligence.md)
-* 机器人：[AI 聊天机器人](luis-csharp-tutorial-bf-v4.md "聊天机器人生成器教程")
+> [!div class="nextstepaction"]
+> [适用于 LUIS 的迭代应用程序开发](./luis-concept-app-iteration.md)

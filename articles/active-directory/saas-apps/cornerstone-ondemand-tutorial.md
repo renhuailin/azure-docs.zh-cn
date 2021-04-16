@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950281"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone Single Sign-On 集成
 
@@ -123,49 +123,11 @@ ms.locfileid: "104950281"
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>配置 Cornerstone Single Sign-On SSO
 
-1. 以管理员身份登录到 Cornerstone Single Sign-On。
-
-1. 请参阅 **管理 -> 工具**。
-
-    ![“管理”页的屏幕截图。](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. 在 **配置工具** 中选择 **EDGE** 面板。
-
-    ![EDGE 面板的屏幕截图。](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. 选择 **集成** 部分中的“单一登录”。
-
-    ![“单一登录”选项的屏幕截图。](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. 单击 **添加 SSO** 按钮。 在下面显示的弹出窗口中选择 **入站 SAML**，然后单击 **添加**。
-
-    ![入站 SAML 的屏幕截图。](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. 在下一页中执行以下步骤：
-
-    ![Cornerstone“配置”部分的屏幕截图。](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. 在 **常规属性** 中，单击 **上传文件**，上传您从 Azure 门户下载的 **证书 (Base64)** 文件。
-
-    b. 选择 **启用** 复选框，并在 **IDP URL** 文本框中，粘贴您从 Azure 门户复制的 **登录 URL** 值。
-
-    c. 单击“保存”  。
+若要在 Cornerstone 单一登录端配置单一登录，你需要将下载的证书 (Base64) 以及从 Azure 门户复制的相应 URL 发送给 [Cornerstone 单一登录支持团队](mailto:moreinfo@csod.com)，或者联系你的合作伙伴。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>创建 Cornerstone Single Sign-On 测试用户
 
 本部分的目的是在 Cornerstone Single Sign-On 中创建名为 B.Simon 的用户。 Cornerstone Single Sign-On 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](./cornerstone-ondemand-provisioning-tutorial.md)。
-
-如果需要手动创建用户，请执行以下步骤： 
-
-1. 以管理员身份登录到 Cornerstone Single Sign-On。
-
-1. 转至 **管理员 -> 用户** ，然后单击页面底部的 **添加用户**。
-
-    ![Cornerstone 的测试用户创建的屏幕截图。](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. 在 **添加新用户** 页中填写必填字段，然后单击 **保存**。
-
-    ![使用必填字段创建测试用户的屏幕截图。](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>测试 SSO 
 

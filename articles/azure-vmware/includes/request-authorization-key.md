@@ -3,12 +3,12 @@ title: 请求 ExpressRoute 的授权密钥
 description: 请求 ExpressRoute 授权密钥的步骤。
 ms.topic: include
 ms.date: 03/15/2021
-ms.openlocfilehash: 54a610c8b0f3f3fe9d3ebe39291bba7767007839
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 99d9fba33d64fca1d9c5b960041fbabe1f9060db
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491822"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026955"
 ---
 <!-- used in expressroute-global-reach-private-cloud.md and create-ipsec-tunnel.md -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "103491822"
 
    :::image type="content" source="../media/expressroute-global-reach/show-global-reach-auth-key.png" alt-text="屏幕截图显示了 ExpressRoute Global Reach 授权密钥。":::
   
-1. 记下此授权密钥和 ExpressRoute ID。 你将使用它们来完成对等互连。  
+1. 复制授权密钥和 ExpressRoute ID。 你将使用它们来完成对等互连。  
 
    > [!NOTE]
    > 授权密钥会在一段时间后消失，因此请在它出现时立即复制它。

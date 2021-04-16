@@ -4,13 +4,13 @@ description: 本快速入门演示如何创建使用预生成域 `HomeAutomation
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019154"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277022"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
@@ -31,7 +31,7 @@ ms.locfileid: "95019154"
 
 |名称  |说明  |
 |---------|---------|
-|AName     | 应用的名称。 例如“home automation”。        |
+|AName     | 应用的名称， 例如“home automation”。        |
 |环境     | 应用能够理解和显示的语言。   |
 |说明 | 应用的说明。
 |预测资源 | 将接收查询的预测资源。 |
@@ -52,7 +52,7 @@ ms.locfileid: "95019154"
 
     成功添加域以后，预生成域框会显示“删除域”按钮。
 
-## <a name="intents-and-entities"></a>意向和实体
+## <a name="intents-and-entities&quot;></a>意向和实体
 
 1. 在左侧导航菜单中选择“意向”，以便查看 HomeAutomation 域意向。 它具有示例言语，例如 `HomeAutomation.QueryState` 和 `HomeAutomation.SetDevice`。
 
@@ -61,8 +61,8 @@ ms.locfileid: "95019154"
 
 1. 选择 **HomeAutomation.TurnOff** 意向。 此意向包含一系列使用实体标记的示例言语。
 
-    > [!div class="mx-imgBorder"]
-    > [![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnoff.png "HomeAutomation.TurnOff 意向的屏幕截图")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+    > [!div class=&quot;mx-imgBorder&quot;]
+    > [![HomeAutomation.TurnOff 意向的屏幕截图](media/luis-quickstart-new-app/home-automation-turnoff.png &quot;HomeAutomation.TurnOff 意向的屏幕截图")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 1. 如果你想要查看应用的实体，请选择“实体”。 如果单击某个实体（例如 HomeAutomation.DeviceName），你将看到与之关联的值的列表。 
  
@@ -220,7 +220,5 @@ ms.locfileid: "95019154"
 
 ## <a name="next-steps"></a>后续步骤
 
-可以从代码调用终结点：
-
 > [!div class="nextstepaction"]
-> [使用代码调用 LUIS 终结点](./luis-get-started-get-intent-from-rest.md)
+> [适用于 LUIS 的迭代应用程序开发](./luis-concept-app-iteration.md)

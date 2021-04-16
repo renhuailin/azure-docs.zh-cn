@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 093fcfd95d291d959ed49cc39a227a99f14a0383
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 798b898f6e2367e3096bcf985715fd48de3d394f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488238"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930211"
 ---
 # <a name="quickstart-create-your-own-ui-framework-component"></a>快速入门：创建自己的 UI 框架组件
 
@@ -47,7 +47,7 @@ cd my-app
 
 ### <a name="install-the-package"></a>安装包
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫客户端库。 将提供的 tarball（个人预览版）移动到 my-app 目录。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫 SDK。 将提供的 tarball（个人预览版）移动到 my-app 目录。
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口会处理 Azure 通信服务 UI 客户端库的某些主要功能：
+以下类和接口处理 Azure 通信服务 UI SDK 的某些主要功能：
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

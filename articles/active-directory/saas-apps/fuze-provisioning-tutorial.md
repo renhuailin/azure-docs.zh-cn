@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 04/05/2021
 ms.author: zhchia
-ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179245"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450083"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>教程：为 Fuze 配置自动用户预配
 
@@ -144,6 +144,7 @@ ms.locfileid: "96179245"
 ## <a name="connector-limitations"></a>连接器限制
 
 * Fuze 支持称为“权利”的自定义 SCIM 属性。 这些属性只可创建，不可更新。 
+* Fuze SCIM API 不支持对“用户名”属性进行筛选。 因此，当尝试同步没有“用户名”属性的现有用户时，可能会在日志中看到失败，但存在与 Azure AD 中的 userPrincipalName 匹配的电子邮件。 
 
 ## <a name="change-log"></a>更改日志
 

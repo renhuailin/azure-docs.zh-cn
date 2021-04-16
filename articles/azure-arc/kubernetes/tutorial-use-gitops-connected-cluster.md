@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec83d8d56ad67d8c64c6ac3151ca3819e88c0616
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121467"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449590"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>教程：在已启用 Azure Arc 的 Kubernetes 群集上使用 GitOps 部署配置 
 
@@ -30,6 +30,14 @@ ms.locfileid: "102121467"
 - 一个现有的已启用 Azure Arc 的 Kubernetes 连接的群集。
     - 如果尚未连接群集，请参阅[连接已启用 Azure Arc 的 Kubernetes 群集快速入门](quickstart-connect-cluster.md)。
 - 了解此功能的好处和体系结构。 有关详细信息，请参阅[配置和 GitOps - 已启用 Azure Arc 的 Kubernetes 一文](conceptual-configurations.md)。
+- 安装 `k8s-configuration` Azure CLI 扩展版本，版本不得低于 1.0.0：
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > 如果已安装 `k8s-configuration` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>创建配置
 
@@ -141,7 +149,7 @@ ms.locfileid: "102121467"
 >[!NOTE]
 >* Helm 运算符图表版本 1.2.0 + 支持 HTTPS Helm 版本的专用身份验证。
 >* AKS 托管群集不支持 HTTPS Helm 版本。
->* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./connect-cluster.md#connect-using-an-outbound-proxy-server)。
+>* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server)。
 
 
 ## <a name="additional-parameters"></a>附加参数

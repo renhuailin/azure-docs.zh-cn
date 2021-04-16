@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/11/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: c90dc8fdee0e7b44386c5e97a0cc31665ee0e238
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9d7f94788bf5ac4c561fe2333035b75e02897d5e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445731"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599016"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.5/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -44,14 +44,14 @@ ms.locfileid: "102445731"
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)的实现语法。
+在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.5)的实现语法。
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.3</version>
+        <version>5.1.0-beta.5</version>
     </dependency>
 </dependencies>
 ```
@@ -213,41 +213,36 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 
 ```java
-static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
-{
-    // The document that needs be analyzed.
-    String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
+ static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
+ {
+     // The document that needs be analyzed.
+     String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
 
-    System.out.printf("Document = %s%n", document);
+     System.out.printf("Document = %s%n", document);
 
-    AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
-    final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
-    SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
-    System.out.printf(
-            "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-            documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
+     AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
+     final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
+     SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
+     System.out.printf(
+             "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+             documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
 
-    documentSentiment.getSentences().forEach(sentenceSentiment -> {
-        SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
-        System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-                sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
-        sentenceSentiment.getMinedOpinions().forEach(minedOpinions -> {
-            AspectSentiment aspectSentiment = minedOpinions.getAspect();
-            System.out.printf("\t\tAspect sentiment: %s, aspect text: %s%n", aspectSentiment.getSentiment(),
-                    aspectSentiment.getText());
-            SentimentConfidenceScores aspectScores = aspectSentiment.getConfidenceScores();
-            System.out.printf("\t\tAspect positive score: %f, negative score: %f.%n",
-                    aspectScores.getPositive(), aspectScores.getNegative());
-            for (OpinionSentiment opinionSentiment : minedOpinions.getOpinions()) {
-                System.out.printf("\t\t\t'%s' opinion sentiment because of \"%s\". Is the opinion negated: %s.%n",
-                        opinionSentiment.getSentiment(), opinionSentiment.getText(), opinionSentiment.isNegated());
-                SentimentConfidenceScores opinionScores = opinionSentiment.getConfidenceScores();
-                System.out.printf("\t\t\tOpinion positive score: %f, negative score: %f.%n",
-                        opinionScores.getPositive(), opinionScores.getNegative());
-            }
-        });
-    });
-}
+
+     documentSentiment.getSentences().forEach(sentenceSentiment -> {
+         SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
+         System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+                 sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
+         sentenceSentiment.getOpinions().forEach(opinion -> {
+             TargetSentiment targetSentiment = opinion.getTarget();
+             System.out.printf("\t\tTarget sentiment: %s, target text: %s%n", targetSentiment.getSentiment(),
+                     targetSentiment.getText());
+             for (AssessmentSentiment assessmentSentiment : opinion.getAssessments()) {
+                 System.out.printf("\t\t\t'%s' assessment sentiment because of \"%s\". Is the assessment negated: %s.%n",
+                         assessmentSentiment.getSentiment(), assessmentSentiment.getText(), assessmentSentiment.isNegated());
+             }
+         });
+     });
+ }
 ```
 
 ### <a name="output"></a>输出
@@ -256,20 +251,13 @@ static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 Document = Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.
 Recognized document sentiment: negative, positive score: 0.010000, neutral score: 0.140000, negative score: 0.850000.
     Sentence sentiment: negative, positive score: 0.000000, neutral score: 0.000000, negative score: 1.000000.
-        Aspect sentiment: negative, aspect text: atmosphere
-        Aspect positive score: 0.010000, negative score: 0.990000.
-            'negative' opinion sentiment because of "bad". Is the opinion negated: false.
-            Opinion positive score: 0.010000, negative score: 0.990000.
+        Target sentiment: negative, target text: atmosphere
+            'negative' assessment sentiment because of "bad". Is the assessment negated: false.
     Sentence sentiment: negative, positive score: 0.020000, neutral score: 0.440000, negative score: 0.540000.
     Sentence sentiment: negative, positive score: 0.000000, neutral score: 0.000000, negative score: 1.000000.
-        Aspect sentiment: negative, aspect text: Staff
-        Aspect positive score: 0.000000, negative score: 1.000000.
-            'negative' opinion sentiment because of "friendly". Is the opinion negated: true.
-            Opinion positive score: 0.000000, negative score: 1.000000.
-            'negative' opinion sentiment because of "helpful". Is the opinion negated: true.
-            Opinion positive score: 0.000000, negative score: 1.000000.
-
-Process finished with exit code 0
+        Target sentiment: negative, target text: Staff
+            'negative' assessment sentiment because of "friendly". Is the assessment negated: true.
+            'negative' assessment sentiment because of "helpful". Is the assessment negated: true.
 ```
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
@@ -586,79 +574,93 @@ veterinarian
 
 # <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
 
-[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
+[!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
-创建名为 `analyzeOperationExample()` 的新函数，它将调用 `beginAnalyzeTasks()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
+创建名为 `analyzeBatchActionsExample()` 的新函数，它将调用 `beginAnalyzeBatchActions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 
 ```java
-static void analyzeOperationExample(TextAnalyticsClient client)
+static void analyzeBatchActionsExample(TextAnalyticsClient client)
 {
         List<TextDocumentInput> documents = Arrays.asList(
                         new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen.")
                         );
 
-        SyncPoller<TextAnalyticsOperationResult, PagedIterable<AnalyzeTasksResult>> syncPoller =
-                        client.beginAnalyzeTasks(documents,
-                                        new AnalyzeTasksOptions().setDisplayName("{tasks_display_name}")
-                                                        .setEntitiesRecognitionTasks(Arrays.asList(new EntitiesTask())),
-                                        Context.NONE);
+        
+        SyncPoller<AnalyzeBatchActionsOperationDetail, PagedIterable<AnalyzeBatchActionsResult>> syncPoller =
+                client.beginAnalyzeBatchActions(documents,
+                        new TextAnalyticsActions().setDisplayName("Analyze Batch Actions Quickstart")
+                                .setRecognizeEntitiesOptions(new RecognizeEntitiesOptions()),
+                        new AnalyzeBatchActionsOptions().setIncludeStatistics(false),
+                        Context.NONE);
+
+        // Task operation statistics
+        while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
+            final AnalyzeBatchActionsOperationDetail operationResult = syncPoller.poll().getValue();
+            System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d, failed actions: %d, total actions: %d%n",
+                    operationResult.getDisplayName(), operationResult.getActionsSucceeded(),
+                    operationResult.getActionsInProgress(), operationResult.getActionsFailed(),
+                    operationResult.getActionsInTotal());
+        }
 
         syncPoller.waitForCompletion();
-        PagedIterable<AnalyzeTasksResult> result = syncPoller.getFinalResult();
 
-        result.forEach(analyzeJobState -> {
-                System.out.printf("Job Display Name: %s, Job ID: %s.%n", analyzeJobState.getDisplayName(),
-                                analyzeJobState.getJobId());
-                System.out.printf("Total tasks: %s, completed: %s, failed: %s, in progress: %s.%n",
-                                analyzeJobState.getTotal(), analyzeJobState.getCompleted(), analyzeJobState.getFailed(),
-                                analyzeJobState.getInProgress());
-
-                List<RecognizeEntitiesResultCollection> entityRecognitionTasks =
-                                analyzeJobState.getEntityRecognitionTasks();
-                if (entityRecognitionTasks != null) {
-                        entityRecognitionTasks.forEach(taskResult -> {
-                                // Recognized entities for each of documents from a batch of documents
-                                AtomicInteger counter = new AtomicInteger();
-                                for (RecognizeEntitiesResult entitiesResult : taskResult) {
-                                        System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
-                                        if (entitiesResult.isError()) {
-                                                // Erroneous document
-                                                System.out.printf("Cannot recognize entities. Error: %s%n",
-                                                                entitiesResult.getError().getMessage());
-                                        } else {
-                                                // Valid document
-                                                entitiesResult.getEntities().forEach(entity -> System.out.printf(
-                                                                "Recognized entity: %s, entity category: %s, entity subcategory: %s, "
-                                                                                + "confidence score: %f.%n",
-                                                                entity.getText(), entity.getCategory(), entity.getSubcategory(),
-                                                                entity.getConfidenceScore()));
-                                        }
+        Iterable<PagedResponse<AnalyzeBatchActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
+        for (PagedResponse<AnalyzeBatchActionsResult> page : pagedResults) {
+            System.out.printf("Response code: %d, Continuation Token: %s.%n", page.getStatusCode(), page.getContinuationToken());
+            page.getElements().forEach(analyzeBatchActionsResult -> {
+                System.out.println("Entities recognition action results:");
+                IterableStream<RecognizeEntitiesActionResult> recognizeEntitiesActionResults =
+                        analyzeBatchActionsResult.getRecognizeEntitiesActionResults();
+                if (recognizeEntitiesActionResults != null) {
+                    recognizeEntitiesActionResults.forEach(actionResult -> {
+                        if (!actionResult.isError()) {
+                            // Recognized entities for each of documents from a batch of documents
+                            AtomicInteger counter = new AtomicInteger();
+                            for (RecognizeEntitiesResult documentResult : actionResult.getResult()) {
+                                System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
+                                if (documentResult.isError()) {
+                                    // Erroneous document
+                                    System.out.printf("Cannot recognize entities. Error: %s%n",
+                                            documentResult.getError().getMessage());
+                                } else {
+                                    // Valid document
+                                    documentResult.getEntities().forEach(entity -> System.out.printf(
+                                            "Recognized entity: %s, entity category: %s, entity subcategory: %s, confidence score: %f.%n",
+                                            entity.getText(), entity.getCategory(), entity.getSubcategory(), entity.getConfidenceScore()));
                                 }
-                        });
+                            }
+                        } else {
+                            TextAnalyticsError actionError = actionResult.getError();
+                            // Erroneous action
+                            System.out.printf("Cannot execute Entities Recognition action. Error: %s%n", actionError.getMessage());
+                        }
+                    });
                 }
-        });
+            });
+        }
     }
 ```
 
 将此示例添加到应用程序后，请在 `main()` 方法中调用它。
 
 ```java
-analyzeOperationExample(client);
+analyzeBatchActionsExample(client);
 ```
 
 ### <a name="output"></a>Output
 
 ```console
-Job Display Name: {tasks_display_name}, Job ID: 84fd4db4-0734-47ec-b263-ac5451e83f2a_637432416000000000.
-Total tasks: 1, completed: 1, failed: 0, in progress: 0.
+Action display name: Analyze Batch Actions Quickstart, Successfully completed actions: 0, in-process actions: 1, failed actions: 0, total actions: 1
+Response code: 200, Continuation Token: null.
+Entities recognition action results:
 
 Text = Microsoft was founded by Bill Gates and Paul Allen., Id = 0, Language = null
-Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.960000.
+Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.970000.
 Recognized entity: Bill Gates, entity category: Person, entity subcategory: null, confidence score: 1.000000.
 Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
 ```
 
-还可以使用“分析”操作来检测 PII 和关键短语提取。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro)。
+你还可以使用“分析”操作检测 PII、识别链接的实体和关键短语提取。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 

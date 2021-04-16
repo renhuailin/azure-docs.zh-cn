@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958335"
 ---
 开始使用适用于 Go 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102445264"
 
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-person-group)
+* [创建和训练人员组](#create-and-train-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 [参考文档](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [库源代码](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK 下载](https://github.com/Azure/azure-sdk-for-go)
@@ -106,7 +106,7 @@ touch sample-app.go
 * [对客户端进行身份验证](#authenticate-the-client)
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建和训练人员组](#create-and-train-a-person-group)
+* [创建和训练人员组](#create-and-train-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -161,7 +161,7 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-person-group"></a>创建和训练人员组
+## <a name="create-and-train-a-persongroup"></a>创建和训练人员组
 
 若要逐步完成此方案，需将以下图像保存到项目的根目录： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
@@ -202,11 +202,11 @@ touch sample-app.go
 识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
 > [!IMPORTANT]
-> 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-person-group)中的代码。
+> 若要运行此示例，必须先运行[创建和训练人员组](#create-and-train-a-persongroup)中的代码。
 
 ### <a name="get-a-test-image"></a>获取测试图像
 
-以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并将其载入程序内存。 可以在[创建和训练人员组](#create-and-train-a-person-group)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
+以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并将其载入程序内存。 你可以在[创建和训练人员组](#create-and-train-a-persongroup)中使用的图像所在的同一个存储库中找到此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
