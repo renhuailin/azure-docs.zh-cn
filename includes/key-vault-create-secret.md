@@ -4,17 +4,26 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: d1a67a131a94bc017eaf2199546ef08f0291cd54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6745d1f7d97a8f4d08078bf93b61762ab04aad46
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244795"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073374"
 ---
 让我们创建一个名为 mySecret 的机密，其值为 Success!。 机密可以是密码、SQL 连接字符串，或者需要安全保存的、可供应用程序使用的其他任何信息。 
 
-若要将机密添加到新创建的 Key Vault，请使用 Azure CLI [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) 命令：
+若要将机密添加到新创建的密钥保管库，请使用以下命令：
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "mySecret" --value "Success!"
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$secret = ConvertTo-SecureString -String 'Success!' -AsPlainText
+Set-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret -SecretValue $secret
+```
+---

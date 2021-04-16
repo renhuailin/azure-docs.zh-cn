@@ -10,19 +10,21 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: dedea2a622cb0eece92bb8b57871c76daa05fb68
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 30dcda4d7bb95ac59add104452415a0ddfc3c016
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495373"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106178550"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 
 - 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 安装 [Xcode](https://developer.apple.com/xcode/) 和 [Cocoapods](https://cocoapods.org/)，我们将使用 Xcode 创建用于快速入门的 iOS 应用程序，并使用 Cocoapods 来安装依赖项。
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../create-communication-resource.md)。 为完成此快速入门，需要记录资源终结点。
 - 创建 2 个 ACS 用户，并向他们颁发用户访问令牌[用户访问令牌](../../access-tokens.md)。 请确保将范围设置为“聊天”，并记下令牌字符串和 userId 字符串 。 在本快速入门中，我们将创建一个包含初始参与者的会话，然后将第二个参与者添加到该会话。
 
 ## <a name="setting-up"></a>设置
@@ -128,7 +130,7 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 详细了解[用户访问令牌](../../access-tokens.md)。
 
 ## <a name="object-model"></a>对象模型 
-以下类和接口处理适用于 JavaScript 的 Azure 通信服务聊天客户端库的某些主要功能。
+以下类和接口用于处理适用于 JavaScript 的 Azure 通信服务聊天 SDK 的某些主要功能。
 
 | 名称                                   | 说明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -275,5 +277,4 @@ chatThreadClient
 ## <a name="run-the-code"></a>运行代码
 
 在 Xcode 中，单击“运行”按钮以生成并运行项目。 在控制台中，可以从代码中查看输出，并从 ChatClient 查看记录器输出。
-
 

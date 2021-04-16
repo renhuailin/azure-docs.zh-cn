@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a6bc9bfb06f1c80b719bdda686ae111a8884ab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963615"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教程：Azure Active Directory 与 Palo Alto Networks - Aperture 集成
 
-在本教程中，了解如何将 Palo Alto Networks - Aperture 与 Azure Active Directory (Azure AD) 进行集成。
-将 Palo Alto Networks - Aperture 与 Azure AD 集成可提供以下好处：
+在本教程中，你将了解如何将 Palo Alto Networks - Aperture 与 Azure Active Directory (Azure AD) 进行集成。 将 Palo Alto Networks - Aperture  与 Azure AD 集成后，你可以：
 
-* 可在 Azure AD 中控制谁有权访问 Palo Alto Networks - Aperture。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - Aperture（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Palo Alto Networks - Aperture。
+* 让用户使用其 Azure AD 帐户自动登录到 Palo Alto Networks - Aperture。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要配置 Azure AD 与 Palo Alto Networks - Aperture 的集成，需具有以下项目：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Palo Alto Networks - Aperture 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用 Palo Alto Networks - Aperture 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Palo Alto Networks - Aperture 支持 **SP** 和 **IDP** 发起的 SSO
+* Palo Alto Networks - Aperture 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>从库添加 Palo Alto Networks - Aperture
+## <a name="add-palo-alto-networks---aperture-from-the-gallery"></a>从库添加 Palo Alto Networks - Aperture
 
 若要配置 Palo Alto Networks - Aperture 与 Azure AD 的集成，需要从库中将 Palo Alto Networks - Aperture 添加到托管的 SaaS 应用列表。
 
@@ -59,10 +58,10 @@ ms.locfileid: "97963615"
 若要为 Palo Alto Networks - Aperture 配置和测试 Azure AD 单一登录，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 2. **[配置 Palo Alto Networks - Aperture SSO](#configure-palo-alto-networks---aperture-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 Palo Alto Networks - Aperture 测试用户](#create-palo-alto-networks---aperture-test-user)** - 在 Palo Alto Networks - Aperture 中创建 Britta Simon 的对应用户，以链接到该用户的 Azure AD 表示形式。
+    1. **[创建 Palo Alto Networks - Aperture 测试用户](#create-palo-alto-networks---aperture-test-user)** - 在 Palo Alto Networks - Aperture 中创建 Britta Simon 的对应用户，以链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -75,17 +74,13 @@ ms.locfileid: "97963615"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
-
-    ![显示“基本 SAML 配置”的屏幕截图，其中突出显示了“标识符”和“回复 URL”文字框，并选择了“保存”操作。](common/idp-intiated.png)
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
-
-    ![Palo Alto Networks - Aperture 域和 URL 单一登录信息 SP](common/metadata-upload-additional-signon.png)
+5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
 
@@ -130,15 +125,15 @@ ms.locfileid: "97963615"
 
 2. 单击顶部菜单中的“设置”。
 
-    ![“设置”选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![“设置”选项卡](./media/paloaltonetworks-aperture-tutorial/settings.png)
 
 3. 导航到“应用程序”部分，单击菜单左侧的“身份验证”窗体。
 
-    ![“身份验证”选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![“身份验证”选项卡](./media/paloaltonetworks-aperture-tutorial/authentication.png)
     
 4. 在“身份验证”页上，执行以下步骤：
     
-    ![身份验证选项卡](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
+    ![身份验证选项卡](./media/paloaltonetworks-aperture-tutorial/tab.png)
 
     a. 在“单一登录”字段中选中“启用单一登录(支持的 SSP 提供者为 Okta, One login)”。
 

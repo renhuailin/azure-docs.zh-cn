@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644359"
 ---
-通过使用通信服务 JavaScript 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
+通过使用通信服务 JavaScript 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
@@ -57,7 +57,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>安装包
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务短信客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务短信 SDK。
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,20 +67,20 @@ npm install @azure/communication-sms --save
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理适用于 Node.js 的 Azure 通信服务短信客户端库的某些主要功能。
+以下类和接口用于处理适用于 Node.js 的 Azure 通信服务短信 SDK 的某些主要功能。
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | 所有短信功能都需要此类。 使用订阅信息对其进行实例化，然后使用它发送短信。 |
-| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
-| SmsSendOptions | 此接口提供用于配置传送报告的选项。 如果 `enableDeliveryReport` 设置为 `true`，系统会在传送成功后发出事件。 |
 | SmsSendRequest | 此接口是用于生成短信请求的模型（例如 配置收件方和发件方的电话号码和短信内容）。 |
+| SmsSendOptions | 此接口提供用于配置传送报告的选项。 如果 `enableDeliveryReport` 设置为 `true`，系统会在传送成功后发出事件。 |
+| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-从客户端库导入 SmsClient，并通过连接字符串将其实例化。 下面的代码从名为 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的环境变量中检索资源的连接字符串。 了解如何[管理资源的连接字符串](../../create-communication-resource.md#store-your-connection-string)。
+从 SDK 导入 SmsClient，并通过连接字符串将其实例化。 下面的代码从名为 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的环境变量中检索资源的连接字符串。 了解如何[管理资源的连接字符串](../../create-communication-resource.md#store-your-connection-string)。
 
-将以下代码添加到 send-sms.js：
+创建并打开一个名为 send-sms.js 的文件，并添加以下代码：
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -95,7 +95,7 @@ const smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-1n-sms-message"></a>发送 1:N 短信
 
-若要将短信发送给收件人列表，请使用收件人电话号码列表从 SmsClient 调用 `send` 函数（如果要向单个收件人发送消息，则列表中只能包含一个号码）。 将此代码添加到 send-sms.js 方法的末尾：
+若要将短信发送给收件人列表，请使用收件人电话号码列表从 SmsClient 调用 `send` 函数（如果要向单个收件人发送消息，则列表中只能包含一个号码）。 将此代码添加到 send-sms.js 的末尾：
 
 ```javascript
 async function main() {
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
+你应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，并将 `<to-phone-number-1>` 和 `<to-phone-number-2>` 替换为要向其发送消息的电话号码
+
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
 
 ## <a name="send-a-1n-sms-message-with-options"></a>发送包含选项的 1: N 短信
 
@@ -127,12 +130,12 @@ main();
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+你应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，并将 `<to-phone-number-1>` 和 `<to-phone-number-2>` 替换为要向其发送消息的电话号码
+
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
 
 `enableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 `tag` 为可选参数，可用于将标记应用到传送报告。

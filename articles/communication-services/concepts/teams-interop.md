@@ -9,14 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: b7d992961fc165ce643bd0d6aba4d8a9bda1d38e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf6553cd7c59febd19f9654e31188f127b8eb065
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495583"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276750"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
+
+[!INCLUDE [Public Preview](../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > 若要启用/禁用 [Teams 租户互操作性](../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
@@ -29,7 +31,7 @@ Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体
 1. 通过自定义应用程序与外部用户共享会议详细信息。
    * **使用图形 API** 自定义通信服务应用程序使用 Microsoft Graph API 来访问要共享的会议详细信息。 
    * **使用其他选项** 例如，可以在 Microsoft Teams 中从日历复制会议链接。
-1. 外部用户使用你的自定义应用程序加入 Teams 会议（通过通信服务通话和聊天客户端库）
+1. 外部用户使用你的自定义应用程序加入 Teams 会议（通过通信服务通话和聊天 SDK）
 
 此用例的概要结构如下所示： 
 
@@ -37,11 +39,11 @@ Azure 通信服务可用于构建与 Microsoft Teams 交互的自定义会议体
 
 尽管某些 Teams 会议功能（如举手、同聚一堂模式和分组讨论室）只可供 Teams 用户使用，但你的自定义应用程序可以访问会议的核心音频、视频、聊天和屏幕共享功能。 自定义应用程序用户可在通话期间使用会议聊天功能。 他们在加入通话前或退出通话后，将无法发送或接收消息。 
 
-当通信服务用户加入 Teams 会议时，通过呼叫客户端库提供的显示名称将向 Teams 用户显示。 否则，通信服务用户将被视为 Teams 中的匿名用户。  自定义应用程序应考虑使用用户身份验证和其他安全措施来保护 Teams 会议。 请注意允许匿名用户加入会议的安全影响，并使用 [Teams 安全指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)配置匿名用户可用的功能。
+当通信服务用户加入 Teams 会议时，Teams 用户可以看见通过通话 SDK 提供的显示名称。 否则，通信服务用户将被视为 Teams 中的匿名用户。  自定义应用程序应考虑使用用户身份验证和其他安全措施来保护 Teams 会议。 请注意允许匿名用户加入会议的安全影响，并使用 [Teams 安全指南](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)配置匿名用户可用的功能。
 
 通信服务团队互操作性当前为个人预览版。 正式发布时，通信服务用户将被视为“外部访问用户”。 要详细了解外部访问，请参阅[在 Microsoft Teams 与组织外部的人员通话、聊天和协作](/microsoftteams/communicate-with-users-from-other-organizations)。
 
-只要在[会议设置](/microsoftteams/meeting-settings-in-teams)中启用了匿名加入，通信服务用户就可以加入计划的 Teams 会议。
+只要在[会议设置](/microsoftteams/meeting-settings-in-teams)中启用了匿名加入，通信服务用户就可以加入计划的 Teams 会议。 如果会议计划为频道，则通信服务用户将无法加入聊天或发送和接收消息。
 
 ## <a name="teams-in-government-clouds-gcc"></a>政府云中的 Teams (GCC)
 Azure 通信服务互操作性与目前使用 [Microsoft 365 政府云 (GCC)](/MicrosoftTeams/plan-for-government-gcc) 的 Teams 部署不兼容。 

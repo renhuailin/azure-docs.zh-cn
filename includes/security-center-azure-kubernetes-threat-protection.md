@@ -4,16 +4,16 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 06/30/2020
 ms.topic: include
-ms.openlocfilehash: 4c09057f606423dc92b3364e502e632a385bf83f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 979bc3ea6a01d31e64aa503216b8fd69164eadc6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100007800"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450303"
 ---
-安全中心为容器化环境提供实时威胁防护，并针对可疑活动生成警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+Azure Defender 为容器化环境提供实时威胁防护，并针对可疑活动发出警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
-安全中心在不同的级别提供威胁防护： 
+Azure Defender 可提供不同级别的威胁防护： 
 
 * **主机级别（由适用于服务器的 Azure Defender 提供）** - Azure Defender 利用安全中心在其他 VM 上使用的同一 Log Analytics 代理监视你的 Linux AKS 节点中是否存在可疑活动，例如 web shell 检测和与已知的可疑 IP 地址进行连接。 该代理还会监视特定于容器的分析，例如创建特权容器、以可疑方式访问 API 服务器以及在 Docker 容器内部运行安全外壳 (SSH) 服务器。
 
@@ -25,7 +25,7 @@ ms.locfileid: "100007800"
     有关 AKS 主机级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
 
 
-* **AKS 群集级别（由适用于 Kubernetes 的 Azure Defender 提供）** - 在群集级别，威胁防护基于对 Kubernetes 审核日志的分析。 要启用此无代理监视，请启用 Azure Defender。 为了在此级别生成警报，安全中心将使用 AKS 检索到的日志来监视 AKS 管理的服务。 此级别的事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。
+* **AKS 群集级别（由适用于 Kubernetes 的 Azure Defender 提供）** - 在群集级别，威胁防护基于对 Kubernetes 审核日志的分析。 要启用此无代理监视，请启用 Azure Defender。 若要对此级别发出警报，Azure Defender 将使用 AKS 检索到的日志来监视 AKS 管理的服务。 此级别的事件示例包括公开 Kubernetes 仪表板、创建高特权角色，以及创建敏感的装入点。
 
     >[!NOTE]
     > 安全中心针对在订阅设置中启用“Kubernetes”选项后发生的 Azure Kubernetes 服务操作和部署生成安全警报。 

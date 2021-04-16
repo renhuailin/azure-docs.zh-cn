@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e3ec10bdcfb602c61943da288c32d28d30ec83ab
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428170"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104887"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -31,8 +31,8 @@ ms.locfileid: "102428170"
 
 你需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，使用以下说明：
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java 运行时 </a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-java&tabs=jre" target="_blank">Java 运行时 </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-java&tabs=android" target="_blank">Android </a>
 
 ## <a name="import-dependencies"></a>导入依赖项
 
@@ -67,7 +67,7 @@ import java.util.Scanner;
 在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
 
 ```java
-public class Program 
+public class Program
 {
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -124,7 +124,7 @@ public static void main(String[] args) {
 * 将结果与其他 API 或服务相集成。
 * 修改音频数据、写入自定义 `.wav` 标头，等等。
 
-可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig` 块，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `null`。 
+可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig` 块，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `null`。
 
 > [!NOTE]
 > 如果为 `AudioConfig` 传递 `null`，而不是像在前面的扬声器输出示例中那样省略它，则默认不会在当前处于活动状态的输出设备上播放音频。
@@ -135,7 +135,7 @@ public static void main(String[] args) {
 public static void main(String[] args) {
     SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, null);
-    
+
     SpeechSynthesisResult result = synthesizer.SpeakText("Getting the response as an in-memory stream.");
     AudioDataStream stream = AudioDataStream.fromResult(result);
     System.out.print(stream.getStatus());
@@ -254,3 +254,10 @@ public static void main(String[] args) {
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>获取人脸姿态事件
+
+语音可以是推动面部表情动画的好办法。
+[视素](../../../how-to-speech-synthesis-viseme.md)通常用以表示所观察语音中的关键姿态，包括在发出特定音素时嘴唇、下巴和舌头等的位置。
+你可以在语音 SDK 中订阅 viseme 事件以获取面部动画数据，然后在面部动画期间将数据应用于字符。
+了解[如何取得视素事件](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)。

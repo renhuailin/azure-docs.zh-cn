@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6407f6af4b142333d2a52f60eb0b05024e64d88e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445630"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761133"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -66,7 +66,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 
 > [!NOTE]
-> 表单识别器 3.1.0 SDK 反映了 API 版本 2.1 preview
+> 表单识别器 3.1.0 SDK 反映了 API 2.1 preview.2 版本。 请使用 API 2.1 preview.3 版本的 [REST API](../../quickstarts/client-library.md)。
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 

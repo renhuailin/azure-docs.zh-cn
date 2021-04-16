@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 5fd209c612f90e3912e244daf60d20edf30a08c6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622301"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113171"
 ---
-通过使用通信服务 C# 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
+通过使用通信服务 C# 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
@@ -28,13 +28,13 @@ ms.locfileid: "103622301"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
+- 适用于操作系统的最新版本 [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../../create-communication-resource.md)。
 - 启用短信的电话号码。 [获取电话号码](../get-phone-number.md)。
 
 ### <a name="prerequisite-check"></a>先决条件检查
 
-- 在终端或命令窗口中，运行 `dotnet` 命令来查看是否安装了 .NET 客户端。
+- 在终端或命令窗口中，运行 `dotnet` 命令查看是否安装 .NET SDK。
 - 若要查看与通信服务资源关联的电话号码，请登录到 [Azure 门户](https://portal.azure.com/)，找到通信服务资源，然后从左侧导航窗格中打开“电话号码”选项卡。
 
 ## <a name="setting-up"></a>设置
@@ -56,10 +56,10 @@ dotnet build
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务短信客户端库。
+如果仍在应用程序目录中，可以使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务短信 SDK。
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
+dotnet add package Azure.Communication.Sms --version 1.0.0
 ```
 
 将 `using` 指令添加到 Program.cs 顶部以包括 `Azure.Communication` 命名空间。
@@ -77,13 +77,13 @@ using Azure.Communication.Sms;
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理适用于 C# 的 Azure 通信服务短信客户端库的某些主要功能。
+以下类和接口用于处理适用于 C# 的 Azure 通信服务短信 SDK 的某些主要功能。
 
 | 名称                                       | 说明                                                                                                                                                       |
 | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SmsClient     | 所有短信功能都需要此类。 使用订阅信息对其进行实例化，然后使用它发送短信。                           |
-| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
 | SmsSendOptions | 此类提供用于配置传送报告的选项。 如果 enable_delivery_report 设置为 True，则在传送成功时将发出一个事件 |
+| SmsSendResult               | 此类包含来自短信服务的结果。                                          |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -104,8 +104,8 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: "<to-phone-number>", // E.164 formatted recipient phone number
+    from: "<from-phone-number>",
+    to: "<to-phone-number>",
     message: "Hello World via SMS"
 );
 
@@ -113,13 +113,16 @@ Console.WriteLine($"Sms id: {sendResult.MessageId}");
 ```
 应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码。
 
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
+
 ## <a name="send-a-1n-sms-message-with-options"></a>发送包含选项的 1: N 短信
 若要将短信发送给收件人列表，请使用收件人电话号码列表从 SmsClient 调用 `Send` 或 `SendAsync` 函数。 你还可以传入可选参数，一个目的是指定是否应启用传送报告，另一个目的是设置自定义标记。
 
 ```csharp
-Response<IEnumerable<SmsSendResult>> response = smsClient.Send(
-    from: "<from-phone-number>", // Your E.164 formatted from phone number used to send SMS
-    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" }, // E.164 formatted recipient phone numbers
+Response<IReadOnlyList<SmsSendResult>> response = smsClient.Send(
+    from: "<from-phone-number>",
+    to: new string[] { "<to-phone-number-1>", "<to-phone-number-2>" },
     message: "Weekly Promotion!",
     options: new SmsSendOptions(enableDeliveryReport: true) // OPTIONAL
     {
@@ -134,7 +137,14 @@ foreach (SmsSendResult result in results)
 }
 ```
 
+你应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，并将 `<to-phone-number-1>` 和 `<to-phone-number-2>` 替换为要向其发送消息的电话号码
+
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
+
 `enableDeliveryReport` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
+
+`Tag` 用于将标签应用到交付报告
 
 ## <a name="run-the-code"></a>运行代码
 

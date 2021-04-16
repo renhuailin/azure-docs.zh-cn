@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625265"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105381"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 此简单的 Python 应用程序发送图像搜索查询，分析 JSON 响应，并显示返回的第一个图像的 URL。
 
@@ -21,7 +21,7 @@ ms.locfileid: "94625265"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Python 2.7 或 3.4](https://www.python.org/) 以及更高版本。
+* [Python 2.7 或 3.6+](https://www.python.org/)。
 
 * 适用于 Python 的 [Azure 图像搜索客户端库](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
     * 使用 `pip install azure-cognitiveservices-search-imagesearch` 进行安装

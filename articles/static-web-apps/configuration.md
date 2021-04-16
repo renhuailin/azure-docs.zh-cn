@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034041"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218968"
 ---
 # <a name="configure-azure-static-web-apps"></a>配置 Azure Static Web Apps
 
@@ -28,7 +28,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 ## <a name="file-location"></a>文件位置
 
-建议将 _staticwebapp.config.json_ 置于[工作流文件](./github-actions-workflow.md)中设置为 `app_location` 的文件夹内。 但是，可将该文件放在应用程序源代码文件夹中的任何位置。
+建议将 _staticwebapp.config.json_ 置于 [工作流文件](./github-actions-workflow.md)中设置为 `app_location` 的文件夹内。 但是，可将该文件放在应用程序源代码文件夹中的任何位置。
 
 有关详细信息，请参阅[示例配置](#example-configuration-file)文件。
 
@@ -39,6 +39,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 使用路由规则可以定义允许通过 Web 访问你的应用程序的 URL 模式。 路由定义为路由规则的数组。 有关用法示例，请参阅[示例配置文件](#example-configuration-file)。
 
+- 即使只有一个路由，亦要在 `routes` 数组中定义规则。
 - 规则按照其在 `routes` 数组中显示的顺序执行。
 - 规则评估将在发生首次匹配后停止 - 路由规则不会链接到一起。
 - 你可以全面控制自定义角色名称。
@@ -50,7 +51,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 ## <a name="defining-routes"></a>定义路由
 
-每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 有关用法示例，请参阅[示例配置文件](#example-configuration-file)。
+每个规则都包含一个路由模式，以及一个或多个可选的规则属性。 在 `routes` 数组中定义了路由规则。 有关用法示例，请参阅[示例配置文件](#example-configuration-file)。
 
 | 规则属性  | 必选 | 默认值 | 注释                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
@@ -275,7 +276,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
         },
         {
             "route": "/.auth/login/twitter",
-            "statusCode": 404,
+            "statusCode": 404
         },
         {
             "route": "/logout",
@@ -315,7 +316,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
     },
     "mimeTypes": {
         ".json": "text/json"
-    },
+    }
 }
 ```
 
@@ -327,7 +328,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 | _/admin/_ | 为充当 _administrator_ 角色的经过身份验证的用户提供 _/admin/index.html_ 文件。 为不充当 _administrator_ 角色的经过身份验证的用户提供 `403` 错误 <sup>1</sup>。 未经身份验证的用户重定向到 _/login_。 |
 | _/logo.png_ | 使用自定义缓存规则提供图像，该规则中的最大期限略微超过 182天（15,770,000 秒）。 |
 | /api/admin | 将充当 _registeredusers_ 角色的经过身份验证的用户发来的 `GET` 请求发送到 API。 为不充当 _registeredusers_ 角色的经过身份验证的用户以及未经过身份验证的用户提供 `401` 错误。<br/><br/>将充当 _administrator_ 角色的经过身份验证的用户发来的 `POST`、`PUT`、`PATCH` 和 `DELETE` 请求发送到 API。 为不充当 _administrator_ 角色的经过身份验证的用户以及未经过身份验证的用户提供 `401` 错误。 |
-| /customers/contoso | 为属于 _administrator_ 或 _customers\_contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件。 为不充当 _administrator_ 或 _customers\_contoso_ 角色的经过身份验证的用户提供 `403` 错误<sup>1</sup>。 未经身份验证的用户重定向到 _/login_。 |
+| /customers/contoso | 为属于 _administrator_ 或 _customers\_contoso_ 角色的经过身份验证的用户提供 _/customers/contoso/index.html_ 文件。 为不充当 _administrator_ 或 _customers\_contoso_ 角色的经过身份验证的用户提供 `403` 错误 <sup>1</sup>。 未经身份验证的用户重定向到 _/login_。 |
 | /login | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
 | /.auth/login/twitter | 由于路由规则禁用了 Twitter 授权，因此返回了 `404` 错误，从而回退为提供 _/index.html_ 和 `200` 状态代码。 |
 | /logout | 用户已注销任何身份验证提供程序。 |

@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 6b75548d6fce7539c2eeb71523a5a045b0b6607b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: a0f3e3547c38df63bdab77cf378525072d1e9ad4
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495285"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106126095"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java 开发工具包 (JDK)](/java/azure/jdk/) 8 或更高版本。
+- [Java 开发工具包 (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - 已部署的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
 
@@ -44,7 +44,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0-beta.6</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -66,8 +66,6 @@ import com.azure.communication.common.*;
 import com.azure.communication.identity.*;
 import com.azure.communication.identity.models.*;
 import com.azure.core.credential.*;
-import com.azure.core.http.*;
-import com.azure.core.http.netty.*;
 
 import java.io.IOException;
 import java.time.*;
@@ -85,7 +83,7 @@ public class App
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-使用资源的访问密钥和终结点将 `CommunicationIdentityClient` 实例化。 了解如何[管理资源的连接字符串](../create-communication-resource.md#store-your-connection-string)。
+使用资源的访问密钥和终结点将 `CommunicationIdentityClient` 实例化。 了解如何[管理资源的连接字符串](../create-communication-resource.md#store-your-connection-string)。 你还可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端对此客户端进行初始化。
 
 将以下代码添加到 `main` 方法中：
 
@@ -94,32 +92,31 @@ public class App
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 String accessKey = "SECRET";
 
-// Create an HttpClient builder of your choice and customize it
-// Use com.azure.core.http.netty.NettyAsyncHttpClientBuilder if that suits your needs
-// -> Add "import com.azure.core.http.netty.*;"
-// -> Add azure-core-http-netty dependency to file pom.xml
-
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
-
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
         .endpoint(endpoint)
         .credential(new AzureKeyCredential(accessKey))
-        .httpClient(httpClient)
         .buildClient();
 ```
-
-可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme)。
 
 你还可以使用 `connectionString()` 函数提供整个连接字符串，而不是提供终结点和访问密钥。
 ```java
 // Your can find your connection string from your resource in the Azure portal
 String connectionString = "<connection_string>";
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .connectionString(connectionString)
-    .httpClient(httpClient)
     .buildClient();
+```
+
+如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
+```java
+String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
+TokenCredential credential = new DefaultAzureCredentialBuilder().build();
+
+CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
+        .endpoint(endpoint)
+        .credential(credential)
+        .buildClient();
 ```
 
 ## <a name="create-an-identity"></a>创建标识

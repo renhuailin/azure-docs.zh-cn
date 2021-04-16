@@ -2,16 +2,16 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 051f903c0b203045886b80f72d868adc1fa85f73
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b602cbfde22cc87b42a32b007c19b626814d1660
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886086"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554827"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
 
@@ -25,9 +25,9 @@ ms.locfileid: "94886086"
 
 :::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="屏幕截图显示搜索栏中的通信服务搜索内容。":::
 
-在结果中选择“通信服务”，然后选择“添加” 。
+在结果中选择“通信服务”，然后选择“添加”。
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="屏幕截图显示 Azure 面板并突出显示添加按钮。":::
+:::image type="content" source="../media/create-a-communication-resource/create-communication-portal.png" alt-text="显示“通信服务”面板的屏幕截图，突出显示“创建”按钮。":::
 
 现在可以配置通信服务资源。 在创建进程的第一页上，系统将要求你指定：
 

@@ -9,19 +9,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657036"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220780"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-Azure 通信服务聊天和呼叫客户端库会创建一个实时消息通道，允许以高效且可靠的方式将信号消息推送到连接的客户端。 这使你可以在应用程序中构建丰富的实时通信功能，而无需实现复杂的 HTTP 轮询逻辑。 但是，在移动应用程序中，此信号通道仅当应用程序在前台处于活动状态时才保持连接状态。 如果希望用户在应用程序处于后台时接收传入呼叫或聊天消息，则应使用推送通知。
+Azure 通信服务聊天和通话 SDK 会创建一个实时消息通道，允许以高效可靠的方式将信号消息推送到连接的客户端。 这使你可以在应用程序中构建丰富的实时通信功能，而无需实现复杂的 HTTP 轮询逻辑。 但是，在移动应用程序中，此信号通道仅当应用程序在前台处于活动状态时才保持连接状态。 如果希望用户在应用程序处于后台时接收传入呼叫或聊天消息，则应使用推送通知。
 
 推送通知使你可以将信息从你的应用程序发送到用户的移动设备。 可以使用推送通知显示对话、播放声音或显示传入呼叫 UI。 Azure 通信服务提供与 [Azure 事件网格](../../event-grid/overview.md)和 [Azure 通知中心](../../notification-hubs/notification-hubs-push-notification-overview.md)的集成，使你可以向应用添加推送通知。
 
@@ -70,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>使用 Azure 门户链接通知中心
 
-在门户中，导航到 Azure 通信服务资源。 在通信服务资源中，从“通信服务”页的左侧菜单中选择“推送通知”，并连接之前预配的通知中心。 你需要在此处提供连接字符串和 resourceId：
+1. 在门户中，转到 Azure 通信服务资源。
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
+1. 在通信服务资源中，从“通信服务”页左侧菜单中选择“推送通知”，并连接之前预配的通知中心。
+
+1. 选择“连接通知中心”。 你将看到可供连接的通知中心列表。
+ 
+1. 选择要用于此资源的通知中心。
+ 
+   - 如需创建新的中心，请选择“新建通知中心”以获取为此资源预配的新中心。
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="显示 Azure 门户中的推送通知设置的屏幕截图。":::
+
+现在，你将看到已与连接状态关联的通知中心。
+
+如要为资源使用不同的中心，请选择“断开连接”，然后重复上述步骤以链接不同的通知中心。
 
 > [!NOTE]
-> 如果更新了 Azure 通知中心连接字符串，还必须更新通信服务资源。
-对中心链接方式的任何更改将在最多 ``10`` 分钟内反映在数据平面（即发送通知时）中。 这也适用于之前发送过通知且中心第一次链接的情况。
+> 有关中心链接方式的任何更改最多只需 10 分钟即会反映在数据平面（即发送通知时）中。 如果在更改之前发送了通知，则在第一次连接中心时，系统会应用此相同行为。
 
 ### <a name="device-registration"></a>设备注册
 

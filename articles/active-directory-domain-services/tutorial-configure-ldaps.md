@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579546"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933332"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -298,6 +298,21 @@ Thumbprint                                Subject
 1. 在本地计算机上，以管理员身份打开“记事本”
 1. 浏览到并打开文件 C:\Windows\System32\drivers\etc\hosts
 1. 删除所添加的记录对应的行，例如 `168.62.205.103    ldaps.aaddscontoso.com`
+
+## <a name="troubleshooting"></a>疑难解答
+
+如果看到的错误消息指出 LDAP.exe 无法进行连接，请尝试解决连接过程中出现的各方面的问题： 
+
+1. 配置域控制器
+1. 配置客户端
+1. 网络
+1. 建立 TLS 会话
+
+为使证书使用者名称匹配，DC 将使用 Azure ADDS 域名（而不是 Azure AD 域名）在其证书存储中搜索证书。 例如，拼写错误会使 DC 无法选择正确的证书。 
+
+客户端会尝试使用所提供的名称建立 TLS 连接。 通信需要一路畅通无阻。 DC 会发送服务器身份验证证书的公钥。该证书需要采用正确的证书用法，在使用者名称中签名的名称必须兼容，使客户端相信该服务器是你要连接到的 DNS 名称（也就是说，可以使用没有拼写错误的通配符），并且客户端必须信任证书颁发者。 可以在事件查看器的“系统日志”中检查该链中是否存在任何问题，并筛选“source”等于“Schannel”的事件。 这些片段到位后，就形成了一个会话密钥。  
+
+有关详细信息，请参阅 [TLS 握手](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol)。
 
 ## <a name="next-steps"></a>后续步骤
 

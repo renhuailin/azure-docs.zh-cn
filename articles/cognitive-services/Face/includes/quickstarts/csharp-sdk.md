@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445700"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958331"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102445700"
 
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-person-group)
+* [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 [参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
@@ -124,7 +124,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 * [对客户端进行身份验证](#authenticate-the-client)
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-person-group)
+* [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>验证客户端
@@ -186,7 +186,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
 
-### <a name="create-a-person-group"></a>创建人员组
+### <a name="create-a-persongroup"></a>创建人员组
 
 以下代码创建包含六个不同 **Person** 对象的 **PersonGroup**。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以按面部特征识别每个人。 **Person** 和 **PersonGroup** 对象在验证、识别和分组操作中使用。
 

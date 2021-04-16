@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955216"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552098"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
 Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强功能。 
+
+## <a name="april-2021"></a>2021 年 4 月
+
+* [Active Directory 域服务 (ADDS) LDAP 用户映射到 NFS 扩展组](configure-ldap-extended-groups.md)（预览版）   
+
+    默认情况下，Azure NetApp 文件在处理 NFS 用户凭据时最多支持 16 个组 ID，如 [RFC 5531](https://tools.ietf.org/html/rfc5531) 中所定义。 利用这一新功能，如果用户人数超过群组的默认成员数量，则现在可以将最大值增加到 1,024。 若要支持此功能，现在还可以向 ADDS LDAP 添加 NFS 卷，这会使的具有扩展组条目（有多达 1,024 组）的 Active Directory LDAP 用户可以访问该卷。 
 
 ## <a name="march-2021"></a>2021 年 3 月
 

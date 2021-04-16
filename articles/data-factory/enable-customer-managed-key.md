@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c6c376e44c6135a800e6f7e281f8ea85b828329a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a18d06e3a0324889a4cb9936fb339fd9d8f9b816
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443858"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222671"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>使用客户管理的密钥加密 Azure 数据工厂
 
@@ -137,6 +137,23 @@ Azure 数据工厂对静态数据进行加密，其中包括实体定义和在�
 ## <a name="disable-customer-managed-keys"></a>禁用客户管理的密钥
 
 按照设计，启用客户管理的密钥功能之后，无法删除其他安全步骤。 我们将始终需要使用客户所提供的密钥来加密工厂和数据。
+
+## <a name="customer-managed-key-and-continuous-integration-and-continuous-deployment"></a>客户托管密钥以及持续集成和持续部署
+
+默认情况下，CMK 配置不包含在中心 Azure 资源管理器 (ARM) 模板中。 若要将客户托管密钥加密设置纳入 ARM 模板，以便进行持续集成 (CI/CD)，请执行以下操作：
+
+1. 确保中心处于 Git 模式
+1. 导航到“管理门户-客户托管密钥”部分
+1. 选中“包括 ARM 模板”选项
+
+  :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="将客户托管密钥设置纳入 ARM 模板的屏幕截图。":::
+
+你将在 ARM 模板中添加以下设置。 通过编辑 [Azure 资源管理器参数配置](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)，可在持续集成和交付管道中将这些属性参数化
+
+  :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="将客户托管密钥设置纳入 Azure 资源管理器模板的屏幕截图。":::
+
+> [!NOTE]
+> 将加密设置添加到 ARM 模板会添加一个中心级别设置，该设置将覆盖其他环境中的其他中心级别设置，如 Git 配置。 如果在已提升的环境（如 UAT 或生产）中启用了这些设置，请参阅 [CI/CD 中的全局参数](author-global-parameters.md#cicd)。
 
 ## <a name="next-steps"></a>后续步骤
 

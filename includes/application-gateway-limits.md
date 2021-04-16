@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98612954"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106450423"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "98612954"
 | 重写规则集的数目 |400| |
 | 每个重写规则集的标头数或 URL 配置数|40| |
 | 每个重写规则集的条件数|40| |
-| 并发的 WebSocket 连接数 |中型网关 20k<br> 大型网关 50k| |
+| 并发的 WebSocket 连接数 |中型网关 2 万<sup>2</sup><br> 大型网关 5 万<sup>2</sup>| |
 | 最大 URL 长度|32KB| |
 | 适用于 HTTP/2 的最大标头大小 |4KB| |
 | 最大文件上传大小，标准 |2 GB | |
@@ -45,3 +45,5 @@ ms.locfileid: "98612954"
 | 每个应用程序网关的最大 WAF 排除项数|40||
 
 <sup>1</sup> 对于启用了 WAF 的 SKU，必须将资源数限制为 40。
+
+<sup>2</sup> 限制是基于每个应用程序网关实例，并非每个应用程序网关资源。

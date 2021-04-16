@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 03/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466138"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958371"
 ---
-这一类别有 64 条相关建议。
+这一类别有 65 条相关建议。
 
 |建议 |说明 |严重性 |
 |---|---|---|
@@ -24,6 +24,7 @@ ms.locfileid: "103466138"
 |应将 SQL Server 的审核保留设置为至少 90 天 |审核配置的审核保持期少于 90 天的 SQL 服务器。<br />（相关策略：[SQL Server 应配置有 90 天或更长时间的审核保留期。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)） |低 |
 |应启用 SQL 服务器上的审核 |在 SQL Server 上启用审核以跟踪服务器上所有数据库的数据库活动，并将其保存在审核日志中。<br />（相关策略：[应对 SQL Server 启用审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)） |低 |
 |应对订阅启用 Log Analytics 代理自动预配 |为了监视安全漏洞和威胁，Azure 安全中心会从 Azure 虚拟机收集数据。 数据是使用 Log Analytics 代理收集的，该代理以前称为 Microsoft Monitoring Agent (MMA)，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到 Log Analytics 工作区以用于分析。 建议启用自动预配，将代理自动部署到所有受支持的 Azure VM 和任何新创建的 VM。<br />（相关策略：[你的订阅应启用 Log Analytics 代理自动预配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)） |低 |
+|已启用 Azure Arc 的 Kubernetes 群集应安装 Azure Defender 扩展 |Azure Arc 的 Azure Defender 扩展为你启用了 Arc 的 Kubernetes 群集提供威胁防护。 该扩展从群集中的所有控制平面（主）节点收集数据，并将数据发送到云中的 Azure Defender for Kubernetes 后端作进一步分析。 若要了解详细信息，请访问 https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc。<br />（无相关策略） |高 |
 |Azure Cache for Redis 应驻留在虚拟网络中 |Azure 虚拟网络 (VNet) 部署为 Azure Cache for Redis 以及子网、访问控制策略和其他功能提供增强的安全性和隔离，以进一步限制访问。如果 Azure Cache for Redis 实例配置有 VNet，该实例是不可公开寻址的，只能从 VNet 中的虚拟机和应用程序访问。<br />（相关策略：[Azure Cache for Redis 应驻留在虚拟网络中](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)） |中型 |
 |Azure Cosmos DB 帐户应有防火墙规则 |应在 Azure Cosmos DB 帐户上定义防火墙规则，以防止来自未经授权的源的流量。 至少定义了一个 IP 规则且启用了虚拟网络筛选器的帐户才会被视为合规。 禁用公共访问的帐户也被视为合规。<br />（相关策略：[Azure Cosmos DB 帐户应有防火墙规则](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)） |中型 |
 |Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据 |使用客户管理的密钥来管理 Azure Cosmos DB 的静态加密。 默认情况下，使用服务管理的密钥对数据进行静态加密，但为了满足监管合规标准，通常需要使用客户管理的密钥 (CMK)。 CMK 允许使用由你创建并拥有的 Azure Key Vault 密钥对数据进行加密。 你可以完全控制并负责关键生命周期，包括轮换和管理。 访问 https://aka.ms/cosmosdb-cmk，了解有关 CMK 加密的详细信息。<br />（相关策略：[Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)） |高 |

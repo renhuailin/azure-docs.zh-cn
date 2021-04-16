@@ -2,25 +2,31 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 1/28/2021
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 32d869e6285e76b57a7b8e462e8110a43de82dd9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22a9cf3338f422341928a77f2bf14c497aa2ba31
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563764"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
+- 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
 
 ## <a name="create-azure-communication-resource"></a>创建 Azure 通信资源
 
-若要创建 Azure 通信服务资源，请[登录 Azure CLI](/cli/azure/authenticate-azure-cli)，然后运行以下命令：
+若要创建 Azure 通信服务资源，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)。 你可以通过使用命令 ```az login``` 和提供凭据在终端完成此操作。 运行以下命令以创建资源：
 
 ```azurecli
 az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup>"
+```
+
+如果要选择特定订阅，你还可以指定 ```--subscription``` 标志并提供订阅 ID。
+```
+az communication create --name "<communicationName>" --location "Global" --data-location "United States" --resource-group "<resourceGroup> --subscription "<subscriptionID>"
 ```
 
 可使用以下选项来配置通信服务资源：
@@ -33,12 +39,16 @@ az communication create --name "<communicationName>" --location "Global" --data-
 
 ## <a name="manage-your-communication-services-resource"></a>管理通信服务资源
 
-若要向通信服务资源添加标记，请运行以下命令：
+若要向通信服务资源添加标记，请运行以下命令： 你也可以指向特定的订阅。
 
 ```azurecli
-az communication update --name "<communicationName>" --tags newTag="newVal" --resource-group "<resourceGroup>"
+az communication update --name "<communicationName>" --tags newTag="newVal1" --resource-group "<resourceGroup>"
+
+az communication update --name "<communicationName>" --tags newTag="newVal2" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 
 az communication show --name "<communicationName>" --resource-group "<resourceGroup>"
+
+az communication show --name "<communicationName>" --resource-group "<resourceGroup>" --subscription "<subscriptionID>"
 ```
 
 若要了解其他命令，请查看 [az communication](/cli/azure/ext/communication/communication)。

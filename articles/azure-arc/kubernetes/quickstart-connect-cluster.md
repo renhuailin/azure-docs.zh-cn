@@ -6,14 +6,14 @@ ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
-ms.custom: template-quickstart
+ms.custom: template-quickstart, references_regions
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b4cbd45f8478674c7c6bacc50f068bc0ec691a14
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121637"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449913"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc 
 
@@ -23,36 +23,35 @@ ms.locfileid: "102121637"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-* 验证是否具有：
-    * 已启动并正在运行的 Kubernetes 群集。
-    * 一个 `kubeconfig` 文件，指向要连接到 Azure Arc 的群集。
-    * 用户或服务主体连接和创建已启用 Azure Arc 的 Kubernetes 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
+* 已启动并正在运行的 Kubernetes 群集。 如果没有群集，你可以使用以下任意选项创建群集：
+    * [Docker 中的 Kubernetes (KIND)](https://kind.sigs.k8s.io/)
+    * 使用 Docker for [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) 或 [Docker for Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 创建 Kubernetes 群集
+    * 使用[群集 API](https://cluster-api.sigs.k8s.io/user/quick-start.html)的自托管 Kubernetes 群集
+
+    >[!NOTE]
+    > 群集至少需要有一个操作系统和体系结构类型的节点：`linux/amd64`。 目前尚不支持只有 `linux/arm64` 节点的群集。
+    
+* `kubeconfig` 指向群集的文件和上下文。
+* 启用 Azure Arc 的 Kuberneters 资源类型 (`Microsoft.Kubernetes/connectedClusters`) 的“读取”和“写入”权限。
+
 * 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
-* 安装以下版本 >= 1.0.0 的已启用 Azure Arc 的 Kubernetes CLI 扩展：
+
+- [安装 Azure CLI 或将其升级](https://docs.microsoft.com/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
+* 安装 `connectedk8s` Azure CLI 扩展版本，版本不得低于 1.0.0：
   
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
-  ```
-  * 若要将这些扩展更新到最新版本，请运行以下命令：
-  
-  ```azurecli
-  az extension update --name connectedk8s
-  az extension update --name k8s-configuration
   ```
 
+>[!TIP]
+> 如果已安装 `connectedk8s` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name connectedk8s`
+
+
 >[!NOTE]
->支持的区域：
->* 美国东部
->* 西欧
->* 美国中西部
->* 美国中南部
->* 东南亚
->* 英国南部
->* 美国西部 2
->* 澳大利亚东部
->* 美国东部 2
->* 北欧
+>你可单击[此处](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)找到启用 Azure Arc 的 Kubernetes 支持的区域列表。
+
+>[!NOTE]
+> 如果要在群集上使用自定义位置，请使用“美国东部”或“欧洲西部”区域连接群集，因为自定义位置目前仅在这些区域中可用。 上面列出的所有区域均提供其他所有启用 Azure Arc 的 Kubernetes 功能。
 
 ## <a name="meet-network-requirements"></a>满足网络要求
 
@@ -64,7 +63,7 @@ ms.locfileid: "102121637"
 | 终结点 (DNS) | 说明 |  
 | ----------------- | ------------- |  
 | `https://management.azure.com`                                                                                 | 代理需要该终结点才可连接到 Azure 并注册群集。                                                        |  
-| `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com`, `https://westcentralus.dp.kubernetesconfiguration.azure.com`, `https://southcentralus.dp.kubernetesconfiguration.azure.com`, `https://southeastasia.dp.kubernetesconfiguration.azure.com`, `https://uksouth.dp.kubernetesconfiguration.azure.com`, `https://westus2.dp.kubernetesconfiguration.azure.com`, `https://australiaeast.dp.kubernetesconfiguration.azure.com`, `https://eastus2.dp.kubernetesconfiguration.azure.com`, `https://northeurope.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息。                                      |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com` | 代理的数据平面终结点，用于推送状态和提取配置信息。                                      |  
 | `https://login.microsoftonline.com`                                                                            | 提取和更新 Azure 资源管理器令牌所需的终结点。                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。                                                                  |
@@ -75,11 +74,13 @@ ms.locfileid: "102121637"
     ```azurecli
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. 监视注册过程。 注册可能最多需要 10 分钟。
     ```azurecli
     az provider show -n Microsoft.Kubernetes -o table
-    az provider show -n Microsoft.KubernetesConfiguration -o table    
+    az provider show -n Microsoft.KubernetesConfiguration -o table
+    az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
 ## <a name="create-a-resource-group"></a>创建资源组

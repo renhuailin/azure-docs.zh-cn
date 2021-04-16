@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 68114893ed3db858d00ca7811b1a83395ff02507
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: db6e4a9c6d2829c7980164d5b79bd33e4b3fb6eb
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495284"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112778"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Python](https://www.python.org/downloads/) 2.7、3.5 或更高版本。
+- [Python](https://www.python.org/downloads/) 2.7 或 3.6+。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
 
 ## <a name="setting-up"></a>设置
@@ -40,16 +40,16 @@ ms.locfileid: "103495284"
    from azure.communication.identity import CommunicationIdentityClient, CommunicationUserIdentifier
 
    try:
-      print('Azure Communication Services - Access Tokens Quickstart')
+      print("Azure Communication Services - Access Tokens Quickstart")
       # Quickstart code goes here
    except Exception as ex:
-      print('Exception:')
+      print("Exception:")
       print(ex)
    ```
 
 ### <a name="install-the-package"></a>安装包
 
-仍在应用程序目录中时，使用 `pip install` 命令安装适用于 Python 包的 Azure 通信服务标识客户端库。
+如果仍在应用程序目录中，可以使用 `pip install` 命令安装适用于 Python 包的 Azure 通信服务标识 SDK。
 
 ```console
 pip install azure-communication-identity
@@ -64,7 +64,7 @@ pip install azure-communication-identity
 ```python
 # This code demonstrates how to fetch your connection string
 # from an environment variable.
-connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
+connection_string = os.environ["COMMUNICATION_SERVICES_CONNECTION_STRING"]
 
 # Instantiate the identity client
 client = CommunicationIdentityClient.from_connection_string(connection_string)
@@ -72,8 +72,8 @@ client = CommunicationIdentityClient.from_connection_string(connection_string)
 
 或者，如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
 ```python
-const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
-var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"]
+client = CommunicationIdentityClient(endpoint, DefaultAzureCredential())
 ```
 
 ## <a name="create-an-identity"></a>创建标识
@@ -92,7 +92,7 @@ print("\nCreated an identity with ID: " + identity.identifier)
 ```python
 # Issue an access token with the "voip" scope for an identity
 token_result = client.get_token(identity, ["voip"])
-expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
+expires_on = token_result.expires_on.strftime("%d/%m/%y %I:%M %S %p")
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
 ```
@@ -101,14 +101,14 @@ print(token_result.token)
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>在同一请求中创建标识并颁发访问令牌
 
-使用 `create_user_with_token` 方法创建通信服务标识并为其颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。
+使用 `create_user_and_token` 方法创建通信服务标识并为其颁发访问令牌。 参数 `scopes` 定义一组基元，用于授权此访问令牌。 请参阅[受支持的操作列表](../../concepts/authentication.md)。
 
 ```python
 # Issue an identity and an access token with the "voip" scope for the new identity
-identity_token_result = client.create_user_with_token(["voip"])
+identity_token_result = client.create_user_and_token(["voip"])
 identity = identity_token_result[0].identifier
 token = identity_token_result[1].token
-expires_on = identity_token_result[1].expires_on.strftime('%d/%m/%y %I:%M %S %p')
+expires_on = identity_token_result[1].expires_on.strftime("%d/%m/%y %I:%M %S %p")
 print("\nCreated an identity with ID: " + identity)
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token)

@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 292c82624103fc2eae46d8aecb5e85b2181e7938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3192c3ee8458623f3724da5f875cc09032a42bf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463045"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219410"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-使用 Azure Notebooks 开发机器学习模型，并将其部署到运行 Azure IoT Edge 的 Linux 设备。
+使用 Azure Notebooks 开发机器学习模块，并将其部署到运行 Azure IoT Edge（支持 Linux 容器）的设备中。
 可以使用 IoT Edge 模块部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示如何部署 Azure 机器学习模块，以便根据模拟的机器温度数据预测设备故障时间。 有关 IoT Edge 上的 Azure 机器学习的详细信息，请参阅 [Azure 机器学习文档](../machine-learning/how-to-deploy-and-where.md)。
 
 >[!NOTE]

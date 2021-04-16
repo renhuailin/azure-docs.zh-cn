@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771407"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382703"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现物理服务器
 
@@ -80,6 +80,9 @@ ms.locfileid: "104771407"
 设置一个可供设备用于访问物理服务器的帐户。
 
 - 对于 **Windows 服务器**，针对已加入域的服务器使用域帐户，针对未加入域的服务器使用本地帐户。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
+    > [!Note]
+    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装 WMF 3.0，以及向这些组中添加用于访问服务器的域/本地帐户：性能监视器用户、性能日志用户和 WinRMRemoteWMIUsers。
+
 - 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。 或者，可使用以下命令设置具有所需功能的非根帐户：
 
 **命令** | **用途**
@@ -103,7 +106,7 @@ chmod a+r /sys/class/dmi/id/product_uuid | 收集 BIOS GUID
    ![用于项目名称和区域的框](./media/tutorial-discover-physical/new-project.png)
 
 7. 选择“创建”。
-8. 等待几分钟，让项目部署完成。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
+8. 等待几分钟，让项目完成部署。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
 
 ![显示默认情况下已添加的服务器评估工具的页面](./media/tutorial-discover-physical/added-tool.png)
 

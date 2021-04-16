@@ -2,34 +2,38 @@
 title: include 文件
 description: include 文件
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 7d39decaa6376c614e48b65ad2fc1b3043aa0a3c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: dademath
+ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682405"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498810"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
 
-Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服务通话 iOS 客户端库来构建包括语音和视频的群组通话体验。 在这篇示例快速入门中，你将了解如何设置和运行该示例。 针对上下文提供了此示例的概述。
+适用于 iOS 的 Azure 通信服务群组通话主图示例演示了如何使用通信服务通话 iOS SDK 来创造一个包括语音和视频的群组通话体验。 在这篇示例快速入门中，你将了解如何设置和运行该示例。 针对上下文提供了此示例的概述。
+
+## <a name="download-code"></a>下载代码
+
+在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero) 上查找此示例项目。 可在单独的[分支](https://github.com/Azure-Samples/communication-services-ios-calling-hero/tree/feature/teams_interop)中找到具有 [Teams 互操作](../../concepts/teams-interop.md)的示例版本。
 
 ## <a name="overview"></a>概述
 
-此示例是一款原生 iOS 应用程序，它使用 Azure 通信服务 iOS 客户端库来构建一个兼具语音和视频通话功能的通话体验。 该应用程序使用服务器端组件来提供访问令牌，这些令牌随后用于初始化 Azure 通信服务客户端库。 若要配置该服务器端组件，可随时按照[使用 Azure Functions 的受信任服务](../../tutorials/trusted-service-tutorial.md)教程操作。
+此示例是一款原生 iOS 应用程序，该应用程序使用 Azure 通信服务 iOS SDK 来创造一个包括语音和视频通话功能的通话体验。 该应用程序使用服务器端组件来预配访问令牌，这些令牌随后用于初始化 Azure 通信服务 SDK。 若要配置该服务器端组件，可随时按照[使用 Azure Functions 的受信任服务](../../tutorials/trusted-service-tutorial.md)教程操作。
 
 该示例如下所示：
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="显示示例应用程序登陆页面的屏幕截图。":::
 
-按下“开始新通话”按钮时，iOS 应用程序将创建一个新通话并加入其中。 借助该应用程序，还可通过指定现有通话的 ID 来加入现有的 Azure 通信服务通话。
+按下“开始新通话”按钮时，iOS 应用程序将创建一个新通话并加入其中。 借助该应用程序，你可通过指定现有通话的 ID 来加入现有的 Azure 通信服务通话。
 
 加入通话后，系统将提示你向该应用程序授予访问相机和麦克风的权限。 系统还将要求你提供显示名称。
 
@@ -51,7 +55,7 @@ Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服
 - 具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一部运行 [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532) 的 Mac，以及一个安装到密钥链的有效开发人员证书。
 - 一个 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../quickstarts/create-communication-resource.md)。
-- 一个 Azure 函数，它运行[受信任的服务逻辑](../../tutorials/trusted-service-tutorial.md)来获取访问令牌。
+- 运行[身份验证终结点](../../tutorials/trusted-service-tutorial.md)以获取访问令牌的 Azure Function。
 
 ## <a name="running-sample-locally"></a>在本地运行示例
 
@@ -60,8 +64,8 @@ Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服
 ### <a name="before-running-the-sample-for-the-first-time"></a>第一次运行示例之前
 
 1. 通过运行 `pod install` 安装依赖项。
-2. 在 XCode 中打开 `ACSCall.xcworkspace`。
-3. 更新 `AppSettings.plist`。 将 `acsTokenFetchUrl` 密钥的值设置为身份验证终结点的 URL。
+2. 在 XCode 中打开 `AzureCalling.xcworkspace`。
+3. 更新 `AppSettings.plist`。 将 `communicationTokenFetchUrl` 密钥的值设置为身份验证终结点的 URL。
 
 ### <a name="run-sample"></a>运行示例
 
@@ -69,9 +73,9 @@ Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>（可选）保护身份验证终结点
 
-出于演示目的，此示例在默认情况下使用可公开访问的终结点来获取 Azure 通信服务令牌。 对于生产方案，建议使用你自己的安全终结点来预配你自己的令牌。
+为了进行演示，此示例在默认情况下使用可公开访问的终结点来获取 Azure 通信服务访问令牌。 对于生产方案，建议使用你自己的安全终结点来预配你自己的令牌。
 
-通过其他配置，此示例支持连接到受 Azure Active Directory (Azure AD) 保护的终结点，因此应用需要用户登录才能获取 Azure 通信服务令牌。 请查看以下步骤：
+通过其他配置，此示例支持连接到受 Azure Active Directory (Azure AD) 保护的终结点，因此用户需要登录应用程序才能获取 Azure 通信服务访问令牌。 请查看以下步骤：
 
 1. 在应用中启用 Azure Active Directory 身份验证。  
    - [在 Azure Active Directory 下注册应用（使用 iOS/macOS 平台设置）](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure 门户上的 Azure Active Directory 配置。":::
 
 3. 在 Xcode 中打开 `AppSettings.plist`，再添加以下键值：
-   - `acsTokenFetchUrl`：用于请求 Azure 通信服务令牌的 URL 
+   - `communicationTokenFetchUrl`：用于请求 Azure 通信服务令牌的 URL 
    - `isAADAuthEnabled`：一个布尔值，用于指示是否需要 Azure 通信服务令牌身份验证
    - `aadClientId`：你的应用程序（客户端）ID
    - `aadTenantId`：你的目录（租户）ID
@@ -94,11 +98,16 @@ Azure 通信服务的 iOS 群组通话主图示例演示了如何使用通信服
 
 ## <a name="next-steps"></a>后续步骤
 
+>[!div class="nextstepaction"]
+>[从 GitHub 下载示例](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 有关详细信息，请参阅以下文章：
 
-- 熟悉如何[使用呼叫客户端库](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- 自行熟悉如何[使用通话 SDK](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - 详细了解[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>其他阅读材料
 
 - [Azure 通信 GitHub](https://github.com/Azure/communication) - 在官方 GitHub 页上查找更多示例和信息
+- [示例](./../overview.md) - 在示例概述页上查找更多示例。
+- [Azure 通信通话功能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)：如欲了解有关通话 iOS SDK 的详细信息，请参阅 [Azure 通信 iOS 通话 SDK](https://github.com/Azure/Communication/releases/)

@@ -1,27 +1,22 @@
 ---
-title: 安装 Defender for IoT 微代理
-titleSuffix: Azure Defender for IoT
-description: 了解如何安装和验证 Defender 微代理。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 3/3/2021
+title: 快速入门：安装 Defender for IoT 微代理（预览版）
+description: 通过本快速入门，了解如何安装 Defender 微代理并对其进行身份验证。
+ms.date: 3/9/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120430"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384402"
 ---
-# <a name="install-defender-for-iot-micro-agent"></a>安装 Defender for IoT 微代理 
+# <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>快速入门：安装 Defender for IoT 微代理（预览版）
 
 本文介绍了如何安装和验证 Defender 微代理。
 
 ## <a name="prerequisites"></a>先决条件
 
-安装 Defender for IoT 模块之前，必须在 IoT 中心创建一个模块标识。 若要详细了解如何创建模块标识，请查看[创建 Defender IoT 微代理模块孪生](quickstart-create-micro-agent-module-twin.md)。
+在安装 Defender for IoT 模块之前，必须在 IoT 中心创建一个模块标识。 有关如何创建模块标识的详细信息，请参阅[创建 Defender IoT 微代理模块孪生（预览）](quickstart-create-micro-agent-module-twin.md)。
 
 ## <a name="install-the-package"></a>安装包
 
@@ -49,13 +44,37 @@ sudo apt-get install defender-iot-micro-agent
 
 可使用下面两种选项对 Defender for IoT 微代理进行身份验证： 
 
-- 连接字符串。 
+- 模块标识连接字符串。 
 
 - 证书。
 
-### <a name="authenticate-using-a-connection-string"></a>使用连接字符串进行身份验证
+### <a name="authenticate-using-a-module-identity-connection-string"></a>使用模块标识连接字符串进行身份验证
 
-若要使用连接字符串进行身份验证：
+在开始执行这些步骤之前，请确保符合本文所述的[先决条件](#prerequisites)并创建模块标识。 
+
+#### <a name="get-the-module-identity-connection-string"></a>获取模块标识连接字符串
+
+若要从 IoT 中心获取模块标识连接字符串： 
+
+1. 导航到“IoT 中心”并选择你的中心。
+
+1. 在左侧菜单中的“资源管理器”部分下，选择“IoT 设备”。 
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/iot-devices.png" alt-text="在左侧菜单中选择“IoT 设备”。":::
+
+1. 在“设备 ID”列表中选择一个设备以查看“设备详细信息”页。
+
+1. 选择“模块标识”选项卡，然后在与设备关联的模块标识列表中选择“DefenderIotMicroAgent”模块。 ****   ****  
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/module-identities.png" alt-text="选择“模块标识”选项卡。":::
+
+1. 在“模块标识详细信息”页上，选择“复制”按钮以复制主密钥。 
+
+   :::image type="content" source="media/quickstart-standalone-agent-binary-installation/copy-button.png" alt-text="选择“复制”按钮以复制主密钥。":::
+
+#### <a name="configure-authentication-using-a-module-identity-connection-string"></a>配置使用模块标识连接字符串进行身份验证
+
+若要将代理配置为使用模块标识连接字符串进行身份验证：
 
 1. 输入以下命令，将包含 utf-8 编码的连接字符串的 `connection_string.txt` 文件放到 Defender 代理目录 `/var/defender_iot_micro_agent` 路径中：
 
@@ -63,7 +82,7 @@ sudo apt-get install defender-iot-micro-agent
     sudo bash -c 'echo "<connection string" > /var/defender_iot_micro_agent/connection_string.txt' 
     ```
 
-    `connection_string.txt` 现应在路径位置 `/var/defender_iot_micro_agent/connection_string.txt` 中。
+    `connection_string.txt` 应位于以下路径位置：`/var/defender_iot_micro_agent/connection_string.txt`。
 
 1. 使用以下命令重启服务：  
 
@@ -129,4 +148,5 @@ sudo apt-get install defender-iot-micro-agent=<version>
 
 ## <a name="next-steps"></a>后续步骤
 
-[通过源代码构建 Defender 微代理](quickstart-building-the-defender-micro-agent-from-source.md)
+> [!div class="nextstepaction"]
+> [通过源代码构建 Defender 微代理](quickstart-building-the-defender-micro-agent-from-source.md)

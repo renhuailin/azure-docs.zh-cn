@@ -3,17 +3,17 @@ title: Windows 虚拟桌面中有哪些新增功能？ - Azure
 description: Windows 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1c5d846963d7fc0c2207893f5c4094e3f94351b5
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499877"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505410"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虚拟桌面中有哪些新增功能？
 
@@ -35,6 +35,18 @@ Windows 虚拟桌面会定期更新。 本文介绍了以下内容：
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Windows 虚拟桌面代理更新
+
+Windows 虚拟桌面代理每月至少更新一次。
+
+请参阅 Windows 虚拟桌面代理的更改：
+
+- 版本 1.0.2866.1500：此更新已于 2021 年 3 月 26 日发布，并已修复堆栈运行状况检查的问题。
+- 版本 1.0.2800.2802：此更新已于 2021 年 3 月 10 日发布，并改进常规项和修复错误。
+- 版本 1.0.2800.2800：此更新已于 2021 年 3 月 2 日发布，并修复了反向连接问题。
+- 版本 1.0.2800.2700：此更新已于 2021 年 2 月 10 日发布，并改进常规项和修复错误。
+- 版本 1.0.2800.2700：此更新已于 2021 年 2 月 4 日发布，并修复了访问遭拒的业务流程问题。
 
 ## <a name="fslogix-updates"></a>FSLogix 更新
 

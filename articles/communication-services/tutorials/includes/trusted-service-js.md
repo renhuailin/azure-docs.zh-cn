@@ -8,12 +8,12 @@ ms.author: ddematheu2
 ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 41d959468e3183af00d2ab514e7c1bf0a134a1f8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5b71a0581bf4f9d8239171e6abc56f87e7ae8183
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490462"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105152779"
 ---
 ## <a name="download-code"></a>下载代码
 
@@ -76,7 +76,7 @@ module.exports = async function (context, req) {
 
 我们将使用 `Identity` 库生成 `User Access Tokens`。
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务标识客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务标识 SDK。
 
 ```console
 
@@ -104,7 +104,7 @@ const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 
 接下来，我们将修改原始函数以生成 `User Access Tokens`。
 
-`User Access Tokens` 通过从 `createUser` 方法创建用户来生成。 创建用户后，便可以使用 `issueToken` 方法为该用户生成 Azure 函数返回的令牌。
+`User Access Tokens` 通过从 `createUser` 方法创建用户来生成。 创建用户后，便可以使用 `getToken` 方法为该用户生成 Azure 函数返回的令牌。
 
 对于此示例，我们将令牌范围配置为 `voip`。 你的应用程序可能需要其他范围。 详细了解[范围](../../quickstarts/access-tokens.md)
 
@@ -114,7 +114,7 @@ module.exports = async function (context, req) {
 
     const user = await tokenClient.createUser();
 
-    const userToken = await tokenClient.issueToken(user, ["voip"]);
+    const userToken = await tokenClient.getToken(user, ["voip"]);
 
     context.res = {
         body: userToken

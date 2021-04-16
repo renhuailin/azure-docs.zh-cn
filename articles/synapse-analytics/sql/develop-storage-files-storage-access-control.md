@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 726395e9f004130699dab061cfa752a2e516c834
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501560"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552948"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制无服务器 SQL 池对存储帐户的访问
 
@@ -36,11 +36,11 @@ ms.locfileid: "102501560"
 用户标识（也称为“Azure AD 直通”）是一种授权类型。使用这种授权时，登录到无服务器 SQL 池的 Azure AD 用户的标识将用于授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如下表中所示，SQL 用户类型不支持此授权类型。
 
 > [!IMPORTANT]
-> 需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。
-> 即使你是存储帐户的所有者，也仍需将自己添加到存储 Blob 数据角色之一。
->
-> 若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
->
+> 客户端应用程序可能会缓存 AAD 身份验证令牌。 例如，PowerBI 会缓存 AAD 令牌，并在一小时内重复使用同一令牌。 如果在执行查询的过程中，该令牌过期，则长时间运行的查询可能会失败。 如果查询时遇到 AAD 访问令牌过期导致查询失败，请考虑切换到[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)或[共享访问签名](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)。
+
+需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。 或者，你可以指定细化 ACL 规则以访问文件和文件夹。 即使你是存储帐户的所有者，也仍需将自己添加到存储 Blob 数据角色之一。
+若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
+
 
 ### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
 
@@ -54,6 +54,10 @@ ms.locfileid: "102501560"
 > SAS 令牌：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
 若要允许使用 SAS 令牌进行访问，需要创建数据库范围或服务器范围的凭据 
+
+
+> [!IMPORTANT]
+> 你无法使用 SAS 令牌访问专用存储帐户。 请考虑切换到[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)或 [Azure AD 直通](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)身份验证以访问受保护的存储。
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
@@ -100,6 +104,15 @@ ms.locfileid: "102501560"
 #### <a name="user-identity"></a>用户标识
 
 若要通过用户标识访问受防火墙保护的存储，可以使用 PowerShell 模块 Az.Storage。
+#### <a name="configuration-via-azure-portal"></a>通过 Azure 门户配置
+
+1. 在 Azure 门户中搜索你的存储帐户。
+1. 转到“设置”部分下的“网络”。
+1. 在“资源实例”部分中，为 Synapse 工作区添加例外情况。
+1. 选择 Microsoft.Synapse/workspaces 作为资源类型。
+1. 选择工作区名称作为实例名称。
+1. 单击“保存”。
+
 #### <a name="configuration-via-powershell"></a>通过 PowerShell 进行配置
 
 按照以下步骤配置存储帐户防火墙，并为 Synapse 工作区添加例外。

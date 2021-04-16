@@ -1,22 +1,24 @@
 ---
 title: 快速入门 - 使用 Azure 通信服务向 iOS 应用添加呼叫
-description: 本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务呼叫客户端库。
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+description: 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK。
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22c9d8f8bdf3e6195bf152fa0431ad5ce9bcdfeb
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656601"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073543"
 ---
-本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务呼叫客户端库开始呼叫。
+本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 开始通话。
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> 本文档使用 1.0.0-beta.8 版的通话客户端库。
+> 本文档使用版本 1.0.0-beta.8 的通话 SDK。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +39,8 @@ ms.locfileid: "101656601"
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>使用 CocoaPods 安装包和依赖项
 
-1. 为应用程序创建 Podfile，如下所示：
+1. 若要为应用程序创建 Podfile，请打开终端并导航到项目文件夹，然后运行 ```pod init```
+3. 将以下代码添加到 Podfile 并保存（确保“目标对象”与项目名称匹配）：
 
    ```
    platform :ios, '13.0'
@@ -50,7 +53,7 @@ ms.locfileid: "101656601"
    end
    ```
 
-2. 运行 `pod install`。
+3. 运行 `pod install`。
 3. 使用 Xcode 打开 `.xcworkspace`。
 
 ### <a name="request-access-to-the-microphone"></a>请求访问麦克风
@@ -118,11 +121,11 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
+以下类和接口用于处理 Azure 通信服务通话 SDK 的某些主要功能：
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient 是呼叫客户端库的主入口点。|
+| CallClient | CallClient 是通话 SDK 的主入口点。|
 | CallAgent | CallAgent 用于启动和管理呼叫。 |
 | CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。| 
 | CommunicationUserIdentifier | CommunicationUserIdentifier 用于表示用户的标识，可以是以下项之一：CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication。 |

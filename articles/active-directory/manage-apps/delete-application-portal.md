@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 1/5/2021
 ms.author: kenwith
-ms.openlocfilehash: 187f4a1d524e0343130808aa4b4c18222fa982c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59d6044cf42109501941b3f4ff54375aed7fab7c
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99259264"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504866"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序
 
@@ -51,7 +51,7 @@ ms.locfileid: "99259264"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本快速入门系列后，请考虑删除应用以清理测试租户。 本快速入门介绍了如何删除应用。
+完成本快速入门系列后，请考虑删除应用以清理你的测试租户。 本快速入门介绍了如何删除应用。
 
 ## <a name="next-steps"></a>后续步骤
 

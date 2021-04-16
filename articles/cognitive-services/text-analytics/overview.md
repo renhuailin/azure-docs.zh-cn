@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598960"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219495"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
@@ -26,6 +26,12 @@ ms.locfileid: "104598960"
 该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) 或[版本 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+本文档包含以下类型的文章：
+* [快速入门](./quickstarts/client-libraries-rest-api.md)是分步说明，你可按照该说明调用服务，并迅速获得结果。 
+* [操作指南](./how-tos/text-analytics-how-to-call-api.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [概念](text-analytics-user-scenarios.md)详细介绍了服务的功能和特性。
+* [教程](./tutorials/tutorial-power-bi-key-phrases.md)是一份篇幅较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 

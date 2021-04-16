@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4f8a66034990cd3e105759b9a5dad721ad3cb0a9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183870"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104987966"
 ---
-| 资源 | 限制 |
+| 工作负载类型* | 限制** |
 | --- | --- |
-| 并发 RDP 连接数 |25* |
-| 并发 SSH 连接数 |50** |
+| 亮 |100 |
+| 中型 |50 |
+| 重型 |5 |
 
-*可能因其他正在进行的 RDP 会话或其他正在进行的 SSH 会话而有所不同。<br>
-**如果存在现有的 RDP 连接或通过其他正在进行的 SSH 会话使用，则可能会有所不同。
+\* 请查看此处，了解这些工作负载类型的定义：[远程桌面工作负载](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/remote-desktop-workloads)<br>
+** 这些限制基于适用于 Azure Bastion 的 RDP 性能测试。 此数量可能因其他正在进行的 RDP 会话或 SSH 会话而有所不同。 

@@ -9,18 +9,18 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 361a151d1f1835f82e440704105cf8b3844a4c54
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461107"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221619"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-部署 SQL Server 模块，以便在运行 Azure IoT Edge 的 Linux 设备上存储数据。
+部署 SQL Server 模块，以将数据存储在运行 Azure IoT Edge（支持 Linux 容器）的设备上。
 
 使用 Azure IoT Edge 和 SQL Server 在边缘存储和查询数据。 Azure IoT Edge 有基本的存储功能，可以在设备脱机的情况下缓存消息，在重新建立连接后再转发这些消息。 不过，你可能需要更高级的存储功能，例如在本地查询数据的功能。 IoT Edge 设备可以使用本地数据库来执行更复杂的计算，而不需要与 IoT 中心保持连接。
 
@@ -42,7 +42,7 @@ ms.locfileid: "103461107"
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
-* 一个运行 Azure IoT Edge 的 AMD64 设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
+* 运行 Azure IoT Edge（支持 Linux 容器）的 AMD64 设备。 可以按照快速入门设置 [Linux 设备](quickstart-linux.md)或 [Windows 设备](quickstart.md)。
   * ARM 设备（如 Raspberry Pi）无法运行 SQL Server。 如果要在 ARM 设备上使用 SQL，可以注册试用 [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) 预览版。
 * 一个容器注册表，例如 [Azure 容器注册表](../container-registry/index.yml)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。

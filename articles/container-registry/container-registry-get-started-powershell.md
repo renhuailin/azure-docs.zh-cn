@@ -4,12 +4,12 @@ description: 快速了解如何使用 PowerShell 在 Azure 容器注册表中创
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019988"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283812"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -55,7 +55,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
-在推送和拉取容器映像之前，必须登录到注册表。 在生产方案中，应该使用个人标识或服务主体访问容器注册表，但为了简洁起见，本快速入门使用 [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] 命令在注册表上启用管理员用户：
+在推送和拉取容器映像之前，必须登录到注册表。 为保留本快速入门摘要，请使用 [Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] 命令在你的注册表上启用管理员用户。 在生产方案中，你应使用备用[身份验证方法](container-registry-authentication.md)访问注册表，如服务主体。 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -68,6 +68,10 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 ```
 
 该命令在完成后返回 `Login Succeeded`。
+
+> [!TIP]
+> Azure CLI 提供了 `az acr login` 命令，它是一种使用 [单个标识](container-registry-authentication.md#individual-login-with-azure-ad)登录容器注册表的便利方法，无需传递 Docker 凭据。
+
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 

@@ -2,14 +2,14 @@
 title: 使用 Java 向/从 Azure 事件中心发送/接收事件（最新版）
 description: 本文演练如何创建一个可使用最新 azure-messaging-eventhubs 包向/从 Azure 事件中心发送/接收事件的 Java 应用程序。
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 640f6c4dcb223e55e10f7cb5d7daaa44dbd41578
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bae0d4147fddf57398d494ca7f13c347f892e45e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172017"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448434"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -38,97 +38,74 @@ ms.locfileid: "102172017"
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-eventhubs</artifactId>
-    <version>5.0.1</version>
+    <version>5.6.0</version>
 </dependency>
 ```
+
+> [!NOTE]
+> 将版本更新为发布到 Maven 存储库的最新版本。 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
 对于以下示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。 添加一个名为 `Sender` 的类，并向该类中添加以下代码：
 
+> [!IMPORTANT]
+> 将 `<Event Hubs namespace connection string>` 更新为事件中心命名空间的连接字符串。 将 `<Event hub name>` 更新为命名空间中的事件中心名称。 
+
 ```java
 import com.azure.messaging.eventhubs.*;
-import static java.nio.charset.StandardCharsets.UTF_8;
+import java.util.Arrays;
+import java.util.List;
 
 public class Sender {
-       public static void main(String[] args) {
+    private static final String connectionString = "<Event Hubs namespace connection string>";
+    private static final String eventHubName = "<Event hub name>";
+
+    public static void main(String[] args) {
+        publishEvents();
     }
 }
 ```
-
-### <a name="connection-string-and-event-hub"></a>连接字符串和事件中心
-此代码使用事件中心命名空间的连接字符串以及事件中心的名称来生成事件中心客户端。 
-
-```java
-String connectionString = "<CONNECTION STRING to EVENT HUBS NAMESPACE>";
-String eventHubName = "<EVENT HUB NAME>";
-```
-
-### <a name="create-an-event-hubs-producer-client"></a>创建事件中心生成者客户端 
-此代码创建一个生成者客户端对象，用于生成事件/向事件中心发送事件。 
+### <a name="add-code-to-publish-events-to-the-event-hub"></a>添加代码以将事件发布到事件中心
+将名为 `publishEvents` 的新方法添加到 `Sender` 类，如下所示： 
 
 ```java
-EventHubProducerClient producer = new EventHubClientBuilder()
-    .connectionString(connectionString, eventHubName)
-    .buildProducerClient();
-```
-
-### <a name="prepare-a-batch-of-events"></a>准备一批事件
-此代码准备一批事件。 
-
-```java
-EventDataBatch batch = producer.createBatch();
-batch.tryAdd(new EventData("First event"));
-batch.tryAdd(new EventData("Second event"));
-batch.tryAdd(new EventData("Third event"));
-batch.tryAdd(new EventData("Fourth event"));
-batch.tryAdd(new EventData("Fifth event"));
-```
-
-### <a name="send-the-batch-of-events-to-the-event-hub"></a>向事件中心发送事件批
-此代码将上一步骤中准备的事件批发送到事件中心。 以下代码将在执行发送操作时阻塞。 
-
-```java
-producer.send(batch);
-```
-
-### <a name="close-and-cleanup"></a>关闭和清理
-此代码关闭生成者。 
-
-```java
-producer.close();
-```
-### <a name="complete-code-to-send-events"></a>发送事件的完整代码
-下面是将事件发送到事件中心的完整代码。 
-
-```java
-import com.azure.messaging.eventhubs.*;
-
-public class Sender {
-    public static void main(String[] args) {
-        final String connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
-        final String eventHubName = "EVENT HUB NAME";
-
-        // create a producer using the namespace connection string and event hub name
+    /**
+     * Code sample for publishing events.
+     * @throws IllegalArgumentException if the event data is bigger than max batch size.
+     */
+    public static void publishEvents() {
+        // create a producer client
         EventHubProducerClient producer = new EventHubClientBuilder()
             .connectionString(connectionString, eventHubName)
             .buildProducerClient();
 
-        // prepare a batch of events to send to the event hub    
-        EventDataBatch batch = producer.createBatch();
-        batch.tryAdd(new EventData("First event"));
-        batch.tryAdd(new EventData("Second event"));
-        batch.tryAdd(new EventData("Third event"));
-        batch.tryAdd(new EventData("Fourth event"));
-        batch.tryAdd(new EventData("Fifth event"));
+        // sample events in an array
+        List<EventData> allEvents = Arrays.asList(new EventData("Foo"), new EventData("Bar"));
+        
+        // create a batch
+        EventDataBatch eventDataBatch = producer.createBatch();
 
-        // send the batch of events to the event hub
-        producer.send(batch);
+        for (EventData eventData : allEvents) {
+            // try to add the event from the array to the batch
+            if (!eventDataBatch.tryAdd(eventData)) {
+                // if the batch is full, send it and then create a new batch
+                producer.send(eventDataBatch);
+                eventDataBatch = producer.createBatch();
 
-        // close the producer
+                // Try to add that event that couldn't fit before.
+                if (!eventDataBatch.tryAdd(eventData)) {
+                    throw new IllegalArgumentException("Event is too large for an empty batch. Max size: "
+                        + eventDataBatch.getMaxSizeInBytes());
+                }
+            }
+        }
+        // send the last batch of remaining events
+        if (eventDataBatch.getCount() > 0) {
+            producer.send(eventDataBatch);
+        }
         producer.close();
     }
-}
 ```
 
 生成程序，并确保没有引发任何错误。 将在运行接收器程序后运行此程序。 
@@ -164,12 +141,12 @@ public class Sender {
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs</artifactId>
-        <version>5.1.1</version>
+        <version>5.6.0</version>
     </dependency>
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-messaging-eventhubs-checkpointstore-blob</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1</version>
     </dependency>
 </dependencies>
 ```
@@ -186,28 +163,35 @@ public class Sender {
     import com.azure.storage.blob.BlobContainerAsyncClient;
     import com.azure.storage.blob.BlobContainerClientBuilder;
     import java.util.function.Consumer;
-    import java.util.concurrent.TimeUnit;
     ```
 2. 创建一个名为 `Receiver` 的类，并向该类中添加以下字符串变量。 将占位符替换为正确的值。 
+
+    > [!IMPORTANT]
+    > 将占位符替换为正确的值。
+    > - `<Event Hubs namespace connection string>` 更新为事件中心命名空间的连接字符串。 更新 
+    > - `<Event hub name>` 更新为命名空间中的事件中心名称。 
+    > - `<Storage connection string>` 更新为 Azure 存储帐户的连接字符串。 
+    > - `<Storage container name>` 更新为 Azure blob 存储中的容器名称。 
+
     ```java
-    private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
-    private static final String eventHubName = "<EVENT HUB NAME>";
-    private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
-    private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
+    private static final String connectionString = "<Event Hubs namespace connection string>";
+    private static final String eventHubName = "<Event hub name>";
+    private static final String storageConnectionString = "<Storage connection string>";
+    private static final String storageContainerName = "<Storage container name>";
     ```
-3. 将下面的 `main` 方法添加到该类。 
+1. 将下面的 `main` 方法添加到该类。 
 
     ```java
     public static void main(String[] args) throws Exception {
         // Create a blob container client that you use later to build an event processor client to receive and process events
         BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
-            .connectionString(STORAGE_CONNECTION_STRING) 
-            .containerName(STORAGE_CONTAINER_NAME) 
+            .connectionString(storageConnectionString) 
+            .containerName(storageContainerName) 
             .buildAsyncClient();
     
         // Create a builder object that you will use later to build an event processor client to receive and process events and errors.
         EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
-            .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName) 
+            .connectionString(connectionString, eventHubName) 
             .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
             .processEvent(PARTITION_PROCESSOR) 
             .processError(ERROR_HANDLER) 
@@ -247,80 +231,31 @@ public class Sender {
             errorContext.getThrowable());
     };    
     ```
-3. 完整代码应如下所示： 
-
-    ```java
-
-    import com.azure.messaging.eventhubs.EventHubClientBuilder;
-    import com.azure.messaging.eventhubs.EventProcessorClient;
-    import com.azure.messaging.eventhubs.EventProcessorClientBuilder;
-    import com.azure.messaging.eventhubs.checkpointstore.blob.BlobCheckpointStore;
-    import com.azure.messaging.eventhubs.models.ErrorContext;
-    import com.azure.messaging.eventhubs.models.EventContext;
-    import com.azure.storage.blob.BlobContainerAsyncClient;
-    import com.azure.storage.blob.BlobContainerClientBuilder;
-    import java.util.function.Consumer;
-    import java.util.concurrent.TimeUnit;
-    
-    public class Receiver {
-        
-        private static final String EH_NAMESPACE_CONNECTION_STRING = "<EVENT HUBS NAMESPACE CONNECTION STRING>";
-        private static final String eventHubName = "<EVENT HUB NAME>";
-        private static final String STORAGE_CONNECTION_STRING = "<AZURE STORAGE CONNECTION STRING>";
-        private static final String STORAGE_CONTAINER_NAME = "<AZURE STORAGE CONTAINER NAME>";
-    
-        public static final Consumer<EventContext> PARTITION_PROCESSOR = eventContext -> {
-        System.out.printf("Processing event from partition %s with sequence number %d with body: %s %n", 
-                eventContext.getPartitionContext().getPartitionId(), eventContext.getEventData().getSequenceNumber(), eventContext.getEventData().getBodyAsString());
-
-            if (eventContext.getEventData().getSequenceNumber() % 10 == 0) {
-                eventContext.updateCheckpoint();
-            }
-        };
-        
-        public static final Consumer<ErrorContext> ERROR_HANDLER = errorContext -> {
-            System.out.printf("Error occurred in partition processor for partition %s, %s.%n",
-                errorContext.getPartitionContext().getPartitionId(),
-                errorContext.getThrowable());
-        };
-        
-        public static void main(String[] args) throws Exception {
-            BlobContainerAsyncClient blobContainerAsyncClient = new BlobContainerClientBuilder()
-                .connectionString(STORAGE_CONNECTION_STRING)
-                .containerName(STORAGE_CONTAINER_NAME)
-                .buildAsyncClient();
-    
-            EventProcessorClientBuilder eventProcessorClientBuilder = new EventProcessorClientBuilder()
-                .connectionString(EH_NAMESPACE_CONNECTION_STRING, eventHubName)
-                .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                .processEvent(PARTITION_PROCESSOR)
-                .processError(ERROR_HANDLER)
-                .checkpointStore(new BlobCheckpointStore(blobContainerAsyncClient));
-    
-            EventProcessorClient eventProcessorClient = eventProcessorClientBuilder.buildEventProcessorClient();
-
-            System.out.println("Starting event processor");
-            eventProcessorClient.start();
-        
-            System.out.println("Press enter to stop.");
-            System.in.read();
-        
-            System.out.println("Stopping event processor");
-            eventProcessorClient.stop();
-            System.out.println("Event processor stopped.");
-        
-            System.out.println("Exiting process");
-        }
-        
-    }
-    ```
 3. 生成程序，并确保没有引发任何错误。 
 
 ## <a name="run-the-applications"></a>运行应用程序
 1. 先运行 **接收器** 应用程序。
 1. 然后运行 **发送器** 应用程序。 
 1. 在 **接收器** 应用程序窗口中，确认已看到发送器应用程序发布的事件。
+
+    ```cmd
+    Starting event processor
+    Press enter to stop.
+    Processing event from partition 0 with sequence number 331 with body: Foo 
+    Processing event from partition 0 with sequence number 332 with body: Bar 
+    ```
 1. 在接收器应用程序窗口中按 **ENTER** 停止该应用程序。 
+
+    ```cmd
+    Starting event processor
+    Press enter to stop.
+    Processing event from partition 0 with sequence number 331 with body: Foo 
+    Processing event from partition 0 with sequence number 332 with body: Bar 
+    
+    Stopping event processor
+    Event processor stopped.
+    Exiting process
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 在 GitHub 上参阅以下示例：

@@ -2,25 +2,25 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444602"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110877"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
-- 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
-- 获取最新版本的 [.NET Identity 客户端库](/dotnet/api/azure.identity)。
-- 获取最新版本的 [.NET Management 客户端库](../../concepts/sdk-options.md)。
+- 适用于操作系统的最新版本 [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
+- 获取最新版本的 [.NET 标识 SDK](/dotnet/api/azure.identity)。
+- 获取最新版本的 [.NET 管理 SDK](../../concepts/sdk-options.md)。
 
-## <a name="installing-the-client-library"></a>安装客户端库
+## <a name="installing-the-sdk"></a>安装 SDK
 
-首先，在 C# 项目中包含通信服务管理客户端库：
+首先，在 C# 项目中加入通信服务管理 SDK：
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ var communicationServiceClient = new CommunicationManagementClient(subscriptionI
 
 对于以下每个示例，我们会将通信服务资源分配给现有资源组。
 
-如果需要创建资源组，则可以使用 [Azure 门户](../../../azure-resource-manager/management/manage-resource-groups-portal.md)或 [Azure 资源管理器客户端库](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)来完成此操作。
+如需创建资源组，你可以使用 [Azure 门户](../../../azure-resource-manager/management/manage-resource-groups-portal.md)或 [Azure 资源管理器 SDK](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md) 完成此操作。
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>创建和管理通信服务资源
 
-我们的通信服务管理客户端库客户端实例 (``Azure.ResourceManager.Communication.CommunicationManagementClient``) 可以用于对通信服务资源执行操作。
+我们的通信服务管理 SDK 客户端实例 (``Azure.ResourceManager.Communication.CommunicationManagementClient``) 可以用于对通信服务资源执行操作。
 
 #### <a name="create-a-communication-services-resource"></a>创建通信服务资源
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>管理密钥和连接字符串
 
-每个通信服务资源都有一对访问密钥和对应的连接字符串。 这些密钥可以使用管理客户端库进行访问，随后由其他通信服务客户端库用于向 Azure 通信服务验证自己的身份。
+每个通信服务资源都有一对访问密钥和对应的连接字符串。 这些密钥可以使用管理 SDK 进行访问，随后由其他通信服务 SDK 用于向 Azure 通信服务验证自己的身份。
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>获取通信服务资源的访问密钥
 

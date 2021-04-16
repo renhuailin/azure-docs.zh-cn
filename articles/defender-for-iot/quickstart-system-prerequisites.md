@@ -1,17 +1,22 @@
 ---
-title: 系统先决条件
-description: 获取运行 Azure Defender for IoT 所需的系统先决条件。
+title: 快速入门：系统必备组件
+description: 通过本快速入门，获取运行 Azure Defender for IoT 所需的系统必备组件。
 ms.date: 11/30/2020
 ms.topic: quickstart
-ms.openlocfilehash: 78d5948554ae531c4b2f77d67bb916d5290db943
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2aae849b6ee772c2aa29c680f3b107af3ed600b0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780933"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382940"
 ---
-# <a name="system-prerequisites"></a>系统先决条件
+# <a name="quickstart-system-prerequisites"></a>快速入门：系统必备组件
+
 本文列出了运行 Azure Defender for IoT 的系统先决条件。
+
+## <a name="prerequisites"></a>先决条件
+
+- 无
 
 ## <a name="minimum-requirements"></a>最低要求
 
@@ -27,7 +32,7 @@ Defender for IoT 将所有欧洲区域的所有流量路由到西欧区域的数
 
 有关详细信息，请参阅 [IoT 中心支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-- [确定所需设备](how-to-identify-required-appliances.md)
-- [关于 Azure Defender for IoT 网络设置](how-to-set-up-your-network.md)
+> [!div class="nextstepaction"]
+> [确定所需设备](how-to-identify-required-appliances.md)

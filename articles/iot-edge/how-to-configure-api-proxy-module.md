@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200578"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307310"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>配置适用于网关层次结构方案的 API 代理模块（预览版）
 
@@ -34,7 +34,7 @@ API 代理模块可以为网关层次结构启用多种方案，包括允许较�
 
 ## <a name="deploy-the-proxy-module"></a>部署代理模块
 
-可从 Microsoft 容器注册表 (MCR) 获取 API 代理模块：`mcr.microsoft.com/azureiotedge-api-proxy:latest`。
+可从 Microsoft 容器注册表 (MCR) 获取 API 代理模块：`mcr.microsoft.com/azureiotedge-api-proxy:1.0`。
 
 还可直接从 Azure 市场部署 API 代理模块：[IoT Edge API 代理](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview)。
 

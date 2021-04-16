@@ -1,23 +1,22 @@
 ---
-title: 创建 Defender IoT 微代理模块孪生
-titleSuffix: Azure Defender for IoT
-description: 了解如何为新设备创建单独的 DefenderIotMicroAgent 模块孪生。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
+title: 快速入门：创建 Defender IoT 微代理模块孪生（预览版）
+description: 通过本快速入门，了解如何为新设备创建单独的 DefenderIotMicroAgent 模块孪生。
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: ea82fea89a9e81e66be6b3060aad067d3ceb8f5f
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e1bcaa76e9bfbe417bfd0d4b539b8e0c7ff95c7b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122997"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384505"
 ---
-# <a name="create-a-defender-iot-micro-agent-module-twin"></a>创建 Defender IoT 微代理模块孪生 
+# <a name="quickstart-create-a-defender-iot-micro-agent-module-twin-preview"></a>快速入门：创建 Defender IoT 微代理模块孪生（预览版）
 
 可为新设备创建单独的 DefenderIotMicroAgent 模块孪生 **** 。 还可对 IoT 中心内的所有设备批量创建模块孪生。 
+
+## <a name="prerequisites"></a>先决条件
+
+- 无
 
 ## <a name="device-twins"></a>设备孪生 
 
@@ -27,9 +26,9 @@ Defender for IoT 可与你的现有 IoT 设备管理平台完全集成。 完全
 
 详细了解 Azure IoT 中心内 [设备孪生](../iot-hub/iot-hub-devguide-device-twins.md) 的概念。 
 
-## <a name="security-module-twins"></a>安全模块孪生 
+## <a name="defender-iot-micro-agent-twins"></a>Defender-IoT-micro-agent 孪生体 
 
-Defender for IoT 对每台设备使用一个安全模块孪生。 该安全模块孪生保存了解决方案中每台特定设备的与设备安全性相关的信息。 设备安全属性通过专用的安全模块配置来增强通信安全性，以实现需要更少资源的更新和维护。 
+Defender for IoT 为每个设备使用一个 Defender-IoT-micro-agent 孪生体。 该 Defender-IoT-micro-agent 孪生体为解决方案中的每个特定设备保存与设备安全性相关的所有信息。 设备安全属性通过专用的 Defender-IoT-micro-agent 孪生体进行配置来增强通信安全性，以实现需要更少资源的更新和维护。 
 
 ## <a name="understanding-defenderiotmicroagent-module-twins"></a>了解 DefenderIotMicroAgent 模块孪生 
 
@@ -39,9 +38,9 @@ Defender for IoT 提供与现有 IoT 设备管理平台完全集成的功能，�
 
 若要详细了解 Azure IoT 中心内模块孪生的一般概念，请参阅  [IoT 中心模块孪生](../iot-hub/iot-hub-devguide-module-twins.md)。
 
-Defender for IoT 使用模块孪生机制，并为每台设备维护一个名为 `DefenderIotMicroAgent` 的安全模块孪生。 
+Defender for IoT 使用模块孪生机制，并为每台设备维护一个名为 `DefenderIotMicroAgent` 的 Defender-IoT-micro-agent 孪生体。 
 
-若要充分利用各项 Defender for IoT 功能，需要对服务中的每台设备创建、配置和使用这些安全模块孪生。 
+若要充分利用 Defender for IoT 的所有功能，需要为服务中的每台设备创建、配置和使用 Defender-IoT-micro-agent 孪生体。 
 
 ## <a name="create-defenderiotmicroagent-module-twin"></a>创建 DefenderIotMicroAgent 模块孪生 
 
@@ -49,7 +48,7 @@ Defender for IoT 使用模块孪生机制，并为每台设备维护一个名为
 
 若要手动为设备创建新的 DefenderIotMicroAgent 模块孪生 **** ： 
 
-1. 在 IoT 中心，找到并选择要在其上创建安全模块孪生的设备。 
+1. 在 IoT 中心，找到并选择要在其上创建 Defender-IoT-micro-agent 孪生体的设备。 
 
 1. 选择“添加模块标识” **** 。 
 
@@ -59,7 +58,7 @@ Defender for IoT 使用模块孪生机制，并为每台设备维护一个名为
 
 ## <a name="verify-the-creation-of-a-module-twin"></a>验证模块孪生的创建情况 
 
-验证特定的设备是否存在安全模块孪生： 
+若要验证特定设备是否存在 Defender-IoT-micro-agent 孪生体，请执行以下操作： 
 
 1. 在 Azure IoT 中心，从“资源管理器”菜单中选择“IoT”。 ****   ****   
 
@@ -75,4 +74,5 @@ Defender for IoT 使用模块孪生机制，并为每台设备维护一个名为
 
 ## <a name="next-steps"></a>后续步骤 
 
-转到下一篇文章，了解如何[调查安全建议](quickstart-investigate-security-recommendations.md)。
+> [!div class="nextstepaction"]
+> [调查安全建议](quickstart-investigate-security-recommendations.md)

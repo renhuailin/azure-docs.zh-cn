@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af149f0c1db7f354be6bd968bbd0cf858493d4c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522285"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Oracle PeopleSoft - Protected by F5 BIG-IP APM 集成
 
@@ -40,19 +40,19 @@ ms.locfileid: "92522285"
     2. F5 BIG-IP Access Policy Manager™ (APM) 独立许可证 
     3. 现有的 BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM) 上的 F5 BIG-IP Access Policy Manager™ (APM) 加载项许可证。
     4. 除了上述许可证以外，F5 系统还可通过以下方式获得许可： 
-        * URL 筛选订阅，用于使用 URL 类别数据库 
-        * F5 IP 智能订阅，用于检测和阻止已知攻击者和恶意流量 
-        * 网络硬件安全模块 (HSM)，用于保护和管理强身份验证使用的数字密钥
-1. F5 BIG-IP 系统预配了 APM 模块（LTM 是可选的） 
+        * URL 筛选订阅，用于使用 URL 类别数据库。 
+        * F5 IP 智能订阅，用于检测和阻止已知攻击者和恶意流量。 
+        * 网络硬件安全模块 (HSM)，用于保护和管理强身份验证适用的数字密钥。
+1. F5 BIG-IP 系统预配了 APM 模块（LTM 是可选的）。
 1. 尽管是可选的，但我们强烈建议在[同步/故障转移设备组](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG) 中部署 F5 系统，其中包括活动备用对，并具有针对高可用性 (HA) 的浮动 IP 地址。 可以使用链路聚合控制协议 (LACP) 实现进一步的接口冗余。 LACP 将连接的物理接口作为单个虚拟接口（聚合组）管理，并检测组内的任何接口故障。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Oracle PeopleSoft - Protected by F5 BIG-IP APM 支持 SP 和 IDP 发起的 SSO
+* 受 F5 BIG-IP APM 保护的 Oracle PeopleSoft 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>从库中添加 Oracle PeopleSoft - Protected by F5 BIG-IP APM
+## <a name="add-oracle-peoplesoft---protected-by-f5-big-ip-apm-from-the-gallery"></a>从库中添加受 F5 BIG-IP APM 保护的 Oracle PeopleSoft
 
 若要配置 Oracle PeopleSoft - Protected by F5 BIG-IP APM 与 Azure AD 的集成，需要从库中将 Oracle PeopleSoft - Protected by F5 BIG-IP APM 添加到托管 SaaS 应用的列表。
 
@@ -83,7 +83,7 @@ ms.locfileid: "92522285"
 
 1. 在 Azure 门户的“Oracle PeopleSoft - Protected by F5 BIG-IP APM”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -231,7 +231,7 @@ ms.locfileid: "92522285"
 >[!Note]
 > 请参考 https://docs.oracle.com/cd/E12530_01/oam.1014/e10356/people.htm
 
-1. 使用管理员凭据登录到 Peoplesoft 控制台 `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start`（凭据示例：PS/PS）
+1. 使用管理员凭据登录 Peoplesoft 控制台 `https://<FQDN>.peoplesoft.f5.com/:8000/psp/ps/?cmd=start`（示例：PS/PS）。
 
     ![管理员自助服务](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/people-soft-console.png)
 
@@ -302,7 +302,7 @@ ms.locfileid: "92522285"
 
     * 导航到“本地流量”>“虚拟服务器”>“虚拟服务器列表”>“PeopleSoftApp”>“资源”。 单击“管理…” 按钮：   
 
-    * 指定 `<Name>` 作为已启用的 iRule，然后单击“完成”
+    * 指定 `<Name>` 作为已启用的 iRule，然后单击“完成”。
 
         ![_iRule_PeopleSoftApp ](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/irule-people-soft.png)
 
@@ -327,11 +327,10 @@ ms.locfileid: "92522285"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Oracle PeopleSoft-Protected by F5 BIG-IP APM 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到受 F5 BIG-IP APM 保护的 Oracle PeopleSoft（已为其设置 SSO）。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 点击访问面板中的 Oracle PeopleSoft-Protected by F5 BIG-IP APM 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Oracle PeopleSoft-Protected by F5 BIG-IP APM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“受 F5 BIG-IP APM 保护的 Oracle PeopleSoft”磁贴时，如果是在 SP 模式下进行配置，系统会将你重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下进行配置，则系统会自动登录到受 F5 BIG-IP APM 保护的 Oracle PeopleSoft（已为其设置 SSO）。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Oracle PeopleSoft-Protected by F5 BIG-IP APM 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置受 F5 BIG-IP APM 保护的 Oracle PeopleSoft 后，你可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

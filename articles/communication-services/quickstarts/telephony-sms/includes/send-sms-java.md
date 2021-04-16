@@ -10,14 +10,14 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 2739079b67d80f3e4a9f367aaa58f6dcbbb650ca
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: cdf1267d53abc2214521f584b6cfb4738b808204
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103621997"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106112929"
 ---
-通过使用通信服务 Java 短信客户端库来发送短信，开启 Azure 通信服务使用旅程。
+通过使用通信服务 Java 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
@@ -54,20 +54,13 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-sms</artifactId>
-    <version>1.0.0-beta.4</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
 
-将 `azure-core-http-netty` 依赖项添加到 pom.xml 文件。
-
 ```xml
-<dependency>
-    <groupId>com.azure</groupId>
-    <artifactId>azure-core-http-netty</artifactId>
-    <version>1.8.0</version>
-</dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core</artifactId>
@@ -83,8 +76,6 @@ package com.communication.quickstart;
 import com.azure.communication.sms.models.*;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.communication.sms.*;
-import com.azure.core.http.HttpClient;
-import com.azure.core.http.netty.NettyAsyncHttpClientBuilder;
 import com.azure.core.util.Context;
 import java.util.Arrays;
 
@@ -100,49 +91,39 @@ public class App
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理适用于 Java 的 Azure 通信服务短信客户端库的某些主要功能。
+以下类和接口用于处理适用于 Java 的 Azure 通信服务短信 SDK 的某些主要功能。
 
 | 名称                                                             | 说明                                                                                     |
 | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | SmsClientBuilder              | 此类创建 SmsClient。 向其提供终结点、凭据和 http 客户端。 |
 | SmsClient                    | 所有短信功能都需要此类。 用其发送短信。                |
+| SmsSendOptions               | 此类提供用于添加自定义标记和配置传送报告的选项。 如果 deliveryReportEnabled 设置为 true，则在传送成功时会发出一个事件 |        
 | SmsSendResult                | 此类包含来自短信服务的结果。                                          |
-| SmsSendOptions               | 此类提供用于添加自定义标记和配置传送报告的选项。 如果 deliveryReportEnabled 设置为 true，则在传送成功时会发出一个事件|                           |
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-使用连接字符串实例化 `SmsClient`。 凭据是来自 Azure 门户的 `Key`。 了解如何[管理资源的连接字符串](../../create-communication-resource.md#store-your-connection-string)。
+使用连接字符串实例化 `SmsClient`。 凭据是来自 Azure 门户的 `Key`。 了解如何[管理资源的连接字符串](../../create-communication-resource.md#store-your-connection-string)。 你还可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端对此客户端进行初始化。
 
 将以下代码添加到 `main` 方法中：
 
 ```java
-// You can find your endpoint and access key from your resource in the Azure Portal
+// You can find your endpoint and access key from your resource in the Azure portal
 String endpoint = "https://<resource-name>.communication.azure.com/";
 AzureKeyCredential azureKeyCredential = new AzureKeyCredential("<access-key-credential>");
-
-// Create an HttpClient builder of your choice and customize it
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 SmsClient smsClient = new SmsClientBuilder()
                 .endpoint(endpoint)
                 .credential(azureKeyCredential)
-                .httpClient(httpClient)
                 .buildClient();
 ```
 
-可以用任何实现 `com.azure.core.http.HttpClient` 接口的自定义 HTTP 客户端来初始化客户端。 上面的代码演示了如何使用 `azure-core` 提供的 [Azure Core Netty HTTP 客户端](/java/api/overview/azure/core-http-netty-readme)。
-
-你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。 
+你还可以使用 connectionString() 函数提供整个连接字符串，而不是提供终结点和访问密钥。
 ```java
-// You can find your connection string from your resource in the Azure Portal
+// You can find your connection string from your resource in the Azure portal
 String connectionString = "https://<resource-name>.communication.azure.com/;<access-key>";
-
-// Create an HttpClient builder of your choice and customize it
-HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 SmsClient smsClient = new SmsClientBuilder()
             .connectionString(connectionString)
-            .httpClient(httpClient)
             .buildClient();
 ```
 
@@ -160,6 +141,12 @@ System.out.println("Message Id: " + sendResult.getMessageId());
 System.out.println("Recipient Number: " + sendResult.getTo());
 System.out.println("Send Result Successful:" + sendResult.isSuccessful());
 ```
+
+你应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，以及将 `<to-phone-number>` 替换为要向其发送消息的电话号码
+
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
+
 ## <a name="send-a-1n-sms-message-with-options"></a>发送包含选项的 1: N 短信
 若要将短信发送到收件人列表，请使用收件人电话号码列表调用 `send` 方法。 你还可以传入可选参数，一个目的是指定是否应启用传送报告，另一个目的是设置自定义标记。
 ```java
@@ -167,12 +154,12 @@ SmsSendOptions options = new SmsSendOptions();
 options.setDeliveryReportEnabled(true);
 options.setTag("Marketing");
 
-Iterable<SmsSendResult> sendResults = smsClient.send(
+Iterable<SmsSendResult> sendResults = smsClient.sendWithResponse(
     "<from-phone-number>",
     Arrays.asList("<to-phone-number1>", "<to-phone-number2>"),
     "Weekly Promotion",
     options /* Optional */,
-    Context.NONE);
+    Context.NONE).getValue();
 
 for (SmsSendResult result : sendResults) {
     System.out.println("Message Id: " + result.getMessageId());
@@ -181,13 +168,14 @@ for (SmsSendResult result : sendResults) {
 }
 ```
 
-应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，将 `<to-phone-number>` 替换为要向其发送消息的电话号码或电话号码列表。
+你应将 `<from-phone-number>` 替换为与通信服务资源关联的启用短信的电话号码，以及将 `<to-phone-number-1>` 和 `<to-phone-number-2>` 替换为要向其发送消息的电话号码
 
-## <a name="optional-parameters"></a>可选参数
+> [!WARNING]
+> 请注意，电话号码应采用 E.164 国际标准格式。 （例如：+14255550123）。
 
-`deliveryReportEnabled` 参数是一个可选参数，可用于配置传送报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
+`setDeliveryReportEnabled` 方法用于配置交付报告。 这对于要在传送短信后发出事件的情况很有用。 请参阅[处理短信事件](../handle-sms-events.md)快速入门，了解如何为短信配置传送报告。
 
-`tag` 参数为可选参数，可用于将标记应用到传送报告。
+`setTag` 方法用于将标签应用到交付报告。
 
 ## <a name="run-the-code"></a>运行代码
 

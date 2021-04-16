@@ -9,15 +9,15 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 2684f89088854ecf05c547c77852155168baa38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67173185"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
-在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目。
+在 Visual Studio 中创建新的 **控制台应用 (.NET Framework)** 项目。
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 

@@ -3,12 +3,12 @@ title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 .NET 的 QnA Maker 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 18d8dbc59d1c43961cd665a3ea98d1041516afb7
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: aac57f4ca173a7ac94c64884fa1d2db4a478c3f3
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616649"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609488"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
@@ -65,18 +65,6 @@ ms.locfileid: "99616649"
 ---
 
 ## <a name="setting-up"></a>设置
-
-### <a name="visual-studio-ide"></a>Visual Studio IDE
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
-
-使用 Visual Studio 创建一个 .NET Core 应用程序并安装客户端库，方法是右键单击“解决方案资源管理器”中的解决方案，然后选择“管理 NuGet 包” 。 在打开的包管理器中，选择“浏览”，然后搜索 `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker`。 选择版本 `2.0.1`，然后选择“安装”。
-
-# <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
-
-使用 Visual Studio 创建一个 .NET Core 应用程序并安装客户端库，方法是右键单击“解决方案资源管理器”中的解决方案，然后选择“管理 NuGet 包” 。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker`。 选择版本 `3.0.0-preview.1`，然后选择“安装”。
-
----
 
 ### <a name="cli"></a>CLI
 
@@ -150,27 +138,28 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/version-1)
 
-> [!IMPORTANT]
-> 访问 Azure 门户，并找到之前在先决条件部分中创建的 QnA Maker 资源的密钥和终结点。 它们将位于资源的“密钥和终结点”页的“资源管理”下。 
+- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker)。
 
-我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v1#keys-in-qna-maker)。
+- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和 QnA Maker 终结点。
 
-- 创建名为 QNA_MAKER_SUBSCRIPTION_KEY、QNA_MAKER_ENDPOINT 和 QNA_MAKER_RUNTIME_ENDPOINT 的环境变量来存储这些值。
-- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 
-- QNA_MAKER_RUNTIME_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.azurewebsites.net` 格式。
+ ![QnA Maker 创作终结点](../media/keys-endpoint.png)
+
+- QNA_MAKER_RUNTIME_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.azurewebsites.net` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“自动化”下的“导出模板”页，找到运行时终结点。
+
+ ![QnA Maker 运行时终结点](../media/runtime-endpoint.png)
+      
 - 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)可提供安全的密钥存储。
 
 [!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/SDK-based-quickstart/Program.cs?name=Resourcevariables)]
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
 
-> [!IMPORTANT]
-> 访问 Azure 门户，并找到之前在先决条件部分中创建的 QnA Maker 资源的密钥和终结点。 它们将位于资源的“密钥和终结点”页的“资源管理”下。 
+- 我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)。
 
-我们使用的“订阅密钥”和“创作密钥”是可互换的。 有关创作密钥的详细信息，请访问 [QnA Maker 中的密钥](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/azure-resources?tabs=v2#keys-in-qna-maker)。
+- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 转到 Azure 门户，并找到之前在“必备组件”部分创建的 QnA Maker 资源。 单击“资源管理”下的“密钥和终结点”页，找到创作（订阅）密钥和 QnA Maker 终结点。
 
-- 创建名为 QNA_MAKER_SUBSCRIPTION_KEY 和 QNA_MAKER_ENDPOINT 的环境变量来存储这些值。
-- QNA_MAKER_ENDPOINT 的值采用 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` 格式。 
+ ![QnA Maker 创作终结点](../media/keys-endpoint.png)
+
 - 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 例如，[Azure 密钥保管库](../../../key-vault/general/overview.md)可提供安全的密钥存储。
 
 [!code-csharp[Set the resource key and resource name](~/cognitive-services-quickstart-code/dotnet/QnAMaker/Preview-sdk-based-quickstart/Program.cs?name=Resourcevariables)]
@@ -184,7 +173,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --versio
 
 [QnA Maker](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker) 使用两种不同的对象模型：
 * **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../concepts/active-learning-suggestions.md)的一部分）。
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为 [主动学习](../how-to/use-active-learning.md)的一部分）。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/version-2)
 

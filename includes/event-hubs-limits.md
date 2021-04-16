@@ -1,5 +1,5 @@
 ---
-title: include 文件 description: include 文件 services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 02/01/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 03/31/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
@@ -8,18 +8,17 @@ title: include 文件 description: include 文件 services: event-hubs author: s
 ### <a name="common-limits-for-all-tiers"></a>所有层的通用限制
 以下限制在所有层中是通用的。 
 
-| 限制 |  说明 | 值 |
+| 限制 |  注释 | 值 |
 | --- |  --- | --- |
 | 每个订阅的事件中心命名空间数 |- |100 |
 | 每个命名空间的事件中心数 | 系统会拒绝创建新事件中心的后续请求。 |10 |
 | 事件中心名称的大小 |- | 256 个字符 |
-| 使用者组名称的大小 |- | 256 个字符 |
+| 使用者组名称的大小 | Kafka 协议无需创建使用者组。 | <p>Kafka：256 个字符</p><p>AMQP：50 个字符 |
 | 每个使用者组的非 epoch 接收者数 |- |5 |
 | 每个命名空间的授权规则数量 | 系统会拒绝创建授权规则的后续请求。|12 |
 | GetRuntimeInformation 方法的调用数 |  - | 每秒 50 个 | 
 | 虚拟网络 (VNet) 数 | - | 128 | 
 | IP 配置规则数 | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>基本层和标准层
 下表显示的限制在基本层和标准层中可能不同。 

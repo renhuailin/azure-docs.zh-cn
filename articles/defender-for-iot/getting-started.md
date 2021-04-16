@@ -1,14 +1,14 @@
 ---
 title: 快速入门：入门
-description: 在本快速入门中，你将了解 Defender for IoT 部署的基本工作流。
+description: 在本快速入门中，你将开始了解 Defender for IoT 部署的基本工作流。
 ms.topic: quickstart
 ms.date: 2/18/2021
-ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784486"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384947"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
@@ -20,7 +20,7 @@ ms.locfileid: "104784486"
 
 ## <a name="prerequisites"></a>先决条件
 
-无
+- 无
 
 ## <a name="permission-requirements"></a>权限要求
 
@@ -60,11 +60,14 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 若要注册，请执行以下操作：
 
 1. 转到 Azure Defender for IoT 门户。
+
 1. 选择“加入订阅”。
+
 1. 在“定价”页面，选择一个订阅或创建新的订阅，然后添加已提交设备的数量。
+
 1. 选择“下载本地管理控制台”选项卡，并保存已下载的激活文件。 此文件包含你定义的聚合提交设备。 首次登录后，文件将上传到管理控制台。
 
-要详细了解如何登出订阅，请参阅[登出订阅](how-to-manage-sensors-on-the-cloud.md#offboard-a-subscription)。
+要详细了解如何登出订阅，请参阅[登出订阅](how-to-manage-subscriptions.md#offboard-a-subscription)。
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>安装并设置本地管理控制台
 
@@ -87,6 +90,7 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 通过在 Azure Defender for IoT 注册传感器并下载传感器激活文件，加入传感器：
 
 1. 定义传感器名称并将其与订阅关联。
+
 1. 选择传感器管理模式：
 
    - 云连接的传感器：传感器检测到的信息会在传感器控制台中显示。 此外，警告信息会通过 IoT 中心传递，并且可以与 Azure Sentinel 等其他 Azure 服务共享。
@@ -102,9 +106,13 @@ Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你�
 从 Azure Defender for IoT 门户下载 ISO 包，安装软件，并设置传感器。
 
 1. 在 Defender for IoT 门户中选择“开始使用”。
+
 1. 选择“设置传感器”。
+
 1. 选择一个版本，然后选择“下载”。
+
 1. 安装传感器软件。 有关详细信息，请参阅 [Defender for IoT 安装](how-to-install-software.md)。
+
 1. 激活并设置传感器。 有关详细信息，请参阅[登录并激活传感器](how-to-activate-and-set-up-your-sensor.md)。
 
 ## <a name="connect-sensors-to-an-on-premises-management-console"></a>将传感器连接到本地管理控制台

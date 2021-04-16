@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/16/2021
+ms.date: 03/27/2021
 ms.author: jingwang
-ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3c667fe20b392bfb52b8300ce4b8b59d15a13b9a
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563498"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385422"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>快速入门：使用 .NET SDK 创建数据工厂和管道
 
@@ -105,12 +105,14 @@ ms.locfileid: "103563498"
    string blobDatasetName = "BlobDataset";
    string pipelineName = "Adfv2QuickStartPipeline";
    ```
+> [!NOTE]
+> 对于主权云，必须对 ActiveDirectoryAuthority 和 ResourceManagerUrl (BaseUri) 使用适当的云特定终结点。 例如，在美国 Azure Gov 中，你将使用 https://login.microsoftonline.us 的颁发机构（而非 https://login.microsoftonline.com ），以及 https://management.usgovcloudapi.net （而非 https://management.azure.com/ ），然后创建数据工厂管理客户端。 你可以通过执行“Get-AzEnvironment | Format-List”（它将返回每个云环境的终结点列表），并使用 Powershell 轻松获取各种云的终结点 URL。
 
 3. 在 **Main** 方法中添加用于创建 **DataFactoryManagementClient** 类的实例的以下代码。 将使用此对象创建数据工厂、链接服务、数据集以及管道。 还将使用此对象来监视管道运行详细信息。
 
    ```csharp
    // Authenticate and create a data factory management client
-   var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
+   var context = new AuthenticationContext("https://login.microsoftonline.com/" + tenantID);
    ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
    AuthenticationResult result = context.AcquireTokenAsync(
        "https://management.azure.com/", cc).Result;
@@ -118,6 +120,7 @@ ms.locfileid: "103563498"
    var client = new DataFactoryManagementClient(cred) {
        SubscriptionId = subscriptionId };
    ```
+
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 

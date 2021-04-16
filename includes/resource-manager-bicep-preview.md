@@ -2,14 +2,14 @@
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/17/2020
+ms.date: 03/25/2021
 ms.author: jgao
-ms.openlocfilehash: e70deb835d45f35ac3448f2cd363b14cd378b463
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.openlocfilehash: bf4c9914f533ae1428548f394d76ca4e6e33175c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994124"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612870"
 ---
 > [!NOTE]
-> 本文包含 Bicep 示例。  Bicep 目前处于预览阶段。  有关详细信息，请参阅 [Project Bicep](https://github.com/azure/bicep)。
+> 本文包含 Bicep 示例。  Bicep 目前为预览版。 有关详细信息，请参阅 [Bicep 概览](../articles/azure-resource-manager/templates/bicep-overview.md)。

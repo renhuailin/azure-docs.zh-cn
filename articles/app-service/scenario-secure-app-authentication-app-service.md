@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905564"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223163"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>教程：向 Azure 应用服务上运行的 Web 应用添加身份验证
 
@@ -41,7 +41,7 @@ ms.locfileid: "96905564"
 
 对于本教程，你需要一个部署到应用服务的 Web 应用。 可使用现有的 Web 应用，也可按照 [ASP.NET Core 快速入门](quickstart-dotnetcore.md)创建新的 Web 应用并将其发布到应用服务。
 
-无论是使用现有的 Web 应用还是创建新的 Web 应用，请记下 Web 应用名称以及 Web 应用部署到的资源组的名称。 在本教程中，需要用到这些名称。 在本教程中，过程和屏幕截图中的示例名称包含 SecureWebApp。
+无论是使用现有的 Web 应用还是创建新的 Web 应用，请记下 Web 应用名称以及 Web 应用部署到的资源组的名称。 在本教程中，需要用到这些名称。 
 
 ## <a name="configure-authentication-and-authorization"></a>配置身份验证和授权
 
@@ -53,17 +53,19 @@ ms.locfileid: "96905564"
 
 :::image type="content" alt-text="显示如何选择应用的管理页面的屏幕截图。" source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-在应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证 。
+在应用程序的左侧菜单中，选择“身份验证”，然后单击“添加标识提供者”。
 
-在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。 
+在“添加标识提供者”页上，选择“Microsoft”作为“标识提供者”以登录 Microsoft 和 Azure AD 标识。
 
-在“身份验证提供程序”下，选择“Azure Active Directory”。 选择“快速”，然后接受创建新 Active Directory 应用所需的默认设置。 选择“确定”。
+对于“应用程序注册” > “应用程序注册类型”，请选择“新建应用程序注册”。
 
-:::image type="content" alt-text="显示快速身份验证的屏幕截图。" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
+对于“应用程序注册” > “支持的帐户类型”，请选择“当前租户-单租户”。
 
-在“身份验证/授权”页中，选择“保存” 。
+在“应用服务身份验证设置”部分中，将“身份验证”设置为“要求身份验证”，并将“未验证请求”设置为“HTTP 302 Found 重定向：建议网站选用”。
 
-看到包含消息“`Successfully saved the Auth Settings for <app-name> App`”的通知后，刷新门户页。
+在“添加标识提供者”页的底部，单击“添加”为 Web 应用启用身份验证。
+
+:::image type="content" alt-text="显示配置身份验证的屏幕截图。" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 现在，你有一个受应用服务身份验证和授权保护的应用。
 

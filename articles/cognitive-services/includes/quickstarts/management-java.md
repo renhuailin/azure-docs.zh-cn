@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/01/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 555a6410418232ff164a441dbc90eb10236b9f36
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4c0d4dd1a834e42a75da5199b7aaed0e123f8e63
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948393"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879779"
 ---
 [参考文档](/java/api/com.microsoft.azure.management.cognitiveservices) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [包 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -124,7 +124,9 @@ dependencies {
 
 ## <a name="see-also"></a>另请参阅
 
-* [Azure 管理 SDK 参考文档](/java/api/com.microsoft.azure.management.cognitiveservices)
-* [什么是 Azure 认知服务？](../../what-are-cognitive-services.md)
-* [对 Azure 认知服务的请求进行身份验证](../../authentication.md)
-* [使用 Azure 门户创建新资源](../../cognitive-services-apis-create-account.md)
+* 有关如何安全地使用认知服务的说明，请参阅 **[对 Azure 认知服务的请求进行身份验证](../../authentication.md)** 。
+* 请参阅 **[什么是 Azure 认知服务？](../../what-are-cognitive-services.md)** ，以获取认知服务中不同类别的列表。
+* 若要查看认知服务支持的自然语言列表，请参阅 **[自然语言支持](../../language-support.md)** 。
+* 请参阅 **[使用认知服务作为容器](../../cognitive-services-container-support.md)** 以了解如何使用本地认知服务。
+* 请参阅 **[计划和管理认知服务的成本](../../plan-manage-costs.md)** ，以估计使用认知服务的成本。
+* 有关管理 SDK 的更多详细信息，请参阅 [Azure 管理 SDK 参考文档](/java/api/com.microsoft.azure.management.cognitiveservices)。

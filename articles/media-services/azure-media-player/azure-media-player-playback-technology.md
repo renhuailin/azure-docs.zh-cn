@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fadb679260582a788eb6408ff3761f00c2ceb1a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97916331"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448815"
 ---
 # <a name="playback-technology-tech"></a>播放技术（简称“技术”） #
 
@@ -21,7 +21,7 @@ ms.locfileid: "97916331"
 - **azureHtml5JS**：将 MSE 和 EME 标准与视频元素结合使用，以无插件方式播放 DASH 内容，支持 Azure 媒体服务提供的 AES-128 位信封加密内容或 DRM 通用加密内容（在浏览器支持的情况下使用 PlayReady 和 Widevine）
 - **flashSS**：使用 Flash Player 技术播放平滑内容，支持 Azure 媒体服务提供的 AES-128 位信封解密 - 需要 Flash 版本 11.4 或更高版本
 - **html5FairPlayHLS**：通过 HLS 将基于浏览器的播放技术中特有的 Safari 与视频元素配合使用。 此技术是播放 Azure 媒体服务中受 FairPlay 保护的内容所必需的，已于 2016 年 10 月 19 日添加到 techOrder 中
-- **silverlightSS**：使用 Silverlight 技术播放平滑内容，支持 Azure 媒体服务提供的受 PlayReady 保护的内容。
+- SilverlightSS：使用 Silverlight 技术播放平滑内容（支持 Azure 媒体服务提供的受 PlayReady 保护的内容）。
 - **html5**：将基于浏览器的播放技术与视频元素配合使用。  在 Apple iOS 或 Android 设备上，此技术允许播放 HLS 流，针对 AES-128 位信封加密或 DRM 内容提供了一些基本支持（在浏览器支持的情况下使用 FairPlay）。
 
 ## <a name="tech-order"></a>技术顺序 ##
@@ -45,16 +45,16 @@ ms.locfileid: "97916331"
 | 浏览器        | OS                                                       | 预期技术 (Clear)  | 预期技术 (AES)  | 预期技术 (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
 | EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | 不支持                |
 | Microsoft Edge           | Xbox One<sup>1</sup>（2015 年 11 月更新）                   | azureHtml5JS           | azureHtml5JS         | 不支持                |
 | Chrome 37+     | Windows 10、Windows 8.1、macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Firefox 47+    | Windows 10、Windows 8.1、macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42-46  | Windows 10、Windows 8.1、macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
-| Firefox 35-41  | Windows 10、Windows 8.1                                  | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Firefox 42-46  | Windows 10、Windows 8.1、macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | SilverlightSS (PlayReady)    |
+| Firefox 35-41  | Windows 10、Windows 8.1                                  | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Safari         | iOS 6+                                                   | html5                  | html5（无令牌）3    | 不支持                |
 | Safari 8+      | OS X Yosemite+                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Chrome 37+     | Android 4.4.4+<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37+     | Android 4.02                                             | html5                  | html5（无令牌）<sup>3</sup>    | 不支持                |
 | Firefox 42+    | Android 5.0+<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | 不支持                |

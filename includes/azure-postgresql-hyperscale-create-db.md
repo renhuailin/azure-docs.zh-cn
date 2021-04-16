@@ -9,10 +9,10 @@ ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: 26289f6bdfa086708548d17125a6dfdf50b02a8f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97665092"
 ---
 ## <a name="create-a-hyperscale-citus-server-group"></a>创建 Hyperscale (Citus) 服务器组
@@ -27,9 +27,9 @@ ms.locfileid: "97665092"
 可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
 1. 在 Azure 门户的左上角单击“创建资源”。 
 2. 从“新建”页中选择“数据库”，并从“数据库”页中选择“用于 PostgreSQL 的 Azure 数据库”。    
-3. 对于部署选项，请单击“Hyperscale (Citus) 服务器组”下的“创建”按钮   。
+3. 对于部署选项，请单击“Hyperscale (Citus) 服务器组”下的“创建”按钮。
 4. 使用以下信息填写“新服务器详细信息”窗体：
-   - 资源组：单击此字段的文本框下的“新建”链接  。 输入一个名称，例如 **myresourcegroup**。
+   - 资源组：单击此字段的文本框下的“新建”链接。 输入一个名称，例如 **myresourcegroup**。
    - 服务器组名称：输入新服务器组的唯一名称，该名称也将用于服务器子域。
    - 管理员用户名：当前必须是值 **citus**，并且不能更改。
    - 密码：长度必须至少为八个字符，且必须包含以下类别中三种类别的字符 - 英文大写字母、英文小写字母、数字 (0-9) 和非字母数字字符（!、$、#、%，等等。）
@@ -38,27 +38,27 @@ ms.locfileid: "97665092"
    > [!IMPORTANT]
    > 登录到服务器及其数据库时需要使用在此处指定的服务器管理员密码。 请牢记或记录此信息，以后会使用到它。
 
-5. 单击“配置服务器组”  。 保留该部分的设置不变，单击“保存”  。
-6. 单击页面底部的“下一步:  网络 >”。
+5. 单击“配置服务器组”。 保留该部分的设置不变，单击“保存”。
+6. 单击屏幕底部的“下一步”>“网络”。
 
-7. 在“网络”  选项卡中，单击“公共终结点”  单选按钮。
+7. 在“网络”选项卡中，单击“公共终结点”单选按钮。
    ![已选择公共终结点](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
-8. 单击链接“+ 添加当前客户端 IP 地址”  。
+8. 单击链接“+ 添加当前客户端 IP 地址”。
    ![已添加客户端 IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
    > Azure PostgreSQL 服务器通过端口 5432 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 5432 的出站流量。 如果是这样，则除非 IT 部门打开端口 5432，否则无法连接到超大规模 (Citus) 群集。
    >
 
-9. 单击“查看 + 创建”，然后单击“创建”，预配服务器   。 预配需要数分钟。
-10. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项    。
+9. 单击“查看 + 创建”，然后单击“创建”，预配服务器。 预配需要数分钟。
+10. 页面会重定向，以监视部署。 当实时状态从“部署正在进行”变为“部署已完成”时，单击页面左侧的“输出”菜单项。
 11. 输出页将包含协调器主机名，主机名旁边有一个按钮，用于将值复制到剪贴板。 记录此信息以供将来使用。
 
 ### <a name="connect-to-the-database-using-psql"></a>使用 psql 连接到数据库
 
 创建 Azure Database for PostgreSQL 服务器时，会创建名为 **citus** 的默认数据库。 若要连接到你的数据库服务器，需要具有连接字符串和管理员密码。
 
-1. 获取连接字符串值。 在服务器组页面中，单击“连接字符串”  菜单项。 （它位于“设置”  下。）查找标记为“psql”  的字符串。 它的形式如下：
+1. 获取连接字符串值。 在服务器组页面中，单击“连接字符串”菜单项。 （该项位于“设置”下方。）查找标为“psql”的字符串。 它的形式如下：
 
    ```
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"

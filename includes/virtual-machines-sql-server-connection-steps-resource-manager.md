@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96026915"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>配置用于公共 IP 地址的 DNS 标签
@@ -20,15 +20,15 @@ ms.locfileid: "96026915"
 
 若要创建 DNS 标签，请首先在门户中选择“虚拟机”  。 选择要显示其属性的 SQL Server VM。
 
-1. 在虚拟机概览中，选择“公共 IP 地址”  。
+1. 在虚拟机概览中，选择“公共 IP 地址”。
 
     ![公共 ip 地址](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
-1. 在公共 IP 地址的属性中，展开“配置”  。
+1. 在公共 IP 地址的属性中，展开“配置” 。
 
 1. 输入 DNS 标签名称。 此名称是一种可通过名称而非 IP 地址直接连接到 SQL Server VM 的 A 记录。
 
-1. 单击“保存”按钮  。
+1. 单击“保存”按钮。
 
     ![dns 标签](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
@@ -36,9 +36,9 @@ ms.locfileid: "96026915"
 
 1. 在连接到 Internet 的计算机上，打开 SQL Server Management Studio (SSMS)。 如果没有 SQL Server Management Studio，可以从[此处](/sql/ssms/download-sql-server-management-studio-ssms)下载。
 
-1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值    。 输入虚拟机的 IP 地址或完整 DNS 名称（已在上一个任务中确定）。 也可添加逗号并提供 SQL Server 的 TCP 端口。 例如，`mysqlvmlabel.eastus.cloudapp.azure.com,1433` 。
+1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值  。 输入虚拟机的 IP 地址或完整 DNS 名称（已在上一个任务中确定）。 也可添加逗号并提供 SQL Server 的 TCP 端口。 例如，`mysqlvmlabel.eastus.cloudapp.azure.com,1433`。
 
-1. 在“身份验证”框中，选择“SQL Server 身份验证”   。
+1. 在“身份验证”框中，选择“SQL Server 身份验证” 。
 
 1. 在“登录”  框中，键入有效 SQL 登录的名称。
 

@@ -1,15 +1,15 @@
 ---
 title: 快速入门：为 Azure RTOS 配置和启用 Defender-IoT-micro-agent
-description: 了解如何在 Azure IoT 中心为 Azure RTOS 服务加入和启用 Defender-IoT-micro-agent。
+description: 本快速入门介绍了如何在 Azure IoT 中心为 Azure RTOS 服务加入和启用 Defender-IoT-micro-agent。
 services: defender-for-iot
 ms.topic: quickstart
 ms.date: 01/24/2021
-ms.openlocfilehash: db0fc0be3cd10bc57a46cb5a056ca5e057ae255a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0575e9303068b203a5d8cd51c8a8cc1843de6f4d
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781154"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384629"
 ---
 # <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>快速入门：适用于 Azure RTOS 的 Defender-IoT-micro-agent（预览版）
 

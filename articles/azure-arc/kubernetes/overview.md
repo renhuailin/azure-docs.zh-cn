@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已启用 Azure Arc 的 Kubernetes 的概述。
 keywords: Kubernetes、Arc、Azure、容器
 ms.custom: references_regions
-ms.openlocfilehash: b3296aa1c1d5d463cc7f4cb932b44ad76632e19e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69e9886f214d0076c8e66231fd6ad15bb060828f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121586"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449641"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>什么是已启用 Azure Arc 的 Kubernetes？
 
@@ -43,9 +43,11 @@ ms.locfileid: "102121586"
 
 * 使用基于 GitOps 的配置管理来部署应用程序并应用配置。 
 
-* 使用适用于容器的 Azure Monitor 来查看和监视群集。 
+* 使用适用于容器的 Azure Monitor 来查看和监视群集。
 
-* 使用适用于 Kubernetes 的 Azure Policy 来应用策略。 
+* 使用 Azure Defender for Kubernetes 强制实施威胁防护。
+
+* 使用适用于 Kubernetes 的 Azure Policy 来应用策略。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

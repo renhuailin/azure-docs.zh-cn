@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 152e25fec4ee7b6181e2da58a9a4b0562a918151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d0f82565ec4010d03003ed902e9aba819e93bc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609186"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303179"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
@@ -23,6 +23,7 @@ NVv4 系列虚拟机由 [AMD Radeon Instinct MI25](https://www.amd.com/en/produc
 [ACU](acu.md)：230-260<br>
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
+[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>

@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: a0f8744061853e8bd81d3435c1f007e96a7d5783
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 653692812507c05c6cfc58b00d3c93ece19019bb
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495281"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113366"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 适用于你的操作系统的最新版本 [.NET Core 客户端库](https://dotnet.microsoft.com/download/dotnet-core)。
+- 适用于操作系统的最新版本 [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
 
 ## <a name="setting-up"></a>设置
@@ -45,7 +45,7 @@ dotnet build
 仍在应用程序目录中时，使用 `dotnet add package` 命令安装适用于 .NET 包的 Azure 通信服务标识库。
 
 ```console
-dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
+dotnet add package Azure.Communication.Identity --version 1.0.0
 ```
 
 ### <a name="set-up-the-app-framework"></a>设置应用框架
@@ -150,8 +150,7 @@ Console.WriteLine(token);
 若要刷新访问令牌，请将 `CommunicationUserIdentifier` 对象的实例传递到 `GetTokenAsync`。 如果已存储此 `Id` 并且需要新建 `CommunicationUserIdentifier`，可以通过将存储的 `Id` 传递到 `CommunicationUserIdentifier` 构造函数中来实现，如下所示：
 
 ```csharp
-// In this example, userId is a string containing the Id property of a previously-created CommunicationUser
-var identityToRefresh = new CommunicationUserIdentifier(userId);
+var identityToRefresh = new CommunicationUserIdentifier(identity.Id);
 var tokenResponse = await client.GetTokenAsync(identityToRefresh, scopes: new [] { CommunicationTokenScope.VoIP });
 ```
 
