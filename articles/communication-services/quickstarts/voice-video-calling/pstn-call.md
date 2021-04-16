@@ -8,19 +8,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a24b62875fedcb976b06517cf61ddd69ab9abcf1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729509"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726730"
 ---
 # <a name="quickstart-call-to-phone"></a>快速入门：拨打电话
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-通过使用通信服务呼叫客户端库向应用添加 PSTN 呼叫，开启 Azure 通信服务使用旅程。
+通过使用通信服务呼叫 SDK 向应用添加 PSTN 呼叫，开启 Azure 通信服务使用旅程。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +39,5 @@ ms.locfileid: "104729509"
 
 有关详细信息，请参阅以下文章：
 
-- 了解[呼叫客户端库功能](./calling-client-samples.md)
+- 了解如何[调用 SDK 功能](./calling-client-samples.md)
 - 了解有关[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)的详细信息

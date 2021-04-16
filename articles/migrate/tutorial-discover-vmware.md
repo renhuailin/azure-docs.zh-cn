@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: f394fd4b1b4124c259489580fb5dc320fedf73fa
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863643"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627789"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>教程：通过“Azure Migrate：发现和评估”发现 VMware 环境中运行的服务器
 
@@ -34,11 +34,9 @@ ms.locfileid: "104863643"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-
 ## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前，请先检查是否已满足这些先决条件。
-
 
 **要求** | **详细信息**
 --- | ---
@@ -98,7 +96,6 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="用于允许对只读角色进行来宾操作的复选框":::
 
-
 > [!NOTE]
 > 可以通过限定 vCenter Server 帐户的范围，将发现范围限制为特定的 vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个服务器。 [**详细了解**](set-discovery-scope.md)如何限定 vCenter Server 用户帐户的范围。
 
@@ -106,7 +103,7 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 
 需要一个在服务器上拥有所需特权的用户帐户，才能执行已安装应用程序的发现、无代理依赖项分析和 SQL Server 实例与数据库的发现。 你可以在设备配置管理器上提供用户帐户。 设备不会在服务器上安装任何代理。
 
-1. 对于 Windows 服务器，请在服务器上创建拥有管理权限的帐户（本地或域）。 若要发现 SQL Server 实例和数据库，该 Windows 或 SQL Server 帐户需是 sysadmin 服务器角色的成员。 [详细了解](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)如何向用户帐户分配所需的角色。
+1. 对于 Windows 服务器，请在服务器上创建拥有管理权限的帐户（本地或域）。 若要发现 SQL Server 实例和数据库，该 Windows 或 SQL Server 帐户需是 sysadmin 服务器角色的成员。 [详细了解](/sql/relational-databases/security/authentication-access/server-level-roles)如何向用户帐户分配所需的角色。
 2. 对于 Linux 服务器，请创建拥有 Root 特权的帐户。 或者，可以在 /bin/netstat 和 /bin/ls 文件上创建具有以下权限的帐户：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 
 > [!NOTE]
@@ -118,7 +115,7 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 
 1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
 2. 在“服务”下选择“Azure Migrate”。 
-3. 在“概述”中，选择“创建项目” 。
+3. 在“概述”中，根据迁移目标选择“Windows、Linux 和 SQL Server”、“SQL Server (仅)”或“浏览更多方案”，然后选择“创建项目”。
 5. 在“创建项目”中，选择 Azure 订阅和资源组。 如果没有资源组，请创建一个资源组。
 6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
@@ -197,11 +194,9 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 8. 在“网络映射”中，指定该服务器要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure Migrate 发送元数据。
 9. 检查并确认设置，然后单击“完成”。
 
-
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
 确保设备服务器可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
-
 
 ### <a name="4-configure-the-appliance"></a>4.配置设备
 
@@ -282,6 +277,8 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 - 可以在凭据表中查看所有域凭据的 **验证状态**。 只会验证域凭据。
 - 如果验证失败，可以单击“失败”状态查看遇到的错误，并在修复问题后单击“重新验证凭据”以再次验证失败的域凭据。 
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="设备配置管理器上的面板 3，用于提供多个凭据":::
+
 ### <a name="start-discovery"></a>启动发现
 
 1. 单击“开始发现”以启动 vCenter Server 发现。 成功启动发现后，可以针对源表中的 vCenter Server IP 地址/FQDN 检查发现状态。
@@ -290,8 +287,8 @@ Azure Migrate 需使用一个 vCenter Server 只读帐户来发现和评估 VMwa
 1. 在软件盘存过程中，将针对服务器循环访问已添加的服务器凭据，并会对这些凭据进行验证，以便进行无代理依赖项分析。 可以从门户为服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用无代理依赖项分析。
 
 > [!Note]
->Azure Migrate 将加密 Azure Migrate 设备与源 SQL Server 实例之间的通信（“加密连接”属性设置为 TRUE）。 这些连接是使用 [**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate)（设置为 TRUE）加密的；传输层将使用 SSL 来加密通道，并绕过证书链来验证信任。 必须将设备服务器设置为 [**信任证书的根颁发机构**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。<br/>
-如果服务器在启动时未预配有任何证书，SQL Server 将生成可用于加密登录数据包的自签名证书。 [**了解详细信息**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+>Azure Migrate 将加密 Azure Migrate 设备与源 SQL Server 实例之间的通信（“加密连接”属性设置为 TRUE）。 这些连接是使用 [**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate)（设置为 TRUE）加密的；传输层将使用 SSL 来加密通道，并绕过证书链来验证信任。 必须将设备服务器设置为 [**信任证书的根颁发机构**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。<br/>
+如果服务器在启动时未预配有任何证书，SQL Server 将生成可用于加密登录数据包的自签名证书。 [**了解详细信息**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
 
 发现的工作原理如下：
 

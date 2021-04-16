@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 处理短信事件
+title: 快速入门 - 处理传递报告和入站消息的短信事件
 titleSuffix: An Azure Communication Services quickstart
 description: 了解如何使用 Azure 通信服务处理短信事件。
 author: mikben
@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7a88d8a0065ca7f5cb054d23295e5cfbc23489ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728583"
 ---
-# <a name="quickstart-handle-sms-events"></a>快速入门：处理短信事件
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+# <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>快速入门：处理传递报告和入站消息的短信事件
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
@@ -117,6 +114,7 @@ ms.locfileid: "104655982"
 > [发送短信](../telephony-sms/send.md)
 
 你可能还想要：
+
 
  - [了解事件处理概念](../../../event-grid/event-schema-communication-services.md)
  - [了解事件网格](../../../event-grid/overview.md)

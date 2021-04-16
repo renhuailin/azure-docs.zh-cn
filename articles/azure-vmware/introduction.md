@@ -2,13 +2,13 @@
 title: 简介
 description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579286"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107974"
 ---
 # <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
@@ -55,6 +55,9 @@ Azure VMware 解决方案私有云和群集是从裸机超融合 Azure 基础设
 
 Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure VM。 有关详细信息和操作说明，请参阅[使用 Azure Monitor 监视 Azure VM](../azure-monitor/vm/monitor-vm-azure.md)。
 
+## <a name="customer-communication"></a>客户通信
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 下一步是了解关键的[私有云和群集概念](concepts-private-clouds-clusters.md)。
@@ -63,3 +66,5 @@ Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure VM�
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d842414d3046692c982ca3203957a96f8a01b37
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446594"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377324"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 功能的设计决策和编程方法
 本文提供了 Synapse SQL 专用 SQL 池和无服务器 SQL 池函数的资源列表。 建议的文章分为两部分：关键设计决策，以及开发和编程方法。
@@ -46,7 +46,7 @@ ms.locfileid: "96446594"
 
 | 项目 | 专用 SQL 池 | 无服务器 SQL 池 |
 | ------- | -------- | ------------- |
-| [存储过程](develop-stored-procedures.md)  | 是                | 否                      |
+| [存储过程](develop-stored-procedures.md)  | 是                | 是                      |
 | [标签](develop-label.md)                           | 是                | 否                      |
 | [视图](develop-views.md)                             | 是                | 是                     |
 | [临时表](develop-tables-temporary.md)       | 是                | 是                     |

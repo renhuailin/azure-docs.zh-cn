@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172073"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043727"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
-在本教程中，你将生成一个 Flask Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 本教程重点介绍用于实现该应用程序的 Python 代码和 Flask 路由，但是，也会介绍用于统合该应用的 HTML 和 Javascript 代码。 如果遇到任何问题，请使用下面的反馈按钮告诉我们。
+在本教程中，你将生成一个 Flask Web 应用，该应用使用 Azure 认知服务来翻译文本、分析情绪，并将翻译的文本合成为语音。 我们重点介绍用于实现应用程序的 Python 代码和 Flask 路由，但也会帮你解决用于将该应用整合在一起的 HTML 和 JavaScript 的相关问题。 如果遇到任何问题，请使用下面的反馈按钮告诉我们。
 
 本教程的内容：
 
@@ -49,7 +49,7 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 
 下面是学习本教程所需的软件和订阅密钥。
 
-* [Python 3.5.2 或更高版本](https://www.python.org/downloads/)
+* [Python 3.6 或更高版本](https://www.python.org/downloads/)
 * [Git 工具](https://git-scm.com/downloads)
 * IDE 或文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/) 或 [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) 或 [Firefox](https://www.mozilla.org/firefox)
@@ -104,7 +104,7 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 
 2. 用于激活虚拟环境的命令根据平台/shell 而异：   
 
-   | 平台 | Shell | Command |
+   | 平台 | Shell | 命令 |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | bash | `source venv/Scripts/activate` |
@@ -249,7 +249,7 @@ def about():
 * 编写一些 Python 代码来调用“翻译”并返回响应
 * 创建一个 Flask 路由用于调用 Python 代码
 * 使用文本输入和翻译区域、语言选择器和翻译按钮更新 HTML
-* 编写 Javascript 代码，使用户能够通过 HTML 来与 Flask 应用交互
+* 编写 JavaScript 代码，使用户能够通过 HTML 与 Flask 应用交互
 
 ### <a name="call-the-translator"></a>调用“翻译”
 
@@ -409,7 +409,7 @@ Flask 会提供帮助器函数来帮助分析和管理每个请求。 在提供�
    </div>
    ```
 
-下一步是编写一些 Javascript 代码。 这是 HTML 与 Flask 路由之间的桥梁。
+下一步是编写一些 JavaScript 代码。 这是 HTML 与 Flask 路由之间的桥梁。
 
 ### <a name="create-mainjs"></a>创建 `main.js`  
 
@@ -482,11 +482,11 @@ flask run
 * 编写一些 Python 代码，以调用文本分析 API 来执行情绪分析并返回响应
 * 创建一个 Flask 路由用于调用 Python 代码
 * 使用情感评分区域和一个按钮更新 HTML，以执行分析
-* 编写 Javascript 代码，使用户能够通过 HTML 来与 Flask 应用交互
+* 编写 JavaScript 代码，使用户能够通过 HTML 与 Flask 应用交互
 
 ### <a name="call-the-text-analytics-api"></a>调用文本分析 API
 
-让我们编写一个函数来调用文本分析 API。 此函数采用四个参数：`input_text`、`input_language`、`output_text` 和 `output_language`。 每当用户在该应用中按下“运行情绪分析”按钮时，就会调用此函数。 用户在文本区域和语言选择器中输入的数据，以及检测到的语言和翻译输出，将连同每个请求一起提供。 响应对象包含源文本和翻译结果的情绪评分。 在以下部分，你将编写一些 Javascript 代码来分析响应，并在应用中使用该响应。 现在，让我们重点了解如何调用文本分析 API。
+让我们编写一个函数来调用文本分析 API。 此函数采用四个参数：`input_text`、`input_language`、`output_text` 和 `output_language`。 每当用户在该应用中按下“运行情绪分析”按钮时，就会调用此函数。 用户在文本区域和语言选择器中输入的数据，以及检测到的语言和翻译输出，将连同每个请求一起提供。 响应对象包含源文本和翻译结果的情绪评分。 在以下部分，你将编写一些 JavaScript 代码来分析响应，并在应用中使用该响应。 现在，让我们重点了解如何调用文本分析 API。
 
 1. 在工作目录的根目录中创建名为 `sentiment.py` 的文件。
 2. 接下来，将以下代码添加到 `sentiment.py`。
@@ -651,7 +651,7 @@ flask run
 * 编写一些 Python 代码，以使用文本转语音 API 将文本转换为语音
 * 创建一个 Flask 路由用于调用 Python 代码
 * 使用一个用于将文本转换为语音的按钮，以及一个用于播放音频的元素来更新 HTML
-* 编写 Javascript 代码，使用户能够与 Flask 应用交互
+* 编写 JavaScript 代码，使用户能够与 Flask 应用交互
 
 ### <a name="call-the-text-to-speech-api"></a>调用文本转语音 API
 

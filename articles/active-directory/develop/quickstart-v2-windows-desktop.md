@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a084b8d14acc02c67b0678cd7fa9e5993b629a51
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb5bf0bc6e211d83d2de2eb8d327ee6b2d577721
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104578511"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075009"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入门：获取令牌并从 Windows 桌面应用中调用 Microsoft Graph API
 
@@ -99,13 +99,15 @@ ms.locfileid: "104578511"
 >
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的 **应用程序（客户端）ID**。
+>    
+>    若要查找“应用程序(客户端) ID”的值，请转到 Azure 门户中应用的“概述”页 。
 > - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
 >   - 如果应用程序支持“此组织目录中的帐户”，请将该值替换为 **租户 ID** 或 **租户名称**（例如 contoso.microsoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为`organizations`
->   - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将该值替换为`common`
+>   - 如果应用支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为“`common`”。
 >
-> > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
+>     若要查找“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。  
+>
 
 ## <a name="more-information"></a>详细信息
 
@@ -137,9 +139,9 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |其中： | 说明 |
-> |---------|---------|
-> | `ClientId` | 是在 Azure 门户中注册的应用程序的 **应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
+|其中： | 说明 |
+|---------|---------|
+| `ClientId` | 是在 Azure 门户中注册的应用程序的 **应用程序(客户端) ID**。 可以在 Azure 门户的应用的“概览”页中找到此值。 |
 
 ### <a name="requesting-tokens"></a>请求令牌
 
@@ -159,9 +161,9 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |其中：| 说明 |
-> |---------|---------|
-> | `_scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
+|其中：| 说明 |
+|---------|---------|
+| `_scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
@@ -174,10 +176,10 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |其中： | 说明 |
-> |---------|---------|
-> | `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
-> | `firstAccount` | 指定缓存中的第一个用户（MSAL 支持单个应用中的多个用户）。 |
+|其中： | 说明 |
+|---------|---------|
+| `scopes` | 包含所请求的范围，例如 `{ "user.read" }`（针对 Microsoft Graph）或 `{ "api://<Application ID>/access_as_user" }`（针对自定义 Web API）。 |
+| `firstAccount` | 指定缓存中的第一个用户（MSAL 支持单个应用中的多个用户）。 |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
