@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98882223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968605"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>教程：设置 Azure SQL 数据库和 SQL Server 的数据库之间的 SQL 数据同步
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "98882223"
    | **使用专用链接** | 选择服务管理的专用终结点，以在同步服务和中心数据库之间建立安全连接。 |
 
    > [!NOTE]
-   > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库共享为选定区域和订阅中所有同步组的同步元数据数据库。 在未删除区域中所有同步组和同步代理的情况下，无法更改数据库或其名称。
+   > Microsoft 建议新建空的数据库，以用作“同步元数据数据库”。 SQL 数据同步在此数据库中创建表，并经常运行工作负载。 此数据库共享为选定区域和订阅中所有同步组的同步元数据数据库。 在未删除区域中所有同步组和同步代理的情况下，无法更改数据库或其名称。 此外，弹性作业数据库不能用作 SQL 数据同步元数据数据库，反之亦然。  
 
    选择“确定”，并等待创建和部署同步组。
    

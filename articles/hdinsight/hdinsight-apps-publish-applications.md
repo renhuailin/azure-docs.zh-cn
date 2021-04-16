@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d432d20660cd1b7ee59c9ef72f9db04bc0009481
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942663"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306579"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure 市场中发布 HDInsight 应用程序。 有关在 Azure 市场中发布的一般信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/overview.md)。
@@ -83,7 +83,8 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 ## <a name="publish-the-application"></a>发布应用程序
 要发布 HDInsight 应用程序：
 
-1. 登录到 [Azure 发布](https://publish.windowsazure.com/)。
+1. 登录到 Azure 发布。
+
 2. 在左侧菜单中，选择“解决方案模板”。
 3. 输入标题，然后选择“创建新的解决方案模板”。
 4. 如果尚未注册组织，选择“创建开发人员中心帐户并加入 Azure 计划”。  有关详细信息，请参阅[创建 Microsoft 开发人员帐户](../marketplace/overview.md)。

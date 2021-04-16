@@ -4,12 +4,12 @@ description: 本文提供了创建 .NET Core 应用的演练，该应用使用�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7092c3a4c32fe2ad46b71c5a796ac811e4253dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f289b920b036629e5c518ce3c9e8ec521b1497c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653085"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310098"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
 本快速入门介绍如何使用 **Microsoft.Azure.EventHubs** .NET Core 库向/从事件中心发送/接收事件。
@@ -367,6 +367,6 @@ ms.locfileid: "100653085"
     这些示例使用旧的 **Microsoft.Azure.EventHubs** 库，但你可以轻松地将其更新为使用最新的 **Azure.Messaging.EventHubs** 库。 若要将示例从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.EventHubs 迁移到 Azure.Messaging.EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
-- [事件中心常见问题](event-hubs-faq.md)
+- [事件中心常见问题](event-hubs-faq.yml)
 
 

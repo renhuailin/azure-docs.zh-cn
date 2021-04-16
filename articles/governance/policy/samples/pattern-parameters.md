@@ -1,14 +1,14 @@
 ---
 title: 模式：策略定义中的参数
-description: 此 Azure Policy 模式提供了如何在策略定义中使用字符串和数组参数以及如何参数化效果的示例。
-ms.date: 08/17/2020
+description: 此 Azure Policy 模式举例说明了如何在策略定义中使用字符串和数组参数，以及如何将效果参数化。
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b742aaaf950e2b5670edbaa1f0134da144e675b6
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89649943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092766"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy 模式：参数
 
@@ -16,7 +16,7 @@ ms.locfileid: "89649943"
 
 ## <a name="sample-1-string-parameters"></a>示例 1：字符串参数
 
-此策略定义使用两个参数（**tagName** 和 **tagValue**）来设置策略分配在资源上查找的内容。 此格式允许将策略定义用于任意数量的标记名称和标记值组合，但只保留单个策略定义。
+此策略定义使用两个参数（tagName 和 tagValue）来设置策略分配在资源上查找的内容。 此格式允许将策略定义用于任意数量的标记名称和标记值组合，但只保留单个策略定义。
 
 > [!NOTE]
 > 有关使用 All 模式并与资源组配合使用的标记示例，请参阅[模式：标记 - 示例 #1](./pattern-tags.md#sample-1-parameterize-tags)。
