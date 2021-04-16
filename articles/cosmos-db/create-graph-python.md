@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/29/2021
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: 342b9c9aae0a523ac770ba78f298c4ba91c434e7
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: cef397789d5ebcfa95c01e42dac9a80b9e1564e0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798742"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106919"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,16 +56,16 @@ ms.locfileid: "104798742"
 1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "./git-samples"
     ```
 
 2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为相应的示例应用程序安装文件夹。  
 
     ```bash
-    cd "C:\git-samples"
+    cd "./git-samples"
     ```
 
-3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-python-getting-started.git
@@ -73,14 +73,14 @@ ms.locfileid: "104798742"
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* 文件夹中的 *connect.py* 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* 文件夹中的 *connect.py* 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。
 
-* Gremlin `client` 是在 *connect.py* 中的第 104 行初始化的：
+* Gremlin `client` 在 connect.py 中的第 155 行进行初始化。 请确保将 `<YOUR_DATABASE>` 和 `<YOUR_CONTAINER_OR_GRAPH>` 替换为帐户的数据库名称和图名称的值：
 
     ```python
     ...
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
-        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
+        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_CONTAINER_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
     ```
@@ -101,7 +101,7 @@ ms.locfileid: "104798742"
 
     :::image type="content" source="./media/create-graph-python/keys.png" alt-text="在 Azure 门户的“密钥”页中，查看并复制访问密钥":::
 
-2. 打开 *connect.py* 文件，并将 URI 值粘贴至第 104 行的 `<YOUR_ENDPOINT>` 位置：
+2. 打开 connect.py 文件，将 URI 值粘贴至第 155 行的 `<YOUR_ENDPOINT>` 位置：
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -145,7 +145,7 @@ ms.locfileid: "104798742"
 1. 在 git 终端窗口中，使用 `cd` 命令转到 azure-cosmos-db-graph-python-getting-started 文件夹。
 
     ```git
-    cd "C:\git-samples\azure-cosmos-db-graph-python-getting-started"
+    cd "./git-samples\azure-cosmos-db-graph-python-getting-started"
     ```
 
 2. 在 git 终端窗口中，使用以下命令安装所需 Python 包。
@@ -187,7 +187,7 @@ ms.locfileid: "104798742"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|value|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
@@ -205,7 +205,7 @@ ms.locfileid: "104798742"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|value|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。

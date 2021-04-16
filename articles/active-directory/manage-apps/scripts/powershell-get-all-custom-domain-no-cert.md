@@ -3,7 +3,7 @@ title: PowerShell 示例 - 没有证书的应用程序代理应用
 description: PowerShell 示例，其中列出了正在使用自定义域但未上传有效的 TLS/SSL 证书的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 7be5732b4e8897a9bc993b4e84b781e5f39bce55
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 00c2aa65c727bc614441b59c0021846855fcaf68
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565608"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377134"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>获取已发布但未上传任何证书的所有 Azure AD 代理应用程序应用
+# <a name="get-all-application-proxy-apps-published-with-no-certificate-uploaded"></a>获取所有未上传证书的已发布应用程序代理应用
 
 在该 PowerShell 脚本示例中，可找到正在使用自定义域但未上传有效的 TLS/SSL 证书的所有 Azure Active Directory (Azure AD) 应用程序代理应用。
 

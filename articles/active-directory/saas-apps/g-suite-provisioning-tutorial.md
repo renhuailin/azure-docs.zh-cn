@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/06/2020
+ms.date: 03/18/2021
 ms.author: Zhchia
-ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: f6ef2f91d178db01e618c19df55705bc9c1209e4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583745"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
@@ -273,6 +273,7 @@ ms.locfileid: "98746115"
 * 2020/10/17 - 添加了对其他 G Suite 用户和组属性的支持。
 * 2020/10/17 - 更新了 G Suite 目标属性名称，使其匹配[此处](https://developers.google.com/admin-sdk/directory)定义的内容。
 * 2020/10/17 - 更新了默认属性映射。
+* 2021/03/18 - 对于所有新用户，管理员电子邮件（而不是 ID）现已同步。 对于已使用 manager 作为 ID 进行预配的任何现有用户，可以通过范围为“full”的 [Microsoft Graph](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) 执行重启，以确保预配电子邮件。 此更改只会影响 GSuite 预配作业，而不会影响以 Goov2OutDelta 开头的较早的预配作业。 请注意，在首次创建用户时，或者管理员发生更改时，将预配管理员电子邮件。 如果管理员更改了其电子邮件地址，则不会预配管理员电子邮件。 
 
 ## <a name="additional-resources"></a>其他资源
 

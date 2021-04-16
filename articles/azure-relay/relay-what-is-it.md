@@ -3,12 +3,12 @@ title: 什么是 Azure 中继？ | Microsoft Docs
 description: 本文提供 Azure 中继服务的概述。借助该服务，无需打开防火墙连接或者对网络基础设施进行彻底的改造，就能开发使用企业网络中运行的本地服务的云应用程序。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955376"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314195"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -80,5 +80,5 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 * [.NET HTTP 请求入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Node WebSocket 入门](relay-hybrid-connections-node-get-started.md)
 * [Node HTTP 请求入门](relay-hybrid-connections-http-requests-node-get-started.md)
-* [中继常见问题](relay-faq.md)
+* [中继常见问题](relay-faq.yml)
 

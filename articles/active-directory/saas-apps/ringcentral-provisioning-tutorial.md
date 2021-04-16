@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181607"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800734"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
@@ -39,33 +39,25 @@ ms.locfileid: "96181607"
 * [RingCentral 租户](https://www.ringcentral.com/office/plansandpricing.html)
 * 在 RingCentral 中具有管理员权限的用户帐户。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 计划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 RingCentral 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 RingCentral 以支持通过 Azure AD 进行预配
 
-1. 登录到 [RingCentral 管理控制台](https://login.ringcentral.com/sw.html)。 导航到“工具”>“目录集成”。
-
-    ![RingCentral 管理控制台](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  在“选择目录提供程序”下，选择“SCIM” 。 （之后会出现一个名为 Azure Active Directory 的选项）。 单击“启用 SCIM 服务”。
-
-    ![RingCentral 添加 SCIM](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  请通过 matthew.hunt@ringcentral.com 联系 RingCentral 支持团队，获取 SCIM 身份验证令牌。 将在 Azure 门户中 RingCentral 应用程序的“预配”选项卡的“机密令牌”字段中输入此值。
+需要一个 [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 管理员帐户才能在步骤 5 的“管理凭据”部分授权。
 
 > [!NOTE]
 > 若要将许可证分配给用户，请参阅[此处](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)的视频链接。
 
 ## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 RingCentral
 
-从 Azure AD 应用程序库添加 RingCentral，开始管理 RingCentral 的预配。 如果之前为 RingCentral 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](../manage-apps/add-application-portal.md)详细了解如何从库中添加应用程序。 
+从 Azure AD 应用程序库添加 RingCentral，开始管理 RingCentral 的预配。 如果之前为 RingCentral 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
 * 将用户和组分配到 RingCentral 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
 
@@ -94,9 +86,13 @@ ms.locfileid: "96181607"
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下的“租户 URL”中，输入 `https://platform.ringcentral.com/scim/v2` 。 在“机密令牌”中，输入之前检索到的 SCIM 身份验证令牌值 。 单击“测试连接”，确保 Azure AD 可连接到 RingCentral。 如果连接失败，请确保 RingCentral 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，单击“授权”。 系统会将你重定向到 RingCentral 的登录页。 输入“电子邮件/电话号码”和“密码”，然后单击“登录”按钮。 在 RingCentral 的“访问请求”页中单击“授权”。 单击“测试连接”，确保 Azure AD 可连接到 RingCentral。 如果连接失败，请确保 RingCentral 帐户具有管理员权限，然后重试。
 
-    ![“租户 URL”和“机密令牌”文本字段的屏幕截图，其中突出显示了“测试连接”选项。](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![授权](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
@@ -151,6 +147,7 @@ ms.locfileid: "96181607"
 ## <a name="change-log"></a>更改日志
 
 * 2020/09/10 - 删除了对“displayName”和“manager”特性的支持。
+* 2021/03/15 - 已将授权方法从“永久持有者令牌”更新为“OAuth 代码授予流”。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 和 Amazon Web Services (AWS) 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single-Account Access 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 AWS Single-Account Access 之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/08/2020
+ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 842ab27fe02501efbbc6c06c3d36d2218c3c17b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799235"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single-Account Access 的集成
 
-本教程介绍如何将 Amazon Web Services (AWS) 与 Azure Active Directory (Azure AD) 集成。 将 Amazon Web Services (AWS) 与 Azure AD 集成时，可以执行以下操作：
+本教程介绍如何将 AWS Single-Account Access 与 Azure Active Directory (Azure AD) 相集成。 将 AWS Single-Account Access 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 Amazon Web Services (AWS)。
-* 让用户可以使用其 Azure AD 帐户自动登录到 Amazon Web Services (AWS)。
+* 在 Azure AD 中控制谁有权访问 AWS Single-Account Access。
+* 让用户使用其 Azure AD 帐户自动登录到 AWS Single-Account Access。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 ## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>了解 Azure AD 应用程序库中的各种 AWS 应用程序
@@ -31,11 +31,11 @@ ms.locfileid: "101689005"
 
 **AWS 单一登录**
 
-[AWS 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial)是在 2021 年 2 月添加到 Azure AD 应用程序库中的。 使用它，通过 Microsoft Azure AD 进行登录时就可以轻松地集中管理对多个 AWS 帐户和 AWS 应用程序的访问。 将 Microsoft Azure AD 与 AWS SSO 联合一次，然后便可使用 AWS SSO 从一个位置管理所有 AWS 帐户的权限。 AWS SSO 会自动预配权限，并在你更新策略和访问权限分配时使权限保持最新状态。 最终用户可以使用其 Azure AD 凭据进行身份验证，以访问 AWS 控制台、命令行界面和 AWS SSO 集成应用程序。
+[AWS 单一登录](./aws-single-sign-on-tutorial.md)是在 2021 年 2 月添加到 Azure AD 应用程序库中的。 使用它，通过 Microsoft Azure AD 进行登录时就可以轻松地集中管理对多个 AWS 帐户和 AWS 应用程序的访问。 将 Microsoft Azure AD 与 AWS SSO 联合一次，然后便可使用 AWS SSO 从一个位置管理所有 AWS 帐户的权限。 AWS SSO 会自动预配权限，并在你更新策略和访问权限分配时使权限保持最新状态。 最终用户可以使用其 Azure AD 凭据进行身份验证，以访问 AWS 控制台、命令行界面和 AWS SSO 集成应用程序。
 
 **AWS 单一帐户访问**
 
-[AWS 单一帐户访问](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)在过去几年中一直被客户使用，它允许你将 Azure AD 联合到单个 AWS 帐户，并使用 Azure AD 管理对 AWS IAM 角色的访问。 AWS IAM 管理员在每个 AWS 帐户中定义角色和策略。 对于每个 AWS 帐户，Azure AD 管理员会联合到 AWS IAM，将用户或组分配给该帐户，并配置 Azure AD 来发送对角色访问进行授权的断言。  
+[AWS 单一帐户访问]()在过去几年中一直被客户使用，它允许你将 Azure AD 联合到单个 AWS 帐户，并使用 Azure AD 管理对 AWS IAM 角色的访问。 AWS IAM 管理员在每个 AWS 帐户中定义角色和策略。 对于每个 AWS 帐户，Azure AD 管理员会联合到 AWS IAM，将用户或组分配给该帐户，并配置 Azure AD 来发送对角色访问进行授权的断言。  
 
 | 功能 | AWS 单一登录 | AWS 单一帐户访问 |
 |:--- |:---:|:---:|
@@ -74,45 +74,48 @@ ms.locfileid: "101689005"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 AWS 单一登录 (SSO) 的订阅。
 
+> [!Note]
+> 导入角色时，不应在 Azure AD 中手动编辑角色。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Amazon Web Services (AWS) 支持 **SP 和 IDP** 发起的 SSO
+* AWS Single-Account Access 支持 **SP 和 IDP** 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>从库中添加 Amazon Web Services (AWS)
+## <a name="adding-aws-single-account-access-from-the-gallery"></a>从库中添加 AWS Single-Account Access
 
-要配置 Amazon Web Services (AWS) 与 Azure AD 的集成，需要从库将 Amazon Web Services (AWS) 添加到托管 SaaS 应用列表。
+若要配置 AWS Single-Account Access 与 Azure AD 的集成，需要从库中将 AWS Single-Account Access 添加到托管 SaaS 应用列表。
 
 1. 使用工作帐户、学校帐户或者个人 Microsoft 帐户登录到 Azure 门户。
 1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
 1. 在 Azure Active Directory 概述菜单中，选择“企业应用程序” > “所有应用程序” 。
 1. 选择“新建应用程序”以添加应用程序。
-1. 在“从库中添加”部分的搜索框中，键入 **Amazon Web Services (AWS)** 。
-1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分的搜索框中，键入 **AWS Single-Account Access**。
+1. 在结果面板中选择“AWS Single-Account Access”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-aws-single-account-access"></a>配置并测试 AWS Single-Account Access 的 Azure AD SSO
 
-使用名为 **B.Simon** 的测试用户配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Amazon Web Services (AWS) 中的相关用户之间建立链接关系。
+使用名为 **B.Simon** 的测试用户配置并测试 AWS Single-Account Access 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 AWS Single-Account Access 中的相关用户之间建立链接关系。
 
-若要配置和测试 Amazon Web Services (AWS) 的 Azure AD SSO，请执行以下步骤：
+若要配置并测试 AWS Single-Account Access 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Amazon Web Services (AWS) SSO](#configure-amazon-web-services-aws-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Amazon Web Services (AWS) 测试用户](#create-amazon-web-services-aws-test-user)** - 在 Amazon Web Services (AWS) 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-    1. **[如何在 Amazon Web Services (AWS) 中配置角色预配](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
+1. **[配置 AWS Single-Account Access SSO](#configure-aws-single-account-access-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 AWS Single-Account Access 测试用户](#create-aws-single-account-access-test-user)** - 在 AWS Single-Account Access 中创建 B.Simon 的对应用户，并将其链接到其在 Azure AD 中的表示形式。
+    1. **[如何在 AWS Single-Account Access 中配置角色预配](#how-to-configure-role-provisioning-in-aws-single-account-access)**
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户的“Amazon Web Services (AWS)”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在 Azure 门户中的“AWS Single-Account Access”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -151,7 +154,7 @@ ms.locfileid: "101689005"
 
     ![证书下载链接](./media/amazon-web-service-tutorial/certificate.png)
 
-1. 在“设置 Amazon Web Services (AWS)”部分中，根据要求复制相应的 URL。
+1. 在“设置 AWS Single-Account Access”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -170,17 +173,17 @@ ms.locfileid: "101689005"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过向 B.Simon 授予对 Amazon Web Services (AWS) 的访问权限，使其能够使用 Azure 单一登录。
+在本部分，你将通过授予 B.Simon 访问 AWS Single-Account Access 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Amazon Web Services (AWS)”。
+1. 在“应用程序”列表中，选择“AWS Single-Account Access”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-amazon-web-services-aws-sso"></a>配置 Amazon Web Services (AWS) SSO
+## <a name="configure-aws-single-account-access-sso"></a>配置 AWS Single-Account Access SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 AWS 公司站点。
 
@@ -343,7 +346,7 @@ ms.locfileid: "101689005"
 
     c. 选择“关闭”。
 
-### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>如何在 Amazon Web Services (AWS) 中配置角色预配
+### <a name="how-to-configure-role-provisioning-in-aws-single-account-access"></a>如何在 AWS Single-Account Access 中配置角色预配
 
 1. 在 Azure AD 管理门户上的 AWS 应用中，转到“预配”。
 
@@ -371,9 +374,9 @@ ms.locfileid: "101689005"
 > [!NOTE]
 > 保存预配凭据之后，必须等待初始同步周期完成运行。 同步通常需要约 40 分钟才能完成。 你可以在“预配”页底部的“当前状态”下查看状态。
 
-### <a name="create-amazon-web-services-aws-test-user"></a>创建 Amazon Web Services (AWS) 测试用户
+### <a name="create-aws-single-account-access-test-user"></a>创建 AWS Single-Account Access 测试用户
 
-本部分的目标是在 Amazon Web Services (AWS) 中创建一个名为 B.Simon 的用户。 Amazon Web Services (AWS) 不需要在其系统中创建用户进行 SSO，因此，你无需在此处执行任何操作。
+本部分的目的是在 AWS Single-Account Access 中创建名为 B.Simon 的用户。 AWS Single-Account Access 不需要在其系统中创建用户就能实现 SSO，因此你无需在此处执行任何操作。
 
 ## <a name="test-sso"></a>测试 SSO
 
@@ -381,26 +384,28 @@ ms.locfileid: "101689005"
 
 #### <a name="sp-initiated"></a>SP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Amazon Web Services (AWS) 登录 URL，可以从那里启动登录流。  
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 AWS Single-Account Access 登录 URL，可从中启动登录流。  
 
-* 直接转到 Amazon Web Services (AWS) 登录 URL，并从那里启动登录流。
+* 直接转到 AWS Single-Account Access 登录 URL，并从中启动登录流。
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Amazon Web Services (AWS) 
+* 在 Azure 门户中单击“测试此应用程序”，然后你应会自动登录到为其设置了 SSO 的 AWS Single-Account Access 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在点击访问面板中的 Amazon Web Services (AWS) 磁贴时，如果是在 SP 模式下配置的，会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Amazon Web Services (AWS)。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“AWS Single-Account Access”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 AWS Single-Account Access。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="known-issues"></a>已知问题
 
- * 在“预配”部分，“映射”子部分会显示“正在加载...”消息，但从不显示属性映射。  目前支持的唯一预配工作流是将角色从 AWS 导入到 Azure AD 中，以便在用户或组分配过程中对其进行选择。 上述属性映射是预先确定的，不可配置。
+* AWS Single-Account Access 预配集成只能用于连接到 AWS 公有云终结点。 AWS Single-Account Access 预配集成不可用于访问 AWS 政府云环境。
+ 
+* 在“预配”部分，“映射”子部分会显示“正在加载...”消息，但从不显示属性映射。  目前支持的唯一预配工作流是将角色从 AWS 导入到 Azure AD 中，以便在用户或组分配过程中对其进行选择。 上述属性映射是预先确定的，不可配置。
 
- * “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [`servicePrincipal` 对象](/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 属性。
+* “预配”部分只支持一次为一个 AWS 租户输入一组凭据。 所有导入的角色都写入到 AWS 租户的 Azure AD [`servicePrincipal` 对象](/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 属性。
 
-   可将多个 AWS 租户（由 `servicePrincipals` 表示）从库添加到 Azure AD 进行预配。 但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS `servicePrincipals` 写入到用于 SSO 的单个 `servicePrincipal` 中。
+  可将多个 AWS 租户（由 `servicePrincipals` 表示）从库添加到 Azure AD 进行预配。 但存在一个已知的问题：无法自动将所有导入的角色从用于预配的多个 AWS `servicePrincipals` 写入到用于 SSO 的单个 `servicePrincipal` 中。
 
-   若要解决此问题，可以使用 [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) 来提取所有已导入每个 AWS `servicePrincipal`（已在其中配置预配）中的 `appRoles`。 然后，可将这些角色字符串添加到 AWS `servicePrincipal`（已在其中配置 SSO）。
+  若要解决此问题，可以使用 [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) 来提取所有已导入每个 AWS `servicePrincipal`（已在其中配置预配）中的 `appRoles`。 然后，可将这些角色字符串添加到 AWS `servicePrincipal`（已在其中配置 SSO）。
 
 * 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
 
@@ -413,7 +418,7 @@ ms.locfileid: "101689005"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Amazon Web Services (AWS) 后，可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
+配置 AWS Single-Account Access 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
 
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png

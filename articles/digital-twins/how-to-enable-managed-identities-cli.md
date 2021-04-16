@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c9ce87584373bd87a8f89ecb4ea692b44d3fab4d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202954"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106898"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）：Azure CLI
 
@@ -40,7 +40,7 @@ ms.locfileid: "102202954"
 
 在本部分，你将了解如何在当前正在创建的 Azure 数字孪生实例上启用系统托管标识。 
 
-这是通过将 `--assign-identity` 参数添加到用于创建实例的 `az dt create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)或[有关设置 Azure 数字孪生实例的一般说明](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)）。
+这是通过将 `--assign-identity` 参数添加到用于创建实例的 `az dt create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/dt#az_dt_create)或[有关设置 Azure 数字孪生实例的一般说明](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)）。
 
 若要创建具有系统托管标识的实例，请按如下所示添加 `--assign-identity` 参数：
 
@@ -97,7 +97,7 @@ az dt create -n {name_of_existing_instance} -g {resource_group} --assign-identit
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-有关使用此命令进行角色分配的更多示例，请参阅 [**az dt create** 参考文档](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)。
+有关使用此命令进行角色分配的更多示例，请参阅 [**az dt create** 参考文档](/cli/azure/dt#az_dt_create)。
 
 或者，也可以使用 [**az role assignment**](/cli/azure/role/assignment) 命令组来创建和管理角色。 此命令可助于支持你不想要使用 create 命令进行组角色分配的其他场景。
 
@@ -108,7 +108,7 @@ az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "
 >[!NOTE]
 > 对于已使用基于密钥的标识创建的终结点，不能通过对其进行编辑来将其更改为使用基于标识的身份验证。 必须选择最初创建终结点时指定的身份验证类型。
 
-这是通过将 `--auth-type` 参数添加到用于创建终结点的 `az dt endpoint create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/ext/azure-iot/dt/endpoint/create)或[有关设置 Azure 数字孪生终结点的一般说明](how-to-manage-routes-apis-cli.md#create-the-endpoint)）。
+这是通过将 `--auth-type` 参数添加到用于创建终结点的 `az dt endpoint create` 命令来实现的。 （有关此命令的详细信息，请参阅其[参考文档](/cli/azure/dt/endpoint/create)或[有关设置 Azure 数字孪生终结点的一般说明](how-to-manage-routes-apis-cli.md#create-the-endpoint)）。
 
 若要创建使用基于标识的身份验证的终结点，请使用 `--auth-type` 参数指定 `IdentityBased` 身份验证类型。 以下示例演示了如何对事件中心终结点使用此参数。
 

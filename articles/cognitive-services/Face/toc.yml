@@ -36,16 +36,15 @@
     - name: 使用人脸容器
       items:
         - name: 认知服务容器文档
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: 容器概述
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/computer-vision/context/context
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: 安装和运行容器
           href: face-how-to-install-containers.md
         - name: 配置容器
           href: face-resource-container-config.md
         - name: 使用容器实例
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
 - name: 概念
   items:
     - name: 人脸检测
@@ -54,8 +53,6 @@
       href: concepts/face-recognition.md
 - name: 教程
   items:
-    - name: 创建人脸检测器应用
-      href: Tutorials/FaceAPIinCSharpTutorial.md
     - name: 向人脸服务添加用户
       items:
         - name: 有关添加用户的最佳做法

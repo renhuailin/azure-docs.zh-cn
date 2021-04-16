@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 03/31/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 24ff39fba5ce4b484f23595a9f7d718b12faae10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037262"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107191"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>经典订阅管理员角色、Azure 角色和 Azure AD 角色
 
@@ -115,7 +115,7 @@ Azure AD 角色用于管理目录中的 Azure AD 资源，例如，创建或编�
 | --- | --- |
 | 管理对 Azure 资源的访问 | 管理对 Azure Active Directory 资源的访问 |
 | 支持自定义角色 | 支持自定义角色 |
-| 可在多个级别（管理组、订阅、资源组、资源）指定范围 | 范围为租户级别 |
+| 可在多个级别（管理组、订阅、资源组、资源）指定范围 | [范围](../active-directory/roles/custom-overview.md#scope)可以在租户级别（组织范围）、管理单元或单个对象（例如，特定应用程序）上指定 |
 | 可在 Azure 门户、Azure CLI、Azure PowerShell、Azure 资源管理器模板、REST API 中访问角色信息 | 可在 Azure 管理门户、Microsoft 365 管理中心、Microsoft Graph、AzureAD PowerShell 中访问角色信息 |
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Azure 角色与 Azure AD 角色是否重叠？

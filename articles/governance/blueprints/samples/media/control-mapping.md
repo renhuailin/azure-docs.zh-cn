@@ -1,18 +1,18 @@
 ---
 title: 媒体蓝图示例控制措施
 description: 媒体蓝图示例的控制映射。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 04/02/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386388"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376692"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>媒体蓝图示例的控制映射
 
-以下文章详细说明了 Azure 蓝图媒体蓝图示例如何映射到媒体控制措施。 有关控制措施的详细信息，请参阅[媒体](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)。
+以下文章详细说明了 Azure 蓝图媒体蓝图示例如何映射到媒体控制措施。 有关控制措施的详细信息，请参阅[媒体](https://www.motionpictures.org/best-practices)。
 
 以下映射适用于 **媒体** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“ **\[预览\]：** 审核媒体控制措施”内置策略计划。
 

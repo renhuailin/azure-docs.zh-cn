@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211764"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109231"
 ---
 # <a name="managed-hsm-logging"></a>托管 HSM 日志记录 
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 记录的内容：
 
 * 所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
-* 对托管 HSM 本身的操作，包括创建、删除和更新属性（如标记）。
+* 对托管 HSM 资源本身的托管平面操作，包括创建、删除和更新属性（如标记）。
 * 与安全域相关的操作，如初始化和下载、初始化恢复、上传
 * 完整的 HSM 备份、还原和选择性还原操作
+* 角色管理操作（例如，创建/查看/删除角色分配以及创建/查看/删除自定义角色定义）
 * 对密钥执行的操作，包括：
   * 创建、修改或删除密钥。
   * 对密钥进行签名、验证、加密、解密、包装和解包以及列出密钥。
@@ -121,30 +122,13 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 ]
 ```
 
-下表列出了字段的名称和描述：
 
-| 字段名称 | 说明 |
-| --- | --- |
-| **TenantId** | 在其中创建托管 HSM 的订阅的 Azure Active Directory 租户 ID |
-| **time** |日期和时间 (UTC)。 |
-| **resourceId** |Azure 资源管理器资源 ID。 对于托管 HSM 日志而言，这始终是托管 HSM 资源 ID。 |
-| **operationName** |下一份表格中所述操作的名称。 |
-| **operationVersion** |客户端请求的 REST API 版本。 |
-| **category** |结果的类型。 对于托管 HSM 日志而言，AuditEvent 是唯一可用的值。 |
-| **resultType** |REST API 请求的结果。 |
-| **properties** |此字段根据操作 (operationName) 包含不同的信息|
-| **resultSignature** |HTTP 状态。 |
-| **resultDescription** |有关结果的其他描述（如果有）。 |
-| **durationMs** |为 REST API 请求提供服务所花费的时间，以毫秒为单位。 此时间不包括网络延迟，因此在客户端上测得的时间可能与此时间不匹配。 |
-| **callerIpAddress** |发出请求的客户端的 IP 地址。 |
-| **correlationId** |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端日志相关联。 |
-| **identity** |在 REST API 请求中提供的令牌中的标识。 这通常是“用户”，一个“服务主体”。 |
-| **requestUri** | REST API 请求 URI |
-| **clientInfo** | 
 
 ## <a name="use-azure-monitor-logs"></a>使用 Azure Monitor 日志
 
-可以使用 Azure Monitor 日志中的 Key Vault 解决方案查看托管 HSM AuditEvent 日志。 在 Azure Monitor 日志中，可以使用日志查询来分析数据并获取所需的信息。 
+可以使用 Azure Monitor 日志中的 Key Vault 解决方案查看托管 HSM AuditEvent 日志。 在 Azure Monitor 日志中，可以使用日志查询来分析数据并获取所需的信息。
+
+有关详细信息，包括如何进行设置，请参阅 [Azure Monitor 中的 Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
