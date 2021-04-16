@@ -7,15 +7,15 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/15/2020
+ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: 95feeebf009cae22cf3952df80596c12e75cbe4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 605e3f0451cc2029ecc98e42741f30a2d3ef190b
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94357566"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167951"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm-preview"></a>什么是 Azure Key Vault 托管 HSM（预览版）？
 
@@ -36,6 +36,7 @@ Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、�
 - **独立的访问控制**：托管 HSM“本地 RBAC”访问控制模型允许指定的 HSM 群集管理员完全控制甚至连管理组、订阅或资源组管理员都无法重写的 HSM。
 - **通过 FIPS 140-2 级别 3 验证的 HSM**：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
 - **监视和审核**：与 Azure Monitor 完全集成。 通过 Azure Monitor 获取所有活动的完整日志。 将 Azure Log Analytics 用于分析和警报。
+- **数据驻留**：托管 HSM 不会在客户部署 HSM 实例的区域之外存储/处理客户数据。
 
 ### <a name="integrated-with-azure-and-microsoft-paassaas-services"></a>与 Azure 和 Microsoft PaaS/SaaS 服务集成 
 

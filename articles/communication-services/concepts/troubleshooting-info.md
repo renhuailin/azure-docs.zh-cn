@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 80db53a5ed8d2edc90bc847578d5df4d603cc437
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492687"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107221"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -33,11 +33,11 @@ ms.locfileid: "103492687"
 
 ## <a name="access-your-ms-cv-id"></a>获取 MS-CV ID
 
-在初始化客户端库时，可以通过在 `clientOptions` 对象实例中配置诊断来获取 MS-CV ID。 可以为任何 Azure 客户端库配置诊断，包括聊天、标识和 VoIP 呼叫。
+在初始化 SDK 时，可以通过在 `clientOptions` 对象实例中配置诊断来获取 MS-CV ID。 可以为任何 Azure SDK（包括聊天、标识和 VoIP 呼叫）配置诊断。
 
 ### <a name="client-options-example"></a>客户端选项示例
 
-以下代码片段演示的是诊断配置。 当客户端库与启用的诊断一起使用时，诊断详细信息会发送到配置的事件侦听器：
+以下代码片段演示的是诊断配置。 在启用诊断的情况下使用这些 SDK 时，诊断详细信息会发送到配置的事件侦听器：
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,7 +79,7 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>获取呼叫 ID
 
-当通过 Azure 门户删选与呼叫问题有关的支持请求时，系统可能会要求你提供所引用的呼叫 ID。 这可以通过呼叫客户端库来获取：
+当通过 Azure 门户删选与呼叫问题有关的支持请求时，系统可能会要求你提供所引用的呼叫 ID。 此 ID 可以使用调用 SDK 来获取：
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
@@ -127,7 +127,7 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下代码可用于将 `AzureLogger` 配置为使用 JavaScript 客户端库将日志输出到控制台：
+以下代码可用于将 `AzureLogger` 配置为使用 JavaScript SDK 将日志输出到控制台：
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
@@ -157,16 +157,16 @@ callClient = new CallClient({logger: AzureLogger});
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>呼叫客户端库错误代码
+## <a name="calling-sdk-error-codes"></a>呼叫 SDK 错误代码
 
-Azure 通信服务呼叫客户端库使用以下错误代码来帮助解决呼叫问题。 呼叫结束后，这些错误代码通过 `call.callEndReason` 属性公开。
+Azure 通信服务呼叫 SDK 使用以下错误代码，你可以通过这些错误代码来排查呼叫问题。 呼叫结束后，这些错误代码通过 `call.callEndReason` 属性公开。
 
 | 错误代码 | 说明 | 采取的操作 |
 | -------- | ---------------| ---------------|
 | 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 |
 | 404 | 找不到呼叫。 | 确保要呼叫的电话（或要加入的电话）存在。 |
 | 408 | 呼叫控制器超时。 | 等待来自用户终结点的协议消息的呼叫控制器超时。 确保客户端已连接且可用。 |
-| 410 | 本地媒体堆栈或媒体基础结构错误。 | 确保在受支持的环境中使用最新的客户端库。 |
+| 410 | 本地媒体堆栈或媒体基础结构错误。 | 确保在受支持的环境中使用最新的 SDK。 |
 | 430 | 无法将消息传递到客户端应用程序。 | 确保客户端应用程序正在运行且可用。 |
 | 480 | 未注册远程客户端终结点。 | 确保远程终结点可用。 |
 | 481 | 无法处理传入呼叫。 | 通过 Azure 门户提交支持请求。 |

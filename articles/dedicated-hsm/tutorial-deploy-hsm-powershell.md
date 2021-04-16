@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 52b62e463edc51b3d93d7af69623a88abd9cc6be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 5ed5ac90f446f74c54488f6d0cf23adbd63a3e1e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606872"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -68,7 +68,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -Feat
 
 ### <a name="creating-hsm-resources"></a>创建 HSM 资源
 
-HSM 设备预配到客户的虚拟网络中。 这意味着子网的要求。 HSM 依赖 ExpressRoute 网关在虚拟网络和物理设备之间通信。最终如果需要使用 Gemalto 客户端软件来访问 HSM 设备，则虚拟机是必需的。 这些资源已收集到一个带有相应参数文件的模板文件中，以方便使用。 若要获取这些文件，请通过 HSMrequest@Microsoft.com 直接联系 Microsoft。
+HSM 设备预配到客户的虚拟网络中。 这意味着子网的要求。 HSM 依赖 ExpressRoute 网关实现在虚拟网络和物理设备之间通信。最终如果需要使用 Thales 客户端软件来访问 HSM 设备，则虚拟机是必需的。 这些资源已收集到一个带有相应参数文件的模板文件中，以方便使用。 若要获取这些文件，请通过 HSMrequest@Microsoft.com 直接联系 Microsoft。
 
 有了这些文件以后，必须编辑该参数文件，插入资源的首选名称。 这意味着使用“值”: “”格式编辑行。
 
@@ -235,14 +235,14 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 
 ![显示 hsm show 命令输出的屏幕截图。](media/tutorial-deploy-hsm-powershell/output.png)
 
-目前已为一个高度可用的双 HSM 型部署分配了所有资源，并验证了访问权限和运行状态。 进一步的配置或测试涉及更多针对 HSM 设备本身的工作。 因此，应该按照《Gemalto Luna 网络 HSM 7 管理指南》第 7 章中的说明操作，以便初始化 HSM 并创建分区。 在 Gemalto 客户支持门户中注册并获得客户 ID 以后，即可直接从 Gemalto 下载所有文档和软件。 下载客户端软件 7.2 版即可获取所有必需的组件。
+目前已为一个高度可用的双 HSM 型部署分配了所有资源，并验证了访问权限和运行状态。 进一步的配置或测试涉及更多针对 HSM 设备本身的工作。 因此，应该按照《Thales Luna 7 HSM 管理指南》第 7 章中的说明操作，以便初始化 HSM 并创建分区。 在 [Thales 客户支持门户](https://supportportal.thalesgroup.com/csm)中注册并获得客户 ID 以后，即可直接从 Thales 下载所有文档和软件。 下载客户端软件 7.2 版即可获取所有必需的组件。
 
 ## <a name="delete-or-clean-up-resources"></a>删除或清理资源
 
 如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 将设备“归零”的最佳方式是让 HSM 管理员密码错误 3 次（注意：这不是设备管理员，而是实际的 HSM 管理员）。 在设备处于“已归零”状态之前，不能将其作为 Azure 资源删除，这是一种保护密钥材料的安全措施。
 
 > [!NOTE]
-> 如果有 Gemalto 设备配置的问题，则应联系 [Gemalto 客户支持](https://safenet.gemalto.com/technical-support/)。
+> 如果有 Thales 设备配置的问题，则应联系 [Thales 客户支持](https://supportportal.thalesgroup.com/csm)。
 
 如果要删除 Azure 中的 HSM 资源，则可使用以下命令，将“$”变量替换为唯一参数：
 

@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443805"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120089"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>使用 Ubuntu (18.04 x64) 模拟器引用代理的 Device Update for Azure IoT Hub 教程
 
@@ -30,10 +30,8 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 > * 部署映像更新
 > * 监视更新部署
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 ## <a name="prerequisites"></a>先决条件
-* 对 IoT 中心的访问权限。 建议使用 S1（标准）层或更高层级。
+* 创建[设备更新帐户和实例](create-device-update-account.md)，包括配置 IoT 中心（如果尚未这样做）。
 
 ### <a name="download-and-install"></a>下载和安装
 
@@ -104,7 +102,7 @@ PS> wsl --list
   ```
 Device Update for Azure IoT Hub 软件受以下许可条款的约束：
    * [Device update for IoT Hub 许可证](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 使用代理之前，请阅读许可条款。 安装和使用即表示你接受这些条款。 如果不同意许可条款，请不要使用 Device Update for IoT Hub 代理。
 
@@ -149,9 +147,9 @@ Agent running. [main]
 
 1. 登录到 [Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
 
-2. 从左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到 IoT 设备并导航到“设备孪生”。
+2. 在左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到 IoT 设备并导航到“设备孪生”或“模块孪生”。
 
-3. 在“设备孪生”中，通过将任何现有的 Device Update 标记值设置为 null 来将其删除。
+3. 在设备更新代理模块的“模块孪生”中，通过将现有“设备更新”标记值设置为 null 来删除这些标记。 如果在设备更新代理中使用设备标识，请在“设备孪生”中进行这些更改。
 
 4. 按如下所示添加新的 Device Update 标记值。
 

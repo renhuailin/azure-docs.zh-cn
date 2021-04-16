@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: bcf6b2f6b964a056b9d90f08c0586fcbdec5b260
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865615"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167270"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>使用 Azure PowerShell 部署云服务（外延支持）
 
 本文介绍如何使用 `Az.CloudService` PowerShell 模块在具有多个角色（WebRole 和 WorkerRole）和远程桌面扩展的 Azure中部署云服务（外延支持）。 
-
-> [!IMPORTANT]
-> 云服务（外延支持）目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -73,13 +69,14 @@ ms.locfileid: "104865615"
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. 创建公共 IP 地址，并选择性地设置公共 IP 地址的 DNS 标签属性。 如果使用的是静态 IP，则需要将其看作服务配置文件中的保留 IP。  
+7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本] (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
+如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用。 
 
     ```powershell
     $publicIp = New-AzPublicIpAddress -Name “ContosIp” -ResourceGroupName “ContosOrg” -Location “East US” -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel “contosoappdns” -Sku Basic 
     ```
 
-8. 创建网络配置文件对象，并将公共 IP 地址关联到平台创建的负载均衡器的前端。  
+8. 创建网络配置文件对象，并将公共 IP 地址与负载均衡器的前端相关联。 Azure 平台会自动在云服务资源所在的订阅中创建“经典”SKU 负载均衡器资源。 负载均衡器资源是 ARM 中的只读资源。 仅通过云服务部署文件（.cscfg 和 .csdef）支持对该资源的任何更新
 
     ```powershell
     $publicIP = Get-AzPublicIpAddress -ResourceGroupName ContosOrg -Name ContosIp  

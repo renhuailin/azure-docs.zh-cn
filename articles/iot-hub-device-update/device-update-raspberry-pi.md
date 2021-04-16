@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ca689df97e7268a5c0f7c0479e6514b98ffda9f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 143a7c411bea6a451645c860b7b5d12d2aa8d9f5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443448"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121330"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-raspberry-pi-3-b-reference-image"></a>使用 Raspberry Pi 3 B + Reference Image 的 Device Update for Azure IoT Hub 教程
 
@@ -30,10 +30,8 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
 > * 部署映像更新
 > * 监视更新部署
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 ## <a name="prerequisites"></a>先决条件
-* 对 IoT 中心的访问权限。 建议使用 S1（标准）层或更高层级。
+* 创建[设备更新帐户和实例](create-device-update-account.md)，包括配置 IoT 中心（如果尚未这样做）。
 
 ## <a name="download-image"></a>下载映像
 
@@ -75,7 +73,7 @@ Device Update for IoT Hub 支持两种形式的更新：基于映像的更新和
    
 Device Update for Azure IoT Hub 软件受以下许可条款的约束：
    * [Device update for IoT Hub 许可证](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [交付优化客户端许可证](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 使用代理之前，请阅读许可条款。 安装和使用即表示你接受这些条款。 如果不同意许可条款，请不要使用 Device Update for IoT Hub 代理。
 
@@ -83,7 +81,7 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 现在，需要将设备添加到 Azure IoT 中心。  在 Azure IoT 中心内，将为设备生成一个连接字符串。
 
-1. 在 Azure 门户中，启动 Device Update IoT 中心。
+1. 在 Azure 门户中，启动 Azure IoT 中心。
 2. 创建新设备。
 3. 在页面左侧，导航到“资源管理器”>“IoT 设备”> 选择“新建”。
 4. 在“设备 ID”下提供设备的名称 - 确保选中“自动生成密钥”复选框。
@@ -105,9 +103,9 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
  
 使用连接字符串替换 `<device connection string>`
  ```markdown
-    echo "connection_string=<device connection string>" > adu-conf.txt  
-    echo "aduc_manufacturer=ADUTeam" >> adu-conf.txt
-    echo "aduc_model=RefDevice" >> adu-conf.txt
+    echo "connection_string=<device connection string>" > /adu/adu-conf.txt  
+    echo "aduc_manufacturer=ADUTeam" >> /adu/adu-conf.txt
+    echo "aduc_model=RefDevice" >> /adu/adu-conf.txt
    ```
 
 ## <a name="connect-the-device-in-device-update-iot-hub"></a>在 Device Update IoT 中心中连接设备
@@ -129,9 +127,9 @@ Device Update for Azure IoT Hub 软件受以下许可条款的约束：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
 
-2. 从左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到 IoT 设备并导航到“设备孪生”。
+2. 在左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到 IoT 设备并导航到“设备孪生”或“模块孪生”。
 
-3. 在“设备孪生”中，通过将任何现有的 Device Update 标记值设置为 null 来将其删除。
+3. 在设备更新代理模块的“模块孪生”中，通过将现有“设备更新”标记值设置为 null 来删除这些标记。 如果在设备更新代理中使用设备标识，请在“设备孪生”中进行这些更改。
 
 4. 按如下所示添加新的 Device Update 标记值。
 

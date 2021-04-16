@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175424"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055666"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -56,7 +56,10 @@ Microsoft 标识平台仅对已注册的应用程序执行标识和访问管理 
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="Web 浏览器中 Azure 门户的屏幕截图，其中显示了“注册应用程序”窗格。":::
 
-注册完成后，Azure 门户会显示应用注册的“概述”窗格。 你会看到应用程序（客户端）ID。 此值也被称为客户端 ID，它可唯一地标识 Microsoft 标识平台中的应用程序。
+注册完成后，Azure 门户会显示应用注册的“概述”窗格。 你会看到应用程序（客户端）ID。 此值也被称为客户端 ID，它可唯一地标识 Microsoft 标识平台中的应用程序。 
+
+> [!IMPORTANT]
+> 默认情况下，新应用注册对用户隐藏。 当你准备好让用户在其[“我的应用”页](../user-help/my-apps-portal-end-user-access.md)上查看该应用时，可以将其启用。 若要启用该应用，请在 Azure 门户中导航到“Azure Active Directory” > “企业应用程序”并选择该应用。 然后，在“属性”页上将“对用户可见?”切换为“是”。
 
 应用程序的代码（更多情况下通常是应用程序中使用的身份验证库）也会使用客户端 ID。 在验证它从标识平台中接收的安全令牌时，会使用此 ID。
 
@@ -89,7 +92,7 @@ Microsoft 标识平台在重定向 URI 处重定向用户客户端并在身份�
     | **单页应用程序** | 输入应用的重定向 URI。 Microsoft 标识平台在此 URI 处重定向用户客户端并在身份验证后发送安全令牌。<br/><br/>如果要在 JavaScript 中或使用 Angular、Vue.js、React.js 或 Blazor WebAssembly 等框架构建客户端 Web 应用，请选择此平台。 |
     | **iOS/macOS** | 输入应用捆绑 ID。 可在“生成设置”或 Xcode 中的 Info.plist 内找到此信息。<br/><br/>指定捆绑 ID 时，系统会为你生成重定向 URI。 |
     | **Android** | 输入应用的包名称。 可在 AndroidManifest.xml 文件中找到它。 也请生成签名哈希并输入它。<br/><br/>如果指定这些设置，将生成重定向 URI。 |
-    | **移动和桌面应用程序** | 选择其中一个建议的重定向 URI。 或者指定自定义重定向 URI。<br/><br/>对于桌面应用程序，我们建议<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>对于不使用最新的 Microsoft 身份验证库 (MSAL) 或未在使用代理的移动应用程序，请选择此平台。 同时也为桌面应用程序选择此平台。 |
+    | **移动和桌面应用程序** | 选择其中一个建议的重定向 URI。 或者指定自定义重定向 URI。<br/><br/>对于使用嵌入式浏览器的桌面应用程序，我们建议<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>对于使用系统浏览器的桌面应用程序，我们建议<br/>`http://localhost`<br/><br/>对于不使用最新的 Microsoft 身份验证库 (MSAL) 或未在使用代理的移动应用程序，请选择此平台。 同时也为桌面应用程序选择此平台。 |
 1. 选择“配置”以完成平台配置。
 
 ### <a name="redirect-uri-restrictions"></a>重定向 URI 限制

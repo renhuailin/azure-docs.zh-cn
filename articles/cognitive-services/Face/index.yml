@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: dc7ef676663e94d6ad03a5cfed8ae68cfcfc26c3
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: af32e4ebc08811ed5d4e9a583173f45368ba1148
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102507732"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107504946"
 landingContent:
 - title: 关于人脸服务
   linkLists:
@@ -66,12 +66,10 @@ landingContent:
       url: Face-API-How-to-Topics/specify-recognition-model.md
 - title: 使用人脸矩形
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 在 WPF 应用中显示人脸数据
-      url: Tutorials/FaceAPIinCSharpTutorial.md
   - linkListType: how-to-guide
     links:
+    - text: 检测和分析人脸
+      url: Face-API-How-to-Topics/howtodetectfacesinimage.md
     - text: 使用 HeadPose 属性
       url: Face-API-How-to-Topics/how-to-use-headpose.md
 - title: 使用容器

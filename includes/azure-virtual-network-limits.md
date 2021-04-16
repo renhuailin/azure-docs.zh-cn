@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 44245bc3cd9fd1afcfe9a74d60e2f51135a247ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2262290486047c225cec8e8f6bb73242df7258fa
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101734013"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106271586"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
 以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -73,12 +73,12 @@ ms.locfileid: "101734013"
 | 每个 NIC 的规则数（在 NIC 上的所有 IP 上） | 300                           |
 | 前端 IP 配置数              | 600                           |
 | 后端池大小                       | 单个虚拟网络 1000 个 IP 配置 |
-| 每个负载均衡器的后端资源数 <sup>1<sup> | 250                   |
+| 每个负载均衡器的后端资源数 <sup>1<sup> | 1,200                   |
 | 高可用性端口                 | 每个内部前端 1 个       |
 | 每个负载均衡器的出站规则        | 600                           |
 | 每个 VM 的负载均衡器数                   | 2（1 个公共，1 个内部）   |
 
-<sup>1</sup> 限制是最多 150 个资源（独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合）。
+<sup>1</sup> 限制是最多 1,200 个资源（在独立虚拟机资源、可用性集资源和虚拟机规模集放置组的任意组合中）。
 
 **基本负载均衡器**
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579309"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166915"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
 
@@ -62,13 +62,13 @@ Azure SignalR 服务将监视应用程序服务器的检测信号。
 
 经典模式旨在实现现有应用程序的后向兼容性，因此不应将其用于新应用程序。
 
-有关服务模式的详细信息，请参阅[这篇文档](concept-service-mode.md)。
+有关服务模式的详细信息，请参阅 [Azure SignalR 服务中的服务模式](concept-service-mode.md)。
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>能否在无服务器模式下从客户端发送消息？
 
 如果在 SignalR 实例中配置 Upstream，则可以从客户端发送消息。 Upstream 是一组终结点，可接收来自 SignalR 服务的消息和连接事件。 如果未配置 Upstream，则将忽略来自客户端的消息。
 
-有关 Upstream 的详细信息，请参阅[这篇文档](concept-upstream.md)。
+有关 Upstream 的详细信息，请参阅 [Upstream 设置](concept-upstream.md)。
 
 Upstream 目前以公共预览版提供。
 

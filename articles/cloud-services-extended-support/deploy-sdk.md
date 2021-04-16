@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123031"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166881"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>使用 Azure SDK 部署云服务（外延支持）
 
@@ -156,7 +156,8 @@ ms.locfileid: "102123031"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. 创建公共 IP 地址，并选择性地设置公共 IP 地址的 DNS 标签属性。 如果使用的是静态 IP，则需要在服务配置文件中将其引用为保留的 IP。
+7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本] (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
+如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ ms.locfileid: "102123031"
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. 创建网络配置文件对象，并将公共 IP 地址关联到平台创建的负载均衡器的前端。
+8. 创建网络配置文件对象，并将公共 IP 地址与负载均衡器的前端相关联。 Azure 平台会自动在云服务资源所在的订阅中创建“经典”SKU 负载均衡器资源。 负载均衡器资源是 ARM 中的只读资源。 仅通过云服务部署文件（.cscfg 和 .csdef）支持对该资源的任何更新
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 
