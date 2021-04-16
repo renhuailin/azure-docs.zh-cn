@@ -4,12 +4,13 @@ description: 利用 Azure 门户，将第一个 Python 应用部署到应用服�
 ms.topic: quickstart
 ms.date: 04/01/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: f2c5403f16ddd8c3807066418a9a814d94a276b9
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+robots: noindex
+ms.openlocfilehash: 42f29152521da7bf90a550248e8429e51b728b24
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387143"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012350"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux-azure-portal"></a>快速入门：使用 Linux 上的 Azure 应用服务（Azure 门户）创建 Python 应用
 

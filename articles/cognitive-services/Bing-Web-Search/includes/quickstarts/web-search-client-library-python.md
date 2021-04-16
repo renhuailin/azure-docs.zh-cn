@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948156"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104129"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Python 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
@@ -21,9 +21,9 @@ ms.locfileid: "98948156"
 
 
 ## <a name="prerequisites"></a>先决条件
-必应 Web 搜索 SDK 与 Python 2.7、3.3、3.4、3.5 和 3.6 兼容。 建议在本快速入门中使用虚拟环境。
+必应 Web 搜索 SDK 与 Python 2.7 或 3.6+ 兼容。 建议在本快速入门中使用虚拟环境。
 
-* Python 2.7、3.3、3.4、3.5 或 3.6
+* Python 2.7 或 3.6+
 * 适用于 Python 2.7 的 [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * 适用于 Python 3.x 的 [venv](https://pypi.python.org/pypi/virtualenv)
 

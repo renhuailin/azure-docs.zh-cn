@@ -1,25 +1,25 @@
 ---
 title: 快速入门 - 使用 Azure 通信服务向 Web 应用添加 VOIP 呼叫
-description: 本教程介绍如何使用适用于 JavaScript 的 Azure 通信服务呼叫客户端库
+description: 本教程介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK
 author: ddematheu
 ms.author: nimag
-ms.date: 08/11/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7d7b62d6587a568b74d142a2ee6a93587941559d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656598"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645450"
 ---
-本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务呼叫客户端库开始呼叫。
-本文档引用 1.0.0-beta.5 版通话库中的类型。
+本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 开始通话。
 
 > [!NOTE]
-> 本文档使用 1.0.0-beta.6 版的通话客户端库。
+> 本文档使用版本 1.0.0-beta.10 的通话 SDK。
 
-## <a name="prerequisites"></a>先决条件
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
@@ -41,10 +41,20 @@ ms.locfileid: "101656598"
     <h4>Azure Communication Services</h4>
     <h1>Calling Quickstart</h1>
     <input 
+      id="token-input"
+      type="text"
+      placeholder="User access token"
+      style="margin-bottom:1em; width: 200px;"
+    />
+    </div>
+    <button id="token-submit" type="button">
+        Submit
+    </button>
+    <input 
       id="callee-id-input"
       type="text"
       placeholder="Who would you like to call?"
-      style="margin-bottom:1em; width: 200px;"
+      style="margin-bottom:1em; width: 200px; display: block;"
     />
     <div>
       <button id="call-button" type="button" disabled="true">
@@ -68,34 +78,42 @@ import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
+let userTokenCredential = "";
+const userToken = document.getElementById("token-input");
 const calleeInput = document.getElementById("callee-id-input");
+const submitToken = document.getElementById("token-submit");
 const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
 ```
 
 ## <a name="object-model"></a>对象模型
 
-以下类和接口处理 Azure 通信服务呼叫客户端库的某些主要功能：
+以下类和接口用于处理 Azure 通信服务通话 SDK 的某些主要功能：
 
 | 名称                             | 说明                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient 是呼叫客户端库的主入口点。                                                                       |
+| CallClient                       | CallClient 是通话 SDK 的主入口点。                                                                       |
 | CallAgent                        | CallAgent 用于启动和管理呼叫。                                                                                            |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现用于实例化 CallAgent 的 CommunicationTokenCredential 接口。 |
 
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-需要将 `<USER_ACCESS_TOKEN>` 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅[用户访问令牌](../../access-tokens.md)文档。 使用 `CallClient`，通过 `CommunicationTokenCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 将下面的代码添加到 client.js：
+你需要在文本字段中输入资源的有效用户访问令牌，并单击“提交”。 如果还没有可用的令牌，请参阅[用户访问令牌](../../access-tokens.md)文档。 使用 `CallClient`，通过 `CommunicationTokenCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 将下面的代码添加到 client.js：
 
 ```javascript
-async function init() {
-    const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
-    callAgent = await callClient.createCallAgent(tokenCredential);
-    callButton.disabled = false;
-}
-init();
+submitToken.addEventListener("click", async () => {
+  const callClient = new CallClient(); 
+  const userTokenCredential = userToken.value;
+    try {
+      tokenCredential = new AzureCommunicationTokenCredential(userTokenCredential);
+      callAgent = await callClient.createCallAgent(tokenCredential);
+      callButton.disabled = false;
+      submitToken.disabled = true;
+    } catch(error) {
+      window.alert("Please submit a valid token!");
+    }
+})
 ```
 
 ## <a name="start-a-call"></a>开始呼叫
@@ -107,7 +125,7 @@ callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
     call = callAgent.startCall(
-        [{ communicationUserId: userToCall }],
+        [{ id: userToCall }],
         {}
     );
     // toggle button states
@@ -128,6 +146,7 @@ hangUpButton.addEventListener("click", () => {
   // toggle button states
   hangUpButton.disabled = true;
   callButton.disabled = false;
+  submitToken.disabled = false;
 });
 ```
 

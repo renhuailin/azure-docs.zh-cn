@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 49e35687820679a1c06cf19e7a26b3b04a1e1318
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100363232"
 ---
 ## <a name="available-event-types"></a>可用事件类型
@@ -24,7 +24,7 @@ ms.locfileid: "100363232"
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | 当队列或订阅中存在活动消息，但却没有接收器在侦听时会引发此事件。 |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | 当死信队列中存在活动消息，但却没有活动接收器时会引发此事件。 |
 | Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications | 如果在队列或订阅中存在活动消息，即使该特定队列或订阅上有活动侦听器，也会定期引发此事件。 |
-| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | 如果队列或订阅的死信实体中存在消息，即使该特定队列或订阅的死信实体上存在活动的侦听器，则会定期引发。 | 
+| Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications | 如果队列或订阅的死信实体中存在消息，即使该特定队列或订阅的死信实体上有活动侦听器，也会定期引发此事件。 | 
 
 ## <a name="example-event"></a>示例事件
 
@@ -55,7 +55,7 @@ ms.locfileid: "100363232"
 
 #### <a name="deadletter-messages-available-with-no-listener"></a>没有侦听器时有死信消息可用
 
-死信队列事件的架构类似。 对于具有消息但没有活动接收方的每个死信队列，至少会获得一个事件。
+死信队列事件的架构类似。 对于每个有消息但没有活动接收器的死信队列，你会至少收到一个事件。
 
 ```json
 [{
@@ -149,7 +149,7 @@ ms.locfileid: "100363232"
 
 #### <a name="deadletter-messages-available-with-no-listener"></a>没有侦听器时有死信消息可用
 
-死信队列事件的架构类似。 对于具有消息但没有活动接收方的每个死信队列，至少会获得一个事件。
+死信队列事件的架构类似。 对于每个有消息但没有活动接收器的死信队列，你会至少收到一个事件。
 
 ```json
 [{
@@ -230,7 +230,7 @@ ms.locfileid: "100363232"
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Blob 存储事件数据。 |
+| `data` | object | Blob 存储事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -245,14 +245,14 @@ ms.locfileid: "100363232"
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
 | `id` | 字符串 | 事件的唯一标识符。 |
-| `data` | 对象 (object) | Blob 存储事件数据。 |
+| `data` | object | Blob 存储事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 
 ---
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | `namespaceName` | string | 资源所在的服务总线命名空间。 |
 | `requestUri` | string | 发出此事件的特定队列或订阅的 URI。 |

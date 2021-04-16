@@ -10,22 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: f3da6fd75ac485a3e22a428934928795f1feae28
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487903"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554162"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务呼叫 Web 客户端库来构建群组呼叫体验。
+Azure 通信服务的群组通话主图示例演示了如何使用通信服务通话 Web SDK 构建群组通话体验。
 
 在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。
 
 ## <a name="download-code"></a>下载代码
 
-在 [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) 上查找此快速入门的最终代码。
+在 [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) 上查找此示例项目。 可在单独的[分支](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop)中找到具有 [Teams 互操作](../../concepts/teams-interop.md)的示例版本。
 
 ## <a name="overview"></a>概述
 
@@ -48,6 +46,9 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 - **媒体库**：显示参与者的主要阶段。 如果参与者启用了摄像头，则会在此处显示其视频源。 每个参与者都有一个单独的磁贴，上面显示了该参与者的显示名称和视频流（如果有）
 - **标头**：这是主要呼叫控件所在的位置，这些控件可用来切换设置和参与者侧边栏、打开/关闭视频和混音、共享屏幕以及退出呼叫。
 - **侧边栏**：使用标题上的控件进行切换时，会在此处显示参与者和设置信息。 可以使用右上角的“X”关闭该组件。 “参与者”侧边栏将显示参与者列表和邀请更多用户聊天的链接。 “设置”侧边栏可用于配置麦克风和摄像头设置。
+
+> [!NOTE]
+> 基于对 Web 通话 SDK 的限制，系统只呈现一个远程视频流。 有关更多详细信息，请参阅[通话 SDK 流支持](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support)。
 
 下面你将找到有关设置该示例的先决条件和步骤的详细信息。
 
@@ -96,7 +97,7 @@ Azure 通信服务的群组呼叫英雄示例演示了如何使用通信服务�
 
 有关详细信息，请参阅以下文章：
 
-- 熟悉如何[使用呼叫客户端库](../../quickstarts/voice-video-calling/calling-client-samples.md)
+- 自行熟悉如何[使用通话 SDK](../../quickstarts/voice-video-calling/calling-client-samples.md)
 - 详细了解[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)
 
 ### <a name="additional-reading"></a>其他阅读材料

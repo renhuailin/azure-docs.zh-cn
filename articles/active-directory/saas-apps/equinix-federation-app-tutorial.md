@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/27/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735080"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642873"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Equinix Federation App 的集成
 
-本教程介绍如何将 Equinix Federation App 与 Azure Active Directory (Azure AD) 集成。 将 Equinix Federation App 与 Azure AD 集成后，可以：
+本教程介绍如何将 Equinix Federation App 与 Azure Active Directory (Azure AD) 集成。 将 Equinix Federation App 与 Azure AD 集成后，你可以执行以下内容：
 
 * 在 Azure AD 中控制谁有权访问 Equinix Federation App。
 * 可让用户使用其 Azure AD 帐户自动登录到 Equinix Federation App。
@@ -37,7 +37,10 @@ ms.locfileid: "98735080"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Equinix Federation App 支持 SP 发起的 SSO
+* Equinix Federation App 支持 SP 发起的 SSO。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-equinix-federation-app-from-the-gallery"></a>从库中添加 Equinix Federation App
 
@@ -70,20 +73,16 @@ ms.locfileid: "98735080"
 
 1. 在 Azure 门户的“Equinix Federation App”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2` 
-
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`Equinix:<CUSTOM_IDENTIFIER>`
-
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customerprefix>customerportal.equinix.com` 
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Equinix Federation App 客户端支持团队](mailto:prodsecops@equinix.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Equinix Federation App 客户端支持团队](mailto:prodsecops@equinix.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -92,6 +91,7 @@ ms.locfileid: "98735080"
 1. 在“设置 Equinix Federation App”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -128,13 +128,14 @@ ms.locfileid: "98735080"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-* 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 Equinix Federation App 登录 URL，你可在其中启动登录流。 
+直接转到 Equinix Federation App 登录 URL，并在其中启动登录流。
 
-* 直接转到 Equinix Federation App 登录 URL，并在其中启动登录流。
-
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的“Equinix Federation App”磁贴时，会重定向到 Equinix Federation App 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+ > [!NOTE]
+ > 如果尝试使用“测试此应用程序”链接或单击“Equinix Federation App”磁贴来测试 Azure 应用程序，则该应用程序将无法正常运行，因为这是 IdP 启动的 SSO，默认情况下 Equinix 并不支持。  有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Equinix Federation App 后，即可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+配置 Equinix Federation App 后，即可强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+

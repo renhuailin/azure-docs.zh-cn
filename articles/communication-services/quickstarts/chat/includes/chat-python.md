@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: bcbf2137e578f703cf70b1b47952736aa50f7f17
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 31704e705b828cc0070e3b79f5d527cfa9deb0c3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106178363"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386806"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -90,13 +90,11 @@ chat_client = ChatClient(endpoint, CommunicationTokenCredential("<Access Token>"
 使用 `create_chat_thread` 方法创建聊天会话。
 
 - 使用 `topic` 提供一个会话主题；在创建聊天会话后可使用 `update_thread` 函数更新主题。
-- 使用 `thread_participants` 列出要添加到聊天会话中的 `ChatThreadParticipant`，`ChatThreadParticipant` 采用 `CommunicationUserIdentifier` 类型作为 `user`，这是通过[创建用户](../../access-tokens.md#create-an-identity)创建后得到的
+- 使用 `thread_participants` 列出要添加到聊天会话中的 `ChatParticipant`，`ChatParticipant` 采用 `CommunicationUserIdentifier` 类型作为 `user`，这是通过[创建用户](../../access-tokens.md#create-an-identity)创建后得到的
 
 `CreateChatThreadResult` 是创建线程后返回的结果，可以使用它来提取已创建的聊天线程的 `id`。 然后，可以使用此 `id` 通过 `ChatThreadClient` 方法提取 `get_chat_thread_client` 对象。 `ChatThreadClient` 可用于对此聊天线程执行其他聊天操作。
 
 ```python
-from azure.communication.chat import ChatThreadParticipant
-
 topic="test topic"
 
 create_chat_thread_result = chat_client.create_chat_thread(topic)
@@ -208,11 +206,11 @@ chat_thread_client.send_read_receipt(message_id=send_message_result.id)
 
 你还可以使用 `add_participants` 方法将一或多名用户添加到聊天会话，前提是新的访问令牌和标识可用于所有用户。
 
-将返回 `list(tuple(ChatThreadParticipant, CommunicationError))`。 如果已成功添加参与者，则预期会提供一个空列表。 如果在添加参与者时遇到错误，则会在该列表中填充未能添加的参与者以及遇到的错误。
+将返回 `list(tuple(ChatParticipant, CommunicationError))`。 如果已成功添加参与者，则预期会提供一个空列表。 如果在添加参与者时遇到错误，则会在该列表中填充未能添加的参与者以及遇到的错误。
 
 ```python
 from azure.communication.identity import CommunicationIdentityClient
-from azure.communication.chat import ChatThreadParticipant
+from azure.communication.chat import ChatParticipant
 from datetime import datetime
 
 # create 2 users
@@ -225,14 +223,14 @@ new_users = [identity_client.create_user() for i in range(2)]
 # user_id = 'some user id'
 # user_display_name = "Wilma Flinstone"
 # new_user = CommunicationUserIdentifier(user_id)
-# participant = ChatThreadParticipant(
+# participant = ChatParticipant(
 #     user=new_user,
 #     display_name=user_display_name,
 #     share_history_time=datetime.utcnow())
 
 participants = []
 for _user in new_users:
-  chat_thread_participant = ChatThreadParticipant(
+  chat_thread_participant = ChatParticipant(
     user=_user,
     display_name='Fred Flinstone',
     share_history_time=datetime.utcnow()
@@ -263,13 +261,13 @@ if retry:
 - 使用 `results_per_page`、可选、每页返回的最大参与者人数。
 - 使用 `skip`、可选跳过响应中指定位置的参与者。
 
-`[ChatThreadParticipant]` 的迭代器是所列参与者返回的响应
+`[ChatParticipant]` 的迭代器是所列参与者返回的响应
 
 ```python
 chat_thread_participants = chat_thread_client.list_participants()
 for chat_thread_participant_page in chat_thread_participants.by_page():
     for chat_thread_participant in chat_thread_participant_page:
-        print("ChatThreadParticipant: ", chat_thread_participant)
+        print("ChatParticipant: ", chat_thread_participant)
 ```
 
 ## <a name="run-the-code"></a>运行代码

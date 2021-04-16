@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 从 iOS 应用加入 Teams 会议
-description: 本教程介绍如何使用适用于 iOS 的 Azure 通信服务通话客户端库加入 Teams 会议
+description: 本教程介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 加入 Teams 会议
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 68f1abb5335386634874d9696738a8e552ebbe9c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487969"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108160"
 ---
-本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话客户端库加入 Teams 会议。
+本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -178,7 +178,7 @@ struct ContentView_Previews: PreviewProvider {
 ## <a name="get-the-teams-meeting-link"></a>获取 Teams 会议链接
 
 可以使用图形 API 来检索 Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)中对此进行了详细介绍。
-通信服务通话客户端库接受完整的 Teams 会议链接。 此链接将作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta)下访问。 还可以从 Teams 会议邀请本身内的“加入会议”URL 中获取所需的会议信息。
+通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接将作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta)下访问。 还可以从 Teams 会议邀请本身内的“加入会议”URL 中获取所需的会议信息。
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>启动应用并加入 Teams 会议
 

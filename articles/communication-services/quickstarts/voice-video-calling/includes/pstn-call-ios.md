@@ -2,17 +2,17 @@
 author: nikuklic
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/11/2020
+ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 80146b4da376f3a1d43bcecc89a4a335263ac5ad
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 43e3463a3284f57825073888146b38fa14cbf5d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102193696"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109024"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../create-communication-resource.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "102193696"
 ### <a name="prerequisite-check"></a>先决条件检查
 
 - 若要查看与通信服务资源关联的电话号码，请登录到 [Azure 门户](https://portal.azure.com/)，找到通信服务资源，然后从左侧导航窗格中打开“电话号码”选项卡。
-- 可以通过适用于 iOS 的 Azure 通信服务呼叫客户端库来生成和运行应用：
+- 你可以通过适用于 iOS 的 Azure 通信服务通话 SDK 来生成和运行应用：
 
 ## <a name="setting-up"></a>设置
 

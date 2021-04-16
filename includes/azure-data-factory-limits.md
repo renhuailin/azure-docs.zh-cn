@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 10aa9b06af439fe701c53ef736ec691167560f95
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 96c67327a8272a02e677cc40b46c3177e470b684
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102109249"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106125886"
 ---
 Azure 数据工厂是一项多租户服务，具有以下默认限制，目的是确保客户订阅不受彼此工作负荷的影响。 若要将限制提高到订阅的最高限制，请联系支持部门。
 
@@ -49,6 +49,7 @@ Azure 数据工厂是一项多租户服务，具有以下默认限制，目的�
 | 每个集成运行时的数据流的并发数量 | 50 | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 每个工厂每个用户的数据流调试会话的并发数量 | 3 | 3 |
 | 数据流 Azure IR TTL 限制 | 4 小时 |  4 小时 |
+| 中心的元数据实体大小限制 | 2 GB | 请[联系支持人员](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 
 <sup>1</sup> 数据集成单元 (DIU) 用于云到云复制操作，详见[数据集成单元（版本 2）](../articles/data-factory/copy-activity-performance.md#data-integration-units)。 有关计费的信息，请参阅 [Azure 数据工厂定价](https://azure.microsoft.com/pricing/details/data-factory/)。
 

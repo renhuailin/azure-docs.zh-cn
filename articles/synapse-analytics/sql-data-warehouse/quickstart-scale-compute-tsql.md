@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c105fe217834dc9e0e652a42ebf3b526972b228
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676317"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961364"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure Synapse Analytics 中缩放专用 SQL 池（以前称为 SQL DW）中的计算
 
@@ -24,7 +24,7 @@ ms.locfileid: "98676317"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 下载并安装最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。
 
@@ -99,12 +99,12 @@ ms.locfileid: "98676317"
 
 ## <a name="monitor-scale-change-request"></a>监视规模更改请求
 
-若要查看以前的更改请求的进度，可以使用 `WAITFORDELAY` T-SQL 语法来轮询 sys.dm_operation_status 动态管理视图 (DMV)。
+若要查看以前的更改请求的进度，可以使用 `WAITFORDELAY` T-SQL 语法来轮询 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) 动态管理视图 (DMV)。
 
 若要轮询服务对象更改状态，请执行以下操作：
 
 1. 右键单击“master”，并单击“新建查询”。 
-2. 运行以下查询来轮询 sys.dm_operation_status DMV。
+2. 运行以下查询来轮询 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) DMV。
 
     ```sql
     WHILE
