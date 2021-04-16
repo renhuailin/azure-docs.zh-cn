@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680830"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256117"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -169,11 +169,11 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 有关详细信息，请参阅[交通服务文档](/rest/api/maps/traffic)。
 
-### <a name="weather-services-preview"></a>天气服务（预览版） 
+### <a name="weather-services"></a>天气服务
 
 天气服务提供了 API，开发人员可以使用这些 API 来检索特定位置的天气信息。 天气信息包含以下详细信息：观测日期和时间、天气状况的简要说明、天气图标、降水量指示标志、温度和风速信息。 还会返回 RealFeel™ 温度和 UV 指数等其他详细信息。
 
-开发人员可以使用[获取沿路天气 API](/rest/api/maps/weather/getweatheralongroutepreview) 来检索沿特定路线的天气信息。 此外，该服务还支持为受洪水或暴雨等天气灾害影响的中途点生成天气通知。
+开发人员可以使用[获取沿路天气 API](/rest/api/maps/weather/getweatheralongroute) 来检索沿特定路线的天气信息。 此外，该服务还支持为受洪水或暴雨等天气灾害影响的中途点生成天气通知。
 
 使用 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview)，你可以请求过去、当前和将来的雷达图块和卫星图块。
 

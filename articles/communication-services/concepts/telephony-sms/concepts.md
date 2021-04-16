@@ -9,35 +9,30 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c866629677790447d0ed730ae9cc62cb37e338e9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e879b7938eb778d4cdbbef4a970325501a6124db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495498"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932142"
 ---
 # <a name="sms-concepts"></a>短信概念
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-通过 Azure 通信服务，可以使用通信服务短信客户端库来发送和接收短信。 这些客户端库可用于支持客户服务方案、约会提醒、双重身份验证和其他实时通信需求。 通过通信服务短信，可以可靠发送消息，同时还能获得市场活动的可传送性和响应率的相关见解。
+Azure 通信服务允许你使用通信服务短信 SDK 发送和接收短信。 这些 SDK 可用于支持客户服务方案、约会提醒、双重身份验证和其他实时通信需求。 使用通信服务短信，可以在公开传送能力和响应指标的同时可靠地发送消息。
 
-Azure 通信服务短信客户端库的主要功能包括：
+Azure 通信服务短信 SDK 的主要功能包括：
 
 -  简单设置体验，用于将短信功能添加到应用程序。
 - 为美国 A2P（应用程序到个人）用例提供通过免费电话号码实现的高速消息支持。
+- 支持“批量消息传递”，允许一次向多个收件人发送消息。
 - 双向会话功能，支持客户支持、警报和约会提醒等方案。
 - 可靠交付，同时提供从应用程序发送的消息的实时传送报告。
-- 分析功能，可跟踪使用模式和客户参与情况。
+- 分析功能，可跟踪短信使用模式。
 - “选择退出”处理支持，自动检测和执行免费号码的选择退出操作。 美国运营商强制实施美国免费号码的选择退出操作。
-  - STOP - 如果短信接收者希望选择退出，可以向免费电话号码发送“STOP”。 运营商针对 STOP 发送以下默认响应：“网络消息:你已回复“stop”，这会阻止从该号码发送的所有短信。回复“unstop”可再次接收短信。”
-  - START/UNSTOP - 如果接收者希望重新订阅某个免费号码的短信，可以向该免费号码发送“START”或“UNSTOP”。 运营商针对 START/UNSTOP 发送以下默认响应：“网络消息:你已回复“unstop”，将再次从该号码接收短信。”
-  - Azure 通信服务将检测到 STOP 消息，并阻止后续向接收者发送的所有短信。 发送报告将指示发送失败，状态消息为“给定接收者已阻止发送者”。
-  - 系统会将 STOP、UNSTOP 和 START 消息返回给你。 Azure 通信服务建议你监视和实施上述选择退出操作，以确保不再尝试向已选择退出通信的接收者发送短信。
-
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -46,6 +41,6 @@ Azure 通信服务短信客户端库的主要功能包括：
 
 你可能会对下列文档感兴趣：
 
-- 熟悉[短信客户端库](../telephony-sms/sdk-features.md)
+- 自行熟悉[短信 SDK](../telephony-sms/sdk-features.md)
 - 获取支持短信的[电话号码](../../quickstarts/telephony-sms/get-phone-number.md)
 - [Azure 通信服务中的电话号码类型](../telephony-sms/plan-solution.md)

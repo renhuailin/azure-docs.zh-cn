@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731914"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98731914"
 * 让用户使用其 Azure AD 帐户自动登录到 Greenhouse。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -40,7 +40,7 @@ ms.locfileid: "98731914"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Greenhouse 支持 SP  发起的 SSO
+* Greenhouse 支持 SP 和 IDP 发起的 SSO。
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>从库中添加 Greenhouse
 
@@ -73,18 +73,28 @@ ms.locfileid: "98731914"
 
 1. 在 Azure 门户中的 Greenhouse 应用程序集成页上，找到“管理”部分，并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io` 
+    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.greenhouse.io`
+    b. 在“回复 URL”文本框中，使用以下模式之一键入 URL：
+    
+    | 回复 URL|
+    | -------------- |
+    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
+    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
+    |
+
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Greenhouse 客户端支持团队](https://www.greenhouse.io/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Greenhouse 客户端支持团队](https://www.greenhouse.io/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -127,7 +137,7 @@ ms.locfileid: "98731914"
 
     ![SSO 页面的屏幕截图](./media/greenhouse-tutorial/configure.png)
 
-1. 在“单一登录”页面上执行以下步骤。
+1. 在“单一登录”页上执行以下步骤。
 
     ![SSO 配置页面的屏幕截图](./media/greenhouse-tutorial/sso-page.png)
 
@@ -172,15 +182,22 @@ ms.locfileid: "98731914"
       >[!NOTE]
       >Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。
 
-### <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO 
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Greenhouse 登录 URL，可在其中启动登录流。 
+#### <a name="sp-initiated"></a>SP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Greenhouse 登录 URL，可在其中启动登录流。  
 
 * 直接转到 Greenhouse 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 Greenhouse 磁贴时，会重定向到 Greenhouse 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="idp-initiated"></a>IDP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”后，系统应会自动登录到为其设置 SSO 的 Greenhouse 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击“Greenhouse”磁贴时，如果是在 SP 模式下进行配置，系统会重定向到应用程序登录页启动登录流；如果是在 IDP 模式下进行配置，则应会自动登录到为其设置 SSO 的 Greenhouse。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
 
 
 ## <a name="next-steps"></a>后续步骤

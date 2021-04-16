@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031236"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283552"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
 `app` 表达式用于 Azure Monitor 查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。 此表达式适用于在 Azure Monitor 日志查询中包含应用程序数据以及在 Application Insights 查询中跨多个应用程序查询数据。
 
 > [!IMPORTANT]
-> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则不使用 app() 表达式，因为日志数据存储在 Log Analytics 工作区中。 使用 log() 表达式可编写包括多个工作区中的应用程序的查询。 对于同一工作区中的多个应用程序，无需跨工作区查询。
+> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则不使用 app() 表达式，因为日志数据存储在 Log Analytics 工作区中。 使用 workspace() 表达式编写一个查询，使其在多个工作区中包含应用。 对于同一个工作区中的多个应用，则无需跨工作区查询。
 
 ## <a name="syntax"></a>语法
 
@@ -36,7 +36,7 @@ ms.locfileid: "102031236"
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。

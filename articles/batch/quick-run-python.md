@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046804"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 
@@ -28,7 +28,7 @@ ms.locfileid: "88511008"
 
 - Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
-- [Python](https://python.org/downloads) 版本 2.7、3.3 或更高版本，包括 [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
+- [Python](https://python.org/downloads) 版本 2.7 或 3.6，包括 [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

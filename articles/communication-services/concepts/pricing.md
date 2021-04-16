@@ -9,23 +9,20 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495787"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091865"
 ---
 # <a name="pricing-scenarios"></a>定价方案
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Azure 通信服务的价格通常基于即用即付模型。 以下示例中的价格用于说明目的，可能不会反映最新的 Azure 定价。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>语音/视频呼叫和屏幕共享
 
-Azure 通信服务允许向应用程序添加语音/视频呼叫和屏幕共享。 你可以使用 JavaScript、Objective-C (Apple)、Java (Android) 或 .NET 客户端库在应用程序中嵌入该体验。 请参阅我们的[可用客户端库完整列表](./sdk-options.md)。
+Azure 通信服务允许向应用程序添加语音/视频呼叫和屏幕共享。 可以使用 JavaScript、Objective-C (Apple)、Java (Android) 或 .NET SDK 在应用程序中嵌入该体验。 参阅我们的[可用 SDK 完整列表](./sdk-options.md)。
 
 ### <a name="pricing"></a>定价
 
@@ -33,9 +30,9 @@ Azure 通信服务允许向应用程序添加语音/视频呼叫和屏幕共享�
 
 呼叫的每个参与者连接到呼叫的每一分钟都会计入费用。 无论用户是进行视频呼叫、语音呼叫还是屏幕共享，情况都是如此。
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>定价示例：使用 JS 和 iOS 客户端库的音频/视频群呼
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>定价示例：使用 JS 和 iOS SDK 发起音频/视频群呼
 
-Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用 JS 客户端库，Charlie 使用 iOS 客户端库。
+Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用了 JS SDK，Charlie 使用了 iOS SDK。
 
 - 该呼叫总共持续 60 分钟。
 - Alice 和 Bob 参与了整个呼叫。 Alice 将其视频打开了 5 分钟，并将其屏幕共享了 23 分钟。 Bob 在整个呼叫期间（60 分钟）都打开了其视频，并将其屏幕共享了 12 分钟。
@@ -48,9 +45,44 @@ Alice 与其同事 Bob 和 Charlie 进行了一次群呼。 Alice 和 Bob 使用
 
 群呼的总成本：0.48 美元 + 0.172 美元 = 0.652 美元
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>定价示例：一位通信服务 JS 客户端库用户加入计划的 Microsoft Teams 会议
 
-Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JS 客户端库连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-to-a-pstn-number"></a>定价示例：在应用中使用 JS SDK 向 PSTN 号码发起出站呼叫
+
+Alice 在应用中向 Bob 的美国电话号码（以 `+1-425` 开头）发起了 PSTN 呼叫。
+
+- Alice 使用 JS SDK 生成了应用。
+- 呼叫总共持续了 5 分钟。
+
+成本计算
+
+- VoIP 端有 1 名参与者 (Alice) 从应用向通信服务服务器发起呼叫 x 10 分钟 x 每个参与者端每分钟 $0.004 = $0.04
+- PSTN 出站端有 1 名参与方 (Charlie) 从通信服务服务器向美国电话号码发起呼叫 x 10 分钟 x 每个参与者端每分钟 $0.013 = $0.13。
+
+注意：在美国呼叫 `+1-425` 的混合费率为 $0.013。 有关详细信息，请参阅以下链接： https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**群呼总成本**：$0.04 + $0.13 = $0.17
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>定价示例：使用 JS SDK 和 1 个 PSTN 端发起音频群呼
+
+Alice 和 Bob 使用 VOIP 呼叫。 Bob 升级了对 Charlie 的呼叫方式，呼叫的是 Charlie 的 PSTN 号码（以 `+1-425` 开头的美国电话号码）。
+
+- Alice 使用 JS SDK 生成了应用。 他们交谈了 10 分钟，然后呼叫 Charlie 的 PSTN 号码。
+- 在 Bob 将呼叫方式升级为呼叫 Charlie 的 PSTN 号码后，他们三个又交谈了 10 分钟。
+
+成本计算
+
+- VoIP 端有 2 名参与者（Alice 和 Bob）从应用向通信服务服务器发起呼叫 x 20 分钟 x 每个参与者端每分钟 $0.004 = $0.16
+- PSTN 出站端有 1 名参与方 (Charlie) 从通信服务服务器向美国电话号码发起呼叫 x 10 分钟 x 每个参与者端每分钟 $0.013 = $0.13
+
+注意：在美国呼叫 `+1-425` 的混合费率为 $0.013。 有关详细信息，请参阅以下链接： https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv)
+
+**VoIP + 升级呼叫总成本**：$0.16 + $0.13 = $0.29
+
+
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>定价示例：通信服务 JavaScript SDK 用户加入计划的 Microsoft Teams 会议
+
+Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序加入探访。 Bob 将收到一个通过医疗保健提供商网站加入的链接，该网站使用通信服务 JavaScript SDK 连接到会议。 Bob 将使用移动电话通过 Web 浏览器（iPhone 通过 Safari）进入会议。 虚拟探访期间可以聊天。
 
 - 通话总时长为 30 分钟。
 - Alice 和 Bob 参与了整个通话。 Alice 在通话开始五分钟后打开她的视频，并共享屏幕 13 分钟。 Bob 在整个通话期间均打开了视频。
@@ -67,13 +99,13 @@ Alice 医生与她的患者 Bob 会面。 Alice 将从 Teams 桌面应用程序�
 *Alice 的参与费用由她的 Teams 许可证涵盖。 为了方便起见，Azure 发票将显示 Teams 用户与通信服务用户之间产生的分钟数和聊天消息数，但来自 Teams 客户端的这些分钟数和消息数不会产生费用。
 
 **此次探访的总费用**：
-- 用户使用通信服务 JS 客户端库加入：0.12 美元 + 0.0024 美元 = 0.1224 美元
+- 用户使用通信服务 JavaScript SDK 加入：$0.12 + $0.0024 = $0.1224
 - 用户通过 Teams 桌面应用程序加入：0 美元（Teams 许可证涵盖）
 
 
 ## <a name="chat"></a>聊天
 
-借助通信服务，可以利用在 2 个或更多用户之间发送和接收聊天消息的功能来强化应用程序。 聊天客户端库适用于 JavaScript、.NET、Python 和 Java。 请参阅[此页面以了解客户端库](./sdk-options.md)
+借助通信服务，可以利用在 2 个或更多用户之间发送和接收聊天消息的功能来强化应用程序。 聊天 SDK 适用于 JavaScript、.NET、Python 和 Java。 请参阅[此页了解 SDK](./sdk-options.md)
 
 ### <a name="price"></a>价格
 

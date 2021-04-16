@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bc2508220a8c0193efb55eb6cd11f7e151c80be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729598"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>教程：Azure Active Directory 单一登录 (SSO) 与 StatusPage 的集成
 
-本教程介绍如何将 StatusPage 与 Azure Active Directory (Azure AD) 集成。
-将 StatusPage 与 Azure AD 集成提供以下优势：
+本教程介绍如何将 StatusPage 与 Azure Active Directory (Azure AD) 集成。 将 StatusPage 与 Azure AD 集成后，你可以：
 
 * 可以在 Azure AD 中控制谁有权访问 StatusPage。
-* 可让用户使用其 Azure AD 帐户自动登录到 StatusPage（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 让用户使用其 Azure AD 帐户自动登录到 StatusPage。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 StatusPage 的集成，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
-* 已启用 StatusPage 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 StatusPage 单一登录的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* StatusPage 支持 **IDP** 发起的 SSO
+* StatusPage 支持 IDP 发起的 SSO。
 
-## <a name="adding-statuspage-from-the-gallery"></a>从库中添加 StatusPage
+## <a name="add-statuspage-from-the-gallery"></a>从库添加 StatusPage
 
 要配置 StatusPage 与 Azure AD 的集成，需要从库中将 StatusPage 添加到托管 SaaS 应用列表。
 
@@ -65,13 +64,13 @@ ms.locfileid: "98729598"
     1. **[创建 StatusPage 测试用户](#create-statuspage-test-user)** - 在 StatusPage 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户的“AskYourTeam”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -85,7 +84,7 @@ ms.locfileid: "98729598"
     | `https://<subdomain>.statuspage.io/` |
     |
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
+    b. 在“回复 URL”文本框中，使用以下模式之一键入 URL：
 
      | 回复 URL |
     |--------------|
@@ -152,17 +151,17 @@ ms.locfileid: "98729598"
 
 1. 在主工具栏中，单击“管理帐户”  。
 
-    ![显示从 StatusPage 公司站点选择了“管理帐户”的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![显示从 StatusPage 公司站点选择了“管理帐户”的屏幕截图。](./media/statuspage-tutorial/account.png)
 
 1. 单击“单一登录”  选项卡。
 
-    ![显示“单一登录”选项卡的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![显示“单一登录”选项卡的屏幕截图。](./media/statuspage-tutorial/tab.png)
 
 1. 在“SSO 设置”页上，执行以下步骤：
 
-    ![显示“SSO 设置”页的屏幕截图，可在其中输入所述值。](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![显示“SSO 设置”页的屏幕截图，可在其中输入所述值。](./media/statuspage-tutorial/setup.png)
 
-    ![显示“保存配置”按钮的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![显示“保存配置”按钮的屏幕截图。](./media/statuspage-tutorial/configuration.png)
 
     a. 在“SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -182,25 +181,25 @@ StatusPage 支持实时预配。 已在[配置 Azure AD 单一登录](#configure
 
 1. 在顶部菜单中，单击“管理帐户”  。
 
-    ![显示从 StatusPage 公司站点选择了“管理帐户”的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![显示从 StatusPage 公司站点选择了“管理帐户”的屏幕截图。](./media/statuspage-tutorial/account.png)
 
 1. 单击“团队成员”选项卡  。
   
-    ![显示“团队成员”选项卡的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![显示“团队成员”选项卡的屏幕截图。](./media/statuspage-tutorial/sandbox.png) 
 
 1. 单击“添加团队成员”  。
   
-    ![显示“添加团队成员”按钮的屏幕截图。](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![显示“添加团队成员”按钮的屏幕截图。](./media/statuspage-tutorial/team.png) 
 
 1. 在相关文本框中键入要预配的有效用户的“电子邮件地址”、“名字”和“姓氏”    。 
 
-    ![显示“添加用户”对话框的屏幕截图，可在其中输入所述值。](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![显示“添加用户”对话框的屏幕截图，可在其中输入所述值。](./media/statuspage-tutorial/user.png) 
 
 1. 选择“客户端管理员”作为 **角色**。
 
 1. 单击“创建帐户”  。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。
 

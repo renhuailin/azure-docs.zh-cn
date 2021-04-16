@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106781"
 ---
 ## <a name="joining-the-meeting-chat"></a>加入会议聊天 
 
-启用 Teams 互操作性后，通信服务用户可以使用调用客户端库以外部用户身份加入 Teams 通话。 用户加入通话时还会以参与者身份加入会议聊天，在聊天中用户可以与通话中的其他用户发送和接收消息。 用户将无法访问加入通话前发送的聊天消息。 若要加入会议并开始聊天，可以执行后续步骤。
+启用 Teams 互操作性后，通信服务用户可以使用通话 SDK 以外部用户身份加入 Teams 通话。 用户加入通话时还会以参与者身份加入会议聊天，在聊天中用户可以与通话中的其他用户发送和接收消息。 用户将无法访问加入通话前发送的聊天消息。 若要加入会议并开始聊天，可以执行后续步骤。
 
 ## <a name="install-the-chat-packages"></a>安装聊天包
 
-使用 `npm install` 命令安装适用于 JavaScript 的所需通信服务客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的必要通信服务 SDK。
 
 ```console
 npm install @azure/communication-common --save

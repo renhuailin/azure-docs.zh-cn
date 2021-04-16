@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 3d200cd9bccecf03f5313058189e134082a1a357
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 13095824122f1d4b59ecde445efa1ea8bfa60dcd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742613"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063570"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 将 RDS MySQL 联机迁移到 Azure Database for MySQL
 
 可以使用 Azure 数据库迁移服务将 RDS MySQL 实例中的数据库迁移到 [Azure Database for MySQL](../mysql/index.yml)，在迁移期间，源数据库可保持联机状态。 换而言之，实现这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **Employees** 示例数据库从 RDS MySQL 实例迁移到 Azure Database for MySQL。
+
+> [!IMPORTANT]
+> “RDS MySQL 到 Azure Database for MySQL”联机迁移方案将于 2021 年 6 月 1 日被并行化的高性能脱机迁移方案取代。 对于联机迁移，可以将此新产品/服务与[数据传入复制](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)配合使用。 也可将 [MyDumper/MyLoader](https://centminmod.com/mydumper.html) 之类的开源工具与用于联机迁移的数据传入复制配合使用。 
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -206,7 +209,7 @@ call mysql.rds_set_configuration('binlog retention hours', 120);
     > [!NOTE]
     > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-6. 选择“保存”  。
+6. 选择“保存” 。
 
 7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。 
 

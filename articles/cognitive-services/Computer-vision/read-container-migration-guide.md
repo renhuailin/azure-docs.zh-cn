@@ -1,5 +1,5 @@
 ---
-title: 迁移到 Read v3.x OCR 容器
+title: 迁移到 Read v3.x 容器
 titleSuffix: Azure Cognitive Services
 description: 了解如何迁移到 v3 Read OCR 容器
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221147"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284679"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>迁移到 Read v3.x OCR 容器
 
@@ -24,7 +24,7 @@ ms.locfileid: "99221147"
 
 ## <a name="configuration-changes"></a>配置更改
 
-* `ReadEngineConfig:ResultExpirationPeriod` 不再受支持。 Read 容器具有一个内置 Cron 作业，该作业会在 48 小时后删除与请求关联的结果和元数据。
+* `ReadEngineConfig:ResultExpirationPeriod` 不再受支持。 Read OCR 容器具有一个内置 Cron 作业，该作业会在 48 小时后删除与请求关联的结果和元数据。
 * `Cache:Redis:Configuration` 不再受支持。 v3.x 容器中未使用缓存，因此无需进行设置。
 
 ## <a name="api-changes"></a>API 更改
@@ -39,7 +39,7 @@ Read v3.2 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 
 ## <a name="memory-requirements"></a>内存需求
 
-这些要求和建议基于这样的基准：每秒一个请求，使用包含 29 行和总共 803 个字符的经过扫描的业务信函的 8 MB。 下表显示了每个读取容器的最小和建议的资源分配。
+这些要求和建议基于这样的基准：每秒一个请求，使用包含 29 行和总共 803 个字符的经过扫描的业务信函的 8 MB。 下表显示了每个 Read OCR 容器的最小和建议资源分配。
 
 |容器  |最小值 | 建议  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ Read v3.2 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
-* 查看[计算机视觉概述](overview.md)，了解有关识别印刷文本和手写文本的详细信息
-* 有关该容器支持的方法的详细信息，请参阅[计算机视觉 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。
+* 查看 [OCR 概述](overview-ocr.md)，了解有关识别印刷文本和手写文本的详细信息
+* 如需详细了解该容器支持的方法，请参阅[读取 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。
 * 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

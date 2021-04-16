@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e96d205ef1a8f94baa3a0cfe6c5127b6cf570e5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "80420953"
 ---
 本文介绍如何使用 AzCopy 将 VHD 从本地计算机上传到 Azure 托管磁盘，或将托管磁盘复制到其他区域。 此过程（直接上传）还允许你将最大大小为 32 TiB 的 VHD 直接上传到托管磁盘。 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 超级磁盘尚不支持此功能。

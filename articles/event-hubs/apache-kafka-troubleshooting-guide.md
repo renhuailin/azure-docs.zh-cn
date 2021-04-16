@@ -3,12 +3,12 @@ title: 排查适用于 Apache Kafka 的 Azure 事件中心的问题
 description: 本文介绍如何排查适用于 Apache Kafka 的 Azure 事件中心的问题
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061421"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314076"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>针对事件中心的 Apache Kafka 故障排除指南
 本文提供的故障排除技巧适用于你在使用适用于 Apache Kafka 的事件中心时可能会遇到的问题。 
@@ -67,5 +67,5 @@ org.apache.kafka.common.errors.UnknownServerException: The server experienced an
 
 - [针对事件中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
 - [针对事件中心的 Apache Kafka 迁移指南](apache-kafka-migration-guide.md)
-- [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.md)
+- [常见问题解答 - 用于 Apache Kafka 的事件中心](apache-kafka-frequently-asked-questions.yml)
 - [建议的配置](apache-kafka-configurations.md)

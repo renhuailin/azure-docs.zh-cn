@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: b4a63f76cbcd9e98295f5edcf7ff2d06979e6556
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f968572a357bb3c98d9c3133a7ec0a0a94dbf93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102234371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958081"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>快速入门：适用于 JavaScript 的人脸客户端库
 
@@ -24,7 +24,7 @@ ms.locfileid: "102234371"
 
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-person-group)
+* [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 [参考文档](/javascript/api/@azure/cognitiveservices-face/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face) | [示例](/samples/browse/?products=azure&term=face&languages=javascript)
@@ -79,7 +79,7 @@ const uuid = require("uuid/v4");
 > [!IMPORTANT]
 > 转到 Azure 门户。 如果你在“先决条件”部分创建的人脸资源部署成功，请单击“后续步骤”下的“转到资源”按钮  。 在资源的“密钥和终结点”页的“资源管理”下可以找到密钥和终结点 。 
 >
-> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)文章。
+> 完成后，请记住将密钥从代码中删除，并且永远不要公开发布该密钥。 对于生产环境，请考虑使用安全的方法来存储和访问凭据。 有关详细信息，请参阅认知服务[安全性](../../../cognitive-services-security.md)文章。
 
 ```javascript
 key = "<paste-your-face-key-here>"
@@ -106,7 +106,7 @@ endpoint = "<paste-your-face-endpoint-here>"
 * [对客户端进行身份验证](#authenticate-the-client)
 * [检测图像中的人脸](#detect-faces-in-an-image)
 * [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-person-group)
+* [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
 > [!TIP]
@@ -114,7 +114,7 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-使用终结点和密钥实例化某个客户端。 使用密钥创建 [ApiKeyCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials) 对象，并使用该对象在终结点中创建 [FaceClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/faceclient) 对象 。
+使用终结点和密钥实例化某个客户端。 使用密钥创建 [ApiKeyCredentials](/javascript/api/@azure/ms-rest-js/apikeycredentials) 对象，并使用该对象在终结点中创建 [FaceClient](/javascript/api/@azure/cognitiveservices-face/faceclient) 对象 。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="credentials":::
 
@@ -163,27 +163,27 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 [识别](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作采用一个人（或多个人）的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)（面部特征已知的不同 [Person](/javascript/api/@azure/cognitiveservices-face/person) 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
 
-### <a name="add-faces-to-person-group"></a>将人脸添加到人员组
+### <a name="add-faces-to-persongroup"></a>将人脸添加到人员组
 
 创建以下函数以将人脸添加到 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="add_faces":::
 
-### <a name="wait-for-training-of-person-group"></a>等待人员组的训练
+### <a name="wait-for-training-of-persongroup"></a>等待人员组的培训
 
-创建以下 helper 函数来等待人员组完成训练。
+创建以下帮助程序函数，静待人员组完成培训。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="wait_for_training":::
 
-### <a name="create-a-person-group"></a>创建人员组
+### <a name="create-a-persongroup"></a>创建人员组
 
 以下代码：
-- 创建 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)
+- 创建 [PersonGroup](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/persongroup)
 - 通过调用你以前定义的 `AddFacesToPersonGroup` 将人脸添加到人员组。
-- 训练该人员组。
+- 训练人员组。
 - 识别该人员组中的人脸。
 
-现已准备好在验证、识别或分组操作中使用此 **Person** 组及其关联的 **Person** 对象。
+现已准备好在“验证”、“识别”或“分组”操作中使用此人员组及其关联的人员对象。
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="identify":::
 
@@ -216,7 +216,7 @@ node index.js
 此快速入门介绍了如何使用适用于 JavaScript 的人脸客户端库来执行基本的人脸识别任务。 接下来，请在参考文档中详细了解该库。
 
 > [!div class="nextstepaction"]
-> [人脸 API 参考 (JavaScript)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-face/)
+> [人脸 API 参考 (JavaScript)](/javascript/api/@azure/cognitiveservices-face/)
 
 * [什么是人脸服务？](../../overview.md)
 * 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) 上找到此示例的源代码。

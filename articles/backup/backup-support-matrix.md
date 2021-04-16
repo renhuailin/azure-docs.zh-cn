@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564460"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284385"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -151,8 +151,8 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM 支持。 经典 VM 不支持。 | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
-| SQL/SAP HANA | 预览                                                      | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM 支持。 经典 VM 不支持。 | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部、UG 爱荷华州和 UG 弗吉尼亚州以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
+| SQL/SAP HANA | 预览                                                      | 在除法国中部、澳大利亚中部、南非北部、阿联酋北部、瑞士北部、德国中西部、挪威东部、UG 爱荷华州和 UG 弗吉尼亚州以外的所有 Azure 公共区域和主权区域提供。 <br>若要了解它在这些区域的使用，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) |
 | MARS 代理/本地  | 否                                                           | 空值               |
 | AFS（Azure 文件共享）                 | 否                                                           | 空值               |
 

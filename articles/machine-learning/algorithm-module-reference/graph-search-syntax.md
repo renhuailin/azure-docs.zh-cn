@@ -6,28 +6,31 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 8/24/2020
-ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: likebupt
+ms.author: keli19
+ms.date: 03/24/2021
+ms.openlocfilehash: 74cf0b897529e8bb198b6f82a57e187662a4a285
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93420761"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259212"
 ---
 # <a name="graph-search-query-syntax"></a>Graph 搜索查询语法
 
-在本文中，你将了解 Azure 机器学习中的图形搜索查询语法。 利用图形搜索功能，可按节点的名称和属性来搜索节点。 
+本文介绍 Azure 机器学习中的图形搜索功能。 
 
- ![显示示例图形搜索体验的动画屏幕截图](media/search/graph-search.gif)
+使用图形搜索可以在调试或生成管道时快速导航节点。 可以在工具栏的输入框中，或在左侧面板中的“搜索”选项卡下键入关键字或查询来触发搜索。 所有匹配的结果都将在画布中以黄色突出显示，如果你在左侧面板中选择一个结果，画布中的节点将以红色突出显示。
 
-图形搜索支持针对节点名称和注释进行全文关键字搜索。 也可以针对节点属性（如 runStatus、duration、computeTarget）进行筛选。 关键字搜索基于 Lucene 查询。 完整的搜索查询如下所示：  
+![显示示例图形搜索体验的屏幕截图](media/search/graph-search-0322.png)
 
-[lucene 查询 | [筛选器查询] 
+图形搜索支持针对节点名称和注释进行全文关键字搜索。 此外，你也可以针对节点属性（如 runStatus、duration、computeTarget）进行筛选。 关键字搜索基于 Lucene 查询。 完整的搜索查询如下所示：  
+
+**[[lucene 查询] | [筛选器查询]]** 
 
 你可以使用 Lucene 查询或筛选器查询。 若要同时使用这两种查询，请使用 | 分隔符。 筛选器查询的语法比 Lucene 查询的语法更严格。 因此，如果可以将客户输入分析为这两种查询，将会应用筛选器查询。
 
+例如，`data OR model | compute in {cpucluster}`，这是为了搜索名称或注释包含 `data` 或 `model` 且 compute 为 cpucluster 的节点。
  
 
 ## <a name="lucene-query"></a>Lucene 查询
@@ -68,6 +71,8 @@ ms.locfileid: "93420761"
 - 计算
 - duration
 - reuse
+- 发布
+- 标记
 
 并使用以下运算符：
 

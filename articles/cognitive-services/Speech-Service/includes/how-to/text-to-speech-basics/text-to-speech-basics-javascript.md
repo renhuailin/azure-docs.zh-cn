@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 95bc737f8a1b9b0a35b80ca2a80a7245ba407b18
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428171"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105110"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -30,9 +30,9 @@ ms.locfileid: "102428171"
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
 需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK</a>，然后才能执行操作。 根据你的平台，使用以下说明：
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
 class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
+- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
 
 另外，请根据目标环境使用以下项之一：
 
@@ -162,14 +162,14 @@ function synthesizeSpeech() {
 * 将结果与其他 API 或服务相集成。
 * 修改音频数据、写入自定义 `.wav` 标头，等等。
 
-可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig` 块，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `undefined`。 
+可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig` 块，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `undefined`。
 
 > [!NOTE]
 > 如果为 `AudioConfig` 传递 `undefined`，而不是像在前面的扬声器输出示例中那样省略它，则默认不会在当前处于活动状态的输出设备上播放音频。
 
-这一次，请将结果保存到 [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) 变量。 `SpeechSynthesisResult.audioData` 属性返回输出数据的 `ArrayBuffer`，即默认的浏览器流类型。 对于服务器代码，请将 arrayBuffer 转换为缓冲区流。 
+这一次，请将结果保存到 [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) 变量。 `SpeechSynthesisResult.audioData` 属性返回输出数据的 `ArrayBuffer`，即默认的浏览器流类型。 对于服务器代码，请将 arrayBuffer 转换为缓冲区流。
 
-以下代码适用于客户端代码。 
+以下代码适用于客户端代码。
 
 ```javascript
 function synthesizeSpeech() {
@@ -189,9 +189,9 @@ function synthesizeSpeech() {
 }
 ```
 
-在此处，可以使用生成的 `ArrayBuffer` 对象来实现任何自定义行为。 ArrayBuffer 是浏览器中接收的并使用此格式播放的常见类型。 
+在此处，可以使用生成的 `ArrayBuffer` 对象来实现任何自定义行为。 ArrayBuffer 是浏览器中接收的并使用此格式播放的常见类型。
 
-对于基于服务器的任何代码，如果需要以流的形式使用数据，则需要将对象转换为流，而不是 ArrayBuffer。 
+对于基于服务器的任何代码，如果需要以流的形式使用数据，则需要将对象转换为流，而不是 ArrayBuffer。
 
 ```javascript
 function synthesizeSpeech() {
@@ -342,3 +342,11 @@ function synthesizeSpeech() {
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>获取人脸姿态事件
+
+语音可以是推动面部表情动画的好办法。
+[视素](../../../how-to-speech-synthesis-viseme.md)通常用以表示所观察语音中的关键姿态，包括在发出特定音素时嘴唇、下巴和舌头等的位置。
+你可以在语音 SDK 中订阅视素事件。
+然后，你可以应用视素事件，将字符的表面以语音音频播放形式进行动画处理。
+了解[如何取得视素事件](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)。

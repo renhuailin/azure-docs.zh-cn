@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 8ff54a40120bed040ec25fb3f18385dba3b0bf11
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5168dfb531c40a3efeef978abf65473ee59d2921
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063655"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255590"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>通过适用于 JavaScript 的 Microsoft 身份验证库来使用 Azure AD B2C
 
@@ -215,6 +215,6 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 详细了解 Azure AD B2C 概念：
 
-- [用户流](../../active-directory-b2c/tutorial-create-user-flows.md)
-- [自定义策略](../../active-directory-b2c/custom-policy-get-started.md)
+- [用户流](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-user-flow)
+- [自定义策略](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [UX 自定义](../../active-directory-b2c/configure-user-input.md)
