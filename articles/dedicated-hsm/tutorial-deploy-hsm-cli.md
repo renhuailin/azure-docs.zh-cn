@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606821"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>教程：使用 Azure CLI 将 HSM 部署到现有虚拟网络中
 
@@ -233,14 +233,14 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 
 ![屏幕截图显示了 PowerShell 窗口中的输出。](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-目前已为一个高度可用的双 HSM 型部署分配了所有资源，并验证了访问权限和运行状态。 进一步的配置或测试涉及更多针对 HSM 设备本身的工作。 因此，应该按照《Thales Luna 网络 HSM 7 管理指南》第 7 章中的说明操作，以便初始化 HSM 并创建分区。 在 Thales 客户支持门户中注册并获得客户 ID 以后，即可直接从 Thales 下载所有文档和软件。 下载客户端软件 7.2 版即可获取所有必需的组件。
+目前已为一个高度可用的双 HSM 型部署分配了所有资源，并验证了访问权限和运行状态。 进一步的配置或测试涉及更多针对 HSM 设备本身的工作。 因此，应该按照《Thales Luna 7 HSM 管理指南》第 7 章中的说明操作，以便初始化 HSM 并创建分区。 在 [Thales 客户支持门户](https://supportportal.thalesgroup.com/csm)中注册并获得客户 ID 以后，即可直接从 Thales 下载所有文档和软件。 下载客户端软件 7.2 版即可获取所有必需的组件。
 
 ## <a name="delete-or-clean-up-resources"></a>删除或清理资源
 
 如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 将设备“归零”的最佳方式是让 HSM 管理员密码错误 3 次（注意：这不是设备管理员，而是实际的 HSM 管理员）。 在设备处于“已归零”状态之前，不能将其作为 Azure 资源删除，这是一种保护密钥材料的安全措施。
 
 > [!NOTE]
-> 如果有 Thales 设备配置的问题，则应联系 [Thales 客户支持](https://safenet.gemalto.com/technical-support/)。
+> 如果有 Thales 设备配置的问题，则应联系 [Thales 客户支持](https://supportportal.thalesgroup.com/csm)。
 
 如果已完成此资源组中所有资源的相关操作，则可使用以下命令将其全部删除：
 

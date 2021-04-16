@@ -1,25 +1,27 @@
 ---
 title: Azure 通信服务的 Teams 互操作入门
 titleSuffix: An Azure Communication Services quickstart
-description: 在本快速入门中，你将了解如何通过 Azure 通信聊天客户端库加入 Teams 会议
+description: 本快速入门介绍如何通过 Azure 通信聊天 SDK 加入 Teams 会议
 author: askaur
 ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 75580931b2df33b02b9759b6faaa5bec548daaae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ba3a589c5d0f09f24950bd3fee8edc7f4dcd4601
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496162"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169056"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入门：将你的聊天应用连接到 Teams 会议
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
 > 若要启用/禁用 [Teams 租户互操作性](../../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
 
-通过使用 JavaScript 客户端库将聊天解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。 
+通过使用 JavaScript SDK 将聊天解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。 
 
 ## <a name="prerequisites"></a>先决条件 
 

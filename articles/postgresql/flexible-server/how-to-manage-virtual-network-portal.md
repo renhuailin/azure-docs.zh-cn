@@ -1,17 +1,17 @@
 ---
 title: 管理虚拟网络 - Azure 门户 - Azure Database for PostgreSQL 灵活服务器
 description: 使用 Azure 门户为 Azure Database for PostgreSQL 灵活服务器创建和管理虚拟网络
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8a3c983a60dc542cf83f9e818b7f9c1f20265b49
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: d5b60cfeb3bfce1253ece3708e6b48ce6bcb0b4f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552353"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226899"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户为 Azure Database for PostgreSQL 灵活服务器创建和管理虚拟网络
 

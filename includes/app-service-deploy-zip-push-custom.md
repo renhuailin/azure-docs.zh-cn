@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 0019e50615f3e66778709ad8cb28f92967c66e2e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018408"
 ---
 ## <a name="deployment-customization"></a>部署自定义
@@ -17,4 +17,4 @@ ms.locfileid: "96018408"
 
 `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-使用 .zip 推送部署时，此设置默认为“false”  。 持续集成部署的设置默认为“true”  。 设置为“true”时，在部署期间将使用与部署相关的设置  。 可以将这些设置配置为应用设置或在位于 .zip 文件根目录中的 .deployment 配置文件中进行配置。 有关详细信息，请参阅部署参考中的 [Repository and deployment-related settings](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)（存储库和与部署相关的设置）。
+使用 .zip 推送部署时，此设置默认为“false”。 持续集成部署的设置默认为“true”。 设置为“true”时，在部署期间将使用与部署相关的设置。 可以将这些设置配置为应用设置或在位于 .zip 文件根目录中的 .deployment 配置文件中进行配置。 有关详细信息，请参阅部署参考中的 [Repository and deployment-related settings](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)（存储库和与部署相关的设置）。

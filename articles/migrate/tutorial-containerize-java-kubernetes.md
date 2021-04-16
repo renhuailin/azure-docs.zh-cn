@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466586"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561060"
 ---
-# <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>容器化 Java Web 应用程序并迁移到 Azure Kubernetes 服务
+# <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>将 Java Web 应用容器化并迁移到 Azure Kubernetes 服务
 
 在本文中，你将学习如何容器化 Java Web 应用程序（在 Apache Tomcat 上运行）并使用 Azure Migrate: 应用容器化工具将其迁移到 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/)。 容器化进程不需要访问代码库，并提供一种简单的方法来容器化现有应用程序。 该工具的工作原理是使用服务器上应用程序的运行状态来确定应用程序组件，并帮助你将它们打包到容器映像中。 然后，可以将容器化应用程序部署到 Azure Kubernetes Service (AKS)。
 
@@ -59,7 +59,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 **要求** | **详细信息**
 --- | ---
-**确定要安装工具的计算机** | 用于安装和运行 Azure Migrate: 应用容器化工具的 Windows 计算机。 Windows 计算机可以是服务器（Windows Server 2016 或更高版本）或客户端 (Windows 10) 操作系统，这意味着该工具也可在桌面上运行。 <br/><br/> 运行该工具的 Windows 计算机应该与托管要容器化的 ASP.NET 应用程序的服务器/虚拟机具有网络连接。<br/><br/> 确保运行 Azure Migrate: 应用容器化工具的 Windows 计算机上有 6 GB 的可用空间，用于存储应用程序项目。 <br/><br/> Windows 计算机应可以直接或通过代理访问 Internet。 <br/> <br/>在运行应用容器化帮助程序工具和应用程序服务器的计算机上安装 Microsoft Web 部署工具（如果尚未安装）。 可从[此处](https://aka.ms/webdeploy3.6)下载该工具
+**确定要安装工具的计算机** | 用于安装和运行 Azure Migrate: 应用容器化工具的 Windows 计算机。 Windows 计算机可以是服务器（Windows Server 2016 或更高版本）或客户端 (Windows 10) 操作系统，这意味着该工具也可在桌面上运行。 <br/><br/> 运行该工具的 Windows 计算机应该可以通过网络连接到那些托管要容器化的 Java Web 应用程序的服务器/虚拟机。<br/><br/> 确保运行 Azure Migrate: 应用容器化工具的 Windows 计算机上有 6 GB 的可用空间，用于存储应用程序项目。 <br/><br/> Windows 计算机应可以直接或通过代理访问 Internet。
 **应用程序服务器** | - 在运行要容器化的 Java 应用程序的服务器的端口 22 上启用安全外壳 (SSH) 连接。 <br/>
 **Java Web 应用程序** | 该工具当前支持 <br/><br/> - 在 Tomcat 8 或更高版本上运行的应用程序。<br/> - Ubuntu Linux 16.04/18.04/20.04、Debian 7/8、CentOS 6/7、Red Hat Enterprise Linux 5/6/7 上的应用程序服务器。 <br/> - 使用 Java 7 或更高版本的应用程序。  <br/><br/> 该工具当前不支持 <br/><br/> - 运行多个 Tomcat 实例的应用程序服务器 <br/>  
 
@@ -104,7 +104,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 3. 使用命令运行安装脚本
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>启动应用容器化工具
@@ -178,7 +178,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 ### <a name="externalize-file-system-dependencies"></a>外部化文件系统依赖项
 
- 可以添加应用程序使用的其他文件夹。 指定它们是否应为容器映像的一部分，或者是否要通过 Azure 文件共享上的永久性卷进行外部化。 对于将状态存储在容器外部或将其他静态内容存储在文件系统上的有状态应用程序，使用永久性卷非常有用。 [了解详细信息](https://docs.microsoft.com/azure/aks/concepts-storage)
+ 可以添加应用程序使用的其他文件夹。 指定它们是否应为容器映像的一部分，或者是否要通过 Azure 文件共享上的永久性卷进行外部化。 对于将状态存储在容器外部或将其他静态内容存储在文件系统上的有状态应用程序，使用永久性卷非常有用。 [了解详细信息](../aks/concepts-storage.md)
 
 1. 单击“应用文件夹”下的“编辑”，查看检测到的应用程序文件夹。 检测到的应用程序文件夹已被识别为应用程序所需的必需项目，并将复制到容器映像中。
 
@@ -194,7 +194,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 ## <a name="build-container-image"></a>生成容器映像
 
 
-1. **选择 Azure 容器注册表**：使用下拉列表选择将用于生成和存储应用容器映像的 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。 可以使用现有的 Azure 容器注册表，也可以选择使用“新建注册表”选项创建一个新的注册表。
+1. **选择 Azure 容器注册表**：使用下拉列表选择将用于生成和存储应用容器映像的 [Azure 容器注册表](../container-registry/index.yml)。 可以使用现有的 Azure 容器注册表，也可以选择使用“新建注册表”选项创建一个新的注册表。
 
     ![应用 ACR 选择的屏幕截图。](./media/tutorial-containerize-apps-aks/build-java-app.png)
 

@@ -4,12 +4,12 @@ description: 本文提供了 GitHub 上 Azure 事件中心的示例列表。
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e0f8026683302f6b54924625b132e79cb194bad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b7cd4a1ca08f359a2328d7a92239516c39d7e62
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87499414"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311594"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
 可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](./index.yml)的主要功能。 本文对可用示例进行了分类和介绍，每个示例均具有链接。
@@ -60,4 +60,4 @@ ms.locfileid: "87499414"
 
 - [事件中心概述](./event-hubs-about.md)
 - [事件中心功能](event-hubs-features.md)
-- [事件中心常见问题](event-hubs-faq.md)
+- [事件中心常见问题](event-hubs-faq.yml)

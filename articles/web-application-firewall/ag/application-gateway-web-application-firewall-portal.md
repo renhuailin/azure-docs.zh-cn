@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/16/2020
+ms.date: 03/25/2021
 ms.author: victorh
-ms.openlocfilehash: b9733eeb0d9941f6e23dcc9c0fa4dba60f4e4d30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 35bede052f06c0fcffe46460a376d10690fd4417
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94561023"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559599"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -42,11 +42,9 @@ ms.locfileid: "94561023"
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的虚拟网络，或者使用现有的虚拟网络。 本示例将创建新的虚拟网络。 可以在创建应用程序网关的同时创建虚拟网络。 在独立的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
+1. 选择 Azure 门户左侧菜单上的“创建资源”。 此时会显示“新建”窗口。
 
-选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。
-
-选择“网络”，然后在“特色”列表中选择“应用程序网关” 。
+2. 选择“网络”，然后在“特色”列表中选择“应用程序网关” 。
 
 ### <a name="basics-tab"></a>“基本信息”选项卡
 
@@ -60,7 +58,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 2.  Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，或者使用现有的虚拟网络。 在此示例中，将在创建应用程序网关的同时创建新的虚拟网络。 在独立的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
-    在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
+    在“配置虚拟网络”下，选择“新建”以创建一个新的虚拟网络 。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
     - **名称**：输入 *myVNet* 作为虚拟网络的名称。
 
@@ -82,7 +80,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
    > [!NOTE]
    > 对于应用程序网关 v2 SKU，只能选择 **公共** 前端 IP 配置。 目前尚未为此 v2 SKU 启用专用前端 IP 配置。
 
-2. 为“公共 IP 地址”选择“新建”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
+2. 为“公共 IP 地址”选择“新增”，输入“myAGPublicIPAddress”作为公共 IP 地址名称，然后选择“确定” 。 
 
      ![新建应用程序网关：前端](../media/application-gateway-web-application-firewall-portal/application-gateway-create-frontends.png)
 
@@ -90,9 +88,9 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 ### <a name="backends-tab"></a>“后端”选项卡
 
-后端池用于将请求路由到为请求提供服务的后端服务器。 后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，将使用应用程序网关创建空的后端池，然后将后端目标添加到后端池。
+后端池用于将请求路由到为请求提供服务的后端服务器。 后端池可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，你将使用你的应用程序网关创建一个空后端池，然后将后端目标添加到该后端池。
 
-1. 在“后端”选项卡上，选择“+添加后端池”   。
+1. 在“后端”选项卡上，选择“添加后端池” 。
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
@@ -109,7 +107,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 在“配置”选项卡上，将连接使用传递规则创建的前端和后端池。
 
-1. 选择“传递规则”列中的“添加规则”   。
+1. 选择“传递规则”列中的“添加传递规则” 。
 
 2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
 
@@ -124,7 +122,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 4. 在“后端目标”选项卡上，为“后端目标”选择“myBackendPool”    。
 
-5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置   。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”    。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。 
+5. 对于“HTTP 设置”，请选择“新建”以添加新的 HTTP 设置 。 HTTP 设置将决定传递规则的行为。 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”    。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。 
 
      ![新建应用程序网关：HTTP 设置](../media/application-gateway-web-application-firewall-portal/application-gateway-create-httpsetting.png)
 
@@ -158,12 +156,12 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
     - **资源组**：选择 **myResourceGroupAG** 作为资源组名称。
     - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
-    - **用户名**：输入 *azureuser* 作为管理员用户名。
-    - **密码**：输入 *Azure123456!* 作为管理员密码。
+    - **用户名**：为管理员用户名输入一个名称。
+    - **密码**：输入管理员密码。
 4. 接受其他默认值，然后选择“下一步:**磁盘”** 。  
 5. 接受“磁盘”**选项卡的默认值**，然后选择“下一步:**网络”** 。
 6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为 **虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”** 。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
-7. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
+7. 在“管理”选项卡上，将“启动诊断”设置为“禁用”  。 接受其他默认值，然后选择“复查 + 创建”。
 8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。
 
@@ -175,7 +173,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
     ![安装自定义扩展](../media/application-gateway-web-application-firewall-portal/application-gateway-extension.png)
 
-2. 运行以下命令以在虚拟机上安装 IIS： 
+2. 设置你的环境的位置参数，然后运行以下命令在虚拟机上安装 IIS： 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -199,48 +197,49 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 3. 选择“myBackendPool”。
 
-4. 在“目标”下，从下拉列表中选择“虚拟机”。
+4. 在“目标”类型下，从下拉列表中选择“虚拟机” 。
 
-5. 在“虚拟机”和“网络接口” 下，从下拉列表中选择 **myVM** 和 **myVM2** 虚拟机及其关联的网络接口。
+5. 在“目标”下，从下拉列表中选择“myVM”关联的网络接口 。
+1. 针对 **myVM2** 重复上述操作。
 
-    ![添加后端服务器](../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png)
+   :::image type="content" source="../media/application-gateway-web-application-firewall-portal/application-gateway-backend.png" alt-text="添加后端服务器":::
+
 
 6. 选择“保存”。
 
 7. 等待部署完成之后再继续下一步。
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>创建存储帐户和配置诊断
-
-### <a name="create-a-storage-account"></a>创建存储帐户
-
-在本文中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Azure Monitor 日志或事件中心来记录数据。
-
-1. 选择 Azure 门户左上角的“创建资源”。
-1. 选择“存储”，然后选择“存储帐户” 。
-1. 对于“资源组”，选择 **myResourceGroupAG** 作为资源组。
-1. 键入 *myagstore1* 作为存储帐户的名称。
-1. 接受其他设置的默认值，然后选择“查看 + 创建”。
-1. 检查设置，然后选择“创建”。
-
-### <a name="configure-diagnostics"></a>配置诊断
-
-配置诊断以将数据记录到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 日志中。
-
-1. 在左侧菜单中，选择“所有资源”，然后选择“myAppGateway”。
-2. 在“监视”下，选择“诊断设置”。
-3. 选择“添加诊断设置”。
-4. 输入 *myDiagnosticsSettings* 作为诊断设置的名称。
-5. 选择“存档到存储帐户”，然后选择“配置”以选择前面创建的 *myagstore1* 存储帐户，然后选择“确定”。
-6. 选择要收集和保留的应用程序网关日志。
-7. 选择“保存”  。
-
-    ![配置诊断](../media/application-gateway-web-application-firewall-portal/application-gateway-diagnostics.png)
-
+   
 ## <a name="create-and-link-a-web-application-firewall-policy"></a>创建并链接 Web 应用程序防火墙策略
 
-所有 WAF 自定义和设置都位于名为 WAF 策略的独立对象中。 策略必须与应用程序网关相关联。 要创建 WAF 策略，请参阅[创建 WAF 策略](create-waf-policy-ag.md)。 创建策略后，可在“关联的应用程序网关”选项卡的 WAF 策略中将策略关联到 WAF（或单个侦听器）。 
+所有 WAF 自定义和设置都位于名为 WAF 策略的独立对象中。 策略必须与应用程序网关相关联。 
 
-![关联的应用程序网关](../media/application-gateway-web-application-firewall-portal/associated-application-gateways.png)
+创建包含托管的默认规则集 (DRS) 的基本 WAF 策略。
+
+1. 在门户左上方，选择“创建资源”。 搜索 **WAF**，选择“Web 应用程序防火墙”，然后选择“创建” 。
+2. 在“创建 WAF 策略”页中的“基本信息”选项卡上输入或选择以下信息，对剩余设置保留默认值，然后选择“查看 + 创建”  ：
+
+   |设置  |值  |
+   |---------|---------|
+   |策略适用于     |区域性 WAF (应用程序网关)|
+   |订阅     |选择你的订阅名称|
+   |资源组     |选择“myResourceGroupAG”|
+   |策略名称     |键入 WAF 策略的唯一名称。|
+1. 选择“下一步: 策略设置”。
+1. 接受默认值，然后选择“下一步: 托管规则”。
+1. 接受默认值，然后选择“下一步: 自定义规则”。
+1. 选择“下一步: 关联”。
+1. 选择“添加关联”，然后选择“应用程序网关” 。
+1. 选中“应用 Web 应用程序防火墙策略配置，即使它与当前配置不同”对应的复选框。
+1. 选择“添加”。
+1. 在“关联”选项卡上选择“添加关联”，然后选择“应用程序网关”  。
+
+   > [!NOTE]
+   > 如果将某个策略分配到已有策略的应用程序网关（或侦听器），原始策略将由新策略覆盖并取代。
+4. 依次选择“查看 + 创建”、“创建”。  
+1. **选择“下一步:** 标记”。
+1. 选择“查看 + 创建”。
+1. 选择“创建”。
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 

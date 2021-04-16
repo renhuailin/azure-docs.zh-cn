@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772716"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259024"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -221,7 +221,7 @@ NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置
 
 * **主机名** - 输入 NFS 存储系统的 IP 地址或完全限定的域名。 （仅当缓存能够访问可解析名称的 DNS 服务器时，才使用域名。）
 
-* **使用情况模型** - 按照前面的[选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
+* **使用情况模型** - 按照前面的 [选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
 
 完成后，单击“确定”以添加该存储目标。
 
@@ -314,6 +314,8 @@ ADLS-NFS 存储目标与 Blob 存储目标和 NFS 存储目标之间具有一些
 
 必须先创建一个支持 NFS 的存储帐户才能创建 ADLS-NFS 存储目标。 请按照 [Azure HPC 缓存的先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)中的提示以及[使用已装载 NFS 的 Blob 存储](../storage/blobs/network-file-system-protocol-support-how-to.md)中的说明进行操作。 设置存储帐户后，可以在创建存储目标时创建新容器。
 
+若要详细了解此配置，请参阅[在 Azure HPC 缓存中使用已装载 NFS 的 blob 存储](nfs-blob-considerations.md)。
+
 若要创建 ADLS-NFS 存储目标，请在 Azure 门户中打开“添加存储目标”页。 （其他方法正在开发中。）
 
 ![定义 ADLS-NFS 目标后的“添加存储目标”页的屏幕截图](media/add-adls-target.png)
@@ -328,11 +330,9 @@ ADLS-NFS 存储目标与 Blob 存储目标和 NFS 存储目标之间具有一些
 
 * **存储容器** - 为此目标选择支持 NFS 的 Blob 容器，或单击“新建”。
 
-* **使用情况模型** - 按照前面的[选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
+* **使用情况模型** - 按照前面的 [选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
 
 完成后，单击“确定”以添加该存储目标。
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>查看存储目标
 

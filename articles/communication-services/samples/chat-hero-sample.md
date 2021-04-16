@@ -9,28 +9,22 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5547e49cd7ea7f6c0cc97b5559564b64e0deda7c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487815"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168835"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-<!----
-> [!WARNING]
-> links to our Hero Sample repo need to be updated when the sample is publicly available.
----->
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
 > [GitHub 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务聊天 Web 客户端库来构建群组呼叫体验。
+Azure 通信服务的群组聊天特大示例演示了如何使用通信服务聊天 Web SDK 来构建群组呼叫体验。
 
 在本地计算机上运行该示例之前，我们将通过本示例快速入门了解其工作原理。 然后，使用你自己的 Azure 通信服务资源将此示例部署到 Azure。
 
@@ -111,7 +105,7 @@ Azure 通信服务的群组聊天英雄示例演示了如何使用通信服务�
 有关详细信息，请参阅以下文章：
 
 - 了解[聊天概念](../concepts/chat/concepts.md)
-- 熟悉[聊天客户端库](../concepts/chat/sdk-features.md)
+- 自行熟悉[聊天 SDK](../concepts/chat/sdk-features.md)
 - 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例
 
 ## <a name="additional-reading"></a>其他阅读材料

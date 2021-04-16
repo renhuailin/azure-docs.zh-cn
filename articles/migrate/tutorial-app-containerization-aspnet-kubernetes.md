@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780729"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561791"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>容器化 ASP.NET 应用程序并迁移到 Azure Kubernetes 服务
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>将 ASP.NET 应用容器化并迁移到 Azure Kubernetes 服务
 
 本文将介绍如何容器化 ASP.NET 应用程序，以及如何使用 Azure Migrate: 应用容器化工具将其迁移到 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/)。 容器化过程不需要访问代码库，并提供了一种简单的方法来容器化现有应用程序。 该工具的工作原理是使用服务器上应用程序的运行状态来确定应用程序组件，并帮助你将它们打包到容器映像中。 然后，可以将容器化应用程序部署到 Azure Kubernetes Service (AKS)。
 
@@ -60,7 +60,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 **要求** | **详细信息**
 --- | ---
 **确定要安装工具的计算机** | 用于安装和运行 Azure Migrate: 应用容器化工具的 Windows 计算机。 Windows 计算机可以是服务器（Windows Server 2016 或更高版本）或客户端 (Windows 10) 操作系统，这意味着该工具也可在桌面上运行。 <br/><br/> 运行该工具的 Windows 计算机应该与托管要容器化的 ASP.NET 应用程序的服务器/虚拟机具有网络连接。<br/><br/> 确保运行 Azure Migrate: 应用容器化工具的 Windows 计算机上有 6 GB 的可用空间，用于存储应用程序项目。 <br/><br/> Windows 计算机应可以直接或通过代理访问 Internet。 <br/> <br/>在运行应用容器化帮助程序工具和应用程序服务器的计算机上安装 Microsoft Web 部署工具（如果尚未安装）。 可从[此处](https://aka.ms/webdeploy3.6)下载该工具
-**应用程序服务器** | 在应用程序服务器上启用 PowerShell 远程处理：登录到应用程序服务器，然后按照[这些](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting)说明打开 PowerShell 远程处理。 <br/><br/> 如果应用程序服务器正在运行 Window Server 2008 R2，请确保在该应用程序服务器上安装了 PowerShell 5.1。 按照[此处](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure)的说明在应用程序服务器上下载并安装 PowerShell 5.1。 <br/><br/> 在运行应用容器化帮助程序工具和应用程序服务器的计算机上安装 Microsoft Web 部署工具（如果尚未安装）。 可从[此处](https://aka.ms/webdeploy3.6)下载该工具
+**应用程序服务器** | 在应用程序服务器上启用 PowerShell 远程处理：登录到应用程序服务器，然后按照[这些](/powershell/module/microsoft.powershell.core/enable-psremoting)说明打开 PowerShell 远程处理。 <br/><br/> 如果应用程序服务器正在运行 Window Server 2008 R2，请确保在该应用程序服务器上安装了 PowerShell 5.1。 按照[此处](/powershell/scripting/windows-powershell/wmf/setup/install-configure)的说明在应用程序服务器上下载并安装 PowerShell 5.1。 <br/><br/> 在运行应用容器化帮助程序工具和应用程序服务器的计算机上安装 Microsoft Web 部署工具（如果尚未安装）。 可从[此处](https://aka.ms/webdeploy3.6)下载该工具
 **ASP.NET 应用程序** | 该工具当前支持 <br/><br/> - 使用 Microsoft .NET Framework 3.5 或更高版本的 ASP.NET 应用程序。<br/> - 运行 Windows Server 2008 R2 或更高版本的应用程序服务器（应用程序服务器应运行 PowerShell 版本 5.1）。 <br/> - 在 Internet Information Services (IIS) 7.5 或更高版本上运行的应用程序。 <br/><br/> 该工具当前不支持 <br/><br/> - 需要 Windows 身份验证的应用程序（AKS 当前不支持 gMSA）。 <br/> - 依赖于 IIS 外部托管的其他 Windows 服务的应用程序。
 
 
@@ -180,7 +180,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 ### <a name="externalize-file-system-dependencies"></a>外部化文件系统依赖项
 
- 可以添加应用程序使用的其他文件夹。 指定它们是否应为容器映像的一部分，或者是否要通过 Azure 文件共享上的永久性卷进行外部化。 对于将状态存储在容器外部或将其他静态内容存储在文件系统上的有状态应用程序，使用永久性卷非常有用。 [了解详细信息](https://docs.microsoft.com/azure/aks/concepts-storage)
+ 可以添加应用程序使用的其他文件夹。 指定它们是否应为容器映像的一部分，或者是否要通过 Azure 文件共享上的永久性卷进行外部化。 对于将状态存储在容器外部或将其他静态内容存储在文件系统上的有状态应用程序，使用永久性卷非常有用。 [了解详细信息](../aks/concepts-storage.md)
 
 1. 单击“应用文件夹”下的“编辑”，查看检测到的应用程序文件夹。 检测到的应用程序文件夹已被识别为应用程序所需的必需项目，并将复制到容器映像中。
 
@@ -195,7 +195,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 ## <a name="build-container-image"></a>生成容器映像
 
 
-1. **选择 Azure 容器注册表**：使用下拉列表选择将用于生成和存储应用容器映像的 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。 可以使用现有的 Azure 容器注册表，也可以选择使用“新建注册表”选项创建一个新的注册表。
+1. **选择 Azure 容器注册表**：使用下拉列表选择将用于生成和存储应用容器映像的 [Azure 容器注册表](../container-registry/index.yml)。 可以使用现有的 Azure 容器注册表，也可以选择使用“新建注册表”选项创建一个新的注册表。
 
     ![应用 ACR 选择的屏幕截图。](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

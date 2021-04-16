@@ -10,42 +10,39 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: a62c25aa5fd9d25b7330dde89c8544e79785b9d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6d3f9f7fd30d2c6b1cbc3882a41546593ee1c156
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726633"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>快速入门：向应用中添加聊天
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-通过使用通信服务聊天客户端库向应用程序添加实时聊天，开启 Azure 通信服务使用旅程。 在本快速入门中，我们将使用聊天客户端库创建聊天会话，使用户能够彼此进行对话。 若要了解有关聊天概念的详细信息，请访问[聊天概念文档](../../concepts/chat/concepts.md)。
+从 Azure 通信服务着手，方法是使用通信服务聊天 SDK 向应用程序添加实时聊天。 在本快速入门中，我们将使用聊天 SDK 创建聊天会话，使用户能够彼此进行对话。 若要了解有关聊天概念的详细信息，请访问[聊天概念文档](../../concepts/chat/concepts.md)。
 
 ::: zone pivot="programming-language-javascript"
-[!INCLUDE [Chat with JavaScript client library](./includes/chat-js.md)]
+[!INCLUDE [Chat with JavaScript SDK](./includes/chat-js.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-[!INCLUDE [Chat with Python client library](./includes/chat-python.md)]
+[!INCLUDE [Chat with Python SDK](./includes/chat-python.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-[!INCLUDE [Chat with Java client library](./includes/chat-java.md)]
+[!INCLUDE [Chat with Java SDK](./includes/chat-java.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-android"
-[!INCLUDE [Chat with Android client library](./includes/chat-android.md)]
+[!INCLUDE [Chat with Android SDK](./includes/chat-android.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"
-[!INCLUDE [Chat with C# client library](./includes/chat-csharp.md)]
+[!INCLUDE [Chat with C# SDK](./includes/chat-csharp.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-swift"
-[!INCLUDE [Chat with iOS client library](./includes/chat-swift.md)]
+[!INCLUDE [Chat with iOS SDK](./includes/chat-swift.md)]
 ::: zone-end
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -69,4 +66,4 @@ ms.locfileid: "103495371"
 你可能还想要：
 
  - 了解[聊天概念](../../concepts/chat/concepts.md)
- - 熟悉[聊天客户端库](../../concepts/chat/sdk-features.md)
+ - 自行熟悉[聊天 SDK](../../concepts/chat/sdk-features.md)

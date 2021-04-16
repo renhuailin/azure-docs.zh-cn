@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3342b38f782b718cefd63295ef4d4d26b525058
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595943"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259041"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的慢查询日志
 在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
@@ -45,7 +45,7 @@ ms.locfileid: "100595943"
 使用 Azure Monitor 诊断日志可以通过管道将慢查询日志传输到 Azure Monitor 日志 (Log Analytics)、Azure 存储或事件中心。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
 
 ## <a name="local-server-storage-log-retention"></a>本地服务器存储日志保留期
-将日志记录到服务器的本地存储时，日志在创建后的七天内可用。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
+将日志记录到服务器的本地存储时，日志在创建后的七天内可用。 如果可用日志的总大小超过 7 GB，则会删除最旧的文件，直到空间可用为止。服务器日志的 7 GB 存储空间限制是免费提供的，无法扩展。 
 
 日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 

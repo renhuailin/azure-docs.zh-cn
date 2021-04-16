@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495702"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728124"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人数据需求。 若使用通信服务的开发人员与使用该应用程序的人有直接关系，便可成为其数据的控制者。 由于 Azure 通信服务代表你存储并加密了这些静态数据，因此我们很可能成为这些数据的处理者。 本页概述该服务如何保留数据以及你如何识别、导出和删除此数据。
 
@@ -58,10 +56,12 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 
 ### <a name="chat"></a>聊天
 
-聊天线程和消息将被保留，直到被显式删除。 完全空闲的线程在 30 天后会自动删除。 使用 [Chat API](/rest/api/communication/chat/chatthread) 获取、列出、更新和删除消息。
+聊天线程和消息将被保留，直到被显式删除。 没有参与者的完全空闲线程在 30 天后会被自动删除。 使用 [Chat API](/rest/api/communication/chat/chatthread) 获取、列出、更新和删除消息。
 
 - `Get Thread`
 - `Get Message`
+- `List Messages`
+- `Update Message`
 - `Delete Thread`
 - `Delete Message`
 

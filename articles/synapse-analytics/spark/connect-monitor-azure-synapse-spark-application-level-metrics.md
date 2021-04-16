@@ -2,19 +2,19 @@
 title: 教程 - 连接和监视 Azure Synapse Spark 应用程序级指标
 description: 教程 - 了解如何使用 Synapse Prometheus Connector 将现有的本地 Prometheus 服务器与 Azure Synapse 工作区集成，以获取准实时的 Azure Spark 应用程序指标。
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: bd04c692655161a2ba8d4ff51a8ff07e9b9bd374
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695842"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109312"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>教程：连接和监视 Azure Synapse Spark 应用程序级指标
 
@@ -146,13 +146,13 @@ python main.py
 ### <a name="1-authentication"></a>1.身份验证
 可以使用客户端凭据流获取访问令牌。 若要访问指标 API，你应该为服务主体获取 Azure AD 访问令牌，该令牌具有访问 API 所需的适当权限。
 
-| 参数     | 必选 | 说明                                                                                                   |
+| 参数     | 必需 | 说明                                                                                                   |
 | ------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | tenant_id     | True     | 你的 Azure 服务主体（应用程序）租户 ID                                                          |
 | grant_type    | True     | 指定请求的授权类型。 在客户端凭据授权流中，该值必须是 client_credentials。 |
 | client_id     | True     | 在 Azure 门户或 Azure CLI 中注册的应用程序的应用程序（服务主体）ID。        |
 | client_secret | True     | 为应用程序（服务主体）生成的机密                                                  |
-| resource      | True     | Synapse 资源 URI，应为 https://dev.azuresynapse.net                                                  |
+| resource      | True     | Synapse 资源 URI，应为“https://dev.azuresynapse.net”                                                  |
 
 ```bash
 curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -176,7 +176,7 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2.列出 Azure Synapse 工作区中正在运行的应用程序
 
-若要获取 Synapse 工作区的 Spark 应用程序的列表，可以按此文档中的说明操作：[监视 - 获取 Spark 作业列表](https://docs.microsoft.com/rest/api/synapse/data-plane/monitoring/getsparkjoblist)。
+若要获取 Synapse 工作区的 Spark 应用程序的列表，可以按此文档中的说明操作：[监视 - 获取 Spark 作业列表](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)。
 
 
 ### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3.通过 Prometheus 或 REST API 收集 Spark 应用程序指标
@@ -190,7 +190,7 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
 ```
 
-| 参数          | 必选 | 说明                                                                               |
+| 参数          | 必需 | 说明                                                                               |
 | ------------------ | -------- | ----------------------------------------------------------------------------------------- |
 | endpoint           | True     | 工作区开发终结点，例如 https://myworkspace.dev.azuresynapse.net 。 |
 | livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                    |
@@ -227,7 +227,7 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
 ```
 
-| 参数          | 必选 | 说明                                                                               |
+| 参数          | 必需 | 说明                                                                               |
 | ------------------ | -------- | ----------------------------------------------------------------------------------------- |
 | endpoint           | True     | 工作区开发终结点，例如 https://myworkspace.dev.azuresynapse.net 。 |
 | livyApiVersion     | True     | 请求的有效 api-version。 目前为 2019-11-01-preview                    |

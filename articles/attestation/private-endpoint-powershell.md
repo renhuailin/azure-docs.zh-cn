@@ -5,14 +5,14 @@ services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732303"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628520"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用终结点
 
@@ -21,7 +21,7 @@ ms.locfileid: "101732303"
 在本快速入门中，你将为 Azure 证明创建专用终结点，并部署虚拟机以测试专用连接。  
 
 > [!NOTE]
-> 当前实现仅包括自动审批选项。 必须将订阅列入允许列表才能继续创建专用终结点。 在继续执行以下步骤之前，请联系服务团队，或者在 [Azure 支持页](https://azure.microsoft.com/support/options/)上提交 Azure 支持请求。
+> 当前实现仅包括自动审批选项。 必须将订阅添加到允许列表才能继续创建专用终结点。 在继续执行以下步骤之前，请联系服务团队，或者在 [Azure 支持页](https://azure.microsoft.com/support/options/)上提交 Azure 支持请求。
 
 ## <a name="prerequisites"></a>必备条件
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98802353"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642477"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入门：通过 Xamarin 使用 Azure Blob 存储客户端库 v12
 
@@ -40,7 +40,7 @@ ms.locfileid: "98802353"
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](../common/storage-account-create.md)
-* 安装了 [Mobile Development for .NET 工作负荷](/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019)
+* 安装了 [Mobile Development for .NET 工作负荷](/xamarin/get-started/installation/?pivots=windows)的 Visual Studio 或 [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>设置
     
@@ -196,7 +196,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>下载 Blob
 
-通过调用 [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) 方法，下载以前创建的 blob。 此示例代码先将 blob 的 `Stream` 表示形式复制到 `MemoryStream` 中，然后再复制到 `StreamReader` 中，以便显示文本。
+通过调用 [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法，下载以前创建的 blob。 此示例代码先将 blob 的 `Stream` 表示形式复制到 `MemoryStream` 中，然后再复制到 `StreamReader` 中，以便显示文本。
 
 将以下代码添加到 MainPage.xaml.cs 文件中：
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5089a289e617aa8c2ec153320763647fc8afac9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d9ba7e3e898da8d5b7d1bb4fbc69554ee205147
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489030"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028326"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -67,7 +67,7 @@ ms.locfileid: "103489030"
 
 如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
 1. 从“管理”部分中选择“应用注册” 。
 1. 在列表中选择要为其配置可选声明的应用程序。
 1. 在“管理”部分中，选择“令牌配置”。 
@@ -191,7 +191,7 @@ ms.locfileid: "103489030"
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“通用 AAD”以使用 Azure AD 帐户登录。
 

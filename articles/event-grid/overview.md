@@ -3,12 +3,12 @@ title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 ms.topic: overview
 ms.date: 01/28/2021
-ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934848"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -22,7 +22,8 @@ ms.locfileid: "99055122"
 
 :::image type="content" source="./media/overview/functional-model.png" alt-text="源和处理程序的事件网格模型" lightbox="./media/overview/functional-model-big.png":::
 
-此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。
+> [!NOTE]
+> 此图展示事件网格连接源和处理程序的方式，而不是支持的集成的完整列表。 有关所有受支持的事件源的列表，请参阅下一部分。 
 
 ## <a name="event-sources"></a>事件源
 
@@ -34,10 +35,11 @@ ms.locfileid: "99055122"
 - [Azure 容器注册表](event-schema-container-registry.md)
 - [Azure 事件中心](event-schema-event-hubs.md)
 - [Azure IoT 中心](event-schema-iot-hub.md)
-- [Azure 密钥保管库](event-schema-key-vault.md)
+- [Azure Key Vault](event-schema-key-vault.md)
 - [Azure 机器学习](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure 媒体服务](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure 资源组](event-schema-resource-groups.md)
 - [Azure 服务总线](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

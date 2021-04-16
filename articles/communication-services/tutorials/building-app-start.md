@@ -8,20 +8,18 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490613"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728039"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Tutorial:为 Azure 通信服务准备 Web 应用 (Node.js)
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 可以使用 Azure 通信服务为应用程序添加实时通信。 在本教程中，你将了解如何设置支持 Azure 通信服务的 Web 应用。 本教程旨在介绍知识，适合想要开始使用实时通信的新的开发人员。
 
-在本教程结束时，你将拥有一个配置了 Azure 通信服务客户端库的基线 Web 应用程序。 然后，可以使用该应用程序开始构建你的实时通信解决方案。
+在本教程结束时，你将拥有一个使用 Azure 通信服务 SDK 配置的基线 Web 应用程序。 然后，可以使用该应用程序开始构建你的实时通信解决方案。
 
 欢迎随时访问 [Azure 通信服务 GitHub](https://github.com/Azure/communication) 页面提供反馈。
 
@@ -37,7 +35,7 @@ ms.locfileid: "103490613"
 - 具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 免费帐户为你提供了价值 200 美元的 Azure 赠金，你可用它来试用任何服务组合。
 - [Visual Studio Code](https://code.visualstudio.com/) 用于在本地开发环境中编辑代码。
 - [Webpack](https://webpack.js.org/) 用于捆绑并本地托管代码。
-- [Node.js](https://nodejs.org/en/) 用于安装并管理 Azure 通信服务客户端库和 Webpack 等依赖项。
+- [Node.js](https://nodejs.org/en/)，用于安装并管理 Azure 通信服务 SDK 和 Webpack 等依赖项。
 - [nvm 和 npm](/windows/nodejs/setup-on-windows)，用于处理版本控制。
 - 适用于 Visual Studio Code 的 [Azure 存储扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)。 你需要此扩展以在 Azure 存储中发布应用程序。 [详细了解如何在 Azure 存储中托管静态网站](../../storage/blobs/storage-blob-static-website.md)。
 - [Azure 应用服务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 可以通过该扩展部署网站，也可以选择配置完全托管的持续集成和持续交付 (CI/CD)。
@@ -293,7 +291,7 @@ npm run build:dev
 
 ## <a name="add-the-azure-communication-services-packages"></a>添加 Azure 通信服务包
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫 SDK。
 
 ```Console
 npm install @azure/communication-common --save

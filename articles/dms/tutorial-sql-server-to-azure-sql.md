@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0330ea419b92d4e2e85c01e2770ec0d92987c4d2
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180622"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107102"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>教程：使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
 
@@ -68,6 +68,79 @@ ms.locfileid: "102180622"
 - 为 Azure SQL 数据库创建服务器级 IP [防火墙规则](../azure-sql/database/firewall-configure.md)，以允许 Azure 数据库迁移服务访问目标数据库。 提供用于 Azure 数据库迁移服务的虚拟网络子网范围。
 - 确保用于连接到源 SQL Server 实例的凭据具有 [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) 权限。
 - 确保用于连接到目标数据库实例的凭据具有目标 Azure SQL 数据库的 [CONTROL DATABASE](/sql/t-sql/statements/grant-database-permissions-transact-sql) 权限。
+
+    > [!IMPORTANT]
+    > 创建 Azure 数据库迁移服务实例需要访问通常不在同一资源组中的虚拟网络设置。 因此，创建 DMS 实例的用户需要订阅级别的权限。 若要创建所需的角色（你可以根据需要分配这些角色），请运行以下脚本：
+    >
+    > ```
+    >
+    > $readerActions = `
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
+    >
+    > $writerActions = `
+    > "Microsoft.DataMigration/services/*/write", `
+    > "Microsoft.DataMigration/services/*/delete", `
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
+    >
+    > $writerActions += $readerActions
+    >
+    > # TODO: replace with actual subscription IDs
+    > $subScopes = ,"/subscriptions/00000000-0000-0000-0000-000000000000/","/subscriptions/11111111-1111-1111-1111-111111111111/"
+    >
+    > function New-DmsReaderRole() {
+    > $aRole = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
+    > $aRole.Name = "Azure Database Migration Reader"
+    > $aRole.Description = "Lets you perform read only actions on DMS service/project/tasks."
+    > $aRole.IsCustom = $true
+    > $aRole.Actions = $readerActions
+    > $aRole.NotActions = @()
+    >
+    > $aRole.AssignableScopes = $subScopes
+    > #Create the role
+    > New-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > function New-DmsContributorRole() {
+    > $aRole = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
+    > $aRole.Name = "Azure Database Migration Contributor"
+    > $aRole.Description = "Lets you perform CRUD actions on DMS service/project/tasks."
+    > $aRole.IsCustom = $true
+    > $aRole.Actions = $writerActions
+    > $aRole.NotActions = @()
+    >
+    >   $aRole.AssignableScopes = $subScopes
+    > #Create the role
+    > New-AzRoleDefinition -Role $aRole
+    > }
+    > 
+    > function Update-DmsReaderRole() {
+    > $aRole = Get-AzRoleDefinition "Azure Database Migration Reader"
+    > $aRole.Actions = $readerActions
+    > $aRole.NotActions = @()
+    > Set-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > function Update-DmsConributorRole() {
+    > $aRole = Get-AzRoleDefinition "Azure Database Migration Contributor"
+    > $aRole.Actions = $writerActions
+    > $aRole.NotActions = @()
+    > Set-AzRoleDefinition -Role $aRole
+    > }
+    >
+    > # Invoke above functions
+    > New-DmsReaderRole
+    > New-DmsContributorRole
+    > Update-DmsReaderRole
+    > Update-DmsConributorRole
+    > ```
 
 ## <a name="assess-your-on-premises-database"></a>访问本地数据库
 
@@ -245,6 +318,9 @@ ms.locfileid: "102180622"
 1. 在“选择目标”屏幕上，为 Azure SQL 数据库提供身份验证设置。 
 
    ![选择目标](media/tutorial-sql-server-to-azure-sql/select-target.png)
+   
+   > [!NOTE]
+   > 目前，SQL 身份验证是唯一受支持的身份验证类型。
 
 1. 在完成时选择“下一步:映射到目标数据库”屏幕，映射源和目标数据库以进行迁移。
 

@@ -10,18 +10,16 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 6ec0b32e487739c33b1b2b49bd0645130fc88581
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 66edf35f292f5b681578d49b8be784de66e4d904
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729526"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936523"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
 
-
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
 
 > [!IMPORTANT]
 > 当前，电话号码的可用性仅限于在美国具有帐单邮寄地址的付费 Azure 订阅，和具有美国数据位置的通信服务资源。 无法在试用帐户上或使用 Azure 免费额度获取电话号码。 有关详细信息，请访问本文档的[订阅资格](#azure-subscriptions-eligibility)部分。
@@ -31,7 +29,7 @@ ms.locfileid: "104729526"
 
 ## <a name="azure-subscriptions-eligibility"></a>Azure 订阅资格
 
-若要获取电话号码，需要使用 Azure 付费订阅。 无法在试用帐户上或通过 Azure 免费额度获取电话号码。 
+若要获取电话号码，需要使用 Azure 付费订阅。 无法在试用帐户上或通过 Azure 免费额度获取电话号码。
 
 当前，电话号码的可用性仅限于在美国具有帐单邮寄地址的 Azure 订阅，和具有美国数据位置的通信服务资源。
 
@@ -59,11 +57,11 @@ ms.locfileid: "104729526"
 | 免费电话         | +1（免费电话 *区号*）XXX XX XX | US                      | 通话（拨出）、短信（传入/传出）| 将电话号码分配给互动语音响应 (IVR) 系统/机器人、短信应用程序                                        |
 
 
-### <a name="phone-number-features-in-azure-communication-services"></a>Azure 通信服务中的电话号码功能
+### <a name="phone-number-capabilities-in-azure-communication-services"></a>Azure 通信服务中的电话号码功能
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
-对于大多数电话号码，我们允许配置“按菜单点菜”功能。 你可以在 Azure 通信服务中租赁电话号码时选择这些功能。
+对于大多数电话号码，我们允许配置“按菜单点菜”功能集。 你可以在 Azure 通信服务中租用电话号码时选择这些功能。
 
 你可以使用的功能取决于你进行操作时所在的国家/地区、你的用例以及所选电话号码类型。 出于法规要求，这些功能因国家/地区而异。 Azure 通信服务提供以下电话号码功能：
 

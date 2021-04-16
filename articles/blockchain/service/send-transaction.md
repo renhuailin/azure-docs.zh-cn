@@ -4,12 +4,12 @@ description: 此教程介绍如何在 Visual Studio Code 中使用适用于 Eth
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96763683"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628639"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>教程：在 Azure 区块链服务中创建、生成和部署智能合同
 
@@ -81,28 +81,105 @@ Azure 区块链开发工具包使用 Truffle 执行迁移脚本，以将合同�
 
 ![已成功部署合同](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>调用合同函数
+## <a name="call-a-contract-function&quot;></a>调用合同函数
+**HelloBlockchain** 合同的 **SendRequest** 函数将更改 **RequestMessage** 状态变量。 可通过事务更改区块链网络的状态。 可以通过事务创建一个用于执行 **SendRequest** 函数的脚本。
 
-**HelloBlockchain** 合同的 **SendRequest** 函数将更改 **RequestMessage** 状态变量。 可通过事务更改区块链网络的状态。 可以使用 Azure 区块链开发工具包智能合同交互页通过事务调用 **SendRequest** 函数。
+1. 在 Truffle 项目的根目录中创建一个新文件，并将其命名为 `sendrequest.js`。 将以下 Web3 JavaScript 代码添加到该文件。
 
-1. 若要与智能合同交互，请右键单击“HelloBlockchain.sol”，并从菜单中选择“显示智能合同交互页”。
+    ```javascript
+    var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
+        
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-    ![从菜单中选择“显示智能合同交互页”](./media/send-transaction/contract-interaction.png)
+1. 当 Azure 区块链开发工具包创建项目时，将使用联盟区块链网络终结点详细信息生成 Truffle 配置文件。 打开项目中的 **truffle-config.js**。 该配置文件将列出两个网络：一个名为 development 的网络，一个与联盟同名的网络。
+1. 在 VS Code 的终端窗格中，使用 Truffle 针对联盟区块链网络执行该脚本。 在终端窗格菜单栏中选择“终端”选项卡，并从下拉列表中选择“PowerShell”。
 
-1. 在交互页中可以选择已部署的合同版本、调用函数、查看当前状态和查看元数据。
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
+    ```
 
-    ![示例智能合同交互页](./media/send-transaction/interaction-page.png)
+    将 \<blockchain network\> 替换为 truffle-config.js 中定义的区块链网络的名称。
 
-1. 若要调用智能合同函数，请选择合同操作并传递参数。 选择 **SendRequest** 合同操作，并为 **requestMessage** 参数 并输入 **Hello, Blockchain!** 。 选择“执行”以通过事务调用 **SendRequest** 函数。 
+Truffle 将针对区块链网络执行脚本。
 
-    ![执行 SendRequest 操作](./media/send-transaction/sendrequest-action.png)
+![输出，显示事务已发送](./media/send-transaction/execute-transaction.png)
 
-处理该事务后，interaction 节会反映状态更改。
+通过某个事务执行合同的函数时，该事务只会在创建区块之后才得到处理。 要通过事务执行的函数将返回事务 ID 而不是返回值。
 
-![合同状态更改](./media/send-transaction/contract-state.png)
+## <a name="query-contract-state"></a>查询合同状态
 
-SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMessage** 的当前状态是传递的参数 **Hello, Blockchain**。 **State** 字段值保留为 **Request**。
+智能合同函数可以返回状态变量的当前值。 让我们添加一个返回状态变量值的函数。
 
+1. 在 **HelloBlockchain.sol** 中，将 **getMessage** 函数添加到 **HelloBlockchain** 智能合同。
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
+    ```
+
+    该函数基于合同的当前状态返回存储在状态变量中的消息。
+
+1. 右键单击“HelloBlockchain.sol”，然后从菜单中选择“生成合同”以编译对智能合同所做的更改。
+1. 若要部署，请右键单击“HelloBlockchain.sol”并从菜单中选择“部署合同”。 出现提示时，在命令面板中选择 Azure 区块链联盟网络。
+1. 接下来，创建一个用于调用 **getMessage** 函数的脚本。 在 Truffle 项目的根目录中创建一个新文件，并将其命名为 `getmessage.js`。 将以下 Web3 JavaScript 代码添加到该文件。
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
+
+1. 在 VS Code 的终端窗格中，使用 Truffle 针对区块链网络执行该脚本。 在终端窗格菜单栏中选择“终端”选项卡，并从下拉列表中选择“PowerShell”。
+
+    ```bash
+    truffle exec getmessage.js --network <blockchain network>
+    ```
+
+    将 \<blockchain network\> 替换为 truffle-config.js 中定义的区块链网络的名称。
+
+该脚本通过调用 getMessage 函数来查询智能合同。 将返回 **RequestMessage** 状态变量的当前值。
+
+![getmessage 查询的输出，其中显示了 RequestMessage 状态变量的当前值](./media/send-transaction/execute-get.png)
+
+请注意，该值不是 **Hello, blockchain!**。 返回的值是一个占位符。 更改和部署合同时，更改的合同将部署到新地址，并在智能合同构造函数中为状态变量赋值。 Truffle 示例 **2_deploy_contracts.js** 迁移脚本将部署智能合同，并将占位符值作为参数传递。 构造函数将 **RequestMessage** 状态变量设置为占位符值，这正是返回的值。
+
+1. 若要设置 **RequestMessage** 状态变量并查询值，请再次运行 **sendrequest.js** 和 **getmessage.js** 脚本。
+
+    ![sendrequest 和 getmessage 脚本的输出，其中显示 RequestMessage 已设置](./media/send-transaction/execute-set-get.png)
+
+    **sendrequest.js** 将 **RequestMessage** 变量设置为 **Hello, blockchain!**。 **getmessage.js** 在合同中查询 **RequestMessage** 状态变量的值，并返回 **Hello, blockchain!**。
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要，可以通过删除 *创建区块链成员* 先决条件快速入门中创建的 `myResourceGroup` 资源组来删除资源。
@@ -110,7 +187,7 @@ SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMes
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
+1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

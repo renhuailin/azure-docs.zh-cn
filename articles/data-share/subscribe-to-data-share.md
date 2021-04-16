@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017043"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644873"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -42,23 +42,10 @@ ms.locfileid: "96017043"
 如果选择将数据接收到 Azure SQL 数据库和 Azure Synapse Analytics，请查看以下相关先决条件的列表。 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>将数据接收到 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）的先决条件
-可按照[分步演示](https://youtu.be/aeGISgK1xro)配置先决条件。
 
 * Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。 
-* Data Share 资源托管标识用于访问 Azure SQL 数据库或 Azure Synapse Analytics 的权限。 可以通过以下步骤完成此操作： 
-    1. 在 Azure 门户中，导航到 SQL 服务器并将你自己设置为“Azure Active Directory 管理员”。
-    1. 使用[查询编辑器](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)或 SQL Server Management Studio 通过 Azure Active Directory 身份验证连接到 Azure SQL 数据库/数据仓库。 
-    1. 执行以下脚本，以将 Data Share 托管标识添加为“db_datareader, db_datawriter, db_ddladmin”。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
-
-        ```sql
-        create user "<share_acc_name>" from external provider; 
-        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-        ```      
-        请注意， *<share_acc_name>* 是 Data Share 资源的名称。 如果尚未创建 Data Share 资源，则可以稍后返回到该先决条件。         
-
+* SQL 服务器的 Azure Active Directory 管理员
 * SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
     1. 在 Azure 门户中的 SQL Server 中，导航到“防火墙和虚拟网络” 
     1. 对于“允许 Azure 服务和资源访问此服务器”，单击“是”。
@@ -92,7 +79,6 @@ ms.locfileid: "96017043"
 
 * 数据提供程序的数据资源管理器群集所在的同一 Azure 数据中心内的 Azure 数据资源管理器群集：如果没有此群集，可以创建一个 [Azure 数据资源管理器群集](/azure/data-explorer/create-cluster-database-portal)。 如果你不知道数据提供程序群集的 Azure 数据中心，可以稍后在此过程中创建群集。
 * 向 Azure 数据资源管理器群集进行写入的权限，此权限存在于 *Microsoft.Kusto/clusters/write* 中。 “参与者”角色有此权限。 
-* 向 Azure 数据资源管理器群集添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -175,13 +161,13 @@ az datashare consumer share-subscription create --resource-group share-rg \
 
    ![映射到目标](./media/dataset-map-target.png "映射到目标") 
 
-1. 选择以哪种目标数据存储类型保存数据。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 
+1. 选择以哪种目标数据存储类型保存数据。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 如果要将数据接收到 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）中，请选中复选框“允许‘数据共享’以我的名义运行上述‘创建用户’脚本”。
 
    对于就地共享，请选择指定“位置”中的数据存储。 “位置”是数据提供程序的源数据存储所在的 Azure 数据中心。 映射数据集之后，可以通过目标路径中的链接来访问数据。
 
    ![目标存储帐户](./media/dataset-map-target-sql.png "目标存储") 
 
-1. 对于基于快照的共享，如果数据提供程序已创建定期更新数据的快照计划，你还可以通过选择“快照计划”选项卡来启用快照计划。选中快照计划旁边的框，然后选择“+ 启用”。
+1. 对于基于快照的共享，如果数据提供程序已创建定期更新数据的快照计划，你还可以通过选择“快照计划”选项卡来启用快照计划。选中快照计划旁边的框，然后选择“+ 启用”。 请注意，第一个计划快照将在计划时间的一分钟内启动，后续快照将在计划时间的几秒内启动。
 
    ![启用快照计划](./media/enable-snapshot-schedule.png "启用快照计划")
 

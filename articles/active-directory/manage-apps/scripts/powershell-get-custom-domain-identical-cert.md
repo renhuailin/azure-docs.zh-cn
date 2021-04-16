@@ -3,7 +3,7 @@ title: PowerShell 示例 - 具有相同证书的应用程序代理应用
 description: PowerShell 示例，其中列出了已使用相同的证书发布的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a04b66b4b3e1901a0c8ecaf2c47dec21b94fe0ee
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 18200b5571c84c8bd442d5dcb2714c6d52d4bcf5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548863"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377002"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-that-are-published-with-the-identical-certificate"></a>获取使用相同的证书发布的所有 Azure AD 代理应用程序应用
+# <a name="get-all-application-proxy-apps-that-are-published-with-the-identical-certificate"></a>获取使用相同证书发布的所有应用程序代理应用
 
 在该 PowerShell 脚本示例中，可找到已使用相同的证书发布的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 

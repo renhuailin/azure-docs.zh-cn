@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "75648604"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>教程：使用 Azure 自定义提供程序进行资源载入
@@ -211,15 +211,15 @@ ms.locfileid: "75648604"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“所有服务”  中  或使用主搜索框搜索“模板”：
+2. 在“所有服务”中或使用主搜索框搜索“模板”：
 
    ![搜索模板](media/tutorial-resource-onboarding/templates.png)
 
-3. 在“模板”窗格中，选择“添加”   ：
+3. 在“模板”窗格中，选择“添加”：
 
    ![选择“添加”](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. 在“常规”下，输入新模板的“名称”和“说明”：   
+4. 在“常规”下，输入新模板的“名称”和“说明”：
 
    ![模板名称和说明](media/tutorial-resource-onboarding/templatesdescription.png)
 
@@ -227,15 +227,15 @@ ms.locfileid: "75648604"
 
    ![创建资源管理器模板](media/tutorial-resource-onboarding/templatesarmtemplate.png)
 
-6. 选择“添加”  以创建模板。 如果未显示新模板，请选择“刷新”  。
+6. 选择“添加”以创建模板。 如果未显示新模板，请选择“刷新”。
 
-7. 选择新创建的模板，然后选择“部署”  ：
+7. 选择新创建的模板，然后选择“部署”：
 
    ![选择新模板，然后选择“部署”](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-8. 输入必填字段的设置，然后选择订阅和资源组。 可以将“自定义资源提供程序 ID”  框留空。
+8. 输入必填字段的设置，然后选择订阅和资源组。 可以将“自定义资源提供程序 ID”框留空。
 
-   | 设置名称 | 必需？ | 说明 |
+   | 设置名 | 必需？ | 说明 |
    | ------------ | -------- | ----------- |
    | 位置 | 是 | 模板中资源的位置。 |
    | 逻辑应用名称 | 否 | 逻辑应用的名称。 |
@@ -251,11 +251,11 @@ ms.locfileid: "75648604"
 
    ![成功部署](media/tutorial-resource-onboarding/customproviderdeployment.png)
 
-   下面是资源组，其中选择了“显示隐藏的类型”  ：
+   下面是资源组，其中选择了“显示隐藏的类型”：
 
    ![自定义提供程序部署](media/tutorial-resource-onboarding/showhidden.png)
 
-10. 浏览逻辑应用的“运行历史记录”  选项卡，查看对关联创建的调用：
+10. 浏览逻辑应用的“运行历史记录”选项卡，查看对关联创建的调用：
 
     ![逻辑应用运行历史记录](media/tutorial-resource-onboarding/logicapprun.png)
 
@@ -263,27 +263,27 @@ ms.locfileid: "75648604"
 
 设置自定义提供程序基础结构后，可以轻松地部署更多关联。 其他关联的资源组不一定要与部署自定义提供程序基础结构的资源组相同。 若要创建关联，需要对指定的自定义资源提供程序 ID 具有 Microsoft.CustomProviders/resourceproviders/write 权限。
 
-1. 转到上一个部署的资源组中的自定义提供程序“Microsoft.CustomProviders/resourceProviders”  资源。 需要选中“显示隐藏的类型”  复选框：
+1. 转到上一个部署的资源组中的自定义提供程序“Microsoft.CustomProviders/resourceProviders”资源。 需要选中“显示隐藏的类型”复选框：
 
    ![转到资源](media/tutorial-resource-onboarding/showhidden.png)
 
 2. 复制自定义提供程序的资源 ID 属性。
 
-3. 在“所有服务”  中  或使用主搜索框搜索“模板”：
+3. 在“所有服务”中或使用主搜索框搜索“模板”：
 
    ![搜索模板](media/tutorial-resource-onboarding/templates.png)
 
-4. 选择以前创建的模板，然后选择“部署”  ：
+4. 选择以前创建的模板，然后选择“部署”：
 
    ![选择以前创建的模板，然后选择“部署”](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-5. 输入必填字段的设置，然后选择订阅和其他资源组。 对于“自定义资源提供程序 ID”  设置，输入从之前部署的自定义提供程序复制的资源 ID。
+5. 输入必填字段的设置，然后选择订阅和其他资源组。 对于“自定义资源提供程序 ID”设置，输入从之前部署的自定义提供程序复制的资源 ID。
 
 6. 转到部署，等待部署完成。 它现在应仅部署新的关联资源：
 
    ![新关联资源](media/tutorial-resource-onboarding/createdassociationresource.png)
 
-如果需要，可以返回到逻辑应用的“运行历史记录”  ，查看是否对逻辑应用进行了另一次调用。 可以更新逻辑应用，为每个已创建的关联增加额外的功能。
+如果需要，可以返回到逻辑应用的“运行历史记录”，查看是否对逻辑应用进行了另一次调用。 可以更新逻辑应用，为每个已创建的关联增加额外的功能。
 
 ## <a name="getting-help"></a>获取帮助
 

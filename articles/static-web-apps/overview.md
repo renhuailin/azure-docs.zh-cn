@@ -5,26 +5,26 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92320492"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166389"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什么是 Azure 静态 Web 应用预览版？
 
-Azure 静态 Web 应用是一种服务，可从 GitHub 存储库自动构建完整的堆栈 Web 应用，并将其部署到 Azure。
+Azure Static Web Apps 是一种服务，可从代码存储库自动生成完整的堆栈 Web 应用，并将其部署到 Azure。
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="静态 Web 应用概述":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Azure Static Web Apps 概述图":::
 
-Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 基于 GitHub 交互构建并部署应用。
+Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 基于代码更改生成并部署应用。
 
-创建 Azure 静态 Web 应用资源时，Azure 会在应用的源代码存储库中设置 GitHub Actions 工作流，用于监视所选的分支。 每次向受监视的分支推送提交或接受拉取请求时，GitHub Action 都会自动构建应用，并将应用及其 API 部署到 Azure。
+当你创建 Azure Static Web Apps 资源时，Azure 会直接与 GitHub 或 Azure DevOps 交互以监视你选择的分支。 每次你向受监视的分支推送提交或接受拉取请求时，系统都会自动运行一次生成，并将你的应用和 API 部署到 Azure。
 
-静态 Web 应用通常使用诸如 Angular、React、Svelte、Vue 或 Blazor 之类的库和框架进行构建。 这些应用包括构成应用程序的 HTML、CSS、JavaScript 和映像资产。 对于传统 Web 服务器，这些资产与任何所需的 API 终结点一起由单个服务器提供。
+通常使用不需要服务器端渲染的库和框架（例如，Angular、React、Svelte、Vue 或 Blazor）来生成静态 Web 应用。 这些应用包括构成应用程序的 HTML、CSS、JavaScript 和映像资产。 对于传统 Web 服务器，这些资产与任何所需的 API 终结点一起由单个服务器提供。
 
 使用静态 Web 应用时，静态资产与传统 Web 服务器分离，由分布在世界各地的服务器端提供。 由于文件在物理上离最终用户更近，这种分布使文件提供的速度更快。 此外，API 终结点使用[无服务器体系结构](../azure-functions/functions-overview.md)，无需将完整的后端服务器组合在一起。
 
@@ -32,7 +32,7 @@ Azure 静态 Web 应用的工作流适用于开发人员的日常工作流。 �
 
 - 适用于 HTML、CSS、JavaScript 和映像等静态内容的 Web 托管。
 - 由 Azure Functions 提供的集成 API 支持。
-- 一流的 GitHub 集成，其中存储库更改将触发生成和部署。
+- 一流的 GitHub 和 Azure DevOps 集成，其中的存储库更改会触发生成和部署。
 - 全球分布的静态内容，使内容更接近你的用户。
 - 可自动续订的免费 SSL 证书。
 - 自定义域为应用提供品牌自定义。

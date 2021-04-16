@@ -6,12 +6,12 @@ ms.date: 03/23/2021
 ms.topic: quickstart
 ms.author: thweiss
 zone_pivot_groups: programming-languages-set-functions-temp
-ms.openlocfilehash: 91d27ce0d6f999ac5d13b079c877e49cdf3fcd61
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 0a0c63ee54699185bcd02104b1a3f4d0070ea808
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023242"
 ---
 # <a name="connect-azure-functions-to-azure-cosmos-db-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure Cosmos DB
 
@@ -20,11 +20,11 @@ ms.locfileid: "104962265"
 本文介绍如何使用 Visual Studio Code 将 [Azure Cosmos DB](../cosmos-db/introduction.md) 连接到在前一篇快速入门文章中创建的函数。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到存储在 Azure Cosmos DB 容器中的 JSON 文档。 
 
 ::: zone pivot="programming-language-csharp"
-在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-csharp.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。
+在开始之前，必须先完成[快速入门：使用 Visual Studio Code 在 Azure 中创建 C# 函数](create-first-function-vs-code-csharp.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。
 ::: zone-end
 ::: zone pivot="programming-language-javascript"  
-在开始之前，必须完成文章[快速入门：从命令行创建 Azure Functions 项目](create-first-function-cli-node.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
-::: zone-end   
+在开始之前，必须先完成[快速入门：使用 Visual Studio Code 在 Azure 中创建 JavaScript 函数](create-first-function-vs-code-node.md)。 如果在该文章结束时清理了资源，请再次执行相应的步骤，以在 Azure 中重新创建函数应用和相关资源。  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>配置环境
 
@@ -62,7 +62,7 @@ ms.locfileid: "104962265"
 
 ## <a name="create-an-azure-cosmos-db-database-and-container"></a>创建 Azure Cosmos DB 数据库和容器
 
-从 Azure Cosmos DB 帐户中选择“数据资源管理器”，然后选择“新建容器”。 创建一个名为 *my-database* 的新数据库、一个名为 *my-container* 的新容器，然后选择 `/id` 作为[分区键](../cosmos-db/partitioning-overview.md)。
+从 Azure Cosmos DB 帐户中选择“数据资源管理器”，然后选择“新建容器”。 创建一个名为 *my-database* 的新数据库、一个名为 *my-container* 的新容器，然后选择 `/id` 作为 [分区键](../cosmos-db/partitioning-overview.md)。
 
 :::image type="content" source="./media/functions-add-output-binding-cosmos-db-vs-code/create-container.png" alt-text="从 Azure 门户创建新的 Azure Cosmos DB 容器" border="true":::
 

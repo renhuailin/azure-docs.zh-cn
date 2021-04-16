@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "76308990"
 ---
 此常见问题解答适用于使用经典部署模型的 P2S 连接。
@@ -31,7 +31,7 @@ ms.locfileid: "76308990"
 
 ### <a name="can-i-use-any-software-vpn-client-that-supports-sstp-for-point-to-site"></a>是否可以使用支持将 SSTP 用于点到站点连接的任何软件 VPN 客户端？
 
-不是。 仅支持所列出的 Windows 操作系统版本。
+否。 仅支持所列出的 Windows 操作系统版本。
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以存在多少 VPN 客户端终结点？
 
@@ -52,7 +52,7 @@ VPN 客户端终结点的数量取决于网关 SKU 和协议。
 
 ### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
 
-不是。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
+否。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>同一虚拟网络中是否可以同时存在站点到站点和点到站点配置？
 

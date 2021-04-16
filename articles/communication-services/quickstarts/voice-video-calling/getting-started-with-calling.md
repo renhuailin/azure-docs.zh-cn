@@ -8,19 +8,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 0886e3955ba58a5a8edbf3cd72b1065b1000b5b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5a506d84f338b2eab1c32caa4d94bd03a33e637d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104598763"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728328"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>快速入门：在应用中添加语音呼叫
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-通过使用通信服务呼叫客户端库向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
+通过使用通信服务呼叫 SDK 向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
@@ -45,5 +42,5 @@ ms.locfileid: "104598763"
 有关详细信息，请参阅以下文章：
 
 - 查看我们的[出色呼叫示例](../../samples/calling-hero-sample.md)
-- 了解[呼叫客户端库功能](./calling-client-samples.md)
+- 了解如何[调用 SDK 功能](./calling-client-samples.md)
 - 了解有关[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)的详细信息

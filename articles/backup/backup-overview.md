@@ -4,12 +4,12 @@ description: 概述 Azure 备份服务及其如何有助于实现业务连续性
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 2879d104d534733651ba76ab5521541adad0a51c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101725350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612630"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？
 
@@ -21,7 +21,7 @@ Azure 备份服务提供简单、安全且经济高效的解决方案来备份�
 
 - **本地** - 使用 [Microsoft Azure 恢复服务 (MARS) 代理](backup-support-matrix-mars-agent.md)备份文件、文件夹和系统状态。 或者，使用 DPM 或 Azure 备份服务器 (MABS) 代理保护本地 VM（[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 和 [VMware](backup-azure-backup-server-vmware.md)）及其他[本地工作负荷](backup-mabs-protection-matrix.md)
 - **Azure VM** - [备份整个 Windows/Linux VM](backup-azure-vms-introduction.md)（使用备份扩展），或使用 [MARS 代理](backup-azure-manage-mars.md)备份文件、文件夹和系统状态。
-- **Azure 托管磁盘** - [备份 Azure 托管磁盘（预览版）](backup-managed-disks.md)
+- **Azure 托管磁盘** - [备份 Azure 托管磁盘](backup-managed-disks.md)
 - **Azure 文件存储共享** - [将 Azure 文件存储共享备份到存储帐户](backup-afs.md)
 - **Azure VM 中的 SQL Server** -  [备份 Azure VM 上运行的 SQL Server 数据库](backup-azure-sql-database.md)
 - **Azure VM 中的 SAP HANA 数据库** - [备份 Azure VM 上运行的 SAP HANA 数据库](backup-azure-sap-hana-database.md)

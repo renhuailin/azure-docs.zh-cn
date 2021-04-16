@@ -4,12 +4,12 @@ description: 本文概述了可用的 Azure 中继 API（.NET Standard、.NET Fr
 ms.topic: article
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
-ms.openlocfilehash: 98bbb1ecc7e870ff9b7687284e7087d44375d275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 391bd74f2bce8721b6d6359f3990af494277aa45
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935715"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312988"
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
 
@@ -49,4 +49,4 @@ ms.locfileid: "88935715"
 
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 * [什么是 Azure 中继？](relay-what-is-it.md)
-* [中继常见问题](relay-faq.md)
+* [中继常见问题](relay-faq.yml)

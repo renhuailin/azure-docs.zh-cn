@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8a76a37de64733ba3e0126c7885d8690d2d83c1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea5a443caba25b7b5e6d843408c12e61a55b9e10
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93099711"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047433"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "93099711"
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。
-- [Python 2.7.14+ 或 3.4+](https://www.python.org/downloads/)。
+- [Python 2.7 或 3.6+](https://www.python.org/downloads/)。
 - [Git](https://git-scm.com/downloads)。
 - [适用于 Apache Cassandra 的 Python 驱动程序](https://github.com/datastax/python-driver)。
 

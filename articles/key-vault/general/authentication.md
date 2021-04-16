@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492933"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365512"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>对 Azure Key Vault 进行身份验证
 
@@ -59,8 +59,6 @@ ms.locfileid: "99492933"
     - [Azure 门户](../../role-based-access-control/role-assignments-portal.md)
     - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    密钥保管库目前支持[参与者](../../role-based-access-control/built-in-roles.md#key-vault-contributor)角色，该角色允许对密钥保管库资源进行管理操作。 目前还有多个其他角色以预览版提供。 还可以按照 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)中所述创建自定义角色。
 
     有关角色的一般信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)。
 

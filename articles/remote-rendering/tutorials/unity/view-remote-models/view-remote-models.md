@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3370aac242fb47a133a5f7d6dc9b3444c65e3691
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: d8784bc4744e2d4beb6a72fdc0df0fd0b32346f9
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573109"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105605002"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教程：查看远程渲染的模型
 
@@ -33,10 +33,7 @@ ms.locfileid: "103573109"
 * Windows SDK 10.0.18362.0[（下载）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Visual Studio 2019 最新版本[（下载）](https://visualstudio.microsoft.com/vs/older-downloads/)
 * GIT[（下载）](https://git-scm.com/downloads)。
-* 2019.3 的 Unity 最新版本，建议为此使用 Unity Hub[（下载）](https://unity3d.com/get-unity/download)
-  * 在 Unity 中安装以下模块：
-    * **UWP** - 通用 Windows 平台生成支持
-    * **IL2CPP** - Windows 生成支持 (IL2CPP)
+* Unity（有关受支持的版本，请参阅[系统要求](../../../overview/system-requirements.md#unity)）
 * 中级程度的 Unity 与 C# 语言知识（例如：创建脚本和对象、使用预制项、配置 Unity 事件等）
 
 ## <a name="provision-an-azure-remote-rendering-arr-instance"></a>预配 Azure 远程渲染 (ARR) 实例
@@ -428,8 +425,28 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
-        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        bool sessionAvailable = false;
+        try
+        {
+            RenderingSessionPropertiesArrayResult result = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+            if (result.ErrorCode == Result.Success)
+            {
+                RenderingSessionProperties[] properties = result.SessionProperties;
+                if (properties != null)
+                {
+                    sessionAvailable = properties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+                }
+            }
+            else
+            {
+                Debug.LogError($"Failed to get current rendering sessions. Error: {result.Context.ErrorMessage}");
+            }
+        }
+        catch (RRException ex)
+        {
+            Debug.LogError($"Failed to get current rendering sessions. Error: {ex.Message}");
+        }
+        return sessionAvailable;
     }
 
     /// <summary>
@@ -756,7 +773,7 @@ LoadModel 方法的作用是接受模型路径、进度处理程序和父转换�
 1. 创建[远程实体](../../../concepts/entities.md)。
 1. 创建用于表示远程实体的本地 GameObject。
 1. 配置本地 GameObject 以将其状态（即转换）同步到每个帧的远程实体。
-1. 设置名称并添加一个 [WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) 以增强稳定性。
+1. 设置名称并添加一个 [WorldAnchor](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) 以增强稳定性。
 1. 将模型数据从 Blob 存储加载到远程实体。
 1. 返回父实体，供以后引用。
 
