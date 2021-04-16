@@ -3,7 +3,7 @@ title: PowerShell 示例 - 将应用程序代理应用移动到其他组
 description: Azure Active Directory (Azure AD) 应用程序代理 PowerShell 示例，它用于将当前分配给某个连接器组的所有应用程序移动到其他连接器组。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9acfa6b8b27c092416e16d404ad3e0dc907e5e3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb421a1a8040a406c8f3e4be04f9a99d881237d9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550980"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376896"
 ---
 # <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>将分配到某连接器组的所有应用移动到另一个连接器组
 
