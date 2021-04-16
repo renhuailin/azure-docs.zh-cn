@@ -3,7 +3,7 @@ title: 语言理解 (LUIS) 文档
 summary: 了解语言理解如何使应用程序能够理解用户希望使用自己的词语表达的内容。
 metadata:
   ms.topic: landing-page
-  ms.date: 06/15/2020
+  ms.date: 04/13/2021
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.openlocfilehash: 793638552b35dd6dc65395e9c568c55a8ef9f946
+  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98738061"
+  ms.lasthandoff: 04/14/2021
+  ms.locfileid: "107497041"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -130,7 +130,7 @@ landingContent:
     - text: 预生成的实体
       url: luis-reference-prebuilt-entities.md
     - text: 自定义实体
-      url: luis-concept-entity-types.md#types-of-entities
+      url: reference-entity-machine-learned-entity.md
     - text: 预生成域
       url: luis-reference-prebuilt-domains.md
 - title: 帮助和反馈

@@ -8,19 +8,21 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: a9ef74c04c1f709348ae1d6dd97558ee6bedccf3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e75d2b480a9cbfd2977d9d449c1ea12bdfe4920
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654962"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095605"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入门：在 Teams 会议中加入通话应用
+
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!IMPORTANT]
 > 若要启用/禁用 [Teams 租户互操作性](../../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
 
-通过使用 JavaScript 客户端库将通话解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。
+通过使用 JavaScript SDK 将呼叫解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/teams-interop-javascript.md)]
@@ -34,6 +36,14 @@ ms.locfileid: "104654962"
 [!INCLUDE [Calling with iOS](./includes/teams-interop-ios.md)]
 ::: zone-end
 
+本文档所述的功能使用通信服务 SDK 的正式发布版。 Teams 互操作性需要通信服务 SDK 的 Beta 版本。 可以在[发行说明页](https://github.com/Azure/Communication/tree/master/releasenotes)上浏览 Beta 版本 SDK。
+
+使用 Beta SDK 执行“安装包”步骤时，请通过在 `communication-calling` 包名称中指定版本 `@1.0.0-beta.10`（撰写本文时的版本），将包的版本修改为最新的 Beta 版本。 不需要修改 `communication-common` 包命令。 例如：
+
+```console
+npm install @azure/communication-calling@1.0.0-beta.10 --save
+```
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要清理并删除通信服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。 了解有关[清理资源](../create-communication-resource.md#clean-up-resources)的详细信息。
@@ -43,5 +53,5 @@ ms.locfileid: "104654962"
 有关详细信息，请参阅以下文章：
 
 - 查看我们的[出色呼叫示例](../../samples/calling-hero-sample.md)
-- 了解[呼叫客户端库功能](./calling-client-samples.md)
+- 了解如何[调用 SDK 功能](./calling-client-samples.md)
 - 了解有关[呼叫工作原理](../../concepts/voice-video-calling/about-call-types.md)的详细信息
