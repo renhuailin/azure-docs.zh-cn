@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182649"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449079"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>快速入门：使用 Azure Static Web Apps 生成第一个静态站点
 
-Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布到生产环境。 在此快速入门中，你可以使用 Visual Studio Code 扩展将 Web 应用部署到 Azure Static Web Apps。
+Azure Static Web Apps 通过从代码存储库生成应用程序发布网站。 在本快速入门中，你可以使用 Visual Studio Code 扩展将应用程序部署到 Azure Static Web Apps。
 
 如果没有 Azure 订阅，[请创建一个免费的试用帐户](https://azure.microsoft.com/free)。
 
@@ -43,7 +43,7 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
     > [!NOTE]
     > 需要登录 Azure 和 GitHub。 如果尚未从 Visual Studio Code 登录到 Azure 和 GitHub，该扩展将在创建过程中提示你登录到这两个站点。
 
-1. 将鼠标置于“Static Web Apps”标签上，然后选择加号。
+1. 在“Static Web Apps”标签下，选择“加号”。
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="应用程序名称":::
 
@@ -53,45 +53,34 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="创建静态 Web 应用":::
 
-1. 选择主分支，然后按 Enter。
+1. 选择与应用程序类型匹配的预设。
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="分支名称":::
+    # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="应用程序预设：无框架":::
 
-1. 选择“/”作为应用程序代码的位置，然后按 Enter 。
+    输入“./”作为应用程序文件的位置
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序代码位置":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="应用程序文件位置":::
 
-1. 扩展正在查找应用程序中 API 的位置。 本文不实现 API。
-
-    选择“暂时跳过”，然后按 Enter 。
+    选择“立即跳过”作为 Azure Functions API 的位置
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API 位置":::
 
-1. 选择在应用中生成用于生产的文件的位置。
+    输入“./”作为生成输出位置
 
-    # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
-
-    清除框并按 Enter。
-
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="应用程序生成输出位置":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    输入“dist/angular-basic”，然后按 Enter 。
-
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="应用程序预设：Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 
-    键入“生成”，然后按 Enter 。
-
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="应用程序预设：React":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    键入“dist”，然后按 Enter 。
-
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue 应用文件路径":::
+    :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="应用程序预设：Vue":::
 
     ---
 
@@ -103,11 +92,13 @@ Azure Static Web Apps 通过从 GitHub 存储库生成应用来将网站发布�
 
     :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="已创建确认":::
 
-1. 在 Visual Studio Code“资源管理器”窗口中，导航到具有订阅名称的节点并将其展开。 请注意，完成部署可能需要几分钟时间。 然后返回到“Static Web Apps”部分，选择应用的名称，再右键单击 my-first-static-web-app，选择“在门户中打开”，以便在 Azure 门户中查看应用。
+    接下来，单击 GitHub 中的“打开操作”按钮。 此页面将显示应用程序的生成状态。
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="打开门户":::
+    GitHub 操作完成后，即可浏览到已发布的网站。
 
-[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
+1. 若要在浏览器中查看网站，请在 Static Web Apps 扩展中右键单击该项目，然后选择“浏览网站”。
+
+    :::image type="content" source="media/getting-started/extension-browse-site.png" alt-text="浏览站点":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

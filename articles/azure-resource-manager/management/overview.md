@@ -2,14 +2,14 @@
 title: Azure 资源管理器概述
 description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608538"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -91,7 +91,7 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 
 * 删除一个资源组时，该资源组中的所有资源也会被删除。 如需了解 Azure 资源管理器如何编排这些删除，请参阅 [Azure 资源管理器资源组和资源删除](delete-resource-group.md)。
 
-* 最多可在每个资源组中部署 800 个资源类型实例。 某些资源类型[不受 800 个实例限制](resources-without-resource-group-limit.md)的约束。
+* 最多可在每个资源组中部署 800 个资源类型实例。 某些资源类型[不受 800 个实例限制](resources-without-resource-group-limit.md)的约束。 有关详细信息，请参阅[资源组限制](azure-subscription-service-limits.md#resource-group-limits)。
 
 * 某些资源可能存在于资源组之外。 这些资源将部署到[订阅](../templates/deploy-to-subscription.md)、[管理组](../templates/deploy-to-management-group.md)或[租户](../templates/deploy-to-tenant.md)。 这些范围仅支持特定的资源类型。
 
@@ -112,6 +112,8 @@ Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST AP
 这种复原能力适用于通过资源管理器接收请求的服务。 例如，Key Vault 可以利用这种复原能力。
 
 ## <a name="next-steps"></a>后续步骤
+
+* 若要了解在 Azure 服务中应用的限制，请参阅 [Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)。
 
 * 若要了解有关移动资源的信息，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
 

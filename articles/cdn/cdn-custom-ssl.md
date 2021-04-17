@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367497"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058946"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
 
@@ -172,15 +172,18 @@ Azure CDN 可处理证书管理任务，例如获取和续订操作。 启用此
 
 3. 在证书管理类型下，选择“使用我自己的证书”  。 
 
-    ![配置证书](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="如何为 CDN 终结点配置证书的屏幕截图。":::
 
-4. 选择 Key Vault，证书（机密）和证书版本。
+4. 选择密钥保管库、证书/机密和证书/机密版本。
 
     Azure CDN 会列出下列信息： 
     - 订阅 ID 的 Key Vault 帐户。 
-    - 所选 Key Vault 下的证书（机密）。 
-    - 可用证书版本。 
+    - 所选密钥保管库下的证书/机密。 
+    - 可用的证书/机密版本。
  
+    > [!NOTE]
+    > 为了使证书在密钥保管库中提供较新版本的证书时自动轮换到最新版本，请将证书/机密版本设置为“最新”。 如果选择了特定版本，则必须为证书轮换手动重新选择新版本。 部署新版本的证书/机密最多需要 24 小时。 
+   
 5. 选择“打开”，启用 HTTPS  。
   
 6. 使用你的证书时，无需验证域。 转到[等待传播](#wait-for-propagation)。
@@ -356,6 +359,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 7. *证书续订如何处理自带证书？*
 
     若要确保将较新的证书部署到 PoP 基础结构，请将新证书上传到 Azure KeyVault。 在 Azure CDN 上的 TLS 设置中，选择最新的证书版本并选择“保存”。 然后 Azure CDN 将传播新的已更新证书。 
+
+8. *终结点重启后是否需要重新启用 HTTPS？*
+
+    是。 如果使用的是来自 Akamai 的 Azure CDN，则在终结点停止并重启后，必须重新启用 HTTPS 设置（如果该设置以前处于活动状态）。
+
 
 ## <a name="next-steps"></a>后续步骤
 

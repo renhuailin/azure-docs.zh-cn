@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833807"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505121"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -23,16 +23,16 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 本文概述了与 IoT Central 相关的以下内容：
 
-- 与项目关联的典型角色。
+- 与项目关联的典型用户角色。
 - 如何创建应用程序。
 - 如何将设备连接到应用程序。
 - 如何管理应用程序。
 - IoT Central 中的 Azure IoT Edge 功能。
 - 如何将 Azure IoT Edge 运行时支持的设备连接到应用程序。
 
-## <a name="personas"></a>角色
+## <a name="user-roles"></a>用户角色
 
-本 IoT Central 文档提到了四个与 IoT Central 应用程序进行交互的角色：
+本 IoT Central 文档提到了四个可与 IoT Central 应用程序进行交互的用户角色：
 
 - 解决方案构建者负责[创建应用程序](quick-deploy-iot-central.md)、[配置规则和操作](quick-configure-rules.md)、[定义与其他服务的集成](howto-export-data.md)，并进一步自定义供操作员和设备开发人员使用的应用程序。
 - “操作员”[管理连接到应用程序的设备](howto-manage-devices.md)。

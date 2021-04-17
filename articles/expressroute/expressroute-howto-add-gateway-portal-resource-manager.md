@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038911"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110319"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教程：使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ ms.locfileid: "102038911"
 可以先观看这些步骤的[视频](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)，再开始配置。
 
 > [!IMPORTANT]
-> 对专用对等互连的 IPv6 支持目前为公共预览版。 如果要将虚拟网络连接到配置了基于 IPv6 的专用对等互连的 ExpressRoute 线路，请确保虚拟网络为双重堆栈，并遵循[适用于 Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) 中的指南。
+> 对专用对等互连的 IPv6 支持目前为公共预览版。 如果要将虚拟网络连接到配置了基于 IPv6 的专用对等互连的 ExpressRoute 线路，请确保虚拟网络为双重堆栈，并遵循[适用于 Azure VNet 的 IPv6](../virtual-network/ipv6-overview.md) 中的指南。
 > 
 > 
 
@@ -63,7 +63,7 @@ ms.locfileid: "102038911"
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="添加网关子网":::
 
-1. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 调整自动填充的地址范围值，使其符合配置要求。 建议使用 /27 或更大（/26、/25 等）创建网关子网。
+1. 子网的“名称”自动填充为值“GatewaySubnet”。 Azure 需要此值才能识别作为网关子网的子网。 调整自动填充的地址范围值，使其符合配置要求。 建议使用 /27 或更大（/26、/25 等）创建网关子网。 如果计划将 16 个 ExpressRoute 线路连接到网关，则必须创建 /26 或更大的网关子网。
 
     如果使用的是双重堆栈虚拟网络，并且计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请单击“添加 IP6 地址空间”并输入“IPv6 地址范围”值 。
 

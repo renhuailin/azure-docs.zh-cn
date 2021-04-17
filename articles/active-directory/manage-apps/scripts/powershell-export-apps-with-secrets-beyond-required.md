@@ -2,21 +2,21 @@
 title: PowerShell 示例 - 导出其机密和证书在 Azure Active Directory 租户中超出所需日期的应用。
 description: PowerShell 示例，该示例导出了 Azure Active Directory 租户中指定应用的所有机密和证书超出所需日期的应用。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: daeea48758a9f08e7eedbfcaddcde3815f5c1e16
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 692ab2cfd480fd15760c13c63922fe76d23058ea
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729093"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375383"
 ---
 # <a name="export-apps-with-secrets-and-certificates-expiring-beyond-the-required-date"></a>导出其机密和证书超出所需日期的应用
 

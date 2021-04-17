@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418957"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105858"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -20,7 +20,7 @@ AKS 托管的 Azure AD 集成设计用来简化 Azure AD 集成体验，用户�
 
 群集管理员可以根据用户的标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。 使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][open-id-connect]。
 
-若要详细了解 Azure AD 集成流程，请参阅 [Azure Active Directory 集成概念文档](concepts-identity.md#azure-active-directory-integration)。
+若要详细了解 Azure AD 集成流程，请参阅 [Azure Active Directory 集成概念文档](concepts-identity.md#azure-ad-integration)。
 
 ## <a name="limitations"></a>限制 
 
@@ -254,11 +254,11 @@ kubectl get nodes
     az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
     ```
 1. 返回 Azure 门户，在左侧的“活动”菜单中，依次选择“特权访问(预览版)”、“启用特权访问”。  
-    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户中的“特权访问(预览版)”页，其中突出显示了“启用特权访问”":::
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="显示 Azure 门户中的“特权访问（预览版）”页，其中突出显示了“启用特权访问”":::
 1. 选择“添加分配”开始授予访问权限。
     :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="显示启用特权访问后 Azure 门户中的“特权访问(预览版)”屏幕。其中突出显示了“添加分配”选项。":::
 1. 选择成员的角色，然后选择要向其授予群集访问权限的用户和组。 组管理员随时可以修改这些分配。准备好继续操作时，选择“下一步”。
-    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="显示 Azure 门户中的“添加分配”>“成员身份”屏幕，并选择了一个要添加为成员的示例用户。突出显示了“下一步”选项。":::
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="显示 Azure 门户中的“添加分配成员身份”屏幕，并选择了一个要添加为成员的示例用户。突出显示了“下一步”选项。":::
 1. 选择“活动”分配类型和所需的持续时间，并提供理由。 准备好继续操作时，选择“分配”。 有关分配类型的详细信息，请参阅[在 Privileged Identity Management 中为特权访问组分配资格（预览版）][aad-assignments]。
     :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="显示 Azure 门户中的“添加分配”>“设置”屏幕。已选择“活动”分配类型，并给出了示例理由。突出显示了“分配”选项。":::
 
@@ -286,7 +286,7 @@ aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
 如果 `kubectl get nodes` 返回类似于下面的错误：
 
@@ -308,7 +308,7 @@ Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[aad-pricing]: /azure/pricing/details/active-directory
+[aad-pricing]: https://azure.microsoft.com/pricing/details/active-directory/
 
 <!-- LINKS - Internal -->
 [aad-conditional-access]: ../active-directory/conditional-access/overview.md

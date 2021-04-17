@@ -4,12 +4,12 @@ description: 本文介绍如何延迟传送 Azure 服务总线消息。 该消�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622039"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306103"
 ---
 # <a name="message-deferral"></a>消息延迟
 
@@ -22,7 +22,7 @@ ms.locfileid: "98622039"
 最终，延迟有助于将消息的到达顺序重新排列为处理顺序，同时将需要延迟处理的消息安全保留在消息存储中。
 
 > [!NOTE]
-> [延迟消息过期后](./service-bus-dead-letter-queues.md#exceeding-timetolive)不会自动移动到死信队列。 此行为是设计使然。
+> [延迟消息过期后](./service-bus-dead-letter-queues.md#time-to-live)不会自动移动到死信队列。 此行为是设计使然。
 
 ## <a name="message-deferral-apis"></a>消息延迟 API
 

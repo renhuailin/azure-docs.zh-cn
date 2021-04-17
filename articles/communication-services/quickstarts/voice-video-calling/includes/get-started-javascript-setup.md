@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/11/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 90bc9def9c1a78799f4931b58ad0a661602985e3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4a493d5f0d34cd4621d55c0371036c03e267c466
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013186"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108246"
 ---
 ## <a name="setting-up"></a>设置
 
@@ -29,7 +29,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>安装包
 
-使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务呼叫客户端库。
+使用 `npm install` 命令安装适用于 JavaScript 的 Azure 通信服务通话 SDK。
 
 ```console
 npm install @azure/communication-common --save

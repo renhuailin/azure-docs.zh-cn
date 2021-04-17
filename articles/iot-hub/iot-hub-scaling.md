@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 7940ac3a67a0562aa0b7a21690deec30220a48a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdb792198e6912fb0e68b2abec052c2b05166f17
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434706"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310115"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -60,7 +60,7 @@ IoT 中心还提供一个免费层，用于测试和评估。 它具有标准层
 
 Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md)的许多核心组件，包括[分区](../event-hubs/event-hubs-features.md#partitions)。 IoT 中心的事件流通常由各种 IoT 设备报告的传入遥测数据进行填充。 事件流的分区功能用来减少当事件流有并发的读取和写入时发生的连接。
 
-分区限制是在创建 IoT 中心时选择的，并且无法更改。 基本层 IoT 中心和标准层 IoT 中心的最大分区限制为 32。 大多数 IoT 中心只需要 4 个分区。 有关确定分区的详细信息，请参阅事件中心常见问题解答[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+分区限制是在创建 IoT 中心时选择的，并且无法更改。 基本层 IoT 中心和标准层 IoT 中心的最大分区限制为 32。 大多数 IoT 中心只需要 4 个分区。 有关确定分区的详细信息，请参阅事件中心常见问题解答[我需要多少分区？](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)
 
 ## <a name="tier-upgrade"></a>层升级
 

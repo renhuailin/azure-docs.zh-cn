@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94659618"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639547"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
@@ -42,23 +42,10 @@ ms.locfileid: "94659618"
 下面是从 SQL 源共享数据的先决条件列表。 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>从 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）共享的先决条件
-可按照[分步演示](https://youtu.be/hIE-TjJD8Dc)配置先决条件。
 
 * 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
-* Data Share 资源托管标识访问数据库的权限。 可以通过以下步骤完成此操作： 
-    1. 在 Azure 门户中，导航到 SQL 服务器并将你自己设置为“Azure Active Directory 管理员”。
-    1. 使用[查询编辑器](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)或 SQL Server Management Studio 通过 Azure Active Directory 身份验证连接到 Azure SQL 数据库/数据仓库。 
-    1. 执行以下脚本，以将 Data Share 资源托管标识添加为 db_datareader。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       请注意， *<share_acc_name>* 是 Data Share 资源的名称。 如果尚未创建 Data Share 资源，则可以稍后返回到该先决条件。  
-
-* 具有“db_datareader”访问权限的 Azure SQL 数据库用户，可以浏览和选择要共享的表和/或视图。 
-
+* SQL 服务器的 Azure Active Directory 管理员
 * SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
     1. 在 Azure 门户中导航到“SQL Server”。 从左侧导航栏中选择“防火墙和虚拟网络”。
     1. 对于“允许 Azure 服务和资源访问此服务器”，单击“是”。
@@ -90,7 +77,6 @@ ms.locfileid: "94659618"
 ### <a name="share-from-azure-data-explorer"></a>从 Azure 数据资源管理器进行共享
 * Azure 数据资源管理器群集，其中包含要共享的数据库。
 * 向 Azure 数据资源管理器群集进行写入的权限，此权限存在于 *Microsoft.Kusto/clusters/write* 中。 “参与者”角色有此权限。
-* 向 Azure 数据资源管理器群集添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -186,7 +172,7 @@ ms.locfileid: "94659618"
 
     ![向共享添加数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）共享，系统将提示你输入 SQL 凭据以列出表。
+1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）进行共享，系统会提示你选择身份验证方法以列出表。 选择“AAD 身份验证”，然后选中“允许‘数据共享’以我的名义运行上述‘创建用户’脚本”复选框。 
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 
