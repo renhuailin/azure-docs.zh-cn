@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: d990deca3f435f0b1e3fbdd3388371a11813662a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98f13df2c4da993147ba3ef4157340910fcbc5d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947231"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719789"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -102,7 +102,7 @@ audio_config = AudioOutputConfig(use_default_speaker=True)
 * 将结果与其他 API 或服务相集成。
 * 修改音频数据、写入自定义 `.wav` 标头，等等。
 
-可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig`，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `None`。 
+可以轻松地在前一个示例的基础上进行此项更改。 首先删除 `AudioConfig`，因为从现在起，你将手动管理输出行为，以提高控制度。 然后在 `SpeechSynthesizer` 构造函数中为 `AudioConfig` 传递 `None`。
 
 > [!NOTE]
 > 如果为 `AudioConfig` 传递 `None`，而不是像在前面的扬声器输出示例中那样省略它，则默认不会在当前处于活动状态的输出设备上播放音频。
@@ -206,3 +206,11 @@ stream.save_to_wav_file("path/to/write/file.wav")
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>获取人脸姿态事件
+
+语音可以是推动面部表情动画的好办法。
+[视素](../../../how-to-speech-synthesis-viseme.md)通常用以表示所观察语音中的关键姿态，包括在发出特定音素时嘴唇、下巴和舌头等的位置。
+你可以在语音 SDK 中订阅视素事件。
+然后，你可以应用视素事件，将字符的表面以语音音频播放形式进行动画处理。
+了解[如何取得视素事件](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)。

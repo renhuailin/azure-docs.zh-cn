@@ -7,12 +7,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: adcefc21ac4fc8a00d97d5ac4352bad1287b60de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1950fa5269460bd3daeb671a37a072dc4f5f050
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517627"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385252"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>快速入门：使用 REST API 创建 Azure 数据工厂和管道
 
@@ -37,7 +37,9 @@ Azure 数据工厂是基于云的数据集成服务，用于在云中创建数�
 * 在 Blob 存储中创建一个 **blob 容器**，在该容器中创建一个输入 **文件夹**，并向该文件夹上传一些文件。 可以使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)等工具连接到 Azure Blob 存储、创建 Blob 容器、上传输入文件，以及验证输出文件。
 * 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。 本快速入门使用 PowerShell 调用 REST API。
 * 按照 [此说明](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)**在 Azure Active Directory 中创建应用程序**。 记下要在后续步骤中使用的以下值：**应用程序 ID**、**clientSecrets** 和 **租户 ID**。 将应用程序分配到“参与者”  角色。
-
+>[!NOTE]
+>   对于主权云，必须对 ActiveDirectoryAuthority 和 ResourceManagerUrl (BaseUri) 使用适当的云特定终结点。 你可以通过执行“Get-AzEnvironment | Format-List”（它将返回每个云环境的终结点列表），并使用 Powershell 轻松获取各种云的终结点 URL。  
+>    
 ## <a name="set-global-variables"></a>设置全局变量
 
 1. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。

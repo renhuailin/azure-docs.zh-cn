@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181571"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RSA Archer Suite 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "96181571"
 * 让用户使用其 Azure AD 帐户自动登录到 RSA Archer Suite。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,13 +37,13 @@ ms.locfileid: "96181571"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* RSA Archer Suite 支持 SP 发起的 SSO
-* RSA Archer Suite 支持实时用户预配
+* RSA Archer Suite 支持 SP 发起的 SSO。
+* RSA Archer Suite 支持实时用户预配。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-rsa-archer-suite-from-the-gallery"></a>从库中添加 RSA Archer Suite
+## <a name="add-rsa-archer-suite-from-the-gallery"></a>从库中添加 RSA Archer Suite
 
 若要配置 RSA Archer Suite 与 Azure AD 的集成，需要从库中将 RSA Archer Suite 添加到托管 SaaS 应用程序列表。
 
@@ -53,7 +53,6 @@ ms.locfileid: "96181571"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“RSA Archer Suite” 。
 1. 从结果面板中选择“RSA Archer Suite”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>配置并测试 RSA Archer Suite 的 Azure AD SSO
 
@@ -74,7 +73,7 @@ ms.locfileid: "96181571"
 
 1. 在 Azure 门户中的“RSA Archer Suite”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -141,7 +140,7 @@ ms.locfileid: "96181571"
 
 1. 在下面的页中执行以下步骤。
 
-    ![配置 RSA Archer Suite SSO](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
+    ![配置 RSA Archer Suite SSO](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. 转到“单一登录”选项卡，并从下拉菜单中选择“SAML”作为“单一登录模式”  。
 

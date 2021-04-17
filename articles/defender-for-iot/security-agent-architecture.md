@@ -1,24 +1,14 @@
 ---
 title: 快速入门：安全代理概述
-description: 在本快速入门中，将介绍如何了解 Azure Defender for IoT 服务中使用的代理的安全代理体系结构。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
+description: 本快速入门将介绍如何了解 Azure Defender for IoT 服务中使用的代理专用安全代理体系结构。
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 4/4/2021
+ms.openlocfilehash: 0937cccb0335f4eee16ca3590babe9574320b89f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449231"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384965"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>快速入门：安全代理参考体系结构
 
@@ -43,7 +33,7 @@ Defender for IoT 安全代理作为开源项目开发，可从 GitHub 获得：
 
 ## <a name="prerequisites"></a>先决条件
 
-无
+- 无
 
 ## <a name="agent-supported-platforms"></a>代理支持的平台
 
@@ -57,9 +47,8 @@ Defender for IoT 为 32 位和 64 位 Windows 提供不同的安装程序代理�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文提供了有关 Defender for IoT 安全模块体系结构以及可用的安装程序的综合概述。
-
-请参阅以下文章继续着手部署 Defender for IoT：
+本文提供了有关 Defender for IoT Defender-IoT-micro-agent 体系结构以及可用的安装程序的综合概述。
+若要继续着手部署 Defender for IoT， 
 
 > [!div class="nextstepaction"]
 > [安全代理身份验证方法](concept-security-agent-authentication-methods.md)

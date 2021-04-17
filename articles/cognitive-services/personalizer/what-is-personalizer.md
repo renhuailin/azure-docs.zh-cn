@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personalizer, Azure personalizer, machine learning
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928549"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169243"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -21,11 +21,14 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
 > [!TIP]
 > 内容是任何信息单元，如文本、图像、URL、电子邮件或你希望从中选择并向用户显示的任何其他内容。
 
-在开始之前，请随意试用[个性化体验创建服务交互式演示](https://personalizationdemo.azurewebsites.net/)。
+本文档包含以下文章类型：  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**快速入门**](quickstart-personalizer-sdk.md)介绍了入门说明，指导您完成向服务发出请求。  
+* [**操作指南**](how-to-settings.md)包含以更具体的方式或自定义方式使用服务的说明。  
+* [**概念**](how-personalizer-works.md)对服务的功能和特性进行了深入说明。  
+* [**教程**](tutorial-use-personalizer-web-app.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。  
+
+开始之前，请试用[个性化体验创建服务交互式演示](https://personalizationdemo.azurewebsites.net/)。
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>个性化体验创建服务如何选择最佳内容项目？
 
@@ -100,18 +103,6 @@ Azure 个性化体验创建服务是基于云的服务，有助于应用程序�
         * 在显示内容后立即这样做
         * 或者稍后在脱机系统中这样做
     1. 使用一段时间后，使用脱机评估来[评估循环](concepts-offline-evaluation.md)。 使用脱机评估，可以在不更改代码或影响用户体验的情况下测试和评估个性化体验创建服务的有效性。
-
-## <a name="complete-a-quickstart"></a>完成快速入门
-
-我们提供了适用于 C#、JavaScript 和 Python 的快速入门。 每个快速入门旨在让你了解基本设计模式并帮助你在 10 分钟以内运行代码。 
-
-* [快速入门：如何使用个性化体验创建服务客户端库](./quickstart-personalizer-sdk.md)
-
-有机会开始使用个性化体验创建服务后，请尝试我们的教程，了解如何在 Web 应用程序、聊天机器人或 Azure Notebook 中使用个性化体验创建服务。
-
-* [教程：在 .NET Web 应用中使用个性化体验创建服务](tutorial-use-personalizer-web-app.md)
-* [教程：在 .NET 聊天机器人中使用个性化体验创建服务](tutorial-use-personalizer-chat-bot.md)
-* [教程：在 Azure Notebook 中使用个性化体验创建服务](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>参考 
 

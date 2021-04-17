@@ -9,26 +9,23 @@ ms.author: mariusu
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 35c3bd0213b6d895a81605f5858f924182e1e307
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496229"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168852"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
-Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 呼叫客户端库提供的各种功能。
+Web 呼叫示例是一个 Web 应用程序，其中分步演练了由通信服务 Web 呼叫 SDK 提供的各种功能。
 
 此示例是为开发人员构建的，可让你轻松开始使用通信服务。 它的用户界面分为多个部分，每个部分都带有一个“显示代码”按钮，可用于将代码直接从浏览器复制到你自己的通信服务应用程序。
 
 ## <a name="get-started-with-the-web-calling-sample"></a>开始了解 Web 呼叫示例
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
 > [!IMPORTANT]
-> [Github 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)
+> [Github 上提供了此示例](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)。
 
 按照 /Project/readme.md 设置项目，并在计算机上本地运行它。
 当 [Web 呼叫示例](https://github.com/Azure-Samples/communication-services-web-calling-tutorial)在计算机上运行时，你将看到以下登陆页面：
@@ -51,7 +48,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 ## <a name="placing-and-receiving-calls"></a>拨打和接听电话
 
-通信服务 Web 呼叫 SDK 支持一对一，一对多和群组通话  。
+通信服务 Web 呼叫 SDK 支持一对一通话，一对多通话和群组通话  。
 
 对于一对一或一对多传出呼叫，可以使用逗号分隔的值指定多个要呼叫的通信服务用户标识。 还可以使用逗号分隔的值来指定要呼叫的传统 (PSTN) 电话号码。
 
@@ -86,7 +83,7 @@ Web 呼叫示例是一个 Web 应用程序，可分步演练由通信服务 Web 
 
 有关详细信息，请参阅以下文章：
 
-- 熟悉如何[使用呼叫客户端库](../quickstarts/voice-video-calling/calling-client-samples.md)
+- 自行熟悉如何[使用呼叫 SDK](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 了解有关[呼叫工作原理](../concepts/voice-video-calling/about-call-types.md)的详细信息
 - 查看 [API 参考文档](/javascript/api/azure-communication-services/@azure/communication-calling/)
 - 查看 [Contoso Med 应用](https://github.com/Azure-Samples/communication-services-contoso-med-app)示例

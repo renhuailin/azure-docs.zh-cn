@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 65cc3d2fdcbdea934e80a5f0012ca4f3da157ca3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a63c6f074178794db38b47950e176dd729344a54
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94843428"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492722"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for MySQL 灵活服务器
 
@@ -40,7 +40,7 @@ az login
 
 使用 [az account set](/cli/azure/account#az-account-set) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription <subscription id>
 ```
 
@@ -54,7 +54,7 @@ az group create --name myresourcegroup --location eastus2
 
 使用 `az mysql flexible-server create` 命令创建灵活服务器。 一个服务器可以包含多个数据库。 以下命令使用服务默认值和 Azure CLI [本地上下文](/cli/azure/local-context)中的值创建服务器： 
 
-```azurecli
+```azurecli-interactive
 az mysql flexible-server create
 ```
 
@@ -95,6 +95,13 @@ Make a note of your password. If you forget, you would have to reset your passwo
 ```
 
 如果要更改任何默认设置，请参阅 Azure CLI [参考文档](/cli/azure/mysql/flexible-server)以获取可配置 CLI 参数的完整列表。 
+
+## <a name="create-a-database"></a>创建数据库
+如果尚未创建数据库，请运行 **newdatabase** 命令进行创建。
+
+```azurecli-interactive
+az mysql flexible-server db create -d newdatabase
+```
 
 > [!NOTE]
 > 连接到 Azure Database for MySQL 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 3306。
@@ -140,17 +147,83 @@ az mysql flexible-server show --resource-group myresourcegroup --name mydemoserv
 }
 ```
 
+## <a name="connect-and-test-the-connection-using-azure-cli"></a>使用 Azure CLI 连接并测试连接
+
+借助 Azure Database for MySQL 灵活服务器，你可使用 Azure CLI ```az mysql flexible-server connect``` 命令连接到 MySQL 服务器。 使用此命令可以测试与数据库服务器的连接情况，创建快速入门数据库并直接对服务器运行查询，无需安装 mysql.exe 或 MySQL Workbench。  还可以使用在交互模式下运行命令来运行多个查询。
+
+运行以下脚本，在开发环境中测试和验证与数据库的连接。
+
+```azurecli-interactive
+az mysql flexible-server connect -n <servername> -u <username> -p <password> -d <databasename>
+```
+**示例：**
+```azurecli-interactive
+az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase
+```
+对于成功的连接，应看到以下输出：
+
+```output
+Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+Connecting to newdatabase database.
+Successfully connected to mysqldemoserver1.
+```
+如果连接失败，请尝试以下解决方案：
+- 检查是否已在客户端计算机上打开端口 3306。
+- 如果服务器管理员用户名和密码正确
+- 如果已为客户端计算机配置防火墙规则
+- 如果已在虚拟网络中为服务器配置了专用访问权限，请确保客户端计算机位于同一虚拟网络中。
+
+运行以下命令，以使用 ```--querytext``` 参数 ```-q``` 执行单个查询。
+
+```azurecli-interactive
+az mysql flexible-server connect -n <server-name> -u <username> -p "<password>" -d <database-name> --querytext "<query text>"
+```
+
+**示例：**
+```azurecli-interactive
+az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -d newdatabase -q "select * from table1;" --output table
+```
+若要详细了解如何使用 ```az mysql flexible-server connect``` 命令，请参阅[连接和查询](connect-azure-cli.md)文档。
+
 ## <a name="connect-using-mysql-command-line-client"></a>使用 mysql 命令行客户端进行连接
 
-由于使用“专用访问(VNet 集成)”创建了灵活服务器，因此你需要从与服务器相同的 VNet 中的资源连接到服务器。 可以创建虚拟机并将其添加到创建的虚拟网络中。 
+如果使用“专用访问(VNet 集成)”创建了灵活服务器，需要从与服务器相同的虚拟网络中的资源连接到服务器。 可以创建虚拟机并将其添加到使用灵活服务器创建的虚拟网络中。 有关详细信息，请参阅[配置专用访问文档](how-to-manage-virtual-network-portal.md)。
 
-创建虚拟机后，可以通过 SSH 进入计算机并安装常用客户端工具 [mysql.exe](https://dev.mysql.com/downloads/) 命令行工具。
+如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。 有关分步指南，请参阅[创建或管理防火墙规则文档](how-to-manage-firewall-portal.md)。
 
-使用 mysql.exe，通过以下命令进行连接。 将值替换为实际的服务器名称和密码。 
+可以使用 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md) 从本地环境连接到服务器。 Azure Database for MySQL 灵活服务器支持使用传输层安全性 (TLS)（以前称为安全套接字层 (SSL)）将客户端应用程序连接到 MySQL 服务。 TLS 是一种行业标准协议，可确保数据库服务器和客户端应用程序之间的加密网络连接，让你能够遵守合规要求。若要通过 MySQL 灵活服务器进行连接，你需要下载用于证书颁发机构验证的[公用 SSL 证书](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 若要详细了解如何通过加密连接进行连接或禁用 SSL，请参阅[连接到具有加密连接的 Azure Database for MySQL — 灵活服务器](how-to-connect-tls-ssl.md)文档。
+
+以下示例演示如何使用 mysql 命令行接口连接到你的灵活服务器。 如果尚未安装 mysql 命令行，请先进行安装。 你将下载 SSL 连接所需的 DigiCertGlobalRootCA 证书。 使用 --ssl-mode=REQUIRED 连接字符串设置强制实施 TLS/SSL 证书验证。 将本地证书文件路径传递给 --ssl-ca 参数。 将值替换为实际的服务器名称和密码。
 
 ```bash
- mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p
+sudo apt-get install mysql-client
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
+如果已使用公共访问权限预配了灵活服务器，还可使用 [Azure Cloud Shell](https://shell.azure.com/bash)，通过预安装的 mysql 客户端连接到你的灵活服务器，如下所示：
+
+若要使用 Azure Cloud Shell 连接到灵活服务器，则将需要允许从 Azure Cloud Shell 到灵活服务器的网络访问。 若要实现此目的，你可在 Azure 门户上访问 MySQL 灵活服务器的“网络”边栏选项卡，选中“防火墙”部分下的“允许从 Azure 中的任何 Azure 服务公开访问此服务器”这一对话框（如下图所示），然后单击“保存”以保存设置。
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="屏幕截图：显示如何允许 Azure Cloud Shell 访问 MySQL 灵活服务器以进行公共访问网络配置。":::
+ 
+ 
+> [!NOTE]
+> 选中“允许从 Azure 中的任何 Azure 服务公共访问此服务器”应仅用于开发或测试目的。 该选项可将防火墙配置为允许来自分配给任何 Azure 服务或资产的 IP 地址的连接，包括来自其他客户的订阅的连接。
+
+单击“尝试”以启动 Azure Cloud Shell，并使用以下命令连接到你的灵活服务器。 在命令中使用服务器名称、用户名和密码。 
+
+```azurecli-interactive
+wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+```
+> [!IMPORTANT]
+> 使用 Azure Cloud Shell 连接到灵活服务器时，你需要使用 --ssl=true 参数，而非 --ssl-mode=REQUIRED。
+> 主要原因是 MariaDB 分发中预安装的 mysql.exe 客户端 Azure Cloud Shell，它需要 --ssl  参数，而来自 Oracle 分发的 mysql 客户端需要 --ssl 模式参数。
+
+如果按照之前的命令连接到灵活服务器时看到以下错误消息，则说明未使用前面提到过的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”设置防火墙规则，或该选项未保存。 请尝试重新设置防火墙，然后重试。
+
+错误 2002 (HY000)：无法连接到 <servername> 上的 MySQL 服务器 (115)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -168,5 +241,7 @@ az mysql flexible-server delete --resource-group myresourcegroup --name mydemose
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
->[使用 MySQL 生成 PHP (Laravel) Web 应用](tutorial-php-database-app.md)
+>[!div class="nextstepaction"]
+> [使用 Azure CLI 连接和查询](connect-azure-cli.md)
+> [连接到具有加密连接的 Azure Database for MySQL — 灵活服务器](how-to-connect-tls-ssl.md)
+> [使用 MySQL 构建 PHP (Laravel) Web 应用](tutorial-php-database-app.md)

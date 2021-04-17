@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599288"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097282"
 ---
 > [!NOTE]
 > 若要检测受保护的运行状况信息 (PHI)，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
@@ -53,7 +53,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        人员姓名。 
+        人员姓名。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `Person` 添加到 `pii-categories` 参数中。 如果检测到 `Person`，会在 API 响应中返回。
       
@@ -140,7 +140,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。
+        公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `Organization` 添加到 `pii-categories` 参数中。 如果检测到 `Organization`，会在 API 响应中返回。
       
@@ -241,7 +241,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        完整的通讯地址。
+        完整的通讯地址。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `Address` 添加到 `pii-categories` 参数中。 如果检测到 `Address`，会在 API 响应中返回。
       
@@ -270,7 +270,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        电子邮件地址。
+        电子邮件地址。 也随 `domain=phi` 一起返回。
       
         若要获得此实体类别，请将 `Email` 添加到 `pii-categories` 参数中。 如果检测到 `Email`，会在 API 响应中返回。
 
@@ -298,7 +298,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        指向网站的 URL。 
+        指向网站的 URL。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `URL` 添加到 `pii-categories` 参数中。 如果检测到 `URL`，会在 API 响应中返回。
       
@@ -327,7 +327,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        网络 IP 地址。 
+        网络 IP 地址。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `IP` 添加到 `pii-categories` 参数中。 如果检测到 `IP`，会在 API 响应中返回。
       
@@ -382,7 +382,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        日历日期。
+        日历日期。 也随 `domain=phi` 一起返回。
 
         若要获得此实体类别，请将 `Date` 添加到 `pii-categories` 参数中。 如果检测到 `Date`，会在 API 响应中返回。
       
@@ -436,7 +436,7 @@ ms.locfileid: "104599288"
     :::column span="2":::
         **详细信息**
 
-        年龄。
+        年龄。 
 
         若要获得此实体类别，请将 `Age` 添加到 `pii-categories` 参数中。 如果检测到 `Age`，会在 API 响应中返回。
       

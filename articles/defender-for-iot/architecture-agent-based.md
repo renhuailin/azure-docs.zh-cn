@@ -1,16 +1,16 @@
 ---
-title: 基于代理的解决方案体系结构
+title: 什么是基于代理的解决方案体系结构
 description: 了解基于 Azure Defender for IoT 代理的体系结构和信息流。
 ms.topic: overview
 ms.date: 1/25/2021
-ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e08c3f151c3d3bc4fe08e61d960874b07f5b63e8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784877"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383518"
 ---
-# <a name="agent-based-solution-for-device-builders"></a>适用于设备构建者的基于代理的解决方案
+# <a name="what-is-agent-based-solution-for-device-builders"></a>什么是基于代理的设备构建者解决方案
 
 本文介绍了基于 Defender for IoT 代理的解决方案的功能系统体系结构。 Azure Defender for IoT 提供了两组功能，可满足你的环境需求,适用于组织的无代理解决方案，以及设备构建者的基于代理的解决方案。
 
@@ -34,7 +34,7 @@ Defender for IoT 建议和警报（分析管道输出）会写入到每个客户
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="微代理体系结构。":::
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [Defender for IoT 常见问题解答](resources-frequently-asked-questions.md)
 

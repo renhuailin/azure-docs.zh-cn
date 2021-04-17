@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4c8bd66dde54ff90ea2191fba58f10c87c45cf68
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495369"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105957966"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -43,15 +43,15 @@ dotnet build
 
 ### <a name="install-the-package"></a>安装包
 
-安装适用于 .NET 的 Azure 通信聊天客户端库
+安装适用于 .NET 的 Azure 通信聊天 SDK
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
+dotnet add package Azure.Communication.Chat --version 1.0.0
 ```
 
 ## <a name="object-model"></a>对象模型
 
-以下类处理适用于 C# 的 Azure 通信服务聊天客户端库的某些主要功能。
+以下类用于处理适用于 C# 的 Azure 通信服务聊天 SDK 的某些主要功能。
 
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
 
 ## <a name="create-a-chat-client"></a>创建聊天客户端
 
-若要创建聊天客户端，你需要使用通信服务终结点以及在先决条件步骤中生成的访问令牌。 需要使用标识客户端库中的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。
+若要创建聊天客户端，你需要使用通信服务终结点以及在先决条件步骤中生成的访问令牌。 你需要使用标识 SDK 中的 `CommunicationIdentityClient` 类来创建用户，并颁发要传递到聊天客户端的令牌。
 
 详细了解[用户访问令牌](../../access-tokens.md)。
 
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>列出所有聊天会话
+使用 `GetChatThreads` 可检索用户所属的所有聊天线程。
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>向聊天会话发送消息
 
 使用 `SendMessage` 向会话发送消息。
@@ -124,17 +135,8 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: thr
 - 使用 `senderDisplayName` 指定发送方的显示名称。 如果未指定，则会将其设置为空字符串。
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>获取消息
-
-使用 `GetMessage` 从服务中检索消息。
-`messageId` 是消息的唯一 ID。
-
-`ChatMessage` 是获取消息后返回的响应。它包含一个 ID（消息的唯一标识符）和其他字段。 请参阅 Azure.Communication.Chat.ChatMessage
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
+SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+string messageId = sendChatMessageResult.Id;
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>从聊天会话接收聊天消息
@@ -167,25 +169,6 @@ await foreach (ChatMessage message in allMessages)
 
 有关详细信息，请参阅[消息类型](../../../concepts/chat/concepts.md#message-types)。
 
-## <a name="update-a-message"></a>更新消息
-
-可以通过调用 `ChatThreadClient` 上的 `UpdateMessage` 来更新已发送的消息。
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>删除消息
-
-可以通过调用 `ChatThreadClient` 上的 `DeleteMessage` 来删除消息。
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>将用户作为参与者添加到聊天会话
 
 创建会话后，可以在其中添加和删除用户。 通过添加用户，可以向他们授予访问权限，使其能够向会话发送消息，以及添加/删除其他参与者。 在调用 `AddParticipants` 之前，请确保已获取该用户的新访问令牌和标识。 用户需要使用该访问令牌才能初始化其聊天客户端。
@@ -209,14 +192,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>从聊天会话中删除用户
-
-与将用户添加到会话类似，可以从聊天会话中删除用户。 为此，你需要跟踪已添加的参与者的标识 `CommunicationUser`。
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>获取会话参与者
 
@@ -230,14 +205,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>发送键入通知
-
-使用 `SendTypingNotification` 指示用户正在会话中键入响应。
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>发送阅读回执
 
 使用 `SendReadReceipt` 通知其他参与者：用户已阅读该消息。
@@ -246,17 +213,6 @@ await chatThreadClient.SendTypingNotificationAsync();
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>获取阅读回执
-
-使用 `GetReadReceipts` 检查消息的状态，看看聊天会话的其他参与者阅读了哪些消息。
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>运行代码
 
 从应用程序目录使用 `dotnet run` 命令运行应用程序。

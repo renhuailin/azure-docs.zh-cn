@@ -1,15 +1,15 @@
 ---
-title: 无代理解决方案体系结构
+title: 什么是无代理解决方案体系结构
 description: 了解 Azure Defender for IoT 无代理体系结构和信息流。
 ms.topic: overview
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 99ccd0597fddaa86a2452160fc2cbfdadab87a1b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784860"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383535"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT 体系结构
 
@@ -107,7 +107,7 @@ Azure 中的 Defender for IoT 门户可用于帮助你：
 
 - 更新威胁情报包
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 [Defender for IoT 常见问题解答](resources-frequently-asked-questions.md)
 

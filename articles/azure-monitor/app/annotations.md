@@ -3,12 +3,12 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 为 Application Insights 中的指标资源管理器图表添加部署或版本标记。
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461906"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011044"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
@@ -96,7 +96,10 @@ ms.locfileid: "103461906"
 选择任一注释标记可打开有关该发布的详细信息，包括请求者、源代码管理分支、发布管道和环境。
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
-可以使用 GitHub 中的 CreateReleaseAnnotation PowerShell 脚本，通过所需的任何流程创建批注，而无需使用 Azure DevOps。
+可以使用 CreateReleaseAnnotation PowerShell 脚本，通过所需的任何流程创建批注，而无需使用 Azure DevOps。
+
+> [!IMPORTANT]
+> 如果你使用的是 PowerShell 7.1，请在第 26 行末尾添加 `-SkipHttpErrorCheck`。 例如：`$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck`。
 
 1. 创建 CreateReleaseAnnotation.ps1 的本地副本：
 
@@ -256,8 +259,8 @@ ms.locfileid: "103461906"
 
 可以修改脚本，例如，为以往的内容创建批注。
 
+
 ## <a name="next-steps"></a>后续步骤
 
 * [创建工作项](./diagnostic-search.md#create-work-item)
 * [使用 PowerShell 自动化](./powershell.md)
-

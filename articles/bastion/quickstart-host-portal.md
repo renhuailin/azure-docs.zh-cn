@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 02/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8aeba13954283ca35c3eb0060a0e588ba6a7adbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f09eed89f9667611ed4d5e0268c889609d560a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707101"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553560"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>快速入门：通过专用 IP 地址和浏览器安全地连接到 VM
 
@@ -36,6 +36,10 @@ ms.locfileid: "101707101"
   
 * 所需 VM 端口：
   * 入站端口：RDP (3389)
+
+ >[!NOTE]
+ >目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保你计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
+ >
 
 ### <a name="example-values"></a><a name="values"></a>示例值
 

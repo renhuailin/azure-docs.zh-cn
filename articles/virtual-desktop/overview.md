@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+manager: femila
+ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730779"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445985"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？
 
@@ -124,7 +124,7 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 Windows 虚拟桌面目前支持以下 x64 操作系统映像：
 
 * Windows 10 Enterprise 多会话版本 1809 或更高版本
-* Windows 10 Enterprise 版本 1809 或更高版本
+* Windows 10 企业版：版本 1809 或更高版本（仅限半年频道）
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

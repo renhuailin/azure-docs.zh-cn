@@ -3,12 +3,12 @@ title: 教程 - 将本地环境与私有云对等互连
 description: 了解如何在 Azure VMware 解决方案中创建到私有云的 ExpressRoute Global Reach 对等互连。
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 798b822989127ccbb00e971de2cc4147ac234259
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564494"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449556"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教程：将本地环境与私有云对等互连
 
@@ -55,7 +55,7 @@ ExpressRoute Global Reach 将本地环境连接到 Azure VMware 解决方案私�
 1. 创建本地云连接。 执行以下操作之一，然后选择“创建”：
 
    - 从列表中选择“ExpressRoute 线路”，或
-   - 如果你有线路 ID，请将其粘贴到字段中，并提供授权密钥。
+   - 如果你有线路 ID，请将其粘贴到字段中，并提供你刚刚创建好的授权密钥。
 
    :::image type="content" source="./media/expressroute-global-reach/on-premises-cloud-connections.png" alt-text="输入 ExpressRoute ID 和授权密钥，然后选择“创建”。":::   
    

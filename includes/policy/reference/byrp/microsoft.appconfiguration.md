@@ -2,17 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 45cc358ab7087b4314e6c1e26e23d8123907a6b6
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: d799bba02acadb7e16ea0ab912361cf5eedb87ee
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424507"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092478"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[应用配置应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3d9f5e4c-9947-4579-9539-2a7695fbc187) |禁用公用网络访问可确保资源不会在公共 Internet 上公开，从而提高了安全性。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Audit.json) |
 |[应用程序配置应使用客户管理的密钥](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F967a4b4b-2da9-43c1-b7d0-f98d0d74d0b1) |客户管理的密钥可便于管理加密密钥，从而提供增强的数据保护。 这通常是满足合规性要求所必需的。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/CustomerManagedKey_Audit.json) |
+|[应用配置应使用支持专用链接的 SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89c8a434-18f0-402c-8147-630a8dea54e0) |使用受支持的 SKU 时，Azure 专用链接可让你在源或目标位置没有公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到应用配置实例（而不是整个服务），还可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_AllowedSku_Audit.json) |
 |[应用程序配置应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca610c1d-041c-4332-9d88-7ed3094967c7) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到应用配置实例（而不是整个服务），还可以防范数据泄露风险。 有关详细信息，请访问：[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint)。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Audit.json) |
+|[将应用配置配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73290fa2-dfa7-4bbb-945d-a5e23b75df2c) |禁用对应用配置的公用网络访问，确保无法通过公共 Internet 对其进行访问。 此配置有助于这些帐户防范数据泄露风险。 你可以通过创建专用终结点来限制资源的公开。 有关详细信息，请访问：[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Modify.json) |
+|[为应用配置配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F614ffa75-862c-456e-ad8b-eaa1b0844b07) |专用终结点可让你在源或目标位置没有公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到应用配置实例，可以降低数据泄露风险。 有关详细信息，请访问：[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Deploy.json) |

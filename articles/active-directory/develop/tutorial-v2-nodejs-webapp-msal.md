@@ -1,5 +1,5 @@
 ---
-title: Tutorial:在 Node.js 和 Express Web 应用中让用户登录 | Azure
+title: 教程：在 Node.js 和 Express Web 应用中让用户登录 | Azure
 titleSuffix: Microsoft identity platform
 description: 在本教程中，你将在 Web 应用中添加对登录用户的支持。
 services: active-directory
@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 3f1f26acbba0f5830421e760d6a68a11f618fa85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58132b6d038abe0db02d1e58f8c8a8f64962ff49
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648984"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279708"
 ---
-# <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Tutorial:在 Node.js 和 Express web 应用中让用户登录
+# <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>教程：在 Node.js 和 Express Web 应用中让用户登录
 
 在本教程中，你将构建一个登录用户的 Web 应用。 构建的 Web 应用使用[适用于 Node.js 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)。
 
