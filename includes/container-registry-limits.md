@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052924"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803591"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
@@ -30,6 +30,7 @@ ms.locfileid: "98052924"
 | 内容信任 | 空值 | 空值 | [支持][content-trust] |
 | 具有专用终结点的专用链接 | 空值 | 空值 | [支持][plink] |
 | &bull; 专用终结点 | 空值 | 空值 | 10 |
+| 公共 IP 网络规则 | 空值 | 空值 | 100 |
 | 服务终结点 VNet 访问 | 空值 | 空值 | [预览][vnet] |
 | 客户管理的密钥 | 空值 | 空值 | [支持][cmk] |
 | 存储库范围内的权限 | 空值 | 空值 | [预览][token]|

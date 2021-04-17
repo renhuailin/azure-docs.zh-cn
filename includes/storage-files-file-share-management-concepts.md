@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8d26b6c92462abc13c42257d2c6e571156eacc0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011682"
 ---
 Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享池的顶级对象。  此存储池可用于部署多个文件共享和其他存储资源，例如 Blob 容器、队列或表。 部署到存储帐户中的所有存储资源共享应用于该存储帐户的限制。 若要查看存储帐户的当前限制，请参阅 [Azure 文件存储的可伸缩性和性能目标](../articles/storage/files/storage-files-scale-targets.md)。
