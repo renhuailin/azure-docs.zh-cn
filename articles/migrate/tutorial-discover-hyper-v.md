@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: ff83b488a6e3193eee8cb12af7de0a60b42e4c75
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612511"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现 Hyper-V 上运行的服务器
 
-在迁移到 Azure 的过程中，你将发现本地库存和工作负载。 
+在迁移到 Azure 的过程中，你将发现本地库存和工作负载。
 
 本教程演示如何采用轻型 Azure Migrate 设备来使用 Azure Migrate：发现和评估工具发现 Hyper-V 主机上的本地服务器。 将设备部署为 Hyper-V 主机上的服务器，以持续发现计算机和性能元数据。
 
@@ -42,7 +42,7 @@ ms.locfileid: "104771390"
 --- | ---
 **Hyper-V 主机** | 服务器所在的 Hyper-V 主机可以是独立的，也可以在群集中。<br/><br/> 主机必须运行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/><br/> 验证 WinRM 端口 5985 (HTTP) 上是否允许入站连接，使设备可以使用通用信息模型（CIM）会话连接到拉取服务器元数据和性能数据。
 **设备部署** | Hyper-V 主机需要资源来为设备分配服务器：<br/><br/> - 16 GB RAM、8 个 vCPU 以及约 80 GB 的磁盘存储。<br/><br/> - 外部虚拟交换机，以及设备上的直接或通过代理实现的 Internet 访问。
-**服务器** | 服务器可以运行任何 Windows 或 Linux 操作系统。 
+**服务器** | 服务器可以运行任何 Windows 或 Linux 操作系统。
 
 ## <a name="prepare-an-azure-user-account"></a>准备 Azure 用户帐户
 
@@ -56,7 +56,7 @@ ms.locfileid: "104771390"
 
     ![用于搜索 Azure 订阅的搜索框](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. 在“订阅”页上，选择要在其中创建项目的订阅。 
+2. 在“订阅”页上，选择要在其中创建项目的订阅。
 3. 在“订阅”中，选择“访问控制 (IAM)” > “检查访问权限” 。
 4. 在“检查访问权限”中，搜索相关的用户帐户。
 5. 在“添加角色分配”中，单击“添加” 。
@@ -101,7 +101,7 @@ ms.locfileid: "104771390"
     ```powershell
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
-3. 验证脚本完整性后，在每台 Hyper-V 主机上结合以下 PowerShell 命令运行该脚本：
+3. 验证脚本完整性后，在每台 Hyper-V 主机上使用以下提升了权限的 PowerShell 命令运行该脚本：
 
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
@@ -126,7 +126,7 @@ SHA256 | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
    ![用于项目名称和区域的框](./media/tutorial-discover-hyper-v/new-project.png)
 
 7. 选择“创建”。
-8. 等待几分钟，让项目部署完成。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
+8. 等待几分钟，让项目完成部署。 默认会将“Azure Migrate：发现和评估”工具添加到新项目。
 
 ![显示 Azure Migrate：默认添加的发现和评估工具的页面](./media/tutorial-discover-hyper-v/added-tool.png)
 
@@ -176,7 +176,7 @@ Azure Migrate 使用轻型 Azure Migrate 设备。 设备执行服务器发现�
 
         **方案** | **下载** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.91 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8.91 GB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - 对于 Azure 政府：
 
@@ -293,5 +293,3 @@ Azure Migrate 使用轻型 Azure Migrate 设备。 设备执行服务器发现�
 
 - [评估 Hyper-V 环境上的服务器](tutorial-assess-hyper-v.md) 以迁移到 Azure VM。
 - [查看设备在发现期间收集的数据](migrate-appliance.md#collected-data---hyper-v)。
-
-

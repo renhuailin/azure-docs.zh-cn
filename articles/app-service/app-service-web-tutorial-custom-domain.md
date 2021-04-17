@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 216c96579944661ecf248e4e8676ac45021c53e6
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182564"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293951"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -51,6 +51,8 @@ ms.locfileid: "102182564"
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
+  > [!NOTE]
+  > 删除自定义域或将其添加到 Web 应用将导致站点重启。
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
@@ -229,7 +231,7 @@ ms.locfileid: "102182564"
 
 1. 键入已配置 A 记录的完全限定的域名，如 `contoso.com`。 
 
-1. 选择“验证”。  此时会显示“添加自定义域”页。
+1. 选择“验证”。 此时会显示“添加自定义域”页。
 
 1. 确保“主机名记录类型”设置为“A 记录 (example.com)”。  选择“添加自定义域”。
 

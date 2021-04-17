@@ -1,16 +1,16 @@
 ---
-title: 从源代码构建 Defender 微代理（预览）
-description: 微代理包含一个基础结构，它可用于自定义分发版。
+title: 快速入门：从源代码构建 Defender 微代理（预览版）
+description: 在本快速入门中，了解包含可用于自定义分发的基础结构的微代理。
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781103"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384591"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>从源代码构建 Defender 微代理（预览）
+# <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>快速入门：从源代码构建 Defender 微代理（预览版）
 
 微代理包含一个基础结构，它可用于自定义分发版。 若要查看可用配置参数的列表，请查看 `configs/LINUX_BASE.conf` 文件。
 
@@ -32,17 +32,7 @@ ms.locfileid: "104781103"
 
     `cmake -DCMAKE_BUILD_TYPE=Debug -Dlog_level=DEBUG -Dlog_level_cmdline:BOOL=ON -DIOT_SECURITY_MODULE_DIST_TARGET=UBUNTU1804 ..` 
 
-## <a name="baseline-configuration-signing"></a>基线配置签名 
-
-默认情况下，该代理会验证磁盘上放置的配置文件的真实性来减少篡改风险。
-
-可定义预处理器标志 `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` 来停止此进程。
-
-建议不要对生产环境关闭签名检查。 
-
-如果需要对生产方案使用其他配置，请联系 Defender for IoT 团队。 
-
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 1. 请联系你的帐户管理员，请求其向你授予访问 Defender for IoT 源代码的权限。
  
@@ -77,7 +67,17 @@ ms.locfileid: "104781103"
 
 1. （可选）下载并安装 [VSCode](https://code.visualstudio.com/download ) 
 
-1. （可选）安装适用于 VSCode 的 [C/C++ 扩展](https://code.visualstudio.com/docs/languages/cpp )。
+1. （可选）安装适用于 VSCode 的 [C/C++ 扩展](https://code.visualstudio.com/docs/languages/cpp )。（无）
+
+## <a name="baseline-configuration-signing"></a>基线配置签名 
+
+默认情况下，该代理会验证磁盘上放置的配置文件的真实性来减少篡改风险。
+
+可定义预处理器标志 `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` 来停止此进程。
+
+建议不要对生产环境关闭签名检查。 
+
+如果需要对生产方案使用其他配置，请联系 Defender for IoT 团队。 
 
 ## <a name="building-the-defender-iot-micro-agent"></a>构建 Defender IoT 微代理 
 
