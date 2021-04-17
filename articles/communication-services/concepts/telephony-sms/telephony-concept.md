@@ -8,19 +8,20 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d5e4920dcc422e848266f35c8a59175b5149b924
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7aebb10fb3855936d930685f1a8eef2588140ad1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492734"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930449"
 ---
 # <a name="telephony-concepts"></a>电话服务概念
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-phone-numbers.md)]
+
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Azure 通信服务通话客户端库可用于向应用程序添加电话服务和 PSTN。 此页汇总了重要的电话服务概念和功能。 若要详细了解特定客户端库语言和功能，请参阅[通话库](../../quickstarts/voice-video-calling/calling-client-samples.md)。
+Azure 通信服务通话 SDK 可用于向应用程序添加电话服务和 PSTN。 此页汇总了重要的电话服务概念和功能。 若要详细了解特定 SDK 语言和功能，请参阅[通话库](../../quickstarts/voice-video-calling/calling-client-samples.md)。
 
 ## <a name="overview-of-telephony"></a>电话服务概述
 每当你的用户与传统电话号码交互时，将通过 PSTN（公用电话交换网）语音呼叫来辅助完成呼叫。 若要拨打和接收 PSTN 呼叫，需要向 Azure 通信服务资源添加电话功能。 在这种情况下，信令和媒体结合使用基于 IP 和基于 PSTN 的技术来连接用户。 通信服务提供两种不同的方式来连接 PSTN 网络：Azure 云通话和 SIP 接口。

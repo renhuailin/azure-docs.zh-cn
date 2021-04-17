@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564314"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308976"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中的映射数据流
 
@@ -96,66 +96,6 @@ ms.locfileid: "103564314"
 映射数据流与现有的 Azure 数据工厂监视功能集成。 若要了解如何掌握数据流监视输出，请参阅[监视映射数据流](concepts-data-flow-monitoring.md)。
 
 Azure 数据工厂团队已创建[性能优化指南](concepts-data-flow-performance.md)，可帮助你在生成业务逻辑后优化数据流的执行时间。
-
-## <a name="available-regions"></a>可用区域
-
-======= 映射数据流在 ADF 的以下区域中可用：
-
-| Azure 区域 | ADF 中的数据流 |
-| ------------ | ----------------- |
-|  澳大利亚中部 | |
-| 澳大利亚中部 2 | |
-| 澳大利亚东部 | ✓ |
-| 澳大利亚东南部   | ✓ |
-| 巴西南部  | ✓ |
-| 加拿大中部 | ✓ |
-| 印度中部 | ✓ |
-| Central US    | ✓ |
-| 中国东部 |      |
-| 中国东部 2  |   |
-| 中国（非区域性） | |
-| 中国北部 |     |
-| 中国北部 2 | |
-| 东亚 | ✓ |
-| 美国东部   | ✓ |
-| 美国东部 2 | ✓ |
-| 法国中部 | ✓ |
-| 法国南部  | |
-| 德国中部（主权） | |
-| 德国（非区域性）（主权） | |
-| 德国北部（公共） | |
-| 德国东北部（主权） | |
-| 德国中西部（公共） |  |
-| 日本东部 | ✓ |
-| 日本西部 |  |
-| 韩国中部 | ✓ |
-| 韩国南部 | |
-| 美国中北部  | ✓ |
-| 北欧  | ✓ |
-| 挪威东部 | |
-| 挪威西部 | |
-| 南非北部    | ✓ |
-| 南非西部 |  |
-| 美国中南部  | |
-| 印度南部 | |
-| 东南亚    | ✓ |
-| 瑞士北部 |   |
-| 瑞士西部 | |
-| 阿联酋中部 | |
-| 阿拉伯联合酋长国北部 |  |
-| 英国南部  | ✓ |
-| 英国西部 |     |
-| US DoD 中部 | |
-| US DoD 东部 | |
-| US Gov 亚利桑那州 |      |
-| US Gov（非区域性） | |
-| US Gov 德克萨斯州 | |
-| US Gov 弗吉尼亚州 |     |
-| 美国中西部 |     |
-| 西欧   | ✓ |
-| 印度西部 | |
-| 美国西部   | ✓ |
-| 美国西部 2 | ✓ |
 
 ## <a name="next-steps"></a>后续步骤
 
