@@ -82,6 +82,12 @@
       items:
         - name: 审阅、工作流和作业
           href: review-api.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/content-moderator/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: 图像审查
@@ -114,19 +120,21 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: 资源
   items:
-    - name: Azure 网络研讨会系列
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Microsoft 学习模式
-      href: /learn/browse/?terms=content+moderator
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Microsoft 学习模式
+      href: /learn/browse/?terms=content+moderator
+    - name: Azure 网络研讨会系列
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Azure 政府和全球 Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure 更新
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encrypt-data-at-rest.md

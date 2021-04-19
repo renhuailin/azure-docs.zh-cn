@@ -3,13 +3,13 @@
 - name: 概述
   expanded: true
   items:
-    - name: 人脸服务概述
+    - name: 什么是人脸服务
       href: Overview.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: 新增功能
       href: releasenotes.md
-- name: 人脸快速入门
+- name: 快速入门
   href: Quickstarts/client-libraries.md
 - name: 示例
   href: /samples/browse/?products=azure&term=face
@@ -45,6 +45,14 @@
           href: face-resource-container-config.md
         - name: 使用容器实例
           href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/face/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
+        - name: 使用 Azure AD 身份验证
+          href: ../authentication.md?context=/azure/cognitive-services/face/context/context
 - name: 概念
   items:
     - name: 人脸检测
@@ -75,15 +83,15 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: 资源
   items:
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Learn 模块
       href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encrypt-data-at-rest.md
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

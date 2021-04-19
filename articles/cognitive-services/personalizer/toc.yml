@@ -3,7 +3,7 @@
 - name: 概述
   expanded: true
   items:
-    - name: 个性化体验创建服务概述
+    - name: 什么是个性化体验创建服务？
       href: what-is-personalizer.md
     - name: 定价
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: 新增功能
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: 个性化体验创建服务快速入门
+- name: 快速入门
   href: ./quickstart-personalizer-sdk.md
 - name: 示例
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: 使用脱机评估进行分析
       href: how-to-offline-evaluation.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: 个性化体验创建服务的工作原理
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: 资源
   items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft 学习模式
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: 疑难解答
       href: troubleshooting.md
-    - name: Learn 模块
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encrypt-data-at-rest.md
     - name: Azure 更新
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

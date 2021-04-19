@@ -7,7 +7,7 @@
       href: overview.md
     - name: 语言支持
       href: language-support.md
-    - name: 定价和限制
+    - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: 新增功能
       href: whats-new.md
@@ -25,6 +25,8 @@
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
     - name: Python：表单识别器客户端库 SDK
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: JavaScript 表单识别器客户端库 SDK
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
 - name: 操作指南
   items:
     - name: 生成训练数据集
@@ -48,6 +50,14 @@
           href: ../containers/index.yml
     - name: 备份和恢复模型
       href: disaster-recovery.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
+        - name: 使用 Azure AD 身份验证
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 概念
   items:
     - name: 布局 API
@@ -63,7 +73,7 @@
       href: concept-business-cards.md
     - name: 发票
       href: concept-invoices.md
-    - name: 标识卡
+    - name: 标识文档
       href: concept-identification-cards.md
 - name: 教程
   items:
@@ -93,15 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: 资源
   items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 区域可用性
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Encryption
-      href: encrypt-data-at-rest.md
     - name: 隐私和 Cookie
       href: 'https://privacy.microsoft.com/en-US/privacystatement'

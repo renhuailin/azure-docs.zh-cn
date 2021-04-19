@@ -13,7 +13,7 @@
       href: whats-new.md
     - name: 文本分析常见问题解答
       href: text-analytics-resource-faq.md
-- name: 文本分析快速入门
+- name: 快速入门
   href: quickstarts/client-libraries-rest-api.md
 - name: 示例
   items:
@@ -71,21 +71,25 @@
       displayName: 'NER, Named entity recognition, PII, redaction'
     - name: 运行状况文本分析
       href: How-tos/text-analytics-for-health.md
-    - name: 部署文本分析
+    - name: 使用容器
       items:
-        - name: 容器
-          items:
-            - name: 安装和运行容器
-              href: how-tos/text-analytics-how-to-install-containers.md
-            - name: 配置容器
-              href: text-analytics-resource-container-config.md
-            - name: 使用容器实例
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-            - name: 使用 Kubernetes 服务 (AKS)
-              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-            - name: 认知服务容器文档
-              href: ../containers/index.yml
+        - name: 安装和运行容器
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: 配置容器
+          href: text-analytics-resource-container-config.md
+        - name: 使用容器实例
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: 使用 Kubernetes 服务 (AKS)
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: 认知服务容器文档
+          href: ../containers/index.yml
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/text-analytics/context/context
+        - name: 使用 Azure AD 身份验证
+          href: ../authentication.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 迁移到 API 的版本 3
       href: migration-guide.md
 - name: 概念
@@ -164,13 +168,13 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源
   items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 外部和社区内容
       href: text-analytics-resource-external-community.md
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 试试看！
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

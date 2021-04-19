@@ -1,4 +1,4 @@
-- name: 指标顾问
+- name: 指标顾问文档
   href: index.yml
 - name: 概述
   expanded: true
@@ -9,7 +9,7 @@
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 新增功能
       href: whats-new.md
-- name: 指标顾问快速入门
+- name: 快速入门
   items:
     - name: Web 门户
       href: quickstarts/web-portal.md
@@ -35,6 +35,10 @@
       href: how-tos/anomaly-feedback.md
     - name: 生成指标图
       href: how-tos/metrics-graph.md
+    - name: 企业就绪情况
+      items:
+        - name: 使用客户管理的密钥
+          href: encryption.md
 - name: 概念
   items:
     - name: 指标顾问主要术语
@@ -49,11 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: 资源
   items:
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encryption.md

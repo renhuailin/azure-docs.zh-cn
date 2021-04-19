@@ -470,7 +470,7 @@
     - name: 配置 RHEL/CentOS 7
       href: how-to-configure-rhel-centos-7.md
       displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: 容器
+    - name: 使用容器
       items:
         - name: 安装和运行语音容器
           displayName: 'containers,install container,run container'
@@ -497,6 +497,12 @@
           href: how-to-migrate-from-bing-speech.md
         - name: 从语音翻译 API
           href: how-to-migrate-from-translator-speech-api.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
+        - name: 使用客户管理的密钥
+          href: speech-encryption-of-data-at-rest.md
 - name: 设备
   items:
     - name: 语音设备文档
@@ -582,6 +588,12 @@
           href: 'https://speech.microsoft.com'
         - name: 使用 Speech Studio 创建自定义命令应用
           href: ./quickstart-custom-commands-application.md
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger 文档
@@ -591,10 +603,6 @@
       href: sovereign-clouds.md
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: speech-encryption-of-data-at-rest.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: 隐私和 Cookie

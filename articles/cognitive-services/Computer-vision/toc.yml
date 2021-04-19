@@ -3,11 +3,11 @@
 - name: 概述
   expanded: true
   items:
-    - name: 计算机视觉概述
+    - name: 什么是计算机视觉？
       href: overview.md
     - name: 语言支持
       href: language-support.md
-    - name: 定价和限制
+    - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: 新增功能
       href: whats-new.md
@@ -180,21 +180,23 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: 操作指南
   items:
-    - name: 如何虚拟网络
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: 如何配置 AAD 身份验证
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: 如何使用客户管理的密钥
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+        - name: 使用 Azure AD 身份验证
+          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
 - name: 资源
   items:
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: LEARN 模块
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft 学习模式
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

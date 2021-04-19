@@ -57,6 +57,12 @@
       href: ./export-delete-data.md
     - name: 经应用更新到 3.0 API
       href: ./update-application-to-3.0-sdk.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/custom-vision-service/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 参考
   items:
     - name: 自定义视觉训练 API
@@ -81,6 +87,12 @@
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: 资源
   items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/custom-vision-service/context/context
     - name: 示例
@@ -89,11 +101,5 @@
       href: limits-and-quotas.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encrypt-data-at-rest.md
     - name: 发行说明
       href: release-notes.md

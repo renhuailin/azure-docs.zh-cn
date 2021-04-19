@@ -3,7 +3,7 @@
 - name: 概述
   expanded: true
   items:
-    - name: LUIS 概述
+    - name: 什么是语言理解 (LUIS)？
       href: what-is-luis.md
     - name: 语言支持
       href: luis-language-support.md
@@ -119,22 +119,26 @@
           diplayName: 'import, export, container'
         - name: 使用流量管理器
           href: luis-traffic-manager.md
-    - name: 部署 LUIS
+    - name: 使用容器
       items:
-        - name: 使用容器
-          items:
-            - name: 安装和运行容器
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-              href: luis-container-howto.md
-            - name: 配置容器
-              href: luis-container-configuration.md
-            - name: 使用容器实例
-              href: ../containers/azure-container-instance-recipe.md
-            - name: 容器限制
-              href: luis-container-limitations.md
-              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-            - name: 认知服务容器文档
-              href: ../containers/index.yml
+        - name: 安装和运行容器
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+          href: luis-container-howto.md
+        - name: 配置容器
+          href: luis-container-configuration.md
+        - name: 使用容器实例
+          href: ../containers/azure-container-instance-recipe.md
+        - name: 容器限制
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: 认知服务容器文档
+          href: ../containers/index.yml
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/luis/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: 人工智能
@@ -375,24 +379,21 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: 资源
   items:
-    - name: LUIS 门户
-      href: 'https://www.luis.ai'
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: LUIS 门户
+      href: 'https://www.luis.ai'
     - name: Azure 路线图
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: 术语表
       href: luis-glossary.md
-    - name: 合规性
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 加密
-      href: encrypt-data-at-rest.md
-    - name: 配置虚拟网络
-      maintainContext: true
-      href: ../cognitive-services-virtual-networks.md
     - name: 搜索
       href: /search/index?search=LUIS
     - name: 博客

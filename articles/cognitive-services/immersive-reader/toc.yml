@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 沉浸式阅读器概述
+    - name: 什么是沉浸式阅读器？
       href: Overview.md
     - name: 语言支持
       href: language-support.md
@@ -10,7 +10,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
     - name: 发行说明
       href: release-notes.md
-- name: 沉浸式阅读器快速入门
+- name: 快速入门
   href: ./quickstarts/client-libraries.md
 - name: 操作说明
   items:
@@ -36,14 +36,24 @@
       href: how-to-store-user-preferences.md
     - name: 使用多个沉浸式阅读器资源
       href: how-to-multiple-resources.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/immersive-reader/context/context
+        - name: 使用 Azure AD 身份验证
+          href: ../authentication.md?context=/azure/cognitive-services/immersive-reader/context/context
 - name: 参考
   items:
     - name: JavaScript SDK
       href: reference.md
 - name: 资源
   items:
-    - name: 区域支持
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure 更新

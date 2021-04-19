@@ -5,7 +5,7 @@
   items:
     - name: 语言支持
       href: language-support.md
-    - name: 定价和限制
+    - name: 定价
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
 - name: 文本翻译
   expanded: true
@@ -162,14 +162,24 @@
           href: document-translation/reference/get-operations.md
         - name: 取消操作
           href: document-translation/reference/cancel-operation.md
+- name: 操作指南
+  items:
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
 - name: 资源
   items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 支持和帮助选项
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
-    - name: 合规性
-      href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
-    - name: 加密
-      href: encrypt-data-at-rest.md
     - name: GitHub 上的代码示例
       href: 'https://aka.ms/TranslatorGitHub'
     - name: 隐私和 Cookie
