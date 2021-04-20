@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
-ms.translationtype: MT
+ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650756"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063026"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
 
@@ -33,22 +33,22 @@ Translator 的版本 3 提供了基于 JSON 的新型 Web API。 它通过将现
 
 Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 10 个 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions)：
 
-* **美洲：** 美国东部、美国中南部、美国西部和美国西部2 
-* **亚太：** 韩国南部、日本东部、东南亚和澳大利亚东部
-* **欧洲：** 北欧，西欧，瑞士北部 <sup>1，2</sup>，瑞士西部 <sup>1，2</sup>
+* 美洲：美国东部、美国中南部、美国中西部和美国西部 2 
+* 亚太：韩国南部、日本东部、东南亚和澳大利亚东部
+* 欧洲：北欧、西欧
 
 在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
-若要强制由特定 Azure 地域处理请求，请将 API 请求中的全局终结点更改为所需的地理终结点：
+若要强制特定 Azure 地理区域处理该请求，请将 API 请求中的全球终结点更改为所需的地理终结点：
 
-|说明|Azure 地理区域|基 URL (地理端点) |
+|说明|Azure 地理区域|基 URL（地理终结点）|
 |:--|:--|:--|
-|Azure|全局 (非区域) |   api.cognitive.microsofttranslator.com|
+|Azure|全局（非区域性）|   api.cognitive.microsofttranslator.com|
 |Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> 个客户，其中的资源位于瑞士北部或瑞士西部可以确保其文本 API 请求在瑞士内提供。 若要确保在瑞士处理请求，请在 "资源区域" "瑞士北部" 或 "瑞士西部" 中创建转换器资源，然后在 API 请求中使用该资源的自定义终结点。 例如：如果你在 "资源区域" 为 "瑞士北部" 的 Azure 门户中创建转换器资源，而你的资源名称为 "my ch-n"，则你的自定义终结点为 " https://my-ch-n.cognitiveservices.azure.com "。 要转换的示例请求如下：
+<sup>1</sup> 资源位于瑞士北部或瑞士西部的客户可以确保其文本 API 请求在瑞士境内得到处理。 若要确保在瑞士处理请求，请在“资源区域”的“瑞士北部”或“瑞士西部”中创建翻译器资源，然后在 API 请求中使用该资源的自定义终结点。 例如：如果在 Azure 门户中创建翻译器资源，“资源区域”为“瑞士北部”，并且资源名称为“my-ch-n”，则自定义终结点为“https://my-ch-n.cognitiveservices.azure.com”。 要转换的示例请求如下：
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
@@ -57,7 +57,7 @@ curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translat
 -H "Content-Type: application/json" \
 -d "[{'Text':'Hello'}]" -v
 ```
-<sup>2</sup>自定义转换器当前在瑞士不可用。
+<sup>2</sup> 自定义翻译器目前在瑞士不可用。
 
 ## <a name="authentication"></a>身份验证
 
@@ -115,7 +115,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 #### <a name="authenticating-with-a-multi-service-resource"></a>使用多服务资源进行身份验证
 
-使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+在使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
 
 在使用多服务密钥时，请求中必须包含两个身份验证标头。 调用 Translator 时所需的标头有 2 个。
 
@@ -126,7 +126,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须与你在通过 Azure 门户注册多服务订阅时选择的区域相同。
 
-可用区域包括、、、、、、、、、、、、、、、、、、、、、 `australiaeast` `brazilsouth` `canadacentral` `centralindia` `centralus` `centraluseuap` `eastasia` `eastus` `eastus2` `francecentral` `japaneast` `japanwest` `koreacentral` `northcentralus` `northeurope` `southcentralus` `southeastasia` `uksouth` `westcentralus` `westeurope` `westus` `westus2` 和 `southafricanorth` 。
+可用区域包括 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2` 和 `southafricanorth`。
 
 如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
 
@@ -160,7 +160,7 @@ Authorization: Bearer <Base64-access_token>
 
 Translator 服务现在随虚拟网络 (VNET) 功能在 Azure 公有云的所有区域中提供。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](../../cognitive-services-virtual-networks.md?tabs=portal)。 
 
-启用此功能后，必须使用自定义终结点来调用 Translator。 不能使用 "api.cognitive.microsofttranslator.com" )  ( 全局转换器终结点，并且不能使用访问令牌进行身份验证。
+启用此功能后，必须使用自定义终结点来调用 Translator。 你不能使用全球翻译器终结点（“api.cognitive.microsofttranslator.com”），也不能使用访问令牌进行身份验证。
 
 你可以在创建[翻译器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)后找到自定义终结点，并允许从所选网络和专用终结点进行访问。
 

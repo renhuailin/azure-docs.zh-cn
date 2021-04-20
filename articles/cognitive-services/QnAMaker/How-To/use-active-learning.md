@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 87dde7662050794a24cf976a0bae6237b91d29b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102213702"
 ---
 # <a name="active-learning"></a>主动学习
@@ -152,7 +152,7 @@ QnA Maker 需要有关哪个答案是最佳答案的显式反馈。 如何确定
 1. 找到 QnA Maker 服务，然后切换到“主动学习”。
 
     > [!div class="mx-imgBorder"]
-    > [![在“服务设置”页上，启用“主动学习”功能。如果无法切换该功能，可能需要升级服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    > [![在“服务设置”页上，启用“主动学习”功能。如果无法切换该功能，则可能需要升级服务。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > 上图中显示的确切版本仅用作示例。 你的版本可能与之不同。

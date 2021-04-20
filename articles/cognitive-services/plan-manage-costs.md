@@ -8,10 +8,10 @@ ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.openlocfilehash: db99fa5caff27a24aa04e4780b25ade3f7c25496
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101699923"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>规划和管理 Azure 认知服务的成本
@@ -20,7 +20,7 @@ ms.locfileid: "101699923"
 
 ## <a name="prerequisites"></a>必备条件
 
-成本管理中的成本分析支持大多数 Azure 帐户类型，但并非支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 <!--Note for Azure service writer: If you have other prerequisites for your service, insert them here -->
 
@@ -62,7 +62,7 @@ ms.locfileid: "101699923"
 
 ### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>对于认知服务使用 Azure 预付款信用额度
 
-可以使用 Azure 预付款（之前称为货币承诺）信用额度支付认知服务费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括 Azure 市场中的第三方产品和服务）的费用。
+可以使用 Azure 预付款（之前称为货币承诺）信用额度支付认知服务费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
 
 ## <a name="monitor-costs"></a>监视成本
 
@@ -70,17 +70,17 @@ ms.locfileid: "101699923"
 
 对于认知服务使用 Azure 资源时会产生成本。 Azure 资源使用单位成本因时间间隔（秒、分钟、小时和天）或单位使用情况（字节、MB 等）而异。 一旦开始使用一项或多项认知服务，就会产生成本，你可以在[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
 
-使用成本分析时，可以图表和表格形式查看不同时间间隔的认知服务成本。 有些示例是按天、当月和上个月以及按年来统计的。 此外，还可以查看成本与预算和预测成本的对比情况。 随着时间推移，切换到较长时间的视图，可帮助你确定支出趋势。 你可看到哪些领域出现了超支。 如果已创建预算，还可以轻松查看超支的地方。
+使用成本分析时，可以图表和表格形式查看不同时间间隔的认知服务成本。 有些示例是按天、当前、上个月和年划分的。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到可能出现超支的地方。 如果已创建预算，还可以轻松查看超支的地方。
 
 在成本分析中查看认知服务成本：
 
 1. 登录到 Azure 门户。
-2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，可切换到不同的成本分析范围。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
 3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为“认知服务”的区域。
 
-最初打开成本分析时，会显示每月实际成本。 下面是一个显示所有每月使用成本的示例。
+最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
 
-:::image type="content" source="./media/cost-management/all-costs.png" alt-text="显示累计订阅成本的示例":::
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="显示订阅累计成本的示例":::
 
 - 若要缩小范围来查看单项服务（例如认知服务）的成本，请选择“添加筛选器”，然后选择“服务名称” 。 然后，选择“认知服务”。
 
@@ -88,7 +88,7 @@ ms.locfileid: "101699923"
 
 :::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="显示认知服务累计成本的示例":::
 
-在前面的示例中，你可查看服务的当前成本。 还可显示按 Azure 地区（位置）统计的成本以及按资源组统计的认知服务成本。 自此开始，你可以自行探索成本信息。
+在前面的示例中，你将看到该服务的当前成本。 还可显示按 Azure 地区（位置）统计的成本以及按资源组统计的认知服务成本。 从这里，你可以自行探索成本。
 
 ## <a name="create-budgets"></a>创建预算
 

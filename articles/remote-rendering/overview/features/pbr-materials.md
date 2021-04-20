@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: e9908c106e57801cb1b7def8b3353a983cc97de0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99591933"
 ---
 # <a name="pbr-materials"></a>PBR 材料
@@ -51,7 +51,7 @@ PBR 是 **P** hysically **B** ased **R** endering（基于物理学的渲染）�
 
 ## <a name="pbr-material-properties"></a>PBR 材料属性
 
-基于物理学的渲染的核心概念是使用 *BaseColor*、*Metalness* 和 *Roughness* 属性来仿真各种真实材料。 本文不会详细介绍 PBR。 有关 PBR 的详细信息，请参阅[其他资源](http://www.pbr-book.org)。 以下属性特定于 PBR 材料：
+基于物理学的渲染的核心概念是使用 *BaseColor*、*Metalness* 和 *Roughness* 属性来仿真各种真实材料。 本文不会详细介绍 PBR。 有关 PBR 的详细信息，请参阅[其他源](http://www.pbr-book.org)。 以下属性特定于 PBR 材料：
 
 * **baseColor：** 在 PBR 材料中，albedo 颜色称为基础颜色。  在 Azure 远程渲染中，albedo 颜色属性已通过通用材料属性提供，因此没有其他基础颜色属性。
 

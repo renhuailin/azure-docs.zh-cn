@@ -4,22 +4,20 @@ description: 认知服务服务安全基线为实现 Azure 安全基准中指定
 author: msmbaldwin
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b243fa18b17fdd15f3c39545b7d81f5796bd8429
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a7f9570a68102eb20c84942ddf9ac73de033f01c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699855"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076592"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>认知服务的 Azure 安全基线
 
-此安全基线将 [Azure 安全基准 1.0 版](../security/benchmarks/overview-v1.md)中的指南应用到认知服务。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。
-内容分为 Azure 安全基准定义的 **安全控制** 和适用于认知服务的相关指南。 不适用于认知服务的 **控制** 已排除。
+此安全基线会将 [Azure 安全基准 1.0 版](../security/benchmarks/overview-v1.md)中的指导应用于认知服务。 Azure 安全基准提供有关如何在 Azure 上保护云解决方案的建议。 内容分为 Azure 安全基准定义的 **安全控制** 和适用于认知服务的相关指南。 排除了不适用于认知服务或 Microsoft 为其责任方的控件。
 
- 
 若要了解认知服务如何完全映射到 Azure 安全基准，请参阅[完整的认知服务安全基线映射文件](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)。
 
 ## <a name="network-security"></a>网络安全
@@ -38,7 +36,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视并记录虚拟网络、子网和网络接口的配置与流量
 
@@ -50,7 +48,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
@@ -67,7 +65,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
@@ -87,7 +85,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -99,7 +97,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
@@ -118,7 +116,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -135,7 +133,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
@@ -149,7 +147,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -163,7 +161,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
@@ -173,7 +171,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -185,7 +183,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -199,7 +197,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
@@ -213,7 +211,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
@@ -223,7 +221,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
@@ -235,7 +233,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：针对异常活动启用警报
 
@@ -249,7 +247,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="identity-and-access-control"></a>标识和访问控制
 
@@ -259,13 +257,13 @@ ms.locfileid: "101699855"
 
 **指导**：Azure Active Directory (Azure AD) 具有必须显式分配且可查询的内置角色。 使用 Azure AD PowerShell 模块执行即席查询，以发现属于管理组成员的帐户。
 
-- [如何使用 PowerShell 获取 Azure AD 中的目录角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中的目录角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 获取 Azure AD 中目录角色的成员](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -279,7 +277,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -297,7 +295,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录 (SSO)
 
@@ -309,7 +307,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
@@ -321,7 +319,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用由 Azure 管理的安全工作站执行管理任务
 
@@ -333,7 +331,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
@@ -347,7 +345,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -357,7 +355,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
@@ -369,7 +367,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
@@ -379,13 +377,13 @@ ms.locfileid: "101699855"
 
 - [如何在 Azure API 管理中管理用户帐户](../api-management/api-management-howto-create-or-invite-developers.md)
 
-- [如何获取 API 管理用户的列表](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-4.8.0&amp;preserve-view=true)
+- [如何获取 API 管理用户的列表](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 - [如何使用 Azure 标识访问评审](../active-directory/governance/access-reviews-overview.md)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：监视尝试访问已停用凭据的行为
 
@@ -399,7 +397,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
@@ -415,7 +413,7 @@ ms.locfileid: "101699855"
 
 **Azure 安全中心监视**：无
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持方案期间为 Microsoft 提供对相关客户数据的访问权限
 
 **指导**：不适用于认知服务。 认知服务尚不支持客户密码箱。
 
@@ -423,7 +421,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="data-protection"></a>数据保护
 
@@ -437,7 +435,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -459,7 +457,7 @@ ms.locfileid: "101699855"
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -471,7 +469,7 @@ Microsoft 会管理认知服务的底层基础结构，并实施严格的控制�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -484,7 +482,7 @@ Microsoft 会管理认知服务的底层基础结构，并实施严格的控制�
 
 **责任**：共享
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
@@ -496,7 +494,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：共享
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问 
 
@@ -506,7 +504,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
@@ -518,7 +516,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
@@ -528,7 +526,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="inventory-and-asset-management"></a>清单和资产管理
 
@@ -542,13 +540,13 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 - [如何使用 Azure Resource Graph 创建查询](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看 Azure 订阅](/powershell/module/az.accounts/get-azsubscription)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -558,7 +556,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -577,7 +575,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
@@ -594,7 +592,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
@@ -608,7 +606,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制用户与 Azure 资源管理器进行交互的能力
 
@@ -618,7 +616,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="secure-configuration"></a>安全配置
 
@@ -628,13 +626,13 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **指导**：使用 Azure Policy 为认知服务容器定义和实施标准安全配置。 使用“Microsoft.CognitiveServices”命名空间中的 Azure Policy 别名创建自定义策略，以审核或强制实施 Azure Cache for Redis 实例的配置。
 
-- [如何查看可用的 Azure Policy 别名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用的 Azure Policy 别名](/powershell/module/az.resources/get-azpolicyalias)
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：维护安全的 Azure 资源配置
 
@@ -646,19 +644,19 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
 **指导**：如果要对认知服务容器及相关资源使用自定义 Azure Policy 定义或 Azure 资源管理器模板，请使用 Azure Repos 安全地存储和管理代码。
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos 文档](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文档](/azure/devops/repos/)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署 Azure 资源的配置管理工具
 
@@ -668,7 +666,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：为 Azure 资源实施自动配置监视
 
@@ -678,7 +676,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全管理 Azure 机密
 
@@ -694,7 +692,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -708,7 +706,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -718,7 +716,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -732,7 +730,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="data-recovery"></a>数据恢复
 
@@ -752,7 +750,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
@@ -768,11 +766,11 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 - [Azure 自动化简介](../automation/automation-intro.md)
 
-- [如何在 Azure 中备份密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中备份密钥保管库密钥](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -780,11 +778,11 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 - [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
-- [如何在 Azure 中还原密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中还原密钥保管库密钥](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
@@ -792,7 +790,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 使用 Azure 基于角色的访问控制保护客户管理的密钥。 在密钥保管库中启用软删除和清除保护，以防止意外删除或恶意删除密钥。 
 
-- [如何在 Azure DevOps 中存储代码](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow)
 
 - [关于 Azure DevOps 中的权限和组](/azure/devops/organizations/security/about-permissions)
 
@@ -800,7 +798,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="incident-response"></a>事件响应
 
@@ -818,7 +816,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
@@ -828,7 +826,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -838,7 +836,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
@@ -848,7 +846,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -860,7 +858,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -870,7 +868,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：客户
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
@@ -886,7 +884,7 @@ Microsoft 管理底层平台，并将所有客户内容视为敏感数据，竭�
 
 **责任**：共享
 
-**Azure 安全中心监视**：无
+Azure 安全中心监视：无
 
 ## <a name="next-steps"></a>后续步骤
 

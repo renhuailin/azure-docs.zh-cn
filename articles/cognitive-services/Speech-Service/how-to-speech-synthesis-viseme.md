@@ -12,17 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 15fa1dd230b7f07846653278533805fa66ed2195
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: e97c48d4e42627d0fc2caaa4f66e81b9a0cafa86
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643896"
 ---
 # <a name="get-facial-pose-events"></a>获取人脸姿态事件
 
 > [!NOTE]
-> 视素目前暂时只适用于美国西部 (`westus`) 区域的 `en-US-AriaNeural` 语音，在 2021 年 4 月底之后，将会适用于所有 `en-US` 语音。
+> 目前，视素仅适用于 `en-US-AriaNeural` 语音。
 
 视素是口语中音素的视觉描述。
 它定义了在说一个字词时人脸和嘴部的位置。

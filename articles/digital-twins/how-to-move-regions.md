@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102049842"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>将 Azure 数字孪生实例移动到其他 Azure 区域
@@ -31,7 +31,7 @@ ms.locfileid: "102049842"
     - 重新链接连接的资源。
 1. 清理源资源：删除原始实例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在尝试重新创建 Azure 数字孪生实例之前，请先查看原始实例的组件，以明确了解需要重新创建的所有部分。
 
@@ -107,7 +107,7 @@ ms.locfileid: "102049842"
  
 然后，选择“图形视图”框中的“导出图形”图标。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个指向云的箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="在“图形视图”框中，一个图标突出显示。它显示了一个从云中指向下的箭头。" lightbox="media/how-to-move-regions/export-graph.png":::
 
 此操作将启用“图形视图”框中的下载链接。 选择它将下载基于 JSON 表示形式的查询结果，其中包括模型、孪生体和关系。 此操作会将一个 .json 文件下载到计算机。
 
@@ -141,7 +141,7 @@ ms.locfileid: "102049842"
 
 Azure Digital Twins Explorer 当前连接到原始 Azure 数字孪生实例。 选择窗口右上角的“登录”按钮，将连接切换为指向新实例。
 
-:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="在窗口右上角突出显示“登录”图标的 Azure Digital Twins Explorer。图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/how-to-move-regions/sign-in.png":::
+:::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="在窗口右上角突出显示“登录”图标的 Azure Digital Twins Explorer。该图标显示了一个简单的人员与密钥叠加的剪影。" lightbox="media/how-to-move-regions/sign-in.png":::
 
 替换 ADT URL 以反映新的实例。 更改此值，使其显示为 https://{新实例主机名}。
 
@@ -173,7 +173,7 @@ Azure Digital Twins Explorer 当前连接到原始 Azure 数字孪生实例。 �
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="指示图导入成功的对话框。它显示为“导入成功。已导入 2 个模型。已导入 4 对孪生。已导入 2 对关系。”" lightbox="media/how-to-move-regions/import-success.png":::
+        :::image type="content" source="media/how-to-move-regions/import-success.png" alt-text="指示图导入成功的对话框。它显示为“导入成功。已导入 2 个模型，已导入 4 个孪生体。已导入 2 个关系。”" lightbox="media/how-to-move-regions/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -243,4 +243,4 @@ Azure Digital Twins Explorer 当前连接到原始 Azure 数字孪生实例。 �
 
 选择“删除”按钮，然后按照提示完成删除操作。
 
-:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure 门户“概述”选项卡中的 Azure 数字孪生实例详情视图。突出显示了“删除”按钮。":::
+:::image type="content" source="media/how-to-move-regions/delete-instance.png" alt-text="Azure 门户“概述”选项卡中的 Azure 数字孪生实例详细信息视图。其中的“删除”按钮突出显示。":::

@@ -8,10 +8,10 @@ ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102203889"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
@@ -20,7 +20,7 @@ ms.locfileid: "102203889"
 
 通过本文中所述的解决方案，可以将数字孪生遥测数据推送到连接的客户端，例如单个网页或移动应用程序。 因此，客户端将使用 IoT 设备的实时指标和状态进行更新，而无需轮询服务器或提交新的 HTTP 请求来获得更新内容。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是在继续操作之前应完成的必备条件：
 
@@ -39,7 +39,7 @@ ms.locfileid: "102203889"
 
 将通过以下路径将 Azure SignalR 服务附加到 Azure 数字孪生。 图中 A、B 和 C 部分取自[端到端教程必备条件](tutorial-end-to-end.md)的体系结构图。 在本操作说明中，将在现有体系结构上构建 D 部分。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="端到端方案中的 Azure 服务视图。描绘数据从设备流入 IoT 中心，通过 Azure 函数（箭头 B）再流入 Azure 数字孪生实例（A 部分），然后通过事件网格流入另一个 Azure 函数进行处理（箭头 C）D 部分显示数据从箭头 C 中的同一个事件网格流出到一个标有 “broadcast” 的 Azure 函数。该函数与另一个标有 “negotiate” 的 Azure 函数进行通信，且这两个函数均与计算机设备进行通信。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-integration-topology.png" alt-text="端到端方案中的 Azure 服务视图。描绘数据从设备流入 IoT 中心，通过 Azure 函数（箭头 B）再流入 Azure 数字孪生实例（A 部分），然后通过事件网格流入另一个 Azure 函数进行处理（箭头 C）。D 部分显示数据从箭头 C 中的同一个事件网格流出到一个标为“broadcast”的 Azure 函数。“broadcast”与另一个标为“negotiate”的 Azure 函数进行通信，且这两个函数均与计算机设备进行通信。" lightbox="media/how-to-integrate-azure-signalr/signalr-integration-topology.png":::
 
 ## <a name="download-the-sample-applications"></a>下载示例应用程序
 
@@ -86,7 +86,7 @@ ms.locfileid: "102203889"
 1. 从实例菜单选择“密钥”，以查看 SignalR 服务实例的连接字符串。
 1. 选择“复制”图标以复制主连接字符串。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Azure 门户的屏幕截图，其中显示 SignalR 实例的“密钥”页。主连接字符串旁突出显示“复制到剪切板”图标。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Azure 门户的屏幕截图，其中显示了 SignalR 实例的“密钥”页。主连接字符串旁突出显示了“复制到剪贴板”图标。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
 1. 最后，使用以下 Azure CLI 命令将 Azure SignalR 连接字符串添加到函数应用的设置中。 此外，还需将占位符替换为在[教程必备条件](how-to-integrate-azure-signalr.md#prerequisites)中准备的资源组和应用服务/函数应用名称。 可在 [Azure Cloud Shell](https://shell.azure.com) 中运行此命令，如果[计算机中安装](/cli/azure/install-azure-cli)了 Azure CLI，也可在本地运行它：
  
@@ -115,7 +115,7 @@ ms.locfileid: "102203889"
     - 填写“订阅”、“资源组”、“函数应用”和“函数”(broadcast)   。 在选择订阅后，其中一些可能会自动填充。
     - 点击“确认所选内容”。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure 门户中用于创建事件订阅的视图。以上字段均已填写，突出显示“确认选择”和“创建”按钮。":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure 门户中用于创建事件订阅的视图。上述字段均已填写，突出显示了“确认选择”和“创建”按钮。":::
 
 返回“创建事件订阅”页，点击“创建”。
 
@@ -133,11 +133,11 @@ ms.locfileid: "102203889"
 
 1. 转到 Azure 门户的“[函数应用](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp)”页，并从列表中选择函数应用。 在应用菜单中，选择“函数”，然后选择 negotiate 函数。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure 门户函数应用视图，其中菜单中突出显示“函数”。页面中显示函数列表，同样也突出显示 “negotiate” 函数。":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure 门户函数应用视图，“函数”在菜单中突出显示。页面中显示了函数列表，“negotiate”函数也突出显示。":::
 
 1. 单击“获取函数 URL”并复制自开头到 /api 结尾的值 **（不包含最后的 /negotiate?）**。 将在下一个步骤中使用此内容。
 
-    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure 门户 “negotiate” 函数视图。突出显示“获取函数 URL”按钮以及 URL 自开头到 “/api” 结尾的部分":::
+    :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="Azure 门户的“negotiate”函数视图。突出显示了“获取函数 URL”按钮以及 URL 自开头到“/api”的部分":::
 
 1. 使用 Visual Studio 或所选的任何代码编辑器，打开在 [下载示例应用程序](#download-the-sample-applications)部分中下载的 _digitaltwins-signalr-webapp-main_ 已解压缩文件夹。
 
@@ -183,7 +183,7 @@ npm start
 
 将会打开一个运行示例应用的浏览器窗口，其中显示可视的温度仪表。 应用运行后，应可以开始查看到温度遥测值，这些值从设备模拟器经由 Azure 数字孪生传播，并由 Web 应用实时反映。
 
-:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="显示可视温度仪表的示例客户端 Web 应用摘录。温度反映为 67.52":::
+:::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="显示可视温度仪表的示例客户端 Web 应用的摘录。反映的温度为 67.52":::
 
 ## <a name="clean-up-resources"></a>清理资源
 

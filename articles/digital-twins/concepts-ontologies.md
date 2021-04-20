@@ -8,10 +8,10 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102034687"
 ---
 # <a name="what-is-an-ontology"></a>什么是 ontology？ 
@@ -20,7 +20,7 @@ Azure 数字孪生解决方案的词汇是使用[模型](concepts-models.md)定�
 
 有时，当您的解决方案与特定行业关联时，从已存在的一组模型开始，可以更方便、更有效地开始，而无需从头开始创作您自己的模型集。 这些已存在的模型集则被称为 **ontology**。 
 
-一般而言，ontology 是指特定域的模型集，例如建筑结构、IoT 系统、智能城市、能源网、Web 内容等。Ontology 通常用作知识图加购，因为它们可以：
+一般而言，本体是指特定域的模型集，例如建筑结构、IoT 系统、智能城市、能源网、Web 内容等。本体通常用作知识图架构，因为它们可以：
 * 协调软件组件、文档、查询库等
 * 减少概念建模和系统开发方面的投资
 * 更方便在语义级别进行数据互操作

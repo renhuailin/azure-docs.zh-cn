@@ -1,7 +1,7 @@
 ---
 title: 如何使用语音 SDK 进行发音评估
 titleSuffix: Azure Cognitive Services
-description: 语音 SDK 支持 "发音评估"，用于评估语音输入的发音质量、准确性、熟练、完整性等指标。
+description: 语音 SDK 支持发音评估，这样便可以使用准确性、流畅性、完整性等指标评估语音输入的发音质量。
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -12,27 +12,27 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051882"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167424"
 ---
 # <a name="pronunciation-assessment"></a>发音评估
 
-发音评估会评估语音发音，并向演讲者提供有关讲述音频准确性和熟练的反馈。
+发音评估可以评估语音发音，并为说话人提供有关讲话音频准确度和流利度的反馈。
 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。
 教师可以使用此功能来实时评估多个说话人的发音。
 
-在本文中，你将了解如何 `PronunciationAssessmentConfig` 使用 SPEECH SDK 设置和检索 `PronunciationAssessmentResult` 。
+本文介绍如何使用语音 SDK 设置 `PronunciationAssessmentConfig` 并检索 `PronunciationAssessmentResult`。
 
 > [!NOTE]
-> 发音评估功能仅支持当前语言 `en-US` 。
+> 发音评估功能目前支持 `en-US` 语言（可以在所有[语音转文本区域](regions.md#speech-to-text-text-to-speech-and-translation)使用）。 对 `en-GB` 和 `zh-CN` 语言的支持目前为预览版，可以在 `westus`、`eastasia` 和 `centralindia` 区域使用。
 
-## <a name="pronunciation-assessment-with-the-speech-sdk"></a>语音 SDK 的发音评估
+## <a name="pronunciation-assessment-with-the-speech-sdk"></a>通过语音 SDK 进行发音评估
 
-在下面的示例中，你将创建一个 `PronunciationAssessmentConfig` ，然后将其应用于 `SpeechRecognizer` 。
+在下面的示例中，你将创建 `PronunciationAssessmentConfig`，然后将其应用于 `SpeechRecognizer`。
 
 以下代码片段演示了如何在应用中使用自动语言检测：
 
@@ -172,7 +172,7 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 ### <a name="pronunciation-assessment-configuration-parameters"></a>发音评估配置参数
 
-下表列出了用于发音评估的配置参数。
+下表列出了发音评估的配置参数。
 
 | 参数 | 说明 | 必需？ |
 |-----------|-------------|---------------------|
@@ -194,28 +194,84 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 | `PronunciationScore` | 总分，表示给定语音的发音质量。 此分数按权重从 `AccuracyScore`、`FluencyScore` 和 `CompletenessScore` 聚合而成。 |
 | `ErrorType` | 此值指示与 `ReferenceText` 相比，是省略、插入还是错误读出字词。 可能的值为 `None`（表示此词没有错误）、`Omission`、`Insertion` 和 `Mispronunciation`。 |
 
+### <a name="sample-responses"></a>示例响应
+
+以 JSON 格式显示的典型发音评估结果：
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronunciationAssessment":
+        {
+            "PronScore" : 84.4,
+            "AccuracyScore" : 100.0,
+            "FluencyScore" : 74.0,
+            "CompletenessScore" : 100.0,
+        },
+        "Words": [
+            {
+              "Word" : "Good",
+              "Offset" : 500000,
+              "Duration" : 2700000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            },
+            {
+              "Word" : "morning",
+              "Offset" : 5300000,
+              "Duration" : 900000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            }
+        ]
+      }
+  ]
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 <!-- TODO: update JavaScript sample links after release -->
 
+* 观看有关发音评估的[视频简介](https://www.youtube.com/watch?v=cBE8CUHOFHQ)和[视频教程](https://www.youtube.com/watch?v=zFlwm7N4Awc)
+
+* 试用[发音评估演示](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment/BrowserJS)
+
 ::: zone pivot="programming-language-csharp"
-* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949) 以获得发音评估。
+* 有关发音评估，请参阅 GitHub 上的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949)。
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L633) 以获得发音评估。
+* 有关发音评估，请参阅 GitHub 上的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L633)。
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L697) 以获得发音评估。
+* 有关发音评估，请参阅 GitHub 上的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L697)。
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L576) 以获得发音评估。
+* 有关发音评估，请参阅 GitHub 上的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py#L576)。
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
-* 请参阅 GitHub 上的 [示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L642) 以获得发音评估。
+* 有关发音评估，请参阅 GitHub 上的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L642)。
 ::: zone-end
 
 * [语音 SDK 参考文档](speech-sdk.md)
+
+* [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)

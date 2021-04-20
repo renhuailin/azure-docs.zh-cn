@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
-ms.openlocfilehash: ecd0fe9021642b27438b0e5d3d140e50c8073f29
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951515"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108734"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -193,12 +193,12 @@ Linux 上的 Azure Kinect 深度引擎使用 OpenGL。 OpenGL 需要一个窗口
 > ONNX 运行时会针对未加速的操作码显示警告。 可放心忽略这些警告。
 
 ONNX 运行时包括用于控制 TensorRT 模型缓存的环境变量。 建议的值为：
-- ORT_TENSORRT_CACHE_ENABLE=1 
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE=1 
 - ORT_TENSORRT_CACHE_PATH="pathname"
 
 在开始人体跟踪之前，必须先创建该文件夹。
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > 与其他执行环境相比，TensorRT 在推理之前会对模型进行预处理，导致启动时间延长。 引擎缓存将此预处理限制为第一次执行，但是它是实验性的，并且特定于模型、ONNX 运行时版本、TensorRT 版本和 GPU 模型。
 
 TensorRT 执行环境同时支持 FP32（默认）和 FP16。 FP16 的性能提高到原来的约 2 倍，而准确度下降却极小。 指定 FP16 的方式：
@@ -206,7 +206,7 @@ TensorRT 执行环境同时支持 FP32（默认）和 FP16。 FP16 的性能提�
 
 ## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>ONNX 运行时执行环境所需的 DLL
 
-|“模式”      | CUDA 11.1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|模型      | CUDA 11.1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
 |----------|----------------------|----------------------|----------------------|
 | CPU      | cudart64_110         | cudnn64_8            | -                    |
 |          | cufft64_10           |                      |                      |

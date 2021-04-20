@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967024"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226695"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure 防火墙高级预览版功能
 
@@ -148,7 +148,6 @@ Azure 防火墙高级预览版存在以下已知问题：
 |ESNI 支持 HTTPS 中的 FQDN 解析|HTTPS 握手不支持加密的 SNI。|目前只有 Firefox 通过自定义配置支持 ESNI。 建议的解决方法是禁用此功能。|
 |客户端证书 (TLS)|客户端证书用于在客户端与服务器之间建立相互的身份信任。 TLS 协商期间使用客户端证书。 Azure 防火墙会重新协商与服务器的连接，并且无权访问客户端证书的私钥。|无|
 |QUIC/HTTP3|QUIC 是 HTTP 的新的主版本。 它是基于 UDP 的通过 80 (PLAN) 和 443 (SSL) 端口的协议。 将不支持 FQDN/URL/TLS 检查。|配置作为网络规则传递 UDP 80/443。|
-|高级版不支持安全中心和强制隧道|目前，在安全中心部署和强制隧道配置中不支持防火墙高级版 SKU。|为 GA 计划了修复。|
 不受信任的客户签名证书|一旦从基于 Intranet 的 Web 服务器接收客户签名的证书，防火墙将不信任它们。|为 GA 计划了修复。
 |使用 TLS 检查的 IDPS 警报中的源 IP 地址和目标 IP 地址错误。|启用 TLS 检查并且 IDPS 发出新警报时，显示的源/目标 IP 地址错误（显示内部 IP 地址而非原始 IP 地址）。|为 GA 计划了修复。|
 |使用适于 HTTP 的 IDPS 的警报中源 IP 地址错误（未经 TLS 检查）。|当使用纯文本 HTTP 流量，IDPS 发出新的警报，并且目标是公用的 IP 地址时，显示的源 IP 地址错误（显示内部 IP 地址，而不是原始 IP 地址）。|为 GA 计划了修复。|

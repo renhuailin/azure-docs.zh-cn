@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.openlocfilehash: 3a89ddbc17eab683c658430a64447328ee024a3c
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948504"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106089691"
 ---
 ## <a name="install-the-container"></a>安装容器
 
-可以通过多种方式来安装和运行运行状况容器的文本分析。 
+可以通过多种方式来安装和运行运行状况文本分析容器。 
 
 - 使用 [Azure 门户](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
-- 使用以下 PowerShell 和 Azure CLI 脚本来自动执行资源部署和容器配置。
+- 使用以下 PowerShell 和 Azure CLI 脚本自动执行资源部署和容器配置。
 
 ### <a name="run-the-container-locally"></a>在本地运行容器
 
-下载容器映像后，若要在自己的环境中运行容器，请查找其映像 ID：
+若要在下载容器映像后在自己的环境中运行容器，请查找其映像 ID：
  
 ```bash
 docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
@@ -44,6 +44,7 @@ docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
 --mount type=bind,src={INPUT_DIR},target=/output {IMAGE_ID} \
 Eula=accept \
+rai_terms=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY} \
 Logging:Disk:Format=json
@@ -55,14 +56,15 @@ Logging:Disk:Format=json
 - 从容器映像运行运行状况容器的文本分析
 - 分配 6 个 CPU 核心和 12 千兆字节 (GB) 内存
 - 公开 TCP 端口 5000，并为容器分配伪 TTY
+- 接受最终用户许可协议 (Eula) 和负责任 AI (RAI) 条款
 - 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
 ### <a name="demo-ui-to-visualize-output"></a>用于可视化输出的演示 UI
 
 > [!NOTE]
-> 此演示仅适用于运行状况容器文本分析。
+> 演示仅适用于运行状况文本分析容器。
 
-该容器提供基于 REST 的查询预测终结点 API。  我们还在容器中提供了一个可视化工具，该工具可通过追加 `/demo` 到容器的终结点来访问。 例如：
+容器提供了基于 REST 的查询预测终结点 API。  我们还在容器中提供了一个可视化工具，通过将 `/demo` 追加到容器的终结点，可以访问该工具。 例如：
 
 ```
 http://<serverURL>:5000/demo
@@ -71,7 +73,7 @@ http://<serverURL>:5000/demo
 使用下面的示例 cURL 请求将查询提交到已部署的容器，并使用适当的值替换 `serverURL` 变量。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.4/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -95,15 +97,13 @@ $appservice_plan_name = ""                 # This is the AppServicePlan name you
 $appservice_name = ""                      # This is the AppService resource name you wish to have.
 $TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
 $TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
+$DOCKER_IMAGE_NAME = "mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare:latest"
 
 az login
 az account set -s $subscription_name
 az appservice plan create -n $appservice_plan_name -g $resource_group_name --is-linux -l $resources_location --sku P3V2
-az webapp create -g $resource_group_name -p $appservice_plan_name -n $appservice_name -i $DOCKER_IMAGE_NAME -s $DOCKER_REGISTRY_SERVER_USERNAME -w $DOCKER_REGISTRY_SERVER_PASSWORD
-az webapp config appsettings set -g $resource_group_name -n $appservice_name --settings Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az webapp create -g $resource_group_name -p $appservice_plan_name -n $appservice_name -i $DOCKER_IMAGE_NAME 
+az webapp config appsettings set -g $resource_group_name -n $appservice_name --settings Eula=accept rai_terms=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: https://<appservice_name>.azurewebsites.net
 ```
@@ -128,15 +128,12 @@ $resources_location = ""                   # This is the location you wish the w
 $azure_container_instance_name = ""        # This is the AzureContainerInstance name you wish to have.
 $TEXT_ANALYTICS_RESOURCE_API_KEY = ""      # This should be taken from the Text Analytics resource.
 $TEXT_ANALYTICS_RESOURCE_API_ENDPOINT = "" # This should be taken from the Text Analytics resource.
-$DOCKER_REGISTRY_SERVER_PASSWORD = ""      # This will be provided separately.
-$DOCKER_REGISTRY_SERVER_USERNAME = ""      # This will be provided separately.
 $DNS_LABEL = ""                            # This is the DNS label name you wish your ACI will have
-$DOCKER_REGISTRY_LOGIN_SERVER = "containerpreview.azurecr.io"
-$DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-healthcare:latest"
+$DOCKER_IMAGE_NAME = "mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare:latest"
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept rai_terms=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```

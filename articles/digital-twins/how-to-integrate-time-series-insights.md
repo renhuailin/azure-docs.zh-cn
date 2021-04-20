@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199894"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564936"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>将 Azure 数字孪生与 Azure 时序见解相集成
 
@@ -20,7 +20,7 @@ ms.locfileid: "102199894"
 
 使用本文中所述的解决方案可以收集和分析有关你的 IoT 解决方案的历史数据。 Azure 数字孪生非常适合用于将数据馈送到时序见解中，因为它支持关联多个数据流，并可在将信息发送到时序见解之前将信息标准化。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在设置与时序见解的关系之前，需有一个 **Azure 数字孪生实例**。 所设置的这个实例应该能够基于数据更新数字孪生信息，因为你需要更新孪生信息多次以查看时序见解中跟踪的数据。 
 
@@ -157,7 +157,7 @@ Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.m
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>创建和连接时序见解实例
 
-接下来，设置一个时序见解实例，以用于接收来自第二个 (TSI) 事件中心的数据。 请按照以下步骤操作，有关此过程的更多详细信息，请参阅[教程：设置 Azure 时序见解 Gen2 PAYG 环境](../time-series-insights/tutorials-set-up-tsi-environment.md)。
+接下来，设置一个时序见解实例，以用于接收来自第二个 (TSI) 事件中心的数据。 请按照以下步骤操作，有关此过程的更多详细信息，请参阅[教程：设置 Azure 时序见解 Gen2 PAYG 环境](../time-series-insights/tutorial-set-up-environment.md)。
 
 1. 在 Azure 门户中，开始创建时序见解环境。 
     1. 选择“Gen2(L1)”定价层。
@@ -169,7 +169,7 @@ Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.m
 
 2. 选择“下一步: 事件源”，然后选择前面提供的 TSI 事件中心信息。 此外，还需要创建一个新的事件中心使用者组。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="时序见解环境事件源的“创建”门户 UX。你将使用前面提供的事件中心信息创建一个事件源。此外还将创建一个新的使用者组。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="时序见解环境事件源的“创建”门户 UX。你将使用前面提供的事件中心信息创建一个事件源。你还将创建一个新的使用者组。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>开始将 IoT 数据发送到 Azure 数字孪生
 
@@ -191,7 +191,7 @@ Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.m
 
 3. 现在应会看到温度计的初始温度读数，如下所示。 *room21* 和 *floor1* 的温度读数也已更新为相同的值，并且你可以将这些数据流一起可视化。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="TSI 资源管理器中绘制了初始温度数据图形。它们是一系列介于 68 和 85 之间的随机值":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="TSI 资源管理器中绘制了初始温度数据图形。它们是一系列介于 68 到 85 之间的随机值":::
 
 4. 如果运行模拟很长一段时间，则可视化效果将如下所示：
     
@@ -201,7 +201,7 @@ Azure 数字孪生[教程：连接端到端解决方案](./tutorial-end-to-end.m
 
 默认情况下，数字孪生以平面层次结构的形式存储在时序见解中，但可以使用模型信息和多级别组织层次结构对其进行扩充。 若要详细了解此过程，请阅读： 
 
-* [教程：定义并应用模型](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [教程：定义并应用模型](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 你可以编写自定义逻辑，以使用已存储在 Azure 数字孪生中的模型和图数据自动提供此信息。 若要详细了解如何管理、升级和检索孪生图中的信息，请参阅以下参考资料：
 

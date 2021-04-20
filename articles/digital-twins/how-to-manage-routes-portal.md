@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779930"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932448"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生中管理终结点和路由（门户）
 
@@ -37,7 +37,7 @@ ms.locfileid: "104779930"
 
 从结果中选择实例，即可在实例概述中查看这些详细信息：
 
-:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例“概述”页的屏幕截图。名称和资源组已突出显示。":::
+:::image type="content" source="media/how-to-manage-routes-portal/instance-details.png" alt-text="Azure 数字孪生实例“概述”页的屏幕截图。名称和资源组突出显示。":::
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>为 Azure 数字孪生创建终结点
 
@@ -82,7 +82,7 @@ ms.locfileid: "104779930"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="用于验证终结点创建的通知的屏幕截图。门户顶部栏中铃形图标已选定，显示一条通知表示“已成功创建终结点 ADT-eh-endpoint”。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-endpoint-notifications.png" alt-text="用于验证终结点创建情况的通知的屏幕截图。门户顶部栏中铃形图标已选定，显示一条通知，指示“终结点 ADT-eh-endpoint 已成功创建”。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -131,7 +131,7 @@ ms.locfileid: "104779930"
 * “名称”字段的路由名称
 * 要用于创建路由的“终结点” 
 
-要启用该路由，还必须“添加事件路由筛选器”，其值至少为 `true`。 （保留默认值 `false` 会创建路由，但不会向其发送事件。）因此，请切换“高级编辑器”的开关将其启用，并在“筛选器”框中写入 `true`。
+要启用该路由，还必须“添加事件路由筛选器”，其值至少为 `true`。 （保留默认值 `false` 会创建路由，但不会向其发送事件。）为此，请切换“高级编辑器”的开关将其启用，并在“筛选器”框中写入 `true`。
 
 :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
@@ -153,7 +153,9 @@ ms.locfileid: "104779930"
 可以从一些基本的常用筛选器选项中选择，也可以使用高级筛选器选项编写自己的自定义筛选器。
 
 >[!NOTE]
-> 筛选器区分大小写，并需要与有效负载大小写匹配（不一定要与模型大小写匹配）。
+> 筛选器区分大小写，并需要与有效负载大小写匹配。 
+>
+> 对于遥测筛选器，这意味着大小写需要与设备发送的遥测的大小写匹配，而不一定是在孪生体的模型中定义的大小写。
 
 #### <a name="use-the-basic-filters"></a>使用基本筛选器
 
@@ -161,7 +163,7 @@ ms.locfileid: "104779930"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选择事件的复选框。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-1.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。选中了事件的复选框。":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -171,7 +173,7 @@ ms.locfileid: "104779930"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。显示选择事件后自动填充的筛选器文本。":::
+        :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-filter-basic-2.png" alt-text="使用基本筛选器创建事件路由的屏幕截图。显示了选择事件后自动填充的筛选器文本。":::
     :::column-end:::
     :::column:::
     :::column-end:::

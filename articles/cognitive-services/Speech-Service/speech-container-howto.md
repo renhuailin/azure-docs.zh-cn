@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
 ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102201118"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
@@ -39,7 +39,7 @@ ms.locfileid: "102201118"
 >
 > 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
 
-| 容器 | 功能 | 最晚 |
+| 容器 | 功能 | 最新 |
 |--|--|--|
 | 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.10.0 |
 | 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.10.0 |
@@ -50,7 +50,7 @@ ms.locfileid: "102201118"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在使用语音容器之前必须满足以下先决条件：
 
@@ -341,7 +341,7 @@ diarize_speech_config.set_service_property(
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音转文本输出中的情绪 
-从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如
+从语音转文本容器 v2.6.0 开始，应使用 TextAnalytics 3.0 API 终结点，而不要使用预览版。 例如：
 * `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0/sentiment`
 * `https://localhost:5000/text/analytics/v3.0/sentiment`
 
@@ -438,7 +438,7 @@ ApiKey={API_KEY}
 * 分配 4 个 CPU 核心和 4 千兆字节 (GB) 内存。
 * 从卷输入装载点（例如 *C:\CustomSpeech*）加载自定义语音转文本模型。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
-* 下载具有给定 `ModelId` 的模型（如果在卷装载点上找不到上述模型）。
+* 根据给定的 `ModelId` 来下载模型（如果在卷装载中找不到）。
 * 如果先前已下载自定义模型，则会忽略 `ModelId`。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
@@ -460,7 +460,7 @@ ApiKey={API_KEY}
 * 运行容器映像中的某个自定义语音转文本容器。
 * 检查并返回目标区域设置的可用基础模型。
 
-输出中将提供基础模型列表，以及有关区域设置、模型 ID 和创建日期时间的信息。 你可以使用模型 ID 来下载并使用你喜欢的特定基础模型。 例如：
+输出将提供基础模型列表，其中包含区域设置、模型 ID 和创建日期时间等信息。 你可以使用模型 ID 来下载并使用你喜欢的特定基础模型。 例如：
 ```
 Checking available base model for en-us
 2020/10/30 21:54:20 [Info] Searching available base models for en-us
@@ -559,7 +559,7 @@ ApiKey={API_KEY}
 * 分配 1 个 CPU 核心和 2 千兆字节 (GB) 内存。
 * 从卷输入装载点（例如 *C:\CustomVoice*）加载自定义文本转语音模型。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
-* 下载具有给定 `ModelId` 的模型（如果在卷装载点上找不到上述模型）。
+* 根据给定的 `ModelId` 来下载模型（如果在卷装载中找不到）。
 * 如果先前已下载自定义模型，则会忽略 `ModelId`。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
@@ -624,7 +624,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 
 #### <a name="analyze-sentiment"></a>分析情绪
 
-如果[在容器中](#analyze-sentiment-on-the-speech-to-text-output)提供了文本分析 API 凭据，则你可以使用语音 SDK 发送语音识别和情绪分析的请求。 可将 API 响应配置为使用简单或详细格式。 
+如果[向容器](#analyze-sentiment-on-the-speech-to-text-output)提供了文本分析 API 凭据，则可以使用语音 SDK 通过情绪分析发送语音识别请求。 可将 API 响应配置为使用简单或详细格式。 
 > [!NOTE]
 > 现已确定语音服务 Python SDK v1.13 中的情绪分析存在一个问题。 如果你使用的是语音服务 Python SDK 中的情绪分析，请使用 v1.12.x 或更低版本。
 

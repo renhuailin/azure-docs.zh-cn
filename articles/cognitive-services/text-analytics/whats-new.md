@@ -8,119 +8,157 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 629b40567ad9a1126413f5a97d1dc6264b4b10ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: f1e509156beea0b3da3539306dc055291cbff0c8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736625"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314178"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
 
-## <a name="february-2021"></a>2021 年 2 月
+## <a name="march-2021"></a>2021 年 3 月
 
-* `2021-01-15`[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)-预览版. x 中 PII 终结点的模型版本，它提供 
-  * 对9种新语言的扩展支持
-  * 提高了支持的语言的已命名实体类别的 AI 质量。
-* S0 到 S4 定价层将于2021年3月8日停用。 如果现有文本分析资源使用 S0 到 S4 定价层，则应将其更新为使用标准 (S) [定价层](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)。
-* [语言检测容器](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment)现已正式发布。
-* 此 API 的2.1 版正在停用。 
-
-## <a name="january-2021"></a>2021 年 1 月
-
-* `2021-01-15`[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)v3. x 的模型版本，它提供 
-  * 为 [几个常规实体类别](named-entity-types.md)扩展了语言支持。 
-  * 提高了所有支持的 v3 语言的 "常规实体" 类别的 AI 质量。 
-
-* `2021-01-05`[语言检测](how-tos/text-analytics-how-to-language-detection.md)的模型版本，它提供了其他[语言支持](language-support.md?tabs=language-detection)。
-
-这些模型版本目前在美国东部地区不可用。 
-
-> [!div class="nextstepaction"]
-> [了解有关新 NER 模型的详细信息](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
-
-## <a name="december-2020"></a>2020 年 12 月
-
-* [更新](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 文本分析 API 的定价详细信息
-
-## <a name="november-2020"></a>2020 年 11 月
-
-* 一个 [新的终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) ，具有文本分析 API 的3.1 版-预览版。3对于新的异步 [分析 API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze)，它支持批处理 NER、PII 和关键短语提取操作。
-* 一个 [新的终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) ，具有文本分析 API 的3.1 版-预览版。3对于 [运行状况](how-tos/text-analytics-for-health.md) 托管 API 的新异步文本分析，支持批处理。
-* 上面列出的两项新功能仅在以下区域提供： `West US 2` 、 `East US 2` 、 `Central US` `North Europe` 和 `West Europe` 区域。
-*  (巴西) `pt-BR` 现在支持 [情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md) v3. x，从模型版本开始 `2020-04-01` 。 它增加了对葡萄牙语的现有 `pt-PT` 支持。
-* 更新了客户端库，其中包括异步分析和运行状况操作的文本分析。 可在 GitHub 上找到示例：
+### <a name="general-api-updates"></a>常规 API 更新
+* 发布了新 API v3.1-preview.4，其中包括 
+   * 观点挖掘 JSON 响应正文中的更改： 
+      * `aspects` 现为 `targets`，`opinions` 现为 `assessments`。 
+   * 健康状况文本分析托管 web API 的 JSON 响应正文中的更改： 
+      * 已停用针对否定检测到的实体对象的 `isNegated` 布尔名称，替换为断言检测。
+      * 现在，提取的属性和实体的关系以及不同实体之间的关系包括一个新属性 `role`。  这让检测到的关系类型更加具体。
+   * 现在，实体链接可用作 `/analyze` 终结点中的异步任务。
+   * 现在，`/pii` 结点中提供一个新参数 `pii-categories`。
+      * 使用该参数，可以指定特定的 PII 实体以及输入语言默认情况下不支持的实体。
+* 更新了客户端库，其中包括异步分析和健康状况文本分析操作。 你可以在 GitHub 上找到相关示例：
 
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript)
+    
+> [!div class="nextstepaction"]
+> [详细了解文本分析 API v3.1-Preview.4](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
 
+### <a name="text-analytics-for-health-updates"></a>健康状况文本分析更新
+
+* 为 `/health` 终结点和本地容器提供了新模型版本 `2021-03-01`，其中提供
+    * `Gene` 实体类型已重命名为 `GeneOrProtein`。
+    * 新的 `Date` 实体类型。
+    * 使用断言检测替代否定检测（仅适用于 API 3.1-preview. 4）。
+    * 为通过各种 ontology 和编码系统规范化的链接实体提供一个新的首选属性 `name`（仅适用于 API 3.1-preview.4）。 
+* 向容器预览存储库发布了带有 `3.0.015490002-onprem-amd64` 标记的新容器映像和新模型版本 `2021-03-01`。 
+    * 2021 年 4 月 26 日之后，此容器映像将再也不可以从 `containerpreview.azurecr.io` 下载。
+* 此同一模型版本的新运行状况文本分析容器映像现在可以在 `mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` 上获得。 自 4 月 26 日起，你将只能从此存储库下载该容器。
 
 > [!div class="nextstepaction"]
-> [详细了解文本分析 API 3.1 版-预览版3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+> [详细了解健康状况文本分析](how-tos/text-analytics-for-health.md)
+
+### <a name="text-analytics-resource-portal-update"></a>文本分析资源门户更新
+* **处理的文本记录数** 现可用作 Azure 门户中文本分析资源“监视”部分的指标。  
+
+## <a name="february-2021"></a>2021 年 2 月
+
+* [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) v3.1-preview.x 中 PII 终结点的 `2021-01-15` 模型版本，其中包括 
+  * 扩展了对 9 种新语言的支持
+  * 针对支持的语言提升了命名实体类别的 AI 质量。
+* S0 到 S4 定价层将于 2021 年 3 月 8 日停用。 如果现有文本分析资源使用 S0 到 S4 定价层，则应将其更新为使用标准[定价层](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)。
+* [语言检测容器](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment)现已正式发布。
+* API v2.1 即将停用。 
+
+## <a name="january-2021"></a>2021 年 1 月
+
+* [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) v3.x 的 `2021-01-15` 模型版本，其中提供 
+  * 扩展了[几种常规实体类别](named-entity-types.md)的语言支持。 
+  * 针对所有支持的 v3 语言提升了常规实体类别的 AI 质量。 
+
+* [语言检测](how-tos/text-analytics-how-to-language-detection.md)的 `2021-01-05` 模型版本，提供了更多[语言支持](language-support.md?tabs=language-detection)。
+
+这些模型版本目前在美国东部地区不可用。 
+
+> [!div class="nextstepaction"]
+> [详细了解新 NER 模型](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)
+
+## <a name="december-2020"></a>2020 年 12 月
+
+* [更新](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)了文本分析 API 的定价详细信息。
+
+## <a name="november-2020"></a>2020 年 11 月
+
+* 一个适用于新异步[分析 API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze) 的[新终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze)，使用文本分析 API v3.1-preview.3，支持批量处理 NER、PII 和关键短语提取操作。
+* 一个适用于新异步[健康状况文本分析](how-tos/text-analytics-for-health.md)托管 API 的[新终结点](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)，使用文本分析 API v3.1-preview.3，支持批量处理。
+* 上面列出的两项新功能仅可用于以下区域：`West US 2`、`East US 2`、`Central US`、`North Europe` 和 `West Europe` 区域。
+* 自模型版本 `2020-04-01` 开始，[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md) v3.x 中现在支持葡萄牙语（巴西）`pt-BR`。 向现有的 `pt-PT` 中添加了葡萄牙语支持。
+* 更新了客户端库，其中包括异步分析和健康状况文本分析操作。 你可以在 GitHub 上找到相关示例：
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * 
+> [!div class="nextstepaction"]
+> [详细了解文本分析 API v3.1-Preview.3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 
 ## <a name="october-2020"></a>2020 年 10 月
 
-* 从模型版本开始，对情绪分析 v3. x 的印地语支持 `2020-04-01` 。 
-* `2020-09-01`V3/languages 终结点的模型版本，增加了语言检测和准确性改进。
-* 印度中部和阿拉伯联合酋长国北部中的 v3 可用性。
+* 自模型版本 `2020-04-01` 开始，情绪分析 v3.x 支持印地语。 
+* v3 /languages 终结点的模型版本 `2020-09-01`，其中增强了语言检测并提升了准确度。
+* v3 在印度中部和阿拉伯联合酋长国北部可用。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
 ### <a name="general-api-updates"></a>常规 API 更新
 
-* 为文本分析3.1 公共预览版发布新 URL，以支持对以下命名实体识别 v3 终结点进行更新： 
-    * `/pii` 现在，终结点 `redactedText` 在响应 JSON 中包含新的属性，其中，在输入文本中检测到的 PII 实体将替换 `*` 为这些实体中的每个字符的。
-    * `/linking` 现在，终结点在 `bingID` 响应 JSON 中包括链接实体的属性。
-* 以下文本分析预览版 API 终结点于2020年9月4日停用：
-    * ws 2.1-预览
+* 针对文本分析 v3.1 公共预览版本发布了新 URL，以支持对以下命名实体识别 v3 终结点的更新： 
+    * 现在，`/pii` 终结点在响应 JSON 中包括新的 `redactedText` 属性，在输入文本中检测到的 PII 实体的每个字符均被替换为 `*`。
+    * 现在，`/linking` 终结点在链接实体的响应 JSON 中包括 `bingID` 属性。
+* 下列文本分析预览 API 终结点已于 2020 年 9 月 4 日停用：
+    * v2.1-preview
     * v3.0-preview
-    * 3.0-预览。1
+    * v3.0-preview.1
     
 > [!div class="nextstepaction"]
-> [详细了解文本分析 API 3.1 版-预览版2](quickstarts/client-libraries-rest-api.md)
+> [详细了解文本分析 API v3.1-Preview.2](quickstarts/client-libraries-rest-api.md)
 
-### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
+### <a name="text-analytics-for-health-container-updates"></a>健康状况文本分析容器更新
 
-以下更新仅特定于运行状况容器文本分析的九月版本。
-* 已将带有新型号版本的标记的新容器映像 `1.1.013530001-amd64-preview` `2020-09-03` 发布到容器预览存储库。 
-* 此模型版本提供实体识别、缩写检测和延迟增强功能的改进。
+以下是专门针对 9 月版健康状况文本分析容器的更新。
+* 向容器预览版本存储库发布了使用新模型版本 `2020-09-03` 的带有 `1.1.013530001-amd64-preview` 标记的新容器映像。 
+* 此模型版本提升了实体识别、缩写检测和延迟改进效果。
 
 > [!div class="nextstepaction"]
-> [详细了解文本分析的运行状况](how-tos/text-analytics-for-health.md)
+> [详细了解健康状况文本分析](how-tos/text-analytics-for-health.md)
 
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="general-api-updates"></a>常规 API 更新
 
-* V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 终结点，这些终结点用于添加：
-    * 命名实体识别的其他政府和国家特定 [实体类别](named-entity-types.md?tabs=personal) 。
-    * 情绪分析 v3 中的挪威语和土耳其语支持。
-* 对于超过已发布 [数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
-* 返回偏移量的终结点现在支持可选的 `stringIndexType` 参数，该参数将调整返回的 `offset` `length` 值和值，以匹配支持的 [字符串索引方案](concepts/text-offsets.md)。
+* V3 `/keyphrases`、`/pii` 和 `/languages` 终结点的模型版本 `2020-07-01`，其中添加了：
+    * 用于命名实体识别的其他政府和国家特定的[实体类别](named-entity-types.md?tabs=personal)。
+    * 情绪分析 v3 中支持挪威语和土耳其语。
+* 对于超过发布的[数据限制](concepts/data-limits.md)的 v3 API 请求，现在将返回 HTTP 400 错误。 
+* 返回偏移量的终结点现在支持可选 `stringIndexType` 参数，该参数可调整返回的 `offset` 和 `length` 的值，以匹配支持的[字符串索引架构](concepts/text-offsets.md)。
 
-### <a name="text-analytics-for-health-container-updates"></a>运行状况容器更新的文本分析
+### <a name="text-analytics-for-health-container-updates"></a>健康状况文本分析容器更新
 
-以下更新仅特定于运行状况容器文本分析的8月发行版。
+以下是专门针对 8 月版健康状况文本分析容器的更新。
 
-* 新模型-版本文本分析用于运行状况： `2020-07-24`
-* 用于发送运行状况请求文本分析的新 URL： `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (请注意，需要使用浏览器缓存才能使用此新容器映像中包含的 demo web 应用) 
+* 健康状况文本分析的新模型版本：`2020-07-24`
+* 发送健康状况文本分析请求的新 URL：`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health`（请注意，要使用此容器映像中包括的 demo Web 应用，需要清理浏览器缓存）
 
-JSON 响应中的以下属性已更改：
+JSON 响应中的以下属性发生了变化：
 
 * `type` 已重名为 `category` 
 * `score` 已重名为 `confidenceScore`
-* JSON 输出的字段中的实体 `category` 现在采用 pascal 大小写格式。 以下实体已重命名：
+* JSON 输出 `category` 字段中的实体现在采用 pascal 大小写格式。 已重命名以下实体：
     * `EXAMINATION_RELATION` 已重命名为 `RelationalOperator`。
     * `EXAMINATION_UNIT` 已重命名为 `MeasurementUnit`。
     * `EXAMINATION_VALUE` 已重命名为 `MeasurementValue`。
-    * `ROUTE_OR_MODE` 已重命名 `MedicationRoute` 。
-    * 关系实体已 `ROUTE_OR_MODE_OF_MEDICATION` 重命名为 `RouteOfMedication` 。
+    * `ROUTE_OR_MODE` 已重命名为 `MedicationRoute`。
+    * 关系实体 `ROUTE_OR_MODE_OF_MEDICATION` 已重命名为 `RouteOfMedication`。
 
 添加了以下实体：
 
@@ -136,15 +174,15 @@ JSON 响应中的以下属性已更改：
     * `DirectionOfTreatment`
 
 > [!div class="nextstepaction"]
-> [了解有关运行状况容器文本分析的详细信息](how-tos/text-analytics-for-health.md)
+> [详细了解健康状况文本分析容器](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>2020 年 7 月 
 
-### <a name="text-analytics-for-health-container---public-gated-preview"></a>文本分析 for health 容器-公共封闭预览
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>健康状况文本分析容器 - 受限制的公共预览版本
 
-运行状况容器的文本分析现在处于公共封闭预览版中，可让你从临床文档中的非结构化英语文本中提取信息，例如：患者进气窗体、医生说明、研究论文和解雇汇总。 目前，你不会对运行状况容器使用情况的文本分析计费。
+健康状况文本分析容器现位于受限制的公共预览版本中，该版本支持从临床文档非结构化英语文本中提取信息，这类文本例如病患登记表、医嘱、研究论文和出院小结。 目前，使用健康状况文本分析容器不收取费用。
 
-容器提供以下功能：
+该容器提供以下功能：
 
 * 命名实体识别
 * 关系提取
@@ -186,9 +224,9 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 > [!div class="nextstepaction"]
 > [详细了解文本分析 API v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
 
-### <a name="text-analytics-api-v31-public-preview"></a>文本分析 API 3.1 公共预览版
-   * 新情绪分析功能- [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * `PII`) 域筛选器的新个人 ( () 中的受保护的健康信息 `PHI` 。
+### <a name="text-analytics-api-v31-public-preview"></a>文本分析 API v3.1 公共预览版本
+   * 新情绪分析功能 - [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
+   * 新增了用于受保护的健康状况信息 (`PHI`) 的个人 (`PII`) 域。
 
 > [!div class="nextstepaction"]
 > [详细了解文本分析 API v3.1 预览版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -206,38 +244,38 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 > [!div class="nextstepaction"]
 > [详细了解文本分析 API v3 SDK](./quickstarts/client-libraries-rest-api.md?tabs=version-3)
 
-### <a name="named-entity-recognition-v3-public-preview"></a>命名实体识别 v3 公共预览版
+### <a name="named-entity-recognition-v3-public-preview"></a>命名实体识别 v3 公共预览版本
 
-其他实体类型现已在命名实体识别 (NER) v3 公共预览服务中提供，因为我们展开了在文本中找到的 "常规" 和 "个人" 信息实体的检测。 此更新引入了 [模型版本](concepts/model-versioning.md) `2020-02-01` ，其中包括：
+随着我们对文本中常规信息和个人信息实体的检测扩展，命名实体识别 (NER) v3 公共预览服务中现在可以使用更多实体类型。 此更新引入了[模型版本](concepts/model-versioning.md) `2020-02-01`，其中包括：
 
-* 以下常规实体类型的识别仅 (英语) ：
+* 对以下常规实体类型的识别（仅限英语）：
     * PersonType
-    * Products
+    * 产品
     * 事件
-    * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
+    * 地缘政治实体 (GPE)，作为“位置”下的子类型
     * 技能
 
-* 识别以下个人信息实体类型 (仅) 英语：
+* 对以下个人信息实体类型的识别（仅限英语）：
     * 人员
     * 组织
-    * 在数量下作为子类型的年龄
-    * 日期作为 DateTime 下的子类型
-    * 电子邮件 
-    * 电话号码 (仅限我们) 
-    * 代码
+    * 年龄（作为“数量”下的子类型）
+    * 日期（作为 DateTime 下的子类型）
+    * Email 
+    * 电话号码（仅限美国）
+    * URL
     * IP 地址
 
 ### <a name="october-2019"></a>2019 年 10 月
 
 #### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-* 用于识别个人信息实体类型的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii) 仅 (英语) 
+* 一个用于识别个人信息实体类型的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)（仅限英语）
 
-* 用于 [实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral) 和 [实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)的不同终结点。
+* 分开用于[实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)和[实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)的终结点。
 
-* [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
-    * 扩展了文本中实体的检测和分类。 
-    * 以下新实体类型的识别：
+* [模型版本](concepts/model-versioning.md) `2019-10-01`，其中包括：
+    * 扩展了对文本中实体的检测和分类。 
+    * 对以下新实体类型的识别：
         * 电话号码
         * IP 地址
 
@@ -245,14 +283,14 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
 
-* 用于分析情绪的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment) 。
-* [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
+* 用于分析情绪的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/Sentiment)。
+* [模型版本](concepts/model-versioning.md) `2019-10-01`，其中包括：
 
-    * API 文本分类和评分的准确性和详细信息的显著改进。
-    * 为文本中的不同情绪自动添加标签。
-    * 在文档和句子级别上情绪分析和输出。 
+    * API 的文本分类和评分准确度以及细节方面显著改进。
+    * 自动标记文本中不同的情绪。
+    * 文档和语句级别的情绪分析和输出。 
 
-它支持英语 (`en`) 、日语 (`ja`) 、简体中文 (`zh-Hans`) 、繁体中文 (`zh-Hant`) 、法语 () 、 `fr` 意大利语 () 、 `it` 西班牙语 (`es`) 、荷兰语 (`nl`) 、葡萄牙语 (`pt`) 和德语 (`de`) ，以及以下区域提供：、 `Australia East` `Central Canada` 、 `Central US` `East Asia` `East US` `East US 2` `North Europe` `Southeast Asia` `South Central US` `UK South` `West Europe` `West US 2` 、、、、、、、、、、、、、、和。 
+支持英语 (`en`)、日语 (`ja`)、简体中文 (`zh-Hans`)、繁体中文 (`zh-Hant`)、法语 (`fr`)、意大利语 (`it`)、西班牙语 (`es`)、荷兰语 (`nl`)、葡萄牙语 (`pt`) 和德语 (`de`)，在以下区域提供：`Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe` 和 `West US 2`。 
 
 > [!div class="nextstepaction"]
 > [详细了解情绪分析 v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)

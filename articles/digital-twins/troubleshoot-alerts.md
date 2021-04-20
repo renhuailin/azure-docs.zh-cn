@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 461d7a82854ce62ee99eef1227c13c7a8f0371e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100594871"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>排查 Azure 数字孪生的问题：警报
@@ -44,7 +44,7 @@ Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，�
 
 下面是“选择条件”过程的摘录，说明了哪些警报信号类型可用于 Azure 数字孪生。 在此页上，可以筛选信号类型，并从列表中选择所需信号。
 
-:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="显示第一个“配置信号逻辑”页的屏幕截图。“信号类型”框突出显示，用于选择指标或活动日志，其下有可供选择的指标列表":::
+:::image type="content" source="media/troubleshoot-alerts/configure-signal-logic.png" alt-text="显示第一个“配置信号逻辑”页的屏幕截图。“信号类型”框（用于选择指标或活动日志）突出显示，其下有可供选择的指标列表":::
 
 在选择信号后，系统会要求你配置警报的逻辑。 可以针对某个维度进行筛选，设置警报的阈值，并设置检查条件的频率。 下面是针对平均路由失败率指标超出 5% 的情况设置警报的示例。
 
@@ -54,7 +54,7 @@ Azure 数字孪生会收集服务实例的[指标](troubleshoot-metrics.md)，�
 
 在设置警报后，它们会显示在你的实例的“警报”页上。
  
-:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="屏幕截图，显示“警报”页和用于添加的按钮。有一条已配置的警报" lightbox="media/troubleshoot-alerts/alerts-post.png":::
+:::image type="content" source="media/troubleshoot-alerts/alerts-post.png" alt-text="显示“警报”页和用于添加的按钮的屏幕截图。已配置一个警报" lightbox="media/troubleshoot-alerts/alerts-post.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

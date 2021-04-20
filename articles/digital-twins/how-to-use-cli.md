@@ -1,60 +1,64 @@
 ---
 title: 使用 Azure 数字孪生 CLI
 titleSuffix: Azure Digital Twins
-description: 请参阅如何开始使用和使用 Azure 数字孪生 CLI。
+description: 了解如何开始使用 Azure 数字孪生 CLI。
 author: baanders
 ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a24b8b18dd109f1d8ed5acaa7de55ce5a3cc1eb9
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
-ms.translationtype: MT
+ms.openlocfilehash: 5037450d401153811899b8d769ca92af7ce4068e
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201101"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103770"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>使用 Azure 数字孪生 CLI
 
-除了在 Azure 门户中管理 Azure 数字孪生实例以外，Azure 数字孪生还为可用于对该服务执行最主要操作的 Azure CLI 提供了一个 **命令集 [](/cli/azure/what-is-azure-cli)** ，其中包括：
+除了在 Azure 门户中管理 Azure 数字孪生实例外，还可以使用 Azure 数字孪生为 [Azure CLI](/cli/azure/what-is-azure-cli) 提供的一个命令集对服务执行大多数主要操作，包括：
 * 管理 Azure 数字孪生实例
 * 管理模型
-* 管理数字孪生
-* 管理克隆关系
+* 管理数字孪生体
+* 管理孪生关系
 * 配置终结点
-* 管理 [路由](concepts-route-events.md)
-* 通过基于 Azure 角色的访问控制 (Azure RBAC) 配置[安全性](concepts-security.md)
+* 管理[路由](concepts-route-events.md)
+* 通过 Azure 基于角色的访问控制 (Azure RBAC) 配置[安全性](concepts-security.md)
 
-命令集称为 **az dt**，是 [适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的一部分。 您可以查看命令的完整列表及其用法，作为命令集的参考文档的一部分 `az iot` ： [ *az dt* 命令参考](/cli/azure/ext/azure-iot/dt)。
+此命令集称为“az dt”，是[适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)的一部分。 可以在 `az iot` 命令集的参考文档中查看完整的命令列表及其用法：[az dt 命令参考](/cli/azure/dt)。
 
-## <a name="uses-deploy-and-validate"></a>使用 (部署和验证) 
+## <a name="uses-deploy-and-validate"></a>使用（部署和验证）
 
-除了一般管理实例，CLI 也是用于部署和验证的有用工具。
-* 使用控制平面命令可重复或自动部署新的实例。
-* 数据平面命令可用于快速检查实例中的值，并验证操作是否按预期完成。
+CLI 是一种有用的工具，通常用于实例管理，此外还用于部署和验证。
+* 可使用控制平面命令重复部署或自动部署新的实例。
+* 可使用数据平面命令快速检查实例中的值，并验证操作是否按预期完成。
 
 ## <a name="get-the-command-set"></a>获取命令集
 
-Azure 孪生命令是 azure IoT 扩展的一部分， [用于 Azure CLI (azure iot)](https://github.com/Azure/azure-iot-cli-extension)，因此请按照以下步骤操作，以确保具有 `azure-iot` **az dt** 命令的最新扩展。
+Azure 数字孪生命令是[适用于 Azure CLI 的 Azure IoT 扩展 (azure-iot)](https://github.com/Azure/azure-iot-cli-extension) 的一部分，因此请按照以下步骤操作，以确保使用 az dt 命令获得最新 `azure-iot` 扩展。
 
 ### <a name="cli-version-requirements"></a>CLI 版本要求
 
-如果在 PowerShell 中使用 Azure CLI，则扩展包要求 Azure CLI 版本为 **2.3.1** 或更高版本。
+如果将 Azure CLI 与 PowerShell 配合使用，则扩展包要求 Azure CLI 版本为“2.3.1”或更高版本。
 
-可以通过以下 CLI 命令检查 Azure CLI 的版本：
+可以使用以下 CLI 命令检查 Azure CLI 的版本：
 ```azurecli
 az --version
 ```
 
-有关如何安装或更新到较新版本 Azure CLI 的说明，请参阅 [*安装 Azure CLI*](/cli/azure/install-azure-cli)。
+有关如何将 Azure CLI 安装或更新为更新版本的说明，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="get-the-extension"></a>获取扩展
 
-可以通过以下步骤确保具有最新版本的 `azure-iot` 扩展。 可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或 [本地 Azure CLI](/cli/azure/install-azure-cli)中运行这些命令。
+首次使用需要扩展的命令时，Azure CLI 会自动提示你安装该扩展。
 
-[!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
+另外，可以使用以下命令随时自行安装扩展（如果发现你已有较旧的版本，则会对其进行更新）。 命令可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或[本地 Azure CLI](/cli/azure/install-azure-cli) 中运行。
+
+```azurecli-interactive
+az extension add --upgrade -n azure-iot
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-通过参考文档浏览 CLI 及其完整的命令集：
-* [*az dt* command reference](/cli/azure/ext/azure-iot/dt)
+通过参考文档了解 CLI 及其完整的命令集：
+* [az dt 命令参考](/cli/azure/dt)

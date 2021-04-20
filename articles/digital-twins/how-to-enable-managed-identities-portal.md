@@ -8,10 +8,10 @@ ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101703077"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>启用用于路由 Azure 数字孪生事件的托管标识（预览版）：Azure 门户
@@ -44,7 +44,7 @@ ms.locfileid: "101703077"
 
 在此选项卡中，选择“系统托管标识”对应的“打开”选项以打开此功能。 
 
-:::image type="content" source="media/how-to-enable-managed-identities/create-instance-advanced.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生的“创建资源”对话框的“高级”选项卡。选项卡名称已突出显示，另外还突出显示了“系统托管标识”对应的“打开”选项和导航按钮（“查看 + 创建”、“上一步”、“下一步: 高级”）。":::
+:::image type="content" source="media/how-to-enable-managed-identities/create-instance-advanced.png" alt-text="Azure 门户的屏幕截图，显示了 Azure 数字孪生的“创建资源”对话框的“高级”选项卡。选项卡名称已突出显示，另外还突出显示了“系统托管标识”对应的“打开”选项和导航按钮（“审阅 + 创建”、“上一步”、“下一步: 高级”）。":::
 
 然后，可以使用底部的导航按钮继续完成余下的实例设置。
 
@@ -62,7 +62,7 @@ ms.locfileid: "101703077"
 
 1. 点击“保存”按钮，然后点击“是”以确认。 
 
-    :::image type="content" source="media/how-to-enable-managed-identities/identity-digital-twins.png" alt-text="Azure 门户的屏幕截图，其中显示了 Azure 数字孪生实例的“标识(预览版)”页。Azure 数字孪生实例菜单中的页名称已突出显示，另外还突出显示了“状态”对应的“打开”选项、“保存”按钮和“是”确认按钮。":::
+    :::image type="content" source="media/how-to-enable-managed-identities/identity-digital-twins.png" alt-text="Azure 门户的屏幕截图，显示了 Azure 数字孪生实例的“标识(预览)”页。Azure 数字孪生实例菜单中的页名称已突出显示，另外还突出显示了“状态”对应的“打开”选项、“保存”按钮和“是”确认按钮。":::
 
 保存更改后，此页将显示新标识的更多字段：“对象 ID”和“权限”。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "101703077"
 1. 在左侧菜单中选择“访问控制(IAM)”。
 1. 选择“+ 添加”按钮以添加一个新的角色分配。
 
-    :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="显示事件中心的“访问控制(IAM)”页的 Azure 门户屏幕截图。已突出显示“+ 添加”按钮。" lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
+    :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="Azure 门户的屏幕截图，显示了事件中心的“访问控制(IAM)”页。“+ 添加”按钮突出显示。" lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
 
 1. 在随后出现的“添加角色分配”页上填写值：
     * **角色**：从下拉菜单中选择所需的角色。

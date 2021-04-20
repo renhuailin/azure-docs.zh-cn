@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869015"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966939"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -117,7 +117,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>。
+有关详细信息，请参阅 <a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a>。
 
 ```csharp
 speechConfig.SetProperty(
@@ -126,7 +126,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>。
+有关详细信息，请参阅 <a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a>。
 
 ```cpp
 speechConfig->SetProperty(
@@ -135,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>。
+有关详细信息，请参阅 <a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a>。
 
 ```java
 speechConfig.setProperty(
@@ -144,7 +144,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>。
+有关详细信息，请参阅 <a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a>。
 
 ```python
 speech_config.set_property_by_name(
@@ -153,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>。
+有关详细信息，请参阅 <a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a>。
 
 ```javascript
 speechConfig.setProperty(
@@ -162,7 +162,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
+有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -170,7 +170,7 @@ speechConfig.setProperty(
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-有关详细信息，请参阅 <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
+有关详细信息，请参阅 <a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a>。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -213,14 +213,9 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxuanNeural`（预览版）
 * `zh-CN-XiaoruiNeural`（预览版）
 
-可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。
+可进一步更改说话风格的强度，更好地适应你的使用场景。 可以使用 `styledegree` 指定更强或更柔和的风格，使语音更具表现力或更柔和。 目前，中文（普通话，简体）神经语音支持说话风格调整。
 
-目前，支持调整以下神经语音的讲话风格：
-* `zh-CN-XiaoxiaoNeural`
-
-除了调整说话风格和风格程度，还可调整 `role` 参数，使语音模拟不同的年龄和性别。 例如，如果是男性语音，则可提高音调，更改声调来模拟女性语音。
-
-目前，支持调整以下神经语音的角色扮演：
+除了调整说话风格和风格程度，还可调整 `role` 参数，使语音模拟不同的年龄和性别。 例如，男性语音可以提高音调和改变语调来模拟女性语音，但语音名称不会更改。 目前，这些中文（普通话，简体）神经语音支持角色扮演调整：
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 目前，`styledegree` 仅支持 zh-CN-XiaoxiaoNeural。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。
+> 目前，`styledegree` 仅支持中文（普通话，简体）神经语音。 `role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。
 
 **属性**
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
-| `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持 zh-CN-XiaoxiaoNeural。）|
-| `role` | 指定讲话角色扮演。 语音将充当不同的年龄和性别。  | 可选（`role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。）|
+| `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持中文（普通话，简体）神经语音。）|
+| `role` | 指定讲话角色扮演。 语音将充当不同的年龄和性别，但语音名称不会更改。  | 可选（`role` 仅支持 zh-CN-XiaomoNeural 和 zh-CN-XiaoxuanNeural。）|
 
 参考下表来确定每种神经语音支持的讲话风格。
 
@@ -254,6 +249,7 @@ speechConfig!.setPropertyTo(
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | 以正式、自信和权威的语气发布新闻 |
 |                         | `style="newscast-casual"` | 以通用、随意的语气发布一般新闻        |
+|                         | `style="narration-professional"` | 以专业、客观的语气朗读内容        |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
@@ -321,17 +317,19 @@ speechConfig!.setPropertyTo(
 |                         | `style="angry"`           | 以较低的音调、较高的强度和较高的音量来表达恼怒的语气。 说话者处于愤怒、生气和被冒犯的状态。       |
 |                         | `style="fearful"`         | 以较高的音调、较高的音量和较快的语速来表达恐惧、紧张的语气。 说话者处于紧张和不安的状态。                          |
 
-使用此表来确定每种中性语音支持哪些角色。
+使用此表检查支持的角色及其定义。
 
-| 语音                   | 角色                       | 说明                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 该语音模拟年轻成年女性。                 |
-|                         | `role="OlderAdultMale"`    | 该语音模拟年长的成年男性。                   |
-|                         | `role="Girl"`              | 该语音模拟女孩。                               |
-|                         | `role="Boy"`               | 该语音模拟男孩。                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 该语音模拟年轻成年女性。                 |
-|                         | `role="OlderAdultFemale"`  | 该语音模拟年长的成年女性。                 |
-|                         | `role="OlderAdultMale"`    | 该语音模拟年长的成年男性。                   |
+|角色                     | 说明                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | 该语音模拟女孩。 |
+|`role="Boy"`             | 该语音模拟男孩。 |
+|`role="YoungAdultFemale"`| 该语音模拟年轻成年女性。|
+|`role="YoungAdultMale"`  | 该语音模拟年轻成年男性。|
+|`role="OlderAdultFemale"`| 该语音模拟年长的成年女性。|
+|`role="OlderAdultMale"`  | 该语音模拟年长的成年男性。|
+|`role="SeniorFemale"`    | 该语音模拟老年女性。|
+|`role="SeniorMale"`      | 该语音模拟老年男性。|
+
 
 **示例**
 
@@ -876,7 +874,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 bookmark 元素可用于引用文本或标记序列中的特定位置。
 
 > [!NOTE]
-> 目前，`bookmark` 元素仅适用于美国西部 (`westus`) 区域的 `en-US-AriaNeural` 语音。
+> 目前，`bookmark` 元素仅适用于 `en-US-AriaNeural` 语音。
 
 **语法**
 

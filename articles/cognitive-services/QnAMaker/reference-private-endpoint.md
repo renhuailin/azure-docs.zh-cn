@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/12/2021
 ms.openlocfilehash: 7907c81e45680de49f6653891fb4204a59db1002
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101710543"
 ---
 # <a name="private-endpoints"></a>专用终结点
@@ -27,7 +27,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 1. 将参与者角色分配给 Azure 搜索服务实例中的 QnA Maker 托管服务。 此操作需要对订阅的所有者访问权限。 转到服务资源中的“标识”选项卡以获取标识。
 ![托管服务标识](../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-identity.png)
 
-2. 通过转到 Azure 搜索服务 IAM 选项卡，将上述标识添加为参与者。![托管服务 IAM](../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-access-control.png)
+2. 通过转到 Azure 搜索服务 IAM 选项卡，将上述标识添加为“参与者”。![托管服务 IAM](../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-access-control.png)
 
 3. 单击“添加角色分配”，添加标识，然后单击“保存” 。
 ![托管角色分配](../QnAMaker/media/qnamaker-reference-private-endpoints/private-endpoint-role-assignment.png)

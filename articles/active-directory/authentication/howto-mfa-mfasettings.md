@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932907"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305457"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -236,7 +236,7 @@ Azure AD 多重身份验证的应用密码、受信任的 IP、验证选项以�
 > [!NOTE]
 > 仅当使用 MFA 服务器时，受信任的 IP 才能包括专用 IP 范围。 对于基于云的 Azure AD 多重身份验证，只能使用公共 IP 地址范围。
 >
-> 只有 [命名位置（预览版）](../conditional-access/location-condition.md#preview-features) 接口中支持 IPv6 范围。
+> 只有 [命名位置（预览版）](../conditional-access/location-condition.md) 接口中支持 IPv6 范围。
 
 如果你的组织部署 NPS 扩展，向本地应用程序提供 MFA，请注意源 IP 地址将始终显示为身份验证尝试流经的 NPS 服务器。
 

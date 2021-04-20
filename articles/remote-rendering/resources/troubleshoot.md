@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99593327"
 ---
 # <a name="troubleshoot"></a>疑难解答
@@ -41,7 +41,7 @@ ms.locfileid: "99593327"
 
 ## <a name="h265-codec-not-available"></a>H265 编解码器不可用
 
-有两个原因会导致服务器可能拒绝连接，发生“编解码器不可用”错误。
+有两个原因会导致服务器可能拒绝连接，发生“`codec not available`”错误。
 
 H265 编解码器未安装：
 
@@ -185,7 +185,7 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 应用程序或 Dll 发生“找不到库”错误
 
-在 C++ NuGet 包中，有一个 `microsoft.azure.remoterendering.Cpp.targets` 文件定义了要使用的二进制风格。 若要识别 `UWP`，请检查该文件中的 `ApplicationType == 'Windows Store'` 条件。 因此，需确保在项目中设置此类型。 通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时，应该就会设置此类型。
+在 C++ NuGet 包中，有一个 `microsoft.azure.remoterendering.Cpp.targets` 文件定义了要使用的二进制风格。 为了识别 `UWP`，该文件中的条件会检查是否存在 `ApplicationType == 'Windows Store'` 的情况。 因此，需确保在项目中设置此类型。 通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时，应该就会设置此类型。
 
 ## <a name="unstable-holograms"></a>不稳定全息影像
 

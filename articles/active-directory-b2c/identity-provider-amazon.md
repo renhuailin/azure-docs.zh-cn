@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.custom: project-no-code
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5880b6f44caec053aef292960cecbf64f25c6743
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: b6c0d9d5430d84006b208c50e78b8d875c95b8ac
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448568"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028377"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Amazon 帐户注册与登录
 
@@ -38,12 +38,17 @@ ms.locfileid: "102448568"
 
 若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Amazon 帐户的用户启用登录，则需要在 [Amazon 开发人员服务和技术](https://developer.amazon.com)中创建应用程序。 有关详细信息，请参阅[注册使用 Amazon 登录](https://developer.amazon.com/docs/login-with-amazon/register-web.html)。 如果还没有 Amazon 帐户，可在 [https://www.amazon.com/](https://www.amazon.com/) 上注册一个。
 
-> [!NOTE]  
-> 在下面的步骤 8 中使用以下 URL，将 `your-tenant-name` 替换为你租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-> - 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com` 
-> - 对于“允许的返回 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
-
-[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
+1. 使用 Amazon 帐户凭据登录 [Amazon 开发人员控制台](https://developer.amazon.com/dashboard)。
+1. 如果未曾登录过，请选择“注册”，按照开发人员注册步骤操作，然后接受策略。
+1. 在仪表板中，选择“Login with Amazon”。
+1. 选择“创建新的安全配置文件”。
+1. 输入 **安全配置文件名称**、**安全配置文件说明** 和 **同意隐私声明 URL**，例如 `https://www.contoso.com/privacy` 隐私声明 URL 是你管理的、向用户提供隐私信息的页面。 然后单击“保存”  。
+1. 在“Login with Amazon 配置”部分中，选择你创建的安全配置文件名称，选择“管理”图标，然后选择“Web 设置”。
+1. 在“Web 设置”部分中，复制“客户端 ID”的值。 选择“显示机密”来获取客户端机密，然后复制它。 将 Amazon 帐户配置为租户中的标识提供者时需要这两个值。 “客户端密钥”是一个很重要的安全凭据。
+1. 在“Web 设置”部分中，选择“编辑” 。 
+    1. 在“允许的源”中，输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为租户的名称。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name`。
+    1.  对于“允许的返回 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。  如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。  将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。
+1. 选择“保存”。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -60,12 +65,14 @@ ms.locfileid: "102448568"
 
 ## <a name="add-amazon-identity-provider-to-a-user-flow"></a>将 Amazon 标识提供者添加到用户流 
 
+此时，Amazon 标识提供者已设置，但还不能在任何登录页中使用。 若要将 Amazon 标识提供者添加到用户流，请执行以下操作：
+
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要添加 Amazon 标识提供者的用户流。
 1. 在“社交标识提供者”下，选择“Amazon”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Amazon”以使用 Amazon 帐户登录。
 
@@ -168,7 +175,7 @@ ms.locfileid: "102448568"
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，选择你[之前注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“Amazon”以使用 Amazon 帐户登录。
 

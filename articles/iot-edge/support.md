@@ -8,14 +8,16 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: f59e2ca06f4ec435522cd06815b22d706a2d894c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045983"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772410"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 本文详述 IoT Edge（不管是正式版还是预览版）支持的系统和组件。
 
@@ -23,7 +25,7 @@ ms.locfileid: "102045983"
 
 如果在使用 Azure IoT Edge 服务时遇到问题，可以通过多种方式来寻求支持。 请尝试通过以下某个渠道来寻求支持：
 
-**报表 bug** – IoT Edge 开源项目中发生的大多数开发，Azure IoT Edge 产品。 可以在项目的[问题页面](https://github.com/azure/iotedge/issues)上报告 bug。 修复很快就会从项目实施到产品更新中。
+**报告 bug** – 涉及 Azure IoT Edge 产品的大多数开发都是在 IoT Edge 开放源代码项目中进行的。 可以在项目的[问题页面](https://github.com/azure/iotedge/issues)上报告 bug。 与 Azure IoT Edge for Linux on Windows 相关的 bug 可以在 [iotedge-eflow 问题页](https://github.com/azure/iotedge-eflow/issues)上报告。 修复很快就会从项目实施到产品更新中。
 
 **Microsoft 客户支持团队** – 拥有 [支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 
@@ -64,7 +66,7 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 
 构建为 Linux 容器的模块可以部署到 Linux 或 Windows 设备。 对于 Linux 设备，IoT Edge 运行时会直接安装在主机设备上。 对于 Windows 设备，使用 IoT Edge 运行时预生成的 Linux 虚拟机会在主机设备上运行。
 
-[Windows 上适用于 windows 的 IoT Edge](iot-edge-for-linux-on-windows.md) 目前为公共预览版，但建议在 windows 设备上运行 IoT Edge。
+[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 目前为公共预览版，但我们建议通过它在 Windows 设备上运行 IoT Edge。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
@@ -78,12 +80,12 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 所有 Windows 操作系统都必须是 1809 版（内部版本 17763）或更高版本。
 
 >[!NOTE]
->Ubuntu Server 16.04 支持已在版本 1.1 IoT Edge 结束。
+>Ubuntu Server 16.04 支持将在 IoT Edge 版本 1.1 发布时结束。
 
 #### <a name="windows-containers"></a>Windows 容器
 
 >[!IMPORTANT]
->IoT Edge 1.1 LTS 是将支持 Windows 容器的最后一个发布通道。 从1.2 版开始，将不支持 Windows 容器。 请考虑使用或移动到 [windows 上适用于 Linux 的 IoT Edge](iot-edge-for-linux-on-windows.md) ，在 windows 设备上运行 IoT Edge。
+>IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版本 1.2 开始，将不再支持 Windows 容器。 请考虑使用或移动至 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 以在 Windows 设备上运行 IoT Edge。
 
 构建为 Windows 容器的模块只能部署到 Windows 设备。
 
@@ -96,7 +98,7 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 所有 Windows 操作系统都必须是 1809 版（内部版本 17763）。 Windows 的这一特定内部版本是 Windows 上的 IoT Edge 所必需的，因为 Windows 容器的版本必须与主机 Windows 设备的版本完全匹配。 Windows 容器当前只使用内部版本 17763。
 
 >[!NOTE]
->Windows 10 IoT 核心支持已于版本 1.1 IoT Edge 结束。
+>Windows 10 IoT 核心版支持将在 IoT Edge 版本 1.1 发布时结束。
 
 ### <a name="tier-2"></a>第 2 层
 
@@ -116,7 +118,7 @@ Azure IoT Edge 支持构建为 Linux 或 Windows 容器的模块。 可以将 Li
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> [安装或卸载 Azure IoT Edge for Linux](how-to-install-iot-edge.md) 中的 Ubuntu Server 18.04 安装步骤应在 Ubuntu 20.04 上无任何更改的情况下运行。
+<sup>1</sup> [安装或卸载 Azure IoT Edge for Linux](how-to-install-iot-edge.md) 中的 Ubuntu Server 18.04 安装步骤应在 Ubuntu 20.04 上无任何更改的情况下有效。
 
 ## <a name="releases"></a>发行版本
 
@@ -126,24 +128,24 @@ IoT Edge 组件可以单独安装或更新，并后向兼容旧版中的组件�
 
 | 发布 | 安全守护程序 | Edge 中心<br>Edge 代理 | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 | 1.1.0<br>1.1.1 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
-| **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
-| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4（ARMv7hl，CentOS） |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
+| **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4（ARMv7hl，CentOS）<br>3.0.5 |
+| **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup>IoT Edge 1.1 是 (LTS) 发布通道的第一次长期支持。 此版本并未引入任何新功能，但会收到 bug 修复和安全修补程序。 IoT Edge 1.1 LTS 使用 .NET Core 3.1，并将在年12月 3 2022 日之前受支持，以与 [.Net core 和 .net 5 发布生命周期](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)匹配。
+<sup>1</sup> IoT Edge 1.1 是首个长期支持 (LTS) 发布通道。 此版本未引入任何新功能，但会收到对回归进行的安全更新和修复。 IoT Edge 1.1 LTS 使用 .NET Core 3.1，且有效支持期至 2022 年 12 月 3 日，以匹配 [.NET Core 和 .NET 5 发布生命周期](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 >[!IMPORTANT]
->随着长期支持渠道的发布，我们建议所有运行 1.0. x 的客户将其设备升级到1.1 版，以获得持续支持。
+>随着长期支持渠道的发布，我们建议所有当前运行 1.0.x 的客户将其设备升级到 1.1.x，以获得持续的支持。
 
 IoT Edge 使用 Microsoft.Azure.Devices.Client SDK。 有关详细信息，请参阅 [Azure IoT C# SDK GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp)或 [Azure SDK for .NET 参考内容](/dotnet/api/overview/azure/iot/client)。 以下列表显示了用于测试每个版本的客户端 SDK 版本：
 
-| IoT Edge 版本 | Microsoft. Client SDK 版本 |
+| IoT Edge 版本 | Microsoft.Azure.Devices.Client SDK 版本 |
 |------------------|--------------------------------------------|
-| 1.1.0 (LTS)       | 1.28.0                                     |
+| 1.1 (LTS)      | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |

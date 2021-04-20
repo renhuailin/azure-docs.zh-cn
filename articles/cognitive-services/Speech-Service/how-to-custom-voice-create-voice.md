@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101703365"
 ---
 # <a name="create-a-custom-voice"></a>创建自定义语音
@@ -59,7 +59,7 @@ ms.locfileid: "101703365"
 考虑重写录制发音分数低或信噪比不佳的表述。 如果无法重新录制，可以从数据集中排除这些话语。
 
 > [!NOTE]
-> 要求如果使用自定义神经语音，则必须在“配音员”选项卡中注册配音员。准备录制脚本时，请确保包含以下句子，以取得配音员同意使用其语音数据创建 TTS 语音模型并生成合成语音的确认。 “我[说出你的名字和姓氏]知道，[说出公司名称]将使用我的声音录音来创建和使用我的声音的合成版本。”
+> 如果使用的是自定义神经语音，则必须在“配音员”选项卡中注册配音员。准备录制脚本时，请确保包含以下句子，以获得配音员同意使用其语音数据创建 TTS 语音模型并生成合成语音的确认。 “我[说出你的名字和姓氏]知道，[说出公司名称]将使用我的声音录音来创建和使用我的声音的合成版本。”
 这句话将用于验证训练数据集中的录制内容是否由作出同意的同一人完成。 [在此处阅读有关如何处理数据以及如何完成配音员验证的详细信息](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。 
 
 ## <a name="build-your-custom-voice-model"></a>生成自定义语音模型

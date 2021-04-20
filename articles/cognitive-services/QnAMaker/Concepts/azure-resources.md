@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 2427fbdaa497ccb6d9a46330dcc6eb872e1d28ac
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102214161"
 ---
 # <a name="azure-resources-for-qna-maker"></a>用于 QnA Maker 的 Azure 资源
@@ -52,7 +52,7 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
     * 根据需要为应用服务选择合适的[应用计划](https://azure.microsoft.com/pricing/details/app-service/plans/)。 可以[纵向扩展](../../../app-service/manage-scale-up.md)或收缩应用。
     * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅[此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
 
-* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题领域（用于单种语言）应位于一个知识库中。
+* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题域（适用于单一语言）应位于一个知识库中。
 
     可以在特定的层中发布 N-1 个知识库，其中，N 是该层中允许的最大索引数。 还需要检查每个层允许的文档最大大小和数量。
 
@@ -76,7 +76,7 @@ QnA Maker 使用多个 Azure 源，其中每个资源具有不同的用途。 �
     * QnA Maker 托管（预览版）是一个免费的服务，对于管理 API 和预测 API，目前的吞吐量上限为 10 TPS。
     * 这应当也会影响你的 Azure **认知搜索** SKU 选择，请参阅[此处](../../../search/search-sku-tier.md)的更多详细信息。 此外，你可能需要用副本来调整认知搜索的[容量](../../../search/search-capacity-planning.md)。
 
-* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题领域（用于单种语言）应位于一个知识库中。
+* **知识库的大小和数量**：针对你的方案选择合适的 [Azure 搜索 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常，你会根据不同主题领域的数量来确定所需的知识库数量。 一个主题域（适用于单一语言）应位于一个知识库中。
 
     使用 QnA Maker 托管（预览版）时，可以选择以一种或多种语言为知识库设置 QnA Maker 服务。 在 QnA Maker 托管（预览版）服务中创建第一个知识库时可以做出这项选择。
 
@@ -144,10 +144,10 @@ QnA Maker 服务处理两种类型的密钥：与应用服务中承载的运行�
 
 ![密钥管理](../media/authoring-key.png)
 
-|名称|位置|目标|
+|名称|位置|用途|
 |--|--|--|
 |创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 这些 API 可让你编辑知识库中的问题和答案，以及发布知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>可以在“密钥和终结点”页上的“认知服务”资源中找到这些密钥。 |
-|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些密钥用于查询已发布的知识库终结点，以获取对用户问题的响应。 通常，你会在连接到 QnA Maker 服务的聊天机器人或客户端应用程序代码中使用此查询终结点。 这些密钥是你发布 QnA Maker 知识库时创建的。<br><br>可以在“服务设置”页中找到这些密钥。 可以在页面右上角的用户下拉菜单中找到此“服务设置”页。|
+|查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些密钥用于查询已发布的知识库终结点，以获取对用户问题的响应。 通常，你会在连接到 QnA Maker 服务的聊天机器人或客户端应用程序代码中使用此查询终结点。 这些密钥是你发布 QnA Maker 知识库时创建的。<br><br>可以在“服务设置”页中找到这些密钥。 在页面右上方的下拉菜单上的用户菜单中找到该页。|
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
@@ -187,7 +187,7 @@ QnA Maker 托管（预览版）服务处理两种类型的密钥：用于访问�
 
 ![密钥管理托管预览版](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
 
-|名称|位置|目标|
+|名称|位置|用途|
 |--|--|--|
 |创作/订阅密钥|[Azure 门户](https://azure.microsoft.com/free/cognitive-services/)|这些密钥用来访问 [QnA Maker 管理服务 API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)。 这些 API 可让你编辑知识库中的问题和答案，以及发布知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>可以在“密钥和终结点”页上的“认知服务”资源中找到这些密钥。 |
 |Azure 认知搜索管理密钥|[Azure 门户](../../../search/search-security-api-keys.md)|这些密钥用来与用户的 Azure 订阅中部署的 Azure 认知搜索服务通信。 将 Azure 认知搜索与 QnA Maker 托管（预览版）服务关联时，会自动将管理密钥传递到 QnA Maker 服务。 <br><br>可以在“密钥”页上的“Azure 认知搜索”资源中找到这些密钥。 |
@@ -331,7 +331,7 @@ QnA Maker 创建多个 Azure 资源。 若要减少管理工作量并从成本�
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将遇到问题。|
 |应用服务|X|在设计上不可行|
 |Application Insights|✔|可以共享|
-|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称；不能由其他服务使用。<br>2.名称的同义词映射 `synonym-map` 是为 QnAMaker 服务保留的。<br>3.已发布的知识库数受搜索服务层级限制。 如果有可用的索引，其他服务可以使用这些索引。|
+|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称；不能由其他服务使用。<br>2. 名称的同义词映射 `synonym-map` 为 QnAMaker 服务保留。<br>3. 已发布的知识库数受搜索服务层级限制。 如果有可用的索引，其他服务可以使用这些索引。|
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker 托管（预览版本）](#tab/v2)
 

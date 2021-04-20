@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/25/2021
+ms.date: 03/15/2021
 ms.custom: generated
-ms.openlocfilehash: 90c0be8e6df3e489595bdafed1f29d1ed0ef00f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724500"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602513"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -39,7 +39,7 @@ ms.locfileid: "101724500"
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **网络** |  |  |
+> | **联网** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -75,7 +75,7 @@ ms.locfileid: "101724500"
 > | [存储队列数据消息发送方](#storage-queue-data-message-sender) | 将消息添加到 Azure 存储队列。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [存储队列数据读取者](#storage-queue-data-reader) | 读取并列出 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure Maps 数据参与者](#azure-maps-data-contributor) | 授予对从 Azure maps 帐户映射相关数据的读取、写入和删除访问权限。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
+> | [Azure Maps 数据参与者](#azure-maps-data-contributor) | 从 Azure Maps 帐户中授予地图相关数据的读取、写入和删除权限。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取地图相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 读取者](#signalr-accesskey-reader) | 读取 SignalR 服务访问密钥 | 04165923-9d83-45d5-8227-78b77b0a687e |
@@ -104,7 +104,7 @@ ms.locfileid: "101724500"
 > | [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) | 可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB 操作员](#cosmos-db-operator) | 允许管理 Azure Cosmos DB 帐户，但不能访问其中的数据。 阻止访问帐户密钥和连接字符串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | 可以为帐户提交 Cosmos DB 数据库或容器的还原请求 | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
-> | [CosmosRestoreOperator](#cosmosrestoreoperator) | 可以对具有连续备份模式 Cosmos DB 数据库帐户执行还原操作 | 5432c526-bc82-444a-b7ba-57c5b0b5b34f |
+> | [CosmosRestoreOperator](#cosmosrestoreoperator) | 可以对连续备份模式下的 Cosmos DB 数据库帐户执行还原操作 | 5432c526-bc82-444a-b7ba-57c5b0b5b34f |
 > | [DocumentDB 帐户参与者](#documentdb-account-contributor) | 可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。 | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
@@ -116,7 +116,7 @@ ms.locfileid: "101724500"
 > | [Azure 事件中心数据接收方](#azure-event-hubs-data-receiver) | 允许接收对 Azure 事件中心资源的访问权限。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
 > | [Azure 事件中心数据发送方](#azure-event-hubs-data-sender) | 允许以发送方式访问 Azure 事件中心资源。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
 > | [数据工厂参与者](#data-factory-contributor) | 创建和管理数据工厂，以及其中的子资源。 | 673868aa-7521-48a0-acc6-0f60742d39f5 |
-> | [数据清除程序](#data-purger) | 删除 Log Analytics 工作区中的私有数据。 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | [数据清除程序](#data-purger) | 从 Log Analytics 工作区中删除专用数据。 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
@@ -130,16 +130,23 @@ ms.locfileid: "101724500"
 > | [区块链成员节点访问（预览版）](#blockchain-member-node-access-preview) | 允许对区块链成员节点的访问 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | AI + 机器学习 |  |  |
 > | [认知服务参与者](#cognitive-services-contributor) | 允许创建、读取、更新、删除和管理认知服务的密钥。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
-> | [认知服务自定义视觉参与者](#cognitive-services-custom-vision-contributor) | 对项目的完全访问权限，包括查看、创建、编辑或删除项目的功能。 | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
-> | [认知服务自定义视觉部署](#cognitive-services-custom-vision-deployment) | 发布、取消发布或导出模型。 部署可以查看项目，但不能进行更新。 | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
-> | [认知服务自定义视觉 Labeler](#cognitive-services-custom-vision-labeler) | 查看、编辑培训图像和创建、添加、删除或删除图像标记。 Labelers 可以查看项目，但不能更新除定型图像和标记之外的任何内容。 | 88424f51-ebe7-446f-bc41-7fa16989e96c |
-> | [认知服务自定义视觉读者](#cognitive-services-custom-vision-reader) | 项目中的只读操作。 读者无法创建或更新项目。 | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
-> | [认知服务自定义视觉培训师](#cognitive-services-custom-vision-trainer) | 查看、编辑项目和训练模型，包括发布、取消发布、导出模型的功能。 讲师无法创建或删除该项目。 | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
+> | [认知服务自定义视觉参与者](#cognitive-services-custom-vision-contributor) | 对项目的完全访问权限，包括可以查看、创建、编辑或删除项目。 | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
+> | [认知服务自定义视觉部署](#cognitive-services-custom-vision-deployment) | 发布、取消发布或导出模型。 部署可以查看项目，但不能更新项目。 | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
+> | [认知服务自定义视觉标记者](#cognitive-services-custom-vision-labeler) | 查看、编辑训练图像，创建、添加、移除或删除图像标记。 标记者可以查看项目，但不能更新除训练图像和标记以外的任何内容。 | 88424f51-ebe7-446f-bc41-7fa16989e96c |
+> | [认知服务自定义视觉读取者](#cognitive-services-custom-vision-reader) | 只读项目中的操作。 读取者不能创建或更新项目。 | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
+> | [认知服务自定义视觉训练者](#cognitive-services-custom-vision-trainer) | 查看、编辑项目和训练模型，包括可以发布、取消发布、导出模型。 训练者不能创建或删除项目。 | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
 > | [认知服务数据读取者（预览版）](#cognitive-services-data-reader-preview) | 允许读取认知服务数据。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
-> | [认知服务指标顾问管理员](#cognitive-services-metrics-advisor-administrator) | 对项目的完全访问权限，包括系统级配置。 | cb43c632-a144-4ec5-977c-e80c4affc34a |
-> | [认知服务 QnA Maker 编辑器](#cognitive-services-qna-maker-editor) | 我们来创建、编辑、导入和导出 KB。 你无法发布或删除 KB。 | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
-> | [认知服务 QnA Maker 读者](#cognitive-services-qna-maker-reader) | 只需要阅读并测试 KB。 | 466ccd10-b268-4a11-b098-b4849f024126 |
+> | [认知服务指标顾问管理员](#cognitive-services-metrics-advisor-administrator) | 拥有对项目的完全访问权限，包括系统级配置。 | cb43c632-a144-4ec5-977c-e80c4affc34a |
+> | [认知服务 QnA Maker 编辑者](#cognitive-services-qna-maker-editor) | 允许你创建、编辑、导入和导出知识库。 但不能发布或删除知识库。 | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
+> | [认知服务 QnA Maker 读取者](#cognitive-services-qna-maker-reader) | 只能读取和测试知识库。 | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务的密钥。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **物联网** |  |  |
+> | [设备更新管理员](#device-update-administrator) | 授予你对管理和内容操作的完全访问权限 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
+> | [设备更新内容管理员](#device-update-content-administrator) | 授予你对内容操作的完全访问权限 | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
+> | [设备更新内容读取者](#device-update-content-reader) | 授予你对内容操作的读取访问权限，但不允许进行更改 | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
+> | [设备更新部署管理员](#device-update-deployments-administrator) | 授予你对管理操作的完全访问权限 | e4237640-0e3d-4a46-8fda-70bc94856432 |
+> | [设备更新部署读取者](#device-update-deployments-reader) | 授予你对管理操作的读取访问权限，但不允许进行更改 | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
+> | [设备更新读取者](#device-update-reader) | 授予你对管理和内容操作的读取访问权限，但不允许进行更改 | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
 > | 混合现实 |  |  |
 > | [远程渲染管理员](#remote-rendering-administrator) | 为用户提供 Azure 远程渲染的转换、管理会话、渲染和诊断功能 | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [远程渲染客户端](#remote-rendering-client) | 为用户提供 Azure 远程渲染的管理会话、渲染和诊断功能。 | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -156,6 +163,7 @@ ms.locfileid: "101724500"
 > | [Azure 服务总线数据接收方](#azure-service-bus-data-receiver) | 允许对 Azure 服务总线资源进行接收访问。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Azure 服务总线数据发送方](#azure-service-bus-data-sender) | 允许对 Azure 服务总线资源进行发送访问。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | [EventGrid 参与者](#eventgrid-contributor) | 可以管理 EventGrid 操作。 | 1e241071-0855-49ea-94dc-649edcd759de |
 > | [EventGrid EventSubscription 参与者](#eventgrid-eventsubscription-contributor) | 可以管理 EventGrid 事件订阅操作。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [FHIR 数据参与者](#fhir-data-contributor) | 角色允许用户或主体完全访问 FHIR 数据 | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -171,21 +179,21 @@ ms.locfileid: "101724500"
 > | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | [托管的标识操作员](#managed-identity-operator) | 读取和分配用户分配的标识 | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **安全性** |  |  |
-> | [证明参与者](#attestation-contributor) | 可以读写或删除证明提供程序实例 | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
-> | [证明读者](#attestation-reader) | 可以读取证明提供程序属性 | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
+> | [证明参与者](#attestation-contributor) | 可读写或删除证明提供者实例 | bbf86eb8-f7b4-4cce-96e4-18cddf81d86e |
+> | [证明读取者](#attestation-reader) | 可以读取证明提供程序属性 | fd1bd22b-8476-40bc-a0bc-69b95687b9f3 |
 > | [Azure Sentinel 参与者](#azure-sentinel-contributor) | Azure Sentinel 参与者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
 > | [Azure Sentinel 读取者](#azure-sentinel-reader) | Azure Sentinel 读取者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 响应方](#azure-sentinel-responder) | Azure Sentinel 响应方 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault 管理员](#key-vault-administrator) | 对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
-> | [Key Vault 证书官员](#key-vault-certificates-officer) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
+> | [Key Vault 证书管理人员](#key-vault-certificates-officer) | 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [密钥保管库参与者](#key-vault-contributor) | 管理密钥保管库，但不允许在 Azure RBAC 中分配角色，也不允许访问机密、密钥或证书。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Key Vault 加密官](#key-vault-crypto-officer) | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
+> | [Key Vault 加密管理人员](#key-vault-crypto-officer) | 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
 > | [密钥保管库加密服务加密用户](#key-vault-crypto-service-encryption-user) | 读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 > | [Key Vault 加密用户](#key-vault-crypto-user) | 使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault 读取器](#key-vault-reader) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
-> | [Key Vault 秘密官员](#key-vault-secrets-officer) | 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
+> | [Key Vault 读取者](#key-vault-reader) | 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault 机密管理人员](#key-vault-secrets-officer) | 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 > | [Key Vault 机密用户](#key-vault-secrets-user) | 读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 | 4633458b-17de-408a-b874-0445c86b69e6 |
-> | [托管 HSM 参与者](#managed-hsm-contributor) | 允许管理托管的 HSM 池，但不允许对其进行访问。 | 18500a29-7fe2-46b2-a342-b16a415e101d |
+> | [托管 HSM 参与者](#managed-hsm-contributor) | 允许你管理托管 HSM 池，但不允许访问这些池。 | 18500a29-7fe2-46b2-a342-b16a415e101d |
 > | [安全管理员](#security-admin) | 查看和更新安全中心的权限。 与安全读取者角色具有相同的权限，还可以更新安全策略并关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -222,7 +230,8 @@ ms.locfileid: "101724500"
 > | [管理组读取者](#management-group-reader) | 管理组读取者角色 | ac63b705-f282-497d-ac71-919bf39d939d |
 > | [New elic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [策略见解数据编写者（预览）](#policy-insights-data-writer-preview) | 允许对资源策略进行读取访问，并允许对资源组件策略事件进行写入访问。 | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
-> | [保留购买者](#reservation-purchaser) | 允许你购买预订 | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
+> | [配额请求操作员角色](#quota-request-operator-role) | 读取和创建配额请求，获取配额请求状态并创建支持票证。 | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
+> | [预留买方](#reservation-purchaser) | 允许你购买预留 | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [资源策略参与者](#resource-policy-contributor) | 有权创建/修改资源策略、创建支持票证和读取资源/层次结构的用户。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Site Recovery 参与者](#site-recovery-contributor) | 允许管理除保管库创建和角色分配外的 Site Recovery 服务 | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery 操作员](#site-recovery-operator) | 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 | 494ae006-db33-4328-bf46-533a6560a3ca |
@@ -233,22 +242,22 @@ ms.locfileid: "101724500"
 > | [Azure 数字孪生数据所有者](#azure-digital-twins-data-owner) | 对数字孪生数据平面具有完全访问权限的角色 | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 > | [Azure 数字孪生数据读者](#azure-digital-twins-data-reader) | 对数字孪生数据平面具有只读权限的角色 | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 > | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
-> | [桌面虚拟化应用程序组参与者](#desktop-virtualization-application-group-contributor) | 桌面虚拟化应用程序组的参与者。 | 86240b0e-9422-4c43-887b-b61143f32ba8 |
-> | [桌面虚拟化应用程序组读取器](#desktop-virtualization-application-group-reader) | 桌面虚拟化应用程序组的读者。 | aebf23d0-b568-4e86-b8f9-fe83a2c6ab55 |
-> | [桌面虚拟化参与者](#desktop-virtualization-contributor) | 桌面虚拟化的参与者。 | 082f0a83-3be5-4ba1-904c-961cca79b387 |
-> | [桌面虚拟化主机池参与者](#desktop-virtualization-host-pool-contributor) | 桌面虚拟化主机池的参与者。 | e307426c-f9b6-4e81-87de-d99efb3c32bc |
-> | [桌面虚拟化主机池读取器](#desktop-virtualization-host-pool-reader) | 桌面虚拟化主机池的读取器。 | ceadfde2-b300-400a-ab7b-6143895aa822 |
-> | [桌面虚拟化读者](#desktop-virtualization-reader) | 桌面虚拟化的读者。 | 49a72310-ab8d-41df-bbb0-79b649203868 |
-> | [桌面虚拟化会话主机操作员](#desktop-virtualization-session-host-operator) | 桌面虚拟化会话主机的操作员。 | 2ad6aaab-ead9-4eaa-8ac5-da422f562408 |
+> | [桌面虚拟化应用程序组参与者](#desktop-virtualization-application-group-contributor) | 桌面虚拟化应用程序组参与者。 | 86240b0e-9422-4c43-887b-b61143f32ba8 |
+> | [桌面虚拟化应用程序组读取者](#desktop-virtualization-application-group-reader) | 桌面虚拟化应用程序组读取者。 | aebf23d0-b568-4e86-b8f9-fe83a2c6ab55 |
+> | [桌面虚拟化参与者](#desktop-virtualization-contributor) | 桌面虚拟化参与者。 | 082f0a83-3be5-4ba1-904c-961cca79b387 |
+> | [桌面虚拟化主机池参与者](#desktop-virtualization-host-pool-contributor) | 桌面虚拟化主机池参与者。 | e307426c-f9b6-4e81-87de-d99efb3c32bc |
+> | [桌面虚拟化主机池读取者](#desktop-virtualization-host-pool-reader) | 桌面虚拟化主机池读取者。 | ceadfde2-b300-400a-ab7b-6143895aa822 |
+> | [桌面虚拟化读取者](#desktop-virtualization-reader) | 桌面虚拟化读取者。 | 49a72310-ab8d-41df-bbb0-79b649203868 |
+> | [桌面虚拟化会话主机操作员](#desktop-virtualization-session-host-operator) | 桌面虚拟化会话主机操作员。 | 2ad6aaab-ead9-4eaa-8ac5-da422f562408 |
 > | [桌面虚拟化用户](#desktop-virtualization-user) | 允许用户使用应用程序组中的应用程序。 | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
-> | [桌面虚拟化用户会话操作员](#desktop-virtualization-user-session-operator) | Operator Uesr。 | ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6 |
-> | [桌面虚拟化工作区参与者](#desktop-virtualization-workspace-contributor) | 桌面虚拟化工作区的参与者。 | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
-> | [桌面虚拟化工作区读者](#desktop-virtualization-workspace-reader) | 桌面虚拟化工作区的读取器。 | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
-> | [磁盘备份读取器](#disk-backup-reader) | 提供备份保管库以执行磁盘备份的权限。 | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
-> | [磁盘还原操作员](#disk-restore-operator) | 提供备份保管库以执行磁盘还原的权限。 | b50d9833-a0cb-478e-945f-707fcc997c13 |
+> | [桌面虚拟化用户会话操作员](#desktop-virtualization-user-session-operator) | 桌面虚拟化用户会话操作员。 | ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6 |
+> | [桌面虚拟化工作区参与者](#desktop-virtualization-workspace-contributor) | 桌面虚拟化工作区参与者。 | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
+> | [桌面虚拟化工作区读取者](#desktop-virtualization-workspace-reader) | 桌面虚拟化工作区读取者。 | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
+> | [磁盘备份读取者](#disk-backup-reader) | 向备份保管库提供执行磁盘备份的权限。 | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
+> | [磁盘还原操作员](#disk-restore-operator) | 向备份保管库提供执行磁盘还原的权限。 | b50d9833-a0cb-478e-945f-707fcc997c13 |
 > | [磁盘快照参与者](#disk-snapshot-contributor) | 向备份保管库提供管理磁盘快照的权限。 | 7efff54f-a5b4-42b5-a1c5-5411624893ce |
 > | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
-> | [服务中心操作员](#services-hub-operator) | 服务中心操作员可用于执行与服务中心连接器相关的所有读取、写入和删除操作。 | 82200a5b-e217-47a5-b665-6d8765ee745b |
+> | [服务中心操作员](#services-hub-operator) | “服务中心操作员”允许你执行与服务中心连接器相关的所有读取、写入和删除操作。 | 82200a5b-e217-47a5-b665-6d8765ee745b |
 
 
 ## <a name="general"></a>常规
@@ -1481,7 +1490,7 @@ ms.locfileid: "101724500"
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 返回对受保护项执行的操作的状态。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 返回受保护项的对象详细信息 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 预配受保护项的即时项恢复 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 获取跨区域还原所需的 AccessToken。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 获取跨区域还原所需的 AccessToken。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 获取受保护项的恢复点。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 还原受保护项的恢复点。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 吊销受保护项的即时项恢复 |
@@ -1524,12 +1533,12 @@ ms.locfileid: "101724500"
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 检查恢复服务保管库的备份状态 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 验证功能 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupAadProperties/read | 获取用于在第三区域进行身份验证的 AAD 属性，以便进行跨区域还原。 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJobs/action | 列出恢复服务保管库的次要区域中的跨区域还原作业。 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJob/action | 获取恢复服务保管库的次要区域中的跨区域还原作业详细信息。 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrossRegionRestore/action | 触发跨区域还原。 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationResults/read | 返回恢复服务保管库的 CRR 操作结果。 |
-> | [Microsoft.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationsStatus/read | 返回恢复服务保管库的 CRR 操作状态。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupAadProperties/read | 获取用于在第三区域进行身份验证的 AAD 属性，以便进行跨区域还原。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJobs/action | 列出恢复服务保管库的次要区域中的跨区域还原作业。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJob/action | 获取恢复服务保管库的次要区域中的跨区域还原作业详细信息。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrossRegionRestore/action | 触发跨区域还原。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationResults/read | 返回恢复服务保管库的 CRR 操作结果。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationsStatus/read | 返回恢复服务保管库的 CRR 操作状态。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解决警报。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 操作返回资源提供程序的操作列表 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 获取给定操作的操作状态 |
@@ -2177,7 +2186,7 @@ ms.locfileid: "101724500"
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 返回 Blob 或 Blob 列表。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 写入到 Blob。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | 将 Blob 从一个路径移到另一个路径 |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/add/action | 返回添加 blob 内容的结果 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/add/action | 返回添加 blob 内容的结果 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -2643,7 +2652,7 @@ ms.locfileid: "101724500"
 
 ### <a name="azure-maps-data-contributor"></a>Azure Maps 数据参与者
 
-授予对从 Azure maps 帐户映射相关数据的读取、写入和删除访问权限。 [了解详细信息](../azure-maps/azure-maps-authentication.md)
+从 Azure Maps 帐户中授予地图相关数据的读取、写入和删除权限。 [了解详细信息](../azure-maps/azure-maps-authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -2653,8 +2662,8 @@ ms.locfileid: "101724500"
 > | *无* |  |
 > | **DataActions** |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
-> | [/Accounts/*](resource-provider-operations.md#microsoftmaps)/write |  |
-> | [/Accounts/*](resource-provider-operations.md#microsoftmaps)/delete |  |
+> | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/write |  |
+> | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/delete |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -4036,7 +4045,7 @@ ACR 隔离数据编写器
 
 ### <a name="cosmosrestoreoperator"></a>CosmosRestoreOperator
 
-可以对具有连续备份模式 Cosmos DB 数据库帐户执行还原操作
+可以对连续备份模式下的 Cosmos DB 数据库帐户执行还原操作
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -4400,6 +4409,7 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/devOpsAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/firewallRules/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/read | 返回服务器列表，或获取指定服务器的属性。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | 创建和管理 SQL 服务器安全警报策略 |
@@ -4409,7 +4419,7 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | 返回托管实例的列表，或获取指定托管实例的属性。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
-> | [/ManagedInstances/administrators/read](resource-provider-operations.md#microsoftsql) | 获取托管实例管理员的列表。 |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/administrators/read | 获取托管实例管理员的列表。 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 获取特定的 Azure Active Directory 管理员对象 |
 > | **不操作** |  |
 > | *无* |  |
@@ -4465,6 +4475,7 @@ ACR 隔离数据编写器
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/firewallRules/*",
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
@@ -4528,6 +4539,7 @@ ACR 隔离数据编写器
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/devOpsAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | 编辑 SQL 服务器安全警报策略 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
@@ -4583,6 +4595,7 @@ ACR 隔离数据编写器
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
@@ -4599,7 +4612,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -4782,7 +4795,7 @@ ACR 隔离数据编写器
 
 ### <a name="data-purger"></a>数据清除程序
 
-删除 Log Analytics 工作区中的私有数据。 [了解详细信息](../azure-monitor/logs/personal-data-mgmt.md)
+从 Log Analytics 工作区中删除专用数据。 [了解详细信息](../azure-monitor/logs/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5249,7 +5262,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="blockchain-member-node-access-preview"></a>区块链成员节点访问（预览版）
 
-允许访问区块链成员节点 [了解更多](../blockchain/service/configure-aad.md)
+允许访问区块链成员节点 [了解详细信息](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5364,7 +5377,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="cognitive-services-custom-vision-contributor"></a>认知服务自定义视觉参与者
 
-对项目的完全访问权限，包括查看、创建、编辑或删除项目的功能。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
+对项目的完全访问权限，包括可以查看、创建、编辑或删除项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5373,7 +5386,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5405,7 +5418,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="cognitive-services-custom-vision-deployment"></a>认知服务自定义视觉部署
 
-发布、取消发布或导出模型。 部署可以查看项目，但不能进行更新。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
+发布、取消发布或导出模型。 部署可以查看项目，但不能更新项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5414,15 +5427,15 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/iterations/publish/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/iterations/export/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/quicktest/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/classify/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/detect/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/iterations/publish/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/iterations/export/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/quicktest/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/classify/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/detect/* |  |
 > | **NotDataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
 
 ```json
 {
@@ -5458,9 +5471,9 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="cognitive-services-custom-vision-labeler"></a>认知服务自定义视觉 Labeler
+### <a name="cognitive-services-custom-vision-labeler"></a>认知服务自定义视觉标记者
 
-查看、编辑培训图像和创建、添加、删除或删除图像标记。 Labelers 可以查看项目，但不能更新除定型图像和标记之外的任何内容。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
+查看、编辑训练图像，创建、添加、移除或删除图像标记。 标记者可以查看项目，但不能更新除训练图像和标记以外的任何内容。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5469,14 +5482,14 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/query/action | 获取已发送到预测终结点的图像。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/images/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/tags/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/images/suggested/* |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/tagsandregions/suggestions/action | 此 API 获取未标记图像数组/批的建议标记和区域，以及标记的置信度。 如果未找到标记，则返回空数组。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/query/action | 获取已发送到预测终结点的图像。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/images/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/tags/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/images/suggested/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/tagsandregions/suggestions/action | 此 API 获取未标记图像数组/批的建议标记和区域，以及标记的置信度。 如果未找到标记，则返回空数组。 |
 > | **NotDataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
 
 ```json
 {
@@ -5511,9 +5524,9 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="cognitive-services-custom-vision-reader"></a>认知服务自定义视觉读者
+### <a name="cognitive-services-custom-vision-reader"></a>认知服务自定义视觉读取者
 
-项目中的只读操作。 读者无法创建或更新项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
+只读项目中的操作。 读取者不能创建或更新项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5522,10 +5535,10 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/query/action | 获取已发送到预测终结点的图像。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/*/read |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/predictions/query/action | 获取已发送到预测终结点的图像。 |
 > | **NotDataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
 
 ```json
 {
@@ -5556,9 +5569,9 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="cognitive-services-custom-vision-trainer"></a>认知服务自定义视觉培训师
+### <a name="cognitive-services-custom-vision-trainer"></a>认知服务自定义视觉训练者
 
-查看、编辑项目和训练模型，包括发布、取消发布、导出模型的功能。 讲师无法创建或删除该项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
+查看、编辑项目和训练模型，包括可以发布、取消发布、导出模型。 训练者不能创建或删除项目。 [了解详细信息](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5567,12 +5580,12 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/* |  |
 > | **NotDataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/action | 创建项目。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/delete | 删除特定的项目。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/import/action | 导入项目。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/action | 创建项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/delete | 删除特定的项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/import/action | 导入项目。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/CustomVision/projects/export/read | 导出项目。 |
 
 ```json
 {
@@ -5646,7 +5659,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>认知服务指标顾问管理员
 
-对项目的完全访问权限，包括系统级配置。 [了解详细信息](../cognitive-services/metrics-advisor/how-tos/alerts.md)
+拥有对项目的完全访问权限，包括系统级配置。 [了解详细信息](../cognitive-services/metrics-advisor/how-tos/alerts.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -5655,7 +5668,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/MetricsAdvisor/* |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/MetricsAdvisor/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5685,45 +5698,58 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="cognitive-services-qna-maker-editor"></a>认知服务 QnA Maker 编辑器
+### <a name="cognitive-services-qna-maker-editor"></a>认知服务 QnA Maker 编辑者
 
-我们来创建、编辑、导入和导出 KB。 你无法发布或删除 KB。 [了解详细信息](../cognitive-services/qnamaker/reference-role-based-access-control.md)
+允许你创建、编辑、导入和导出知识库。 但不能发布或删除知识库。 [了解详细信息](../cognitive-services/qnamaker/reference-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/roleDefinitions/read | 获取有关角色定义的信息。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleDefinitions/read | 获取有关角色定义的信息。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | 下载知识库。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | 从运行时下载更改。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/write | 替换更改数据。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/write | 更新终结点的终结点设置。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/operations/read | 获取特定的长时间运行的操作的详细信息。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | 下载知识库。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | 从运行时下载更改。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/write | 替换更改数据。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | 获取终结点的终结点密钥 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | 获取终结点的终结点设置 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/write | 更新终结点的终结点设置。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/operations/read | 获取特定的长时间运行的操作的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/write | 替换更改数据。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/write | 更新终结点的终结点设置。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/operations/read | 获取特定的长时间运行的操作的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/write | 替换更改数据。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/write | 更新终结点的终结点设置。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/operations/read | 获取特定的长时间运行的操作的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/create/write | 用于创建新知识库的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/write | 用于修改知识库或替换知识库内容的异步操作。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/train/action | 用于将建议添加到知识库的 Train 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/write | 替换更改数据。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/action | 重新生成终结点密钥。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/write | 更新终结点的终结点设置。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/operations/read | 获取特定的长时间运行的操作的详细信息。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5769,7 +5795,20 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/write",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/create/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/train/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/operations/read"
       ],
       "notDataActions": []
     }
@@ -5780,31 +5819,37 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="cognitive-services-qna-maker-reader"></a>认知服务 QnA Maker 读者
+### <a name="cognitive-services-qna-maker-reader"></a>认知服务 QnA Maker 读取者
 
-只需要阅读并测试 KB。 [了解详细信息](../cognitive-services/qnamaker/reference-role-based-access-control.md)
+只能读取和测试知识库。 [了解详细信息](../cognitive-services/qnamaker/reference-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/roleDefinitions/read | 获取有关角色定义的信息。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleDefinitions/read | 获取有关角色定义的信息。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | 下载知识库。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | 从运行时下载更改。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | 下载知识库。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | 从运行时下载更改。 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | 获取终结点的终结点密钥 |
-> | [Cognitiveservices account](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | 获取终结点的终结点设置 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/read | 获取知识库列表或特定知识库的详细信息。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read | 下载知识库。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action | 用于查询知识库的 GenerateAnswer 调用。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | 从运行时下载更改。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/read | 获取终结点的终结点密钥 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/read | 获取终结点的终结点设置 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -5836,7 +5881,13 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/generateanswer/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/read",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read"
       ],
       "notDataActions": []
     }
@@ -5912,12 +5963,329 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
+## <a name="internet-of-things"></a>物联网
+
+
+### <a name="device-update-administrator"></a>设备更新管理员
+
+授予你对管理和内容操作的完全访问权限 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/read | 执行与更新相关的读取操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/write | 执行与更新相关的写入操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/delete | 执行与更新相关的删除操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/read | 执行与管理相关的读取操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/write | 执行与管理相关的写入操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/delete | 执行与管理相关的删除操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management and content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "name": "02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-administrator"></a>设备更新内容管理员
+
+授予你对内容操作的完全访问权限 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/read | 执行与更新相关的读取操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/write | 执行与更新相关的写入操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/delete | 执行与更新相关的删除操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "name": "0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-reader"></a>设备更新内容读取者
+
+授予你对内容操作的读取访问权限，但不允许进行更改 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/read | 执行与更新相关的读取操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "name": "d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-administrator"></a>设备更新部署管理员
+
+授予你对管理操作的完全访问权限 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/read | 执行与管理相关的读取操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/write | 执行与管理相关的写入操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/delete | 执行与管理相关的删除操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4237640-0e3d-4a46-8fda-70bc94856432",
+  "name": "e4237640-0e3d-4a46-8fda-70bc94856432",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-reader"></a>设备更新部署读取者
+
+授予你对管理操作的读取访问权限，但不允许进行更改 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/read | 执行与管理相关的读取操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "name": "49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-reader"></a>设备更新读取者
+
+授予你对管理和内容操作的读取访问权限，但不允许进行更改 [了解更多](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/updates/read | 执行与更新相关的读取操作 |
+> | [Microsoft.DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/management/read | 执行与管理相关的读取操作 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management and content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "name": "e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="mixed-reality"></a>混合现实
 
 
 ### <a name="remote-rendering-administrator"></a>远程渲染管理员
 
-为用户提供 Azure 远程呈现的转换、管理会话、呈现和诊断功能 [了解详细信息](../remote-rendering/how-tos/authentication.md)
+为用户提供 Azure 远程渲染的转换、管理会话、渲染和诊断功能 [了解详细信息](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6017,7 +6385,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="spatial-anchors-account-contributor"></a>空间定位点帐户参与者
 
-允许你管理帐户中的空间锚，但不能删除它们 [了解更多](../spatial-anchors/concepts/authentication.md)
+允许你管理帐户中的空间定位点，但不能删除它们 [了解详细信息](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6066,7 +6434,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="spatial-anchors-account-owner"></a>空间定位点帐户所有者
 
-允许你管理帐户中的空间锚，包括删除它们 [了解更多](../spatial-anchors/concepts/authentication.md)
+允许你管理帐户中的空间定位点，包括删除它们 [了解详细信息](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6117,7 +6485,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="spatial-anchors-account-reader"></a>空间定位点帐户读取者
 
-允许您在帐户中查找和读取空间锚的属性 [了解详细信息](../spatial-anchors/concepts/authentication.md)
+允许你查找并读取帐户中的空间定位点的属性 [了解详细信息](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6596,6 +6964,55 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
+### <a name="eventgrid-contributor"></a>EventGrid 参与者
+
+可以管理 EventGrid 操作。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/* | 创建和管理事件网格资源 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage EventGrid operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1e241071-0855-49ea-94dc-649edcd759de",
+  "name": "1e241071-0855-49ea-94dc-649edcd759de",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/*",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 参与者
 
 可以管理 EventGrid 事件订阅操作。 [了解详细信息](../event-grid/security-authorization.md)
@@ -6604,7 +7021,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
-> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* | 创建和管理区域事件订阅 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 按主题类型列出全局事件订阅 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | 列出区域事件订阅 |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | 按主题类型列出区域事件订阅 |
@@ -6702,7 +7119,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-contributor"></a>FHIR 数据参与者
 
-角色允许用户或主体完全访问 FHIR 数据 [了解更多](../healthcare-apis/configure-azure-rbac.md)
+角色允许用户或主体完全访问 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6741,7 +7158,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-exporter"></a>FHIR 数据导出者
 
-角色允许用户或主体读取和导出 FHIR 数据 [了解详细信息](../healthcare-apis/configure-azure-rbac.md)
+角色允许用户或主体读取和导出 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6782,7 +7199,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-reader"></a>FHIR 数据读取者
 
-角色允许用户或主体读取 FHIR 数据 [了解更多](../healthcare-apis/configure-azure-rbac.md)
+角色允许用户或主体读取 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6821,7 +7238,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-writer"></a>FHIR 数据写入者
 
-角色允许用户或主体读取和写入 FHIR 数据 [了解详细信息](../healthcare-apis/configure-azure-rbac.md)
+角色允许用户或主体读取和写入 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7261,7 +7678,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="attestation-contributor"></a>证明参与者
 
-可以阅读写入或删除证明提供者实例 [了解详细信息](../attestation/quickstart-powershell.md)
+可以读写或删除证明提供程序实例 [了解详细信息](../attestation/quickstart-powershell.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -7302,9 +7719,9 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
-### <a name="attestation-reader"></a>证明读者
+### <a name="attestation-reader"></a>证明读取者
 
-可以阅读证明提供者属性 [了解详细信息](../attestation/troubleshoot-guide.md)
+可以读取证明提供程序属性 [了解详细信息](../attestation/troubleshoot-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -7343,7 +7760,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel 参与者
 
-Azure Sentinel 参与者 [了解更多](../sentinel/roles.md)
+Azure Sentinel 参与者 [了解详细信息](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7410,7 +7827,7 @@ Azure Sentinel 参与者 [了解更多](../sentinel/roles.md)
 
 ### <a name="azure-sentinel-reader"></a>Azure Sentinel 读取者
 
-Azure Sentinel 读者 [了解更多](../sentinel/roles.md)
+Azure Sentinel 读取者 [了解详细信息](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7485,7 +7902,7 @@ Azure Sentinel 读者 [了解更多](../sentinel/roles.md)
 
 ### <a name="azure-sentinel-responder"></a>Azure Sentinel 响应方
 
-Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
+Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7635,7 +8052,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-certificates-officer"></a>Key Vault 证书官员
+### <a name="key-vault-certificates-officer"></a>Key Vault 证书管理人员
 
 对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7711,8 +8128,8 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 清除软删除的密钥保管库 |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHsms/* |  |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |
@@ -7751,7 +8168,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-officer"></a>Key Vault 加密官
+### <a name="key-vault-crypto-officer"></a>Key Vault 加密管理人员
 
 对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7914,7 +8331,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-reader"></a>Key Vault 读取器
+### <a name="key-vault-reader"></a>Key Vault 读取者
 
 读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -7975,7 +8392,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-secrets-officer"></a>Key Vault 秘密官员
+### <a name="key-vault-secrets-officer"></a>Key Vault 机密管理人员
 
 对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
 
@@ -8077,12 +8494,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="managed-hsm-contributor"></a>托管 HSM 参与者
 
-允许管理托管的 HSM 池，但不允许对其进行访问。 [了解详细信息](../key-vault/managed-hsm/secure-your-managed-hsm.md)
+允许你管理托管 HSM 池，但不允许访问这些池。 [了解详细信息](../key-vault/managed-hsm/secure-your-managed-hsm.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHSMs/* |  |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/managedHSMs/* |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -8499,12 +8916,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典警报规则 |
-> | [/GenerateLiveToken/read](resource-provider-operations.md#microsoftinsights) | 实时指标获取令牌 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/generateLiveToken/read | 实时指标获取令牌 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | 创建和管理新警报规则 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | 创建和管理 Insights 组件 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
-> | [/Topology/read](resource-provider-operations.md#microsoftinsights) | 读取拓扑 |
-> | [/Transactions/read](resource-provider-operations.md#microsoftinsights) | 读取事务 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/topology/read | 读取拓扑 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/transactions/read | 读取事务 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | 创建和管理 Insights Web 测试 |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
@@ -9161,7 +9578,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="billing-reader"></a>计费读者
 
-允许对帐单数据进行读取访问 [了解更多](../cost-management-billing/manage/manage-billing-access.md)
+允许对帐单数据进行读取访问 [了解详细信息](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9306,7 +9723,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="cost-management-contributor"></a>成本管理参与者
 
-可以查看成本和管理成本配置 (例如预算、出口) [了解更多](../cost-management-billing/costs/understand-work-scopes.md)
+可以查看成本和管理成本配置（例如预算、导出）[了解详细信息](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9363,7 +9780,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="cost-management-reader"></a>成本管理读者
 
-可以查看成本数据和配置 (例如预算、出口) [了解更多](../cost-management-billing/costs/understand-work-scopes.md)
+可以查看成本数据和配置（例如预算、导出）[了解详细信息](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9880,23 +10297,78 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="reservation-purchaser"></a>保留购买者
+### <a name="quota-request-operator-role"></a>配额请求操作员角色
 
-允许你购买预订 [了解更多](../cost-management-billing/reservations/prepare-buy-reservation.md)
+读取和创建配额请求，获取配额请求状态并创建支持票证。 [了解详细信息](/rest/api/reserved-vm-instances/quotaapi)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/locations/serviceLimits/read | 获取指定资源和位置的当前服务限制或配额 |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/locations/serviceLimits/write | 为指定资源和位置创建服务限制或配额 |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/locations/serviceLimitsRequests/read | 获取指定资源和位置的任何服务限制请求 |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/register/action | 注册容量资源提供程序，并启用容量资源的创建。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role to read and create Quota Requests and get Quota Request Status.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "name": "0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/read",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/write",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimitsRequests/read",
+        "Microsoft.Capacity/register/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Quota Request Operator Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="reservation-purchaser"></a>预留买方
+
+允许你购买预留项 [了解详细信息](../cost-management-billing/reservations/prepare-buy-reservation.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 获取订阅的列表。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | [/Register/action](resource-provider-operations.md#microsoftcapacity) | 注册容量资源提供程序，并启用容量资源的创建。 |
-> | [/Register/action](resource-provider-operations.md#microsoftcompute) | 将订阅注册到 Microsoft.Compute 资源提供程序 |
-> | [/Register/action](resource-provider-operations.md#microsoftsql) | 注册 Microsoft SQL 数据库资源提供程序的订阅，并启用 Microsoft SQL 数据库的创建。 |
-> | [/Register/action](resource-provider-operations.md#microsoftconsumption) | 注册到消耗 RP |
-> | [/Catalogs/read](resource-provider-operations.md#microsoftcapacity) | 读取预留目录 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
-> | [/ReservationRecommendations/read](resource-provider-operations.md#microsoftconsumption) | 列出某个订阅的预留实例的单个或共享建议。 |
-> | [Microsoft. 支持](resource-provider-operations.md#microsoftsupport)/supporttickets/write | 允许创建和更新支持票证 |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/register/action | 注册容量资源提供程序，并启用容量资源的创建。 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/register/action | 将订阅注册到 Microsoft.Compute 资源提供程序 |
+> | [Microsoft.SQL](resource-provider-operations.md#microsoftsql)/register/action | 注册 Microsoft SQL 数据库资源提供程序的订阅，并启用 Microsoft SQL 数据库的创建。 |
+> | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/register/action | 注册到消耗 RP |
+> | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/catalogs/read | 读取预留目录 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | 获取有关角色分配的信息。 |
+> | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/reservationRecommendations/read | 列出某个订阅的预留实例的单个或共享建议。 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/supporttickets/write | 允许创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -10434,7 +10906,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="azure-digital-twins-data-owner"></a>Azure 数字孪生数据所有者
 
-用于数字孪生数据平面的完全访问角色 [了解更多](../digital-twins/concepts-security.md)
+对数字孪生体数据平面拥有完全访问权限的角色 [了解详细信息](../digital-twins/concepts-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -10483,7 +10955,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="azure-digital-twins-data-reader"></a>Azure 数字孪生数据读者
 
-"数字孪生" 数据平面属性的只读角色 [了解详细信息](../digital-twins/concepts-security.md)
+对数字孪生体数据平面属性拥有只读权限的角色 [了解详细信息](../digital-twins/concepts-security.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -10581,14 +11053,14 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-application-group-contributor"></a>桌面虚拟化应用程序组参与者
 
-桌面虚拟化应用程序组的参与者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化应用程序组参与者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/* |  |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Read hostpools/sessionhosts |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | 读取 hostpools/sessionhosts |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10632,17 +11104,17 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="desktop-virtualization-application-group-reader"></a>桌面虚拟化应用程序组读取器
+### <a name="desktop-virtualization-application-group-reader"></a>桌面虚拟化应用程序组读取者
 
-桌面虚拟化应用程序组的读者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化应用程序组读取者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/*/read |  |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Read hostpools/sessionhosts |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/*/read |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | 读取 hostpools/sessionhosts |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | 获取或列出部署。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10689,12 +11161,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-contributor"></a>桌面虚拟化参与者
 
-桌面虚拟化的参与者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化参与者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10738,12 +11210,12 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-host-pool-contributor"></a>桌面虚拟化主机池参与者
 
-桌面虚拟化主机池的参与者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化主机池参与者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10785,15 +11257,15 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="desktop-virtualization-host-pool-reader"></a>桌面虚拟化主机池读取器
+### <a name="desktop-virtualization-host-pool-reader"></a>桌面虚拟化主机池读取者
 
-桌面虚拟化主机池的读取器。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化主机池读取者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/*/read |  |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/*/read |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | 获取或列出部署。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10836,14 +11308,14 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 }
 ```
 
-### <a name="desktop-virtualization-reader"></a>桌面虚拟化读者
+### <a name="desktop-virtualization-reader"></a>桌面虚拟化读取者
 
-桌面虚拟化的读者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化读取者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/*/read |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/*/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | 获取或列出部署。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10887,13 +11359,13 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-session-host-operator"></a>桌面虚拟化会话主机操作员
 
-桌面虚拟化会话主机的操作员。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化会话主机操作员。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -10947,7 +11419,7 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationGroups/useApplications/action | 使用 ApplicationGroup |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationGroups/useApplications/action | 使用 ApplicationGroup |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -10977,14 +11449,14 @@ Azure Sentinel 响应程序 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-user-session-operator"></a>桌面虚拟化用户会话操作员
 
-Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化用户会话操作员。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Read hostpools/sessionhosts |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/usersessions/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | 读取 hostpools |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | 读取 hostpools/sessionhosts |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/usersessions/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -11030,13 +11502,13 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 
 ### <a name="desktop-virtualization-workspace-contributor"></a>桌面虚拟化工作区参与者
 
-桌面虚拟化工作区的参与者。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化工作区参与者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/* |  |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -11079,15 +11551,15 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 }
 ```
 
-### <a name="desktop-virtualization-workspace-reader"></a>桌面虚拟化工作区读者
+### <a name="desktop-virtualization-workspace-reader"></a>桌面虚拟化工作区读取者
 
-桌面虚拟化工作区的读取器。 [了解详细信息](../virtual-desktop/rbac.md)
+桌面虚拟化工作区读取者。 [了解详细信息](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/read | 读取工作区 |
-> | [DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/read | 读取工作区 |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | 读取 applicationgroups |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | 获取或列出部署。 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
@@ -11130,16 +11602,16 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 }
 ```
 
-### <a name="disk-backup-reader"></a>磁盘备份读取器
+### <a name="disk-backup-reader"></a>磁盘备份读取者
 
-提供备份保管库以执行磁盘备份的权限。 [了解详细信息](../backup/disk-backup-faq.md)
+向备份保管库提供执行磁盘备份的权限。 [了解详细信息](../backup/disk-backup-faq.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | 获取磁盘的属性 |
-> | [/Disks/beginGetAccess/action](resource-provider-operations.md#microsoftcompute) | 获取用于 Blob 访问的磁盘 SAS URI |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/beginGetAccess/action | 获取用于 Blob 访问的磁盘 SAS URI |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -11175,7 +11647,7 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 
 ### <a name="disk-restore-operator"></a>磁盘还原操作员
 
-提供备份保管库以执行磁盘还原的权限。 [了解详细信息](../backup/restore-managed-disks.md)
+向备份保管库提供执行磁盘还原的权限。 [了解详细信息](../backup/restore-managed-disks.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -11227,16 +11699,16 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | [/Snapshots/delete](resource-provider-operations.md#microsoftcompute) | 删除快照 |
-> | [/Snapshots/write](resource-provider-operations.md#microsoftcompute) | 创建新的快照，或更新现有的快照 |
-> | [/Snapshots/read](resource-provider-operations.md#microsoftcompute) | 获取快照的属性 |
-> | [/Snapshots/beginGetAccess/action](resource-provider-operations.md#microsoftcompute) | 获取用于 blob 访问的快照 SAS URI |
-> | [/Snapshots/endGetAccess/action](resource-provider-operations.md#microsoftcompute) | 撤销快照的 SAS URI |
-> | [/Disks/beginGetAccess/action](resource-provider-operations.md#microsoftcompute) | 获取用于 Blob 访问的磁盘 SAS URI |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/delete | 删除快照 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/write | 创建新的快照，或更新现有的快照 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/read | 获取快照的属性 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/beginGetAccess/action | 获取用于 blob 访问的快照 SAS URI |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/endGetAccess/action | 撤销快照的 SAS URI |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/beginGetAccess/action | 获取用于 Blob 访问的磁盘 SAS URI |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 返回指定存储帐户的访问密钥。 |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/write | 使用指定的参数创建存储帐户、更新指定存储帐户的属性或标记，或者为其添加自定义域。 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/write | 使用指定的参数创建存储帐户、更新指定存储帐户的属性或标记，或者为其添加自定义域。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 返回存储帐户的列表，或获取指定存储帐户的属性。 |
-> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/delete | 删除现有的存储帐户。 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/delete | 删除现有的存储帐户。 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -11332,7 +11804,7 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 
 ### <a name="services-hub-operator"></a>服务中心操作员
 
-服务中心操作员可用于执行与服务中心连接器相关的所有读取、写入和删除操作。 [了解详细信息](/services-hub/health/sh-connector-roles)
+“服务中心操作员”允许你执行与服务中心连接器相关的所有读取、写入和删除操作。 [了解详细信息](/services-hub/health/sh-connector-roles)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -11340,12 +11812,12 @@ Operator Uesr。 [了解详细信息](../virtual-desktop/rbac.md)
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/write | 创建或更新服务中心连接器 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/read | 查看或列出服务中心连接器 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/delete | 删除服务中心连接器 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/checkAssessmentEntitlement/action | 列出给定服务中心工作区的评估权利 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/supportOfferingEntitlement/read | 查看给定服务中心工作区的支持产品权利 |
-> | [ServicesHub](resource-provider-operations.md#microsoftserviceshub)/workspaces/read | 列出给定用户的服务中心工作区 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/write | 创建或更新服务中心连接器 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/read | 查看或列出服务中心连接器 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/delete | 删除服务中心连接器 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/checkAssessmentEntitlement/action | 列出给定服务中心工作区的评估权利 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/supportOfferingEntitlement/read | 查看给定服务中心工作区的支持产品/服务权利 |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/workspaces/read | 列出给定用户的服务中心工作区 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |

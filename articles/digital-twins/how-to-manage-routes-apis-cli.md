@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779964"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936302"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生（API 和 CLI）中管理终结点和路由
 
@@ -158,7 +158,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 经过死信处理的消息将与打算传递到原始终结点的原始事件的架构匹配。
 
-下面是[孪生体创建通知](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications)的死信消息示例：
+下面是[孪生体创建通知](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications)的死信消息示例：
 
 ```json
 {
@@ -239,7 +239,9 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 可以通过向事件路由中添加一个终结点筛选器来限制要发送的事件。
 
 >[!NOTE]
-> 筛选器区分大小写，并需要与有效负载大小写匹配（与模型大小写不一定匹配）。
+> 筛选器区分大小写，并需要与有效负载大小写匹配。 
+>
+> 对于遥测筛选器，这意味着大小写需要与设备发送的遥测的大小写匹配，而不一定是在孪生体的模型中定义的大小写。 
 
 若要添加筛选器，可以针对 https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31 使用一个 PUT 请求，正文如下：
 

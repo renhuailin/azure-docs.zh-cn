@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 03/26/2021
 ms.author: trbye
-ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95024987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643241"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>什么是会议中的对话听录（预览版）？
+# <a name="what-is-conversation-transcription-preview"></a>什么是对话听录（预览版）？
 
 对话听录是一种[语音转文本](speech-to-text.md)解决方案，它结合了语音识别、说话人识别以及到每个说话人的句子归属（也称为分割聚类），来提供任何对话的实时和/或异步听录。 对话听录可区分对话中的说话人，以确定谁说了什么以及说话的时间，并使开发者能够轻松地将语音转文本添加到执行多说话人分割聚类的应用程序。
 

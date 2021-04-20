@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.openlocfilehash: 3c6f75eafad51c99f60b78ce49862d2488d5926f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102220116"
 ---
 # <a name="configure-qna-maker-resources"></a>配置 QnA Maker 资源
@@ -74,7 +74,7 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
 若要使预测终结点应用保持负载状态（即使没有流量），请将空闲设置设置为始终启用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择你的 QnA Maker 资源的应用服务。 它的名称将与 QnA Maker 资源相同，但应用服务的 **类型** 不同。
 1. 找到“设置”，然后选择“配置”。
 1. 在“配置”窗格中，选择“常规设置”，然后找到“始终启用”并选择“启用”作为值。 
@@ -100,7 +100,7 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
 1. [备份](../../../app-service/manage-backup.md)你的主要 QnA Maker 应用服务并在辅助设置中[还原](../../../app-service/web-sites-restore.md)它。 这将确保两个设置使用相同的主机名和密钥。
 
-1. 使主要和辅助 Azure 搜索索引保持同步。使用[此处](https://github.com/pchoudhari/QnAMakerBackupRestore)的 GitHub 示例了解如何备份 - 还原 Azure 索引。
+1. 使主要和辅助 Azure 搜索索引保持同步。使用[此处](https://github.com/pchoudhari/QnAMakerBackupRestore)的 GitHub 示例了解如何备份/还原 Azure 索引。
 
 1. 使用[连续导出](../../../azure-monitor/app/export-telemetry.md)备份 Application Insights。
 
@@ -122,7 +122,7 @@ QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamak
 
     ![QnA Maker 托管（预览版）配置页的屏幕截图](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
 > [!NOTE]
 > 如果更改与 QnA Maker 关联的 Azure 搜索服务，你将无法访问其中已存在的所有知识库。 在更改 Azure 搜索服务之前，请务必导出现有知识库。
