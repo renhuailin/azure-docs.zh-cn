@@ -1,29 +1,29 @@
 ---
-title: “Azure 数据工厂”教程
+title: Azure 数据工厂教程
 description: 演示 Azure 数据工厂概念的教程列表
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 77899366ed256e147ddbc705d68096cb1b879d8d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608349"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579522"
 ---
-# <a name="azure-data-factory-tutorials"></a>“Azure 数据工厂”教程
+# <a name="azure-data-factory-tutorials"></a>Azure 数据工厂教程
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-下面是一个教程列表，可帮助解释并演练一系列数据工厂的概念和方案。
+下面是一个教程列表，解释并演练一系列数据工厂的概念和方案。
 
 ## <a name="copy-and-ingest-data"></a>复制和引入数据
 
 [复制数据工具](tutorial-copy-data-tool.md)
 
-[复制管道中的活动](tutorial-copy-data-portal.md)
+[管道中的复制活动](tutorial-copy-data-portal.md)
 
 [将数据从本地复制到云](tutorial-hybrid-copy-data-tool.md)
 
@@ -33,9 +33,9 @@ ms.locfileid: "104608349"
 
 [带有更改跟踪的增量模式](tutorial-incremental-copy-change-tracking-feature-portal.md)
 
-[增量 SQL DB 单一表](tutorial-incremental-copy-portal.md)
+[增量 SQL DB：单个表](tutorial-incremental-copy-portal.md)
 
-[增量 SQL DB 多个表](tutorial-incremental-copy-multiple-tables-portal.md)
+[增量 SQL DB：多个表](tutorial-incremental-copy-multiple-tables-portal.md)
 
 [带有 SQL MI 的 CDC 复制管道](tutorial-incremental-copy-change-data-capture-feature-portal.md)
 
@@ -60,6 +60,8 @@ ms.locfileid: "104608349"
 [数据整理与 Power Query](wrangling-tutorial.md)
 
 [托管 VNet 中的数据流](tutorial-data-flow-private.md)
+
+[ADLS Gen2 中数据湖的最佳做法](tutorial-data-flow-write-to-lake.md)
 
 ## <a name="external-data-services"></a>外部数据服务
 

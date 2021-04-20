@@ -1,0 +1,265 @@
+---
+title: 异常检测器多变量 Java 客户端库快速入门
+titleSuffix: Azure Cognitive Services
+services: cognitive-services
+author: mrbullwinkle
+manager: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 04/06/2021
+ms.author: mbullwin
+ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107318755"
+---
+开始使用适用于 Java 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
+
+使用适用于 Java 的异常检测器多变量客户端库，以便：
+
+* 检测一组时序中的系统级异常。
+* 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
+* 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
+* 最新版本的 [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle 生成工具](https://gradle.org/install/)，或其他依赖项管理器。
+* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源</a>来获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+
+## <a name="setting-up"></a>设置
+
+### <a name="create-a-new-gradle-project"></a>创建新的 Gradle 项目
+
+本快速入门使用 Gradle 依赖项管理器。 可在 [Maven 中央存储库](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)中找到有关客户端库的详细信息。
+
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
+
+```console
+mkdir myapp && cd myapp
+```
+
+从工作目录运行 `gradle init` 命令。 此命令将创建 Gradle 的基本生成文件，包括 *build.gradle.kts*，在运行时将使用该文件创建并配置应用程序。
+
+```console
+gradle init --type basic
+```
+
+当提示你选择一个 **DSL** 时，选择 **Kotlin**。
+
+### <a name="install-the-client-library"></a>安装客户端库
+
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后将以下生成配置复制到其中。 请确保包含项目依赖项。
+
+```kotlin
+dependencies {
+    compile("com.azure:azure-ai-anomalydetector")
+}
+```
+
+### <a name="create-a-java-file"></a>创建 Java 文件
+
+为示例应用创建一个文件夹。 在工作目录中运行以下命令：
+
+```console
+mkdir -p src/main/java
+```
+
+导航到新文件夹，并创建名为 MetricsAdvisorQuickstarts.java 的文件。 在喜好的编辑器或 IDE 中打开该文件并添加以下 `import` 语句：
+
+```java
+package com.azure.ai.anomalydetector;
+
+import com.azure.ai.anomalydetector.models.*;
+import com.azure.core.credential.AzureKeyCredential;
+import com.azure.core.http.*;
+import com.azure.core.http.policy.*;
+import com.azure.core.http.rest.PagedIterable;
+import com.azure.core.http.rest.PagedResponse;
+import com.azure.core.http.rest.Response;
+import com.azure.core.http.rest.StreamResponse;
+import com.azure.core.util.Context;
+import reactor.core.publisher.Flux;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+```
+
+为资源的 Azure 终结点和密钥创建变量。 为示例数据文件创建另一个变量。
+
+```java
+String key = "YOUR_API_KEY";
+String endpoint = "YOUR_ENDPOINT";
+```
+
+ 若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+
+## <a name="code-examples"></a>代码示例
+
+这些代码片段展示如何使用适用于 Node.js 的异常检测器客户端库执行以下操作：
+
+* [对客户端进行身份验证](#authenticate-the-client)
+* [定型模型](#train-a-model)
+* [检测异常](#detect-anomalies)
+* [导出模型](#export-model)
+* [删除模型](#delete-model)
+
+## <a name="authenticate-the-client"></a>验证客户端
+
+使用终结点和凭据实例化 `anomalyDetectorClient` 对象。
+
+```java
+HttpHeaders headers = new HttpHeaders()
+    .put("Accept", ContentType.APPLICATION_JSON);
+
+HttpPipelinePolicy authPolicy = new AzureKeyCredentialPolicy(key,
+    new AzureKeyCredential(key));
+AddHeadersPolicy addHeadersPolicy = new AddHeadersPolicy(headers);
+
+HttpPipeline httpPipeline = new HttpPipelineBuilder().httpClient(HttpClient.createDefault())
+    .policies(authPolicy, addHeadersPolicy).build();
+// Instantiate a client that will be used to call the service.
+HttpLogOptions httpLogOptions = new HttpLogOptions();
+httpLogOptions.setLogLevel(HttpLogDetailLevel.BODY_AND_HEADERS);
+
+AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
+    .pipeline(httpPipeline)
+    .endpoint(endpoint)
+    .httpLogOptions(httpLogOptions)
+    .buildClient();
+```
+
+## <a name="train-a-model"></a>训练模型
+
+### <a name="construct-a-model-result-and-train-model"></a>构造模型结果和训练模型
+
+首先，我们需要构造模型请求。 请确保开始时间和结束时间与数据源一致。
+
+ 若要使用异常检测器多变量 API，我们需要在使用检测之前先训练自己的模型。 用于训练的数据是一批时序，每个时序应采用 CSV 格式，其中包含两列，即“时间戳”和“值”。 所有时序都应压缩为一个 zip 文件，并上传到 [Azure Blob 存储](../../../../storage/blobs/storage-blobs-introduction.md#blobs)。 默认情况下，文件名将用于表示时序的变量。 或者，如果你希望变量名称与 .zip 文件名不同，也可以在 zip 文件中包含一个额外的 meta.json 文件。 当我们生成 [blob SAS（共享访问签名）URL](../../../../storage/common/storage-sas-overview.md) 后，就可以使用 zip 文件的 URL 进行训练了。
+
+```java
+Path path = Paths.get("test-data.csv");
+List<String> requestData = Files.readAllLines(path);
+List<TimeSeriesPoint> series = requestData.stream()
+    .map(line -> line.trim())
+    .filter(line -> line.length() > 0)
+    .map(line -> line.split(",", 2))
+    .filter(splits -> splits.length == 2)
+    .map(splits -> {
+        TimeSeriesPoint timeSeriesPoint = new TimeSeriesPoint();
+        timeSeriesPoint.setTimestamp(OffsetDateTime.parse(splits[0]));
+        timeSeriesPoint.setValue(Float.parseFloat(splits[1]));
+        return timeSeriesPoint;
+    })
+    .collect(Collectors.toList());
+
+Integer window = 28;
+AlignMode alignMode = AlignMode.OUTER;
+FillNAMethod fillNAMethod = FillNAMethod.LINEAR;
+Integer paddingValue = 0;
+AlignPolicy alignPolicy = new AlignPolicy().setAlignMode(alignMode).setFillNAMethod(fillNAMethod).setPaddingValue(paddingValue);
+String source = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
+OffsetDateTime startTime = OffsetDateTime.of(2021, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC);
+;
+OffsetDateTime endTime = OffsetDateTime.of(2021, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC);
+;
+String displayName = "Devops-MultiAD";
+
+ModelInfo request = new ModelInfo().setSlidingWindow(window).setAlignPolicy(alignPolicy).setSource(source).setStartTime(startTime).setEndTime(endTime).setDisplayName(displayName);
+TrainMultivariateModelResponse trainMultivariateModelResponse = anomalyDetectorClient.trainMultivariateModelWithResponse(request, Context.NONE);
+String header = trainMultivariateModelResponse.getDeserializedHeaders().getLocation();
+String[] model_ids = header.split("/");
+UUID model_id = UUID.fromString(model_ids[model_ids.length - 1]);
+System.out.println(model_id);
+
+Integer skip = 0;
+Integer top = 5;
+PagedIterable<ModelSnapshot> response = anomalyDetectorClient.listMultivariateModel(skip, top);
+Iterator<PagedResponse<ModelSnapshot>> ite = response.iterableByPage().iterator();
+
+while (true) {
+    Response<Model> response_model = anomalyDetectorClient.getMultivariateModelWithResponse(model_id, Context.NONE);
+    UUID model = response_model.getValue().getModelId();
+    System.out.println(response_model.getStatusCode());
+    System.out.println(response_model.getValue().getModelInfo().getStatus());
+    System.out.println(model);
+    if (response_model.getValue().getModelInfo().getStatus() == ModelStatus.READY) {
+        break;
+    }
+}
+```
+
+## <a name="detect-anomalies"></a>检测异常
+
+```java
+DetectionRequest detectionRequest = new DetectionRequest().setSource(source).setStartTime(startTime).setEndTime(endTime);
+DetectAnomalyResponse detectAnomalyResponse = anomalyDetectorClient.detectAnomalyWithResponse(model_id, detectionRequest, Context.NONE);
+String result = detectAnomalyResponse.getDeserializedHeaders().getLocation();
+
+String[] result_list = result.split("/");
+UUID result_id = UUID.fromString(result_list[result_list.length - 1]);
+
+while (true) {
+    DetectionResult response_result = anomalyDetectorClient.getDetectionResult(result_id);
+    if (response_result.getSummary().getStatus() == DetectionStatus.READY) {
+        break;
+    }
+    else if(response_result.getSummary().getStatus() == DetectionStatus.FAILED){
+
+    }
+}
+```
+
+## <a name="export-model"></a>导出模型
+
+若要导出训练的模型，请使用 `exportModelWithResponse`。
+
+```java
+StreamResponse response_export = anomalyDetectorClient.exportModelWithResponse(model_id, Context.NONE);
+Flux<ByteBuffer> value = response_export.getValue();
+FileOutputStream bw = new FileOutputStream("result.zip");
+value.subscribe(s -> write(bw, s), (e) -> close(bw), () -> close(bw));
+```
+
+## <a name="delete-model"></a>删除模型
+
+若要删除可用于当前资源的现有模型，请使用 `deleteMultivariateModelWithResponse` 函数。
+
+```java
+Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.deleteMultivariateModelWithResponse(model_id, Context.NONE);
+```
+
+## <a name="run-the-application"></a>运行应用程序
+
+可使用以下命令生成应用：
+
+```console
+gradle build
+```
+### <a name="run-the-application"></a>运行应用程序
+
+使用 `run` 目标运行应用程序：
+
+```console
+gradle run
+```
+
+## <a name="next-steps"></a>后续步骤
+
+* [异常检测器多变量最佳做法](../../concepts/best-practices-multivariate.md)
