@@ -4,27 +4,30 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure Policy 将内置策略用于 Azure 机器学习，确保工作区符合要求。
 author: aashishb
 ms.author: aashishb
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 21b07130e99ad4fac9a0a9b2d11aca852a1f205f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f708e2181511da97ecffcd6f1636a2b232b4fbc6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584306"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105544360"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>使用 Azure Policy 审核和管理 Azure 机器学习
 
 [Azure Policy](../governance/policy/index.yml) 是一种管理工具，你可用它来确保 Azure 资源符合你的策略。 通过 Azure 机器学习，你可分配以下策略：
 
-* **客户管理的密钥**：审核或强制执行工作区是否必须使用客户管理的密钥。
-* **专用链接**：审核或强制工作区是否使用专用终结点与虚拟网络进行通信。
-* **专用终结点**：配置应在其中创建专用终结点的 Azure 虚拟网络子网。
-* **专用 DNS 区域**：配置要用于专用链接的专用 DNS 区域。
+| 策略 | 描述 |
+| ----- | ----- |
+| 客户管理的密钥 | 审核或强制工作区是否必须使用客户管理的密钥。 |
+| 专用链接 | 审核或强制工作区是否使用专用终结点与虚拟网络进行通信。 |
+| **专用终结点** | 配置应在其中创建专用终结点的 Azure 虚拟网络子网。 |
+| 专用 DNS 区域 | 配置要用于专用链接的专用 DNS 区域。 |
+| **用户分配的托管标识** | 审核或强制工作区是否使用用户分配的托管标识。 |
 
 可以在不同的范围（如订阅或资源组级别）内设置策略。 有关详细信息，请参阅 [Azure Policy 文档](../governance/policy/overview.md)。
 
@@ -62,12 +65,20 @@ Azure 机器学习提供了一组策略，可用于 Azure 机器学习的常见�
 
 配置工作区，以便在 Azure 虚拟网络的指定子网内创建专用终结点。
 
-若要配置此策略，请将 effect 参数设置为 “DeployIfNotExists”。 将 “privateEndpointSubnetID” 设置为子网的 Azure 资源管理器 ID。
+若要配置此策略，请将 effect 参数设置为 “DeployIfNotExists”。 将 privateEndpointSubnetID 设置为子网的 Azure 资源管理器 ID。
 ## <a name="workspace-should-use-private-dns-zones"></a>工作区应使用专用 DNS 区域
 
 配置工作区以使用专用 DNS 区域，替代专用终结点的默认 DNS 解析。
 
 若要配置此策略，请将 effect 参数设置为 “DeployIfNotExists”。 将 “privateDnsZoneId” 设置为要使用的专用 DNS 区域的 Azure 资源管理器 ID。 
+
+## <a name="workspace-should-use-user-assigned-managed-identity"></a>工作区应使用用户分配的托管标识
+
+控制是使用系统分配的托管标识（默认设置）还是使用用户分配的托管标识创建工作区。 工作区的托管标识用于访问关联的资源，例如 Azure 存储、Azure 容器注册表、Azure Key Vault 和 Azure Application Insights。 有关详细信息，请参阅[将托管标识与 Azure 机器学习配合使用](how-to-use-managed-identities.md)。
+
+若要配置此策略，请将 effect 参数设置为 audit、deny 或 disabled。 如果设置为 audit，则可以在不指定用户分配的托管标识的情况下创建工作区。 将使用系统分配的标识，并在活动日志中创建一个警告事件。
+
+如果将此策略设置为 deny，那么除非在创建过程中提供用户分配的标识，否则无法创建工作区。 尝试在不提供用户分配的标识的情况下创建工作区会导致错误。 系统还会将该错误记录到活动日志中。 策略标识符将作为此错误的一部分返回。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心 IP 筛选器 | Microsoft Docs
-description: 如何使用 IP 筛选允许从特定 IP 地址连接到 Azure IoT 中心。
+description: 如何使用 IP 筛选允许特定 IP 地址到 Azure IoT 中心的连接。
 author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 03/22/2021
 ms.author: jlian
-ms.openlocfilehash: 6f83421d4ee56d56875e13ffbdd8ac9dbbf4b6bb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: bf9d58926c5a0fdc7c305e1d9daebfa1c8c9cf63
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656357"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023569"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -20,7 +20,7 @@ ms.locfileid: "101656357"
 
 ## <a name="when-to-use"></a>何时使用
 
-使用 IP 筛选器仅接收来自指定范围的 IP 地址的流量，并拒绝其他所有内容。 例如，将 IoT 中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 一起使用，以在 IoT 中心与本地基础结构之间创建专用连接。
+使用 IP 筛选器仅接收来自指定范围的 IP 地址流量并拒绝任何其他流量。 例如，将 IoT 中心与 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 配合使用，以在 IoT 中心与本地基础结构之间创建专用连接。
 
 ## <a name="default-setting"></a>默认设置
 
@@ -28,19 +28,19 @@ ms.locfileid: "101656357"
 
 :::image type="content" source="media/iot-hub-ip-filtering/ip-filter-default.png" alt-text="IoT 中心默认 IP 筛选器设置":::
 
-默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着集线器阻止来自所有 IP 地址的连接。 此默认设置等效于阻止 `0.0.0.0/0` IP 地址范围的规则。
+默认情况下，门户中针对 IoT 中心的“IP 筛选器”网格为空。 此默认设置意味着中心会阻止来自所有 IP 地址的连接。 此默认设置等效于阻止 `0.0.0.0/0` IP 地址范围的规则。
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>添加或编辑 IP 筛选器规则
 
-若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。
+若要添加 IP 筛选器规则，请选择“+ 添加 IP 筛选器规则”。 若要快速添加计算机的 IP 地址，请单击“添加客户端 IP 地址”。 
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="向 IoT 中心添加 IP 筛选器规则":::
 
-选择“添加 IP 筛选器规则”后，填写字段。
+选择“添加 IP 筛选器规则”后，填写字段。 如果选择了添加客户端 IP 地址，则这些字段会预先填充。
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="选择“添加 IP 筛选器规则”后":::
 
-* 提供 IP 筛选器规则的 **名称**。 此名称必须是唯一的、不区分大小写的字母数字字符串，最长为128个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+* 提供 IP 筛选器规则的 **名称**。 此名称必须是不区分大小写的唯一字母数字字符串，长度不超过 128 个字符。 只接受 ASCII 7 位字母数字字符以及以下字符：`{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
 * 提供单个 IPv4 地址或者以 CIDR 表示法提供一个 IP 地址块。 例如，在 CIDR 表示法中，192.168.100.0/22 表示从 192.168.100.0 到 192.168.103.255 的 1024 个 IPv4 地址。
 
@@ -58,33 +58,37 @@ ms.locfileid: "101656357"
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-delete-rule.png" alt-text="删除 IoT 中心 IP 筛选器规则":::
 
-## <a name="apply-ip-filter-rules-to-the-built-in-event-hub-compatible-endpoint"></a>将 IP 筛选规则应用到内置的与事件中心兼容的终结点
+## <a name="apply-ip-filter-rules-to-the-built-in-event-hub-compatible-endpoint"></a>将 IP 筛选器规则应用于与事件中心兼容的内置终结点
 
-若要将 IP 筛选规则应用到内置的与事件中心兼容的终结点，请选中 " **将 ip 筛选器应用到内置终结点**" 旁边的框，然后选择 " **保存**"。
+若要将 IP 筛选器规则应用于内置事件中心兼容终结点，请选中“是否向内置终结点应用 IP 筛选器？”旁边的框，然后选择“保存” 。
 
-:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="显示内置终结点的切换并保存的图像":::
+:::image type="content" source="media/iot-hub-ip-filtering/ip-filter-built-in-endpoint.png" alt-text="图像显示内置终结点的切换和保存":::
 
 > [!NOTE]
-> 此选项不能用于免费 (F1) IoT 中心。 若要将 IP 筛选规则应用到内置终结点，请使用付费 IoT 中心。
+> 此选项不能用于免费 (F1) IoT 中心。 若要将 IP 筛选器规则应用于内置终结点，请使用付费 IoT 中心。
 
-启用此选项后，IP 筛选器规则会复制到内置终结点，因此只有受信任的 IP 范围可以访问它。
+启用此选项后，IP 筛选器规则将复制到内置终结点，这样便只有受信任的 IP 范围才能访问它。
 
-如果禁用此选项，则所有 IP 地址都可访问内置终结点。 如果要从包含服务的终结点读取 Azure 流分析等 IP 地址，则此行为可能会很有用。 
+如果禁用此选项，所有 IP 地址都可访问内置终结点。 如果想通过 IP 地址不断变化的服务（例如 Azure 流分析）来读取终结点，则此行为可能很有用。 
 
 ## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
 
-在 IoT 中心服务级别应用 IP 筛选器规则。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。 此外，还可以选择内置的 [与事件中心兼容的终结点](iot-hub-devguide-messages-read-builtin.md) (不通过 IoT 中心连接字符串) 绑定到这些规则。 
+在 IoT 中心服务级别应用 IP 筛选器规则。 因此，IP 筛选器规则适用于使用任意受支持协议和从设备和后端应用发出的所有连接。 此外，还可以选择是否将[与事件中心兼容的内置终结点](iot-hub-devguide-messages-read-builtin.md)（而不是通过 IoT 中心连接字符串）绑定到这些规则。 
 
-任何来自未明确允许的 IP 地址的连接尝试都会收到未经授权的401状态代码和说明。 响应消息不提及 IP 规则。 拒绝 IP 地址可以阻止其他 Azure 服务（例如 Azure 门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心进行交互。
+从非显式允许的 IP 地址发出的任何连接尝试都会收到“未授权”401 状态代码和说明。 响应消息不提及 IP 规则。 拒绝 IP 地址可以阻止其他 Azure 服务（例如 Azure 门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心进行交互。
 
 > [!NOTE]
-> 如果必须使用 Azure 流分析 (ASA) 从启用了 IP 筛选器的 IoT 中心读取消息，请 **禁用** " **将 Ip 筛选器应用到内置终结点** " 选项，然后使用 IoT 中心的事件中心兼容的名称和终结点在 ASA 中手动添加 [事件中心流输入](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) 。
+> 如果必须使用 Azure 流分析 (ASA) 从启用了 IP 筛选器的 IoT 中心读取消息，请禁用“向内置终结点应用 IP 筛选器”选项，并使用 IoT 中心的与事件中心兼容的名称和终结点在 ASA 中手动添加[事件中心流输入](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) 。
 
 ### <a name="ordering"></a>中间件排序
 
-IP 筛选器规则 *允许* 规则，而无需排序即可应用。 仅允许你添加的 IP 地址连接到 IoT 中心。 
+IP 筛选器规则是允许规则，无需排序即可应用。 仅允许你添加的 IP 地址连接到 IoT 中心。 
 
-例如，如果要接受范围中的地址 `192.168.100.0/22` 并拒绝其他所有内容，则只需在具有地址范围的网格中添加一条规则 `192.168.100.0/22` 。
+例如，如果希望接受 `192.168.100.0/22` 范围中的地址并拒绝任何其他地址，仅需在地址范围为 `192.168.100.0/22` 的网格中添加一条规则。
+
+### <a name="azure-portal"></a>Azure 门户 
+
+通过 Azure 门户使用 IoT 中心时，也会应用 IP 筛选规则。 这是因为对 IoT 中心服务的 API 调用是通过直接将浏览器与凭据结合使用来进行的，这与其他 Azure 服务一致。 若要在启用 IP 筛选器的情况下使用 Azure 门户访问 IoT 中心，请将计算机的 IP 地址添加到允许列表中。 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 检索和更新 IP 筛选器
 
@@ -133,7 +137,7 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.networkRuleSets.ipRules <ipFilterIndexToRemove>
 ```
 
-此处， `<ipFilterIndexToRemove>` 必须对应于 IoT 中心的 IP 筛选器顺序 `properties.networkRuleSets.ipRules` 。
+此处，`<ipFilterIndexToRemove>` 必须对应于 IoT 中心 `properties.networkRuleSets.ipRules` 中的 IP 筛选器顺序。
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>使用 Azure PowerShell 检索和更新 IP 筛选器
 
@@ -166,7 +170,7 @@ $iothubResource | Set-AzResource -Force
 
 还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](/rest/api/iothub/iothubresource/createorupdate)`properties.networkRuleSets`。
 
-## <a name="ip-filter-classic-retirement"></a>IP 筛选器 (经典) 停用
+## <a name="ip-filter-classic-retirement"></a>IP 筛选器（经典）停用
 
 经典 IP 筛选器已停用。 若要了解详细信息，请参阅 [IoT 中心经典 IP 筛选器和升级方式](iot-hub-ip-filter-classic.md)。
 

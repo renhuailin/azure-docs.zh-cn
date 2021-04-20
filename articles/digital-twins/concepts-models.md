@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104590528"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
@@ -50,7 +50,7 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
     
     >[!TIP] 
     >组件还可用于进行组织，以便在模型接口中将相关属性集分组到一起。 在这种情况下，可以将每个组件视为该接口中的命名空间或“文件夹”。
-* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 *contains* ("floor contains room")、*cools* ("hvac cools room")、*isBilledTo* ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。
+* **关系** - 使用关系可以表示一个数字孪生与其他数字孪生的关连方式。 关系可以表示不同的语义含义，例如 contains ("floor contains room")、cools ("hvac cools room")、isBilledTo ("compressor is billed to user")，等等。解决方案可以使用关系来提供相互关联的实体的图。
 
 > [!NOTE]
 > [DTDL 规范](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)还定义了 **命令**。命令是可以在数字孪生上执行的方法（例如重置命令，或者打开或关闭风扇的命令）。 但是，Azure 数字孪生中目前不支持命令。

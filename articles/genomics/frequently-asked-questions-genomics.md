@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018318"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608606"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "96018318"
 在 Microsoft 基因组学服务的 config.txt 文件中将 process_name 指定为 `gatk4` 即可。 请注意，将按正常费率对你进行收费。
 
 ## <a name="how-do-i-enable-output-compression"></a>如何启用输出压缩？
-可以选用输出压缩参数来压缩 vcf 或 gvcf 输出。 这等效于在 vcf 或 gvcf 输出上运行 `-bgzip` 后再运行 `-tabix`，以生成 `.gz`（bgzip 输出）和 `.tbi`（tabix 输出）文件。 `bgzip` 会压缩 vcf 或 gvcf 文件，`tabix` 会创建已压缩文件的索引。 此参数是布尔值，默认情况下，针对 vcf 输出设置为 `false`，针对 gvcf 输出设置为 `true`。 若要在命令行中使用它，请将 `-bz` 或 `--bgzip-output` 指定为 `true`（运行 bgzip 和 tabix）或 `false`。 若要在 config.txt 文件中使用此参数，请将 `bgzip_output: true` 或 `bgzip_output: false` 添加到文件中。
+可以选用输出压缩参数来压缩 vcf 或 gvcf 输出。 这等效于在 vcf 或 gvcf 输出上运行 `-bgzip` 后再运行 `-tabix`，以生成 `.gz`（bgzip 输出）和 `.tbi`（tabix 输出）文件。 `bgzip` 会压缩 vcf 或 gvcf 文件，`tabix` 会创建已压缩文件的索引。 此参数是布尔值，默认情况下，针对 vcf 输出设置为 `false`，针对 gvcf 输出设置为 `true`。 若要在命令行中使用它，请将 `-bz` 或 `--bgzip-output` 指定为 `true`（运行 bgzip 和 tabix）或 `false`。 若要在 config.txt 文件中使用此参数，请将 `bgzip_output: true` 或 `bgzip_output: false` 添加到该文件中。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
 我们保证 Microsoft 基因组学服务 99.9% 的时间均可用于接收工作流 API 请求。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -58,6 +58,10 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 
 ## <a name="do-you-save-my-storage-account-keys"></a>是否保存了我的存储帐户密钥？
 存储帐户密钥用于创建 Microsoft 基因组学服务的短期访问令牌，读取输入文件并写入输出文件。 默认令牌持续时间为 48 小时。 可以通过提交命令的 `-sas/--sas-duration` 选项更改令牌持续时间；该值以小时为单位。
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>Microsoft 基因组学是否存储客户数据？
+
+不知道。 Microsoft 基因组学不存储任何客户数据。
 
 ## <a name="what-genome-references-can-i-use"></a>可以使用哪些基因组引用？
 

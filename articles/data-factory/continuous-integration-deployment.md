@@ -4,15 +4,15 @@ description: 了解如何使用持续集成和交付将数据工厂管道从一�
 ms.service: data-factory
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 04/01/2021
+ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716512"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121466"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -37,11 +37,11 @@ ms.locfileid: "101716512"
 
 1.  开发人员[创建功能分支](source-control.md#creating-feature-branches)以进行更改。 他们使用最近的更改来调试其管道运行。 若要详细了解如何调试管道运行，请参阅[使用 Azure 数据工厂进行迭代开发和调试](iterative-development-debugging.md)。
 
-1.  当开发人员对更改感到满意后，他们会创建一个从其功能分支到主分支或协作分支的拉取请求，以获取对等方所做的更改。
+1.  对所做的更改满意以后，开发人员可以创建一个拉取请求，将请求从其功能分支拉取到主分支或协作分支，让同行来评审他们的更改。
 
-1.  在拉取请求获得批准并将更改合并到主分支后，更改将发布到开发工厂。
+1.  在拉取请求获得批准并已将更改合并到主分支后，更改将发布到开发工厂。
 
-1.  当团队准备好将更改部署到测试或 UAT (用户验收测试) 工厂时，团队会转到其 Azure Pipelines 版本，并将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
+1.  团队在准备好将更改部署到测试或 UAT（用户验收测试）工厂后，会转到其 Azure Pipelines 发布阶段，并会将所需版本的开发工厂部署到 UAT。 此部署作为 Azure Pipelines 任务的一部分发生，使用资源管理器模板参数来应用相应的配置。
 
 1.  在测试工厂中验证更改后，将使用下一个管道发布任务部署到生产工厂。
 
@@ -58,11 +58,11 @@ ms.locfileid: "101716512"
 
 ### <a name="requirements"></a>要求
 
--   链接到 Visual Studio 的 Azure 订阅 Team Foundation Server 或使用 [Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)Azure Repos。
+-   一个已链接到 Visual Studio Team Foundation Server 或 Azure Repos 并使用[Azure 资源管理器服务终结点](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)的 Azure 订阅。
 
 -   一个配置了 Azure Repos Git 集成的数据工厂。
 
--   一个 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/) ，其中包含每个环境的机密。
+-   一个 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，其中包含每个环境的机密。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>设置 Azure Pipelines 发布
 
@@ -90,7 +90,7 @@ ms.locfileid: "101716512"
 
     ![阶段视图](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  创建新任务。 搜索 " **ARM 模板部署**"，然后选择 " **添加**"。
+    b.  创建新任务。 搜索“ARM 模板部署”，然后选择“添加”。
 
     c.  在“部署任务”中，选择目标数据工厂的订阅、资源组和位置。 根据需要提供凭据。
 
@@ -105,7 +105,7 @@ ms.locfileid: "101716512"
     h. 选择“增量”作为“部署模式”。 
 
     > [!WARNING]
-    > 在完整部署模式下，资源组中存在但在新资源管理器模板中未指定的资源将被 **删除**。 有关详细信息，请参阅 [Azure 资源管理器部署模式](../azure-resource-manager/templates/deployment-modes.md)
+    > 在完全部署模式下，资源组中已存在但尚未在新的资源管理器模板中指定的资源将被删除。 有关详细信息，请参阅 [Azure 资源管理部署模式](../azure-resource-manager/templates/deployment-modes.md)
 
     ![数据工厂生产部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -199,55 +199,55 @@ ms.locfileid: "101716512"
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>将自定义参数用于资源管理器模板
 
-如果开发工厂具有关联的 git 存储库，则可替代通过发布或导出模板生成的资源管理器模板的默认资源管理器模板参数。 在以下情况下，你可能需要覆盖默认资源管理器参数配置：
+如果开发工厂具有关联的 git 存储库，则可替代通过发布或导出模板生成的资源管理器模板的默认资源管理器模板参数。 在以下情况下，建议替代默认的资源管理器参数配置：
 
 * 你使用自动化 CI/CD，想要在部署资源管理器期间更改某些属性，但这些属性在默认情况下不会参数化。
 * 工厂太大，包含的参数数目超过了允许的最大数目 (256)，以致默认的资源管理器模板无效。
 
-    若要处理自定义参数256限制，有3个选项：    
+    若要处理自定义参数 256 限制，有三个选项：    
   
     * 使用自定义参数文件，并删除不需要参数化的属性（即，可以保留默认值并因此减少参数计数的属性）。
-    * 重构数据流中的逻辑以减少参数（例如，管道参数均具有相同的值），只需使用全局参数即可。
+    * 重构数据流中的逻辑以减少参数。例如，管道参数均具有相同的值，你只需使用全局参数即可。
     * 将一个数据工厂拆分为多个数据流。
 
-若要替代默认资源管理器参数配置，请在 "源代码管理" 部分中转到 " **管理** 中心" 和 "选择 **ARM 模板** "。 在 " **ARM 参数配置** " 部分下，单击 "编辑参数配置" 中的 " **编辑** " 图标以打开资源管理器参数配置代码编辑器。
+若要替代默认资源管理器参数配置，请转到“管理”中心，在“源代码管理”部分中选择“ARM 模板” 。 在“ARM 参数配置”部分下，单击“编辑参数配置”中的“编辑”图标以打开资源管理器参数配置代码编辑器 。
 
 ![管理自定义参数](media/author-management-hub/management-hub-custom-parameters.png)
 
 > [!NOTE]
-> **ARM 参数配置** 仅在 "GIT 模式" 下启用。 当前它在 "实时模式" 或 "数据工厂" 模式下处于禁用状态。
+> ARM 参数配置仅在“GIT 模式”下启用。 当前它在“实时模式”或“数据工厂”模式下处于禁用状态。
 
-创建自定义资源管理器参数配置会在 git 分支的根文件夹中创建一个名为 **arm-template-parameters-definition.js** 的文件。 必须使用这个具体的文件名。
+创建自定义资源管理器参数配置会在 git 分支的根文件夹中创建一个名为 arm-template-parameters-definition.js 的文件。 必须使用这个具体的文件名。
 
 ![自定义参数文件](media/continuous-integration-deployment/custom-parameters.png)
 
 从协作分支发布时，数据工厂将读取此文件，并使用其配置来生成参数化的属性。 如果找不到文件，则使用默认模板。
 
-导出资源管理器模板时，数据工厂从你当前正在处理的分支读取此文件，而不是协作分支。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
+导出资源管理器模板时，数据工厂将从当前正在处理的任一分支读取此文件，而不是从协作分支读取。 可以在某个专用分支中创建或编辑文件，在此文件中，可以通过选择 UI 中的“导出 ARM 模板”来测试更改。 然后，可将该文件合并到协作分支。
 
 > [!NOTE]
-> 自定义资源管理器参数配置不会将 ARM 模板参数限制更改为256。 它允许选择和减少参数化属性的数目。
+> 自定义资源管理器参数配置不会更改 ARM 模板参数限制 256。 它允许选择和减少参数化属性的数目。
 
 ### <a name="custom-parameter-syntax"></a>自定义参数语法
 
 下面是创建自定义参数文件 **arm-template-parameters-definition.json** 时要遵循的一些准则。 对于下述每个实体类型，该文件都包含一个节：触发器、管道、链接服务、数据集、集成运行时和数据流。
 
 * 输入相关实体类型下的属性路径。
-* 将属性名称设置为，以指示要将 `*` 其下的所有属性参数化 (仅向下一级，而不是以递归方式) 。 还可为此配置提供例外情况。
+* 将属性名称设置为 `*` 表示要将其下的所有属性参数化（仅参数化到第一个级别，而不是递归性的参数化）。 还可为此配置提供例外情况。
 * 将属性值设置为字符串表示你希望参数化该属性。 使用格式 `<action>:<name>:<stype>`。
-   *  `<action>` 可以是下列字符之一：
-      * `=` 表示保留当前值作为参数的默认值。
-      * `-` 表示不要保留参数的默认值。
-      * `|` 是 Azure Key Vault 用于连接字符串或键的密码的特例。
+   *  `<action>` 可以是以下字符之一：
+      * `=` 表示将当前值保留为参数的默认值。
+      * `-` 表示不保留参数的默认值。
+      * `|` 是 Azure Key Vault 中的机密的特例，用于连接字符串或密钥。
    * `<name>` 是参数的名称。 如果为空，将采用属性的名称。 如果值以 `-` 字符开头，则会简写名称。 例如，`AzureStorage1_properties_typeProperties_connectionString` 将简写为 `AzureStorage1_connectionString`。
-   * `<stype>` 参数的类型。 如果 `<stype>` 为空，则默认类型为 `string` 。 支持的值： `string` 、 `securestring` 、 `int` 、 `bool` 、 `object` `secureobject` 和 `array` 。
+   * `<stype>` 是参数的类型。 如果 `<stype>` 为空，则默认类型为 `string`。 支持的值：`string`、`securestring`、`int`、`bool`、`object`、`secureobject` 和 `array`。
 * 在定义文件中指定数组表示模板中匹配的属性是一个数组。 数据工厂使用数组的集成运行时对象中指定的定义来循环访问该数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 * 定义不能特定于资源实例。 任何定义都将应用到该类型的所有资源。
 * 默认情况下，会参数化 Key Vault 机密等安全字符串，以及连接字符串、密钥和令牌等安全字符串。
  
 ### <a name="sample-parameterization-template"></a>示例参数化模板
 
-下面是资源管理器参数配置可能如下所示的示例：
+下面举例说明了资源管理器参数配置的样式：
 
 ```json
 {
@@ -333,6 +333,10 @@ ms.locfileid: "101716512"
 #### <a name="datasets"></a>数据集
 
 * 尽管类型特定的自定义可用于数据集，但你无需显式使用 \* 级配置即可提供配置。 在前面的示例中，`typeProperties` 下的所有数据集属性都将参数化。
+
+> [!NOTE]
+> 如果为管道配置了 Azure 警报和矩阵，则当前不支持将其用作 ARM 部署的参数。 若要在新环境中重新应用警报和矩阵，请参照[数据工厂监视、警报和矩阵。](./monitor-using-azure-monitor.md#data-factory-metrics)
+> 
 
 ### <a name="default-parameterization-template"></a>默认参数化模板
 
@@ -638,13 +642,13 @@ ms.locfileid: "101716512"
 
 10.   将此修补程序中的更改添加到开发分支，使以后的版本不会出现相同的 bug。
 
-请观看下面的视频，了解有关如何对环境进行热修复的深入视频教程。 
+请观看深度视频教程下面的视频，了解如何对环境进行热修复。 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
 
 ## <a name="exposure-control-and-feature-flags"></a>公开控制和功能标志
 
-在团队中工作时，可以在某些情况下合并更改，但不希望在生产和 QA 等提升的环境中运行这些更改。 为了应对这种情况，ADF 团队建议 [使用功能标志的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags)。 在 ADF 中，可以组合 [global parameters](author-global-parameters.md) 和 [if condition 活动](control-flow-if-condition-activity.md) ，以根据这些环境标志隐藏逻辑集。
+在团队中工作时，在某些情况下，你可能想要合并更改，但不想这些更改在提升的环境（例如 PROD 和 QA）中运行。 为了应对这种情况，ADF 团队推荐[有关使用功能标志的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags)。 在 ADF 中，可以组合[全局参数](author-global-parameters.md)和 [if condition 活动](control-flow-if-condition-activity.md)，以根据这些环境标志隐藏逻辑集。
 
 若要了解如何设置功能标志，请参阅以下视频教程：
 
@@ -660,24 +664,26 @@ ms.locfileid: "101716512"
 
 -   **集成运行时和共享**。 集成运行时不经常更改，在 CI/CD 的所有阶段中都是类似的。 因此，数据工厂预期在 CI/CD 的所有阶段使用相同的集成运行时名称和类型。 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
 
--   **托管专用终结点部署**。 如果某个专用终结点在工厂中已存在，并且你尝试部署的 ARM 模板包含具有相同名称但带有修改的属性的专用终结点，则部署将失败。 换句话说，你可以成功部署专用终结点，前提是该终结点具有工厂中已存在的相同属性。 如果环境之间的任何属性不同，可以通过参数化该属性并在部署过程中提供相应的值来重写它。
+-   **托管的专用终结点部署**。 如果工厂中已经存在一个专用终结点，而你尝试部署的 ARM 模板包含一个名称相同但属性已修改的专用终结点，则部署将失败。 换句话说，只要专用终结点与工厂中已经存在的专用终结点具有相同的属性，就可以成功部署该终结点。 如果任何属性在不同的环境中是不同的，你可以通过参数化该属性并在部署期间提供相应的值来替代它。
 
 -   **Key Vault**。 使用其连接信息存储在 Azure Key Vault 中的链接服务时，建议为不同的环境保留不同的密钥保管库。 此外，可为每个密钥保管库单独配置权限级别。 例如，你可能不希望团队成员有权访问生产机密。 如果采用此方法，我们建议在所有阶段中保留相同的机密名称。 如果保留相同的机密名称，则无需在 CI/CD 环境中参数化每个连接字符串，因为只需更改密钥保管库名称，而该名称是一个单独的参数。
 
--  **资源命名** 由于 ARM 模板约束，如果资源包含名称中的空格，则可能会出现部署中的问题。 Azure 数据工厂团队建议使用 "_" 或 "-" 字符，而不是为资源使用空格。 例如，"Pipeline_1" 将是 "管道 1" 上的首选名称。
+-  **资源命名**。由于 ARM 模板的限制，如果资源名称中包含空格，则部署可能会出现问题。 Azure 数据工厂团队建议为资源使用“_”或“-”字符，而不是使用空格。 例如，“Pipeline_1”比“Pipeline 1”更可取。
 
 ## <a name="unsupported-features"></a>不支持的功能
 
 - 按照设计，数据工厂不允许挑拣提交内容或选择性地发布资源。 发布将包含数据工厂中发生的所有更改。
 
     - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
-    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅 [修补程序生产环境](#hotfix-production-environment)。
+    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅[修补程序生产环境](#hotfix-production-environment)。
 
-- Azure 数据工厂团队不建议将 Azure RBAC 控件分配给数据工厂中 (管道、数据集等 ) 的单独实体。 例如，如果开发人员可以访问管道或数据集，则他们应该能够访问数据工厂中的所有管道或数据集。 如果你认为需要在数据工厂中实现许多 Azure 角色，请查看部署第二个数据工厂。
+- Azure 数据工厂团队不建议将 Azure RBAC 控件分配给数据工厂中的单个实体（管道、数据集等）。 例如，如果开发人员可以访问管道或数据集，则他们应该能够访问数据工厂中的所有管道或数据集。 如果你认为需要在数据工厂中实现许多 Azure 角色，请考虑部署第二个数据工厂。
 
 -   无法从专用分支发布。
 
 -   目前无法在 Bitbucket 上托管项目。
+
+-   当前无法以参数的形式导出和导入警报和矩阵。 
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> 部署前和部署后示例脚本
 
@@ -691,6 +697,9 @@ ms.locfileid: "101716512"
 在运行部署后脚本时，需在“脚本参数”字段中指定以下参数的变体。
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+> [!NOTE]
+> `-deleteDeployment` 标志用于指定从 ARM 的部署历史记录中删除 ADF 部署条目。
 
 ![Azure PowerShell 任务](media/continuous-integration-deployment/continuous-integration-image11.png)
 
@@ -867,7 +876,7 @@ if ($predeployment -eq $true) {
     #Stop all triggers
     Write-Host "Stopping deployed triggers`n"
     $triggersToStop | ForEach-Object {
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Unsubscribing" $_.Name "from events"
             $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Disabled"){
@@ -917,7 +926,7 @@ else {
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
-            if ($_.TriggerType -eq "BlobEventsTrigger") {
+            if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
                 Write-Host "Unsubscribing trigger" $_.Name "from events"
                 $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
                 while ($status.Status -ne "Disabled"){
@@ -976,7 +985,7 @@ else {
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
     $triggersToStart | ForEach-Object { 
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Subscribing" $_.Name "to events"
             $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Enabled"){

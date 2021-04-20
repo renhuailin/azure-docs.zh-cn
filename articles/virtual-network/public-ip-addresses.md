@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
-ms.translationtype: MT
+ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806947"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094755"
 ---
 # <a name="public-ip-addresses"></a>公共 IP 地址
 
@@ -54,8 +54,8 @@ ms.locfileid: "99806947"
 - 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
 - 默认情况下为安全的，并且对入站流量关闭。 允许列出[网络安全组](./network-security-groups-overview.md#network-security-groups)的入站流量。
 - 分配给网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是) 的所有3个区域中的区域冗余 (advertized、在特定的预选择可用性区域) 中保证的区域性 (，或不与特定的预选可用性区域 (无关的区域) 。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **区域冗余 Ip 只能在具有3个 [可用性区域的区域](../availability-zones/az-region.md) 中创建。** 在区域处于活动之前创建的 Ip 不会区域冗余。
-- 可用作 [跨区域负载均衡](../load-balancer/cross-region-overview.md) 器 (预览功能) 的任意播前端 ip。
+- 可以是区域冗余的（从所有 3 个区域播发）、区域性的（在特定的预选则可用性区域中保证）或者非区域性的（不与特定的预选则可用性区域关联）。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 区域冗余 IP 只能在其中 [3 个可用性区域均处于实时状态的区域](../availability-zones/az-region.md)中创建。 在区域处于实时状态之前创建的 IP 不会是区域冗余的。
+- 可用作[跨区域负载均衡器](../load-balancer/cross-region-overview.md)的任意播前端 IP（预览功能）。
  
 > [!NOTE]
 > 在创建并关联[网络安全组](./network-security-groups-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
@@ -64,7 +64,7 @@ ms.locfileid: "99806947"
 > 使用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md) 时，只有具有基本 SKU 的公共 IP 地址可用。 不支持标准 SKU。
 
 > [!NOTE]
-> 使用标准 SKU 公共 IP 地址时，"资源" 边栏选项卡上不会显示诊断设置。 若要启用标准公共 IP 地址资源的日志记录，请导航到 "Azure Monitor" 边栏选项卡下的 "诊断设置"，然后选择 IP 地址资源。
+> 使用标准 SKU 公共 IP 地址时，诊断设置不会显示在资源边栏选项卡下。 若要启用对标准公共 IP 地址资源的日志记录，请导航到 Azure Monitor 边栏选项卡下的诊断设置，然后选择你的 IP 地址资源。
 
 ### <a name="basic"></a>基本
 
@@ -120,14 +120,14 @@ ms.locfileid: "99806947"
 
 选择该选项为公共 IP 资源指定 DNS 域名标签。 
 
-此选择将为 **domainnamelabel** 创建映射。cloudapp.azure.com Azure 托管 DNS 中的公共 **IP。** 
+ 选择后，会为 domainnamelabel.location.cloudapp.azure.com 创建一个到 Azure 托管 DNS 中的公共 IP 的映射。 
 
 例如，创建公共 IP，其中：
 
 * 将 contoso 作为 domainnamelabel 
-* **美国西部** Azure **位置**
+*  美国西部 Azure 位置
 
- (**FQDN) 的** 完全限定的域名解析为资源的公共 IP 地址。
+完全限定的域名 (FQDN) contoso.westus.cloudapp.azure.com 解析为该资源的公共 IP 地址。
 
 > [!IMPORTANT]
 > 所创建的每个域名标签在其 Azure 位置必须是唯一的。  
@@ -162,14 +162,17 @@ ms.locfileid: "99806947"
 * Azure 虚拟网络
 * 本地网络。 
 
-需将公共 IP 地址分配到 VPN 网关才能与远程网络通信。 只能向 VPN 网关分配”动态”基本的公共 IP 地址。
+需将公共 IP 地址分配到 VPN 网关才能与远程网络通信。 
+
+* 将动态基本公共 IP 分配给 VPNGw 1-5 SKU 前端配置。
+* 将静态标准公共 IP 地址分配给 VPNGwAZ 1-5 SKU 前端配置。
 
 ## <a name="application-gateways"></a>应用程序网关
 
 将公共 IP 地址分配给网关的 **前端** 配置可以将其与 Azure [应用程序网关](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 
 
 * 将“动态”基本公共 IP 地址分配给应用程序网关 V1 前端配置。 
-* 将 **静态** 标准 SKU 地址分配到 V2 前端配置。
+* 将静态标准公共 IP 地址分配给 V2 前端配置。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 

@@ -1,9 +1,9 @@
 ---
 title: Azure 媒体服务概念 | Microsoft Docs
-description: 本文简要概述了 Microsoft Azure 媒体服务的概念，并提供了指向其他文章的链接以获取详细信息。
+description: 本文简要概述了 Microsoft Azure 媒体服务的概念，并提供了指向其他文章的链接以方便你了解详细信息。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d5743b3328248617b9158cfb1f8960549784c564
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055988"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念
 
@@ -157,7 +157,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 
 有关详细信息，请参阅以下文章：
 - [保护内容概述](media-services-content-protection-overview.md)
-- [使用 AES-128 进行保护](media-services-protect-with-aes128.md)
+- [使用 AES-128 进行保护](media-services-playready-license-template-overview.md)
 - [使用 PlayReady/Widevine 进行保护](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>传送
@@ -165,7 +165,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点
-StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容交付网络 (CDN) 以便进一步分发 (Azure 媒体服务现在提供 Azure CDN 集成。 ) 流式处理终结点服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点 。 标准流式处理终结点适用于最消耗流的工作负荷。 
+流式处理终结点表示一种流式处理服务，它可以将内容直接传送到客户端播放器应用程序或传送到内容分发网络 (CDN) 以供进一步分发（Azure 媒体服务现在提供 Azure CDN 集成）。流式处理终结点服务的出站流可以是实时传送流，也可以是媒体服务帐户中的点播视频资产。 媒体服务客户可以根据自身需要，选择标准流式处理终结点或者一个或多个高级流式处理终结点 。 标准流式处理终结点适用于最消耗流的工作负荷。 
 
 标准流式处理终结点适用于最消耗流的工作负荷。 标准流式处理终结点可以动态地将内容打包成 HLS、MPEG-DASH 和平滑流式处理，并针对 Microsoft PlayReady、Google Widevine、Apple Fairplay 和 AES128 进行动态加密，从而灵活地将内容传送到几乎所有设备。  它们还从很小的受众扩展到非常大的受众，并通过 Azure CDN 集成提供数千个并发查看器。 如果有高级工作负荷或者流式处理容量要求无法适应标准流式处理终结点吞吐量目标，或者希望控制 StreamingEndpoint 服务的容量，以便处理不断增长的带宽需求，则我们建议分配缩放单元（也称为高级流单元）。
 
@@ -201,7 +201,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 也可通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 TLS。  
 
 >[!NOTE]
->如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含 "origin.mediaservices.windows.net" 的流式处理 Url (旧格式) 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
+>如果要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的，则只能通过 TLS 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 TLS。 如果 URL 采用旧格式，并且你希望能够通过 TLS 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
 
 以下列表描述了不同的流格式并提供了示例：
 
@@ -209,25 +209,25 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 * MPEG DASH
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = mpd-csf) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 * Apple HTTP 实时流 (HLS) V4
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.windows.net/{定位符 ID}/{文件名}.ism/Manifest(format=m3u8-aapl)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 * Apple HTTP 实时流 (HLS) V3
 
 {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
-http： \/ /testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3-v3) 
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ## <a name="additional-notes"></a>附加说明
 

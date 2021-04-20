@@ -8,10 +8,10 @@ ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98790810"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
@@ -50,14 +50,14 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
 1. 使用左侧菜单切换到“运行状况历史记录”页。
 1. 查找以“Azure 数字孪生”开头的问题名称，并选择它。
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Azure 门户的屏幕截图，其中显示的是“运行状况历史记录”页。包含一个列表，显示近几天发生的问题，其中突出显示一个名为“Azure 数字孪生 - 西欧 - 已缓解”的问题。" lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="显示“运行状况历史记录”页的 Azure 门户的屏幕截图，其中列出了过去几天出现的几个问题，并突出显示了一个名为“Azure 数字孪生 - 西欧 - 已缓解”的问题。" lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
 
 1. 有关该服务中断的一般信息，请查看“摘要”选项卡。
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="在“运行状况历史记录”页中，突出显示了“摘要”选项卡。该选项卡显示一般信息，例如受影响的资源及其所在区域和订阅。" lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="在“运行状况历史记录”页上，“摘要”选项卡突出显示。该选项卡显示一般信息，如受影响的资源及其所在的区域和订阅。" lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
 1. 有关一段时间内问题的详细信息和更新，请查看“问题更新”选项卡。
 
-    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="在“运行状况历史记录”页中，突出显示了“问题更新”选项卡。该选项卡显示多个条目，指示近一天内当前的状态。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="在“运行状况历史记录”页上，“问题更新”选项卡突出显示。该选项卡显示多个条目，指示一天前的最新状态。" lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
 
 
 请注意，此工具中显示的信息并不特定于某一个 Azure 数字实例。 使用服务运行状况了解某个区域或订阅中 Azure 数字孪生服务的运行状况后，可以通过使用[资源运行状况工具](troubleshoot-resource-health.md) 向下钻取到特定实例并查看这些实例是否受影响，来实施进一步监视。

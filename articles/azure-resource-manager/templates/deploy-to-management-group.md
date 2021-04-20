@@ -2,13 +2,13 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.date: 03/18/2021
+ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491629"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043302"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 模板进行管理组部署
 
@@ -25,7 +25,7 @@ ms.locfileid: "99491629"
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
 * [versions](/azure/templates/microsoft.blueprint/blueprints/versions)
 
-对于 Azure 策略，请使用：
+对于 Azure Policy，请使用：
 
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -45,7 +45,7 @@ ms.locfileid: "99491629"
 
 * [标记](/azure/templates/microsoft.resources/tags)
 
-管理组是租户级别资源。 但是，你可以通过将新管理组的作用域设置为租户，在管理组部署中创建管理组。 请参阅 [管理组](#management-group)。
+管理组是租户级资源。 但你可以将新管理组的范围设置为租户，从而在管理组部署中创建管理组。 请参阅[管理组](#management-group)。
 
 ## <a name="schema"></a>架构
 
@@ -114,7 +114,7 @@ New-AzManagementGroupDeployment `
 
 可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 _azuredeploy.json_ 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 **centralus** 中创建名为 **deployment1** 的管理组部署，则以后无法使用 deployment1 的位置创建另一个名为的 **部署。** 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 centralus 中创建名为“deployment1”的管理组部署，则以后不能创建另一个名为“deployment1”但位置为“westus”的部署   。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="deployment-scopes"></a>部署范围
 
@@ -126,7 +126,7 @@ New-AzManagementGroupDeployment `
 * 管理组中的资源组
 * 资源组的租户
 
-[扩展资源](scope-extension-resources.md)的作用域可以是与部署目标不同的目标。
+可以将[扩展资源](scope-extension-resources.md)的范围设置为与部署目标不同的范围。
 
 部署模板的用户必须有权访问指定的作用域。
 
@@ -164,23 +164,23 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-若要在租户中创建资源，请将设置 `scope` 为 `/` 。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+若要在租户中创建资源，请将 `scope` 设置为 `/`。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
-若要使用嵌套部署，请设置 `scope` 和 `location` 。
+若要使用嵌套部署，请设置 `scope` 和 `location`。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-或者，可将某些资源类型（如管理组）的范围设置为 `/`。 下一节将介绍如何创建新的管理组。
+或者，可将某些资源类型（如管理组）的范围设置为 `/`。 下一部分将介绍如何创建新的管理组。
 
 ## <a name="management-group"></a>管理组
 
-若要在管理组部署中创建管理组，则必须将管理组的作用域设置为 `/` 。
+若要在管理组部署中创建管理组，则必须将管理组的范围设置为 `/`。
 
-下面的示例在根管理组中创建一个新管理组。
+下面的示例在根管理组中创建了一个新的管理组。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
 
-下一个示例在指定为父级的管理组中创建一个新管理组。 请注意，范围设置为 `/` 。
+下一个示例将在指定为父级的管理组中创建一个新管理组。 请注意，范围设置为 `/`。
 
 ```json
 {
@@ -220,9 +220,19 @@ New-AzManagementGroupDeployment `
 }
 ```
 
+## <a name="subscriptions"></a>订阅
+
+若要使用 ARM 模板在管理组中创建新的 Azure 订阅，请参阅：
+
+* [以编程方式创建 Azure 企业协议订阅](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md)
+* [以编程方式为 Microsoft 客户协议创建 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-customer-agreement.md)
+* [以编程方式为 Microsoft 合作伙伴协议创建 Azure 订阅](../../cost-management-billing/manage/programmatically-create-subscription-microsoft-partner-agreement.md)
+
+若要部署一个会将现有 Azure 订阅移至新管理组的模板，请参阅[在 ARM 模板中移动订阅](../../governance/management-groups/manage.md#move-subscriptions-in-arm-template)
+
 ## <a name="azure-policy"></a>Azure Policy
 
-部署到管理组的自定义策略定义是管理组的扩展。 若要获取自定义策略定义的 ID，请使用 [extensionResourceId()](template-functions-resource.md#extensionresourceid) 函数。 内置策略定义是租户级别资源。 若要获取内置策略定义的 ID，请使用 [tenantResourceId ( # B1 ](template-functions-resource.md#tenantresourceid) 函数。
+部署到管理组的自定义策略定义是管理组的扩展。 若要获取自定义策略定义的 ID，请使用 [extensionResourceId()](template-functions-resource.md#extensionresourceid) 函数。 内置策略定义是租户级别资源。 若要获取内置策略定义的 ID，请使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函数。
 
 下面的示例演示如何[定义](../../governance/policy/concepts/definition-structure.md)管理组级别策略，并对其进行分配。
 
@@ -317,7 +327,7 @@ New-AzManagementGroupDeployment `
     "resources": [
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedSub",
             "location": "[parameters('nestedLocation')]",
             "subscriptionId": "[parameters('nestedSubId')]",
@@ -333,7 +343,7 @@ New-AzManagementGroupDeployment `
                     "resources": [
                         {
                             "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-06-01",
+                            "apiVersion": "2020-10-01",
                             "name": "[parameters('nestedRG')]",
                             "location": "[parameters('nestedLocation')]"
                         }
@@ -343,7 +353,7 @@ New-AzManagementGroupDeployment `
         },
         {
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2020-10-01",
             "name": "nestedRG",
             "subscriptionId": "[parameters('nestedSubId')]",
             "resourceGroup": "[parameters('nestedRG')]",

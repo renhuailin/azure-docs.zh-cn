@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 04/24/2019
 ms.author: lajanuar
 ms.openlocfilehash: fb31388647fc6022a2e6670baf7b3e73f345c36a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98898064"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
@@ -25,7 +25,7 @@ ms.locfileid: "98898064"
 
 我们现在提供了一个过程，允许你通过自定义翻译器来部署不受支持的模型。  可以通过此过程继续使用最新的 V3 API 来翻译内容。  这些模型会被托管，直到你选择取消部署它们或者语言对在自定义翻译器中变得可用为止。  本文介绍了部署其语言对不受支持的模型的过程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 为了使你的模型成为可部署的候选模型，它们必须满足以下条件：
 * 必须已使用迁移工具将包含该模型的项目从中心迁移到自定义翻译器。  可在[此处](how-to-migrate.md)找到用于迁移项目和工作区的过程。
@@ -45,7 +45,7 @@ ms.locfileid: "98898064"
 
 ![如何从 Hub 迁移](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
-## <a name="whats-next"></a>下一步操作
+## <a name="whats-next"></a>后续步骤
 
 在停用中心且取消部署所有模型后，你选择用于部署的模型会被保存。  你必须在 5 月 24 日之前提交部署不受支持的模型的请求。  我们将在 6 月 15 日部署这些模型，届时可以通过翻译器 V3 API 访问它们。  此外，在 7 月 1 日前，还可以通过 V2 API 访问它们。  
 

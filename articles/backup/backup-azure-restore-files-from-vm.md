@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725503"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104864884"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -35,7 +35,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 3. 在“备份”仪表板菜单中，选择“文件恢复”。
 
-    ![选择“文件恢复”](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![选择“文件恢复”](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     此时将打开“文件恢复”菜单。
 
@@ -43,7 +43,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 4. 从“选择恢复点”下拉菜单中，选择存储所需文件的恢复点。 默认已选择最新的恢复点。
 
-5. 选择 "下载 Windows Azure Vm 的 **可执行** (") 或下载适用于 Linux Azure Vm 的 **脚本** (，并) 下载用于从恢复点复制文件的软件。
+5. 选择“下载可执行文件”（适用于 Windows Azure VM）或“下载脚本”（适用于 Linux Azure VM，会生成 python 脚本），以下载用于从恢复点复制文件的软件 。
 
     ![下载可执行文件](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -64,23 +64,24 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ### <a name="dynamic-disks"></a>动态磁盘
 
-无法在具有以下任意特征的 VM 上运行可执行脚本：
+无法在具有以下任意特征的 VM 上运行可执行脚本：选择备用计算机
 
 - 跨多个磁盘的卷（跨区卷和带区卷）。
 - 动态磁盘上的容错卷（镜像卷和 RAID-5 卷）。
 
 ### <a name="windows-storage-spaces"></a>Windows 存储空间
 
-无法在为 Windows 存储空间配置的 VM 上运行下载的可执行文件。
+如果备份的 VM 具有 Windows 存储空间，则无法在同一备份的 VM 上运行下载的可执行文件。 选择备用计算机。
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>具有大磁盘的虚拟机备份
 
 如果备份的计算机上有大量磁盘（> 16 个）或大磁盘（每个磁盘 > 4 TB），则建议不要在同一台计算机上执行该脚本以进行还原，因为这会对 VM 产生重大影响。 取而代之的是，建议仅为文件恢复使用单独的 VM (Azure VM D2v3 VM)，并在不需要时将其关闭。 
 
-请参阅从具有大磁盘的已备份 Vm 还原文件的要求：<br>
+请参阅从具有大磁盘的备份 VM 中还原文件的要求：<br>
 [Windows OS](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux OS](#for-backed-up-vms-with-large-disks-linux)
 
+选择合适的计算机来运行 ILR 脚本后，请确保它满足 [OS 要求](#step-3-os-requirements-to-successfully-run-the-script)和[访问要求](#step-4-access-requirements-to-successfully-run-the-script)。 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>步骤 3：成功运行脚本的 OS 要求
 
@@ -110,7 +111,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| openSUSE | 42.2 及更高版本 |
+| OpenSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -126,13 +127,15 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | .NET | 4.6.2 及更高版本 |
 | TLS | 应支持 1.2  |
 
+另外，请确保你有[用于执行 ILR 脚本的合适计算机](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)，并且它满足[访问要求](#step-4-access-requirements-to-successfully-run-the-script)。
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>步骤 4：成功运行脚本的访问要求
 
 如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
 - `download.microsoft.com`
 - 恢复服务 URL（地区名称指恢复服务保管库所在的区域）
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` Azure 公共区域的 () 
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com`（适用于 Azure 公共区域）
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）
@@ -141,19 +144,20 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 > [!NOTE]
 >
 > 在[上文](#step-1-generate-and-download-script-to-browse-and-recover-files)步骤 1 中下载的脚本文件的名称中将包含地区名称。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
-> 例如，如果脚本文件名为 " *ContosoVM_wcus_12345678*"，则 wcus **为，** URL 将为：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> 例如，如果脚本文件名为 ContosoVM_wcus_12345678，则 geo-name 为 wcus，URL 如下所示：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
 >
 
 在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
 
 需要访问 `download.microsoft.com`，才能下载用于在运行脚本的计算机与恢复点中的数据之间构建安全通道的组件。
 
+另外，请确保你有[用于执行 ILR 脚本的合适计算机](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)，并且它满足 [OS 要求](#step-3-os-requirements-to-successfully-run-the-script)。
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>步骤 5：运行脚本并标识卷
 
 ### <a name="for-windows"></a>对于 Windows
 
-满足步骤 2、步骤 3 和步骤 4 中列出的所有要求后，从下载位置（通常是“下载”文件夹）复制脚本，右键单击可执行文件或脚本，然后用管理员凭据运行。 出现提示时，键入密码或粘贴内存中的密码，然后按 Enter。 输入有效的密码后，脚本将连接到恢复点。
+满足[步骤 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)、[步骤 3](#step-3-os-requirements-to-successfully-run-the-script) 和[步骤 4](#step-4-access-requirements-to-successfully-run-the-script) 中列出的所有要求后，请从下载位置（通常是“Downloads”文件夹）复制脚本。请参阅[步骤 1：了解如何生成和下载脚本](#step-1-generate-and-download-script-to-browse-and-recover-files)。 右键单击该可执行文件，然后使用管理员凭据运行该文件。 出现提示时，键入密码或粘贴内存中的密码，然后按 Enter。 输入有效的密码后，脚本将连接到恢复点。
 
   ![可执行文件输出](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ### <a name="for-linux"></a>对于 Linux
 
-对于 Linux 计算机，将生成一个 Python 脚本。 下载该脚本并将其复制到相关/兼容的 Linux 服务器。 你可能必须修改权限才能使用 ```chmod +x <python file name>``` 执行该脚本。 然后使用 ```./<python file name>``` 运行 Python 文件。
+满足[步骤 2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)、[步骤 3](#step-3-os-requirements-to-successfully-run-the-script) 和 [步骤 4](#step-4-access-requirements-to-successfully-run-the-script) 中列出的所有要求后，请为 Linux 计算机生成一个 python 脚本。 请参阅[步骤 1：了解如何生成和下载脚本](#step-1-generate-and-download-script-to-browse-and-recover-files)。 下载该脚本并将其复制到相关/兼容的 Linux 服务器。 你可能必须修改权限才能使用 ```chmod +x <python file name>``` 执行该脚本。 然后使用 ```./<python file name>``` 运行 Python 文件。
 
 
 在 Linux 中，恢复点的卷会装载到运行脚本的文件夹。 将相应地显示附加的磁盘、卷和对应装载路径。 这些装载路径对于具有根级别访问权限的用户可见。 浏览脚本输出中涉及的卷。

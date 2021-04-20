@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: c44c40f2ddab53cf0beb5ecd48127d126fdb4333
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101657394"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
@@ -24,7 +24,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 本文介绍如何使用 DSVM 执行数据科学任务，以及如何与其他 Azure 服务交互。 可以在 DSVM 上执行的操作如下所示：
 
-- 使用 Jupyter Notebook 在浏览器中借助 Python 2、Python 3 和 Microsoft R 试验数据。（Microsoft R 是面向企业的高性能 R 版本。）
+- 通过使用 Python 2、Python 3 和 Microsoft R，在浏览器中使用 Jupyter Notebook 对数据进行试验。（Microsoft R 是适用于企业的 R 版本，进行了性能优化设计。）
 - 使用 Microsoft Machine Learning Server 和 Python 在 DSVM 上本地探索数据和开发模型。
 - 使用 Azure 门户或 PowerShell 管理 Azure 资源。
 - 通过将 Azure 文件存储共享创建为可在 DSVM 上装载的驱动器，即可扩展存储空间并跨整个团队共享大型数据集/代码。

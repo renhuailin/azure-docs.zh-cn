@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107289"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950954"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -22,7 +22,7 @@ ms.locfileid: "107107289"
 
 有关预配和停用阶段的详细信息，以及如何更好地了解所有企业 IoT 项目通用的一系列常规设备管理阶段，请参阅 IoT 中心设备管理文档的 [*设备生命周期* 部分](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在设置预配之前，需要设置以下各项：
 * **Azure 数字孪生实例**。 请按照 [*操作指南：设置实例和身份验证*](how-to-set-up-instance-portal.md)中的说明创建 Azure 数字孪生实例。 在 Azure 门户中收集实例的主机名（[说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）。
@@ -37,7 +37,7 @@ ms.locfileid: "107107289"
 
 下图演示了此解决方案的体系结构，该解决方案使用 Azure 数字孪生与设备预配服务。 其中显示了设备预配和停用流程。
 
-:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="端到端方案中设备和几项 Azure 服务的图表。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并可通过标为“Allocation”的 Azure 函数流到 Azure 数字孪生。通过手动“删除设备”操作，数据将流向“IoT 中心”>“事件中心”>“Azure Functions”>“Azure 数字孪生”。" lightbox="media/how-to-provision-using-dps/flows.png":::
+:::image type="content" source="media/how-to-provision-using-dps/flows.png" alt-text="端到端方案中设备与几个 Azure 服务的关系图。数据在恒温器设备和 DPS 之间来回流动。数据还会从 DPS 流出到 IoT 中心，并通过一个标为“Allocation”的 Azure 函数流到 Azure 数字孪生。来自“删除设备”手动操作的数据会流经“IoT 中心”>“事件中心”>“Azure Functions”>“Azure 数字孪生”。" lightbox="media/how-to-provision-using-dps/flows.png":::
 
 本文划分为两个部分：
 * [*使用设备预配服务自动预配设备*](#auto-provision-device-using-device-provisioning-service)
@@ -49,7 +49,7 @@ ms.locfileid: "107107289"
 
 在此部分，你要将设备预配服务附加到 Azure 数字孪生，通过以下路径自动预配设备。 这部分内容摘自[前面](#solution-architecture)完整的体系结构。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="预配流图 - 摘自解决方案体系结构图，编号标示流程部分。数据在恒温器设备和 DPS 之间来回流动（1：设备 > DPS；5：DPS > 设备）。数据还会从 DPS 流出到 IoT 中心 (4)，并可通过标为“Allocation”(2) 的 Azure 函数流到 Azure 数字孪生 (3)。" lightbox="media/how-to-provision-using-dps/provision.png":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="“预配”流程图 - 解决方案体系结构图的摘录，用数字标记了流程的各个部分。数据在恒温器设备和 DPS 之间来回流动（1 表示设备 > DPS，5 表示 DPS > 设备）。数据还会从 DPS 流入 IoT 中心 (4)，并通过标为“Allocation”的 Azure 函数 (2) 流入 Azure 数字孪生 (3)。" lightbox="media/how-to-provision-using-dps/provision.png":::
 
 下面是流程说明：
 1. 设备联系 DPS 终结点，传递标识信息以证明其身份。
@@ -116,7 +116,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 保存详细信息。                  
 
-:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="自定义注册组详细信息窗口的屏幕截图，在该窗口的“选择将设备分配到中心的方式”和“选择可将此组分配到的 IoT 中心”部分可选择“自定义（使用 Azure 函数）”。此外，从下拉列表中选择订阅、函数应用，并确保选择 DpsAdtAllocationFunc。" lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
+:::image type="content" source="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png" alt-text="“自定义注册组详细信息”窗口的屏幕截图，在该窗口的“选择将设备分配到中心的方式”和“选择可将此组分配到的 IoT 中心”部分可选择“自定义(使用 Azure 函数)”和你的 IoT 中心名称。此外，从下拉列表中选择订阅、函数应用，并确保选择 DpsAdtAllocationFunc。" lightbox="media/how-to-provision-using-dps/link-enrollment-group-to-iot-hub-and-function-app.png":::
 
 创建注册后，稍后将使用注册的 **主键** 来配置本文的设备模拟器。
 
@@ -190,7 +190,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration
 
 在此部分，你要将 IoT 中心生命周期事件附加到 Azure 数字孪生，以便通过以下路径自动停用设备。 这部分内容摘自[前面](#solution-architecture)完整的体系结构。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="停用设备流程图 - 摘自解决方案体系结构图，编号标示流程部分。图中显示的恒温器设备未连接到 Azure 服务。通过手动“删除设备”操作，数据将流过“IoT 中心”(1) >“事件中心”(2) >“Azure Functions”>“Azure 数字孪生”(3)。" lightbox="media/how-to-provision-using-dps/retire.png":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="“停用设备”流程图 - 解决方案体系结构图的摘录，使用数字标记了流程的各个部分。图中显示的恒温器设备没有与 Azure 服务连接。来自“删除设备”手动操作的数据流经“IoT 中心”(1) >“事件中心”(2) >“Azure Functions”>“Azure 数字孪生”(3)。" lightbox="media/how-to-provision-using-dps/retire.png":::
 
 下面是流程说明：
 1. 外部或手动进程触发在 IoT 中心删除设备的操作。
@@ -302,7 +302,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration
 
 要触发停用进程，需要从 IoT 中心手动删除设备。
 
-可以使用 [Azure CLI 命令](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete)或 Azure 门户来执行此操作。 在 Azure 门户中按照以下步骤删除设备：
+可以使用 [Azure CLI 命令](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete)或 Azure 门户来执行此操作。 在 Azure 门户中按照以下步骤删除设备：
 
 1. 导航到 IoT 中心，然后在左侧菜单选项中选择“IoT 设备”。 
 2. 你将看到一个设备，带有你在[本文前半部分](#auto-provision-device-using-device-provisioning-service)所选的设备注册 ID。 或者，也可以选择任何其他设备进行删除，只要它在 Azure 数字孪生中有孪生体即可，以便可以验证该孪生体在设备删除后有无自动删除。

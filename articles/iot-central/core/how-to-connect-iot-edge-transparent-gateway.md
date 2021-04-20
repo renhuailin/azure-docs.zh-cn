@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bdfb5f65106f3f8843b4aa52b752f5e563ab03f0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619920"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045325"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>如何通过 IoT Edge 透明网关连接设备
 
@@ -186,7 +186,7 @@ IoT Edge 支持[透明网关模式和转换网关模式](../../iot-edge/iot-edge
 
 ## <a name="provision-a-downstream-device"></a>预配下游设备
 
-目前，IoT Edge 无法自动为 IoT Central 应用程序预配下游设备。 以下步骤向你展示了如何配置 `thermostat1` 设备。 若要完成这些步骤，需要一个安装了 Python 3.5（或更高版本）且具有 Internet 连接的环境。 [Azure Cloud Shell](https://shell.azure.com/) 预装了 Python 3.5：
+目前，IoT Edge 无法自动为 IoT Central 应用程序预配下游设备。 以下步骤向你展示了如何配置 `thermostat1` 设备。 若要完成这些步骤，需要一个安装了 Python 3.6（或更高版本）且具有 Internet 连接的环境。 [Azure Cloud Shell](https://shell.azure.com/) 预装了 Python 3.7：
 
 1. 运行以下命令以安装 `azure.iot.device` 模块：
 

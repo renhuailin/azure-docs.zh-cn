@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure 媒体服务来保护内容 | Microsoft Docs
-description: 本文概述如何使用 Azure 媒体服务 v2 保护内容。
+title: 使用 Azure 媒体服务来保护内容 | Microsoft 文档
+description: 本文概述了如何使用 Azure 媒体服务 v2 来保护内容。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 287f93a60a1c44b29b75def8cc3ee9adc577971c
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-ms.translationtype: MT
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695918"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067395"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
@@ -55,15 +55,15 @@ ms.locfileid: "98695918"
 
 播放器请求流时，媒体服务通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器从媒体服务密钥传送服务请求密钥。 为了确定用户是否有权获取密钥，服务会评估为密钥指定的授权策略。
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与DRM
-客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两种系统的主要区别是，使用 AES 加密时，内容密钥以未加密格式（“明文”）传输到客户端。 因此，可以通过网络跟踪在客户端上明文查看用于加密内容的密钥。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，加密员工观看的在公司内部分发的公司视频）。
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与 DRM
+客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两种系统之间的主要区别是，使用 AES 加密时，内容密钥以未加密格式（“明文”）传输到客户端。 因此，可以通过网络跟踪在客户端上明文查看用于加密内容的密钥。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，加密员工观看的在公司内部分发的公司视频）。
 
-与 AES-128 明文密钥加密相比，PlayReady、Widevine 和 FairPlay 均提供更高等级的加密。 内容密钥以加密格式传输。 此外，解密是在安全的环境中在操作系统级别处理的，在这样的环境中，恶意用户更难进行攻击。 在观看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
+与 AES-128 明文密钥加密相比，PlayReady、Widevine 和 FairPlay 均提供更高等级的加密。 内容密钥以加密格式传输。 此外，解密是在安全的环境中在操作系统级别处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
 
 ## <a name="storage-encryption"></a>存储加密
-可以使用存储加密通过 AES 256 位加密在本地加密明文内容。 然后，可以将该内容上传到 Azure 存储，以静止加密方式存储在其中。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中。 在将资产作为新的输出资产上传回来之前，可以选择重新加密这些资产。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+可以使用存储加密通过使用 AES 256 位加密在本地加密明文内容。 然后，可以将该内容上传到 Azure 存储，该内容在静止时以加密形式存储在其中。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中。 在将资产作为新的输出资产上传回来之前，可以选择重新加密这些资产。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 
-若要传送存储加密资产，必须配置资产的传送策略，使媒体服务了解要如何传送内容。 在流式传输资产之前，流式处理服务器会解密内容，然后使用指定的传送策略（例如 AES、通用加密或无加密）流式传输内容。
+若要传送存储加密资产，必须配置资产的传送策略，以使媒体服务了解要如何传送内容。 在流式传输资产之前，流式处理服务器会解密内容，然后使用指定的传送策略（例如 AES、通用加密或无加密）流式传输内容。
 
 ## <a name="types-of-encryption"></a>加密类型
 PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 使用 AES CBC 模式加密。 AES-128 明文密钥加密使用信封加密。
@@ -80,11 +80,11 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 ### <a name="token-authorization"></a>令牌授权
 使用令牌限制授权策略时，内容密钥仅发送到在密钥/许可证请求中提供了有效 JSON Web 令牌 (JWT) 或简单 Web 令牌 (SWT) 的客户端。 此令牌必须是由安全令牌服务 (STS) 颁发的。 可以使用 Azure Active Directory 作为 STS，也可以部署自定义 STS。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名。 如果令牌有效，而且令牌中的声明与为密钥/许可证配置的声明相匹配，则媒体服务密钥传送服务会将所请求的密钥/许可证返回到客户端。
 
-配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥传送服务验证令牌中的这些值是否与模板中的值匹配。
+配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 ### <a name="token-replay-prevention"></a>令牌重放防护
 
-*令牌重放防护* 功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
+令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
  
 #### <a name="considerations"></a>注意事项
 
@@ -95,19 +95,19 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 * 此功能可用于所有现有的受保护内容（仅需要更改颁发的令牌）。
 * 此功能同时使用 JWT 和 SWT。
 
-## <a name="streaming-urls"></a>流 URL
+## <a name="streaming-urls"></a>流式处理 URL
 如果资产是使用多个 DRM 加密的，请在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
 请注意以下事项：
 
 * 仅可以指定不多于一个加密类型。
 * 如果仅向资产应用了一种加密，则无需在 URL 中指定加密类型。
-* 加密类型区分大小写。
+* 加密类型不区分大小写。
 * 可以指定以下加密类型：
 
-  * **cenc**：对于 PlayReady 或 Widevine (常见的加密) 
-  * **cbcs-aapl**：用于 FairPlay（AES CBC 加密）
-  * **cbc**：用于 AES 信封加密
+  * **cenc**：对于 PlayReady 或 Widevine（通用加密）
+  * **cbcs-aapl**：对于 FairPlay（AES CBC 加密）
+  * **cbc**：对于 AES 信封加密
 
 ## <a name="additional-notes"></a>附加说明
 
@@ -117,8 +117,8 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 下列文章介绍了可帮助你掌握内容保护入门知识的后续步骤：
 
 * [使用存储加密进行保护](media-services-rest-storage-encryption.md)
-* [使用 AES 加密进行保护](media-services-protect-with-aes128.md)
-* [通过 PlayReady 和/或 Widevine 进行保护](media-services-protect-with-playready-widevine.md)
+* [使用 AES 加密进行保护](media-services-playready-license-template-overview.md)
+* [使用 PlayReady 和/或 Widevine 进行保护](media-services-protect-with-playready-widevine.md)
 * [使用 FairPlay 进行保护](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>相关链接

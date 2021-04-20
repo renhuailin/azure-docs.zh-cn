@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472234"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644804"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库或 SQL 托管实例（平面文件）
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "103472234"
 * 已安装 bcp 命令行实用工具
 * 已安装 sqlcmd 命令行实用工具
 
-可以从 [Microsoft sqlcmd 文档][https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ]下载 bcp 和 sqlcmd 实用工具。
+可以从 [Microsoft sqlcmd 文档](/sql/tools/sqlcmd-utility?view=sql-server-ver15&preserve-view=true)下载 bcp 和 sqlcmd 实用工具。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
 

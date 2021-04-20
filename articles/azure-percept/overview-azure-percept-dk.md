@@ -1,55 +1,68 @@
 ---
 title: Azure Percept DK 概述
-description: 了解有关 Azure Percept 深色的详细信息
-author: elqu20
-ms.author: v-elqu
+description: 详细了解 Azure Percept DK
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: b20448a88cee6c4ea4af0bcbfaa6ec465f2e28bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179368"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560958"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK 概述
 
-Azure Percept 深色是一种边缘 AI 和 IoT 开发工具包，旨在开发视觉和音频 AI 概念证明。 与 [Azure Percept Studio](./overview-azure-percept-studio.md) 和 [azure Percept 音频](./overview-azure-percept-audio.md)结合使用时，它成为一个功能强大但易于使用的平台，可用于构建面向各种视觉或音频 ai 应用程序的边缘 AI 解决方案。 它可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
+Azure Percept DK 是一种边缘 AI 开发工具包，旨在通过 [Azure Percept Studio](./overview-azure-percept-studio.md) 开发视觉和音频 AI 解决方案。 Azure Percept DK 可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept 深色设备。":::
+> [!div class="nextstepaction"]
+> [立即购买](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-## <a name="key-features"></a>关键功能
+</br>
 
-- 能够 **在边缘运行 AI**。 使用内置的硬件加速，无需连接到云即可运行视觉 AI 模型。
-- **内置信任安全的硬件根**。 有关更多详细信息，请参阅 [Azure Percept 安全性](./overview-percept-security.md) 概述。
-- **与 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** 和其他 azure 服务无缝集成。 例如，Azure IoT 中心、Azure 认知服务和 [实时视频分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
-- **与可选的 [Azure Percept 音频](./overview-azure-percept-audio.md)无缝集成**
-- **支持顶级 AI 平台**。 例如 "ONNX" 和 "TensorFlow"。
-- **与 80/20 railing 系统集成**。 更轻松地在生产环境中生成原型。 了解有关 [80/20 集成](./overview-8020-integration.md)的详细信息。
+> [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
+
+## <a name="key-features"></a>主要功能
+
+- 运行边缘上的 AI。 通过内置的硬件加速，开发工具包可以在没有连接到云的情况下运行 AI 模型。
+
+- 内置硬件信任根安全性。 详细了解 [Azure Percept 安全性](./overview-percept-security.md)。
+
+- 与 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 和其他 Azure 服务（例如，Azure IoT 中心、Azure 认知服务和[实时视频分析](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)）无缝集成。
+
+- 与 [Azure Percept Audio](./overview-azure-percept-audio.md)（用于构建 AI 音频解决方案的可选配件）兼容。
+
+- 支持第三方 AI 工具（例如 ONNX 和 TensorFlow）。
+
+- 与 80/20 导轨系统集成，这样就可以进行无限的设备装载配置。 详细了解 [80/20 集成](./overview-8020-integration.md)。
 
 ## <a name="hardware-components"></a>硬件组件
 
-- Azure Percept 深色运营商板
+- Azure Percept DK 承载板：
     - NXP iMX8m 处理器
-    - 受信任的平台模块 (TPM) 版本2。0
-    - WiFi 和蓝牙连接
-    - 查看完整的 [数据表](./azure-percept-dk-datasheet.md)
-- 模块上的 Azure Percept 远景系统 (SoM) 
-    - Intel Movidius 无数 X (MA2085)  (VPU) 
-    - 能够添加另一个的 RGB 相机传感器
-    - 查看完整的 [数据表](./azure-percept-vision-datasheet.md)
+    - 受信任的平台模块 (TPM) 版本 2.0
+    - Wi-Fi 和蓝牙连接
+    - 有关详细信息，请参阅 [Azure Percept DK 数据表](./azure-percept-dk-datasheet.md)
 
-## <a name="get-started-with-the-azure-percept-dk"></a>Azure Percept 深色入门
+- Azure Percept Vision 模块系统 (SoM)：
+    - Intel Movidius Myriad X (MA2085) 视觉处理单元 (VPU)
+    - RGB 相机传感器
+    - 有关详细信息，请参阅 [Azure Percept Vision 数据表](./azure-percept-vision-datasheet.md)
 
-- 完成这些快速入门
-    - [取消装箱并组装 Azure Percept 深色](./quickstart-percept-dk-unboxing.md)
-    - [设置 Azure Percept 深色并运行第一个视觉 AI 模型](./quickstart-percept-dk-set-up.md)
-- 通过这些教程开始构建概念证明
+## <a name="getting-started-with-azure-percept-dk"></a>Azure Percept DK 入门
+
+- 安装开发工具包：
+    - [对 Azure Percept DK 进行拆箱和组装](./quickstart-percept-dk-unboxing.md)
+    - [完成 Azure Percept DK 安装体验](./quickstart-percept-dk-set-up.md)
+
+- 开始构建视觉解决方案和音频解决方案：
     - [在 Azure Percept Studio 中创建无代码视觉解决方案](./tutorial-nocode-vision.md)
-    - [在 Azure Percept Studio 中创建语音助手](./tutorial-no-code-speech.md)
+    - [在 Azure Percept Studio 中创建无代码语音解决方案](./tutorial-no-code-speech.md)（需要 Azure Percept Audio 配件）
 
 ## <a name="next-steps"></a>后续步骤
 
-订购 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)的 AZURE Percept 深色。
+> [!div class="nextstepaction"]
+> [从 Microsoft 在线商店购买 Azure Percept DK](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

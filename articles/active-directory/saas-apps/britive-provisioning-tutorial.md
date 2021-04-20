@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/05/2021
 ms.author: Zhchia
 ms.openlocfilehash: 8bebcb49bc7bf31614a161c08d33d5910679b614
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103225638"
 ---
 # <a name="tutorial-configure-britive-for-automatic-user-provisioning"></a>教程：为 Britive 配置自动用户预配
@@ -50,7 +50,7 @@ ms.locfileid: "103225638"
 1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 1. 确定要[在 Azure AD 与 Britive 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
-## <a name="step-2-configure-britive-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Britive 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-britive-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Britive 以支持通过 Azure AD 进行预配
 
 必须按照以下步骤手动配置应用程序：
 1. 使用管理员权限登录到 Britive 应用程序
@@ -63,7 +63,7 @@ ms.locfileid: "103225638"
 
     ![配置页](media/britive-provisioning-tutorial/configuration.png)
 
-1. 单击“SCIM”选项卡。将 SCIM 提供程序从“通用”更改为“Azure”，然后保存更改。 复制 SCIM URL 并进行记录。后续将在 Azure 门户的 Britive 应用程序的“预配”选项卡上的“租户 URL”框中输入这些值。
+1. 单击“SCIM”选项卡。将 SCIM 提供程序从“通用”更改为“Azure”，然后保存所做的更改。 复制 SCIM URL 并进行记录。后续将在 Azure 门户的 Britive 应用程序的“预配”选项卡上的“租户 URL”框中输入这些值。
 
     ![SCIM 页](media/britive-provisioning-tutorial/scim.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "103225638"
     ![复制令牌](media/britive-provisioning-tutorial/copy-token.png) 
 
 
-## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Britive
+## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Britive
 
 从 Azure AD 应用程序库添加 Britive，开始管理 Britive 的预配。 如果之前为 Britive 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 
@@ -123,7 +123,7 @@ ms.locfileid: "103225638"
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Britive” 。
 
-1. 在“属性映射”部分中，查看从 Azure AD 同步到 Britive 的用户属性。 选为“匹配”属性的特性用于匹配 Britive 中的用户帐户以执行更新操作。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，需要确保 Britive API 支持基于该特性筛选用户。 选择“保存”按钮以提交任何更改  。
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 Britive 的用户属性。 选为“匹配”属性的特性用于匹配 Britive 中的用户帐户以执行更新操作。 如果选择更改[匹配目标特性](../app-provisioning/customize-application-attributes.md)，需要确保 Britive API 支持基于该特性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|支持筛选|
    |---|---|---|
@@ -176,7 +176,7 @@ ms.locfileid: "103225638"
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Britive” 。
 
-1. 在“属性映射”部分中，查看从 Azure AD 同步到 Britive 的组属性。 选为“匹配”属性的特性用于匹配 Britive 中的组以执行更新操作。 选择“保存”按钮以提交任何更改  。
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 Britive 的组属性。 选为“匹配”属性的特性用于匹配 Britive 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|支持筛选|
       |---|---|---|

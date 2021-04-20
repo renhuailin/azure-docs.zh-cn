@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: memildin
 ms.openlocfilehash: 9af4f225b1b9ca5e8023a8d5b4bb7607762e4447
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102631891"
 ---
 # <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>管理订阅上的多重身份验证 (MFA) 实施
@@ -86,10 +86,10 @@ Azure AD Premium P2 提供极强大的安全功能和经过改善的用户体验
 
 ## <a name="faq---mfa-in-security-center"></a>常见问题解答 - 安全中心中的 MFA
 
-- [我们已经在使用 CA 策略来强制执行 MFA。为什么我们仍会获得安全中心建议呢？](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
-- [我们正在使用第三方 MFA 工具强制执行 MFA。为什么我们仍会获得安全中心建议呢？](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [我们已在使用 CA 策略强制实施 MFA，为什么还会收到安全中心建议？](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [我们已在使用第三方 MFA 工具强制实施 MFA，为什么还会收到安全中心建议？](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
 - [为什么安全中心将没有订阅权限的用户帐户显示为“需要 MFA”？](#why-does-security-center-show-user-accounts-without-permissions-on-the-subscription-as-requiring-mfa)
-- [我们正在通过 PIM 强制执行 MFA。为什么 PIM 帐户显示为不合规？](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
+- [我们正在通过 PIM 强制实施 MFA，为什么 PIM 帐户会显示为不合规？](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
 - [是否可以免除或关闭某些帐户？](#can-i-exempt-or-dismiss-some-of-the-accounts)
 - [安全中心的标识和访问保护是否有任何限制？](#are-there-any-limitations-to-security-centers-identity-and-access-protections)
 

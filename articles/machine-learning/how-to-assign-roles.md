@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 01/20/2020
+ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: bdd59c80408910bf8ca51bf787c8ff15dc2a4893
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889750"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612613"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -470,6 +470,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
     若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)。
 
 - 新的角色分配有时可能需要长达 1 小时才能生效，覆盖整个堆栈的缓存权限。
+- Azure 机器学习目前不支持[条件访问](../role-based-access-control/conditional-access-azure-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

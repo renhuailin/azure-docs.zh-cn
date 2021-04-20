@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92165139"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>适用于 Windows 10 的设计助手体验
@@ -70,11 +70,11 @@ Windows 10 根据设备上下文推断客户上下文的激活体验。 以下�
 当助手应用具有焦点时，客户意向清楚地与应用进行交互，因此所有语音激活体验都应由主应用视图处理。 客户可能会调整视图大小。 为了帮助说明助手 shell 交互，本文档的其余部分采用名为 Contoso 的财务服务助理的具体示例。 在此关系图和后续关系图中，客户所说的内容将显示在左侧的卡通语音气泡中，而助手响应显示在右侧的卡通气泡中。
 
 应用内视图。语音激活开始时的初始状态：
-![显示 Contoso 金融助手应用程序打开了默认画布的屏幕截图。 右侧的卡通语音气泡显示“Contoso”。](media/voice-assistants/windows_voice_assistant/initial_state.png)
+![显示 Contoso 金融助手应用打开了默认画布的屏幕截图。 右侧的卡通语音气泡显示“Contoso”。](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-应用内视图。语音激活成功后，聆听体验开始：![语音助手正在聆听时 Windows 语音助手的屏幕截图](media/voice-assistants/windows_voice_assistant/listening.png)
+应用内视图。语音激活成功后，聆听体验开始：![语音助手正在聆听时的 Windows 语音助手的屏幕截图](media/voice-assistants/windows_voice_assistant/listening.png)
 
-应用内视图。所有响应都将保留在应用体验中。![助手答复时 Windows 语音助手的屏幕截图](media/voice-assistants/windows_voice_assistant/response.png)
+应用内视图。所有响应都将保留在应用体验中。![助手答复时的 Windows 语音助手的屏幕截图](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>锁定时语音激活设计指南
 

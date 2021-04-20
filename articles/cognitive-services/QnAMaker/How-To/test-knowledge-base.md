@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96353147"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中测试知识库
@@ -183,7 +183,7 @@ ms.locfileid: "96353147"
 |--|--|--|
 |知识库 ID|在“发布”页上找到的知识库 ID。 通过在单个文件中使用不同的知识库 ID，对单个文件中同一服务的多个知识库同时进行测试。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`（在 `POST` 中显示的 36 个字符的字符串） |
 |问题|用户会输入的问题文本。 最多 1,000 个字符。|`How do I sign out?`|
-|元数据标记|可选|使用“键:值”格式|
+|元数据标记|可选|`topic:power` 使用 `key:value` 格式|
 |Top 参数|可选|`25`|
 |预期的答案 ID|可选|`13`|
 
@@ -245,7 +245,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 |列号|可选列|数据位置|
 |--|--|--|
-|3|metadata|针对现有的键:值对导出现有的知识库。|
+|3|metadata|针对现有的`key:value`对导出现有的知识库。|
 |4|top|建议使用默认值 `25`。|
 |5|问答集 ID|针对 ID 值导出现有的知识库。 另请注意，ID 已在输出文件中返回。|
 

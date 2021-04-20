@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215147"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606984"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -81,34 +81,15 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>连接到服务终结点保护的资源
 
-若要提供更高级别的安全性，可以使用服务终结点将一些 Azure 服务限制到一个虚拟网络中。 随后必须将函数应用与该虚拟网络集成才能访问资源。 支持虚拟网络集成的所有计划都支持此配置。
+若要提供更高级别的安全性，可以使用服务终结点将一些 Azure 服务限制到一个虚拟网络中。 随后必须将函数应用与该虚拟网络集成才能访问资源。 支持虚拟网络集成的所有[计划](functions-scale.md#networking-features)都支持此配置。
 
 若要了解详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>将存储帐户限制到虚拟网络中 
 
-创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。 此功能当前适用于所有支持虚拟网络的 sku，其中包括标准版和高级版，但弹性戳记上的虚拟网络仅适用于高级 sku。 若要使用限制到专用网络的存储帐户来设置函数，请执行以下操作：
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。 
 
-1. 使用未启用服务终结点的存储帐户创建一个函数。
-1. 将该函数配置为连接到你的虚拟网络。
-1. 创建或配置另一存储帐户。  此存储帐户将是我们使用服务终结点保护的存储帐户，可连接我们的函数。
-1. 在受保护的存储帐户中[创建文件共享](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
-1. 为此存储帐户启用服务终结点或专用终结点。  
-    * 如果使用专用终结点连接，此存储帐户将需要一个专用终结点来存储 `file` 和 `blob` 子资源。  如果使用某些功能（如 Durable Functions），则还需要可通过专用终结点连接访问的 `queue` 和 `table`。
-    * 如果使用服务终结点，请为存储帐户启用专用于函数应用的子网。
-1. 将文件和 blob 内容从函数应用存储帐户复制到受保护的存储帐户和文件共享。
-1. 复制此存储帐户的连接字符串。
-1. 将函数应用的“配置”下的“应用程序设置”更新为以下内容：
-    - 将 `AzureWebJobsStorage` 更新为受保护存储帐户的连接字符串。
-    - 将 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 更新为受保护存储帐户的连接字符串。
-    - 将 `WEBSITE_CONTENTSHARE` 更新为在受保护存储帐户中创建的文件共享的名称。
-    - 使用名称 `WEBSITE_CONTENTOVERVNET` 和值 `1` 创建新设置。
-    - 如果存储帐户使用专用终结点连接，请验证或添加以下设置
-        - `WEBSITE_VNET_ROUTE_ALL`，值为 `1`。
-        - `WEBSITE_DNS_SERVER`，值为 `168.63.129.16` 
-1. 保存应用程序设置。  
-
-函数应用会重启，并会立即连接到受保护的存储帐户。
+此功能目前适用于专用（应用服务）计划和高级计划中 Windows 虚拟网络支持的所有 SKU。 不支持消耗计划。 若要了解如何使用限制到专用网络的存储帐户设置函数，请参阅[将存储帐户限制到虚拟网络中](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)。
 
 ## <a name="use-key-vault-references"></a>使用 Key Vault 引用
 
@@ -173,6 +154,8 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 高级计划、应用服务计划或应用服务环境中提供出站 IP 限制。 可以为部署应用服务环境的虚拟网络配置出站限制。
 
 将高级计划或应用服务计划中的函数应用与虚拟网络集成时，默认情况下，应用仍可对 Internet 进行出站呼叫。 通过添加应用程序设置 `WEBSITE_VNET_ROUTE_ALL=1`，可强制将所有出站流量发送到虚拟网络中，在其中可以使用网络安全组规则限制流量。
+
+若要了解如何使用虚拟网络控制出站 IP，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。 
 
 ## <a name="automation"></a>自动化
 以下 API 可让你以编程方式管理区域虚拟网络集成：

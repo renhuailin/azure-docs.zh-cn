@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
 ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98936270"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>将异常检测器模块部署到 IoT Edge
 
 了解如何将认知服务[异常检测器](../anomaly-detector-container-howto.md)模块部署到 IoT Edge 设备。 将模块部署到 IoT Edge 后，它将与其他模块一起在 IoT Edge 中作为容器实例运行。 它公开了与在标准 Docker 容器环境中运行的异常检测器容器实例完全相同的 API。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 * 安装 [Azure CLI](/cli/azure/install-azure-cli)。

@@ -1,21 +1,21 @@
 ---
 title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 02/03/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 278aae410af536a5cc41e55dabf1dd71de04151b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
-ms.translationtype: MT
+ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550855"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802346"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
 本文介绍了有效使用 Azure Batch 服务的最佳做法和有用技巧集合，这些做法基于使用 Batch 的实际体验。 这些技巧有助于增强性能，并避免 Azure Batch 解决方案中出现设计缺陷。
 
 > [!TIP]
-> 有关 Azure Batch 中的安全性的指南，请参阅 [Batch security and 相容性最佳实践](security-best-practices.md)。
+> 有关 Azure Batch 安全性的指南，请参阅 [Batch 安全性与合规资最佳做法](security-best-practices.md)。
 
 ## <a name="pools"></a>池
 
@@ -23,35 +23,34 @@ ms.locfileid: "99550855"
 
 ### <a name="pool-configuration-and-naming"></a>池配置和命名
 
-- **池分配模式** 创建 Batch 帐户时，可以在两种池分配模式之间进行选择：**Batch 服务** 或 **用户订阅**。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+- 池分配模式：创建 Batch 帐户时，可以在下述两种池分配模式之间进行选择：“Batch 服务”或“用户订阅”。 在大部分情况下，应使用默认的 Batch 服务模式，使用此模式时，池在幕后在 Batch 托管的订阅中分配。 在备用的“用户订阅”模式下，会在创建池后直接在订阅中创建 Batch VM 和其他资源。 用户订阅帐户主要用于实现重要但却不太多见的方案。 有关用户订阅模式的详细信息，请参阅[用户订阅模式的其他配置](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
-- “cloudServiceConfiguration”或“virtualMachineConfiguration”。
-    应使用“virtualMachineConfiguration”。 “virtualMachineConfiguration”池支持所有 Batch 功能。 “cloudServiceConfiguration”池并非支持所有功能，也没有计划新的功能。
+- “virtualMachineConfiguration”或“cloudServiceConfiguration”：虽然目前可以使用任一配置来创建池，但应使用“virtualMachineConfiguration”而不是“cloudServiceConfiguration”来配置新池。 虚拟机配置池将支持所有当前和新的 Batch 功能。 “云服务配置”池不支持所有功能，也没有计划任何新功能。 [2024 年 2 月 29 日之后](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)，无法创建新的“cloudServiceConfiguration”池，也无法向现有池添加新节点。 有关详细信息，请参阅[将 Batch 池配置从云服务迁移到虚拟机](batch-pool-cloud-service-to-virtual-machine-configuration.md)。
 
-- **确定用于池映射的作业时考虑作业和任务运行时间。**
-    如果作业主要包括短时间运行的任务，且预期的任务总计数较小，因此作业的总预期运行时间不长，那么，请不要为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
+- 确定用于池映射的作业时，请考虑作业和任务运行时间：如果作业主要包括短时间运行的任务，且预期的任务总数较少，因此作业的总预期运行时间不长，则请勿为每个作业分配新池。 节点的分配时间会缩减作业运行时间。
 
-- **池应包含多个计算节点。**
-    不保证各个节点始终可用。 硬件故障、操作系统更新和其他许多问题虽然不太常见，但它们可能会导致个别节点脱机。 如果 Batch 工作负荷需要具有确定性且有保证的进度，则你应该分配包含多个节点的池。
+- 池应包含多个计算节点：不能保证单个节点始终可用。 硬件故障、操作系统更新和其他许多问题虽然不太常见，但它们可能会导致个别节点脱机。 如果 Batch 工作负荷需要具有确定性且有保证的进度，则你应该分配包含多个节点的池。
+
+- 不要使用生命周期结束 (EOL) 日期临近的映像。
+    强烈建议避免使用 Batch 支持生命周期结束 (EOL) 日期临近的映像。 可以通过 [`ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)、[PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) 发现这些日期。 你负责定期刷新与池相关的 EOL 日期视图，并在 EOL 日期到来之前迁移工作负荷。 如果要在指定的节点代理中使用自定义映像，则需确保在从某个映像派生自定义映像后，或者根据某个映像创建自定义映像后，沿用该映像的 Batch 支持生命周期结束日期。
 
 - **不要重复使用资源名称。**
     我们往往会不断地分配和解除 Batch 资源（作业、池等）。 例如，你可能会在星期一创建一个池，在星期二将它删除，然后在星期四又创建一个池。 应为创建的每个新资源指定一个以前从未用过的唯一名称。 为此，可以使用 GUID（作为整个资源名称或其中的一部分），或者在资源名称中嵌入资源的创建时间。 Batch 支持 [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)，使用此属性可为资源指定一个用户可读的名称，即使实际资源 ID 不够用户友好。 使用唯一名称可以更方便地区分哪个特定资源在日志和指标中产生了影响。 如果需要针对某个资源提交支持案例，唯一名称还可以消除不明确性。
 
-- **池维护和故障期间的连续性。**
-    最好是让作业动态使用池。 如果作业将同一个池用于所有用途，在该池出现问题时，作业有可能无法运行。 这对于时间敏感型工作负载尤其重要。 若要解决此问题，请在计划每个作业时动态选择或创建池，或通过某种方式替代池名称，以便可以绕过运行不正常的池。
 
-- **池维护和故障期间的业务连续性** 有许多可能的原因（例如内部错误、容量约束等）会阻止池缩放到所需的大小。出于此原因，应当做好相应准备，以便在必要时将作业目标重新定为不同的池（也许可以使用不同的 VM 大小 - Batch 通过 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update) 实现此目的）。 避免使用预计永远不会删除或更改的静态池 ID。
+- 池维护和池故障期间的连续性：最好是让作业动态使用池。 如果作业将同一个池用于所有用途，在该池出现问题时，作业有可能无法运行。 这对于时间敏感型工作负载尤其重要。 若要解决此问题，请在计划每个作业时动态选择或创建池，或通过某种方式替代池名称，以便可以绕过运行不正常的池。
+
+- 池维护和池故障期间的业务连续性：池无法增长到所需大小的原因有很多（例如内部错误、容量约束等）。因此，你应该在必要时准备将作业的目标重新定为不同的池（可能是 VM 大小不同的池 - Batch 通过 [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update) 支持此操作）。 避免使用预计永远不会删除或更改的静态池 ID。
 
 ### <a name="pool-lifetime-and-billing"></a>池生存期和计费
 
 池生存期可能根据分配方法和应用于池配置的选项而有所不同。 池可以具有任意生存期，并且在任意时间点，池中的计算节点数可能会变化。 你需要负责显式管理池中的计算节点，或者通过服务提供的功能（[自动缩放](nodes-and-pools.md#automatic-scaling-policy)或[自动池](nodes-and-pools.md#autopools)）进行管理。
 
-- **使池保持最新状态。**
-    每隔几个月将池的大小调整为零，以确保获得[最新的节点代理更新和 bug 修复](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
+- 使池保持最新状态：应每隔几个月将池的大小重设为零，以确保获得[最新的节点代理更新和 bug 修补程序](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 除非重新创建池或者将其大小调整为 0 个计算节点，否则池不会接收节点代理更新。 重新创建池或调整池大小之前，建议根据[节点](#nodes)部分中所述，下载所有节点代理日志进行调试。
 
-- **重新创建池** 同样需要注意的是，不建议每天删除再重新创建池。 应该创建新池，并将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
+- 重新创建池：同样，不建议每天删除池后再重新创建池。 应该创建新池，并将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
 
-- **池效率和计费** Batch 本身不会产生额外的费用，但使用的计算资源确实会产生费用。 你需要为池中的每个计算节点付费，不管这些节点处于何种状态。 这包括运行节点所需的任何费用，例如存储和网络成本。 若要详细了解最佳做法，请参阅 [Azure Batch 的成本分析和预算](budget.md)。
+- 池效率和计费：Batch 本身不会产生额外的费用，但使用的计算资源会产生费用。 你需要为池中的每个计算节点付费，不管这些节点处于何种状态。 这包括运行节点所需的任何费用，例如存储和网络成本。 若要详细了解最佳做法，请参阅 [Azure Batch 的成本分析和预算](budget.md)。
 
 ### <a name="pool-allocation-failures"></a>池分配失败
 
@@ -73,7 +72,7 @@ Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch �
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 
-如果你有时间敏感型工作负载或生产工作负载，建议不要依赖单个 Azure 区域。 有些问题虽然极少出现，但可能会影响整个区域。 例如，如果处理需要在特定的时间开始，请考虑在开始之前的相当长一段时间纵向扩展主要区域中的池。 如果扩展该池失败，可以回退并在一个或多个备份区域中纵向扩展池。 如果另一个池出现问题，跨不同区域中多个帐户的池可提供一个现成的且易于访问的备份。 有关详细信息，请参阅[设计应用程序以实现高可用性](high-availability-disaster-recovery.md)。
+如果你有时间敏感型工作负荷或生产工作负荷，则不应依赖单个 Azure 区域。 有些问题虽然极少出现，但可能会影响整个区域。 例如，如果处理需要在特定的时间开始，请考虑在开始之前的相当长一段时间纵向扩展主要区域中的池。 如果扩展该池失败，可以回退并在一个或多个备份区域中纵向扩展池。 如果另一个池出现问题，跨不同区域中多个帐户的池可提供一个现成的且易于访问的备份。 有关详细信息，请参阅[设计应用程序以实现高可用性](high-availability-disaster-recovery.md)。
 
 ## <a name="jobs"></a>作业
 
@@ -133,7 +132,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="avoid-short-execution-time"></a>避免短执行时间
 
-仅运行一两秒的任务并不是很理想的任务。 应该尝试在单个任务（最少运行 10 秒，最多运行几小时甚至几天）中执行大量的工作。 如果每个任务执行一分钟（或更长时间），则调度开销将仅占总体计算时间的很少一部分。
+仅运行一两秒的任务并不是很理想的任务。 尝试在单个任务中完成大量的工作（单个任务最少运行 10 秒，最多运行几小时甚至几天）。 如果每个任务执行一分钟（或更长时间），则调度开销将仅占总体计算时间的很少一部分。
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>将池范围用于 Windows 节点上的短任务
 
@@ -149,7 +148,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="isolated-nodes"></a>独立节点
 
-请考虑对具有符合性或法规要求的工作负荷使用独立的 VM 大小。 虚拟机配置模式下支持的隔离大小包括 `Standard_E80ids_v4` 、、、、 `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` 和 `Standard_E64i_v3` 。 有关独立 VM 大小的详细信息，请参阅 [Azure 中的虚拟机隔离](../virtual-machines/isolation.md)。
+请考虑对具有符合性或法规要求的工作负荷使用独立的 VM 大小。 虚拟机配置模式下支持的独立大小包括 `Standard_E80ids_v4`、`Standard_M128ms`、`Standard_F72s_v2`、`Standard_G5`、`Standard_GS5` 和 `Standard_E64i_v3`。 有关独立 VM 大小的详细信息，请参阅 [Azure 中的虚拟机隔离](../virtual-machines/isolation.md)。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>通过操作系统服务接口管理长时间运行的服务
 
@@ -169,7 +168,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 对于用户订阅模式 Batch 帐户，自动 OS 升级可能会中断任务进程，尤其是在任务长时间运行的情况下。 [生成幂等任务](#build-durable-tasks)有助于减少由这些中断导致的错误。 我们还建议[在任务不需要运行时安排 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
-对于 Windows 池， `enableAutomaticUpdates` `true` 默认情况下将设置为。 建议允许自动更新，但你可以将此值设置为（ `false` 如果你需要确保 OS 更新不会意外发生）。
+对于 Windows 池，默认情况下 `enableAutomaticUpdates` 设置为 `true`。 建议允许自动更新，但如果需要确保不会意外进行 OS 更新，则可以将此值设置为 `false`。
 
 ## <a name="isolation-security"></a>隔离安全性
 
@@ -238,6 +237,6 @@ Linux：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)。
 - 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 - 了解[默认的 Azure Batch 配额、限制和约束，以及如何请求增加配额](batch-quota-limit.md)。
+- 了解如何[在池和节点后台操作中检测和避免失败](batch-pool-node-error-checking.md)。

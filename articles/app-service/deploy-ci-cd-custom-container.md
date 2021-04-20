@@ -9,30 +9,30 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472175"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643349"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>在 Azure 应用服务中使用自定义容器进行持续部署
 
 在本教程中，通过托管 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)存储库或 [Docker 中心](https://hub.docker.com)为自定义容器映像配置持续部署。
 
-## <a name="1-go-to-deployment-center"></a>1.前往部署中心
+## <a name="1-go-to-deployment-center"></a>1. 转到“部署中心”
 
-在 [Azure 门户](https://portal.azure.com)中，导航到应用服务应用的管理页面。
+在 [Azure 门户](https://portal.azure.com)中，导航到应用服务应用的管理页。
 
-在左侧菜单中，单击“部署中心” > “设置”。  
+从左侧菜单中单击“部署中心” > “设置”。  
 
 ::: zone pivot="container-linux"
-## <a name="2-choose-deployment-source"></a>2.选择部署源
+## <a name="2-choose-deployment-source"></a>2. 选择部署源
 
 根据具体情况选择部署源：
 - 容器注册表可在容器注册表和应用服务之间设置 CI/CD。
 - 如果你在 GitHub 中维护容器映像的源代码，则可以使用 GitHub Actions 选项。 当在 GitHub 存储库中提交新内容时，便会触发部署操作，该操作可直接对容器注册表运行 `docker build` 和 `docker push`，然后将应用服务应用更新为运行新映像。 有关详细信息，请参阅[如何在 GitHub Actions 中实现 CI/CD](#how-cicd-works-with-github-actions)。
-- 要使用 Azure Pipelines 设置 CI/CD，请参阅[从 Azure Pipelines 部署 Azure Web 应用容器](/devops/pipelines/targets/webapp-on-container-linux)。
+- 要使用 Azure Pipelines 设置 CI/CD，请参阅[从 Azure Pipelines 部署 Azure Web 应用容器](/azure/devops/pipelines/targets/webapp-on-container-linux)。
 
 > [!NOTE]
 > 对于 Docker Compose 应用，请选择“容器注册表”。
@@ -43,10 +43,10 @@ ms.locfileid: "103472175"
 ::: zone-end  
 
 ::: zone pivot="container-windows"
-## <a name="2-configure-registry-settings"></a>2.配置注册表设置
+## <a name="2-configure-registry-settings"></a>2. 配置注册表设置
 ::: zone-end  
 ::: zone pivot="container-linux"
-## <a name="3-configure-registry-settings"></a>3.配置注册表设置
+## <a name="3-configure-registry-settings"></a>3. 配置注册表设置
 
 要部署多容器 (Docker Compose) 应用，请在“容器类型”中选择 Docker Compose  。
 
@@ -80,7 +80,7 @@ ms.locfileid: "103472175"
 
 当你启动容器时，应用服务会将启动文件中的字符串追加到 [`docker run` 命令的末尾（作为 `[COMMAND] [ARG...]` 段）](https://docs.docker.com/engine/reference/run/)。
 
-# <a name="docker-hub"></a>[Docker Hub](#tab/dockerhub)
+# <a name="docker-hub"></a>[Docker 中心](#tab/dockerhub)
 
 ::: zone pivot="container-windows"
 在“存储库访问”中，选择要部署的映像是公共的还是专用的 。
@@ -122,10 +122,10 @@ ms.locfileid: "103472175"
 -----
 
 ::: zone pivot="container-windows"
-## <a name="3-enable-cicd"></a>3.启用 CI/CD
+## <a name="3-enable-cicd"></a>3. 启用 CI/CD
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="4-enable-cicd"></a>4.启用 CI/CD
+## <a name="4-enable-cicd"></a>4. 启用 CI/CD
 ::: zone-end
 
 应用服务支持 CI/CD 与 Azure 容器注册表和 Docker Hub 集成。 要启用它，请在“持续部署”中选择“启用”  。
@@ -147,10 +147,10 @@ ms.locfileid: "103472175"
 ::: zone-end
 
 ::: zone pivot="container-windows"
-## <a name="4-save-your-settings"></a>4.保存设置
+## <a name="4-save-your-settings"></a>4. 保存设置
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="5-save-your-settings"></a>5.保存设置
+## <a name="5-save-your-settings"></a>5. 保存设置
 ::: zone-end
 
 单击“保存” 。
@@ -164,7 +164,7 @@ ms.locfileid: "103472175"
 - 将 GitHub Actions 工作流文件存储到 GitHub 存储库中，以便处理目标为应用服务的生成和部署任务。
 - 添加专用注册表的凭据作为 GitHub 机密。 生成的工作流文件会运行 [Azure/docker-login](https://github.com/Azure/docker-login) 操作以使用专用注册表登录，然后运行 `docker push` 以部署到该位置。
 - 添加应用的发布配置文件作为 GitHub 机密。 生成的工作流文件会使用此机密对应用服务进行身份验证，然后运行 [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) 操作以配置更新后的映像，这会触发应用重启以请求更新后的映像。
-- 捕获[工作流运行日志](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)中的信息，将其显示在应用的“部署中心”的“日志”选项卡中 。
+- 捕获[工作流运行日志](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)中的信息，将其显示在应用的“部署中心”的“日志”选项卡中。
 
 可通过以下方式自定义 GitHub Actions 生成提供程序：
 
@@ -221,7 +221,7 @@ az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name '<image>:<tag>' --docker-registry-server-url 'https://<registry-name>.azurecr.io' --docker-registry-server-user '<username>' --docker-registry-server-password '<password>'
 ```
 
-# <a name="docker-hub"></a>[Docker Hub](#tab/dockerhub)
+# <a name="docker-hub"></a>[Docker 中心](#tab/dockerhub)
 
 ```azurecli-interactive
 # Public image

@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: dukek
-ms.openlocfilehash: ca43315258ea6439b08682898612137f7de1d61b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045626"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772342"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -19,7 +19,7 @@ ms.locfileid: "102045626"
 
 每个操作包含以下属性：
 
-* **类型**：已执行的通知或操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
+* **类型**：执行的通知或操作。 示例包括发送语音呼叫、短信、电子邮件，或者触发各种类型的自动化操作。 请参阅本文下文中的“类型”。
 * **Name**：操作组中的唯一标识符。
 * **详细信息**：因“类型”而异的相应详细信息。
 
@@ -76,11 +76,11 @@ ms.locfileid: "102045626"
 
 1. 定义触发警报时要触发的操作的列表。 为每个操作提供以下内容：
 
-    a. **操作类型**：选择自动化 Runbook、Azure 函数、ITSM、逻辑应用、安全 Webhook、webhook。
+    a. **操作类型**：选择自动化 Runbook、Azure 函数、ITSM、逻辑应用、安全 Webhook、Webhook。
     
     b. **名称**：输入操作的唯一名称。
 
-    c. **详细信息**：根据操作类型，输入 webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
+    c. **详细信息**：根据操作类型，输入 Webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
     
     d. **常见警报架构**：可以选择启用 [常见警报架构](./alerts-common-schema.md)，这可获得在 Azure Monitor 中的所有警报服务中具有单个可扩展和统一的警报有效负载的优势。
     
@@ -117,7 +117,7 @@ ms.locfileid: "102045626"
 操作组中的 Runbook 操作数可能有限。 
 
 ### <a name="azure-app-push-notifications"></a>Azure 应用推送通知
-通过在配置 Azure 移动应用时提供用作帐户 ID 的电子邮件地址，启用到 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/) 的推送通知。
+通过提供在配置 Azure 移动应用时用作帐户 ID 的电子邮件地址，启用向 [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)推送通知的功能。
 
 操作组中的 Azure 应用操作数可能有限。
 
@@ -149,7 +149,7 @@ ms.locfileid: "102045626"
 操作组中的电子邮件操作数可能有限。 请参阅[速率限制信息](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。
+调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。 若要处理请求，终结点必须处理 HTTP POST 谓词。
 
 操作组中的函数操作数可能有限。
 
@@ -164,8 +164,8 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](./itsmc-overvi
 ### <a name="secure-webhook"></a>安全 Webhook
 
 > [!NOTE]
-> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
-> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 azure 客户都可以通过门户访问所有对象 Id，而不检查所有者，因此，任何人都可以将安全 webhook 添加到其自己的 azure monitor 警报通知的操作组，这会违反安全性。
+> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 Webhook 终结点无法自行处理警报上下文信息，则可以使用[逻辑应用操作](./action-groups-logic-app.md)之类的解决方案对警报上下文信息进行自定义操作，以匹配 Webhook 的所需数据格式。
+> 用户应是 webhook 服务主体的所有者，以确保不会违反安全性。 由于任何 Azure 客户都可以通过门户访问所有对象 ID，而无需检查所有者，因此任何人都可以将安全的 Webhook 添加到自己的操作组中，以获取违反安全性的 Azure Monitor 警报通知。
 
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组和受保护的 Web API（Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](../../active-directory/develop/v2-overview.md)。
 
@@ -250,7 +250,7 @@ else
     
 New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $actionGroupsSP.ObjectId -PrincipalId $actionGroupsSP.ObjectId
     
-Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
+Write-Host "My Azure AD Application (ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
@@ -320,7 +320,7 @@ Write-Host $myApp.AppRoles
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 webhook 终结点不能自行处理警报上下文信息，则可以使用类似于 [逻辑应用操作](./action-groups-logic-app.md) 的解决方案，对警报上下文信息的自定义操作进行匹配，以匹配 webhook 的预期数据格式。
+> 使用 webhook 操作要求目标 webhook 终结点不需要警报的详细信息即可成功运行，或者能够分析在 POST 操作中提供的警报上下文信息。 如果 Webhook 终结点无法自行处理警报上下文信息，则可以使用[逻辑应用操作](./action-groups-logic-app.md)之类的解决方案对警报上下文信息进行自定义操作，以匹配 Webhook 的所需数据格式。
 
 Webhook 使用以下规则进行处理
 - 最多尝试三次 Webhook 调用。
@@ -329,13 +329,13 @@ Webhook 使用以下规则进行处理
 - 第二次和第三次尝试将等待响应 30 秒。
 - 三次尝试调用 Webhook 失败后，任何操作组在 15 分钟内都不会再调用该终结点。
 
-请参阅 [操作组](../app/ip-addresses.md) 源 ip 地址范围的 ip 地址。
+有关源 IP 地址范围，请参阅[操作组 IP 地址](../app/ip-addresses.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[短信警报行为](./alerts-sms-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](./activity-log-alerts-webhook.md)。  
-* 详细了解 [ITSM 连接器](./itsmc-overview.md)。
+* 了解有关 [ITSM 连接器](./itsmc-overview.md)的详细信息。
 * 详细了解有关警报的[速率限制](./alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](./alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../service-health/alerts-activity-log-service-notifications-portal.md)。

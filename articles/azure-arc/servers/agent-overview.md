@@ -1,14 +1,14 @@
 ---
 title: Connected Machine 代理概述
 description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
-ms.date: 03/15/2021
+ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470483"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609219"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
@@ -18,6 +18,8 @@ ms.locfileid: "103470483"
 >自 2020 年 9 月正式发行已启用 Azure Arc 的服务器开始，所有预发行版本的 Azure Connected Machine 代理（版本低于 1.0 的代理）将在 2021 年 2 月 2 日前弃用 。  在这段期限内，你可以升级到版本 1.0 或更高版本，这段期限后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
+
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="启用 Arc 的服务器代理概述。" border="false":::
 
 Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
@@ -52,7 +54,7 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 * 资源位置（区域）
 * 虚拟机 ID
-* 标记
+* Tags
 * Azure Active Directory 托管标识证书
 * Guest Configuration 策略分配
 * 扩展请求 - 安装、更新和删除。

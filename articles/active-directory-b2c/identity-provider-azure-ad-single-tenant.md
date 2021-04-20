@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: da12955606062e6cfc0e6bf17eeedcaed0aac1ff
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171678"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580113"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -38,7 +38,7 @@ ms.locfileid: "102171678"
 
 ## <a name="register-an-azure-ad-app"></a>注册 Azure AD 应用
 
-若要为具有特定 Azure AD 组织的 Azure AD 帐户的用户进行登录，请在 Azure Active Directory B2C (Azure AD B2C [) 中创建应用程序。](https://portal.azure.com) 有关详细信息，请参阅 [将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Azure AD 帐户的特定 Azure AD 组织用户启用登录，则需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用的是包含组织 Azure AD 租户的目录（例如，contoso.com）。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
@@ -54,6 +54,8 @@ ms.locfileid: "102171678"
 
     例如，`https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`。
 
+    如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-domain-name` 替换为你的自定义域，将 `your-tenant-name` 替换为租户的名称。
+
 1. 选择“注册”。 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 1. 依次选择“证书和机密”、“新建客户端机密”。 
 1. 为机密输入说明，选择到期时间，然后选择“添加”。 记录机密的值，以便在后续步骤中使用。
@@ -62,7 +64,7 @@ ms.locfileid: "102171678"
 
 如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
 1. 从“管理”部分中选择“应用注册” 。
 1. 在列表中选择要为其配置可选声明的应用程序。
 1. 在“管理”部分中，选择“令牌配置”。 
@@ -90,7 +92,7 @@ ms.locfileid: "102171678"
 
 1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
 1. 对于“客户端密码”，输入之前记录的客户端密码。
-1. 对于 " **作用域**"，请输入 `openid profile` 。
+1. 对于“作用域”，输入 `openid profile`。
 1. 对于“响应类型”和“响应模式” ，请保留默认值。
 1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
 1. 在“标识提供者声明映射”下，选择以下声明：
@@ -99,19 +101,24 @@ ms.locfileid: "102171678"
     - 显示名称：name
     - 给定名称：given_name
     - 姓氏：family_name
-    - **电子邮件**： *preferred_username*
+    - 电子邮件：preferred_username
 
 1. 选择“保存”。
 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>将 Azure AD 标识提供者添加到用户流 
 
+此时，Azure AD 标识提供者已设置，但还不能在任何登录页中使用。 若要将 Azure AD 标识提供者添加到用户流，请执行以下操作：
+
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要添加 Azure AD 标识提供者的用户流。
-1. 在 " **社交标识提供者**" 下，选择 " **Contoso Azure AD**"。
+1. 在“社交标识提供者”下，选择“Contoso Azure AD”。
 1. 选择“保存”。
-1. 若要测试策略，请选择 " **运行用户流**"。
-1. 对于 " **应用程序**"，请选择前面注册的名为 *testapp1-template.json* 的 web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
-1. 单击 "**运行用户流**"
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页面上，选择“Contoso Azure AD”以使用 Azure AD Contoso 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -121,19 +128,19 @@ ms.locfileid: "102171678"
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
 
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 " **目录 + 订阅" 筛选器** ，然后选择包含 Azure AD B2C 租户的目录。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“策略”下，选择“Identity Experience Framework”。 
-1. 选择 " **策略密钥** "，然后选择 " **添加**"。
+1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的 **名称**。 例如，`ContosoAppSecret`。  创建前缀 `B2C_1A_` 后，会自动将其添加到密钥的名称，因此，在下一部分的 XML 中，其引用为 *B2C_1A_ContosoAppSecret*。
-1. 在 " **密钥**" 中，输入你之前记录的客户端密码。
+1. 输入策略密钥的 **名称**。 例如，`ContosoAppSecret`。  前缀 `B2C_1A_` 会在创建密钥时自动添加到密钥的名称，因此它在以下部分的 XML 中的引用是 B2C_1A_ContosoAppSecret。
+1. 在“机密”中，输入你之前记录的客户端密码。
 1. 在“密钥用法”处选择 `Signature`。
 1. 选择“创建”。
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>将 Azure AD 配置为标识提供者
 
-若要使用户能够使用 Azure AD 帐户登录，需要将 Azure AD 定义为 Azure AD B2C 可通过终结点进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
+若要用户使用 Azure AD 帐户进行登录，则需将 Azure AD 定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
 要将 Azure AD 定义为声明提供程序，可在策略的扩展文件中将 Azure AD 添加到 ClaimsProvider 元素。
 
@@ -189,13 +196,13 @@ ms.locfileid: "102171678"
 
 若要从 Azure AD 终结点获取令牌，需要定义 Azure AD B2C 与 Azure AD 通信时应使用的协议。 此操作在 ClaimsProvider 的 TechnicalProfile 元素内完成。
 
-1. 更新 TechnicalProfile 元素的 ID。 此 ID 用于从策略的其他部分引用此技术配置文件，例如 `AADContoso-OpenIdConnect` 。
+1. 更新 TechnicalProfile 元素的 ID。 此 ID 用于从策略的其他部分引用此技术配置文件，例如 `AADContoso-OpenIdConnect`。
 1. 更新 DisplayName 的值。 此值会显示在登录屏幕中的登录按钮上。
 1. 更新 Description 的值。
 1. Azure AD 使用 OpenID Connect 协议，因此请确保 Protocol 的值是 `OpenIdConnect`。
 1. 将 METADATA 的值设置为 `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`，其中 `tenant-name` 为你的 Azure AD 租户名称。 例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
-1. 在 **CryptographicKeys** 下，将 **StorageReferenceId** 的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_ContosoAppSecret`。
+1. 在“CryptographicKeys”下，将“StorageReferenceId”的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_ContosoAppSecret`。
 
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
@@ -220,12 +227,19 @@ ms.locfileid: "102171678"
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 在注册或登录页面上，选择“Contoso 员工”以使用 Azure AD Contoso 帐户登录。
+
+如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用自定义策略时，有时可能需要在部署过程中对策略进行故障排除时提供其他信息。
+当使用自定义策略时，在开发策略期间对策略进行故障排除时，有时可能需要提供其他信息。
 
-若要帮助诊断问题，可以暂时将策略置于 "开发人员模式" 中，并 Azure 应用程序 Insights 收集日志。 了解 Azure Active Directory B2C 中的 [操作方法：收集日志](troubleshoot-with-application-insights.md)。
+若要帮助诊断问题，可暂时将策略置入“开发人员模式”并通过 Azure Application Insights 收集日志。 在 [Azure Active Directory B2C：收集日志](troubleshoot-with-application-insights.md)中了解操作方式。
 
 ::: zone-end

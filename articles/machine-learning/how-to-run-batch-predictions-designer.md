@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure 机器学习设计器运行批量预测
 titleSuffix: Azure Machine Learning
-description: 了解如何创建批处理预测管道。 将管道部署为参数化 web 服务，并从任何 HTTP 库触发它。
+description: 了解如何创建批量预测管道。 将管道部署为参数化 Web 服务，以及从任何 HTTP 库触发该服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 02/05/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: dda47d3ff561d4d57045dbb28f8c411e193086d5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 34d0d31296214355b85c52e4564e9bf6658b2005
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657346"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962928"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 
@@ -143,25 +143,26 @@ ms.locfileid: "101657346"
 
 另外，还可以在终结点的“已发布管道”选项卡中设置新的默认管道。
 
-![在 "已发布管道" 页中设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![在已发布管道页面设置默认管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="limitations"></a>限制
 
-如果在训练管道中进行了一些修改，则应重新提交定型管道， **更新**  推理管道并再次运行推理管道。
+如果在训练管道中进行了一些修改，则应重新提交该训练管道，“更新”推理管道并重新运行该推理管道。
 
-请注意，在推理管道中将只更新模型，而不会更新数据转换。
+请注意，推理管道中只会更新模型，而不会更新数据转换。
 
 若要在推理管道中使用更新的转换，需要将转换模块的转换输出注册为数据集。
 
 ![显示如何注册转换数据集的屏幕截图](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
 
-然后，手动将推理管道中的 **TD** 模块替换为已注册的数据集。
+然后，手动将推理管道中的 TD 模块替换为已注册的数据集。
 
 ![显示如何替换转换模块的屏幕截图](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
 
-然后，你可以提交带有更新的模型和转换的推理管道，然后发布。
+然后，即可提交模型和转换均已更新的推理管道，并进行发布。
 
 ## <a name="next-steps"></a>后续步骤
 
 按照设计器[教程](tutorial-designer-automobile-price-train-score.md)训练和部署回归模型。
-''
+
+若要了解如何使用 SDK 来发布管道以及如何运行已发布的管道，请参阅[此文](how-to-deploy-pipelines.md)。

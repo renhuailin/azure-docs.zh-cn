@@ -1,6 +1,6 @@
 ---
 title: 管理专用 SQL 池（以前称为 SQL DW）的计算资源
-description: 了解 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的性能横向扩展功能。 通过调整 DWU 进行横向扩展，或者通过暂停专用 SQL 池来降低成本。
+description: 了解 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的性能横向扩展功能。 通过调整 DWU 进行横向扩展，或者通过暂停专用 SQL 池（以前称为 SQL DW）来降低成本。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4a2ce18f4a02ccaadf66a96049b00f3837b927e4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
-ms.translationtype: MT
+ms.openlocfilehash: 8c44e0570b08bba852d57fbb25da05d778ea8a0d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677031"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960106"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>管理 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的计算
 
@@ -44,14 +44,14 @@ ms.locfileid: "98677031"
 | DW400c   | 1                | 60                         |
 | DW500c   | 1                | 60                         |
 | DW1000c  | 2                | 30                         |
-| DW1500c  | 3                | 20 个                         |
+| DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
 | DW2500c  | 5                | 12                         |
-| DW3000c  | 6                | 10 个                         |
-| DW5000c  | 10 个               | 6                          |
+| DW3000c  | 6                | 10                         |
+| DW5000c  | 10               | 6                          |
 | DW6000c  | 12               | 5                          |
 | DW7500c  | 15               | 4                          |
-| DW10000c | 20 个               | 3                          |
+| DW10000c | 20               | 3                          |
 | DW15000c | 30               | 2                          |
 | DW30000c | 60               | 1                          |
 
@@ -92,6 +92,7 @@ ms.locfileid: "98677031"
 - 暂停期间，数据仓库单位的费用为零。
 - 不影响数据存储，数据保持不变。
 - 所有正在运行的或已排队的操作都会被取消。
+- DMV 计数器将重置。
 
 当恢复专用 SQL 池（以前称为 SQL DW）时：
 
@@ -116,9 +117,9 @@ ms.locfileid: "98677031"
 
 若要将计算管理操作自动化，请参阅[使用 Azure Functions 管理计算](manage-compute-with-azure-functions.md)。
 
-每项横向扩展、暂停和恢复操作可能需要几分钟才能完成。 如果自动执行缩放、暂停或恢复操作，我们建议实现相应的逻辑来确保先完成特定的操作，然后再继续其他操作。 通过不同的终结点检查专用 SQL 池 (以前的 SQL DW) 状态，使您能够正确实现此类操作的自动化。
+每项横向扩展、暂停和恢复操作可能需要几分钟才能完成。 如果自动执行缩放、暂停或恢复操作，我们建议实现相应的逻辑来确保先完成特定的操作，然后再继续其他操作。 通过不同的终结点检查专用 SQL 池（以前称为 SQL DW）状态可以正确实现此类操作的自动化。
 
-若要检查专用 SQL 池 (以前的 SQL DW) 状态，请参阅 [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) 或 [t-sql](quickstart-scale-compute-tsql.md#check-dedicated-sql-pool-formerly-sql-dw-state) 快速入门。 还可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)检查专用 sql 池 (以前的 sql DW) 状态。
+若要检查专用 SQL 池（以前称为 SQL DW）状态，请参阅 [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) 或 [T-SQL](quickstart-scale-compute-tsql.md#check-dedicated-sql-pool-formerly-sql-dw-state) 快速入门。 还可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) 检查专用 SQL 池（以前称为 SQL DW）状态。
 
 ## <a name="permissions"></a>权限
 
@@ -126,4 +127,4 @@ ms.locfileid: "98677031"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅管理计算资源的操作方法指南管理计算资源的 [另一个方面](manage-compute-with-azure-functions.md) 是为单独的查询分配不同的计算资源。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+请参阅[管理计算](manage-compute-with-azure-functions.md)的操作指南。管理计算资源的另一方面是为单个查询分配不同的计算资源。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。

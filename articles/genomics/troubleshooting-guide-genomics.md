@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96023817"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
@@ -29,7 +29,7 @@ ms.locfileid: "96023817"
 1. 使用命令行并键入 `msgen status`
 2. 检查 standardoutput.txt 的内容。
 
-### <a name="1-using-the-command-line-msgen-status"></a>1.使用命令行 `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令行 `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -81,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.检查 standardoutput.txt 的内容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput.txt 的内容 
 查找有问题的工作流的输出容器。 每次执行工作流后，MSGEN 会创建一个 `[workflowfilename].logs.zip` 文件夹。 请解压缩该文件夹以查看其内容：
 
 * outputFileList.txt - 工作流运行期间生成的输出文件列表
@@ -101,7 +101,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 1. 内部服务错误：服务内部的错误，无法通过修复参数或输入文件来解决。 有时，重新提交工作流可能会解决这些错误。
 2. 输入错误：使用正确的参数或修复文件格式可以解决的错误。
 
-### <a name="1-internal-service-errors"></a>1.内部服务错误
+### <a name="1-internal-service-errors"></a>1. 内部服务错误
 
 内部服务错误不可由用户处理。 可以重新提交工作流，但如果这样做也解决不了问题，请联系 Microsoft 基因组学支持人员
 
@@ -109,7 +109,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 发生内部错误。 请尝试重新提交工作流。 如果再次看到此错误，请联系 Microsoft 基因组学支持人员以获得帮助 | 重新提交工作流。 如果问题持续出现，请通过创建支持[票证](file-support-ticket-genomics.md )来联系 Microsoft 基因组学支持人员，以获得帮助。 |
 
-### <a name="2-input-errors"></a>2.输入错误
+### <a name="2-input-errors"></a>2. 输入错误
 
 这些错误可由用户处理。 根据文件类型和错误代码，Microsoft 基因组学服务会输出不同的错误代码。 请遵循下面列出的建议故障排除步骤。
 

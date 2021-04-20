@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0f030683954ede013f769bf8584e6cf82bab69f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c6a53acd63b6aa882674f6aa29e1f7152f5b0a30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103554996"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728804"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>使用 AzCopy 将数据从 Google Cloud Storage 复制到 Azure 存储（预览版）
 
@@ -63,7 +63,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -74,7 +74,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -87,7 +87,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 可以使用通配符 (*) 复制目录的内容，而无需复制包含内容的目录本身。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -97,7 +97,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -109,7 +109,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -121,7 +121,7 @@ AzCopy 使用[放置来自 URL 的块](/rest/api/storageservices/put-block-from-
 
 在桶名称中使用通配符 (*) 来复制一部分桶。 对具有分层命名空间的帐户使用相同的 URL 语法 (`blob.core.windows.net`)。
 
-|    |     |
+| 语法/示例  |  代码 |
 |--------|-----------|
 | **语法** | `azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **示例** | `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |

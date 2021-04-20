@@ -1,68 +1,69 @@
 ---
-title: 共同销售要求 |Azure Marketplace
-description: 了解 Microsoft 商用 marketplace 中的产品/服务必须满足的要求，才能符合共同销售的 incentivized 或共同销售的状态。
+title: 联合销售要求 | Azure 市场
+description: 了解 Microsoft 商业市场中的产品/服务必须满足哪些要求，才能符合“联合销售准备就绪”或“享受联合销售激励措施”状态条件。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 2/24/2021
-ms.openlocfilehash: 9fb86b3d4a46a70d71aa0c3fe9fd1b4a1ea6f298
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.reviewer: stmummer
+ms.date: 3/17/2021
+ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102120124"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107085"
 ---
 # <a name="co-sell-requirements"></a>联合销售要求
 
-本文提供了不同级别的共同销售状态的要求。 有关支持共同销售的产品/服务类型的最新列表，请参阅  [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)。 有关共同销售的概述，请参阅 [与 Microsoft 销售团队和合作伙伴共同销售概述](marketplace-co-sell.md)。
+本文提供不同级别的联合销售状态的要求。 有关支持联合销售的产品/服务类型的最新列表，请参阅[配置商业市场产品/服务的联合销售](co-sell-configure.md)。 有关联合销售的概述，请参阅[与 Microsoft 销售团队和合作伙伴联合销售的概述](co-sell-overview.md)。
 
-下表显示了所有可能的共同销售状态：
+下表显示了所有可能的联合销售状态：
 
-| 状态 | 评论 |
+| 状态 | 注释 |
 | ------------ | ------------- |
-| 不合作销售 | 尚未满足 [共同销售就绪状态](#requirements-for-co-sell-ready-status) 的最低要求。 |
-| 合作销售就绪 | 已满足 [共同销售就绪状态的所有要求](#requirements-for-co-sell-ready-status) 。 |
-| Azure IP 共同销售 incentivized | 除了 [这些附加要求](#requirements-for-ip-co-sell-incentivized-status)外，还满足共同销售的现成需求。 |
-| Biz 应用 ISV 连接高级激励  | 此状态适用于 Dynamics 365 和 Power Apps 产品/服务，并指示已满足 [此状态](#requirements-for-biz-apps-isv-connect-premium-incentive-status) 的所有要求。 |
+| 尚未做好联合销售准备 | 尚未满足最低[联合销售就绪状态要求](#requirements-for-co-sell-ready-status)。 |
+| 已做好联合销售准备 | 已满足所有[联合销售就绪状态要求](#requirements-for-co-sell-ready-status)。 |
+| 已进行 Azure IP 联合销售激励 | 除了[这些附加要求](#requirements-for-azure-ip-co-sell-incentivized-status)之外，还满足了联合销售就绪要求。 |
+| 已进行 Business Applications 联合销售激励 | 此状态适用于 [Microsoft Business Applications ISV Connect 计划](business-applications-isv-program.md)中的 Dynamics 365 和 Power Apps 产品/服务，指示已满足[此状态的所有要求](#requirements-for-business-applications-co-sell-incentivized-status)。 |
 |||
 
-## <a name="requirements-for-co-sell-ready-status"></a>共同销售就绪状态的要求
+## <a name="requirements-for-co-sell-ready-status"></a>联合销售准备就绪状态的要求
 
-为实现共同销售就绪状态，必须满足以下要求：
+要使产品/服务达到联合销售准备就绪状态，必须满足以下要求：
 
 **所有合作伙伴**：
 
-- 合作伙伴中心中有一个 MPN ID 和一个有效的 [商用 marketplace 帐户](./partner-center-portal/create-account.md)。
-- 请确保在合作伙伴中心拥有完整的 [业务配置文件](/partner-center/create-a-marketing-profile.md) 。 作为合格的 Microsoft 合作伙伴，你的业务配置文件可帮助你向寻找你的独特解决方案和专业知识的客户展示你的业务需求，从而实现了 [引用](/partner-center/referrals.md)。
-- 完成 " **与 Microsoft 共同销售** " 选项卡，并将产品/服务发布到 "商业应用商店"。
-- 为每个共同销售的符合条件的地理位置和所需物料清单提供销售联系人) 
+- [在合作伙伴中心具有一个 MPN ID 和一个有效的商业市场帐户](create-account.md)。
+- 确保已在合作伙伴中心提供了完整的[企业档案](/partner-center/create-a-marketing-profile)。 作为合格的 Microsoft 合作伙伴，你的企业档案有助于向正在寻找独特解决方案和专长来满足其业务需求的客户展示你的业务，并赢得他们的[举荐](/partner-center/referrals)。
+- 完成“与 Microsoft 联合销售”选项卡中的操作，并将产品/服务发布到商业市场。
+- 提供每个符合条件的联合销售地理区域的销售联系人和所需物料清单。
 
 **服务合作伙伴**：
 
-- 对于 _服务解决方案_ 类型的产品/服务，您必须在任何能力领域具有活动金牌资格。
- 
-**Business Applications isv**：
+- 对于“服务解决方案”类型的产品/服务，合作伙伴必须在任何资质领域拥有有效的金级资质。
 
-- Dynamics 365 客户参与 & PowerApps 和 Dynamics 365 财务 & Ops (，Dynamics 365 business central) ，PowerApps 解决方案需要 ISV Connect 注册。
+**Business Applications ISV**：
 
-### <a name="complete-the-co-sell-with-microsoft-tab"></a>完成 "与 Microsoft 共同销售" 选项卡
+- Dynamics 365 和 PowerApps（Dynamics 365 Business Central 除外）解决方案需要 ISV Connect 注册。
 
-发布或更新产品/服务时，请提供有关 " **与 Microsoft 共同销售** " 选项卡上的所有所需信息，如为 [商业 Marketplace 产品配置共同销售](commercial-marketplace-co-sell.md)中的详细信息。 这包括提供下列文档：
+### <a name="complete-the-co-sell-with-microsoft-tab"></a>完成“与 Microsoft 联合销售”选项卡中的操作
 
-- 解决方案/产品/服务
-- 解决方案/产品/服务
+发布或更新产品/服务时，请根据[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)中的详述，在“与 Microsoft 联合销售”选项卡上提供所有必需的信息。 这包括提供以下文档：
 
-我们提供了可帮助您创建这些文档的模板。 有关 "与 Microsoft 共同销售" 选项卡的必需和可选信息的详细信息，请参阅 [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)。
+- 解决方案/产品/服务单页材料
+- 解决方案/产品/服务融资演示文稿
 
-### <a name="publish-your-offer-live"></a>实时发布产品/服务
+我们会提供模板来帮助你创建这些文档。 有关“与 Microsoft 联合销售”选项卡中的必需信息和可选信息的详细信息，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)。
 
-若要符合共同销售就绪状态的条件，你的产品/服务或解决方案必须至少发布到一个商业 marketplace 在线商店： Azure Marketplace 或 Microsoft AppSource。 有关将产品/服务发布到商业市场的信息，请参阅 [按产品/服务类型发布指南](publisher-guide-by-offer-type.md)。 如果之前未在商业应用商店中发布产品/服务，请确保拥有 [商业 marketplace 帐户](./partner-center-portal/create-account.md)。
+### <a name="publish-your-offer-live"></a>发布产品/服务
 
-## <a name="requirements-for-ip-co-sell-incentivized-status"></a>IP 共同销售 incentivized 状态的要求
+若要符合“联合销售准备就绪”状态的条件，必须实时将产品/服务或解决方案发布到至少一个商业市场在线商店：Azure 市场或 Microsoft AppSource。 有关将产品/服务发布到商业市场的信息，请参阅[发布指南（按产品/服务类型）](publisher-guide-by-offer-type.md)。 如果你以前未曾在商业市场中发布过产品/服务，请确保有一个[商业市场帐户](create-account.md)。
 
-Azure IP 共同销售 incentivized 状态适用于以下产品/服务类型：
+## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>“享受 Azure IP 联合销售激励措施”状态的要求
+
+“享受 Azure IP 联合销售激励措施”状态适用于以下产品/服务类型：
 
 - Azure 应用程序
 - Azure 容器
@@ -70,26 +71,22 @@ Azure IP 共同销售 incentivized 状态适用于以下产品/服务类型：
 - IoT Edge 模块
 - 软件即服务 (SaaS)
 
-实现共同销售就绪状态后，有三个额外的要求来实现 Azure IP 共同销售 incentivized 状态：
+在达到“联合销售准备就绪”状态后，还需要满足三个附加要求才能达到“享受 Azure IP 联合销售激励措施”状态：
 
-要求 1-实现以下内容：
+要求 1 - 达成了以下目标：
 
-- 在 _组织级别_，在尾随12个月内生成至少 $100000 USD 的 Azure 消耗收入阈值。 这可通过 Azure 解决方案的组合获得。 如果产品/服务在商业应用商店中是事务，则可以满足此要求，只需满足计费的收入阈值 $100000 美元。
+- 在组织级别，最近 12 个月已经产生了 100,000 美元的收入（Azure 消费收入阈值）。 可以通过 Azure 解决方案的组合来实现此目标。 如果产品/服务在商业市场中可交易，则只要达到了 100,000 美元的计费收入阈值，就能满足此要求。
 
-要求 2-通过 Microsoft 技术验证来处理基于 Azure 的解决方案：
-- 技术验证必须确认超过50% 的产品/服务的基础结构使用 Azure 上的可重复的 IP 代码。 请注意，默认情况下，事务 Azure Vm 和商用 marketplace 上的 Azure 应用程序解决方案将满足此要求。
+要求 2 - 基于 Azure 的解决方案通过了 Microsoft 技术验证：
+- 技术验证必须确认超过 50% 的产品/服务基础结构运用 Azure 上的可重用知识产权法令。 请注意，商业市场中可交易的 Azure VM 和 Azure 应用程序解决方案默认都满足此要求。
 
-要求3–提供参考体系结构关系图：
-- 上传参考体系结构图表，其中包含合作伙伴中心的共同销售文档以供查看。 有关创建此关系图的指南，请参阅 [参考体系结构关系图](reference-architecture-diagram.md)。 有关上传关系图的信息，请参阅 [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)。
+要求 3 – 提供参考体系结构图示：
+- 在合作伙伴中心连同联合销售文档一起上传参考体系结构图示以供审查。 有关创建此图示的指导，请参阅[参考体系结构图示](reference-architecture-diagram.md)。 有关上传图示的信息，请参阅[配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)。
 
-## <a name="requirements-for-biz-apps-isv-connect-premium-incentive-status"></a>Biz Apps 的要求 ISV 连接高级激励状态
+## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Business Applications“享受联合销售激励措施”状态的要求
 
-此状态适用于基于 IP 的解决方案、应用和在 Dynamics 365 或 Power Apps 上构建的服务。
-
-不需要 (以上列出) 的共同销售就绪状态即可实现 Biz Apps ISV Connect 标准激励。 但在应用程序实现共同销售就绪状态后，可将其视为 Biz 应用 ISV 连接高级激励状态，具体取决于过去12个月的收入份额和共同销售结果/阈值。
-
-要求-你必须在 [ISV Connect](business-applications-isv-program.md) 高级层中具有活动注册。
+此状态适用于在 ISV Connect 计划中注册的基于 Dynamics 365 或 Power Apps（Dynamics 365 Business Central 除外）构建的基于 IP 的解决方案。 但是，产品/服务还必须完成“联合销售准备就绪”状态的要求（如上所述），以便 Microsoft 卖家能够与你联合销售该产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [配置商业 marketplace 产品/服务的共同销售](commercial-marketplace-co-sell.md)
+- [配置商业市场产品/服务的联合销售](commercial-marketplace-co-sell.md)

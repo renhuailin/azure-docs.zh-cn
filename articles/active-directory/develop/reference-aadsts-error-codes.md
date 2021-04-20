@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
-ms.translationtype: MT
+ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175339"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578492"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -95,14 +95,14 @@ ms.locfileid: "102175339"
 | AADSTS50000 | TokenIssuanceError - 登录服务出现问题。 请[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50001 | InvalidResource - 资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。  |
 | AADSTS50002 | NotAllowedTenant - 由于租户中的代理访问权限受限，登录失败。 如果这是你自己的租户策略，可以更改受限的租户设置来解决此问题。 |
-| AADSTS500021 | 拒绝访问 "{tenant}" 租户。 AADSTS500021 指示已配置租户限制功能，并且用户正在尝试访问不在标头中指定的允许租户列表中的租户 `Restrict-Access-To-Tenant` 。 有关详细信息，请参阅 [使用租户限制管理对 SaaS 云应用程序的访问](../manage-apps/tenant-restrictions.md)。|
-| AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 查看中概述的分辨率 [。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 未配置证书](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
+| AADSTS500021 | 拒绝访问“{tenant}”租户。 AADSTS500021 指示已配置租户限制功能，并且用户正尝试访问标头 `Restrict-Access-To-Tenant` 指定的允许租户列表中没有的租户。 有关详细信息，请参阅[使用租户限制管理对 SaaS 云应用程序的访问](../manage-apps/tenant-restrictions.md)。|
+| AADSTS50003 | MissingSigningKey - 由于缺少签名密钥或证书，登录失败。 这可能是因为应用中未配置任何签名密钥。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS50003](/troubleshoot/azure/active-directory/error-code-aadsts50003-cert-or-key-not-configured)。 如果仍然出现问题，请联系应用所有者或应用管理员。 |
 | AADSTS50005 | DevicePolicyError - 用户尝试从条件访问策略目前不支持的平台登录到设备。 |
 | AADSTS50006 | InvalidSignature - 由于签名无效，签名验证失败。 |
 | AADSTS50007 | PartnerEncryptionCertificateMissing - 未找到此应用的合作伙伴加密证书。 请向 Microsoft [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)以解决此问题。 |
 | AADSTS50008 | InvalidSamlToken - SAML 断言在令牌中缺失或配置错误。 请联系联合提供者。 |
 | AADSTS50010 | AudienceUriValidationFailed - 由于未配置令牌受众，应用的受众 URI 验证失败。 |
-| AADSTS50011 | InvalidReplyTo - 回复地址缺失、配置错误或者与为应用配置的回复地址不匹配。  作为一种解决方法，请确保将此缺失的回复地址添加到 Azure Active Directory 应用程序，或者让有权在 Active Directory 中管理你的应用程序的人为你执行此操作。|
+| AADSTS50011 | InvalidReplyTo - 回复地址缺失、配置错误或者与为应用配置的回复地址不匹配。  作为一种解决方法，请确保将此缺失的回复地址添加到 Azure Active Directory 应用程序，或者让有权在 Active Directory 中管理你的应用程序的人为你执行此操作。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS50011](/troubleshoot/azure/active-directory/error-code-aadsts50011-reply-url-mismatch)。|
 | AADSTS50012 | AuthenticationFailed - 身份验证由于以下原因之一而失败：<ul><li>未授权签名证书的使用者名称</li><li>找不到与已授权使用者名称匹配的受信任颁发机构策略</li><li>证书链无效</li><li>签名证书无效</li><li>未在租户中配置策略</li><li>未授权签名证书的指纹</li><li>客户端断言包含无效的签名</li></ul> |
 | AADSTS50013 | InvalidAssertion - 多种原因导致断言无效 - 令牌颁发者与令牌有效时间范围内的 API 版本不匹配 - 已过期 - 格式不正确 - 断言中的刷新令牌不是主要刷新令牌。 |
 | AADSTS50014 | GuestUserInPendingState - 用户兑换处于挂起状态。 尚未完全创建来宾用户帐户。 |
@@ -140,7 +140,7 @@ ms.locfileid: "102175339"
 | AADSTS50089 | 流令牌过期 - 身份验证失败。 请让用户尝试使用用户名和密码再次登录 |
 | AADSTS50097 | DeviceAuthenticationRequired - 必须使用设备身份验证。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 签名无效。 |
-| AADSTS50105 | EntitlementGrantsNotFound - 未向已登录用户分配已登录应用的角色。 请将该用户分配到该应用。 有关详细信息，请查看：[。/manage-apps/application-sign-in-problem-federated-sso-gallery.md # 用户-未分配角色](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#user-not-assigned-a-role)。 |
+| AADSTS50105 | EntitlementGrantsNotFound - 未向已登录用户分配已登录应用的角色。 请将该用户分配到该应用。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role)。 |
 | AADSTS50107 | InvalidRealmUri - 请求的联合领域对象不存在。 请联系租户管理员。 |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat - JWT 标头有问题。 请联系租户管理员。 |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter - 声明转换包含无效的输入参数。 请联系租户管理员来更新策略。 |
@@ -168,7 +168,7 @@ ms.locfileid: "102175339"
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired - 客户端能够通过 Windows 10 帐户扩展获取 SSO 令牌，但在请求中找不到令牌，或提供的令牌已过期。 |
 | AADSTS50169 | InvalidRequestBadRealm - 领域不是当前服务命名空间的已配置领域。 |
 | AADSTS50170 | MissingExternalClaimsProviderMapping - 缺少外部控制映射。 |
-| AADSTS50173 | FreshTokenNeeded-提供的授予已过期，因为它被吊销，需要使用全新的身份验证令牌。 管理员或用户已吊销此用户的令牌，导致后续令牌刷新失败并需要重新进行身份验证。 让用户重新登录。 |
+| AADSTS50173 | FreshTokenNeeded - 所提供的授权因被撤销而过期，需要一个全新的身份验证令牌。 管理员或用户撤销了该用户的令牌，导致后续的令牌刷新失败，需要重新进行身份验证。 让用户重新登录。 |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers - 直通用户不支持外部质询。 |
 | AADSTS50178 | SessionControlNotSupportedForPassthroughUsers - 直通用户不支持会话控制。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
@@ -187,15 +187,15 @@ ms.locfileid: "102175339"
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用的应用不是批准用于条件访问的应用。 用户需使用可用的获批准应用列表中的某个应用才能获取访问权限。 |
 | AADSTS53003 | BlockedByConditionalAccess - 条件访问策略已阻止访问。 访问策略不允许令牌颁发。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - 在访问此内容之前，用户需要完成多重身份验证注册过程。 用户应注册多重身份验证。 |
-| AADSTS53011 | 由于家庭租户的风险，用户被阻止。 |
+| AADSTS53011 | 由于主租户存在风险，用户被阻止。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - 用户或管理员尚未许可将应用程序与 ID X 配合使用。请发送针对该用户和资源的交互式授权请求。 |
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
-| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 使用以下链接试用为 SAML 列出的解决方法： [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](../manage-apps/application-sign-in-problem-federated-sso-gallery.md?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app)。 |
 | AADSTS650052 | 应用需要访问你的组织 `\"{organization}\"` 尚未订阅或启用的服务 `(\"{name}\")`。 若要查看服务订阅的配置，请与 IT 管理员联系。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
-| AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 |
+| AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory)。 |
 | AADSTS70002 | InvalidClient - 验证凭据时出错。 指定的 client_secret 与此客户端的预期值不匹配。 请更正 client_secret，然后重试。 有关详细信息，请参阅[使用授权代码请求访问令牌](v2-oauth2-auth-code-flow.md#request-an-access-token)。 |
 | AADSTS70003 | UnsupportedGrantType - 应用返回了不受支持的授权类型。 |
 | AADSTS70004 | InvalidRedirectUri - 应用返回了无效的重定向 URI。 客户端指定的重定向地址与配置的任何地址或者 OIDC 批准列表中的任何地址都不匹配。 |
@@ -209,10 +209,11 @@ ms.locfileid: "102175339"
 | AADSTS70019 | CodeExpired - 验证码已过期。 让用户重试登录。 |
 | AADSTS75001 | BindingSerializationError - SAML 消息绑定期间出错。 |
 | AADSTS75003 | UnsupportedBindingError - 应用返回了与不受支持的绑定相关的错误（无法通过 HTTP POST 以外的绑定发送 SAML 协议响应）。 |
-| AADSTS75005 | Saml2MessageInvalid - Azure AD 不支持应用针对 SSO 所发送的 SAML 请求。 |
+| AADSTS75005 | Saml2MessageInvalid - Azure AD 不支持应用针对 SSO 所发送的 SAML 请求。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request)。 |
 | AADSTS7500514 | 找不到支持的 SAML 响应类型。 支持的响应类型为“Response”（在 XML 命名空间“'urn:oasis:names:tc:SAML:2.0:protocol”中）或“Assertion”（在 XML 命名空间“urn:oasis:names:tc:SAML:2.0:assertion”中）。 应用程序错误 - 开发人员会处理此错误。|
+| AADSTS750054 | 必须在针对 SAML 重定向绑定的 HTTP 请求中将SAMLRequest 或 SAMLResponse 提供为查询字符串参数。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS750054](/troubleshoot/azure/active-directory/error-code-aadsts750054-saml-request-not-present)。 |
 | AADSTS75008 | RequestDeniedError - 由于 SAML 请求的目标不符合预期，来自应用的请求被拒绝。 |
-| AADSTS75011 | NoMatchedAuthnContextInOutputClaims - 用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 |
+| AADSTS75011 | NoMatchedAuthnContextInOutputClaims - 用户在服务中用于身份验证的身份验证方法与请求的身份验证方法不匹配。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS75011](/troubleshoot/azure/active-directory/error-code-aadsts75011-auth-method-mismatch)。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 身份验证请求包含无效的 NameIdPolicy。 |
 | AADSTS80001 | OnPremiseStoreIsNotAvailable - 身份验证代理无法连接到 Active Directory。 确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。 |
 | AADSTS80002 | OnPremisePasswordValidatorRequestTimedout - 密码验证请求超时。确保 Active Directory 可用，并且可以响应代理的请求。 |
@@ -268,6 +269,7 @@ ms.locfileid: "102175339"
 | AADSTS90094 | AdminConsentRequired - 需要管理员许可。 |
 | AADSTS900382 | 跨云请求不支持机密客户端。 |
 | AADSTS90099 | 应用程序“{appId}”({appName}) 未在租户“{tenant}”中获得授权。 应用程序必须获得访问客户租户的授权，然后合作伙伴委托的管理员才能使用应用程序。 若要为应用程序授权，请提供预先许可或执行相应的合作伙伴中心 API。 |
+| AADSTS900971| 未提供回复地址。|
 | AADSTS90100 | InvalidRequestParameter - 参数为空或无效。 |
 | AADSTS901002 | AADSTS901002：不支持“resource”请求参数。 |
 | AADSTS90101 | InvalidEmailAddress - 提供的数据不是有效的电子邮件地址。 电子邮件地址必须采用 `someone@example.com` 格式。 |

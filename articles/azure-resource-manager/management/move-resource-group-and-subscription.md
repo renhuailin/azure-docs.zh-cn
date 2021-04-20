@@ -2,22 +2,28 @@
 title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093627"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078377"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
 本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。
 
-在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移到新的资源组中，使用数据库的应用程序体验不到停机， 仍可读取和写入到数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
+在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 Azure SQL 逻辑服务器及其数据库移到新的资源组或订阅，则使用这些数据库的应用程序不会遇到停机情况。 这些应用程序仍可读取数据库和写入到数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
 
-移动资源只会将其移到新的资源组或订阅。 它不会更改资源的位置。
+移动资源只会将其移到新的资源组或订阅。 但不会更改该资源的位置。
+
+## <a name="changed-resource-id"></a>更改的资源 ID
+
+移动资源时，会更改其资源 ID。 资源 ID 的标准格式为 `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`。 将资源移到新的资源组或订阅时，会更改该路径中的一个或多个值。
+
+如果在任意位置使用资源 ID，则需要更改该值。 例如，如果门户中有引用资源 ID 的[自定义仪表板](../../azure-portal/quickstart-portal-dashboard-azure-cli.md)，则需要更新该值。 查找需要针对新资源 ID 进行更新的任何脚本或模板。
 
 ## <a name="checklist-before-moving-resources"></a>移动资源前需查看的清单
 
@@ -34,10 +40,11 @@ ms.locfileid: "101093627"
    * [网络移动指南](./move-limitations/networking-move-limitations.md)
    * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
+   * 若要将 Azure 订阅移到新管理组，请参阅[移动订阅](../../governance/management-groups/manage.md#move-subscriptions)。
 
-1. 如果移动的资源具有直接分配给该资源（或子资源）的 Azure 角色，则该角色分配不会移动并会处于孤立状态。 移动后必须重新创建角色分配。 最终会自动删除孤立的角色分配，但最好是在移动资源之前删除角色分配。
+1. 如果移动的资源具有直接分配给该资源（或子资源）的 Azure 角色，则该角色分配不会移动，将会变成孤立状态。 移动后必须重新创建角色分配。 最终，孤立角色分配会被自动删除，但我们建议你在进行移动之前先删除角色分配。
 
-    有关如何管理角色分配的信息，请参阅 [列出 azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) 和 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    若要了解如何管理角色分配，请参阅[列出 Azure 角色分配](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)和[分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
@@ -117,7 +124,7 @@ ms.locfileid: "101093627"
 
 ## <a name="validate-move"></a>验证移动
 
-[验证移动操作](/rest/api/resources/resources/validatemoveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作检查移动是否会成功。 发送移动请求时会自动调用验证。 仅当需要预先确定结果时才使用此操作。 若要运行此操作，需要：
+[验证移动操作](/rest/api/resources/resources/moveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作检查移动是否会成功。 发送移动请求时会自动调用验证。 仅当需要预先确定结果时才使用此操作。 若要运行此操作，需要：
 
 * 源资源组的名称
 * 目标资源组的资源 ID
@@ -188,7 +195,7 @@ Authorization: Bearer <access-token>
 
 * 移动到新的资源组。
 * 移动到新的订阅。
-* 移动到新的区域。 若要更改区域，请参阅 [从资源组) 在区域之间移动资源 (](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
+* 移动到新的区域。 若要更改区域，请参阅[在区域之间移动资源（从资源组）](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
 
 选择是要将资源移到新资源组还是新订阅。
 
@@ -234,7 +241,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 ## <a name="use-rest-api"></a>使用 REST API
 
-要将现有资源移到另一个资源组或订阅，请使用[移动资源](/rest/api/resources/Resources/MoveResources)操作。
+要将现有资源移到另一个资源组或订阅，请使用[移动资源](/rest/api/resources/resources/moveresources)操作。
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
@@ -259,7 +266,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 **问：为什么我的资源组在资源移动期间锁定了四个小时？**
 
-最多允许移动请求花费四个小时来完成。 为了防止对正在移动的资源进行修改，在资源移动期间，源资源组和目标资源组都将被锁定。
+最多允许移动请求花费四个小时来完成。 为了防止对正在移动的资源进行修改，在资源移动期间，源资源组和目标资源组都会被锁定。
 
 移动请求中有两个阶段。 在第一阶段中，将移动资源。 在第二阶段中，将向依赖于被移动资源的其他资源提供程序发送通知。 如果某个资源提供程序在任一阶段失败，则资源组可能会被锁定整整四个小时。 在允许的时间内，资源管理器将重试失败的步骤。
 

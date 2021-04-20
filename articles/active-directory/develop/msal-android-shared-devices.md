@@ -1,7 +1,7 @@
 ---
 title: 适用于 Android 设备的共享设备模式
 titleSuffix: Microsoft identity platform | Azure
-description: 了解如何启用共享设备模式，使一线工作人员能够共享 Android 设备
+description: 了解如何启用共享设备模式，使一线工作者能够共享 Android 设备
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,19 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: ea902b8b609d226f6bb9e61ec0bfd60f75a3825d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 005f69473fa238d56cf7d582a8af4000166d6939
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612426"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
->[!IMPORTANT]
-> 此功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
-
-一线工作人员（例如零售助理、机组人员和现场服务工人）通常使用共享移动设备来完成其工作。 当他们开始共享密码或 PIN 号来访问共享设备上的客户和业务数据时，这会造成问题。
+一线工作者（例如零售助理、机组人员和现场服务工人）通常使用共享移动设备来完成其工作。 当他们开始共享密码或 PIN 号来访问共享设备上的客户和业务数据时，这会造成问题。
 
 使用共享设备模式可对 Android 设备进行配置，使其可由多名员工轻松共享。 员工可以登录并快速访问客户信息。 当他们完成其轮班或任务后，可以从设备注销，然后，该设备立即可供下一名员工使用。
 
@@ -34,13 +31,13 @@ ms.locfileid: "102038571"
 开发人员和云设备管理员可以共同创建共享设备模式应用：
 
 - 开发人员编写单帐户应用（共享设备模式不支持多帐户应用），将 `"shared_device_mode_supported": true` 添加到应用的配置，并编写代码来处理共享设备注销等任务。
-- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有处于 [云设备管理员](../roles/permissions-reference.md#cloud-device-administrator) 角色中的用户才能使用 [验证器应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
+- 设备管理员通过安装 Authenticator 应用，并使用 Authenticator 应用将设备设置为共享模式，来准备要共享的设备。 只有充当[云设备管理员](../roles/permissions-reference.md#cloud-device-administrator)角色的用户才能使用 [Authenticator 应用](../user-help/user-help-auth-app-overview.md)将设备置于共享模式。 可通过以下选项在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”。   
 
  本文重点介绍开发人员应考虑的事项。
 
 ## <a name="single-vs-multiple-account-applications"></a>单帐户与多帐户应用程序
 
-使用 Microsoft 身份验证库 SDK (MSAL) 编写的应用程序可以管理一个或多个帐户。 有关详细信息，请参阅[单帐户模式或多帐户模式](single-multi-account.md)。 适用于你的应用程序的 Microsoft 标识平台功能会有所不同，具体取决于应用程序是在单帐户模式下运行还是在多帐户模式下运行。
+使用 Microsoft 身份验证库 SDK (MSAL) 编写的应用程序可以管理一个或多个帐户。 有关详细信息，请参阅[单帐户模式或多帐户模式](single-multi-account.md)。 适用于应用的 Microsoft 标识平台功能根据应用程序是在单帐户模式还是多帐户模式下运行而异。
 
 **共享设备模式应用只能在单帐户模式下工作**。
 
@@ -88,7 +85,7 @@ private IPublicClientApplication mApplication;
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>为何只希望支持单帐户模式
 
-如果你正在编写的应用仅用于使用共享设备的一线工作人员，则我们建议将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，例如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可以简化开发，因为无需实现多帐户应用包含的附加功能。
+如果你编写的应用将仅用于那些使用共享设备的一线工作者，则建议你将应用程序编写为仅支持单帐户模式。 这包括以任务为中心的大多数应用程序，例如医疗记录应用、发票应用和大多数业务线应用。 仅支持单帐户模式可以简化开发，因为无需实现多帐户应用包含的附加功能。
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>设备模式更改时会发生什么情况
 
@@ -106,4 +103,4 @@ private IPublicClientApplication mApplication;
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试学习[在 Android 应用程序中使用共享设备模式](tutorial-v2-shared-device-mode.md)教程，其中介绍了如何在共享模式的 Android 设备上运行一线工作人员应用。
+尝试学习[在 Android 应用程序中使用共享设备模式](tutorial-v2-shared-device-mode.md)教程，其中介绍了如何在共享模式的 Android 设备上运行一线工作者应用。

@@ -3,12 +3,12 @@ title: 利用 Azure Arc 大规模管理混合基础结构
 description: 了解如何有效管理 Azure 外部的客户计算机和 Kubernetes 群集。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419314"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563593"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>利用 Azure Arc 大规模管理混合基础结构
 
@@ -29,17 +29,17 @@ ms.locfileid: "103419314"
 
 作为服务提供商，你可以使用 [Azure Connected Machine 代理](../../azure-arc/servers/agent-overview.md)管理客户将其订阅连接到的 Azure 外部的本地 Windows Server 或 Linux 计算机。
 
-在 Azure 门户中查看委派订阅的资源时，将看到这些连接的计算机带有“Azure Arc”标签。可以使用 Azure 构造（如 Azure Policy 和标记）管理这些连接的计算机，管理方式与管理客户的 Azure 资源的方式相同。 还可以跨客户租户工作，以同时管理所有连接的混合计算机。
+在 Azure 门户中查看委托订阅的资源时，你会看到这些使用 Azure Arc 标记的已连接计算机。你可以使用 Azure 构造（如 Azure Policy 和标记）管理这些已连接计算机，其方式与管理客户 Azure 资源的方式相同。 还可以跨客户租户工作，以同时管理所有连接的混合计算机。
 
 例如，可以[确保在客户的混合计算机上应用一组相同的策略](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md)。 还可以使用 Azure 安全中心来监视所有客户混合环境的符合性，或[使用 Azure Monitor 直接从混合计算机收集数据](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) 并传输到 Log Analytics 工作区。 可将[虚拟机扩展](../../azure-arc/servers/manage-vm-extensions.md)部署到非 Azure Windows 和 Linux VM，简化客户混合计算机的管理。
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>使用启用了 Azure Arc 的 Kubernetes 大规模管理混合 Kubernetes 群集
 
-可以管理[使用 Azure Arc 连接到客户订阅](../../azure-arc/kubernetes/connect-cluster.md)的 Kubernetes 群集，就像它们在 Azure 中运行一样。
+可以管理[使用 Azure Arc 连接到客户订阅](../../azure-arc/kubernetes/quickstart-connect-cluster.md)的 Kubernetes 群集，就像它们在 Azure 中运行一样。
 
 如果客户创建了[服务主体帐户以将 Kubernetes 群集载入 Azure Arc](../../azure-arc/kubernetes/create-onboarding-service-principal.md)，则你可以访问此服务主体帐户以载入和管理群集。 当包含服务主体帐户的订阅[载入 Azure Lighthouse](onboard-customer.md) 时，管理租户中获得“Kubernetes 群集 - Azure Arc 载入”Azure 内置角色的用户可以完成此操作。
 
-可以使用 GitOps 为连接的群集部署[配置](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)和 [Helm 图表](../../azure-arc/kubernetes/use-gitops-with-helm.md)。
+可以使用 GitOps 为连接的群集部署[配置](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md)和 [Helm 图表](../../azure-arc/kubernetes/use-gitops-with-helm.md)。
 
 还可以使用 Azure Monitor 监视连接的群集，以及[使用 Azure Policy 大规模应用群集配置](../../azure-arc/kubernetes/use-azure-policy.md)。
 

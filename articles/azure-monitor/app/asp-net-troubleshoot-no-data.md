@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
-ms.translationtype: MT
+ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092445"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056566"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -68,11 +68,11 @@ ms.locfileid: "99092445"
     </TelemetryModules>
     ```
 
-如果未能正确升级，可能会导致意外异常或无法收集遥测数据*。
+如果未能正确升级，可能会导致意外异常或无法收集遥测数据。
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 中没有“添加 Application Insights”选项
-在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。
+*在解决方案资源管理器中右键单击现有项目时，未看到任何 Application Insights 选项。*
 
 * 工具并非支持所有类型的 .NET 项目。 支持 Web 和 WCF 项目。 对于其他项目类型，例如桌面或服务应用程序，仍可以[手动将 Application Insights SDK 添加到项目](./windows-desktop.md)。
 * 请务必使用 [Visual Studio 2013 Update 3 或更高版本](/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 该软件预装了开发人员分析工具，其中提供了 Application Insights SDK。
@@ -224,7 +224,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>
@@ -282,7 +282,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 ## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集日志
 
-在基于 Linux 的环境中，收集用于故障排除的日志的另一种特别有用的方法是使用 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
+此外，客户还可以使用跨平台的 .NET Core 工具 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) 来收集日志，以便进一步进行故障排除。 这对于基于 Linux 的环境可能特别有用。
+
+安装 [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) 之后，在 bash 中执行以下命令。
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +296,3 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="still-not-working"></a>仍然无法解决问题...
 * [有关 Application Insights 的 Microsoft 问答页](/answers/topics/azure-monitor.html)
-

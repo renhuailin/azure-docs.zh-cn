@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773039"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612375"
 ---
 # <a name="get-started-with-document-translation-preview"></a>文档翻译（预览版）入门
 
@@ -37,8 +37,8 @@ ms.locfileid: "104773039"
 
 > [!IMPORTANT]
 >
-> * 我们将不使用 Azure 门户资源的“密钥和终结点”页上的终结点或者全局翻译器终结点 (`api.cognitive.microsofttranslator.com`) 来向文档翻译发出 HTTP 请求。
 > * **向文档翻译服务发出的所有 API 请求都需要一个自定义域终结点**。
+> * 我们将不使用 Azure 门户资源的“密钥和终结点”页上的终结点或者全局翻译器终结点 (`api.cognitive.microsofttranslator.com`) 来向文档翻译发出 HTTP 请求。
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>什么是自定义域终结点？
 
@@ -93,7 +93,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 * 创建新项目。
 * 将 Program.cs 替换为下面所示的 C# 代码。
-* 设置终结点。 Program.cs 中的订阅密钥和容器 URL 值。
+* 在 Program.cs 中设置终结点、订阅密钥和容器 URL 的值。
 * 若要处理 JSON 数据，请[使用 .NET CLI 添加 Newtonsoft.Json 包](https://www.nuget.org/packages/Newtonsoft.Json/)。
 * 从项目目录运行程序。
 
@@ -101,7 +101,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 * 创建新的 Node.js 项目。
 * 使用 `npm i axios` 安装 Axios 库。
-* 将以下代码复制并粘贴到项目中。
+* 将以下代码复制/粘贴到项目中。
 * 设置终结点、订阅密钥和容器 URL 值。
 * 运行程序。
 
@@ -174,7 +174,7 @@ gradle run
 * 设置终结点、订阅密钥和容器 URL 值。
 * 使用“.go”扩展名保存文件。
 * 在安装了 Go 的计算机上打开命令提示符。
-* 生成文件，例如“go build example-code.go”。
+* 生成文件。 例如：“go build example-code.go”。
 * 运行文件，例如“example-code”。
 
  ---
@@ -207,26 +207,49 @@ gradle run
 ## <a name="post-a-translation-request"></a>通过 POST 方法发出翻译请求
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>不包含可选 glossaryURL 的 POST 请求正文
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>POST 请求正文以翻译容器中的所有文档
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>POST 请求正文以翻译容器中的特定文档
+
+* 确保指定了 "storageType": "File"
+* 确保已为特定 Blob/文档（而非容器）创建了源 URL 和 SAS 令牌 
+* 确保已将目标文件名指定为目标 URL 的一部分 - 尽管 SAS 令牌仍适用于容器。
+* 下面的示例请求显示了翻译成两种目标语言的单个文档
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -235,40 +258,6 @@ gradle run
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>包含可选 glossaryURL 的 POST 请求正文
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
@@ -1247,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>内容限制
 
-下表列出了发送到文档翻译的数据的限制。
+下表列出了发送到文档翻译（预览版）的数据的限制。
 
 |属性 | 限制|
 |---|---|

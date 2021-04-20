@@ -6,10 +6,10 @@ ms.date: 03/03/2021
 ms.author: tomfitz
 author: tfitzmac
 ms.openlocfilehash: e64253aa79cfaeb2655bb091d038dc7c98b198bd
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103419399"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>有关 ARM 模板的常见问题解答
@@ -38,7 +38,7 @@ ms.locfileid: "103419399"
 
 ## <a name="build-2020"></a>Build 2020
 
-* **我错过了你在 Microsoft Build 2020 上的演讲，可以观看演讲的录制视频吗？**
+* 我错过了你在 Microsoft Build 2020 上的演讲，可以观看演讲的录制视频吗？
 
   是的，请[随时观看](https://mybuild.microsoft.com/sessions/82984db4-37a4-4ed3-bf8b-13298841ed18?source=sessions)。
 

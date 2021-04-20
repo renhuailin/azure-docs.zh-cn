@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348613"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606141"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>将来自不同数据源的数据馈送添加到指标顾问
 
-使用本文可找到将不同类型的数据源连接到指标顾问的设置和要求。 请务必阅读[如何加入数据](how-tos/onboard-your-data.md)，了解有关在指标顾问中使用数据的关键概念。 
+使用本文可找到将不同类型的数据源连接到指标顾问的设置和要求。 请务必阅读[如何加入数据](how-tos/onboard-your-data.md)，了解有关在指标顾问中使用数据的关键概念。 \
 
 ## <a name="supported-authentication-types"></a>支持的身份验证类型
 
@@ -51,7 +51,7 @@ ms.locfileid: "96348613"
 |[**MySQL**](#mysql) | 基本 |
 |[**PostgreSQL**](#pgsql)| 基本|
 
-创建“凭据实体”并使用它对数据源进行身份验证。 以下各节指定基本身份验证所需的参数。 
+创建一个凭据实体并使用它向数据源进行身份验证。** 以下各节指定基本身份验证所需的参数。 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 
@@ -212,27 +212,26 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure 表存储</span>
 
-* **连接字符串**：若要了解如何从 Azure 表存储中检索连接字符串，请参阅 [查看并复制连接字符串](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys)。
+* 连接字符串：请创建一个 SAS（共享访问签名）URL 并在此处填写。 生成 SAS URL 的最直接方法是使用 Azure 门户。 使用 Azure 门户，可以以图形方式导航。 若要通过 Azure 门户创建 SAS URL，请先在“设置”部分导航至要访问的存储帐户，然后单击“共享访问签名”。 至少选中“表”和“对象”复选框，然后单击“生成 SAS 和连接字符串”按钮。 表服务 SAS URL 是需要在指标顾问工作区的文本框中复制和填写的内容。
 
 * **表名**：指定要查询的表。 这可在 Azure 存储帐户实例中找到。 单击“表服务”部分中的“表” 。
 
-* **查询** 你可在查询中使用 `@StartTime`。 `@StartTime` 在脚本中替换为 yyyy-MM-ddTHH:mm:ss 格式字符串。
+* **查询** 你可在查询中使用 `@StartTime`。 `@StartTime` 在脚本中替换为 yyyy-MM-ddTHH:mm:ss 格式字符串。 提示：使用 Azure 存储资源管理器创建具有特定时间范围的查询，并确保它可以正常运行，然后再进行替换。
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
 
-* **主机**：指定 Elasticsearch 群集的主控主机。
-* **端口**：指定 Elasticsearch 群集的主端口。
-* **授权标头**：指定 Elasticsearch 群集的授权标头值。
-* **查询**：指定要获取数据的查询。 支持占位符 @StartTime。（例如，引入数据 2020-06-21T00:00:00Z 时，@StartTime = 2020-06-21T00:00:00）
+* 主机：指定 Elasticsearch 群集的主实例地址。
+* 端口：指定 Elasticsearch 群集的主端口。
+* 授权标头：指定 Elasticsearch 群集的授权标头值。
+* 查询：指定用于获取数据的查询。 支持占位符 @StartTime。（例如，引入数据 2020-06-21T00:00:00Z 时，@StartTime = 2020-06-21T00:00:00）
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP 请求</span>
 
-* **请求 URL**：可返回 JSON 的 HTTP url。 支持占位符 %Y、%m、%d、%h、%M：%Y = yyyy 格式的年份，%m = MM 格式的月份，%d = dd 格式的日期，%h = HH 格式的小时，%M = mm 格式的分钟。 例如：`http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
+* 请求 URL：一个可返回 JSON 的 HTTP URL。 支持占位符 %Y、%m、%d、%h、%M：%Y = yyyy 格式的年份，%m = MM 格式的月份，%d = dd 格式的日期，%h = HH 格式的小时，%M = mm 格式的分钟。 例如：`http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`。
 * **请求 HTTP 方法**：使用 GET 或 POST。
 * **请求标头**：可添加基本身份验证。 
 * **请求有效负载**：仅支持 JSON 有效负载。 有效负载中支持 @StartTime 占位符。 响应应为以下 JSON 格式：[{"timestamp":"2018-01-01T00:00:00Z", "market":"en-us", "count":11, "revenue":1.23}, {"timestamp":"2018-01-01T00:00:00Z", "market":"zh-cn", "count":22, "revenue":4.56}]。（例如，引入数据 2020-06-21T00:00:00Z 时，@StartTime = 2020-06-21T00:00:00.0000000+00:00）

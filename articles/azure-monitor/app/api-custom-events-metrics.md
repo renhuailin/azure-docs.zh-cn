@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593749"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122095"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -59,7 +59,7 @@ ms.locfileid: "100593749"
 
 对于 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) 应用和[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器获取 `TelemetryClient` 的实例，如各自的相关文档中所述。
 
-如果使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-请遵循以下文档： https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+如果使用的是 AzureFunctions v2 及更高版本或 Azure WebJobs v3 及更高版本，请遵循以下文档： https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -486,7 +486,11 @@ telemetry.trackTrace({
 *客户端/浏览器端 JavaScript*
 
 ```javascript
-trackTrace(message: string, properties?: {[string]:string}, severityLevel?: SeverityLevel)
+trackTrace({
+    message: string, 
+    properties?: {[string]:string}, 
+    severityLevel?: SeverityLevel
+})
 ```
 
 记录诊断事件，例如进入或离开某个方法。
@@ -699,6 +703,9 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 还可以[搜索](./diagnostic-search.md)具有特定用户名和帐户的客户端数据点。
 
+> [!NOTE]
+> .NET Core SDK 的 [ApplicationInsightsServiceOptions 类中的 EnableAuthenticationTrackingJavaScript 属性](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)简化了将 Application Insights JavaScript SDK 发送的每个跟踪的用户名作为授权 ID 注入所需的 JavaScript 配置。 当此属性设置为 true 时，ASP.NET Core 中用户的用户名会与[客户端遥测](asp-net-core.md#enable-client-side-telemetry-for-web-applications)一起输出，因此不再需要手动添加 `appInsights.setAuthenticatedUserContext`，因为它已通过 SDK for ASP.NET Core 注入。 授权 ID 也会发送到服务器，.NET Core 中的 SDK 会在其中识别它，并将其用于任何服务器端遥测，如 [JavaScript API 参考](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#setauthenticatedusercontext)所述。 但是，对于工作方式不同于 ASP.NET Core MVC 的 JavaScript 应用程序（例如 SPA Web 应用），你仍然需要手动添加 `appInsights.setAuthenticatedUserContext`。
+
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用属性筛选、搜索和细分数据
 
 可以将属性和度量值附加到事件（以及指标、页面视图、异常和其他遥测数据）。
@@ -716,21 +723,23 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 *JavaScript*
 
 ```javascript
-appInsights.trackEvent
-    ("WinGame",
-        // String properties:
-        {Game: currentGame.name, Difficulty: currentGame.difficulty},
-        // Numeric metrics:
-        {Score: currentGame.score, Opponents: currentGame.opponentCount}
-        );
+appInsights.trackEvent({
+  name: 'some event',
+  properties: { // accepts any type
+    prop1: 'string',
+    prop2: 123.45,
+    prop3: { nested: 'objects are okay too' }
+  }
+});
 
-appInsights.trackPageView
-    ("page name", "http://fabrikam.com/pageurl.html",
-        // String properties:
-        {Game: currentGame.name, Difficulty: currentGame.difficulty},
-        // Numeric metrics:
-        {Score: currentGame.score, Opponents: currentGame.opponentCount}
-        );
+appInsights.trackPageView({
+  name: 'some page',
+  properties: { // accepts any type
+    prop1: 'string',
+    prop2: 123.45,
+    prop3: { nested: 'objects are okay too' }
+  }
+});
 ```
 
 *C#*
@@ -830,7 +839,7 @@ requests
 * 从 customDimensions 或 customMeasurements JSON 中提取值的时候，会有动态类型，所以必须将其转换为 `tostring` 或 `todouble`。
 * 考虑到[采样](./sampling.md)的可能性，需要使用 `sum(itemCount)` 而非 `count()`。
 
-## <a name="timing-events"></a><a name="timed"></a> 计时事件
+## <a name="timing-events"></a><a name="timed"></a>计时事件
 
 有时，需要绘制图表来呈现执行某个操作花费了多少时间。 例如，你可能想要知道用户在游戏中考虑如何选择时花费了多少时间。 为此，可以使用度量参数。
 
@@ -1006,7 +1015,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> 设置所选自定义遥测的检测密钥
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>设置所选自定义遥测的检测密钥
 
 *C#*
 

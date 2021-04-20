@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
 ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97813490"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
@@ -108,7 +108,7 @@ bug 修复，包括对带有特殊字符的 ONNX 导出的 bug 修复。
 
 ## <a name="december-19-2017"></a>2017 年 12 月 19 日
 
-- 添加了导出到 Android (TensorFlow) 的功能，此前已发布导出到 iOS (CoreML) 的功能。因此，可以导出已训练的精简模型，以便在应用程序中脱机运行。
+- 除了先前发布的导出到 iOS (CoreML) 的功能外，还添加了导出到 Android (TensorFlow) 的功能。因此，可以导出已训练的精简模型，以便在应用程序中脱机运行。
 - 添加了零售和地标“精简”域，以支持对这些域使用模型导出。
 - 已发布版本 [1.2 训练 API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) 和 [1.1 预测 API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164)。 已更新 API 支持模型导出（不会将图像保存到“预测”的新预测操作），并在训练 API 中引入了批处理操作。
 - UX 经过调整，现在可以查看使用了哪个域来训练迭代。

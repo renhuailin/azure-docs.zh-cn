@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 46c26b6070a874947dfe5d7acd5a615961576b49
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: f82169c084fc65fd483119bb84f29198ed288019
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736678"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580311"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure PowerShell 模块通过主机加密来启用端到端加密
 
@@ -23,9 +23,6 @@ ms.locfileid: "98736678"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>支持的区域
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>支持的 VM 大小
 
@@ -35,7 +32,20 @@ ms.locfileid: "98736678"
 
 ## <a name="prerequisites"></a>先决条件
 
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
+必须先为订阅启用此功能，然后才能使用 VM/VMSS 的 EncryptionAtHost 属性。 请按照以下步骤为订阅启用此功能：
+
+1.  执行以下命令，为订阅注册此功能
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+2.  在试用该功能之前，请使用以下命令检查注册状态是否为“已注册”（需要几分钟）。
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>创建 Azure Key Vault 和 DiskEncryptionSet
 
@@ -51,9 +61,9 @@ ms.locfileid: "98736678"
 
 ## <a name="examples"></a>示例
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>在启用了客户管理密钥的主机上创建具有加密的 VM。 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建 VM，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的 VM，以使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的 VM，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -97,9 +107,9 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
 ```
 
-### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>在启用了平台管理的密钥的主机上创建具有加密的 VM。 
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平台管理的密钥创建 VM，并启用主机加密。 
 
-创建一个在主机上启用了加密的 VM，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
+创建一个 VM，并启用主机加密，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -137,7 +147,7 @@ $VirtualMachine = Add-AzVMDataDisk -VM $VirtualMachine -Name $($VMName +"DataDis
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine
 ```
 
-### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以便在主机上启用加密。 
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>更新 VM 以启用主机加密。 
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -150,7 +160,7 @@ Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
 Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>在主机上检查 VM 的加密状态
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>检查 VM 的主机加密状态
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -161,9 +171,9 @@ $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
 $VM.SecurityProfile.EncryptionAtHost
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户托管密钥启用的主机上的加密创建虚拟机规模集。 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建虚拟机规模集，并启用主机加密。 
 
-使用之前创建的 DiskEncryptionSet 的资源 URI 创建具有托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘用平台托管密钥进行加密。 
+使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
 
 ```powershell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -205,9 +215,9 @@ $VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -Admin
 $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS -DiskEncryptionSetId $diskEncryptionSet.Id
 ```
 
-### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用启用了平台托管密钥的主机上的加密创建虚拟机规模集。 
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>使用平台管理的密钥创建虚拟机规模集，并启用主机加密。 
 
-创建在主机上启用了加密的虚拟机规模集，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
+创建一个虚拟机规模集，并启用主机加密，以便使用平台管理的密钥加密 OS/数据磁盘和临时磁盘的缓存。 
 
 ```powershell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -246,7 +256,7 @@ $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdmi
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
-### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虚拟机规模集以便在主机上启用加密。 
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>更新虚拟机规模集以启用主机加密。 
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"
@@ -257,7 +267,7 @@ $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $true
 ```
 
-### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>在主机上检查虚拟机规模集的加密状态
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>检查虚拟机规模集的主机加密状态
 
 ```powershell
 $ResourceGroupName = "yourResourceGroupName"

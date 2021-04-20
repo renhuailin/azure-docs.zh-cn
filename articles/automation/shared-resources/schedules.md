@@ -3,14 +3,14 @@ title: 管理 Azure 自动化中的计划
 description: 本文介绍如何在 Azure 自动化中创建和使用计划。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 8f732cd8c588ffc08dbe48f6a92add65c2bc2e9f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004606"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963234"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>管理 Azure 自动化中的计划
 
@@ -38,7 +38,7 @@ ms.locfileid: "90004606"
 
 ## <a name="create-a-schedule"></a>创建计划
 
-可以在 Azure 门户中或使用 PowerShell 为 runbook 创建新计划。 为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。 测试将验证计划 runbook 是否继续正常工作。 如果出现问题，可以在将更新的 runbook 版本迁移到生产环境之前进行故障排除并应用所需的更改。
+可以使用 Azure 门户、PowerShell 或 Azure 资源管理器 (ARM) 模板为 runbook 创建新计划。 为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。 测试将验证计划 runbook 是否继续正常工作。 如果出现问题，可以在将更新的 runbook 版本迁移到生产环境之前进行故障排除并应用所需的更改。
 
 > [!NOTE]
 > 自动化帐户不会自动获取模块的任何新版本，除非你通过从[模块](../automation-update-azure-modules.md)中选择“更新 Azure 模块”选项来手动更新它们。 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。 
@@ -121,6 +121,47 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>使用资源管理器模板创建计划
+
+在此示例中，我们使用自动化资源管理器 (ARM) 模板来创建新的工作计划。 有关用于管理自动化作业计划的此模板的常规信息，请参阅 [Microsoft.Automation automationAccounts/jobSchedules 模板参考](/azure/templates/microsoft.automation/2015-10-31/automationaccounts/jobschedules#quickstart-templates)。
+
+将此模板文件复制到文本编辑器中：
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+编辑以下参数值并将模板另存为 JSON 文件：
+
+* 作业计划对象名称：GUID（全局唯一标识符）用作作业计划对象的名称。
+
+   >[!IMPORTANT]
+   > 对于使用 ARM 模板部署的每个作业计划，GUID 必须是唯一的。 即使要重新安排现有计划，也需要更改 GUID。 即使以前删除了使用同一模板创建的现有工作计划，这也适用。 重用相同的 GUID 会导致部署失败。</br></br>
+   > 有可为你生成新 GUID 的联机服务，例如这个[免费的 GUID 在线生成器](https://guidgenerator.com/)。
+
+* 计划名称：表示将链接到指定 Runbook 的自动化作业计划名称。
+* Runbook 名称：表示作业计划要关联的自动化 Runbook 的名称。
+
+保存文件后，可以使用以下 PowerShell 命令创建 Runbook 作业计划。 此命令使用 `TemplateFile` 参数来指定模板的路径和文件名。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
+```
+
 ## <a name="link-a-schedule-to-a-runbook"></a>将计划链接到 Runbook
 
 可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。 如果 Runbook 包含参数，则可以提供这些参数的值。 必须为所有必需参数提供值，还可以为任何可选参数提供值。 此计划每次启动 Runbook 时，都将使用这些值。 可以将同一个 Runbook 附加到另一个计划，并指定不同的参数值。
@@ -142,8 +183,8 @@ $automationAccountName = "MyAutomationAccount"
 $runbookName = "Test-Runbook"
 $scheduleName = "Sample-DailySchedule"
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
-–Name $runbookName –ScheduleName $scheduleName –Parameters $params `
+Register-AzAutomationScheduledRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ScheduleName $scheduleName -Parameters $params `
 -ResourceGroupName "ResourceGroup01"
 ```
 
@@ -177,8 +218,8 @@ Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccoun
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
 $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
-Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
-–Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
+Set-AzAutomationSchedule -AutomationAccountName $automationAccountName `
+-Name $scheduleName -IsEnabled $false -ResourceGroupName "ResourceGroup01"
 ```
 
 ## <a name="remove-a-schedule"></a>删除计划

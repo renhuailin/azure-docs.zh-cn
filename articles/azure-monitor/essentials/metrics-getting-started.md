@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962707"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 
@@ -28,7 +28,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 若要在资源、资源组、订阅或 Azure Monitor 视图中创建指标图表，请打开“指标”选项卡并执行以下步骤： 
 
-1. 单击“选择范围”按钮以打开资源范围选取器。 这将允许你选择要查看其指标的资源。 如果从资源的菜单中打开了指标资源管理器，则该资源应已填充完毕。 若要了解如何跨多个资源查看指标，请 [阅读此文](./metrics-dynamic-scope.md)。
+1. 单击“选择范围”按钮以打开资源范围选取器。 这将允许你选择要查看其指标的资源。 如果从资源的菜单中打开了指标资源管理器，则该资源应已填充完毕。 若要了解如何在多个资源中查看指标，请[阅读此文](./metrics-dynamic-scope.md)。
     > ![选择资源](./media/metrics-getting-started/scope-picker.png)
 
 2. 对于某些资源，必须选取一个命名空间。 命名空间只是一种为了轻松查找指标而组织指标的方式。 例如，存储帐户具有单独的命名空间，用于存储文件、表、Blob 和队列指标。 许多资源类型只有一个命名空间。
@@ -45,7 +45,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 ## <a name="select-a-time-range"></a>选择时间范围
 
 > [!WARNING]
-> [Azure 中的大多数指标将存储 93 天](../essentials/data-platform-metrics.md#retention-of-metrics)。 但是，在任何单个图表中，可以查询不超过 30 天的数据。 此限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
+> [Azure 中的大多数指标将存储 93 天](../essentials/data-platform-metrics.md#retention-of-metrics)。 但是，在任何单个图表中，可以查询不超过 30 天的数据。 可以[平移](metrics-charts.md#pan)图表以查看完整的保留期。 30 天限制不适用于[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)。
 
 默认情况下，图表显示最近 24 小时内的指标数据。 使用“时间选取器”面板可更改时间范围，以及放大或缩小图表。  
 
@@ -63,6 +63,20 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 - **拆分** 可以控制图表是针对维度的每个值显示单独行，还是将值聚合为一行。 例如，可以在一行中查看所有服务器实例的平均响应时间，也可以在不同的行中查看每台服务器的此项指标。 需要对“服务器实例”维度应用拆分才能查看单独的行。 
 
 请参阅应用了筛选和拆分的[图表示例](../essentials/metric-chart-samples.md)。 本文介绍了用于配置图表的步骤。
+
+## <a name="share-your-metric-chart"></a>共享指标图表
+目前有两种共享指标图表的方式。 下面是有关如何通过 Excel 和链接共享指标图表中信息的说明。
+ 
+### <a name="download-to-excel"></a>下载到 Excel
+单击“共享”，然后选择“下载到 Excel”。 下载会立即开始。
+
+![介绍如何通过 Excel 共享指标图表的屏幕截图](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>共享链接
+单击“共享”，然后选择“复制链接”。 你应该收到有关链接已成功复制的通知。
+
+![介绍如何通过链接共享指标图表的屏幕截图](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>高级图表设置
 

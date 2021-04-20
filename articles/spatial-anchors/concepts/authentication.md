@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "97722957"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空间定位点身份验证和授权
@@ -176,8 +176,8 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 1.    在 Azure AD 中注册应用程序：
         1.    在 Azure 门户中，依次选择“Azure Active Directory”、“应用注册” 。
         2.    选择“新注册”。
-        3.    输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 选择“创建”  。
-2.    在应用程序上选择“设置”，然后选择“证书和机密”选项卡。 创建新的客户端机密，选择持续时间，然后选择“添加”。 请务必保存机密值。 稍后需要将其包含在 Web 服务的代码中。
+        3.    输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 选择“创建”。
+2.    在应用程序上选择“设置”，然后选择“证书和机密”选项卡。创建新的客户端密码，选择持续时间，然后选择“添加”。   请务必保存机密值。 稍后需要将其包含在 Web 服务的代码中。
 3.    向应用程序和/或用户授予对你的资源的访问权限：
         1.    在 Azure 门户中转到你的空间定位点资源。
         2.    转到“访问控制(IAM)”选项卡。

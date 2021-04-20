@@ -5,64 +5,61 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
-ms.translationtype: MT
+ms.openlocfilehash: caedefbf3887205b68bcd5de5e7cd5f1f7d7f53c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493265"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801003"
 ---
-# <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>使用 Azure Databricks 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
+# <a name="migrate-data-from-cassandra-to-an-azure-cosmos-db-cassandra-api-account-by-using-azure-databricks"></a>使用 Azure Databricks 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-Azure Cosmos DB 中的 Cassandra API 已成为在 Apache Cassandra 上运行的企业工作负荷的极佳选择，原因各种各样，例如： 
+Azure Cosmos DB 中的 Cassandra API 已成为在 Apache Cassandra 上运行的企业工作负荷的极佳选择，原因有多个，例如：
 
-* **无管理和监视开销：** 它不需管理和监视跨 OS、JVM 和 yaml 文件的大量设置，也不需进行交互。
+* **无管理和监视开销：** 它消除了跨 OS、JVM 和 YAML 文件及其交互对设置进行管理和监视的开销。
 
-* **显著节省成本：** 可以通过 Azure Cosmos DB 节省成本，包括 VM 的成本、带宽和任何适用的许可证。 另外，你无需管理数据中心、服务器、SSD 存储、网络以及电力成本。 
+* **显著节省成本：** 使用 Azure Cosmos DB 可以节省成本，其中包括 VM、带宽以及任何适用许可证的成本。 你不需管理数据中心、服务器、SSD 存储、网络以及电力成本。
 
-* **能够使用现有的代码和工具：** Azure Cosmos DB 提供的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
+* **能够使用现有的代码和工具：** Azure Cosmos DB 的线路协议级别与现有 Cassandra SDK 和工具兼容。 此兼容性确保只需经过细微的更改，就可以将现有代码库用于 Azure Cosmos DB Cassandra API。
 
-可以通过多种方式将数据库工作负荷从一个平台迁移到另一个平台。 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 是 [Apache Spark](https://spark.apache.org/) 的一种平台即服务产品，它提供了一种大规模执行脱机迁移的方法。 本文介绍使用 Azure Databricks 将数据从本机 Apache Cassandra 密钥空间/表迁移到 Azure Cosmos DB Cassandra API 所需的步骤。
+可以通过许多方式将数据库工作负荷从一个平台迁移到另一个平台。 [Azure Databricks](https://azure.microsoft.com/services/databricks/) 是 [Apache Spark](https://spark.apache.org/) 的一种平台即服务 (PaaS) 产品/服务，它提供了一种大规模执行脱机迁移的方法。 本文介绍了使用 Azure Databricks 将数据从原生 Apache Cassandra 密钥空间和表迁移到 Azure Cosmos DB Cassandra API 所需的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [预配 Azure Cosmos DB Cassandra API 帐户](create-cassandra-dotnet.md#create-a-database-account)
+* [预配一个 Azure Cosmos DB Cassandra API 帐户](create-cassandra-dotnet.md#create-a-database-account)。
 
-* [回顾连接到 Azure Cosmos DB Cassandra API 的基础知识](cassandra-spark-generic.md)
+* [查看连接到 Azure Cosmos DB Cassandra API 的基础知识](cassandra-spark-generic.md)。
 
 * 查看 [Azure Cosmos DB Cassandra API 中支持的功能](cassandra-support.md)以确保兼容性。
 
-* 请确保已在目标 Azure Cosmos DB Cassandra API 帐户中创建了空的密钥空间和表
+* 请确保已在目标 Azure Cosmos DB Cassandra API 帐户中创建了空的密钥空间和表。
 
-* [使用 cqlsh 或托管 shell 进行验证](cassandra-support.md#hosted-cql-shell-preview)
+* [使用 cqlsh 或托管 shell 进行验证](cassandra-support.md#hosted-cql-shell-preview)。
 
 ## <a name="provision-an-azure-databricks-cluster"></a>预配 Azure Databricks 群集
 
-可以按说明来[预配 Azure Databricks 群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。 但是，请注意，Apache Cassandra 连接器目前不支持 Apache Spark 3.x。 你将需要使用受支持的 Apache Spark v2.x 版来预配 Databricks 运行时。 我们建议选择一个 Databricks 运行时版本，该版本支持最新版本的 Spark 2.x，并且不能晚于 Scala 2.11 版本：
+可以按说明来[预配 Azure Databricks 群集](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)。 建议选择支持 Spark 3.0 的 Databricks 运行时版本 7.5。
 
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks 运行时":::
-
+:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="屏幕截图显示了如何查找 Databricks 运行时版本。":::
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-需要将 Apache Spark Cassandra 连接器库添加到群集，以便连接到本机和 Cosmos DB Cassandra 终结点。 在群集中，选择“库”->“新安装”->“maven”->“搜索包”：
+你需要将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`。  
 
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="Databricks 搜索包":::
+:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="屏幕截图，显示在 Databricks 中搜索 Maven 包。":::
 
-在搜索框中键入 `Cassandra`，选择可用的最新 `spark-cassandra-connector` maven 存储库，然后选择“安装”：
-
-:::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages-2.png" alt-text="Databricks 的“选择包”":::
+选择“安装”，然后在安装完成后重启群集。
 
 > [!NOTE]
-> 确保在安装了 Cassandra 连接器库之后重启 Databricks 群集。
+> 请确保在安装 Cassandra 连接器库之后重启 Databricks 群集。
 
 ## <a name="create-scala-notebook-for-migration"></a>创建用于迁移的 Scala 笔记本
 
-在 Databricks 中使用以下代码创建 Scala 笔记本。 将源和目标 cassandra 配置替换为相应的凭据、源/目标密钥空间和表，然后运行以下代码：
+在 Databricks 中创建 Scala 笔记本。 将源和目标 Cassandra 配置替换为相应的凭据，并替换源和目标密钥空间和表。 然后运行以下代码：
 
 ```scala
 import com.datastax.spark.connector._
@@ -91,7 +88,6 @@ val cosmosCassandra = Map(
     "table" -> "<TABLE>",
     //throughput related settings below - tweak these depending on data volumes. 
     "spark.cassandra.output.batch.size.rows"-> "1",
-    "spark.cassandra.connection.connections_per_executor_max" -> "10",
     "spark.cassandra.output.concurrent.writes" -> "1000",
     "spark.cassandra.concurrent.reads" -> "512",
     "spark.cassandra.output.batch.grouping.buffer.size" -> "1000",
@@ -110,36 +106,30 @@ DFfromNativeCassandra
   .write
   .format("org.apache.spark.sql.cassandra")
   .options(cosmosCassandra)
+  .mode(SaveMode.Append)
   .save
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.batch.size.rows` `spark.cassandra.output.concurrent.writes` 和配置对于 `connections_per_executor_max` 避免[速率限制](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)非常重要，因为对 Azure Cosmos DB 的请求超过预配吞吐量/ ([请求单位](./request-units.md)) 时，会发生这种情况。 你可能需要根据 Spark 群集中执行程序的数量，以及写入目标表的每条记录的大小（以及因此产生的 RU 开销）来调整这些设置。
+> 为了避免[速率限制](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)，需调整 `spark.cassandra.output.batch.size.rows` 和 `spark.cassandra.output.concurrent.writes` 值以及 Spark 群集中的工作器数这些重要配置。 对 Azure Cosmos DB 的请求超出预配的吞吐量或[请求单位](./request-units.md) (RU) 时，会出现速率限制。 你可能需要根据 Spark 群集中执行程序的数量，以及写入目标表的每条记录的大小（以及因此产生的 RU 开销）来调整这些设置。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshoot"></a>疑难解答
 
-### <a name="rate-limiting-429-error"></a>速率限制 (429 错误) 
-`request rate is large`尽管将以上设置降低到其最小值，但你可能会看到错误代码429或错误文本。 下面是一些这类情况：
+### <a name="rate-limiting-429-error"></a>速率限制（429 错误）
 
-- **分配给表的吞吐量少于6000个 [请求单位](./request-units.md)**。 即使是最小设置，Spark 也能以6000个请求单位或更多的速率来执行写入操作。 如果在预配了共享吞吐量的密钥空间中预配了一个表，则在运行时此表有可能少于6000个 ru。 在运行迁移时，请确保要迁移到的表中至少有6000个 ru 可用，并在必要时将专用请求单元分配给该表。 
-- 数据 **量过大，数据量过大**。 如果有大量的数据 (表行) 迁移到给定的表中，但数据中存在明显的偏差 (也就是说，为同一分区键值写入大量的记录) ，则即使在表中预配了大量的 [请求单位](./request-units.md) ，也仍会遇到速率限制。 这是因为，请求单元在物理分区之间平均划分，而繁重的数据偏斜可能会导致对单个分区的请求瓶颈，从而导致速率限制。 在这种情况下，建议将 Spark 降低到最小吞吐量设置，以避免速率限制，并强制迁移运行缓慢。 这种情况在迁移引用或控制表时可能更常见，在这种情况下，访问频率较低，但可能会很高。 但是，如果任何其他类型的表中出现重大倾斜，还建议查看数据模型，以避免在稳定状态操作期间对工作负荷进行热分区问题。 
-- **无法获取大表的计数**。 `select count(*) from table`对于大型表，目前不支持运行。 你可以从 Azure 门户中获取指标的计数 (请参阅我们的 [故障排除文章](cassandra-troubleshoot.md)) ，但是，如果需要从 Spark 作业的上下文中确定大表的计数，则可以将数据复制到临时表，然后使用 spark SQL 获取计数，例如，以下 (将替换为 `<primary key>` 生成的临时表) 中的某些字段。
+即使将设置减小到最小值，也可能会看到 429 错误代码或“请求速率太大”错误文本。 以下情况可能会导致速率限制：
 
-  ```scala
-  val ReadFromCosmosCassandra = sqlContext
-    .read
-    .format("org.apache.spark.sql.cassandra")
-    .options(cosmosCassandra)
-    .load
+* 分配给表的吞吐量少于 6,000 个[请求单位](./request-units.md)。 即使采用最小设置，Spark 也能以大约 6,000 个请求单位或更高的速率执行写入操作。 如果在具有共享吞吐量的密钥空间中预配了一个表，则此表在运行时的可用 RU 数可能少于 6,000。
 
-  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
-  %sql
-  select count(<primary key>) from CosmosCassandraResult
-  ```
+    确保要迁移到的表在你运行迁移时至少有 6,000 个可用 RU。 如有必要，请向该表分配专用的请求单位。
+
+* 存在大量数据而导致过度数据倾斜。 如果你有大量的数据要迁移到给定的表中，但数据中存在明显的倾斜（也就是说，为同一分区键值写入了大量的记录），则即使在表中预配了多个[请求单位](./request-units.md)，也仍会遇到速率限制。 请求单位在物理分区中平均分配，重度的数据倾斜可能会导致对单个分区的请求出现瓶颈。
+
+    在这种情况下，请将 Spark 降低到最小吞吐量设置以强制迁移缓慢运行。 这种情况在迁移引用表或控制表时可能更常见，此时的访问频率较低，倾斜度可能会很高。 但如果任何其他类型的表中出现重度倾斜，你可能需要查看数据模型，以避免在稳定状态操作期间出现工作负荷的热分区问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在容器和数据库上预配吞吐量](set-throughput.md) 
+* [在容器和数据库上预配吞吐量](set-throughput.md)
 * [分区键最佳做法](partitioning-overview.md#choose-partitionkey)
 * [使用 Azure Cosmos DB Capacity Planner 估算 RU/秒](estimate-ru-with-capacity-planner.md)
 * [Azure Cosmos DB Cassandra API 中的弹性缩放](manage-scale-cassandra.md)

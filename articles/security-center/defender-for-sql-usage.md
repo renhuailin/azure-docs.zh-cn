@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
 ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
-ms.sourcegitcommit: 33ac5cd254c33659f668a76a2e295fddcd5d194d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103465457"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
@@ -40,9 +40,9 @@ ms.locfileid: "103465457"
 
 若要启用此计划：
 
-[步骤 1。在 SQL 服务器的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
+[步骤 1. 在 SQL 服务器的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
 
-[步骤 2.在安全中心的“定价和设置”页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[步骤 2. 在安全中心的“定价和设置”页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL 服务器的主机上预配 Log Analytics 代理：
@@ -57,7 +57,7 @@ ms.locfileid: "103465457"
     - **连接不带 Azure Arc 的 Windows 计算机** - 如果选择在不使用 Azure Arc 的情况下连接在 Windows 计算机上运行的 SQL Server，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/agents/agent-windows.md) 中的说明进行操作。
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2. 在安全中心的“定价和设置”页中启用可选计划：
+### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的“定价和设置”页中启用可选计划：
 
 1. 从安全中心的菜单中，打开“定价和设置”页。
 

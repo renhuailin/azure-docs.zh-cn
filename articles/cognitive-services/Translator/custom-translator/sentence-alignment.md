@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
 ms.openlocfilehash: 0c33d766bfd3dff47ddb151e8ce4ea7b25c37548
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98897945"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
@@ -32,7 +32,7 @@ ms.locfileid: "98897945"
 
 ## <a name="suggested-minimum-number-of-sentences"></a>建议的最小句子数
 
-为了成功完成训练，下表显示了每种文档类型所需的最小句子数。 此限制是一种安全保障，可确保并行句子包含足够的独特词汇来成功训练翻译模型。 一般准则是，具有更多人工翻译质量的域内并行句子应该生成更高质量的模型。
+为了成功完成训练，下表显示了每种文档类型所需的最小句子数。此限制是一种安全保障，可确保并行句子包含足够的独特词汇来成功训练翻译模型。 一般准则是，具有更多人工翻译质量的域内并行句子应该生成更高质量的模型。
 
 | 文档类型   | 建议的最小句子计数 | 最大句子计数 |
 |------------|--------------------------------------------|--------------------------------|

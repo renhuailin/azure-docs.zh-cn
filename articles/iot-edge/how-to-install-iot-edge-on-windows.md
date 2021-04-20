@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
-ms.translationtype: MT
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123184"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059694"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和预配 Azure IoT Edge for Linux（预览版）
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 使用 Azure IoT Edge 运行时可将设备转变为 IoT Edge 设备。 此运行时可以部署在小到电脑大到工业服务器的设备上。 使用 IoT Edge 运行时配置设备后，即可开始从云中部署业务逻辑。 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
@@ -28,7 +30,7 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
 >[!NOTE]
 >IoT Edge for Linux on Windows 现提供[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
->虽然在 windows 环境中使用 Azure IoT Edge 时建议使用 windows 中的 Linux IoT Edge，但仍可使用 Windows 容器。 如果希望使用 Windows 容器，请参阅 [安装和管理 windows Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)的操作方法指南。
+>虽然在 Windows 环境中使用 Azure IoT Edge 时建议使用 IoT Edge for Linux on Windows，但仍可使用 Windows 容器。 如果更喜欢使用 Windows 容器，请参阅有关[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md) 的操作指南。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,21 +42,19 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
 
   * Windows 10 版本 1809 或更高版本；内部版本 17763 或更高版本
   * Professional、Enterprise 或 Server 版
-  * 最小 RAM：4 GB（建议 8 GB）
-  * 最小存储：10 GB
+  * 最小可用内存：2 GB
+  * 最小可用磁盘空间：10 GB
+  * 如果要使用 Windows 10 创建新的部署，请确保启用 Hyper-V。 有关详细信息，请参阅：如何[在 Windows 10 上安装 Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)。
+  * 如果要使用 Windows Server 创建新的部署，请确保安装 Hyper-V 角色。 有关详细信息，请参阅：如何[在 Windows Server 上安装 Hyper-V 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+  * 如果要使用 VM 创建新的部署，请确保正确配置嵌套虚拟化。 有关详细信息，请参阅[嵌套虚拟化](nested-virtualization.md)指南。
 
-* 能够访问安装了适用于 Windows Admin Center 的 Azure IoT Edge 扩展的 Windows Admin Center 预览体验内部版本： <!-- The link below needs the language localization to work; otherwise broken -->
-   1. 访问 [Windows 预览体验预览版](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)。
+* 能够访问安装了适用于 Windows Admin Center 的 Azure IoT Edge 扩展的 Windows Admin Center：
 
-   1. 在“预览版”下拉列表中，选择“Windows Admin Center 预览版 - 内部版本 2012”，然后选择“确认”。
+   1. 下载 [Windows Admin Center 安装程序](https://aka.ms/wacdownload)。
 
-      ![从可用预览版的下拉菜单中选择“Windows Admin Center 预览版 - 内部版本 2012”。](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
+   1. 运行下载的安装程序，并按照安装向导的提示安装 Windows Admin Center。 
 
-   1. 在“选择语言”下拉列表中选择“英语”，然后选择“确认”。
-
-   1. 选择“立即下载”以下载“WindowsAdminCenterPreview2012.msi”。
-
-   1. 运行“WindowsAdminCenterPreview2012.msi”并按照安装向导提示安装 Windows Admin Center。 在安装后，打开 Windows Admin Center。
+   1. 安装完成后，使用受支持的浏览器打开 Windows Admin Center。 受支持的浏览器包括 Microsoft Edge（Windows 10 版本 1709 或更高版本）、Google Chrome 和 Microsoft Edge Insider。
 
    1. 当你第一次使用 Windows Admin Center 时，系统会提示你选择要使用的证书。 请选择“Windows Admin Center 客户端”作为你的证书。
 
@@ -63,12 +63,6 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
       ![选择仪表板右上方的齿轮图标以访问设置。](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. 在“设置”菜单上的“网关”下，选择“扩展”。  
-
-   1. 选择“源”选项卡，然后选择“添加” 。
-
-   1. 在文本框中输入 https://aka.ms/wac-insiders-feed ，然后选择“添加”。
-
-   1. 添加源后，导航到“可用扩展”选项卡。系统可能需要一段时间来更新扩展列表。
 
    1. 在“可用扩展”选项卡上的扩展列表中找到“Azure IoT Edge”。 选择它，然后选择扩展列表上方的“安装”提示。
 
@@ -123,7 +117,16 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
    ![选择你的设备以验证它是否受支持](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. 接受“2.2 设置”选项卡上的默认设置。
+1. 在“2.2 设置”选项卡上，查看你的部署的配置设置。 对设置满意后，选择“下一步”。
+
+   ![检查你的部署的配置设置](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >如果你使用的是 Windows 虚拟机，建议使用默认交换机而不是外部交换机，以确保在部署中创建的 Linux 虚拟机能够获取 IP 地址。
+   >
+   >使用默认交换机将为 Linux 虚拟机分配内部 IP 地址。 无法从 Windows 虚拟机外部访问此内部 IP 地址，但在登录到 Windows 虚拟机时可以在本地连接到此地址。
+   >
+   >如果你使用的是 Windows Server，请注意，Azure IoT Edge for Linux on Windows 不会自动支持默认交换机。 对于本地 Windows Server 虚拟机，请确保 Linux 虚拟机可以通过外部交换机获得 IP 地址。 对于 Azure 中的 Windows Server 虚拟机，在部署 IoT Edge for Linux on Windows 之前，请设置一台内部交换机。
 
 1. 在“2.3 部署”选项卡上，你可以观察部署进度。 完整的过程包括下载 Azure IoT Edge for Linux on Windows 程序包，安装该程序包，配置主机设备以及设置 Linux 虚拟机。 此过程可能需要几分钟才能完成。 下面描绘了一个成功的部署。
 
@@ -143,7 +146,7 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. 在设备上安装 IoT Edge for Linux on Windows。
@@ -174,7 +177,7 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
    ```
 
    > [!NOTE]
-   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 若要查看其含义，请参阅 [Windows PowerShell 脚本参考上的适用于 Linux 的 IoT Edge](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow) 。
+   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 可以查看 [IoT Edge for Linux on Windows PowerShell 脚本参考](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)来了解参数含义和默认值。
 
 1. 输入“Y”接受许可条款。
 
@@ -343,11 +346,14 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 在 PowerShell 会话中使用以下命令，登录到 Windows 虚拟机上的 Linux IoT Edge：
+1. 在 PowerShell 会话中使用以下命令，登录到 Windows 虚拟机上的 IoT Edge for Linux：
 
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >允许通过 SSH 登录到虚拟机的唯一帐户是创建了该虚拟机的用户。
 
 1. 登录后，可以使用以下 Linux 命令查看正在运行的 IoT Edge 模块的列表：
 
@@ -373,4 +379,6 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
 ## <a name="next-steps"></a>后续步骤
 
-转到[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)，了解如何将模块部署到设备上。
+* 转到[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)，了解如何将模块部署到设备上。
+* 了解如何[在 IoT Edge for Linux on Windows 虚拟机上管理证书](how-to-manage-device-certificates.md)，以及如何将文件从主机 OS 传输到 Linux 虚拟机。
+* 了解如何[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。

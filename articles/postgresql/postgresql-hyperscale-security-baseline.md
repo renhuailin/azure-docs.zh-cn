@@ -8,10 +8,10 @@ ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: c373bb172be01594bb5642a626cad24838b66ea2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102607979"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>适用于 Azure Database for PostgreSQL - 超大规模 (Citus) 的 Azure 安全基线
@@ -289,7 +289,7 @@ ms.locfileid: "102607979"
 
 **责任**：客户
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持方案期间为 Microsoft 提供对相关客户数据的访问权限
 
 **指导**：目前不适用；超大规模 (Citus) 尚不支持客户密码箱。
 
@@ -365,7 +365,7 @@ ms.locfileid: "102607979"
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
 **指导**：  
-Azure Database for PostgreSQL 超大规模 (Citus) 拍摄数据文件和数据库事务日志的快照备份，至少一天一次。 可以通过这些备份将服务器还原到保留期中的任意时间点。 （对于所有群集，目前保持期为 35 天。）所有备份都使用 AES 256 位加密进行加密。 PostgreSQL 超大规模 (Citus) 产品/服务使用 Microsoft 管理的密钥进行加密。
+Azure Database for PostgreSQL 超大规模 (Citus) 拍摄数据文件和数据库事务日志的快照备份，至少一天一次。 可以通过这些备份将服务器还原到保留期中的任意时间点。 （所有群集目前的保持期均为 35 天。）所有备份都使用 AES 256 位加密进行加密。 PostgreSQL 超大规模 (Citus) 产品/服务使用 Microsoft 管理的密钥进行加密。
 
 - [了解 Azure PostgreSQL - 超大规模 (Citus) 备份的加密](./concepts-hyperscale-backup.md)
 

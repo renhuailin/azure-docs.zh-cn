@@ -1,82 +1,105 @@
 ---
 title: 配置 Azure HPC 缓存设置
-description: 说明如何为缓存配置其他设置，如 MTU 和无 squash，以及如何从 Azure Blob 存储目标访问快速快照。
+description: 介绍如何为缓存配置其他设置（例如 MTU、自定义 NTP 和 DNS 配置），以及如何从 Azure Blob 存储目标访问快速快照。
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
-ms.translationtype: MT
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773226"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
-Azure 门户中的 " **配置** " 页具有自定义多个设置的选项。 大多数用户不需要更改这些设置的默认值。
+Azure 门户中的“网络”页提供了用于自定义多个设置的选项。 大多数用户不需要将这些设置从默认值更改为其他值。
 
-本文还介绍了如何将快照功能用于 Azure Blob 存储目标。 快照功能没有可配置的设置。
+本文还将介绍如何对 Azure Blob 存储目标使用快照功能。 快照功能没有可配置的设置。
 
-若要查看设置，请在 Azure 门户中打开缓存的 " **配置** " 页。
+若要查看设置，请在 Azure 门户中打开缓存的“网络”页。
 
-![Azure 门户中的 "配置" 页的屏幕截图](media/configuration.png)
+![Azure 门户中“网络”页的屏幕截图](media/networking-page.png)
 
-> [!TIP]
-> [管理 AZURE HPC 缓存视频](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)显示配置页及其设置。
+> [!NOTE]
+> 此页的旧版本包含缓存级根 squash 设置，但此设置现已迁移到[客户端访问策略](access-policies.md)。
+
+<!-- >> [!TIP]
+> The [Managing Azure HPC Cache video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) shows the networking page and its settings. -->
 
 ## <a name="adjust-mtu-value"></a>调整 MTU 值
 <!-- linked from troubleshoot-nas article -->
 
-可以通过使用标记为 " **MTU 大小**" 的下拉菜单来选择缓存的最大传输单元大小。
+可以使用标有“MTU 大小”的下拉菜单选择缓存的最大传输单元大小。
 
-默认值为1500个字节，但你可以将其更改为1400。
-
-> [!NOTE]
-> 如果降低缓存的 MTU 大小，请确保与缓存通信的客户端和存储系统具有相同的 MTU 设置或较低的值。
-
-降低缓存 MTU 值有助于在缓存的其他网络中解决数据包大小限制。 例如，某些 Vpn 无法成功传输完全大小的1500字节的数据包。 减小通过 VPN 发送的数据包大小可能会消除这一问题。 但请注意，较低的缓存 MTU 设置意味着与缓存通信的任何其他组件（包括客户端和存储系统）都必须具有低 MTU 设置，以避免通信问题。
-
-如果不想更改其他系统组件上的 MTU 设置，则不应降低缓存的 MTU 设置。 还可以使用其他解决方案来解决 VPN 数据包大小限制。 有关诊断和解决此问题的详细信息，请参阅 NAS 故障排除一文中的 [调整 VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) 。
-
-若要详细了解 Azure 虚拟网络中的 MTU 设置，请阅读 [Azure vm 的 tcp/ip 性能优化](../virtual-network/virtual-network-tcpip-performance-tuning.md)。
-
-## <a name="configure-root-squash"></a>配置根 squash
-<!-- linked from troubleshoot and from access policies -->
-
-**Enable root squash** 设置控制 Azure HPC 缓存如何处理来自客户端计算机上的根用户的请求。
-
-启用根 squash 后，当客户端通过 Azure HPC 缓存发送请求时，会自动将客户端的根用户映射到用户 "无人"。 它还会阻止客户端请求使用设置 UID 权限位。
-
-如果已禁用 root squash，则客户端根用户 (UID 0) 的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
-
-在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。  (阅读有关 [NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-storage-requirements)的详细信息。 ) 在与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
-
-默认设置为“是”。 2020年4月之前创建的 (缓存可能具有默认设置 **No**。 ) 
-
-> [!TIP]
-> 还可以通过自定义 [客户端访问策略](access-policies.md#root-squash)为特定的存储导出设置根 squash。
-
-## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 存储目标的快照
-
-Azure HPC 缓存会自动为 Azure Blob 存储目标保存存储快照。 快照提供后端存储容器内容的快速参考点。
-
-快照不是数据备份的替代，它们不包含有关缓存数据状态的任何信息。
+默认值为 1500 字节，但可将其更改为 1400。
 
 > [!NOTE]
-> 此快照功能与 NetApp 或 Isilon 存储软件中包含的快照功能不同。 在拍摄快照之前，这些快照实现会刷新从缓存到后端存储系统的更改。
+> 如果降低缓存的 MTU 大小，请确保与缓存通信的客户端和存储系统采用相同的 MTU 设置或更小的值。
+
+降低缓存 MTU 值有助于应对缓存网络中其余组件存在的数据包大小限制。 例如，某些 VPN 无法成功传输完整大小为 1500 字节的数据包。 减小通过 VPN 发送的数据包大小可能会消除这一问题。 但请注意，降低缓存 MTU 设置意味着与缓存通信的任何其他组件（包括客户端和存储系统）也必须降低 MTU 设置，这样才能避免通信问题。
+
+如果你不想要更改其他系统组件上的 MTU 设置，则不应降低缓存的 MTU 设置。 还可以通过其他方法应对 VPN 数据包大小限制。 请参阅 NAS 故障排除文章中的[调整 VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)来详细了解如何诊断和解决此问题。
+
+参阅 [Azure VM 的 TCP/IP 性能优化](../virtual-network/virtual-network-tcpip-performance-tuning.md)来详细了解 Azure 虚拟网络中的 MTU 设置。
+
+## <a name="customize-ntp"></a>自定义 NTP
+
+缓存默认使用基于 Azure 的时间服务器 time.microsoft.com。 如果你希望缓存使用其他 NTP 服务器，请在“NTP 配置”部分中指定。 请使用完全限定的域名或 IP 地址。
+
+## <a name="set-a-custom-dns-configuration"></a>设置自定义 DNS 配置
+
+> [!CAUTION]
+> 如果没有必要，请不要更改缓存 DNS 配置。 配置不当可能导致极其严重的后果。 如果配置无法解析 Azure 服务名称，HPC 缓存实例将永久不可访问。
+
+Azure HPC 缓存已自动配置为使用安全便捷的 Azure DNS 系统。 但是，某些不寻常的配置要求缓存使用单独的本地 DNS 系统而不是 Azure 系统。 “网络”页的“DNS 配置”部分用于指定此类系统。 
+
+请咨询 Azure 代表或 Microsoft 服务和支持人员来确定是否需要使用自定义缓存 DNS 配置。
+
+如果你为要使用的 Azure HPC 缓存配置了自己的本地 DNS 系统，必须确保该配置可以解析 Azure 服务的 Azure 终结点名称。 必须将自定义 DNS 环境配置为向 Azure DNS 或根据需要向另一服务器转发特定的名称解析请求。
+
+在将 DNS 配置用于 Azure HPC 缓存之前，请检查它是否能够成功解析以下各项：
+
+* ``*.core.windows.net``
+* 证书吊销列表 (CRL) 下载和联机证书状态协议 (OCSP) 验证服务。 此 [Azure TLS 文章](../security/fundamentals/tls-certificate-changes.md)末尾的[防火墙规则项](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me)中提供了部分列表，但你应该咨询 Microsoft 技术代表来了解所有要求。
+* NTP 服务器（time.microsoft.com 或自定义服务器）的完全限定域名
+
+如果需要为缓存设置自定义 DNS 服务器，请使用提供的字段：
+
+* **DNS 搜索域**（可选）- 输入搜索域，例如 ``contoso.com``。 允许指定单个值，也可以将其留空。
+* **DNS 服务器** - 最多输入三个 DNS 服务器。 按 IP 地址指定服务器。
+
+<!-- 
+  > [!NOTE]
+  > The cache will use only the first DNS server it successfully finds. -->
+
+在生产环境中使用 DNS 设置之前，请考虑使用测试缓存来检查和优化该设置。
+
+### <a name="refresh-storage-target-dns"></a>刷新存储目标 DNS
+
+如果 DNS 服务器更新了 IP 地址，关联的 NFS 存储目标将暂时不可用。 请参阅[编辑存储目标](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)了解如何更新自定义 DNS 系统 IP 地址。
+
+## <a name="view-snapshots-for-blob-storage-targets"></a>查看 Blob 存储目标的快照
+
+Azure HPC 缓存会自动保存 Azure Blob 存储目标的存储快照。 快照为后端存储容器的内容提供了一个快速参照点。
+
+快照不能取代数据备份，它们不包含有关缓存数据状态的任何信息。
+
+> [!NOTE]
+> 此快照功能不同于 NetApp 或 Isilon 存储软件中包含的快照功能。 在创建快照之前，这些快照实现会将缓存中的更改刷新到后端存储系统。
 >
-> 为提高效率，Azure HPC 缓存快照不会先刷新更改，只记录已写入 Blob 容器的数据。 此快照不表示缓存数据的状态，因此它可能不包括最近的更改。
+> 出于效率原因，Azure HPC 缓存快照不会首先刷新更改，而是仅记录已写入到 Blob 容器的数据。 此快照不代表缓存数据的状态，因此它可能不包含最近的更改。
 
-此功能仅适用于 Azure Blob 存储目标，并且无法更改其配置。
+此功能仅适用于 Azure Blob 存储目标，且其配置无法更改。
 
-每隔8小时在 UTC 0:00、08:00 和16:00 执行快照。
+每隔 8 小时就会创建快照，时间分别是 UTC 0:00、08:00 和 16:00。
 
-Azure HPC 缓存会存储每日、每周和每月快照，直到它们被新的替换。 这些限制包括：
+Azure HPC 缓存会持续存储每日、每周和每月快照，直到旧快照被新快照替换。 快照保留限制如下：
 
-* 每日最多20个快照
-* 最多8个每周快照
-* 最多3个月快照
+* 最多 20 个每日快照
+* 最多 8 个每周快照
+* 最多 3 个每月快照
 
-从 `.snapshot` blob 存储目标的命名空间的目录中访问快照。
+从已装载的 Blob 存储目标的根目录中的 `.snapshot` 目录访问快照。

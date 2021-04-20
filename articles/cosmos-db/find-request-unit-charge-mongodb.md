@@ -1,28 +1,28 @@
 ---
-title: 查找适用于 MongoDB 操作 Azure Cosmos DB API 的请求单位费用
-description: 了解如何查找针对 Azure Cosmos 容器执行的 MongoDB 查询的请求单位 (RU) 费用。 可以使用 Azure 门户、MongoDB .NET、Java、Node.js 驱动程序。
+title: 查找 Azure Cosmos DB API for MongoDB 操作的请求单位费用
+description: 了解如何查找针对 Azure Cosmos 容器执行的 MongoDB 查询所产生的请求单位 (RU) 费用。 可以使用 Azure 门户、MongoDB .NET、Java、Node.js 驱动程序。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: b7d880183ac5f920bbed1a85d7660db6a8f21462
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078469"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801819"
 ---
-# <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>查找适用于 MongoDB Azure Cosmos DB API 中执行的操作的请求单位费用
+# <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>查找 Azure Cosmos DB API for MongoDB 中执行的操作的请求单位费用
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin 和表。 每个 API 具有自身的数据库操作集。 这些操作包括简单的点读取和写入，以及复杂的查询等等。 每个数据库操作根据其复杂性消耗系统资源。
 
-所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（简称 RU）表示。 你可以将 RU 视为性能货币，它抽象化了执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。 不管使用哪个 API 来与 Azure Cosmos 容器和数据库操作交互，都始终以 RU 来计量成本。 无论数据库操作是写入、点读取还是查询，都始终以 RU 来计量成本。 若要了解详细信息，请参阅 " [请求单位" 和 "注意事项](request-units.md) " 一文。
+所有数据库操作的成本将由 Azure Cosmos DB 规范化，并以“请求单位”（简称 RU）表示。 请求费用是所有数据库操作使用的请求单位。 你可以将 RU 视为性能货币，它抽象化了执行 Azure Cosmos DB 支持的数据库操作所需的系统资源，例如 CPU、IOPS 和内存。 不管使用哪个 API 来与 Azure Cosmos 容器和数据库操作交互，都始终以 RU 来计量成本。 无论数据库操作是写入、点读取还是查询，都始终以 RU 来计量成本。 若要了解详细信息，请参阅[请求单位和注意事项](request-units.md)一文。
 
-本文介绍了不同的方法，可用于在 MongoDB 的 Azure Cosmos DB API 中查找针对容器执行的任何操作的 [请求单位](request-units.md) (RU) 消耗。 如果你使用的是其他 API，请参阅 [SQL API](find-request-unit-charge.md)、 [CASSANDRA API](find-request-unit-charge-cassandra.md)、 [Gremlin API](find-request-unit-charge-gremlin.md)和 [表 API](find-request-unit-charge-table.md) 文章来查找 RU/秒的费用。
+本文介绍如何通过不同的方式，来查找针对 Azure Cosmos DB API for MongoDB 中的容器执行的任何操作所消耗的[请求单位](request-units.md) (RU)。 如果你使用的是其他 API，请参阅 [SQL API](find-request-unit-charge.md)、[Cassandra API](find-request-unit-charge-cassandra.md)、[Gremlin API](find-request-unit-charge-gremlin.md) 和[表 API](find-request-unit-charge-table.md) 文章，找到每秒的 RU 费用。
 
 RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](https://docs.mongodb.com/manual/reference/command/)公开。 该命令返回一个文档，其中包含上次执行的操作的名称、其请求费用和持续时间。 如果使用 Azure Cosmos DB API for MongoDB，则可以通过多个选项来检索 RU 费用。
 
@@ -34,13 +34,17 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 1. 转到“数据资源管理器”窗格，然后选择要处理的容器。
 
-1. 选择“新建查询”。
+1. 选择容器名称旁边的“...”，然后选择“新建查询”。
 
 1. 输入有效的查询，然后选择“执行查询”。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 此查询编辑器允许你仅针对查询谓词运行和查看请求单位费用。 不能将此编辑器用于数据操作命令（例如，insert 语句）。
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 门户中的 MongoDB 查询请求费用屏幕截图":::
+   :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Azure 门户中的 MongoDB 查询请求费用屏幕截图":::
+
+1. 若要获取数据操作命令的请求费用，请在基于 shell 的 UI（如 MongoDB shell、[Robo 3T](mongodb-robomongo.md)、[MongoDB Compass](mongodb-compass.md) 或包含 shell 脚本的 VS Code 扩展）中运行 `getLastRequestStatistics` 命令。
+
+   `db.runCommand({getLastRequestStatistics: 1})`
 
 ## <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驱动程序
 

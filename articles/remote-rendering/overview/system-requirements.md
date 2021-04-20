@@ -1,19 +1,19 @@
 ---
-title: 系统要求
+title: 系统需求
 description: 列出 Azure 远程渲染的系统要求
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705154"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105032781"
 ---
-# <a name="system-requirements"></a>系统要求
+# <a name="system-requirements"></a>系统需求
 
 本章列出了使用 Azure 远程渲染 (ARR) 的最低系统要求。
 
@@ -111,12 +111,10 @@ Azure 远程渲染目前只支持使用 HoloLens 2 和 Windows 桌面设备作�
 
 ## <a name="unity"></a>Unity
 
-对于使用 Unity 进行的开发，请安装
-
-* Unity 2019.3.1[（下载）](https://unity3d.com/get-unity/download)
-* 在 Unity 中安装以下模块：
-  * **UWP** - 通用 Windows 平台生成支持
-  * **IL2CPP** - Windows 生成支持 (IL2CPP)
+若要使用 Unity 进行开发，请安装最新版本的 Unity 2019.3 或 2019.4 LTS [（下载）](https://unity3d.com/get-unity/download)。 建议使用 Unity Hub 来管理安装。
+请确保在 Unity 安装中包括以下模块：
+* **UWP** - 通用 Windows 平台生成支持
+* **IL2CPP** - Windows 生成支持 (IL2CPP)
 
 ## <a name="next-steps"></a>后续步骤
 

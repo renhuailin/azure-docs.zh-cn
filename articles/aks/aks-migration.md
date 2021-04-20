@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 5881d03603002cc8d5bef1680083f6b4145bc77f
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.openlocfilehash: e0c3e331dba08fc95f471e3ad40dfcbb10cc2f0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104670624"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -18,6 +18,7 @@ ms.locfileid: "99526681"
 
 可以借助本文档来支持以下方案：
 
+* 使用 [Azure Migrate](../migrate/migrate-services-overview.md) 将某些应用程序容器化并迁移到 AKS
 * 将[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)支持的 AKS 群集迁移到[虚拟机规模集](../virtual-machine-scale-sets/overview.md)
 * 迁移 AKS 群集以使用[标准 SKU 负载均衡器](./load-balancer-standard.md)
 * 从 [Azure 容器服务 (ACS) - 2020 年 1 月 31 日停用](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)迁移到 AKS
@@ -38,6 +39,7 @@ ms.locfileid: "99526681"
 本文将汇总以下各项的迁移详细信息：
 
 > [!div class="checklist"]
+> * 通过 Azure Migrate 将应用程序容器化 
 > * 包含标准负载均衡器和虚拟机规模集的 AKS
 > * 现有的附加 Azure 服务
 > * 确保有效配额
@@ -45,6 +47,13 @@ ms.locfileid: "99526681"
 > * 无状态应用程序的注意事项
 > * 有状态应用程序的注意事项
 > * 群集配置的部署
+
+## <a name="use-azure-migrate-to-migrate-your-applications-to-aks"></a>使用 Azure Migrate 将应用程序迁移到 AKS
+
+Azure Migrate 提供了一个统一平台来评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 对于 AKS，可以使用 Azure Migrate 进行以下操作：
+
+* [将 ASP.NET 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-aspnet-kubernetes.md)
+* [将Java Web 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>包含标准负载均衡器和虚拟机规模集的 AKS
 
@@ -103,7 +112,7 @@ az aks create \
 
 ![将 AKS 与流量管理器配合使用](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-[Azure 前门服务](../frontdoor/front-door-overview.md) 是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
+[Azure Front Door 服务](../frontdoor/front-door-overview.md)是路由 AKS 群集流量的另一种选择。  在 Azure Front Door 服务中可以进行优化以实现最佳性能以及进行即时全球故障转移以实现高可用性，并以此定义、管理和监视 Web 流量的全局路由。 
 
 ### <a name="considerations-for-stateless-applications"></a>无状态应用程序的注意事项
 
@@ -114,7 +123,7 @@ az aks create \
 精心规划有状态应用程序的迁移，以避免数据丢失或意外停机。
 
 如果使用 Azure 文件存储，则可以将文件共享作为卷装载到新群集中：
-* [将静态 Azure 文件存储作为卷装载](./azure-files-volume.md#mount-the-file-share-as-a-volume)
+* [将静态 Azure 文件存储作为卷装载](./azure-files-volume.md#mount-file-share-as-an-persistent-volume)
 
 如果使用 Azure 托管磁盘，则只能装载未附加到任何 VM 的磁盘：
 * [将静态 Azure 磁盘作为卷装载](./azure-disk-volume.md#mount-disk-as-volume)
@@ -169,7 +178,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 ### <a name="moving-existing-resources-to-another-region"></a>将现有资源移到另一个区域
 
-你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 此外，如果在 AKS 群集上运行 [Azure Dev Spaces][azure-dev-spaces] 任何服务，则还需要在新区域中的群集上安装和配置这些服务。
+你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 此外，如果在 AKS 群集上运行任何服务（例如 [Azure Dev Spaces][azure-dev-spaces]），则还需要在新区域中的群集上安装和配置这些服务。
 
 
 本文汇总了以下各项的迁移详细信息：
