@@ -137,5 +137,7 @@
       href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
-    - name: 博客
+    - name: Azure 博客
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
+    - name: Azure AI 博客
+      href: 'https://techcommunity.microsoft.com/t5/azure-ai/bg-p/AzureAIBlog'
