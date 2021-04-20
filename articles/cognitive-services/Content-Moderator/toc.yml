@@ -135,6 +135,6 @@
     - name: Azure 政府和全球 Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure 更新
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
