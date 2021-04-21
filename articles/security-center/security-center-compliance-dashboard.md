@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370252"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739001"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -26,7 +26,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 安全中心持续评估混合云环境，以根据适用于你的订阅的标准中的控制措施和最佳做法来分析风险因素。 仪表板反映了符合这些标准的状态。 
 
-在 Azure 订阅上启用安全中心后，系统会自动为该订阅分配 [Azure 安全基准](../security/benchmarks/introduction.md)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
+在 Azure 订阅上启用安全中心后，系统会自动为该订阅分配 [Azure 安全基准](https://docs.microsoft.com/security/benchmark/azure/introduction)。 这一公认的基准建立在 [Internet 安全中心 (CIS)](https://www.cisecurity.org/benchmark/azure/) 和[国家标准与技术研究院 (NIST)](https://www.nist.gov/) 的控制基础上，重点关注以云为中心的安全性。
 
 在法规合规性仪表板中，可以查看在所选标准和法规下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 

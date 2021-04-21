@@ -2,20 +2,20 @@
 title: 源代码管理集成
 description: 使用 Azure Repos（Git 和 GitHub）进行本机源代码管理集成的专用 SQL 池的企业级数据库 DevOps 体验。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
 ms.date: 08/23/2019
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 0864ab90f35e4af0443b418bc139ee5f8a7db665
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53adbc0288c28c3b18632539c3f812bbca82da92
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585530"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566148"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的源代码管理集成
 

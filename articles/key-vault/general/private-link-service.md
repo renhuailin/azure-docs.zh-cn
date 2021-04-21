@@ -1,19 +1,19 @@
 ---
 title: 与 Azure 专用链接服务集成
 description: 了解如何将 Azure Key Vault 与 Azure 专用链接服务集成
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 11/17/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 78a57cb896f09b686d35bedd79442025ebcb7c67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5ddffb17c8f5acf16cf89dd58c634b6e404bf7b
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604587"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749521"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 

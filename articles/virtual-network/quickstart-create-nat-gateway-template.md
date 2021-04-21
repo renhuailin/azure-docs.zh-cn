@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: d1d4cf5a5e616db38885077e70add817f26d125a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ea214cb98e1f75daccf783333a67c6d1b0eacfeb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060680"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776598"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>快速入门：创建 NAT 网关 - ARM 模板
 
@@ -112,7 +112,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 **Azure CLI**
 
-如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
+如果不再需要上述资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。
 
 ```azurecli-interactive
   az group delete \

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7d6b5f02a752e7bbdc1d4da83b60b1a86aba5626
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199741"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775018"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 
@@ -282,7 +282,7 @@ ms.locfileid: "102199741"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
+若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

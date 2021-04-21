@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199792"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792140"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用 Azure CLI 监视该数据
 
@@ -55,7 +55,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中心之间的所有通信都经过身份验证和加密。 因此，本快速入门不需要将用于实际设备的额外身份验证（如连接字符串）。
 
-*  运行 [az extension add](/cli/azure/extension#az-extension-add) 命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+*  运行 [az extension add](/cli/azure/extension#az_extension_add) 命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 > [!TIP]
 > （可选）可以通过使用 [Azure 门户](iot-hub-create-through-portal.md)、[Visual Studio Code](iot-hub-create-use-iot-toolkit.md) 或其他编程方法来创建 Azure 资源组、IoT 中心和其他资源。  
 
-1. 运行 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
+1. 运行 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. 运行 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 IoT 中心。 创建 IoT 中心可能需要数分钟的时间。 
+1. 运行 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 IoT 中心。 创建 IoT 中心可能需要数分钟的时间。 
 
     *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 IoT 中心名称必须在 Azure 中全局唯一。 此占位符在本快速入门的其余部分中用于表示 IoT 中心名称。
 
@@ -184,12 +184,12 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 > 删除资源组的操作不可逆。 资源组以及包含在其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 
 
 若要按名称删除资源组，请执行以下操作：
-1. 运行 [az group delete](/cli/azure/group#az-group-delete) 命令。 这会删除你创建的资源组、IoT 中心和设备注册。
+1. 运行 [az group delete](/cli/azure/group#az_group_delete) 命令。 这会删除你创建的资源组、IoT 中心和设备注册。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. 运行 [az group list](/cli/azure/group#az-group-list) 命令，确认资源组是否已删除。  
+1. 运行 [az group list](/cli/azure/group#az_group_list) 命令，确认资源组是否已删除。  
 
     ```azurecli
     az group list

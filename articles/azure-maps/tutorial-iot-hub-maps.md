@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 91556087cd3e7ccd85550c721f70b8608fdc4ffd
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168444"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714985"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -95,7 +95,7 @@ ms.locfileid: "106168444"
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-若要存储汽车违规跟踪数据，请在资源组中创建[常规用途 v2 存储帐户](../storage/common/storage-account-overview.md#general-purpose-v2-accounts)。 如果尚未创建资源组，请按照[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)中的指示执行操作。 在本教程中，需要将资源组命名为 ContosoRental。
+若要存储汽车违规跟踪数据，请在资源组中创建[常规用途 v2 存储帐户](../storage/common/storage-account-overview.md)。 如果尚未创建资源组，请按照[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)中的指示执行操作。 在本教程中，需要将资源组命名为 ContosoRental。
 
 若要创建存储帐户，请按照[创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)中的说明执行操作。 在本教程中，需要将存储帐户命名为 contosorentalstorage，但通常可以将其命名为你喜欢的任何名称。
 

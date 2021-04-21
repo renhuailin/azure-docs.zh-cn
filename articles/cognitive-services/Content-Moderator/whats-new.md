@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
-ms.openlocfilehash: 86cbd1e1d51af3a2f9a594e7e87a7896e70d6635
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8bbb6033fd4045664a20df7e2b2c14b8a8837214
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758587"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725037"
 ---
 # <a name="whats-new-in-content-moderator"></a>内容审查器中的新增功能
 
-了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="august-2020"></a>2020 年 8 月
 

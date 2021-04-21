@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14a6a82535ac5a7d36213b082d08aedbb44da5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 585e31ab566cc990af2819fcf9cdde0506560208
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99090614"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780166"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 调用在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -35,7 +35,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果你不熟悉 Azure 资源托管标识，请参阅[什么是 Azure 资源托管标识？](overview.md)。 若要了解系统分配的托管标识和用户分配的托管标识类型，请参阅[托管标识类型](overview.md#managed-identity-types)。
 
@@ -60,13 +60,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 要创建启用了系统分配的托管标识的虚拟机规模集，则需要创建虚拟机规模集并检索访问令牌，以使用 CURL 通过系统分配的托管标识类型值对资源管理器终结点进行调用。
 
-1. 使用 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署虚拟机规模集及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
+1. 使用 [az group create](/cli/azure/group/#az_group_create)，创建用于容纳和部署虚拟机规模集及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. 为虚拟机规模集创建[网络接口](/cli/azure/network/nic#az-network-nic-create)：
+2. 为虚拟机规模集创建[网络接口](/cli/azure/network/nic#az_network_nic_create)：
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -325,7 +325,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az account get-access-token
    ```
 
-2. 为虚拟机规模集创建[网络接口](/cli/azure/network/nic#az-network-nic-create)：
+2. 为虚拟机规模集创建[网络接口](/cli/azure/network/nic#az_network_nic_create)：
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

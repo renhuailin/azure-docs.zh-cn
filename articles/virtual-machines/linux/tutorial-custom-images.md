@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557755"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769870"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -61,7 +61,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 允许用于库名称的字符为大写或小写字母、数字、点和句点。 库名称不能包含短划线。   库名称在你的订阅中必须唯一。 
 
-使用 [az sig create](/cli/azure/sig#az-sig-create) 创建一个映像库。 以下示例在“美国东部”创建名为 myGalleryRG 的资源组，以及名为 myGallery 的库  。
+使用 [az sig create](/cli/azure/sig#az_sig_create) 创建一个映像库。 以下示例在“美国东部”创建名为 myGalleryRG 的资源组，以及名为 myGallery 的库  。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -70,13 +70,13 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="get-information-about-the-vm"></a>获取有关 VM 的信息
 
-可以使用 [az vm list](/cli/azure/vm#az-vm-list) 查看可用 VM 的列表。 
+可以使用 [az vm list](/cli/azure/vm#az_vm_list) 查看可用 VM 的列表。 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) 获取 VM 的 ID。 
+知道 VM 的名称及其所在的资源组后，使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 获取 VM 的 ID。 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -92,7 +92,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 若要详细了解可为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 
-使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) 在库中创建一个映像定义。 
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) 在库中创建一个映像定义。 
 
 在此示例中，映像定义名为 myImageDefinition，适用于[专用化](../shared-image-galleries.md#generalized-and-specialized-images) Linux OS 映像。 
 
@@ -112,7 +112,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 从 VM 创建映像版本。  
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 从 VM 创建映像版本。  
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
@@ -140,7 +140,7 @@ az sig image-version create \
  
 ## <a name="create-the-vm"></a>创建 VM
 
-结合 --specialized 参数使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM 可以指明该映像是专用化映像。 
+结合 --specialized 参数使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM 可以指明该映像是专用化映像。 
 
 使用 `--image` 的映像定义 ID 从可用的最新映像版本创建 VM。 还可以通过为 `--image` 提供映像版本 ID 从特定版本创建 VM。 
 
@@ -158,7 +158,7 @@ az vm create --resource-group myResourceGroup \
 
 可以使用 Azure 基于角色的访问控制 (Azure RBAC) 在订阅之间共享映像。 可以在库、映像定义或映像版本级别共享映像。 任何对映像版本具有读取权限的用户，即使跨订阅，也能够使用映像版本部署 VM。
 
-建议在库级别与其他用户进行共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az-sig-show)。
+建议在库级别与其他用户进行共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az_sig_show)。
 
 ```azurecli-interactive
 az sig show \
@@ -167,7 +167,7 @@ az sig show \
    --query id
 ```
 
-使用对象 ID 作为范围，并使用电子邮件地址和 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为用户授予对共享映像库的访问权限。 请将 `<email-address>` 和 `<gallery iD>` 替换为自己的信息。
+使用对象 ID 作为范围，并使用电子邮件地址和 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为用户授予对共享映像库的访问权限。 请将 `<email-address>` 和 `<gallery iD>` 替换为自己的信息。
 
 ```azurecli-interactive
 az role assignment create \
@@ -184,7 +184,7 @@ Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](../ima
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
+在本教程中，已创建自定义 VM 映像。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库

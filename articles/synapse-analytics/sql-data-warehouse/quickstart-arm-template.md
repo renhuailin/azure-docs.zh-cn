@@ -5,15 +5,17 @@ services: azure-resource-manager
 author: julieMSFT
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 73f4baf1e48b5495d513fbabe66763538c8cca57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460744"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568465"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Synapse Analytics 专用 SQL 池（之前称为 SQL DW）
 

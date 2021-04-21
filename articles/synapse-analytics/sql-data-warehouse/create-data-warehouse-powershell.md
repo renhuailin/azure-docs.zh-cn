@@ -3,20 +3,24 @@ title: 快速入门：使用 Azure PowerShell 创建专用 SQL 池（之前称�
 description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建专用 SQL 池（之前称为 SQL DW）。
 services: synapse-analytics
 author: XiaoyuMSFT
-manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 4/11/2019
 ms.author: xiaoyul
+manager: craigg
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/11/2019
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 65bf509c8eb654a9f7712fdf7b94ff7fa26a3d32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120183"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537460"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用 SQL 池（之前称为 SQL DW）
 

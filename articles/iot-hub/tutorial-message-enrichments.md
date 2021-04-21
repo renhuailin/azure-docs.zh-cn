@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: bd047419275d98049f883bb88a83708a9dfdd7d3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0d6c90120d050b6896161f50332faf447c3ed67b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066885"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788846"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial:使用 Azure IoT 中心消息扩充
 
@@ -386,7 +386,7 @@ az iot hub route create \
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](/cli/azure/group#az-group-delete) 命令。 回想一下，在本教程开始时，`$resourceGroup` 被设置为 ContosoResourcesMsgEn。
+若要删除资源组，请使用 [az group delete](/cli/azure/group#az_group_delete) 命令。 回想一下，在本教程开始时，`$resourceGroup` 被设置为 ContosoResourcesMsgEn。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
