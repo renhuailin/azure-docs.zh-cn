@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: d944d1d3e9c72471fab2435430a7d13e1770e807
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 190524251d139e1421c1aac93d5a4dd523068a7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010436"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958111"
 ---
 ## <a name="local-settings-file"></a>本地设置文件
 
@@ -43,7 +43,7 @@ local.settings.json 文件存储应用设置、连接字符串和本地开发工
 | **`IsEncrypted`** | 当此设置设为 `true` 时，所有值都使用本地计算机密钥进行加密。 与 `func settings` 命令配合使用。 默认值为 `false`。 当本地计算机上的 local.settings.json 文件中包含机密（如服务连接字符串）时，可能需要对其进行加密。 主机在运行时会自动对设置解密。 在尝试读取本地加密设置之前，请使用 `func settings decrypt` 命令。 |
 | **`Values`** | 在本地运行项目时使用的应用程序设置和连接字符串的数组。 这些键值 (string-string) 对与 Azure 的函数应用中的应用程序设置相对应，例如 [`AzureWebJobsStorage`]。 许多触发器和绑定都有一个引用连接字符串应用设置的属性，例如 [Blob 存储触发器](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration)的 `Connection`。 对于此类属性，你需要一个在 `Values` 数组中定义的应用程序设置。 在下表中查看常用设置的列表。 <br/>值必须是字符串，而不能是 JSON 对象或数组。 设置名称不能包含冒号 (`:`) 或双下划线 (`__`)。 双下划线字符由运行时保留，并保留冒号以支持[依赖项注入](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings)。 |
 | **`Host`** | 在本地运行项目时，本部分中的设置会自定义 Functions 主机进程。 这些设置独立于 host json 设置，后者在 Azure 中运行项目时也适用。 |
-| **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此设置。 |
+| **`LocalHttpPort`** | 设置运行本地 Functions 主机时使用的默认端口（`func host start` 和 `func run`）。 `--port` 命令行选项优先于此设置。 例如，在 Visual Studio IDE 中运行时，可通过以下方法来更改端口号：导航到“项目属性”->“调试”窗口，并在 `host start --port <your-port-number>` 命令中显式指定可在“应用程序参数”字段中提供的端口号。 |
 | **`CORS`** | 定义[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)可以使用的来源。 以逗号分隔的列表提供来源，其中不含空格。 支持通配符值 (\*)，它允许使用任何来源的请求。 |
 | **`CORSCredentials`** |  设置为 `true` 时，允许 `withCredentials` 请求。 |
 | **`ConnectionStrings`** | 一个集合。 不要将此集合用于函数绑定使用的连接字符串。 此集合仅供通常从配置文件的 `ConnectionStrings` 节获取连接字符串的框架使用，例如[实体框架](/ef/ef6/)。 此对象中的连接字符串添加到提供者类型为 [System.Data.SqlClient](/dotnet/api/system.data.sqlclient) 的环境中。 此集合中的项不会使用其他应用设置发布到 Azure。 必须将这些值显式添加到函数应用设置的 `Connection strings` 集合中。 如果要在函数代码中创建 [`SqlConnection`](/dotnet/api/system.data.sqlclient.sqlconnection)，则应将连接字符串值与其他连接一起存储在门户中的应用程序设置中。 |

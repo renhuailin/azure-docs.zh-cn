@@ -8,18 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c38b7c33cfe787ba933ca1fc4961080eaa4ada61
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97955036"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276053"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>有关文本分析 API 的常见问题解答 (FAQ)
 
  查找与 Azure 认知服务中文本分析 API 有关的概念、代码和方案相关的常见问题解答。
+
+## <a name="what-is-the-maximum-size-and-number-of-requests-i-can-make-to-the-api"></a>我可以向 API 发出的请求的最大大小和数量是多少？
+
+若要了解每分钟和每秒可以发送的请求大小和数量，请参阅[数据限制](concepts/data-limits.md)一文。
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>文本分析能否识别嘲讽？
 
@@ -51,7 +55,7 @@ ms.locfileid: "97955036"
 
 ### <a name="is-text-analytics-service-zone-resilient"></a>文本分析服务区域是否可复原？
 
-是。 默认情况下，文本分析服务可在区域内复原。
+是的。 默认情况下，文本分析服务可在区域内复原。
 
 ### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>如何将文本分析服务配置为可在区域内复原？
 

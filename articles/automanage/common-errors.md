@@ -1,6 +1,6 @@
 ---
-title: 排查常见的 Azure Automanage 载入错误
-description: 常见的 Automanage 载入错误以及如何解决这些错误
+title: 排查常见的 Azure Automanage 加入错误
+description: 常见的 Automanage 加入错误以及这些错误的故障排除方法
 author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,41 +8,48 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: df5133ad4bb3155afdc9d43e595591d9cfda4ea0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 3c9f1b76bb707a296da00ac503482efe6a22385b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644436"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278331"
 ---
-# <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 载入错误
-Automanage 可能无法将计算机登记到服务中。 本文档介绍了如何排查部署故障，如何分担部署可能会失败的一些常见原因，并介绍了在缓解时可能会发生的后续步骤。
+# <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 加入错误
+Automanage 可能无法将计算机加入服务中。 本文档介绍如何排查部署失败的问题，分享部署失败的一些常见原因，并描述可能的后续缓解步骤。
 
-## <a name="troubleshooting-deployment-failures"></a>部署故障排除
-将计算机加入到 Automanage 将导致创建 Azure 资源管理器部署。 如果载入失败，请咨询部署以获取更多详细信息，以了解失败的原因。 "故障详细信息" 弹出窗口中提供了部署的链接，如下图所示。
+## <a name="troubleshooting-deployment-failures"></a>排查部署失败的问题
+将计算机加入 Automanage 将导致创建 Azure 资源管理器部署。 有关详细信息，请查看部署，以更详细地了解失败原因。 “失败详细信息”浮出控件中有指向部署的链接，如下图所示。
 
-:::image type="content" source="media\automanage-common-errors\failure-flyout.png" alt-text="Automanage 失败详细信息弹出。":::
+:::image type="content" source="media\common-errors\failure-flyout.png" alt-text="Automanage 失败详细信息的浮出控件。":::
 
 ### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-vm"></a>检查包含失败 VM 的资源组的部署
-"失败" 弹出窗口将包含一个链接，该链接指向包含失败的计算机的资源组中的部署和可用于筛选部署的前缀名称。 单击此链接将转到 "部署" 边栏选项卡，你可以在其中筛选部署以查看计算机的 Automanage 部署。 如果要跨多个区域进行部署，请确保在正确的区域中单击部署。
+失败浮出控件将包含一个链接，该链接指向包含无法加入的计算机的资源组中的部署。 该浮出控件还包含一个可用于筛选部署的前缀名称。 单击部署链接将转到“部署”边栏选项卡，你可在其中筛选部署以查看计算机的 Automanage 部署。 如果要跨多个区域进行部署，请确保单击正确区域中的部署。
 
 ### <a name="check-the-deployments-for-the-subscription-containing-the-failed-vm"></a>检查包含失败 VM 的订阅的部署
-如果在资源组部署中看不到任何失败，则下一步是查看订阅中的部署，其中包含未通过载入的 VM。 单击 "失败" 弹出窗口中的 " **订阅部署** " 链接，并使用 **Automanage-DefaultResourceGroup** 筛选器筛选部署。 使用 "失败" 边栏选项卡中的资源组名称筛选部署。 部署名称的后缀为区域名称。 如果要跨多个区域进行部署，请确保在正确的区域中单击部署。
+如果在资源组部署中未看到任何失败，则下一步是查看包含加入失败 VM 的订阅中的部署。 单击失败浮出控件中的“订阅部署”链接，然后使用 Automanage-DefaultResourceGroup 筛选器筛选部署 。 使用“失败”边栏选项卡中的资源组名称筛选部署。 部署名称的后缀将为区域名称。 如果要跨多个区域进行部署，请确保单击正确区域中的部署。
 
 ### <a name="check-deployments-in-a-subscription-linked-to-a-log-analytics-workspace"></a>检查链接到 Log Analytics 工作区的订阅中的部署
-如果资源组或订阅中未出现包含失败的 VM 的任何失败的部署，并且失败的 VM 连接到不同订阅中的 Log Analytics 工作区，则请访问链接到 Log Analytics 工作区的订阅并检查失败的部署。
+如果包含失败 VM 的资源组或订阅中未出现任何失败的部署，并且失败的 VM 已连接到其他订阅中的 Log Analytics 工作区，请访问链接到 Log Analytics 工作区的订阅并检查失败的部署。
 
 ## <a name="common-deployment-errors"></a>常见部署错误
 
 错误 |  缓解措施
 :-----|:-------------|
-Automanage 帐户权限不足错误 | 如果最近将包含新 Automanage 帐户的订阅移动到新租户中，则可能会发生这种情况。 [此处](./repair-automanage-account.md)提供了解决此问题的步骤。
-工作区区域与区域映射要求不匹配 | Automanage 无法载入你的计算机，但该计算机当前链接到的 Log Analytics 工作区未映射到受支持的自动化区域。 请确保现有 Log Analytics 工作区和自动化帐户位于 [受支持的区域映射](../automation/how-to/region-mappings.md)。
-"分配失败;没有其他可用信息 " | 请打开 Microsoft Azure 支持案例。
+Automanage 帐户权限不足错误 | 如果你最近将包含新 Automanage 帐户的订阅移动到新租户中，则可能会出现此错误。 [此处](./repair-automanage-account.md)提供了解决此错误的步骤。
+工作区区域不符合区域映射要求 | Automanage 无法加入你的计算机，原因是该计算机当前链接到的 Log Analytics 工作区未映射到受支持的自动化区域。 请确保现有 Log Analytics 工作区和自动化帐户位于[受支持的区域映射](../automation/how-to/region-mappings.md)。
+“因为拒绝分配的名称为‘系统拒绝由托管应用程序创建的分配’，访问被拒绝” | 在资源上创建了 [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)，它阻止了 Automanage 访问你的资源。 此 denyAssignment 可能是由[蓝图](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking)或[托管应用程序](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)创建的。
+“OS 信息: 名称='(null)'，版本='(null)'，代理状态=‘未准备就绪’。” | 确保运行[最低受支持的代理版本](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)）。
+“无法确定 VM 的 OS。OS 名称: ...，版本: ...。 请检查 VM 代理是否正在运行，当前状态是否为‘准备就绪’。” | 确保运行[最低受支持的代理版本](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)、代理正在运行（[linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) 和 [Windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)），并且代理是最新的（[Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) 和 [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)）。
+
+“VM 在处理扩展 'IaaSAntimalware' 时报告了失败”| 确保尚未在 VM 上安装其他反恶意软件/防病毒产品/服务。 如果仍然失败，请联系支持人员。
+ASC 工作区: Automanage 目前不支持 <位置> 中的 Log Analytics 服务。 | 检查你的 VM 是否位于[受支持的区域](./automanage-virtual-machines.md#supported-regions)。
+由于策略冲突而导致模板部署失败。 请查看详细信息了解更多信息。 | 某个策略阻止了 Automanage 加入你的 VM。 请检查应用于包含你要加入 Automanage 的 VM 的订阅或资源组的策略。
+“分配失败：没有其他可用信息”| 请向 Microsoft Azure 支持人员提交案例。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关 Azure Automanage 的详细信息](./automanage-virtual-machines.md)
+* [详细了解 Azure Automanage](./automanage-virtual-machines.md)
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中为虚拟机启用 Automanage](quick-create-virtual-machines-portal.md)
+> [在 Azure 门户中启用适用于虚拟机的 Automanage](quick-create-virtual-machines-portal.md)

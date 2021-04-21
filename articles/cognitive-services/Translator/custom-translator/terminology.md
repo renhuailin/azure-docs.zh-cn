@@ -1,24 +1,24 @@
 ---
-title: 术语 - 自定义翻译器
+title: 关键术语 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
-description: 自定义翻译器项目中使用的术语的列表。
+description: 自定义翻译器项目中使用的关键术语的列表。
 author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 08/17/2020
+ms.date: 04/02/2021
 ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 4461f584e365a5d47e7ceee942e33bc8b101b2d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4a0308f2b961ce9b1321fab3e202e038eb199674
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104658475"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286413"
 ---
-# <a name="custom-translator-terminology"></a>自定义翻译器术语
+# <a name="custom-translator-key-terms"></a>自定义翻译器关键术语
 
-下表列出了在使用[自定义翻译器](https://portal.customtranslator.azure.ai)时可能发现的术语。
+下表列出了在使用[自定义翻译器](https://portal.customtranslator.azure.ai)时可能会发现的关键术语。
 
 | 单词或短语|定义|
 |------------------|-----------|

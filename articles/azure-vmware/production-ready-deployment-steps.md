@@ -3,12 +3,12 @@ title: 规划 Azure VMware 解决方案部署
 description: 本文概述了 Azure VMware 解决方案部署工作流。  最终结果是一个就绪的可用于创建和迁移虚拟机 (VM) 的环境。
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584629"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107238"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>规划 Azure VMware 解决方案部署
 
@@ -16,8 +16,12 @@ ms.locfileid: "104584629"
 
 执行本快速入门中所述的步骤可以获得一个用于创建虚拟机 (VM) 和实现迁移的生产就绪式环境。 
 
->[!IMPORTANT]
->在创建 Azure VMware 解决方案资源之前，请按照[如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)一文中的说明提交支持票证来分配主机。 支持团队收到你的请求后，最多需要五个工作日来确认你的请求并分配你的主机。 如果你有现有的 Azure VMware 解决方案私有云，但需要分配更多的主机，你会经历相同的过程。 
+要跟踪收集的数据，请获取 [HCX 计划清单](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/)。
+
+> [!IMPORTANT]
+> 在准备创建 Azure VMware 解决方案资源时，务必提前请求主机配额。 你可以现在请求主机配额，这样，在计划过程完成后，你便可立即部署 Azure VMware 解决方案私有云。 支持团队收到主机配额请求后，最多需要五个工作日来确认请求并分配主机。 如果你已有 Azure VMware 解决方案私有云，但想要分配更多主机，请完成相同的过程。 有关详细信息，请参阅以下链接（具体选择哪个链接取决于你拥有的订阅类型）：
+> - [EA 客户](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [CSP 客户](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>订阅
 
@@ -82,18 +86,6 @@ ms.locfileid: "104584629"
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="标识 - 虚拟机工作负荷的 IP 地址段" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>（可选）扩展网络
-
-你可以将网段从本地扩展到 Azure VMware 解决方案。如果你这样做，请立即标识这些网络。  
-
-请记住：
-
-- 如果你计划从本地扩展网络，则这些网络必须连接到本地 VMware 环境中的 [vSphere 分布式交换机 (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html)。  
-- 如果你要扩展的网络位于 [vSphere 标准交换机](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html)上，则无法对其进行扩展。
-
->[!NOTE]
->这些网络在配置的最后一个步骤进行扩展，而不是在部署期间。
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>将 Azure 虚拟网络连接到 Azure VMware 解决方案
 
 为了提供与 Azure VMware 解决方案的连接，需要构建从 Azure VMware 解决方案私有云到 ExpressRoute 虚拟网络网关的 ExpressRoute。
@@ -106,7 +98,7 @@ ms.locfileid: "104584629"
 
 如果计划使用现有的 ExpressRoute 虚拟网络网关，则会在部署后步骤中建立 Azure VMware 解决方案 ExpressRoute 线路。 在这种情况下，请将“虚拟网络”字段留空。
 
-一般建议使用现有 ExpressRoute 虚拟网络网关。 出于规划目的，请记下你将使用的 ExpressRoute 虚拟网络网关，并继续到下一步。
+一般建议使用现有 ExpressRoute 虚拟网络网关。 出于计划目的，请记下你将使用的 ExpressRoute 虚拟网络网关，并继续到[下一步](#vmware-hcx-network-segments)。
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>创建新的 ExpressRoute 虚拟网络网关
 
@@ -116,23 +108,36 @@ ms.locfileid: "104584629"
    1. 识别预先不存在 ExpressRoute 虚拟网络网关的 Azure 虚拟网络。
    2. 在部署前，请在 Azure 虚拟网络中创建一个 [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet)。
 
-- 对于新的 Azure 虚拟网络，可提前创建，也可在部署期间创建。 选择“虚拟网络”列表下的“新建”链接 。
+- 选择“虚拟网络”列表下的“新建”链接，在部署期间创建新的 Azure 虚拟网络和虚拟网络网关 。  必须在部署之前定义地址空间和子网，以便在完成部署步骤时输入这些信息。
 
-下图显示“创建私有云”部署屏幕，其中突出显示了“虚拟网络”字段 。
+下图显示了“创建私有云”部署屏幕，其中突出显示了“虚拟网络”字段 。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Azure VMware 解决方案部署屏幕的屏幕截图，其中突出显示了“虚拟网络”字段。":::
 
->[!NOTE]
->你的本地环境和 Azure VMware 解决方案可以看到任何要使用或创建的虚拟网络，因此请确保在此虚拟网络和子网中使用的任何 IP 段都不重叠。
+> [!NOTE]
+> 你的本地环境和 Azure VMware 解决方案可以看到任何要使用或创建的虚拟网络，因此请确保在此虚拟网络和子网中使用的任何 IP 段都不重叠。
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX 网段
 
-VMware HCX 是与 Azure VMware 解决方案捆绑在一起的一项技术。 VMware HCX 的主要用例是工作负荷迁移和灾难恢复。 如果你计划执行上述任一操作，最好立即规划网络。   否则，可以跳到下一步。
+VMware HCX 是与 Azure VMware 解决方案捆绑在一起的一项技术。 VMware HCX 的主要用例是工作负荷迁移和灾难恢复。 如果你计划执行上述任一操作，最好立即规划网络。 否则，可以跳到下一步。
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>（可选）扩展网络
+
+你可以将网络段从本地扩展到 Azure VMware 解决方案。 如果扩展网络段，请现在标识这些网络。  
+
+有两个因素需要考虑：
+
+- 如果你计划从本地扩展网络，则这些网络必须连接到本地 VMware 环境中的 [vSphere 分布式交换机 (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html)。  
+- [vSphere 标准交换机](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上的网络无法扩展。
+
+>[!NOTE]
+>这些网络在配置的最后一个步骤进行扩展，而不是在部署期间。
+>
 ## <a name="next-steps"></a>后续步骤
 收集并记录所需的信息后，请继续执行下一部分以创建 Azure VMware 解决方案私有云。
 
 > [!div class="nextstepaction"]
 > [部署 Azure VMware 解决方案](deploy-azure-vmware-solution.md)
+> 

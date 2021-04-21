@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aahi
-ms.openlocfilehash: 124145059c825dee1dd52298688a47a807058551
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 36091c62814cffd78c5f8132e01820070968af52
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182088"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284925"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>将计算机视觉容器与 Kubernetes 和 Helm 配合使用
 
@@ -87,13 +87,13 @@ read:
       # resultExpirationPeriod=0, the system will clear the recognition result after result retrieval.
       resultExpirationPeriod: 1
       
-      # Redis storage, if configured, will be used by read container to store result records.
-      # A cache is required if multiple read containers are placed behind load balancer.
+      # Redis storage, if configured, will be used by read OCR container to store result records.
+      # A cache is required if multiple read OCR containers are placed behind load balancer.
       redis:
         enabled: false # {true/false}
         password: password
 
-      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read containers are
+      # RabbitMQ is used for dispatching tasks. This can be useful when multiple read OCR containers are
       # placed behind load balancer.
       rabbitmq:
         enabled: false # {true/false}
@@ -105,7 +105,7 @@ read:
 > [!IMPORTANT]
 > - 如果未提供 `billing` 和 `apikey` 值，服务将在 15 分钟后过期。 同样，验证也会因服务不可用而失败。
 > 
-> - 如果要将多个“读取”容器部署在负载平衡器之后（例如，在 Docker Compose 或 Kubernetes 下面），则必须具有外部缓存。 由于进行处理的容器和 GET 请求容器可能不是同一个容器，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅[配置计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
+> - 如果将多个 Read OCR 容器部署在负载均衡器之后（例如，在 Docker Compose 或 Kubernetes 下面），则必须有外部缓存。 由于进行处理的容器和 GET 请求容器可能不是同一个容器，因此外部缓存会存储结果并在容器之间共享这些结果。 有关缓存设置的详细信息，请参阅[配置计算机视觉 Docker 容器](./computer-vision-resource-container-config.md)。
 >
 
 在 read 目录下创建 templates 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 `deployment.yaml` 文件将充当 Helm 模板。

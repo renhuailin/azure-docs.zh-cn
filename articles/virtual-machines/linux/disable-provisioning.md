@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561054"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774360"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>禁用或删除 VM 和映像中的 Linux 代理
 
@@ -32,7 +32,7 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 ## <a name="disabling-extension-processing"></a>禁用扩展处理
 
-可以通过多种方式来禁用扩展处理（具体取决于你的需求），但在继续之前，**必须** 删除部署到 VM 的所有扩展，例如，可以使用 Azure CLI 执行 [列出](/cli/azure/vm/extension#az-vm-extension-list)和 [删除](/cli/azure/vm/extension#az-vm-extension-delete)操作：
+可以通过多种方式来禁用扩展处理（具体取决于你的需求），但在继续之前，**必须** 删除部署到 VM 的所有扩展，例如，可以使用 Azure CLI 执行 [列出](/cli/azure/vm/extension#az_vm_extension_list)和 [删除](/cli/azure/vm/extension#az_vm_extension_delete)操作：
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -156,7 +156,7 @@ az sig image-version create \
 > 
 > 如果未执行上述操作，则平台会尝试发送扩展配置并在 40 分钟后超时。
 
-若要在禁用扩展的情况下部署 VM，你可以将 Azure CLI 与 [--enable-agent](/cli/azure/vm#az-vm-create) 结合使用。
+若要在禁用扩展的情况下部署 VM，你可以将 Azure CLI 与 [--enable-agent](/cli/azure/vm#az_vm_create) 结合使用。
 
 ```azurecli
 az vm create \

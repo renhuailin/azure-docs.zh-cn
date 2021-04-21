@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 74a8bc4209696682c294bccab450d25ae86e3645
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643925"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107425"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -28,7 +28,8 @@ Azure SQL 数据库数据源支持以下功能：
 
 ### <a name="known-limitations"></a>已知的限制
 
-Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)。
+> * Azure Purview 不支持扫描 Azure SQL 数据库中的[视图](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)。
+> * Azure Purview 在“架构”选项卡中不支持超过 300 列，并将显示“Additional-Columns-Truncated”。 
 
 ## <a name="prerequisites"></a>先决条件
 

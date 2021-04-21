@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: c38a6236fe3ad9164d11d94e5563a7dddf5b4b32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8f1fbdcb3b268c24eb19517a0686c6c72c50842
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452775"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294002"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 库中的 Runbook 和模块
 
@@ -44,6 +44,22 @@ PowerShell 模块包含可在 Runbook 中使用的 cmdlet。 [PowerShell 库](ht
    * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - 从 Windows Azure 虚拟机复制远程文件。
    * [Copy-ItemToAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - 将本地文件复制到 Azure 虚拟机。
 
+## <a name="import-a-powershell-runbook-from-github-with-the-azure-portal"></a>使用 Azure 门户从 GitHub 导入 PowerShell runbook
+
+1. 在 Azure 门户中，打开自动化帐户。
+1. 在“过程自动化”下，选择“Runbook 库”。 
+1. 选择“源: GitHub”。
+1. 可以使用列表上方的筛选器按发布者、类型和排序方式来缩小显示范围。 找到所需的库项，选择它以查看其详细信息。
+
+   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="浏览 GitHub 库。" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
+
+1. 若要导入某个项，请单击详细信息边栏选项卡上的“导入”。
+
+   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="GitHub 库中的 Runbook 的详细视图。" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
+
+1. 可选择更改 Runbook 的名称，并单击“确定”导入该 Runbook。
+1. Runbook 将出现在自动化帐户的“Runbook”选项卡中。
+
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>使用 Azure 门户从 Runbook 库导入 PowerShell Runbook
 
 1. 在 Azure 门户中，打开自动化帐户。
@@ -56,22 +72,6 @@ PowerShell 模块包含可在 Runbook 中使用的 cmdlet。 [PowerShell 库](ht
 1. 若要导入某个项，请单击详细信息边栏选项卡上的“导入”。
 
    :::image type="content" source="media/automation-runbook-gallery/gallery-item-detail-sm.png" alt-text="显示 Runbook 库项详细信息。" lightbox="media/automation-runbook-gallery/gallery-item-detail-lg.png":::
-
-1. 可选择更改 Runbook 的名称，并单击“确定”导入该 Runbook。
-1. Runbook 将出现在自动化帐户的“Runbook”选项卡中。
-
-## <a name="import-a--powershell-runbook-from-github-with-the-azure-portal"></a>使用 Azure 门户从 GitHub 导入 PowerShell Runbook
-
-1. 在 Azure 门户中，打开自动化帐户。
-1. 在“过程自动化”下，选择“Runbook 库”。 
-1. 选择“源: GitHub”。
-1. 可以使用列表上方的筛选器按发布者、类型和排序方式来缩小显示范围。 找到所需的库项，选择它以查看其详细信息。
-
-   :::image type="content" source="media/automation-runbook-gallery/browse-gallery-github-sm.png" alt-text="浏览 GitHub 库。" lightbox="media/automation-runbook-gallery/browse-gallery-github-lg.png":::
-
-1. 若要导入某个项，请单击详细信息边栏选项卡上的“导入”。
-
-   :::image type="content" source="media/automation-runbook-gallery/gallery-item-details-blade-github-sm.png" alt-text="GitHub 库中的 Runbook 的详细视图。" lightbox="media/automation-runbook-gallery/gallery-item-details-blade-github-lg.png":::
 
 1. 可选择更改 Runbook 的名称，并单击“确定”导入该 Runbook。
 1. Runbook 将出现在自动化帐户的“Runbook”选项卡中。

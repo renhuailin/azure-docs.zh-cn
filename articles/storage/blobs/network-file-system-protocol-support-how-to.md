@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428637"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490448"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议（预览版）装载 Blob 存储
 
@@ -82,7 +82,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
 |设置 | 高级性能层 | 标准性能  
 |----|---|---|
-|位置|所有可用区域 |以下某个区域：澳大利亚东部、韩国中部和美国中南部   
+|位置|所有可用区域 |以下区域之一：澳大利亚东部、韩国中部、美国东部和美国中南部   
 |性能|高级| 标准
 |帐户种类|BlockBlobStorage| 常规用途 V2
 |复制|本地冗余存储 (LRS)| 本地冗余存储 (LRS)

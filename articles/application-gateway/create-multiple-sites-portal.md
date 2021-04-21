@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8de0dd16c3b3b73b5d5e52017cf63b357654144f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721624"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030951"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -25,7 +25,7 @@ ms.locfileid: "104721624"
 > * 创建应用程序网关
 > * 为后端服务器创建虚拟机
 > * 使用后端服务器创建后端池
-> * 创建后端侦听器
+> * 创建侦听器
 > * 创建路由规则
 > * 编辑主机文件以进行名称解析
 
@@ -95,7 +95,7 @@ ms.locfileid: "104721624"
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡  。
 4. 现在，像添加前一个池一样，添加名为 *fabrikamPool* 的另一个后端池。
-1. 选择“添加”。
+1. 选择 **添加** 。
 
     :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="创建后端":::
 

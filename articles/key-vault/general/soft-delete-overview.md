@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d691c4c510f5ff00c34d03b7b8d7a7bcaa53c3f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452129"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554087"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452129"
 > 必须立即对密钥保管库启用软删除。 即将弃用选择退出软删除的功能。 请参阅[此处](soft-delete-change.md)的完整详细信息。
 
 > [!IMPORTANT]
-> 软删除的保管库会触发删除与 Key Vault 集成的服务的设置，也就是 Azure RBAC 角色分配、事件网格订阅和 Azure Monitor 诊断设置。 恢复软删除的 Key Vault 后，需要手动重新创建这些集成服务的设置。 
+> 软删除的保管库会触发删除与 Key Vault 集成的服务的设置（即 Azure RBAC 角色分配、事件网格订阅）。 恢复软删除的 Key Vault 后，需要手动重新创建这些集成服务的设置。 
 
 Key Vault 的软删除功能可用于恢复已删除的保管库和已删除的密钥保管库对象（例如，密钥、机密、证书），因而被称为软删除。 本文将具体探讨以下方案：这项保护措施提供以下保护：
 

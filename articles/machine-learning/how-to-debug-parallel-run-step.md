@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting
 ms.reviewer: larryfr, vaidyas, laobri, tracych
-ms.author: trmccorm
-author: tmccrmck
+ms.author: pansav
+author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: b5511c8ecc33238e0409b5ee4c1c7a11adddeac5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522149"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286311"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
@@ -96,6 +96,9 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值对于 `FileDataset` 是 `10` 个文件，对应 `TabularDataset` 是 `1MB`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
     - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 `TabularDataset` 中的微批永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
+        > [!NOTE]
+        > 不能对 SQL 支持的 TabularDataset 进行分区。 
+
 - `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将中止。 错误阈值适用于整个输入，而不适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
 - `output_action`：以下值之一指示将如何组织输出：
     - `summary_only`：用户脚本将存储输出。 `ParallelRunStep` 仅将输出用于错误阈值计算。
@@ -110,7 +113,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 （可选；默认值为 `60`）
 - `run_max_try`：微型批处理的 `run()` 的最大尝试次数。 如果引发异常，则 `run()` 失败；如果达到 `run_invocation_timeout`，则不返回任何内容（可选；默认值为 `3`）。 
 
-可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 `PipelineParameter`，并在稍后重新提交运行时更改这些值。 
+可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在本例中，你将 `PipelineParameter` 用于 `mini_batch_size` 和 `Process_count_per_node`。重新提交另一运行时，需更改这些值。 
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>用于创建 ParallelRunStep 的参数
 
@@ -151,7 +154,7 @@ parallelrun_step = ParallelRunStep(
 
 - `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`：这些文件是使用 EntryScript 帮助程序从 entry_script 写入的日志。
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`：这些文件是 entry_script 的 stdout（例如 print 语句）的日志。
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`：这些文件是 entry_script 的 stdout（例如，print 语句）的日志。
 
 - `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`：这些文件是 entry_script 的 stderr 的日志。
 
@@ -171,14 +174,14 @@ parallelrun_step = ParallelRunStep(
     - 总项数、成功处理的项计数和失败的项计数。
     - 开始时间、持续时间、处理时间和运行方法时间。
 
-还可以查看每个节点的资源使用情况的定期检查结果。 日志文件和安装程序文件位于此文件夹中：
+你还可以查看每个节点的资源使用情况的定期检查结果。 日志文件和安装程序文件位于以下文件夹中：
 
-- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认间隔为 `600`，约为 10 分钟。 若要停止监视，请将值设置为 `0`。 每个 `<ip_address>` 文件夹都包括：
+- `~/logs/perf`：设置 `--resource_monitor_interval` 以更改检查时间间隔（以秒为单位）。 默认时间间隔为 `600`，约为 10 分钟。 若要停止监视，请将值设置为 `0`。 每个 `<ip_address>` 文件夹包括：
 
-    - `os/`：有关节点中所有正在运行的进程的信息。 一项检查将运行操作系统命令，并将结果保存到文件中。 在 Linux 上，命令为 `ps`。 在 Windows 上，使用 `tasklist`。
-        - `%Y%m%d%H`：子文件夹名称表示小时时间。
-            - `processes_%M`：文件以检查时间的分钟值结尾。
-    - `node_disk_usage.csv`：节点的磁盘使用情况详细信息。
+    - `os/`：节点中所有正在运行的进程的相关信息。 一项检查将运行一个操作系统命令，并将结果保存到文件。 在 Linux 上，该命令为 `ps`。 在 Windows 上，请使用 `tasklist`。
+        - `%Y%m%d%H`：子文件夹名称是到精确到小时的时间。
+            - `processes_%M`：文件名以检查时间的分钟结束。
+    - `node_disk_usage.csv`：节点的详细磁盘使用情况。
     - `node_resource_usage.csv`：节点的资源使用情况概述。
     - `processes_resource_usage.csv`：每个进程的资源使用情况概述。
 
@@ -212,10 +215,11 @@ def run(mini_batch):
 
 用户可以使用 ParalleRunStep 的 side_inputs 参数将引用数据传递给脚本。 作为 side_inputs 提供的所有数据集将装载到每个工作器节点上。 用户可以通过传递参数获取装载的位置。
 
-构造包含引用数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
+构造一个包含参考数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset)，指定本地装载路径并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
 
 ```python
-label_config = label_ds.as_named_input("labels_input")
+local_path = "/tmp/{}".format(str(uuid.uuid4()))
+label_config = label_ds.as_named_input("labels_input").as_mount(local_path)
 batch_score_step = ParallelRunStep(
     name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],
@@ -260,7 +264,7 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅这些[展示 Azure 机器学习管道的 Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+* 请参阅这些[展示了 Azure 机器学习管道的 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 
 * 请查看 SDK 参考，获取有关 [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) 包的帮助。 查看 ParallelRunStep 类的参考[文档](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep)。
 

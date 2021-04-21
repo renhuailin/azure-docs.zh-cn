@@ -4,13 +4,13 @@ description: 从包含意向和实体的话语文本中提取数据。 了解可
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025987"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500135"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -242,7 +242,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
 
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从[简单实体](luis-concept-entity-types.md#simple-entity)开始，添加一个[短语列表](luis-concept-feature.md)。 定期[查看](./luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从[简单实体](luis-concept-entity-types.md)开始，添加一个[短语列表](luis-concept-feature.md)。 定期[查看](./luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="patternany-entity-data"></a>Pattern.any 实体数据
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: c9de6b8d99f09d43a045787ee6185233b9d7ef25
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611821"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443232"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -31,6 +31,18 @@ ms.locfileid: "102611821"
 ## <a name="set-up-application-insights"></a>设置 Application Insights
 
 如果还没有，请在订阅中设置一个 Application Insights 实例。
+
+> [!TIP]
+> Application Insights 的单个实例可用于多个 Azure AD B2C 租户。 然后可以在查询中按租户或策略名称进行筛选。 有关详细信息，请[参阅 Application Insights 中的日志](#see-the-logs-in-application-insights)示例。
+
+若要在订阅中使用现有的 Application Insights 实例，请执行以下步骤：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure 订阅的目录（不是 Azure AD B2C 目录）。
+1. 打开之前创建的 Application Insights 资源。
+1. 在“概述”页上，记下“检测密钥” 
+
+若要在订阅中创建 Application Insights 的实例，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure 订阅的目录（不是 Azure AD B2C 目录）。
@@ -96,8 +108,11 @@ ms.locfileid: "102611821"
 
 | 查询 | 说明 |
 |---------------------|--------------------|
-`traces` | 查看 Azure AD B2C 生成的所有日志 |
-`traces | where timestamp > ago(1d)` | 查看 Azure AD B2C 为前一天生成的所有日志
+| `traces` | 获取 Azure AD B2C 生成的所有日志 |
+| `traces | where timestamp > ago(1d)` | 获取 Azure AD B2C 为前一天生成的所有日志。|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  获取过去两小时的所有日志和错误。|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | 获取 Azure AD B2C contoso.onmicrosoft.com 租户生成的所有日志，用户旅程为 b2c_1a_signinandup 。 |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| 获取 Azure AD B2C 为相关 ID 生成的所有日志。 将相关 ID 替换为你的相关 ID。 | 
 
 条目可能较长。 导出到 CSV 进行更深入的了解。
 

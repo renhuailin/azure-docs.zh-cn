@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950799"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285835"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
 **光学字符识别 (OCR)** 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 提供的机器学习模型。 **OCR** 技能将映射到以下功能：
 
-+ 对于英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语，使用新的[“读取”](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)API。
-+ 对于所有其他语言，使用[“OCR”](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api)API。
++ 对于英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语，使用新的[“读取”](../cognitive-services/computer-vision/overview-ocr.md#read-api)API。
++ 对于所有其他语言，请使用[旧版 OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) API。
 
 OCR  技能可以从图像文件中提取文本。 支持的文件格式包括：
 
@@ -43,8 +43,8 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| `detectOrientation`   | 启用图像方向自动检测。 <br/> 有效值：true / false。|
-| `defaultLanguageCode` | <p>   输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
+| `detectOrientation`    | 启用图像方向自动检测。 <br/> 有效值：true / false。|
+| `defaultLanguageCode` | <p>    输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
 | `lineEnding` | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space”。 |
 
 以前，有一个名为“textExtractionAlgorithm”的参数，用于指定技能是提取“印刷”文本还是“手写”文本。  此参数已弃用，不再需要，因为最新的 Read API 算法能够同时提取这两种类型的文本。  如果技能定义已经包含此参数，则无需删除它，但是将不再使用它，并且无论将它设置为什么内容，将来都会提取这两种类型的文本。
@@ -57,9 +57,9 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 
 
 ## <a name="skill-outputs"></a>技能输出
-| 输出名称     | 说明                   |
+| 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| `text`            | 从映像中提取的纯文本。   |
+| `text`             | 从映像中提取的纯文本。   |
 | `layoutText`    | 描述提取的文本以及找到文本的位置的复杂类型。|
 
 

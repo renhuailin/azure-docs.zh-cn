@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7e2a64c14d7d7a1d20b64b746969aca1e60ab218
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cfd3bc406407298c6daf7723cb684911d7c9a9cf
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90934440"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284662"
 ---
 # <a name="zone-and-line-placement-guide"></a>区域和线条放置指南
 
@@ -61,7 +61,7 @@ ms.locfileid: "90934440"
 
 ### <a name="example-of-a-well-shaped-line"></a>形状规整的线条示例
 
-线条长度应足以容纳整个入口。 空间分析将识别出脚跨过这条线的人员，所以当你在 2D 图像上画线时，想象在地面上画线条的样子。 
+线条长度应足以容纳整个入口。 空间分析将识别出脚跨过这条线的人员，所以当你在 2D 图像上画线时，请想象在地面上画线条的样子。 
 
 如果可以，将线条延伸至比实际入口更宽的位置。 如果此做法不会导致额外的交叉（如下图所示，当线条靠墙时），则延伸它。
 

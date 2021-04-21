@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/15/2021
 ms.author: duau
 ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103573891"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Azure Front Door 标准版/高级版（预览版）日志记录
@@ -77,7 +77,7 @@ Azure Front Door 目前提供单独的 API 请求，其对应的每个条目采�
 | HttpMethod | 请求使用的 HTTP 方法：DELETE、GET、HEAD、OPTIONS、PATCH、POST 或 PUT。 |
 | HttpVersion | 查看方在请求中指定的 HTTP 版本。 |
 | RequestUri | 已收到请求的 URI。 此字段是完整的方案、端口、域、路径和查询字符串 |
-| HostName | 来自客户端的请求中的主机名。 如果启用自定义域并使用通配符域 (*.contoso.com)，则主机名为 a.contoso.com。 如果使用 Azure Front Door 域 (contoso.azurefd.net)，则主机名为 contoso.azurefd.net。 |
+| 主机名 | 来自客户端的请求中的主机名。 如果启用自定义域并使用通配符域 (*.contoso.com)，则主机名为 a.contoso.com。 如果使用 Azure Front Door 域 (contoso.azurefd.net)，则主机名为 contoso.azurefd.net。 |
 | RequestBytes | HTTP 请求消息的大小（以字节为单位），包括请求标头和请求正文。 查看方在请求中包含的数据字节数（包括头）。 |
 | ResponseBytes | 后端服务器作为响应发送的字节数。 |
 | UserAgent | 客户端使用的浏览器类型。 |
@@ -96,14 +96,14 @@ Azure Front Door 目前提供单独的 API 请求，其对应的每个条目采�
 | ClientPort | 发出请求的客户端的 IP 端口。 |
 | Referrer | 发起请求的站点的 URL。 |
 | TimetoFirstByte | 从 AFD 收到请求到将第一个字节发送到客户端所经历的时间，以毫秒为单位，在 Azure Front Door 中测量。 此属性不测量客户端数据。 |
-| ErrorInfo | 此字段提供每个响应的错误标记的详细信息。 <br> **NoError**：指示未发现任何错误。 <br> **CertificateError**：常规 SSL 证书错误。 <br> **CertificateNameCheckFailed**：SSL 证书中的主机名无效或不匹配。 <br> **ClientDisconnected**：客户端网络连接问题导致请求失败。 <br> **ClientGeoBlocked**：由于 IP 地理位置方面的原因而阻止了客户端。 <br> **UnspecifiedClientError**：常规客户端错误。 <br> **InvalidRequest**：请求无效。 此错误的可能原因是头、正文和 URL 格式不正确。 <br> **DNSFailure**：DNS 错误。 <br> **DNSTimeout**：用于解析后端的 DNS 查询超时。 <br> **DNSNameNotResolved**：无法解析服务器名称或地址。 <br> **OriginConnectionAborted**：与源的连接异常断开。 <br> **OriginConnectionError**：常规源连接错误。 <br> **OriginConnectionRefused**：未与源建立连接。 <br> **OriginError**：常规源错误。 <br> **OriginInvalidRequest**：发送到源的请求无效。 <br> **ResponseHeaderTooBig**：源返回了过大的响应头。 <br> **OriginInvalidResponse**：** 源返回了无效或无法识别的响应。 <br> **OriginTimeout**：超过了源请求的超时期限。 <br> **ResponseHeaderTooBig**：源返回了过大的响应头。 <br> **RestrictedIP**：由于 IP 受限而阻止了请求。 <br> **SSLHandshakeError**：由于 SSL 握手失败，无法与源建立连接。 <br> **SSLInvalidRootCA**：RootCA 无效。 <br> **SSLInvalidCipher**：用于建立 HTTPS 连接的密码无效。 <br> **OriginConnectionAborted**：与源的连接异常断开。 <br> **OriginConnectionRefused**：未与源建立连接。 <br> **UnspecifiedError**：发生了与表中任何错误都不相符的错误。 |
-| OriginURL | 请求所发送到的源的完整 URL。 由方案、主机头、端口、路径和查询字符串构成。 <br> **URL 重写**：如果规则集中存在 URL 重写规则，则路径将引用重写的路径。 <br> **边缘 POP 上发生缓存命中**：如果边缘 POP 上发生缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
-| OriginIP | 为请求提供服务的源 IP。 <br> **边缘 POP 上发生缓存命中**：如果边缘 POP 上发生缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
-| OriginName| 源的完整 DNS 名称（源 URL 中的主机名）。 <br> **边缘 POP 上发生缓存命中**：如果边缘 POP 上发生缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
+| ErrorInfo | 此字段提供每个响应的错误标记的详细信息。 <br> **NoError**：指示未发现任何错误。 <br> **CertificateError**：常规 SSL 证书错误。 <br> **CertificateNameCheckFailed**：SSL 证书中的主机名无效或不匹配。 <br> **ClientDisconnected**：客户端网络连接问题导致请求失败。 <br> **ClientGeoBlocked**：由于 IP 地理位置方面的原因而阻止了客户端。 <br> **UnspecifiedClientError**：常规客户端错误。 <br> **InvalidRequest**：请求无效。 此错误的可能原因是头、正文和 URL 格式不正确。 <br> **DNSFailure**：DNS 错误。 <br> **DNSTimeout**：用于解析后端的 DNS 查询超时。 <br> **DNSNameNotResolved**：无法解析服务器名称或地址。 <br> **OriginConnectionAborted**：与源的连接异常断开。 <br> **OriginConnectionError**：常规源连接错误。 <br> **OriginConnectionRefused**：未与源建立连接。 <br> **OriginError**：常规源错误。 <br> **OriginInvalidRequest**：发送到源的请求无效。 <br> **ResponseHeaderTooBig**：源返回了过大的响应头。 <br> **OriginInvalidResponse**：** 源返回了无效或无法识别的响应。 <br> **OriginTimeout**：超过了源请求的超时期限。 <br> **ResponseHeaderTooBig**：源返回了过大的响应头。 <br> **RestrictedIP**：由于 IP 受限而阻止了请求。 <br> **SSLHandshakeError**：由于 SSL 握手失败，无法与源建立连接。 <br> **SSLInvalidRootCA**：RootCA 无效。 <br> SSLInvalidCipher：用于建立 HTTPS 连接的密码无效。 <br> **OriginConnectionAborted**：与源的连接异常断开。 <br> **OriginConnectionRefused**：未与源建立连接。 <br> **UnspecifiedError**：发生了与表中任何错误都不相符的错误。 |
+| OriginURL | 请求所发送到的源的完整 URL。 由方案、主机头、端口、路径和查询字符串构成。 <br> **URL 重写**：如果规则集中存在 URL 重写规则，则路径将引用重写的路径。 <br> 边缘 POP 上的缓存：如果是边缘 POP 上的缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
+| OriginIP | 为请求提供服务的源 IP。 <br> 边缘 POP 上的缓存命中：如果是边缘 POP 上的缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
+| OriginName| 源的完整 DNS 名称（源 URL 中的主机名）。 <br> 边缘 POP 上的缓存命中：如果是边缘 POP 上的缓存命中，则源为 N/A。 <br> **大请求**：如果请求的内容很大，包含返回到源的多个分块请求，则此字段将对应于向源发出的第一个请求。 有关更多详细信息，请参阅“对象分块”。 |
 
 ## <a name="health-probe-log"></a>运行状况探测日志
 
-运行状况探测日志提供每个失败探测的日志记录以帮助你诊断源。 这些日志将提供可使源恢复正常运行的信息。 此日志可发挥作用的部分场景包括：
+运行状况探测日志提供每个失败探测的日志记录以帮助你诊断源。这些日志将提供可用来使源恢复正常运行的信息。 此日志可发挥作用的部分场景包括：
 
 * 你发现 Azure Front Door 流量只是发送到了一部分源。 例如，共有四个源，但只有三个源在接收流量。 你想要知道源是否在接收探测，如果未接收，失败的原因是什么。  
 
@@ -126,7 +126,7 @@ Azure Front Door 目前提供单独的 API 请求，其对应的每个条目采�
 | 原始 IP | 目标源 IP。 如果使用 FDQN 配置源，则此字段对于查找相关的源会很有用。 |
 | TotolaLatency | 从 AFDX 边缘向源发送请求到源向 AFDX 边缘发送最后一个响应所经历的时间。 |
 | ConnectionLatency| 设置 TCP 连接以将 HTTP 探测请求发送到源所用的持续时间。 | 
-| DNSResolutionLatency | 当源配置为 FDQN 而不是 IP 时 DNS 解析所用的持续时间。 如果源配置为 IP，则为 N/A。 |
+| DNSResolution Latency | 当源配置为 FDQN 而不是 IP 时 DNS 解析所用的持续时间。 如果源配置为 IP，则为 N/A。 |
 
 ### <a name="health-probe-log-sample-in-json"></a>JSON 中的运行状况探测日志示例
 

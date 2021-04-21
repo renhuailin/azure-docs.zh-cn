@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
 ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010437"
 ---
 若要在 Azure 中为函数应用启用流式处理日志，请执行以下操作：
 
-1. 选择 F1 打开命令面板，然后搜索并运行命令“Azure Functions:  开始流式处理日志”。
+1. 选择 F1 打开命令面板，然后搜索并运行命令“Azure Functions: Start Streaming Logs”。
 
-1. 在 Azure 中选择函数应用，然后选择“是”  为函数应用启用应用程序日志记录。
+1. 在 Azure 中选择函数应用，然后选择“是”为函数应用启用应用程序日志记录。
 
 1. 在 Azure 中触发函数。 请注意，日志数据显示在 Visual Studio Code 的“输出”窗口中。
 
-1. 完成后，请记得运行命令“Azure Functions:  停止流式处理日志”为函数应用禁用日志记录。
+1. 完成后，请记住运行命令“Azure Functions: Stop Streaming Logs”，以禁用函数应用的日志记录。

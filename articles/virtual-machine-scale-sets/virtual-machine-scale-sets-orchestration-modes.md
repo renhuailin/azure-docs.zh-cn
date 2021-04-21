@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 3d9d9449e2a971a4247e507e0c022c8c5fb9956c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075400"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774442"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>预览：Azure 中虚拟机规模集的业务流程模式 
 
@@ -165,7 +165,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-使用 [az feature register](/cli/azure/feature#az-feature-register) 为订阅启用预览版。 
+使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD

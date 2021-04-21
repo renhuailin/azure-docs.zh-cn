@@ -11,19 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: MT
+ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307780"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551928"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
 云应用或操作是条件访问策略中的一个关键信号。 管理员可以使用条件访问策略将控制措施分配给特定的应用程序或操作。
 
 - 管理员可以从包括内置 Microsoft 应用程序以及任何 [Azure AD 集成应用程序](../manage-apps/what-is-application-management.md)（包括库、非库和通过[应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序）的应用程序列表进行选择。
-- 管理员可以选择定义一个并非基于云应用程序，而是基于用户操作的策略。 唯一支持的操作是“注册安全信息”（预览版），此操作使条件访问能够围绕[组合安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)强制实施控制。
+- 管理员可以选择定义一个并非基于云应用程序，而是基于用户操作的策略。 我们支持两项用户操作
+   - 注册安全信息（预览版），以便对[组合式安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)强制实施控制 
+   - 注册或加入设备（预览版），以便在用户将设备[注册](../devices/concept-azure-ad-register.md)或[加入](../devices/concept-azure-ad-join.md)到 Azure AD 时强制实施控制。 
 
 ![定义条件访问策略并指定云应用](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -31,7 +33,7 @@ ms.locfileid: "93307780"
 
 许多现有 Microsoft 云应用程序都包含在可供选择的应用程序的列表中。 
 
-管理员可以向 Microsoft 提供的以下云应用分配条件访问策略。 某些应用（如 Office 365 和 Microsoft Azure 管理）包含多个相关的子应用或服务。 以下列表并不完整，且随时可能会更改。
+管理员可以向 Microsoft 提供的以下云应用分配条件访问策略。 某些应用（例如 Office 365 和 Microsoft Azure 管理）包含多个相关子应用或服务。 我们会不断地添加更多应用，因此以下列表并不完整，并且可能会发生更改。
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -66,6 +68,8 @@ ms.locfileid: "93307780"
 - Skype for Business Online
 - 虚拟专用网络 (VPN)
 - Windows Defender ATP
+
+适用于条件访问的应用程序已完成加入和验证过程。 这并不包括所有 Microsoft 应用，因为许多应用是后端服务，不会直接向其应用策略。 如果你正在寻找某个缺少的应用程序，可以联系特定的应用程序团队，或者在 [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) 上发出请求。
 
 ### <a name="office-365"></a>Office 365
 
@@ -121,12 +125,19 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 - 使用[基于密码的单一登录](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)的应用程序
 
 > [!NOTE]
-> 由于条件访问策略会设置访问服务的要求，因此不能将其应用于 (公共/本机) 应用程序的客户端。 换句话说，该策略不是直接在客户端（公共/本机）应用程序上设置的，而是在客户端调用服务时应用的。 例如，在 SharePoint 服务上设置的策略将应用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略将应用于使用 Outlook 客户端访问电子邮件的尝试。 正因如此，云应用选取器没有客户端（公共/本机）应用程序可供选择，并且在租户中注册的客户端（公共/本机）应用程序的应用程序设置中未提供条件访问选项。 
+> 由于条件访问策略设置了服务访问方面的要求，因此你无法将其应用于客户端（公共/本机）应用程序。 换句话说，该策略不是直接在客户端（公共/本机）应用程序上设置的，而是在客户端调用服务时应用的。 例如，在 SharePoint 服务上设置的策略将应用于调用 SharePoint 的客户端。 在 Exchange 上设置的策略将应用于使用 Outlook 客户端访问电子邮件的尝试。 正因如此，云应用选取器没有客户端（公共/本机）应用程序可供选择，并且在租户中注册的客户端（公共/本机）应用程序的应用程序设置中未提供条件访问选项。 
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可由用户执行的任务。 目前支持的唯一操作是“注册安全信息”。使用此操作，可以在启用了组合注册的用户尝试注册其安全信息时强制实施条件访问策略。 在[组合安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文中可以找到详细信息。
+用户操作是可由用户执行的任务。 目前，条件访问支持两种用户操作： 
 
+- **注册安全信息**：使用此用户操作，可以在启用了组合注册的用户尝试注册其安全信息时强制实施条件访问策略。 在[组合安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文中可以找到详细信息。
+
+- **注册或加入设备（预览）** ：使用此用户操作，管理员可以在用户向 Azure AD [注册](../devices/concept-azure-ad-register.md)或[加入](../devices/concept-azure-ad-join.md)设备时强制实施条件访问策略。 使用此操作可以精细针对注册或加入设备的操作配置多重身份验证方面，而无需配置当前存在的租户范围的策略。 对于此用户操作，需要注意三个重要事项： 
+   - `Require multi-factor authentication` 是此用户操作唯一可用的访问控制，所有其他访问控制均处于禁用状态。 此限制可防止与依赖于 Azure AD 设备注册或不适用于 Azure AD 设备注册的访问控制发生冲突。 
+   - `Client apps` 和 `Device state` 条件在此用户操作中不可用，因为它们依赖于使用 Azure AD 设备注册来强制实施条件访问策略。
+   - 对此用户操作启用条件访问策略时，必须将“Azure Active Directory” > “设备” > “设备设置” - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` 设置为“否”   。 否则，将无法正确地强制实施此用户操作的条件访问策略。 有关此设备设置的详细信息，请参阅[配置设备设置](../devices/device-management-azure-portal.md#configure-device-settings)。 
+   
 ## <a name="next-steps"></a>后续步骤
 
 - [条件访问：条件](concept-conditional-access-conditions.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96435444"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550772"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -168,13 +168,11 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 ### <a name="on-premises-network-shares"></a>本地网络共享
 
-设备有权访问本地域控制器时，你的用户从 Azure AD 联接设备获取 SSO。
+设备有权访问本地域控制器时，你的用户从 Azure AD 联接设备获取 SSO。 [了解工作原理](azuread-join-sso.md)
 
 ### <a name="printers"></a>打印机
 
-对于打印机，需要部署[混合云打印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)，以查找 Azure AD 联接设备上的打印机。 
-
-在仅限云的环境中无法自动查找打印机时，用户还可以使用打印机的 UNC 路径直接将其添加。 
+建议部署[通用打印](/universal-print/fundamentals/universal-print-whatis)以拥有一个基于云的打印管理解决方案，而不需要任何本地依赖项。 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>依赖计算机身份验证的本地应用程序
 
@@ -221,7 +219,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ## <a name="configure-your-device-settings"></a>配置设备设置
 
-通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择 `Devices > Device settings`。
+通过Azure 门户可控制组织中 Azure AD 联接设备的部署。 若要配置相关设置，在“Azure Active Directory 页”中选择 `Devices > Device settings`。 [了解详细信息](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>用户可以将设备联接到 Azure AD
 
@@ -235,11 +233,13 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ![已联接 Azure AD 的设备上的其他本地管理员](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>需要进行多重身份验证才能联接设备
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>需要多重身份验证 (MFA) 才能联接设备
 
 如果将设备联接到 Azure AD 的同时需要用户执行多重身份验证，则选择“是”。 对于使用多重身份验证将设备联接到 Azure AD 的用户，设备本身成为第 2 个因素。
 
 ![需要进行多重身份验证才能联接设备](./media/azureadjoin-plan/03.png)
+
+建议：在条件访问中使用[注册或联接设备](/conditional-access/concept-conditional-access-cloud-apps#user-actions)这一用户操作，以便在联接设备时强制实施 MFA。
 
 ## <a name="configure-your-mobility-settings"></a>配置移动性设置
 

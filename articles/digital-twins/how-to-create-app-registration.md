@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: acb5457f10c54a741a738dd8a1008e703b0f23b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102051015"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478805"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>创建与 Azure 数字孪生配合使用的应用注册
 
-使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如自定义客户端应用或 [Azure Digital Twins Explorer](quickstart-adt-explorer.md) 之类的示例）与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些 [身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **应用注册**。
+使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如自定义客户端应用或 [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) 之类的示例）与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些 [身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **应用注册**。
 
 并非所有身份验证方案都需要应用注册。 但是，如果使用的身份验证策略或代码示例确实需要应用注册（包括 **客户端 ID** 和 **租户 ID**），你可以参考本文设置一个应用注册。
 

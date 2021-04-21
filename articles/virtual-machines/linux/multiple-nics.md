@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b08e8ebbba3ba91c1c1aa0f135c4cba37ba038b1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551804"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769906"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -183,7 +183,7 @@ Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以�
 
 前面的步骤创建了虚拟网络和子网，附加了 NIC，然后创建了 VM。 尚未创建公共 IP 地址，以及允许 SSH 流量的网络安全组规则。 若要为多个 NIC 配置来宾 OS，需要允许远程连接并在 VM 本地运行命令。
 
-若要允许 SSH 流量，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) 创建网络安全组规则，如下所示：
+若要允许 SSH 流量，请使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 创建网络安全组规则，如下所示：
 
 ```azurecli
 az network nsg rule create \
@@ -194,7 +194,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 创建公共 IP 地址，并使用 [az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) 将其分配到第一个 NIC：
+使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 创建公共 IP 地址，并使用 [az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) 将其分配到第一个 NIC：
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -206,7 +206,7 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-若要查看 VM 的公共 IP 地址，请使用 [az vm show](/cli/azure/vm#az-vm-show)，如下所示：
+若要查看 VM 的公共 IP 地址，请使用 [az vm show](/cli/azure/vm#az_vm_show)，如下所示：
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

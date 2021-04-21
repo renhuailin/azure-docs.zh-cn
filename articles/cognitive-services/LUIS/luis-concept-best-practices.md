@@ -4,13 +4,13 @@ description: 学习最佳做法以从 LUIS 应用的模型中获取最佳结果�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: d5fa2a1e865a4f54de268e7ad756d1d4363f3b78
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98788479"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500203"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -81,7 +81,7 @@ ms.locfileid: "98788479"
 
 机器学习实体可以使用其他实体作为特征。 这些其他实体可以是自定义实体（如正则表达式实体或列表实体），你也可以使用预生成实体作为特征。
 
-了解[有效的机器学习实体](luis-concept-entity-types.md#effective-machine-learned-entities)。
+了解[有效的机器学习实体](luis-concept-entity-types.md#machine-learned-ml-entity)。
 
 <a name="#do-build-the-app-iteratively"></a>
 

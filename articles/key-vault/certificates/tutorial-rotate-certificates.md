@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204042"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581815"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>教程：配置 Key Vault 中的证书自动轮换
 
@@ -51,7 +51,7 @@ ms.locfileid: "102204042"
 
 ## <a name="update-certificate-lifecycle-attributes"></a>更新证书生命周期属性
 
-在 Azure Key Vault 中，可以在创建证书之前和之后更新证书的生命周期属性。
+在 Azure Key Vault 中，可以在创建证书时或之后更新证书的生命周期属性。
 
 在 Key Vault 中创建的证书可以是：
 
@@ -83,7 +83,7 @@ Key Vault 通过与 CA 建立的合作关系自动轮换证书。 由于 Key Vau
         |  在给定时间自动续订| 在给定时间向所有联系人发送电子邮件 |
         |-----------|------|
         |选择此选项会启用自动轮换。 | 选择此选项不会自动轮换，而只会提醒联系人。|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. 选择“创建”。
 
 ![证书生命周期](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

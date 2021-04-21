@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: d0298bcd675b1b94999dab3a1ad1c40a6feb7438
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
-ms.translationtype: MT
+ms.openlocfilehash: cdcb61249f6cb8f7b60c891dd4899d2e5cedbae6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135766"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612816"
 ---
 :::row:::
     :::column span="3":::
-        语音 SDK 仅支持 **Ubuntu 16.04/18.04/20.04** 、 **Debian 9/10** ， **Red Hat Enterprise Linux (RHEL) 7/8** ，并在与 Linux 一起使用时在以下目标体系结构上进行 **CentOS 7/8** ：
+        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04/20.04、Debian 9/10、Red Hat Enterprise Linux (RHEL) 7/8 和 CentOS 7/8：
     :::column-end:::
     :::column:::
         <br>
@@ -31,6 +31,9 @@ ms.locfileid: "93135766"
 > [!IMPORTANT]
 > 对于 Linux ARM64 上的 C#，需要 .NET Core 3.x（dotnet-sdk-3.x 包）。
 
+> [!NOTE]
+> 若要在 Alpine Linux 中使用语音 SDK，请按照 Alpine Linux Wiki 中的[运行 glibc 程序](https://wiki.alpinelinux.org/wiki/Running_glibc_programs)所述创建 Debian chroot 环境，然后按照此处的 Debian 说明操作。
+
 ### <a name="system-requirements"></a>系统要求
 
 对于本机应用程序，语音 SDK 依赖于 `libMicrosoft.CognitiveServices.Speech.core.so`。 请确保目标体系结构（x86、x64）与应用程序匹配。 可能需要其他依赖项，具体取决于 Linux 版本。
@@ -47,7 +50,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2
 ```
 
 > [!NOTE]
-> 如果 libssl1.0.0 1.0 版不可用，请改为安装 libssl1.0.0 1.1。
+> 如果 libssl1.0.x 不可用，请改为安装 libssl1.1。
 
 # <a name="debian-910"></a>[Debian 9/10](#tab/debian)
 
@@ -57,7 +60,7 @@ sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
 > [!NOTE]
-> 如果 libssl1.0.0 1.0 版不可用，请改为安装 libssl1.0.0 1.1。
+> 如果 libssl1.0.x 不可用，请改为安装 libssl1.1。
 
 # <a name="rhel-78-and-centos-78"></a>[RHEL 7/8 和 CentOS 7/8](#tab/rhel-centos)
 

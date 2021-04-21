@@ -1,23 +1,18 @@
 ---
-title: Azure 安全中心的容器安全性 | Microsoft Docs
-description: 了解 Azure 安全中心的容器安全功能。
-services: security-center
-documentationcenter: na
+title: Azure 安全中心和 Azure Defender 的容器安全性
+description: 了解 Azure 安全中心的容器安全功能
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/07/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fddb27ee6a1139fa8b07c6c19dd4fdf1a20096e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101335"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029126"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全性
 
@@ -27,9 +22,9 @@ Azure 安全中心是用于保护容器安全的 Azure 原生解决方案。
 
 | 资源类型 | 安全中心提供的保护 |
 |:--------------------:|-----------|
-| ![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes 服务 (AKS) 群集** | - 持续评估 AKS 群集的配置以发现和直观显示错误配置，并提供帮助解决任何发现的问题的指导信息。<br>[深入了解如何通过安全建议强化环境](#environment-hardening)。<br><br>- 面向 AKS 群集和 Linux 节点的威胁防护。 针对可疑活动的警报由可选的[适用于 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md) 提供。<br>[深入了解面向 AKS 节点和群集的运行时保护](#run-time-protection-for-aks-nodes-and-clusters)。|
-| ![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**容器主机**<br>（运行 Docker 的 VM） | - 持续评估 Docker 配置以发现和直观显示错误配置，并通过[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 提供帮助解决任何发现的问题的指导信息。<br>[深入了解如何通过安全建议强化环境](#environment-hardening)。|
-| ![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure 容器注册表 (ACR) 的注册表** | - 通过可选的[适用于容器注册表的Azure Defender](defender-for-container-registries-introduction.md)，提供漏洞评估和管理工具，用于基于 Azure 资源管理器的 ACR 注册表中的映像。<br>[详细了解如何扫描容器映像漏洞](#vulnerability-management---scanning-container-images)。 |
+| ![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Kubernetes 群集** | 持续评估群集，以直观显示错误配置，并提供帮助缓解发现的威胁的指导信息。 详细了解如何[通过安全建议强化环境](#environment-hardening)。<br><br>面向群集和 Linux 节点的威胁防护。 针对可疑活动的警报由 [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) 提供。 此 Azure Defender 计划可保护你的 Kubernetes 群集，不管它们是托管在 Azure Kubernetes 服务(AKS) 中、本地还是在其他云提供商的平台上 。 <br>详细了解[面向 Kubernetes 节点和群集的运行时保护](#run-time-protection-for-kubernetes-nodes-and-clusters)。|
+| ![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**容器主机**<br>（运行 Docker 的 VM） | 持续评估 Docker 环境，以直观显示错误配置并提供相关指导信息，帮助你缓解可选的[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 发现的威胁。<br>详细了解如何[通过安全建议强化环境](#environment-hardening)。|
+| ![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure 容器注册表 (ACR) 的注册表** | 通过可选的[适用于容器注册表的 Azure Defender](defender-for-container-registries-introduction.md)，提供漏洞评估和管理工具，这些工具可用于基于 Azure 资源管理器的 ACR 注册表中的映像。<br>详细了解如何[扫描容器映像漏洞](#vulnerability-management---scanning-container-images)。 |
 |||
 
 本文介绍如何将安全中心与适用于容器注册表、服务器和 Kubernetes 的 Azure Defender 计划（可选）结合使用，来改善、监视和维护容器及其应用的安全性。
@@ -38,7 +33,7 @@ Azure 安全中心是用于保护容器安全的 Azure 原生解决方案。
 
 - [漏洞管理 - 扫描容器映像](#vulnerability-management---scanning-container-images)
 - [环境强化](#environment-hardening)
-- [面向 AKS 节点和群集的运行时保护](#run-time-protection-for-aks-nodes-and-clusters)
+- [面向 Kubernetes 节点和群集的运行时保护](#run-time-protection-for-kubernetes-nodes-and-clusters)
 
 以下屏幕截图显示了“资产清单”页以及受安全中心保护的各种类型的容器资源。
 
@@ -103,7 +98,7 @@ AKS 提供安全控制，并且可用于了解群集的安全状况。 安全中
 参阅[保护 Kubernetes 工作负载](kubernetes-workload-protections.md)，了解详细信息。
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>面向 AKS 节点和群集的运行时保护
+## <a name="run-time-protection-for-kubernetes-nodes-and-clusters"></a>面向 Kubernetes 节点和群集的运行时保护
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 

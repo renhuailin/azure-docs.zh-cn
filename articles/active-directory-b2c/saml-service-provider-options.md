@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: fea39388b6b4387dfc4fe95d1cdfb3e523a8089c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470772"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382430"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>用于在 Azure AD B2C 中注册 SAML 应用程序的选项
 
@@ -34,7 +34,86 @@ ms.locfileid: "103470772"
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="encrypted-saml-assertions"></a>加密的 SAML 断言
+
+## <a name="saml-response-signature"></a>SAML 响应签名
+
+可以指定用于对 SAML 消息进行签名的证书。 消息是发送到应用程序的 SAML 响应中的 `<samlp:Response>` 元素。
+
+如果你没有策略密钥，请[创建一个](saml-service-provider.md#create-a-policy-key)。 然后在 SAML 令牌颁发者技术配置文件中配置 `SamlMessageSigning` 元数据项。 `StorageReferenceId` 必须引用策略密钥名称。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+### <a name="saml-response-signature-algorithm"></a>SAML 响应签名算法
+
+可以配置对 SAML 断言进行签名的签名算法。 可能的值为 `Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 请确保技术配置文件和应用程序使用相同的签名算法。 仅使用证书支持的算法。
+
+使用信赖方元数据元素中的 `XmlSignatureAlgorithm` 元数据密钥配置签名算法。
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="saml-assertions-signature"></a>SAML 断言签名
+
+当应用程序要求对 SAML 断言部分签名时，请确保 SAML 服务提供程序将 `WantAssertionsSigned` 设置为 `true`。 如果此参数设置为 `false` 或不存在，则不会对断言部分进行签名。 以下示例演示了 `WantAssertionsSigned` 设置为 `true` 的 SAML 服务提供程序元数据。
+
+```xml
+<EntityDescriptor ID="id123456789" entityID="https://samltestapp2.azurewebsites.net" validUntil="2099-12-31T23:59:59Z" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor  WantAssertionsSigned="true" AuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+  ...
+  </SPSSODescriptor>
+</EntityDescriptor>
+```  
+
+### <a name="saml-assertions-signature-certificate"></a>SAML 断言签名证书
+
+策略必须指定一个用于对 SAML 响应的 SAML 断言部分进行签名的证书。 如果你没有策略密钥，请[创建一个](saml-service-provider.md#create-a-policy-key)。 然后在 SAML 令牌颁发者技术配置文件中配置 `SamlAssertionSigning` 元数据项。 `StorageReferenceId` 必须引用策略密钥名称。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+## <a name="saml-assertions-encryption"></a>SAML 断言加密
 
 当应用程序要求 SAML 断言采用加密格式时，需要确保在 Azure AD B2C 策略中启用加密。
 
@@ -158,26 +237,6 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
 1. 更新 `TenantId` 以匹配租户名称，例如 contoso.b2clogin.com。
 1. 保留策略名称 B2C_1A_signup_signin_saml。
 
-## <a name="saml-response-signature-algorithm"></a>SAML 响应签名算法
-
-可以配置对 SAML 断言进行签名的签名算法。 可能的值为 `Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 请确保技术配置文件和应用程序使用相同的签名算法。 仅使用证书支持的算法。
-
-使用信赖方元数据元素中的 `XmlSignatureAlgorithm` 元数据密钥配置签名算法。
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-  <TechnicalProfile Id="PolicyProfile">
-    <DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="SAML2"/>
-    <Metadata>
-      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-    </Metadata>
-   ..
-  </TechnicalProfile>
-</RelyingParty>
-```
-
 ## <a name="saml-response-lifetime"></a>SAML 响应生存期
 
 可以配置 SAML 响应保持有效的时长。 使用 `TokenLifeTimeInSeconds` SAML 令牌颁发者技术配置文件中的元数据项设置生存期。 此值是在令牌颁发时计算的 `NotBefore` 时间戳经过的秒数。 默认生存期是 300 秒（5 分钟）。
@@ -279,9 +338,9 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
 
 可以使用 `UseTechnicalProfileForSessionManagement` 元素和 [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) 管理 Azure AD B2C 和 SAML 信赖方应用之间的会话。
 
-## <a name="force-users-to-re-authenticate"></a>强制用户重新进行身份验证 
+## <a name="force-users-to-reauthenticate"></a>强制用户重新进行身份验证 
 
-若要强制用户重新进行身份验证，应用程序可以在 SAML 身份验证请求中包括 `ForceAuthn` 属性。 `ForceAuthn` 属性是布尔值。 如果设置为 true，则用户会话将在 Azure AD B2C 处无效，并强制用户重新进行身份验证。 以下 SAML 身份验证请求演示了如何将 `ForceAuthn` 属性设置为 true。 
+若要强制用户重新进行身份验证，应用程序可以在 SAML 身份验证请求中包含 `ForceAuthn` 特性。 `ForceAuthn` 属性是布尔值。 如果设置为 true，则用户会话将在 Azure AD B2C 处无效，并强制用户重新进行身份验证。 以下 SAML 身份验证请求演示了如何将 `ForceAuthn` 属性设置为 true。 
 
 
 ```xml
@@ -290,6 +349,28 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/g
        ForceAuthn="true" ...>
     ...
 </samlp:AuthnRequest>
+```
+
+## <a name="sign-the-azure-ad-b2c-idp-saml-metadata"></a>对 Azure AD B2C IdP SAML 元数据进行签名
+
+你可以根据应用程序的要求，指示 Azure AD B2C 对其 SAML IdP 元数据文档进行签名。 如果你没有策略密钥，请[创建一个](saml-service-provider.md#create-a-policy-key)。 然后在 SAML 令牌颁发者技术配置文件中配置 `MetadataSigning` 元数据项。 `StorageReferenceId` 必须引用策略密钥名称。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
 ```
 
 ## <a name="debug-the-saml-protocol"></a>调试 SAML 协议

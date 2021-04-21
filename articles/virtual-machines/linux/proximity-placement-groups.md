@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f91afa86a0d99b4ce42e96295bf2ae1f9fcd9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771436"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 将 VM 部署到邻近放置组
 
@@ -23,7 +23,7 @@ ms.locfileid: "102505641"
 
 
 ## <a name="create-the-proximity-placement-group"></a>创建邻近放置组
-使用 [`az ppg create`](/cli/azure/ppg#az-ppg-create) 创建邻近放置组。 
+使用 [`az ppg create`](/cli/azure/ppg#az_ppg_create) 创建邻近放置组。 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,7 +36,7 @@ az ppg create \
 
 ## <a name="list-proximity-placement-groups"></a>列出邻近放置组
 
-可以使用 [az ppg list](/cli/azure/ppg#az-ppg-list) 来列出所有邻近放置组。
+可以使用 [az ppg list](/cli/azure/ppg#az_ppg_list) 来列出所有邻近放置组。
 
 ```azurecli-interactive
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>创建 VM
 
-使用 [new az vm](/cli/azure/vm#az-vm-create) 在邻近放置组中创建 VM。
+使用 [new az vm](/cli/azure/vm#az_vm_create) 在邻近放置组中创建 VM。
 
 ```azurecli-interactive
 az vm create \
@@ -57,14 +57,14 @@ az vm create \
    -l westus
 ```
 
-可以使用 [az ppg show](/cli/azure/ppg#az-ppg-show) 查看邻近放置组中的 VM。
+可以使用 [az ppg show](/cli/azure/ppg#az_ppg_show) 查看邻近放置组中的 VM。
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性集
-还可以在邻近放置组中创建可用性集。 将同一 `--ppg` 参数与 [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) 一起使用来创建一个可用性集，并且也将在同一邻近放置组中创建该可用性集中的所有 VM。
+还可以在邻近放置组中创建可用性集。 将同一 `--ppg` 参数与 [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) 一起使用来创建一个可用性集，并且也将在同一邻近放置组中创建该可用性集中的所有 VM。
 
 ## <a name="scale-sets"></a>规模集
 

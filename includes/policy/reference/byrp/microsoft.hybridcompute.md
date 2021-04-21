@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 976fcc7631e32f0c3f1d6e0af02433f072edd446
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
-ms.translationtype: MT
+ms.openlocfilehash: 5fd53519f20c48261a12b349167993650cac0a67
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091002"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499644"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -44,9 +44,10 @@ ms.locfileid: "100091002"
 |[审核具有管理员组中指定成员的 Windows 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69bf4abd-ca1e-4cf6-8b5a-762d42e61d4f) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果本地管理员组包含策略参数中列出的一个或多个成员，则计算机不合规。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministratorsGroupMembersToExclude_AINE.json) |
 |[审核正在等待重新启动的 Windows VM](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4221adbc-5c0f-474f-88b7-037a99e6114c) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果计算机由于以下任一原因正在等待重启，则计算机不合规：基于组件的服务、Windows 更新、挂起的文件重命名、挂起的计算机重命名、配置管理器等待重启。 每次检测都有唯一的注册表路径。 |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot_AINE.json) |
 |[对 Linux 虚拟机进行身份验证需要 SSH 密钥](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6) |虽然 SSH 本身提供加密连接，但是将密码用于 SSH 仍会使 VM 易受到暴力攻击。 通过 SSH 对 Azure Linux 虚拟机进行身份验证时，最安全的方法是使用公钥-私钥对，也称为 SSH 密钥。 了解详细信息：[https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxNoPasswordForSSH_AINE.json) |
+|[将依赖项代理配置为在 Windows Azure Arc 计算机上启用](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91cb9edd-cd92-4d2f-b2f2-bdd8d065a3d4) |如果 Azure Arc 计算机图像在定义的列表中且代理未安装，则为 Windows Azure Arc 计算机部署依赖项代理。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_HybridVM_Deploy.json) |
+|[配置计算机以接收 Qualys 漏洞评估代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13ce0167-8ca6-4048-8e6b-f996402e3c1b) |Azure Defender 包含适用于计算机的漏洞扫描，不额外收费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 如果启用此策略，未部署 Qualys 漏洞评估代理的计算机会自动接收该代理。 |DeployIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VulnerabilityAssessment_ProvisionQualysAgent_Deploy.json) |
 |[在 Windows 计算机上配置时区。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |此策略创建一个 Guest Configuration 分配用于在 Windows 虚拟机上设置指定的时区。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
 |[将 Dependency Agent 部署到混合 Linux Azure Arc 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdeacecc0-9f84-44d2-bb82-46f32d766d43) |如果 Dependency Agent 未安装，此策略会将代理部署到 Linux Azure Arc 计算机。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Linux_HybridVM_Deploy.json) |
-|[将 Dependency Agent 部署到 Windows Azure Arc 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91cb9edd-cd92-4d2f-b2f2-bdd8d065a3d4) |如果 Dependency Agent 未安装，此策略会将代理部署到 Windows Azure Arc 计算机。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_HybridVM_Deploy.json) |
 |[将 Log Analytics 代理部署到 Linux Azure Arc 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d2b61b4-1d14-4a63-be30-d4498e7ad2cf) |如果 Log Analytics 代理未安装，此策略会将代理部署到 Linux Azure Arc 计算机。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_HybridVM_Deploy.json) |
 |[将 Log Analytics 代理部署到 Windows Azure Arc 计算机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69af7d4a-7b18-4044-93a9-2651498ef203) |如果 Log Analytics 代理未安装，此策略会将代理部署到 Windows Azure Arc 计算机。 |deployIfNotExists |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_HybridVM_Deploy.json) |
 |[Linux 计算机应符合 Azure 安全基线的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Linux 计算机应符合 Azure 安全基线的要求，则计算机不符合要求 |AuditIfNotExists、Disabled |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |

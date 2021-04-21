@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中配置基于
 services: container-service
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: f4e599ae7aa81c15f86d0e8b1c934824010ea45b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6942a3d445892faf0ea0570561eb06019e841e23
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430149"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443182"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes 服务 (AKS) 中基于主机的加密（预览版）
 
@@ -28,11 +28,18 @@ ms.locfileid: "102430149"
 - 确保已安装 `aks-preview` CLI 扩展 v0.4.73 或更高版本。
 - 确保已在 `Microsoft.ContainerService` 下启用 `EnableEncryptionAtHostPreview` 功能标志。
 
-为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 向 **encryptionAtHost@microsoft.com** 发送包含订阅 ID 的电子邮件可为你的订阅启用该功能。 
+在对 Azure Kubernetes 服务群集使用 EncryptionAtHost 属性之前，必须先为订阅启用该功能。 请按照以下步骤为订阅启用该功能：
 
-> [!IMPORTANT]
-> 必须向 **encryptionAtHost@microsoft.com** 发送包含订阅 ID 的电子邮件才能为计算资源启用该功能。 无法自行为计算资源启用该功能。
+1. 执行以下命令，为订阅注册该功能
 
+```azurecli-interactive
+Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
+2. 在试用该功能之前，请使用以下命令检查注册状态是否为“已注册”（需要几分钟）。
+
+```azurecli-interactive
+Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"
+```
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 

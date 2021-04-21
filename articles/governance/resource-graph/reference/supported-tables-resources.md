@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
-ms.date: 03/10/2021
+ms.date: 04/06/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 6161c2f53690140e2cd1140deaa8a22b3388dd2b
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633761"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505257"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -84,6 +84,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
 - Conexlink.MyCloudIt/accounts（MyCloudIT - Azure 桌面托管）
 - Crypteron.DataSecurity/apps (Crypteron)
+- GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
 - gridpro.evops/accounts/requesttemplates
@@ -96,7 +97,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privateLinkForAzureAD（Azure AD 专用链接）
 - microsoft.aadiam/tenants
-- microsoft.agfoodplatform/farmbeats
+- Microsoft.AgFoodPlatform/farmBeats (Azure FarmBeats PaaS)
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
@@ -142,7 +143,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.AzureStackHCI/clusters (Azure Stack HCI)
 - microsoft.azurestackhci/galleryimages
 - microsoft.azurestackhci/networkinterfaces
-- Microsoft.AzureStackHCI/virtualmachines（Azure Stack HCI 虚拟机 - Azure Arc）
+- microsoft.azurestackhci/virtualharddisks
+- Microsoft.AzureStackHci/virtualMachines（Azure Stack HCI 虚拟机 - Azure Arc）
 - microsoft.azurestackhci/virtualnetworks
 - microsoft.baremetal/consoleconnections
 - Microsoft.BareMetal/crayServers（Cray 服务器）
@@ -186,7 +188,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Cognition/syntheticsAccounts（Synthetics 帐户）
 - Microsoft.CognitiveServices/accounts（认知服务）
 - Microsoft.Compute/availabilitySets （可用性集）
-- microsoft.compute/capacityreservationgroups
+- Microsoft.Compute/capacityReservationGroups（产能预留组）
 - microsoft.compute/capacityreservationgroups/capacityreservations
 - microsoft.compute/capacityreservations
 - Microsoft.Compute/cloudServices（云服务[外延支持]）
@@ -218,8 +220,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.ConnectedCache/cacheNodes（联网缓存资源）
 - microsoft.connectedvehicle/platformaccounts
 - microsoft.connectedvmwarevsphere/resourcepools
-- microsoft.connectedvmwarevsphere/vcenters
-- microsoft.connectedvmwarevsphere/virtualmachines
+- Microsoft.connectedVMwareVSphere/vCenters (VMware vCenter)
+- Microsoft.ConnectedVMwarevSphere/VirtualMachines（VMware + AVS 虚拟机）
+- microsoft.connectedvmwarevsphere/virtualmachines/extensions
 - microsoft.connectedvmwarevsphere/virtualmachinetemplates
 - microsoft.connectedvmwarevsphere/virtualnetworks
 - Microsoft.ContainerInstance/containerGroups（容器实例）
@@ -230,7 +233,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.containerregistry/registries/taskruns
 - microsoft.containerregistry/registries/tasks
 - Microsoft.ContainerRegistry/registries/webhooks（容器注册表 Webhook）
-- Microsoft.ContainerService/containerServices（容器服务[已弃用]）
+- microsoft.containerservice/containerservices
 - Microsoft.ContainerService/managedClusters（Kubernetes 服务）
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
@@ -254,7 +257,9 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.DataMigration/services（Azure 数据库迁移服务）
 - Microsoft.DataMigration/services/projects（Azure 数据库迁移项目）
 - microsoft.datamigration/slots
+- microsoft.datamigration/sqlmigrationservices
 - Microsoft.DataProtection/BackupVaults（备份保管库）
+- microsoft.dataprotection/resourceguards
 - microsoft.dataprotection/resourceoperationgatekeepers
 - Microsoft.DataShare/accounts（数据共享）
 - Microsoft.DBforMariaDB/servers（Azure Database for MariaDB 服务器）
@@ -262,7 +267,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.DBforMySQL/servers（Azure Database for MySQL 服务器）
 - Microsoft.DBforPostgreSQL/flexibleServers（Azure Database for PostgreSQL 灵活服务器）
 - Microsoft.DBforPostgreSQL/serverGroups（Azure Database for PostgreSQL 服务器组）
-- microsoft.dbforpostgresql/servergroupsv2
+- Microsoft.DBforPostgreSQL/serverGroupsv2（Azure Database for PostgreSQL 服务器组）
 - Microsoft.DBforPostgreSQL/servers（Azure Database for PostgreSQL 服务器）
 - Microsoft.DBforPostgreSQL/serversv2（Azure Database for PostgreSQL 服务器 v2）
 - microsoft.dbforpostgresql/singleservers
@@ -298,7 +303,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.DomainRegistration/domains（应用服务域）
 - microsoft.edgeorder/addresses
 - microsoft.edgeorder/ordercollections
-- microsoft.edgeorder/orders
+- Microsoft.EdgeOrder/orders (Azure Edge)
 - Microsoft.Elastic/monitors (Elasticsearch)
 - microsoft.enterpriseknowledgegraph/services
 - Microsoft.EventGrid/domains（事件网格域）
@@ -319,6 +324,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.HanaOnAzure/hanaInstances（Azure 上的 SAP HANA）
 - Microsoft.HanaOnAzure/sapMonitors（适用于 SAP 的 Azure Monitor 解决方案）
 - microsoft.hardwaresecuritymodules/dedicatedhsms
+- microsoft.hdinsight/clusterpools
+- microsoft.hdinsight/clusterpools/clusters
 - Microsoft.HDInsight/clusters（HDInsight 群集）
 - Microsoft.HealthBot/healthBots (Azure Health Bot)
 - Microsoft.HealthcareApis/services (Azure API for FHIR)
@@ -361,7 +368,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.IntelligentITDigitalTwin/digitalTwins/testPlans（套件）
 - Microsoft.IntelligentITDigitalTwin/digitalTwins/tests（脚本）
 - Microsoft.IoTCentral/IoTApps（IoT Central 应用程序）
-- Microsoft.IoTSpaces/Graph（数字孪生[已弃用]）
+- microsoft.iotspaces/graph
 - microsoft.keyvault/hsmpools
 - microsoft.keyvault/managedhsms
 - Microsoft.KeyVault/vaults（密钥保管库）
@@ -369,6 +376,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Kusto/clusters（Azure 数据资源管理器群集）
 - Microsoft.Kusto/clusters/databases（Azure 数据资源管理器数据库）
 - Microsoft.LabServices/labAccounts（实验室服务）
+- microsoft.labservices/labplans
+- microsoft.labservices/labs
 - Microsoft.LoadTestService/LoadTests（云原生负载测试）
 - Microsoft.Logic/integrationAccounts（集成帐户）
 - Microsoft.Logic/integrationServiceEnvironments（集成服务环境）
@@ -380,6 +389,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.MachineLearning/webServices（机器学习工作室（经典）Web 服务）
 - Microsoft.MachineLearning/workspaces（机器学习工作室（经典）工作区）
 - microsoft.machinelearningcompute/operationalizationclusters
+- microsoft.machinelearningexperimentation/accounts/workspaces
 - microsoft.machinelearningservices/modelinventories
 - microsoft.machinelearningservices/modelinventory
 - microsoft.machinelearningservices/virtualclusters
@@ -388,8 +398,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.machinelearningservices/workspaces/batchendpoints/deployments
 - microsoft.machinelearningservices/workspaces/inferenceendpoints
 - microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
-- Microsoft.MachineLearningServices/workspaces/onlineEndpoints（ML 应用）
-- Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments（ML 应用部署）
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints（机器学习联机终结点）
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments（机器学习联机部署）
 - Microsoft.Maintenance/maintenanceConfigurations（维护配置）
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
@@ -407,7 +417,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.media/mediaservices/liveevents（直播活动）
 - microsoft.media/mediaservices/streamingEndpoints（流式处理终结点）
 - microsoft.media/mediaservices/transforms
-- microsoft.media/videoanalyzers
+- microsoft.media/videoanalyzers（视频分析器）
 - microsoft.microservices4spring/appclusters
 - microsoft.migrate/assessmentprojects
 - microsoft.migrate/migrateprojects
@@ -506,8 +516,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.OperationalInsights/workspaces（Log Analytics 工作区）
 - Microsoft.OperationsManagement/solutions（解决方案）
 - microsoft.operationsmanagement/views
-- microsoft.orbital/contactprofiles
-- microsoft.orbital/spacecrafts
+- Microsoft.Orbital/contactProfiles（联系人配置文件）
+- Microsoft.Orbital/spacecrafts（航天器）
 - Microsoft.Peering/peerings（对等互连）
 - Microsoft.Peering/peeringServices（对等互连服务）
 - Microsoft.Portal/dashboards（共享仪表板）
@@ -517,7 +527,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/autoscalevcores
 - Microsoft.PowerBIDedicated/capacities (Power BI Embedded)
-- Microsoft.ProjectBabylon/Accounts（Babylon 帐户）
+- microsoft.powerplatform/enterprisepolicies
+- microsoft.projectbabylon/accounts
 - Microsoft.Purview/Accounts（Purview 帐户）
 - Microsoft.Quantum/Workspaces（Quantum 工作区）
 - Microsoft.RecoveryServices/vaults（恢复服务保管库）
@@ -525,7 +536,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Relay/namespaces（中继）
 - microsoft.remoteapp/collections
 - microsoft.resiliency/chaosexperiments
-- Microsoft.ResourceConnector/Appliances（设备）
+- Microsoft.ResourceConnector/Appliances（资源网桥）
 - Microsoft.resourcegraph/queries（Resource Graph 查询）
 - Microsoft.Resources/deploymentScripts（部署脚本）
 - Microsoft.Resources/templateSpecs（模板规格）
@@ -553,6 +564,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.servicefabricmesh/volumes
 - Microsoft.ServicesHub/connectors（服务中心连接器）
 - Microsoft.SignalRService/SignalR (SignalR)
+- Microsoft.SignalRService/WebPubSub（Web PubSub 服务）
 - microsoft.singularity/accounts
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
@@ -575,7 +587,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Storage/StorageAccounts（存储帐户）
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches（HPC 缓存）
-- microsoft.storagepool/diskpools
+- Microsoft.StoragePool/diskPools（磁盘池）
 - Microsoft.StorageSync/storageSyncServices（存储同步服务）
 - Microsoft.StorageSyncDev/storageSyncServices（存储同步服务）
 - Microsoft.StorageSyncInt/storageSyncServices（存储同步服务）
@@ -587,6 +599,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Synapse/privateLinkHubs（Azure Synapse Analytics [专用链接中心]）
 - Microsoft.Synapse/workspaces (Azure Synapse Analytics)
 - Microsoft.Synapse/workspaces/bigDataPools（Apache Spark 池）
+- microsoft.synapse/workspaces/kustopools
 - microsoft.synapse/workspaces/sqldatabases
 - Microsoft.Synapse/workspaces/sqlPools（专用 SQL 池）
 - microsoft.terraformoss/providerregistrations
@@ -603,7 +616,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.vmware/arczones
 - microsoft.vmware/resourcepools
 - microsoft.vmware/vcenters
-- Microsoft.VMware/VirtualMachines（AVS 虚拟机）
+- microsoft.vmware/virtualmachines
 - microsoft.vmware/virtualmachinetemplates
 - microsoft.vmware/virtualnetworks
 - Microsoft.VMwareCloudSimple/dedicatedCloudNodes（CloudSimple 节点）
@@ -633,10 +646,6 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - MyGet.PackageManagement/services（MyGet - 托管的 NuGet、NPM、Bower 和 Vsix）
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services（PokitDok 平台）
-- Providers.Test/statefulIbizaEngines（应用程序评估）
-- providers.test/statefulresources
-- providers.test/statefulresources/nestedresources
-- providers.test/statelessresources
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts（SendGrid 帐户）
@@ -661,6 +670,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
+- microsoft.security/insights/classification
 - microsoft.security/iotalerts
 - microsoft.security/locations/alerts（安全警报）
 - microsoft.security/pricings

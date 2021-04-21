@@ -11,12 +11,12 @@ ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5168d5e5e3935da267fb26f38735a88bdfd7837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a633a7656a287c0b8df050b6d14afb73c27a7460
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654470"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382126"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -71,6 +71,8 @@ OpenID Connect 标准指定了多个特殊的作用域值。 以下作用域表�
 - `<tenant-name>` - Azure AD B2C 租户的名称。
 - `<policy-name>` - 自定义策略或用户流的名称。
 - `<application-ID>` - 注册用于支持用户流的 Web 应用程序的应用程序标识符。
+- `<application-ID-URI>` - 在客户端应用程序的“公开 API”边栏选项卡下设置的应用程序标识符 URI。
+- `<scope-name>` - 在客户端应用程序的“公开 API”边栏选项卡下添加的范围的名称。
 - `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
 
 ```http
@@ -78,7 +80,7 @@ GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-nam
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms
-&scope=https://<tenant-name>.onmicrosoft.com/api/read
+&scope=<application-ID-URI>/<scope-name>
 &response_type=code
 ```
 
@@ -97,7 +99,7 @@ Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code
 &client_id=<application-ID>
-&scope=https://<tenant-name>.onmicrosoft.com/api/read
+&scope=<application-ID-URI>/<scope-name>
 &code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 &redirect_uri=https://jwt.ms
 &client_secret=2hMG2-_:y12n10vwH...

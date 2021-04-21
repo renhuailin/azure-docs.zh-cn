@@ -3,12 +3,12 @@ title: 激活和设置传感器
 description: 本文介绍如何登录和激活传感器控制台。
 ms.date: 1/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 2fdfa0dd7048bf39ae5b53a729aef578054b30ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b040a87c2eae36e6049b4e1d0cf51ecb2cfde108
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779182"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385112"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>激活和设置传感器
 
@@ -45,7 +45,7 @@ ms.locfileid: "104779182"
 | **云连接模式** | 传感器检测到的信息显示在传感器控制台中。 警报信息也通过 IoT 中心传递，并且可以与其他 Azure 服务（例如 Azure Sentinel）共享。 |
 | **本地连接模式** | 传感器检测到的信息显示在传感器控制台中。 如果将传感器连接到本地管理控制台，则还会与控制台共享检测信息。 |
 
-在载入期间，为此传感器生成并下载了本地连接或云连接的激活文件。 激活文件包含有关传感器管理模式的说明。 应将唯一的激活文件上传到部署的每个传感器。  首次登录时，你需要上传该传感器的相关激活文件。
+在加入期间，为此传感器生成并下载了本地连接或云连接的激活文件。 激活文件包含有关传感器管理模式的说明。 应将唯一的激活文件上传到部署的每个传感器。  首次登录时，你需要上传该传感器的相关激活文件。
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/azure-defender-for-iot-activation-file-download-button.png" alt-text="Azure Defender for IoT 门户，载入传感器。":::
 

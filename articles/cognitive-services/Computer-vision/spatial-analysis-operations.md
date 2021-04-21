@@ -10,67 +10,71 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: af220106c415165a0dbe7cda64a31a6068f53164
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
-ms.translationtype: MT
+ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99981776"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284696"
 ---
 # <a name="spatial-analysis-operations"></a>空间分析操作
 
-空间分析支持分析来自照相机设备的实时流式处理视频。 对于配置的每个照相机设备，空间分析的操作会生成发送到 Azure IoT 中心实例的 JSON 消息输出流。 
+空间分析支持分析来自照相机设备的实时流式处理视频。 对于配置的每个相机设备，空间分析的操作会生成发送到 Azure IoT 中心实例的 JSON 消息输出流。 
 
 空间分析容器实现以下操作：
 
 | 操作标识符| 说明|
 |---------|---------|
-| cognitiveservices account. spatialanalysis-personcount | 计算照相机的 "视图" 字段中指定区域的人员数。 区域必须完全由一个相机覆盖，才能让 PersonCount 记录准确的总大小。 <br> 发出一个初始 _personCountEvent_ 事件，然后在计数发生更改时 _personCountEvent_ 事件。  |
-| cognitiveservices account. spatialanalysis-personcrossingline | 跟踪用户在相机的视图字段中跨越指定线条的时间。 <br>当人员跨越行并提供方向信息时发出 _personLineEvent_ 事件。 
-| cognitiveservices account. spatialanalysis-personcrossingpolygon | 用户进入或退出区域，并提供与所越过区域的编号端相关的方向信息时，发出 _personZoneEnterExitEvent_ 事件。 当人员退出区域并提供方向信息以及用户在区域中所用的毫秒数时，将发出 _personZoneDwellTimeEvent_ 。 |
-| cognitiveservices account. spatialanalysis-persondistance | 跟踪用户违反距离规则的时间。 <br> 定期发出 _personDistanceEvent_ ，其中包含每个距离冲突的位置。 |
+| cognitiveservices.vision.spatialanalysis-personcount | 计算照相机视野中指定区域的人数。 区域必须完全由一个相机覆盖，PersonCount 才能准确记录总人数。 <br> 发送初始 _personCountEvent_ 事件，然后在计数发生更改时发送 _personCountEvent_ 事件。  |
+| cognitiveservices.vision.spatialanalysis-personcrossingline | 跟踪人员在相机视野中越过指定线的时间。 <br>当有人越线时发送 _personLineEvent_ 事件，并提供方向信息。 
+| cognitiveservices.vision.spatialanalysis-personcrossingpolygon | 当有人进入或离开区域时发送 _personZoneEnterExitEvent_ 事件，并提供方向信息以及已越过区域的边号。 当有人离开区域时发送 _personZoneDwellTimeEvent_，并提供方向信息以及人员在该区域内停留的毫秒数。 |
+| cognitiveservices.vision.spatialanalysis-persondistance | 跟踪人员违反距离规则的时间。 <br> 定期发送 _personDistanceEvent_，包含每次违反距离规则的位置。 |
+| cognitiveservices.vision.spatialanalysis | 可用于运行上述所有方案的常规操作。 当你想要在同一相机上运行多个方案或想要更有效地使用系统资源（例如 GPU）时，此选项更加有用。 |
 
-版本中还提供了所有这些操作，可以在 `.debug` 处理视频帧时将其可视化。 需要 `xhost +` 在主机计算机上运行才能启用视频帧和事件的可视化。
+所有上述操作在 `.debug` 版本中也可用，该版本可以在处理视频帧时将其可视化。 需要 `xhost +` 在主机计算机上运行，才能实现视频帧和事件的可视化。
 
 | 操作标识符| 说明|
 |---------|---------|
-| cognitiveservices account. spatialanalysis-personcount | 计算照相机的 "视图" 字段中指定区域的人员数。 <br> 发出一个初始 _personCountEvent_ 事件，然后在计数发生更改时 _personCountEvent_ 事件。  |
-| cognitiveservices account. spatialanalysis-personcrossingline | 跟踪用户在相机的视图字段中跨越指定线条的时间。 <br>当人员跨越行并提供方向信息时发出 _personLineEvent_ 事件。 
-| cognitiveservices account. spatialanalysis-personcrossingpolygon | 用户进入或退出区域，并提供与所越过区域的编号端相关的方向信息时，发出 _personZoneEnterExitEvent_ 事件。 当人员退出区域并提供方向信息以及用户在区域中所用的毫秒数时，将发出 _personZoneDwellTimeEvent_ 。 |
-| cognitiveservices account. spatialanalysis-persondistance | 跟踪用户违反距离规则的时间。 <br> 定期发出 _personDistanceEvent_ ，其中包含每个距离冲突的位置。 |
+| cognitiveservices.vision.spatialanalysis-personcount.debug | 计算照相机视野中指定区域的人数。 <br> 发送初始 _personCountEvent_ 事件，然后在计数发生更改时发送 _personCountEvent_ 事件。  |
+| cognitiveservices.vision.spatialanalysis-personcrossingline.debug | 跟踪人员在相机视野中越过指定线的时间。 <br>当有人越线时发送 _personLineEvent_ 事件，并提供方向信息。 
+| cognitiveservices.vision.spatialanalysis-personcrossingpolygon.debug | 当有人进入或离开区域时发送 _personZoneEnterExitEvent_ 事件，并提供方向信息以及已越过区域的边号。 当有人离开区域时发送 _personZoneDwellTimeEvent_，并提供方向信息以及人员在该区域内停留的毫秒数。 |
+| cognitiveservices.vision.spatialanalysis-persondistance.debug | 跟踪人员违反距离规则的时间。 <br> 定期发送 _personDistanceEvent_，包含每次违反距离规则的位置。 |
+| cognitiveservices.vision.spatialanalysis.debug | 可用于运行上述所有方案的常规操作。 当你想要在同一相机上运行多个方案或想要更有效地使用系统资源（例如 GPU）时，此选项更加有用。 |
 
-还可以将 [实时视频分析](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) 作为视频 AI 模块运行空间分析。 
+空间分析还可以通过[实时视频分析](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md)作为其视频 AI 模块运行。 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
 | 操作标识符| 说明|
 |---------|---------|
-| cognitiveservices account. spatialanalysis-personcount. livevideoanalytics | 计算照相机的 "视图" 字段中指定区域的人员数。 <br> 发出一个初始 _personCountEvent_ 事件，然后在计数发生更改时 _personCountEvent_ 事件。  |
-| cognitiveservices account. spatialanalysis-personcrossingline. livevideoanalytics | 跟踪用户在相机的视图字段中跨越指定线条的时间。 <br>当人员跨越行并提供方向信息时发出 _personLineEvent_ 事件。 
-| cognitiveservices account. spatialanalysis-personcrossingpolygon. livevideoanalytics | 用户进入或退出区域，并提供与所越过区域的编号端相关的方向信息时，发出 _personZoneEnterExitEvent_ 事件。 当人员退出区域并提供方向信息以及用户在区域中所用的毫秒数时，将发出 _personZoneDwellTimeEvent_ 。  |
-| cognitiveservices account. spatialanalysis-persondistance. livevideoanalytics | 跟踪用户违反距离规则的时间。 <br> 定期发出 _personDistanceEvent_ ，其中包含每个距离冲突的位置。 |
+| cognitiveservices.vision.spatialanalysis-personcount.livevideoanalytics | 计算照相机视野中指定区域的人数。 <br> 发送初始 _personCountEvent_ 事件，然后在计数发生更改时发送 _personCountEvent_ 事件。  |
+| cognitiveservices.vision.spatialanalysis-personcrossingline.livevideoanalytics | 跟踪人员在相机视野中越过指定线的时间。 <br>当有人越线时发送 _personLineEvent_ 事件，并提供方向信息。 
+| cognitiveservices.vision.spatialanalysis-personcrossingpolygon.livevideoanalytics | 当有人进入或离开区域时发送 _personZoneEnterExitEvent_ 事件，并提供方向信息以及已越过区域的边号。 当有人离开区域时发送 _personZoneDwellTimeEvent_，并提供方向信息以及人员在该区域内停留的毫秒数。  |
+| cognitiveservices.vision.spatialanalysis-persondistance.livevideoanalytics | 跟踪人员违反距离规则的时间。 <br> 定期发送 _personDistanceEvent_，包含每次违反距离规则的位置。 |
+| cognitiveservices.vision.spatialanalysis.livevideoanalytics | 可用于运行上述所有方案的常规操作。 当你想要在同一相机上运行多个方案或想要更有效地使用系统资源（例如 GPU）时，此选项更加有用。 |
 
-实时视频分析操作还可用于 `.debug` 版本 (例如 cognitiveservices account. spatialanalysis-personcount) ，它可以将视频帧可视化为正在处理的帧。 你需要 `xhost +` 在主机计算机上运行，以便能够可视化视频帧和事件
+实时视频分析操作还可用于 `.debug` 版本（例如 cognitiveservices.vision.spatialanalysis-personcount.livevideoanalytics.debug），它可以在处理视频帧将其可视化。 需要在主机计算机上运行 `xhost +`，才能实现视频帧和事件的可视化
 
 > [!IMPORTANT]
-> 计算机视觉 AI 模型通过围绕人体间的边界框检测并定位视频素材和输出中的人机状态。 AI 模型不会尝试发现个人的标识或人口统计信息。
+> 计算机视觉 AI 模型通过围绕人体的边界框检测并定位视频素材和输出中的人员存在情况。 AI 模型不会尝试发现个人的身份或人口统计信息。
 
-这些是每个空间分析操作所需的参数。
+下面是每个空间分析操作所需的参数。
 
 | 操作参数| 说明|
 |---------|---------|
 | Operation ID | 上表中的操作标识符。|
-| enabled | 布尔值： true 或 false|
-| VIDEO_URL| 照相机设备 (的 RTSP url 示例： `rtsp://username:password@url`) 。 空间分析通过 RTSP、http 或硬件支持-264 编码流。 Video_URL 可以使用 AES 加密作为经过模糊处理的 base64 字符串值提供，如果视频 URL 经过模糊处理 `KEY_ENV` 并且 `IV_ENV` 需要作为环境变量提供，则为。 可在 [此处](/dotnet/api/system.security.cryptography.aesmanaged)找到用于生成密钥和加密的示例实用工具。 |
+| enabled | 布尔值：true 或 false|
+| VIDEO_URL| 照相机设备的 RTSP url（示例：`rtsp://username:password@url`）。 空间分析通过 RTSP、http 或 mp4 支持 H.264 编码流。 Video_URL 可以使用 AES 加密，作为经过模糊处理的 base64 字符串值提供，如果视频 URL 经过模糊处理，则 `KEY_ENV` 和 `IV_ENV` 需要作为环境变量提供。 有关生成密钥和加密的实用工具示例，请参阅[此处](/dotnet/api/system.security.cryptography.aesmanaged)。 |
 | VIDEO_SOURCE_ID | 照相机设备或视频流的友好名称。 这将随事件 JSON 输出一起返回。|
-| VIDEO_IS_LIVE| 对于照相机设备为 True;对于录制的视频为 false。|
-| VIDEO_DECODE_GPU_INDEX| 用于解码视频帧的 GPU。 默认情况下，它是0。 应与 `gpu_index` 其他节点配置（如）中的相同 `VICA_NODE_CONFIG` `DETECTOR_NODE_CONFIG` 。|
-| INPUT_VIDEO_WIDTH | 输入视频/流的帧宽度 (例如 1920) 。 它是一个可选字段，如果提供的框架将扩展到此维度，但仍将保留纵横比。|
-| DETECTOR_NODE_CONFIG | JSON，指示要在其上运行检测节点的 GPU。 应采用以下格式： `"{ \"gpu_index\": 0 }",`|
-| SPACEANALYTICS_CONFIG | 区域和行的 JSON 配置，如下所述。|
-| ENABLE_FACE_MASK_CLASSIFIER | `True` 若要允许检测视频流中的人脸，请 `False` 将其禁用。 默认情况下，此功能处于禁用状态。 面部掩码检测要求输入视频宽度参数为 1920 `"INPUT_VIDEO_WIDTH": 1920` 。 如果检测到的人不是相机或距相机太远，则不会返回 "面部掩码" 属性。 有关详细信息，请参阅 [相机位置](spatial-analysis-camera-placement.md) 指南 |
+| VIDEO_IS_LIVE| 对于照相机设备为 true，对于录制的视频为 false。|
+| VIDEO_DECODE_GPU_INDEX| 用于解码视频帧的 GPU。 默认为 0。 在其他节点配置（如 `VICA_NODE_CONFIG`、`DETECTOR_NODE_CONFIG`）中应与 `gpu_index` 相同。|
+| INPUT_VIDEO_WIDTH | 输入视频/流的帧宽度（例如 1920）。 这是可选字段，如果提供，帧将扩展到此维度，同时仍保留纵横比。|
+| DETECTOR_NODE_CONFIG | JSON，指示要在其上运行检测程序节点的 GPU。 该值应采用以下格式：`"{ \"gpu_index\": 0 }",`|
+| SPACEANALYTICS_CONFIG | 区域和线的 JSON 配置，如下所述。|
+| ENABLE_FACE_MASK_CLASSIFIER | `True` 表示启用检测视频流中佩戴口罩的人数，`False` 表示禁用该功能。 默认情况下，此功能处于禁用状态。 口罩检测要求输入视频宽度参数为 1920 `"INPUT_VIDEO_WIDTH": 1920`。 如果检测到的人没有面向照相机或距离太远，则不会返回口罩属性。 有关详细信息，请参阅[相机定位](spatial-analysis-camera-placement.md)指南 |
 
-这是所有空间分析操作的 DETECTOR_NODE_CONFIG 参数的示例。
+### <a name="detector-node-parameter-settings"></a>检测器节点参数设置
+下面是所有空间分析操作的 DETECTOR_NODE_CONFIG 参数的示例。
 
 ```json
 {
@@ -78,64 +82,58 @@ ms.locfileid: "99981776"
 "do_calibration": true,
 "enable_recalibration": true,
 "calibration_quality_check_frequency_seconds":86400,
-"calibration_quality_check_sampling_num": 80,
-"calibration_quality_check_sampling_times": 5,
 "calibration_quality_check_sample_collect_frequency_seconds": 300,
 "calibration_quality_check_one_round_sample_collect_num":10,
-"calibration_quality_check_queue_max_size":1000,
-"recalibration_score": 75
+"calibration_quality_check_queue_max_size":1000
 }
 ```
 
 | 名称 | 类型| 说明|
 |---------|---------|---------|
-| `gpu_index` | string| 此操作将在其上运行的 GPU 索引。|
-| `do_calibration` | string | 指示已启用校准。 `do_calibration` 若要使 **cognitiveservices account** 正常工作，必须为 true。 默认情况下，do_calibration 设置为 True。 |
-| `enable_recalibration` | bool | 指示是否启用自动来校准。 默认值为 `true`。|
-| `calibration_quality_check_frequency_seconds` | int | 每个质量检查之间的最小秒数，以确定是否需要来校准。 默认值为 `86400` (24 小时) 。 仅当 `enable_recalibration=True` 时使用。|
-| `calibration_quality_check_sampling_num` | int | 为每个质量检查错误度量使用的随机选择的存储数据示例数。 默认值为 `80`。 仅当 `enable_recalibration=True` 时使用。|
-| `calibration_quality_check_sampling_times` | int | 针对每个质量检查不同随机选择的数据样本集执行的误差量。 默认值为 `5`。 仅当 `enable_recalibration=True` 时使用。|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | 收集用于来校准和质量检查的新数据示例之间的最小秒数。 默认值为 `300` (5 分钟) 。 仅当 `enable_recalibration=True` 时使用。|
-| `calibration_quality_check_one_round_sample_collect_num` | int | 每轮样本集合收集的最小新数据示例数。 默认值为 `10`。 仅当 `enable_recalibration=True` 时使用。|
-| `calibration_quality_check_queue_max_size` | int | 校准相机模型时要存储的数据样本的最大数目。 默认值为 `1000`。 仅当 `enable_recalibration=True` 时使用。|
-| `recalibration_score` | int | 要开始来校准的最高质量阈值。 默认值为 `75`。 仅当 `enable_recalibration=True` 时使用。 校准质量是根据与图像目标 reprojection 错误的反关系计算得出的。 对于在2D 图像帧中检测到的目标，目标将投影到3D 空间，并使用现有的相机校准参数重新投影回2D 图像帧。 Reprojection 错误由检测到的目标和重新投影目标之间的平均距离来度量。|
-| `enable_breakpad`| bool | 指示是否要启用 breakpad，它用于生成用于调试的故障转储。 默认情况下，它为 `false`。 如果将其设置为 `true` ，则还需要 `"CapAdd": ["SYS_PTRACE"]` 在容器的部分中添加 `HostConfig` `createOptions` 。 默认情况下，故障转储会上传到 [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter 应用程序。如果要将故障转储上传到自己的 AppCenter 应用程序，可以 `RTPT_APPCENTER_APP_SECRET` 使用应用的应用机密替代环境变量。
+| `gpu_index` | 字符串| 此操作将在其上运行的 GPU 索引。|
+| `do_calibration` | 字符串 | 指示已启用校准。 若要使 **cognitiveservices account** 正常工作，`do_calibration` 必须为 true。 默认情况下，do_calibration 设置为 True。 |
+| `enable_recalibration` | bool | 指示是否启用自动重新校准。 默认为 `true`。|
+| `calibration_quality_check_frequency_seconds` | int | 每次质量检查之间的最小秒数，用于确定是否需要重新校准。 默认值为 `86400`（24 小时）。 仅当 `enable_recalibration=True` 时使用。|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | 收集新数据样本进行重新校准和质量检查之间相隔的最小秒数。 默认值为 `300`（5 分钟）。 仅当 `enable_recalibration=True` 时使用。|
+| `calibration_quality_check_one_round_sample_collect_num` | int | 每轮样本收集要收集的最小新数据样本数。 默认为 `10`。 仅当 `enable_recalibration=True` 时使用。|
+| `calibration_quality_check_queue_max_size` | int | 校准相机模型时要存储的最大数据样本数。 默认为 `1000`。 仅当 `enable_recalibration=True` 时使用。|
+| `enable_breakpad`| bool | 指示是否要启用 breakpad，后者用于生成故障转储以便调试使用。 默认情况下，它为 `false`。 如果将其设置为 `true`，则还需要在容器 `createOptions` 的 `HostConfig` 部分添加 `"CapAdd": ["SYS_PTRACE"]`。 默认情况下，故障转储会上传到 [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter 应用。如果要将故障转储上传到自己的 AppCenter 应用，可以使用自己应用的应用机密来替代环境变量 `RTPT_APPCENTER_APP_SECRET`。
 
+## <a name="spatial-analysis-operations-configuration-and-output"></a>空间分析操作配置和输出
+### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>cognitiveservices.vision.spatialanalysis-personcount 的区域配置
 
-### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Cognitiveservices account. spatialanalysis 的区域配置-personcount
-
- 这是用于配置区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多个区域。
+ 下面是一个配置区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多个区域。
 
 ```json
 {
 "zones":[{
-    "name": "lobbycamera",
-    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-    "events":[{
-        "type": "count",
-        "config":{
-            "trigger": "event",
+       "name": "lobbycamera",
+       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+       "events":[{
+              "type": "count",
+              "config":{
+                     "trigger": "event",
             "threshold": 16.00,
             "focus": "footprint"
       }
-    }]
+       }]
 }
 ```
 
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | string| 此区域的友好名称。|
-| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域，并且多边形点基于标准化坐标 (0-1) ，其中左上角 (0.0，0.0) ，右下角 (1.0，1.0) 。   
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
-| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcount** `count` 。|
-| `trigger` | string| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
-| `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。 |
-| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
+| `name` | 字符串| 此区域的友好名称。|
+| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或统计其中人数的区域，多边形点基于标准化坐标 (0-1)，其中左上角为 (0.0, 0.0)，右下角为 (1.0, 1.0)。   
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将发出事件。 |
+| `type` | 字符串| 对于 **cognitiveservices.vision.spatialanalysis-personcount**，此值应为 `count`。|
+| `trigger` | 字符串| 发送事件的触发器的类型。 在计数发生更改时，支持的值为 `event`，表示发送事件；或者为 `interval`，表示定期发送事件，而不考虑计数是否发生更改。
+| `output_frequency` | int | 发出事件的比率。 当 `output_frequency` = X 时，表示每 X 个事件发出一次，例如 `output_frequency` = 2，表示每隔一个事件输出一次。 `output_frequency` 适用于 `event` 和 `interval`。 |
+| `focus` | 字符串| 人员边界框内的点位置用于计算事件数。 焦点的值可以是 `footprint`（人员足迹）、`bottom_center`（人员边界框的底部中心）、`center`（人员边界框的中心）。|
 
-### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Cognitiveservices account 的线条配置。 spatialanalysis-personcrossingline
+### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>cognitiveservices.vision.spatialanalysis-personcrossingline 的线配置
 
-这是配置行的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 您可以为此操作配置多个交叉行。
+下面是一个配置线的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多条交叉线。
 
 ```json
 {
@@ -169,19 +167,19 @@ ms.locfileid: "99981776"
 
 | 名称 | 类型| 说明|
 |---------|---------|---------|
-| `lines` | list| 行的列表。|
-| `name` | string| 此行的友好名称。|
-| `line` | list| 线条的定义。 这是一个方向线，可让你了解 "entry" 与 "exit"。|
-| `start` | 值对| x，y 坐标用于线条的起点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
-| `end` | 值对| x，y 坐标用于线条的终点。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 |
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 默认值为 16。 这是实现最大准确性的推荐值。 |
-| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcrossingline** `linecrossing` 。|
-|`trigger`|string|用于发送事件的触发器的类型。<br>支持的值： "事件"：当有人跨越行时激发。|
-| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
+| `lines` | list| 线列表。|
+| `name` | 字符串| 此线的友好名称。|
+| `line` | list| 线的定义。 这是一条方向线，让你可了解“进入”与“离开”。|
+| `start` | 值对| 线条起点的 x、y 坐标。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 |
+| `end` | 值对| 线条终结点的 x、y 坐标。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 |
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将发出事件。 默认值为 16。 这是实现最大准确性的推荐值。 |
+| `type` | 字符串| 对于 **cognitiveservices.vision.spatialanalysis-personcrossingline**，此值应为 `linecrossing`。|
+|`trigger`|字符串|发送事件的触发器的类型。<br>支持的值：“事件”：当有人越线时触发。|
+| `focus` | 字符串| 人员边界框内的点位置用于计算事件数。 焦点的值可以是 `footprint`（人员足迹）、`bottom_center`（人员边界框的底部中心）、`center`（人员边界框的中心）。 默认值为 footprint。|
 
-### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Cognitiveservices account. spatialanalysis 的区域配置-personcrossingpolygon
+### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>cognitiveservices.vision.spatialanalysis-personcrossingpolygon 的区域配置
 
-这是用于配置区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多个区域。
+下面是一个配置区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多个区域。
 
  ```json
 {
@@ -216,16 +214,16 @@ ms.locfileid: "99981776"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | string| 此区域的友好名称。|
-| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或计数人员的区域。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 当类型为 zonecrossing 时，默认值为48，而 time 为 DwellTime 时默认值为16。 下面是建议的值，用于实现最大准确性。  |
-| `type` | string| 对于 **cognitiveservices account，spatialanalysis-personcrossingpolygon 此项** 应为 `zonecrossing` 或 `zonedwelltime` 。|
-| `trigger`|string|用于发送事件的触发器的类型<br>支持的值： "事件"：某人进入或退出区域时触发。|
-| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。 默认值为 "占用空间"。|
+| `name` | 字符串| 此区域的友好名称。|
+| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或统计其中人数的区域。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将发出事件。 当类型为 zonecrossing 时，默认值为 48；当时间为 DwellTime 时，默认值为 16。 这些都是实现最大准确性的推荐值。  |
+| `type` | 字符串| 对于 **cognitiveservices.vision.spatialanalysis-personcrossingpolygon**，此值应为 `zonecrossing` 或 `zonedwelltime`。|
+| `trigger`|字符串|发送事件的触发器的类型<br>支持的值：“事件”：有人进入或离开区域时触发。|
+| `focus` | 字符串| 人员边界框内的点位置用于计算事件数。 焦点的值可以是 `footprint`（人员足迹）、`bottom_center`（人员边界框的底部中心）、`center`（人员边界框的中心）。 默认值为 footprint。|
 
-### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Cognitiveservices account. spatialanalysis 的区域配置-persondistance
+### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>cognitiveservices.vision.spatialanalysis-persondistance 的区域配置
 
-这是用于配置 cognitiveservices account 的区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 **spatialanalysis-persondistance**。 你可以为此操作配置多个区域。
+下面是一个为 **cognitiveservices.vision.spatialanalysis-persondistance** 配置区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 你可以为此操作配置多个区域。
 
 ```json
 {
@@ -233,16 +231,17 @@ ms.locfileid: "99981776"
    "name": "lobbycamera",
    "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
    "events":[{
-    "type": "persondistance",
-    "config":{
-        "trigger": "event",
-        "output_frequency":1,
-        "minimum_distance_threshold":6.0,
-        "maximum_distance_threshold":35.0,
+       "type": "persondistance",
+       "config":{
+           "trigger": "event",
+           "output_frequency":1,
+           "minimum_distance_threshold":6.0,
+           "maximum_distance_threshold":35.0,
+        "aggregation_method": "average"
            "threshold": 16.00,
            "focus": "footprint"
-            }
-    }]
+                   }
+          }]
    }]
 }
 ```
@@ -250,25 +249,102 @@ ms.locfileid: "99981776"
 | 名称 | 类型| 说明|
 |---------|---------|---------|
 | `zones` | list| 区域列表。 |
-| `name` | string| 此区域的友好名称。|
-| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示统计人员的区域，以及用户之间的距离。 Float 值表示顶点相对于顶部、左侧的位置。 若要计算绝对 x，y 值，请将这些值与帧大小相乘。 
-| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将出口事件。 |
-| `type` | string| 对于 **cognitiveservices account，spatialanalysis-persondistance** `people_distance` 。|
-| `trigger` | string| 用于发送事件的触发器的类型。 支持的值 `event` 用于在计数发生更改或 `interval` 定期发送事件时发送事件，而不考虑计数是否已更改。
-| `output_frequency` | int | 出口事件的速率。 When `output_frequency` = X 时，每个 X 事件都是出口，例如 `output_frequency` = 2 表示输出每个其他事件。 `output_frequency`适用于 `event` 和 `interval` 。|
-| `minimum_distance_threshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximum_distance_threshold` | FLOAT| 当人们大于该距离时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
-| `focus` | string| 用于计算事件的人员边界框内的点位置。 焦点的值可以 `footprint` (人员) 的占用量， `bottom_center` (人员边界框的下中心) ， `center` (人员的边界框) 。|
+| `name` | 字符串| 此区域的友好名称。|
+| `polygon` | list| 每个值对表示多边形顶点的 x、y。 多边形表示统计其中人数的区域，并度量人员之间的距离。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 
+| `threshold` | FLOAT| 当 AI 模型的置信度大于或等于此值时，将发出事件。 |
+| `type` | 字符串| 对于 **cognitiveservices.vision.spatialanalysis-persondistance**，此值应为 `people_distance`。|
+| `trigger` | 字符串| 发送事件的触发器的类型。 在计数发生更改时，支持的值为 `event`，表示发送事件；或者为 `interval`，表示定期发送事件，而不考虑计数是否发生更改。
+| `output_frequency` | int | 发出事件的比率。 当 `output_frequency` = X 时，表示每 X 个事件发出一次，例如 `output_frequency` = 2，表示每隔一个事件输出一次。 `output_frequency` 适用于 `event` 和 `interval`。|
+| `minimum_distance_threshold` | FLOAT| 以英尺为单位的距离，当人员之间小于该间距时，将触发“TooClose”事件。|
+| `maximum_distance_threshold` | FLOAT| 以英尺为单位的距离，当人员之间大于该间距时，将触发“TooFar”事件。|
+| `aggregation_method` | 字符串| 聚合 persondistance 结果的方法。 aggregation_method 适用于 `mode` 和 `average`。|
+| `focus` | 字符串| 人员边界框内的点位置用于计算事件数。 焦点的值可以是 `footprint`（人员足迹）、`bottom_center`（人员边界框的底部中心）、`center`（人员边界框的中心）。|
 
-请参阅 [相机位置](spatial-analysis-camera-placement.md) 准则，了解区域和线路配置。
+### <a name="configuration-for-cognitiveservicesvisionspatialanalysis"></a>cognitiveservices.vision.spatialanalysis 的配置
+下面是一个为 cognitiveservices.vision.spatialanalysis 配置线和区域的 SPACEANALYTICS_CONFIG 参数的 JSON 输入示例。 可为此操作配置多个线/区域，每个线/区域可以有不同的事件。
+
+ ```
+{
+  "lines": [
+    {
+      "name": "doorcamera",
+      "line": {
+        "start": {
+          "x": 0,
+          "y": 0.5
+        },
+        "end": {
+          "x": 1,
+          "y": 0.5
+        }
+      },
+      "events": [
+        {
+          "type": "linecrossing",
+          "config": {
+            "trigger": "event",
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "name": "lobbycamera",
+      "polygon": [[0.3, 0.3],[0.3, 0.9],[0.6, 0.9],[0.6, 0.3],[0.3, 0.3]],
+      "events": [
+        {
+          "type": "persondistance",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "minimum_distance_threshold": 6.0,
+            "maximum_distance_threshold": 35.0,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "count",
+          "config": {
+            "trigger": "event",
+            "output_frequency": 1,
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonecrossing",
+          "config": {
+            "threshold": 48.00,
+            "focus": "footprint"
+          }
+        },
+        {
+          "type": "zonedwelltime",
+          "config": {
+            "threshold": 16.00,
+            "focus": "footprint"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+## <a name="camera-configuration"></a>相机配置
+
+请参阅[相机定位](spatial-analysis-camera-placement.md)指导原则，详细了解如何配置区域和线。
 
 ## <a name="spatial-analysis-operation-output"></a>空间分析操作输出
 
-每个操作的事件都出口为 JSON 格式的 Azure IoT 中心。
+每个操作的事件都将以 JSON 格式发送到 Azure IoT 中心。
 
-### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcount-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-personcount AI Insights
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcount-ai-insights"></a>cognitiveservices.vision.spatialanalysis-personcount AI 见解的 JSON 格式
 
-此操作的事件输出的示例 JSON。
+此操作输出事件的 JSON 示例。
 
 ```json
 {
@@ -325,7 +401,7 @@ ms.locfileid: "99981776"
             },
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         },
@@ -352,10 +428,10 @@ ms.locfileid: "99981776"
             },
             "metadata":{
             "attributes": {
-                "face_noMask": 0.99
+            "face_nomask": 0.99
             }
             }
-    }
+       }
     ],
     "schemaVersion": "1.0"
 }
@@ -363,50 +439,42 @@ ms.locfileid: "99981776"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 事件 ID|
-| `type` | string| 事件类型|
-| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | 字符串| 事件 ID|
+| `type` | 字符串| 事件类型|
+| `detectionsId` | array| 触发了此事件的人员检测的唯一标识符数组，大小为 1|
 | `properties` | collection| 值的集合|
-| `trackinId` | string| 检测到的人员的唯一标识符|
-| `zone` | string | 表示已越过区域的多边形的 "名称" 字段|
-| `trigger` | string| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
+| `trackinId` | 字符串| 检测到的人员的唯一标识符|
+| `zone` | 字符串 | 多边形的“名称”字段，多边形代表已越过区域|
+| `trigger` | 字符串| 触发器类型为“事件”或“间隔”，具体取决于 SPACEANALYTICS_CONFIG 中 `trigger` 的值|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 检测 ID|
-| `type` | string| 检测类型|
+| `id` | 字符串| 检测 ID|
+| `type` | 字符串| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | string| 区域类型|
-| `points` | collection| 当区域类型为矩形时，左上方和右下点 |
+| `type` | 字符串| 区域类型|
+| `points` | collection| 当区域类型为矩形时，表示左上角和右下角的点 |
 | `confidence` | FLOAT| 算法置信度|
-| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `face_mask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员戴着口罩 |
+| `face_nomask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员 **未** 佩戴口罩 |
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 相机 ID|
+| `id` | 字符串| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
-| `status` | string | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
-| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
-
-| SourceInfo 字段名称 | 类型| 说明|
-|---------|---------|---------|
-| `id` | string| 相机 ID|
-| `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
-| `width` | int | 视频帧宽度|
-| `height` | int | 视频帧高度|
-| `frameId` | int | 帧标识符|
+| `status` | 字符串 | 校准的状态，格式为 `state[;progress description]`。 状态可以为 `Calibrating`、`Recalibrating`（如果已启用重新校准）或 `Calibrated`。 进度说明部分仅在处于 `Calibrating` 和 `Recalibrating` 状态时有效，后者用于显示当前校准过程的进度。|
+| `cameraHeight` | FLOAT | 相机高于地面的高度，以英尺为单位。 该信息根据自动校准推断得出。 |
+| `focalLength` | FLOAT | 照相机的焦距，以像素为单位。 该信息根据自动校准推断得出。 |
+| `tiltUpAngle` | FLOAT | 相机自垂直状态的倾斜角度。 该信息根据自动校准推断得出。|
 
 
-### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingline-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-personcrossingline AI Insights
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingline-ai-insights"></a>cognitiveservices.vision.spatialanalysis-personcrossingline AI 见解的 JSON 格式
 
-此操作输出的检测的示例 JSON。
+此操作输出检测的 JSON 示例。
 
 ```json
 {
@@ -452,7 +520,7 @@ ms.locfileid: "99981776"
             "confidence": 0.9005028605461121,
             "metadata": {
             "attributes": {
-                "face_Mask": 0.99
+                "face_mask": 0.99
             }
         }
         }
@@ -462,28 +530,28 @@ ms.locfileid: "99981776"
 ```
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 事件 ID|
-| `type` | string| 事件类型|
-| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | 字符串| 事件 ID|
+| `type` | 字符串| 事件类型|
+| `detectionsId` | array| 触发了此事件的人员检测的唯一标识符数组，大小为 1|
 | `properties` | collection| 值的集合|
-| `trackinId` | string| 检测到的人员的唯一标识符|
-| `status` | string| 交叉行方向，"CrossLeft" 或 "CrossRight"|
-| `zone` | string | 所交叉行的 "名称" 字段|
+| `trackinId` | 字符串| 检测到的人员的唯一标识符|
+| `status` | 字符串| 越线方向：“CrossLeft”或“CrossRight”。 方向是基于站在线的“起点”朝向“终点”的想象得出的。 CrossRight 表示从左侧跨越到右侧。 CrossLeft 表示从右侧跨越到左侧。|
+| `zone` | 字符串 | 跨越线的“名称”字段|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 检测 ID|
-| `type` | string| 检测类型|
+| `id` | 字符串| 检测 ID|
+| `type` | 字符串| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | string| 区域类型|
-| `points` | collection| 当区域类型为矩形时，左上方和右下点 |
+| `type` | 字符串| 区域类型|
+| `points` | collection| 当区域类型为矩形时，表示左上角和右下角的点 |
 | `confidence` | FLOAT| 算法置信度|
-| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `face_mask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员戴着口罩 |
+| `face_nomask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员 **未** 佩戴口罩 |
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 相机 ID|
+| `id` | 字符串| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
@@ -491,11 +559,11 @@ ms.locfileid: "99981776"
 
 
 > [!IMPORTANT]
-> AI 模型可检测人员是否与相机的正面或远离相机。 AI 模型不会运行面部识别，也不会发出任何生物识别信息。 
+> AI 模型可检测人员，不考虑人员是面向还是远离照相机。 AI 模型不会运行面部识别，也不会发出任何生物识别信息。 
 
-### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-personcrossingpolygon AI Insights
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon-ai-insights"></a>cognitiveservices.vision.spatialanalysis-personcrossingpolygon AI 见解的 JSON 格式
 
-此操作使用 SPACEANALYTICS_CONFIG 类型的检测结果输出的示例 JSON `zonecrossing` 。
+此操作使用 `zonecrossing` 类型 SPACEANALYTICS_CONFIG 输出检测的 JSON 示例。
 
 ```json
 {
@@ -542,7 +610,7 @@ ms.locfileid: "99981776"
             "confidence": 0.6267998814582825,
         "metadata": {
         "attributes": {
-        "face_Mask": 0.99
+        "face_mask": 0.99
         }
         }
            
@@ -552,7 +620,7 @@ ms.locfileid: "99981776"
 }
 ```
 
-此操作使用 SPACEANALYTICS_CONFIG 类型的检测结果输出的示例 JSON `zonedwelltime` 。
+此操作使用 `zonedwelltime` 类型 SPACEANALYTICS_CONFIG 输出检测的 JSON 示例。
 
 ```json
 {
@@ -567,7 +635,7 @@ ms.locfileid: "99981776"
                 "trackingId": "afcc2e2a32a6480288e24381f9c5d00e",
                 "status": "Exit",
                 "side": "1",
-        "durationMs": 7132.0
+              "durationMs": 7132.0
             },
             "zone": "queuecamera"
         }
@@ -607,30 +675,30 @@ ms.locfileid: "99981776"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 事件 ID|
-| `type` | string| 事件类型。 该值可以是 _personZoneDwellTimeEvent_ 或 _personZoneEnterExitEvent_|
-| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | 字符串| 事件 ID|
+| `type` | 字符串| 事件类型。 该值可以是 _personZoneDwellTimeEvent_ 或 _personZoneEnterExitEvent_|
+| `detectionsId` | array| 触发了此事件的人员检测的唯一标识符数组，大小为 1|
 | `properties` | collection| 值的集合|
-| `trackinId` | string| 检测到的人员的唯一标识符|
-| `status` | string| 多边形交叉的方向，"Enter" 或 "Exit"|
-| `side` | int| 人员所跨越的多边形的边号。 每一侧都是表示区域的多边形两个顶点之间的编号边界。 多边形的前两个顶点之间的边缘表示第一侧|
-| `durationMs` | FLOAT | 表示用户在区域中花费的时间的毫秒数。 当事件类型为 _personZoneDwellTimeEvent_ 时，提供此字段|
-| `zone` | string | 表示已越过区域的多边形的 "名称" 字段|
+| `trackinId` | 字符串| 检测到的人员的唯一标识符|
+| `status` | 字符串| 越过多边形的方向：“进入”或“离开”|
+| `side` | int| 人员所跨过的多边形的边号。 每一侧都是表示区域的多边形两个顶点之间的编号边界。 多边形前两个顶点之间的边缘表示第一侧。 当事件由于遮挡而不与特定一侧关联时，“Side”为空。 例如，当某人消失，但未看到他（她）跨越区域的一侧时，则表示发生了 exit（出去）事件；当某个出现在区域中，但未看到他（她）跨越一侧时，则表示发生了 enter（进入）事件。|
+| `durationMs` | FLOAT | 表示人员在区域中停留时间的毫秒数。 当事件类型为 _personZoneDwellTimeEvent_ 时，提供此字段|
+| `zone` | 字符串 | 多边形的“名称”字段，多边形代表已越过区域|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 检测 ID|
-| `type` | string| 检测类型|
+| `id` | 字符串| 检测 ID|
+| `type` | 字符串| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | string| 区域类型|
-| `points` | collection| 当区域类型为矩形时，左上方和右下点 |
+| `type` | 字符串| 区域类型|
+| `points` | collection| 当区域类型为矩形时，表示左上角和右下角的点 |
 | `confidence` | FLOAT| 算法置信度|
-| `face_Mask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人员正在戴上面部面具 |
-| `face_noMask` | FLOAT | 范围 (为 0-1) 的属性置信度值表示检测到的人 **不** 戴面部面具 |
+| `face_mask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员戴着口罩 |
+| `face_nomask` | FLOAT | 属性置信度值在 (0-1) 范围内，表示检测到的人员 **未** 佩戴口罩 |
 
-### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>Cognitiveservices account 的 JSON 格式。 spatialanalysis-persondistance AI Insights
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-persondistance-ai-insights"></a>cognitiveservices.vision.spatialanalysis-persondistance AI 见解的 JSON 格式
 
-此操作输出的检测的示例 JSON。
+此操作输出检测的 JSON 示例。
 
 ```json
 {
@@ -722,61 +790,64 @@ ms.locfileid: "99981776"
 
 | 事件字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 事件 ID|
-| `type` | string| 事件类型|
-| `detectionsId` | 数组| 触发此事件的人员检测的唯一标识符的大小为1的数组|
+| `id` | 字符串| 事件 ID|
+| `type` | 字符串| 事件类型|
+| `detectionsId` | array| 触发了此事件的人员检测的唯一标识符数组，大小为 1|
 | `properties` | collection| 值的集合|
 | `personCount` | int| 发出事件时检测到的人员数|
-| `averageDistance` | FLOAT| 所有检测到的人在英尺内的平均距离|
-| `minimumDistanceThreshold` | FLOAT| 当用户小于该距离时，将触发 "TooClose" 事件的距离（以英尺为间隔）。|
-| `maximumDistanceThreshold` | FLOAT| 当人们大于距离相隔时，将触发 "TooFar" 事件的距离（以英尺为间隔）。|
-| `eventName` | string| 事件名称为 `TooClose` `minimumDistanceThreshold` ，违反，违反 `TooFar` `maximumDistanceThreshold` ，或 `unknown` 在未完成自动校准时|
-| `distanceViolationPersonCount` | int| 在违反或的情况中检测到的用户数 `minimumDistanceThreshold``maximumDistanceThreshold`|
-| `zone` | string | 多边形的 "名称" 字段，表示为用户之间的 distancing 监视的区域|
-| `trigger` | string| 触发器类型为 "事件" 或 "间隔"，具体取决于中的值 `trigger` SPACEANALYTICS_CONFIG|
+| `averageDistance` | FLOAT| 检测到的所有人员之间的平均距离，以英尺为单位|
+| `minimumDistanceThreshold` | FLOAT| 以英尺为单位的距离，当人员之间小于该间距时，将触发“TooClose”事件。|
+| `maximumDistanceThreshold` | FLOAT| 以英尺为单位的距离，当人员之间大于该间距时，将触发“TooFar”事件。|
+| `eventName` | 字符串| 违反 `minimumDistanceThreshold` 时，事件名称为 `TooClose`；违反 `maximumDistanceThreshold` 时为 `TooFar`；自动校准尚未完成时为 `unknown`|
+| `distanceViolationPersonCount` | int| 违反 `minimumDistanceThreshold` 或 `maximumDistanceThreshold` 时检测到的人员数|
+| `zone` | 字符串 | 多边形的“名称”字段，多边形表示监控人员之间距离的区域|
+| `trigger` | 字符串| 触发器类型为“事件”或“间隔”，具体取决于 SPACEANALYTICS_CONFIG 中 `trigger` 的值|
 
 | 检测字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 检测 ID|
-| `type` | string| 检测类型|
+| `id` | 字符串| 检测 ID|
+| `type` | 字符串| 检测类型|
 | `region` | collection| 值的集合|
-| `type` | string| 区域类型|
-| `points` | collection| 当区域类型为矩形时，左上方和右下点 |
+| `type` | 字符串| 区域类型|
+| `points` | collection| 当区域类型为矩形时，表示左上角和右下角的点 |
 | `confidence` | FLOAT| 算法置信度|
-| `centerGroundPoint` | 2浮点值| `x`， `y` 其中的值具有人员在地面上的推断位置的坐标。 `x` 和 `y` 是地面平面上的坐标，假设地面为水平。 照相机的位置为原点。 |
+| `centerGroundPoint` | 2 个 float 值| `x`、`y` 值，包含推断的人员在地面上位置（以英尺为单位）的坐标。 `x` 和 `y` 是地平面上的坐标，假设地面为水平。 照相机的位置为原点。 |
 
-计算时 `centerGroundPoint` ， `x` 是沿与相机图像平面垂直的线沿相机与人之间的距离。 `y` 与相机之间沿与相机图像平面平行的直线的距离。 
+计算 `centerGroundPoint` 时，`x` 是沿与相机图像平面垂直的线从相机到人员之间的距离。 `y` 是沿与相机图像平面平行的线从相机到人员之间的距离。 
 
-![示例中心地面](./media/spatial-analysis/x-y-chart.png) 
+![地面中心点示例](./media/spatial-analysis/x-y-chart.png) 
 
-在本示例中，`centerGroundPoint` 状态为 `{x: 4, y: 5}`。 这意味着，在离相机的位置为4英尺，右侧有5英尺，查看房间内的位置。
+在本示例中，`centerGroundPoint` 状态为 `{x: 4, y: 5}`。 这表示，有一个人在距离相机 4 英尺、距离右侧 5 英尺的位置从上向下查看房间。
 
 
 | SourceInfo 字段名称 | 类型| 说明|
 |---------|---------|---------|
-| `id` | string| 相机 ID|
+| `id` | 字符串| 相机 ID|
 | `timestamp` | date| 发出 JSON 有效负载时的 UTC 日期|
 | `width` | int | 视频帧宽度|
 | `height` | int | 视频帧高度|
 | `frameId` | int | 帧标识符|
 | `cameraCallibrationInfo` | collection | 值的集合|
-| `status` | string | 格式为的校准状态 `state[;progress description]` 。 状态可以为 `Calibrating` ， `Recalibrating` (如果启用了来校准) ，则为; 否则为 `Calibrated` 。 进度说明部分仅在处于 `Calibrating` 和状态时有效 `Recalibrating` ，后者用于显示当前校准过程的进度。|
-| `cameraHeight` | FLOAT | 相机上地面的高度。 这是从自动校准推断出来的。 |
-| `focalLength` | FLOAT | 以像素为单位的摄像机焦点长度。 这是从自动校准推断出来的。 |
-| `tiltUpAngle` | FLOAT | 相机倾斜角度与垂直。 这是从自动校准推断出来的。|
+| `status` | 字符串 | 校准的状态，格式为 `state[;progress description]`。 状态可以为 `Calibrating`、`Recalibrating`（如果已启用重新校准）或 `Calibrated`。 进度说明部分仅在处于 `Calibrating` 和 `Recalibrating` 状态时有效，后者用于显示当前校准过程的进度。|
+| `cameraHeight` | FLOAT | 相机高于地面的高度，以英尺为单位。 该信息根据自动校准推断得出。 |
+| `focalLength` | FLOAT | 照相机的焦距，以像素为单位。 该信息根据自动校准推断得出。 |
+| `tiltUpAngle` | FLOAT | 相机自垂直状态的倾斜角度。 该信息根据自动校准推断得出。|
 
+### <a name="json-format-for-cognitiveservicesvisionspatialanalysis-ai-insights"></a>cognitiveservices.vision.spatialanalysis AI 见解的 JSON 格式
+
+此操作的输出取决于配置的 `events`，例如，如果为此操作配置了 `zonecrossing` 事件，则输出将与 `cognitiveservices.vision.spatialanalysis-personcrossingpolygon` 相同。
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器生成的输出
 
-你可能想要将空间分析检测或事件集成到你的应用程序中。 下面是几种需要考虑的方法： 
+你可能想要将空间分析检测或事件集成到应用程序中。 下面这些想法值得考虑： 
 
-* 使用所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅 [从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。 
-* 在 Azure IoT 中心设置 **消息路由** ，将事件发送到其他终结点，或者将事件保存到数据存储中。 有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md) 。 
+* 使用适用于所选编程语言的 Azure 事件中心 SDK 连接到 Azure IoT 中心终结点，并接收事件。 有关详细信息，请参阅[从内置终结点读取设备到云的消息](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)。 
+* 在 Azure IoT 中心设置“消息路由”，以将事件发送到其他终结点，或者将事件保存到数据存储。 有关详细信息，请参阅 [IoT 中心消息路由](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 
 * 设置 Azure 流分析作业，以实时处理事件，并创建可视化效果。 
 
-## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>大规模部署空间分析操作 (多个相机) 
+## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>大规模部署空间分析操作（多个相机）
 
-为了获得 Gpu 的最佳性能和利用率，你可以使用图形实例在多个相机上部署任何空间分析操作。 下面是 `cognitiveservices.vision.spatialanalysis-personcrossingline` 在十五个相机上运行操作的示例。
+为了获得最佳性能和充分利用 GPU，可以使用图形实例在多个相机上部署任何空间分析操作。 下面是在十五个相机上运行 `cognitiveservices.vision.spatialanalysis-personcrossingline` 操作的示例。
 
 ```json
   "properties.desired": {
@@ -965,11 +1036,11 @@ ms.locfileid: "99981776"
   ```
 | 名称 | 类型| 说明|
 |---------|---------|---------|
-| `batch_size` | int | 如果所有相机都具有相同的分辨率，则将设置 `batch_size` 为要在该操作中使用的相机数; 否则，设置 `batch_size` 为1，或将其保留为默认 (1) ，这指示不支持批处理。 |
+| `batch_size` | int | 如果所有相机都具有相同的分辨率，则将 `batch_size` 设置为该操作中要使用的相机数，或者将 `batch_size` 设置为 1，或将其保留为默认值 (1)，这表示不支持批处理。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* [部署计算 web 应用程序的人员](spatial-analysis-web-app.md)
+* [部署人员计数 Web 应用程序](spatial-analysis-web-app.md)
 * [日志记录和故障排除](spatial-analysis-logging.md)
-* [照相机位置指南](spatial-analysis-camera-placement.md)
-* [区域和线条位置指南](spatial-analysis-zone-line-placement.md)
+* [相机放置指南](spatial-analysis-camera-placement.md)
+* [区域和线条放置指南](spatial-analysis-zone-line-placement.md)

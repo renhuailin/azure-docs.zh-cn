@@ -2,13 +2,13 @@
 title: 创建 Azure VMware 解决方案私有云
 description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步骤。
 ms.topic: include
-ms.date: 02/17/2021
-ms.openlocfilehash: da79881e609f982960468a8f26c98178f972ad43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: 6b4e5631d1a4b6c5bf56b01aba12752595ef63b8
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725386"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073353"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -34,7 +34,7 @@ ms.locfileid: "101725386"
 1. 完成后，选择“审阅 + 创建”。 在下一个屏幕上，验证输入的信息。 如果信息全部正确，请选择“创建”。
 
    > [!NOTE]
-   > 此步骤大约需要两小时。 
+   > 此步骤大约需要 3-4 小时。 在现有/同一群集中添加单个节点需要 30-45 分钟。
 
 1. 验证部署是否成功。 导航到创建的资源组，然后选择私有云。  完成部署后，你将看到“成功”状态。 
 

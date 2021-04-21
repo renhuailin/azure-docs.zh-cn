@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436526"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074768"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>通过 Azure 门户在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -52,7 +51,7 @@ ms.locfileid: "102436526"
 
 在开始通过 Azure 门户在设备上创建和管理 VM 之前，请确保：
 
-1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
+1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
 
     1. 已启用计算网络接口。 此网络接口 IP 用于为 VM 部署创建虚拟交换机。 在设备的本地 UI 中，转到“计算”。 选择将用于创建虚拟交换机的网络接口。
 
@@ -127,9 +126,10 @@ ms.locfileid: "102436526"
     |参数 |说明  |
     |---------|---------|
     |虚拟机名称     |         |
+    |Edge 资源组     | 为与 VM 关联的所有资源创建新的资源组。        |
     |映像     | 从设备上提供的 VM 映像中进行选择。        |
     |大小     | 从[支持的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md)中进行选择。        |
-    |用户名     | 使用默认的用户名 azureuser。        |
+    |用户名     | 使用管理员的默认用户名“azureuser”登录到 VM。        |
     |身份验证类型    | 从 SSH 公钥或用户定义的密码中进行选择。       |
     |Password     | 输入用于登录到虚拟机的密码。 密码必须至少 12 个字符，且符合定义的[复杂性要求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。        |
     |确认密码    | 再次输入密码。        |
@@ -149,11 +149,7 @@ ms.locfileid: "102436526"
 
         ![添加 VM 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  重复上述步骤，添加更多磁盘。 创建磁盘后，它们将显示在“磁盘”选项卡中。
-
-        ![添加 VM 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
-
-        选择“下一页:网络”。
+    1.  重复上述步骤，添加更多磁盘。 创建磁盘后，这些磁盘会显示在“磁盘”选项卡中。请选择“下一步: 网络”。
 
 1. 在“网络”选项卡中，你将为 VM 配置网络连接。
 
@@ -168,26 +164,32 @@ ms.locfileid: "102436526"
 
     在完成时选择“下一步:查看 + 创建”。
 
+1. 在“高级”选项卡中，可以指定自定义数据或 cloud-init 来自定义你的 VM。 
+
+    在 VM 首次启动时，可以使用 cloud-init 自定义 VM。 使用 cloud-init 来安装包和写入文件，或者配置用户和安全性。 当 cloud-init 在初始启动过程中运行时，无需额外的步骤即可应用配置。 有关 cloud-init 的详细信息，请参阅 [cloud-init 概述](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview)。
+
+    ![添加 VM 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+
 1. 在“查看 + 创建”选项卡中，查看 VM 的规范，然后选择“创建” 。
 
-    ![添加 VM 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+    ![添加 VM 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. 随即开始创建 VM，此过程可能最多需要 20 分钟。 你可以转到“部署”来监视 VM 的创建过程。
 
-    ![添加 VM 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![添加 VM 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. 成功创建 VM 后，“概述”页将更新，以显示新的 VM。
 
-    ![添加 VM 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![添加 VM 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. 选择新创建的 VM，以转到“虚拟机”。
 
-    ![添加 VM 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![添加 VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     选择 VM，查看详细信息。 
 
-    ![添加 VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![添加 VM 12](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>连接到 VM
 

@@ -7,12 +7,12 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adc09bf2572be563ff52cf9fa3d0dea51263d032
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670519"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774406"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 到专用主机
  
@@ -54,7 +54,7 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
 还可以决定使用可用性区域和容错域。 
 
 
-在此示例中，我们将通过 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) 使用可用性区域和容错域创建主机组。 
+在此示例中，我们将通过 [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) 使用可用性区域和容错域创建主机组。 
 
 ```azurecli-interactive
 az vm host group create \
@@ -69,7 +69,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>其他示例
 
-还可以使用 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) 在可用性区域 1（无容错域）中创建主机组。
+还可以使用 [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) 在可用性区域 1（无容错域）中创建主机组。
 
 ```azurecli-interactive
 az vm host group create \
@@ -79,7 +79,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-下面通过 [az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create)，只使用容错域创建主机组（在不支持可用性区域的区域中使用）。 
+下面通过 [az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create)，只使用容错域创建主机组（在不支持可用性区域的区域中使用）。 
 
 ```azurecli-interactive
 az vm host group create \
@@ -94,7 +94,7 @@ az vm host group create \
 
 有关主机 SKU 和定价的详细信息，请参阅 [Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-使用 [az vm host create](/cli/azure/vm/host#az-vm-host-create) 可创建主机。 如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。  
+使用 [az vm host create](/cli/azure/vm/host#az_vm_host_create) 可创建主机。 如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。  
 
 ```azurecli-interactive
 az vm host create \
@@ -108,7 +108,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>创建虚拟机 
-使用 [az vm create](/cli/azure/vm#az-vm-create) 在专用主机中创建虚拟机。 如果在创建主机组时指定了可用性区域，则需要在创建虚拟机时使用同一区域。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 在专用主机中创建虚拟机。 如果在创建主机组时指定了可用性区域，则需要在创建虚拟机时使用同一区域。
 
 ```azurecli-interactive
 az vm create \
@@ -149,7 +149,7 @@ az vmss create \
 
 ## <a name="check-the-status-of-the-host"></a>检查主机的状态
 
-可以使用 [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) 查看主机运行状况以及仍可部署到主机的虚拟机数。
+可以使用 [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) 查看主机运行状况以及仍可部署到主机的虚拟机数。
 
 ```azurecli-interactive
 az vm host get-instance-view \
@@ -256,7 +256,7 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>作为模板导出 
-如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，则可以导出模板。 Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以手动构建 JSON 模板，也可以通过导出现有环境来为自己创建 JSON 模板。 使用 [az group export](/cli/azure/group#az-group-export) 导出资源组。
+如果现在要使用相同参数创建额外的开发环境或与其匹配的生产环境，则可以导出模板。 Resource Manager 使用定义了所有环境参数的 JSON 模板。 通过引用此 JSON 模板构建出整个环境。 可以手动构建 JSON 模板，也可以通过导出现有环境来为自己创建 JSON 模板。 使用 [az group export](/cli/azure/group#az_group_export) 导出资源组。
 
 ```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
@@ -277,19 +277,19 @@ az deployment group create \
 
 即使没有部署虚拟机，也会对专用主机收费。 你应删除当前未使用的任何主机以节省成本。  
 
-只有当不再有虚拟机使用主机时，才能删除该主机。 使用 [az vm delete](/cli/azure/vm#az-vm-delete) 删除 VM。
+只有当不再有虚拟机使用主机时，才能删除该主机。 使用 [az vm delete](/cli/azure/vm#az_vm_delete) 删除 VM。
 
 ```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-删除 VM 之后，可以使用 [az vm host delete](/cli/azure/vm/host#az-vm-host-delete) 删除主机。
+删除 VM 之后，可以使用 [az vm host delete](/cli/azure/vm/host#az_vm_host_delete) 删除主机。
 
 ```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-删除所有主机后，可以使用 [az vm host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete) 删除主机组。  
+删除所有主机后，可以使用 [az vm host group delete](/cli/azure/vm/host/group#az_vm_host_group_delete) 删除主机组。  
  
 ```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

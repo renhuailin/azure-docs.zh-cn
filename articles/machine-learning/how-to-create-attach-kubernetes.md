@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149318"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276648"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -48,12 +48,8 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
 - 如果要使用专用 AKS 群集（使用 Azure 专用链接），则必须先创建群集，然后再将其附加到工作区。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 
-- AKS 群集的计算名称在 Azure ML 工作区中必须是唯一的。
-    - 名称是必须提供的，且长度必须介于 3 到 24 个字符之间。
-    - 有效字符为大小写字母、数字和 - 字符。
-    - 名称必须以字母开头。
-    - 名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报。
-   
+- AKS 群集的计算名称在 Azure ML 工作区中必须是唯一的。 它可以包含字母、数字和短划线。 它必须以字母开头，以字母或数字结尾，长度为 3 到 24 个字符。
+ 
  - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定 SKU），则必须使用该特定 SKU 创建群集。 不支持在现有群集中创建辅助节点池以及在辅助节点池中部署模型。
  
 - 创建或附加群集时，可以选择为开发/测试还是生产创建群集。 如果要创建 AKS 群集以用于开发、验证和测试而非生产，请将“群集用途”设置为“开发/测试”    。 如果未指定群集用途，则会创建生产群集。 

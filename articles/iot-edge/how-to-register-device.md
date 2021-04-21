@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: d75f184a324a9d418b0af2e3cf5790205af0fa42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5d761cfa947b3fd4e5f718e603219c650e8dd72
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200720"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481865"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>在 IoT 中心注册 IoT Edge 设备
 
@@ -111,7 +111,7 @@ Azure 订阅中的免费或标准 [IoT 中心](../iot-hub/iot-hub-create-through
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令在 IoT 中心创建新设备标识。 例如：
+使用 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity) 命令在 IoT 中心创建新设备标识。 例如：
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled
@@ -185,7 +185,7 @@ openssl x509 -in <certificate filename>.pem -text -fingerprint
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) 命令在 IoT 中心创建新设备标识。 例如：
+使用 [az iot hub device-identity create](/cli/azure/iot/hub/device-identity) 命令在 IoT 中心创建新设备标识。 例如：
 
    ```azurecli
    az iot hub device-identity create --device-id [device id] --hub-name [hub name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA thumbprint] --secondary-thumbprint [SHA thumbprint]
@@ -249,7 +249,7 @@ Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连
 
 ### <a name="view-iot-edge-devices-with-the-azure-cli"></a>通过 Azure CLI 查看 IoT Edge 设备
 
-使用 [az iot hub device-identity list](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-list) 命令在 IoT 中心查看所有设备。 例如：
+使用 [az iot hub device-identity list](/cli/azure/iot/hub/device-identity) 命令在 IoT 中心查看所有设备。 例如：
 
    ```azurecli
    az iot hub device-identity list --hub-name [hub name]
@@ -259,7 +259,7 @@ Visual Studio Code 资源管理器的“Azure IoT 中心”部分中列出了连
 
 ### <a name="retrieve-the-connection-string-with-the-azure-cli"></a>通过 Azure CLI 检索连接字符串
 
-如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。 使用 [az iot hub device-identity connection-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) 命令返回单个设备的连接字符串：
+如果已准备好设置设备，则需要连接字符串，该字符串使用物理设备在 IoT 中心内的标识链接该设备。 使用 [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string) 命令返回单个设备的连接字符串：
 
    ```azurecli
    az iot hub device-identity connection-string show --device-id [device id] --hub-name [hub name]

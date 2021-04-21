@@ -4,12 +4,12 @@ description: 本文介绍如何为 Azure 事件网格主题或域配置专用终
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f8a9ac46596b1c2611ce9df387ac995e8149e7b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 85546e99a8c431dc75b1af3d5044e06a18cf226d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425339"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770500"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 使用[专用终结点](../private-link/private-endpoint-overview.md)，可以允许事件通过[专用链接](../private-link/private-link-overview.md)安全地从虚拟网络直接进入主题和域，而无需通过公共 Internet。 专用终结点为主题或域使用 VNet 地址空间中的 IP 地址。 有关详细概念信息，请参阅[网络安全](network-security.md)。
@@ -121,7 +121,7 @@ ms.locfileid: "102425339"
 
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 方法，如以下示例所示：
+若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) 方法，如以下示例所示：
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,12 +135,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-有关此示例中使用的参数的说明，请参阅关于 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 的文档。 在此示例中，需要注意以下几点： 
+有关此示例中使用的参数的说明，请参阅关于 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) 的文档。 在此示例中，需要注意以下几点： 
 
 - 对于 `private-connection-resource-id`，请指定主题或域的资源 ID 。 前面的示例使用的类型是主题。
 - 对于 `domain`，请指定 `group-ids` 或 `topic`。 在前面的示例中，使用的是 `topic`。 
 
-若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) 方法，如以下示例所示：
+若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) 方法，如以下示例所示：
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>创建专用终结点
-若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 方法，如以下示例所示：
+若要创建专用终结点，请使用 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) 方法，如以下示例所示：
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,12 +179,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-有关此示例中使用的参数的说明，请参阅关于 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) 的文档。 在此示例中，需要注意以下几点： 
+有关此示例中使用的参数的说明，请参阅关于 [az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) 的文档。 在此示例中，需要注意以下几点： 
 
 - 对于 `private-connection-resource-id`，请指定主题或域的资源 ID 。 前面的示例使用的类型是主题。
 - 对于 `domain`，请指定 `group-ids` 或 `topic`。 在前面的示例中，使用的是 `topic`。 
 
-若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) 方法，如以下示例所示：
+若要删除专用终结点，请使用 [az network private-endpoint delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) 方法，如以下示例所示：
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>

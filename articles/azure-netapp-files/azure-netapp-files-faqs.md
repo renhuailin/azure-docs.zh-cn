@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 330131ea7e9a364a31d25a6f3f0a75b1adbeb27a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: d63587eec1f7e6d24ae1638e8365b85fd1ec2c94
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799881"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504985"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -82,7 +82,21 @@ Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>能否在 Azure NetApp 文件中使用 Azure RBAC？
 
-能，Azure NetApp 文件支持 Azure RBAC 功能。
+能，Azure NetApp 文件支持 Azure RBAC 功能。 除了使用内置的 Azure 角色以外，还可为 Azure NetApp 文件[创建自定义角色](../role-based-access-control/custom-roles.md)。 
+
+有关 Azure NetApp 文件权限的完整列表，请参阅针对 [`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp) 的 Azure 资源提供程序操作。
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Azure NetApp 文件是否支持 Azure 活动日志？
+
+Azure NetApp 文件是 Azure 原生的服务。 将会记录针对 Azure NetApp 文件的所有 PUT、POST 和 DELETE API 操作。 例如，日志中会显示谁创建了快照、谁修改了卷等活动。
+
+有关 API 操作的完整列表，请参阅 [Azure NetApp 文件 REST API](/rest/api/netapp/)。
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>是否可以在 Azure NetApp 文件中使用 Azure 策略？
+
+是的，可以创建[自定义 Azure 策略](../governance/policy/tutorials/create-custom-policy-definition.md)。 
+
+但是，不能在 Azure NetApp 文件界面上创建 Azure 策略（自定义命名策略）。 请参阅 [Azure NetApp 文件网络规划指导原则](azure-netapp-files-network-topologies.md#considerations)。
 
 ## <a name="performance-faqs"></a>性能常见问题解答
 
@@ -192,6 +206,14 @@ SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最�
 
 最佳做法是将计算机时钟同步的最大容差设置为 5 分钟。 有关详细信息，请参阅[计算机时钟同步的最大容差](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11))。 
 
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>是否可以通过计算机管理控制台 (MMC) 管理 `SMB Shares`、`Sessions` 和 `Open Files`？
+
+目前不支持通过计算机管理控制台 (MMC) 管理 `SMB Shares`、`Sessions` 和 `Open Files`。
+
+### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>如何通过门户获取 SMB 卷的 IP 地址？
+
+使用卷概述窗格中的“JSON 视图”链接，并查看“properties” -> “mountTargets”下的“startIp”标识符   。
+
 ## <a name="capacity-management-faqs"></a>容量管理常见问题解答
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>如何监视 Azure NetApp 文件的容量池和卷的使用情况？ 
@@ -204,9 +226,9 @@ Azure NetApp 文件提供容量池和卷的使用指标。 你还可以使用 Az
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何确定目录是否即将达到限制大小？
 
-可以从客户端使用 `stat` 命令来查看目录是否即将达到目录元数据的最大大小限制 (320 MB)。
+可以从客户端使用 `stat` 命令来查看目录是否即将达到目录元数据的最大大小限制 (320 MB)。   
 
-对于 320 MB 的目录，块数为 655360，每个块的大小为 512 个字节。  （即 320x1024x1024/512。）  
+对于 320-MB 的目录，块数为 655360，每个块的大小为 512 字节。  （即 320x1024x1024/512。）根据此数字，相当于一个 320-MB 的目录最多可包含大约 400 万个文件。 但是，实际的最大文件数目可能更小，具体取决于多种因素，例如，目录中包含非 ASCII 字符的文件数。 因此，应按如下所示使用 `stat` 命令来确定目录是否接近其限制。  
 
 示例：
 

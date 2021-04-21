@@ -1,24 +1,24 @@
 ---
 title: 如何停止监视 Azure Kubernetes 服务群集 | Microsoft Docs
-description: 本文介绍如何通过容器见解停止监视 Azure AKS 群集。
+description: 本文介绍如何停止使用容器见解来监视 Azure AKS 群集。
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723531"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773992"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>如何通过容器见解停止监视 Azure Kubernetes 服务 (AKS) 
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>如何停止使用容器见解来监视 Azure Kubernetes 服务 (AKS)
 
 启用监视 AKS 群集后，如果决定不再监视它，可以停止监视群集。 本文介绍如何使用 Azure CLI 或提供的 Azure 资源管理器模板完成此操作。  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-使用 [az aks 加载项](/cli/azure/aks#az-aks-disable-addons) 命令禁用容器见解。 该命令从群集节点中删除代理，它不会删除已收集并存储在 Azure Monitor 资源中的解决方案或数据。  
+使用 [az aks disable-addons](/cli/azure/aks#az_aks_disable_addons) 命令禁用容器见解。 该命令从群集节点中删除代理，它不会删除已收集并存储在 Azure Monitor 资源中的解决方案或数据。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG

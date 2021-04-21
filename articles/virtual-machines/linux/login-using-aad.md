@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 44dfd07a5b749d88552bb1dcac2ee4b4e5ce65e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565234"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554070"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -140,7 +140,7 @@ az role assignment create \
 
 ## <a name="using-conditional-access"></a>使用条件访问
 
-在授权访问 Azure 中已启用 Azure AD 登录的 Linux VM 之前，可以强制实施条件访问策略，例如多重身份验证或用户登录风险检查。 若要应用条件访问策略，必须从云应用或操作分配选项中选择“Azure Linux VM 登录”应用，然后使用登录风险作为条件和/或要求多重身份验证作为授权访问控制。 
+在授权访问 Azure 中已启用 Azure AD 登录的 Linux VM 之前，可以强制实施条件访问策略，例如多重身份验证或用户登录风险检查。 若要应用条件访问策略，必须从云应用或操作分配选项中选择“Microsoft Azure Linux 虚拟机登录”应用，然后使用“登录风险”作为条件，并且/或者要求使用“多重身份验证”作为授权访问控制。 
 
 > [!WARNING]
 > VM 登录不支持每用户启用/强制执行的 Azure AD 多重身份验证。

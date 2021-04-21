@@ -5,20 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 11/06/2020
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: d479c3087b971aa17cf145e0111890da07381eab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4c36c0e099ed7474a5d27f6edcbd4b3ac435f4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94386578"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030810"
 ---
 | 资源 | 限制 |
 | --- | --- |
 | 数据吞吐量 |30 Gbps<sup>1</sup> |
-|规则|10,000。 已组合所有规则类型。|
+|规则限制|网络规则中 10,000 个唯一源/目标|
 |最高 DNAT 规则数目|单个公共 IP 地址 298 个。<br>任何其他公共 IP 地址都有助于可用的 SNAT 端口，但会减少可用的 DNAT 规则数。 例如，两个公共 IP 地址允许 297 个 DNAT 规则。 如果同时为 TCP 和 UDP 配置规则的协议，则会将其计为两个规则。|
 |最小 AzureFirewallSubnet 大小 |/26|
 |网络和应用程序规则的端口范围|1 - 65535|

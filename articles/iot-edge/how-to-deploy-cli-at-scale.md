@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 7b12b6c1cdc85eaba531f34b23aa74bee6b38f7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c502a9c02160c5a92d78ccdbb0532e6f173122da
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201124"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479502"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -191,7 +191,7 @@ ms.locfileid: "103201124"
 
 请创建一个包含部署清单和其他参数的部署，以便将模块部署到目标设备。
 
-使用 [az iot edge deployment create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) 命令创建部署：
+使用 [az iot edge deployment create](/cli/azure/iot/edge/deployment) 命令创建部署：
 
 ```azurecli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
@@ -224,7 +224,7 @@ deployment create 命令采用以下参数：
 
 你无法更新部署的内容，其中包括在部署清单中定义的模块和路由。 如果你想要更新部署的内容，则可以通过创建针对具有较高优先级的相同设备的新部署来实现此目的。 你可以修改现有模块的某些属性，包括目标条件、标签、指标和优先级。
 
-使用 [az iot edge deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) 命令更新部署：
+使用 [az iot edge deployment update](/cli/azure/iot/edge/deployment) 命令更新部署：
 
 ```azurecli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -245,7 +245,7 @@ deployment update 命令采用以下参数：
 
 删除部署时，任何设备都将采用下一个最高优先级部署。 如果设备不满足任何其他部署的目标条件，则删除该部署时不会删除模块。
 
-使用 [az iot edge deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) 命令删除部署：
+使用 [az iot edge deployment delete](/cli/azure/iot/edge/deployment) 命令删除部署：
 
 ```azurecli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]

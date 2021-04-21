@@ -7,18 +7,15 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 09adb19623ea866091e1b949e78263661eddbb52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551141"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551367"
 ---
-# <a name="np-series-preview"></a>NP 系列（预览） 
+# <a name="np-series"></a>NP 系列 
 NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA 提供支持，以加速工作负载，包括机器学习推理、视频转码以及数据库搜索和分析。 NP 系列 VM 还由全核 Turbo 时钟频率为 3.2GHz 的 Intel Xeon 8171M (Skylake) CPU 提供支持。
-
-使用[预览窗体](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9x_QCQkJXxHl4qOI4jC9YtUOVI0VkgwVjhaTFFQMTVBTDFJVFpBMzJSSCQlQCN0PWcu)提交请求，这是 NP 系列预览计划的一部分。
-
 
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
@@ -39,10 +36,105 @@ VM 代系支持：第 1 代<br>
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
-请访问 [Xilinx 运行时 (XRT) 发行说明](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)，获取受支持的操作系统的完整列表。
 
-在预览计划期间，Microsoft Azure 工程团队将分享具体的驱动程序安装说明。
+##  <a name="frequently-asked-questions"></a>常见问题
+
+问：我应使用哪个 Vitis 版本？ 
+
+答：Xilinx 建议使用 [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
+
+
+问：是否需要使用 NP VM 来开发解决方案？ 
+
+答：否，可以在本地开发并部署到云中！ 若要在 NP VM 上部署，请确保遵循证明文档。 
+
+问：我应使用哪个 XRT 版本？
+
+答：xrt_202020.2.8.832 
+
+问：目标部署平台是什么？
+
+答：使用以下平台。
+- xilinx-u250-gen3x16-xdma-platform-2.1-3_all
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1 
+
+问：开发时应面向哪个平台？
+
+答：xilinx-u250-gen3x16-xdma-2.1-202010-1-dev_1-2954688_all 
+
+问：支持哪些 OS（操作系统）？ 
+
+答：Xilinx 和 Microsoft 已验证 Ubuntu 18.04 LTS 和 CentOS 7.8。
+
+ Xilinx 创建了以下市场映像用于简化这些 VM 的部署。 
+
+[Xilinx Alveo U250 Deployment VM – Ubuntu18.04](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_ubuntu1804_032321)
+
+[Xilinx Alveo U250 Deployment VM – CentOS7.8](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_centos78_032321)
+
+问：我是否可以部署自己的 Ubuntu/CentOS VM，并安装 XRT/部署目标平台？ 
+
+**答:** 是的。
+
+问：如果我部署自己的 Ubuntu18.04 VM，那么需要哪些包并执行哪些步骤？
+
+答：根据 [Xilinx XRT 文档](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)使用内核 4.1X
+       
+安装以下包。
+- xrt_202020.2.8.832_18.04-amd64-xrt.deb
+       
+- xrt_202020.2.8.832_18.04-amd64-azure.deb
+       
+- xilinx-u250-gen3x16-xdma-platform-2.1-3_all_18.04.deb.tar.gz
+       
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1_all.deb  
+
+问：在 Ubuntu 上重新启动 VM 后，我找不到我的 FPGA： 
+
+答：请验证你的内核是否未升级 (uname -a)。 如果已升级，请降级到内核 4.1X。 
+
+问：如果我部署自己的 CentOS7.8 VM，那么需要哪些包并执行哪些步骤？
+
+答：使用内核版本：3.10.0-1160.15.2.el7.x86_64
+
+ 安装以下包。
+   
+ - xrt_202020.2.8.832_7.4.1708-x86_64-xrt.rpm 
+      
+ - xrt_202020.2.8.832_7.4.1708-x86_64-azure.rpm 
+     
+ - xilinx-u250-gen3x16-xdma-platform-2.1-3.noarch.rpm.tar.gz 
+      
+ - xilinx-u250-gen3x16-xdma-validate-2.1-3005608.1.noarch.rpm  
+
+问：在 CentOS 上运行 xbutil validate 时我收到此警告：“警告: 内核版本 3.10.0-1160.15.2.el7.x86_64 不受官方支持。 4.18.0-193 是最新的受支持版本。” 
+
+答：可放心忽略此警告。 
+
+问：本地 VM 与 NP VM 在 XRT 方面有哪些差异？ 
+
+答：在 Azure 上，XDMA 2.1 平台仅支持 Host_Mem(SB) 和 DDR 数据保留功能。 
+
+若要启用 Host_Mem(SB) (1Gb RAM)，请运行：sudo xbutil host_mem --enable --size 1g 
+
+若要禁用 Host_Mem(SB)，请运行：sudo xbutil host_mem --disable 
+
+问：是否可以运行 xbmgmt 命令？ 
+
+答：否，Azure VM 不直接提供管理支持。 
+
+ 问：是否需要加载 PLP？ 
+
+答：不需要，系统会自动为你加载 PLP，因此无需通过 xbmgmt 命令加载。 
+
+ 
+问：Azure 是否支持不同的 PLP？ 
+
+答：目前不支持。 我们仅支持部署平台包中提供的 PLP。 
+
+问：如何查询 PLP 信息？ 
+
+答：需要运行 xbutil 查询并查看下半部分。 
 
 ## <a name="other-sizes"></a>其他大小
 

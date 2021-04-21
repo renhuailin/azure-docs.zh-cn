@@ -1,18 +1,18 @@
 ---
 title: Azure 网络服务的内置策略定义
 description: 列出 Azure 网络服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7c27c2b9f6fc4804c691f33b164e2ad497149d4b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: ad39c73e84f0143cc8216a71db5d69fb157ad5c6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096167"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496974"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Azure 网络服务的 Azure Policy 内置定义
 

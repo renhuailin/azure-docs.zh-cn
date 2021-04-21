@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586786"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579626"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>教程：配置 Bastion 并通过浏览器连接到 Windows VM
 
@@ -37,6 +37,10 @@ ms.locfileid: "100586786"
 
 * 端口：若要连接到 Windows VM，必须在 Windows VM 上打开以下端口：
   * 入站端口：RDP (3389)
+
+ >[!NOTE]
+ >目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保你计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
+ >
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

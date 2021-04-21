@@ -3,16 +3,16 @@ title: 适用于容器注册表的 Azure Defender - 优点和功能
 description: 了解容器注册表的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176631"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010686"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -47,7 +47,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 - **在推送时** - 每当向注册表推送映像时，安全中心会自动扫描该映像。 若要触发映像扫描，请将该映像推送到存储库。
 
-- **最近拉取** - 由于每天都会发现新漏洞，适用于容器注册表的 Azure Defender 还会扫描过去 30 天内拉取的任何映像。 重新扫描不产生额外费用；如前所述，每个映像只需支付一次扫描费用。
+- 最近拉取 - 由于每天都会发现新漏洞，适用于容器注册表的 Azure Defender 每周还会扫描过去 30 天内拉取的任何映像 。 重新扫描不产生额外费用；如前所述，你只需为每个映像支付一次扫描费用。
 
 - **导入时** - Azure 容器注册表具有导入工具，用于将 Docker 中心、Microsoft 容器注册表或其他 Azure 容器注册表中的映像引入你的注册表。 **适用于容器注册表的 Azure Defender** 扫描导入的任何受支持的映像。 请参阅[将容器映像导入容器注册表](../container-registry/container-registry-import-images.md)，了解详细信息。
  

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42382076b6c14989eb153725e991c8ef047ad15b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662383"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774784"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问 Azure Database for Maria DB 慢查询日志
 
@@ -42,14 +42,14 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器的日志
-如果“log_output”  配置为“File”，则可以直接从服务器的本地存储访问日志。 若要列出服务器的可用慢查询日志文件，请运行 [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) 命令。
+如果“log_output”  配置为“File”，则可以直接从服务器的本地存储访问日志。 若要列出服务器的可用慢查询日志文件，请运行 [az mariadb server-logs list](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_list) 命令。
 
 可以列出资源组“myresourcegroup”下的服务器“mydemoserver.mariadb.database.azure.com”的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件  。
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>从服务器下载日志
-如果“log_output”  配置为“File”，则可以使用 [az mariadb server-logs download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) 命令从服务器下载单个日志文件。
+如果“log_output”  配置为“File”，则可以使用 [az mariadb server-logs download](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_download) 命令从服务器下载单个日志文件。
 
 使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.mariadb.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive

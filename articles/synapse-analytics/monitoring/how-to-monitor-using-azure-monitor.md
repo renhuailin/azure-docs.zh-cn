@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609252"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553985"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>将 Azure Monitor 与 Azure Synapse Analytics 工作区配合使用
 
@@ -103,10 +103,14 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 下面是 Azure Synapse Analytics 工作区发出的日志：
 
-| Log Analytics 表名称 | 日志类别名称                 | 说明 |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse 网关 API 请求。 |
-| SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse 基于角色的访问控制 (SRBAC) 操作。 |
+| Log Analytics 表名称       | 日志类别名称              | 说明          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Azure Synapse 网关 API 请求。 |
+| SynapseRbacOperations          | SynapseRbacOperations          | Azure Synapse 基于角色的访问控制 (SRBAC) 操作。 |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Azure Synapse 内置无服务器 SQL 池的已结束请求。 |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Azure Synapse 集成管道运行。 |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Azure Synapse 集成活动运行。 |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Azure Synapse 集成触发器运行。 |
 
 ### <a name="dedicated-sql-pool-logs"></a>专用 SQL 池日志
 

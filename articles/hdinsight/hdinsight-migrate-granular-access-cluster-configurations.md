@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb30f4648f1649bf6cc6cc6a3bf02f433f49d45
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954864"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774924"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -192,7 +192,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>运行 Azure CLI 命令将“HDInsight 群集操作员”角色分配到另一个用户或服务主体时，为何会出现“权限不足，无法完成该操作”？
 
-执行该命令的用户或服务主体除了要有“所有者”角色以外，还需要有足够的 Azure AD 权限来查找被分配者的对象 ID。 此消息表示 Azure AD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](/cli/azure/role/assignment#az-role-assignment-create)的“可选参数”部分。
+执行该命令的用户或服务主体除了要有“所有者”角色以外，还需要有足够的 Azure AD 权限来查找被分配者的对象 ID。 此消息表示 Azure AD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](/cli/azure/role/assignment#az_role_assignment_create)的“可选参数”部分。
 
 如果这仍然不起作用，请联系你的 Azure AD 管理员以获取正确的权限。
 

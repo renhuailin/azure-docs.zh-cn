@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c799e38092c5983b4ad0e3daea6aae99934c7302
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4702682dcd6af68242fd5a34d1fb2e0a9273da36
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200887"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482018"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -76,7 +76,7 @@ ms.locfileid: "103200887"
    >
    >可以通过将环境变量 AuthenticationMode 设置为值 CloudAndScope 来将 IoT Edge 中心配置为返回到以前的行为 。
 
-还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的操作。 以下示例使用 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有对称密钥身份验证的新 IoT 设备，并分配父设备：
+还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的操作。 以下示例使用 [az iot hub device-identity](/cli/azure/iot/hub/device-identity) 命令创建具有对称密钥身份验证的新 IoT 设备，并分配父设备：
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
@@ -131,7 +131,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有 X.509 自签名身份验证的新 IoT 设备，并分配父设备：
+还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](/cli/azure/iot/hub/device-identity) 命令创建具有 X.509 自签名身份验证的新 IoT 设备，并分配父设备：
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
@@ -175,7 +175,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令创建具有 X.509 CA 签名身份验证的新 IoT 设备，并分配父设备：
+还可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 [az iot hub device-identity](/cli/azure/iot/hub/device-identity) 命令创建具有 X.509 CA 签名身份验证的新 IoT 设备，并分配父设备：
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca

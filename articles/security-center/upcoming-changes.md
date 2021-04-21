@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/06/2021
+ms.date: 04/08/2021
 ms.author: memildin
-ms.openlocfilehash: 6204be2ff52b8aac89b93ac09337b1560255e11d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491876"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103753"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -29,8 +29,8 @@ ms.locfileid: "106491876"
 | 计划的更改                                                                                                                                                        | 预计更改日期 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 条建议在不同安全控制之间进行了调动](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
-| [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 年 4 月                |
-| [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 4 月                |
+| [“应用系统更新”安全控制中的两项建议将被弃用](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 年 4 月                |
+| [将发布来自 AWS 的正式版 (GA) 建议](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 8 月             |
 | [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 季度                   |
 |                                                                                                                                                                       |                           |
 
@@ -62,7 +62,7 @@ ms.locfileid: "106491876"
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>将发布来自 AWS 的正式版 (GA) 建议
 
-**预计更改日期：** 2021 年 4 月
+**预计更改日期：** 2021 年 8 月
 
 Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作负载。
 
@@ -73,7 +73,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 - [安全中心的 PCI DSS 控制](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
 - [安全中心的 CIS AWS 基础基准控制](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
 
-当这些功能为正式版并对 AWS 资源运行评估时，结果将影响所有多云资源与混合云资源的合计安全分数。 
+当这些功能为正式版并对 AWS 资源运行评估时，结果将影响所有多云资源与混合云资源的合计安全分数。
 
 
 

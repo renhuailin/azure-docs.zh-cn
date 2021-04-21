@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598994"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280558"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -206,7 +206,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ## <a name="post-the-request"></a>发布请求
 
-在收到请求时执行分析。 有关每分钟和每秒可以发送的请求的大小和数量的信息，请参阅概述中的[数据限制](../overview.md#data-limits)部分。
+在收到请求时执行分析。 若要了解每分钟和每秒可以发送的请求大小和数量，请参阅[数据限制](../overview.md#data-limits)一文。
 
 文本分析 API 是无状态的。 不会在帐户中存储数据，结果会立即在响应中返回。
 

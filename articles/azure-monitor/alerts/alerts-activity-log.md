@@ -3,12 +3,12 @@ title: 在 Azure Monitor 中创建、查看和管理活动日志警报
 description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShell 创建活动日志警报。
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: 26ca755f6675fa19c3b122c3528e05d1e8d76845
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
-ms.translationtype: MT
+ms.openlocfilehash: 647378d7e93ab383441b363315a84cea8a5ab773
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045524"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772534"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -25,9 +25,9 @@ ms.locfileid: "102045524"
 
 - 范围中的订阅并未不同于创建警报的订阅。
 - 条件必须是配置警报时所依据的级别、状态、调用方、资源组、资源 ID 或资源类型事件类别。
-- 只允许一个 "allOf" 条件。
-- "AnyOf" 可用于允许多个 (字段的多个条件，例如，如果 "状态" 或 "子状态" 字段等于某个值) ，则为。 请注意，"AnyOf" 的使用目前限制为使用 ARM 模板部署创建警报规则。
-- 如果 "操作" 等于 "delete" 或 "modify" ) ，则可使用 "ContainsAny" 来允许 (相同字段的多个值。 请注意，"ContainsAny" 的使用目前限制为使用 ARM 模板部署创建警报规则。
+- 仅允许一个“allOf”条件。
+- “AnyOf”可用于允许在多个字段上使用多种条件（例如，“status”或“subStatus”字段是否等于某个值）。 请注意，“AnyOf”的使用目前仅限于通过 ARM 模板部署创建警报规则。
+- “ContainsAny”可用于允许同一字段的多个值（例如，“operation”是等于“delete”还是等于“modify”）。 请注意，“ContainsAny”的使用目前仅限于通过 ARM 模板部署创建警报规则。
 - 当类别是“管理”时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
 - 无法为活动日志的“警报”类别中的事件创建警报。
 
@@ -276,13 +276,13 @@ set [az monitor activity-log alert](/cli/azure/monitor/activity-log/alert) 下�
 
 若要创建新的活动日志警报规则，请下面的顺序使用以下命令：
 
-1. [az monitor activity-log alert create](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create)：创建新的活动日志警报规则资源。
+1. [az monitor activity-log alert create](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_create)：创建新的活动日志警报规则资源。
 1. [az monitor activity-log alert scope](/cli/azure/monitor/activity-log/alert/scope)：为已创建的活动日志警报规则添加范围。
 1. [az monitor activity-log alert action-group](/cli/azure/monitor/activity-log/alert/action-group)：将操作组添加到活动日志警报规则。
 
-若要检索一个活动日志警报规则资源，请使用 Azure CLI 命令 [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-)。 若要查看某个资源组中的所有活动日志警报规则资源，请使用 [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)。
-可以使用 Azure CLI 命令 [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) 删除活动日志警报规则资源。
+若要检索一个活动日志警报规则资源，请使用 Azure CLI 命令 [az monitor activity-log alert show](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_show
+)。 若要查看某个资源组中的所有活动日志警报规则资源，请使用 [az monitor activity-log alert list](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_list)。
+可以使用 Azure CLI 命令 [az monitor activity-log alert delete](/cli/azure/monitor/activity-log/alert#az_monitor_activity_log_alert_delete) 删除活动日志警报规则资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中出口流量的静态公共 IP 地址
 services: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.openlocfilehash: 2eefeecfa550683dafcf66d936837e2a891c4c84
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.date: 03/16/2021
+ms.openlocfilehash: 7cff3f5d66bb9872a0c949c6237150f8b69c9fa7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726540"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773002"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>将出口流量的静态公共 IP 地址与 Azure Kubernetes 服务 (AKS) 中的基本 SKU 负载均衡器配合使用
 
@@ -107,7 +107,7 @@ kubectl apply -f egress-service.yaml
 启动并附加到基本 Debian pod：
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 若要从容器中访问网站，请使用 `apt-get` 将 `curl` 安装到容器。
@@ -129,13 +129,13 @@ $ curl -s checkip.dyndns.org
 若要避免在 Azure 负载均衡器上维护多个公共 IP 地址，可以使用入口控制器。 入口控制器提供的其他好处包括：SSL/TLS 终止、对 URI 重写的支持以及上游 SSL/TLS 加密。 有关详细信息，请参阅[在 AKS 中创建基本入口控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [azure-cli-install]: /cli/azure/install-azure-cli
 [ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
-[public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli

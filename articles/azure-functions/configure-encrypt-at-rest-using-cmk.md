@@ -3,12 +3,12 @@ title: 静态加密应用程序源
 description: 加密 Azure 存储中的应用程序数据，并将其部署为包文件。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71668bf27628bb2af2dfc7112d28ba10ecfdf9f3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92108025"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768806"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥加密静态应用程序数据
 
@@ -43,7 +43,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 现在，可将 `WEBSITE_RUN_FROM_PACKAGE` 应用程序设置的值替换为对 SAS 编码 URL 的 Key Vault 引用。 这会使 SAS URL 在 Key Vault 中加密，从而提供附加的安全层。
 
-1. 使用以下 [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) 命令创建 Key Vault 实例。       
+1. 使用以下 [`az keyvault create`](/cli/azure/keyvault#az_keyvault_create) 命令创建 Key Vault 实例。       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -51,13 +51,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 1. 按照[这些说明](../app-service/app-service-key-vault-references.md#granting-your-app-access-to-key-vault)向应用授予对 Key Vault 的访问权限：
 
-1. 使用以下 [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) 命令将外部 URL 添加为 Key Vault 中的机密：   
+1. 使用以下 [`az keyvault secret set`](/cli/azure/keyvault/secret#az_keyvault_secret_set) 命令将外部 URL 添加为 Key Vault 中的机密：   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  使用以下 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令创建 `WEBSITE_RUN_FROM_PACKAGE` 应用程序设置，该设置的值为对外部 URL 的 Key Vault 引用：
+1.  使用以下 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令创建 `WEBSITE_RUN_FROM_PACKAGE` 应用程序设置，该设置的值为对外部 URL 的 Key Vault 引用：
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    

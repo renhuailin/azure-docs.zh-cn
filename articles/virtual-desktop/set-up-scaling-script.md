@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: f60341ea51f1cf4e856b1b4598887da3dc37ebb2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+manager: femila
+ms.openlocfilehash: 80bcf647ee63242bfe60b63ed400b8d3b3dc1d9e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613113"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445663"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
@@ -36,7 +36,7 @@ ms.locfileid: "102613113"
 >[!NOTE]
 >SessionThresholdPerCPU 不会限制虚拟机上的会话数。 此参数仅确定需要在何时启动新 VM，以便对连接数实施负载平衡。 若要限制会话数，需要遵循 [Update-AzWvdHostPool](configure-host-pool-load-balancing.md#configure-breadth-first-load-balancing) 说明，相应配置 MaxSessionLimit 参数。
 
-在非高峰使用时段，作业将根据 MinimumNumberOfRDSH 参数确定要关闭多少会话主机 VM。 如果将 LimitSecondsToForceLogOffUser 参数设置为非零正值，作业会将会话主机 VM 设置为排出模式，以防止新会话连接到主机。 然后，作业将通知当前所有已登录的用户保存其工作，等待到配置的时间量结束，然后强制用户注销。当会话主机 VM 上的所有用户会话均已注销后，该作业将关闭 VM。 VM 关闭后，作业将重置其会话主机排出模式。
+在非高峰使用时段，作业将根据 MinimumNumberOfRDSH 参数确定要关闭多少会话主机 VM。 如果将 LimitSecondsToForceLogOffUser 参数设置为非零正值，作业会将会话主机 VM 设置为排出模式，以防止新会话连接到主机。 然后，该作业会通知当前所有已登录的用户保存其工作，等待配置的那段时间过后再强制用户注销。当会话主机 VM 上的所有用户会话均已注销后，该作业会关闭 VM。 VM 关闭后，作业将重置其会话主机排出模式。
 
 >[!NOTE]
 >如果手动将会话主机 VM 设置为排出模式，则作业将不会管理会话主机 VM。 如果会话主机 VM 正在运行并且设置为排出模式，则将被视为不可用，这将使作业启动其他 VM 来处理负载。 建议在将任何 Azure VM 手动设置为排出模式之前，对其进行标记。 之后在创建 Azure 逻辑应用计划程序时，可以使用 MaintenanceTagName 参数来命名此标记。 标记将帮助区分这些 VM 和缩放工具管理的 VM。 设置维护标记还会防止缩放工具更改 VM，直到删除该标记。

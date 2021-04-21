@@ -3,18 +3,18 @@ title: 响应注册表操作的 Webhook
 description: 了解如何使用 Webhook 在注册表存储库中发生推送或拉取操作时触发事件。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 4f6fb719f8d9d51429a19616aa5548b32a2687e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722239"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773393"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
 
 Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类似于 Docker Hub 存储公共 Docker 映像。 它还可托管 [Helm Chart](container-registry-helm-repos.md)（预览版）的存储库；Helm Chart 是一种将应用程序部署到 Kubernetes 的打包格式。 可以使用 Webhook 在其中一个注册表存储库中发生特定操作时触发事件。 Webhook 可在注册表级别响应事件或者将其范围缩小到特定存储库标记。 通过[异地复制](container-registry-geo-replication.md)注册表，可将每个 Webhook 配置为响应特定区域副本中的事件。
 
-必须可以从注册表公开访问 webhook 的终结点。 你可以配置注册表 webhook 请求以对安全终结点进行身份验证。
+必须能从注册表公开访问 Webhook 的终结点。 可以配置注册表 Webhook 请求来对安全终结点进行身份验证。
 
 有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 
@@ -47,7 +47,7 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 
 ## <a name="create-webhook---azure-cli"></a>创建 Webhook - Azure CLI
 
-若要使用 Azure CLI 创建 webhook，请使用 [az acr webhook create](/cli/azure/acr/webhook#az-acr-webhook-create) 命令。 以下命令为注册表 mycontainerregistry 中的所有映像删除事件创建 Webhook：
+若要使用 Azure CLI 创建 webhook，请使用 [az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create) 命令。 以下命令为注册表 mycontainerregistry 中的所有映像删除事件创建 Webhook：
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -67,7 +67,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 测试 ACR webhook，请使用 [az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) 命令。
+若要使用 Azure CLI 测试 ACR webhook，请使用 [az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) 命令。
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

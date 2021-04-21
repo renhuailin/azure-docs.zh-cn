@@ -13,10 +13,10 @@ ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103418073"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题解答 (FAQ)
@@ -35,7 +35,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 ### <a name="error-adding-account"></a>添加帐户时出错
 
-**问**：我在尝试添加帐户时，收到一条错误消息，指出“你尝试添加的帐户暂时无效。 请联系管理员来解决此问题(唯一性验证)。”   应采取何种操作？
+**问**：我在尝试添加帐户时，收到一条错误消息，指出“你尝试添加的帐户暂时无效。 请联系管理员来解决此问题(唯一性验证)。” 应采取何种操作？
 
 **答**：与管理员联系，让他们知道你因为唯一性验证问题无法向 Authenticator 添加帐户。 你需要提供登录用户名，使管理员能在你的组织中查找你。
 
@@ -149,7 +149,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 **问**：为何 Authenticator 允许在不解锁设备的情况下批准请求？
 
-**答**：同意验证请求时无需解锁设备，只需证明带了手机。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 只需知道密码。 拥有的物品是手机（已使用 Authenticator 设置，并已注册为多重身份验证的一项证明。）因此，拥有手机和批准请求符合第二个身份验证因素的标准。
+**答**：同意验证请求时无需解锁设备，只需证明带了手机。 双重验证要求提供两项证明：一件你知道的事和一件你拥有的物品。 只需知道密码。 拥有的物品是手机（已使用 Authenticator 进行设置，并已注册为多重身份验证证明）。因此，拥有手机和批准请求符合第二个身份验证因素的条件。
 
 ### <a name="activity-notifications"></a>活动通知
 
@@ -159,7 +159,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 ### <a name="one-time-passcodes"></a>一次性密码
 
-**问**：我的一次性密码不起作用。   应采取何种操作？
+**问**：我的一次性密码不起作用。 应采取何种操作？
 
 **答**：请确保设备上的日期和时间正确，并且会自动同步。 如果日期和时间错误或不同步，该代码将不起作用。
 

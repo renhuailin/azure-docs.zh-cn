@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688903"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550687"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -33,6 +33,7 @@ Azure AD 提供了用于管理设备标识的集中场所。
 - 配置设备标识设置。
 - 启用或禁用企业状态漫游。
 - 查看与设备相关的审核日志
+- 下载设备（预览版）
 
 [![Azure 门户中的“所有设备”视图](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -65,7 +66,7 @@ Azure AD 提供了用于管理设备标识的集中场所。
 > [!TIP]
 > - 加入混合 Azure AD 的 Windows 10 设备没有所有者。 如果按所有者查找设备，但找不到，请按设备 ID 进行搜索。
 >
-> - 如果在“已注册”列下看到状态为“待定”的“已加入混合 Azure AD 的”设备，则表示该设备已从 Azure AD Connect 同步，正在等待从客户端完成注册。 详细了解如何[规划混合 Azure AD 加入实现](hybrid-azuread-join-plan.md)。 有关详细信息，请参阅[设备常见问题解答](faq.md)一文。
+> - 如果在“已注册”列下看到状态为“待定”的“已加入混合 Azure AD 的”设备，则表示该设备已从 Azure AD Connect 同步，正在等待从客户端完成注册。 详细了解如何[规划混合 Azure AD 加入实现](hybrid-azuread-join-plan.md)。 有关详细信息，请参阅[设备常见问题解答](faq.yml)一文。
 >
 > - 对于某些 iOS 设备，包含单引号的设备名可能会使用看起来像单引号的不同字符。 因此搜索此类设备时会有点困难 - 如果没有看到正确的搜索结果，请确保搜索字符串包含匹配的单引号字符。
 
@@ -145,6 +146,14 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 
 现在可以向“所有设备”视图“添加筛选器” 。
 
+### <a name="download-devices-preview"></a>下载设备（预览版）
+
+云设备管理员、Intune 管理员和全局管理员可以使用“下载设备(预览版)”选项，根据任何已应用的筛选器导出设备的 CSV 文件。 如果没有对列表应用筛选器，则会导出所有设备。 导出最多可能会运行一小时，具体取决于实际情况。 
+
+导出的列表包含以下设备标识属性：
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
+
 ## <a name="configure-device-settings"></a>配置设备设置
 
 若要使用 Azure AD 门户管理设备标识，这些设备需要[已注册或已加入](overview.md) Azure AD。 作为管理员，可以通过配置以下设备设置来控制注册和加入设备的过程。
@@ -161,7 +170,7 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 - 用户可将设备加入 Azure AD - 可通过此设置选择可以将其设备注册为已加入 Azure AD 的设备的用户。 默认值是 **All**。
 
 > [!NOTE]
-> “用户可将设备加入 Azure AD”设置仅适用于 Windows 10 上的 Azure AD 加入。 此设置不适用于混合 Azure AD 联接的设备， [Azure AD 在 Azure 中加入的 vm](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) ，并使用 [Windows Autopilot 自助部署模式](/mem/autopilot/self-deploying) Azure AD 加入设备，因为这些方法在无用户上下文中工作。
+> “用户可将设备加入 Azure AD”设置仅适用于 Windows 10 上的 Azure AD 加入。 此设置不适用于加入混合 Azure AD 的设备、[Azure 中已加入 Azure AD 的 VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) 和使用 [Windows Autopilot 自部署模式](/mem/autopilot/self-deploying)的已加入 Azure AD 的设备，因为这些方法在无用户上下文中起作用。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 这些用户将添加到 Azure AD 中的设备管理员角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
 - 用户可向 Azure AD 注册其设备 - 需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、iOS、Android 和 macOS 设备。 如果选择“无”，则不允许向 Azure AD 注册设备。 登记到 Microsoft Intune 或 Microsoft 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
@@ -170,7 +179,11 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 > [!NOTE]
 > “要加入 Azure AD 或注册到 Azure AD 的设备需要多重身份验证”设置适用于加入 Azure AD（但有一些例外）或注册到 Azure AD 的设备。 此设置不适用于加入混合 Azure AD 的设备、[Azure 中已加入 Azure AD 的 VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) 和使用 [Windows Autopilot 自部署模式](/mem/autopilot/self-deploying)的已加入 Azure AD 的设备。
 
-- 最大设备数 - 可通过此设置选择用户可在 Azure AD 中拥有的已加入 Azure AD 或已注册到 Azure AD 的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为“50” 。
+> [!IMPORTANT]
+> - 建议使用条件访问中的[“注册或加入设备”用户操作](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)来强制执行多重身份验证，以加入或注册设备。 
+> - 如果你使用要求多重身份验证的条件访问策略，则必须将此设置设置为“否”。 
+
+- 最大设备数 - 可通过此设置选择用户可在 Azure AD 中拥有的已加入 Azure AD 或已注册到 Azure AD 的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 默认值为“50” 。 可以将此值增加到 100。如果输入的值大于 100，Azure AD 会将其设置为 100。 还可以使用“Unlimited”值来强制实施无限制的配额限制，而非现有的配额限制。
 
 > [!NOTE]
 > “最大设备数”设置适用于已加入 Azure AD 或已注册 Azure AD 的设备。 此设置不适用于已加入混合 Azure AD 的设备。

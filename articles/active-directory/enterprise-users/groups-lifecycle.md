@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709508"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551622"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
@@ -91,6 +91,7 @@ User | 可以续订他们拥有的 Microsoft 365 组<br>可以恢复他们拥有
 > - 首次设置过期时，会将任何早于过期时间间隔的组设置为 35 天后过期，除非自动续订了这些组或所有者续订了这些组。
 > - 当删除并还原动态组时，会将视其为一个新组并根据规则重新填充。 此过程最多可能需要 24 小时。
 > - Teams 中使用的组的过期通知会显示在“Teams 所有者”源中。
+> - 为选定的组启用到期时间后，最多可以将 500 个组添加到列表中。 如果需要添加的组超过 500 个，则可以为所有组启用到期时间。 在这种情况下，500 个组的限制不适用。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

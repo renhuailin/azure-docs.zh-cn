@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578015"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551758"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -371,6 +371,12 @@ WamDefaultAuthority: organizations
    - 原因:与服务器的连接被异常终止。
    - 解决方法：过一段时间后重试，或者尝试从备用的稳定网络位置进行加入。
 
+##### <a name="other-errors"></a>其他错误数
+
+- DSREG_AUTOJOIN_ADCONFIG_READ_FAILED (0x801c001d/-2145648611)
+   - 原因：EventID 220 存在于用户设备注册事件日志中。 Windows 无法访问 Active Directory 中的计算机对象。 该事件中可能包含 Windows 错误代码。 错误代码 ERROR_NO_SUCH_LOGON_SESSION (1312) 和 ERROR_NO_SUCH_USER (1317) 对应的错误与本地 AD 中的复制问题有关。
+   - 解决方法：排查 AD 中的复制问题。 复制问题可能是暂时性的，可能会在一段时间后消失。
+
 ##### <a name="federated-join-server-errors"></a>联合加入服务器错误
 
 | 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
@@ -417,4 +423,4 @@ WamDefaultAuthority: organizations
 
 继续[使用 dsregcmd 命令排查设备问题](troubleshoot-device-dsregcmd.md)
 
-如有问题，请参阅[设备管理常见问题解答](faq.md)
+如有问题，请参阅[设备管理常见问题解答](faq.yml)
