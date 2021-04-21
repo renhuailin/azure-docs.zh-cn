@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 549ecf940c53267db6b3caa576c4c24db414337a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a550e120331a8255281d51725d2d5fc8ca1e05
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90906098"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564532"
 ---
 #### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>适用于情绪分析 v3 容器的 Docker pull
 
@@ -28,15 +28,20 @@ docker pull mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment:3
 
 | 文本分析容器 | 语言代码 |
 |--|--|
-| 英语 | `en` |
-| 西班牙语 | `es` |
-| 法语 | `fr` |
-| 意大利语 | `it` |
-| 德语 | `de` |
-| 简体中文 | `zh` |
-| 繁体中文 | `zht` |
-| 日语 | `ja` |
-| 葡萄牙语 | `pt` |
-| 荷兰语 | `nl` |
+| 简体中文    |   `zh-hans`   |
+| 繁体中文   |   `zh-hant`   |
+| 荷兰语                 |     `nl`      |
+| 英语               |     `en`      |
+| 法语                |     `fr`      |
+| 德语                |     `de`      |
+| Hindi                 |    `hi`       |
+| 意大利语               |     `it`      |
+| 日语              |     `ja`      |
+| 韩语                |     `ko`      |
+| 挪威语(博克马尔语)   |     `no`      |
+| 葡萄牙语（巴西）   |    `pt-BR`    |
+| 葡萄牙语(葡萄牙) |    `pt-PT`    |
+| 西班牙语               |     `es`      |
+| 土耳其语               |     `tr`      |
 
 有关文本分析容器可用标记的完整说明，请查阅 [Docker 中心](https://go.microsoft.com/fwlink/?linkid=2018654)。

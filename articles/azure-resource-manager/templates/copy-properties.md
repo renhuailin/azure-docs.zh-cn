@@ -3,12 +3,12 @@ title: 定义属性的多个实例
 description: 在资源上创建属性时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 94bc153a49f80694ab9b2d5b04fdf57e8a12e8c8
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385745"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479995"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM 模板中的属性迭代
 
@@ -49,7 +49,7 @@ ms.locfileid: "106385745"
   ```bicep
   <property-name>: [for <item> in <collection>: {
     <properties>
-  }
+  }]
   ```
 
 - 循环访问数组的元素
@@ -57,7 +57,7 @@ ms.locfileid: "106385745"
   ```bicep
   <property-name>: [for (<item>, <index>) in <collection>: {
     <properties>
-  }
+  }]
   ```
 
 - 使用循环索引
@@ -65,7 +65,7 @@ ms.locfileid: "106385745"
   ```bicep
   <property-name>: [for <index> in range(<start>, <stop>): {
     <properties>
-  }
+  }]
   ```
 
 ---

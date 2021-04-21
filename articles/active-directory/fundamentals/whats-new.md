@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34a6eaa653ad0d2f93db0dcd04eec0f5532a4c7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 81a909d946b55ee8b06d68aa8bee53bc50d2190e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107021"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532294"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -210,7 +210,7 @@ Microsoft Azure 政府云中的组织现在可以允许其来宾使用电子邮�
 **服务类别：** MS Graph  
 **产品功能：** B2B/B2C
 
-[适用于公司品牌的 MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties?view=graph-rest-1.0) 可用于 Azure AD 或 Microsoft 365 登录体验，允许以编程方式管理品牌参数。
+[适用于公司品牌的 MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties) 可用于 Azure AD 或 Microsoft 365 登录体验，允许以编程方式管理品牌参数。
 
 ---
 
@@ -308,7 +308,7 @@ MFA 服务器的双向短信于 2018 年开始弃用，在 2021 年 2 月 24 日
 **服务类别：** 应用预配  
 **产品功能：** 标识生命周期管理
  
-现在，客户可使用 application.readwrite.ownedby 作为调用同步 API 的应用程序权限。 请注意，这仅支持从 Azure AD 预配到第三方应用程序（例如 AWS、Data Bricks 等）。 目前不支持 HR 预配 (Workday/Successfactors) 或云同步（AD 到 Azure AD）。 [了解详细信息](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)。
+现在，客户可使用 application.readwrite.ownedby 作为调用同步 API 的应用程序权限。 请注意，这仅支持从 Azure AD 预配到第三方应用程序（例如 AWS、Data Bricks 等）。 目前不支持 HR 预配 (Workday/Successfactors) 或云同步（AD 到 Azure AD）。 [了解详细信息](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true)。
  
 ---
 
@@ -904,7 +904,7 @@ Azure Active Directory (Azure AD) 应用程序代理原生支持对使用标头�
  
 以前，可通过 /bitlocker 终结点恢复 BitLocker 密钥。 我们最终将弃用此终结点，客户应该开始使用现在位于 /informationProtection 下的 API。 
 
-请参阅 [BitLocker 恢复 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta)，获取反映这些更改的文档更新。
+请参阅 [BitLocker 恢复 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta&preserve-view=true)，获取反映这些更改的文档更新。
 
 ---
 
@@ -1072,7 +1072,7 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的根证书颁发
 
 现在可在 Azure 门户中查看每个 Azure AD 角色的模板 ID。 在 Azure AD 中，选择所选角色的“说明”。 
 
-建议客户在其 PowerShell 脚本和代码中使用角色模板 ID，而不是显示名称。 角色模板 ID 适用于 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) 对象。 有关角色模板 ID 的详细信息，请参阅 [Azure AD 内置角色](../roles/permissions-reference.md)。
+建议客户在其 PowerShell 脚本和代码中使用角色模板 ID，而不是显示名称。 角色模板 ID 适用于 [directoryRoles](/graph/api/resources/directoryrole) 和 [roleDefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta&preserve-view=true) 对象。 有关角色模板 ID 的详细信息，请参阅 [Azure AD 内置角色](../roles/permissions-reference.md)。
 
 ---
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 036a1d3f8cad4ba9cda03a9001cfec1bb7de86b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60f67ea618746c9f2b0cd65a9fbc7fb2b5fbfe86
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715031"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519997"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
 本文概述了可用于虚拟机的核心 Azure 安全功能。
@@ -100,7 +100,7 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 了解详细信息：
 
 * [什么是 Azure 备份？](../../backup/backup-overview.md)
-* [Azure 备份服务 - 常见问题解答](../../backup/backup-azure-backup-faq.md)
+* [Azure 备份服务 - 常见问题解答](../../backup/backup-azure-backup-faq.yml)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 

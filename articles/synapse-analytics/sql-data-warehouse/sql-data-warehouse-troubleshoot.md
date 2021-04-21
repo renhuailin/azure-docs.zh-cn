@@ -2,21 +2,21 @@
 title: 专用 SQL 池（以前称为 SQL DW）故障排除
 description: 对 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）进行故障排除。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/13/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 949a89dd4e84bdb44ad15eaff9ca160fdd21b395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af653585ec1b57b5fd697dc755e495a96e04e677
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602122"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565400"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>对 Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）进行故障排除
 
@@ -36,7 +36,7 @@ ms.locfileid: "104602122"
 
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio 对象资源管理器缺少 Azure AD 用户           | 这是一个已知问题。  解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。  请参阅[向 Azure Synapse 进行身份验证](sql-data-warehouse-authentication.md)，详细了解如何将 Azure Active Directory 与专用 SQL 池（以前称为 SQL DW）配合使用。 |
+| Visual Studio 对象资源管理器缺少 Azure AD 用户           | 这是已知问题。  解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中查看这些用户。  请参阅[向 Azure Synapse 进行身份验证](sql-data-warehouse-authentication.md)，详细了解如何将 Azure Active Directory 与专用 SQL 池（以前称为 SQL DW）配合使用。 |
 | 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、未响应或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure Synapse Analytics 版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
 | 在 SSMS 中生成脚本失败                               | 如果将“为依赖对象生成脚本”选项设置为“True”，则为专用 SQL 池（以前称为 SQL DW）生成脚本会失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f1a23170d84e39e5d531ae4e3a64b59d29bd677
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034959"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538839"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>监视 Azure Monitor 中 Log Analytics 工作区的运行状况
 若要维持 Azure Monitor 中 Log Analytics 工作区的性能和可用性，你需要能够主动检测出现的任何问题。 本文介绍如何使用[操作](/azure/azure-monitor/reference/tables/operation)表中的数据监视 Log Analytics 工作区的运行状况。 此表存在于每个 Log Analytics 工作区中，并且包含工作区中发生的错误和警告。 你应定期查看这些数据，并创建警报，以便在工作区中发生任何重要事件时主动收到通知。
@@ -110,7 +110,7 @@ _LogOperation 函数返回下表中的列。
 - 目标：选择你的 Log Analytics 工作区
 - 条件：
   - 信号名称：自定义日志搜索
-  - 搜索查询：`_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - 搜索查询：`_LogOperation | where Category == "Ingestion" | where Operation == "Data collection Status" | where Level == "Warning"`
   - 依据：结果数
   - 条件：大于
   - 阈值：0

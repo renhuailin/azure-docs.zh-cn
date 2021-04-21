@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500540"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535998"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>有关在 Azure 门户中预配日志的概述（预览版）
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 按照下一部分所述从 Azure 门户访问日志。
 - 将预配日志流式传输到 [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md)。 此方法可以延长数据保留期，并可生成自定义仪表板、警报和查询。
-- 查询 [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 以获取预配日志。
+- 查询 [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary) 以获取预配日志。
 - 将预配日志下载为 CSV 或 JSON 文件。
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>从 Azure 门户访问日志
@@ -251,7 +251,7 @@ CSV 下载内容包含三个文件：
 |InsufficientRights、MethodNotAllowed、NotPermitted、Unauthorized| Azure AD 已对目标应用程序进行身份验证，但无权执行更新。 查看目标应用程序提供的任何说明，以及相关的应用程序[教程](../saas-apps/tutorial-list.md)。|
 |UnprocessableEntity|目标应用程序返回了意外的响应。 目标应用程序的配置可能不正确，或者目标应用程序出现的服务问题可能阻止了此操作正常进行。|
 |WebExceptionProtocolError |连接到目标应用程序时发生 HTTP 协议错误。 无需采取任何措施。 此项尝试将在 40 分钟后自动撤消。|
-|InvalidAnchor|预配服务以前创建或匹配的用户不再存在。 确保该用户存在。 若要强制对所有用户进行新的匹配，请使用 Microsoft Graph API [重启作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 <br><br>重启预配将触发初始周期，这可能需要一段时间才能完成。 重启预配还会删除运行预配服务所用的缓存。 这意味着，必须再次评估租户中的所有用户和组，并可能会删除某些预配事件。|
+|InvalidAnchor|预配服务以前创建或匹配的用户不再存在。 确保该用户存在。 若要强制对所有用户进行新的匹配，请使用 Microsoft Graph API [重启作业](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 <br><br>重启预配将触发初始周期，这可能需要一段时间才能完成。 重启预配还会删除运行预配服务所用的缓存。 这意味着，必须再次评估租户中的所有用户和组，并可能会删除某些预配事件。|
 |NotImplemented | 目标应用返回了意外的响应。 应用配置可能不正确，或者目标应用出现的服务问题可能阻止了此操作正常进行。 查看目标应用程序提供的任何说明，以及相关的应用程序[教程](../saas-apps/tutorial-list.md)。 |
 |MandatoryFieldsMissing、MissingValues |由于缺少必需的值，无法创建用户。 更正源记录中缺少的特性值，或者检查匹配特性配置，确保未省略必填字段。 [详细了解](../app-provisioning/customize-application-attributes.md)如何配置匹配特性。|
 |SchemaAttributeNotFound |由于指定的特性在目标应用程序中不存在，无法执行该操作。 请参阅有关特性自定义的[文档](../app-provisioning/customize-application-attributes.md)，并确保配置正确。|
@@ -269,4 +269,4 @@ CSV 下载内容包含三个文件：
 
 * [检查用户预配状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [为 Azure AD 库应用程序配置用户预配时遇到的问题](../app-provisioning/application-provisioning-config-problem.md)
-* [适用于预配日志的图形 API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [适用于预配日志的图形 API](/graph/api/resources/provisioningobjectsummary)

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: e14e214a220d9dade4fac028620d23c563d86a8f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 654d47102685c04d6440d7c155e4d6eb931abcae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554070"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788108"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -79,7 +79,7 @@ ms.locfileid: "106554070"
 
 ## <a name="create-a-linux-virtual-machine"></a>创建 Linux 虚拟机
 
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，然后使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。这两项操作都是使用支持的发行版在支持的区域进行。 以下示例将使用 *Ubuntu 16.04 LTS* 的名为 *myVM* 的 VM 部署到 *southcentralus* 区域的名为 *myResourceGroup* 的资源组中。 在以下示例中，可以根据需要提供自己的资源组和 VM 名称。
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，然后使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。这两项操作都是使用支持的发行版在支持的区域进行。 以下示例将使用 *Ubuntu 16.04 LTS* 的名为 *myVM* 的 VM 部署到 *southcentralus* 区域的名为 *myResourceGroup* 的资源组中。 在以下示例中，可以根据需要提供自己的资源组和 VM 名称。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location southcentralus
@@ -99,7 +99,7 @@ az vm create \
 > [!NOTE]
 > 如果将此扩展部署到以前创建的 VM，请确保至少为该计算机分配了 1GB 内存，否则无法安装该扩展
 
-若要使用 Azure AD 凭据登录到 Linux VM，请安装 Azure Active Directory 登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
+若要使用 Azure AD 凭据登录到 Linux VM，请安装 Azure Active Directory 登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
 
 ```azurecli-interactive
 az vm extension set \
@@ -121,7 +121,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 策略决定了谁能登录到 VM
 > [!NOTE]
 > 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 “虚拟机管理员登录”和“虚拟机用户登录”角色使用 dataActions，因此无法在管理组范围内进行分配。 目前只能在订阅、资源组或资源范围中分配这些角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。 
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置范围，这种情况下会应用正常的 Azure RBAC 继承权限。 有关详细信息，请参阅 [Azure RBAC](../../role-based-access-control/overview.md)。
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az_account_show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az_vm_show) 创建的 VM。 也可在资源组或订阅级别设置范围，这种情况下会应用正常的 Azure RBAC 继承权限。 有关详细信息，请参阅 [Azure RBAC](../../role-based-access-control/overview.md)。
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -134,7 +134,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> 如果 AAD 域和登录用户名域不匹配，则必须使用 *--assignee-object-id* 指定用户帐户的对象 ID，而不是仅指定 *--assignee* 的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
+> 如果 AAD 域和登录用户名域不匹配，则必须使用 *--assignee-object-id* 指定用户帐户的对象 ID，而不是仅指定 *--assignee* 的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az_ad_user_list) 获取用户帐户的对象 ID。
 
 有关如何使用 Azure RBAC 来管理对 Azure 订阅资源的访问权限的详细信息，请参阅 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 门户](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) 的用法指南。
 
@@ -147,7 +147,7 @@ az role assignment create \
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>登录到 Linux 虚拟机
 
-首先，使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
+首先，使用 [az vm show](/cli/azure/vm#az_vm_show) 查看 VM 的 公共 IP 地址：
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

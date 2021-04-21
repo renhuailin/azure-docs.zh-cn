@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980064"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532153"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看、添加和删除访问包的分配
 
@@ -58,7 +58,7 @@ ms.locfileid: "90980064"
 
 ### <a name="viewing-assignments-programmatically"></a>以编程方式查看分配
 
-你也可以使用 Microsoft Graph 在访问包中检索分配。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[列出 accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
+你也可以使用 Microsoft Graph 在访问包中检索分配。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[列出 accessPackageAssignments](/graph/api/accesspackageassignment-list?view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="directly-assign-a-user"></a>直接分配用户
 
@@ -90,7 +90,7 @@ ms.locfileid: "90980064"
 
 ### <a name="directly-assigning-users-programmatically"></a>以编程方式直接分配用户
 
-你也可以使用 Microsoft Graph 直接将用户分配到访问包。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
+你也可以使用 Microsoft Graph 直接将用户分配到访问包。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageAssignmentRequest](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta&preserve-view=true)。
 
 ## <a name="remove-an-assignment"></a>删除分配
 
