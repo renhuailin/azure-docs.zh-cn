@@ -10,12 +10,12 @@ keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.topic: quickstart
 ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26e3b264b7268f7a9ffdb592beef7d76844646f5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868165"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789134"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -36,7 +36,7 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录
 
-安装 [Azure CLI](/cli/azure/install-azure-cli)。 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
+安装 [Azure CLI](/cli/azure/install-azure-cli)。 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az_login) 命令：
 
 ```azurecli-interactive
 az login
@@ -50,7 +50,7 @@ az login
 
 ### <a name="choose-your-resource-group-location"></a>选择资源组位置
 
-若要创建资源，需要为订阅提供一个可用的 Azure 位置。 可以使用 [az account list-locations](/cli/azure/account#az-account-list-locations) 命令检索可用位置的列表。 可以从多个位置访问大部分认知服务。 选择离你最近的位置，或查看哪些位置可供服务使用。
+若要创建资源，需要为订阅提供一个可用的 Azure 位置。 可以使用 [az account list-locations](/cli/azure/account#az_account_list_locations) 命令检索可用位置的列表。 可以从多个位置访问大部分认知服务。 选择离你最近的位置，或查看哪些位置可供服务使用。
 
 > [!IMPORTANT]
 > * 请记住选择的 Azure 位置，因为在调用 Azure 认知服务时需要用到。
@@ -62,7 +62,7 @@ az account list-locations \
     --out table
 ```
 
-选择 Azure 位置后，在 Azure CLI 中使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组。
+选择 Azure 位置后，在 Azure CLI 中使用 [az group create](/cli/azure/group#az_group_create) 命令创建新的资源组。
 
 在以下示例中，请将 Azure 位置 `westus2` 替换为你的订阅可用的某个 Azure 位置。
 
@@ -124,7 +124,7 @@ az group create \
 | 内容审查器 | `ContentModerator` |
 | 个性化体验创建服务      | `Personalizer`     |
 
-可以使用 [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-kinds) 命令查找可用认知服务“种类”的列表：
+可以使用 [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_kinds) 命令查找可用认知服务“种类”的列表：
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -132,7 +132,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>将新资源添加到资源组
 
-若要创建并订阅新的认知服务资源，请使用 [az cognitiveservices account create](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create) 命令。 此命令会将新的可计费资源添加到前面创建的资源组。 创建新资源时，需要知道你要使用哪种服务，及其定价层（或 SKU）和 Azure 位置：
+若要创建并订阅新的认知服务资源，请使用 [az cognitiveservices account create](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_create) 命令。 此命令会将新的可计费资源添加到前面创建的资源组。 创建新资源时，需要知道你要使用哪种服务，及其定价层（或 SKU）和 Azure 位置：
 
 可以使用以下命令为异常检测器创建名为 `anomaly-detector-resource` 的 F0（免费）资源。
 
@@ -150,13 +150,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>获取资源的密钥
 
-若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](/cli/azure/reference-index#az-login) 命令。
+若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](/cli/azure/reference-index#az_login) 命令。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-list) 命令获取认知服务资源的密钥。
+使用 [az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys#az_cognitiveservices_account_keys_list) 命令获取认知服务资源的密钥。
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -175,7 +175,7 @@ az login
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用情况
 
-使用 [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-usage) 命令获取认知服务资源的使用情况。
+使用 [az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_usage) 命令获取认知服务资源的使用情况。
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

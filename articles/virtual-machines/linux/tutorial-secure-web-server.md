@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97eee5d852450df2341d57932052839825523933
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549577"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769744"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Linux 虚拟机上的 Web 服务器
 若要保护 Web 服务器，可以使用传输层安全 (TLS)（以前称为安全套接字层 (SSL)）证书来加密 Web 流量。 这些 TLS/SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Linux 虚拟机 (VM)。 本教程介绍如何执行下列操作：
@@ -70,7 +70,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>准备用于 VM 的证书
-若要在 VM 创建过程中使用该证书，请使用 [az keyvault secret list-versions](/cli/azure/keyvault/secret) 获取证书的 ID。 使用 [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format) 转换该证书。 以下示例将这些命令的输出分配给变量，以便在后续步骤中使用：
+若要在 VM 创建过程中使用该证书，请使用 [az keyvault secret list-versions](/cli/azure/keyvault/secret) 获取证书的 ID。 使用 [az vm secret format](/cli/azure/vm/secret#az_vm_secret_format) 转换该证书。 以下示例将这些命令的输出分配给变量，以便在后续步骤中使用：
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -147,7 +147,7 @@ az vm open-port \
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Azure Key Vault 中存储的 TLS/SSL 证书保护 NGINX Web 服务器。 你已了解如何执行以下操作：
+本教程已介绍如何使用 Azure Key Vault 中存储的 TLS/SSL 证书保护 NGINX Web 服务器。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Azure Key Vault

@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102244553"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766509"
 ---
 在以下部分中，你将设置终端并使用 Azure CLI 来创建 IoT 中心。 若要配置运行 Azure CLI 命令的终端，可以使用基于浏览器的 Azure Cloud Shell，也可以使用本地终端。
 * 若要使用 Cloud Shell，请转到下一部分：[启动 Cloud Shell](#launch-the-cloud-shell)。 
@@ -65,7 +65,7 @@ ms.locfileid: "102244553"
 > [!IMPORTANT]
 > 此快速入门的其余部分中的终端命令在 Cloud Shell 和本地终端中的工作方式相同。 若要运行命令，请选择“复制”以复制本快速入门中的代码块。 然后将它粘贴到 CLI shell 中，然后运行它。
 
-运行 [az extension add](/cli/azure/extension#az-extension-add) 命令。 
+运行 [az extension add](/cli/azure/extension#az_extension_add) 命令。 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ ms.locfileid: "102244553"
 
 创建 IoT 中心和资源组：
 
-1. 运行 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
+1. 运行 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 以下命令在“eastus”  位置创建名为“MyResourceGroup”的资源组  。 
     >[!NOTE]
     > 可以选择设置备用位置。 若要查看可用位置，请运行 `az account list-locations`。 本教程使用示例命令中所示的 eastus。 
 
@@ -85,7 +85,7 @@ ms.locfileid: "102244553"
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. 运行 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令创建 IoT 中心。 创建 IoT 中心可能需要数分钟的时间。 
+1. 运行 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 IoT 中心。 创建 IoT 中心可能需要数分钟的时间。 
 
     *YourIotHubName*。 使用你为 IoT 中心选择的名称，在以下命令中替换此占位符和周围的大括号。 IoT 中心名称必须在 Azure 中全局唯一。 无论你在何处看到占位符，都请使用本快速入门的其余部分中的 IoT 中心名称。
 

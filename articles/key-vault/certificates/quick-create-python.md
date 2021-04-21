@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b8f36d7490e24247f1f8482c9dece86b68015d73
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376097"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792014"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 证书客户端库
 
@@ -183,7 +183,7 @@ certificate = poller.result()
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-还可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) 来验证是否设置了证书。
+还可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) 来验证是否设置了证书。
 
 ### <a name="delete-a-certificate"></a>删除证书
 
@@ -196,7 +196,7 @@ deleted_certificate = poller.result()
 
 `begin_delete_certificate` 方法是异步方法，将返回一个轮询器对象。 调用轮询器的 `result` 方法等待其完成。
 
-可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) 来验证是否已删除证书。
+可以使用 Azure CLI 命令 [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) 来验证是否已删除证书。
 
 证书删除后，会在一段时间内保持已删除但可恢复状态。 如果再次运行该代码，请使用其他证书名称。
 
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 密钥保管库概述](../general/overview.md)
-- [保护对密钥保管库的访问](../general/secure-your-key-vault.md)
+- [保护对密钥保管库的访问](../general/security-overview.md)
 - [Azure Key Vault 开发人员指南](../general/developers-guide.md)
 - [Key Vault 安全性概述](../general/security-overview.md)
 - [使用 Key Vault 进行身份验证](../general/authentication.md)

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ee9f0253f2ec27b4afbbb6c5dc1ff3f5c129fe8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c46ac350c1bf7f7593f334a9a7fa5df1af7b19d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841795"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787316"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>创建使用 SignalR 服务和 GitHub 身份验证的 Web 应用
 
@@ -107,14 +107,14 @@ az webapp deployment source config-local-git --name $myWebAppName --resource-gro
 
 | 命令 | 说明 |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
-| [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | 使用应用服务托管计划创建 Azure Web 应用。 |
-| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 为 Web 应用添加新的应用设置。 这些应用设置用于存储 SignalR 连接字符串和 GitHub OAuth 应用密钥。 |
-| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | 更新部署凭据。 |
-| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | 获取 git 存储库终结点的 URL 用于为 web 应用部署克隆和推送。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az signalr create](/cli/azure/signalr#az_signalr_create) | 创建 Azure SignalR 服务资源。 |
+| [az signalr key list](/cli/azure/signalr/key#az_signalr_key_list) | 列出密钥，使用 SignalR 推送实时内容更新时，应用程序将使用这些密钥。 |
+| [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建用于托管 Web 应用的 Azure 应用服务计划。 |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | 使用应用服务托管计划创建 Azure Web 应用。 |
+| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | 为 Web 应用添加新的应用设置。 这些应用设置用于存储 SignalR 连接字符串和 GitHub OAuth 应用密钥。 |
+| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) | 更新部署凭据。 |
+| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | 获取 git 存储库终结点的 URL 用于为 web 应用部署克隆和推送。 |
 
 ## <a name="next-steps"></a>后续步骤
 

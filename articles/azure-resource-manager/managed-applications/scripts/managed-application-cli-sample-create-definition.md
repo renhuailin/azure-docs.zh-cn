@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7feb00b581732cdc1956c4ac23af571180ff09e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2430b14ce3a3ba578787cefa85d95475c3e9b920
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497828"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775450"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>使用 Azure CLI 创建托管应用程序定义
 
@@ -34,7 +34,7 @@ ms.locfileid: "87497828"
 
 | 命令 | 说明 |
 |---|---|
-| [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | 创建托管应用程序定义。 提供包含所需文件的包。 |
+| [az managedapp definition create](/cli/azure/managedapp/definition#az_managedapp_definition_create) | 创建托管应用程序定义。 提供包含所需文件的包。 |
 
 
 ## <a name="next-steps"></a>后续步骤

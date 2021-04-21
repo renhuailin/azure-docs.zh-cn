@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493610"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787155"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>使用 CLI 监视和缩放 Azure SQL 数据库中的单一数据库
 
@@ -43,7 +43,7 @@ az account set -s $subscription # ...or use 'az login'
 [!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> 使用 [az sql db op list](/cli/azure/sql/db/op?#az-sql-db-op-list) 获取对数据库执行的操作列表，并使用 [az sql db op cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) 取消对数据库的更新操作。
+> 使用 [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) 获取对数据库执行的操作列表，并使用 [az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) 取消对数据库的更新操作。
 
 ### <a name="clean-up-deployment"></a>清理部署
 
@@ -60,7 +60,7 @@ az group delete --name $resource
 | Script | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | 服务器命令。 |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | 显示数据库的大小使用情况信息。 |
+| [az sql db show-usage](/cli/azure/sql#az_sql_show_usage) | 显示数据库的大小使用情况信息。 |
 
 ## <a name="next-steps"></a>后续步骤
 

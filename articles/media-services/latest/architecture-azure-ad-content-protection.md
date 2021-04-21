@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 16e45d8d64bbe30c6fde88f7226db807f1a325d7
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9c81a9b48ff9fa305385c45266d88deb4047f70f
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276920"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599462"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教程：使用 Azure AD 进行端到端内容保护
 
@@ -342,7 +342,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-组声明是 Azure AD 中的[受限声明集](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets)的成员。
+组声明是 Azure AD 中的[受限声明集](../../active-directory/develop/reference-claims-mapping-policy-type.md#claim-sets)的成员。
 
 #### <a name="test"></a>测试
 

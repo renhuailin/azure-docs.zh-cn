@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565565"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792428"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -26,7 +26,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>启用加密功能
 
-若要加密规模集中的 VM 实例，请先使用 [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) 获取有关 Key Vault 资源 ID 的信息。 然后，通过 [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) 使用这些变量启动加密过程：
+若要加密规模集中的 VM 实例，请先使用 [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) 获取有关 Key Vault 资源 ID 的信息。 然后，通过 [az vmss encryption enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable) 使用这些变量启动加密过程：
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 启动加密过程可能需要一到两分钟时间。
 
-因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 在 VM 实例上启动加密策略。
+因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances) 在 VM 实例上启动加密策略。
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 包装密钥以实现加密
 
@@ -131,7 +131,7 @@ https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ## <a name="check-encryption-progress"></a>查看加密进度
 
-若要检查磁盘加密状态，请使用 [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show)：
+若要检查磁盘加密状态，请使用 [az vmss encryption show](/cli/azure/vmss/encryption#az_vmss_encryption_show)：
 
 ```azurecli-interactive
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
@@ -166,7 +166,7 @@ az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="disable-encryption"></a>禁用加密功能
 
-如果不再想要使用加密的 VM 实例磁盘，可以使用 [az vmss encryption disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) 禁用加密，如下所示：
+如果不再想要使用加密的 VM 实例磁盘，可以使用 [az vmss encryption disable](/cli/azure/vmss/encryption#az_vmss_encryption_disable) 禁用加密，如下所示：
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
