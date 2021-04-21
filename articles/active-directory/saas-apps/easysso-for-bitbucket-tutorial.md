@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 6fdc9c70d1c9fc67c38edfd794354f9e03321c73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56f2eea9dc485c69b6070fda6e9519887f7b30cb
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731396"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EasySSO for BitBucket 的集成
 
@@ -50,7 +50,6 @@ ms.locfileid: "98731396"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中键入“EasySSO for BitBucket”。
 1. 从结果中选择“EasySSO for BitBucket”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bitbucket"></a>配置并测试 EasySSO for BitBucket 的 Azure AD SSO
 
@@ -129,9 +128,7 @@ ms.locfileid: "98731396"
 1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序”。 
 1. 在应用程序列表中，选择“EasySSO for BitBucket”。
 1. 在应用的概述页中找到“管理”部分，然后选择“用户和组”   。
-
 1. 选择“添加用户”。 在“添加分配”对话框中选择“用户和组”。
-
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后选择屏幕底部的“选择”   。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中选择“分配”。

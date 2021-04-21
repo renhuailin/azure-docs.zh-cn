@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: dc17ab55cb473036d8c40bd1e533bcc20c4c6259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92742262"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773812"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>使用 Azure CLI 创建单一数据库并配置防火墙规则
 
@@ -50,9 +50,9 @@ az group delete --name $resource
 
 | 命令 | 说明 |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | 服务器命令 |
-| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 服务器防火墙命令。 |
-| [az sql db](/cli/azure/sql/db#az-sql-db-create) | 数据库命令。 |
+| [az sql server](/cli/azure/sql/server#az_sql_server_create) | 服务器命令 |
+| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | 服务器防火墙命令。 |
+| [az sql db](/cli/azure/sql/db#az_sql_db_create) | 数据库命令。 |
 
 ## <a name="next-steps"></a>后续步骤
 
