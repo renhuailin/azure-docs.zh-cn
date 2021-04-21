@@ -8,18 +8,21 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397886"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221698"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 TLS 策略版本和密码套件
 
 了解如何在应用程序网关上配置 TLS/SSL 策略版本和密码套件。 预定义策略列表中包含各种配置的 TLS 策略版本和启用的密码套件，你可以从中进行选择。 此外，还可以根据你自己的需求定义[自定义 TLS 策略](#configure-a-custom-tls-policy)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> 我们建议使用 TLS 1.2 作为最低 TLS 协议版本，以提高应用程序网关的安全性。 
 
 ## <a name="get-available-tls-options"></a>获取可用的 TLS 选项
 
@@ -217,4 +220,6 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问[应用程序网关重定向概述](./redirect-overview.md)，了解如何将 HTTP 流量重定向至 HTTPS 终结点。
+请访问[应用程序网关重定向概述](./redirect-overview.md)，了解如何将 HTTP 流量重定向至 HTTPS 终结点。 
+
+在[通过门户设置特定于侦听器的 SSL 策略](./application-gateway-configure-listener-specific-ssl-policy.md)中查看如何设置特定于侦听器的 SSL 策略。

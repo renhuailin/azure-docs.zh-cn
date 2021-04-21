@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a22700782c584015add2c83ecc96ccc610b8509
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519106"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219614"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
@@ -60,22 +60,7 @@ az login
 
 ## <a name="install-the-extension"></a>安装扩展
 
-若要安装机器学习 CLI 扩展，请使用以下命令：
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> 可以在[此处](https://aka.ms/azml-deploy-cloud)找到可与以下命令配合使用的示例文件。
-
-出现提示时，选择 `y` 安装该扩展。
-
-若要验证是否已安装该扩展，请使用以下命令显示特定于机器学习的子命令列表：
-
-```azurecli-interactive
-az ml -h
-```
+首次尝试使用以 `az ml` 开头的命令时，会自动安装扩展。
 
 ## <a name="update-the-extension"></a>更新扩展
 
@@ -84,7 +69,6 @@ az ml -h
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>删除扩展
 

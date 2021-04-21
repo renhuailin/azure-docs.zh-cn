@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178824"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223262"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
@@ -43,7 +43,8 @@ ms.locfileid: "102178824"
 * 系统池 osType 必须为 Linux。
 * 用户节点池 osType 可以是 Linux 或 Windows。
 * 系统池必须至少包含一个节点，而用户节点池则可能包含零个或零个以上的节点。
-* 系统节点池需要一个至少具有 2 个 vCPU 和 4GB 内存的 VM SKU。
+* 系统节点池需要一个至少具有 2 个 vCPU 和 4GB 内存的 VM SKU。 但是，不建议使用可突增 VM（B 系列）。
+* 建议至少使用两个节点，即 4 个 vCPU（例如 Standard_DS4_v2），特别是对于大型群集（多个 CoreDNS Pod 副本、3-4 个以上附加项，等等）。
 * 系统节点池必须支持至少 30 个 Pod，如 [Pod 的最小值和最大值公式][maximum-pods]中所述。
 * 现成节点池需要用户节点池。
 * 添加其他系统节点池或更改哪个节点池为系统节点池不会自动移动系统 Pod。 即使将系统 Pod 更改为用户节点池，该系统 Pod 也可以继续在同一节点池上运行。 如果删除或纵向缩减运行系统 Pod 的节点池（以前是系统节点池），则这些系统 Pod 将通过优先调度重新部署到新的系统节点池。

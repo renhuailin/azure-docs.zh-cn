@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: aebbe7ab736b8a7b73900f1d552d723b8a609de6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103493656"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222752"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -185,6 +185,14 @@ az aks get-versions --location eastus --output table
 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再从 1.13.x 升级到 1.14.x。
 
 仅当从不受支持的版本升级回受支持的版本时，才可以跳过多个版本。 例如，可以完成从不受支持的 1.10.x 升级到受支持的 1.15.x 。
+
+是否可以在 30 天的支持期内创建一个新的 1.xx.x 群集？
+
+不是。 版本弃用/删除后，将无法使用该版本创建群集。 随着更改版的推出，你将开始看到旧版本从版本列表中删除。 从公告开始，此过程可能需要长达两周的时间，按区域逐步进行。
+
+我使用的是刚弃用的版本，是否仍然可以添加新的节点池？或者必须升级？
+
+不是。 系统不允许你将已弃用版本的节点池添加到群集中。 你可以添加新版本的节点池。 但是，这可能需要先更新控制平面。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,12 +4,12 @@ description: 当 Azure 存储容器包含 Azure HDInsight 中的许多文件时�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: c26baec66248ca00ef212acf3d773c2566b3aea9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946358"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219087"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>当 Azure 存储容器包含 Azure HDInsight 中的许多文件时，Apache Spark 作业运行速度缓慢
 
@@ -28,6 +28,8 @@ ms.locfileid: "98946358"
 在 Spark 2.1 中，尽管不需要在每次写入后更新缓存，但 Spark 会检查现有分区列是否与当前写入请求中的建议分区列匹配，因此它也会在每次写入时导致发生列出操作。
 
 在 Spark 2.2 中，使用追加模式写入数据时，此性能问题应可解决。
+
+在 Spark 2.3 中，其行为应与 Spark 2.2 相同。
 
 ## <a name="resolution"></a>解决方法
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d629e65106145a4af364cd9dd489250c8910c25d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210625"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778564"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本文需要 Azure CLI 2.0.32 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以登录到 Azure。
 
-使用 [az network list-usages](/cli/azure/network#az-network-list-usages) 根据限制查看使用情况。 以下示例获取“美国东部”位置的资源使用情况：
+使用 [az network list-usages](/cli/azure/network#az_network_list_usages) 根据限制查看使用情况。 以下示例获取“美国东部”位置的资源使用情况：
 
 ```azurecli-interactive
 az network list-usages \

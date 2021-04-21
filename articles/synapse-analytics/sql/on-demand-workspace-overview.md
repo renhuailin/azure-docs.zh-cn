@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0abef835e406b442239cecd81fed5751f1c9a92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667497"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378153"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的无服务器 SQL 池 
 
@@ -54,7 +54,7 @@ ms.locfileid: "101667497"
 
 ## <a name="client-tools"></a>客户端工具
 
-使用无服务器 SQL 池，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，任何能够建立 TDS 连接 SQL 产品/服务的工具都可以[连接和查询 Synapse SQL 按需版本](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
+使用无服务器 SQL 池，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，因此任何能够与 SQL 产品/服务建立 TDS 连接的工具都可[连接和查询 Synapse SQL](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
 
 ## <a name="t-sql-support"></a>T-SQL 支持
 

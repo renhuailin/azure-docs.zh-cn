@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: daf4ad39f0379f7e903c40b9d5073ab87f455bab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582062"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218764"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>部署已启用受信任启动的 VM（预览版）
 
@@ -32,27 +32,30 @@ ms.locfileid: "104582062"
 创建已启用受信任启动的虚拟机。
 
 1. 登录 Azure [门户](https://aka.ms/TL_preview)。
-1. 搜索“虚拟机”。
-1. 在“服务”下，选择“虚拟机” 。
-1. 在“虚拟机”页中选择“添加”，然后选择“虚拟机”。 
-1. 在“项目详细信息”下，确保选择了正确的订阅。
-1. 在“资源组”下选择“新建”并键入资源组的名称，或者从下拉列表中选择现有的资源组。
-1. 在“实例详细信息”下，键入一个名称作为虚拟机名称，并选择一个支持[受信任启动](trusted-launch.md#public-preview-limitations)的区域。
-1. 在“映像”下，选择一个[支持受信任启动的映像](trusted-launch.md#public-preview-limitations)。 你可能只能看到映像的第 1 代版本，这没问题，请继续执行下一步。
-1. 通过在页面顶部选择“高级”选项卡，切换到“高级”选项卡。
-1. 向下滚动到“VM 代系”部分，然后选择“第 2 代”。
-1. 仍在“高级”选项卡上时，向下滚动到“受信任启动”，然后选中“受信任启动”复选框。   这样会显示另外两个选项 -“安全启动”和“vTPM”。 选择适合你的部署的选项。
+   > [!NOTE] 
+   > 门户链接对于受信任启动预览版是独一无二的。
+   >  
+2. 搜索“虚拟机”。
+3. 在“服务”下，选择“虚拟机” 。
+4. 在“虚拟机”页中选择“添加”，然后选择“虚拟机”。 
+5. 在“项目详细信息”下，确保选择了正确的订阅。
+6. 在“资源组”下选择“新建”并键入资源组的名称，或者从下拉列表中选择现有的资源组。
+7. 在“实例详细信息”下，键入一个名称作为虚拟机名称，并选择一个支持[受信任启动](trusted-launch.md#public-preview-limitations)的区域。
+8. 在“映像”下，选择一个[支持受信任启动的映像](trusted-launch.md#public-preview-limitations)。 你可能只能看到映像的第 1 代版本，这没问题，请继续执行下一步。
+9. 通过在页面顶部选择“高级”选项卡，切换到“高级”选项卡。
+10. 向下滚动到“VM 代系”部分，然后选择“第 2 代”。
+11. 仍在“高级”选项卡上时，向下滚动到“受信任启动”，然后选中“受信任启动”复选框。   这样会显示另外两个选项 -“安全启动”和“vTPM”。 选择适合你的部署的选项。
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="屏幕截图，显示受信任启动的选项。":::
 
-1. 返回到“基本信息”选项卡，在“映像”下确保看到以下消息：“此映像支持受信任启动预览版。请在‘高级’选项卡中进行配置”。现在，第 2 代映像应处于选中状态。
+12. 返回到“基本信息”选项卡，在“映像”下确保看到以下消息：“此映像支持受信任启动预览版。请在‘高级’选项卡中进行配置”。现在，第 2 代映像应处于选中状态。
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="屏幕截图，其中显示的消息确认这是支持受信任启动的第 2 代映像。":::
 
-1.  选择支持受信任启动的 VM 大小。 请查看[受支持的大小](trusted-launch.md#public-preview-limitations)的列表。
-1.  填写“管理员帐户”信息，然后填写“入站端口规则”。
-1.  在页面底部，选择“查看 + 创建”
-1.  在“创建虚拟机”页上，可以查看要部署的 VM 的详细信息。 准备好以后，选择“创建”。
+13. 选择支持受信任启动的 VM 大小。 请查看[受支持的大小](trusted-launch.md#public-preview-limitations)的列表。
+14. 填写“管理员帐户”信息，然后填写“入站端口规则”。
+15. 在页面底部，选择“查看 + 创建”
+16. 在“创建虚拟机”页上，可以查看要部署的 VM 的详细信息。 准备好以后，选择“创建”。
 
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="“验证”页的屏幕截图，显示已包含了受信任启动选项。":::
 
@@ -64,10 +67,10 @@ ms.locfileid: "104582062"
 可以使用快速启动模板部署受信任启动 VM：
 
 Linux：    
-[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**：    
-[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>查看和更新
 

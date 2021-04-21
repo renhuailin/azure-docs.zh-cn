@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518715"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220702"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
-了解如何直接在 Azure 机器学习工作室的工作区中运行 Jupyter Notebook。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
+了解如何直接在 Azure 机器学习工作室的工作区中运行 Jupyter 笔记本。 用户不但可以在工作区中启动 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，还可以直接编辑和运行笔记本。
 
 有关如何创建和管理文件（包括笔记本）的信息，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
+
+> [!IMPORTANT]
+> 标记为“（预览版）”的功能在提供时不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +34,7 @@ ms.locfileid: "102518715"
 
 ## <a name="edit-a-notebook"></a>编辑笔记本
 
-若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。  如果此部分中没有任何笔记本，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
+若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。  如果本部分中没有任何笔记本，请参阅[在工作区中创建和管理文件](how-to-manage-files.md)。
 
 你可以在不连接到计算实例的情况下编辑笔记本。  要运行笔记本中的单元格时，请选择或创建一个计算实例。  如果选择一个已停止的计算实例，则在你运行第一个单元时，该计算实例会自动启动。
 
@@ -43,22 +46,35 @@ ms.locfileid: "102518715"
 
 使用焦点模式展开当前视图，以便将焦点放在活动的选项卡上。 焦点模式将隐藏笔记本文件资源管理器。
 
-1. 在终端窗口工具栏中，选择“焦点模式”以打开焦点模式。 根据窗口宽度的不同，它可能位于工具栏的“…”菜单项下。
+1. 在终端窗口工具栏中，选择“焦点模式”以打开焦点模式。 根据窗口宽度的不同，该工具可能位于工具栏中的“…”菜单项下。
 1. 在焦点模式下，通过选择“标准视图”返回到标准视图。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="切换焦点模式/标准视图":::
 
-## <a name="use-intellisense"></a>使用 IntelliSense
+## <a name="code-completion-intellisense"></a>代码完成 (IntelliSense)
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 这些功能可帮助你详细了解所使用的代码、跟踪正在键入的参数，只需几次击键即可添加对属性和方法的调用。  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 只需按几下按键，就能：
+* 详细了解所用的代码
+* 跟踪正在键入的参数
+* 添加对属性和方法的调用 
 
-键入代码时，请使用“Ctrl+空格键”来触发 IntelliSense。
+### <a name="insert-code-snippets-preview"></a>插入代码片段（预览版）
+
+按 Ctrl+空格键触发 IntelliSense 代码片段。  滚动浏览建议或开始键入，以查找要插入的代码。  插入代码后，按 Tab 键切换参数，以自定义供自己使用的代码。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="插入代码片段":::
+
+在 VS Code 中打开笔记本时，将会提供这些相同的代码片段。 有关可用代码片段的完整列表，请参阅 [Azure 机器学习 VS Code 代码片段](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md)。
+
+可以使用笔记本工具栏打开代码片段面板，来浏览和搜索代码片段列表。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="在笔记本工具栏中打开代码片段面板工具":::
+
+在代码片段面板中，还可以提交添加新代码片段的请求。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="在代码片段面板中可以建议新的代码片段":::
 
 ## <a name="clean-your-notebook-preview"></a>清理笔记本（预览版）
-
-> [!IMPORTANT]
-> 收集功能目前为公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在创建笔记本的过程中，通常最终会得到用于数据浏览或调试的单元格。 “收集”功能会帮助你生成一个没有这些无关单元格的纯净笔记本。
 
@@ -84,7 +100,7 @@ ms.locfileid: "102518715"
 
 ## <a name="export-a-notebook"></a>导出笔记本
 
-在笔记本工具栏中，选择菜单，然后单击“导出为”，将笔记本导出为支持的任何类型：
+在笔记本工具栏中选择菜单，然后选择“导出为”，以任一受支持类型导出笔记本：
 
 * 笔记本
 * Python
@@ -101,13 +117,13 @@ ms.locfileid: "102518715"
 
 * 如果没有计算实例，请使用以下步骤创建一个计算实例：
 
-    1. 在笔记本或脚本工具栏中，在“计算”下拉列表右侧选择“+ 新建计算”。 根据屏幕大小，此选项可能位于“…”菜单下方。
+    1. 在笔记本或脚本工具栏中，选择“计算”下拉列表右侧的“+ 新建计算”。 它可能位于“...”菜单下，具体取决于屏幕大小。
         :::image type="content" source="media/how-to-run-jupyter-notebooks/new-compute.png" alt-text="创建新计算":::
     1. 为计算命名，并在“虚拟机大小”中选择一个大小。 
     1. 选择“创建”。
-    1. 计算实例自动连接到文件。  现在可以使用计算实例左侧的工具来运行笔记本单元或 Python 脚本。
+    1. 计算实例自动连接到文件。  现在可以使用计算实例左侧的工具来运行笔记本单元格或 Python 脚本。
 
-* 如果有已停止的计算实例，请在“计算”下拉列表右侧选择“开始计算”。 根据屏幕大小，此选项可能位于“…”菜单下方。
+* 如果有已停止的计算实例，请选择“计算”下拉列表右侧的“开始计算”。 它可能位于“...”菜单下，具体取决于屏幕大小。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="启动计算实例":::
 
@@ -158,16 +174,16 @@ ms.locfileid: "102518715"
 
 ## <a name="add-new-kernels"></a>添加新内核
 
-[使用终端](how-to-access-terminal.md#add-new-kernels)创建新内核，并将其添加到计算实例。 笔记本会自动查找所连接计算实例上安装的所有 Jupyter 内核。
+[使用终端](how-to-access-terminal.md#add-new-kernels)创建新内核，并将其添加到计算实例。 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。
 
-使用右侧的内核下拉列表，更改为任何已安装的内核。  
+使用右侧的“内核”下拉列表更改为任何已安装的内核。  
 
 
 ### <a name="status-indicators"></a>状态指示器
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|颜色 |计算状态 |
+|Color |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
 | Red |计算失败 | 
@@ -177,7 +193,7 @@ ms.locfileid: "102518715"
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|颜色 |内核状态 |
+|Color |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |
@@ -271,9 +287,9 @@ ms.locfileid: "102518715"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
+* 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接。 
+* 在专用链接工作区中部署计算实例时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
 
-* 在专用链接工作区中部署计算实例时，只能[从虚拟网络内部访问](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
     
 ## <a name="next-steps"></a>后续步骤
 

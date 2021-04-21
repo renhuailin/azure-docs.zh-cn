@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103419280"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218628"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -156,7 +156,13 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 ### <a name="post-login-redirect"></a>登录后重定向
 
-如果希望用户登录后返回到特定页面，请在 `post_login_redirect_uri` 查询字符串参数中提供 URL。
+如果希望用户登录后返回到特定页面，请在 `post_login_redirect_uri` 查询字符串参数中提供完全限定的 URL。
+
+例如：
+
+```html
+<a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
+```
 
 ## <a name="logout"></a>Logout
 

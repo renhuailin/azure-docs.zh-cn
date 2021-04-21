@@ -8,15 +8,15 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/05/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210812"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219631"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
@@ -70,12 +70,6 @@ ms.locfileid: "102210812"
     如果你拥有多个 Azure 订阅，可使用 `az account set -s <subscription name or ID>` 命令设置订阅。 有关详细信息，请参阅[使用多个 Azure 订阅](/cli/azure/manage-azure-subscriptions-azure-cli)。
 
     有关其他身份验证方法，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
-
-1. 安装 Azure 机器学习扩展：
-
-    ```azurecli-interactive
-    az extension add -n azure-cli-ml
-    ```
 
 1. 创建服务主体。 在以下示例中，将创建一个名为 **ml-auth** 的 SP：
 

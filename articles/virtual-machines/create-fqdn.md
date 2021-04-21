@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/12/2020
+ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c53e72de7f6b2943086544f607042957f4b849
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132058"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220073"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 门户中为 Linux VM 创建完全限定的域名
 
@@ -25,11 +25,12 @@ ms.locfileid: "98132058"
 
 
 1. 在门户中选择 VM。 
-1. 在左侧菜单中选择“配置”
-1. 在“DNS 名称标签”下，输入要使用的前缀。
-1. 在页面顶部选择“保存”。
-1. 在左侧菜单中选择“概述”，返回到“VM 概述”边栏选项卡。 
-1. 验证是否正确显示“DNS 名称”。 
+1. 在左侧菜单中，选择“属性”
+1. 在“公共 IP 地址\DNS 名称标签”下，选择你的 IP 地址。
+2. 在“DNS 名称标签”下，输入要使用的前缀。
+3. 在页面顶部选择“保存”。
+4. 在左侧菜单中选择“概述”，以返回到 VM 概述边栏选项卡。
+5. 验证是否正确显示“DNS 名称”。 
 
 ## <a name="next-steps"></a>后续步骤
 

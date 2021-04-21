@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339829"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220158"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "93339829"
 
 ## <a name="why-is-monitoring-progress-important"></a>为什么监视进度很重要？
 
-更改源处理器充当一个指针，它会在[更改源](./change-feed.md)中向前移动，并将更改传递给委托实现。 
+更改源处理器充当一个指针，它会在[更改源](./change-feed.md)中向前移动，并将更改传递给委托实现。
 
 更改源处理器部署可以按特定速率处理更改，具体取决于可用的资源，例如 CPU、内存、网络，等等。
 
@@ -32,7 +32,9 @@ ms.locfileid: "93339829"
 
 ## <a name="implement-the-change-feed-estimator"></a>实现更改源估算器
 
-与[更改源处理器](./change-feed-processor.md)一样，更改源估算器充当一个推送模型。 此估算器会度量上一个处理项（按租用容器的状态定义）和容器中的最新更改之间的差异，并将该值推送到某个委托。 进行度量的时间间隔也可以自定义，默认值为 5 秒。
+### <a name="as-a-push-model-for-automatic-notifications"></a>作为自动通知的推送模型
+
+与[更改源处理器](./change-feed-processor.md)一样，更改源估算器可用作推送模型。 此估算器会度量上一个处理项（按租用容器的状态定义）和容器中的最新更改之间的差异，并将该值推送到某个委托。 进行度量的时间间隔也可以自定义，默认值为 5 秒。
 
 例如，如果更改源处理器定义如下：
 
@@ -52,8 +54,29 @@ ms.locfileid: "93339829"
 
 可以将此估算发送给监视解决方案，并通过它了解进度随时间的变化情况。
 
+### <a name="as-an-on-demand-detailed-estimation"></a>作为按需详细估算
+
+有一种替代方法可让你按需获得估算值（与推送模型相比）。 此模型还提供了更多详细信息：
+
+* 每次租用的估计滞后时间。
+* 实例拥有并处理每次租用，因此你可以确定该实例是否存在问题。
+
+如果更改源处理器定义如下：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+你可以使用相同的租用配置创建估算器：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+无论何时，只要你需要，就可以以所需的频率获得详细的估算值：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+每个 `ChangeFeedProcessorState` 都会包含租用和滞后时间信息，以及当前哪个实例拥有它。 
+
 > [!NOTE]
-> 更改源估算器不需部署在更改源处理器中，也不需部署在同一项目中。 它可以是独立的，可以运行在完全不同的实例中。 它只需使用同一名称和租用配置。
+> 更改源估算器不需部署在更改源处理器中，也不需部署在同一项目中。 它可以是独立的，也可以运行在完全不同的实例中，这正是我们建议你使用的。 它只需使用同一名称和租用配置。
 
 ## <a name="additional-resources"></a>其他资源
 
