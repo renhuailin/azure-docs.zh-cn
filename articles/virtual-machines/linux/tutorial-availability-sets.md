@@ -10,12 +10,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507059"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765964"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>使用 Azure CLI 在可用性集中创建和部署虚拟机
 
@@ -36,7 +36,7 @@ ms.locfileid: "102507059"
 
 可使用 [az vm availability-set create](/cli/azure/vm/availability-set) 创建可用性集。 在本示例中，*myResourceGroupAvailability* 资源组中名为 *myAvailabilitySet* 的可用性集的更新域数和容错域数均设置为 *2*。
 
-首先，使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，然后创建可用性集：
+首先，使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，然后创建可用性集：
 
 ```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
@@ -80,7 +80,7 @@ done
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小
 
-以后可以向可用性集添加更多 VM（VM 大小可在硬件上获得）。 使用 [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) 列出可用性集的硬件群集上所有可用的大小：
+以后可以向可用性集添加更多 VM（VM 大小可在硬件上获得）。 使用 [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az_vm_availability_set_list_sizes) 列出可用性集的硬件群集上所有可用的大小：
 
 ```azurecli-interactive
 az vm availability-set list-sizes \

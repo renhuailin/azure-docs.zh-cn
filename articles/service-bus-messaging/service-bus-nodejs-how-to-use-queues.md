@@ -2,17 +2,19 @@
 title: 如何通过 JavaScript 使用 azure/service-bus 队列
 description: 了解如何编写使用最新版 @azure/service-bus 包的 JavaScript 程序，以便将消息发送到服务总线队列，并从中接收消息。
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: 3c499dcb5233cbf5cd4048c641d1b38e289cc35f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: aee67becf7519f03839eafbd897838f938871307
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739706"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537232"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-javascript"></a>向 Azure 服务总线队列发送消息并从中接收消息 (JavaScript)
 本教程介绍如何使用 JavaScript 程序中的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包向服务总线队列发送消息并从中接收消息。

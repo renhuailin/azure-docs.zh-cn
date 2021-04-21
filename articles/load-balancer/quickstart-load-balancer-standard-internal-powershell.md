@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
-ms:custom: seodec18
-ms.openlocfilehash: 8d94a784aba5995fd7e4645c3b56929874da2bcd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 618ca8722cef1959fddc5dcd24e8e8bdbb1f620a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056362"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530037"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建内部负载均衡器以对 VM 进行负载均衡
 
@@ -31,7 +30,7 @@ ms.locfileid: "106056362"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -302,6 +301,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-1-create-load-balancer-basic)
 
@@ -576,6 +577,8 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ---
 

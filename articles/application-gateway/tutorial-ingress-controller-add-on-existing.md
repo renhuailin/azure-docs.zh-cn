@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fe615da256099c3135f607a7b6f8095bb93b442
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040409"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772828"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>教程：使用现有的应用程序网关为现有的 AKS 群集启用应用程序网关入口控制器加载项
 
@@ -36,7 +36,7 @@ ms.locfileid: "102040409"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 下面的示例在 *canadacentral* 位置（区域）创建名为 *myResourceGroup* 的资源组。 
+在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 下面的示例在 *canadacentral* 位置（区域）创建名为 *myResourceGroup* 的资源组。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location canadacentral
@@ -52,7 +52,7 @@ az group create --name myResourceGroup --location canadacentral
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-若要为 `az aks create` 命令配置其他参数，请访问[此处](/cli/azure/aks#az-aks-create)的参考信息。 
+若要为 `az aks create` 命令配置其他参数，请访问[此处](/cli/azure/aks#az_aks_create)的参考信息。 
 
 ## <a name="deploy-a-new-application-gateway"></a>部署新的应用程序网关 
 
@@ -84,12 +84,12 @@ az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id
 
 ![应用程序网关入口控制器门户](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
 
-## <a name="peer-the-two-virtual-networks-together"></a>将两个虚拟网络对等互连在一起
+## <a name="peer-the-two-virtual-networks-together&quot;></a>将两个虚拟网络对等互连在一起
 
 由于我们已将 AKS 群集部署在其自己的虚拟网络中，并将应用程序网关部署在另一个虚拟网络中，因此你需要将这两个虚拟网络对等互连在一起，以便流量从应用程序网关流向群集中的 Pod。 将两个虚拟网络对等互连需要两次运行 Azure CLI 命令，以确保连接是双向的。 第一个命令将创建从应用程序网关虚拟网络到 AKS 虚拟网络的对等连接；第二个命令将创建另一个方向的对等连接。
 
 ```azurecli-interactive
-nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
+nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query &quot;nodeResourceGroup")
 aksVnetName=$(az network vnet list -g $nodeResourceGroup -o tsv --query "[0].name")
 
 aksVnetId=$(az network vnet show -n $aksVnetName -g $nodeResourceGroup -o tsv --query "id")

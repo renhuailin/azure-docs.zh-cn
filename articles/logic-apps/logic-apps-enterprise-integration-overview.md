@@ -7,17 +7,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
-ms.date: 08/01/2019
-ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 09d253aae4c054db5efdc252f62986044e1d366b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86536396"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771850"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 企业集成解决方案
 
-若要构建企业到企业 (B2B) 解决方案并在组织之间无缝通信，可以结合 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)使用 Enterprise Integration Pack (EIP) 来构建自动化的可缩放企业集成工作流。 尽管组织使用不同的协议和格式，但它们仍可以通过电子方式交换消息。 EIP 会将不同的格式转换为组织系统可以处理的格式，并支持 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) 等行业标准协议。 还可以通过同时使用加密和数字签名来提高消息的安全性。 EIP 支持以下[企业集成连接器](../connectors/apis-list.md#integration-account-connectors)和行业标准：
+若要构建企业到企业 (B2B) 解决方案并在组织之间无缝通信，可以结合 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)使用 Enterprise Integration Pack (EIP) 来构建自动化的可缩放企业集成工作流。 尽管组织使用不同的协议和格式，但它们仍可以通过电子方式交换消息。 EIP 会将不同的格式转换为组织系统可以处理的格式，并支持 [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md) 和 [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) 等行业标准协议。 还可以通过同时使用加密和数字签名来提高消息的安全性。 EIP 支持以下[企业集成连接器](../connectors/managed.md#enterprise-connectors)和行业标准：
 
 * 电子数据交换 (EDI)
 * 企业应用程序集成 (EAI)

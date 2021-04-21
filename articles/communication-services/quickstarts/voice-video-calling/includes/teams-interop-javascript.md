@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6747d1d3cfba1c9e2bee7a8a7a48d67d6bed9f8e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108162"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564619"
 ---
 本快速入门介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 
@@ -112,8 +112,8 @@ teamsMeetingJoinButton.addEventListener("click", () => {
 
 ## <a name="get-the-teams-meeting-link"></a>获取 Teams 会议链接
 
-可以使用图形 API 来检索 Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)中对此进行了详细介绍。
-通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta)下方获取。你还可以从 Teams 会议邀请信息的“加入会议”URL 中获取所需的会议信息。
+可以使用图形 API 来检索 Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)中对此进行了详细介绍。
+通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下方获取。你还可以从 Teams 会议邀请信息的“加入会议”URL 中获取所需的会议信息。
 
 ## <a name="run-the-code"></a>运行代码
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b1355acee5c115accb2515f797b402e66cd2ec0a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374720"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773344"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端密钥库
 
@@ -179,7 +179,7 @@ rsa_key = client.create_rsa_key(keyName, size=2048)
 retrieved_key = client.get_key(keyName)
  ```
 
-还可以使用 Azure CLI 命令 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 来验证是否设置了密钥。
+还可以使用 Azure CLI 命令 [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) 来验证是否设置了密钥。
 
 ### <a name="delete-a-key"></a>删除密钥
 
@@ -192,7 +192,7 @@ deleted_key = poller.result()
 
 `begin_delete_key` 方法是异步方法，将返回一个轮询器对象。 调用轮询器的 `result` 方法等待其完成。
 
-可以使用 Azure CLI 命令 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 来验证是否已删除密钥。
+可以使用 Azure CLI 命令 [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) 来验证是否已删除密钥。
 
 删除密钥后，该密钥会在一段时间内保持已删除但可恢复状态。 如果再次运行该代码，请使用其他密钥名称。
 
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 密钥保管库概述](../general/overview.md)
-- [保护对密钥保管库的访问](../general/secure-your-key-vault.md)
+- [保护对密钥保管库的访问](../general/security-overview.md)
 - [Azure Key Vault 开发人员指南](../general/developers-guide.md)
 - [Key Vault 安全性概述](../general/security-overview.md)
 - [使用 Key Vault 进行身份验证](../general/authentication.md)

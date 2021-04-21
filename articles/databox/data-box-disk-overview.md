@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: cca08e1be0f81c26d0838566ac4900d36580b8b8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ca46ce3355edf2b77400011d023cd6af330a3b58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066290"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770426"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -35,7 +35,7 @@ Azure 提供程序和非 Azure 提供程序均可以从 Azure Data Box 引入数
 
 - **SharePoint Online** - 使用 Azure Data Box 和 SharePoint 迁移工具 (SPMT) 将文件共享内容迁移到 SharePoint Online。 使用 Data Box，可以删除用于传输数据的 WAN 链接上依赖项。 有关详细信息，请参阅[使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online](data-box-heavy-migrate-spo.md)。
 
-- **Azure 文件同步** - 将文件从 Data Box 复制到 Azure 文件共享，这使你能够将文件服务汇聚到 Azure 中，同时又能保持对数据的本地访问权限。 有关详细信息，请参阅[部署 Azure 文件同步](../storage/files/storage-sync-files-deployment-guide.md)。
+- **Azure 文件同步** - 将文件从 Data Box 复制到 Azure 文件共享，这使你能够将文件服务汇聚到 Azure 中，同时又能保持对数据的本地访问权限。 有关详细信息，请参阅[部署 Azure 文件同步](../storage/file-sync/file-sync-deployment-guide.md)。
 
 - **HDFS 存储** - 使用 Data Box 将数据从 Hadoop 群集的本地 Hadoop 分布式文件系统 (HDFS) 存储迁移到 Azure 存储中。 有关详细信息，请参阅[使用 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)。
 

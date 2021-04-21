@@ -1,24 +1,30 @@
 ---
 title: 快速入门：创建用于 Java 的 CI/CD 管道 - Azure DevOps Starter
 description: 了解如何利用简化的 Azure DevOps Starter 体验在 Azure Pipelines 中为 Java 应用设置持续集成 (CI) 和持续交付 (CD) 管道。
-ms.prod: devops
-ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
+ms.author: mlearned
 manager: gwallace
+ms.date: 03/24/2020
+ms.prod: devops
+ms.technology: devops-cicd
+ms.topic: quickstart
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.topic: quickstart
-ms.date: 03/24/2020
-ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mvc
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 30ee97e0928f7b2995bd7bf02bec15bb8a46f7e2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551875"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535422"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 为 Java 应用设置 CI/CD 管道
 
@@ -114,7 +120,7 @@ DevOps 入门版将在 Azure Repos 或 GitHub 中创建一个 Git 存储库。 �
 
 1. 在左侧，选择“任务”。  这些任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
 
-1. 在右侧，选择“查看发布”。  此视图显示发布历史记录。
+1. 在右侧，选择“查看发布”。 此视图显示发布历史记录。
 
 1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。  可以浏览多个菜单，例如“发布摘要”、“关联的工作项”、“测试”。
 

@@ -2,18 +2,23 @@
 title: 快速入门：在 Java 中使用 Azure Cache for Redis
 description: 本快速入门将创建一个使用 Azure Redis 缓存的新 Java 应用
 author: yegu-ms
+ms.author: yegu
+ms.date: 05/22/2020
+ms.topic: quickstart
 ms.service: cache
 ms.devlang: java
-ms.topic: quickstart
-ms.date: 05/22/2020
-ms.author: yegu
-ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 856f33875316eca8b3c16f28c6c222f42e0a0be5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- mvc
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121263"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538612"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入门：在 Java 中使用 Azure Cache for Redis
 

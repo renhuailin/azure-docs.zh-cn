@@ -1,15 +1,17 @@
 ---
 title: 有关使用 Azure 资源管理器模板创建 Azure 恢复服务保管库的快速入门。
 description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）创建 Azure 恢复服务保管库。
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 11a88b5485ad970802a65af31daccdb30a1c86df
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92745876"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533251"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板创建恢复服务保管库
 

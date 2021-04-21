@@ -1,17 +1,19 @@
 ---
 title: 快速入门：使用 Azure 门户将 Azure Cache for Redis 事件路由到 Web 终结点
 description: 使用 Azure 事件网格订阅 Azure Cache for Redis 事件，将事件发送到 Webhook，并处理 Web 应用程序中的事件
+author: curib
+ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-author: curib
-ms.author: cauribeg
-ms.openlocfilehash: 5bdd6b0e6f97f7e5a738ab17d68282cf402004b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: e021f386f255f1cef61e28cbd4fd6116fc2aa727
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99056459"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529317"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：使用 Azure 门户将 Azure Cache for Redis 事件路由到 Web 终结点
 
@@ -123,4 +125,3 @@ Azure 事件网格是针对云的事件处理服务。 在本快速入门中，�
 
 - [对 Azure Cache for Redis 事件作出反应](cache-event-grid.md)
 - [关于事件网格](../event-grid/overview.md)
-

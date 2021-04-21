@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a099f1a3ab16c33baa8037e727d26f107a593a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664545"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785534"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 监视和缩放 Azure Database for MariaDB 服务器
 此示例 CLI 脚本在查询指标后为单个 Azure Database for MariaDB 服务器缩放计算和存储。 计算可以增加或减少。 存储只能增加。
@@ -37,11 +37,11 @@ ms.locfileid: "98664545"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | 创建用于托管数据库的 MariaDB 服务器。 |
-| [az mariadb server update](/cli/azure/mariadb/server#az-mariadb-server-update) | 更新 MariaDB 服务器的属性。 |
-| [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | 列出资源的指标值。 |
-| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | 创建用于托管数据库的 MariaDB 服务器。 |
+| [az mariadb server update](/cli/azure/mariadb/server#az_mariadb_server_update) | 更新 MariaDB 服务器的属性。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | 列出资源的指标值。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for MariaDB 计算和存储](../concepts-pricing-tiers.md)

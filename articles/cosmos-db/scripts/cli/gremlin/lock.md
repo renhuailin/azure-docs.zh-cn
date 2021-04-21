@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 492246b5dfb19664ea54ce8b5462c7d77f8d951b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19809d7150c8a461f97282d1583d0d870d6af8bb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94562706"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770644"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-cli"></a>使用 Azure CLI 为 Azure Cosmos Gremlin API 数据库和图形创建资源锁
 [!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "94562706"
 
 | 命令 | 说明 |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | 创建锁。 |
-| [az lock list](/cli/azure/lock#az-lock-list) | 列出锁信息。 |
-| [az lock show](/cli/azure/lock#az-lock-show) | 显示锁的属性。 |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | 删除锁。 |
+| [az lock create](/cli/azure/lock#az_lock_create) | 创建锁。 |
+| [az lock list](/cli/azure/lock#az_lock_list) | 列出锁信息。 |
+| [az lock show](/cli/azure/lock#az_lock_show) | 显示锁的属性。 |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | 删除锁。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,16 +2,19 @@
 title: 快速入门 - 创建容器实例 - Azure 资源管理器模板
 description: 在本快速入门中，你将使用 Azure 资源管理器模板快速部署在独立 Azure 容器实例中运行的容器化 Web 应用。
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
-ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- devx-track-js
+- mode-arm
+ms.openlocfilehash: 5e8b9e1b2a396bb20b35dd69efe26758ba0db543
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91309075"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537500"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 中部署容器实例
 

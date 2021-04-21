@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70229fabe4331adb7740cf09cf2bf8f3e3e4617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b74e7d312133c24daad448e029a3c3d4cbdce79
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587513"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773056"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 调用在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -35,7 +35,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果你不熟悉 Azure 资源托管标识，请参阅[什么是 Azure 资源托管标识？](overview.md)。 若要了解系统分配的托管标识和用户分配的托管标识类型，请参阅[托管标识类型](overview.md#managed-identity-types)。
 
@@ -49,13 +49,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 若要创建启用了系统分配的托管标识的 Azure VM，你的帐户需要[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色分配。  无需其他 Azure AD 目录角色分配。
 
-1. 运行 [az group create](/cli/azure/group/#az-group-create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
+1. 运行 [az group create](/cli/azure/group/#az_group_create)，创建用于容纳和部署 VM 及其相关资源的[资源组](../../azure-resource-manager/management/overview.md#terminology)。 如果已有要改用的资源组，可以跳过这一步：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. 为 VM 创建[网络接口](/cli/azure/network/nic#az-network-nic-create)：
+2. 为 VM 创建[网络接口](/cli/azure/network/nic#az_network_nic_create)：
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -309,7 +309,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    az account get-access-token
    ```
 
-2. 为 VM 创建[网络接口](/cli/azure/network/nic#az-network-nic-create)：
+2. 为 VM 创建[网络接口](/cli/azure/network/nic#az_network_nic_create)：
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

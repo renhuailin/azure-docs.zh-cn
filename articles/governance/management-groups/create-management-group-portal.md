@@ -3,12 +3,14 @@ title: 使用门户创建管理组
 description: 本快速入门使用 Azure 门户创建管理组，将资源整理到资源层次结构中。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 1b0f7b0d98b2cde1343325d5e4a2979e3e663b68
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024674"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535901"
 ---
 # <a name="quickstart-create-a-management-group"></a>快速入门：创建管理组
 

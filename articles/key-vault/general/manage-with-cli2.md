@@ -3,19 +3,18 @@ title: 使用 CLI 管理 Azure 密钥保管库 - Azure 密钥保管库 | Microso
 description: 使用本文通过 Azure CLI 自动执行密钥保管库中的常见任务
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557201"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772170"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -221,7 +220,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> 设置密钥保管库高级访问策略
 
-使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。
+使用 [az keyvault update](/cli/azure/keyvault#az_keyvault_update) 为 Key Vault 启用高级策略。
 
  为部署启用 Key Vault：允许虚拟机从保管库中检索作为机密存储的证书。
 
