@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225177"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791906"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>教程：使用 Azure CLI 创建跨区域 Azure 负载均衡器
 
@@ -54,7 +54,7 @@ az login
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组：
 
 * 命名为 **myResourceGroupLB-CR**。
 * 在 **westus** 位置。
@@ -157,7 +157,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 在本部分中，你将测试跨区域负载均衡器。 你需要在 Web 浏览器中连接到公共 IP 地址。  你将停止其中一个区域负载均衡器后端池中的虚拟机并观察故障转移。
 
-1. 若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)：
+1. 若要获取负载均衡器的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)：
 
     ```azurecli-interactive
       az network public-ip show \
@@ -174,7 +174,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az-group-delete) 命令将它们删除。
+如果不再需要资源组、负载均衡器和所有相关的资源，使用 [az group delete](/cli/azure/group#az_group_delete) 命令将它们删除。
 
 ```azurecli-interactive
   az group delete \

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 93e605cb20d593750100ec8e340a7ad74c4dd385
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587887"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770050"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP (Laravel) 应用和 MySQL 灵活服务器（预览版）
 
@@ -139,7 +139,7 @@ php artisan serve
 在终端键入 `Ctrl + C` 可停止 PHP。
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>创建 MySQL 灵活服务器（预览版）
-在此步骤中，在以预览版形式提供的 [Azure Database for MySQL 灵活服务器](../index.yml)中创建 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。 在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) 命令在该数据库中创建服务器。
+在此步骤中，在以预览版形式提供的 [Azure Database for MySQL 灵活服务器](../index.yml)中创建 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。 在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create) 命令在该数据库中创建服务器。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -280,7 +280,7 @@ git commit -m "database.php updates"
 
 可以使用“deployment user”将 FTP 和本地 Git 部署到 Azure Web 应用。 配置部署用户之后，可对所有 Azure 部署使用此用户。 帐户级部署用户名和密码不同于 Azure 订阅凭据。
 
-若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 将 &lt;username> 和 &lt;password> 替换为你的部署用户名和密码 。
+若要配置部署用户，请在 Azure Cloud Shell 中运行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) 命令。 将 &lt;username> 和 &lt;password> 替换为你的部署用户名和密码 。
 
 用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。
 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
@@ -293,7 +293,7 @@ JSON 输出会将该密码显示为 Null。 如果出现“冲突”- 详细信�
 
 ### <a name="create-an-app-service-plan"></a>创建应用服务计划
 
-在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 命令在资源组中创建应用服务计划。 以下示例在免费定价层 (--sku F1) 和 Linux 容器 (--is-linux) 中创建名为 myAppServicePlan 的应用服务计划。
+在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) 命令在资源组中创建应用服务计划。 以下示例在免费定价层 (--sku F1) 和 Linux 容器 (--is-linux) 中创建名为 myAppServicePlan 的应用服务计划。
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -303,7 +303,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 在 myAppServicePlan 应用服务计划中创建 [Web 应用](../../app-service/overview.md#app-service-on-linux)。
 
-在 Cloud Shell 中可以使用 [az webapp create](/cli/azure/webapp#az-webapp-create) 命令。 在以下示例中，将 &lt;app-name> 替换为全局唯一的应用名称（有效字符包括 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.0`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes)。
+在 Cloud Shell 中可以使用 [az webapp create](/cli/azure/webapp#az_webapp_create) 命令。 在以下示例中，将 &lt;app-name> 替换为全局唯一的应用名称（有效字符包括 `a-z`、`0-9` 和 `-`）。 运行时设置为 `PHP|7.0`。 若要查看所有受支持的运行时，请运行 [az webapp list-runtimes --linux](/cli/azure/webapp#az_webapp_list_runtimes)。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -334,7 +334,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 
-在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令将环境变量设置为应用设置。
+在应用服务中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;app-name> 和 &lt;mysql-server-name> 。
 
@@ -365,7 +365,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令在应用服务应用中设置应用程序密钥。 替换占位符 &lt;app-name> 和 &lt;outputofphpartisankey:generate> 。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"

@@ -3,19 +3,18 @@ title: 将 Key Vault 与 DigiCert 证书颁发机构集成
 description: 如何将 Key Vault 与 DigiCert 证书颁发机构集成
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4351526c77961856b118bdeae07cecf48340f5fe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789004"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749305"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
 
@@ -70,7 +69,7 @@ Azure 密钥保管库用户可以直接从其 Key Vault 生成 DigiCert 证书�
 
 Azure PowerShell 用于通过命令或脚本创建和管理 Azure 资源。 Azure 托管 Azure Cloud Shell（一个可通过浏览器中的 Azure 门户使用的交互式 shell 环境）。
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 键入 `$PSVersionTable.PSVersion` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 来创建与 Azure 的连接。
 
 ```azurepowershell-interactive
 Login-AzAccount

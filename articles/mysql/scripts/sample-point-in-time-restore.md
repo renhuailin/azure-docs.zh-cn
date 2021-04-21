@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: ddb6276d63d90f4221475b163cba174116ec8bec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a2409c94e28135ca5c1fb8fa7210cd9b8b42858
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94539339"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791645"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MySQL 服务器
 此示例 CLI 脚本可将单个 Azure Database for MySQL 服务器还原到前一个时间点。
@@ -35,10 +35,10 @@ ms.locfileid: "94539339"
 
 | **命令** | **说明** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | 创建用于托管数据库的 MySQL 服务器。 |
-| [az mysql server restore](/cli/azure/mysql/server#az-mysql-server-restore) | 从备份还原服务器。 |
-| [az group delete](/cli/azure/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | 创建用于托管数据库的 MySQL 服务器。 |
+| [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore) | 从备份还原服务器。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: fa971bbb8526f1b0bc081e61ed5e7a7f2cf76d1f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006353"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782374"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>使用 CLI 将应用服务应用连接到 Cosmos DB
 
@@ -24,7 +24,7 @@ ms.locfileid: "97006353"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -38,12 +38,12 @@ ms.locfileid: "97006353"
 
 | 命令 | 说明 |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 创建应用服务计划。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 创建应用服务应用。 |
-| [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) | 创建 Cosmos DB 帐户。 |
-| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az-cosmosdb-list-connection-strings) | 列出指定 Cosmos DB 帐户的连接字符串。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
+| [`az group create`](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | 创建应用服务计划。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | 创建应用服务应用。 |
+| [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | 创建 Cosmos DB 帐户。 |
+| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | 列出指定 Cosmos DB 帐户的连接字符串。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
 
 ## <a name="next-steps"></a>后续步骤
 

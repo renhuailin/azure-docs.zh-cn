@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96494318"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780310"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入门：使用 Azure CLI 为 MySQL 服务器创建 Azure 数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "96494318"
 
  - 本快速入门需要 Azure CLI 版本 2.0 或更高版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
- - 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az-account-list)。
+ - 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅。 记下 az login 输出中的 id 值，以用作命令中订阅参数的值。 如果有多个订阅，请选择应计费的资源所在的相应订阅。 若要获取所有订阅，请使用 [az account list](/cli/azure/account#az_account_list)。
 
    ```azurecli
    az account set --subscription <subscription id>
@@ -41,7 +41,7 @@ ms.locfileid: "96494318"
 az group create --name myresourcegroup --location westus
 ```
 
-使用 [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) 命令为 MySQL 服务器创建 Azure 数据库。 一台服务器可以管理多个数据库。
+使用 [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) 命令为 MySQL 服务器创建 Azure 数据库。 一台服务器可以管理多个数据库。
 
 ```azurecli
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
@@ -60,7 +60,7 @@ sku-name|GP_Gen5_2|输入定价层和计算配置的名称。 请遵循简写约
 
 >[!IMPORTANT] 
 >- 服务器上的默认 MySQL 版本为 5.7。 目前还提供了 5.6 和 8.0 版本。
->- 若要查看 **az mysql server create** 命令的所有参数，请参阅此 [参考文档](/cli/azure/mysql/server#az-mysql-server-create)。
+>- 若要查看 **az mysql server create** 命令的所有参数，请参阅此 [参考文档](/cli/azure/mysql/server#az_mysql_server_create)。
 >- 默认情况下，SSL 在服务器上启用。 有关 SSL 的详细信息，请参阅[配置 SSL 连接](howto-configure-ssl.md)
 
 ## <a name="configure-a-server-level-firewall-rule"></a>配置服务器级防火墙规则 
@@ -126,7 +126,7 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
 az group delete --name myresourcegroup
 ```
 
-若要删除新创建的服务器，可运行 [az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) 命令。
+若要删除新创建的服务器，可运行 [az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) 命令。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

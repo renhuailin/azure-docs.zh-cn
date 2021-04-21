@@ -3,7 +3,6 @@ title: Azure 快速入门 - 使用 Azure 门户在密钥保管库中设置和检
 description: 本快速入门展示了如何使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75ea1c0e92e4d22e73178685472eb1953565a616
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935047"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750331"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
 
@@ -34,7 +33,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 在“搜索”框中输入“Key Vault”。
 3. 从结果列表中选择“Key Vault”。
 4. 在“Key Vault”部分，选择“创建”。
-5. 在“创建密钥保管库”部分，提供以下信息： 
+5. 在“创建密钥保管库”部分，提供以下信息：
     - 名称：必须提供唯一的名称。 在本快速入门中，我们使用 Example-Vault。 
     - 订阅：选择订阅。
     - 在“资源组”下选择“新建”，然后输入资源组名称。
