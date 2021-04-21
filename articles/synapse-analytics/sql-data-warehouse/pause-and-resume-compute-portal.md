@@ -2,21 +2,24 @@
 title: 快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
 description: 使用 Azure 门户暂停专用 SQL 池的计算以节省成本。 在准备好使用数据仓库时恢复计算。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
+ms.author: jrasnick
 manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 11/23/2020
-ms.author: gaursa
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f9cc5083c4b515454b9d5cbc40ed3b48cba80211
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 11/23/2020
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- mode-portal
+ms.openlocfilehash: 27587f436013bcaccbacd668ce62f1d939f89e48
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602156"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566811"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复专用 SQL 池中的计算
 
@@ -24,7 +27,7 @@ ms.locfileid: "104602156"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
