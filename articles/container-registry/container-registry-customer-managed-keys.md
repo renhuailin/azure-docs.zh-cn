@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: ''
-ms.openlocfilehash: aad9419fdb139ff615bfe07075be78a2ca4ee4ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09eea79eb6fb9ad9e4526b1a0390664e5dd9d61e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489066"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784036"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -127,7 +127,7 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 命令将密钥保管库加密服务加密角色分配给标识：
+或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 命令将密钥保管库加密服务加密角色分配给标识：
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
@@ -601,26 +601,26 @@ az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 [Azure 中的静态加密](../security/fundamentals/encryption-atrest.md)。
-* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/general/secure-your-key-vault.md)。
+* 详细了解访问策略以及如何[保护对密钥保管库的访问](../key-vault/general/security-overview.md)。
 
 
 <!-- LINKS - external -->
 
 <!-- LINKS - internal -->
 
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-show]: /cli/azure/feature#az-feature-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-keyvault-create]: /cli/azure/keyvault#az-keyvault-create
-[az-keyvault-key-create]: /cli/azure/keyvault/key#az-keyvault-key-create
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-show]: /cli/azure/feature#az_feature_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-keyvault-create]: /cli/azure/keyvault#az_keyvault_create
+[az-keyvault-key-create]: /cli/azure/keyvault/key#az_keyvault_key_create
 [az-keyvault-key]: /cli/azure/keyvault/key
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
-[az-keyvault-delete-policy]: /cli/azure/keyvault#az-keyvault-delete-policy
-[az-resource-show]: /cli/azure/resource#az-resource-show
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-encryption-rotate-key]: /cli/azure/acr/encryption#az-acr-encryption-rotate-key
-[az-acr-encryption-show]: /cli/azure/acr/encryption#az-acr-encryption-show
+[az-keyvault-set-policy]: /cli/azure/keyvault#az_keyvault_set_policy
+[az-keyvault-delete-policy]: /cli/azure/keyvault#az_keyvault_delete_policy
+[az-resource-show]: /cli/azure/resource#az_resource_show
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-encryption-rotate-key]: /cli/azure/acr/encryption#az_acr_encryption_rotate_key
+[az-acr-encryption-show]: /cli/azure/acr/encryption#az_acr_encryption_show

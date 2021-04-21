@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: cdcf6215973755444da9e513761de7ac71e479d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53e3f37d14153f3a2d7b5886a49b08ca9052b128
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98738440"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799873"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -24,4 +24,4 @@ ms.locfileid: "98738440"
 
 <sup>1</sup>6 个级别不包括订阅级别。
 
-<sup>2</sup>如果达到 800 个部署的限制，则会从历史记录中删除不再需要的部署。 若要删除管理组级别部署，请使用 [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) 或 [az deployment mg delete](/cli/azure/deployment/mg#az-deployment-mg-delete)。
+<sup>2</sup>如果达到 800 个部署的限制，则会从历史记录中删除不再需要的部署。 若要删除管理组级别部署，请使用 [Remove-AzManagementGroupDeployment](/powershell/module/az.resources/Remove-AzManagementGroupDeployment) 或 [az deployment mg delete](/cli/azure/deployment/mg#az_deployment_mg_delete)。
